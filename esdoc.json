@@ -1,0 +1,15 @@
+{
+  "source": "./src",
+  "destination": "./documentation",
+  "includes": ["\\.(js)$"],
+  "excludes": ["\\.config\\.(js|es6)$"],
+  "test": {
+    "type": "mocha",
+    "source": "./test/client"
+  },
+  "manual": {
+    "installation": ["./manual/installation.md"],
+    "example": ["./manual/example.md"],
+    "usage":["./manual/usage.md"]
+  }
+}

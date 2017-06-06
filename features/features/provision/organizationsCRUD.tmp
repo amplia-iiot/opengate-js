@@ -1,0 +1,68 @@
+
+
+
+  
+  /*Scenario: Creating an organization with invalid time zone
+	And the "name" "JsApi Error Organization"
+	And the "country code" "ES"
+	And the "lang code" ""
+    When I build it
+    Then build method throw an error equal to "Organization name is a mandatory parameter. Please invoke the method withName with a correct parameters" 
+  
+  Scenario: Creating an organization with invalid country code
+	And the "name" "JsApi Error Organization"
+	And the "country code" "ES"
+	And the "lang code" ""
+    When I build it
+    Then build method throw an error equal to "Organization name is a mandatory parameter. Please invoke the method withName with a correct parameters" 
+  
+  Scenario: Creating an organization with invalid zoom
+	And the "name" "JsApi Error Organization"
+	And the "country code" "ES"
+	And the "lang code" ""
+    When I build it
+    Then build method throw an error equal to "Organization name is a mandatory parameter. Please invoke the method withName with a correct parameters" 
+  
+  Scenario: Creating an organization with invalid coordinates
+	And the "name" "JsApi Error Organization"
+	And the "country code" "ES"
+	And the "lang code" ""
+    When I build it
+    Then build method throw an error equal to "Organization name is a mandatory parameter. Please invoke the method withName with a correct parameters" 
+  
+  Scenario: Creating an organization with zoom but without coordinates
+	And the "name" "JsApi Error Organization"
+	And the "country code" "ES"
+	And the "lang code" ""
+    When I build it
+    Then build method throw an error equal to "Organization name is a mandatory parameter. Please invoke the method withName with a correct parameters" 
+
+  Scenario: Creating an organization that NOT exists with all params
+    And the "name" "JsApi Full Organization"
+    And the "description" "JsApi tests organization"
+    And the "country code" "ES"
+    And the "lang code" "es"
+    And the "time zone" "Europe/Andorra"
+	And the "zoom" by 10
+    And the "location" by 0 and 0
+    When I build it
+    And I execute
+ 	Then response code should be: 201
+  
+  Scenario: Creating an organization that NOT exists with mandatory params
+    And the "name" "JsApi Partial Organization"
+    And the "country code" "ES"
+    And the "lang code" "es"
+    When I build it
+    And I execute
+ 	Then response code should be: 201
+  
+  Scenario: Creating an organization that exists
+    And the "name" "base_organization"
+    And the "country code" "ES"
+    And the "lang code" "es"
+    When I build it
+    And I execute
+    Then response code should be: 400
+    And response specific error code sould be: 4001
+*/

@@ -1,0 +1,4 @@
+/**
+ * BATTERY_CHARGE_LEVEL_STATUS_ENUM values allowed
+ */
+export const BATTERY_CHARGE_LEVEL_STATUS_ENUM = [ "CHARGING","CHARGED"];
