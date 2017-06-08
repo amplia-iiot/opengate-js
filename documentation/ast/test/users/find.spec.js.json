@@ -1,0 +1,59 @@
+{
+  "type": "Program",
+  "body": [],
+  "sourceType": "module",
+  "range": [
+    322,
+    322
+  ],
+  "loc": {
+    "start": {
+      "line": 11,
+      "column": 2
+    },
+    "end": {
+      "line": 11,
+      "column": 2
+    }
+  },
+  "leadingComments": [
+    {
+      "type": "Block",
+      "value": "define(function () {\n\tmocha.setup('bdd');\t\t\n    describe('Testing user api 2', function() {\n    \tit('search a user that exists', function() {\t  \t\n\t\t  return ogapi.users.addEmail('root@amplia.es').execute().then(function(user) {\n\t\t    assert.strictEqual(user.email,'root@amplia.es');\n\t\t  });\n\t\t});          \n    });\n})\n",
+      "range": [
+        0,
+        322
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 11,
+          "column": 2
+        }
+      }
+    }
+  ],
+  "comments": [
+    {
+      "type": "Block",
+      "value": "define(function () {\n\tmocha.setup('bdd');\t\t\n    describe('Testing user api 2', function() {\n    \tit('search a user that exists', function() {\t  \t\n\t\t  return ogapi.users.addEmail('root@amplia.es').execute().then(function(user) {\n\t\t    assert.strictEqual(user.email,'root@amplia.es');\n\t\t  });\n\t\t});          \n    });\n})\n",
+      "range": [
+        0,
+        322
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 11,
+          "column": 2
+        }
+      }
+    }
+  ]
+}
