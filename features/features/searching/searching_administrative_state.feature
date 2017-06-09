@@ -18,7 +18,7 @@ Feature: Searching administrative state in catalog
   	And I execute it
   	Then response code should be: 200
 
-    @fail
+    
   Scenario: Execute searching with parameter entityType
     When I try to search with... 
     | field   | content            |
@@ -30,7 +30,7 @@ Feature: Searching administrative state in catalog
     """
 {"administrativeState":[{"id":"REQUESTED","description":"Entity requested to the supplier","entityType":"ASSET"},{"id":"READY","description":"Entity ready for installation","entityType":"ASSET"},{"id":"REPAIR","description":"Entity under repair","entityType":"ASSET"},{"id":"TESTING","description":"Entity in tests","entityType":"ASSET"},{"id":"ACTIVE","description":"Field deployed entity","entityType":"ASSET"},{"id":"SUSPENDED","description":"Suspended its operation","entityType":"ASSET"},{"id":"DELETED","description":"Entity removed from available stock","entityType":"ASSET"},{"id":"RETIRED","description":"Field entity withdrawal","entityType":"ASSET"},{"id":"BANNED","description":"Entity banned, It means that received information of this entity is not going to be collected","entityType":"ASSET"}]}
     """
-@fail
+
     Scenario: Execute searching with parameters 
     When I try to search with... 
     | field   | content            |
@@ -43,7 +43,7 @@ Feature: Searching administrative state in catalog
     """
 {"administrativeState":[{"id":"SUSPENDED","description":"Suspended its operation","entityType":"ASSET"}]}
     """
-@fail
+
   Scenario: Execute searching with parameter id
     When I try to search with... 
     | field   | content            |

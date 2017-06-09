@@ -1,7 +1,8 @@
 'use strict';
 
-import q from 'q';
+import q from 'q';;
 import Event from './collect/Event';
+import Datastream from '../devices/collect/Datastreams';
 /**
  * This is a base object contains methods to send unstructured IoT information to be processed & collected by the platform.
  */
@@ -80,7 +81,7 @@ export default class DeviceMessage extends Event {
      * @return {deviceMessages}
      */
     withDataStream(datastream) {
-        if (datastream.constructor.name === "Datastream") {
+        if (datastream instanceof Datastream) {
             this._datastreams.push(datastream.composeElement());
         }
         return this;
@@ -137,7 +138,7 @@ export default class DeviceMessage extends Event {
         let boxPromises = [];
 
         if (this._datastreams.length > 0) {
-            boxPromises.push(this._ogapi.Sapi.post(this._buildIotURL(), this._composeIotMessage()).then(function(res) {
+            boxPromises.push(this._ogapi.Sapi.post(this._buildIotURL(), this._composeIotMessage()).then(function (res) {
                 if (res.statusCode !== 201) {
                     throw new Error("IOT NOT CREATED");
                 }
@@ -145,16 +146,16 @@ export default class DeviceMessage extends Event {
         }
         if (this._version !== undefined) {
 
-            boxPromises.push(this._ogapi.Sapi.post(this._buildDmmURL(), this._composeDmmMessage()).then(function(res) {
+            boxPromises.push(this._ogapi.Sapi.post(this._buildDmmURL(), this._composeDmmMessage()).then(function (res) {
                 if (res.statusCode !== 201) {
                     throw new Error("DMM NOT CREATED");
                 }
             }));
         }
 
-        q.all(boxPromises).catch(function(errores) {
+        q.all(boxPromises).catch(function (errores) {
             defered.reject({ errors: errores, statusCode: 400 });
-        }).done(function(response) {
+        }).done(function (response) {
             defered.resolve({ statusCode: 201 });
         });
         return promises;

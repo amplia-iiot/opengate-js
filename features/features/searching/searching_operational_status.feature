@@ -16,7 +16,7 @@ Feature: Searching operational status in catalog
     When I build it
   	And I execute it
   	Then response code should be: 200
-@fail
+
   Scenario: Execute searching with parameter entityType
     When I try to search with... 
     | field   | content            |
@@ -28,7 +28,7 @@ Feature: Searching operational status in catalog
     """
 {"operationalStatus":[{"entityType":"ASSET","id":"UNKNOWN"},{"entityType":"ASSET","id":"NORMAL"},{"entityType":"ASSET","id":"ALARM"},{"entityType":"ASSET","id":"DOWN"},{"entityType":"ASSET","id":"SAFE_MODE"},{"entityType":"ASSET","id":"TAMPER"},{"entityType":"ASSET","id":"TEST"}]}
     """
-@fail
+
   Scenario: Execute searching with parameters 
     When I try to search with... 
     | field   | content            |
@@ -41,7 +41,7 @@ Feature: Searching operational status in catalog
     """
 {"operationalStatus":[{"entityType":"COMMUNICATIONS_MODULE","id":"STOPPED"}]}
     """
-@fail
+
   Scenario: Execute searching with parameter id
     When I try to search with... 
     | field   | content            |

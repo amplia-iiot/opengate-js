@@ -12,7 +12,7 @@ Feature: Searching IoT datastream access provider in catalog
     Given an apikey user by "require-real-apikey"
     And an ogapi "IoT datastream access search" util
     Given I want to search a "IoT datastream access provider"
-@fail
+
   Scenario: Execute searching
     When I build it
   	And I execute it

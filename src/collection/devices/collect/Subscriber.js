@@ -1,5 +1,6 @@
 'use strict';
 
+import Hardware from './Hardware';
 /**
  * This is a base object that allows the user to create a Subscription.
  */
@@ -49,13 +50,13 @@ export default class Subscriber {
         return this;
     }
 
-            /**
-     * Set the hardware attribute
-     * @param {Hardware} hardware - optionals field
-     * @return {Subscriber}
-     */
+    /**
+* Set the hardware attribute
+* @param {Hardware} hardware - optionals field
+* @return {Subscriber}
+*/
     withHardware(hardware) {
-         if (hardware.constructor.name !== "Hardware") {
+        if (!(hardware instanceof Hardware)) {
             throw new Error('Parameter hardware must be hardware type');
         }
         this._hardware = hardware;
@@ -63,20 +64,20 @@ export default class Subscriber {
     }
 
 
-    composeElement(){
+    composeElement() {
         var subscriber = {
-            "id" : this._id,
-            "name" : this._name,
-            "type" : this._type
+            "id": this._id,
+            "name": this._name,
+            "type": this._type
 
 
-        }        
-        if(this._hardware !==  undefined){
-            subscriber.hardware =  this._hardware.composeElement();
+        }
+        if (this._hardware !== undefined) {
+            subscriber.hardware = this._hardware.composeElement();
         }
         return subscriber;
     }
 
- 
-    
+
+
 }
