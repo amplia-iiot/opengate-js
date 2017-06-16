@@ -1,6 +1,9 @@
 'use strict';
 
 import q from 'q';
+import merge from 'merge'
+
+const LIMIT_SIZE_DEF_VALUE = 1000;
 
 /** 
  * This is a abstract class, it must be extended to another class that defined the specific search.
@@ -54,6 +57,82 @@ export default class BaseSearch {
             .catch((error) => {
                 defered.reject(error);
             });
+        return promise;
+    }
+
+    //Se debera fijar simpre un objeto limit en la paginacion asincrona
+    //Si no existiera el objeto limit se creara uno por defecto
+    //Si tuviera se modficara para que siempre comience en la primera pagina
+    _asyncPagingFilter() {
+        var filter = this._filter();
+
+        if (!filter.limit || !filter.limit.size) {
+            filter.limit = { size: LIMIT_SIZE_DEF_VALUE, start: 0 }
+        } else {
+            filter.limit.start = 0;
+        }
+        return filter;
+    }
+
+    _loadData(resource) {
+        let _this = this;
+        let defered = q.defer();
+        let filter = _this.__asyncPagingFilter();
+
+        //Funcion que realizara la llamada al search paginado y, de forma recursiva, llamara a todas las paginas
+        function loadAll() {
+            this._ogapi.Napi
+                .post(_this._resource, filter, _this._timeout)
+                .then((response) => {
+                    let statusCode = response.statusCode;
+                    let body = response.body;
+                    if (statusCode === 200 || statusCode === 200) {
+                        if (typeof this._appendData === "function")
+                            _this._appendData(body);
+                        let result = body[resource];
+                        defered.notify(result);
+                        if (result.length === _this._asyncPagingFilter.limit.size) {
+                            filter.start += 1;
+                            loadAll();
+                        } else {
+                            defered.resolve('DONE');
+                        }
+                    } else {
+                        defered.reject({ data: body, statusCode: statusCode })
+                    }
+                })
+                .catch((error) => {
+                    defered.reject(error);
+                });
+        }
+        loadAll();
+        return defered.promise;
+    }
+
+    /**
+    * This invokes a request for asynchronous paging to the OpenGate North API and the return of the pages is managed by promises and its notify object
+    * @param {string} resource - resource to find.
+    * @return {Promise}
+    * @property {function (), null, function ()} then - When request it is OK
+    * @property {function (error:string)} catch - When request it is NOK
+    */
+    executeWithAsyncPaging(resource) {
+        let defered = q.defer();
+        let promise = defered.promise;
+        //Comenzamos con la carga asincrona
+        this._loadData(resource)
+            .then(
+            (response) => {
+                defered.resolve(response);
+            }, null,
+            (notify) => {
+                deferred.notify(notify);
+            })
+            .catch((error) => {
+                defered.reject(error);
+            });
+
+
         return promise;
     }
 }
