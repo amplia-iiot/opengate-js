@@ -1,6 +1,6 @@
 // features/step_definitions/given_step_definitions.js
 var moment = require("moment");
-
+var assert = require('chai').assert;
 
 module.exports = function () {
     var builderNameSkeleton = "new$1ParamBuilder";
@@ -36,6 +36,15 @@ module.exports = function () {
         var size = eval(size);
         try {
             this.util = this.util.limit(size, start);
+        } catch (err) {
+            this.error = err;
+        }
+        callback();
+    });
+
+    this.Given(/^the resource by "([^"]*)"$/, function (resource, callback) {
+        try {
+            this.util.resource = resource;
         } catch (err) {
             this.error = err;
         }
@@ -641,6 +650,25 @@ module.exports = function () {
 
     this.Given(/^I wait (\d+) seconds$/, function (seconds, callback) {
         setTimeout(callback, seconds * 1000);
+    });
+
+    this.Given(/^I wait for DONE every (\d+) seconds, maximum (\d+) seconds$/, function (every_seconds, seconds, callback) {
+        var _this = this;
+        assert.isAbove(seconds * 1000, every_seconds * 1000, 'Maximum seconds must be strictly greater than every second');
+        var everyTimeout;
+        var globalTimeout = setTimeout(
+            function () {
+                clearTimeout(everyTimeout);
+                callback();
+            }
+            , seconds * 1000);
+        function isDone() {
+            if (this.responseData !== 'DONE')
+                everyTimeout = setTimeout(isDone, every_seconds * seconds);
+            else
+                clearTimeout(globalTimeout);
+        }
+        isDone();
     });
 
 

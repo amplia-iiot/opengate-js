@@ -40,7 +40,6 @@ export default class BaseSearch {
     execute() {
         var defered = q.defer();
         var promise = defered.promise;
-        //console.log("RESOURCE: " + this._resource);
         this._ogapi.Napi
             .post(this._resource, this._filter(), this._timeout)
             .then((response) => {
@@ -67,9 +66,9 @@ export default class BaseSearch {
         var filter = this._filter();
 
         if (!filter.limit || !filter.limit.size) {
-            filter.limit = { size: LIMIT_SIZE_DEF_VALUE, start: 0 }
+            filter.limit = { size: LIMIT_SIZE_DEF_VALUE, start: 1 }
         } else {
-            filter.limit.start = 0;
+            filter.limit.start = 1;
         }
         return filter;
     }
@@ -77,25 +76,25 @@ export default class BaseSearch {
     _loadData(resource) {
         let _this = this;
         let defered = q.defer();
-        let filter = _this.__asyncPagingFilter();
-
+        let filter = _this._asyncPagingFilter();
         //Funcion que realizara la llamada al search paginado y, de forma recursiva, llamara a todas las paginas
         function loadAll() {
-            this._ogapi.Napi
+            console.log(JSON.stringify(filter));
+            _this._ogapi.Napi
                 .post(_this._resource, filter, _this._timeout)
                 .then((response) => {
                     let statusCode = response.statusCode;
                     let body = response.body;
                     if (statusCode === 200 || statusCode === 200) {
-                        if (typeof this._appendData === "function")
+                        if (typeof _this._appendData === "function")
                             _this._appendData(body);
-                        let result = body[resource];
+                        let result = body.data ? body.data[resource] : body[resource];
                         defered.notify(result);
-                        if (result.length === _this._asyncPagingFilter.limit.size) {
-                            filter.start += 1;
+                        if (result.length === filter.limit.size) {
+                            filter.limit.start += 1;
                             loadAll();
                         } else {
-                            defered.resolve('DONE');
+                            defered.resolve({ data: 'DONE', statusCode: 200 });
                         }
                     } else {
                         defered.reject({ data: body, statusCode: statusCode })
@@ -126,7 +125,7 @@ export default class BaseSearch {
                 defered.resolve(response);
             }, null,
             (notify) => {
-                deferred.notify(notify);
+                defered.notify(notify);
             })
             .catch((error) => {
                 defered.reject(error);
