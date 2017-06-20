@@ -77,6 +77,7 @@ export default class BaseSearch {
         let _this = this;
         let defered = q.defer();
         let filter = _this._asyncPagingFilter();
+        let paging = false;
         //Funcion que realizara la llamada al search paginado y, de forma recursiva, llamara a todas las paginas
         function loadAll() {
             console.log(JSON.stringify(filter));
@@ -86,6 +87,7 @@ export default class BaseSearch {
                     let statusCode = response.statusCode;
                     let body = response.body;
                     if (statusCode === 200 || statusCode === 200) {
+                        paging = true;
                         if (typeof _this._appendData === "function")
                             _this._appendData(body);
                         let result = body.data ? body.data[resource] : body[resource];
@@ -97,7 +99,10 @@ export default class BaseSearch {
                             defered.resolve({ data: 'DONE', statusCode: 200 });
                         }
                     } else {
-                        defered.reject({ data: body, statusCode: statusCode })
+                        if (paging) {
+                            defered.resolve({ data: 'DONE', statusCode: 200 });
+                        } else
+                            defered.reject({ data: body, statusCode: statusCode })
                     }
                 })
                 .catch((error) => {
