@@ -62,7 +62,11 @@ var Datastream = (function () {
     }, {
         key: 'withDatapoint',
         value: function withDatapoint(datapoint) {
+<<<<<<< HEAD
             if (datapoint.constructor.name !== "Datapoint") throw new Error('Parameter datapoint must be a Datapoint type');
+=======
+            if (!(datapoint instanceof _Datapoint2['default'])) throw new Error('Parameter datapoint must be a Datapoint type');
+>>>>>>> release_branch
             this._datapoints.push(datapoint.composeElement());
             return this;
         }

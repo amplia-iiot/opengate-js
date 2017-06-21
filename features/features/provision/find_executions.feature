@@ -38,7 +38,6 @@ Given the operation by "ADMINISTRATIVE_STATUS_CHANGE"
      | id       | not_exists |
      Then response code should be: 404  
 
-@fail
 Scenario: Execute operation with default values and find its executions with limit
 Given the operation by "ADMINISTRATIVE_STATUS_CHANGE"
     And the notes by ""

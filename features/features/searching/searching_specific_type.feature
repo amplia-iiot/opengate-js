@@ -16,7 +16,7 @@ Feature: Searching specific type in catalog
     When I build it
   	And I execute it
   	Then response code should be: 200
-@fail
+
   Scenario: Execute searching with parameter entityType
     When I try to search with... 
     | field   | content            |
@@ -28,7 +28,7 @@ Feature: Searching specific type in catalog
     """
 {"specificType":[{"entityType":"ASSET","id":"CONTAINER"},{"entityType":"ASSET","id":"GENERIC"},{"entityType":"ASSET","id":"METER"},{"entityType":"ASSET","id":"SENSOR"},{"entityType":"ASSET","id":"TPV"},{"entityType":"ASSET","id":"VEHICLE"},{"entityType":"ASSET","id":"VENDING"},{"entityType":"ASSET","id":"GLUCOMETER_SENSOR"},{"entityType":"ASSET","id":"WEIGHT_SENSOR"},{"entityType":"ASSET","id":"BLOODPRESSURE_SENSOR"}]}
     """
-@fail
+
   Scenario: Execute searching with parameters 
     When I try to search with... 
     | field   | content            |
@@ -41,7 +41,7 @@ Feature: Searching specific type in catalog
     """
 {"specificType":[{"entityType":"COMMUNICATIONS_MODULE","id":"I2C"}]}
     """
-@fail
+
   Scenario: Execute searching with parameter id
     When I try to search with... 
     | field   | content            |

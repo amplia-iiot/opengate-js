@@ -1,7 +1,11 @@
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
+<<<<<<< HEAD
   value: true
+=======
+    value: true
+>>>>>>> release_branch
 });
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -28,6 +32,7 @@ var _StaticSearch2 = _interopRequireDefault(_StaticSearch);
  */
 
 var MobilePhoneProviderSearchBuilder = (function (_SearchBuilder) {
+<<<<<<< HEAD
   _inherits(MobilePhoneProviderSearchBuilder, _SearchBuilder);
 
   /**
@@ -59,6 +64,39 @@ var MobilePhoneProviderSearchBuilder = (function (_SearchBuilder) {
   }]);
 
   return MobilePhoneProviderSearchBuilder;
+=======
+    _inherits(MobilePhoneProviderSearchBuilder, _SearchBuilder);
+
+    /**
+     *  @param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
+     */
+
+    function MobilePhoneProviderSearchBuilder(parent) {
+        _classCallCheck(this, MobilePhoneProviderSearchBuilder);
+
+        _get(Object.getPrototypeOf(MobilePhoneProviderSearchBuilder.prototype), 'constructor', this).call(this, parent, {});
+        this._url = '/mobilePhoneProvider';
+        this.customFilters = {};
+    }
+
+    /**
+     * Build a instance of StaticSearch 
+     *
+     * @example
+     *   ogapi.mobilePhoneProviderSearchBuilder().build()
+     * @throws {SearchBuilderError} Throw error on url build
+     * @return {StaticSearch}  
+     */
+
+    _createClass(MobilePhoneProviderSearchBuilder, [{
+        key: 'build',
+        value: function build() {
+            return new _StaticSearch2['default'](this._parent, this._buildUrl(), null, this._builderParams.timeout, 'mobilePhoneProvider', this.customFilters);
+        }
+    }]);
+
+    return MobilePhoneProviderSearchBuilder;
+>>>>>>> release_branch
 })(_SearchBuilder3['default']);
 
 exports['default'] = MobilePhoneProviderSearchBuilder;

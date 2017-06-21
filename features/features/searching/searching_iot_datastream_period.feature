@@ -12,7 +12,7 @@ Feature: Searching IoT datastream period provider in catalog
     Given an apikey user by "require-real-apikey"
     And an ogapi "IoT datastream period search" util
     Given I want to search a "IoT datastream period provider"
-@fail
+
   Scenario: Execute searching
     When I build it
   	And I execute it

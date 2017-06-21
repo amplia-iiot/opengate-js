@@ -22,9 +22,20 @@ var _collectEvent = require('./collect/Event');
 
 var _collectEvent2 = _interopRequireDefault(_collectEvent);
 
+<<<<<<< HEAD
 /**
  * This is a base object contains methods to send unstructured IoT information to be processed & collected by the platform.
  */
+=======
+var _devicesCollectDatastreams = require('../devices/collect/Datastreams');
+
+var _devicesCollectDatastreams2 = _interopRequireDefault(_devicesCollectDatastreams);
+
+/**
+ * This is a base object contains methods to send unstructured IoT information to be processed & collected by the platform.
+ */
+;
+>>>>>>> release_branch
 
 var DeviceMessage = (function (_Event) {
     _inherits(DeviceMessage, _Event);
@@ -109,7 +120,11 @@ var DeviceMessage = (function (_Event) {
     }, {
         key: 'withDataStream',
         value: function withDataStream(datastream) {
+<<<<<<< HEAD
             if (datastream.constructor.name === "Datastream") {
+=======
+            if (datastream instanceof _devicesCollectDatastreams2['default']) {
+>>>>>>> release_branch
                 this._datastreams.push(datastream.composeElement());
             }
             return this;

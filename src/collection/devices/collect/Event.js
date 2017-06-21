@@ -108,7 +108,7 @@ export default class Event {
      * @return {Event}
      */
     withHardware(hardware) {
-        if (hardware.constructor.name !== "Hardware") {
+        if (!(hardware instanceof Hardware)) {
             throw new Error('Parameter hardware must be Hardware type');
         }
         this._hardware = hardware;
@@ -126,7 +126,7 @@ export default class Event {
             .withEntityType("ASSET").withId(operationalStatus).build();
 
         operationalStatusBuilder.execute().then(
-            function(res) {
+            function (res) {
                 if (res.statusCode === 204) {
                     throw new Error("Operational Status not found");
                 }
@@ -144,7 +144,7 @@ export default class Event {
      * @return {Event}
      */
     withSoftware(software) {
-        if (software.constructor.name !== "Software") {
+        if (!(software instanceof Software)) {
             throw new Error('Parameter software must be software type');
         }
         this._softwareList.push(software.composeElement());
@@ -322,7 +322,7 @@ export default class Event {
      * @return {Usage}
      */
     withCpuUsage(cpuUsage) {
-        if (cpuUsage.constructor.name !== "Usage") {
+        if (!(cpuUsage instanceof Usage)) {
             throw new Error('Parameter cpuUsage must be Usage type');
         }
         this._cpuUsage = cpuUsage;
@@ -335,7 +335,7 @@ export default class Event {
      * @return {Storage}
      */
     withRam(ram) {
-        if (ram.constructor.name !== "Storage") {
+        if (!(ram instanceof Storage)) {
             throw new Error('Parameter ram must be Storage type');
         }
         this._ram = ram;
@@ -349,7 +349,7 @@ export default class Event {
      * @return {Storage}
      */
     withVolatilStorage(volatilStorage) {
-        if (volatilStorage.constructor.name !== "Storage") {
+        if (!(volatilStorage instanceof Storage)) {
             throw new Error('Parameter volatilStorage must be Storage type');
         }
         this._volatilStorage = volatilStorage;
@@ -361,7 +361,7 @@ export default class Event {
      * @return {Storage}
      */
     withNonVolatilStorage(nonVolatilStorage) {
-        if (nonVolatilStorage.constructor.name !== "Storage") {
+        if (!(nonVolatilStorage instanceof Storage)) {
             throw new Error('Parameter nonVolatilStorage must be Storage type');
         }
         this._nonVolatilStorage = nonVolatilStorage;
@@ -373,7 +373,7 @@ export default class Event {
      * @return {Storage}
      */
     withPowerSupply(powerSupply) {
-        if (powerSupply.constructor.name !== "PowerSupply") {
+        if (!(powerSupply instanceof PowerSupply)) {
             throw new Error('Parameter powerSupply must be PowerSupply type');
         }
         this._powerSupply = powerSupply;
@@ -385,7 +385,7 @@ export default class Event {
      * @return {Storage}
      */
     withCommsModule(communicationsModules) {
-        if (communicationsModules.constructor.name !== "CommsModuleMessage") {
+        if (!(communicationsModules instanceof CommsModuleMessage)) {
             throw new Error('Parameter communicationsModules must be CommsModuleMessage type');
         }
         this._communicationsModulesList.push(communicationsModules.composeElement());
@@ -394,7 +394,7 @@ export default class Event {
     }
     _checkValues(value, enumName) {
         let not_found = [];
-        let found = enumName.find(function(value) {
+        let found = enumName.find(function (value) {
             return value == this;
         }, value);
 

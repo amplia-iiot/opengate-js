@@ -44,7 +44,7 @@ export default class Datastream {
      * @return {Datastream}
      */
     withDatapoint(datapoint) {
-        if (datapoint.constructor.name !== "Datapoint")
+        if (!(datapoint instanceof Datapoint))
             throw new Error('Parameter datapoint must be a Datapoint type');
         this._datapoints.push(datapoint.composeElement());
         return this;

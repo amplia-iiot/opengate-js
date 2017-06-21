@@ -50,6 +50,7 @@ Feature: Searching for all filter fields
     And I execute it
    Then response code should be: 204    
 
+@fail
   Scenario: Execute all fields on certificates searching
   Given an apikey user by "require-real-apikey"
     And an ogapi "certificates search" util
@@ -89,6 +90,7 @@ Feature: Searching for all filter fields
     And I execute it
    Then response code should be: 204    
 
+@fail
   Scenario: Execute all fields on bundles searching
   Given an apikey user by "require-real-apikey"
     And an ogapi "bundles search" util
@@ -168,6 +170,7 @@ Feature: Searching for all filter fields
     And I execute it
    Then response code should be: 204 
 
+@fail
 @searching_domains
   Scenario: Execute all fields on domains searching
   Given an apikey user by "require-real-apikey"

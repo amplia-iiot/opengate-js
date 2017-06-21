@@ -5,10 +5,38 @@ Object.defineProperty(exports, '__esModule', {
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
+<<<<<<< HEAD
+=======
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+>>>>>>> release_branch
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
 var _enumANTENNA_STATUS_ENUM = require('./enum/ANTENNA_STATUS_ENUM');
 
+<<<<<<< HEAD
+=======
+var _Hardware = require('./Hardware');
+
+var _Hardware2 = _interopRequireDefault(_Hardware);
+
+var _Software = require('./Software');
+
+var _Software2 = _interopRequireDefault(_Software);
+
+var _Mobile = require('./Mobile');
+
+var _Mobile2 = _interopRequireDefault(_Mobile);
+
+var _Subscriber = require('./Subscriber');
+
+var _Subscriber2 = _interopRequireDefault(_Subscriber);
+
+var _Subscription = require('./Subscription');
+
+var _Subscription2 = _interopRequireDefault(_Subscription);
+
+>>>>>>> release_branch
 /**
  * This is a base object that allows the user to create a CommsModule.
  */
@@ -78,7 +106,11 @@ var CommsModuleMessage = (function () {
     }, {
         key: 'withHardware',
         value: function withHardware(hardware) {
+<<<<<<< HEAD
             if (hardware.constructor.name !== "Hardware") {
+=======
+            if (!(hardware instanceof _Hardware2['default'])) {
+>>>>>>> release_branch
                 throw new Error('Parameter hardware must be hardware type');
             }
             this._hardware = hardware;
@@ -135,7 +167,11 @@ var CommsModuleMessage = (function () {
             software.withDate(date);
             if(this._softwareList === undefined)
                 this._softwareList = [];*/
+<<<<<<< HEAD
             if (software.constructor.name !== "Software") {
+=======
+            if (!(software instanceof _Software2['default'])) {
+>>>>>>> release_branch
                 throw new Error('Parameter software must be software type');
             }
             this._softwareList.push(software.composeElement());
@@ -150,7 +186,11 @@ var CommsModuleMessage = (function () {
         key: 'withMobile',
         value: function withMobile(mobile) {
 
+<<<<<<< HEAD
             if (mobile.constructor.name !== "Mobile") {
+=======
+            if (!(mobile instanceof _Mobile2['default'])) {
+>>>>>>> release_branch
                 throw new Error('Parameter mobile must be Mobile type');
             }
             this._mobile = mobile;
@@ -165,7 +205,11 @@ var CommsModuleMessage = (function () {
         key: 'withSubscriber',
         value: function withSubscriber(subscriber) {
 
+<<<<<<< HEAD
             if (subscriber.constructor.name !== "Subscriber") {
+=======
+            if (!(subscriber instanceof _Subscriber2['default'])) {
+>>>>>>> release_branch
                 throw new Error('Parameter subscriber must be Subscriber type');
             }
             this._subscriber = subscriber;
@@ -180,7 +224,11 @@ var CommsModuleMessage = (function () {
         key: 'withSubscription',
         value: function withSubscription(subscription) {
 
+<<<<<<< HEAD
             if (subscription.constructor.name !== "Subscription") {
+=======
+            if (!(subscription instanceof _Subscription2['default'])) {
+>>>>>>> release_branch
                 throw new Error('Parameter subscription must be Subscription type');
             }
             this._subscription = subscription;

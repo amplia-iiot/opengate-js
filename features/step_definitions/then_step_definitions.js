@@ -24,10 +24,21 @@ module.exports = function () {
     this.Then(/^response code should be: (\d+)$/, function (statusCode, callback) {
         // Write code here that turns the phrase above into concrete actions
         var data = undefined;
-        data = this.responseData ? this.responseData.statusCode : data;
+        data = this.responseData ? this.responseData.statusCode : this.data;
         var statusCodeResp = data;
         //console.log("RESPONSE_: " + JSON.stringify(this.responseData));
         this.expect(parseInt(statusCode)).to.equal(statusCodeResp);
+
+        callback();
+    });
+
+    this.Then(/^response code should be: "([^"]*)"$/, function (response, callback) {
+        // Write code here that turns the phrase above into concrete actions
+        var data = undefined;
+        data = this.responseData && this.responseData.statusCode ? this.responseData.statusCode : this.responseData;
+        var statusCodeResp = data;
+        //console.log("RESPONSE_: " + JSON.stringify(this.responseData));
+        this.expect(response).to.equal(statusCodeResp);
 
         callback();
     });

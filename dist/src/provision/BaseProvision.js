@@ -14,6 +14,7 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
+<<<<<<< HEAD
 /**
  * This is an abstract class, it must be extended to another class that defines the different actions of a specific provision.
  * This class is responsible for managing the request to execute Norte OpenGate API
@@ -24,6 +25,18 @@ var BaseProvision = (function () {
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!string} resource - this is a base url resource
      * @param {!number} [timeout] - timeout on request
+=======
+/**
+ * This is an abstract class, it must be extended to another class that defines the different actions of a specific provision.
+ * This class is responsible for managing the request to execute Norte OpenGate API
+ */
+
+var BaseProvision = (function () {
+    /**
+     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
+     * @param {!string} resource - this is a base url resource
+     * @param {!number} [timeout] - timeout on request
+>>>>>>> release_branch
      */
 
     function BaseProvision(ogapi, resource, timeout) {
@@ -70,6 +83,7 @@ var BaseProvision = (function () {
             }
         }
 
+<<<<<<< HEAD
         /**
          * This invoke a request to OpenGate North API and the callback is managed by promises
          * This function create a entity of provision
@@ -78,6 +92,16 @@ var BaseProvision = (function () {
          * @property {function (error:string)} catch - When request it is NOK
          * @example
          *  ogapi.organizationsBuilder().create()
+=======
+        /**
+         * This invoke a request to OpenGate North API and the callback is managed by promises
+         * This function create a entity of provision
+         * @return {Promise}
+         * @property {function (result:object, statusCode:number)} then - When request it is OK
+         * @property {function (error:string)} catch - When request it is NOK
+         * @example
+         *  ogapi.organizationsBuilder().create()
+>>>>>>> release_branch
          */
     }, {
         key: 'create',
@@ -110,6 +134,7 @@ var BaseProvision = (function () {
             return promise;
         }
 
+<<<<<<< HEAD
         /**
          * This invoke a request to OpenGate North API and the callback is managed by promises
          * This function deletes a entity of provision
@@ -120,6 +145,18 @@ var BaseProvision = (function () {
          * ogapi.organizationsBuilder().withName('delete_organization').delete();
          * ogapi.usersBuilder().withEmail('delete@user.com').delete();
          * ogapi.certificatesBuilder().withId('d3l3t3-c3rt1f1c4t3').delete();
+=======
+        /**
+         * This invoke a request to OpenGate North API and the callback is managed by promises
+         * This function deletes a entity of provision
+         * @return {Promise}
+         * @property {function (result:object, statusCode:number)} then - When request it is OK
+         * @property {function (error:string)} catch - When request it is NOK
+         * @example
+         * ogapi.organizationsBuilder().withName('delete_organization').delete();
+         * ogapi.usersBuilder().withEmail('delete@user.com').delete();
+         * ogapi.certificatesBuilder().withId('d3l3t3-c3rt1f1c4t3').delete();
+>>>>>>> release_branch
          */
     }, {
         key: 'delete',
@@ -138,6 +175,7 @@ var BaseProvision = (function () {
             return promise;
         }
 
+<<<<<<< HEAD
         /**
          * This invoke a request to OpenGate North API and the callback is managed by promises
          * This function updates a entity of provision
@@ -146,6 +184,16 @@ var BaseProvision = (function () {
          * @property {function (error:string)} catch - When request it is NOK
          * @example
          *  ogapi.organizationsBuilder().update()
+=======
+        /**
+         * This invoke a request to OpenGate North API and the callback is managed by promises
+         * This function updates a entity of provision
+         * @return {Promise}
+         * @property {function (result:object, statusCode:number)} then - When request it is OK
+         * @property {function (error:string)} catch - When request it is NOK
+         * @example
+         *  ogapi.organizationsBuilder().update()
+>>>>>>> release_branch
          */
     }, {
         key: 'update',

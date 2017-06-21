@@ -19,7 +19,11 @@
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
   <a href="test.html" data-ice="testLink">Test</a>
+<<<<<<< HEAD
   <a data-ice="repoURL" href="http://gitlab.amplia.es/opengate-ux/opengate-javascript-api.git">Repository</a>
+=======
+  <a data-ice="repoURL" href="https://github.com/amplia-iiot/opengate-js.git" class="repo-url-github">Repository</a>
+>>>>>>> release_branch
   <div class="search-box">
   <span>
     <img src="./image/search.png">
@@ -303,7 +307,11 @@ export default class Event {
      * @return {Event}
      */
     withHardware(hardware) {
+<<<<<<< HEAD
         if (hardware.constructor.name !== &quot;Hardware&quot;) {
+=======
+        if (!(hardware instanceof Hardware)) {
+>>>>>>> release_branch
             throw new Error(&apos;Parameter hardware must be Hardware type&apos;);
         }
         this._hardware = hardware;
@@ -321,7 +329,11 @@ export default class Event {
             .withEntityType(&quot;ASSET&quot;).withId(operationalStatus).build();
 
         operationalStatusBuilder.execute().then(
+<<<<<<< HEAD
             function(res) {
+=======
+            function (res) {
+>>>>>>> release_branch
                 if (res.statusCode === 204) {
                     throw new Error(&quot;Operational Status not found&quot;);
                 }
@@ -339,7 +351,11 @@ export default class Event {
      * @return {Event}
      */
     withSoftware(software) {
+<<<<<<< HEAD
         if (software.constructor.name !== &quot;Software&quot;) {
+=======
+        if (!(software instanceof Software)) {
+>>>>>>> release_branch
             throw new Error(&apos;Parameter software must be software type&apos;);
         }
         this._softwareList.push(software.composeElement());
@@ -517,7 +533,11 @@ export default class Event {
      * @return {Usage}
      */
     withCpuUsage(cpuUsage) {
+<<<<<<< HEAD
         if (cpuUsage.constructor.name !== &quot;Usage&quot;) {
+=======
+        if (!(cpuUsage instanceof Usage)) {
+>>>>>>> release_branch
             throw new Error(&apos;Parameter cpuUsage must be Usage type&apos;);
         }
         this._cpuUsage = cpuUsage;
@@ -530,7 +550,11 @@ export default class Event {
      * @return {Storage}
      */
     withRam(ram) {
+<<<<<<< HEAD
         if (ram.constructor.name !== &quot;Storage&quot;) {
+=======
+        if (!(ram instanceof Storage)) {
+>>>>>>> release_branch
             throw new Error(&apos;Parameter ram must be Storage type&apos;);
         }
         this._ram = ram;
@@ -544,7 +568,11 @@ export default class Event {
      * @return {Storage}
      */
     withVolatilStorage(volatilStorage) {
+<<<<<<< HEAD
         if (volatilStorage.constructor.name !== &quot;Storage&quot;) {
+=======
+        if (!(volatilStorage instanceof Storage)) {
+>>>>>>> release_branch
             throw new Error(&apos;Parameter volatilStorage must be Storage type&apos;);
         }
         this._volatilStorage = volatilStorage;
@@ -556,7 +584,11 @@ export default class Event {
      * @return {Storage}
      */
     withNonVolatilStorage(nonVolatilStorage) {
+<<<<<<< HEAD
         if (nonVolatilStorage.constructor.name !== &quot;Storage&quot;) {
+=======
+        if (!(nonVolatilStorage instanceof Storage)) {
+>>>>>>> release_branch
             throw new Error(&apos;Parameter nonVolatilStorage must be Storage type&apos;);
         }
         this._nonVolatilStorage = nonVolatilStorage;
@@ -568,7 +600,11 @@ export default class Event {
      * @return {Storage}
      */
     withPowerSupply(powerSupply) {
+<<<<<<< HEAD
         if (powerSupply.constructor.name !== &quot;PowerSupply&quot;) {
+=======
+        if (!(powerSupply instanceof PowerSupply)) {
+>>>>>>> release_branch
             throw new Error(&apos;Parameter powerSupply must be PowerSupply type&apos;);
         }
         this._powerSupply = powerSupply;
@@ -580,7 +616,11 @@ export default class Event {
      * @return {Storage}
      */
     withCommsModule(communicationsModules) {
+<<<<<<< HEAD
         if (communicationsModules.constructor.name !== &quot;CommsModuleMessage&quot;) {
+=======
+        if (!(communicationsModules instanceof CommsModuleMessage)) {
+>>>>>>> release_branch
             throw new Error(&apos;Parameter communicationsModules must be CommsModuleMessage type&apos;);
         }
         this._communicationsModulesList.push(communicationsModules.composeElement());
@@ -589,7 +629,11 @@ export default class Event {
     }
     _checkValues(value, enumName) {
         let not_found = [];
+<<<<<<< HEAD
         let found = enumName.find(function(value) {
+=======
+        let found = enumName.find(function (value) {
+>>>>>>> release_branch
             return value == this;
         }, value);
 

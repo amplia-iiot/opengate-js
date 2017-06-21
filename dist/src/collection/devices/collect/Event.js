@@ -143,7 +143,11 @@ var Event = (function () {
     }, {
         key: 'withHardware',
         value: function withHardware(hardware) {
+<<<<<<< HEAD
             if (hardware.constructor.name !== "Hardware") {
+=======
+            if (!(hardware instanceof _Hardware2['default'])) {
+>>>>>>> release_branch
                 throw new Error('Parameter hardware must be Hardware type');
             }
             this._hardware = hardware;
@@ -180,7 +184,11 @@ var Event = (function () {
     }, {
         key: 'withSoftware',
         value: function withSoftware(software) {
+<<<<<<< HEAD
             if (software.constructor.name !== "Software") {
+=======
+            if (!(software instanceof _Software2['default'])) {
+>>>>>>> release_branch
                 throw new Error('Parameter software must be software type');
             }
             this._softwareList.push(software.composeElement());
@@ -368,7 +376,11 @@ var Event = (function () {
     }, {
         key: 'withCpuUsage',
         value: function withCpuUsage(cpuUsage) {
+<<<<<<< HEAD
             if (cpuUsage.constructor.name !== "Usage") {
+=======
+            if (!(cpuUsage instanceof _Usage2['default'])) {
+>>>>>>> release_branch
                 throw new Error('Parameter cpuUsage must be Usage type');
             }
             this._cpuUsage = cpuUsage;
@@ -382,7 +394,11 @@ var Event = (function () {
     }, {
         key: 'withRam',
         value: function withRam(ram) {
+<<<<<<< HEAD
             if (ram.constructor.name !== "Storage") {
+=======
+            if (!(ram instanceof _Storage2['default'])) {
+>>>>>>> release_branch
                 throw new Error('Parameter ram must be Storage type');
             }
             this._ram = ram;
@@ -396,7 +412,11 @@ var Event = (function () {
     }, {
         key: 'withVolatilStorage',
         value: function withVolatilStorage(volatilStorage) {
+<<<<<<< HEAD
             if (volatilStorage.constructor.name !== "Storage") {
+=======
+            if (!(volatilStorage instanceof _Storage2['default'])) {
+>>>>>>> release_branch
                 throw new Error('Parameter volatilStorage must be Storage type');
             }
             this._volatilStorage = volatilStorage;
@@ -410,7 +430,11 @@ var Event = (function () {
     }, {
         key: 'withNonVolatilStorage',
         value: function withNonVolatilStorage(nonVolatilStorage) {
+<<<<<<< HEAD
             if (nonVolatilStorage.constructor.name !== "Storage") {
+=======
+            if (!(nonVolatilStorage instanceof _Storage2['default'])) {
+>>>>>>> release_branch
                 throw new Error('Parameter nonVolatilStorage must be Storage type');
             }
             this._nonVolatilStorage = nonVolatilStorage;
@@ -424,7 +448,11 @@ var Event = (function () {
     }, {
         key: 'withPowerSupply',
         value: function withPowerSupply(powerSupply) {
+<<<<<<< HEAD
             if (powerSupply.constructor.name !== "PowerSupply") {
+=======
+            if (!(powerSupply instanceof _PowerSupply2['default'])) {
+>>>>>>> release_branch
                 throw new Error('Parameter powerSupply must be PowerSupply type');
             }
             this._powerSupply = powerSupply;
@@ -438,7 +466,11 @@ var Event = (function () {
     }, {
         key: 'withCommsModule',
         value: function withCommsModule(communicationsModules) {
+<<<<<<< HEAD
             if (communicationsModules.constructor.name !== "CommsModuleMessage") {
+=======
+            if (!(communicationsModules instanceof _CommsModuleMessage2['default'])) {
+>>>>>>> release_branch
                 throw new Error('Parameter communicationsModules must be CommsModuleMessage type');
             }
             this._communicationsModulesList.push(communicationsModules.composeElement());

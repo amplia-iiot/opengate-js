@@ -9,6 +9,11 @@ Feature: Delete an organization
   Given an apikey user by "require-real-apikey"
   Given an ogapi "organizations builder" util
 
+Scenario: Try to deleting an organization
+  Given I want to delete a "organization"
+    And the "name" "JsApiFullOrganization"
+   Then I delete it
+
   Scenario: Deleting an organization that exists
   Given I want to create a "organization"
     And the "name" "JsApiFullOrganization"
@@ -24,8 +29,13 @@ Feature: Delete an organization
     And the "name" "JsApiFullOrganization"
    Then I delete it
    Then response code should be: 200
-  
-  Scenario: Deleting an organization that exists from previous tests
+ 
+ Scenario: Try to deleting an organization
+  Given I want to delete a "organization"
+    And the "name" "JsApiPartialOrganization"
+   Then I delete it
+
+ Scenario: Deleting an organization that exists from previous tests
   Given I want to create a "organization"
     And the "name" "JsApiPartialOrganization"
     And the "country code" "ES"

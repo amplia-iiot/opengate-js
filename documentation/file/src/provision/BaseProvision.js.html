@@ -19,7 +19,11 @@
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
   <a href="test.html" data-ice="testLink">Test</a>
+<<<<<<< HEAD
   <a data-ice="repoURL" href="http://gitlab.amplia.es/opengate-ux/opengate-javascript-api.git">Repository</a>
+=======
+  <a data-ice="repoURL" href="https://github.com/amplia-iiot/opengate-js.git" class="repo-url-github">Repository</a>
+>>>>>>> release_branch
   <div class="search-box">
   <span>
     <img src="./image/search.png">
@@ -193,6 +197,7 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/provision/BaseProvision.js</h1>
+<<<<<<< HEAD
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
 import q from &apos;q&apos;;
@@ -370,6 +375,185 @@ export default class BaseProvision {
             });
         return promise;
     }
+=======
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
+
+import q from &apos;q&apos;;
+
+/**
+ * This is an abstract class, it must be extended to another class that defines the different actions of a specific provision.
+ * This class is responsible for managing the request to execute Norte OpenGate API
+ */
+export default class BaseProvision {
+    /**
+     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
+     * @param {!string} resource - this is a base url resource
+     * @param {!number} [timeout] - timeout on request
+     */
+    constructor(ogapi, resource, timeout, requiredParameters = []) {
+        if (this.constructor === BaseProvision) {
+            throw new Error(&quot;Cannot construct Abstract instances directly&quot;);
+        }
+        if (typeof this._composeElement !== &quot;function&quot;) {
+            throw new Error(&quot;Must override method:  composeElement&quot;);
+        }
+        if (typeof this._buildURL !== &quot;function&quot;) {
+            throw new Error(&quot;Must override method:  _buildURL&quot;);
+        }
+        if (timeout) {
+            if (typeof timeout !== &apos;number&apos;) {
+                this._timeout = ogapi.Napi._options.timeout;
+            } else {
+                this._timeout = timeout;
+            }
+        }
+
+        this._ogapi = ogapi;
+        this._resource = &apos;provision&apos; + resource;
+        this._requiredParameters = requiredParameters;
+    }
+
+    _checkRequiredParameters() {
+        let parametersNotFound = [];
+        if (this._requiredParameters &amp;&amp; this._requiredParameters.length &gt; 0) {
+            for (let i = 0; i &lt; this._requiredParameters.length; i++) {
+                if (this[this._requiredParameters[i]] === undefined &amp;&amp; this[&quot;_&quot; + this._requiredParameters[i]] === undefined) {
+                    parametersNotFound.push(this._requiredParameters[i]);
+                }
+            }
+
+            if (parametersNotFound.length &gt; 0) {
+                throw new Error(&quot;There are required parameters that have not been set. Missing parameters: &quot; +
+                    JSON.stringify(parametersNotFound).replace(new RegExp(&quot;\&quot;&quot;, &apos;g&apos;), &quot;&quot;));
+            }
+        }
+    }
+
+    /**
+     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * This function create a entity of provision
+     * @return {Promise}
+     * @property {function (result:object, statusCode:number)} then - When request it is OK
+     * @property {function (error:string)} catch - When request it is NOK
+     * @example
+     *  ogapi.organizationsBuilder().create()
+     */
+    create() {
+        this._checkRequiredParameters();
+
+        var defered = q.defer();
+        var promise = defered.promise;
+
+        console.log(&quot;URL: &quot; + this._resource);
+        //En muchas clases se genera this._resource en la llamada a la funcion this._composeElement()
+
+        let _postElement = this._composeElement();
+
+        this._ogapi.Napi.post(this._resource, _postElement)
+            .then((res) =&gt; {
+                if (res.statusCode === 201) {
+                    console.log(&quot;CREATEOK: &quot; + JSON.stringify(res));
+                    if (typeof this._onCreated === &quot;function&quot;) {
+                        this._onCreated(res.header[&apos;location&apos;]);
+                    }
+                    defered.resolve({ location: res.header[&apos;location&apos;], statusCode: res.statusCode });
+                } else {
+                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                }
+            })
+            .catch((error) =&gt; {
+                defered.reject(error);
+            });
+        return promise;
+    }
+
+    /**
+     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * This function deletes a entity of provision
+     * @return {Promise}
+     * @property {function (result:object, statusCode:number)} then - When request it is OK
+     * @property {function (error:string)} catch - When request it is NOK
+     * @example
+     * ogapi.organizationsBuilder().withName(&apos;delete_organization&apos;).delete();
+     * ogapi.usersBuilder().withEmail(&apos;delete@user.com&apos;).delete();
+     * ogapi.certificatesBuilder().withId(&apos;d3l3t3-c3rt1f1c4t3&apos;).delete();
+     */
+    delete() {
+        var defered = q.defer();
+        var promise = defered.promise;
+        this._ogapi.Napi.delete(this._buildURL())
+            .then((res) =&gt; {
+                if (res.statusCode === 200) {
+                    defered.resolve({ statusCode: res.statusCode });
+                } else {
+                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                }
+            })
+            .catch((error) =&gt; {
+                defered.reject(error);
+            });
+        return promise;
+    }
+
+    /**
+     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * This function updates a entity of provision
+     * @return {Promise}
+     * @property {function (result:object, statusCode:number)} then - When request it is OK
+     * @property {function (error:string)} catch - When request it is NOK
+     * @example
+     *  ogapi.organizationsBuilder().update()
+     */
+    update() {
+        var defered = q.defer();
+        var promise = defered.promise;
+        this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement())
+            .then((res) =&gt; {
+                if (res.statusCode === 200) {
+                    defered.resolve({ statusCode: res.statusCode });
+                } else if (res.status === 200) {
+                    defered.resolve({ statusCode: res.status });
+                } else {
+                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                }
+            })
+            .catch((error) =&gt; {
+                defered.reject(error);
+            });
+        return promise;
+    }
+
+    _composeUpdateElement() {
+        return this._composeElement();
+    }
+
+    _doNorthPost(resource, element) {
+        var defered = q.defer();
+        var promise = defered.promise;
+        var id = element;
+        this._ogapi.Napi.post(resource, element)
+            .then((res) =&gt; {
+                if (res.statusCode === 201) {
+                    //console.log(&quot;CREATEOK: &quot; + JSON.stringify(res));
+                    if (typeof this._onCreated === &quot;function&quot;) {
+                        this._onCreated(res.header[&apos;location&apos;]);
+                    }
+                    defered.resolve({ location: res.header[&apos;location&apos;], statusCode: res.statusCode });
+                } else if (res.statusCode === 200) {
+                    //console.log(&quot;POSTOK: &quot; + JSON.stringify(res));
+                    defered.resolve({ statusCode: res.statusCode });
+                } else {
+                    //console.log(&quot;ERROR &quot; + JSON.stringify(res.errors));
+                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                }
+            })
+            .catch((error) =&gt; {
+                console.log(&quot;ERROR2 &quot; + JSON.stringify(id) + JSON.stringify(error));
+                defered.reject(error);
+            });
+        return promise;
+    }
+>>>>>>> release_branch
 }</code></pre>
 
 </div>

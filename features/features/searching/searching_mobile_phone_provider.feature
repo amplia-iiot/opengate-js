@@ -11,7 +11,7 @@ Feature: Searching mobile phone provider in catalog
     Given an apikey user by "require-real-apikey"
     And an ogapi "mobile phone provider search" util
     Given I want to search a "mobile phone provider"
-@fail
+
   Scenario: Execute searching
     When I build it
   	And I execute it

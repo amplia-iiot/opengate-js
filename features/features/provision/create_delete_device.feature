@@ -65,8 +65,7 @@ Feature: Delete and Create a device
     And I delete it
     Then response code should be: 200
   
-  @fail
-  @test
+    @test
   Scenario: Create an asset with incorrect specific type
     Given the "organization" "base_organization"
     And the "channel" "base_channel"
@@ -105,7 +104,7 @@ Feature: Delete and Create a device
 
  Scenario: Try to create a device without the mandatory fields
     When I create it
-    Then throws an error equal to "There are required parameters that have not been set. Missing parameters: [organization,entityKey]"
+    Then throws an error equal to "There are required parameters that have not been set. Missing parameters: [organization,type,entityKey]"
 
  @relations @OUW-476 @OUW-478
  Scenario: Create and delete a gateway with a sigfox comms module 

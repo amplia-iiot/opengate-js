@@ -63,7 +63,11 @@ var NorthAmpliaREST = (function () {
                             "description": "Workgroup description",
                             "domain": "amplia",
                             "administrative": true
+<<<<<<< HEAD
                          },
+=======
+                          },
+>>>>>>> release_branch
                         {
                             "name": "Workgroup_2",
                             "description": "Workgroup description",
