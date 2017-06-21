@@ -19,11 +19,7 @@
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
   <a href="test.html" data-ice="testLink">Test</a>
-<<<<<<< HEAD
-  <a data-ice="repoURL" href="http://gitlab.amplia.es/opengate-ux/opengate-javascript-api.git">Repository</a>
-=======
   <a data-ice="repoURL" href="https://github.com/amplia-iiot/opengate-js.git" class="repo-url-github">Repository</a>
->>>>>>> release_branch
   <div class="search-box">
   <span>
     <img src="./image/search.png">
@@ -199,14 +195,9 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/collection/devices/DeviceMessage.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-<<<<<<< HEAD
-import q from &apos;q&apos;;
-import Event from &apos;./collect/Event&apos;;
-=======
 import q from &apos;q&apos;;;
 import Event from &apos;./collect/Event&apos;;
 import Datastream from &apos;../devices/collect/Datastreams&apos;;
->>>>>>> release_branch
 /**
  * This is a base object contains methods to send unstructured IoT information to be processed &amp; collected by the platform.
  */
@@ -285,11 +276,7 @@ export default class DeviceMessage extends Event {
      * @return {deviceMessages}
      */
     withDataStream(datastream) {
-<<<<<<< HEAD
-        if (datastream.constructor.name === &quot;Datastream&quot;) {
-=======
         if (datastream instanceof Datastream) {
->>>>>>> release_branch
             this._datastreams.push(datastream.composeElement());
         }
         return this;
@@ -346,11 +333,7 @@ export default class DeviceMessage extends Event {
         let boxPromises = [];
 
         if (this._datastreams.length &gt; 0) {
-<<<<<<< HEAD
-            boxPromises.push(this._ogapi.Sapi.post(this._buildIotURL(), this._composeIotMessage()).then(function(res) {
-=======
             boxPromises.push(this._ogapi.Sapi.post(this._buildIotURL(), this._composeIotMessage()).then(function (res) {
->>>>>>> release_branch
                 if (res.statusCode !== 201) {
                     throw new Error(&quot;IOT NOT CREATED&quot;);
                 }
@@ -358,26 +341,16 @@ export default class DeviceMessage extends Event {
         }
         if (this._version !== undefined) {
 
-<<<<<<< HEAD
-            boxPromises.push(this._ogapi.Sapi.post(this._buildDmmURL(), this._composeDmmMessage()).then(function(res) {
-=======
             boxPromises.push(this._ogapi.Sapi.post(this._buildDmmURL(), this._composeDmmMessage()).then(function (res) {
->>>>>>> release_branch
                 if (res.statusCode !== 201) {
                     throw new Error(&quot;DMM NOT CREATED&quot;);
                 }
             }));
         }
 
-<<<<<<< HEAD
-        q.all(boxPromises).catch(function(errores) {
-            defered.reject({ errors: errores, statusCode: 400 });
-        }).done(function(response) {
-=======
         q.all(boxPromises).catch(function (errores) {
             defered.reject({ errors: errores, statusCode: 400 });
         }).done(function (response) {
->>>>>>> release_branch
             defered.resolve({ statusCode: 201 });
         });
         return promises;

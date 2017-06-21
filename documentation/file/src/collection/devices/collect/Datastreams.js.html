@@ -19,11 +19,7 @@
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
   <a href="test.html" data-ice="testLink">Test</a>
-<<<<<<< HEAD
-  <a data-ice="repoURL" href="http://gitlab.amplia.es/opengate-ux/opengate-javascript-api.git">Repository</a>
-=======
   <a data-ice="repoURL" href="https://github.com/amplia-iiot/opengate-js.git" class="repo-url-github">Repository</a>
->>>>>>> release_branch
   <div class="search-box">
   <span>
     <img src="./image/search.png">
@@ -243,11 +239,7 @@ export default class Datastream {
      * @return {Datastream}
      */
     withDatapoint(datapoint) {
-<<<<<<< HEAD
-        if (datapoint.constructor.name !== &quot;Datapoint&quot;)
-=======
         if (!(datapoint instanceof Datapoint))
->>>>>>> release_branch
             throw new Error(&apos;Parameter datapoint must be a Datapoint type&apos;);
         this._datapoints.push(datapoint.composeElement());
         return this;

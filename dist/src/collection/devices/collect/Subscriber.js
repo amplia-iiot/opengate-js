@@ -1,21 +1,11 @@
 'use strict';
 
-<<<<<<< HEAD
-/**
- * This is a base object that allows the user to create a Subscription.
- */
-=======
->>>>>>> release_branch
 Object.defineProperty(exports, '__esModule', {
     value: true
 });
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-<<<<<<< HEAD
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-=======
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
@@ -28,7 +18,6 @@ var _Hardware2 = _interopRequireDefault(_Hardware);
  * This is a base object that allows the user to create a Subscription.
  */
 
->>>>>>> release_branch
 var Subscriber = (function () {
     function Subscriber() {
         _classCallCheck(this, Subscriber);
@@ -87,11 +76,7 @@ var Subscriber = (function () {
     }, {
         key: 'withHardware',
         value: function withHardware(hardware) {
-<<<<<<< HEAD
-            if (hardware.constructor.name !== "Hardware") {
-=======
             if (!(hardware instanceof _Hardware2['default'])) {
->>>>>>> release_branch
                 throw new Error('Parameter hardware must be hardware type');
             }
             this._hardware = hardware;

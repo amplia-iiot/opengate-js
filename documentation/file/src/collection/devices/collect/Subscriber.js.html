@@ -19,11 +19,7 @@
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
   <a href="test.html" data-ice="testLink">Test</a>
-<<<<<<< HEAD
-  <a data-ice="repoURL" href="http://gitlab.amplia.es/opengate-ux/opengate-javascript-api.git">Repository</a>
-=======
   <a data-ice="repoURL" href="https://github.com/amplia-iiot/opengate-js.git" class="repo-url-github">Repository</a>
->>>>>>> release_branch
   <div class="search-box">
   <span>
     <img src="./image/search.png">
@@ -199,10 +195,7 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/collection/devices/collect/Subscriber.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-<<<<<<< HEAD
-=======
 import Hardware from &apos;./Hardware&apos;;
->>>>>>> release_branch
 /**
  * This is a base object that allows the user to create a Subscription.
  */
@@ -252,15 +245,6 @@ export default class Subscriber {
         return this;
     }
 
-<<<<<<< HEAD
-            /**
-     * Set the hardware attribute
-     * @param {Hardware} hardware - optionals field
-     * @return {Subscriber}
-     */
-    withHardware(hardware) {
-         if (hardware.constructor.name !== &quot;Hardware&quot;) {
-=======
     /**
 * Set the hardware attribute
 * @param {Hardware} hardware - optionals field
@@ -268,7 +252,6 @@ export default class Subscriber {
 */
     withHardware(hardware) {
         if (!(hardware instanceof Hardware)) {
->>>>>>> release_branch
             throw new Error(&apos;Parameter hardware must be hardware type&apos;);
         }
         this._hardware = hardware;
@@ -276,18 +259,6 @@ export default class Subscriber {
     }
 
 
-<<<<<<< HEAD
-    composeElement(){
-        var subscriber = {
-            &quot;id&quot; : this._id,
-            &quot;name&quot; : this._name,
-            &quot;type&quot; : this._type
-
-
-        }        
-        if(this._hardware !==  undefined){
-            subscriber.hardware =  this._hardware.composeElement();
-=======
     composeElement() {
         var subscriber = {
             &quot;id&quot;: this._id,
@@ -298,18 +269,12 @@ export default class Subscriber {
         }
         if (this._hardware !== undefined) {
             subscriber.hardware = this._hardware.composeElement();
->>>>>>> release_branch
         }
         return subscriber;
     }
 
-<<<<<<< HEAD
- 
-    
-=======
 
 
->>>>>>> release_branch
 }
 </code></pre>
 

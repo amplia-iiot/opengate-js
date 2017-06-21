@@ -19,11 +19,7 @@
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
   <a href="test.html" data-ice="testLink">Test</a>
-<<<<<<< HEAD
-  <a data-ice="repoURL" href="http://gitlab.amplia.es/opengate-ux/opengate-javascript-api.git">Repository</a>
-=======
   <a data-ice="repoURL" href="https://github.com/amplia-iiot/opengate-js.git" class="repo-url-github">Repository</a>
->>>>>>> release_branch
   <div class="search-box">
   <span>
     <img src="./image/search.png">
@@ -200,12 +196,9 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
 import q from &apos;q&apos;;
-<<<<<<< HEAD
-=======
 import merge from &apos;merge&apos;
 
 const LIMIT_SIZE_DEF_VALUE = 1000;
->>>>>>> release_branch
 
 /** 
  * This is a abstract class, it must be extended to another class that defined the specific search.
@@ -242,10 +235,6 @@ export default class BaseSearch {
     execute() {
         var defered = q.defer();
         var promise = defered.promise;
-<<<<<<< HEAD
-        //console.log(&quot;RESOURCE: &quot; + this._resource);
-=======
->>>>>>> release_branch
         this._ogapi.Napi
             .post(this._resource, this._filter(), this._timeout)
             .then((response) =&gt; {
@@ -264,8 +253,6 @@ export default class BaseSearch {
             });
         return promise;
     }
-<<<<<<< HEAD
-=======
 
     //Se debera fijar simpre un objeto limit en la paginacion asincrona
     //Si no existiera el objeto limit se creara uno por defecto
@@ -347,7 +334,6 @@ export default class BaseSearch {
 
         return promise;
     }
->>>>>>> release_branch
 }</code></pre>
 
 </div>

@@ -14,15 +14,12 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
-<<<<<<< HEAD
-=======
 var _merge = require('merge');
 
 var _merge2 = _interopRequireDefault(_merge);
 
 var LIMIT_SIZE_DEF_VALUE = 1000;
 
->>>>>>> release_branch
 /** 
  * This is a abstract class, it must be extended to another class that defined the specific search.
  * This class is responsible to manage execute request to OpenGate North API
@@ -63,27 +60,15 @@ var BaseSearch = (function () {
     _createClass(BaseSearch, [{
         key: 'execute',
         value: function execute() {
-<<<<<<< HEAD
-            var _this = this;
-
-            var defered = _q2['default'].defer();
-            var promise = defered.promise;
-            //console.log("RESOURCE: " + this._resource);
-=======
             var _this2 = this;
 
             var defered = _q2['default'].defer();
             var promise = defered.promise;
->>>>>>> release_branch
             this._ogapi.Napi.post(this._resource, this._filter(), this._timeout).then(function (response) {
                 var resultQuery = response.body;
                 var statusCode = response.statusCode;
                 if (typeof resultQuery === "undefined") defered.reject("Data not found");else {
-<<<<<<< HEAD
-                    if (typeof _this._appendData === "function" && statusCode === 200) _this._appendData(resultQuery);
-=======
                     if (typeof _this2._appendData === "function" && statusCode === 200) _this2._appendData(resultQuery);
->>>>>>> release_branch
                     defered.resolve({ data: resultQuery, statusCode: statusCode });
                 }
             })['catch'](function (error) {
@@ -91,8 +76,6 @@ var BaseSearch = (function () {
             });
             return promise;
         }
-<<<<<<< HEAD
-=======
 
         //Se debera fijar simpre un objeto limit en la paginacion asincrona
         //Si no existiera el objeto limit se creara uno por defecto
@@ -169,7 +152,6 @@ var BaseSearch = (function () {
 
             return promise;
         }
->>>>>>> release_branch
     }]);
 
     return BaseSearch;

@@ -1,11 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-<<<<<<< HEAD
-  value: true
-=======
     value: true
->>>>>>> release_branch
 });
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -27,50 +23,6 @@ var _ProvisionGenericFinder3 = _interopRequireDefault(_ProvisionGenericFinder2);
  */
 
 var EntityFinder = (function (_ProvisionGenericFinder) {
-<<<<<<< HEAD
-  _inherits(EntityFinder, _ProvisionGenericFinder);
-
-  /**     
-   * @param {InternalOpenGateAPI} Reference to the API object.
-   */
-
-  function EntityFinder(ogapi, source, entity, error_not_found) {
-    _classCallCheck(this, EntityFinder);
-
-    _get(Object.getPrototypeOf(EntityFinder.prototype), 'constructor', this).call(this, ogapi, source, entity, error_not_found);
-    this._entitySource = this._entity + "s";
-  }
-
-  /**
-   * @return {String} This returns a string with the URL of the request.
-   * @private
-   */
-
-  _createClass(EntityFinder, [{
-    key: '_composeUrl',
-    value: function _composeUrl() {
-      return this._baseUrl + "/" + this._organization + "/entities/" + this._entitySource + "/" + this._id;
-    }
-
-    /**
-     * Download a specific entity by its organization and id. This execute a GET http method
-     * @test
-     *   ogapi.newDeviceFinder().findByOrganizationAndId('orgname', xxx-xx-xxx-xxx').then().catch();
-     * @param {string} organization - entity organization .
-     * @param {string} id - entity id.
-     * @return {Promise} 
-     */
-  }, {
-    key: 'findByOrganizationAndId',
-    value: function findByOrganizationAndId(organization, id) {
-      this._organization = organization;
-      this._id = id;
-      return this._execute();
-    }
-  }]);
-
-  return EntityFinder;
-=======
     _inherits(EntityFinder, _ProvisionGenericFinder);
 
     /**     
@@ -113,7 +65,6 @@ var EntityFinder = (function (_ProvisionGenericFinder) {
     }]);
 
     return EntityFinder;
->>>>>>> release_branch
 })(_ProvisionGenericFinder3['default']);
 
 exports['default'] = EntityFinder;

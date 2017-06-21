@@ -1,11 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-<<<<<<< HEAD
-  value: true
-=======
     value: true
->>>>>>> release_branch
 });
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -37,38 +33,6 @@ var BASE_URL = '/profiles';
  */
 
 var ProfilesSearchBuilder = (function (_SearchBuilder) {
-<<<<<<< HEAD
-  _inherits(ProfilesSearchBuilder, _SearchBuilder);
-
-  /**
-   *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
-   */
-
-  function ProfilesSearchBuilder(parent) {
-    _classCallCheck(this, ProfilesSearchBuilder);
-
-    _get(Object.getPrototypeOf(ProfilesSearchBuilder.prototype), 'constructor', this).call(this, parent, {}, new _utilSearchingFieldsFieldFinder2['default'](parent, BASE_URL));
-    this._url = BASE_URL;
-  }
-
-  /**
-   * Build a instance of IotSearch 
-   *
-   * @example
-   *	ogapi.profilesSearchBuilder().filter({and:[]}).build()
-   * @throws {SearchBuilderError} Throw error on url build
-   * @return {IotSearch} 
-   */
-
-  _createClass(ProfilesSearchBuilder, [{
-    key: 'build',
-    value: function build() {
-      return new _IotSearch2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildLimit(), this._buildSort(), this._builderParams.timeout);
-    }
-  }]);
-
-  return ProfilesSearchBuilder;
-=======
     _inherits(ProfilesSearchBuilder, _SearchBuilder);
 
     /**
@@ -99,7 +63,6 @@ var ProfilesSearchBuilder = (function (_SearchBuilder) {
     }]);
 
     return ProfilesSearchBuilder;
->>>>>>> release_branch
 })(_SearchBuilder3['default']);
 
 exports['default'] = ProfilesSearchBuilder;

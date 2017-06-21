@@ -1,940 +1,5 @@
 window.esdocSearchIndex = [
   [
-<<<<<<< HEAD
-    "opengate-javascript-api/src/bundles/action_enum.js~action_enum",
-    "variable/index.html#static-variable-ACTION_ENUM",
-    "<span>ACTION_ENUM</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/bundles/ACTION_ENUM.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/collection/devices/collect/enum/address_type_enum.js~address_type_enum",
-    "variable/index.html#static-variable-ADDRESS_TYPE_ENUM",
-    "<span>ADDRESS_TYPE_ENUM</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/collection/devices/collect/enum/ADDRESS_TYPE_ENUM.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/security/administrative_state_enum.js~administrative_state_enum",
-    "variable/index.html#static-variable-ADMINISTRATIVE_STATE_ENUM",
-    "<span>ADMINISTRATIVE_STATE_ENUM</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/security/ADMINISTRATIVE_STATE_ENUM.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/collection/devices/collect/enum/antenna_status_enum.js~antenna_status_enum",
-    "variable/index.html#static-variable-ANTENNA_STATUS_ENUM",
-    "<span>ANTENNA_STATUS_ENUM</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/collection/devices/collect/enum/ANTENNA_STATUS_ENUM.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/administrativestatesearchbuilder.js~administrativestatesearchbuilder",
-    "class/src/searching/builder/AdministrativeStateSearchBuilder.js~AdministrativeStateSearchBuilder.html",
-    "<span>AdministrativeStateSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/AdministrativeStateSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/operations/catalog/alarmattendbuilder.js~alarmattendbuilder",
-    "class/src/operations/catalog/AlarmAttendBuilder.js~AlarmAttendBuilder.html",
-    "<span>AlarmAttendBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/operations/catalog/AlarmAttendBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/operations/catalog/alarmclosebuilder.js~alarmclosebuilder",
-    "class/src/operations/catalog/AlarmCloseBuilder.js~AlarmCloseBuilder.html",
-    "<span>AlarmCloseBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/operations/catalog/AlarmCloseBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/operations/catalog/alarmoperationbuilder.js~alarmoperationbuilder",
-    "class/src/operations/catalog/AlarmOperationBuilder.js~AlarmOperationBuilder.html",
-    "<span>AlarmOperationBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/operations/catalog/AlarmOperationBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/alarmssearchbuilder.js~alarmssearchbuilder",
-    "class/src/searching/builder/AlarmsSearchBuilder.js~AlarmsSearchBuilder.html",
-    "<span>AlarmsSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/AlarmsSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/operations/catalog/appendentitiesby.js~appendentitiesby",
-    "class/src/operations/catalog/AppendEntitiesBy.js~AppendEntitiesBy.html",
-    "<span>AppendEntitiesBy</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/operations/catalog/AppendEntitiesBy.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/collection/devices/collect/enum/battery_charge_level_status_enum.js~battery_charge_level_status_enum",
-    "variable/index.html#static-variable-BATTERY_CHARGE_LEVEL_STATUS_ENUM",
-    "<span>BATTERY_CHARGE_LEVEL_STATUS_ENUM</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/collection/devices/collect/enum/BATTERY_CHARGE_LEVEL_STATUS_ENUM.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/collection/devices/collect/enum/battery_charge_status_enum.js~battery_charge_status_enum",
-    "variable/index.html#static-variable-BATTERY_CHARGE_STATUS_ENUM",
-    "<span>BATTERY_CHARGE_STATUS_ENUM</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/collection/devices/collect/enum/BATTERY_CHARGE_STATUS_ENUM.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/operations/catalog/baseoperationbuilder.js~baseoperationbuilder",
-    "class/src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder.html",
-    "<span>BaseOperationBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/operations/catalog/BaseOperationBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/operations/catalog/parameters/baseparameterbuilderwithparent.js~baseparameterbuilderwithparent",
-    "class/src/operations/catalog/parameters/BaseParameterBuilderWithParent.js~BaseParameterBuilderWithParent.html",
-    "<span>BaseParameterBuilderWithParent</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/operations/catalog/parameters/BaseParameterBuilderWithParent.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/provision/baseprovision.js~baseprovision",
-    "class/src/provision/BaseProvision.js~BaseProvision.html",
-    "<span>BaseProvision</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/provision/BaseProvision.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/basesearch.js~basesearch",
-    "class/src/searching/BaseSearch.js~BaseSearch.html",
-    "<span>BaseSearch</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/BaseSearch.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/bundles/bundlefinder.js~bundlefinder",
-    "class/src/bundles/BundleFinder.js~BundleFinder.html",
-    "<span>BundleFinder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/bundles/BundleFinder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/bundles/bundles.js~bundles",
-    "class/src/bundles/Bundles.js~Bundles.html",
-    "<span>Bundles</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/bundles/Bundles.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/bundlessearchbuilder.js~bundlessearchbuilder",
-    "class/src/searching/builder/BundlesSearchBuilder.js~BundlesSearchBuilder.html",
-    "<span>BundlesSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/BundlesSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/operations/catalog/period/pattern/bygeneric.js~bygeneric",
-    "class/src/operations/catalog/period/pattern/ByGeneric.js~ByGeneric.html",
-    "<span>ByGeneric</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/operations/catalog/period/pattern/ByGeneric.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/operations/catalog/period/pattern/bymonth.js~bymonth",
-    "class/src/operations/catalog/period/pattern/ByMonth.js~ByMonth.html",
-    "<span>ByMonth</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/operations/catalog/period/pattern/ByMonth.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/operations/catalog/period/pattern/byweek.js~byweek",
-    "class/src/operations/catalog/period/pattern/ByWeek.js~ByWeek.html",
-    "<span>ByWeek</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/operations/catalog/period/pattern/ByWeek.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/operations/catalog/period/pattern/byyear.js~byyear",
-    "class/src/operations/catalog/period/pattern/ByYear.js~ByYear.html",
-    "<span>ByYear</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/operations/catalog/period/pattern/ByYear.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/security/certificatefinder.js~certificatefinder",
-    "class/src/security/CertificateFinder.js~CertificateFinder.html",
-    "<span>CertificateFinder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/security/CertificateFinder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/security/certificates.js~certificates",
-    "class/src/security/Certificates.js~Certificates.html",
-    "<span>Certificates</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/security/Certificates.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/certificatessearchbuilder.js~certificatessearchbuilder",
-    "class/src/searching/builder/CertificatesSearchBuilder.js~CertificatesSearchBuilder.html",
-    "<span>CertificatesSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/CertificatesSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/channels/channelfinder.js~channelfinder",
-    "class/src/channels/ChannelFinder.js~ChannelFinder.html",
-    "<span>ChannelFinder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/channels/ChannelFinder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/channels/channels.js~channels",
-    "class/src/channels/Channels.js~Channels.html",
-    "<span>Channels</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/channels/Channels.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/channelssearchbuilder.js~channelssearchbuilder",
-    "class/src/searching/builder/ChannelsSearchBuilder.js~ChannelsSearchBuilder.html",
-    "<span>ChannelsSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/ChannelsSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/collection/devices/collect/commsmodulemessage.js~commsmodulemessage",
-    "class/src/collection/devices/collect/CommsModuleMessage.js~CommsModuleMessage.html",
-    "<span>CommsModuleMessage</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/collection/devices/collect/CommsModuleMessage.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/devices/commsmodules/communicationsmodulefinder.js~communicationsmodulefinder",
-    "class/src/devices/commsModules/CommunicationsModuleFinder.js~CommunicationsModuleFinder.html",
-    "<span>CommunicationsModuleFinder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/devices/commsModules/CommunicationsModuleFinder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/communicationsmoduletypesearchbuilder.js~communicationsmoduletypesearchbuilder",
-    "class/src/searching/builder/CommunicationsModuleTypeSearchBuilder.js~CommunicationsModuleTypeSearchBuilder.html",
-    "<span>CommunicationsModuleTypeSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/CommunicationsModuleTypeSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/devices/commsmodules/communicationsmodules.js~communicationsmodules",
-    "class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html",
-    "<span>CommunicationsModules</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/devices/commsModules/CommunicationsModules.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/communicationsmodulessearchbuilder.js~communicationsmodulessearchbuilder",
-    "class/src/searching/builder/CommunicationsModulesSearchBuilder.js~CommunicationsModulesSearchBuilder.html",
-    "<span>CommunicationsModulesSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/CommunicationsModulesSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/util/date_format.js~date_format",
-    "variable/index.html#static-variable-DATE_FORMAT",
-    "<span>DATE_FORMAT</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/util/DATE_FORMAT.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/operations/catalog/period/days_enum.js~days_enum",
-    "variable/index.html#static-variable-DAYS_ENUM",
-    "<span>DAYS_ENUM</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/operations/catalog/period/DAYS_ENUM.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/collection/devices/collect/datapoint.js~datapoint",
-    "class/src/collection/devices/collect/Datapoint.js~Datapoint.html",
-    "<span>Datapoint</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/collection/devices/collect/Datapoint.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/datapointssearchbuilder.js~datapointssearchbuilder",
-    "class/src/searching/builder/DatapointsSearchBuilder.js~DatapointsSearchBuilder.html",
-    "<span>DatapointsSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/DatapointsSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/collection/devices/collect/datastreams.js~datastream",
-    "class/src/collection/devices/collect/Datastreams.js~Datastream.html",
-    "<span>Datastream</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/collection/devices/collect/Datastreams.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/datastreamssearchbuilder.js~datastreamssearchbuilder",
-    "class/src/searching/builder/DatastreamsSearchBuilder.js~DatastreamsSearchBuilder.html",
-    "<span>DatastreamsSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/DatastreamsSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/bundles/deployment/deploymentelement.js~deploymentelement",
-    "class/src/bundles/deployment/DeploymentElement.js~DeploymentElement.html",
-    "<span>DeploymentElement</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/bundles/deployment/DeploymentElement.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/devices/devicefinder.js~devicefinder",
-    "class/src/devices/DeviceFinder.js~DeviceFinder.html",
-    "<span>DeviceFinder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/devices/DeviceFinder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/collection/devices/devicemessage.js~devicemessage",
-    "class/src/collection/devices/DeviceMessage.js~DeviceMessage.html",
-    "<span>DeviceMessage</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/collection/devices/DeviceMessage.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/devices/devices.js~devices",
-    "class/src/devices/Devices.js~Devices.html",
-    "<span>Devices</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/devices/Devices.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/devicessearchbuilder.js~devicessearchbuilder",
-    "class/src/searching/builder/DevicesSearchBuilder.js~DevicesSearchBuilder.html",
-    "<span>DevicesSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/DevicesSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/domains/domainsfinder.js~domainfinder",
-    "class/src/domains/DomainsFinder.js~DomainFinder.html",
-    "<span>DomainFinder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/domains/DomainsFinder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/domains/domains.js~domains",
-    "class/src/domains/Domains.js~Domains.html",
-    "<span>Domains</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/domains/Domains.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/domainssearchbuilder.js~domainssearchbuilder",
-    "class/src/searching/builder/DomainsSearchBuilder.js~DomainsSearchBuilder.html",
-    "<span>DomainsSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/DomainsSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/devices/entityfinder.js~entityfinder",
-    "class/src/devices/EntityFinder.js~EntityFinder.html",
-    "<span>EntityFinder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/devices/EntityFinder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/entitysearch.js~entitysearch",
-    "class/src/searching/EntitySearch.js~EntitySearch.html",
-    "<span>EntitySearch</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/EntitySearch.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/entitysearchbuilder.js~entitysearchbuilder",
-    "class/src/searching/builder/EntitySearchBuilder.js~EntitySearchBuilder.html",
-    "<span>EntitySearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/EntitySearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/collection/devices/collect/event.js~event",
-    "class/src/collection/devices/collect/Event.js~Event.html",
-    "<span>Event</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/collection/devices/collect/Event.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/operations/catalog/period/executeeachbuilder.js~executeeachbuilder",
-    "class/src/operations/catalog/period/ExecuteEachBuilder.js~ExecuteEachBuilder.html",
-    "<span>ExecuteEachBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/operations/catalog/period/ExecuteEachBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/operations/catalog/period/executeeverybuilder.js~executeeverybuilder",
-    "class/src/operations/catalog/period/ExecuteEveryBuilder.js~ExecuteEveryBuilder.html",
-    "<span>ExecuteEveryBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/operations/catalog/period/ExecuteEveryBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/executionssearchbuilder.js~executionssearchbuilder",
-    "class/src/searching/builder/ExecutionsSearchBuilder.js~ExecutionsSearchBuilder.html",
-    "<span>ExecutionsSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/ExecutionsSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/util/expression.js~expression",
-    "class/src/util/Expression.js~Expression.html",
-    "<span>Expression</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/util/Expression.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/feedssearchbuilder.js~feedssearchbuilder",
-    "class/src/searching/builder/FeedsSearchBuilder.js~FeedsSearchBuilder.html",
-    "<span>FeedsSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/FeedsSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/util/searchingfields/fieldfinder.js~fieldfinder",
-    "class/src/util/searchingFields/FieldFinder.js~FieldFinder.html",
-    "<span>FieldFinder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/util/searchingFields/FieldFinder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/fieldsdefinitionsearchbuilder.js~fieldsdefinitionsearchbuilder",
-    "class/src/searching/builder/FieldsDefinitionSearchBuilder.js~FieldsDefinitionSearchBuilder.html",
-    "<span>FieldsDefinitionSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/FieldsDefinitionSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/filterbuilder.js~filterbuilder",
-    "class/src/searching/FilterBuilder.js~FilterBuilder.html",
-    "<span>FilterBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/FilterBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/util/searchingfields/source-precompiled/fields.js~generated_fields",
-    "variable/index.html#static-variable-GENERATED_FIELDS",
-    "<span>GENERATED_FIELDS</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/util/searchingFields/source-precompiled/Fields.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/genericfinder.js~genericfinder",
-    "class/src/GenericFinder.js~GenericFinder.html",
-    "<span>GenericFinder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/GenericFinder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/collection/devices/collect/hardware.js~hardware",
-    "class/src/collection/devices/collect/Hardware.js~Hardware.html",
-    "<span>Hardware</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/collection/devices/collect/Hardware.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder",
-    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html",
-    "<span>HardwaresSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/HardwaresSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/util/searchingfields/iotfields.js~iot_fields",
-    "variable/index.html#static-variable-IOT_FIELDS",
-    "<span>IOT_FIELDS</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/util/searchingFields/IotFields.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/iot/iotprovision.js~iot_url",
-    "variable/index.html#static-variable-IOT_URL",
-    "<span>IOT_URL</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/iot/IoTProvision.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/searching/iotsearch.js~iot_url",
-    "variable/index.html#static-variable-IOT_URL",
-    "<span>IOT_URL</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/IotSearch.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/internalopengateapi.js~internalopengateapi",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html",
-    "<span>InternalOpenGateAPI</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/InternalOpenGateAPI.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/iot/catalog/iotdatastream.js~iotdatastream",
-    "class/src/iot/catalog/IoTDatastream.js~IoTDatastream.html",
-    "<span>IoTDatastream</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/iot/catalog/IoTDatastream.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/iotdatastreamaccesssearchbuilder.js~iotdatastreamaccesssearchbuilder",
-    "class/src/searching/builder/IoTDatastreamAccessSearchBuilder.js~IoTDatastreamAccessSearchBuilder.html",
-    "<span>IoTDatastreamAccessSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/IoTDatastreamAccessSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/iotdatastreamperiodsearchbuilder.js~iotdatastreamperiodsearchbuilder",
-    "class/src/searching/builder/IoTDatastreamPeriodSearchBuilder.js~IoTDatastreamPeriodSearchBuilder.html",
-    "<span>IoTDatastreamPeriodSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/IoTDatastreamPeriodSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/iotdatastreamstorageperiodsearchbuilder.js~iotdatastreamstorageperiodsearchbuilder",
-    "class/src/searching/builder/IoTDatastreamStoragePeriodSearchBuilder.js~IoTDatastreamStoragePeriodSearchBuilder.html",
-    "<span>IoTDatastreamStoragePeriodSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/IoTDatastreamStoragePeriodSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/iotdevicessearchbuilder.js~iotdevicessearchbuilder",
-    "class/src/searching/builder/IoTDevicesSearchBuilder.js~IoTDevicesSearchBuilder.html",
-    "<span>IoTDevicesSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/IoTDevicesSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/iot/catalog/iotflavour.js~iotflavour",
-    "class/src/iot/catalog/IoTFlavour.js~IoTFlavour.html",
-    "<span>IoTFlavour</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/iot/catalog/IoTFlavour.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/iot/iotprovision.js~iotprofiles",
-    "class/src/iot/IoTProvision.js~IoTProfiles.html",
-    "<span>IoTProfiles</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/iot/IoTProvision.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/iot/profiles/iotprofiles.js~iotprofiles",
-    "class/src/iot/profiles/IoTProfiles.js~IoTProfiles.html",
-    "<span>IoTProfiles</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/iot/profiles/IoTProfiles.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/iot/profiles/iotprofilesfinder.js~iotprofilesfinder",
-    "class/src/iot/profiles/IoTProfilesFinder.js~IoTProfilesFinder.html",
-    "<span>IoTProfilesFinder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/iot/profiles/IoTProfilesFinder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/iot/profiles/iotprofileshelper.js~iotprofileshelper",
-    "class/src/iot/profiles/IoTProfilesHelper.js~IoTProfilesHelper.html",
-    "<span>IoTProfilesHelper</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/iot/profiles/IoTProfilesHelper.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/iot/iotprovisiongenericfinder.js~iotprovisiongenericfinder",
-    "class/src/iot/IoTProvisionGenericFinder.js~IoTProvisionGenericFinder.html",
-    "<span>IoTProvisionGenericFinder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/iot/IoTProvisionGenericFinder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/iot/catalog/iotqrating.js~iotqrating",
-    "class/src/iot/catalog/IoTQrating.js~IoTQrating.html",
-    "<span>IoTQrating</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/iot/catalog/IoTQrating.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/iotsearch.js~iotsearch",
-    "class/src/searching/IotSearch.js~IotSearch.html",
-    "<span>IotSearch</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/IotSearch.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/collection/devices/collect/enum/level_trend_enum.js~level_trend_enum",
-    "variable/index.html#static-variable-LEVEL_TREND_ENUM",
-    "<span>LEVEL_TREND_ENUM</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/collection/devices/collect/enum/LEVEL_TREND_ENUM.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/collection/devices/collect/location.js~location",
-    "class/src/collection/devices/collect/Location.js~Location.html",
-    "<span>Location</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/collection/devices/collect/Location.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/security/mime_types_enum.js~mime_types_enum",
-    "variable/index.html#static-variable-MIME_TYPES_ENUM",
-    "<span>MIME_TYPES_ENUM</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/security/MIME_TYPES_ENUM.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/bundles/deployment/mode_validators_enum.js~mode_validators_enum",
-    "variable/index.html#static-variable-MODE_VALIDATORS_ENUM",
-    "<span>MODE_VALIDATORS_ENUM</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/bundles/deployment/MODE_VALIDATORS_ENUM.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/operations/catalog/period/months_enum.js~months_enum",
-    "variable/index.html#static-variable-MONTHS_ENUM",
-    "<span>MONTHS_ENUM</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/operations/catalog/period/MONTHS_ENUM.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/collection/devices/collect/mobile.js~mobile",
-    "class/src/collection/devices/collect/Mobile.js~Mobile.html",
-    "<span>Mobile</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/collection/devices/collect/Mobile.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/mobilephoneprovidersearchbuilder.js~mobilephoneprovidersearchbuilder",
-    "class/src/searching/builder/MobilePhoneProviderSearchBuilder.js~MobilePhoneProviderSearchBuilder.html",
-    "<span>MobilePhoneProviderSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/MobilePhoneProviderSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/util/northampliarest.js~northampliarest",
-    "class/src/util/NorthAmpliaREST.js~NorthAmpliaREST.html",
-    "<span>NorthAmpliaREST</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/util/NorthAmpliaREST.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/bundles/deployment/operation_enum.js~operation_enum",
-    "variable/index.html#static-variable-OPERATION_ENUM",
-    "<span>OPERATION_ENUM</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/bundles/deployment/OPERATION_ENUM.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/bundles/deployment/option_enum.js~option_enum",
-    "variable/index.html#static-variable-OPTION_ENUM",
-    "<span>OPTION_ENUM</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/bundles/deployment/OPTION_ENUM.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/operations/catalog/operation.js~operation",
-    "class/src/operations/catalog/Operation.js~Operation.html",
-    "<span>Operation</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/operations/catalog/Operation.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/operations/operationactions.js~operationactions",
-    "class/src/operations/OperationActions.js~OperationActions.html",
-    "<span>OperationActions</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/operations/OperationActions.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/operations/operationfinder.js~operationfinder",
-    "class/src/operations/OperationFinder.js~OperationFinder.html",
-    "<span>OperationFinder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/operations/OperationFinder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/operationalstatussearchbuilder.js~operationalstatussearchbuilder",
-    "class/src/searching/builder/OperationalStatusSearchBuilder.js~OperationalStatusSearchBuilder.html",
-    "<span>OperationalStatusSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/OperationalStatusSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/operations/operations.js~operations",
-    "class/src/operations/Operations.js~Operations.html",
-    "<span>Operations</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/operations/Operations.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/operationssearchbuilder.js~operationssearchbuilder",
-    "class/src/searching/builder/OperationsSearchBuilder.js~OperationsSearchBuilder.html",
-    "<span>OperationsSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/OperationsSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/organizations/organizationfinder.js~organizationfinder",
-    "class/src/organizations/OrganizationFinder.js~OrganizationFinder.html",
-    "<span>OrganizationFinder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/organizations/OrganizationFinder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/organizations/organizations.js~organizations",
-    "class/src/organizations/Organizations.js~Organizations.html",
-    "<span>Organizations</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/organizations/Organizations.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/organizationssearchbuilder.js~organizationssearchbuilder",
-    "class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html",
-    "<span>OrganizationsSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/OrganizationsSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/iot/profiles/iotprofileshelper.js~post_resource",
-    "variable/index.html#static-variable-POST_RESOURCE",
-    "<span>POST_RESOURCE</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/iot/profiles/IoTProfilesHelper.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/collection/devices/collect/enum/power_supply_source_enum.js~power_supply_source_enum",
-    "variable/index.html#static-variable-POWER_SUPPLY_SOURCE_ENUM",
-    "<span>POWER_SUPPLY_SOURCE_ENUM</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/collection/devices/collect/enum/POWER_SUPPLY_SOURCE_ENUM.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/iot/profiles/iotprofiles.js~pre_resource",
-    "variable/index.html#static-variable-PRE_RESOURCE",
-    "<span>PRE_RESOURCE</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/iot/profiles/IoTProfiles.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/iot/profiles/iotprofileshelper.js~pre_resource",
-    "variable/index.html#static-variable-PRE_RESOURCE",
-    "<span>PRE_RESOURCE</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/iot/profiles/IoTProfilesHelper.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/iot/profiles/iotprofiles.js~profile_resource",
-    "variable/index.html#static-variable-PROFILE_RESOURCE",
-    "<span>PROFILE_RESOURCE</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/iot/profiles/IoTProfiles.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/iot/profiles/iotprofilesfinder.js~profile_resource",
-    "variable/index.html#static-variable-PROFILE_RESOURCE",
-    "<span>PROFILE_RESOURCE</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/iot/profiles/IoTProfilesFinder.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/operations/catalog/parameters/parameterbuilderfactory.js~parameterbuilderfactory",
-    "class/src/operations/catalog/parameters/ParameterBuilderFactory.js~ParameterBuilderFactory.html",
-    "<span>ParameterBuilderFactory</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/operations/catalog/parameters/ParameterBuilderFactory.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/operations/catalog/period/periodicityupdatebuilder.js~periodicityupdatebuilder",
-    "class/src/operations/catalog/period/PeriodicityUpdateBuilder.js~PeriodicityUpdateBuilder.html",
-    "<span>PeriodicityUpdateBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/operations/catalog/period/PeriodicityUpdateBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/collection/devices/collect/powersupply.js~powersupply",
-    "class/src/collection/devices/collect/PowerSupply.js~PowerSupply.html",
-    "<span>PowerSupply</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/collection/devices/collect/PowerSupply.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/profilessearchbuilder.js~profilessearchbuilder",
-    "class/src/searching/builder/ProfilesSearchBuilder.js~ProfilesSearchBuilder.html",
-    "<span>ProfilesSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/ProfilesSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/provisiongenericfinder.js~provisiongenericfinder",
-    "class/src/ProvisionGenericFinder.js~ProvisionGenericFinder.html",
-    "<span>ProvisionGenericFinder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/ProvisionGenericFinder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/quicksearch.js~quicksearch",
-    "class/src/searching/QuickSearch.js~QuickSearch.html",
-    "<span>QuickSearch</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/QuickSearch.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/rawsearchbuilder.js~rawsearchbuilder",
-    "class/src/searching/builder/RawSearchBuilder.js~RawSearchBuilder.html",
-    "<span>RawSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/RawSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/devices/relations.js~relations",
-    "class/src/devices/Relations.js~Relations.html",
-    "<span>Relations</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/devices/Relations.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/ruleconfigurationseveritysearchbuilder.js~ruleconfigurationseveritysearchbuilder",
-    "class/src/searching/builder/RuleConfigurationSeveritySearchBuilder.js~RuleConfigurationSeveritySearchBuilder.html",
-    "<span>RuleConfigurationSeveritySearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/RuleConfigurationSeveritySearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/rulesconfiguration/ruleconfigurations.js~ruleconfigurations",
-    "class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html",
-    "<span>RuleConfigurations</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/rulesConfiguration/RuleConfigurations.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/rulesconfiguration/ruleconfigurationsfinder.js~ruleconfigurationsfinder",
-    "class/src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder.html",
-    "<span>RuleConfigurationsFinder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/rulesConfiguration/RuleConfigurationsFinder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/softwaressearchbuilder.js~software_types_enum",
-    "variable/index.html#static-variable-SOFTWARE_TYPES_ENUM",
-    "<span>SOFTWARE_TYPES_ENUM</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/SoftwaresSearchBuilder.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/collection/devices/collect/enum/software_type_enum.js~software_type_enum",
-    "variable/index.html#static-variable-SOFTWARE_TYPE_ENUM",
-    "<span>SOFTWARE_TYPE_ENUM</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/collection/devices/collect/enum/SOFTWARE_TYPE_ENUM.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/searching/search.js~search",
-    "class/src/searching/Search.js~Search.html",
-    "<span>Search</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/Search.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/searchbuilder.js~searchbuilder",
-    "class/src/searching/builder/SearchBuilder.js~SearchBuilder.html",
-    "<span>SearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/SearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/error/searchbuildererror.js~searchbuildererror",
-    "class/src/searching/error/SearchBuilderError.js~SearchBuilderError.html",
-    "<span>SearchBuilderError</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/error/SearchBuilderError.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder",
-    "class/src/searching/builder/SearchWithSummaryBuilder.js~SearchWithSummaryBuilder.html",
-    "<span>SearchWithSummaryBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/SearchWithSummaryBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/security/security.js~security",
-    "class/src/security/Security.js~Security.html",
-    "<span>Security</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/security/Security.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/collection/devices/collect/software.js~software",
-    "class/src/collection/devices/collect/Software.js~Software.html",
-    "<span>Software</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/collection/devices/collect/Software.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/softwaressearchbuilder.js~softwaressearchbuilder",
-    "class/src/searching/builder/SoftwaresSearchBuilder.js~SoftwaresSearchBuilder.html",
-    "<span>SoftwaresSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/SoftwaresSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/util/southampliarest.js~southampliarest",
-    "class/src/util/SouthAmpliaREST.js~SouthAmpliaREST.html",
-    "<span>SouthAmpliaREST</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/util/SouthAmpliaREST.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/specifictypesearchbuilder.js~specifictypesearchbuilder",
-    "class/src/searching/builder/SpecificTypeSearchBuilder.js~SpecificTypeSearchBuilder.html",
-    "<span>SpecificTypeSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/SpecificTypeSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/staticsearch.js~staticsearch",
-    "class/src/searching/StaticSearch.js~StaticSearch.html",
-    "<span>StaticSearch</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/StaticSearch.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/collection/devices/collect/storage.js~storage",
-    "class/src/collection/devices/collect/Storage.js~Storage.html",
-    "<span>Storage</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/collection/devices/collect/Storage.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/collection/devices/collect/subscriber.js~subscriber",
-    "class/src/collection/devices/collect/Subscriber.js~Subscriber.html",
-    "<span>Subscriber</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/collection/devices/collect/Subscriber.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/devices/commsmodules/subscribers/subscribers.js~subscribers",
-    "class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html",
-    "<span>Subscribers</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/devices/commsModules/subscribers/Subscribers.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/devices/commsmodules/subscribers/subscribersfinder.js~subscribersfinder",
-    "class/src/devices/commsModules/subscribers/SubscribersFinder.js~SubscribersFinder.html",
-    "<span>SubscribersFinder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/devices/commsModules/subscribers/SubscribersFinder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/subscriberssearchbuilder.js~subscriberssearchbuilder",
-    "class/src/searching/builder/SubscribersSearchBuilder.js~SubscribersSearchBuilder.html",
-    "<span>SubscribersSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/SubscribersSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/collection/devices/collect/subscription.js~subscription",
-    "class/src/collection/devices/collect/Subscription.js~Subscription.html",
-    "<span>Subscription</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/collection/devices/collect/Subscription.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/devices/commsmodules/subscriptions/subscriptions.js~subscriptions",
-    "class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html",
-    "<span>Subscriptions</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/devices/commsModules/subscriptions/Subscriptions.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/devices/commsmodules/subscriptions/subscriptionsfinder.js~subscriptionsfinder",
-    "class/src/devices/commsModules/subscriptions/SubscriptionsFinder.js~SubscriptionsFinder.html",
-    "<span>SubscriptionsFinder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/devices/commsModules/subscriptions/SubscriptionsFinder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/subscriptionssearchbuilder.js~subscriptionssearchbuilder",
-    "class/src/searching/builder/SubscriptionsSearchBuilder.js~SubscriptionsSearchBuilder.html",
-    "<span>SubscriptionsSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/SubscriptionsSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/collection/devices/collect/enum/temperature_status_enum.js~temperature_status_enum",
-    "variable/index.html#static-variable-TEMPERATURE_STATUS_ENUM",
-    "<span>TEMPERATURE_STATUS_ENUM</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/collection/devices/collect/enum/TEMPERATURE_STATUS_ENUM.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/util/date_format.js~time_format",
-    "variable/index.html#static-variable-TIME_FORMAT",
-    "<span>TIME_FORMAT</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/util/DATE_FORMAT.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/executionssearchbuilder.js~token_url",
-    "variable/index.html#static-variable-TOKEN_URL",
-    "<span>TOKEN_URL</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/ExecutionsSearchBuilder.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/bundles/deployment/type_enum.js~type_enum",
-    "variable/index.html#static-variable-TYPE_ENUM",
-    "<span>TYPE_ENUM</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/bundles/deployment/TYPE_ENUM.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/devices/type_enum.js~type_enum",
-    "variable/index.html#static-variable-TYPE_ENUM",
-    "<span>TYPE_ENUM</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/devices/TYPE_ENUM.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/bundles/deployment/type_validators_enum.js~type_validators_enum",
-    "variable/index.html#static-variable-TYPE_VALIDATORS_ENUM",
-    "<span>TYPE_VALIDATORS_ENUM</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/bundles/deployment/TYPE_VALIDATORS_ENUM.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/collection/devices/collect/temperature.js~temperature",
-    "class/src/collection/devices/collect/Temperature.js~Temperature.html",
-    "<span>Temperature</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/collection/devices/collect/Temperature.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/security/usages_enum.js~usages_enum",
-    "variable/index.html#static-variable-USAGES_ENUM",
-    "<span>USAGES_ENUM</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/security/USAGES_ENUM.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-javascript-api/src/collection/devices/collect/usage.js~usage",
-    "class/src/collection/devices/collect/Usage.js~Usage.html",
-    "<span>Usage</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/collection/devices/collect/Usage.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/users/users.js~user",
-    "class/src/users/Users.js~User.html",
-    "<span>User</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/users/Users.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/users/userfinder.js~userfinder",
-    "class/src/users/UserFinder.js~UserFinder.html",
-    "<span>UserFinder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/users/UserFinder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/userprofilessearchbuilder.js~userprofilessearchbuilder",
-    "class/src/searching/builder/UserProfilesSearchBuilder.js~UserProfilesSearchBuilder.html",
-    "<span>UserProfilesSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/UserProfilesSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/userssearchbuilder.js~userssearchbuilder",
-    "class/src/searching/builder/UsersSearchBuilder.js~UsersSearchBuilder.html",
-    "<span>UsersSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/UsersSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/workgroups/workgroupfinder.js~workgroupfinder",
-    "class/src/workgroups/WorkgroupFinder.js~WorkgroupFinder.html",
-    "<span>WorkgroupFinder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/workgroups/WorkgroupFinder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/workgroups/workgrouprelations.js~workgrouprelations",
-    "class/src/workgroups/WorkgroupRelations.js~WorkgroupRelations.html",
-    "<span>WorkgroupRelations</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/workgroups/WorkgroupRelations.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/workgroups/workgrouprelationsfinder.js~workgrouprelationsfinder",
-    "class/src/workgroups/WorkgroupRelationsFinder.js~WorkgroupRelationsFinder.html",
-    "<span>WorkgroupRelationsFinder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/workgroups/WorkgroupRelationsFinder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/workgroups/workgroups.js~workgroups",
-    "class/src/workgroups/Workgroups.js~Workgroups.html",
-    "<span>Workgroups</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/workgroups/Workgroups.js</span>",
-    "class"
-  ],
-  [
-    "opengate-javascript-api/src/searching/builder/workgroupssearchbuilder.js~workgroupssearchbuilder",
-    "class/src/searching/builder/WorkgroupsSearchBuilder.js~WorkgroupsSearchBuilder.html",
-    "<span>WorkgroupsSearchBuilder</span> <span class=\"search-result-import-path\">opengate-javascript-api/src/searching/builder/WorkgroupsSearchBuilder.js</span>",
-=======
     "opengate-js/src/bundles/action_enum.js~action_enum",
     "variable/index.html#static-variable-ACTION_ENUM",
     "<span>ACTION_ENUM</span> <span class=\"search-result-import-path\">opengate-js/src/bundles/ACTION_ENUM.js</span>",
@@ -1868,7 +933,6 @@ window.esdocSearchIndex = [
     "opengate-js/src/searching/builder/workgroupssearchbuilder.js~workgroupssearchbuilder",
     "class/src/searching/builder/WorkgroupsSearchBuilder.js~WorkgroupsSearchBuilder.html",
     "<span>WorkgroupsSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/WorkgroupsSearchBuilder.js</span>",
->>>>>>> release_branch
     "class"
   ],
   [
@@ -2317,21 +1381,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-<<<<<<< HEAD
-    "test-file/client/device/device.spec.js.html#lineNumber165",
-=======
     "test-file/client/device/device.spec.js.html#lineNumber160",
->>>>>>> release_branch
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Type",
     "test"
   ],
   [
     "",
-<<<<<<< HEAD
-    "test-file/client/device/device.spec.js.html#lineNumber160",
-=======
     "test-file/client/device/device.spec.js.html#lineNumber165",
->>>>>>> release_branch
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Type",
     "test"
   ],
@@ -2403,21 +1459,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-<<<<<<< HEAD
-    "test-file/client/device/device.spec.js.html#lineNumber303",
-=======
     "test-file/client/device/device.spec.js.html#lineNumber312",
->>>>>>> release_branch
     "Check funcionality bundles module: Check Deployment Element: Check DeploymentElement basic elements: Create a deployment element",
     "test"
   ],
   [
     "",
-<<<<<<< HEAD
-    "test-file/client/device/device.spec.js.html#lineNumber312",
-=======
     "test-file/client/device/device.spec.js.html#lineNumber303",
->>>>>>> release_branch
     "Check funcionality bundles module: Check Deployment Element: Check DeploymentElement basic elements: Create a deployment element",
     "test"
   ],
@@ -2441,21 +1489,13 @@ window.esdocSearchIndex = [
   ],
   [
     "internalopengateapi#bundlesbuilder src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder",
-<<<<<<< HEAD
-    "test-file/client/collection/iot.spec.js.html#lineNumber10",
-=======
     "test-file/client/device/device.spec.js.html#lineNumber10",
->>>>>>> release_branch
     "Check funcionality bundles module: Check basic parameters:",
     "test"
   ],
   [
     "internalopengateapi#bundlesbuilder src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder",
-<<<<<<< HEAD
-    "test-file/client/device/device.spec.js.html#lineNumber10",
-=======
     "test-file/client/collection/iot.spec.js.html#lineNumber10",
->>>>>>> release_branch
     "Check funcionality bundles module: Check basic parameters:",
     "test"
   ],
@@ -2473,21 +1513,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-<<<<<<< HEAD
-    "test-file/client/collection/iot.spec.js.html#lineNumber12",
-=======
     "test-file/client/device/device.spec.js.html#lineNumber12",
->>>>>>> release_branch
     "Check funcionality bundles module: Check basic parameters: Name is not a String",
     "test"
   ],
   [
     "",
-<<<<<<< HEAD
-    "test-file/client/device/device.spec.js.html#lineNumber12",
-=======
     "test-file/client/collection/iot.spec.js.html#lineNumber12",
->>>>>>> release_branch
     "Check funcionality bundles module: Check basic parameters: Name is not a String",
     "test"
   ],
@@ -2601,21 +1633,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-<<<<<<< HEAD
-    "test-file/client/security/certificates.spec.js.html#lineNumber30",
-=======
     "test-file/client/security/certificates.spec.js.html#lineNumber23",
->>>>>>> release_branch
     "Check funcionality certificates: Check basic parameters: administrativeState is not a String",
     "test"
   ],
   [
     "",
-<<<<<<< HEAD
-    "test-file/client/security/certificates.spec.js.html#lineNumber23",
-=======
     "test-file/client/security/certificates.spec.js.html#lineNumber30",
->>>>>>> release_branch
     "Check funcionality certificates: Check basic parameters: administrativeState is not a String",
     "test"
   ],
@@ -3028,24 +2052,14 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-<<<<<<< HEAD
-    "searchbuilder#build searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortascendingby,searchbuilder#addsortascendingby src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber86",
-=======
     "searchbuilder#build searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortdescendingby,searchbuilder#addsortdescendingby src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
     "test-file/client/searching/search.spec.js.html#lineNumber94",
->>>>>>> release_branch
     "Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort",
     "test"
   ],
   [
-<<<<<<< HEAD
-    "searchbuilder#build searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortdescendingby,searchbuilder#addsortdescendingby src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber94",
-=======
     "searchbuilder#build searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortascendingby,searchbuilder#addsortascendingby src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
     "test-file/client/searching/search.spec.js.html#lineNumber86",
->>>>>>> release_branch
     "Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort",
     "test"
   ],
@@ -3224,44 +2238,26 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-<<<<<<< HEAD
-    "",
-    "test-file/client/searching/search.spec.js.html#lineNumber106",
-=======
     "searchbuilder#filter src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter",
     "test-file/client/searching/search.spec.js.html#lineNumber43",
->>>>>>> release_branch
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter:",
     "test"
   ],
   [
-<<<<<<< HEAD
-    "searchbuilder#filter src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter",
-    "test-file/client/searching/search.spec.js.html#lineNumber43",
-=======
     "",
     "test-file/client/searching/search.spec.js.html#lineNumber106",
->>>>>>> release_branch
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter:",
     "test"
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#communicationsmodulessearchbuilder,internalopengateapi#communicationsmodulessearchbuilder",
-<<<<<<< HEAD
-    "test-file/client/searching/search.spec.js.html#lineNumber76",
-=======
     "test-file/client/searching/search.spec.js.html#lineNumber136",
->>>>>>> release_branch
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: communicationsModulesSearchBuilder",
     "test"
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#communicationsmodulessearchbuilder,internalopengateapi#communicationsmodulessearchbuilder",
-<<<<<<< HEAD
-    "test-file/client/searching/search.spec.js.html#lineNumber136",
-=======
     "test-file/client/searching/search.spec.js.html#lineNumber76",
->>>>>>> release_branch
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: communicationsModulesSearchBuilder",
     "test"
   ],
@@ -3309,31 +2305,19 @@ window.esdocSearchIndex = [
   ],
   [
     "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
-<<<<<<< HEAD
-    "test-file/client/searching/search.spec.js.html#lineNumber405",
-=======
     "test-file/client/searching/search.spec.js.html#lineNumber393",
->>>>>>> release_branch
     "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
     "test"
   ],
   [
     "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
-<<<<<<< HEAD
-    "test-file/client/searching/search.spec.js.html#lineNumber399",
-=======
     "test-file/client/searching/search.spec.js.html#lineNumber405",
->>>>>>> release_branch
     "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
     "test"
   ],
   [
     "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
-<<<<<<< HEAD
-    "test-file/client/searching/search.spec.js.html#lineNumber393",
-=======
     "test-file/client/searching/search.spec.js.html#lineNumber399",
->>>>>>> release_branch
     "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
     "test"
   ],
@@ -3633,21 +2617,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-<<<<<<< HEAD
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber13",
-=======
     "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber5",
->>>>>>> release_branch
     "Testing fields finder api search a fields communicationsModulesSearchBuilder",
     "test"
   ],
   [
     "",
-<<<<<<< HEAD
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber5",
-=======
     "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber13",
->>>>>>> release_branch
     "Testing fields finder api search a fields communicationsModulesSearchBuilder",
     "test"
   ],
@@ -7456,15 +6432,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-<<<<<<< HEAD
-=======
     "src/searching/basesearch.js~basesearch#executewithasyncpaging",
     "class/src/searching/BaseSearch.js~BaseSearch.html#instance-method-executeWithAsyncPaging",
     "src/searching/BaseSearch.js~BaseSearch#executeWithAsyncPaging",
     "method"
   ],
   [
->>>>>>> release_branch
     "src/searching/entitysearch.js",
     "file/src/searching/EntitySearch.js.html",
     "src/searching/EntitySearch.js",
