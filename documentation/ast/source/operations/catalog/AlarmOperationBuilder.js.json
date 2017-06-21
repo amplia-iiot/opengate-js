@@ -1,0 +1,4077 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "Literal",
+        "value": "use strict",
+        "raw": "'use strict'",
+        "range": [
+          0,
+          12
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 12
+          }
+        }
+      },
+      "range": [
+        0,
+        13
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "Operation",
+            "range": [
+<<<<<<< HEAD
+              22,
+              31
+=======
+              24,
+              33
+>>>>>>> release_branch
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 7
+              },
+              "end": {
+                "line": 3,
+                "column": 16
+              }
+            }
+          },
+          "range": [
+<<<<<<< HEAD
+            22,
+            31
+=======
+            24,
+            33
+>>>>>>> release_branch
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 7
+            },
+            "end": {
+              "line": 3,
+              "column": 16
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./Operation",
+        "raw": "'./Operation'",
+        "range": [
+<<<<<<< HEAD
+          37,
+          50
+=======
+          39,
+          52
+>>>>>>> release_branch
+        ],
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 22
+          },
+          "end": {
+            "line": 3,
+            "column": 35
+          }
+        }
+      },
+      "range": [
+<<<<<<< HEAD
+        15,
+        51
+=======
+        17,
+        53
+>>>>>>> release_branch
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 36
+        }
+      },
+      "trailingComments": [
+        {
+          "type": "Block",
+<<<<<<< HEAD
+          "value": "*\n* Defines the builder to execute alarm operations\n",
+          "range": [
+            53,
+            109
+=======
+          "value": "*\r\n* Defines the builder to execute alarm operations\r\n",
+          "range": [
+            57,
+            115
+>>>>>>> release_branch
+          ],
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 0
+            },
+            "end": {
+              "line": 7,
+              "column": 2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "declaration": {
+        "type": "ClassDeclaration",
+        "id": {
+          "type": "Identifier",
+          "name": "AlarmOperationBuilder",
+          "range": [
+<<<<<<< HEAD
+            131,
+            152
+=======
+            138,
+            159
+>>>>>>> release_branch
+          ],
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 21
+            },
+            "end": {
+              "line": 8,
+              "column": 42
+            }
+          }
+        },
+        "superClass": null,
+        "body": {
+          "type": "ClassBody",
+          "body": [
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "constructor",
+                "range": [
+<<<<<<< HEAD
+                  318,
+                  329
+=======
+                  330,
+                  341
+>>>>>>> release_branch
+                ],
+                "loc": {
+                  "start": {
+                    "line": 13,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 13,
+                    "column": 12
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "name": "ogapi",
+                    "range": [
+<<<<<<< HEAD
+                      330,
+                      335
+=======
+                      342,
+                      347
+>>>>>>> release_branch
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 13,
+                        "column": 13
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 18
+                      }
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "name": "action",
+                    "range": [
+<<<<<<< HEAD
+                      336,
+                      342
+=======
+                      348,
+                      354
+>>>>>>> release_branch
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 13,
+                        "column": 19
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 25
+                      }
+                    }
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "AssignmentExpression",
+                        "operator": "=",
+                        "left": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "ThisExpression",
+                            "range": [
+<<<<<<< HEAD
+                              347,
+                              351
+=======
+                              360,
+                              364
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 14,
+                                "column": 2
+                              },
+                              "end": {
+                                "line": 14,
+                                "column": 6
+                              }
+                            }
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "_ogapi",
+                            "range": [
+<<<<<<< HEAD
+                              352,
+                              358
+=======
+                              365,
+                              371
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 14,
+                                "column": 7
+                              },
+                              "end": {
+                                "line": 14,
+                                "column": 13
+                              }
+                            }
+                          },
+                          "range": [
+<<<<<<< HEAD
+                            347,
+                            358
+=======
+                            360,
+                            371
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 14,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 14,
+                              "column": 13
+                            }
+                          }
+                        },
+                        "right": {
+                          "type": "Identifier",
+                          "name": "ogapi",
+                          "range": [
+<<<<<<< HEAD
+                            361,
+                            366
+=======
+                            374,
+                            379
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 14,
+                              "column": 16
+                            },
+                            "end": {
+                              "line": 14,
+                              "column": 21
+                            }
+                          }
+                        },
+                        "range": [
+<<<<<<< HEAD
+                          347,
+                          366
+=======
+                          360,
+                          379
+>>>>>>> release_branch
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 14,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 14,
+                            "column": 21
+                          }
+                        }
+                      },
+                      "range": [
+<<<<<<< HEAD
+                        347,
+                        367
+=======
+                        360,
+                        380
+>>>>>>> release_branch
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 14,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 14,
+                          "column": 22
+                        }
+                      }
+                    },
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "AssignmentExpression",
+                        "operator": "=",
+                        "left": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "ThisExpression",
+                            "range": [
+<<<<<<< HEAD
+                              370,
+                              374
+=======
+                              384,
+                              388
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 15,
+                                "column": 2
+                              },
+                              "end": {
+                                "line": 15,
+                                "column": 6
+                              }
+                            }
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "_action",
+                            "range": [
+<<<<<<< HEAD
+                              375,
+                              382
+=======
+                              389,
+                              396
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 15,
+                                "column": 7
+                              },
+                              "end": {
+                                "line": 15,
+                                "column": 14
+                              }
+                            }
+                          },
+                          "range": [
+<<<<<<< HEAD
+                            370,
+                            382
+=======
+                            384,
+                            396
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 15,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 15,
+                              "column": 14
+                            }
+                          }
+                        },
+                        "right": {
+                          "type": "Identifier",
+                          "name": "action",
+                          "range": [
+<<<<<<< HEAD
+                            385,
+                            391
+=======
+                            399,
+                            405
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 15,
+                              "column": 17
+                            },
+                            "end": {
+                              "line": 15,
+                              "column": 23
+                            }
+                          }
+                        },
+                        "range": [
+<<<<<<< HEAD
+                          370,
+                          391
+=======
+                          384,
+                          405
+>>>>>>> release_branch
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 15,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 15,
+                            "column": 23
+                          }
+                        }
+                      },
+                      "range": [
+<<<<<<< HEAD
+                        370,
+                        392
+=======
+                        384,
+                        406
+>>>>>>> release_branch
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 15,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 15,
+                          "column": 24
+                        }
+                      }
+                    },
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "AssignmentExpression",
+                        "operator": "=",
+                        "left": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "ThisExpression",
+                            "range": [
+<<<<<<< HEAD
+                              395,
+                              399
+=======
+                              410,
+                              414
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 16,
+                                "column": 2
+                              },
+                              "end": {
+                                "line": 16,
+                                "column": 6
+                              }
+                            }
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "_resource",
+                            "range": [
+<<<<<<< HEAD
+                              400,
+                              409
+=======
+                              415,
+                              424
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 16,
+                                "column": 7
+                              },
+                              "end": {
+                                "line": 16,
+                                "column": 16
+                              }
+                            }
+                          },
+                          "range": [
+<<<<<<< HEAD
+                            395,
+                            409
+=======
+                            410,
+                            424
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 16,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 16,
+                              "column": 16
+                            }
+                          }
+                        },
+                        "right": {
+                          "type": "Literal",
+                          "value": "/alarms",
+                          "raw": "'/alarms'",
+                          "range": [
+<<<<<<< HEAD
+                            412,
+                            421
+=======
+                            427,
+                            436
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 16,
+                              "column": 19
+                            },
+                            "end": {
+                              "line": 16,
+                              "column": 28
+                            }
+                          }
+                        },
+                        "range": [
+<<<<<<< HEAD
+                          395,
+                          421
+=======
+                          410,
+                          436
+>>>>>>> release_branch
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 16,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 16,
+                            "column": 28
+                          }
+                        }
+                      },
+                      "range": [
+<<<<<<< HEAD
+                        395,
+                        422
+=======
+                        410,
+                        437
+>>>>>>> release_branch
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 16,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 16,
+                          "column": 29
+                        }
+                      }
+                    },
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "AssignmentExpression",
+                        "operator": "=",
+                        "left": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "ThisExpression",
+                            "range": [
+<<<<<<< HEAD
+                              425,
+                              429
+=======
+                              441,
+                              445
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 17,
+                                "column": 2
+                              },
+                              "end": {
+                                "line": 17,
+                                "column": 6
+                              }
+                            }
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "_build",
+                            "range": [
+<<<<<<< HEAD
+                              430,
+                              436
+=======
+                              446,
+                              452
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 17,
+                                "column": 7
+                              },
+                              "end": {
+                                "line": 17,
+                                "column": 13
+                              }
+                            }
+                          },
+                          "range": [
+<<<<<<< HEAD
+                            425,
+                            436
+=======
+                            441,
+                            452
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 17,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 17,
+                              "column": 13
+                            }
+                          }
+                        },
+                        "right": {
+                          "type": "ObjectExpression",
+                          "properties": [
+                            {
+                              "type": "Property",
+                              "key": {
+                                "type": "Identifier",
+                                "name": "alarms",
+                                "range": [
+<<<<<<< HEAD
+                                  444,
+                                  450
+=======
+                                  461,
+                                  467
+>>>>>>> release_branch
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 18,
+                                    "column": 3
+                                  },
+                                  "end": {
+                                    "line": 18,
+                                    "column": 9
+                                  }
+                                }
+                              },
+                              "value": {
+                                "type": "ArrayExpression",
+                                "elements": [],
+                                "range": [
+<<<<<<< HEAD
+                                  451,
+                                  453
+=======
+                                  468,
+                                  470
+>>>>>>> release_branch
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 18,
+                                    "column": 10
+                                  },
+                                  "end": {
+                                    "line": 18,
+                                    "column": 12
+                                  }
+                                }
+                              },
+                              "kind": "init",
+                              "method": false,
+                              "shorthand": false,
+                              "computed": false,
+                              "range": [
+<<<<<<< HEAD
+                                444,
+                                453
+=======
+                                461,
+                                470
+>>>>>>> release_branch
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 18,
+                                  "column": 3
+                                },
+                                "end": {
+                                  "line": 18,
+                                  "column": 12
+                                }
+                              }
+                            },
+                            {
+                              "type": "Property",
+                              "key": {
+                                "type": "Identifier",
+                                "name": "notes",
+                                "range": [
+<<<<<<< HEAD
+                                  458,
+                                  463
+=======
+                                  476,
+                                  481
+>>>>>>> release_branch
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 19,
+                                    "column": 3
+                                  },
+                                  "end": {
+                                    "line": 19,
+                                    "column": 8
+                                  }
+                                }
+                              },
+                              "value": {
+                                "type": "Identifier",
+                                "name": "undefined",
+                                "range": [
+<<<<<<< HEAD
+                                  464,
+                                  473
+=======
+                                  482,
+                                  491
+>>>>>>> release_branch
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 19,
+                                    "column": 9
+                                  },
+                                  "end": {
+                                    "line": 19,
+                                    "column": 18
+                                  }
+                                }
+                              },
+                              "kind": "init",
+                              "method": false,
+                              "shorthand": false,
+                              "computed": false,
+                              "range": [
+<<<<<<< HEAD
+                                458,
+                                473
+=======
+                                476,
+                                491
+>>>>>>> release_branch
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 19,
+                                  "column": 3
+                                },
+                                "end": {
+                                  "line": 19,
+                                  "column": 18
+                                }
+                              }
+                            },
+                            {
+                              "type": "Property",
+                              "key": {
+                                "type": "Identifier",
+                                "name": "action",
+                                "range": [
+<<<<<<< HEAD
+                                  478,
+                                  484
+=======
+                                  497,
+                                  503
+>>>>>>> release_branch
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 20,
+                                    "column": 3
+                                  },
+                                  "end": {
+                                    "line": 20,
+                                    "column": 9
+                                  }
+                                }
+                              },
+                              "value": {
+                                "type": "Identifier",
+                                "name": "action",
+                                "range": [
+<<<<<<< HEAD
+                                  486,
+                                  492
+=======
+                                  505,
+                                  511
+>>>>>>> release_branch
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 20,
+                                    "column": 11
+                                  },
+                                  "end": {
+                                    "line": 20,
+                                    "column": 17
+                                  }
+                                }
+                              },
+                              "kind": "init",
+                              "method": false,
+                              "shorthand": false,
+                              "computed": false,
+                              "range": [
+<<<<<<< HEAD
+                                478,
+                                492
+=======
+                                497,
+                                511
+>>>>>>> release_branch
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 20,
+                                  "column": 3
+                                },
+                                "end": {
+                                  "line": 20,
+                                  "column": 17
+                                }
+                              }
+                            }
+                          ],
+                          "range": [
+<<<<<<< HEAD
+                            439,
+                            496
+=======
+                            455,
+                            516
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 17,
+                              "column": 16
+                            },
+                            "end": {
+                              "line": 21,
+                              "column": 3
+                            }
+                          }
+                        },
+                        "range": [
+<<<<<<< HEAD
+                          425,
+                          496
+=======
+                          441,
+                          516
+>>>>>>> release_branch
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 17,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 21,
+                            "column": 3
+                          }
+                        }
+                      },
+                      "range": [
+<<<<<<< HEAD
+                        425,
+                        497
+=======
+                        441,
+                        517
+>>>>>>> release_branch
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 17,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 21,
+                          "column": 4
+                        }
+                      }
+                    },
+                    {
+                      "type": "IfStatement",
+                      "test": {
+                        "type": "BinaryExpression",
+                        "operator": "===",
+                        "left": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "ThisExpression",
+                            "range": [
+<<<<<<< HEAD
+                              504,
+                              508
+=======
+                              525,
+                              529
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 22,
+                                "column": 6
+                              },
+                              "end": {
+                                "line": 22,
+                                "column": 10
+                              }
+                            }
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "constructor",
+                            "range": [
+<<<<<<< HEAD
+                              509,
+                              520
+=======
+                              530,
+                              541
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 22,
+                                "column": 11
+                              },
+                              "end": {
+                                "line": 22,
+                                "column": 22
+                              }
+                            }
+                          },
+                          "range": [
+<<<<<<< HEAD
+                            504,
+                            520
+=======
+                            525,
+                            541
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 22,
+                              "column": 6
+                            },
+                            "end": {
+                              "line": 22,
+                              "column": 22
+                            }
+                          }
+                        },
+                        "right": {
+                          "type": "Identifier",
+                          "name": "AlarmOperationBuilder",
+                          "range": [
+<<<<<<< HEAD
+                            525,
+                            546
+=======
+                            546,
+                            567
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 22,
+                              "column": 27
+                            },
+                            "end": {
+                              "line": 22,
+                              "column": 48
+                            }
+                          }
+                        },
+                        "range": [
+<<<<<<< HEAD
+                          504,
+                          546
+=======
+                          525,
+                          567
+>>>>>>> release_branch
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 22,
+                            "column": 6
+                          },
+                          "end": {
+                            "line": 22,
+                            "column": 48
+                          }
+                        }
+                      },
+                      "consequent": {
+                        "type": "BlockStatement",
+                        "body": [
+                          {
+                            "type": "ThrowStatement",
+                            "argument": {
+                              "type": "NewExpression",
+                              "callee": {
+                                "type": "Identifier",
+                                "name": "Error",
+                                "range": [
+<<<<<<< HEAD
+                                  563,
+                                  568
+=======
+                                  585,
+                                  590
+>>>>>>> release_branch
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 23,
+                                    "column": 13
+                                  },
+                                  "end": {
+                                    "line": 23,
+                                    "column": 18
+                                  }
+                                }
+                              },
+                              "arguments": [
+                                {
+                                  "type": "Literal",
+                                  "value": "Cannot construct Abstract instances directly",
+                                  "raw": "\"Cannot construct Abstract instances directly\"",
+                                  "range": [
+<<<<<<< HEAD
+                                    569,
+                                    615
+=======
+                                    591,
+                                    637
+>>>>>>> release_branch
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 23,
+                                      "column": 19
+                                    },
+                                    "end": {
+                                      "line": 23,
+                                      "column": 65
+                                    }
+                                  }
+                                }
+                              ],
+                              "range": [
+<<<<<<< HEAD
+                                559,
+                                616
+=======
+                                581,
+                                638
+>>>>>>> release_branch
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 23,
+                                  "column": 9
+                                },
+                                "end": {
+                                  "line": 23,
+                                  "column": 66
+                                }
+                              }
+                            },
+                            "range": [
+<<<<<<< HEAD
+                              553,
+                              617
+=======
+                              575,
+                              639
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 23,
+                                "column": 3
+                              },
+                              "end": {
+                                "line": 23,
+                                "column": 67
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+<<<<<<< HEAD
+                          548,
+                          621
+=======
+                          569,
+                          644
+>>>>>>> release_branch
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 22,
+                            "column": 50
+                          },
+                          "end": {
+                            "line": 24,
+                            "column": 3
+                          }
+                        }
+                      },
+                      "alternate": null,
+                      "range": [
+<<<<<<< HEAD
+                        500,
+                        621
+=======
+                        521,
+                        644
+>>>>>>> release_branch
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 22,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 24,
+                          "column": 3
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+<<<<<<< HEAD
+                    343,
+                    624
+=======
+                    355,
+                    648
+>>>>>>> release_branch
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 13,
+                      "column": 26
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 2
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+<<<<<<< HEAD
+                  329,
+                  624
+=======
+                  341,
+                  648
+>>>>>>> release_branch
+                ],
+                "loc": {
+                  "start": {
+                    "line": 13,
+                    "column": 12
+                  },
+                  "end": {
+                    "line": 25,
+                    "column": 2
+                  }
+                }
+              },
+              "kind": "constructor",
+              "computed": false,
+              "range": [
+<<<<<<< HEAD
+                318,
+                624
+=======
+                330,
+                648
+>>>>>>> release_branch
+              ],
+              "loc": {
+                "start": {
+                  "line": 13,
+                  "column": 1
+                },
+                "end": {
+                  "line": 25,
+                  "column": 2
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+<<<<<<< HEAD
+                  "value": "*\n\t* @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.\n\t* @param {!string} action - This action can be ATTEND or CLOSE\n\t",
+                  "range": [
+                    155,
+                    315
+=======
+                  "value": "*\r\n\t* @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.\r\n\t* @param {!string} action - This action can be ATTEND or CLOSE\r\n\t",
+                  "range": [
+                    163,
+                    326
+>>>>>>> release_branch
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 9,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 12,
+                      "column": 3
+                    }
+                  }
+                }
+              ],
+              "trailingComments": [
+                {
+                  "type": "Block",
+<<<<<<< HEAD
+                  "value": "*\n\t* Add alarmId to operation\n\t* @example\n\t*\togapi.operations.builderFactory.newAlarmCloseBuilder().addAlarmId(\"\")\n\t* @param {!string} alarmId - AlarmId of Alarm\n\t* @throws {Error} throw error when alarmId is not typeof string\n\t* @return {AlarmOperationBuilder}\n\t",
+                  "range": [
+                    627,
+                    894
+=======
+                  "value": "*\r\n\t* Add alarmId to operation\r\n\t* @example\r\n\t*\togapi.operations.builderFactory.newAlarmCloseBuilder().addAlarmId(\"\")\r\n\t* @param {!string} alarmId - AlarmId of Alarm\r\n\t* @throws {Error} throw error when alarmId is not typeof string\r\n\t* @return {AlarmOperationBuilder}\r\n\t",
+                  "range": [
+                    653,
+                    927
+>>>>>>> release_branch
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 27,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 34,
+                      "column": 3
+                    }
+                  }
+                }
+              ],
+              "static": false
+            },
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "addAlarmId",
+                "range": [
+<<<<<<< HEAD
+                  896,
+                  906
+=======
+                  930,
+                  940
+>>>>>>> release_branch
+                ],
+                "loc": {
+                  "start": {
+                    "line": 35,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 35,
+                    "column": 11
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "name": "alarmId",
+                    "range": [
+<<<<<<< HEAD
+                      907,
+                      914
+=======
+                      941,
+                      948
+>>>>>>> release_branch
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 35,
+                        "column": 12
+                      },
+                      "end": {
+                        "line": 35,
+                        "column": 19
+                      }
+                    }
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "IfStatement",
+                      "test": {
+                        "type": "BinaryExpression",
+                        "operator": "!==",
+                        "left": {
+                          "type": "UnaryExpression",
+                          "operator": "typeof",
+                          "argument": {
+                            "type": "Identifier",
+                            "name": "alarmId",
+                            "range": [
+<<<<<<< HEAD
+                              930,
+                              937
+=======
+                              965,
+                              972
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 36,
+                                "column": 13
+                              },
+                              "end": {
+                                "line": 36,
+                                "column": 20
+                              }
+                            }
+                          },
+                          "prefix": true,
+                          "range": [
+<<<<<<< HEAD
+                            923,
+                            937
+=======
+                            958,
+                            972
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 36,
+                              "column": 6
+                            },
+                            "end": {
+                              "line": 36,
+                              "column": 20
+                            }
+                          }
+                        },
+                        "right": {
+                          "type": "Literal",
+                          "value": "string",
+                          "raw": "'string'",
+                          "range": [
+<<<<<<< HEAD
+                            942,
+                            950
+=======
+                            977,
+                            985
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 36,
+                              "column": 25
+                            },
+                            "end": {
+                              "line": 36,
+                              "column": 33
+                            }
+                          }
+                        },
+                        "range": [
+<<<<<<< HEAD
+                          923,
+                          950
+=======
+                          958,
+                          985
+>>>>>>> release_branch
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 36,
+                            "column": 6
+                          },
+                          "end": {
+                            "line": 36,
+                            "column": 33
+                          }
+                        }
+                      },
+                      "consequent": {
+                        "type": "ThrowStatement",
+                        "argument": {
+                          "type": "NewExpression",
+                          "callee": {
+                            "type": "Identifier",
+                            "name": "Error",
+                            "range": [
+<<<<<<< HEAD
+                              966,
+                              971
+=======
+                              1002,
+                              1007
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 37,
+                                "column": 13
+                              },
+                              "end": {
+                                "line": 37,
+                                "column": 18
+                              }
+                            }
+                          },
+                          "arguments": [
+                            {
+                              "type": "Literal",
+                              "value": "Parameter alarmId must be a string",
+                              "raw": "'Parameter alarmId must be a string'",
+                              "range": [
+<<<<<<< HEAD
+                                972,
+                                1008
+=======
+                                1008,
+                                1044
+>>>>>>> release_branch
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 37,
+                                  "column": 19
+                                },
+                                "end": {
+                                  "line": 37,
+                                  "column": 55
+                                }
+                              }
+                            }
+                          ],
+                          "range": [
+<<<<<<< HEAD
+                            962,
+                            1009
+=======
+                            998,
+                            1045
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 37,
+                              "column": 9
+                            },
+                            "end": {
+                              "line": 37,
+                              "column": 56
+                            }
+                          }
+                        },
+                        "range": [
+<<<<<<< HEAD
+                          956,
+                          1010
+=======
+                          992,
+                          1046
+>>>>>>> release_branch
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 37,
+                            "column": 3
+                          },
+                          "end": {
+                            "line": 37,
+                            "column": 57
+                          }
+                        }
+                      },
+                      "alternate": null,
+                      "range": [
+<<<<<<< HEAD
+                        919,
+                        1010
+=======
+                        954,
+                        1046
+>>>>>>> release_branch
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 36,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 37,
+                          "column": 57
+                        }
+                      }
+                    },
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "CallExpression",
+                        "callee": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "ThisExpression",
+                                "range": [
+<<<<<<< HEAD
+                                  1013,
+                                  1017
+=======
+                                  1050,
+                                  1054
+>>>>>>> release_branch
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 38,
+                                    "column": 2
+                                  },
+                                  "end": {
+                                    "line": 38,
+                                    "column": 6
+                                  }
+                                }
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "_build",
+                                "range": [
+<<<<<<< HEAD
+                                  1018,
+                                  1024
+=======
+                                  1055,
+                                  1061
+>>>>>>> release_branch
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 38,
+                                    "column": 7
+                                  },
+                                  "end": {
+                                    "line": 38,
+                                    "column": 13
+                                  }
+                                }
+                              },
+                              "range": [
+<<<<<<< HEAD
+                                1013,
+                                1024
+=======
+                                1050,
+                                1061
+>>>>>>> release_branch
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 38,
+                                  "column": 2
+                                },
+                                "end": {
+                                  "line": 38,
+                                  "column": 13
+                                }
+                              }
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "alarms",
+                              "range": [
+<<<<<<< HEAD
+                                1025,
+                                1031
+=======
+                                1062,
+                                1068
+>>>>>>> release_branch
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 38,
+                                  "column": 14
+                                },
+                                "end": {
+                                  "line": 38,
+                                  "column": 20
+                                }
+                              }
+                            },
+                            "range": [
+<<<<<<< HEAD
+                              1013,
+                              1031
+=======
+                              1050,
+                              1068
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 38,
+                                "column": 2
+                              },
+                              "end": {
+                                "line": 38,
+                                "column": 20
+                              }
+                            }
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "push",
+                            "range": [
+<<<<<<< HEAD
+                              1032,
+                              1036
+=======
+                              1069,
+                              1073
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 38,
+                                "column": 21
+                              },
+                              "end": {
+                                "line": 38,
+                                "column": 25
+                              }
+                            }
+                          },
+                          "range": [
+<<<<<<< HEAD
+                            1013,
+                            1036
+=======
+                            1050,
+                            1073
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 38,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 38,
+                              "column": 25
+                            }
+                          }
+                        },
+                        "arguments": [
+                          {
+                            "type": "Identifier",
+                            "name": "alarmId",
+                            "range": [
+<<<<<<< HEAD
+                              1037,
+                              1044
+=======
+                              1074,
+                              1081
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 38,
+                                "column": 26
+                              },
+                              "end": {
+                                "line": 38,
+                                "column": 33
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+<<<<<<< HEAD
+                          1013,
+                          1045
+=======
+                          1050,
+                          1082
+>>>>>>> release_branch
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 38,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 38,
+                            "column": 34
+                          }
+                        }
+                      },
+                      "range": [
+<<<<<<< HEAD
+                        1013,
+                        1046
+=======
+                        1050,
+                        1083
+>>>>>>> release_branch
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 38,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 38,
+                          "column": 35
+                        }
+                      }
+                    },
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "ThisExpression",
+                        "range": [
+<<<<<<< HEAD
+                          1056,
+                          1060
+=======
+                          1094,
+                          1098
+>>>>>>> release_branch
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 39,
+                            "column": 9
+                          },
+                          "end": {
+                            "line": 39,
+                            "column": 13
+                          }
+                        }
+                      },
+                      "range": [
+<<<<<<< HEAD
+                        1049,
+                        1061
+=======
+                        1087,
+                        1099
+>>>>>>> release_branch
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 39,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 39,
+                          "column": 14
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+<<<<<<< HEAD
+                    915,
+                    1064
+=======
+                    949,
+                    1103
+>>>>>>> release_branch
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 35,
+                      "column": 20
+                    },
+                    "end": {
+                      "line": 40,
+                      "column": 2
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+<<<<<<< HEAD
+                  906,
+                  1064
+=======
+                  940,
+                  1103
+>>>>>>> release_branch
+                ],
+                "loc": {
+                  "start": {
+                    "line": 35,
+                    "column": 11
+                  },
+                  "end": {
+                    "line": 40,
+                    "column": 2
+                  }
+                }
+              },
+              "kind": "method",
+              "computed": false,
+              "range": [
+<<<<<<< HEAD
+                896,
+                1064
+=======
+                930,
+                1103
+>>>>>>> release_branch
+              ],
+              "loc": {
+                "start": {
+                  "line": 35,
+                  "column": 1
+                },
+                "end": {
+                  "line": 40,
+                  "column": 2
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+<<<<<<< HEAD
+                  "value": "*\n\t* Add alarmId to operation\n\t* @example\n\t*\togapi.operations.builderFactory.newAlarmCloseBuilder().addAlarmId(\"\")\n\t* @param {!string} alarmId - AlarmId of Alarm\n\t* @throws {Error} throw error when alarmId is not typeof string\n\t* @return {AlarmOperationBuilder}\n\t",
+                  "range": [
+                    627,
+                    894
+=======
+                  "value": "*\r\n\t* Add alarmId to operation\r\n\t* @example\r\n\t*\togapi.operations.builderFactory.newAlarmCloseBuilder().addAlarmId(\"\")\r\n\t* @param {!string} alarmId - AlarmId of Alarm\r\n\t* @throws {Error} throw error when alarmId is not typeof string\r\n\t* @return {AlarmOperationBuilder}\r\n\t",
+                  "range": [
+                    653,
+                    927
+>>>>>>> release_branch
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 27,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 34,
+                      "column": 3
+                    }
+                  }
+                }
+              ],
+              "trailingComments": [
+                {
+                  "type": "Block",
+<<<<<<< HEAD
+                  "value": "*\n\t* Add notes to operation\n\t* @example\n\t*\togapi.operations.builderFactory.newAlarmCloseBuilder().withNotes(\"\")\n\t* @param {!string} notes - Notes about operation\n\t* @throws {Error} throw error when notes is not typeof string\n\t* @return {AlarmOperationBuilder}\n\t",
+                  "range": [
+                    1067,
+                    1332
+=======
+                  "value": "*\r\n\t* Add notes to operation\r\n\t* @example\r\n\t*\togapi.operations.builderFactory.newAlarmCloseBuilder().withNotes(\"\")\r\n\t* @param {!string} notes - Notes about operation\r\n\t* @throws {Error} throw error when notes is not typeof string\r\n\t* @return {AlarmOperationBuilder}\r\n\t",
+                  "range": [
+                    1108,
+                    1380
+>>>>>>> release_branch
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 42,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 49,
+                      "column": 3
+                    }
+                  }
+                }
+              ],
+              "static": false
+            },
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "withNotes",
+                "range": [
+<<<<<<< HEAD
+                  1334,
+                  1343
+=======
+                  1383,
+                  1392
+>>>>>>> release_branch
+                ],
+                "loc": {
+                  "start": {
+                    "line": 50,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 50,
+                    "column": 10
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "name": "notes",
+                    "range": [
+<<<<<<< HEAD
+                      1344,
+                      1349
+=======
+                      1393,
+                      1398
+>>>>>>> release_branch
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 50,
+                        "column": 11
+                      },
+                      "end": {
+                        "line": 50,
+                        "column": 16
+                      }
+                    }
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "IfStatement",
+                      "test": {
+                        "type": "BinaryExpression",
+                        "operator": "!==",
+                        "left": {
+                          "type": "UnaryExpression",
+                          "operator": "typeof",
+                          "argument": {
+                            "type": "Identifier",
+                            "name": "notes",
+                            "range": [
+<<<<<<< HEAD
+                              1365,
+                              1370
+=======
+                              1415,
+                              1420
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 51,
+                                "column": 13
+                              },
+                              "end": {
+                                "line": 51,
+                                "column": 18
+                              }
+                            }
+                          },
+                          "prefix": true,
+                          "range": [
+<<<<<<< HEAD
+                            1358,
+                            1370
+=======
+                            1408,
+                            1420
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 51,
+                              "column": 6
+                            },
+                            "end": {
+                              "line": 51,
+                              "column": 18
+                            }
+                          }
+                        },
+                        "right": {
+                          "type": "Literal",
+                          "value": "string",
+                          "raw": "'string'",
+                          "range": [
+<<<<<<< HEAD
+                            1375,
+                            1383
+=======
+                            1425,
+                            1433
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 51,
+                              "column": 23
+                            },
+                            "end": {
+                              "line": 51,
+                              "column": 31
+                            }
+                          }
+                        },
+                        "range": [
+<<<<<<< HEAD
+                          1358,
+                          1383
+=======
+                          1408,
+                          1433
+>>>>>>> release_branch
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 51,
+                            "column": 6
+                          },
+                          "end": {
+                            "line": 51,
+                            "column": 31
+                          }
+                        }
+                      },
+                      "consequent": {
+                        "type": "ThrowStatement",
+                        "argument": {
+                          "type": "NewExpression",
+                          "callee": {
+                            "type": "Identifier",
+                            "name": "Error",
+                            "range": [
+<<<<<<< HEAD
+                              1399,
+                              1404
+=======
+                              1450,
+                              1455
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 52,
+                                "column": 13
+                              },
+                              "end": {
+                                "line": 52,
+                                "column": 18
+                              }
+                            }
+                          },
+                          "arguments": [
+                            {
+                              "type": "Literal",
+                              "value": "Parameter notes must be a string",
+                              "raw": "'Parameter notes must be a string'",
+                              "range": [
+<<<<<<< HEAD
+                                1405,
+                                1439
+=======
+                                1456,
+                                1490
+>>>>>>> release_branch
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 52,
+                                  "column": 19
+                                },
+                                "end": {
+                                  "line": 52,
+                                  "column": 53
+                                }
+                              }
+                            }
+                          ],
+                          "range": [
+<<<<<<< HEAD
+                            1395,
+                            1440
+=======
+                            1446,
+                            1491
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 52,
+                              "column": 9
+                            },
+                            "end": {
+                              "line": 52,
+                              "column": 54
+                            }
+                          }
+                        },
+                        "range": [
+<<<<<<< HEAD
+                          1389,
+                          1441
+=======
+                          1440,
+                          1492
+>>>>>>> release_branch
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 52,
+                            "column": 3
+                          },
+                          "end": {
+                            "line": 52,
+                            "column": 55
+                          }
+                        }
+                      },
+                      "alternate": null,
+                      "range": [
+<<<<<<< HEAD
+                        1354,
+                        1441
+=======
+                        1404,
+                        1492
+>>>>>>> release_branch
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 51,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 52,
+                          "column": 55
+                        }
+                      }
+                    },
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "AssignmentExpression",
+                        "operator": "=",
+                        "left": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "ThisExpression",
+                              "range": [
+<<<<<<< HEAD
+                                1444,
+                                1448
+=======
+                                1496,
+                                1500
+>>>>>>> release_branch
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 53,
+                                  "column": 2
+                                },
+                                "end": {
+                                  "line": 53,
+                                  "column": 6
+                                }
+                              }
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "_build",
+                              "range": [
+<<<<<<< HEAD
+                                1449,
+                                1455
+=======
+                                1501,
+                                1507
+>>>>>>> release_branch
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 53,
+                                  "column": 7
+                                },
+                                "end": {
+                                  "line": 53,
+                                  "column": 13
+                                }
+                              }
+                            },
+                            "range": [
+<<<<<<< HEAD
+                              1444,
+                              1455
+=======
+                              1496,
+                              1507
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 53,
+                                "column": 2
+                              },
+                              "end": {
+                                "line": 53,
+                                "column": 13
+                              }
+                            }
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "notes",
+                            "range": [
+<<<<<<< HEAD
+                              1456,
+                              1461
+=======
+                              1508,
+                              1513
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 53,
+                                "column": 14
+                              },
+                              "end": {
+                                "line": 53,
+                                "column": 19
+                              }
+                            }
+                          },
+                          "range": [
+<<<<<<< HEAD
+                            1444,
+                            1461
+=======
+                            1496,
+                            1513
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 53,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 53,
+                              "column": 19
+                            }
+                          }
+                        },
+                        "right": {
+                          "type": "Identifier",
+                          "name": "notes",
+                          "range": [
+<<<<<<< HEAD
+                            1464,
+                            1469
+=======
+                            1516,
+                            1521
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 53,
+                              "column": 22
+                            },
+                            "end": {
+                              "line": 53,
+                              "column": 27
+                            }
+                          }
+                        },
+                        "range": [
+<<<<<<< HEAD
+                          1444,
+                          1469
+=======
+                          1496,
+                          1521
+>>>>>>> release_branch
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 53,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 53,
+                            "column": 27
+                          }
+                        }
+                      },
+                      "range": [
+<<<<<<< HEAD
+                        1444,
+                        1470
+=======
+                        1496,
+                        1522
+>>>>>>> release_branch
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 53,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 53,
+                          "column": 28
+                        }
+                      }
+                    },
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "ThisExpression",
+                        "range": [
+<<<<<<< HEAD
+                          1480,
+                          1484
+=======
+                          1533,
+                          1537
+>>>>>>> release_branch
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 54,
+                            "column": 9
+                          },
+                          "end": {
+                            "line": 54,
+                            "column": 13
+                          }
+                        }
+                      },
+                      "range": [
+<<<<<<< HEAD
+                        1473,
+                        1485
+=======
+                        1526,
+                        1538
+>>>>>>> release_branch
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 54,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 54,
+                          "column": 14
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+<<<<<<< HEAD
+                    1350,
+                    1488
+=======
+                    1399,
+                    1542
+>>>>>>> release_branch
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 50,
+                      "column": 17
+                    },
+                    "end": {
+                      "line": 55,
+                      "column": 2
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+<<<<<<< HEAD
+                  1343,
+                  1488
+=======
+                  1392,
+                  1542
+>>>>>>> release_branch
+                ],
+                "loc": {
+                  "start": {
+                    "line": 50,
+                    "column": 10
+                  },
+                  "end": {
+                    "line": 55,
+                    "column": 2
+                  }
+                }
+              },
+              "kind": "method",
+              "computed": false,
+              "range": [
+<<<<<<< HEAD
+                1334,
+                1488
+=======
+                1383,
+                1542
+>>>>>>> release_branch
+              ],
+              "loc": {
+                "start": {
+                  "line": 50,
+                  "column": 1
+                },
+                "end": {
+                  "line": 55,
+                  "column": 2
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+<<<<<<< HEAD
+                  "value": "*\n\t* Add notes to operation\n\t* @example\n\t*\togapi.operations.builderFactory.newAlarmCloseBuilder().withNotes(\"\")\n\t* @param {!string} notes - Notes about operation\n\t* @throws {Error} throw error when notes is not typeof string\n\t* @return {AlarmOperationBuilder}\n\t",
+                  "range": [
+                    1067,
+                    1332
+=======
+                  "value": "*\r\n\t* Add notes to operation\r\n\t* @example\r\n\t*\togapi.operations.builderFactory.newAlarmCloseBuilder().withNotes(\"\")\r\n\t* @param {!string} notes - Notes about operation\r\n\t* @throws {Error} throw error when notes is not typeof string\r\n\t* @return {AlarmOperationBuilder}\r\n\t",
+                  "range": [
+                    1108,
+                    1380
+>>>>>>> release_branch
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 42,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 49,
+                      "column": 3
+                    }
+                  }
+                }
+              ],
+              "trailingComments": [
+                {
+                  "type": "Block",
+<<<<<<< HEAD
+                  "value": "*\n\t* Build a instance of Operation \n\t*\n\t* @example\n\t*\togapi.operations.builderFactory.newAlarmCloseBuilder().build()\n\t* @throws {Error} Throw error if there is not alarmId\n\t* @return {Operation} \n\t",
+                  "range": [
+                    1491,
+                    1692
+=======
+                  "value": "*\r\n\t* Build a instance of Operation \r\n\t*\r\n\t* @example\r\n\t*\togapi.operations.builderFactory.newAlarmCloseBuilder().build()\r\n\t* @throws {Error} Throw error if there is not alarmId\r\n\t* @return {Operation} \r\n\t",
+                  "range": [
+                    1547,
+                    1755
+>>>>>>> release_branch
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 57,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 64,
+                      "column": 3
+                    }
+                  }
+                }
+              ],
+              "static": false
+            },
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "build",
+                "range": [
+<<<<<<< HEAD
+                  1694,
+                  1699
+=======
+                  1758,
+                  1763
+>>>>>>> release_branch
+                ],
+                "loc": {
+                  "start": {
+                    "line": 65,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 65,
+                    "column": 6
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "IfStatement",
+                      "test": {
+                        "type": "BinaryExpression",
+                        "operator": "===",
+                        "left": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "ThisExpression",
+                                "range": [
+<<<<<<< HEAD
+                                  1709,
+                                  1713
+=======
+                                  1774,
+                                  1778
+>>>>>>> release_branch
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 66,
+                                    "column": 6
+                                  },
+                                  "end": {
+                                    "line": 66,
+                                    "column": 10
+                                  }
+                                }
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "_build",
+                                "range": [
+<<<<<<< HEAD
+                                  1714,
+                                  1720
+=======
+                                  1779,
+                                  1785
+>>>>>>> release_branch
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 66,
+                                    "column": 11
+                                  },
+                                  "end": {
+                                    "line": 66,
+                                    "column": 17
+                                  }
+                                }
+                              },
+                              "range": [
+<<<<<<< HEAD
+                                1709,
+                                1720
+=======
+                                1774,
+                                1785
+>>>>>>> release_branch
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 66,
+                                  "column": 6
+                                },
+                                "end": {
+                                  "line": 66,
+                                  "column": 17
+                                }
+                              }
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "alarms",
+                              "range": [
+<<<<<<< HEAD
+                                1721,
+                                1727
+=======
+                                1786,
+                                1792
+>>>>>>> release_branch
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 66,
+                                  "column": 18
+                                },
+                                "end": {
+                                  "line": 66,
+                                  "column": 24
+                                }
+                              }
+                            },
+                            "range": [
+<<<<<<< HEAD
+                              1709,
+                              1727
+=======
+                              1774,
+                              1792
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 66,
+                                "column": 6
+                              },
+                              "end": {
+                                "line": 66,
+                                "column": 24
+                              }
+                            }
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "length",
+                            "range": [
+<<<<<<< HEAD
+                              1728,
+                              1734
+=======
+                              1793,
+                              1799
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 66,
+                                "column": 25
+                              },
+                              "end": {
+                                "line": 66,
+                                "column": 31
+                              }
+                            }
+                          },
+                          "range": [
+<<<<<<< HEAD
+                            1709,
+                            1734
+=======
+                            1774,
+                            1799
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 66,
+                              "column": 6
+                            },
+                            "end": {
+                              "line": 66,
+                              "column": 31
+                            }
+                          }
+                        },
+                        "right": {
+                          "type": "Literal",
+                          "value": 0,
+                          "raw": "0",
+                          "range": [
+<<<<<<< HEAD
+                            1739,
+                            1740
+=======
+                            1804,
+                            1805
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 66,
+                              "column": 36
+                            },
+                            "end": {
+                              "line": 66,
+                              "column": 37
+                            }
+                          }
+                        },
+                        "range": [
+<<<<<<< HEAD
+                          1709,
+                          1740
+=======
+                          1774,
+                          1805
+>>>>>>> release_branch
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 66,
+                            "column": 6
+                          },
+                          "end": {
+                            "line": 66,
+                            "column": 37
+                          }
+                        }
+                      },
+                      "consequent": {
+                        "type": "BlockStatement",
+                        "body": [
+                          {
+                            "type": "ThrowStatement",
+                            "argument": {
+                              "type": "NewExpression",
+                              "callee": {
+                                "type": "Identifier",
+                                "name": "Error",
+                                "range": [
+<<<<<<< HEAD
+                                  1756,
+                                  1761
+=======
+                                  1822,
+                                  1827
+>>>>>>> release_branch
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 67,
+                                    "column": 13
+                                  },
+                                  "end": {
+                                    "line": 67,
+                                    "column": 18
+                                  }
+                                }
+                              },
+                              "arguments": [
+                                {
+                                  "type": "Literal",
+                                  "value": "Builder error. You must append at least one alarmId with addAlarmId method",
+                                  "raw": "'Builder error. You must append at least one alarmId with addAlarmId method'",
+                                  "range": [
+<<<<<<< HEAD
+                                    1762,
+                                    1838
+=======
+                                    1828,
+                                    1904
+>>>>>>> release_branch
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 67,
+                                      "column": 19
+                                    },
+                                    "end": {
+                                      "line": 67,
+                                      "column": 95
+                                    }
+                                  }
+                                }
+                              ],
+                              "range": [
+<<<<<<< HEAD
+                                1752,
+                                1839
+=======
+                                1818,
+                                1905
+>>>>>>> release_branch
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 67,
+                                  "column": 9
+                                },
+                                "end": {
+                                  "line": 67,
+                                  "column": 96
+                                }
+                              }
+                            },
+                            "range": [
+<<<<<<< HEAD
+                              1746,
+                              1840
+=======
+                              1812,
+                              1906
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 67,
+                                "column": 3
+                              },
+                              "end": {
+                                "line": 67,
+                                "column": 97
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+<<<<<<< HEAD
+                          1741,
+                          1844
+=======
+                          1806,
+                          1911
+>>>>>>> release_branch
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 66,
+                            "column": 38
+                          },
+                          "end": {
+                            "line": 68,
+                            "column": 3
+                          }
+                        }
+                      },
+                      "alternate": null,
+                      "range": [
+<<<<<<< HEAD
+                        1705,
+                        1844
+=======
+                        1770,
+                        1911
+>>>>>>> release_branch
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 66,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 68,
+                          "column": 3
+                        }
+                      }
+                    },
+                    {
+                      "type": "IfStatement",
+                      "test": {
+                        "type": "BinaryExpression",
+                        "operator": "!==",
+                        "left": {
+                          "type": "UnaryExpression",
+                          "operator": "typeof",
+                          "argument": {
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "ThisExpression",
+                                "range": [
+<<<<<<< HEAD
+                                  1858,
+                                  1862
+=======
+                                  1926,
+                                  1930
+>>>>>>> release_branch
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 69,
+                                    "column": 13
+                                  },
+                                  "end": {
+                                    "line": 69,
+                                    "column": 17
+                                  }
+                                }
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "_build",
+                                "range": [
+<<<<<<< HEAD
+                                  1863,
+                                  1869
+=======
+                                  1931,
+                                  1937
+>>>>>>> release_branch
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 69,
+                                    "column": 18
+                                  },
+                                  "end": {
+                                    "line": 69,
+                                    "column": 24
+                                  }
+                                }
+                              },
+                              "range": [
+<<<<<<< HEAD
+                                1858,
+                                1869
+=======
+                                1926,
+                                1937
+>>>>>>> release_branch
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 69,
+                                  "column": 13
+                                },
+                                "end": {
+                                  "line": 69,
+                                  "column": 24
+                                }
+                              }
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "notes",
+                              "range": [
+<<<<<<< HEAD
+                                1870,
+                                1875
+=======
+                                1938,
+                                1943
+>>>>>>> release_branch
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 69,
+                                  "column": 25
+                                },
+                                "end": {
+                                  "line": 69,
+                                  "column": 30
+                                }
+                              }
+                            },
+                            "range": [
+<<<<<<< HEAD
+                              1858,
+                              1875
+=======
+                              1926,
+                              1943
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 69,
+                                "column": 13
+                              },
+                              "end": {
+                                "line": 69,
+                                "column": 30
+                              }
+                            }
+                          },
+                          "prefix": true,
+                          "range": [
+<<<<<<< HEAD
+                            1851,
+                            1875
+=======
+                            1919,
+                            1943
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 69,
+                              "column": 6
+                            },
+                            "end": {
+                              "line": 69,
+                              "column": 30
+                            }
+                          }
+                        },
+                        "right": {
+                          "type": "Literal",
+                          "value": "string",
+                          "raw": "'string'",
+                          "range": [
+<<<<<<< HEAD
+                            1880,
+                            1888
+=======
+                            1948,
+                            1956
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 69,
+                              "column": 35
+                            },
+                            "end": {
+                              "line": 69,
+                              "column": 43
+                            }
+                          }
+                        },
+                        "range": [
+<<<<<<< HEAD
+                          1851,
+                          1888
+=======
+                          1919,
+                          1956
+>>>>>>> release_branch
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 69,
+                            "column": 6
+                          },
+                          "end": {
+                            "line": 69,
+                            "column": 43
+                          }
+                        }
+                      },
+                      "consequent": {
+                        "type": "BlockStatement",
+                        "body": [
+                          {
+                            "type": "ExpressionStatement",
+                            "expression": {
+                              "type": "UnaryExpression",
+                              "operator": "delete",
+                              "argument": {
+                                "type": "MemberExpression",
+                                "computed": false,
+                                "object": {
+                                  "type": "MemberExpression",
+                                  "computed": false,
+                                  "object": {
+                                    "type": "ThisExpression",
+                                    "range": [
+<<<<<<< HEAD
+                                      1901,
+                                      1905
+=======
+                                      1970,
+                                      1974
+>>>>>>> release_branch
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 70,
+                                        "column": 10
+                                      },
+                                      "end": {
+                                        "line": 70,
+                                        "column": 14
+                                      }
+                                    }
+                                  },
+                                  "property": {
+                                    "type": "Identifier",
+                                    "name": "_build",
+                                    "range": [
+<<<<<<< HEAD
+                                      1906,
+                                      1912
+=======
+                                      1975,
+                                      1981
+>>>>>>> release_branch
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 70,
+                                        "column": 15
+                                      },
+                                      "end": {
+                                        "line": 70,
+                                        "column": 21
+                                      }
+                                    }
+                                  },
+                                  "range": [
+<<<<<<< HEAD
+                                    1901,
+                                    1912
+=======
+                                    1970,
+                                    1981
+>>>>>>> release_branch
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 70,
+                                      "column": 10
+                                    },
+                                    "end": {
+                                      "line": 70,
+                                      "column": 21
+                                    }
+                                  }
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "name": "notes",
+                                  "range": [
+<<<<<<< HEAD
+                                    1913,
+                                    1918
+=======
+                                    1982,
+                                    1987
+>>>>>>> release_branch
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 70,
+                                      "column": 22
+                                    },
+                                    "end": {
+                                      "line": 70,
+                                      "column": 27
+                                    }
+                                  }
+                                },
+                                "range": [
+<<<<<<< HEAD
+                                  1901,
+                                  1918
+=======
+                                  1970,
+                                  1987
+>>>>>>> release_branch
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 70,
+                                    "column": 10
+                                  },
+                                  "end": {
+                                    "line": 70,
+                                    "column": 27
+                                  }
+                                }
+                              },
+                              "prefix": true,
+                              "range": [
+<<<<<<< HEAD
+                                1894,
+                                1918
+=======
+                                1963,
+                                1987
+>>>>>>> release_branch
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 70,
+                                  "column": 3
+                                },
+                                "end": {
+                                  "line": 70,
+                                  "column": 27
+                                }
+                              }
+                            },
+                            "range": [
+<<<<<<< HEAD
+                              1894,
+                              1919
+=======
+                              1963,
+                              1988
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 70,
+                                "column": 3
+                              },
+                              "end": {
+                                "line": 70,
+                                "column": 28
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+<<<<<<< HEAD
+                          1889,
+                          1923
+=======
+                          1957,
+                          1993
+>>>>>>> release_branch
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 69,
+                            "column": 44
+                          },
+                          "end": {
+                            "line": 71,
+                            "column": 3
+                          }
+                        }
+                      },
+                      "alternate": null,
+                      "range": [
+<<<<<<< HEAD
+                        1847,
+                        1923
+=======
+                        1915,
+                        1993
+>>>>>>> release_branch
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 69,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 71,
+                          "column": 3
+                        }
+                      }
+                    },
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "NewExpression",
+                        "callee": {
+                          "type": "Identifier",
+                          "name": "Operation",
+                          "range": [
+<<<<<<< HEAD
+                            1937,
+                            1946
+=======
+                            2008,
+                            2017
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 72,
+                              "column": 13
+                            },
+                            "end": {
+                              "line": 72,
+                              "column": 22
+                            }
+                          }
+                        },
+                        "arguments": [
+                          {
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "ThisExpression",
+                              "range": [
+<<<<<<< HEAD
+                                1947,
+                                1951
+=======
+                                2018,
+                                2022
+>>>>>>> release_branch
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 72,
+                                  "column": 23
+                                },
+                                "end": {
+                                  "line": 72,
+                                  "column": 27
+                                }
+                              }
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "_ogapi",
+                              "range": [
+<<<<<<< HEAD
+                                1952,
+                                1958
+=======
+                                2023,
+                                2029
+>>>>>>> release_branch
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 72,
+                                  "column": 28
+                                },
+                                "end": {
+                                  "line": 72,
+                                  "column": 34
+                                }
+                              }
+                            },
+                            "range": [
+<<<<<<< HEAD
+                              1947,
+                              1958
+=======
+                              2018,
+                              2029
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 72,
+                                "column": 23
+                              },
+                              "end": {
+                                "line": 72,
+                                "column": 34
+                              }
+                            }
+                          },
+                          {
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "ThisExpression",
+                              "range": [
+<<<<<<< HEAD
+                                1960,
+                                1964
+=======
+                                2031,
+                                2035
+>>>>>>> release_branch
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 72,
+                                  "column": 36
+                                },
+                                "end": {
+                                  "line": 72,
+                                  "column": 40
+                                }
+                              }
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "_resource",
+                              "range": [
+<<<<<<< HEAD
+                                1965,
+                                1974
+=======
+                                2036,
+                                2045
+>>>>>>> release_branch
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 72,
+                                  "column": 41
+                                },
+                                "end": {
+                                  "line": 72,
+                                  "column": 50
+                                }
+                              }
+                            },
+                            "range": [
+<<<<<<< HEAD
+                              1960,
+                              1974
+=======
+                              2031,
+                              2045
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 72,
+                                "column": 36
+                              },
+                              "end": {
+                                "line": 72,
+                                "column": 50
+                              }
+                            }
+                          },
+                          {
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "ThisExpression",
+                              "range": [
+<<<<<<< HEAD
+                                1976,
+                                1980
+=======
+                                2047,
+                                2051
+>>>>>>> release_branch
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 72,
+                                  "column": 52
+                                },
+                                "end": {
+                                  "line": 72,
+                                  "column": 56
+                                }
+                              }
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "_build",
+                              "range": [
+<<<<<<< HEAD
+                                1981,
+                                1987
+=======
+                                2052,
+                                2058
+>>>>>>> release_branch
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 72,
+                                  "column": 57
+                                },
+                                "end": {
+                                  "line": 72,
+                                  "column": 63
+                                }
+                              }
+                            },
+                            "range": [
+<<<<<<< HEAD
+                              1976,
+                              1987
+=======
+                              2047,
+                              2058
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 72,
+                                "column": 52
+                              },
+                              "end": {
+                                "line": 72,
+                                "column": 63
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+<<<<<<< HEAD
+                          1933,
+                          1988
+=======
+                          2004,
+                          2059
+>>>>>>> release_branch
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 72,
+                            "column": 9
+                          },
+                          "end": {
+                            "line": 72,
+                            "column": 64
+                          }
+                        }
+                      },
+                      "range": [
+<<<<<<< HEAD
+                        1926,
+                        1989
+=======
+                        1997,
+                        2060
+>>>>>>> release_branch
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 72,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 72,
+                          "column": 65
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+<<<<<<< HEAD
+                    1701,
+                    1992
+=======
+                    1765,
+                    2064
+>>>>>>> release_branch
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 65,
+                      "column": 8
+                    },
+                    "end": {
+                      "line": 73,
+                      "column": 2
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+<<<<<<< HEAD
+                  1699,
+                  1992
+=======
+                  1763,
+                  2064
+>>>>>>> release_branch
+                ],
+                "loc": {
+                  "start": {
+                    "line": 65,
+                    "column": 6
+                  },
+                  "end": {
+                    "line": 73,
+                    "column": 2
+                  }
+                }
+              },
+              "kind": "method",
+              "computed": false,
+              "range": [
+<<<<<<< HEAD
+                1694,
+                1992
+=======
+                1758,
+                2064
+>>>>>>> release_branch
+              ],
+              "loc": {
+                "start": {
+                  "line": 65,
+                  "column": 1
+                },
+                "end": {
+                  "line": 73,
+                  "column": 2
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+<<<<<<< HEAD
+                  "value": "*\n\t* Build a instance of Operation \n\t*\n\t* @example\n\t*\togapi.operations.builderFactory.newAlarmCloseBuilder().build()\n\t* @throws {Error} Throw error if there is not alarmId\n\t* @return {Operation} \n\t",
+                  "range": [
+                    1491,
+                    1692
+=======
+                  "value": "*\r\n\t* Build a instance of Operation \r\n\t*\r\n\t* @example\r\n\t*\togapi.operations.builderFactory.newAlarmCloseBuilder().build()\r\n\t* @throws {Error} Throw error if there is not alarmId\r\n\t* @return {Operation} \r\n\t",
+                  "range": [
+                    1547,
+                    1755
+>>>>>>> release_branch
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 57,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 64,
+                      "column": 3
+                    }
+                  }
+                }
+              ],
+              "static": false
+            }
+          ],
+          "range": [
+<<<<<<< HEAD
+            152,
+            1995
+=======
+            159,
+            2069
+>>>>>>> release_branch
+          ],
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 42
+            },
+            "end": {
+              "line": 75,
+              "column": 1
+            }
+          }
+        },
+        "range": [
+<<<<<<< HEAD
+          125,
+          1995
+=======
+          132,
+          2069
+>>>>>>> release_branch
+        ],
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 15
+          },
+          "end": {
+            "line": 75,
+            "column": 1
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+<<<<<<< HEAD
+            "value": "*\n* Defines the builder to execute alarm operations\n",
+            "range": [
+              53,
+              109
+=======
+            "value": "*\r\n* Defines the builder to execute alarm operations\r\n",
+            "range": [
+              57,
+              115
+>>>>>>> release_branch
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 0
+              },
+              "end": {
+                "line": 7,
+                "column": 2
+              }
+            }
+          }
+        ],
+        "trailingComments": []
+      },
+      "range": [
+<<<<<<< HEAD
+        110,
+        1995
+=======
+        117,
+        2069
+>>>>>>> release_branch
+      ],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 0
+        },
+        "end": {
+          "line": 75,
+          "column": 1
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+<<<<<<< HEAD
+          "value": "*\n* Defines the builder to execute alarm operations\n",
+          "range": [
+            53,
+            109
+=======
+          "value": "*\r\n* Defines the builder to execute alarm operations\r\n",
+          "range": [
+            57,
+            115
+>>>>>>> release_branch
+          ],
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 0
+            },
+            "end": {
+              "line": 7,
+              "column": 2
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+<<<<<<< HEAD
+    1995
+=======
+    2069
+>>>>>>> release_branch
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 75,
+      "column": 1
+    }
+  },
+  "comments": [
+    {
+      "type": "Block",
+<<<<<<< HEAD
+      "value": "*\n* Defines the builder to execute alarm operations\n",
+      "range": [
+        53,
+        109
+=======
+      "value": "*\r\n* Defines the builder to execute alarm operations\r\n",
+      "range": [
+        57,
+        115
+>>>>>>> release_branch
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 7,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": "Block",
+<<<<<<< HEAD
+      "value": "*\n\t* @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.\n\t* @param {!string} action - This action can be ATTEND or CLOSE\n\t",
+      "range": [
+        155,
+        315
+=======
+      "value": "*\r\n\t* @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.\r\n\t* @param {!string} action - This action can be ATTEND or CLOSE\r\n\t",
+      "range": [
+        163,
+        326
+>>>>>>> release_branch
+      ],
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 1
+        },
+        "end": {
+          "line": 12,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+<<<<<<< HEAD
+      "value": "*\n\t* Add alarmId to operation\n\t* @example\n\t*\togapi.operations.builderFactory.newAlarmCloseBuilder().addAlarmId(\"\")\n\t* @param {!string} alarmId - AlarmId of Alarm\n\t* @throws {Error} throw error when alarmId is not typeof string\n\t* @return {AlarmOperationBuilder}\n\t",
+      "range": [
+        627,
+        894
+=======
+      "value": "*\r\n\t* Add alarmId to operation\r\n\t* @example\r\n\t*\togapi.operations.builderFactory.newAlarmCloseBuilder().addAlarmId(\"\")\r\n\t* @param {!string} alarmId - AlarmId of Alarm\r\n\t* @throws {Error} throw error when alarmId is not typeof string\r\n\t* @return {AlarmOperationBuilder}\r\n\t",
+      "range": [
+        653,
+        927
+>>>>>>> release_branch
+      ],
+      "loc": {
+        "start": {
+          "line": 27,
+          "column": 1
+        },
+        "end": {
+          "line": 34,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+<<<<<<< HEAD
+      "value": "*\n\t* Add notes to operation\n\t* @example\n\t*\togapi.operations.builderFactory.newAlarmCloseBuilder().withNotes(\"\")\n\t* @param {!string} notes - Notes about operation\n\t* @throws {Error} throw error when notes is not typeof string\n\t* @return {AlarmOperationBuilder}\n\t",
+      "range": [
+        1067,
+        1332
+=======
+      "value": "*\r\n\t* Add notes to operation\r\n\t* @example\r\n\t*\togapi.operations.builderFactory.newAlarmCloseBuilder().withNotes(\"\")\r\n\t* @param {!string} notes - Notes about operation\r\n\t* @throws {Error} throw error when notes is not typeof string\r\n\t* @return {AlarmOperationBuilder}\r\n\t",
+      "range": [
+        1108,
+        1380
+>>>>>>> release_branch
+      ],
+      "loc": {
+        "start": {
+          "line": 42,
+          "column": 1
+        },
+        "end": {
+          "line": 49,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+<<<<<<< HEAD
+      "value": "*\n\t* Build a instance of Operation \n\t*\n\t* @example\n\t*\togapi.operations.builderFactory.newAlarmCloseBuilder().build()\n\t* @throws {Error} Throw error if there is not alarmId\n\t* @return {Operation} \n\t",
+      "range": [
+        1491,
+        1692
+=======
+      "value": "*\r\n\t* Build a instance of Operation \r\n\t*\r\n\t* @example\r\n\t*\togapi.operations.builderFactory.newAlarmCloseBuilder().build()\r\n\t* @throws {Error} Throw error if there is not alarmId\r\n\t* @return {Operation} \r\n\t",
+      "range": [
+        1547,
+        1755
+>>>>>>> release_branch
+      ],
+      "loc": {
+        "start": {
+          "line": 57,
+          "column": 1
+        },
+        "end": {
+          "line": 64,
+          "column": 3
+        }
+      }
+    }
+  ]
+}

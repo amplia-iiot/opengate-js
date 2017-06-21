@@ -1,0 +1,2091 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "Literal",
+        "value": "use strict",
+        "raw": "'use strict'",
+        "range": [
+          0,
+          12
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 12
+          }
+        }
+      },
+      "range": [
+        0,
+        13
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "BaseParameterBuilderWithParent",
+            "range": [
+<<<<<<< HEAD
+              22,
+              52
+=======
+              24,
+              54
+>>>>>>> release_branch
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 7
+              },
+              "end": {
+                "line": 3,
+                "column": 37
+              }
+            }
+          },
+          "range": [
+<<<<<<< HEAD
+            22,
+            52
+=======
+            24,
+            54
+>>>>>>> release_branch
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 7
+            },
+            "end": {
+              "line": 3,
+              "column": 37
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./BaseParameterBuilderWithParent",
+        "raw": "'./BaseParameterBuilderWithParent'",
+        "range": [
+<<<<<<< HEAD
+          58,
+          92
+=======
+          60,
+          94
+>>>>>>> release_branch
+        ],
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 43
+          },
+          "end": {
+            "line": 3,
+            "column": 77
+          }
+        }
+      },
+      "range": [
+<<<<<<< HEAD
+        15,
+        93
+=======
+        17,
+        95
+>>>>>>> release_branch
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 78
+        }
+      },
+      "trailingComments": [
+        {
+          "type": "Block",
+<<<<<<< HEAD
+          "value": "*\n* This class generates all operation parameters builders by \"parameters\" attribute that there is into config operation json\n",
+          "range": [
+            95,
+            225
+=======
+          "value": "*\r\n* This class generates all operation parameters builders by \"parameters\" attribute that there is into config operation json\r\n",
+          "range": [
+            99,
+            231
+>>>>>>> release_branch
+          ],
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 0
+            },
+            "end": {
+              "line": 7,
+              "column": 2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "declaration": {
+        "type": "ClassDeclaration",
+        "id": {
+          "type": "Identifier",
+          "name": "ParameterBuilderFactory",
+          "range": [
+<<<<<<< HEAD
+            247,
+            270
+=======
+            254,
+            277
+>>>>>>> release_branch
+          ],
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 21
+            },
+            "end": {
+              "line": 8,
+              "column": 44
+            }
+          }
+        },
+        "superClass": null,
+        "body": {
+          "type": "ClassBody",
+          "body": [
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "constructor",
+                "range": [
+<<<<<<< HEAD
+                  539,
+                  550
+=======
+                  552,
+                  563
+>>>>>>> release_branch
+                ],
+                "loc": {
+                  "start": {
+                    "line": 14,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 14,
+                    "column": 12
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "name": "ogapi",
+                    "range": [
+<<<<<<< HEAD
+                      551,
+                      556
+=======
+                      564,
+                      569
+>>>>>>> release_branch
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 14,
+                        "column": 13
+                      },
+                      "end": {
+                        "line": 14,
+                        "column": 18
+                      }
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "name": "parameters",
+                    "range": [
+<<<<<<< HEAD
+                      557,
+                      567
+=======
+                      570,
+                      580
+>>>>>>> release_branch
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 14,
+                        "column": 19
+                      },
+                      "end": {
+                        "line": 14,
+                        "column": 29
+                      }
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "name": "parent",
+                    "range": [
+<<<<<<< HEAD
+                      568,
+                      574
+=======
+                      581,
+                      587
+>>>>>>> release_branch
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 14,
+                        "column": 30
+                      },
+                      "end": {
+                        "line": 14,
+                        "column": 36
+                      }
+                    }
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "VariableDeclaration",
+                      "declarations": [
+                        {
+                          "type": "VariableDeclarator",
+                          "id": {
+                            "type": "Identifier",
+                            "name": "_ogapi",
+                            "range": [
+<<<<<<< HEAD
+                              585,
+                              591
+=======
+                              599,
+                              605
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 15,
+                                "column": 8
+                              },
+                              "end": {
+                                "line": 15,
+                                "column": 14
+                              }
+                            }
+                          },
+                          "init": {
+                            "type": "Identifier",
+                            "name": "ogapi",
+                            "range": [
+<<<<<<< HEAD
+                              594,
+                              599
+=======
+                              608,
+                              613
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 15,
+                                "column": 17
+                              },
+                              "end": {
+                                "line": 15,
+                                "column": 22
+                              }
+                            }
+                          },
+                          "range": [
+<<<<<<< HEAD
+                            585,
+                            599
+=======
+                            599,
+                            613
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 15,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 15,
+                              "column": 22
+                            }
+                          }
+                        }
+                      ],
+                      "kind": "const",
+                      "range": [
+<<<<<<< HEAD
+                        579,
+                        600
+=======
+                        593,
+                        614
+>>>>>>> release_branch
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 15,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 15,
+                          "column": 23
+                        }
+                      }
+                    },
+                    {
+                      "type": "VariableDeclaration",
+                      "declarations": [
+                        {
+                          "type": "VariableDeclarator",
+                          "id": {
+                            "type": "Identifier",
+                            "name": "_parent",
+                            "range": [
+<<<<<<< HEAD
+                              609,
+                              616
+=======
+                              624,
+                              631
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 16,
+                                "column": 8
+                              },
+                              "end": {
+                                "line": 16,
+                                "column": 15
+                              }
+                            }
+                          },
+                          "init": {
+                            "type": "Identifier",
+                            "name": "parent",
+                            "range": [
+<<<<<<< HEAD
+                              619,
+                              625
+=======
+                              634,
+                              640
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 16,
+                                "column": 18
+                              },
+                              "end": {
+                                "line": 16,
+                                "column": 24
+                              }
+                            }
+                          },
+                          "range": [
+<<<<<<< HEAD
+                            609,
+                            625
+=======
+                            624,
+                            640
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 16,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 16,
+                              "column": 24
+                            }
+                          }
+                        }
+                      ],
+                      "kind": "const",
+                      "range": [
+<<<<<<< HEAD
+                        603,
+                        626
+=======
+                        618,
+                        641
+>>>>>>> release_branch
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 16,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 16,
+                          "column": 25
+                        }
+                      }
+                    },
+                    {
+                      "type": "ForInStatement",
+                      "left": {
+                        "type": "VariableDeclaration",
+                        "declarations": [
+                          {
+                            "type": "VariableDeclarator",
+                            "id": {
+                              "type": "Identifier",
+                              "name": "i",
+                              "range": [
+<<<<<<< HEAD
+                                639,
+                                640
+=======
+                                655,
+                                656
+>>>>>>> release_branch
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 17,
+                                  "column": 10
+                                },
+                                "end": {
+                                  "line": 17,
+                                  "column": 11
+                                }
+                              }
+                            },
+                            "init": null,
+                            "range": [
+<<<<<<< HEAD
+                              639,
+                              640
+=======
+                              655,
+                              656
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 17,
+                                "column": 10
+                              },
+                              "end": {
+                                "line": 17,
+                                "column": 11
+                              }
+                            }
+                          }
+                        ],
+                        "kind": "let",
+                        "range": [
+<<<<<<< HEAD
+                          635,
+                          640
+=======
+                          651,
+                          656
+>>>>>>> release_branch
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 17,
+                            "column": 6
+                          },
+                          "end": {
+                            "line": 17,
+                            "column": 11
+                          }
+                        }
+                      },
+                      "right": {
+                        "type": "Identifier",
+                        "name": "parameters",
+                        "range": [
+<<<<<<< HEAD
+                          644,
+                          654
+=======
+                          660,
+                          670
+>>>>>>> release_branch
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 17,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 17,
+                            "column": 25
+                          }
+                        }
+                      },
+                      "body": {
+                        "type": "BlockStatement",
+                        "body": [
+                          {
+                            "type": "VariableDeclaration",
+                            "declarations": [
+                              {
+                                "type": "VariableDeclarator",
+                                "id": {
+                                  "type": "Identifier",
+                                  "name": "param",
+                                  "range": [
+<<<<<<< HEAD
+                                    664,
+                                    669
+=======
+                                    681,
+                                    686
+>>>>>>> release_branch
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 18,
+                                      "column": 7
+                                    },
+                                    "end": {
+                                      "line": 18,
+                                      "column": 12
+                                    }
+                                  }
+                                },
+                                "init": {
+                                  "type": "MemberExpression",
+                                  "computed": true,
+                                  "object": {
+                                    "type": "Identifier",
+                                    "name": "parameters",
+                                    "range": [
+<<<<<<< HEAD
+                                      672,
+                                      682
+=======
+                                      689,
+                                      699
+>>>>>>> release_branch
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 18,
+                                        "column": 15
+                                      },
+                                      "end": {
+                                        "line": 18,
+                                        "column": 25
+                                      }
+                                    }
+                                  },
+                                  "property": {
+                                    "type": "Identifier",
+                                    "name": "i",
+                                    "range": [
+<<<<<<< HEAD
+                                      683,
+                                      684
+=======
+                                      700,
+                                      701
+>>>>>>> release_branch
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 18,
+                                        "column": 26
+                                      },
+                                      "end": {
+                                        "line": 18,
+                                        "column": 27
+                                      }
+                                    }
+                                  },
+                                  "range": [
+<<<<<<< HEAD
+                                    672,
+                                    685
+=======
+                                    689,
+                                    702
+>>>>>>> release_branch
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 18,
+                                      "column": 15
+                                    },
+                                    "end": {
+                                      "line": 18,
+                                      "column": 28
+                                    }
+                                  }
+                                },
+                                "range": [
+<<<<<<< HEAD
+                                  664,
+                                  685
+=======
+                                  681,
+                                  702
+>>>>>>> release_branch
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 18,
+                                    "column": 7
+                                  },
+                                  "end": {
+                                    "line": 18,
+                                    "column": 28
+                                  }
+                                }
+                              }
+                            ],
+                            "kind": "let",
+                            "range": [
+<<<<<<< HEAD
+                              660,
+                              686
+=======
+                              677,
+                              703
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 18,
+                                "column": 3
+                              },
+                              "end": {
+                                "line": 18,
+                                "column": 29
+                              }
+                            }
+                          },
+                          {
+                            "type": "ExpressionStatement",
+                            "expression": {
+                              "type": "AssignmentExpression",
+                              "operator": "=",
+                              "left": {
+                                "type": "MemberExpression",
+                                "computed": true,
+                                "object": {
+                                  "type": "ThisExpression",
+                                  "range": [
+<<<<<<< HEAD
+                                    690,
+                                    694
+=======
+                                    708,
+                                    712
+>>>>>>> release_branch
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 19,
+                                      "column": 3
+                                    },
+                                    "end": {
+                                      "line": 19,
+                                      "column": 7
+                                    }
+                                  }
+                                },
+                                "property": {
+                                  "type": "CallExpression",
+                                  "callee": {
+                                    "type": "Identifier",
+                                    "name": "createBuilderName",
+                                    "range": [
+<<<<<<< HEAD
+                                      695,
+                                      712
+=======
+                                      713,
+                                      730
+>>>>>>> release_branch
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 19,
+                                        "column": 8
+                                      },
+                                      "end": {
+                                        "line": 19,
+                                        "column": 25
+                                      }
+                                    }
+                                  },
+                                  "arguments": [
+                                    {
+                                      "type": "MemberExpression",
+                                      "computed": false,
+                                      "object": {
+                                        "type": "Identifier",
+                                        "name": "param",
+                                        "range": [
+<<<<<<< HEAD
+                                          713,
+                                          718
+=======
+                                          731,
+                                          736
+>>>>>>> release_branch
+                                        ],
+                                        "loc": {
+                                          "start": {
+                                            "line": 19,
+                                            "column": 26
+                                          },
+                                          "end": {
+                                            "line": 19,
+                                            "column": 31
+                                          }
+                                        }
+                                      },
+                                      "property": {
+                                        "type": "Identifier",
+                                        "name": "name",
+                                        "range": [
+<<<<<<< HEAD
+                                          719,
+                                          723
+=======
+                                          737,
+                                          741
+>>>>>>> release_branch
+                                        ],
+                                        "loc": {
+                                          "start": {
+                                            "line": 19,
+                                            "column": 32
+                                          },
+                                          "end": {
+                                            "line": 19,
+                                            "column": 36
+                                          }
+                                        }
+                                      },
+                                      "range": [
+<<<<<<< HEAD
+                                        713,
+                                        723
+=======
+                                        731,
+                                        741
+>>>>>>> release_branch
+                                      ],
+                                      "loc": {
+                                        "start": {
+                                          "line": 19,
+                                          "column": 26
+                                        },
+                                        "end": {
+                                          "line": 19,
+                                          "column": 36
+                                        }
+                                      }
+                                    }
+                                  ],
+                                  "range": [
+<<<<<<< HEAD
+                                    695,
+                                    724
+=======
+                                    713,
+                                    742
+>>>>>>> release_branch
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 19,
+                                      "column": 8
+                                    },
+                                    "end": {
+                                      "line": 19,
+                                      "column": 37
+                                    }
+                                  }
+                                },
+                                "range": [
+<<<<<<< HEAD
+                                  690,
+                                  725
+=======
+                                  708,
+                                  743
+>>>>>>> release_branch
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 19,
+                                    "column": 3
+                                  },
+                                  "end": {
+                                    "line": 19,
+                                    "column": 38
+                                  }
+                                }
+                              },
+                              "right": {
+                                "type": "FunctionExpression",
+                                "id": null,
+                                "params": [],
+                                "body": {
+                                  "type": "BlockStatement",
+                                  "body": [
+                                    {
+                                      "type": "ReturnStatement",
+                                      "argument": {
+                                        "type": "NewExpression",
+                                        "callee": {
+                                          "type": "Identifier",
+                                          "name": "BaseParameterBuilderWithParent",
+                                          "range": [
+<<<<<<< HEAD
+                                            750,
+                                            780
+=======
+                                            768,
+                                            798
+>>>>>>> release_branch
+                                          ],
+                                          "loc": {
+                                            "start": {
+                                              "line": 19,
+                                              "column": 63
+                                            },
+                                            "end": {
+                                              "line": 19,
+                                              "column": 93
+                                            }
+                                          }
+                                        },
+                                        "arguments": [
+                                          {
+                                            "type": "Identifier",
+                                            "name": "_ogapi",
+                                            "range": [
+<<<<<<< HEAD
+                                              781,
+                                              787
+=======
+                                              799,
+                                              805
+>>>>>>> release_branch
+                                            ],
+                                            "loc": {
+                                              "start": {
+                                                "line": 19,
+                                                "column": 94
+                                              },
+                                              "end": {
+                                                "line": 19,
+                                                "column": 100
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "type": "Identifier",
+                                            "name": "param",
+                                            "range": [
+<<<<<<< HEAD
+                                              789,
+                                              794
+=======
+                                              807,
+                                              812
+>>>>>>> release_branch
+                                            ],
+                                            "loc": {
+                                              "start": {
+                                                "line": 19,
+                                                "column": 102
+                                              },
+                                              "end": {
+                                                "line": 19,
+                                                "column": 107
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "type": "Identifier",
+                                            "name": "_parent",
+                                            "range": [
+<<<<<<< HEAD
+                                              796,
+                                              803
+=======
+                                              814,
+                                              821
+>>>>>>> release_branch
+                                            ],
+                                            "loc": {
+                                              "start": {
+                                                "line": 19,
+                                                "column": 109
+                                              },
+                                              "end": {
+                                                "line": 19,
+                                                "column": 116
+                                              }
+                                            }
+                                          }
+                                        ],
+                                        "range": [
+<<<<<<< HEAD
+                                          746,
+                                          804
+=======
+                                          764,
+                                          822
+>>>>>>> release_branch
+                                        ],
+                                        "loc": {
+                                          "start": {
+                                            "line": 19,
+                                            "column": 59
+                                          },
+                                          "end": {
+                                            "line": 19,
+                                            "column": 117
+                                          }
+                                        }
+                                      },
+                                      "range": [
+<<<<<<< HEAD
+                                        739,
+                                        804
+=======
+                                        757,
+                                        822
+>>>>>>> release_branch
+                                      ],
+                                      "loc": {
+                                        "start": {
+                                          "line": 19,
+                                          "column": 52
+                                        },
+                                        "end": {
+                                          "line": 19,
+                                          "column": 117
+                                        }
+                                      }
+                                    }
+                                  ],
+                                  "range": [
+<<<<<<< HEAD
+                                    738,
+                                    805
+=======
+                                    756,
+                                    823
+>>>>>>> release_branch
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 19,
+                                      "column": 51
+                                    },
+                                    "end": {
+                                      "line": 19,
+                                      "column": 118
+                                    }
+                                  }
+                                },
+                                "generator": false,
+                                "expression": false,
+                                "range": [
+<<<<<<< HEAD
+                                  728,
+                                  805
+=======
+                                  746,
+                                  823
+>>>>>>> release_branch
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 19,
+                                    "column": 41
+                                  },
+                                  "end": {
+                                    "line": 19,
+                                    "column": 118
+                                  }
+                                }
+                              },
+                              "range": [
+<<<<<<< HEAD
+                                690,
+                                805
+=======
+                                708,
+                                823
+>>>>>>> release_branch
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 19,
+                                  "column": 3
+                                },
+                                "end": {
+                                  "line": 19,
+                                  "column": 118
+                                }
+                              }
+                            },
+                            "range": [
+<<<<<<< HEAD
+                              690,
+                              806
+=======
+                              708,
+                              824
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 19,
+                                "column": 3
+                              },
+                              "end": {
+                                "line": 19,
+                                "column": 119
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+<<<<<<< HEAD
+                          655,
+                          810
+=======
+                          671,
+                          829
+>>>>>>> release_branch
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 17,
+                            "column": 26
+                          },
+                          "end": {
+                            "line": 20,
+                            "column": 3
+                          }
+                        }
+                      },
+                      "each": false,
+                      "range": [
+<<<<<<< HEAD
+                        631,
+                        810
+=======
+                        647,
+                        829
+>>>>>>> release_branch
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 17,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 20,
+                          "column": 3
+                        }
+                      },
+                      "trailingComments": [
+                        {
+                          "type": "Line",
+                          "value": " Ejemplo, name = \"profile\" => return \"newProfileParamBuilder\"",
+                          "range": [
+<<<<<<< HEAD
+                            814,
+                            877
+=======
+                            835,
+                            898
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 22,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 22,
+                              "column": 65
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "FunctionDeclaration",
+                      "id": {
+                        "type": "Identifier",
+                        "name": "createBuilderName",
+                        "range": [
+<<<<<<< HEAD
+                          889,
+                          906
+=======
+                          911,
+                          928
+>>>>>>> release_branch
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 23,
+                            "column": 11
+                          },
+                          "end": {
+                            "line": 23,
+                            "column": 28
+                          }
+                        }
+                      },
+                      "params": [
+                        {
+                          "type": "Identifier",
+                          "name": "name",
+                          "range": [
+<<<<<<< HEAD
+                            907,
+                            911
+=======
+                            929,
+                            933
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 23,
+                              "column": 29
+                            },
+                            "end": {
+                              "line": 23,
+                              "column": 33
+                            }
+                          }
+                        }
+                      ],
+                      "body": {
+                        "type": "BlockStatement",
+                        "body": [
+                          {
+                            "type": "VariableDeclaration",
+                            "declarations": [
+                              {
+                                "type": "VariableDeclarator",
+                                "id": {
+                                  "type": "Identifier",
+                                  "name": "firstChar",
+                                  "range": [
+<<<<<<< HEAD
+                                    921,
+                                    930
+=======
+                                    944,
+                                    953
+>>>>>>> release_branch
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 24,
+                                      "column": 7
+                                    },
+                                    "end": {
+                                      "line": 24,
+                                      "column": 16
+                                    }
+                                  }
+                                },
+                                "init": {
+                                  "type": "CallExpression",
+                                  "callee": {
+                                    "type": "MemberExpression",
+                                    "computed": false,
+                                    "object": {
+                                      "type": "MemberExpression",
+                                      "computed": true,
+                                      "object": {
+                                        "type": "Identifier",
+                                        "name": "name",
+                                        "range": [
+<<<<<<< HEAD
+                                          933,
+                                          937
+=======
+                                          956,
+                                          960
+>>>>>>> release_branch
+                                        ],
+                                        "loc": {
+                                          "start": {
+                                            "line": 24,
+                                            "column": 19
+                                          },
+                                          "end": {
+                                            "line": 24,
+                                            "column": 23
+                                          }
+                                        }
+                                      },
+                                      "property": {
+                                        "type": "Literal",
+                                        "value": 0,
+                                        "raw": "0",
+                                        "range": [
+<<<<<<< HEAD
+                                          938,
+                                          939
+=======
+                                          961,
+                                          962
+>>>>>>> release_branch
+                                        ],
+                                        "loc": {
+                                          "start": {
+                                            "line": 24,
+                                            "column": 24
+                                          },
+                                          "end": {
+                                            "line": 24,
+                                            "column": 25
+                                          }
+                                        }
+                                      },
+                                      "range": [
+<<<<<<< HEAD
+                                        933,
+                                        940
+=======
+                                        956,
+                                        963
+>>>>>>> release_branch
+                                      ],
+                                      "loc": {
+                                        "start": {
+                                          "line": 24,
+                                          "column": 19
+                                        },
+                                        "end": {
+                                          "line": 24,
+                                          "column": 26
+                                        }
+                                      }
+                                    },
+                                    "property": {
+                                      "type": "Identifier",
+                                      "name": "toUpperCase",
+                                      "range": [
+<<<<<<< HEAD
+                                        941,
+                                        952
+=======
+                                        964,
+                                        975
+>>>>>>> release_branch
+                                      ],
+                                      "loc": {
+                                        "start": {
+                                          "line": 24,
+                                          "column": 27
+                                        },
+                                        "end": {
+                                          "line": 24,
+                                          "column": 38
+                                        }
+                                      }
+                                    },
+                                    "range": [
+<<<<<<< HEAD
+                                      933,
+                                      952
+=======
+                                      956,
+                                      975
+>>>>>>> release_branch
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 24,
+                                        "column": 19
+                                      },
+                                      "end": {
+                                        "line": 24,
+                                        "column": 38
+                                      }
+                                    }
+                                  },
+                                  "arguments": [],
+                                  "range": [
+<<<<<<< HEAD
+                                    933,
+                                    954
+=======
+                                    956,
+                                    977
+>>>>>>> release_branch
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 24,
+                                      "column": 19
+                                    },
+                                    "end": {
+                                      "line": 24,
+                                      "column": 40
+                                    }
+                                  }
+                                },
+                                "range": [
+<<<<<<< HEAD
+                                  921,
+                                  954
+=======
+                                  944,
+                                  977
+>>>>>>> release_branch
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 24,
+                                    "column": 7
+                                  },
+                                  "end": {
+                                    "line": 24,
+                                    "column": 40
+                                  }
+                                }
+                              }
+                            ],
+                            "kind": "let",
+                            "range": [
+<<<<<<< HEAD
+                              917,
+                              955
+=======
+                              940,
+                              978
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 24,
+                                "column": 3
+                              },
+                              "end": {
+                                "line": 24,
+                                "column": 41
+                              }
+                            }
+                          },
+                          {
+                            "type": "ReturnStatement",
+                            "argument": {
+                              "type": "BinaryExpression",
+                              "operator": "+",
+                              "left": {
+                                "type": "BinaryExpression",
+                                "operator": "+",
+                                "left": {
+                                  "type": "BinaryExpression",
+                                  "operator": "+",
+                                  "left": {
+                                    "type": "Literal",
+                                    "value": "new",
+                                    "raw": "\"new\"",
+                                    "range": [
+<<<<<<< HEAD
+                                      966,
+                                      971
+=======
+                                      990,
+                                      995
+>>>>>>> release_branch
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 25,
+                                        "column": 10
+                                      },
+                                      "end": {
+                                        "line": 25,
+                                        "column": 15
+                                      }
+                                    }
+                                  },
+                                  "right": {
+                                    "type": "Identifier",
+                                    "name": "firstChar",
+                                    "range": [
+<<<<<<< HEAD
+                                      972,
+                                      981
+=======
+                                      996,
+                                      1005
+>>>>>>> release_branch
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 25,
+                                        "column": 16
+                                      },
+                                      "end": {
+                                        "line": 25,
+                                        "column": 25
+                                      }
+                                    }
+                                  },
+                                  "range": [
+<<<<<<< HEAD
+                                    966,
+                                    981
+=======
+                                    990,
+                                    1005
+>>>>>>> release_branch
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 25,
+                                      "column": 10
+                                    },
+                                    "end": {
+                                      "line": 25,
+                                      "column": 25
+                                    }
+                                  }
+                                },
+                                "right": {
+                                  "type": "CallExpression",
+                                  "callee": {
+                                    "type": "MemberExpression",
+                                    "computed": false,
+                                    "object": {
+                                      "type": "Identifier",
+                                      "name": "name",
+                                      "range": [
+<<<<<<< HEAD
+                                        982,
+                                        986
+=======
+                                        1006,
+                                        1010
+>>>>>>> release_branch
+                                      ],
+                                      "loc": {
+                                        "start": {
+                                          "line": 25,
+                                          "column": 26
+                                        },
+                                        "end": {
+                                          "line": 25,
+                                          "column": 30
+                                        }
+                                      }
+                                    },
+                                    "property": {
+                                      "type": "Identifier",
+                                      "name": "slice",
+                                      "range": [
+<<<<<<< HEAD
+                                        987,
+                                        992
+=======
+                                        1011,
+                                        1016
+>>>>>>> release_branch
+                                      ],
+                                      "loc": {
+                                        "start": {
+                                          "line": 25,
+                                          "column": 31
+                                        },
+                                        "end": {
+                                          "line": 25,
+                                          "column": 36
+                                        }
+                                      }
+                                    },
+                                    "range": [
+<<<<<<< HEAD
+                                      982,
+                                      992
+=======
+                                      1006,
+                                      1016
+>>>>>>> release_branch
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 25,
+                                        "column": 26
+                                      },
+                                      "end": {
+                                        "line": 25,
+                                        "column": 36
+                                      }
+                                    }
+                                  },
+                                  "arguments": [
+                                    {
+                                      "type": "Literal",
+                                      "value": 1,
+                                      "raw": "1",
+                                      "range": [
+<<<<<<< HEAD
+                                        993,
+                                        994
+=======
+                                        1017,
+                                        1018
+>>>>>>> release_branch
+                                      ],
+                                      "loc": {
+                                        "start": {
+                                          "line": 25,
+                                          "column": 37
+                                        },
+                                        "end": {
+                                          "line": 25,
+                                          "column": 38
+                                        }
+                                      }
+                                    }
+                                  ],
+                                  "range": [
+<<<<<<< HEAD
+                                    982,
+                                    995
+=======
+                                    1006,
+                                    1019
+>>>>>>> release_branch
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 25,
+                                      "column": 26
+                                    },
+                                    "end": {
+                                      "line": 25,
+                                      "column": 39
+                                    }
+                                  }
+                                },
+                                "range": [
+<<<<<<< HEAD
+                                  966,
+                                  995
+=======
+                                  990,
+                                  1019
+>>>>>>> release_branch
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 25,
+                                    "column": 10
+                                  },
+                                  "end": {
+                                    "line": 25,
+                                    "column": 39
+                                  }
+                                }
+                              },
+                              "right": {
+                                "type": "Literal",
+                                "value": "ParamBuilder",
+                                "raw": "\"ParamBuilder\"",
+                                "range": [
+<<<<<<< HEAD
+                                  996,
+                                  1010
+=======
+                                  1020,
+                                  1034
+>>>>>>> release_branch
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 25,
+                                    "column": 40
+                                  },
+                                  "end": {
+                                    "line": 25,
+                                    "column": 54
+                                  }
+                                }
+                              },
+                              "range": [
+<<<<<<< HEAD
+                                966,
+                                1010
+=======
+                                990,
+                                1034
+>>>>>>> release_branch
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 25,
+                                  "column": 10
+                                },
+                                "end": {
+                                  "line": 25,
+                                  "column": 54
+                                }
+                              }
+                            },
+                            "range": [
+<<<<<<< HEAD
+                              959,
+                              1011
+=======
+                              983,
+                              1035
+>>>>>>> release_branch
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 25,
+                                "column": 3
+                              },
+                              "end": {
+                                "line": 25,
+                                "column": 55
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+<<<<<<< HEAD
+                          912,
+                          1015
+=======
+                          934,
+                          1040
+>>>>>>> release_branch
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 23,
+                            "column": 34
+                          },
+                          "end": {
+                            "line": 26,
+                            "column": 3
+                          }
+                        }
+                      },
+                      "generator": false,
+                      "expression": false,
+                      "range": [
+<<<<<<< HEAD
+                        880,
+                        1015
+=======
+                        902,
+                        1040
+>>>>>>> release_branch
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 23,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 26,
+                          "column": 3
+                        }
+                      },
+                      "leadingComments": [
+                        {
+                          "type": "Line",
+                          "value": " Ejemplo, name = \"profile\" => return \"newProfileParamBuilder\"",
+                          "range": [
+<<<<<<< HEAD
+                            814,
+                            877
+=======
+                            835,
+                            898
+>>>>>>> release_branch
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 22,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 22,
+                              "column": 65
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "range": [
+<<<<<<< HEAD
+                    575,
+                    1018
+=======
+                    588,
+                    1044
+>>>>>>> release_branch
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 14,
+                      "column": 37
+                    },
+                    "end": {
+                      "line": 27,
+                      "column": 2
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+<<<<<<< HEAD
+                  550,
+                  1018
+=======
+                  563,
+                  1044
+>>>>>>> release_branch
+                ],
+                "loc": {
+                  "start": {
+                    "line": 14,
+                    "column": 12
+                  },
+                  "end": {
+                    "line": 27,
+                    "column": 2
+                  }
+                }
+              },
+              "kind": "constructor",
+              "computed": false,
+              "range": [
+<<<<<<< HEAD
+                539,
+                1018
+=======
+                552,
+                1044
+>>>>>>> release_branch
+              ],
+              "loc": {
+                "start": {
+                  "line": 14,
+                  "column": 1
+                },
+                "end": {
+                  "line": 27,
+                  "column": 2
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+<<<<<<< HEAD
+                  "value": "*\n\t* @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.\n\t* @param {!object} parameters - this is configuration about parameter operation.\n\t* @param {!BaseOperationBuilder} parent - this is a instance of BaseOperationBuilder\n\t",
+                  "range": [
+                    273,
+                    537
+=======
+                  "value": "*\r\n\t* @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.\r\n\t* @param {!object} parameters - this is configuration about parameter operation.\r\n\t* @param {!BaseOperationBuilder} parent - this is a instance of BaseOperationBuilder\r\n\t",
+                  "range": [
+                    281,
+                    549
+>>>>>>> release_branch
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 9,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 3
+                    }
+                  }
+                }
+              ],
+              "static": false
+            }
+          ],
+          "range": [
+<<<<<<< HEAD
+            270,
+            1020
+=======
+            277,
+            1047
+>>>>>>> release_branch
+          ],
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 44
+            },
+            "end": {
+              "line": 28,
+              "column": 1
+            }
+          }
+        },
+        "range": [
+<<<<<<< HEAD
+          241,
+          1020
+=======
+          248,
+          1047
+>>>>>>> release_branch
+        ],
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 15
+          },
+          "end": {
+            "line": 28,
+            "column": 1
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+<<<<<<< HEAD
+            "value": "*\n* This class generates all operation parameters builders by \"parameters\" attribute that there is into config operation json\n",
+            "range": [
+              95,
+              225
+=======
+            "value": "*\r\n* This class generates all operation parameters builders by \"parameters\" attribute that there is into config operation json\r\n",
+            "range": [
+              99,
+              231
+>>>>>>> release_branch
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 0
+              },
+              "end": {
+                "line": 7,
+                "column": 2
+              }
+            }
+          }
+        ],
+        "trailingComments": []
+      },
+      "range": [
+<<<<<<< HEAD
+        226,
+        1020
+=======
+        233,
+        1047
+>>>>>>> release_branch
+      ],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 0
+        },
+        "end": {
+          "line": 28,
+          "column": 1
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+<<<<<<< HEAD
+          "value": "*\n* This class generates all operation parameters builders by \"parameters\" attribute that there is into config operation json\n",
+          "range": [
+            95,
+            225
+=======
+          "value": "*\r\n* This class generates all operation parameters builders by \"parameters\" attribute that there is into config operation json\r\n",
+          "range": [
+            99,
+            231
+>>>>>>> release_branch
+          ],
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 0
+            },
+            "end": {
+              "line": 7,
+              "column": 2
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+<<<<<<< HEAD
+    1020
+=======
+    1047
+>>>>>>> release_branch
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 28,
+      "column": 1
+    }
+  },
+  "comments": [
+    {
+      "type": "Block",
+<<<<<<< HEAD
+      "value": "*\n* This class generates all operation parameters builders by \"parameters\" attribute that there is into config operation json\n",
+      "range": [
+        95,
+        225
+=======
+      "value": "*\r\n* This class generates all operation parameters builders by \"parameters\" attribute that there is into config operation json\r\n",
+      "range": [
+        99,
+        231
+>>>>>>> release_branch
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 7,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": "Block",
+<<<<<<< HEAD
+      "value": "*\n\t* @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.\n\t* @param {!object} parameters - this is configuration about parameter operation.\n\t* @param {!BaseOperationBuilder} parent - this is a instance of BaseOperationBuilder\n\t",
+      "range": [
+        273,
+        537
+=======
+      "value": "*\r\n\t* @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.\r\n\t* @param {!object} parameters - this is configuration about parameter operation.\r\n\t* @param {!BaseOperationBuilder} parent - this is a instance of BaseOperationBuilder\r\n\t",
+      "range": [
+        281,
+        549
+>>>>>>> release_branch
+      ],
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 1
+        },
+        "end": {
+          "line": 13,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Line",
+      "value": " Ejemplo, name = \"profile\" => return \"newProfileParamBuilder\"",
+      "range": [
+<<<<<<< HEAD
+        814,
+        877
+=======
+        835,
+        898
+>>>>>>> release_branch
+      ],
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 2
+        },
+        "end": {
+          "line": 22,
+          "column": 65
+        }
+      }
+    }
+  ]
+}
