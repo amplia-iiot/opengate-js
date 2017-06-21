@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/searching/StaticSearch.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <a data-ice="repoURL" href="https://github.com/amplia-iiot/opengate-js.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/GenericFinder.js~GenericFinder.html">GenericFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html">InternalOpenGateAPI</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/ProvisionGenericFinder.js~ProvisionGenericFinder.html">ProvisionGenericFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">bundles</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/BundleFinder.js~BundleFinder.html">BundleFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/Bundles.js~Bundles.html">Bundles</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACTION_ENUM">ACTION_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">bundles/deployment</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/deployment/DeploymentElement.js~DeploymentElement.html">DeploymentElement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MODE_VALIDATORS_ENUM">MODE_VALIDATORS_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-OPERATION_ENUM">OPERATION_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-OPTION_ENUM">OPTION_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_ENUM">TYPE_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_VALIDATORS_ENUM">TYPE_VALIDATORS_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">channels</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/channels/ChannelFinder.js~ChannelFinder.html">ChannelFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/channels/Channels.js~Channels.html">Channels</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">collection/devices</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/DeviceMessage.js~DeviceMessage.html">DeviceMessage</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">collection/devices/collect</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/CommsModuleMessage.js~CommsModuleMessage.html">CommsModuleMessage</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Datapoint.js~Datapoint.html">Datapoint</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Datastreams.js~Datastream.html">Datastream</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Event.js~Event.html">Event</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Hardware.js~Hardware.html">Hardware</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Location.js~Location.html">Location</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Mobile.js~Mobile.html">Mobile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/PowerSupply.js~PowerSupply.html">PowerSupply</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Software.js~Software.html">Software</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Storage.js~Storage.html">Storage</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Subscriber.js~Subscriber.html">Subscriber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Subscription.js~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Temperature.js~Temperature.html">Temperature</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Usage.js~Usage.html">Usage</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">collection/devices/collect/enum</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ADDRESS_TYPE_ENUM">ADDRESS_TYPE_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ANTENNA_STATUS_ENUM">ANTENNA_STATUS_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BATTERY_CHARGE_LEVEL_STATUS_ENUM">BATTERY_CHARGE_LEVEL_STATUS_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BATTERY_CHARGE_STATUS_ENUM">BATTERY_CHARGE_STATUS_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LEVEL_TREND_ENUM">LEVEL_TREND_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-POWER_SUPPLY_SOURCE_ENUM">POWER_SUPPLY_SOURCE_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOFTWARE_TYPE_ENUM">SOFTWARE_TYPE_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEMPERATURE_STATUS_ENUM">TEMPERATURE_STATUS_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/DeviceFinder.js~DeviceFinder.html">DeviceFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/Devices.js~Devices.html">Devices</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/EntityFinder.js~EntityFinder.html">EntityFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/Relations.js~Relations.html">Relations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_ENUM">TYPE_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices/commsModules</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/CommunicationsModuleFinder.js~CommunicationsModuleFinder.html">CommunicationsModuleFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html">CommunicationsModules</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices/commsModules/subscribers</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/subscribers/SubscribersFinder.js~SubscribersFinder.html">SubscribersFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices/commsModules/subscriptions</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html">Subscriptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/subscriptions/SubscriptionsFinder.js~SubscriptionsFinder.html">SubscriptionsFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">domains</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/domains/Domains.js~Domains.html">Domains</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/domains/DomainsFinder.js~DomainFinder.html">DomainFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">iot</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/IoTProvision.js~IoTProfiles.html">IoTProfiles</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/IoTProvisionGenericFinder.js~IoTProvisionGenericFinder.html">IoTProvisionGenericFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-IOT_URL">IOT_URL</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">iot/catalog</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/catalog/IoTDatastream.js~IoTDatastream.html">IoTDatastream</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/catalog/IoTFlavour.js~IoTFlavour.html">IoTFlavour</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/catalog/IoTQrating.js~IoTQrating.html">IoTQrating</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">iot/profiles</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/profiles/IoTProfiles.js~IoTProfiles.html">IoTProfiles</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/profiles/IoTProfilesFinder.js~IoTProfilesFinder.html">IoTProfilesFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/profiles/IoTProfilesHelper.js~IoTProfilesHelper.html">IoTProfilesHelper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PRE_RESOURCE">PRE_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROFILE_RESOURCE">PROFILE_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROFILE_RESOURCE">PROFILE_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-POST_RESOURCE">POST_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PRE_RESOURCE">PRE_RESOURCE</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/OperationActions.js~OperationActions.html">OperationActions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/OperationFinder.js~OperationFinder.html">OperationFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/Operations.js~Operations.html">Operations</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations/catalog</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/AlarmAttendBuilder.js~AlarmAttendBuilder.html">AlarmAttendBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/AlarmCloseBuilder.js~AlarmCloseBuilder.html">AlarmCloseBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/AlarmOperationBuilder.js~AlarmOperationBuilder.html">AlarmOperationBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/AppendEntitiesBy.js~AppendEntitiesBy.html">AppendEntitiesBy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder.html">BaseOperationBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/Operation.js~Operation.html">Operation</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations/catalog/parameters</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/parameters/BaseParameterBuilderWithParent.js~BaseParameterBuilderWithParent.html">BaseParameterBuilderWithParent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/parameters/ParameterBuilderFactory.js~ParameterBuilderFactory.html">ParameterBuilderFactory</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations/catalog/period</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/ExecuteEachBuilder.js~ExecuteEachBuilder.html">ExecuteEachBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/ExecuteEveryBuilder.js~ExecuteEveryBuilder.html">ExecuteEveryBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/PeriodicityUpdateBuilder.js~PeriodicityUpdateBuilder.html">PeriodicityUpdateBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DAYS_ENUM">DAYS_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MONTHS_ENUM">MONTHS_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations/catalog/period/pattern</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByGeneric.js~ByGeneric.html">ByGeneric</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByMonth.js~ByMonth.html">ByMonth</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByWeek.js~ByWeek.html">ByWeek</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByYear.js~ByYear.html">ByYear</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">organizations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/OrganizationFinder.js~OrganizationFinder.html">OrganizationFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/Organizations.js~Organizations.html">Organizations</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/BaseProvision.js~BaseProvision.html">BaseProvision</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">rulesConfiguration</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html">RuleConfigurations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder.html">RuleConfigurationsFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/BaseSearch.js~BaseSearch.html">BaseSearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/EntitySearch.js~EntitySearch.html">EntitySearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/FilterBuilder.js~FilterBuilder.html">FilterBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/IotSearch.js~IotSearch.html">IotSearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/QuickSearch.js~QuickSearch.html">QuickSearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/Search.js~Search.html">Search</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/StaticSearch.js~StaticSearch.html">StaticSearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-IOT_URL">IOT_URL</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching/builder</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AdministrativeStateSearchBuilder.js~AdministrativeStateSearchBuilder.html">AdministrativeStateSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AlarmsSearchBuilder.js~AlarmsSearchBuilder.html">AlarmsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BundlesSearchBuilder.js~BundlesSearchBuilder.html">BundlesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CertificatesSearchBuilder.js~CertificatesSearchBuilder.html">CertificatesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ChannelsSearchBuilder.js~ChannelsSearchBuilder.html">ChannelsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CommunicationsModuleTypeSearchBuilder.js~CommunicationsModuleTypeSearchBuilder.html">CommunicationsModuleTypeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CommunicationsModulesSearchBuilder.js~CommunicationsModulesSearchBuilder.html">CommunicationsModulesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatapointsSearchBuilder.js~DatapointsSearchBuilder.html">DatapointsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatastreamsSearchBuilder.js~DatastreamsSearchBuilder.html">DatastreamsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DevicesSearchBuilder.js~DevicesSearchBuilder.html">DevicesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DomainsSearchBuilder.js~DomainsSearchBuilder.html">DomainsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/EntitySearchBuilder.js~EntitySearchBuilder.html">EntitySearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ExecutionsSearchBuilder.js~ExecutionsSearchBuilder.html">ExecutionsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/FeedsSearchBuilder.js~FeedsSearchBuilder.html">FeedsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/FieldsDefinitionSearchBuilder.js~FieldsDefinitionSearchBuilder.html">FieldsDefinitionSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html">HardwaresSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamAccessSearchBuilder.js~IoTDatastreamAccessSearchBuilder.html">IoTDatastreamAccessSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamPeriodSearchBuilder.js~IoTDatastreamPeriodSearchBuilder.html">IoTDatastreamPeriodSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamStoragePeriodSearchBuilder.js~IoTDatastreamStoragePeriodSearchBuilder.html">IoTDatastreamStoragePeriodSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDevicesSearchBuilder.js~IoTDevicesSearchBuilder.html">IoTDevicesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/MobilePhoneProviderSearchBuilder.js~MobilePhoneProviderSearchBuilder.html">MobilePhoneProviderSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationalStatusSearchBuilder.js~OperationalStatusSearchBuilder.html">OperationalStatusSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationsSearchBuilder.js~OperationsSearchBuilder.html">OperationsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html">OrganizationsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ProfilesSearchBuilder.js~ProfilesSearchBuilder.html">ProfilesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RawSearchBuilder.js~RawSearchBuilder.html">RawSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RuleConfigurationSeveritySearchBuilder.js~RuleConfigurationSeveritySearchBuilder.html">RuleConfigurationSeveritySearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SearchBuilder.js~SearchBuilder.html">SearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SearchWithSummaryBuilder.js~SearchWithSummaryBuilder.html">SearchWithSummaryBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SoftwaresSearchBuilder.js~SoftwaresSearchBuilder.html">SoftwaresSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SpecificTypeSearchBuilder.js~SpecificTypeSearchBuilder.html">SpecificTypeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscribersSearchBuilder.js~SubscribersSearchBuilder.html">SubscribersSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscriptionsSearchBuilder.js~SubscriptionsSearchBuilder.html">SubscriptionsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UserProfilesSearchBuilder.js~UserProfilesSearchBuilder.html">UserProfilesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UsersSearchBuilder.js~UsersSearchBuilder.html">UsersSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/WorkgroupsSearchBuilder.js~WorkgroupsSearchBuilder.html">WorkgroupsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOKEN_URL">TOKEN_URL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOFTWARE_TYPES_ENUM">SOFTWARE_TYPES_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching/error</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/error/SearchBuilderError.js~SearchBuilderError.html">SearchBuilderError</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">security</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/security/CertificateFinder.js~CertificateFinder.html">CertificateFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/security/Certificates.js~Certificates.html">Certificates</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/security/Security.js~Security.html">Security</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ADMINISTRATIVE_STATE_ENUM">ADMINISTRATIVE_STATE_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MIME_TYPES_ENUM">MIME_TYPES_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-USAGES_ENUM">USAGES_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">users</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/users/UserFinder.js~UserFinder.html">UserFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/users/Users.js~User.html">User</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">util</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/Expression.js~Expression.html">Expression</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/NorthAmpliaREST.js~NorthAmpliaREST.html">NorthAmpliaREST</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/SouthAmpliaREST.js~SouthAmpliaREST.html">SouthAmpliaREST</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATE_FORMAT">DATE_FORMAT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TIME_FORMAT">TIME_FORMAT</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">util/searchingFields</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/searchingFields/FieldFinder.js~FieldFinder.html">FieldFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-IOT_FIELDS">IOT_FIELDS</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">util/searchingFields/source-precompiled</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-GENERATED_FIELDS">GENERATED_FIELDS</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">workgroups</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/workgroups/WorkgroupFinder.js~WorkgroupFinder.html">WorkgroupFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/workgroups/WorkgroupRelations.js~WorkgroupRelations.html">WorkgroupRelations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/workgroups/WorkgroupRelationsFinder.js~WorkgroupRelationsFinder.html">WorkgroupRelationsFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/workgroups/Workgroups.js~Workgroups.html">Workgroups</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/searching/StaticSearch.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;
+
+import Search from &apos;./Search&apos;
+import q from &apos;q&apos;;
+
+
+/**
+ * This extends Search and it allow make request to any available resource into static resources for Opengate North API
+ */
+export default class StaticSearch extends Search {
+
+    /**
+     * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
+     * @param {!string} url - this define a specific resource to make the search
+     * @param {object} filter - this is the filter
+     */
+    constructor(ogapi, url, filter, timeout, contentType, customFilters) {
+        super(ogapi, &quot;/catalog&quot; + url, filter, null, null, timeout);
+        this._contentType = contentType;
+        this._customFilters = customFilters;
+    }
+
+
+    /**
+     * This invoke a dummy request to OpenGate North API and the callback is managed by promises
+     * @return {Promise}
+     * @property {function (result:object, statusCode:number)} then - When request it is OK
+     * @property {function (error:string)} catch - When request it is NOK
+     */
+    execute() {
+        var _this = this;
+        var finalContent = [];
+
+        var ENTITY_TYPE = &quot;entityType&quot;;
+        var TYPE = &quot;type&quot;;
+
+        var defered = q.defer();
+        var promise = defered.promise;
+
+        //recuperamos el catalogo pedido
+        var content = _this._content(_this._contentType);
+        //algunos catalogos van en funci&#xF3;n del tipo de entidad. Recuperamos la entidad por la que filtrar
+        var entityType = _this._customFilters &amp;&amp; _this._customFilters[ENTITY_TYPE];
+
+        //A parte del tipo de entidad, recuperamos el resto de filtros
+        var count_filters = Object.keys(_this._customFilters).length;
+        var isFilter = count_filters &gt; 1 || (count_filters === 1 &amp;&amp; !entityType);
+
+        //Objeto donde se guardaran los objetos recuperados del primer prefiltro - por tipo de entidad
+        var collection = {};
+        if (entityType) {
+            collection[entityType] = content[entityType];
+        } else {
+            collection = content;
+        }
+
+        switch (_this._contentType) {
+            case &apos;operationalStatus&apos;:
+            case &apos;specificType&apos;:
+                for (var contentTmp in collection) {
+                    collection[contentTmp].forEach(function (finalValue) {
+                        if (!_this._customFilters.id || (_this._customFilters.id &amp;&amp; _this._customFilters.id === finalValue)) {
+                            finalContent.push({
+                                &apos;entityType&apos;: contentTmp,
+                                &apos;id&apos;: finalValue
+                            });
+                        }
+                    });
+                }
+                break;
+            case &apos;administrativeState&apos;:
+                var createAndAddFileObj = function (obj) {
+                    var finalObj = obj;
+                    finalObj[ENTITY_TYPE] = entityTypeTmp;
+                    finalContent.push(finalObj);
+                };
+                for (var entityTypeTmp in collection) {
+                    var typeTmp = collection[entityTypeTmp];
+                    for (var dataTmp in typeTmp) {
+                        if (isFilter) {
+                            for (var filterTmp in _this._customFilters) {
+                                if (typeTmp[dataTmp][filterTmp] === _this._customFilters[filterTmp]) {
+                                    createAndAddFileObj(typeTmp[dataTmp]);
+                                    break;
+                                }
+                            }
+                        } else {
+                            createAndAddFileObj(typeTmp[dataTmp]);
+                        }
+                    }
+                }
+                break;
+            case &apos;fieldsDefinition&apos;:
+            case &apos;communicationsModuleType&apos;:
+                //Solo filtramos por tipo de modulo de comunicaciones o tipo de field
+                var filter = isFilter &amp;&amp; _this._customFilters[TYPE];
+                if (typeof filter === &apos;undefined&apos;) {
+                    defered.resolve({ error: &quot;Filters not allowed&quot;, statusCode: 400 });
+                    break;
+                }
+                var result = filter ? collection[filter] : collection;
+                finalContent = result;
+                break;
+            case &apos;userProfile&apos;:
+                for (var profileTmp in collection) {
+                    if (!_this._customFilters.id || (_this._customFilters.id &amp;&amp; _this._customFilters.id === profileTmp)) {
+                        if (collection[profileTmp].length &gt; 0) {
+                            finalContent.push({
+                                &apos;id&apos;: profileTmp,
+                                &apos;managed&apos;: collection[profileTmp]
+                            });
+                        }
+                    }
+                }
+                break;
+            case &apos;mobilePhoneProvider&apos;:
+            case &apos;ruleConfigurationSeverity&apos;:
+            case &apos;ioTDatastreamPeriod&apos;:
+            case &apos;ioTDatastreamAccess&apos;:
+            case &apos;ioTDatastreamStoragePeriod&apos;:
+                {
+                    if (filter) {
+                        defered.resolve({ error: &quot;Filters not supported&quot;, statuscode: 400 });
+                        break;
+                    }
+                    finalContent = finalContent.concat(collection);
+                    break;
+                }
+            default:
+                //No existe el catalogo
+                defered.resolve({ data: {}, statusCode: 400 });
+        }
+        if (finalContent &amp;&amp; Object.keys(finalContent).length &gt; 0) {
+            var resultContent = {};
+            resultContent[_this._contentType] = finalContent;
+            defered.resolve({ data: resultContent, statusCode: 200 });
+        } else {
+            //Existe el catalogo pero no hay datos
+            defered.resolve({ data: {}, statusCode: 204 });
+        }
+
+        return promise;
+    }
+
+    _content(contentType) {
+        return {
+            &apos;administrativeState&apos;: {
+                &apos;ASSET&apos;: [{
+                    &apos;id&apos;: &apos;REQUESTED&apos;,
+                    &apos;description&apos;: &apos;Entity requested to the supplier&apos;
+                }, {
+                    &apos;id&apos;: &apos;READY&apos;,
+                    &apos;description&apos;: &apos;Entity ready for installation&apos;
+                }, {
+                    &apos;id&apos;: &apos;REPAIR&apos;,
+                    &apos;description&apos;: &apos;Entity under repair&apos;
+                }, {
+                    &apos;id&apos;: &apos;TESTING&apos;,
+                    &apos;description&apos;: &apos;Entity in tests&apos;
+                }, {
+                    &apos;id&apos;: &apos;ACTIVE&apos;,
+                    &apos;description&apos;: &apos;Field deployed entity&apos;
+                }, {
+                    &apos;id&apos;: &apos;SUSPENDED&apos;,
+                    &apos;description&apos;: &apos;Suspended its operation&apos;
+                }, {
+                    &apos;id&apos;: &apos;DELETED&apos;,
+                    &apos;description&apos;: &apos;Entity removed from available stock&apos;
+                }, {
+                    &apos;id&apos;: &apos;RETIRED&apos;,
+                    &apos;description&apos;: &apos;Field entity withdrawal&apos;
+                }, {
+                    &apos;id&apos;: &apos;BANNED&apos;,
+                    &apos;description&apos;: &apos;Entity banned, It means that received information of this entity is not going to be collected&apos;
+                }],
+                &apos;GATEWAY&apos;: [{
+                    &apos;id&apos;: &apos;REQUESTED&apos;,
+                    &apos;description&apos;: &apos;Entity requested to the supplier&apos;
+                }, {
+                    &apos;id&apos;: &apos;READY&apos;,
+                    &apos;description&apos;: &apos;Entity ready for installation&apos;
+                }, {
+                    &apos;id&apos;: &apos;REPAIR&apos;,
+                    &apos;description&apos;: &apos;Entity under repair&apos;
+                }, {
+                    &apos;id&apos;: &apos;TESTING&apos;,
+                    &apos;description&apos;: &apos;Entity in tests&apos;
+                }, {
+                    &apos;id&apos;: &apos;ACTIVE&apos;,
+                    &apos;description&apos;: &apos;Field deployed entity&apos;
+                }, {
+                    &apos;id&apos;: &apos;SUSPENDED&apos;,
+                    &apos;description&apos;: &apos;Suspended its operation&apos;
+                }, {
+                    &apos;id&apos;: &apos;DELETED&apos;,
+                    &apos;description&apos;: &apos;Entity removed from available stock&apos;
+                }, {
+                    &apos;id&apos;: &apos;RETIRED&apos;,
+                    &apos;description&apos;: &apos;Field entity withdrawal&apos;
+                }, {
+                    &apos;id&apos;: &apos;BANNED&apos;,
+                    &apos;description&apos;: &apos;Entity banned, It means that received information of this entity is not going to be collected&apos;
+                }],
+                &apos;COMMUNICATIONS_MODULE&apos;: [{
+                    &apos;id&apos;: &apos;REQUESTED&apos;,
+                    &apos;description&apos;: &apos;Entity requested to the supplier&apos;
+                }, {
+                    &apos;id&apos;: &apos;READY&apos;,
+                    &apos;description&apos;: &apos;Entity ready for installation&apos;
+                }, {
+                    &apos;id&apos;: &apos;REPAIR&apos;,
+                    &apos;description&apos;: &apos;Entity under repair&apos;
+                }, {
+                    &apos;id&apos;: &apos;TESTING&apos;,
+                    &apos;description&apos;: &apos;Entity in tests&apos;
+                }, {
+                    &apos;id&apos;: &apos;ACTIVE&apos;,
+                    &apos;description&apos;: &apos;Field deployed entity&apos;
+                }, {
+                    &apos;id&apos;: &apos;SUSPENDED&apos;,
+                    &apos;description&apos;: &apos;Suspended its operation&apos;
+                }, {
+                    &apos;id&apos;: &apos;DELETED&apos;,
+                    &apos;description&apos;: &apos;Entity removed from available stock&apos;
+                }, {
+                    &apos;id&apos;: &apos;RETIRED&apos;,
+                    &apos;description&apos;: &apos;Field entity withdrawal&apos;
+                }, {
+                    &apos;id&apos;: &apos;BANNED&apos;,
+                    &apos;description&apos;: &apos;Entity banned, It means that received information of this entity is not going to be collected&apos;
+                }],
+                &apos;SUBSCRIBER&apos;: [{
+                    &apos;id&apos;: &apos;REQUESTED&apos;,
+                    &apos;description&apos;: &apos;Entity requested to the supplier&apos;
+                }, {
+                    &apos;id&apos;: &apos;READY&apos;,
+                    &apos;description&apos;: &apos;Entity ready for installation&apos;
+                }, {
+                    &apos;id&apos;: &apos;REPAIR&apos;,
+                    &apos;description&apos;: &apos;Entity under repair&apos;
+                }, {
+                    &apos;id&apos;: &apos;TESTING&apos;,
+                    &apos;description&apos;: &apos;Entity in tests&apos;
+                }, {
+                    &apos;id&apos;: &apos;ACTIVE&apos;,
+                    &apos;description&apos;: &apos;Field deployed entity&apos;
+                }, {
+                    &apos;id&apos;: &apos;SUSPENDED&apos;,
+                    &apos;description&apos;: &apos;Suspended its operation&apos;
+                }, {
+                    &apos;id&apos;: &apos;DELETED&apos;,
+                    &apos;description&apos;: &apos;Entity removed from available stock&apos;
+                }, {
+                    &apos;id&apos;: &apos;RETIRED&apos;,
+                    &apos;description&apos;: &apos;Field entity withdrawal&apos;
+                }, {
+                    &apos;id&apos;: &apos;BANNED&apos;,
+                    &apos;description&apos;: &apos;Entity banned, It means that received information of this entity is not going to be collected&apos;
+                }],
+                &apos;SUBSCRIPTION&apos;: [{
+                    &apos;id&apos;: &apos;REQUESTED&apos;,
+                    &apos;description&apos;: &apos;Entity requested to the supplier&apos;
+                }, {
+                    &apos;id&apos;: &apos;READY&apos;,
+                    &apos;description&apos;: &apos;Entity ready for installation&apos;
+                }, {
+                    &apos;id&apos;: &apos;REPAIR&apos;,
+                    &apos;description&apos;: &apos;Entity under repair&apos;
+                }, {
+                    &apos;id&apos;: &apos;TESTING&apos;,
+                    &apos;description&apos;: &apos;Entity in tests&apos;
+                }, {
+                    &apos;id&apos;: &apos;ACTIVE&apos;,
+                    &apos;description&apos;: &apos;Field deployed entity&apos;
+                }, {
+                    &apos;id&apos;: &apos;SUSPENDED&apos;,
+                    &apos;description&apos;: &apos;Suspended its operation&apos;
+                }, {
+                    &apos;id&apos;: &apos;DELETED&apos;,
+                    &apos;description&apos;: &apos;Entity removed from available stock&apos;
+                }, {
+                    &apos;id&apos;: &apos;RETIRED&apos;,
+                    &apos;description&apos;: &apos;Field entity withdrawal&apos;
+                }, {
+                    &apos;id&apos;: &apos;BANNED&apos;,
+                    &apos;description&apos;: &apos;Entity banned, It means that received information of this entity is not going to be collected&apos;
+                }],
+                &apos;CERTIFICATE&apos;: [{
+                    &apos;id&apos;: &apos;NOT_ACTIVE&apos;,
+                    &apos;description&apos;: &apos;NOT_ACTIVE&apos;
+                }, {
+                    &apos;id&apos;: &apos;ACTIVE&apos;,
+                    &apos;description&apos;: &apos;ACTIVE&apos;
+                }, {
+                    &apos;id&apos;: &apos;REVOKED&apos;,
+                    &apos;description&apos;: &apos;REVOKED&apos;
+                }, {
+                    &apos;id&apos;: &apos;EXPIRED&apos;,
+                    &apos;description&apos;: &apos;EXPIRED&apos;
+                }]
+            },
+            &apos;operationalStatus&apos;: {
+                &apos;ASSET&apos;: [&apos;UNKNOWN&apos;, &apos;NORMAL&apos;, &apos;ALARM&apos;, &apos;DOWN&apos;, &apos;SAFE_MODE&apos;, &apos;TAMPER&apos;, &apos;TEST&apos;],
+                &apos;GATEWAY&apos;: [&apos;UNKNOWN&apos;, &apos;NORMAL&apos;, &apos;ALARM&apos;, &apos;DOWN&apos;, &apos;SAFE_MODE&apos;, &apos;TAMPER&apos;, &apos;TEST&apos;],
+                &apos;COMMUNICATIONS_MODULE&apos;: [&apos;UNKNOWN&apos;, &apos;STOPPED&apos;, &apos;STARTING&apos;, &apos;RUNNING&apos;, &apos;STOPPING&apos;, &apos;ERROR&apos;]
+            },
+            &apos;specificType&apos;: {
+                &apos;COMMUNICATIONS_MODULE&apos;: [&apos;ADSL&apos;, &apos;CAN&apos;, &apos;ETH&apos;, &apos;GENERIC&apos;, &apos;GSM&apos;, &apos;I2C&apos;, &apos;LOWPAN&apos;, &apos;PLC&apos;, &apos;RS232&apos;, &apos;RS422&apos;, &apos;RS485&apos;, &apos;UMTS&apos;, &apos;WIFI&apos;, &apos;ZIGBEE&apos;, &apos;MOBILE&apos;, &apos;MESH&apos;, &apos;SIGFOX&apos;],
+                &apos;SUBSCRIBER&apos;: [&apos;ADSL&apos;, &apos;ETH&apos;, &apos;GENERIC&apos;, &apos;LOWPAN&apos;, &apos;PLC&apos;, &apos;GSM&apos;, &apos;UMTS&apos;, &apos;SIM&apos;, &apos;WIFI&apos;, &apos;ZIGBEE&apos;, &apos;MOBILE&apos;],
+                &apos;SUBSCRIPTION&apos;: [&apos;ADSL&apos;, &apos;ETH&apos;, &apos;GENERIC&apos;, &apos;LOWPAN&apos;, &apos;PLC&apos;, &apos;GSM&apos;, &apos;UMTS&apos;, &apos;WIFI&apos;, &apos;ZIGBEE&apos;, &apos;MOBILE&apos;],
+                &apos;ASSET&apos;: [&apos;CONTAINER&apos;, &apos;GENERIC&apos;, &apos;METER&apos;, &apos;SENSOR&apos;, &apos;TPV&apos;, &apos;VEHICLE&apos;, &apos;VENDING&apos;, &apos;GLUCOMETER_SENSOR&apos;, &apos;WEIGHT_SENSOR&apos;, &apos;BLOODPRESSURE_SENSOR&apos;],
+                &apos;GATEWAY&apos;: [&apos;CONCENTRATOR&apos;, &apos;COORDINATOR&apos;, &apos;GENERIC&apos;, &apos;MODEM&apos;, &apos;ROUTER&apos;, &apos;COMHUB&apos;, &apos;GLUCOMETER_SENSOR&apos;, &apos;WEIGHT_SENSOR&apos;, &apos;BLOODPRESSURE_SENSOR&apos;]
+            },
+            &apos;communicationsModuleType&apos;: {
+                &quot;GENERIC&quot;: {
+                    &quot;COMMUNICATIONS_MODULE&quot;: {
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;IMEI&quot;, &quot;MAC&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                    },
+                    &quot;SUBSCRIPTION&quot;: {
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;IMSI&quot;, &quot;ADDRESS&quot;, &quot;HOME_OPERATOR&quot;, &quot;REGISTER_OPERATOR&quot;, &quot;MSISDN&quot;, &quot;LOCATION&quot;]
+                    },
+                    &quot;SUBSCRIBER&quot;: {
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;ICC&quot;]
+                    }
+                },
+                &quot;WIFI&quot;: {
+                    &quot;COMMUNICATIONS_MODULE&quot;: {
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;, &quot;MAC&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                    }
+                },
+                &quot;ETH&quot;: {
+                    &quot;COMMUNICATIONS_MODULE&quot;: {
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;, &quot;MAC&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                    }
+                },
+                /*&quot;BLUETOOTH&quot;: {
+                    &quot;COMMUNICATIONS_MODULE&quot;: {
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;,MAC&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                    }
+                },*/
+                &quot;MESH&quot;: {
+                    &quot;COMMUNICATIONS_MODULE&quot;: {
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;, &quot;MAC&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                    }
+                },
+                &quot;LOWPAN&quot;: {
+                    &quot;COMMUNICATIONS_MODULE&quot;: {
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;, &quot;MAC&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                    }
+                },
+                &quot;PLC&quot;: {
+                    &quot;COMMUNICATIONS_MODULE&quot;: {
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;, &quot;MAC&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                    }
+                },
+                &quot;ZIGBEE&quot;: {
+                    &quot;COMMUNICATIONS_MODULE&quot;: {
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;, &quot;MAC&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                    }
+                },
+                &quot;ADSL&quot;: {
+                    &quot;COMMUNICATIONS_MODULE&quot;: {
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;MAC&quot;]
+                    },
+                    &quot;SUBSCRIPTION&quot;: {
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;ADDRESS&quot;, &quot;REGISTER_OPERATOR&quot;]
+                    }
+                },
+                &quot;MOBILE&quot;: {
+                    &quot;COMMUNICATIONS_MODULE&quot;: {
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;, &quot;IMEI&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                    },
+                    &quot;SUBSCRIPTION&quot;: {
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;IMSI&quot;, &quot;MSISDN&quot;]
+                    },
+                    &quot;SUBSCRIBER&quot;: {
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;, &quot;ICC&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;]
+                    }
+                },
+                &quot;GSM&quot;: {
+                    &quot;COMMUNICATIONS_MODULE&quot;: {
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;, &quot;IMEI&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                    },
+                    &quot;SUBSCRIPTION&quot;: {
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;IMSI&quot;, &quot;MSISDN&quot;]
+                    },
+                    &quot;SUBSCRIBER&quot;: {
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;, &quot;ICC&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;]
+                    }
+                },
+                &quot;UMTS&quot;: {
+                    &quot;COMMUNICATIONS_MODULE&quot;: {
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;, &quot;IMEI&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                    },
+                    &quot;SUBSCRIPTION&quot;: {
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;IMSI&quot;, &quot;MSISDN&quot;]
+                    },
+                    &quot;SUBSCRIBER&quot;: {
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;, &quot;ICC&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;]
+                    }
+                },
+                &quot;CAN&quot;: {
+                    &quot;COMMUNICATIONS_MODULE&quot;: {
+                        &quot;mandatory&quot;: [&quot;entityKey&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;]
+                    }
+                },
+                &quot;I2C&quot;: {
+                    &quot;COMMUNICATIONS_MODULE&quot;: {
+                        &quot;mandatory&quot;: [&quot;entityKey&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;]
+                    }
+                },
+                &quot;RS232&quot;: {
+                    &quot;COMMUNICATIONS_MODULE&quot;: {
+                        &quot;mandatory&quot;: [&quot;entityKey&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;]
+                    }
+                },
+                &quot;RS422&quot;: {
+                    &quot;COMMUNICATIONS_MODULE&quot;: {
+                        &quot;mandatory&quot;: [&quot;entityKey&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;]
+                    }
+                },
+                &quot;RS485&quot;: {
+                    &quot;COMMUNICATIONS_MODULE&quot;: {
+                        &quot;mandatory&quot;: [&quot;entityKey&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;]
+                    }
+                },
+                &quot;SIGFOX&quot;: {
+                    &quot;COMMUNICATIONS_MODULE&quot;: {
+                        &quot;mandatory&quot;: [&quot;entityKey&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;]
+                    }
+                }
+            },
+            &quot;mobilePhoneProvider&quot;: [
+                &quot;Telef&#xF3;nica M&#xF3;viles Espa&#xF1;a, SAU&quot;,
+                &quot;Vodafone Espa&#xF1;a, SAU&quot;,
+                &quot;France Telecom Espa&#xF1;a, SA&quot;,
+                &quot;Xfera M&#xF3;viles, SA&quot;,
+                &quot;Euskaltel, SA&quot;,
+                &quot;BT Espa&#xF1;a Compa&#xF1;ia de Servicios Globales de Telecable de Asturias, SAU&quot;,
+                &quot;R Cable y Telecomunicaciones Galicia, SA&quot;,
+                &quot;Cableuropa, SAU&quot;,
+                &quot;E-Plus M&#xF3;viles, SL&quot;,
+                &quot;Fonyou Telecom, SL&quot;,
+                &quot;Jazz Telecom, SAU&quot;,
+                &quot;Best Spain Telecom, SL&quot;,
+                &quot;Barablu M&#xF3;vil Espa&#xF1;a, SLU&quot;,
+                &quot;Vizzavi Espa&#xF1;a, SL&quot;,
+                &quot;Lycamobile, SL&quot;,
+                &quot;Lleida Networks Serveis Telem&#xE1;tics, SL&quot;,
+                &quot;Vivo, SA&quot;
+            ],
+            &quot;ruleConfigurationSeverity&quot;: [
+                &quot;INFORMATIVE&quot;,
+                &quot;URGENT&quot;,
+                &quot;CRITICAL&quot;
+            ],
+            &apos;userProfile&apos;: {
+                &apos;root&apos;: [&apos;admin_domain&apos;, &apos;admin&apos;, &apos;advanced&apos;, &apos;viewer&apos;],
+                &apos;admin_domain&apos;: [&apos;admin_domain&apos;, &apos;admin&apos;, &apos;advanced&apos;, &apos;viewer&apos;],
+                &apos;admin&apos;: [&apos;admin&apos;, &apos;advanced&apos;, &apos;viewer&apos;],
+                &apos;advanced&apos;: [],
+                &apos;viewer&apos;: []
+            },
+            &apos;ioTDatastreamAccess&apos;: [
+                &apos;READ&apos;,
+                &apos;WRITE&apos;
+            ],
+            &apos;ioTDatastreamStoragePeriod&apos;: [
+                &apos;DAYS&apos;,
+                &apos;MONTHS&apos;,
+                &apos;YEARS&apos;,
+                &apos;FOREVER&apos;,
+                &apos;NEVER&apos;
+            ],
+            &apos;ioTDatastreamPeriod&apos;: [
+                &apos;PULSE&apos;,
+                &apos;CUMULATIVE&apos;,
+                &apos;INSTANT&apos;
+            ],
+            &apos;fieldsDefinition&apos;: {
+                &apos;string&apos;: {
+                    &apos;description&apos;: &apos;Text based value&apos;,
+                    &apos;subtype&apos;: [&apos;text&apos;, &apos;password&apos;]
+                },
+                &apos;boolean&apos;: {
+                    &apos;description&apos;: &apos;Boolean based value&apos;,
+                    &apos;subtype&apos;: []
+                },
+                &apos;calendar&apos;: {
+                    &apos;description&apos;: &apos;Format is described in the ISO 8601 or in http://www.w3.org/TR/NOTE-datetime&apos;,
+                    &apos;subtype&apos;: [&apos;datetime&apos;, &apos;date&apos;, &apos;time&apos;]
+                },
+                &apos;address&apos;: {
+                    &apos;description&apos;: &apos;Network address value&apos;,
+                    &apos;subtype&apos;: [&apos;ip&apos;, &apos;ipv4&apos;, &apos;ipv6&apos;, &apos;mac48&apos;]
+                },
+                &apos;number&apos;: {
+                    &apos;description&apos;: &apos;Numeric value&apos;,
+                    &apos;subtype&apos;: [&apos;integer&apos;, &apos;float&apos;, &apos;percentage&apos;]
+                },
+                &apos;enumeration&apos;: {
+                    &apos;description&apos;: &apos;Choice list values&apos;,
+                    &apos;subtype&apos;: [&apos;string&apos;, &apos;number&apos;]
+                },
+                &apos;array&apos;: {
+                    &apos;description&apos;: &apos;Array of values&apos;,
+                    &apos;subtype&apos;: [&apos;string&apos;, &apos;number&apos;]
+                },
+                &apos;coordinates&apos;: {
+                    &apos;description&apos;: &apos;Object indicating coordinates and timestamp in geotime subtype&apos;,
+                    &apos;subtype&apos;: [&apos;geo&apos;, &apos;geotime&apos;, &apos;geojson&apos;]
+                },
+                &apos;topology&apos;: {
+                    &apos;description&apos;: &apos;Object indicating relations&apos;,
+                    &apos;subtype&apos;: [&apos;path&apos;, &apos;tree (not supported yet)&apos;]
+                },
+                &apos;object&apos;: {
+                    &apos;description&apos;: &apos;Not yet supported. For future uses only&apos;,
+                    &apos;subtype&apos;: []
+                }
+            }
+
+        }[contentType];
+    };
+}</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

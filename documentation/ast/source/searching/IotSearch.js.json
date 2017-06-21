@@ -1,0 +1,835 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "Literal",
+        "value": "use strict",
+        "raw": "'use strict'",
+        "range": [
+          0,
+          12
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 12
+          }
+        }
+      },
+      "range": [
+        0,
+        16
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "Search",
+            "range": [
+              23,
+              29
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 7
+              },
+              "end": {
+                "line": 3,
+                "column": 13
+              }
+            }
+          },
+          "range": [
+            23,
+            29
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 7
+            },
+            "end": {
+              "line": 3,
+              "column": 13
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./Search",
+        "raw": "'./Search'",
+        "range": [
+          35,
+          45
+        ],
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 19
+          },
+          "end": {
+            "line": 3,
+            "column": 29
+          }
+        }
+      },
+      "range": [
+        16,
+        49
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "declaration": {
+        "type": "VariableDeclaration",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
+              "type": "Identifier",
+              "name": "IOT_URL",
+              "range": [
+                62,
+                69
+              ],
+              "loc": {
+                "start": {
+                  "line": 5,
+                  "column": 13
+                },
+                "end": {
+                  "line": 5,
+                  "column": 20
+                }
+              }
+            },
+            "init": {
+              "type": "Literal",
+              "value": "/iot",
+              "raw": "\"/iot\"",
+              "range": [
+                72,
+                78
+              ],
+              "loc": {
+                "start": {
+                  "line": 5,
+                  "column": 23
+                },
+                "end": {
+                  "line": 5,
+                  "column": 29
+                }
+              }
+            },
+            "range": [
+              62,
+              78
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 13
+              },
+              "end": {
+                "line": 5,
+                "column": 29
+              }
+            }
+          }
+        ],
+        "kind": "const",
+        "range": [
+          56,
+          79
+        ],
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 7
+          },
+          "end": {
+            "line": 5,
+            "column": 30
+          }
+        },
+        "leadingComments": [],
+        "trailingComments": [
+          {
+            "type": "Block",
+            "value": "* \r\n * This extends Search and it allow make request to any available resource into /iot resource at Opengate North API\r\n ",
+            "range": [
+              83,
+              209
+            ],
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 0
+              },
+              "end": {
+                "line": 9,
+                "column": 3
+              }
+            }
+          }
+        ]
+      },
+      "specifiers": [],
+      "source": null,
+      "range": [
+        49,
+        79
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 30
+        }
+      },
+      "trailingComments": [
+        {
+          "type": "Block",
+          "value": "* \r\n * This extends Search and it allow make request to any available resource into /iot resource at Opengate North API\r\n ",
+          "range": [
+            83,
+            209
+          ],
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 0
+            },
+            "end": {
+              "line": 9,
+              "column": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "declaration": {
+        "type": "ClassDeclaration",
+        "id": {
+          "type": "Identifier",
+          "name": "IotSearch",
+          "range": [
+            232,
+            241
+          ],
+          "loc": {
+            "start": {
+              "line": 10,
+              "column": 21
+            },
+            "end": {
+              "line": 10,
+              "column": 30
+            }
+          }
+        },
+        "superClass": {
+          "type": "Identifier",
+          "name": "Search",
+          "range": [
+            250,
+            256
+          ],
+          "loc": {
+            "start": {
+              "line": 10,
+              "column": 39
+            },
+            "end": {
+              "line": 10,
+              "column": 45
+            }
+          }
+        },
+        "body": {
+          "type": "ClassBody",
+          "body": [
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "constructor",
+                "range": [
+                  658,
+                  669
+                ],
+                "loc": {
+                  "start": {
+                    "line": 18,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 18,
+                    "column": 15
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "name": "ogapi",
+                    "range": [
+                      670,
+                      675
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 18,
+                        "column": 16
+                      },
+                      "end": {
+                        "line": 18,
+                        "column": 21
+                      }
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "name": "url",
+                    "range": [
+                      677,
+                      680
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 18,
+                        "column": 23
+                      },
+                      "end": {
+                        "line": 18,
+                        "column": 26
+                      }
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "name": "filter",
+                    "range": [
+                      682,
+                      688
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 18,
+                        "column": 28
+                      },
+                      "end": {
+                        "line": 18,
+                        "column": 34
+                      }
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "name": "limit",
+                    "range": [
+                      690,
+                      695
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 18,
+                        "column": 36
+                      },
+                      "end": {
+                        "line": 18,
+                        "column": 41
+                      }
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "name": "sort",
+                    "range": [
+                      697,
+                      701
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 18,
+                        "column": 43
+                      },
+                      "end": {
+                        "line": 18,
+                        "column": 47
+                      }
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "name": "timeout",
+                    "range": [
+                      703,
+                      710
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 18,
+                        "column": 49
+                      },
+                      "end": {
+                        "line": 18,
+                        "column": 56
+                      }
+                    }
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "CallExpression",
+                        "callee": {
+                          "type": "Super",
+                          "range": [
+                            723,
+                            728
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 19,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 19,
+                              "column": 13
+                            }
+                          }
+                        },
+                        "arguments": [
+                          {
+                            "type": "Identifier",
+                            "name": "ogapi",
+                            "range": [
+                              729,
+                              734
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 19,
+                                "column": 14
+                              },
+                              "end": {
+                                "line": 19,
+                                "column": 19
+                              }
+                            }
+                          },
+                          {
+                            "type": "BinaryExpression",
+                            "operator": "+",
+                            "left": {
+                              "type": "Identifier",
+                              "name": "IOT_URL",
+                              "range": [
+                                736,
+                                743
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 19,
+                                  "column": 21
+                                },
+                                "end": {
+                                  "line": 19,
+                                  "column": 28
+                                }
+                              }
+                            },
+                            "right": {
+                              "type": "Identifier",
+                              "name": "url",
+                              "range": [
+                                746,
+                                749
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 19,
+                                  "column": 31
+                                },
+                                "end": {
+                                  "line": 19,
+                                  "column": 34
+                                }
+                              }
+                            },
+                            "range": [
+                              736,
+                              749
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 19,
+                                "column": 21
+                              },
+                              "end": {
+                                "line": 19,
+                                "column": 34
+                              }
+                            }
+                          },
+                          {
+                            "type": "Identifier",
+                            "name": "filter",
+                            "range": [
+                              751,
+                              757
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 19,
+                                "column": 36
+                              },
+                              "end": {
+                                "line": 19,
+                                "column": 42
+                              }
+                            }
+                          },
+                          {
+                            "type": "Identifier",
+                            "name": "limit",
+                            "range": [
+                              759,
+                              764
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 19,
+                                "column": 44
+                              },
+                              "end": {
+                                "line": 19,
+                                "column": 49
+                              }
+                            }
+                          },
+                          {
+                            "type": "Identifier",
+                            "name": "sort",
+                            "range": [
+                              766,
+                              770
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 19,
+                                "column": 51
+                              },
+                              "end": {
+                                "line": 19,
+                                "column": 55
+                              }
+                            }
+                          },
+                          {
+                            "type": "Identifier",
+                            "name": "timeout",
+                            "range": [
+                              772,
+                              779
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 19,
+                                "column": 57
+                              },
+                              "end": {
+                                "line": 19,
+                                "column": 64
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          723,
+                          780
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 19,
+                            "column": 8
+                          },
+                          "end": {
+                            "line": 19,
+                            "column": 65
+                          }
+                        }
+                      },
+                      "range": [
+                        723,
+                        781
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 19,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 19,
+                          "column": 66
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    712,
+                    788
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 18,
+                      "column": 58
+                    },
+                    "end": {
+                      "line": 20,
+                      "column": 5
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  669,
+                  788
+                ],
+                "loc": {
+                  "start": {
+                    "line": 18,
+                    "column": 15
+                  },
+                  "end": {
+                    "line": 20,
+                    "column": 5
+                  }
+                }
+              },
+              "kind": "constructor",
+              "computed": false,
+              "range": [
+                658,
+                788
+              ],
+              "loc": {
+                "start": {
+                  "line": 18,
+                  "column": 4
+                },
+                "end": {
+                  "line": 20,
+                  "column": 5
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\r\n    * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.\r\n    * @param {!string} url - this define a specific resource to make the search\r\n    * @param {object} filter - this is the filter\r\n    * @param {object} limit - this is the pagination about the search\r\n    * @param {object} sort - this defined parameters to order the result of search\r\n    ",
+                  "range": [
+                    261,
+                    652
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 11,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 17,
+                      "column": 6
+                    }
+                  }
+                }
+              ],
+              "static": false
+            }
+          ],
+          "range": [
+            257,
+            791
+          ],
+          "loc": {
+            "start": {
+              "line": 10,
+              "column": 46
+            },
+            "end": {
+              "line": 21,
+              "column": 1
+            }
+          }
+        },
+        "range": [
+          226,
+          791
+        ],
+        "loc": {
+          "start": {
+            "line": 10,
+            "column": 15
+          },
+          "end": {
+            "line": 21,
+            "column": 1
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "* \r\n * This extends Search and it allow make request to any available resource into /iot resource at Opengate North API\r\n ",
+            "range": [
+              83,
+              209
+            ],
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 0
+              },
+              "end": {
+                "line": 9,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": []
+      },
+      "range": [
+        211,
+        791
+      ],
+      "loc": {
+        "start": {
+          "line": 10,
+          "column": 0
+        },
+        "end": {
+          "line": 21,
+          "column": 1
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "* \r\n * This extends Search and it allow make request to any available resource into /iot resource at Opengate North API\r\n ",
+          "range": [
+            83,
+            209
+          ],
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 0
+            },
+            "end": {
+              "line": 9,
+              "column": 3
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    791
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 21,
+      "column": 1
+    }
+  },
+  "comments": [
+    {
+      "type": "Block",
+      "value": "* \r\n * This extends Search and it allow make request to any available resource into /iot resource at Opengate North API\r\n ",
+      "range": [
+        83,
+        209
+      ],
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 0
+        },
+        "end": {
+          "line": 9,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\r\n    * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.\r\n    * @param {!string} url - this define a specific resource to make the search\r\n    * @param {object} filter - this is the filter\r\n    * @param {object} limit - this is the pagination about the search\r\n    * @param {object} sort - this defined parameters to order the result of search\r\n    ",
+      "range": [
+        261,
+        652
+      ],
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 1
+        },
+        "end": {
+          "line": 17,
+          "column": 6
+        }
+      }
+    }
+  ]
+}
