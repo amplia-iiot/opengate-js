@@ -178,7 +178,7 @@ gulp.task('increase:version', ['create:release:branch'], function() {
 
 // STEP 3 
 gulp.task('commit:increase:version', ['build:all'], function() {
-    return gulp.src(['dist', './bower.json', './package.json', './documentation'])
+    return gulp.src(['dist', './bower.json', './package.json', './documentation', './src/util/searchingFields/source-precompiled/Fields.js'])
         .pipe(git.add())
         .pipe(git.commit('release ' + versionType() + ' version:' + versionNumber()))
 });
