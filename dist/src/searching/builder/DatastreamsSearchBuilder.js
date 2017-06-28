@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-    value: true
+  value: true
 });
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -33,36 +33,36 @@ var BASE_URL = '/datastreams';
  */
 
 var DatastreamsSearchBuilder = (function (_SearchBuilder) {
-    _inherits(DatastreamsSearchBuilder, _SearchBuilder);
+  _inherits(DatastreamsSearchBuilder, _SearchBuilder);
 
-    /**
-     *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
-     */
+  /**
+   *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
+   */
 
-    function DatastreamsSearchBuilder(parent) {
-        _classCallCheck(this, DatastreamsSearchBuilder);
+  function DatastreamsSearchBuilder(parent) {
+    _classCallCheck(this, DatastreamsSearchBuilder);
 
-        _get(Object.getPrototypeOf(DatastreamsSearchBuilder.prototype), 'constructor', this).call(this, parent, {}, new _utilSearchingFieldsFieldFinder2['default'](parent, BASE_URL));
-        this._url = BASE_URL;
+    _get(Object.getPrototypeOf(DatastreamsSearchBuilder.prototype), 'constructor', this).call(this, parent, {}, new _utilSearchingFieldsFieldFinder2['default'](parent, BASE_URL));
+    this._url = BASE_URL;
+  }
+
+  /**
+   * Build a instance of IotSearch 
+   *
+   * @example
+   *	ogapi.datastreamsSearchBuilder().filter({and:[]}).build()
+   * @throws {SearchBuilderError} Throw error on url build
+   * @return {IotSearch} 
+   */
+
+  _createClass(DatastreamsSearchBuilder, [{
+    key: 'build',
+    value: function build() {
+      return new _IotSearch2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildLimit(), this._buildSort(), this._builderParams.timeout);
     }
+  }]);
 
-    /**
-     * Build a instance of IotSearch 
-     *
-     * @example
-     *	ogapi.datastreamsSearchBuilder().filter({and:[]}).build()
-     * @throws {SearchBuilderError} Throw error on url build
-     * @return {IotSearch} 
-     */
-
-    _createClass(DatastreamsSearchBuilder, [{
-        key: 'build',
-        value: function build() {
-            return new _IotSearch2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildLimit(), this._buildSort(), this._builderParams.timeout);
-        }
-    }]);
-
-    return DatastreamsSearchBuilder;
+  return DatastreamsSearchBuilder;
 })(_SearchBuilder3['default']);
 
 exports['default'] = DatastreamsSearchBuilder;
