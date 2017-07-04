@@ -10,6 +10,7 @@ import Channels from './channels/Channels'
 import ChannelsSearchBuilder from './searching/builder/ChannelsSearchBuilder'
 import RuleConfigurations from './rulesConfiguration/RuleConfigurations'
 import RuleConfigurationsFinder from './rulesConfiguration/RuleConfigurationsFinder'
+import RuleConfigurationsActions from './rulesConfiguration/RuleConfigurationsActions'
 import CertificateFinder from './security/CertificateFinder'
 import OperationFinder from './operations/OperationFinder'
 import FilterBuilder from './searching/FilterBuilder'
@@ -157,6 +158,17 @@ export default class InternalOpenGateAPI {
     }
 
     /**
+     * This return a util to launch actions on a rule
+     * @param {!string} organization - organization name of the rule
+     * @param {!string} channel - channel name of the rule
+     * @param {!string} name - rule name
+     * @return {RuleConfigurationsActions}
+     */
+    newRuleConfigurationsActions(organization, channel, name) {
+        return new RuleConfigurationsActions(this, organization, channel, name);
+    }
+
+    /**
      * This return a util to find a certificate
      * @return {CertificateFinder}
      */
@@ -251,12 +263,12 @@ export default class InternalOpenGateAPI {
      * @return {SubscribersSearchBuilder}
      */
     subscribersSearchBuilder() {
-        return new SubscribersSearchBuilder(this);
-    }
-    /**
-     * This return a SubscriptionsSearchBuilder to build a specific SubscriptionsSearch
-     * @return {SubscriptionsSearchBuilder}
-     */
+            return new SubscribersSearchBuilder(this);
+        }
+        /**
+         * This return a SubscriptionsSearchBuilder to build a specific SubscriptionsSearch
+         * @return {SubscriptionsSearchBuilder}
+         */
     subscriptionsSearchBuilder() {
         return new SubscriptionsSearchBuilder(this);
     }
@@ -282,12 +294,12 @@ export default class InternalOpenGateAPI {
      * @return {FieldsDefinitionSearchBuilder}
      */
     fieldsDefinitionSearchBuilder() {
-        return new FieldsDefinitionSearchBuilder(this);
-    }
-    /**
-     * This return a MobilePhoneProviderSearchBuilder to build a specific MobilePhoneProviderTypeSearch
-     * @return {MobilePhoneProviderSearchBuilder}
-     */
+            return new FieldsDefinitionSearchBuilder(this);
+        }
+        /**
+         * This return a MobilePhoneProviderSearchBuilder to build a specific MobilePhoneProviderTypeSearch
+         * @return {MobilePhoneProviderSearchBuilder}
+         */
     mobilePhoneProviderSearchBuilder() {
         return new MobilePhoneProviderSearchBuilder(this);
     }

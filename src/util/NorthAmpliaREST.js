@@ -22,6 +22,22 @@ export default class NorthAmpliaREST {
         this._options = merge.recursive(true, this.default(), _options);
         this._headers = headers;
 
+
+        // Mocks for rule configuration clone/delete
+        // clone ok
+        // mock.post(_options.url + '/provision/organizations/chema_organization/channels/default_channel/ruleconfigurations/batteryEvent/clone', function(req) {
+        //     return {
+        //         statusCode: 200
+        //     };
+        // });
+
+        // // delete ok
+        // mock.del(_options.url + '/provision/organizations/chema_organization/channels/default_channel/ruleconfigurations/autoprovisionedEntity', function(req) {
+        //     return {
+        //         statusCode: 200
+        //     };
+        // });
+
         /*mock.post(_options.url + '/search/workgroups', function(req) {
             return {
                 body: {

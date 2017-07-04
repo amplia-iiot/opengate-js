@@ -3,6 +3,7 @@
 import BaseProvision from '../provision/BaseProvision'
 import _RuleCondition from './_RuleCondition'
 import _RuleNotification from './_RuleNotification'
+import q from 'q';
 
 /**
  * This is a base object that contains all you can do about RulesConfigurations.
@@ -147,7 +148,6 @@ export default class RuleConfigurations extends BaseProvision {
         return this;
     }
 
-
     _composeElement() {
         if (this._name === undefined || this._enabled === undefined || this._organization === undefined || this._channel === undefined || this._severity === undefined)
             throw new Error('Parameters organization, channel, severity, enabled and name must be defined');
@@ -233,11 +233,27 @@ export default class RuleConfigurations extends BaseProvision {
     }
 
     /** 
-     * Delete not allowed
+     * Deletes the selected RuleConfiguration
+     * @return {Promise}
      * @throws {Error} 
      */
     delete() {
-        throw new Error("Rule configuration deletion not allowed")
-    }
+        if (this._name === undefined || this._organization === undefined || this._channel === undefined)
+            throw new Error('Parameters organization, channel and name must be defined');
 
+        var defered = q.defer();
+        var promise = defered.promise;
+        this._ogapi.Napi.delete(this._buildURL() + '/' + this._name)
+            .then((res) => {
+                if (res.statusCode === 200) {
+                    defered.resolve({ statusCode: res.statusCode });
+                } else {
+                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                }
+            })
+            .catch((error) => {
+                defered.reject(error);
+            });
+        return promise;
+    }
 }

@@ -50,6 +50,10 @@ var _rulesConfigurationRuleConfigurationsFinder = require('./rulesConfiguration/
 
 var _rulesConfigurationRuleConfigurationsFinder2 = _interopRequireDefault(_rulesConfigurationRuleConfigurationsFinder);
 
+var _rulesConfigurationRuleConfigurationsActions = require('./rulesConfiguration/RuleConfigurationsActions');
+
+var _rulesConfigurationRuleConfigurationsActions2 = _interopRequireDefault(_rulesConfigurationRuleConfigurationsActions);
+
 var _securityCertificateFinder = require('./security/CertificateFinder');
 
 var _securityCertificateFinder2 = _interopRequireDefault(_securityCertificateFinder);
@@ -425,6 +429,19 @@ var InternalOpenGateAPI = (function () {
         key: 'ruleConfigurationBuilder',
         value: function ruleConfigurationBuilder(organization, channel, ruleConfigObj) {
             return new _rulesConfigurationRuleConfigurations2['default'](this, organization, channel, ruleConfigObj);
+        }
+
+        /**
+         * This return a util to launch actions on a rule
+         * @param {!string} organization - organization name of the rule
+         * @param {!string} channel - channel name of the rule
+         * @param {!string} name - rule name
+         * @return {RuleConfigurationsActions}
+         */
+    }, {
+        key: 'newRuleConfigurationsActions',
+        value: function newRuleConfigurationsActions(organization, channel, name) {
+            return new _rulesConfigurationRuleConfigurationsActions2['default'](this, organization, channel, name);
         }
 
         /**
