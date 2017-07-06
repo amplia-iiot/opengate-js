@@ -3,9 +3,9 @@
 var GenericFinder = require(process.cwd() + '/dist/src/GenericFinder');
 var assert = require('chai').assert;
 
-module.exports = function () {
+module.exports = function() {
 
-    this.When(/^I want "([^"]*)"( (\d*) minutes| for this url "([^"]*)" for)? (a|of a) operation$/, function (action, nothing, minutes, data, exclude) {
+    this.When(/^I want "([^"]*)"( (\d*) minutes| for this url "([^"]*)" for)? (a|of a) operation$/, function(action, nothing, minutes, data, exclude) {
         var _this = this;
 
         function digestResponseData(response) {
@@ -35,7 +35,7 @@ module.exports = function () {
         function digestErrorData(response) {
 
             var cache = [];
-            var error = JSON.stringify(response, function (key, value) {
+            var error = JSON.stringify(response, function(key, value) {
                 if (typeof value === 'object' && value !== null) {
                     if (cache.indexOf(value) !== -1) {
                         // Circular reference found, discard key
@@ -96,7 +96,7 @@ module.exports = function () {
         }
     });
 
-    this.When(/^I try to find an operation for its id of periodicity and save its id$/, function () {
+    this.When(/^I try to find an operation for its id of periodicity and save its id$/, function() {
         var _this = this;
         _this.error = undefined;
 
@@ -123,7 +123,7 @@ module.exports = function () {
 
     });
 
-    this.When(/^I try to find by operation's id$/, function () {
+    this.When(/^I try to find by operation's id$/, function() {
         var _this = this;
         this.error = undefined;
 
@@ -177,7 +177,7 @@ module.exports = function () {
         }
     });
 
-    this.When(/^I build it with filter by operation's id$/, function (callback) {
+    this.When(/^I build it with filter by operation's id$/, function(callback) {
         this.error = undefined;
 
         try {
@@ -195,7 +195,7 @@ module.exports = function () {
         callback();
     });
 
-    this.When(/^I build it$/, function (callback) {
+    this.When(/^I build it$/, function(callback) {
         this.error = undefined;
 
         try {
@@ -208,7 +208,7 @@ module.exports = function () {
         callback();
     });
 
-    this.When(/^I execute it$/, function () {
+    this.When(/^I execute it$/, function() {
         var _this = this;
         _this.error = undefined;
         _this.responseData = undefined;
@@ -235,7 +235,7 @@ module.exports = function () {
         }
     });
 
-    this.When(/^I execute with async paging it$/, function () {
+    this.When(/^I execute with async paging it$/, function() {
         var _this = this;
         _this.error = undefined;
         _this.responseData = undefined;
@@ -272,7 +272,7 @@ module.exports = function () {
     });
 
 
-    this.When(/^I update periodicity$/, function () {
+    this.When(/^I update periodicity$/, function() {
         var _this = this;
         _this.error = undefined;
         _this.responseData = undefined;
@@ -285,7 +285,7 @@ module.exports = function () {
 
         function catchErrorResponse(err) {
             var cache = [];
-            var error = JSON.stringify(err.data.errors, function (key, value) {
+            var error = JSON.stringify(err.data.errors, function(key, value) {
                 if (typeof value === 'object' && value !== null) {
                     if (cache.indexOf(value) !== -1) {
                         // Circular reference found, discard key
@@ -312,7 +312,7 @@ module.exports = function () {
         }
     });
 
-    this.When(/^I create it$/, function () {
+    this.When(/^I create it$/, function() {
 
         var _this = this;
         _this.error = undefined;
@@ -351,7 +351,7 @@ module.exports = function () {
     });
 
 
-    this.When(/^I delete it$/, function () {
+    this.When(/^I delete it$/, function() {
 
         var _this = this;
         _this.error = undefined;
@@ -386,7 +386,7 @@ module.exports = function () {
         }
     });
 
-    this.When(/^I update it$/, function () {
+    this.When(/^I update it$/, function() {
         var _this = this;
         _this.error = undefined;
         _this.responseData = undefined;
@@ -410,7 +410,7 @@ module.exports = function () {
         }
     });
 
-    this.When(/^I get filter fields$/, function () {
+    this.When(/^I get filter fields$/, function() {
         var _this = this;
         _this.error = undefined;
         _this.responseData = undefined;
@@ -436,4 +436,47 @@ module.exports = function () {
             return;
         }
     });
+
+    this.When(/^I clone it with...$/, function(table) {
+        var _this = this;
+        _this.error = undefined;
+        _this.responseData = undefined;
+
+        function catchResponse(data) {
+            _this.responseData = data;
+            _this.error = undefined;
+        }
+
+        function catchErrorResponse(err) {
+            _this.responseData = err;
+            _this.error = err;
+        }
+
+        try {
+            let args = [];
+
+            var data = table.hashes();
+
+            if (data.length > 0) {
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].param.toLowerCase() === "true" || data[i].param.toLowerCase() === "false")
+                        args.push(JSON.parse(data[i].param));
+                    else
+                        args.push(data[i].param);
+                }
+
+                return _this.util.cloneTo.apply(_this.util, args).then(catchResponse).catch(catchErrorResponse);
+            } else {
+                this.error = "No params found";
+                return;
+            }
+
+        } catch (err) {
+            this.error = err;
+            //console.log(err);
+            return;
+        }
+
+    });
+
 };

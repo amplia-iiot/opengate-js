@@ -28,7 +28,7 @@ var RuleConfigurationsActions = (function () {
     function RuleConfigurationsActions(ogapi, organization, channel, name) {
         _classCallCheck(this, RuleConfigurationsActions);
 
-        if (name === undefined || organization === undefined || channel === undefined) throw new Error('Parameters organization, channel and name must be defined');
+        if (!ogapi || name === undefined || organization === undefined || channel === undefined) throw new Error('Parameters ogapi, organization, channel and name must be defined');
 
         if (typeof name !== 'string' || name.length === 0 || name.length > 50) throw new Error('Parameter name must be a string, cannot be empty and has a maximum length of 50');
 
@@ -57,13 +57,15 @@ var RuleConfigurationsActions = (function () {
     _createClass(RuleConfigurationsActions, [{
         key: 'cloneTo',
         value: function cloneTo(newRuleName, newRuleOpenAction, newRuleCloseAction, newRuleNotifications) {
+            var _this2 = this;
+
             var _this = this;
 
             if (!newRuleName || !(newRuleOpenAction !== undefined || newRuleCloseAction !== undefined || newRuleNotifications !== undefined)) {
                 throw new Error('Parameters newRuleName and one of newRuleOpenAction, newRuleCloseAction or newRuleNotifications must be defined');
             }
 
-            if (typeof newRuleName !== 'string' || newRuleName.length === 0 || newRuleName.length > 50) throw new Error('Parameter newRuleName must be a string, cannot be empty and has a maximum length of 50');
+            if (typeof newRuleName !== 'string' || newRuleName.length === 0 || newRuleName.length > 50 || newRuleName.trim().toLowerCase() === this._name.trim().toLowerCase()) throw new Error('Parameter newRuleName must be a string, different than the original, cannot be empty and has a maximum length of 50');
 
             if (newRuleOpenAction && typeof newRuleOpenAction !== 'boolean') throw new Error('Parameter newRuleOpenAction must be true or false');
 
@@ -82,11 +84,11 @@ var RuleConfigurationsActions = (function () {
 
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            this._ogapi.Napi.post(this._resource + '/clone', cloneInfo).then(function (res) {
+            _this._ogapi.Napi.post(this._resource + '/clone', cloneInfo).then(function (res) {
                 if (res.statusCode === 201) {
                     //console.log("CREATEOK: " + JSON.stringify(res));
-                    if (typeof _this._onCreated === "function") {
-                        _this._onCreated(res.header['location']);
+                    if (typeof _this2._onCreated === "function") {
+                        _this2._onCreated(res.header['location']);
                     }
                     defered.resolve({ location: res.header['location'], statusCode: res.statusCode });
                 } else if (res.statusCode === 200) {
@@ -97,7 +99,7 @@ var RuleConfigurationsActions = (function () {
                     defered.reject({ errors: res.errors, statusCode: res.statusCode });
                 }
             })['catch'](function (error) {
-                console.log("ERROR2 " + JSON.stringify(_this._name) + JSON.stringify(error));
+                console.log("ERROR2 " + JSON.stringify(_this2._name) + JSON.stringify(error));
                 defered.reject(error);
             });
             return promise;

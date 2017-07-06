@@ -120,6 +120,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/Organizations.js~Organizations.html">Organizations</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/BaseProvision.js~BaseProvision.html">BaseProvision</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">rulesConfiguration</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html">RuleConfigurations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsActions.js~RuleConfigurationsActions.html">RuleConfigurationsActions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder.html">RuleConfigurationsFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/BaseSearch.js~BaseSearch.html">BaseSearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/EntitySearch.js~EntitySearch.html">EntitySearch</a></span></span></li>
@@ -205,6 +206,7 @@ import Channels from &apos;./channels/Channels&apos;
 import ChannelsSearchBuilder from &apos;./searching/builder/ChannelsSearchBuilder&apos;
 import RuleConfigurations from &apos;./rulesConfiguration/RuleConfigurations&apos;
 import RuleConfigurationsFinder from &apos;./rulesConfiguration/RuleConfigurationsFinder&apos;
+import RuleConfigurationsActions from &apos;./rulesConfiguration/RuleConfigurationsActions&apos;
 import CertificateFinder from &apos;./security/CertificateFinder&apos;
 import OperationFinder from &apos;./operations/OperationFinder&apos;
 import FilterBuilder from &apos;./searching/FilterBuilder&apos;
@@ -352,6 +354,17 @@ export default class InternalOpenGateAPI {
     }
 
     /**
+     * This return a util to launch actions on a rule
+     * @param {!string} organization - organization name of the rule
+     * @param {!string} channel - channel name of the rule
+     * @param {!string} name - rule name
+     * @return {RuleConfigurationsActions}
+     */
+    newRuleConfigurationsActions(organization, channel, name) {
+        return new RuleConfigurationsActions(this, organization, channel, name);
+    }
+
+    /**
      * This return a util to find a certificate
      * @return {CertificateFinder}
      */
@@ -446,12 +459,12 @@ export default class InternalOpenGateAPI {
      * @return {SubscribersSearchBuilder}
      */
     subscribersSearchBuilder() {
-        return new SubscribersSearchBuilder(this);
-    }
-    /**
-     * This return a SubscriptionsSearchBuilder to build a specific SubscriptionsSearch
-     * @return {SubscriptionsSearchBuilder}
-     */
+            return new SubscribersSearchBuilder(this);
+        }
+        /**
+         * This return a SubscriptionsSearchBuilder to build a specific SubscriptionsSearch
+         * @return {SubscriptionsSearchBuilder}
+         */
     subscriptionsSearchBuilder() {
         return new SubscriptionsSearchBuilder(this);
     }
@@ -477,12 +490,12 @@ export default class InternalOpenGateAPI {
      * @return {FieldsDefinitionSearchBuilder}
      */
     fieldsDefinitionSearchBuilder() {
-        return new FieldsDefinitionSearchBuilder(this);
-    }
-    /**
-     * This return a MobilePhoneProviderSearchBuilder to build a specific MobilePhoneProviderTypeSearch
-     * @return {MobilePhoneProviderSearchBuilder}
-     */
+            return new FieldsDefinitionSearchBuilder(this);
+        }
+        /**
+         * This return a MobilePhoneProviderSearchBuilder to build a specific MobilePhoneProviderTypeSearch
+         * @return {MobilePhoneProviderSearchBuilder}
+         */
     mobilePhoneProviderSearchBuilder() {
         return new MobilePhoneProviderSearchBuilder(this);
     }

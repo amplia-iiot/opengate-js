@@ -120,6 +120,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/Organizations.js~Organizations.html">Organizations</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/BaseProvision.js~BaseProvision.html">BaseProvision</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">rulesConfiguration</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html">RuleConfigurations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsActions.js~RuleConfigurationsActions.html">RuleConfigurationsActions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder.html">RuleConfigurationsFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/BaseSearch.js~BaseSearch.html">BaseSearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/EntitySearch.js~EntitySearch.html">EntitySearch</a></span></span></li>
@@ -198,6 +199,7 @@
 import BaseProvision from &apos;../provision/BaseProvision&apos;
 import _RuleCondition from &apos;./_RuleCondition&apos;
 import _RuleNotification from &apos;./_RuleNotification&apos;
+import q from &apos;q&apos;;
 
 /**
  * This is a base object that contains all you can do about RulesConfigurations.
@@ -342,7 +344,6 @@ export default class RuleConfigurations extends BaseProvision {
         return this;
     }
 
-
     _composeElement() {
         if (this._name === undefined || this._enabled === undefined || this._organization === undefined || this._channel === undefined || this._severity === undefined)
             throw new Error(&apos;Parameters organization, channel, severity, enabled and name must be defined&apos;);
@@ -428,13 +429,29 @@ export default class RuleConfigurations extends BaseProvision {
     }
 
     /** 
-     * Delete not allowed
+     * Deletes the selected RuleConfiguration
+     * @return {Promise}
      * @throws {Error} 
      */
     delete() {
-        throw new Error(&quot;Rule configuration deletion not allowed&quot;)
-    }
+        if (this._name === undefined || this._organization === undefined || this._channel === undefined)
+            throw new Error(&apos;Parameters organization, channel and name must be defined&apos;);
 
+        var defered = q.defer();
+        var promise = defered.promise;
+        this._ogapi.Napi.delete(this._buildURL() + &apos;/&apos; + this._name)
+            .then((res) =&gt; {
+                if (res.statusCode === 200) {
+                    defered.resolve({ statusCode: res.statusCode });
+                } else {
+                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                }
+            })
+            .catch((error) =&gt; {
+                defered.reject(error);
+            });
+        return promise;
+    }
 }</code></pre>
 
 </div>

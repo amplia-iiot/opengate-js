@@ -120,6 +120,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/Organizations.js~Organizations.html">Organizations</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/BaseProvision.js~BaseProvision.html">BaseProvision</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">rulesConfiguration</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html">RuleConfigurations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsActions.js~RuleConfigurationsActions.html">RuleConfigurationsActions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder.html">RuleConfigurationsFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/BaseSearch.js~BaseSearch.html">BaseSearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/EntitySearch.js~EntitySearch.html">EntitySearch</a></span></span></li>
@@ -193,13 +194,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import RuleConfigurations from &apos;<span><a href="file/src/rulesConfiguration/RuleConfigurations.js.html#lineNumber10">opengate-js/src/rulesConfiguration/RuleConfigurations.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import RuleConfigurations from &apos;<span><a href="file/src/rulesConfiguration/RuleConfigurations.js.html#lineNumber11">opengate-js/src/rulesConfiguration/RuleConfigurations.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/rulesConfiguration/RuleConfigurations.js.html#lineNumber10">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/rulesConfiguration/RuleConfigurations.js.html#lineNumber11">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -333,13 +334,13 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html#instance-method-delete">delete</a></span></span><span data-ice="signature">()</span>
+           <span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html#instance-method-delete">delete</a></span></span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Delete not allowed</p>
+        <div data-ice="description"><p>Deletes the selected RuleConfiguration</p>
 </div>
       </div>
     </td>
@@ -638,7 +639,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/rulesConfiguration/RuleConfigurations.js.html#lineNumber15">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/rulesConfiguration/RuleConfigurations.js.html#lineNumber16">source</a></span></span>
     </span>
   </h3>
 
@@ -814,18 +815,18 @@ This function updates a entity of provision</p>
     
     
     
-    <span data-ice="name">delete</span><span data-ice="signature">()</span>
+    <span data-ice="name">delete</span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/rulesConfiguration/RuleConfigurations.js.html#lineNumber239">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/rulesConfiguration/RuleConfigurations.js.html#lineNumber240">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Delete not allowed</p>
+  <div data-ice="description"><p>Deletes the selected RuleConfiguration</p>
 </div>
 
   <div data-ice="override"><h4>Override:</h4><span><a href="class/src/provision/BaseProvision.js~BaseProvision.html#instance-method-delete">BaseProvision#delete</a></span></div>
@@ -833,7 +834,17 @@ This function updates a entity of provision</p>
   <div data-ice="properties">
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -937,7 +948,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/rulesConfiguration/RuleConfigurations.js.html#lineNumber52">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/rulesConfiguration/RuleConfigurations.js.html#lineNumber53">source</a></span></span>
     </span>
   </h3>
 
@@ -1005,7 +1016,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/rulesConfiguration/RuleConfigurations.js.html#lineNumber76">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/rulesConfiguration/RuleConfigurations.js.html#lineNumber77">source</a></span></span>
     </span>
   </h3>
 
@@ -1072,7 +1083,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/rulesConfiguration/RuleConfigurations.js.html#lineNumber88">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/rulesConfiguration/RuleConfigurations.js.html#lineNumber89">source</a></span></span>
     </span>
   </h3>
 
@@ -1139,7 +1150,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/rulesConfiguration/RuleConfigurations.js.html#lineNumber64">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/rulesConfiguration/RuleConfigurations.js.html#lineNumber65">source</a></span></span>
     </span>
   </h3>
 
@@ -1207,7 +1218,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/rulesConfiguration/RuleConfigurations.js.html#lineNumber40">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/rulesConfiguration/RuleConfigurations.js.html#lineNumber41">source</a></span></span>
     </span>
   </h3>
 
@@ -1275,7 +1286,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/rulesConfiguration/RuleConfigurations.js.html#lineNumber100">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/rulesConfiguration/RuleConfigurations.js.html#lineNumber101">source</a></span></span>
     </span>
   </h3>
 
