@@ -35,7 +35,7 @@ module.exports = function () {
     this.Then(/^response code should be: "([^"]*)"$/, function (response, callback) {
         // Write code here that turns the phrase above into concrete actions
         var data = undefined;
-        data = this.responseData && this.responseData.statusCode ? this.responseData.statusCode : this.responseData;
+        data = this.responseData && this.responseData.data ? this.responseData.data : this.responseData;
         var statusCodeResp = data;
         //console.log("RESPONSE_: " + JSON.stringify(this.responseData));
         this.expect(response).to.equal(statusCodeResp);
