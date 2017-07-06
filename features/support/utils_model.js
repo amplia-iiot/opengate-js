@@ -1,230 +1,234 @@
 module.exports = {
 
-    util: function (utilName, ogapi, param, param2) {
+    util: function(utilName, ogapi, param, param2) {
         var utilsMath = {
-            "alarms search": function (ogapi) {
+            "alarms search": function(ogapi) {
                 return ogapi.alarmsSearchBuilder();
             },
-            "bundles search": function () {
+            "bundles search": function() {
                 return ogapi.bundlesSearchBuilder();
             },
-            "bundles builder": function (ogapi) {
+            "bundles builder": function(ogapi) {
                 return ogapi.bundlesBuilder();
             },
-            "bundle finder": function (ogapi) {
+            "bundle finder": function(ogapi) {
                 return ogapi.newBundleFinder();
             },
-            "certificates builder": function (ogapi) {
+            "certificates builder": function(ogapi) {
                 return ogapi.certificatesBuilder();
             },
-            "certificate finder": function (ogapi) {
+            "certificate finder": function(ogapi) {
                 return ogapi.newCertificateFinder();
             },
-            "certificates search": function (ogapi) {
+            "certificates search": function(ogapi) {
                 return ogapi.certificatesSearchBuilder();
             },
-            "channel finder": function (ogapi) {
+            "channel finder": function(ogapi) {
                 return ogapi.newChannelFinder();
             },
-            "channels builder": function (ogapi) {
+            "channels builder": function(ogapi) {
                 return ogapi.channelsBuilder();
             },
-            "channels search": function (ogapi) {
+            "channels search": function(ogapi) {
                 return ogapi.channelsSearchBuilder();
             },
-            "communications modules builder": function (ogapi) {
+            "communications modules builder": function(ogapi) {
                 return ogapi.communicationsModulesBuilder();
             },
-            "communications module finder": function (ogapi) {
+            "communications module finder": function(ogapi) {
                 return ogapi.newCommunicationsModuleFinder();
             },
-            "communications module search": function (ogapi) {
+            "communications module search": function(ogapi) {
                 return ogapi.communicationsModulesSearchBuilder();
             },
-            "datapoints search": function (ogapi) {
+            "datapoints search": function(ogapi) {
                 return ogapi.datapointsSearchBuilder();
             },
-            "datastreams search": function () {
+            "datastreams search": function() {
                 return ogapi.datastreamsSearchBuilder();
             },
-            "device finder": function (ogapi) {
+            "device finder": function(ogapi) {
                 return ogapi.newDeviceFinder();
             },
-            "devices search": function (ogapi) {
+            "devices search": function(ogapi) {
                 return ogapi.devicesSearchBuilder();
             },
-            "devices builder": function (ogapi) {
+            "devices builder": function(ogapi) {
                 return ogapi.devicesBuilder();
             },
-            "domains search": function (ogapi) {
+            "domains search": function(ogapi) {
                 return ogapi.domainsSearchBuilder();
             },
-            "domains builder": function (ogapi) {
+            "domains builder": function(ogapi) {
                 return ogapi.domainsBuilder();
             },
-            "domains finder": function (ogapi) {
+            "domains finder": function(ogapi) {
                 return ogapi.newDomainFinder();
             },
-            "hardwares search": function (ogapi) {
+            "hardwares search": function(ogapi) {
                 return ogapi.hardwaresSearchBuilder();
             },
-            "operation finder": function (ogapi) {
+            "operation finder": function(ogapi) {
                 return ogapi.newOperationFinder();
             },
-            "organization finder": function (ogapi) {
+            "organization finder": function(ogapi) {
                 return ogapi.newOrganizationFinder();
             },
-            "organizations builder": function (ogapi) {
+            "organizations builder": function(ogapi) {
                 return ogapi.organizationsBuilder();
             },
-            "softwares search": function (ogapi) {
+            "softwares search": function(ogapi) {
                 return ogapi.softwaresSearchBuilder();
             },
-            "subscriptions builder": function (ogapi) {
+            "subscriptions builder": function(ogapi) {
                 return ogapi.subscriptionsBuilder();
             },
-            "subscriptions search": function (ogapi) {
+            "subscriptions search": function(ogapi) {
                 return ogapi.subscriptionsSearchBuilder();
             },
-            "subscribers builder": function (ogapi) {
+            "subscribers builder": function(ogapi) {
                 return ogapi.subscribersBuilder();
             },
-            "subscribers search": function (ogapi) {
+            "subscribers search": function(ogapi) {
                 return ogapi.subscribersSearchBuilder();
             },
-            "user finder": function (ogapi) {
+            "user finder": function(ogapi) {
                 return ogapi.newUserFinder();
             },
-            "users builder": function (ogapi) {
+            "users builder": function(ogapi) {
                 return ogapi.usersBuilder();
             },
-            "users search": function (ogapi) {
+            "users search": function(ogapi) {
                 return ogapi.usersSearchBuilder();
             },
-            "operational status search": function (ogapi) {
+            "operational status search": function(ogapi) {
                 return ogapi.operationalStatusSearchBuilder();
             },
-            "specific type search": function (ogapi) {
+            "specific type search": function(ogapi) {
                 return ogapi.specificTypeSearchBuilder();
             },
-            "administrative state search": function (ogapi) {
+            "administrative state search": function(ogapi) {
                 return ogapi.administrativeStateSearchBuilder();
             },
-            "communications module type search": function (ogapi) {
+            "communications module type search": function(ogapi) {
                 return ogapi.communicationsModuleTypeSearchBuilder();
             },
-            "fields definition search": function (ogapi) {
+            "fields definition search": function(ogapi) {
                 return ogapi.fieldsDefinitionSearchBuilder();
             },
-            "mobile phone provider search": function (ogapi) {
+            "mobile phone provider search": function(ogapi) {
                 return ogapi.mobilePhoneProviderSearchBuilder();
             },
-            "IoT datastream period search": function (ogapi) {
+            "IoT datastream period search": function(ogapi) {
                 return ogapi.ioTDatastreamPeriodSearchBuilder();
             },
-            "IoT datastream access search": function (ogapi) {
+            "IoT datastream access search": function(ogapi) {
                 return ogapi.ioTDatastreamAccessSearchBuilder();
             },
-            "IoT datastream storage period search": function (ogapi) {
+            "IoT datastream storage period search": function(ogapi) {
                 return ogapi.ioTDatastreamStoragePeriodSearchBuilder();
             },
-            "IoT profiles builder": function (ogapi, param) {
+            "IoT profiles builder": function(ogapi, param) {
                 return ogapi.IoTProfilesBuilder(param);
             },
-            "IoT profiles helper": function (ogapi, param, param2) {
+            "IoT profiles helper": function(ogapi, param, param2) {
                 return ogapi.IoTProfilesHelper(param, param2);
             },
-            "IoT profiles finder": function (ogapi) {
+            "IoT profiles finder": function(ogapi) {
                 return ogapi.newIoTProfilesFinder();
             },
-            "IoT datastreams builder": function () {
+            "IoT datastreams builder": function() {
                 return ogapi.IoTDatastreamsBuilder();
             },
-            "IoT qratings builder": function () {
+            "IoT qratings builder": function() {
                 return ogapi.IoTQratingsBuilder();
             },
-            "deviceMessage builder": function (ogapi) {
+            "deviceMessage builder": function(ogapi) {
                 return ogapi.deviceMessageBuilder();
             },
-            "datastream": function () {
+            "datastream": function() {
                 return ogapi.datastreamBuilder();
             },
-            "datapoints message": function () {
+            "datapoints message": function() {
                 return ogapi.datapointsBuilder();
             },
-            "hardware": function () {
+            "hardware": function() {
                 return ogapi.hardwareMessageBuilder();
             },
-            "software": function () {
+            "software": function() {
                 return ogapi.softwareMessageBuilder();
             },
-            "cpuUsage": function () {
+            "cpuUsage": function() {
                 return ogapi.usageMessageBuilder();
             },
-            "ram": function () {
+            "ram": function() {
                 return ogapi.storageMessageBuilder();
             },
-            "volatilStorage": function () {
+            "volatilStorage": function() {
                 return ogapi.storageMessageBuilder();
             },
-            "nonVolatilStorage": function () {
+            "nonVolatilStorage": function() {
                 return ogapi.storageMessageBuilder();
             },
-            "powerSupply": function () {
+            "powerSupply": function() {
                 return ogapi.powerSupplyMessageBuilder();
             },
-            "commsModuleMessage": function () {
+            "commsModuleMessage": function() {
                 return ogapi.commsModuleMessageMessageBuilder();
             },
-            "mobile": function () {
+            "mobile": function() {
                 return ogapi.mobileMessageMessageBuilder();
             },
-            "subscriber": function () {
+            "subscriber": function() {
                 return ogapi.subscriberMessageBuilder();
             },
-            "subscription": function () {
+            "subscription": function() {
                 return ogapi.subscriptionMessageBuilder();
             },
-            "rule configurations finder": function (ogapi) {
+            "rule configurations finder": function(ogapi) {
                 return ogapi.newRuleConfigurationsFinder();
             },
-            "rule configuration builder": function (ogapi) {
+            "rule configuration builder": function(ogapi) {
                 return ogapi.ruleConfigurationBuilder();
             },
-            "executions search": function () {
+            "rule configuration actions": function(ogapi, organization, channel, name) {
+                return ogapi.newRuleConfigurationsActions(organization, channel, name);
+            },
+            "executions search": function() {
                 return ogapi.executionsSearchBuilder();
             },
-            "operation actions": function (ogapi, param) {
+            "operation actions": function(ogapi, param) {
                 return ogapi.newOperationActions(param);
             },
-            "operations search": function () {
+            "operations search": function() {
                 return ogapi.operationsSearchBuilder();
             },
-            "iot devices search": function () {
+            "iot devices search": function() {
                 return ogapi.ioTDevicesSearchBuilder();
             },
-            "profiles search": function () {
+            "profiles search": function() {
                 return ogapi.profilesSearchBuilder();
             },
-            "feeds search": function () {
+            "feeds search": function() {
                 return ogapi.feedsSearchBuilder();
             },
-            "workgroups builder": function () {
+            "workgroups builder": function() {
                 return ogapi.workgroupsBuilder();
             },
-            "workgroups finder": function () {
+            "workgroups finder": function() {
                 return ogapi.newWorkgroupFinder();
             },
-            "workgroups search": function () {
+            "workgroups search": function() {
                 return ogapi.workgroupsSearchBuilder();
             },
-            "workgroup relations builder": function () {
+            "workgroup relations builder": function() {
                 return ogapi.workgroupRelationsBuilder();
             },
-            "entities relations builder": function () {
+            "entities relations builder": function() {
                 return ogapi.relationsBuilder();
             }
         };
-        return utilsMath[utilName](ogapi, param, param2);
+        var args = Array.prototype.slice.call(arguments);
+        return utilsMath[utilName].apply(null, args.slice(1, args.length));
     }
 }

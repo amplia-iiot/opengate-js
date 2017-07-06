@@ -17,7 +17,7 @@ Feature: Managing a rule configuration
    # Then throws an error equal to "Parameter description must be a string and has a maximum length of 250"
 
   Scenario: updating a rule
-    When I want to manage the next rule configuration:
+    When I want to manage the next rule configuration from organization "base_organization" and channel "base_channel":
     """
     {
         "name": "mobileCoverageLow",

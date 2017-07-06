@@ -10,8 +10,8 @@ export default class RuleConfigurationsActions {
      * @param {string} name - Identifier of the ryule configuration to operate
      */
     constructor(ogapi, organization, channel, name) {
-        if (name === undefined || organization === undefined || channel === undefined)
-            throw new Error('Parameters organization, channel and name must be defined');
+        if (!ogapi || name === undefined || organization === undefined || channel === undefined)
+            throw new Error('Parameters ogapi, organization, channel and name must be defined');
 
         if (typeof name !== 'string' || name.length === 0 || name.length > 50)
             throw new Error('Parameter name must be a string, cannot be empty and has a maximum length of 50');
@@ -40,12 +40,14 @@ export default class RuleConfigurationsActions {
      * @throws {Error} 
      */
     cloneTo(newRuleName, newRuleOpenAction, newRuleCloseAction, newRuleNotifications) {
+        var _this = this;
+
         if (!newRuleName || !(newRuleOpenAction !== undefined || newRuleCloseAction !== undefined || newRuleNotifications !== undefined)) {
             throw new Error('Parameters newRuleName and one of newRuleOpenAction, newRuleCloseAction or newRuleNotifications must be defined');
         }
 
-        if (typeof newRuleName !== 'string' || newRuleName.length === 0 || newRuleName.length > 50)
-            throw new Error('Parameter newRuleName must be a string, cannot be empty and has a maximum length of 50');
+        if (typeof newRuleName !== 'string' || newRuleName.length === 0 || newRuleName.length > 50 || newRuleName.trim().toLowerCase() === this._name.trim().toLowerCase())
+            throw new Error('Parameter newRuleName must be a string, different than the original, cannot be empty and has a maximum length of 50');
 
         if (newRuleOpenAction && typeof newRuleOpenAction !== 'boolean')
             throw new Error('Parameter newRuleOpenAction must be true or false');
@@ -67,7 +69,7 @@ export default class RuleConfigurationsActions {
 
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Napi.post(this._resource + '/clone', cloneInfo)
+        _this._ogapi.Napi.post(this._resource + '/clone', cloneInfo)
             .then((res) => {
                 if (res.statusCode === 201) {
                     //console.log("CREATEOK: " + JSON.stringify(res));
