@@ -73,6 +73,13 @@ export default class BaseSearch {
         return filter;
     }
 
+    cancelAsyncPaging(message) {
+        if (typeof message === 'string' && message.length > 0) {
+            this.cancel = message;
+        } else
+            this.cancel = true;
+    }
+
     _loadData(resource) {
         let _this = this;
         let defered = q.defer();
@@ -81,33 +88,39 @@ export default class BaseSearch {
         //Funcion que realizara la llamada al search paginado y, de forma recursiva, llamara a todas las paginas
         function loadAll() {
             console.log(JSON.stringify(filter));
-            _this._ogapi.Napi
-                .post(_this._resource, filter, _this._timeout)
-                .then((response) => {
-                    let statusCode = response.statusCode;
-                    let body = response.body;
-                    if (statusCode === 200 || statusCode === 200) {
-                        paging = true;
-                        if (typeof _this._appendData === "function")
-                            _this._appendData(body);
-                        let result = body.data ? body.data[resource] : body[resource];
-                        defered.notify(result);
-                        if (result.length === filter.limit.size) {
-                            filter.limit.start += 1;
-                            loadAll();
+            if (_this.cancel || typeof _this.cancel === 'string') {
+                var message = typeof _this.cancel === 'string' ? _this.cancel : 'Cancel process';
+                defered.reject({ data: message, statusCode: 403 });
+            } else {
+                _this._ogapi.Napi
+                    .post(_this._resource, filter, _this._timeout)
+                    .then((response) => {
+                        let statusCode = response.statusCode;
+                        let body = response.body;
+                        if (statusCode === 200 || statusCode === 200) {
+                            paging = true;
+                            if (typeof _this._appendData === "function")
+                                _this._appendData(body);
+                            let result = body.data ? body.data[resource] : body[resource];
+                            defered.notify(result);
+                            //Se permite devolver un boolean o un string que reemplazará el mensaje por defecto
+                            if (result.length === filter.limit.size) {
+                                filter.limit.start += 1;
+                                loadAll();
+                            } else {
+                                defered.resolve({ data: 'DONE', statusCode: 200 });
+                            }
                         } else {
-                            defered.resolve({ data: 'DONE', statusCode: 200 });
+                            if (paging) {
+                                defered.resolve({ data: 'DONE', statusCode: 200 });
+                            } else
+                                defered.reject({ data: body, statusCode: statusCode })
                         }
-                    } else {
-                        if (paging) {
-                            defered.resolve({ data: 'DONE', statusCode: 200 });
-                        } else
-                            defered.reject({ data: body, statusCode: statusCode })
-                    }
-                })
-                .catch((error) => {
-                    defered.reject(error);
-                });
+                    })
+                    .catch((error) => {
+                        defered.reject(error);
+                    });
+            }
         }
         loadAll();
         return defered.promise;
@@ -115,6 +128,8 @@ export default class BaseSearch {
 
     /**
     * This invokes a request for asynchronous paging to the OpenGate North API and the return of the pages is managed by promises and its notify object
+    * To cancel the process in the notify method return false or string with custom message for response
+    * In case of canceling the process, the response will be 403: Forbidden -> {data: 'Cancel process'|| custom_message, statusCode: 403}
     * @param {string} resource - resource to find.
     * @return {Promise}
     * @property {function (), null, function ()} then - When request it is OK

@@ -271,6 +271,80 @@ module.exports = function() {
         }
     });
 
+    this.When(/^I execute with async paging it and cancel it$/, function () {
+        var _this = this;
+        _this.error = undefined;
+        _this.responseData = undefined;
+        _this.data = [];
+
+        function catchResponse(data) {
+            //console.log("EXECUTE RESPONSE: " + JSON.stringify(data));
+            _this.responseData = data;
+            _this.error = undefined;
+            //console.log(data);
+        }
+
+        function catchErrorResponse(err) {
+            //console.log("EXECUTE ERROR: " + JSON.stringify(err));
+            _this.responseData = err;
+            _this.error = err;
+            //console.log(_this.error);
+        }
+
+        function catchNotification(notification) {
+            console.log("EXECUTE NOTIFICATION: " + JSON.stringify(notification));
+            _this.error = undefined;
+            _this.responseData = undefined;
+            _this.data.push(notification);
+            _this.build.cancelAsyncPaging();
+        }
+
+        try {
+            return this.build.executeWithAsyncPaging(_this.util.resource).then(catchResponse, null, catchNotification).catch(catchErrorResponse);
+        } catch (err) {
+            console.log(err);
+            this.error = err;
+            return;
+        }
+    });
+
+    this.When(/^I execute with async paging it and cancel it with custom message$/, function () {
+        var _this = this;
+        _this.error = undefined;
+        _this.responseData = undefined;
+        _this.data = [];
+
+        function catchResponse(data) {
+            //console.log("EXECUTE RESPONSE: " + JSON.stringify(data));
+            _this.responseData = data;
+            _this.error = undefined;
+            //console.log(data);
+        }
+
+        function catchErrorResponse(err) {
+            //console.log("EXECUTE ERROR: " + JSON.stringify(err));
+            _this.responseData = err;
+            _this.error = err;
+            //console.log(_this.error);
+        }
+
+        function catchNotification(notification) {
+            console.log("EXECUTE NOTIFICATION: " + JSON.stringify(notification));
+            _this.error = undefined;
+            _this.responseData = undefined;
+            _this.data.push(notification);
+            _this.build.cancelAsyncPaging('cancel with custom message');
+        }
+
+        try {
+            return this.build.executeWithAsyncPaging(_this.util.resource).then(catchResponse, null, catchNotification).catch(catchErrorResponse);
+        } catch (err) {
+            console.log(err);
+            this.error = err;
+            return;
+        }
+    });
+
 
     this.When(/^I update periodicity$/, function() {
         var _this = this;
