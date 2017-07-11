@@ -154,7 +154,49 @@ var SearchBuilder = (function () {
     }, {
         key: 'addSortBy',
         value: function addSortBy(filterField, typeSort) {
-            this._builderParams.sort.push({ name: filterField, type: typeSort });
+            if (this._builderParams.sort.length > 0) {
+                var ele = 0;
+                var found = false;
+                for (ele = 0; ele < this._builderParams.sort.length; ele++) {
+                    if (this._builderParams.sort[ele].name === filterField) {
+                        this._builderParams.sort[ele].type = typeSort;
+                        found = true;
+                    }
+                }
+
+                if (!found) this._builderParams.sort.push({ name: filterField, type: typeSort });
+            } else {
+                this._builderParams.sort.push({ name: filterField, type: typeSort });
+            }
+
+            return this;
+        }
+
+        /**
+         * Remove sort param from the search object 
+         * @example
+         *  ogapi.subscriptionsSearchBuilder().removeSortBy('prov.customid') // Remove order by prov.customid
+         *  ogapi.subscriptionsSearchBuilder().removeSortBy() // Remove all order by parameters
+         * @param {string} filterField - This field must be allowed into the specific resource
+         * @return {SearchBuilder} 
+         */
+    }, {
+        key: 'removeSortBy',
+        value: function removeSortBy(filterField) {
+            if (!filterField) {
+                this._builderParams.sort = [];
+            } else {
+                if (this._builderParams.sort.length > 0) {
+                    var ele = 0;
+                    for (ele = 0; ele < this._builderParams.sort.length; ele++) {
+                        if (this._builderParams.sort[ele].name === filterField) {
+                            this._builderParams.sort.splice(ele, ele + 1);
+                            ele--;
+                        }
+                    }
+                }
+            }
+
             return this;
         }
 
