@@ -356,12 +356,20 @@ var StaticSearch = (function (_Search) {
                         "COMMUNICATIONS_MODULE": {
                             "mandatory": ["generatedEntityKey", "MAC"],
                             "optional": ["administrativeState", "HARDWARE", "SOFTWARE"]
+                        },
+                        "SUBSCRIPTION": {
+                            "mandatory": ["generatedEntityKey"],
+                            "optional": ["administrativeState", "ADDRESS"]
                         }
                     },
                     "ETH": {
                         "COMMUNICATIONS_MODULE": {
                             "mandatory": ["generatedEntityKey", "MAC"],
                             "optional": ["administrativeState", "HARDWARE", "SOFTWARE"]
+                        },
+                        "SUBSCRIPTION": {
+                            "mandatory": ["generatedEntityKey"],
+                            "optional": ["administrativeState", "ADDRESS"]
                         }
                     },
                     /*"BLUETOOTH": {
@@ -380,70 +388,68 @@ var StaticSearch = (function (_Search) {
                         "COMMUNICATIONS_MODULE": {
                             "mandatory": ["generatedEntityKey", "MAC"],
                             "optional": ["administrativeState", "HARDWARE", "SOFTWARE"]
+                        },
+                        "SUBSCRIPTION": {
+                            "mandatory": ["generatedEntityKey"],
+                            "optional": ["administrativeState"]
                         }
                     },
                     "PLC": {
                         "COMMUNICATIONS_MODULE": {
                             "mandatory": ["generatedEntityKey", "MAC"],
                             "optional": ["administrativeState", "HARDWARE", "SOFTWARE"]
+                        },
+                        "SUBSCRIPTION": {
+                            "mandatory": ["generatedEntityKey"],
+                            "optional": ["administrativeState"]
                         }
                     },
                     "ZIGBEE": {
                         "COMMUNICATIONS_MODULE": {
                             "mandatory": ["generatedEntityKey", "MAC"],
                             "optional": ["administrativeState", "HARDWARE", "SOFTWARE"]
+                        },
+                        "SUBSCRIPTION": {
+                            "mandatory": ["generatedEntityKey"],
+                            "optional": ["administrativeState"]
                         }
                     },
                     "ADSL": {
                         "COMMUNICATIONS_MODULE": {
                             "mandatory": ["generatedEntityKey"],
-                            "optional": ["administrativeState", "MAC"]
+                            "optional": ["administrativeState", "IMEI", "MAC", "HARDWARE", "SOFTWARE"]
                         },
                         "SUBSCRIPTION": {
                             "mandatory": ["generatedEntityKey"],
-                            "optional": ["administrativeState", "ADDRESS", "REGISTER_OPERATOR"]
+                            "optional": ["administrativeState", "ADDRESS", "HOME_OPERATOR", "LOCATION"]
                         }
                     },
                     "MOBILE": {
                         "COMMUNICATIONS_MODULE": {
-                            "mandatory": ["generatedEntityKey", "IMEI"],
-                            "optional": ["administrativeState", "HARDWARE", "SOFTWARE"]
+                            "mandatory": ["generatedEntityKey"],
+                            "optional": ["administrativeState", "IMEI", "MAC", "HARDWARE", "SOFTWARE"]
                         },
                         "SUBSCRIPTION": {
                             "mandatory": ["generatedEntityKey"],
-                            "optional": ["administrativeState", "IMSI", "MSISDN"]
+                            "optional": ["administrativeState", "IMSI", "ADDRESS", "HOME_OPERATOR", "REGISTER_OPERATOR", "MSISDN", "LOCATION"]
                         },
                         "SUBSCRIBER": {
-                            "mandatory": ["generatedEntityKey", "ICC"],
-                            "optional": ["administrativeState"]
+                            "mandatory": ["generatedEntityKey"],
+                            "optional": ["administrativeState", "ICC"]
                         }
                     },
                     "GSM": {
                         "COMMUNICATIONS_MODULE": {
-                            "mandatory": ["generatedEntityKey", "IMEI"],
-                            "optional": ["administrativeState", "HARDWARE", "SOFTWARE"]
+                            "mandatory": ["generatedEntityKey"],
+                            "optional": ["administrativeState", "IMEI", "MAC", "HARDWARE", "SOFTWARE"]
                         },
                         "SUBSCRIPTION": {
                             "mandatory": ["generatedEntityKey"],
-                            "optional": ["administrativeState", "IMSI", "MSISDN"]
+                            "optional": ["administrativeState", "IMSI", "ADDRESS", "HOME_OPERATOR", "REGISTER_OPERATOR", "MSISDN", "LOCATION"]
                         },
                         "SUBSCRIBER": {
-                            "mandatory": ["generatedEntityKey", "ICC"],
-                            "optional": ["administrativeState"]
-                        }
-                    },
-                    "UMTS": {
-                        "COMMUNICATIONS_MODULE": {
-                            "mandatory": ["generatedEntityKey", "IMEI"],
-                            "optional": ["administrativeState", "HARDWARE", "SOFTWARE"]
-                        },
-                        "SUBSCRIPTION": {
                             "mandatory": ["generatedEntityKey"],
-                            "optional": ["administrativeState", "IMSI", "MSISDN"]
-                        },
-                        "SUBSCRIBER": {
-                            "mandatory": ["generatedEntityKey", "ICC"],
-                            "optional": ["administrativeState"]
+                            "optional": ["administrativeState", "ICC"]
                         }
                     },
                     "CAN": {

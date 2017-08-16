@@ -254,7 +254,7 @@ export default class StaticSearch extends Search {
             case &apos;operationalStatus&apos;:
             case &apos;specificType&apos;:
                 for (var contentTmp in collection) {
-                    collection[contentTmp].forEach(function (finalValue) {
+                    collection[contentTmp].forEach(function(finalValue) {
                         if (!_this._customFilters.id || (_this._customFilters.id &amp;&amp; _this._customFilters.id === finalValue)) {
                             finalContent.push({
                                 &apos;entityType&apos;: contentTmp,
@@ -265,7 +265,7 @@ export default class StaticSearch extends Search {
                 }
                 break;
             case &apos;administrativeState&apos;:
-                var createAndAddFileObj = function (obj) {
+                var createAndAddFileObj = function(obj) {
                     var finalObj = obj;
                     finalObj[ENTITY_TYPE] = entityTypeTmp;
                     finalContent.push(finalObj);
@@ -526,12 +526,20 @@ export default class StaticSearch extends Search {
                     &quot;COMMUNICATIONS_MODULE&quot;: {
                         &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;, &quot;MAC&quot;],
                         &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                    },
+                    &quot;SUBSCRIPTION&quot;: {
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;ADDRESS&quot;]
                     }
                 },
                 &quot;ETH&quot;: {
                     &quot;COMMUNICATIONS_MODULE&quot;: {
                         &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;, &quot;MAC&quot;],
                         &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                    },
+                    &quot;SUBSCRIPTION&quot;: {
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;ADDRESS&quot;]
                     }
                 },
                 /*&quot;BLUETOOTH&quot;: {
@@ -550,70 +558,68 @@ export default class StaticSearch extends Search {
                     &quot;COMMUNICATIONS_MODULE&quot;: {
                         &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;, &quot;MAC&quot;],
                         &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                    },
+                    &quot;SUBSCRIPTION&quot;: {
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;]
                     }
                 },
                 &quot;PLC&quot;: {
                     &quot;COMMUNICATIONS_MODULE&quot;: {
                         &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;, &quot;MAC&quot;],
                         &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                    },
+                    &quot;SUBSCRIPTION&quot;: {
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;]
                     }
                 },
                 &quot;ZIGBEE&quot;: {
                     &quot;COMMUNICATIONS_MODULE&quot;: {
                         &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;, &quot;MAC&quot;],
                         &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                    },
+                    &quot;SUBSCRIPTION&quot;: {
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;]
                     }
                 },
                 &quot;ADSL&quot;: {
                     &quot;COMMUNICATIONS_MODULE&quot;: {
                         &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;MAC&quot;]
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;IMEI&quot;, &quot;MAC&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
                     },
                     &quot;SUBSCRIPTION&quot;: {
                         &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;ADDRESS&quot;, &quot;REGISTER_OPERATOR&quot;]
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;ADDRESS&quot;, &quot;HOME_OPERATOR&quot;, &quot;LOCATION&quot;]
                     }
                 },
                 &quot;MOBILE&quot;: {
                     &quot;COMMUNICATIONS_MODULE&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;, &quot;IMEI&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;IMEI&quot;, &quot;MAC&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
                     },
                     &quot;SUBSCRIPTION&quot;: {
                         &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;IMSI&quot;, &quot;MSISDN&quot;]
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;IMSI&quot;, &quot;ADDRESS&quot;, &quot;HOME_OPERATOR&quot;, &quot;REGISTER_OPERATOR&quot;, &quot;MSISDN&quot;, &quot;LOCATION&quot;]
                     },
                     &quot;SUBSCRIBER&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;, &quot;ICC&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;]
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;ICC&quot;]
                     }
                 },
                 &quot;GSM&quot;: {
                     &quot;COMMUNICATIONS_MODULE&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;, &quot;IMEI&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;IMEI&quot;, &quot;MAC&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
                     },
                     &quot;SUBSCRIPTION&quot;: {
                         &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;IMSI&quot;, &quot;MSISDN&quot;]
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;IMSI&quot;, &quot;ADDRESS&quot;, &quot;HOME_OPERATOR&quot;, &quot;REGISTER_OPERATOR&quot;, &quot;MSISDN&quot;, &quot;LOCATION&quot;]
                     },
                     &quot;SUBSCRIBER&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;, &quot;ICC&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;]
-                    }
-                },
-                &quot;UMTS&quot;: {
-                    &quot;COMMUNICATIONS_MODULE&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;, &quot;IMEI&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
-                    },
-                    &quot;SUBSCRIPTION&quot;: {
                         &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;IMSI&quot;, &quot;MSISDN&quot;]
-                    },
-                    &quot;SUBSCRIBER&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;, &quot;ICC&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;]
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;ICC&quot;]
                     }
                 },
                 &quot;CAN&quot;: {
