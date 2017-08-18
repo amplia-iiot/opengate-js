@@ -25,10 +25,8 @@ import CommunicationsModulesSearchBuilder from './searching/builder/Communicatio
 import OperationsSearchBuilder from './searching/builder/OperationsSearchBuilder'
 import ExecutionsSearchBuilder from './searching/builder/ExecutionsSearchBuilder'
 import AlarmsSearchBuilder from './searching/builder/AlarmsSearchBuilder'
-import ProfilesSearchBuilder from './searching/builder/ProfilesSearchBuilder'
-import FeedsSearchBuilder from './searching/builder/FeedsSearchBuilder'
+import DatamodelsSearchBuilder from './searching/builder/DatamodelsSearchBuilder'
 import DatastreamsSearchBuilder from './searching/builder/DatastreamsSearchBuilder'
-import IoTDevicesSearchBuilder from './searching/builder/IoTDevicesSearchBuilder'
 import DatapointsSearchBuilder from './searching/builder/DatapointsSearchBuilder'
 import BundlesSearchBuilder from './searching/builder/BundlesSearchBuilder'
 import CertificatesSearchBuilder from './searching/builder/CertificatesSearchBuilder'
@@ -78,12 +76,11 @@ import WorkgroupFinder from './workgroups/WorkgroupFinder'
 import WorkgroupsSearchBuilder from './searching/builder/WorkgroupsSearchBuilder'
 import WorkgroupRelationsFinder from './workgroups/WorkgroupRelationsFinder'
 import UserProfilesSearchBuilder from './searching/builder/UserProfilesSearchBuilder'
-import IoTProfiles from './iot/profiles/IoTProfiles'
-import IoTProfilesHelper from './iot/profiles/IoTProfilesHelper'
-import IoTProfilesFinder from './iot/profiles/IoTProfilesFinder'
-import IoTDatastreamsBuilder from './iot/catalog/IoTDatastream'
-import IoTQratingsBuilder from './iot/catalog/IoTQrating'
-
+import Datamodels from './iot/datamodels/Datamodels'
+import DatamodelsHelper from './iot/datamodels/DatamodelsHelper'
+import DatamodelsFinder from './iot/datamodels/DatamodelsFinder'
+import DatastreamsBuilder from './iot/catalog/Datastream'
+import QratingsBuilder from './iot/catalog/Qrating'
 
 /**
  * This is a abstract class, it must be extended to another class that defined the backend, it will be used on request to Opengate North API by browser or nodejs server
@@ -369,27 +366,11 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a IoTDevicesSearchBuilder to build a specific IoTDevicesSearchBuilder
-     * @return {IoTDevicesSearchBuilder}
+     * This return a DatamodelsSearchBuilder to build a specific DatamodelsSearchBuilder
+     * @return {DatamodelsSearchBuilder}
      */
-    ioTDevicesSearchBuilder() {
-        return new IoTDevicesSearchBuilder(this);
-    }
-
-    /**
-     * This return a ProfilesSearchBuilder to build a specific ProfilesSearchBuilder
-     * @return {ProfilesSearchBuilder}
-     */
-    profilesSearchBuilder() {
-        return new ProfilesSearchBuilder(this);
-    }
-
-    /**
-     * This return a FeedsSearchBuilder to build a specific FeedsSearchBuilder
-     * @return {FeedsSearchBuilder}
-     */
-    feedsSearchBuilder() {
-        return new FeedsSearchBuilder(this);
+    datamodelsSearchBuilder() {
+        return new DatamodelsSearchBuilder(this);
     }
 
     /**
@@ -715,43 +696,43 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a IoTProfiles to build a specific IoTProfiles
-     * @return {IoTProfiles}
+     * This return a Datamodels to build a specific Datamodels
+     * @return {Datamodels}
      */
-    IoTProfilesBuilder(organization) {
-        return new IoTProfiles(this, organization)
+    datamodelsBuilder(organization) {
+        return new Datamodels(this, organization)
     }
 
     /**
-     * This return a IoTProfilesHelper to build a specific IoTProfilesHelper
-     * @return {IoTProfilesHelper}
+     * This return a DatamodelsHelper to build a specific DatamodelsHelper
+     * @return {DatamodelsHelper}
      */
-    IoTProfilesHelper(organization, profile) {
-        return new IoTProfilesHelper(this, organization, profile);
+    datamodelsHelper(organization, datamodel) {
+        return new DatamodelsHelper(this, organization, datamodel);
     }
 
     /**
-     * This return a util to find a IoT profile
-     * @return {IoTProfilesFinder}
+     * This return a util to find a datamodel
+     * @return {DatamodelsFinder}
      */
-    newIoTProfilesFinder() {
-        return new IoTProfilesFinder(this);
+    newDatamodelsFinder() {
+        return new DatamodelsFinder(this);
     }
 
     /**
-     * This return a IoTDatastream to build a specific IoTDatastream
-     * @return {IoTDatastreamsBuilder}
+     * This return a datastream to build a specific Datastream
+     * @return {DatastreamsBuilder}
      */
-    IoTDatastreamsBuilder() {
-        return new IoTDatastreamsBuilder(this);
+    datastreamsBuilder() {
+        return new DatastreamsBuilder(this);
     }
 
     /**
-     * This return a IoTQrating to build a specific IoTQrating
-     * @return {IoTQratingsBuilder}
+     * This return a Qrating to build a specific Qrating
+     * @return {QratingsBuilder}
      */
-    IoTQratingsBuilder() {
-        return new IoTQratingsBuilder(this);
+    qratingsBuilder() {
+        return new QratingsBuilder(this);
     }
 
 }

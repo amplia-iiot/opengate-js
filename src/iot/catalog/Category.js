@@ -1,16 +1,15 @@
 'use strict';
 
-import IoTDatastream from './IoTDatastream'
+import Datastream from './Datastream'
 
 /**
- * Defines the builder to configure a flavour of IoT profile. With this builder you can configure a flavour
+ * Defines the builder to configure a category of a datamodel. With this builder you can configure a category
  */
-export default class IoTFlavour {
-
+export default class Category {
     /**    
      * @param {!InternalOpenGateAPI} Reference to the API object.
-     * @param {!name} name of flavour
-     * @param {Array} datastreams of flavour
+     * @param {!name} name of category
+     * @param {Array} datastreams of category
      */
     constructor(ogapi, name, datastreams) {
         this._ogapi = ogapi;
@@ -20,9 +19,9 @@ export default class IoTFlavour {
     }
 
     /**
-     * Add a datastream to the flavour 
+     * Add a datastream to the category 
      * @param {!Object} datastream json object
-     * @return {IoTProfilesHelper}
+     * @return {Category}
      */
     addDatastream(datastream) {
         if (!datastream || typeof datastream !== 'object') {
@@ -34,9 +33,9 @@ export default class IoTFlavour {
 
 
     /**
-     * Add a datastreams to the flavour 
+     * Add a datastreams to the category 
      * @param {!Object} datastreams of datastream json object
-     * @return {IoTProfilesHelper}
+     * @return {Category}
      */
     addDatastreams(datastreams) {
         var _this = this;
@@ -59,23 +58,12 @@ export default class IoTFlavour {
 
     _isValidString(string, param_name, max_length) {
         if (typeof string !== 'string' || string.length === 0 || string.length > max_length)
-            throw new Error('Parameter ' + param_name + ' must be a string, cannot be empty and has a maximum length of ' + max_length + ' on IoTFlavour');
+            throw new Error('Parameter ' + param_name + ' must be a string, cannot be empty and has a maximum length of ' + max_length + ' on Category');
     }
 
     _composeElement() {
         if (!this._name) {
-            throw new Error('Name is required on IoTFlavour');
-        }
-
-        if (this._datastreams.length === 0) {
-            let _datastream = this._ogapi.IoTDatastreamsBuilder();
-            _datastream.withId(this._name + '.example.heart.rate');
-            _datastream.withName(this._name + '.example.heart.rate');
-            _datastream.withDescription('heart rate measurement (example)');
-            _datastream.withPeriod('PULSE');
-            _datastream.withUnit('SI', 'beats/second', 'bpm');
-            _datastream.withTags(['health', 'heart']);
-            this.addDatastream(_datastream.build());
+            throw new Error('Name is required on Category');
         }
 
         return {

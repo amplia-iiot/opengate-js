@@ -1,7 +1,6 @@
 'use strict';
 
 import SearchBuilder from './SearchBuilder';
-import IotSearch from '../IotSearch';
 import merge from 'merge';
 import moment from 'moment';
 import FieldFinder from '../../util/searchingFields/FieldFinder';
@@ -33,21 +32,21 @@ export default class DatapointsSearchBuilder extends SearchBuilder {
      * @return {DatapointsSearchBuilder} 
      */
     withDeviceId(deviceId) {
-        if (typeof deviceId !== 'string') {
-            throw new Error('Parameter deviceId must be a string');
+            if (typeof deviceId !== 'string') {
+                throw new Error('Parameter deviceId must be a string');
+            }
+            this.fluentFilter.and(this._parent.EX.eq('datapoint.device', deviceId));
+            return this;
         }
-        this.fluentFilter.and(this._parent.EX.eq('datapoint.device', deviceId));
-        return this;
-    }
-    /**
-     * Set datastreamId to search
-     *
-     * @example
-     *	ogapi.datapointsSearchBuilder().withDeviceId('myDevice').build()
-     * @param {!string} datastreamId - Datastream.id of Datapoint
-     * @throws {Error} throw error when datastreamId is not typeof string
-     * @return {DatapointsSearchBuilder} 
-     */
+        /**
+         * Set datastreamId to search
+         *
+         * @example
+         *	ogapi.datapointsSearchBuilder().withDeviceId('myDevice').build()
+         * @param {!string} datastreamId - Datastream.id of Datapoint
+         * @throws {Error} throw error when datastreamId is not typeof string
+         * @return {DatapointsSearchBuilder} 
+         */
     withDatastream(datastreamId) {
         if (typeof datastreamId !== 'string') {
             throw new Error('Parameter datastreamId must be a string');
@@ -140,22 +139,5 @@ export default class DatapointsSearchBuilder extends SearchBuilder {
             filter.filter = _fluentFilter;
         }
         return filter;
-    }
-
-    /**
-     * Build a instance of IotSearch 
-     *
-     * @example
-     *	ogapi.datapointsSearchBuilder().filter({and:[]}).build()
-     * @throws {SearchBuilderError} Throw error on url build
-     * @return {IotSearch} 
-     */
-    build() {
-        return new IotSearch(this._parent,
-            this._buildUrl(),
-            this._buildFilter(),
-            this._buildLimit(),
-            this._buildSort(),
-            this._builderParams.timeout);
     }
 }
