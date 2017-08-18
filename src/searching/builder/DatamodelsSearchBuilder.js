@@ -1,15 +1,14 @@
 'use strict';
 
 import SearchBuilder from './SearchBuilder';
-import Search from '../Search';
 import FieldFinder from '../../util/searchingFields/FieldFinder';
 
-const BASE_URL = '/datastreams';
+const BASE_URL = '/datamodels';
 /**
- * Defined a search over Datastreams	
- * @example ogapi.datastreamsSearchBuilder()
+ * Defined a search over Datamodels	
+ * @example ogapi.datamodelsSearchBuilder()
  */
-export default class DatastreamsSearchBuilder extends SearchBuilder {
+export default class DatamodelsSearchBuilder extends SearchBuilder {
     /**
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */

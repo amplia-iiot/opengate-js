@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * Defines the builder to configure a qurating of datastream of IoT profile. With this builder you can configure a qrating
+ * Defines the builder to configure a qurating of datastream of IoT datamodel. With this builder you can configure a qrating
  */
-export default class IoTQrating {
+export default class Qrating {
 
     constructor() {}
 
@@ -11,7 +11,7 @@ export default class IoTQrating {
      * Set the minRequired attribute
      * @param {!string} label - required field
      * @param {!number} value - required field
-     * @return {IoTQrating}
+     * @return {Qrating}
      */
     withMinRequired(label, value) {
         this._isValidString(label, 'label', 50);
@@ -22,11 +22,12 @@ export default class IoTQrating {
         }
         return this;
     }
+
     /**
      * Set the minDesired attribute
      * @param {!string} label - required field
      * @param {!number} value - required field
-     * @return {IoTQrating}
+     * @return {Qrating}
      */
     withMinDesired(label, value) {
         this._isValidString(label, 'label', 50);
@@ -37,11 +38,12 @@ export default class IoTQrating {
         }
         return this;
     }
+
     /**
      * Set the ideal attribute
      * @param {!string} label - required field
      * @param {!number} value - required field
-     * @return {IoTQrating}
+     * @return {Qrating}
      */
     withIdeal(label, value) {
         this._isValidString(label, 'label', 50);
@@ -52,11 +54,12 @@ export default class IoTQrating {
         }
         return this;
     }
+
     /**
      * Set the maxDesired attribute
      * @param {!string} label - required field
      * @param {!number} value - required field
-     * @return {IoTQrating}
+     * @return {Qrating}
      */
     withMaxDesired(label, value) {
         this._isValidString(label, 'label', 50);
@@ -67,11 +70,12 @@ export default class IoTQrating {
         }
         return this;
     }
+
     /**
      * Set the maxAllowed attribute
      * @param {!string} label - required field
      * @param {!number} value - required field
-     * @return {IoTQrating}
+     * @return {Qrating}
      */
     withMaxAllowed(label, value) {
         this._isValidString(label, 'label', 50);
@@ -82,10 +86,11 @@ export default class IoTQrating {
         }
         return this;
     }
+
     /**
      * Set the maxScore attribute
      * @param {!number} maxScore - required field
-     * @return {IoTQrating}
+     * @return {Qrating}
      */
     withMaxScore(maxScore) {
         this._isValidNumber(maxScore, 'maxScore');
@@ -96,7 +101,7 @@ export default class IoTQrating {
     /**
      * Set the cumulativePeriodDivisor attribute
      * @param {!string} cumulativePeriodDivisor
-     * @return {IoTQrating}
+     * @return {Qrating}
      */
     withCumulativePeriodDivisor(cumulativePeriodDivisor) {
         if (cumulativePeriodDivisor) {
@@ -109,21 +114,22 @@ export default class IoTQrating {
     /**
      * Set the conversionMatrix attribute
      * @param {!Object} conversionMatrix
-     * @return {IoTQrating}
+     * @return {Qrating}
      */
     withConversionMatrix(conversionMatrix) {
         if (conversionMatrix) {
             if (typeof conversionMatrix !== 'object') {
-                throw new Error('ConversionMatrix must be an object on IoTQrating');
+                throw new Error('ConversionMatrix must be an object on Qrating');
             }
         }
         this._conversionMatrix = conversionMatrix;
         return this;
     }
+
     /**
      * Set the version attribute
      * @param {!string} version - required field
-     * @return {IoTQrating}
+     * @return {Qrating}
      */
     withVersion(version) {
         /**max 100, min 1 */
@@ -136,31 +142,31 @@ export default class IoTQrating {
      * Build a Qrating json object
      * 
      * @example
-     * ogapi.IoTQratingsBuilder().build()
+     * ogapi.QratingsBuilder().build()
      * @throws {Error} Throw error if there is not version, minRequired, minDesired, ideal, maxDesired, maxAllowed and maxScore
      * @return {Object}  Datastream json object
      */
     build() {
         if (!this._version) {
-            throw new Error('Version is required on IoTQrating');
+            throw new Error('Version is required on Qrating');
         }
         if (!this._minRequired) {
-            throw new Error('MinRequired is required on IoTQrating');
+            throw new Error('MinRequired is required on Qrating');
         }
         if (!this._minDesired) {
-            throw new Error('MinDesired is required on IoTQrating');
+            throw new Error('MinDesired is required on Qrating');
         }
         if (!this._ideal) {
-            throw new Error('Ideal is required on IoTQrating');
+            throw new Error('Ideal is required on Qrating');
         }
         if (!this._maxDesired) {
-            throw new Error('MaxDesired is required on IoTQrating');
+            throw new Error('MaxDesired is required on Qrating');
         }
         if (!this._maxAllowed) {
-            throw new Error('MaxAllowed is required on IoTQrating');
+            throw new Error('MaxAllowed is required on Qrating');
         }
         if (!this._maxScore) {
-            throw new Error('MaxScore is required on IoTQrating');
+            throw new Error('MaxScore is required on Qrating');
         }
 
         return {
@@ -178,11 +184,11 @@ export default class IoTQrating {
 
     _isValidString(string, param_name, max_length) {
         if (typeof string !== 'string' || string.length === 0 || string.length > max_length)
-            throw new Error('Parameter ' + param_name + ' must be a string, cannot be empty and has a maximum length of ' + max_length + ' on IoTQrating');
+            throw new Error('Parameter ' + param_name + ' must be a string, cannot be empty and has a maximum length of ' + max_length + ' on Qrating');
     }
 
     _isValidNumber(number, param_name) {
         if (typeof number !== 'number')
-            throw new Error('Parameter ' + param_name + ' must be a number, cannot be empty on IoTQrating');
+            throw new Error('Parameter ' + param_name + ' must be a number, cannot be empty on Qrating');
     }
 }

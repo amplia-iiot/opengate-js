@@ -1,18 +1,19 @@
 'use strict';
 
-import IoTQrating from './IoTQrating'
+let jsValidate = require('jsonschema').validate;
+import Qrating from './Qrating'
 
 /**
- * Defines the builder to configure a datatastream of IoT profile. With this builder you can configure a datastream
+ * Defines the builder to configure a datastream of IoT datamodel. With this builder you can configure a datastream
  */
-export default class IoTDatastream {
+export default class Datastream {
 
     constructor() {}
 
     /**
      * Set the id attribute
      * @param {!string} id - required field
-     * @return {IoTDatastream}
+     * @return {Datastream}
      */
     withId(id) {
         this._isValidString(id, 'id', 100);
@@ -23,7 +24,7 @@ export default class IoTDatastream {
     /**
      * Set the name attribute
      * @param {!string} name - required field
-     * @return {IoTDatastream}
+     * @return {Datastream}
      */
     withName(name) {
         this._isValidString(name, 'name', 100);
@@ -34,7 +35,7 @@ export default class IoTDatastream {
     /**
      * Set the description attribute
      * @param {string} description
-     * @return {IoTDatastream}
+     * @return {Datastream}
      */
     withDescription(description) {
         if (description)
@@ -48,7 +49,7 @@ export default class IoTDatastream {
      * @param {!string} type - required field
      * @param {!string} label - required field
      * @param {!string} symbol - required field
-     * @return {IoTDatastream}
+     * @return {Datastream}
      */
     withUnit(type, label, symbol) {
         this._isValidString(type, 'type', 500);
@@ -65,7 +66,7 @@ export default class IoTDatastream {
     /**
      * Set the period attribute. Possible values: PULSE, CUMULATIVE, INSTANT
      * @param {!string} period - required field
-     * @return {IoTDatastream}
+     * @return {Datastream}
      */
     withPeriod(period) {
         this._isValidString(period, 'period', 500);
@@ -74,38 +75,28 @@ export default class IoTDatastream {
     }
 
     /**
-     * Set the format object attribute.
-     * @param {!string} type
-     * @param {string} subtype
-     * @param {Object} attributes
-     * @return {IoTDatastream}
+     * Set the schema object attribute.
+     * @param {!Object} schema
+     * @return {Datastream}
      */
-    withFormat(type, subtype, attributes) {
-        if (type || subtype || attributes) {
-            this._isValidString(type, 'type', 500);
-            if (attributes) {
-                if (typeof attributes !== 'object') {
-                    throw new Error('Attributes must be an object on IoTDatastream');
-                }
-            }
-            this._format = {
-                type: type,
-                subtype: subtype,
-                attributes: attributes
-            }
+    withSchema(schema) {
+        if (!schema || (typeof schema !== 'object')) {
+            throw new Error('Schema must be an object or a string on Datastream');
         }
+
+        this._schema = schema;
         return this;
     }
 
     /**
      * Set the tags attribute.
      * @param {Array} tags
-     * @return {IoTDatastream}
+     * @return {Datastream}
      */
     withTags(tags) {
         if (tags) {
             if (!Array.isArray(tags)) {
-                throw new Error('Tags must be an array on IoTDatastream');
+                throw new Error('Tags must be an array on Datastream');
             }
             this._tags = tags;
         }
@@ -113,13 +104,13 @@ export default class IoTDatastream {
     }
 
     /**
-     * Set the qrating attribute. Use {IoTQrating} utility for create this object
+     * Set the qrating attribute. Use {Qrating} utility for create this object
      * @param {Object} qrating
-     * @return {IoTDatastream}
+     * @return {Datastream}
      */
     addQrating(qrating) {
         if (!qrating || typeof qrating !== 'object') {
-            throw new Error('Qrating must be an instance of object on IoTDatastream');
+            throw new Error('Qrating must be an instance of object on Datastream');
         }
         this._qrating = qrating;
         return this;
@@ -129,12 +120,12 @@ export default class IoTDatastream {
      * Set the storage object.
      * @param {!string} period
      * @param {!number} total
-     * @return {IoTDatastream}
+     * @return {Datastream}
      */
     withStorage(period, total) {
         this._isValidString(period, 'period', 500);
         if (!total || typeof total !== 'number') {
-            throw new Error('Total must be a number on IoTDatastream');
+            throw new Error('Total must be a number on Datastream');
         }
         this._storage = {
             total: total,
@@ -146,12 +137,12 @@ export default class IoTDatastream {
     /**
      * Set the access object. Possible values: [READ, WRITE], [READ], [WRITE], []
      * @param {Array} access
-     * @return {IoTDatastream}
+     * @return {Datastream}
      */
     withAccess(access) {
         if (access) {
             if (!Array.isArray(access)) {
-                throw new Error('Access must be an array on IoTDatastream');
+                throw new Error('Access must be an array on Datastream');
             }
         }
         this._access = access;
@@ -161,12 +152,12 @@ export default class IoTDatastream {
     /**
      * Set the hardwaresIds object.
      * @param {Array} hardwaresIds
-     * @return {IoTDatastream}
+     * @return {Datastream}
      */
     withHardwaresIds(hardwaresIds) {
         if (hardwaresIds) {
             if (!Array.isArray(hardwaresIds)) {
-                throw new Error('hardware Ids must be an array on IoTDatastream');
+                throw new Error('hardware Ids must be an array on Datastream');
             }
         }
         this._hardwares = hardwaresIds;
@@ -177,22 +168,32 @@ export default class IoTDatastream {
      * Build a Datastream json object
      * 
      * @example
-     * ogapi.IoTDatastreamsBuilder().build()
+     * ogapi.DatastreamsBuilder().build()
      * @throws {Error} Throw error if there is not id, name, unit and period
      * @return {Object}  Datastream json object
      */
     build() {
         if (!this._id) {
-            throw new Error('Id is required on IoTDatastream');
+            throw new Error('Id is required on Datastream');
         }
         if (!this._name) {
-            throw new Error('Name is required on IoTDatastream');
+            throw new Error('Name is required on Datastream');
         }
         if (!this._unit) {
-            throw new Error('Unit is required on IoTDatastream');
+            throw new Error('Unit is required on Datastream');
         }
         if (!this._period) {
-            throw new Error('Period is required on IoTDatastream');
+            throw new Error('Period is required on Datastream');
+        }
+        if (!this._schema) {
+            throw new Error('Schema is required on Datastream');
+            //this._schema = { type: 'string' };
+        }
+
+        try {
+            jsValidate(4, this._schema);
+        } catch (errValidation) {
+            throw new Error('Schema not valid: ' + errValidation);
         }
 
         return {
@@ -202,7 +203,7 @@ export default class IoTDatastream {
             period: this._period,
             tags: this._tags,
             unit: this._unit,
-            format: this._format,
+            schema: this._schema,
             qrating: this._qrating,
             storage: this._storage,
             hardwareIds: this._hardwares,
@@ -212,6 +213,6 @@ export default class IoTDatastream {
 
     _isValidString(string, param_name, max_length) {
         if (typeof string !== 'string' || string.length === 0 || string.length > max_length)
-            throw new Error('Parameter ' + param_name + ' must be a string, cannot be empty and has a maximum length of ' + max_length + ' on IoTDatastream');
+            throw new Error('Parameter ' + param_name + ' must be a string, cannot be empty and has a maximum length of ' + max_length + ' on Datastream');
     }
 }

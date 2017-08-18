@@ -26,8 +26,7 @@ const match_url = {
     '/bundles': 'UPDATE_BUNDLE_VERSION',
     '/datapoints': 'DATAPOINTS',
     '/datastreams': 'DATASTREAMS',
-    '/profiles': 'PROFILES',
-    '/feeds': 'FEEDS',
+    '/datamodels': 'DATAMODELS',
     '/dmmQRating': 'DMMQRATING',
     '/iotQRating': 'IOTQRATING',
     '/catalog/softwares': 'SOFTWARE_VERSION',
@@ -58,7 +57,7 @@ const SIMPLE_FIELDS = 'simple';
 const COMPLEX_FIELDS = 'complex';
 
 const TYPE_FIELD = {
-    get: function (url) {
+    get: function(url) {
         if (complexPrimaryType.indexOf(match_url[url]) >= 0) {
             return COMPLEX_FIELDS;
         }
@@ -67,13 +66,13 @@ const TYPE_FIELD = {
 };
 
 const FIELD_SEARCHER = {
-    [SIMPLE_FIELDS]: function (states, context, primaryType, defered) {
+    [SIMPLE_FIELDS]: function(states, context, primaryType, defered) {
         if (states.length > 1) return defered.resolve([]);
         defered.resolve(context[primaryType].slice());
     },
-    [COMPLEX_FIELDS]: function (states, context, primaryType, defered) {
+    [COMPLEX_FIELDS]: function(states, context, primaryType, defered) {
         const finiteStateMachine = {
-            1: function (states, context) {
+            1: function(states, context) {
                 // Fields del primaryType + los fields de los relacionados = complexFields
                 return context[primaryType].concat(
                     complexFields.filter(
@@ -82,7 +81,7 @@ const FIELD_SEARCHER = {
                     )
                 );
             },
-            2: function (states, context) {
+            2: function(states, context) {
                 try {
                     // Fields del relacionado + fields_related
                     return appendPreviousStates(
@@ -94,7 +93,7 @@ const FIELD_SEARCHER = {
                     return [];
                 }
             },
-            3: function (states, context) {
+            3: function(states, context) {
                 let secondState = states[1];
                 if (fields_related.indexOf(secondState) === -1) return [];
                 try {
@@ -128,7 +127,7 @@ const FIELD_SEARCHER = {
 
         function appendPreviousStates(states, fields) {
             let out = []
-            fields.forEach(function (field) {
+            fields.forEach(function(field) {
                 let arrayField = states.slice(0, -1);
                 arrayField.push(field);
                 out.push(arrayField.join("."));

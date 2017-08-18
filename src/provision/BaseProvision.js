@@ -103,6 +103,7 @@ export default class BaseProvision {
     delete() {
         var defered = q.defer();
         var promise = defered.promise;
+        //console.log(this._buildURL());
         this._ogapi.Napi.delete(this._buildURL())
             .then((res) => {
                 if (res.statusCode === 200) {
@@ -129,6 +130,7 @@ export default class BaseProvision {
     update() {
         var defered = q.defer();
         var promise = defered.promise;
+
         this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement())
             .then((res) => {
                 if (res.statusCode === 200) {
