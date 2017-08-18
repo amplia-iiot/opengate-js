@@ -14,8 +14,8 @@ searchingModel = require('./searching_model');
 var APIKEY = 'require-real-apikey';
 
 function World() {
-    this.test_url_north = 'http://172.19.18.129:25281/v70';
-    this.test_url_south = 'http://172.19.18.129:9955/v70';
+    this.test_url_north = 'http://172.19.18.96:25281/v80';
+    this.test_url_south = 'http://172.19.18.96:9955/v80';
     chai.use(chai_as_promised);
     this.expect = chai.expect;
 

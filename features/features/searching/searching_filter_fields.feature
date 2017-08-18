@@ -126,23 +126,23 @@ Feature: Searching for all filter fields
     And I execute it
    Then response code should be: 204      
 
-  @bug @ODMQA-1148
-  Scenario: Execute all fields on profiles searching
+  @bug @ODMQA-1148 @datamodel
+  Scenario: Execute all fields on datamodels searching
   Given an apikey user by "require-real-apikey"
-    And an ogapi "profiles search" util
+    And an ogapi "datamodels search" util
    When I try to search with all allow fields
    When I build it
     And I execute it
    Then response code should be: 204    
     
-  @iot-feeds
-  Scenario: Execute all fields on feeds searching
-  Given an apikey user by "require-real-apikey"
-    And an ogapi "feeds search" util
-   When I try to search with all allow fields
-   When I build it
-    And I execute it
-   Then response code should be: 204        
+  # @iot-feeds
+  # Scenario: Execute all fields on feeds searching
+  # Given an apikey user by "require-real-apikey"
+  #   And an ogapi "feeds search" util
+  #  When I try to search with all allow fields
+  #  When I build it
+  #   And I execute it
+  #  Then response code should be: 204        
 
   Scenario: Execute all fields on softwares searching
   Given an apikey user by "require-real-apikey"

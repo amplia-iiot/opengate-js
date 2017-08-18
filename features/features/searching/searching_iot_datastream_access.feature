@@ -1,6 +1,7 @@
 # features/searching/searching_iot_datastream_access.feature
 
 @iot
+@datamodel
 @IoT_datastream_access_provider
 @iot_datastream
 @catalogs

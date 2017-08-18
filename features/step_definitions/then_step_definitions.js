@@ -297,7 +297,7 @@ module.exports = function () {
         var errorText;
         if (this.error.constructor == Array) {
             this.expect(this.error).to.have.lengthOf(1);
-            errorText = this.error[0];
+            errorText = this.error[0].description || this.error[0];
         } else {
             if (this.error.message) {
                 errorText = this.error.message;

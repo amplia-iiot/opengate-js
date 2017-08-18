@@ -1,6 +1,7 @@
 # features/searching/searching_iot_datastream_period.feature
 
 @iot
+@datamodel
 @IoT_datastream_period_provider
 @iot_datastream
 @catalogs

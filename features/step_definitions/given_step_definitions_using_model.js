@@ -33,7 +33,15 @@ module.exports = function() {
             var data = table.hashes();
             if (data.length > 0) {
                 for (var i = 0; i < data.length; i++) {
-                    args.push(data[i].param);
+                    var param = data[i].param;
+                    try {
+                        param = JSON.parse(param);
+                    } catch (err) {
+                        //console.info("No json");
+                    }
+                    if (!isNaN(param))
+                        param = param * 1;
+                    args.push(param);
                 }
                 this.util = this.utilsModel.util.apply(null, args);
             } else {
@@ -76,6 +84,17 @@ module.exports = function() {
         try {
             var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
             this.extraUtils[utilAlias][method](setterValue);
+        } catch (err) {
+            this.error = err;
+        }
+        callback();
+    });
+
+    this.Given(/^the "([^"]*)" '(.*)' json on util "([^"]*)"$/, function(setterName, setterValue, utilAlias, callback) {
+        this.error = undefined;
+        try {
+            var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
+            this.extraUtils[utilAlias][method](JSON.parse(setterValue));
         } catch (err) {
             this.error = err;
         }
