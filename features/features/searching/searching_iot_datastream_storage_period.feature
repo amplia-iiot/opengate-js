@@ -1,6 +1,7 @@
 # features/searching/searching_iot_datastream_storage_period.feature
 
 @iot
+@datamodel
 @IoT_datastream_storage_period
 @iot_datastream
 @catalogs

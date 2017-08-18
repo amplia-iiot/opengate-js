@@ -79,32 +79,35 @@ module.exports = {
                 'communications module': 'addCommunicationsModule',
                 'defaultFeed': 'withDefaultFeed'
             },
-            'IoT Profile': {
+            'datamodel': {
+                'identifier': 'withIdentifier',
                 'name': 'withName',
                 'version': 'withVersion',
                 'description': 'withDescription',
                 'specific type': 'withSpecificType',
-                'add flavour': 'addFlavour',
+                'add category': 'addCategory',
                 'add datastream': 'addDatastream',
-                'update flavour': 'updateFlavour',
+                'update category': 'updateCategory',
                 'update datastream': 'updateDatastream',
-                'remove flavour': 'removeFlavour',
+                'remove category': 'removeCategory',
                 'remove datastream': 'removeDatastream'
             },
-            'IoT Datastream': {
+            'datastream': {
                 'id': 'withId',
                 'name': 'withName',
                 'description': 'withDescription',
                 'unit': 'withUnit',
                 'period': 'withPeriod',
-                'format': 'withFormat',
+                'schema': 'withSchema',
                 'tags': 'withTags',
                 'storage': 'withStorage',
                 'access': 'withAccess',
                 'hardwaresIds': 'withHardwaresIds',
                 'qrating': 'addQrating',
+                'feed': 'withFeed',
+                'datapoints message': 'withDatapoint'
             },
-            'IoT Qrating': {
+            'qrating': {
                 'minRequired': 'withMinRequired',
                 'minDesired': 'withMinDesired',
                 'ideal': 'withIdeal',
@@ -132,12 +135,6 @@ module.exports = {
                 'subscriber': 'bindToSubscriber',
                 'subscription': 'bindToSubscription',
                 'mac': 'withMac'
-            },
-            'datastream': {
-
-            },
-            'qrating': {
-
             },
             '_subscriber': {
                 'name': 'withName',
@@ -196,11 +193,6 @@ module.exports = {
                 'nonVolatilStorage': 'withNonVolatilStorage',
                 'powerSupply': 'withPowerSupply',
                 'commsModuleMessage': 'withCommsModule'
-            },
-            'datastream': {
-                'id': 'withId',
-                'feed': 'withFeed',
-                'datapoints message': 'withDatapoint'
             },
             'datapoints message': {
                 'from': 'withFrom',

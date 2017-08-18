@@ -126,6 +126,7 @@ var BaseProvision = (function () {
         value: function _delete() {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
+            //console.log(this._buildURL());
             this._ogapi.Napi['delete'](this._buildURL()).then(function (res) {
                 if (res.statusCode === 200) {
                     defered.resolve({ statusCode: res.statusCode });
@@ -152,6 +153,7 @@ var BaseProvision = (function () {
         value: function update() {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
+
             this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement()).then(function (res) {
                 if (res.statusCode === 200) {
                     defered.resolve({ statusCode: res.statusCode });

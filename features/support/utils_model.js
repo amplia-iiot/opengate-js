@@ -128,20 +128,20 @@ module.exports = {
             "IoT datastream storage period search": function(ogapi) {
                 return ogapi.ioTDatastreamStoragePeriodSearchBuilder();
             },
-            "IoT profiles builder": function(ogapi, param) {
-                return ogapi.IoTProfilesBuilder(param);
+            "datamodels builder": function(ogapi, param) {
+                return ogapi.datamodelsBuilder(param);
             },
-            "IoT profiles helper": function(ogapi, param, param2) {
-                return ogapi.IoTProfilesHelper(param, param2);
+            "datamodels helper": function(ogapi, param, param2) {
+                return ogapi.datamodelsHelper(param, param2);
             },
-            "IoT profiles finder": function(ogapi) {
-                return ogapi.newIoTProfilesFinder();
+            "datamodels finder": function(ogapi) {
+                return ogapi.newDatamodelsFinder();
             },
-            "IoT datastreams builder": function() {
-                return ogapi.IoTDatastreamsBuilder();
+            "datastreams builder": function() {
+                return ogapi.datastreamsBuilder();
             },
-            "IoT qratings builder": function() {
-                return ogapi.IoTQratingsBuilder();
+            "qratings builder": function() {
+                return ogapi.qratingsBuilder();
             },
             "deviceMessage builder": function(ogapi) {
                 return ogapi.deviceMessageBuilder();
@@ -206,11 +206,8 @@ module.exports = {
             "iot devices search": function() {
                 return ogapi.ioTDevicesSearchBuilder();
             },
-            "profiles search": function() {
-                return ogapi.profilesSearchBuilder();
-            },
-            "feeds search": function() {
-                return ogapi.feedsSearchBuilder();
+            "datamodels search": function() {
+                return ogapi.datamodelsSearchBuilder();
             },
             "workgroups builder": function() {
                 return ogapi.workgroupsBuilder();
@@ -228,7 +225,6 @@ module.exports = {
                 return ogapi.relationsBuilder();
             }
         };
-        var args = Array.prototype.slice.call(arguments);
-        return utilsMath[utilName].apply(null, args.slice(1, args.length));
+        return utilsMath[utilName](ogapi, param, param2);
     }
 }

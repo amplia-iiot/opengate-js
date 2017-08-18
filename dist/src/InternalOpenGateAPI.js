@@ -110,21 +110,13 @@ var _searchingBuilderAlarmsSearchBuilder = require('./searching/builder/AlarmsSe
 
 var _searchingBuilderAlarmsSearchBuilder2 = _interopRequireDefault(_searchingBuilderAlarmsSearchBuilder);
 
-var _searchingBuilderProfilesSearchBuilder = require('./searching/builder/ProfilesSearchBuilder');
+var _searchingBuilderDatamodelsSearchBuilder = require('./searching/builder/DatamodelsSearchBuilder');
 
-var _searchingBuilderProfilesSearchBuilder2 = _interopRequireDefault(_searchingBuilderProfilesSearchBuilder);
-
-var _searchingBuilderFeedsSearchBuilder = require('./searching/builder/FeedsSearchBuilder');
-
-var _searchingBuilderFeedsSearchBuilder2 = _interopRequireDefault(_searchingBuilderFeedsSearchBuilder);
+var _searchingBuilderDatamodelsSearchBuilder2 = _interopRequireDefault(_searchingBuilderDatamodelsSearchBuilder);
 
 var _searchingBuilderDatastreamsSearchBuilder = require('./searching/builder/DatastreamsSearchBuilder');
 
 var _searchingBuilderDatastreamsSearchBuilder2 = _interopRequireDefault(_searchingBuilderDatastreamsSearchBuilder);
-
-var _searchingBuilderIoTDevicesSearchBuilder = require('./searching/builder/IoTDevicesSearchBuilder');
-
-var _searchingBuilderIoTDevicesSearchBuilder2 = _interopRequireDefault(_searchingBuilderIoTDevicesSearchBuilder);
 
 var _searchingBuilderDatapointsSearchBuilder = require('./searching/builder/DatapointsSearchBuilder');
 
@@ -322,25 +314,25 @@ var _searchingBuilderUserProfilesSearchBuilder = require('./searching/builder/Us
 
 var _searchingBuilderUserProfilesSearchBuilder2 = _interopRequireDefault(_searchingBuilderUserProfilesSearchBuilder);
 
-var _iotProfilesIoTProfiles = require('./iot/profiles/IoTProfiles');
+var _iotDatamodelsDatamodels = require('./iot/datamodels/Datamodels');
 
-var _iotProfilesIoTProfiles2 = _interopRequireDefault(_iotProfilesIoTProfiles);
+var _iotDatamodelsDatamodels2 = _interopRequireDefault(_iotDatamodelsDatamodels);
 
-var _iotProfilesIoTProfilesHelper = require('./iot/profiles/IoTProfilesHelper');
+var _iotDatamodelsDatamodelsHelper = require('./iot/datamodels/DatamodelsHelper');
 
-var _iotProfilesIoTProfilesHelper2 = _interopRequireDefault(_iotProfilesIoTProfilesHelper);
+var _iotDatamodelsDatamodelsHelper2 = _interopRequireDefault(_iotDatamodelsDatamodelsHelper);
 
-var _iotProfilesIoTProfilesFinder = require('./iot/profiles/IoTProfilesFinder');
+var _iotDatamodelsDatamodelsFinder = require('./iot/datamodels/DatamodelsFinder');
 
-var _iotProfilesIoTProfilesFinder2 = _interopRequireDefault(_iotProfilesIoTProfilesFinder);
+var _iotDatamodelsDatamodelsFinder2 = _interopRequireDefault(_iotDatamodelsDatamodelsFinder);
 
-var _iotCatalogIoTDatastream = require('./iot/catalog/IoTDatastream');
+var _iotCatalogDatastream = require('./iot/catalog/Datastream');
 
-var _iotCatalogIoTDatastream2 = _interopRequireDefault(_iotCatalogIoTDatastream);
+var _iotCatalogDatastream2 = _interopRequireDefault(_iotCatalogDatastream);
 
-var _iotCatalogIoTQrating = require('./iot/catalog/IoTQrating');
+var _iotCatalogQrating = require('./iot/catalog/Qrating');
 
-var _iotCatalogIoTQrating2 = _interopRequireDefault(_iotCatalogIoTQrating);
+var _iotCatalogQrating2 = _interopRequireDefault(_iotCatalogQrating);
 
 /**
  * This is a abstract class, it must be extended to another class that defined the backend, it will be used on request to Opengate North API by browser or nodejs server
@@ -695,33 +687,13 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a IoTDevicesSearchBuilder to build a specific IoTDevicesSearchBuilder
-         * @return {IoTDevicesSearchBuilder}
+         * This return a DatamodelsSearchBuilder to build a specific DatamodelsSearchBuilder
+         * @return {DatamodelsSearchBuilder}
          */
     }, {
-        key: 'ioTDevicesSearchBuilder',
-        value: function ioTDevicesSearchBuilder() {
-            return new _searchingBuilderIoTDevicesSearchBuilder2['default'](this);
-        }
-
-        /**
-         * This return a ProfilesSearchBuilder to build a specific ProfilesSearchBuilder
-         * @return {ProfilesSearchBuilder}
-         */
-    }, {
-        key: 'profilesSearchBuilder',
-        value: function profilesSearchBuilder() {
-            return new _searchingBuilderProfilesSearchBuilder2['default'](this);
-        }
-
-        /**
-         * This return a FeedsSearchBuilder to build a specific FeedsSearchBuilder
-         * @return {FeedsSearchBuilder}
-         */
-    }, {
-        key: 'feedsSearchBuilder',
-        value: function feedsSearchBuilder() {
-            return new _searchingBuilderFeedsSearchBuilder2['default'](this);
+        key: 'datamodelsSearchBuilder',
+        value: function datamodelsSearchBuilder() {
+            return new _searchingBuilderDatamodelsSearchBuilder2['default'](this);
         }
 
         /**
@@ -1127,53 +1099,53 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a IoTProfiles to build a specific IoTProfiles
-         * @return {IoTProfiles}
+         * This return a Datamodels to build a specific Datamodels
+         * @return {Datamodels}
          */
     }, {
-        key: 'IoTProfilesBuilder',
-        value: function IoTProfilesBuilder(organization) {
-            return new _iotProfilesIoTProfiles2['default'](this, organization);
+        key: 'datamodelsBuilder',
+        value: function datamodelsBuilder(organization) {
+            return new _iotDatamodelsDatamodels2['default'](this, organization);
         }
 
         /**
-         * This return a IoTProfilesHelper to build a specific IoTProfilesHelper
-         * @return {IoTProfilesHelper}
+         * This return a DatamodelsHelper to build a specific DatamodelsHelper
+         * @return {DatamodelsHelper}
          */
     }, {
-        key: 'IoTProfilesHelper',
-        value: function IoTProfilesHelper(organization, profile) {
-            return new _iotProfilesIoTProfilesHelper2['default'](this, organization, profile);
+        key: 'datamodelsHelper',
+        value: function datamodelsHelper(organization, datamodel) {
+            return new _iotDatamodelsDatamodelsHelper2['default'](this, organization, datamodel);
         }
 
         /**
-         * This return a util to find a IoT profile
-         * @return {IoTProfilesFinder}
+         * This return a util to find a datamodel
+         * @return {DatamodelsFinder}
          */
     }, {
-        key: 'newIoTProfilesFinder',
-        value: function newIoTProfilesFinder() {
-            return new _iotProfilesIoTProfilesFinder2['default'](this);
+        key: 'newDatamodelsFinder',
+        value: function newDatamodelsFinder() {
+            return new _iotDatamodelsDatamodelsFinder2['default'](this);
         }
 
         /**
-         * This return a IoTDatastream to build a specific IoTDatastream
-         * @return {IoTDatastreamsBuilder}
+         * This return a datastream to build a specific Datastream
+         * @return {DatastreamsBuilder}
          */
     }, {
-        key: 'IoTDatastreamsBuilder',
-        value: function IoTDatastreamsBuilder() {
-            return new _iotCatalogIoTDatastream2['default'](this);
+        key: 'datastreamsBuilder',
+        value: function datastreamsBuilder() {
+            return new _iotCatalogDatastream2['default'](this);
         }
 
         /**
-         * This return a IoTQrating to build a specific IoTQrating
-         * @return {IoTQratingsBuilder}
+         * This return a Qrating to build a specific Qrating
+         * @return {QratingsBuilder}
          */
     }, {
-        key: 'IoTQratingsBuilder',
-        value: function IoTQratingsBuilder() {
-            return new _iotCatalogIoTQrating2['default'](this);
+        key: 'qratingsBuilder',
+        value: function qratingsBuilder() {
+            return new _iotCatalogQrating2['default'](this);
         }
     }]);
 

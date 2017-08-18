@@ -406,6 +406,8 @@ module.exports = function() {
             _this.responseData = err;
             if (err.errors) {
                 _this.error = err.errors;
+            } else if (err.data.errors) {
+                _this.error = err.data.errors;
             } else {
                 _this.error = err;
             }

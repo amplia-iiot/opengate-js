@@ -18,10 +18,6 @@ var _SearchBuilder2 = require('./SearchBuilder');
 
 var _SearchBuilder3 = _interopRequireDefault(_SearchBuilder2);
 
-var _IotSearch = require('../IotSearch');
-
-var _IotSearch2 = _interopRequireDefault(_IotSearch);
-
 var _merge = require('merge');
 
 var _merge2 = _interopRequireDefault(_merge);
@@ -186,20 +182,6 @@ var DatapointsSearchBuilder = (function (_SearchBuilder) {
                 filter.filter = _fluentFilter;
             }
             return filter;
-        }
-
-        /**
-         * Build a instance of IotSearch 
-         *
-         * @example
-         *	ogapi.datapointsSearchBuilder().filter({and:[]}).build()
-         * @throws {SearchBuilderError} Throw error on url build
-         * @return {IotSearch} 
-         */
-    }, {
-        key: 'build',
-        value: function build() {
-            return new _IotSearch2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildLimit(), this._buildSort(), this._builderParams.timeout);
         }
     }]);
 

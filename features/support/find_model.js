@@ -8,7 +8,7 @@ module.exports = {
             'communications module': {
                 'organizationAndid': 'findByOrganizationAndId'
             },
-            'IoT Profile': {
+            'datamodel': {
                 'organizationAndid': 'findByOrganizationAndId'
             },
             'channel': {
@@ -72,15 +72,15 @@ module.exports = {
             'user email': '/email',
             'rule configuration name': '/name',
             'workgroup name': '/name',
-            'profile id': '/id',
-            'profile name': '/name',
-            'profile version': '/version',
-            'profile description': '/description',
-            'flavour[0] name': '/flavours[0]/name',
-            'flavour[1] name': '/flavours[1]/name',
-            'flavour[0] datastream[0] id': '/flavours[0]/datastreams[0]/id',
-            'flavour[0] datastream[0] qrating version': '/flavours[0]/datastreams[0]/qrating/version',
-            'flavour[1] datastream[0] id': '/flavours[1]/datastreams[0]/id',
+            'datamodel identifier': '/identifier',
+            'datamodel name': '/name',
+            'datamodel version': '/version',
+            'datamodel description': '/description',
+            'category[0] name': '/categories[0]/name',
+            'category[1] name': '/categories[1]/name',
+            'category[0] datastream[0] id': '/categories[0]/datastreams[0]/id',
+            'category[0] datastream[0] qrating version': '/categories[0]/datastreams[0]/qrating/version',
+            'category[1] datastream[0] id': '/categories[1]/datastreams[0]/id',
         }[getter];
     }
 };
