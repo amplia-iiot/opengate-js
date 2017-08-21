@@ -35,10 +35,6 @@ for (var field in _IotFields.IOT_FIELDS) {
 
 var match_url = {
     '/devices': 'DEVICE_PART_DEVICE',
-    '/iot/devices': 'IOTDEVICES',
-    '/subscriptions': 'DEVICE_PART_SUBSCRIPTION',
-    '/subscribers': 'DEVICE_PART_SUBSCRIBER',
-    '/communicationsModules': 'DEVICE_PART_COMMSMODULE',
     '/jobs': 'JOB',
     '/alarms': 'ENTITY_ALARM',
     '/operations': 'ENTITY_OPERATION',
@@ -52,7 +48,9 @@ var match_url = {
     '/catalog/softwares': 'SOFTWARE_VERSION',
     '/catalog/hardwares': 'MODEL',
     '/domains': 'DOMAIN',
-    '/users': 'USER'
+    '/users': 'USER',
+    '/entities': 'EMPTY',
+    '/subscribers': 'EMPTY'
 };
 
 var match_type = {

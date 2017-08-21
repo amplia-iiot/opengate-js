@@ -90,14 +90,6 @@ var _searchingBuilderSubscribersSearchBuilder = require('./searching/builder/Sub
 
 var _searchingBuilderSubscribersSearchBuilder2 = _interopRequireDefault(_searchingBuilderSubscribersSearchBuilder);
 
-var _searchingBuilderSubscriptionsSearchBuilder = require('./searching/builder/SubscriptionsSearchBuilder');
-
-var _searchingBuilderSubscriptionsSearchBuilder2 = _interopRequireDefault(_searchingBuilderSubscriptionsSearchBuilder);
-
-var _searchingBuilderCommunicationsModulesSearchBuilder = require('./searching/builder/CommunicationsModulesSearchBuilder');
-
-var _searchingBuilderCommunicationsModulesSearchBuilder2 = _interopRequireDefault(_searchingBuilderCommunicationsModulesSearchBuilder);
-
 var _searchingBuilderOperationsSearchBuilder = require('./searching/builder/OperationsSearchBuilder');
 
 var _searchingBuilderOperationsSearchBuilder2 = _interopRequireDefault(_searchingBuilderOperationsSearchBuilder);
@@ -547,33 +539,13 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a SubscribersSearchBuilder to build a specific SubscribersSearch
+         * This return a SubscribersSearchBuilder to build a specific DeviceSearch
          * @return {SubscribersSearchBuilder}
          */
     }, {
         key: 'subscribersSearchBuilder',
         value: function subscribersSearchBuilder() {
             return new _searchingBuilderSubscribersSearchBuilder2['default'](this);
-        }
-
-        /**
-         * This return a SubscriptionsSearchBuilder to build a specific SubscriptionsSearch
-         * @return {SubscriptionsSearchBuilder}
-         */
-    }, {
-        key: 'subscriptionsSearchBuilder',
-        value: function subscriptionsSearchBuilder() {
-            return new _searchingBuilderSubscriptionsSearchBuilder2['default'](this);
-        }
-
-        /**
-         * This return a CommunicationsModulesSearchBuilder to build a specific CommunicationsModulesSearch
-         * @return {CommunicationsModulesSearchBuilder}
-         */
-    }, {
-        key: 'communicationsModulesSearchBuilder',
-        value: function communicationsModulesSearchBuilder() {
-            return new _searchingBuilderCommunicationsModulesSearchBuilder2['default'](this);
         }
 
         /**

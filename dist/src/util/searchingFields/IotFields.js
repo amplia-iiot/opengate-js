@@ -32,6 +32,12 @@ var IOT_FIELDS = {
     },
     "DOMAIN": {
         "DOMAIN": []
+    },
+    "GENERAL": {
+        "GENERAL": []
+    },
+    "EMPTY": {
+        "EMPTY": []
     }
 };
 exports.IOT_FIELDS = IOT_FIELDS;

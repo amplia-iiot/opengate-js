@@ -12,13 +12,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _SearchBuilder = require('./SearchBuilder');
+var _FlattenedSearchBuilder2 = require('./FlattenedSearchBuilder');
 
-var _SearchBuilder2 = _interopRequireDefault(_SearchBuilder);
-
-var _EntitySearchBuilder2 = require('./EntitySearchBuilder');
-
-var _EntitySearchBuilder3 = _interopRequireDefault(_EntitySearchBuilder2);
+var _FlattenedSearchBuilder3 = _interopRequireDefault(_FlattenedSearchBuilder2);
 
 var _utilSearchingFieldsFieldFinder = require('../../util/searchingFields/FieldFinder');
 
@@ -30,8 +26,8 @@ var BASE_URL = '/devices';
  * @example ogapi.devicesSearchBuilder()
  */
 
-var DevicesSearchBuilder = (function (_EntitySearchBuilder) {
-  _inherits(DevicesSearchBuilder, _EntitySearchBuilder);
+var DevicesSearchBuilder = (function (_FlattenedSearchBuilder) {
+  _inherits(DevicesSearchBuilder, _FlattenedSearchBuilder);
 
   /**
    *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
@@ -40,11 +36,12 @@ var DevicesSearchBuilder = (function (_EntitySearchBuilder) {
   function DevicesSearchBuilder(parent) {
     _classCallCheck(this, DevicesSearchBuilder);
 
-    _get(Object.getPrototypeOf(DevicesSearchBuilder.prototype), 'constructor', this).call(this, parent, BASE_URL, new _utilSearchingFieldsFieldFinder2['default'](parent, BASE_URL));
+    _get(Object.getPrototypeOf(DevicesSearchBuilder.prototype), 'constructor', this).call(this, parent, {}, new _utilSearchingFieldsFieldFinder2['default'](parent, '/entities'));
+    this._url = BASE_URL;
   }
 
   return DevicesSearchBuilder;
-})(_EntitySearchBuilder3['default']);
+})(_FlattenedSearchBuilder3['default']);
 
 exports['default'] = DevicesSearchBuilder;
 module.exports = exports['default'];
