@@ -208,13 +208,26 @@ module.exports = function() {
         callback();
     });
 
+    this.When(/^I build it with flattened response$/, function(callback) {
+        this.error = undefined;
+
+        try {
+            //console.log("UTIL: " + this.util);
+            this.build = this.util.flattened().build();
+        } catch (err) {
+            this.error = err;
+            //console.log(this.error);
+        }
+        callback();
+    });
+
     this.When(/^I execute it$/, function() {
         var _this = this;
         _this.error = undefined;
         _this.responseData = undefined;
 
         function catchResponse(data) {
-            console.log("EXECUTE RESPONSE: " + JSON.stringify(data));
+            //console.log("EXECUTE RESPONSE: " + JSON.stringify(data));
             _this.responseData = data;
             _this.error = undefined;
         }
@@ -229,7 +242,7 @@ module.exports = function() {
         try {
             return this.build.execute().then(catchResponse).catch(catchErrorResponse);
         } catch (err) {
-            //console.log(err);
+            console.log(err);
             this.error = err;
             return;
         }
@@ -271,7 +284,7 @@ module.exports = function() {
         }
     });
 
-    this.When(/^I execute with async paging it and cancel it$/, function () {
+    this.When(/^I execute with async paging it and cancel it$/, function() {
         var _this = this;
         _this.error = undefined;
         _this.responseData = undefined;
@@ -308,7 +321,7 @@ module.exports = function() {
         }
     });
 
-    this.When(/^I execute with async paging it and cancel it with custom message$/, function () {
+    this.When(/^I execute with async paging it and cancel it with custom message$/, function() {
         var _this = this;
         _this.error = undefined;
         _this.responseData = undefined;
@@ -344,7 +357,6 @@ module.exports = function() {
             return;
         }
     });
-
 
     this.When(/^I update periodicity$/, function() {
         var _this = this;

@@ -56,6 +56,9 @@ module.exports = {
             "devices builder": function(ogapi) {
                 return ogapi.devicesBuilder();
             },
+            "subscribers search": function(ogapi) {
+                return ogapi.subscribersSearchBuilder();
+            },
             "domains search": function(ogapi) {
                 return ogapi.domainsSearchBuilder();
             },
@@ -83,14 +86,8 @@ module.exports = {
             "subscriptions builder": function(ogapi) {
                 return ogapi.subscriptionsBuilder();
             },
-            "subscriptions search": function(ogapi) {
-                return ogapi.subscriptionsSearchBuilder();
-            },
             "subscribers builder": function(ogapi) {
                 return ogapi.subscribersBuilder();
-            },
-            "subscribers search": function(ogapi) {
-                return ogapi.subscribersSearchBuilder();
             },
             "user finder": function(ogapi) {
                 return ogapi.newUserFinder();
@@ -202,9 +199,6 @@ module.exports = {
             },
             "operations search": function() {
                 return ogapi.operationsSearchBuilder();
-            },
-            "iot devices search": function() {
-                return ogapi.ioTDevicesSearchBuilder();
             },
             "datamodels search": function() {
                 return ogapi.datamodelsSearchBuilder();

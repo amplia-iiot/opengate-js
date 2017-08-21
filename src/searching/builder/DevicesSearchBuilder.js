@@ -1,7 +1,6 @@
 'use strict';
 
-import SearchBuilder from './SearchBuilder'
-import EntitySearchBuilder from './EntitySearchBuilder'
+import FlattenedSearchBuilder from './FlattenedSearchBuilder'
 import FieldFinder from '../../util/searchingFields/FieldFinder'
 
 const BASE_URL = '/devices';
@@ -9,11 +8,12 @@ const BASE_URL = '/devices';
  * Defined a search over Devices	
  * @example ogapi.devicesSearchBuilder()
  */
-export default class DevicesSearchBuilder extends EntitySearchBuilder {
+export default class DevicesSearchBuilder extends FlattenedSearchBuilder {
     /**
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */
     constructor(parent) {
-        super(parent, BASE_URL, new FieldFinder(parent, BASE_URL));
+        super(parent, {}, new FieldFinder(parent, '/entities'));
+        this._url = BASE_URL;
     }
 }
