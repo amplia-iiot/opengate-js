@@ -59,6 +59,9 @@ module.exports = {
             "subscribers search": function(ogapi) {
                 return ogapi.subscribersSearchBuilder();
             },
+            "subscriptions search": function(ogapi) {
+                return ogapi.subscriptionsSearchBuilder();
+            },
             "domains search": function(ogapi) {
                 return ogapi.domainsSearchBuilder();
             },

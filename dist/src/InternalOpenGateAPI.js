@@ -90,6 +90,10 @@ var _searchingBuilderSubscribersSearchBuilder = require('./searching/builder/Sub
 
 var _searchingBuilderSubscribersSearchBuilder2 = _interopRequireDefault(_searchingBuilderSubscribersSearchBuilder);
 
+var _searchingBuilderSubscriptionsSearchBuilder = require('./searching/builder/SubscriptionsSearchBuilder');
+
+var _searchingBuilderSubscriptionsSearchBuilder2 = _interopRequireDefault(_searchingBuilderSubscriptionsSearchBuilder);
+
 var _searchingBuilderOperationsSearchBuilder = require('./searching/builder/OperationsSearchBuilder');
 
 var _searchingBuilderOperationsSearchBuilder2 = _interopRequireDefault(_searchingBuilderOperationsSearchBuilder);
@@ -546,6 +550,16 @@ var InternalOpenGateAPI = (function () {
         key: 'subscribersSearchBuilder',
         value: function subscribersSearchBuilder() {
             return new _searchingBuilderSubscribersSearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a SubscriptionsSearchBuilder to build a specific DeviceSearch
+         * @return {SubscriptionsSearchBuilder}
+         */
+    }, {
+        key: 'subscriptionsSearchBuilder',
+        value: function subscriptionsSearchBuilder() {
+            return new _searchingBuilderSubscriptionsSearchBuilder2['default'](this);
         }
 
         /**
