@@ -227,13 +227,13 @@ module.exports = function() {
         _this.responseData = undefined;
 
         function catchResponse(data) {
-            //console.log("EXECUTE RESPONSE: " + JSON.stringify(data));
+            console.log("EXECUTE RESPONSE: " + JSON.stringify(data));
             _this.responseData = data;
             _this.error = undefined;
         }
 
         function catchErrorResponse(err) {
-            //console.log("EXECUTE ERROR: " + JSON.stringify(err));
+            console.log("EXECUTE ERROR: " + JSON.stringify(err));
             _this.responseData = err;
             _this.error = err;
             //console.log(_this.error);

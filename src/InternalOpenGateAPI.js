@@ -20,6 +20,7 @@ import QuickSearch from './searching/QuickSearch'
 import RawSearchBuilder from './searching/builder/RawSearchBuilder'
 import DevicesSearchBuilder from './searching/builder/DevicesSearchBuilder'
 import SubscribersSearchBuilder from './searching/builder/SubscribersSearchBuilder'
+import SubscriptionsSearchBuilder from './searching/builder/SubscriptionsSearchBuilder'
 import OperationsSearchBuilder from './searching/builder/OperationsSearchBuilder'
 import ExecutionsSearchBuilder from './searching/builder/ExecutionsSearchBuilder'
 import AlarmsSearchBuilder from './searching/builder/AlarmsSearchBuilder'
@@ -259,6 +260,14 @@ export default class InternalOpenGateAPI {
      */
     subscribersSearchBuilder() {
         return new SubscribersSearchBuilder(this);
+    }
+
+    /**
+     * This return a SubscriptionsSearchBuilder to build a specific DeviceSearch
+     * @return {SubscriptionsSearchBuilder}
+     */
+    subscriptionsSearchBuilder() {
+        return new SubscriptionsSearchBuilder(this);
     }
 
     /**
