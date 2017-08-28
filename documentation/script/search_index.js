@@ -138,6 +138,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/iot/catalog/category.js~category",
+    "class/src/iot/catalog/Category.js~Category.html",
+    "<span>Category</span> <span class=\"search-result-import-path\">opengate-js/src/iot/catalog/Category.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/security/certificatefinder.js~certificatefinder",
     "class/src/security/CertificateFinder.js~CertificateFinder.html",
     "<span>CertificateFinder</span> <span class=\"search-result-import-path\">opengate-js/src/security/CertificateFinder.js</span>",
@@ -198,10 +204,16 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "opengate-js/src/searching/builder/communicationsmodulessearchbuilder.js~communicationsmodulessearchbuilder",
-    "class/src/searching/builder/CommunicationsModulesSearchBuilder.js~CommunicationsModulesSearchBuilder.html",
-    "<span>CommunicationsModulesSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/CommunicationsModulesSearchBuilder.js</span>",
-    "class"
+    "opengate-js/src/iot/datamodels/datamodels.js~datamodels_resource",
+    "variable/index.html#static-variable-DATAMODELS_RESOURCE",
+    "<span>DATAMODELS_RESOURCE</span> <span class=\"search-result-import-path\">opengate-js/src/iot/datamodels/Datamodels.js</span>",
+    "variable"
+  ],
+  [
+    "opengate-js/src/iot/datamodels/datamodelsfinder.js~datamodel_resource",
+    "variable/index.html#static-variable-DATAMODEL_RESOURCE",
+    "<span>DATAMODEL_RESOURCE</span> <span class=\"search-result-import-path\">opengate-js/src/iot/datamodels/DatamodelsFinder.js</span>",
+    "variable"
   ],
   [
     "opengate-js/src/util/date_format.js~date_format",
@@ -214,6 +226,30 @@ window.esdocSearchIndex = [
     "variable/index.html#static-variable-DAYS_ENUM",
     "<span>DAYS_ENUM</span> <span class=\"search-result-import-path\">opengate-js/src/operations/catalog/period/DAYS_ENUM.js</span>",
     "variable"
+  ],
+  [
+    "opengate-js/src/iot/datamodels/datamodels.js~datamodels",
+    "class/src/iot/datamodels/Datamodels.js~Datamodels.html",
+    "<span>Datamodels</span> <span class=\"search-result-import-path\">opengate-js/src/iot/datamodels/Datamodels.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/iot/datamodels/datamodelsfinder.js~datamodelsfinder",
+    "class/src/iot/datamodels/DatamodelsFinder.js~DatamodelsFinder.html",
+    "<span>DatamodelsFinder</span> <span class=\"search-result-import-path\">opengate-js/src/iot/datamodels/DatamodelsFinder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/iot/datamodels/datamodelshelper.js~datamodelshelper",
+    "class/src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper.html",
+    "<span>DatamodelsHelper</span> <span class=\"search-result-import-path\">opengate-js/src/iot/datamodels/DatamodelsHelper.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/searching/builder/datamodelssearchbuilder.js~datamodelssearchbuilder",
+    "class/src/searching/builder/DatamodelsSearchBuilder.js~DatamodelsSearchBuilder.html",
+    "<span>DatamodelsSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/DatamodelsSearchBuilder.js</span>",
+    "class"
   ],
   [
     "opengate-js/src/collection/devices/collect/datapoint.js~datapoint",
@@ -231,6 +267,12 @@ window.esdocSearchIndex = [
     "opengate-js/src/collection/devices/collect/datastreams.js~datastream",
     "class/src/collection/devices/collect/Datastreams.js~Datastream.html",
     "<span>Datastream</span> <span class=\"search-result-import-path\">opengate-js/src/collection/devices/collect/Datastreams.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/iot/catalog/datastream.js~datastream",
+    "class/src/iot/catalog/Datastream.js~Datastream.html",
+    "<span>Datastream</span> <span class=\"search-result-import-path\">opengate-js/src/iot/catalog/Datastream.js</span>",
     "class"
   ],
   [
@@ -300,12 +342,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "opengate-js/src/searching/builder/entitysearchbuilder.js~entitysearchbuilder",
-    "class/src/searching/builder/EntitySearchBuilder.js~EntitySearchBuilder.html",
-    "<span>EntitySearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/EntitySearchBuilder.js</span>",
-    "class"
-  ],
-  [
     "opengate-js/src/collection/devices/collect/event.js~event",
     "class/src/collection/devices/collect/Event.js~Event.html",
     "<span>Event</span> <span class=\"search-result-import-path\">opengate-js/src/collection/devices/collect/Event.js</span>",
@@ -336,12 +372,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "opengate-js/src/searching/builder/feedssearchbuilder.js~feedssearchbuilder",
-    "class/src/searching/builder/FeedsSearchBuilder.js~FeedsSearchBuilder.html",
-    "<span>FeedsSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/FeedsSearchBuilder.js</span>",
-    "class"
-  ],
-  [
     "opengate-js/src/util/searchingfields/fieldfinder.js~fieldfinder",
     "class/src/util/searchingFields/FieldFinder.js~FieldFinder.html",
     "<span>FieldFinder</span> <span class=\"search-result-import-path\">opengate-js/src/util/searchingFields/FieldFinder.js</span>",
@@ -357,6 +387,12 @@ window.esdocSearchIndex = [
     "opengate-js/src/searching/filterbuilder.js~filterbuilder",
     "class/src/searching/FilterBuilder.js~FilterBuilder.html",
     "<span>FilterBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/FilterBuilder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/searching/builder/flattenedsearchbuilder.js~flattenedsearchbuilder",
+    "class/src/searching/builder/FlattenedSearchBuilder.js~FlattenedSearchBuilder.html",
+    "<span>FlattenedSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/FlattenedSearchBuilder.js</span>",
     "class"
   ],
   [
@@ -390,27 +426,9 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
-    "opengate-js/src/iot/iotprovision.js~iot_url",
-    "variable/index.html#static-variable-IOT_URL",
-    "<span>IOT_URL</span> <span class=\"search-result-import-path\">opengate-js/src/iot/IoTProvision.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-js/src/searching/iotsearch.js~iot_url",
-    "variable/index.html#static-variable-IOT_URL",
-    "<span>IOT_URL</span> <span class=\"search-result-import-path\">opengate-js/src/searching/IotSearch.js</span>",
-    "variable"
-  ],
-  [
     "opengate-js/src/internalopengateapi.js~internalopengateapi",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html",
     "<span>InternalOpenGateAPI</span> <span class=\"search-result-import-path\">opengate-js/src/InternalOpenGateAPI.js</span>",
-    "class"
-  ],
-  [
-    "opengate-js/src/iot/catalog/iotdatastream.js~iotdatastream",
-    "class/src/iot/catalog/IoTDatastream.js~IoTDatastream.html",
-    "<span>IoTDatastream</span> <span class=\"search-result-import-path\">opengate-js/src/iot/catalog/IoTDatastream.js</span>",
     "class"
   ],
   [
@@ -429,60 +447,6 @@ window.esdocSearchIndex = [
     "opengate-js/src/searching/builder/iotdatastreamstorageperiodsearchbuilder.js~iotdatastreamstorageperiodsearchbuilder",
     "class/src/searching/builder/IoTDatastreamStoragePeriodSearchBuilder.js~IoTDatastreamStoragePeriodSearchBuilder.html",
     "<span>IoTDatastreamStoragePeriodSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/IoTDatastreamStoragePeriodSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-js/src/searching/builder/iotdevicessearchbuilder.js~iotdevicessearchbuilder",
-    "class/src/searching/builder/IoTDevicesSearchBuilder.js~IoTDevicesSearchBuilder.html",
-    "<span>IoTDevicesSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/IoTDevicesSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-js/src/iot/catalog/iotflavour.js~iotflavour",
-    "class/src/iot/catalog/IoTFlavour.js~IoTFlavour.html",
-    "<span>IoTFlavour</span> <span class=\"search-result-import-path\">opengate-js/src/iot/catalog/IoTFlavour.js</span>",
-    "class"
-  ],
-  [
-    "opengate-js/src/iot/iotprovision.js~iotprofiles",
-    "class/src/iot/IoTProvision.js~IoTProfiles.html",
-    "<span>IoTProfiles</span> <span class=\"search-result-import-path\">opengate-js/src/iot/IoTProvision.js</span>",
-    "class"
-  ],
-  [
-    "opengate-js/src/iot/profiles/iotprofiles.js~iotprofiles",
-    "class/src/iot/profiles/IoTProfiles.js~IoTProfiles.html",
-    "<span>IoTProfiles</span> <span class=\"search-result-import-path\">opengate-js/src/iot/profiles/IoTProfiles.js</span>",
-    "class"
-  ],
-  [
-    "opengate-js/src/iot/profiles/iotprofilesfinder.js~iotprofilesfinder",
-    "class/src/iot/profiles/IoTProfilesFinder.js~IoTProfilesFinder.html",
-    "<span>IoTProfilesFinder</span> <span class=\"search-result-import-path\">opengate-js/src/iot/profiles/IoTProfilesFinder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-js/src/iot/profiles/iotprofileshelper.js~iotprofileshelper",
-    "class/src/iot/profiles/IoTProfilesHelper.js~IoTProfilesHelper.html",
-    "<span>IoTProfilesHelper</span> <span class=\"search-result-import-path\">opengate-js/src/iot/profiles/IoTProfilesHelper.js</span>",
-    "class"
-  ],
-  [
-    "opengate-js/src/iot/iotprovisiongenericfinder.js~iotprovisiongenericfinder",
-    "class/src/iot/IoTProvisionGenericFinder.js~IoTProvisionGenericFinder.html",
-    "<span>IoTProvisionGenericFinder</span> <span class=\"search-result-import-path\">opengate-js/src/iot/IoTProvisionGenericFinder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-js/src/iot/catalog/iotqrating.js~iotqrating",
-    "class/src/iot/catalog/IoTQrating.js~IoTQrating.html",
-    "<span>IoTQrating</span> <span class=\"search-result-import-path\">opengate-js/src/iot/catalog/IoTQrating.js</span>",
-    "class"
-  ],
-  [
-    "opengate-js/src/searching/iotsearch.js~iotsearch",
-    "class/src/searching/IotSearch.js~IotSearch.html",
-    "<span>IotSearch</span> <span class=\"search-result-import-path\">opengate-js/src/searching/IotSearch.js</span>",
     "class"
   ],
   [
@@ -600,9 +564,9 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "opengate-js/src/iot/profiles/iotprofileshelper.js~post_resource",
+    "opengate-js/src/iot/datamodels/datamodelshelper.js~post_resource",
     "variable/index.html#static-variable-POST_RESOURCE",
-    "<span>POST_RESOURCE</span> <span class=\"search-result-import-path\">opengate-js/src/iot/profiles/IoTProfilesHelper.js</span>",
+    "<span>POST_RESOURCE</span> <span class=\"search-result-import-path\">opengate-js/src/iot/datamodels/DatamodelsHelper.js</span>",
     "variable"
   ],
   [
@@ -612,27 +576,15 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
-    "opengate-js/src/iot/profiles/iotprofiles.js~pre_resource",
+    "opengate-js/src/iot/datamodels/datamodels.js~pre_resource",
     "variable/index.html#static-variable-PRE_RESOURCE",
-    "<span>PRE_RESOURCE</span> <span class=\"search-result-import-path\">opengate-js/src/iot/profiles/IoTProfiles.js</span>",
+    "<span>PRE_RESOURCE</span> <span class=\"search-result-import-path\">opengate-js/src/iot/datamodels/Datamodels.js</span>",
     "variable"
   ],
   [
-    "opengate-js/src/iot/profiles/iotprofileshelper.js~pre_resource",
+    "opengate-js/src/iot/datamodels/datamodelshelper.js~pre_resource",
     "variable/index.html#static-variable-PRE_RESOURCE",
-    "<span>PRE_RESOURCE</span> <span class=\"search-result-import-path\">opengate-js/src/iot/profiles/IoTProfilesHelper.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-js/src/iot/profiles/iotprofiles.js~profile_resource",
-    "variable/index.html#static-variable-PROFILE_RESOURCE",
-    "<span>PROFILE_RESOURCE</span> <span class=\"search-result-import-path\">opengate-js/src/iot/profiles/IoTProfiles.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-js/src/iot/profiles/iotprofilesfinder.js~profile_resource",
-    "variable/index.html#static-variable-PROFILE_RESOURCE",
-    "<span>PROFILE_RESOURCE</span> <span class=\"search-result-import-path\">opengate-js/src/iot/profiles/IoTProfilesFinder.js</span>",
+    "<span>PRE_RESOURCE</span> <span class=\"search-result-import-path\">opengate-js/src/iot/datamodels/DatamodelsHelper.js</span>",
     "variable"
   ],
   [
@@ -654,15 +606,15 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "opengate-js/src/searching/builder/profilessearchbuilder.js~profilessearchbuilder",
-    "class/src/searching/builder/ProfilesSearchBuilder.js~ProfilesSearchBuilder.html",
-    "<span>ProfilesSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/ProfilesSearchBuilder.js</span>",
-    "class"
-  ],
-  [
     "opengate-js/src/provisiongenericfinder.js~provisiongenericfinder",
     "class/src/ProvisionGenericFinder.js~ProvisionGenericFinder.html",
     "<span>ProvisionGenericFinder</span> <span class=\"search-result-import-path\">opengate-js/src/ProvisionGenericFinder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/iot/catalog/qrating.js~qrating",
+    "class/src/iot/catalog/Qrating.js~Qrating.html",
+    "<span>Qrating</span> <span class=\"search-result-import-path\">opengate-js/src/iot/catalog/Qrating.js</span>",
     "class"
   ],
   [
@@ -1309,13 +1261,13 @@ window.esdocSearchIndex = [
   ],
   [
     "internalopengateapi#bundlesbuilder() src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder()",
-    "test-file/client/collection/iot.spec.js.html#lineNumber4",
+    "test-file/client/bundles/bundles.spec.js.html#lineNumber4",
     "Check funcionality bundles module:",
     "test"
   ],
   [
     "internalopengateapi#bundlesbuilder() src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder()",
-    "test-file/client/bundles/bundles.spec.js.html#lineNumber4",
+    "test-file/client/collection/iot.spec.js.html#lineNumber4",
     "Check funcionality bundles module:",
     "test"
   ],
@@ -1465,13 +1417,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber312",
+    "test-file/client/device/device.spec.js.html#lineNumber303",
     "Check funcionality bundles module: Check Deployment Element: Check DeploymentElement basic elements: Create a deployment element",
     "test"
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber303",
+    "test-file/client/device/device.spec.js.html#lineNumber312",
     "Check funcionality bundles module: Check Deployment Element: Check DeploymentElement basic elements: Create a deployment element",
     "test"
   ],
@@ -1806,7 +1758,7 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "internalopengateapi#devicessearchbuilder internalopengateapi#subscriberssearchbuilder internalopengateapi#subscriptionssearchbuilder internalopengateapi#communicationsmodulessearchbuilder internalopengateapi#executionssearchbuilder internalopengateapi#operationssearchbuilder internalopengateapi#alarmssearchbuilder internalopengateapi#bundlessearchbuilder src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder src/internalopengateapi.js~internalopengateapi#subscriptionssearchbuilder,internalopengateapi#subscriptionssearchbuilder src/internalopengateapi.js~internalopengateapi#communicationsmodulessearchbuilder,internalopengateapi#communicationsmodulessearchbuilder src/internalopengateapi.js~internalopengateapi#executionssearchbuilder,internalopengateapi#executionssearchbuilder src/internalopengateapi.js~internalopengateapi#operationssearchbuilder,internalopengateapi#operationssearchbuilder src/internalopengateapi.js~internalopengateapi#alarmssearchbuilder,internalopengateapi#alarmssearchbuilder src/internalopengateapi.js~internalopengateapi#bundlessearchbuilder,internalopengateapi#bundlessearchbuilder",
+    "internalopengateapi#devicessearchbuilder internalopengateapi#subscriberssearchbuilder internalopengateapi#subscriptionssearchbuilder internalopengateapi#communicationsmodulessearchbuilder internalopengateapi#executionssearchbuilder internalopengateapi#operationssearchbuilder internalopengateapi#alarmssearchbuilder internalopengateapi#bundlessearchbuilder src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder src/internalopengateapi.js~internalopengateapi#subscriptionssearchbuilder,internalopengateapi#subscriptionssearchbuilder internalopengateapi#communicationsmodulessearchbuilder,internalopengateapi#communicationsmodulessearchbuilder src/internalopengateapi.js~internalopengateapi#executionssearchbuilder,internalopengateapi#executionssearchbuilder src/internalopengateapi.js~internalopengateapi#operationssearchbuilder,internalopengateapi#operationssearchbuilder src/internalopengateapi.js~internalopengateapi#alarmssearchbuilder,internalopengateapi#alarmssearchbuilder src/internalopengateapi.js~internalopengateapi#bundlessearchbuilder,internalopengateapi#bundlessearchbuilder",
     "test-file/client/searching/search.spec.js.html#lineNumber13",
     "Check funcionality newSearchBuilder module:",
     "test"
@@ -1938,7 +1890,7 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "communicationsmodulessearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,communicationsmodulessearchbuilder#build",
+    "communicationsmodulessearchbuilder#build communicationsmodulessearchbuilder#build,communicationsmodulessearchbuilder#build",
     "test-file/client/searching/search.spec.js.html#lineNumber225",
     "Check funcionality newSearchBuilder module: Check on entity searching: On collected and provisioned data: communicationsModulesSearchBuilder",
     "test"
@@ -1962,31 +1914,31 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "entitysearchbuilder#oncollected src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#oncollected,entitysearchbuilder#oncollected",
+    "entitysearchbuilder#oncollected entitysearchbuilder#oncollected,entitysearchbuilder#oncollected",
     "test-file/client/searching/search.spec.js.html#lineNumber192",
     "Check funcionality newSearchBuilder module: Check on entity searching: On collected data:",
     "test"
   ],
   [
-    "communicationsmodulessearchbuilder#oncollected src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#oncollected,communicationsmodulessearchbuilder#oncollected",
+    "communicationsmodulessearchbuilder#oncollected communicationsmodulessearchbuilder#oncollected,communicationsmodulessearchbuilder#oncollected",
     "test-file/client/searching/search.spec.js.html#lineNumber206",
     "Check funcionality newSearchBuilder module: Check on entity searching: On collected data: communicationsModulesSearchBuilder",
     "test"
   ],
   [
-    "devicessearchbuilder#oncollected src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#oncollected,devicessearchbuilder#oncollected",
+    "devicessearchbuilder#oncollected devicessearchbuilder#oncollected,devicessearchbuilder#oncollected",
     "test-file/client/searching/search.spec.js.html#lineNumber194",
     "Check funcionality newSearchBuilder module: Check on entity searching: On collected data: devicesSearchBuilder",
     "test"
   ],
   [
-    "subscriberssearchbuilder#oncollected src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#oncollected,subscriberssearchbuilder#oncollected",
+    "subscriberssearchbuilder#oncollected subscriberssearchbuilder#oncollected,subscriberssearchbuilder#oncollected",
     "test-file/client/searching/search.spec.js.html#lineNumber202",
     "Check funcionality newSearchBuilder module: Check on entity searching: On collected data: subscribersSearchBuilder",
     "test"
   ],
   [
-    "subscriptionssearchbuilder#oncollected src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#oncollected,subscriptionssearchbuilder#oncollected",
+    "subscriptionssearchbuilder#oncollected subscriptionssearchbuilder#oncollected,subscriptionssearchbuilder#oncollected",
     "test-file/client/searching/search.spec.js.html#lineNumber198",
     "Check funcionality newSearchBuilder module: Check on entity searching: On collected data: subscriptionsSearchBuilder",
     "test"
@@ -2022,31 +1974,31 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "entitysearchbuilder#onprovisioned src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned",
+    "entitysearchbuilder#onprovisioned entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned",
     "test-file/client/searching/search.spec.js.html#lineNumber173",
     "Check funcionality newSearchBuilder module: Check on entity searching: On provisioned data:",
     "test"
   ],
   [
-    "communicationsmodulessearchbuilder#onprovisioned src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,communicationsmodulessearchbuilder#onprovisioned",
+    "communicationsmodulessearchbuilder#onprovisioned communicationsmodulessearchbuilder#onprovisioned,communicationsmodulessearchbuilder#onprovisioned",
     "test-file/client/searching/search.spec.js.html#lineNumber187",
     "Check funcionality newSearchBuilder module: Check on entity searching: On provisioned data: communicationsModulesSearchBuilder",
     "test"
   ],
   [
-    "devicessearchbuilder#onprovisioned src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,devicessearchbuilder#onprovisioned",
+    "devicessearchbuilder#onprovisioned devicessearchbuilder#onprovisioned,devicessearchbuilder#onprovisioned",
     "test-file/client/searching/search.spec.js.html#lineNumber175",
     "Check funcionality newSearchBuilder module: Check on entity searching: On provisioned data: devicesSearchBuilder",
     "test"
   ],
   [
-    "subscriberssearchbuilder#onprovisioned src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,subscriberssearchbuilder#onprovisioned",
+    "subscriberssearchbuilder#onprovisioned subscriberssearchbuilder#onprovisioned,subscriberssearchbuilder#onprovisioned",
     "test-file/client/searching/search.spec.js.html#lineNumber183",
     "Check funcionality newSearchBuilder module: Check on entity searching: On provisioned data: subscribersSearchBuilder",
     "test"
   ],
   [
-    "subscriptionssearchbuilder#onprovisioned src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,subscriptionssearchbuilder#onprovisioned",
+    "subscriptionssearchbuilder#onprovisioned subscriptionssearchbuilder#onprovisioned,subscriptionssearchbuilder#onprovisioned",
     "test-file/client/searching/search.spec.js.html#lineNumber179",
     "Check funcionality newSearchBuilder module: Check on entity searching: On provisioned data: subscriptionsSearchBuilder",
     "test"
@@ -2058,19 +2010,19 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortascendingby,searchbuilder#addsortascendingby src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber86",
-    "Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort",
-    "test"
-  ],
-  [
-    "searchbuilder#build searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortdescendingby,searchbuilder#addsortdescendingby src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
+    "searchbuilder#build searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortdescendingby,searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
     "test-file/client/searching/search.spec.js.html#lineNumber94",
     "Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort",
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#addsortby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortby,searchbuilder#addsortby src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
+    "searchbuilder#build searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortascendingby,searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber86",
+    "Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort",
+    "test"
+  ],
+  [
+    "searchbuilder#build searchbuilder#addsortby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortby,searchbuilder#addsortby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
     "test-file/client/searching/search.spec.js.html#lineNumber102",
     "Check funcionality newSearchBuilder module: Check on entity searching: On sort: Generic sort",
     "test"
@@ -2082,25 +2034,25 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "communicationsmodulessearchbuilder#summary communicationsmodulessearchbuilder#build src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,communicationsmodulessearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,communicationsmodulessearchbuilder#build",
+    "communicationsmodulessearchbuilder#summary communicationsmodulessearchbuilder#build communicationsmodulessearchbuilder#summary,communicationsmodulessearchbuilder#summary communicationsmodulessearchbuilder#build,communicationsmodulessearchbuilder#build",
     "test-file/client/searching/search.spec.js.html#lineNumber383",
     "Check funcionality newSearchBuilder module: Check on entity searching: On without source data: communicationsModulesSearchBuilder",
     "test"
   ],
   [
-    "devicessearchbuilder#summary devicessearchbuilder#build src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,devicessearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,devicessearchbuilder#build",
+    "devicessearchbuilder#summary devicessearchbuilder#build devicessearchbuilder#summary,devicessearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,devicessearchbuilder#build",
     "test-file/client/searching/search.spec.js.html#lineNumber362",
     "Check funcionality newSearchBuilder module: Check on entity searching: On without source data: devicesSearchBuilder",
     "test"
   ],
   [
-    "subscriberssearchbuilder#summary subscriberssearchbuilder#build src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,subscriberssearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,subscriberssearchbuilder#build",
+    "subscriberssearchbuilder#summary subscriberssearchbuilder#build subscriberssearchbuilder#summary,subscriberssearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,subscriberssearchbuilder#build",
     "test-file/client/searching/search.spec.js.html#lineNumber376",
     "Check funcionality newSearchBuilder module: Check on entity searching: On without source data: subscribersSearchBuilder",
     "test"
   ],
   [
-    "subscriptionssearchbuilder#summary subscriptionssearchbuilder#build src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,subscriptionssearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,subscriptionssearchbuilder#build",
+    "subscriptionssearchbuilder#summary subscriptionssearchbuilder#build subscriptionssearchbuilder#summary,subscriptionssearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,subscriptionssearchbuilder#build",
     "test-file/client/searching/search.spec.js.html#lineNumber369",
     "Check funcionality newSearchBuilder module: Check on entity searching: On without source data: subscriptionsSearchBuilder",
     "test"
@@ -2118,25 +2070,25 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "communicationsmodulessearchbuilder#summary communicationsmodulessearchbuilder#build src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,communicationsmodulessearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,communicationsmodulessearchbuilder#build",
+    "communicationsmodulessearchbuilder#summary communicationsmodulessearchbuilder#build communicationsmodulessearchbuilder#summary,communicationsmodulessearchbuilder#summary communicationsmodulessearchbuilder#build,communicationsmodulessearchbuilder#build",
     "test-file/client/searching/search.spec.js.html#lineNumber351",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On collected and provisioned data communicationsModulesSearchBuilder",
     "test"
   ],
   [
-    "devicessearchbuilder#summary devicessearchbuilder#build src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,devicessearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,devicessearchbuilder#build",
+    "devicessearchbuilder#summary devicessearchbuilder#build devicessearchbuilder#summary,devicessearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,devicessearchbuilder#build",
     "test-file/client/searching/search.spec.js.html#lineNumber330",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On collected and provisioned data devicesSearchBuilder",
     "test"
   ],
   [
-    "subscriberssearchbuilder#summary subscriberssearchbuilder#build src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,subscriberssearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,subscriberssearchbuilder#build",
+    "subscriberssearchbuilder#summary subscriberssearchbuilder#build subscriberssearchbuilder#summary,subscriberssearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,subscriberssearchbuilder#build",
     "test-file/client/searching/search.spec.js.html#lineNumber344",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On collected and provisioned data subscribersSearchBuilder",
     "test"
   ],
   [
-    "subscriptionssearchbuilder#summary subscriptionssearchbuilder#build src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,subscriptionssearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,subscriptionssearchbuilder#build",
+    "subscriptionssearchbuilder#summary subscriptionssearchbuilder#build subscriptionssearchbuilder#summary,subscriptionssearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,subscriptionssearchbuilder#build",
     "test-file/client/searching/search.spec.js.html#lineNumber337",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On collected and provisioned data subscriptionsSearchBuilder",
     "test"
@@ -2148,55 +2100,55 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "communicationsmodulessearchbuilder#summary communicationsmodulessearchbuilder#onprovisioned src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,communicationsmodulessearchbuilder#summary src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,communicationsmodulessearchbuilder#onprovisioned",
+    "communicationsmodulessearchbuilder#summary communicationsmodulessearchbuilder#onprovisioned communicationsmodulessearchbuilder#summary,communicationsmodulessearchbuilder#summary communicationsmodulessearchbuilder#onprovisioned,communicationsmodulessearchbuilder#onprovisioned",
     "test-file/client/searching/search.spec.js.html#lineNumber321",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On collected data: communicationsModulesSearchBuilder",
     "test"
   ],
   [
-    "devicessearchbuilder#summary devicessearchbuilder#onprovisioned src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,devicessearchbuilder#summary src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,devicessearchbuilder#onprovisioned",
+    "devicessearchbuilder#summary devicessearchbuilder#onprovisioned devicessearchbuilder#summary,devicessearchbuilder#summary devicessearchbuilder#onprovisioned,devicessearchbuilder#onprovisioned",
     "test-file/client/searching/search.spec.js.html#lineNumber300",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On collected data: devicesSearchBuilder",
     "test"
   ],
   [
-    "subscriberssearchbuilder#summary subscriberssearchbuilder#onprovisioned src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,subscriberssearchbuilder#summary src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,subscriberssearchbuilder#onprovisioned",
+    "subscriberssearchbuilder#summary subscriberssearchbuilder#onprovisioned subscriberssearchbuilder#summary,subscriberssearchbuilder#summary subscriberssearchbuilder#onprovisioned,subscriberssearchbuilder#onprovisioned",
     "test-file/client/searching/search.spec.js.html#lineNumber314",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On collected data: subscribersSearchBuilder",
     "test"
   ],
   [
-    "subscriptionssearchbuilder#summary subscriptionssearchbuilder#onprovisioned src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,subscriptionssearchbuilder#summary src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,subscriptionssearchbuilder#onprovisioned",
+    "subscriptionssearchbuilder#summary subscriptionssearchbuilder#onprovisioned subscriptionssearchbuilder#summary,subscriptionssearchbuilder#summary subscriptionssearchbuilder#onprovisioned,subscriptionssearchbuilder#onprovisioned",
     "test-file/client/searching/search.spec.js.html#lineNumber307",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On collected data: subscriptionsSearchBuilder",
     "test"
   ],
   [
-    "searchbuilder#summary entitysearchbuilder#onprovisioned searchbuilder#summary,searchbuilder#summary src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned",
+    "searchbuilder#summary entitysearchbuilder#onprovisioned searchbuilder#summary,searchbuilder#summary entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned",
     "test-file/client/searching/search.spec.js.html#lineNumber265",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On provisioned data:",
     "test"
   ],
   [
-    "communicationsmodulessearchbuilder#summary communicationsmodulessearchbuilder#onprovisioned src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,communicationsmodulessearchbuilder#summary src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,communicationsmodulessearchbuilder#onprovisioned",
+    "communicationsmodulessearchbuilder#summary communicationsmodulessearchbuilder#onprovisioned communicationsmodulessearchbuilder#summary,communicationsmodulessearchbuilder#summary communicationsmodulessearchbuilder#onprovisioned,communicationsmodulessearchbuilder#onprovisioned",
     "test-file/client/searching/search.spec.js.html#lineNumber291",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On provisioned data: communicationsModulesSearchBuilder",
     "test"
   ],
   [
-    "devicessearchbuilder#summary devicessearchbuilder#onprovisioned src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,devicessearchbuilder#summary src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,devicessearchbuilder#onprovisioned",
+    "devicessearchbuilder#summary devicessearchbuilder#onprovisioned devicessearchbuilder#summary,devicessearchbuilder#summary devicessearchbuilder#onprovisioned,devicessearchbuilder#onprovisioned",
     "test-file/client/searching/search.spec.js.html#lineNumber270",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On provisioned data: devicesSearchBuilder",
     "test"
   ],
   [
-    "subscriberssearchbuilder#summary subscriberssearchbuilder#onprovisioned src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,subscriberssearchbuilder#summary src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,subscriberssearchbuilder#onprovisioned",
+    "subscriberssearchbuilder#summary subscriberssearchbuilder#onprovisioned subscriberssearchbuilder#summary,subscriberssearchbuilder#summary subscriberssearchbuilder#onprovisioned,subscriberssearchbuilder#onprovisioned",
     "test-file/client/searching/search.spec.js.html#lineNumber284",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On provisioned data: subscribersSearchBuilder",
     "test"
   ],
   [
-    "subscriptionssearchbuilder#summary subscriptionssearchbuilder#onprovisioned src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,subscriptionssearchbuilder#summary src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,subscriptionssearchbuilder#onprovisioned",
+    "subscriptionssearchbuilder#summary subscriptionssearchbuilder#onprovisioned subscriptionssearchbuilder#summary,subscriptionssearchbuilder#summary subscriptionssearchbuilder#onprovisioned,subscriptionssearchbuilder#onprovisioned",
     "test-file/client/searching/search.spec.js.html#lineNumber277",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On provisioned data: subscriptionsSearchBuilder",
     "test"
@@ -2208,31 +2160,31 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "communicationsmodulessearchbuilder#summary communicationsmodulessearchbuilder#build src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,communicationsmodulessearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,communicationsmodulessearchbuilder#build",
+    "communicationsmodulessearchbuilder#summary communicationsmodulessearchbuilder#build communicationsmodulessearchbuilder#summary,communicationsmodulessearchbuilder#summary communicationsmodulessearchbuilder#build,communicationsmodulessearchbuilder#build",
     "test-file/client/searching/search.spec.js.html#lineNumber257",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: without source data: communicationsModulesSearchBuilder",
     "test"
   ],
   [
-    "devicessearchbuilder#summary devicessearchbuilder#build src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,devicessearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,devicessearchbuilder#build",
+    "devicessearchbuilder#summary devicessearchbuilder#build devicessearchbuilder#summary,devicessearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,devicessearchbuilder#build",
     "test-file/client/searching/search.spec.js.html#lineNumber236",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: without source data: devicesSearchBuilder",
     "test"
   ],
   [
-    "subscriberssearchbuilder#summary subscriberssearchbuilder#build src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,subscriberssearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,subscriberssearchbuilder#build",
+    "subscriberssearchbuilder#summary subscriberssearchbuilder#build subscriberssearchbuilder#summary,subscriberssearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,subscriberssearchbuilder#build",
     "test-file/client/searching/search.spec.js.html#lineNumber250",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: without source data: subscribersSearchBuilder",
     "test"
   ],
   [
-    "subscriptionssearchbuilder#summary subscriptionssearchbuilder#build src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,subscriptionssearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,subscriptionssearchbuilder#build",
+    "subscriptionssearchbuilder#summary subscriptionssearchbuilder#build subscriptionssearchbuilder#summary,subscriptionssearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,subscriptionssearchbuilder#build",
     "test-file/client/searching/search.spec.js.html#lineNumber243",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: without source data: subscriptionsSearchBuilder",
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
+    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
     "test-file/client/searching/search.spec.js.html#lineNumber145",
     "Check funcionality newSearchBuilder module: Check on entity searching: using filterBuilder:",
     "test"
@@ -2256,50 +2208,50 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#communicationsmodulessearchbuilder,internalopengateapi#communicationsmodulessearchbuilder",
+    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder,internalopengateapi#communicationsmodulessearchbuilder",
     "test-file/client/searching/search.spec.js.html#lineNumber76",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: communicationsModulesSearchBuilder",
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#communicationsmodulessearchbuilder,internalopengateapi#communicationsmodulessearchbuilder",
+    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder,internalopengateapi#communicationsmodulessearchbuilder",
     "test-file/client/searching/search.spec.js.html#lineNumber136",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: communicationsModulesSearchBuilder",
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
+    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
     "test-file/client/searching/search.spec.js.html#lineNumber50",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: devicesSearchBuilder",
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
+    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
     "test-file/client/searching/search.spec.js.html#lineNumber112",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: devicesSearchBuilder",
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriberssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder",
+    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriberssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder",
     "test-file/client/searching/search.spec.js.html#lineNumber68",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder",
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriberssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder",
+    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriberssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder",
     "test-file/client/searching/search.spec.js.html#lineNumber128",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder",
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriptionssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriptionssearchbuilder,internalopengateapi#subscriptionssearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber59",
+    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriptionssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriptionssearchbuilder,internalopengateapi#subscriptionssearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber120",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscriptionsSearchBuilder",
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriptionssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriptionssearchbuilder,internalopengateapi#subscriptionssearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber120",
+    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriptionssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriptionssearchbuilder,internalopengateapi#subscriptionssearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber59",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscriptionsSearchBuilder",
     "test"
   ],
@@ -2311,6 +2263,12 @@ window.esdocSearchIndex = [
   ],
   [
     "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
+    "test-file/client/searching/search.spec.js.html#lineNumber405",
+    "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
+    "test"
+  ],
+  [
+    "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
     "test-file/client/searching/search.spec.js.html#lineNumber393",
     "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
     "test"
@@ -2318,12 +2276,6 @@ window.esdocSearchIndex = [
   [
     "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
     "test-file/client/searching/search.spec.js.html#lineNumber399",
-    "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
-    "test"
-  ],
-  [
-    "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber405",
     "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
     "test"
   ],
@@ -2436,7 +2388,7 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "internalopengateapi#communicationsmodulessearchbuilder src/internalopengateapi.js~internalopengateapi#communicationsmodulessearchbuilder,internalopengateapi#communicationsmodulessearchbuilder",
+    "internalopengateapi#communicationsmodulessearchbuilder internalopengateapi#communicationsmodulessearchbuilder,internalopengateapi#communicationsmodulessearchbuilder",
     "test-file/client/searching/module.searching.spec.js.html#lineNumber26",
     "Check if all searching modules exists: Exist Builder communicationsModulesSearchBuilder function",
     "test"
@@ -2623,13 +2575,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber13",
+    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber5",
     "Testing fields finder api search a fields communicationsModulesSearchBuilder",
     "test"
   ],
   [
     "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber5",
+    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber13",
     "Testing fields finder api search a fields communicationsModulesSearchBuilder",
     "test"
   ],
@@ -2790,30 +2742,6 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/internalopengateapi.js~internalopengateapi#iotdatastreamsbuilder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-IoTDatastreamsBuilder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#IoTDatastreamsBuilder",
-    "method"
-  ],
-  [
-    "src/internalopengateapi.js~internalopengateapi#iotprofilesbuilder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-IoTProfilesBuilder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#IoTProfilesBuilder",
-    "method"
-  ],
-  [
-    "src/internalopengateapi.js~internalopengateapi#iotprofileshelper",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-IoTProfilesHelper",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#IoTProfilesHelper",
-    "method"
-  ],
-  [
-    "src/internalopengateapi.js~internalopengateapi#iotqratingsbuilder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-IoTQratingsBuilder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#IoTQratingsBuilder",
-    "method"
-  ],
-  [
     "src/internalopengateapi.js~internalopengateapi#napi",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-member-Napi",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#Napi",
@@ -2892,15 +2820,27 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/internalopengateapi.js~internalopengateapi#communicationsmodulessearchbuilder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-communicationsModulesSearchBuilder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#communicationsModulesSearchBuilder",
-    "method"
-  ],
-  [
     "src/internalopengateapi.js~internalopengateapi#constructor",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-constructor-constructor",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#constructor",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#datamodelsbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-datamodelsBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#datamodelsBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#datamodelshelper",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-datamodelsHelper",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#datamodelsHelper",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#datamodelssearchbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-datamodelsSearchBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#datamodelsSearchBuilder",
     "method"
   ],
   [
@@ -2919,6 +2859,12 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#datastreambuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-datastreamBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#datastreamBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#datastreamsbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-datastreamsBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#datastreamsBuilder",
     "method"
   ],
   [
@@ -2964,12 +2910,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/internalopengateapi.js~internalopengateapi#feedssearchbuilder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-feedsSearchBuilder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#feedsSearchBuilder",
-    "method"
-  ],
-  [
     "src/internalopengateapi.js~internalopengateapi#fieldsdefinitionsearchbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-fieldsDefinitionSearchBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#fieldsDefinitionSearchBuilder",
@@ -3003,12 +2943,6 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#iotdatastreamstorageperiodsearchbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-ioTDatastreamStoragePeriodSearchBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#ioTDatastreamStoragePeriodSearchBuilder",
-    "method"
-  ],
-  [
-    "src/internalopengateapi.js~internalopengateapi#iotdevicessearchbuilder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-ioTDevicesSearchBuilder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#ioTDevicesSearchBuilder",
     "method"
   ],
   [
@@ -3048,6 +2982,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#newdatamodelsfinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newDatamodelsFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newDatamodelsFinder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#newdevicefinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newDeviceFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newDeviceFinder",
@@ -3063,12 +3003,6 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#newfilterbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newFilterBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newFilterBuilder",
-    "method"
-  ],
-  [
-    "src/internalopengateapi.js~internalopengateapi#newiotprofilesfinder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newIoTProfilesFinder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newIoTProfilesFinder",
     "method"
   ],
   [
@@ -3168,9 +3102,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/internalopengateapi.js~internalopengateapi#profilessearchbuilder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-profilesSearchBuilder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#profilesSearchBuilder",
+    "src/internalopengateapi.js~internalopengateapi#qratingsbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-qratingsBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#qratingsBuilder",
     "method"
   ],
   [
@@ -5274,351 +5208,339 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/iot/iotprovision.js",
-    "file/src/iot/IoTProvision.js.html",
-    "src/iot/IoTProvision.js",
+    "src/iot/catalog/category.js",
+    "file/src/iot/catalog/Category.js.html",
+    "src/iot/catalog/Category.js",
     "file"
   ],
   [
-    "src/iot/iotprovision.js~iotprofiles#constructor",
-    "class/src/iot/IoTProvision.js~IoTProfiles.html#instance-constructor-constructor",
-    "src/iot/IoTProvision.js~IoTProfiles#constructor",
+    "src/iot/catalog/category.js~category#adddatastream",
+    "class/src/iot/catalog/Category.js~Category.html#instance-method-addDatastream",
+    "src/iot/catalog/Category.js~Category#addDatastream",
     "method"
   ],
   [
-    "src/iot/iotprovisiongenericfinder.js",
-    "file/src/iot/IoTProvisionGenericFinder.js.html",
-    "src/iot/IoTProvisionGenericFinder.js",
+    "src/iot/catalog/category.js~category#adddatastreams",
+    "class/src/iot/catalog/Category.js~Category.html#instance-method-addDatastreams",
+    "src/iot/catalog/Category.js~Category#addDatastreams",
+    "method"
+  ],
+  [
+    "src/iot/catalog/category.js~category#constructor",
+    "class/src/iot/catalog/Category.js~Category.html#instance-constructor-constructor",
+    "src/iot/catalog/Category.js~Category#constructor",
+    "method"
+  ],
+  [
+    "src/iot/catalog/datastream.js",
+    "file/src/iot/catalog/Datastream.js.html",
+    "src/iot/catalog/Datastream.js",
     "file"
   ],
   [
-    "src/iot/iotprovisiongenericfinder.js~iotprovisiongenericfinder#constructor",
-    "class/src/iot/IoTProvisionGenericFinder.js~IoTProvisionGenericFinder.html#instance-constructor-constructor",
-    "src/iot/IoTProvisionGenericFinder.js~IoTProvisionGenericFinder#constructor",
+    "src/iot/catalog/datastream.js~datastream#addqrating",
+    "class/src/iot/catalog/Datastream.js~Datastream.html#instance-method-addQrating",
+    "src/iot/catalog/Datastream.js~Datastream#addQrating",
     "method"
   ],
   [
-    "src/iot/catalog/iotdatastream.js",
-    "file/src/iot/catalog/IoTDatastream.js.html",
-    "src/iot/catalog/IoTDatastream.js",
+    "src/iot/catalog/datastream.js~datastream#build",
+    "class/src/iot/catalog/Datastream.js~Datastream.html#instance-method-build",
+    "src/iot/catalog/Datastream.js~Datastream#build",
+    "method"
+  ],
+  [
+    "src/iot/catalog/datastream.js~datastream#constructor",
+    "class/src/iot/catalog/Datastream.js~Datastream.html#instance-constructor-constructor",
+    "src/iot/catalog/Datastream.js~Datastream#constructor",
+    "method"
+  ],
+  [
+    "src/iot/catalog/datastream.js~datastream#withaccess",
+    "class/src/iot/catalog/Datastream.js~Datastream.html#instance-method-withAccess",
+    "src/iot/catalog/Datastream.js~Datastream#withAccess",
+    "method"
+  ],
+  [
+    "src/iot/catalog/datastream.js~datastream#withdescription",
+    "class/src/iot/catalog/Datastream.js~Datastream.html#instance-method-withDescription",
+    "src/iot/catalog/Datastream.js~Datastream#withDescription",
+    "method"
+  ],
+  [
+    "src/iot/catalog/datastream.js~datastream#withhardwaresids",
+    "class/src/iot/catalog/Datastream.js~Datastream.html#instance-method-withHardwaresIds",
+    "src/iot/catalog/Datastream.js~Datastream#withHardwaresIds",
+    "method"
+  ],
+  [
+    "src/iot/catalog/datastream.js~datastream#withid",
+    "class/src/iot/catalog/Datastream.js~Datastream.html#instance-method-withId",
+    "src/iot/catalog/Datastream.js~Datastream#withId",
+    "method"
+  ],
+  [
+    "src/iot/catalog/datastream.js~datastream#withname",
+    "class/src/iot/catalog/Datastream.js~Datastream.html#instance-method-withName",
+    "src/iot/catalog/Datastream.js~Datastream#withName",
+    "method"
+  ],
+  [
+    "src/iot/catalog/datastream.js~datastream#withperiod",
+    "class/src/iot/catalog/Datastream.js~Datastream.html#instance-method-withPeriod",
+    "src/iot/catalog/Datastream.js~Datastream#withPeriod",
+    "method"
+  ],
+  [
+    "src/iot/catalog/datastream.js~datastream#withschema",
+    "class/src/iot/catalog/Datastream.js~Datastream.html#instance-method-withSchema",
+    "src/iot/catalog/Datastream.js~Datastream#withSchema",
+    "method"
+  ],
+  [
+    "src/iot/catalog/datastream.js~datastream#withstorage",
+    "class/src/iot/catalog/Datastream.js~Datastream.html#instance-method-withStorage",
+    "src/iot/catalog/Datastream.js~Datastream#withStorage",
+    "method"
+  ],
+  [
+    "src/iot/catalog/datastream.js~datastream#withtags",
+    "class/src/iot/catalog/Datastream.js~Datastream.html#instance-method-withTags",
+    "src/iot/catalog/Datastream.js~Datastream#withTags",
+    "method"
+  ],
+  [
+    "src/iot/catalog/datastream.js~datastream#withunit",
+    "class/src/iot/catalog/Datastream.js~Datastream.html#instance-method-withUnit",
+    "src/iot/catalog/Datastream.js~Datastream#withUnit",
+    "method"
+  ],
+  [
+    "src/iot/catalog/qrating.js",
+    "file/src/iot/catalog/Qrating.js.html",
+    "src/iot/catalog/Qrating.js",
     "file"
   ],
   [
-    "src/iot/catalog/iotdatastream.js~iotdatastream#addqrating",
-    "class/src/iot/catalog/IoTDatastream.js~IoTDatastream.html#instance-method-addQrating",
-    "src/iot/catalog/IoTDatastream.js~IoTDatastream#addQrating",
+    "src/iot/catalog/qrating.js~qrating#build",
+    "class/src/iot/catalog/Qrating.js~Qrating.html#instance-method-build",
+    "src/iot/catalog/Qrating.js~Qrating#build",
     "method"
   ],
   [
-    "src/iot/catalog/iotdatastream.js~iotdatastream#build",
-    "class/src/iot/catalog/IoTDatastream.js~IoTDatastream.html#instance-method-build",
-    "src/iot/catalog/IoTDatastream.js~IoTDatastream#build",
+    "src/iot/catalog/qrating.js~qrating#constructor",
+    "class/src/iot/catalog/Qrating.js~Qrating.html#instance-constructor-constructor",
+    "src/iot/catalog/Qrating.js~Qrating#constructor",
     "method"
   ],
   [
-    "src/iot/catalog/iotdatastream.js~iotdatastream#constructor",
-    "class/src/iot/catalog/IoTDatastream.js~IoTDatastream.html#instance-constructor-constructor",
-    "src/iot/catalog/IoTDatastream.js~IoTDatastream#constructor",
+    "src/iot/catalog/qrating.js~qrating#withconversionmatrix",
+    "class/src/iot/catalog/Qrating.js~Qrating.html#instance-method-withConversionMatrix",
+    "src/iot/catalog/Qrating.js~Qrating#withConversionMatrix",
     "method"
   ],
   [
-    "src/iot/catalog/iotdatastream.js~iotdatastream#withaccess",
-    "class/src/iot/catalog/IoTDatastream.js~IoTDatastream.html#instance-method-withAccess",
-    "src/iot/catalog/IoTDatastream.js~IoTDatastream#withAccess",
+    "src/iot/catalog/qrating.js~qrating#withcumulativeperioddivisor",
+    "class/src/iot/catalog/Qrating.js~Qrating.html#instance-method-withCumulativePeriodDivisor",
+    "src/iot/catalog/Qrating.js~Qrating#withCumulativePeriodDivisor",
     "method"
   ],
   [
-    "src/iot/catalog/iotdatastream.js~iotdatastream#withdescription",
-    "class/src/iot/catalog/IoTDatastream.js~IoTDatastream.html#instance-method-withDescription",
-    "src/iot/catalog/IoTDatastream.js~IoTDatastream#withDescription",
+    "src/iot/catalog/qrating.js~qrating#withideal",
+    "class/src/iot/catalog/Qrating.js~Qrating.html#instance-method-withIdeal",
+    "src/iot/catalog/Qrating.js~Qrating#withIdeal",
     "method"
   ],
   [
-    "src/iot/catalog/iotdatastream.js~iotdatastream#withformat",
-    "class/src/iot/catalog/IoTDatastream.js~IoTDatastream.html#instance-method-withFormat",
-    "src/iot/catalog/IoTDatastream.js~IoTDatastream#withFormat",
+    "src/iot/catalog/qrating.js~qrating#withmaxallowed",
+    "class/src/iot/catalog/Qrating.js~Qrating.html#instance-method-withMaxAllowed",
+    "src/iot/catalog/Qrating.js~Qrating#withMaxAllowed",
     "method"
   ],
   [
-    "src/iot/catalog/iotdatastream.js~iotdatastream#withhardwaresids",
-    "class/src/iot/catalog/IoTDatastream.js~IoTDatastream.html#instance-method-withHardwaresIds",
-    "src/iot/catalog/IoTDatastream.js~IoTDatastream#withHardwaresIds",
+    "src/iot/catalog/qrating.js~qrating#withmaxdesired",
+    "class/src/iot/catalog/Qrating.js~Qrating.html#instance-method-withMaxDesired",
+    "src/iot/catalog/Qrating.js~Qrating#withMaxDesired",
     "method"
   ],
   [
-    "src/iot/catalog/iotdatastream.js~iotdatastream#withid",
-    "class/src/iot/catalog/IoTDatastream.js~IoTDatastream.html#instance-method-withId",
-    "src/iot/catalog/IoTDatastream.js~IoTDatastream#withId",
+    "src/iot/catalog/qrating.js~qrating#withmaxscore",
+    "class/src/iot/catalog/Qrating.js~Qrating.html#instance-method-withMaxScore",
+    "src/iot/catalog/Qrating.js~Qrating#withMaxScore",
     "method"
   ],
   [
-    "src/iot/catalog/iotdatastream.js~iotdatastream#withname",
-    "class/src/iot/catalog/IoTDatastream.js~IoTDatastream.html#instance-method-withName",
-    "src/iot/catalog/IoTDatastream.js~IoTDatastream#withName",
+    "src/iot/catalog/qrating.js~qrating#withmindesired",
+    "class/src/iot/catalog/Qrating.js~Qrating.html#instance-method-withMinDesired",
+    "src/iot/catalog/Qrating.js~Qrating#withMinDesired",
     "method"
   ],
   [
-    "src/iot/catalog/iotdatastream.js~iotdatastream#withperiod",
-    "class/src/iot/catalog/IoTDatastream.js~IoTDatastream.html#instance-method-withPeriod",
-    "src/iot/catalog/IoTDatastream.js~IoTDatastream#withPeriod",
+    "src/iot/catalog/qrating.js~qrating#withminrequired",
+    "class/src/iot/catalog/Qrating.js~Qrating.html#instance-method-withMinRequired",
+    "src/iot/catalog/Qrating.js~Qrating#withMinRequired",
     "method"
   ],
   [
-    "src/iot/catalog/iotdatastream.js~iotdatastream#withstorage",
-    "class/src/iot/catalog/IoTDatastream.js~IoTDatastream.html#instance-method-withStorage",
-    "src/iot/catalog/IoTDatastream.js~IoTDatastream#withStorage",
+    "src/iot/catalog/qrating.js~qrating#withversion",
+    "class/src/iot/catalog/Qrating.js~Qrating.html#instance-method-withVersion",
+    "src/iot/catalog/Qrating.js~Qrating#withVersion",
     "method"
   ],
   [
-    "src/iot/catalog/iotdatastream.js~iotdatastream#withtags",
-    "class/src/iot/catalog/IoTDatastream.js~IoTDatastream.html#instance-method-withTags",
-    "src/iot/catalog/IoTDatastream.js~IoTDatastream#withTags",
-    "method"
-  ],
-  [
-    "src/iot/catalog/iotdatastream.js~iotdatastream#withunit",
-    "class/src/iot/catalog/IoTDatastream.js~IoTDatastream.html#instance-method-withUnit",
-    "src/iot/catalog/IoTDatastream.js~IoTDatastream#withUnit",
-    "method"
-  ],
-  [
-    "src/iot/catalog/iotflavour.js",
-    "file/src/iot/catalog/IoTFlavour.js.html",
-    "src/iot/catalog/IoTFlavour.js",
+    "src/iot/datamodels/datamodels.js",
+    "file/src/iot/datamodels/Datamodels.js.html",
+    "src/iot/datamodels/Datamodels.js",
     "file"
   ],
   [
-    "src/iot/catalog/iotflavour.js~iotflavour#adddatastream",
-    "class/src/iot/catalog/IoTFlavour.js~IoTFlavour.html#instance-method-addDatastream",
-    "src/iot/catalog/IoTFlavour.js~IoTFlavour#addDatastream",
+    "src/iot/datamodels/datamodels.js~datamodels#addcategory",
+    "class/src/iot/datamodels/Datamodels.js~Datamodels.html#instance-method-addCategory",
+    "src/iot/datamodels/Datamodels.js~Datamodels#addCategory",
     "method"
   ],
   [
-    "src/iot/catalog/iotflavour.js~iotflavour#adddatastreams",
-    "class/src/iot/catalog/IoTFlavour.js~IoTFlavour.html#instance-method-addDatastreams",
-    "src/iot/catalog/IoTFlavour.js~IoTFlavour#addDatastreams",
+    "src/iot/datamodels/datamodels.js~datamodels#adddatastream",
+    "class/src/iot/datamodels/Datamodels.js~Datamodels.html#instance-method-addDatastream",
+    "src/iot/datamodels/Datamodels.js~Datamodels#addDatastream",
     "method"
   ],
   [
-    "src/iot/catalog/iotflavour.js~iotflavour#constructor",
-    "class/src/iot/catalog/IoTFlavour.js~IoTFlavour.html#instance-constructor-constructor",
-    "src/iot/catalog/IoTFlavour.js~IoTFlavour#constructor",
+    "src/iot/datamodels/datamodels.js~datamodels#constructor",
+    "class/src/iot/datamodels/Datamodels.js~Datamodels.html#instance-constructor-constructor",
+    "src/iot/datamodels/Datamodels.js~Datamodels#constructor",
     "method"
   ],
   [
-    "src/iot/catalog/iotqrating.js",
-    "file/src/iot/catalog/IoTQrating.js.html",
-    "src/iot/catalog/IoTQrating.js",
+    "src/iot/datamodels/datamodels.js~datamodels#delete",
+    "class/src/iot/datamodels/Datamodels.js~Datamodels.html#instance-method-delete",
+    "src/iot/datamodels/Datamodels.js~Datamodels#delete",
+    "method"
+  ],
+  [
+    "src/iot/datamodels/datamodels.js~datamodels#update",
+    "class/src/iot/datamodels/Datamodels.js~Datamodels.html#instance-method-update",
+    "src/iot/datamodels/Datamodels.js~Datamodels#update",
+    "method"
+  ],
+  [
+    "src/iot/datamodels/datamodels.js~datamodels#withdescription",
+    "class/src/iot/datamodels/Datamodels.js~Datamodels.html#instance-method-withDescription",
+    "src/iot/datamodels/Datamodels.js~Datamodels#withDescription",
+    "method"
+  ],
+  [
+    "src/iot/datamodels/datamodels.js~datamodels#withidentifier",
+    "class/src/iot/datamodels/Datamodels.js~Datamodels.html#instance-method-withIdentifier",
+    "src/iot/datamodels/Datamodels.js~Datamodels#withIdentifier",
+    "method"
+  ],
+  [
+    "src/iot/datamodels/datamodels.js~datamodels#withname",
+    "class/src/iot/datamodels/Datamodels.js~Datamodels.html#instance-method-withName",
+    "src/iot/datamodels/Datamodels.js~Datamodels#withName",
+    "method"
+  ],
+  [
+    "src/iot/datamodels/datamodels.js~datamodels#withversion",
+    "class/src/iot/datamodels/Datamodels.js~Datamodels.html#instance-method-withVersion",
+    "src/iot/datamodels/Datamodels.js~Datamodels#withVersion",
+    "method"
+  ],
+  [
+    "src/iot/datamodels/datamodelsfinder.js",
+    "file/src/iot/datamodels/DatamodelsFinder.js.html",
+    "src/iot/datamodels/DatamodelsFinder.js",
     "file"
   ],
   [
-    "src/iot/catalog/iotqrating.js~iotqrating#build",
-    "class/src/iot/catalog/IoTQrating.js~IoTQrating.html#instance-method-build",
-    "src/iot/catalog/IoTQrating.js~IoTQrating#build",
+    "src/iot/datamodels/datamodelsfinder.js~datamodelsfinder#constructor",
+    "class/src/iot/datamodels/DatamodelsFinder.js~DatamodelsFinder.html#instance-constructor-constructor",
+    "src/iot/datamodels/DatamodelsFinder.js~DatamodelsFinder#constructor",
     "method"
   ],
   [
-    "src/iot/catalog/iotqrating.js~iotqrating#constructor",
-    "class/src/iot/catalog/IoTQrating.js~IoTQrating.html#instance-constructor-constructor",
-    "src/iot/catalog/IoTQrating.js~IoTQrating#constructor",
+    "src/iot/datamodels/datamodelsfinder.js~datamodelsfinder#findbyorganizationandid",
+    "class/src/iot/datamodels/DatamodelsFinder.js~DatamodelsFinder.html#instance-method-findByOrganizationAndId",
+    "src/iot/datamodels/DatamodelsFinder.js~DatamodelsFinder#findByOrganizationAndId",
     "method"
   ],
   [
-    "src/iot/catalog/iotqrating.js~iotqrating#withconversionmatrix",
-    "class/src/iot/catalog/IoTQrating.js~IoTQrating.html#instance-method-withConversionMatrix",
-    "src/iot/catalog/IoTQrating.js~IoTQrating#withConversionMatrix",
-    "method"
-  ],
-  [
-    "src/iot/catalog/iotqrating.js~iotqrating#withcumulativeperioddivisor",
-    "class/src/iot/catalog/IoTQrating.js~IoTQrating.html#instance-method-withCumulativePeriodDivisor",
-    "src/iot/catalog/IoTQrating.js~IoTQrating#withCumulativePeriodDivisor",
-    "method"
-  ],
-  [
-    "src/iot/catalog/iotqrating.js~iotqrating#withideal",
-    "class/src/iot/catalog/IoTQrating.js~IoTQrating.html#instance-method-withIdeal",
-    "src/iot/catalog/IoTQrating.js~IoTQrating#withIdeal",
-    "method"
-  ],
-  [
-    "src/iot/catalog/iotqrating.js~iotqrating#withmaxallowed",
-    "class/src/iot/catalog/IoTQrating.js~IoTQrating.html#instance-method-withMaxAllowed",
-    "src/iot/catalog/IoTQrating.js~IoTQrating#withMaxAllowed",
-    "method"
-  ],
-  [
-    "src/iot/catalog/iotqrating.js~iotqrating#withmaxdesired",
-    "class/src/iot/catalog/IoTQrating.js~IoTQrating.html#instance-method-withMaxDesired",
-    "src/iot/catalog/IoTQrating.js~IoTQrating#withMaxDesired",
-    "method"
-  ],
-  [
-    "src/iot/catalog/iotqrating.js~iotqrating#withmaxscore",
-    "class/src/iot/catalog/IoTQrating.js~IoTQrating.html#instance-method-withMaxScore",
-    "src/iot/catalog/IoTQrating.js~IoTQrating#withMaxScore",
-    "method"
-  ],
-  [
-    "src/iot/catalog/iotqrating.js~iotqrating#withmindesired",
-    "class/src/iot/catalog/IoTQrating.js~IoTQrating.html#instance-method-withMinDesired",
-    "src/iot/catalog/IoTQrating.js~IoTQrating#withMinDesired",
-    "method"
-  ],
-  [
-    "src/iot/catalog/iotqrating.js~iotqrating#withminrequired",
-    "class/src/iot/catalog/IoTQrating.js~IoTQrating.html#instance-method-withMinRequired",
-    "src/iot/catalog/IoTQrating.js~IoTQrating#withMinRequired",
-    "method"
-  ],
-  [
-    "src/iot/catalog/iotqrating.js~iotqrating#withversion",
-    "class/src/iot/catalog/IoTQrating.js~IoTQrating.html#instance-method-withVersion",
-    "src/iot/catalog/IoTQrating.js~IoTQrating#withVersion",
-    "method"
-  ],
-  [
-    "src/iot/profiles/iotprofiles.js",
-    "file/src/iot/profiles/IoTProfiles.js.html",
-    "src/iot/profiles/IoTProfiles.js",
+    "src/iot/datamodels/datamodelshelper.js",
+    "file/src/iot/datamodels/DatamodelsHelper.js.html",
+    "src/iot/datamodels/DatamodelsHelper.js",
     "file"
   ],
   [
-    "src/iot/profiles/iotprofiles.js~iotprofiles#adddatastream",
-    "class/src/iot/profiles/IoTProfiles.js~IoTProfiles.html#instance-method-addDatastream",
-    "src/iot/profiles/IoTProfiles.js~IoTProfiles#addDatastream",
+    "src/iot/datamodels/datamodelshelper.js~datamodelshelper#addcategory",
+    "class/src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper.html#instance-method-addCategory",
+    "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#addCategory",
     "method"
   ],
   [
-    "src/iot/profiles/iotprofiles.js~iotprofiles#addflavour",
-    "class/src/iot/profiles/IoTProfiles.js~IoTProfiles.html#instance-method-addFlavour",
-    "src/iot/profiles/IoTProfiles.js~IoTProfiles#addFlavour",
+    "src/iot/datamodels/datamodelshelper.js~datamodelshelper#adddatastream",
+    "class/src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper.html#instance-method-addDatastream",
+    "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#addDatastream",
     "method"
   ],
   [
-    "src/iot/profiles/iotprofiles.js~iotprofiles#constructor",
-    "class/src/iot/profiles/IoTProfiles.js~IoTProfiles.html#instance-constructor-constructor",
-    "src/iot/profiles/IoTProfiles.js~IoTProfiles#constructor",
+    "src/iot/datamodels/datamodelshelper.js~datamodelshelper#constructor",
+    "class/src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper.html#instance-constructor-constructor",
+    "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#constructor",
     "method"
   ],
   [
-    "src/iot/profiles/iotprofiles.js~iotprofiles#delete",
-    "class/src/iot/profiles/IoTProfiles.js~IoTProfiles.html#instance-method-delete",
-    "src/iot/profiles/IoTProfiles.js~IoTProfiles#delete",
+    "src/iot/datamodels/datamodelshelper.js~datamodelshelper#create",
+    "class/src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper.html#instance-method-create",
+    "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#create",
     "method"
   ],
   [
-    "src/iot/profiles/iotprofiles.js~iotprofiles#update",
-    "class/src/iot/profiles/IoTProfiles.js~IoTProfiles.html#instance-method-update",
-    "src/iot/profiles/IoTProfiles.js~IoTProfiles#update",
+    "src/iot/datamodels/datamodelshelper.js~datamodelshelper#removecategory",
+    "class/src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper.html#instance-method-removeCategory",
+    "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#removeCategory",
     "method"
   ],
   [
-    "src/iot/profiles/iotprofiles.js~iotprofiles#withdescription",
-    "class/src/iot/profiles/IoTProfiles.js~IoTProfiles.html#instance-method-withDescription",
-    "src/iot/profiles/IoTProfiles.js~IoTProfiles#withDescription",
+    "src/iot/datamodels/datamodelshelper.js~datamodelshelper#removedatastream",
+    "class/src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper.html#instance-method-removeDatastream",
+    "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#removeDatastream",
     "method"
   ],
   [
-    "src/iot/profiles/iotprofiles.js~iotprofiles#withname",
-    "class/src/iot/profiles/IoTProfiles.js~IoTProfiles.html#instance-method-withName",
-    "src/iot/profiles/IoTProfiles.js~IoTProfiles#withName",
+    "src/iot/datamodels/datamodelshelper.js~datamodelshelper#updatecategory",
+    "class/src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper.html#instance-method-updateCategory",
+    "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#updateCategory",
     "method"
   ],
   [
-    "src/iot/profiles/iotprofiles.js~iotprofiles#withversion",
-    "class/src/iot/profiles/IoTProfiles.js~IoTProfiles.html#instance-method-withVersion",
-    "src/iot/profiles/IoTProfiles.js~IoTProfiles#withVersion",
+    "src/iot/datamodels/datamodelshelper.js~datamodelshelper#updatedatastream",
+    "class/src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper.html#instance-method-updateDatastream",
+    "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#updateDatastream",
     "method"
   ],
   [
-    "src/iot/profiles/iotprofilesfinder.js",
-    "file/src/iot/profiles/IoTProfilesFinder.js.html",
-    "src/iot/profiles/IoTProfilesFinder.js",
-    "file"
-  ],
-  [
-    "src/iot/profiles/iotprofilesfinder.js~iotprofilesfinder#constructor",
-    "class/src/iot/profiles/IoTProfilesFinder.js~IoTProfilesFinder.html#instance-constructor-constructor",
-    "src/iot/profiles/IoTProfilesFinder.js~IoTProfilesFinder#constructor",
+    "src/iot/datamodels/datamodelshelper.js~datamodelshelper#withdescription",
+    "class/src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper.html#instance-method-withDescription",
+    "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#withDescription",
     "method"
   ],
   [
-    "src/iot/profiles/iotprofilesfinder.js~iotprofilesfinder#findbyorganizationandid",
-    "class/src/iot/profiles/IoTProfilesFinder.js~IoTProfilesFinder.html#instance-method-findByOrganizationAndId",
-    "src/iot/profiles/IoTProfilesFinder.js~IoTProfilesFinder#findByOrganizationAndId",
+    "src/iot/datamodels/datamodelshelper.js~datamodelshelper#withidentifier",
+    "class/src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper.html#instance-method-withIdentifier",
+    "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#withIdentifier",
     "method"
   ],
   [
-    "src/iot/profiles/iotprofileshelper.js",
-    "file/src/iot/profiles/IoTProfilesHelper.js.html",
-    "src/iot/profiles/IoTProfilesHelper.js",
-    "file"
-  ],
-  [
-    "src/iot/profiles/iotprofileshelper.js~iotprofileshelper#adddatastream",
-    "class/src/iot/profiles/IoTProfilesHelper.js~IoTProfilesHelper.html#instance-method-addDatastream",
-    "src/iot/profiles/IoTProfilesHelper.js~IoTProfilesHelper#addDatastream",
+    "src/iot/datamodels/datamodelshelper.js~datamodelshelper#withname",
+    "class/src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper.html#instance-method-withName",
+    "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#withName",
     "method"
   ],
   [
-    "src/iot/profiles/iotprofileshelper.js~iotprofileshelper#addflavour",
-    "class/src/iot/profiles/IoTProfilesHelper.js~IoTProfilesHelper.html#instance-method-addFlavour",
-    "src/iot/profiles/IoTProfilesHelper.js~IoTProfilesHelper#addFlavour",
-    "method"
-  ],
-  [
-    "src/iot/profiles/iotprofileshelper.js~iotprofileshelper#constructor",
-    "class/src/iot/profiles/IoTProfilesHelper.js~IoTProfilesHelper.html#instance-constructor-constructor",
-    "src/iot/profiles/IoTProfilesHelper.js~IoTProfilesHelper#constructor",
-    "method"
-  ],
-  [
-    "src/iot/profiles/iotprofileshelper.js~iotprofileshelper#create",
-    "class/src/iot/profiles/IoTProfilesHelper.js~IoTProfilesHelper.html#instance-method-create",
-    "src/iot/profiles/IoTProfilesHelper.js~IoTProfilesHelper#create",
-    "method"
-  ],
-  [
-    "src/iot/profiles/iotprofileshelper.js~iotprofileshelper#removedatastream",
-    "class/src/iot/profiles/IoTProfilesHelper.js~IoTProfilesHelper.html#instance-method-removeDatastream",
-    "src/iot/profiles/IoTProfilesHelper.js~IoTProfilesHelper#removeDatastream",
-    "method"
-  ],
-  [
-    "src/iot/profiles/iotprofileshelper.js~iotprofileshelper#removeflavour",
-    "class/src/iot/profiles/IoTProfilesHelper.js~IoTProfilesHelper.html#instance-method-removeFlavour",
-    "src/iot/profiles/IoTProfilesHelper.js~IoTProfilesHelper#removeFlavour",
-    "method"
-  ],
-  [
-    "src/iot/profiles/iotprofileshelper.js~iotprofileshelper#updatedatastream",
-    "class/src/iot/profiles/IoTProfilesHelper.js~IoTProfilesHelper.html#instance-method-updateDatastream",
-    "src/iot/profiles/IoTProfilesHelper.js~IoTProfilesHelper#updateDatastream",
-    "method"
-  ],
-  [
-    "src/iot/profiles/iotprofileshelper.js~iotprofileshelper#updateflavour",
-    "class/src/iot/profiles/IoTProfilesHelper.js~IoTProfilesHelper.html#instance-method-updateFlavour",
-    "src/iot/profiles/IoTProfilesHelper.js~IoTProfilesHelper#updateFlavour",
-    "method"
-  ],
-  [
-    "src/iot/profiles/iotprofileshelper.js~iotprofileshelper#withdescription",
-    "class/src/iot/profiles/IoTProfilesHelper.js~IoTProfilesHelper.html#instance-method-withDescription",
-    "src/iot/profiles/IoTProfilesHelper.js~IoTProfilesHelper#withDescription",
-    "method"
-  ],
-  [
-    "src/iot/profiles/iotprofileshelper.js~iotprofileshelper#withname",
-    "class/src/iot/profiles/IoTProfilesHelper.js~IoTProfilesHelper.html#instance-method-withName",
-    "src/iot/profiles/IoTProfilesHelper.js~IoTProfilesHelper#withName",
-    "method"
-  ],
-  [
-    "src/iot/profiles/iotprofileshelper.js~iotprofileshelper#withversion",
-    "class/src/iot/profiles/IoTProfilesHelper.js~IoTProfilesHelper.html#instance-method-withVersion",
-    "src/iot/profiles/IoTProfilesHelper.js~IoTProfilesHelper#withVersion",
+    "src/iot/datamodels/datamodelshelper.js~datamodelshelper#withversion",
+    "class/src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper.html#instance-method-withVersion",
+    "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#withVersion",
     "method"
   ],
   [
@@ -6516,18 +6438,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/searching/iotsearch.js",
-    "file/src/searching/IotSearch.js.html",
-    "src/searching/IotSearch.js",
-    "file"
-  ],
-  [
-    "src/searching/iotsearch.js~iotsearch#constructor",
-    "class/src/searching/IotSearch.js~IotSearch.html#instance-constructor-constructor",
-    "src/searching/IotSearch.js~IotSearch#constructor",
-    "method"
-  ],
-  [
     "src/searching/quicksearch.js",
     "file/src/searching/QuickSearch.js.html",
     "src/searching/QuickSearch.js",
@@ -6708,15 +6618,15 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/searching/builder/communicationsmodulessearchbuilder.js",
-    "file/src/searching/builder/CommunicationsModulesSearchBuilder.js.html",
-    "src/searching/builder/CommunicationsModulesSearchBuilder.js",
+    "src/searching/builder/datamodelssearchbuilder.js",
+    "file/src/searching/builder/DatamodelsSearchBuilder.js.html",
+    "src/searching/builder/DatamodelsSearchBuilder.js",
     "file"
   ],
   [
-    "src/searching/builder/communicationsmodulessearchbuilder.js~communicationsmodulessearchbuilder#constructor",
-    "class/src/searching/builder/CommunicationsModulesSearchBuilder.js~CommunicationsModulesSearchBuilder.html#instance-constructor-constructor",
-    "src/searching/builder/CommunicationsModulesSearchBuilder.js~CommunicationsModulesSearchBuilder#constructor",
+    "src/searching/builder/datamodelssearchbuilder.js~datamodelssearchbuilder#constructor",
+    "class/src/searching/builder/DatamodelsSearchBuilder.js~DatamodelsSearchBuilder.html#instance-constructor-constructor",
+    "src/searching/builder/DatamodelsSearchBuilder.js~DatamodelsSearchBuilder#constructor",
     "method"
   ],
   [
@@ -6729,12 +6639,6 @@ window.esdocSearchIndex = [
     "src/searching/builder/datapointssearchbuilder.js~datapointssearchbuilder#betweendates",
     "class/src/searching/builder/DatapointsSearchBuilder.js~DatapointsSearchBuilder.html#instance-method-betweenDates",
     "src/searching/builder/DatapointsSearchBuilder.js~DatapointsSearchBuilder#betweenDates",
-    "method"
-  ],
-  [
-    "src/searching/builder/datapointssearchbuilder.js~datapointssearchbuilder#build",
-    "class/src/searching/builder/DatapointsSearchBuilder.js~DatapointsSearchBuilder.html#instance-method-build",
-    "src/searching/builder/DatapointsSearchBuilder.js~DatapointsSearchBuilder#build",
     "method"
   ],
   [
@@ -6780,12 +6684,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/searching/builder/datastreamssearchbuilder.js~datastreamssearchbuilder#build",
-    "class/src/searching/builder/DatastreamsSearchBuilder.js~DatastreamsSearchBuilder.html#instance-method-build",
-    "src/searching/builder/DatastreamsSearchBuilder.js~DatastreamsSearchBuilder#build",
-    "method"
-  ],
-  [
     "src/searching/builder/datastreamssearchbuilder.js~datastreamssearchbuilder#constructor",
     "class/src/searching/builder/DatastreamsSearchBuilder.js~DatastreamsSearchBuilder.html#instance-constructor-constructor",
     "src/searching/builder/DatastreamsSearchBuilder.js~DatastreamsSearchBuilder#constructor",
@@ -6822,36 +6720,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/searching/builder/entitysearchbuilder.js",
-    "file/src/searching/builder/EntitySearchBuilder.js.html",
-    "src/searching/builder/EntitySearchBuilder.js",
-    "file"
-  ],
-  [
-    "src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#build",
-    "class/src/searching/builder/EntitySearchBuilder.js~EntitySearchBuilder.html#instance-method-build",
-    "src/searching/builder/EntitySearchBuilder.js~EntitySearchBuilder#build",
-    "method"
-  ],
-  [
-    "src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#constructor",
-    "class/src/searching/builder/EntitySearchBuilder.js~EntitySearchBuilder.html#instance-constructor-constructor",
-    "src/searching/builder/EntitySearchBuilder.js~EntitySearchBuilder#constructor",
-    "method"
-  ],
-  [
-    "src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#oncollected",
-    "class/src/searching/builder/EntitySearchBuilder.js~EntitySearchBuilder.html#instance-method-onCollected",
-    "src/searching/builder/EntitySearchBuilder.js~EntitySearchBuilder#onCollected",
-    "method"
-  ],
-  [
-    "src/searching/builder/entitysearchbuilder.js~entitysearchbuilder#onprovisioned",
-    "class/src/searching/builder/EntitySearchBuilder.js~EntitySearchBuilder.html#instance-method-onProvisioned",
-    "src/searching/builder/EntitySearchBuilder.js~EntitySearchBuilder#onProvisioned",
-    "method"
-  ],
-  [
     "src/searching/builder/executionssearchbuilder.js",
     "file/src/searching/builder/ExecutionsSearchBuilder.js.html",
     "src/searching/builder/ExecutionsSearchBuilder.js",
@@ -6861,24 +6729,6 @@ window.esdocSearchIndex = [
     "src/searching/builder/executionssearchbuilder.js~executionssearchbuilder#constructor",
     "class/src/searching/builder/ExecutionsSearchBuilder.js~ExecutionsSearchBuilder.html#instance-constructor-constructor",
     "src/searching/builder/ExecutionsSearchBuilder.js~ExecutionsSearchBuilder#constructor",
-    "method"
-  ],
-  [
-    "src/searching/builder/feedssearchbuilder.js",
-    "file/src/searching/builder/FeedsSearchBuilder.js.html",
-    "src/searching/builder/FeedsSearchBuilder.js",
-    "file"
-  ],
-  [
-    "src/searching/builder/feedssearchbuilder.js~feedssearchbuilder#build",
-    "class/src/searching/builder/FeedsSearchBuilder.js~FeedsSearchBuilder.html#instance-method-build",
-    "src/searching/builder/FeedsSearchBuilder.js~FeedsSearchBuilder#build",
-    "method"
-  ],
-  [
-    "src/searching/builder/feedssearchbuilder.js~feedssearchbuilder#constructor",
-    "class/src/searching/builder/FeedsSearchBuilder.js~FeedsSearchBuilder.html#instance-constructor-constructor",
-    "src/searching/builder/FeedsSearchBuilder.js~FeedsSearchBuilder#constructor",
     "method"
   ],
   [
@@ -6909,6 +6759,24 @@ window.esdocSearchIndex = [
     "src/searching/builder/fieldsdefinitionsearchbuilder.js~fieldsdefinitionsearchbuilder#withtype",
     "class/src/searching/builder/FieldsDefinitionSearchBuilder.js~FieldsDefinitionSearchBuilder.html#instance-method-withType",
     "src/searching/builder/FieldsDefinitionSearchBuilder.js~FieldsDefinitionSearchBuilder#withType",
+    "method"
+  ],
+  [
+    "src/searching/builder/flattenedsearchbuilder.js",
+    "file/src/searching/builder/FlattenedSearchBuilder.js.html",
+    "src/searching/builder/FlattenedSearchBuilder.js",
+    "file"
+  ],
+  [
+    "src/searching/builder/flattenedsearchbuilder.js~flattenedsearchbuilder#constructor",
+    "class/src/searching/builder/FlattenedSearchBuilder.js~FlattenedSearchBuilder.html#instance-constructor-constructor",
+    "src/searching/builder/FlattenedSearchBuilder.js~FlattenedSearchBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/searching/builder/flattenedsearchbuilder.js~flattenedsearchbuilder#flattened",
+    "class/src/searching/builder/FlattenedSearchBuilder.js~FlattenedSearchBuilder.html#instance-method-flattened",
+    "src/searching/builder/FlattenedSearchBuilder.js~FlattenedSearchBuilder#flattened",
     "method"
   ],
   [
@@ -7030,24 +6898,6 @@ window.esdocSearchIndex = [
     "class/src/searching/builder/IoTDatastreamStoragePeriodSearchBuilder.js~IoTDatastreamStoragePeriodSearchBuilder.html#instance-member-customFilters",
     "src/searching/builder/IoTDatastreamStoragePeriodSearchBuilder.js~IoTDatastreamStoragePeriodSearchBuilder#customFilters",
     "member"
-  ],
-  [
-    "src/searching/builder/iotdevicessearchbuilder.js",
-    "file/src/searching/builder/IoTDevicesSearchBuilder.js.html",
-    "src/searching/builder/IoTDevicesSearchBuilder.js",
-    "file"
-  ],
-  [
-    "src/searching/builder/iotdevicessearchbuilder.js~iotdevicessearchbuilder#build",
-    "class/src/searching/builder/IoTDevicesSearchBuilder.js~IoTDevicesSearchBuilder.html#instance-method-build",
-    "src/searching/builder/IoTDevicesSearchBuilder.js~IoTDevicesSearchBuilder#build",
-    "method"
-  ],
-  [
-    "src/searching/builder/iotdevicessearchbuilder.js~iotdevicessearchbuilder#constructor",
-    "class/src/searching/builder/IoTDevicesSearchBuilder.js~IoTDevicesSearchBuilder.html#instance-constructor-constructor",
-    "src/searching/builder/IoTDevicesSearchBuilder.js~IoTDevicesSearchBuilder#constructor",
-    "method"
   ],
   [
     "src/searching/builder/mobilephoneprovidersearchbuilder.js",
@@ -7173,24 +7023,6 @@ window.esdocSearchIndex = [
     "src/searching/builder/organizationssearchbuilder.js~organizationssearchbuilder#withworkgroup",
     "class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html#instance-method-withWorkgroup",
     "src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder#withWorkgroup",
-    "method"
-  ],
-  [
-    "src/searching/builder/profilessearchbuilder.js",
-    "file/src/searching/builder/ProfilesSearchBuilder.js.html",
-    "src/searching/builder/ProfilesSearchBuilder.js",
-    "file"
-  ],
-  [
-    "src/searching/builder/profilessearchbuilder.js~profilessearchbuilder#build",
-    "class/src/searching/builder/ProfilesSearchBuilder.js~ProfilesSearchBuilder.html#instance-method-build",
-    "src/searching/builder/ProfilesSearchBuilder.js~ProfilesSearchBuilder#build",
-    "method"
-  ],
-  [
-    "src/searching/builder/profilessearchbuilder.js~profilessearchbuilder#constructor",
-    "class/src/searching/builder/ProfilesSearchBuilder.js~ProfilesSearchBuilder.html#instance-constructor-constructor",
-    "src/searching/builder/ProfilesSearchBuilder.js~ProfilesSearchBuilder#constructor",
     "method"
   ],
   [
