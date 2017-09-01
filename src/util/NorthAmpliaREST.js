@@ -219,11 +219,11 @@ export default class NorthAmpliaREST {
      */
     default () {
         return {
-            url: 'http://cloud.opengate.es:25281/v70',
+            url: 'http://172.19.18.96:25281/v80',
             timeout: 5000,
-            apiKey: undefined,
+            apiKey: '2829be88-a7d7-4f51-aefc-3cc2385b6506',
             south: {
-                url: 'http://cloud.opengate.es:9955/v70',
+                url: 'http://172.19.18.96:9955/v80',
             }
         }
     }

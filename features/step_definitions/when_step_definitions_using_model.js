@@ -1,8 +1,8 @@
 'use strict';
 var q = require('q');
 
-module.exports = function () {
-    this.When(/^I try to find by...$/, function (table) {
+module.exports = function() {
+    this.When(/^I try to find by...$/, function(table) {
         // Write code here that turns the phrase above into concrete actions
 
         var _this = this;
@@ -47,7 +47,7 @@ module.exports = function () {
         }
     });
 
-    this.When(/^I try to search with...$/, function (table, callback) {
+    this.When(/^I try to search with...$/, function(table, callback) {
         // Write code here that turns the phrase above into concrete actions
 
         var _this = this;
@@ -74,22 +74,22 @@ module.exports = function () {
     });
 
 
-    this.When(/^I try to search with all allow fields$/, function (callback) {
+    this.When(/^I try to search with all allow fields$/, function(callback) {
         var _this = this;
         var filter = {
             and: []
         };
 
-        return _this.util.findFields("").then(function (fields) {
+        return _this.util.findFields("").then(function(fields) {
             var pArray = [];
-            fields.forEach(function (field) {
+            fields.forEach(function(field) {
                 pArray.push(findFields(field + "."));
             });
             return q.all(pArray);
-        }).catch(function (err) {
+        }).catch(function(err) {
             //console.error(err);
             assert.strictEqual(true, false);
-        }).done(function () {
+        }).done(function() {
             //console.log(JSON.stringify(filter));
             _this.util.filter(filter);
             callback();
@@ -97,10 +97,10 @@ module.exports = function () {
 
         function findFields(helpField) {
             var _helpField = helpField;
-            return _this.util.findFields(_helpField).then(function (fields) {
+            return _this.util.findFields(_helpField).then(function(fields) {
                 if (fields.length !== 0) {
                     var pArray = [];
-                    fields.forEach(function (field) {
+                    fields.forEach(function(field) {
                         pArray.push(findFields(field + "."));
                     });
                     return q.all(pArray);
@@ -108,7 +108,7 @@ module.exports = function () {
                     // Eliminar el último .
                     addField(helpField.slice(0, -1));
                 }
-            }).catch(function (err) {
+            }).catch(function(err) {
                 //console.error(err);
                 assert.strictEqual(true, false);
             });
@@ -121,6 +121,34 @@ module.exports = function () {
             tmpl.eq[field] = "1";
             filter.and.push(tmpl);
         }
+    });
+
+    this.When(/^I try to define the entity with...$/, function(table, callback) {
+        // Write code here that turns the phrase above into concrete actions
+
+        var _this = this;
+        this.error = undefined;
+
+        try {
+            var data = table.hashes();
+            if (data.length > 0) {
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].typeFunction === 'simple') {
+                        this.util.with(data[i].datastream, data[i].value);
+                    }
+                    if (data[i].typeFunction === 'complex') {
+                        this.util.withComplex(data[i].datastream, data[i].parent, data[i].value);
+                    }
+
+                }
+            } else {
+                this.error = "No params found";
+            }
+        } catch (err) {
+            this.error = err;
+        }
+
+        callback();
     });
 
 };

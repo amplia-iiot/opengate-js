@@ -71,11 +71,11 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEMPERATURE_STATUS_ENUM">TEMPERATURE_STATUS_ENUM</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/DeviceFinder.js~DeviceFinder.html">DeviceFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/Devices.js~Devices.html">Devices</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/EntityBuilder.js~EntityBuilder.html">EntityBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/EntityFinder.js~EntityFinder.html">EntityFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/Relations.js~Relations.html">Relations</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_ENUM">TYPE_ENUM</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices/commsModules</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/CommunicationsModuleFinder.js~CommunicationsModuleFinder.html">CommunicationsModuleFinder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html">CommunicationsModules</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices/commsModules/subscribers</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/subscribers/SubscribersFinder.js~SubscribersFinder.html">SubscribersFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices/commsModules/subscriptions</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html">Subscriptions</a></span></span></li>
@@ -143,6 +143,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamAccessSearchBuilder.js~IoTDatastreamAccessSearchBuilder.html">IoTDatastreamAccessSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamPeriodSearchBuilder.js~IoTDatastreamPeriodSearchBuilder.html">IoTDatastreamPeriodSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamStoragePeriodSearchBuilder.js~IoTDatastreamStoragePeriodSearchBuilder.html">IoTDatastreamStoragePeriodSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/JsonSchemaSearchBuilder.js~JsonSchemaSearchBuilder.html">JsonSchemaSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/MobilePhoneProviderSearchBuilder.js~MobilePhoneProviderSearchBuilder.html">MobilePhoneProviderSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationalStatusSearchBuilder.js~OperationalStatusSearchBuilder.html">OperationalStatusSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationsSearchBuilder.js~OperationsSearchBuilder.html">OperationsSearchBuilder</a></span></span></li>
@@ -224,6 +225,7 @@ import SpecificTypeSearchBuilder from &apos;./searching/builder/SpecificTypeSear
 import AdministrativeStateSearchBuilder from &apos;./searching/builder/AdministrativeStateSearchBuilder&apos;
 import CommunicationsModuleTypeSearchBuilder from &apos;./searching/builder/CommunicationsModuleTypeSearchBuilder&apos;
 import FieldsDefinitionSearchBuilder from &apos;./searching/builder/FieldsDefinitionSearchBuilder&apos;
+import JsonSchemaSearchBuilder from &apos;./searching/builder/JsonSchemaSearchBuilder&apos;
 import MobilePhoneProviderSearchBuilder from &apos;./searching/builder/MobilePhoneProviderSearchBuilder&apos;
 import IoTDatastreamPeriodSearchBuilder from &apos;./searching/builder/IoTDatastreamPeriodSearchBuilder&apos;
 import IoTDatastreamAccessSearchBuilder from &apos;./searching/builder/IoTDatastreamAccessSearchBuilder&apos;
@@ -236,14 +238,10 @@ import BundleFinder from &apos;./bundles/BundleFinder&apos;
 import Organizations from &apos;./organizations/Organizations&apos;
 import Domain from &apos;./domains/Domains&apos;
 import DomainFinder from &apos;./domains/DomainsFinder&apos;
-import Devices from &apos;./devices/Devices&apos;
 import DeviceFinder from &apos;./devices/DeviceFinder&apos;
 import Relations from &apos;./devices/Relations&apos;
-import CommunicationsModules from &apos;./devices/commsModules/CommunicationsModules&apos;
 import CommunicationsModuleFinder from &apos;./devices/commsModules/CommunicationsModuleFinder&apos;
-import Subscriptions from &apos;./devices/commsModules/subscriptions/Subscriptions&apos;
 import SubscriptionsFinder from &apos;./devices/commsModules/subscriptions/SubscriptionsFinder&apos;
-import Subscribers from &apos;./devices/commsModules/subscribers/Subscribers&apos;
 import SubscribersFinder from &apos;./devices/commsModules/subscribers/SubscribersFinder&apos;
 import DeviceMessage from &apos;./collection/devices/DeviceMessage&apos;
 import Datastream from &apos;./collection/devices/collect/Datastreams&apos;
@@ -268,7 +266,7 @@ import DatamodelsHelper from &apos;./iot/datamodels/DatamodelsHelper&apos;
 import DatamodelsFinder from &apos;./iot/datamodels/DatamodelsFinder&apos;
 import DatastreamsBuilder from &apos;./iot/catalog/Datastream&apos;
 import QratingsBuilder from &apos;./iot/catalog/Qrating&apos;
-
+import EntityBuilder from &apos;./devices/EntityBuilder&apos;
 /**
  * This is a abstract class, it must be extended to another class that defined the backend, it will be used on request to Opengate North API by browser or nodejs server
  */
@@ -291,6 +289,7 @@ export default class InternalOpenGateAPI {
         this.Sapi = southAmpliaREST;
         this.EX = Expression;
         this.operations = new Operations(this);
+        this.entityBuilder = new EntityBuilder(this);
     }
 
     /**
@@ -471,12 +470,13 @@ export default class InternalOpenGateAPI {
      * @return {FieldsDefinitionSearchBuilder}
      */
     fieldsDefinitionSearchBuilder() {
-            return new FieldsDefinitionSearchBuilder(this);
-        }
-        /**
-         * This return a MobilePhoneProviderSearchBuilder to build a specific MobilePhoneProviderTypeSearch
-         * @return {MobilePhoneProviderSearchBuilder}
-         */
+        return new FieldsDefinitionSearchBuilder(this);
+    }
+
+    /**
+     * This return a MobilePhoneProviderSearchBuilder to build a specific MobilePhoneProviderTypeSearch
+     * @return {MobilePhoneProviderSearchBuilder}
+     */
     mobilePhoneProviderSearchBuilder() {
         return new MobilePhoneProviderSearchBuilder(this);
     }
@@ -578,6 +578,14 @@ export default class InternalOpenGateAPI {
     }
 
     /**
+     * This return a JsonSchemaSearchBuilder to build a specific JsonSchemaSearchBuilder
+     * @return {JsonSchemaSearchBuilder}
+     */
+    jsonSchemaSearchBuilder() {
+        return new JsonSchemaSearchBuilder(this);
+    }
+
+    /**
      * This return a BundlesBuilder to build a specific BundlesBuilder
      * @return {Bundles}
      */
@@ -649,13 +657,6 @@ export default class InternalOpenGateAPI {
         return new SoftwaresSearchBuilder(this);
     }
 
-    /**
-     * This return a DevicesBuilder to build a specific DevicesBuilder
-     * @return {Devices}
-     */
-    devicesBuilder() {
-        return new Devices(this);
-    }
 
     /**
      * This return a RelationsBuilder to build a specific RelationsBuilder

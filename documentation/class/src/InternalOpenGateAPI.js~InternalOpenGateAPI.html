@@ -71,11 +71,11 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEMPERATURE_STATUS_ENUM">TEMPERATURE_STATUS_ENUM</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/DeviceFinder.js~DeviceFinder.html">DeviceFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/Devices.js~Devices.html">Devices</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/EntityBuilder.js~EntityBuilder.html">EntityBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/EntityFinder.js~EntityFinder.html">EntityFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/Relations.js~Relations.html">Relations</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_ENUM">TYPE_ENUM</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices/commsModules</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/CommunicationsModuleFinder.js~CommunicationsModuleFinder.html">CommunicationsModuleFinder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html">CommunicationsModules</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices/commsModules/subscribers</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/subscribers/SubscribersFinder.js~SubscribersFinder.html">SubscribersFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices/commsModules/subscriptions</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html">Subscriptions</a></span></span></li>
@@ -143,6 +143,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamAccessSearchBuilder.js~IoTDatastreamAccessSearchBuilder.html">IoTDatastreamAccessSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamPeriodSearchBuilder.js~IoTDatastreamPeriodSearchBuilder.html">IoTDatastreamPeriodSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamStoragePeriodSearchBuilder.js~IoTDatastreamStoragePeriodSearchBuilder.html">IoTDatastreamStoragePeriodSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/JsonSchemaSearchBuilder.js~JsonSchemaSearchBuilder.html">JsonSchemaSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/MobilePhoneProviderSearchBuilder.js~MobilePhoneProviderSearchBuilder.html">MobilePhoneProviderSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationalStatusSearchBuilder.js~OperationalStatusSearchBuilder.html">OperationalStatusSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationsSearchBuilder.js~OperationsSearchBuilder.html">OperationsSearchBuilder</a></span></span></li>
@@ -186,13 +187,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import InternalOpenGateAPI from &apos;<span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber87">opengate-js/src/InternalOpenGateAPI.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import InternalOpenGateAPI from &apos;<span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber84">opengate-js/src/InternalOpenGateAPI.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber87">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber84">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -223,8 +224,8 @@
     <h4>Test:</h4>
     <ul>
       
-    <li data-ice="test"><span><a href="test-file/client/searching/module.searching.spec.js.html#lineNumber4">Check if all searching modules exists:</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/quicksearch.spec.js.html#lineNumber4">Check funcionality newQuickSearch module:</a></span></li>
+    <li data-ice="test"><span><a href="test-file/client/searching/quicksearch.spec.js.html#lineNumber4">Check funcionality newQuickSearch module:</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/module.searching.spec.js.html#lineNumber4">Check if all searching modules exists:</a></span></li>
 </ul>
   </div>
 
@@ -331,6 +332,31 @@
       <div>
         <p>
            <span data-ice="name"><span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-member-Sapi">Sapi</a></span></span><span data-ice="signature">: <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-member-entityBuilder">entityBuilder</a></span></span><span data-ice="signature">: <span>*</span></span>
         </p>
       </div>
       <div>
@@ -646,7 +672,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-communicationsModulesBuilder">communicationsModulesBuilder</a></span></span><span data-ice="signature">(): <span><a href="class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html">CommunicationsModules</a></span></span>
+           <span data-ice="name"><span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-communicationsModulesBuilder">communicationsModulesBuilder</a></span></span><span data-ice="signature">(): <span>CommunicationsModules</span></span>
         </p>
       </div>
       <div>
@@ -906,32 +932,6 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-devicesBuilder">devicesBuilder</a></span></span><span data-ice="signature">(): <span><a href="class/src/devices/Devices.js~Devices.html">Devices</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>This return a DevicesBuilder to build a specific DevicesBuilder</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
            <span data-ice="name"><span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-devicesSearchBuilder">devicesSearchBuilder</a></span></span><span data-ice="signature">(): <span><a href="class/src/searching/builder/DevicesSearchBuilder.js~DevicesSearchBuilder.html">DevicesSearchBuilder</a></span></span>
         </p>
       </div>
@@ -1172,6 +1172,32 @@
         
         
         <div data-ice="description"><p>This return a IoTDatastreamStoragePeriodSearchBuilder to build a specific IoTDatastreamStoragePeriodSearchBuilder</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-jsonSchemaSearchBuilder">jsonSchemaSearchBuilder</a></span></span><span data-ice="signature">(): <span><a href="class/src/searching/builder/JsonSchemaSearchBuilder.js~JsonSchemaSearchBuilder.html">JsonSchemaSearchBuilder</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>This return a JsonSchemaSearchBuilder to build a specific JsonSchemaSearchBuilder</p>
 </div>
       </div>
     </td>
@@ -2416,7 +2442,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber92">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber89">source</a></span></span>
     </span>
   </h3>
 
@@ -2483,7 +2509,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber104">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber101">source</a></span></span>
     </span>
   </h3>
 
@@ -2523,7 +2549,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber102">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber99">source</a></span></span>
     </span>
   </h3>
 
@@ -2560,6 +2586,46 @@
     
     
     <span data-ice="name">Sapi</span><span data-ice="signature">: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber100">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-entityBuilder">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">entityBuilder</span><span data-ice="signature">: <span>*</span></span>
     <span class="right-info">
       
       
@@ -2603,7 +2669,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber105">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber102">source</a></span></span>
     </span>
   </h3>
 
@@ -2697,7 +2763,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber348">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber347">source</a></span></span>
     </span>
   </h3>
 
@@ -2755,7 +2821,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber396">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber403">source</a></span></span>
     </span>
   </h3>
 
@@ -2817,7 +2883,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber380">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber379">source</a></span></span>
     </span>
   </h3>
 
@@ -2875,7 +2941,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber444">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber451">source</a></span></span>
     </span>
   </h3>
 
@@ -2932,7 +2998,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber388">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber387">source</a></span></span>
     </span>
   </h3>
 
@@ -3135,7 +3201,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber277">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber275">source</a></span></span>
     </span>
   </h3>
 
@@ -3182,7 +3248,7 @@
     
     
     
-    <span data-ice="name">communicationsModulesBuilder</span><span data-ice="signature">(): <span><a href="class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html">CommunicationsModules</a></span></span>
+    <span data-ice="name">communicationsModulesBuilder</span><span data-ice="signature">(): <span>CommunicationsModules</span></span>
     <span class="right-info">
       
       
@@ -3205,7 +3271,7 @@
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span><a href="class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html">CommunicationsModules</a></span></td>
+        <td class="return-type" data-ice="returnType"><span>CommunicationsModules</span></td>
         
       </tr>
     </table>
@@ -3377,7 +3443,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber364">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber363">source</a></span></span>
     </span>
   </h3>
 
@@ -3479,7 +3545,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber372">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber371">source</a></span></span>
     </span>
   </h3>
 
@@ -3518,7 +3584,8 @@
     <h4>Test:</h4>
     <ul>
       
-    <li data-ice="test"><span><a href="test-file/client/searching/datapoints.search.spec.js.html#lineNumber4">Check funcionality datapointsSearchBuilder module:</a></span></li>
+    <li data-ice="test"><span><a href="test-file/client/provision/devices.provision.spec.js.html#lineNumber4">Check funcionality devicesBuilder module:</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/datapoints.search.spec.js.html#lineNumber4">Check funcionality datapointsSearchBuilder module:</a></span></li>
 </ul>
   </div>
 
@@ -3638,7 +3705,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber356">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber355">source</a></span></span>
     </span>
   </h3>
 
@@ -3730,57 +3797,6 @@
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-devicesBuilder">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    <span data-ice="name">devicesBuilder</span><span data-ice="signature">(): <span><a href="class/src/devices/Devices.js~Devices.html">Devices</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber468">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>This return a DevicesBuilder to build a specific DevicesBuilder</p>
-</div>
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tr>
-        <td class="return-type" data-ice="returnType"><span><a href="class/src/devices/Devices.js~Devices.html">Devices</a></span></td>
-        
-      </tr>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-devicesSearchBuilder">
     <span class="access" data-ice="access">public</span>
     
@@ -3791,7 +3807,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber253">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber251">source</a></span></span>
     </span>
   </h3>
 
@@ -3855,7 +3871,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber420">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber427">source</a></span></span>
     </span>
   </h3>
 
@@ -3906,7 +3922,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber245">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber243">source</a></span></span>
     </span>
   </h3>
 
@@ -3957,7 +3973,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber340">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber339">source</a></span></span>
     </span>
   </h3>
 
@@ -4015,7 +4031,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber285">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber283">source</a></span></span>
     </span>
   </h3>
 
@@ -4116,7 +4132,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber452">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber459">source</a></span></span>
     </span>
   </h3>
 
@@ -4167,7 +4183,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber308">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber307">source</a></span></span>
     </span>
   </h3>
 
@@ -4218,7 +4234,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber300">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber299">source</a></span></span>
     </span>
   </h3>
 
@@ -4269,7 +4285,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber316">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber315">source</a></span></span>
     </span>
   </h3>
 
@@ -4289,6 +4305,57 @@
     <table>
       <tr>
         <td class="return-type" data-ice="returnType"><span><a href="class/src/searching/builder/IoTDatastreamStoragePeriodSearchBuilder.js~IoTDatastreamStoragePeriodSearchBuilder.html">IoTDatastreamStoragePeriodSearchBuilder</a></span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-jsonSchemaSearchBuilder">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">jsonSchemaSearchBuilder</span><span data-ice="signature">(): <span><a href="class/src/searching/builder/JsonSchemaSearchBuilder.js~JsonSchemaSearchBuilder.html">JsonSchemaSearchBuilder</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber395">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>This return a JsonSchemaSearchBuilder to build a specific JsonSchemaSearchBuilder</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="class/src/searching/builder/JsonSchemaSearchBuilder.js~JsonSchemaSearchBuilder.html">JsonSchemaSearchBuilder</a></span></td>
         
       </tr>
     </table>
@@ -4370,7 +4437,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber292">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber291">source</a></span></span>
     </span>
   </h3>
 
@@ -4421,7 +4488,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber404">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber411">source</a></span></span>
     </span>
   </h3>
 
@@ -4472,7 +4539,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber171">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber169">source</a></span></span>
     </span>
   </h3>
 
@@ -4523,7 +4590,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber128">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber126">source</a></span></span>
     </span>
   </h3>
 
@@ -4574,7 +4641,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber187">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber185">source</a></span></span>
     </span>
   </h3>
 
@@ -4676,7 +4743,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber179">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber177">source</a></span></span>
     </span>
   </h3>
 
@@ -4727,7 +4794,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber428">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber435">source</a></span></span>
     </span>
   </h3>
 
@@ -4778,7 +4845,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber213">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber211">source</a></span></span>
     </span>
   </h3>
 
@@ -4903,7 +4970,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber136">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber134">source</a></span></span>
     </span>
   </h3>
 
@@ -4954,7 +5021,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber120">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber118">source</a></span></span>
     </span>
   </h3>
 
@@ -5005,7 +5072,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber221">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber219">source</a></span></span>
     </span>
   </h3>
 
@@ -5072,10 +5139,10 @@
     <h4>Test:</h4>
     <ul>
       
-    <li data-ice="test"><span><a href="test-file/client/searching/quicksearch.spec.js.html#lineNumber10">Check funcionality newQuickSearch module: Set string parameter and get filter</a></span></li>
+    <li data-ice="test"><span><a href="test-file/client/searching/quicksearch.spec.js.html#lineNumber6">Check funcionality newQuickSearch module: Create new QuickSearch object</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/quicksearch.spec.js.html#lineNumber10">Check funcionality newQuickSearch module: Set string parameter and get filter</a></span></li>
 <li data-ice="test"><span><a href="test-file/client/searching/quicksearch.spec.js.html#lineNumber14">Check funcionality newQuickSearch module: Set string parameter and check filter</a></span></li>
 <li data-ice="test"><span><a href="test-file/client/searching/module.searching.spec.js.html#lineNumber6">Check if all searching modules exists: Exist newQuickSearch function</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/quicksearch.spec.js.html#lineNumber6">Check funcionality newQuickSearch module: Create new QuickSearch object</a></span></li>
 </ul>
   </div>
 
@@ -5093,7 +5160,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber163">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber161">source</a></span></span>
     </span>
   </h3>
 
@@ -5175,7 +5242,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber144">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber142">source</a></span></span>
     </span>
   </h3>
 
@@ -5226,7 +5293,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber203">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber201">source</a></span></span>
     </span>
   </h3>
 
@@ -5277,7 +5344,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber195">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber193">source</a></span></span>
     </span>
   </h3>
 
@@ -5328,7 +5395,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber112">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber110">source</a></span></span>
     </span>
   </h3>
 
@@ -5532,7 +5599,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber332">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber331">source</a></span></span>
     </span>
   </h3>
 
@@ -5590,7 +5657,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber412">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber419">source</a></span></span>
     </span>
   </h3>
 
@@ -5742,7 +5809,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber229">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber227">source</a></span></span>
     </span>
   </h3>
 
@@ -5857,7 +5924,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber152">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber150">source</a></span></span>
     </span>
   </h3>
 
@@ -5936,7 +6003,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber324">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber323">source</a></span></span>
     </span>
   </h3>
 
@@ -6037,7 +6104,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber460">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber467">source</a></span></span>
     </span>
   </h3>
 
@@ -6290,7 +6357,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber261">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber259">source</a></span></span>
     </span>
   </h3>
 
@@ -6451,7 +6518,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber269">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber267">source</a></span></span>
     </span>
   </h3>
 
@@ -6612,7 +6679,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber436">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber443">source</a></span></span>
     </span>
   </h3>
 
@@ -6663,7 +6730,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber237">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber235">source</a></span></span>
     </span>
   </h3>
 

@@ -71,11 +71,11 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEMPERATURE_STATUS_ENUM">TEMPERATURE_STATUS_ENUM</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/DeviceFinder.js~DeviceFinder.html">DeviceFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/Devices.js~Devices.html">Devices</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/EntityBuilder.js~EntityBuilder.html">EntityBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/EntityFinder.js~EntityFinder.html">EntityFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/Relations.js~Relations.html">Relations</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_ENUM">TYPE_ENUM</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices/commsModules</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/CommunicationsModuleFinder.js~CommunicationsModuleFinder.html">CommunicationsModuleFinder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html">CommunicationsModules</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices/commsModules/subscribers</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/subscribers/SubscribersFinder.js~SubscribersFinder.html">SubscribersFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices/commsModules/subscriptions</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html">Subscriptions</a></span></span></li>
@@ -143,6 +143,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamAccessSearchBuilder.js~IoTDatastreamAccessSearchBuilder.html">IoTDatastreamAccessSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamPeriodSearchBuilder.js~IoTDatastreamPeriodSearchBuilder.html">IoTDatastreamPeriodSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamStoragePeriodSearchBuilder.js~IoTDatastreamStoragePeriodSearchBuilder.html">IoTDatastreamStoragePeriodSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/JsonSchemaSearchBuilder.js~JsonSchemaSearchBuilder.html">JsonSchemaSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/MobilePhoneProviderSearchBuilder.js~MobilePhoneProviderSearchBuilder.html">MobilePhoneProviderSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationalStatusSearchBuilder.js~OperationalStatusSearchBuilder.html">OperationalStatusSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationsSearchBuilder.js~OperationsSearchBuilder.html">OperationsSearchBuilder</a></span></span></li>
@@ -407,11 +408,11 @@ export default class NorthAmpliaREST {
      */
     default () {
         return {
-            url: &apos;http://cloud.opengate.es:25281/v70&apos;,
+            url: &apos;http://172.19.18.96:25281/v80&apos;,
             timeout: 5000,
-            apiKey: undefined,
+            apiKey: &apos;2829be88-a7d7-4f51-aefc-3cc2385b6506&apos;,
             south: {
-                url: &apos;http://cloud.opengate.es:9955/v70&apos;,
+                url: &apos;http://172.19.18.96:9955/v80&apos;,
             }
         }
     }

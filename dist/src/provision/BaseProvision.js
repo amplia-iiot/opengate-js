@@ -89,7 +89,6 @@ var BaseProvision = (function () {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
 
-            console.log("URL: " + this._resource);
             //En muchas clases se genera this._resource en la llamada a la funcion this._composeElement()
 
             var _postElement = this._composeElement();
@@ -126,7 +125,6 @@ var BaseProvision = (function () {
         value: function _delete() {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            //console.log(this._buildURL());
             this._ogapi.Napi['delete'](this._buildURL()).then(function (res) {
                 if (res.statusCode === 200) {
                     defered.resolve({ statusCode: res.statusCode });

@@ -71,11 +71,11 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEMPERATURE_STATUS_ENUM">TEMPERATURE_STATUS_ENUM</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/DeviceFinder.js~DeviceFinder.html">DeviceFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/Devices.js~Devices.html">Devices</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/EntityBuilder.js~EntityBuilder.html">EntityBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/EntityFinder.js~EntityFinder.html">EntityFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/Relations.js~Relations.html">Relations</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_ENUM">TYPE_ENUM</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices/commsModules</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/CommunicationsModuleFinder.js~CommunicationsModuleFinder.html">CommunicationsModuleFinder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html">CommunicationsModules</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices/commsModules/subscribers</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/subscribers/SubscribersFinder.js~SubscribersFinder.html">SubscribersFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices/commsModules/subscriptions</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html">Subscriptions</a></span></span></li>
@@ -143,6 +143,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamAccessSearchBuilder.js~IoTDatastreamAccessSearchBuilder.html">IoTDatastreamAccessSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamPeriodSearchBuilder.js~IoTDatastreamPeriodSearchBuilder.html">IoTDatastreamPeriodSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamStoragePeriodSearchBuilder.js~IoTDatastreamStoragePeriodSearchBuilder.html">IoTDatastreamStoragePeriodSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/JsonSchemaSearchBuilder.js~JsonSchemaSearchBuilder.html">JsonSchemaSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/MobilePhoneProviderSearchBuilder.js~MobilePhoneProviderSearchBuilder.html">MobilePhoneProviderSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationalStatusSearchBuilder.js~OperationalStatusSearchBuilder.html">OperationalStatusSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationsSearchBuilder.js~OperationsSearchBuilder.html">OperationsSearchBuilder</a></span></span></li>
@@ -186,13 +187,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Subscribers from &apos;<span><a href="file/src/devices/commsModules/subscribers/Subscribers.js.html#lineNumber11">opengate-js/src/devices/commsModules/subscribers/Subscribers.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Subscribers from &apos;<span><a href="file/src/devices/commsModules/subscribers/Subscribers.js.html#lineNumber10">opengate-js/src/devices/commsModules/subscribers/Subscribers.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/devices/commsModules/subscribers/Subscribers.js.html#lineNumber11">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/devices/commsModules/subscribers/Subscribers.js.html#lineNumber10">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -300,247 +301,13 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html#instance-method-withAdministrativeState">withAdministrativeState</a></span></span><span data-ice="signature">(administrativeState: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span>
+           <span data-ice="name"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html#instance-method-getAllowedDatastreams">getAllowedDatastreams</a></span></span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Sets the administrative state attribute</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-           <span data-ice="name"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html#instance-method-withChannel">withChannel</a></span></span><span data-ice="signature">(channel: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Sets the channel attribute</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-           <span data-ice="name"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html#instance-method-withDescription">withDescription</a></span></span><span data-ice="signature">(description: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Set the description attribute</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-           <span data-ice="name"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html#instance-method-withEntityKey">withEntityKey</a></span></span><span data-ice="signature">(entityKey: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Sets the entityKey attribute</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-           <span data-ice="name"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html#instance-method-withIcc">withIcc</a></span></span><span data-ice="signature">(icc: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Set the ICC attribute</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-           <span data-ice="name"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html#instance-method-withName">withName</a></span></span><span data-ice="signature">(name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Set the name attribute</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-           <span data-ice="name"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html#instance-method-withOrganization">withOrganization</a></span></span><span data-ice="signature">(organization: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Sets the organization attribute</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-           <span data-ice="name"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html#instance-method-withServiceGroup">withServiceGroup</a></span></span><span data-ice="signature">(serviceGroup: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Sets the serviceGroup attribute</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-           <span data-ice="name"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html#instance-method-withSpecificType">withSpecificType</a></span></span><span data-ice="signature">(specificType: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Set the specific type attribute</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-           <span data-ice="name"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html#instance-method-withTimeout">withTimeout</a></span></span><span data-ice="signature">(ms: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>The request will have a specific time out if it will be exceeded then the promise throw an exception</p>
+        <div data-ice="description"><p>Return the allowed datastream for subscriber</p>
 </div>
       </div>
     </td>
@@ -657,7 +424,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/devices/commsModules/subscribers/Subscribers.js.html#lineNumber16">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/devices/commsModules/subscribers/Subscribers.js.html#lineNumber15">source</a></span></span>
     </span>
   </h3>
 
@@ -718,7 +485,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/devices/commsModules/subscribers/Subscribers.js.html#lineNumber148">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/devices/commsModules/subscribers/Subscribers.js.html#lineNumber53">source</a></span></span>
     </span>
   </h3>
 
@@ -756,7 +523,7 @@ This function updates a entity of provision</p>
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.subscriberBuilder().create()</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.entityBuilder.subscriberBuilder().create()</code></pre>
     </div>
 </div>
 
@@ -766,52 +533,36 @@ This function updates a entity of provision</p>
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-withAdministrativeState">
+  <h3 data-ice="anchor" id="instance-method-getAllowedDatastreams">
     <span class="access" data-ice="access">public</span>
     
     
     
     
-    <span data-ice="name">withAdministrativeState</span><span data-ice="signature">(administrativeState: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span>
+    <span data-ice="name">getAllowedDatastreams</span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/devices/commsModules/subscribers/Subscribers.js.html#lineNumber99">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/devices/commsModules/subscribers/Subscribers.js.html#lineNumber31">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Sets the administrative state attribute</p>
+  <div data-ice="description"><p>Return the allowed datastream for subscriber</p>
 </div>
 
   
 
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">administrativeState</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
+  <div data-ice="properties">
 </div>
 
   <div class="return-params" data-ice="returnParams">
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></td>
+        <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></td>
         
       </tr>
     </table>
@@ -825,612 +576,14 @@ This function updates a entity of provision</p>
 
   
 
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-withChannel">
-    <span class="access" data-ice="access">public</span>
+  <div data-ice="example">
+    <h4>Example:</h4>
     
-    
-    
-    
-    <span data-ice="name">withChannel</span><span data-ice="signature">(channel: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span>
-    <span class="right-info">
+  <div class="example-doc" data-ice="exampleDoc">
       
-      
-      <span data-ice="source"><span><a href="file/src/devices/commsModules/subscribers/Subscribers.js.html#lineNumber87">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>Sets the channel attribute</p>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.entityBuilder.subscribersBuilder().getAllowedDatastreams()</code></pre>
+    </div>
 </div>
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">channel</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tr>
-        <td class="return-type" data-ice="returnType"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></td>
-        
-      </tr>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-withDescription">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    <span data-ice="name">withDescription</span><span data-ice="signature">(description: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/devices/commsModules/subscribers/Subscribers.js.html#lineNumber38">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>Set the description attribute</p>
-</div>
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">description</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tr>
-        <td class="return-type" data-ice="returnType"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></td>
-        
-      </tr>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-withEntityKey">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    <span data-ice="name">withEntityKey</span><span data-ice="signature">(entityKey: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/devices/commsModules/subscribers/Subscribers.js.html#lineNumber123">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>Sets the entityKey attribute</p>
-</div>
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">entityKey</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tr>
-        <td class="return-type" data-ice="returnType"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></td>
-        
-      </tr>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-withIcc">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    <span data-ice="name">withIcc</span><span data-ice="signature">(icc: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/devices/commsModules/subscribers/Subscribers.js.html#lineNumber63">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>Set the ICC attribute</p>
-</div>
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">icc</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tr>
-        <td class="return-type" data-ice="returnType"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></td>
-        
-      </tr>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-withName">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    <span data-ice="name">withName</span><span data-ice="signature">(name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/devices/commsModules/subscribers/Subscribers.js.html#lineNumber26">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>Set the name attribute</p>
-</div>
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">name</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>required field</p>
-</td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tr>
-        <td class="return-type" data-ice="returnType"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></td>
-        
-      </tr>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-withOrganization">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    <span data-ice="name">withOrganization</span><span data-ice="signature">(organization: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/devices/commsModules/subscribers/Subscribers.js.html#lineNumber74">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>Sets the organization attribute</p>
-</div>
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">organization</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tr>
-        <td class="return-type" data-ice="returnType"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></td>
-        
-      </tr>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-withServiceGroup">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    <span data-ice="name">withServiceGroup</span><span data-ice="signature">(serviceGroup: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/devices/commsModules/subscribers/Subscribers.js.html#lineNumber111">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>Sets the serviceGroup attribute</p>
-</div>
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">serviceGroup</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tr>
-        <td class="return-type" data-ice="returnType"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></td>
-        
-      </tr>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-withSpecificType">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    <span data-ice="name">withSpecificType</span><span data-ice="signature">(specificType: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/devices/commsModules/subscribers/Subscribers.js.html#lineNumber51">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>Set the specific type attribute</p>
-</div>
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">specificType</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tr>
-        <td class="return-type" data-ice="returnType"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></td>
-        
-      </tr>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-withTimeout">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    <span data-ice="name">withTimeout</span><span data-ice="signature">(ms: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/devices/commsModules/subscribers/Subscribers.js.html#lineNumber136">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>The request will have a specific time out if it will be exceeded then the promise throw an exception</p>
-</div>
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">ms</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>timeout in milliseconds</p>
-</td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tr>
-        <td class="return-type" data-ice="returnType"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></td>
-        
-      </tr>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
-  
-
-  
-
-  
-
-  
 
   
 

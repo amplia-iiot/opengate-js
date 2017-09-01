@@ -198,12 +198,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "opengate-js/src/devices/commsmodules/communicationsmodules.js~communicationsmodules",
-    "class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html",
-    "<span>CommunicationsModules</span> <span class=\"search-result-import-path\">opengate-js/src/devices/commsModules/CommunicationsModules.js</span>",
-    "class"
-  ],
-  [
     "opengate-js/src/iot/datamodels/datamodels.js~datamodels_resource",
     "variable/index.html#static-variable-DATAMODELS_RESOURCE",
     "<span>DATAMODELS_RESOURCE</span> <span class=\"search-result-import-path\">opengate-js/src/iot/datamodels/Datamodels.js</span>",
@@ -330,6 +324,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/devices/entitybuilder.js~entitybuilder",
+    "class/src/devices/EntityBuilder.js~EntityBuilder.html",
+    "<span>EntityBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/devices/EntityBuilder.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/devices/entityfinder.js~entityfinder",
     "class/src/devices/EntityFinder.js~EntityFinder.html",
     "<span>EntityFinder</span> <span class=\"search-result-import-path\">opengate-js/src/devices/EntityFinder.js</span>",
@@ -447,6 +447,12 @@ window.esdocSearchIndex = [
     "opengate-js/src/searching/builder/iotdatastreamstorageperiodsearchbuilder.js~iotdatastreamstorageperiodsearchbuilder",
     "class/src/searching/builder/IoTDatastreamStoragePeriodSearchBuilder.js~IoTDatastreamStoragePeriodSearchBuilder.html",
     "<span>IoTDatastreamStoragePeriodSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/IoTDatastreamStoragePeriodSearchBuilder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/searching/builder/jsonschemasearchbuilder.js~jsonschemasearchbuilder",
+    "class/src/searching/builder/JsonSchemaSearchBuilder.js~JsonSchemaSearchBuilder.html",
+    "<span>JsonSchemaSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/JsonSchemaSearchBuilder.js</span>",
     "class"
   ],
   [
@@ -1261,6 +1267,12 @@ window.esdocSearchIndex = [
   ],
   [
     "internalopengateapi#bundlesbuilder() src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder()",
+    "test-file/client/device/device.spec.js.html#lineNumber4",
+    "Check funcionality bundles module:",
+    "test"
+  ],
+  [
+    "internalopengateapi#bundlesbuilder() src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder()",
     "test-file/client/bundles/bundles.spec.js.html#lineNumber4",
     "Check funcionality bundles module:",
     "test"
@@ -1268,12 +1280,6 @@ window.esdocSearchIndex = [
   [
     "internalopengateapi#bundlesbuilder() src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder()",
     "test-file/client/collection/iot.spec.js.html#lineNumber4",
-    "Check funcionality bundles module:",
-    "test"
-  ],
-  [
-    "internalopengateapi#bundlesbuilder() src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder()",
-    "test-file/client/device/device.spec.js.html#lineNumber4",
     "Check funcionality bundles module:",
     "test"
   ],
@@ -1303,13 +1309,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber180",
+    "test-file/client/device/device.spec.js.html#lineNumber185",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Operation",
     "test"
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber185",
+    "test-file/client/device/device.spec.js.html#lineNumber180",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Operation",
     "test"
   ],
@@ -1447,13 +1453,13 @@ window.esdocSearchIndex = [
   ],
   [
     "internalopengateapi#bundlesbuilder src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder",
-    "test-file/client/device/device.spec.js.html#lineNumber10",
+    "test-file/client/collection/iot.spec.js.html#lineNumber10",
     "Check funcionality bundles module: Check basic parameters:",
     "test"
   ],
   [
     "internalopengateapi#bundlesbuilder src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder",
-    "test-file/client/collection/iot.spec.js.html#lineNumber10",
+    "test-file/client/device/device.spec.js.html#lineNumber10",
     "Check funcionality bundles module: Check basic parameters:",
     "test"
   ],
@@ -1683,6 +1689,42 @@ window.esdocSearchIndex = [
     "",
     "test-file/client/searching/datapoints.search.spec.js.html#lineNumber5",
     "Check funcionality datapointsSearchBuilder module: Create new datapointsSearchBuilder object",
+    "test"
+  ],
+  [
+    "",
+    "test-file/client/provision/devices.provision.spec.js.html#lineNumber50",
+    "Check funcionality devicesBuilder module:",
+    "test"
+  ],
+  [
+    "",
+    "test-file/client/provision/devices.provision.spec.js.html#lineNumber28",
+    "Check funcionality devicesBuilder module:",
+    "test"
+  ],
+  [
+    "internalopengateapi#datapointssearchbuilder src/internalopengateapi.js~internalopengateapi#datapointssearchbuilder,internalopengateapi#datapointssearchbuilder",
+    "test-file/client/provision/devices.provision.spec.js.html#lineNumber4",
+    "Check funcionality devicesBuilder module:",
+    "test"
+  ],
+  [
+    "",
+    "test-file/client/provision/devices.provision.spec.js.html#lineNumber5",
+    "Check funcionality devicesBuilder module: Create new devicesBuilder object",
+    "test"
+  ],
+  [
+    "",
+    "test-file/client/provision/devices.provision.spec.js.html#lineNumber51",
+    "Check funcionality devicesBuilder module: Create new subscribersBuilder object",
+    "test"
+  ],
+  [
+    "",
+    "test-file/client/provision/devices.provision.spec.js.html#lineNumber29",
+    "Check funcionality devicesBuilder module: Create new subscribersBuilder object",
     "test"
   ],
   [
@@ -2010,14 +2052,14 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortdescendingby,searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber94",
+    "searchbuilder#build searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortascendingby,searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber86",
     "Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort",
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortascendingby,searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber86",
+    "searchbuilder#build searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortdescendingby,searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber94",
     "Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort",
     "test"
   ],
@@ -2196,26 +2238,26 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "searchbuilder#filter src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter",
-    "test-file/client/searching/search.spec.js.html#lineNumber43",
-    "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter:",
-    "test"
-  ],
-  [
     "",
     "test-file/client/searching/search.spec.js.html#lineNumber106",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter:",
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder,internalopengateapi#communicationsmodulessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber76",
-    "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: communicationsModulesSearchBuilder",
+    "searchbuilder#filter src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter",
+    "test-file/client/searching/search.spec.js.html#lineNumber43",
+    "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter:",
     "test"
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder,internalopengateapi#communicationsmodulessearchbuilder",
     "test-file/client/searching/search.spec.js.html#lineNumber136",
+    "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: communicationsModulesSearchBuilder",
+    "test"
+  ],
+  [
+    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder,internalopengateapi#communicationsmodulessearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber76",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: communicationsModulesSearchBuilder",
     "test"
   ],
@@ -2233,13 +2275,13 @@ window.esdocSearchIndex = [
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriberssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber68",
+    "test-file/client/searching/search.spec.js.html#lineNumber128",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder",
     "test"
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriberssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber128",
+    "test-file/client/searching/search.spec.js.html#lineNumber68",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder",
     "test"
   ],
@@ -2263,12 +2305,6 @@ window.esdocSearchIndex = [
   ],
   [
     "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber405",
-    "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
-    "test"
-  ],
-  [
-    "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
     "test-file/client/searching/search.spec.js.html#lineNumber393",
     "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
     "test"
@@ -2276,6 +2312,12 @@ window.esdocSearchIndex = [
   [
     "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
     "test-file/client/searching/search.spec.js.html#lineNumber399",
+    "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
+    "test"
+  ],
+  [
+    "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
+    "test-file/client/searching/search.spec.js.html#lineNumber405",
     "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
     "test"
   ],
@@ -2664,6 +2706,12 @@ window.esdocSearchIndex = [
     "testFile"
   ],
   [
+    "client/provision/devices.provision.spec.js",
+    "test-file/client/provision/devices.provision.spec.js.html",
+    "client/provision/devices.provision.spec.js",
+    "testFile"
+  ],
+  [
     "client/searching/filterbuilder.spec.js",
     "test-file/client/searching/FilterBuilder.spec.js.html",
     "client/searching/FilterBuilder.spec.js",
@@ -2880,12 +2928,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/internalopengateapi.js~internalopengateapi#devicesbuilder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-devicesBuilder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#devicesBuilder",
-    "method"
-  ],
-  [
     "src/internalopengateapi.js~internalopengateapi#devicessearchbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-devicesSearchBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#devicesSearchBuilder",
@@ -2902,6 +2944,12 @@ window.esdocSearchIndex = [
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-domainsSearchBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#domainsSearchBuilder",
     "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#entitybuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-member-entityBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#entityBuilder",
+    "member"
   ],
   [
     "src/internalopengateapi.js~internalopengateapi#executionssearchbuilder",
@@ -2943,6 +2991,12 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#iotdatastreamstorageperiodsearchbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-ioTDatastreamStoragePeriodSearchBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#ioTDatastreamStoragePeriodSearchBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#jsonschemasearchbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-jsonSchemaSearchBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#jsonSchemaSearchBuilder",
     "method"
   ],
   [
@@ -4614,117 +4668,45 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/devices/devices.js~devices#withadministrativestate",
-    "class/src/devices/Devices.js~Devices.html#instance-method-withAdministrativeState",
-    "src/devices/Devices.js~Devices#withAdministrativeState",
+    "src/devices/devices.js~devices#deleteall",
+    "class/src/devices/Devices.js~Devices.html#instance-method-deleteAll",
+    "src/devices/Devices.js~Devices#deleteAll",
     "method"
   ],
   [
-    "src/devices/devices.js~devices#withcertificate",
-    "class/src/devices/Devices.js~Devices.html#instance-method-withCertificate",
-    "src/devices/Devices.js~Devices#withCertificate",
+    "src/devices/devices.js~devices#getalloweddatastreams",
+    "class/src/devices/Devices.js~Devices.html#instance-method-getAllowedDatastreams",
+    "src/devices/Devices.js~Devices#getAllowedDatastreams",
     "method"
   ],
   [
-    "src/devices/devices.js~devices#withchannel",
-    "class/src/devices/Devices.js~Devices.html#instance-method-withChannel",
-    "src/devices/Devices.js~Devices#withChannel",
+    "src/devices/entitybuilder.js",
+    "file/src/devices/EntityBuilder.js.html",
+    "src/devices/EntityBuilder.js",
+    "file"
+  ],
+  [
+    "src/devices/entitybuilder.js~entitybuilder#constructor",
+    "class/src/devices/EntityBuilder.js~EntityBuilder.html#instance-constructor-constructor",
+    "src/devices/EntityBuilder.js~EntityBuilder#constructor",
     "method"
   ],
   [
-    "src/devices/devices.js~devices#withdefaultfeed",
-    "class/src/devices/Devices.js~Devices.html#instance-method-withDefaultFeed",
-    "src/devices/Devices.js~Devices#withDefaultFeed",
+    "src/devices/entitybuilder.js~entitybuilder#devicesbuilder",
+    "class/src/devices/EntityBuilder.js~EntityBuilder.html#instance-method-devicesBuilder",
+    "src/devices/EntityBuilder.js~EntityBuilder#devicesBuilder",
     "method"
   ],
   [
-    "src/devices/devices.js~devices#withdescription",
-    "class/src/devices/Devices.js~Devices.html#instance-method-withDescription",
-    "src/devices/Devices.js~Devices#withDescription",
+    "src/devices/entitybuilder.js~entitybuilder#subscribersbuilder",
+    "class/src/devices/EntityBuilder.js~EntityBuilder.html#instance-method-subscribersBuilder",
+    "src/devices/EntityBuilder.js~EntityBuilder#subscribersBuilder",
     "method"
   ],
   [
-    "src/devices/devices.js~devices#withentitykey",
-    "class/src/devices/Devices.js~Devices.html#instance-method-withEntityKey",
-    "src/devices/Devices.js~Devices#withEntityKey",
-    "method"
-  ],
-  [
-    "src/devices/devices.js~devices#withhardware",
-    "class/src/devices/Devices.js~Devices.html#instance-method-withHardware",
-    "src/devices/Devices.js~Devices#withHardware",
-    "method"
-  ],
-  [
-    "src/devices/devices.js~devices#withlocation",
-    "class/src/devices/Devices.js~Devices.html#instance-method-withLocation",
-    "src/devices/Devices.js~Devices#withLocation",
-    "method"
-  ],
-  [
-    "src/devices/devices.js~devices#withname",
-    "class/src/devices/Devices.js~Devices.html#instance-method-withName",
-    "src/devices/Devices.js~Devices#withName",
-    "method"
-  ],
-  [
-    "src/devices/devices.js~devices#withoperationalstatus",
-    "class/src/devices/Devices.js~Devices.html#instance-method-withOperationalStatus",
-    "src/devices/Devices.js~Devices#withOperationalStatus",
-    "method"
-  ],
-  [
-    "src/devices/devices.js~devices#withorganization",
-    "class/src/devices/Devices.js~Devices.html#instance-method-withOrganization",
-    "src/devices/Devices.js~Devices#withOrganization",
-    "method"
-  ],
-  [
-    "src/devices/devices.js~devices#withpostalcode",
-    "class/src/devices/Devices.js~Devices.html#instance-method-withPostalCode",
-    "src/devices/Devices.js~Devices#withPostalCode",
-    "method"
-  ],
-  [
-    "src/devices/devices.js~devices#withserialnumber",
-    "class/src/devices/Devices.js~Devices.html#instance-method-withSerialNumber",
-    "src/devices/Devices.js~Devices#withSerialNumber",
-    "method"
-  ],
-  [
-    "src/devices/devices.js~devices#withservicegroup",
-    "class/src/devices/Devices.js~Devices.html#instance-method-withServiceGroup",
-    "src/devices/Devices.js~Devices#withServiceGroup",
-    "method"
-  ],
-  [
-    "src/devices/devices.js~devices#withsoftware",
-    "class/src/devices/Devices.js~Devices.html#instance-method-withSoftware",
-    "src/devices/Devices.js~Devices#withSoftware",
-    "method"
-  ],
-  [
-    "src/devices/devices.js~devices#withspecifictype",
-    "class/src/devices/Devices.js~Devices.html#instance-method-withSpecificType",
-    "src/devices/Devices.js~Devices#withSpecificType",
-    "method"
-  ],
-  [
-    "src/devices/devices.js~devices#withtimeout",
-    "class/src/devices/Devices.js~Devices.html#instance-method-withTimeout",
-    "src/devices/Devices.js~Devices#withTimeout",
-    "method"
-  ],
-  [
-    "src/devices/devices.js~devices#withtrustedboot",
-    "class/src/devices/Devices.js~Devices.html#instance-method-withTrustedBoot",
-    "src/devices/Devices.js~Devices#withTrustedBoot",
-    "method"
-  ],
-  [
-    "src/devices/devices.js~devices#withtype",
-    "class/src/devices/Devices.js~Devices.html#instance-method-withType",
-    "src/devices/Devices.js~Devices#withType",
+    "src/devices/entitybuilder.js~entitybuilder#subscriptionsbuilder",
+    "class/src/devices/EntityBuilder.js~EntityBuilder.html#instance-method-subscriptionsBuilder",
+    "src/devices/EntityBuilder.js~EntityBuilder#subscriptionsBuilder",
     "method"
   ],
   [
@@ -4830,108 +4812,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/devices/commsmodules/communicationsmodules.js",
-    "file/src/devices/commsModules/CommunicationsModules.js.html",
-    "src/devices/commsModules/CommunicationsModules.js",
-    "file"
-  ],
-  [
-    "src/devices/commsmodules/communicationsmodules.js~communicationsmodules#constructor",
-    "class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html#instance-constructor-constructor",
-    "src/devices/commsModules/CommunicationsModules.js~CommunicationsModules#constructor",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/communicationsmodules.js~communicationsmodules#create",
-    "class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html#instance-method-create",
-    "src/devices/commsModules/CommunicationsModules.js~CommunicationsModules#create",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/communicationsmodules.js~communicationsmodules#withadministrativestate",
-    "class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html#instance-method-withAdministrativeState",
-    "src/devices/commsModules/CommunicationsModules.js~CommunicationsModules#withAdministrativeState",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/communicationsmodules.js~communicationsmodules#withchannel",
-    "class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html#instance-method-withChannel",
-    "src/devices/commsModules/CommunicationsModules.js~CommunicationsModules#withChannel",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/communicationsmodules.js~communicationsmodules#withdescription",
-    "class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html#instance-method-withDescription",
-    "src/devices/commsModules/CommunicationsModules.js~CommunicationsModules#withDescription",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/communicationsmodules.js~communicationsmodules#withentitykey",
-    "class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html#instance-method-withEntityKey",
-    "src/devices/commsModules/CommunicationsModules.js~CommunicationsModules#withEntityKey",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/communicationsmodules.js~communicationsmodules#withhardware",
-    "class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html#instance-method-withHardware",
-    "src/devices/commsModules/CommunicationsModules.js~CommunicationsModules#withHardware",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/communicationsmodules.js~communicationsmodules#withimei",
-    "class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html#instance-method-withImei",
-    "src/devices/commsModules/CommunicationsModules.js~CommunicationsModules#withImei",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/communicationsmodules.js~communicationsmodules#withmac",
-    "class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html#instance-method-withMac",
-    "src/devices/commsModules/CommunicationsModules.js~CommunicationsModules#withMac",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/communicationsmodules.js~communicationsmodules#withname",
-    "class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html#instance-method-withName",
-    "src/devices/commsModules/CommunicationsModules.js~CommunicationsModules#withName",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/communicationsmodules.js~communicationsmodules#withoperationalstatus",
-    "class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html#instance-method-withOperationalStatus",
-    "src/devices/commsModules/CommunicationsModules.js~CommunicationsModules#withOperationalStatus",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/communicationsmodules.js~communicationsmodules#withorganization",
-    "class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html#instance-method-withOrganization",
-    "src/devices/commsModules/CommunicationsModules.js~CommunicationsModules#withOrganization",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/communicationsmodules.js~communicationsmodules#withservicegroup",
-    "class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html#instance-method-withServiceGroup",
-    "src/devices/commsModules/CommunicationsModules.js~CommunicationsModules#withServiceGroup",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/communicationsmodules.js~communicationsmodules#withsoftware",
-    "class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html#instance-method-withSoftware",
-    "src/devices/commsModules/CommunicationsModules.js~CommunicationsModules#withSoftware",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/communicationsmodules.js~communicationsmodules#withspecifictype",
-    "class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html#instance-method-withSpecificType",
-    "src/devices/commsModules/CommunicationsModules.js~CommunicationsModules#withSpecificType",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/communicationsmodules.js~communicationsmodules#withtimeout",
-    "class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html#instance-method-withTimeout",
-    "src/devices/commsModules/CommunicationsModules.js~CommunicationsModules#withTimeout",
-    "method"
-  ],
-  [
     "src/devices/commsmodules/subscribers/subscribers.js",
     "file/src/devices/commsModules/subscribers/Subscribers.js.html",
     "src/devices/commsModules/subscribers/Subscribers.js",
@@ -4950,63 +4830,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/devices/commsmodules/subscribers/subscribers.js~subscribers#withadministrativestate",
-    "class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html#instance-method-withAdministrativeState",
-    "src/devices/commsModules/subscribers/Subscribers.js~Subscribers#withAdministrativeState",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscribers/subscribers.js~subscribers#withchannel",
-    "class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html#instance-method-withChannel",
-    "src/devices/commsModules/subscribers/Subscribers.js~Subscribers#withChannel",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscribers/subscribers.js~subscribers#withdescription",
-    "class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html#instance-method-withDescription",
-    "src/devices/commsModules/subscribers/Subscribers.js~Subscribers#withDescription",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscribers/subscribers.js~subscribers#withentitykey",
-    "class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html#instance-method-withEntityKey",
-    "src/devices/commsModules/subscribers/Subscribers.js~Subscribers#withEntityKey",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscribers/subscribers.js~subscribers#withicc",
-    "class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html#instance-method-withIcc",
-    "src/devices/commsModules/subscribers/Subscribers.js~Subscribers#withIcc",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscribers/subscribers.js~subscribers#withname",
-    "class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html#instance-method-withName",
-    "src/devices/commsModules/subscribers/Subscribers.js~Subscribers#withName",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscribers/subscribers.js~subscribers#withorganization",
-    "class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html#instance-method-withOrganization",
-    "src/devices/commsModules/subscribers/Subscribers.js~Subscribers#withOrganization",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscribers/subscribers.js~subscribers#withservicegroup",
-    "class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html#instance-method-withServiceGroup",
-    "src/devices/commsModules/subscribers/Subscribers.js~Subscribers#withServiceGroup",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscribers/subscribers.js~subscribers#withspecifictype",
-    "class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html#instance-method-withSpecificType",
-    "src/devices/commsModules/subscribers/Subscribers.js~Subscribers#withSpecificType",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscribers/subscribers.js~subscribers#withtimeout",
-    "class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html#instance-method-withTimeout",
-    "src/devices/commsModules/subscribers/Subscribers.js~Subscribers#withTimeout",
+    "src/devices/commsmodules/subscribers/subscribers.js~subscribers#getalloweddatastreams",
+    "class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html#instance-method-getAllowedDatastreams",
+    "src/devices/commsModules/subscribers/Subscribers.js~Subscribers#getAllowedDatastreams",
     "method"
   ],
   [
@@ -5040,105 +4866,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/devices/commsmodules/subscriptions/subscriptions.js~subscriptions#withadministrativestate",
-    "class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html#instance-method-withAdministrativeState",
-    "src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions#withAdministrativeState",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscriptions/subscriptions.js~subscriptions#withapn",
-    "class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html#instance-method-withApn",
-    "src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions#withApn",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscriptions/subscriptions.js~subscriptions#withchannel",
-    "class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html#instance-method-withChannel",
-    "src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions#withChannel",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscriptions/subscriptions.js~subscriptions#withdescription",
-    "class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html#instance-method-withDescription",
-    "src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions#withDescription",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscriptions/subscriptions.js~subscriptions#withentitykey",
-    "class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html#instance-method-withEntityKey",
-    "src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions#withEntityKey",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscriptions/subscriptions.js~subscriptions#withhomeoperator",
-    "class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html#instance-method-withHomeOperator",
-    "src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions#withHomeOperator",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscriptions/subscriptions.js~subscriptions#withimsi",
-    "class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html#instance-method-withImsi",
-    "src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions#withImsi",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscriptions/subscriptions.js~subscriptions#withipaddress",
-    "class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html#instance-method-withIpAddress",
-    "src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions#withIpAddress",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscriptions/subscriptions.js~subscriptions#withlocation",
-    "class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html#instance-method-withLocation",
-    "src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions#withLocation",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscriptions/subscriptions.js~subscriptions#withmsisdn",
-    "class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html#instance-method-withMsisdn",
-    "src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions#withMsisdn",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscriptions/subscriptions.js~subscriptions#withname",
-    "class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html#instance-method-withName",
-    "src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions#withName",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscriptions/subscriptions.js~subscriptions#withorganization",
-    "class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html#instance-method-withOrganization",
-    "src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions#withOrganization",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscriptions/subscriptions.js~subscriptions#withpostalcode",
-    "class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html#instance-method-withPostalCode",
-    "src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions#withPostalCode",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscriptions/subscriptions.js~subscriptions#withregisteredoperator",
-    "class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html#instance-method-withRegisteredOperator",
-    "src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions#withRegisteredOperator",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscriptions/subscriptions.js~subscriptions#withservicegroup",
-    "class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html#instance-method-withServiceGroup",
-    "src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions#withServiceGroup",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscriptions/subscriptions.js~subscriptions#withspecifictype",
-    "class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html#instance-method-withSpecificType",
-    "src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions#withSpecificType",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscriptions/subscriptions.js~subscriptions#withtimeout",
-    "class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html#instance-method-withTimeout",
-    "src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions#withTimeout",
+    "src/devices/commsmodules/subscriptions/subscriptions.js~subscriptions#getalloweddatastreams",
+    "class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html#instance-method-getAllowedDatastreams",
+    "src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions#getAllowedDatastreams",
     "method"
   ],
   [
@@ -6900,6 +6630,48 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/searching/builder/jsonschemasearchbuilder.js",
+    "file/src/searching/builder/JsonSchemaSearchBuilder.js.html",
+    "src/searching/builder/JsonSchemaSearchBuilder.js",
+    "file"
+  ],
+  [
+    "src/searching/builder/jsonschemasearchbuilder.js~jsonschemasearchbuilder#build",
+    "class/src/searching/builder/JsonSchemaSearchBuilder.js~JsonSchemaSearchBuilder.html#instance-method-build",
+    "src/searching/builder/JsonSchemaSearchBuilder.js~JsonSchemaSearchBuilder#build",
+    "method"
+  ],
+  [
+    "src/searching/builder/jsonschemasearchbuilder.js~jsonschemasearchbuilder#constructor",
+    "class/src/searching/builder/JsonSchemaSearchBuilder.js~JsonSchemaSearchBuilder.html#instance-constructor-constructor",
+    "src/searching/builder/JsonSchemaSearchBuilder.js~JsonSchemaSearchBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/searching/builder/jsonschemasearchbuilder.js~jsonschemasearchbuilder#customfilters",
+    "class/src/searching/builder/JsonSchemaSearchBuilder.js~JsonSchemaSearchBuilder.html#instance-member-customFilters",
+    "src/searching/builder/JsonSchemaSearchBuilder.js~JsonSchemaSearchBuilder#customFilters",
+    "member"
+  ],
+  [
+    "src/searching/builder/jsonschemasearchbuilder.js~jsonschemasearchbuilder#execute",
+    "class/src/searching/builder/JsonSchemaSearchBuilder.js~JsonSchemaSearchBuilder.html#instance-method-execute",
+    "src/searching/builder/JsonSchemaSearchBuilder.js~JsonSchemaSearchBuilder#execute",
+    "method"
+  ],
+  [
+    "src/searching/builder/jsonschemasearchbuilder.js~jsonschemasearchbuilder#path",
+    "class/src/searching/builder/JsonSchemaSearchBuilder.js~JsonSchemaSearchBuilder.html#instance-member-path",
+    "src/searching/builder/JsonSchemaSearchBuilder.js~JsonSchemaSearchBuilder#path",
+    "member"
+  ],
+  [
+    "src/searching/builder/jsonschemasearchbuilder.js~jsonschemasearchbuilder#withpath",
+    "class/src/searching/builder/JsonSchemaSearchBuilder.js~JsonSchemaSearchBuilder.html#instance-method-withPath",
+    "src/searching/builder/JsonSchemaSearchBuilder.js~JsonSchemaSearchBuilder#withPath",
+    "method"
+  ],
+  [
     "src/searching/builder/mobilephoneprovidersearchbuilder.js",
     "file/src/searching/builder/MobilePhoneProviderSearchBuilder.js.html",
     "src/searching/builder/MobilePhoneProviderSearchBuilder.js",
@@ -7354,6 +7126,12 @@ window.esdocSearchIndex = [
     "class/src/searching/builder/WorkgroupsSearchBuilder.js~WorkgroupsSearchBuilder.html#instance-constructor-constructor",
     "src/searching/builder/WorkgroupsSearchBuilder.js~WorkgroupsSearchBuilder#constructor",
     "method"
+  ],
+  [
+    "src/searching/builder/jsonschema/og_basic_types.js",
+    "file/src/searching/builder/jsonSchema/og_basic_types.js.html",
+    "src/searching/builder/jsonSchema/og_basic_types.js",
+    "file"
   ],
   [
     "src/searching/error/searchbuildererror.js",

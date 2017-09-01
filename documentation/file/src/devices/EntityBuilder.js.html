@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl" href="../../../../">
-  <title data-ice="title">src/devices/commsModules/CommunicationsModules.js | API Document</title>
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/devices/EntityBuilder.js | API Document</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -71,11 +71,11 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEMPERATURE_STATUS_ENUM">TEMPERATURE_STATUS_ENUM</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/DeviceFinder.js~DeviceFinder.html">DeviceFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/Devices.js~Devices.html">Devices</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/EntityBuilder.js~EntityBuilder.html">EntityBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/EntityFinder.js~EntityFinder.html">EntityFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/Relations.js~Relations.html">Relations</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_ENUM">TYPE_ENUM</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices/commsModules</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/CommunicationsModuleFinder.js~CommunicationsModuleFinder.html">CommunicationsModuleFinder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html">CommunicationsModules</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices/commsModules/subscribers</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/subscribers/SubscribersFinder.js~SubscribersFinder.html">SubscribersFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices/commsModules/subscriptions</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html">Subscriptions</a></span></span></li>
@@ -143,6 +143,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamAccessSearchBuilder.js~IoTDatastreamAccessSearchBuilder.html">IoTDatastreamAccessSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamPeriodSearchBuilder.js~IoTDatastreamPeriodSearchBuilder.html">IoTDatastreamPeriodSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamStoragePeriodSearchBuilder.js~IoTDatastreamStoragePeriodSearchBuilder.html">IoTDatastreamStoragePeriodSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/JsonSchemaSearchBuilder.js~JsonSchemaSearchBuilder.html">JsonSchemaSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/MobilePhoneProviderSearchBuilder.js~MobilePhoneProviderSearchBuilder.html">MobilePhoneProviderSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationalStatusSearchBuilder.js~OperationalStatusSearchBuilder.html">OperationalStatusSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationsSearchBuilder.js~OperationsSearchBuilder.html">OperationsSearchBuilder</a></span></span></li>
@@ -185,322 +186,266 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/devices/commsModules/CommunicationsModules.js</h1>
+<div class="content" data-ice="content"><h1 data-ice="title">src/devices/EntityBuilder.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
+
 import q from &apos;q&apos;;
-import BaseProvision from &apos;../../provision/BaseProvision&apos;
+import moment from &apos;moment&apos;;
+import HttpStatus from &apos;http-status-codes&apos;;
+
+import Devices from &apos;../devices/Devices&apos;
+import Subscribers from &apos;../devices/commsModules/subscribers/Subscribers&apos;
+import Subscriptions from &apos;../devices/commsModules/subscriptions/Subscriptions&apos;
+
+let jp = require(&apos;jsonpath&apos;);
+let Validator = require(&apos;jsonschema&apos;).Validator;
+let v = new Validator();
+let ERROR_VALUE_NOT_ALLOWED = &apos;The value is not allowed. The value should be formatted as follows:&apos;;
+let ERROR_DATASTREAM_NOT_ALLOWED = &apos;The datastream is not allowed.&apos;;
+
 
 /**
- * This is a base object that contains all you can do about CommunicationsModules.
+ * This is a base object that contains all you can do about Devices.
  */
-export default class CommunicationsModules extends BaseProvision {
+export default class EntityBuilder {
 
     /**     
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, &quot;/organizations/&quot;, undefined, [&quot;organization&quot;, &quot;entityKey&quot;]);
+        const _this = this;
+        this._ogapi = ogapi;
+
     }
 
-    /**
-     * Set the name attribute
-     * @param {string} name - required field
-     * @return {CommunicationsModules}
-     */
-    withName(name) {
-        if (typeof name !== &apos;string&apos; || name.length &gt; 50)
-            throw new Error(&apos;Parameter name must be a string and has a maximum length of 50&apos;);
-        this._name = name;
-        return this;
-    }
+    _loadAllowedDatastreams(filterElement, organization) {
 
-    /**
-     * Set the description attribute
-     * @param {string} description 
-     * @return {CommunicationsModules}
-     */
-    withDescription(description) {
-        if (typeof description !== &apos;string&apos; || description.length &gt; 250)
-            throw new Error(&apos;Parameter description must be a string and has a maximum length of 250&apos;);
-        this._description = description;
-        return this;
-    }
-
-    /**
-     * Set the imei attribute
-     * @param {string} imei 
-     * @return {CommunicationsModules}
-     */
-    withImei(imei) {
-        if (typeof imei !== &apos;string&apos; || imei.length &gt; 250)
-            throw new Error(&apos;Parameter imei must be a string and has a maximum length of 250&apos;);
-        this._imei = imei;
-        return this;
-    }
-
-
-    /**
-     * Set the mac attribute
-     * @param {string} mac 
-     * @return {CommunicationsModules}
-     */
-    withMac(mac) {
-        if (typeof mac !== &apos;string&apos; || mac.length &gt; 250)
-            throw new Error(&apos;Parameter mac must be a string and has a maximum length of 250&apos;);
-        this._mac = mac;
-        return this;
-    }
-
-    /**
-     * Set the specific type attribute
-     * @param {string} specificType 
-     * @return {CommunicationsModules}
-     */
-    withSpecificType(specificType) {
-        if (typeof specificType !== &apos;string&apos; || specificType.length &gt; 50)
-            throw new Error(&apos;Parameter specificType must be a string and has a maximum length of 50&apos;);
-        this._specificType = specificType;
-        return this;
-    }
-
-    /**
-     * Set the operationalStatus attribute
-     * @param {string} operationalStatus 
-     * @return {CommunicationsModules}
-     */
-    withOperationalStatus(operationalStatus) {
-        if (typeof operationalStatus !== &apos;string&apos; || operationalStatus.length &gt; 50)
-            throw new Error(&apos;Parameter operationalStatus must be a string and has a maximum length of 50&apos;);
-        this._operationalStatus = operationalStatus;
-        return this;
-    }
-
-    /***************************ADMINISTRACION************************************/
-    /**
-     * Sets the organization attribute
-     * @param {string} organization 
-     * @return {CommunicationsModules}
-     */
-    withOrganization(organization) {
-        if (typeof organization !== &apos;string&apos; || organization.length &gt; 250)
-            throw new Error(&apos;Parameter organization must be a string and has a maximum length of 250&apos;);
-        this._organization = organization;
-        this._resource = &quot;provision/organizations/&quot; + this._organization + &quot;/entities/communicationsModules&quot;;
-        return this;
-    }
-
-    /**
-     * Sets the channel attribute
-     * @param {string} channel 
-     * @return {CommunicationsModules}
-     */
-    withChannel(channel) {
-        if (typeof channel !== &apos;string&apos; || channel.length &gt; 250)
-            throw new Error(&apos;Parameter channel must be a string and has a maximum length of 250&apos;);
-        this._channel = channel;
-        return this;
-    }
-
-    /**
-     * Sets the administrative state attribute
-     * @param {string} administrativeState 
-     * @return {CommunicationsModules}
-     */
-    withAdministrativeState(administrativeState) {
-        if (typeof administrativeState !== &apos;string&apos; || administrativeState.length &gt; 250)
-            throw new Error(&apos;Parameter administrativeState must be a string and has a maximum length of 250&apos;);
-        this._administrativeState = administrativeState;
-        return this;
-    }
-
-    /**
-     * Sets the serviceGroup attribute
-     * @param {string} serviceGroup 
-     * @return {CommunicationsModules}
-     */
-    withServiceGroup(serviceGroup) {
-        if (typeof serviceGroup !== &apos;string&apos; || serviceGroup.length &gt; 250)
-            throw new Error(&apos;Parameter serviceGroup must be a string and has a maximum length of 250&apos;);
-        this._serviceGroup = serviceGroup;
-        return this;
-    }
-
-    /***************************!ADMINISTRACION************************************/
-
-    /**
-     * Sets the entityKey attribute
-     * @param {string} entityKey 
-     * @return {CommunicationsModules}
-     */
-    withEntityKey(entityKey) {
-        if (typeof entityKey !== &apos;string&apos; || entityKey.length &gt; 200)
-            throw new Error(&apos;Parameter entityKey must be a string and has a maximum length of 200&apos;);
-        this._entityKey = entityKey;
-        return this;
-    }
-
-    /**
-     * Set the hardware attribute
-     * @param {string} hardware 
-     * @return {CommunicationsModules}
-     */
-    withHardware(hardware) {
-        if (typeof hardware !== &apos;string&apos;)
-            throw new Error(&apos;Parameter hardware must be a string&apos;);
-        this._hardware = hardware;
-        return this;
-    }
-
-    /**
-     * Set the software attribute
-     * @param {string} software 
-     * @return {CommunicationsModules}
-     */
-    withSoftware(software) {
-        if (typeof software !== &apos;string&apos;)
-            throw new Error(&apos;Parameter software must be a string&apos;);
-
-        if (this._software === undefined) {
-            this._software = [];
-        }
-        this._software.push(software);
-        return this;
-    }
-
-    /**
-     * The request will have a specific time out if it will be exceeded then the promise throw an exception
-     * @param {number} ms - timeout in milliseconds    
-     * @return {CommunicationsModules} 
-     */
-    withTimeout(ms) {
-        if (typeof ms !== &quot;number&quot;) throw new Error(&apos;Parameter ms must be a number&apos;);
-        this._timeout = ms;
-        return this;
-    }
-
-
-    _composeElement() {
-        var deviceData = {
-            &quot;communicationsModule&quot;: {
-                &quot;id&quot;: this._entityKey,
-                &quot;provision&quot;: {
-                    &quot;customId&quot;: [this._entityKey],
-                    &quot;template&quot;: &quot;default&quot;,
-                    &quot;specificType&quot;: (this._specificType !== undefined) ? [this._specificType] : undefined,
-                    &quot;name&quot;: (this._name !== undefined) ? [this._name] : undefined,
-                    &quot;description&quot;: (this._description !== undefined) ? [this._description] : undefined,
-                    &quot;admin&quot;: {
-                        &quot;organization&quot;: this._organization,
-                        &quot;channel&quot;: (this._channel !== undefined) ? this._channel : &quot;default_channel&quot;,
-                        &quot;administrativeState&quot;: (this._administrativeState !== undefined) ? this._administrativeState : undefined,
-                        &quot;serviceGroup&quot;: (this._serviceGroup !== undefined) ? this._serviceGroup : &quot;emptyServiceGroup&quot;
-                    },
-                    &quot;operationalStatus&quot;: (this._operationalStatus !== undefined) ? [this._operationalStatus] : undefined,
-                    &quot;hardware&quot;: (this._hardware !== undefined) ? [this._hardware] : undefined,
-                    &quot;software&quot;: (this._software !== undefined) ? this._software : undefined,
-                    &quot;imei&quot;: (this._imei !== undefined) ? [this._imei] : undefined,
-                    &quot;mac&quot;: (this._mac !== undefined) ? [this._mac] : undefined
-                }
-            }
-        }
-        return deviceData;
-    }
-
-    _buildURL() {
-        let organization = this._organization;
-        if (organization === undefined || this._entityKey === undefined) {
-            throw new Error(&apos;Parameters organization and entityKey must be defined&apos;);
-        }
-        this._resource = &quot;provision/organizations/&quot; + organization + &quot;/entities/communicationsModules&quot;;
-        var url = this._resource + &quot;/&quot; + this._entityKey;
-        return url;
-    }
-
-
-    /**
-     * Create the communications module
-     *
-     * @example
-     *  ogapi.communicationsModuleBuilder().deployAndActivate()
-     * @return {CommunicationsModule} 
-     */
-    create() {
+        let _this = this;
         let defered = q.defer();
         let promise = defered.promise;
-        this._validate().catch(function(err) {
+        let data = {};
+        var f = _this._ogapi.newFilterBuilder();
+        f.and({
+            &quot;like&quot;: {
+                &apos;datamodel.categories.datastreams.name&apos;: &apos;provision&apos;
+            }
+        }).and({
+            &quot;eq&quot;: {
+                &quot;datamodel.organizationName&quot;: organization
+            }
+        });
+
+        let allowedDatastreams = [];
+        let allowedDatastreamsBuilder = this._ogapi.datamodelsSearchBuilder().filter(f).build();
+
+        allowedDatastreamsBuilder.execute().then(function(okh) {
+            if (okh.statusCode === 200) {
+                _this.schema = {};
+                return okh;
+            } else {
+                defered.resolve({ data: &apos;No content&apos;, statusCode: 204 });
+            }
+        }).then(function(data) {
+            _this._getJsonPathElements(data.data).then(function() {
+                data.data = _this._setDevicesProperties(data.data, filterElement);
+                defered.resolve(data);
+            })
+        }).catch(function(err) {
             defered.reject(err);
-            throw new Error(err);
-        }).done(function(res) {
-            super.create().then(function(res) {
-                defered.resolve({ data: res.data, statusCode: res.statusCode });
-            }).catch(function(err) {
-
-                defered.reject(err);
-            });
-        }, function(err) {
-
         });
         return promise;
     }
 
-    _validate() {
-        this._checkRequiredParameters();
-        let previousValidations = [];
+    _getJsonPathElements(data) {
+        var promises = [];
+        let allowedDatastreams = jp.nodes(data, &apos;$.datamodels[*].categories[*].datastreams[*]..[&quot;$ref&quot;]&apos;);
+        let jsonSchemaSearchBuilder = this._ogapi.jsonSchemaSearchBuilder();
 
-        if (this._administrativeState) {
-            let administrativeStateBuilder = this._ogapi.administrativeStateSearchBuilder()
-                .withEntityType(&quot;COMMUNICATIONS_MODULE&quot;).withId(this._administrativeState).build();
-            previousValidations.push(administrativeStateBuilder.execute().then(function(okh) {
-                if (okh.statusCode === 204) {
-                    throw new Error(&quot;Administrative State not found&quot;);
-                }
-            }));
-        }
+        allowedDatastreams.forEach(function(element, index) {
+            var deferred = q.defer();
+            element.path.pop();
+            let jsonSchemaPath = jp.stringify(element.path);
+            jsonSchemaSearchBuilder.withPath(element.value).build().execute().then(function(res) {
+                    var newnodes = jp.apply(data, jsonSchemaPath, function(value) {
+                        return res.data;
+                    });
+                    deferred.resolve(res);
+                })
+                .catch(function(err) {
+                    throw new Error(err);
+                });
+            promises.push(deferred.promise);
+        });
+        return q.all(promises, data);
 
-        if (this._specificType) {
-            let specificTypeBuilder = this._ogapi.specificTypeSearchBuilder()
-                .withEntityType(&quot;COMMUNICATIONS_MODULE&quot;).withId(this._specificType).build();
 
-            previousValidations.push(specificTypeBuilder.execute().then(function(okh) {
-                if (okh.statusCode === 204) {
-                    throw new Error(&quot;Specific Type not found&quot;);
-                }
-            }));
-        }
-
-        if (this._operationalStatus) {
-            let operationalStatusBuilder = this._ogapi.operationalStatusSearchBuilder()
-                .withEntityType(&quot;COMMUNICATIONS_MODULE&quot;).withId(this._operationalStatus).build();
-            previousValidations.push(operationalStatusBuilder.execute().then(function(okh) {
-                if (okh.statusCode === 204) {
-                    throw new Error(&quot;Operational Status not found&quot;);
-                }
-            }));
-        }
-
-        if (this._hardware) {
-            let hardwareBuilder = this._ogapi.hardwaresSearchBuilder().withId(this._hardware).build();
-            previousValidations.push(hardwareBuilder.execute().then(function(okh) {
-                if (okh.statusCode === 204) {
-                    throw new Error(&quot;Hardware not found&quot;);
-                }
-            }));
-        }
-
-        if (this._software) {
-            for (let softIdTmp in this._software) {
-                let softwareId = this._software[softIdTmp];
-                let softwareBuilder = this._ogapi.softwaresSearchBuilder().withId(softwareId).build();
-                previousValidations.push(softwareBuilder.execute().then(function(okh) {
-                    if (okh.statusCode === 204) {
-                        throw new Error(&quot;Software &quot; + softwareId + &quot; not found&quot;);
-                    }
-                }));
-            }
-        }
-        return q.all(previousValidations);
     }
+
+    _setDevicesProperties(data, filter) {
+        let _this = this;
+        let allowedDatastreams = jp.query(data, &quot;$.datamodels[*].categories[*].datastreams[*]&quot;);
+        let response = { allowedDatastreams: [], schemas: {} };
+        _this.complexFunctions = [];
+        _this.simpleFunctions = [];
+
+        allowedDatastreams.forEach(function(element, index) {
+            let _id = element.id;
+            if (_id.startsWith(&apos;provision.administration&apos;) || _id.startsWith(filter)) {
+                response.allowedDatastreams.push(element);
+                if (_id.includes(&apos;communicationModules&apos;)) {
+                    _this.schema[_id] = { value: element.schema, complex: true };
+                } else {
+                    _this.schema[_id] = { value: element.schema, complex: false };
+
+                }
+            }
+        });
+        response[&apos;schemas&apos;] = _this.schema;
+
+        return response;
+
+    }
+    _createComplexFunction(parent) {
+        let _this = parent;
+        _this[&apos;withComplex&apos;] = function(_id, idCommunicationModules, val) {
+            if (!idCommunicationModules || !val) {
+                throw new Error(&apos;Parameter id and value must be defined&apos;);
+            }
+
+            if (!_this._definedSchemas[_id] &amp;&amp; !_this._definedSchemas[_id].complex) {
+                throw new Error(ERROR_DATASTREAM_NOT_ALLOWED);
+            }
+
+            var cmElement = {
+                &apos;_index&apos;: {
+                    &apos;value&apos;: idCommunicationModules
+                }
+            };
+            if (_id.includes(&apos;identifier&apos;)) {
+                cmElement[&apos;_value&apos;] = val;
+            } else {
+                cmElement[&apos;_value&apos;] = {
+                    &apos;_received&apos;: {
+                        &apos;value&apos;: val
+                    }
+                };
+
+            }
+            let jSchema = _this._definedSchemas[_id].value;
+            if (v.validate(val, jSchema).valid) {
+                _this._entity[_id] = _this._entity[_id] ? _this._entity[_id] : [];
+                _this._entity[_id].push(cmElement);
+            } else {
+                throw new Error(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
+            }
+            return _this;
+        };
+
+    }
+    _createSimplefunction(parent) {
+        let _this = parent;
+        _this[&apos;with&apos;] = function(_id, val) {
+            if (!_this._definedSchemas[_id] &amp;&amp; _this._definedSchemas[_id].complex) {
+                throw new Error(ERROR_DATASTREAM_NOT_ALLOWED);
+            }
+            let jSchema = _this._definedSchemas[_id].value;
+            if (v.validate(val, jSchema).valid) {
+                if (_id.includes(&apos;administration&apos;) || _id.includes(&apos;identifier&apos;)) {
+                    _this._entity[_id] = {
+                        &apos;_value&apos;: val
+                    };
+                } else {
+                    _this._entity[_id] = {
+                        &apos;_value&apos;: {
+                            &apos;_received&apos;: {
+                                &apos;value&apos;: val
+                            }
+                        }
+                    };
+                }
+            } else {
+                throw new Error(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
+            }
+            return _this;
+        };
+    }
+
+    devicesBuilder(organization) {
+        let _this = this;
+        let defered = q.defer();
+        let promise = defered.promise;
+        if (!organization) {
+            throw new Error(&apos;Parameters organization must be defined&apos;);
+        }
+        this._loadAllowedDatastreams(&apos;provision.device&apos;, organization)
+            .then(function(data) {
+                if (data.statusCode === 200) {
+                    let allowedDatastreams = data.data.allowedDatastreams;
+                    let definedSchemas = data.data.schemas;
+                    var device = new Devices(_this._ogapi, organization, allowedDatastreams, definedSchemas);
+                    _this._createSimplefunction(device);
+                    _this._createComplexFunction(device);
+                    defered.resolve(device);
+                }
+            }).catch(function(err) {
+                defered.resolve(err);
+            });
+        return promise;
+    }
+
+
+
+    subscribersBuilder(organization) {
+        let _this = this;
+        let defered = q.defer();
+        let promise = defered.promise;
+        if (!organization) {
+            throw new Error(&apos;Parameters organization must be defined&apos;);
+        }
+        this._loadAllowedDatastreams(&apos;provision.device.communicationModules[].subscriber&apos;, organization)
+            .then(function(data) {
+                if (data.statusCode === 200) {
+                    let allowedDatastreams = data.data.allowedDatastreams;
+                    let definedSchemas = data.data.schemas;
+                    var subscribers = new Subscribers(_this._ogapi, organization, allowedDatastreams, definedSchemas);
+                    _this._createSimplefunction(subscribers);
+                    _this._createComplexFunction(subscribers);
+                    defered.resolve(subscribers);
+                }
+            }).catch(function(err) {
+                defered.resolve(err);
+            });
+        return promise;
+    }
+
+
+    subscriptionsBuilder(organization) {
+        let _this = this;
+        let defered = q.defer();
+        let promise = defered.promise;
+        if (!organization) {
+            throw new Error(&apos;Parameters organization must be defined&apos;);
+        }
+        this._loadAllowedDatastreams(&apos;provision.device.communicationModules[].subscription&apos;, organization)
+            .then(function(data) {
+                if (data.statusCode === 200) {
+                    let allowedDatastreams = data.data.allowedDatastreams;
+                    let definedSchemas = data.data.schemas;
+                    var subscriptions = new Subscriptions(_this._ogapi, organization, allowedDatastreams, definedSchemas);
+                    _this._createSimplefunction(subscriptions);
+                    _this._createComplexFunction(subscriptions);
+                    defered.resolve(subscriptions);
+                }
+            }).catch(function(err) {
+                defered.resolve(err);
+            });
+        return promise;
+    }
+
+
+
+
 
 }</code></pre>
 

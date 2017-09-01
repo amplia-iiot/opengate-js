@@ -71,11 +71,11 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEMPERATURE_STATUS_ENUM">TEMPERATURE_STATUS_ENUM</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/DeviceFinder.js~DeviceFinder.html">DeviceFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/Devices.js~Devices.html">Devices</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/EntityBuilder.js~EntityBuilder.html">EntityBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/EntityFinder.js~EntityFinder.html">EntityFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/Relations.js~Relations.html">Relations</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_ENUM">TYPE_ENUM</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices/commsModules</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/CommunicationsModuleFinder.js~CommunicationsModuleFinder.html">CommunicationsModuleFinder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/CommunicationsModules.js~CommunicationsModules.html">CommunicationsModules</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices/commsModules/subscribers</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html">Subscribers</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/subscribers/SubscribersFinder.js~SubscribersFinder.html">SubscribersFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">devices/commsModules/subscriptions</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html">Subscriptions</a></span></span></li>
@@ -143,6 +143,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamAccessSearchBuilder.js~IoTDatastreamAccessSearchBuilder.html">IoTDatastreamAccessSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamPeriodSearchBuilder.js~IoTDatastreamPeriodSearchBuilder.html">IoTDatastreamPeriodSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamStoragePeriodSearchBuilder.js~IoTDatastreamStoragePeriodSearchBuilder.html">IoTDatastreamStoragePeriodSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/JsonSchemaSearchBuilder.js~JsonSchemaSearchBuilder.html">JsonSchemaSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/MobilePhoneProviderSearchBuilder.js~MobilePhoneProviderSearchBuilder.html">MobilePhoneProviderSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationalStatusSearchBuilder.js~OperationalStatusSearchBuilder.html">OperationalStatusSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationsSearchBuilder.js~OperationsSearchBuilder.html">OperationsSearchBuilder</a></span></span></li>
@@ -189,10 +190,9 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
 import q from &apos;q&apos;;
-import HttpStatus from &apos;http-status-codes&apos;;
 
 import BaseProvision from &apos;../../../provision/BaseProvision&apos;;
-
+const ENTITY_ID = &apos;provision.device.communicationModules[].subscriber.identifier&apos;;
 /**
  * This is a base object that contains all you can do about Subscribers.
  */
@@ -201,232 +201,104 @@ export default class Subscribers extends BaseProvision {
     /**     
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
-    constructor(ogapi) {
-        super(ogapi, &quot;/organizations/&quot;, undefined, [&quot;channel&quot;, &quot;organization&quot;, &quot;specificType&quot;, &quot;entityKey&quot;]);
-        this._template = &quot;default&quot;;
-    }
-
-    /**
-     * Set the name attribute
-     * @param {string} name - required field
-     * @return {Subscribers}
-     */
-    withName(name) {
-        if (typeof name !== &apos;string&apos; || name.length &gt; 50)
-            throw new Error(&apos;Parameter name must be a string and has a maximum length of 50&apos;);
-        this._name = name;
-        return this;
-    }
-
-    /**
-     * Set the description attribute
-     * @param {string} description 
-     * @return {Subscribers}
-     */
-    withDescription(description) {
-        if (typeof description !== &apos;string&apos; || description.length &gt; 250)
-            throw new Error(&apos;Parameter description must be a string and has a maximum length of 250&apos;);
-        this._description = description;
-        return this;
-    }
-
-
-    /**
-     * Set the specific type attribute
-     * @param {string} specificType 
-     * @return {Subscribers}
-     */
-    withSpecificType(specificType) {
-        if (typeof specificType !== &apos;string&apos; || specificType.length &gt; 50)
-            throw new Error(&apos;Parameter specificType must be a string and has a maximum length of 50&apos;);
-        this._specificType = specificType;
-        return this;
-    }
-
-    /**
-     * Set the ICC attribute
-     * @param {string} icc 
-     * @return {Subscribers}
-     */
-    withIcc(icc) {
-        if (typeof icc !== &apos;string&apos; || icc.length &gt; 250)
-            throw new Error(&apos;Parameter icc must be a string and has a maximum length of 250&apos;);
-        this._icc = icc;
-    }
-
-    /**
-     * Sets the organization attribute
-     * @param {string} organization 
-     * @return {Subscribers}
-     */
-    withOrganization(organization) {
-        if (typeof organization !== &apos;string&apos; || organization.length &gt; 250)
-            throw new Error(&apos;Parameter organization must be a string and has a maximum length of 250&apos;);
+    constructor(ogapi, organization, allowedDatastreams, definedSchemas) {
+        super(ogapi, &quot;/organizations/&quot;, undefined, undefined);
+        let _this = this;
         this._organization = organization;
-        this._resource = &quot;provision/organizations/&quot; + this._organization + &quot;/entities/subscribers&quot;;
-        return this;
+        this._filter = &quot;provision.device.communicationModules[].subscriber&quot;;
+        this._entity = {};
+        this._allowedDatastreams = allowedDatastreams;
+        this._definedSchemas = definedSchemas;
     }
 
     /**
-     * Sets the channel attribute
-     * @param {string} channel 
-     * @return {Subscribers}
+     * Return the allowed datastream for subscriber
+     * @example
+     *  ogapi.entityBuilder.subscribersBuilder().getAllowedDatastreams()
+     * @return {Promise} 
      */
-    withChannel(channel) {
-        if (typeof channel !== &apos;string&apos; || channel.length &gt; 250)
-            throw new Error(&apos;Parameter channel must be a string and has a maximum length of 250&apos;);
-        this._channel = channel;
-        return this;
-    }
-
-    /**
-     * Sets the administrative state attribute
-     * @param {string} administrativeState 
-     * @return {Subscribers}
-     */
-    withAdministrativeState(administrativeState) {
-        if (typeof administrativeState !== &apos;string&apos; || administrativeState.length &gt; 250)
-            throw new Error(&apos;Parameter administrativeState must be a string and has a maximum length of 250&apos;);
-        this._administrativeState = administrativeState;
-        return this;
-    }
-
-    /**
-     * Sets the serviceGroup attribute
-     * @param {string} serviceGroup 
-     * @return {Subscribers}
-     */
-    withServiceGroup(serviceGroup) {
-        if (typeof serviceGroup !== &apos;string&apos; || serviceGroup.length &gt; 250)
-            throw new Error(&apos;Parameter serviceGroup must be a string and has a maximum length of 250&apos;);
-        this._serviceGroup = serviceGroup;
-        return this;
-    }
-
-    /**
-     * Sets the entityKey attribute
-     * @param {string} entityKey 
-     * @return {Subscribers}
-     */
-    withEntityKey(entityKey) {
-        if (typeof entityKey !== &apos;string&apos; || entityKey.length &gt; 200)
-            throw new Error(&apos;Parameter entityKey must be a string and has a maximum length of 200&apos;);
-        this._entityKey = entityKey;
-        return this;
+    getAllowedDatastreams() {
+        let _this = this;
+        let defered = q.defer();
+        let promise = defered.promise;
+        if (this._allowedDatastreams) {
+            defered.resolve({ statusCode: 200, data: this._allowedDatastreams });
+        } else {
+            defered.resolve({ statusCode: 204, data: &apos;no content&apos; });
+        }
+        return promise;
     }
 
 
-    /**
-     * The request will have a specific time out if it will be exceeded then the promise throw an exception
-     * @param {number} ms - timeout in milliseconds    
-     * @return {Subscribers} 
-     */
-    withTimeout(ms) {
-        if (typeof ms !== &quot;number&quot;) throw new Error(&apos;Parameter ms must be a number&apos;);
-        this._timeout = ms;
-        return this;
-    }
+
+
 
     /**
      * Create the subscriber
      * @example
-     *  ogapi.subscriberBuilder().create()
+     *  ogapi.entityBuilder.subscriberBuilder().create()
      * @return {Promise} 
      */
     create() {
-        let defered = q.defer();
-        let promise = defered.promise;
-        this._validate().catch(function(err) {
-            defered.reject(err);
-            throw new Error(err);
-        }).done(function(res) {
-            super.create().then(function(res) {
-                defered.resolve(res);
-            }).catch(function(err) {
-                defered.reject({ errors: err.data.errors, statusCode: err.statusCode });
-            });
-        }, function(err) {
-
-        });
-        return promise;
-    }
-
-
-    _create() {
+        this._resource = &quot;provision/organizations/&quot; + this._organization + &quot;/subscribers?flattened=true&quot;;
         let _this = this;
         let defered = q.defer();
         let promise = defered.promise;
-        this._validate().then(function(prevOk) {
-            return super.create().then(function(res) {
-                if (res.statusCode === 201) {
-                    defered.resolve(res);
-                } else {
-                    defered.reject({ errors: res.data.errors, statusCode: response.statusCode });
-                }
+        if (this._validate()) {
+            super.create().then(function(res) {
+                defered.resolve({ data: res.data, statusCode: res.statusCode });
+            }).catch(function(err) {
+                defered.reject(err);
             });
-        }).catch(function(err) {
-            defered.reject({ errors: res.data.errors, statusCode: response.statusCode });
-        });
+        } else {
+            let error = { &apos;errors&apos;: &apos;Bad Request&apos;, &quot;statusCode&quot;: 400 };
+            defered.reject(error);
+            throw new Error(error);
+        }
+
         return promise;
     }
 
     _composeElement() {
-        var entityData = {
-            &quot;subscriber&quot;: {
-                &quot;id&quot;: this._entityKey,
-                &quot;provision&quot;: {
-                    &quot;customId&quot;: [this._entityKey],
-                    &quot;template&quot;: this._template,
-                    &quot;specificType&quot;: (this._specificType !== undefined) ? [this._specificType] : undefined,
-                    &quot;name&quot;: (this._name !== undefined) ? [this._name] : undefined,
-                    &quot;description&quot;: (this._description !== undefined) ? [this._description] : undefined,
-                    &quot;icc&quot;: (this._icc !== undefined) ? [this._icc] : undefined,
-                    &quot;admin&quot;: {
-                        &quot;organization&quot;: this._organization,
-                        &quot;channel&quot;: (this._channel !== undefined) ? this._channel : &quot;default_channel&quot;,
-                        &quot;administrativeState&quot;: (this._administrativeState !== undefined) ? this._administrativeState : undefined,
-                        &quot;serviceGroup&quot;: (this._serviceGroup !== undefined) ? this._serviceGroup : &quot;emptyServiceGroup&quot;
-                    }
-                }
-            }
+        this._getEntityKey();
+        this._entity[&quot;provision.administration.organization&quot;] = {
+            &apos;_value&apos;: this._organization
         }
-        return entityData;
+        return this._entity;
+
     }
 
+
     _buildURL() {
-        let organization = this._organization;
-        if (organization === undefined || this._entityKey === undefined) {
-            throw new Error(&apos;Parameters organization and entityKey must be defined&apos;);
+        this._getEntityKey();
+        if (this._organization === undefined || this._entityKey === undefined) {
+            throw new Error(&apos;Parameters organization, entityKey must be defined&apos;);
         }
-        this._resource = &quot;provision/organizations/&quot; + organization + &quot;/entities/subscribers&quot;;
-        var url = this._resource + &quot;/&quot; + this._entityKey;
+        this._resource = &quot;provision/organizations/&quot; + this._organization + &quot;/subscribers&quot;;
+        var url = this._resource + &quot;/&quot; + this._entityKey + &quot;?flattened=true&quot;;
         return url;
     }
 
+
     _validate() {
-        this._checkRequiredParameters();
-        let previousValidations = [];
-
-        if (this._administrativeState) {
-            let administrativeStateBuilder = this._ogapi.administrativeStateSearchBuilder()
-                .withEntityType(&quot;SUBSCRIBER&quot;).withId(this._administrativeState).build();
-            previousValidations.push(administrativeStateBuilder.execute().then(function(okh) {
-                if (okh.statusCode === 204) {
-                    throw new Error(&quot;Administrative State not found&quot;);
-                }
-            }));
+        if (!this._entityKey) {
+            throw new Error(&apos;Parameter entityKey must defined. Please use withEntityKey method&apos;);
         }
-
-        if (this._specificType) {
-            let specificTypeBuilder = this._ogapi.specificTypeSearchBuilder()
-                .withEntityType(&quot;SUBSCRIBER&quot;).withId(this._specificType).build();
-            previousValidations.push(specificTypeBuilder.execute().then(function(okh) {
-                if (okh.statusCode === 204) {
-                    throw new Error(&quot;Specific Type not found&quot;);
-                }
-            }));
+        let _this = this;
+        try {
+            JSON.parse(JSON.stringify(this._entity));
+        } catch (e) {
+            return false;
         }
-        return q.all(previousValidations);
+        return true;
+    }
+
+    _getEntityKey() {
+        if (this._entity[ENTITY_ID]) {
+            this._entityKey = this._entity[ENTITY_ID]._value;
+        } else {
+            throw new Error(&apos;Parameter entityKey must defined. Please define datastream: &apos; + ENTITY_ID);
+        }
     }
 
 

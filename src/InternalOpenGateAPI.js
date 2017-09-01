@@ -36,6 +36,7 @@ import SpecificTypeSearchBuilder from './searching/builder/SpecificTypeSearchBui
 import AdministrativeStateSearchBuilder from './searching/builder/AdministrativeStateSearchBuilder'
 import CommunicationsModuleTypeSearchBuilder from './searching/builder/CommunicationsModuleTypeSearchBuilder'
 import FieldsDefinitionSearchBuilder from './searching/builder/FieldsDefinitionSearchBuilder'
+import JsonSchemaSearchBuilder from './searching/builder/JsonSchemaSearchBuilder'
 import MobilePhoneProviderSearchBuilder from './searching/builder/MobilePhoneProviderSearchBuilder'
 import IoTDatastreamPeriodSearchBuilder from './searching/builder/IoTDatastreamPeriodSearchBuilder'
 import IoTDatastreamAccessSearchBuilder from './searching/builder/IoTDatastreamAccessSearchBuilder'
@@ -48,14 +49,10 @@ import BundleFinder from './bundles/BundleFinder'
 import Organizations from './organizations/Organizations'
 import Domain from './domains/Domains'
 import DomainFinder from './domains/DomainsFinder'
-import Devices from './devices/Devices'
 import DeviceFinder from './devices/DeviceFinder'
 import Relations from './devices/Relations'
-import CommunicationsModules from './devices/commsModules/CommunicationsModules'
 import CommunicationsModuleFinder from './devices/commsModules/CommunicationsModuleFinder'
-import Subscriptions from './devices/commsModules/subscriptions/Subscriptions'
 import SubscriptionsFinder from './devices/commsModules/subscriptions/SubscriptionsFinder'
-import Subscribers from './devices/commsModules/subscribers/Subscribers'
 import SubscribersFinder from './devices/commsModules/subscribers/SubscribersFinder'
 import DeviceMessage from './collection/devices/DeviceMessage'
 import Datastream from './collection/devices/collect/Datastreams'
@@ -80,7 +77,7 @@ import DatamodelsHelper from './iot/datamodels/DatamodelsHelper'
 import DatamodelsFinder from './iot/datamodels/DatamodelsFinder'
 import DatastreamsBuilder from './iot/catalog/Datastream'
 import QratingsBuilder from './iot/catalog/Qrating'
-
+import EntityBuilder from './devices/EntityBuilder'
 /**
  * This is a abstract class, it must be extended to another class that defined the backend, it will be used on request to Opengate North API by browser or nodejs server
  */
@@ -103,6 +100,7 @@ export default class InternalOpenGateAPI {
         this.Sapi = southAmpliaREST;
         this.EX = Expression;
         this.operations = new Operations(this);
+        this.entityBuilder = new EntityBuilder(this);
     }
 
     /**
@@ -283,12 +281,13 @@ export default class InternalOpenGateAPI {
      * @return {FieldsDefinitionSearchBuilder}
      */
     fieldsDefinitionSearchBuilder() {
-            return new FieldsDefinitionSearchBuilder(this);
-        }
-        /**
-         * This return a MobilePhoneProviderSearchBuilder to build a specific MobilePhoneProviderTypeSearch
-         * @return {MobilePhoneProviderSearchBuilder}
-         */
+        return new FieldsDefinitionSearchBuilder(this);
+    }
+
+    /**
+     * This return a MobilePhoneProviderSearchBuilder to build a specific MobilePhoneProviderTypeSearch
+     * @return {MobilePhoneProviderSearchBuilder}
+     */
     mobilePhoneProviderSearchBuilder() {
         return new MobilePhoneProviderSearchBuilder(this);
     }
@@ -390,6 +389,14 @@ export default class InternalOpenGateAPI {
     }
 
     /**
+     * This return a JsonSchemaSearchBuilder to build a specific JsonSchemaSearchBuilder
+     * @return {JsonSchemaSearchBuilder}
+     */
+    jsonSchemaSearchBuilder() {
+        return new JsonSchemaSearchBuilder(this);
+    }
+
+    /**
      * This return a BundlesBuilder to build a specific BundlesBuilder
      * @return {Bundles}
      */
@@ -461,13 +468,6 @@ export default class InternalOpenGateAPI {
         return new SoftwaresSearchBuilder(this);
     }
 
-    /**
-     * This return a DevicesBuilder to build a specific DevicesBuilder
-     * @return {Devices}
-     */
-    devicesBuilder() {
-        return new Devices(this);
-    }
 
     /**
      * This return a RelationsBuilder to build a specific RelationsBuilder

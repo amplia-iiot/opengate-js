@@ -18,14 +18,11 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
-var _httpStatusCodes = require('http-status-codes');
-
-var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
-
 var _provisionBaseProvision = require('../../../provision/BaseProvision');
 
 var _provisionBaseProvision2 = _interopRequireDefault(_provisionBaseProvision);
 
+var ENTITY_ID = 'provision.device.communicationModules[].subscriber.identifier';
 /**
  * This is a base object that contains all you can do about Subscribers.
  */
@@ -37,249 +34,108 @@ var Subscribers = (function (_BaseProvision) {
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 
-    function Subscribers(ogapi) {
+    function Subscribers(ogapi, organization, allowedDatastreams, definedSchemas) {
         _classCallCheck(this, Subscribers);
 
-        _get(Object.getPrototypeOf(Subscribers.prototype), 'constructor', this).call(this, ogapi, "/organizations/", undefined, ["channel", "organization", "specificType", "entityKey"]);
-        this._template = "default";
+        _get(Object.getPrototypeOf(Subscribers.prototype), 'constructor', this).call(this, ogapi, "/organizations/", undefined, undefined);
+        var _this = this;
+        this._organization = organization;
+        this._filter = "provision.device.communicationModules[].subscriber";
+        this._entity = {};
+        this._allowedDatastreams = allowedDatastreams;
+        this._definedSchemas = definedSchemas;
     }
 
     /**
-     * Set the name attribute
-     * @param {string} name - required field
-     * @return {Subscribers}
+     * Return the allowed datastream for subscriber
+     * @example
+     *  ogapi.entityBuilder.subscribersBuilder().getAllowedDatastreams()
+     * @return {Promise} 
      */
 
     _createClass(Subscribers, [{
-        key: 'withName',
-        value: function withName(name) {
-            if (typeof name !== 'string' || name.length > 50) throw new Error('Parameter name must be a string and has a maximum length of 50');
-            this._name = name;
-            return this;
-        }
-
-        /**
-         * Set the description attribute
-         * @param {string} description 
-         * @return {Subscribers}
-         */
-    }, {
-        key: 'withDescription',
-        value: function withDescription(description) {
-            if (typeof description !== 'string' || description.length > 250) throw new Error('Parameter description must be a string and has a maximum length of 250');
-            this._description = description;
-            return this;
-        }
-
-        /**
-         * Set the specific type attribute
-         * @param {string} specificType 
-         * @return {Subscribers}
-         */
-    }, {
-        key: 'withSpecificType',
-        value: function withSpecificType(specificType) {
-            if (typeof specificType !== 'string' || specificType.length > 50) throw new Error('Parameter specificType must be a string and has a maximum length of 50');
-            this._specificType = specificType;
-            return this;
-        }
-
-        /**
-         * Set the ICC attribute
-         * @param {string} icc 
-         * @return {Subscribers}
-         */
-    }, {
-        key: 'withIcc',
-        value: function withIcc(icc) {
-            if (typeof icc !== 'string' || icc.length > 250) throw new Error('Parameter icc must be a string and has a maximum length of 250');
-            this._icc = icc;
-        }
-
-        /**
-         * Sets the organization attribute
-         * @param {string} organization 
-         * @return {Subscribers}
-         */
-    }, {
-        key: 'withOrganization',
-        value: function withOrganization(organization) {
-            if (typeof organization !== 'string' || organization.length > 250) throw new Error('Parameter organization must be a string and has a maximum length of 250');
-            this._organization = organization;
-            this._resource = "provision/organizations/" + this._organization + "/entities/subscribers";
-            return this;
-        }
-
-        /**
-         * Sets the channel attribute
-         * @param {string} channel 
-         * @return {Subscribers}
-         */
-    }, {
-        key: 'withChannel',
-        value: function withChannel(channel) {
-            if (typeof channel !== 'string' || channel.length > 250) throw new Error('Parameter channel must be a string and has a maximum length of 250');
-            this._channel = channel;
-            return this;
-        }
-
-        /**
-         * Sets the administrative state attribute
-         * @param {string} administrativeState 
-         * @return {Subscribers}
-         */
-    }, {
-        key: 'withAdministrativeState',
-        value: function withAdministrativeState(administrativeState) {
-            if (typeof administrativeState !== 'string' || administrativeState.length > 250) throw new Error('Parameter administrativeState must be a string and has a maximum length of 250');
-            this._administrativeState = administrativeState;
-            return this;
-        }
-
-        /**
-         * Sets the serviceGroup attribute
-         * @param {string} serviceGroup 
-         * @return {Subscribers}
-         */
-    }, {
-        key: 'withServiceGroup',
-        value: function withServiceGroup(serviceGroup) {
-            if (typeof serviceGroup !== 'string' || serviceGroup.length > 250) throw new Error('Parameter serviceGroup must be a string and has a maximum length of 250');
-            this._serviceGroup = serviceGroup;
-            return this;
-        }
-
-        /**
-         * Sets the entityKey attribute
-         * @param {string} entityKey 
-         * @return {Subscribers}
-         */
-    }, {
-        key: 'withEntityKey',
-        value: function withEntityKey(entityKey) {
-            if (typeof entityKey !== 'string' || entityKey.length > 200) throw new Error('Parameter entityKey must be a string and has a maximum length of 200');
-            this._entityKey = entityKey;
-            return this;
-        }
-
-        /**
-         * The request will have a specific time out if it will be exceeded then the promise throw an exception
-         * @param {number} ms - timeout in milliseconds    
-         * @return {Subscribers} 
-         */
-    }, {
-        key: 'withTimeout',
-        value: function withTimeout(ms) {
-            if (typeof ms !== "number") throw new Error('Parameter ms must be a number');
-            this._timeout = ms;
-            return this;
+        key: 'getAllowedDatastreams',
+        value: function getAllowedDatastreams() {
+            var _this = this;
+            var defered = _q2['default'].defer();
+            var promise = defered.promise;
+            if (this._allowedDatastreams) {
+                defered.resolve({ statusCode: 200, data: this._allowedDatastreams });
+            } else {
+                defered.resolve({ statusCode: 204, data: 'no content' });
+            }
+            return promise;
         }
 
         /**
          * Create the subscriber
          * @example
-         *  ogapi.subscriberBuilder().create()
+         *  ogapi.entityBuilder.subscriberBuilder().create()
          * @return {Promise} 
          */
     }, {
         key: 'create',
         value: function create() {
-            var _this2 = this;
-
-            var defered = _q2['default'].defer();
-            var promise = defered.promise;
-            this._validate()['catch'](function (err) {
-                defered.reject(err);
-                throw new Error(err);
-            }).done(function (res) {
-                _get(Object.getPrototypeOf(Subscribers.prototype), 'create', _this2).call(_this2).then(function (res) {
-                    defered.resolve(res);
-                })['catch'](function (err) {
-                    defered.reject({ errors: err.data.errors, statusCode: err.statusCode });
-                });
-            }, function (err) {});
-            return promise;
-        }
-    }, {
-        key: '_create',
-        value: function _create() {
-            var _this3 = this;
-
+            this._resource = "provision/organizations/" + this._organization + "/subscribers?flattened=true";
             var _this = this;
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            this._validate().then(function (prevOk) {
-                return _get(Object.getPrototypeOf(Subscribers.prototype), 'create', _this3).call(_this3).then(function (res) {
-                    if (res.statusCode === 201) {
-                        defered.resolve(res);
-                    } else {
-                        defered.reject({ errors: res.data.errors, statusCode: response.statusCode });
-                    }
+            if (this._validate()) {
+                _get(Object.getPrototypeOf(Subscribers.prototype), 'create', this).call(this).then(function (res) {
+                    defered.resolve({ data: res.data, statusCode: res.statusCode });
+                })['catch'](function (err) {
+                    defered.reject(err);
                 });
-            })['catch'](function (err) {
-                defered.reject({ errors: res.data.errors, statusCode: response.statusCode });
-            });
+            } else {
+                var error = { 'errors': 'Bad Request', "statusCode": 400 };
+                defered.reject(error);
+                throw new Error(error);
+            }
+
             return promise;
         }
     }, {
         key: '_composeElement',
         value: function _composeElement() {
-            var entityData = {
-                "subscriber": {
-                    "id": this._entityKey,
-                    "provision": {
-                        "customId": [this._entityKey],
-                        "template": this._template,
-                        "specificType": this._specificType !== undefined ? [this._specificType] : undefined,
-                        "name": this._name !== undefined ? [this._name] : undefined,
-                        "description": this._description !== undefined ? [this._description] : undefined,
-                        "icc": this._icc !== undefined ? [this._icc] : undefined,
-                        "admin": {
-                            "organization": this._organization,
-                            "channel": this._channel !== undefined ? this._channel : "default_channel",
-                            "administrativeState": this._administrativeState !== undefined ? this._administrativeState : undefined,
-                            "serviceGroup": this._serviceGroup !== undefined ? this._serviceGroup : "emptyServiceGroup"
-                        }
-                    }
-                }
+            this._getEntityKey();
+            this._entity["provision.administration.organization"] = {
+                '_value': this._organization
             };
-            return entityData;
+            return this._entity;
         }
     }, {
         key: '_buildURL',
         value: function _buildURL() {
-            var organization = this._organization;
-            if (organization === undefined || this._entityKey === undefined) {
-                throw new Error('Parameters organization and entityKey must be defined');
+            this._getEntityKey();
+            if (this._organization === undefined || this._entityKey === undefined) {
+                throw new Error('Parameters organization, entityKey must be defined');
             }
-            this._resource = "provision/organizations/" + organization + "/entities/subscribers";
-            var url = this._resource + "/" + this._entityKey;
+            this._resource = "provision/organizations/" + this._organization + "/subscribers";
+            var url = this._resource + "/" + this._entityKey + "?flattened=true";
             return url;
         }
     }, {
         key: '_validate',
         value: function _validate() {
-            this._checkRequiredParameters();
-            var previousValidations = [];
-
-            if (this._administrativeState) {
-                var administrativeStateBuilder = this._ogapi.administrativeStateSearchBuilder().withEntityType("SUBSCRIBER").withId(this._administrativeState).build();
-                previousValidations.push(administrativeStateBuilder.execute().then(function (okh) {
-                    if (okh.statusCode === 204) {
-                        throw new Error("Administrative State not found");
-                    }
-                }));
+            if (!this._entityKey) {
+                throw new Error('Parameter entityKey must defined. Please use withEntityKey method');
             }
-
-            if (this._specificType) {
-                var specificTypeBuilder = this._ogapi.specificTypeSearchBuilder().withEntityType("SUBSCRIBER").withId(this._specificType).build();
-                previousValidations.push(specificTypeBuilder.execute().then(function (okh) {
-                    if (okh.statusCode === 204) {
-                        throw new Error("Specific Type not found");
-                    }
-                }));
+            var _this = this;
+            try {
+                JSON.parse(JSON.stringify(this._entity));
+            } catch (e) {
+                return false;
             }
-            return _q2['default'].all(previousValidations);
+            return true;
+        }
+    }, {
+        key: '_getEntityKey',
+        value: function _getEntityKey() {
+            if (this._entity[ENTITY_ID]) {
+                this._entityKey = this._entity[ENTITY_ID]._value;
+            } else {
+                throw new Error('Parameter entityKey must defined. Please define datastream: ' + ENTITY_ID);
+            }
         }
     }]);
 

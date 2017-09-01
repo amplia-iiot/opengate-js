@@ -154,6 +154,10 @@ var _searchingBuilderFieldsDefinitionSearchBuilder = require('./searching/builde
 
 var _searchingBuilderFieldsDefinitionSearchBuilder2 = _interopRequireDefault(_searchingBuilderFieldsDefinitionSearchBuilder);
 
+var _searchingBuilderJsonSchemaSearchBuilder = require('./searching/builder/JsonSchemaSearchBuilder');
+
+var _searchingBuilderJsonSchemaSearchBuilder2 = _interopRequireDefault(_searchingBuilderJsonSchemaSearchBuilder);
+
 var _searchingBuilderMobilePhoneProviderSearchBuilder = require('./searching/builder/MobilePhoneProviderSearchBuilder');
 
 var _searchingBuilderMobilePhoneProviderSearchBuilder2 = _interopRequireDefault(_searchingBuilderMobilePhoneProviderSearchBuilder);
@@ -202,10 +206,6 @@ var _domainsDomainsFinder = require('./domains/DomainsFinder');
 
 var _domainsDomainsFinder2 = _interopRequireDefault(_domainsDomainsFinder);
 
-var _devicesDevices = require('./devices/Devices');
-
-var _devicesDevices2 = _interopRequireDefault(_devicesDevices);
-
 var _devicesDeviceFinder = require('./devices/DeviceFinder');
 
 var _devicesDeviceFinder2 = _interopRequireDefault(_devicesDeviceFinder);
@@ -214,25 +214,13 @@ var _devicesRelations = require('./devices/Relations');
 
 var _devicesRelations2 = _interopRequireDefault(_devicesRelations);
 
-var _devicesCommsModulesCommunicationsModules = require('./devices/commsModules/CommunicationsModules');
-
-var _devicesCommsModulesCommunicationsModules2 = _interopRequireDefault(_devicesCommsModulesCommunicationsModules);
-
 var _devicesCommsModulesCommunicationsModuleFinder = require('./devices/commsModules/CommunicationsModuleFinder');
 
 var _devicesCommsModulesCommunicationsModuleFinder2 = _interopRequireDefault(_devicesCommsModulesCommunicationsModuleFinder);
 
-var _devicesCommsModulesSubscriptionsSubscriptions = require('./devices/commsModules/subscriptions/Subscriptions');
-
-var _devicesCommsModulesSubscriptionsSubscriptions2 = _interopRequireDefault(_devicesCommsModulesSubscriptionsSubscriptions);
-
 var _devicesCommsModulesSubscriptionsSubscriptionsFinder = require('./devices/commsModules/subscriptions/SubscriptionsFinder');
 
 var _devicesCommsModulesSubscriptionsSubscriptionsFinder2 = _interopRequireDefault(_devicesCommsModulesSubscriptionsSubscriptionsFinder);
-
-var _devicesCommsModulesSubscribersSubscribers = require('./devices/commsModules/subscribers/Subscribers');
-
-var _devicesCommsModulesSubscribersSubscribers2 = _interopRequireDefault(_devicesCommsModulesSubscribersSubscribers);
 
 var _devicesCommsModulesSubscribersSubscribersFinder = require('./devices/commsModules/subscribers/SubscribersFinder');
 
@@ -330,6 +318,10 @@ var _iotCatalogQrating = require('./iot/catalog/Qrating');
 
 var _iotCatalogQrating2 = _interopRequireDefault(_iotCatalogQrating);
 
+var _devicesEntityBuilder = require('./devices/EntityBuilder');
+
+var _devicesEntityBuilder2 = _interopRequireDefault(_devicesEntityBuilder);
+
 /**
  * This is a abstract class, it must be extended to another class that defined the backend, it will be used on request to Opengate North API by browser or nodejs server
  */
@@ -356,6 +348,7 @@ var InternalOpenGateAPI = (function () {
         this.Sapi = southAmpliaREST;
         this.EX = _utilExpression2['default'];
         this.operations = new _operationsOperations2['default'](this);
+        this.entityBuilder = new _devicesEntityBuilder2['default'](this);
     }
 
     /**
@@ -713,6 +706,16 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
+         * This return a JsonSchemaSearchBuilder to build a specific JsonSchemaSearchBuilder
+         * @return {JsonSchemaSearchBuilder}
+         */
+    }, {
+        key: 'jsonSchemaSearchBuilder',
+        value: function jsonSchemaSearchBuilder() {
+            return new _searchingBuilderJsonSchemaSearchBuilder2['default'](this);
+        }
+
+        /**
          * This return a BundlesBuilder to build a specific BundlesBuilder
          * @return {Bundles}
          */
@@ -803,16 +806,6 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a DevicesBuilder to build a specific DevicesBuilder
-         * @return {Devices}
-         */
-    }, {
-        key: 'devicesBuilder',
-        value: function devicesBuilder() {
-            return new _devicesDevices2['default'](this);
-        }
-
-        /**
          * This return a RelationsBuilder to build a specific RelationsBuilder
          * @return {Relations}
          */
@@ -829,7 +822,7 @@ var InternalOpenGateAPI = (function () {
     }, {
         key: 'communicationsModulesBuilder',
         value: function communicationsModulesBuilder() {
-            return new _devicesCommsModulesCommunicationsModules2['default'](this);
+            return new CommunicationsModules(this);
         }
 
         /**
@@ -839,7 +832,7 @@ var InternalOpenGateAPI = (function () {
     }, {
         key: 'subscriptionsBuilder',
         value: function subscriptionsBuilder() {
-            return new _devicesCommsModulesSubscriptionsSubscriptions2['default'](this);
+            return new Subscriptions(this);
         }
 
         /**
@@ -849,7 +842,7 @@ var InternalOpenGateAPI = (function () {
     }, {
         key: 'subscribersBuilder',
         value: function subscribersBuilder() {
-            return new _devicesCommsModulesSubscribersSubscribers2['default'](this);
+            return new Subscribers(this);
         }
 
         /**
