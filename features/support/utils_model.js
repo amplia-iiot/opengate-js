@@ -53,8 +53,8 @@ module.exports = {
             "devices search": function(ogapi) {
                 return ogapi.devicesSearchBuilder();
             },
-            "devices builder": function(ogapi) {
-                return ogapi.devicesBuilder();
+            "devices builder": function(ogapi, param1) {
+                return ogapi.entityBuilder.devicesBuilder(param1);
             },
             "subscribers search": function(ogapi) {
                 return ogapi.subscribersSearchBuilder();
@@ -87,10 +87,10 @@ module.exports = {
                 return ogapi.softwaresSearchBuilder();
             },
             "subscriptions builder": function(ogapi) {
-                return ogapi.subscriptionsBuilder();
+                return ogapi.entityBuilder.subscriptionsBuilder();
             },
             "subscribers builder": function(ogapi) {
-                return ogapi.subscribersBuilder();
+                return ogapi.entityBuilder.subscribersBuilder();
             },
             "user finder": function(ogapi) {
                 return ogapi.newUserFinder();

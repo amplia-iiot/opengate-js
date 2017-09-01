@@ -447,7 +447,7 @@ module.exports = function() {
 
         function catchResponse(data) {
             //console.log("OK");
-            //console.log(JSON.stringify(data));
+            console.log(JSON.stringify(data));
             _this.responseData = data;
             _this.error = undefined;
             //console.log(data);
@@ -455,7 +455,7 @@ module.exports = function() {
 
         function catchErrorResponse(err) {
             //console.log("NOK");
-            //console.log(JSON.stringify(err));
+            console.log(JSON.stringify(err));
             _this.responseData = err;
             _this.error = err;
         }
@@ -466,7 +466,7 @@ module.exports = function() {
             return _this.util.delete().then(catchResponse).catch(catchErrorResponse);
 
         } catch (err) {
-            //console.log("asdlkfaslkdfjasl:" + err);
+            console.log("asdlkfaslkdfjasl:" + err);
             _this.responseData = err;
             _this.error = err;
             //this.expect(this.error).to.be.undefined;
@@ -567,4 +567,57 @@ module.exports = function() {
 
     });
 
+
+
+    this.When(/^I get allowed Datastreams fields$/, function() {
+        var _this = this;
+        _this.error = undefined;
+        _this.responseData = undefined;
+
+        function catchResponse(data) {
+            _this.responseData = data;
+            _this.error = undefined;
+        }
+
+        function catchErrorResponse(err) {
+            console.log(err);
+            _this.responseData = err;
+            _this.error = err;
+        }
+
+        try {
+            return this.util.getAllowedDatastreams().then(catchResponse).catch(catchErrorResponse);
+        } catch (err) {
+            console.log(err);
+            this.error = err;
+            return;
+        }
+    });
+
+    this.When(/^I delete all$/, function() {
+
+        var _this = this;
+        _this.error = undefined;
+        _this.responseData = undefined;
+
+        function catchResponse(data) {
+            _this.responseData = data;
+            _this.error = undefined;
+        }
+
+        function catchErrorResponse(err) {
+            _this.responseData = err;
+            _this.error = err;
+        }
+
+        try {
+            return _this.util.deleteAll().then(catchResponse).catch(catchErrorResponse);
+
+        } catch (err) {
+            console.log("asdlkfaslkdfjasl:" + err);
+            _this.responseData = err;
+            _this.error = err;
+            return;
+        }
+    });
 };

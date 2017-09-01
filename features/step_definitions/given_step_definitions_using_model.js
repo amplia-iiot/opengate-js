@@ -54,6 +54,16 @@ module.exports = function() {
         callback();
     });
 
+
+    this.Given(/^the entity of type "([^"]*)" with "([^"]*)"$/, function(utilName, param) {
+        // Write code here that turns the phrase above into concrete actions        
+        var _this = this;
+        this.util = this.utilsModel.util(utilName, this.ogapi, param);
+        return this.util.then(function(builder) {
+            _this.util = builder;
+        });
+    });
+
     this.Given(/^an ogapi "([^"]*)" util with "([^"]*)"$/, function(utilName, param, callback) {
         this.util = this.utilsModel.util(utilName, this.ogapi, param);
         callback();
@@ -395,7 +405,7 @@ module.exports = function() {
 
     this.Given(/^an apikey user by "([^"]*)"$/, function(apikey, callback) {
         var config = {
-            'apiKey': apikey,
+            'apiKey': '2829be88-a7d7-4f51-aefc-3cc2385b6506',
             'url': this.test_url_north,
             'timeout': 20000,
             south: {

@@ -66,7 +66,6 @@ export default class BaseProvision {
         var defered = q.defer();
         var promise = defered.promise;
 
-        console.log("URL: " + this._resource);
         //En muchas clases se genera this._resource en la llamada a la funcion this._composeElement()
 
         let _postElement = this._composeElement();
@@ -103,7 +102,6 @@ export default class BaseProvision {
     delete() {
         var defered = q.defer();
         var promise = defered.promise;
-        //console.log(this._buildURL());
         this._ogapi.Napi.delete(this._buildURL())
             .then((res) => {
                 if (res.statusCode === 200) {
