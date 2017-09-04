@@ -704,12 +704,342 @@
                   }
                 }
               ],
+              "trailingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     * The response will only have a summary information \n     * @example\n     *\togapi.devicesSearchBuilder().summary() \n     * @return {DevicesSearchBuilder} \n     ",
+                  "range": [
+                    560,
+                    731
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 20,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "static": false
+            },
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "summary",
+                "range": [
+                  736,
+                  743
+                ],
+                "loc": {
+                  "start": {
+                    "line": 26,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 26,
+                    "column": 11
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "AssignmentExpression",
+                        "operator": "=",
+                        "left": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "ThisExpression",
+                            "range": [
+                              756,
+                              760
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 27,
+                                "column": 8
+                              },
+                              "end": {
+                                "line": 27,
+                                "column": 12
+                              }
+                            }
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "_url",
+                            "range": [
+                              761,
+                              765
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 27,
+                                "column": 13
+                              },
+                              "end": {
+                                "line": 27,
+                                "column": 17
+                              }
+                            }
+                          },
+                          "range": [
+                            756,
+                            765
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 27,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 27,
+                              "column": 17
+                            }
+                          }
+                        },
+                        "right": {
+                          "type": "BinaryExpression",
+                          "operator": "+",
+                          "left": {
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "ThisExpression",
+                              "range": [
+                                768,
+                                772
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 27,
+                                  "column": 20
+                                },
+                                "end": {
+                                  "line": 27,
+                                  "column": 24
+                                }
+                              }
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "_url",
+                              "range": [
+                                773,
+                                777
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 27,
+                                  "column": 25
+                                },
+                                "end": {
+                                  "line": 27,
+                                  "column": 29
+                                }
+                              }
+                            },
+                            "range": [
+                              768,
+                              777
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 27,
+                                "column": 20
+                              },
+                              "end": {
+                                "line": 27,
+                                "column": 29
+                              }
+                            }
+                          },
+                          "right": {
+                            "type": "Literal",
+                            "value": "/summary",
+                            "raw": "'/summary'",
+                            "range": [
+                              780,
+                              790
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 27,
+                                "column": 32
+                              },
+                              "end": {
+                                "line": 27,
+                                "column": 42
+                              }
+                            }
+                          },
+                          "range": [
+                            768,
+                            790
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 27,
+                              "column": 20
+                            },
+                            "end": {
+                              "line": 27,
+                              "column": 42
+                            }
+                          }
+                        },
+                        "range": [
+                          756,
+                          790
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 27,
+                            "column": 8
+                          },
+                          "end": {
+                            "line": 27,
+                            "column": 42
+                          }
+                        }
+                      },
+                      "range": [
+                        756,
+                        791
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 27,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 27,
+                          "column": 43
+                        }
+                      }
+                    },
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "ThisExpression",
+                        "range": [
+                          808,
+                          812
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 29,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 29,
+                            "column": 19
+                          }
+                        }
+                      },
+                      "range": [
+                        801,
+                        813
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 29,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 29,
+                          "column": 20
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    746,
+                    819
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 26,
+                      "column": 14
+                    },
+                    "end": {
+                      "line": 30,
+                      "column": 5
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  743,
+                  819
+                ],
+                "loc": {
+                  "start": {
+                    "line": 26,
+                    "column": 11
+                  },
+                  "end": {
+                    "line": 30,
+                    "column": 5
+                  }
+                }
+              },
+              "kind": "method",
+              "computed": false,
+              "range": [
+                736,
+                819
+              ],
+              "loc": {
+                "start": {
+                  "line": 26,
+                  "column": 4
+                },
+                "end": {
+                  "line": 30,
+                  "column": 5
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     * The response will only have a summary information \n     * @example\n     *\togapi.devicesSearchBuilder().summary() \n     * @return {DevicesSearchBuilder} \n     ",
+                  "range": [
+                    560,
+                    731
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 20,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
               "static": false
             }
           ],
           "range": [
             328,
-            556
+            821
           ],
           "loc": {
             "start": {
@@ -717,14 +1047,14 @@
               "column": 73
             },
             "end": {
-              "line": 19,
+              "line": 31,
               "column": 1
             }
           }
         },
         "range": [
           270,
-          556
+          821
         ],
         "loc": {
           "start": {
@@ -732,7 +1062,7 @@
             "column": 15
           },
           "end": {
-            "line": 19,
+            "line": 31,
             "column": 1
           }
         },
@@ -760,7 +1090,7 @@
       },
       "range": [
         255,
-        556
+        821
       ],
       "loc": {
         "start": {
@@ -768,7 +1098,7 @@
           "column": 0
         },
         "end": {
-          "line": 19,
+          "line": 31,
           "column": 1
         }
       },
@@ -797,7 +1127,7 @@
   "sourceType": "module",
   "range": [
     0,
-    556
+    821
   ],
   "loc": {
     "start": {
@@ -805,7 +1135,7 @@
       "column": 0
     },
     "end": {
-      "line": 19,
+      "line": 31,
       "column": 1
     }
   },
@@ -842,6 +1172,24 @@
         },
         "end": {
           "line": 14,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n     * The response will only have a summary information \n     * @example\n     *\togapi.devicesSearchBuilder().summary() \n     * @return {DevicesSearchBuilder} \n     ",
+      "range": [
+        560,
+        731
+      ],
+      "loc": {
+        "start": {
+          "line": 20,
+          "column": 4
+        },
+        "end": {
+          "line": 25,
           "column": 7
         }
       }

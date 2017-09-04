@@ -47,8 +47,8 @@ var SubscribersSearchBuilder = (function (_FlattenedSearchBuilder) {
         value: function _buildFilter() {
             var finalFilter = {
                 "and": [{
-                    "neq": {
-                        "provision.devices.communicationsModule[].subscriber.identifier": null
+                    "exists": {
+                        "provision.device.communicationModules[].subscriber.identifier": true
                     }
                 }]
             };

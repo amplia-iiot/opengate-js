@@ -20,8 +20,8 @@ export default class SubscriptionsSearchBuilder extends FlattenedSearchBuilder {
     _buildFilter() {
         let finalFilter = {
             "and": [{
-                "neq": {
-                    "provision.devices.communicationsModule[].subscription.identifier": null
+                "exists": {
+                    "provision.device.communicationModules[].subscription.identifier": true
                 }
             }]
         };

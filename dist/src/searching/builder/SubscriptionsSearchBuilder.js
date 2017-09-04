@@ -47,8 +47,8 @@ var SubscriptionsSearchBuilder = (function (_FlattenedSearchBuilder) {
         value: function _buildFilter() {
             var finalFilter = {
                 "and": [{
-                    "neq": {
-                        "provision.devices.communicationsModule[].subscription.identifier": null
+                    "exists": {
+                        "provision.device.communicationModules[].subscription.identifier": true
                     }
                 }]
             };

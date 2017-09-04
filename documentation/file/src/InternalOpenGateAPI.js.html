@@ -137,6 +137,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DevicesSearchBuilder.js~DevicesSearchBuilder.html">DevicesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DomainsSearchBuilder.js~DomainsSearchBuilder.html">DomainsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ExecutionsSearchBuilder.js~ExecutionsSearchBuilder.html">ExecutionsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/FeedsSearchBuilder.js~FeedsSearchBuilder.html">FeedsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/FieldsDefinitionSearchBuilder.js~FieldsDefinitionSearchBuilder.html">FieldsDefinitionSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/FlattenedSearchBuilder.js~FlattenedSearchBuilder.html">FlattenedSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html">HardwaresSearchBuilder</a></span></span></li>
@@ -214,6 +215,7 @@ import OperationsSearchBuilder from &apos;./searching/builder/OperationsSearchBu
 import ExecutionsSearchBuilder from &apos;./searching/builder/ExecutionsSearchBuilder&apos;
 import AlarmsSearchBuilder from &apos;./searching/builder/AlarmsSearchBuilder&apos;
 import DatamodelsSearchBuilder from &apos;./searching/builder/DatamodelsSearchBuilder&apos;
+import FeedsSearchBuilder from &apos;./searching/builder/FeedsSearchBuilder&apos;
 import DatastreamsSearchBuilder from &apos;./searching/builder/DatastreamsSearchBuilder&apos;
 import DatapointsSearchBuilder from &apos;./searching/builder/DatapointsSearchBuilder&apos;
 import BundlesSearchBuilder from &apos;./searching/builder/BundlesSearchBuilder&apos;
@@ -552,6 +554,15 @@ export default class InternalOpenGateAPI {
     datamodelsSearchBuilder() {
         return new DatamodelsSearchBuilder(this);
     }
+
+    /**
+     * This return a FeedsSearchBuilder to build a specific FeedsSearchBuilder
+     * @return {FeedsSearchBuilder}
+     */
+    feedsSearchBuilder() {
+        return new FeedsSearchBuilder(this);
+    }
+
 
     /**
      * This return a DatapointsSearchBuilder to build a specific DatapointsSearchBuilder

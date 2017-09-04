@@ -4,7 +4,7 @@ export const IOT_FIELDS = {
     "DATAPOINTS": {
         "DATAPOINTS": [
             "datapoint.feed",
-            "datapoint.device",
+            "datapoint.elementIdentifier",
             "datapoint.datastream",
             "datapoint.from",
             "datapoint.at",

@@ -13,6 +13,7 @@ export default class EntityFinder extends ProvisionGenericFinder {
     constructor(ogapi, source, entity, error_not_found) {
         super(ogapi, source, entity, error_not_found);
         this._entitySource = this._entity + "s";
+        this._flattened = false;
     }
 
     /**
@@ -20,7 +21,12 @@ export default class EntityFinder extends ProvisionGenericFinder {
      * @private
      */
     _composeUrl() {
-        return this._baseUrl + "/" + this._organization + "/entities/" + this._entitySource + "/" + this._id;
+        if (this._flattened) {
+            return this._baseUrl + "/" + this._organization + "/entities/" + this._entitySource + "/" + this._id + "?flattened=true";
+        } else {
+            return this._baseUrl + "/" + this._organization + "/entities/" + this._entitySource + "/" + this._id;
+        }
+
     }
 
     /**
@@ -29,11 +35,13 @@ export default class EntityFinder extends ProvisionGenericFinder {
      *   ogapi.newDeviceFinder().findByOrganizationAndId('orgname', xxx-xx-xxx-xxx').then().catch();
      * @param {string} organization - entity organization .
      * @param {string} id - entity id.
+     * @param {string} flattened - flattened response flag.
      * @return {Promise} 
      */
-    findByOrganizationAndId(organization, id) {
+    findByOrganizationAndId(organization, id, flattened) {
         this._organization = organization;
         this._id = id;
+        this._flattened = flattened;
         return this._execute();
     }
 }

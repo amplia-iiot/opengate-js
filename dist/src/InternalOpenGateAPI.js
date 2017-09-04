@@ -110,6 +110,10 @@ var _searchingBuilderDatamodelsSearchBuilder = require('./searching/builder/Data
 
 var _searchingBuilderDatamodelsSearchBuilder2 = _interopRequireDefault(_searchingBuilderDatamodelsSearchBuilder);
 
+var _searchingBuilderFeedsSearchBuilder = require('./searching/builder/FeedsSearchBuilder');
+
+var _searchingBuilderFeedsSearchBuilder2 = _interopRequireDefault(_searchingBuilderFeedsSearchBuilder);
+
 var _searchingBuilderDatastreamsSearchBuilder = require('./searching/builder/DatastreamsSearchBuilder');
 
 var _searchingBuilderDatastreamsSearchBuilder2 = _interopRequireDefault(_searchingBuilderDatastreamsSearchBuilder);
@@ -673,6 +677,16 @@ var InternalOpenGateAPI = (function () {
         key: 'datamodelsSearchBuilder',
         value: function datamodelsSearchBuilder() {
             return new _searchingBuilderDatamodelsSearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a FeedsSearchBuilder to build a specific FeedsSearchBuilder
+         * @return {FeedsSearchBuilder}
+         */
+    }, {
+        key: 'feedsSearchBuilder',
+        value: function feedsSearchBuilder() {
+            return new _searchingBuilderFeedsSearchBuilder2['default'](this);
         }
 
         /**
