@@ -16,4 +16,16 @@ export default class DevicesSearchBuilder extends FlattenedSearchBuilder {
         super(parent, {}, new FieldFinder(parent, '/entities'));
         this._url = BASE_URL;
     }
+
+    /**
+     * The response will only have a summary information 
+     * @example
+     *	ogapi.devicesSearchBuilder().summary() 
+     * @return {DevicesSearchBuilder} 
+     */
+    summary() {
+        this._url = this._url + '/summary';
+
+        return this;
+    }
 }

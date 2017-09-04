@@ -25,6 +25,7 @@ import OperationsSearchBuilder from './searching/builder/OperationsSearchBuilder
 import ExecutionsSearchBuilder from './searching/builder/ExecutionsSearchBuilder'
 import AlarmsSearchBuilder from './searching/builder/AlarmsSearchBuilder'
 import DatamodelsSearchBuilder from './searching/builder/DatamodelsSearchBuilder'
+import FeedsSearchBuilder from './searching/builder/FeedsSearchBuilder'
 import DatastreamsSearchBuilder from './searching/builder/DatastreamsSearchBuilder'
 import DatapointsSearchBuilder from './searching/builder/DatapointsSearchBuilder'
 import BundlesSearchBuilder from './searching/builder/BundlesSearchBuilder'
@@ -363,6 +364,15 @@ export default class InternalOpenGateAPI {
     datamodelsSearchBuilder() {
         return new DatamodelsSearchBuilder(this);
     }
+
+    /**
+     * This return a FeedsSearchBuilder to build a specific FeedsSearchBuilder
+     * @return {FeedsSearchBuilder}
+     */
+    feedsSearchBuilder() {
+        return new FeedsSearchBuilder(this);
+    }
+
 
     /**
      * This return a DatapointsSearchBuilder to build a specific DatapointsSearchBuilder
