@@ -11,11 +11,11 @@ findCreateModel = require('./create_provision_model');
 findDeleteModel = require('./delete_provision_model');
 searchingModel = require('./searching_model');
 
-var APIKEY = '2829be88-a7d7-4f51-aefc-3cc2385b6506';
+var APIKEY = 'require-real-apikey';
 
 function World() {
-    this.test_url_north = 'http://preproapi.opengate.es/north/v70';
-    this.test_url_south = 'http://preproapi.opengate.es/south/v70';
+    this.test_url_north = 'http://172.19.18.96:25281/v80';
+    this.test_url_south = 'http://172.19.18.96:9955/v80';
     chai.use(chai_as_promised);
     this.expect = chai.expect;
 
