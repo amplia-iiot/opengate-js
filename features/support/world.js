@@ -11,11 +11,11 @@ findCreateModel = require('./create_provision_model');
 findDeleteModel = require('./delete_provision_model');
 searchingModel = require('./searching_model');
 
-var APIKEY = 'require-real-apikey';
+var APIKEY = '2829be88-a7d7-4f51-aefc-3cc2385b6506';
 
 function World() {
-    this.test_url_north = 'http://172.19.18.129:25281/v70';
-    this.test_url_south = 'http://172.19.18.129:9955/v70';
+    this.test_url_north = 'http://preproapi.opengate.es/north/v70';
+    this.test_url_south = 'http://preproapi.opengate.es/south/v70';
     chai.use(chai_as_promised);
     this.expect = chai.expect;
 
@@ -27,7 +27,7 @@ function World() {
     this.findDeleteModel = findDeleteModel;
     this.searchingModel = searchingModel;
 
-    this.model_match = function(model) {
+    this.model_match = function (model) {
         return {
             'create': this.findCreateModel,
             'update': this.findCreateModel,
@@ -42,13 +42,13 @@ function World() {
 
     _this.___lastPercent = 0;
 
-    this.uploadProgress = function(arg) {
+    this.uploadProgress = function (arg) {
         if (arg.loaded && arg.total) {
             _this.___lastPercent = (arg.loaded * 100) / arg.total;
         }
     };
 }
 
-module.exports = function() {
+module.exports = function () {
     this.World = World;
 };

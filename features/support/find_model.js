@@ -50,6 +50,10 @@ module.exports = {
             },
             'workgroup': {
                 'domainAndname': 'findByDomainAndName'
+            },
+            'area': {
+                'organizationAndidentifier': 'findByOrganizationAndIdentifier',
+                'organization': 'findByOrganization'
             }
         }[setter];
     },
@@ -81,6 +85,8 @@ module.exports = {
             'flavour[0] datastream[0] id': '/flavours[0]/datastreams[0]/id',
             'flavour[0] datastream[0] qrating version': '/flavours[0]/datastreams[0]/qrating/version',
             'flavour[1] datastream[0] id': '/flavours[1]/datastreams[0]/id',
+            'area identifier': '/identifier',
+            'area name': '/name',
         }[getter];
     }
 };

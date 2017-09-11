@@ -18,11 +18,11 @@ require([
     'datapoints.search.spec.js',
     'search.spec.js'
     // FILE(S) BEING TESTED
-], function(chai, chaiAsPromised, Ex, WB) {
+], function (chai, chaiAsPromised, Ex, WB) {
     chai.use(chaiAsPromised);
     window.assert = chai.assert;
     window.ogapi = new window.OpenGateAPI({
-        apiKey: "require-real-apikey"
+        apiKey: "2829be88-a7d7-4f51-aefc-3cc2385b6506"
     });
     if (window.mochaPhantomJS) {
         mochaPhantomJS.run();
