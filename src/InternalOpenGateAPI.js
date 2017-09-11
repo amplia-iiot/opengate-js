@@ -6,7 +6,9 @@ import Certificates from './security/Certificates'
 import Users from './users/Users'
 import OrganizationFinder from './organizations/OrganizationFinder'
 import ChannelFinder from './channels/ChannelFinder'
+import AreaFinder from './areas/AreaFinder'
 import Channels from './channels/Channels'
+import Areas from './areas/Areas'
 import ChannelsSearchBuilder from './searching/builder/ChannelsSearchBuilder'
 import RuleConfigurations from './rulesConfiguration/RuleConfigurations'
 import RuleConfigurationsFinder from './rulesConfiguration/RuleConfigurationsFinder'
@@ -126,6 +128,14 @@ export default class InternalOpenGateAPI {
      */
     newChannelFinder() {
         return new ChannelFinder(this);
+    }
+
+    /**
+     * This return a util to find a area
+     * @return {AreaFinder}
+     */
+    newAreaFinder() {
+        return new AreaFinder(this);
     }
 
     /**
@@ -679,6 +689,14 @@ export default class InternalOpenGateAPI {
      */
     channelsBuilder() {
         return new Channels(this);
+    }
+
+    /**
+     * This return a AreasBuilder to build a specific area
+     * @return {Areas}
+     */
+    areasBuilder() {
+        return new Areas(this);
     }
 
     /**

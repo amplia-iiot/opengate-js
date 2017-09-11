@@ -34,9 +34,17 @@ var _channelsChannelFinder = require('./channels/ChannelFinder');
 
 var _channelsChannelFinder2 = _interopRequireDefault(_channelsChannelFinder);
 
+var _areasAreaFinder = require('./areas/AreaFinder');
+
+var _areasAreaFinder2 = _interopRequireDefault(_areasAreaFinder);
+
 var _channelsChannels = require('./channels/Channels');
 
 var _channelsChannels2 = _interopRequireDefault(_channelsChannels);
+
+var _areasAreas = require('./areas/Areas');
+
+var _areasAreas2 = _interopRequireDefault(_areasAreas);
 
 var _searchingBuilderChannelsSearchBuilder = require('./searching/builder/ChannelsSearchBuilder');
 
@@ -384,6 +392,16 @@ var InternalOpenGateAPI = (function () {
         key: 'newChannelFinder',
         value: function newChannelFinder() {
             return new _channelsChannelFinder2['default'](this);
+        }
+
+        /**
+         * This return a util to find a area
+         * @return {AreaFinder}
+         */
+    }, {
+        key: 'newAreaFinder',
+        value: function newAreaFinder() {
+            return new _areasAreaFinder2['default'](this);
         }
 
         /**
@@ -1069,6 +1087,16 @@ var InternalOpenGateAPI = (function () {
         key: 'channelsBuilder',
         value: function channelsBuilder() {
             return new _channelsChannels2['default'](this);
+        }
+
+        /**
+         * This return a AreasBuilder to build a specific area
+         * @return {Areas}
+         */
+    }, {
+        key: 'areasBuilder',
+        value: function areasBuilder() {
+            return new _areasAreas2['default'](this);
         }
 
         /**

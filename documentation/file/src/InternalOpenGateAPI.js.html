@@ -35,6 +35,9 @@
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/GenericFinder.js~GenericFinder.html">GenericFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html">InternalOpenGateAPI</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/ProvisionGenericFinder.js~ProvisionGenericFinder.html">ProvisionGenericFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">areas</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/areas/AreaFinder.js~AreaFinder.html">AreaFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/areas/Areas.js~Areas.html">Areas</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_ENUM">TYPE_ENUM</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">bundles</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/BundleFinder.js~BundleFinder.html">BundleFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/Bundles.js~Bundles.html">Bundles</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACTION_ENUM">ACTION_ENUM</a></span></span></li>
@@ -196,7 +199,9 @@ import Certificates from &apos;./security/Certificates&apos;
 import Users from &apos;./users/Users&apos;
 import OrganizationFinder from &apos;./organizations/OrganizationFinder&apos;
 import ChannelFinder from &apos;./channels/ChannelFinder&apos;
+import AreaFinder from &apos;./areas/AreaFinder&apos;
 import Channels from &apos;./channels/Channels&apos;
+import Areas from &apos;./areas/Areas&apos;
 import ChannelsSearchBuilder from &apos;./searching/builder/ChannelsSearchBuilder&apos;
 import RuleConfigurations from &apos;./rulesConfiguration/RuleConfigurations&apos;
 import RuleConfigurationsFinder from &apos;./rulesConfiguration/RuleConfigurationsFinder&apos;
@@ -316,6 +321,14 @@ export default class InternalOpenGateAPI {
      */
     newChannelFinder() {
         return new ChannelFinder(this);
+    }
+
+    /**
+     * This return a util to find a area
+     * @return {AreaFinder}
+     */
+    newAreaFinder() {
+        return new AreaFinder(this);
     }
 
     /**
@@ -869,6 +882,14 @@ export default class InternalOpenGateAPI {
      */
     channelsBuilder() {
         return new Channels(this);
+    }
+
+    /**
+     * This return a AreasBuilder to build a specific area
+     * @return {Areas}
+     */
+    areasBuilder() {
+        return new Areas(this);
     }
 
     /**

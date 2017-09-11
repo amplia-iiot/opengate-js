@@ -13,7 +13,7 @@ require([
     '../../../dist/opengate-api-bower-1.7.0.js',
     'bundles.spec.js'
     // FILE(S) BEING TESTED
-], function(chai, chaiAsPromised, Ex, WB) {
+], function (chai, chaiAsPromised, Ex, WB) {
     chai.use(chaiAsPromised);
     window.assert = chai.assert;
     window.ogapi = new window.OpenGateAPI({

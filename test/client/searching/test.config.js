@@ -18,7 +18,7 @@ require([
     'datapoints.search.spec.js',
     'search.spec.js'
     // FILE(S) BEING TESTED
-], function(chai, chaiAsPromised, Ex, WB) {
+], function (chai, chaiAsPromised, Ex, WB) {
     chai.use(chaiAsPromised);
     window.assert = chai.assert;
     window.ogapi = new window.OpenGateAPI({

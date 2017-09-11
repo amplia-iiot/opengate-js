@@ -340,6 +340,14 @@ module.exports = {
                 'device': 'withDevice',
                 'subscription': 'withSubscription',
                 'subscriber': 'withSubscriber'
+            },
+            'area': {
+                'identifier': 'withIdentifier',
+                'name': 'withName',
+                'organization': 'withOrganization',
+                'description': 'withDescription',
+                'geometry': 'withGeometry',
+                'entities': 'withEntities'
             }
         }[setter];
     },

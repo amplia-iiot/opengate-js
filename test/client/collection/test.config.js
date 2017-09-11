@@ -13,7 +13,7 @@ require([
     '../../../dist/opengate-api-bower-1.1.0.js',
     'iot.spec.js'
     // FILE(S) BEING TESTED
-], function(chai, chaiAsPromised, Ex, WB) {
+], function (chai, chaiAsPromised, Ex, WB) {
     chai.use(chaiAsPromised);
     window.assert = chai.assert;
     window.ogapi = new window.OpenGateAPI({
