@@ -14,7 +14,7 @@ require([
     'user.spec.js',
     'find.spec.js'
     // FILE(S) BEING TESTED
-], function(chai, chaiAsPromised) {
+], function (chai, chaiAsPromised) {
     chai.use(chaiAsPromised);
     window.assert = chai.assert;
     window.ogapi = new window.OpenGateAPI({
