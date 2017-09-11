@@ -13,6 +13,10 @@ module.exports = {
             'bundle': {
                 'name': 'withName',
                 'version': 'withVersion'
+            },
+            'area': {
+                'identifier': 'withIdentifier',
+                'organization': 'withOrganization'
             }
         }[setter];
     },
@@ -21,7 +25,8 @@ module.exports = {
             'certificate': 'withId',
             'user': 'withEmail',
             'organization': 'withName',
-            'bundle': 'withVersion'
+            'bundle': 'withVersion',
+            'area': 'withIdentifier'
         }[method];
     }
 };
