@@ -10,7 +10,7 @@ require.config({
 require([
     'chai', 'chai-as-promised',
     '../../../bower_components/es6-promise/es6-promise.js',
-    '../../../dist/opengate-api-bower-1.13.1.js',
+    '../../../dist/opengate-api-bower-1.14.0.js',
     'devices.provision.spec.js'
     // FILE(S) BEING TESTED
 ], function(chai, chaiAsPromised, Ex, WB) {

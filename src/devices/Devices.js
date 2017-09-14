@@ -93,7 +93,11 @@ export default class Devices extends BaseProvision {
     _composeElement() {
         this._getEntityKey();
         this._entity["provision.administration.organization"] = {
-            '_value': this._organization
+            "_value": {
+                "_received": {
+                    "value": this._organization
+                }
+            }
         }
         return this._entity;
 
@@ -127,7 +131,7 @@ export default class Devices extends BaseProvision {
 
     _getEntityKey() {
         if (this._entity[ENTITY_ID]) {
-            this._entityKey = this._entity[ENTITY_ID]._value;
+            this._entityKey = this._entity[ENTITY_ID]._value._received.value;
         } else {
             throw new Error('Parameter entityKey must defined. Please define datastream: ' + ENTITY_ID);
         }

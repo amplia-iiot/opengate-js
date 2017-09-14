@@ -22,6 +22,8 @@ export default class Subscribers extends BaseProvision {
         this._definedSchemas = definedSchemas;
     }
 
+
+
     /**
      * Return the allowed datastream for subscriber
      * @example
@@ -47,10 +49,11 @@ export default class Subscribers extends BaseProvision {
     /**
      * Create the subscriber
      * @example
-     *  ogapi.entityBuilder.subscriberBuilder().create()
+     *  ogapi.entityBuilder.subscribersBuilder().create()
      * @return {Promise} 
      */
     create() {
+        this._composeElement();
         this._resource = "provision/organizations/" + this._organization + "/subscribers?flattened=true";
         let _this = this;
         let defered = q.defer();
@@ -73,7 +76,11 @@ export default class Subscribers extends BaseProvision {
     _composeElement() {
         this._getEntityKey();
         this._entity["provision.administration.organization"] = {
-            '_value': this._organization
+            "_value": {
+                "_received": {
+                    "value": this._organization
+                }
+            }
         }
         return this._entity;
 
@@ -106,11 +113,12 @@ export default class Subscribers extends BaseProvision {
 
     _getEntityKey() {
         if (this._entity[ENTITY_ID]) {
-            this._entityKey = this._entity[ENTITY_ID]._value;
+            this._entityKey = this._entity[ENTITY_ID]._value._received.value;
         } else {
             throw new Error('Parameter entityKey must defined. Please define datastream: ' + ENTITY_ID);
         }
     }
+
 
 
 }

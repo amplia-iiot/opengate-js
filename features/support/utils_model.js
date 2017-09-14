@@ -26,13 +26,13 @@ module.exports = {
             "channel finder": function(ogapi) {
                 return ogapi.newChannelFinder();
             },
-            "area finder": function (ogapi) {
+            "area finder": function(ogapi) {
                 return ogapi.newAreaFinder();
             },
             "channels builder": function(ogapi) {
                 return ogapi.channelsBuilder();
             },
-            "areas builder": function (ogapi) {
+            "areas builder": function(ogapi) {
                 return ogapi.areasBuilder();
             },
             "channels search": function(ogapi) {
@@ -92,11 +92,11 @@ module.exports = {
             "softwares search": function(ogapi) {
                 return ogapi.softwaresSearchBuilder();
             },
-            "subscriptions builder": function(ogapi) {
-                return ogapi.entityBuilder.subscriptionsBuilder();
+            "subscriptions builder": function(ogapi, param1) {
+                return ogapi.entityBuilder.subscriptionsBuilder(param1);
             },
-            "subscribers builder": function(ogapi) {
-                return ogapi.entityBuilder.subscribersBuilder();
+            "subscribers builder": function(ogapi, param1) {
+                return ogapi.entityBuilder.subscribersBuilder(param1);
             },
             "user finder": function(ogapi) {
                 return ogapi.newUserFinder();
