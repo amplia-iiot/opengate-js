@@ -44,6 +44,7 @@ var Subscriptions = (function (_BaseProvision) {
         this._filter = "provision.device.communicationModules[].subscription";
         this._entity = {};
         this._allowedDatastreams = allowedDatastreams;
+        this._definedSchemas = definedSchemas;
     }
 
     /**
@@ -76,6 +77,7 @@ var Subscriptions = (function (_BaseProvision) {
     }, {
         key: 'create',
         value: function create() {
+            this._composeElement();
             this._resource = "provision/organizations/" + this._organization + "/subscriptions?flattened=true";
             var _this = this;
             var defered = _q2['default'].defer();
@@ -110,7 +112,11 @@ var Subscriptions = (function (_BaseProvision) {
         value: function _composeElement() {
             this._getEntityKey();
             this._entity["provision.administration.organization"] = {
-                '_value': this._organization
+                "_value": {
+                    "_received": {
+                        "value": this._organization
+                    }
+                }
             };
             return this._entity;
         }
@@ -132,7 +138,7 @@ var Subscriptions = (function (_BaseProvision) {
         key: '_getEntityKey',
         value: function _getEntityKey() {
             if (this._entity[ENTITY_ID]) {
-                this._entityKey = this._entity[ENTITY_ID]._value;
+                this._entityKey = this._entity[ENTITY_ID]._value._received.value;
             } else {
                 throw new Error('Parameter entityKey must defined. Please define datastream: ' + ENTITY_ID);
             }

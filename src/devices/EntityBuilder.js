@@ -14,6 +14,8 @@ let Validator = require('jsonschema').Validator;
 let v = new Validator();
 let ERROR_VALUE_NOT_ALLOWED = 'The value is not allowed. The value should be formatted as follows:';
 let ERROR_DATASTREAM_NOT_ALLOWED = 'The datastream is not allowed.';
+let ERROR_ID_VALUE = 'Parameter id and value must be defined';
+let ERROR_ORGANIZATION = 'Parameters organization must be defined';
 
 
 /**
@@ -39,11 +41,11 @@ export default class EntityBuilder {
         var f = _this._ogapi.newFilterBuilder();
         f.and({
             "like": {
-                'datamodel.categories.datastreams.name': 'provision'
+                'datamodels.categories.datastreams.name': 'provision'
             }
         }).and({
             "eq": {
-                "datamodel.organizationName": organization
+                "datamodels.organizationName": organization
             }
         });
 
@@ -58,6 +60,7 @@ export default class EntityBuilder {
                 defered.resolve({ data: 'No content', statusCode: 204 });
             }
         }).then(function(data) {
+
             _this._getJsonPathElements(data.data).then(function() {
                 data.data = _this._setDevicesProperties(data.data, filterElement);
                 defered.resolve(data);
@@ -101,11 +104,11 @@ export default class EntityBuilder {
         _this.simpleFunctions = [];
 
         allowedDatastreams.forEach(function(element, index) {
-            let _id = element.id;
+            let _id = element.identifier;
             if (_id.startsWith('provision.administration') || _id.startsWith(filter)) {
                 response.allowedDatastreams.push(element);
                 if (_id.includes('communicationModules')) {
-                    _this.schema[_id] = { value: element.schema, complex: true };
+                    _this.schema[_id] = { value: element.schema, complex: filter.includes('subscriber') || filter.includes('subscription') ? false : true };
                 } else {
                     _this.schema[_id] = { value: element.schema, complex: false };
 
@@ -121,7 +124,7 @@ export default class EntityBuilder {
         let _this = parent;
         _this['withComplex'] = function(_id, idCommunicationModules, val) {
             if (!idCommunicationModules || !val) {
-                throw new Error('Parameter id and value must be defined');
+                throw new Error(ERROR_ID_VALUE);
             }
 
             if (!_this._definedSchemas[_id] && !_this._definedSchemas[_id].complex) {
@@ -162,19 +165,14 @@ export default class EntityBuilder {
             }
             let jSchema = _this._definedSchemas[_id].value;
             if (v.validate(val, jSchema).valid) {
-                if (_id.includes('administration') || _id.includes('identifier')) {
-                    _this._entity[_id] = {
-                        '_value': val
-                    };
-                } else {
-                    _this._entity[_id] = {
-                        '_value': {
-                            '_received': {
-                                'value': val
-                            }
+                _this._entity[_id] = {
+                    '_value': {
+                        '_received': {
+                            'value': val
                         }
-                    };
-                }
+                    }
+                };
+
             } else {
                 throw new Error(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
             }
@@ -187,7 +185,7 @@ export default class EntityBuilder {
         let defered = q.defer();
         let promise = defered.promise;
         if (!organization) {
-            throw new Error('Parameters organization must be defined');
+            throw new Error(ERROR_ORGANIZATION);
         }
         this._loadAllowedDatastreams('provision.device', organization)
             .then(function(data) {
@@ -212,7 +210,7 @@ export default class EntityBuilder {
         let defered = q.defer();
         let promise = defered.promise;
         if (!organization) {
-            throw new Error('Parameters organization must be defined');
+            throw new Error(ERROR_ORGANIZATION);
         }
         this._loadAllowedDatastreams('provision.device.communicationModules[].subscriber', organization)
             .then(function(data) {
@@ -236,7 +234,7 @@ export default class EntityBuilder {
         let defered = q.defer();
         let promise = defered.promise;
         if (!organization) {
-            throw new Error('Parameters organization must be defined');
+            throw new Error(ERROR_ORGANIZATION);
         }
         this._loadAllowedDatastreams('provision.device.communicationModules[].subscription', organization)
             .then(function(data) {

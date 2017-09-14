@@ -196,69 +196,73 @@
     /** @test {InternalOpenGateAPI#datapointsSearchBuilder} */
     describe(&apos;Check funcionality devicesBuilder module:&apos;, function() {
         it(&apos;Create new devicesBuilder object&apos;, function() {
-            var device = null;
-            ogapi.entityBuilder.deviceBuilder(&quot;organization_Dani&quot;)
-                .then(function(res) {
-                    console.log(res);
-                    device = res;
-                    device.with(&quot;provision.administration.channel&quot;, &quot;default_channel&quot;);
-                    device.with(&quot;provision.administration.organization&quot;, &quot;organization_Dani&quot;);
-                    device.with(&quot;provision.administration.serviceGroup&quot;, &quot;emptyServiceGroup&quot;);
-                    device.withEntityKey(&quot;KateDevice&quot;);
-                    device.with(&quot;provision.device.description&quot;, &quot;dev-description&quot;);
-                })
-                .catch(function(err) {
-                    console.log(err);
-                });
-
-            //device.with(&quot;&quot;, &quot;&quot;);
-            assert.isDefined(ogapi.entityBuilder.devicesBuilder(&quot;organization_Dani&quot;));
-
-        });
-    });
-
-
-    describe(&apos;Check funcionality devicesBuilder module:&apos;, function() {
-        it(&apos;Create new subscribersBuilder object&apos;, function() {
             var entity = null;
-            ogapi.entityBuilder.subscribersBuilder(&quot;organization_Dani&quot;)
+            ogapi.entityBuilder.devicesBuilder(&quot;base_organization&quot;)
                 .then(function(res) {
                     console.log(res);
                     entity = res;
                     entity.with(&quot;provision.administration.channel&quot;, &quot;default_channel&quot;);
-                    entity.with(&quot;provision.administration.organization&quot;, &quot;organization_Dani&quot;);
+                    entity.with(&quot;provision.administration.organization&quot;, &quot;base_organization&quot;);
                     entity.with(&quot;provision.administration.serviceGroup&quot;, &quot;emptyServiceGroup&quot;);
+                    entity.with(&quot;provision.device.identifier&quot;, &quot;device_oux&quot;);
                 })
                 .catch(function(err) {
                     console.log(err);
                 });
 
-            //device.with(&quot;&quot;, &quot;&quot;);
-            assert.isDefined(ogapi.entityBuilder.devicesBuilder(&quot;organization_Dani&quot;));
+            //assert.isDefined(ogapi.entityBuilder.devicesBuilder(&quot;organization_Dani&quot;));
 
         });
     });
+    /*
 
+       
+        describe(&apos;Check funcionality devicesBuilder module:&apos;, function() {
+            it(&apos;Create new subscribersBuilder object&apos;, function() {
+                var entity = null;
+                ogapi.entityBuilder.subscribersBuilder(&quot;organization_UX&quot;)
+                    .then(function(res) {
+                        console.log(res);
+                        entity = res;
+                        entity.with(&quot;provision.administration.channel&quot;, &quot;channel_1&quot;);
+                        entity.with(&quot;provision.administration.organization&quot;, &quot;organization_UX&quot;);
+                        entity.with(&quot;provision.administration.serviceGroup&quot;, &quot;emptyServiceGroup&quot;);
+                        entity.with(&quot;provision.device.communicationModules[].subscriber.identifier&quot;, &quot;s_1&quot;);
+                    })
+                    .catch(function(err) {
+                        console.log(err);
+                    });
 
-    describe(&apos;Check funcionality devicesBuilder module:&apos;, function() {
-        it(&apos;Create new subscribersBuilder object&apos;, function() {
-            var entity = null;
-            ogapi.entityBuilder.subscriptionsBuilder(&quot;organization_Dani&quot;)
-                .then(function(res) {
-                    console.log(res);
-                    entity = res;
-                })
-                .catch(function(err) {
-                    console.log(err);
-                });
+                //device.with(&quot;&quot;, &quot;&quot;);
+                assert.isDefined(ogapi.entityBuilder.devicesBuilder(&quot;organization_Dani&quot;));
 
-            //device.with(&quot;&quot;, &quot;&quot;);
-            assert.isDefined(ogapi.entityBuilder.devicesBuilder(&quot;organization_Dani&quot;));
-
+            });
         });
-    });
 
 
+        describe(&apos;Check funcionality devicesBuilder module:&apos;, function() {
+            it(&apos;Create new subscribersBuilder object&apos;, function() {
+                var entity = null;
+                ogapi.entityBuilder.subscriptionsBuilder(&quot;organization_Dani&quot;)
+                    .then(function(res) {
+                        console.log(res);
+                        entity = res;
+                        entity.with(&quot;provision.administration.channel&quot;, &quot;channel_1&quot;);
+                        entity.with(&quot;provision.administration.organization&quot;, &quot;organization_UX&quot;);
+                        entity.with(&quot;provision.administration.serviceGroup&quot;, &quot;emptyServiceGroup&quot;);
+                        entity.with(&quot;provision.device.communicationModules[].subscriber.identifier&quot;, &quot;s_1&quot;);
+                    })
+                    .catch(function(err) {
+                        console.log(err);
+                    });
+
+                //device.with(&quot;&quot;, &quot;&quot;);
+                assert.isDefined(ogapi.entityBuilder.devicesBuilder(&quot;organization_Dani&quot;));
+
+            });
+        });
+
+    */
 
     /*  it(&apos;Check urls:&apos;, function() {
           assert.strictEqual(ogapi.datapointsSearchBuilder()

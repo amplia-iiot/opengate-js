@@ -39,6 +39,8 @@ var Validator = require('jsonschema').Validator;
 var v = new Validator();
 var ERROR_VALUE_NOT_ALLOWED = 'The value is not allowed. The value should be formatted as follows:';
 var ERROR_DATASTREAM_NOT_ALLOWED = 'The datastream is not allowed.';
+var ERROR_ID_VALUE = 'Parameter id and value must be defined';
+var ERROR_ORGANIZATION = 'Parameters organization must be defined';
 
 /**
  * This is a base object that contains all you can do about Devices.
@@ -68,11 +70,11 @@ var EntityBuilder = (function () {
             var f = _this._ogapi.newFilterBuilder();
             f.and({
                 "like": {
-                    'datamodel.categories.datastreams.name': 'provision'
+                    'datamodels.categories.datastreams.name': 'provision'
                 }
             }).and({
                 "eq": {
-                    "datamodel.organizationName": organization
+                    "datamodels.organizationName": organization
                 }
             });
 
@@ -87,6 +89,7 @@ var EntityBuilder = (function () {
                     defered.resolve({ data: 'No content', statusCode: 204 });
                 }
             }).then(function (data) {
+
                 _this._getJsonPathElements(data.data).then(function () {
                     data.data = _this._setDevicesProperties(data.data, filterElement);
                     defered.resolve(data);
@@ -129,11 +132,11 @@ var EntityBuilder = (function () {
             _this.simpleFunctions = [];
 
             allowedDatastreams.forEach(function (element, index) {
-                var _id = element.id;
+                var _id = element.identifier;
                 if (_id.startsWith('provision.administration') || _id.startsWith(filter)) {
                     response.allowedDatastreams.push(element);
                     if (_id.includes('communicationModules')) {
-                        _this.schema[_id] = { value: element.schema, complex: true };
+                        _this.schema[_id] = { value: element.schema, complex: filter.includes('subscriber') || filter.includes('subscription') ? false : true };
                     } else {
                         _this.schema[_id] = { value: element.schema, complex: false };
                     }
@@ -149,7 +152,7 @@ var EntityBuilder = (function () {
             var _this = parent;
             _this['withComplex'] = function (_id, idCommunicationModules, val) {
                 if (!idCommunicationModules || !val) {
-                    throw new Error('Parameter id and value must be defined');
+                    throw new Error(ERROR_ID_VALUE);
                 }
 
                 if (!_this._definedSchemas[_id] && !_this._definedSchemas[_id].complex) {
@@ -190,19 +193,13 @@ var EntityBuilder = (function () {
                 }
                 var jSchema = _this._definedSchemas[_id].value;
                 if (v.validate(val, jSchema).valid) {
-                    if (_id.includes('administration') || _id.includes('identifier')) {
-                        _this._entity[_id] = {
-                            '_value': val
-                        };
-                    } else {
-                        _this._entity[_id] = {
-                            '_value': {
-                                '_received': {
-                                    'value': val
-                                }
+                    _this._entity[_id] = {
+                        '_value': {
+                            '_received': {
+                                'value': val
                             }
-                        };
-                    }
+                        }
+                    };
                 } else {
                     throw new Error(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
                 }
@@ -216,7 +213,7 @@ var EntityBuilder = (function () {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
             if (!organization) {
-                throw new Error('Parameters organization must be defined');
+                throw new Error(ERROR_ORGANIZATION);
             }
             this._loadAllowedDatastreams('provision.device', organization).then(function (data) {
                 if (data.statusCode === 200) {
@@ -239,7 +236,7 @@ var EntityBuilder = (function () {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
             if (!organization) {
-                throw new Error('Parameters organization must be defined');
+                throw new Error(ERROR_ORGANIZATION);
             }
             this._loadAllowedDatastreams('provision.device.communicationModules[].subscriber', organization).then(function (data) {
                 if (data.statusCode === 200) {
@@ -262,7 +259,7 @@ var EntityBuilder = (function () {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
             if (!organization) {
-                throw new Error('Parameters organization must be defined');
+                throw new Error(ERROR_ORGANIZATION);
             }
             this._loadAllowedDatastreams('provision.device.communicationModules[].subscription', organization).then(function (data) {
                 if (data.statusCode === 200) {

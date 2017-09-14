@@ -122,7 +122,11 @@ var Devices = (function (_BaseProvision) {
         value: function _composeElement() {
             this._getEntityKey();
             this._entity["provision.administration.organization"] = {
-                '_value': this._organization
+                "_value": {
+                    "_received": {
+                        "value": this._organization
+                    }
+                }
             };
             return this._entity;
         }
@@ -156,7 +160,7 @@ var Devices = (function (_BaseProvision) {
         key: '_getEntityKey',
         value: function _getEntityKey() {
             if (this._entity[ENTITY_ID]) {
-                this._entityKey = this._entity[ENTITY_ID]._value;
+                this._entityKey = this._entity[ENTITY_ID]._value._received.value;
             } else {
                 throw new Error('Parameter entityKey must defined. Please define datastream: ' + ENTITY_ID);
             }
