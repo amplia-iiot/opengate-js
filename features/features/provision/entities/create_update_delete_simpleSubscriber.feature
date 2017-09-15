@@ -17,29 +17,29 @@ Feature: Delete and Create a subscriber
  Scenario: I want to create the entity 
      When I try to define the entity with... 
 		| datastream                                                                     | typeFunction       |   value                 | parent      |
-		| provision.administration.channel                                               | simple             |  channel_1           |             |
-        | provision.administration.organization                                          | simple             |  organization_UX      |             |
+		| provision.administration.channel                                               | simple             |  channel_1              |             |
+        | provision.administration.organization                                          | simple             |  organization_UX        |             |
         | provision.administration.serviceGroup                                          | simple             |  emptyServiceGroup      |             |
-        | provision.device.communicationModules[].subscriber.identifier                  | simple             |  testing       |             |
+        | provision.device.communicationModules[].subscriber.identifier                  | simple             |  subscriber_ogapi       |             |
 
     Then I create it
     And response code should be: 201
      
-# Scenario: I want to update the entity 
-#     When I try to define the entity with... 
-#		| datastream                                                                   | typeFunction       |   value                       | parent      |
-#        | provision.administration.channel                                             | simple             |  channel_1                 |             |
-#        | provision.administration.organization                                        | simple             |  organization_UX            |             |
-#        | provision.administration.serviceGroup                                        | simple             |  emptyServiceGroup            |             |
-#        | provision.device.communicationModules[].subscriber.identifier                | simple             |  subscriber_ogapi             |             |
-#        | provision.device.communicationModules[].subscriber.specificType              | simple             | ADSL                          |             |
-#        | provision.device.communicationModules[].subscriber.name                      | simple             | subscriber_ogapi name         |             |
-#    And I update it
-#    Then response code should be: 200
-#
-# Scenario: I want to delete the entity 
-#    When I try to define the entity with... 
-#		| datastream                                                                   | typeFunction       |   value                     | parent      |
-#        | provision.device.communicationModules[].subscriber.identifier                | simple             |  subscriber_ogapi           |             |
-#    And I delete it
-#    Then response code should be: 200
+ Scenario: I want to update the entity 
+     When I try to define the entity with... 
+		| datastream                                                                   | typeFunction       |   value                       | parent      |
+        | provision.administration.channel                                             | simple             |  channel_1                 |             |
+        | provision.administration.organization                                        | simple             |  organization_UX            |             |
+        | provision.administration.serviceGroup                                        | simple             |  emptyServiceGroup            |             |
+        | provision.device.communicationModules[].subscriber.identifier                | simple             |  subscriber_ogapi             |             |
+        | provision.device.communicationModules[].subscriber.specificType              | simple             | ADSL                          |             |
+        | provision.device.communicationModules[].subscriber.name                      | simple             | subscriber_ogapi name         |             |
+    And I update it
+    Then response code should be: 200
+
+ Scenario: I want to delete the entity 
+    When I try to define the entity with... 
+		| datastream                                                                   | typeFunction       |   value                     | parent      |
+        | provision.device.communicationModules[].subscriber.identifier                | simple             |  subscriber_ogapi           |             |
+    And I delete it
+    Then response code should be: 200

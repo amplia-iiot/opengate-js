@@ -12,8 +12,9 @@ import Subscriptions from '../devices/commsModules/subscriptions/Subscriptions'
 let jp = require('jsonpath');
 let Validator = require('jsonschema').Validator;
 let v = new Validator();
-let ERROR_VALUE_NOT_ALLOWED = 'The value is not allowed. The value should be formatted as follows:';
-let ERROR_DATASTREAM_NOT_ALLOWED = 'The datastream is not allowed.';
+let ERROR_VALUE_NOT_ALLOWED = 'The value is not allowed. The value should be formatted as follows: ';
+let ERROR_DATASTREAM_NOT_ALLOWED = 'Datastream is not allowed.';
+let ERROR_FUNCTION_NOT_ALLOWED = 'Function is not allowed.';
 let ERROR_ID_VALUE = 'Parameter id and value must be defined';
 let ERROR_ORGANIZATION = 'Parameters organization must be defined';
 
@@ -53,13 +54,13 @@ export default class EntityBuilder {
         let allowedDatastreamsBuilder = this._ogapi.datamodelsSearchBuilder().filter(f).build();
 
         allowedDatastreamsBuilder.execute().then(function(okh) {
-            if (okh.statusCode === 200) {
-                _this.schema = {};
-                return okh;
-            } else {
-                defered.resolve({ data: 'No content', statusCode: 204 });
-            }
+            _this.schema = {};
+            return okh;
+
         }).then(function(data) {
+            if (data.statusCode !== 200) {
+                defered.resolve({ data: 'No content: Datastreams not found', statusCode: 204 });
+            }
 
             _this._getJsonPathElements(data.data).then(function() {
                 data.data = _this._setDevicesProperties(data.data, filterElement);
@@ -123,29 +124,29 @@ export default class EntityBuilder {
     _createComplexFunction(parent) {
         let _this = parent;
         _this['withComplex'] = function(_id, idCommunicationModules, val) {
+
+            if (!_this._definedSchemas[_id]) {
+                throw new Error(ERROR_DATASTREAM_NOT_ALLOWED);
+            } else if (!_this._definedSchemas[_id].complex) {
+                throw new Error(ERROR_FUNCTION_NOT_ALLOWED);
+            }
             if (!idCommunicationModules || !val) {
                 throw new Error(ERROR_ID_VALUE);
             }
 
-            if (!_this._definedSchemas[_id] && !_this._definedSchemas[_id].complex) {
-                throw new Error(ERROR_DATASTREAM_NOT_ALLOWED);
-            }
 
             var cmElement = {
                 '_index': {
                     'value': idCommunicationModules
-                }
-            };
-            if (_id.includes('identifier')) {
-                cmElement['_value'] = val;
-            } else {
-                cmElement['_value'] = {
+                },
+                '_value': {
                     '_received': {
                         'value': val
                     }
-                };
+                }
+            };
 
-            }
+
             let jSchema = _this._definedSchemas[_id].value;
             if (v.validate(val, jSchema).valid) {
                 _this._entity[_id] = _this._entity[_id] ? _this._entity[_id] : [];
@@ -160,8 +161,10 @@ export default class EntityBuilder {
     _createSimplefunction(parent) {
         let _this = parent;
         _this['with'] = function(_id, val) {
-            if (!_this._definedSchemas[_id] && _this._definedSchemas[_id].complex) {
+            if (!_this._definedSchemas[_id]) {
                 throw new Error(ERROR_DATASTREAM_NOT_ALLOWED);
+            } else if (_this._definedSchemas[_id].complex) {
+                throw new Error(ERROR_FUNCTION_NOT_ALLOWED);
             }
             let jSchema = _this._definedSchemas[_id].value;
             if (v.validate(val, jSchema).valid) {
@@ -196,6 +199,8 @@ export default class EntityBuilder {
                     _this._createSimplefunction(device);
                     _this._createComplexFunction(device);
                     defered.resolve(device);
+                } else {
+                    defered.resolve(data);
                 }
             }).catch(function(err) {
                 defered.resolve(err);
