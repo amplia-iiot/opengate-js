@@ -205,8 +205,9 @@ import Subscriptions from &apos;../devices/commsModules/subscriptions/Subscripti
 let jp = require(&apos;jsonpath&apos;);
 let Validator = require(&apos;jsonschema&apos;).Validator;
 let v = new Validator();
-let ERROR_VALUE_NOT_ALLOWED = &apos;The value is not allowed. The value should be formatted as follows:&apos;;
-let ERROR_DATASTREAM_NOT_ALLOWED = &apos;The datastream is not allowed.&apos;;
+let ERROR_VALUE_NOT_ALLOWED = &apos;The value is not allowed. The value should be formatted as follows: &apos;;
+let ERROR_DATASTREAM_NOT_ALLOWED = &apos;Datastream is not allowed.&apos;;
+let ERROR_FUNCTION_NOT_ALLOWED = &apos;Function is not allowed.&apos;;
 let ERROR_ID_VALUE = &apos;Parameter id and value must be defined&apos;;
 let ERROR_ORGANIZATION = &apos;Parameters organization must be defined&apos;;
 
@@ -246,13 +247,13 @@ export default class EntityBuilder {
         let allowedDatastreamsBuilder = this._ogapi.datamodelsSearchBuilder().filter(f).build();
 
         allowedDatastreamsBuilder.execute().then(function(okh) {
-            if (okh.statusCode === 200) {
-                _this.schema = {};
-                return okh;
-            } else {
-                defered.resolve({ data: &apos;No content&apos;, statusCode: 204 });
-            }
+            _this.schema = {};
+            return okh;
+
         }).then(function(data) {
+            if (data.statusCode !== 200) {
+                defered.resolve({ data: &apos;No content: Datastreams not found&apos;, statusCode: 204 });
+            }
 
             _this._getJsonPathElements(data.data).then(function() {
                 data.data = _this._setDevicesProperties(data.data, filterElement);
@@ -316,29 +317,29 @@ export default class EntityBuilder {
     _createComplexFunction(parent) {
         let _this = parent;
         _this[&apos;withComplex&apos;] = function(_id, idCommunicationModules, val) {
+
+            if (!_this._definedSchemas[_id]) {
+                throw new Error(ERROR_DATASTREAM_NOT_ALLOWED);
+            } else if (!_this._definedSchemas[_id].complex) {
+                throw new Error(ERROR_FUNCTION_NOT_ALLOWED);
+            }
             if (!idCommunicationModules || !val) {
                 throw new Error(ERROR_ID_VALUE);
             }
 
-            if (!_this._definedSchemas[_id] &amp;&amp; !_this._definedSchemas[_id].complex) {
-                throw new Error(ERROR_DATASTREAM_NOT_ALLOWED);
-            }
 
             var cmElement = {
                 &apos;_index&apos;: {
                     &apos;value&apos;: idCommunicationModules
-                }
-            };
-            if (_id.includes(&apos;identifier&apos;)) {
-                cmElement[&apos;_value&apos;] = val;
-            } else {
-                cmElement[&apos;_value&apos;] = {
+                },
+                &apos;_value&apos;: {
                     &apos;_received&apos;: {
                         &apos;value&apos;: val
                     }
-                };
+                }
+            };
 
-            }
+
             let jSchema = _this._definedSchemas[_id].value;
             if (v.validate(val, jSchema).valid) {
                 _this._entity[_id] = _this._entity[_id] ? _this._entity[_id] : [];
@@ -353,8 +354,10 @@ export default class EntityBuilder {
     _createSimplefunction(parent) {
         let _this = parent;
         _this[&apos;with&apos;] = function(_id, val) {
-            if (!_this._definedSchemas[_id] &amp;&amp; _this._definedSchemas[_id].complex) {
+            if (!_this._definedSchemas[_id]) {
                 throw new Error(ERROR_DATASTREAM_NOT_ALLOWED);
+            } else if (_this._definedSchemas[_id].complex) {
+                throw new Error(ERROR_FUNCTION_NOT_ALLOWED);
             }
             let jSchema = _this._definedSchemas[_id].value;
             if (v.validate(val, jSchema).valid) {
@@ -389,6 +392,8 @@ export default class EntityBuilder {
                     _this._createSimplefunction(device);
                     _this._createComplexFunction(device);
                     defered.resolve(device);
+                } else {
+                    defered.resolve(data);
                 }
             }).catch(function(err) {
                 defered.resolve(err);
