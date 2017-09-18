@@ -3,7 +3,7 @@
 import q from 'q';
 import BaseProvision from '../provision/BaseProvision';
 
-const ENTITY_ID = 'provision.device.identifier';
+const ENTITY_ID = 'provision.administration.identifier';
 /**
  * This is a base object that contains all you can do about Devices.
  */
