@@ -125,7 +125,7 @@ var JsonSchemaSearchBuilder = (function (_SearchBuilder) {
          * @description
          * @example
          *  ogapi.JsonSchemaSearchBuilder().withPath('string').build()
-         * @param {!string} jsonSchemaPath - path
+         * @param {!string} path - jsonSchemaPath
          * @return {JsonSchemaSearchBuilder}
          */
     }, {
