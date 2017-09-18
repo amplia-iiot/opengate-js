@@ -22,7 +22,7 @@ var _provisionBaseProvision = require('../provision/BaseProvision');
 
 var _provisionBaseProvision2 = _interopRequireDefault(_provisionBaseProvision);
 
-var ENTITY_ID = 'provision.device.identifier';
+var ENTITY_ID = 'provision.administration.identifier';
 /**
  * This is a base object that contains all you can do about Devices.
  */
