@@ -136,9 +136,9 @@ var EntityBuilder = (function () {
                 if (_id.startsWith('provision.administration') || _id.startsWith(filter)) {
                     response.allowedDatastreams.push(element);
                     if (_id.includes('communicationModules')) {
-                        _this.schema[_id] = { value: element.schema, complex: filter.includes('subscriber') || filter.includes('subscription') ? false : true };
+                        _this.schema[_id] = { value: element.schema, complex: filter.includes('subscriber') || filter.includes('subscription') ? false : true, 'function': filter.includes('subscriber') || filter.includes('subscription') ? 'with' : 'withComplex' };
                     } else {
-                        _this.schema[_id] = { value: element.schema, complex: false };
+                        _this.schema[_id] = { value: element.schema, complex: false, 'function': 'with' };
                     }
                 }
             });

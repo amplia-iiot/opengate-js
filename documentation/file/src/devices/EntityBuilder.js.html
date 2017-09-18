@@ -302,9 +302,9 @@ export default class EntityBuilder {
             if (_id.startsWith(&apos;provision.administration&apos;) || _id.startsWith(filter)) {
                 response.allowedDatastreams.push(element);
                 if (_id.includes(&apos;communicationModules&apos;)) {
-                    _this.schema[_id] = { value: element.schema, complex: filter.includes(&apos;subscriber&apos;) || filter.includes(&apos;subscription&apos;) ? false : true };
+                    _this.schema[_id] = { value: element.schema, complex: filter.includes(&apos;subscriber&apos;) || filter.includes(&apos;subscription&apos;) ? false : true, function: filter.includes(&apos;subscriber&apos;) || filter.includes(&apos;subscription&apos;) ? &apos;with&apos; : &apos;withComplex&apos; };
                 } else {
-                    _this.schema[_id] = { value: element.schema, complex: false };
+                    _this.schema[_id] = { value: element.schema, complex: false, function: &apos;with&apos; };
 
                 }
             }

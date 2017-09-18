@@ -315,7 +315,7 @@ export default class Datamodels extends BaseProvision {
             &apos;name&apos;: this._name,
             &apos;version&apos;: this._version,
             &apos;description&apos;: this._description,
-            &apos;categories&apos;: this._categories
+            &apos;categories&apos;: this._categories.length &gt; 0 ? this._categories : undefined
         }
     }
 

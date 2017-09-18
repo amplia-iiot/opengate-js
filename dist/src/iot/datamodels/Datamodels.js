@@ -164,7 +164,7 @@ var Datamodels = (function (_BaseProvision) {
                 'name': this._name,
                 'version': this._version,
                 'description': this._description,
-                'categories': this._categories
+                'categories': this._categories.length > 0 ? this._categories : undefined
             };
         }
     }, {
