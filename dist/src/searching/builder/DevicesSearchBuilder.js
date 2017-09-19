@@ -38,7 +38,7 @@ var DevicesSearchBuilder = (function (_FlattenedSearchBuilder) {
   function DevicesSearchBuilder(parent) {
     _classCallCheck(this, DevicesSearchBuilder);
 
-    _get(Object.getPrototypeOf(DevicesSearchBuilder.prototype), 'constructor', this).call(this, parent, {}, new _utilSearchingFieldsFieldFinder2['default'](parent, '/entities'));
+    _get(Object.getPrototypeOf(DevicesSearchBuilder.prototype), 'constructor', this).call(this, parent, {}, new _utilSearchingFieldsFieldFinder2['default'](parent, BASE_URL));
     this._url = BASE_URL;
   }
 

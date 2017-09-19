@@ -34,7 +34,6 @@ for (var field in _IotFields.IOT_FIELDS) {
 }
 
 var match_url = {
-    '/devices': 'DEVICE_PART_DEVICE',
     '/jobs': 'JOB',
     '/alarms': 'ENTITY_ALARM',
     '/operations': 'ENTITY_OPERATION',
@@ -49,8 +48,9 @@ var match_url = {
     '/catalog/hardwares': 'MODEL',
     '/domains': 'DOMAIN',
     '/users': 'USER',
-    '/entities': 'EMPTY',
-    '/subscribers': 'EMPTY'
+    '/devices': 'SearchOnDatamodel',
+    '/subscriptions': 'SearchOnDatamodel',
+    '/subscribers': 'SearchOnDatamodel'
 };
 
 var match_type = {
@@ -73,17 +73,55 @@ var complexPrimaryType = ['DEVICE_PART_SUBSCRIBER', 'DEVICE_PART_SUBSCRIPTION', 
 var complexFields = ['subscriber', 'subscription', 'communicationsModule', 'device'];
 var SIMPLE_FIELDS = 'simple';
 var COMPLEX_FIELDS = 'complex';
+var SEARCH_FIELDS = 'search';
 
 var TYPE_FIELD = {
     get: function get(url) {
         if (complexPrimaryType.indexOf(match_url[url]) >= 0) {
             return COMPLEX_FIELDS;
         }
+        if (match_url[url] === 'SearchOnDatamodel') {
+            return SEARCH_FIELDS;
+        }
         return SIMPLE_FIELDS;
     }
 };
 
-var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SIMPLE_FIELDS, function (states, context, primaryType, defered) {
+var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEARCH_FIELDS, function (states, context, primaryType, defered) {
+    var filterByUrl = {
+        '/devices': function devices(field) {
+            return true;
+        },
+        '/subscriptions': function subscriptions(field) {
+            return true;
+        },
+        '/subscribers': function subscribers(field) {
+            return true;
+        }
+    };
+
+    this._ogapi.datamodelsSearchBuilder().build().execute().then(function (response) {
+        var datastreams = [];
+        if (response.statusCode === 200) {
+            datastreams = response.data.datamodels.map(function (datamodel) {
+                var categories = datamodel.categories || [];
+                return categories.map(function (category) {
+                    var datastreams = category.datastreams || [];
+                    return datastreams.map(function (ds) {
+                        return ds.identifier;
+                    });
+                }).reduce(function (preVal, elem) {
+                    return preVal.concat(elem);
+                });;
+            }).reduce(function (preVal, elem) {
+                return preVal.concat(elem);
+            });
+        }
+        defered.resolve(datastreams);
+    })['catch'](function (error) {
+        defered.reject(error);
+    });
+}), _defineProperty(_FIELD_SEARCHER, SIMPLE_FIELDS, function (states, context, primaryType, defered) {
     if (states.length > 1) return defered.resolve([]);
     defered.resolve(context[primaryType].slice());
 }), _defineProperty(_FIELD_SEARCHER, COMPLEX_FIELDS, function (states, context, primaryType, defered) {
@@ -156,7 +194,7 @@ var FieldFinder = (function () {
             var input = arguments.length <= 0 || arguments[0] === undefined ? "" : arguments[0];
 
             var defered = _q2['default'].defer();
-            FIELD_SEARCHER[this._type](input.split('.'), FIELDS[match_url[this._url]], match_url[this._url], defered);
+            FIELD_SEARCHER[this._type].call(this, input.split('.'), FIELDS[match_url[this._url]], match_url[this._url], defered);
             return defered.promise;
         }
     }]);
