@@ -14,7 +14,6 @@ for (var field in IOT_FIELDS) {
 }
 
 const match_url = {
-    '/devices': 'DEVICE_PART_DEVICE',
     '/jobs': 'JOB',
     '/alarms': 'ENTITY_ALARM',
     '/operations': 'ENTITY_OPERATION',
@@ -29,8 +28,9 @@ const match_url = {
     '/catalog/hardwares': 'MODEL',
     '/domains': 'DOMAIN',
     '/users': 'USER',
-    '/entities': 'EMPTY',
-    '/subscribers': 'EMPTY'
+    '/devices': 'SearchOnDatamodel',
+    '/subscriptions': 'SearchOnDatamodel',
+    '/subscribers': 'SearchOnDatamodel'
 };
 
 const match_type = {
@@ -53,17 +53,53 @@ const complexPrimaryType = ['DEVICE_PART_SUBSCRIBER', 'DEVICE_PART_SUBSCRIPTION'
 const complexFields = ['subscriber', 'subscription', 'communicationsModule', 'device'];
 const SIMPLE_FIELDS = 'simple';
 const COMPLEX_FIELDS = 'complex';
+const SEARCH_FIELDS = 'search';
 
 const TYPE_FIELD = {
     get: function(url) {
         if (complexPrimaryType.indexOf(match_url[url]) >= 0) {
             return COMPLEX_FIELDS;
         }
+        if (match_url[url] === 'SearchOnDatamodel') {
+            return SEARCH_FIELDS;
+        }
         return SIMPLE_FIELDS;
     }
 };
 
 const FIELD_SEARCHER = {
+    [SEARCH_FIELDS]: function(states, context, primaryType, defered) {
+        const filterByUrl = {
+            '/devices': function(field) {
+                return true;
+            },
+            '/subscriptions': function(field) {
+                return true;
+            },
+            '/subscribers': function(field) {
+                return true;
+            }
+        };
+
+        this._ogapi.datamodelsSearchBuilder().build().execute().then(function(response) {
+            var datastreams = [];
+            if (response.statusCode === 200) {
+                datastreams = response.data.datamodels.map(function(datamodel) {
+                    var categories = datamodel.categories || [];
+                    return categories.map(function(category) {
+                        var datastreams = category.datastreams || [];
+                        return datastreams.map(function(ds) {
+                            return ds.identifier;
+                        });
+                    }).reduce(function(preVal, elem) { return preVal.concat(elem); });;
+                }).reduce(function(preVal, elem) { return preVal.concat(elem); });
+            }
+            defered.resolve(datastreams);
+        }).catch(function(error) {
+            defered.reject(error);
+        });
+
+    },
     [SIMPLE_FIELDS]: function(states, context, primaryType, defered) {
         if (states.length > 1) return defered.resolve([]);
         defered.resolve(context[primaryType].slice());
@@ -144,7 +180,7 @@ export default class FieldFinder {
 
     find(input = "") {
         let defered = q.defer();
-        FIELD_SEARCHER[this._type](input.split('.'), FIELDS[match_url[this._url]], match_url[this._url], defered);
+        FIELD_SEARCHER[this._type].call(this, input.split('.'), FIELDS[match_url[this._url]], match_url[this._url], defered);
         return defered.promise;
     }
 }

@@ -13,7 +13,7 @@ export default class DevicesSearchBuilder extends FlattenedSearchBuilder {
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */
     constructor(parent) {
-        super(parent, {}, new FieldFinder(parent, '/entities'));
+        super(parent, {}, new FieldFinder(parent, BASE_URL));
         this._url = BASE_URL;
     }
 
