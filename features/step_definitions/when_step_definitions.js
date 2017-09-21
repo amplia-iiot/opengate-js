@@ -220,7 +220,7 @@ module.exports = function() {
         }
 
         function catchErrorResponse(err) {
-            //console.log("EXECUTE ERROR: " + JSON.stringify(err));
+            console.log("EXECUTE ERROR: " + JSON.stringify(err));
             _this.responseData = err;
             _this.error = err;
             //console.log(_this.error);
@@ -271,7 +271,7 @@ module.exports = function() {
         }
     });
 
-    this.When(/^I execute with async paging it and cancel it$/, function () {
+    this.When(/^I execute with async paging it and cancel it$/, function() {
         var _this = this;
         _this.error = undefined;
         _this.responseData = undefined;
@@ -308,7 +308,7 @@ module.exports = function() {
         }
     });
 
-    this.When(/^I execute with async paging it and cancel it with custom message$/, function () {
+    this.When(/^I execute with async paging it and cancel it with custom message$/, function() {
         var _this = this;
         _this.error = undefined;
         _this.responseData = undefined;

@@ -135,6 +135,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-IOT_URL">IOT_URL</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching/builder</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AdministrativeStateSearchBuilder.js~AdministrativeStateSearchBuilder.html">AdministrativeStateSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AlarmsSearchBuilder.js~AlarmsSearchBuilder.html">AlarmsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AreasSearchBuilder.js~AreasSearchBuilder.html">AreasSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BundlesSearchBuilder.js~BundlesSearchBuilder.html">BundlesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CertificatesSearchBuilder.js~CertificatesSearchBuilder.html">CertificatesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ChannelsSearchBuilder.js~ChannelsSearchBuilder.html">ChannelsSearchBuilder</a></span></span></li>
@@ -205,6 +206,7 @@ import Certificates from &apos;./security/Certificates&apos;
 import Users from &apos;./users/Users&apos;
 import OrganizationFinder from &apos;./organizations/OrganizationFinder&apos;
 import ChannelFinder from &apos;./channels/ChannelFinder&apos;
+import AreasSearchBuilder from &apos;./searching/builder/AreasSearchBuilder&apos;
 import AreaFinder from &apos;./areas/AreaFinder&apos;
 import Channels from &apos;./channels/Channels&apos;
 import Areas from &apos;./areas/Areas&apos;
@@ -332,6 +334,14 @@ export default class InternalOpenGateAPI {
      */
     newChannelFinder() {
         return new ChannelFinder(this);
+    }
+
+    /**
+     * This return a AreasSearchBuilder to build a specific AreasSearch
+     * @return {AreasSearchBuilder}
+     */
+    areasSearchBuilder() {
+        return new AreasSearchBuilder(this);
     }
 
     /**

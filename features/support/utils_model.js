@@ -26,13 +26,16 @@ module.exports = {
             "channel finder": function(ogapi) {
                 return ogapi.newChannelFinder();
             },
-            "area finder": function (ogapi) {
+            "areas search": function(ogapi) {
+                return ogapi.areasSearchBuilder();
+            },
+            "area finder": function(ogapi) {
                 return ogapi.newAreaFinder();
             },
             "channels builder": function(ogapi) {
                 return ogapi.channelsBuilder();
             },
-            "areas builder": function (ogapi) {
+            "areas builder": function(ogapi) {
                 return ogapi.areasBuilder();
             },
             "channels search": function(ogapi) {
