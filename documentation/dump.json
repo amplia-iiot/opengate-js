@@ -20274,7 +20274,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "'use strict';\nimport BaseProvision from '../../provision/BaseProvision'\nimport Category from '../catalog/Category'\nimport Datastream from '../catalog/Datastream'\n\nexport const PRE_RESOURCE = '/organizations';\nexport const DATAMODELS_RESOURCE = '/datamodels';\n/**\n * This is a base object for create a IoT Datamodel\n */\nexport default class Datamodels extends BaseProvision {\n    /**\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\n     * @param {!string} organization - Organization where the IoT datamodel will be created\n     */\n    constructor(ogapi, organization) {\n        super(ogapi, PRE_RESOURCE);\n        this._isValidString(organization, 'organization', 50);\n        this._organization = organization;\n        this._categories = [];\n        this._resource = this._resource + '/' + this._organization + DATAMODELS_RESOURCE;\n    }\n\n    /**\n     * Set the identifier attribute\n     * @param {!string} identifier - required field\n     * @return {Datamodels}\n     */\n    withIdentifier(identifier) {\n        this._isValidString(identifier, 'identifier', 100);\n        this._identifier = identifier;\n        return this;\n    }\n\n    /**\n     * Set the name attribute\n     * @param {!string} name - required field\n     * @return {Datamodels}\n     */\n    withName(name) {\n        this._isValidString(name, 'name', 100);\n        this._name = name;\n        return this;\n    }\n\n    /**\n     * Set the version attribute\n     * @param {!string} version - required field\n     * @return {Datamodels}\n     */\n    withVersion(version) {\n        this._isValidString(version, 'version', 100);\n        this._version = version;\n        return this;\n    }\n\n    /**\n     * Set the description attribute\n     * @param {string} description\n     * @return {Datamodels}\n     */\n    withDescription(description) {\n        if (description)\n            this._isValidString(description, 'description', 100);\n        this._description = description;\n        return this;\n    }\n\n    /**\n     * Add a flavor. If the field datastreams have value, they will add to this flavor\n     * @param {!string} category\n     * @param {!Array} datastreams\n     * @return {Datamodels}\n     */\n    addCategory(category, datastreams) {\n        this._isValidString(category, 'category', 100);\n        this._categories.forEach(function(_category, index) {\n            if (category.name === _category) {\n                throw new Error('Category ' + category + ' already exists.');\n            }\n        });\n        let _category = new Category(this._ogapi, category);\n        if (datastreams && datastreams.length > 0)\n            _category.addDatastreams(datastreams);\n        this._categories.push(_category._composeElement());\n        return this;\n    }\n\n    /**\n     * Add a datastream to the indicated category\n     * @param {!string} category\n     * @param {!object} datastream\n     * @return {Datamodels}\n     */\n    addDatastream(category, datastream) {\n        this._isValidString(category, 'category', 100);\n        //Buscamos category y si existe se añade a la lista de categories\n        var exists_category = -1;\n        this._categories.forEach(function(_category, index) {\n            if (_category.name === category) {\n                exists_category = index;\n            }\n        });\n        if (exists_category === -1) {\n            throw new Error('Category ' + category + ' not exists for this datamodel. Use addCategory instead.');\n        }\n        this._categories[exists_category].datastreams.push(datastream);\n        return this;\n    }\n\n    _composeElement() {\n        if (!this._name) {\n            throw new Error('Name is required on IoTDatamodel');\n        }\n\n        if (!this._version) {\n            throw new Error('Version is required on IoTDatamodel');\n        }\n\n        return {\n            'identifier': this._identifier,\n            'name': this._name,\n            'version': this._version,\n            'description': this._description,\n            'categories': this._categories.length > 0 ? this._categories : undefined\n        }\n    }\n\n    _buildURL() {\n        console.log('URL: ' + this._resource);\n        return this._resource;\n    }\n\n    /**\n     * Update not supported on this builder. Use IoTDatamodelHelper instead.\n     */\n    update() {\n        throw new Error('Update not supported on this builder. Use IoTDatamodelHelper instead.');\n    }\n\n    /**\n     * Delete not supported on this builder. Use IoTDatamodelHelper instead.\n     */\n    delete() {\n        throw new Error('Delete not supported on this builder. Use IoTDatamodelHelper instead.');\n    }\n\n    _isValidString(string, param_name, max_length) {\n        if (typeof string !== 'string' || string.length === 0 || string.length > max_length)\n            throw new Error('Parameter ' + param_name + ' must be a string, cannot be empty and has a maximum length of ' + max_length + 'on IoTDatamodel');\n    }\n}"
+    "content": "'use strict';\nimport BaseProvision from '../../provision/BaseProvision'\nimport Category from '../catalog/Category'\nimport Datastream from '../catalog/Datastream'\n\nexport const PRE_RESOURCE = '/organizations';\nexport const DATAMODELS_RESOURCE = '/datamodels';\n/**\n * This is a base object for create a IoT Datamodel\n */\nexport default class Datamodels extends BaseProvision {\n    /**\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\n     * @param {!string} organization - Organization where the IoT datamodel will be created\n     */\n    constructor(ogapi, organization) {\n        super(ogapi, PRE_RESOURCE);\n        this._isValidString(organization, 'organization', 50);\n        this._organization = organization;\n        this._categories = [];\n        this._resource = this._resource + '/' + this._organization + DATAMODELS_RESOURCE;\n    }\n\n    /**\n     * Set the identifier attribute\n     * @param {!string} identifier - required field\n     * @return {Datamodels}\n     */\n    withIdentifier(identifier) {\n        this._isValidString(identifier, 'identifier', 100);\n        this._identifier = identifier;\n        return this;\n    }\n\n    /**\n     * Set the name attribute\n     * @param {!string} name - required field\n     * @return {Datamodels}\n     */\n    withName(name) {\n        this._isValidString(name, 'name', 100);\n        this._name = name;\n        return this;\n    }\n\n    /**\n     * Set the version attribute\n     * @param {!string} version - required field\n     * @return {Datamodels}\n     */\n    withVersion(version) {\n        this._isValidString(version, 'version', 100);\n        this._version = version;\n        return this;\n    }\n\n    /**\n     * Set the description attribute\n     * @param {string} description\n     * @return {Datamodels}\n     */\n    withDescription(description) {\n        if (description)\n            this._isValidString(description, 'description', 100);\n        this._description = description;\n        return this;\n    }\n\n    /**\n     * Add a flavor. If the field datastreams have value, they will add to this flavor\n     * @param {!string} category\n     * @param {!Array} datastreams\n     * @return {Datamodels}\n     */\n    addCategory(category, datastreams) {\n        this._isValidString(category, 'category', 100);\n        this._categories.forEach(function(_category, index) {\n            if (category.name === _category) {\n                throw new Error('Category ' + category + ' already exists.');\n            }\n        });\n        let _category = new Category(this._ogapi, category);\n        if (datastreams && datastreams.length > 0)\n            _category.addDatastreams(datastreams);\n        this._categories.push(_category._composeElement());\n        return this;\n    }\n\n    /**\n     * Add a datastream to the indicated category\n     * @param {!string} category\n     * @param {!object} datastream\n     * @return {Datamodels}\n     */\n    addDatastream(category, datastream) {\n        this._isValidString(category, 'category', 100);\n        //Buscamos category y si existe se añade a la lista de categories\n        var exists_category = -1;\n        this._categories.forEach(function(_category, index) {\n            if (_category.identifier === category) {\n                exists_category = index;\n            }\n        });\n        if (exists_category === -1) {\n            throw new Error('Category ' + category + ' not exists for this datamodel. Use addCategory instead.');\n        }\n        this._categories[exists_category].datastreams ? this._categories[exists_category].datastreams.push(datastream) :\n            this._categories[exists_category]['datastreams'] = [datastream];\n        return this;\n    }\n\n    _composeElement() {\n        if (!this._name) {\n            throw new Error('Name is required on IoTDatamodel');\n        }\n\n        if (!this._version) {\n            throw new Error('Version is required on IoTDatamodel');\n        }\n\n        return {\n            'identifier': this._identifier,\n            'name': this._name,\n            'version': this._version,\n            'description': this._description,\n            'categories': this._categories.length > 0 ? this._categories : undefined\n        }\n    }\n\n    _buildURL() {\n        console.log('URL: ' + this._resource);\n        return this._resource;\n    }\n\n    /**\n     * Update not supported on this builder. Use IoTDatamodelHelper instead.\n     */\n    update() {\n        throw new Error('Update not supported on this builder. Use IoTDatamodelHelper instead.');\n    }\n\n    /**\n     * Delete not supported on this builder. Use IoTDatamodelHelper instead.\n     */\n    delete() {\n        throw new Error('Delete not supported on this builder. Use IoTDatamodelHelper instead.');\n    }\n\n    _isValidString(string, param_name, max_length) {\n        if (typeof string !== 'string' || string.length === 0 || string.length > max_length)\n            throw new Error('Parameter ' + param_name + ' must be a string, cannot be empty and has a maximum length of ' + max_length + 'on IoTDatamodel');\n    }\n}"
   },
   {
     "__docId__": 900,
@@ -20726,7 +20726,7 @@
     "longname": "src/iot/datamodels/Datamodels.js~Datamodels#_composeElement",
     "access": null,
     "description": null,
-    "lineNumber": 111,
+    "lineNumber": 112,
     "undocument": true,
     "params": [],
     "return": {
@@ -20746,7 +20746,7 @@
     "longname": "src/iot/datamodels/Datamodels.js~Datamodels#_buildURL",
     "access": null,
     "description": null,
-    "lineNumber": 129,
+    "lineNumber": 130,
     "undocument": true,
     "params": [],
     "return": {
@@ -20766,7 +20766,7 @@
     "longname": "src/iot/datamodels/Datamodels.js~Datamodels#update",
     "access": null,
     "description": "Update not supported on this builder. Use IoTDatamodelHelper instead.",
-    "lineNumber": 137,
+    "lineNumber": 138,
     "params": [],
     "generator": false
   },
@@ -20780,7 +20780,7 @@
     "longname": "src/iot/datamodels/Datamodels.js~Datamodels#delete",
     "access": null,
     "description": "Delete not supported on this builder. Use IoTDatamodelHelper instead.",
-    "lineNumber": 144,
+    "lineNumber": 145,
     "params": [],
     "generator": false
   },
@@ -20794,7 +20794,7 @@
     "longname": "src/iot/datamodels/Datamodels.js~Datamodels#_isValidString",
     "access": null,
     "description": null,
-    "lineNumber": 148,
+    "lineNumber": 149,
     "undocument": true,
     "params": [
       {
@@ -21014,7 +21014,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "'use strict';\nimport BaseProvision from '../../provision/BaseProvision'\nimport Category from '../catalog/Category'\nimport Datastream from '../catalog/Datastream'\n\nexport const PRE_RESOURCE = '/organizations';\nexport const POST_RESOURCE = '/datamodels';\n\n/**\n * This is a base object for update and delete a IoT Datamodel\n */\nexport default class DatamodelsHelper extends BaseProvision {\n    /**\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\n     * @param {!string} organization - Organization where the IoT datamodel was create\n     * @param {!object} datamodel - Json object of IoT datamodel to modify or delete. \n     */\n    constructor(ogapi, organization, datamodel) {\n        super(ogapi, PRE_RESOURCE);\n        this._isValidString(organization, 'organization', 50);\n        this._organization = organization;\n\n        //no modificar este objeto, es solo para comprobaciones\n        this._datamodel = datamodel;\n        this._name = this._datamodel.name;\n        this._isValidString(this._name, 'name of object datamodel', 100);\n        this._version = this._datamodel.version;\n        this._isValidString(this._version, 'version of object datamodel', 100);\n        this._description = this._datamodel.description;\n        this._categories = this._datamodel.categories;\n        if (!this._categories) {\n            throw new Error('Malformed IoT datamodel, categories not exists.');\n        }\n        this._identifier = this._datamodel.identifier;\n    }\n\n    /**\n     * Set the identifier attribute\n     * @param {!string} identifier - required field\n     * @return {Datamodels}\n     */\n    withIdentifier(identifier) {\n        this._isValidString(identifier, 'identifier', 100);\n        this._identifier = identifier;\n        return this;\n    }\n\n    /**\n     * Set the name attribute\n     * @param {!string} name - required field\n     * @return {DatamodelsHelper}\n     */\n    withName(name) {\n        this._isValidString(name, 'name', 100);\n        this._name = name;\n        return this;\n    }\n\n    /**\n     * Set the version attribute\n     * @param {!string} version - required field\n     * @return {DatamodelsHelper}\n     */\n    withVersion(version) {\n        this._isValidString(version, 'version', 100);\n        this._version = version;\n        return this;\n    }\n\n    /**\n     * Set the description attribute\n     * @param {string} description\n     * @return {DatamodelsHelper}\n     */\n    withDescription(description) {\n        if (description)\n            this._isValidString(description, 'description', 100);\n        this._description = description;\n        return this;\n    }\n\n    /**\n     * Add a category. If the field datastreams have value, they will add to this category\n     * @param {!string} category\n     * @param {Array} datastreams\n     * @return {DatamodelsHelper}\n     */\n    addCategory(category, datastreams) {\n        this._isValidString(category, 'category', 100);\n        this._categories.forEach(function(_category, index) {\n            if (_category.name === category) {\n                throw new Error('Category ' + category + ' already exists.');\n            }\n        });\n        let _category = new Category(this._ogapi, category);\n        if (datastreams && datastreams.length > 0)\n            _category.addDatastreams(datastreams);\n        this._categories.push(_category._composeElement());\n        return this;\n    }\n\n    /**\n     * Add a datastream to the indicated category \n     * @param {!string} category\n     * @param {!object} datastream\n     * @return {DatamodelsHelper}\n     */\n    addDatastream(category, datastream) {\n        this._isValidString(category, 'category', 100);\n        //Buscamos category y si existe se añade a la lista de categories\n        var exists_category = -1;\n        this._categories.forEach(function(_category, index) {\n            if (_category.name === category) {\n                exists_category = index;\n            }\n        });\n        if (exists_category === -1) {\n            throw new Error('Category ' + category + ' not exists for this datamodel. Use addCategory instead.');\n        }\n        this._categories[exists_category].datastreams.push(datastream);\n        return this;\n    }\n\n    /**\n     * Remove category\n     * @param {!string} category\n     * @return {DatamodelsHelper}\n     */\n    removeCategory(category) {\n        this._isValidString(category, 'category', 100);\n        var remove_index = -1;\n        this._categories.forEach(function(_category, index) {\n            if (_category.name === category)\n                remove_index = index;\n        });\n        if (remove_index === -1) {\n            throw new Error('Category ' + category + ' not exists for this datamodel');\n        }\n        if (this._categories.length === 1) {\n            throw new Error('Category ' + category + ' can\\'t remove, datamodel can\\'t be empty');\n        }\n        this._categories.splice(remove_index, 1);\n        return this;\n    }\n\n    /**\n     * Remove datastream to the indicated category\n     * @param {!string} category\n     * @param {!string} id_datastream of datastream\n     * @return {DatamodelsHelper}\n     */\n    removeDatastream(category, id_datastream) {\n        this._isValidString(category, 'category', 100);\n        let remove_category_index = -1;\n        let remove_datastream_index = -1;\n        this._categories.forEach(function(_category, category_index) {\n            if (_category.name === category) {\n                remove_category_index = category_index;\n                _category.datastreams.forEach(function(datastream, datastream_index) {\n                    if (datastream.id === id_datastream) {\n                        remove_datastream_index = datastream_index;\n                    }\n                })\n            }\n        });\n        if (remove_category_index === -1) {\n            throw new Error('Category ' + category + ' not exists for this datamodel');\n        }\n        if (remove_datastream_index === -1) {\n            throw new Error('Datastream ' + id_datastream + ' not exists for this datamodel and category ' + category);\n        }\n        if (this._categories[remove_category_index].datastreams.length === 1) {\n            throw new Error('Datastream ' + id_datastream + ' can\\'t remove, category ' + category + ' can\\'t be empty');\n        }\n        this._categories[remove_category_index].datastreams.splice(remove_datastream_index, 1);\n        let _category = new Category(this._ogapi, category, this._categories[remove_category_index].datastreams);\n        this._categories.splice(remove_category_index, 1);\n        this._categories.push(_category._composeElement());\n        return this;\n    }\n\n    /**\n     * Update category name\n     * @param {!string} old_category name\n     * @param {!string} new_category name\n     * @return {DatamodelsHelper}\n     */\n    updateCategory(old_category, new_category) {\n        this._isValidString(new_category, 'new category', 100);\n        this._isValidString(old_category, 'old category', 100);\n        let old_category_index = -1;\n        let new_category_index = -1;\n        this._categories.forEach(function(category, index) {\n            switch (category.name) {\n                case old_category:\n                    old_category_index = index;\n                    break;\n                case new_category:\n                    new_category_index = index;\n                    break;\n            }\n        });\n        if (new_category_index != -1) {\n            throw new Error('New category ' + category + ' already exists.');\n        }\n        if (old_category_index === -1) {\n            throw new Error('Category ' + old_category + ' not exists for this datamodel.');\n        }\n        this._categories[old_category_index].name = new_category;\n        return this;\n    }\n\n    /**\n     * Update datastream to the indicated category\n     * @param {!string} category\n     * @param {!string} id_datastream of datastream\n     * @param {!Object} datastream json object\n     * @return {DatamodelsHelper}\n     */\n    updateDatastream(category, id_datastream, datastream) {\n        this._isValidString(category, 'category', 100);\n        this._isValidString(id_datastream, 'id datastream', 100);\n        if (!datastream || typeof datastream !== 'object') {\n            throw new Error('Datastream must be an object');\n        }\n        let update_category_index = -1;\n        let update_datastream_index = -1;\n        this._categories.forEach(function(_category, category_index) {\n            if (_category.name === category) {\n                update_category_index = category_index;\n                _category.datastreams.forEach(function(_datastream, datastream_index) {\n                    if (_datastream.id === id_datastream) {\n                        update_datastream_index = datastream_index;\n                    }\n                });\n            }\n        });\n        if (update_category_index === -1) {\n            throw new Error('Category ' + category + ' not exists for this datamodel. Create it, use method addCategory instead');\n        }\n        if (update_datastream_index === -1) {\n            throw new Error('Datastream ' + id_datastream + ' not exists for this datamodel and category ' + category + '. Create it, use method addDatastream instead.');\n        }\n        this._categories[update_category_index].datastreams[update_datastream_index] = datastream;\n        return this;\n    }\n\n    _composeElement() {\n        return {\n            'identifier': this._identifier,\n            'name': this._name,\n            'version': this._version,\n            'description': this._description,\n            'categories': this._categories\n        }\n    }\n\n    _buildURL() {\n        return this._resource + '/' + this._organization + POST_RESOURCE + '/' + this._identifier;\n    }\n\n    /**\n     * Create not supported on this builder. Use IoTDatamodelHelper instead.\n     */\n    create() {\n        throw new Error('Create not supported on this builder. Use DatamodelsBuilder instead.');\n    }\n\n    _isValidString(string, param_name, max_length) {\n        if (typeof string !== 'string' || string.length === 0 || string.length > max_length)\n            throw new Error('Parameter ' + param_name + ' must be a string, cannot be empty and has a maximum length of ' + max_length + ' on DatamodelsHelper');\n    }\n}"
+    "content": "'use strict';\nimport BaseProvision from '../../provision/BaseProvision'\nimport Category from '../catalog/Category'\nimport Datastream from '../catalog/Datastream'\n\nexport const PRE_RESOURCE = '/organizations';\nexport const POST_RESOURCE = '/datamodels';\n\n/**\n * This is a base object for update and delete a IoT Datamodel\n */\nexport default class DatamodelsHelper extends BaseProvision {\n    /**\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\n     * @param {!string} organization - Organization where the IoT datamodel was create\n     * @param {!object} datamodel - Json object of IoT datamodel to modify or delete. \n     */\n    constructor(ogapi, organization, datamodel) {\n        super(ogapi, PRE_RESOURCE);\n        this._isValidString(organization, 'organization', 50);\n        this._organization = organization;\n\n        //no modificar este objeto, es solo para comprobaciones\n        this._datamodel = datamodel;\n        this._name = this._datamodel.name;\n        this._isValidString(this._name, 'name of object datamodel', 100);\n        this._version = this._datamodel.version;\n        this._isValidString(this._version, 'version of object datamodel', 100);\n        this._description = this._datamodel.description;\n        this._categories = this._datamodel.categories;\n        this._identifier = this._datamodel.identifier;\n    }\n\n    /**\n     * Set the identifier attribute\n     * @param {!string} identifier - required field\n     * @return {Datamodels}\n     */\n    withIdentifier(identifier) {\n        this._isValidString(identifier, 'identifier', 100);\n        this._identifier = identifier;\n        return this;\n    }\n\n    /**\n     * Set the name attribute\n     * @param {!string} name - required field\n     * @return {DatamodelsHelper}\n     */\n    withName(name) {\n        this._isValidString(name, 'name', 100);\n        this._name = name;\n        return this;\n    }\n\n    /**\n     * Set the version attribute\n     * @param {!string} version - required field\n     * @return {DatamodelsHelper}\n     */\n    withVersion(version) {\n        this._isValidString(version, 'version', 100);\n        this._version = version;\n        return this;\n    }\n\n    /**\n     * Set the description attribute\n     * @param {string} description\n     * @return {DatamodelsHelper}\n     */\n    withDescription(description) {\n        if (description)\n            this._isValidString(description, 'description', 100);\n        this._description = description;\n        return this;\n    }\n\n    /**\n     * Add a category. If the field datastreams have value, they will add to this category\n     * @param {!string} category\n     * @param {Array} datastreams\n     * @return {DatamodelsHelper}\n     */\n    addCategory(category, datastreams) {\n        this._isValidString(category, 'category', 100);\n        this._categories.forEach(function(_category, index) {\n            if (_category.identifier === category) {\n                throw new Error('Category ' + category + ' already exists.');\n            }\n        });\n        let _category = new Category(this._ogapi, category);\n        if (datastreams && datastreams.length > 0)\n            _category.addDatastreams(datastreams);\n        this._categories.push(_category._composeElement());\n        return this;\n    }\n\n    /**\n     * Add a datastream to the indicated category \n     * @param {!string} category\n     * @param {!object} datastream\n     * @return {DatamodelsHelper}\n     */\n    addDatastream(category, datastream) {\n        this._isValidString(category, 'category', 100);\n        //Buscamos category y si existe se añade a la lista de categories\n        var exists_category = -1;\n        this._categories.forEach(function(_category, index) {\n            if (_category.identifier === category) {\n                exists_category = index;\n            }\n        });\n        if (exists_category === -1) {\n            throw new Error('Category ' + category + ' not exists for this datamodel. Use addCategory instead.');\n        }\n        this._categories[exists_category].datastreams ? this._categories[exists_category].datastreams.push(datastream) :\n            this._categories[exists_category]['datastreams'] = [datastream];\n        return this;\n    }\n\n    /**\n     * Remove category\n     * @param {!string} category\n     * @return {DatamodelsHelper}\n     */\n    removeCategory(category) {\n        this._isValidString(category, 'category', 100);\n        var remove_index = -1;\n        this._categories.forEach(function(_category, index) {\n            if (_category.identifier === category)\n                remove_index = index;\n        });\n        if (remove_index === -1) {\n            throw new Error('Category ' + category + ' not exists for this datamodel');\n        }\n        this._categories.splice(remove_index, 1);\n        return this;\n    }\n\n    /**\n     * Remove datastream to the indicated category\n     * @param {!string} category\n     * @param {!string} id_datastream of datastream\n     * @return {DatamodelsHelper}\n     */\n    removeDatastream(category, id_datastream) {\n        this._isValidString(category, 'category', 100);\n        let remove_category_index = -1;\n        let remove_datastream_index = -1;\n        this._categories.forEach(function(_category, category_index) {\n            if (_category.identifier === category) {\n                remove_category_index = category_index;\n                _category.datastreams.forEach(function(datastream, datastream_index) {\n                    if (datastream.id === id_datastream) {\n                        remove_datastream_index = datastream_index;\n                    }\n                })\n            }\n        });\n        if (remove_category_index === -1) {\n            throw new Error('Category ' + category + ' not exists for this datamodel');\n        }\n        if (remove_datastream_index === -1) {\n            throw new Error('Datastream ' + id_datastream + ' not exists for this datamodel and category ' + category);\n        }\n        if (this._categories[remove_category_index].datastreams.length === 1) {\n            throw new Error('Datastream ' + id_datastream + ' can\\'t remove, category ' + category + ' can\\'t be empty');\n        }\n        this._categories[remove_category_index].datastreams.splice(remove_datastream_index, 1);\n        let _category = new Category(this._ogapi, category, this._categories[remove_category_index].datastreams);\n        this._categories.splice(remove_category_index, 1);\n        this._categories.push(_category._composeElement());\n        return this;\n    }\n\n    /**\n     * Update category name\n     * @param {!string} old_category name\n     * @param {!string} new_category name\n     * @return {DatamodelsHelper}\n     */\n    updateCategory(old_category, new_category) {\n        this._isValidString(new_category, 'new category', 100);\n        this._isValidString(old_category, 'old category', 100);\n        let old_category_index = -1;\n        let new_category_index = -1;\n        this._categories.forEach(function(category, index) {\n            switch (category.identifier) {\n                case old_category:\n                    old_category_index = index;\n                    break;\n                case new_category:\n                    new_category_index = index;\n                    break;\n            }\n        });\n        if (new_category_index != -1) {\n            throw new Error('New category ' + category + ' already exists.');\n        }\n        if (old_category_index === -1) {\n            throw new Error('Category ' + old_category + ' not exists for this datamodel.');\n        }\n        this._categories[old_category_index].name = new_category;\n        return this;\n    }\n\n    /**\n     * Update datastream to the indicated category\n     * @param {!string} category\n     * @param {!string} id_datastream of datastream\n     * @param {!Object} datastream json object\n     * @return {DatamodelsHelper}\n     */\n    updateDatastream(category, id_datastream, datastream) {\n        this._isValidString(category, 'category', 100);\n        this._isValidString(id_datastream, 'id datastream', 100);\n        if (!datastream || typeof datastream !== 'object') {\n            throw new Error('Datastream must be an object');\n        }\n        let update_category_index = -1;\n        let update_datastream_index = -1;\n        this._categories.forEach(function(_category, category_index) {\n            if (_category.identifier === category) {\n                update_category_index = category_index;\n                _category.datastreams.forEach(function(_datastream, datastream_index) {\n                    if (_datastream.id === id_datastream) {\n                        update_datastream_index = datastream_index;\n                    }\n                });\n            }\n        });\n        if (update_category_index === -1) {\n            throw new Error('Category ' + category + ' not exists for this datamodel. Create it, use method addCategory instead');\n        }\n        if (update_datastream_index === -1) {\n            throw new Error('Datastream ' + id_datastream + ' not exists for this datamodel and category ' + category + '. Create it, use method addDatastream instead.');\n        }\n        this._categories[update_category_index].datastreams[update_datastream_index] = datastream;\n        return this;\n    }\n\n    _composeElement() {\n        return {\n            'identifier': this._identifier,\n            'name': this._name,\n            'version': this._version,\n            'description': this._description,\n            'categories': this._categories\n        }\n    }\n\n    _buildURL() {\n        return this._resource + '/' + this._organization + POST_RESOURCE + '/' + this._identifier;\n    }\n\n    /**\n     * Create not supported on this builder. Use IoTDatamodelHelper instead.\n     */\n    create() {\n        throw new Error('Create not supported on this builder. Use DatamodelsBuilder instead.');\n    }\n\n    _isValidString(string, param_name, max_length) {\n        if (typeof string !== 'string' || string.length === 0 || string.length > max_length)\n            throw new Error('Parameter ' + param_name + ' must be a string, cannot be empty and has a maximum length of ' + max_length + ' on DatamodelsHelper');\n    }\n}"
   },
   {
     "__docId__": 931,
@@ -21240,7 +21240,7 @@
     "longname": "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#_identifier",
     "access": null,
     "description": null,
-    "lineNumber": 34,
+    "lineNumber": 31,
     "undocument": true,
     "type": {
       "types": [
@@ -21258,7 +21258,7 @@
     "longname": "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#withIdentifier",
     "access": null,
     "description": "Set the identifier attribute",
-    "lineNumber": 42,
+    "lineNumber": 39,
     "params": [
       {
         "nullable": false,
@@ -21291,7 +21291,7 @@
     "longname": "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#_identifier",
     "access": null,
     "description": null,
-    "lineNumber": 44,
+    "lineNumber": 41,
     "undocument": true,
     "type": {
       "types": [
@@ -21309,7 +21309,7 @@
     "longname": "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#withName",
     "access": null,
     "description": "Set the name attribute",
-    "lineNumber": 53,
+    "lineNumber": 50,
     "params": [
       {
         "nullable": false,
@@ -21342,7 +21342,7 @@
     "longname": "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#_name",
     "access": null,
     "description": null,
-    "lineNumber": 55,
+    "lineNumber": 52,
     "undocument": true,
     "type": {
       "types": [
@@ -21360,7 +21360,7 @@
     "longname": "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#withVersion",
     "access": null,
     "description": "Set the version attribute",
-    "lineNumber": 64,
+    "lineNumber": 61,
     "params": [
       {
         "nullable": false,
@@ -21393,7 +21393,7 @@
     "longname": "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#_version",
     "access": null,
     "description": null,
-    "lineNumber": 66,
+    "lineNumber": 63,
     "undocument": true,
     "type": {
       "types": [
@@ -21411,7 +21411,7 @@
     "longname": "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#withDescription",
     "access": null,
     "description": "Set the description attribute",
-    "lineNumber": 75,
+    "lineNumber": 72,
     "params": [
       {
         "nullable": null,
@@ -21444,7 +21444,7 @@
     "longname": "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#_description",
     "access": null,
     "description": null,
-    "lineNumber": 78,
+    "lineNumber": 75,
     "undocument": true,
     "type": {
       "types": [
@@ -21462,7 +21462,7 @@
     "longname": "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#addCategory",
     "access": null,
     "description": "Add a category. If the field datastreams have value, they will add to this category",
-    "lineNumber": 88,
+    "lineNumber": 85,
     "params": [
       {
         "nullable": false,
@@ -21505,7 +21505,7 @@
     "longname": "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#addDatastream",
     "access": null,
     "description": "Add a datastream to the indicated category ",
-    "lineNumber": 108,
+    "lineNumber": 105,
     "params": [
       {
         "nullable": false,
@@ -21548,7 +21548,7 @@
     "longname": "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#removeCategory",
     "access": null,
     "description": "Remove category",
-    "lineNumber": 129,
+    "lineNumber": 127,
     "params": [
       {
         "nullable": false,
@@ -21581,7 +21581,7 @@
     "longname": "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#removeDatastream",
     "access": null,
     "description": "Remove datastream to the indicated category",
-    "lineNumber": 152,
+    "lineNumber": 147,
     "params": [
       {
         "nullable": false,
@@ -21624,7 +21624,7 @@
     "longname": "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#updateCategory",
     "access": null,
     "description": "Update category name",
-    "lineNumber": 188,
+    "lineNumber": 183,
     "params": [
       {
         "nullable": false,
@@ -21667,7 +21667,7 @@
     "longname": "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#updateDatastream",
     "access": null,
     "description": "Update datastream to the indicated category",
-    "lineNumber": 220,
+    "lineNumber": 215,
     "params": [
       {
         "nullable": false,
@@ -21720,7 +21720,7 @@
     "longname": "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#_composeElement",
     "access": null,
     "description": null,
-    "lineNumber": 248,
+    "lineNumber": 243,
     "undocument": true,
     "params": [],
     "return": {
@@ -21740,7 +21740,7 @@
     "longname": "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#_buildURL",
     "access": null,
     "description": null,
-    "lineNumber": 258,
+    "lineNumber": 253,
     "undocument": true,
     "params": [],
     "return": {
@@ -21760,7 +21760,7 @@
     "longname": "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#create",
     "access": null,
     "description": "Create not supported on this builder. Use IoTDatamodelHelper instead.",
-    "lineNumber": 265,
+    "lineNumber": 260,
     "params": [],
     "generator": false
   },
@@ -21774,7 +21774,7 @@
     "longname": "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#_isValidString",
     "access": null,
     "description": null,
-    "lineNumber": 269,
+    "lineNumber": 264,
     "undocument": true,
     "params": [
       {
