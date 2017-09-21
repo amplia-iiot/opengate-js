@@ -271,7 +271,7 @@ var DatamodelsHelper = (function (_BaseProvision) {
                 if (_category.identifier === category) {
                     update_category_index = category_index;
                     _category.datastreams.forEach(function (_datastream, datastream_index) {
-                        if (_datastream.id === id_datastream) {
+                        if (_datastream.identifier === id_datastream) {
                             update_datastream_index = datastream_index;
                         }
                     });
