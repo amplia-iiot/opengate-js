@@ -195,7 +195,7 @@ var DatamodelsHelper = (function (_BaseProvision) {
                 if (_category.identifier === category) {
                     remove_category_index = category_index;
                     _category.datastreams.forEach(function (datastream, datastream_index) {
-                        if (datastream.id === id_datastream) {
+                        if (datastream.identifier === id_datastream) {
                             remove_datastream_index = datastream_index;
                         }
                     });
