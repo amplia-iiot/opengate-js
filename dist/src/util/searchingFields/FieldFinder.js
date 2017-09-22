@@ -110,17 +110,33 @@ var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEA
                     return datastreams.map(function (ds) {
                         return ds.identifier;
                     });
-                }).reduce(function (preVal, elem) {
-                    return preVal.concat(elem);
-                });;
-            }).reduce(function (preVal, elem) {
-                return preVal.concat(elem);
+                });
             });
+            datastreams = reduce(datastreams);
         }
         defered.resolve(datastreams);
     })['catch'](function (error) {
         defered.reject(error);
     });
+
+    function reduce(_x2) {
+        var _again = true;
+
+        _function: while (_again) {
+            var array = _x2;
+            _again = false;
+
+            if (array.length > 0 && array[0].constructor === Array) {
+                array = array.reduce(function (preVal, elem) {
+                    return preVal.concat(elem);
+                });
+                _x2 = array;
+                _again = true;
+                continue _function;
+            }
+            return array;
+        }
+    }
 }), _defineProperty(_FIELD_SEARCHER, SIMPLE_FIELDS, function (states, context, primaryType, defered) {
     if (states.length > 1) return defered.resolve([]);
     defered.resolve(context[primaryType].slice());

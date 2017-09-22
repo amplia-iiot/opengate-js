@@ -91,13 +91,24 @@ const FIELD_SEARCHER = {
                         return datastreams.map(function(ds) {
                             return ds.identifier;
                         });
-                    }).reduce(function(preVal, elem) { return preVal.concat(elem); });;
-                }).reduce(function(preVal, elem) { return preVal.concat(elem); });
+                    });
+                });
+                datastreams = reduce(datastreams);
             }
             defered.resolve(datastreams);
         }).catch(function(error) {
             defered.reject(error);
         });
+
+        function reduce(array) {
+            if (array.length > 0 && array[0].constructor === Array) {
+                array = array.reduce(function(preVal, elem) {
+                    return preVal.concat(elem);
+                });
+                return reduce(array);
+            }
+            return array;
+        }
 
     },
     [SIMPLE_FIELDS]: function(states, context, primaryType, defered) {
