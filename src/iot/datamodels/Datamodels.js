@@ -97,14 +97,15 @@ export default class Datamodels extends BaseProvision {
         //Buscamos category y si existe se añade a la lista de categories
         var exists_category = -1;
         this._categories.forEach(function(_category, index) {
-            if (_category.name === category) {
+            if (_category.identifier === category) {
                 exists_category = index;
             }
         });
         if (exists_category === -1) {
             throw new Error('Category ' + category + ' not exists for this datamodel. Use addCategory instead.');
         }
-        this._categories[exists_category].datastreams.push(datastream);
+        this._categories[exists_category].datastreams ? this._categories[exists_category].datastreams.push(datastream) :
+            this._categories[exists_category]['datastreams'] = [datastream];
         return this;
     }
 

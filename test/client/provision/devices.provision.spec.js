@@ -73,7 +73,7 @@ define(function() {
 
     /*  describe('Check funcionality devicesBuilder module:', function() {
         it('Create new datamodel object', function() {
-            var datamodel =  ogapi.ogapi.datamodelsBuilder("organization_UX");
+            var datamodel =  ogapi.datamodelsBuilder("organization_UX");
             datamodel.withName("name1").withIdentifier("id_2").withVersion("1.0.0")
 
 

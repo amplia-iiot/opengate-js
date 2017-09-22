@@ -221,9 +221,6 @@ export default class DatamodelsHelper extends BaseProvision {
         this._isValidString(this._version, &apos;version of object datamodel&apos;, 100);
         this._description = this._datamodel.description;
         this._categories = this._datamodel.categories;
-        if (!this._categories) {
-            throw new Error(&apos;Malformed IoT datamodel, categories not exists.&apos;);
-        }
         this._identifier = this._datamodel.identifier;
     }
 
@@ -281,7 +278,7 @@ export default class DatamodelsHelper extends BaseProvision {
     addCategory(category, datastreams) {
         this._isValidString(category, &apos;category&apos;, 100);
         this._categories.forEach(function(_category, index) {
-            if (_category.name === category) {
+            if (_category.identifier === category) {
                 throw new Error(&apos;Category &apos; + category + &apos; already exists.&apos;);
             }
         });
@@ -303,14 +300,15 @@ export default class DatamodelsHelper extends BaseProvision {
         //Buscamos category y si existe se a&#xF1;ade a la lista de categories
         var exists_category = -1;
         this._categories.forEach(function(_category, index) {
-            if (_category.name === category) {
+            if (_category.identifier === category) {
                 exists_category = index;
             }
         });
         if (exists_category === -1) {
             throw new Error(&apos;Category &apos; + category + &apos; not exists for this datamodel. Use addCategory instead.&apos;);
         }
-        this._categories[exists_category].datastreams.push(datastream);
+        this._categories[exists_category].datastreams ? this._categories[exists_category].datastreams.push(datastream) :
+            this._categories[exists_category][&apos;datastreams&apos;] = [datastream];
         return this;
     }
 
@@ -323,14 +321,11 @@ export default class DatamodelsHelper extends BaseProvision {
         this._isValidString(category, &apos;category&apos;, 100);
         var remove_index = -1;
         this._categories.forEach(function(_category, index) {
-            if (_category.name === category)
+            if (_category.identifier === category)
                 remove_index = index;
         });
         if (remove_index === -1) {
             throw new Error(&apos;Category &apos; + category + &apos; not exists for this datamodel&apos;);
-        }
-        if (this._categories.length === 1) {
-            throw new Error(&apos;Category &apos; + category + &apos; can\&apos;t remove, datamodel can\&apos;t be empty&apos;);
         }
         this._categories.splice(remove_index, 1);
         return this;
@@ -347,10 +342,10 @@ export default class DatamodelsHelper extends BaseProvision {
         let remove_category_index = -1;
         let remove_datastream_index = -1;
         this._categories.forEach(function(_category, category_index) {
-            if (_category.name === category) {
+            if (_category.identifier === category) {
                 remove_category_index = category_index;
                 _category.datastreams.forEach(function(datastream, datastream_index) {
-                    if (datastream.id === id_datastream) {
+                    if (datastream.identifier === id_datastream) {
                         remove_datastream_index = datastream_index;
                     }
                 })
@@ -384,7 +379,7 @@ export default class DatamodelsHelper extends BaseProvision {
         let old_category_index = -1;
         let new_category_index = -1;
         this._categories.forEach(function(category, index) {
-            switch (category.name) {
+            switch (category.identifier) {
                 case old_category:
                     old_category_index = index;
                     break;
@@ -419,10 +414,10 @@ export default class DatamodelsHelper extends BaseProvision {
         let update_category_index = -1;
         let update_datastream_index = -1;
         this._categories.forEach(function(_category, category_index) {
-            if (_category.name === category) {
+            if (_category.identifier === category) {
                 update_category_index = category_index;
                 _category.datastreams.forEach(function(_datastream, datastream_index) {
-                    if (_datastream.id === id_datastream) {
+                    if (_datastream.identifier === id_datastream) {
                         update_datastream_index = datastream_index;
                     }
                 });
