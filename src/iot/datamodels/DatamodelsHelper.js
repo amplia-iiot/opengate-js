@@ -164,9 +164,9 @@ export default class DatamodelsHelper extends BaseProvision {
         if (remove_datastream_index === -1) {
             throw new Error('Datastream ' + id_datastream + ' not exists for this datamodel and category ' + category);
         }
-        if (this._categories[remove_category_index].datastreams.length === 1) {
-            throw new Error('Datastream ' + id_datastream + ' can\'t remove, category ' + category + ' can\'t be empty');
-        }
+        /* if (this._categories[remove_category_index].datastreams.length === 1) {
+             throw new Error('Datastream ' + id_datastream + ' can\'t remove, category ' + category + ' can\'t be empty');
+         }*/
         this._categories[remove_category_index].datastreams.splice(remove_datastream_index, 1);
         let _category = new Category(this._ogapi, category, this._categories[remove_category_index].datastreams);
         this._categories.splice(remove_category_index, 1);
@@ -201,7 +201,7 @@ export default class DatamodelsHelper extends BaseProvision {
         if (old_category_index === -1) {
             throw new Error('Category ' + old_category + ' not exists for this datamodel.');
         }
-        this._categories[old_category_index].name = new_category;
+        this._categories[old_category_index].identifier = new_category;
         return this;
     }
 

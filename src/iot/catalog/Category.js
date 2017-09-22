@@ -8,13 +8,13 @@ import Datastream from './Datastream'
 export default class Category {
     /**    
      * @param {!InternalOpenGateAPI} Reference to the API object.
-     * @param {!name} name of category
+     * @param {!identifier} identifier of category
      * @param {Array} datastreams of category
      */
-    constructor(ogapi, name, datastreams) {
+    constructor(ogapi, identifier, datastreams) {
         this._ogapi = ogapi;
-        this._isValidString(name, 'name', 50);
-        this._name = name;
+        this._isValidString(identifier, 'identifier', 50);
+        this._identifier = identifier;
         this._datastreams = datastreams ? datastreams : [];
     }
 
@@ -62,12 +62,12 @@ export default class Category {
     }
 
     _composeElement() {
-        if (!this._name) {
-            throw new Error('Name is required on Category');
+        if (!this._identifier) {
+            throw new Error('identifier is required on Category');
         }
 
         return {
-            'name': this._name,
+            'identifier': this._identifier,
             'datastreams': this._datastreams
         }
     }
