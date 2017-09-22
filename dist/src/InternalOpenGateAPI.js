@@ -34,6 +34,10 @@ var _channelsChannelFinder = require('./channels/ChannelFinder');
 
 var _channelsChannelFinder2 = _interopRequireDefault(_channelsChannelFinder);
 
+var _searchingBuilderAreasSearchBuilder = require('./searching/builder/AreasSearchBuilder');
+
+var _searchingBuilderAreasSearchBuilder2 = _interopRequireDefault(_searchingBuilderAreasSearchBuilder);
+
 var _areasAreaFinder = require('./areas/AreaFinder');
 
 var _areasAreaFinder2 = _interopRequireDefault(_areasAreaFinder);
@@ -392,6 +396,16 @@ var InternalOpenGateAPI = (function () {
         key: 'newChannelFinder',
         value: function newChannelFinder() {
             return new _channelsChannelFinder2['default'](this);
+        }
+
+        /**
+         * This return a AreasSearchBuilder to build a specific AreasSearch
+         * @return {AreasSearchBuilder}
+         */
+    }, {
+        key: 'areasSearchBuilder',
+        value: function areasSearchBuilder() {
+            return new _searchingBuilderAreasSearchBuilder2['default'](this);
         }
 
         /**

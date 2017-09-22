@@ -26,6 +26,9 @@ module.exports = {
             "channel finder": function(ogapi) {
                 return ogapi.newChannelFinder();
             },
+            "areas search": function(ogapi) {
+                return ogapi.areasSearchBuilder();
+            },
             "area finder": function(ogapi) {
                 return ogapi.newAreaFinder();
             },
