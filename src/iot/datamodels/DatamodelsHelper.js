@@ -84,11 +84,15 @@ export default class DatamodelsHelper extends BaseProvision {
      */
     addCategory(category, datastreams) {
         this._isValidString(category, 'category', 100);
-        this._categories.forEach(function(_category, index) {
-            if (_category.identifier === category) {
-                throw new Error('Category ' + category + ' already exists.');
-            }
-        });
+        if (this._categories) {
+            this._categories.forEach(function(_category, index) {
+                if (_category.identifier === category) {
+                    throw new Error('Category ' + category + ' already exists.');
+                }
+            });
+        } else {
+            this._categories = [];
+        }
         let _category = new Category(this._ogapi, category);
         if (datastreams && datastreams.length > 0)
             _category.addDatastreams(datastreams);
