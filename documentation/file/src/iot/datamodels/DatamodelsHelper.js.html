@@ -153,6 +153,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationalStatusSearchBuilder.js~OperationalStatusSearchBuilder.html">OperationalStatusSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationsSearchBuilder.js~OperationsSearchBuilder.html">OperationsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html">OrganizationsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/PlansSearchBuilder.js~PlansSearchBuilder.html">PlansSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RawSearchBuilder.js~RawSearchBuilder.html">RawSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RuleConfigurationSeveritySearchBuilder.js~RuleConfigurationSeveritySearchBuilder.html">RuleConfigurationSeveritySearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SearchBuilder.js~SearchBuilder.html">SearchBuilder</a></span></span></li>
@@ -278,11 +279,15 @@ export default class DatamodelsHelper extends BaseProvision {
      */
     addCategory(category, datastreams) {
         this._isValidString(category, &apos;category&apos;, 100);
-        this._categories.forEach(function(_category, index) {
-            if (_category.identifier === category) {
-                throw new Error(&apos;Category &apos; + category + &apos; already exists.&apos;);
-            }
-        });
+        if (this._categories) {
+            this._categories.forEach(function(_category, index) {
+                if (_category.identifier === category) {
+                    throw new Error(&apos;Category &apos; + category + &apos; already exists.&apos;);
+                }
+            });
+        } else {
+            this._categories = [];
+        }
         let _category = new Category(this._ogapi, category);
         if (datastreams &amp;&amp; datastreams.length &gt; 0)
             _category.addDatastreams(datastreams);
@@ -358,9 +363,9 @@ export default class DatamodelsHelper extends BaseProvision {
         if (remove_datastream_index === -1) {
             throw new Error(&apos;Datastream &apos; + id_datastream + &apos; not exists for this datamodel and category &apos; + category);
         }
-        if (this._categories[remove_category_index].datastreams.length === 1) {
-            throw new Error(&apos;Datastream &apos; + id_datastream + &apos; can\&apos;t remove, category &apos; + category + &apos; can\&apos;t be empty&apos;);
-        }
+        /* if (this._categories[remove_category_index].datastreams.length === 1) {
+             throw new Error(&apos;Datastream &apos; + id_datastream + &apos; can\&apos;t remove, category &apos; + category + &apos; can\&apos;t be empty&apos;);
+         }*/
         this._categories[remove_category_index].datastreams.splice(remove_datastream_index, 1);
         let _category = new Category(this._ogapi, category, this._categories[remove_category_index].datastreams);
         this._categories.splice(remove_category_index, 1);
@@ -395,7 +400,7 @@ export default class DatamodelsHelper extends BaseProvision {
         if (old_category_index === -1) {
             throw new Error(&apos;Category &apos; + old_category + &apos; not exists for this datamodel.&apos;);
         }
-        this._categories[old_category_index].name = new_category;
+        this._categories[old_category_index].identifier = new_category;
         return this;
     }
 

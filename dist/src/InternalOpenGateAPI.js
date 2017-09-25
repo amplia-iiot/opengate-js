@@ -202,6 +202,10 @@ var _searchingBuilderDomainsSearchBuilder = require('./searching/builder/Domains
 
 var _searchingBuilderDomainsSearchBuilder2 = _interopRequireDefault(_searchingBuilderDomainsSearchBuilder);
 
+var _searchingBuilderPlansSearchBuilder = require('./searching/builder/PlansSearchBuilder');
+
+var _searchingBuilderPlansSearchBuilder2 = _interopRequireDefault(_searchingBuilderPlansSearchBuilder);
+
 var _bundlesBundles = require('./bundles/Bundles');
 
 var _bundlesBundles2 = _interopRequireDefault(_bundlesBundles);
@@ -759,6 +763,16 @@ var InternalOpenGateAPI = (function () {
         key: 'jsonSchemaSearchBuilder',
         value: function jsonSchemaSearchBuilder() {
             return new _searchingBuilderJsonSchemaSearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a PlansSearchBuilder to build a specific PlansSearchBuilder
+         * @return {PlansSearchBuilder}
+         */
+    }, {
+        key: 'plansSearchBuilder',
+        value: function plansSearchBuilder() {
+            return new _searchingBuilderPlansSearchBuilder2['default'](this);
         }
 
         /**

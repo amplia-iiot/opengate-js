@@ -153,6 +153,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationalStatusSearchBuilder.js~OperationalStatusSearchBuilder.html">OperationalStatusSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationsSearchBuilder.js~OperationsSearchBuilder.html">OperationsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html">OrganizationsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/PlansSearchBuilder.js~PlansSearchBuilder.html">PlansSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RawSearchBuilder.js~RawSearchBuilder.html">RawSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RuleConfigurationSeveritySearchBuilder.js~RuleConfigurationSeveritySearchBuilder.html">RuleConfigurationSeveritySearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SearchBuilder.js~SearchBuilder.html">SearchBuilder</a></span></span></li>
@@ -202,13 +203,13 @@ import Datastream from &apos;./Datastream&apos;
 export default class Category {
     /**    
      * @param {!InternalOpenGateAPI} Reference to the API object.
-     * @param {!name} name of category
+     * @param {!identifier} identifier of category
      * @param {Array} datastreams of category
      */
-    constructor(ogapi, name, datastreams) {
+    constructor(ogapi, identifier, datastreams) {
         this._ogapi = ogapi;
-        this._isValidString(name, &apos;name&apos;, 50);
-        this._name = name;
+        this._isValidString(identifier, &apos;identifier&apos;, 50);
+        this._identifier = identifier;
         this._datastreams = datastreams ? datastreams : [];
     }
 
@@ -256,12 +257,12 @@ export default class Category {
     }
 
     _composeElement() {
-        if (!this._name) {
-            throw new Error(&apos;Name is required on Category&apos;);
+        if (!this._identifier) {
+            throw new Error(&apos;identifier is required on Category&apos;);
         }
 
         return {
-            &apos;name&apos;: this._name,
+            &apos;identifier&apos;: this._identifier,
             &apos;datastreams&apos;: this._datastreams
         }
     }

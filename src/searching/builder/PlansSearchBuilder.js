@@ -37,7 +37,7 @@ export default class PlansSearchBuilder extends SearchBuilder {
 
     _buildUrl() {
         if (this._domainName) {
-            this._url = this._url + this._domainName;
+            this._url = BASE_URL + this._domainName;
         } else {
             throw new Error('Parameter domainName must be defined');
         }

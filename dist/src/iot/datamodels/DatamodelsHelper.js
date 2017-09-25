@@ -124,11 +124,15 @@ var DatamodelsHelper = (function (_BaseProvision) {
         key: 'addCategory',
         value: function addCategory(category, datastreams) {
             this._isValidString(category, 'category', 100);
-            this._categories.forEach(function (_category, index) {
-                if (_category.identifier === category) {
-                    throw new Error('Category ' + category + ' already exists.');
-                }
-            });
+            if (this._categories) {
+                this._categories.forEach(function (_category, index) {
+                    if (_category.identifier === category) {
+                        throw new Error('Category ' + category + ' already exists.');
+                    }
+                });
+            } else {
+                this._categories = [];
+            }
             var _category = new _catalogCategory2['default'](this._ogapi, category);
             if (datastreams && datastreams.length > 0) _category.addDatastreams(datastreams);
             this._categories.push(_category._composeElement());
@@ -207,9 +211,9 @@ var DatamodelsHelper = (function (_BaseProvision) {
             if (remove_datastream_index === -1) {
                 throw new Error('Datastream ' + id_datastream + ' not exists for this datamodel and category ' + category);
             }
-            if (this._categories[remove_category_index].datastreams.length === 1) {
-                throw new Error('Datastream ' + id_datastream + ' can\'t remove, category ' + category + ' can\'t be empty');
-            }
+            /* if (this._categories[remove_category_index].datastreams.length === 1) {
+                 throw new Error('Datastream ' + id_datastream + ' can\'t remove, category ' + category + ' can\'t be empty');
+             }*/
             this._categories[remove_category_index].datastreams.splice(remove_datastream_index, 1);
             var _category = new _catalogCategory2['default'](this._ogapi, category, this._categories[remove_category_index].datastreams);
             this._categories.splice(remove_category_index, 1);
@@ -246,7 +250,7 @@ var DatamodelsHelper = (function (_BaseProvision) {
             if (old_category_index === -1) {
                 throw new Error('Category ' + old_category + ' not exists for this datamodel.');
             }
-            this._categories[old_category_index].name = new_category;
+            this._categories[old_category_index].identifier = new_category;
             return this;
         }
 
