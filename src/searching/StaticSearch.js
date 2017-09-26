@@ -305,13 +305,27 @@ export default class StaticSearch extends Search {
                 'COMMUNICATIONS_MODULE': ['UNKNOWN', 'STOPPED', 'STARTING', 'RUNNING', 'STOPPING', 'ERROR']
             },
             'specificType': {
-                'COMMUNICATIONS_MODULE': ['ADSL', 'CAN', 'ETH', 'GENERIC', 'GSM', 'I2C', 'LOWPAN', 'PLC', 'RS232', 'RS422', 'RS485', 'UMTS', 'WIFI', 'ZIGBEE', 'MOBILE', 'MESH', 'SIGFOX'],
-                'SUBSCRIBER': ['ADSL', 'ETH', 'GENERIC', 'LOWPAN', 'PLC', 'GSM', 'UMTS', 'SIM', 'WIFI', 'ZIGBEE', 'MOBILE'],
-                'SUBSCRIPTION': ['ADSL', 'ETH', 'GENERIC', 'LOWPAN', 'PLC', 'GSM', 'UMTS', 'WIFI', 'ZIGBEE', 'MOBILE'],
-                'ASSET': ['CONTAINER', 'GENERIC', 'METER', 'SENSOR', 'TPV', 'VEHICLE', 'VENDING', 'GLUCOMETER_SENSOR', 'WEIGHT_SENSOR', 'BLOODPRESSURE_SENSOR'],
-                'GATEWAY': ['CONCENTRATOR', 'COORDINATOR', 'GENERIC', 'MODEM', 'ROUTER', 'COMHUB', 'GLUCOMETER_SENSOR', 'WEIGHT_SENSOR', 'BLOODPRESSURE_SENSOR']
+                'COMMUNICATIONS_MODULE': ["ADSL", "CAN", "ETH", "GENERIC", "GSM", "HAN", "I2C", "LOWPAN", "MESH"],
+                'SUBSCRIBER': ["ADSL", "CAN", "ETH", "GENERIC", "GSM", "HAN", "I2C", "LOWPAN", "MESH"],
+                'SUBSCRIPTION': ["ADSL", "CAN", "ETH", "GENERIC", "GSM", "HAN", "I2C", "LOWPAN", "MESH", "MOBILE", "PLC", "RS232", "RS422", "RS485", "SIGFOX", "UMTS", "WIFI", "ZIGBEE"],
+                'ASSET': ["BLOODPRESSURE_SENSOR", "COMHUB", "CONCENTRATOR", "CONTAINER", "COORDINATOR", "GENERIC", "GLUCOMETER_SENSOR", "METER", "MODEM", "ROUTER", "SENSOR", "TPV", "VEHICLE", "VENDING", "WEIGHT_SENSOR"],
+                'GATEWAY': ["BLOODPRESSURE_SENSOR", "COMHUB", "CONCENTRATOR", "CONTAINER", "COORDINATOR", "GENERIC", "GLUCOMETER_SENSOR", "METER", "MODEM", "ROUTER", "SENSOR", "TPV", "VEHICLE", "VENDING", "WEIGHT_SENSOR"]
             },
             'communicationsModuleType': {
+                "HAN": {
+                    "COMMUNICATIONS_MODULE": {
+                        "mandatory": ["generatedEntityKey"],
+                        "optional": ["administrativeState", "IMEI", "MAC", "HARDWARE", "SOFTWARE"]
+                    },
+                    "SUBSCRIPTION": {
+                        "mandatory": ["generatedEntityKey"],
+                        "optional": ["administrativeState", "IMSI", "ADDRESS", "HOME_OPERATOR", "REGISTER_OPERATOR", "MSISDN", "LOCATION"]
+                    },
+                    "SUBSCRIBER": {
+                        "mandatory": ["generatedEntityKey"],
+                        "optional": ["administrativeState", "ICC"]
+                    }
+                },
                 "GENERIC": {
                     "COMMUNICATIONS_MODULE": {
                         "mandatory": ["generatedEntityKey"],
