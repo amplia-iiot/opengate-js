@@ -223,6 +223,7 @@ var EntityBuilder = (function () {
                     var device = new _devicesDevices2['default'](_this._ogapi, organization, allowedDatastreams, definedSchemas);
                     _this._createSimplefunction(device);
                     _this._createComplexFunction(device);
+                    device['with']('provision.administration.serviceGroup', 'emptyServiceGroup');
                     defered.resolve(device);
                 } else {
                     defered.resolve(data);
@@ -248,6 +249,7 @@ var EntityBuilder = (function () {
                     var subscribers = new _devicesCommsModulesSubscribersSubscribers2['default'](_this._ogapi, organization, allowedDatastreams, definedSchemas);
                     _this._createSimplefunction(subscribers);
                     _this._createComplexFunction(subscribers);
+                    subscribers['with']('provision.administration.serviceGroup', 'emptyServiceGroup');
                     defered.resolve(subscribers);
                 }
             })['catch'](function (err) {
@@ -271,6 +273,7 @@ var EntityBuilder = (function () {
                     var subscriptions = new _devicesCommsModulesSubscriptionsSubscriptions2['default'](_this._ogapi, organization, allowedDatastreams, definedSchemas);
                     _this._createSimplefunction(subscriptions);
                     _this._createComplexFunction(subscriptions);
+                    subscriptions['with']('provision.administration.serviceGroup', 'emptyServiceGroup');
                     defered.resolve(subscriptions);
                 }
             })['catch'](function (err) {

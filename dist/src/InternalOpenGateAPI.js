@@ -158,6 +158,10 @@ var _searchingBuilderSpecificTypeSearchBuilder = require('./searching/builder/Sp
 
 var _searchingBuilderSpecificTypeSearchBuilder2 = _interopRequireDefault(_searchingBuilderSpecificTypeSearchBuilder);
 
+var _searchingBuilderServiceGroupSearchBuilder = require('./searching/builder/ServiceGroupSearchBuilder');
+
+var _searchingBuilderServiceGroupSearchBuilder2 = _interopRequireDefault(_searchingBuilderServiceGroupSearchBuilder);
+
 var _searchingBuilderAdministrativeStateSearchBuilder = require('./searching/builder/AdministrativeStateSearchBuilder');
 
 var _searchingBuilderAdministrativeStateSearchBuilder2 = _interopRequireDefault(_searchingBuilderAdministrativeStateSearchBuilder);
@@ -923,6 +927,16 @@ var InternalOpenGateAPI = (function () {
         key: 'specificTypeSearchBuilder',
         value: function specificTypeSearchBuilder() {
             return new _searchingBuilderSpecificTypeSearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a ServiceGroupSearchBuilder to build a specific ServiceGroupSearchBuilder
+         * @return {ServiceGroupSearchBuilder}
+         */
+    }, {
+        key: 'serviceGroupSearchBuilder',
+        value: function serviceGroupSearchBuilder() {
+            return new _searchingBuilderServiceGroupSearchBuilder2['default'](this);
         }
 
         /**

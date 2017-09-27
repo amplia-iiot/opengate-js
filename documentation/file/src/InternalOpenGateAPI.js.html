@@ -158,6 +158,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RuleConfigurationSeveritySearchBuilder.js~RuleConfigurationSeveritySearchBuilder.html">RuleConfigurationSeveritySearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SearchBuilder.js~SearchBuilder.html">SearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SearchWithSummaryBuilder.js~SearchWithSummaryBuilder.html">SearchWithSummaryBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ServiceGroupSearchBuilder.js~ServiceGroupSearchBuilder.html">ServiceGroupSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SoftwaresSearchBuilder.js~SoftwaresSearchBuilder.html">SoftwaresSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SpecificTypeSearchBuilder.js~SpecificTypeSearchBuilder.html">SpecificTypeSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscribersSearchBuilder.js~SubscribersSearchBuilder.html">SubscribersSearchBuilder</a></span></span></li>
@@ -232,6 +233,7 @@ import HardwaresSearchBuilder from &apos;./searching/builder/HardwaresSearchBuil
 import SoftwaresSearchBuilder from &apos;./searching/builder/SoftwaresSearchBuilder&apos;
 import OperationalStatusSearchBuilder from &apos;./searching/builder/OperationalStatusSearchBuilder&apos;
 import SpecificTypeSearchBuilder from &apos;./searching/builder/SpecificTypeSearchBuilder&apos;
+import ServiceGroupSearchBuilder from &apos;./searching/builder/ServiceGroupSearchBuilder&apos;
 import AdministrativeStateSearchBuilder from &apos;./searching/builder/AdministrativeStateSearchBuilder&apos;
 import CommunicationsModuleTypeSearchBuilder from &apos;./searching/builder/CommunicationsModuleTypeSearchBuilder&apos;
 import FieldsDefinitionSearchBuilder from &apos;./searching/builder/FieldsDefinitionSearchBuilder&apos;
@@ -750,6 +752,14 @@ export default class InternalOpenGateAPI {
      */
     specificTypeSearchBuilder() {
         return new SpecificTypeSearchBuilder(this);
+    }
+
+    /**
+     * This return a ServiceGroupSearchBuilder to build a specific ServiceGroupSearchBuilder
+     * @return {ServiceGroupSearchBuilder}
+     */
+    serviceGroupSearchBuilder() {
+        return new ServiceGroupSearchBuilder(this);
     }
 
     /**

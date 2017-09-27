@@ -138,6 +138,11 @@ var StaticSearch = (function (_Search) {
                         }
                     }
                     break;
+                case 'serviceGroups':
+                    if (entityType) {
+                        finalContent = collection[entityType];
+                    }
+                    break;
                 case 'mobilePhoneProvider':
                 case 'ruleConfigurationSeverity':
                 case 'ioTDatastreamPeriod':
@@ -170,6 +175,12 @@ var StaticSearch = (function (_Search) {
         key: '_content',
         value: function _content(contentType) {
             return ({
+                'serviceGroups': {
+                    'ASSET': ['noUpdate', 'emptyServiceGroup', 'emptyServiceGroup_onSession', 'emptyServiceGroup_onDemand', 'level1SecurityServiceGroup', 'level2SecurityServiceGroup', 'level3SecurityServiceGroup', 'trustedNoneSecurityServiceGroup', 'trustedNoneSecurityServiceGroup_onDemand', 'trustedLevel1SecurityServiceGroup', 'trustedLevel2SecurityServiceGroup', 'trustedLevel3SecurityServiceGroup'],
+                    'SUBSCRIBER': ['emptyServiceGroup'],
+                    'SUBSCRIPTION': ['emptyServiceGroup'],
+                    'GATEWAY': ['noUpdate', 'emptyServiceGroup', 'emptyServiceGroup_onSession', 'emptyServiceGroup_onDemand', 'level1SecurityServiceGroup', 'level2SecurityServiceGroup', 'level3SecurityServiceGroup', 'trustedNoneSecurityServiceGroup', 'trustedNoneSecurityServiceGroup_onDemand', 'trustedLevel1SecurityServiceGroup', 'trustedLevel2SecurityServiceGroup', 'trustedLevel3SecurityServiceGroup']
+                },
                 'administrativeState': {
                     'ASSET': [{
                         'id': 'REQUESTED',

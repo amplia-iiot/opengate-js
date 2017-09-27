@@ -37,6 +37,7 @@ import HardwaresSearchBuilder from './searching/builder/HardwaresSearchBuilder'
 import SoftwaresSearchBuilder from './searching/builder/SoftwaresSearchBuilder'
 import OperationalStatusSearchBuilder from './searching/builder/OperationalStatusSearchBuilder'
 import SpecificTypeSearchBuilder from './searching/builder/SpecificTypeSearchBuilder'
+import ServiceGroupSearchBuilder from './searching/builder/ServiceGroupSearchBuilder'
 import AdministrativeStateSearchBuilder from './searching/builder/AdministrativeStateSearchBuilder'
 import CommunicationsModuleTypeSearchBuilder from './searching/builder/CommunicationsModuleTypeSearchBuilder'
 import FieldsDefinitionSearchBuilder from './searching/builder/FieldsDefinitionSearchBuilder'
@@ -555,6 +556,14 @@ export default class InternalOpenGateAPI {
      */
     specificTypeSearchBuilder() {
         return new SpecificTypeSearchBuilder(this);
+    }
+
+    /**
+     * This return a ServiceGroupSearchBuilder to build a specific ServiceGroupSearchBuilder
+     * @return {ServiceGroupSearchBuilder}
+     */
+    serviceGroupSearchBuilder() {
+        return new ServiceGroupSearchBuilder(this);
     }
 
     /**

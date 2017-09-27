@@ -158,6 +158,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RuleConfigurationSeveritySearchBuilder.js~RuleConfigurationSeveritySearchBuilder.html">RuleConfigurationSeveritySearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SearchBuilder.js~SearchBuilder.html">SearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SearchWithSummaryBuilder.js~SearchWithSummaryBuilder.html">SearchWithSummaryBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ServiceGroupSearchBuilder.js~ServiceGroupSearchBuilder.html">ServiceGroupSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SoftwaresSearchBuilder.js~SoftwaresSearchBuilder.html">SoftwaresSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SpecificTypeSearchBuilder.js~SpecificTypeSearchBuilder.html">SpecificTypeSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscribersSearchBuilder.js~SubscribersSearchBuilder.html">SubscribersSearchBuilder</a></span></span></li>
@@ -308,6 +309,11 @@ export default class StaticSearch extends Search {
                     }
                 }
                 break;
+            case &apos;serviceGroups&apos;:
+                if (entityType) {
+                    finalContent = collection[entityType];
+                }
+                break;
             case &apos;mobilePhoneProvider&apos;:
             case &apos;ruleConfigurationSeverity&apos;:
             case &apos;ioTDatastreamPeriod&apos;:
@@ -339,6 +345,36 @@ export default class StaticSearch extends Search {
 
     _content(contentType) {
         return {
+            &apos;serviceGroups&apos;: {
+                &apos;ASSET&apos;: [&apos;noUpdate&apos;,
+                    &apos;emptyServiceGroup&apos;,
+                    &apos;emptyServiceGroup_onSession&apos;,
+                    &apos;emptyServiceGroup_onDemand&apos;,
+                    &apos;level1SecurityServiceGroup&apos;,
+                    &apos;level2SecurityServiceGroup&apos;,
+                    &apos;level3SecurityServiceGroup&apos;,
+                    &apos;trustedNoneSecurityServiceGroup&apos;,
+                    &apos;trustedNoneSecurityServiceGroup_onDemand&apos;,
+                    &apos;trustedLevel1SecurityServiceGroup&apos;,
+                    &apos;trustedLevel2SecurityServiceGroup&apos;,
+                    &apos;trustedLevel3SecurityServiceGroup&apos;
+                ],
+                &apos;SUBSCRIBER&apos;: [&apos;emptyServiceGroup&apos;],
+                &apos;SUBSCRIPTION&apos;: [&apos;emptyServiceGroup&apos;],
+                &apos;GATEWAY&apos;: [&apos;noUpdate&apos;,
+                    &apos;emptyServiceGroup&apos;,
+                    &apos;emptyServiceGroup_onSession&apos;,
+                    &apos;emptyServiceGroup_onDemand&apos;,
+                    &apos;level1SecurityServiceGroup&apos;,
+                    &apos;level2SecurityServiceGroup&apos;,
+                    &apos;level3SecurityServiceGroup&apos;,
+                    &apos;trustedNoneSecurityServiceGroup&apos;,
+                    &apos;trustedNoneSecurityServiceGroup_onDemand&apos;,
+                    &apos;trustedLevel1SecurityServiceGroup&apos;,
+                    &apos;trustedLevel2SecurityServiceGroup&apos;,
+                    &apos;trustedLevel3SecurityServiceGroup&apos;
+                ]
+            },
             &apos;administrativeState&apos;: {
                 &apos;ASSET&apos;: [{
                     &apos;id&apos;: &apos;REQUESTED&apos;,
