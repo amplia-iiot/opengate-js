@@ -347,20 +347,6 @@ export default class StaticSearch extends Search {
                 'GATEWAY': ["BLOODPRESSURE_SENSOR", "COMHUB", "CONCENTRATOR", "CONTAINER", "COORDINATOR", "GENERIC", "GLUCOMETER_SENSOR", "METER", "MODEM", "ROUTER", "SENSOR", "TPV", "VEHICLE", "VENDING", "WEIGHT_SENSOR"]
             },
             'communicationsModuleType': {
-                "HAN": {
-                    "COMMUNICATIONS_MODULE": {
-                        "mandatory": ["generatedEntityKey"],
-                        "optional": ["administrativeState", "IMEI", "MAC", "HARDWARE", "SOFTWARE"]
-                    },
-                    "SUBSCRIPTION": {
-                        "mandatory": ["generatedEntityKey"],
-                        "optional": ["administrativeState", "IMSI", "ADDRESS", "HOME_OPERATOR", "REGISTER_OPERATOR", "MSISDN", "LOCATION"]
-                    },
-                    "SUBSCRIBER": {
-                        "mandatory": ["generatedEntityKey"],
-                        "optional": ["administrativeState", "ICC"]
-                    }
-                },
                 "GENERIC": {
                     "COMMUNICATIONS_MODULE": {
                         "mandatory": ["generatedEntityKey"],
@@ -372,7 +358,7 @@ export default class StaticSearch extends Search {
                     },
                     "SUBSCRIBER": {
                         "mandatory": ["generatedEntityKey"],
-                        "optional": ["administrativeState", "ICC"]
+                        "optional": ["administrativeState", "ICC", "SERIAL_NUMBER"]
                     }
                 },
                 "WIFI": {
