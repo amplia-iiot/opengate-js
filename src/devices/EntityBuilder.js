@@ -198,6 +198,7 @@ export default class EntityBuilder {
                     var device = new Devices(_this._ogapi, organization, allowedDatastreams, definedSchemas);
                     _this._createSimplefunction(device);
                     _this._createComplexFunction(device);
+                    device.with('provision.administration.serviceGroup', 'emptyServiceGroup');
                     defered.resolve(device);
                 } else {
                     defered.resolve(data);
@@ -225,6 +226,7 @@ export default class EntityBuilder {
                     var subscribers = new Subscribers(_this._ogapi, organization, allowedDatastreams, definedSchemas);
                     _this._createSimplefunction(subscribers);
                     _this._createComplexFunction(subscribers);
+                    subscribers.with('provision.administration.serviceGroup', 'emptyServiceGroup');
                     defered.resolve(subscribers);
                 }
             }).catch(function(err) {
@@ -249,6 +251,7 @@ export default class EntityBuilder {
                     var subscriptions = new Subscriptions(_this._ogapi, organization, allowedDatastreams, definedSchemas);
                     _this._createSimplefunction(subscriptions);
                     _this._createComplexFunction(subscriptions);
+                    subscriptions.with('provision.administration.serviceGroup', 'emptyServiceGroup');
                     defered.resolve(subscriptions);
                 }
             }).catch(function(err) {
