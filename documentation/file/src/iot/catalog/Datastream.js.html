@@ -196,15 +196,16 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/iot/catalog/Datastream.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-let jsValidate = require(&apos;jsonschema&apos;).validate;
+import jsonSchema from &apos;jsonschema&apos;;
 import Qrating from &apos;./Qrating&apos;
 
+let jsValidate = jsonSchema.validate;
 /**
  * Defines the builder to configure a datastream of IoT datamodel. With this builder you can configure a datastream
  */
 export default class Datastream {
 
-    constructor() {}
+    constructor() { }
 
     /**
      * Set the id attribute

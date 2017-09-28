@@ -1,14 +1,15 @@
 'use strict';
 
-let jsValidate = require('jsonschema').validate;
+import jsonSchema from 'jsonschema';
 import Qrating from './Qrating'
 
+let jsValidate = jsonSchema.validate;
 /**
  * Defines the builder to configure a datastream of IoT datamodel. With this builder you can configure a datastream
  */
 export default class Datastream {
 
-    constructor() {}
+    constructor() { }
 
     /**
      * Set the id attribute

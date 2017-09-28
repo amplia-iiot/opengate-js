@@ -199,7 +199,7 @@
 import SearchBuilder from &apos;./SearchBuilder&apos;
 import og_basic_types from &apos;./jsonSchema/og_basic_types&apos;
 import q from &apos;q&apos;;
-let jp = require(&apos;jsonpath&apos;);
+import jp from &apos;jsonpath&apos;;
 
 
 /**
@@ -235,10 +235,10 @@ export default class JsonSchemaSearchBuilder extends SearchBuilder {
         if (jsonSchemaValue) {
             var nodes = jp.nodes(jsonSchemaValue, &quot;$..[&apos;$ref&apos;]&quot;);
             if (nodes.length &gt; 0) {
-                nodes.forEach(function(element, index) {
+                nodes.forEach(function (element, index) {
                     element.path.pop(); //eliminamos $ref
                     var pathExpression = jp.stringify(element.path);
-                    var newnodes = jp.apply(jsonSchemaValue, pathExpression, function(value) {
+                    var newnodes = jp.apply(jsonSchemaValue, pathExpression, function (value) {
                         return _this._getPathValue(element.value);
                     });
                 });

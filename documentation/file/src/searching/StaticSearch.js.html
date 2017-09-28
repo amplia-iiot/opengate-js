@@ -543,20 +543,6 @@ export default class StaticSearch extends Search {
                 &apos;GATEWAY&apos;: [&quot;BLOODPRESSURE_SENSOR&quot;, &quot;COMHUB&quot;, &quot;CONCENTRATOR&quot;, &quot;CONTAINER&quot;, &quot;COORDINATOR&quot;, &quot;GENERIC&quot;, &quot;GLUCOMETER_SENSOR&quot;, &quot;METER&quot;, &quot;MODEM&quot;, &quot;ROUTER&quot;, &quot;SENSOR&quot;, &quot;TPV&quot;, &quot;VEHICLE&quot;, &quot;VENDING&quot;, &quot;WEIGHT_SENSOR&quot;]
             },
             &apos;communicationsModuleType&apos;: {
-                &quot;HAN&quot;: {
-                    &quot;COMMUNICATIONS_MODULE&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;IMEI&quot;, &quot;MAC&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
-                    },
-                    &quot;SUBSCRIPTION&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;IMSI&quot;, &quot;ADDRESS&quot;, &quot;HOME_OPERATOR&quot;, &quot;REGISTER_OPERATOR&quot;, &quot;MSISDN&quot;, &quot;LOCATION&quot;]
-                    },
-                    &quot;SUBSCRIBER&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;ICC&quot;]
-                    }
-                },
                 &quot;GENERIC&quot;: {
                     &quot;COMMUNICATIONS_MODULE&quot;: {
                         &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
@@ -568,7 +554,7 @@ export default class StaticSearch extends Search {
                     },
                     &quot;SUBSCRIBER&quot;: {
                         &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;ICC&quot;]
+                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;ICC&quot;, &quot;SERIAL_NUMBER&quot;]
                     }
                 },
                 &quot;WIFI&quot;: {

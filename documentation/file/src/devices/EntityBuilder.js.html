@@ -200,14 +200,14 @@
 import q from &apos;q&apos;;
 import moment from &apos;moment&apos;;
 import HttpStatus from &apos;http-status-codes&apos;;
+import jp from &apos;jsonpath&apos;;
+import jsonschema from &apos;jsonschema&apos;;
 
 import Devices from &apos;../devices/Devices&apos;
 import Subscribers from &apos;../devices/commsModules/subscribers/Subscribers&apos;
 import Subscriptions from &apos;../devices/commsModules/subscriptions/Subscriptions&apos;
 
-let jp = require(&apos;jsonpath&apos;);
-let Validator = require(&apos;jsonschema&apos;).Validator;
-let v = new Validator();
+let v = new jsonschema.Validator();
 let ERROR_VALUE_NOT_ALLOWED = &apos;The value is not allowed. The value should be formatted as follows: &apos;;
 let ERROR_DATASTREAM_NOT_ALLOWED = &apos;Datastream is not allowed.&apos;;
 let ERROR_FUNCTION_NOT_ALLOWED = &apos;Function is not allowed.&apos;;
@@ -249,20 +249,20 @@ export default class EntityBuilder {
         let allowedDatastreams = [];
         let allowedDatastreamsBuilder = this._ogapi.datamodelsSearchBuilder().filter(f).build();
 
-        allowedDatastreamsBuilder.execute().then(function(okh) {
+        allowedDatastreamsBuilder.execute().then(function (okh) {
             _this.schema = {};
             return okh;
 
-        }).then(function(data) {
+        }).then(function (data) {
             if (data.statusCode !== 200) {
                 defered.resolve({ data: &apos;No content: Datastreams not found&apos;, statusCode: 204 });
             }
 
-            _this._getJsonPathElements(data.data).then(function() {
+            _this._getJsonPathElements(data.data).then(function () {
                 data.data = _this._setDevicesProperties(data.data, filterElement);
                 defered.resolve(data);
             })
-        }).catch(function(err) {
+        }).catch(function (err) {
             defered.reject(err);
         });
         return promise;
@@ -273,17 +273,17 @@ export default class EntityBuilder {
         let allowedDatastreams = jp.nodes(data, &apos;$.datamodels[*].categories[*].datastreams[*]..[&quot;$ref&quot;]&apos;);
         let jsonSchemaSearchBuilder = this._ogapi.jsonSchemaSearchBuilder();
 
-        allowedDatastreams.forEach(function(element, index) {
+        allowedDatastreams.forEach(function (element, index) {
             var deferred = q.defer();
             element.path.pop();
             let jsonSchemaPath = jp.stringify(element.path);
-            jsonSchemaSearchBuilder.withPath(element.value).build().execute().then(function(res) {
-                    var newnodes = jp.apply(data, jsonSchemaPath, function(value) {
-                        return res.data;
-                    });
-                    deferred.resolve(res);
-                })
-                .catch(function(err) {
+            jsonSchemaSearchBuilder.withPath(element.value).build().execute().then(function (res) {
+                var newnodes = jp.apply(data, jsonSchemaPath, function (value) {
+                    return res.data;
+                });
+                deferred.resolve(res);
+            })
+                .catch(function (err) {
                     throw new Error(err);
                 });
             promises.push(deferred.promise);
@@ -300,7 +300,7 @@ export default class EntityBuilder {
         _this.complexFunctions = [];
         _this.simpleFunctions = [];
 
-        allowedDatastreams.forEach(function(element, index) {
+        allowedDatastreams.forEach(function (element, index) {
             let _id = element.identifier;
             if (_id.startsWith(&apos;provision.administration&apos;) || _id.startsWith(filter)) {
                 response.allowedDatastreams.push(element);
@@ -319,7 +319,7 @@ export default class EntityBuilder {
     }
     _createComplexFunction(parent) {
         let _this = parent;
-        _this[&apos;withComplex&apos;] = function(_id, idCommunicationModules, val) {
+        _this[&apos;withComplex&apos;] = function (_id, idCommunicationModules, val) {
 
             if (!_this._definedSchemas[_id]) {
                 throw new Error(ERROR_DATASTREAM_NOT_ALLOWED);
@@ -356,7 +356,7 @@ export default class EntityBuilder {
     }
     _createSimplefunction(parent) {
         let _this = parent;
-        _this[&apos;with&apos;] = function(_id, val) {
+        _this[&apos;with&apos;] = function (_id, val) {
             if (!_this._definedSchemas[_id]) {
                 throw new Error(ERROR_DATASTREAM_NOT_ALLOWED);
             } else if (_this._definedSchemas[_id].complex) {
@@ -387,7 +387,7 @@ export default class EntityBuilder {
             throw new Error(ERROR_ORGANIZATION);
         }
         this._loadAllowedDatastreams(&apos;provision.device&apos;, organization)
-            .then(function(data) {
+            .then(function (data) {
                 if (data.statusCode === 200) {
                     let allowedDatastreams = data.data.allowedDatastreams;
                     let definedSchemas = data.data.schemas;
@@ -399,7 +399,7 @@ export default class EntityBuilder {
                 } else {
                     defered.resolve(data);
                 }
-            }).catch(function(err) {
+            }).catch(function (err) {
                 defered.resolve(err);
             });
         return promise;
@@ -415,7 +415,7 @@ export default class EntityBuilder {
             throw new Error(ERROR_ORGANIZATION);
         }
         this._loadAllowedDatastreams(&apos;provision.device.communicationModules[].subscriber&apos;, organization)
-            .then(function(data) {
+            .then(function (data) {
                 if (data.statusCode === 200) {
                     let allowedDatastreams = data.data.allowedDatastreams;
                     let definedSchemas = data.data.schemas;
@@ -425,7 +425,7 @@ export default class EntityBuilder {
                     subscribers.with(&apos;provision.administration.serviceGroup&apos;, &apos;emptyServiceGroup&apos;);
                     defered.resolve(subscribers);
                 }
-            }).catch(function(err) {
+            }).catch(function (err) {
                 defered.resolve(err);
             });
         return promise;
@@ -440,7 +440,7 @@ export default class EntityBuilder {
             throw new Error(ERROR_ORGANIZATION);
         }
         this._loadAllowedDatastreams(&apos;provision.device.communicationModules[].subscription&apos;, organization)
-            .then(function(data) {
+            .then(function (data) {
                 if (data.statusCode === 200) {
                     let allowedDatastreams = data.data.allowedDatastreams;
                     let definedSchemas = data.data.schemas;
@@ -450,7 +450,7 @@ export default class EntityBuilder {
                     subscriptions.with(&apos;provision.administration.serviceGroup&apos;, &apos;emptyServiceGroup&apos;);
                     defered.resolve(subscriptions);
                 }
-            }).catch(function(err) {
+            }).catch(function (err) {
                 defered.resolve(err);
             });
         return promise;
