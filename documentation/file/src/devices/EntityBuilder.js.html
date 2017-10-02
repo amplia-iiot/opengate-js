@@ -200,7 +200,8 @@
 import q from &apos;q&apos;;
 import moment from &apos;moment&apos;;
 import HttpStatus from &apos;http-status-codes&apos;;
-import jp from &apos;jsonpath&apos;;
+//import jp from &apos;jsonpath&apos;;
+import JSONPath from &apos;JSONPath&apos;;
 import jsonschema from &apos;jsonschema&apos;;
 
 import Devices from &apos;../devices/Devices&apos;
@@ -269,23 +270,38 @@ export default class EntityBuilder {
     }
 
     _getJsonPathElements(data) {
-        var promises = [];
-        let allowedDatastreams = jp.nodes(data, &apos;$.datamodels[*].categories[*].datastreams[*]..[&quot;$ref&quot;]&apos;);
+        let promises = [];
+        /*with jsonpath
+        let allowedDatastreams = jp.nodes(data, &apos;$.datamodels[*].categories[*].datastreams[*]..[&quot;$ref&quot;]&apos;);*/
+        let allowedDatastreams = JSONPath({ json: data, path: &apos;$.datamodels[*].categories[*].datastreams[*]..[$ref]&apos;, resultType: &apos;all&apos; });
         let jsonSchemaSearchBuilder = this._ogapi.jsonSchemaSearchBuilder();
 
         allowedDatastreams.forEach(function (element, index) {
-            var deferred = q.defer();
+            let deferred = q.defer();
+            /*with jsonpath
             element.path.pop();
-            let jsonSchemaPath = jp.stringify(element.path);
+            let jsonSchemaPath = jp.stringify(element.path);*/
+            let _element = JSONPath.toPathArray(element.path);
+            _element.pop();
+            let jsonSchemaPath = JSONPath.toPathString(_element);
+
+            /*with jsonpath
             jsonSchemaSearchBuilder.withPath(element.value).build().execute().then(function (res) {
                 var newnodes = jp.apply(data, jsonSchemaPath, function (value) {
                     return res.data;
                 });
                 deferred.resolve(res);
-            })
-                .catch(function (err) {
-                    throw new Error(err);
+            })*/
+            jsonSchemaSearchBuilder.withPath(element.value).build().execute().then(function (res) {
+                let newnodes = JSONPath({
+                    json: data, path: jsonSchemaPath, function(value) {
+                        return res.data;
+                    }
                 });
+                deferred.resolve(res);
+            }).catch(function (err) {
+                throw new Error(err);
+            });
             promises.push(deferred.promise);
         });
         return q.all(promises, data);
@@ -295,7 +311,9 @@ export default class EntityBuilder {
 
     _setDevicesProperties(data, filter) {
         let _this = this;
-        let allowedDatastreams = jp.query(data, &quot;$.datamodels[*].categories[*].datastreams[*]&quot;);
+        /*with jsonpath
+        let allowedDatastreams = jp.query(data, &quot;$.datamodels[*].categories[*].datastreams[*]&quot;);*/
+        let allowedDatastreams = JSONPath({ json: data, path: &quot;$.datamodels[*].categories[*].datastreams[*]&quot; });
         let response = { allowedDatastreams: [], schemas: {} };
         _this.complexFunctions = [];
         _this.simpleFunctions = [];

@@ -262,9 +262,9 @@ export default class Devices extends BaseProvision {
         let defered = q.defer();
         let promise = defered.promise;
         if (this._validate()) {
-            super.create().then(function(res) {
+            super.create().then(function (res) {
                 defered.resolve({ data: res.data, statusCode: res.statusCode });
-            }).catch(function(err) {
+            }).catch(function (err) {
                 defered.reject(err);
             });
         } else {

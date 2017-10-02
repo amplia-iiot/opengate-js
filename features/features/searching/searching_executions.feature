@@ -1,4 +1,5 @@
 # features/searching_executions.feature
+@device_builder
 @operations
 @search
 @search_executions

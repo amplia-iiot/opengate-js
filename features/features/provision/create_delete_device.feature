@@ -1,4 +1,7 @@
 # features/create_delete_device.feature
+@subscribers_builder
+@subscription_builder
+@device_builder
 @create_provision
 @device_defaultFeed
 Feature: Delete and Create a device

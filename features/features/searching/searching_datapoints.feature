@@ -1,5 +1,5 @@
 # features/searching_datapoints.feature
-
+@device_builder
 @searching_datapoints
 Feature: Searching into datapoints collection
   As a user of JsApi

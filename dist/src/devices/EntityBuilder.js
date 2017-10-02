@@ -22,9 +22,11 @@ var _httpStatusCodes = require('http-status-codes');
 
 var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
 
-var _jsonpath = require('jsonpath');
+//import jp from 'jsonpath';
 
-var _jsonpath2 = _interopRequireDefault(_jsonpath);
+var _JSONPath = require('JSONPath');
+
+var _JSONPath2 = _interopRequireDefault(_JSONPath);
 
 var _jsonschema = require('jsonschema');
 
@@ -109,16 +111,32 @@ var EntityBuilder = (function () {
         key: '_getJsonPathElements',
         value: function _getJsonPathElements(data) {
             var promises = [];
-            var allowedDatastreams = _jsonpath2['default'].nodes(data, '$.datamodels[*].categories[*].datastreams[*]..["$ref"]');
+            /*with jsonpath
+            let allowedDatastreams = jp.nodes(data, '$.datamodels[*].categories[*].datastreams[*]..["$ref"]');*/
+            var allowedDatastreams = (0, _JSONPath2['default'])({ json: data, path: '$.datamodels[*].categories[*].datastreams[*]..[$ref]', resultType: 'all' });
             var jsonSchemaSearchBuilder = this._ogapi.jsonSchemaSearchBuilder();
 
             allowedDatastreams.forEach(function (element, index) {
                 var deferred = _q2['default'].defer();
+                /*with jsonpath
                 element.path.pop();
-                var jsonSchemaPath = _jsonpath2['default'].stringify(element.path);
+                let jsonSchemaPath = jp.stringify(element.path);*/
+                var _element = _JSONPath2['default'].toPathArray(element.path);
+                _element.pop();
+                var jsonSchemaPath = _JSONPath2['default'].toPathString(_element);
+
+                /*with jsonpath
                 jsonSchemaSearchBuilder.withPath(element.value).build().execute().then(function (res) {
-                    var newnodes = _jsonpath2['default'].apply(data, jsonSchemaPath, function (value) {
+                    var newnodes = jp.apply(data, jsonSchemaPath, function (value) {
                         return res.data;
+                    });
+                    deferred.resolve(res);
+                })*/
+                jsonSchemaSearchBuilder.withPath(element.value).build().execute().then(function (res) {
+                    var newnodes = (0, _JSONPath2['default'])({
+                        json: data, path: jsonSchemaPath, 'function': function _function(value) {
+                            return res.data;
+                        }
                     });
                     deferred.resolve(res);
                 })['catch'](function (err) {
@@ -132,7 +150,9 @@ var EntityBuilder = (function () {
         key: '_setDevicesProperties',
         value: function _setDevicesProperties(data, filter) {
             var _this = this;
-            var allowedDatastreams = _jsonpath2['default'].query(data, "$.datamodels[*].categories[*].datastreams[*]");
+            /*with jsonpath
+            let allowedDatastreams = jp.query(data, "$.datamodels[*].categories[*].datastreams[*]");*/
+            var allowedDatastreams = (0, _JSONPath2['default'])({ json: data, path: "$.datamodels[*].categories[*].datastreams[*]" });
             var response = { allowedDatastreams: [], schemas: {} };
             _this.complexFunctions = [];
             _this.simpleFunctions = [];

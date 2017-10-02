@@ -1,4 +1,5 @@
 # features/execute_operations.feature
+@device_builder
 @execute_operations
 @operations
 Feature: Execute ADMINISTRATIVE_STATUS_CHANGE operation
@@ -7,7 +8,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE operation
   So that I can change the administrative status to some devices/subscriptions/subscribers/communications module
 
   Background:
-    Given an apikey user by "fa7aa321-4d3f-48ac-bf06-58425ebd81f3"
+    Given an apikey user by "require-real-apikey"
 
  
  Scenario: Create a asset that not exists 

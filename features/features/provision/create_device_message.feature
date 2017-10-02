@@ -1,5 +1,5 @@
 # features/create_device_message.feature
-
+@device_builder
 @create_device_message
 @device_message
 Feature: Send messages

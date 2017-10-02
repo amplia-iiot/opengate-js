@@ -199,7 +199,8 @@
 import SearchBuilder from &apos;./SearchBuilder&apos;
 import og_basic_types from &apos;./jsonSchema/og_basic_types&apos;
 import q from &apos;q&apos;;
-import jp from &apos;jsonpath&apos;;
+//import jp from &apos;jsonpath&apos;;
+import JSONPath from &apos;JSONPath&apos;;
 
 
 /**
@@ -231,15 +232,30 @@ export default class JsonSchemaSearchBuilder extends SearchBuilder {
     _getPathValue(path) {
         let _this = this;
         path = path.split(&quot;#/&quot;)[1].replace(/\//gi, &quot;.&quot;);
-        var jsonSchemaValue = jp.value(og_basic_types, path);
+        /*with jsonpath
+        var jsonSchemaValue = jp.value(og_basic_types, path);*/
+        let jsonSchemaValue = JSONPath({ json: og_basic_types, path: path })[0];
         if (jsonSchemaValue) {
-            var nodes = jp.nodes(jsonSchemaValue, &quot;$..[&apos;$ref&apos;]&quot;);
+            /*with jsonpath
+            var nodes = jp.nodes(jsonSchemaValue, &quot;$..[&apos;$ref&apos;]&quot;);*/
+            let nodes = JSONPath({ json: jsonSchemaValue, path: &quot;$..[$ref]&quot;, resultType: &apos;all&apos; })
             if (nodes.length &gt; 0) {
                 nodes.forEach(function (element, index) {
+                    var _element = JSONPath.toPathArray(element.path);
+                    _element.pop();
+                    /*with jsonpath
                     element.path.pop(); //eliminamos $ref
                     var pathExpression = jp.stringify(element.path);
+                    */
+                    let pathExpression = JSONPath.toPathString(_element);
+                    /*with jsonpath
                     var newnodes = jp.apply(jsonSchemaValue, pathExpression, function (value) {
                         return _this._getPathValue(element.value);
+                    });*/
+                    var newnodes = JSONPath({
+                        json: jsonSchemaValue, path: pathExpression, function(value) {
+                            return _this._getPathValue(element.value);
+                        }
                     });
                 });
                 return jsonSchemaValue;
@@ -263,7 +279,8 @@ export default class JsonSchemaSearchBuilder extends SearchBuilder {
             throw new Error(&apos;Path attributte is mandatory&apos;);
         }
         let path = this.path.split(&quot;#/&quot;)[1].replace(/\//gi, &quot;.&quot;);
-        if (!jp.value(og_basic_types, path)) {
+        //if (!jp.value(og_basic_types, path)) {
+        if (!JSONPath({ json: og_basic_types, path: path })[0]) {
             throw new Error(&apos;Path not found&apos;);
         }
         return this;
