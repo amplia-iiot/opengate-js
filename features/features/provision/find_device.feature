@@ -1,5 +1,5 @@
 # features/find_device.feature
-
+@device_builder
 @finder
 @find_provision
 @finddevice

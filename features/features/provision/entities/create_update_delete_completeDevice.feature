@@ -1,4 +1,6 @@
 # features/create_update_delete_simpleDevice.feature
+@new
+@device_builder
 @create_provision
 @device_defaultCreateBox
 Feature: Delete and Create a device
@@ -29,7 +31,7 @@ Feature: Delete and Create a device
     And response code should be: 201
 
 
-Scenario: I want to create the entity 
+Scenario: I want to update the entity 
      When I try to define the entity with... 
 		| datastream                                                        | typeFunction       |   value                 | parent      |
 		| provision.administration.channel                                  | simple             |  base_channel           |             |

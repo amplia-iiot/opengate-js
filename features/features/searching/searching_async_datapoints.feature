@@ -1,5 +1,5 @@
 # features/searching_async_datapoints.feature
-
+@device_builder
 @searching_datapoints
 @searching_asynchronous
 Feature: Searching into datapoints collection
@@ -7,7 +7,7 @@ Feature: Searching into datapoints collection
   I want to search the collection of data points using asynchronous pagination
 
   Background:
-    Given an apikey user by "b52eaed2-f155-4c45-8628-49708372b964"
+    Given an apikey user by "require-real-apikey"
 
    Scenario: Create a gateway that not exists 
     Given an ogapi "devices builder" util 

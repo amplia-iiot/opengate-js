@@ -1,4 +1,5 @@
 # features/create_delete_subscription.feature
+@subscription_builder
 @create_provision
 @subscription
 Feature: Delete and Create a subscription 

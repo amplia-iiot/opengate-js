@@ -1,4 +1,4 @@
-var jpath = require('json-path');
+var JSONPath = require('JSONPath');
 
 module.exports = function () {
     this.Then(/^I can see into the result an "([^"]*)" as "([^"]*)"$/, function (getterName, getterValue, callback) {
@@ -7,7 +7,8 @@ module.exports = function () {
         //console.log("SEE GETTER_NAME: " + getterName);
         var json_attr = this.findModel.getter_response(getterName);
         //console.log("SEE INTO THE json_attr: " + JSON.stringify(json_attr));
-        var value = jpath.resolve(data, json_attr)[0];
+        ;
+        var value = JSONPath({ json: data, path: json_attr })[0];
         this.expect(value).to.be.equal(getterValue);
         callback();
     });
@@ -31,7 +32,7 @@ module.exports = function () {
         data = this.responseData.data;
         //console.log("SEE INTO THE RESULT DATA: " + JSON.stringify(data));
         var json_attr = this.findModel.getter_response(getterName);
-        var value = jpath.resolve(data, json_attr)[0];
+        var value = JSONPath({ json: data, path: json_attr })[0];
         //console.log("response data: " + JSON.stringify(value));
         //console.log("getterValue: " + getterValue);
         this.expect(JSON.stringify(value)).to.be.equal(getterValue);

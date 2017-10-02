@@ -1,4 +1,6 @@
 # features/create_update_delete_simpleDevice.feature
+@device_builder
+@new
 @create_provision
 @device_defaultCreate
 Feature: Delete and Create a device

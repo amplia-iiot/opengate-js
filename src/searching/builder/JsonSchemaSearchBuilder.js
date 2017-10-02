@@ -3,7 +3,8 @@
 import SearchBuilder from './SearchBuilder'
 import og_basic_types from './jsonSchema/og_basic_types'
 import q from 'q';
-import jp from 'jsonpath';
+//import jp from 'jsonpath';
+import JSONPath from 'JSONPath';
 
 
 /**
@@ -35,15 +36,30 @@ export default class JsonSchemaSearchBuilder extends SearchBuilder {
     _getPathValue(path) {
         let _this = this;
         path = path.split("#/")[1].replace(/\//gi, ".");
-        var jsonSchemaValue = jp.value(og_basic_types, path);
+        /*with jsonpath
+        var jsonSchemaValue = jp.value(og_basic_types, path);*/
+        let jsonSchemaValue = JSONPath({ json: og_basic_types, path: path })[0];
         if (jsonSchemaValue) {
-            var nodes = jp.nodes(jsonSchemaValue, "$..['$ref']");
+            /*with jsonpath
+            var nodes = jp.nodes(jsonSchemaValue, "$..['$ref']");*/
+            let nodes = JSONPath({ json: jsonSchemaValue, path: "$..[$ref]", resultType: 'all' })
             if (nodes.length > 0) {
                 nodes.forEach(function (element, index) {
+                    var _element = JSONPath.toPathArray(element.path);
+                    _element.pop();
+                    /*with jsonpath
                     element.path.pop(); //eliminamos $ref
                     var pathExpression = jp.stringify(element.path);
+                    */
+                    let pathExpression = JSONPath.toPathString(_element);
+                    /*with jsonpath
                     var newnodes = jp.apply(jsonSchemaValue, pathExpression, function (value) {
                         return _this._getPathValue(element.value);
+                    });*/
+                    var newnodes = JSONPath({
+                        json: jsonSchemaValue, path: pathExpression, function(value) {
+                            return _this._getPathValue(element.value);
+                        }
                     });
                 });
                 return jsonSchemaValue;
@@ -67,7 +83,8 @@ export default class JsonSchemaSearchBuilder extends SearchBuilder {
             throw new Error('Path attributte is mandatory');
         }
         let path = this.path.split("#/")[1].replace(/\//gi, ".");
-        if (!jp.value(og_basic_types, path)) {
+        //if (!jp.value(og_basic_types, path)) {
+        if (!JSONPath({ json: og_basic_types, path: path })[0]) {
             throw new Error('Path not found');
         }
         return this;
