@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-    value: true
+  value: true
 });
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -29,36 +29,36 @@ var BASE_URL = '/devices';
  */
 
 var DevicesSearchBuilder = (function (_FlattenedSearchBuilder) {
-    _inherits(DevicesSearchBuilder, _FlattenedSearchBuilder);
+  _inherits(DevicesSearchBuilder, _FlattenedSearchBuilder);
 
-    /**
-     *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
-     */
+  /**
+   *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
+   */
 
-    function DevicesSearchBuilder(parent) {
-        _classCallCheck(this, DevicesSearchBuilder);
+  function DevicesSearchBuilder(parent) {
+    _classCallCheck(this, DevicesSearchBuilder);
 
-        _get(Object.getPrototypeOf(DevicesSearchBuilder.prototype), 'constructor', this).call(this, parent, {}, new _utilSearchingFieldsFieldFinder2['default'](parent, BASE_URL));
-        this._url = BASE_URL;
+    _get(Object.getPrototypeOf(DevicesSearchBuilder.prototype), 'constructor', this).call(this, parent, {}, new _utilSearchingFieldsFieldFinder2['default'](parent, BASE_URL));
+    this._url = BASE_URL;
+  }
+
+  /**
+   * The response will only have a summary information 
+   * @example
+   *	ogapi.devicesSearchBuilder().summary() 
+   * @return {DevicesSearchBuilder} 
+   */
+
+  _createClass(DevicesSearchBuilder, [{
+    key: 'summary',
+    value: function summary() {
+      this._url = this._url + '/summary';
+
+      return this;
     }
+  }]);
 
-    /**
-     * The response will only have a summary information 
-     * @example
-     *	ogapi.devicesSearchBuilder().summary() 
-     * @return {DevicesSearchBuilder} 
-     */
-
-    _createClass(DevicesSearchBuilder, [{
-        key: 'summary',
-        value: function summary() {
-            this._url = this._url + '/summary';
-
-            return this;
-        }
-    }]);
-
-    return DevicesSearchBuilder;
+  return DevicesSearchBuilder;
 })(_FlattenedSearchBuilder3['default']);
 
 exports['default'] = DevicesSearchBuilder;
