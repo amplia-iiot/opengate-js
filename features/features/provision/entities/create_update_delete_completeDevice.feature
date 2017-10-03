@@ -16,6 +16,7 @@ Feature: Delete and Create a device
     And I get allowed Datastreams fields
     And response code should be: 200
 
+
  Scenario: I want to create the entity 
      When I try to define the entity with... 
 		| datastream                                                        | typeFunction       |   value                 | parent      |
@@ -23,10 +24,11 @@ Feature: Delete and Create a device
         | provision.administration.organization                             | simple             |  base_organization      |             |
         | provision.administration.serviceGroup                             | simple             |  emptyServiceGroup      |             |
         | provision.device.identifier                                       | simple             |  device_ogapi           |             |
+        | provision.device.operationalStatus                                | simple             |  NORMAL                 |             |   
+        | provision.device.administrativeState                              | simple             |  ACTIVE                 |             |
         | provision.device.communicationModules[].identifier                | complex            |  CM_id_1                | CM_id_1     |
         | provision.device.communicationModules[].subscription.identifier   | complex            |  SB_id_1                | CM_id_1     |
         | provision.device.communicationModules[].subscriber.identifier     | complex            |  SP_id_1                | CM_id_1     |
-
     Then I create it
     And response code should be: 201
 

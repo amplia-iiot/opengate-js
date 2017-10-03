@@ -85,9 +85,7 @@ export default class EntityBuilder {
             /*with jsonpath
             element.path.pop();
             let jsonSchemaPath = jp.stringify(element.path);*/
-            let _element = JSONPath.toPathArray(element.path);
-            _element.pop();
-            let jsonSchemaPath = JSONPath.toPathString(_element);
+            let jsonSchemaPath = element.path;
 
             /*with jsonpath
             jsonSchemaSearchBuilder.withPath(element.value).build().execute().then(function (res) {
@@ -98,8 +96,8 @@ export default class EntityBuilder {
             })*/
             jsonSchemaSearchBuilder.withPath(element.value).build().execute().then(function (res) {
                 let newnodes = JSONPath({
-                    json: data, path: jsonSchemaPath, function(value) {
-                        return res.data;
+                    json: data, path: jsonSchemaPath, callback: function (value) {
+                        v.addSchema(res.data, res.data.id);
                     }
                 });
                 deferred.resolve(res);
@@ -222,7 +220,7 @@ export default class EntityBuilder {
                     defered.resolve(data);
                 }
             }).catch(function (err) {
-                defered.resolve(err);
+                defered.reject(err);
             });
         return promise;
     }
