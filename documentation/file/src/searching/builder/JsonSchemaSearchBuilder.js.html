@@ -241,19 +241,17 @@ export default class JsonSchemaSearchBuilder extends SearchBuilder {
             let nodes = JSONPath({ json: jsonSchemaValue, path: &quot;$..[$ref]&quot;, resultType: &apos;all&apos; })
             if (nodes.length &gt; 0) {
                 nodes.forEach(function (element, index) {
-                    var _element = JSONPath.toPathArray(element.path);
-                    _element.pop();
+                    let pathExpression = element.path;
                     /*with jsonpath
                     element.path.pop(); //eliminamos $ref
                     var pathExpression = jp.stringify(element.path);
                     */
-                    let pathExpression = JSONPath.toPathString(_element);
                     /*with jsonpath
                     var newnodes = jp.apply(jsonSchemaValue, pathExpression, function (value) {
                         return _this._getPathValue(element.value);
                     });*/
-                    var newnodes = JSONPath({
-                        json: jsonSchemaValue, path: pathExpression, function(value) {
+                    let newnodes = JSONPath({
+                        json: jsonSchemaValue, path: pathExpression, callback: function (value) {
                             return _this._getPathValue(element.value);
                         }
                     });

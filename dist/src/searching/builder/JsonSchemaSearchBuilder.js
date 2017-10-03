@@ -6,7 +6,7 @@ Object.defineProperty(exports, '__esModule', {
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(_x, _x2, _x3) { var _again = true; _function2: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function2; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -79,19 +79,17 @@ var JsonSchemaSearchBuilder = (function (_SearchBuilder) {
                 var nodes = (0, _JSONPath2['default'])({ json: jsonSchemaValue, path: "$..[$ref]", resultType: 'all' });
                 if (nodes.length > 0) {
                     nodes.forEach(function (element, index) {
-                        var _element = _JSONPath2['default'].toPathArray(element.path);
-                        _element.pop();
+                        var pathExpression = element.path;
                         /*with jsonpath
                         element.path.pop(); //eliminamos $ref
                         var pathExpression = jp.stringify(element.path);
                         */
-                        var pathExpression = _JSONPath2['default'].toPathString(_element);
                         /*with jsonpath
                         var newnodes = jp.apply(jsonSchemaValue, pathExpression, function (value) {
                             return _this._getPathValue(element.value);
                         });*/
                         var newnodes = (0, _JSONPath2['default'])({
-                            json: jsonSchemaValue, path: pathExpression, 'function': function _function(value) {
+                            json: jsonSchemaValue, path: pathExpression, callback: function callback(value) {
                                 return _this._getPathValue(element.value);
                             }
                         });

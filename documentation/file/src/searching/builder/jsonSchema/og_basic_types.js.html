@@ -197,6 +197,7 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">export default {
     &quot;definitions&quot;: {
         &quot;jobDefaultParameters&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/jobDefaultParameters&quot;,
             &quot;type&quot;: &quot;object&quot;,
             &quot;properties&quot;: {
                 &quot;job.request.operationParameters.ackTimeout&quot;: {
@@ -226,14 +227,17 @@
             }
         },
         &quot;parametersEmpty&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/parametersEmpty&quot;,
             &quot;type&quot;: &quot;object&quot;,
             &quot;properties&quot;: {}
         },
         &quot;stepsEmpty&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/stepsEmpty&quot;,
             &quot;type&quot;: &quot;object&quot;,
             &quot;properties&quot;: {}
         },
         &quot;stepsResult&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/stepsResult&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;title&quot;: &quot;Step Name&quot;,
             &quot;description&quot;: &quot;&quot;,
@@ -245,13 +249,14 @@
             ]
         },
         &quot;stepNoResponseData&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/stepNoResponseData&quot;,
             &quot;type&quot;: &quot;object&quot;,
             &quot;properties&quot;: {
                 &quot;result&quot;: {
-                    &quot;$ref&quot;: &quot;#/definitions/stepsResult&quot;
+                    &quot;$ref&quot;: &quot;/og_basic_types.json#/definitions/stepsResult&quot;
                 },
                 &quot;timestamp&quot;: {
-                    &quot;$ref&quot;: &quot;#/definitions/timestamp&quot;
+                    &quot;$ref&quot;: &quot;/og_basic_types.json#/definitions/timestamp&quot;
                 }
             },
             &quot;required&quot;: [
@@ -261,6 +266,7 @@
             ]
         },
         &quot;date&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/date&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;format&quot;: &quot;date&quot;,
             &quot;title&quot;: &quot;date&quot;,
@@ -268,6 +274,7 @@
             &quot;pattern&quot;: &quot;^([0-9]{4})-?(1[0-2]|0[1-9])-?(3[01]|0[1-9]|[12][0-9])$&quot;
         },
         &quot;time&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/time&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;format&quot;: &quot;time&quot;,
             &quot;title&quot;: &quot;time&quot;,
@@ -275,6 +282,7 @@
             &quot;pattern&quot;: &quot;^(2[0-3]|[01][0-9]):?([0-5][0-9]):?([0-5][0-9])$&quot;
         },
         &quot;timezone&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/timezone&quot;,
             &quot;type&quot;: &quot;integer&quot;,
             &quot;title&quot;: &quot;timezone&quot;,
             &quot;minimum&quot;: 0,
@@ -282,25 +290,27 @@
             &quot;default&quot;: 0
         },
         &quot;dst&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/dst&quot;,
             &quot;type&quot;: &quot;integer&quot;,
             &quot;title&quot;: &quot;DST&quot;,
             &quot;minimum&quot;: 0,
             &quot;default&quot;: 0
         },
         &quot;datetime&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/datetime&quot;,
             &quot;type&quot;: &quot;object&quot;,
             &quot;properties&quot;: {
                 &quot;date&quot;: {
-                    &quot;$ref&quot;: &quot;#/definitions/date&quot;
+                    &quot;$ref&quot;: &quot;/og_basic_types.json#/definitions/date&quot;
                 },
                 &quot;time&quot;: {
-                    &quot;$ref&quot;: &quot;#/definitions/time&quot;
+                    &quot;$ref&quot;: &quot;/og_basic_types.json#/definitions/time&quot;
                 },
                 &quot;timezone&quot;: {
-                    &quot;$ref&quot;: &quot;#/definitions/timezone&quot;
+                    &quot;$ref&quot;: &quot;/og_basic_types.json#/definitions/timezone&quot;
                 },
                 &quot;dst&quot;: {
-                    &quot;$ref&quot;: &quot;#/definitions/dst&quot;
+                    &quot;$ref&quot;: &quot;/og_basic_types.json#/definitions/dst&quot;
                 }
             },
             &quot;required&quot;: [
@@ -311,6 +321,7 @@
             ]
         },
         &quot;timestamp&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/timestamp&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;format&quot;: &quot;date-time&quot;,
             &quot;title&quot;: &quot;timestamp&quot;,
@@ -318,6 +329,7 @@
             &quot;pattern&quot;: &quot;^([0-9]{4})-?(1[0-2]|0[1-9])-?(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):?([0-5][0-9]):?([0-5][0-9])$&quot;
         },
         &quot;datamodelResultCode&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/datamodelResultCode&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;title&quot;: &quot;Result Code&quot;,
             &quot;description&quot;: &quot;Result code of Get Operation&quot;,
@@ -330,15 +342,17 @@
             ]
         },
         &quot;datamodelParamName&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/datamodelParamName&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;title&quot;: &quot;Id&quot;,
             &quot;description&quot;: &quot;Id of the parameter&quot;
         },
         &quot;datamodelParamNameValue&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/datamodelParamNameValue&quot;,
             &quot;type&quot;: &quot;object&quot;,
             &quot;properties&quot;: {
                 &quot;name&quot;: {
-                    &quot;$ref&quot;: &quot;#/definitions/datamodelParamName&quot;
+                    &quot;$ref&quot;: &quot;/og_basic_types.json#/definitions/datamodelParamName&quot;
                 },
                 &quot;value&quot;: {
                     &quot;type&quot;: &quot;string&quot;,
@@ -352,6 +366,7 @@
             ]
         },
         &quot;datamodelResponse&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/datamodelResponse&quot;,
             &quot;type&quot;: &quot;object&quot;,
             &quot;properties&quot;: {
                 &quot;name&quot;: {
@@ -365,7 +380,7 @@
                     &quot;description&quot;: &quot;value of the parameter&quot;
                 },
                 &quot;resultCode&quot;: {
-                    &quot;$ref&quot;: &quot;#/definitions/datamodelResultCode&quot;
+                    &quot;$ref&quot;: &quot;/og_basic_types.json#/definitions/datamodelResultCode&quot;
                 },
                 &quot;resultDescription&quot;: {
                     &quot;type&quot;: &quot;string&quot;,
@@ -379,6 +394,7 @@
             ]
         },
         &quot;coordinates&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/coordinates&quot;,
             &quot;description&quot;: &quot;A geographical coordinates&quot;,
             &quot;type&quot;: &quot;array&quot;,
             &quot;maxItems&quot;: 2,
@@ -387,6 +403,7 @@
             }
         },
         &quot;location&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/location&quot;,
             &quot;description&quot;: &quot;A geojson enriched for OpenGate&quot;,
             &quot;type&quot;: &quot;object&quot;,
             &quot;properties&quot;: {
@@ -450,29 +467,34 @@
             }
         },
         &quot;ipv4&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/ipv4&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;format&quot;: &quot;ipv4&quot;,
             &quot;title&quot;: &quot;ipv4&quot;,
             &quot;description&quot;: &quot;IPV4 format&quot;
         },
         &quot;ipv6&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/ipv6&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;format&quot;: &quot;ipv6&quot;,
             &quot;title&quot;: &quot;ipv6&quot;,
             &quot;description&quot;: &quot;IPV6 format&quot;
         },
         &quot;mac48&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/mac48&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;title&quot;: &quot;mac48&quot;,
             &quot;description&quot;: &quot;MAC48 format&quot;,
             &quot;pattern&quot;: &quot;(([0-9A-Fa-f]{2}[-:]){5}[0-9A-Fa-f]{2})|(([0-9A-Fa-f]{4}){2}[0-9A-Fa-f]{4})&quot;
         },
         &quot;msisdn&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/msisdn&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;minLength&quot;: 7,
             &quot;maxLength&quot;: 15
         },
         &quot;address&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/address&quot;,
             &quot;type&quot;: &quot;object&quot;,
             &quot;properties&quot;: {
                 &quot;type&quot;: {
@@ -495,11 +517,13 @@
             }
         },
         &quot;percentage&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/percentage&quot;,
             &quot;type&quot;: &quot;number&quot;,
             &quot;minimum&quot;: 0,
             &quot;maximum&quot;: 100
         },
         &quot;entityType&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/entityType&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;title&quot;: &quot;Entity Type&quot;,
             &quot;description&quot;: &quot;&quot;,
@@ -512,6 +536,7 @@
             ]
         },
         &quot;deviceOperationalStatus&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/deviceOperationalStatus&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;title&quot;: &quot;Operational Status&quot;,
             &quot;description&quot;: &quot;&quot;,
@@ -526,6 +551,7 @@
             ]
         },
         &quot;commsModuleOperationalStatus&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/commsModuleOperationalStatus&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;title&quot;: &quot;Operational Status&quot;,
             &quot;description&quot;: &quot;&quot;,
@@ -539,6 +565,7 @@
             ]
         },
         &quot;ipStatus&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/ipStatus&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;title&quot;: &quot;IP Reachability Status&quot;,
             &quot;description&quot;: &quot;&quot;,
@@ -548,6 +575,7 @@
             ]
         },
         &quot;administrativeState&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/administrativeState&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;title&quot;: &quot;Operational Status&quot;,
             &quot;description&quot;: &quot;&quot;,
@@ -563,6 +591,7 @@
             ]
         },
         &quot;model&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/model&quot;,
             &quot;type&quot;: &quot;object&quot;,
             &quot;title&quot;: &quot;Model&quot;,
             &quot;description&quot;: &quot;&quot;,
@@ -582,6 +611,7 @@
             }
         },
         &quot;software&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/software&quot;,
             &quot;type&quot;: &quot;object&quot;,
             &quot;title&quot;: &quot;Software&quot;,
             &quot;description&quot;: &quot;&quot;,
@@ -602,24 +632,27 @@
             }
         },
         &quot;softwareList&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/softwareList&quot;,
             &quot;type&quot;: &quot;array&quot;,
             &quot;items&quot;: {
-                &quot;$ref&quot;: &quot;#/definitions/software&quot;
+                &quot;$ref&quot;: &quot;/og_basic_types.json#/definitions/software&quot;
             }
         },
         &quot;topologyPath&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/topologyPath&quot;,
             &quot;type&quot;: &quot;array&quot;,
             &quot;items&quot;: {
                 &quot;type&quot;: &quot;string&quot;
             }
         },
         &quot;clock&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/clock&quot;,
             &quot;type&quot;: &quot;object&quot;,
             &quot;title&quot;: &quot;Software&quot;,
             &quot;description&quot;: &quot;&quot;,
             &quot;properties&quot;: {
                 &quot;datetime&quot;: {
-                    &quot;$ref&quot;: &quot;#/definitions/timestamp&quot;
+                    &quot;$ref&quot;: &quot;/og_basic_types.json#/definitions/timestamp&quot;
                 },
                 &quot;timezone&quot;: {
                     &quot;type&quot;: &quot;number&quot;
@@ -634,20 +667,21 @@
                             &quot;type&quot;: &quot;number&quot;
                         },
                         &quot;begin&quot;: {
-                            &quot;$ref&quot;: &quot;#/definitions/timestamp&quot;
+                            &quot;$ref&quot;: &quot;/og_basic_types.json#/definitions/timestamp&quot;
                         },
                         &quot;end&quot;: {
-                            &quot;$ref&quot;: &quot;#/definitions/timestamp&quot;
+                            &quot;$ref&quot;: &quot;/og_basic_types.json#/definitions/timestamp&quot;
                         }
                     }
                 }
             }
         },
         &quot;outage&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/outage&quot;,
             &quot;type&quot;: &quot;object&quot;,
             &quot;properties&quot;: {
                 &quot;started&quot;: {
-                    &quot;$ref&quot;: &quot;#/definitions/timestamp&quot;
+                    &quot;$ref&quot;: &quot;/og_basic_types.json#/definitions/timestamp&quot;
                 },
                 &quot;duration&quot;: {
                     &quot;type&quot;: &quot;number&quot;
@@ -655,10 +689,12 @@
             }
         },
         &quot;unifiedPresence&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/unifiedPresence&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;enum&quot;: [&quot;IP&quot;, &quot;GPRS&quot;, &quot;GSM&quot;, &quot;NOT_REGISTERED&quot;, &quot;UNKNOWN&quot;]
         },
         &quot;cpuStatus&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/cpuStatus&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;enum&quot;: [
                 &quot;IDLE&quot;,
@@ -669,6 +705,7 @@
             ]
         },
         &quot;batteryStatus&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/batteryStatus&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;enum&quot;: [
                 &quot;CHARGING&quot;,
@@ -679,49 +716,60 @@
             ]
         },
         &quot;signalQualityStatus&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/signalQualityStatus&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;enum&quot;: [&quot;LOW_CRITICAL&quot;, &quot;LOW_WARNING&quot;, &quot;NORMAL&quot;, &quot;EXCELENT&quot;]
 
         },
         &quot;certificateList&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/certificateList&quot;,
             &quot;type&quot;: &quot;array&quot;,
             &quot;items&quot;: {
                 &quot;type&quot;: &quot;string&quot;
             }
         },
         &quot;presenceIp&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/presenceIp&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;enum&quot;: [&quot;OK&quot;, &quot;NOK&quot;]
         },
         &quot;presenceGprs&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/presenceGprs&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;enum&quot;: [&quot;START&quot;, &quot;STOP&quot;, &quot;INTERIM_UPDATE&quot;, &quot;ON&quot;, &quot;OFF&quot;, &quot;NOK&quot;]
         },
         &quot;presenceGsm&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/presenceGsm&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;enum&quot;: [&quot;OK&quot;, &quot;NOK&quot;, &quot;UNCONFIG&quot;, &quot;UNKNOWN&quot;]
         },
         &quot;temperatureStatus&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/temperatureStatus&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;enum&quot;: [&quot;LOW_CRITICAL&quot;, &quot;LOW_WARNING&quot;, &quot;NORMAL&quot;, &quot;HIGH_WARNING&quot;, &quot;HIGH_CRITICAL&quot;]
         },
         &quot;powerSupplyStatus&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/powerSupplyStatus&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;enum&quot;: [&quot;PLUGGED_CHARGING&quot;, &quot;PLUGGED_CHARGED&quot;, &quot;OUTAGE&quot;, &quot;UNPLUGGED&quot;, &quot;UNKNOWN&quot;]
         },
         &quot;powerSupplySource&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/powerSupplySource&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;enum&quot;: [&quot;BATTERY&quot;, &quot;DIESEL_GENERATOR&quot;, &quot;NETWORK_PLUGGED&quot;, &quot;SOLAR&quot;, &quot;OTHER&quot;]
         },
         &quot;antennaStatus&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/antennaStatus&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;enum&quot;: [&quot;NORMAL&quot;, &quot;OPEN&quot;, &quot;SHORT_CIRCUIT&quot;, &quot;UNKNOWN&quot;]
         },
         &quot;signalStrengthStatus&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/signalStrengthStatus&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;enum&quot;: [&quot;LOW_CRITICAL&quot;, &quot;LOW_WARNING&quot;, &quot;NORMAL&quot;, &quot;EXCELENT&quot;]
         },
         &quot;trafficSession&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/trafficSession&quot;,
             &quot;type&quot;: &quot;object&quot;,
             &quot;properties&quot;: {
                 &quot;id&quot;: {
@@ -743,7 +791,7 @@
                     &quot;type&quot;: &quot;number&quot;
                 },
                 &quot;address&quot;: {
-                    &quot;$ref&quot;: &quot;#/definitions/address&quot;
+                    &quot;$ref&quot;: &quot;/og_basic_types.json#/definitions/address&quot;
                 },
                 &quot;status&quot;: {
                     &quot;type&quot;: &quot;string&quot;,
@@ -759,18 +807,22 @@
             }
         },
         &quot;deviceSpecificType&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/deviceSpecificType&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;enum&quot;: [&quot;BLOODPRESSURE_SENSOR&quot;, &quot;COMHUB&quot;, &quot;CONCENTRATOR&quot;, &quot;CONTAINER&quot;, &quot;COORDINATOR&quot;, &quot;GENERIC&quot;, &quot;GLUCOMETER_SENSOR&quot;, &quot;METER&quot;, &quot;MODEM&quot;, &quot;ROUTER&quot;, &quot;SENSOR&quot;, &quot;TPV&quot;, &quot;VEHICLE&quot;, &quot;VENDING&quot;, &quot;WEIGHT_SENSOR&quot;]
         },
         &quot;commsModuleSpecificType&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/commsModuleSpecificType&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;enum&quot;: [&quot;ADSL&quot;, &quot;CAN&quot;, &quot;ETH&quot;, &quot;GENERIC&quot;, &quot;GSM&quot;, &quot;HAN&quot;, &quot;I2C&quot;, &quot;LOWPAN&quot;, &quot;MESH&quot;]
         },
         &quot;subscriberSpecificType&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/subscriberSpecificType&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;enum&quot;: [&quot;ADSL&quot;, &quot;CAN&quot;, &quot;ETH&quot;, &quot;GENERIC&quot;, &quot;GSM&quot;, &quot;HAN&quot;, &quot;I2C&quot;, &quot;LOWPAN&quot;, &quot;MESH&quot;]
         },
         &quot;subscriptionSpecificType&quot;: {
+            &quot;id&quot;: &quot;/og_basic_types.json#/definitions/subscriptionSpecificType&quot;,
             &quot;type&quot;: &quot;string&quot;,
             &quot;enum&quot;: [&quot;ADSL&quot;, &quot;CAN&quot;, &quot;ETH&quot;, &quot;GENERIC&quot;, &quot;GSM&quot;, &quot;HAN&quot;, &quot;I2C&quot;, &quot;LOWPAN&quot;, &quot;MESH&quot;, &quot;MOBILE&quot;, &quot;PLC&quot;, &quot;RS232&quot;, &quot;RS422&quot;, &quot;RS485&quot;, &quot;SIGFOX&quot;, &quot;UMTS&quot;, &quot;WIFI&quot;, &quot;ZIGBEE&quot;]
         }

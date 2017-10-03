@@ -121,9 +121,7 @@ var EntityBuilder = (function () {
                 /*with jsonpath
                 element.path.pop();
                 let jsonSchemaPath = jp.stringify(element.path);*/
-                var _element = _JSONPath2['default'].toPathArray(element.path);
-                _element.pop();
-                var jsonSchemaPath = _JSONPath2['default'].toPathString(_element);
+                var jsonSchemaPath = element.path;
 
                 /*with jsonpath
                 jsonSchemaSearchBuilder.withPath(element.value).build().execute().then(function (res) {
@@ -134,8 +132,8 @@ var EntityBuilder = (function () {
                 })*/
                 jsonSchemaSearchBuilder.withPath(element.value).build().execute().then(function (res) {
                     var newnodes = (0, _JSONPath2['default'])({
-                        json: data, path: jsonSchemaPath, 'function': function _function(value) {
-                            return res.data;
+                        json: data, path: jsonSchemaPath, callback: function callback(value) {
+                            v.addSchema(res.data, res.data.id);
                         }
                     });
                     deferred.resolve(res);
@@ -255,7 +253,7 @@ var EntityBuilder = (function () {
                     defered.resolve(data);
                 }
             })['catch'](function (err) {
-                defered.resolve(err);
+                defered.reject(err);
             });
             return promise;
         }
