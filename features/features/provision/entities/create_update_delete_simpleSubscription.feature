@@ -10,7 +10,7 @@ Feature: Delete and Create a subscription
 
   Background:
     Given an apikey user by "require-real-apikey"
-    Given the entity of type "subscriptions builder" with "organization_UX" 
+    Given the entity of type "subscriptions builder" with "base_organization" 
 
  Scenario: I want to get the allowed datastream 
     And I get allowed Datastreams fields
@@ -19,9 +19,10 @@ Feature: Delete and Create a subscription
  Scenario: I want to create the entity 
      When I try to define the entity with... 
 		| datastream                                                                     | typeFunction       |   value                 | parent      |
-		| provision.administration.channel                                               | simple             |  channel_1           |             |
-        | provision.administration.organization                                          | simple             |  organization_UX      |             |
+		| provision.administration.channel                                               | simple             |  base_channel           |             |
+        | provision.administration.organization                                          | simple             |  base_organization      |             |
         | provision.administration.serviceGroup                                          | simple             |  emptyServiceGroup      |             |
+        | provision.device.communicationModules[].subscription.administrativeState                              | simple             |  ACTIVE                 |             |
         | provision.device.communicationModules[].subscription.identifier                | simple             |  subscription_ogapi       |             |
 
     Then I create it
@@ -30,8 +31,8 @@ Feature: Delete and Create a subscription
  Scenario: I want to update the entity 
      When I try to define the entity with... 
 		| datastream                                                                   | typeFunction       |   value                       | parent      |
-        | provision.administration.channel                                             | simple             |  channel_1                 |             |
-        | provision.administration.organization                                        | simple             |  organization_UX            |             |
+        | provision.administration.channel                                             | simple             |  base_channel                 |             |
+        | provision.administration.organization                                        | simple             |  base_organization            |             |
         | provision.administration.serviceGroup                                        | simple             |  emptyServiceGroup            |             |
         | provision.device.communicationModules[].subscription.identifier                | simple             |  subscription_ogapi             |             |
         | provision.device.communicationModules[].subscription.specificType              | simple             | ADSL                          |             |

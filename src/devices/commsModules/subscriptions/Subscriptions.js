@@ -55,9 +55,9 @@ export default class Subscriptions extends BaseProvision {
         let defered = q.defer();
         let promise = defered.promise;
         if (this._validate()) {
-            super.create().then(function(res) {
+            super.create().then(function (res) {
                 defered.resolve({ data: res.data, statusCode: res.statusCode });
-            }).catch(function(err) {
+            }).catch(function (err) {
                 defered.reject(err);
             });
         } else {
@@ -77,7 +77,7 @@ export default class Subscriptions extends BaseProvision {
             throw new Error('Parameters organization, entityKey must be defined');
         }
         this._resource = "provision/organizations/" + this._organization + "/subscriptions";
-        var url = this._resource + "/" + this._entityKey + "?flattened=true";
+        let url = this._resource + "/" + this._entityKey + "?flattened=true";
         return url;
     }
 
