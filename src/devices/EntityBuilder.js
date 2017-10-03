@@ -18,6 +18,7 @@ let ERROR_DATASTREAM_NOT_ALLOWED = 'Datastream is not allowed.';
 let ERROR_FUNCTION_NOT_ALLOWED = 'Function is not allowed.';
 let ERROR_ID_VALUE = 'Parameter id and value must be defined';
 let ERROR_ORGANIZATION = 'Parameters organization must be defined';
+let schema_base = '/og_basic_types';
 
 
 /**
@@ -31,7 +32,6 @@ export default class EntityBuilder {
     constructor(ogapi) {
         const _this = this;
         this._ogapi = ogapi;
-
     }
 
     _loadAllowedDatastreams(filterElement, organization) {
@@ -40,7 +40,7 @@ export default class EntityBuilder {
         let defered = q.defer();
         let promise = defered.promise;
         let data = {};
-        var f = _this._ogapi.newFilterBuilder();
+        let f = _this._ogapi.newFilterBuilder();
         f.and({
             "like": {
                 'datamodels.categories.datastreams.name': 'provision'
@@ -63,7 +63,7 @@ export default class EntityBuilder {
                 defered.resolve({ data: 'No content: Datastreams not found', statusCode: 204 });
             }
 
-            _this._getJsonPathElements(data.data).then(function () {
+            _this._getJsonPathElements().then(function () {
                 data.data = _this._setDevicesProperties(data.data, filterElement);
                 defered.resolve(data);
             })
@@ -73,42 +73,18 @@ export default class EntityBuilder {
         return promise;
     }
 
-    _getJsonPathElements(data) {
-        let promises = [];
-        /*with jsonpath
-        let allowedDatastreams = jp.nodes(data, '$.datamodels[*].categories[*].datastreams[*]..["$ref"]');*/
-        let allowedDatastreams = JSONPath({ json: data, path: '$.datamodels[*].categories[*].datastreams[*]..[$ref]', resultType: 'all' });
+    _getJsonPathElements() {
+        let defered = q.defer();
+        let promise = defered.promise;
         let jsonSchemaSearchBuilder = this._ogapi.jsonSchemaSearchBuilder();
 
-        allowedDatastreams.forEach(function (element, index) {
-            let deferred = q.defer();
-            /*with jsonpath
-            element.path.pop();
-            let jsonSchemaPath = jp.stringify(element.path);*/
-            let jsonSchemaPath = element.path;
-
-            /*with jsonpath
-            jsonSchemaSearchBuilder.withPath(element.value).build().execute().then(function (res) {
-                var newnodes = jp.apply(data, jsonSchemaPath, function (value) {
-                    return res.data;
-                });
-                deferred.resolve(res);
-            })*/
-            jsonSchemaSearchBuilder.withPath(element.value).build().execute().then(function (res) {
-                let newnodes = JSONPath({
-                    json: data, path: jsonSchemaPath, callback: function (value) {
-                        v.addSchema(res.data, res.data.id);
-                    }
-                });
-                deferred.resolve(res);
-            }).catch(function (err) {
-                throw new Error(err);
-            });
-            promises.push(deferred.promise);
+        jsonSchemaSearchBuilder.withPath('$').build().execute().then(function (res) {
+            v.addSchema(res.data, schema_base);
+            defered.resolve();
+        }).catch(function (err) {
+            defered.reject(err);
         });
-        return q.all(promises, data);
-
-
+        return promise;
     }
 
     _setDevicesProperties(data, filter) {
@@ -151,7 +127,7 @@ export default class EntityBuilder {
             }
 
 
-            var cmElement = {
+            let cmElement = {
                 '_index': {
                     'value': idCommunicationModules
                 },
@@ -211,7 +187,7 @@ export default class EntityBuilder {
                 if (data.statusCode === 200) {
                     let allowedDatastreams = data.data.allowedDatastreams;
                     let definedSchemas = data.data.schemas;
-                    var device = new Devices(_this._ogapi, organization, allowedDatastreams, definedSchemas);
+                    let device = new Devices(_this._ogapi, organization, allowedDatastreams, definedSchemas);
                     _this._createSimplefunction(device);
                     _this._createComplexFunction(device);
                     device.with('provision.administration.serviceGroup', 'emptyServiceGroup');
@@ -239,7 +215,7 @@ export default class EntityBuilder {
                 if (data.statusCode === 200) {
                     let allowedDatastreams = data.data.allowedDatastreams;
                     let definedSchemas = data.data.schemas;
-                    var subscribers = new Subscribers(_this._ogapi, organization, allowedDatastreams, definedSchemas);
+                    let subscribers = new Subscribers(_this._ogapi, organization, allowedDatastreams, definedSchemas);
                     _this._createSimplefunction(subscribers);
                     _this._createComplexFunction(subscribers);
                     subscribers.with('provision.administration.serviceGroup', 'emptyServiceGroup');
@@ -264,7 +240,7 @@ export default class EntityBuilder {
                 if (data.statusCode === 200) {
                     let allowedDatastreams = data.data.allowedDatastreams;
                     let definedSchemas = data.data.schemas;
-                    var subscriptions = new Subscriptions(_this._ogapi, organization, allowedDatastreams, definedSchemas);
+                    let subscriptions = new Subscriptions(_this._ogapi, organization, allowedDatastreams, definedSchemas);
                     _this._createSimplefunction(subscriptions);
                     _this._createComplexFunction(subscriptions);
                     subscriptions.with('provision.administration.serviceGroup', 'emptyServiceGroup');

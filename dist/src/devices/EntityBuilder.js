@@ -50,6 +50,7 @@ var ERROR_DATASTREAM_NOT_ALLOWED = 'Datastream is not allowed.';
 var ERROR_FUNCTION_NOT_ALLOWED = 'Function is not allowed.';
 var ERROR_ID_VALUE = 'Parameter id and value must be defined';
 var ERROR_ORGANIZATION = 'Parameters organization must be defined';
+var schema_base = '/og_basic_types';
 
 /**
  * This is a base object that contains all you can do about Devices.
@@ -98,7 +99,7 @@ var EntityBuilder = (function () {
                     defered.resolve({ data: 'No content: Datastreams not found', statusCode: 204 });
                 }
 
-                _this._getJsonPathElements(data.data).then(function () {
+                _this._getJsonPathElements().then(function () {
                     data.data = _this._setDevicesProperties(data.data, filterElement);
                     defered.resolve(data);
                 });
@@ -109,40 +110,18 @@ var EntityBuilder = (function () {
         }
     }, {
         key: '_getJsonPathElements',
-        value: function _getJsonPathElements(data) {
-            var promises = [];
-            /*with jsonpath
-            let allowedDatastreams = jp.nodes(data, '$.datamodels[*].categories[*].datastreams[*]..["$ref"]');*/
-            var allowedDatastreams = (0, _JSONPath2['default'])({ json: data, path: '$.datamodels[*].categories[*].datastreams[*]..[$ref]', resultType: 'all' });
+        value: function _getJsonPathElements() {
+            var defered = _q2['default'].defer();
+            var promise = defered.promise;
             var jsonSchemaSearchBuilder = this._ogapi.jsonSchemaSearchBuilder();
 
-            allowedDatastreams.forEach(function (element, index) {
-                var deferred = _q2['default'].defer();
-                /*with jsonpath
-                element.path.pop();
-                let jsonSchemaPath = jp.stringify(element.path);*/
-                var jsonSchemaPath = element.path;
-
-                /*with jsonpath
-                jsonSchemaSearchBuilder.withPath(element.value).build().execute().then(function (res) {
-                    var newnodes = jp.apply(data, jsonSchemaPath, function (value) {
-                        return res.data;
-                    });
-                    deferred.resolve(res);
-                })*/
-                jsonSchemaSearchBuilder.withPath(element.value).build().execute().then(function (res) {
-                    var newnodes = (0, _JSONPath2['default'])({
-                        json: data, path: jsonSchemaPath, callback: function callback(value) {
-                            v.addSchema(res.data, res.data.id);
-                        }
-                    });
-                    deferred.resolve(res);
-                })['catch'](function (err) {
-                    throw new Error(err);
-                });
-                promises.push(deferred.promise);
+            jsonSchemaSearchBuilder.withPath('$').build().execute().then(function (res) {
+                v.addSchema(res.data, schema_base);
+                defered.resolve();
+            })['catch'](function (err) {
+                defered.reject(err);
             });
-            return _q2['default'].all(promises, data);
+            return promise;
         }
     }, {
         key: '_setDevicesProperties',

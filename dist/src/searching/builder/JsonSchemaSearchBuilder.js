@@ -69,35 +69,11 @@ var JsonSchemaSearchBuilder = (function (_SearchBuilder) {
         key: '_getPathValue',
         value: function _getPathValue(path) {
             var _this = this;
-            path = path.split("#/")[1].replace(/\//gi, ".");
             /*with jsonpath
-            var jsonSchemaValue = jp.value(og_basic_types, path);*/
+            let jsonSchemaValue = jp.value(og_basic_types, path);*/
             var jsonSchemaValue = (0, _JSONPath2['default'])({ json: _jsonSchemaOg_basic_types2['default'], path: path })[0];
             if (jsonSchemaValue) {
-                /*with jsonpath
-                var nodes = jp.nodes(jsonSchemaValue, "$..['$ref']");*/
-                var nodes = (0, _JSONPath2['default'])({ json: jsonSchemaValue, path: "$..[$ref]", resultType: 'all' });
-                if (nodes.length > 0) {
-                    nodes.forEach(function (element, index) {
-                        var pathExpression = element.path;
-                        /*with jsonpath
-                        element.path.pop(); //eliminamos $ref
-                        var pathExpression = jp.stringify(element.path);
-                        */
-                        /*with jsonpath
-                        var newnodes = jp.apply(jsonSchemaValue, pathExpression, function (value) {
-                            return _this._getPathValue(element.value);
-                        });*/
-                        var newnodes = (0, _JSONPath2['default'])({
-                            json: jsonSchemaValue, path: pathExpression, callback: function callback(value) {
-                                return _this._getPathValue(element.value);
-                            }
-                        });
-                    });
-                    return jsonSchemaValue;
-                } else {
-                    return jsonSchemaValue;
-                }
+                return jsonSchemaValue;
             }
             return null;
         }
@@ -116,9 +92,9 @@ var JsonSchemaSearchBuilder = (function (_SearchBuilder) {
             if (!this.path) {
                 throw new Error('Path attributte is mandatory');
             }
-            var path = this.path.split("#/")[1].replace(/\//gi, ".");
-            //if (!jp.value(og_basic_types, path)) {
-            if (!(0, _JSONPath2['default'])({ json: _jsonSchemaOg_basic_types2['default'], path: path })[0]) {
+            /*with jsonpath
+            if (!jp.value(og_basic_types, path)) {*/
+            if (!(0, _JSONPath2['default'])({ json: _jsonSchemaOg_basic_types2['default'], path: this.path })[0]) {
                 throw new Error('Path not found');
             }
             return this;
