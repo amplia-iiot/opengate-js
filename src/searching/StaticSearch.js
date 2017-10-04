@@ -350,7 +350,7 @@ export default class StaticSearch extends Search {
                 "GENERIC": {
                     "COMMUNICATIONS_MODULE": {
                         "mandatory": ["generatedEntityKey"],
-                        "optional": ["administrativeState", "IMEI", "MAC", "HARDWARE", "SOFTWARE"]
+                        "optional": ["IMEI", "MAC", "HARDWARE", "SOFTWARE"]
                     },
                     "SUBSCRIPTION": {
                         "mandatory": ["generatedEntityKey"],
@@ -364,7 +364,7 @@ export default class StaticSearch extends Search {
                 "WIFI": {
                     "COMMUNICATIONS_MODULE": {
                         "mandatory": ["generatedEntityKey", "MAC"],
-                        "optional": ["administrativeState", "HARDWARE", "SOFTWARE"]
+                        "optional": ["HARDWARE", "SOFTWARE"]
                     },
                     "SUBSCRIPTION": {
                         "mandatory": ["generatedEntityKey"],
@@ -374,7 +374,7 @@ export default class StaticSearch extends Search {
                 "ETH": {
                     "COMMUNICATIONS_MODULE": {
                         "mandatory": ["generatedEntityKey", "MAC"],
-                        "optional": ["administrativeState", "HARDWARE", "SOFTWARE"]
+                        "optional": ["HARDWARE", "SOFTWARE"]
                     },
                     "SUBSCRIPTION": {
                         "mandatory": ["generatedEntityKey"],
@@ -390,13 +390,13 @@ export default class StaticSearch extends Search {
                 "MESH": {
                     "COMMUNICATIONS_MODULE": {
                         "mandatory": ["generatedEntityKey", "MAC"],
-                        "optional": ["administrativeState", "HARDWARE", "SOFTWARE"]
+                        "optional": ["HARDWARE", "SOFTWARE"]
                     }
                 },
                 "LOWPAN": {
                     "COMMUNICATIONS_MODULE": {
                         "mandatory": ["generatedEntityKey", "MAC"],
-                        "optional": ["administrativeState", "HARDWARE", "SOFTWARE"]
+                        "optional": ["HARDWARE", "SOFTWARE"]
                     },
                     "SUBSCRIPTION": {
                         "mandatory": ["generatedEntityKey"],
@@ -406,7 +406,7 @@ export default class StaticSearch extends Search {
                 "PLC": {
                     "COMMUNICATIONS_MODULE": {
                         "mandatory": ["generatedEntityKey", "MAC"],
-                        "optional": ["administrativeState", "HARDWARE", "SOFTWARE"]
+                        "optional": ["HARDWARE", "SOFTWARE"]
                     },
                     "SUBSCRIPTION": {
                         "mandatory": ["generatedEntityKey"],
@@ -416,7 +416,7 @@ export default class StaticSearch extends Search {
                 "ZIGBEE": {
                     "COMMUNICATIONS_MODULE": {
                         "mandatory": ["generatedEntityKey", "MAC"],
-                        "optional": ["administrativeState", "HARDWARE", "SOFTWARE"]
+                        "optional": ["HARDWARE", "SOFTWARE"]
                     },
                     "SUBSCRIPTION": {
                         "mandatory": ["generatedEntityKey"],
@@ -426,7 +426,7 @@ export default class StaticSearch extends Search {
                 "ADSL": {
                     "COMMUNICATIONS_MODULE": {
                         "mandatory": ["generatedEntityKey"],
-                        "optional": ["administrativeState", "IMEI", "MAC", "HARDWARE", "SOFTWARE"]
+                        "optional": ["IMEI", "MAC", "HARDWARE", "SOFTWARE"]
                     },
                     "SUBSCRIPTION": {
                         "mandatory": ["generatedEntityKey"],
@@ -436,7 +436,7 @@ export default class StaticSearch extends Search {
                 "MOBILE": {
                     "COMMUNICATIONS_MODULE": {
                         "mandatory": ["generatedEntityKey"],
-                        "optional": ["administrativeState", "IMEI", "MAC", "HARDWARE", "SOFTWARE"]
+                        "optional": ["IMEI", "MAC", "HARDWARE", "SOFTWARE"]
                     },
                     "SUBSCRIPTION": {
                         "mandatory": ["generatedEntityKey"],
@@ -450,7 +450,7 @@ export default class StaticSearch extends Search {
                 "GSM": {
                     "COMMUNICATIONS_MODULE": {
                         "mandatory": ["generatedEntityKey"],
-                        "optional": ["administrativeState", "IMEI", "MAC", "HARDWARE", "SOFTWARE"]
+                        "optional": ["IMEI", "MAC", "HARDWARE", "SOFTWARE"]
                     },
                     "SUBSCRIPTION": {
                         "mandatory": ["generatedEntityKey"],
@@ -464,37 +464,37 @@ export default class StaticSearch extends Search {
                 "CAN": {
                     "COMMUNICATIONS_MODULE": {
                         "mandatory": ["entityKey"],
-                        "optional": ["administrativeState"]
+                        "optional": []
                     }
                 },
                 "I2C": {
                     "COMMUNICATIONS_MODULE": {
                         "mandatory": ["entityKey"],
-                        "optional": ["administrativeState"]
+                        "optional": []
                     }
                 },
                 "RS232": {
                     "COMMUNICATIONS_MODULE": {
                         "mandatory": ["entityKey"],
-                        "optional": ["administrativeState"]
+                        "optional": []
                     }
                 },
                 "RS422": {
                     "COMMUNICATIONS_MODULE": {
                         "mandatory": ["entityKey"],
-                        "optional": ["administrativeState"]
+                        "optional": []
                     }
                 },
                 "RS485": {
                     "COMMUNICATIONS_MODULE": {
                         "mandatory": ["entityKey"],
-                        "optional": ["administrativeState"]
+                        "optional": []
                     }
                 },
                 "SIGFOX": {
                     "COMMUNICATIONS_MODULE": {
                         "mandatory": ["entityKey"],
-                        "optional": ["administrativeState"]
+                        "optional": []
                     }
                 }
             },
