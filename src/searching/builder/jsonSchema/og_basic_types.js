@@ -1,6 +1,7 @@
 export default {
     "definitions": {
         "jobDefaultParameters": {
+            "id": "/og_basic_types.json#/definitions/jobDefaultParameters",
             "type": "object",
             "properties": {
                 "job.request.operationParameters.ackTimeout": {
@@ -30,14 +31,17 @@ export default {
             }
         },
         "parametersEmpty": {
+            "id": "/og_basic_types.json#/definitions/parametersEmpty",
             "type": "object",
             "properties": {}
         },
         "stepsEmpty": {
+            "id": "/og_basic_types.json#/definitions/stepsEmpty",
             "type": "object",
             "properties": {}
         },
         "stepsResult": {
+            "id": "/og_basic_types.json#/definitions/stepsResult",
             "type": "string",
             "title": "Step Name",
             "description": "",
@@ -49,13 +53,14 @@ export default {
             ]
         },
         "stepNoResponseData": {
+            "id": "/og_basic_types.json#/definitions/stepNoResponseData",
             "type": "object",
             "properties": {
                 "result": {
-                    "$ref": "#/definitions/stepsResult"
+                    "$ref": "/og_basic_types.json#/definitions/stepsResult"
                 },
                 "timestamp": {
-                    "$ref": "#/definitions/timestamp"
+                    "$ref": "/og_basic_types.json#/definitions/timestamp"
                 }
             },
             "required": [
@@ -65,6 +70,7 @@ export default {
             ]
         },
         "date": {
+            "id": "/og_basic_types.json#/definitions/date",
             "type": "string",
             "format": "date",
             "title": "date",
@@ -72,6 +78,7 @@ export default {
             "pattern": "^([0-9]{4})-?(1[0-2]|0[1-9])-?(3[01]|0[1-9]|[12][0-9])$"
         },
         "time": {
+            "id": "/og_basic_types.json#/definitions/time",
             "type": "string",
             "format": "time",
             "title": "time",
@@ -79,6 +86,7 @@ export default {
             "pattern": "^(2[0-3]|[01][0-9]):?([0-5][0-9]):?([0-5][0-9])$"
         },
         "timezone": {
+            "id": "/og_basic_types.json#/definitions/timezone",
             "type": "integer",
             "title": "timezone",
             "minimum": 0,
@@ -86,25 +94,27 @@ export default {
             "default": 0
         },
         "dst": {
+            "id": "/og_basic_types.json#/definitions/dst",
             "type": "integer",
             "title": "DST",
             "minimum": 0,
             "default": 0
         },
         "datetime": {
+            "id": "/og_basic_types.json#/definitions/datetime",
             "type": "object",
             "properties": {
                 "date": {
-                    "$ref": "#/definitions/date"
+                    "$ref": "/og_basic_types.json#/definitions/date"
                 },
                 "time": {
-                    "$ref": "#/definitions/time"
+                    "$ref": "/og_basic_types.json#/definitions/time"
                 },
                 "timezone": {
-                    "$ref": "#/definitions/timezone"
+                    "$ref": "/og_basic_types.json#/definitions/timezone"
                 },
                 "dst": {
-                    "$ref": "#/definitions/dst"
+                    "$ref": "/og_basic_types.json#/definitions/dst"
                 }
             },
             "required": [
@@ -115,6 +125,7 @@ export default {
             ]
         },
         "timestamp": {
+            "id": "/og_basic_types.json#/definitions/timestamp",
             "type": "string",
             "format": "date-time",
             "title": "timestamp",
@@ -122,6 +133,7 @@ export default {
             "pattern": "^([0-9]{4})-?(1[0-2]|0[1-9])-?(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):?([0-5][0-9]):?([0-5][0-9])$"
         },
         "datamodelResultCode": {
+            "id": "/og_basic_types.json#/definitions/datamodelResultCode",
             "type": "string",
             "title": "Result Code",
             "description": "Result code of Get Operation",
@@ -134,15 +146,17 @@ export default {
             ]
         },
         "datamodelParamName": {
+            "id": "/og_basic_types.json#/definitions/datamodelParamName",
             "type": "string",
             "title": "Id",
             "description": "Id of the parameter"
         },
         "datamodelParamNameValue": {
+            "id": "/og_basic_types.json#/definitions/datamodelParamNameValue",
             "type": "object",
             "properties": {
                 "name": {
-                    "$ref": "#/definitions/datamodelParamName"
+                    "$ref": "/og_basic_types.json#/definitions/datamodelParamName"
                 },
                 "value": {
                     "type": "string",
@@ -156,6 +170,7 @@ export default {
             ]
         },
         "datamodelResponse": {
+            "id": "/og_basic_types.json#/definitions/datamodelResponse",
             "type": "object",
             "properties": {
                 "name": {
@@ -169,7 +184,7 @@ export default {
                     "description": "value of the parameter"
                 },
                 "resultCode": {
-                    "$ref": "#/definitions/datamodelResultCode"
+                    "$ref": "/og_basic_types.json#/definitions/datamodelResultCode"
                 },
                 "resultDescription": {
                     "type": "string",
@@ -183,6 +198,7 @@ export default {
             ]
         },
         "coordinates": {
+            "id": "/og_basic_types.json#/definitions/coordinates",
             "description": "A geographical coordinates",
             "type": "array",
             "maxItems": 2,
@@ -191,6 +207,7 @@ export default {
             }
         },
         "location": {
+            "id": "/og_basic_types.json#/definitions/location",
             "description": "A geojson enriched for OpenGate",
             "type": "object",
             "properties": {
@@ -254,29 +271,34 @@ export default {
             }
         },
         "ipv4": {
+            "id": "/og_basic_types.json#/definitions/ipv4",
             "type": "string",
             "format": "ipv4",
             "title": "ipv4",
             "description": "IPV4 format"
         },
         "ipv6": {
+            "id": "/og_basic_types.json#/definitions/ipv6",
             "type": "string",
             "format": "ipv6",
             "title": "ipv6",
             "description": "IPV6 format"
         },
         "mac48": {
+            "id": "/og_basic_types.json#/definitions/mac48",
             "type": "string",
             "title": "mac48",
             "description": "MAC48 format",
             "pattern": "(([0-9A-Fa-f]{2}[-:]){5}[0-9A-Fa-f]{2})|(([0-9A-Fa-f]{4}){2}[0-9A-Fa-f]{4})"
         },
         "msisdn": {
+            "id": "/og_basic_types.json#/definitions/msisdn",
             "type": "string",
             "minLength": 7,
             "maxLength": 15
         },
         "address": {
+            "id": "/og_basic_types.json#/definitions/address",
             "type": "object",
             "properties": {
                 "type": {
@@ -299,11 +321,13 @@ export default {
             }
         },
         "percentage": {
+            "id": "/og_basic_types.json#/definitions/percentage",
             "type": "number",
             "minimum": 0,
             "maximum": 100
         },
         "entityType": {
+            "id": "/og_basic_types.json#/definitions/entityType",
             "type": "string",
             "title": "Entity Type",
             "description": "",
@@ -316,6 +340,7 @@ export default {
             ]
         },
         "deviceOperationalStatus": {
+            "id": "/og_basic_types.json#/definitions/deviceOperationalStatus",
             "type": "string",
             "title": "Operational Status",
             "description": "",
@@ -330,6 +355,7 @@ export default {
             ]
         },
         "commsModuleOperationalStatus": {
+            "id": "/og_basic_types.json#/definitions/commsModuleOperationalStatus",
             "type": "string",
             "title": "Operational Status",
             "description": "",
@@ -343,6 +369,7 @@ export default {
             ]
         },
         "ipStatus": {
+            "id": "/og_basic_types.json#/definitions/ipStatus",
             "type": "string",
             "title": "IP Reachability Status",
             "description": "",
@@ -352,6 +379,7 @@ export default {
             ]
         },
         "administrativeState": {
+            "id": "/og_basic_types.json#/definitions/administrativeState",
             "type": "string",
             "title": "Operational Status",
             "description": "",
@@ -367,6 +395,7 @@ export default {
             ]
         },
         "model": {
+            "id": "/og_basic_types.json#/definitions/model",
             "type": "object",
             "title": "Model",
             "description": "",
@@ -386,6 +415,7 @@ export default {
             }
         },
         "software": {
+            "id": "/og_basic_types.json#/definitions/software",
             "type": "object",
             "title": "Software",
             "description": "",
@@ -406,24 +436,27 @@ export default {
             }
         },
         "softwareList": {
+            "id": "/og_basic_types.json#/definitions/softwareList",
             "type": "array",
             "items": {
-                "$ref": "#/definitions/software"
+                "$ref": "/og_basic_types.json#/definitions/software"
             }
         },
         "topologyPath": {
+            "id": "/og_basic_types.json#/definitions/topologyPath",
             "type": "array",
             "items": {
                 "type": "string"
             }
         },
         "clock": {
+            "id": "/og_basic_types.json#/definitions/clock",
             "type": "object",
             "title": "Software",
             "description": "",
             "properties": {
                 "datetime": {
-                    "$ref": "#/definitions/timestamp"
+                    "$ref": "/og_basic_types.json#/definitions/timestamp"
                 },
                 "timezone": {
                     "type": "number"
@@ -438,20 +471,21 @@ export default {
                             "type": "number"
                         },
                         "begin": {
-                            "$ref": "#/definitions/timestamp"
+                            "$ref": "/og_basic_types.json#/definitions/timestamp"
                         },
                         "end": {
-                            "$ref": "#/definitions/timestamp"
+                            "$ref": "/og_basic_types.json#/definitions/timestamp"
                         }
                     }
                 }
             }
         },
         "outage": {
+            "id": "/og_basic_types.json#/definitions/outage",
             "type": "object",
             "properties": {
                 "started": {
-                    "$ref": "#/definitions/timestamp"
+                    "$ref": "/og_basic_types.json#/definitions/timestamp"
                 },
                 "duration": {
                     "type": "number"
@@ -459,10 +493,12 @@ export default {
             }
         },
         "unifiedPresence": {
+            "id": "/og_basic_types.json#/definitions/unifiedPresence",
             "type": "string",
             "enum": ["IP", "GPRS", "GSM", "NOT_REGISTERED", "UNKNOWN"]
         },
         "cpuStatus": {
+            "id": "/og_basic_types.json#/definitions/cpuStatus",
             "type": "string",
             "enum": [
                 "IDLE",
@@ -473,6 +509,7 @@ export default {
             ]
         },
         "batteryStatus": {
+            "id": "/og_basic_types.json#/definitions/batteryStatus",
             "type": "string",
             "enum": [
                 "CHARGING",
@@ -483,49 +520,60 @@ export default {
             ]
         },
         "signalQualityStatus": {
+            "id": "/og_basic_types.json#/definitions/signalQualityStatus",
             "type": "string",
             "enum": ["LOW_CRITICAL", "LOW_WARNING", "NORMAL", "EXCELENT"]
 
         },
         "certificateList": {
+            "id": "/og_basic_types.json#/definitions/certificateList",
             "type": "array",
             "items": {
                 "type": "string"
             }
         },
         "presenceIp": {
+            "id": "/og_basic_types.json#/definitions/presenceIp",
             "type": "string",
             "enum": ["OK", "NOK"]
         },
         "presenceGprs": {
+            "id": "/og_basic_types.json#/definitions/presenceGprs",
             "type": "string",
             "enum": ["START", "STOP", "INTERIM_UPDATE", "ON", "OFF", "NOK"]
         },
         "presenceGsm": {
+            "id": "/og_basic_types.json#/definitions/presenceGsm",
             "type": "string",
             "enum": ["OK", "NOK", "UNCONFIG", "UNKNOWN"]
         },
         "temperatureStatus": {
+            "id": "/og_basic_types.json#/definitions/temperatureStatus",
             "type": "string",
             "enum": ["LOW_CRITICAL", "LOW_WARNING", "NORMAL", "HIGH_WARNING", "HIGH_CRITICAL"]
         },
         "powerSupplyStatus": {
+            "id": "/og_basic_types.json#/definitions/powerSupplyStatus",
             "type": "string",
             "enum": ["PLUGGED_CHARGING", "PLUGGED_CHARGED", "OUTAGE", "UNPLUGGED", "UNKNOWN"]
         },
         "powerSupplySource": {
+            "id": "/og_basic_types.json#/definitions/powerSupplySource",
             "type": "string",
             "enum": ["BATTERY", "DIESEL_GENERATOR", "NETWORK_PLUGGED", "SOLAR", "OTHER"]
         },
         "antennaStatus": {
+            "id": "/og_basic_types.json#/definitions/antennaStatus",
             "type": "string",
             "enum": ["NORMAL", "OPEN", "SHORT_CIRCUIT", "UNKNOWN"]
         },
         "signalStrengthStatus": {
+            "id": "/og_basic_types.json#/definitions/signalStrengthStatus",
             "type": "string",
             "enum": ["LOW_CRITICAL", "LOW_WARNING", "NORMAL", "EXCELENT"]
         },
         "trafficSession": {
+            "id": "/og_basic_types.json#/definitions/trafficSession",
             "type": "object",
             "properties": {
                 "id": {
@@ -547,7 +595,7 @@ export default {
                     "type": "number"
                 },
                 "address": {
-                    "$ref": "#/definitions/address"
+                    "$ref": "/og_basic_types.json#/definitions/address"
                 },
                 "status": {
                     "type": "string",
@@ -563,18 +611,22 @@ export default {
             }
         },
         "deviceSpecificType": {
+            "id": "/og_basic_types.json#/definitions/deviceSpecificType",
             "type": "string",
             "enum": ["BLOODPRESSURE_SENSOR", "COMHUB", "CONCENTRATOR", "CONTAINER", "COORDINATOR", "GENERIC", "GLUCOMETER_SENSOR", "METER", "MODEM", "ROUTER", "SENSOR", "TPV", "VEHICLE", "VENDING", "WEIGHT_SENSOR"]
         },
         "commsModuleSpecificType": {
+            "id": "/og_basic_types.json#/definitions/commsModuleSpecificType",
             "type": "string",
             "enum": ["ADSL", "CAN", "ETH", "GENERIC", "GSM", "HAN", "I2C", "LOWPAN", "MESH"]
         },
         "subscriberSpecificType": {
+            "id": "/og_basic_types.json#/definitions/subscriberSpecificType",
             "type": "string",
             "enum": ["ADSL", "CAN", "ETH", "GENERIC", "GSM", "HAN", "I2C", "LOWPAN", "MESH"]
         },
         "subscriptionSpecificType": {
+            "id": "/og_basic_types.json#/definitions/subscriptionSpecificType",
             "type": "string",
             "enum": ["ADSL", "CAN", "ETH", "GENERIC", "GSM", "HAN", "I2C", "LOWPAN", "MESH", "MOBILE", "PLC", "RS232", "RS422", "RS485", "SIGFOX", "UMTS", "WIFI", "ZIGBEE"]
         }

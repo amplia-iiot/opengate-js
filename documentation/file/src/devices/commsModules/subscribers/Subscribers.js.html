@@ -255,9 +255,9 @@ export default class Subscribers extends BaseProvision {
         let defered = q.defer();
         let promise = defered.promise;
         if (this._validate()) {
-            super.create().then(function(res) {
+            super.create().then(function (res) {
                 defered.resolve({ data: res.data, statusCode: res.statusCode });
-            }).catch(function(err) {
+            }).catch(function (err) {
                 defered.reject(err);
             });
         } else {
@@ -289,7 +289,7 @@ export default class Subscribers extends BaseProvision {
             throw new Error(&apos;Parameters organization, entityKey must be defined&apos;);
         }
         this._resource = &quot;provision/organizations/&quot; + this._organization + &quot;/subscribers&quot;;
-        var url = this._resource + &quot;/&quot; + this._entityKey + &quot;?flattened=true&quot;;
+        let url = this._resource + &quot;/&quot; + this._entityKey + &quot;?flattened=true&quot;;
         return url;
     }
 

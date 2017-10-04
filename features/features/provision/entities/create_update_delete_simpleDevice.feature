@@ -23,6 +23,8 @@ Feature: Delete and Create a device
         | provision.administration.organization      | simple             |  base_organization      |             |
         | provision.administration.serviceGroup      | simple             |  emptyServiceGroup      |             |
         | provision.device.identifier                | simple             |  device_ogapi           |             |
+        | provision.device.operationalStatus                                | simple             |  NORMAL                 |             |   
+        | provision.device.administrativeState                              | simple             |  ACTIVE                 |             |
 
     Then I create it
     And response code should be: 201

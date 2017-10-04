@@ -30,7 +30,7 @@ export default class Devices extends BaseProvision {
             throw new Error('Parameters organization, entityKey must be defined');
         }
         this._resource = "provision/organizations/" + this._organization + "/devices";
-        var url = this._resource + "/" + this._entityKey + "?flattened=true";
+        let url = this._resource + "/" + this._entityKey + "?flattened=true";
         return url;
     }
 
@@ -111,10 +111,10 @@ export default class Devices extends BaseProvision {
      * @property {function (error:string)} catch - When request it is NOK
      */
     deleteAll() {
-        var defered = q.defer();
-        var promise = defered.promise;
+        let defered = q.defer();
+        let promise = defered.promise;
         this._getEntityKey();
-        var url = "provision/organizations/" + this._organization + "/devices/" + this._entityKey + "?full=true";
+        let url = "provision/organizations/" + this._organization + "/devices/" + this._entityKey + "?full=true";
         this._ogapi.Napi.delete(url)
             .then((res) => {
                 if (res.statusCode === 200) {
