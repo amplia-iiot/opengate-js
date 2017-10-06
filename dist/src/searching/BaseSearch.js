@@ -116,6 +116,18 @@ var BaseSearch = (function () {
                     _this._ogapi.Napi.post(_this._resource, filter, _this._timeout).then(function (response) {
                         var statusCode = response.statusCode;
                         var body = response.body;
+                        if (!body && response.text) {
+                            try {
+                                var parsedResult = JSON.parse(response.text);
+
+                                if (parsedResult) {
+                                    body = parsedResult;
+                                }
+                            } catch (ignoreError) {
+                                console.error("Impossible to parse text from response");
+                            }
+                        }
+
                         if (statusCode === 200 || statusCode === 200) {
                             paging = true;
                             if (typeof _this._appendData === "function") _this._appendData(body);
@@ -143,14 +155,14 @@ var BaseSearch = (function () {
         }
 
         /**
-        * This invokes a request for asynchronous paging to the OpenGate North API and the return of the pages is managed by promises and its notify object
-        * To cancel the process in the notify method return false or string with custom message for response
-        * In case of canceling the process, the response will be 403: Forbidden -> {data: 'Cancel process'|| custom_message, statusCode: 403}
-        * @param {string} resource - resource to find.
-        * @return {Promise}
-        * @property {function (), null, function ()} then - When request it is OK
-        * @property {function (error:string)} catch - When request it is NOK
-        */
+         * This invokes a request for asynchronous paging to the OpenGate North API and the return of the pages is managed by promises and its notify object
+         * To cancel the process in the notify method return false or string with custom message for response
+         * In case of canceling the process, the response will be 403: Forbidden -> {data: 'Cancel process'|| custom_message, statusCode: 403}
+         * @param {string} resource - resource to find.
+         * @return {Promise}
+         * @property {function (), null, function ()} then - When request it is OK
+         * @property {function (error:string)} catch - When request it is NOK
+         */
     }, {
         key: 'executeWithAsyncPaging',
         value: function executeWithAsyncPaging(resource) {
