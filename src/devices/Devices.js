@@ -66,9 +66,9 @@ export default class Devices extends BaseProvision {
         let defered = q.defer();
         let promise = defered.promise;
         if (this._validate()) {
-            super.create().then(function (res) {
+            super.create().then(function(res) {
                 defered.resolve({ data: res.data, statusCode: res.statusCode });
-            }).catch(function (err) {
+            }).catch(function(err) {
                 defered.reject(err);
             });
         } else {
@@ -115,6 +115,33 @@ export default class Devices extends BaseProvision {
         let promise = defered.promise;
         this._getEntityKey();
         let url = "provision/organizations/" + this._organization + "/devices/" + this._entityKey + "?full=true";
+        this._ogapi.Napi.delete(url)
+            .then((res) => {
+                if (res.statusCode === 200) {
+                    defered.resolve({ statusCode: res.statusCode });
+                } else {
+                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                }
+            })
+            .catch((error) => {
+                defered.reject(error);
+            });
+        return promise;
+    }
+
+
+    /**
+     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * This function deletes a entity of provision
+     * @return {Promise}
+     * @property {function (result:object, statusCode:number)} then - When request it is OK
+     * @property {function (error:string)} catch - When request it is NOK
+     */
+    delete() {
+        let defered = q.defer();
+        let promise = defered.promise;
+        this._getEntityKey();
+        let url = "provision/organizations/" + this._organization + "/devices/" + this._entityKey;
         this._ogapi.Napi.delete(url)
             .then((res) => {
                 if (res.statusCode === 200) {

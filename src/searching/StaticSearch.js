@@ -361,7 +361,7 @@ export default class StaticSearch extends Search {
                         "optional": ["administrativeState", "ICC", "SERIAL_NUMBER"]
                     }
                 },
-                "WIFI": {
+                /*"WIFI": {
                     "COMMUNICATIONS_MODULE": {
                         "mandatory": ["generatedEntityKey", "MAC"],
                         "optional": ["HARDWARE", "SOFTWARE"]
@@ -370,7 +370,7 @@ export default class StaticSearch extends Search {
                         "mandatory": ["generatedEntityKey"],
                         "optional": ["administrativeState", "ADDRESS"]
                     }
-                },
+                },*/
                 "ETH": {
                     "COMMUNICATIONS_MODULE": {
                         "mandatory": ["generatedEntityKey", "MAC"],
@@ -462,6 +462,12 @@ export default class StaticSearch extends Search {
                     }
                 },
                 "CAN": {
+                    "COMMUNICATIONS_MODULE": {
+                        "mandatory": ["entityKey"],
+                        "optional": []
+                    }
+                },
+                "HAN": {
                     "COMMUNICATIONS_MODULE": {
                         "mandatory": ["entityKey"],
                         "optional": []
