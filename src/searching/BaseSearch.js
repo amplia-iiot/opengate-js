@@ -97,6 +97,18 @@ export default class BaseSearch {
                     .then((response) => {
                         let statusCode = response.statusCode;
                         let body = response.body;
+                        if (!body && response.text) {
+                            try {
+                                let parsedResult = JSON.parse(response.text);
+
+                                if (parsedResult) {
+                                    body = parsedResult;
+                                }
+                            } catch (ignoreError) {
+                                console.error("Impossible to parse text from response");
+                            }
+                        }
+
                         if (statusCode === 200 || statusCode === 200) {
                             paging = true;
                             if (typeof _this._appendData === "function")
@@ -127,26 +139,26 @@ export default class BaseSearch {
     }
 
     /**
-    * This invokes a request for asynchronous paging to the OpenGate North API and the return of the pages is managed by promises and its notify object
-    * To cancel the process in the notify method return false or string with custom message for response
-    * In case of canceling the process, the response will be 403: Forbidden -> {data: 'Cancel process'|| custom_message, statusCode: 403}
-    * @param {string} resource - resource to find.
-    * @return {Promise}
-    * @property {function (), null, function ()} then - When request it is OK
-    * @property {function (error:string)} catch - When request it is NOK
-    */
+     * This invokes a request for asynchronous paging to the OpenGate North API and the return of the pages is managed by promises and its notify object
+     * To cancel the process in the notify method return false or string with custom message for response
+     * In case of canceling the process, the response will be 403: Forbidden -> {data: 'Cancel process'|| custom_message, statusCode: 403}
+     * @param {string} resource - resource to find.
+     * @return {Promise}
+     * @property {function (), null, function ()} then - When request it is OK
+     * @property {function (error:string)} catch - When request it is NOK
+     */
     executeWithAsyncPaging(resource) {
         let defered = q.defer();
         let promise = defered.promise;
         //Comenzamos con la carga asincrona
         this._loadData(resource)
             .then(
-            (response) => {
-                defered.resolve(response);
-            }, null,
-            (notify) => {
-                defered.notify(notify);
-            })
+                (response) => {
+                    defered.resolve(response);
+                }, null,
+                (notify) => {
+                    defered.notify(notify);
+                })
             .catch((error) => {
                 defered.reject(error);
             });
