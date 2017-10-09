@@ -1,7 +1,7 @@
 {
-  "coverage": "87.82%",
-  "expectCount": 854,
-  "actualCount": 750,
+  "coverage": "86.26%",
+  "expectCount": 837,
+  "actualCount": 722,
   "files": {
     "src/bundles/ACTION_ENUM.js": {
       "expectCount": 1,
@@ -189,16 +189,20 @@
         17
       ]
     },
-    "src/devices/commsModules/CommunicationsModuleFinder.js": {
-      "expectCount": 2,
-      "actualCount": 2,
-      "undocumentLines": []
-    },
     "src/searching/builder/CommunicationsModuleTypeSearchBuilder.js": {
       "expectCount": 5,
       "actualCount": 4,
       "undocumentLines": [
         17
+      ]
+    },
+    "src/provision/entities/ComplexBuilder.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        5,
+        6,
+        10
       ]
     },
     "src/iot/datamodels/Datamodels.js": {
@@ -283,7 +287,7 @@
         33
       ]
     },
-    "src/devices/DeviceFinder.js": {
+    "src/entities/DeviceFinder.js": {
       "expectCount": 2,
       "actualCount": 2,
       "undocumentLines": []
@@ -294,11 +298,6 @@
       "undocumentLines": [
         134
       ]
-    },
-    "src/devices/Devices.js": {
-      "expectCount": 6,
-      "actualCount": 6,
-      "undocumentLines": []
     },
     "src/searching/builder/DevicesSearchBuilder.js": {
       "expectCount": 3,
@@ -321,26 +320,26 @@
       "undocumentLines": []
     },
     "src/InternalOpenGateAPI.js": {
-      "expectCount": 91,
-      "actualCount": 86,
+      "expectCount": 87,
+      "actualCount": 82,
       "undocumentLines": [
-        108,
         106,
-        107,
-        110,
-        109
+        104,
+        105,
+        108,
+        107
       ]
     },
-    "src/devices/EntityBuilder.js": {
+    "src/provision/entities/EntityBuilder.js": {
       "expectCount": 5,
       "actualCount": 2,
       "undocumentLines": [
-        178,
-        206,
-        231
+        105,
+        111,
+        117
       ]
     },
-    "src/devices/EntityFinder.js": {
+    "src/entities/EntityFinder.js": {
       "expectCount": 3,
       "actualCount": 3,
       "undocumentLines": []
@@ -657,15 +656,6 @@
         10
       ]
     },
-    "src/devices/Relations.js": {
-      "expectCount": 11,
-      "actualCount": 8,
-      "undocumentLines": [
-        154,
-        226,
-        192
-      ]
-    },
     "src/searching/builder/RuleConfigurationSeveritySearchBuilder.js": {
       "expectCount": 4,
       "actualCount": 3,
@@ -735,6 +725,17 @@
         18
       ]
     },
+    "src/provision/entities/SimpleBuilder.js": {
+      "expectCount": 6,
+      "actualCount": 1,
+      "undocumentLines": [
+        12,
+        13,
+        76,
+        53,
+        57
+      ]
+    },
     "src/collection/devices/collect/Software.js": {
       "expectCount": 7,
       "actualCount": 5,
@@ -779,12 +780,23 @@
         9
       ]
     },
-    "src/devices/commsModules/subscribers/Subscribers.js": {
-      "expectCount": 4,
-      "actualCount": 4,
-      "undocumentLines": []
+    "src/provision/entities/SubscriberBuilder.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        7,
+        8
+      ]
     },
-    "src/devices/commsModules/subscribers/SubscribersFinder.js": {
+    "src/provision/entities/DeviceBuilder.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        7,
+        8
+      ]
+    },
+    "src/entities/SubscribersFinder.js": {
       "expectCount": 2,
       "actualCount": 2,
       "undocumentLines": []
@@ -802,12 +814,15 @@
         11
       ]
     },
-    "src/devices/commsModules/subscriptions/Subscriptions.js": {
-      "expectCount": 4,
-      "actualCount": 4,
-      "undocumentLines": []
+    "src/provision/entities/SubscriptionBuilder.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        7,
+        8
+      ]
     },
-    "src/devices/commsModules/subscriptions/SubscriptionsFinder.js": {
+    "src/entities/SubscriptionsFinder.js": {
       "expectCount": 2,
       "actualCount": 2,
       "undocumentLines": []
@@ -823,11 +838,6 @@
       "undocumentLines": []
     },
     "src/bundles/deployment/TYPE_ENUM.js": {
-      "expectCount": 1,
-      "actualCount": 1,
-      "undocumentLines": []
-    },
-    "src/devices/TYPE_ENUM.js": {
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []

@@ -55,11 +55,9 @@ import BundleFinder from './bundles/BundleFinder'
 import Organizations from './organizations/Organizations'
 import Domain from './domains/Domains'
 import DomainFinder from './domains/DomainsFinder'
-import DeviceFinder from './devices/DeviceFinder'
-import Relations from './devices/Relations'
-import CommunicationsModuleFinder from './devices/commsModules/CommunicationsModuleFinder'
-import SubscriptionsFinder from './devices/commsModules/subscriptions/SubscriptionsFinder'
-import SubscribersFinder from './devices/commsModules/subscribers/SubscribersFinder'
+import DeviceFinder from './entities/DeviceFinder'
+import SubscriptionsFinder from './entities/SubscriptionsFinder'
+import SubscribersFinder from './entities/SubscribersFinder'
 import DeviceMessage from './collection/devices/DeviceMessage'
 import Datastream from './collection/devices/collect/Datastreams'
 import Datapoint from './collection/devices/collect/Datapoint'
@@ -83,7 +81,7 @@ import DatamodelsHelper from './iot/datamodels/DatamodelsHelper'
 import DatamodelsFinder from './iot/datamodels/DatamodelsFinder'
 import DatastreamsBuilder from './iot/catalog/Datastream'
 import QratingsBuilder from './iot/catalog/Qrating'
-import EntityBuilder from './devices/EntityBuilder'
+import EntityBuilder from './provision/entities/EntityBuilder'
 
 /**
  * This is a abstract class, it must be extended to another class that defined the backend, it will be used on request to Opengate North API by browser or nodejs server
@@ -201,13 +199,6 @@ export default class InternalOpenGateAPI {
         return new DeviceFinder(this);
     }
 
-    /**
-     * This return a util to find a Communications Module
-     * @return {CommunicationsModuleFinder}
-     */
-    newCommunicationsModuleFinder() {
-        return new CommunicationsModuleFinder(this);
-    }
 
     /**
      * This return a util to find a Subscription
@@ -515,30 +506,6 @@ export default class InternalOpenGateAPI {
      */
     relationsBuilder() {
         return new Relations(this);
-    }
-
-    /**
-     * This return a CommunicationsModulesBuilder to build a specific CommunicationsModulesBuilder
-     * @return {CommunicationsModules}
-     */
-    communicationsModulesBuilder() {
-        return new CommunicationsModules(this);
-    }
-
-    /**
-     * This return a SubscriptionsBuilder to build a specific subscription
-     * @return {Subscriptions}
-     */
-    subscriptionsBuilder() {
-        return new Subscriptions(this);
-    }
-
-    /**
-     * This return a SubscribersBuilder to build a specific subscriber
-     * @return {Subscribers}
-     */
-    subscribersBuilder() {
-        return new Subscribers(this);
     }
 
 

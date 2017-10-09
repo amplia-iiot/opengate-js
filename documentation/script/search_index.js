@@ -204,15 +204,15 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "opengate-js/src/devices/commsmodules/communicationsmodulefinder.js~communicationsmodulefinder",
-    "class/src/devices/commsModules/CommunicationsModuleFinder.js~CommunicationsModuleFinder.html",
-    "<span>CommunicationsModuleFinder</span> <span class=\"search-result-import-path\">opengate-js/src/devices/commsModules/CommunicationsModuleFinder.js</span>",
-    "class"
-  ],
-  [
     "opengate-js/src/searching/builder/communicationsmoduletypesearchbuilder.js~communicationsmoduletypesearchbuilder",
     "class/src/searching/builder/CommunicationsModuleTypeSearchBuilder.js~CommunicationsModuleTypeSearchBuilder.html",
     "<span>CommunicationsModuleTypeSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/CommunicationsModuleTypeSearchBuilder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/provision/entities/complexbuilder.js~complexbuilder",
+    "class/src/provision/entities/ComplexBuilder.js~ComplexBuilder.html",
+    "<span>ComplexBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/provision/entities/ComplexBuilder.js</span>",
     "class"
   ],
   [
@@ -300,21 +300,15 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "opengate-js/src/devices/devicefinder.js~devicefinder",
-    "class/src/devices/DeviceFinder.js~DeviceFinder.html",
-    "<span>DeviceFinder</span> <span class=\"search-result-import-path\">opengate-js/src/devices/DeviceFinder.js</span>",
+    "opengate-js/src/entities/devicefinder.js~devicefinder",
+    "class/src/entities/DeviceFinder.js~DeviceFinder.html",
+    "<span>DeviceFinder</span> <span class=\"search-result-import-path\">opengate-js/src/entities/DeviceFinder.js</span>",
     "class"
   ],
   [
     "opengate-js/src/collection/devices/devicemessage.js~devicemessage",
     "class/src/collection/devices/DeviceMessage.js~DeviceMessage.html",
     "<span>DeviceMessage</span> <span class=\"search-result-import-path\">opengate-js/src/collection/devices/DeviceMessage.js</span>",
-    "class"
-  ],
-  [
-    "opengate-js/src/devices/devices.js~devices",
-    "class/src/devices/Devices.js~Devices.html",
-    "<span>Devices</span> <span class=\"search-result-import-path\">opengate-js/src/devices/Devices.js</span>",
     "class"
   ],
   [
@@ -342,15 +336,15 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "opengate-js/src/devices/entitybuilder.js~entitybuilder",
-    "class/src/devices/EntityBuilder.js~EntityBuilder.html",
-    "<span>EntityBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/devices/EntityBuilder.js</span>",
+    "opengate-js/src/provision/entities/entitybuilder.js~entitybuilder",
+    "class/src/provision/entities/EntityBuilder.js~EntityBuilder.html",
+    "<span>EntityBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/provision/entities/EntityBuilder.js</span>",
     "class"
   ],
   [
-    "opengate-js/src/devices/entityfinder.js~entityfinder",
-    "class/src/devices/EntityFinder.js~EntityFinder.html",
-    "<span>EntityFinder</span> <span class=\"search-result-import-path\">opengate-js/src/devices/EntityFinder.js</span>",
+    "opengate-js/src/entities/entityfinder.js~entityfinder",
+    "class/src/entities/EntityFinder.js~EntityFinder.html",
+    "<span>EntityFinder</span> <span class=\"search-result-import-path\">opengate-js/src/entities/EntityFinder.js</span>",
     "class"
   ],
   [
@@ -666,12 +660,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "opengate-js/src/devices/relations.js~relations",
-    "class/src/devices/Relations.js~Relations.html",
-    "<span>Relations</span> <span class=\"search-result-import-path\">opengate-js/src/devices/Relations.js</span>",
-    "class"
-  ],
-  [
     "opengate-js/src/searching/builder/ruleconfigurationseveritysearchbuilder.js~ruleconfigurationseveritysearchbuilder",
     "class/src/searching/builder/RuleConfigurationSeveritySearchBuilder.js~RuleConfigurationSeveritySearchBuilder.html",
     "<span>RuleConfigurationSeveritySearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/RuleConfigurationSeveritySearchBuilder.js</span>",
@@ -744,6 +732,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/provision/entities/simplebuilder.js~simplebuilder",
+    "class/src/provision/entities/SimpleBuilder.js~SimpleBuilder.html",
+    "<span>SimpleBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/provision/entities/SimpleBuilder.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/collection/devices/collect/software.js~software",
     "class/src/collection/devices/collect/Software.js~Software.html",
     "<span>Software</span> <span class=\"search-result-import-path\">opengate-js/src/collection/devices/collect/Software.js</span>",
@@ -786,15 +780,21 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "opengate-js/src/devices/commsmodules/subscribers/subscribers.js~subscribers",
-    "class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html",
-    "<span>Subscribers</span> <span class=\"search-result-import-path\">opengate-js/src/devices/commsModules/subscribers/Subscribers.js</span>",
+    "opengate-js/src/provision/entities/devicebuilder.js~subscriberbuilder",
+    "class/src/provision/entities/DeviceBuilder.js~SubscriberBuilder.html",
+    "<span>SubscriberBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/provision/entities/DeviceBuilder.js</span>",
     "class"
   ],
   [
-    "opengate-js/src/devices/commsmodules/subscribers/subscribersfinder.js~subscribersfinder",
-    "class/src/devices/commsModules/subscribers/SubscribersFinder.js~SubscribersFinder.html",
-    "<span>SubscribersFinder</span> <span class=\"search-result-import-path\">opengate-js/src/devices/commsModules/subscribers/SubscribersFinder.js</span>",
+    "opengate-js/src/provision/entities/subscriberbuilder.js~subscriberbuilder",
+    "class/src/provision/entities/SubscriberBuilder.js~SubscriberBuilder.html",
+    "<span>SubscriberBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/provision/entities/SubscriberBuilder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/entities/subscribersfinder.js~subscribersfinder",
+    "class/src/entities/SubscribersFinder.js~SubscribersFinder.html",
+    "<span>SubscribersFinder</span> <span class=\"search-result-import-path\">opengate-js/src/entities/SubscribersFinder.js</span>",
     "class"
   ],
   [
@@ -810,15 +810,15 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "opengate-js/src/devices/commsmodules/subscriptions/subscriptions.js~subscriptions",
-    "class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html",
-    "<span>Subscriptions</span> <span class=\"search-result-import-path\">opengate-js/src/devices/commsModules/subscriptions/Subscriptions.js</span>",
+    "opengate-js/src/provision/entities/subscriptionbuilder.js~subscriptionbuilder",
+    "class/src/provision/entities/SubscriptionBuilder.js~SubscriptionBuilder.html",
+    "<span>SubscriptionBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/provision/entities/SubscriptionBuilder.js</span>",
     "class"
   ],
   [
-    "opengate-js/src/devices/commsmodules/subscriptions/subscriptionsfinder.js~subscriptionsfinder",
-    "class/src/devices/commsModules/subscriptions/SubscriptionsFinder.js~SubscriptionsFinder.html",
-    "<span>SubscriptionsFinder</span> <span class=\"search-result-import-path\">opengate-js/src/devices/commsModules/subscriptions/SubscriptionsFinder.js</span>",
+    "opengate-js/src/entities/subscriptionsfinder.js~subscriptionsfinder",
+    "class/src/entities/SubscriptionsFinder.js~SubscriptionsFinder.html",
+    "<span>SubscriptionsFinder</span> <span class=\"search-result-import-path\">opengate-js/src/entities/SubscriptionsFinder.js</span>",
     "class"
   ],
   [
@@ -855,12 +855,6 @@ window.esdocSearchIndex = [
     "opengate-js/src/bundles/deployment/type_enum.js~type_enum",
     "variable/index.html#static-variable-TYPE_ENUM",
     "<span>TYPE_ENUM</span> <span class=\"search-result-import-path\">opengate-js/src/bundles/deployment/TYPE_ENUM.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-js/src/devices/type_enum.js~type_enum",
-    "variable/index.html#static-variable-TYPE_ENUM",
-    "<span>TYPE_ENUM</span> <span class=\"search-result-import-path\">opengate-js/src/devices/TYPE_ENUM.js</span>",
     "variable"
   ],
   [
@@ -1309,12 +1303,6 @@ window.esdocSearchIndex = [
   ],
   [
     "internalopengateapi#bundlesbuilder() src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder()",
-    "test-file/client/bundles/bundles.spec.js.html#lineNumber4",
-    "Check funcionality bundles module:",
-    "test"
-  ],
-  [
-    "internalopengateapi#bundlesbuilder() src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder()",
     "test-file/client/device/device.spec.js.html#lineNumber4",
     "Check funcionality bundles module:",
     "test"
@@ -1322,6 +1310,12 @@ window.esdocSearchIndex = [
   [
     "internalopengateapi#bundlesbuilder() src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder()",
     "test-file/client/collection/iot.spec.js.html#lineNumber4",
+    "Check funcionality bundles module:",
+    "test"
+  ],
+  [
+    "internalopengateapi#bundlesbuilder() src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder()",
+    "test-file/client/bundles/bundles.spec.js.html#lineNumber4",
     "Check funcionality bundles module:",
     "test"
   ],
@@ -1351,25 +1345,25 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber185",
-    "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Operation",
-    "test"
-  ],
-  [
-    "",
     "test-file/client/device/device.spec.js.html#lineNumber180",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Operation",
     "test"
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber195",
-    "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Option",
+    "test-file/client/device/device.spec.js.html#lineNumber185",
+    "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Operation",
     "test"
   ],
   [
     "",
     "test-file/client/device/device.spec.js.html#lineNumber190",
+    "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Option",
+    "test"
+  ],
+  [
+    "",
+    "test-file/client/device/device.spec.js.html#lineNumber195",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Option",
     "test"
   ],
@@ -1411,13 +1405,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber243",
+    "test-file/client/device/device.spec.js.html#lineNumber256",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter mode in validator is typeof string",
     "test"
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber256",
+    "test-file/client/device/device.spec.js.html#lineNumber243",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter mode in validator is typeof string",
     "test"
   ],
@@ -1465,13 +1459,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber303",
+    "test-file/client/device/device.spec.js.html#lineNumber312",
     "Check funcionality bundles module: Check Deployment Element: Check DeploymentElement basic elements: Create a deployment element",
     "test"
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber312",
+    "test-file/client/device/device.spec.js.html#lineNumber303",
     "Check funcionality bundles module: Check Deployment Element: Check DeploymentElement basic elements: Create a deployment element",
     "test"
   ],
@@ -1639,13 +1633,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/security/certificates.spec.js.html#lineNumber30",
+    "test-file/client/security/certificates.spec.js.html#lineNumber23",
     "Check funcionality certificates: Check basic parameters: administrativeState is not a String",
     "test"
   ],
   [
     "",
-    "test-file/client/security/certificates.spec.js.html#lineNumber23",
+    "test-file/client/security/certificates.spec.js.html#lineNumber30",
     "Check funcionality certificates: Check basic parameters: administrativeState is not a String",
     "test"
   ],
@@ -2256,26 +2250,26 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "",
-    "test-file/client/searching/search.spec.js.html#lineNumber106",
-    "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter:",
-    "test"
-  ],
-  [
     "searchbuilder#filter src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter",
     "test-file/client/searching/search.spec.js.html#lineNumber43",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter:",
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder,internalopengateapi#communicationsmodulessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber136",
-    "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: communicationsModulesSearchBuilder",
+    "",
+    "test-file/client/searching/search.spec.js.html#lineNumber106",
+    "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter:",
     "test"
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder,internalopengateapi#communicationsmodulessearchbuilder",
     "test-file/client/searching/search.spec.js.html#lineNumber76",
+    "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: communicationsModulesSearchBuilder",
+    "test"
+  ],
+  [
+    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder,internalopengateapi#communicationsmodulessearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber136",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: communicationsModulesSearchBuilder",
     "test"
   ],
@@ -2293,13 +2287,13 @@ window.esdocSearchIndex = [
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriberssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber128",
+    "test-file/client/searching/search.spec.js.html#lineNumber68",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder",
     "test"
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriberssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber68",
+    "test-file/client/searching/search.spec.js.html#lineNumber128",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder",
     "test"
   ],
@@ -2323,7 +2317,7 @@ window.esdocSearchIndex = [
   ],
   [
     "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber393",
+    "test-file/client/searching/search.spec.js.html#lineNumber405",
     "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
     "test"
   ],
@@ -2335,7 +2329,7 @@ window.esdocSearchIndex = [
   ],
   [
     "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber405",
+    "test-file/client/searching/search.spec.js.html#lineNumber393",
     "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
     "test"
   ],
@@ -2635,13 +2629,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber5",
+    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber13",
     "Testing fields finder api search a fields communicationsModulesSearchBuilder",
     "test"
   ],
   [
     "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber13",
+    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber5",
     "Testing fields finder api search a fields communicationsModulesSearchBuilder",
     "test"
   ],
@@ -2892,12 +2886,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/internalopengateapi.js~internalopengateapi#communicationsmodulesbuilder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-communicationsModulesBuilder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#communicationsModulesBuilder",
-    "method"
-  ],
-  [
     "src/internalopengateapi.js~internalopengateapi#constructor",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-constructor-constructor",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#constructor",
@@ -3069,12 +3057,6 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#newchannelfinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newChannelFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newChannelFinder",
-    "method"
-  ],
-  [
-    "src/internalopengateapi.js~internalopengateapi#newcommunicationsmodulefinder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newCommunicationsModuleFinder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newCommunicationsModuleFinder",
     "method"
   ],
   [
@@ -3270,12 +3252,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/internalopengateapi.js~internalopengateapi#subscribersbuilder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-subscribersBuilder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#subscribersBuilder",
-    "method"
-  ],
-  [
     "src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-subscribersSearchBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#subscribersSearchBuilder",
@@ -3285,12 +3261,6 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#subscriptionmessagebuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-subscriptionMessageBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#subscriptionMessageBuilder",
-    "method"
-  ],
-  [
-    "src/internalopengateapi.js~internalopengateapi#subscriptionsbuilder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-subscriptionsBuilder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#subscriptionsBuilder",
     "method"
   ],
   [
@@ -4770,258 +4740,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/devices/devicefinder.js",
-    "file/src/devices/DeviceFinder.js.html",
-    "src/devices/DeviceFinder.js",
-    "file"
-  ],
-  [
-    "src/devices/devicefinder.js~devicefinder#constructor",
-    "class/src/devices/DeviceFinder.js~DeviceFinder.html#instance-constructor-constructor",
-    "src/devices/DeviceFinder.js~DeviceFinder#constructor",
-    "method"
-  ],
-  [
-    "src/devices/devices.js",
-    "file/src/devices/Devices.js.html",
-    "src/devices/Devices.js",
-    "file"
-  ],
-  [
-    "src/devices/devices.js~devices#constructor",
-    "class/src/devices/Devices.js~Devices.html#instance-constructor-constructor",
-    "src/devices/Devices.js~Devices#constructor",
-    "method"
-  ],
-  [
-    "src/devices/devices.js~devices#create",
-    "class/src/devices/Devices.js~Devices.html#instance-method-create",
-    "src/devices/Devices.js~Devices#create",
-    "method"
-  ],
-  [
-    "src/devices/devices.js~devices#delete",
-    "class/src/devices/Devices.js~Devices.html#instance-method-delete",
-    "src/devices/Devices.js~Devices#delete",
-    "method"
-  ],
-  [
-    "src/devices/devices.js~devices#deleteall",
-    "class/src/devices/Devices.js~Devices.html#instance-method-deleteAll",
-    "src/devices/Devices.js~Devices#deleteAll",
-    "method"
-  ],
-  [
-    "src/devices/devices.js~devices#getalloweddatastreams",
-    "class/src/devices/Devices.js~Devices.html#instance-method-getAllowedDatastreams",
-    "src/devices/Devices.js~Devices#getAllowedDatastreams",
-    "method"
-  ],
-  [
-    "src/devices/entitybuilder.js",
-    "file/src/devices/EntityBuilder.js.html",
-    "src/devices/EntityBuilder.js",
-    "file"
-  ],
-  [
-    "src/devices/entitybuilder.js~entitybuilder#constructor",
-    "class/src/devices/EntityBuilder.js~EntityBuilder.html#instance-constructor-constructor",
-    "src/devices/EntityBuilder.js~EntityBuilder#constructor",
-    "method"
-  ],
-  [
-    "src/devices/entitybuilder.js~entitybuilder#devicesbuilder",
-    "class/src/devices/EntityBuilder.js~EntityBuilder.html#instance-method-devicesBuilder",
-    "src/devices/EntityBuilder.js~EntityBuilder#devicesBuilder",
-    "method"
-  ],
-  [
-    "src/devices/entitybuilder.js~entitybuilder#subscribersbuilder",
-    "class/src/devices/EntityBuilder.js~EntityBuilder.html#instance-method-subscribersBuilder",
-    "src/devices/EntityBuilder.js~EntityBuilder#subscribersBuilder",
-    "method"
-  ],
-  [
-    "src/devices/entitybuilder.js~entitybuilder#subscriptionsbuilder",
-    "class/src/devices/EntityBuilder.js~EntityBuilder.html#instance-method-subscriptionsBuilder",
-    "src/devices/EntityBuilder.js~EntityBuilder#subscriptionsBuilder",
-    "method"
-  ],
-  [
-    "src/devices/entityfinder.js",
-    "file/src/devices/EntityFinder.js.html",
-    "src/devices/EntityFinder.js",
-    "file"
-  ],
-  [
-    "src/devices/entityfinder.js~entityfinder#constructor",
-    "class/src/devices/EntityFinder.js~EntityFinder.html#instance-constructor-constructor",
-    "src/devices/EntityFinder.js~EntityFinder#constructor",
-    "method"
-  ],
-  [
-    "src/devices/entityfinder.js~entityfinder#findbyorganizationandid",
-    "class/src/devices/EntityFinder.js~EntityFinder.html#instance-method-findByOrganizationAndId",
-    "src/devices/EntityFinder.js~EntityFinder#findByOrganizationAndId",
-    "method"
-  ],
-  [
-    "src/devices/relations.js",
-    "file/src/devices/Relations.js.html",
-    "src/devices/Relations.js",
-    "file"
-  ],
-  [
-    "src/devices/relations.js~relations#constructor",
-    "class/src/devices/Relations.js~Relations.html#instance-constructor-constructor",
-    "src/devices/Relations.js~Relations#constructor",
-    "method"
-  ],
-  [
-    "src/devices/relations.js~relations#create",
-    "class/src/devices/Relations.js~Relations.html#instance-method-create",
-    "src/devices/Relations.js~Relations#create",
-    "method"
-  ],
-  [
-    "src/devices/relations.js~relations#delete",
-    "class/src/devices/Relations.js~Relations.html#instance-method-delete",
-    "src/devices/Relations.js~Relations#delete",
-    "method"
-  ],
-  [
-    "src/devices/relations.js~relations#update",
-    "class/src/devices/Relations.js~Relations.html#instance-method-update",
-    "src/devices/Relations.js~Relations#update",
-    "method"
-  ],
-  [
-    "src/devices/relations.js~relations#withcommunicationsmodule",
-    "class/src/devices/Relations.js~Relations.html#instance-method-withCommunicationsModule",
-    "src/devices/Relations.js~Relations#withCommunicationsModule",
-    "method"
-  ],
-  [
-    "src/devices/relations.js~relations#withdevice",
-    "class/src/devices/Relations.js~Relations.html#instance-method-withDevice",
-    "src/devices/Relations.js~Relations#withDevice",
-    "method"
-  ],
-  [
-    "src/devices/relations.js~relations#withorganization",
-    "class/src/devices/Relations.js~Relations.html#instance-method-withOrganization",
-    "src/devices/Relations.js~Relations#withOrganization",
-    "method"
-  ],
-  [
-    "src/devices/relations.js~relations#withsubscriber",
-    "class/src/devices/Relations.js~Relations.html#instance-method-withSubscriber",
-    "src/devices/Relations.js~Relations#withSubscriber",
-    "method"
-  ],
-  [
-    "src/devices/relations.js~relations#withsubscription",
-    "class/src/devices/Relations.js~Relations.html#instance-method-withSubscription",
-    "src/devices/Relations.js~Relations#withSubscription",
-    "method"
-  ],
-  [
-    "src/devices/relations.js~relations#withtemplate",
-    "class/src/devices/Relations.js~Relations.html#instance-method-withTemplate",
-    "src/devices/Relations.js~Relations#withTemplate",
-    "method"
-  ],
-  [
-    "src/devices/type_enum.js",
-    "file/src/devices/TYPE_ENUM.js.html",
-    "src/devices/TYPE_ENUM.js",
-    "file"
-  ],
-  [
-    "src/devices/commsmodules/communicationsmodulefinder.js",
-    "file/src/devices/commsModules/CommunicationsModuleFinder.js.html",
-    "src/devices/commsModules/CommunicationsModuleFinder.js",
-    "file"
-  ],
-  [
-    "src/devices/commsmodules/communicationsmodulefinder.js~communicationsmodulefinder#constructor",
-    "class/src/devices/commsModules/CommunicationsModuleFinder.js~CommunicationsModuleFinder.html#instance-constructor-constructor",
-    "src/devices/commsModules/CommunicationsModuleFinder.js~CommunicationsModuleFinder#constructor",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscribers/subscribers.js",
-    "file/src/devices/commsModules/subscribers/Subscribers.js.html",
-    "src/devices/commsModules/subscribers/Subscribers.js",
-    "file"
-  ],
-  [
-    "src/devices/commsmodules/subscribers/subscribers.js~subscribers#constructor",
-    "class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html#instance-constructor-constructor",
-    "src/devices/commsModules/subscribers/Subscribers.js~Subscribers#constructor",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscribers/subscribers.js~subscribers#create",
-    "class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html#instance-method-create",
-    "src/devices/commsModules/subscribers/Subscribers.js~Subscribers#create",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscribers/subscribers.js~subscribers#getalloweddatastreams",
-    "class/src/devices/commsModules/subscribers/Subscribers.js~Subscribers.html#instance-method-getAllowedDatastreams",
-    "src/devices/commsModules/subscribers/Subscribers.js~Subscribers#getAllowedDatastreams",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscribers/subscribersfinder.js",
-    "file/src/devices/commsModules/subscribers/SubscribersFinder.js.html",
-    "src/devices/commsModules/subscribers/SubscribersFinder.js",
-    "file"
-  ],
-  [
-    "src/devices/commsmodules/subscribers/subscribersfinder.js~subscribersfinder#constructor",
-    "class/src/devices/commsModules/subscribers/SubscribersFinder.js~SubscribersFinder.html#instance-constructor-constructor",
-    "src/devices/commsModules/subscribers/SubscribersFinder.js~SubscribersFinder#constructor",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscriptions/subscriptions.js",
-    "file/src/devices/commsModules/subscriptions/Subscriptions.js.html",
-    "src/devices/commsModules/subscriptions/Subscriptions.js",
-    "file"
-  ],
-  [
-    "src/devices/commsmodules/subscriptions/subscriptions.js~subscriptions#constructor",
-    "class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html#instance-constructor-constructor",
-    "src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions#constructor",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscriptions/subscriptions.js~subscriptions#create",
-    "class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html#instance-method-create",
-    "src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions#create",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscriptions/subscriptions.js~subscriptions#getalloweddatastreams",
-    "class/src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions.html#instance-method-getAllowedDatastreams",
-    "src/devices/commsModules/subscriptions/Subscriptions.js~Subscriptions#getAllowedDatastreams",
-    "method"
-  ],
-  [
-    "src/devices/commsmodules/subscriptions/subscriptionsfinder.js",
-    "file/src/devices/commsModules/subscriptions/SubscriptionsFinder.js.html",
-    "src/devices/commsModules/subscriptions/SubscriptionsFinder.js",
-    "file"
-  ],
-  [
-    "src/devices/commsmodules/subscriptions/subscriptionsfinder.js~subscriptionsfinder#constructor",
-    "class/src/devices/commsModules/subscriptions/SubscriptionsFinder.js~SubscriptionsFinder.html#instance-constructor-constructor",
-    "src/devices/commsModules/subscriptions/SubscriptionsFinder.js~SubscriptionsFinder#constructor",
-    "method"
-  ],
-  [
     "src/domains/domains.js",
     "file/src/domains/Domains.js.html",
     "src/domains/Domains.js",
@@ -5073,6 +4791,60 @@ window.esdocSearchIndex = [
     "src/domains/domainsfinder.js~domainfinder#findbynamewithhierarchy",
     "class/src/domains/DomainsFinder.js~DomainFinder.html#instance-method-findByNameWithHierarchy",
     "src/domains/DomainsFinder.js~DomainFinder#findByNameWithHierarchy",
+    "method"
+  ],
+  [
+    "src/entities/devicefinder.js",
+    "file/src/entities/DeviceFinder.js.html",
+    "src/entities/DeviceFinder.js",
+    "file"
+  ],
+  [
+    "src/entities/devicefinder.js~devicefinder#constructor",
+    "class/src/entities/DeviceFinder.js~DeviceFinder.html#instance-constructor-constructor",
+    "src/entities/DeviceFinder.js~DeviceFinder#constructor",
+    "method"
+  ],
+  [
+    "src/entities/entityfinder.js",
+    "file/src/entities/EntityFinder.js.html",
+    "src/entities/EntityFinder.js",
+    "file"
+  ],
+  [
+    "src/entities/entityfinder.js~entityfinder#constructor",
+    "class/src/entities/EntityFinder.js~EntityFinder.html#instance-constructor-constructor",
+    "src/entities/EntityFinder.js~EntityFinder#constructor",
+    "method"
+  ],
+  [
+    "src/entities/entityfinder.js~entityfinder#findbyorganizationandid",
+    "class/src/entities/EntityFinder.js~EntityFinder.html#instance-method-findByOrganizationAndId",
+    "src/entities/EntityFinder.js~EntityFinder#findByOrganizationAndId",
+    "method"
+  ],
+  [
+    "src/entities/subscribersfinder.js",
+    "file/src/entities/SubscribersFinder.js.html",
+    "src/entities/SubscribersFinder.js",
+    "file"
+  ],
+  [
+    "src/entities/subscribersfinder.js~subscribersfinder#constructor",
+    "class/src/entities/SubscribersFinder.js~SubscribersFinder.html#instance-constructor-constructor",
+    "src/entities/SubscribersFinder.js~SubscribersFinder#constructor",
+    "method"
+  ],
+  [
+    "src/entities/subscriptionsfinder.js",
+    "file/src/entities/SubscriptionsFinder.js.html",
+    "src/entities/SubscriptionsFinder.js",
+    "file"
+  ],
+  [
+    "src/entities/subscriptionsfinder.js~subscriptionsfinder#constructor",
+    "class/src/entities/SubscriptionsFinder.js~SubscriptionsFinder.html#instance-constructor-constructor",
+    "src/entities/SubscriptionsFinder.js~SubscriptionsFinder#constructor",
     "method"
   ],
   [
@@ -6105,6 +5877,126 @@ window.esdocSearchIndex = [
     "src/provision/baseprovision.js~baseprovision#update",
     "class/src/provision/BaseProvision.js~BaseProvision.html#instance-method-update",
     "src/provision/BaseProvision.js~BaseProvision#update",
+    "method"
+  ],
+  [
+    "src/provision/entities/complexbuilder.js",
+    "file/src/provision/entities/ComplexBuilder.js.html",
+    "src/provision/entities/ComplexBuilder.js",
+    "file"
+  ],
+  [
+    "src/provision/entities/complexbuilder.js~complexbuilder#constructor",
+    "class/src/provision/entities/ComplexBuilder.js~ComplexBuilder.html#instance-constructor-constructor",
+    "src/provision/entities/ComplexBuilder.js~ComplexBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/provision/entities/complexbuilder.js~complexbuilder#withcomplex",
+    "class/src/provision/entities/ComplexBuilder.js~ComplexBuilder.html#instance-method-withComplex",
+    "src/provision/entities/ComplexBuilder.js~ComplexBuilder#withComplex",
+    "method"
+  ],
+  [
+    "src/provision/entities/devicebuilder.js",
+    "file/src/provision/entities/DeviceBuilder.js.html",
+    "src/provision/entities/DeviceBuilder.js",
+    "file"
+  ],
+  [
+    "src/provision/entities/devicebuilder.js~subscriberbuilder#constructor",
+    "class/src/provision/entities/DeviceBuilder.js~SubscriberBuilder.html#instance-constructor-constructor",
+    "src/provision/entities/DeviceBuilder.js~SubscriberBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/provision/entities/entitybuilder.js",
+    "file/src/provision/entities/EntityBuilder.js.html",
+    "src/provision/entities/EntityBuilder.js",
+    "file"
+  ],
+  [
+    "src/provision/entities/entitybuilder.js~entitybuilder#constructor",
+    "class/src/provision/entities/EntityBuilder.js~EntityBuilder.html#instance-constructor-constructor",
+    "src/provision/entities/EntityBuilder.js~EntityBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/provision/entities/entitybuilder.js~entitybuilder#devicesbuilder",
+    "class/src/provision/entities/EntityBuilder.js~EntityBuilder.html#instance-method-devicesBuilder",
+    "src/provision/entities/EntityBuilder.js~EntityBuilder#devicesBuilder",
+    "method"
+  ],
+  [
+    "src/provision/entities/entitybuilder.js~entitybuilder#subscribersbuilder",
+    "class/src/provision/entities/EntityBuilder.js~EntityBuilder.html#instance-method-subscribersBuilder",
+    "src/provision/entities/EntityBuilder.js~EntityBuilder#subscribersBuilder",
+    "method"
+  ],
+  [
+    "src/provision/entities/entitybuilder.js~entitybuilder#subscriptionsbuilder",
+    "class/src/provision/entities/EntityBuilder.js~EntityBuilder.html#instance-method-subscriptionsBuilder",
+    "src/provision/entities/EntityBuilder.js~EntityBuilder#subscriptionsBuilder",
+    "method"
+  ],
+  [
+    "src/provision/entities/simplebuilder.js",
+    "file/src/provision/entities/SimpleBuilder.js.html",
+    "src/provision/entities/SimpleBuilder.js",
+    "file"
+  ],
+  [
+    "src/provision/entities/simplebuilder.js~simplebuilder#constructor",
+    "class/src/provision/entities/SimpleBuilder.js~SimpleBuilder.html#instance-constructor-constructor",
+    "src/provision/entities/SimpleBuilder.js~SimpleBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/provision/entities/simplebuilder.js~simplebuilder#deleteall",
+    "class/src/provision/entities/SimpleBuilder.js~SimpleBuilder.html#instance-method-deleteAll",
+    "src/provision/entities/SimpleBuilder.js~SimpleBuilder#deleteAll",
+    "method"
+  ],
+  [
+    "src/provision/entities/simplebuilder.js~simplebuilder#getalloweddatastreams",
+    "class/src/provision/entities/SimpleBuilder.js~SimpleBuilder.html#instance-method-getAllowedDatastreams",
+    "src/provision/entities/SimpleBuilder.js~SimpleBuilder#getAllowedDatastreams",
+    "method"
+  ],
+  [
+    "src/provision/entities/simplebuilder.js~simplebuilder#getentitykey",
+    "class/src/provision/entities/SimpleBuilder.js~SimpleBuilder.html#instance-method-getEntityKey",
+    "src/provision/entities/SimpleBuilder.js~SimpleBuilder#getEntityKey",
+    "method"
+  ],
+  [
+    "src/provision/entities/simplebuilder.js~simplebuilder#with",
+    "class/src/provision/entities/SimpleBuilder.js~SimpleBuilder.html#instance-method-with",
+    "src/provision/entities/SimpleBuilder.js~SimpleBuilder#with",
+    "method"
+  ],
+  [
+    "src/provision/entities/subscriberbuilder.js",
+    "file/src/provision/entities/SubscriberBuilder.js.html",
+    "src/provision/entities/SubscriberBuilder.js",
+    "file"
+  ],
+  [
+    "src/provision/entities/subscriberbuilder.js~subscriberbuilder#constructor",
+    "class/src/provision/entities/SubscriberBuilder.js~SubscriberBuilder.html#instance-constructor-constructor",
+    "src/provision/entities/SubscriberBuilder.js~SubscriberBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/provision/entities/subscriptionbuilder.js",
+    "file/src/provision/entities/SubscriptionBuilder.js.html",
+    "src/provision/entities/SubscriptionBuilder.js",
+    "file"
+  ],
+  [
+    "src/provision/entities/subscriptionbuilder.js~subscriptionbuilder#constructor",
+    "class/src/provision/entities/SubscriptionBuilder.js~SubscriptionBuilder.html#instance-constructor-constructor",
+    "src/provision/entities/SubscriptionBuilder.js~SubscriptionBuilder#constructor",
     "method"
   ],
   [
