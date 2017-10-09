@@ -352,7 +352,7 @@ var StaticSearch = (function (_Search) {
                     "GENERIC": {
                         "COMMUNICATIONS_MODULE": {
                             "mandatory": ["generatedEntityKey"],
-                            "optional": ["administrativeState", "IMEI", "MAC", "HARDWARE", "SOFTWARE"]
+                            "optional": ["IMEI", "MAC", "HARDWARE", "SOFTWARE"]
                         },
                         "SUBSCRIPTION": {
                             "mandatory": ["generatedEntityKey"],
@@ -363,20 +363,20 @@ var StaticSearch = (function (_Search) {
                             "optional": ["administrativeState", "ICC", "SERIAL_NUMBER"]
                         }
                     },
-                    "WIFI": {
+                    /*"WIFI": {
                         "COMMUNICATIONS_MODULE": {
                             "mandatory": ["generatedEntityKey", "MAC"],
-                            "optional": ["administrativeState", "HARDWARE", "SOFTWARE"]
+                            "optional": ["HARDWARE", "SOFTWARE"]
                         },
                         "SUBSCRIPTION": {
                             "mandatory": ["generatedEntityKey"],
                             "optional": ["administrativeState", "ADDRESS"]
                         }
-                    },
+                    },*/
                     "ETH": {
                         "COMMUNICATIONS_MODULE": {
                             "mandatory": ["generatedEntityKey", "MAC"],
-                            "optional": ["administrativeState", "HARDWARE", "SOFTWARE"]
+                            "optional": ["HARDWARE", "SOFTWARE"]
                         },
                         "SUBSCRIPTION": {
                             "mandatory": ["generatedEntityKey"],
@@ -392,13 +392,13 @@ var StaticSearch = (function (_Search) {
                     "MESH": {
                         "COMMUNICATIONS_MODULE": {
                             "mandatory": ["generatedEntityKey", "MAC"],
-                            "optional": ["administrativeState", "HARDWARE", "SOFTWARE"]
+                            "optional": ["HARDWARE", "SOFTWARE"]
                         }
                     },
                     "LOWPAN": {
                         "COMMUNICATIONS_MODULE": {
                             "mandatory": ["generatedEntityKey", "MAC"],
-                            "optional": ["administrativeState", "HARDWARE", "SOFTWARE"]
+                            "optional": ["HARDWARE", "SOFTWARE"]
                         },
                         "SUBSCRIPTION": {
                             "mandatory": ["generatedEntityKey"],
@@ -408,7 +408,7 @@ var StaticSearch = (function (_Search) {
                     "PLC": {
                         "COMMUNICATIONS_MODULE": {
                             "mandatory": ["generatedEntityKey", "MAC"],
-                            "optional": ["administrativeState", "HARDWARE", "SOFTWARE"]
+                            "optional": ["HARDWARE", "SOFTWARE"]
                         },
                         "SUBSCRIPTION": {
                             "mandatory": ["generatedEntityKey"],
@@ -418,7 +418,7 @@ var StaticSearch = (function (_Search) {
                     "ZIGBEE": {
                         "COMMUNICATIONS_MODULE": {
                             "mandatory": ["generatedEntityKey", "MAC"],
-                            "optional": ["administrativeState", "HARDWARE", "SOFTWARE"]
+                            "optional": ["HARDWARE", "SOFTWARE"]
                         },
                         "SUBSCRIPTION": {
                             "mandatory": ["generatedEntityKey"],
@@ -428,7 +428,7 @@ var StaticSearch = (function (_Search) {
                     "ADSL": {
                         "COMMUNICATIONS_MODULE": {
                             "mandatory": ["generatedEntityKey"],
-                            "optional": ["administrativeState", "IMEI", "MAC", "HARDWARE", "SOFTWARE"]
+                            "optional": ["IMEI", "MAC", "HARDWARE", "SOFTWARE"]
                         },
                         "SUBSCRIPTION": {
                             "mandatory": ["generatedEntityKey"],
@@ -438,7 +438,7 @@ var StaticSearch = (function (_Search) {
                     "MOBILE": {
                         "COMMUNICATIONS_MODULE": {
                             "mandatory": ["generatedEntityKey"],
-                            "optional": ["administrativeState", "IMEI", "MAC", "HARDWARE", "SOFTWARE"]
+                            "optional": ["IMEI", "MAC", "HARDWARE", "SOFTWARE"]
                         },
                         "SUBSCRIPTION": {
                             "mandatory": ["generatedEntityKey"],
@@ -452,7 +452,7 @@ var StaticSearch = (function (_Search) {
                     "GSM": {
                         "COMMUNICATIONS_MODULE": {
                             "mandatory": ["generatedEntityKey"],
-                            "optional": ["administrativeState", "IMEI", "MAC", "HARDWARE", "SOFTWARE"]
+                            "optional": ["IMEI", "MAC", "HARDWARE", "SOFTWARE"]
                         },
                         "SUBSCRIPTION": {
                             "mandatory": ["generatedEntityKey"],
@@ -466,37 +466,43 @@ var StaticSearch = (function (_Search) {
                     "CAN": {
                         "COMMUNICATIONS_MODULE": {
                             "mandatory": ["entityKey"],
-                            "optional": ["administrativeState"]
+                            "optional": []
+                        }
+                    },
+                    "HAN": {
+                        "COMMUNICATIONS_MODULE": {
+                            "mandatory": ["entityKey"],
+                            "optional": []
                         }
                     },
                     "I2C": {
                         "COMMUNICATIONS_MODULE": {
                             "mandatory": ["entityKey"],
-                            "optional": ["administrativeState"]
+                            "optional": []
                         }
                     },
                     "RS232": {
                         "COMMUNICATIONS_MODULE": {
                             "mandatory": ["entityKey"],
-                            "optional": ["administrativeState"]
+                            "optional": []
                         }
                     },
                     "RS422": {
                         "COMMUNICATIONS_MODULE": {
                             "mandatory": ["entityKey"],
-                            "optional": ["administrativeState"]
+                            "optional": []
                         }
                     },
                     "RS485": {
                         "COMMUNICATIONS_MODULE": {
                             "mandatory": ["entityKey"],
-                            "optional": ["administrativeState"]
+                            "optional": []
                         }
                     },
                     "SIGFOX": {
                         "COMMUNICATIONS_MODULE": {
                             "mandatory": ["entityKey"],
-                            "optional": ["administrativeState"]
+                            "optional": []
                         }
                     }
                 },
