@@ -14,9 +14,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _FlattenedSearchBuilder2 = require('./FlattenedSearchBuilder');
+var _PreFilteredSearchBuilder2 = require('./PreFilteredSearchBuilder');
 
-var _FlattenedSearchBuilder3 = _interopRequireDefault(_FlattenedSearchBuilder2);
+var _PreFilteredSearchBuilder3 = _interopRequireDefault(_PreFilteredSearchBuilder2);
 
 var _utilSearchingFieldsFieldFinder = require('../../util/searchingFields/FieldFinder');
 
@@ -28,8 +28,8 @@ var BASE_URL = '/devices';
  * @example ogapi.devicesSearchBuilder()
  */
 
-var DevicesSearchBuilder = (function (_FlattenedSearchBuilder) {
-    _inherits(DevicesSearchBuilder, _FlattenedSearchBuilder);
+var DevicesSearchBuilder = (function (_PreFilteredSearchBuilder) {
+    _inherits(DevicesSearchBuilder, _PreFilteredSearchBuilder);
 
     /**
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
@@ -84,7 +84,7 @@ var DevicesSearchBuilder = (function (_FlattenedSearchBuilder) {
     }]);
 
     return DevicesSearchBuilder;
-})(_FlattenedSearchBuilder3['default']);
+})(_PreFilteredSearchBuilder3['default']);
 
 exports['default'] = DevicesSearchBuilder;
 module.exports = exports['default'];
