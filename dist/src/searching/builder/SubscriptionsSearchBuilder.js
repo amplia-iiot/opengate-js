@@ -49,11 +49,11 @@ var SubscriptionsSearchBuilder = (function (_FlattenedSearchBuilder) {
                 "and": [{
                     "or": [{
                         "exists": {
-                            "provision.device.communicationModules[].subscriptionr.identifier": true
+                            "provision.device.communicationModules[].subscription.identifier": true
                         }
                     }, {
                         "exists": {
-                            "device.communicationModules[].subscriptionr.identifier": true
+                            "device.communicationModules[].subscription.identifier": true
                         }
                     }]
                 }]

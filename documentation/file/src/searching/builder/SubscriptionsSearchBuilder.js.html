@@ -217,11 +217,11 @@ export default class SubscriptionsSearchBuilder extends FlattenedSearchBuilder {
             &quot;and&quot;: [{
                 &quot;or&quot;: [{
                     &quot;exists&quot;: {
-                        &quot;provision.device.communicationModules[].subscriptionr.identifier&quot;: true
+                        &quot;provision.device.communicationModules[].subscription.identifier&quot;: true
                     }
                 }, {
                     &quot;exists&quot;: {
-                        &quot;device.communicationModules[].subscriptionr.identifier&quot;: true
+                        &quot;device.communicationModules[].subscription.identifier&quot;: true
                     }
                 }]
             }]
