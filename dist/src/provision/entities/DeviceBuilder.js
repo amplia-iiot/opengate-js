@@ -20,25 +20,37 @@ var _ComplexBuilder3 = _interopRequireDefault(_ComplexBuilder2);
 
 var ID = 'provision.device.identifier';
 
-var SubscriberBuilder = (function (_ComplexBuilder) {
-    _inherits(SubscriberBuilder, _ComplexBuilder);
+/**
+ * Device builder. This builder give you the necessary tools to create a device using our OpenGate REST.
+ */
 
-    function SubscriberBuilder(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator) {
-        _classCallCheck(this, SubscriberBuilder);
+var DeviceBuilder = (function (_ComplexBuilder) {
+    _inherits(DeviceBuilder, _ComplexBuilder);
 
-        _get(Object.getPrototypeOf(SubscriberBuilder.prototype), 'constructor', this).call(this, ogapi, organization + '/devices', allowedDatastreams, definedSchemas, jsonSchemaValidator);
+    /**
+     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
+     * @param {!string} organization - this is the organization name where device will be created
+     * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new device
+     * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types
+     * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool
+     */
+
+    function DeviceBuilder(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator) {
+        _classCallCheck(this, DeviceBuilder);
+
+        _get(Object.getPrototypeOf(DeviceBuilder.prototype), 'constructor', this).call(this, ogapi, organization + '/devices', allowedDatastreams, definedSchemas, jsonSchemaValidator);
     }
 
-    _createClass(SubscriberBuilder, [{
+    _createClass(DeviceBuilder, [{
         key: '_getEntityKey',
         value: function _getEntityKey() {
             return this._entity[ID];
         }
     }]);
 
-    return SubscriberBuilder;
+    return DeviceBuilder;
 })(_ComplexBuilder3['default']);
 
-exports['default'] = SubscriberBuilder;
+exports['default'] = DeviceBuilder;
 module.exports = exports['default'];
 //# sourceMappingURL=DeviceBuilder.js.map

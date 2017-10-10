@@ -113,7 +113,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/Organizations.js~Organizations.html">Organizations</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/BaseProvision.js~BaseProvision.html">BaseProvision</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision/entities</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/ComplexBuilder.js~ComplexBuilder.html">ComplexBuilder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/DeviceBuilder.js~SubscriberBuilder.html">SubscriberBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/DeviceBuilder.js~DeviceBuilder.html">DeviceBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/EntityBuilder.js~EntityBuilder.html">EntityBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SimpleBuilder.js~SimpleBuilder.html">SimpleBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SubscriberBuilder.js~SubscriberBuilder.html">SubscriberBuilder</a></span></span></li>
@@ -199,7 +199,18 @@ import SimpleBuilder from &apos;./SimpleBuilder&apos;;
 
 const ID = &apos;provision.device.communicationModules[].subscription.identifier&apos;;
 
+/**
+ * Subscription builder. This builder give you the necessary tools to create a subscription using our OpenGate REST.
+ */
 export default class SubscriptionBuilder extends SimpleBuilder {
+
+    /**
+     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
+     * @param {!string} organization - this is the organization name where subscription will be created
+     * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new subscription
+     * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types
+     * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool
+     */
     constructor(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator) {
         super(ogapi, organization + &apos;/subscriptions&apos;, allowedDatastreams, definedSchemas, jsonSchemaValidator);
     }

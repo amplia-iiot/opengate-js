@@ -18,14 +18,34 @@ var _SimpleBuilder2 = require('./SimpleBuilder');
 
 var _SimpleBuilder3 = _interopRequireDefault(_SimpleBuilder2);
 
+/**
+ * This class extends SimpleBuilder to allow set complex values. What is a complex value? It is simple, It is a value 
+ * that need a communications module identifier to allow set into the box.
+ */
+
 var ComplexBuilder = (function (_SimpleBuilder) {
     _inherits(ComplexBuilder, _SimpleBuilder);
+
+    /**
+     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
+     * @param {!string} resource - this is the resource url where can be create/delete/update/read the entity
+     * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new entity
+     * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types
+     * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool
+     */
 
     function ComplexBuilder(ogapi, resource, allowedDatastreams, definedSchemas, jsonSchemaValidator) {
         _classCallCheck(this, ComplexBuilder);
 
         _get(Object.getPrototypeOf(ComplexBuilder.prototype), 'constructor', this).call(this, ogapi, resource, allowedDatastreams, definedSchemas, jsonSchemaValidator);
     }
+
+    /**
+     * Set a complex value to entity
+     * @param {!string} _id - Datastream identifier
+     * @param {!string} idCommunicationModules - Communications module identifier
+     * @param {object} val - Value to set. It can be null then the datastream value will be removed
+     */
 
     _createClass(ComplexBuilder, [{
         key: 'withComplex',

@@ -24,12 +24,22 @@ var _q2 = _interopRequireDefault(_q);
 
 var ERROR_VALUE_NOT_ALLOWED = 'The value is not allowed. The value should be formatted as follows: ';
 var ERROR_DATASTREAM_NOT_ALLOWED = 'Datastream is not allowed.';
-var ERROR_FUNCTION_NOT_ALLOWED = 'Function is not allowed.';
-var ERROR_ID_VALUE = 'Parameter id and value must be defined';
 var ERROR_ORGANIZATION = 'Parameters organization must be defined';
+
+/**
+ * This class allow set simple values.
+ */
 
 var SimpleBuilder = (function (_BaseProvision) {
     _inherits(SimpleBuilder, _BaseProvision);
+
+    /**
+     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
+     * @param {!string} resource - this is the resource url where can be create/delete/update/read the entity
+     * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new entity
+     * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types
+     * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool
+     */
 
     function SimpleBuilder(ogapi, resource, allowedDatastreams, definedSchemas, jsonSchemaValidator) {
         _classCallCheck(this, SimpleBuilder);
@@ -76,11 +86,22 @@ var SimpleBuilder = (function (_BaseProvision) {
             this._validate();
             return this._entity;
         }
+
+        /**
+         * @return {string} - Entity identifier
+         */
     }, {
         key: 'getEntityKey',
         value: function getEntityKey() {
             return this._getEntityKey() !== null ? this._getEntityKey()._value._current.value : null;
         }
+
+        /**
+         * Set new datastream value
+         * 
+         * @param {!string} _id - Datastream identifier
+         * @param {!objecr} val - Datastream value. If this value is null then datastream value will be removed.
+         */
     }, {
         key: 'with',
         value: function _with(_id, val) {
@@ -103,6 +124,10 @@ var SimpleBuilder = (function (_BaseProvision) {
             };
             return this;
         }
+
+        /**
+         * @return {array} - Allowed Datastream definition array
+         */
     }, {
         key: 'getAllowedDatastreams',
         value: function getAllowedDatastreams() {

@@ -113,7 +113,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/Organizations.js~Organizations.html">Organizations</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/BaseProvision.js~BaseProvision.html">BaseProvision</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision/entities</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/ComplexBuilder.js~ComplexBuilder.html">ComplexBuilder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/DeviceBuilder.js~SubscriberBuilder.html">SubscriberBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/DeviceBuilder.js~DeviceBuilder.html">DeviceBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/EntityBuilder.js~EntityBuilder.html">EntityBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SimpleBuilder.js~SimpleBuilder.html">SimpleBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SubscriberBuilder.js~SubscriberBuilder.html">SubscriberBuilder</a></span></span></li>
@@ -193,13 +193,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import ComplexBuilder from &apos;<span><a href="file/src/provision/entities/ComplexBuilder.js.html#lineNumber5">opengate-js/src/provision/entities/ComplexBuilder.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import ComplexBuilder from &apos;<span><a href="file/src/provision/entities/ComplexBuilder.js.html#lineNumber9">opengate-js/src/provision/entities/ComplexBuilder.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/provision/entities/ComplexBuilder.js.html#lineNumber5">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/provision/entities/ComplexBuilder.js.html#lineNumber9">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -210,7 +210,7 @@
   
   
   <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span><a href="class/src/provision/BaseProvision.js~BaseProvision.html">BaseProvision</a></span> &#x2192; <span><a href="class/src/provision/entities/SimpleBuilder.js~SimpleBuilder.html">SimpleBuilder</a></span> &#x2192; ComplexBuilder</div></div>
-  <div class="flat-list" data-ice="directSubclass"><h4>Direct Subclass:</h4><div><span><a href="class/src/provision/entities/DeviceBuilder.js~SubscriberBuilder.html">SubscriberBuilder</a></span></div></div>
+  <div class="flat-list" data-ice="directSubclass"><h4>Direct Subclass:</h4><div><span><a href="class/src/provision/entities/DeviceBuilder.js~DeviceBuilder.html">DeviceBuilder</a></span></div></div>
   
   
   
@@ -219,7 +219,9 @@
 
   
   
-  
+  <div class="description" data-ice="description"><p>This class extends SimpleBuilder to allow set complex values. What is a complex value? It is simple, It is a value 
+that need a communications module identifier to allow set into the box.</p>
+</div>
 
   
 
@@ -247,7 +249,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/provision/entities/ComplexBuilder.js~ComplexBuilder.html#instance-constructor-constructor">constructor</a></span></span><span data-ice="signature">(ogapi: <span>*</span>, resource: <span>*</span>, allowedDatastreams: <span>*</span>, definedSchemas: <span>*</span>, jsonSchemaValidator: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/src/provision/entities/ComplexBuilder.js~ComplexBuilder.html#instance-constructor-constructor">constructor</a></span></span><span data-ice="signature">(ogapi: <span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html">InternalOpenGateAPI</a></span>, resource: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, allowedDatastreams: <span>array</span>, definedSchemas: <span>array</span>, jsonSchemaValidator: <span>Validator</span>)</span>
         </p>
       </div>
       <div>
@@ -280,13 +282,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/provision/entities/ComplexBuilder.js~ComplexBuilder.html#instance-method-withComplex">withComplex</a></span></span><span data-ice="signature">(_id: <span>*</span>, idCommunicationModules: <span>*</span>, val: <span>*</span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/src/provision/entities/ComplexBuilder.js~ComplexBuilder.html#instance-method-withComplex">withComplex</a></span></span><span data-ice="signature">(_id: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, idCommunicationModules: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, val: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Set a complex value to entity</p>
+</div>
       </div>
     </td>
     <td>
@@ -428,7 +431,7 @@ This function deletes a entity of provision</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/provision/entities/SimpleBuilder.js~SimpleBuilder.html#instance-method-getAllowedDatastreams">getAllowedDatastreams</a></span></span><span data-ice="signature">(): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/src/provision/entities/SimpleBuilder.js~SimpleBuilder.html#instance-method-getAllowedDatastreams">getAllowedDatastreams</a></span></span><span data-ice="signature">(): <span>array</span></span>
         </p>
       </div>
       <div>
@@ -453,7 +456,7 @@ This function deletes a entity of provision</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/provision/entities/SimpleBuilder.js~SimpleBuilder.html#instance-method-getEntityKey">getEntityKey</a></span></span><span data-ice="signature">(): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/src/provision/entities/SimpleBuilder.js~SimpleBuilder.html#instance-method-getEntityKey">getEntityKey</a></span></span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
         </p>
       </div>
       <div>
@@ -478,13 +481,14 @@ This function deletes a entity of provision</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/provision/entities/SimpleBuilder.js~SimpleBuilder.html#instance-method-with">with</a></span></span><span data-ice="signature">(_id: <span>*</span>, val: <span>*</span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/src/provision/entities/SimpleBuilder.js~SimpleBuilder.html#instance-method-with">with</a></span></span><span data-ice="signature">(_id: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, val: <span>objecr</span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Set new datastream value</p>
+</div>
       </div>
     </td>
     <td>
@@ -507,11 +511,11 @@ This function deletes a entity of provision</p>
     
     
     
-    <span data-ice="name">constructor</span><span data-ice="signature">(ogapi: <span>*</span>, resource: <span>*</span>, allowedDatastreams: <span>*</span>, definedSchemas: <span>*</span>, jsonSchemaValidator: <span>*</span>)</span>
+    <span data-ice="name">constructor</span><span data-ice="signature">(ogapi: <span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html">InternalOpenGateAPI</a></span>, resource: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, allowedDatastreams: <span>array</span>, definedSchemas: <span>array</span>, jsonSchemaValidator: <span>Validator</span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/provision/entities/ComplexBuilder.js.html#lineNumber6">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/provision/entities/ComplexBuilder.js.html#lineNumber19">source</a></span></span>
     </span>
   </h3>
 
@@ -532,33 +536,41 @@ This function deletes a entity of provision</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">ogapi</td>
-      <td data-ice="type"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="type"><span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html">InternalOpenGateAPI</a></span></td>
+      <td data-ice="appendix"><ul><li>nullable: false</li></ul></td>
+      <td data-ice="description"><p>this is ogapi instance</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">resource</td>
-      <td data-ice="type"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"><ul><li>nullable: false</li></ul></td>
+      <td data-ice="description"><p>this is the resource url where can be create/delete/update/read the entity</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">allowedDatastreams</td>
-      <td data-ice="type"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="type"><span>array</span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>nullable: false</li></ul></td>
+      <td data-ice="description"><p>Allowed datastreams to add into the new entity</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">definedSchemas</td>
-      <td data-ice="type"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="type"><span>array</span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>nullable: false</li></ul></td>
+      <td data-ice="description"><p>Jsonschema about all OpenGate specific types</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">jsonSchemaValidator</td>
-      <td data-ice="type"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="type"><span>Validator</span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>nullable: false</li></ul></td>
+      <td data-ice="description"><p>Json schema validator tool</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -591,18 +603,19 @@ This function deletes a entity of provision</p>
     
     
     
-    <span data-ice="name">withComplex</span><span data-ice="signature">(_id: <span>*</span>, idCommunicationModules: <span>*</span>, val: <span>*</span>): <span>*</span></span>
+    <span data-ice="name">withComplex</span><span data-ice="signature">(_id: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, idCommunicationModules: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, val: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/provision/entities/ComplexBuilder.js.html#lineNumber10">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/provision/entities/ComplexBuilder.js.html#lineNumber29">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Set a complex value to entity</p>
+</div>
 
   
 
@@ -616,21 +629,24 @@ This function deletes a entity of provision</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">_id</td>
-      <td data-ice="type"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"><ul><li>nullable: false</li></ul></td>
+      <td data-ice="description"><p>Datastream identifier</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">idCommunicationModules</td>
-      <td data-ice="type"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"><ul><li>nullable: false</li></ul></td>
+      <td data-ice="description"><p>Communications module identifier</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">val</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Value to set. It can be null then the datastream value will be removed</p>
+</td>
     </tr>
 </tbody>
   </table>

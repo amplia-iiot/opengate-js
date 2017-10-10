@@ -5,11 +5,21 @@ import q from 'q';
 
 const ERROR_VALUE_NOT_ALLOWED = 'The value is not allowed. The value should be formatted as follows: ';
 const ERROR_DATASTREAM_NOT_ALLOWED = 'Datastream is not allowed.';
-const ERROR_FUNCTION_NOT_ALLOWED = 'Function is not allowed.';
-const ERROR_ID_VALUE = 'Parameter id and value must be defined';
 const ERROR_ORGANIZATION = 'Parameters organization must be defined';
 
+
+/**
+ * This class allow set simple values.
+ */
 export default class SimpleBuilder extends BaseProvision {
+
+    /**
+     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
+     * @param {!string} resource - this is the resource url where can be create/delete/update/read the entity
+     * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new entity
+     * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types
+     * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool
+     */
     constructor(ogapi, resource, allowedDatastreams, definedSchemas, jsonSchemaValidator) {
         super(ogapi, "/organizations/" + resource + '?flattened=true');
         if (typeof this._getEntityKey !== "function") {
@@ -50,10 +60,19 @@ export default class SimpleBuilder extends BaseProvision {
         return this._entity;
     }
 
+    /**
+     * @return {string} - Entity identifier
+     */
     getEntityKey() {
         return (this._getEntityKey() !== null) ? this._getEntityKey()._value._current.value : null;
     }
 
+    /**
+     * Set new datastream value
+     * 
+     * @param {!string} _id - Datastream identifier
+     * @param {!objecr} val - Datastream value. If this value is null then datastream value will be removed.
+     */
     with(_id, val) {
         if (!val) {
             delete this._entity[_id];
@@ -73,6 +92,9 @@ export default class SimpleBuilder extends BaseProvision {
         return this;
     }
 
+    /**
+     * @return {array} - Allowed Datastream definition array
+     */
     getAllowedDatastreams() {
         return this._allowedDatastreams;
     }

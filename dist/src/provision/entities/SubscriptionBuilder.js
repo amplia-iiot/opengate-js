@@ -20,8 +20,20 @@ var _SimpleBuilder3 = _interopRequireDefault(_SimpleBuilder2);
 
 var ID = 'provision.device.communicationModules[].subscription.identifier';
 
+/**
+ * Subscription builder. This builder give you the necessary tools to create a subscription using our OpenGate REST.
+ */
+
 var SubscriptionBuilder = (function (_SimpleBuilder) {
     _inherits(SubscriptionBuilder, _SimpleBuilder);
+
+    /**
+     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
+     * @param {!string} organization - this is the organization name where subscription will be created
+     * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new subscription
+     * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types
+     * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool
+     */
 
     function SubscriptionBuilder(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator) {
         _classCallCheck(this, SubscriptionBuilder);

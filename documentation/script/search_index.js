@@ -300,6 +300,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/provision/entities/devicebuilder.js~devicebuilder",
+    "class/src/provision/entities/DeviceBuilder.js~DeviceBuilder.html",
+    "<span>DeviceBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/provision/entities/DeviceBuilder.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/entities/devicefinder.js~devicefinder",
     "class/src/entities/DeviceFinder.js~DeviceFinder.html",
     "<span>DeviceFinder</span> <span class=\"search-result-import-path\">opengate-js/src/entities/DeviceFinder.js</span>",
@@ -777,12 +783,6 @@ window.esdocSearchIndex = [
     "opengate-js/src/collection/devices/collect/subscriber.js~subscriber",
     "class/src/collection/devices/collect/Subscriber.js~Subscriber.html",
     "<span>Subscriber</span> <span class=\"search-result-import-path\">opengate-js/src/collection/devices/collect/Subscriber.js</span>",
-    "class"
-  ],
-  [
-    "opengate-js/src/provision/entities/devicebuilder.js~subscriberbuilder",
-    "class/src/provision/entities/DeviceBuilder.js~SubscriberBuilder.html",
-    "<span>SubscriberBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/provision/entities/DeviceBuilder.js</span>",
     "class"
   ],
   [
@@ -5904,9 +5904,9 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/provision/entities/devicebuilder.js~subscriberbuilder#constructor",
-    "class/src/provision/entities/DeviceBuilder.js~SubscriberBuilder.html#instance-constructor-constructor",
-    "src/provision/entities/DeviceBuilder.js~SubscriberBuilder#constructor",
+    "src/provision/entities/devicebuilder.js~devicebuilder#constructor",
+    "class/src/provision/entities/DeviceBuilder.js~DeviceBuilder.html#instance-constructor-constructor",
+    "src/provision/entities/DeviceBuilder.js~DeviceBuilder#constructor",
     "method"
   ],
   [
