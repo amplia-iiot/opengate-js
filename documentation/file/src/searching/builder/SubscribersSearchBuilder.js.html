@@ -215,9 +215,15 @@ export default class SubscribersSearchBuilder extends FlattenedSearchBuilder {
     _buildFilter() {
         let finalFilter = {
             &quot;and&quot;: [{
-                &quot;exists&quot;: {
-                    &quot;provision.device.communicationModules[].subscriber.identifier&quot;: true
-                }
+                &quot;or&quot;: [{
+                    &quot;exists&quot;: {
+                        &quot;provision.device.communicationModules[].subscriber.identifier&quot;: true
+                    }
+                }, {
+                    &quot;exists&quot;: {
+                        &quot;device.communicationModules[].subscriber.identifier&quot;: true
+                    }
+                }]
             }]
         };
 

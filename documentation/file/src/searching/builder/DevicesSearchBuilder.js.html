@@ -223,6 +223,30 @@ export default class DevicesSearchBuilder extends FlattenedSearchBuilder {
 
         return this;
     }
+
+    _buildFilter() {
+        let finalFilter = {
+            &quot;and&quot;: [{
+                &quot;exists&quot;: {
+                    &quot;provision.device.identifier&quot;: true
+                }
+            }]
+        };
+
+        if (this._builderParams.filter &amp;&amp; Object.keys(this._builderParams.filter).length &gt; 0) {
+            let filter = this._builderParams.filter;
+            if (typeof filter._filterTemplate !== &quot;undefined&quot;) {
+                //return filter._filterTemplate;
+                finalFilter[&quot;and&quot;].push(filter._filterTemplate.filter);
+            } else {
+                finalFilter[&quot;and&quot;].push(filter);
+            }
+        }
+
+        return {
+            filter: finalFilter
+        };
+    }
 }</code></pre>
 
 </div>
