@@ -230,25 +230,17 @@ var _domainsDomainsFinder = require('./domains/DomainsFinder');
 
 var _domainsDomainsFinder2 = _interopRequireDefault(_domainsDomainsFinder);
 
-var _devicesDeviceFinder = require('./devices/DeviceFinder');
+var _entitiesDeviceFinder = require('./entities/DeviceFinder');
 
-var _devicesDeviceFinder2 = _interopRequireDefault(_devicesDeviceFinder);
+var _entitiesDeviceFinder2 = _interopRequireDefault(_entitiesDeviceFinder);
 
-var _devicesRelations = require('./devices/Relations');
+var _entitiesSubscriptionsFinder = require('./entities/SubscriptionsFinder');
 
-var _devicesRelations2 = _interopRequireDefault(_devicesRelations);
+var _entitiesSubscriptionsFinder2 = _interopRequireDefault(_entitiesSubscriptionsFinder);
 
-var _devicesCommsModulesCommunicationsModuleFinder = require('./devices/commsModules/CommunicationsModuleFinder');
+var _entitiesSubscribersFinder = require('./entities/SubscribersFinder');
 
-var _devicesCommsModulesCommunicationsModuleFinder2 = _interopRequireDefault(_devicesCommsModulesCommunicationsModuleFinder);
-
-var _devicesCommsModulesSubscriptionsSubscriptionsFinder = require('./devices/commsModules/subscriptions/SubscriptionsFinder');
-
-var _devicesCommsModulesSubscriptionsSubscriptionsFinder2 = _interopRequireDefault(_devicesCommsModulesSubscriptionsSubscriptionsFinder);
-
-var _devicesCommsModulesSubscribersSubscribersFinder = require('./devices/commsModules/subscribers/SubscribersFinder');
-
-var _devicesCommsModulesSubscribersSubscribersFinder2 = _interopRequireDefault(_devicesCommsModulesSubscribersSubscribersFinder);
+var _entitiesSubscribersFinder2 = _interopRequireDefault(_entitiesSubscribersFinder);
 
 var _collectionDevicesDeviceMessage = require('./collection/devices/DeviceMessage');
 
@@ -342,9 +334,9 @@ var _iotCatalogQrating = require('./iot/catalog/Qrating');
 
 var _iotCatalogQrating2 = _interopRequireDefault(_iotCatalogQrating);
 
-var _devicesEntityBuilder = require('./devices/EntityBuilder');
+var _provisionEntitiesEntityBuilder = require('./provision/entities/EntityBuilder');
 
-var _devicesEntityBuilder2 = _interopRequireDefault(_devicesEntityBuilder);
+var _provisionEntitiesEntityBuilder2 = _interopRequireDefault(_provisionEntitiesEntityBuilder);
 
 /**
  * This is a abstract class, it must be extended to another class that defined the backend, it will be used on request to Opengate North API by browser or nodejs server
@@ -372,7 +364,7 @@ var InternalOpenGateAPI = (function () {
         this.Sapi = southAmpliaREST;
         this.EX = _utilExpression2['default'];
         this.operations = new _operationsOperations2['default'](this);
-        this.entityBuilder = new _devicesEntityBuilder2['default'](this);
+        this.entityBuilder = new _provisionEntitiesEntityBuilder2['default'](this);
     }
 
     /**
@@ -486,17 +478,7 @@ var InternalOpenGateAPI = (function () {
     }, {
         key: 'newDeviceFinder',
         value: function newDeviceFinder() {
-            return new _devicesDeviceFinder2['default'](this);
-        }
-
-        /**
-         * This return a util to find a Communications Module
-         * @return {CommunicationsModuleFinder}
-         */
-    }, {
-        key: 'newCommunicationsModuleFinder',
-        value: function newCommunicationsModuleFinder() {
-            return new _devicesCommsModulesCommunicationsModuleFinder2['default'](this);
+            return new _entitiesDeviceFinder2['default'](this);
         }
 
         /**
@@ -506,7 +488,7 @@ var InternalOpenGateAPI = (function () {
     }, {
         key: 'newSubscriptionsFinder',
         value: function newSubscriptionsFinder() {
-            return new _devicesCommsModulesSubscriptionsSubscriptionsFinder2['default'](this);
+            return new _entitiesSubscriptionsFinder2['default'](this);
         }
 
         /**
@@ -516,7 +498,7 @@ var InternalOpenGateAPI = (function () {
     }, {
         key: 'newSubscribersFinder',
         value: function newSubscribersFinder() {
-            return new _devicesCommsModulesSubscribersSubscribersFinder2['default'](this);
+            return new _entitiesSubscribersFinder2['default'](this);
         }
 
         /**
@@ -876,37 +858,7 @@ var InternalOpenGateAPI = (function () {
     }, {
         key: 'relationsBuilder',
         value: function relationsBuilder() {
-            return new _devicesRelations2['default'](this);
-        }
-
-        /**
-         * This return a CommunicationsModulesBuilder to build a specific CommunicationsModulesBuilder
-         * @return {CommunicationsModules}
-         */
-    }, {
-        key: 'communicationsModulesBuilder',
-        value: function communicationsModulesBuilder() {
-            return new CommunicationsModules(this);
-        }
-
-        /**
-         * This return a SubscriptionsBuilder to build a specific subscription
-         * @return {Subscriptions}
-         */
-    }, {
-        key: 'subscriptionsBuilder',
-        value: function subscriptionsBuilder() {
-            return new Subscriptions(this);
-        }
-
-        /**
-         * This return a SubscribersBuilder to build a specific subscriber
-         * @return {Subscribers}
-         */
-    }, {
-        key: 'subscribersBuilder',
-        value: function subscribersBuilder() {
-            return new Subscribers(this);
+            return new Relations(this);
         }
 
         /**

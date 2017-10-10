@@ -1,0 +1,944 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "Literal",
+        "value": "use strict",
+        "raw": "'use strict'",
+        "range": [
+          0,
+          12
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 12
+          }
+        }
+      },
+      "range": [
+        0,
+        13
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "ComplexBuilder",
+            "range": [
+              22,
+              36
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 7
+              },
+              "end": {
+                "line": 3,
+                "column": 21
+              }
+            }
+          },
+          "range": [
+            22,
+            36
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 7
+            },
+            "end": {
+              "line": 3,
+              "column": 21
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./ComplexBuilder",
+        "raw": "'./ComplexBuilder'",
+        "range": [
+          42,
+          60
+        ],
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 27
+          },
+          "end": {
+            "line": 3,
+            "column": 45
+          }
+        }
+      },
+      "range": [
+        15,
+        61
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 46
+        }
+      }
+    },
+    {
+      "type": "VariableDeclaration",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "ID",
+            "range": [
+              69,
+              71
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 6
+              },
+              "end": {
+                "line": 5,
+                "column": 8
+              }
+            }
+          },
+          "init": {
+            "type": "Literal",
+            "value": "provision.device.identifier",
+            "raw": "'provision.device.identifier'",
+            "range": [
+              74,
+              103
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 11
+              },
+              "end": {
+                "line": 5,
+                "column": 40
+              }
+            }
+          },
+          "range": [
+            69,
+            103
+          ],
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 6
+            },
+            "end": {
+              "line": 5,
+              "column": 40
+            }
+          }
+        }
+      ],
+      "kind": "const",
+      "range": [
+        63,
+        104
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 41
+        }
+      },
+      "trailingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * Device builder. This builder give you the necessary tools to create a device using our OpenGate REST.\n ",
+          "range": [
+            107,
+            219
+          ],
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 0
+            },
+            "end": {
+              "line": 10,
+              "column": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "declaration": {
+        "type": "ClassDeclaration",
+        "id": {
+          "type": "Identifier",
+          "name": "DeviceBuilder",
+          "range": [
+            241,
+            254
+          ],
+          "loc": {
+            "start": {
+              "line": 11,
+              "column": 21
+            },
+            "end": {
+              "line": 11,
+              "column": 34
+            }
+          }
+        },
+        "superClass": {
+          "type": "Identifier",
+          "name": "ComplexBuilder",
+          "range": [
+            263,
+            277
+          ],
+          "loc": {
+            "start": {
+              "line": 11,
+              "column": 43
+            },
+            "end": {
+              "line": 11,
+              "column": 57
+            }
+          }
+        },
+        "body": {
+          "type": "ClassBody",
+          "body": [
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "constructor",
+                "range": [
+                  725,
+                  736
+                ],
+                "loc": {
+                  "start": {
+                    "line": 20,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 20,
+                    "column": 15
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "name": "ogapi",
+                    "range": [
+                      737,
+                      742
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 20,
+                        "column": 16
+                      },
+                      "end": {
+                        "line": 20,
+                        "column": 21
+                      }
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "name": "organization",
+                    "range": [
+                      744,
+                      756
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 20,
+                        "column": 23
+                      },
+                      "end": {
+                        "line": 20,
+                        "column": 35
+                      }
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "name": "allowedDatastreams",
+                    "range": [
+                      758,
+                      776
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 20,
+                        "column": 37
+                      },
+                      "end": {
+                        "line": 20,
+                        "column": 55
+                      }
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "name": "definedSchemas",
+                    "range": [
+                      778,
+                      792
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 20,
+                        "column": 57
+                      },
+                      "end": {
+                        "line": 20,
+                        "column": 71
+                      }
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "name": "jsonSchemaValidator",
+                    "range": [
+                      794,
+                      813
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 20,
+                        "column": 73
+                      },
+                      "end": {
+                        "line": 20,
+                        "column": 92
+                      }
+                    }
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "CallExpression",
+                        "callee": {
+                          "type": "Super",
+                          "range": [
+                            825,
+                            830
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 21,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 21,
+                              "column": 13
+                            }
+                          }
+                        },
+                        "arguments": [
+                          {
+                            "type": "Identifier",
+                            "name": "ogapi",
+                            "range": [
+                              831,
+                              836
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 21,
+                                "column": 14
+                              },
+                              "end": {
+                                "line": 21,
+                                "column": 19
+                              }
+                            }
+                          },
+                          {
+                            "type": "BinaryExpression",
+                            "operator": "+",
+                            "left": {
+                              "type": "Identifier",
+                              "name": "organization",
+                              "range": [
+                                838,
+                                850
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 21,
+                                  "column": 21
+                                },
+                                "end": {
+                                  "line": 21,
+                                  "column": 33
+                                }
+                              }
+                            },
+                            "right": {
+                              "type": "Literal",
+                              "value": "/devices",
+                              "raw": "'/devices'",
+                              "range": [
+                                853,
+                                863
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 21,
+                                  "column": 36
+                                },
+                                "end": {
+                                  "line": 21,
+                                  "column": 46
+                                }
+                              }
+                            },
+                            "range": [
+                              838,
+                              863
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 21,
+                                "column": 21
+                              },
+                              "end": {
+                                "line": 21,
+                                "column": 46
+                              }
+                            }
+                          },
+                          {
+                            "type": "Identifier",
+                            "name": "allowedDatastreams",
+                            "range": [
+                              865,
+                              883
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 21,
+                                "column": 48
+                              },
+                              "end": {
+                                "line": 21,
+                                "column": 66
+                              }
+                            }
+                          },
+                          {
+                            "type": "Identifier",
+                            "name": "definedSchemas",
+                            "range": [
+                              885,
+                              899
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 21,
+                                "column": 68
+                              },
+                              "end": {
+                                "line": 21,
+                                "column": 82
+                              }
+                            }
+                          },
+                          {
+                            "type": "Identifier",
+                            "name": "jsonSchemaValidator",
+                            "range": [
+                              901,
+                              920
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 21,
+                                "column": 84
+                              },
+                              "end": {
+                                "line": 21,
+                                "column": 103
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          825,
+                          921
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 21,
+                            "column": 8
+                          },
+                          "end": {
+                            "line": 21,
+                            "column": 104
+                          }
+                        }
+                      },
+                      "range": [
+                        825,
+                        922
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 21,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 21,
+                          "column": 105
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    815,
+                    928
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 20,
+                      "column": 94
+                    },
+                    "end": {
+                      "line": 22,
+                      "column": 5
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  736,
+                  928
+                ],
+                "loc": {
+                  "start": {
+                    "line": 20,
+                    "column": 15
+                  },
+                  "end": {
+                    "line": 22,
+                    "column": 5
+                  }
+                }
+              },
+              "kind": "constructor",
+              "computed": false,
+              "range": [
+                725,
+                928
+              ],
+              "loc": {
+                "start": {
+                  "line": 20,
+                  "column": 4
+                },
+                "end": {
+                  "line": 22,
+                  "column": 5
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\n     * @param {!string} organization - this is the organization name where device will be created\n     * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new device\n     * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types\n     * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool\n     ",
+                  "range": [
+                    285,
+                    720
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 13,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "static": false
+            },
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "_getEntityKey",
+                "range": [
+                  934,
+                  947
+                ],
+                "loc": {
+                  "start": {
+                    "line": 24,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 24,
+                    "column": 17
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "MemberExpression",
+                        "computed": true,
+                        "object": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "ThisExpression",
+                            "range": [
+                              967,
+                              971
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 25,
+                                "column": 15
+                              },
+                              "end": {
+                                "line": 25,
+                                "column": 19
+                              }
+                            }
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "_entity",
+                            "range": [
+                              972,
+                              979
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 25,
+                                "column": 20
+                              },
+                              "end": {
+                                "line": 25,
+                                "column": 27
+                              }
+                            }
+                          },
+                          "range": [
+                            967,
+                            979
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 25,
+                              "column": 15
+                            },
+                            "end": {
+                              "line": 25,
+                              "column": 27
+                            }
+                          }
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "name": "ID",
+                          "range": [
+                            980,
+                            982
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 25,
+                              "column": 28
+                            },
+                            "end": {
+                              "line": 25,
+                              "column": 30
+                            }
+                          }
+                        },
+                        "range": [
+                          967,
+                          983
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 25,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 25,
+                            "column": 31
+                          }
+                        }
+                      },
+                      "range": [
+                        960,
+                        984
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 25,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 25,
+                          "column": 32
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    950,
+                    990
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 24,
+                      "column": 20
+                    },
+                    "end": {
+                      "line": 26,
+                      "column": 5
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  947,
+                  990
+                ],
+                "loc": {
+                  "start": {
+                    "line": 24,
+                    "column": 17
+                  },
+                  "end": {
+                    "line": 26,
+                    "column": 5
+                  }
+                }
+              },
+              "kind": "method",
+              "computed": false,
+              "range": [
+                934,
+                990
+              ],
+              "loc": {
+                "start": {
+                  "line": 24,
+                  "column": 4
+                },
+                "end": {
+                  "line": 26,
+                  "column": 5
+                }
+              },
+              "static": false
+            }
+          ],
+          "range": [
+            278,
+            992
+          ],
+          "loc": {
+            "start": {
+              "line": 11,
+              "column": 58
+            },
+            "end": {
+              "line": 27,
+              "column": 1
+            }
+          }
+        },
+        "range": [
+          235,
+          992
+        ],
+        "loc": {
+          "start": {
+            "line": 11,
+            "column": 15
+          },
+          "end": {
+            "line": 27,
+            "column": 1
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * Device builder. This builder give you the necessary tools to create a device using our OpenGate REST.\n ",
+            "range": [
+              107,
+              219
+            ],
+            "loc": {
+              "start": {
+                "line": 8,
+                "column": 0
+              },
+              "end": {
+                "line": 10,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": []
+      },
+      "range": [
+        220,
+        992
+      ],
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 0
+        },
+        "end": {
+          "line": 27,
+          "column": 1
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * Device builder. This builder give you the necessary tools to create a device using our OpenGate REST.\n ",
+          "range": [
+            107,
+            219
+          ],
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 0
+            },
+            "end": {
+              "line": 10,
+              "column": 3
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    992
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 27,
+      "column": 1
+    }
+  },
+  "comments": [
+    {
+      "type": "Block",
+      "value": "*\n * Device builder. This builder give you the necessary tools to create a device using our OpenGate REST.\n ",
+      "range": [
+        107,
+        219
+      ],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 0
+        },
+        "end": {
+          "line": 10,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\n     * @param {!string} organization - this is the organization name where device will be created\n     * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new device\n     * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types\n     * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool\n     ",
+      "range": [
+        285,
+        720
+      ],
+      "loc": {
+        "start": {
+          "line": 13,
+          "column": 4
+        },
+        "end": {
+          "line": 19,
+          "column": 7
+        }
+      }
+    }
+  ]
+}

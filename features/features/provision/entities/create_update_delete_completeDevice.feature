@@ -10,18 +10,18 @@ Feature: Delete and Create a device
 
   Background:
     Given an apikey user by "require-real-apikey"
-    Given the entity of type "devices builder" with "base_organization" 
+    Given the entity of type "devices builder" with "victor" 
 
  Scenario: I want to get the allowed datastream 
-    And I get allowed Datastreams fields
-    And response code should be: 200
+    And I get allowed Datastreams fields    
+    And I can found "provision.device.identifier" as datastream name
 
 
  Scenario: I want to create the entity 
      When I try to define the entity with... 
 		| datastream                                                        | typeFunction       |   value                 | parent      |
-		| provision.administration.channel                                  | simple             |  base_channel           |             |
-        | provision.administration.organization                             | simple             |  base_organization      |             |
+		| provision.administration.channel                                  | simple             |  default_channel           |             |
+        | provision.administration.organization                             | simple             |  victor      |             |
         | provision.administration.serviceGroup                             | simple             |  emptyServiceGroup      |             |
         | provision.device.identifier                                       | simple             |  device_ogapi           |             |
         | provision.device.operationalStatus                                | simple             |  NORMAL                 |             |   
@@ -36,8 +36,8 @@ Feature: Delete and Create a device
 Scenario: I want to update the entity 
      When I try to define the entity with... 
 		| datastream                                                        | typeFunction       |   value                 | parent      |
-		| provision.administration.channel                                  | simple             |  base_channel           |             |
-        | provision.administration.organization                             | simple             |  base_organization      |             |
+		| provision.administration.channel                                  | simple             |  default_channel           |             |
+        | provision.administration.organization                             | simple             |  victor      |             |
         | provision.administration.serviceGroup                             | simple             |  emptyServiceGroup      |             |
         | provision.device.identifier                                       | simple             |  device_ogapi           |             |
         | provision.device.communicationModules[].identifier                | complex            |  CM_id_1                | CM_id_1     |
