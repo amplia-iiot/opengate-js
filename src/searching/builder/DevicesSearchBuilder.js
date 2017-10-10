@@ -28,4 +28,28 @@ export default class DevicesSearchBuilder extends PreFilteredSearchBuilder {
 
         return this;
     }
+
+    _buildFilter() {
+        let finalFilter = {
+            "and": [{
+                "exists": {
+                    "provision.device.identifier": true
+                }
+            }]
+        };
+
+        if (this._builderParams.filter && Object.keys(this._builderParams.filter).length > 0) {
+            let filter = this._builderParams.filter;
+            if (typeof filter._filterTemplate !== "undefined") {
+                //return filter._filterTemplate;
+                finalFilter["and"].push(filter._filterTemplate.filter);
+            } else {
+                finalFilter["and"].push(filter);
+            }
+        }
+
+        return {
+            filter: finalFilter
+        };
+    }
 }
