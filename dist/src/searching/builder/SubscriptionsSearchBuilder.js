@@ -47,9 +47,15 @@ var SubscriptionsSearchBuilder = (function (_FlattenedSearchBuilder) {
         value: function _buildFilter() {
             var finalFilter = {
                 "and": [{
-                    "exists": {
-                        "provision.device.communicationModules[].subscription.identifier": true
-                    }
+                    "or": [{
+                        "exists": {
+                            "provision.device.communicationModules[].subscriptionr.identifier": true
+                        }
+                    }, {
+                        "exists": {
+                            "device.communicationModules[].subscriptionr.identifier": true
+                        }
+                    }]
                 }]
             };
 
