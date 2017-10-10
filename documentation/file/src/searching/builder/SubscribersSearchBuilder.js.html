@@ -226,7 +226,7 @@ export default class SubscribersSearchBuilder extends FlattenedSearchBuilder {
             let filter = this._builderParams.filter;
             if (typeof filter._filterTemplate !== &quot;undefined&quot;) {
                 //return filter._filterTemplate;
-                finalFilter[&quot;and&quot;].push(filter._filterTemplate);
+                finalFilter[&quot;and&quot;].push(filter._filterTemplate.filter);
             } else {
                 finalFilter[&quot;and&quot;].push(filter);
             }
