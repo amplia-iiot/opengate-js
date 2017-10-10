@@ -1,6 +1,6 @@
 'use strict';
 
-import FlattenedSearchBuilder from './FlattenedSearchBuilder'
+import PreFilteredSearchBuilder from './PreFilteredSearchBuilder'
 import FieldFinder from '../../util/searchingFields/FieldFinder'
 
 const BASE_URL = '/devices';
@@ -8,7 +8,7 @@ const BASE_URL = '/devices';
  * Defined a search over Subscriptions	
  * @example ogapi.subscriptionsSearchBuilder()
  */
-export default class SubscriptionsSearchBuilder extends FlattenedSearchBuilder {
+export default class SubscriptionsSearchBuilder extends PreFilteredSearchBuilder {
     /**
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */
@@ -20,17 +20,25 @@ export default class SubscriptionsSearchBuilder extends FlattenedSearchBuilder {
     _buildFilter() {
         let finalFilter = {
             "and": [{
-                "or": [{
-                    "exists": {
-                        "provision.device.communicationModules[].subscriptionr.identifier": true
-                    }
-                }, {
-                    "exists": {
-                        "device.communicationModules[].subscriptionr.identifier": true
-                    }
-                }]
+                "or": []
             }]
         };
+
+        if (this._provisioned || !this._collected) {
+            finalFilter.and[0].or.push({
+                "exists": {
+                    "provision.device.communicationModules[].subscription.identifier": true
+                }
+            });
+        }
+
+        if (this._collected || !this._provisioned) {
+            finalFilter.and[0].or.push({
+                "exists": {
+                    "device.communicationModules[].subscription.identifier": true
+                }
+            });
+        }
 
         if (this._builderParams.filter && Object.keys(this._builderParams.filter).length > 0) {
             let filter = this._builderParams.filter;
