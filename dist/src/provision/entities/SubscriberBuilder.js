@@ -18,8 +18,8 @@ var _SimpleBuilder2 = require('./SimpleBuilder');
 
 var _SimpleBuilder3 = _interopRequireDefault(_SimpleBuilder2);
 
-var ID = 'provision.device.communicationModules[].subscriber.identifier';
-
+var SubscriberID = 'provision.device.communicationModules[].subscriber.identifier';
+exports.SubscriberID = SubscriberID;
 /**
  * Subscriber builder. This builder give you the necessary tools to create a subscriber using our OpenGate REST.
  */
@@ -44,7 +44,7 @@ var SubscriberBuilder = (function (_SimpleBuilder) {
     _createClass(SubscriberBuilder, [{
         key: '_getEntityKey',
         value: function _getEntityKey() {
-            return this._entity[ID];
+            return this._entity[SubscriberID];
         }
     }]);
 
@@ -52,5 +52,4 @@ var SubscriberBuilder = (function (_SimpleBuilder) {
 })(_SimpleBuilder3['default']);
 
 exports['default'] = SubscriberBuilder;
-module.exports = exports['default'];
 //# sourceMappingURL=SubscriberBuilder.js.map

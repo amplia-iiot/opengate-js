@@ -9,7 +9,7 @@ Feature: Delete and Create a device
   So, I can create a new user with the parametres that I have been defined
 
   Background:
-    Given an apikey user by "require-real-apikey"
+    Given an apikey user by "dd05d181-7c5e-40a2-8348-6dd989af74c2"
     Given the entity of type "devices builder" with "victor" 
 
  Scenario: I want to get the allowed datastream 
@@ -23,12 +23,15 @@ Feature: Delete and Create a device
 		| provision.administration.channel                                  | simple             |  default_channel           |             |
         | provision.administration.organization                             | simple             |  victor      |             |
         | provision.administration.serviceGroup                             | simple             |  emptyServiceGroup      |             |
-        | provision.device.identifier                                       | simple             |  device_ogapi           |             |
+        | provision.device.identifier                                       | simple             |  device_ogapi_1           |             |
         | provision.device.operationalStatus                                | simple             |  NORMAL                 |             |   
         | provision.device.administrativeState                              | simple             |  ACTIVE                 |             |
-        | provision.device.communicationModules[].identifier                | complex            |  CM_id_1                | CM_id_1     |
-        | provision.device.communicationModules[].subscription.identifier   | complex            |  SB_id_1                | CM_id_1     |
-        | provision.device.communicationModules[].subscriber.identifier     | complex            |  SP_id_1                | CM_id_1     |
+        | provision.device.communicationModules[].identifier                | complex            |  CM_id_11                | CM_id_11     |
+        | provision.device.communicationModules[].subscription.identifier   | complex            |  SB_id_11                | CM_id_11     |
+        | provision.device.communicationModules[].subscriber.identifier     | complex            |  SP_id_11                | CM_id_11     |
+        | provision.device.communicationModules[].identifier                | complex            |  CM_id_21                | CM_id_21     |
+        | provision.device.communicationModules[].subscription.identifier   | complex            |  SB_id_21               | CM_id_21    |
+        | provision.device.communicationModules[].subscriber.identifier     | complex            |  SP_id_21                | CM_id_21     |
     Then I create it
     And response code should be: 201
 
@@ -39,10 +42,13 @@ Scenario: I want to update the entity
 		| provision.administration.channel                                  | simple             |  default_channel           |             |
         | provision.administration.organization                             | simple             |  victor      |             |
         | provision.administration.serviceGroup                             | simple             |  emptyServiceGroup      |             |
-        | provision.device.identifier                                       | simple             |  device_ogapi           |             |
-        | provision.device.communicationModules[].identifier                | complex            |  CM_id_1                | CM_id_1     |
-        | provision.device.communicationModules[].subscription.identifier   | complex            |  SB_id_1                | CM_id_1     |
-        | provision.device.communicationModules[].subscriber.identifier     | complex            |  SP_id_1                | CM_id_1     |
+        | provision.device.identifier                                       | simple             |  device_ogapi_1           |             |
+        | provision.device.communicationModules[].identifier                | complex            |  CM_id_11                | CM_id_11     |
+        | provision.device.communicationModules[].subscription.identifier   | complex            |  SB_id_11                | CM_id_11     |
+        | provision.device.communicationModules[].subscriber.identifier     | complex            |  SP_id_11                | CM_id_11     |
+        | provision.device.communicationModules[].identifier                | complex            |  CM_id_21                | CM_id_21     |
+        | provision.device.communicationModules[].subscription.identifier   | complex            |  SB_id_21                | CM_id_21     |
+        | provision.device.communicationModules[].subscriber.identifier     | complex            |  SP_id_21                | CM_id_21     |
         | provision.device.description                                      | simple             | device_ogapi description|             |
         | provision.device.name                                             | simple             | device_ogapi name       |             |
 
@@ -52,7 +58,7 @@ Scenario: I want to update the entity
  Scenario: I want to delete the entity 
     When I try to define the entity with... 
 		| datastream                                 | typeFunction       |   value                 | parent      |
-        | provision.device.identifier                | simple             |  device_ogapi           |             |
+        | provision.device.identifier                | simple             |  device_ogapi_1           |             |
     And I delete all
     Then response code should be: 200
      

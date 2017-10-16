@@ -118,6 +118,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SimpleBuilder.js~SimpleBuilder.html">SimpleBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SubscriberBuilder.js~SubscriberBuilder.html">SubscriberBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SubscriptionBuilder.js~SubscriptionBuilder.html">SubscriptionBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SubscriberID">SubscriberID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SubscriptionID">SubscriptionID</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">rulesConfiguration</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html">RuleConfigurations</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsActions.js~RuleConfigurationsActions.html">RuleConfigurationsActions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder.html">RuleConfigurationsFinder</a></span></span></li>
@@ -219,23 +221,20 @@ export default class ComplexBuilder extends SimpleBuilder {
      * Set a complex value to entity
      * @param {!string} _id - Datastream identifier
      * @param {!string} idCommunicationModules - Communications module identifier
-     * @param {object} val - Value to set. It can be null then the datastream value will be removed
+     * @param {object} val - Value to set.
      */
     withComplex(_id, idCommunicationModules, val) {
         if (!idCommunicationModules) {
             console.warn(&apos;Communication module identifier not defined. This value wil be ignored&apos;);
             return this;
         }
-
-        if (!val) {
-            delete this._entity[_id];
-            return this;
-        }
         if (this.getAllowedDatastreams().filter(function(ds) { return ds.identifier === _id; }).length !== 1) {
             console.warn(&apos;Datastream not found. This value will be ignored. Datastream Name: &apos; + _id);
             return this;
         }
-        this._entity[_id] = {
+        if (!this._entity[_id])
+            this._entity[_id] = [];
+        this._entity[_id].push({
             &apos;_index&apos;: {
                 &apos;value&apos;: idCommunicationModules
             },
@@ -244,7 +243,7 @@ export default class ComplexBuilder extends SimpleBuilder {
                     &apos;value&apos;: val
                 }
             }
-        };
+        });
         return this;
     }
 

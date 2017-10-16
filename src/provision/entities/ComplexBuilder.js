@@ -24,23 +24,20 @@ export default class ComplexBuilder extends SimpleBuilder {
      * Set a complex value to entity
      * @param {!string} _id - Datastream identifier
      * @param {!string} idCommunicationModules - Communications module identifier
-     * @param {object} val - Value to set. It can be null then the datastream value will be removed
+     * @param {object} val - Value to set.
      */
     withComplex(_id, idCommunicationModules, val) {
         if (!idCommunicationModules) {
             console.warn('Communication module identifier not defined. This value wil be ignored');
             return this;
         }
-
-        if (!val) {
-            delete this._entity[_id];
-            return this;
-        }
         if (this.getAllowedDatastreams().filter(function(ds) { return ds.identifier === _id; }).length !== 1) {
             console.warn('Datastream not found. This value will be ignored. Datastream Name: ' + _id);
             return this;
         }
-        this._entity[_id] = {
+        if (!this._entity[_id])
+            this._entity[_id] = [];
+        this._entity[_id].push({
             '_index': {
                 'value': idCommunicationModules
             },
@@ -49,7 +46,7 @@ export default class ComplexBuilder extends SimpleBuilder {
                     'value': val
                 }
             }
-        };
+        });
         return this;
     }
 

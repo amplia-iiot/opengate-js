@@ -111,67 +111,107 @@
       }
     },
     {
-      "type": "VariableDeclaration",
-      "declarations": [
-        {
-          "type": "VariableDeclarator",
-          "id": {
-            "type": "Identifier",
-            "name": "ID",
-            "range": [
-              67,
-              69
-            ],
-            "loc": {
-              "start": {
-                "line": 5,
-                "column": 6
-              },
-              "end": {
-                "line": 5,
-                "column": 8
+      "type": "ExportNamedDeclaration",
+      "declaration": {
+        "type": "VariableDeclaration",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
+              "type": "Identifier",
+              "name": "SubscriptionID",
+              "range": [
+                74,
+                88
+              ],
+              "loc": {
+                "start": {
+                  "line": 5,
+                  "column": 13
+                },
+                "end": {
+                  "line": 5,
+                  "column": 27
+                }
               }
-            }
-          },
-          "init": {
-            "type": "Literal",
-            "value": "provision.device.communicationModules[].subscription.identifier",
-            "raw": "'provision.device.communicationModules[].subscription.identifier'",
-            "range": [
-              72,
-              137
-            ],
-            "loc": {
-              "start": {
-                "line": 5,
-                "column": 11
-              },
-              "end": {
-                "line": 5,
-                "column": 76
-              }
-            }
-          },
-          "range": [
-            67,
-            137
-          ],
-          "loc": {
-            "start": {
-              "line": 5,
-              "column": 6
             },
-            "end": {
-              "line": 5,
-              "column": 76
+            "init": {
+              "type": "Literal",
+              "value": "provision.device.communicationModules[].subscription.identifier",
+              "raw": "'provision.device.communicationModules[].subscription.identifier'",
+              "range": [
+                91,
+                156
+              ],
+              "loc": {
+                "start": {
+                  "line": 5,
+                  "column": 30
+                },
+                "end": {
+                  "line": 5,
+                  "column": 95
+                }
+              }
+            },
+            "range": [
+              74,
+              156
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 13
+              },
+              "end": {
+                "line": 5,
+                "column": 95
+              }
             }
           }
-        }
-      ],
-      "kind": "const",
+        ],
+        "kind": "const",
+        "range": [
+          68,
+          157
+        ],
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 7
+          },
+          "end": {
+            "line": 5,
+            "column": 96
+          }
+        },
+        "leadingComments": [],
+        "trailingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * Subscription builder. This builder give you the necessary tools to create a subscription using our OpenGate REST.\n ",
+            "range": [
+              159,
+              283
+            ],
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 0
+              },
+              "end": {
+                "line": 9,
+                "column": 3
+              }
+            }
+          }
+        ]
+      },
+      "specifiers": [],
+      "source": null,
       "range": [
         61,
-        138
+        157
       ],
       "loc": {
         "start": {
@@ -180,7 +220,7 @@
         },
         "end": {
           "line": 5,
-          "column": 77
+          "column": 96
         }
       },
       "trailingComments": [
@@ -188,8 +228,8 @@
           "type": "Block",
           "value": "*\n * Subscription builder. This builder give you the necessary tools to create a subscription using our OpenGate REST.\n ",
           "range": [
-            140,
-            264
+            159,
+            283
           ],
           "loc": {
             "start": {
@@ -212,8 +252,8 @@
           "type": "Identifier",
           "name": "SubscriptionBuilder",
           "range": [
-            286,
-            305
+            305,
+            324
           ],
           "loc": {
             "start": {
@@ -230,8 +270,8 @@
           "type": "Identifier",
           "name": "SimpleBuilder",
           "range": [
-            314,
-            327
+            333,
+            346
           ],
           "loc": {
             "start": {
@@ -253,8 +293,8 @@
                 "type": "Identifier",
                 "name": "constructor",
                 "range": [
-                  787,
-                  798
+                  806,
+                  817
                 ],
                 "loc": {
                   "start": {
@@ -275,8 +315,8 @@
                     "type": "Identifier",
                     "name": "ogapi",
                     "range": [
-                      799,
-                      804
+                      818,
+                      823
                     ],
                     "loc": {
                       "start": {
@@ -293,8 +333,8 @@
                     "type": "Identifier",
                     "name": "organization",
                     "range": [
-                      806,
-                      818
+                      825,
+                      837
                     ],
                     "loc": {
                       "start": {
@@ -311,8 +351,8 @@
                     "type": "Identifier",
                     "name": "allowedDatastreams",
                     "range": [
-                      820,
-                      838
+                      839,
+                      857
                     ],
                     "loc": {
                       "start": {
@@ -329,8 +369,8 @@
                     "type": "Identifier",
                     "name": "definedSchemas",
                     "range": [
-                      840,
-                      854
+                      859,
+                      873
                     ],
                     "loc": {
                       "start": {
@@ -347,8 +387,8 @@
                     "type": "Identifier",
                     "name": "jsonSchemaValidator",
                     "range": [
-                      856,
-                      875
+                      875,
+                      894
                     ],
                     "loc": {
                       "start": {
@@ -372,8 +412,8 @@
                         "callee": {
                           "type": "Super",
                           "range": [
-                            887,
-                            892
+                            906,
+                            911
                           ],
                           "loc": {
                             "start": {
@@ -391,8 +431,8 @@
                             "type": "Identifier",
                             "name": "ogapi",
                             "range": [
-                              893,
-                              898
+                              912,
+                              917
                             ],
                             "loc": {
                               "start": {
@@ -412,8 +452,8 @@
                               "type": "Identifier",
                               "name": "organization",
                               "range": [
-                                900,
-                                912
+                                919,
+                                931
                               ],
                               "loc": {
                                 "start": {
@@ -431,8 +471,8 @@
                               "value": "/subscriptions",
                               "raw": "'/subscriptions'",
                               "range": [
-                                915,
-                                931
+                                934,
+                                950
                               ],
                               "loc": {
                                 "start": {
@@ -446,8 +486,8 @@
                               }
                             },
                             "range": [
-                              900,
-                              931
+                              919,
+                              950
                             ],
                             "loc": {
                               "start": {
@@ -464,8 +504,8 @@
                             "type": "Identifier",
                             "name": "allowedDatastreams",
                             "range": [
-                              933,
-                              951
+                              952,
+                              970
                             ],
                             "loc": {
                               "start": {
@@ -482,8 +522,8 @@
                             "type": "Identifier",
                             "name": "definedSchemas",
                             "range": [
-                              953,
-                              967
+                              972,
+                              986
                             ],
                             "loc": {
                               "start": {
@@ -500,8 +540,8 @@
                             "type": "Identifier",
                             "name": "jsonSchemaValidator",
                             "range": [
-                              969,
-                              988
+                              988,
+                              1007
                             ],
                             "loc": {
                               "start": {
@@ -516,8 +556,8 @@
                           }
                         ],
                         "range": [
-                          887,
-                          989
+                          906,
+                          1008
                         ],
                         "loc": {
                           "start": {
@@ -531,8 +571,8 @@
                         }
                       },
                       "range": [
-                        887,
-                        990
+                        906,
+                        1009
                       ],
                       "loc": {
                         "start": {
@@ -547,8 +587,8 @@
                     }
                   ],
                   "range": [
-                    877,
-                    996
+                    896,
+                    1015
                   ],
                   "loc": {
                     "start": {
@@ -564,8 +604,8 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  798,
-                  996
+                  817,
+                  1015
                 ],
                 "loc": {
                   "start": {
@@ -581,8 +621,8 @@
               "kind": "constructor",
               "computed": false,
               "range": [
-                787,
-                996
+                806,
+                1015
               ],
               "loc": {
                 "start": {
@@ -599,8 +639,8 @@
                   "type": "Block",
                   "value": "*\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\n     * @param {!string} organization - this is the organization name where subscription will be created\n     * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new subscription\n     * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types\n     * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool\n     ",
                   "range": [
-                    335,
-                    782
+                    354,
+                    801
                   ],
                   "loc": {
                     "start": {
@@ -622,8 +662,8 @@
                 "type": "Identifier",
                 "name": "_getEntityKey",
                 "range": [
-                  1002,
-                  1015
+                  1021,
+                  1034
                 ],
                 "loc": {
                   "start": {
@@ -654,8 +694,8 @@
                           "object": {
                             "type": "ThisExpression",
                             "range": [
-                              1035,
-                              1039
+                              1054,
+                              1058
                             ],
                             "loc": {
                               "start": {
@@ -672,8 +712,8 @@
                             "type": "Identifier",
                             "name": "_entity",
                             "range": [
-                              1040,
-                              1047
+                              1059,
+                              1066
                             ],
                             "loc": {
                               "start": {
@@ -687,8 +727,8 @@
                             }
                           },
                           "range": [
-                            1035,
-                            1047
+                            1054,
+                            1066
                           ],
                           "loc": {
                             "start": {
@@ -703,10 +743,10 @@
                         },
                         "property": {
                           "type": "Identifier",
-                          "name": "ID",
+                          "name": "SubscriptionID",
                           "range": [
-                            1048,
-                            1050
+                            1067,
+                            1081
                           ],
                           "loc": {
                             "start": {
@@ -715,13 +755,13 @@
                             },
                             "end": {
                               "line": 24,
-                              "column": 30
+                              "column": 42
                             }
                           }
                         },
                         "range": [
-                          1035,
-                          1051
+                          1054,
+                          1082
                         ],
                         "loc": {
                           "start": {
@@ -730,13 +770,13 @@
                           },
                           "end": {
                             "line": 24,
-                            "column": 31
+                            "column": 43
                           }
                         }
                       },
                       "range": [
-                        1028,
-                        1052
+                        1047,
+                        1083
                       ],
                       "loc": {
                         "start": {
@@ -745,14 +785,14 @@
                         },
                         "end": {
                           "line": 24,
-                          "column": 32
+                          "column": 44
                         }
                       }
                     }
                   ],
                   "range": [
-                    1018,
-                    1058
+                    1037,
+                    1089
                   ],
                   "loc": {
                     "start": {
@@ -768,8 +808,8 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  1015,
-                  1058
+                  1034,
+                  1089
                 ],
                 "loc": {
                   "start": {
@@ -785,8 +825,8 @@
               "kind": "method",
               "computed": false,
               "range": [
-                1002,
-                1058
+                1021,
+                1089
               ],
               "loc": {
                 "start": {
@@ -802,8 +842,8 @@
             }
           ],
           "range": [
-            328,
-            1060
+            347,
+            1091
           ],
           "loc": {
             "start": {
@@ -817,8 +857,8 @@
           }
         },
         "range": [
-          280,
-          1060
+          299,
+          1091
         ],
         "loc": {
           "start": {
@@ -835,8 +875,8 @@
             "type": "Block",
             "value": "*\n * Subscription builder. This builder give you the necessary tools to create a subscription using our OpenGate REST.\n ",
             "range": [
-              140,
-              264
+              159,
+              283
             ],
             "loc": {
               "start": {
@@ -853,8 +893,8 @@
         "trailingComments": []
       },
       "range": [
-        265,
-        1060
+        284,
+        1091
       ],
       "loc": {
         "start": {
@@ -871,8 +911,8 @@
           "type": "Block",
           "value": "*\n * Subscription builder. This builder give you the necessary tools to create a subscription using our OpenGate REST.\n ",
           "range": [
-            140,
-            264
+            159,
+            283
           ],
           "loc": {
             "start": {
@@ -891,7 +931,7 @@
   "sourceType": "module",
   "range": [
     0,
-    1060
+    1091
   ],
   "loc": {
     "start": {
@@ -908,8 +948,8 @@
       "type": "Block",
       "value": "*\n * Subscription builder. This builder give you the necessary tools to create a subscription using our OpenGate REST.\n ",
       "range": [
-        140,
-        264
+        159,
+        283
       ],
       "loc": {
         "start": {
@@ -926,8 +966,8 @@
       "type": "Block",
       "value": "*\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\n     * @param {!string} organization - this is the organization name where subscription will be created\n     * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new subscription\n     * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types\n     * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool\n     ",
       "range": [
-        335,
-        782
+        354,
+        801
       ],
       "loc": {
         "start": {
