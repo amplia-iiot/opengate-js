@@ -68,6 +68,11 @@ class BoxBuilder {
         });
     }
 
+    _urlWithKey() {
+        let splitted = this._url.split('?');
+        return splitted[0] + '/' + this._key._value._current.value + '?' + splitted[1];
+    }
+
     create() {
         let defer = q.defer();
         let postObj = {};
@@ -82,42 +87,53 @@ class BoxBuilder {
         });
 
         this._wrappers.forEach((wrapper) => {
-            childEntityPromises.push({ wrapper: wrapper, promise: wrapper.execute(defer) });
+            childEntityPromises.push({ wrapper: wrapper, promise: wrapper.execute(defer, 10) });
         });
 
         q.allSettled(
-            childEntityPromises.reduce(function(last, current) {
-                if (last.constructor !== Array) {
-                    return [last.promise, current.promise];
-                }
-                last.push(current.promise);
-                return last;
-            })).then(() => {
-            defer.notify('All related entities created.')
-            defer.notify('Creating new device:' + _this._key._value._current.value);
+            childEntityPromises.reduce(function(previousValue, current) {
+                previousValue.push(current.promise);
+                return previousValue;
+            }, [])).then(() => {
+            defer.notify({ message: 'All related entities have been created.', type: 'success', percentage: 20 });
+            defer.notify({ message: 'Creating new device:' + _this._key._value._current.value, type: 'success', percentage: 25 });
             return _this._ogapi.Napi.post(_this._url, postObj)
                 .then((res) => {
-                    defer.notify('Created device:' + _this._key._value._current.value);
-                    defer.notify('Adding related entities');
-                    let splitted = _this._url.split('?');
-                    return _this._ogapi.Napi.put(splitted[0] + '/' + _this._key._value._current.value + '?' + splitted[1], putObj)
-                        .then((res) => {
-                            if (res.statusCode === 201) {
-                                console.log("CREATEOK: " + JSON.stringify(res));
-                                if (typeof _this._onCreated === "function") {
-                                    _this._onCreated(res.header['location']);
+                    defer.notify({ message: 'Created device:' + _this._key._value._current.value, type: 'success', percentage: 50 });
+                    if (_this._wrappers.length > 0) {
+                        defer.notify({ message: 'Adding related entities', type: 'success', percentage: 55 });
+                        return _this._ogapi.Napi.put(_this._urlWithKey(), putObj)
+                            .then((res) => {
+                                if (res.statusCode === 201) {
+                                    console.log("CREATEOK: " + JSON.stringify(res));
+                                    if (typeof _this._onCreated === "function") {
+                                        _this._onCreated(res.header['location']);
+                                    }
+                                    defer.notify({ message: 'Device created successfully: ' + _this._key._value._current.value, type: 'success', percentage: 75 });
+                                    defer.resolve({ location: res.header['location'], statusCode: res.statusCode });
+                                } else {
+                                    defer.reject({ errors: res.errors, statusCode: res.statusCode });
                                 }
-                                defer.notify('Device created successfully: ' + _this._key._value._current.value);
-                                defer.resolve({ location: res.header['location'], statusCode: res.statusCode });
-                            } else {
-                                defer.reject({ errors: res.errors, statusCode: res.statusCode });
+                            });
+                    } else {
+                        if (res.statusCode === 201) {
+                            console.log("CREATEOK: " + JSON.stringify(res));
+                            if (typeof _this._onCreated === "function") {
+                                _this._onCreated(res.header['location']);
                             }
-                        });
+                            defer.notify({ message: 'Device created successfully: ' + _this._key._value._current.value, type: 'success', percentage: 75 });
+                            defer.resolve({ location: res.header['location'], statusCode: res.statusCode });
+                        } else {
+                            defer.reject({ errors: res.errors, statusCode: res.statusCode });
+                        }
+                    }
+
                 });
         }).catch((err) => {
-            let deletePromises = [];
+            defer.notify({ message: 'Error: ' + err, type: 'error', percentage: 80 });
+            let deletePromises = [_this.delete(defer, 90)];
             childEntityPromises.forEach((item) => {
-                deletePromises.push(item.wrapper.delete(defer));
+                deletePromises.push(item.wrapper.delete(defer, 90));
             });
             q.allSettled(deletePromises).then(() => {
                 defer.reject(err);
@@ -134,19 +150,16 @@ class BoxBuilder {
         let _this = this;
 
         this._wrappers.forEach((wrapper) => {
-            childEntityPromises.push({ wrapper: wrapper, promise: wrapper.execute(defer) });
+            childEntityPromises.push({ wrapper: wrapper, promise: wrapper.execute(defer, 20) });
         });
 
         q.allSettled(
-            childEntityPromises.reduce(function(last, current) {
-                if (last.constructor !== Array) {
-                    return [last.promise, current.promise];
-                }
-                last.push(current.promise);
-                return last;
-            })).then(() => {
-            defer.notify('All related entities created.')
-            defer.notify('Adding related entities to device:' + _this._key._value._current.value);
+            childEntityPromises.reduce(function(previousValue, current) {
+                previousValue.push(current.promise);
+                return previousValue;
+            }, [])).then(() => {
+            defer.notify({ message: 'All related entities have been created.', type: 'success', percentage: 40 });
+            defer.notify({ message: 'Adding related entities to device:' + _this._key._value._current.value, type: 'success', percentage: 45 });
             return _this._ogapi.Napi.put(_this._url, putObj)
                 .then((res) => {
                     if (res.statusCode === 201) {
@@ -154,7 +167,7 @@ class BoxBuilder {
                         if (typeof _this._onCreated === "function") {
                             _this._onCreated(res.header['location']);
                         }
-                        defer.notify('Device updated successfully: ' + _this._key._value._current.value);
+                        defer.notify({ message: 'Device updated successfully: ' + _this._key._value._current.value, type: 'success', percentage: 90 });
                         defer.resolve({ location: res.header['location'], statusCode: res.statusCode });
                     } else {
                         defer.reject({ errors: res.errors, statusCode: res.statusCode });
@@ -166,6 +179,14 @@ class BoxBuilder {
             defer.reject(err);
         });
         return defer.promise;
+    }
+
+    delete(defered, percentage) {
+        let _this = this;
+        return this._ogapi.Napi.delete(this._urlWithKey())
+            .then((res) => {
+                defered.notify({ message: 'Entity deleted:' + _this._key, type: 'warning', percentage: percentage });
+            });
     }
 }
 
@@ -192,41 +213,42 @@ class WrapperBuilder {
     }
 
 
-    execute(defered) {
+    execute(defered, percentage) {
         let defer = q.defer();
         let _this = this;
         this._checkExists().then((exists) => {
             if (!exists) {
-                create(defered, defer);
+                create(defered, defer, percentage);
             } else {
                 defer.resolve('Entity was already created:' + _this._key)
             }
         }).catch((exists) => {
             if (!exists) {
-                create(defered, defer);
+                create(defered, defer, percentage);
             } else {
                 defer.resolve('Entity was already created:' + _this._key)
             }
         });
         return defer.promise;
 
-        function create(defered, defer) {
+        function create(defered, defer, percentage) {
             _this._ogapi.Napi.post(_this._url, _this._obj)
                 .then((res) => {
-                    defered.notify('Entity created:' + _this._key);
+                    defered.notify({ message: 'Entity created:' + _this._key, type: 'success', percentage: percentage });
                     defer.resolve('Entity created:' + _this._key);
                 }).catch((err) => {
                     console.error(err);
-                    defered.notify('Error creating entity:' + _this._key);
+                    defered.notify({ message: 'Error creating entity:' + _this._key, type: 'warning', percentage: percentage });
                     defer.reject('Error creating entity:' + _this._key);
                 });
         }
     }
 
-    delete(defered) {
+    delete(defered, percentage) {
+        let _this = this;
         return this._ogapi.Napi.delete(this._urlWithKey())
             .then((res) => {
-                defered.notify('Entity deleted:' + this._key);
+                defered.notify({ message: 'Entity deleted:' + _this._key, type: 'warning', percentage: percentage });
             });
     }
 
