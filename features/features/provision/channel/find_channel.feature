@@ -3,6 +3,7 @@
 @finder
 @find_provision
 @channel
+@find_channel
 Feature: Find an channel 
   As a user of JsApi
   I want to find an channel

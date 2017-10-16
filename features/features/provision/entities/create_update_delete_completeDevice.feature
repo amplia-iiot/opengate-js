@@ -10,7 +10,20 @@ Feature: Delete and Create a device
 
   Background:
     Given an apikey user by "require-real-apikey"
-    Given the entity of type "devices builder" with "victor" 
+   
+
+ Scenario: Creating an organization to use in create device
+    Given an ogapi "organizations builder" util
+    Then I want to create an "organization"
+    And the "name" "device_organization"
+    And the "description" "device organization"
+    And the "country code" "ES"
+    And the "lang code" "es"
+    And the "time zone" "Europe/Andorra"
+    And the "zoom" 10
+    And the "location" with 1 and 1 
+    Then I create it
+    And response code should be: 201
 
  Scenario: I want to get the allowed datastream 
     And I get allowed Datastreams fields    
@@ -18,10 +31,11 @@ Feature: Delete and Create a device
 
 
  Scenario: I want to create the entity 
-     When I try to define the entity with... 
+    Given the entity of type "devices builder" with "device_organization" 
+    When I try to define the entity with... 
 		| datastream                                                        | typeFunction       |   value                 | parent      |
-		| provision.administration.channel                                  | simple             |  default_channel           |             |
-        | provision.administration.organization                             | simple             |  victor      |             |
+		| provision.administration.channel                                  | simple             |  default_channel        |             |
+        | provision.administration.organization                             | simple             |  device_organization    |          |
         | provision.administration.serviceGroup                             | simple             |  emptyServiceGroup      |             |
         | provision.device.identifier                                       | simple             |  device_ogapi           |             |
         | provision.device.operationalStatus                                | simple             |  NORMAL                 |             |   
@@ -36,8 +50,8 @@ Feature: Delete and Create a device
 Scenario: I want to update the entity 
      When I try to define the entity with... 
 		| datastream                                                        | typeFunction       |   value                 | parent      |
-		| provision.administration.channel                                  | simple             |  default_channel           |             |
-        | provision.administration.organization                             | simple             |  victor      |             |
+		| provision.administration.channel                                  | simple             |  default_channel        |             |
+        | provision.administration.organization                             | simple             |  device_organization    |             |
         | provision.administration.serviceGroup                             | simple             |  emptyServiceGroup      |             |
         | provision.device.identifier                                       | simple             |  device_ogapi           |             |
         | provision.device.communicationModules[].identifier                | complex            |  CM_id_1                | CM_id_1     |
@@ -56,4 +70,9 @@ Scenario: I want to update the entity
     And I delete all
     Then response code should be: 200
      
- 
+ Scenario: Deleting an organization
+    Given an ogapi "organizations builder" util
+    Then I want to delete an "organization"
+    And the "name" "device_organization"
+    Then I delete it
+    And response code should be: 200

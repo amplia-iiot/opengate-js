@@ -121,7 +121,7 @@ export default class Areas extends BaseProvision {
     }
 
     _composeElement() {
-        this._resource = this._resource + this._organization + '/areas';
+        this._resource = 'provision/organizations/' + this._organization + '/areas/';
         let area = {
             identifier: this._identifier,
             name: this._name,
