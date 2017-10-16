@@ -1,5 +1,5 @@
 # features/find_workgroup.feature
-
+@provision
 @finder
 @find_provision
 @workgroup
