@@ -1,5 +1,5 @@
 # features/find_user.feature
-
+@provision
 @finder
 @find_provision
 @user

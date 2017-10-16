@@ -1,4 +1,5 @@
 # features/delete_organization.feature
+@provision
 @delete_provision
 @organization
 Feature: Delete an organization 

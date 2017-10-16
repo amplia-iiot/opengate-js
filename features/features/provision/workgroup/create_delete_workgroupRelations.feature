@@ -1,7 +1,8 @@
 # features/create_delete_workgroupRelations.feature
-
+@provision
 @create_provision
 @workgroupRelations
+@workgroup
 Feature: Delete and Create a workgroupRelations
   As a user of JsApi
   I want to create a workgroupRelations
