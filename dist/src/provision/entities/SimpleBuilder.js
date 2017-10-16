@@ -70,9 +70,18 @@ var SimpleBuilder = (function (_BaseProvision) {
                     throw new Error(ERROR_DATASTREAM_NOT_ALLOWED);
                 }
                 var jSchema = _this._definedSchemas[_id].value;
-                var value = _this._entity[_id]._value._current.value;
-                if (!_this._jsonSchemaValidator.validate(value, jSchema).valid) {
-                    errors.push(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
+                if (_this._entity[_id].constructor === Array) {
+                    _this._entity[_id].forEach(function (item) {
+                        var value = item._value._current.value;
+                        if (!_this._jsonSchemaValidator.validate(value, jSchema).valid) {
+                            errors.push(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
+                        }
+                    });
+                } else {
+                    var value = _this._entity[_id]._value._current.value;
+                    if (!_this._jsonSchemaValidator.validate(value, jSchema).valid) {
+                        errors.push(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
+                    }
                 }
             });
 

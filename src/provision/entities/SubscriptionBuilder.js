@@ -2,7 +2,7 @@
 
 import SimpleBuilder from './SimpleBuilder';
 
-const ID = 'provision.device.communicationModules[].subscription.identifier';
+export const SubscriptionID = 'provision.device.communicationModules[].subscription.identifier';
 
 /**
  * Subscription builder. This builder give you the necessary tools to create a subscription using our OpenGate REST.
@@ -21,6 +21,6 @@ export default class SubscriptionBuilder extends SimpleBuilder {
     }
 
     _getEntityKey() {
-        return this._entity[ID];
+        return this._entity[SubscriptionID];
     }
 }

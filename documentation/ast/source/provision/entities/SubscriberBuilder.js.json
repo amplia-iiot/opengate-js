@@ -46,8 +46,8 @@
             "type": "Identifier",
             "name": "SimpleBuilder",
             "range": [
-              24,
-              37
+              22,
+              35
             ],
             "loc": {
               "start": {
@@ -61,8 +61,8 @@
             }
           },
           "range": [
-            24,
-            37
+            22,
+            35
           ],
           "loc": {
             "start": {
@@ -81,8 +81,8 @@
         "value": "./SimpleBuilder",
         "raw": "'./SimpleBuilder'",
         "range": [
-          43,
-          60
+          41,
+          58
         ],
         "loc": {
           "start": {
@@ -96,8 +96,8 @@
         }
       },
       "range": [
-        17,
-        61
+        15,
+        59
       ],
       "loc": {
         "start": {
@@ -111,67 +111,107 @@
       }
     },
     {
-      "type": "VariableDeclaration",
-      "declarations": [
-        {
-          "type": "VariableDeclarator",
-          "id": {
-            "type": "Identifier",
-            "name": "ID",
-            "range": [
-              71,
-              73
-            ],
-            "loc": {
-              "start": {
-                "line": 5,
-                "column": 6
-              },
-              "end": {
-                "line": 5,
-                "column": 8
+      "type": "ExportNamedDeclaration",
+      "declaration": {
+        "type": "VariableDeclaration",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
+              "type": "Identifier",
+              "name": "SubscriberID",
+              "range": [
+                74,
+                86
+              ],
+              "loc": {
+                "start": {
+                  "line": 5,
+                  "column": 13
+                },
+                "end": {
+                  "line": 5,
+                  "column": 25
+                }
               }
-            }
-          },
-          "init": {
-            "type": "Literal",
-            "value": "provision.device.communicationModules[].subscriber.identifier",
-            "raw": "'provision.device.communicationModules[].subscriber.identifier'",
-            "range": [
-              76,
-              139
-            ],
-            "loc": {
-              "start": {
-                "line": 5,
-                "column": 11
-              },
-              "end": {
-                "line": 5,
-                "column": 74
-              }
-            }
-          },
-          "range": [
-            71,
-            139
-          ],
-          "loc": {
-            "start": {
-              "line": 5,
-              "column": 6
             },
-            "end": {
-              "line": 5,
-              "column": 74
+            "init": {
+              "type": "Literal",
+              "value": "provision.device.communicationModules[].subscriber.identifier",
+              "raw": "'provision.device.communicationModules[].subscriber.identifier'",
+              "range": [
+                89,
+                152
+              ],
+              "loc": {
+                "start": {
+                  "line": 5,
+                  "column": 28
+                },
+                "end": {
+                  "line": 5,
+                  "column": 91
+                }
+              }
+            },
+            "range": [
+              74,
+              152
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 13
+              },
+              "end": {
+                "line": 5,
+                "column": 91
+              }
             }
           }
-        }
-      ],
-      "kind": "const",
+        ],
+        "kind": "const",
+        "range": [
+          68,
+          153
+        ],
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 7
+          },
+          "end": {
+            "line": 5,
+            "column": 92
+          }
+        },
+        "leadingComments": [],
+        "trailingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * Subscriber builder. This builder give you the necessary tools to create a subscriber using our OpenGate REST.\n ",
+            "range": [
+              154,
+              274
+            ],
+            "loc": {
+              "start": {
+                "line": 6,
+                "column": 0
+              },
+              "end": {
+                "line": 8,
+                "column": 3
+              }
+            }
+          }
+        ]
+      },
+      "specifiers": [],
+      "source": null,
       "range": [
-        65,
-        140
+        61,
+        153
       ],
       "loc": {
         "start": {
@@ -180,24 +220,24 @@
         },
         "end": {
           "line": 5,
-          "column": 75
+          "column": 92
         }
       },
       "trailingComments": [
         {
           "type": "Block",
-          "value": "*\r\n * Subscriber builder. This builder give you the necessary tools to create a subscriber using our OpenGate REST.\r\n ",
+          "value": "*\n * Subscriber builder. This builder give you the necessary tools to create a subscriber using our OpenGate REST.\n ",
           "range": [
-            146,
-            268
+            154,
+            274
           ],
           "loc": {
             "start": {
-              "line": 8,
+              "line": 6,
               "column": 0
             },
             "end": {
-              "line": 10,
+              "line": 8,
               "column": 3
             }
           }
@@ -212,16 +252,16 @@
           "type": "Identifier",
           "name": "SubscriberBuilder",
           "range": [
-            291,
-            308
+            296,
+            313
           ],
           "loc": {
             "start": {
-              "line": 11,
+              "line": 9,
               "column": 21
             },
             "end": {
-              "line": 11,
+              "line": 9,
               "column": 38
             }
           }
@@ -230,16 +270,16 @@
           "type": "Identifier",
           "name": "SimpleBuilder",
           "range": [
-            317,
-            330
+            322,
+            335
           ],
           "loc": {
             "start": {
-              "line": 11,
+              "line": 9,
               "column": 47
             },
             "end": {
-              "line": 11,
+              "line": 9,
               "column": 60
             }
           }
@@ -253,16 +293,16 @@
                 "type": "Identifier",
                 "name": "constructor",
                 "range": [
-                  795,
-                  806
+                  791,
+                  802
                 ],
                 "loc": {
                   "start": {
-                    "line": 20,
+                    "line": 18,
                     "column": 4
                   },
                   "end": {
-                    "line": 20,
+                    "line": 18,
                     "column": 15
                   }
                 }
@@ -275,16 +315,16 @@
                     "type": "Identifier",
                     "name": "ogapi",
                     "range": [
-                      807,
-                      812
+                      803,
+                      808
                     ],
                     "loc": {
                       "start": {
-                        "line": 20,
+                        "line": 18,
                         "column": 16
                       },
                       "end": {
-                        "line": 20,
+                        "line": 18,
                         "column": 21
                       }
                     }
@@ -293,16 +333,16 @@
                     "type": "Identifier",
                     "name": "organization",
                     "range": [
-                      814,
-                      826
+                      810,
+                      822
                     ],
                     "loc": {
                       "start": {
-                        "line": 20,
+                        "line": 18,
                         "column": 23
                       },
                       "end": {
-                        "line": 20,
+                        "line": 18,
                         "column": 35
                       }
                     }
@@ -311,16 +351,16 @@
                     "type": "Identifier",
                     "name": "allowedDatastreams",
                     "range": [
-                      828,
-                      846
+                      824,
+                      842
                     ],
                     "loc": {
                       "start": {
-                        "line": 20,
+                        "line": 18,
                         "column": 37
                       },
                       "end": {
-                        "line": 20,
+                        "line": 18,
                         "column": 55
                       }
                     }
@@ -329,16 +369,16 @@
                     "type": "Identifier",
                     "name": "definedSchemas",
                     "range": [
-                      848,
-                      862
+                      844,
+                      858
                     ],
                     "loc": {
                       "start": {
-                        "line": 20,
+                        "line": 18,
                         "column": 57
                       },
                       "end": {
-                        "line": 20,
+                        "line": 18,
                         "column": 71
                       }
                     }
@@ -347,16 +387,16 @@
                     "type": "Identifier",
                     "name": "jsonSchemaValidator",
                     "range": [
-                      864,
-                      883
+                      860,
+                      879
                     ],
                     "loc": {
                       "start": {
-                        "line": 20,
+                        "line": 18,
                         "column": 73
                       },
                       "end": {
-                        "line": 20,
+                        "line": 18,
                         "column": 92
                       }
                     }
@@ -372,16 +412,16 @@
                         "callee": {
                           "type": "Super",
                           "range": [
-                            896,
-                            901
+                            891,
+                            896
                           ],
                           "loc": {
                             "start": {
-                              "line": 21,
+                              "line": 19,
                               "column": 8
                             },
                             "end": {
-                              "line": 21,
+                              "line": 19,
                               "column": 13
                             }
                           }
@@ -391,16 +431,16 @@
                             "type": "Identifier",
                             "name": "ogapi",
                             "range": [
-                              902,
-                              907
+                              897,
+                              902
                             ],
                             "loc": {
                               "start": {
-                                "line": 21,
+                                "line": 19,
                                 "column": 14
                               },
                               "end": {
-                                "line": 21,
+                                "line": 19,
                                 "column": 19
                               }
                             }
@@ -412,16 +452,16 @@
                               "type": "Identifier",
                               "name": "organization",
                               "range": [
-                                909,
-                                921
+                                904,
+                                916
                               ],
                               "loc": {
                                 "start": {
-                                  "line": 21,
+                                  "line": 19,
                                   "column": 21
                                 },
                                 "end": {
-                                  "line": 21,
+                                  "line": 19,
                                   "column": 33
                                 }
                               }
@@ -431,31 +471,31 @@
                               "value": "/subscribers",
                               "raw": "'/subscribers'",
                               "range": [
-                                924,
-                                938
+                                919,
+                                933
                               ],
                               "loc": {
                                 "start": {
-                                  "line": 21,
+                                  "line": 19,
                                   "column": 36
                                 },
                                 "end": {
-                                  "line": 21,
+                                  "line": 19,
                                   "column": 50
                                 }
                               }
                             },
                             "range": [
-                              909,
-                              938
+                              904,
+                              933
                             ],
                             "loc": {
                               "start": {
-                                "line": 21,
+                                "line": 19,
                                 "column": 21
                               },
                               "end": {
-                                "line": 21,
+                                "line": 19,
                                 "column": 50
                               }
                             }
@@ -464,16 +504,16 @@
                             "type": "Identifier",
                             "name": "allowedDatastreams",
                             "range": [
-                              940,
-                              958
+                              935,
+                              953
                             ],
                             "loc": {
                               "start": {
-                                "line": 21,
+                                "line": 19,
                                 "column": 52
                               },
                               "end": {
-                                "line": 21,
+                                "line": 19,
                                 "column": 70
                               }
                             }
@@ -482,16 +522,16 @@
                             "type": "Identifier",
                             "name": "definedSchemas",
                             "range": [
-                              960,
-                              974
+                              955,
+                              969
                             ],
                             "loc": {
                               "start": {
-                                "line": 21,
+                                "line": 19,
                                 "column": 72
                               },
                               "end": {
-                                "line": 21,
+                                "line": 19,
                                 "column": 86
                               }
                             }
@@ -500,63 +540,63 @@
                             "type": "Identifier",
                             "name": "jsonSchemaValidator",
                             "range": [
-                              976,
-                              995
+                              971,
+                              990
                             ],
                             "loc": {
                               "start": {
-                                "line": 21,
+                                "line": 19,
                                 "column": 88
                               },
                               "end": {
-                                "line": 21,
+                                "line": 19,
                                 "column": 107
                               }
                             }
                           }
                         ],
                         "range": [
-                          896,
-                          996
+                          891,
+                          991
                         ],
                         "loc": {
                           "start": {
-                            "line": 21,
+                            "line": 19,
                             "column": 8
                           },
                           "end": {
-                            "line": 21,
+                            "line": 19,
                             "column": 108
                           }
                         }
                       },
                       "range": [
-                        896,
-                        997
+                        891,
+                        992
                       ],
                       "loc": {
                         "start": {
-                          "line": 21,
+                          "line": 19,
                           "column": 8
                         },
                         "end": {
-                          "line": 21,
+                          "line": 19,
                           "column": 109
                         }
                       }
                     }
                   ],
                   "range": [
-                    885,
-                    1004
+                    881,
+                    998
                   ],
                   "loc": {
                     "start": {
-                      "line": 20,
+                      "line": 18,
                       "column": 94
                     },
                     "end": {
-                      "line": 22,
+                      "line": 20,
                       "column": 5
                     }
                   }
@@ -564,16 +604,16 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  806,
-                  1004
+                  802,
+                  998
                 ],
                 "loc": {
                   "start": {
-                    "line": 20,
+                    "line": 18,
                     "column": 15
                   },
                   "end": {
-                    "line": 22,
+                    "line": 20,
                     "column": 5
                   }
                 }
@@ -581,34 +621,34 @@
               "kind": "constructor",
               "computed": false,
               "range": [
-                795,
-                1004
+                791,
+                998
               ],
               "loc": {
                 "start": {
-                  "line": 20,
+                  "line": 18,
                   "column": 4
                 },
                 "end": {
-                  "line": 22,
+                  "line": 20,
                   "column": 5
                 }
               },
               "leadingComments": [
                 {
                   "type": "Block",
-                  "value": "*\r\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\r\n     * @param {!string} organization - this is the organization name where subscriber will be created\r\n     * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new subscriber\r\n     * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types\r\n     * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool\r\n     ",
+                  "value": "*\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\n     * @param {!string} organization - this is the organization name where subscriber will be created\n     * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new subscriber\n     * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types\n     * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool\n     ",
                   "range": [
-                    340,
-                    789
+                    343,
+                    786
                   ],
                   "loc": {
                     "start": {
-                      "line": 13,
+                      "line": 11,
                       "column": 4
                     },
                     "end": {
-                      "line": 19,
+                      "line": 17,
                       "column": 7
                     }
                   }
@@ -622,16 +662,16 @@
                 "type": "Identifier",
                 "name": "_getEntityKey",
                 "range": [
-                  1012,
-                  1025
+                  1004,
+                  1017
                 ],
                 "loc": {
                   "start": {
-                    "line": 24,
+                    "line": 22,
                     "column": 4
                   },
                   "end": {
-                    "line": 24,
+                    "line": 22,
                     "column": 17
                   }
                 }
@@ -654,16 +694,16 @@
                           "object": {
                             "type": "ThisExpression",
                             "range": [
-                              1046,
-                              1050
+                              1037,
+                              1041
                             ],
                             "loc": {
                               "start": {
-                                "line": 25,
+                                "line": 23,
                                 "column": 15
                               },
                               "end": {
-                                "line": 25,
+                                "line": 23,
                                 "column": 19
                               }
                             }
@@ -672,95 +712,95 @@
                             "type": "Identifier",
                             "name": "_entity",
                             "range": [
-                              1051,
-                              1058
+                              1042,
+                              1049
                             ],
                             "loc": {
                               "start": {
-                                "line": 25,
+                                "line": 23,
                                 "column": 20
                               },
                               "end": {
-                                "line": 25,
+                                "line": 23,
                                 "column": 27
                               }
                             }
                           },
                           "range": [
-                            1046,
-                            1058
+                            1037,
+                            1049
                           ],
                           "loc": {
                             "start": {
-                              "line": 25,
+                              "line": 23,
                               "column": 15
                             },
                             "end": {
-                              "line": 25,
+                              "line": 23,
                               "column": 27
                             }
                           }
                         },
                         "property": {
                           "type": "Identifier",
-                          "name": "ID",
+                          "name": "SubscriberID",
                           "range": [
-                            1059,
-                            1061
+                            1050,
+                            1062
                           ],
                           "loc": {
                             "start": {
-                              "line": 25,
+                              "line": 23,
                               "column": 28
                             },
                             "end": {
-                              "line": 25,
-                              "column": 30
+                              "line": 23,
+                              "column": 40
                             }
                           }
                         },
                         "range": [
-                          1046,
-                          1062
+                          1037,
+                          1063
                         ],
                         "loc": {
                           "start": {
-                            "line": 25,
+                            "line": 23,
                             "column": 15
                           },
                           "end": {
-                            "line": 25,
-                            "column": 31
+                            "line": 23,
+                            "column": 41
                           }
                         }
                       },
                       "range": [
-                        1039,
-                        1063
+                        1030,
+                        1064
                       ],
                       "loc": {
                         "start": {
-                          "line": 25,
+                          "line": 23,
                           "column": 8
                         },
                         "end": {
-                          "line": 25,
-                          "column": 32
+                          "line": 23,
+                          "column": 42
                         }
                       }
                     }
                   ],
                   "range": [
-                    1028,
+                    1020,
                     1070
                   ],
                   "loc": {
                     "start": {
-                      "line": 24,
+                      "line": 22,
                       "column": 20
                     },
                     "end": {
-                      "line": 26,
+                      "line": 24,
                       "column": 5
                     }
                   }
@@ -768,16 +808,16 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  1025,
+                  1017,
                   1070
                 ],
                 "loc": {
                   "start": {
-                    "line": 24,
+                    "line": 22,
                     "column": 17
                   },
                   "end": {
-                    "line": 26,
+                    "line": 24,
                     "column": 5
                   }
                 }
@@ -785,16 +825,16 @@
               "kind": "method",
               "computed": false,
               "range": [
-                1012,
+                1004,
                 1070
               ],
               "loc": {
                 "start": {
-                  "line": 24,
+                  "line": 22,
                   "column": 4
                 },
                 "end": {
-                  "line": 26,
+                  "line": 24,
                   "column": 5
                 }
               },
@@ -802,49 +842,49 @@
             }
           ],
           "range": [
-            331,
-            1073
+            336,
+            1072
           ],
           "loc": {
             "start": {
-              "line": 11,
+              "line": 9,
               "column": 61
             },
             "end": {
-              "line": 27,
+              "line": 25,
               "column": 1
             }
           }
         },
         "range": [
-          285,
-          1073
+          290,
+          1072
         ],
         "loc": {
           "start": {
-            "line": 11,
+            "line": 9,
             "column": 15
           },
           "end": {
-            "line": 27,
+            "line": 25,
             "column": 1
           }
         },
         "leadingComments": [
           {
             "type": "Block",
-            "value": "*\r\n * Subscriber builder. This builder give you the necessary tools to create a subscriber using our OpenGate REST.\r\n ",
+            "value": "*\n * Subscriber builder. This builder give you the necessary tools to create a subscriber using our OpenGate REST.\n ",
             "range": [
-              146,
-              268
+              154,
+              274
             ],
             "loc": {
               "start": {
-                "line": 8,
+                "line": 6,
                 "column": 0
               },
               "end": {
-                "line": 10,
+                "line": 8,
                 "column": 3
               }
             }
@@ -853,34 +893,34 @@
         "trailingComments": []
       },
       "range": [
-        270,
-        1073
+        275,
+        1072
       ],
       "loc": {
         "start": {
-          "line": 11,
+          "line": 9,
           "column": 0
         },
         "end": {
-          "line": 27,
+          "line": 25,
           "column": 1
         }
       },
       "leadingComments": [
         {
           "type": "Block",
-          "value": "*\r\n * Subscriber builder. This builder give you the necessary tools to create a subscriber using our OpenGate REST.\r\n ",
+          "value": "*\n * Subscriber builder. This builder give you the necessary tools to create a subscriber using our OpenGate REST.\n ",
           "range": [
-            146,
-            268
+            154,
+            274
           ],
           "loc": {
             "start": {
-              "line": 8,
+              "line": 6,
               "column": 0
             },
             "end": {
-              "line": 10,
+              "line": 8,
               "column": 3
             }
           }
@@ -891,7 +931,7 @@
   "sourceType": "module",
   "range": [
     0,
-    1073
+    1072
   ],
   "loc": {
     "start": {
@@ -899,43 +939,43 @@
       "column": 0
     },
     "end": {
-      "line": 27,
+      "line": 25,
       "column": 1
     }
   },
   "comments": [
     {
       "type": "Block",
-      "value": "*\r\n * Subscriber builder. This builder give you the necessary tools to create a subscriber using our OpenGate REST.\r\n ",
+      "value": "*\n * Subscriber builder. This builder give you the necessary tools to create a subscriber using our OpenGate REST.\n ",
       "range": [
-        146,
-        268
+        154,
+        274
       ],
       "loc": {
         "start": {
-          "line": 8,
+          "line": 6,
           "column": 0
         },
         "end": {
-          "line": 10,
+          "line": 8,
           "column": 3
         }
       }
     },
     {
       "type": "Block",
-      "value": "*\r\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\r\n     * @param {!string} organization - this is the organization name where subscriber will be created\r\n     * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new subscriber\r\n     * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types\r\n     * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool\r\n     ",
+      "value": "*\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\n     * @param {!string} organization - this is the organization name where subscriber will be created\n     * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new subscriber\n     * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types\n     * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool\n     ",
       "range": [
-        340,
-        789
+        343,
+        786
       ],
       "loc": {
         "start": {
-          "line": 13,
+          "line": 11,
           "column": 4
         },
         "end": {
-          "line": 19,
+          "line": 17,
           "column": 7
         }
       }

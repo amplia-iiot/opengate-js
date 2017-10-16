@@ -118,6 +118,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SimpleBuilder.js~SimpleBuilder.html">SimpleBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SubscriberBuilder.js~SubscriberBuilder.html">SubscriberBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SubscriptionBuilder.js~SubscriptionBuilder.html">SubscriptionBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SubscriberID">SubscriberID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SubscriptionID">SubscriptionID</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">rulesConfiguration</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html">RuleConfigurations</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsActions.js~RuleConfigurationsActions.html">RuleConfigurationsActions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder.html">RuleConfigurationsFinder</a></span></span></li>
@@ -197,9 +199,236 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
 import ComplexBuilder from &apos;./ComplexBuilder&apos;;
+import { SubscriberID } from &apos;./SubscriberBuilder&apos;;
+import { SubscriptionID } from &apos;./SubscriptionBuilder&apos;;
+import HttpStatus from &apos;http-status-codes&apos;;
+import q from &apos;q&apos;;
 
-const ID = &apos;provision.device.identifier&apos;;
+const ID = &apos;provision.device.identifier&apos;,
+    PUT_METHOD = &apos;PUT&apos;,
+    POST_METHOD = &apos;POST&apos;;
 
+class BoxBuilder {
+    constructor(ogapi, obj, url, key) {
+        let _this = this;
+        let subscribers = {};
+        let subscriptions = {};
+
+        this._obj = obj;
+        this._url = url;
+        this._ogapi = ogapi;
+        this._key = key;
+        this._deviceKeys = Object.keys(obj).filter(function(dsName) {
+            return dsName.indexOf(&apos;subscriber&apos;) === -1 &amp;&amp; dsName.indexOf(&apos;subscription&apos;) === -1;
+        });
+        this._subscriberKeys = Object.keys(obj).filter(function(dsName) {
+            return dsName.indexOf(&apos;subscriber&apos;) !== -1;
+        });
+        this._subscriptionKeys = Object.keys(obj).filter(function(dsName) {
+            return dsName.indexOf(&apos;subscription&apos;) !== -1;
+        });
+        this._administrationKeys = Object.keys(obj).filter(function(dsName) {
+            return dsName.indexOf(&apos;provision.administration&apos;) !== -1;
+        });
+        this._wrappers = [];
+
+        this._subscriberKeys.forEach((key) =&gt; {
+            _this._obj[key].forEach((value) =&gt; {
+                if (!subscribers[value._index.value]) {
+                    subscribers[value._index.value] = {};
+                }
+                subscribers[value._index.value][key] = { _value: value._value };
+            });
+        });
+
+        this._subscriptionKeys.forEach((key) =&gt; {
+            _this._obj[key].forEach((value) =&gt; {
+                if (!subscriptions[value._index.value]) {
+                    subscriptions[value._index.value] = {};
+                }
+                subscriptions[value._index.value][key] = { _value: value._value };
+            });
+        });
+
+        Object.keys(subscriptions).forEach((commsId) =&gt; {
+            let obj = subscriptions[commsId];
+            _this._administrationKeys.forEach((key) =&gt; {
+                obj[key] = _this._obj[key];
+            })
+            _this._wrappers.push(new WrapperBuilder(_this._ogapi, obj, _this._url.replace(&apos;devices&apos;, &apos;subscriptions&apos;), obj[SubscriptionID]._value._current.value));
+        });
+        Object.keys(subscribers).forEach((commsId) =&gt; {
+            let obj = subscribers[commsId];
+            _this._administrationKeys.forEach((key) =&gt; {
+                obj[key] = _this._obj[key];
+            })
+            _this._wrappers.push(new WrapperBuilder(_this._ogapi, obj, _this._url.replace(&apos;devices&apos;, &apos;subscribers&apos;), obj[SubscriberID]._value._current.value));
+        });
+    }
+
+    create() {
+        let defer = q.defer();
+        let postObj = {};
+        let putObj = this._obj;
+        let childEntityPromises = [];
+        let _this = this;
+
+        Object.keys(putObj).filter((key) =&gt; {
+            return key.indexOf(&apos;subscriber&apos;) === -1 &amp;&amp; key.indexOf(&apos;subscription&apos;) === -1;
+        }).forEach((deviceKey) =&gt; {
+            postObj[deviceKey] = putObj[deviceKey];
+        });
+
+        this._wrappers.forEach((wrapper) =&gt; {
+            childEntityPromises.push({ wrapper: wrapper, promise: wrapper.execute(defer) });
+        });
+
+        q.allSettled(
+            childEntityPromises.reduce(function(last, current) {
+                if (last.constructor !== Array) {
+                    return [last.promise, current.promise];
+                }
+                last.push(current.promise);
+                return last;
+            })).then(() =&gt; {
+            defer.notify(&apos;All related entities created.&apos;)
+            defer.notify(&apos;Creating new device:&apos; + _this._key._value._current.value);
+            return _this._ogapi.Napi.post(_this._url, postObj)
+                .then((res) =&gt; {
+                    defer.notify(&apos;Created device:&apos; + _this._key._value._current.value);
+                    defer.notify(&apos;Adding related entities&apos;);
+                    let splitted = _this._url.split(&apos;?&apos;);
+                    return _this._ogapi.Napi.put(splitted[0] + &apos;/&apos; + _this._key._value._current.value + &apos;?&apos; + splitted[1], putObj)
+                        .then((res) =&gt; {
+                            if (res.statusCode === 201) {
+                                console.log(&quot;CREATEOK: &quot; + JSON.stringify(res));
+                                if (typeof _this._onCreated === &quot;function&quot;) {
+                                    _this._onCreated(res.header[&apos;location&apos;]);
+                                }
+                                defer.notify(&apos;Device created successfully: &apos; + _this._key._value._current.value);
+                                defer.resolve({ location: res.header[&apos;location&apos;], statusCode: res.statusCode });
+                            } else {
+                                defer.reject({ errors: res.errors, statusCode: res.statusCode });
+                            }
+                        });
+                });
+        }).catch((err) =&gt; {
+            let deletePromises = [];
+            childEntityPromises.forEach((item) =&gt; {
+                deletePromises.push(item.wrapper.delete(defer));
+            });
+            q.allSettled(deletePromises).then(() =&gt; {
+                defer.reject(err);
+            }).catch(() =&gt; {
+                defer.reject(err);
+            });
+        });
+        return defer.promise;
+    }
+    update() {
+        let defer = q.defer();
+        let putObj = this._obj;
+        let childEntityPromises = [];
+        let _this = this;
+
+        this._wrappers.forEach((wrapper) =&gt; {
+            childEntityPromises.push({ wrapper: wrapper, promise: wrapper.execute(defer) });
+        });
+
+        q.allSettled(
+            childEntityPromises.reduce(function(last, current) {
+                if (last.constructor !== Array) {
+                    return [last.promise, current.promise];
+                }
+                last.push(current.promise);
+                return last;
+            })).then(() =&gt; {
+            defer.notify(&apos;All related entities created.&apos;)
+            defer.notify(&apos;Adding related entities to device:&apos; + _this._key._value._current.value);
+            return _this._ogapi.Napi.put(_this._url, putObj)
+                .then((res) =&gt; {
+                    if (res.statusCode === 201) {
+                        console.log(&quot;CREATEOK: &quot; + JSON.stringify(res));
+                        if (typeof _this._onCreated === &quot;function&quot;) {
+                            _this._onCreated(res.header[&apos;location&apos;]);
+                        }
+                        defer.notify(&apos;Device updated successfully: &apos; + _this._key._value._current.value);
+                        defer.resolve({ location: res.header[&apos;location&apos;], statusCode: res.statusCode });
+                    } else {
+                        defer.reject({ errors: res.errors, statusCode: res.statusCode });
+                    }
+                });
+        }).catch((err) =&gt; {
+            console.error(err);
+            defer.notify(&apos;Something was wrong updating device&apos;);
+            defer.reject(err);
+        });
+        return defer.promise;
+    }
+}
+
+class WrapperBuilder {
+    constructor(ogapi, obj, url, key) {
+        this._obj = obj;
+        this._url = url;
+        this._ogapi = ogapi;
+        this._key = key;
+    }
+
+    _urlWithKey() {
+        let splitted = this._url.split(&apos;?&apos;);
+        return splitted[0] + &apos;/&apos; + this._key + &apos;?&apos; + splitted[1];
+    }
+
+    _checkExists() {
+        return this._ogapi.Napi.get(this._urlWithKey()).then(function(response) {
+            return response.statusCode === HttpStatus.OK
+        }).catch((err) =&gt; {
+            console.warn(err);
+            return false;
+        });
+    }
+
+
+    execute(defered) {
+        let defer = q.defer();
+        let _this = this;
+        this._checkExists().then((exists) =&gt; {
+            if (!exists) {
+                create(defered, defer);
+            } else {
+                defer.resolve(&apos;Entity was already created:&apos; + _this._key)
+            }
+        }).catch((exists) =&gt; {
+            if (!exists) {
+                create(defered, defer);
+            } else {
+                defer.resolve(&apos;Entity was already created:&apos; + _this._key)
+            }
+        });
+        return defer.promise;
+
+        function create(defered, defer) {
+            _this._ogapi.Napi.post(_this._url, _this._obj)
+                .then((res) =&gt; {
+                    defered.notify(&apos;Entity created:&apos; + _this._key);
+                    defer.resolve(&apos;Entity created:&apos; + _this._key);
+                }).catch((err) =&gt; {
+                    console.error(err);
+                    defered.notify(&apos;Error creating entity:&apos; + _this._key);
+                    defer.reject(&apos;Error creating entity:&apos; + _this._key);
+                });
+        }
+    }
+
+    delete(defered) {
+        return this._ogapi.Napi.delete(this._urlWithKey())
+            .then((res) =&gt; {
+                defered.notify(&apos;Entity deleted:&apos; + this._key);
+            });
+    }
+
+}
 
 /**
  * Device builder. This builder give you the necessary tools to create a device using our OpenGate REST.
@@ -215,6 +444,35 @@ export default class DeviceBuilder extends ComplexBuilder {
      */
     constructor(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator) {
         super(ogapi, organization + &apos;/devices&apos;, allowedDatastreams, definedSchemas, jsonSchemaValidator);
+        this._organization = organization;
+    }
+
+    /**
+     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * This function create a entity of provision
+     * @return {Promise}
+     * @property {function (result:object, statusCode:number)} then - When request it is OK
+     * @property {function (error:string)} catch - When request it is NOK
+     * @example
+     *  ogapi.organizationsBuilder().create()
+     */
+    create() {
+        this._checkRequiredParameters();
+        return (new BoxBuilder(this._ogapi, this._composeElement(), this._resource, this._getEntityKey())).create();
+    }
+
+    /**
+     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * This function updates a entity of provision and check if any subscriber/subscription exits or no. 
+     * If a subscriber/subscription not exists then this entities will be created and after that will be added to entity box.
+     * @return {Promise}
+     * @property {function (result:object, statusCode:number)} then - When request it is OK
+     * @property {function (error:string)} catch - When request it is NOK
+     * @example
+     *  ogapi.entityBuilder.devicesBuilder().update()
+     */
+    update() {
+        return (new BoxBuilder(this._ogapi, this._composeElement(), this._buildURL(), this._getEntityKey())).update();
     }
 
     _getEntityKey() {
