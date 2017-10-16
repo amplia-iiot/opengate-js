@@ -1,4 +1,5 @@
 # features/feature/create_delete_read_domain.feature
+@provision
 @crd_domain
 @create_provision
 @domain

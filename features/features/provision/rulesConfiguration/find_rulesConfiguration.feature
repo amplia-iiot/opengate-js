@@ -1,5 +1,5 @@
 # features/find_rulesConfiguration.feature
-
+@provision
 @find_provision
 @rulesConfiguration
 Feature: Find an rulesConfiguration 
