@@ -1,6 +1,6 @@
 module.exports = {
 
-    util: function(utilName, ogapi, param, param2) {
+    util: function(utilName, ogapi, param, param2, param3) {
         var utilsMath = {
             "alarms search": function(ogapi) {
                 return ogapi.alarmsSearchBuilder();
@@ -201,7 +201,7 @@ module.exports = {
                 return ogapi.ruleConfigurationBuilder();
             },
             "rule configuration actions": function(ogapi, organization, channel, name) {
-                return ogapi.newRuleConfigurationsActions(organization, channel, name);
+                return ogapi.newRuleConfigurationsActions(organization, channel, param3);
             },
             "executions search": function() {
                 return ogapi.executionsSearchBuilder();

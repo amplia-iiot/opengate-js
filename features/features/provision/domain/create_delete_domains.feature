@@ -1,5 +1,6 @@
 # features/feature/create_delete_read_domain.feature
 @crd_domain
+@create_provision
 @domain
 Feature: Create a domain 
   As a user of JsApi

@@ -93,7 +93,7 @@ module.exports = {
                 'remove datastream': 'removeDatastream'
             },
             'datastream': {
-                'id': 'withId',
+                'identifier': 'withId',
                 'name': 'withName',
                 'description': 'withDescription',
                 'unit': 'withUnit',
