@@ -198,7 +198,7 @@ export default class Datastream {
         }
 
         return {
-            id: this._id,
+            identifier: this._id,
             name: this._name,
             description: this._description,
             period: this._period,
