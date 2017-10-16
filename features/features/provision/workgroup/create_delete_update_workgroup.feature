@@ -1,4 +1,5 @@
 # features/create_delete_workgroup.feature
+@provision
 @create_provision
 @workgroup
 Feature: Delete and Create a workgroup

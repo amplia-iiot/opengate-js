@@ -1,5 +1,5 @@
 # features/update_ruleConfiguration.feature
-
+@provision
 @update_ruleConfiguration
 @rulesConfiguration
 Feature: Managing a rule configuration

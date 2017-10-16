@@ -1,5 +1,5 @@
 # features/finddomain.feature
-
+@provision
 @finder
 @find_provision
 @domain

@@ -1,8 +1,9 @@
 # features/find_workgroup.feature
-
+@provision
 @finder
 @find_provision
 @workgroupRelations
+@workgroup
 Feature: Find an workgroup 
   As a user of JsApi
   I want to find an workgroup
