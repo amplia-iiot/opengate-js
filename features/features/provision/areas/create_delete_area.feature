@@ -1,6 +1,7 @@
 # features/provision/areas/create_delete_area.feature
 @create_provision
 @area
+@create_area
 Feature: Delete and Create a area
   As a user of JsApi
   I want to create a are

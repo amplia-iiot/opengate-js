@@ -155,6 +155,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationsSearchBuilder.js~OperationsSearchBuilder.html">OperationsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html">OrganizationsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/PlansSearchBuilder.js~PlansSearchBuilder.html">PlansSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/PreFilteredSearchBuilder.js~PreFilteredSearchBuilder.html">PreFilteredSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RawSearchBuilder.js~RawSearchBuilder.html">RawSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RuleConfigurationSeveritySearchBuilder.js~RuleConfigurationSeveritySearchBuilder.html">RuleConfigurationSeveritySearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SearchBuilder.js~SearchBuilder.html">SearchBuilder</a></span></span></li>
@@ -214,99 +215,7 @@ export default class EntitySearch extends Search {
         super(ogapi, &quot;/entities&quot; + url, filter, limit, sort, timeout);
     }
 
-    _appendData(data) {
-        let _this = this;
-        let entities = data.subscribers || data.subscriptions || data.communicationsModules || data.devices;
-        if (typeof entities === &quot;object&quot; &amp;&amp; typeof entities.every === &quot;function&quot;) {
-            entities.every(function(entity) {
-                _this._appendEntityData(entity);
-                return true;
-            });
-        }
-    }
 
-    _createSearch(searchBuilder, ids) {
-        return searchBuilder.
-        onCollected().onProvisioned().
-        withTimeout(10000).
-        limit(1000).
-        filter(this._createFilter(ids)).
-        build();
-    }
-
-    _createDatamodelSearch(id) {
-        return this._ogapi.datastreamsSearchBuilder().
-        filter(
-            this._createDatamodelFilter(id)
-        ).build();
-    }
-
-    _createFilter(ids) {
-        return this._ogapi.newFilterBuilder().
-        and(
-            this._ogapi.EX.in(&quot;prov.customId&quot;, ids)
-        );
-    }
-
-    _createDatamodelFilter(id) {
-        return this._ogapi.newFilterBuilder().
-        and(
-            this._ogapi.EX.eq(&quot;datastream.device&quot;, id)
-        );
-    }
-
-    _appendEntityData(entity) {
-        let _this = this;
-        let sourceList = [&apos;provision&apos;, &apos;collection&apos;];
-        sourceList.every(function(item) {
-            let subscriberIds = [];
-            let subscriptionIds = [];
-            let commsModuleIds = [];
-            if (typeof entity[item] === &quot;object&quot; &amp;&amp; typeof entity[item].relations === &quot;object&quot; &amp;&amp; typeof entity[item].relations.every === &quot;function&quot;) {
-                entity[item].relations.every(function(rels) {
-                    rels.relation.every(function(link) {
-                        if (link.entityType === &quot;SUBSCRIBER&quot;) {
-                            subscriberIds.push(link.id);
-                        }
-                        if (link.entityType === &quot;COMMUNICATIONS_MODULE&quot;) {
-                            commsModuleIds.push(link.id);
-                        }
-                        if (link.entityType === &quot;SUBSCRIPTION&quot;) {
-                            subscriptionIds.push(link.id);
-                        }
-                        return true;
-                    });
-                    return true;
-                });
-                if (subscriberIds.length &gt; 0 || subscriptionIds.length &gt; 0 || commsModuleIds.length &gt; 0) {
-                    entity[item].$related = {};
-                    if (subscriberIds.length &gt; 0) {
-                        entity[item].$related.subscribers = function() {
-                            return _this._createSearch(_this._ogapi.subscribersSearchBuilder(), subscriberIds).execute();
-                        };
-                    }
-                    if (subscriptionIds.length &gt; 0) {
-                        entity[item].$related.subscriptions = function() {
-                            return _this._createSearch(_this._ogapi.subscriptionsSearchBuilder(), subscriptionIds).execute();
-                        };
-                    }
-                    if (commsModuleIds.length &gt; 0) {
-                        entity[item].$related.communicationsModules = function() {
-                            return _this._createSearch(_this._ogapi.communicationsModulesSearchBuilder(), commsModuleIds).execute();
-                        };
-                    }
-                }
-            }
-            return true;
-        });
-
-        // Add iot data
-        let entityId = entity.id;
-        entity.$datastreams = function() {
-            return _this._createDatamodelSearch(entityId).
-            execute();
-        }
-    }
 }</code></pre>
 
 </div>

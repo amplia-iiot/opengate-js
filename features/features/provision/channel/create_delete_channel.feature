@@ -1,5 +1,6 @@
 # features/create_delete_channel.feature
 @create_provision
+@create_channel
 @channel
 Feature: Delete and Create a channel
   As a user of JsApi

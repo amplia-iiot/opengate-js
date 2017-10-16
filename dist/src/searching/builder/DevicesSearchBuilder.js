@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-  value: true
+    value: true
 });
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -14,9 +14,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _FlattenedSearchBuilder2 = require('./FlattenedSearchBuilder');
+var _PreFilteredSearchBuilder2 = require('./PreFilteredSearchBuilder');
 
-var _FlattenedSearchBuilder3 = _interopRequireDefault(_FlattenedSearchBuilder2);
+var _PreFilteredSearchBuilder3 = _interopRequireDefault(_PreFilteredSearchBuilder2);
 
 var _utilSearchingFieldsFieldFinder = require('../../util/searchingFields/FieldFinder');
 
@@ -28,38 +28,63 @@ var BASE_URL = '/devices';
  * @example ogapi.devicesSearchBuilder()
  */
 
-var DevicesSearchBuilder = (function (_FlattenedSearchBuilder) {
-  _inherits(DevicesSearchBuilder, _FlattenedSearchBuilder);
+var DevicesSearchBuilder = (function (_PreFilteredSearchBuilder) {
+    _inherits(DevicesSearchBuilder, _PreFilteredSearchBuilder);
 
-  /**
-   *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
-   */
+    /**
+     *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
+     */
 
-  function DevicesSearchBuilder(parent) {
-    _classCallCheck(this, DevicesSearchBuilder);
+    function DevicesSearchBuilder(parent) {
+        _classCallCheck(this, DevicesSearchBuilder);
 
-    _get(Object.getPrototypeOf(DevicesSearchBuilder.prototype), 'constructor', this).call(this, parent, {}, new _utilSearchingFieldsFieldFinder2['default'](parent, BASE_URL));
-    this._url = BASE_URL;
-  }
-
-  /**
-   * The response will only have a summary information 
-   * @example
-   *	ogapi.devicesSearchBuilder().summary() 
-   * @return {DevicesSearchBuilder} 
-   */
-
-  _createClass(DevicesSearchBuilder, [{
-    key: 'summary',
-    value: function summary() {
-      this._url = this._url + '/summary';
-
-      return this;
+        _get(Object.getPrototypeOf(DevicesSearchBuilder.prototype), 'constructor', this).call(this, parent, {}, new _utilSearchingFieldsFieldFinder2['default'](parent, BASE_URL));
+        this._url = BASE_URL;
     }
-  }]);
 
-  return DevicesSearchBuilder;
-})(_FlattenedSearchBuilder3['default']);
+    /**
+     * The response will only have a summary information 
+     * @example
+     *	ogapi.devicesSearchBuilder().summary() 
+     * @return {DevicesSearchBuilder} 
+     */
+
+    _createClass(DevicesSearchBuilder, [{
+        key: 'summary',
+        value: function summary() {
+            this._url = this._url + '/summary';
+
+            return this;
+        }
+    }, {
+        key: '_buildFilter',
+        value: function _buildFilter() {
+            var finalFilter = {
+                "and": [{
+                    "exists": {
+                        "provision.device.identifier": true
+                    }
+                }]
+            };
+
+            if (this._builderParams.filter && Object.keys(this._builderParams.filter).length > 0) {
+                var filter = this._builderParams.filter;
+                if (typeof filter._filterTemplate !== "undefined") {
+                    //return filter._filterTemplate;
+                    finalFilter["and"].push(filter._filterTemplate.filter);
+                } else {
+                    finalFilter["and"].push(filter);
+                }
+            }
+
+            return {
+                filter: finalFilter
+            };
+        }
+    }]);
+
+    return DevicesSearchBuilder;
+})(_PreFilteredSearchBuilder3['default']);
 
 exports['default'] = DevicesSearchBuilder;
 module.exports = exports['default'];

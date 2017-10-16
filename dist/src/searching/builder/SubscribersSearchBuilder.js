@@ -14,9 +14,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _FlattenedSearchBuilder2 = require('./FlattenedSearchBuilder');
+var _PreFilteredSearchBuilder2 = require('./PreFilteredSearchBuilder');
 
-var _FlattenedSearchBuilder3 = _interopRequireDefault(_FlattenedSearchBuilder2);
+var _PreFilteredSearchBuilder3 = _interopRequireDefault(_PreFilteredSearchBuilder2);
 
 var _utilSearchingFieldsFieldFinder = require('../../util/searchingFields/FieldFinder');
 
@@ -28,8 +28,8 @@ var BASE_URL = '/devices';
  * @example ogapi.subscribersSearchBuilder()
  */
 
-var SubscribersSearchBuilder = (function (_FlattenedSearchBuilder) {
-    _inherits(SubscribersSearchBuilder, _FlattenedSearchBuilder);
+var SubscribersSearchBuilder = (function (_PreFilteredSearchBuilder) {
+    _inherits(SubscribersSearchBuilder, _PreFilteredSearchBuilder);
 
     /**
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
@@ -47,17 +47,31 @@ var SubscribersSearchBuilder = (function (_FlattenedSearchBuilder) {
         value: function _buildFilter() {
             var finalFilter = {
                 "and": [{
+                    "or": []
+                }]
+            };
+
+            if (this._provisioned || !this._collected) {
+                finalFilter.and[0].or.push({
                     "exists": {
                         "provision.device.communicationModules[].subscriber.identifier": true
                     }
-                }]
-            };
+                });
+            }
+
+            if (this._collected || !this._provisioned) {
+                finalFilter.and[0].or.push({
+                    "exists": {
+                        "device.communicationModules[].subscriber.identifier": true
+                    }
+                });
+            }
 
             if (this._builderParams.filter && Object.keys(this._builderParams.filter).length > 0) {
                 var filter = this._builderParams.filter;
                 if (typeof filter._filterTemplate !== "undefined") {
                     //return filter._filterTemplate;
-                    finalFilter["and"].push(filter._filterTemplate);
+                    finalFilter["and"].push(filter._filterTemplate.filter);
                 } else {
                     finalFilter["and"].push(filter);
                 }
@@ -70,7 +84,7 @@ var SubscribersSearchBuilder = (function (_FlattenedSearchBuilder) {
     }]);
 
     return SubscribersSearchBuilder;
-})(_FlattenedSearchBuilder3['default']);
+})(_PreFilteredSearchBuilder3['default']);
 
 exports['default'] = SubscribersSearchBuilder;
 module.exports = exports['default'];

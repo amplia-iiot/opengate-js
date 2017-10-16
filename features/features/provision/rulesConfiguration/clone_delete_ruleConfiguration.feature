@@ -79,5 +79,4 @@ Feature: Cloning and deleting a rule configuration
 	}]
   } 
   """
-  #Then I update it
   And response code should be: 200 
