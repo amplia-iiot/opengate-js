@@ -44,10 +44,20 @@ export default class SimpleBuilder extends BaseProvision {
                 throw new Error(ERROR_DATASTREAM_NOT_ALLOWED);
             }
             let jSchema = _this._definedSchemas[_id].value;
-            let value = _this._entity[_id]._value._current.value;
-            if (!_this._jsonSchemaValidator.validate(value, jSchema).valid) {
-                errors.push(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
+            if (_this._entity[_id].constructor === Array) {
+                _this._entity[_id].forEach(function(item) {
+                    let value = item._value._current.value;
+                    if (!_this._jsonSchemaValidator.validate(value, jSchema).valid) {
+                        errors.push(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
+                    }
+                });
+            } else {
+                let value = _this._entity[_id]._value._current.value;
+                if (!_this._jsonSchemaValidator.validate(value, jSchema).valid) {
+                    errors.push(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
+                }
             }
+
         });
 
         if (errors.length > 0) {
