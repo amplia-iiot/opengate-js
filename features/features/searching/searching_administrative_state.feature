@@ -1,5 +1,4 @@
 # features/searching_administrative_state.feature
-
 @administrative_state
 @catalogs
 @searching

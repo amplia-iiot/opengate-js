@@ -1,4 +1,5 @@
 # features/searching_domains.feature
+@searching
 @searching_domains
 Feature: Searching domains 
   As a user of JsApi

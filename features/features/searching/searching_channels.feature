@@ -1,4 +1,5 @@
 # features/searching_channels.feature
+@searching
 @searching_channels
 Feature: Searching channels 
   As a user of JsApi

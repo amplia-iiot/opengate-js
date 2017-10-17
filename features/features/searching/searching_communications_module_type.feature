@@ -31,21 +31,21 @@ Feature: Searching communications module type in catalog
 
   Examples:
     | type      | result |
-    | GENERIC   | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey"],"optional":["administrativeState","IMEI","MAC","HARDWARE","SOFTWARE"]},"SUBSCRIPTION":{"mandatory":["generatedEntityKey"],"optional":["administrativeState","IMSI","ADDRESS","HOME_OPERATOR","REGISTER_OPERATOR","MSISDN","LOCATION"]},"SUBSCRIBER":{"mandatory":["generatedEntityKey"],"optional":["administrativeState","ICC"]}}} |
+    | GENERIC   | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey"],"optional":["IMEI","MAC","HARDWARE","SOFTWARE"]},"SUBSCRIPTION":{"mandatory":["generatedEntityKey"],"optional":["administrativeState","IMSI","ADDRESS","HOME_OPERATOR","REGISTER_OPERATOR","MSISDN","LOCATION"]},"SUBSCRIBER":{"mandatory":["generatedEntityKey"],"optional":["administrativeState","ICC","SERIAL_NUMBER"]}}} |
     | WIFI      | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey","MAC"],"optional":["administrativeState","HARDWARE","SOFTWARE"]}}} |
-    | ETH       | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey","MAC"],"optional":["administrativeState","HARDWARE","SOFTWARE"]}}} |
-#   | BLUETOOTH | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey","MAC"],"optional":["administrativeState","HARDWARE","SOFTWARE"]}}} |
-    | MESH      | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey","MAC"],"optional":["administrativeState","HARDWARE","SOFTWARE"]}}} |
-    | LOWPAN    | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey","MAC"],"optional":["administrativeState","HARDWARE","SOFTWARE"]}}} |
-    | PLC       | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey","MAC"],"optional":["administrativeState","HARDWARE","SOFTWARE"]}}} |
-    | ZIGBEE    | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey","MAC"],"optional":["administrativeState","HARDWARE","SOFTWARE"]}}} |
-    | ADSL      | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey"],"optional":["administrativeState","MAC"]},"SUBSCRIPTION":{"mandatory":["generatedEntityKey"],"optional":["administrativeState","ADDRESS","REGISTER_OPERATOR"]}}} |
-    | MOBILE    | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey","IMEI"],"optional":["administrativeState","HARDWARE","SOFTWARE"]},"SUBSCRIPTION":{"mandatory":["generatedEntityKey"],"optional":["administrativeState","IMSI","MSISDN"]},"SUBSCRIBER":{"mandatory":["generatedEntityKey","ICC"],"optional":["administrativeState"]}}} |
-    | GSM       | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey","IMEI"],"optional":["administrativeState","HARDWARE","SOFTWARE"]},"SUBSCRIPTION":{"mandatory":["generatedEntityKey"],"optional":["administrativeState","IMSI","MSISDN"]},"SUBSCRIBER":{"mandatory":["generatedEntityKey","ICC"],"optional":["administrativeState"]}}} |
+    | ETH       | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey","MAC"],"optional":["HARDWARE","SOFTWARE"]},"SUBSCRIPTION":{"mandatory":["generatedEntityKey"],"optional":["administrativeState","ADDRESS"]}}} |
+    | BLUETOOTH | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey","MAC"],"optional":["administrativeState","HARDWARE","SOFTWARE"]}}} |
+    | MESH      | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey","MAC"],"optional":["HARDWARE","SOFTWARE"]}}} |
+    | LOWPAN    | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey","MAC"],"optional":["HARDWARE","SOFTWARE"]},"SUBSCRIPTION":{"mandatory":["generatedEntityKey"],"optional":["administrativeState"]}}} |
+    | PLC       | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey","MAC"],"optional":["HARDWARE","SOFTWARE"]},"SUBSCRIPTION":{"mandatory":["generatedEntityKey"],"optional":["administrativeState"]}}} |
+    | ZIGBEE    | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey","MAC"],"optional":["HARDWARE","SOFTWARE"]},"SUBSCRIPTION":{"mandatory":["generatedEntityKey"],"optional":["administrativeState"]}}} |
+    | ADSL      | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey"],"optional":["IMEI","MAC","HARDWARE","SOFTWARE"]},"SUBSCRIPTION":{"mandatory":["generatedEntityKey"],"optional":["administrativeState","ADDRESS","HOME_OPERATOR","LOCATION"]}}} |
+    | MOBILE    | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey"],"optional":["IMEI","MAC","HARDWARE","SOFTWARE"]},"SUBSCRIPTION":{"mandatory":["generatedEntityKey"],"optional":["administrativeState","IMSI","ADDRESS","HOME_OPERATOR","REGISTER_OPERATOR","MSISDN","LOCATION"]},"SUBSCRIBER":{"mandatory":["generatedEntityKey"],"optional":["administrativeState","ICC"]}}} |
+    | GSM       | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey"],"optional":["IMEI","MAC","HARDWARE","SOFTWARE"]},"SUBSCRIPTION":{"mandatory":["generatedEntityKey"],"optional":["administrativeState","IMSI","ADDRESS","HOME_OPERATOR","REGISTER_OPERATOR","MSISDN","LOCATION"]},"SUBSCRIBER":{"mandatory":["generatedEntityKey"],"optional":["administrativeState","ICC"]}}} |
     | UMTS      | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey","IMEI"],"optional":["administrativeState","HARDWARE","SOFTWARE"]},"SUBSCRIPTION":{"mandatory":["generatedEntityKey"],"optional":["administrativeState","IMSI","MSISDN"]},"SUBSCRIBER":{"mandatory":["generatedEntityKey","ICC"],"optional":["administrativeState"]}}} |
-    | CAN       | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["entityKey"],"optional":["administrativeState"]}}} |
-    | I2C       | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["entityKey"],"optional":["administrativeState"]}}} |
-    | RS232     | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["entityKey"],"optional":["administrativeState"]}}} |
-    | RS422     | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["entityKey"],"optional":["administrativeState"]}}} |
-    | RS485     | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["entityKey"],"optional":["administrativeState"]}}} |
-    | SIGFOX    | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["entityKey"],"optional":["administrativeState"]}}} |
+    | CAN       | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["entityKey"],"optional":[]}}} |
+    | I2C       | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["entityKey"],"optional":[]}}} |
+    | RS232     | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["entityKey"],"optional":[]}}} |
+    | RS422     | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["entityKey"],"optional":[]}}} |
+    | RS485     | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["entityKey"],"optional":[]}}} |
+    | SIGFOX    | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["entityKey"],"optional":[]}}} |

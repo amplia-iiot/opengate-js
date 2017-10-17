@@ -8,28 +8,44 @@ Feature: Searching into datapoints collection
   Background:
     Given an apikey user by "require-real-apikey"
 
-   Scenario: Create a gateway that not exists 
-    Given an ogapi "devices builder" util 
-    And I want to create a "device"
-    And the "organization" "base_organization"
-    And the "channel" "base_channel"
-    And the "administrative state" "TESTING"
-    And the "operational status" "TEST"
-    And the "entity key" "sensor_testing_cucumber"
-    And the "serial number" "OGUX_SerialNumber_GATEWAY"
-    And the "name" "OGUX Device GATEWAY tester"
-    And the "description" "OGUX Device tester full GATEWAY description"
-    And the "type" "gateway"
-    And the "specific type" "CONCENTRATOR"
-    And I delete it
-    Then I create it
+Scenario: Creating an organization to use in create device
+    Given an ogapi "organizations builder" util
+    Then I want to create an "organization"
+    And the "name" "datapoints_organization"
+    And the "description" "device organization"
+    And the "country code" "ES"
+    And the "lang code" "es"
+    And the "time zone" "Europe/Andorra"
+    And the "zoom" 10
+    And the "location" with 1 and 1 
+    Then I delete it
+    And I create it
+    And response code should be: 201
+
+ Scenario: I want to create the entity 
+    Given the entity of type "devices builder" with "datapoints_organization" 
+    Then I get allowed Datastreams fields    
+    And I can found "provision.device.identifier" as datastream name
+    When I try to define the entity with... 
+		| datastream                                                        | typeFunction       |   value                 | parent      |
+		| provision.administration.channel                                  | simple             |  default_channel        |             |
+        | provision.administration.organization                             | simple             |  datapoints_organization    |          |
+        | provision.administration.serviceGroup                             | simple             |  emptyServiceGroup      |             |
+        | provision.device.identifier                                       | simple             |  datapoints_testing_cucumber           |             |
+        | provision.device.operationalStatus                                | simple             |  TEST                 |             |   
+        | provision.device.administrativeState                              | simple             |  TESTING                 |             |
+        | provision.device.name                                             | simple             |  OGUX Device GATEWAY tester           |             |
+        | provision.device.description                                      | simple             |  OGUX Device tester full GATEWAY description           |             |
+        | provision.device.specificType                                     | simple             |  CONCENTRATOR           |             |
+    Then I delete it
+    And I create it
     And response code should be: 201
 
     Scenario: Create a Iot message 
     Given an ogapi "deviceMessage builder" util 
     And I want to create a "deviceMessage"
     And the "datastreamVersion" "0.0.1"
-    And the "id" "sensor_testing_cucumber"
+    And the "id" "datapoints_testing_cucumber"
     And I want to create a "datapoints message" with this element:
         | field      | content         | type|
         | from       | 123455          | number|
@@ -53,7 +69,7 @@ Feature: Searching into datapoints collection
   Given an ogapi "deviceMessage builder" util 
     And I want to create a "deviceMessage"
    And the "version" "1.0.1"
-   And the "id" "sensor_testing_cucumber"
+   And the "id" "datapoints_testing_cucumber"
    And the "path"
        |./ | /path |
    And the "name" "dmm name"
@@ -75,7 +91,7 @@ Feature: Searching into datapoints collection
        | type              | FIRMWARE  |
        | version           | test |
    And I want to define "software" in "deviceMessage"
-   And the "dateLocation" "2016-10-25T11:00:00"
+   And the "dateLocation" "2016-10-25T11:00:00z"
    And the "longitude" 40.75
    And the "latitude" -35
    And the "currentTemperature" "1"
@@ -152,7 +168,7 @@ Feature: Searching into datapoints collection
        | modelName         |  4CCT   |
        | modelVersion      |  4CCT   |
        | clockDate         |  2015-07-16T19:20:30+01:00|
-       | upTime            |  2016-10-25T11:00:00|
+       | upTime            |  3242 |
    And I want to define "hardware" in "commsModuleMessage"
    And I want to create a "software" with this element:
        | field             | content |
@@ -190,7 +206,7 @@ Feature: Searching into datapoints collection
        | modelName         |  4CCT   |
        | modelVersion      |  4CCT   |
        | clockDate         |  2015-07-16T19:20:30+01:00|
-       | upTime            |  2016-10-25T11:00:00|
+       | upTime            |  234|
    And I want to define "hardware" in "subscriber"
    And I want to define "subscriber" in "commsModuleMessage"
    And I want to create a "subscription" with this element:
@@ -235,11 +251,17 @@ Scenario: Execute searching with a invalid start limit
   	And I execute with async paging it
   	Then response code should be: 200  	
 
-Scenario: Delete a gateway that not exists 
-    Given an ogapi "devices builder" util 
-    And I want to create a "device"
-    And the "organization" "base_organization"
-    And the "channel" "base_channel"
-    And the "entity key" "sensor_testing_cucumber"
-    And I delete it
-    And response code should be: 200
+ Scenario: I want to delete the entity 
+    Given the entity of type "devices builder" with "datapoints_organization" 
+    When I try to define the entity with... 
+		| datastream                                                        | typeFunction       |   value                 | parent      |
+		| provision.administration.channel                                  | simple             |  default_channel        |             |
+        | provision.administration.organization                             | simple             |  datapoints_organization    |          |
+        | provision.device.identifier                                       | simple             |  datapoints_testing_cucumber           |             |
+    Then I delete it
+
+  Scenario: Deleting an organization to use in create device
+    Given an ogapi "organizations builder" util
+    Then I want to delete an "organization"
+    And the "name" "datapoints_organization"
+    Then I delete it
