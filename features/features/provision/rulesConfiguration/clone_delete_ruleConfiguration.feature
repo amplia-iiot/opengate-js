@@ -1,5 +1,5 @@
 # features/update_ruleConfiguration.feature
-
+@provision
 @clone_ruleConfiguration
 @delete_ruleConfiguration
 @rulesConfiguration

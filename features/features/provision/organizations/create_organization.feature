@@ -1,4 +1,5 @@
 # features/create_organization.feature
+@provision
 @create_provision
 @organization
 Feature: Create an organization 
