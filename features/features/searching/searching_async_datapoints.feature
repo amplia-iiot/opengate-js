@@ -1,4 +1,5 @@
 # features/searching_async_datapoints.feature
+@searching
 @device_builder
 @searching_datapoints
 @searching_asynchronous
@@ -9,28 +10,53 @@ Feature: Searching into datapoints collection
   Background:
     Given an apikey user by "require-real-apikey"
 
-   Scenario: Create a gateway that not exists 
-    Given an ogapi "devices builder" util 
-    And I want to create a "device"
-    And the "organization" "base_organization"
-    And the "channel" "base_channel"
-    And the "administrative state" "TESTING"
-    And the "operational status" "TEST"
-    And the "entity key" "sensor_testing_cucumber"
-    And the "serial number" "OGUX_SerialNumber_GATEWAY"
-    And the "name" "OGUX Device GATEWAY tester"
-    And the "description" "OGUX Device tester full GATEWAY description"
-    And the "type" "gateway"
-    And the "specific type" "CONCENTRATOR"
-    And I delete it
-    Then I create it
+   Scenario: Creating an organization to use in create device
+    Given an ogapi "organizations builder" util
+    Then I want to create an "organization"
+    And the "name" "async_organization"
+    And the "description" "device organization"
+    And the "country code" "ES"
+    And the "lang code" "es"
+    And the "time zone" "Europe/Andorra"
+    And the "zoom" 10
+    And the "location" with 1 and 1 
+    Then I delete it
+    And I create it
     And response code should be: 201
+
+ Scenario: I want to create the entity 
+    Given the entity of type "devices builder" with "async_organization" 
+    Then I get allowed Datastreams fields    
+    And I can found "provision.device.identifier" as datastream name
+    When I try to define the entity with... 
+		| datastream                                                        | typeFunction       |   value                 | parent      |
+		| provision.administration.channel                                  | simple             |  default_channel        |             |
+        | provision.administration.organization                             | simple             |  async_organization    |          |
+        | provision.administration.serviceGroup                             | simple             |  emptyServiceGroup      |             |
+        | provision.device.identifier                                       | simple             |  async_testing_cucumber           |             |
+        | provision.device.operationalStatus                                | simple             |  TEST                 |             |   
+        | provision.device.administrativeState                              | simple             |  TESTING                 |             |
+        | provision.device.name                                             | simple             |  OGUX Device GATEWAY tester           |             |
+        | provision.device.description                                      | simple             |  OGUX Device tester full GATEWAY description           |             |
+        | provision.device.specificType                                     | simple             |  CONCENTRATOR           |             |
+    Then I delete it
+    And I create it
+    And response code should be: 201
+
+#    Scenario: Create a gateway that not exists 
+#     Given an ogapi "devices builder" util 
+#     And I want to create a "device"
+#     #And the "serial number" "OGUX_SerialNumber_GATEWAY"
+#     #And the "type" "gateway"
+#     And I delete it
+#     Then I create it
+#     And response code should be: 201
 
     Scenario: Create a Iot message 
     Given an ogapi "deviceMessage builder" util 
     And I want to create a "deviceMessage"
     And the "datastreamVersion" "0.0.1"
-    And the "id" "sensor_testing_cucumber"
+    And the "id" "async_testing_cucumber"
     And I want to create a "datapoints message" with this element:
         | field      | content         | type|
         | from       | 123455          | number|
@@ -54,7 +80,7 @@ Feature: Searching into datapoints collection
   Given an ogapi "deviceMessage builder" util 
     And I want to create a "deviceMessage"
    And the "version" "1.0.1"
-   And the "id" "sensor_testing_cucumber"
+   And the "id" "async_testing_cucumber"
    And the "path"
        |./ | /path |
    And the "name" "dmm name"
@@ -76,7 +102,7 @@ Feature: Searching into datapoints collection
        | type              | FIRMWARE  |
        | version           | test |
    And I want to define "software" in "deviceMessage"
-   And the "dateLocation" "2016-10-25T11:00:00"
+   And the "dateLocation" "2016-10-25T11:00:00Z"
    And the "longitude" 40.75
    And the "latitude" -35
    And the "currentTemperature" "1"
@@ -153,7 +179,7 @@ Feature: Searching into datapoints collection
        | modelName         |  4CCT   |
        | modelVersion      |  4CCT   |
        | clockDate         |  2015-07-16T19:20:30+01:00|
-       | upTime            |  2016-10-25T11:00:00|
+       | upTime            |  23|
    And I want to define "hardware" in "commsModuleMessage"
    And I want to create a "software" with this element:
        | field             | content |
@@ -191,7 +217,7 @@ Feature: Searching into datapoints collection
        | modelName         |  4CCT   |
        | modelVersion      |  4CCT   |
        | clockDate         |  2015-07-16T19:20:30+01:00|
-       | upTime            |  2016-10-25T11:00:00|
+       | upTime            |  5|
    And I want to define "hardware" in "subscriber"
    And I want to define "subscriber" in "commsModuleMessage"
    And I want to create a "subscription" with this element:
@@ -208,8 +234,7 @@ Feature: Searching into datapoints collection
        | addressApn        | subscription    | string |
    And I want to define "subscription" in "commsModuleMessage"
    And I want to define "commsModuleMessage" in "deviceMessage"
-   
-   Then I create it
+    Then I create it
    And response code should be: 201
 
 Scenario: Execute asynchronous search with paging
@@ -222,7 +247,7 @@ Scenario: Execute asynchronous search with paging
 
 Scenario: Execute asynchronous search with paging and cancell it in first page
     Given an ogapi "datapoints search" util
-  	And the start limit by "1" and size limit by "100"
+  	And the start limit by "1" and size limit by "1"
     And the resource by "datapoints"
   	When I build it
   	And I execute with async paging it and cancel it
@@ -230,17 +255,24 @@ Scenario: Execute asynchronous search with paging and cancell it in first page
 
 Scenario: Execute asynchronous search with paging and cancell it in first page with custom message
     Given an ogapi "datapoints search" util
-  	And the start limit by "1" and size limit by "100"
+  	And the start limit by "1" and size limit by "1"
     And the resource by "datapoints"
   	When I build it
   	And I execute with async paging it and cancel it with custom message
   	Then response code should be: "cancel with custom message"      
 
-Scenario: Delete a gateway that not exists 
-    Given an ogapi "devices builder" util 
-    And I want to create a "device"
-    And the "organization" "base_organization"
-    And the "channel" "base_channel"
-    And the "entity key" "sensor_testing_cucumber"
-    And I delete it
-    And response code should be: 200
+ Scenario: I want to delete the entity 
+    Given the entity of type "devices builder" with "async_organization" 
+    When I try to define the entity with... 
+		| datastream                                                        | typeFunction       |   value                 | parent      |
+		| provision.administration.channel                                  | simple             |  default_channel        |             |
+        | provision.administration.organization                             | simple             |  async_organization    |          |
+        | provision.device.identifier                                       | simple             |  async_testing_cucumber           |             |
+    Then I delete it
+
+
+   Scenario: Deleting an organization to use in create device
+    Given an ogapi "organizations builder" util
+    Then I want to delete an "organization"
+    And the "name" "async_organization"
+    Then I delete it
