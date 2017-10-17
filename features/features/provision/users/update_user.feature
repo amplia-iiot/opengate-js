@@ -1,5 +1,5 @@
 # features/update_user.feature
-
+@provision
 @update_provision
 @user
 Feature: Delete and Create an user 

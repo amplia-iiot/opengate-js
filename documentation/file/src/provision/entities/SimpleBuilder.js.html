@@ -118,6 +118,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SimpleBuilder.js~SimpleBuilder.html">SimpleBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SubscriberBuilder.js~SubscriberBuilder.html">SubscriberBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SubscriptionBuilder.js~SubscriptionBuilder.html">SubscriptionBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SubscriberID">SubscriberID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SubscriptionID">SubscriptionID</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">rulesConfiguration</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html">RuleConfigurations</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsActions.js~RuleConfigurationsActions.html">RuleConfigurationsActions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder.html">RuleConfigurationsFinder</a></span></span></li>
@@ -240,10 +242,20 @@ export default class SimpleBuilder extends BaseProvision {
                 throw new Error(ERROR_DATASTREAM_NOT_ALLOWED);
             }
             let jSchema = _this._definedSchemas[_id].value;
-            let value = _this._entity[_id]._value._current.value;
-            if (!_this._jsonSchemaValidator.validate(value, jSchema).valid) {
-                errors.push(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
+            if (_this._entity[_id].constructor === Array) {
+                _this._entity[_id].forEach(function(item) {
+                    let value = item._value._current.value;
+                    if (!_this._jsonSchemaValidator.validate(value, jSchema).valid) {
+                        errors.push(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
+                    }
+                });
+            } else {
+                let value = _this._entity[_id]._value._current.value;
+                if (!_this._jsonSchemaValidator.validate(value, jSchema).valid) {
+                    errors.push(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
+                }
             }
+
         });
 
         if (errors.length &gt; 0) {
