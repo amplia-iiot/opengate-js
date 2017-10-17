@@ -1,8 +1,9 @@
 'use strict';
 var q = require('q');
+var assert = require('chai').assert;
 
-module.exports = function () {
-    this.When(/^I try to find by...$/, function (table) {
+module.exports = function() {
+    this.When(/^I try to find by...$/, function(table) {
         // Write code here that turns the phrase above into concrete actions
 
         var _this = this;
@@ -47,7 +48,7 @@ module.exports = function () {
         }
     });
 
-    this.When(/^I try to search with...$/, function (table, callback) {
+    this.When(/^I try to search with...$/, function(table, callback) {
         // Write code here that turns the phrase above into concrete actions
 
         var _this = this;
@@ -74,33 +75,53 @@ module.exports = function () {
     });
 
 
-    this.When(/^I try to search with all allow fields$/, function (callback) {
+    this.When(/^I try to search with all allow fields$/, function(callback) {
         var _this = this;
         var filter = {
             and: []
         };
 
-        return _this.util.findFields("").then(function (fields) {
-            var pArray = [];
-            fields.forEach(function (field) {
-                pArray.push(findFields(field + "."));
-            });
-            return q.all(pArray);
-        }).catch(function (err) {
-            //console.error(err);
-            assert.strictEqual(true, false);
-        }).done(function () {
-            //console.log(JSON.stringify(filter));
-            _this.util.filter(filter);
-            callback();
-        });
+        switch (_this.util.constructor.name) {
+            case 'DevicesSearchBuilder':
+            case 'SubscriptionsSearchBuilder':
+            case 'SubscribersSearchBuilder':
+                _this.util.findFields("").then(function(fields) {
+                    var pArray = [];
+                    fields.forEach(function(field) {
+                        addField(field);
+                    });
+                    console.log("filter: " + JSON.stringify(filter));
+                    _this.util.filter(filter);
+                    callback();
+                }).catch(function(err) {
+                    console.log(err);
+                    callback(err);
+                });
+                break;
+            default:
+                return _this.util.findFields("").then(function(fields) {
+                    var pArray = [];
+                    fields.forEach(function(field) {
+                        pArray.push(findFields(field + "."));
+                    });
+
+                    return q.all(pArray);
+                }).catch(function(err) {
+                    assert.strictEqual(true, false);
+                }).done(function() {
+                    console.log("filter: " + JSON.stringify(filter));
+                    _this.util.filter(filter);
+                    callback();
+                });
+
+        }
 
         function findFields(helpField) {
             var _helpField = helpField;
-            return _this.util.findFields(_helpField).then(function (fields) {
+            return _this.util.findFields(_helpField).then(function(fields) {
                 if (fields.length !== 0) {
                     var pArray = [];
-                    fields.forEach(function (field) {
+                    fields.forEach(function(field) {
                         pArray.push(findFields(field + "."));
                     });
                     return q.all(pArray);
@@ -108,8 +129,8 @@ module.exports = function () {
                     // Eliminar el último .
                     addField(helpField.slice(0, -1));
                 }
-            }).catch(function (err) {
-                //console.error(err);
+            }).catch(function(err) {
+                console.error("ERR2: " + JSON.stringify(err));
                 assert.strictEqual(true, false);
             });
         }
@@ -123,7 +144,7 @@ module.exports = function () {
         }
     });
 
-    this.When(/^I try to define the entity with...$/, function (table, callback) {
+    this.When(/^I try to define the entity with...$/, function(table, callback) {
         // Write code here that turns the phrase above into concrete actions
 
         var _this = this;
