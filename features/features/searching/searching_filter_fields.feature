@@ -1,54 +1,22 @@
 # features/searching_filter_fields.feature
 @filter-fields
+@searching
 @catalogs
 Feature: Searching for all filter fields
   As a user of JsApi
   I want to search for all filter fields
   So I can add filter with all filter fields to search any entity
-  
-  @bug @ODMQA-1156
-  Scenario: Execute all fields on communications module searching
-  Given an apikey user by "require-real-apikey"
-    And an ogapi "communications module search" util
-    And I want to search a "entity" 
-    And I want to search into "collected data" 
-   When I try to search with all allow fields
-   When I build it
-    And I execute it
-   Then response code should be: 204
 
 @bug @ODMQA-1152
   Scenario: Execute all fields on devices searching
   Given an apikey user by "require-real-apikey"
     And an ogapi "devices search" util
     And I want to search a "entity" 
-    And I want to search into "collected data" 
+    #And I want to search into "collected data" 
    When I try to search with all allow fields
    When I build it
     And I execute it
    Then response code should be: 204
-
-@bug @ODMQA-1153
-  Scenario: Execute all fields on subscriptions searching
-  Given an apikey user by "require-real-apikey"
-    And an ogapi "subscriptions search" util
-    And I want to search a "entity" 
-    And I want to search into "collected data" 
-   When I try to search with all allow fields
-   When I build it
-    And I execute it
-   Then response code should be: 204
-
-@bug @ODMQA-1154
-  Scenario: Execute all fields on subscribers searching
-  Given an apikey user by "require-real-apikey"
-    And an ogapi "subscribers search" util
-    And I want to search a "entity" 
-    And I want to search into "collected data" 
-   When I try to search with all allow fields
-   When I build it
-    And I execute it
-   Then response code should be: 204    
 
 @fail
   Scenario: Execute all fields on certificates searching
@@ -57,14 +25,15 @@ Feature: Searching for all filter fields
    When I try to search with all allow fields
    When I build it
     And I execute it
-   Then response code should be: 204    
+   Then throws an error equal to "There is a parameter with incorrect value in the filter"
+   And response code should be: 400
 
 @bug @ODMQA-1155
   Scenario: Execute all fields on alarms searching
   Given an apikey user by "require-real-apikey"
     And an ogapi "alarms search" util
     And I want to search a "multiple entity" 
-    And I want to search into "on devices" 
+    And I want to search into "on devices"
    When I try to search with all allow fields
    When I build it
     And I execute it
@@ -88,7 +57,8 @@ Feature: Searching for all filter fields
    When I try to search with all allow fields
    When I build it
     And I execute it
-   Then response code should be: 204    
+   Then throws an error equal to "There is a parameter with incorrect value in the filter"
+    And response code should be: 400
 
 @fail
   Scenario: Execute all fields on bundles searching
@@ -97,7 +67,8 @@ Feature: Searching for all filter fields
    When I try to search with all allow fields
    When I build it
     And I execute it
-   Then response code should be: 204    
+   Then throws an error equal to "There is a parameter with incorrect value in the filter"
+    And response code should be: 400
 
 @bug @ODMQA-1149
   Scenario: Execute all fields on datapoints searching
@@ -117,14 +88,14 @@ Feature: Searching for all filter fields
     And I execute it
    Then response code should be: 204    
 
-@iot-devices
-  Scenario: Execute all fields on iot devices searching
-  Given an apikey user by "require-real-apikey"
-    And an ogapi "iot devices search" util
-   When I try to search with all allow fields
-   When I build it
-    And I execute it
-   Then response code should be: 204      
+# @iot-devices
+#   Scenario: Execute all fields on iot devices searching
+#   Given an apikey user by "require-real-apikey"
+#     And an ogapi "iot devices search" util
+#    When I try to search with all allow fields
+#    When I build it
+#     And I execute it
+#    Then response code should be: 204      
 
   @bug @ODMQA-1148 @datamodel
   Scenario: Execute all fields on datamodels searching
@@ -178,4 +149,4 @@ Feature: Searching for all filter fields
    When I try to search with all allow fields
    When I build it
     And I execute it
-   Then response code should be: 204  
+   Then response code should be: 200  
