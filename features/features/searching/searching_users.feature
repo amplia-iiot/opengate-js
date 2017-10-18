@@ -1,5 +1,6 @@
 # features/searching_users.feature
 @searching_users
+@searching
 Feature: Searching users 
   As a user of JsApi
   I want to search into users collection

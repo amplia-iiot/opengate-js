@@ -155,7 +155,6 @@ var BoxBuilder = (function () {
                     }
                 });
             })['catch'](function (err) {
-
                 err.data.errors.forEach(function (err) {
                     var error = err.description;
                     if (err.label) error += ":" + err.label;
@@ -215,7 +214,7 @@ var BoxBuilder = (function () {
         value: function _delete(defered, percentage) {
             var _this = this;
             return this._ogapi.Napi['delete'](this._urlWithKey()).then(function (res) {
-                defered.notify({ message: 'Entity deleted:' + _this._key._current._value.value, type: 'warning', percentage: percentage });
+                defered.notify({ message: 'Entity deleted:' + _this._key, type: 'warning', percentage: percentage });
             });
         }
     }]);

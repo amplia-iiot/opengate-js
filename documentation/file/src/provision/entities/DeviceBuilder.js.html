@@ -328,7 +328,6 @@ class BoxBuilder {
 
                 });
         }).catch((err) =&gt; {
-
             err.data.errors.forEach((err) =&gt; {
                 var error = err.description;
                 if (err.label)
@@ -389,7 +388,7 @@ class BoxBuilder {
         let _this = this;
         return this._ogapi.Napi.delete(this._urlWithKey())
             .then((res) =&gt; {
-                defered.notify({ message: &apos;Entity deleted:&apos; + _this._key._current._value.value, type: &apos;warning&apos;, percentage: percentage });
+                defered.notify({ message: &apos;Entity deleted:&apos; + _this._key, type: &apos;warning&apos;, percentage: percentage });
             });
     }
 }
