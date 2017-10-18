@@ -155,7 +155,12 @@ var BoxBuilder = (function () {
                     }
                 });
             })['catch'](function (err) {
-                defer.notify({ message: 'Error: ' + err, type: 'error', percentage: 80 });
+
+                err.data.errors.forEach(function (err) {
+                    var error = err.description;
+                    if (err.label) error += ":" + err.label;
+                    defer.notify({ message: 'Error: ' + error, type: 'error', percentage: 80 });
+                });
                 var deletePromises = [_this['delete'](defer, 90)];
                 childEntityPromises.forEach(function (item) {
                     deletePromises.push(item.wrapper['delete'](defer, 90));
@@ -210,7 +215,7 @@ var BoxBuilder = (function () {
         value: function _delete(defered, percentage) {
             var _this = this;
             return this._ogapi.Napi['delete'](this._urlWithKey()).then(function (res) {
-                defered.notify({ message: 'Entity deleted:' + _this._key, type: 'warning', percentage: percentage });
+                defered.notify({ message: 'Entity deleted:' + _this._key._current._value.value, type: 'warning', percentage: percentage });
             });
         }
     }]);
@@ -226,6 +231,7 @@ var WrapperBuilder = (function () {
         this._url = url;
         this._ogapi = ogapi;
         this._key = key;
+        this._created = false;
     }
 
     /**
@@ -270,6 +276,7 @@ var WrapperBuilder = (function () {
 
             function create(defered, defer, percentage) {
                 _this._ogapi.Napi.post(_this._url, _this._obj).then(function (res) {
+                    _this._created = true;
                     defered.notify({ message: 'Entity created:' + _this._key, type: 'success', percentage: percentage });
                     defer.resolve('Entity created:' + _this._key);
                 })['catch'](function (err) {
@@ -283,8 +290,13 @@ var WrapperBuilder = (function () {
         key: 'delete',
         value: function _delete(defered, percentage) {
             var _this = this;
-            return this._ogapi.Napi['delete'](this._urlWithKey()).then(function (res) {
-                defered.notify({ message: 'Entity deleted:' + _this._key, type: 'warning', percentage: percentage });
+            if (this._created) {
+                return this._ogapi.Napi['delete'](this._urlWithKey()).then(function (res) {
+                    defered.notify({ message: 'Entity deleted:' + _this._key, type: 'warning', percentage: percentage });
+                });
+            }
+            return Q.fcall(function () {
+                return;
             });
         }
     }]);

@@ -328,7 +328,13 @@ class BoxBuilder {
 
                 });
         }).catch((err) =&gt; {
-            defer.notify({ message: &apos;Error: &apos; + err, type: &apos;error&apos;, percentage: 80 });
+
+            err.data.errors.forEach((err) =&gt; {
+                var error = err.description;
+                if (err.label)
+                    error += &quot;:&quot; + err.label;
+                defer.notify({ message: &apos;Error: &apos; + error, type: &apos;error&apos;, percentage: 80 });
+            });
             let deletePromises = [_this.delete(defer, 90)];
             childEntityPromises.forEach((item) =&gt; {
                 deletePromises.push(item.wrapper.delete(defer, 90));
@@ -383,7 +389,7 @@ class BoxBuilder {
         let _this = this;
         return this._ogapi.Napi.delete(this._urlWithKey())
             .then((res) =&gt; {
-                defered.notify({ message: &apos;Entity deleted:&apos; + _this._key, type: &apos;warning&apos;, percentage: percentage });
+                defered.notify({ message: &apos;Entity deleted:&apos; + _this._key._current._value.value, type: &apos;warning&apos;, percentage: percentage });
             });
     }
 }
@@ -394,6 +400,7 @@ class WrapperBuilder {
         this._url = url;
         this._ogapi = ogapi;
         this._key = key;
+        this._created = false;
     }
 
     _urlWithKey() {
@@ -432,6 +439,7 @@ class WrapperBuilder {
         function create(defered, defer, percentage) {
             _this._ogapi.Napi.post(_this._url, _this._obj)
                 .then((res) =&gt; {
+                    _this._created = true;
                     defered.notify({ message: &apos;Entity created:&apos; + _this._key, type: &apos;success&apos;, percentage: percentage });
                     defer.resolve(&apos;Entity created:&apos; + _this._key);
                 }).catch((err) =&gt; {
@@ -444,10 +452,15 @@ class WrapperBuilder {
 
     delete(defered, percentage) {
         let _this = this;
-        return this._ogapi.Napi.delete(this._urlWithKey())
-            .then((res) =&gt; {
-                defered.notify({ message: &apos;Entity deleted:&apos; + _this._key, type: &apos;warning&apos;, percentage: percentage });
-            });
+        if (this._created) {
+            return this._ogapi.Napi.delete(this._urlWithKey())
+                .then((res) =&gt; {
+                    defered.notify({ message: &apos;Entity deleted:&apos; + _this._key, type: &apos;warning&apos;, percentage: percentage });
+                });
+        }
+        return Q.fcall(() =&gt; {
+            return;
+        });
     }
 
 }

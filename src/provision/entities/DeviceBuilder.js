@@ -130,7 +130,12 @@ class BoxBuilder {
 
                 });
         }).catch((err) => {
-            defer.notify({ message: 'Error: ' + err, type: 'error', percentage: 80 });
+            err.data.errors.forEach((err) => {
+                var error = err.description;
+                if (err.label)
+                    error += ":" + err.label;
+                defer.notify({ message: 'Error: ' + error, type: 'error', percentage: 80 });
+            });
             let deletePromises = [_this.delete(defer, 90)];
             childEntityPromises.forEach((item) => {
                 deletePromises.push(item.wrapper.delete(defer, 90));
@@ -196,6 +201,7 @@ class WrapperBuilder {
         this._url = url;
         this._ogapi = ogapi;
         this._key = key;
+        this._created = false;
     }
 
     _urlWithKey() {
@@ -234,6 +240,7 @@ class WrapperBuilder {
         function create(defered, defer, percentage) {
             _this._ogapi.Napi.post(_this._url, _this._obj)
                 .then((res) => {
+                    _this._created = true;
                     defered.notify({ message: 'Entity created:' + _this._key, type: 'success', percentage: percentage });
                     defer.resolve('Entity created:' + _this._key);
                 }).catch((err) => {
@@ -246,10 +253,15 @@ class WrapperBuilder {
 
     delete(defered, percentage) {
         let _this = this;
-        return this._ogapi.Napi.delete(this._urlWithKey())
-            .then((res) => {
-                defered.notify({ message: 'Entity deleted:' + _this._key, type: 'warning', percentage: percentage });
-            });
+        if (this._created) {
+            return this._ogapi.Napi.delete(this._urlWithKey())
+                .then((res) => {
+                    defered.notify({ message: 'Entity deleted:' + _this._key, type: 'warning', percentage: percentage });
+                });
+        }
+        return Q.fcall(() => {
+            return;
+        });
     }
 
 }
