@@ -26,7 +26,7 @@ Feature: Searching specific type in catalog
     Then response code should be: 200
     And the result contains:
     """
-{"specificType":[{"entityType":"ASSET","id":"CONTAINER"},{"entityType":"ASSET","id":"GENERIC"},{"entityType":"ASSET","id":"METER"},{"entityType":"ASSET","id":"SENSOR"},{"entityType":"ASSET","id":"TPV"},{"entityType":"ASSET","id":"VEHICLE"},{"entityType":"ASSET","id":"VENDING"},{"entityType":"ASSET","id":"GLUCOMETER_SENSOR"},{"entityType":"ASSET","id":"WEIGHT_SENSOR"},{"entityType":"ASSET","id":"BLOODPRESSURE_SENSOR"}]}
+{"specificType":[{"entityType":"ASSET","id":"BLOODPRESSURE_SENSOR"},{"entityType":"ASSET","id":"COMHUB"},{"entityType":"ASSET","id":"CONCENTRATOR"},{"entityType":"ASSET","id":"CONTAINER"},{"entityType":"ASSET","id":"COORDINATOR"},{"entityType":"ASSET","id":"GENERIC"},{"entityType":"ASSET","id":"GLUCOMETER_SENSOR"},{"entityType":"ASSET","id":"METER"},{"entityType":"ASSET","id":"MODEM"},{"entityType":"ASSET","id":"ROUTER"},{"entityType":"ASSET","id":"SENSOR"},{"entityType":"ASSET","id":"TPV"},{"entityType":"ASSET","id":"VEHICLE"},{"entityType":"ASSET","id":"VENDING"},{"entityType":"ASSET","id":"WEIGHT_SENSOR"}]}
     """
 
   Scenario: Execute searching with parameters 
