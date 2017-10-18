@@ -1,4 +1,5 @@
 # features/searching_workgroups.feature
+@searching
 @searching_workgroups
 Feature: Searching workgroups 
   As a user of JsApi
