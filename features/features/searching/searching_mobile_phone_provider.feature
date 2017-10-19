@@ -1,5 +1,5 @@
 # features/searching_mobile_phone_provider.feature
-
+@searching
 @mobile_phone_provider
 @catalogs
 Feature: Searching mobile phone provider in catalog

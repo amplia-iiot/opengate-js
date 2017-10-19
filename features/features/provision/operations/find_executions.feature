@@ -1,6 +1,6 @@
 # features/find_executions.feature
-
-@finder
+@provision
+@find_executions
 @executions
 @operations
 Feature: Find a executions of an operation 
@@ -10,6 +10,35 @@ Feature: Find a executions of an operation
 
   Background:
     Given an apikey user by "require-real-apikey"
+
+Scenario: Creating an organization to use in create device
+    Given an ogapi "organizations builder" util
+    Then I want to create an "organization"
+    And the "name" "find_executions_organization"
+    And the "description" "find execution organization"
+    And the "country code" "ES"
+    And the "lang code" "es"
+    And the "time zone" "Europe/Andorra"
+    And the "zoom" 10
+    And the "location" with 1 and 1 
+    Then I create it
+    And response code should be: 201
+
+  Scenario: I want to create an entity 
+    Given the entity of type "devices builder" with "find_executions_organization" 
+    And I get allowed Datastreams fields
+    And I can found "provision.device.identifier" as datastream name
+    When I try to define the entity with... 
+		| datastream                                                        | typeFunction       |   value                           | parent      |
+		| provision.administration.channel                                  | simple             |  default_channel                  |             |
+        | provision.administration.organization                             | simple             |  fin_executions_organization      |             |
+        | provision.administration.serviceGroup                             | simple             |  emptyServiceGroup                |             |
+        | provision.device.identifier                                       | simple             |  find_executions_device            |             |
+        | provision.device.operationalStatus                                | simple             |  NORMAL                           |             |   
+        | provision.device.administrativeState                              | simple             |  ACTIVE                           |             |
+
+    Then I create it
+    And response code should be: 201
 
 Scenario: Execute operation with default values and find its executions
 Given the operation by "ADMINISTRATIVE_STATUS_CHANGE"
@@ -21,7 +50,8 @@ Given the operation by "ADMINISTRATIVE_STATUS_CHANGE"
     And parameter "admsts" by "inventado"
     And the job timeout by 5 minutes
     And execute immediately
-    And append entities by "{}" as filter with "ASSET" as entityType
+    And append entities by:
+        |   find_executions_device  |
     When I build it
     And I execute it
     Then response code should be: 201
@@ -48,7 +78,8 @@ Given the operation by "ADMINISTRATIVE_STATUS_CHANGE"
     And parameter "admsts" by "inventado"
     And the job timeout by 5 minutes
     And execute immediately
-    And append entities by "{}" as filter with "ASSET" as entityType
+    And append entities by:
+        |   find_executions_device  |
     When I build it
     And I execute it
     Then response code should be: 201
@@ -56,3 +87,20 @@ Given the operation by "ADMINISTRATIVE_STATUS_CHANGE"
     And I want to read a "executions" and the start limit by "1" and size limit by "1"
     When I try to find by operation's id
     Then I can see into the result an "execution type" as "ADMINISTRATIVE_STATUS_CHANGE"
+
+  Scenario: I want to delete the entity 
+    Given the entity of type "devices builder" with "find_executions_organization" 
+    And I get allowed Datastreams fields
+    And I can found "provision.device.identifier" as datastream name
+    When I try to define the entity with... 
+		| datastream                                 | typeFunction       |   value                              | parent      |
+        | provision.device.identifier                | simple             |  find_executions_device               |             |
+    And I delete it
+    Then response code should be: 200
+
+  Scenario: Deleting an organization
+   Given an ogapi "organizations builder" util
+   Then I want to delete an "organization"
+   And the "name" "find_executions_organization"
+   Then I delete it
+   And response code should be: 200

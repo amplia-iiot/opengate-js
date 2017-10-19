@@ -1,5 +1,5 @@
 # features/update_periodic_operation.feature
-
+@provision
 @operations
 @update_periodic_operation
 Feature: Update periodic operation
@@ -9,6 +9,35 @@ Feature: Update periodic operation
 
   Background:
   Given an apikey user by "require-real-apikey"
+
+   Scenario: Creating an organization to use in create device
+    Given an ogapi "organizations builder" util
+    Then I want to create an "organization"
+    And the "name" "update_periodic_organization"
+    And the "description" "actions execution organization"
+    And the "country code" "ES"
+    And the "lang code" "es"
+    And the "time zone" "Europe/Andorra"
+    And the "zoom" 10
+    And the "location" with 1 and 1 
+    Then I create it
+    And response code should be: 201
+
+  Scenario: I want to create an entity 
+    Given the entity of type "devices builder" with "update_periodic_organization" 
+    And I get allowed Datastreams fields
+    And I can found "provision.device.identifier" as datastream name
+    When I try to define the entity with... 
+		| datastream                                                        | typeFunction       |   value                                | parent      |
+		| provision.administration.channel                                  | simple             |  default_channel                       |             |
+        | provision.administration.organization                             | simple             |  update_periodic_organization   |             |
+        | provision.administration.serviceGroup                             | simple             |  emptyServiceGroup                     |             |
+        | provision.device.identifier                                       | simple             |  update_periodic_device         |             |
+        | provision.device.operationalStatus                                | simple             |  NORMAL                                |             |   
+        | provision.device.administrativeState                              | simple             |  ACTIVE                                |             |
+
+    Then I create it
+    And response code should be: 201
 
 Scenario: Execute periodic operation every day, and change time
   Given the operation by "ADMINISTRATIVE_STATUS_CHANGE"
@@ -20,7 +49,9 @@ Scenario: Execute periodic operation every day, and change time
     And parameter "admsts" by "inventado"
     And the job timeout by 5 minutes
     And execute every day at "now"
-    And append entities by "{}" as filter with "ASSET" as entityType
+    And append entities by:
+        |   update_periodic_device  |
+    #And append entities by "{}" as filter with "ASSET" as entityType
    When I build it
     And I execute it
    Then response code should be: 201
@@ -320,3 +351,20 @@ Scenario: Execute periodic operation every year, and change time
     {"start":{"date":"2020-03-10T21:44:13Z"},"repeating":{"period":null,"pattern":{"time":"22:44:13+01:00","yearly":{"day":18,"month":"APR"},"definedPatternNumber":0}}}
     """ 
 
+     
+  Scenario: I want to delete the entity 
+    Given the entity of type "devices builder" with "update_periodic_organization" 
+    And I get allowed Datastreams fields
+    And I can found "provision.device.identifier" as datastream name
+    When I try to define the entity with... 
+		| datastream                                 | typeFunction       |   value                             | parent      |
+        | provision.device.identifier                | simple             |  update_periodic_device          |             |
+    And I delete it
+    Then response code should be: 200
+
+  Scenario: Deleting an organization
+   Given an ogapi "organizations builder" util
+   Then I want to delete an "organization"
+   And the "name" "update_periodic_organization"
+   Then I delete it
+   And response code should be: 200

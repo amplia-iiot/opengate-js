@@ -2,6 +2,7 @@
 @iot
 @datamodel
 @update_provision
+@provision
 @update_provision_iot
 @update_iot_profile
 @update_datamodel

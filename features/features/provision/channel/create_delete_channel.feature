@@ -1,4 +1,5 @@
 # features/create_delete_channel.feature
+@provision
 @create_provision
 @create_channel
 @channel

@@ -1,4 +1,5 @@
 # features/execute_operations.feature
+@provision
 @device_builder
 @execute_operations
 @operations
@@ -10,21 +11,32 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE operation
   Background:
     Given an apikey user by "require-real-apikey"
 
- 
- Scenario: Create a asset that not exists 
-    Given an apikey user by "require-real-apikey"
-    And an ogapi "devices builder" util 
-    And I want to create a "device"
-    Given the "organization" "base_organization"
-    And the "channel" "base_channel"
-    And the "administrative state" "TESTING"
-    And the "operational status" "TEST"
-    And the "entity key" "device_689_DEMO"
-    And the "serial number" "OGUX_SerialNumber_GATEWAY"
-    And the "name" "OGUX Device GATEWAY tester"
-    And the "description" "OGUX Device tester full GATEWAY description"
-    And the "type" "asset"
-    And I delete it
+ Scenario: Creating an organization to use in create device
+    Given an ogapi "organizations builder" util
+    Then I want to create an "organization"
+    And the "name" "execute_operations_organization"
+    And the "description" "execute operations organization"
+    And the "country code" "ES"
+    And the "lang code" "es"
+    And the "time zone" "Europe/Andorra"
+    And the "zoom" 10
+    And the "location" with 1 and 1 
+    Then I create it
+    And response code should be: 201
+
+  Scenario: I want to create an entity
+    Given the entity of type "devices builder" with "execute_operations_organization" 
+    And I get allowed Datastreams fields
+    And I can found "provision.device.identifier" as datastream name
+    When I try to define the entity with... 
+		| datastream                                                        | typeFunction       |   value                                    | parent      |
+		| provision.administration.channel                                  | simple             |  default_channel                           |             |
+        | provision.administration.organization                             | simple             |  execute_operations_organization           |             |
+        | provision.administration.serviceGroup                             | simple             |  emptyServiceGroup                         |             |
+        | provision.device.identifier                                       | simple             |  execute_operations_device_cucumber        |             |
+        | provision.device.operationalStatus                                | simple             |  NORMAL                                    |             |   
+        | provision.device.administrativeState                              | simple             |  ACTIVE                                    |             |
+
     Then I create it
     And response code should be: 201
 
@@ -40,21 +52,21 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE operation
     And the job timeout by 5 minutes
     And execute immediately
     And append entities by "" as tag
-    And append entities by "{}" as filter with "ASSET" as entityType
+    #And append entities by "{}" as filter with "ASSET" as entityType
     And append entities by:
-        |   device_689_DEMO  |
+        |   execute_operations_device_cucumber  |
     When I build it
     And I execute it
     Then response code should be: 201
-    And response must have attached "device_689_DEMO" as "ASSET" entity
+    And response must have attached "execute_operations_device_cucumber" as "ASSET" entity
     And response must have attached an entity list with "ASSET" type defined by:
-        |   device_689_DEMO  |
+        |   execute_operations_device_cucumber  |
 
 
   Scenario: Execute ADMINISTRATIVE_STATUS_CHANGE operation without mandatory parameter
     Given the operation by "ADMINISTRATIVE_STATUS_CHANGE"
     And append entities by:
-        |   device_689_DEMO  |
+        |   execute_operations_device_cucumber  |
     When I build it
     Then throws an error. the error message explain that a parameter with name "admsts" is mandatory
 
@@ -63,7 +75,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE operation
     Given the operation by "SIM_REPLACEMENT"
     And parameter "icc" by "inventado"
     And append entities by:
-        |   device_689_DEMO  |
+        |   execute_operations_device_cucumber  |
     When I build it
     And I execute it
     Then response error code sould be: 400
@@ -72,7 +84,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE operation
   Scenario: Execute ADMINISTRATIVE_STATUS_CHANGE operation and I append two times the same parameter and should have appended the last parameter set
     Given the operation by "ADMINISTRATIVE_STATUS_CHANGE"
     And append entities by:
-        |   device_689_DEMO  |        
+        |   execute_operations_device_cucumber  |        
     And parameter "admsts" by "ACTIVE"
     And parameter "admsts" by "INACTIVE"
     When I build it
@@ -84,7 +96,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE operation
     And parameter "icc" by "inventado"
     And the operation by "SIM_REPLACEMENT"
     And append entities by:
-        |   device_689_DEMO  |        
+        |   execute_operations_device_cucumber  |        
     When I build it   
     Then throws an error equal to "This operation <SIM_REPLACEMENT> there are required parameters who have not been set. Parameters required: [icc]"
     
@@ -92,7 +104,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE operation
     Given the operation by "UPDATE"
     And execute immediately
     And append entities by:
-        |   device_689_DEMO  |
+        |   execute_operations_device_cucumber  |
     And parameter "bundleName" by "nombre"
     And parameter "bundleVersion" by "inventado"
     When I build it
@@ -104,7 +116,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE operation
     Given the operation by "APN_ALLOWED"
     And execute immediately
     And append entities by:
-        |   device_689_DEMO  |
+        |   execute_operations_device_cucumber  |
     And parameter "apn" by:
         |   apn1.customer.es   |
         |   apn3.customer.es   |
@@ -120,8 +132,10 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE operation
   Scenario: Execute a SET_DEVICE_PARAMETERS operation
     Given the operation by "SET_DEVICE_PARAMETERS"
     And execute immediately
+    And append entities by "" as tag
+    And append entities by "{}" as filter with "ASSET" as entityType
     And append entities by:
-        |   device_689_DEMO  |
+        |   execute_operations_device_cucumber  |
     And parameter "variableList" by:
         |   variableName   |    variableValue   |
         |       var        |          1         |
@@ -136,8 +150,10 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE operation
   Scenario: Execute a GET_DEVICE_PARAMETERS operation
     Given the operation by "GET_DEVICE_PARAMETERS"
     And execute immediately
+    And append entities by "" as tag
+    And append entities by "{}" as filter with "ASSET" as entityType
     And append entities by:
-        |   device_689_DEMO  |
+        |   execute_operations_device_cucumber  |
     And parameter "variableList" as object by:
         |   variableName   |
         |       type1        |
@@ -151,7 +167,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE operation
     Given the operation by "RATE_PLAN_CHANGE"
     And execute immediately
     And append entities by:
-        |   device_689_DEMO  |
+        |   execute_operations_device_cucumber  |
     And parameter "ratePlan" by "DiscountRatePlan2" not allowed
     When I build it
     And I execute it
@@ -162,7 +178,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE operation
     Given the operation by "SERVICE_CONFIGURATION"
     And execute immediately
     And append entities by:
-        |   device_689_DEMO  |
+        |   execute_operations_device_cucumber  |
     And parameter "dataService" by "true" as boolean
     And parameter "incomingMessages" by "true" as boolean
     And parameter "outgoingMessages" by "true" as boolean
@@ -185,7 +201,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE operation
     Given the operation by "SET_CLOCK_EQUIPMENT"
     And execute immediately
     And append entities by:
-        |   device_689_DEMO  |
+        |   execute_operations_device_cucumber  |
     And parameter "date" by "2016-09-16T05"
     And parameter "time" by "53:43T+02:0016"
     And parameter "dst" by "123" as number
@@ -197,18 +213,19 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE operation
     And response contains a parameter "timezone" as name and "4" as value
 
      
- Scenario: Create a asset that not exists 
-    Given an apikey user by "require-real-apikey"
-    And an ogapi "devices builder" util 
-    And I want to create a "device"
-    Given the "organization" "base_organization"
-    And the "channel" "base_channel"
-    And the "administrative state" "TESTING"
-    And the "operational status" "TEST"
-    And the "entity key" "device_689_DEMO"
-    And the "serial number" "OGUX_SerialNumber_GATEWAY"
-    And the "name" "OGUX Device GATEWAY tester"
-    And the "description" "OGUX Device tester full GATEWAY description"
-    And the "type" "asset"
+  Scenario: I want to delete the entity 
+    Given the entity of type "devices builder" with "execute_operations_organization" 
+    And I get allowed Datastreams fields
+    And I can found "provision.device.identifier" as datastream name
+    When I try to define the entity with... 
+		| datastream                                 | typeFunction       |   value                             | parent      |
+        | provision.device.identifier                | simple             |  execute_operations_device_cucumber          |             |
     And I delete it
-    And response code should be: 200
+    Then response code should be: 200
+
+  Scenario: Deleting an organization
+   Given an ogapi "organizations builder" util
+   Then I want to delete an "organization"
+   And the "name" "execute_operations_organization"
+   Then I delete it
+   And response code should be: 200

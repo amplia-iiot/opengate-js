@@ -4,6 +4,7 @@
 @datamodel
 @IoT_datastream_period_provider
 @iot_datastream
+@searching
 @catalogs
 Feature: Searching IoT datastream period provider in catalog
   As a user of JsApi

@@ -1,5 +1,5 @@
 # features/searching_softwares.feature
-
+@searching
 @softwares
 @catalogs
 Feature: Searching softwares in catalog

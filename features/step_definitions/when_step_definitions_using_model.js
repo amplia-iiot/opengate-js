@@ -90,11 +90,11 @@ module.exports = function() {
                     fields.forEach(function(field) {
                         addField(field);
                     });
-                    console.log("filter: " + JSON.stringify(filter));
+                    //console.log("filter: " + JSON.stringify(filter));
                     _this.util.filter(filter);
                     callback();
                 }).catch(function(err) {
-                    console.log(err);
+                    //console.log(err);
                     callback(err);
                 });
                 break;
@@ -109,7 +109,7 @@ module.exports = function() {
                 }).catch(function(err) {
                     assert.strictEqual(true, false);
                 }).done(function() {
-                    console.log("filter: " + JSON.stringify(filter));
+                    //console.log("filter: " + JSON.stringify(filter));
                     _this.util.filter(filter);
                     callback();
                 });
@@ -167,9 +167,9 @@ module.exports = function() {
             }
         } catch (err) {
             if (Object.keys(err).length === 0) {
-                console.log(err);
+                //console.log(err);
             } else {
-                console.log(JSON.stringify(err));
+                //console.log(JSON.stringify(err));
             }
             this.error = err;
             _er = true;

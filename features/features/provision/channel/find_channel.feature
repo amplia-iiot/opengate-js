@@ -1,5 +1,5 @@
 # features/find_channel.feature
-
+@provision
 @finder
 @find_provision
 @channel

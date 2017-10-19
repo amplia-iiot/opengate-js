@@ -1,5 +1,5 @@
 # features/searching_operational_status.feature
-
+@searching
 @operational_status
 @catalogs
 Feature: Searching operational status in catalog

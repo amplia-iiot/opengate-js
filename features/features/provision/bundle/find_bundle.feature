@@ -1,5 +1,5 @@
 # features/find_bundle.feature
-
+@provision
 @finder
 @find_provision
 @find_bundles
