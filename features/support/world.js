@@ -11,11 +11,11 @@ findCreateModel = require('./create_provision_model');
 findDeleteModel = require('./delete_provision_model');
 searchingModel = require('./searching_model');
 
-var APIKEY = 'require-real-apikey';
+var APIKEY = process.env.API_KEY || 'require-real-apikey';
 
 function World() {
-    this.test_url_north = 'REQUIRE-URL_NORTH';
-    this.test_url_south = 'REQUIRE-URL_SOUTH';
+    this.test_url_north = process.env.API_NORTH_INTERNAL || 'REQUIRE-URL_NORTH';
+    this.test_url_south = process.env.API_SOUTH_INTERNAL || 'REQUIRE-URL_SOUTH';
     chai.use(chai_as_promised);
     this.expect = chai.expect;
 
