@@ -46,9 +46,9 @@ var EntityFinder = (function (_ProvisionGenericFinder) {
         key: '_composeUrl',
         value: function _composeUrl() {
             if (this._flattened) {
-                return this._baseUrl + "/" + this._organization + "/entities/" + this._entitySource + "/" + this._id + "?flattened=true";
+                return this._baseUrl + "/" + this._organization + "/" + this._entitySource + "/" + this._id + "?flattened=true";
             } else {
-                return this._baseUrl + "/" + this._organization + "/entities/" + this._entitySource + "/" + this._id;
+                return this._baseUrl + "/" + this._organization + "/" + this._entitySource + "/" + this._id;
             }
         }
 
