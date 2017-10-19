@@ -17,7 +17,7 @@ Feature: Searching channels
   
   Scenario: Execute searching with a invalid start limit
     And the start limit by "null" and size limit by "5"
-   When I build itErr
+   When I build it
     And I execute it
    Then response code should be: 200  	
 
