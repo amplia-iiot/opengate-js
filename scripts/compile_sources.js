@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
     uglify = require('gulp-uglify'),
+    ver = require('gulp-ver'),
     esdoc = require("gulp-esdoc"),
     clean = require('gulp-clean'),
     babel = require('gulp-babel'),
