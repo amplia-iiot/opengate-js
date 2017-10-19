@@ -1,7 +1,9 @@
 # features/create_device_message.feature
+@provision
 @device_builder
 @create_device_message
 @device_message
+@entities_provision
 Feature: Send messages
   As a device of JsApi
   I want to create message and send it
@@ -12,33 +14,44 @@ Feature: Send messages
     And an ogapi "deviceMessage builder" util 
     And I want to create a "deviceMessage"
 
- Scenario: Create a gateway that not exists 
-    Given an apikey user by "require-real-apikey"
-    And an ogapi "devices builder" util 
-    And I want to create a "device"
-    Given the "organization" "base_organization"
-    And the "channel" "base_channel"
-    And the "administrative state" "TESTING"
-    And the "operational status" "TEST"
-    And the "entity key" "sensor_testing_cucumber"
-    And the "serial number" "OGUX_SerialNumber_GATEWAY"
-    And the "name" "OGUX Device GATEWAY tester"
-    And the "description" "OGUX Device tester full GATEWAY description"
-    And the "type" "gateway"
-    And the "specific type" "CONCENTRATOR"
-    And I delete it
+ Scenario: Creating an organization to use in create device
+    Given an ogapi "organizations builder" util
+    Then I want to create an "organization"
+    And the "name" "device_msg_organization"
+    And the "description" "device organization"
+    And the "country code" "ES"
+    And the "lang code" "es"
+    And the "time zone" "Europe/Andorra"
+    And the "zoom" 10
+    And the "location" with 1 and 1 
+    Then I create it
+    And response code should be: 201
+
+  Scenario: I want to get the allowed datastream 
+    Given the entity of type "devices builder" with "device_msg_organization" 
+    And I get allowed Datastreams fields
+    And I can found "provision.device.identifier" as datastream name
+    When I try to define the entity with... 
+		| datastream                                                        | typeFunction       |   value                       | parent      |
+		| provision.administration.channel                                  | simple             |  default_channel              |             |
+        | provision.administration.organization                             | simple             |  device_msg_organization   |             |
+        | provision.administration.serviceGroup                             | simple             |  emptyServiceGroup            |             |
+        | provision.device.identifier                                       | simple             |  device_ogapi_msg          |             |
+        | provision.device.operationalStatus                                | simple             |  NORMAL                       |             |   
+        | provision.device.administrativeState                              | simple             |  ACTIVE                       |             |
+
     Then I create it
     And response code should be: 201
 
   Scenario: Create a Iot message 
     Given the "datastreamVersion" "0.0.1"
-    And the "id" "sensor_testing_cucumber"
+    And the "id" "device_ogapi_msg"
     And I want to create a "datapoints message" with this element:
         | field      | content         | type|
         | from       | 123455          | number|
         | at         | 123456          | number|
         | value      | 114.3           | number|
-        | tags       | tag1,tag2      | array |
+        | tags       | tag1,tag2       | array |
     And I want to create a "datastream" with this element:
         | field      | content       | type|
         | feed       | feed element        | string|
@@ -52,9 +65,10 @@ Feature: Send messages
     Then I create it
     And response code should be: 201
 
+@ignore
  Scenario: Create a Dmm message 
    Given the "version" "1.0.1"
-   And the "id" "sensor_testing_cucumber"
+   And the "id" "device_ogapi_msg"
    And the "path"
        |./ | /path |
    And the "name" "dmm name"
@@ -212,19 +226,19 @@ Feature: Send messages
    Then I create it
    And response code should be: 201
 
- Scenario: Create a gateway that not exists 
-    Given an apikey user by "require-real-apikey"
-    And an ogapi "devices builder" util 
-    And I want to create a "device"
-    Given the "organization" "base_organization"
-    And the "channel" "base_channel"
-    And the "administrative state" "TESTING"
-    And the "operational status" "TEST"
-    And the "entity key" "sensor_testing_cucumber"
-    And the "serial number" "OGUX_SerialNumber_GATEWAY"
-    And the "name" "OGUX Device GATEWAY tester"
-    And the "description" "OGUX Device tester full GATEWAY description"
-    And the "type" "gateway"
-    And the "specific type" "CONCENTRATOR"
+Scenario: I want to delete the entity 
+    Given the entity of type "devices builder" with "device_msg_organization" 
+    And I get allowed Datastreams fields
+    And I can found "provision.device.identifier" as datastream name
+    When I try to define the entity with... 
+		| datastream                                 | typeFunction       |   value                 | parent      |
+        | provision.device.identifier                | simple             |  device_ogapi_msg           |             |
     And I delete it
-    And response code should be: 200
+    Then response code should be: 200
+
+
+Scenario: Deleting an organization to use in create device
+    Given an ogapi "organizations builder" util
+    Then I want to delete an "organization"
+    And the "name" "device_msg_organization"
+    Then I delete it

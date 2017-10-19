@@ -1,5 +1,5 @@
 # features/provision/areas/find_areas.feature
-
+@provision
 @finder
 @find_provision
 @area

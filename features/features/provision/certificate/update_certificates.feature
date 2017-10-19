@@ -1,5 +1,5 @@
 # features/create_certificates.feature
-
+@provision
 @update_certificates
 @certificates
 @ignore

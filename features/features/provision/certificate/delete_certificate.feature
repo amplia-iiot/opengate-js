@@ -1,5 +1,6 @@
 # features/delete_certificate.feature
-
+@provision
+@create_provision
 @delete_provision
 @certificates
 @ignore

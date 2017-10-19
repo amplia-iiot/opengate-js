@@ -1,8 +1,6 @@
 # features/searching_executions.feature
 @device_builder
 @operations
-@search
-@search_executions
 @searching
 @searching_executions
 Feature: Searching operation's executions
@@ -31,16 +29,16 @@ Scenario: Creating an organization to use in create device
     Then I get allowed Datastreams fields    
     And I can found "provision.device.identifier" as datastream name
     When I try to define the entity with... 
-		| datastream                                                        | typeFunction       |   value                 | parent      |
-		| provision.administration.channel                                  | simple             |  default_channel        |             |
-        | provision.administration.organization                             | simple             |  executions_organization    |          |
-        | provision.administration.serviceGroup                             | simple             |  emptyServiceGroup      |             |
-        | provision.device.identifier                                       | simple             |  device_executions_tests           |             |
-        | provision.device.operationalStatus                                | simple             |  TEST                 |             |   
-        | provision.device.administrativeState                              | simple             |  TESTING                 |             |
-        | provision.device.name                                             | simple             |  OGUX Device GATEWAY tester           |             |
+		| datastream                                                        | typeFunction       |   value                                                | parent      |
+		| provision.administration.channel                                  | simple             |  default_channel                                       |             |
+        | provision.administration.organization                             | simple             |  executions_organization                               |             |
+        | provision.administration.serviceGroup                             | simple             |  emptyServiceGroup                                     |             |
+        | provision.device.identifier                                       | simple             |  device_executions_tests                               |             |
+        | provision.device.operationalStatus                                | simple             |  TEST                                                  |             |   
+        | provision.device.administrativeState                              | simple             |  TESTING                                               |             |
+        | provision.device.name                                             | simple             |  OGUX Device GATEWAY tester                            |             |
         | provision.device.description                                      | simple             |  OGUX Device tester full GATEWAY description           |             |
-        | provision.device.specificType                                     | simple             |  CONCENTRATOR           |             |
+        | provision.device.specificType                                     | simple             |  CONCENTRATOR                                          |             |
     Then I delete it
     And I create it
     And response code should be: 201
@@ -76,10 +74,10 @@ Scenario: Creating an organization to use in create device
  Scenario: I want to delete the entity 
     Given the entity of type "devices builder" with "executions_organization" 
     When I try to define the entity with... 
-		| datastream                                                        | typeFunction       |   value                 | parent      |
-		| provision.administration.channel                                  | simple             |  default_channel        |             |
-        | provision.administration.organization                             | simple             |  executions_organization    |          |
-        | provision.device.identifier                                       | simple             |  device_executions_tests           |             |
+		| datastream                                                        | typeFunction       |   value                     | parent      |
+		| provision.administration.channel                                  | simple             |  default_channel            |             |
+        | provision.administration.organization                             | simple             |  executions_organization    |             |
+        | provision.device.identifier                                       | simple             |  device_executions_tests    |             |
     Then I delete it
 
   Scenario: Deleting an organization to use in create device

@@ -1,5 +1,5 @@
 # features/find_certificate.feature
-
+@provision
 @find_certificate
 @certificate
 Feature: Find a certificate

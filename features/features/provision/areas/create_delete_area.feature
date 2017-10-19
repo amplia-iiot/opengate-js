@@ -1,5 +1,6 @@
 # features/provision/areas/create_delete_area.feature
 @create_provision
+@provision
 @area
 @create_area
 Feature: Delete and Create a area

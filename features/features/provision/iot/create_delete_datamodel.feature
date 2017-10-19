@@ -1,4 +1,5 @@
 # features/provision/iot/create_delete_datamodel.feature
+@provision
 @iot
 @datamodel
 @create_provision

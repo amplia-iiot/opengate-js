@@ -1,5 +1,5 @@
 # features/delete_bundles.feature
-
+@provision
 @delete_bundles
 @bundles
 Feature: Create a bundle 

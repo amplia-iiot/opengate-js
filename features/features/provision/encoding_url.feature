@@ -1,5 +1,5 @@
 # features/encoding_url.feature
-
+@provision
 @encoding
 Feature: Create an organization with a name that contains special characters
   As a user of JsApi

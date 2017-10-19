@@ -227,13 +227,13 @@ module.exports = function() {
         _this.responseData = undefined;
 
         function catchResponse(data) {
-            console.log("EXECUTE RESPONSE: " + JSON.stringify(data));
+            //console.log("EXECUTE RESPONSE: " + JSON.stringify(data));
             _this.responseData = data;
             _this.error = undefined;
         }
 
         function catchErrorResponse(err) {
-            console.log("EXECUTE ERROR: " + JSON.stringify(err));
+            //console.log("EXECUTE ERROR: " + JSON.stringify(err));
             _this.responseData = err;
             _this.error = err;
             //console.log(_this.error);
@@ -242,7 +242,7 @@ module.exports = function() {
         try {
             return this.build.execute().then(catchResponse).catch(catchErrorResponse);
         } catch (err) {
-            console.log(err);
+            //console.log(err);
             this.error = err;
             return;
         }
@@ -269,7 +269,7 @@ module.exports = function() {
         }
 
         function catchNotification(notification) {
-            console.log("EXECUTE NOTIFICATION: " + JSON.stringify(notification));
+            //console.log("EXECUTE NOTIFICATION: " + JSON.stringify(notification));
             _this.error = undefined;
             _this.responseData = undefined;
             _this.data.push(notification);
@@ -278,7 +278,7 @@ module.exports = function() {
         try {
             return this.build.executeWithAsyncPaging(_this.util.resource).then(catchResponse, null, catchNotification).catch(catchErrorResponse);
         } catch (err) {
-            console.log(err);
+            //console.log(err);
             this.error = err;
             return;
         }
@@ -305,7 +305,7 @@ module.exports = function() {
         }
 
         function catchNotification(notification) {
-            console.log("EXECUTE NOTIFICATION: " + JSON.stringify(notification));
+            //console.log("EXECUTE NOTIFICATION: " + JSON.stringify(notification));
             _this.error = undefined;
             _this.responseData = undefined;
             _this.data.push(notification);
@@ -315,7 +315,7 @@ module.exports = function() {
         try {
             return this.build.executeWithAsyncPaging(_this.util.resource).then(catchResponse, null, catchNotification).catch(catchErrorResponse);
         } catch (err) {
-            console.log(err);
+            //console.log(err);
             this.error = err;
             return;
         }
@@ -342,7 +342,7 @@ module.exports = function() {
         }
 
         function catchNotification(notification) {
-            console.log("EXECUTE NOTIFICATION: " + JSON.stringify(notification));
+            //console.log("EXECUTE NOTIFICATION: " + JSON.stringify(notification));
             _this.error = undefined;
             _this.responseData = undefined;
             _this.data.push(notification);
@@ -352,7 +352,7 @@ module.exports = function() {
         try {
             return this.build.executeWithAsyncPaging(_this.util.resource).then(catchResponse, null, catchNotification).catch(catchErrorResponse);
         } catch (err) {
-            console.log(err);
+            //console.log(err);
             this.error = err;
             return;
         }
@@ -405,16 +405,16 @@ module.exports = function() {
         _this.responseData = undefined;
 
         function catchResponse(data) {
-            console.log("OK");
-            console.log("data: " + JSON.stringify(data));
+            //console.log("OK");
+            //console.log("data: " + JSON.stringify(data));
             _this.responseData = data;
             _this.location = _this.responseData.location;
             _this.error = undefined;
         }
 
         function catchErrorResponse(err) {
-            console.log("NOK");
-            console.log("ERROR: " + JSON.stringify(err));
+            //console.log("NOK");
+            //console.log("ERROR: " + JSON.stringify(err));
             _this.responseData = err;
             if (err.errors) {
                 _this.error = err.errors;
@@ -433,7 +433,7 @@ module.exports = function() {
             }
         } catch (err) {
             this.error = err;
-            console.log(err);
+            //console.log(err);
             return;
         }
     });
@@ -447,7 +447,7 @@ module.exports = function() {
 
         function catchResponse(data) {
             //console.log("OK");
-            console.log(JSON.stringify(data));
+            //console.log(JSON.stringify(data));
             _this.responseData = data;
             _this.error = undefined;
             //console.log(data);
@@ -455,7 +455,7 @@ module.exports = function() {
 
         function catchErrorResponse(err) {
             //console.log("NOK");
-            console.log(JSON.stringify(err));
+            //console.log(JSON.stringify(err));
             _this.responseData = err;
             _this.error = err;
         }
@@ -466,7 +466,7 @@ module.exports = function() {
             return _this.util.delete().then(catchResponse).catch(catchErrorResponse);
 
         } catch (err) {
-            console.error(err);
+            //console.error(err);
             _this.responseData = err;
             _this.error = err;
             //this.expect(this.error).to.be.undefined;
@@ -487,14 +487,14 @@ module.exports = function() {
         function catchErrorResponse(err) {
             _this.responseData = err;
             _this.error = err;
-            console.log(JSON.stringify(_this.error));
+            //console.log(JSON.stringify(_this.error));
         }
 
         try {
             return _this.util.update().then(catchResponse).catch(catchErrorResponse);
         } catch (err) {
             this.error = err;
-            console.log(err);
+            //console.log(err);
             return;
         }
     });

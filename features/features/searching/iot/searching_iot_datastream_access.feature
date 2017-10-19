@@ -5,6 +5,7 @@
 @IoT_datastream_access_provider
 @iot_datastream
 @catalogs
+@searching
 Feature: Searching IoT datastream access provider in catalog
   As a user of JsApi
   I want to search into IoT datastream access provider catalog

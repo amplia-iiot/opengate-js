@@ -1,5 +1,5 @@
 # features/searching_specific_type.feature
-
+@searching
 @specific_type
 @catalogs
 Feature: Searching specific type in catalog

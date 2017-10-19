@@ -1,6 +1,7 @@
 # features/searching_hardwares.feature
 @hardwares
 @catalogs
+@searching
 Feature: Searching hardwares in catalog
   As a user of JsApi
   I want to search into hardwares catalog
@@ -19,7 +20,7 @@ Feature: Searching hardwares in catalog
 @errors @bug @OGODM-3275
   Scenario: Execute searching with single hardware id filter that not exists
     When I try to search with... 
-    | field   | content            |
+    | field        | content            |
     | hardware id  | OpenGateNotExists |
     And I build it
     And I execute it
@@ -27,15 +28,15 @@ Feature: Searching hardwares in catalog
 @errors @bug @OGODM-3275
   Scenario: Execute searching with single hardware id filter that exists
     When I try to search with... 
-    | field   | content            |
-    | hardware id  | OpenGate |
+    | field        | content            |
+    | hardware id  | OpenGate           |
     And I build it
     And I execute it
     Then response code should be: 200
 
   Scenario: Execute searching with single model name filter that exists
     When I try to search with... 
-    | field   | content            |
+    | field       | content            |
     | model name  | OpenGate |
     And I build it
     And I execute it
@@ -43,7 +44,7 @@ Feature: Searching hardwares in catalog
 
   Scenario: Execute searching with single manufacturer name filter that exists
     When I try to search with... 
-    | field   | content            |
+    | field              | content            |
     | manufacturer name  | OpenGate |
     And I build it
     And I execute it
@@ -51,10 +52,10 @@ Feature: Searching hardwares in catalog
 @errors @bug @OGODM-3275
   Scenario: Execute searching with multiple filters that exists
     When I try to search with... 
-    | field   | content            |
-    | hardware id  | OpenGate |
-    | model name  | OpenGate |
-    | manufacturer name  | OpenGate |
+    | field              | content            |
+    | hardware id        | OpenGate           |
+    | model name         | OpenGate           |
+    | manufacturer name  | OpenGate           |
     And I build it
     And I execute it
     Then response code should be: 200

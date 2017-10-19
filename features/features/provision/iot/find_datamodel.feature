@@ -1,4 +1,5 @@
 # features/provision/iot/update_datamodel.feature
+@provision
 @iot
 @finder
 @datamodel
