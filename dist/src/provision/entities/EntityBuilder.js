@@ -36,7 +36,7 @@ var _SubscriptionBuilder2 = _interopRequireDefault(_SubscriptionBuilder);
 
 var jsonSchemaValidator = new _jsonschema2['default'].Validator();
 var ERROR_ORGANIZATION = 'Parameters organization must be defined';
-var schema_base = '/og_basic_types';
+var schema_base = '/og_basic_types.json';
 
 /**
  * This is a base object that contains all you can do about Devices.

@@ -10,7 +10,7 @@ import SubscriptionBuilder from './SubscriptionBuilder';
 
 const jsonSchemaValidator = new jsonschema.Validator();
 const ERROR_ORGANIZATION = 'Parameters organization must be defined';
-const schema_base = '/og_basic_types';
+const schema_base = '/og_basic_types.json';
 
 /**
  * This is a base object that contains all you can do about Devices.
