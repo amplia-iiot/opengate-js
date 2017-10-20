@@ -542,7 +542,7 @@ module.exports = function() {
         }
 
         try {
-            let args = [];
+            var args = [];
 
             var data = table.hashes();
 

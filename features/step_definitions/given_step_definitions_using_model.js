@@ -29,7 +29,7 @@ module.exports = function() {
     this.Given(/^an ogapi "([^"]*)" util with...$/, function(utilName, table, callback) {
         this.error = undefined;
         try {
-            let args = [utilName, this.ogapi];
+            var args = [utilName, this.ogapi];
             var data = table.hashes();
             if (data.length > 0) {
                 for (var i = 0; i < data.length; i++) {
@@ -162,7 +162,7 @@ module.exports = function() {
     this.Given(/^the "([^"]*)" with util "([^"]*)" and with...$/, function(setterName, utilAlias, table, callback) {
         this.error = undefined;
         try {
-            let args = [];
+            var args = [];
             var data = table.hashes();
             if (data.length > 0) {
                 for (var i = 0; i < data.length; i++) {
@@ -192,7 +192,7 @@ module.exports = function() {
     this.Given(/^the "([^"]*)" with util build "([^"]*)" and with...$/, function(setterName, utilAlias, table, callback) {
         this.error = undefined;
         try {
-            let args = [];
+            var args = [];
             var data = table.hashes();
             if (data.length > 0) {
                 for (var i = 0; i < data.length; i++) {
@@ -235,11 +235,11 @@ module.exports = function() {
     this.Given(/^the "([^"]*)" with...$/, function(setterName, table, callback) {
         this.error = undefined;
         try {
-            let args = [];
-            let data = table.hashes();
+            var args = [];
+            var data = table.hashes();
             if (data.length > 0) {
-                for (let i = 0; i < data.length; i++) {
-                    let param = data[i].param;
+                for (var i = 0; i < data.length; i++) {
+                    var param = data[i].param;
                     try {
                         param = JSON.parse(param);
                     } catch (err) {
@@ -265,11 +265,11 @@ module.exports = function() {
     this.Given(/^the "([^"]*)" on util "([^"]*)" with...$/, function(setterName, utilAlias, table, callback) {
         this.error = undefined;
         try {
-            let args = [];
-            let data = table.hashes();
+            var args = [];
+            var data = table.hashes();
             if (data.length > 0) {
-                for (let i = 0; i < data.length; i++) {
-                    let param = data[i].param;
+                for (var i = 0; i < data.length; i++) {
+                    var param = data[i].param;
                     try {
                         param = JSON.parse(param);
                     } catch (err) {
