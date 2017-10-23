@@ -269,7 +269,7 @@ export default class NorthAmpliaREST {
         if (formData && (formData.meta || formData.file || formData.json || formData.certificate)) {
             if (formData.meta) {
                 req.field('meta', formData.meta);
-                delete formData['meta'];
+                delete formData['Fmeta'];
             }
             if (formData.json) {
                 req.field('json', formData.json);

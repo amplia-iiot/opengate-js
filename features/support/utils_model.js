@@ -229,7 +229,11 @@ module.exports = {
             },
             "entities relations builder": function() {
                 return ogapi.relationsBuilder();
+            },
+            "entities search": function() {
+                return ogapi.entitiesSearchBuilder();
             }
+            
         };
         return utilsMath[utilName](ogapi, param, param2);
     }

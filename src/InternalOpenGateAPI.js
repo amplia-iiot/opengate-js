@@ -82,6 +82,7 @@ import DatamodelsFinder from './iot/datamodels/DatamodelsFinder'
 import DatastreamsBuilder from './iot/catalog/Datastream'
 import QratingsBuilder from './iot/catalog/Qrating'
 import EntityBuilder from './provision/entities/EntityBuilder'
+import EntitiesSearchBuilder from './searching/builder/EntitiesSearchBuilder'
 
 /**
  * This is a abstract class, it must be extended to another class that defined the backend, it will be used on request to Opengate North API by browser or nodejs server
@@ -419,6 +420,13 @@ export default class InternalOpenGateAPI {
         return new JsonSchemaSearchBuilder(this);
     }
 
+    /**
+     * This return a ExecutionsSearchBuilder to build a specific ExecutionsSearch
+     * @return {ExecutionsSearchBuilder}
+     */
+    entitiesSearchBuilder() {
+        return new EntitiesSearchBuilder(this);
+    }
     /**
      * This return a PlansSearchBuilder to build a specific PlansSearchBuilder
      * @return {PlansSearchBuilder}
