@@ -67,23 +67,23 @@ Feature: Create a bundle
     Then I delete it
     And I read the file from "/file_test/root.cer"
     And I create a "deployment element" from current "bundle" using previous file and next params:
-    | field  | content |
-    | name | cucumber_deployment_1 |
-    | version | 0.0.1 |
-    | type | FIRMWARE |
-    | path | ./1 |
-    | order | 1 |
-    | operation | INSTALL |
-    | option | MANDATORY |
+    | field     | content |
+    | name      | cucumber_deployment_1 |
+    | version   | 0.0.1 |
+    | type      | CONFIGURATION |
+    | path      | ./configuration |
+    | order     | 1 |
+    | operation | UNINSTALL |
+    | option    | MANDATORY |
     And I create a "deployment element" from current "bundle" using previous file and next params:
-    | field  | content |
-    | name | cucumber_deployment_1 |
-    | version | 0.0.1 |
-    | type | FIRMWARE |
-    | path | ./2 |
-    | order | 1 |
-    | operation | INSTALL |
-    | option | MANDATORY |
+    | field     | content |
+    | name      | cucumber_deployment_1 |
+    | version   | 0.0.1 |
+    | type      | FIRMWARE |
+    | path      | ./configuration |
+    | order     | 1 |
+    | operation | UNINSTALL |
+    | option    | MANDATORY |
     Then I deploy it
     And response code should be: 400
 
