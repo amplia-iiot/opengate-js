@@ -338,6 +338,10 @@ var _provisionEntitiesEntityBuilder = require('./provision/entities/EntityBuilde
 
 var _provisionEntitiesEntityBuilder2 = _interopRequireDefault(_provisionEntitiesEntityBuilder);
 
+var _searchingBuilderEntitiesSearchBuilder = require('./searching/builder/EntitiesSearchBuilder');
+
+var _searchingBuilderEntitiesSearchBuilder2 = _interopRequireDefault(_searchingBuilderEntitiesSearchBuilder);
+
 /**
  * This is a abstract class, it must be extended to another class that defined the backend, it will be used on request to Opengate North API by browser or nodejs server
  */
@@ -749,6 +753,16 @@ var InternalOpenGateAPI = (function () {
         key: 'jsonSchemaSearchBuilder',
         value: function jsonSchemaSearchBuilder() {
             return new _searchingBuilderJsonSchemaSearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a ExecutionsSearchBuilder to build a specific ExecutionsSearch
+         * @return {ExecutionsSearchBuilder}
+         */
+    }, {
+        key: 'entitiesSearchBuilder',
+        value: function entitiesSearchBuilder() {
+            return new _searchingBuilderEntitiesSearchBuilder2['default'](this);
         }
 
         /**

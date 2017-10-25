@@ -22,11 +22,11 @@ Feature: Searching devices
     And I get allowed Datastreams fields    
     And I can found "provision.device.identifier" as datastream name
      When I try to define the entity with... 
-		| datastream                                                        | typeFunction       |   value                 | parent      |
-		| provision.administration.channel                                  | simple             |   base_channel           |             |
+		    | datastream                                                        | typeFunction       |   value                 | parent      |
+		    | provision.administration.channel                                  | simple             |   base_channel          |             |
         | provision.administration.organization                             | simple             |  base_organization      |             |
         | provision.administration.serviceGroup                             | simple             |  emptyServiceGroup      |             |
-        | provision.device.identifier                                       | simple             |  device_ogapi_0           |             |
+        | provision.device.identifier                                       | simple             |  device_ogapi_0         |             |
         | provision.device.operationalStatus                                | simple             |  NORMAL                 |             |   
         | provision.device.administrativeState                              | simple             |  ACTIVE                 |             |
     Then I create it
@@ -42,12 +42,18 @@ Feature: Searching devices
     Then does not throws an error
 
   Scenario: Execute searching with a flattened response
-  And an ogapi "devices search" util
+    And an ogapi "devices search" util
   	When I build it with flattened response
   	And I execute it
   	Then response code should be: 200
     Then does not throws an error
 
+  Scenario: I want to obtain the summary
+    And an ogapi "devices search" util
+  	When I build it with summary response
+  	And I execute it
+  	Then response code should be: 200
+    Then does not throws an error
 
  Scenario: I want to delete the entity 
  Given the entity of type "devices builder" with "base_organization" 

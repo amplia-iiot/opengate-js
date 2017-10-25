@@ -26,7 +26,7 @@ Feature: Delete and Create a device
     Then I create it
     And response code should be: 201
 
-  Scenario: I want to get the allowed datastream 
+  Scenario: I want to create a device
     Given the entity of type "devices builder" with "simple_device_organization" 
     And I get allowed Datastreams fields
     And I can found "provision.device.identifier" as datastream name
