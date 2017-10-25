@@ -3,7 +3,7 @@
 import PreFilteredSearchBuilder from './PreFilteredSearchBuilder'
 import FieldFinder from '../../util/searchingFields/FieldFinder'
 
-const BASE_URL = '/devices';
+const BASE_URL = '/entities';
 /**
  * Defined a search over Subscriptions	
  * @example ogapi.subscriptionsSearchBuilder()
