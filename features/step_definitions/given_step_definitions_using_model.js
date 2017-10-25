@@ -405,7 +405,7 @@ module.exports = function() {
 
     this.Given(/^an apikey user by "([^"]*)"$/, function(apikey, callback) {
         var config = {
-            'apiKey': apikey,
+            'apiKey': this.test_api_key,
             'url': this.test_url_north,
             'timeout': 20000,
             south: {
