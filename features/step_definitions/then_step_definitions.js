@@ -26,7 +26,7 @@ module.exports = function () {
         var data = undefined;
         data = this.responseData ? this.responseData.statusCode : this.data;
         var statusCodeResp = data;
-        //console.log("RESPONSE_: " + JSON.stringify(this.responseData));
+        console.log("RESPONSE_: " + JSON.stringify(this.responseData));
         this.expect(parseInt(statusCode)).to.equal(statusCodeResp);
 
         callback();

@@ -49,6 +49,7 @@ export default class FlattenedSearchBuilder extends SearchBuilder {
             this._buildFilter(),
             this._buildLimit(),
             this._buildSort(),
+            this._buildGroup(),
             this._builderParams.timeout);
     }
 
