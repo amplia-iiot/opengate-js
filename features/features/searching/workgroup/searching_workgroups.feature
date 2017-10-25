@@ -21,8 +21,15 @@ Feature: Searching workgroups
     And I execute it
    Then response code should be: 200  	
 
-Scenario: Execute searching
+  Scenario: Execute searching
     And I build it
     And I execute it
    Then response code should be: 200
-   
+
+  Scenario: I want to obtain the summary
+    And an ogapi "workgroups search" util
+  	When I build it with summary response
+  	And I execute it
+  	Then response code should be: 200
+    Then does not throws an error
+  
