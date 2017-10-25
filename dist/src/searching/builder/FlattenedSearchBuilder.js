@@ -18,6 +18,10 @@ var _SearchBuilder2 = require('./SearchBuilder');
 
 var _SearchBuilder3 = _interopRequireDefault(_SearchBuilder2);
 
+var _DeviceSearch = require('../DeviceSearch');
+
+var _DeviceSearch2 = _interopRequireDefault(_DeviceSearch);
+
 /**
  * This is a abstract class. It is a class that extends from base to make all kind of summary search request to OpenGate North API.
  */
@@ -57,6 +61,20 @@ var FlattenedSearchBuilder = (function (_SearchBuilder) {
         key: '_buildUrl',
         value: function _buildUrl() {
             return _get(Object.getPrototypeOf(FlattenedSearchBuilder.prototype), '_buildUrl', this).call(this);
+        }
+
+        /**
+         * Build a instance of Search 
+         *
+         * @example
+         *  ogapi.devicesSearchBuilder().onProvisioned().build()
+         * @throws {SearchBuilderError} Throw error on url build
+         * @return {Search} 
+         */
+    }, {
+        key: 'build',
+        value: function build() {
+            return new _DeviceSearch2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildLimit(), this._buildSort(), this._builderParams.timeout);
         }
     }]);
 

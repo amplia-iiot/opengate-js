@@ -22,7 +22,7 @@ var _utilSearchingFieldsFieldFinder = require('../../util/searchingFields/FieldF
 
 var _utilSearchingFieldsFieldFinder2 = _interopRequireDefault(_utilSearchingFieldsFieldFinder);
 
-var BASE_URL = '/devices';
+var BASE_URL = '/entities';
 /**
  * Defined a search over Devices	
  * @example ogapi.devicesSearchBuilder()

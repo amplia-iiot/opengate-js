@@ -124,6 +124,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsActions.js~RuleConfigurationsActions.html">RuleConfigurationsActions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder.html">RuleConfigurationsFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/BaseSearch.js~BaseSearch.html">BaseSearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/DeviceSearch.js~DeviceSearch.html">DeviceSearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/EntitySearch.js~EntitySearch.html">EntitySearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/FilterBuilder.js~FilterBuilder.html">FilterBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/QuickSearch.js~QuickSearch.html">QuickSearch</a></span></span></li>
@@ -201,6 +202,7 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
 import SearchBuilder from &apos;./SearchBuilder&apos;
+import DeviceSearch from &apos;../DeviceSearch&apos;
 
 /**
  * This is a abstract class. It is a class that extends from base to make all kind of summary search request to OpenGate North API.
@@ -231,6 +233,24 @@ export default class FlattenedSearchBuilder extends SearchBuilder {
 
     _buildUrl() {
         return super._buildUrl();
+    }
+
+
+    /**
+     * Build a instance of Search 
+     *
+     * @example
+     *  ogapi.devicesSearchBuilder().onProvisioned().build()
+     * @throws {SearchBuilderError} Throw error on url build
+     * @return {Search} 
+     */
+    build() {
+        return new DeviceSearch(this._parent,
+            this._buildUrl(),
+            this._buildFilter(),
+            this._buildLimit(),
+            this._buildSort(),
+            this._builderParams.timeout);
     }
 
 }</code></pre>

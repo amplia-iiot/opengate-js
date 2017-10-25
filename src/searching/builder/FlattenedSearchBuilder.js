@@ -1,6 +1,7 @@
 'use strict';
 
 import SearchBuilder from './SearchBuilder'
+import DeviceSearch from '../DeviceSearch'
 
 /**
  * This is a abstract class. It is a class that extends from base to make all kind of summary search request to OpenGate North API.
@@ -31,6 +32,24 @@ export default class FlattenedSearchBuilder extends SearchBuilder {
 
     _buildUrl() {
         return super._buildUrl();
+    }
+
+
+    /**
+     * Build a instance of Search 
+     *
+     * @example
+     *  ogapi.devicesSearchBuilder().onProvisioned().build()
+     * @throws {SearchBuilderError} Throw error on url build
+     * @return {Search} 
+     */
+    build() {
+        return new DeviceSearch(this._parent,
+            this._buildUrl(),
+            this._buildFilter(),
+            this._buildLimit(),
+            this._buildSort(),
+            this._builderParams.timeout);
     }
 
 }

@@ -318,6 +318,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/searching/devicesearch.js~devicesearch",
+    "class/src/searching/DeviceSearch.js~DeviceSearch.html",
+    "<span>DeviceSearch</span> <span class=\"search-result-import-path\">opengate-js/src/searching/DeviceSearch.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/searching/builder/devicessearchbuilder.js~devicessearchbuilder",
     "class/src/searching/builder/DevicesSearchBuilder.js~DevicesSearchBuilder.html",
     "<span>DevicesSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/DevicesSearchBuilder.js</span>",
@@ -1375,25 +1381,25 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber185",
-    "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Operation",
-    "test"
-  ],
-  [
-    "",
     "test-file/client/device/device.spec.js.html#lineNumber180",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Operation",
     "test"
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber195",
-    "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Option",
+    "test-file/client/device/device.spec.js.html#lineNumber185",
+    "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Operation",
     "test"
   ],
   [
     "",
     "test-file/client/device/device.spec.js.html#lineNumber190",
+    "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Option",
+    "test"
+  ],
+  [
+    "",
+    "test-file/client/device/device.spec.js.html#lineNumber195",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Option",
     "test"
   ],
@@ -1411,13 +1417,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber165",
+    "test-file/client/device/device.spec.js.html#lineNumber160",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Type",
     "test"
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber160",
+    "test-file/client/device/device.spec.js.html#lineNumber165",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Type",
     "test"
   ],
@@ -1435,13 +1441,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber243",
+    "test-file/client/device/device.spec.js.html#lineNumber256",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter mode in validator is typeof string",
     "test"
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber256",
+    "test-file/client/device/device.spec.js.html#lineNumber243",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter mode in validator is typeof string",
     "test"
   ],
@@ -1519,13 +1525,13 @@ window.esdocSearchIndex = [
   ],
   [
     "internalopengateapi#bundlesbuilder src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder",
-    "test-file/client/device/device.spec.js.html#lineNumber10",
+    "test-file/client/collection/iot.spec.js.html#lineNumber10",
     "Check funcionality bundles module: Check basic parameters:",
     "test"
   ],
   [
     "internalopengateapi#bundlesbuilder src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder",
-    "test-file/client/collection/iot.spec.js.html#lineNumber10",
+    "test-file/client/device/device.spec.js.html#lineNumber10",
     "Check funcionality bundles module: Check basic parameters:",
     "test"
   ],
@@ -1543,13 +1549,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber12",
+    "test-file/client/collection/iot.spec.js.html#lineNumber12",
     "Check funcionality bundles module: Check basic parameters: Name is not a String",
     "test"
   ],
   [
     "",
-    "test-file/client/collection/iot.spec.js.html#lineNumber12",
+    "test-file/client/device/device.spec.js.html#lineNumber12",
     "Check funcionality bundles module: Check basic parameters: Name is not a String",
     "test"
   ],
@@ -1663,13 +1669,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/security/certificates.spec.js.html#lineNumber23",
+    "test-file/client/security/certificates.spec.js.html#lineNumber30",
     "Check funcionality certificates: Check basic parameters: administrativeState is not a String",
     "test"
   ],
   [
     "",
-    "test-file/client/security/certificates.spec.js.html#lineNumber30",
+    "test-file/client/security/certificates.spec.js.html#lineNumber23",
     "Check funcionality certificates: Check basic parameters: administrativeState is not a String",
     "test"
   ],
@@ -2094,14 +2100,14 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortascendingby,searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber86",
+    "searchbuilder#build searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortdescendingby,searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber94",
     "Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort",
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortdescendingby,searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber94",
+    "searchbuilder#build searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortascendingby,searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber86",
     "Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort",
     "test"
   ],
@@ -2353,13 +2359,13 @@ window.esdocSearchIndex = [
   ],
   [
     "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber399",
+    "test-file/client/searching/search.spec.js.html#lineNumber405",
     "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
     "test"
   ],
   [
     "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber405",
+    "test-file/client/searching/search.spec.js.html#lineNumber399",
     "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
     "test"
   ],
@@ -6210,6 +6216,24 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/searching/devicesearch.js",
+    "file/src/searching/DeviceSearch.js.html",
+    "src/searching/DeviceSearch.js",
+    "file"
+  ],
+  [
+    "src/searching/devicesearch.js~devicesearch#constructor",
+    "class/src/searching/DeviceSearch.js~DeviceSearch.html#instance-constructor-constructor",
+    "src/searching/DeviceSearch.js~DeviceSearch#constructor",
+    "method"
+  ],
+  [
+    "src/searching/devicesearch.js~devicesearch#execute",
+    "class/src/searching/DeviceSearch.js~DeviceSearch.html#instance-method-execute",
+    "src/searching/DeviceSearch.js~DeviceSearch#execute",
+    "method"
+  ],
+  [
     "src/searching/entitysearch.js",
     "file/src/searching/EntitySearch.js.html",
     "src/searching/EntitySearch.js",
@@ -6616,6 +6640,12 @@ window.esdocSearchIndex = [
     "file/src/searching/builder/FlattenedSearchBuilder.js.html",
     "src/searching/builder/FlattenedSearchBuilder.js",
     "file"
+  ],
+  [
+    "src/searching/builder/flattenedsearchbuilder.js~flattenedsearchbuilder#build",
+    "class/src/searching/builder/FlattenedSearchBuilder.js~FlattenedSearchBuilder.html#instance-method-build",
+    "src/searching/builder/FlattenedSearchBuilder.js~FlattenedSearchBuilder#build",
+    "method"
   ],
   [
     "src/searching/builder/flattenedsearchbuilder.js~flattenedsearchbuilder#constructor",
