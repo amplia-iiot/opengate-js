@@ -1,5 +1,6 @@
 'use strict';
 
+import HttpStatus from 'http-status-codes';
 import BaseProvision from '../BaseProvision';
 import q from 'q';
 
@@ -123,7 +124,7 @@ export default class SimpleBuilder extends BaseProvision {
         let url = this._buildURL().split('?')[0] + "?full=true";
         this._ogapi.Napi.delete(url)
             .then((res) => {
-                if (res.statusCode === 200) {
+                if (res.statusCode === HttpStatus.OK) {
                     defered.resolve({ statusCode: res.statusCode });
                 } else {
                     defered.reject({ errors: res.errors, statusCode: res.statusCode });
