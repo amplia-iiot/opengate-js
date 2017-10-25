@@ -213,11 +213,12 @@ export default class Search extends BaseSearch {
     * @param {object} limit - this is the pagination about the search
     * @param {object} sort - this defined parameters to order the result of search
     */
-	constructor(ogapi, url, filter, limit = { limit: {} }, sort, timeout) {
+	constructor(ogapi, url, filter, limit = { limit: {} }, sort, group, timeout) {
 		super(ogapi, url, timeout);
 		this._postObj = merge(
 			filter,
-			limit);
+			limit,
+		group);
 		if (typeof sort === &apos;object&apos;) {
 			this._postObj = merge(this._postObj, sort);
 		}

@@ -81,6 +81,19 @@ var DevicesSearchBuilder = (function (_PreFilteredSearchBuilder) {
                 filter: finalFilter
             };
         }
+
+        /**
+         * The search request will have this group by 
+         * @example
+         * @param {!(object)} group 
+         * @return {SearchBuilder} 
+         */
+    }, {
+        key: 'group',
+        value: function group(_group) {
+            this._builderParams.group = _group || {};
+            return this;
+        }
     }]);
 
     return DevicesSearchBuilder;

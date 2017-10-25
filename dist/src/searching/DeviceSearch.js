@@ -35,12 +35,13 @@ var DeviceSearch = (function (_Search) {
      * @param {object} filter - this is the filter
      * @param {object} limit - this is the pagination about the search
      * @param {object} sort - this defined parameters to order the result of search
+     * @param {object} group - this defined the group by
      */
 
-    function DeviceSearch(ogapi, url, filter, limit, sort, timeout) {
+    function DeviceSearch(ogapi, url, filter, limit, sort, group, timeout) {
         _classCallCheck(this, DeviceSearch);
 
-        _get(Object.getPrototypeOf(DeviceSearch.prototype), 'constructor', this).call(this, ogapi, url, filter, limit, sort, timeout);
+        _get(Object.getPrototypeOf(DeviceSearch.prototype), 'constructor', this).call(this, ogapi, url, filter, limit, sort, group, timeout);
     }
 
     /**

@@ -48,7 +48,8 @@ var SearchBuilder = (function () {
             summary: false,
             sort: [],
             filter: {},
-            limit: undefined
+            limit: undefined,
+            group: {}
         };
 
         var _loop = function (route) {
@@ -240,6 +241,15 @@ var SearchBuilder = (function () {
             if (typeof filter._filterTemplate !== "undefined") return filter._filterTemplate;
             return {
                 filter: filter
+            };
+        }
+    }, {
+        key: '_buildGroup',
+        value: function _buildGroup() {
+            var group = this._builderParams.group;
+            if (typeof group._groupTemplate !== "undefined") return group._groupTemplate;
+            return {
+                group: group
             };
         }
     }, {

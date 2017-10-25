@@ -27,7 +27,8 @@ export default class SearchBuilder {
             summary: false,
             sort: [],
             filter: {},
-            limit: undefined
+            limit: undefined,
+            group: {}
         };
         for (let route in this._routes) {
             this._routesName.push(route);
@@ -195,6 +196,14 @@ export default class SearchBuilder {
             return filter._filterTemplate;
         return {
             filter: filter
+        }
+    }
+    _buildGroup() {
+        let group = this._builderParams.group;
+        if (typeof group._groupTemplate !== "undefined")
+            return group._groupTemplate;
+        return {
+            group: group
         }
     }
 

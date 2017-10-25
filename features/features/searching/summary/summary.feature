@@ -13,14 +13,13 @@ Feature: I want to check if the general summary are working
     And an ogapi "devices search" util
   	When I build it with summary response
   	And I execute it
-  	Then response code should be: 200
+    	Then response code should be: 200
     Then does not throws an error
 
   Scenario: I want to get the workgroups summary
     And an ogapi "workgroups search" util
   	When I build it with summary response
   	And I execute it
-  	Then response code should be: 200
     Then does not throws an error
   
 
@@ -51,12 +50,11 @@ Feature: I want to check if the general summary are working
   	And I execute it
   	Then response code should be: 200
     Then does not throws an error
- 
-   Scenario: I want to get the entities summary
-    And an ogapi "entities search" util
-  	And I want to search a "multiple entity" 
-    And I want to search into "on devices" 
-    When I build it with summary response
-     And I execute it
+
+  Scenario: I want to get the device summary with group by
+    And an ogapi "devices search" util
+    When I add group by "{'parameters': [{'name': 'provision.device.identifier'}]}"
+  	When I build it with summary response
+  	And I execute it
+    	Then response code should be: 200
     Then does not throws an error
- 

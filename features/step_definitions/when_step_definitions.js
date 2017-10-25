@@ -234,6 +234,17 @@ module.exports = function() {
         callback();
     });
 
+    this.When(/^I add group by "([^"]*)"$/, function (group, callback) {
+        this.error = undefined;
+
+        try {
+            this.build = this.util.group(group);
+        } catch (err) {
+            this.error = err;
+        }
+        callback();
+    });
+
     this.When(/^I execute it$/, function() {
         var _this = this;
         _this.error = undefined;

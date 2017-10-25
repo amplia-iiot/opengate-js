@@ -52,4 +52,14 @@ export default class DevicesSearchBuilder extends PreFilteredSearchBuilder {
             filter: finalFilter
         };
     }
+    /**
+     * The search request will have this group by 
+     * @example
+     * @param {!(object)} group 
+     * @return {SearchBuilder} 
+     */
+    group(group) {
+        this._builderParams.group = (group || {});
+        return this;
+    }
 }

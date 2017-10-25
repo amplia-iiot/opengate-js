@@ -74,7 +74,7 @@ var FlattenedSearchBuilder = (function (_SearchBuilder) {
     }, {
         key: 'build',
         value: function build() {
-            return new _DeviceSearch2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildLimit(), this._buildSort(), this._builderParams.timeout);
+            return new _DeviceSearch2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildLimit(), this._buildSort(), this._buildGroup(), this._builderParams.timeout);
         }
     }]);
 

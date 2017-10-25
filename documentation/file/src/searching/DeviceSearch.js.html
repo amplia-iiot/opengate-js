@@ -212,9 +212,10 @@ export default class DeviceSearch extends Search {
      * @param {object} filter - this is the filter
      * @param {object} limit - this is the pagination about the search
      * @param {object} sort - this defined parameters to order the result of search
+     * @param {object} group - this defined the group by
      */
-    constructor(ogapi, url, filter, limit, sort, timeout) {
-        super(ogapi, url, filter, limit, sort, timeout);
+    constructor(ogapi, url, filter, limit, sort, group, timeout) {
+        super(ogapi, url, filter, limit, sort, group, timeout);
     }
 
     /**
