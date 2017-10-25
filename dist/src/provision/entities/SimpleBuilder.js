@@ -14,6 +14,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var _httpStatusCodes = require('http-status-codes');
+
+var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
+
 var _BaseProvision2 = require('../BaseProvision');
 
 var _BaseProvision3 = _interopRequireDefault(_BaseProvision2);
@@ -157,7 +161,7 @@ var SimpleBuilder = (function (_BaseProvision) {
             var promise = defered.promise;
             var url = this._buildURL().split('?')[0] + "?full=true";
             this._ogapi.Napi['delete'](url).then(function (res) {
-                if (res.statusCode === 200) {
+                if (res.statusCode === _httpStatusCodes2['default'].OK) {
                     defered.resolve({ statusCode: res.statusCode });
                 } else {
                     defered.reject({ errors: res.errors, statusCode: res.statusCode });

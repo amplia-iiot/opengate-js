@@ -198,6 +198,7 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/provision/entities/SimpleBuilder.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
+import HttpStatus from &apos;http-status-codes&apos;;
 import BaseProvision from &apos;../BaseProvision&apos;;
 import q from &apos;q&apos;;
 
@@ -321,7 +322,7 @@ export default class SimpleBuilder extends BaseProvision {
         let url = this._buildURL().split(&apos;?&apos;)[0] + &quot;?full=true&quot;;
         this._ogapi.Napi.delete(url)
             .then((res) =&gt; {
-                if (res.statusCode === 200) {
+                if (res.statusCode === HttpStatus.OK) {
                     defered.resolve({ statusCode: res.statusCode });
                 } else {
                     defered.reject({ errors: res.errors, statusCode: res.statusCode });

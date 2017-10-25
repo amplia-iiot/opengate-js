@@ -83,14 +83,14 @@ var BoxBuilder = (function () {
             _this._administrationKeys.forEach(function (key) {
                 obj[key] = _this._obj[key];
             });
-            _this._wrappers.push(new WrapperBuilder(_this._ogapi, obj, _this._url.replace('devices', 'subscriptions'), obj[_SubscriptionBuilder.SubscriptionID]._value._current.value));
+            _this._wrappers.push(new WrapperBuilder(_this._ogapi, obj, _this._url.replace('devices', 'subscriptions').replace('/' + _this._key._value._current.value, ''), obj[_SubscriptionBuilder.SubscriptionID]._value._current.value));
         });
         Object.keys(subscribers).forEach(function (commsId) {
             var obj = subscribers[commsId];
             _this._administrationKeys.forEach(function (key) {
                 obj[key] = _this._obj[key];
             });
-            _this._wrappers.push(new WrapperBuilder(_this._ogapi, obj, _this._url.replace('devices', 'subscribers'), obj[_SubscriberBuilder.SubscriberID]._value._current.value));
+            _this._wrappers.push(new WrapperBuilder(_this._ogapi, obj, _this._url.replace('devices', 'subscribers').replace('/' + _this._key._value._current.value, ''), obj[_SubscriberBuilder.SubscriberID]._value._current.value));
         });
     }
 
@@ -130,7 +130,7 @@ var BoxBuilder = (function () {
                     if (_this._wrappers.length > 0) {
                         defer.notify({ message: 'Adding related entities', type: 'success', percentage: 55 });
                         return _this._ogapi.Napi.put(_this._urlWithKey(), putObj).then(function (res) {
-                            if (res.statusCode === 201) {
+                            if (res.statusCode === _httpStatusCodes2['default'].CREATED) {
                                 console.log("CREATEOK: " + JSON.stringify(res));
                                 if (typeof _this._onCreated === "function") {
                                     _this._onCreated(res.header['location']);
@@ -142,7 +142,7 @@ var BoxBuilder = (function () {
                             }
                         });
                     } else {
-                        if (res.statusCode === 201) {
+                        if (res.statusCode === _httpStatusCodes2['default'].CREATED) {
                             console.log("CREATEOK: " + JSON.stringify(res));
                             if (typeof _this._onCreated === "function") {
                                 _this._onCreated(res.header['location']);
@@ -191,7 +191,7 @@ var BoxBuilder = (function () {
                 defer.notify({ message: 'All related entities have been created.', type: 'success', percentage: 40 });
                 defer.notify({ message: 'Adding related entities to device:' + _this._key._value._current.value, type: 'success', percentage: 45 });
                 return _this._ogapi.Napi.put(_this._url, putObj).then(function (res) {
-                    if (res.statusCode === 201) {
+                    if (res.statusCode === _httpStatusCodes2['default'].OK) {
                         console.log("CREATEOK: " + JSON.stringify(res));
                         if (typeof _this._onCreated === "function") {
                             _this._onCreated(res.header['location']);

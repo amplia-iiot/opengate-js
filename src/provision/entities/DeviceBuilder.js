@@ -56,15 +56,15 @@ class BoxBuilder {
             let obj = subscriptions[commsId];
             _this._administrationKeys.forEach((key) => {
                 obj[key] = _this._obj[key];
-            })
-            _this._wrappers.push(new WrapperBuilder(_this._ogapi, obj, _this._url.replace('devices', 'subscriptions'), obj[SubscriptionID]._value._current.value));
+            });
+            _this._wrappers.push(new WrapperBuilder(_this._ogapi, obj, _this._url.replace('devices', 'subscriptions').replace('/' + _this._key._value._current.value, ''), obj[SubscriptionID]._value._current.value));
         });
         Object.keys(subscribers).forEach((commsId) => {
             let obj = subscribers[commsId];
             _this._administrationKeys.forEach((key) => {
                 obj[key] = _this._obj[key];
             })
-            _this._wrappers.push(new WrapperBuilder(_this._ogapi, obj, _this._url.replace('devices', 'subscribers'), obj[SubscriberID]._value._current.value));
+            _this._wrappers.push(new WrapperBuilder(_this._ogapi, obj, _this._url.replace('devices', 'subscribers').replace('/' + _this._key._value._current.value, ''), obj[SubscriberID]._value._current.value));
         });
     }
 
@@ -104,7 +104,7 @@ class BoxBuilder {
                         defer.notify({ message: 'Adding related entities', type: 'success', percentage: 55 });
                         return _this._ogapi.Napi.put(_this._urlWithKey(), putObj)
                             .then((res) => {
-                                if (res.statusCode === 201) {
+                                if (res.statusCode === HttpStatus.CREATED) {
                                     console.log("CREATEOK: " + JSON.stringify(res));
                                     if (typeof _this._onCreated === "function") {
                                         _this._onCreated(res.header['location']);
@@ -116,7 +116,7 @@ class BoxBuilder {
                                 }
                             });
                     } else {
-                        if (res.statusCode === 201) {
+                        if (res.statusCode === HttpStatus.CREATED) {
                             console.log("CREATEOK: " + JSON.stringify(res));
                             if (typeof _this._onCreated === "function") {
                                 _this._onCreated(res.header['location']);
@@ -167,7 +167,7 @@ class BoxBuilder {
             defer.notify({ message: 'Adding related entities to device:' + _this._key._value._current.value, type: 'success', percentage: 45 });
             return _this._ogapi.Napi.put(_this._url, putObj)
                 .then((res) => {
-                    if (res.statusCode === 201) {
+                    if (res.statusCode === HttpStatus.OK) {
                         console.log("CREATEOK: " + JSON.stringify(res));
                         if (typeof _this._onCreated === "function") {
                             _this._onCreated(res.header['location']);
