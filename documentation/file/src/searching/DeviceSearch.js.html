@@ -235,9 +235,10 @@ export default class DeviceSearch extends Search {
                 if (typeof resultQuery === &quot;undefined&quot; || resultQuery === null)
                     defered.reject(&quot;Data not found&quot;);
                 else {
-                    resultQuery.devices = resultQuery.entities;
-                    if (typeof this._appendData === &quot;function&quot; &amp;&amp; statusCode === 200)
+                    if (typeof this._appendData === &quot;function&quot; &amp;&amp; statusCode === 200) {
+                        resultQuery.devices = resultQuery.entities;
                         this._appendData(resultQuery);
+                    }
                     defered.resolve({ data: resultQuery, statusCode: statusCode });
                 }
             })

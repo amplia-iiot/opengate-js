@@ -62,8 +62,10 @@ var DeviceSearch = (function (_Search) {
                 var resultQuery = response.body;
                 var statusCode = response.statusCode;
                 if (typeof resultQuery === "undefined" || resultQuery === null) defered.reject("Data not found");else {
-                    resultQuery.devices = resultQuery.entities;
-                    if (typeof _this._appendData === "function" && statusCode === 200) _this._appendData(resultQuery);
+                    if (typeof _this._appendData === "function" && statusCode === 200) {
+                        resultQuery.devices = resultQuery.entities;
+                        _this._appendData(resultQuery);
+                    }
                     defered.resolve({ data: resultQuery, statusCode: statusCode });
                 }
             })['catch'](function (error) {

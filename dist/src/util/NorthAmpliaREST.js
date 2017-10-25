@@ -78,7 +78,7 @@ var NorthAmpliaREST = (function () {
                             "description": "Workgroup description",
                             "domain": "amplia",
                             "administrative": true
-                         },
+                          },
                         {
                             "name": "Workgroup_2",
                             "description": "Workgroup description",
