@@ -48,8 +48,6 @@ export default class BaseSearch {
                 if (typeof resultQuery === "undefined")
                     defered.reject("Data not found");
                 else {
-                    if (typeof this._appendData === "function" && statusCode === 200)
-                        this._appendData(resultQuery);
                     defered.resolve({ data: resultQuery, statusCode: statusCode });
                 }
             })
@@ -111,8 +109,6 @@ export default class BaseSearch {
 
                         if (statusCode === 200 || statusCode === 200) {
                             paging = true;
-                            if (typeof _this._appendData === "function")
-                                _this._appendData(body);
                             let result = body.data ? body.data[resource] : body[resource];
                             defered.notify(result);
                             //Se permite devolver un boolean o un string que reemplazará el mensaje por defecto
@@ -153,12 +149,12 @@ export default class BaseSearch {
         //Comenzamos con la carga asincrona
         this._loadData(resource)
             .then(
-                (response) => {
-                    defered.resolve(response);
-                }, null,
-                (notify) => {
-                    defered.notify(notify);
-                })
+            (response) => {
+                defered.resolve(response);
+            }, null,
+            (notify) => {
+                defered.notify(notify);
+            })
             .catch((error) => {
                 defered.reject(error);
             });
