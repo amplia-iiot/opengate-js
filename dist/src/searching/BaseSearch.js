@@ -60,15 +60,12 @@ var BaseSearch = (function () {
     _createClass(BaseSearch, [{
         key: 'execute',
         value: function execute() {
-            var _this2 = this;
-
             var defered = _q2['default'].defer();
             var promise = defered.promise;
             this._ogapi.Napi.post(this._resource, this._filter(), this._timeout).then(function (response) {
                 var resultQuery = response.body;
                 var statusCode = response.statusCode;
                 if (typeof resultQuery === "undefined") defered.reject("Data not found");else {
-                    if (typeof _this2._appendData === "function" && statusCode === 200) _this2._appendData(resultQuery);
                     defered.resolve({ data: resultQuery, statusCode: statusCode });
                 }
             })['catch'](function (error) {
@@ -130,7 +127,6 @@ var BaseSearch = (function () {
 
                         if (statusCode === 200 || statusCode === 200) {
                             paging = true;
-                            if (typeof _this._appendData === "function") _this._appendData(body);
                             var result = body.data ? body.data[resource] : body[resource];
                             defered.notify(result);
                             //Se permite devolver un boolean o un string que reemplazará el mensaje por defecto
