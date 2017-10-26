@@ -232,15 +232,12 @@ export default class DeviceSearch extends Search {
             .then((response) =&gt; {
                 let resultQuery = response.body;
                 let statusCode = response.statusCode;
-                if (typeof resultQuery === &quot;undefined&quot; || resultQuery === null)
-                    defered.reject(&quot;Data not found&quot;);
-                else {
-                    if (statusCode === 200) {
-                        resultQuery.devices = resultQuery.entities;
-                        delete resultQuery.entities;
-                    }
-                    defered.resolve({ data: resultQuery, statusCode: statusCode });
+
+                if (statusCode === 200) {
+                    resultQuery.devices = resultQuery.entities;
+                    delete resultQuery.entities;
                 }
+                defered.resolve({ data: resultQuery, statusCode: statusCode });
             })
             .catch((error) =&gt; {
                 defered.reject(error);

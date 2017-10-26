@@ -45,11 +45,7 @@ export default class BaseSearch {
             .then((response) => {
                 let resultQuery = response.body;
                 let statusCode = response.statusCode;
-                if (typeof resultQuery === "undefined")
-                    defered.reject("Data not found");
-                else {
-                    defered.resolve({ data: resultQuery, statusCode: statusCode });
-                }
+                defered.resolve({ data: resultQuery, statusCode: statusCode });
             })
             .catch((error) => {
                 defered.reject(error);

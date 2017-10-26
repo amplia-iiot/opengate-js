@@ -31,15 +31,12 @@ export default class DeviceSearch extends Search {
             .then((response) => {
                 let resultQuery = response.body;
                 let statusCode = response.statusCode;
-                if (typeof resultQuery === "undefined" || resultQuery === null)
-                    defered.reject("Data not found");
-                else {
-                    if (statusCode === 200) {
-                        resultQuery.devices = resultQuery.entities;
-                        delete resultQuery.entities;
-                    }
-                    defered.resolve({ data: resultQuery, statusCode: statusCode });
+
+                if (statusCode === 200) {
+                    resultQuery.devices = resultQuery.entities;
+                    delete resultQuery.entities;
                 }
+                defered.resolve({ data: resultQuery, statusCode: statusCode });
             })
             .catch((error) => {
                 defered.reject(error);

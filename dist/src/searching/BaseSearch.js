@@ -65,9 +65,7 @@ var BaseSearch = (function () {
             this._ogapi.Napi.post(this._resource, this._filter(), this._timeout).then(function (response) {
                 var resultQuery = response.body;
                 var statusCode = response.statusCode;
-                if (typeof resultQuery === "undefined") defered.reject("Data not found");else {
-                    defered.resolve({ data: resultQuery, statusCode: statusCode });
-                }
+                defered.resolve({ data: resultQuery, statusCode: statusCode });
             })['catch'](function (error) {
                 defered.reject(error);
             });

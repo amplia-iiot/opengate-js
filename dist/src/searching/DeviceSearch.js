@@ -59,13 +59,12 @@ var DeviceSearch = (function (_Search) {
             this._ogapi.Napi.post(this._resource, this._filter(), this._timeout).then(function (response) {
                 var resultQuery = response.body;
                 var statusCode = response.statusCode;
-                if (typeof resultQuery === "undefined" || resultQuery === null) defered.reject("Data not found");else {
-                    if (statusCode === 200) {
-                        resultQuery.devices = resultQuery.entities;
-                        delete resultQuery.entities;
-                    }
-                    defered.resolve({ data: resultQuery, statusCode: statusCode });
+
+                if (statusCode === 200) {
+                    resultQuery.devices = resultQuery.entities;
+                    delete resultQuery.entities;
                 }
+                defered.resolve({ data: resultQuery, statusCode: statusCode });
             })['catch'](function (error) {
                 defered.reject(error);
             });
