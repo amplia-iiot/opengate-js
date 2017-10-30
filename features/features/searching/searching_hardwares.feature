@@ -2,6 +2,7 @@
 @hardwares
 @catalogs
 @searching
+@searching_hardwares
 Feature: Searching hardwares in catalog
   As a user of JsApi
   I want to search into hardwares catalog
@@ -21,7 +22,7 @@ Feature: Searching hardwares in catalog
   Scenario: Execute searching with single hardware id filter that not exists
     When I try to search with... 
     | field        | content            |
-    | hardware id  | OpenGateNotExists |
+    | hardware id  | OpenGateNotExists  |
     And I build it
     And I execute it
     Then response code should be: 204
