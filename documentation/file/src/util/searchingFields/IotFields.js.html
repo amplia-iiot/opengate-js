@@ -204,14 +204,14 @@
 export const IOT_FIELDS = {
     &quot;DATAPOINTS&quot;: {
         &quot;DATAPOINTS&quot;: [
+            &quot;datapoints.organizationId&quot;,
             &quot;datapoints.organization&quot;,
+            &quot;datapoints.channelId&quot;,
             &quot;datapoints.channel&quot;,
             &quot;datapoints.datastreamId&quot;,
             &quot;datapoints.entityIdentifier&quot;,
             &quot;datapoints.subEntityIdentifier&quot;,
             &quot;datapoints._current.feedId&quot;,
-            //&quot;datapoints._current.from&quot;,
-            //&quot;datapoints._current.at&quot;,
             &quot;datapoints._current.date&quot;,
             &quot;datapoints._current.value&quot;,
             &quot;datapoints._current.tags&quot;,
@@ -272,8 +272,8 @@ export const IOT_FIELDS = {
             &quot;datamodels.categories.datastreams.qrating.max_allowed.label&quot;,
             &quot;datamodels.categories.datastreams.qrating.max_score&quot;,
             &quot;datamodels.categories.datastreams.qrating.cumulative_period_divisor&quot;,
-            &quot;datamodels.categories.datastreams.qrating.max_score&quot;,
-            &quot;datamodels.categories.datastreams.qrating.conversion_matrix&quot;
+            &quot;datamodels.categories.datastreams.qrating.conversion_matrix&quot;,
+            &quot;datamodels.categories.datastreams.qrating.version&quot;
         ]
     },
     &quot;DATASTREAMS&quot;: {
@@ -295,21 +295,26 @@ export const IOT_FIELDS = {
             &quot;datastreams.channel&quot;,
             &quot;datastreams.organization&quot;,
             &quot;datastreams.entityIdentifier&quot;,
-            &quot;datastreams.subEntityIdentifier&quot;,
-            &quot;datastreams.qrating.min_required.value&quot;,
-            &quot;datastreams.qrating.min_required.label&quot;,
-            &quot;datastreams.qrating.min_desired.value&quot;,
-            &quot;datastreams.qrating.min_desired.label&quot;,
-            &quot;datastreams.qrating.ideal.value&quot;,
-            &quot;datastreams.qrating.ideal.label&quot;,
-            &quot;datastreams.qrating.max_desired.value&quot;,
-            &quot;datastreams.qrating.max_desired.label&quot;,
-            &quot;datastreams.qrating.max_allowed.value&quot;,
-            &quot;datastreams.qrating.max_allowed.label&quot;,
-            &quot;datastreams.qrating.max_score&quot;,
-            &quot;datastreams.qrating.cumulative_period_divisor&quot;,
-            &quot;datastreams.qrating.max_score&quot;,
-            &quot;datastreams.qrating.conversion_matrix&quot;
+            &quot;feeds.entityIdentifier&quot;,
+            &quot;datastreams._id.subEntityIdentifier&quot;,
+            &quot;datastreams._current.scoring.qrating.min_required.value&quot;,
+            &quot;datastreams._current.scoring.qrating.min_required.label&quot;,
+            &quot;datastreams._current.scoring.qrating.min_desired.value&quot;,
+            &quot;datastreams._current.scoring.qrating.min_desired.label&quot;,
+            &quot;datastreams._current.scoring.qrating.ideal.value&quot;,
+            &quot;datastreams._current.scoring.qrating.ideal.label&quot;,
+            &quot;datastreams._current.scoring.qrating.max_desired.value&quot;,
+            &quot;datastreams._current.scoring.qrating.max_desired.label&quot;,
+            &quot;datastreams._current.scoring.qrating.max_allowed.value&quot;,
+            &quot;datastreams._current.scoring.qrating.max_allowed.label&quot;,
+            &quot;datastreams._current.scoring.qrating.max_score&quot;,
+            &quot;datastreams._current.scoring.qrating.cumulative_period_divisor&quot;,
+            &quot;datastreams._current.scoring.qrating.max_score&quot;,
+            &quot;datastreams._current.scoring.qrating.conversion_matrix&quot;,
+            &quot;datastreams.version&quot;,
+            &quot;feeds.identifier&quot;,
+            &quot;datastreams._current.scoring.qrating.version&quot;,
+            &quot;datastreams._current.scoring.scoringPerformance&quot;
 
         ]
     },

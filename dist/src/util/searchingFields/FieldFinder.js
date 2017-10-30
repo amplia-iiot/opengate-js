@@ -50,7 +50,8 @@ var match_url = {
     '/users': 'USER',
     '/devices': 'SearchOnDatamodel',
     '/subscriptions': 'SearchOnDatamodel',
-    '/subscribers': 'SearchOnDatamodel'
+    '/subscribers': 'SearchOnDatamodel',
+    '/entities': 'SearchOnDatamodel'
 };
 
 var match_type = {
@@ -96,6 +97,9 @@ var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEA
             return true;
         },
         '/subscribers': function subscribers(field) {
+            return true;
+        },
+        '/entities': function entities(field) {
             return true;
         }
     };
