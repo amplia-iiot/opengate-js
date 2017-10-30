@@ -7,18 +7,15 @@ Feature: Searching for all filter fields
   I want to search for all filter fields
   So I can add filter with all filter fields to search any entity
 
-@bug @ODMQA-1152
   Scenario: Execute all fields on devices searching
   Given an apikey user by "require-real-apikey"
     And an ogapi "devices search" util
     And I want to search a "entity" 
-    #And I want to search into "collected data" 
    When I try to search with all allow fields
    When I build it
     And I execute it
    Then response code should be: 204
 
-@fail
   Scenario: Execute all fields on certificates searching
   Given an apikey user by "require-real-apikey"
     And an ogapi "certificates search" util
@@ -60,7 +57,6 @@ Feature: Searching for all filter fields
    Then throws an error equal to "There is a parameter with incorrect value in the filter"
     And response code should be: 400
 
-@fail
   Scenario: Execute all fields on bundles searching
   Given an apikey user by "require-real-apikey"
     And an ogapi "bundles search" util
@@ -70,7 +66,6 @@ Feature: Searching for all filter fields
    Then throws an error equal to "There is a parameter with incorrect value in the filter"
     And response code should be: 400
 
-@bug @ODMQA-1149
   Scenario: Execute all fields on datapoints searching
   Given an apikey user by "require-real-apikey"
     And an ogapi "datapoints search" util
@@ -79,8 +74,7 @@ Feature: Searching for all filter fields
     And I execute it
    Then response code should be: 204  
 
-@bug @ODMQA-1147
-  Scenario: Execute all fields on datastreams searching
+Scenario: Execute all fields on datastreams searching
   Given an apikey user by "require-real-apikey"
     And an ogapi "datastreams search" util
    When I try to search with all allow fields
@@ -88,16 +82,7 @@ Feature: Searching for all filter fields
     And I execute it
    Then response code should be: 204    
 
-# @iot-devices
-#   Scenario: Execute all fields on iot devices searching
-#   Given an apikey user by "require-real-apikey"
-#     And an ogapi "iot devices search" util
-#    When I try to search with all allow fields
-#    When I build it
-#     And I execute it
-#    Then response code should be: 204      
-
-  @bug @ODMQA-1148 @datamodel
+@datamodel
   Scenario: Execute all fields on datamodels searching
   Given an apikey user by "require-real-apikey"
     And an ogapi "datamodels search" util
@@ -106,15 +91,6 @@ Feature: Searching for all filter fields
     And I execute it
    Then response code should be: 204    
     
-  # @iot-feeds
-  # Scenario: Execute all fields on feeds searching
-  # Given an apikey user by "require-real-apikey"
-  #   And an ogapi "feeds search" util
-  #  When I try to search with all allow fields
-  #  When I build it
-  #   And I execute it
-  #  Then response code should be: 204        
-
   Scenario: Execute all fields on softwares searching
   Given an apikey user by "require-real-apikey"
     And an ogapi "softwares search" util
@@ -141,7 +117,8 @@ Feature: Searching for all filter fields
     And I execute it
    Then response code should be: 204 
 
-@fail
+
+
 @searching_domains
   Scenario: Execute all fields on domains searching
   Given an apikey user by "require-real-apikey"
