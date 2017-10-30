@@ -34,7 +34,7 @@ export default class HardwaresSearchBuilder extends SearchWithSummaryBuilder {
         if (typeof hardwareId !== 'string') {
             throw new Error('Parameter hardwareId must be a string');
         }
-        this.fluentFilter.and(this._parent.EX.eq('hardwareId', hardwareId));
+        this.fluentFilter.and(this._parent.EX.eq('manufacturerIdentifier', hardwareId));
         return this;
     }
 
