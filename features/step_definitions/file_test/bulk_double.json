@@ -1,0 +1,275 @@
+{
+	"entities": [{
+			"provision": {
+				"administration": {
+					"organization": {
+						"_current": {
+							"value": "organization_bulk_json"
+						}
+					},
+					"channel": {
+						"_current": {
+							"value": "default_channel"
+						}
+					},
+					"serviceGroup": {
+						"_current": {
+							"value": "emptyServiceGroup"
+						}
+					}
+				},
+				"device": {
+					"identifier": {
+						"_current": {
+							"value": "device_bulk_json_1"
+						}
+					},
+					"name": {
+						"_current": {
+							"value": "device_bulk_json_1"
+						}
+					},
+					"description": {
+						"_current": {
+							"value": "device_bulk_json_1_description"
+						}
+					},
+					"administrativeState": {
+						"_current": {
+							"value": "ACTIVE"
+						}
+					},
+					"operationalStatus": {
+						"_current": {
+							"value": "NORMAL"
+						}
+					},
+					"model": {
+						"_current": {
+							"value": {
+								"manufacturer": "OpenGate",
+								"name": "OpenGate",
+								"version": "1.0"
+							}
+						}
+					},
+					"specificType": {
+						"_current": {
+							"value": "CONCENTRATOR"
+						}
+					},
+					"serialNumber": {
+						"_current": {
+							"value": "32333-33334-122-1"
+						}
+					}
+				}
+			}
+		},
+		{
+			"provision": {
+				"administration": {
+					"channel": {
+						"_current": {
+							"value": "battery_channel"
+						}
+					},
+					"serviceGroup": {
+						"_current": {
+							"value": "emptyServiceGroup"
+						}
+					}
+				},
+				"device": {
+					"identifier": {
+						"_current": {
+							"value": "device_bulk_json_2"
+						}
+					},
+					"name": {
+						"_current": {
+							"value": "device_bulk_json_2_name"
+						}
+					},
+					"description": {
+						"_current": {
+							"value": "device_battery_description"
+						}
+					},
+					"administrativeState": {
+						"_current": {
+							"value": "ACTIVE"
+						}
+					},
+					"operationalStatus": {
+						"_current": {
+							"value": "NORMAL"
+						}
+					},
+					"model": {
+						"_current": {
+							"value": {
+								"name": "OpenGate",
+								"manufacturer": "OpenGate",
+								"version": "1.0"
+							}
+						}
+					},
+					"specificType": {
+						"_current": {
+							"value": "MODEM"
+						}
+					},
+					"serialNumber": {
+						"_current": {
+							"value": "device_battery_sn"
+						}
+					},
+					"location": {
+						"_current": {
+							"value": {
+								"position": {
+									"type": "Point",
+									"coordinates": [-3.7028,
+										40.41675
+									]
+								},
+								"postal": "28013"
+							}
+						}
+					},
+					"communicationModules": [{
+						"identifier": {
+							"_current": {
+								"value": "commsMod_battery_id_json_1"
+							}
+						},
+						"name": {
+							"_current": {
+								"value": "commsMod_battery_name"
+							}
+						},
+						"description": {
+							"_current": {
+								"value": "commsMod_battery_description"
+							}
+						},
+						"model": {
+							"_current": {
+								"value": {
+									"name": "OpenGate",
+									"manufacturer": "OpenGate",
+									"version": "1.0"
+								}
+							}
+						},
+						"specificType": {
+							"_current": {
+								"value": "UMTS"
+							}
+						},
+						"mobile": {
+							"imei": {
+								"_current": {
+									"value": "commsMod_battery_imei"
+								}
+							}
+						},
+						"subscription": {
+							"identifier": {
+								"_current": {
+									"value": "subscription_battery_id_bulk_json_1"
+								}
+							},
+							"name": {
+								"_current": {
+									"value": "subscription_battery_name"
+								}
+							},
+							"description": {
+								"_current": {
+									"value": "subscription_battery_description"
+								}
+							},
+							"administrativeState": {
+								"_current": {
+									"value": "ACTIVE"
+								}
+							},
+							"specificType": {
+								"_current": {
+									"value": "MOBILE"
+								}
+							},
+							"address": {
+								"_current": {
+									"value": {
+										"type": "IPV4",
+										"value": "99.1.1.71",
+										"apn": "movistar.es"
+									}
+								}
+							},
+							"mobile": {
+								"imsi": {
+									"_current": {
+										"value": "subscription_battery_imsi"
+									}
+								},
+								"msisdn": {
+									"_current": {
+										"value": "34969220026"
+									}
+								},
+								"homeOperator": {
+									"_current": {
+										"value": "Telefónica Móviles España, SAU"
+									}
+								},
+								"registeredOperator": {
+									"_current": {
+										"value": "Telefónica Móviles España, SAU"
+									}
+								}
+							}
+						},
+						"subscriber": {
+							"identifier": {
+								"_current": {
+									"value": "subscriber_battery_id_bulk_json"
+								}
+							},
+							"name": {
+								"_current": {
+									"value": "subscriber_battery_name"
+								}
+							},
+							"description": {
+								"_current": {
+									"value": "subscriber_battery_description"
+								}
+							},
+							"administrativeState": {
+								"_current": {
+									"value": "ACTIVE"
+								}
+							},
+							"specificType": {
+								"_current": {
+									"value": "SIM"
+								}
+							},
+							"mobile": {
+								"icc": {
+									"_current": {
+										"value": "subscriber_battery_icc"
+									}
+								}
+							}
+						}
+					}]
+				}
+			}
+		}
+	]
+}

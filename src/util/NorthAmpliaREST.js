@@ -253,6 +253,15 @@ export default class NorthAmpliaREST {
     post(url, data, timeout) {
         var req = request.post(this._createUrl(url))
             .send(data);
+            
+        return this._createPromiseRequest(req, null, timeout);
+    }
+    post_bulk(url, data, events, timeout) {
+        var req = request.post(this._createUrl(url))
+            .send(data)
+            .set('Content-Type', 'text/plain');
+            
+            console.log(data);
         return this._createPromiseRequest(req, null, timeout);
     }
 
@@ -266,6 +275,7 @@ export default class NorthAmpliaREST {
      */
     post_multipart(url, formData, events, timeout) {
         var req = request.post(this._createUrl(url));
+        
         if (formData && (formData.meta || formData.file || formData.json || formData.certificate)) {
             if (formData.meta) {
                 req.field('meta', formData.meta);
@@ -282,16 +292,19 @@ export default class NorthAmpliaREST {
             }
 
             if (formData.certificate) {
-                //req.set('Content-Type', 'application/x-pem-file');
                 req.attach('certificate', formData.certificate);
                 delete formData['certificate'];
             }
-
-            //console.log(req);
-
+            
         }
-
+        else if (formData.bulkFile) {
+            console.log("bulk_file");
+            req.set('Content-Type', formData.ext);
+            formData = formData.bulkFile
+        }
         req.send(formData);
+
+        
         return this._createPromiseRequest(req, events, timeout);
     }
 

@@ -17,6 +17,10 @@ module.exports = {
             'area': {
                 'identifier': 'withIdentifier',
                 'organization': 'withOrganization'
+            },
+            'bulkEntities':{
+                'organization': 'withOrganization'
+
             }
         }[setter];
     },
