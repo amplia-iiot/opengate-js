@@ -17,8 +17,8 @@ require([
     chai.use(chaiAsPromised);
     window.assert = chai.assert;
     window.ogapi = new window.OpenGateAPI({
-        apiKey: "require-real-apikey",
-        url: 'url'
+        apiKey: "2829be88-a7d7-4f51-aefc-3cc2385b6506",
+        url: 'http://172.19.18.132:25282/v80'
     });
     if (window.mochaPhantomJS) {
         mochaPhantomJS.run();

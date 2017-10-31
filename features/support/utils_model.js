@@ -232,6 +232,9 @@ module.exports = {
             },
             "entities search": function() {
                 return ogapi.entitiesSearchBuilder();
+            },
+            "entity bulk builder": function(ogapi) {
+                return ogapi.bulkEntityBuilder();
             }
             
         };

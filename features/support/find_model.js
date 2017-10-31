@@ -54,6 +54,10 @@ module.exports = {
             'area': {
                 'organizationAndidentifier': 'findByOrganizationAndIdentifier',
                 'organization': 'findByOrganization'
+            },
+            'bulkEntities':{
+                'organization': 'withOrganization'
+
             }
         }[setter];
     },
