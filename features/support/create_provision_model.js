@@ -1,5 +1,5 @@
 module.exports = {
-    setters: function (setter) {
+    setters: function(setter) {
         return {
             'user': {
                 'email': 'withEmail',
@@ -20,7 +20,9 @@ module.exports = {
                 'lang code': 'withLangCode',
                 'time zone': 'withTimeZone',
                 'zoom': 'withZoom',
-                'location': 'withLocation'
+                'location': 'withLocation',
+                'plan': 'withPlan',
+                'only assigned domain certificates': 'withOnlyAssignedDomainCertificates'
             },
             'certificate': {
                 'id': 'withId',
@@ -351,7 +353,7 @@ module.exports = {
             }
         }[setter];
     },
-    getter_response: function (getter) {
+    getter_response: function(getter) {
         return {
             'user email': '/email',
             'organization name': '/name'
