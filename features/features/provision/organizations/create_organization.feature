@@ -2,6 +2,7 @@
 @provision
 @create_provision
 @organization
+@chema
 Feature: Create an organization 
   As a user of JsApi
   I want to create or delete an organization
@@ -30,6 +31,8 @@ Feature: Create an organization
     And the "lang code" "es"
     And the "time zone" "Europe/Andorra"
     And the "zoom" 10
+    And the "plan" "BASIC"
+    And the "only assigned domain certificates" false
     And the "location" with 1 and 1 
    Then I delete it
    Then I create it

@@ -93,6 +93,30 @@ export default class Organizations extends BaseProvision {
     }
 
     /**
+     * Set the plan attribute
+     * @param {string} plan
+     * @return {Organizations}
+     */
+    withPlan(plan) {
+        if (typeof plan !== 'string' || plan.length === 0)
+            throw new Error('Plan must be a string and cannot be empty');
+        this._plan = plan;
+        return this;
+    }
+
+    /**
+     * Set the onlyAssignedDomainCertificates attribute
+     * @param {boolean} onlyDomainCerts - required field
+     * @return {Organizations}
+     */
+    withOnlyAssignedDomainCertificates(onlyDomainCerts) {
+        if (typeof onlyDomainCerts !== 'boolean' || (onlyDomainCerts !== true && onlyDomainCerts !== false))
+            throw new Error('Parameter OnlyAssignedDomainCertificates must be a boolean and cannot be empty');
+        this._onlyDomainCerts = onlyDomainCerts;
+        return this;
+    }
+
+    /**
      * Sets the map zoom attribute
      * @param {number} zoom
      * @return {Organizations} 
@@ -154,9 +178,11 @@ export default class Organizations extends BaseProvision {
             'organization': {
                 'name': this._name || undefined,
                 'description': this._description || undefined,
+                'plan': this._plan || undefined,
                 'countryCode': this._countryCode || undefined,
                 'langCode': this._langCode || undefined,
-                'timezone': this._timeZone || undefined
+                'timezone': this._timeZone || undefined,
+                'onlyAssignedDomainCertificates': (typeof this._onlyDomainCerts !== 'boolean' ? this._onlyDomainCerts : undefined)
             }
         };
 
