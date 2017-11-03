@@ -18,32 +18,19 @@ export default class BulkBuilder extends BaseProvision {
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!string} organization - this is the organization where can be create/delete/update the entity
      */
-    constructor(ogapi) {
-        super(ogapi, '/organizations/' );
+    constructor(ogapi, resource, extension ) {
+        super(ogapi, resource);
+        this._resource = resource;
+        this._extension = extension;
 
     }
 
-
-    /**
-     * Set the organization attribute
-     * @param {string} organization 
-     * @return {Channels}
-     */
-    withOrganization(organization) {
-        if (typeof organization !== 'string' || organization.length > 50)
-            throw new Error('Parameter organization must be a string and has a maximum length of 50');
-        this._organization = organization;
-        return this;
-    }
 
     _composeElement() {
         return this;
     }
 
-
-
     _buildURL() {
-        this._resource = 'provision/organizations/' + this._organization + '/bulk/entities';
         return this._resource;
     }
 
@@ -59,15 +46,15 @@ export default class BulkBuilder extends BaseProvision {
     update(rawFile) {
         return this._executeOperation(rawFile, 'UPDATE');
     }
+    
+
 
     _executeOperation( rawFile, action){
         let form;
         if (typeof rawFile !== 'string') {
             form = {};
             if (rawFile) {
-                let bulkFile = new Blob([rawFile], {
-                    type: "text/plain"
-                });
+                let bulkFile = new Blob([rawFile]);
                 form.bulkFile = bulkFile;
             }
         } else {
@@ -78,9 +65,9 @@ export default class BulkBuilder extends BaseProvision {
             }
         }
         let defer = q.defer();
-        form.ext = "application/json";
+        form.ext = this._extension;
   
-        var petitionUrl = this. _buildURL() + '?action='+action;
+        var petitionUrl = this._buildURL().replace("#actionName#", action );
         this._ogapi.Napi.post_multipart(petitionUrl, form, {
             }, this._timeout)
             .then((response) => {

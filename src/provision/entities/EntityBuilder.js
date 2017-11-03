@@ -6,6 +6,9 @@ import jsonschema from 'jsonschema';
 import DeviceBuilder from './DeviceBuilder';
 import SubscriberBuilder from './SubscriberBuilder';
 import SubscriptionBuilder from './SubscriptionBuilder';
+import CsvBulkBuilder from './CsvBulkBuilder';
+import JsonFlattenedBulkBuilder from './JsonFlattenedBulkBuilder';
+import JsonBulkBuilder from './JsonBulkBuilder';
 
 
 const jsonSchemaValidator = new jsonschema.Validator();
@@ -119,12 +122,21 @@ export default class EntityBuilder {
             return new SubscriptionBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
         });
     }
+    newCsvBulkBuilder(organization){
+        return new CsvBulkBuilder(this._ogapi, organization);
+    }
+    newJsonBulkBuilder(organization){
+        return new JsonBulkBuilder(this._ogapi, organization);
+    }
+    newJsonFlattenedBulkBuilder(organization){
+        return new JsonFlattenedBulkBuilder(this._ogapi, organization);
+    }
 
     _genericBuilder(organization, field, onFindAllowedDatastreams) {
         let _this = this;
         let defered = q.defer();
         if (!organization) {
-            throw new Error(ERROR_ORGANIZATION);
+            throw new Error(ERROR_ORGANIZATION);                
         }
         this._loadAllowedDatastreams(field, organization)
             .then(function(data) {

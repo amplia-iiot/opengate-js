@@ -3,6 +3,7 @@
 @create_provision
 @entities_provision
 @bulk_json
+@bulk
 Feature: Delete and Create a device
   As a device of JsApi
   I want to create a device using json file
@@ -26,33 +27,25 @@ Feature: Delete and Create a device
     And response code should be: 201
 
  Scenario: I want to create a device from json file
-    And an ogapi "entity bulk builder" util 
-    Given I want to create a "bulkEntities"
-    And the "organization" "organization_bulk"
+    Given an ogapi "json bulk builder" util with "bulkEntities" 
     And I read the file from "/file_test/bulk_double.json"
     And I "create" it with bulk
   	Then does not throws an error
 
    Scenario: I want to create a device from json file
-    And an ogapi "entity bulk builder" util 
-    Given I want to create a "bulkEntities"
-    And the "organization" "organization_bulk"
+    Given an ogapi "json bulk builder" util with "bulkEntities" 
     And I read the file from "/file_test/bulk_double.json"
     And I "create" it with bulk
   	Then does not throws an error
 
    Scenario: I want to update a device from json file
-    And an ogapi "entity bulk builder" util 
-    Given I want to create a "bulkEntities"
-    And the "organization" "organization_bulk"
+    Given an ogapi "json bulk builder" util with "bulkEntities" 
     And I read the file from "/file_test/bulk_double.json"
     And I "update" it with bulk
   	Then does not throws an error
 
   Scenario: I want to delete a device from json file
-    And an ogapi "entity bulk builder" util 
-    Given I want to create a "bulkEntities"
-    And the "organization" "organization_bulk"
+    Given an ogapi "json bulk builder" util with "bulkEntities" 
     And I read the file from "/file_test/bulk_double.json"
     And I "delete" it with bulk
   	Then does not throws an error

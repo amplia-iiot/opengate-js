@@ -490,7 +490,6 @@ module.exports = function() {
             }
         
             try {
-                console.log(action);
                 if (_this.fileData) {
                     return _this.util[action](_this.fileData).then(catchResponse).catch(catchErrorResponse);
                 }
@@ -501,47 +500,8 @@ module.exports = function() {
             }
         });
 
-    /*this.When(/^I delete it with bulk$/, function() {
-            var _this = this;
-            _this.error = undefined;
-            _this.responseData = undefined;
-           
-               function catchResponse(data) {
-                   //console.log("OK");
-                   //console.log("data: " + JSON.stringify(data));
-                   _this.responseData = data;
-                   _this.location = _this.responseData.location;
-                   _this.error = undefined;
-               }
-           
-               function catchErrorResponse(err) {
-                   //console.log("NOK");
-                   //console.log("ERROR: " + JSON.stringify(err));
-                   _this.responseData = err;
-                   if (err.errors) {
-                       _this.error = err.errors;
-                   } else if (err.data.errors) {
-                       _this.error = err.data.errors;
-                   } else {
-                       _this.error = err;
-                   }
-               }
-           
-               try {
-                   if (_this.fileData) {
-                       return _this.util.delete(_this.fileData).then(catchResponse).catch(catchErrorResponse);
-                   }
-               } catch (err) {
-                   this.error = err;
-                   //console.log(err);
-                   return;
-               }
-           });
-           
 
-
-    */
-           this.When(/^I delete it$/, function() {
+this.When(/^I delete it$/, function() {
 
         var _this = this;
         _this.error = undefined;
