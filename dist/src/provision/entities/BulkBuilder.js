@@ -42,26 +42,15 @@ var BulkBuilder = (function (_BaseProvision) {
      * @param {!string} organization - this is the organization where can be create/delete/update the entity
      */
 
-    function BulkBuilder(ogapi) {
+    function BulkBuilder(ogapi, resource, extension) {
         _classCallCheck(this, BulkBuilder);
 
-        _get(Object.getPrototypeOf(BulkBuilder.prototype), 'constructor', this).call(this, ogapi, '/organizations/');
+        _get(Object.getPrototypeOf(BulkBuilder.prototype), 'constructor', this).call(this, ogapi, resource);
+        this._resource = resource;
+        this._extension = extension;
     }
 
-    /**
-     * Set the organization attribute
-     * @param {string} organization 
-     * @return {Channels}
-     */
-
     _createClass(BulkBuilder, [{
-        key: 'withOrganization',
-        value: function withOrganization(organization) {
-            if (typeof organization !== 'string' || organization.length > 50) throw new Error('Parameter organization must be a string and has a maximum length of 50');
-            this._organization = organization;
-            return this;
-        }
-    }, {
         key: '_composeElement',
         value: function _composeElement() {
             return this;
@@ -69,7 +58,6 @@ var BulkBuilder = (function (_BaseProvision) {
     }, {
         key: '_buildURL',
         value: function _buildURL() {
-            this._resource = 'provision/organizations/' + this._organization + '/bulk/entities';
             return this._resource;
         }
     }, {
@@ -94,9 +82,7 @@ var BulkBuilder = (function (_BaseProvision) {
             if (typeof rawFile !== 'string') {
                 form = {};
                 if (rawFile) {
-                    var bulkFile = new Blob([rawFile], {
-                        type: "text/plain"
-                    });
+                    var bulkFile = new Blob([rawFile]);
                     form.bulkFile = bulkFile;
                 }
             } else {
@@ -107,9 +93,9 @@ var BulkBuilder = (function (_BaseProvision) {
                 }
             }
             var defer = _q2['default'].defer();
-            form.ext = "application/json";
+            form.ext = this._extension;
 
-            var petitionUrl = this._buildURL() + '?action=' + action;
+            var petitionUrl = this._buildURL().replace("#actionName#", action);
             this._ogapi.Napi.post_multipart(petitionUrl, form, {}, this._timeout).then(function (response) {
                 var statusCode = response.statusCode;
                 if (statusCode === 200) {

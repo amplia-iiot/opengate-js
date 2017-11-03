@@ -290,6 +290,13 @@ var NorthAmpliaREST = (function () {
         key: 'post',
         value: function post(url, data, timeout) {
             var req = _superagent2['default'].post(this._createUrl(url)).send(data);
+
+            return this._createPromiseRequest(req, null, timeout);
+        }
+    }, {
+        key: 'post_bulk',
+        value: function post_bulk(url, data, events, timeout) {
+            var req = _superagent2['default'].post(this._createUrl(url)).send(data).set('Content-Type', 'text/plain');
             return this._createPromiseRequest(req, null, timeout);
         }
 
@@ -305,6 +312,7 @@ var NorthAmpliaREST = (function () {
         key: 'post_multipart',
         value: function post_multipart(url, formData, events, timeout) {
             var req = _superagent2['default'].post(this._createUrl(url));
+
             if (formData && (formData.meta || formData.file || formData.json || formData.certificate)) {
                 if (formData.meta) {
                     req.field('meta', formData.meta);
@@ -321,15 +329,15 @@ var NorthAmpliaREST = (function () {
                 }
 
                 if (formData.certificate) {
-                    //req.set('Content-Type', 'application/x-pem-file');
                     req.attach('certificate', formData.certificate);
                     delete formData['certificate'];
                 }
-
-                //console.log(req);
+            } else if (formData.bulkFile) {
+                req.set('Content-Type', formData.ext);
+                formData = formData.bulkFile;
             }
-
             req.send(formData);
+
             return this._createPromiseRequest(req, events, timeout);
         }
 

@@ -260,8 +260,6 @@ export default class NorthAmpliaREST {
         var req = request.post(this._createUrl(url))
             .send(data)
             .set('Content-Type', 'text/plain');
-            
-            console.log(data);
         return this._createPromiseRequest(req, null, timeout);
     }
 
@@ -298,7 +296,6 @@ export default class NorthAmpliaREST {
             
         }
         else if (formData.bulkFile) {
-            console.log("bulk_file");
             req.set('Content-Type', formData.ext);
             formData = formData.bulkFile
         }

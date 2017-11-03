@@ -112,9 +112,13 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">organizations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/OrganizationFinder.js~OrganizationFinder.html">OrganizationFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/Organizations.js~Organizations.html">Organizations</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/BaseProvision.js~BaseProvision.html">BaseProvision</a></span></span></li>
-<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision/entities</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/ComplexBuilder.js~ComplexBuilder.html">ComplexBuilder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision/entities</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/BulkBuilder.js~BulkBuilder.html">BulkBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/ComplexBuilder.js~ComplexBuilder.html">ComplexBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/CsvBulkBuilder.js~CsvBulkBuilder.html">CsvBulkBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/DeviceBuilder.js~DeviceBuilder.html">DeviceBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/EntityBuilder.js~EntityBuilder.html">EntityBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/JsonBulkBuilder.js~JsonBulkBuilder.html">JsonBulkBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/JsonFlattenedBulkBuilder.js~JsonFlattenedBulkBuilder.html">JsonFlattenedBulkBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SimpleBuilder.js~SimpleBuilder.html">SimpleBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SubscriberBuilder.js~SubscriberBuilder.html">SubscriberBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SubscriptionBuilder.js~SubscriptionBuilder.html">SubscriptionBuilder</a></span></span></li>
@@ -207,6 +211,9 @@ import jsonschema from &apos;jsonschema&apos;;
 import DeviceBuilder from &apos;./DeviceBuilder&apos;;
 import SubscriberBuilder from &apos;./SubscriberBuilder&apos;;
 import SubscriptionBuilder from &apos;./SubscriptionBuilder&apos;;
+import CsvBulkBuilder from &apos;./CsvBulkBuilder&apos;;
+import JsonFlattenedBulkBuilder from &apos;./JsonFlattenedBulkBuilder&apos;;
+import JsonBulkBuilder from &apos;./JsonBulkBuilder&apos;;
 
 
 const jsonSchemaValidator = new jsonschema.Validator();
@@ -320,12 +327,21 @@ export default class EntityBuilder {
             return new SubscriptionBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
         });
     }
+    newCsvBulkBuilder(organization){
+        return new CsvBulkBuilder(this._ogapi, organization);
+    }
+    newJsonBulkBuilder(organization){
+        return new JsonBulkBuilder(this._ogapi, organization);
+    }
+    newJsonFlattenedBulkBuilder(organization){
+        return new JsonFlattenedBulkBuilder(this._ogapi, organization);
+    }
 
     _genericBuilder(organization, field, onFindAllowedDatastreams) {
         let _this = this;
         let defered = q.defer();
         if (!organization) {
-            throw new Error(ERROR_ORGANIZATION);
+            throw new Error(ERROR_ORGANIZATION);                
         }
         this._loadAllowedDatastreams(field, organization)
             .then(function(data) {

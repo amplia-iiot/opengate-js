@@ -1,7 +1,7 @@
 {
-  "coverage": "87.82%",
-  "expectCount": 854,
-  "actualCount": 750,
+  "coverage": "87.25%",
+  "expectCount": 871,
+  "actualCount": 760,
   "files": {
     "src/bundles/ACTION_ENUM.js": {
       "expectCount": 1,
@@ -103,6 +103,15 @@
         70
       ]
     },
+    "src/provision/entities/BulkBuilder.js": {
+      "expectCount": 5,
+      "actualCount": 2,
+      "undocumentLines": [
+        38,
+        42,
+        46
+      ]
+    },
     "src/bundles/BundleFinder.js": {
       "expectCount": 3,
       "actualCount": 3,
@@ -201,6 +210,11 @@
       "actualCount": 3,
       "undocumentLines": []
     },
+    "src/provision/entities/CsvBulkBuilder.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
     "src/iot/datamodels/Datamodels.js": {
       "expectCount": 12,
       "actualCount": 10,
@@ -255,19 +269,19 @@
         22
       ]
     },
+    "src/iot/catalog/Datastream.js": {
+      "expectCount": 14,
+      "actualCount": 13,
+      "undocumentLines": [
+        12
+      ]
+    },
     "src/collection/devices/collect/Datastreams.js": {
       "expectCount": 6,
       "actualCount": 4,
       "undocumentLines": [
         53,
         11
-      ]
-    },
-    "src/iot/catalog/Datastream.js": {
-      "expectCount": 14,
-      "actualCount": 13,
-      "undocumentLines": [
-        12
       ]
     },
     "src/searching/builder/DatastreamsSearchBuilder.js": {
@@ -344,12 +358,15 @@
       ]
     },
     "src/provision/entities/EntityBuilder.js": {
-      "expectCount": 5,
+      "expectCount": 8,
       "actualCount": 2,
       "undocumentLines": [
-        105,
-        111,
-        117
+        108,
+        125,
+        128,
+        131,
+        114,
+        120
       ]
     },
     "src/entities/EntityFinder.js": {
@@ -486,6 +503,16 @@
         17
       ]
     },
+    "src/provision/entities/JsonBulkBuilder.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "src/provision/entities/JsonFlattenedBulkBuilder.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
     "src/searching/builder/JsonSchemaSearchBuilder.js": {
       "expectCount": 7,
       "actualCount": 4,
@@ -539,10 +566,11 @@
       ]
     },
     "src/util/NorthAmpliaREST.js": {
-      "expectCount": 9,
+      "expectCount": 10,
       "actualCount": 8,
       "undocumentLines": [
-        313
+        259,
+        323
       ]
     },
     "src/bundles/deployment/OPERATION_ENUM.js": {
@@ -597,8 +625,8 @@
       "undocumentLines": []
     },
     "src/organizations/Organizations.js": {
-      "expectCount": 10,
-      "actualCount": 10,
+      "expectCount": 12,
+      "actualCount": 12,
       "undocumentLines": []
     },
     "src/searching/builder/OrganizationsSearchBuilder.js": {

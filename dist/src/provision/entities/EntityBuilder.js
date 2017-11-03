@@ -34,6 +34,18 @@ var _SubscriptionBuilder = require('./SubscriptionBuilder');
 
 var _SubscriptionBuilder2 = _interopRequireDefault(_SubscriptionBuilder);
 
+var _CsvBulkBuilder = require('./CsvBulkBuilder');
+
+var _CsvBulkBuilder2 = _interopRequireDefault(_CsvBulkBuilder);
+
+var _JsonFlattenedBulkBuilder = require('./JsonFlattenedBulkBuilder');
+
+var _JsonFlattenedBulkBuilder2 = _interopRequireDefault(_JsonFlattenedBulkBuilder);
+
+var _JsonBulkBuilder = require('./JsonBulkBuilder');
+
+var _JsonBulkBuilder2 = _interopRequireDefault(_JsonBulkBuilder);
+
 var jsonSchemaValidator = new _jsonschema2['default'].Validator();
 var ERROR_ORGANIZATION = 'Parameters organization must be defined';
 var schema_base = '/og_basic_types.json';
@@ -153,6 +165,21 @@ var EntityBuilder = (function () {
             return this._genericBuilder(organization, 'provision.device.communicationModules[].subscription', function (allowedDatastreams, definedSchemas) {
                 return new _SubscriptionBuilder2['default'](this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
             });
+        }
+    }, {
+        key: 'newCsvBulkBuilder',
+        value: function newCsvBulkBuilder(organization) {
+            return new _CsvBulkBuilder2['default'](this._ogapi, organization);
+        }
+    }, {
+        key: 'newJsonBulkBuilder',
+        value: function newJsonBulkBuilder(organization) {
+            return new _JsonBulkBuilder2['default'](this._ogapi, organization);
+        }
+    }, {
+        key: 'newJsonFlattenedBulkBuilder',
+        value: function newJsonFlattenedBulkBuilder(organization) {
+            return new _JsonFlattenedBulkBuilder2['default'](this._ogapi, organization);
         }
     }, {
         key: '_genericBuilder',

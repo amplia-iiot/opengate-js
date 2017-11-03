@@ -83,7 +83,6 @@ import DatastreamsBuilder from './iot/catalog/Datastream'
 import QratingsBuilder from './iot/catalog/Qrating'
 import EntityBuilder from './provision/entities/EntityBuilder'
 import EntitiesSearchBuilder from './searching/builder/EntitiesSearchBuilder'
-import BulkBuilder from './provision/entities/BulkBuilder'
 
 /**
  * This is a abstract class, it must be extended to another class that defined the backend, it will be used on request to Opengate North API by browser or nodejs server
@@ -490,14 +489,6 @@ export default class InternalOpenGateAPI {
      */
     certificatesBuilder() {
         return new Certificates(this);
-    }
-
-      /**
-     * This return a util to create a bulkBuilder
-     * @return {BulkBuilder}
-     */
-    bulkEntityBuilder() {
-        return new BulkBuilder(this);
     }
 
     /**

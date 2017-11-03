@@ -112,9 +112,13 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">organizations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/OrganizationFinder.js~OrganizationFinder.html">OrganizationFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/Organizations.js~Organizations.html">Organizations</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/BaseProvision.js~BaseProvision.html">BaseProvision</a></span></span></li>
-<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision/entities</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/ComplexBuilder.js~ComplexBuilder.html">ComplexBuilder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision/entities</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/BulkBuilder.js~BulkBuilder.html">BulkBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/ComplexBuilder.js~ComplexBuilder.html">ComplexBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/CsvBulkBuilder.js~CsvBulkBuilder.html">CsvBulkBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/DeviceBuilder.js~DeviceBuilder.html">DeviceBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/EntityBuilder.js~EntityBuilder.html">EntityBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/JsonBulkBuilder.js~JsonBulkBuilder.html">JsonBulkBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/JsonFlattenedBulkBuilder.js~JsonFlattenedBulkBuilder.html">JsonFlattenedBulkBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SimpleBuilder.js~SimpleBuilder.html">SimpleBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SubscriberBuilder.js~SubscriberBuilder.html">SubscriberBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SubscriptionBuilder.js~SubscriptionBuilder.html">SubscriptionBuilder</a></span></span></li>
@@ -294,6 +298,30 @@ export default class Organizations extends BaseProvision {
     }
 
     /**
+     * Set the plan attribute
+     * @param {string} plan
+     * @return {Organizations}
+     */
+    withPlan(plan) {
+        if (typeof plan !== &apos;string&apos; || plan.length === 0)
+            throw new Error(&apos;Plan must be a string and cannot be empty&apos;);
+        this._plan = plan;
+        return this;
+    }
+
+    /**
+     * Set the onlyAssignedDomainCertificates attribute
+     * @param {boolean} onlyDomainCerts - required field
+     * @return {Organizations}
+     */
+    withOnlyAssignedDomainCertificates(onlyDomainCerts) {
+        if (typeof onlyDomainCerts !== &apos;boolean&apos; || (onlyDomainCerts !== true &amp;&amp; onlyDomainCerts !== false))
+            throw new Error(&apos;Parameter OnlyAssignedDomainCertificates must be a boolean and cannot be empty&apos;);
+        this._onlyDomainCerts = onlyDomainCerts;
+        return this;
+    }
+
+    /**
      * Sets the map zoom attribute
      * @param {number} zoom
      * @return {Organizations} 
@@ -355,9 +383,11 @@ export default class Organizations extends BaseProvision {
             &apos;organization&apos;: {
                 &apos;name&apos;: this._name || undefined,
                 &apos;description&apos;: this._description || undefined,
+                &apos;plan&apos;: this._plan || undefined,
                 &apos;countryCode&apos;: this._countryCode || undefined,
                 &apos;langCode&apos;: this._langCode || undefined,
-                &apos;timezone&apos;: this._timeZone || undefined
+                &apos;timezone&apos;: this._timeZone || undefined,
+                &apos;onlyAssignedDomainCertificates&apos;: (typeof this._onlyDomainCerts !== &apos;boolean&apos; ? this._onlyDomainCerts : undefined)
             }
         };
 
