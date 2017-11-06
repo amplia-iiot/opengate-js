@@ -774,6 +774,18 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/searching/selectbuilder.js~selectbuilder",
+    "class/src/searching/SelectBuilder.js~SelectBuilder.html",
+    "<span>SelectBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/SelectBuilder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/util/selectelement.js~selectelement",
+    "class/src/util/SelectElement.js~SelectElement.html",
+    "<span>SelectElement</span> <span class=\"search-result-import-path\">opengate-js/src/util/SelectElement.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/searching/builder/servicegroupsearchbuilder.js~servicegroupsearchbuilder",
     "class/src/searching/builder/ServiceGroupSearchBuilder.js~ServiceGroupSearchBuilder.html",
     "<span>ServiceGroupSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/ServiceGroupSearchBuilder.js</span>",
@@ -1573,13 +1585,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/collection/iot.spec.js.html#lineNumber12",
+    "test-file/client/device/device.spec.js.html#lineNumber12",
     "Check funcionality bundles module: Check basic parameters: Name is not a String",
     "test"
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber12",
+    "test-file/client/collection/iot.spec.js.html#lineNumber12",
     "Check funcionality bundles module: Check basic parameters: Name is not a String",
     "test"
   ],
@@ -1693,13 +1705,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/security/certificates.spec.js.html#lineNumber23",
+    "test-file/client/security/certificates.spec.js.html#lineNumber30",
     "Check funcionality certificates: Check basic parameters: administrativeState is not a String",
     "test"
   ],
   [
     "",
-    "test-file/client/security/certificates.spec.js.html#lineNumber30",
+    "test-file/client/security/certificates.spec.js.html#lineNumber23",
     "Check funcionality certificates: Check basic parameters: administrativeState is not a String",
     "test"
   ],
@@ -2310,14 +2322,14 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "",
-    "test-file/client/searching/search.spec.js.html#lineNumber106",
+    "searchbuilder#filter src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter",
+    "test-file/client/searching/search.spec.js.html#lineNumber43",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter:",
     "test"
   ],
   [
-    "searchbuilder#filter src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter",
-    "test-file/client/searching/search.spec.js.html#lineNumber43",
+    "",
+    "test-file/client/searching/search.spec.js.html#lineNumber106",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter:",
     "test"
   ],
@@ -2347,25 +2359,25 @@ window.esdocSearchIndex = [
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriberssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber128",
-    "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder",
-    "test"
-  ],
-  [
-    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriberssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder",
     "test-file/client/searching/search.spec.js.html#lineNumber68",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder",
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriptionssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriptionssearchbuilder,internalopengateapi#subscriptionssearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber120",
-    "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscriptionsSearchBuilder",
+    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriberssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber128",
+    "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder",
     "test"
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriptionssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriptionssearchbuilder,internalopengateapi#subscriptionssearchbuilder",
     "test-file/client/searching/search.spec.js.html#lineNumber59",
+    "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscriptionsSearchBuilder",
+    "test"
+  ],
+  [
+    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriptionssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriptionssearchbuilder,internalopengateapi#subscriptionssearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber120",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscriptionsSearchBuilder",
     "test"
   ],
@@ -2689,13 +2701,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber13",
+    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber5",
     "Testing fields finder api search a fields communicationsModulesSearchBuilder",
     "test"
   ],
   [
     "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber5",
+    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber13",
     "Testing fields finder api search a fields communicationsModulesSearchBuilder",
     "test"
   ],
@@ -2865,6 +2877,12 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#napi",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-member-Napi",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#Napi",
+    "member"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#se",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-member-SE",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#SE",
     "member"
   ],
   [
@@ -3183,6 +3201,12 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#newruleconfigurationsfinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newRuleConfigurationsFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newRuleConfigurationsFinder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#newselectbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newSelectBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newSelectBuilder",
     "method"
   ],
   [
@@ -6414,6 +6438,24 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/searching/selectbuilder.js",
+    "file/src/searching/SelectBuilder.js.html",
+    "src/searching/SelectBuilder.js",
+    "file"
+  ],
+  [
+    "src/searching/selectbuilder.js~selectbuilder#add",
+    "class/src/searching/SelectBuilder.js~SelectBuilder.html#instance-method-add",
+    "src/searching/SelectBuilder.js~SelectBuilder#add",
+    "method"
+  ],
+  [
+    "src/searching/selectbuilder.js~selectbuilder#constructor",
+    "class/src/searching/SelectBuilder.js~SelectBuilder.html#instance-constructor-constructor",
+    "src/searching/SelectBuilder.js~SelectBuilder#constructor",
+    "method"
+  ],
+  [
     "src/searching/staticsearch.js",
     "file/src/searching/StaticSearch.js.html",
     "src/searching/StaticSearch.js",
@@ -7113,6 +7155,12 @@ window.esdocSearchIndex = [
     "src/searching/builder/prefilteredsearchbuilder.js~prefilteredsearchbuilder#provisioned",
     "class/src/searching/builder/PreFilteredSearchBuilder.js~PreFilteredSearchBuilder.html#instance-method-provisioned",
     "src/searching/builder/PreFilteredSearchBuilder.js~PreFilteredSearchBuilder#provisioned",
+    "method"
+  ],
+  [
+    "src/searching/builder/prefilteredsearchbuilder.js~prefilteredsearchbuilder#select",
+    "class/src/searching/builder/PreFilteredSearchBuilder.js~PreFilteredSearchBuilder.html#instance-method-select",
+    "src/searching/builder/PreFilteredSearchBuilder.js~PreFilteredSearchBuilder#select",
     "method"
   ],
   [
@@ -7851,6 +7899,18 @@ window.esdocSearchIndex = [
     "src/util/northampliarest.js~northampliarest#put_multipart",
     "class/src/util/NorthAmpliaREST.js~NorthAmpliaREST.html#instance-method-put_multipart",
     "src/util/NorthAmpliaREST.js~NorthAmpliaREST#put_multipart",
+    "method"
+  ],
+  [
+    "src/util/selectelement.js",
+    "file/src/util/SelectElement.js.html",
+    "src/util/SelectElement.js",
+    "file"
+  ],
+  [
+    "src/util/selectelement.js~selectelement.element",
+    "class/src/util/SelectElement.js~SelectElement.html#static-method-element",
+    "src/util/SelectElement.js~SelectElement.element",
     "method"
   ],
   [

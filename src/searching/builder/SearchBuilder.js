@@ -28,7 +28,8 @@ export default class SearchBuilder {
             sort: [],
             filter: {},
             limit: undefined,
-            group: {}
+            group: {},
+            select: undefined
         };
         for (let route in this._routes) {
             this._routesName.push(route);
@@ -187,6 +188,7 @@ export default class SearchBuilder {
             this._buildFilter(),
             this._buildLimit(),
             this._buildSort(),
+            this._buildSelect(),
             this._builderParams.timeout);
     }
 
@@ -196,6 +198,15 @@ export default class SearchBuilder {
             return filter._filterTemplate;
         return {
             filter: filter
+        }
+    }
+
+    _buildSelect() {
+        let select = this._builderParams.select;
+        if (typeof select !== "undefined" && typeof select._selectTemplate !== "undefined")
+            return select._selectTemplate;
+        return {
+            select: select
         }
     }
     _buildGroup() {

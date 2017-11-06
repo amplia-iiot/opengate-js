@@ -133,6 +133,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/FilterBuilder.js~FilterBuilder.html">FilterBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/QuickSearch.js~QuickSearch.html">QuickSearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/Search.js~Search.html">Search</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/SelectBuilder.js~SelectBuilder.html">SelectBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/StaticSearch.js~StaticSearch.html">StaticSearch</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching/builder</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AdministrativeStateSearchBuilder.js~AdministrativeStateSearchBuilder.html">AdministrativeStateSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AlarmsSearchBuilder.js~AlarmsSearchBuilder.html">AlarmsSearchBuilder</a></span></span></li>
@@ -188,6 +189,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/users/Users.js~User.html">User</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">util</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/Expression.js~Expression.html">Expression</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/NorthAmpliaREST.js~NorthAmpliaREST.html">NorthAmpliaREST</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/SelectElement.js~SelectElement.html">SelectElement</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/SouthAmpliaREST.js~SouthAmpliaREST.html">SouthAmpliaREST</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATE_FORMAT">DATE_FORMAT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TIME_FORMAT">TIME_FORMAT</a></span></span></li>
@@ -222,8 +224,10 @@ import RuleConfigurationsActions from &apos;./rulesConfiguration/RuleConfigurati
 import CertificateFinder from &apos;./security/CertificateFinder&apos;
 import OperationFinder from &apos;./operations/OperationFinder&apos;
 import FilterBuilder from &apos;./searching/FilterBuilder&apos;
+import SelectBuilder from &apos;./searching/SelectBuilder&apos;
 import OperationActions from &apos;./operations/OperationActions&apos;
 import Expression from &apos;./util/Expression&apos;
+import SelectElement from &apos;./util/SelectElement&apos;
 import QuickSearch from &apos;./searching/QuickSearch&apos;
 import RawSearchBuilder from &apos;./searching/builder/RawSearchBuilder&apos;
 import DevicesSearchBuilder from &apos;./searching/builder/DevicesSearchBuilder&apos;
@@ -310,6 +314,7 @@ export default class InternalOpenGateAPI {
         this.Napi = northAmpliaREST;
         this.Sapi = southAmpliaREST;
         this.EX = Expression;
+        this.SE = SelectElement;
         this.operations = new Operations(this);
         this.entityBuilder = new EntityBuilder(this);
     }
@@ -430,6 +435,14 @@ export default class InternalOpenGateAPI {
      */
     newFilterBuilder() {
         return new FilterBuilder();
+    }
+
+    /**
+     * This return a util to create your own select to make searching
+     * @return {SelectBuilder}
+     */
+    newSelectBuilder() {
+        return new SelectBuilder();
     }
 
     /**

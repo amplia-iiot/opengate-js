@@ -78,6 +78,10 @@ var _searchingFilterBuilder = require('./searching/FilterBuilder');
 
 var _searchingFilterBuilder2 = _interopRequireDefault(_searchingFilterBuilder);
 
+var _searchingSelectBuilder = require('./searching/SelectBuilder');
+
+var _searchingSelectBuilder2 = _interopRequireDefault(_searchingSelectBuilder);
+
 var _operationsOperationActions = require('./operations/OperationActions');
 
 var _operationsOperationActions2 = _interopRequireDefault(_operationsOperationActions);
@@ -85,6 +89,10 @@ var _operationsOperationActions2 = _interopRequireDefault(_operationsOperationAc
 var _utilExpression = require('./util/Expression');
 
 var _utilExpression2 = _interopRequireDefault(_utilExpression);
+
+var _utilSelectElement = require('./util/SelectElement');
+
+var _utilSelectElement2 = _interopRequireDefault(_utilSelectElement);
 
 var _searchingQuickSearch = require('./searching/QuickSearch');
 
@@ -367,6 +375,7 @@ var InternalOpenGateAPI = (function () {
         this.Napi = northAmpliaREST;
         this.Sapi = southAmpliaREST;
         this.EX = _utilExpression2['default'];
+        this.SE = _utilSelectElement2['default'];
         this.operations = new _operationsOperations2['default'](this);
         this.entityBuilder = new _provisionEntitiesEntityBuilder2['default'](this);
     }
@@ -513,6 +522,16 @@ var InternalOpenGateAPI = (function () {
         key: 'newFilterBuilder',
         value: function newFilterBuilder() {
             return new _searchingFilterBuilder2['default']();
+        }
+
+        /**
+         * This return a util to create your own select to make searching
+         * @return {SelectBuilder}
+         */
+    }, {
+        key: 'newSelectBuilder',
+        value: function newSelectBuilder() {
+            return new _searchingSelectBuilder2['default']();
         }
 
         /**

@@ -74,6 +74,137 @@ module.exports = function () {
         callback();
     });
 
+    this.When(/^I try to search with all allow select fields$/, function (callback) {
+        var _this = this;
+        var select = [];
+
+        switch (_this.util.constructor.name) {
+            case 'DevicesSearchBuilder':
+            case 'SubscriptionsSearchBuilder':
+            case 'SubscribersSearchBuilder':
+                _this.util.findFields("").then(function (fields) {
+                    var pArray = [];
+                    fields.forEach(function (field) {
+                        addField(field);
+                    });
+                    //console.log("filter: " + JSON.stringify(select));
+                    _this.util.select(select);
+                    callback();
+                }).catch(function (err) {
+                    console.log(JSON.stringify(err));
+                    callback(err);
+                });
+                break;
+            default:
+                return _this.util.findFields("").then(function (fields) {
+                    var pArray = [];
+                    fields.forEach(function (field) {
+                        pArray.push(findFields(field + "."));
+                    });
+
+                    return q.all(pArray);
+                }).catch(function (err) {
+                    assert.strictEqual(true, false);
+                }).done(function () {
+                    //console.log("select: " + JSON.stringify(select));
+                    _this.util.select(select);
+                    callback();
+                });
+
+        }
+
+        function findFields(helpField) {
+            var _helpField = helpField;
+            return _this.util.findFields(_helpField).then(function (fields) {
+                if (fields.length !== 0) {
+                    var pArray = [];
+                    fields.forEach(function (field) {
+                        pArray.push(findFields(field + "."));
+                    });
+                    return q.all(pArray);
+                } else {
+                    // Eliminar el último .
+                    addField(helpField.slice(0, -1));
+                }
+            }).catch(function (err) {
+                console.error("ERR2: " + JSON.stringify(err));
+                assert.strictEqual(true, false);
+            });
+        }
+
+        function addField(field) {
+            var element = {
+                datastreamId: field,
+                fields: ['value', 'date', 'at']
+            }
+            select.push(element);
+        }
+    });
+
+    this.When(/^I try to search with all allow select fields with utils$/, function (callback) {
+        var _this = this;
+        var selectBuilder = this.ogapi.newSelectBuilder();
+
+        switch (_this.util.constructor.name) {
+            case 'DevicesSearchBuilder':
+            case 'SubscriptionsSearchBuilder':
+            case 'SubscribersSearchBuilder':
+                _this.util.findFields("").then(function (fields) {
+                    var pArray = [];
+                    fields.forEach(function (field) {
+                        addField(field);
+                    });
+                    //console.log("filter: " + selectBuilder.toString());
+                    _this.util.select(selectBuilder);
+                    callback();
+                }).catch(function (err) {
+                    console.log(JSON.stringify(err));
+                    callback(err);
+                });
+                break;
+            default:
+                return _this.util.findFields("").then(function (fields) {
+                    var pArray = [];
+                    fields.forEach(function (field) {
+                        pArray.push(findFields(field + "."));
+                    });
+
+                    return q.all(pArray);
+                }).catch(function (err) {
+                    assert.strictEqual(true, false);
+                }).done(function () {
+                    //console.log("select: " + selectBuilder.toString());
+                    _this.util.select(selectBuilder);
+                    callback();
+                });
+
+        }
+
+        function findFields(helpField) {
+            var _helpField = helpField;
+            return _this.util.findFields(_helpField).then(function (fields) {
+                if (fields.length !== 0) {
+                    var pArray = [];
+                    fields.forEach(function (field) {
+                        pArray.push(findFields(field + "."));
+                    });
+                    return q.all(pArray);
+                } else {
+                    // Eliminar el último .
+                    addField(helpField.slice(0, -1));
+                }
+            }).catch(function (err) {
+                console.error("ERR2: " + JSON.stringify(err));
+                assert.strictEqual(true, false);
+            });
+        }
+
+        function addField(field) {
+            var selectElement = _this.ogapi.SE.element(field, ['value', 'date', 'at']);
+            selectBuilder = selectBuilder.add(selectElement);
+        }
+    });
+
 
     this.When(/^I try to search with all allow fields$/, function (callback) {
         var _this = this;

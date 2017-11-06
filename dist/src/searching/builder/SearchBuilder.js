@@ -49,7 +49,8 @@ var SearchBuilder = (function () {
             sort: [],
             filter: {},
             limit: undefined,
-            group: {}
+            group: {},
+            select: undefined
         };
 
         var _loop = function (route) {
@@ -232,7 +233,7 @@ var SearchBuilder = (function () {
     }, {
         key: 'build',
         value: function build() {
-            return new _Search2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildLimit(), this._buildSort(), this._builderParams.timeout);
+            return new _Search2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildLimit(), this._buildSort(), this._buildSelect(), this._builderParams.timeout);
         }
     }, {
         key: '_buildFilter',
@@ -241,6 +242,15 @@ var SearchBuilder = (function () {
             if (typeof filter._filterTemplate !== "undefined") return filter._filterTemplate;
             return {
                 filter: filter
+            };
+        }
+    }, {
+        key: '_buildSelect',
+        value: function _buildSelect() {
+            var select = this._builderParams.select;
+            if (typeof select !== "undefined" && typeof select._selectTemplate !== "undefined") return select._selectTemplate;
+            return {
+                select: select
             };
         }
     }, {
