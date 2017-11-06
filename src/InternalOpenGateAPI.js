@@ -17,8 +17,10 @@ import RuleConfigurationsActions from './rulesConfiguration/RuleConfigurationsAc
 import CertificateFinder from './security/CertificateFinder'
 import OperationFinder from './operations/OperationFinder'
 import FilterBuilder from './searching/FilterBuilder'
+import SelectBuilder from './searching/SelectBuilder'
 import OperationActions from './operations/OperationActions'
 import Expression from './util/Expression'
+import SelectElement from './util/SelectElement'
 import QuickSearch from './searching/QuickSearch'
 import RawSearchBuilder from './searching/builder/RawSearchBuilder'
 import DevicesSearchBuilder from './searching/builder/DevicesSearchBuilder'
@@ -105,6 +107,7 @@ export default class InternalOpenGateAPI {
         this.Napi = northAmpliaREST;
         this.Sapi = southAmpliaREST;
         this.EX = Expression;
+        this.SE = SelectElement;
         this.operations = new Operations(this);
         this.entityBuilder = new EntityBuilder(this);
     }
@@ -225,6 +228,14 @@ export default class InternalOpenGateAPI {
      */
     newFilterBuilder() {
         return new FilterBuilder();
+    }
+
+    /**
+     * This return a util to create your own select to make searching
+     * @return {SelectBuilder}
+     */
+    newSelectBuilder() {
+        return new SelectBuilder();
     }
 
     /**

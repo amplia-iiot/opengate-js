@@ -13,8 +13,8 @@ export default class DeviceSearch extends Search {
      * @param {object} sort - this defined parameters to order the result of search
      * @param {object} group - this defined the group by
      */
-    constructor(ogapi, url, filter, limit, sort, group, timeout) {
-        super(ogapi, url, filter, limit, sort, group, timeout);
+    constructor(ogapi, url, filter, limit, sort, group, select, timeout) {
+        super(ogapi, url, filter, limit, sort, group, select, timeout);
     }
 
     /**
@@ -26,6 +26,7 @@ export default class DeviceSearch extends Search {
     execute() {
         var defered = q.defer();
         var promise = defered.promise;
+        //console.log(JSON.stringify(this._filter()));
         this._ogapi.Napi
             .post(this._resource, this._filter(), this._timeout)
             .then((response) => {

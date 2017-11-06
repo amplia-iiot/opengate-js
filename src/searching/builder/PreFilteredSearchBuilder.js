@@ -41,4 +41,24 @@ export default class PreFilteredSearchBuilder extends FlattenedSearchBuilder {
         return this;
     }
 
+    /**
+     * The search request will have this filter 
+     * @example
+     *  ogapi.devicesSearchBuilder().select(
+     *      ogapi.newSelectBuilder().add(SE.element("provision.device.identifier", ["value"], "id"), SE.add("device.temperature.value", ["value"]))
+     *  ) // Setting SelectBuilder
+     *  ogapi.devicesSearchBuilder().select({
+     *      "elements": [
+     *          {"datastreamId": "provision.device.identifier","fields": ["value"],"alias": "id"},
+     *          {"datastreamId": "device.temperature.value","fields": ["value"]}
+     *      ]
+     *  }) //Custom select
+     * @param {!(SelectBuilder|object)} select
+     * @return {SearchBuilder} 
+     */
+    select(select) {
+        this._builderParams.select = (select || []);
+        return this;
+    }
+
 }
