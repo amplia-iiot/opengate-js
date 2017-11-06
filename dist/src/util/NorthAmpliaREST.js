@@ -294,9 +294,9 @@ var NorthAmpliaREST = (function () {
             return this._createPromiseRequest(req, null, timeout);
         }
     }, {
-        key: 'post_bulk',
-        value: function post_bulk(url, data, events, timeout) {
-            var req = _superagent2['default'].post(this._createUrl(url)).send(data).set('Content-Type', 'text/plain');
+        key: 'post_csv',
+        value: function post_csv(url, data, events, timeout) {
+            var req = _superagent2['default'].post(this._createUrl(url)).send(data).set('Accept', 'text/plain');
             return this._createPromiseRequest(req, null, timeout);
         }
 

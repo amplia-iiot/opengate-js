@@ -225,7 +225,7 @@ export default class BulkBuilder extends BaseProvision {
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!string} organization - this is the organization where can be create/delete/update the entity
      */
-    constructor(ogapi, resource, extension ) {
+    constructor(ogapi, resource, extension) {
         super(ogapi, resource);
         this._resource = resource;
         this._extension = extension;
@@ -247,16 +247,16 @@ export default class BulkBuilder extends BaseProvision {
     }
 
     delete(rawFile) {
-        return this._executeOperation( rawFile, &apos;DELETE&apos;);
+        return this._executeOperation(rawFile, &apos;DELETE&apos;);
     }
 
     update(rawFile) {
         return this._executeOperation(rawFile, &apos;UPDATE&apos;);
     }
-    
 
 
-    _executeOperation( rawFile, action){
+
+    _executeOperation(rawFile, action) {
         let form;
         if (typeof rawFile !== &apos;string&apos;) {
             form = {};
@@ -273,17 +273,17 @@ export default class BulkBuilder extends BaseProvision {
         }
         let defer = q.defer();
         form.ext = this._extension;
-  
-        var petitionUrl = this._buildURL().replace(&quot;#actionName#&quot;, action );
+
+        var petitionUrl = this._buildURL().replace(&quot;#actionName#&quot;, action);
         this._ogapi.Napi.post_multipart(petitionUrl, form, {
-            }, this._timeout)
+        }, this._timeout)
             .then((response) =&gt; {
                 let statusCode = response.statusCode;
                 if (statusCode === 200) {
                     defer.resolve(response);
-                }else {
+                } else {
                     defer.reject({ errors: response.data.errors, statusCode: response.statusCode });
-               }
+                }
             })
             .catch((error) =&gt; {
                 defer.reject(error);

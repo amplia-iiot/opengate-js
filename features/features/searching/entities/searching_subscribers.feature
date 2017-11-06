@@ -27,5 +27,5 @@ Feature: Searching subscribers
   	When I build it with flattened response
   	And I execute it
   	#Then response code should be: 204 	
-    Then does not throws an error
+    Then does not throws an errors
  	

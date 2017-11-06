@@ -71,6 +71,22 @@ var BaseSearch = (function () {
             });
             return promise;
         }
+    }, {
+        key: 'downloadCsv',
+        value: function downloadCsv() {
+            var defered = _q2['default'].defer();
+            var promise = defered.promise;
+            var filter = this._filter();
+
+            this._ogapi.Napi.post_csv(this._resource, filter, this._timeout).then(function (response) {
+                var resultQuery = response;
+                var statusCode = response.statusCode;
+                defered.resolve({ data: resultQuery, statusCode: statusCode });
+            })['catch'](function (error) {
+                defered.reject(error);
+            });
+            return promise;
+        }
 
         //Se debera fijar simpre un objeto limit en la paginacion asincrona
         //Si no existiera el objeto limit se creara uno por defecto

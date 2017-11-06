@@ -49,7 +49,7 @@ var SearchBuilder = (function () {
             sort: [],
             filter: {},
             limit: undefined,
-            group: {},
+            group: undefined,
             select: undefined
         };
 
@@ -257,7 +257,7 @@ var SearchBuilder = (function () {
         key: '_buildGroup',
         value: function _buildGroup() {
             var group = this._builderParams.group;
-            if (typeof group._groupTemplate !== "undefined") return group._groupTemplate;
+            if (typeof group !== "undefined" && typeof group._groupTemplate !== "undefined") return group._groupTemplate;
             return {
                 group: group
             };

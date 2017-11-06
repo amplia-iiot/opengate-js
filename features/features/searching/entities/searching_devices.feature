@@ -4,7 +4,7 @@
 Feature: Searching devices 
   As a user of JsApi
   I want to search into devices collection
-  So I can add filter, sorting, limit to search any device
+  So I can add filter, sorting, limit, select to search any device
   
   Background:
     Given an apikey user by "require-real-apikey"
@@ -54,6 +54,21 @@ Feature: Searching devices
   	And I execute it
   	Then response code should be: 200
     Then does not throws an error
+
+Scenario: I want to download csv
+    And an ogapi "devices search" util
+    When I build it with select...
+    | datastreamId | fields | alias |
+    | provision.device.administrativeState | ["value"] |state|
+    And I download csv it
+    Then response code should be: 200
+    Then does not throws an error
+    Then the content of file "search.csv" must be:
+    """
+provision.administration.channel;provision.administration.identifier;provision.administration.organization;state.value
+base_channel;device_ogapi_0;base_organization;ACTIVE
+
+    """
 
  Scenario: I want to delete the entity 
  Given the entity of type "devices builder" with "base_organization" 

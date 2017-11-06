@@ -24,7 +24,7 @@ var SelectBuilder = (function () {
     function SelectBuilder() {
         _classCallCheck(this, SelectBuilder);
 
-        this._selectTemplate = [];
+        this._selectTemplate = { select: [] };
     }
 
     /**
@@ -41,7 +41,7 @@ var SelectBuilder = (function () {
             }
 
             for (var i = 0; i < args.length; i++) {
-                this._selectTemplate.push(args[i]);
+                this._selectTemplate.select.push(args[i]);
             }
             return this;
         }
