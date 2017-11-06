@@ -28,7 +28,7 @@ export default class SearchBuilder {
             sort: [],
             filter: {},
             limit: undefined,
-            group: {},
+            group: undefined,
             select: undefined
         };
         for (let route in this._routes) {
@@ -211,7 +211,7 @@ export default class SearchBuilder {
     }
     _buildGroup() {
         let group = this._builderParams.group;
-        if (typeof group._groupTemplate !== "undefined")
+        if (typeof group !== "undefined" && typeof group._groupTemplate !== "undefined")
             return group._groupTemplate;
         return {
             group: group

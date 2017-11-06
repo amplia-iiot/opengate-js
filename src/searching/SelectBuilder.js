@@ -9,7 +9,7 @@ export default class SelectBuilder {
      * var sb = ogapi.newSelectBuilder()
      */
     constructor() {
-        this._selectTemplate = []
+        this._selectTemplate = { select: [] }
     }
 
     /**
@@ -19,7 +19,7 @@ export default class SelectBuilder {
      */
     add(...args) {
         for (var i = 0; i < args.length; i++) {
-            this._selectTemplate.push(args[i]);
+            this._selectTemplate.select.push(args[i]);
         }
         return this;
     }

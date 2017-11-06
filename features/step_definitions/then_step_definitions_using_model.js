@@ -7,7 +7,7 @@ module.exports = function () {
         //console.log("SEE GETTER_NAME: " + getterName);
         var json_attr = this.findModel.getter_response(getterName);
         //console.log("SEE INTO THE json_attr: " + JSON.stringify(json_attr));
-        
+
         var value = JSONPath({ json: data, path: json_attr })[0];
         this.expect(value).to.be.equal(getterValue);
         callback();
@@ -15,6 +15,7 @@ module.exports = function () {
 
     this.Then(/^the content of file "([^"]*)" must be:$/, function (tmpFile, contentTmp, callback) {
         var data = this.responseData.data;
+        //console.log(data);
         var header = data.headers["content-type"];
         this.expect(contentTmp).to.be.equal(data.text);
         callback();

@@ -1,4 +1,4 @@
-# features/searching_filter_fields.feature
+# features/searching_select_fields.feature
 @select-fields
 @searching
 @catalogs

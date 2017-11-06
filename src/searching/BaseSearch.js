@@ -53,6 +53,23 @@ export default class BaseSearch {
         return promise;
     }
 
+    downloadCsv() {
+        var defered = q.defer();
+        var promise = defered.promise;
+        var filter = this._filter();
+
+        this._ogapi.Napi.post_csv(this._resource, filter, this._timeout)
+            .then((response) => {
+                let resultQuery = response;
+                let statusCode = response.statusCode;
+                defered.resolve({ data: resultQuery, statusCode: statusCode });
+            })
+            .catch((error) => {
+                defered.reject(error);
+            });
+        return promise;
+    }
+
     //Se debera fijar simpre un objeto limit en la paginacion asincrona
     //Si no existiera el objeto limit se creara uno por defecto
     //Si tuviera se modficara para que siempre comience en la primera pagina
@@ -158,4 +175,6 @@ export default class BaseSearch {
 
         return promise;
     }
+
+
 }
