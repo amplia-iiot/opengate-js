@@ -207,8 +207,8 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/searching/SelectBuilder.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-import Se from &apos;./../util/SelectElement&apos;
-
+import Se from &apos;./../util/SelectElement&apos;;
+import JSONPath from &apos;JSONPath&apos;;
 export default class SelectBuilder {
 
     /**
@@ -226,7 +226,29 @@ export default class SelectBuilder {
      */
     add(...args) {
         for (var i = 0; i &lt; args.length; i++) {
-            this._selectTemplate.select.push(args[i]);
+            var input_element = args[i];
+            var elements = this._selectTemplate.select;
+            if (elements.length === 0) {
+                this._selectTemplate.select.push(input_element);
+            } else {
+                var exists_element = false;
+                for (var j = 0; j &lt; elements.length; j++) {
+                    var element = elements[j];
+                    if (element.datastreamId === input_element.datastreamId) {
+                        exists_element = true;
+                        var input_fields = input_element.fields;
+                        for (var k = 0; k &lt; input_fields.length; k++) {
+                            var input_field = input_fields[i];
+                            if (element.fields.indexOf(input_field) == -1) {
+                                this._selectTemplate.select[j].fields.push(input_field);
+                            }
+                        }
+                    }
+                }
+                if (!exists_element) {
+                    this._selectTemplate.select.push(input_element);
+                }
+            }
         }
         return this;
     }

@@ -113,21 +113,22 @@ export default class SearchBuilder {
      * @return {SearchBuilder} 
      */
     addSortBy(filterField, typeSort) {
-        if (this._builderParams.sort.length > 0) {
-            let ele = 0;
-            let found = false;
-            for (ele = 0; ele < this._builderParams.sort.length; ele++) {
-                if (this._builderParams.sort[ele].name === filterField) {
-                    this._builderParams.sort[ele].type = typeSort;
-                    found = true;
+        if (filterField && typeSort) {
+            if (this._builderParams.sort.length > 0) {
+                let ele = 0;
+                let found = false;
+                for (ele = 0; ele < this._builderParams.sort.length; ele++) {
+                    if (this._builderParams.sort[ele].name === filterField) {
+                        this._builderParams.sort[ele].type = typeSort;
+                        found = true;
+                    }
                 }
+
+                if (!found) this._builderParams.sort.push({ name: filterField, type: typeSort });
+            } else {
+                this._builderParams.sort.push({ name: filterField, type: typeSort });
             }
-
-            if (!found) this._builderParams.sort.push({ name: filterField, type: typeSort });
-        } else {
-            this._builderParams.sort.push({ name: filterField, type: typeSort });
         }
-
         return this;
     }
 
