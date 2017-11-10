@@ -134,7 +134,7 @@ module.exports = function () {
 
         function addField(field) {
             var element = {
-                datastreamId: field,
+                name: field,
                 fields: ['value', 'date', 'at']
             }
             select.push(element);
@@ -168,7 +168,7 @@ module.exports = function () {
                     fields.forEach(function (field) {
                         pArray.push(findFields(field + "."));
                     });
-
+                    
                     return q.all(pArray);
                 }).catch(function (err) {
                     assert.strictEqual(true, false);
