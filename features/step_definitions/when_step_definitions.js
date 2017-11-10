@@ -218,7 +218,7 @@ module.exports = function () {
             if (data.length > 0) {
                 for (var i = 0; i < data.length; i++) {
                     var element = data[i];
-                    var selectElement = _this.ogapi.SE.element(element.datastreamId, JSON.parse(element.fields), element.alias);
+                    var selectElement = _this.ogapi.SE.element(element.name, JSON.parse(element.fields), element.alias);
                     selectBuilder = selectBuilder.add(selectElement);
                 }
             }

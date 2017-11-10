@@ -27,7 +27,7 @@ export default class SelectBuilder {
                 var exists_element = false;
                 for (var j = 0; j < elements.length; j++) {
                     var element = elements[j];
-                    if (element.datastreamId === input_element.datastreamId) {
+                    if (element.name === input_element.name) {
                         exists_element = true;
                         var input_fields = input_element.fields;
                         for (var k = 0; k < input_fields.length; k++) {

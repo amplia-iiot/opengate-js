@@ -214,7 +214,7 @@ export default class SelectElement {
      *  SE.element(&apos;provision.device.identifier&apos;, [&apos;value&apos;], &apos;identifier&apos;)
      *  returns:
      *  {
-     *      datastreamId : &apos;provision.device.identifier&apos;,
+     *      name : &apos;provision.device.identifier&apos;,
      *      fields: [&apos;value&apos;],
      *      alias: &apos;identifier
      *  }
@@ -222,16 +222,16 @@ export default class SelectElement {
      *  SE.element(&apos;provision.device.identifier&apos;, [&apos;value&apos;])
      *  returns:
      *  {
-     *      datastreamId : &apos;provision.device.identifier&apos;,
+     *      name : &apos;provision.device.identifier&apos;,
      *      fields: [&apos;value&apos;]
      *  }
      * @return {Object} This returns a json with the object element built.
-     * @param {String} datastreamId - Indicates the datastream to show
+     * @param {String} name - Indicates the datastream to show
      * @param {[String]} fields - The fields that you want to show from that datastream
      * @param {String} alias - (Optional) Easiest name given to the datastream.
      */
-    static element(datastreamId, fields, alias) {
-        return { datastreamId: datastreamId, fields: fields, alias: alias }
+    static element(name, fields, alias) {
+        return { name: name, fields: fields, alias: alias }
     }
 
 }</code></pre>

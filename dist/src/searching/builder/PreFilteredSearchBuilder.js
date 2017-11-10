@@ -76,8 +76,8 @@ var PreFilteredSearchBuilder = (function (_FlattenedSearchBuilder) {
          *  ) // Setting SelectBuilder
          *  ogapi.devicesSearchBuilder().select({
          *      "elements": [
-         *          {"datastreamId": "provision.device.identifier","fields": ["value"],"alias": "id"},
-         *          {"datastreamId": "device.temperature.value","fields": ["value"]}
+         *          {"name": "provision.device.identifier","fields": ["value"],"alias": "id"},
+         *          {"name": "device.temperature.value","fields": ["value"]}
          *      ]
          *  }) //Custom select
          * @param {!(SelectBuilder|object)} select

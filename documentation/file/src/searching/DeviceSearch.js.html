@@ -233,7 +233,7 @@ export default class DeviceSearch extends Search {
     execute() {
         var defered = q.defer();
         var promise = defered.promise;
-        //console.log(JSON.stringify(this._filter()));
+        console.log(JSON.stringify(this._filter()));
         this._ogapi.Napi
             .post(this._resource, this._filter(), this._timeout)
             .then((response) =&gt; {

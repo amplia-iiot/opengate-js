@@ -1,6 +1,7 @@
 # features/searching_devices.feature
 @searching
 @searching_devices
+@select-fields
 Feature: Searching devices 
   As a user of JsApi
   I want to search into devices collection

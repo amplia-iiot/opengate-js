@@ -1151,10 +1151,10 @@
               "trailingComments": [
                 {
                   "type": "Block",
-                  "value": "*\r\n     * The search request will have this filter \r\n     * @example\r\n     *  ogapi.devicesSearchBuilder().select(\r\n     *      ogapi.newSelectBuilder().add(SE.element(\"provision.device.identifier\", [\"value\"], \"id\"), SE.add(\"device.temperature.value\", [\"value\"]))\r\n     *  ) // Setting SelectBuilder\r\n     *  ogapi.devicesSearchBuilder().select({\r\n     *      \"elements\": [\r\n     *          {\"datastreamId\": \"provision.device.identifier\",\"fields\": [\"value\"],\"alias\": \"id\"},\r\n     *          {\"datastreamId\": \"device.temperature.value\",\"fields\": [\"value\"]}\r\n     *      ]\r\n     *  }) //Custom select\r\n     * @param {!(SelectBuilder|object)} select\r\n     * @return {SearchBuilder} \r\n     ",
+                  "value": "*\r\n     * The search request will have this filter \r\n     * @example\r\n     *  ogapi.devicesSearchBuilder().select(\r\n     *      ogapi.newSelectBuilder().add(SE.element(\"provision.device.identifier\", [\"value\"], \"id\"), SE.add(\"device.temperature.value\", [\"value\"]))\r\n     *  ) // Setting SelectBuilder\r\n     *  ogapi.devicesSearchBuilder().select({\r\n     *      \"elements\": [\r\n     *          {\"name\": \"provision.device.identifier\",\"fields\": [\"value\"],\"alias\": \"id\"},\r\n     *          {\"name\": \"device.temperature.value\",\"fields\": [\"value\"]}\r\n     *      ]\r\n     *  }) //Custom select\r\n     * @param {!(SelectBuilder|object)} select\r\n     * @return {SearchBuilder} \r\n     ",
                   "range": [
                     1375,
-                    2065
+                    2049
                   ],
                   "loc": {
                     "start": {
@@ -1176,8 +1176,8 @@
                 "type": "Identifier",
                 "name": "select",
                 "range": [
-                  2071,
-                  2077
+                  2055,
+                  2061
                 ],
                 "loc": {
                   "start": {
@@ -1198,8 +1198,8 @@
                     "type": "Identifier",
                     "name": "select",
                     "range": [
-                      2078,
-                      2084
+                      2062,
+                      2068
                     ],
                     "loc": {
                       "start": {
@@ -1230,8 +1230,8 @@
                             "object": {
                               "type": "ThisExpression",
                               "range": [
-                                2097,
-                                2101
+                                2081,
+                                2085
                               ],
                               "loc": {
                                 "start": {
@@ -1248,8 +1248,8 @@
                               "type": "Identifier",
                               "name": "_builderParams",
                               "range": [
-                                2102,
-                                2116
+                                2086,
+                                2100
                               ],
                               "loc": {
                                 "start": {
@@ -1263,8 +1263,8 @@
                               }
                             },
                             "range": [
-                              2097,
-                              2116
+                              2081,
+                              2100
                             ],
                             "loc": {
                               "start": {
@@ -1281,8 +1281,8 @@
                             "type": "Identifier",
                             "name": "select",
                             "range": [
-                              2117,
-                              2123
+                              2101,
+                              2107
                             ],
                             "loc": {
                               "start": {
@@ -1296,8 +1296,8 @@
                             }
                           },
                           "range": [
-                            2097,
-                            2123
+                            2081,
+                            2107
                           ],
                           "loc": {
                             "start": {
@@ -1317,8 +1317,8 @@
                             "type": "Identifier",
                             "name": "select",
                             "range": [
-                              2127,
-                              2133
+                              2111,
+                              2117
                             ],
                             "loc": {
                               "start": {
@@ -1335,8 +1335,8 @@
                             "type": "ArrayExpression",
                             "elements": [],
                             "range": [
-                              2137,
-                              2139
+                              2121,
+                              2123
                             ],
                             "loc": {
                               "start": {
@@ -1350,8 +1350,8 @@
                             }
                           },
                           "range": [
-                            2127,
-                            2139
+                            2111,
+                            2123
                           ],
                           "loc": {
                             "start": {
@@ -1365,8 +1365,8 @@
                           }
                         },
                         "range": [
-                          2097,
-                          2140
+                          2081,
+                          2124
                         ],
                         "loc": {
                           "start": {
@@ -1380,8 +1380,8 @@
                         }
                       },
                       "range": [
-                        2097,
-                        2141
+                        2081,
+                        2125
                       ],
                       "loc": {
                         "start": {
@@ -1399,8 +1399,8 @@
                       "argument": {
                         "type": "ThisExpression",
                         "range": [
-                          2158,
-                          2162
+                          2142,
+                          2146
                         ],
                         "loc": {
                           "start": {
@@ -1414,8 +1414,8 @@
                         }
                       },
                       "range": [
-                        2151,
-                        2163
+                        2135,
+                        2147
                       ],
                       "loc": {
                         "start": {
@@ -1430,8 +1430,8 @@
                     }
                   ],
                   "range": [
-                    2086,
-                    2170
+                    2070,
+                    2154
                   ],
                   "loc": {
                     "start": {
@@ -1447,8 +1447,8 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  2077,
-                  2170
+                  2061,
+                  2154
                 ],
                 "loc": {
                   "start": {
@@ -1464,8 +1464,8 @@
               "kind": "method",
               "computed": false,
               "range": [
-                2071,
-                2170
+                2055,
+                2154
               ],
               "loc": {
                 "start": {
@@ -1480,10 +1480,10 @@
               "leadingComments": [
                 {
                   "type": "Block",
-                  "value": "*\r\n     * The search request will have this filter \r\n     * @example\r\n     *  ogapi.devicesSearchBuilder().select(\r\n     *      ogapi.newSelectBuilder().add(SE.element(\"provision.device.identifier\", [\"value\"], \"id\"), SE.add(\"device.temperature.value\", [\"value\"]))\r\n     *  ) // Setting SelectBuilder\r\n     *  ogapi.devicesSearchBuilder().select({\r\n     *      \"elements\": [\r\n     *          {\"datastreamId\": \"provision.device.identifier\",\"fields\": [\"value\"],\"alias\": \"id\"},\r\n     *          {\"datastreamId\": \"device.temperature.value\",\"fields\": [\"value\"]}\r\n     *      ]\r\n     *  }) //Custom select\r\n     * @param {!(SelectBuilder|object)} select\r\n     * @return {SearchBuilder} \r\n     ",
+                  "value": "*\r\n     * The search request will have this filter \r\n     * @example\r\n     *  ogapi.devicesSearchBuilder().select(\r\n     *      ogapi.newSelectBuilder().add(SE.element(\"provision.device.identifier\", [\"value\"], \"id\"), SE.add(\"device.temperature.value\", [\"value\"]))\r\n     *  ) // Setting SelectBuilder\r\n     *  ogapi.devicesSearchBuilder().select({\r\n     *      \"elements\": [\r\n     *          {\"name\": \"provision.device.identifier\",\"fields\": [\"value\"],\"alias\": \"id\"},\r\n     *          {\"name\": \"device.temperature.value\",\"fields\": [\"value\"]}\r\n     *      ]\r\n     *  }) //Custom select\r\n     * @param {!(SelectBuilder|object)} select\r\n     * @return {SearchBuilder} \r\n     ",
                   "range": [
                     1375,
-                    2065
+                    2049
                   ],
                   "loc": {
                     "start": {
@@ -1502,7 +1502,7 @@
           ],
           "range": [
             302,
-            2175
+            2159
           ],
           "loc": {
             "start": {
@@ -1517,7 +1517,7 @@
         },
         "range": [
           240,
-          2175
+          2159
         ],
         "loc": {
           "start": {
@@ -1553,7 +1553,7 @@
       },
       "range": [
         225,
-        2175
+        2159
       ],
       "loc": {
         "start": {
@@ -1590,7 +1590,7 @@
   "sourceType": "module",
   "range": [
     0,
-    2175
+    2159
   ],
   "loc": {
     "start": {
@@ -1677,10 +1677,10 @@
     },
     {
       "type": "Block",
-      "value": "*\r\n     * The search request will have this filter \r\n     * @example\r\n     *  ogapi.devicesSearchBuilder().select(\r\n     *      ogapi.newSelectBuilder().add(SE.element(\"provision.device.identifier\", [\"value\"], \"id\"), SE.add(\"device.temperature.value\", [\"value\"]))\r\n     *  ) // Setting SelectBuilder\r\n     *  ogapi.devicesSearchBuilder().select({\r\n     *      \"elements\": [\r\n     *          {\"datastreamId\": \"provision.device.identifier\",\"fields\": [\"value\"],\"alias\": \"id\"},\r\n     *          {\"datastreamId\": \"device.temperature.value\",\"fields\": [\"value\"]}\r\n     *      ]\r\n     *  }) //Custom select\r\n     * @param {!(SelectBuilder|object)} select\r\n     * @return {SearchBuilder} \r\n     ",
+      "value": "*\r\n     * The search request will have this filter \r\n     * @example\r\n     *  ogapi.devicesSearchBuilder().select(\r\n     *      ogapi.newSelectBuilder().add(SE.element(\"provision.device.identifier\", [\"value\"], \"id\"), SE.add(\"device.temperature.value\", [\"value\"]))\r\n     *  ) // Setting SelectBuilder\r\n     *  ogapi.devicesSearchBuilder().select({\r\n     *      \"elements\": [\r\n     *          {\"name\": \"provision.device.identifier\",\"fields\": [\"value\"],\"alias\": \"id\"},\r\n     *          {\"name\": \"device.temperature.value\",\"fields\": [\"value\"]}\r\n     *      ]\r\n     *  }) //Custom select\r\n     * @param {!(SelectBuilder|object)} select\r\n     * @return {SearchBuilder} \r\n     ",
       "range": [
         1375,
-        2065
+        2049
       ],
       "loc": {
         "start": {

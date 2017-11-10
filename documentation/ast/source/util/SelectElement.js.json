@@ -69,8 +69,8 @@
                 "type": "Identifier",
                 "name": "element",
                 "range": [
-                  860,
-                  867
+                  836,
+                  843
                 ],
                 "loc": {
                   "start": {
@@ -89,15 +89,33 @@
                 "params": [
                   {
                     "type": "Identifier",
-                    "name": "datastreamId",
+                    "name": "name",
                     "range": [
-                      868,
-                      880
+                      844,
+                      848
                     ],
                     "loc": {
                       "start": {
                         "line": 26,
                         "column": 19
+                      },
+                      "end": {
+                        "line": 26,
+                        "column": 23
+                      }
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "name": "fields",
+                    "range": [
+                      850,
+                      856
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 26,
+                        "column": 25
                       },
                       "end": {
                         "line": 26,
@@ -107,10 +125,10 @@
                   },
                   {
                     "type": "Identifier",
-                    "name": "fields",
+                    "name": "alias",
                     "range": [
-                      882,
-                      888
+                      858,
+                      863
                     ],
                     "loc": {
                       "start": {
@@ -119,25 +137,7 @@
                       },
                       "end": {
                         "line": 26,
-                        "column": 39
-                      }
-                    }
-                  },
-                  {
-                    "type": "Identifier",
-                    "name": "alias",
-                    "range": [
-                      890,
-                      895
-                    ],
-                    "loc": {
-                      "start": {
-                        "line": 26,
-                        "column": 41
-                      },
-                      "end": {
-                        "line": 26,
-                        "column": 46
+                        "column": 38
                       }
                     }
                   }
@@ -154,10 +154,10 @@
                             "type": "Property",
                             "key": {
                               "type": "Identifier",
-                              "name": "datastreamId",
+                              "name": "name",
                               "range": [
-                                917,
-                                929
+                                885,
+                                889
                               ],
                               "loc": {
                                 "start": {
@@ -166,21 +166,78 @@
                                 },
                                 "end": {
                                   "line": 27,
-                                  "column": 29
+                                  "column": 21
                                 }
                               }
                             },
                             "value": {
                               "type": "Identifier",
-                              "name": "datastreamId",
+                              "name": "name",
                               "range": [
-                                931,
-                                943
+                                891,
+                                895
                               ],
                               "loc": {
                                 "start": {
                                   "line": 27,
-                                  "column": 31
+                                  "column": 23
+                                },
+                                "end": {
+                                  "line": 27,
+                                  "column": 27
+                                }
+                              }
+                            },
+                            "kind": "init",
+                            "method": false,
+                            "shorthand": false,
+                            "computed": false,
+                            "range": [
+                              885,
+                              895
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 27,
+                                "column": 17
+                              },
+                              "end": {
+                                "line": 27,
+                                "column": 27
+                              }
+                            }
+                          },
+                          {
+                            "type": "Property",
+                            "key": {
+                              "type": "Identifier",
+                              "name": "fields",
+                              "range": [
+                                897,
+                                903
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 27,
+                                  "column": 29
+                                },
+                                "end": {
+                                  "line": 27,
+                                  "column": 35
+                                }
+                              }
+                            },
+                            "value": {
+                              "type": "Identifier",
+                              "name": "fields",
+                              "range": [
+                                905,
+                                911
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 27,
+                                  "column": 37
                                 },
                                 "end": {
                                   "line": 27,
@@ -193,13 +250,13 @@
                             "shorthand": false,
                             "computed": false,
                             "range": [
-                              917,
-                              943
+                              897,
+                              911
                             ],
                             "loc": {
                               "start": {
                                 "line": 27,
-                                "column": 17
+                                "column": 29
                               },
                               "end": {
                                 "line": 27,
@@ -211,10 +268,10 @@
                             "type": "Property",
                             "key": {
                               "type": "Identifier",
-                              "name": "fields",
+                              "name": "alias",
                               "range": [
-                                945,
-                                951
+                                913,
+                                918
                               ],
                               "loc": {
                                 "start": {
@@ -223,25 +280,25 @@
                                 },
                                 "end": {
                                   "line": 27,
-                                  "column": 51
+                                  "column": 50
                                 }
                               }
                             },
                             "value": {
                               "type": "Identifier",
-                              "name": "fields",
+                              "name": "alias",
                               "range": [
-                                953,
-                                959
+                                920,
+                                925
                               ],
                               "loc": {
                                 "start": {
                                   "line": 27,
-                                  "column": 53
+                                  "column": 52
                                 },
                                 "end": {
                                   "line": 27,
-                                  "column": 59
+                                  "column": 57
                                 }
                               }
                             },
@@ -250,8 +307,8 @@
                             "shorthand": false,
                             "computed": false,
                             "range": [
-                              945,
-                              959
+                              913,
+                              925
                             ],
                             "loc": {
                               "start": {
@@ -260,71 +317,14 @@
                               },
                               "end": {
                                 "line": 27,
-                                "column": 59
-                              }
-                            }
-                          },
-                          {
-                            "type": "Property",
-                            "key": {
-                              "type": "Identifier",
-                              "name": "alias",
-                              "range": [
-                                961,
-                                966
-                              ],
-                              "loc": {
-                                "start": {
-                                  "line": 27,
-                                  "column": 61
-                                },
-                                "end": {
-                                  "line": 27,
-                                  "column": 66
-                                }
-                              }
-                            },
-                            "value": {
-                              "type": "Identifier",
-                              "name": "alias",
-                              "range": [
-                                968,
-                                973
-                              ],
-                              "loc": {
-                                "start": {
-                                  "line": 27,
-                                  "column": 68
-                                },
-                                "end": {
-                                  "line": 27,
-                                  "column": 73
-                                }
-                              }
-                            },
-                            "kind": "init",
-                            "method": false,
-                            "shorthand": false,
-                            "computed": false,
-                            "range": [
-                              961,
-                              973
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 27,
-                                "column": 61
-                              },
-                              "end": {
-                                "line": 27,
-                                "column": 73
+                                "column": 57
                               }
                             }
                           }
                         ],
                         "range": [
-                          915,
-                          975
+                          883,
+                          927
                         ],
                         "loc": {
                           "start": {
@@ -333,13 +333,13 @@
                           },
                           "end": {
                             "line": 27,
-                            "column": 75
+                            "column": 59
                           }
                         }
                       },
                       "range": [
-                        908,
-                        981
+                        876,
+                        933
                       ],
                       "loc": {
                         "start": {
@@ -354,13 +354,13 @@
                     }
                   ],
                   "range": [
-                    897,
-                    982
+                    865,
+                    934
                   ],
                   "loc": {
                     "start": {
                       "line": 26,
-                      "column": 48
+                      "column": 40
                     },
                     "end": {
                       "line": 28,
@@ -371,8 +371,8 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  867,
-                  982
+                  843,
+                  934
                 ],
                 "loc": {
                   "start": {
@@ -388,8 +388,8 @@
               "kind": "method",
               "computed": false,
               "range": [
-                853,
-                982
+                829,
+                934
               ],
               "loc": {
                 "start": {
@@ -404,10 +404,10 @@
               "leadingComments": [
                 {
                   "type": "Block",
-                  "value": "*\r\n     * @example\r\n     *  SE.element('provision.device.identifier', ['value'], 'identifier')\r\n     *  returns:\r\n     *  {\r\n     *      datastreamId : 'provision.device.identifier',\r\n     *      fields: ['value'],\r\n     *      alias: 'identifier\r\n     *  }\r\n     *\r\n     *  SE.element('provision.device.identifier', ['value'])\r\n     *  returns:\r\n     *  {\r\n     *      datastreamId : 'provision.device.identifier',\r\n     *      fields: ['value']\r\n     *  }\r\n     * @return {Object} This returns a json with the object element built.\r\n     * @param {String} datastreamId - Indicates the datastream to show\r\n     * @param {[String]} fields - The fields that you want to show from that datastream\r\n     * @param {String} alias - (Optional) Easiest name given to the datastream.\r\n     ",
+                  "value": "*\r\n     * @example\r\n     *  SE.element('provision.device.identifier', ['value'], 'identifier')\r\n     *  returns:\r\n     *  {\r\n     *      name : 'provision.device.identifier',\r\n     *      fields: ['value'],\r\n     *      alias: 'identifier\r\n     *  }\r\n     *\r\n     *  SE.element('provision.device.identifier', ['value'])\r\n     *  returns:\r\n     *  {\r\n     *      name : 'provision.device.identifier',\r\n     *      fields: ['value']\r\n     *  }\r\n     * @return {Object} This returns a json with the object element built.\r\n     * @param {String} name - Indicates the datastream to show\r\n     * @param {[String]} fields - The fields that you want to show from that datastream\r\n     * @param {String} alias - (Optional) Easiest name given to the datastream.\r\n     ",
                   "range": [
                     61,
-                    847
+                    823
                   ],
                   "loc": {
                     "start": {
@@ -426,7 +426,7 @@
           ],
           "range": [
             52,
-            987
+            939
           ],
           "loc": {
             "start": {
@@ -441,7 +441,7 @@
         },
         "range": [
           32,
-          987
+          939
         ],
         "loc": {
           "start": {
@@ -458,7 +458,7 @@
       },
       "range": [
         17,
-        987
+        939
       ],
       "loc": {
         "start": {
@@ -475,7 +475,7 @@
   "sourceType": "module",
   "range": [
     0,
-    987
+    939
   ],
   "loc": {
     "start": {
@@ -490,10 +490,10 @@
   "comments": [
     {
       "type": "Block",
-      "value": "*\r\n     * @example\r\n     *  SE.element('provision.device.identifier', ['value'], 'identifier')\r\n     *  returns:\r\n     *  {\r\n     *      datastreamId : 'provision.device.identifier',\r\n     *      fields: ['value'],\r\n     *      alias: 'identifier\r\n     *  }\r\n     *\r\n     *  SE.element('provision.device.identifier', ['value'])\r\n     *  returns:\r\n     *  {\r\n     *      datastreamId : 'provision.device.identifier',\r\n     *      fields: ['value']\r\n     *  }\r\n     * @return {Object} This returns a json with the object element built.\r\n     * @param {String} datastreamId - Indicates the datastream to show\r\n     * @param {[String]} fields - The fields that you want to show from that datastream\r\n     * @param {String} alias - (Optional) Easiest name given to the datastream.\r\n     ",
+      "value": "*\r\n     * @example\r\n     *  SE.element('provision.device.identifier', ['value'], 'identifier')\r\n     *  returns:\r\n     *  {\r\n     *      name : 'provision.device.identifier',\r\n     *      fields: ['value'],\r\n     *      alias: 'identifier\r\n     *  }\r\n     *\r\n     *  SE.element('provision.device.identifier', ['value'])\r\n     *  returns:\r\n     *  {\r\n     *      name : 'provision.device.identifier',\r\n     *      fields: ['value']\r\n     *  }\r\n     * @return {Object} This returns a json with the object element built.\r\n     * @param {String} name - Indicates the datastream to show\r\n     * @param {[String]} fields - The fields that you want to show from that datastream\r\n     * @param {String} alias - (Optional) Easiest name given to the datastream.\r\n     ",
       "range": [
         61,
-        847
+        823
       ],
       "loc": {
         "start": {

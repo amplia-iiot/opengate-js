@@ -21,7 +21,7 @@ var SelectElement = (function () {
          *  SE.element('provision.device.identifier', ['value'], 'identifier')
          *  returns:
          *  {
-         *      datastreamId : 'provision.device.identifier',
+         *      name : 'provision.device.identifier',
          *      fields: ['value'],
          *      alias: 'identifier
          *  }
@@ -29,16 +29,16 @@ var SelectElement = (function () {
          *  SE.element('provision.device.identifier', ['value'])
          *  returns:
          *  {
-         *      datastreamId : 'provision.device.identifier',
+         *      name : 'provision.device.identifier',
          *      fields: ['value']
          *  }
          * @return {Object} This returns a json with the object element built.
-         * @param {String} datastreamId - Indicates the datastream to show
+         * @param {String} name - Indicates the datastream to show
          * @param {[String]} fields - The fields that you want to show from that datastream
          * @param {String} alias - (Optional) Easiest name given to the datastream.
          */
-        value: function element(datastreamId, fields, alias) {
-            return { datastreamId: datastreamId, fields: fields, alias: alias };
+        value: function element(name, fields, alias) {
+            return { name: name, fields: fields, alias: alias };
         }
     }]);
 

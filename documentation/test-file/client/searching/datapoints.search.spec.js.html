@@ -206,99 +206,99 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">client/searching/datapoints.search.spec.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">define(function () {
-	mocha.setup(&apos;bdd&apos;); 
+	mocha.setup(&apos;bdd&apos;);
 	/** @test {InternalOpenGateAPI#datapointsSearchBuilder} */
-	describe(&apos;Check funcionality datapointsSearchBuilder module:&apos;, function(){
-		it(&apos;Create new datapointsSearchBuilder object&apos;, function(){
+	describe(&apos;Check funcionality datapointsSearchBuilder module:&apos;, function () {
+		it(&apos;Create new datapointsSearchBuilder object&apos;, function () {
 			assert.isDefined(ogapi.datapointsSearchBuilder());
-		});		
+		});
 	});
 
-	describe(&apos;Setting a filter:&apos;, function(){
-		it(&apos;withDeviceId&apos;, function(){
+	describe(&apos;Setting a filter:&apos;, function () {
+		it(&apos;withDeviceId&apos;, function () {
 			assert.strictEqual(JSON.stringify(ogapi.datapointsSearchBuilder()
-			.withDeviceId(&apos;myDevice&apos;)
-			.build()._postObj.filter),&apos;{&quot;and&quot;:[{&quot;eq&quot;:{&quot;datapoint.device&quot;:&quot;myDevice&quot;}}]}&apos;);
-		});		
-		it(&apos;withDatastream&apos;, function(){
-			assert.strictEqual(JSON.stringify(ogapi.datapointsSearchBuilder()
-			.withDatastream(&apos;myDatastream&apos;)
-			.build()._postObj.filter),&apos;{&quot;and&quot;:[{&quot;eq&quot;:{&quot;datapoint.datastream&quot;:&quot;myDatastream&quot;}}]}&apos;);
-		});		
-		it(&apos;withFeed&apos;, function(){
-			assert.strictEqual(JSON.stringify(ogapi.datapointsSearchBuilder()
-			.withFeed(&apos;myDatastream&apos;)
-			.build()._postObj.filter),&apos;{&quot;and&quot;:[{&quot;eq&quot;:{&quot;datapoint.feed&quot;:&quot;myDatastream&quot;}}]}&apos;);
-		});	
-		it(&apos;CustomFilter&apos;, function(){
-			assert.strictEqual(JSON.stringify(ogapi.datapointsSearchBuilder()
-			.filter({filter:{and:[]}})
-			.build()._postObj.filter),&apos;{&quot;filter&quot;:{&quot;and&quot;:[]}}&apos;);
-		});	
-		it(&apos;time window&apos;, function(){
-			assert.strictEqual(JSON.stringify(ogapi.datapointsSearchBuilder()
-			.betweenDates(new Date(&apos;2015-10-16T10:39:05Z&apos;),new Date(&apos;2015-10-16T10:39:06Z&apos;))
-			.build()._postObj.filter),&apos;{&quot;and&quot;:[{&quot;gt&quot;:{&quot;datapoint.at&quot;:&quot;2015-10-16T10:39:05.000Z&quot;}},{&quot;lt&quot;:{&quot;datapoint.at&quot;:&quot;2015-10-16T10:39:06.000Z&quot;}}]}&apos;);
-		});	
-		it(&apos;withDatastream and withDeviceId&apos;, function(){
-			assert.strictEqual(JSON.stringify(ogapi.datapointsSearchBuilder()
-			.withDeviceId(&apos;myDevice&apos;)
-			.withDatastream(&apos;myDatastream&apos;)
-			.build()._postObj.filter),&apos;{&quot;and&quot;:[{&quot;eq&quot;:{&quot;datapoint.device&quot;:&quot;myDevice&quot;}},{&quot;eq&quot;:{&quot;datapoint.datastream&quot;:&quot;myDatastream&quot;}}]}&apos;);
-		});	
-		it(&apos;Throw error if set a custom filter and create fluent filter&apos;, function(){
-			assert.throws(function(){
-				ogapi.datapointsSearchBuilder()
 				.withDeviceId(&apos;myDevice&apos;)
-				.filter({and:[]})
-				.build();
-			},&apos;Incompatible filters. You only can create a filter using fluent mode [betweenDates, addTag, withDatastreamId, withDeviceId] methods or custom filter [filter] method&apos;);
-		});	
-	});
-
-	describe(&apos;Setting bad parameters creating fluent filter&apos;,function(){
-		it(&apos;not deviceId string parameter&apos;,function(){
-			assert.throws(function(){
-				ogapi.datapointsSearchBuilder()
-				.withDeviceId(123)
-				.build();
-			},&apos;Parameter deviceId must be a string&apos;);
+				.build()._postObj.filter), &apos;{&quot;and&quot;:[{&quot;eq&quot;:{&quot;datapoint.device&quot;:&quot;myDevice&quot;}}]}&apos;);
 		});
-		it(&apos;not datastreamId string parameter&apos;,function(){
-			assert.throws(function(){
-				ogapi.datapointsSearchBuilder()
-				.withDatastream(123)
-				.build();
-			},&apos;Parameter datastreamId must be a string&apos;);
-
+		it(&apos;withDatastream&apos;, function () {
+			assert.strictEqual(JSON.stringify(ogapi.datapointsSearchBuilder()
+				.withDatastream(&apos;myDatastream&apos;)
+				.build()._postObj.filter), &apos;{&quot;and&quot;:[{&quot;eq&quot;:{&quot;datapoint.datastream&quot;:&quot;myDatastream&quot;}}]}&apos;);
 		});
-		it(&apos;not feedId string parameter&apos;,function(){
-			assert.throws(function(){
-				ogapi.datapointsSearchBuilder()
-				.withFeed(123)
-				.build();
-			},&apos;Parameter feedId must be a string&apos;);
+		it(&apos;withFeed&apos;, function () {
+			assert.strictEqual(JSON.stringify(ogapi.datapointsSearchBuilder()
+				.withFeed(&apos;myDatastream&apos;)
+				.build()._postObj.filter), &apos;{&quot;and&quot;:[{&quot;eq&quot;:{&quot;datapoint.feed&quot;:&quot;myDatastream&quot;}}]}&apos;);
 		});
-		it(&apos;not fromDate date parameter&apos;,function(){
-			assert.throws(function(){
-				ogapi.datapointsSearchBuilder()
-				.betweenDates(123)
-				.build();
-			},&apos;Parameter fromDate must be a Date&apos;);
+		it(&apos;CustomFilter&apos;, function () {
+			assert.strictEqual(JSON.stringify(ogapi.datapointsSearchBuilder()
+				.filter({ filter: { and: [] } })
+				.build()._postObj.filter), &apos;{&quot;filter&quot;:{&quot;and&quot;:[]}}&apos;);
 		});
-		it(&apos;not toDate date parameter&apos;,function(){
-			assert.throws(function(){
+		it(&apos;time window&apos;, function () {
+			assert.strictEqual(JSON.stringify(ogapi.datapointsSearchBuilder()
+				.betweenDates(new Date(&apos;2015-10-16T10:39:05Z&apos;), new Date(&apos;2015-10-16T10:39:06Z&apos;))
+				.build()._postObj.filter), &apos;{&quot;and&quot;:[{&quot;gt&quot;:{&quot;datapoint.at&quot;:&quot;2015-10-16T10:39:05.000Z&quot;}},{&quot;lt&quot;:{&quot;datapoint.at&quot;:&quot;2015-10-16T10:39:06.000Z&quot;}}]}&apos;);
+		});
+		it(&apos;withDatastream and withDeviceId&apos;, function () {
+			assert.strictEqual(JSON.stringify(ogapi.datapointsSearchBuilder()
+				.withDeviceId(&apos;myDevice&apos;)
+				.withDatastream(&apos;myDatastream&apos;)
+				.build()._postObj.filter), &apos;{&quot;and&quot;:[{&quot;eq&quot;:{&quot;datapoint.device&quot;:&quot;myDevice&quot;}},{&quot;eq&quot;:{&quot;datapoint.datastream&quot;:&quot;myDatastream&quot;}}]}&apos;);
+		});
+		it(&apos;Throw error if set a custom filter and create fluent filter&apos;, function () {
+			assert.throws(function () {
 				ogapi.datapointsSearchBuilder()
-				.betweenDates(new Date(),123)
-				.build();
-			},&apos;Parameter toDate must be a Date&apos;);
+					.withDeviceId(&apos;myDevice&apos;)
+					.filter({ and: [] })
+					.build();
+			}, &apos;Incompatible filters. You only can create a filter using fluent mode [betweenDates, addTag, withDatastreamId, withDeviceId] methods or custom filter [filter] method&apos;);
 		});
 	});
 
-	it(&apos;Check urls:&apos;, function(){
+	describe(&apos;Setting bad parameters creating fluent filter&apos;, function () {
+		it(&apos;not deviceId string parameter&apos;, function () {
+			assert.throws(function () {
+				ogapi.datapointsSearchBuilder()
+					.withDeviceId(123)
+					.build();
+			}, &apos;Parameter deviceId must be a string&apos;);
+		});
+		it(&apos;not datastreamId string parameter&apos;, function () {
+			assert.throws(function () {
+				ogapi.datapointsSearchBuilder()
+					.withDatastream(123)
+					.build();
+			}, &apos;Parameter datastreamId must be a string&apos;);
+
+		});
+		it(&apos;not feedId string parameter&apos;, function () {
+			assert.throws(function () {
+				ogapi.datapointsSearchBuilder()
+					.withFeed(123)
+					.build();
+			}, &apos;Parameter feedId must be a string&apos;);
+		});
+		it(&apos;not fromDate date parameter&apos;, function () {
+			assert.throws(function () {
+				ogapi.datapointsSearchBuilder()
+					.betweenDates(123)
+					.build();
+			}, &apos;Parameter fromDate must be a Date&apos;);
+		});
+		it(&apos;not toDate date parameter&apos;, function () {
+			assert.throws(function () {
+				ogapi.datapointsSearchBuilder()
+					.betweenDates(new Date(), 123)
+					.build();
+			}, &apos;Parameter toDate must be a Date&apos;);
+		});
+	});
+
+	it(&apos;Check urls:&apos;, function () {
 		assert.strictEqual(ogapi.datapointsSearchBuilder()
-		.withDeviceId(&apos;myDevice&apos;)
-		.build()._resource,&apos;search/iot/datapoints&apos;);
+			.withDeviceId(&apos;myDevice&apos;)
+			.build()._resource, &apos;search/iot/datapoints&apos;);
 	});
 });</code></pre>
 

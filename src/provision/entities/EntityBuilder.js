@@ -47,18 +47,18 @@ export default class EntityBuilder {
         let allowedDatastreams = [];
         let allowedDatastreamsBuilder = this._ogapi.datamodelsSearchBuilder().filter(f).build();
 
-        allowedDatastreamsBuilder.execute().then(function(okh) {
+        allowedDatastreamsBuilder.execute().then(function (okh) {
             _this.schema = {};
             return okh;
-        }).then(function(data) {
+        }).then(function (data) {
             if (data.statusCode !== 200) {
                 defered.reject({ data: 'No content: Datastreams not found', statusCode: 204 });
             }
-            _this._getJsonPathElements().then(function() {
+            _this._getJsonPathElements().then(function () {
                 data.data = _this._setDevicesProperties(data.data, filterElement);
                 defered.resolve(data);
             })
-        }).catch(function(err) {
+        }).catch(function (err) {
             defered.reject(err);
         });
         return promise;
@@ -69,10 +69,10 @@ export default class EntityBuilder {
         let promise = defered.promise;
         let jsonSchemaSearchBuilder = this._ogapi.jsonSchemaSearchBuilder();
 
-        jsonSchemaSearchBuilder.withPath('$').build().execute().then(function(res) {
+        jsonSchemaSearchBuilder.withPath('$').build().execute().then(function (res) {
             jsonSchemaValidator.addSchema(res.data, schema_base);
             defered.resolve();
-        }).catch(function(err) {
+        }).catch(function (err) {
             defered.reject(err);
         });
         return promise;
@@ -87,7 +87,7 @@ export default class EntityBuilder {
         _this.complexFunctions = [];
         _this.simpleFunctions = [];
 
-        allowedDatastreams.forEach(function(element, index) {
+        allowedDatastreams.forEach(function (element, index) {
             let _id = element.identifier;
             if (_id.startsWith('provision.administration') || _id.startsWith(filter)) {
                 response.allowedDatastreams.push(element);
@@ -106,29 +106,29 @@ export default class EntityBuilder {
     }
 
     devicesBuilder(organization) {
-        return this._genericBuilder(organization, 'provision.device', function(allowedDatastreams, definedSchemas) {
+        return this._genericBuilder(organization, 'provision.device', function (allowedDatastreams, definedSchemas) {
             return new DeviceBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
         });
     }
 
     subscribersBuilder(organization) {
-        return this._genericBuilder(organization, 'provision.device.communicationModules[].subscriber', function(allowedDatastreams, definedSchemas) {
+        return this._genericBuilder(organization, 'provision.device.communicationModules[].subscriber', function (allowedDatastreams, definedSchemas) {
             return new SubscriberBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
         });
     }
 
     subscriptionsBuilder(organization) {
-        return this._genericBuilder(organization, 'provision.device.communicationModules[].subscription', function(allowedDatastreams, definedSchemas) {
+        return this._genericBuilder(organization, 'provision.device.communicationModules[].subscription', function (allowedDatastreams, definedSchemas) {
             return new SubscriptionBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
         });
     }
-    newCsvBulkBuilder(organization){
+    newCsvBulkBuilder(organization) {
         return new CsvBulkBuilder(this._ogapi, organization);
     }
-    newJsonBulkBuilder(organization){
+    newJsonBulkBuilder(organization) {
         return new JsonBulkBuilder(this._ogapi, organization);
     }
-    newJsonFlattenedBulkBuilder(organization){
+    newJsonFlattenedBulkBuilder(organization) {
         return new JsonFlattenedBulkBuilder(this._ogapi, organization);
     }
 
@@ -136,16 +136,16 @@ export default class EntityBuilder {
         let _this = this;
         let defered = q.defer();
         if (!organization) {
-            throw new Error(ERROR_ORGANIZATION);                
+            throw new Error(ERROR_ORGANIZATION);
         }
         this._loadAllowedDatastreams(field, organization)
-            .then(function(data) {
+            .then(function (data) {
                 if (data.statusCode === 200) {
                     defered.resolve(onFindAllowedDatastreams.call(_this, data.data.allowedDatastreams, data.data.schemas));
                 } else {
                     defered.reject('Datamodels not found on ' + organization + ' organization.');
                 }
-            }).catch(function(err) {
+            }).catch(function (err) {
                 defered.reject(err);
             });
         return defered.promise;

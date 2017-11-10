@@ -56,7 +56,7 @@ var DeviceSearch = (function (_Search) {
         value: function execute() {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            //console.log(JSON.stringify(this._filter()));
+            console.log(JSON.stringify(this._filter()));
             this._ogapi.Napi.post(this._resource, this._filter(), this._timeout).then(function (response) {
                 var resultQuery = response.body;
                 var statusCode = response.statusCode;
