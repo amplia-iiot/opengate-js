@@ -26,6 +26,7 @@ import RawSearchBuilder from './searching/builder/RawSearchBuilder'
 import DevicesSearchBuilder from './searching/builder/DevicesSearchBuilder'
 import SubscribersSearchBuilder from './searching/builder/SubscribersSearchBuilder'
 import SubscriptionsSearchBuilder from './searching/builder/SubscriptionsSearchBuilder'
+import AssetsSearchBuilder from './searching/builder/AssetsSearchBuilder'
 import OperationsSearchBuilder from './searching/builder/OperationsSearchBuilder'
 import ExecutionsSearchBuilder from './searching/builder/ExecutionsSearchBuilder'
 import AlarmsSearchBuilder from './searching/builder/AlarmsSearchBuilder'
@@ -279,6 +280,14 @@ export default class InternalOpenGateAPI {
     }
 
     /**
+     * This return a AssetsSearchBuilder to build a specific AssetSearch
+     * @return {AssetsSearchBuilder}
+     */
+    assetsSearchBuilder() {
+        return new AssetsSearchBuilder(this);
+    }
+
+    /**
      * This return a SubscribersSearchBuilder to build a specific DeviceSearch
      * @return {SubscribersSearchBuilder}
      */
@@ -436,12 +445,12 @@ export default class InternalOpenGateAPI {
      * @return {ExecutionsSearchBuilder}
      */
     entitiesSearchBuilder() {
-        return new EntitiesSearchBuilder(this);
-    }
-    /**
-     * This return a PlansSearchBuilder to build a specific PlansSearchBuilder
-     * @return {PlansSearchBuilder}
-     */
+            return new EntitiesSearchBuilder(this);
+        }
+        /**
+         * This return a PlansSearchBuilder to build a specific PlansSearchBuilder
+         * @return {PlansSearchBuilder}
+         */
     plansSearchBuilder() {
         return new PlansSearchBuilder(this);
     }

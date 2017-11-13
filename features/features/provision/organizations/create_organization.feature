@@ -2,7 +2,6 @@
 @provision
 @create_provision
 @organization
-@chema
 Feature: Create an organization 
   As a user of JsApi
   I want to create or delete an organization

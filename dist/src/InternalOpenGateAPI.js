@@ -114,6 +114,10 @@ var _searchingBuilderSubscriptionsSearchBuilder = require('./searching/builder/S
 
 var _searchingBuilderSubscriptionsSearchBuilder2 = _interopRequireDefault(_searchingBuilderSubscriptionsSearchBuilder);
 
+var _searchingBuilderAssetsSearchBuilder = require('./searching/builder/AssetsSearchBuilder');
+
+var _searchingBuilderAssetsSearchBuilder2 = _interopRequireDefault(_searchingBuilderAssetsSearchBuilder);
+
 var _searchingBuilderOperationsSearchBuilder = require('./searching/builder/OperationsSearchBuilder');
 
 var _searchingBuilderOperationsSearchBuilder2 = _interopRequireDefault(_searchingBuilderOperationsSearchBuilder);
@@ -582,6 +586,16 @@ var InternalOpenGateAPI = (function () {
         key: 'devicesSearchBuilder',
         value: function devicesSearchBuilder() {
             return new _searchingBuilderDevicesSearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a AssetsSearchBuilder to build a specific AssetSearch
+         * @return {AssetsSearchBuilder}
+         */
+    }, {
+        key: 'assetsSearchBuilder',
+        value: function assetsSearchBuilder() {
+            return new _searchingBuilderAssetsSearchBuilder2['default'](this);
         }
 
         /**
