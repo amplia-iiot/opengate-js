@@ -249,7 +249,7 @@ exports["default"] = {
             "properties": {
                 "type": {
                     "type": "string",
-                    "enum": ["IPV4", "IPV6", "MAC48", "UNKNOWN", "HOSTNAME"]
+                    "enum": ["IPV4", "IPV6", "MAC48", "UNKNOWN", "SIGFOX", "HOSTNAME"]
                 },
                 "value": {
                     "type": "string",
@@ -480,9 +480,12 @@ exports["default"] = {
         "ogIdentifier": {
             "type": "string",
             "pattern": "^[a-zA-Z0-9_@.-]*$"
+        },
+        "ogImage": {
+            "type": "string"
         }
-
     }
+
 };
 module.exports = exports["default"];
 //# sourceMappingURL=og_basic_types.js.map
