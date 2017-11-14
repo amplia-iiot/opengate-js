@@ -22,6 +22,10 @@ var _jsonschema = require('jsonschema');
 
 var _jsonschema2 = _interopRequireDefault(_jsonschema);
 
+var _AssetBuilder = require('./AssetBuilder');
+
+var _AssetBuilder2 = _interopRequireDefault(_AssetBuilder);
+
 var _DeviceBuilder = require('./DeviceBuilder');
 
 var _DeviceBuilder2 = _interopRequireDefault(_DeviceBuilder);
@@ -150,6 +154,13 @@ var EntityBuilder = (function () {
         value: function devicesBuilder(organization) {
             return this._genericBuilder(organization, 'provision.device', function (allowedDatastreams, definedSchemas) {
                 return new _DeviceBuilder2['default'](this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
+            });
+        }
+    }, {
+        key: 'assetBuilder',
+        value: function assetBuilder(organization) {
+            return this._genericBuilder(organization, 'provision.asset', function (allowedDatastreams, definedSchemas) {
+                return new _AssetBuilder2['default'](this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
             });
         }
     }, {

@@ -112,7 +112,8 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">organizations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/OrganizationFinder.js~OrganizationFinder.html">OrganizationFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/Organizations.js~Organizations.html">Organizations</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/BaseProvision.js~BaseProvision.html">BaseProvision</a></span></span></li>
-<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision/entities</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/BulkBuilder.js~BulkBuilder.html">BulkBuilder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision/entities</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/AssetBuilder.js~AssetBuilder.html">AssetBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/BulkBuilder.js~BulkBuilder.html">BulkBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/ComplexBuilder.js~ComplexBuilder.html">ComplexBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/CsvBulkBuilder.js~CsvBulkBuilder.html">CsvBulkBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/DeviceBuilder.js~DeviceBuilder.html">DeviceBuilder</a></span></span></li>
@@ -138,6 +139,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching/builder</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AdministrativeStateSearchBuilder.js~AdministrativeStateSearchBuilder.html">AdministrativeStateSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AlarmsSearchBuilder.js~AlarmsSearchBuilder.html">AlarmsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AreasSearchBuilder.js~AreasSearchBuilder.html">AreasSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AssetsSearchBuilder.js~AssetsSearchBuilder.html">AssetsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BundlesSearchBuilder.js~BundlesSearchBuilder.html">BundlesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CertificatesSearchBuilder.js~CertificatesSearchBuilder.html">CertificatesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ChannelsSearchBuilder.js~ChannelsSearchBuilder.html">ChannelsSearchBuilder</a></span></span></li>
@@ -233,6 +235,7 @@ import RawSearchBuilder from &apos;./searching/builder/RawSearchBuilder&apos;
 import DevicesSearchBuilder from &apos;./searching/builder/DevicesSearchBuilder&apos;
 import SubscribersSearchBuilder from &apos;./searching/builder/SubscribersSearchBuilder&apos;
 import SubscriptionsSearchBuilder from &apos;./searching/builder/SubscriptionsSearchBuilder&apos;
+import AssetsSearchBuilder from &apos;./searching/builder/AssetsSearchBuilder&apos;
 import OperationsSearchBuilder from &apos;./searching/builder/OperationsSearchBuilder&apos;
 import ExecutionsSearchBuilder from &apos;./searching/builder/ExecutionsSearchBuilder&apos;
 import AlarmsSearchBuilder from &apos;./searching/builder/AlarmsSearchBuilder&apos;
@@ -486,6 +489,14 @@ export default class InternalOpenGateAPI {
     }
 
     /**
+     * This return a AssetsSearchBuilder to build a specific AssetSearch
+     * @return {AssetsSearchBuilder}
+     */
+    assetsSearchBuilder() {
+        return new AssetsSearchBuilder(this);
+    }
+
+    /**
      * This return a SubscribersSearchBuilder to build a specific DeviceSearch
      * @return {SubscribersSearchBuilder}
      */
@@ -643,12 +654,12 @@ export default class InternalOpenGateAPI {
      * @return {ExecutionsSearchBuilder}
      */
     entitiesSearchBuilder() {
-        return new EntitiesSearchBuilder(this);
-    }
-    /**
-     * This return a PlansSearchBuilder to build a specific PlansSearchBuilder
-     * @return {PlansSearchBuilder}
-     */
+            return new EntitiesSearchBuilder(this);
+        }
+        /**
+         * This return a PlansSearchBuilder to build a specific PlansSearchBuilder
+         * @return {PlansSearchBuilder}
+         */
     plansSearchBuilder() {
         return new PlansSearchBuilder(this);
     }
