@@ -1,5 +1,6 @@
 # features/create_update_delete_Asset.feature
 @provision
+@asset
 @asset_builder
 @create_provision
 @asset_defaultCreate
@@ -36,7 +37,6 @@ Feature: Delete and Create a device
         | provision.administration.organization                             | simple             |  asset_organization           |             |
         | provision.administration.serviceGroup                             | simple             |  emptyServiceGroup            |             |
         | provision.asset.identifier                                        | simple             |  asset_ogapi_simple           |             |
-
     Then I create it
     And response code should be: 201
      
