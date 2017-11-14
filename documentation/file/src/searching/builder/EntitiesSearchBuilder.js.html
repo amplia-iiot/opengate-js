@@ -229,6 +229,18 @@ export default class EntitiesSearchBuilder extends SearchWithSummaryBuilder {
         this._url = &apos;/entities&apos; + TOKEN_URL ;
     }
 
+     /**
+     * The response will return a flattened response
+     * @example
+     *	ogapi.entitiesSearchBuilder().flattened() 
+     * @return {FlattenedSearchBuilder} 
+     */
+    flattened() {
+        this._url = this._url + &apos;?flattened=true&apos;;
+
+        return this;
+    }
+
     _buildUrl() {
         for (let route in this._routes) {
             if (this._builderParams[route]) {

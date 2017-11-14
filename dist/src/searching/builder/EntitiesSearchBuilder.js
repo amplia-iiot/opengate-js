@@ -49,7 +49,21 @@ var EntitiesSearchBuilder = (function (_SearchWithSummaryBuilder) {
         }).apply(this, arguments);
     }
 
+    /**
+    * The response will return a flattened response
+    * @example
+    *	ogapi.entitiesSearchBuilder().flattened() 
+    * @return {FlattenedSearchBuilder} 
+    */
+
     _createClass(EntitiesSearchBuilder, [{
+        key: 'flattened',
+        value: function flattened() {
+            this._url = this._url + '?flattened=true';
+
+            return this;
+        }
+    }, {
         key: '_buildUrl',
         value: function _buildUrl() {
             for (var route in this._routes) {
