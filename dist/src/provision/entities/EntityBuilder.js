@@ -73,7 +73,7 @@ var EntityBuilder = (function () {
 
     _createClass(EntityBuilder, [{
         key: '_loadAllowedDatastreams',
-        value: function _loadAllowedDatastreams(filterElement, organization) {
+        value: function _loadAllowedDatastreams(filterElement, organization, resourceType) {
             var _this = this;
             var defered = _q2['default'].defer();
             var promise = defered.promise;
@@ -86,6 +86,10 @@ var EntityBuilder = (function () {
             }).and({
                 "eq": {
                     "datamodels.organizationName": organization
+                }
+            }).and({
+                "eq": {
+                    "datamodels.allowedResourceTypes": resourceType
                 }
             });
 
@@ -152,28 +156,28 @@ var EntityBuilder = (function () {
     }, {
         key: 'devicesBuilder',
         value: function devicesBuilder(organization) {
-            return this._genericBuilder(organization, 'provision.device', function (allowedDatastreams, definedSchemas) {
+            return this._genericBuilder(organization, 'entity.device', 'provision', function (allowedDatastreams, definedSchemas) {
                 return new _DeviceBuilder2['default'](this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
             });
         }
     }, {
-        key: 'assetBuilder',
-        value: function assetBuilder(organization) {
-            return this._genericBuilder(organization, 'provision.asset', function (allowedDatastreams, definedSchemas) {
+        key: 'assetsBuilder',
+        value: function assetsBuilder(organization) {
+            return this._genericBuilder(organization, 'entity.asset', 'provision', function (allowedDatastreams, definedSchemas) {
                 return new _AssetBuilder2['default'](this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
             });
         }
     }, {
         key: 'subscribersBuilder',
         value: function subscribersBuilder(organization) {
-            return this._genericBuilder(organization, 'provision.device.communicationModules[].subscriber', function (allowedDatastreams, definedSchemas) {
+            return this._genericBuilder(organization, 'entity.subscriber', 'provision.device.communicationModules[].subscriber', function (allowedDatastreams, definedSchemas) {
                 return new _SubscriberBuilder2['default'](this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
             });
         }
     }, {
         key: 'subscriptionsBuilder',
         value: function subscriptionsBuilder(organization) {
-            return this._genericBuilder(organization, 'provision.device.communicationModules[].subscription', function (allowedDatastreams, definedSchemas) {
+            return this._genericBuilder(organization, 'entity.subscription', 'provision.device.communicationModules[].subscription', function (allowedDatastreams, definedSchemas) {
                 return new _SubscriptionBuilder2['default'](this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
             });
         }
@@ -194,13 +198,13 @@ var EntityBuilder = (function () {
         }
     }, {
         key: '_genericBuilder',
-        value: function _genericBuilder(organization, field, onFindAllowedDatastreams) {
+        value: function _genericBuilder(organization, resourceType, field, onFindAllowedDatastreams) {
             var _this = this;
             var defered = _q2['default'].defer();
             if (!organization) {
                 throw new Error(ERROR_ORGANIZATION);
             }
-            this._loadAllowedDatastreams(field, organization).then(function (data) {
+            this._loadAllowedDatastreams(field, organization, resourceType).then(function (data) {
                 if (data.statusCode === 200) {
                     defered.resolve(onFindAllowedDatastreams.call(_this, data.data.allowedDatastreams, data.data.schemas));
                 } else {

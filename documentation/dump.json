@@ -29462,7 +29462,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "'use strict';\n\nimport q from 'q';\nimport JSONPath from 'JSONPath';\nimport jsonschema from 'jsonschema';\nimport AssetBuilder from './AssetBuilder';\nimport DeviceBuilder from './DeviceBuilder';\nimport SubscriberBuilder from './SubscriberBuilder';\nimport SubscriptionBuilder from './SubscriptionBuilder';\nimport CsvBulkBuilder from './CsvBulkBuilder';\nimport JsonFlattenedBulkBuilder from './JsonFlattenedBulkBuilder';\nimport JsonBulkBuilder from './JsonBulkBuilder';\n\n\nconst jsonSchemaValidator = new jsonschema.Validator();\nconst ERROR_ORGANIZATION = 'Parameters organization must be defined';\nconst schema_base = '/og_basic_types.json';\n\n/**\n * This is a base object that contains all you can do about Devices.\n */\nexport default class EntityBuilder {\n\n    /**     \n     * @param {InternalOpenGateAPI} Reference to the API object.\n     */\n    constructor(ogapi) {\n        const _this = this;\n        this._ogapi = ogapi;\n    }\n\n    _loadAllowedDatastreams(filterElement, organization) {\n        let _this = this;\n        let defered = q.defer();\n        let promise = defered.promise;\n        let data = {};\n        let f = _this._ogapi.newFilterBuilder();\n        f.and({\n            \"like\": {\n                'datamodels.categories.datastreams.name': 'provision'\n            }\n        }).and({\n            \"eq\": {\n                \"datamodels.organizationName\": organization\n            }\n        });\n\n        let allowedDatastreams = [];\n        let allowedDatastreamsBuilder = this._ogapi.datamodelsSearchBuilder().filter(f).build();\n\n        allowedDatastreamsBuilder.execute().then(function (okh) {\n            _this.schema = {};\n            return okh;\n        }).then(function (data) {\n            if (data.statusCode !== 200) {\n                defered.reject({ data: 'No content: Datastreams not found', statusCode: 204 });\n            }\n            _this._getJsonPathElements().then(function () {\n                data.data = _this._setDevicesProperties(data.data, filterElement);\n                defered.resolve(data);\n            })\n        }).catch(function (err) {\n            defered.reject(err);\n        });\n        return promise;\n    }\n\n    _getJsonPathElements() {\n        let defered = q.defer();\n        let promise = defered.promise;\n        let jsonSchemaSearchBuilder = this._ogapi.jsonSchemaSearchBuilder();\n\n        jsonSchemaSearchBuilder.withPath('$').build().execute().then(function (res) {\n            jsonSchemaValidator.addSchema(res.data, schema_base);\n            defered.resolve();\n        }).catch(function (err) {\n            defered.reject(err);\n        });\n        return promise;\n    }\n\n    _setDevicesProperties(data, filter) {\n        let _this = this;\n        /*with jsonpath\n        let allowedDatastreams = jp.query(data, \"$.datamodels[*].categories[*].datastreams[*]\");*/\n        let allowedDatastreams = JSONPath({ json: data, path: \"$.datamodels[*].categories[*].datastreams[*]\" });\n        let response = { allowedDatastreams: [], schemas: {} };\n        _this.complexFunctions = [];\n        _this.simpleFunctions = [];\n\n        allowedDatastreams.forEach(function (element, index) {\n            let _id = element.identifier;\n            if (_id.startsWith('provision.administration') || _id.startsWith(filter)) {\n                response.allowedDatastreams.push(element);\n                if (_id.includes('communicationModules')) {\n                    _this.schema[_id] = { value: element.schema, complex: filter.includes('subscriber') || filter.includes('subscription') ? false : true, function: filter.includes('subscriber') || filter.includes('subscription') ? 'with' : 'withComplex' };\n                } else {\n                    _this.schema[_id] = { value: element.schema, complex: false, function: 'with' };\n\n                }\n            }\n        });\n        response['schemas'] = _this.schema;\n\n        return response;\n\n    }\n\n    devicesBuilder(organization) {\n        return this._genericBuilder(organization, 'provision.device', function (allowedDatastreams, definedSchemas) {\n            return new DeviceBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);\n        });\n    }\n\n    assetBuilder(organization) {\n        return this._genericBuilder(organization, 'provision.asset', function (allowedDatastreams, definedSchemas) {\n            return new AssetBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);\n        });\n    }\n\n    subscribersBuilder(organization) {\n        return this._genericBuilder(organization, 'provision.device.communicationModules[].subscriber', function (allowedDatastreams, definedSchemas) {\n            return new SubscriberBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);\n        });\n    }\n\n    subscriptionsBuilder(organization) {\n        return this._genericBuilder(organization, 'provision.device.communicationModules[].subscription', function (allowedDatastreams, definedSchemas) {\n            return new SubscriptionBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);\n        });\n    }\n    newCsvBulkBuilder(organization) {\n        return new CsvBulkBuilder(this._ogapi, organization);\n    }\n    newJsonBulkBuilder(organization) {\n        return new JsonBulkBuilder(this._ogapi, organization);\n    }\n    newJsonFlattenedBulkBuilder(organization) {\n        return new JsonFlattenedBulkBuilder(this._ogapi, organization);\n    }\n\n    _genericBuilder(organization, field, onFindAllowedDatastreams) {\n        let _this = this;\n        let defered = q.defer();\n        if (!organization) {\n            throw new Error(ERROR_ORGANIZATION);\n        }\n        this._loadAllowedDatastreams(field, organization)\n            .then(function (data) {\n                if (data.statusCode === 200) {\n                    defered.resolve(onFindAllowedDatastreams.call(_this, data.data.allowedDatastreams, data.data.schemas));\n                } else {\n                    defered.reject('Datamodels not found on ' + organization + ' organization.');\n                }\n            }).catch(function (err) {\n                defered.reject(err);\n            });\n        return defered.promise;\n    }\n}"
+    "content": "'use strict';\n\nimport q from 'q';\nimport JSONPath from 'JSONPath';\nimport jsonschema from 'jsonschema';\nimport AssetBuilder from './AssetBuilder';\nimport DeviceBuilder from './DeviceBuilder';\nimport SubscriberBuilder from './SubscriberBuilder';\nimport SubscriptionBuilder from './SubscriptionBuilder';\nimport CsvBulkBuilder from './CsvBulkBuilder';\nimport JsonFlattenedBulkBuilder from './JsonFlattenedBulkBuilder';\nimport JsonBulkBuilder from './JsonBulkBuilder';\n\n\nconst jsonSchemaValidator = new jsonschema.Validator();\nconst ERROR_ORGANIZATION = 'Parameters organization must be defined';\nconst schema_base = '/og_basic_types.json';\n\n/**\n * This is a base object that contains all you can do about Devices.\n */\nexport default class EntityBuilder {\n\n    /**     \n     * @param {InternalOpenGateAPI} Reference to the API object.\n     */\n    constructor(ogapi) {\n        const _this = this;\n        this._ogapi = ogapi;\n    }\n\n    _loadAllowedDatastreams(filterElement, organization, resourceType) {\n        let _this = this;\n        let defered = q.defer();\n        let promise = defered.promise;\n        let data = {};\n        let f = _this._ogapi.newFilterBuilder();\n        f.and({\n            \"like\": {\n                'datamodels.categories.datastreams.name': 'provision'\n            }\n        }).and({\n            \"eq\": {\n                \"datamodels.organizationName\": organization\n            }\n        }).and({\n            \"eq\": {\n                \"datamodels.allowedResourceTypes\": resourceType\n            }\n        });\n\n        let allowedDatastreams = [];\n        let allowedDatastreamsBuilder = this._ogapi.datamodelsSearchBuilder().filter(f).build();\n\n        allowedDatastreamsBuilder.execute().then(function (okh) {\n            _this.schema = {};\n            return okh;\n        }).then(function (data) {\n            if (data.statusCode !== 200) {\n                defered.reject({ data: 'No content: Datastreams not found', statusCode: 204 });\n            }\n            _this._getJsonPathElements().then(function () {\n                data.data = _this._setDevicesProperties(data.data, filterElement);\n                defered.resolve(data);\n            })\n        }).catch(function (err) {\n            defered.reject(err);\n        });\n        return promise;\n    }\n\n    _getJsonPathElements() {\n        let defered = q.defer();\n        let promise = defered.promise;\n        let jsonSchemaSearchBuilder = this._ogapi.jsonSchemaSearchBuilder();\n\n        jsonSchemaSearchBuilder.withPath('$').build().execute().then(function (res) {\n            jsonSchemaValidator.addSchema(res.data, schema_base);\n            defered.resolve();\n        }).catch(function (err) {\n            defered.reject(err);\n        });\n        return promise;\n    }\n\n    _setDevicesProperties(data, filter) {\n        let _this = this;\n        /*with jsonpath\n        let allowedDatastreams = jp.query(data, \"$.datamodels[*].categories[*].datastreams[*]\");*/\n        let allowedDatastreams = JSONPath({ json: data, path: \"$.datamodels[*].categories[*].datastreams[*]\" });\n        let response = { allowedDatastreams: [], schemas: {} };\n        _this.complexFunctions = [];\n        _this.simpleFunctions = [];\n\n        allowedDatastreams.forEach(function (element, index) {\n            let _id = element.identifier;\n            if (_id.startsWith('provision.administration') || _id.startsWith(filter)) {\n                response.allowedDatastreams.push(element);\n                if (_id.includes('communicationModules')) {\n                    _this.schema[_id] = { value: element.schema, complex: filter.includes('subscriber') || filter.includes('subscription') ? false : true, function: filter.includes('subscriber') || filter.includes('subscription') ? 'with' : 'withComplex' };\n                } else {\n                    _this.schema[_id] = { value: element.schema, complex: false, function: 'with' };\n\n                }\n            }\n        });\n        response['schemas'] = _this.schema;\n\n        return response;\n\n    }\n\n    devicesBuilder(organization) {\n        return this._genericBuilder(organization, 'entity.device', 'provision', function (allowedDatastreams, definedSchemas) {\n            return new DeviceBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);\n        });\n    }\n\n    assetsBuilder(organization) {\n        return this._genericBuilder(organization,'entity.asset', 'provision', function (allowedDatastreams, definedSchemas) {\n            return new AssetBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);\n        });\n    }\n\n    subscribersBuilder(organization) {\n        return this._genericBuilder(organization,'entity.subscriber', 'provision.device.communicationModules[].subscriber', function (allowedDatastreams, definedSchemas) {\n            return new SubscriberBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);\n        });\n    }\n\n    subscriptionsBuilder(organization) {\n        return this._genericBuilder(organization,'entity.subscription', 'provision.device.communicationModules[].subscription', function (allowedDatastreams, definedSchemas) {\n            return new SubscriptionBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);\n        });\n    }\n    newCsvBulkBuilder(organization) {\n        return new CsvBulkBuilder(this._ogapi, organization);\n    }\n    newJsonBulkBuilder(organization) {\n        return new JsonBulkBuilder(this._ogapi, organization);\n    }\n    newJsonFlattenedBulkBuilder(organization) {\n        return new JsonFlattenedBulkBuilder(this._ogapi, organization);\n    }\n\n    _genericBuilder(organization, resourceType,  field, onFindAllowedDatastreams ) {\n        let _this = this;\n        let defered = q.defer();\n        if (!organization) {\n            throw new Error(ERROR_ORGANIZATION);\n        }\n        this._loadAllowedDatastreams(field, organization, resourceType)\n            .then(function (data) {\n                if (data.statusCode === 200) {\n                    defered.resolve(onFindAllowedDatastreams.call(_this, data.data.allowedDatastreams, data.data.schemas));\n                } else {\n                    defered.reject('Datamodels not found on ' + organization + ' organization.');\n                }\n            }).catch(function (err) {\n                defered.reject(err);\n            });\n        return defered.promise;\n    }\n}"
   },
   {
     "__docId__": 1238,
@@ -29610,6 +29610,12 @@
         "types": [
           "*"
         ]
+      },
+      {
+        "name": "resourceType",
+        "types": [
+          "*"
+        ]
       }
     ],
     "return": {
@@ -29629,7 +29635,7 @@
     "longname": "src/provision/entities/EntityBuilder.js~EntityBuilder#_getJsonPathElements",
     "access": null,
     "description": null,
-    "lineNumber": 68,
+    "lineNumber": 72,
     "undocument": true,
     "params": [],
     "return": {
@@ -29649,7 +29655,7 @@
     "longname": "src/provision/entities/EntityBuilder.js~EntityBuilder#_setDevicesProperties",
     "access": null,
     "description": null,
-    "lineNumber": 82,
+    "lineNumber": 86,
     "undocument": true,
     "params": [
       {
@@ -29682,7 +29688,7 @@
     "longname": "src/provision/entities/EntityBuilder.js~EntityBuilder#devicesBuilder",
     "access": null,
     "description": null,
-    "lineNumber": 109,
+    "lineNumber": 113,
     "undocument": true,
     "params": [
       {
@@ -29704,12 +29710,12 @@
     "kind": "method",
     "static": false,
     "variation": null,
-    "name": "assetBuilder",
+    "name": "assetsBuilder",
     "memberof": "src/provision/entities/EntityBuilder.js~EntityBuilder",
-    "longname": "src/provision/entities/EntityBuilder.js~EntityBuilder#assetBuilder",
+    "longname": "src/provision/entities/EntityBuilder.js~EntityBuilder#assetsBuilder",
     "access": null,
     "description": null,
-    "lineNumber": 115,
+    "lineNumber": 119,
     "undocument": true,
     "params": [
       {
@@ -29736,7 +29742,7 @@
     "longname": "src/provision/entities/EntityBuilder.js~EntityBuilder#subscribersBuilder",
     "access": null,
     "description": null,
-    "lineNumber": 121,
+    "lineNumber": 125,
     "undocument": true,
     "params": [
       {
@@ -29763,7 +29769,7 @@
     "longname": "src/provision/entities/EntityBuilder.js~EntityBuilder#subscriptionsBuilder",
     "access": null,
     "description": null,
-    "lineNumber": 127,
+    "lineNumber": 131,
     "undocument": true,
     "params": [
       {
@@ -29790,7 +29796,7 @@
     "longname": "src/provision/entities/EntityBuilder.js~EntityBuilder#newCsvBulkBuilder",
     "access": null,
     "description": null,
-    "lineNumber": 132,
+    "lineNumber": 136,
     "undocument": true,
     "params": [
       {
@@ -29817,7 +29823,7 @@
     "longname": "src/provision/entities/EntityBuilder.js~EntityBuilder#newJsonBulkBuilder",
     "access": null,
     "description": null,
-    "lineNumber": 135,
+    "lineNumber": 139,
     "undocument": true,
     "params": [
       {
@@ -29844,7 +29850,7 @@
     "longname": "src/provision/entities/EntityBuilder.js~EntityBuilder#newJsonFlattenedBulkBuilder",
     "access": null,
     "description": null,
-    "lineNumber": 138,
+    "lineNumber": 142,
     "undocument": true,
     "params": [
       {
@@ -29871,11 +29877,17 @@
     "longname": "src/provision/entities/EntityBuilder.js~EntityBuilder#_genericBuilder",
     "access": null,
     "description": null,
-    "lineNumber": 142,
+    "lineNumber": 146,
     "undocument": true,
     "params": [
       {
         "name": "organization",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "resourceType",
         "types": [
           "*"
         ]

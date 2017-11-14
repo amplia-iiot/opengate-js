@@ -6114,9 +6114,9 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/provision/entities/entitybuilder.js~entitybuilder#assetbuilder",
-    "class/src/provision/entities/EntityBuilder.js~EntityBuilder.html#instance-method-assetBuilder",
-    "src/provision/entities/EntityBuilder.js~EntityBuilder#assetBuilder",
+    "src/provision/entities/entitybuilder.js~entitybuilder#assetsbuilder",
+    "class/src/provision/entities/EntityBuilder.js~EntityBuilder.html#instance-method-assetsBuilder",
+    "src/provision/entities/EntityBuilder.js~EntityBuilder#assetsBuilder",
     "method"
   ],
   [

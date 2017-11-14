@@ -243,7 +243,7 @@ module.exports = {
                 return ogapi.entityBuilder.newJsonFlattenedBulkBuilder(param1);
             },
             "asset builder": function (ogapi, param1) {
-                return ogapi.entityBuilder.assetBuilder(param1);
+                return ogapi.entityBuilder.assetsBuilder(param1);
             },
             "asset search": function (ogapi) {
                 return ogapi.assetsSearchBuilder();
