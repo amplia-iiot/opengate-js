@@ -120,7 +120,10 @@ var StaticSearch = (function (_Search) {
                     //Solo filtramos por tipo de modulo de comunicaciones o tipo de field
                     var filter = isFilter && _this._customFilters[TYPE];
                     if (typeof filter === 'undefined') {
-                        defered.resolve({ error: "Filters not allowed", statusCode: 400 });
+                        defered.resolve({
+                            error: "Filters not allowed",
+                            statusCode: 400
+                        });
                         break;
                     }
                     var result = filter ? collection[filter] : collection;
@@ -150,7 +153,10 @@ var StaticSearch = (function (_Search) {
                 case 'ioTDatastreamStoragePeriod':
                     {
                         if (filter) {
-                            defered.resolve({ error: "Filters not supported", statuscode: 400 });
+                            defered.resolve({
+                                error: "Filters not supported",
+                                statuscode: 400
+                            });
                             break;
                         }
                         finalContent = finalContent.concat(collection);
@@ -158,15 +164,24 @@ var StaticSearch = (function (_Search) {
                     }
                 default:
                     //No existe el catalogo
-                    defered.resolve({ data: {}, statusCode: 400 });
+                    defered.resolve({
+                        data: {},
+                        statusCode: 400
+                    });
             }
             if (finalContent && Object.keys(finalContent).length > 0) {
                 var resultContent = {};
                 resultContent[_this._contentType] = finalContent;
-                defered.resolve({ data: resultContent, statusCode: 200 });
+                defered.resolve({
+                    data: resultContent,
+                    statusCode: 200
+                });
             } else {
                 //Existe el catalogo pero no hay datos
-                defered.resolve({ data: {}, statusCode: 204 });
+                defered.resolve({
+                    data: {},
+                    statusCode: 204
+                });
             }
 
             return promise;
@@ -183,32 +198,35 @@ var StaticSearch = (function (_Search) {
                 },
                 'administrativeState': {
                     'ASSET': [{
-                        'id': 'REQUESTED',
-                        'description': 'Entity requested to the supplier'
-                    }, {
-                        'id': 'READY',
-                        'description': 'Entity ready for installation'
-                    }, {
-                        'id': 'REPAIR',
-                        'description': 'Entity under repair'
-                    }, {
-                        'id': 'TESTING',
-                        'description': 'Entity in tests'
-                    }, {
-                        'id': 'ACTIVE',
-                        'description': 'Field deployed entity'
-                    }, {
-                        'id': 'SUSPENDED',
-                        'description': 'Suspended its operation'
+                        'id': 'BANNED',
+                        'description': 'Asset banned, It means that received information of this asset is not going to be collected'
                     }, {
                         'id': 'DELETED',
-                        'description': 'Entity removed from available stock'
+                        'description': 'Asset removed from available stock'
+                    }, {
+                        'id': 'IN_MAINTENANCE',
+                        'description': 'Asset in maintenance'
+                    }, {
+                        'id': 'IN_STOCK',
+                        'description': 'Asset in stock'
+                    }, {
+                        'id': 'IN_TRANSIT',
+                        'description': 'Asset in transit'
+                    }, {
+                        'id': 'IN_USE',
+                        'description': 'Asset in use'
+                    }, {
+                        'id': 'MISSING',
+                        'description': 'Asset missing'
+                    }, {
+                        'id': 'ORDERED',
+                        'description': 'Asset ordered'
+                    }, {
+                        'id': 'READY',
+                        'description': 'Asset ready for installation'
                     }, {
                         'id': 'RETIRED',
                         'description': 'Field entity withdrawal'
-                    }, {
-                        'id': 'BANNED',
-                        'description': 'Entity banned, It means that received information of this entity is not going to be collected'
                     }],
                     'GATEWAY': [{
                         'id': 'REQUESTED',
@@ -345,7 +363,7 @@ var StaticSearch = (function (_Search) {
                     'COMMUNICATIONS_MODULE': ["ADSL", "CAN", "ETH", "GENERIC", "GSM", "HAN", "I2C", "LOWPAN", "MESH"],
                     'SUBSCRIBER': ["ADSL", "CAN", "ETH", "GENERIC", "GSM", "HAN", "I2C", "LOWPAN", "MESH"],
                     'SUBSCRIPTION': ["ADSL", "CAN", "ETH", "GENERIC", "GSM", "HAN", "I2C", "LOWPAN", "MESH", "MOBILE", "PLC", "RS232", "RS422", "RS485", "SIGFOX", "UMTS", "WIFI", "ZIGBEE"],
-                    'ASSET': ["BLOODPRESSURE_SENSOR", "COMHUB", "CONCENTRATOR", "CONTAINER", "COORDINATOR", "GENERIC", "GLUCOMETER_SENSOR", "METER", "MODEM", "ROUTER", "SENSOR", "TPV", "VEHICLE", "VENDING", "WEIGHT_SENSOR"],
+                    'ASSET': ["BOX", "BUILDING", "CONTROL_HOUSE", "CRANE", "FOUNTAIN", "ENGINE", "HOUSE", "MACHINE", "OTHER", "PALLET", "PIPELINE", "SPOOL", "TOWER", "VEHICLE", "WIRE", "WORKER"],
                     'GATEWAY': ["BLOODPRESSURE_SENSOR", "COMHUB", "CONCENTRATOR", "CONTAINER", "COORDINATOR", "GENERIC", "GLUCOMETER_SENSOR", "METER", "MODEM", "ROUTER", "SENSOR", "TPV", "VEHICLE", "VENDING", "WEIGHT_SENSOR"]
                 },
                 'communicationsModuleType': {
