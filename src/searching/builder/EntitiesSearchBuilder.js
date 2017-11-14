@@ -21,12 +21,12 @@ export default class EntitiesSearchBuilder extends SearchWithSummaryBuilder {
     }
 
     _buildUrl() {
-        this._checkConstraintRoutes();
         for (let route in this._routes) {
             if (this._builderParams[route]) {
                 this._url = this._url.replace(TOKEN_URL, this._routes[route]);
             }
         }
+        this._url = this._url.replace(TOKEN_URL, '')
         return super._buildUrl();
     }
 
