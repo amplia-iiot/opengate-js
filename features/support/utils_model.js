@@ -241,7 +241,10 @@ module.exports = {
             },
             "json flattened bulk builder": function (ogapi, param1) {
                 return ogapi.entityBuilder.newJsonFlattenedBulkBuilder(param1);
-            }
+            },
+            "asset builder": function (ogapi, param1) {
+                return ogapi.entityBuilder.assetBuilder(param1);
+            },
 
 
         };

@@ -3,6 +3,7 @@
 import q from 'q';
 import JSONPath from 'JSONPath';
 import jsonschema from 'jsonschema';
+import AssetBuilder from './AssetBuilder';
 import DeviceBuilder from './DeviceBuilder';
 import SubscriberBuilder from './SubscriberBuilder';
 import SubscriptionBuilder from './SubscriptionBuilder';
@@ -108,6 +109,12 @@ export default class EntityBuilder {
     devicesBuilder(organization) {
         return this._genericBuilder(organization, 'provision.device', function (allowedDatastreams, definedSchemas) {
             return new DeviceBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
+        });
+    }
+
+    assetBuilder(organization) {
+        return this._genericBuilder(organization, 'provision.asset', function (allowedDatastreams, definedSchemas) {
+            return new AssetBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
         });
     }
 
