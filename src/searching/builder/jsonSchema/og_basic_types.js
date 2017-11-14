@@ -289,6 +289,7 @@ export default {
                         "IPV6",
                         "MAC48",
                         "UNKNOWN",
+                        "SIGFOX",
                         "HOSTNAME"
                     ]
                 },
@@ -585,7 +586,10 @@ export default {
         "ogIdentifier": {
             "type": "string",
             "pattern": "^[a-zA-Z0-9_@.-]*$"
+        },
+        "ogImage": {
+            "type": "string"
         }
-
     }
+
 }
