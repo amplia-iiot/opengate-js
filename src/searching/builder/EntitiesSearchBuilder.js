@@ -17,10 +17,10 @@ export default class EntitiesSearchBuilder extends SearchWithSummaryBuilder {
         super(parent, {
             onDevices: '/devices',
         }, fieldFinder);
-        this._url = '/entities' + TOKEN_URL ;
+        this._url = '/entities' + TOKEN_URL;
     }
 
-     /**
+    /**
      * The response will return a flattened response
      * @example
      *	ogapi.entitiesSearchBuilder().flattened() 
@@ -42,5 +42,15 @@ export default class EntitiesSearchBuilder extends SearchWithSummaryBuilder {
         return super._buildUrl();
     }
 
+    /**
+     * The search request will have this group by 
+     * @example
+     * @param {!(object)} group 
+     * @return {SearchBuilder} 
+     */
+    group(group) {
+        this._builderParams.group = (group || {});
+        return this;
+    }
 
 }

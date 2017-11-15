@@ -50,11 +50,11 @@ var EntitiesSearchBuilder = (function (_SearchWithSummaryBuilder) {
     }
 
     /**
-    * The response will return a flattened response
-    * @example
-    *	ogapi.entitiesSearchBuilder().flattened() 
-    * @return {FlattenedSearchBuilder} 
-    */
+     * The response will return a flattened response
+     * @example
+     *	ogapi.entitiesSearchBuilder().flattened() 
+     * @return {FlattenedSearchBuilder} 
+     */
 
     _createClass(EntitiesSearchBuilder, [{
         key: 'flattened',
@@ -73,6 +73,19 @@ var EntitiesSearchBuilder = (function (_SearchWithSummaryBuilder) {
             }
             this._url = this._url.replace(TOKEN_URL, '');
             return _get(Object.getPrototypeOf(EntitiesSearchBuilder.prototype), '_buildUrl', this).call(this);
+        }
+
+        /**
+         * The search request will have this group by 
+         * @example
+         * @param {!(object)} group 
+         * @return {SearchBuilder} 
+         */
+    }, {
+        key: 'group',
+        value: function group(_group) {
+            this._builderParams.group = _group || {};
+            return this;
         }
     }]);
 

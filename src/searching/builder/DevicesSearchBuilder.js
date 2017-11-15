@@ -52,6 +52,7 @@ export default class DevicesSearchBuilder extends PreFilteredSearchBuilder {
             filter: finalFilter
         };
     }
+
     /**
      * The search request will have this group by 
      * @example
