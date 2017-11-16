@@ -2,6 +2,7 @@
 
 import PreFilteredSearchBuilder from './PreFilteredSearchBuilder'
 import FieldFinder from '../../util/searchingFields/FieldFinder'
+import AssetSearch from '../AssetSearch'
 
 const BASE_URL = '/entities';
 /**
@@ -62,5 +63,24 @@ export default class AssetsSearchBuilder extends PreFilteredSearchBuilder {
     group(group) {
         this._builderParams.group = (group || {});
         return this;
+    }
+
+    /**
+     * Build a instance of Search 
+     *
+     * @example
+     *  ogapi.assetsSearchBuilder().onProvisioned().build()
+     * @throws {SearchBuilderError} Throw error on url build
+     * @return {Search} 
+     */
+    build() {
+        return new AssetSearch(this._parent,
+            this._buildUrl(),
+            this._buildFilter(),
+            this._buildLimit(),
+            this._buildSort(),
+            this._buildGroup(),
+            this._buildSelect(),
+            this._builderParams.timeout);
     }
 }
