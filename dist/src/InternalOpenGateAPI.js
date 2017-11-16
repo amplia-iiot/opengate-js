@@ -198,6 +198,10 @@ var _searchingBuilderIoTDatastreamPeriodSearchBuilder = require('./searching/bui
 
 var _searchingBuilderIoTDatastreamPeriodSearchBuilder2 = _interopRequireDefault(_searchingBuilderIoTDatastreamPeriodSearchBuilder);
 
+var _searchingBuilderResourceTypeSearchBuilder = require('./searching/builder/ResourceTypeSearchBuilder');
+
+var _searchingBuilderResourceTypeSearchBuilder2 = _interopRequireDefault(_searchingBuilderResourceTypeSearchBuilder);
+
 var _searchingBuilderIoTDatastreamAccessSearchBuilder = require('./searching/builder/IoTDatastreamAccessSearchBuilder');
 
 var _searchingBuilderIoTDatastreamAccessSearchBuilder2 = _interopRequireDefault(_searchingBuilderIoTDatastreamAccessSearchBuilder);
@@ -656,6 +660,16 @@ var InternalOpenGateAPI = (function () {
         key: 'ioTDatastreamPeriodSearchBuilder',
         value: function ioTDatastreamPeriodSearchBuilder() {
             return new _searchingBuilderIoTDatastreamPeriodSearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a ResourceTypeSearchBuilder to build a specific ResourceTypeSearchBuilder
+         * @return {ResourceTypeSearchBuilder}
+         */
+    }, {
+        key: 'resourceTypeSearchBuilder',
+        value: function resourceTypeSearchBuilder() {
+            return new _searchingBuilderResourceTypeSearchBuilder2['default'](this);
         }
 
         /**

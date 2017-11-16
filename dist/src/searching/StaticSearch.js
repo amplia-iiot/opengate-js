@@ -150,6 +150,7 @@ var StaticSearch = (function (_Search) {
                 case 'ruleConfigurationSeverity':
                 case 'ioTDatastreamPeriod':
                 case 'ioTDatastreamAccess':
+                case 'resourceType':
                 case 'ioTDatastreamStoragePeriod':
                     {
                         if (filter) {
@@ -536,6 +537,7 @@ var StaticSearch = (function (_Search) {
                 'ioTDatastreamAccess': ['READ', 'WRITE'],
                 'ioTDatastreamStoragePeriod': ['DAYS', 'MONTHS', 'YEARS', 'FOREVER', 'NEVER'],
                 'ioTDatastreamPeriod': ['PULSE', 'CUMULATIVE', 'INSTANT'],
+                'resourceType': ['asset', 'device'],
                 'fieldsDefinition': {
                     'string': {
                         'description': 'Text based value',

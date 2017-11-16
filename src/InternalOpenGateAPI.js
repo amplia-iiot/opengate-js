@@ -47,6 +47,7 @@ import FieldsDefinitionSearchBuilder from './searching/builder/FieldsDefinitionS
 import JsonSchemaSearchBuilder from './searching/builder/JsonSchemaSearchBuilder'
 import MobilePhoneProviderSearchBuilder from './searching/builder/MobilePhoneProviderSearchBuilder'
 import IoTDatastreamPeriodSearchBuilder from './searching/builder/IoTDatastreamPeriodSearchBuilder'
+import ResourceTypeSearchBuilder from './searching/builder/ResourceTypeSearchBuilder'
 import IoTDatastreamAccessSearchBuilder from './searching/builder/IoTDatastreamAccessSearchBuilder'
 import IoTDatastreamStoragePeriodSearchBuilder from './searching/builder/IoTDatastreamStoragePeriodSearchBuilder'
 import RuleConfigurationSeveritySearchBuilder from './searching/builder/RuleConfigurationSeveritySearchBuilder'
@@ -334,6 +335,15 @@ export default class InternalOpenGateAPI {
     ioTDatastreamPeriodSearchBuilder() {
         return new IoTDatastreamPeriodSearchBuilder(this);
     }
+
+    /**
+     * This return a ResourceTypeSearchBuilder to build a specific ResourceTypeSearchBuilder
+     * @return {ResourceTypeSearchBuilder}
+     */
+    resourceTypeSearchBuilder() {
+        return new ResourceTypeSearchBuilder(this);
+    }
+
 
     /**
      * This return a IoTDatastreamAccessSearchBuilder to build a specific IoTDatastreamAccessSearchBuilder
