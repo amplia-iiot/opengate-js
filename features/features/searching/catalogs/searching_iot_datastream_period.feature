@@ -1,9 +1,7 @@
-# features/searching/searching_iot_datastream_period.feature
+# features/searching/catalogs/searching_iot_datastream_period.feature
 
 @iot
-@datamodel
-@IoT_datastream_period_provider
-@iot_datastream
+@ioT_datastream_period_provider
 @searching
 @catalogs
 Feature: Searching IoT datastream period provider in catalog

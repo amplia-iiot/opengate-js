@@ -137,6 +137,9 @@ module.exports = {
             "IoT datastream storage period search": function (ogapi) {
                 return ogapi.ioTDatastreamStoragePeriodSearchBuilder();
             },
+            "Resource Type search": function (ogapi) {
+                return ogapi.resourceTypeSearchBuilder();
+            },
             "datamodels builder": function (ogapi, param) {
                 return ogapi.datamodelsBuilder(param);
             },
