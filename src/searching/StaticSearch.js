@@ -126,6 +126,7 @@ export default class StaticSearch extends Search {
             case 'ioTDatastreamPeriod':
             case 'ioTDatastreamAccess':
             case 'resourceType':
+            case 'allowedResourceType':
             case 'ioTDatastreamStoragePeriod':
                 {
                     if (filter) {
@@ -571,6 +572,10 @@ export default class StaticSearch extends Search {
                 'INSTANT'
             ],
             'resourceType' :['asset', 'device'],
+            'allowedResourceType': ['entity.asset',
+                'entity.device',
+                'entity.subscriber',
+                'entity.subscription'],
             'fieldsDefinition': {
                 'string': {
                     'description': 'Text based value',

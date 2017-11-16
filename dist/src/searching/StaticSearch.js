@@ -151,6 +151,7 @@ var StaticSearch = (function (_Search) {
                 case 'ioTDatastreamPeriod':
                 case 'ioTDatastreamAccess':
                 case 'resourceType':
+                case 'allowedResourceType':
                 case 'ioTDatastreamStoragePeriod':
                     {
                         if (filter) {
@@ -538,6 +539,7 @@ var StaticSearch = (function (_Search) {
                 'ioTDatastreamStoragePeriod': ['DAYS', 'MONTHS', 'YEARS', 'FOREVER', 'NEVER'],
                 'ioTDatastreamPeriod': ['PULSE', 'CUMULATIVE', 'INSTANT'],
                 'resourceType': ['asset', 'device'],
+                'allowedResourceType': ['entity.asset', 'entity.device', 'entity.subscriber', 'entity.subscription'],
                 'fieldsDefinition': {
                     'string': {
                         'description': 'Text based value',

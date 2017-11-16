@@ -139,6 +139,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/StaticSearch.js~StaticSearch.html">StaticSearch</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching/builder</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AdministrativeStateSearchBuilder.js~AdministrativeStateSearchBuilder.html">AdministrativeStateSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AlarmsSearchBuilder.js~AlarmsSearchBuilder.html">AlarmsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AllowedResourceTypeSearchBuilder.js~AllowedResourceTypeSearchBuilder.html">AllowedResourceTypeSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AreasSearchBuilder.js~AreasSearchBuilder.html">AreasSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AssetsSearchBuilder.js~AssetsSearchBuilder.html">AssetsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BundlesSearchBuilder.js~BundlesSearchBuilder.html">BundlesSearchBuilder</a></span></span></li>
@@ -259,6 +260,7 @@ import JsonSchemaSearchBuilder from &apos;./searching/builder/JsonSchemaSearchBu
 import MobilePhoneProviderSearchBuilder from &apos;./searching/builder/MobilePhoneProviderSearchBuilder&apos;
 import IoTDatastreamPeriodSearchBuilder from &apos;./searching/builder/IoTDatastreamPeriodSearchBuilder&apos;
 import ResourceTypeSearchBuilder from &apos;./searching/builder/ResourceTypeSearchBuilder&apos;
+import AllowedResourceTypeSearchBuilder from &apos;./searching/builder/AllowedResourceTypeSearchBuilder&apos;
 import IoTDatastreamAccessSearchBuilder from &apos;./searching/builder/IoTDatastreamAccessSearchBuilder&apos;
 import IoTDatastreamStoragePeriodSearchBuilder from &apos;./searching/builder/IoTDatastreamStoragePeriodSearchBuilder&apos;
 import RuleConfigurationSeveritySearchBuilder from &apos;./searching/builder/RuleConfigurationSeveritySearchBuilder&apos;
@@ -554,6 +556,15 @@ export default class InternalOpenGateAPI {
     resourceTypeSearchBuilder() {
         return new ResourceTypeSearchBuilder(this);
     }
+
+     /**
+     * This return a AllowedResourceTypeSearchBuilder to build a specific AllowedResourceTypeSearchBuilder
+     * @return {AllowedResourceTypeSearchBuilder}
+     */
+    allowedResourceTypeSearchBuilder() {
+        return new AllowedResourceTypeSearchBuilder(this);
+    }
+
 
 
     /**

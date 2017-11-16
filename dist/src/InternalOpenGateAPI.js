@@ -202,6 +202,10 @@ var _searchingBuilderResourceTypeSearchBuilder = require('./searching/builder/Re
 
 var _searchingBuilderResourceTypeSearchBuilder2 = _interopRequireDefault(_searchingBuilderResourceTypeSearchBuilder);
 
+var _searchingBuilderAllowedResourceTypeSearchBuilder = require('./searching/builder/AllowedResourceTypeSearchBuilder');
+
+var _searchingBuilderAllowedResourceTypeSearchBuilder2 = _interopRequireDefault(_searchingBuilderAllowedResourceTypeSearchBuilder);
+
 var _searchingBuilderIoTDatastreamAccessSearchBuilder = require('./searching/builder/IoTDatastreamAccessSearchBuilder');
 
 var _searchingBuilderIoTDatastreamAccessSearchBuilder2 = _interopRequireDefault(_searchingBuilderIoTDatastreamAccessSearchBuilder);
@@ -670,6 +674,16 @@ var InternalOpenGateAPI = (function () {
         key: 'resourceTypeSearchBuilder',
         value: function resourceTypeSearchBuilder() {
             return new _searchingBuilderResourceTypeSearchBuilder2['default'](this);
+        }
+
+        /**
+        * This return a AllowedResourceTypeSearchBuilder to build a specific AllowedResourceTypeSearchBuilder
+        * @return {AllowedResourceTypeSearchBuilder}
+        */
+    }, {
+        key: 'allowedResourceTypeSearchBuilder',
+        value: function allowedResourceTypeSearchBuilder() {
+            return new _searchingBuilderAllowedResourceTypeSearchBuilder2['default'](this);
         }
 
         /**

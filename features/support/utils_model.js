@@ -140,6 +140,9 @@ module.exports = {
             "Resource Type search": function (ogapi) {
                 return ogapi.resourceTypeSearchBuilder();
             },
+            "Allowed Resource Type search": function (ogapi) {
+                return ogapi.allowedResourceTypeSearchBuilder();
+            },
             "datamodels builder": function (ogapi, param) {
                 return ogapi.datamodelsBuilder(param);
             },
