@@ -1,6 +1,7 @@
 # features/searching_areas.feature
 @searching
 @searching_areas
+@areas
 Feature: Searching areas 
   As a user of JsApi
   I want to search into areas collection

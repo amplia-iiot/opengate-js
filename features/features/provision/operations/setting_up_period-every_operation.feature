@@ -1,5 +1,5 @@
 # features/setting_up_period-every_operation.feature
-@execute_each_operation
+@execute_every_operation
 @operations
 @provision
 Feature: Setting up period with every pattern to operations

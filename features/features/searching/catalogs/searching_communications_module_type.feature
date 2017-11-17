@@ -1,5 +1,5 @@
 # features/searching_communications_module_type.feature
-@communications_module_type
+@searching_communications_module_type
 @catalogs
 @searching
 Feature: Searching communications module type in catalog
@@ -34,7 +34,6 @@ Feature: Searching communications module type in catalog
     | GENERIC   | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey"],"optional":["IMEI","MAC","HARDWARE","SOFTWARE"]},"SUBSCRIPTION":{"mandatory":["generatedEntityKey"],"optional":["administrativeState","IMSI","ADDRESS","HOME_OPERATOR","REGISTER_OPERATOR","MSISDN","LOCATION"]},"SUBSCRIBER":{"mandatory":["generatedEntityKey"],"optional":["administrativeState","ICC","SERIAL_NUMBER"]}}} |
     | WIFI      | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey","MAC"],"optional":["administrativeState","HARDWARE","SOFTWARE"]}}} |
     | ETH       | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey","MAC"],"optional":["HARDWARE","SOFTWARE"]},"SUBSCRIPTION":{"mandatory":["generatedEntityKey"],"optional":["administrativeState","ADDRESS"]}}} |
-    | BLUETOOTH | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey","MAC"],"optional":["administrativeState","HARDWARE","SOFTWARE"]}}} |
     | MESH      | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey","MAC"],"optional":["HARDWARE","SOFTWARE"]}}} |
     | LOWPAN    | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey","MAC"],"optional":["HARDWARE","SOFTWARE"]},"SUBSCRIPTION":{"mandatory":["generatedEntityKey"],"optional":["administrativeState"]}}} |
     | PLC       | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey","MAC"],"optional":["HARDWARE","SOFTWARE"]},"SUBSCRIPTION":{"mandatory":["generatedEntityKey"],"optional":["administrativeState"]}}} |

@@ -2,7 +2,7 @@
 @provision
 @finder
 @find_provision
-@organization
+@organizations
 Feature: Find an organization 
   As a user of JsApi
   I want to find an organization

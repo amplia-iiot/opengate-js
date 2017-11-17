@@ -1,7 +1,7 @@
 # features/update_user.feature
 @provision
 @update_provision
-@user
+@users
 Feature: Delete and Create an user 
   As a user of JsApi
   I want to create an user

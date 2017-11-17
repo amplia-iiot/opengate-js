@@ -3,7 +3,6 @@
 @finder
 @find_provision
 @area
-@area
 Feature: Find an area
   As a user of JsApi
   I want to find an area
