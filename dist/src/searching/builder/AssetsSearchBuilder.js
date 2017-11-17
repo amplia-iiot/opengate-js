@@ -112,6 +112,28 @@ var AssetsSearchBuilder = (function (_PreFilteredSearchBuilder) {
         value: function build() {
             return new _AssetSearch2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildLimit(), this._buildSort(), this._buildGroup(), this._buildSelect(), this._builderParams.timeout);
         }
+
+        /**
+        * The search request will have this filter 
+        * @example
+        *  ogapi.assetsSearchBuilder().select(
+        *      ogapi.newSelectBuilder().add(SE.element("provision.device.identifier", ["value"], "id"), SE.add("device.temperature.value", ["value"]))
+        *  ) // Setting SelectBuilder
+        *  ogapi.assetsSearchBuilder().select({
+        *      "elements": [
+        *          {"name": "provision.device.identifier","fields": ["value"],"alias": "id"},
+        *          {"name": "device.temperature.value","fields": ["value"]}
+        *      ]
+        *  }) //Custom select
+        * @param {!(SelectBuilder|object)} select
+        * @return {SearchBuilder} 
+        */
+    }, {
+        key: 'select',
+        value: function select(_select) {
+            this._builderParams.select = _select || [];
+            return this;
+        }
     }]);
 
     return AssetsSearchBuilder;

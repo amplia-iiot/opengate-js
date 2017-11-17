@@ -95,7 +95,7 @@ var BaseProvision = (function () {
 
             this._ogapi.Napi.post(this._resource, _postElement).then(function (res) {
                 if (res.statusCode === 201) {
-                    console.log("CREATEOK: " + JSON.stringify(res));
+                    //console.log("CREATEOK: " + JSON.stringify(res));
                     if (typeof _this._onCreated === "function") {
                         _this._onCreated(res.header['location']);
                     }

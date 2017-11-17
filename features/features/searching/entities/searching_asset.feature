@@ -2,6 +2,7 @@
 @searching
 @asset
 @searching_assets
+@select-fields
 Feature: Searching asset 
   As a user of JsApi
   I want to search into asset collection
@@ -68,9 +69,29 @@ Feature: Searching asset
   	Then response code should be: 200
     Then does not throws an error
 
+  Scenario: I want to download csv
+    And an ogapi "asset search" util with "asset_organization_searching"
+    When I add a filter and with
+        | operator   | key                                     | value                          |                                                        
+        | eq         |provision.administration.organization    |  asset_organization_searching  |
+   
+    When I build it with select...
+    | datastreamId                         | fields     | alias |
+    | provision.asset.identifier           | ["value"]  | state  |
+    And I download csv it
+    Then response code should be: 200
+    Then does not throws an error
+    Then the content of file "search.csv" must be:
+    """
+provision.administration.channel.value;provision.administration.identifier.value;provision.administration.organization.value;state.value
+default_channel;asset_ogapi_search;asset_organization_searching;asset_ogapi_search
+
+    """
+
+
 
  Scenario: I want to delete the entity 
- Given the entity of type "asset builder" with "asset_organization_searching" 
+  Given the entity of type "asset builder" with "asset_organization_searching" 
     When I try to define the entity with... 
 		| datastream                                 | typeFunction       |   value                       | parent      |
         | provision.asset.identifier                 | simple             |  asset_ogapi_search           |             |

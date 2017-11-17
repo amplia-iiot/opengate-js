@@ -285,7 +285,7 @@ export default class BaseProvision {
         this._ogapi.Napi.post(this._resource, _postElement)
             .then((res) =&gt; {
                 if (res.statusCode === 201) {
-                    console.log(&quot;CREATEOK: &quot; + JSON.stringify(res));
+                    //console.log(&quot;CREATEOK: &quot; + JSON.stringify(res));
                     if (typeof this._onCreated === &quot;function&quot;) {
                         this._onCreated(res.header[&apos;location&apos;]);
                     }

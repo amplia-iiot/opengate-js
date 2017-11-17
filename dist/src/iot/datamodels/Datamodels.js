@@ -170,7 +170,7 @@ var Datamodels = (function (_BaseProvision) {
     }, {
         key: '_buildURL',
         value: function _buildURL() {
-            console.log('URL: ' + this._resource);
+            //console.log('URL: ' + this._resource);
             return this._resource;
         }
 

@@ -3706,12 +3706,361 @@
                   }
                 }
               ],
+              "trailingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     * The search request will have this filter \n     * @example\n     *  ogapi.assetsSearchBuilder().select(\n     *      ogapi.newSelectBuilder().add(SE.element(\"provision.device.identifier\", [\"value\"], \"id\"), SE.add(\"device.temperature.value\", [\"value\"]))\n     *  ) // Setting SelectBuilder\n     *  ogapi.assetsSearchBuilder().select({\n     *      \"elements\": [\n     *          {\"name\": \"provision.device.identifier\",\"fields\": [\"value\"],\"alias\": \"id\"},\n     *          {\"name\": \"device.temperature.value\",\"fields\": [\"value\"]}\n     *      ]\n     *  }) //Custom select\n     * @param {!(SelectBuilder|object)} select\n     * @return {SearchBuilder} \n     ",
+                  "range": [
+                    2328,
+                    2986
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 87,
+                      "column": 6
+                    },
+                    "end": {
+                      "line": 101,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "static": false
+            },
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "select",
+                "range": [
+                  2991,
+                  2997
+                ],
+                "loc": {
+                  "start": {
+                    "line": 102,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 102,
+                    "column": 10
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "name": "select",
+                    "range": [
+                      2998,
+                      3004
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 102,
+                        "column": 11
+                      },
+                      "end": {
+                        "line": 102,
+                        "column": 17
+                      }
+                    }
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "AssignmentExpression",
+                        "operator": "=",
+                        "left": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "ThisExpression",
+                              "range": [
+                                3016,
+                                3020
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 103,
+                                  "column": 8
+                                },
+                                "end": {
+                                  "line": 103,
+                                  "column": 12
+                                }
+                              }
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "_builderParams",
+                              "range": [
+                                3021,
+                                3035
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 103,
+                                  "column": 13
+                                },
+                                "end": {
+                                  "line": 103,
+                                  "column": 27
+                                }
+                              }
+                            },
+                            "range": [
+                              3016,
+                              3035
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 103,
+                                "column": 8
+                              },
+                              "end": {
+                                "line": 103,
+                                "column": 27
+                              }
+                            }
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "select",
+                            "range": [
+                              3036,
+                              3042
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 103,
+                                "column": 28
+                              },
+                              "end": {
+                                "line": 103,
+                                "column": 34
+                              }
+                            }
+                          },
+                          "range": [
+                            3016,
+                            3042
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 103,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 103,
+                              "column": 34
+                            }
+                          }
+                        },
+                        "right": {
+                          "type": "LogicalExpression",
+                          "operator": "||",
+                          "left": {
+                            "type": "Identifier",
+                            "name": "select",
+                            "range": [
+                              3046,
+                              3052
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 103,
+                                "column": 38
+                              },
+                              "end": {
+                                "line": 103,
+                                "column": 44
+                              }
+                            }
+                          },
+                          "right": {
+                            "type": "ArrayExpression",
+                            "elements": [],
+                            "range": [
+                              3056,
+                              3058
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 103,
+                                "column": 48
+                              },
+                              "end": {
+                                "line": 103,
+                                "column": 50
+                              }
+                            }
+                          },
+                          "range": [
+                            3046,
+                            3058
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 103,
+                              "column": 38
+                            },
+                            "end": {
+                              "line": 103,
+                              "column": 50
+                            }
+                          }
+                        },
+                        "range": [
+                          3016,
+                          3059
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 103,
+                            "column": 8
+                          },
+                          "end": {
+                            "line": 103,
+                            "column": 51
+                          }
+                        }
+                      },
+                      "range": [
+                        3016,
+                        3060
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 103,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 103,
+                          "column": 52
+                        }
+                      }
+                    },
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "ThisExpression",
+                        "range": [
+                          3076,
+                          3080
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 104,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 104,
+                            "column": 19
+                          }
+                        }
+                      },
+                      "range": [
+                        3069,
+                        3081
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 104,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 104,
+                          "column": 20
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    3006,
+                    3087
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 102,
+                      "column": 19
+                    },
+                    "end": {
+                      "line": 105,
+                      "column": 5
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  2997,
+                  3087
+                ],
+                "loc": {
+                  "start": {
+                    "line": 102,
+                    "column": 10
+                  },
+                  "end": {
+                    "line": 105,
+                    "column": 5
+                  }
+                }
+              },
+              "kind": "method",
+              "computed": false,
+              "range": [
+                2991,
+                3087
+              ],
+              "loc": {
+                "start": {
+                  "line": 102,
+                  "column": 4
+                },
+                "end": {
+                  "line": 105,
+                  "column": 5
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     * The search request will have this filter \n     * @example\n     *  ogapi.assetsSearchBuilder().select(\n     *      ogapi.newSelectBuilder().add(SE.element(\"provision.device.identifier\", [\"value\"], \"id\"), SE.add(\"device.temperature.value\", [\"value\"]))\n     *  ) // Setting SelectBuilder\n     *  ogapi.assetsSearchBuilder().select({\n     *      \"elements\": [\n     *          {\"name\": \"provision.device.identifier\",\"fields\": [\"value\"],\"alias\": \"id\"},\n     *          {\"name\": \"device.temperature.value\",\"fields\": [\"value\"]}\n     *      ]\n     *  }) //Custom select\n     * @param {!(SelectBuilder|object)} select\n     * @return {SearchBuilder} \n     ",
+                  "range": [
+                    2328,
+                    2986
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 87,
+                      "column": 6
+                    },
+                    "end": {
+                      "line": 101,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
               "static": false
             }
           ],
           "range": [
             373,
-            2322
+            3089
           ],
           "loc": {
             "start": {
@@ -3719,14 +4068,14 @@
               "column": 74
             },
             "end": {
-              "line": 86,
+              "line": 106,
               "column": 1
             }
           }
         },
         "range": [
           314,
-          2322
+          3089
         ],
         "loc": {
           "start": {
@@ -3734,7 +4083,7 @@
             "column": 15
           },
           "end": {
-            "line": 86,
+            "line": 106,
             "column": 1
           }
         },
@@ -3762,7 +4111,7 @@
       },
       "range": [
         299,
-        2322
+        3089
       ],
       "loc": {
         "start": {
@@ -3770,7 +4119,7 @@
           "column": 0
         },
         "end": {
-          "line": 86,
+          "line": 106,
           "column": 1
         }
       },
@@ -3799,7 +4148,7 @@
   "sourceType": "module",
   "range": [
     0,
-    2322
+    3089
   ],
   "loc": {
     "start": {
@@ -3807,7 +4156,7 @@
       "column": 0
     },
     "end": {
-      "line": 86,
+      "line": 106,
       "column": 1
     }
   },
@@ -3916,6 +4265,24 @@
         },
         "end": {
           "line": 75,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n     * The search request will have this filter \n     * @example\n     *  ogapi.assetsSearchBuilder().select(\n     *      ogapi.newSelectBuilder().add(SE.element(\"provision.device.identifier\", [\"value\"], \"id\"), SE.add(\"device.temperature.value\", [\"value\"]))\n     *  ) // Setting SelectBuilder\n     *  ogapi.assetsSearchBuilder().select({\n     *      \"elements\": [\n     *          {\"name\": \"provision.device.identifier\",\"fields\": [\"value\"],\"alias\": \"id\"},\n     *          {\"name\": \"device.temperature.value\",\"fields\": [\"value\"]}\n     *      ]\n     *  }) //Custom select\n     * @param {!(SelectBuilder|object)} select\n     * @return {SearchBuilder} \n     ",
+      "range": [
+        2328,
+        2986
+      ],
+      "loc": {
+        "start": {
+          "line": 87,
+          "column": 6
+        },
+        "end": {
+          "line": 101,
           "column": 7
         }
       }
