@@ -3,6 +3,7 @@
 @finder
 @find_provision
 @find_bundles
+@bundles
 Feature: Find a bundle
   As a user of JsApi
   I want to find a bundle

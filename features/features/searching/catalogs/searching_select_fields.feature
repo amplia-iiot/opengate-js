@@ -1,5 +1,6 @@
 # features/searching_select_fields.feature
 @select-fields
+@searching_select-fields
 @searching
 @catalogs
 Feature: Searching for all select fields

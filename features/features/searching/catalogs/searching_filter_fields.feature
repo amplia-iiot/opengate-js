@@ -1,5 +1,5 @@
 # features/searching_filter_fields.feature
-@filter-fields
+@searching_filter_fields
 @searching
 @catalogs
 Feature: Searching for all filter fields

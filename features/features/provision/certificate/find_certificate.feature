@@ -1,7 +1,7 @@
 # features/find_certificate.feature
 @provision
 @find_certificate
-@certificate
+@certificates
 Feature: Find a certificate
   As a user of JsApi
   I want to find a certificate

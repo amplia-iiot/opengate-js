@@ -1,7 +1,7 @@
 # features/create_organization.feature
 @provision
 @create_provision
-@organization
+@organizations
 Feature: Create an organization 
   As a user of JsApi
   I want to create or delete an organization

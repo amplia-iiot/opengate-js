@@ -1,6 +1,6 @@
 # features/filter_features/searching_filter_fields.feature
 
-@searching_filter_fields
+@filter_fields
 @filtering
 Feature: Searching device fields
   As a user of JsApi

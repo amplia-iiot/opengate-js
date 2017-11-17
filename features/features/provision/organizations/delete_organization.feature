@@ -1,7 +1,7 @@
 # features/delete_organization.feature
 @provision
 @delete_provision
-@organization
+@organizations
 Feature: Delete an organization 
   As a user of JsApi
   I want to delete an organization
