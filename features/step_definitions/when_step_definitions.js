@@ -208,6 +208,29 @@ module.exports = function () {
         callback();
     });
 
+    this.When(/^I add a filter and with$/, function (table, callback) {
+        this.error = undefined;
+        var _this = this;
+        
+        try {
+            var filterBuilder = this.ogapi.newFilterBuilder();
+            var data = table.hashes();
+
+            if (data.length > 0) {
+                for (var i = 0; i < data.length; i++) {
+                    var element = data[i];
+                    filterBuilder = filterBuilder.and(this.ogapi.EX[element.operator](element.key, element.value));
+                }
+                this.util.filter(filterBuilder);
+            }
+        } catch (err) {
+            this.error = err;
+            console.log(this.error);
+        }
+        callback();
+    });
+
+
     this.When(/^I build it with select...$/, function (table, callback) {
         this.error = undefined;
         var _this = this;
@@ -218,7 +241,7 @@ module.exports = function () {
             if (data.length > 0) {
                 for (var i = 0; i < data.length; i++) {
                     var element = data[i];
-                    var selectElement = _this.ogapi.SE.element(element.name, JSON.parse(element.fields), element.alias);
+                    var selectElement = _this.ogapi.SE.element(element.datastreamId , JSON.parse(element.fields), element.alias);
                     selectBuilder = selectBuilder.add(selectElement);
                 }
             }

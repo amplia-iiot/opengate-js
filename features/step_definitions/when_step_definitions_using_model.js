@@ -91,7 +91,7 @@ module.exports = function () {
                     _this.util.select(select);
                     callback();
                 }).catch(function (err) {
-                    console.log(JSON.stringify(err));
+                    //console.log(JSON.stringify(err));
                     callback(err);
                 });
                 break;
@@ -158,7 +158,7 @@ module.exports = function () {
                     _this.util.select(selectBuilder);
                     callback();
                 }).catch(function (err) {
-                    console.log(JSON.stringify(err));
+                    //console.log(JSON.stringify(err));
                     callback(err);
                 });
                 break;

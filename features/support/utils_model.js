@@ -254,6 +254,9 @@ module.exports = {
             "asset search": function (ogapi) {
                 return ogapi.assetsSearchBuilder();
             },
+            "entities search": function (ogapi) {
+                return ogapi.entitiesSearchBuilder();
+            },
 
         };
         return utilsMath[utilName](ogapi, param, param2);
