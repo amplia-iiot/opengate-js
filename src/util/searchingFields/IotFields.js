@@ -87,7 +87,6 @@ export const IOT_FIELDS = {
             "datastreams._current.tags",
             "datastreams._current.date",
             "datastreams._current.value",
-            "datastreams._current.feed",
             "datastreams.categoryId",
             "datastreams.datamodelId",
             "datastreams.access",

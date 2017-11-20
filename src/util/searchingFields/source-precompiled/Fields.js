@@ -247,7 +247,6 @@ export const GENERATED_FIELDS = {
         "DEVICE_PART_SUBSCRIBER": [
             "ElementIdentifier",
             "ElementName",
-            "addressProvTypeKey",
             "alarmAttentionDate",
             "alarmAttentionNote",
             "alarmAttentionUser",
@@ -482,7 +481,6 @@ export const GENERATED_FIELDS = {
         "DEVICE_PART_DEVICE": [
             "ElementIdentifier",
             "ElementName",
-            "addressProvTypeKey",
             "alarmAttentionDate",
             "alarmAttentionNote",
             "alarmAttentionUser",
@@ -908,7 +906,6 @@ export const GENERATED_FIELDS = {
         "DEVICE_PART_SUBSCRIPTION": [
             "ElementIdentifier",
             "ElementName",
-            "addressProvTypeKey",
             "alarmAttentionDate",
             "alarmAttentionNote",
             "alarmAttentionUser",
@@ -924,7 +921,6 @@ export const GENERATED_FIELDS = {
             "alarmSeverityKey",
             "alarmSource",
             "alarmStatus",
-            "alarmStatusKey",
             "applicationEmail",
             "channelKey",
             "channelName",
@@ -1556,7 +1552,6 @@ export const GENERATED_FIELDS = {
         "ENTITY_ALARM": [
             "ElementIdentifier",
             "ElementName",
-            "addressProvTypeKey",
             "alarmAttentionDate",
             "alarmAttentionNote",
             "alarmAttentionUser",
@@ -1570,10 +1565,8 @@ export const GENERATED_FIELDS = {
             "alarmPriority",
             "alarmRuleName",
             "alarmSeverity",
-            "alarmSeverityKey",
             "alarmSource",
             "alarmStatus",
-            "alarmStatusKey",
             "channelKey",
             "channelName",
             "collectedAddress",
@@ -1804,12 +1797,10 @@ export const GENERATED_FIELDS = {
         "ENTITY_OPERATION": [
             "ElementIdentifier",
             "ElementName",
-            "addressProvTypeKey",
             "alarmRuleName",
             "alarmSeverity",
             "alarmSeverityKey",
             "alarmStatus",
-            "alarmStatusKey",
             "applicationEmail",
             "channelKey",
             "channelName",
@@ -2139,14 +2130,15 @@ export const GENERATED_FIELDS = {
     },
     "MODEL": {
         "MODEL": [
-            "comboboxModel",
-            "hardwareId",
-            "modelDescription",
+            "manufacturerIdentifier",
+            "manufacturerMediaIdentifier",
             "modelIdentifier",
+            "modelMediaIdentifier",
+            "manufacturerName",
+            "manufacturerMediaName",
+            "manufacturerMediaName",
             "modelName",
-            "modelNotes",
-            "modelUrl",
-            "modelVersion"
+            "modelMediaName"
         ]
     },
     "OPERATION_TYPE": {

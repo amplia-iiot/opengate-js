@@ -15,7 +15,6 @@ Feature: I want to check if the general summary are working
     And I want to search into "on devices" 
     When I build it with summary response
      And I execute it
-    Then response code should be: 200  
     Then does not throws an error
 
   Scenario: I want to get the executions of subcribers summary

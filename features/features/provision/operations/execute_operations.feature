@@ -1,4 +1,4 @@
-# features/execute_operations.feature
+# features/provision/operations/execute_operations.feature
 @provision
 @device_builder
 @execute_operations

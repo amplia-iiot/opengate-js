@@ -280,11 +280,11 @@ module.exports = function () {
         callback();
     });
 
-    this.When(/^I add group by "([^"]*)"$/, function (group, callback) {
+    this.When(/^I add group by$/, function (group, callback) {
         this.error = undefined;
 
         try {
-            this.build = this.util.group(group);
+            this.build = this.util.group(JSON.parse(group));
         } catch (err) {
             this.error = err;
         }

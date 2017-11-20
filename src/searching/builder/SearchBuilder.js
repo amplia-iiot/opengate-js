@@ -189,6 +189,7 @@ export default class SearchBuilder {
             this._buildFilter(),
             this._buildLimit(),
             this._buildSort(),
+            this._buildGroup(),
             this._buildSelect(),
             this._builderParams.timeout);
     }
