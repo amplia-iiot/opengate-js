@@ -1,4 +1,4 @@
-# features/searching_devices.feature
+# features/searching/entities/searching_devices.feature
 @searching
 @searching_devices
 @select-fields

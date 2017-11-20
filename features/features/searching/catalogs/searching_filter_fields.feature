@@ -31,18 +31,18 @@ Feature: Searching for all filter fields
     And an ogapi "alarms search" util
     And I want to search a "multiple entity" 
     And I want to search into "on devices"
-   When I try to search with all allow fields
-   When I build it
+    #When I try to search with all allow fields
+    When I build it
     And I execute it
    Then response code should be: 204    
 
-@bug @ODMQA-1151
+@bug @ODMQA-1151 @execution_search
   Scenario: Execute all fields on executions searching
   Given an apikey user by "require-real-apikey"
     And an ogapi "executions search" util
     And I want to search a "multiple entity" 
     And I want to search into "on devices" 
-   When I try to search with all allow fields
+   #When I try to search with all allow fields
    When I build it
     And I execute it
    Then response code should be: 204   

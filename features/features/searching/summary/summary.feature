@@ -53,7 +53,10 @@ Feature: I want to check if the general summary are working
 
   Scenario: I want to get the device summary with group by
     And an ogapi "devices search" util
-    When I add group by "{'parameters': [{'name': 'provision.device.identifier'}]}"
+    When I add group by 
+    """
+    {"parameters": [{"name": "provision.administration.channel"}]}
+    """
   	When I build it with summary response
   	And I execute it
     	Then response code should be: 200
