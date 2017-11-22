@@ -65,7 +65,9 @@ var BoxBuilder = (function () {
                 if (!subscribers[value._index.value]) {
                     subscribers[value._index.value] = {};
                 }
-                subscribers[value._index.value][key] = { _value: value._value };
+                subscribers[value._index.value][key] = {
+                    _value: value._value
+                };
             });
         });
 
@@ -74,7 +76,9 @@ var BoxBuilder = (function () {
                 if (!subscriptions[value._index.value]) {
                     subscriptions[value._index.value] = {};
                 }
-                subscriptions[value._index.value][key] = { _value: value._value };
+                subscriptions[value._index.value][key] = {
+                    _value: value._value
+                };
             });
         });
 
@@ -116,29 +120,58 @@ var BoxBuilder = (function () {
             });
 
             this._wrappers.forEach(function (wrapper) {
-                childEntityPromises.push({ wrapper: wrapper, promise: wrapper.execute(defer, 10) });
+                childEntityPromises.push({
+                    wrapper: wrapper,
+                    promise: wrapper.execute(defer, 10)
+                });
             });
 
             _q2['default'].allSettled(childEntityPromises.reduce(function (previousValue, current) {
                 previousValue.push(current.promise);
                 return previousValue;
             }, [])).then(function () {
-                defer.notify({ message: 'All related entities have been created.', type: 'success', percentage: 20 });
-                defer.notify({ message: 'Creating new device:' + _this._key._value._current.value, type: 'success', percentage: 25 });
+                defer.notify({
+                    message: 'All related entities have been created.',
+                    type: 'success',
+                    percentage: 20
+                });
+                defer.notify({
+                    message: 'Creating new device:' + _this._key._value._current.value,
+                    type: 'success',
+                    percentage: 25
+                });
                 return _this._ogapi.Napi.post(_this._url, postObj).then(function (res) {
-                    defer.notify({ message: 'Created device:' + _this._key._value._current.value, type: 'success', percentage: 50 });
+                    defer.notify({
+                        message: 'Created device:' + _this._key._value._current.value,
+                        type: 'success',
+                        percentage: 50
+                    });
                     if (_this._wrappers.length > 0) {
-                        defer.notify({ message: 'Adding related entities', type: 'success', percentage: 55 });
+                        defer.notify({
+                            message: 'Adding related entities',
+                            type: 'success',
+                            percentage: 55
+                        });
                         return _this._ogapi.Napi.put(_this._urlWithKey(), putObj).then(function (res) {
-                            if (res.statusCode === _httpStatusCodes2['default'].CREATED) {
+                            if (res.statusCode === _httpStatusCodes2['default'].OK) {
                                 console.log("CREATEOK: " + JSON.stringify(res));
                                 if (typeof _this._onCreated === "function") {
                                     _this._onCreated(res.header['location']);
                                 }
-                                defer.notify({ message: 'Device created successfully: ' + _this._key._value._current.value, type: 'success', percentage: 75 });
-                                defer.resolve({ location: res.header['location'], statusCode: res.statusCode });
+                                defer.notify({
+                                    message: 'Device created successfully: ' + _this._key._value._current.value,
+                                    type: 'success',
+                                    percentage: 75
+                                });
+                                defer.resolve({
+                                    location: res.header['location'],
+                                    statusCode: res.statusCode
+                                });
                             } else {
-                                defer.reject({ errors: res.errors, statusCode: res.statusCode });
+                                defer.reject({
+                                    errors: res.errors,
+                                    statusCode: res.statusCode
+                                });
                             }
                         });
                     } else {
@@ -147,10 +180,20 @@ var BoxBuilder = (function () {
                             if (typeof _this._onCreated === "function") {
                                 _this._onCreated(res.header['location']);
                             }
-                            defer.notify({ message: 'Device created successfully: ' + _this._key._value._current.value, type: 'success', percentage: 75 });
-                            defer.resolve({ location: res.header['location'], statusCode: res.statusCode });
+                            defer.notify({
+                                message: 'Device created successfully: ' + _this._key._value._current.value,
+                                type: 'success',
+                                percentage: 75
+                            });
+                            defer.resolve({
+                                location: res.header['location'],
+                                statusCode: res.statusCode
+                            });
                         } else {
-                            defer.reject({ errors: res.errors, statusCode: res.statusCode });
+                            defer.reject({
+                                errors: res.errors,
+                                statusCode: res.statusCode
+                            });
                         }
                     }
                 });
@@ -158,7 +201,11 @@ var BoxBuilder = (function () {
                 err.data.errors.forEach(function (err) {
                     var error = err.description;
                     if (err.label) error += ":" + err.label;
-                    defer.notify({ message: 'Error: ' + error, type: 'error', percentage: 80 });
+                    defer.notify({
+                        message: 'Error: ' + error,
+                        type: 'error',
+                        percentage: 80
+                    });
                 });
                 var deletePromises = [_this['delete'](defer, 90)];
                 childEntityPromises.forEach(function (item) {
@@ -181,25 +228,46 @@ var BoxBuilder = (function () {
             var _this = this;
 
             this._wrappers.forEach(function (wrapper) {
-                childEntityPromises.push({ wrapper: wrapper, promise: wrapper.execute(defer, 20) });
+                childEntityPromises.push({
+                    wrapper: wrapper,
+                    promise: wrapper.execute(defer, 20)
+                });
             });
 
             _q2['default'].allSettled(childEntityPromises.reduce(function (previousValue, current) {
                 previousValue.push(current.promise);
                 return previousValue;
             }, [])).then(function () {
-                defer.notify({ message: 'All related entities have been created.', type: 'success', percentage: 40 });
-                defer.notify({ message: 'Adding related entities to device:' + _this._key._value._current.value, type: 'success', percentage: 45 });
+                defer.notify({
+                    message: 'All related entities have been created.',
+                    type: 'success',
+                    percentage: 40
+                });
+                defer.notify({
+                    message: 'Adding related entities to device:' + _this._key._value._current.value,
+                    type: 'success',
+                    percentage: 45
+                });
                 return _this._ogapi.Napi.put(_this._url, putObj).then(function (res) {
                     if (res.statusCode === _httpStatusCodes2['default'].OK) {
                         console.log("CREATEOK: " + JSON.stringify(res));
                         if (typeof _this._onCreated === "function") {
                             _this._onCreated(res.header['location']);
                         }
-                        defer.notify({ message: 'Device updated successfully: ' + _this._key._value._current.value, type: 'success', percentage: 90 });
-                        defer.resolve({ location: res.header['location'], statusCode: res.statusCode });
+                        defer.notify({
+                            message: 'Device updated successfully: ' + _this._key._value._current.value,
+                            type: 'success',
+                            percentage: 90
+                        });
+                        defer.resolve({
+                            location: res.header['location'],
+                            statusCode: res.statusCode
+                        });
                     } else {
-                        defer.reject({ errors: res.errors, statusCode: res.statusCode });
+                        defer.reject({
+                            errors: res.errors,
+                            statusCode: res.statusCode
+                        });
                     }
                 });
             })['catch'](function (err) {
@@ -214,7 +282,11 @@ var BoxBuilder = (function () {
         value: function _delete(defered, percentage) {
             var _this = this;
             return this._ogapi.Napi['delete'](this._urlWithKey()).then(function (res) {
-                defered.notify({ message: 'Entity deleted:' + _this._key, type: 'warning', percentage: percentage });
+                defered.notify({
+                    message: 'Entity deleted:' + _this._key,
+                    type: 'warning',
+                    percentage: percentage
+                });
             });
         }
     }]);
@@ -276,11 +348,19 @@ var WrapperBuilder = (function () {
             function create(defered, defer, percentage) {
                 _this._ogapi.Napi.post(_this._url, _this._obj).then(function (res) {
                     _this._created = true;
-                    defered.notify({ message: 'Entity created:' + _this._key, type: 'success', percentage: percentage });
+                    defered.notify({
+                        message: 'Entity created:' + _this._key,
+                        type: 'success',
+                        percentage: percentage
+                    });
                     defer.resolve('Entity created:' + _this._key);
                 })['catch'](function (err) {
                     console.error(err);
-                    defered.notify({ message: 'Error creating entity:' + _this._key, type: 'warning', percentage: percentage });
+                    defered.notify({
+                        message: 'Error creating entity:' + _this._key,
+                        type: 'warning',
+                        percentage: percentage
+                    });
                     defer.reject('Error creating entity:' + _this._key);
                 });
             }
@@ -291,7 +371,11 @@ var WrapperBuilder = (function () {
             var _this = this;
             if (this._created) {
                 return this._ogapi.Napi['delete'](this._urlWithKey()).then(function (res) {
-                    defered.notify({ message: 'Entity deleted:' + _this._key, type: 'warning', percentage: percentage });
+                    defered.notify({
+                        message: 'Entity deleted:' + _this._key,
+                        type: 'warning',
+                        percentage: percentage
+                    });
                 });
             }
             return Q.fcall(function () {
