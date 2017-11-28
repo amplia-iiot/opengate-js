@@ -33207,7 +33207,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "'use strict'\n\nimport Search from './Search'\nimport q from 'q';\n\n/** \n * This extends Search and it allow make request to any available resource into /entities resource at Opengate North API\n */\nexport default class EntitySearch extends Search {\n    /**\n     * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.\n     * @param {!string} url - this define a specific resource to make the search\n     * @param {object} filter - this is the filter\n     * @param {object} limit - this is the pagination about the search\n     * @param {object} sort - this defined parameters to order the result of search\n     */\n    constructor(ogapi, url, filter, limit, sort, timeout) {\n        super(ogapi, url, filter, limit, sort, timeout);\n    }\n\n    /**\n     * This invoke a request to OpenGate North API and the callback is managed by promises\n     * @return {Promise}\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\n     * @property {function (error:string)} catch - When request it is NOK\n     */\n    execute() {\n        var defered = q.defer();\n        var promise = defered.promise;\n        console.log(JSON.stringify(this._filter()));\n        this._ogapi.Napi\n            .post(this._resource, this._filter(), this._timeout)\n            .then((response) => {\n                let resultQuery = response.body;\n                let statusCode = response.statusCode;\n\n                if (statusCode === 200 && resultQuery.entities && resultQuery.entities.length > 0) {\n                    // OUW-944\n                    var ele, flattened = false;\n\n                    if (resultQuery.entities[0]['provision.administration.identifier']) {\n                        flattened = true;\n                    }\n\n                    for (ele = 0; ele < resultQuery.entities.length; ele++) {\n                        if (flattened) {\n                            if (resultQuery.entities[ele]['device.identifier']) {\n                                var dato = resultQuery.entities[ele]['device.identifier'];\n                                if (!dato._value || (dato._value && !dato._value._current)) {\n                                    delete resultQuery.entities[ele]['device.identifier'];\n                                }\n                            }\n\n                        } else {\n                            if (resultQuery.entities[ele].device && resultQuery.entities[ele].device.identifier && !resultQuery.entities[ele].device.identifier._current) {\n                                delete resultQuery.entities[ele].device.identifier;\n                            }\n                        }\n                    }\n\n                }\n                defered.resolve({ data: resultQuery, statusCode: statusCode });\n            })\n            .catch((error) => {\n                defered.reject(error);\n            });\n        return promise;\n    }\n}"
+    "content": "'use strict'\n\nimport Search from './Search'\nimport q from 'q';\n\n/** \n * This extends Search and it allow make request to any available resource into /entities resource at Opengate North API\n */\nexport default class EntitySearch extends Search {\n    /**\n     * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.\n     * @param {!string} url - this define a specific resource to make the search\n     * @param {object} filter - this is the filter\n     * @param {object} limit - this is the pagination about the search\n     * @param {object} sort - this define parameters to order the result of search\n     * @param {object} group - this define parameters to group\n     * @param {object} select - this define fields to retrieve\n     */\n    constructor(ogapi, url, filter, limit, sort, group, select, timeout) {\n        super(ogapi, url, filter, limit, sort, group, select, timeout);\n    }\n\n    /**\n     * This invoke a request to OpenGate North API and the callback is managed by promises\n     * @return {Promise}\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\n     * @property {function (error:string)} catch - When request it is NOK\n     */\n    execute() {\n        var defered = q.defer();\n        var promise = defered.promise;\n        console.log(JSON.stringify(this._filter()));\n        this._ogapi.Napi\n            .post(this._resource, this._filter(), this._timeout)\n            .then((response) => {\n                let resultQuery = response.body;\n                let statusCode = response.statusCode;\n\n                if (statusCode === 200 && resultQuery.entities && resultQuery.entities.length > 0) {\n                    // OUW-944\n                    var ele, flattened = false;\n\n                    if (resultQuery.entities[0]['provision.administration.identifier']) {\n                        flattened = true;\n                    }\n\n                    for (ele = 0; ele < resultQuery.entities.length; ele++) {\n                        if (flattened) {\n                            if (resultQuery.entities[ele]['device.identifier']) {\n                                var dato = resultQuery.entities[ele]['device.identifier'];\n                                if (!dato._value || (dato._value && !dato._value._current)) {\n                                    delete resultQuery.entities[ele]['device.identifier'];\n                                }\n                            }\n\n                        } else {\n                            if (resultQuery.entities[ele].device && resultQuery.entities[ele].device.identifier && !resultQuery.entities[ele].device.identifier._current) {\n                                delete resultQuery.entities[ele].device.identifier;\n                            }\n                        }\n                    }\n\n                }\n                defered.resolve({ data: resultQuery, statusCode: statusCode });\n            })\n            .catch((error) => {\n                defered.reject(error);\n            });\n        return promise;\n    }\n}"
   },
   {
     "__docId__": 1376,
@@ -33238,7 +33238,7 @@
     "longname": "src/searching/EntitySearch.js~EntitySearch#constructor",
     "access": null,
     "description": "",
-    "lineNumber": 17,
+    "lineNumber": 19,
     "params": [
       {
         "nullable": false,
@@ -33288,7 +33288,27 @@
         "spread": false,
         "optional": false,
         "name": "sort",
-        "description": "this defined parameters to order the result of search"
+        "description": "this define parameters to order the result of search"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "group",
+        "description": "this define parameters to group"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "select",
+        "description": "this define fields to retrieve"
       }
     ],
     "generator": false
@@ -33303,7 +33323,7 @@
     "longname": "src/searching/EntitySearch.js~EntitySearch#execute",
     "access": null,
     "description": "This invoke a request to OpenGate North API and the callback is managed by promises",
-    "lineNumber": 27,
+    "lineNumber": 29,
     "params": [],
     "properties": [
       {

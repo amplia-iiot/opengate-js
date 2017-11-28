@@ -224,10 +224,12 @@ export default class EntitySearch extends Search {
      * @param {!string} url - this define a specific resource to make the search
      * @param {object} filter - this is the filter
      * @param {object} limit - this is the pagination about the search
-     * @param {object} sort - this defined parameters to order the result of search
+     * @param {object} sort - this define parameters to order the result of search
+     * @param {object} group - this define parameters to group
+     * @param {object} select - this define fields to retrieve
      */
-    constructor(ogapi, url, filter, limit, sort, timeout) {
-        super(ogapi, url, filter, limit, sort, timeout);
+    constructor(ogapi, url, filter, limit, sort, group, select, timeout) {
+        super(ogapi, url, filter, limit, sort, group, select, timeout);
     }
 
     /**
