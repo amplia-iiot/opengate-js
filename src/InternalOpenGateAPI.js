@@ -345,7 +345,7 @@ export default class InternalOpenGateAPI {
         return new ResourceTypeSearchBuilder(this);
     }
 
-     /**
+    /**
      * This return a AllowedResourceTypeSearchBuilder to build a specific AllowedResourceTypeSearchBuilder
      * @return {AllowedResourceTypeSearchBuilder}
      */
@@ -465,12 +465,13 @@ export default class InternalOpenGateAPI {
      * @return {ExecutionsSearchBuilder}
      */
     entitiesSearchBuilder() {
-            return new EntitiesSearchBuilder(this);
-        }
-        /**
-         * This return a PlansSearchBuilder to build a specific PlansSearchBuilder
-         * @return {PlansSearchBuilder}
-         */
+        return new EntitiesSearchBuilder(this);
+    }
+
+    /**
+     * This return a PlansSearchBuilder to build a specific PlansSearchBuilder
+     * @return {PlansSearchBuilder}
+     */
     plansSearchBuilder() {
         return new PlansSearchBuilder(this);
     }
