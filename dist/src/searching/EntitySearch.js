@@ -34,13 +34,15 @@ var EntitySearch = (function (_Search) {
      * @param {!string} url - this define a specific resource to make the search
      * @param {object} filter - this is the filter
      * @param {object} limit - this is the pagination about the search
-     * @param {object} sort - this defined parameters to order the result of search
+     * @param {object} sort - this define parameters to order the result of search
+     * @param {object} group - this define parameters to group
+     * @param {object} select - this define fields to retrieve
      */
 
-    function EntitySearch(ogapi, url, filter, limit, sort, timeout) {
+    function EntitySearch(ogapi, url, filter, limit, sort, group, select, timeout) {
         _classCallCheck(this, EntitySearch);
 
-        _get(Object.getPrototypeOf(EntitySearch.prototype), 'constructor', this).call(this, ogapi, url, filter, limit, sort, timeout);
+        _get(Object.getPrototypeOf(EntitySearch.prototype), 'constructor', this).call(this, ogapi, url, filter, limit, sort, group, select, timeout);
     }
 
     /**
