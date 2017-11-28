@@ -2,7 +2,7 @@
 
 import SearchWithSummaryBuilder from './SearchWithSummaryBuilder';
 import FieldFinder from '../../util/searchingFields/FieldFinder';
-
+import EntitySearch from '../EntitySearch'
 export const TOKEN_URL = '$_token';
 
 /**
@@ -72,6 +72,26 @@ export default class EntitiesSearchBuilder extends SearchWithSummaryBuilder {
     select(select) {
         this._builderParams.select = (select || []);
         return this;
+    }
+
+    /**
+     * Build a instance of Search 
+     *
+     * @example
+     *  ogapi.entitiesSearchBuilder()
+     * @throws {SearchBuilderError} Throw error on url build
+     * @return {Search} 
+     */
+    build() {
+        // OUW-944
+        return new EntitySearch(this._parent,
+            this._buildUrl(),
+            this._buildFilter(),
+            this._buildLimit(),
+            this._buildSort(),
+            this._buildGroup(),
+            this._buildSelect(),
+            this._builderParams.timeout);
     }
 
 }
