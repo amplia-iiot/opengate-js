@@ -247,6 +247,34 @@ export default class DeviceSearch extends Search {
 
                 if (statusCode === 200) {
                     resultQuery.devices = resultQuery.entities;
+
+                    // OUW-944
+                    if (resultQuery.devices.length &gt; 0) {
+
+                        var ele, flattened = false;
+
+                        if (resultQuery.devices[0][&apos;provision.administration.identifier&apos;]) {
+                            flattened = true;
+                        }
+
+                        for (ele = 0; ele &lt; resultQuery.devices.length; ele++) {
+                            if (flattened) {
+                                if (resultQuery.devices[ele][&apos;device.identifier&apos;]) {
+                                    var dato = resultQuery.devices[ele][&apos;device.identifier&apos;];
+                                    if (!dato._value || (dato._value &amp;&amp; !dato._value._current)) {
+                                        delete resultQuery.devices[ele][&apos;device.identifier&apos;];
+                                    }
+                                }
+
+                            } else {
+                                if (resultQuery.devices[ele].device &amp;&amp; resultQuery.devices[ele].device.identifier &amp;&amp; !resultQuery.devices[ele].device.identifier._current) {
+                                    delete resultQuery.devices[ele].device.identifier;
+                                }
+                            }
+                        }
+                    }
+
+
                     delete resultQuery.entities;
                 }
                 defered.resolve({ data: resultQuery, statusCode: statusCode });

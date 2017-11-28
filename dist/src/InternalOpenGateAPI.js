@@ -677,9 +677,9 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-        * This return a AllowedResourceTypeSearchBuilder to build a specific AllowedResourceTypeSearchBuilder
-        * @return {AllowedResourceTypeSearchBuilder}
-        */
+         * This return a AllowedResourceTypeSearchBuilder to build a specific AllowedResourceTypeSearchBuilder
+         * @return {AllowedResourceTypeSearchBuilder}
+         */
     }, {
         key: 'allowedResourceTypeSearchBuilder',
         value: function allowedResourceTypeSearchBuilder() {

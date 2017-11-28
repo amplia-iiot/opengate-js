@@ -22,6 +22,10 @@ var _utilSearchingFieldsFieldFinder = require('../../util/searchingFields/FieldF
 
 var _utilSearchingFieldsFieldFinder2 = _interopRequireDefault(_utilSearchingFieldsFieldFinder);
 
+var _EntitySearch = require('../EntitySearch');
+
+var _EntitySearch2 = _interopRequireDefault(_EntitySearch);
+
 var TOKEN_URL = '$_token';
 
 exports.TOKEN_URL = TOKEN_URL;
@@ -108,6 +112,21 @@ var EntitiesSearchBuilder = (function (_SearchWithSummaryBuilder) {
         value: function select(_select) {
             this._builderParams.select = _select || [];
             return this;
+        }
+
+        /**
+         * Build a instance of Search 
+         *
+         * @example
+         *  ogapi.entitiesSearchBuilder()
+         * @throws {SearchBuilderError} Throw error on url build
+         * @return {Search} 
+         */
+    }, {
+        key: 'build',
+        value: function build() {
+            // OUW-944
+            return new _EntitySearch2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildLimit(), this._buildSort(), this._buildGroup(), this._buildSelect(), this._builderParams.timeout);
         }
     }]);
 
