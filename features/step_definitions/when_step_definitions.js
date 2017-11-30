@@ -611,6 +611,41 @@ module.exports = function () {
         }
     });
 
+    this.When(/^I delete it all$/, function () {
+        
+                var _this = this;
+                _this.error = undefined;
+                _this.responseData = undefined;
+        
+                function catchResponse(data) {
+                    //console.log("OK");
+                    //console.log(JSON.stringify(data));
+                    _this.responseData = data;
+                    _this.error = undefined;
+                    //console.log(data);
+                }
+        
+                function catchErrorResponse(err) {
+                    //console.log("NOK");
+                    //console.log(JSON.stringify(err));
+                    _this.responseData = err;
+                    _this.error = err;
+                }
+        
+                try {
+                    //console.log("location:" + location);
+                    //console.log("this.location:" + _this.location);
+                    return _this.util.deleteAll().then(catchResponse).catch(catchErrorResponse);
+        
+                } catch (err) {
+                    //console.error(err);
+                    _this.responseData = err;
+                    _this.error = err;
+                    //this.expect(this.error).to.be.undefined;
+                    return;
+                }
+            });
+
     this.When(/^I update it$/, function () {
         var _this = this;
         _this.error = undefined;

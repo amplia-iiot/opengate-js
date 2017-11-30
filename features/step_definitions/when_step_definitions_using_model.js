@@ -288,7 +288,7 @@ module.exports = function () {
                     if (data[i].typeFunction === 'simple') {
                         this.util.with(data[i].datastream, data[i].value);
                     }
-                    if (data[i].typeFunction === 'complex') {
+                    else if (data[i].typeFunction === 'complex') {
                         this.util.withComplex(data[i].datastream, data[i].parent, data[i].value);
                     }
 
