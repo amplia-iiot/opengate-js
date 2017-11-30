@@ -18152,7 +18152,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "'use strict';\nimport BaseProvision from '../../provision/BaseProvision'\nimport Category from '../catalog/Category'\nimport Datastream from '../catalog/Datastream'\n\nexport const PRE_RESOURCE = '/organizations';\nexport const DATAMODELS_RESOURCE = '/datamodels';\n/**\n * This is a base object for create a IoT Datamodel\n */\nexport default class Datamodels extends BaseProvision {\n    /**\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\n     * @param {!string} organization - Organization where the IoT datamodel will be created\n     */\n    constructor(ogapi, organization) {\n        super(ogapi, PRE_RESOURCE);\n        this._isValidString(organization, 'organization', 50);\n        this._organization = organization;\n        this._categories = [];\n        this._resource = this._resource + '/' + this._organization + DATAMODELS_RESOURCE;\n    }\n\n    /**\n     * Set the identifier attribute\n     * @param {!string} identifier - required field\n     * @return {Datamodels}\n     */\n    withIdentifier(identifier) {\n        this._isValidString(identifier, 'identifier', 100);\n        this._identifier = identifier;\n        return this;\n    }\n\n    /**\n     * Set the name attribute\n     * @param {!string} name - required field\n     * @return {Datamodels}\n     */\n    withName(name) {\n        this._isValidString(name, 'name', 100);\n        this._name = name;\n        return this;\n    }\n\n    /**\n     * Set the version attribute\n     * @param {!string} version - required field\n     * @return {Datamodels}\n     */\n    withVersion(version) {\n        this._isValidString(version, 'version', 100);\n        this._version = version;\n        return this;\n    }\n\n    /**\n     * Set the description attribute\n     * @param {string} description\n     * @return {Datamodels}\n     */\n    withDescription(description) {\n        if (description)\n            this._isValidString(description, 'description', 100);\n        this._description = description;\n        return this;\n    }\n\n    /**\n     * Add a flavor. If the field datastreams have value, they will add to this flavor\n     * @param {!string} category\n     * @param {!Array} datastreams\n     * @return {Datamodels}\n     */\n    addCategory(category, datastreams) {\n        this._isValidString(category, 'category', 100);\n        this._categories.forEach(function(_category, index) {\n            if (category.name === _category) {\n                throw new Error('Category ' + category + ' already exists.');\n            }\n        });\n        let _category = new Category(this._ogapi, category);\n        if (datastreams && datastreams.length > 0)\n            _category.addDatastreams(datastreams);\n        this._categories.push(_category._composeElement());\n        return this;\n    }\n\n    /**\n     * Add a datastream to the indicated category\n     * @param {!string} category\n     * @param {!object} datastream\n     * @return {Datamodels}\n     */\n    addDatastream(category, datastream) {\n        this._isValidString(category, 'category', 100);\n        //Buscamos category y si existe se añade a la lista de categories\n        var exists_category = -1;\n        this._categories.forEach(function(_category, index) {\n            if (_category.identifier === category) {\n                exists_category = index;\n            }\n        });\n        if (exists_category === -1) {\n            throw new Error('Category ' + category + ' not exists for this datamodel. Use addCategory instead.');\n        }\n        this._categories[exists_category].datastreams ? this._categories[exists_category].datastreams.push(datastream) :\n            this._categories[exists_category]['datastreams'] = [datastream];\n        return this;\n    }\n\n    _composeElement() {\n        if (!this._name) {\n            throw new Error('Name is required on IoTDatamodel');\n        }\n\n        if (!this._version) {\n            throw new Error('Version is required on IoTDatamodel');\n        }\n\n        return {\n            'identifier': this._identifier,\n            'name': this._name,\n            'version': this._version,\n            'description': this._description,\n            'categories': this._categories.length > 0 ? this._categories : undefined\n        }\n    }\n\n    _buildURL() {\n        //console.log('URL: ' + this._resource);\n        return this._resource;\n    }\n\n    /**\n     * Update not supported on this builder. Use IoTDatamodelHelper instead.\n     */\n    update() {\n        throw new Error('Update not supported on this builder. Use IoTDatamodelHelper instead.');\n    }\n\n    /**\n     * Delete not supported on this builder. Use IoTDatamodelHelper instead.\n     */\n    delete() {\n        throw new Error('Delete not supported on this builder. Use IoTDatamodelHelper instead.');\n    }\n\n    _isValidString(string, param_name, max_length) {\n        if (typeof string !== 'string' || string.length === 0 || string.length > max_length)\n            throw new Error('Parameter ' + param_name + ' must be a string, cannot be empty and has a maximum length of ' + max_length + 'on IoTDatamodel');\n    }\n}"
+    "content": "'use strict';\nimport BaseProvision from '../../provision/BaseProvision'\nimport Category from '../catalog/Category'\nimport Datastream from '../catalog/Datastream'\n\nexport const PRE_RESOURCE = '/organizations';\nexport const DATAMODELS_RESOURCE = '/datamodels';\n/**\n * This is a base object for create a IoT Datamodel\n */\nexport default class Datamodels extends BaseProvision {\n    /**\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\n     * @param {!string} organization - Organization where the IoT datamodel will be created\n     */\n    constructor(ogapi, organization) {\n        super(ogapi, PRE_RESOURCE);\n        this._isValidString(organization, 'organization', 50);\n        this._organization = organization;\n        this._categories = [];\n        this._resource = this._resource + '/' + this._organization + DATAMODELS_RESOURCE;\n    }\n\n    /**\n     * Set the identifier attribute\n     * @param {!string} identifier - required field\n     * @return {Datamodels}\n     */\n    withIdentifier(identifier) {\n        this._isValidString(identifier, 'identifier', 100);\n        this._identifier = identifier;\n        return this;\n    }\n\n    /**\n     * Set the name attribute\n     * @param {!string} name - required field\n     * @return {Datamodels}\n     */\n    withName(name) {\n        this._isValidString(name, 'name', 100);\n        this._name = name;\n        return this;\n    }\n\n    /**\n     * Set the version attribute\n     * @param {!string} version - required field\n     * @return {Datamodels}\n     */\n    withVersion(version) {\n        this._isValidString(version, 'version', 100);\n        this._version = version;\n        return this;\n    }\n\n    /**\n     * Set the description attribute\n     * @param {string} description\n     * @return {Datamodels}\n     */\n    withDescription(description) {\n        if (description)\n            this._isValidString(description, 'description', 100);\n        this._description = description;\n        return this;\n    }\n\n    /**\n     * Add a flavor. If the field datastreams have value, they will add to this flavor\n     * @param {!string} category\n     * @param {!Array} datastreams\n     * @return {Datamodels}\n     */\n    addCategory(category, datastreams) {\n        this._isValidString(category, 'category', 100);\n        this._categories.forEach(function(_category, index) {\n            if (category.name === _category) {\n                throw new Error('Category ' + category + ' already exists.');\n            }\n        });\n        let _category = new Category(this._ogapi, category);\n        if (datastreams && datastreams.length > 0)\n            _category.addDatastreams(datastreams);\n        this._categories.push(_category._composeElement());\n        return this;\n    }\n\n    /**\n     * Add a datastream to the indicated category\n     * @param {!string} category\n     * @param {!object} datastream\n     * @return {Datamodels}\n     */\n    addDatastream(category, datastream) {\n        this._isValidString(category, 'category', 100);\n        //Buscamos category y si existe se añade a la lista de categories\n        var exists_category = -1;\n        this._categories.forEach(function(_category, index) {\n            if (_category.identifier === category) {\n                exists_category = index;\n            }\n        });\n        if (exists_category === -1) {\n            throw new Error('Category ' + category + ' not exists for this datamodel. Use addCategory instead.');\n        }\n        this._categories[exists_category].datastreams ? this._categories[exists_category].datastreams.push(datastream) :\n            this._categories[exists_category]['datastreams'] = [datastream];\n        return this;\n    }\n\n    _composeElement() {\n        if (!this._name) {\n            throw new Error('Name is required on IoTDatamodel');\n        }\n\n        if (!this._version) {\n            throw new Error('Version is required on IoTDatamodel');\n        }\n\n        return {\n            'identifier': this._identifier,\n            'name': this._name,\n            'version': this._version,\n            'description': this._description,\n            'categories': this._categories.length > 0 ? this._categories : undefined\n        }\n    }\n\n    _buildURL() {\n        //console.log('URL: ' + this._resource);\n        return this._resource;\n    }\n\n    /**\n     * Update not supported on this builder. Use IoTDatamodelHelper instead.\n     */\n    update() {\n        throw new Error('Update not supported on this builder. Use datamodelsHelper instead.');\n    }\n\n    /**\n     * Delete not supported on this builder. Use IoTDatamodelHelper instead.\n     */\n    delete() {\n        throw new Error('Delete not supported on this builder. Use datamodelsHelper instead.');\n    }\n\n    _isValidString(string, param_name, max_length) {\n        if (typeof string !== 'string' || string.length === 0 || string.length > max_length)\n            throw new Error('Parameter ' + param_name + ' must be a string, cannot be empty and has a maximum length of ' + max_length + 'on IoTDatamodel');\n    }\n}"
   },
   {
     "__docId__": 798,
@@ -28691,7 +28691,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "'use strict';\n\nimport ComplexBuilder from './ComplexBuilder';\nimport {\n    SubscriberID\n} from './SubscriberBuilder';\nimport {\n    SubscriptionID\n} from './SubscriptionBuilder';\nimport HttpStatus from 'http-status-codes';\nimport q from 'q';\n\nconst ID = 'provision.device.identifier',\n    PUT_METHOD = 'PUT',\n    POST_METHOD = 'POST';\n\nclass BoxBuilder {\n    constructor(ogapi, obj, url, key) {\n        let _this = this;\n        let subscribers = {};\n        let subscriptions = {};\n\n        this._obj = obj;\n        this._url = url;\n        this._ogapi = ogapi;\n        this._key = key;\n        this._deviceKeys = Object.keys(obj).filter(function (dsName) {\n            return dsName.indexOf('subscriber') === -1 && dsName.indexOf('subscription') === -1;\n        });\n        this._subscriberKeys = Object.keys(obj).filter(function (dsName) {\n            return dsName.indexOf('subscriber') !== -1;\n        });\n        this._subscriptionKeys = Object.keys(obj).filter(function (dsName) {\n            return dsName.indexOf('subscription') !== -1;\n        });\n        this._administrationKeys = Object.keys(obj).filter(function (dsName) {\n            return dsName.indexOf('provision.administration') !== -1;\n        });\n        this._wrappers = [];\n\n        this._subscriberKeys.forEach((key) => {\n            _this._obj[key].forEach((value) => {\n                if (!subscribers[value._index.value]) {\n                    subscribers[value._index.value] = {};\n                }\n                subscribers[value._index.value][key] = {\n                    _value: value._value\n                };\n            });\n        });\n\n        this._subscriptionKeys.forEach((key) => {\n            _this._obj[key].forEach((value) => {\n                if (!subscriptions[value._index.value]) {\n                    subscriptions[value._index.value] = {};\n                }\n                subscriptions[value._index.value][key] = {\n                    _value: value._value\n                };\n            });\n        });\n\n        Object.keys(subscriptions).forEach((commsId) => {\n            let obj = subscriptions[commsId];\n            _this._administrationKeys.forEach((key) => {\n                obj[key] = _this._obj[key];\n            });\n            _this._wrappers.push(new WrapperBuilder(_this._ogapi, obj, _this._url.replace('devices', 'subscriptions').replace('/' + _this._key._value._current.value, ''), obj[SubscriptionID]._value._current.value));\n        });\n        Object.keys(subscribers).forEach((commsId) => {\n            let obj = subscribers[commsId];\n            _this._administrationKeys.forEach((key) => {\n                obj[key] = _this._obj[key];\n            })\n            _this._wrappers.push(new WrapperBuilder(_this._ogapi, obj, _this._url.replace('devices', 'subscribers').replace('/' + _this._key._value._current.value, ''), obj[SubscriberID]._value._current.value));\n        });\n    }\n\n    _urlWithKey() {\n        let splitted = this._url.split('?');\n        return splitted[0] + '/' + this._key._value._current.value + '?' + splitted[1];\n    }\n\n    create() {\n        let defer = q.defer();\n        let postObj = {};\n        let putObj = this._obj;\n        let childEntityPromises = [];\n        let _this = this;\n\n        Object.keys(putObj).filter((key) => {\n            return key.indexOf('subscriber') === -1 && key.indexOf('subscription') === -1;\n        }).forEach((deviceKey) => {\n            postObj[deviceKey] = putObj[deviceKey];\n        });\n\n        this._wrappers.forEach((wrapper) => {\n            childEntityPromises.push({\n                wrapper: wrapper,\n                promise: wrapper.execute(defer, 10)\n            });\n        });\n\n        q.allSettled(\n            childEntityPromises.reduce(function (previousValue, current) {\n                previousValue.push(current.promise);\n                return previousValue;\n            }, [])).then(() => {\n            defer.notify({\n                message: 'All related entities have been created.',\n                type: 'success',\n                percentage: 20\n            });\n            defer.notify({\n                message: 'Creating new device:' + _this._key._value._current.value,\n                type: 'success',\n                percentage: 25\n            });\n            return _this._ogapi.Napi.post(_this._url, postObj)\n                .then((res) => {\n                    defer.notify({\n                        message: 'Created device:' + _this._key._value._current.value,\n                        type: 'success',\n                        percentage: 50\n                    });\n                    if (_this._wrappers.length > 0) {\n                        defer.notify({\n                            message: 'Adding related entities',\n                            type: 'success',\n                            percentage: 55\n                        });\n                        return _this._ogapi.Napi.put(_this._urlWithKey(), putObj)\n                            .then((res) => {\n                                if (res.statusCode === HttpStatus.OK) {\n                                    console.log(\"CREATEOK: \" + JSON.stringify(res));\n                                    if (typeof _this._onCreated === \"function\") {\n                                        _this._onCreated(res.header['location']);\n                                    }\n                                    defer.notify({\n                                        message: 'Device created successfully: ' + _this._key._value._current.value,\n                                        type: 'success',\n                                        percentage: 75\n                                    });\n                                    defer.resolve({\n                                        location: res.header['location'],\n                                        statusCode: res.statusCode\n                                    });\n                                } else {\n                                    defer.reject({\n                                        errors: res.errors,\n                                        statusCode: res.statusCode\n                                    });\n                                }\n                            });\n                    } else {\n                        if (res.statusCode === HttpStatus.CREATED) {\n                            console.log(\"CREATEOK: \" + JSON.stringify(res));\n                            if (typeof _this._onCreated === \"function\") {\n                                _this._onCreated(res.header['location']);\n                            }\n                            defer.notify({\n                                message: 'Device created successfully: ' + _this._key._value._current.value,\n                                type: 'success',\n                                percentage: 75\n                            });\n                            defer.resolve({\n                                location: res.header['location'],\n                                statusCode: res.statusCode\n                            });\n                        } else {\n                            defer.reject({\n                                errors: res.errors,\n                                statusCode: res.statusCode\n                            });\n                        }\n                    }\n\n                });\n        }).catch((err) => {\n            err.data.errors.forEach((err) => {\n                var error = err.description;\n                if (err.label)\n                    error += \":\" + err.label;\n                defer.notify({\n                    message: 'Error: ' + error,\n                    type: 'error',\n                    percentage: 80\n                });\n            });\n            let deletePromises = [_this.delete(defer, 90)];\n            childEntityPromises.forEach((item) => {\n                deletePromises.push(item.wrapper.delete(defer, 90));\n            });\n            q.allSettled(deletePromises).then(() => {\n                defer.reject(err);\n            }).catch(() => {\n                defer.reject(err);\n            });\n        });\n        return defer.promise;\n    }\n    update() {\n        let defer = q.defer();\n        let putObj = this._obj;\n        let childEntityPromises = [];\n        let _this = this;\n\n        this._wrappers.forEach((wrapper) => {\n            childEntityPromises.push({\n                wrapper: wrapper,\n                promise: wrapper.execute(defer, 20)\n            });\n        });\n\n        q.allSettled(\n            childEntityPromises.reduce(function (previousValue, current) {\n                previousValue.push(current.promise);\n                return previousValue;\n            }, [])).then(() => {\n            defer.notify({\n                message: 'All related entities have been created.',\n                type: 'success',\n                percentage: 40\n            });\n            defer.notify({\n                message: 'Adding related entities to device:' + _this._key._value._current.value,\n                type: 'success',\n                percentage: 45\n            });\n            return _this._ogapi.Napi.put(_this._url, putObj)\n                .then((res) => {\n                    if (res.statusCode === HttpStatus.OK) {\n                        console.log(\"CREATEOK: \" + JSON.stringify(res));\n                        if (typeof _this._onCreated === \"function\") {\n                            _this._onCreated(res.header['location']);\n                        }\n                        defer.notify({\n                            message: 'Device updated successfully: ' + _this._key._value._current.value,\n                            type: 'success',\n                            percentage: 90\n                        });\n                        defer.resolve({\n                            location: res.header['location'],\n                            statusCode: res.statusCode\n                        });\n                    } else {\n                        defer.reject({\n                            errors: res.errors,\n                            statusCode: res.statusCode\n                        });\n                    }\n                });\n        }).catch((err) => {\n            console.error(err);\n            defer.notify('Something was wrong updating device');\n            defer.reject(err);\n        });\n        return defer.promise;\n    }\n\n    delete(defered, percentage) {\n        let _this = this;\n        return this._ogapi.Napi.delete(this._urlWithKey())\n            .then((res) => {\n                defered.notify({\n                    message: 'Entity deleted:' + _this._key,\n                    type: 'warning',\n                    percentage: percentage\n                });\n            });\n    }\n}\n\nclass WrapperBuilder {\n    constructor(ogapi, obj, url, key) {\n        this._obj = obj;\n        this._url = url;\n        this._ogapi = ogapi;\n        this._key = key;\n        this._created = false;\n    }\n\n    _urlWithKey() {\n        let splitted = this._url.split('?');\n        return splitted[0] + '/' + this._key + '?' + splitted[1];\n    }\n\n    _checkExists() {\n        return this._ogapi.Napi.get(this._urlWithKey()).then(function (response) {\n            return response.statusCode === HttpStatus.OK\n        }).catch((err) => {\n            console.warn(err);\n            return false;\n        });\n    }\n\n\n    execute(defered, percentage) {\n        let defer = q.defer();\n        let _this = this;\n        this._checkExists().then((exists) => {\n            if (!exists) {\n                create(defered, defer, percentage);\n            } else {\n                defer.resolve('Entity was already created:' + _this._key)\n            }\n        }).catch((exists) => {\n            if (!exists) {\n                create(defered, defer, percentage);\n            } else {\n                defer.resolve('Entity was already created:' + _this._key)\n            }\n        });\n        return defer.promise;\n\n        function create(defered, defer, percentage) {\n            _this._ogapi.Napi.post(_this._url, _this._obj)\n                .then((res) => {\n                    _this._created = true;\n                    defered.notify({\n                        message: 'Entity created:' + _this._key,\n                        type: 'success',\n                        percentage: percentage\n                    });\n                    defer.resolve('Entity created:' + _this._key);\n                }).catch((err) => {\n                    console.error(err);\n                    defered.notify({\n                        message: 'Error creating entity:' + _this._key,\n                        type: 'warning',\n                        percentage: percentage\n                    });\n                    defer.reject('Error creating entity:' + _this._key);\n                });\n        }\n    }\n\n    delete(defered, percentage) {\n        let _this = this;\n        if (this._created) {\n            return this._ogapi.Napi.delete(this._urlWithKey())\n                .then((res) => {\n                    defered.notify({\n                        message: 'Entity deleted:' + _this._key,\n                        type: 'warning',\n                        percentage: percentage\n                    });\n                });\n        }\n        return Q.fcall(() => {\n            return;\n        });\n    }\n\n}\n\n/**\n * Device builder. This builder give you the necessary tools to create a device using our OpenGate REST.\n */\nexport default class DeviceBuilder extends ComplexBuilder {\n\n    /**\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\n     * @param {!string} organization - this is the organization name where device will be created\n     * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new device\n     * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types\n     * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool\n     */\n    constructor(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator) {\n        super(ogapi, organization + '/devices', allowedDatastreams, definedSchemas, jsonSchemaValidator);\n        this._organization = organization;\n    }\n\n    /**\n     * This invoke a request to OpenGate North API and the callback is managed by promises\n     * This function create a entity of provision\n     * @return {Promise}\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\n     * @property {function (error:string)} catch - When request it is NOK\n     * @example\n     *  ogapi.organizationsBuilder().create()\n     */\n    create() {\n        this._checkRequiredParameters();\n        return (new BoxBuilder(this._ogapi, this._composeElement(), this._resource, this._getEntityKey())).create();\n    }\n\n    /**\n     * This invoke a request to OpenGate North API and the callback is managed by promises\n     * This function updates a entity of provision and check if any subscriber/subscription exits or no. \n     * If a subscriber/subscription not exists then this entities will be created and after that will be added to entity box.\n     * @return {Promise}\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\n     * @property {function (error:string)} catch - When request it is NOK\n     * @example\n     *  ogapi.entityBuilder.devicesBuilder().update()\n     */\n    update() {\n        return (new BoxBuilder(this._ogapi, this._composeElement(), this._buildURL(), this._getEntityKey())).update();\n    }\n\n    _getEntityKey() {\n        return this._entity[ID];\n    }\n}"
+    "content": "'use strict';\n\nimport ComplexBuilder from './ComplexBuilder';\nimport {\n    SubscriberID\n} from './SubscriberBuilder';\nimport {\n    SubscriptionID\n} from './SubscriptionBuilder';\nimport HttpStatus from 'http-status-codes';\nimport q from 'q';\nimport JSONPath from 'JSONPath';\n\nconst ID = 'provision.device.identifier',\n    PUT_METHOD = 'PUT',\n    POST_METHOD = 'POST';\n\nclass BoxBuilder {\n    constructor(ogapi, obj, url, key) {\n        let _this = this;\n        let subscribers = {};\n        let subscriptions = {};\n\n        this._obj = obj;\n        this._url = url;\n        this._ogapi = ogapi;\n        this._key = key;\n        this._deviceKeys = Object.keys(obj).filter(function (dsName) {\n            return dsName.indexOf('subscriber') === -1 && dsName.indexOf('subscription') === -1;\n        });\n        this._subscriberKeys = Object.keys(obj).filter(function (dsName) {\n            return dsName.indexOf('subscriber') !== -1;\n        });\n        this._subscriptionKeys = Object.keys(obj).filter(function (dsName) {\n            return dsName.indexOf('subscription') !== -1;\n        });\n        this._administrationKeys = Object.keys(obj).filter(function (dsName) {\n            return dsName.indexOf('provision.administration') !== -1;\n        });\n        this._wrappers = [];\n\n        this._subscriberKeys.forEach((key) => {\n            _this._obj[key].forEach((value) => {\n                if (!subscribers[value._index.value]) {\n                    subscribers[value._index.value] = {};\n                }\n                subscribers[value._index.value][key] = {\n                    _value: value._value\n                };\n            });\n        });\n\n        this._subscriptionKeys.forEach((key) => {\n            _this._obj[key].forEach((value) => {\n                if (!subscriptions[value._index.value]) {\n                    subscriptions[value._index.value] = {};\n                }\n                subscriptions[value._index.value][key] = {\n                    _value: value._value\n                };\n            });\n        });\n\n        Object.keys(subscriptions).forEach((commsId) => {\n            let obj = subscriptions[commsId];\n            _this._administrationKeys.forEach((key) => {\n                obj[key] = _this._obj[key];\n            });\n            _this._wrappers.push(new WrapperBuilder(_this._ogapi, obj, _this._url.replace('devices', 'subscriptions').replace('/' + _this._key._value._current.value, ''), obj[SubscriptionID]._value._current.value));\n        });\n        Object.keys(subscribers).forEach((commsId) => {\n            let obj = subscribers[commsId];\n            _this._administrationKeys.forEach((key) => {\n                obj[key] = _this._obj[key];\n            })\n            _this._wrappers.push(new WrapperBuilder(_this._ogapi, obj, _this._url.replace('devices', 'subscribers').replace('/' + _this._key._value._current.value, ''), obj[SubscriberID]._value._current.value));\n        });\n    }\n\n    _urlWithKey() {\n        let splitted = this._url.split('?');\n        return splitted[0] + '/' + this._key._value._current.value + '?' + splitted[1];\n    }\n\n    create() {\n        let defer = q.defer();\n        let postObj = {};\n        let putObj = this._obj;\n        let childEntityPromises = [];\n        let _this = this;\n\n        Object.keys(putObj).filter((key) => {\n            return key.indexOf('subscriber') === -1 && key.indexOf('subscription') === -1;\n        }).forEach((deviceKey) => {\n            postObj[deviceKey] = putObj[deviceKey];\n        });\n\n        this._wrappers.forEach((wrapper) => {\n            childEntityPromises.push({\n                wrapper: wrapper,\n                promise: wrapper.execute(defer, 10)\n            });\n        });\n\n        q.allSettled(\n            childEntityPromises.reduce(function (previousValue, current) {\n                previousValue.push(current.promise);\n                return previousValue;\n            }, [])).then(() => {\n            defer.notify({\n                message: 'All related entities have been created.',\n                type: 'success',\n                percentage: 20\n            });\n            defer.notify({\n                message: 'Creating new device:' + _this._key._value._current.value,\n                type: 'success',\n                percentage: 25\n            });\n            return _this._ogapi.Napi.post(_this._url, postObj)\n                .then((res) => {\n                    defer.notify({\n                        message: 'Created device:' + _this._key._value._current.value,\n                        type: 'success',\n                        percentage: 50\n                    });\n                    if (_this._wrappers.length > 0) {\n                        defer.notify({\n                            message: 'Adding related entities',\n                            type: 'success',\n                            percentage: 55\n                        });\n                        return _this._ogapi.Napi.put(_this._urlWithKey(), putObj)\n                            .then((res) => {\n                                if (res.statusCode === HttpStatus.OK) {\n                                    console.log(\"CREATEOK: \" + JSON.stringify(res));\n                                    if (typeof _this._onCreated === \"function\") {\n                                        _this._onCreated(res.header['location']);\n                                    }\n                                    defer.notify({\n                                        message: 'Device created successfully: ' + _this._key._value._current.value,\n                                        type: 'success',\n                                        percentage: 75\n                                    });\n                                    defer.resolve({\n                                        location: res.header['location'],\n                                        statusCode: res.statusCode\n                                    });\n                                } else {\n                                    defer.reject({\n                                        errors: res.errors,\n                                        statusCode: res.statusCode\n                                    });\n                                }\n                            });\n                    } else {\n                        if (res.statusCode === HttpStatus.CREATED) {\n                            console.log(\"CREATEOK: \" + JSON.stringify(res));\n                            if (typeof _this._onCreated === \"function\") {\n                                _this._onCreated(res.header['location']);\n                            }\n                            defer.notify({\n                                message: 'Device created successfully: ' + _this._key._value._current.value,\n                                type: 'success',\n                                percentage: 75\n                            });\n                            defer.resolve({\n                                location: res.header['location'],\n                                statusCode: res.statusCode\n                            });\n                        } else {\n                            defer.reject({\n                                errors: res.errors,\n                                statusCode: res.statusCode\n                            });\n                        }\n                    }\n\n                })\n               .catch((errores) => {\n                    console.log(\"mostrando errores\");\n                    console.log(JSON.stringify(errores));\n\n                    if (errores.statusCode === HttpStatus.BAD_REQUEST) {\n                        let ms = JSONPath({ json: errores, path: \"$..message\" })[0];\n                        if(ms.includes(\"Entity duplicated\")){\n                            console.log(\"defer\");\n                            defer.reject({\n                                errors: errores.data.errors,\n                                statusCode: errores.statusCode\n                            });\n                        }\n                        else{\n                            defer.reject({\n                                errors: errores.data.errors,\n                                statusCode: errores.statusCode\n                            })\n                        }\n                            \n                    }\n                });\n        }).catch((err) => {\n            err.data.errors.forEach((err) => {\n                var error = err.description;\n                if (err.label)\n                    error += \":\" + err.label;\n                defer.notify({\n                    message: 'Error: ' + error,\n                    type: 'error',\n                    percentage: 80\n                });\n            });\n            let deletePromises = [_this.delete(defer, 90)];\n            childEntityPromises.forEach((item) => {\n                deletePromises.push(item.wrapper.delete(defer, 90));\n            });\n            q.allSettled(deletePromises).then(() => {\n                defer.reject(err);\n            }).catch(() => {\n                defer.reject(err);\n            });\n        });\n        return defer.promise;\n    }\n    update() {\n        let defer = q.defer();\n        let putObj = this._obj;\n        let childEntityPromises = [];\n        let _this = this;\n\n        this._wrappers.forEach((wrapper) => {\n            childEntityPromises.push({\n                wrapper: wrapper,\n                promise: wrapper.execute(defer, 20)\n            });\n        });\n\n        q.allSettled(\n            childEntityPromises.reduce(function (previousValue, current) {\n                previousValue.push(current.promise);\n                return previousValue;\n            }, [])).then(() => {\n            defer.notify({\n                message: 'All related entities have been created.',\n                type: 'success',\n                percentage: 40\n            });\n            defer.notify({\n                message: 'Adding related entities to device:' + _this._key._value._current.value,\n                type: 'success',\n                percentage: 45\n            });\n            return _this._ogapi.Napi.put(_this._url, putObj)\n                .then((res) => {\n                    if (res.statusCode === HttpStatus.OK) {\n                        console.log(\"CREATEOK: \" + JSON.stringify(res));\n                        if (typeof _this._onCreated === \"function\") {\n                            _this._onCreated(res.header['location']);\n                        }\n                        defer.notify({\n                            message: 'Device updated successfully: ' + _this._key._value._current.value,\n                            type: 'success',\n                            percentage: 90\n                        });\n                        defer.resolve({\n                            location: res.header['location'],\n                            statusCode: res.statusCode\n                        });\n                    } else {                       \n                        defer.reject({\n                            errors: res.errors,\n                            statusCode: res.statusCode\n                        });\n                    }\n                });\n        }).catch((err) => {\n            console.error(err);\n            defer.notify('Something was wrong updating device');\n            defer.reject(err);\n        });\n        return defer.promise;\n    }\n\n    delete(defered, percentage) {\n        let _this = this;\n        return this._ogapi.Napi.delete(this._urlWithKey())\n            .then((res) => {\n                defered.notify({\n                    message: 'Entity deleted:' + _this._key,\n                    type: 'warning',\n                    percentage: percentage\n                });\n            });\n    }\n}\n\nclass WrapperBuilder {\n    constructor(ogapi, obj, url, key) {\n        this._obj = obj;\n        this._url = url;\n        this._ogapi = ogapi;\n        this._key = key;\n        this._created = false;\n    }\n\n    _urlWithKey() {\n        let splitted = this._url.split('?');\n        return splitted[0] + '/' + this._key + '?' + splitted[1];\n    }\n\n    _checkExists() {\n        return this._ogapi.Napi.get(this._urlWithKey()).then(function (response) {\n            return response.statusCode === HttpStatus.OK\n        }).catch((err) => {\n            console.warn(err);\n            return false;\n        });\n    }\n\n\n    execute(defered, percentage) {\n        let defer = q.defer();\n        let _this = this;\n        this._checkExists().then((exists) => {\n            if (!exists) {\n                create(defered, defer, percentage);\n            } else {\n                defer.resolve('Entity was already created:' + _this._key)\n            }\n        }).catch((exists) => {\n            if (!exists) {\n                create(defered, defer, percentage);\n            } else {\n                defer.resolve('Entity was already created:' + _this._key)\n            }\n        });\n        return defer.promise;\n\n        function create(defered, defer, percentage) {\n            _this._ogapi.Napi.post(_this._url, _this._obj)\n                .then((res) => {\n                    _this._created = true;\n                    defered.notify({\n                        message: 'Entity created:' + _this._key,\n                        type: 'success',\n                        percentage: percentage\n                    });\n                    defer.resolve('Entity created:' + _this._key);\n                }).catch((err) => {\n                    console.error(err);\n                    defered.notify({\n                        message: 'Error creating entity:' + _this._key,\n                        type: 'warning',\n                        percentage: percentage\n                    });\n                    defer.reject('Error creating entity:' + _this._key);\n                });\n        }\n    }\n\n    delete(defered, percentage) {\n        let _this = this;\n        if (this._created) {\n            return this._ogapi.Napi.delete(this._urlWithKey())\n                .then((res) => {\n                    defered.notify({\n                        message: 'Entity deleted:' + _this._key,\n                        type: 'warning',\n                        percentage: percentage\n                    });\n                });\n        }\n        return Q.fcall(() => {\n            return;\n        });\n    }\n\n}\n\n/**\n * Device builder. This builder give you the necessary tools to create a device using our OpenGate REST.\n */\nexport default class DeviceBuilder extends ComplexBuilder {\n\n    /**\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\n     * @param {!string} organization - this is the organization name where device will be created\n     * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new device\n     * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types\n     * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool\n     */\n    constructor(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator) {\n        super(ogapi, organization + '/devices', allowedDatastreams, definedSchemas, jsonSchemaValidator);\n        this._organization = organization;\n    }\n\n    /**\n     * This invoke a request to OpenGate North API and the callback is managed by promises\n     * This function create a entity of provision\n     * @return {Promise}\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\n     * @property {function (error:string)} catch - When request it is NOK\n     * @example\n     *  ogapi.organizationsBuilder().create()\n     */\n    create() {\n        this._checkRequiredParameters();\n        return (new BoxBuilder(this._ogapi, this._composeElement(), this._resource, this._getEntityKey())).create();\n    }\n\n    /**\n     * This invoke a request to OpenGate North API and the callback is managed by promises\n     * This function updates a entity of provision and check if any subscriber/subscription exits or no. \n     * If a subscriber/subscription not exists then this entities will be created and after that will be added to entity box.\n     * @return {Promise}\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\n     * @property {function (error:string)} catch - When request it is NOK\n     * @example\n     *  ogapi.entityBuilder.devicesBuilder().update()\n     */\n    update() {\n        return (new BoxBuilder(this._ogapi, this._composeElement(), this._buildURL(), this._getEntityKey())).update();\n    }\n\n    _getEntityKey() {\n        return this._entity[ID];\n    }\n}"
   },
   {
     "__docId__": 1206,
@@ -28706,7 +28706,7 @@
     "importPath": "opengate-js/src/provision/entities/DeviceBuilder.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 13,
+    "lineNumber": 14,
     "undocument": true,
     "type": {
       "types": [
@@ -28727,7 +28727,7 @@
     "importPath": "opengate-js/src/provision/entities/DeviceBuilder.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 17,
+    "lineNumber": 18,
     "undocument": true,
     "interface": false
   },
@@ -28741,7 +28741,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~BoxBuilder#constructor",
     "access": null,
     "description": null,
-    "lineNumber": 18,
+    "lineNumber": 19,
     "undocument": true,
     "params": [
       {
@@ -28781,7 +28781,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~BoxBuilder#_obj",
     "access": null,
     "description": null,
-    "lineNumber": 23,
+    "lineNumber": 24,
     "undocument": true,
     "type": {
       "types": [
@@ -28799,7 +28799,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~BoxBuilder#_url",
     "access": null,
     "description": null,
-    "lineNumber": 24,
+    "lineNumber": 25,
     "undocument": true,
     "type": {
       "types": [
@@ -28817,7 +28817,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~BoxBuilder#_ogapi",
     "access": null,
     "description": null,
-    "lineNumber": 25,
+    "lineNumber": 26,
     "undocument": true,
     "type": {
       "types": [
@@ -28835,7 +28835,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~BoxBuilder#_key",
     "access": null,
     "description": null,
-    "lineNumber": 26,
+    "lineNumber": 27,
     "undocument": true,
     "type": {
       "types": [
@@ -28853,7 +28853,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~BoxBuilder#_deviceKeys",
     "access": null,
     "description": null,
-    "lineNumber": 27,
+    "lineNumber": 28,
     "undocument": true,
     "type": {
       "types": [
@@ -28871,7 +28871,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~BoxBuilder#_subscriberKeys",
     "access": null,
     "description": null,
-    "lineNumber": 30,
+    "lineNumber": 31,
     "undocument": true,
     "type": {
       "types": [
@@ -28889,7 +28889,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~BoxBuilder#_subscriptionKeys",
     "access": null,
     "description": null,
-    "lineNumber": 33,
+    "lineNumber": 34,
     "undocument": true,
     "type": {
       "types": [
@@ -28907,7 +28907,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~BoxBuilder#_administrationKeys",
     "access": null,
     "description": null,
-    "lineNumber": 36,
+    "lineNumber": 37,
     "undocument": true,
     "type": {
       "types": [
@@ -28925,7 +28925,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~BoxBuilder#_wrappers",
     "access": null,
     "description": null,
-    "lineNumber": 39,
+    "lineNumber": 40,
     "undocument": true,
     "type": {
       "types": [
@@ -28943,7 +28943,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~BoxBuilder#_urlWithKey",
     "access": null,
     "description": null,
-    "lineNumber": 79,
+    "lineNumber": 80,
     "undocument": true,
     "params": [],
     "return": {
@@ -28963,7 +28963,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~BoxBuilder#create",
     "access": null,
     "description": null,
-    "lineNumber": 84,
+    "lineNumber": 85,
     "undocument": true,
     "params": [],
     "return": {
@@ -28983,7 +28983,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~BoxBuilder#update",
     "access": null,
     "description": null,
-    "lineNumber": 202,
+    "lineNumber": 225,
     "undocument": true,
     "params": [],
     "return": {
@@ -29003,7 +29003,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~BoxBuilder#delete",
     "access": null,
     "description": null,
-    "lineNumber": 261,
+    "lineNumber": 284,
     "undocument": true,
     "params": [
       {
@@ -29039,7 +29039,7 @@
     "importPath": "opengate-js/src/provision/entities/DeviceBuilder.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 274,
+    "lineNumber": 297,
     "undocument": true,
     "interface": false
   },
@@ -29053,7 +29053,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~WrapperBuilder#constructor",
     "access": null,
     "description": null,
-    "lineNumber": 275,
+    "lineNumber": 298,
     "undocument": true,
     "params": [
       {
@@ -29093,7 +29093,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~WrapperBuilder#_obj",
     "access": null,
     "description": null,
-    "lineNumber": 276,
+    "lineNumber": 299,
     "undocument": true,
     "type": {
       "types": [
@@ -29111,7 +29111,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~WrapperBuilder#_url",
     "access": null,
     "description": null,
-    "lineNumber": 277,
+    "lineNumber": 300,
     "undocument": true,
     "type": {
       "types": [
@@ -29129,7 +29129,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~WrapperBuilder#_ogapi",
     "access": null,
     "description": null,
-    "lineNumber": 278,
+    "lineNumber": 301,
     "undocument": true,
     "type": {
       "types": [
@@ -29147,7 +29147,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~WrapperBuilder#_key",
     "access": null,
     "description": null,
-    "lineNumber": 279,
+    "lineNumber": 302,
     "undocument": true,
     "type": {
       "types": [
@@ -29165,7 +29165,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~WrapperBuilder#_created",
     "access": null,
     "description": null,
-    "lineNumber": 280,
+    "lineNumber": 303,
     "undocument": true,
     "type": {
       "types": [
@@ -29183,7 +29183,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~WrapperBuilder#_urlWithKey",
     "access": null,
     "description": null,
-    "lineNumber": 283,
+    "lineNumber": 306,
     "undocument": true,
     "params": [],
     "return": {
@@ -29203,7 +29203,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~WrapperBuilder#_checkExists",
     "access": null,
     "description": null,
-    "lineNumber": 288,
+    "lineNumber": 311,
     "undocument": true,
     "params": [],
     "return": {
@@ -29223,7 +29223,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~WrapperBuilder#execute",
     "access": null,
     "description": null,
-    "lineNumber": 298,
+    "lineNumber": 321,
     "undocument": true,
     "params": [
       {
@@ -29256,7 +29256,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~WrapperBuilder#delete",
     "access": null,
     "description": null,
-    "lineNumber": 338,
+    "lineNumber": 361,
     "undocument": true,
     "params": [
       {
@@ -29292,7 +29292,7 @@
     "importPath": "opengate-js/src/provision/entities/DeviceBuilder.js",
     "importStyle": "DeviceBuilder",
     "description": "Device builder. This builder give you the necessary tools to create a device using our OpenGate REST.",
-    "lineNumber": 360,
+    "lineNumber": 383,
     "interface": false,
     "extends": [
       "src/provision/entities/ComplexBuilder.js~ComplexBuilder"
@@ -29308,7 +29308,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~DeviceBuilder#constructor",
     "access": null,
     "description": "",
-    "lineNumber": 369,
+    "lineNumber": 392,
     "params": [
       {
         "nullable": false,
@@ -29373,7 +29373,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~DeviceBuilder#_organization",
     "access": null,
     "description": null,
-    "lineNumber": 371,
+    "lineNumber": 394,
     "undocument": true,
     "type": {
       "types": [
@@ -29394,7 +29394,7 @@
     "examples": [
       " ogapi.organizationsBuilder().create()"
     ],
-    "lineNumber": 383,
+    "lineNumber": 406,
     "params": [],
     "properties": [
       {
@@ -29441,7 +29441,7 @@
     "examples": [
       " ogapi.entityBuilder.devicesBuilder().update()"
     ],
-    "lineNumber": 398,
+    "lineNumber": 421,
     "params": [],
     "properties": [
       {
@@ -29485,7 +29485,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~DeviceBuilder#_getEntityKey",
     "access": null,
     "description": null,
-    "lineNumber": 402,
+    "lineNumber": 425,
     "undocument": true,
     "params": [],
     "return": {

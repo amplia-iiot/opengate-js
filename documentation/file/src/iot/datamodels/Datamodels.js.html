@@ -348,14 +348,14 @@ export default class Datamodels extends BaseProvision {
      * Update not supported on this builder. Use IoTDatamodelHelper instead.
      */
     update() {
-        throw new Error(&apos;Update not supported on this builder. Use IoTDatamodelHelper instead.&apos;);
+        throw new Error(&apos;Update not supported on this builder. Use datamodelsHelper instead.&apos;);
     }
 
     /**
      * Delete not supported on this builder. Use IoTDatamodelHelper instead.
      */
     delete() {
-        throw new Error(&apos;Delete not supported on this builder. Use IoTDatamodelHelper instead.&apos;);
+        throw new Error(&apos;Delete not supported on this builder. Use datamodelsHelper instead.&apos;);
     }
 
     _isValidString(string, param_name, max_length) {

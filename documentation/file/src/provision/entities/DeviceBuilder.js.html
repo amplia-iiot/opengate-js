@@ -221,6 +221,7 @@ import {
 } from &apos;./SubscriptionBuilder&apos;;
 import HttpStatus from &apos;http-status-codes&apos;;
 import q from &apos;q&apos;;
+import JSONPath from &apos;JSONPath&apos;;
 
 const ID = &apos;provision.device.identifier&apos;,
     PUT_METHOD = &apos;PUT&apos;,
@@ -387,6 +388,28 @@ class BoxBuilder {
                         }
                     }
 
+                })
+               .catch((errores) =&gt; {
+                    console.log(&quot;mostrando errores&quot;);
+                    console.log(JSON.stringify(errores));
+
+                    if (errores.statusCode === HttpStatus.BAD_REQUEST) {
+                        let ms = JSONPath({ json: errores, path: &quot;$..message&quot; })[0];
+                        if(ms.includes(&quot;Entity duplicated&quot;)){
+                            console.log(&quot;defer&quot;);
+                            defer.reject({
+                                errors: errores.data.errors,
+                                statusCode: errores.statusCode
+                            });
+                        }
+                        else{
+                            defer.reject({
+                                errors: errores.data.errors,
+                                statusCode: errores.statusCode
+                            })
+                        }
+                            
+                    }
                 });
         }).catch((err) =&gt; {
             err.data.errors.forEach((err) =&gt; {
@@ -455,7 +478,7 @@ class BoxBuilder {
                             location: res.header[&apos;location&apos;],
                             statusCode: res.statusCode
                         });
-                    } else {
+                    } else {                       
                         defer.reject({
                             errors: res.errors,
                             statusCode: res.statusCode
