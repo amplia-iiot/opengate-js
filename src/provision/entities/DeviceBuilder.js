@@ -9,6 +9,7 @@ import {
 } from './SubscriptionBuilder';
 import HttpStatus from 'http-status-codes';
 import q from 'q';
+import JSONPath from 'JSONPath';
 
 const ID = 'provision.device.identifier',
     PUT_METHOD = 'PUT',
@@ -175,6 +176,28 @@ class BoxBuilder {
                         }
                     }
 
+                })
+               .catch((errores) => {
+                    console.log("mostrando errores");
+                    console.log(JSON.stringify(errores));
+
+                    if (errores.statusCode === HttpStatus.BAD_REQUEST) {
+                        let ms = JSONPath({ json: errores, path: "$..message" })[0];
+                        if(ms.includes("Entity duplicated")){
+                            console.log("defer");
+                            defer.reject({
+                                errors: errores.data.errors,
+                                statusCode: errores.statusCode
+                            });
+                        }
+                        else{
+                            defer.reject({
+                                errors: errores.data.errors,
+                                statusCode: errores.statusCode
+                            })
+                        }
+                            
+                    }
                 });
         }).catch((err) => {
             err.data.errors.forEach((err) => {
@@ -243,7 +266,7 @@ class BoxBuilder {
                             location: res.header['location'],
                             statusCode: res.statusCode
                         });
-                    } else {
+                    } else {                       
                         defer.reject({
                             errors: res.errors,
                             statusCode: res.statusCode

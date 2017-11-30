@@ -180,7 +180,7 @@ var Datamodels = (function (_BaseProvision) {
     }, {
         key: 'update',
         value: function update() {
-            throw new Error('Update not supported on this builder. Use IoTDatamodelHelper instead.');
+            throw new Error('Update not supported on this builder. Use datamodelsHelper instead.');
         }
 
         /**
@@ -189,7 +189,7 @@ var Datamodels = (function (_BaseProvision) {
     }, {
         key: 'delete',
         value: function _delete() {
-            throw new Error('Delete not supported on this builder. Use IoTDatamodelHelper instead.');
+            throw new Error('Delete not supported on this builder. Use datamodelsHelper instead.');
         }
     }, {
         key: '_isValidString',

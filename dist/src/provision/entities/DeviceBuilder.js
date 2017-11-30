@@ -30,6 +30,10 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
+var _JSONPath = require('JSONPath');
+
+var _JSONPath2 = _interopRequireDefault(_JSONPath);
+
 var ID = 'provision.device.identifier',
     PUT_METHOD = 'PUT',
     POST_METHOD = 'POST';
@@ -193,6 +197,25 @@ var BoxBuilder = (function () {
                             defer.reject({
                                 errors: res.errors,
                                 statusCode: res.statusCode
+                            });
+                        }
+                    }
+                })['catch'](function (errores) {
+                    console.log("mostrando errores");
+                    console.log(JSON.stringify(errores));
+
+                    if (errores.statusCode === _httpStatusCodes2['default'].BAD_REQUEST) {
+                        var ms = (0, _JSONPath2['default'])({ json: errores, path: "$..message" })[0];
+                        if (ms.includes("Entity duplicated")) {
+                            console.log("defer");
+                            defer.reject({
+                                errors: errores.data.errors,
+                                statusCode: errores.statusCode
+                            });
+                        } else {
+                            defer.reject({
+                                errors: errores.data.errors,
+                                statusCode: errores.statusCode
                             });
                         }
                     }

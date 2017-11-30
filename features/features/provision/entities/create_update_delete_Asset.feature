@@ -13,7 +13,7 @@ Feature: Delete and Create a device
   Background:
     Given an apikey user by "require-real-apikey"
 
- Scenario: Creating an organization to use in create device
+ Scenario: Creating an organization to use in create assets
     Given an ogapi "organizations builder" util
     Then I want to create an "organization"
     And the "name" "asset_organization"
@@ -27,13 +27,13 @@ Feature: Delete and Create a device
     Then I create it
     And response code should be: 201
 
-  Scenario: I want to create a device
+  Scenario: I want to create an asset
     Given the entity of type "asset builder" with "asset_organization" 
     And I get allowed Datastreams fields
     And I can found "provision.asset.identifier" as datastream name
     When I try to define the entity with... 
-		| datastream                                                        | typeFunction       |   value                       | parent      |
-		| provision.administration.channel                                  | simple             |  default_channel              |             |
+		    | datastream                                                        | typeFunction       |   value                       | parent      |
+		    | provision.administration.channel                                  | simple             |  default_channel              |             |
         | provision.administration.organization                             | simple             |  asset_organization           |             |
         | provision.administration.serviceGroup                             | simple             |  emptyServiceGroup            |             |
         | provision.asset.identifier                                        | simple             |  asset_ogapi_simple           |             |
@@ -49,7 +49,7 @@ Scenario: I want to update the entity
        | provision.administration.channel           | simple             |  default_channel                  |             |
        | provision.administration.organization      | simple             |  asset_organization               |             |
        | provision.administration.serviceGroup      | simple             |  emptyServiceGroup                |             |
-       | provision.asset.identifier                | simple             |  asset_ogapi_simple              |             |
+       | provision.asset.identifier                 | simple              |  asset_ogapi_simple              |             |
    And I update it
    Then response code should be: 200
 
@@ -59,9 +59,23 @@ Scenario: I want to update the entity
     And I can found "provision.asset.identifier" as datastream name
     When I try to define the entity with... 
 		| datastream                                 | typeFunction       |   value                 | parent      |
-    | provision.asset.identifier                | simple             |  asset_ogapi_simple           |             |
+    | provision.asset.identifier                 | simple             |  asset_ogapi_simple     |             |
     And I delete it
     Then response code should be: 200
+
+ Scenario: I want to create an asset with incorrect specific type
+    Given the entity of type "asset builder" with "asset_organization" 
+    And I get allowed Datastreams fields
+    And I can found "provision.asset.identifier" as datastream name
+    When I try to define the entity with... 
+		    | datastream                                   | typeFunction       |   value                       | parent      |
+		    | provision.administration.channel             | simple             |  default_channel              |             |
+        | provision.administration.organization        | simple             |  asset_organization           |             |
+        | provision.administration.serviceGroup        | simple             |  emptyServiceGroup            |             |
+        | provision.asset.identifier                   | simple             |  asset_ogapi_simple           |             |
+        | provision.asset.specificType                 | simple             |  CONCENTRATORE                |             |
+    Then I create it
+    And an error is thrown
 
 Scenario: Deleting an organization
    Given an ogapi "organizations builder" util
