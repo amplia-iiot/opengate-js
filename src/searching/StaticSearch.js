@@ -58,7 +58,7 @@ export default class StaticSearch extends Search {
             case 'operationalStatus':
             case 'specificType':
                 for (var contentTmp in collection) {
-                    collection[contentTmp].forEach(function (finalValue) {
+                    collection[contentTmp].forEach(function(finalValue) {
                         if (!_this._customFilters.id || (_this._customFilters.id && _this._customFilters.id === finalValue)) {
                             finalContent.push({
                                 'entityType': contentTmp,
@@ -69,7 +69,7 @@ export default class StaticSearch extends Search {
                 }
                 break;
             case 'administrativeState':
-                var createAndAddFileObj = function (obj) {
+                var createAndAddFileObj = function(obj) {
                     var finalObj = obj;
                     finalObj[ENTITY_TYPE] = entityTypeTmp;
                     finalContent.push(finalObj);
@@ -364,7 +364,7 @@ export default class StaticSearch extends Search {
                 'SUBSCRIBER': ["ADSL", "CAN", "ETH", "GENERIC", "GSM", "HAN", "I2C", "LOWPAN", "MESH"],
                 'SUBSCRIPTION': ["ADSL", "CAN", "ETH", "GENERIC", "GSM", "HAN", "I2C", "LOWPAN", "MESH", "MOBILE", "PLC", "RS232", "RS422", "RS485", "SIGFOX", "UMTS", "WIFI", "ZIGBEE"],
                 'ASSET': ["BOX", "BUILDING", "CONTROL_HOUSE", "CRANE", "FOUNTAIN", "ENGINE", "HOUSE", "MACHINE", "OTHER", "PALLET", "PIPELINE", "SPOOL", "TOWER", "VEHICLE", "WIRE", "WORKER"],
-                'GATEWAY': ["BLOODPRESSURE_SENSOR", "COMHUB", "CONCENTRATOR", "CONTAINER", "COORDINATOR", "GENERIC", "GLUCOMETER_SENSOR", "METER", "MODEM", "ROUTER", "SENSOR", "TPV", "VEHICLE", "VENDING", "WEIGHT_SENSOR"]
+                'GATEWAY': ["GATEWAY", "BLOODPRESSURE_SENSOR", "COMHUB", "CONCENTRATOR", "CONTAINER", "COORDINATOR", "GENERIC", "GLUCOMETER_SENSOR", "METER", "MODEM", "ROUTER", "SENSOR", "TPV", "VEHICLE", "VENDING", "WEIGHT_SENSOR"]
             },
             'communicationsModuleType': {
                 "GENERIC": {
@@ -571,11 +571,12 @@ export default class StaticSearch extends Search {
                 'CUMULATIVE',
                 'INSTANT'
             ],
-            'resourceType' :['asset', 'device'],
+            'resourceType': ['asset', 'device'],
             'allowedResourceType': ['entity.asset',
                 'entity.device',
                 'entity.subscriber',
-                'entity.subscription'],
+                'entity.subscription'
+            ],
             'fieldsDefinition': {
                 'string': {
                     'description': 'Text based value',
