@@ -78,6 +78,10 @@ var BaseSearch = (function () {
             var promise = defered.promise;
             var filter = this._filter();
 
+            if (filter && filter.limit) {
+                delete filter.limit;
+            }
+
             this._ogapi.Napi.post_csv(this._resource, filter, this._timeout).then(function (response) {
                 var resultQuery = response;
                 var statusCode = response.statusCode;
