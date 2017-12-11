@@ -61,16 +61,40 @@ var ComplexBuilder = (function (_SimpleBuilder) {
                 return this;
             }
             if (!this._entity[_id]) this._entity[_id] = [];
-            this._entity[_id].push({
-                '_index': {
-                    'value': idCommunicationModules
-                },
-                '_value': {
-                    '_current': {
-                        'value': val
-                    }
+
+            var _found = false;
+
+            for (var _idx = 0; _idx < this._entity[_id].length; _idx++) {
+                var _rel = this._entity[_id][_idx];
+                if (_rel._index && _rel._index.value && _rel._index.value === idCommunicationModules) {
+                    this._entity[_id][_idx] = {
+                        '_index': {
+                            'value': idCommunicationModules
+                        },
+                        '_value': {
+                            '_current': {
+                                'value': val
+                            }
+                        }
+                    };
+
+                    _found = true;
                 }
-            });
+            }
+
+            if (!_found) {
+                this._entity[_id].push({
+                    '_index': {
+                        'value': idCommunicationModules
+                    },
+                    '_value': {
+                        '_current': {
+                            'value': val
+                        }
+                    }
+                });
+            }
+
             return this;
         }
     }]);

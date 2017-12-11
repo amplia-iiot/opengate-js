@@ -237,16 +237,16 @@ class BoxBuilder {
         this._url = url;
         this._ogapi = ogapi;
         this._key = key;
-        this._deviceKeys = Object.keys(obj).filter(function (dsName) {
+        this._deviceKeys = Object.keys(obj).filter(function(dsName) {
             return dsName.indexOf(&apos;subscriber&apos;) === -1 &amp;&amp; dsName.indexOf(&apos;subscription&apos;) === -1;
         });
-        this._subscriberKeys = Object.keys(obj).filter(function (dsName) {
+        this._subscriberKeys = Object.keys(obj).filter(function(dsName) {
             return dsName.indexOf(&apos;subscriber&apos;) !== -1;
         });
-        this._subscriptionKeys = Object.keys(obj).filter(function (dsName) {
+        this._subscriptionKeys = Object.keys(obj).filter(function(dsName) {
             return dsName.indexOf(&apos;subscription&apos;) !== -1;
         });
-        this._administrationKeys = Object.keys(obj).filter(function (dsName) {
+        this._administrationKeys = Object.keys(obj).filter(function(dsName) {
             return dsName.indexOf(&apos;provision.administration&apos;) !== -1;
         });
         this._wrappers = [];
@@ -315,7 +315,7 @@ class BoxBuilder {
         });
 
         q.allSettled(
-            childEntityPromises.reduce(function (previousValue, current) {
+            childEntityPromises.reduce(function(previousValue, current) {
                 previousValue.push(current.promise);
                 return previousValue;
             }, [])).then(() =&gt; {
@@ -389,26 +389,25 @@ class BoxBuilder {
                     }
 
                 })
-               .catch((errores) =&gt; {
+                .catch((errores) =&gt; {
                     console.log(&quot;mostrando errores&quot;);
                     console.log(JSON.stringify(errores));
 
                     if (errores.statusCode === HttpStatus.BAD_REQUEST) {
                         let ms = JSONPath({ json: errores, path: &quot;$..message&quot; })[0];
-                        if(ms.includes(&quot;Entity duplicated&quot;)){
+                        if (ms.includes(&quot;Entity duplicated&quot;)) {
                             console.log(&quot;defer&quot;);
                             defer.reject({
                                 errors: errores.data.errors,
                                 statusCode: errores.statusCode
                             });
-                        }
-                        else{
+                        } else {
                             defer.reject({
                                 errors: errores.data.errors,
                                 statusCode: errores.statusCode
                             })
                         }
-                            
+
                     }
                 });
         }).catch((err) =&gt; {
@@ -448,7 +447,7 @@ class BoxBuilder {
         });
 
         q.allSettled(
-            childEntityPromises.reduce(function (previousValue, current) {
+            childEntityPromises.reduce(function(previousValue, current) {
                 previousValue.push(current.promise);
                 return previousValue;
             }, [])).then(() =&gt; {
@@ -478,7 +477,7 @@ class BoxBuilder {
                             location: res.header[&apos;location&apos;],
                             statusCode: res.statusCode
                         });
-                    } else {                       
+                    } else {
                         defer.reject({
                             errors: res.errors,
                             statusCode: res.statusCode
@@ -521,7 +520,7 @@ class WrapperBuilder {
     }
 
     _checkExists() {
-        return this._ogapi.Napi.get(this._urlWithKey()).then(function (response) {
+        return this._ogapi.Napi.get(this._urlWithKey()).then(function(response) {
             return response.statusCode === HttpStatus.OK
         }).catch((err) =&gt; {
             console.warn(err);
@@ -636,6 +635,27 @@ export default class DeviceBuilder extends ComplexBuilder {
 
     _getEntityKey() {
         return this._entity[ID];
+    }
+
+    initFromFlattened(_flattenedEntityData) {
+        let _this = this;
+        if (_flattenedEntityData &amp;&amp; Object.keys(_flattenedEntityData).length &gt; 0) {
+            Object.keys(_flattenedEntityData).forEach(function(_id) {
+                if (_id.toLowerCase().startsWith(&quot;provision&quot;)) {
+                    var _content = _flattenedEntityData[_id];
+
+                    if (_content.forEach) {
+                        _content.forEach(function(_relation) {
+                            if (_relation._index.value &amp;&amp; _relation._value &amp;&amp; _relation._value._current) {
+                                _this.withComplex(_id, _relation._index.value._current.value, _relation._value._current.value);
+                            }
+                        });
+                    } else {
+                        _this.with(_id, _content._value._current.value);
+                    }
+                }
+            });
+        }
     }
 }</code></pre>
 

@@ -249,19 +249,42 @@ export default class ComplexBuilder extends SimpleBuilder {
         }
         if (!this._entity[_id])
             this._entity[_id] = [];
-        this._entity[_id].push({
-            &apos;_index&apos;: {
-                &apos;value&apos;: idCommunicationModules
-            },
-            &apos;_value&apos;: {
-                &apos;_current&apos;: {
-                    &apos;value&apos;: val
-                }
+
+        let _found = false;
+
+        for (let _idx = 0; _idx &lt; this._entity[_id].length; _idx++) {
+            let _rel = this._entity[_id][_idx];
+            if (_rel._index &amp;&amp; _rel._index.value &amp;&amp; _rel._index.value === idCommunicationModules) {
+                this._entity[_id][_idx] = {
+                    &apos;_index&apos;: {
+                        &apos;value&apos;: idCommunicationModules
+                    },
+                    &apos;_value&apos;: {
+                        &apos;_current&apos;: {
+                            &apos;value&apos;: val
+                        }
+                    }
+                };
+
+                _found = true;
             }
-        });
+        }
+
+        if (!_found) {
+            this._entity[_id].push({
+                &apos;_index&apos;: {
+                    &apos;value&apos;: idCommunicationModules
+                },
+                &apos;_value&apos;: {
+                    &apos;_current&apos;: {
+                        &apos;value&apos;: val
+                    }
+                }
+            });
+        }
+
         return this;
     }
-
 }</code></pre>
 
 </div>
