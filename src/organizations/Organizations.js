@@ -1,6 +1,6 @@
 'use strict';
 
-import BaseProvision from '../provision/BaseProvision'
+import BaseProvision from '../provision/BaseProvision';
 
 /**
  * This is a base object that contains all you can do about Organizations.
@@ -34,21 +34,21 @@ export default class Organizations extends BaseProvision {
     }
 
     /**
-     * Set the domains array
-     * @param {string[]} domains - required field
+     * Set the parent domain
+     * @param {string} domain
      * @return {Organizations}
      */
-    withDomains(domains) {
-            if (domains.constructor !== Array || domains.length === 0)
-                throw new Error('Parameter domains must be a string array, cannot be empty');
-            this._domains = domains;
-            return this;
-        }
-        /**
-         * Set the description attribute
-         * @param {string} description 
-         * @return {Organizations}
-         */
+    withDomain(domain) {
+        if (typeof domain !== 'string' || domain.length > 50)
+            throw new Error('Parameter domain must be a string and has a maximum length of 50');
+        this._domain = domain;
+        return this;
+    }
+    /**
+     * Set the description attribute
+     * @param {string} description 
+     * @return {Organizations}
+     */
     withDescription(description) {
         if (typeof description !== 'string' || description.length > 250)
             throw new Error('Parameter description must be a string and has a maximum length of 250');
@@ -186,18 +186,21 @@ export default class Organizations extends BaseProvision {
             }
         };
 
-        if (this._domains) {
-            updateData.organization.domains = this._domains;
+        if (this._domain) {
+            updateData.organization.domain = this._domain;
         }
 
         if (_mapDefault.zoom || _mapDefault.location) {
-            updateData.organization['mapDefault'] = _mapDefault;
+            updateData.organization.mapDefault = _mapDefault;
         }
 
         return updateData;
     }
 
     _composeUpdateElement() {
+        if (this._domain) {
+            throw new Error('The domain parameter is not allowed in the update');
+        }
         let organization = this._composeElement();
         delete organization.organization.name;
         return organization;
@@ -205,10 +208,11 @@ export default class Organizations extends BaseProvision {
 
     _buildURL() {
         if (this._name === undefined)
-            throw new Error('Parameters name must be defined');
+            throw new Error('Parameter name must be defined');
         let url = this._resource + "/" + this._name;
 
         return url;
 
     }
+
 }

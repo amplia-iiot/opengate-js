@@ -1,5 +1,5 @@
 module.exports = {
-    setters: function(setter) {
+    setters: function (setter) {
         return {
             'certificate': {
                 'id': 'withId'
@@ -8,7 +8,8 @@ module.exports = {
                 'email': 'withEmail'
             },
             'organization': {
-                'name': 'withName'
+                'name': 'withName',
+                'domain': 'withDomain'
             },
             'bundle': {
                 'name': 'withName',
@@ -18,19 +19,22 @@ module.exports = {
                 'identifier': 'withIdentifier',
                 'organization': 'withOrganization'
             },
-            'bulkEntities':{
+            'bulkEntities': {
                 'organization': 'withOrganization'
-
+            },
+            'domain': {
+                'name': 'withName'
             }
         }[setter];
     },
-    methods: function(method) {
+    methods: function (method) {
         return {
             'certificate': 'withId',
             'user': 'withEmail',
             'organization': 'withName',
             'bundle': 'withVersion',
-            'area': 'withIdentifier'
+            'area': 'withIdentifier',
+            'domain': 'withDomain'
         }[method];
     }
 };
