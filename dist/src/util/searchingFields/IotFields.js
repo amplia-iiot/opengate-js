@@ -22,7 +22,7 @@ var IOT_FIELDS = {
         "USER": ["user.email", "user.description", "workgroup.name", "domain.name", "profile.name", "user.name", "user.surname", "country.code", "language.code"]
     },
     "DOMAIN": {
-        "DOMAIN": []
+        "DOMAIN": ["domain.name", "domain.description"]
     },
     "GENERAL": {
         "GENERAL": []

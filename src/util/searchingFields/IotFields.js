@@ -192,7 +192,10 @@ export const IOT_FIELDS = {
         ]
     },
     "DOMAIN": {
-        "DOMAIN": []
+        "DOMAIN": [
+            "domain.name",
+            "domain.description"
+        ]
     },
     "GENERAL": {
         "GENERAL": []

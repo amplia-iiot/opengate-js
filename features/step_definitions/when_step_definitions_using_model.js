@@ -168,7 +168,7 @@ module.exports = function () {
                     fields.forEach(function (field) {
                         pArray.push(findFields(field + "."));
                     });
-                    
+
                     return q.all(pArray);
                 }).catch(function (err) {
                     assert.strictEqual(true, false);
@@ -287,8 +287,7 @@ module.exports = function () {
                 for (var i = 0; i < data.length; i++) {
                     if (data[i].typeFunction === 'simple') {
                         this.util.with(data[i].datastream, data[i].value);
-                    }
-                    else if (data[i].typeFunction === 'complex') {
+                    } else if (data[i].typeFunction === 'complex') {
                         this.util.withComplex(data[i].datastream, data[i].parent, data[i].value);
                     }
 
