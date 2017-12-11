@@ -1,5 +1,5 @@
 module.exports = {
-    setters: function(setter) {
+    setters: function (setter) {
         return {
             'user': {
                 'email': 'withEmail',
@@ -22,7 +22,8 @@ module.exports = {
                 'zoom': 'withZoom',
                 'location': 'withLocation',
                 'plan': 'withPlan',
-                'only assigned domain certificates': 'withOnlyAssignedDomainCertificates'
+                'only assigned domain certificates': 'withOnlyAssignedDomainCertificates',
+                'domain': 'withDomain'
             },
             'certificate': {
                 'id': 'withId',
@@ -351,14 +352,14 @@ module.exports = {
                 'geometry': 'withGeometry',
                 'entities': 'withEntities'
             },
-            'bulkEntities':{
+            'bulkEntities': {
                 'organization': 'withOrganization'
 
             }
 
         }[setter];
     },
-    getter_response: function(getter) {
+    getter_response: function (getter) {
         return {
             'user email': '/email',
             'organization name': '/name'

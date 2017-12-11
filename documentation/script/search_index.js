@@ -2365,13 +2365,13 @@ window.esdocSearchIndex = [
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder,internalopengateapi#communicationsmodulessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber76",
+    "test-file/client/searching/search.spec.js.html#lineNumber136",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: communicationsModulesSearchBuilder",
     "test"
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder,internalopengateapi#communicationsmodulessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber136",
+    "test-file/client/searching/search.spec.js.html#lineNumber76",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: communicationsModulesSearchBuilder",
     "test"
   ],
@@ -2389,13 +2389,13 @@ window.esdocSearchIndex = [
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriberssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber68",
+    "test-file/client/searching/search.spec.js.html#lineNumber128",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder",
     "test"
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriberssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber128",
+    "test-file/client/searching/search.spec.js.html#lineNumber68",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder",
     "test"
   ],
@@ -5952,9 +5952,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/organizations/organizations.js~organizations#withdomains",
-    "class/src/organizations/Organizations.js~Organizations.html#instance-method-withDomains",
-    "src/organizations/Organizations.js~Organizations#withDomains",
+    "src/organizations/organizations.js~organizations#withdomain",
+    "class/src/organizations/Organizations.js~Organizations.html#instance-method-withDomain",
+    "src/organizations/Organizations.js~Organizations#withDomain",
     "method"
   ],
   [

@@ -1,7 +1,7 @@
 'use strict';
 
 import q from 'q';
-import BaseProvision from '../provision/BaseProvision'
+import BaseProvision from '../provision/BaseProvision';
 
 /**
  * This is a base object that contains all you can do about Bundles.
@@ -71,6 +71,7 @@ export default class Domains extends BaseProvision {
     }
 
     _buildURL() {
+        /*jshint -W117 */
         console.log("RESOURCE: " + this._resource);
         console.log("NAME: " + this._name);
         var url = this._resource + '/' + this._name;

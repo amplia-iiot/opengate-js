@@ -24,7 +24,9 @@ module.exports = function () {
                     if (!_this.responseData.data.id)
                         _this.responseData.data["id"] = data.id
                 } else {
-                    _this.responseData["data"] = { id: data.id };
+                    _this.responseData["data"] = {
+                        id: data.id
+                    };
                 }
             }
             if (location && !_this.responseData.location) {
@@ -101,7 +103,11 @@ module.exports = function () {
         _this.error = undefined;
 
         function digestResponseData(response) {
-            _this.responseData = { data: response.data[0], statusCode: response.statusCode, location: undefined };
+            _this.responseData = {
+                data: response.data[0],
+                statusCode: response.statusCode,
+                location: undefined
+            };
         }
 
         function digestErrorData(error) {
@@ -187,7 +193,13 @@ module.exports = function () {
             else if (this.responseData[1])
                 data = this.responseData[1];
             var jobId = data.id;
-            this.build = this.util.onDevices().filter({ "and": [{ "like": { "job.id": jobId } }] }).build();
+            this.build = this.util.onDevices().filter({
+                "and": [{
+                    "like": {
+                        "job.id": jobId
+                    }
+                }]
+            }).build();
         } catch (err) {
             this.error = err;
             throw err;
@@ -211,7 +223,7 @@ module.exports = function () {
     this.When(/^I add a filter and with$/, function (table, callback) {
         this.error = undefined;
         var _this = this;
-        
+
         try {
             var filterBuilder = this.ogapi.newFilterBuilder();
             var data = table.hashes();
@@ -241,7 +253,7 @@ module.exports = function () {
             if (data.length > 0) {
                 for (var i = 0; i < data.length; i++) {
                     var element = data[i];
-                    var selectElement = _this.ogapi.SE.element(element.datastreamId , JSON.parse(element.fields), element.alias);
+                    var selectElement = _this.ogapi.SE.element(element.datastreamId, JSON.parse(element.fields), element.alias);
                     selectBuilder = selectBuilder.add(selectElement);
                 }
             }
@@ -612,39 +624,39 @@ module.exports = function () {
     });
 
     this.When(/^I delete it all$/, function () {
-        
-                var _this = this;
-                _this.error = undefined;
-                _this.responseData = undefined;
-        
-                function catchResponse(data) {
-                    //console.log("OK");
-                    //console.log(JSON.stringify(data));
-                    _this.responseData = data;
-                    _this.error = undefined;
-                    //console.log(data);
-                }
-        
-                function catchErrorResponse(err) {
-                    //console.log("NOK");
-                    //console.log(JSON.stringify(err));
-                    _this.responseData = err;
-                    _this.error = err;
-                }
-        
-                try {
-                    //console.log("location:" + location);
-                    //console.log("this.location:" + _this.location);
-                    return _this.util.deleteAll().then(catchResponse).catch(catchErrorResponse);
-        
-                } catch (err) {
-                    //console.error(err);
-                    _this.responseData = err;
-                    _this.error = err;
-                    //this.expect(this.error).to.be.undefined;
-                    return;
-                }
-            });
+
+        var _this = this;
+        _this.error = undefined;
+        _this.responseData = undefined;
+
+        function catchResponse(data) {
+            //console.log("OK");
+            //console.log(JSON.stringify(data));
+            _this.responseData = data;
+            _this.error = undefined;
+            //console.log(data);
+        }
+
+        function catchErrorResponse(err) {
+            //console.log("NOK");
+            //console.log(JSON.stringify(err));
+            _this.responseData = err;
+            _this.error = err;
+        }
+
+        try {
+            //console.log("location:" + location);
+            //console.log("this.location:" + _this.location);
+            return _this.util.deleteAll().then(catchResponse).catch(catchErrorResponse);
+
+        } catch (err) {
+            //console.error(err);
+            _this.responseData = err;
+            _this.error = err;
+            //this.expect(this.error).to.be.undefined;
+            return;
+        }
+    });
 
     this.When(/^I update it$/, function () {
         var _this = this;
@@ -654,6 +666,7 @@ module.exports = function () {
         function catchResponse(data) {
             _this.responseData = data;
             _this.error = undefined;
+            //console.log(JSON.stringify(_this.data));
         }
 
         function catchErrorResponse(err) {
@@ -750,7 +763,9 @@ module.exports = function () {
 
     this.Given(/^I can found "([^"]*)" as datastream name$/, function (dsName, callback) {
         // Write code here that turns the phrase above into concrete actions
-        if (this.responseData.filter(function (item) { return item.identifier === dsName }).length === 0) {
+        if (this.responseData.filter(function (item) {
+                return item.identifier === dsName;
+            }).length === 0) {
             throw new Error('Datastream not found. DSName:' + dsName);
         }
         callback();

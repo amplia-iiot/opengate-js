@@ -57,15 +57,15 @@ var Organizations = (function (_BaseProvision) {
         }
 
         /**
-         * Set the domains array
-         * @param {string[]} domains - required field
+         * Set the parent domain
+         * @param {string} domain
          * @return {Organizations}
          */
     }, {
-        key: 'withDomains',
-        value: function withDomains(domains) {
-            if (domains.constructor !== Array || domains.length === 0) throw new Error('Parameter domains must be a string array, cannot be empty');
-            this._domains = domains;
+        key: 'withDomain',
+        value: function withDomain(domain) {
+            if (typeof domain !== 'string' || domain.length > 50) throw new Error('Parameter domain must be a string and has a maximum length of 50');
+            this._domain = domain;
             return this;
         }
 
@@ -220,12 +220,12 @@ var Organizations = (function (_BaseProvision) {
                 }
             };
 
-            if (this._domains) {
-                updateData.organization.domains = this._domains;
+            if (this._domain) {
+                updateData.organization.domain = this._domain;
             }
 
             if (_mapDefault.zoom || _mapDefault.location) {
-                updateData.organization['mapDefault'] = _mapDefault;
+                updateData.organization.mapDefault = _mapDefault;
             }
 
             return updateData;
@@ -233,6 +233,9 @@ var Organizations = (function (_BaseProvision) {
     }, {
         key: '_composeUpdateElement',
         value: function _composeUpdateElement() {
+            if (this._domain) {
+                throw new Error('The domain parameter is not allowed in the update');
+            }
             var organization = this._composeElement();
             delete organization.organization.name;
             return organization;
@@ -240,7 +243,7 @@ var Organizations = (function (_BaseProvision) {
     }, {
         key: '_buildURL',
         value: function _buildURL() {
-            if (this._name === undefined) throw new Error('Parameters name must be defined');
+            if (this._name === undefined) throw new Error('Parameter name must be defined');
             var url = this._resource + "/" + this._name;
 
             return url;

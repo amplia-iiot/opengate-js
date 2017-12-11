@@ -213,7 +213,7 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
 import q from &apos;q&apos;;
-import BaseProvision from &apos;../provision/BaseProvision&apos;
+import BaseProvision from &apos;../provision/BaseProvision&apos;;
 
 /**
  * This is a base object that contains all you can do about Bundles.
@@ -283,6 +283,7 @@ export default class Domains extends BaseProvision {
     }
 
     _buildURL() {
+        /*jshint -W117 */
         console.log(&quot;RESOURCE: &quot; + this._resource);
         console.log(&quot;NAME: &quot; + this._name);
         var url = this._resource + &apos;/&apos; + this._name;

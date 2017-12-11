@@ -244,21 +244,22 @@ export default class DatapointsSearchBuilder extends SearchBuilder {
      * @return {DatapointsSearchBuilder} 
      */
     withDeviceId(deviceId) {
-            if (typeof deviceId !== &apos;string&apos;) {
-                throw new Error(&apos;Parameter deviceId must be a string&apos;);
-            }
-            this.fluentFilter.and(this._parent.EX.eq(&apos;datapoint.device&apos;, deviceId));
-            return this;
+        if (typeof deviceId !== &apos;string&apos;) {
+            throw new Error(&apos;Parameter deviceId must be a string&apos;);
         }
-        /**
-         * Set datastreamId to search
-         *
-         * @example
-         *	ogapi.datapointsSearchBuilder().withDeviceId(&apos;myDevice&apos;).build()
-         * @param {!string} datastreamId - Datastream.id of Datapoint
-         * @throws {Error} throw error when datastreamId is not typeof string
-         * @return {DatapointsSearchBuilder} 
-         */
+        this.fluentFilter.and(this._parent.EX.eq(&apos;datapoint.device&apos;, deviceId));
+        return this;
+    }
+
+    /**
+     * Set datastreamId to search
+     *
+     * @example
+     *	ogapi.datapointsSearchBuilder().withDeviceId(&apos;myDevice&apos;).build()
+     * @param {!string} datastreamId - Datastream.id of Datapoint
+     * @throws {Error} throw error when datastreamId is not typeof string
+     * @return {DatapointsSearchBuilder} 
+     */
     withDatastream(datastreamId) {
         if (typeof datastreamId !== &apos;string&apos;) {
             throw new Error(&apos;Parameter datastreamId must be a string&apos;);

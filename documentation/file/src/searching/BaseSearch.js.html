@@ -270,6 +270,10 @@ export default class BaseSearch {
         var promise = defered.promise;
         var filter = this._filter();
 
+        if (filter &amp;&amp; filter.limit) {
+            delete filter.limit;
+        }
+
         this._ogapi.Napi.post_csv(this._resource, filter, this._timeout)
             .then((response) =&gt; {
                 let resultQuery = response;
@@ -374,12 +378,12 @@ export default class BaseSearch {
         //Comenzamos con la carga asincrona
         this._loadData(resource)
             .then(
-            (response) =&gt; {
-                defered.resolve(response);
-            }, null,
-            (notify) =&gt; {
-                defered.notify(notify);
-            })
+                (response) =&gt; {
+                    defered.resolve(response);
+                }, null,
+                (notify) =&gt; {
+                    defered.notify(notify);
+                })
             .catch((error) =&gt; {
                 defered.reject(error);
             });

@@ -16,9 +16,9 @@ module.exports = function () {
         var ogapi = this.ogapi;
         var expect = this.expect;
         return ogapi.executionsSearchBuilder()[resourceFunction]().
-            filter(
+        filter(
             ogapi.newFilterBuilder().and(ogapi.EX.eq("jobId", jobId))
-            ).build().execute();
+        ).build().execute();
     }
 
     this.Then(/^response code should be: (\d+)$/, function (statusCode, callback) {
@@ -89,15 +89,15 @@ module.exports = function () {
         data = this.responseData.data;
         var jobId = data.id;
         return findOperationsByJobId.call(this, jobId, entityType).
-            then(function (response) {
-                var responseData = response.data;
-                var operationFound = responseData.operations.find(_findEntityIntoOperationsResponse, provCustomId);
-                expect(operationFound).to.exist;
+        then(function (response) {
+            var responseData = response.data;
+            var operationFound = responseData.operations.find(_findEntityIntoOperationsResponse, provCustomId);
+            expect(operationFound).to.exist;
 
-            }).
-            catch(function (err) {
-                expect(err).to.be.undefined;
-            });
+        }).
+        catch(function (err) {
+            expect(err).to.be.undefined;
+        });
     });
 
     this.Then(/^response must have attached an entity list with "([^"]*)" type defined by:$/, function (entityType, table) {
@@ -107,18 +107,18 @@ module.exports = function () {
         data = this.responseData.data;
         var jobId = data.id;
         return findOperationsByJobId.call(this, jobId, entityType).
-            then(function (response) {
-                var responseData = response.data;
-                for (var i = 0; i < table.raw().length; i++) {
-                    var provCustomId = table.raw()[i];
-                    var operationFound = responseData.operations.find(_findEntityIntoOperationsResponse, provCustomId);
-                    //console.info("Trying to find operation with entity <'" + provCustomId + "'>");
-                    expect(operationFound).to.exist;
-                }
-            }).
-            catch(function (err) {
-                expect(err).to.be.undefined;
-            });
+        then(function (response) {
+            var responseData = response.data;
+            for (var i = 0; i < table.raw().length; i++) {
+                var provCustomId = table.raw()[i];
+                var operationFound = responseData.operations.find(_findEntityIntoOperationsResponse, provCustomId);
+                //console.info("Trying to find operation with entity <'" + provCustomId + "'>");
+                expect(operationFound).to.exist;
+            }
+        }).
+        catch(function (err) {
+            expect(err).to.be.undefined;
+        });
     });
 
 
@@ -170,21 +170,30 @@ module.exports = function () {
         // Write code here that turns the phrase above into concrete actions
         var period = this.build._postObj.task.schedule.repeating.period;
         this.expect(period).to.be.an('object');
-        this.expect(period).to.deep.equal({ unit: "MINUTES", each: eval(minutes) })
+        this.expect(period).to.deep.equal({
+            unit: "MINUTES",
+            each: eval(minutes)
+        })
         callback();
     });
     this.Then(/^I can see into the post data a period by (\d+) hours/, function (hours, callback) {
         // Write code here that turns the phrase above into concrete actions
         var period = this.build._postObj.task.schedule.repeating.period;
         this.expect(period).to.be.an('object');
-        this.expect(period).to.deep.equal({ unit: "HOURS", each: eval(hours) })
+        this.expect(period).to.deep.equal({
+            unit: "HOURS",
+            each: eval(hours)
+        })
         callback();
     });
     this.Then(/^I can see into the post data a period by (\d+) days/, function (days, callback) {
         // Write code here that turns the phrase above into concrete actions
         var period = this.build._postObj.task.schedule.repeating.period;
         this.expect(period).to.be.an('object');
-        this.expect(period).to.deep.equal({ unit: "DAYS", each: eval(days) })
+        this.expect(period).to.deep.equal({
+            unit: "DAYS",
+            each: eval(days)
+        })
         callback();
     });
 
@@ -192,21 +201,30 @@ module.exports = function () {
         // Write code here that turns the phrase above into concrete actions
         var period = this.build._postObj.task.schedule.repeating.period;
         this.expect(period).to.be.an('object');
-        this.expect(period).to.deep.not.equal({ unit: "HOURS", each: eval(hours) })
+        this.expect(period).to.deep.not.equal({
+            unit: "HOURS",
+            each: eval(hours)
+        })
         callback();
     });
     this.Then(/^I can not see into the post data a period by (\d+) days/, function (days, callback) {
         // Write code here that turns the phrase above into concrete actions
         var period = this.build._postObj.task.schedule.repeating.period;
         this.expect(period).to.be.an('object');
-        this.expect(period).to.deep.not.equal({ unit: "DAYS", each: eval(days) })
+        this.expect(period).to.deep.not.equal({
+            unit: "DAYS",
+            each: eval(days)
+        })
         callback();
     });
     this.Then(/^I can not see into the post data a period by (\d+) minutes$/, function (minutes$, callback) {
         // Write code here that turns the phrase above into concrete actions
         var period = this.build._postObj.task.schedule.repeating.period;
         this.expect(period).to.be.an('object');
-        this.expect(period).to.deep.not.equal({ unit: "MINUTES", each: eval(minutes$) })
+        this.expect(period).to.deep.not.equal({
+            unit: "MINUTES",
+            each: eval(minutes$)
+        })
         callback();
     });
     this.Then(/^I can not see into the post data a period$/, function (callback) {
@@ -318,6 +336,7 @@ module.exports = function () {
     });
 
     this.Then(/^does not throws an error$/, function (callback) {
+        //console.log(this.error);
         this.expect(this.error).not.to.exist;
         callback();
     });
