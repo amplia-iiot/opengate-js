@@ -24,16 +24,16 @@ class BoxBuilder {
         this._url = url;
         this._ogapi = ogapi;
         this._key = key;
-        this._assetKeys = Object.keys(obj).filter(function (dsName) {
+        this._assetKeys = Object.keys(obj).filter(function(dsName) {
             return dsName.indexOf('subscriber') === -1 && dsName.indexOf('subscription') === -1;
         });
-        this._subscriberKeys = Object.keys(obj).filter(function (dsName) {
+        this._subscriberKeys = Object.keys(obj).filter(function(dsName) {
             return dsName.indexOf('subscriber') !== -1;
         });
-        this._subscriptionKeys = Object.keys(obj).filter(function (dsName) {
+        this._subscriptionKeys = Object.keys(obj).filter(function(dsName) {
             return dsName.indexOf('subscription') !== -1;
         });
-        this._administrationKeys = Object.keys(obj).filter(function (dsName) {
+        this._administrationKeys = Object.keys(obj).filter(function(dsName) {
             return dsName.indexOf('provision.administration') !== -1;
         });
         this._wrappers = [];
@@ -116,7 +116,7 @@ class BoxBuilder {
           }
 */
         q.allSettled(
-            childEntityPromises.reduce(function (previousValue, current) {
+            childEntityPromises.reduce(function(previousValue, current) {
                 previousValue.push(current.promise);
                 return previousValue;
             }, [])).then(() => {
@@ -227,7 +227,7 @@ class BoxBuilder {
         });
 
         q.allSettled(
-            childEntityPromises.reduce(function (previousValue, current) {
+            childEntityPromises.reduce(function(previousValue, current) {
                 previousValue.push(current.promise);
                 return previousValue;
             }, [])).then(() => {
@@ -300,7 +300,7 @@ class WrapperBuilder {
     }
 
     _checkExists() {
-        return this._ogapi.Napi.get(this._urlWithKey()).then(function (response) {
+        return this._ogapi.Napi.get(this._urlWithKey()).then(function(response) {
             return response.statusCode === HttpStatus.OK
         }).catch((err) => {
             console.warn(err);
@@ -415,5 +415,26 @@ export default class AssetBuilder extends ComplexBuilder {
 
     _getEntityKey() {
         return this._entity[ID];
+    }
+
+    initFromFlattened(_flattenedEntityData) {
+        let _this = this;
+        if (_flattenedEntityData && Object.keys(_flattenedEntityData).length > 0) {
+            Object.keys(_flattenedEntityData).forEach(function(_id) {
+                if (_id.toLowerCase().startsWith("provision")) {
+                    var _content = _flattenedEntityData[_id];
+
+                    if (_content.forEach) {
+                        _content.forEach(function(_relation) {
+                            if (_relation._index.value && _relation._value && _relation._value._current) {
+                                _this.withComplex(_id, _relation._index.value._current.value, _relation._value._current.value);
+                            }
+                        });
+                    } else {
+                        _this.with(_id, _content._value._current.value);
+                    }
+                }
+            });
+        }
     }
 }

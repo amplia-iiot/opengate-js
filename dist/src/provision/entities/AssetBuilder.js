@@ -456,6 +456,28 @@ var AssetBuilder = (function (_ComplexBuilder) {
         value: function _getEntityKey() {
             return this._entity[ID];
         }
+    }, {
+        key: 'initFromFlattened',
+        value: function initFromFlattened(_flattenedEntityData) {
+            var _this = this;
+            if (_flattenedEntityData && Object.keys(_flattenedEntityData).length > 0) {
+                Object.keys(_flattenedEntityData).forEach(function (_id) {
+                    if (_id.toLowerCase().startsWith("provision")) {
+                        var _content = _flattenedEntityData[_id];
+
+                        if (_content.forEach) {
+                            _content.forEach(function (_relation) {
+                                if (_relation._index.value && _relation._value && _relation._value._current) {
+                                    _this.withComplex(_id, _relation._index.value._current.value, _relation._value._current.value);
+                                }
+                            });
+                        } else {
+                            _this['with'](_id, _content._value._current.value);
+                        }
+                    }
+                });
+            }
+        }
     }]);
 
     return AssetBuilder;
