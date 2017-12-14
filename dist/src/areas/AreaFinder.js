@@ -53,25 +53,10 @@ var AreaFinder = (function (_ProvisionGenericFinder) {
             this._identifier = identifier;
             return this._execute();
         }
-
-        /**
-         * Download a lists areas by its organization. This execute a GET http method
-         * @test
-         *   ogapi.newAreaFinder().findByOrganization('orgname').then().catch();
-         * @param {string} organization - area organization .
-         * @return {Promise} 
-         */
-    }, {
-        key: 'findByOrganization',
-        value: function findByOrganization(organization) {
-            this._checkString(organization, 'organization');
-            this._organization = organization;
-            return this._execute();
-        }
     }, {
         key: '_composeUrl',
         value: function _composeUrl() {
-            return this._baseUrl + '/' + this._organization + '/areas' + (typeof this._identifier === 'string' ? '/' + this._identifier : '');
+            return this._baseUrl + '/' + this._organization + '/areas' + '/' + this._identifier;
         }
     }, {
         key: '_checkString',

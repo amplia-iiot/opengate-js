@@ -244,21 +244,8 @@ export default class AreaFinder extends ProvisionGenericFinder {
         return this._execute();
     }
 
-    /**
-     * Download a lists areas by its organization. This execute a GET http method
-     * @test
-     *   ogapi.newAreaFinder().findByOrganization(&apos;orgname&apos;).then().catch();
-     * @param {string} organization - area organization .
-     * @return {Promise} 
-     */
-    findByOrganization(organization) {
-        this._checkString(organization, &apos;organization&apos;);
-        this._organization = organization;
-        return this._execute();
-    }
-
     _composeUrl() {
-        return this._baseUrl + &apos;/&apos; + this._organization + &apos;/areas&apos; + (typeof this._identifier === &apos;string&apos; ? &apos;/&apos; + this._identifier : &apos;&apos;);
+        return this._baseUrl + &apos;/&apos; + this._organization + &apos;/areas&apos; + &apos;/&apos; + this._identifier;
     }
 
     _checkString(parameter, name) {
