@@ -43,6 +43,10 @@ export default class BulkBuilder extends BaseProvision {
         return this._executeOperation(rawFile, 'DELETE');
     }
 
+    deleteAll(rawFile) {
+        return this._executeOperation(rawFile, 'DELETE&full=true');
+    }
+
     update(rawFile) {
         return this._executeOperation(rawFile, 'UPDATE');
     }
@@ -68,8 +72,7 @@ export default class BulkBuilder extends BaseProvision {
         form.ext = this._extension;
 
         var petitionUrl = this._buildURL().replace("#actionName#", action);
-        this._ogapi.Napi.post_multipart(petitionUrl, form, {
-        }, this._timeout)
+        this._ogapi.Napi.post_multipart(petitionUrl, form, {}, this._timeout)
             .then((response) => {
                 let statusCode = response.statusCode;
                 if (statusCode === 200) {
