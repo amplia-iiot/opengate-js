@@ -339,27 +339,27 @@ Scenario: I want to separate the subscriber and the subscription from the device
     And I get allowed Datastreams fields    
     And I can found "provision.device.identifier" as datastream name
     When I try to define the entity with... 
-		    | datastream                                                        | typeFunction       |   value                         | parent      |
-		    | provision.administration.channel                                  | simple             |  default_channel                |             |
+		| datastream                                                        | typeFunction       |   value                         | parent      |
+	    | provision.administration.channel                                  | simple             |  default_channel                |             |
         | provision.administration.organization                             | simple             |  completeDevice_organization    |             |
         | provision.administration.serviceGroup                             | simple             |  emptyServiceGroup              |             |
-        | provision.device.identifier                                       | simple             |  complete_device_ogapi_Separate       |             |
+        | provision.device.identifier                                       | simple             |  complete_device_ogapi_Split    |             |
         | provision.device.operationalStatus                                | simple             |  NORMAL                         |             |   
         | provision.device.administrativeState                              | simple             |  ACTIVE                         |             |
-        | provision.device.communicationModules[].identifier                | complex            |  CM_Separate                    | CM_Separate    |
-        | provision.device.communicationModules[].subscriber.identifier     | complex            |  sbb_ogapi_SP_1                   | CM_Separate    |
-        | provision.device.communicationModules[].subscription.identifier   | complex            |  sbp_ogapi_SP_1                   | CM_Separate    |
+        | provision.device.communicationModules[].identifier                | complex            |  ComM_Separate                  | ComM_Separate    |
+        | provision.device.communicationModules[].subscriber.identifier     | complex            |  sbb_ogapi_SP_split             | ComM_Separate    |
+        | provision.device.communicationModules[].subscription.identifier   | complex            |  sbp_ogapi_SP_split             | ComM_Separate    |
     Then I create it
     And response code should be: 200
-  Given the entity of type "devices builder" with "completeDevice_organization" 
+    Given the entity of type "devices builder" with "completeDevice_organization" 
     And I get allowed Datastreams fields    
     And I can found "provision.device.identifier" as datastream name
     When I try to define the entity with... 
-		    | datastream                                                        | typeFunction       |   value                         | parent      |
-		    | provision.administration.channel                                  | simple             |  default_channel                |             |
+		| datastream                                                        | typeFunction       |   value                         | parent      |
+		| provision.administration.channel                                  | simple             |  default_channel                |             |
         | provision.administration.organization                             | simple             |  completeDevice_organization    |             |
         | provision.administration.serviceGroup                             | simple             |  emptyServiceGroup              |             |
-        | provision.device.identifier                                       | simple             |  complete_device_ogapi_Separate       |             |
+        | provision.device.identifier                                       | simple             |  complete_device_ogapi_Split    |             |
         | provision.device.operationalStatus                                | simple             |  NORMAL                         |             |   
         | provision.device.administrativeState                              | simple             |  ACTIVE                         |             |
 
@@ -367,6 +367,19 @@ Scenario: I want to separate the subscriber and the subscription from the device
     And response code should be: 200
     Then I delete it
     And response code should be: 200
+        Given the entity of type "subscribers builder" with "completeDevice_organization" 
+    When I try to define the entity with... 
+		| datastream                                                                   | typeFunction       |   value                              | parent      |
+        | provision.device.communicationModules[].subscriber.identifier                | simple             |  sbb_ogapi_SP_split           |             |
+    And I delete it
+    Then response code should be: 200
+    Given the entity of type "subscriptions builder" with "completeDevice_organization" 
+    When I try to define the entity with... 
+		| datastream                                                                      | typeFunction       |   value                     | parent      |
+        |  provision.device.communicationModules[].subscription.identifier                | simple             |  sbp_ogapi_SP_split         |             |
+    And I delete it
+    Then response code should be: 200
+
 
 @OGODM-3618
 Scenario: I want to associate the subscriber and the subscription from the device1 to device2
@@ -374,47 +387,59 @@ Scenario: I want to associate the subscriber and the subscription from the devic
     And I get allowed Datastreams fields    
     And I can found "provision.device.identifier" as datastream name
     When I try to define the entity with... 
-		    | datastream                                                        | typeFunction       |   value                         | parent      |
-		    | provision.administration.channel                                  | simple             |  default_channel                |             |
+		| datastream                                                        | typeFunction       |   value                         | parent      |
+		| provision.administration.channel                                  | simple             |  default_channel                |             |
         | provision.administration.organization                             | simple             |  completeDevice_organization    |             |
         | provision.administration.serviceGroup                             | simple             |  emptyServiceGroup              |             |
-        | provision.device.identifier                                       | simple             |  complete_device_ogapi_swap1    |             |
+        | provision.device.identifier                                       | simple             |  complete_device_ogapi_swap_1    |             |
         | provision.device.operationalStatus                                | simple             |  NORMAL                         |             |   
         | provision.device.administrativeState                              | simple             |  ACTIVE                         |             |
-        | provision.device.communicationModules[].identifier                | complex            |  CM_swap                        | CM_swap     |
-        | provision.device.communicationModules[].subscriber.identifier     | complex            |  sbb_ogapi_from                 | CM_swap     |
-        | provision.device.communicationModules[].subscription.identifier   | complex            |  sbp_ogapi_from                 | CM_swap     |
+        | provision.device.communicationModules[].identifier                | complex            |  CM_swap_1                        | CM_swap_1     |
+        | provision.device.communicationModules[].subscriber.identifier     | complex            |  sbb_ogapi_from_1                 | CM_swap_1     |
+        | provision.device.communicationModules[].subscription.identifier   | complex            |  sbp_ogapi_from_1                 | CM_swap_1     |
     Then I create it
     And response code should be: 200
     Given the entity of type "devices builder" with "completeDevice_organization" 
     And I get allowed Datastreams fields    
     And I can found "provision.device.identifier" as datastream name
     When I try to define the entity with... 
-		    | datastream                                                        | typeFunction       |   value                         | parent      |
-		    | provision.administration.channel                                  | simple             |  default_channel                |             |
+		| datastream                                                        | typeFunction       |   value                         | parent      |
+		| provision.administration.channel                                  | simple             |  default_channel                |             |
         | provision.administration.organization                             | simple             |  completeDevice_organization    |             |
         | provision.administration.serviceGroup                             | simple             |  emptyServiceGroup              |             |
-        | provision.device.identifier                                       | simple             |  complete_device_ogapi_swap1    |             |
+        | provision.device.identifier                                       | simple             |  complete_device_ogapi_swap_1    |             |
         | provision.device.operationalStatus                                | simple             |  NORMAL                         |             |   
         | provision.device.administrativeState                              | simple             |  ACTIVE                         |             |
     Then I update it
     And response code should be: 200
+     Given the entity of type "devices builder" with "completeDevice_organization" 
+    And I get allowed Datastreams fields    
+    And I can found "provision.device.identifier" as datastream name
+    When I try to define the entity with... 
+		| datastream                                                        | typeFunction       |   value                         | parent      |
+		| provision.administration.channel                                  | simple             |  default_channel                |             |
+        | provision.administration.organization                             | simple             |  completeDevice_organization    |             |
+        | provision.administration.serviceGroup                             | simple             |  emptyServiceGroup              |             |
+        | provision.device.identifier                                       | simple             |  complete_device_ogapi_swap_1   |             |
+    Then I delete it
+ And response code should be: 200
     Given the entity of type "devices builder" with "completeDevice_organization" 
     And I get allowed Datastreams fields    
     And I can found "provision.device.identifier" as datastream name
     When I try to define the entity with... 
-		    | datastream                                                        | typeFunction       |   value                         | parent      |
-		    | provision.administration.channel                                  | simple             |  default_channel                |             |
+		| datastream                                                        | typeFunction       |   value                         | parent      |
+		| provision.administration.channel                                  | simple             |  default_channel                |             |
         | provision.administration.organization                             | simple             |  completeDevice_organization    |             |
         | provision.administration.serviceGroup                             | simple             |  emptyServiceGroup              |             |
-        | provision.device.identifier                                       | simple             |  complete_device_ogapi_swap2    |             |
+        | provision.device.identifier                                       | simple             |  complete_device_ogapi_swap_2    |             |
         | provision.device.operationalStatus                                | simple             |  NORMAL                         |             |   
         | provision.device.administrativeState                              | simple             |  ACTIVE                         |             |
-        | provision.device.communicationModules[].identifier                | complex            |  CM_swap2                       | CM_swap2    |
-        | provision.device.communicationModules[].subscriber.identifier     | complex            |  sbb_ogapi_from                 | CM_swap2    |
-        | provision.device.communicationModules[].subscription.identifier   | complex            |  sbp_ogapi_from                 | CM_swap2    |
+        | provision.device.communicationModules[].identifier                | complex            |  CM_swap_2                       | CM_swap_2    |
+        | provision.device.communicationModules[].subscriber.identifier     | complex            |  sbb_ogapi_from_1                 | CM_swap_2    |
+        | provision.device.communicationModules[].subscription.identifier   | complex            |  sbp_ogapi_from_1                 | CM_swap_2    |
     Then I create it
     And response code should be: 200
+    Then I delete it all
 
 
 Scenario: I want to associate the subscriber from the device1 to device2
@@ -429,23 +454,24 @@ Scenario: I want to associate the subscriber from the device1 to device2
         | provision.device.identifier                                       | simple             |  complete_device_ogapi_bug1    |             |
         | provision.device.operationalStatus                                | simple             |  NORMAL                         |             |   
         | provision.device.administrativeState                              | simple             |  ACTIVE                         |             |
-        | provision.device.communicationModules[].identifier                | complex            |  CM_swap                        | CM_swap     |
-        | provision.device.communicationModules[].subscriber.identifier     | complex            |  sbb_ogapi_from_2                 | CM_swap     |
+        | provision.device.communicationModules[].identifier                | complex            |  CM_swap_b1                        | CM_swap_b1     |
+        | provision.device.communicationModules[].subscriber.identifier     | complex            |  sbb_ogapi_from_d1                 | CM_swap_b1     |
     Then I create it
+    And response code should be: 200
     Given the entity of type "devices builder" with "completeDevice_organization" 
     And I get allowed Datastreams fields    
     And I can found "provision.device.identifier" as datastream name
     When I try to define the entity with... 
-		    | datastream                                                        | typeFunction       |   value                         | parent      |
-		    | provision.administration.channel                                  | simple             |  default_channel                |             |
+		| datastream                                                        | typeFunction       |   value                         | parent      |
+		| provision.administration.channel                                  | simple             |  default_channel                |             |
         | provision.administration.organization                             | simple             |  completeDevice_organization    |             |
         | provision.administration.serviceGroup                             | simple             |  emptyServiceGroup              |             |
         | provision.device.identifier                                       | simple             |  complete_device_ogapi_bug2    |             |
         | provision.device.operationalStatus                                | simple             |  NORMAL                         |             |   
         | provision.device.administrativeState                              | simple             |  ACTIVE                         |             |
-        | provision.device.communicationModules[].identifier                | complex            |  CM_swap2                       | CM_swap2    |
-        | provision.device.communicationModules[].subscriber.identifier     | complex            |  sbb_ogapi_from_2                 | CM_swap2    |
-        | provision.device.communicationModules[].subscription.identifier   | complex          |  sbp_ogapi_from_2                 | CM_swap2    |
+        | provision.device.communicationModules[].identifier                | complex            |  CM_swap_3                       | CM_swap_3    |
+        | provision.device.communicationModules[].subscriber.identifier     | complex            |  sbb_ogapi_from_d1                 | CM_swap_3    |
+        | provision.device.communicationModules[].subscription.identifier   | complex            |  sbp_ogapi_from_2                 | CM_swap_3    |
 
     Then I create it
     And response code should be: 400
@@ -458,9 +484,11 @@ Scenario: I want to associate the subscriber from the device1 to device2
         | provision.administration.organization                             | simple             |  completeDevice_organization    |             |
         | provision.device.identifier                                       | simple             |  complete_device_ogapi_bug1    |             |
     Then I delete it all
+     And response code should be: 200
 
-Scenario: Deleting an organization to use in the feature
-    Given an ogapi "organizations builder" util
-    Then I want to delete an "organization"
-    And the "name" "completeDevice_organization"
-    Then I delete it
+  Scenario: Deleting an organization to use in the feature
+      Given an ogapi "organizations builder" util
+      Then I want to delete an "organization"
+      And the "name" "completeDevice_organization"
+      Then I delete it
+  

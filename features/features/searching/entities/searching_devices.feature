@@ -84,8 +84,8 @@ Scenario: I want to download csv
     Then does not throws an error
     Then the content of file "search.csv" must be:
     """
-provision.administration.channel;provision.administration.identifier;provision.administration.organization;state.value
-base_channel;device_ogapi_0;devices_organization_searching;ACTIVE
+provision.administration.channel.value;provision.administration.identifier.value;provision.administration.organization.value;state.value
+default_channel;device_ogapi_0;devices_organization_searching;ACTIVE
 
     """
 
