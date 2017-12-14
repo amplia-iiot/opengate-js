@@ -334,7 +334,6 @@ Feature: Delete and Create a device
     And response code should be: 200
 
 @OGODM-3618
-@ignore
 Scenario: I want to separate the subscriber and the subscription from the device
     Given the entity of type "devices builder" with "completeDevice_organization" 
     And I get allowed Datastreams fields    
@@ -370,7 +369,6 @@ Scenario: I want to separate the subscriber and the subscription from the device
     And response code should be: 200
 
 @OGODM-3618
-@ignore
 Scenario: I want to associate the subscriber and the subscription from the device1 to device2
     Given the entity of type "devices builder" with "completeDevice_organization" 
     And I get allowed Datastreams fields    

@@ -3,6 +3,7 @@
 @finder
 @find_provision
 @area
+@find_area
 Feature: Find an area
   As a user of JsApi
   I want to find an area
@@ -11,9 +12,9 @@ Feature: Find an area
   Background:
     Given an apikey user by "require-real-apikey"
 
-Scenario: Creating an organization to use in areas tests
-  Given an ogapi "organizations builder" util
-   Then I want to create an "organization"
+  Scenario: Creating an organization to use in areas tests
+    Given an ogapi "organizations builder" util
+    Then I want to create an "organization"
     And the "name" "area_organization"
     And the "description" "area organization"
     And the "country code" "ES"
@@ -21,10 +22,10 @@ Scenario: Creating an organization to use in areas tests
     And the "time zone" "Europe/Andorra"
     And the "zoom" 10
     And the "location" with 1 and 1 
-   Then I create it
+    Then I create it
     And response code should be: 201
   
-Scenario: Create a area that does not exist
+  Scenario: Create a area that does not exist
     And an ogapi "areas builder" util 
     And I want to create an "area"
     And the "organization" "area_organization"
@@ -50,7 +51,7 @@ Scenario: Create a area that does not exist
     Then I can see into the result an "area name" as "mock_area"
 
   Scenario: Find a area that not exists
- And an ogapi "area finder" util
+    And an ogapi "area finder" util
     And I want to read an "area"
  	When I try to find by... 
   	| field   | content            |
@@ -58,36 +59,19 @@ Scenario: Create a area that does not exist
  	  | identifier    | mock_area_not_exists |
     Then response code should be: 404  
 
-  Scenario: Find areas by organization
-  And an ogapi "area finder" util
-    And I want to read an "area"
-    When I try to find by...
-      | field  | content                |
-      | organization   | area_organization |
-    Then response code should be: 200  
-
-Scenario: Find areas by organization that not exists
-And an ogapi "area finder" util
-    And I want to read an "area"
-    When I try to find by...
-      | field  | content                |
-      | organization   | area_organization_not_exists |
-    Then response code should be: 404  
-
-
 Scenario: Delete a area that 
     And an ogapi "areas builder" util 
     And I want to delete an "area"
     And the "organization" "area_organization"
     And the "identifier" "mock_area"
     And I delete it
-   Then response code should be: 200
+    Then response code should be: 200
 
   Scenario: Deleting an organization
-  Given an ogapi "organizations builder" util
-   Then I want to delete an "organization"
+    Given an ogapi "organizations builder" util
+    Then I want to delete an "organization"
     And the "name" "area_organization"
-   Then I delete it
+    Then I delete it
     And response code should be: 200
 
 

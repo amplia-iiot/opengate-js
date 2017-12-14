@@ -65,7 +65,6 @@ Feature: Send messages
     Then I create it
     And response code should be: 201
 
-@ignore
  Scenario: Create a Dmm message 
    Given the "version" "1.0.1"
    And the "id" "device_ogapi_msg"
