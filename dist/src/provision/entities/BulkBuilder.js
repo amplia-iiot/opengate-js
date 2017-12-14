@@ -71,6 +71,11 @@ var BulkBuilder = (function (_BaseProvision) {
             return this._executeOperation(rawFile, 'DELETE');
         }
     }, {
+        key: 'deleteAll',
+        value: function deleteAll(rawFile) {
+            return this._executeOperation(rawFile, 'DELETE&full=true');
+        }
+    }, {
         key: 'update',
         value: function update(rawFile) {
             return this._executeOperation(rawFile, 'UPDATE');
