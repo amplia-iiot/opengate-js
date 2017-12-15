@@ -81,7 +81,7 @@ var EntityBuilder = (function () {
             var f = _this._ogapi.newFilterBuilder();
             f.and({
                 "like": {
-                    'datamodels.categories.datastreams.name': 'provision'
+                    'datamodels.categories.datastreams.identifier': 'provision'
                 }
             }).and({
                 "eq": {
