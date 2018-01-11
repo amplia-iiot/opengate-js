@@ -36,7 +36,7 @@ export default class CommsModuleMessage {
      */
     withId(id) {
         if (typeof id !== 'string')
-            throw new Error('Parameter id must be a string');
+            throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'id' });
         this._id = id;
         return this;
     }
@@ -49,28 +49,28 @@ export default class CommsModuleMessage {
      */
     withName(name) {
         if (typeof name !== 'string')
-            throw new Error('Parameter name must be a string');
+            throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'name' });
         this._name = name;
         return this;
     }
 
     /**
-    * Set the type attribute
-    * @param {string} type - optional field
-    * @return {CommsModule}
-    */
+     * Set the type attribute
+     * @param {string} type - optional field
+     * @return {CommsModule}
+     */
     withType(type) {
         if (typeof type !== 'string')
-            throw new Error('Parameter type must be a string');
+            throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'type' });
         this._type = type;
         return this;
     }
 
     /**
- * Set the hardware attribute
- * @param {Hardware} hardware - optionals field
- * @return {CommsModule}
- */
+     * Set the hardware attribute
+     * @param {Hardware} hardware - optionals field
+     * @return {CommsModule}
+     */
     withHardware(hardware) {
         if (!(hardware instanceof Hardware)) {
             throw new Error('Parameter hardware must be hardware type');
@@ -80,17 +80,17 @@ export default class CommsModuleMessage {
     }
 
     /**
- * Set the operationalStatus attribute
- * @param {string} operationalStatus 
- * @return {CommsModule}
- */
+     * Set the operationalStatus attribute
+     * @param {string} operationalStatus 
+     * @return {CommsModule}
+     */
     withOperationalStatus(operationalStatus) {
 
         let operationalStatusBuilder = this._ogapi.operationalStatusSearchBuilder()
             .withEntityType("COMMUNICATIONS_MODULE").withId(operationalStatus).build();
 
         operationalStatusBuilder.execute().then(
-            function (res) {
+            function(res) {
                 if (res.statusCode === 204) {
                     throw new Error("Operational Status not found");
                 }
@@ -175,7 +175,7 @@ export default class CommsModuleMessage {
 
     _checkValues(value, enumName) {
         let not_found = [];
-        let found = enumName.find(function (value) {
+        let found = enumName.find(function(value) {
             return value == this;
         }, value);
 

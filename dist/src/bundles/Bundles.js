@@ -54,7 +54,7 @@ var Bundles = (function (_BaseProvision) {
     _createClass(Bundles, [{
         key: 'withName',
         value: function withName(name) {
-            if (typeof name !== 'string' || name.length > 255) throw new Error('Parameter name must be a string and has a maximum length of 255');
+            if (typeof name !== 'string' || name.length > 255) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_255", parameter: 'name' });
             this._name = name;
             return this;
         }
@@ -67,7 +67,7 @@ var Bundles = (function (_BaseProvision) {
     }, {
         key: 'withVersion',
         value: function withVersion(version) {
-            if (typeof version !== 'string' || version.length > 50) throw new Error('Parameter version must be a string and has a maximum length of 50');
+            if (typeof version !== 'string' || version.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'version' });
             this._version = version;
             return this;
         }
@@ -106,7 +106,7 @@ var Bundles = (function (_BaseProvision) {
     }, {
         key: 'withDescription',
         value: function withDescription(description) {
-            if (typeof description !== 'string' || description.length > 250) throw new Error('Parameter description must be a string and has a maximum length of 250');
+            if (typeof description !== 'string' || description.length > 250) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250", parameter: 'description' });
             this._description = description;
             return this;
         }
@@ -176,7 +176,7 @@ var Bundles = (function (_BaseProvision) {
     }, {
         key: 'withUserNotes',
         value: function withUserNotes(userNotes) {
-            if (typeof userNotes !== 'string' || userNotes.length > 250) throw new Error('Parameter notes must be a string and has a maximum length of 250');
+            if (typeof userNotes !== 'string' || userNotes.length > 250) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250", parameter: 'notes' });
             this._userNotes = userNotes;
             return this;
         }
@@ -341,12 +341,8 @@ var Bundles = (function (_BaseProvision) {
                     }
                 }
 
-                //console.log(totalTB);
                 if (totalTB > 1) {
-                    //console.log("Only one TRUSTED_BOOT validator allowed in bundle");
-                    throw new Error("Only one TRUSTED_BOOT validator allowed in bundle");
-                    //defered.reject("Only one TRUSTED_BOOT validator allowed in bundle");
-                    //return promise;
+                    throw new Error("OGAPI_422_ONE_TRUSTED_BOOT_ALLOWED");
                 }
             }
 
@@ -367,19 +363,14 @@ var Bundles = (function (_BaseProvision) {
                                 Promise.all(dePromises).then(function () {
                                     if (_this._allPromisesOk) {
 
-                                        //console.log("activando");
                                         _this.activate().then(function (status, data) {
-                                            //console.log('Bundle deployed and activated!!!')
                                             defered.resolve(bundleLocation);
                                         })['catch'](function (err) {
                                             defered.reject(err);
                                         });
-                                        //} else {
-                                        //console.log('Bundle deplsadfaskldfjalñksjdflñakwsjflñkjsed!!!')
                                     }
                                 })['catch'](function (err) {
                                     _this._allPromisesOk = false;
-                                    //console.log("error en de");
                                     onCreateBundleError(err);
                                 });
                             })();
@@ -445,14 +436,14 @@ var Bundles = (function (_BaseProvision) {
                     //console.log("asdhflkasdfj 1");
                     _get(Object.getPrototypeOf(Bundles.prototype), 'create', _this3).call(_this3).then(onCreateBundle)['catch'](onCreateBundleError);
                 } else {
-                    defered.reject({ "errors": "Bundle already exists", "statusCode": 400 });
+                    defered.reject({ "errors": "OGAPI_400_BUNDLE_EXIST", "statusCode": 400 });
                 }
             })['catch'](function (err) {
                 if (err.statusCode === 404) {
                     //console.log("asdhflkasdfj 2");
                     _get(Object.getPrototypeOf(Bundles.prototype), 'create', _this3).call(_this3).then(onCreateBundle)['catch'](onCreateBundleError);
                 } else {
-                    defered.reject({ "errors": "Bundle already exists", "statusCode": 400 });
+                    defered.reject({ "errors": "OGAPI_400_BUNDLE_EXIST", "statusCode": 400 });
                 }
             });
 

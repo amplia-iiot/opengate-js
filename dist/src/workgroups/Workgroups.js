@@ -49,7 +49,7 @@ var Workgroups = (function (_BaseProvision) {
     _createClass(Workgroups, [{
         key: 'withName',
         value: function withName(name) {
-            if (typeof name !== 'string' || name.length > 50) throw new Error('Parameter name must be a string and has a maximum length of 50');
+            if (typeof name !== 'string' || name.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'name' });
             this._name = name;
             return this;
         }
@@ -62,7 +62,7 @@ var Workgroups = (function (_BaseProvision) {
     }, {
         key: 'withDescription',
         value: function withDescription(description) {
-            if (typeof description !== 'string' || description.length > 200) throw new Error('Parameter description must be a string and has a maximum length of 200');
+            if (typeof description !== 'string' || description.length > 250) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250", parameter: 'description' });
             this._description = description;
             return this;
         }
@@ -89,7 +89,7 @@ var Workgroups = (function (_BaseProvision) {
     }, {
         key: 'withDomainName',
         value: function withDomainName(domainName) {
-            if (typeof domainName !== 'string' || domainName.length > 50) throw new Error('Parameter domainName must be a string and has a maximum length of 50');
+            if (typeof domainName !== 'string' || domainName.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'domainName' });
             this._domainName = domainName;
             return this;
         }

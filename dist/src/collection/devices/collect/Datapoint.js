@@ -31,7 +31,7 @@ var Datapoint = (function () {
         key: 'withFrom',
         value: function withFrom(from) {
             if (from !== null) {
-                if (typeof from !== 'number') throw new Error('Parameter from must be a number');
+                if (typeof from !== 'number') throw new Error({ message: 'OGAPI_NUMBER_PARAMETER', parameter: 'from' });
                 this._from = from;
             }
             return this;
@@ -46,7 +46,7 @@ var Datapoint = (function () {
         key: 'withAt',
         value: function withAt(at) {
             if (at !== null) {
-                if (typeof at !== 'number') throw new Error('Parameter at must be a number');
+                if (typeof at !== 'number') throw new Error({ message: 'OGAPI_NUMBER_PARAMETER', parameter: 'at' });
                 this._at = at;
             }
             return this;
@@ -60,21 +60,21 @@ var Datapoint = (function () {
     }, {
         key: 'withValue',
         value: function withValue(value) {
-            if (value === undefined || value.length === 0) throw new Error('Parameter value must be defined');
+            if (value === undefined || value.length === 0) throw new Error({ message: 'OGAPI_DEFINED_PARAMETER', parameter: 'value' });
             this._value = value;
             return this;
         }
 
         /**
-        * Set the tags attribute
-        * @param {string} tags 
-        * @return {Datapoint}
-        */
+         * Set the tags attribute
+         * @param {string} tags 
+         * @return {Datapoint}
+         */
     }, {
         key: 'withTags',
         value: function withTags(tags) {
             if (tags !== null) {
-                if (tags.constructor !== Array || tags.length === 0) throw new Error("Parameter tags must be typeof Array and cannot be empty");
+                if (tags.constructor !== Array || tags.length === 0) throw new Error({ message: 'OGAPI_ARRAY_PARAMETER', parameter: 'tags' });
                 this._tags = tags;
             }
             return this;
@@ -83,7 +83,7 @@ var Datapoint = (function () {
         key: 'composeElement',
         value: function composeElement() {
             if (this._value === undefined || this._value.length === 0) {
-                throw new Error('Parameter value must de defined');
+                throw new Error({ message: 'OGAPI_DEFINED_PARAMETER', parameter: 'value' });
             }
             var datapoint = {
                 'from': this._from || undefined,

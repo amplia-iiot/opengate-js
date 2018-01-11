@@ -55,7 +55,7 @@ var Channels = (function (_BaseProvision) {
     }, {
         key: 'withName',
         value: function withName(name) {
-            if (typeof name !== 'string' || name.length > 50) throw new Error('Parameter name must be a string and has a maximum length of 50');
+            if (typeof name !== 'string' || name.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'name' });
             this._name = name;
             return this;
         }
@@ -68,7 +68,7 @@ var Channels = (function (_BaseProvision) {
     }, {
         key: 'withDescription',
         value: function withDescription(description) {
-            if (typeof description !== 'string' || description.length > 200) throw new Error('Parameter description must be a string and has a maximum length of 200');
+            if (typeof description !== 'string' || description.length > 250) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250", parameter: 'description' });
             this._description = description;
             return this;
         }
@@ -81,7 +81,7 @@ var Channels = (function (_BaseProvision) {
     }, {
         key: 'withOrganization',
         value: function withOrganization(organization) {
-            if (typeof organization !== 'string' || organization.length > 50) throw new Error('Parameter organization must be a string and has a maximum length of 50');
+            if (typeof organization !== 'string' || organization.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'organization' });
             this._organization = organization;
             return this;
         }
@@ -94,7 +94,7 @@ var Channels = (function (_BaseProvision) {
     }, {
         key: 'withCertificate',
         value: function withCertificate(certificate) {
-            if (typeof certificate !== 'string') throw new Error('Parameter certificate must be a string');
+            if (typeof certificate !== 'string') throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'certificate' });
 
             if (!this._certificates) this._certificates = [];
 

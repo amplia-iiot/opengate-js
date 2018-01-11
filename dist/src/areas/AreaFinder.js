@@ -62,7 +62,7 @@ var AreaFinder = (function (_ProvisionGenericFinder) {
         key: '_checkString',
         value: function _checkString(parameter, name) {
             if (typeof parameter !== 'string') {
-                throw new Error('Parameter ' + name + 'must be a string');
+                throw new Error('OGAPI_STRING_PARAMETER');
             }
         }
     }]);

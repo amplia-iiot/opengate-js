@@ -61,7 +61,7 @@ var CommsModuleMessage = (function () {
     _createClass(CommsModuleMessage, [{
         key: 'withId',
         value: function withId(id) {
-            if (typeof id !== 'string') throw new Error('Parameter id must be a string');
+            if (typeof id !== 'string') throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'id' });
             this._id = id;
             return this;
         }
@@ -74,29 +74,29 @@ var CommsModuleMessage = (function () {
     }, {
         key: 'withName',
         value: function withName(name) {
-            if (typeof name !== 'string') throw new Error('Parameter name must be a string');
+            if (typeof name !== 'string') throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'name' });
             this._name = name;
             return this;
         }
 
         /**
-        * Set the type attribute
-        * @param {string} type - optional field
-        * @return {CommsModule}
-        */
+         * Set the type attribute
+         * @param {string} type - optional field
+         * @return {CommsModule}
+         */
     }, {
         key: 'withType',
         value: function withType(type) {
-            if (typeof type !== 'string') throw new Error('Parameter type must be a string');
+            if (typeof type !== 'string') throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'type' });
             this._type = type;
             return this;
         }
 
         /**
-        * Set the hardware attribute
-        * @param {Hardware} hardware - optionals field
-        * @return {CommsModule}
-        */
+         * Set the hardware attribute
+         * @param {Hardware} hardware - optionals field
+         * @return {CommsModule}
+         */
     }, {
         key: 'withHardware',
         value: function withHardware(hardware) {
@@ -108,10 +108,10 @@ var CommsModuleMessage = (function () {
         }
 
         /**
-        * Set the operationalStatus attribute
-        * @param {string} operationalStatus 
-        * @return {CommsModule}
-        */
+         * Set the operationalStatus attribute
+         * @param {string} operationalStatus 
+         * @return {CommsModule}
+         */
     }, {
         key: 'withOperationalStatus',
         value: function withOperationalStatus(operationalStatus) {

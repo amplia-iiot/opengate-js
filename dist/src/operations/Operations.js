@@ -60,7 +60,7 @@ var Operations = (function () {
         key: 'updatePeriodicityBuilder',
         value: function updatePeriodicityBuilder(operationId) {
             if (typeof operationId !== "string") {
-                throw new Error("Parameter operationId must be typeof string");
+                throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: "operationId" });
             }
             var defered = _q2['default'].defer();
             var promise = defered.promise;
@@ -84,7 +84,7 @@ var Operations = (function () {
         key: 'builderByOperationName',
         value: function builderByOperationName(name) {
             if (typeof name !== "string") {
-                throw new Error("Parameter name must be typeof string");
+                throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: "name" });
             }
             var defered = _q2['default'].defer();
             var promise = defered.promise;

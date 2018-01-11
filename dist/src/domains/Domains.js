@@ -49,7 +49,7 @@ var Domains = (function (_BaseProvision) {
     _createClass(Domains, [{
         key: 'withName',
         value: function withName(name) {
-            if (typeof name !== 'string' || name.length > 50) throw new Error('Parameter name must be a string and has a maximum length of 50');
+            if (typeof name !== 'string' || name.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'name' });
             this._name = name;
             return this;
         }
@@ -62,7 +62,7 @@ var Domains = (function (_BaseProvision) {
     }, {
         key: 'withDescription',
         value: function withDescription(description) {
-            if (typeof description !== 'string' || description.length > 200) throw new Error('Parameter description must be a string and has a maximum length of 200');
+            if (typeof description !== 'string' || description.length > 250) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250", parameter: 'description' });
             this._description = description;
             return this;
         }
@@ -75,7 +75,7 @@ var Domains = (function (_BaseProvision) {
     }, {
         key: 'withParentDomain',
         value: function withParentDomain(parentDomain) {
-            if (typeof parentDomain !== 'string' || parentDomain.length > 50) throw new Error('Parameter parentDomain must be a string and has a maximum length of 50');
+            if (typeof parentDomain !== 'string' || parentDomain.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'parentDomain' });
             this._parentDomain = parentDomain;
             return this;
         }
@@ -83,7 +83,7 @@ var Domains = (function (_BaseProvision) {
         key: '_composeElement',
         value: function _composeElement() {
             if (this._name === undefined) {
-                throw new Error('Parameters name must be defined');
+                throw new Error({ message: 'OGAPI_DEFINED_PARAMETER', parameter: 'name' });
             }
 
             var domain = {

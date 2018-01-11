@@ -132,48 +132,44 @@ var BoxBuilder = (function () {
                     promise: wrapper.execute(defer, 10)
                 });
             });
-            /* postObj['resourceType'] = {
-                "_value": {
-                  "_current": {
-                    "value": "entity.asset"
-                  }
-                }
-              }
-            */
+
             _q2['default'].allSettled(childEntityPromises.reduce(function (previousValue, current) {
                 previousValue.push(current.promise);
                 return previousValue;
             }, [])).then(function () {
                 defer.notify({
-                    message: 'All related entities have been created.',
+                    message: 'OGAPI_201_ENTITIES_CREATED',
                     type: 'success',
                     percentage: 20
                 });
                 defer.notify({
-                    message: 'Creating new asset:' + _this._key._value._current.value,
+                    entity: _this._key._value._current.value,
+                    message: 'OGAPI_CREATING_ASSET',
                     type: 'success',
                     percentage: 25
                 });
                 return _this._ogapi.Napi.post(_this._url, postObj).then(function (res) {
                     defer.notify({
-                        message: 'Created asset:' + _this._key._value._current.value,
+                        entity: _this._key._value._current.value,
+                        message: 'OGAPI_ASSET_CREATED',
                         type: 'success',
                         percentage: 50
                     });
                     if (_this._wrappers.length > 0) {
                         defer.notify({
-                            message: 'Adding related entities',
+                            message: 'OGAPI_ADDING_RELATED_ENTITIES',
                             type: 'success',
                             percentage: 55
                         });
                         return _this._ogapi.Napi.put(_this._urlWithKey(), putObj).then(function (res) {
                             if (res.statusCode === _httpStatusCodes2['default'].OK) {
-                                console.log("CREATEOK: " + JSON.stringify(res));
+                                //console.log("CREATEOK: " + JSON.stringify(res));
                                 if (typeof _this._onCreated === "function") {
                                     _this._onCreated(res.header['location']);
                                 }
                                 defer.notify({
-                                    message: 'asset created successfully: ' + _this._key._value._current.value,
+                                    entity: _this._key._value._current.value,
+                                    message: 'OGAPI_ASSET_CREATED',
                                     type: 'success',
                                     percentage: 75
                                 });
@@ -195,7 +191,8 @@ var BoxBuilder = (function () {
                                 _this._onCreated(res.header['location']);
                             }
                             defer.notify({
-                                message: 'asset created successfully: ' + _this._key._value._current.value,
+                                entity: _this._key._value._current.value,
+                                message: 'OGAPI_ASSET_CREATED',
                                 type: 'success',
                                 percentage: 75
                             });
@@ -212,15 +209,14 @@ var BoxBuilder = (function () {
                     }
                 });
             })['catch'](function (err) {
-                err.data.errors.forEach(function (err) {
-                    var error = err.description;
-                    if (err.label) error += ":" + err.label;
+                if (err.data.errors) {
                     defer.notify({
-                        message: 'Error: ' + error,
+                        message: err,
                         type: 'error',
                         percentage: 80
                     });
-                });
+                }
+
                 var deletePromises = [_this['delete'](defer, 90)];
                 childEntityPromises.forEach(function (item) {
                     deletePromises.push(item.wrapper['delete'](defer, 90));
@@ -253,12 +249,13 @@ var BoxBuilder = (function () {
                 return previousValue;
             }, [])).then(function () {
                 defer.notify({
-                    message: 'All related entities have been created.',
+                    message: 'OGAPI_201_ENTITIES_CREATED',
                     type: 'success',
                     percentage: 40
                 });
                 defer.notify({
-                    message: 'Adding related entities to Asset:' + _this._key._value._current.value,
+                    entity: _this._key._value._current.value,
+                    message: 'OGAPI_ADDING_RELATED_ENTITIES',
                     type: 'success',
                     percentage: 45
                 });
@@ -269,7 +266,8 @@ var BoxBuilder = (function () {
                             _this._onCreated(res.header['location']);
                         }
                         defer.notify({
-                            message: 'Asset updated successfully: ' + _this._key._value._current.value,
+                            entity: _this._key._value._current.value,
+                            message: 'OGAPI_200_ENTITIES_UPDATED',
                             type: 'success',
                             percentage: 90
                         });
@@ -286,7 +284,7 @@ var BoxBuilder = (function () {
                 });
             })['catch'](function (err) {
                 console.error(err);
-                defer.notify('Something was wrong updating Asset');
+                defer.notify('OGAPI_SOMETHING_WRONG_UPDATING_ASSET');
                 defer.reject(err);
             });
             return defer.promise;
@@ -297,7 +295,8 @@ var BoxBuilder = (function () {
             var _this = this;
             return this._ogapi.Napi['delete'](this._urlWithKey()).then(function (res) {
                 defered.notify({
-                    message: 'Entity deleted:' + _this._key,
+                    entity: _this._key,
+                    message: 'OGAPI_ENTITY_DELETED',
                     type: 'warning',
                     percentage: percentage
                 });
@@ -348,13 +347,13 @@ var WrapperBuilder = (function () {
                 if (!exists) {
                     create(defered, defer, percentage);
                 } else {
-                    defer.resolve('Entity was already created:' + _this._key);
+                    defer.resolve({ message: OGAPI_ENTITY_ALREADY_CREATED, entity: _this._key });
                 }
             })['catch'](function (exists) {
                 if (!exists) {
                     create(defered, defer, percentage);
                 } else {
-                    defer.resolve('Entity was already created:' + _this._key);
+                    defer.resolve({ message: OGAPI_ENTITY_ALREADY_CREATED, entity: _this._key });
                 }
             });
             return defer.promise;
@@ -363,19 +362,27 @@ var WrapperBuilder = (function () {
                 _this._ogapi.Napi.post(_this._url, _this._obj).then(function (res) {
                     _this._created = true;
                     defered.notify({
-                        message: 'Entity created:' + _this._key,
+                        entity: _this._key,
+                        message: 'OGAPI_ENTITY_CREATED',
                         type: 'success',
                         percentage: percentage
                     });
-                    defer.resolve('Entity created:' + _this._key);
+                    defer.resolve({
+                        entity: _this._key,
+                        message: 'OGAPI_ENTITY_CREATED'
+                    });
                 })['catch'](function (err) {
                     console.error(err);
                     defered.notify({
-                        message: 'Error creating entity:' + _this._key,
+                        entity: _this._key,
+                        message: 'OGAPI_ENTITY_CREATED',
                         type: 'warning',
                         percentage: percentage
                     });
-                    defer.reject('Error creating entity:' + _this._key);
+                    defer.reject({
+                        entity: _this._key,
+                        message: 'OGAPI_SOMETHING_WRONG_CREATING'
+                    });
                 });
             }
         }
@@ -386,7 +393,8 @@ var WrapperBuilder = (function () {
             if (this._created) {
                 return this._ogapi.Napi['delete'](this._urlWithKey()).then(function (res) {
                     defered.notify({
-                        message: 'Entity deleted:' + _this._key,
+                        entity: _this._key,
+                        message: 'OGAPI_ENTITY_DELETED',
                         type: 'warning',
                         percentage: percentage
                     });

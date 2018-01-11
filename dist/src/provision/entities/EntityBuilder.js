@@ -101,7 +101,7 @@ var EntityBuilder = (function () {
                 return okh;
             }).then(function (data) {
                 if (data.statusCode !== 200) {
-                    defered.reject({ data: 'No content: Datastreams not found', statusCode: 204 });
+                    defered.reject({ data: 'OGAPI_DATASTREAM_NOT_FOUND', statusCode: 204 });
                 }
                 _this._getJsonPathElements().then(function () {
                     data.data = _this._setDevicesProperties(data.data, filterElement);
@@ -208,7 +208,7 @@ var EntityBuilder = (function () {
                 if (data.statusCode === 200) {
                     defered.resolve(onFindAllowedDatastreams.call(_this, data.data.allowedDatastreams, data.data.schemas));
                 } else {
-                    defered.reject('Datamodels not found on ' + organization + ' organization.');
+                    defered.reject('OGAPI_DATASTREAM_NOT_FOUND');
                 }
             })['catch'](function (err) {
                 defered.reject(err);

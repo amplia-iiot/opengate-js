@@ -78,7 +78,7 @@ var Event = (function () {
     _createClass(Event, [{
         key: 'withEventId',
         value: function withEventId(id) {
-            if (typeof id !== 'string') throw new Error('Parameter id must be a string and has a maximum length of ');
+            if (typeof id !== 'string') throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: 'EventId' });
             this._event_id = id;
             return this;
         }

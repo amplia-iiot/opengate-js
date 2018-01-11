@@ -49,7 +49,7 @@ export default class Event {
      */
     withEventId(id) {
         if (typeof id !== 'string')
-            throw new Error('Parameter id must be a string and has a maximum length of ');
+            throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: 'EventId' });
         this._event_id = id;
         return this;
     }
@@ -126,7 +126,7 @@ export default class Event {
             .withEntityType("ASSET").withId(operationalStatus).build();
 
         operationalStatusBuilder.execute().then(
-            function (res) {
+            function(res) {
                 if (res.statusCode === 204) {
                     throw new Error("Operational Status not found");
                 }
@@ -394,7 +394,7 @@ export default class Event {
     }
     _checkValues(value, enumName) {
         let not_found = [];
-        let found = enumName.find(function (value) {
+        let found = enumName.find(function(value) {
             return value == this;
         }, value);
 

@@ -62,7 +62,7 @@ var DeviceMessage = (function (_Event) {
     _createClass(DeviceMessage, [{
         key: 'withId',
         value: function withId(id) {
-            if (typeof id !== 'string' || id.length > 50) throw new Error('Parameter id must be a string and has a maximum length of 50');
+            if (typeof id !== 'string' || id.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'id' });
             this._id = id;
             return this;
         }
@@ -75,7 +75,7 @@ var DeviceMessage = (function (_Event) {
     }, {
         key: 'withDataStreamVersion',
         value: function withDataStreamVersion(version) {
-            if (typeof version !== 'string' || version.length > 50) throw new Error('Parameter version must be a string and has a maximum length of 50');
+            if (typeof version !== 'string' || version.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'version' });
             this._dataStreamVersion = version;
             return this;
         }
@@ -88,7 +88,7 @@ var DeviceMessage = (function (_Event) {
     }, {
         key: 'withDmmVersion',
         value: function withDmmVersion(version) {
-            if (typeof version !== 'string' || version.length > 50) throw new Error('Parameter version must be a string and has a maximum length of 50');
+            if (typeof version !== 'string' || version.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'version' });
             this._version = version;
             return this;
         }
@@ -101,7 +101,7 @@ var DeviceMessage = (function (_Event) {
     }, {
         key: 'withDeviceId',
         value: function withDeviceId(deviceId) {
-            if (typeof deviceId !== 'string' || deviceId.length > 50) throw new Error('Parameter device must be a string and has a maximum length of 50');
+            if (typeof deviceId !== 'string' || deviceId.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'device' });
             this._deviceId = deviceId;
             return this;
         }

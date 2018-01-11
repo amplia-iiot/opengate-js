@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-	value: true
+    value: true
 });
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -21,118 +21,118 @@ var _ByGeneric3 = _interopRequireDefault(_ByGeneric2);
 var _MONTHS_ENUM = require('./../MONTHS_ENUM');
 
 var ByYear = (function (_ByGeneric) {
-	_inherits(ByYear, _ByGeneric);
+    _inherits(ByYear, _ByGeneric);
 
-	/**
- * @param {!BaseOperationBuilder} parent - this is a operationBaseBuilder.
- * @param {!Date} date - Date when operation will be executed
- * @param {string} periodicityName - Name associated to periodicity	
- * @param {!number or Date} end - When periodicity ends. By repetitions or by date		
- */
+    /**
+     * @param {!BaseOperationBuilder} parent - this is a operationBaseBuilder.
+     * @param {!Date} date - Date when operation will be executed
+     * @param {string} periodicityName - Name associated to periodicity	
+     * @param {!number or Date} end - When periodicity ends. By repetitions or by date		
+     */
 
-	function ByYear(parent, date, name, end) {
-		_classCallCheck(this, ByYear);
+    function ByYear(parent, date, name, end) {
+        _classCallCheck(this, ByYear);
 
-		_get(Object.getPrototypeOf(ByYear.prototype), 'constructor', this).call(this, parent, date, name, end);
-		var _task = parent._task;
-		if (_task) {
-			var pattern = _task.schedule.repeating.pattern;
-			if (pattern) {
-				//console.log("PATTERN: " + JSON.stringify(pattern));
-				var yearly = pattern.yearly;
-				if (yearly) {
-					this._day = yearly.day;
-					this._month = yearly.month;
-					_get(Object.getPrototypeOf(ByYear.prototype), '_build', this).call(this);
-				}
-			}
-		}
-	}
+        _get(Object.getPrototypeOf(ByYear.prototype), 'constructor', this).call(this, parent, date, name, end);
+        var _task = parent._task;
+        if (_task) {
+            var pattern = _task.schedule.repeating.pattern;
+            if (pattern) {
+                //console.log("PATTERN: " + JSON.stringify(pattern));
+                var yearly = pattern.yearly;
+                if (yearly) {
+                    this._day = yearly.day;
+                    this._month = yearly.month;
+                    _get(Object.getPrototypeOf(ByYear.prototype), '_build', this).call(this);
+                }
+            }
+        }
+    }
 
-	/**
- * At this day will be executed the operation
- * @param {!number} day 
- * @throws {Error} throw error when day is not typeof number
- * @throws {Error} throw error when day is > 31 and < 1
- * @return {BaseOperationBuilder}
- */
+    /**
+     * At this day will be executed the operation
+     * @param {!number} day 
+     * @throws {Error} throw error when day is not typeof number
+     * @throws {Error} throw error when day is > 31 and < 1
+     * @return {BaseOperationBuilder}
+     */
 
-	_createClass(ByYear, [{
-		key: 'day',
-		value: function day(_day) {
-			if (typeof _day !== "number") {
-				if (this._day) {
-					month = this._day;
-				} else throw new Error("Parameter day must be typeof number");
-			}
-			if (_day > 31 || _day < 1) {
-				throw new Error("Parameter day must be greater than 1 and less than 31");
-			}
-			this._day = _day;
-			if (typeof this._month === "undefined") {
-				return this;
-			}
-			if (this._parent._task) {
-				this._build();
-				return this;
-			}
-			return this._build();
-		}
+    _createClass(ByYear, [{
+        key: 'day',
+        value: function day(_day) {
+            if (typeof _day !== "number") {
+                if (this._day) {
+                    month = this._day;
+                } else throw new Error("Parameter day must be typeof number");
+            }
+            if (_day > 31 || _day < 1) {
+                throw new Error("Parameter day must be greater than 1 and less than 31");
+            }
+            this._day = _day;
+            if (typeof this._month === "undefined") {
+                return this;
+            }
+            if (this._parent._task) {
+                this._build();
+                return this;
+            }
+            return this._build();
+        }
 
-		/**
-  * At this month will be executed the operation
-  * @param {!string} month 
-  * @throws {Error} throw error when month is not typeof string
-  * @throws {Error} throw error when month is not found into MONTHS_ENUM		
-  * @return {BaseOperationBuilder|ByYear}
-  */
-	}, {
-		key: 'month',
-		value: (function (_month) {
-			function month(_x) {
-				return _month.apply(this, arguments);
-			}
+        /**
+         * At this month will be executed the operation
+         * @param {!string} month 
+         * @throws {Error} throw error when month is not typeof string
+         * @throws {Error} throw error when month is not found into MONTHS_ENUM		
+         * @return {BaseOperationBuilder|ByYear}
+         */
+    }, {
+        key: 'month',
+        value: (function (_month) {
+            function month(_x) {
+                return _month.apply(this, arguments);
+            }
 
-			month.toString = function () {
-				return _month.toString();
-			};
+            month.toString = function () {
+                return _month.toString();
+            };
 
-			return month;
-		})(function (month) {
-			if (typeof month !== "string") {
-				if (this._month) {
-					month = this._month;
-				} else throw new Error("Parameter month must be typeof string");
-			}
-			var found = _MONTHS_ENUM.MONTHS_ENUM.find(function (month) {
-				return month == this;
-			}, month);
-			if (typeof found === "undefined") {
-				throw new Error("Any month into parameter months is not allowed. Parameter value <'" + month + "'>, Months allowed <'" + JSON.stringify(_MONTHS_ENUM.MONTHS_ENUM) + "'>");
-			}
-			this._month = month;
-			if (typeof this._day === "undefined") {
-				return this;
-			}
-			if (this._parent._task) {
-				this._build();
-				return this;
-			}
-			return this._build();
-		})
-	}, {
-		key: '_create',
-		value: function _create() {
-			var skeleton = _get(Object.getPrototypeOf(ByYear.prototype), '_create', this).call(this);
-			skeleton.repeating.pattern.yearly = {
-				day: this._day,
-				month: this._month
-			};
-			return skeleton;
-		}
-	}]);
+            return month;
+        })(function (month) {
+            if (typeof month !== "string") {
+                if (this._month) {
+                    month = this._month;
+                } else throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: "month" });
+            }
+            var found = _MONTHS_ENUM.MONTHS_ENUM.find(function (month) {
+                return month == this;
+            }, month);
+            if (typeof found === "undefined") {
+                throw new Error("Any month into parameter months is not allowed. Parameter value <'" + month + "'>, Months allowed <'" + JSON.stringify(_MONTHS_ENUM.MONTHS_ENUM) + "'>");
+            }
+            this._month = month;
+            if (typeof this._day === "undefined") {
+                return this;
+            }
+            if (this._parent._task) {
+                this._build();
+                return this;
+            }
+            return this._build();
+        })
+    }, {
+        key: '_create',
+        value: function _create() {
+            var skeleton = _get(Object.getPrototypeOf(ByYear.prototype), '_create', this).call(this);
+            skeleton.repeating.pattern.yearly = {
+                day: this._day,
+                month: this._month
+            };
+            return skeleton;
+        }
+    }]);
 
-	return ByYear;
+    return ByYear;
 })(_ByGeneric3['default']);
 
 exports['default'] = ByYear;

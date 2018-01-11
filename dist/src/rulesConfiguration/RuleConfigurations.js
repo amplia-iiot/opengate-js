@@ -110,7 +110,7 @@ var RuleConfigurations = (function (_BaseProvision) {
     }, {
         key: 'withDescription',
         value: function withDescription(description) {
-            if (typeof description !== 'string' || description.length > 250) throw new Error('Parameter description must be a string and has a maximum length of 250');
+            if (typeof description !== 'string' || description.length > 250) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250", parameter: 'description' });
             this._description = description;
             return this;
         }

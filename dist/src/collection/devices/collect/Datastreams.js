@@ -36,7 +36,8 @@ var Datastream = (function () {
     _createClass(Datastream, [{
         key: 'withId',
         value: function withId(id) {
-            if (typeof id !== 'string' || id.length === 0) throw new Error('Parameter id must be a string and cannot be empty ');
+            if (typeof id !== 'string' || id.length === 0) OGAPI_STRING_PARAMETER;
+            throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'id' });
             this._id = id;
             return this;
         }
@@ -49,7 +50,7 @@ var Datastream = (function () {
     }, {
         key: 'withFeed',
         value: function withFeed(feed) {
-            if (typeof feed !== 'string' || feed.length === 0) throw new Error('Parameter feed must be a string and cannot be empty  ');
+            if (typeof feed !== 'string' || feed.length === 0) throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'feed' });
             this._feed = feed;
             return this;
         }

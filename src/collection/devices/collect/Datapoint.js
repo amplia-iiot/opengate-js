@@ -21,8 +21,8 @@ export default class Datapoint {
      */
     withFrom(from) {
         if (from !== null) {
-            if (typeof from !== 'number' )
-                throw new Error('Parameter from must be a number');
+            if (typeof from !== 'number')
+                throw new Error({ message: 'OGAPI_NUMBER_PARAMETER', parameter: 'from' });
             this._from = from;
         }
         return this;
@@ -34,9 +34,9 @@ export default class Datapoint {
      * @return {Datapoint}
      */
     withAt(at) {
-        if (at !== null){
-            if( typeof at !== 'number' )
-                throw new Error('Parameter at must be a number');
+        if (at !== null) {
+            if (typeof at !== 'number')
+                throw new Error({ message: 'OGAPI_NUMBER_PARAMETER', parameter: 'at' });
             this._at = at;
         }
         return this;
@@ -48,40 +48,40 @@ export default class Datapoint {
      * @return {Datapoint}
      */
     withValue(value) {
-        if (value === undefined ||  value.length === 0)
-             throw new Error('Parameter value must be defined');
+        if (value === undefined || value.length === 0)
+            throw new Error({ message: 'OGAPI_DEFINED_PARAMETER', parameter: 'value' });
         this._value = value;
         return this;
     }
 
-      /**
+    /**
      * Set the tags attribute
      * @param {string} tags 
      * @return {Datapoint}
      */
     withTags(tags) {
-        if ( tags !== null) {
-            if (tags.constructor !== Array || tags.length === 0) 
-                throw new Error("Parameter tags must be typeof Array and cannot be empty");
+        if (tags !== null) {
+            if (tags.constructor !== Array || tags.length === 0)
+                throw new Error({ message: 'OGAPI_ARRAY_PARAMETER', parameter: 'tags' });
             this._tags = tags;
         }
         return this;
     }
 
-    composeElement(){
-        if( this._value === undefined ||  this._value.length === 0 ){
-            throw new Error('Parameter value must de defined');
+    composeElement() {
+        if (this._value === undefined || this._value.length === 0) {
+            throw new Error({ message: 'OGAPI_DEFINED_PARAMETER', parameter: 'value' });
         }
         var datapoint = {
-            'from' : this._from || undefined,
-            'at' : this._at || undefined,
-            'value' : this._value,
-            'tags' : this._tags || undefined
+            'from': this._from || undefined,
+            'at': this._at || undefined,
+            'value': this._value,
+            'tags': this._tags || undefined
 
-        }        
+        }
         return datapoint;
     }
 
- 
-    
+
+
 }

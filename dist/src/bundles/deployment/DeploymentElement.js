@@ -73,7 +73,7 @@ var DeploymentElement = (function (_BaseProvision) {
     _createClass(DeploymentElement, [{
         key: 'withName',
         value: function withName(name) {
-            if (typeof name !== 'string' || name.length > 50) throw new Error('Parameter name must be a string and has a maximum length of 50');
+            if (typeof name !== 'string' || name.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'name' });
             this._name = name;
             return this;
         }
@@ -86,7 +86,7 @@ var DeploymentElement = (function (_BaseProvision) {
     }, {
         key: 'withVersion',
         value: function withVersion(version) {
-            if (typeof version !== 'string' || version.length > 50) throw new Error('Parameter version must be a string and has a maximum length of 50');
+            if (typeof version !== 'string' || version.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'version' });
             this._version = version;
             return this;
         }
@@ -100,7 +100,7 @@ var DeploymentElement = (function (_BaseProvision) {
         key: 'withType',
         value: function withType(type) {
             if (typeof type === "undefined" || typeof type !== 'string') {
-                throw new Error("Parameter type must be typeof string");
+                throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'type' });
             }
             var not_found = '';
             var found = _TYPE_ENUM.TYPE_ENUM.find(function (action) {
@@ -111,7 +111,7 @@ var DeploymentElement = (function (_BaseProvision) {
             }
 
             if (not_found !== '') {
-                throw new Error("Parameter type is not allowed. Parameter value <'" + JSON.stringify(not_found) + "'>, type allowed <'" + JSON.stringify(_TYPE_ENUM.TYPE_ENUM) + "'>");
+                throw new Error({ message: "OGAPI_NOT_ALLOWED_PARAMETER", parameter: JSON.stringify(not_found), allowed: JSON.stringify(_TYPE_ENUM.TYPE_ENUM) });
             }
             this._type = type;
             return this;
@@ -125,7 +125,7 @@ var DeploymentElement = (function (_BaseProvision) {
     }, {
         key: 'withPath',
         value: function withPath(path) {
-            if (typeof path !== 'string') throw new Error('Parameter path must be a string');
+            if (typeof path !== 'string') throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'path' });
             this._path = path;
             return this;
         }
@@ -153,7 +153,7 @@ var DeploymentElement = (function (_BaseProvision) {
         key: 'withOperation',
         value: function withOperation(operation) {
             if (typeof operation === "undefined" || typeof operation !== 'string') {
-                throw new Error("Parameter operation must be typeof string");
+                throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: "operation" });
             }
 
             var not_found = '';
@@ -181,7 +181,7 @@ var DeploymentElement = (function (_BaseProvision) {
         key: 'withOption',
         value: function withOption(option) {
             if (typeof option === "undefined" || typeof option !== 'string') {
-                throw new Error("Parameter option must be typeof string");
+                throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: "option" });
             }
 
             var not_found = '';
@@ -224,7 +224,7 @@ var DeploymentElement = (function (_BaseProvision) {
                     if (!trustedBootExists) {
                         trustedBootExists = true;
                     } else {
-                        throw new Error("Only one TRUSTED_BOOT validator allowed in a deployment element");
+                        throw new Error("OGAPI_422_ONE_TRUSTED_BOOT_ALLOWED_DEPLOY_ELEMENT");
                     }
                 }
                 validatorsArray.push(validator);
@@ -244,7 +244,7 @@ var DeploymentElement = (function (_BaseProvision) {
                 var mode = validator.mode;
 
                 if (typeof mode === "undefined" || typeof mode !== 'string') {
-                    throw new Error("Parameter type must be typeof string");
+                    throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: "type" });
                 }
 
                 var foundMode = _MODE_VALIDATORS_ENUM.MODE_VALIDATORS_ENUM.find(function (action) {
@@ -275,7 +275,7 @@ var DeploymentElement = (function (_BaseProvision) {
                 var not_found = '';
                 var type = validator.type;
                 if (typeof type === "undefined" || typeof type !== 'string') {
-                    throw new Error("Parameter type must be typeof string");
+                    throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: "type" });
                 }
 
                 var found = _TYPE_VALIDATORS_ENUM.TYPE_VALIDATORS_ENUM.find(function (action) {
@@ -528,7 +528,7 @@ var DeploymentElement = (function (_BaseProvision) {
     }, {
         key: 'update',
         value: function update() {
-            throw new Error("Deployment elements cannot be updated");
+            throw new Error("OGAPI_DEPLOYMENT_ELEMENT_NOT_UPDATED");
         }
     }]);
 

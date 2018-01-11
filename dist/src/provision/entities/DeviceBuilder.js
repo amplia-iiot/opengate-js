@@ -135,24 +135,26 @@ var BoxBuilder = (function () {
                 return previousValue;
             }, [])).then(function () {
                 defer.notify({
-                    message: 'All related entities have been created.',
+                    message: 'OGAPI_201_ENTITIES_CREATED',
                     type: 'success',
                     percentage: 20
                 });
                 defer.notify({
-                    message: 'Creating new device:' + _this._key._value._current.value,
+                    entity: _this._key._value._current.value,
+                    message: 'OGAPI_CREATING_DEVICE',
                     type: 'success',
                     percentage: 25
                 });
                 return _this._ogapi.Napi.post(_this._url, postObj).then(function (res) {
                     defer.notify({
-                        message: 'Created device:' + _this._key._value._current.value,
+                        entity: _this._key._value._current.value,
+                        message: 'OGAPI_DEVICE_CREATED',
                         type: 'success',
                         percentage: 50
                     });
                     if (_this._wrappers.length > 0) {
                         defer.notify({
-                            message: 'Adding related entities',
+                            message: 'OGAPI_ADDING_RELATED_ENTITIES',
                             type: 'success',
                             percentage: 55
                         });
@@ -163,7 +165,8 @@ var BoxBuilder = (function () {
                                     _this._onCreated(res.header['location']);
                                 }
                                 defer.notify({
-                                    message: 'Device created successfully: ' + _this._key._value._current.value,
+                                    entity: _this._key._value._current.value,
+                                    message: 'OGAPI_DEVICE_CREATED ',
                                     type: 'success',
                                     percentage: 75
                                 });
@@ -185,7 +188,8 @@ var BoxBuilder = (function () {
                                 _this._onCreated(res.header['location']);
                             }
                             defer.notify({
-                                message: 'Device created successfully: ' + _this._key._value._current.value,
+                                entity: _this._key._value._current.value,
+                                message: 'OGAPI_DEVICE_CREATED',
                                 type: 'success',
                                 percentage: 75
                             });
@@ -262,12 +266,13 @@ var BoxBuilder = (function () {
                 return previousValue;
             }, [])).then(function () {
                 defer.notify({
-                    message: 'All related entities have been created.',
+                    message: 'OGAPI_201_ENTITIES_CREATED',
                     type: 'success',
                     percentage: 40
                 });
                 defer.notify({
-                    message: 'Adding related entities to device:' + _this._key._value._current.value,
+                    entity: _this._key._value._current.value,
+                    message: 'OGAPI_ADDING_RELATED_ENTITIES',
                     type: 'success',
                     percentage: 45
                 });
@@ -278,7 +283,8 @@ var BoxBuilder = (function () {
                             _this._onCreated(res.header['location']);
                         }
                         defer.notify({
-                            message: 'Device updated successfully: ' + _this._key._value._current.value,
+                            entity: _this._key._value._current.value,
+                            message: 'OGAPI_DEVICE_UPDATED',
                             type: 'success',
                             percentage: 90
                         });
@@ -295,7 +301,7 @@ var BoxBuilder = (function () {
                 });
             })['catch'](function (err) {
                 console.error(err);
-                defer.notify('Something was wrong updating device');
+                defer.notify('OGAPI_SOMETHING_WRONG_UPDATING_DEVICE');
                 defer.reject(err);
             });
             return defer.promise;
@@ -306,7 +312,8 @@ var BoxBuilder = (function () {
             var _this = this;
             return this._ogapi.Napi['delete'](this._urlWithKey()).then(function (res) {
                 defered.notify({
-                    message: 'Entity deleted:' + _this._key,
+                    entity: _this._key,
+                    message: 'OGAPI_ENTITY_DELETED',
                     type: 'warning',
                     percentage: percentage
                 });
@@ -357,13 +364,13 @@ var WrapperBuilder = (function () {
                 if (!exists) {
                     create(defered, defer, percentage);
                 } else {
-                    defer.resolve('Entity was already created:' + _this._key);
+                    defer.resolve({ message: 'OGAPI_ENTITY_ALREADY_CREATED', entity: _this._key });
                 }
             })['catch'](function (exists) {
                 if (!exists) {
                     create(defered, defer, percentage);
                 } else {
-                    defer.resolve('Entity was already created:' + _this._key);
+                    defer.resolve({ message: 'OGAPI_ENTITY_ALREADY_CREATED', entity: _this._key });
                 }
             });
             return defer.promise;
@@ -372,19 +379,24 @@ var WrapperBuilder = (function () {
                 _this._ogapi.Napi.post(_this._url, _this._obj).then(function (res) {
                     _this._created = true;
                     defered.notify({
-                        message: 'Entity created:' + _this._key,
+                        entity: _this._key,
+                        message: 'OGAPI_ENTITY_CREATED',
                         type: 'success',
                         percentage: percentage
                     });
-                    defer.resolve('Entity created:' + _this._key);
+                    defer.resolve({ message: 'OGAPI_ENTITY_CREATED', entity: _this._key });
                 })['catch'](function (err) {
                     console.error(err);
                     defered.notify({
-                        message: 'Error creating entity:' + _this._key,
+                        entity: _this._key,
+                        message: 'OGAPI_ENTITY_CREATED',
                         type: 'warning',
                         percentage: percentage
                     });
-                    defer.reject('Error creating entity:' + _this._key);
+                    defer.reject({
+                        entity: _this._key,
+                        message: 'OGAPI_SOMETHING_WRONG_CREATING'
+                    });
                 });
             }
         }
@@ -395,7 +407,8 @@ var WrapperBuilder = (function () {
             if (this._created) {
                 return this._ogapi.Napi['delete'](this._urlWithKey()).then(function (res) {
                     defered.notify({
-                        message: 'Entity deleted:' + _this._key,
+                        entity: _this._key,
+                        message: 'OGAPI_ENTITY_DELETED',
                         type: 'warning',
                         percentage: percentage
                     });
