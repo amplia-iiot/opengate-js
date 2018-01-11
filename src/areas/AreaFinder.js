@@ -38,7 +38,7 @@ export default class AreaFinder extends ProvisionGenericFinder {
 
     _checkString(parameter, name) {
         if (typeof parameter !== 'string') {
-            throw new Error('Parameter ' + name + 'must be a string');
+            throw new Error('OGAPI_STRING_PARAMETER');
         }
     }
 }

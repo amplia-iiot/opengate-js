@@ -32,7 +32,7 @@ export default class DeviceMessage extends Event {
      */
     withId(id) {
         if (typeof id !== 'string' || id.length > 50)
-            throw new Error('Parameter id must be a string and has a maximum length of 50');
+            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'id' });
         this._id = id;
         return this;
     }
@@ -44,7 +44,7 @@ export default class DeviceMessage extends Event {
      */
     withDataStreamVersion(version) {
         if (typeof version !== 'string' || version.length > 50)
-            throw new Error('Parameter version must be a string and has a maximum length of 50');
+            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'version' });
         this._dataStreamVersion = version;
         return this;
     }
@@ -56,7 +56,7 @@ export default class DeviceMessage extends Event {
      */
     withDmmVersion(version) {
         if (typeof version !== 'string' || version.length > 50)
-            throw new Error('Parameter version must be a string and has a maximum length of 50');
+            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'version' });
         this._version = version;
         return this;
     }
@@ -68,7 +68,7 @@ export default class DeviceMessage extends Event {
      */
     withDeviceId(deviceId) {
         if (typeof deviceId !== 'string' || deviceId.length > 50)
-            throw new Error('Parameter device must be a string and has a maximum length of 50');
+            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'device' });
         this._deviceId = deviceId;
         return this;
     }
@@ -138,7 +138,7 @@ export default class DeviceMessage extends Event {
         let boxPromises = [];
 
         if (this._datastreams.length > 0) {
-            boxPromises.push(this._ogapi.Sapi.post(this._buildIotURL(), this._composeIotMessage()).then(function (res) {
+            boxPromises.push(this._ogapi.Sapi.post(this._buildIotURL(), this._composeIotMessage()).then(function(res) {
                 if (res.statusCode !== 201) {
                     throw new Error("IOT NOT CREATED");
                 }
@@ -146,16 +146,16 @@ export default class DeviceMessage extends Event {
         }
         if (this._version !== undefined) {
 
-            boxPromises.push(this._ogapi.Sapi.post(this._buildDmmURL(), this._composeDmmMessage()).then(function (res) {
+            boxPromises.push(this._ogapi.Sapi.post(this._buildDmmURL(), this._composeDmmMessage()).then(function(res) {
                 if (res.statusCode !== 201) {
                     throw new Error("DMM NOT CREATED");
                 }
             }));
         }
 
-        q.all(boxPromises).catch(function (errores) {
+        q.all(boxPromises).catch(function(errores) {
             defered.reject({ errors: errores, statusCode: 400 });
-        }).done(function (response) {
+        }).done(function(response) {
             defered.resolve({ statusCode: 201 });
         });
         return promises;

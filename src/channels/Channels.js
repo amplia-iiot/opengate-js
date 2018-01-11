@@ -28,7 +28,7 @@ export default class Channels extends BaseProvision {
      */
     withName(name) {
         if (typeof name !== 'string' || name.length > 50)
-            throw new Error('Parameter name must be a string and has a maximum length of 50');
+            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'name' });
         this._name = name;
         return this;
     }
@@ -39,8 +39,8 @@ export default class Channels extends BaseProvision {
      * @return {Channels}
      */
     withDescription(description) {
-        if (typeof description !== 'string' || description.length > 200)
-            throw new Error('Parameter description must be a string and has a maximum length of 200');
+        if (typeof description !== 'string' || description.length > 250)
+            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250", parameter: 'description' });
         this._description = description;
         return this;
     }
@@ -53,7 +53,7 @@ export default class Channels extends BaseProvision {
      */
     withOrganization(organization) {
         if (typeof organization !== 'string' || organization.length > 50)
-            throw new Error('Parameter organization must be a string and has a maximum length of 50');
+            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'organization' });
         this._organization = organization;
         return this;
     }
@@ -65,7 +65,7 @@ export default class Channels extends BaseProvision {
      */
     withCertificate(certificate) {
         if (typeof certificate !== 'string')
-            throw new Error('Parameter certificate must be a string');
+            throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'certificate' });
 
         if (!this._certificates)
             this._certificates = [];
