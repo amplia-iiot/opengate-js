@@ -236,7 +236,7 @@ export default class Domains extends BaseProvision {
      */
     withName(name) {
         if (typeof name !== &apos;string&apos; || name.length &gt; 50)
-            throw new Error(&apos;Parameter name must be a string and has a maximum length of 50&apos;);
+            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_50&quot;, parameter: &apos;name&apos; });
         this._name = name;
         return this;
     }
@@ -247,8 +247,8 @@ export default class Domains extends BaseProvision {
      * @return {Domains}
      */
     withDescription(description) {
-        if (typeof description !== &apos;string&apos; || description.length &gt; 200)
-            throw new Error(&apos;Parameter description must be a string and has a maximum length of 200&apos;);
+        if (typeof description !== &apos;string&apos; || description.length &gt; 250)
+            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_250&quot;, parameter: &apos;description&apos; });
         this._description = description;
         return this;
     }
@@ -261,14 +261,14 @@ export default class Domains extends BaseProvision {
      */
     withParentDomain(parentDomain) {
         if (typeof parentDomain !== &apos;string&apos; || parentDomain.length &gt; 50)
-            throw new Error(&apos;Parameter parentDomain must be a string and has a maximum length of 50&apos;);
+            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_50&quot;, parameter: &apos;parentDomain&apos; });
         this._parentDomain = parentDomain;
         return this;
     }
 
     _composeElement() {
         if (this._name === undefined) {
-            throw new Error(&apos;Parameters name must be defined&apos;);
+            throw new Error({ message: &apos;OGAPI_DEFINED_PARAMETER&apos;, parameter: &apos;name&apos; });
         }
 
         var domain = {

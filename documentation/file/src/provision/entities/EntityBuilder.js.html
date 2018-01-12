@@ -264,18 +264,18 @@ export default class EntityBuilder {
         let allowedDatastreams = [];
         let allowedDatastreamsBuilder = this._ogapi.datamodelsSearchBuilder().filter(f).build();
 
-        allowedDatastreamsBuilder.execute().then(function (okh) {
+        allowedDatastreamsBuilder.execute().then(function(okh) {
             _this.schema = {};
             return okh;
-        }).then(function (data) {
+        }).then(function(data) {
             if (data.statusCode !== 200) {
-                defered.reject({ data: &apos;No content: Datastreams not found&apos;, statusCode: 204 });
+                defered.reject({ data: &apos;OGAPI_DATASTREAM_NOT_FOUND&apos;, statusCode: 204 });
             }
-            _this._getJsonPathElements().then(function () {
+            _this._getJsonPathElements().then(function() {
                 data.data = _this._setDevicesProperties(data.data, filterElement);
                 defered.resolve(data);
             })
-        }).catch(function (err) {
+        }).catch(function(err) {
             defered.reject(err);
         });
         return promise;
@@ -286,10 +286,10 @@ export default class EntityBuilder {
         let promise = defered.promise;
         let jsonSchemaSearchBuilder = this._ogapi.jsonSchemaSearchBuilder();
 
-        jsonSchemaSearchBuilder.withPath(&apos;$&apos;).build().execute().then(function (res) {
+        jsonSchemaSearchBuilder.withPath(&apos;$&apos;).build().execute().then(function(res) {
             jsonSchemaValidator.addSchema(res.data, schema_base);
             defered.resolve();
-        }).catch(function (err) {
+        }).catch(function(err) {
             defered.reject(err);
         });
         return promise;
@@ -304,7 +304,7 @@ export default class EntityBuilder {
         _this.complexFunctions = [];
         _this.simpleFunctions = [];
 
-        allowedDatastreams.forEach(function (element, index) {
+        allowedDatastreams.forEach(function(element, index) {
             let _id = element.identifier;
             if (_id.startsWith(&apos;provision.administration&apos;) || _id.startsWith(filter)) {
                 response.allowedDatastreams.push(element);
@@ -323,25 +323,25 @@ export default class EntityBuilder {
     }
 
     devicesBuilder(organization) {
-        return this._genericBuilder(organization, &apos;entity.device&apos;, &apos;provision&apos;, function (allowedDatastreams, definedSchemas) {
+        return this._genericBuilder(organization, &apos;entity.device&apos;, &apos;provision&apos;, function(allowedDatastreams, definedSchemas) {
             return new DeviceBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
         });
     }
 
     assetsBuilder(organization) {
-        return this._genericBuilder(organization,&apos;entity.asset&apos;, &apos;provision&apos;, function (allowedDatastreams, definedSchemas) {
+        return this._genericBuilder(organization, &apos;entity.asset&apos;, &apos;provision&apos;, function(allowedDatastreams, definedSchemas) {
             return new AssetBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
         });
     }
 
     subscribersBuilder(organization) {
-        return this._genericBuilder(organization,&apos;entity.subscriber&apos;, &apos;provision.device.communicationModules[].subscriber&apos;, function (allowedDatastreams, definedSchemas) {
+        return this._genericBuilder(organization, &apos;entity.subscriber&apos;, &apos;provision.device.communicationModules[].subscriber&apos;, function(allowedDatastreams, definedSchemas) {
             return new SubscriberBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
         });
     }
 
     subscriptionsBuilder(organization) {
-        return this._genericBuilder(organization,&apos;entity.subscription&apos;, &apos;provision.device.communicationModules[].subscription&apos;, function (allowedDatastreams, definedSchemas) {
+        return this._genericBuilder(organization, &apos;entity.subscription&apos;, &apos;provision.device.communicationModules[].subscription&apos;, function(allowedDatastreams, definedSchemas) {
             return new SubscriptionBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
         });
     }
@@ -355,20 +355,20 @@ export default class EntityBuilder {
         return new JsonFlattenedBulkBuilder(this._ogapi, organization);
     }
 
-    _genericBuilder(organization, resourceType,  field, onFindAllowedDatastreams ) {
+    _genericBuilder(organization, resourceType, field, onFindAllowedDatastreams) {
         let _this = this;
         let defered = q.defer();
         if (!organization) {
             throw new Error(ERROR_ORGANIZATION);
         }
         this._loadAllowedDatastreams(field, organization, resourceType)
-            .then(function (data) {
+            .then(function(data) {
                 if (data.statusCode === 200) {
                     defered.resolve(onFindAllowedDatastreams.call(_this, data.data.allowedDatastreams, data.data.schemas));
                 } else {
-                    defered.reject(&apos;Datamodels not found on &apos; + organization + &apos; organization.&apos;);
+                    defered.reject(&apos;OGAPI_DATASTREAM_NOT_FOUND&apos;);
                 }
-            }).catch(function (err) {
+            }).catch(function(err) {
                 defered.reject(err);
             });
         return defered.promise;

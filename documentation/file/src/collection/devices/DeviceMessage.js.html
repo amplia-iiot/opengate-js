@@ -244,7 +244,7 @@ export default class DeviceMessage extends Event {
      */
     withId(id) {
         if (typeof id !== &apos;string&apos; || id.length &gt; 50)
-            throw new Error(&apos;Parameter id must be a string and has a maximum length of 50&apos;);
+            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_50&quot;, parameter: &apos;id&apos; });
         this._id = id;
         return this;
     }
@@ -256,7 +256,7 @@ export default class DeviceMessage extends Event {
      */
     withDataStreamVersion(version) {
         if (typeof version !== &apos;string&apos; || version.length &gt; 50)
-            throw new Error(&apos;Parameter version must be a string and has a maximum length of 50&apos;);
+            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_50&quot;, parameter: &apos;version&apos; });
         this._dataStreamVersion = version;
         return this;
     }
@@ -268,7 +268,7 @@ export default class DeviceMessage extends Event {
      */
     withDmmVersion(version) {
         if (typeof version !== &apos;string&apos; || version.length &gt; 50)
-            throw new Error(&apos;Parameter version must be a string and has a maximum length of 50&apos;);
+            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_50&quot;, parameter: &apos;version&apos; });
         this._version = version;
         return this;
     }
@@ -280,7 +280,7 @@ export default class DeviceMessage extends Event {
      */
     withDeviceId(deviceId) {
         if (typeof deviceId !== &apos;string&apos; || deviceId.length &gt; 50)
-            throw new Error(&apos;Parameter device must be a string and has a maximum length of 50&apos;);
+            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_50&quot;, parameter: &apos;device&apos; });
         this._deviceId = deviceId;
         return this;
     }
@@ -350,7 +350,7 @@ export default class DeviceMessage extends Event {
         let boxPromises = [];
 
         if (this._datastreams.length &gt; 0) {
-            boxPromises.push(this._ogapi.Sapi.post(this._buildIotURL(), this._composeIotMessage()).then(function (res) {
+            boxPromises.push(this._ogapi.Sapi.post(this._buildIotURL(), this._composeIotMessage()).then(function(res) {
                 if (res.statusCode !== 201) {
                     throw new Error(&quot;IOT NOT CREATED&quot;);
                 }
@@ -358,16 +358,16 @@ export default class DeviceMessage extends Event {
         }
         if (this._version !== undefined) {
 
-            boxPromises.push(this._ogapi.Sapi.post(this._buildDmmURL(), this._composeDmmMessage()).then(function (res) {
+            boxPromises.push(this._ogapi.Sapi.post(this._buildDmmURL(), this._composeDmmMessage()).then(function(res) {
                 if (res.statusCode !== 201) {
                     throw new Error(&quot;DMM NOT CREATED&quot;);
                 }
             }));
         }
 
-        q.all(boxPromises).catch(function (errores) {
+        q.all(boxPromises).catch(function(errores) {
             defered.reject({ errors: errores, statusCode: 400 });
-        }).done(function (response) {
+        }).done(function(response) {
             defered.resolve({ statusCode: 201 });
         });
         return promises;

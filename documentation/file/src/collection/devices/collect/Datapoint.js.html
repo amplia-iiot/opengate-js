@@ -233,8 +233,8 @@ export default class Datapoint {
      */
     withFrom(from) {
         if (from !== null) {
-            if (typeof from !== &apos;number&apos; )
-                throw new Error(&apos;Parameter from must be a number&apos;);
+            if (typeof from !== &apos;number&apos;)
+                throw new Error({ message: &apos;OGAPI_NUMBER_PARAMETER&apos;, parameter: &apos;from&apos; });
             this._from = from;
         }
         return this;
@@ -246,9 +246,9 @@ export default class Datapoint {
      * @return {Datapoint}
      */
     withAt(at) {
-        if (at !== null){
-            if( typeof at !== &apos;number&apos; )
-                throw new Error(&apos;Parameter at must be a number&apos;);
+        if (at !== null) {
+            if (typeof at !== &apos;number&apos;)
+                throw new Error({ message: &apos;OGAPI_NUMBER_PARAMETER&apos;, parameter: &apos;at&apos; });
             this._at = at;
         }
         return this;
@@ -260,44 +260,43 @@ export default class Datapoint {
      * @return {Datapoint}
      */
     withValue(value) {
-        if (value === undefined ||  value.length === 0)
-             throw new Error(&apos;Parameter value must be defined&apos;);
+        if (value === undefined || value.length === 0)
+            throw new Error({ message: &apos;OGAPI_DEFINED_PARAMETER&apos;, parameter: &apos;value&apos; });
         this._value = value;
         return this;
     }
 
-      /**
+    /**
      * Set the tags attribute
      * @param {string} tags 
      * @return {Datapoint}
      */
     withTags(tags) {
-        if ( tags !== null) {
-            if (tags.constructor !== Array || tags.length === 0) 
-                throw new Error(&quot;Parameter tags must be typeof Array and cannot be empty&quot;);
+        if (tags !== null) {
+            if (tags.constructor !== Array || tags.length === 0)
+                throw new Error({ message: &apos;OGAPI_ARRAY_PARAMETER&apos;, parameter: &apos;tags&apos; });
             this._tags = tags;
         }
         return this;
     }
 
-    composeElement(){
-        if( this._value === undefined ||  this._value.length === 0 ){
-            throw new Error(&apos;Parameter value must de defined&apos;);
+    composeElement() {
+        if (this._value === undefined || this._value.length === 0) {
+            throw new Error({ message: &apos;OGAPI_DEFINED_PARAMETER&apos;, parameter: &apos;value&apos; });
         }
         var datapoint = {
-            &apos;from&apos; : this._from || undefined,
-            &apos;at&apos; : this._at || undefined,
-            &apos;value&apos; : this._value,
-            &apos;tags&apos; : this._tags || undefined
+            &apos;from&apos;: this._from || undefined,
+            &apos;at&apos;: this._at || undefined,
+            &apos;value&apos;: this._value,
+            &apos;tags&apos;: this._tags || undefined
 
-        }        
+        }
         return datapoint;
     }
 
- 
-    
-}
-</code></pre>
+
+
+}</code></pre>
 
 </div>
 

@@ -239,7 +239,7 @@ export default class Bundles extends BaseProvision {
      */
     withName(name) {
         if (typeof name !== &apos;string&apos; || name.length &gt; 255)
-            throw new Error(&apos;Parameter name must be a string and has a maximum length of 255&apos;);
+            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_255&quot;, parameter: &apos;name&apos; });
         this._name = name;
         return this;
     }
@@ -251,7 +251,7 @@ export default class Bundles extends BaseProvision {
      */
     withVersion(version) {
         if (typeof version !== &apos;string&apos; || version.length &gt; 50)
-            throw new Error(&apos;Parameter version must be a string and has a maximum length of 50&apos;);
+            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_50&quot;, parameter: &apos;version&apos; });
         this._version = version;
         return this;
     }
@@ -287,7 +287,7 @@ export default class Bundles extends BaseProvision {
          */
     withDescription(description) {
         if (typeof description !== &apos;string&apos; || description.length &gt; 250)
-            throw new Error(&apos;Parameter description must be a string and has a maximum length of 250&apos;);
+            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_250&quot;, parameter: &apos;description&apos; });
         this._description = description;
         return this;
     }
@@ -349,7 +349,7 @@ export default class Bundles extends BaseProvision {
      */
     withUserNotes(userNotes) {
         if (typeof userNotes !== &apos;string&apos; || userNotes.length &gt; 250)
-            throw new Error(&apos;Parameter notes must be a string and has a maximum length of 250&apos;);
+            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_250&quot;, parameter: &apos;notes&apos; });
         this._userNotes = userNotes;
         return this;
     }
@@ -506,12 +506,9 @@ export default class Bundles extends BaseProvision {
                 }
             }
 
-            //console.log(totalTB);
             if (totalTB &gt; 1) {
-                //console.log(&quot;Only one TRUSTED_BOOT validator allowed in bundle&quot;);
-                throw new Error(&quot;Only one TRUSTED_BOOT validator allowed in bundle&quot;);
-                //defered.reject(&quot;Only one TRUSTED_BOOT validator allowed in bundle&quot;);
-                //return promise;
+                throw new Error(&quot;OGAPI_422_ONE_TRUSTED_BOOT_ALLOWED&quot;);
+
             }
         }
 
@@ -530,19 +527,15 @@ export default class Bundles extends BaseProvision {
                     Promise.all(dePromises).then(function() {
                         if (_this._allPromisesOk) {
 
-                            //console.log(&quot;activando&quot;);
                             _this.activate().then(function(status, data) {
-                                //console.log(&apos;Bundle deployed and activated!!!&apos;)
                                 defered.resolve(bundleLocation);
                             }).catch(function(err) {
                                 defered.reject(err);
                             });
-                            //} else {
-                            //console.log(&apos;Bundle deplsadfaskldfjal&#xF1;ksjdfl&#xF1;akwsjfl&#xF1;kjsed!!!&apos;)
+
                         }
                     }).catch(function(err) {
                         _this._allPromisesOk = false;
-                        //console.log(&quot;error en de&quot;);
                         onCreateBundleError(err);
                     });
                 } else {
@@ -606,14 +599,14 @@ export default class Bundles extends BaseProvision {
                     //console.log(&quot;asdhflkasdfj 1&quot;);
                     super.create().then(onCreateBundle).catch(onCreateBundleError);
                 } else {
-                    defered.reject({ &quot;errors&quot;: &quot;Bundle already exists&quot;, &quot;statusCode&quot;: 400 });
+                    defered.reject({ &quot;errors&quot;: &quot;OGAPI_400_BUNDLE_EXIST&quot;, &quot;statusCode&quot;: 400 });
                 }
             }).catch(function(err) {
                 if (err.statusCode === 404) {
                     //console.log(&quot;asdhflkasdfj 2&quot;);
                     super.create().then(onCreateBundle).catch(onCreateBundleError);
                 } else {
-                    defered.reject({ &quot;errors&quot;: &quot;Bundle already exists&quot;, &quot;statusCode&quot;: 400 });
+                    defered.reject({ &quot;errors&quot;: &quot;OGAPI_400_BUNDLE_EXIST&quot;, &quot;statusCode&quot;: 400 });
                 }
 
             });

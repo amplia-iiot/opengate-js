@@ -233,7 +233,8 @@ export default class Datastream {
      */
     withId(id) {
         if (typeof id !== &apos;string&apos; || id.length === 0)
-            throw new Error(&apos;Parameter id must be a string and cannot be empty &apos;);
+            OGAPI_STRING_PARAMETER
+        throw new Error({ message: &apos;OGAPI_STRING_PARAMETER&apos;, parameter: &apos;id&apos; });
         this._id = id;
         return this;
     }
@@ -245,7 +246,7 @@ export default class Datastream {
      */
     withFeed(feed) {
         if (typeof feed !== &apos;string&apos; || feed.length === 0)
-            throw new Error(&apos;Parameter feed must be a string and cannot be empty  &apos;);
+            throw new Error({ message: &apos;OGAPI_STRING_PARAMETER&apos;, parameter: &apos;feed&apos; });
         this._feed = feed;
         return this;
     }
@@ -281,8 +282,7 @@ export default class Datastream {
 
 
 
-}
-</code></pre>
+}</code></pre>
 
 </div>
 

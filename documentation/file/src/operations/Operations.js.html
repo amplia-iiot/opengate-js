@@ -241,7 +241,7 @@ export default class Operations {
      */
     updatePeriodicityBuilder(operationId) {
         if (typeof operationId !== &quot;string&quot;) {
-            throw new Error(&quot;Parameter operationId must be typeof string&quot;)
+            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER&quot;, parameter: &quot;operationId&quot; })
         }
         let defered = q.defer();
         let promise = defered.promise;
@@ -265,7 +265,7 @@ export default class Operations {
      */
     builderByOperationName(name) {
         if (typeof name !== &quot;string&quot;) {
-            throw new Error(&quot;Parameter name must be typeof string&quot;)
+            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER&quot;, parameter: &quot;name&quot; })
         }
         let defered = q.defer();
         let promise = defered.promise;
@@ -322,17 +322,17 @@ export default class Operations {
     }
 
     _findOperation(name) {
-        return this._operations.find(function(config) {
-            return config.name == this;
-        }, name);
-    }
-    /**
-     * Create alarm close operation builder
-     *
-     * @example
-     *	ogapi.operations.builderFactory.newAlarmCloseBuilder()
-     * @return {AlarmCloseBuilder} 
-     */
+            return this._operations.find(function(config) {
+                return config.name == this;
+            }, name);
+        }
+        /**
+         * Create alarm close operation builder
+         *
+         * @example
+         *	ogapi.operations.builderFactory.newAlarmCloseBuilder()
+         * @return {AlarmCloseBuilder} 
+         */
     newAlarmCloseBuilder() {
         return new AlarmCloseBuilder(this._ogapi);
     }

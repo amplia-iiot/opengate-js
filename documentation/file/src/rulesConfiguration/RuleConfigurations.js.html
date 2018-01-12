@@ -288,7 +288,7 @@ export default class RuleConfigurations extends BaseProvision {
      */
     withDescription(description) {
         if (typeof description !== &apos;string&apos; || description.length &gt; 250)
-            throw new Error(&apos;Parameter description must be a string and has a maximum length of 250&apos;);
+            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_250&quot;, parameter: &apos;description&apos; });
         this._description = description;
         return this;
     }

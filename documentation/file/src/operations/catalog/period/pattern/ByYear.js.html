@@ -215,93 +215,93 @@
 import { MONTHS_ENUM } from &apos;./../MONTHS_ENUM&apos;;
 
 export default class ByYear extends ByGeneric {
-	/**
-	* @param {!BaseOperationBuilder} parent - this is a operationBaseBuilder.
-	* @param {!Date} date - Date when operation will be executed
-	* @param {string} periodicityName - Name associated to periodicity	
-	* @param {!number or Date} end - When periodicity ends. By repetitions or by date		
-	*/
-	constructor(parent, date, name, end) {
-		super(parent, date, name, end);
-		let _task = parent._task;
-		if (_task) {
-			var pattern = _task.schedule.repeating.pattern;
-			if (pattern) {
-				//console.log(&quot;PATTERN: &quot; + JSON.stringify(pattern));
-				var yearly = pattern.yearly;
-				if (yearly) {
-					this._day = yearly.day;
-					this._month = yearly.month;
-					super._build();
-				}
-			}
-		}
-	}
+    /**
+     * @param {!BaseOperationBuilder} parent - this is a operationBaseBuilder.
+     * @param {!Date} date - Date when operation will be executed
+     * @param {string} periodicityName - Name associated to periodicity	
+     * @param {!number or Date} end - When periodicity ends. By repetitions or by date		
+     */
+    constructor(parent, date, name, end) {
+        super(parent, date, name, end);
+        let _task = parent._task;
+        if (_task) {
+            var pattern = _task.schedule.repeating.pattern;
+            if (pattern) {
+                //console.log(&quot;PATTERN: &quot; + JSON.stringify(pattern));
+                var yearly = pattern.yearly;
+                if (yearly) {
+                    this._day = yearly.day;
+                    this._month = yearly.month;
+                    super._build();
+                }
+            }
+        }
+    }
 
-	/**
-	* At this day will be executed the operation
-	* @param {!number} day 
-	* @throws {Error} throw error when day is not typeof number
-	* @throws {Error} throw error when day is &gt; 31 and &lt; 1
-	* @return {BaseOperationBuilder}
-	*/
-	day(day) {
-		if (typeof day !== &quot;number&quot;) {
-			if (this._day) {
-				month = this._day;
-			} else
-				throw new Error(&quot;Parameter day must be typeof number&quot;);
-		}
-		if (day &gt; 31 || day &lt; 1) {
-			throw new Error(&quot;Parameter day must be greater than 1 and less than 31&quot;);
-		}
-		this._day = day;
-		if (typeof this._month === &quot;undefined&quot;) {
-			return this;
-		}
-		if (this._parent._task) {
-			this._build();
-			return this;
-		}
-		return this._build();
-	}
-	/**
-	* At this month will be executed the operation
-	* @param {!string} month 
-	* @throws {Error} throw error when month is not typeof string
-	* @throws {Error} throw error when month is not found into MONTHS_ENUM		
-	* @return {BaseOperationBuilder|ByYear}
-	*/
-	month(month) {
-		if (typeof month !== &quot;string&quot;) {
-			if (this._month) {
-				month = this._month;
-			} else
-				throw new Error(&quot;Parameter month must be typeof string&quot;);
-		}
-		let found = MONTHS_ENUM.find(function (month) { return month == this; }, month);
-		if (typeof found === &quot;undefined&quot;) {
-			throw new Error(&quot;Any month into parameter months is not allowed. Parameter value &lt;&apos;&quot; + month + &quot;&apos;&gt;, Months allowed &lt;&apos;&quot; + JSON.stringify(MONTHS_ENUM) + &quot;&apos;&gt;&quot;)
-		}
-		this._month = month;
-		if (typeof this._day === &quot;undefined&quot;) {
-			return this;
-		}
-		if (this._parent._task) {
-			this._build();
-			return this;
-		}
-		return this._build();
-	}
+    /**
+     * At this day will be executed the operation
+     * @param {!number} day 
+     * @throws {Error} throw error when day is not typeof number
+     * @throws {Error} throw error when day is &gt; 31 and &lt; 1
+     * @return {BaseOperationBuilder}
+     */
+    day(day) {
+            if (typeof day !== &quot;number&quot;) {
+                if (this._day) {
+                    month = this._day;
+                } else
+                    throw new Error(&quot;Parameter day must be typeof number&quot;);
+            }
+            if (day &gt; 31 || day &lt; 1) {
+                throw new Error(&quot;Parameter day must be greater than 1 and less than 31&quot;);
+            }
+            this._day = day;
+            if (typeof this._month === &quot;undefined&quot;) {
+                return this;
+            }
+            if (this._parent._task) {
+                this._build();
+                return this;
+            }
+            return this._build();
+        }
+        /**
+         * At this month will be executed the operation
+         * @param {!string} month 
+         * @throws {Error} throw error when month is not typeof string
+         * @throws {Error} throw error when month is not found into MONTHS_ENUM		
+         * @return {BaseOperationBuilder|ByYear}
+         */
+    month(month) {
+        if (typeof month !== &quot;string&quot;) {
+            if (this._month) {
+                month = this._month;
+            } else
+                throw new Error({ message: &quot;OGAPI_STRING_PARAMETER&quot;, parameter: &quot;month&quot; });
+        }
+        let found = MONTHS_ENUM.find(function(month) { return month == this; }, month);
+        if (typeof found === &quot;undefined&quot;) {
+            throw new Error(&quot;Any month into parameter months is not allowed. Parameter value &lt;&apos;&quot; + month + &quot;&apos;&gt;, Months allowed &lt;&apos;&quot; + JSON.stringify(MONTHS_ENUM) + &quot;&apos;&gt;&quot;)
+        }
+        this._month = month;
+        if (typeof this._day === &quot;undefined&quot;) {
+            return this;
+        }
+        if (this._parent._task) {
+            this._build();
+            return this;
+        }
+        return this._build();
+    }
 
-	_create() {
-		let skeleton = super._create();
-		skeleton.repeating.pattern.yearly = {
-			day: this._day,
-			month: this._month
-		};
-		return skeleton;
-	}
+    _create() {
+        let skeleton = super._create();
+        skeleton.repeating.pattern.yearly = {
+            day: this._day,
+            month: this._month
+        };
+        return skeleton;
+    }
 }</code></pre>
 
 </div>

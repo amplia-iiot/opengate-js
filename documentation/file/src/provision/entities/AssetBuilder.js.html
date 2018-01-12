@@ -319,51 +319,47 @@ class BoxBuilder {
                 promise: wrapper.execute(defer, 10)
             });
         });
-        /* postObj[&apos;resourceType&apos;] = {
-            &quot;_value&quot;: {
-              &quot;_current&quot;: {
-                &quot;value&quot;: &quot;entity.asset&quot;
-              }
-            }
-          }
-*/
+
         q.allSettled(
             childEntityPromises.reduce(function(previousValue, current) {
                 previousValue.push(current.promise);
                 return previousValue;
             }, [])).then(() =&gt; {
             defer.notify({
-                message: &apos;All related entities have been created.&apos;,
+                message: &apos;OGAPI_201_ENTITIES_CREATED&apos;,
                 type: &apos;success&apos;,
                 percentage: 20
             });
             defer.notify({
-                message: &apos;Creating new asset:&apos; + _this._key._value._current.value,
+                entity: _this._key._value._current.value,
+                message: &apos;OGAPI_CREATING_ASSET&apos;,
                 type: &apos;success&apos;,
                 percentage: 25
             });
             return _this._ogapi.Napi.post(_this._url, postObj)
                 .then((res) =&gt; {
                     defer.notify({
-                        message: &apos;Created asset:&apos; + _this._key._value._current.value,
+                        entity: _this._key._value._current.value,
+                        message: &apos;OGAPI_ASSET_CREATED&apos;,
                         type: &apos;success&apos;,
                         percentage: 50
                     });
                     if (_this._wrappers.length &gt; 0) {
                         defer.notify({
-                            message: &apos;Adding related entities&apos;,
+                            message: &apos;OGAPI_ADDING_RELATED_ENTITIES&apos;,
                             type: &apos;success&apos;,
                             percentage: 55
                         });
                         return _this._ogapi.Napi.put(_this._urlWithKey(), putObj)
                             .then((res) =&gt; {
                                 if (res.statusCode === HttpStatus.OK) {
-                                    console.log(&quot;CREATEOK: &quot; + JSON.stringify(res));
+                                    //console.log(&quot;CREATEOK: &quot; + JSON.stringify(res));
                                     if (typeof _this._onCreated === &quot;function&quot;) {
                                         _this._onCreated(res.header[&apos;location&apos;]);
                                     }
                                     defer.notify({
-                                        message: &apos;asset created successfully: &apos; + _this._key._value._current.value,
+                                        entity: _this._key._value._current.value,
+                                        message: &apos;OGAPI_ASSET_CREATED&apos;,
                                         type: &apos;success&apos;,
                                         percentage: 75
                                     });
@@ -385,7 +381,8 @@ class BoxBuilder {
                                 _this._onCreated(res.header[&apos;location&apos;]);
                             }
                             defer.notify({
-                                message: &apos;asset created successfully: &apos; + _this._key._value._current.value,
+                                entity: _this._key._value._current.value,
+                                message: &apos;OGAPI_ASSET_CREATED&apos;,
                                 type: &apos;success&apos;,
                                 percentage: 75
                             });
@@ -403,16 +400,14 @@ class BoxBuilder {
 
                 });
         }).catch((err) =&gt; {
-            err.data.errors.forEach((err) =&gt; {
-                var error = err.description;
-                if (err.label)
-                    error += &quot;:&quot; + err.label;
+            if (err.data.errors) {
                 defer.notify({
-                    message: &apos;Error: &apos; + error,
+                    message: err,
                     type: &apos;error&apos;,
                     percentage: 80
                 });
-            });
+            }
+
             let deletePromises = [_this.delete(defer, 90)];
             childEntityPromises.forEach((item) =&gt; {
                 deletePromises.push(item.wrapper.delete(defer, 90));
@@ -444,12 +439,13 @@ class BoxBuilder {
                 return previousValue;
             }, [])).then(() =&gt; {
             defer.notify({
-                message: &apos;All related entities have been created.&apos;,
+                message: &apos;OGAPI_201_ENTITIES_CREATED&apos;,
                 type: &apos;success&apos;,
                 percentage: 40
             });
             defer.notify({
-                message: &apos;Adding related entities to Asset:&apos; + _this._key._value._current.value,
+                entity: _this._key._value._current.value,
+                message: &apos;OGAPI_ADDING_RELATED_ENTITIES&apos;,
                 type: &apos;success&apos;,
                 percentage: 45
             });
@@ -461,7 +457,8 @@ class BoxBuilder {
                             _this._onCreated(res.header[&apos;location&apos;]);
                         }
                         defer.notify({
-                            message: &apos;Asset updated successfully: &apos; + _this._key._value._current.value,
+                            entity: _this._key._value._current.value,
+                            message: &apos;OGAPI_200_ENTITIES_UPDATED&apos;,
                             type: &apos;success&apos;,
                             percentage: 90
                         });
@@ -478,7 +475,7 @@ class BoxBuilder {
                 });
         }).catch((err) =&gt; {
             console.error(err);
-            defer.notify(&apos;Something was wrong updating Asset&apos;);
+            defer.notify(&apos;OGAPI_SOMETHING_WRONG_UPDATING_ASSET&apos;);
             defer.reject(err);
         });
         return defer.promise;
@@ -489,7 +486,8 @@ class BoxBuilder {
         return this._ogapi.Napi.delete(this._urlWithKey())
             .then((res) =&gt; {
                 defered.notify({
-                    message: &apos;Entity deleted:&apos; + _this._key,
+                    entity: _this._key,
+                    message: &apos;OGAPI_ENTITY_DELETED&apos;,
                     type: &apos;warning&apos;,
                     percentage: percentage
                 });
@@ -528,13 +526,13 @@ class WrapperBuilder {
             if (!exists) {
                 create(defered, defer, percentage);
             } else {
-                defer.resolve(&apos;Entity was already created:&apos; + _this._key)
+                defer.resolve({ message: OGAPI_ENTITY_ALREADY_CREATED, entity: _this._key })
             }
         }).catch((exists) =&gt; {
             if (!exists) {
                 create(defered, defer, percentage);
             } else {
-                defer.resolve(&apos;Entity was already created:&apos; + _this._key)
+                defer.resolve({ message: OGAPI_ENTITY_ALREADY_CREATED, entity: _this._key })
             }
         });
         return defer.promise;
@@ -544,19 +542,27 @@ class WrapperBuilder {
                 .then((res) =&gt; {
                     _this._created = true;
                     defered.notify({
-                        message: &apos;Entity created:&apos; + _this._key,
+                        entity: _this._key,
+                        message: &apos;OGAPI_ENTITY_CREATED&apos;,
                         type: &apos;success&apos;,
                         percentage: percentage
                     });
-                    defer.resolve(&apos;Entity created:&apos; + _this._key);
+                    defer.resolve({
+                        entity: _this._key,
+                        message: &apos;OGAPI_ENTITY_CREATED&apos;,
+                    });
                 }).catch((err) =&gt; {
                     console.error(err);
                     defered.notify({
-                        message: &apos;Error creating entity:&apos; + _this._key,
+                        entity: _this._key,
+                        message: &apos;OGAPI_ENTITY_CREATED&apos;,
                         type: &apos;warning&apos;,
                         percentage: percentage
                     });
-                    defer.reject(&apos;Error creating entity:&apos; + _this._key);
+                    defer.reject({
+                        entity: _this._key,
+                        message: &apos;OGAPI_SOMETHING_WRONG_CREATING&apos;,
+                    });
                 });
         }
     }
@@ -567,7 +573,8 @@ class WrapperBuilder {
             return this._ogapi.Napi.delete(this._urlWithKey())
                 .then((res) =&gt; {
                     defered.notify({
-                        message: &apos;Entity deleted:&apos; + _this._key,
+                        entity: _this._key,
+                        message: &apos;OGAPI_ENTITY_DELETED&apos;,
                         type: &apos;warning&apos;,
                         percentage: percentage
                     });

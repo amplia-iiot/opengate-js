@@ -240,7 +240,7 @@ export default class Channels extends BaseProvision {
      */
     withName(name) {
         if (typeof name !== &apos;string&apos; || name.length &gt; 50)
-            throw new Error(&apos;Parameter name must be a string and has a maximum length of 50&apos;);
+            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_50&quot;, parameter: &apos;name&apos; });
         this._name = name;
         return this;
     }
@@ -251,8 +251,8 @@ export default class Channels extends BaseProvision {
      * @return {Channels}
      */
     withDescription(description) {
-        if (typeof description !== &apos;string&apos; || description.length &gt; 200)
-            throw new Error(&apos;Parameter description must be a string and has a maximum length of 200&apos;);
+        if (typeof description !== &apos;string&apos; || description.length &gt; 250)
+            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_250&quot;, parameter: &apos;description&apos; });
         this._description = description;
         return this;
     }
@@ -265,7 +265,7 @@ export default class Channels extends BaseProvision {
      */
     withOrganization(organization) {
         if (typeof organization !== &apos;string&apos; || organization.length &gt; 50)
-            throw new Error(&apos;Parameter organization must be a string and has a maximum length of 50&apos;);
+            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_50&quot;, parameter: &apos;organization&apos; });
         this._organization = organization;
         return this;
     }
@@ -277,7 +277,7 @@ export default class Channels extends BaseProvision {
      */
     withCertificate(certificate) {
         if (typeof certificate !== &apos;string&apos;)
-            throw new Error(&apos;Parameter certificate must be a string&apos;);
+            throw new Error({ message: &apos;OGAPI_STRING_PARAMETER&apos;, parameter: &apos;certificate&apos; });
 
         if (!this._certificates)
             this._certificates = [];

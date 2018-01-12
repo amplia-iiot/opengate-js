@@ -307,7 +307,7 @@ export default class Areas extends BaseProvision {
     /* fields validations */
     _checkType(type) {
         let not_found = [];
-        let found = TYPE_ENUM.find(function (type) {
+        let found = TYPE_ENUM.find(function(type) {
             return type == this;
         }, type);
 
@@ -315,20 +315,20 @@ export default class Areas extends BaseProvision {
             not_found.push(type);
         }
         if (not_found.length !== 0) {
-            throw new Error(&quot;Parameter type value not allowed &lt;&apos;&quot; + JSON.stringify(not_found) + &quot;&apos;&gt;, allowed &lt;&apos;&quot; + JSON.stringify(TYPE_ENUM) + &quot;&apos;&gt;&quot;)
+            throw new Error({ message: &quot;OGAPI_NOT_ALLOWED_PARAMETER&quot;, parameter: JSON.stringify(not_found), allowed: JSON.stringify(TYPE_ENUM) });
         }
         return type;
     }
 
     _checkString(parameter, length, name) {
         if (typeof parameter !== &apos;string&apos; || parameter.length &gt; length) {
-            throw new Error(&apos;Parameter &apos; + name + &apos;must be a string an has a maximum legth of &apos; + length);
+            throw new Error([{ message: &apos;OGAPI_STRING_PARAMETER&apos;, parameter: name }, { message: &apos;OGAPI_MAX_LENGTH&apos;, parameter: length }]);
         }
     }
 
     _checkArray(parameter, name) {
         if (!Array.isArray(parameter) || parameter.length === 0) {
-            throw new Error(&apos;Parameter &apos; + name + &apos; must be a array and not be empty&apos;);
+            throw new Error({ message: &apos;OGAPI_ARRAY_PARAMETER&apos;, parameter: name });
         }
     }
 

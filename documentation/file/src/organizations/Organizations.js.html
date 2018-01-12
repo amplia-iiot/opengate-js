@@ -240,7 +240,7 @@ export default class Organizations extends BaseProvision {
      */
     withName(name) {
         if (typeof name !== &apos;string&apos; || name.length === 0 || name.length &gt; 50)
-            throw new Error(&apos;Parameter name must be a string, cannot be empty and has a maximum length of 50&apos;);
+            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_50&quot;, parameter: &apos;name&apos; });
         this._name = name;
         return this;
     }
@@ -251,19 +251,19 @@ export default class Organizations extends BaseProvision {
      * @return {Organizations}
      */
     withDomain(domain) {
-        if (typeof domain !== &apos;string&apos; || domain.length &gt; 50)
-            throw new Error(&apos;Parameter domain must be a string and has a maximum length of 50&apos;);
-        this._domain = domain;
-        return this;
-    }
-    /**
-     * Set the description attribute
-     * @param {string} description 
-     * @return {Organizations}
-     */
+            if (typeof domain !== &apos;string&apos; || domain.length &gt; 50)
+                throw new Error({ message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_50&quot;, parameter: &apos;domain&apos; });
+            this._domain = domain;
+            return this;
+        }
+        /**
+         * Set the description attribute
+         * @param {string} description 
+         * @return {Organizations}
+         */
     withDescription(description) {
         if (typeof description !== &apos;string&apos; || description.length &gt; 250)
-            throw new Error(&apos;Parameter description must be a string and has a maximum length of 250&apos;);
+            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_250&quot;, parameter: &apos;description&apos; });
         this._description = description;
         return this;
     }
@@ -275,7 +275,7 @@ export default class Organizations extends BaseProvision {
      */
     withCountryCode(countryCode) {
         if (typeof countryCode !== &apos;string&apos; || countryCode.length === 0)
-            throw new Error(&apos;Country code must be a string and cannot be empty&apos;);
+            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER&quot;, parameter: &apos;countryCode&apos; });
         this._countryCode = countryCode.toUpperCase();
         return this;
     }
@@ -287,7 +287,7 @@ export default class Organizations extends BaseProvision {
      */
     withLangCode(langCode) {
         if (typeof langCode !== &apos;string&apos; || langCode.length === 0)
-            throw new Error(&apos;Lang code must be a string and cannot be empty&apos;);
+            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER&quot;, parameter: &apos;langCode&apos; });
         this._langCode = langCode.toLowerCase();
         return this;
     }
@@ -299,7 +299,7 @@ export default class Organizations extends BaseProvision {
      */
     withTimeZone(timeZone) {
         if (typeof timeZone !== &apos;string&apos; || timeZone.length === 0)
-            throw new Error(&apos;Time Zone must be a string and cannot be empty&apos;);
+            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER&quot;, parameter: &apos;time Zone&apos; });
         this._timeZone = timeZone;
         return this;
     }
@@ -311,7 +311,7 @@ export default class Organizations extends BaseProvision {
      */
     withPlan(plan) {
         if (typeof plan !== &apos;string&apos; || plan.length === 0)
-            throw new Error(&apos;Plan must be a string and cannot be empty&apos;);
+            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER&quot;, parameter: &apos;plan&apos; });
         this._plan = plan;
         return this;
     }
