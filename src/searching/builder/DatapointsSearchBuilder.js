@@ -141,4 +141,24 @@ export default class DatapointsSearchBuilder extends SearchBuilder {
         }
         return filter;
     }
+
+    /**
+     * The search request will have this filter 
+     * @example
+     *  ogapi.entitiesSearchBuilder().select(
+     *      ogapi.newSelectBuilder().add(SE.element("provision.device.identifier", ["value"], "id"), SE.add("device.temperature.value", ["value"]))
+     *  ) // Setting SelectBuilder
+     *  ogapi.entitiesSearchBuilder().select({
+     *      "elements": [
+     *          {"name": "provision.device.identifier","fields": ["value"],"alias": "id"},
+     *          {"name": "device.temperature.value","fields": ["value"]}
+     *      ]
+     *  }) //Custom select
+     * @param {!(SelectBuilder|object)} select
+     * @return {SearchBuilder} 
+     */
+    select(select) {
+        this._builderParams.select = (select || []);
+        return this;
+    }
 }
