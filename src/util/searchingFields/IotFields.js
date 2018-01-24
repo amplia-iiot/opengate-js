@@ -197,6 +197,16 @@ export const IOT_FIELDS = {
             "domain.description"
         ]
     },
+    "AREAS": {
+        "AREAS": [
+            "areas.identifier",
+            "areas.name",
+            "areas.description",
+            "areas.entities",
+            "areas.geometry",
+            "areas.organization"
+        ]
+    },
     "GENERAL": {
         "GENERAL": []
     },

@@ -212,7 +212,7 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/searching/builder/AreasSearchBuilder.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-import SearchWithSummaryBuilder from &apos;./SearchWithSummaryBuilder&apos;;
+import SearchBuilder from &apos;./SearchBuilder&apos;;
 import FieldFinder from &apos;../../util/searchingFields/FieldFinder&apos;;
 
 const BASE_URL = &apos;/areas&apos;;
@@ -220,7 +220,7 @@ const BASE_URL = &apos;/areas&apos;;
  * Defined a search over Areas	
  * @example ogapi.areasSearchBuilder()
  */
-export default class AreasSearchBuilder extends SearchWithSummaryBuilder {
+export default class AreasSearchBuilder extends SearchBuilder {
     /**
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */

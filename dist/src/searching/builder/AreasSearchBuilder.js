@@ -12,9 +12,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _SearchWithSummaryBuilder2 = require('./SearchWithSummaryBuilder');
+var _SearchBuilder2 = require('./SearchBuilder');
 
-var _SearchWithSummaryBuilder3 = _interopRequireDefault(_SearchWithSummaryBuilder2);
+var _SearchBuilder3 = _interopRequireDefault(_SearchBuilder2);
 
 var _utilSearchingFieldsFieldFinder = require('../../util/searchingFields/FieldFinder');
 
@@ -26,8 +26,8 @@ var BASE_URL = '/areas';
  * @example ogapi.areasSearchBuilder()
  */
 
-var AreasSearchBuilder = (function (_SearchWithSummaryBuilder) {
-  _inherits(AreasSearchBuilder, _SearchWithSummaryBuilder);
+var AreasSearchBuilder = (function (_SearchBuilder) {
+  _inherits(AreasSearchBuilder, _SearchBuilder);
 
   /**
    *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
@@ -41,7 +41,7 @@ var AreasSearchBuilder = (function (_SearchWithSummaryBuilder) {
   }
 
   return AreasSearchBuilder;
-})(_SearchWithSummaryBuilder3['default']);
+})(_SearchBuilder3['default']);
 
 exports['default'] = AreasSearchBuilder;
 module.exports = exports['default'];

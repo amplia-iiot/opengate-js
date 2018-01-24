@@ -48,6 +48,7 @@ var match_url = {
     '/catalog/hardwares': 'MODEL',
     '/domains': 'DOMAIN',
     '/users': 'USER',
+    '/areas': 'AREAS',
     '/devices': 'SearchOnDatamodel',
     '/subscriptions': 'SearchOnDatamodel',
     '/subscribers': 'SearchOnDatamodel',
