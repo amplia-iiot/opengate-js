@@ -1,6 +1,6 @@
 'use strict';
 
-import SearchWithSummaryBuilder from './SearchWithSummaryBuilder';
+import SearchBuilder from './SearchBuilder';
 import FieldFinder from '../../util/searchingFields/FieldFinder';
 
 const BASE_URL = '/areas';
@@ -8,7 +8,7 @@ const BASE_URL = '/areas';
  * Defined a search over Areas	
  * @example ogapi.areasSearchBuilder()
  */
-export default class AreasSearchBuilder extends SearchWithSummaryBuilder {
+export default class AreasSearchBuilder extends SearchBuilder {
     /**
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */
