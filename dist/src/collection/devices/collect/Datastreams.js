@@ -36,8 +36,7 @@ var Datastream = (function () {
     _createClass(Datastream, [{
         key: 'withId',
         value: function withId(id) {
-            if (typeof id !== 'string' || id.length === 0) OGAPI_STRING_PARAMETER;
-            throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'id' });
+            if (typeof id !== 'string' || id.length === 0) throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'id' });
             this._id = id;
             return this;
         }
