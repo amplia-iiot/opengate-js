@@ -146,6 +146,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CertificatesSearchBuilder.js~CertificatesSearchBuilder.html">CertificatesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ChannelsSearchBuilder.js~ChannelsSearchBuilder.html">ChannelsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CommunicationsModuleTypeSearchBuilder.js~CommunicationsModuleTypeSearchBuilder.html">CommunicationsModuleTypeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CountryCodesSearchBuilder.js~CountryCodesSearchBuilder.html">CountryCodesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatamodelsSearchBuilder.js~DatamodelsSearchBuilder.html">DatamodelsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatapointsSearchBuilder.js~DatapointsSearchBuilder.html">DatapointsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatastreamsSearchBuilder.js~DatastreamsSearchBuilder.html">DatastreamsSearchBuilder</a></span></span></li>
@@ -177,6 +178,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SpecificTypeSearchBuilder.js~SpecificTypeSearchBuilder.html">SpecificTypeSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscribersSearchBuilder.js~SubscribersSearchBuilder.html">SubscribersSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscriptionsSearchBuilder.js~SubscriptionsSearchBuilder.html">SubscriptionsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UserLanguagesSearchBuilder.js~UserLanguagesSearchBuilder.html">UserLanguagesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UserProfilesSearchBuilder.js~UserProfilesSearchBuilder.html">UserProfilesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UsersSearchBuilder.js~UsersSearchBuilder.html">UsersSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/WorkgroupsSearchBuilder.js~WorkgroupsSearchBuilder.html">WorkgroupsSearchBuilder</a></span></span></li>
@@ -339,6 +341,8 @@ export default class StaticSearch extends Search {
             case &apos;ioTDatastreamAccess&apos;:
             case &apos;resourceType&apos;:
             case &apos;allowedResourceType&apos;:
+            case &apos;countryCodes&apos;:
+            case &apos;userLanguages&apos;:
             case &apos;ioTDatastreamStoragePeriod&apos;:
                 {
                     if (filter) {
@@ -830,8 +834,1277 @@ export default class StaticSearch extends Search {
                     &apos;description&apos;: &apos;Not yet supported. For future uses only&apos;,
                     &apos;subtype&apos;: []
                 }
-            }
-
+            },
+            &apos;userLanguages&apos;: [{
+                    &apos;code&apos;: &apos;es&apos;,
+                    &apos;language&apos;: &quot;Espa&#xF1;ol/Spanish&quot;
+                },
+                {
+                    &apos;code&apos;: &apos;en&apos;,
+                    &apos;language&apos;: &quot;Ingl&#xE9;s/English&quot;
+                }
+            ],
+            &apos;countryCodes&apos;: [{
+                    &quot;code&quot;: &quot;AD&quot;,
+                    &quot;country&quot;: &quot;Andorra&quot;,
+                    &quot;zone&quot;: &quot;Europe/Andorra&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;AE&quot;,
+                    &quot;country&quot;: &quot;United Arab Emirates&quot;,
+                    &quot;zone&quot;: &quot;Asia/Dubai&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;AF&quot;,
+                    &quot;country&quot;: &quot;Afghanistan&quot;,
+                    &quot;zone&quot;: &quot;Asia/Kabul&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;AG&quot;,
+                    &quot;country&quot;: &quot;Antigua and Barbuda&quot;,
+                    &quot;zone&quot;: &quot;America/Antigua&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;AI&quot;,
+                    &quot;country&quot;: &quot;Anguilla&quot;,
+                    &quot;zone&quot;: &quot;America/Anguilla&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;AL&quot;,
+                    &quot;country&quot;: &quot;Albania&quot;,
+                    &quot;zone&quot;: &quot;Europe/Tirane&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;AM&quot;,
+                    &quot;country&quot;: &quot;Armenia&quot;,
+                    &quot;zone&quot;: &quot;Asia/Yerevan&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;AN&quot;,
+                    &quot;country&quot;: &quot;Netherlands Antilles&quot;,
+                    &quot;zone&quot;: &quot;Netherlands Antilles&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;AO&quot;,
+                    &quot;country&quot;: &quot;Angola&quot;,
+                    &quot;zone&quot;: &quot;Africa/Luanda&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;AQ&quot;,
+                    &quot;country&quot;: &quot;Antarctica&quot;,
+                    &quot;zone&quot;: &quot;Antarctica/McMurdo&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;AR&quot;,
+                    &quot;country&quot;: &quot;Argentina&quot;,
+                    &quot;zone&quot;: &quot;America/Argentina/Buenos_Aires&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;AS&quot;,
+                    &quot;country&quot;: &quot;American Samoa&quot;,
+                    &quot;zone&quot;: &quot;Pacific/Pago_Pago&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;AT&quot;,
+                    &quot;country&quot;: &quot;Austria&quot;,
+                    &quot;zone&quot;: &quot;Europe/Vienna&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;AU&quot;,
+                    &quot;country&quot;: &quot;Australia&quot;,
+                    &quot;zone&quot;: &quot;Australia/Lord_Howe&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;AW&quot;,
+                    &quot;country&quot;: &quot;Aruba&quot;,
+                    &quot;zone&quot;: &quot;America/Aruba&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;AX&quot;,
+                    &quot;country&quot;: &quot;Aland Islands&quot;,
+                    &quot;zone&quot;: &quot;Europe/Mariehamn&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;AZ&quot;,
+                    &quot;country&quot;: &quot;Azerbaijan&quot;,
+                    &quot;zone&quot;: &quot;Asia/Baku&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;BA&quot;,
+                    &quot;country&quot;: &quot;Bosnia and Herzegovina&quot;,
+                    &quot;zone&quot;: &quot;Europe/Sarajevo&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;BB&quot;,
+                    &quot;country&quot;: &quot;Barbados&quot;,
+                    &quot;zone&quot;: &quot;America/Barbados&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;BD&quot;,
+                    &quot;country&quot;: &quot;Bangladesh&quot;,
+                    &quot;zone&quot;: &quot;Asia/Dhaka&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;BE&quot;,
+                    &quot;country&quot;: &quot;Belgium&quot;,
+                    &quot;zone&quot;: &quot;Europe/Brussels&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;BF&quot;,
+                    &quot;country&quot;: &quot;Burkina Faso&quot;,
+                    &quot;zone&quot;: &quot;Africa/Ouagadougou&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;BG&quot;,
+                    &quot;country&quot;: &quot;Bulgaria&quot;,
+                    &quot;zone&quot;: &quot;Europe/Sofia&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;BH&quot;,
+                    &quot;country&quot;: &quot;Bahrain&quot;,
+                    &quot;zone&quot;: &quot;Asia/Bahrain&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;BI&quot;,
+                    &quot;country&quot;: &quot;Burundi&quot;,
+                    &quot;zone&quot;: &quot;Africa/Bujumbura&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;BJ&quot;,
+                    &quot;country&quot;: &quot;Benin&quot;,
+                    &quot;zone&quot;: &quot;Africa/Porto-Novo&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;BL&quot;,
+                    &quot;country&quot;: &quot;Saint Barth&#xE9;lemy&quot;,
+                    &quot;zone&quot;: &quot;America/St_Barthelemy&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;BM&quot;,
+                    &quot;country&quot;: &quot;Bermuda&quot;,
+                    &quot;zone&quot;: &quot;Atlantic/Bermuda&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;BN&quot;,
+                    &quot;country&quot;: &quot;Brunei&quot;,
+                    &quot;zone&quot;: &quot;Asia/Brunei&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;BO&quot;,
+                    &quot;country&quot;: &quot;Bolivia&quot;,
+                    &quot;zone&quot;: &quot;America/La_Paz&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;BQ&quot;,
+                    &quot;country&quot;: &quot;Bonaire, Saint Eustatius and Saba&quot;,
+                    &quot;zone&quot;: &quot;America/Kralendijk&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;BR&quot;,
+                    &quot;country&quot;: &quot;Brazil&quot;,
+                    &quot;zone&quot;: &quot;America/Noronha&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;BS&quot;,
+                    &quot;country&quot;: &quot;Bahamas&quot;,
+                    &quot;zone&quot;: &quot;America/Nassau&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;BT&quot;,
+                    &quot;country&quot;: &quot;Bhutan&quot;,
+                    &quot;zone&quot;: &quot;Asia/Thimphu&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;BV&quot;,
+                    &quot;country&quot;: &quot;Bouvet Island&quot;,
+                    &quot;zone&quot;: &quot;Bouvet Island&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;BW&quot;,
+                    &quot;country&quot;: &quot;Botswana&quot;,
+                    &quot;zone&quot;: &quot;Africa/Gaborone&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;BY&quot;,
+                    &quot;country&quot;: &quot;Belarus&quot;,
+                    &quot;zone&quot;: &quot;Europe/Minsk&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;BZ&quot;,
+                    &quot;country&quot;: &quot;Belize&quot;,
+                    &quot;zone&quot;: &quot;America/Belize&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;CA&quot;,
+                    &quot;country&quot;: &quot;Canada&quot;,
+                    &quot;zone&quot;: &quot;America/St_Johns&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;CC&quot;,
+                    &quot;country&quot;: &quot;Cocos Islands&quot;,
+                    &quot;zone&quot;: &quot;Indian/Cocos&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;CD&quot;,
+                    &quot;country&quot;: &quot;Democratic Republic of the Congo&quot;,
+                    &quot;zone&quot;: &quot;Africa/Kinshasa&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;CF&quot;,
+                    &quot;country&quot;: &quot;Central African Republic&quot;,
+                    &quot;zone&quot;: &quot;Africa/Bangui&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;CG&quot;,
+                    &quot;country&quot;: &quot;Republic of the Congo&quot;,
+                    &quot;zone&quot;: &quot;Africa/Brazzaville&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;CH&quot;,
+                    &quot;country&quot;: &quot;Switzerland&quot;,
+                    &quot;zone&quot;: &quot;Europe/Zurich&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;CI&quot;,
+                    &quot;country&quot;: &quot;Ivory Coast&quot;,
+                    &quot;zone&quot;: &quot;Africa/Abidjan&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;CK&quot;,
+                    &quot;country&quot;: &quot;Cook Islands&quot;,
+                    &quot;zone&quot;: &quot;Pacific/Rarotonga&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;CL&quot;,
+                    &quot;country&quot;: &quot;Chile&quot;,
+                    &quot;zone&quot;: &quot;America/Santiago&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;CM&quot;,
+                    &quot;country&quot;: &quot;Cameroon&quot;,
+                    &quot;zone&quot;: &quot;Africa/Douala&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;CN&quot;,
+                    &quot;country&quot;: &quot;China&quot;,
+                    &quot;zone&quot;: &quot;Asia/Shanghai&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;CO&quot;,
+                    &quot;country&quot;: &quot;Colombia&quot;,
+                    &quot;zone&quot;: &quot;America/Bogota&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;CR&quot;,
+                    &quot;country&quot;: &quot;Costa Rica&quot;,
+                    &quot;zone&quot;: &quot;America/Costa_Rica&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;CS&quot;,
+                    &quot;country&quot;: &quot;Serbia and Montenegro&quot;,
+                    &quot;zone&quot;: &quot;Serbia and Montenegro&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;CU&quot;,
+                    &quot;country&quot;: &quot;Cuba&quot;,
+                    &quot;zone&quot;: &quot;America/Havana&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;CV&quot;,
+                    &quot;country&quot;: &quot;Cape Verde&quot;,
+                    &quot;zone&quot;: &quot;Atlantic/Cape_Verde&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;CW&quot;,
+                    &quot;country&quot;: &quot;Cura&#xE7;ao&quot;,
+                    &quot;zone&quot;: &quot;America/Curacao&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;CX&quot;,
+                    &quot;country&quot;: &quot;Christmas Island&quot;,
+                    &quot;zone&quot;: &quot;Indian/Christmas&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;CY&quot;,
+                    &quot;country&quot;: &quot;Cyprus&quot;,
+                    &quot;zone&quot;: &quot;Asia/Nicosia&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;CZ&quot;,
+                    &quot;country&quot;: &quot;Czech Republic&quot;,
+                    &quot;zone&quot;: &quot;Europe/Prague&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;DE&quot;,
+                    &quot;country&quot;: &quot;Germany&quot;,
+                    &quot;zone&quot;: &quot;Europe/Berlin&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;DJ&quot;,
+                    &quot;country&quot;: &quot;Djibouti&quot;,
+                    &quot;zone&quot;: &quot;Africa/Djibouti&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;DK&quot;,
+                    &quot;country&quot;: &quot;Denmark&quot;,
+                    &quot;zone&quot;: &quot;Europe/Copenhagen&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;DM&quot;,
+                    &quot;country&quot;: &quot;Dominica&quot;,
+                    &quot;zone&quot;: &quot;America/Dominica&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;DO&quot;,
+                    &quot;country&quot;: &quot;Dominican Republic&quot;,
+                    &quot;zone&quot;: &quot;America/Santo_Domingo&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;DZ&quot;,
+                    &quot;country&quot;: &quot;Algeria&quot;,
+                    &quot;zone&quot;: &quot;Africa/Algiers&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;EC&quot;,
+                    &quot;country&quot;: &quot;Ecuador&quot;,
+                    &quot;zone&quot;: &quot;America/Guayaquil&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;EE&quot;,
+                    &quot;country&quot;: &quot;Estonia&quot;,
+                    &quot;zone&quot;: &quot;Europe/Tallinn&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;EG&quot;,
+                    &quot;country&quot;: &quot;Egypt&quot;,
+                    &quot;zone&quot;: &quot;Africa/Cairo&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;EH&quot;,
+                    &quot;country&quot;: &quot;Western Sahara&quot;,
+                    &quot;zone&quot;: &quot;Africa/El_Aaiun&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;ER&quot;,
+                    &quot;country&quot;: &quot;Eritrea&quot;,
+                    &quot;zone&quot;: &quot;Africa/Asmara&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;ES&quot;,
+                    &quot;country&quot;: &quot;Spain&quot;,
+                    &quot;zone&quot;: &quot;Europe/Madrid&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;ET&quot;,
+                    &quot;country&quot;: &quot;Ethiopia&quot;,
+                    &quot;zone&quot;: &quot;Africa/Addis_Ababa&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;FI&quot;,
+                    &quot;country&quot;: &quot;Finland&quot;,
+                    &quot;zone&quot;: &quot;Europe/Helsinki&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;FJ&quot;,
+                    &quot;country&quot;: &quot;Fiji&quot;,
+                    &quot;zone&quot;: &quot;Pacific/Fiji&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;FK&quot;,
+                    &quot;country&quot;: &quot;Falkland Islands&quot;,
+                    &quot;zone&quot;: &quot;Atlantic/Stanley&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;FM&quot;,
+                    &quot;country&quot;: &quot;Micronesia&quot;,
+                    &quot;zone&quot;: &quot;Pacific/Chuuk&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;FO&quot;,
+                    &quot;country&quot;: &quot;Faroe Islands&quot;,
+                    &quot;zone&quot;: &quot;Atlantic/Faroe&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;FR&quot;,
+                    &quot;country&quot;: &quot;France&quot;,
+                    &quot;zone&quot;: &quot;Europe/Paris&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;GA&quot;,
+                    &quot;country&quot;: &quot;Gabon&quot;,
+                    &quot;zone&quot;: &quot;Africa/Libreville&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;GB&quot;,
+                    &quot;country&quot;: &quot;United Kingdom&quot;,
+                    &quot;zone&quot;: &quot;Europe/London&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;GD&quot;,
+                    &quot;country&quot;: &quot;Grenada&quot;,
+                    &quot;zone&quot;: &quot;America/Grenada&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;GE&quot;,
+                    &quot;country&quot;: &quot;Georgia&quot;,
+                    &quot;zone&quot;: &quot;Asia/Tbilisi&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;GF&quot;,
+                    &quot;country&quot;: &quot;French Guiana&quot;,
+                    &quot;zone&quot;: &quot;America/Cayenne&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;GG&quot;,
+                    &quot;country&quot;: &quot;Guernsey&quot;,
+                    &quot;zone&quot;: &quot;Europe/Guernsey&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;GH&quot;,
+                    &quot;country&quot;: &quot;Ghana&quot;,
+                    &quot;zone&quot;: &quot;Africa/Accra&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;GI&quot;,
+                    &quot;country&quot;: &quot;Gibraltar&quot;,
+                    &quot;zone&quot;: &quot;Europe/Gibraltar&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;GL&quot;,
+                    &quot;country&quot;: &quot;Greenland&quot;,
+                    &quot;zone&quot;: &quot;America/Godthab&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;GM&quot;,
+                    &quot;country&quot;: &quot;Gambia&quot;,
+                    &quot;zone&quot;: &quot;Africa/Banjul&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;GN&quot;,
+                    &quot;country&quot;: &quot;Guinea&quot;,
+                    &quot;zone&quot;: &quot;Africa/Conakry&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;GP&quot;,
+                    &quot;country&quot;: &quot;Guadeloupe&quot;,
+                    &quot;zone&quot;: &quot;America/Guadeloupe&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;GQ&quot;,
+                    &quot;country&quot;: &quot;Equatorial Guinea&quot;,
+                    &quot;zone&quot;: &quot;Africa/Malabo&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;GR&quot;,
+                    &quot;country&quot;: &quot;Greece&quot;,
+                    &quot;zone&quot;: &quot;Europe/Athens&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;GS&quot;,
+                    &quot;country&quot;: &quot;South Georgia and the South Sandwich Islands&quot;,
+                    &quot;zone&quot;: &quot;Atlantic/South_Georgia&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;GT&quot;,
+                    &quot;country&quot;: &quot;Guatemala&quot;,
+                    &quot;zone&quot;: &quot;America/Guatemala&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;GU&quot;,
+                    &quot;country&quot;: &quot;Guam&quot;,
+                    &quot;zone&quot;: &quot;Pacific/Guam&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;GW&quot;,
+                    &quot;country&quot;: &quot;Guinea-Bissau&quot;,
+                    &quot;zone&quot;: &quot;Africa/Bissau&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;GY&quot;,
+                    &quot;country&quot;: &quot;Guyana&quot;,
+                    &quot;zone&quot;: &quot;America/Guyana&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;HK&quot;,
+                    &quot;country&quot;: &quot;Hong Kong&quot;,
+                    &quot;zone&quot;: &quot;Asia/Hong_Kong&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;HM&quot;,
+                    &quot;country&quot;: &quot;Heard Island and McDonald Islands&quot;,
+                    &quot;zone&quot;: &quot;Heard Island and McDonald Islands&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;HN&quot;,
+                    &quot;country&quot;: &quot;Honduras&quot;,
+                    &quot;zone&quot;: &quot;America/Tegucigalpa&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;HR&quot;,
+                    &quot;country&quot;: &quot;Croatia&quot;,
+                    &quot;zone&quot;: &quot;Europe/Zagreb&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;HT&quot;,
+                    &quot;country&quot;: &quot;Haiti&quot;,
+                    &quot;zone&quot;: &quot;America/Port-au-Prince&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;HU&quot;,
+                    &quot;country&quot;: &quot;Hungary&quot;,
+                    &quot;zone&quot;: &quot;Europe/Budapest&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;ID&quot;,
+                    &quot;country&quot;: &quot;Indonesia&quot;,
+                    &quot;zone&quot;: &quot;Asia/Jakarta&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;IE&quot;,
+                    &quot;country&quot;: &quot;Ireland&quot;,
+                    &quot;zone&quot;: &quot;Europe/Dublin&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;IL&quot;,
+                    &quot;country&quot;: &quot;Israel&quot;,
+                    &quot;zone&quot;: &quot;Asia/Jerusalem&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;IM&quot;,
+                    &quot;country&quot;: &quot;Isle of Man&quot;,
+                    &quot;zone&quot;: &quot;Europe/Isle_of_Man&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;IN&quot;,
+                    &quot;country&quot;: &quot;India&quot;,
+                    &quot;zone&quot;: &quot;Asia/Kolkata&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;IO&quot;,
+                    &quot;country&quot;: &quot;British Indian Ocean Territory&quot;,
+                    &quot;zone&quot;: &quot;Indian/Chagos&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;IQ&quot;,
+                    &quot;country&quot;: &quot;Iraq&quot;,
+                    &quot;zone&quot;: &quot;Asia/Baghdad&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;IR&quot;,
+                    &quot;country&quot;: &quot;Iran&quot;,
+                    &quot;zone&quot;: &quot;Asia/Tehran&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;IS&quot;,
+                    &quot;country&quot;: &quot;Iceland&quot;,
+                    &quot;zone&quot;: &quot;Atlantic/Reykjavik&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;IT&quot;,
+                    &quot;country&quot;: &quot;Italy&quot;,
+                    &quot;zone&quot;: &quot;Europe/Rome&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;JE&quot;,
+                    &quot;country&quot;: &quot;Jersey&quot;,
+                    &quot;zone&quot;: &quot;Europe/Jersey&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;JM&quot;,
+                    &quot;country&quot;: &quot;Jamaica&quot;,
+                    &quot;zone&quot;: &quot;America/Jamaica&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;JO&quot;,
+                    &quot;country&quot;: &quot;Jordan&quot;,
+                    &quot;zone&quot;: &quot;Asia/Amman&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;JP&quot;,
+                    &quot;country&quot;: &quot;Japan&quot;,
+                    &quot;zone&quot;: &quot;Asia/Tokyo&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;KE&quot;,
+                    &quot;country&quot;: &quot;Kenya&quot;,
+                    &quot;zone&quot;: &quot;Africa/Nairobi&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;KG&quot;,
+                    &quot;country&quot;: &quot;Kyrgyzstan&quot;,
+                    &quot;zone&quot;: &quot;Asia/Bishkek&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;KH&quot;,
+                    &quot;country&quot;: &quot;Cambodia&quot;,
+                    &quot;zone&quot;: &quot;Asia/Phnom_Penh&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;KI&quot;,
+                    &quot;country&quot;: &quot;Kiribati&quot;,
+                    &quot;zone&quot;: &quot;Pacific/Tarawa&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;KM&quot;,
+                    &quot;country&quot;: &quot;Comoros&quot;,
+                    &quot;zone&quot;: &quot;Indian/Comoro&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;KN&quot;,
+                    &quot;country&quot;: &quot;Saint Kitts and Nevis&quot;,
+                    &quot;zone&quot;: &quot;America/St_Kitts&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;KP&quot;,
+                    &quot;country&quot;: &quot;North Korea&quot;,
+                    &quot;zone&quot;: &quot;Asia/Pyongyang&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;KR&quot;,
+                    &quot;country&quot;: &quot;South Korea&quot;,
+                    &quot;zone&quot;: &quot;Asia/Seoul&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;KW&quot;,
+                    &quot;country&quot;: &quot;Kuwait&quot;,
+                    &quot;zone&quot;: &quot;Asia/Kuwait&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;KY&quot;,
+                    &quot;country&quot;: &quot;Cayman Islands&quot;,
+                    &quot;zone&quot;: &quot;America/Cayman&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;KZ&quot;,
+                    &quot;country&quot;: &quot;Kazakhstan&quot;,
+                    &quot;zone&quot;: &quot;Asia/Almaty&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;LA&quot;,
+                    &quot;country&quot;: &quot;Laos&quot;,
+                    &quot;zone&quot;: &quot;Asia/Vientiane&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;LB&quot;,
+                    &quot;country&quot;: &quot;Lebanon&quot;,
+                    &quot;zone&quot;: &quot;Asia/Beirut&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;LC&quot;,
+                    &quot;country&quot;: &quot;Saint Lucia&quot;,
+                    &quot;zone&quot;: &quot;America/St_Lucia&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;LI&quot;,
+                    &quot;country&quot;: &quot;Liechtenstein&quot;,
+                    &quot;zone&quot;: &quot;Europe/Vaduz&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;LK&quot;,
+                    &quot;country&quot;: &quot;Sri Lanka&quot;,
+                    &quot;zone&quot;: &quot;Asia/Colombo&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;LR&quot;,
+                    &quot;country&quot;: &quot;Liberia&quot;,
+                    &quot;zone&quot;: &quot;Africa/Monrovia&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;LS&quot;,
+                    &quot;country&quot;: &quot;Lesotho&quot;,
+                    &quot;zone&quot;: &quot;Africa/Maseru&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;LT&quot;,
+                    &quot;country&quot;: &quot;Lithuania&quot;,
+                    &quot;zone&quot;: &quot;Europe/Vilnius&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;LU&quot;,
+                    &quot;country&quot;: &quot;Luxembourg&quot;,
+                    &quot;zone&quot;: &quot;Europe/Luxembourg&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;LV&quot;,
+                    &quot;country&quot;: &quot;Latvia&quot;,
+                    &quot;zone&quot;: &quot;Europe/Riga&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;LY&quot;,
+                    &quot;country&quot;: &quot;Libya&quot;,
+                    &quot;zone&quot;: &quot;Africa/Tripoli&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;MA&quot;,
+                    &quot;country&quot;: &quot;Morocco&quot;,
+                    &quot;zone&quot;: &quot;Africa/Casablanca&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;MC&quot;,
+                    &quot;country&quot;: &quot;Monaco&quot;,
+                    &quot;zone&quot;: &quot;Europe/Monaco&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;MD&quot;,
+                    &quot;country&quot;: &quot;Moldova&quot;,
+                    &quot;zone&quot;: &quot;Europe/Chisinau&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;ME&quot;,
+                    &quot;country&quot;: &quot;Montenegro&quot;,
+                    &quot;zone&quot;: &quot;Europe/Podgorica&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;MF&quot;,
+                    &quot;country&quot;: &quot;Saint Martin&quot;,
+                    &quot;zone&quot;: &quot;America/Marigot&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;MG&quot;,
+                    &quot;country&quot;: &quot;Madagascar&quot;,
+                    &quot;zone&quot;: &quot;Indian/Antananarivo&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;MH&quot;,
+                    &quot;country&quot;: &quot;Marshall Islands&quot;,
+                    &quot;zone&quot;: &quot;Pacific/Majuro&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;MK&quot;,
+                    &quot;country&quot;: &quot;Macedonia&quot;,
+                    &quot;zone&quot;: &quot;Europe/Skopje&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;ML&quot;,
+                    &quot;country&quot;: &quot;Mali&quot;,
+                    &quot;zone&quot;: &quot;Africa/Bamako&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;MM&quot;,
+                    &quot;country&quot;: &quot;Myanmar&quot;,
+                    &quot;zone&quot;: &quot;Asia/Yangon&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;MN&quot;,
+                    &quot;country&quot;: &quot;Mongolia&quot;,
+                    &quot;zone&quot;: &quot;Asia/Ulaanbaatar&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;MO&quot;,
+                    &quot;country&quot;: &quot;Macao&quot;,
+                    &quot;zone&quot;: &quot;Asia/Macau&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;MP&quot;,
+                    &quot;country&quot;: &quot;Northern Mariana Islands&quot;,
+                    &quot;zone&quot;: &quot;Pacific/Saipan&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;MQ&quot;,
+                    &quot;country&quot;: &quot;Martinique&quot;,
+                    &quot;zone&quot;: &quot;America/Martinique&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;MR&quot;,
+                    &quot;country&quot;: &quot;Mauritania&quot;,
+                    &quot;zone&quot;: &quot;Africa/Nouakchott&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;MS&quot;,
+                    &quot;country&quot;: &quot;Montserrat&quot;,
+                    &quot;zone&quot;: &quot;America/Montserrat&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;MT&quot;,
+                    &quot;country&quot;: &quot;Malta&quot;,
+                    &quot;zone&quot;: &quot;Europe/Malta&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;MU&quot;,
+                    &quot;country&quot;: &quot;Mauritius&quot;,
+                    &quot;zone&quot;: &quot;Indian/Mauritius&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;MV&quot;,
+                    &quot;country&quot;: &quot;Maldives&quot;,
+                    &quot;zone&quot;: &quot;Indian/Maldives&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;MW&quot;,
+                    &quot;country&quot;: &quot;Malawi&quot;,
+                    &quot;zone&quot;: &quot;Africa/Blantyre&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;MX&quot;,
+                    &quot;country&quot;: &quot;Mexico&quot;,
+                    &quot;zone&quot;: &quot;America/Mexico_City&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;MY&quot;,
+                    &quot;country&quot;: &quot;Malaysia&quot;,
+                    &quot;zone&quot;: &quot;Asia/Kuala_Lumpur&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;MZ&quot;,
+                    &quot;country&quot;: &quot;Mozambique&quot;,
+                    &quot;zone&quot;: &quot;Africa/Maputo&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;NA&quot;,
+                    &quot;country&quot;: &quot;Namibia&quot;,
+                    &quot;zone&quot;: &quot;Africa/Windhoek&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;NC&quot;,
+                    &quot;country&quot;: &quot;New Caledonia&quot;,
+                    &quot;zone&quot;: &quot;Pacific/Noumea&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;NE&quot;,
+                    &quot;country&quot;: &quot;Niger&quot;,
+                    &quot;zone&quot;: &quot;Africa/Niamey&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;NF&quot;,
+                    &quot;country&quot;: &quot;Norfolk Island&quot;,
+                    &quot;zone&quot;: &quot;Pacific/Norfolk&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;NG&quot;,
+                    &quot;country&quot;: &quot;Nigeria&quot;,
+                    &quot;zone&quot;: &quot;Africa/Lagos&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;NI&quot;,
+                    &quot;country&quot;: &quot;Nicaragua&quot;,
+                    &quot;zone&quot;: &quot;America/Managua&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;NL&quot;,
+                    &quot;country&quot;: &quot;Netherlands&quot;,
+                    &quot;zone&quot;: &quot;Europe/Amsterdam&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;NO&quot;,
+                    &quot;country&quot;: &quot;Norway&quot;,
+                    &quot;zone&quot;: &quot;Europe/Oslo&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;NP&quot;,
+                    &quot;country&quot;: &quot;Nepal&quot;,
+                    &quot;zone&quot;: &quot;Asia/Kathmandu&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;NR&quot;,
+                    &quot;country&quot;: &quot;Nauru&quot;,
+                    &quot;zone&quot;: &quot;Pacific/Nauru&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;NU&quot;,
+                    &quot;country&quot;: &quot;Niue&quot;,
+                    &quot;zone&quot;: &quot;Pacific/Niue&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;NZ&quot;,
+                    &quot;country&quot;: &quot;New Zealand&quot;,
+                    &quot;zone&quot;: &quot;Pacific/Auckland&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;OM&quot;,
+                    &quot;country&quot;: &quot;Oman&quot;,
+                    &quot;zone&quot;: &quot;Asia/Muscat&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;PA&quot;,
+                    &quot;country&quot;: &quot;Panama&quot;,
+                    &quot;zone&quot;: &quot;America/Panama&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;PE&quot;,
+                    &quot;country&quot;: &quot;Peru&quot;,
+                    &quot;zone&quot;: &quot;America/Lima&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;PF&quot;,
+                    &quot;country&quot;: &quot;French Polynesia&quot;,
+                    &quot;zone&quot;: &quot;Pacific/Tahiti&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;PG&quot;,
+                    &quot;country&quot;: &quot;Papua New Guinea&quot;,
+                    &quot;zone&quot;: &quot;Pacific/Port_Moresby&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;PH&quot;,
+                    &quot;country&quot;: &quot;Philippines&quot;,
+                    &quot;zone&quot;: &quot;Asia/Manila&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;PK&quot;,
+                    &quot;country&quot;: &quot;Pakistan&quot;,
+                    &quot;zone&quot;: &quot;Asia/Karachi&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;PL&quot;,
+                    &quot;country&quot;: &quot;Poland&quot;,
+                    &quot;zone&quot;: &quot;Europe/Warsaw&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;PM&quot;,
+                    &quot;country&quot;: &quot;Saint Pierre and Miquelon&quot;,
+                    &quot;zone&quot;: &quot;America/Miquelon&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;PN&quot;,
+                    &quot;country&quot;: &quot;Pitcairn&quot;,
+                    &quot;zone&quot;: &quot;Pacific/Pitcairn&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;PR&quot;,
+                    &quot;country&quot;: &quot;Puerto Rico&quot;,
+                    &quot;zone&quot;: &quot;America/Puerto_Rico&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;PS&quot;,
+                    &quot;country&quot;: &quot;Palestinian Territory&quot;,
+                    &quot;zone&quot;: &quot;Asia/Gaza&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;PT&quot;,
+                    &quot;country&quot;: &quot;Portugal&quot;,
+                    &quot;zone&quot;: &quot;Europe/Lisbon&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;PW&quot;,
+                    &quot;country&quot;: &quot;Palau&quot;,
+                    &quot;zone&quot;: &quot;Pacific/Palau&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;PY&quot;,
+                    &quot;country&quot;: &quot;Paraguay&quot;,
+                    &quot;zone&quot;: &quot;America/Asuncion&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;QA&quot;,
+                    &quot;country&quot;: &quot;Qatar&quot;,
+                    &quot;zone&quot;: &quot;Asia/Qatar&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;RE&quot;,
+                    &quot;country&quot;: &quot;Reunion&quot;,
+                    &quot;zone&quot;: &quot;Indian/Reunion&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;RO&quot;,
+                    &quot;country&quot;: &quot;Romania&quot;,
+                    &quot;zone&quot;: &quot;Europe/Bucharest&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;RS&quot;,
+                    &quot;country&quot;: &quot;Serbia&quot;,
+                    &quot;zone&quot;: &quot;Europe/Belgrade&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;RU&quot;,
+                    &quot;country&quot;: &quot;Russia&quot;,
+                    &quot;zone&quot;: &quot;Europe/Kaliningrad&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;RW&quot;,
+                    &quot;country&quot;: &quot;Rwanda&quot;,
+                    &quot;zone&quot;: &quot;Africa/Kigali&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;SA&quot;,
+                    &quot;country&quot;: &quot;Saudi Arabia&quot;,
+                    &quot;zone&quot;: &quot;Asia/Riyadh&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;SB&quot;,
+                    &quot;country&quot;: &quot;Solomon Islands&quot;,
+                    &quot;zone&quot;: &quot;Pacific/Guadalcanal&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;SC&quot;,
+                    &quot;country&quot;: &quot;Seychelles&quot;,
+                    &quot;zone&quot;: &quot;Indian/Mahe&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;SD&quot;,
+                    &quot;country&quot;: &quot;Sudan&quot;,
+                    &quot;zone&quot;: &quot;Africa/Khartoum&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;SE&quot;,
+                    &quot;country&quot;: &quot;Sweden&quot;,
+                    &quot;zone&quot;: &quot;Europe/Stockholm&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;SG&quot;,
+                    &quot;country&quot;: &quot;Singapore&quot;,
+                    &quot;zone&quot;: &quot;Asia/Singapore&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;SH&quot;,
+                    &quot;country&quot;: &quot;Saint Helena&quot;,
+                    &quot;zone&quot;: &quot;Atlantic/St_Helena&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;SI&quot;,
+                    &quot;country&quot;: &quot;Slovenia&quot;,
+                    &quot;zone&quot;: &quot;Europe/Ljubljana&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;SJ&quot;,
+                    &quot;country&quot;: &quot;Svalbard and Jan Mayen&quot;,
+                    &quot;zone&quot;: &quot;Arctic/Longyearbyen&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;SK&quot;,
+                    &quot;country&quot;: &quot;Slovakia&quot;,
+                    &quot;zone&quot;: &quot;Europe/Bratislava&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;SL&quot;,
+                    &quot;country&quot;: &quot;Sierra Leone&quot;,
+                    &quot;zone&quot;: &quot;Africa/Freetown&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;SM&quot;,
+                    &quot;country&quot;: &quot;San Marino&quot;,
+                    &quot;zone&quot;: &quot;Europe/San_Marino&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;SN&quot;,
+                    &quot;country&quot;: &quot;Senegal&quot;,
+                    &quot;zone&quot;: &quot;Africa/Dakar&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;SO&quot;,
+                    &quot;country&quot;: &quot;Somalia&quot;,
+                    &quot;zone&quot;: &quot;Africa/Mogadishu&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;SR&quot;,
+                    &quot;country&quot;: &quot;Suriname&quot;,
+                    &quot;zone&quot;: &quot;America/Paramaribo&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;SS&quot;,
+                    &quot;country&quot;: &quot;South Sudan&quot;,
+                    &quot;zone&quot;: &quot;Africa/Juba&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;ST&quot;,
+                    &quot;country&quot;: &quot;Sao Tome and Principe&quot;,
+                    &quot;zone&quot;: &quot;Africa/Sao_Tome&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;SV&quot;,
+                    &quot;country&quot;: &quot;El Salvador&quot;,
+                    &quot;zone&quot;: &quot;America/El_Salvador&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;SX&quot;,
+                    &quot;country&quot;: &quot;Sint Maarten&quot;,
+                    &quot;zone&quot;: &quot;America/Lower_Princes&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;SY&quot;,
+                    &quot;country&quot;: &quot;Syria&quot;,
+                    &quot;zone&quot;: &quot;Asia/Damascus&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;SZ&quot;,
+                    &quot;country&quot;: &quot;Swaziland&quot;,
+                    &quot;zone&quot;: &quot;Africa/Mbabane&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;TC&quot;,
+                    &quot;country&quot;: &quot;Turks and Caicos Islands&quot;,
+                    &quot;zone&quot;: &quot;America/Grand_Turk&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;TD&quot;,
+                    &quot;country&quot;: &quot;Chad&quot;,
+                    &quot;zone&quot;: &quot;Africa/Ndjamena&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;TF&quot;,
+                    &quot;country&quot;: &quot;French Southern Territories&quot;,
+                    &quot;zone&quot;: &quot;Indian/Kerguelen&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;TG&quot;,
+                    &quot;country&quot;: &quot;Togo&quot;,
+                    &quot;zone&quot;: &quot;Africa/Lome&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;TH&quot;,
+                    &quot;country&quot;: &quot;Thailand&quot;,
+                    &quot;zone&quot;: &quot;Asia/Bangkok&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;TJ&quot;,
+                    &quot;country&quot;: &quot;Tajikistan&quot;,
+                    &quot;zone&quot;: &quot;Asia/Dushanbe&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;TK&quot;,
+                    &quot;country&quot;: &quot;Tokelau&quot;,
+                    &quot;zone&quot;: &quot;Pacific/Fakaofo&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;TL&quot;,
+                    &quot;country&quot;: &quot;East Timor&quot;,
+                    &quot;zone&quot;: &quot;Asia/Dili&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;TM&quot;,
+                    &quot;country&quot;: &quot;Turkmenistan&quot;,
+                    &quot;zone&quot;: &quot;Asia/Ashgabat&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;TN&quot;,
+                    &quot;country&quot;: &quot;Tunisia&quot;,
+                    &quot;zone&quot;: &quot;Africa/Tunis&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;TO&quot;,
+                    &quot;country&quot;: &quot;Tonga&quot;,
+                    &quot;zone&quot;: &quot;Pacific/Tongatapu&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;TR&quot;,
+                    &quot;country&quot;: &quot;Turkey&quot;,
+                    &quot;zone&quot;: &quot;Europe/Istanbul&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;TT&quot;,
+                    &quot;country&quot;: &quot;Trinidad and Tobago&quot;,
+                    &quot;zone&quot;: &quot;America/Port_of_Spain&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;TV&quot;,
+                    &quot;country&quot;: &quot;Tuvalu&quot;,
+                    &quot;zone&quot;: &quot;Pacific/Funafuti&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;TW&quot;,
+                    &quot;country&quot;: &quot;Taiwan&quot;,
+                    &quot;zone&quot;: &quot;Asia/Taipei&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;TZ&quot;,
+                    &quot;country&quot;: &quot;Tanzania&quot;,
+                    &quot;zone&quot;: &quot;Africa/Dar_es_Salaam&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;UA&quot;,
+                    &quot;country&quot;: &quot;Ukraine&quot;,
+                    &quot;zone&quot;: &quot;Europe/Kiev&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;UG&quot;,
+                    &quot;country&quot;: &quot;Uganda&quot;,
+                    &quot;zone&quot;: &quot;Africa/Kampala&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;UM&quot;,
+                    &quot;country&quot;: &quot;United States Minor Outlying Islands&quot;,
+                    &quot;zone&quot;: &quot;Pacific/Midway&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;US&quot;,
+                    &quot;country&quot;: &quot;United States&quot;,
+                    &quot;zone&quot;: &quot;America/New_York&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;UY&quot;,
+                    &quot;country&quot;: &quot;Uruguay&quot;,
+                    &quot;zone&quot;: &quot;America/Montevideo&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;UZ&quot;,
+                    &quot;country&quot;: &quot;Uzbekistan&quot;,
+                    &quot;zone&quot;: &quot;Asia/Samarkand&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;VA&quot;,
+                    &quot;country&quot;: &quot;Vatican&quot;,
+                    &quot;zone&quot;: &quot;Europe/Vatican&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;VC&quot;,
+                    &quot;country&quot;: &quot;Saint Vincent and the Grenadines&quot;,
+                    &quot;zone&quot;: &quot;America/St_Vincent&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;VE&quot;,
+                    &quot;country&quot;: &quot;Venezuela&quot;,
+                    &quot;zone&quot;: &quot;America/Caracas&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;VG&quot;,
+                    &quot;country&quot;: &quot;British Virgin Islands&quot;,
+                    &quot;zone&quot;: &quot;America/Tortola&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;VI&quot;,
+                    &quot;country&quot;: &quot;U.S. Virgin Islands&quot;,
+                    &quot;zone&quot;: &quot;America/St_Thomas&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;VN&quot;,
+                    &quot;country&quot;: &quot;Vietnam&quot;,
+                    &quot;zone&quot;: &quot;Asia/Ho_Chi_Minh&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;VU&quot;,
+                    &quot;country&quot;: &quot;Vanuatu&quot;,
+                    &quot;zone&quot;: &quot;Pacific/Efate&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;WF&quot;,
+                    &quot;country&quot;: &quot;Wallis and Futuna&quot;,
+                    &quot;zone&quot;: &quot;Pacific/Wallis&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;WS&quot;,
+                    &quot;country&quot;: &quot;Samoa&quot;,
+                    &quot;zone&quot;: &quot;Pacific/Apia&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;XK&quot;,
+                    &quot;country&quot;: &quot;Kosovo&quot;,
+                    &quot;zone&quot;: &quot;Kosovo&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;YE&quot;,
+                    &quot;country&quot;: &quot;Yemen&quot;,
+                    &quot;zone&quot;: &quot;Asia/Aden&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;YT&quot;,
+                    &quot;country&quot;: &quot;Mayotte&quot;,
+                    &quot;zone&quot;: &quot;Indian/Mayotte&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;ZA&quot;,
+                    &quot;country&quot;: &quot;South Africa&quot;,
+                    &quot;zone&quot;: &quot;Africa/Johannesburg&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;ZM&quot;,
+                    &quot;country&quot;: &quot;Zambia&quot;,
+                    &quot;zone&quot;: &quot;Africa/Lusaka&quot;
+                },
+                {
+                    &quot;code&quot;: &quot;ZW&quot;,
+                    &quot;country&quot;: &quot;Zimbabwe&quot;,
+                    &quot;zone&quot;: &quot;Africa/Harare&quot;
+                }
+            ]
         }[contentType];
     };
 }</code></pre>
