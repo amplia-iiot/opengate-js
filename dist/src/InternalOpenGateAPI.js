@@ -362,6 +362,14 @@ var _searchingBuilderEntitiesSearchBuilder = require('./searching/builder/Entiti
 
 var _searchingBuilderEntitiesSearchBuilder2 = _interopRequireDefault(_searchingBuilderEntitiesSearchBuilder);
 
+var _searchingBuilderCountryCodesSearchBuilder = require('./searching/builder/CountryCodesSearchBuilder');
+
+var _searchingBuilderCountryCodesSearchBuilder2 = _interopRequireDefault(_searchingBuilderCountryCodesSearchBuilder);
+
+var _searchingBuilderUserLanguagesSearchBuilder = require('./searching/builder/UserLanguagesSearchBuilder');
+
+var _searchingBuilderUserLanguagesSearchBuilder2 = _interopRequireDefault(_searchingBuilderUserLanguagesSearchBuilder);
+
 /**
  * This is a abstract class, it must be extended to another class that defined the backend, it will be used on request to Opengate North API by browser or nodejs server
  */
@@ -1236,6 +1244,26 @@ var InternalOpenGateAPI = (function () {
         key: 'qratingsBuilder',
         value: function qratingsBuilder() {
             return new _iotCatalogQrating2['default'](this);
+        }
+
+        /**
+         * This return a CountryCodesSearchBuilder to build a specific CountryCodesSearchBuilder
+         * @return {CountryCodesSearchBuilder}
+         */
+    }, {
+        key: 'countryCodesSearchBuilder',
+        value: function countryCodesSearchBuilder() {
+            return new _searchingBuilderCountryCodesSearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a UserLanguagesSearchBuilder to build a specific UserLanguagesSearchBuilder
+         * @return {UserLanguagesSearchBuilder}
+         */
+    }, {
+        key: 'userLanguagesSearchBuilder',
+        value: function userLanguagesSearchBuilder() {
+            return new _searchingBuilderUserLanguagesSearchBuilder2['default'](this);
         }
     }]);
 

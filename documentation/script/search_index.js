@@ -246,6 +246,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/searching/builder/countrycodessearchbuilder.js~countrycodessearchbuilder",
+    "class/src/searching/builder/CountryCodesSearchBuilder.js~CountryCodesSearchBuilder.html",
+    "<span>CountryCodesSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/CountryCodesSearchBuilder.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/provision/entities/csvbulkbuilder.js~csvbulkbuilder",
     "class/src/provision/entities/CsvBulkBuilder.js~CsvBulkBuilder.html",
     "<span>CsvBulkBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/provision/entities/CsvBulkBuilder.js</span>",
@@ -996,6 +1002,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/searching/builder/userlanguagessearchbuilder.js~userlanguagessearchbuilder",
+    "class/src/searching/builder/UserLanguagesSearchBuilder.js~UserLanguagesSearchBuilder.html",
+    "<span>UserLanguagesSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/UserLanguagesSearchBuilder.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/searching/builder/userprofilessearchbuilder.js~userprofilessearchbuilder",
     "class/src/searching/builder/UserProfilesSearchBuilder.js~UserProfilesSearchBuilder.html",
     "<span>UserProfilesSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/UserProfilesSearchBuilder.js</span>",
@@ -1405,12 +1417,6 @@ window.esdocSearchIndex = [
   ],
   [
     "internalopengateapi#bundlesbuilder() src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder()",
-    "test-file/client/device/device.spec.js.html#lineNumber4",
-    "Check funcionality bundles module:",
-    "test"
-  ],
-  [
-    "internalopengateapi#bundlesbuilder() src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder()",
     "test-file/client/bundles/bundles.spec.js.html#lineNumber4",
     "Check funcionality bundles module:",
     "test"
@@ -1418,6 +1424,12 @@ window.esdocSearchIndex = [
   [
     "internalopengateapi#bundlesbuilder() src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder()",
     "test-file/client/collection/iot.spec.js.html#lineNumber4",
+    "Check funcionality bundles module:",
+    "test"
+  ],
+  [
+    "internalopengateapi#bundlesbuilder() src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder()",
+    "test-file/client/device/device.spec.js.html#lineNumber4",
     "Check funcionality bundles module:",
     "test"
   ],
@@ -1561,13 +1573,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber303",
+    "test-file/client/device/device.spec.js.html#lineNumber312",
     "Check funcionality bundles module: Check Deployment Element: Check DeploymentElement basic elements: Create a deployment element",
     "test"
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber312",
+    "test-file/client/device/device.spec.js.html#lineNumber303",
     "Check funcionality bundles module: Check Deployment Element: Check DeploymentElement basic elements: Create a deployment element",
     "test"
   ],
@@ -1591,13 +1603,13 @@ window.esdocSearchIndex = [
   ],
   [
     "internalopengateapi#bundlesbuilder src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder",
-    "test-file/client/device/device.spec.js.html#lineNumber10",
+    "test-file/client/collection/iot.spec.js.html#lineNumber10",
     "Check funcionality bundles module: Check basic parameters:",
     "test"
   ],
   [
     "internalopengateapi#bundlesbuilder src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder",
-    "test-file/client/collection/iot.spec.js.html#lineNumber10",
+    "test-file/client/device/device.spec.js.html#lineNumber10",
     "Check funcionality bundles module: Check basic parameters:",
     "test"
   ],
@@ -1615,13 +1627,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/collection/iot.spec.js.html#lineNumber12",
+    "test-file/client/device/device.spec.js.html#lineNumber12",
     "Check funcionality bundles module: Check basic parameters: Name is not a String",
     "test"
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber12",
+    "test-file/client/collection/iot.spec.js.html#lineNumber12",
     "Check funcionality bundles module: Check basic parameters: Name is not a String",
     "test"
   ],
@@ -1735,13 +1747,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/security/certificates.spec.js.html#lineNumber30",
+    "test-file/client/security/certificates.spec.js.html#lineNumber23",
     "Check funcionality certificates: Check basic parameters: administrativeState is not a String",
     "test"
   ],
   [
     "",
-    "test-file/client/security/certificates.spec.js.html#lineNumber23",
+    "test-file/client/security/certificates.spec.js.html#lineNumber30",
     "Check funcionality certificates: Check basic parameters: administrativeState is not a String",
     "test"
   ],
@@ -2166,14 +2178,14 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortdescendingby,searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber94",
+    "searchbuilder#build searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortascendingby,searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber86",
     "Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort",
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortascendingby,searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber86",
+    "searchbuilder#build searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortdescendingby,searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber94",
     "Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort",
     "test"
   ],
@@ -2401,13 +2413,13 @@ window.esdocSearchIndex = [
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriptionssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriptionssearchbuilder,internalopengateapi#subscriptionssearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber59",
+    "test-file/client/searching/search.spec.js.html#lineNumber120",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscriptionsSearchBuilder",
     "test"
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriptionssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriptionssearchbuilder,internalopengateapi#subscriptionssearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber120",
+    "test-file/client/searching/search.spec.js.html#lineNumber59",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscriptionsSearchBuilder",
     "test"
   ],
@@ -2731,13 +2743,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber5",
+    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber13",
     "Testing fields finder api search a fields communicationsModulesSearchBuilder",
     "test"
   ],
   [
     "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber13",
+    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber5",
     "Testing fields finder api search a fields communicationsModulesSearchBuilder",
     "test"
   ],
@@ -3009,6 +3021,12 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#constructor",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-constructor-constructor",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#constructor",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#countrycodessearchbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-countryCodesSearchBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#countryCodesSearchBuilder",
     "method"
   ],
   [
@@ -3411,6 +3429,12 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#usagemessagebuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-usageMessageBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#usageMessageBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#userlanguagessearchbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-userLanguagesSearchBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#userLanguagesSearchBuilder",
     "method"
   ],
   [
@@ -6804,6 +6828,30 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/searching/builder/countrycodessearchbuilder.js",
+    "file/src/searching/builder/CountryCodesSearchBuilder.js.html",
+    "src/searching/builder/CountryCodesSearchBuilder.js",
+    "file"
+  ],
+  [
+    "src/searching/builder/countrycodessearchbuilder.js~countrycodessearchbuilder#build",
+    "class/src/searching/builder/CountryCodesSearchBuilder.js~CountryCodesSearchBuilder.html#instance-method-build",
+    "src/searching/builder/CountryCodesSearchBuilder.js~CountryCodesSearchBuilder#build",
+    "method"
+  ],
+  [
+    "src/searching/builder/countrycodessearchbuilder.js~countrycodessearchbuilder#constructor",
+    "class/src/searching/builder/CountryCodesSearchBuilder.js~CountryCodesSearchBuilder.html#instance-constructor-constructor",
+    "src/searching/builder/CountryCodesSearchBuilder.js~CountryCodesSearchBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/searching/builder/countrycodessearchbuilder.js~countrycodessearchbuilder#customfilters",
+    "class/src/searching/builder/CountryCodesSearchBuilder.js~CountryCodesSearchBuilder.html#instance-member-customFilters",
+    "src/searching/builder/CountryCodesSearchBuilder.js~CountryCodesSearchBuilder#customFilters",
+    "member"
+  ],
+  [
     "src/searching/builder/datamodelssearchbuilder.js",
     "file/src/searching/builder/DatamodelsSearchBuilder.js.html",
     "src/searching/builder/DatamodelsSearchBuilder.js",
@@ -7702,6 +7750,30 @@ window.esdocSearchIndex = [
     "class/src/searching/builder/SubscriptionsSearchBuilder.js~SubscriptionsSearchBuilder.html#instance-constructor-constructor",
     "src/searching/builder/SubscriptionsSearchBuilder.js~SubscriptionsSearchBuilder#constructor",
     "method"
+  ],
+  [
+    "src/searching/builder/userlanguagessearchbuilder.js",
+    "file/src/searching/builder/UserLanguagesSearchBuilder.js.html",
+    "src/searching/builder/UserLanguagesSearchBuilder.js",
+    "file"
+  ],
+  [
+    "src/searching/builder/userlanguagessearchbuilder.js~userlanguagessearchbuilder#build",
+    "class/src/searching/builder/UserLanguagesSearchBuilder.js~UserLanguagesSearchBuilder.html#instance-method-build",
+    "src/searching/builder/UserLanguagesSearchBuilder.js~UserLanguagesSearchBuilder#build",
+    "method"
+  ],
+  [
+    "src/searching/builder/userlanguagessearchbuilder.js~userlanguagessearchbuilder#constructor",
+    "class/src/searching/builder/UserLanguagesSearchBuilder.js~UserLanguagesSearchBuilder.html#instance-constructor-constructor",
+    "src/searching/builder/UserLanguagesSearchBuilder.js~UserLanguagesSearchBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/searching/builder/userlanguagessearchbuilder.js~userlanguagessearchbuilder#customfilters",
+    "class/src/searching/builder/UserLanguagesSearchBuilder.js~UserLanguagesSearchBuilder.html#instance-member-customFilters",
+    "src/searching/builder/UserLanguagesSearchBuilder.js~UserLanguagesSearchBuilder#customFilters",
+    "member"
   ],
   [
     "src/searching/builder/userprofilessearchbuilder.js",
