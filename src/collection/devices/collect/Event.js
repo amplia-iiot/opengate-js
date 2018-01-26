@@ -36,6 +36,7 @@ export default class Event {
         this._volatilStorage = undefined;
         this._nonVolatilStorage = undefined;
         this._powerSupply = undefined;
+        this._upTime = undefined;
         this._communicationsModulesList = [];
     }
 
@@ -49,7 +50,10 @@ export default class Event {
      */
     withEventId(id) {
         if (typeof id !== 'string')
-            throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: 'EventId' });
+            throw new Error({
+                message: "OGAPI_STRING_PARAMETER",
+                parameter: 'EventId'
+            });
         this._event_id = id;
         return this;
     }
@@ -126,7 +130,7 @@ export default class Event {
             .withEntityType("ASSET").withId(operationalStatus).build();
 
         operationalStatusBuilder.execute().then(
-            function(res) {
+            function (res) {
                 if (res.statusCode === 204) {
                     throw new Error("Operational Status not found");
                 }
@@ -319,7 +323,7 @@ export default class Event {
 
     /**
      * Set the cpuUsage attribute
-     * @return {Usage}
+     * @return {Event}
      */
     withCpuUsage(cpuUsage) {
         if (!(cpuUsage instanceof Usage)) {
@@ -332,7 +336,7 @@ export default class Event {
 
     /**
      * Set the Ram attribute
-     * @return {Storage}
+     * @return {Event}
      */
     withRam(ram) {
         if (!(ram instanceof Storage)) {
@@ -346,7 +350,7 @@ export default class Event {
 
     /**
      * Set the volatilStorage attribute
-     * @return {Storage}
+     * @return {Event}
      */
     withVolatilStorage(volatilStorage) {
         if (!(volatilStorage instanceof Storage)) {
@@ -358,7 +362,7 @@ export default class Event {
 
     /**
      * Set the nonVolatilStorage attribute
-     * @return {Storage}
+     * @return {Event}
      */
     withNonVolatilStorage(nonVolatilStorage) {
         if (!(nonVolatilStorage instanceof Storage)) {
@@ -370,7 +374,7 @@ export default class Event {
 
     /**
      * Set the powerSupply attribute
-     * @return {Storage}
+     * @return {Event}
      */
     withPowerSupply(powerSupply) {
         if (!(powerSupply instanceof PowerSupply)) {
@@ -382,7 +386,7 @@ export default class Event {
 
     /**
      * Set the powerSupply attribute
-     * @return {Storage}
+     * @return {Event}
      */
     withCommsModule(communicationsModules) {
         if (!(communicationsModules instanceof CommsModuleMessage)) {
@@ -392,9 +396,22 @@ export default class Event {
         return this;
 
     }
+
+    /**
+     * Set the upTime  attribute
+     * @param {number} upTime  
+     * @return {Event}
+     */
+    withUpTime(upTime) {
+        if (typeof upTime !== 'number' || upTime.length === 0)
+            throw new Error('Parameter upTime must be number type and cannot be empty');
+        this._upTime = upTime;
+        return this;
+    }
+
     _checkValues(value, enumName) {
         let not_found = [];
-        let found = enumName.find(function(value) {
+        let found = enumName.find(function (value) {
             return value == this;
         }, value);
 
@@ -450,6 +467,9 @@ export default class Event {
         }
         if (this._communicationsModulesList.length > 0) {
             event.device.communicationsModules = this._communicationsModulesList;
+        }
+        if (this._upTime !== undefined) {
+            event.device.upTime = this._upTime;
         }
 
         return event;
