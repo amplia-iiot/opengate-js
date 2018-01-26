@@ -235,8 +235,7 @@ export default class Datastream {
      */
     withId(id) {
         if (typeof id !== &apos;string&apos; || id.length === 0)
-            OGAPI_STRING_PARAMETER
-        throw new Error({ message: &apos;OGAPI_STRING_PARAMETER&apos;, parameter: &apos;id&apos; });
+            throw new Error({ message: &apos;OGAPI_STRING_PARAMETER&apos;, parameter: &apos;id&apos; });
         this._id = id;
         return this;
     }
