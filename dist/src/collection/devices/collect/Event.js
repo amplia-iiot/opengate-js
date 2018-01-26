@@ -66,6 +66,7 @@ var Event = (function () {
         this._volatilStorage = undefined;
         this._nonVolatilStorage = undefined;
         this._powerSupply = undefined;
+        this._upTime = undefined;
         this._communicationsModulesList = [];
     }
 
@@ -78,7 +79,10 @@ var Event = (function () {
     _createClass(Event, [{
         key: 'withEventId',
         value: function withEventId(id) {
-            if (typeof id !== 'string') throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: 'EventId' });
+            if (typeof id !== 'string') throw new Error({
+                message: "OGAPI_STRING_PARAMETER",
+                parameter: 'EventId'
+            });
             this._event_id = id;
             return this;
         }
@@ -363,7 +367,7 @@ var Event = (function () {
 
         /**
          * Set the cpuUsage attribute
-         * @return {Usage}
+         * @return {Event}
          */
     }, {
         key: 'withCpuUsage',
@@ -377,7 +381,7 @@ var Event = (function () {
 
         /**
          * Set the Ram attribute
-         * @return {Storage}
+         * @return {Event}
          */
     }, {
         key: 'withRam',
@@ -391,7 +395,7 @@ var Event = (function () {
 
         /**
          * Set the volatilStorage attribute
-         * @return {Storage}
+         * @return {Event}
          */
     }, {
         key: 'withVolatilStorage',
@@ -405,7 +409,7 @@ var Event = (function () {
 
         /**
          * Set the nonVolatilStorage attribute
-         * @return {Storage}
+         * @return {Event}
          */
     }, {
         key: 'withNonVolatilStorage',
@@ -419,7 +423,7 @@ var Event = (function () {
 
         /**
          * Set the powerSupply attribute
-         * @return {Storage}
+         * @return {Event}
          */
     }, {
         key: 'withPowerSupply',
@@ -433,7 +437,7 @@ var Event = (function () {
 
         /**
          * Set the powerSupply attribute
-         * @return {Storage}
+         * @return {Event}
          */
     }, {
         key: 'withCommsModule',
@@ -442,6 +446,19 @@ var Event = (function () {
                 throw new Error('Parameter communicationsModules must be CommsModuleMessage type');
             }
             this._communicationsModulesList.push(communicationsModules.composeElement());
+            return this;
+        }
+
+        /**
+         * Set the upTime  attribute
+         * @param {number} upTime  
+         * @return {Event}
+         */
+    }, {
+        key: 'withUpTime',
+        value: function withUpTime(upTime) {
+            if (typeof upTime !== 'number' || upTime.length === 0) throw new Error('Parameter upTime must be number type and cannot be empty');
+            this._upTime = upTime;
             return this;
         }
     }, {
@@ -503,6 +520,9 @@ var Event = (function () {
             }
             if (this._communicationsModulesList.length > 0) {
                 event.device.communicationsModules = this._communicationsModulesList;
+            }
+            if (this._upTime !== undefined) {
+                event.device.upTime = this._upTime;
             }
 
             return event;

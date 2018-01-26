@@ -4254,6 +4254,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/collection/devices/collect/event.js~event#withuptime",
+    "class/src/collection/devices/collect/Event.js~Event.html#instance-method-withUpTime",
+    "src/collection/devices/collect/Event.js~Event#withUpTime",
+    "method"
+  ],
+  [
     "src/collection/devices/collect/event.js~event#withvolatilstorage",
     "class/src/collection/devices/collect/Event.js~Event.html#instance-method-withVolatilStorage",
     "src/collection/devices/collect/Event.js~Event#withVolatilStorage",
@@ -4311,12 +4317,6 @@ window.esdocSearchIndex = [
     "src/collection/devices/collect/hardware.js~hardware#withserialnumber",
     "class/src/collection/devices/collect/Hardware.js~Hardware.html#instance-method-withSerialnumber",
     "src/collection/devices/collect/Hardware.js~Hardware#withSerialnumber",
-    "method"
-  ],
-  [
-    "src/collection/devices/collect/hardware.js~hardware#withuptime",
-    "class/src/collection/devices/collect/Hardware.js~Hardware.html#instance-method-withUpTime",
-    "src/collection/devices/collect/Hardware.js~Hardware#withUpTime",
     "method"
   ],
   [

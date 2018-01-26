@@ -5720,7 +5720,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "'use strict';\r\n\r\nimport q from 'q';\r\nimport Hardware from './Hardware';\r\nimport Software from './Software';\r\nimport Usage from './Usage';\r\nimport Storage from './Storage';\r\nimport PowerSupply from './PowerSupply';\r\nimport CommsModuleMessage from './CommsModuleMessage';\r\nimport {\r\n    TEMPERATURE_STATUS_ENUM\r\n} from './enum/TEMPERATURE_STATUS_ENUM';\r\nimport {\r\n    LEVEL_TREND_ENUM\r\n} from './enum/LEVEL_TREND_ENUM';\r\n\r\n/**\r\n * This is a base object that allows the user to create a Event.\r\n */\r\nexport default class Event {\r\n\r\n    constructor(ogapi) {\r\n        this._ogapi = ogapi;\r\n        this._event_id = undefined;\r\n        this._deviceId = undefined;\r\n        this._path = undefined;\r\n        this._name = undefined;\r\n        this._description = undefined;\r\n        this._hardware = undefined;\r\n        this._operationalStatus = undefined;\r\n        this._softwareList = [];\r\n        this._location = undefined;\r\n        this._temperature = undefined;\r\n        this._cpuUsage = undefined;\r\n        this._ram = undefined;\r\n        this._volatilStorage = undefined;\r\n        this._nonVolatilStorage = undefined;\r\n        this._powerSupply = undefined;\r\n        this._communicationsModulesList = [];\r\n    }\r\n\r\n\r\n\r\n\r\n    /**\r\n     * Set the id attribute\r\n     * @param {string} id - optionals field\r\n     * @return {Event}\r\n     */\r\n    withEventId(id) {\r\n        if (typeof id !== 'string')\r\n            throw new Error({ message: \"OGAPI_STRING_PARAMETER\", parameter: 'EventId' });\r\n        this._event_id = id;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the deviceId attribute\r\n     * @param {string} deviceId - optionals field\r\n     * @return {Event}\r\n     */\r\n    withDeviceId(deviceId) {\r\n        if (typeof deviceId !== 'string')\r\n            throw new Error('deviceId cannot be empty');\r\n        this._deviceId = deviceId;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the path attribute\r\n     * @param {string} path - optionals field\r\n     * @return {Event}\r\n     */\r\n    withPath(path) {\r\n        if (path.constructor !== Array || path.length === 0)\r\n            throw new Error('Parameter path must be an Array and cannot be empty');\r\n        this._path = path;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the name attribute\r\n     * @param {string} name - optionals field\r\n     * @return {Event}\r\n     */\r\n    withEventName(name) {\r\n        if (typeof name !== 'string' || name.length === 0)\r\n            throw new Error('Parameter name must be String type and cannot be empty');\r\n        this._name = name;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the description attribute\r\n     * @param {string} description - optionals field\r\n     * @return {Event}\r\n     */\r\n    withEventDescription(description) {\r\n        if (typeof description !== 'string' || description.length === 0)\r\n            throw new Error('Parameter description must be String type and cannot be empty');\r\n        this._description = description;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the hardware attribute\r\n     * @param {Hardware} hardware - optionals field\r\n     * @return {Event}\r\n     */\r\n    withHardware(hardware) {\r\n        if (!(hardware instanceof Hardware)) {\r\n            throw new Error('Parameter hardware must be Hardware type');\r\n        }\r\n        this._hardware = hardware;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the operationalStatus attribute\r\n     * @param {string} operationalStatus \r\n     * @return {Event}\r\n     */\r\n    withOperationalStatus(operationalStatus) {\r\n\r\n        let operationalStatusBuilder = this._ogapi.operationalStatusSearchBuilder()\r\n            .withEntityType(\"ASSET\").withId(operationalStatus).build();\r\n\r\n        operationalStatusBuilder.execute().then(\r\n            function(res) {\r\n                if (res.statusCode === 204) {\r\n                    throw new Error(\"Operational Status not found\");\r\n                }\r\n            });\r\n\r\n        this._operationalStatus = operationalStatus;\r\n\r\n        return this;\r\n    }\r\n\r\n\r\n    /**\r\n     * Set the software attribute\r\n     * @param {software} software - optionals field\r\n     * @return {Event}\r\n     */\r\n    withSoftware(software) {\r\n        if (!(software instanceof Software)) {\r\n            throw new Error('Parameter software must be software type');\r\n        }\r\n        this._softwareList.push(software.composeElement());\r\n        /*var software =  new Software();\r\n        software.withName(name);\r\n        software.withType(type);\r\n        software.withVersion(version);\r\n        software.withDate(date);\r\n        if(this._softwareList === undefined)\r\n            this._softwareList = [];\r\n        this._softwareList.push(software.composeElement());*/\r\n        return this;\r\n    }\r\n\r\n\r\n    /**\r\n     * Set the date attribute\r\n     * @param {string} date - optionals field\r\n     * @return {Event}\r\n     */\r\n    withDateLocation(date) {\r\n        if (typeof date !== 'string' || date.length === 0)\r\n            throw new Error('Parameter date must be String type and cannot be empty');\r\n        if (this._location === undefined) {\r\n            this._location = {\r\n                \"coordinates\": {}\r\n            };\r\n        }\r\n        this._location.timestamp = date;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the latitude attribute\r\n     * @param {number} latitude - optionals field\r\n     * @return {Event}\r\n     */\r\n    withLatitude(latitude) {\r\n        if (typeof latitude !== 'number' || latitude.length === 0)\r\n            throw new Error('Parameter latitude must be number type and cannot be empty');\r\n        if (this._location === undefined) {\r\n            this._location = {\r\n                \"coordinates\": {}\r\n            };\r\n        }\r\n        this._location.coordinates.latitude = latitude;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the longitude attribute\r\n     * @param {number} longitude - optionals field\r\n     * @return {Event}\r\n     */\r\n    withLongitude(longitude) {\r\n        if (typeof longitude !== 'number' || longitude.length === 0)\r\n            throw new Error('Parameter longitude must be number type and cannot be empty');\r\n        if (this._location === undefined) {\r\n            this._location = {\r\n                \"coordinates\": {}\r\n            };\r\n        }\r\n        this._location.coordinates.longitude = longitude;\r\n        return this;\r\n    }\r\n\r\n\r\n    /**\r\n     * Set the currentTemperature attribute\r\n     * @param {string} currentTemperature - optionals field\r\n     * @return {Event}\r\n     */\r\n    withCurrentTemperature(currentTemperature) {\r\n        if (typeof currentTemperature !== 'string' || currentTemperature.length === 0)\r\n            throw new Error('Parameter currentTemperature must be string type and cannot be empty');\r\n        if (this._temperature === undefined) {\r\n            this._temperature = {};\r\n        }\r\n        this._temperature.current = currentTemperature;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the unitTemperature attribute\r\n     * @param {string} unitTemperature - optionals field\r\n     * @return {Event}\r\n     */\r\n    withUnitTemperature(unitTemperature) {\r\n        if (typeof unitTemperature !== 'string' || unitTemperature.length === 0)\r\n            throw new Error('Parameter unitTemperature must be string type and cannot be empty');\r\n        if (this._temperature === undefined) {\r\n            this._temperature = {};\r\n        }\r\n        this._temperature.unit = unitTemperature;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the unitTemperature attribute\r\n     * @param {string} unitTemperature - optionals field\r\n     * @return {Event}\r\n     */\r\n    withStatusTemperature(unitTemperature) {\r\n        if (typeof unitTemperature !== 'string' || unitTemperature.length === 0)\r\n            throw new Error('Parameter unitTemperature must be string type and cannot be empty');\r\n        if (this._temperature === undefined) {\r\n            this._temperature = {};\r\n        }\r\n        this._temperature.status = this._checkValues(unitTemperature, TEMPERATURE_STATUS_ENUM);;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the unitTemperature attribute\r\n     * @param {string} unitTemperature - optionals field\r\n     * @return {Event}\r\n     */\r\n    withTrendTemperature(unitTemperature) {\r\n        if (typeof unitTemperature !== 'string' || unitTemperature.length === 0)\r\n            throw new Error('Parameter unitTemperature must be string type and cannot be empty');\r\n        if (this._temperature === undefined) {\r\n            this._temperature = {};\r\n        }\r\n        this._temperature.trend = this._checkValues(unitTemperature, LEVEL_TREND_ENUM);\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the average attribute\r\n     * @param {string} averageTemperature - optionals field\r\n     * @return {Event}\r\n     */\r\n    withTemperatureAverage(averageTemperature) {\r\n        if (typeof averageTemperature !== 'string' || averageTemperature.length === 0)\r\n            throw new Error('Parameter averageTemperature must be string type and cannot be empty');\r\n        if (this._temperature === undefined) {\r\n            this._temperature = {};\r\n        }\r\n        this._temperature.average = averageTemperature;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the minimum attribute\r\n     * @param {string} minimumTemperature - optionals field\r\n     * @return {Event}\r\n     */\r\n    withMinimumTemperature(minimumTemperature) {\r\n        if (typeof minimumTemperature !== 'string' || minimumTemperature.length === 0)\r\n            throw new Error('Parameter minimumTemperature must be string type and cannot be empty');\r\n        if (this._temperature === undefined) {\r\n            this._temperature = {};\r\n        }\r\n        this._temperature.minimum = minimumTemperature;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the maximum attribute\r\n     * @param {string} maximumTemperature - optionals field\r\n     * @return {Event}\r\n     */\r\n    withMaximumTemperature(maximumTemperature) {\r\n        if (typeof maximumTemperature !== 'string' || maximumTemperature.length === 0)\r\n            throw new Error('Parameter maximumTemperature must be string type and cannot be empty');\r\n        if (this._temperature === undefined) {\r\n            this._temperature = {};\r\n        }\r\n        this._temperature.maximum = maximumTemperature;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the cpuUsage attribute\r\n     * @return {Usage}\r\n     */\r\n    withCpuUsage(cpuUsage) {\r\n        if (!(cpuUsage instanceof Usage)) {\r\n            throw new Error('Parameter cpuUsage must be Usage type');\r\n        }\r\n        this._cpuUsage = cpuUsage;\r\n        return this;\r\n    }\r\n\r\n\r\n    /**\r\n     * Set the Ram attribute\r\n     * @return {Storage}\r\n     */\r\n    withRam(ram) {\r\n        if (!(ram instanceof Storage)) {\r\n            throw new Error('Parameter ram must be Storage type');\r\n        }\r\n        this._ram = ram;\r\n        return this;\r\n    }\r\n\r\n\r\n\r\n    /**\r\n     * Set the volatilStorage attribute\r\n     * @return {Storage}\r\n     */\r\n    withVolatilStorage(volatilStorage) {\r\n        if (!(volatilStorage instanceof Storage)) {\r\n            throw new Error('Parameter volatilStorage must be Storage type');\r\n        }\r\n        this._volatilStorage = volatilStorage;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the nonVolatilStorage attribute\r\n     * @return {Storage}\r\n     */\r\n    withNonVolatilStorage(nonVolatilStorage) {\r\n        if (!(nonVolatilStorage instanceof Storage)) {\r\n            throw new Error('Parameter nonVolatilStorage must be Storage type');\r\n        }\r\n        this._nonVolatilStorage = nonVolatilStorage;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the powerSupply attribute\r\n     * @return {Storage}\r\n     */\r\n    withPowerSupply(powerSupply) {\r\n        if (!(powerSupply instanceof PowerSupply)) {\r\n            throw new Error('Parameter powerSupply must be PowerSupply type');\r\n        }\r\n        this._powerSupply = powerSupply;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the powerSupply attribute\r\n     * @return {Storage}\r\n     */\r\n    withCommsModule(communicationsModules) {\r\n        if (!(communicationsModules instanceof CommsModuleMessage)) {\r\n            throw new Error('Parameter communicationsModules must be CommsModuleMessage type');\r\n        }\r\n        this._communicationsModulesList.push(communicationsModules.composeElement());\r\n        return this;\r\n\r\n    }\r\n    _checkValues(value, enumName) {\r\n        let not_found = [];\r\n        let found = enumName.find(function(value) {\r\n            return value == this;\r\n        }, value);\r\n\r\n        if (typeof found === \"undefined\") {\r\n            not_found.push(value);\r\n        }\r\n        if (not_found.length !== 0) {\r\n            console.warn(\"Parameter value not allowed <'\" + JSON.stringify(not_found) + \"'>, allowed <'\" + JSON.stringify(enumName) + \"'>\")\r\n        }\r\n        return value;\r\n    }\r\n\r\n\r\n\r\n    composeElement() {\r\n\r\n        var event = {\r\n            'id': this._event_id,\r\n            'device': {\r\n                'id': this._deviceId,\r\n                'path': this._path,\r\n                'name': this._name,\r\n                'description': this._description,\r\n                'operationalStatus': this._operationalStatus\r\n            }\r\n        }\r\n        if (this._hardware !== undefined) {\r\n            event.device.hardware = this._hardware.composeElement();\r\n        }\r\n        if (this._softwareList.length > 0) {\r\n            event.device.softwareList = this._softwareList;\r\n        }\r\n        if (this._location !== undefined) {\r\n            event.device.location = this._location;\r\n        }\r\n        if (this._temperature !== undefined) {\r\n            event.device.temperature = this._temperature;\r\n        }\r\n        if (this._cpuUsage !== undefined) {\r\n            event.device.cpuUsage = this._cpuUsage.composeElement();\r\n        }\r\n        if (this._ram !== undefined) {\r\n            event.device.ram = this._ram.composeElement();\r\n        }\r\n        if (this._volatilStorage !== undefined) {\r\n            event.device.volatilStorage = this._volatilStorage.composeElement();\r\n        }\r\n        if (this._nonVolatilStorage !== undefined) {\r\n            event.device.nonVolatilStorage = this._nonVolatilStorage.composeElement();\r\n        }\r\n        if (this._powerSupply !== undefined) {\r\n            event.device.powerSupply = this._powerSupply.composeElement();\r\n        }\r\n        if (this._communicationsModulesList.length > 0) {\r\n            event.device.communicationsModules = this._communicationsModulesList;\r\n        }\r\n\r\n        return event;\r\n    }\r\n\r\n\r\n\r\n\r\n}"
+    "content": "'use strict';\r\n\r\nimport q from 'q';\r\nimport Hardware from './Hardware';\r\nimport Software from './Software';\r\nimport Usage from './Usage';\r\nimport Storage from './Storage';\r\nimport PowerSupply from './PowerSupply';\r\nimport CommsModuleMessage from './CommsModuleMessage';\r\nimport {\r\n    TEMPERATURE_STATUS_ENUM\r\n} from './enum/TEMPERATURE_STATUS_ENUM';\r\nimport {\r\n    LEVEL_TREND_ENUM\r\n} from './enum/LEVEL_TREND_ENUM';\r\n\r\n/**\r\n * This is a base object that allows the user to create a Event.\r\n */\r\nexport default class Event {\r\n\r\n    constructor(ogapi) {\r\n        this._ogapi = ogapi;\r\n        this._event_id = undefined;\r\n        this._deviceId = undefined;\r\n        this._path = undefined;\r\n        this._name = undefined;\r\n        this._description = undefined;\r\n        this._hardware = undefined;\r\n        this._operationalStatus = undefined;\r\n        this._softwareList = [];\r\n        this._location = undefined;\r\n        this._temperature = undefined;\r\n        this._cpuUsage = undefined;\r\n        this._ram = undefined;\r\n        this._volatilStorage = undefined;\r\n        this._nonVolatilStorage = undefined;\r\n        this._powerSupply = undefined;\r\n        this._upTime = undefined;\r\n        this._communicationsModulesList = [];\r\n    }\r\n\r\n\r\n\r\n\r\n    /**\r\n     * Set the id attribute\r\n     * @param {string} id - optionals field\r\n     * @return {Event}\r\n     */\r\n    withEventId(id) {\r\n        if (typeof id !== 'string')\r\n            throw new Error({\r\n                message: \"OGAPI_STRING_PARAMETER\",\r\n                parameter: 'EventId'\r\n            });\r\n        this._event_id = id;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the deviceId attribute\r\n     * @param {string} deviceId - optionals field\r\n     * @return {Event}\r\n     */\r\n    withDeviceId(deviceId) {\r\n        if (typeof deviceId !== 'string')\r\n            throw new Error('deviceId cannot be empty');\r\n        this._deviceId = deviceId;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the path attribute\r\n     * @param {string} path - optionals field\r\n     * @return {Event}\r\n     */\r\n    withPath(path) {\r\n        if (path.constructor !== Array || path.length === 0)\r\n            throw new Error('Parameter path must be an Array and cannot be empty');\r\n        this._path = path;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the name attribute\r\n     * @param {string} name - optionals field\r\n     * @return {Event}\r\n     */\r\n    withEventName(name) {\r\n        if (typeof name !== 'string' || name.length === 0)\r\n            throw new Error('Parameter name must be String type and cannot be empty');\r\n        this._name = name;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the description attribute\r\n     * @param {string} description - optionals field\r\n     * @return {Event}\r\n     */\r\n    withEventDescription(description) {\r\n        if (typeof description !== 'string' || description.length === 0)\r\n            throw new Error('Parameter description must be String type and cannot be empty');\r\n        this._description = description;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the hardware attribute\r\n     * @param {Hardware} hardware - optionals field\r\n     * @return {Event}\r\n     */\r\n    withHardware(hardware) {\r\n        if (!(hardware instanceof Hardware)) {\r\n            throw new Error('Parameter hardware must be Hardware type');\r\n        }\r\n        this._hardware = hardware;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the operationalStatus attribute\r\n     * @param {string} operationalStatus \r\n     * @return {Event}\r\n     */\r\n    withOperationalStatus(operationalStatus) {\r\n\r\n        let operationalStatusBuilder = this._ogapi.operationalStatusSearchBuilder()\r\n            .withEntityType(\"ASSET\").withId(operationalStatus).build();\r\n\r\n        operationalStatusBuilder.execute().then(\r\n            function (res) {\r\n                if (res.statusCode === 204) {\r\n                    throw new Error(\"Operational Status not found\");\r\n                }\r\n            });\r\n\r\n        this._operationalStatus = operationalStatus;\r\n\r\n        return this;\r\n    }\r\n\r\n\r\n    /**\r\n     * Set the software attribute\r\n     * @param {software} software - optionals field\r\n     * @return {Event}\r\n     */\r\n    withSoftware(software) {\r\n        if (!(software instanceof Software)) {\r\n            throw new Error('Parameter software must be software type');\r\n        }\r\n        this._softwareList.push(software.composeElement());\r\n        /*var software =  new Software();\r\n        software.withName(name);\r\n        software.withType(type);\r\n        software.withVersion(version);\r\n        software.withDate(date);\r\n        if(this._softwareList === undefined)\r\n            this._softwareList = [];\r\n        this._softwareList.push(software.composeElement());*/\r\n        return this;\r\n    }\r\n\r\n\r\n    /**\r\n     * Set the date attribute\r\n     * @param {string} date - optionals field\r\n     * @return {Event}\r\n     */\r\n    withDateLocation(date) {\r\n        if (typeof date !== 'string' || date.length === 0)\r\n            throw new Error('Parameter date must be String type and cannot be empty');\r\n        if (this._location === undefined) {\r\n            this._location = {\r\n                \"coordinates\": {}\r\n            };\r\n        }\r\n        this._location.timestamp = date;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the latitude attribute\r\n     * @param {number} latitude - optionals field\r\n     * @return {Event}\r\n     */\r\n    withLatitude(latitude) {\r\n        if (typeof latitude !== 'number' || latitude.length === 0)\r\n            throw new Error('Parameter latitude must be number type and cannot be empty');\r\n        if (this._location === undefined) {\r\n            this._location = {\r\n                \"coordinates\": {}\r\n            };\r\n        }\r\n        this._location.coordinates.latitude = latitude;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the longitude attribute\r\n     * @param {number} longitude - optionals field\r\n     * @return {Event}\r\n     */\r\n    withLongitude(longitude) {\r\n        if (typeof longitude !== 'number' || longitude.length === 0)\r\n            throw new Error('Parameter longitude must be number type and cannot be empty');\r\n        if (this._location === undefined) {\r\n            this._location = {\r\n                \"coordinates\": {}\r\n            };\r\n        }\r\n        this._location.coordinates.longitude = longitude;\r\n        return this;\r\n    }\r\n\r\n\r\n    /**\r\n     * Set the currentTemperature attribute\r\n     * @param {string} currentTemperature - optionals field\r\n     * @return {Event}\r\n     */\r\n    withCurrentTemperature(currentTemperature) {\r\n        if (typeof currentTemperature !== 'string' || currentTemperature.length === 0)\r\n            throw new Error('Parameter currentTemperature must be string type and cannot be empty');\r\n        if (this._temperature === undefined) {\r\n            this._temperature = {};\r\n        }\r\n        this._temperature.current = currentTemperature;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the unitTemperature attribute\r\n     * @param {string} unitTemperature - optionals field\r\n     * @return {Event}\r\n     */\r\n    withUnitTemperature(unitTemperature) {\r\n        if (typeof unitTemperature !== 'string' || unitTemperature.length === 0)\r\n            throw new Error('Parameter unitTemperature must be string type and cannot be empty');\r\n        if (this._temperature === undefined) {\r\n            this._temperature = {};\r\n        }\r\n        this._temperature.unit = unitTemperature;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the unitTemperature attribute\r\n     * @param {string} unitTemperature - optionals field\r\n     * @return {Event}\r\n     */\r\n    withStatusTemperature(unitTemperature) {\r\n        if (typeof unitTemperature !== 'string' || unitTemperature.length === 0)\r\n            throw new Error('Parameter unitTemperature must be string type and cannot be empty');\r\n        if (this._temperature === undefined) {\r\n            this._temperature = {};\r\n        }\r\n        this._temperature.status = this._checkValues(unitTemperature, TEMPERATURE_STATUS_ENUM);;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the unitTemperature attribute\r\n     * @param {string} unitTemperature - optionals field\r\n     * @return {Event}\r\n     */\r\n    withTrendTemperature(unitTemperature) {\r\n        if (typeof unitTemperature !== 'string' || unitTemperature.length === 0)\r\n            throw new Error('Parameter unitTemperature must be string type and cannot be empty');\r\n        if (this._temperature === undefined) {\r\n            this._temperature = {};\r\n        }\r\n        this._temperature.trend = this._checkValues(unitTemperature, LEVEL_TREND_ENUM);\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the average attribute\r\n     * @param {string} averageTemperature - optionals field\r\n     * @return {Event}\r\n     */\r\n    withTemperatureAverage(averageTemperature) {\r\n        if (typeof averageTemperature !== 'string' || averageTemperature.length === 0)\r\n            throw new Error('Parameter averageTemperature must be string type and cannot be empty');\r\n        if (this._temperature === undefined) {\r\n            this._temperature = {};\r\n        }\r\n        this._temperature.average = averageTemperature;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the minimum attribute\r\n     * @param {string} minimumTemperature - optionals field\r\n     * @return {Event}\r\n     */\r\n    withMinimumTemperature(minimumTemperature) {\r\n        if (typeof minimumTemperature !== 'string' || minimumTemperature.length === 0)\r\n            throw new Error('Parameter minimumTemperature must be string type and cannot be empty');\r\n        if (this._temperature === undefined) {\r\n            this._temperature = {};\r\n        }\r\n        this._temperature.minimum = minimumTemperature;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the maximum attribute\r\n     * @param {string} maximumTemperature - optionals field\r\n     * @return {Event}\r\n     */\r\n    withMaximumTemperature(maximumTemperature) {\r\n        if (typeof maximumTemperature !== 'string' || maximumTemperature.length === 0)\r\n            throw new Error('Parameter maximumTemperature must be string type and cannot be empty');\r\n        if (this._temperature === undefined) {\r\n            this._temperature = {};\r\n        }\r\n        this._temperature.maximum = maximumTemperature;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the cpuUsage attribute\r\n     * @return {Event}\r\n     */\r\n    withCpuUsage(cpuUsage) {\r\n        if (!(cpuUsage instanceof Usage)) {\r\n            throw new Error('Parameter cpuUsage must be Usage type');\r\n        }\r\n        this._cpuUsage = cpuUsage;\r\n        return this;\r\n    }\r\n\r\n\r\n    /**\r\n     * Set the Ram attribute\r\n     * @return {Event}\r\n     */\r\n    withRam(ram) {\r\n        if (!(ram instanceof Storage)) {\r\n            throw new Error('Parameter ram must be Storage type');\r\n        }\r\n        this._ram = ram;\r\n        return this;\r\n    }\r\n\r\n\r\n\r\n    /**\r\n     * Set the volatilStorage attribute\r\n     * @return {Event}\r\n     */\r\n    withVolatilStorage(volatilStorage) {\r\n        if (!(volatilStorage instanceof Storage)) {\r\n            throw new Error('Parameter volatilStorage must be Storage type');\r\n        }\r\n        this._volatilStorage = volatilStorage;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the nonVolatilStorage attribute\r\n     * @return {Event}\r\n     */\r\n    withNonVolatilStorage(nonVolatilStorage) {\r\n        if (!(nonVolatilStorage instanceof Storage)) {\r\n            throw new Error('Parameter nonVolatilStorage must be Storage type');\r\n        }\r\n        this._nonVolatilStorage = nonVolatilStorage;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the powerSupply attribute\r\n     * @return {Event}\r\n     */\r\n    withPowerSupply(powerSupply) {\r\n        if (!(powerSupply instanceof PowerSupply)) {\r\n            throw new Error('Parameter powerSupply must be PowerSupply type');\r\n        }\r\n        this._powerSupply = powerSupply;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the powerSupply attribute\r\n     * @return {Event}\r\n     */\r\n    withCommsModule(communicationsModules) {\r\n        if (!(communicationsModules instanceof CommsModuleMessage)) {\r\n            throw new Error('Parameter communicationsModules must be CommsModuleMessage type');\r\n        }\r\n        this._communicationsModulesList.push(communicationsModules.composeElement());\r\n        return this;\r\n\r\n    }\r\n\r\n    /**\r\n     * Set the upTime  attribute\r\n     * @param {number} upTime  \r\n     * @return {Event}\r\n     */\r\n    withUpTime(upTime) {\r\n        if (typeof upTime !== 'number' || upTime.length === 0)\r\n            throw new Error('Parameter upTime must be number type and cannot be empty');\r\n        this._upTime = upTime;\r\n        return this;\r\n    }\r\n\r\n    _checkValues(value, enumName) {\r\n        let not_found = [];\r\n        let found = enumName.find(function (value) {\r\n            return value == this;\r\n        }, value);\r\n\r\n        if (typeof found === \"undefined\") {\r\n            not_found.push(value);\r\n        }\r\n        if (not_found.length !== 0) {\r\n            console.warn(\"Parameter value not allowed <'\" + JSON.stringify(not_found) + \"'>, allowed <'\" + JSON.stringify(enumName) + \"'>\")\r\n        }\r\n        return value;\r\n    }\r\n\r\n\r\n\r\n    composeElement() {\r\n\r\n        var event = {\r\n            'id': this._event_id,\r\n            'device': {\r\n                'id': this._deviceId,\r\n                'path': this._path,\r\n                'name': this._name,\r\n                'description': this._description,\r\n                'operationalStatus': this._operationalStatus\r\n            }\r\n        }\r\n        if (this._hardware !== undefined) {\r\n            event.device.hardware = this._hardware.composeElement();\r\n        }\r\n        if (this._softwareList.length > 0) {\r\n            event.device.softwareList = this._softwareList;\r\n        }\r\n        if (this._location !== undefined) {\r\n            event.device.location = this._location;\r\n        }\r\n        if (this._temperature !== undefined) {\r\n            event.device.temperature = this._temperature;\r\n        }\r\n        if (this._cpuUsage !== undefined) {\r\n            event.device.cpuUsage = this._cpuUsage.composeElement();\r\n        }\r\n        if (this._ram !== undefined) {\r\n            event.device.ram = this._ram.composeElement();\r\n        }\r\n        if (this._volatilStorage !== undefined) {\r\n            event.device.volatilStorage = this._volatilStorage.composeElement();\r\n        }\r\n        if (this._nonVolatilStorage !== undefined) {\r\n            event.device.nonVolatilStorage = this._nonVolatilStorage.composeElement();\r\n        }\r\n        if (this._powerSupply !== undefined) {\r\n            event.device.powerSupply = this._powerSupply.composeElement();\r\n        }\r\n        if (this._communicationsModulesList.length > 0) {\r\n            event.device.communicationsModules = this._communicationsModulesList;\r\n        }\r\n        if (this._upTime !== undefined) {\r\n            event.device.upTime = this._upTime;\r\n        }\r\n\r\n        return event;\r\n    }\r\n\r\n\r\n\r\n\r\n}"
   },
   {
     "__docId__": 251,
@@ -6053,9 +6053,9 @@
     "kind": "member",
     "static": false,
     "variation": null,
-    "name": "_communicationsModulesList",
+    "name": "_upTime",
     "memberof": "src/collection/devices/collect/Event.js~Event",
-    "longname": "src/collection/devices/collect/Event.js~Event#_communicationsModulesList",
+    "longname": "src/collection/devices/collect/Event.js~Event#_upTime",
     "access": null,
     "description": null,
     "lineNumber": 39,
@@ -6068,6 +6068,24 @@
   },
   {
     "__docId__": 270,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "_communicationsModulesList",
+    "memberof": "src/collection/devices/collect/Event.js~Event",
+    "longname": "src/collection/devices/collect/Event.js~Event#_communicationsModulesList",
+    "access": null,
+    "description": null,
+    "lineNumber": 40,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 271,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -6076,7 +6094,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#withEventId",
     "access": null,
     "description": "Set the id attribute",
-    "lineNumber": 50,
+    "lineNumber": 51,
     "params": [
       {
         "nullable": null,
@@ -6100,7 +6118,7 @@
     "generator": false
   },
   {
-    "__docId__": 271,
+    "__docId__": 272,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -6109,7 +6127,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#_event_id",
     "access": null,
     "description": null,
-    "lineNumber": 53,
+    "lineNumber": 57,
     "undocument": true,
     "type": {
       "types": [
@@ -6118,7 +6136,7 @@
     }
   },
   {
-    "__docId__": 272,
+    "__docId__": 273,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -6127,7 +6145,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#withDeviceId",
     "access": null,
     "description": "Set the deviceId attribute",
-    "lineNumber": 62,
+    "lineNumber": 66,
     "params": [
       {
         "nullable": null,
@@ -6151,7 +6169,7 @@
     "generator": false
   },
   {
-    "__docId__": 273,
+    "__docId__": 274,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -6160,7 +6178,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#_deviceId",
     "access": null,
     "description": null,
-    "lineNumber": 65,
+    "lineNumber": 69,
     "undocument": true,
     "type": {
       "types": [
@@ -6169,7 +6187,7 @@
     }
   },
   {
-    "__docId__": 274,
+    "__docId__": 275,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -6178,7 +6196,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#withPath",
     "access": null,
     "description": "Set the path attribute",
-    "lineNumber": 74,
+    "lineNumber": 78,
     "params": [
       {
         "nullable": null,
@@ -6202,7 +6220,7 @@
     "generator": false
   },
   {
-    "__docId__": 275,
+    "__docId__": 276,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -6211,7 +6229,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#_path",
     "access": null,
     "description": null,
-    "lineNumber": 77,
+    "lineNumber": 81,
     "undocument": true,
     "type": {
       "types": [
@@ -6220,7 +6238,7 @@
     }
   },
   {
-    "__docId__": 276,
+    "__docId__": 277,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -6229,7 +6247,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#withEventName",
     "access": null,
     "description": "Set the name attribute",
-    "lineNumber": 86,
+    "lineNumber": 90,
     "params": [
       {
         "nullable": null,
@@ -6253,7 +6271,7 @@
     "generator": false
   },
   {
-    "__docId__": 277,
+    "__docId__": 278,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -6262,7 +6280,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#_name",
     "access": null,
     "description": null,
-    "lineNumber": 89,
+    "lineNumber": 93,
     "undocument": true,
     "type": {
       "types": [
@@ -6271,7 +6289,7 @@
     }
   },
   {
-    "__docId__": 278,
+    "__docId__": 279,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -6280,7 +6298,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#withEventDescription",
     "access": null,
     "description": "Set the description attribute",
-    "lineNumber": 98,
+    "lineNumber": 102,
     "params": [
       {
         "nullable": null,
@@ -6304,7 +6322,7 @@
     "generator": false
   },
   {
-    "__docId__": 279,
+    "__docId__": 280,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -6313,7 +6331,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#_description",
     "access": null,
     "description": null,
-    "lineNumber": 101,
+    "lineNumber": 105,
     "undocument": true,
     "type": {
       "types": [
@@ -6322,7 +6340,7 @@
     }
   },
   {
-    "__docId__": 280,
+    "__docId__": 281,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -6331,7 +6349,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#withHardware",
     "access": null,
     "description": "Set the hardware attribute",
-    "lineNumber": 110,
+    "lineNumber": 114,
     "params": [
       {
         "nullable": null,
@@ -6355,7 +6373,7 @@
     "generator": false
   },
   {
-    "__docId__": 281,
+    "__docId__": 282,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -6364,7 +6382,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#_hardware",
     "access": null,
     "description": null,
-    "lineNumber": 114,
+    "lineNumber": 118,
     "undocument": true,
     "type": {
       "types": [
@@ -6373,7 +6391,7 @@
     }
   },
   {
-    "__docId__": 282,
+    "__docId__": 283,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -6382,7 +6400,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#withOperationalStatus",
     "access": null,
     "description": "Set the operationalStatus attribute",
-    "lineNumber": 123,
+    "lineNumber": 127,
     "params": [
       {
         "nullable": null,
@@ -6406,7 +6424,7 @@
     "generator": false
   },
   {
-    "__docId__": 283,
+    "__docId__": 284,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -6415,7 +6433,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#_operationalStatus",
     "access": null,
     "description": null,
-    "lineNumber": 135,
+    "lineNumber": 139,
     "undocument": true,
     "type": {
       "types": [
@@ -6424,7 +6442,7 @@
     }
   },
   {
-    "__docId__": 284,
+    "__docId__": 285,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -6433,7 +6451,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#withSoftware",
     "access": null,
     "description": "Set the software attribute",
-    "lineNumber": 146,
+    "lineNumber": 150,
     "params": [
       {
         "nullable": null,
@@ -6457,7 +6475,7 @@
     "generator": false
   },
   {
-    "__docId__": 285,
+    "__docId__": 286,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -6466,7 +6484,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#withDateLocation",
     "access": null,
     "description": "Set the date attribute",
-    "lineNumber": 168,
+    "lineNumber": 172,
     "params": [
       {
         "nullable": null,
@@ -6490,7 +6508,7 @@
     "generator": false
   },
   {
-    "__docId__": 286,
+    "__docId__": 287,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -6499,7 +6517,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#_location",
     "access": null,
     "description": null,
-    "lineNumber": 172,
+    "lineNumber": 176,
     "undocument": true,
     "type": {
       "types": [
@@ -6508,7 +6526,7 @@
     }
   },
   {
-    "__docId__": 287,
+    "__docId__": 288,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -6517,7 +6535,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#withLatitude",
     "access": null,
     "description": "Set the latitude attribute",
-    "lineNumber": 185,
+    "lineNumber": 189,
     "params": [
       {
         "nullable": null,
@@ -6541,7 +6559,7 @@
     "generator": false
   },
   {
-    "__docId__": 288,
+    "__docId__": 289,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -6550,7 +6568,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#_location",
     "access": null,
     "description": null,
-    "lineNumber": 189,
+    "lineNumber": 193,
     "undocument": true,
     "type": {
       "types": [
@@ -6559,7 +6577,7 @@
     }
   },
   {
-    "__docId__": 289,
+    "__docId__": 290,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -6568,7 +6586,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#withLongitude",
     "access": null,
     "description": "Set the longitude attribute",
-    "lineNumber": 202,
+    "lineNumber": 206,
     "params": [
       {
         "nullable": null,
@@ -6592,7 +6610,7 @@
     "generator": false
   },
   {
-    "__docId__": 290,
+    "__docId__": 291,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -6601,7 +6619,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#_location",
     "access": null,
     "description": null,
-    "lineNumber": 206,
+    "lineNumber": 210,
     "undocument": true,
     "type": {
       "types": [
@@ -6610,7 +6628,7 @@
     }
   },
   {
-    "__docId__": 291,
+    "__docId__": 292,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -6619,7 +6637,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#withCurrentTemperature",
     "access": null,
     "description": "Set the currentTemperature attribute",
-    "lineNumber": 220,
+    "lineNumber": 224,
     "params": [
       {
         "nullable": null,
@@ -6643,7 +6661,7 @@
     "generator": false
   },
   {
-    "__docId__": 292,
+    "__docId__": 293,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -6652,7 +6670,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#_temperature",
     "access": null,
     "description": null,
-    "lineNumber": 224,
+    "lineNumber": 228,
     "undocument": true,
     "type": {
       "types": [
@@ -6661,7 +6679,7 @@
     }
   },
   {
-    "__docId__": 293,
+    "__docId__": 294,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -6670,7 +6688,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#withUnitTemperature",
     "access": null,
     "description": "Set the unitTemperature attribute",
-    "lineNumber": 235,
+    "lineNumber": 239,
     "params": [
       {
         "nullable": null,
@@ -6694,7 +6712,7 @@
     "generator": false
   },
   {
-    "__docId__": 294,
+    "__docId__": 295,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -6703,7 +6721,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#_temperature",
     "access": null,
     "description": null,
-    "lineNumber": 239,
+    "lineNumber": 243,
     "undocument": true,
     "type": {
       "types": [
@@ -6712,7 +6730,7 @@
     }
   },
   {
-    "__docId__": 295,
+    "__docId__": 296,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -6721,7 +6739,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#withStatusTemperature",
     "access": null,
     "description": "Set the unitTemperature attribute",
-    "lineNumber": 250,
+    "lineNumber": 254,
     "params": [
       {
         "nullable": null,
@@ -6745,7 +6763,7 @@
     "generator": false
   },
   {
-    "__docId__": 296,
+    "__docId__": 297,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -6754,7 +6772,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#_temperature",
     "access": null,
     "description": null,
-    "lineNumber": 254,
+    "lineNumber": 258,
     "undocument": true,
     "type": {
       "types": [
@@ -6763,7 +6781,7 @@
     }
   },
   {
-    "__docId__": 297,
+    "__docId__": 298,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -6772,7 +6790,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#withTrendTemperature",
     "access": null,
     "description": "Set the unitTemperature attribute",
-    "lineNumber": 265,
+    "lineNumber": 269,
     "params": [
       {
         "nullable": null,
@@ -6796,7 +6814,7 @@
     "generator": false
   },
   {
-    "__docId__": 298,
+    "__docId__": 299,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -6805,7 +6823,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#_temperature",
     "access": null,
     "description": null,
-    "lineNumber": 269,
+    "lineNumber": 273,
     "undocument": true,
     "type": {
       "types": [
@@ -6814,7 +6832,7 @@
     }
   },
   {
-    "__docId__": 299,
+    "__docId__": 300,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -6823,7 +6841,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#withTemperatureAverage",
     "access": null,
     "description": "Set the average attribute",
-    "lineNumber": 280,
+    "lineNumber": 284,
     "params": [
       {
         "nullable": null,
@@ -6847,7 +6865,7 @@
     "generator": false
   },
   {
-    "__docId__": 300,
+    "__docId__": 301,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -6856,7 +6874,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#_temperature",
     "access": null,
     "description": null,
-    "lineNumber": 284,
+    "lineNumber": 288,
     "undocument": true,
     "type": {
       "types": [
@@ -6865,7 +6883,7 @@
     }
   },
   {
-    "__docId__": 301,
+    "__docId__": 302,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -6874,7 +6892,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#withMinimumTemperature",
     "access": null,
     "description": "Set the minimum attribute",
-    "lineNumber": 295,
+    "lineNumber": 299,
     "params": [
       {
         "nullable": null,
@@ -6898,7 +6916,7 @@
     "generator": false
   },
   {
-    "__docId__": 302,
+    "__docId__": 303,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -6907,7 +6925,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#_temperature",
     "access": null,
     "description": null,
-    "lineNumber": 299,
+    "lineNumber": 303,
     "undocument": true,
     "type": {
       "types": [
@@ -6916,7 +6934,7 @@
     }
   },
   {
-    "__docId__": 303,
+    "__docId__": 304,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -6925,7 +6943,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#withMaximumTemperature",
     "access": null,
     "description": "Set the maximum attribute",
-    "lineNumber": 310,
+    "lineNumber": 314,
     "params": [
       {
         "nullable": null,
@@ -6949,7 +6967,7 @@
     "generator": false
   },
   {
-    "__docId__": 304,
+    "__docId__": 305,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -6958,7 +6976,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#_temperature",
     "access": null,
     "description": null,
-    "lineNumber": 314,
+    "lineNumber": 318,
     "undocument": true,
     "type": {
       "types": [
@@ -6967,7 +6985,7 @@
     }
   },
   {
-    "__docId__": 305,
+    "__docId__": 306,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -6976,7 +6994,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#withCpuUsage",
     "access": null,
     "description": "Set the cpuUsage attribute",
-    "lineNumber": 324,
+    "lineNumber": 328,
     "params": [
       {
         "name": "cpuUsage",
@@ -6988,7 +7006,7 @@
     "return": {
       "nullable": null,
       "types": [
-        "Usage"
+        "Event"
       ],
       "spread": false,
       "description": ""
@@ -6996,7 +7014,7 @@
     "generator": false
   },
   {
-    "__docId__": 306,
+    "__docId__": 307,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -7005,7 +7023,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#_cpuUsage",
     "access": null,
     "description": null,
-    "lineNumber": 328,
+    "lineNumber": 332,
     "undocument": true,
     "type": {
       "types": [
@@ -7014,7 +7032,7 @@
     }
   },
   {
-    "__docId__": 307,
+    "__docId__": 308,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -7023,7 +7041,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#withRam",
     "access": null,
     "description": "Set the Ram attribute",
-    "lineNumber": 337,
+    "lineNumber": 341,
     "params": [
       {
         "name": "ram",
@@ -7035,7 +7053,7 @@
     "return": {
       "nullable": null,
       "types": [
-        "Storage"
+        "Event"
       ],
       "spread": false,
       "description": ""
@@ -7043,7 +7061,7 @@
     "generator": false
   },
   {
-    "__docId__": 308,
+    "__docId__": 309,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -7052,7 +7070,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#_ram",
     "access": null,
     "description": null,
-    "lineNumber": 341,
+    "lineNumber": 345,
     "undocument": true,
     "type": {
       "types": [
@@ -7061,7 +7079,7 @@
     }
   },
   {
-    "__docId__": 309,
+    "__docId__": 310,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -7070,7 +7088,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#withVolatilStorage",
     "access": null,
     "description": "Set the volatilStorage attribute",
-    "lineNumber": 351,
+    "lineNumber": 355,
     "params": [
       {
         "name": "volatilStorage",
@@ -7082,7 +7100,7 @@
     "return": {
       "nullable": null,
       "types": [
-        "Storage"
+        "Event"
       ],
       "spread": false,
       "description": ""
@@ -7090,7 +7108,7 @@
     "generator": false
   },
   {
-    "__docId__": 310,
+    "__docId__": 311,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -7099,7 +7117,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#_volatilStorage",
     "access": null,
     "description": null,
-    "lineNumber": 355,
+    "lineNumber": 359,
     "undocument": true,
     "type": {
       "types": [
@@ -7108,7 +7126,7 @@
     }
   },
   {
-    "__docId__": 311,
+    "__docId__": 312,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -7117,7 +7135,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#withNonVolatilStorage",
     "access": null,
     "description": "Set the nonVolatilStorage attribute",
-    "lineNumber": 363,
+    "lineNumber": 367,
     "params": [
       {
         "name": "nonVolatilStorage",
@@ -7129,7 +7147,7 @@
     "return": {
       "nullable": null,
       "types": [
-        "Storage"
+        "Event"
       ],
       "spread": false,
       "description": ""
@@ -7137,7 +7155,7 @@
     "generator": false
   },
   {
-    "__docId__": 312,
+    "__docId__": 313,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -7146,7 +7164,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#_nonVolatilStorage",
     "access": null,
     "description": null,
-    "lineNumber": 367,
+    "lineNumber": 371,
     "undocument": true,
     "type": {
       "types": [
@@ -7155,7 +7173,7 @@
     }
   },
   {
-    "__docId__": 313,
+    "__docId__": 314,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -7164,7 +7182,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#withPowerSupply",
     "access": null,
     "description": "Set the powerSupply attribute",
-    "lineNumber": 375,
+    "lineNumber": 379,
     "params": [
       {
         "name": "powerSupply",
@@ -7176,7 +7194,7 @@
     "return": {
       "nullable": null,
       "types": [
-        "Storage"
+        "Event"
       ],
       "spread": false,
       "description": ""
@@ -7184,7 +7202,7 @@
     "generator": false
   },
   {
-    "__docId__": 314,
+    "__docId__": 315,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -7193,7 +7211,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#_powerSupply",
     "access": null,
     "description": null,
-    "lineNumber": 379,
+    "lineNumber": 383,
     "undocument": true,
     "type": {
       "types": [
@@ -7202,7 +7220,7 @@
     }
   },
   {
-    "__docId__": 315,
+    "__docId__": 316,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -7211,7 +7229,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#withCommsModule",
     "access": null,
     "description": "Set the powerSupply attribute",
-    "lineNumber": 387,
+    "lineNumber": 391,
     "params": [
       {
         "name": "communicationsModules",
@@ -7223,7 +7241,7 @@
     "return": {
       "nullable": null,
       "types": [
-        "Storage"
+        "Event"
       ],
       "spread": false,
       "description": ""
@@ -7231,7 +7249,58 @@
     "generator": false
   },
   {
-    "__docId__": 316,
+    "__docId__": 317,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "withUpTime",
+    "memberof": "src/collection/devices/collect/Event.js~Event",
+    "longname": "src/collection/devices/collect/Event.js~Event#withUpTime",
+    "access": null,
+    "description": "Set the upTime  attribute",
+    "lineNumber": 405,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "upTime",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Event"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 318,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "_upTime",
+    "memberof": "src/collection/devices/collect/Event.js~Event",
+    "longname": "src/collection/devices/collect/Event.js~Event#_upTime",
+    "access": null,
+    "description": null,
+    "lineNumber": 408,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 319,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -7240,7 +7309,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#_checkValues",
     "access": null,
     "description": null,
-    "lineNumber": 395,
+    "lineNumber": 412,
     "undocument": true,
     "params": [
       {
@@ -7264,7 +7333,7 @@
     "generator": false
   },
   {
-    "__docId__": 317,
+    "__docId__": 320,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -7273,7 +7342,7 @@
     "longname": "src/collection/devices/collect/Event.js~Event#composeElement",
     "access": null,
     "description": null,
-    "lineNumber": 412,
+    "lineNumber": 429,
     "undocument": true,
     "params": [],
     "return": {
@@ -7284,7 +7353,7 @@
     "generator": false
   },
   {
-    "__docId__": 318,
+    "__docId__": 321,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -7294,10 +7363,10 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "'use strict';\r\n\r\n\r\n\r\n/**\r\n * This is a base object that allows the user to create a Datapoint.\r\n */\r\nexport default class Hardware {\r\n\r\n    constructor() {\r\n        this._serialnumber = undefined;\r\n        this._manufacturerName = undefined;\r\n        this._manufacturerOui = undefined;\r\n        this._modelName = undefined;\r\n        this._modelVersion = undefined;\r\n        this._clockDate = undefined;\r\n        this._upTime = undefined;\r\n    }\r\n\r\n    /**\r\n     * Set the serialnumber attribute\r\n     * @param {string} serialnumber \r\n     * @return {Hardware}\r\n     */\r\n    withSerialnumber(serialnumber) {\r\n        if (typeof serialnumber !== 'string' || serialnumber.length === 0)\r\n            throw new Error('Parameter serial number must be a string and cannot be empty');\r\n        this._serialnumber = serialnumber;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the manufacturerName attribute\r\n     * @param {string} manufacturerName \r\n     * @return {Hardware}\r\n     */\r\n    withManufacturerName(manufacturerName) {\r\n        if (typeof manufacturerName !== 'string' || manufacturerName.length === 0)\r\n            throw new Error('Parameter manufacturer Name must be a string and cannot be empty');;\r\n        this._manufacturerName = manufacturerName;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the manufacturerOui attribute\r\n     * @param {string} manufacturerOui \r\n     * @return {Hardware}\r\n     */\r\n    withManufacturerOui(manufacturerOui) {\r\n        if (typeof manufacturerOui !== 'string' || manufacturerOui.length === 0)\r\n            throw new Error('Parameter manufacturer code must be a string and cannot be empty');;\r\n        this._manufacturerOui = manufacturerOui;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the modelName  attribute\r\n     * @param {string} modelName  \r\n     * @return {Hardware}\r\n     */\r\n    withModelName(modelName) {\r\n        if (typeof modelName !== 'string' || modelName.length === 0)\r\n            throw new Error('Parameter model Name must be a string and cannot be empty');;\r\n        this._modelName = modelName;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the modelVersion  attribute\r\n     * @param {string} modelVersion  \r\n     * @return {Hardware}\r\n     */\r\n    withModelVersion(modelVersion) {\r\n        if (typeof modelVersion !== 'string' || modelVersion.length === 0)\r\n            throw new Error('Parameter model Version must be a string and cannot be empty');;\r\n        this._modelVersion = modelVersion;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the clockDate  attribute\r\n     * @param {string} clockDate  \r\n     * @return {Hardware}\r\n     */\r\n\r\n    //Pendiente comprobar el formato de la fecha\r\n    withClockDate(clockDate) {\r\n        if (!this._isValidDate(clockDate))\r\n            throw new Error('The clockDate parameter has a wrong format. Example of rigth format is 2015-07-16T19:20:30+01:00');\r\n        this._clockDate = clockDate;\r\n\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the upTime  attribute\r\n     * @param {string} upTime  \r\n     * @return {Hardware}\r\n     */\r\n    withUpTime(upTime) {\r\n        if (typeof upTime !== 'string')\r\n            throw new Error('Parameter upTime must be a string and cannot be empty');;\r\n        this._upTime = upTime;\r\n        return this;\r\n    }\r\n\r\n\r\n\r\n    _isValidDate(str) {\r\n        //YYYY-MM-DDThh:mm:ssTZD\r\n        if (str === \"\" || str === null) {\r\n            return false;\r\n        }\r\n\r\n        // m[1] is year 'YYYY' * m[2] is month 'MM' * m[3] is day 'DD'                  \r\n\r\n        var m = str.match(/(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\+(\\d{2}):(\\d{2})/);\r\n\r\n        // STR IS NOT FIT m IS NOT OBJECT\r\n        if (m === null || typeof m !== 'object') {\r\n            return false;\r\n        }\r\n\r\n        // CHECK m TYPE\r\n        if (typeof m !== 'object' && m !== null && m.size !== 3) {\r\n            console.log(2);\r\n            return false;\r\n        }\r\n\r\n        var ret = true; //RETURN VALUE                      \r\n        var thisYear = new Date().getFullYear(); //YEAR NOW\r\n        var minYear = 1999; //MIN YEAR\r\n\r\n        // YEAR CHECK\r\n        if ((m[1].length < 4) || m[1] < minYear || m[1] > thisYear) {\r\n            console.log(3);\r\n            ret = false;\r\n        }\r\n        // MONTH CHECK          \r\n        if ((m[2].length < 2) || m[2] < 1 || m[2] > 12) {\r\n            console.log(4);\r\n            ret = false;\r\n        }\r\n        // DAY CHECK\r\n        if ((m[3].length < 2) || m[3] < 1 || m[3] > 31) {\r\n            console.log(5);\r\n            ret = false;\r\n        }\r\n\r\n        return ret;\r\n    }\r\n\r\n\r\n    composeElement() {\r\n\r\n        var hardware = {\r\n            'serialnumber': this._serialnumber,\r\n            'manufacturer': {\r\n                'name': this._manufacturerName,\r\n                'oui': this._manufacturerOui || \"\"\r\n            },\r\n            'model': {\r\n                'name': this._modelName || \"\",\r\n                'version': this._modelVersion || \"\"\r\n            },\r\n            'clockDate': this._clockDate,\r\n            'upTime': this._upTime\r\n        }\r\n        return hardware;\r\n    }\r\n\r\n\r\n\r\n}\r\n"
+    "content": "'use strict';\r\n\r\n\r\n\r\n/**\r\n * This is a base object that allows the user to create a Datapoint.\r\n */\r\nexport default class Hardware {\r\n\r\n    constructor() {\r\n        this._serialnumber = undefined;\r\n        this._manufacturerName = undefined;\r\n        this._manufacturerOui = undefined;\r\n        this._modelName = undefined;\r\n        this._modelVersion = undefined;\r\n        this._clockDate = undefined;\r\n    }\r\n\r\n    /**\r\n     * Set the serialnumber attribute\r\n     * @param {string} serialnumber \r\n     * @return {Hardware}\r\n     */\r\n    withSerialnumber(serialnumber) {\r\n        if (typeof serialnumber !== 'string' || serialnumber.length === 0)\r\n            throw new Error('Parameter serial number must be a string and cannot be empty');\r\n        this._serialnumber = serialnumber;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the manufacturerName attribute\r\n     * @param {string} manufacturerName \r\n     * @return {Hardware}\r\n     */\r\n    withManufacturerName(manufacturerName) {\r\n        if (typeof manufacturerName !== 'string' || manufacturerName.length === 0)\r\n            throw new Error('Parameter manufacturer Name must be a string and cannot be empty');;\r\n        this._manufacturerName = manufacturerName;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the manufacturerOui attribute\r\n     * @param {string} manufacturerOui \r\n     * @return {Hardware}\r\n     */\r\n    withManufacturerOui(manufacturerOui) {\r\n        if (typeof manufacturerOui !== 'string' || manufacturerOui.length === 0)\r\n            throw new Error('Parameter manufacturer code must be a string and cannot be empty');;\r\n        this._manufacturerOui = manufacturerOui;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the modelName  attribute\r\n     * @param {string} modelName  \r\n     * @return {Hardware}\r\n     */\r\n    withModelName(modelName) {\r\n        if (typeof modelName !== 'string' || modelName.length === 0)\r\n            throw new Error('Parameter model Name must be a string and cannot be empty');;\r\n        this._modelName = modelName;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the modelVersion  attribute\r\n     * @param {string} modelVersion  \r\n     * @return {Hardware}\r\n     */\r\n    withModelVersion(modelVersion) {\r\n        if (typeof modelVersion !== 'string' || modelVersion.length === 0)\r\n            throw new Error('Parameter model Version must be a string and cannot be empty');;\r\n        this._modelVersion = modelVersion;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the clockDate  attribute\r\n     * @param {string} clockDate  \r\n     * @return {Hardware}\r\n     */\r\n\r\n    //Pendiente comprobar el formato de la fecha\r\n    withClockDate(clockDate) {\r\n        if (!this._isValidDate(clockDate))\r\n            throw new Error('The clockDate parameter has a wrong format. Example of rigth format is 2015-07-16T19:20:30+01:00');\r\n        this._clockDate = clockDate;\r\n\r\n        return this;\r\n    }\r\n\r\n    _isValidDate(str) {\r\n        //YYYY-MM-DDThh:mm:ssTZD\r\n        if (str === \"\" || str === null) {\r\n            return false;\r\n        }\r\n\r\n        // m[1] is year 'YYYY' * m[2] is month 'MM' * m[3] is day 'DD'                  \r\n\r\n        var m = str.match(/(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\+(\\d{2}):(\\d{2})/);\r\n\r\n        // STR IS NOT FIT m IS NOT OBJECT\r\n        if (m === null || typeof m !== 'object') {\r\n            return false;\r\n        }\r\n\r\n        // CHECK m TYPE\r\n        if (typeof m !== 'object' && m !== null && m.size !== 3) {\r\n            console.log(2);\r\n            return false;\r\n        }\r\n\r\n        var ret = true; //RETURN VALUE                      \r\n        var thisYear = new Date().getFullYear(); //YEAR NOW\r\n        var minYear = 1999; //MIN YEAR\r\n\r\n        // YEAR CHECK\r\n        if ((m[1].length < 4) || m[1] < minYear || m[1] > thisYear) {\r\n            console.log(3);\r\n            ret = false;\r\n        }\r\n        // MONTH CHECK          \r\n        if ((m[2].length < 2) || m[2] < 1 || m[2] > 12) {\r\n            console.log(4);\r\n            ret = false;\r\n        }\r\n        // DAY CHECK\r\n        if ((m[3].length < 2) || m[3] < 1 || m[3] > 31) {\r\n            console.log(5);\r\n            ret = false;\r\n        }\r\n\r\n        return ret;\r\n    }\r\n\r\n\r\n    composeElement() {\r\n\r\n        var hardware = {\r\n            'serialnumber': this._serialnumber,\r\n            'manufacturer': {\r\n                'name': this._manufacturerName,\r\n                'oui': this._manufacturerOui || \"\"\r\n            },\r\n            'model': {\r\n                'name': this._modelName || \"\",\r\n                'version': this._modelVersion || \"\"\r\n            },\r\n            'clockDate': this._clockDate\r\n        }\r\n        return hardware;\r\n    }\r\n\r\n\r\n\r\n}"
   },
   {
-    "__docId__": 319,
+    "__docId__": 322,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -7313,7 +7382,7 @@
     "interface": false
   },
   {
-    "__docId__": 320,
+    "__docId__": 323,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -7328,7 +7397,7 @@
     "generator": false
   },
   {
-    "__docId__": 321,
+    "__docId__": 324,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -7346,7 +7415,7 @@
     }
   },
   {
-    "__docId__": 322,
+    "__docId__": 325,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -7364,7 +7433,7 @@
     }
   },
   {
-    "__docId__": 323,
+    "__docId__": 326,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -7382,7 +7451,7 @@
     }
   },
   {
-    "__docId__": 324,
+    "__docId__": 327,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -7400,7 +7469,7 @@
     }
   },
   {
-    "__docId__": 325,
+    "__docId__": 328,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -7418,7 +7487,7 @@
     }
   },
   {
-    "__docId__": 326,
+    "__docId__": 329,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -7436,25 +7505,7 @@
     }
   },
   {
-    "__docId__": 327,
-    "kind": "member",
-    "static": false,
-    "variation": null,
-    "name": "_upTime",
-    "memberof": "src/collection/devices/collect/Hardware.js~Hardware",
-    "longname": "src/collection/devices/collect/Hardware.js~Hardware#_upTime",
-    "access": null,
-    "description": null,
-    "lineNumber": 17,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 328,
+    "__docId__": 330,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -7463,7 +7514,7 @@
     "longname": "src/collection/devices/collect/Hardware.js~Hardware#withSerialnumber",
     "access": null,
     "description": "Set the serialnumber attribute",
-    "lineNumber": 25,
+    "lineNumber": 24,
     "params": [
       {
         "nullable": null,
@@ -7487,7 +7538,7 @@
     "generator": false
   },
   {
-    "__docId__": 329,
+    "__docId__": 331,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -7496,7 +7547,7 @@
     "longname": "src/collection/devices/collect/Hardware.js~Hardware#_serialnumber",
     "access": null,
     "description": null,
-    "lineNumber": 28,
+    "lineNumber": 27,
     "undocument": true,
     "type": {
       "types": [
@@ -7505,7 +7556,7 @@
     }
   },
   {
-    "__docId__": 330,
+    "__docId__": 332,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -7514,7 +7565,7 @@
     "longname": "src/collection/devices/collect/Hardware.js~Hardware#withManufacturerName",
     "access": null,
     "description": "Set the manufacturerName attribute",
-    "lineNumber": 37,
+    "lineNumber": 36,
     "params": [
       {
         "nullable": null,
@@ -7538,7 +7589,7 @@
     "generator": false
   },
   {
-    "__docId__": 331,
+    "__docId__": 333,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -7547,7 +7598,7 @@
     "longname": "src/collection/devices/collect/Hardware.js~Hardware#_manufacturerName",
     "access": null,
     "description": null,
-    "lineNumber": 40,
+    "lineNumber": 39,
     "undocument": true,
     "type": {
       "types": [
@@ -7556,7 +7607,7 @@
     }
   },
   {
-    "__docId__": 332,
+    "__docId__": 334,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -7565,7 +7616,7 @@
     "longname": "src/collection/devices/collect/Hardware.js~Hardware#withManufacturerOui",
     "access": null,
     "description": "Set the manufacturerOui attribute",
-    "lineNumber": 49,
+    "lineNumber": 48,
     "params": [
       {
         "nullable": null,
@@ -7589,7 +7640,7 @@
     "generator": false
   },
   {
-    "__docId__": 333,
+    "__docId__": 335,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -7598,7 +7649,7 @@
     "longname": "src/collection/devices/collect/Hardware.js~Hardware#_manufacturerOui",
     "access": null,
     "description": null,
-    "lineNumber": 52,
+    "lineNumber": 51,
     "undocument": true,
     "type": {
       "types": [
@@ -7607,7 +7658,7 @@
     }
   },
   {
-    "__docId__": 334,
+    "__docId__": 336,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -7616,7 +7667,7 @@
     "longname": "src/collection/devices/collect/Hardware.js~Hardware#withModelName",
     "access": null,
     "description": "Set the modelName  attribute",
-    "lineNumber": 61,
+    "lineNumber": 60,
     "params": [
       {
         "nullable": null,
@@ -7640,7 +7691,7 @@
     "generator": false
   },
   {
-    "__docId__": 335,
+    "__docId__": 337,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -7649,7 +7700,7 @@
     "longname": "src/collection/devices/collect/Hardware.js~Hardware#_modelName",
     "access": null,
     "description": null,
-    "lineNumber": 64,
+    "lineNumber": 63,
     "undocument": true,
     "type": {
       "types": [
@@ -7658,7 +7709,7 @@
     }
   },
   {
-    "__docId__": 336,
+    "__docId__": 338,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -7667,7 +7718,7 @@
     "longname": "src/collection/devices/collect/Hardware.js~Hardware#withModelVersion",
     "access": null,
     "description": "Set the modelVersion  attribute",
-    "lineNumber": 73,
+    "lineNumber": 72,
     "params": [
       {
         "nullable": null,
@@ -7691,7 +7742,7 @@
     "generator": false
   },
   {
-    "__docId__": 337,
+    "__docId__": 339,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -7700,7 +7751,7 @@
     "longname": "src/collection/devices/collect/Hardware.js~Hardware#_modelVersion",
     "access": null,
     "description": null,
-    "lineNumber": 76,
+    "lineNumber": 75,
     "undocument": true,
     "type": {
       "types": [
@@ -7709,7 +7760,7 @@
     }
   },
   {
-    "__docId__": 338,
+    "__docId__": 340,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -7718,7 +7769,7 @@
     "longname": "src/collection/devices/collect/Hardware.js~Hardware#withClockDate",
     "access": null,
     "description": "Set the clockDate  attribute",
-    "lineNumber": 87,
+    "lineNumber": 86,
     "params": [
       {
         "nullable": null,
@@ -7742,7 +7793,7 @@
     "generator": false
   },
   {
-    "__docId__": 339,
+    "__docId__": 341,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -7751,58 +7802,7 @@
     "longname": "src/collection/devices/collect/Hardware.js~Hardware#_clockDate",
     "access": null,
     "description": null,
-    "lineNumber": 90,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 340,
-    "kind": "method",
-    "static": false,
-    "variation": null,
-    "name": "withUpTime",
-    "memberof": "src/collection/devices/collect/Hardware.js~Hardware",
-    "longname": "src/collection/devices/collect/Hardware.js~Hardware#withUpTime",
-    "access": null,
-    "description": "Set the upTime  attribute",
-    "lineNumber": 100,
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "string"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "upTime",
-        "description": ""
-      }
-    ],
-    "return": {
-      "nullable": null,
-      "types": [
-        "Hardware"
-      ],
-      "spread": false,
-      "description": ""
-    },
-    "generator": false
-  },
-  {
-    "__docId__": 341,
-    "kind": "member",
-    "static": false,
-    "variation": null,
-    "name": "_upTime",
-    "memberof": "src/collection/devices/collect/Hardware.js~Hardware",
-    "longname": "src/collection/devices/collect/Hardware.js~Hardware#_upTime",
-    "access": null,
-    "description": null,
-    "lineNumber": 103,
+    "lineNumber": 89,
     "undocument": true,
     "type": {
       "types": [
@@ -7820,7 +7820,7 @@
     "longname": "src/collection/devices/collect/Hardware.js~Hardware#_isValidDate",
     "access": null,
     "description": null,
-    "lineNumber": 109,
+    "lineNumber": 94,
     "undocument": true,
     "params": [
       {
@@ -7847,7 +7847,7 @@
     "longname": "src/collection/devices/collect/Hardware.js~Hardware#composeElement",
     "access": null,
     "description": null,
-    "lineNumber": 154,
+    "lineNumber": 139,
     "undocument": true,
     "params": [],
     "return": {

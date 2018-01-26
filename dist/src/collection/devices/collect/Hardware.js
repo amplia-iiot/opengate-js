@@ -21,7 +21,6 @@ var Hardware = (function () {
         this._modelName = undefined;
         this._modelVersion = undefined;
         this._clockDate = undefined;
-        this._upTime = undefined;
     }
 
     /**
@@ -105,19 +104,6 @@ var Hardware = (function () {
 
             return this;
         }
-
-        /**
-         * Set the upTime  attribute
-         * @param {string} upTime  
-         * @return {Hardware}
-         */
-    }, {
-        key: 'withUpTime',
-        value: function withUpTime(upTime) {
-            if (typeof upTime !== 'string') throw new Error('Parameter upTime must be a string and cannot be empty');;
-            this._upTime = upTime;
-            return this;
-        }
     }, {
         key: '_isValidDate',
         value: function _isValidDate(str) {
@@ -177,8 +163,7 @@ var Hardware = (function () {
                     'name': this._modelName || "",
                     'version': this._modelVersion || ""
                 },
-                'clockDate': this._clockDate,
-                'upTime': this._upTime
+                'clockDate': this._clockDate
             };
             return hardware;
         }

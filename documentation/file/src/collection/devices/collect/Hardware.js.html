@@ -226,7 +226,6 @@ export default class Hardware {
         this._modelName = undefined;
         this._modelVersion = undefined;
         this._clockDate = undefined;
-        this._upTime = undefined;
     }
 
     /**
@@ -304,20 +303,6 @@ export default class Hardware {
         return this;
     }
 
-    /**
-     * Set the upTime  attribute
-     * @param {string} upTime  
-     * @return {Hardware}
-     */
-    withUpTime(upTime) {
-        if (typeof upTime !== &apos;string&apos;)
-            throw new Error(&apos;Parameter upTime must be a string and cannot be empty&apos;);;
-        this._upTime = upTime;
-        return this;
-    }
-
-
-
     _isValidDate(str) {
         //YYYY-MM-DDThh:mm:ssTZD
         if (str === &quot;&quot; || str === null) {
@@ -375,16 +360,14 @@ export default class Hardware {
                 &apos;name&apos;: this._modelName || &quot;&quot;,
                 &apos;version&apos;: this._modelVersion || &quot;&quot;
             },
-            &apos;clockDate&apos;: this._clockDate,
-            &apos;upTime&apos;: this._upTime
+            &apos;clockDate&apos;: this._clockDate
         }
         return hardware;
     }
 
 
 
-}
-</code></pre>
+}</code></pre>
 
 </div>
 

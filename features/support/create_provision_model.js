@@ -195,7 +195,8 @@ module.exports = {
                 'volatilStorage': 'withVolatilStorage',
                 'nonVolatilStorage': 'withNonVolatilStorage',
                 'powerSupply': 'withPowerSupply',
-                'commsModuleMessage': 'withCommsModule'
+                'commsModuleMessage': 'withCommsModule',
+                'upTime': 'withUpTime'
             },
             'datapoints message': {
                 'from': 'withFrom',
@@ -209,8 +210,7 @@ module.exports = {
                 'manufacturerOui': 'withManufacturerOui',
                 'modelName': 'withModelName',
                 'modelVersion': 'withModelVersion',
-                'clockDate': 'withClockDate',
-                'upTime': 'withUpTime'
+                'clockDate': 'withClockDate'
             },
             'software': {
                 'name': 'withName',
