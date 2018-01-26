@@ -88,6 +88,8 @@ import DatastreamsBuilder from './iot/catalog/Datastream'
 import QratingsBuilder from './iot/catalog/Qrating'
 import EntityBuilder from './provision/entities/EntityBuilder'
 import EntitiesSearchBuilder from './searching/builder/EntitiesSearchBuilder'
+import CountryCodesSearchBuilder from './searching/builder/CountryCodesSearchBuilder'
+import UserLanguagesSearchBuilder from './searching/builder/UserLanguagesSearchBuilder'
 
 /**
  * This is a abstract class, it must be extended to another class that defined the backend, it will be used on request to Opengate North API by browser or nodejs server
@@ -799,4 +801,19 @@ export default class InternalOpenGateAPI {
         return new QratingsBuilder(this);
     }
 
+    /**
+     * This return a CountryCodesSearchBuilder to build a specific CountryCodesSearchBuilder
+     * @return {CountryCodesSearchBuilder}
+     */
+    countryCodesSearchBuilder() {
+        return new CountryCodesSearchBuilder(this);
+    }
+
+    /**
+     * This return a UserLanguagesSearchBuilder to build a specific UserLanguagesSearchBuilder
+     * @return {UserLanguagesSearchBuilder}
+     */
+    userLanguagesSearchBuilder() {
+        return new UserLanguagesSearchBuilder(this);
+    }
 }
