@@ -232,6 +232,12 @@ export default class Category {
         this._datastreams = datastreams ? datastreams : [];
     }
 
+    withName(name) {
+        this._isValidString(name, &apos;name&apos;, 100);
+        this._name = name;
+        return this;
+    }
+
     /**
      * Add a datastream to the category 
      * @param {!Object} datastream json object
@@ -282,6 +288,7 @@ export default class Category {
 
         return {
             &apos;identifier&apos;: this._identifier,
+            &apos;name&apos;: this._name ? this._name : undefined,
             &apos;datastreams&apos;: this._datastreams
         }
     }

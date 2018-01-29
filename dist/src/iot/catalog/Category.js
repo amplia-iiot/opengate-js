@@ -34,13 +34,20 @@ var Category = (function () {
         this._datastreams = datastreams ? datastreams : [];
     }
 
-    /**
-     * Add a datastream to the category 
-     * @param {!Object} datastream json object
-     * @return {Category}
-     */
-
     _createClass(Category, [{
+        key: 'withName',
+        value: function withName(name) {
+            this._isValidString(name, 'name', 100);
+            this._name = name;
+            return this;
+        }
+
+        /**
+         * Add a datastream to the category 
+         * @param {!Object} datastream json object
+         * @return {Category}
+         */
+    }, {
         key: 'addDatastream',
         value: function addDatastream(datastream) {
             if (!datastream || typeof datastream !== 'object') {
@@ -89,6 +96,7 @@ var Category = (function () {
 
             return {
                 'identifier': this._identifier,
+                'name': this._name ? this._name : undefined,
                 'datastreams': this._datastreams
             };
         }
