@@ -83,17 +83,22 @@ export default class DatamodelsHelper extends BaseProvision {
      * @return {DatamodelsHelper}
      */
     addCategory(category, datastreams) {
-        this._isValidString(category, 'category', 100);
+        //this._isValidString(category, 'category', 100);
         if (this._categories) {
             this._categories.forEach(function(_category, index) {
-                if (_category.identifier === category) {
-                    throw new Error('Category ' + category + ' already exists.');
+                if (_category.identifier === category.identifier) {
+                    throw new Error('Category ' + category.identifier + ' already exists.');
                 }
             });
         } else {
             this._categories = [];
         }
-        let _category = new Category(this._ogapi, category);
+        let _category = new Category(this._ogapi, category.identifier);
+
+        if (category.name) {
+            _category.withName(category.name);
+        }
+
         if (datastreams && datastreams.length > 0)
             _category.addDatastreams(datastreams);
         this._categories.push(_category._composeElement());
@@ -185,7 +190,7 @@ export default class DatamodelsHelper extends BaseProvision {
      * @return {DatamodelsHelper}
      */
     updateCategory(old_category, new_category) {
-        this._isValidString(new_category, 'new category', 100);
+        //this._isValidString(new_category, 'new category', 100);
         this._isValidString(old_category, 'old category', 100);
         let old_category_index = -1;
         let new_category_index = -1;
@@ -194,18 +199,18 @@ export default class DatamodelsHelper extends BaseProvision {
                 case old_category:
                     old_category_index = index;
                     break;
-                case new_category:
+                case new_category.identifier:
                     new_category_index = index;
                     break;
             }
         });
         if (new_category_index != -1) {
-            throw new Error('New category ' + category + ' already exists.');
+            throw new Error('New category ' + new_category.identifier + ' already exists.');
         }
         if (old_category_index === -1) {
             throw new Error('Category ' + old_category + ' not exists for this datamodel.');
         }
-        this._categories[old_category_index].identifier = new_category;
+        this._categories[old_category_index].name = new_category.name;
         return this;
     }
 
