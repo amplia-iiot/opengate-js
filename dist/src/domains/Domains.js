@@ -100,8 +100,8 @@ var Domains = (function (_BaseProvision) {
         key: '_buildURL',
         value: function _buildURL() {
             /*jshint -W117 */
-            console.log("RESOURCE: " + this._resource);
-            console.log("NAME: " + this._name);
+            //console.log("RESOURCE: " + this._resource);
+            //console.log("NAME: " + this._name);
             var url = this._resource + '/' + this._name;
             return url;
         }

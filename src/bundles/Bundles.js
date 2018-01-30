@@ -27,7 +27,7 @@ export default class Bundles extends BaseProvision {
      */
     withName(name) {
         if (typeof name !== 'string' || name.length > 255)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_255", parameter: 'name' });
+            throw new Error("OGAPI_NAME_PARAMETER_MAX_LENGTH_255");
         this._name = name;
         return this;
     }

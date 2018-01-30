@@ -20,8 +20,9 @@ export default class Datastream {
      * @return {Datastream}
      */
     withId(id) {
+        console.log(id);
         if (typeof id !== 'string' || id.length === 0)
-            throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'id' });
+            throw new Error('OGAPI_STRING_PARAMETER_ID');
         this._id = id;
         return this;
     }

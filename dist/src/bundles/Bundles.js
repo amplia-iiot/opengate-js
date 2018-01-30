@@ -54,7 +54,7 @@ var Bundles = (function (_BaseProvision) {
     _createClass(Bundles, [{
         key: 'withName',
         value: function withName(name) {
-            if (typeof name !== 'string' || name.length > 255) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_255", parameter: 'name' });
+            if (typeof name !== 'string' || name.length > 255) throw new Error("OGAPI_NAME_PARAMETER_MAX_LENGTH_255");
             this._name = name;
             return this;
         }
