@@ -8295,7 +8295,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "'use strict';\n\nimport Datapoint from './Datapoint';\n\n\n/**\n * This is a base object that allows the user to create a Datastream.\n */\nexport default class Datastream {\n\n    constructor() {\n        this._id = undefined;\n        this._feed = undefined;\n        this._datapoints = [];\n    }\n\n    /**\n     * Set the id attribute\n     * @param {string} id - required field\n     * @return {Datastream}\n     */\n    withId(id) {\n        console.log(id);\n        if (typeof id !== 'string' || id.length === 0)\n            throw new Error('OGAPI_STRING_PARAMETER_ID');\n        this._id = id;\n        return this;\n    }\n\n    /**\n     * Set the feed attribute\n     * @param {string} feed - optionals field\n     * @return {Datastream}\n     */\n    withFeed(feed) {\n        if (typeof feed !== 'string' || feed.length === 0)\n            throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'feed' });\n        this._feed = feed;\n        return this;\n    }\n\n    /**\n     * Add a datapoint in datapoints\n     * @param {Datapoint} datapoint - required field\n     * @return {Datastream}\n     */\n    withDatapoint(datapoint) {\n        if (!(datapoint instanceof Datapoint))\n            throw new Error('Parameter datapoint must be a Datapoint type');\n        this._datapoints.push(datapoint.composeElement());\n        return this;\n    }\n\n    composeElement() {\n        if (this._id === undefined || this._id.length === 0 || this._datapoints.length === 0) {\n            throw new Error('Parameter id must be defined and dapoint list must have at least one element');\n        }\n        var datastream = {\n            'id': this._id,\n            'feed': this._feed,\n            'datapoints': this._datapoints\n\n        }\n        return datastream;\n    }\n\n\n\n\n\n\n\n}"
+    "content": "'use strict';\n\nimport Datapoint from './Datapoint';\n\n\n/**\n * This is a base object that allows the user to create a Datastream.\n */\nexport default class Datastream {\n\n    constructor() {\n        this._id = undefined;\n        this._feed = undefined;\n        this._datapoints = [];\n    }\n\n    /**\n     * Set the id attribute\n     * @param {string} id - required field\n     * @return {Datastream}\n     */\n    withId(id) {\n        if (typeof id !== 'string' || id.length === 0)\n            throw new Error('OGAPI_STRING_PARAMETER_ID');\n        this._id = id;\n        return this;\n    }\n\n    /**\n     * Set the feed attribute\n     * @param {string} feed - optionals field\n     * @return {Datastream}\n     */\n    withFeed(feed) {\n        if (typeof feed !== 'string' || feed.length === 0)\n            throw new Error('OGAPI_STRING_PARAMETER_FEED');\n        this._feed = feed;\n        return this;\n    }\n\n    /**\n     * Add a datapoint in datapoints\n     * @param {Datapoint} datapoint - required field\n     * @return {Datastream}\n     */\n    withDatapoint(datapoint) {\n        if (!(datapoint instanceof Datapoint))\n            throw new Error('OGAPI_PARAMETER_DATAPOINT');\n        this._datapoints.push(datapoint.composeElement());\n        return this;\n    }\n\n    composeElement() {\n        if (this._id === undefined || this._id.length === 0 || this._datapoints.length === 0) {\n            throw new Error('Parameter id must be defined and dapoint list must have at least one element');\n        }\n        var datastream = {\n            'id': this._id,\n            'feed': this._feed,\n            'datapoints': this._datapoints\n\n        }\n        return datastream;\n    }\n\n\n\n\n\n\n\n}"
   },
   {
     "__docId__": 360,
@@ -8425,7 +8425,7 @@
     "longname": "src/collection/devices/collect/Datastreams.js~Datastream#_id",
     "access": null,
     "description": null,
-    "lineNumber": 26,
+    "lineNumber": 25,
     "undocument": true,
     "type": {
       "types": [
@@ -8443,7 +8443,7 @@
     "longname": "src/collection/devices/collect/Datastreams.js~Datastream#withFeed",
     "access": null,
     "description": "Set the feed attribute",
-    "lineNumber": 35,
+    "lineNumber": 34,
     "params": [
       {
         "nullable": null,
@@ -8476,7 +8476,7 @@
     "longname": "src/collection/devices/collect/Datastreams.js~Datastream#_feed",
     "access": null,
     "description": null,
-    "lineNumber": 38,
+    "lineNumber": 37,
     "undocument": true,
     "type": {
       "types": [
@@ -8494,7 +8494,7 @@
     "longname": "src/collection/devices/collect/Datastreams.js~Datastream#withDatapoint",
     "access": null,
     "description": "Add a datapoint in datapoints",
-    "lineNumber": 47,
+    "lineNumber": 46,
     "params": [
       {
         "nullable": null,
@@ -8527,7 +8527,7 @@
     "longname": "src/collection/devices/collect/Datastreams.js~Datastream#composeElement",
     "access": null,
     "description": null,
-    "lineNumber": 54,
+    "lineNumber": 53,
     "undocument": true,
     "params": [],
     "return": {

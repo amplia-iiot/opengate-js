@@ -20,7 +20,6 @@ export default class Datastream {
      * @return {Datastream}
      */
     withId(id) {
-        console.log(id);
         if (typeof id !== 'string' || id.length === 0)
             throw new Error('OGAPI_STRING_PARAMETER_ID');
         this._id = id;
@@ -34,7 +33,7 @@ export default class Datastream {
      */
     withFeed(feed) {
         if (typeof feed !== 'string' || feed.length === 0)
-            throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'feed' });
+            throw new Error('OGAPI_STRING_PARAMETER_FEED');
         this._feed = feed;
         return this;
     }
@@ -46,7 +45,7 @@ export default class Datastream {
      */
     withDatapoint(datapoint) {
         if (!(datapoint instanceof Datapoint))
-            throw new Error('Parameter datapoint must be a Datapoint type');
+            throw new Error('OGAPI_PARAMETER_DATAPOINT');
         this._datapoints.push(datapoint.composeElement());
         return this;
     }

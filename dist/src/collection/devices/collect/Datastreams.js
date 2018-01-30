@@ -36,7 +36,6 @@ var Datastream = (function () {
     _createClass(Datastream, [{
         key: 'withId',
         value: function withId(id) {
-            console.log(id);
             if (typeof id !== 'string' || id.length === 0) throw new Error('OGAPI_STRING_PARAMETER_ID');
             this._id = id;
             return this;
@@ -50,7 +49,7 @@ var Datastream = (function () {
     }, {
         key: 'withFeed',
         value: function withFeed(feed) {
-            if (typeof feed !== 'string' || feed.length === 0) throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'feed' });
+            if (typeof feed !== 'string' || feed.length === 0) throw new Error('OGAPI_STRING_PARAMETER_FEED');
             this._feed = feed;
             return this;
         }
@@ -63,7 +62,7 @@ var Datastream = (function () {
     }, {
         key: 'withDatapoint',
         value: function withDatapoint(datapoint) {
-            if (!(datapoint instanceof _Datapoint2['default'])) throw new Error('Parameter datapoint must be a Datapoint type');
+            if (!(datapoint instanceof _Datapoint2['default'])) throw new Error('OGAPI_PARAMETER_DATAPOINT');
             this._datapoints.push(datapoint.composeElement());
             return this;
         }
