@@ -48,6 +48,7 @@ var Datamodels = (function (_BaseProvision) {
         this._isValidString(organization, 'organization', 50);
         this._organization = organization;
         this._categories = [];
+        this._resourceType = [];
         this._resource = this._resource + '/' + this._organization + DATAMODELS_RESOURCE;
     }
 
@@ -101,6 +102,13 @@ var Datamodels = (function (_BaseProvision) {
         value: function withDescription(description) {
             if (description) this._isValidString(description, 'description', 100);
             this._description = description;
+            return this;
+        }
+    }, {
+        key: 'addAllowedResourceType',
+        value: function addAllowedResourceType(resourceType) {
+            if (resourceType) this._isValidString(resourceType, 'resourceType', 100);
+            this._resourceType.push(resourceType);
             return this;
         }
 
@@ -159,11 +167,16 @@ var Datamodels = (function (_BaseProvision) {
                 throw new Error('Version is required on IoTDatamodel');
             }
 
+            if (!this._resourceType) {
+                this._resourceType = undefined;
+            }
+
             return {
                 'identifier': this._identifier,
                 'name': this._name,
                 'version': this._version,
                 'description': this._description,
+                'allowedResourceTypes': this._resourceType,
                 'categories': this._categories.length > 0 ? this._categories : undefined
             };
         }
