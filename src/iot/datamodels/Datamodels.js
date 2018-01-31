@@ -18,6 +18,7 @@ export default class Datamodels extends BaseProvision {
         this._isValidString(organization, 'organization', 50);
         this._organization = organization;
         this._categories = [];
+        this._resourceType = [];
         this._resource = this._resource + '/' + this._organization + DATAMODELS_RESOURCE;
     }
 
@@ -66,12 +67,18 @@ export default class Datamodels extends BaseProvision {
         return this;
     }
 
-    /**
-     * Add a flavor. If the field datastreams have value, they will add to this flavor
-     * @param {!string} category
-     * @param {!Array} datastreams
-     * @return {Datamodels}
-     */
+    addAllowedResourceType(resourceType) {
+            if (resourceType)
+                this._isValidString(resourceType, 'resourceType', 100);
+            this._resourceType.push(resourceType);
+            return this;
+        }
+        /**
+         * Add a flavor. If the field datastreams have value, they will add to this flavor
+         * @param {!string} category
+         * @param {!Array} datastreams
+         * @return {Datamodels}
+         */
     addCategory(category, datastreams) {
         this._isValidString(category, 'category', 100);
         this._categories.forEach(function(_category, index) {
@@ -118,11 +125,16 @@ export default class Datamodels extends BaseProvision {
             throw new Error('Version is required on IoTDatamodel');
         }
 
+        if (!this._resourceType) {
+            this._resourceType = undefined;
+        }
+
         return {
             'identifier': this._identifier,
             'name': this._name,
             'version': this._version,
             'description': this._description,
+            'allowedResourceTypes': this._resourceType,
             'categories': this._categories.length > 0 ? this._categories : undefined
         }
     }
