@@ -167,16 +167,12 @@ var Datamodels = (function (_BaseProvision) {
                 throw new Error('Version is required on IoTDatamodel');
             }
 
-            if (!this._resourceType) {
-                this._resourceType = undefined;
-            }
-
             return {
                 'identifier': this._identifier,
                 'name': this._name,
                 'version': this._version,
                 'description': this._description,
-                'allowedResourceTypes': this._resourceType,
+                'allowedResourceTypes': this._resourceType.length > 0 ? this._resourceType : undefined,
                 'categories': this._categories.length > 0 ? this._categories : undefined
             };
         }

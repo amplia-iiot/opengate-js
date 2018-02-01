@@ -339,16 +339,13 @@ export default class Datamodels extends BaseProvision {
             throw new Error(&apos;Version is required on IoTDatamodel&apos;);
         }
 
-        if (!this._resourceType) {
-            this._resourceType = undefined;
-        }
 
         return {
             &apos;identifier&apos;: this._identifier,
             &apos;name&apos;: this._name,
             &apos;version&apos;: this._version,
             &apos;description&apos;: this._description,
-            &apos;allowedResourceTypes&apos;: this._resourceType,
+            &apos;allowedResourceTypes&apos;: this._resourceType.length &gt; 0 ? this._resourceType : undefined,
             &apos;categories&apos;: this._categories.length &gt; 0 ? this._categories : undefined
         }
     }
