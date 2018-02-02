@@ -15,27 +15,27 @@ So I can create a domain
 
   Scenario: Checking name parameter type
     And the "name" 1
-    Then throws an error equal to "Parameter name must be a string and has a maximum length of 50"
+    Then throws an error equal to "OGAPI_NAME_PARAMETER_MAX_LENGTH_50"
 
   Scenario: Checking name parameter length
     And the "name" "name_name_name_name_name_name_name_name_name_name_name"
-    Then throws an error equal to "Parameter name must be a string and has a maximum length of 50"
+    Then throws an error equal to "OGAPI_NAME_PARAMETER_MAX_LENGTH_50"
 
   Scenario: Checking description parameter type
     And the "description" 1
-    Then throws an error equal to "Parameter description must be a string and has a maximum length of 200"
+    Then throws an error equal to "OGAPI_DESCRIPTION_PARAMETER_MAX_LENGTH_250"
 
   Scenario: Checking description parameter length
     And the "description" "name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name"
-    Then throws an error equal to "Parameter description must be a string and has a maximum length of 200"
+    Then throws an error equal to "OGAPI_DESCRIPTION_PARAMETER_MAX_LENGTH_250"
 
   Scenario: Checking parentDomain parameter type
     And the "parentDomain" 1
-    Then throws an error equal to "Parameter parentDomain must be a string and has a maximum length of 50"
+    Then throws an error equal to "OGAPI_DOMAIN_PARAMETER_MAX_LENGTH_50"
 
   Scenario: Checking name parameter length
     And the "parentDomain" "name_name_name_name_name_name_name_name_name_name_name"
-    Then throws an error equal to "Parameter parentDomain must be a string and has a maximum length of 50"
+    Then throws an error equal to "OGAPI_DOMAIN_PARAMETER_MAX_LENGTH_50"
 
   @only_domain
   Scenario: Create a domain

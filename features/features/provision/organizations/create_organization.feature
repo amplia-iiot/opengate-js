@@ -17,7 +17,7 @@ I want to create or delete an organization
 
   Scenario: Creating an organization with an invalid field
     And the "lang code" ""
-    Then throws an error equal to "Lang code must be a string and cannot be empty"
+    Then throws an error equal to "OGAPI_STRING_PARAMETER"
 
   Scenario: Creating an organization with invalid zoom
     And the "zoom" 21

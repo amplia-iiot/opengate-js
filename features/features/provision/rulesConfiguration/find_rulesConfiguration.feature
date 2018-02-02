@@ -2,7 +2,6 @@
 @provision
 @find_provision
 @rulesConfiguration
-@chemas
 Feature: Find an rulesConfiguration 
   As a user of JsApi
   I want to find an rulesConfiguration

@@ -24,7 +24,7 @@ export default class Domains extends BaseProvision {
      */
     withName(name) {
         if (typeof name !== 'string' || name.length > 50)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'name' });
+            throw new Error("OGAPI_NAME_PARAMETER_MAX_LENGTH_50");
         this._name = name;
         return this;
     }
@@ -36,7 +36,7 @@ export default class Domains extends BaseProvision {
      */
     withDescription(description) {
         if (typeof description !== 'string' || description.length > 250)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250", parameter: 'description' });
+            throw new Error("OGAPI_DESCRIPTION_PARAMETER_MAX_LENGTH_250");
         this._description = description;
         return this;
     }
@@ -49,7 +49,7 @@ export default class Domains extends BaseProvision {
      */
     withParentDomain(parentDomain) {
         if (typeof parentDomain !== 'string' || parentDomain.length > 50)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'parentDomain' });
+            throw new Error("OGAPI_DOMAIN_PARAMETER_MAX_LENGTH_50");
         this._parentDomain = parentDomain;
         return this;
     }

@@ -14,7 +14,7 @@ Feature: Create a bundle
 
   Scenario: Checking parameter name
     And the "name" 1
-    Then throws an error equal to "Parameter name must be a string and has a maximum length of 255"
+    Then throws an error equal to "OGAPI_NAME_PARAMETER_MAX_LENGTH_255"
 
   Scenario: Create a bundle with a deployment element
     Given the "name" "ogux_cucumber_bundle"
@@ -56,7 +56,7 @@ Feature: Create a bundle
     | field  | content |
     | type | FIRMWARE |
     | validators | [{"mode": "TRUSTED_BOOT","type":"SHA-1"},{"mode": "TRUSTED_BOOT","type":"SHA-1"}]  |
-    Then throws an error equal to "Only one TRUSTED_BOOT validator allowed in a deployment element"
+    Then throws an error equal to "OGAPI_422_ONE_TRUSTED_BOOT_ALLOWED_DEPLOY_ELEMENT"
 
 @bug 
   Scenario: Create a bundle with two deployment elements with same name
@@ -149,7 +149,7 @@ Feature: Create a bundle
     | option | MANDATORY |
     | validators | [{"mode": "TRUSTED_BOOT", "type" : "SHA-256"}]  |
     Then I deploy it
-    Then throws an error equal to "Only one TRUSTED_BOOT validator allowed in bundle"
+    Then throws an error equal to "OGAPI_422_ONE_TRUSTED_BOOT_ALLOWED"
 
   Scenario: Create a duplicated bundle
     Given the "name" "ogux_cucumber_bundle"
@@ -161,7 +161,7 @@ Feature: Create a bundle
     And response code should be: 201
     Then I create it
     And response code should be: 400
-    Then throws an error equal to "Bundle already exists"
+    Then throws an error equal to "OGAPI_400_BUNDLE_EXIST"
     Then I delete it
     And response code should be: 200
     

@@ -51,7 +51,7 @@ var Organizations = (function (_BaseProvision) {
     _createClass(Organizations, [{
         key: 'withName',
         value: function withName(name) {
-            if (typeof name !== 'string' || name.length === 0 || name.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'name' });
+            if (typeof name !== 'string' || name.length === 0 || name.length > 50) throw new Error("OGAPI_STRING_PARAMETER_MAX_LENGTH_50");
             this._name = name;
             return this;
         }
@@ -64,7 +64,7 @@ var Organizations = (function (_BaseProvision) {
     }, {
         key: 'withDomain',
         value: function withDomain(domain) {
-            if (typeof domain !== 'string' || domain.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'domain' });
+            if (typeof domain !== 'string' || domain.length > 50) throw new Error("OGAPI_STRING_PARAMETER_MAX_LENGTH_50");
             this._domain = domain;
             return this;
         }
@@ -77,7 +77,7 @@ var Organizations = (function (_BaseProvision) {
     }, {
         key: 'withDescription',
         value: function withDescription(description) {
-            if (typeof description !== 'string' || description.length > 250) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250", parameter: 'description' });
+            if (typeof description !== 'string' || description.length > 250) throw new Error("OGAPI_STRING_PARAMETER_MAX_LENGTH_250");
             this._description = description;
             return this;
         }
@@ -90,7 +90,7 @@ var Organizations = (function (_BaseProvision) {
     }, {
         key: 'withCountryCode',
         value: function withCountryCode(countryCode) {
-            if (typeof countryCode !== 'string' || countryCode.length === 0) throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: 'countryCode' });
+            if (typeof countryCode !== 'string' || countryCode.length === 0) throw new Error("OGAPI_STRING_PARAMETER");
             this._countryCode = countryCode.toUpperCase();
             return this;
         }
@@ -103,7 +103,7 @@ var Organizations = (function (_BaseProvision) {
     }, {
         key: 'withLangCode',
         value: function withLangCode(langCode) {
-            if (typeof langCode !== 'string' || langCode.length === 0) throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: 'langCode' });
+            if (typeof langCode !== 'string' || langCode.length === 0) throw new Error("OGAPI_STRING_PARAMETER");
             this._langCode = langCode.toLowerCase();
             return this;
         }
@@ -116,7 +116,7 @@ var Organizations = (function (_BaseProvision) {
     }, {
         key: 'withTimeZone',
         value: function withTimeZone(timeZone) {
-            if (typeof timeZone !== 'string' || timeZone.length === 0) throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: 'time Zone' });
+            if (typeof timeZone !== 'string' || timeZone.length === 0) throw new Error("OGAPI_STRING_PARAMETER");
             this._timeZone = timeZone;
             return this;
         }
@@ -129,7 +129,7 @@ var Organizations = (function (_BaseProvision) {
     }, {
         key: 'withPlan',
         value: function withPlan(plan) {
-            if (typeof plan !== 'string' || plan.length === 0) throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: 'plan' });
+            if (typeof plan !== 'string' || plan.length === 0) throw new Error("OGAPI_STRING_PARAMETER");
             this._plan = plan;
             return this;
         }
