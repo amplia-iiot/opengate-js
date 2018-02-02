@@ -26,7 +26,7 @@ So I can create a domain
     Then throws an error equal to "OGAPI_DESCRIPTION_PARAMETER_MAX_LENGTH_250"
 
   Scenario: Checking description parameter length
-    And the "description" "name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name"
+    And the "description" "name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name_name"
     Then throws an error equal to "OGAPI_DESCRIPTION_PARAMETER_MAX_LENGTH_250"
 
   Scenario: Checking parentDomain parameter type
