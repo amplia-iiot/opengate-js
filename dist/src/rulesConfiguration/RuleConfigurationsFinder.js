@@ -110,6 +110,57 @@ var RuleConfigurationsFinder = (function (_ProvisionGenericFinder) {
 
             return promise;
         }
+
+        /**
+         * Performs a get that returns rules configuarations related the the search
+         * @test
+         *   ogapi.newRuleConfigurationsFinder().findByOrganizationAndChannelAndEnabled('xxx-xx-xxx-xxx', 'xxxxx-xxxx-xxxx',true).then().catch();
+         * @param {string} organization - organization 
+         * @param {string} channel - channel.
+         * @param {string} enabled - Rule Configuration name
+         * @return {Promise} 
+         */
+    }, {
+        key: 'findByOrganizationAndChannelAndEnabled',
+        value: function findByOrganizationAndChannelAndEnabled(organization, channel, enabled) {
+            var _this = this;
+            _this._organization = organization;
+            _this._channel = channel;
+            _this._enabled = enabled;
+
+            var defered = _q2['default'].defer();
+            var promise = defered.promise;
+            var _error_not_found = this._error_not_found;
+
+            this._execute().then(function (request) {
+                if (request.statusCode === 204) {
+                    defered.reject({ data: _error_not_found, statusCode: _httpStatusCodes2['default'].NOT_FOUND });
+                } else {
+                    var globalData = request.data;
+                    var finalData = [];
+
+                    for (var idx in globalData) {
+                        if (globalData[idx].enabled === _this._enabled) {
+                            finalData.push(globalData[idx]);
+                        }
+                    }
+
+                    if (finalData.length > 0) {
+                        if (request.syncCache) {
+                            defered.resolve({ data: finalData, statusCode: request.statusCode, syncCache: request.syncCache });
+                        } else {
+                            defered.resolve({ data: finalData, statusCode: request.statusCode });
+                        }
+                    } else {
+                        defered.reject({ data: _error_not_found, statusCode: _httpStatusCodes2['default'].NOT_FOUND });
+                    }
+                }
+            })['catch'](function (error) {
+                defered.reject(error);
+            });
+
+            return promise;
+        }
     }, {
         key: '_composeUrl',
         value: function _composeUrl() {
