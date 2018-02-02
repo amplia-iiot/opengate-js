@@ -28,7 +28,7 @@ export default class Organizations extends BaseProvision {
      */
     withName(name) {
         if (typeof name !== 'string' || name.length === 0 || name.length > 50)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'name' });
+            throw new Error("OGAPI_STRING_PARAMETER_MAX_LENGTH_50");
         this._name = name;
         return this;
     }
@@ -40,7 +40,7 @@ export default class Organizations extends BaseProvision {
      */
     withDomain(domain) {
             if (typeof domain !== 'string' || domain.length > 50)
-                throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'domain' });
+                throw new Error("OGAPI_STRING_PARAMETER_MAX_LENGTH_50");
             this._domain = domain;
             return this;
         }
@@ -51,7 +51,7 @@ export default class Organizations extends BaseProvision {
          */
     withDescription(description) {
         if (typeof description !== 'string' || description.length > 250)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250", parameter: 'description' });
+            throw new Error("OGAPI_STRING_PARAMETER_MAX_LENGTH_250");
         this._description = description;
         return this;
     }
@@ -63,7 +63,7 @@ export default class Organizations extends BaseProvision {
      */
     withCountryCode(countryCode) {
         if (typeof countryCode !== 'string' || countryCode.length === 0)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: 'countryCode' });
+            throw new Error("OGAPI_STRING_PARAMETER");
         this._countryCode = countryCode.toUpperCase();
         return this;
     }
@@ -75,7 +75,7 @@ export default class Organizations extends BaseProvision {
      */
     withLangCode(langCode) {
         if (typeof langCode !== 'string' || langCode.length === 0)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: 'langCode' });
+            throw new Error("OGAPI_STRING_PARAMETER");
         this._langCode = langCode.toLowerCase();
         return this;
     }
@@ -87,7 +87,7 @@ export default class Organizations extends BaseProvision {
      */
     withTimeZone(timeZone) {
         if (typeof timeZone !== 'string' || timeZone.length === 0)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: 'time Zone' });
+            throw new Error("OGAPI_STRING_PARAMETER");
         this._timeZone = timeZone;
         return this;
     }
@@ -99,7 +99,7 @@ export default class Organizations extends BaseProvision {
      */
     withPlan(plan) {
         if (typeof plan !== 'string' || plan.length === 0)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: 'plan' });
+            throw new Error("OGAPI_STRING_PARAMETER");
         this._plan = plan;
         return this;
     }
