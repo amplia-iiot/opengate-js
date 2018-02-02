@@ -2,6 +2,7 @@
 @provision
 @find_provision
 @rulesConfiguration
+@chemas
 Feature: Find an rulesConfiguration 
   As a user of JsApi
   I want to find an rulesConfiguration
@@ -33,6 +34,15 @@ Feature: Find an rulesConfiguration
       | channel   | base_channel |
       | name   | mobileCoverageLow |
     Then response code should be: 200
+
+  Scenario: Find only enabled rules configuration
+    When I try to find by...
+      | field  | content                |
+      | organization   | base_organization |
+      | channel   | base_channel |
+      | enabled   | true |
+    Then response code should be: 200
+
 
   Scenario: Find an rulesConfiguration that not exists
   	When I try to find by... 
