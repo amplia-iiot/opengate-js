@@ -1,4 +1,4 @@
-module.exports = function () {
+module.exports = function() {
 
     var typeMatch = {
         "ASSET": "onDevices",
@@ -21,18 +21,18 @@ module.exports = function () {
         ).build().execute();
     }
 
-    this.Then(/^response code should be: (\d+)$/, function (statusCode, callback) {
+    this.Then(/^response code should be: (\d+)$/, function(statusCode, callback) {
         // Write code here that turns the phrase above into concrete actions
         var data = undefined;
         data = this.responseData ? this.responseData.statusCode : this.data;
         var statusCodeResp = data;
-        //console.log("RESPONSE_: " + JSON.stringify(this.responseData));
+        // console.log("RESPONSE_: " + JSON.stringify(this.responseData));
         this.expect(parseInt(statusCode)).to.equal(statusCodeResp);
 
         callback();
     });
 
-    this.Then(/^response code should be: "([^"]*)"$/, function (response, callback) {
+    this.Then(/^response code should be: "([^"]*)"$/, function(response, callback) {
         // Write code here that turns the phrase above into concrete actions
         var data = undefined;
         data = this.responseData && this.responseData.data ? this.responseData.data : this.responseData;
@@ -43,7 +43,7 @@ module.exports = function () {
         callback();
     });
 
-    this.Then(/^response data should has no elements$/, function (callback) {
+    this.Then(/^response data should has no elements$/, function(callback) {
         // Write code here that turns the phrase above into concrete actions
         var data = undefined;
         data = this.responseData;
@@ -52,7 +52,7 @@ module.exports = function () {
         callback();
     });
 
-    this.Then(/^response data should has elements$/, function (callback) {
+    this.Then(/^response data should has elements$/, function(callback) {
         // Write code here that turns the phrase above into concrete actions
         var data = undefined;
         data = this.responseData;
@@ -63,7 +63,7 @@ module.exports = function () {
 
 
 
-    this.Then(/^throws an error\. the error message explain that a parameter with name "([^"]*)" is mandatory$/, function (parameterName, callback) {
+    this.Then(/^throws an error\. the error message explain that a parameter with name "([^"]*)" is mandatory$/, function(parameterName, callback) {
         // Write code here that turns the phrase above into concrete actions
         this.expect(this.error).to.exist;
         this.expect(this.error).to.have.lengthOf(1);
@@ -72,7 +72,7 @@ module.exports = function () {
         callback();
     });
 
-    this.Then(/^response error code sould be: (\d+)$/, function (statusCode, callback) {
+    this.Then(/^response error code sould be: (\d+)$/, function(statusCode, callback) {
         // Write code here that turns the phrase above into concrete actions     
         var response = this.responseData;
         if (typeof response.response !== "undefined") {
@@ -82,32 +82,32 @@ module.exports = function () {
         callback();
     });
 
-    this.Then(/^response must have attached "([^"]*)" as "([^"]*)" entity$/, function (provCustomId, entityType) {
+    this.Then(/^response must have attached "([^"]*)" as "([^"]*)" entity$/, function(provCustomId, entityType) {
         // Write code here that turns the phrase above into concrete actions
         var expect = this.expect;
         var data = undefined;
         data = this.responseData.data;
         var jobId = data.id;
         return findOperationsByJobId.call(this, jobId, entityType).
-        then(function (response) {
+        then(function(response) {
             var responseData = response.data;
             var operationFound = responseData.operations.find(_findEntityIntoOperationsResponse, provCustomId);
             expect(operationFound).to.exist;
 
         }).
-        catch(function (err) {
+        catch(function(err) {
             expect(err).to.be.undefined;
         });
     });
 
-    this.Then(/^response must have attached an entity list with "([^"]*)" type defined by:$/, function (entityType, table) {
+    this.Then(/^response must have attached an entity list with "([^"]*)" type defined by:$/, function(entityType, table) {
         // Write code here that turns the phrase above into concrete actions
         var expect = this.expect;
         var data = undefined;
         data = this.responseData.data;
         var jobId = data.id;
         return findOperationsByJobId.call(this, jobId, entityType).
-        then(function (response) {
+        then(function(response) {
             var responseData = response.data;
             for (var i = 0; i < table.raw().length; i++) {
                 var provCustomId = table.raw()[i];
@@ -116,14 +116,14 @@ module.exports = function () {
                 expect(operationFound).to.exist;
             }
         }).
-        catch(function (err) {
+        catch(function(err) {
             expect(err).to.be.undefined;
         });
     });
 
 
 
-    this.Then(/^response specific error code sould be: (\d+)$/, function (statusCode, callback) {
+    this.Then(/^response specific error code sould be: (\d+)$/, function(statusCode, callback) {
         // Write code here that turns the phrase above into concrete actions     
         var response = this.responseData;
         if (typeof response.response !== "undefined") {
@@ -136,7 +136,7 @@ module.exports = function () {
         callback();
     });
 
-    this.Then(/^response contains a parameter "([^"]*)" as name and "([^"]*)" as value$/, function (paramName, paramValue, callback) {
+    this.Then(/^response contains a parameter "([^"]*)" as name and "([^"]*)" as value$/, function(paramName, paramValue, callback) {
         // Write code here that turns the phrase above into concrete actions
         if (this.responseData.response) {
             this.expect(this.responseData.response.statusCode).to.equal(201);
@@ -145,16 +145,16 @@ module.exports = function () {
         if (this.responseData.data)
             data = this.responseData.data;
         var parameters = data.request.parameters;
-        var parameterNames = parameters.map(function (item) {
+        var parameterNames = parameters.map(function(item) {
             return item.name
         });
-        var isDuplicate = parameterNames.some(function (item, idx) {
+        var isDuplicate = parameterNames.some(function(item, idx) {
             return parameterNames.indexOf(item) != idx
         });
         this.expect(isDuplicate).to.be.false;
 
 
-        var parameter = parameters.find(function (param) {
+        var parameter = parameters.find(function(param) {
             return param.name == this;
         }, paramName);
         this.expect(parameter).to.be.an('object');
@@ -166,7 +166,7 @@ module.exports = function () {
         callback();
     });
 
-    this.Then(/^I can see into the post data a period by (\d+) minutes$/, function (minutes, callback) {
+    this.Then(/^I can see into the post data a period by (\d+) minutes$/, function(minutes, callback) {
         // Write code here that turns the phrase above into concrete actions
         var period = this.build._postObj.task.schedule.repeating.period;
         this.expect(period).to.be.an('object');
@@ -176,7 +176,7 @@ module.exports = function () {
         })
         callback();
     });
-    this.Then(/^I can see into the post data a period by (\d+) hours/, function (hours, callback) {
+    this.Then(/^I can see into the post data a period by (\d+) hours/, function(hours, callback) {
         // Write code here that turns the phrase above into concrete actions
         var period = this.build._postObj.task.schedule.repeating.period;
         this.expect(period).to.be.an('object');
@@ -186,7 +186,7 @@ module.exports = function () {
         })
         callback();
     });
-    this.Then(/^I can see into the post data a period by (\d+) days/, function (days, callback) {
+    this.Then(/^I can see into the post data a period by (\d+) days/, function(days, callback) {
         // Write code here that turns the phrase above into concrete actions
         var period = this.build._postObj.task.schedule.repeating.period;
         this.expect(period).to.be.an('object');
@@ -197,7 +197,7 @@ module.exports = function () {
         callback();
     });
 
-    this.Then(/^I can not see into the post data a period by (\d+) hours$/, function (hours, callback) {
+    this.Then(/^I can not see into the post data a period by (\d+) hours$/, function(hours, callback) {
         // Write code here that turns the phrase above into concrete actions
         var period = this.build._postObj.task.schedule.repeating.period;
         this.expect(period).to.be.an('object');
@@ -207,7 +207,7 @@ module.exports = function () {
         })
         callback();
     });
-    this.Then(/^I can not see into the post data a period by (\d+) days/, function (days, callback) {
+    this.Then(/^I can not see into the post data a period by (\d+) days/, function(days, callback) {
         // Write code here that turns the phrase above into concrete actions
         var period = this.build._postObj.task.schedule.repeating.period;
         this.expect(period).to.be.an('object');
@@ -217,7 +217,7 @@ module.exports = function () {
         })
         callback();
     });
-    this.Then(/^I can not see into the post data a period by (\d+) minutes$/, function (minutes$, callback) {
+    this.Then(/^I can not see into the post data a period by (\d+) minutes$/, function(minutes$, callback) {
         // Write code here that turns the phrase above into concrete actions
         var period = this.build._postObj.task.schedule.repeating.period;
         this.expect(period).to.be.an('object');
@@ -227,13 +227,13 @@ module.exports = function () {
         })
         callback();
     });
-    this.Then(/^I can not see into the post data a period$/, function (callback) {
+    this.Then(/^I can not see into the post data a period$/, function(callback) {
         // Write code here that turns the phrase above into concrete actions
         var period = this.build._postObj.task.schedule.repeating.period;
         this.expect(period).to.be.undefined;
         callback();
     });
-    this.Then(/^I can see into the post data a every day pattern$/, function (callback) {
+    this.Then(/^I can see into the post data a every day pattern$/, function(callback) {
         // Write code here that turns the phrase above into concrete actions
         var pattern = this.build._postObj.task.schedule.repeating.pattern;
         this.expect(pattern).to.be.an('object');
@@ -241,7 +241,7 @@ module.exports = function () {
         callback();
     });
 
-    this.Then(/^I can see into the post data a every week pattern with days:$/, function (table, callback) {
+    this.Then(/^I can see into the post data a every week pattern with days:$/, function(table, callback) {
         // Write code here that turns the phrase above into concrete actions
         var days = [];
         for (var i = 0; i < table.raw().length; i++) {
@@ -256,7 +256,7 @@ module.exports = function () {
         callback();
     });
 
-    this.Then(/^I can see into the post data a every month pattern at day (\d+) and months:$/, function (day, table, callback) {
+    this.Then(/^I can see into the post data a every month pattern at day (\d+) and months:$/, function(day, table, callback) {
         // Write code here that turns the phrase above into concrete actions
         var months = [];
         for (var i = 0; i < table.raw().length; i++) {
@@ -272,7 +272,7 @@ module.exports = function () {
         callback();
     });
 
-    this.Then(/^I can see into the post data a every month pattern at day (\d+) and month "([^"]*)"$/, function (day, month, callback) {
+    this.Then(/^I can see into the post data a every month pattern at day (\d+) and month "([^"]*)"$/, function(day, month, callback) {
         // Write code here that turns the phrase above into concrete actions
         var pattern = this.build._postObj.task.schedule.repeating.pattern;
         this.expect(pattern).to.be.an('object');
@@ -284,7 +284,7 @@ module.exports = function () {
         callback();
     });
 
-    this.Then(/^I can see into the post data a job timeout by (\d+) minutes$/, function (minutes, callback) {
+    this.Then(/^I can see into the post data a job timeout by (\d+) minutes$/, function(minutes, callback) {
         var milliseconds = eval(minutes) * 60 * 1000;
         var stop = this.build._postObj.task.job.request.schedule.stop;
         this.expect(stop).to.be.an('object');
@@ -293,12 +293,12 @@ module.exports = function () {
         callback();
     });
 
-    this.Then(/^this builder configuration throw a error equal to "([^"]*)"$/, function (errorText, callback) {
+    this.Then(/^this builder configuration throw a error equal to "([^"]*)"$/, function(errorText, callback) {
         this.expect(this.error).to.equal(errorText);
         callback();
     });
 
-    this.Then(/^I can see into the post data a start date as "([^"]*)"$/, function (when, callback) {
+    this.Then(/^I can see into the post data a start date as "([^"]*)"$/, function(when, callback) {
         // Write code here that turns the phrase above into concrete actions     
         var schedule = (this.build._postObj.task || this.build._postObj.job.request).schedule;
         if (when === "now") {
@@ -310,7 +310,7 @@ module.exports = function () {
         callback();
     });
 
-    this.Then(/^throws an error equal to "([^"]*)"$/, function (errorMessage, callback) {
+    this.Then(/^throws an error equal to "([^"]*)"$/, function(errorMessage, callback) {
         this.expect(this.error).to.exist;
         var errorText;
         if (this.error.constructor == Array) {
@@ -335,13 +335,13 @@ module.exports = function () {
         callback();
     });
 
-    this.Then(/^does not throws an error$/, function (callback) {
+    this.Then(/^does not throws an error$/, function(callback) {
         //console.log(this.error);
         this.expect(this.error).not.to.exist;
         callback();
     });
 
-    this.Then(/^an error is thrown$/, function (callback) {
+    this.Then(/^an error is thrown$/, function(callback) {
         this.expect(this.error).to.exist;
         callback();
     });

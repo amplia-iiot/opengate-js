@@ -34,7 +34,8 @@ So I can add filter with all filter fields to search any entity
     #When I try to search with all allow fields
     When I build it
     And I execute it
-    Then response code should be: 204
+    Then does not throws an error
+   # Then response code should be: 204
 
   @bug @ODMQA-1151 @execution_search
   Scenario: Execute all fields on executions searching
@@ -45,7 +46,8 @@ So I can add filter with all filter fields to search any entity
     #When I try to search with all allow fields
     When I build it
     And I execute it
-    Then response code should be: 204
+    #Then response code should be: 204
+    Then does not throws an error
 
   @bug @ODMQA-1150
   Scenario: Execute all fields on operations searching

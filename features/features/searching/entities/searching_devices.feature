@@ -77,15 +77,15 @@ Scenario: I want to download csv
         | eq         |provision.administration.organization    |  devices_organization_searching  |
    
     When I build it with select...
-    | datastreamId                           | fields      | alias |
-    | provision.device.administrativeState   | ["value"]   |state|
+    | datastreamId                           | fields                               |
+    | provision.device.administrativeState   | [{"field" : "value", "alias": "state"} ] |
     And I download csv it
     Then response code should be: 200
     Then does not throws an error
     Then the content of file "search.csv" must be:
     """
-provision.administration.channel.value;provision.administration.identifier.value;provision.administration.organization.value;state.value
-default_channel;device_ogapi_0;devices_organization_searching;ACTIVE
+state
+ACTIVE
 
     """
 
@@ -93,6 +93,6 @@ default_channel;device_ogapi_0;devices_organization_searching;ACTIVE
  Given the entity of type "devices builder" with "devices_organization_searching" 
     When I try to define the entity with... 
 		| datastream                                 | typeFunction       |   value                 | parent      |
-        | provision.device.identifier                | simple             |  device_ogapi_0           |             |
+    | provision.device.identifier                | simple             |  device_ogapi_0         |             |
     And I delete it
     Then response code should be: 200

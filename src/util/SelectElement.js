@@ -20,11 +20,10 @@ export default class SelectElement {
      *  }
      * @return {Object} This returns a json with the object element built.
      * @param {String} name - Indicates the datastream to show
-     * @param {[String]} fields - The fields that you want to show from that datastream
-     * @param {String} alias - (Optional) Easiest name given to the datastream.
+     * @param {[{field: field, alias:alias}]} fields - The fields that you want to show from that datastream
      */
-    static element(name, fields, alias) {
-        return { name: name, fields: fields, alias: alias }
+    static element(name, fields) {
+        return { name: name, fields: fields }
     }
 
 }
