@@ -60,12 +60,10 @@ export default class EntitiesSearchBuilder extends SearchWithSummaryBuilder {
      *  ogapi.entitiesSearchBuilder().select(
      *      ogapi.newSelectBuilder().add(SE.element("provision.device.identifier", ["value"], "id"), SE.add("device.temperature.value", ["value"]))
      *  ) // Setting SelectBuilder
-     *  ogapi.entitiesSearchBuilder().select({
-     *      "elements": [
-     *          {"name": "provision.device.identifier","fields": ["value"],"alias": "id"},
-     *          {"name": "device.temperature.value","fields": ["value"]}
-     *      ]
-     *  }) //Custom select
+     *  ogapi.entitiesSearchBuilder().select({ "elements": [{"name": "provision.device.identifier",
+     *		"fields": [{"field": "value","alias": "identifier"}]},
+     *      {"name": "device.temperature.value","fields": [{"field": "value","alias": "identifier"}]}]
+     *   }) //Custom select
      * @param {!(SelectBuilder|object)} select
      * @return {SearchBuilder} 
      */

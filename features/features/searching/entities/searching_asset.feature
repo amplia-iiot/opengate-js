@@ -76,15 +76,15 @@ Feature: Searching asset
         | eq         |provision.administration.organization    |  asset_organization_searching  |
    
     When I build it with select...
-    | datastreamId                         | fields     | alias |
-    | provision.asset.identifier           | ["value"]  | state  |
+    | datastreamId                         | fields                                 | 
+    | provision.asset.identifier           | [{"field" : "value", "alias": "state"} ] |
     And I download csv it
     Then response code should be: 200
     Then does not throws an error
     Then the content of file "search.csv" must be:
     """
-provision.administration.channel.value;provision.administration.identifier.value;provision.administration.organization.value;state.value
-default_channel;asset_ogapi_search;asset_organization_searching;asset_ogapi_search
+state
+asset_ogapi_search
 
     """
 

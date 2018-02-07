@@ -1,5 +1,5 @@
 module.exports = {
-    setters: function (setter) {
+    setters: function(setter) {
         return {
             'user': {
                 'email': 'withEmail',
@@ -88,11 +88,11 @@ module.exports = {
                 'version': 'withVersion',
                 'description': 'withDescription',
                 'specific type': 'withSpecificType',
-                'add category': 'addCategory',
+                'addCategory': 'addCategory',
                 'add datastream': 'addDatastream',
                 'update category': 'updateCategory',
                 'update datastream': 'updateDatastream',
-                'remove category': 'removeCategory',
+                'removeCategory': 'removeCategory',
                 'remove datastream': 'removeDatastream'
             },
             'datastream': {
@@ -359,7 +359,7 @@ module.exports = {
 
         }[setter];
     },
-    getter_response: function (getter) {
+    getter_response: function(getter) {
         return {
             'user email': '/email',
             'organization name': '/name'

@@ -226,9 +226,33 @@ module.exports = function() {
             this.util[method](setterValue);
         } catch (err) {
             this.error = err;
+            //console.log(err);
             //assert.ifError(this.error);
         }
 
+        callback();
+    });
+
+    this.Given(/^the$/, function(table, callback) {
+        var data = table.hashes();
+        // this.currentModel = model;
+        //this.currentEntity = entity;
+        //console.log(this.currentEntity);
+        if (data.length > 0) {
+            for (var i = 0; i < data.length; i++) {
+                try {
+                    var setterName = data[i].method;
+                    var setterValue = data[i].value;
+                    //console.log(setterName);
+                    //console.log(JSON.parse(setterValue));
+                    var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
+                    this.util[method](JSON.parse(setterValue));
+                } catch (err) {
+                    this.error = err;
+                    //console.log(err);
+                }
+            }
+        }
         callback();
     });
 
@@ -345,6 +369,7 @@ module.exports = function() {
 
     this.Given(/^the "([^"]*)"$/, function(setterName, setterValue, callback) {
         this.error = undefined;
+        //console.log(setterName);
         try {
             setterValue = setterValue.raw()[0];
             var myArr = Array.prototype.slice.apply(setterValue);

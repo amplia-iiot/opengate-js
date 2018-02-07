@@ -26,14 +26,13 @@ export default class DeviceSearch extends Search {
     execute() {
         var defered = q.defer();
         var promise = defered.promise;
-        console.log(JSON.stringify(this._filter()));
         this._ogapi.Napi
             .post(this._resource, this._filter(), this._timeout)
             .then((response) => {
                 let resultQuery = response.body;
                 let statusCode = response.statusCode;
 
-                if (statusCode === 200) {
+                if (statusCode === 200 && resultQuery.entities) {
                     resultQuery.devices = resultQuery.entities;
 
                     // OUW-944

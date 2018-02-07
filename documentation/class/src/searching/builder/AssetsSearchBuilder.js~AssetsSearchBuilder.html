@@ -1010,7 +1010,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/searching/builder/AssetsSearchBuilder.js.html#lineNumber102">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/searching/builder/AssetsSearchBuilder.js.html#lineNumber100">source</a></span></span>
     </span>
   </h3>
 
@@ -1067,12 +1067,10 @@
       <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.assetsSearchBuilder().select(
      ogapi.newSelectBuilder().add(SE.element(&quot;provision.device.identifier&quot;, [&quot;value&quot;], &quot;id&quot;), SE.add(&quot;device.temperature.value&quot;, [&quot;value&quot;]))
  ) // Setting SelectBuilder
- ogapi.assetsSearchBuilder().select({
-     &quot;elements&quot;: [
-         {&quot;name&quot;: &quot;provision.device.identifier&quot;,&quot;fields&quot;: [&quot;value&quot;],&quot;alias&quot;: &quot;id&quot;},
-         {&quot;name&quot;: &quot;device.temperature.value&quot;,&quot;fields&quot;: [&quot;value&quot;]}
-     ]
- }) //Custom select</code></pre>
+ ogapi.assetsSearchBuilder().select({ &quot;elements&quot;: [{&quot;name&quot;: &quot;provision.device.identifier&quot;,
+	&quot;fields&quot;: [{&quot;field&quot;: &quot;value&quot;,&quot;alias&quot;: &quot;identifier&quot;}]},
+     {&quot;name&quot;: &quot;device.temperature.value&quot;,&quot;fields&quot;: [{&quot;field&quot;: &quot;value&quot;,&quot;alias&quot;: &quot;identifier&quot;}]}]
+  }) //Custom select</code></pre>
     </div>
 </div>
 

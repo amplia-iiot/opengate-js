@@ -298,23 +298,21 @@ export default class AssetsSearchBuilder extends PreFilteredSearchBuilder {
             this._builderParams.timeout);
     }
 
-      /**
+    /**
      * The search request will have this filter 
      * @example
      *  ogapi.assetsSearchBuilder().select(
      *      ogapi.newSelectBuilder().add(SE.element(&quot;provision.device.identifier&quot;, [&quot;value&quot;], &quot;id&quot;), SE.add(&quot;device.temperature.value&quot;, [&quot;value&quot;]))
      *  ) // Setting SelectBuilder
-     *  ogapi.assetsSearchBuilder().select({
-     *      &quot;elements&quot;: [
-     *          {&quot;name&quot;: &quot;provision.device.identifier&quot;,&quot;fields&quot;: [&quot;value&quot;],&quot;alias&quot;: &quot;id&quot;},
-     *          {&quot;name&quot;: &quot;device.temperature.value&quot;,&quot;fields&quot;: [&quot;value&quot;]}
-     *      ]
-     *  }) //Custom select
+     *  ogapi.assetsSearchBuilder().select({ &quot;elements&quot;: [{&quot;name&quot;: &quot;provision.device.identifier&quot;,
+     *		&quot;fields&quot;: [{&quot;field&quot;: &quot;value&quot;,&quot;alias&quot;: &quot;identifier&quot;}]},
+     *      {&quot;name&quot;: &quot;device.temperature.value&quot;,&quot;fields&quot;: [{&quot;field&quot;: &quot;value&quot;,&quot;alias&quot;: &quot;identifier&quot;}]}]
+     *   }) //Custom select
      * @param {!(SelectBuilder|object)} select
      * @return {SearchBuilder} 
      */
     select(select) {
-        this._builderParams.select = (select || []);
+        this._builderParams.select = (select || undefined);
         return this;
     }
 }</code></pre>

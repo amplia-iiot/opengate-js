@@ -75,8 +75,11 @@ Scenario: Update a Datamodel that exists
         |                                         base_organization                                        |
         |{"identifier":"profile_test","name":"profile_change","version":"2.0","description":"CHANGE","categories":[]}|
     And I want to update a "datamodel"
-    And the "add category" "1category"
-    And the "add category" "2category"
+    And the 
+        |    method                |     value     |
+        |    addCategory      |{"name":"1category", "identifier": "1category"}| 
+        |    addCategory      |{"name":"2category", "identifier": "2category"}| 
+   
     And I update it
     Then response code should be: 200
     And an ogapi "datamodels finder" util
@@ -93,11 +96,13 @@ Scenario: Update a Datamodel that exists
         |                                         base_organization                                        |
         |{"identifier":"profile_test","name":"profile_change","version":"2.0","description":"CHANGE","categories":[]}|
     And I want to update a "datamodel"
-    And the "add category" "1category"
-    And the "add category" "2category"
+    And the 
+        |    method                |     value     |
+        |    addCategory      |{"name":"1category", "identifier": "1category"}| 
+        |    addCategory      |{"name":"2category", "identifier": "2category"}| 
     And I update it
     Then response code should be: 200
-    And the "remove category" "1category"
+    And the "removeCategory" "1category"
     And I update it
     Then response code should be: 200
     And an ogapi "datamodels finder" util
@@ -133,8 +138,10 @@ Scenario: Add and remove datastreams of Datamodel that exists 1
         |                                         base_organization                                        |
         |{"identifier":"profile_test","name":"profile_change","version":"2.0","description":"CHANGE","categories":[]}|
     And I want to update a "datamodel"
-    And the "add category" "1category"
-    And the "add category" "2category"
+    And the 
+        |    method           |     value     |
+        |    addCategory      |{"name":"1category", "identifier": "1category"}| 
+        |    addCategory      |{"name":"2category", "identifier": "2category"}| 
     And the "add datastream" with...
         |                                               param                                              |
         |1category                                                                                 |
@@ -177,7 +184,7 @@ Scenario: Add and remove datastreams of Datamodel that exists 1
         |{"identifier": "2category.example.test.not.remove","name": "2category.example.test.not.remove","description": "for tests","period": "PULSE","unit": {"type": "SI","label": "beats/second","symbol": "bpm"},"tags": ["test","category_2"], "schema" : { "type":"string"}}|
     And I update it
     Then response code should be: 200
-    And the "remove category" "1category"
+    And the "removeCategory" "1category"
     And the "remove datastream" with...
         | param |    
         |2category    |
@@ -218,8 +225,10 @@ Scenario: Add and remove datastreams of Datamodel that exists 1
        |                                         base_organization                                        |
        |{"identifier":"profile_test","name":"profile_change","version":"2.0","description":"CHANGE","categories":[]}|
     And I want to update a "datamodel"
-    And the "add category" "1category"
-    And the "add category" "2category"
+    And the 
+        |    method                |     value     |
+        |    addCategory      |{"name":"1category", "identifier": "1category"}| 
+        |    addCategory      |{"name":"2category", "identifier": "2category"}| 
     And the "add datastream" with...
        |                                               param                                              |
        |1category                                                                                 |
@@ -314,8 +323,10 @@ Scenario: Add and remove datastreams of Datamodel that exists 1
         |                                         base_organization                                        |
         |{"identifier":"profile_test","name":"profile_change","version":"2.0","description":"CHANGE","categories":[]}|
     And I want to update a "datamodel"
-    And the "add category" "1category"
-    And the "add category" "2category"
+    And the 
+        |    method                |     value     |
+        |    addCategory      |{"name":"1category", "identifier": "1category"}| 
+        |    addCategory      |{"name":"2category", "identifier": "2category"}| 
     And the "add datastream" with util build "datastream" and with...
         |param|
         |1category|
