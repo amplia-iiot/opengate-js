@@ -25,5 +25,5 @@ export default class UserFinder extends ProvisionGenericFinder {
         this._id = email;
         return this._execute();
     }
-
+    
 }

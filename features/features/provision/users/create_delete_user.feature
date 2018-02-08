@@ -2,19 +2,19 @@
 @provision
 @create_provision
 @users
-Feature: Delete and Create an user 
-  As a user of JsApi
-  I want to create an user
-  So, I can create a new user with the parametres that I have been defined
+Feature: Delete and Create an user
+As a user of JsApi
+I want to create an user
+So, I can create a new user with the parametres that I have been defined
 
   Background:
-    Given an apikey user by "require-real-apikey"
-    And an ogapi "users builder" util 
+    Given an apikey user by "e265b68a-18c6-4b10-996d-8a7b9f12398a"
+    And an ogapi "users builder" util
     And I want to create a "user"
     And the "email" "ogux_ogapi@amplia.com"
     And the "password" "nvoiqewvouoiu32j@#!!"
-    And the "workgroup" "root"
-    And the "domain" "root"
+    And the "workgroup" "base_organization"
+    And the "domain" "base_organization"
     And the "profile" "admin"
     And the "countryCode" "ES"
     And the "langCode" "en"
@@ -22,7 +22,7 @@ Feature: Delete and Create an user
     And the "surname" "test surname"
     And the "description" "user description"
 
- Scenario: Create and delete an user that does not exist
+  Scenario: Create and delete an user that does not exist
     Then I delete it
     And I create it
     Then response code should be: 201

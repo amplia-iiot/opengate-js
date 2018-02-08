@@ -12,21 +12,19 @@ findDeleteModel = require('./delete_provision_model');
 searchingModel = require('./searching_model');
 
 function World() {
-    this.test_api_key = process.env.API_KEY || 'require-real-apikey';
-    this.test_url_north = process.env.API_NORTH_INTERNAL || 'REQUIRE-URL_NORTH';
+    this.test_url_north = process.env.API_NORTH_INTERNAL || 'SECURE_URL_NORTH';
     this.test_url_south = process.env.API_SOUTH_INTERNAL || 'REQUIRE-URL_SOUTH';
     chai.use(chai_as_promised);
     this.expect = chai.expect;
 
     // Own dependencies with the model
-    //this.formData = formData;
     this.utilsModel = utilsModel;
     this.findModel = findModel;
     this.findCreateModel = findCreateModel;
     this.findDeleteModel = findDeleteModel;
     this.searchingModel = searchingModel;
 
-    this.model_match = function(model) {
+    this.model_match = function (model) {
         return {
             'create': this.findCreateModel,
             'update': this.findCreateModel,
@@ -42,13 +40,13 @@ function World() {
 
     _this.___lastPercent = 0;
 
-    this.uploadProgress = function(arg) {
+    this.uploadProgress = function (arg) {
         if (arg.loaded && arg.total) {
             _this.___lastPercent = (arg.loaded * 100) / arg.total;
         }
     };
 }
 
-module.exports = function() {
+module.exports = function () {
     this.World = World;
 };
