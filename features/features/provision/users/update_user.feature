@@ -2,22 +2,22 @@
 @provision
 @update_provision
 @users
-Feature: Delete and Create an user 
-  As a user of JsApi
-  I want to create an user
-  So, I can create a new user with the parametres that I have been defined
+Feature: Delete and Create an user
+As a user of JsApi
+I want to create an user
+So, I can create a new user with the parametres that I have been defined
 
   Background:
-    Given an apikey user by "require-real-apikey"
-    And an ogapi "users builder" util 
-    
-   
- Scenario: Create and delete an user that does not exist
+    Given an apikey user by "e265b68a-18c6-4b10-996d-8a7b9f12398a"
+    And an ogapi "users builder" util
+
+
+  Scenario: Create and delete an user that does not exist
     Then I want to create a "user"
     And the "email" "ogux_ogapi@amplia.com"
     And the "password" "nvoiqewvouoiu32j@#!!"
-    And the "workgroup" "root"
-    And the "domain" "root"
+    And the "workgroup" "base_organization"
+    And the "domain" "base_organization"
     And the "profile" "admin"
     And the "countryCode" "ES"
     And the "langCode" "en"
@@ -32,8 +32,8 @@ Feature: Delete and Create an user
     Then I want to update a "user"
     And the "email" "ogux_ogapi@amplia.com"
     And the "password" "updated password"
-    And the "workgroup" "root"
-    And the "domain" "root"
+    And the "workgroup" "base_organization"
+    And the "domain" "base_organization"
     And the "countryCode" "ES"
     And the "langCode" "en"
     And the "name" "test name updated"

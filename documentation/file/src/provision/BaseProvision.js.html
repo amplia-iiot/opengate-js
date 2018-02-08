@@ -287,13 +287,18 @@ export default class BaseProvision {
         this._ogapi.Napi.post(this._resource, _postElement)
             .then((res) =&gt; {
                 if (res.statusCode === 201) {
-                    //console.log(&quot;CREATEOK: &quot; + JSON.stringify(res));
                     if (typeof this._onCreated === &quot;function&quot;) {
-                        this._onCreated(res.header[&apos;location&apos;]);
+                        this._onCreated(res.header.location);
                     }
-                    defered.resolve({ location: res.header[&apos;location&apos;], statusCode: res.statusCode });
+                    defered.resolve({
+                        location: res.header.location,
+                        statusCode: res.statusCode
+                    });
                 } else {
-                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
                 }
             })
             .catch((error) =&gt; {
@@ -319,9 +324,14 @@ export default class BaseProvision {
         this._ogapi.Napi.delete(this._buildURL())
             .then((res) =&gt; {
                 if (res.statusCode === 200) {
-                    defered.resolve({ statusCode: res.statusCode });
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
                 } else {
-                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
                 }
             })
             .catch((error) =&gt; {
@@ -346,11 +356,18 @@ export default class BaseProvision {
         this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement())
             .then((res) =&gt; {
                 if (res.statusCode === 200) {
-                    defered.resolve({ statusCode: res.statusCode });
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
                 } else if (res.status === 200) {
-                    defered.resolve({ statusCode: res.status });
+                    defered.resolve({
+                        statusCode: res.status
+                    });
                 } else {
-                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
                 }
             })
             .catch((error) =&gt; {
@@ -370,21 +387,25 @@ export default class BaseProvision {
         this._ogapi.Napi.post(resource, element)
             .then((res) =&gt; {
                 if (res.statusCode === 201) {
-                    //console.log(&quot;CREATEOK: &quot; + JSON.stringify(res));
                     if (typeof this._onCreated === &quot;function&quot;) {
-                        this._onCreated(res.header[&apos;location&apos;]);
+                        this._onCreated(res.header.location);
                     }
-                    defered.resolve({ location: res.header[&apos;location&apos;], statusCode: res.statusCode });
+                    defered.resolve({
+                        location: res.header.location,
+                        statusCode: res.statusCode
+                    });
                 } else if (res.statusCode === 200) {
-                    //console.log(&quot;POSTOK: &quot; + JSON.stringify(res));
-                    defered.resolve({ statusCode: res.statusCode });
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
                 } else {
-                    //console.log(&quot;ERROR &quot; + JSON.stringify(res.errors));
-                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
                 }
             })
             .catch((error) =&gt; {
-                console.log(&quot;ERROR2 &quot; + JSON.stringify(id) + JSON.stringify(error));
                 defered.reject(error);
             });
         return promise;
