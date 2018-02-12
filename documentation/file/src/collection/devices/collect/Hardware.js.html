@@ -249,7 +249,7 @@ export default class Hardware {
      */
     withManufacturerName(manufacturerName) {
         if (typeof manufacturerName !== &apos;string&apos; || manufacturerName.length === 0)
-            throw new Error(&apos;Parameter manufacturer Name must be a string and cannot be empty&apos;);;
+            throw new Error(&apos;Parameter manufacturer Name must be a string and cannot be empty&apos;);
         this._manufacturerName = manufacturerName;
         return this;
     }
@@ -261,7 +261,7 @@ export default class Hardware {
      */
     withManufacturerOui(manufacturerOui) {
         if (typeof manufacturerOui !== &apos;string&apos; || manufacturerOui.length === 0)
-            throw new Error(&apos;Parameter manufacturer code must be a string and cannot be empty&apos;);;
+            throw new Error(&apos;Parameter manufacturer code must be a string and cannot be empty&apos;);
         this._manufacturerOui = manufacturerOui;
         return this;
     }
@@ -273,7 +273,7 @@ export default class Hardware {
      */
     withModelName(modelName) {
         if (typeof modelName !== &apos;string&apos; || modelName.length === 0)
-            throw new Error(&apos;Parameter model Name must be a string and cannot be empty&apos;);;
+            throw new Error(&apos;Parameter model Name must be a string and cannot be empty&apos;);
         this._modelName = modelName;
         return this;
     }
@@ -285,7 +285,7 @@ export default class Hardware {
      */
     withModelVersion(modelVersion) {
         if (typeof modelVersion !== &apos;string&apos; || modelVersion.length === 0)
-            throw new Error(&apos;Parameter model Version must be a string and cannot be empty&apos;);;
+            throw new Error(&apos;Parameter model Version must be a string and cannot be empty&apos;);
         this._modelVersion = modelVersion;
         return this;
     }
@@ -363,7 +363,7 @@ export default class Hardware {
                 &apos;version&apos;: this._modelVersion || &quot;&quot;
             },
             &apos;clockDate&apos;: this._clockDate
-        }
+        };
         return hardware;
     }
 

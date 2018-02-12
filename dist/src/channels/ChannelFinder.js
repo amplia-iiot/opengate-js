@@ -84,6 +84,7 @@ var ChannelFinder = (function (_ProvisionGenericFinder) {
             this._domain = domain;
 
             this._workgroup = workgroup;
+            var _error_not_found = this._error_not_found;
 
             var defered = _q2['default'].defer();
             var promise = defered.promise;
@@ -177,11 +178,11 @@ var ChannelFinder = (function (_ProvisionGenericFinder) {
             var promise = defered.promise;
 
             var _error_not_found = this._error_not_found;
-            this._api.get(workgroupsRelationsUrl).then(function (req) {
+            this._api.get(workgroupsRelationsUrl, undefined, this._getExtraHeaders()).then(function (req) {
                 if (req.statusCode === 204) {
                     defered.reject({ data: _error_not_found, statusCode: _httpStatusCodes2['default'].NOT_FOUND });
                 } else {
-                    defered.resolve({ data: req.body["workgroupRelation"], statusCode: req.statusCode });
+                    defered.resolve({ data: req.body.workgroupRelation, statusCode: req.statusCode });
                 }
             })['catch'](function (error) {
                 defered.reject(error);

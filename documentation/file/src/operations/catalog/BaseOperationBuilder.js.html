@@ -214,7 +214,7 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/operations/catalog/BaseOperationBuilder.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-import merge from &apos;merge&apos;
+import merge from &apos;merge&apos;;
 
 import Operation from &apos;./Operation&apos;;
 
@@ -246,8 +246,8 @@ const VALIDATE = {
     editable: function (value) {
         return true;
         // Desactivada comprobaci&#xF3;n, es incoherente el valor en el catalogo de operaciones.
-        if (!this)
-            throw new Error(&quot;This parameter cannot be edited.&quot;);
+        /*if (!this)
+            throw new Error(&quot;This parameter cannot be edited.&quot;);*/
     }
 };
 
@@ -393,7 +393,7 @@ export default class BaseOperationBuilder {
         this._build.schedule.scattering.strategy = {
             field: &quot;subscription.collected.cellInfo&quot;,
             factor: factor
-        }
+        };
 
         if (typeof warningMaxRate === &quot;number&quot;) {
             this._build.schedule.scattering.strategy.warningMaxRate = warningMaxRate;
@@ -440,7 +440,7 @@ export default class BaseOperationBuilder {
         }
         this._build.schedule.start = {
             delayed: moment.duration(minutes, &apos;minutes&apos;).asMilliseconds()
-        }
+        };
         delete this._build.task;
         return this;
     }
@@ -591,9 +591,9 @@ export default class BaseOperationBuilder {
      * @return {Operation} 
      */
     build() {
-        let resource = undefined;
+        let resource;
         let _build = merge(true, this._build);
-        let postObj = undefined;
+        let postObj;
         let errors = [];
         try {
             this._checkMandatoryParameters();
@@ -602,7 +602,7 @@ export default class BaseOperationBuilder {
         }
         if (typeof this._build.task === &quot;undefined&quot;) {
             if (typeof this._build.schedule.start === &quot;undefined&quot; &amp;&amp; typeof this._build.active === &quot;undefined&quot;) {
-                console.info(&quot;Not specified the way to execute [executeImmediately, executeIDLE, executeLater]. By default executeImmediately will be the way&quot;)
+                console.info(&quot;Not specified the way to execute [executeImmediately, executeIDLE, executeLater]. By default executeImmediately will be the way&quot;);
                 this.executeImmediately();
             }
             /*if (!this._build.active) {
@@ -684,7 +684,7 @@ export default class BaseOperationBuilder {
         let task = _build.task;
         this.executeImmediately();
         let jobObj = this._convertToJob(this._build);
-        let now = moment(new Date);
+        let now = moment(new Date());
         let start = moment(task.start);
         let taskObj = {
             task: {
@@ -698,12 +698,12 @@ export default class BaseOperationBuilder {
                     repeating: task.repeating
                 }
             }
-        }
+        };
         if (typeof task.stop !== &quot;undefined&quot;) {
             if (typeof task.stop.date !== &quot;undefined&quot;) {
                 taskObj.task.schedule.stop = {
                     date: moment(task.stop.date).format(DATE_FORMAT)
-                }
+                };
             } else {
                 taskObj.task.schedule.stop = task.stop;
             }
@@ -762,7 +762,7 @@ export default class BaseOperationBuilder {
         let parametersNotFound = [];
         for (let i = 0; i &lt; this._requiredParameters.length; i++) {
             if (typeof this._build.parameters.find(function (param) {
-                return param.name == this
+                return param.name == this;
             }, this._requiredParameters[i]) === &quot;undefined&quot;) {
                 parametersNotFound.push(this._requiredParameters[i]);
             }

@@ -212,9 +212,9 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/searching/EntitySearch.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-import Search from &apos;./Search&apos;
+import Search from &apos;./Search&apos;;
 import q from &apos;q&apos;;
 
 /** 
@@ -275,7 +275,10 @@ export default class EntitySearch extends Search {
                     }
 
                 }
-                defered.resolve({ data: resultQuery, statusCode: statusCode });
+                defered.resolve({
+                    data: resultQuery,
+                    statusCode: statusCode
+                });
             })
             .catch((error) =&gt; {
                 defered.reject(error);

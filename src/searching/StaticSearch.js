@@ -1,6 +1,6 @@
-'use strict'
+'use strict';
 
-import Search from './Search'
+import Search from './Search';
 import q from 'q';
 
 
@@ -54,11 +54,12 @@ export default class StaticSearch extends Search {
             collection = content;
         }
 
+        
         switch (_this._contentType) {
             case 'operationalStatus':
             case 'specificType':
                 for (var contentTmp in collection) {
-                    collection[contentTmp].forEach(function(finalValue) {
+                    collection[contentTmp].forEach(function (finalValue) {
                         if (!_this._customFilters.id || (_this._customFilters.id && _this._customFilters.id === finalValue)) {
                             finalContent.push({
                                 'entityType': contentTmp,
@@ -1892,5 +1893,5 @@ export default class StaticSearch extends Search {
                 }
             ]
         }[contentType];
-    };
+    }
 }

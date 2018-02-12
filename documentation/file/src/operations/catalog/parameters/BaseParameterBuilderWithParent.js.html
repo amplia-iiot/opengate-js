@@ -214,7 +214,7 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/operations/catalog/parameters/BaseParameterBuilderWithParent.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-import moment from &apos;moment&apos;
+import moment from &apos;moment&apos;;
 /**
 * This class generate a builder by a dynamic content about specific parameter to an operation.
 */
@@ -233,7 +233,7 @@ export default class BaseParameterBuilderWithParent{
 		// Ejemplo config.type=anyString and config.name = apn, return &quot;withApn&quot;
 		function createSetterNameMethod(config){	
 			let prefixOptions = (function(config){
-				let prefix=undefined;
+				let prefix;
 				switch(config.type){
 					case &apos;array&apos;:
 						prefix = &apos;add&apos;;

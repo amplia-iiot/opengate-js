@@ -96,7 +96,7 @@ var OperationFinder = (function (_GenericFinder) {
                     //console.log("ID: " + _this._id);
                     _this._execute().then(function (response) {
                         //console.log("2response: " + JSON.stringify(response));
-                        response.data["id"] = _this._id;
+                        response.data.id = _this._id;
                         defered.resolve(response);
                     })['catch'](function (error) {
                         //console.log("2error:" + JSON.stringify(error));

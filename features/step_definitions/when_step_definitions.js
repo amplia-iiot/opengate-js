@@ -17,21 +17,22 @@ module.exports = function() {
             _this.responseData = response;
 
             if (id && !_this.responseData.id) {
-                _this.responseData["id"] = id;
+                _this.responseData.id = id;
             }
             if (data.id) {
                 if (_this.responseData.data) {
                     if (!_this.responseData.data.id)
-                        _this.responseData.data["id"] = data.id
+                        _this.responseData.data.id = data.id;
                 } else {
-                    _this.responseData["data"] = {
+                    _this.responseData.data = {
                         id: data.id
                     };
                 }
             }
             if (location && !_this.responseData.location) {
-                _this.responseData["location"] = location;
+                _this.responseData.location = location;
             }
+            this.error = undefined;
         }
 
         function digestErrorData(response) {
@@ -50,12 +51,13 @@ module.exports = function() {
             });
             cache = null; // Enable garbage collection
             //console.log("I WANT ERROR: " + error);
-            _this.error = response;
+            _this.error = error;
             _this.responseData = response;
+            
         }
 
         try {
-            var findMethod = undefined;
+            var findMethod;
             switch (action) {
                 case "active":
                     findMethod = "active";
@@ -94,7 +96,7 @@ module.exports = function() {
         } catch (err) {
             //console.log(err)
             this.error = err;
-            throw err;
+            throw new Error(JSON.stringify(err));
         }
     });
 
@@ -108,15 +110,17 @@ module.exports = function() {
                 statusCode: response.statusCode,
                 location: undefined
             };
+            _this.error = undefined;
         }
 
         function digestErrorData(error) {
             //console.log("STEP GENERIC_FINDER ERROR: " + JSON.stringify(error));
             _this.error = error;
             _this.responseData = error;
+            
         }
 
-        var id = undefined;
+        var id;
         if (_this.responseData.data && _this.responseData.data.id) {
             id = _this.responseData.data.id;
         } else if (_this.responseData.location) {
@@ -125,7 +129,11 @@ module.exports = function() {
             id = _this.responseData.id;
         }
         //console.log("ID: " + id);
-        return new GenericFinder(this.ogapi, "operation/tasks", "job", "Jobs not found")._withId(id + "/jobs")._execute().then(digestResponseData).catch(digestErrorData);
+        try {
+            return new GenericFinder(this.ogapi, "operation/tasks", "job", "Jobs not found")._withId(id + "/jobs")._execute().then(digestResponseData).catch(digestErrorData);
+        } catch (err) {
+            return;
+        }
 
     });
 
@@ -142,24 +150,26 @@ module.exports = function() {
             _this.responseData = response;
 
             if (id && !_this.responseData.id) {
-                _this.responseData["id"] = id;
+                _this.responseData.id = id;
             }
             if (location && !_this.responseData.location) {
-                _this.responseData["location"] = location;
+                _this.responseData.location = location;
             }
 
+            this.error = undefined;
         }
 
         function digestErrorData(response) {
             //console.log("FIND BY EXECUTION ID ERROR: " + JSON.stringify(response));
             _this.error = response;
             _this.responseData = response;
+            
         }
 
         try {
             var responseData = this.responseData;
             var location = responseData.location;
-            var id = undefined;
+            var id;
             //console.log("RESPONSE_DATA: " + JSON.stringify(responseData));
             if (location) {
                 id = location.substring(location.lastIndexOf("/") + 1);
@@ -169,7 +179,7 @@ module.exports = function() {
                 id = responseData.data.id;
             }
             //console.log("_ID_:" + id);
-            var findMethod = _this.model_match(_this.currentModel).setters(_this.currentEntity)["id"];
+            var findMethod = _this.model_match(_this.currentModel).setters(_this.currentEntity).id;
             //console.log("_METHOD_:" + findMethod);
             if (this.limit) {
                 //console.log("LIMIT: " + JSON.stringify(this.limit));
@@ -178,7 +188,6 @@ module.exports = function() {
             return this.util[findMethod](id).then(digestResponseData).catch(digestErrorData);
         } catch (err) {
             this.error = err;
-            //console.log("ERROR: " + err);
             return;
         }
     });
@@ -187,7 +196,7 @@ module.exports = function() {
         this.error = undefined;
 
         try {
-            var data = undefined;
+            var data;
             if (this.responseData.statusCode)
                 data = this.responseData.statusCode;
             else if (this.responseData[1])
@@ -320,7 +329,7 @@ module.exports = function() {
             //console.log("EXECUTE ERROR: " + JSON.stringify(err));
             _this.responseData = err;
             _this.error = err;
-            //console.log(_this.error);
+            
         }
 
         try {
@@ -348,7 +357,7 @@ module.exports = function() {
             //console.log("EXECUTE ERROR: " + JSON.stringify(err));
             _this.responseData = err;
             _this.error = err;
-            //console.log(_this.error);
+            
         }
 
         try {
@@ -379,7 +388,7 @@ module.exports = function() {
             //console.log("EXECUTE ERROR: " + JSON.stringify(err));
             _this.responseData = err;
             _this.error = err;
-            //console.log(_this.error);
+            
         }
 
         function catchNotification(notification) {
@@ -415,7 +424,7 @@ module.exports = function() {
             //console.log("EXECUTE ERROR: " + JSON.stringify(err));
             _this.responseData = err;
             _this.error = err;
-            //console.log(_this.error);
+            
         }
 
         function catchNotification(notification) {
@@ -452,7 +461,7 @@ module.exports = function() {
             //console.log("EXECUTE ERROR: " + JSON.stringify(err));
             _this.responseData = err;
             _this.error = err;
-            //console.log(_this.error);
+            
         }
 
         function catchNotification(notification) {
@@ -499,8 +508,8 @@ module.exports = function() {
             cache = null; // Enable garbage collection
             //console.log("EXECUTE ERROR: " + error);
             _this.responseData = err;
-            _this.error = err;
-            //console.log(_this.error);
+            _this.error = error;
+            
         }
 
         try {
@@ -537,6 +546,7 @@ module.exports = function() {
             } else {
                 _this.error = err;
             }
+            
         }
 
         try {
@@ -577,6 +587,7 @@ module.exports = function() {
             } else {
                 _this.error = err;
             }
+            
         }
 
         try {
@@ -610,6 +621,7 @@ module.exports = function() {
             //console.log(JSON.stringify(err));
             _this.responseData = err;
             _this.error = err;
+            
         }
 
         try {
@@ -645,6 +657,7 @@ module.exports = function() {
             //console.log(JSON.stringify(err));
             _this.responseData = err;
             _this.error = err;
+            
         }
 
         try {
@@ -675,7 +688,7 @@ module.exports = function() {
         function catchErrorResponse(err) {
             _this.responseData = err;
             _this.error = err;
-            //console.log(JSON.stringify(_this.error));
+            
         }
 
         try {
@@ -702,7 +715,7 @@ module.exports = function() {
             //console.log("EXECUTE ERROR: " + JSON.stringify(err));
             _this.responseData = err;
             _this.error = err;
-            //console.log(_this.error);
+            
         }
 
         try {
@@ -727,6 +740,7 @@ module.exports = function() {
         function catchErrorResponse(err) {
             _this.responseData = err;
             _this.error = err;
+            
         }
 
         try {
@@ -789,6 +803,7 @@ module.exports = function() {
         function catchErrorResponse(err) {
             _this.responseData = err;
             _this.error = err;
+            
         }
 
         try {

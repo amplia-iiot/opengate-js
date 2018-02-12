@@ -59,7 +59,7 @@ export default class Datastream {
             'feed': this._feed,
             'datapoints': this._datapoints
 
-        }
+        };
         return datastream;
     }
 

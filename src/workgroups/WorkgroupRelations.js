@@ -1,9 +1,9 @@
 'use strict';
 
 import q from 'q';
-import BaseProvision from '../provision/BaseProvision'
-import Workgroups from './Workgroups'
-import Channels from '../channels/Channels'
+import BaseProvision from '../provision/BaseProvision';
+import Workgroups from './Workgroups';
+import Channels from '../channels/Channels';
 
 /**
  * This is a base object that contains all you can do about workgroups.
@@ -55,19 +55,19 @@ export default class WorkgroupRelations extends BaseProvision {
     _composeElement() {
         this._checkRequiredParameters();
 
-        this._resource = 'provision/domains/' + this._workgroup._domainName + '/workgroups/' + this._workgroup._name + '/relations'
+        this._resource = 'provision/domains/' + this._workgroup._domainName + '/workgroups/' + this._workgroup._name + '/relations';
 
         var workgroup = {
             "workgroupRelation": {
                 "channels": this._channels ? this._channels : undefined
             }
-        }
+        };
 
         return workgroup;
     }
 
     _buildURL() {
-        var url = 'provision/domains/' + this._workgroup._domainName + '/workgroups/' + this._workgroup._name + '/relations'
+        var url = 'provision/domains/' + this._workgroup._domainName + '/workgroups/' + this._workgroup._name + '/relations';
         return url;
     }
 
@@ -95,7 +95,7 @@ export default class WorkgroupRelations extends BaseProvision {
      * @throws {Error} 
      */
     update() {
-        throw new Error("Workgroup relation update not allowed")
+        throw new Error("Workgroup relation update not allowed");
     }
 
 }

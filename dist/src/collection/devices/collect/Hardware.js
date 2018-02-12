@@ -45,7 +45,7 @@ var Hardware = (function () {
     }, {
         key: 'withManufacturerName',
         value: function withManufacturerName(manufacturerName) {
-            if (typeof manufacturerName !== 'string' || manufacturerName.length === 0) throw new Error('Parameter manufacturer Name must be a string and cannot be empty');;
+            if (typeof manufacturerName !== 'string' || manufacturerName.length === 0) throw new Error('Parameter manufacturer Name must be a string and cannot be empty');
             this._manufacturerName = manufacturerName;
             return this;
         }
@@ -58,7 +58,7 @@ var Hardware = (function () {
     }, {
         key: 'withManufacturerOui',
         value: function withManufacturerOui(manufacturerOui) {
-            if (typeof manufacturerOui !== 'string' || manufacturerOui.length === 0) throw new Error('Parameter manufacturer code must be a string and cannot be empty');;
+            if (typeof manufacturerOui !== 'string' || manufacturerOui.length === 0) throw new Error('Parameter manufacturer code must be a string and cannot be empty');
             this._manufacturerOui = manufacturerOui;
             return this;
         }
@@ -71,7 +71,7 @@ var Hardware = (function () {
     }, {
         key: 'withModelName',
         value: function withModelName(modelName) {
-            if (typeof modelName !== 'string' || modelName.length === 0) throw new Error('Parameter model Name must be a string and cannot be empty');;
+            if (typeof modelName !== 'string' || modelName.length === 0) throw new Error('Parameter model Name must be a string and cannot be empty');
             this._modelName = modelName;
             return this;
         }
@@ -84,7 +84,7 @@ var Hardware = (function () {
     }, {
         key: 'withModelVersion',
         value: function withModelVersion(modelVersion) {
-            if (typeof modelVersion !== 'string' || modelVersion.length === 0) throw new Error('Parameter model Version must be a string and cannot be empty');;
+            if (typeof modelVersion !== 'string' || modelVersion.length === 0) throw new Error('Parameter model Version must be a string and cannot be empty');
             this._modelVersion = modelVersion;
             return this;
         }

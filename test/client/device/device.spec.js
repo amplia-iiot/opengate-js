@@ -290,7 +290,7 @@ define(function() {
                         bundle.delete();
                     } catch (error) {
 
-                    };
+                    }
                     bundle.create();
                     deploymentElement = bundle.addDeploymentElement();
                 });

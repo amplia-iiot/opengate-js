@@ -1,6 +1,6 @@
 'use strict';
 
-import merge from 'merge'
+import merge from 'merge';
 
 import Operation from './Operation';
 
@@ -32,8 +32,8 @@ const VALIDATE = {
     editable: function (value) {
         return true;
         // Desactivada comprobación, es incoherente el valor en el catalogo de operaciones.
-        if (!this)
-            throw new Error("This parameter cannot be edited.");
+        /*if (!this)
+            throw new Error("This parameter cannot be edited.");*/
     }
 };
 
@@ -179,7 +179,7 @@ export default class BaseOperationBuilder {
         this._build.schedule.scattering.strategy = {
             field: "subscription.collected.cellInfo",
             factor: factor
-        }
+        };
 
         if (typeof warningMaxRate === "number") {
             this._build.schedule.scattering.strategy.warningMaxRate = warningMaxRate;
@@ -226,7 +226,7 @@ export default class BaseOperationBuilder {
         }
         this._build.schedule.start = {
             delayed: moment.duration(minutes, 'minutes').asMilliseconds()
-        }
+        };
         delete this._build.task;
         return this;
     }
@@ -377,9 +377,9 @@ export default class BaseOperationBuilder {
      * @return {Operation} 
      */
     build() {
-        let resource = undefined;
+        let resource;
         let _build = merge(true, this._build);
-        let postObj = undefined;
+        let postObj;
         let errors = [];
         try {
             this._checkMandatoryParameters();
@@ -388,7 +388,7 @@ export default class BaseOperationBuilder {
         }
         if (typeof this._build.task === "undefined") {
             if (typeof this._build.schedule.start === "undefined" && typeof this._build.active === "undefined") {
-                console.info("Not specified the way to execute [executeImmediately, executeIDLE, executeLater]. By default executeImmediately will be the way")
+                console.info("Not specified the way to execute [executeImmediately, executeIDLE, executeLater]. By default executeImmediately will be the way");
                 this.executeImmediately();
             }
             /*if (!this._build.active) {
@@ -470,7 +470,7 @@ export default class BaseOperationBuilder {
         let task = _build.task;
         this.executeImmediately();
         let jobObj = this._convertToJob(this._build);
-        let now = moment(new Date);
+        let now = moment(new Date());
         let start = moment(task.start);
         let taskObj = {
             task: {
@@ -484,12 +484,12 @@ export default class BaseOperationBuilder {
                     repeating: task.repeating
                 }
             }
-        }
+        };
         if (typeof task.stop !== "undefined") {
             if (typeof task.stop.date !== "undefined") {
                 taskObj.task.schedule.stop = {
                     date: moment(task.stop.date).format(DATE_FORMAT)
-                }
+                };
             } else {
                 taskObj.task.schedule.stop = task.stop;
             }
@@ -548,7 +548,7 @@ export default class BaseOperationBuilder {
         let parametersNotFound = [];
         for (let i = 0; i < this._requiredParameters.length; i++) {
             if (typeof this._build.parameters.find(function (param) {
-                return param.name == this
+                return param.name == this;
             }, this._requiredParameters[i]) === "undefined") {
                 parametersNotFound.push(this._requiredParameters[i]);
             }

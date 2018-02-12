@@ -32,8 +32,8 @@ module.exports = function() {
     }
 
     this.Given(/^the start limit by "([^"]*)" and size limit by "([^"]*)"$/, function(start, size, callback) {
-        var start = eval(start);
-        var size = eval(size);
+        start = eval(start);
+        size = eval(size);
         try {
             this.util = this.util.limit(size, start);
         } catch (err) {
@@ -103,23 +103,35 @@ module.exports = function() {
     this.Given(/^the operation by "([^"]*)"$/, function(builderName) {
         // Write code here that turns the phrase above into concrete actions        
         var _this = this;
-        return this.ogapi.operations.builderByOperationName(builderName).then(function(builder) {
-            _this.util = builder;
-        });
+        try {
+            return this.ogapi.operations.builderByOperationName(builderName).then(function (builder) {
+                _this.util = builder;
+            }).catch(function (err) {
+                
+            });
+        } catch (err) {
+            return;
+        }
     });
 
     this.Given(/^an update periodicity by operation's id$/, function() {
         // Write code here that turns the phrase above into concrete actions        
         var _this = this;
 
-        var data = undefined;
+        var data;
         //console.log("JOB: " + JSON.stringify(_this.responseData));
         data = _this.responseData.data;
         var jobId = data.job ? data.job.id : data.id;
         //console.log("JOB_ID: " + jobId);
-        return this.ogapi.operations.updatePeriodicityBuilder(jobId).then(function(builder) {
-            _this.util = builder;
-        });
+        try {
+            return this.ogapi.operations.updatePeriodicityBuilder(jobId).then(function (builder) {
+                _this.util = builder;
+            }).catch(function (err) {
+                
+            });
+        } catch (err) {
+            return;
+        }
     });
 
     this.Given(/^execute immediately$/, function(callback) {
@@ -153,7 +165,7 @@ module.exports = function() {
     });
 
     this.Given(/^the job timeout by (\d+) minutes$/, function(minutes, callback) {
-        var minutes = eval(minutes);
+        minutes = eval(minutes);
         this.util.withJobTimeout(minutes);
         callback();
     });
@@ -161,28 +173,28 @@ module.exports = function() {
 
     this.Given(/^the retriesDelay by (\d+)$/, function(milliseconds, callback) {
         // Write code here that turns the phrase above into concrete actions
-        var milliseconds = eval(milliseconds);
+        milliseconds = eval(milliseconds);
         this.util.withRetriesDelay(milliseconds);
         callback();
     });
 
     this.Given(/^the retries by (\d+)$/, function(retries, callback) {
         // Write code here that turns the phrase above into concrete actions
-        var retries = eval(retries);
+        retries = eval(retries);
         this.util.withRetries(retries);
         callback();
     });
 
     this.Given(/^the ackTimeout by (\d+)$/, function(milliseconds, callback) {
         // Write code here that turns the phrase above into concrete actions
-        var milliseconds = eval(milliseconds);
+        milliseconds = eval(milliseconds);
         this.util.withAckTimeout(milliseconds);
         callback();
     });
 
     this.Given(/^the timeout by (\d+)$/, function(milliseconds, callback) {
         // Write code here that turns the phrase above into concrete actions
-        var milliseconds = eval(milliseconds);
+        milliseconds = eval(milliseconds);
         this.util
             .withTimeout(milliseconds);
         callback();
@@ -387,7 +399,7 @@ module.exports = function() {
         for (var i = 0; i < table.raw().length; i++) {
             months.push(table.raw()[i][0]);
         }
-        this.util.executeEvery(date, "task_name").month(months)
+        this.util.executeEvery(date, "task_name").month(months);
         callback();
     });
 

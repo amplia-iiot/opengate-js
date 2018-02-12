@@ -214,6 +214,14 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/collection/devices/collect/Temperature.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
+import {
+    TEMPERATURE_STATUS_ENUM
+} from &apos;./enum/TEMPERATURE_STATUS_ENUM&apos;;
+
+import {
+    LEVEL_TREND_ENUM
+} from &apos;./enum/LEVEL_TREND_ENUM&apos;;
+
 
 /**
  * This is a base object that allows the user to create a Datapoint.
@@ -267,12 +275,12 @@ export default class Temperature {
      * @return {Event}
      */
     withStatusTemperature(statusTemperature) {
-        if (typeof statusTemperature !== &apos;statusTemperature&apos; || statusTemperature.length === 0)
+        if (typeof statusTemperature !== &apos;string&apos; || statusTemperature.length === 0)
             throw new Error(&apos;Parameter statusTemperature must be string type and cannot be empty&apos;);
         if (this._temperature === undefined) {
             this._temperature = {};
         }
-        this._temperature.status = this._checkValues(statusTemperature, TEMPERATURE_STATUS_ENUM);;
+        this._temperature.status = this._checkValues(statusTemperature, TEMPERATURE_STATUS_ENUM);
         return this;
     }
 
@@ -282,12 +290,12 @@ export default class Temperature {
      * @return {Event}
      */
     withTrendTemperature(trendTemperature) {
-        if (typeof trendTemperature !== &apos;trendTemperature&apos; || trendTemperature.length === 0)
+        if (typeof trendTemperature !== &apos;string&apos; || trendTemperature.length === 0)
             throw new Error(&apos;Parameter trendTemperature must be string type and cannot be empty&apos;);
         if (this._temperature === undefined) {
             this._temperature = {};
         }
-        this._temperature.trend = this._checkValues(trendTemperature, TEMPERATURE_TREND_ENUM);
+        this._temperature.trend = this._checkValues(trendTemperature, LEVEL_TREND_ENUM);
         return this;
     }
 
@@ -347,7 +355,7 @@ export default class Temperature {
             &quot;average&quot;: this._average,
             &quot;maximum&quot;: this._maximum,
             &quot;minimum&quot;: this._minimum
-        }
+        };
         return temperature;
     }
 

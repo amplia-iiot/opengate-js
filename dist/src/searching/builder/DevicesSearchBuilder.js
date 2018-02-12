@@ -71,9 +71,9 @@ var DevicesSearchBuilder = (function (_PreFilteredSearchBuilder) {
                 var filter = this._builderParams.filter;
                 if (typeof filter._filterTemplate !== "undefined") {
                     //return filter._filterTemplate;
-                    finalFilter["and"].push(filter._filterTemplate.filter);
+                    finalFilter.and.push(filter._filterTemplate.filter);
                 } else {
-                    finalFilter["and"].push(filter);
+                    finalFilter.and.push(filter);
                 }
             }
 

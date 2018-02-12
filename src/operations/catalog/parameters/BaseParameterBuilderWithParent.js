@@ -1,6 +1,6 @@
 'use strict';
 
-import moment from 'moment'
+import moment from 'moment';
 /**
 * This class generate a builder by a dynamic content about specific parameter to an operation.
 */
@@ -19,7 +19,7 @@ export default class BaseParameterBuilderWithParent{
 		// Ejemplo config.type=anyString and config.name = apn, return "withApn"
 		function createSetterNameMethod(config){	
 			let prefixOptions = (function(config){
-				let prefix=undefined;
+				let prefix;
 				switch(config.type){
 					case 'array':
 						prefix = 'add';

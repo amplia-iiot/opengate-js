@@ -285,10 +285,10 @@ class BoxBuilder {
             let obj = subscribers[commsId];
             _this._administrationKeys.forEach((key) =&gt; {
                 obj[key] = _this._obj[key];
-            })
+            });
             _this._wrappers.push(new WrapperBuilder(_this._ogapi, obj, _this._url.replace(&apos;entities&apos;, &apos;subscribers&apos;).replace(&apos;/&apos; + _this._key._value._current.value, &apos;&apos;), obj[SubscriberID]._value._current.value));
         });
-        _this._obj[&apos;resourceType&apos;] = {
+        _this._obj.resourceType = {
             &quot;_value&quot;: {
                 &quot;_current&quot;: {
                     &quot;value&quot;: &quot;entity.asset&quot;
@@ -357,7 +357,7 @@ class BoxBuilder {
                                 if (res.statusCode === HttpStatus.OK) {
                                     //console.log(&quot;CREATEOK: &quot; + JSON.stringify(res));
                                     if (typeof _this._onCreated === &quot;function&quot;) {
-                                        _this._onCreated(res.header[&apos;location&apos;]);
+                                        _this._onCreated(res.header.location);
                                     }
                                     defer.notify({
                                         entity: _this._key._value._current.value,
@@ -366,7 +366,7 @@ class BoxBuilder {
                                         percentage: 75
                                     });
                                     defer.resolve({
-                                        location: res.header[&apos;location&apos;],
+                                        location: res.header.location,
                                         statusCode: res.statusCode
                                     });
                                 } else {
@@ -380,7 +380,7 @@ class BoxBuilder {
                         if (res.statusCode === HttpStatus.CREATED) {
                             console.log(&quot;CREATEOK: &quot; + JSON.stringify(res));
                             if (typeof _this._onCreated === &quot;function&quot;) {
-                                _this._onCreated(res.header[&apos;location&apos;]);
+                                _this._onCreated(res.header.location);
                             }
                             defer.notify({
                                 entity: _this._key._value._current.value,
@@ -389,7 +389,7 @@ class BoxBuilder {
                                 percentage: 75
                             });
                             defer.resolve({
-                                location: res.header[&apos;location&apos;],
+                                location: res.header.location,
                                 statusCode: res.statusCode
                             });
                         } else {
@@ -456,7 +456,7 @@ class BoxBuilder {
                     if (res.statusCode === HttpStatus.OK) {
                         console.log(&quot;CREATEOK: &quot; + JSON.stringify(res));
                         if (typeof _this._onCreated === &quot;function&quot;) {
-                            _this._onCreated(res.header[&apos;location&apos;]);
+                            _this._onCreated(res.header.location);
                         }
                         defer.notify({
                             entity: _this._key._value._current.value,
@@ -465,7 +465,7 @@ class BoxBuilder {
                             percentage: 90
                         });
                         defer.resolve({
-                            location: res.header[&apos;location&apos;],
+                            location: res.header.location,
                             statusCode: res.statusCode
                         });
                     } else {
@@ -513,7 +513,7 @@ class WrapperBuilder {
 
     _checkExists() {
         return this._ogapi.Napi.get(this._urlWithKey()).then(function(response) {
-            return response.statusCode === HttpStatus.OK
+            return response.statusCode === HttpStatus.OK;
         }).catch((err) =&gt; {
             console.warn(err);
             return false;
@@ -528,13 +528,13 @@ class WrapperBuilder {
             if (!exists) {
                 create(defered, defer, percentage);
             } else {
-                defer.resolve({ message: OGAPI_ENTITY_ALREADY_CREATED, entity: _this._key })
+                defer.resolve({ message: &apos;OGAPI_ENTITY_ALREADY_CREATED&apos;, entity: _this._key });
             }
         }).catch((exists) =&gt; {
             if (!exists) {
                 create(defered, defer, percentage);
             } else {
-                defer.resolve({ message: OGAPI_ENTITY_ALREADY_CREATED, entity: _this._key })
+                defer.resolve({ message: &apos;OGAPI_ENTITY_ALREADY_CREATED&apos;, entity: _this._key });
             }
         });
         return defer.promise;

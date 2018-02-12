@@ -214,7 +214,7 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/security/Certificates.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-import Security from &apos;./Security&apos;
+import Security from &apos;./Security&apos;;
 import q from &apos;q&apos;;
 import {
     ADMINISTRATIVE_STATE_ENUM
@@ -325,7 +325,7 @@ export default class Certificates extends Security {
             }
         }
         if (not_found.length !== 0) {
-            throw new Error(&quot;There are not any parameters allowed. Parameters value: &apos;&quot; + JSON.stringify(not_found) + &quot;&apos;. Usages parameters allowed are: &apos;&quot; + JSON.stringify(USAGES_ENUM) + &quot;&apos;&quot;)
+            throw new Error(&quot;There are not any parameters allowed. Parameters value: &apos;&quot; + JSON.stringify(not_found) + &quot;&apos;. Usages parameters allowed are: &apos;&quot; + JSON.stringify(USAGES_ENUM) + &quot;&apos;&quot;);
         }
         this._usages = usages;
         return this;
@@ -396,7 +396,7 @@ export default class Certificates extends Security {
         if (typeof tags === &quot;undefined&quot; || tags.constructor !== Array || tags.length &lt;= 0) {
             throw new Error(&quot;Parameter tags must be typeof Array and cannot be empty&quot;);
         }
-        let not_correct = []
+        let not_correct = [];
         for (let i = 0; i &lt; tags.length; i++) {
             if (typeof tags[i] === &quot;undefined&quot; || typeof tags[i] !== &apos;string&apos; || typeof tags[i].length &lt;= 0) {
                 not_correct.push(tags[i]);
@@ -433,7 +433,7 @@ export default class Certificates extends Security {
         if (typeof domains === &quot;undefined&quot; || domains.constructor !== Array || domains.length &lt;= 0) {
             throw new Error(&quot;Parameter domains must be typeof Array and cannot be empty&quot;);
         }
-        let not_correct = []
+        let not_correct = [];
         for (let i = 0; i &lt; domains.length; i++) {
             if (typeof domains[i] === &quot;undefined&quot; || typeof domains[i] !== &apos;string&apos; || typeof domains[i].length &lt;= 0) {
                 not_correct.push(domains[i]);
@@ -474,7 +474,7 @@ export default class Certificates extends Security {
                 parameters: this._parameters || undefined,
                 domains: this._domains || undefined
             }
-        }
+        };
         return data;
 
     }
@@ -521,9 +521,9 @@ export default class Certificates extends Security {
                 let statusCode = response.statusCode;
                 if (statusCode === 201) {
                     if (typeof this._onCreated === &quot;function&quot;) {
-                        this._onCreated(response.header[&apos;location&apos;]);
+                        this._onCreated(response.header.location);
                     }
-                    defered.resolve({ location: response.header[&apos;location&apos;], statusCode: statusCode });
+                    defered.resolve({ location: response.header.location, statusCode: statusCode });
                 } else {
                     defered.reject({ errors: response.errors, statusCode: statusCode });
                 }

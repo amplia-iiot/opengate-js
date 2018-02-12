@@ -526,36 +526,39 @@ export default class OperationActions {
                 if (!data) {
                     //BUG http://cm.amplia.es/jira/browse/ODMQA-1057
                     defered.reject(&quot;Operation with id &quot; + _this._operationId + &quot; not exists&quot;);
-                } else if (active) {
-                    _this.pause().then(
-                        function (response) {
-                            _this._update(config, forceToActivate || active).then(
-                                function (response) {
-                                    defered.resolve(response);
-                                }
-                            ).catch(
-                                function (error) {
-                                    defered.reject(_this._formatError(error));
-                                }
-                                );
-                        }
-                    ).catch(
-                        function (error) {
-                            defered.reject(_this._formatError(error));
-                        }
-                        )
-
                 } else {
-                    _this._update(config, forceToActivate || active).then(
-                        function (response) {
-                            defered.resolve(response);
-                        }
-                    ).catch(
-                        function (error) {
-                            defered.reject(_this._formatError(error));
-                        }
+                    let active = data.operation ? data.operation.active : false;
+                    if (active) {
+                        _this.pause().then(
+                            function (response) {
+                                _this._update(config, forceToActivate || active).then(
+                                    function (response) {
+                                        defered.resolve(response);
+                                    }
+                                ).catch(
+                                    function (error) {
+                                        defered.reject(_this._formatError(error));
+                                    }
+                                );
+                            }
+                        ).catch(
+                            function (error) {
+                                defered.reject(_this._formatError(error));
+                            }
                         );
-                }
+
+                    } else {
+                        _this._update(config, forceToActivate || active).then(
+                            function (response) {
+                                defered.resolve(response);
+                            }
+                        ).catch(
+                            function (error) {
+                                defered.reject(_this._formatError(error));
+                            }
+                        );
+                    }
+                }     
             }
         ).catch(
             function (error) {
@@ -622,10 +625,10 @@ export default class OperationActions {
 
     _formatError(error) {
         if (!error.data) {
-            error[&quot;data&quot;] = {};
+            error.data = {};
         }
         if (!error.data.errors) {
-            error.data[&quot;errors&quot;] = [(typeof (error) === &quot;string&quot;) ? { message: error } : error];
+            error.data.errors = [(typeof (error) === &quot;string&quot;) ? { message: error } : error];
         }
         //console.log(&quot;_formatError: &quot; + error);
         return error;

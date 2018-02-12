@@ -47,7 +47,7 @@ export default class ByMonth extends ByGeneric {
 		skeleton.repeating.pattern.monthly = {
 			day: this._day,
 			months: this._months
-		}
+		};
 		return skeleton;
 	}
 }

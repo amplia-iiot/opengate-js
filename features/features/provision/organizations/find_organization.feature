@@ -27,7 +27,7 @@ So I can check if a organization exists and get their information
 
   Scenario: Find an organizations by domain and workgroup
     When I try to find by...
-      | field     | content |
-      | domain    | root    |
-      | workgroup | root    |
+      | field     | content           |
+      | domain    | base_organization |
+      | workgroup | base_organization |
     Then response code should be: 200

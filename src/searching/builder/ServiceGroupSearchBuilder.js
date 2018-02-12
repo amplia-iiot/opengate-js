@@ -1,6 +1,6 @@
 'use strict';
 
-import SearchBuilder from './SearchBuilder'
+import SearchBuilder from './SearchBuilder';
 import StaticSearch from '../StaticSearch';
 
 const staticSearchType = 'serviceGroups';

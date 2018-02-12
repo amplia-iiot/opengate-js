@@ -17,7 +17,7 @@ So I can check if a domain exists and get their information
     Then I want to create a "domain"
     And the "name" "dmntst4"
     And the "description" "Domian created for tsting ogapi"
-    And the "parentDomain" "root"
+    And the "parentDomain" "base_organization"
     And I create it
     Then does not throws an error
     And the "name" "dmntst43"

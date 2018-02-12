@@ -592,4 +592,4 @@ export default {
         }
     }
 
-}
+};

@@ -29,7 +29,6 @@ var _devicesCollectDatastreams2 = _interopRequireDefault(_devicesCollectDatastre
 /**
  * This is a base object contains methods to send unstructured IoT information to be processed & collected by the platform.
  */
-;
 
 var DeviceMessage = (function (_Event) {
     _inherits(DeviceMessage, _Event);

@@ -35,6 +35,9 @@ var Search = (function (_BaseSearch) {
     * @param {object} filter - this is the filter
     * @param {object} limit - this is the pagination about the search
     * @param {object} sort - this defined parameters to order the result of search
+ * @param {object} group
+ * @param {object} select
+   	* @param {nubmer} timeout
     */
 
 	function Search(ogapi, url, filter, limit, sort, group, select, timeout) {

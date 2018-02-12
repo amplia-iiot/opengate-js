@@ -213,4 +213,4 @@ export const IOT_FIELDS = {
     "EMPTY": {
         "EMPTY": []
     }
-}
+};

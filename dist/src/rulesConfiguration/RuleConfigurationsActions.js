@@ -88,9 +88,9 @@ var RuleConfigurationsActions = (function () {
                 if (res.statusCode === 201) {
                     //console.log("CREATEOK: " + JSON.stringify(res));
                     if (typeof _this2._onCreated === "function") {
-                        _this2._onCreated(res.header['location']);
+                        _this2._onCreated(res.header.location);
                     }
-                    defered.resolve({ location: res.header['location'], statusCode: res.statusCode });
+                    defered.resolve({ location: res.header.location, statusCode: res.statusCode });
                 } else if (res.statusCode === 200) {
                     //console.log("POSTOK: " + JSON.stringify(res));
                     defered.resolve({ statusCode: res.statusCode });

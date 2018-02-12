@@ -1,6 +1,6 @@
 'use strict';
 
-import BaseProvision from '../provision/BaseProvision'
+import BaseProvision from '../provision/BaseProvision';
 
 /**
  * This extends BaseProvision and contains all you can do about Security.

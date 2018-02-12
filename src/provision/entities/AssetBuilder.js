@@ -71,10 +71,10 @@ class BoxBuilder {
             let obj = subscribers[commsId];
             _this._administrationKeys.forEach((key) => {
                 obj[key] = _this._obj[key];
-            })
+            });
             _this._wrappers.push(new WrapperBuilder(_this._ogapi, obj, _this._url.replace('entities', 'subscribers').replace('/' + _this._key._value._current.value, ''), obj[SubscriberID]._value._current.value));
         });
-        _this._obj['resourceType'] = {
+        _this._obj.resourceType = {
             "_value": {
                 "_current": {
                     "value": "entity.asset"
@@ -143,7 +143,7 @@ class BoxBuilder {
                                 if (res.statusCode === HttpStatus.OK) {
                                     //console.log("CREATEOK: " + JSON.stringify(res));
                                     if (typeof _this._onCreated === "function") {
-                                        _this._onCreated(res.header['location']);
+                                        _this._onCreated(res.header.location);
                                     }
                                     defer.notify({
                                         entity: _this._key._value._current.value,
@@ -152,7 +152,7 @@ class BoxBuilder {
                                         percentage: 75
                                     });
                                     defer.resolve({
-                                        location: res.header['location'],
+                                        location: res.header.location,
                                         statusCode: res.statusCode
                                     });
                                 } else {
@@ -166,7 +166,7 @@ class BoxBuilder {
                         if (res.statusCode === HttpStatus.CREATED) {
                             console.log("CREATEOK: " + JSON.stringify(res));
                             if (typeof _this._onCreated === "function") {
-                                _this._onCreated(res.header['location']);
+                                _this._onCreated(res.header.location);
                             }
                             defer.notify({
                                 entity: _this._key._value._current.value,
@@ -175,7 +175,7 @@ class BoxBuilder {
                                 percentage: 75
                             });
                             defer.resolve({
-                                location: res.header['location'],
+                                location: res.header.location,
                                 statusCode: res.statusCode
                             });
                         } else {
@@ -242,7 +242,7 @@ class BoxBuilder {
                     if (res.statusCode === HttpStatus.OK) {
                         console.log("CREATEOK: " + JSON.stringify(res));
                         if (typeof _this._onCreated === "function") {
-                            _this._onCreated(res.header['location']);
+                            _this._onCreated(res.header.location);
                         }
                         defer.notify({
                             entity: _this._key._value._current.value,
@@ -251,7 +251,7 @@ class BoxBuilder {
                             percentage: 90
                         });
                         defer.resolve({
-                            location: res.header['location'],
+                            location: res.header.location,
                             statusCode: res.statusCode
                         });
                     } else {
@@ -299,7 +299,7 @@ class WrapperBuilder {
 
     _checkExists() {
         return this._ogapi.Napi.get(this._urlWithKey()).then(function(response) {
-            return response.statusCode === HttpStatus.OK
+            return response.statusCode === HttpStatus.OK;
         }).catch((err) => {
             console.warn(err);
             return false;
@@ -314,13 +314,13 @@ class WrapperBuilder {
             if (!exists) {
                 create(defered, defer, percentage);
             } else {
-                defer.resolve({ message: OGAPI_ENTITY_ALREADY_CREATED, entity: _this._key })
+                defer.resolve({ message: 'OGAPI_ENTITY_ALREADY_CREATED', entity: _this._key });
             }
         }).catch((exists) => {
             if (!exists) {
                 create(defered, defer, percentage);
             } else {
-                defer.resolve({ message: OGAPI_ENTITY_ALREADY_CREATED, entity: _this._key })
+                defer.resolve({ message: 'OGAPI_ENTITY_ALREADY_CREATED', entity: _this._key });
             }
         });
         return defer.promise;

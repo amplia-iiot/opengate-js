@@ -60,7 +60,7 @@ export default class CertificateFinder extends ProvisionGenericFinder {
 
         if (not_found !== '') {
             throw new Error("Parameter mimetype is not allowed. Parameter value <'" +
-                JSON.stringify(not_found) + "'>, mimetype allowed <'" + JSON.stringify(MIME_TYPES_ENUM) + "'>")
+                JSON.stringify(not_found) + "'>, mimetype allowed <'" + JSON.stringify(MIME_TYPES_ENUM) + "'>");
         }
 
         this._id = id;
@@ -78,7 +78,7 @@ export default class CertificateFinder extends ProvisionGenericFinder {
         let defered = q.defer();
         let promise = defered.promise;
         let _error_not_found = this._error_not_found;
-        this._api.get(this._downloadUrl())
+        this._api.get(this._downloadUrl(), undefined, this._getExtraHeaders())
             .then((req) => {
                 if (req.statusCode === 204) {
                     defered.reject({ data: _error_not_found, statusCode: HttpStatus.NOT_FOUND });

@@ -397,7 +397,7 @@ export default class CommsModuleMessage {
             not_found.push(value);
         }
         if (not_found.length !== 0) {
-            console.warn(&quot;Parameter value not allowed &lt;&apos;&quot; + JSON.stringify(not_found) + &quot;&apos;&gt;, allowed &lt;&apos;&quot; + JSON.stringify(enumName) + &quot;&apos;&gt;&quot;)
+            console.warn(&quot;Parameter value not allowed &lt;&apos;&quot; + JSON.stringify(not_found) + &quot;&apos;&gt;, allowed &lt;&apos;&quot; + JSON.stringify(enumName) + &quot;&apos;&gt;&quot;);
         }
         return value;
     }
@@ -412,7 +412,7 @@ export default class CommsModuleMessage {
             &quot;hardware&quot;: this._hardware.composeElement(),
             &quot;operationalStatus&quot;: this._operationalStatus,
             &quot;antennaStatus&quot;: this._antennaStatus
-        }
+        };
         if (this._softwareList.length &gt; 0) {
             commsModule.softwareList = this._softwareList;
         }

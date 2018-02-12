@@ -215,9 +215,9 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
 import q from &apos;q&apos;;
-import BaseProvision from &apos;../provision/BaseProvision&apos;
-import Workgroups from &apos;./Workgroups&apos;
-import Channels from &apos;../channels/Channels&apos;
+import BaseProvision from &apos;../provision/BaseProvision&apos;;
+import Workgroups from &apos;./Workgroups&apos;;
+import Channels from &apos;../channels/Channels&apos;;
 
 /**
  * This is a base object that contains all you can do about workgroups.
@@ -269,19 +269,19 @@ export default class WorkgroupRelations extends BaseProvision {
     _composeElement() {
         this._checkRequiredParameters();
 
-        this._resource = &apos;provision/domains/&apos; + this._workgroup._domainName + &apos;/workgroups/&apos; + this._workgroup._name + &apos;/relations&apos;
+        this._resource = &apos;provision/domains/&apos; + this._workgroup._domainName + &apos;/workgroups/&apos; + this._workgroup._name + &apos;/relations&apos;;
 
         var workgroup = {
             &quot;workgroupRelation&quot;: {
                 &quot;channels&quot;: this._channels ? this._channels : undefined
             }
-        }
+        };
 
         return workgroup;
     }
 
     _buildURL() {
-        var url = &apos;provision/domains/&apos; + this._workgroup._domainName + &apos;/workgroups/&apos; + this._workgroup._name + &apos;/relations&apos;
+        var url = &apos;provision/domains/&apos; + this._workgroup._domainName + &apos;/workgroups/&apos; + this._workgroup._name + &apos;/relations&apos;;
         return url;
     }
 
@@ -309,7 +309,7 @@ export default class WorkgroupRelations extends BaseProvision {
      * @throws {Error} 
      */
     update() {
-        throw new Error(&quot;Workgroup relation update not allowed&quot;)
+        throw new Error(&quot;Workgroup relation update not allowed&quot;);
     }
 
 }</code></pre>

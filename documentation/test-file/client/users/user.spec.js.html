@@ -213,40 +213,40 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">client/users/user.spec.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">define(function () {
-	mocha.setup(&apos;bdd&apos;);	
-    describe(&apos;Testing user api&apos;, function() {
-        it(&apos;search a user that exists&apos;, function() {        
-    	    assert.strictEqual(&apos;root@amplia.es&apos;,&apos;root@amplia.es&apos;);
-        });            
+    mocha.setup(&apos;bdd&apos;);
+    describe(&apos;Testing user api&apos;, function () {
+        it(&apos;search a user that exists&apos;, function () {
+            assert.strictEqual(&apos;root@amplia.es&apos;, &apos;root@amplia.es&apos;);
+        });
     });
 
-     describe(&apos;Create User:&apos;, function() {
+    describe(&apos;Create User:&apos;, function () {
             
-            it(&apos;Create a user&apos;, function() {
-            	var user = ogapi.newUser();
-            	user. withName(&quot;Katherin&quot;).withEmail(&quot;katherin.moscoso@amplia.es&quot;)
-            	.withPassword(&quot;amplia123&quot;).withWorkgroup(&quot;amplia_rd&quot;).withDomain(&quot;amplia_rd&quot;).withProfile(&quot;advanced&quot;)
-            	.withCountryCode(&quot;ES&quot;).withLangCode(&quot;en&quot;).withDescription(&quot;user description&quot;).withSurname(&quot;Moscoso&quot;);
-                assert.doesNotThrow(function() {
-                    user.create();
-                });
-
+        it(&apos;Create a user&apos;, function () {
+            var user = ogapi.newUser();
+            user.withName(&quot;Katherin&quot;).withEmail(&quot;katherin.moscoso@amplia.es&quot;)
+                .withPassword(&quot;amplia123&quot;).withWorkgroup(&quot;amplia_rd&quot;).withDomain(&quot;amplia_rd&quot;).withProfile(&quot;advanced&quot;)
+                .withCountryCode(&quot;ES&quot;).withLangCode(&quot;en&quot;).withDescription(&quot;user description&quot;).withSurname(&quot;Moscoso&quot;);
+            assert.doesNotThrow(function () {
+                user.create();
             });
 
-   });
-     describe(&apos;Delete User:&apos;, function() {
-            
-            it(&apos;Delete a user&apos;, function() {
-                var user = ogapi.newUser();
-                user.withEmail(&quot;katherin.moscoso@amplia.es&quot;);
-                assert.doesNotThrow(function() {
-                    user.delete();
-                });
+        });
 
+    });
+    describe(&apos;Delete User:&apos;, function () {
+            
+        it(&apos;Delete a user&apos;, function () {
+            var user = ogapi.newUser();
+            user.withEmail(&quot;katherin.moscoso@amplia.es&quot;);
+            assert.doesNotThrow(function () {
+                user.delete();
             });
 
-   });
-})</code></pre>
+        });
+
+    });
+});</code></pre>
 
 </div>
 

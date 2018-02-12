@@ -212,7 +212,7 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/searching/DeviceSearch.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Search from &apos;./Search&apos;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Search from &apos;./Search&apos;;
 import q from &apos;q&apos;;
 
 /** 
@@ -241,7 +241,7 @@ export default class DeviceSearch extends Search {
         var defered = q.defer();
         var promise = defered.promise;
         this._ogapi.Napi
-            .post(this._resource, this._filter(), this._timeout)
+            .post(this._resource, this._filter(), this._timeout, this._getExtraHeaders())
             .then((response) =&gt; {
                 let resultQuery = response.body;
                 let statusCode = response.statusCode;

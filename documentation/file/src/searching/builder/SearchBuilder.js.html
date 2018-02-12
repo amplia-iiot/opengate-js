@@ -214,8 +214,8 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/searching/builder/SearchBuilder.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-import Search from &apos;../Search&apos;
-import SearchBuilderError from &apos;../error/SearchBuilderError&apos;
+import Search from &apos;../Search&apos;;
+import SearchBuilderError from &apos;../error/SearchBuilderError&apos;;
 
 const LIMIT_START_DEF_VALUE = 1;
 const LIMIT_SIZE_DEF_VALUE = 1000;
@@ -251,7 +251,7 @@ export default class SearchBuilder {
             this[route] = (_route = route) =&gt; {
                 this._builderParams[_route] = true;
                 return this;
-            }
+            };
         }
     }
 
@@ -414,7 +414,7 @@ export default class SearchBuilder {
             return filter._filterTemplate;
         return {
             filter: filter
-        }
+        };
     }
 
     _buildSelect() {
@@ -423,7 +423,7 @@ export default class SearchBuilder {
             return select._selectTemplate;
         return {
             select: select
-        }
+        };
     }
     _buildGroup() {
         let group = this._builderParams.group;
@@ -431,7 +431,7 @@ export default class SearchBuilder {
             return group._groupTemplate;
         return {
             group: group
-        }
+        };
     }
 
     _buildLimit() {

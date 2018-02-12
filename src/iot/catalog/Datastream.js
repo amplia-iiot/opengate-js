@@ -1,7 +1,7 @@
 'use strict';
 
 import jsonSchema from 'jsonschema';
-import Qrating from './Qrating'
+import Qrating from './Qrating';
 
 let jsValidate = jsonSchema.validate;
 /**
@@ -60,7 +60,7 @@ export default class Datastream {
             type: type,
             label: label,
             symbol: symbol
-        }
+        };
         return this;
     }
 
@@ -131,7 +131,7 @@ export default class Datastream {
         this._storage = {
             total: total,
             period: period
-        }
+        };
         return this;
     }
 
@@ -209,7 +209,7 @@ export default class Datastream {
             storage: this._storage,
             hardwareIds: this._hardwares,
             access: this._access
-        }
+        };
     }
 
     _isValidString(string, param_name, max_length) {

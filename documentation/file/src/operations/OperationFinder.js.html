@@ -281,7 +281,7 @@ export default class OperationFinder extends GenericFinder {
                     _this._execute()
                         .then(function (response) {
                             //console.log(&quot;2response: &quot; + JSON.stringify(response));
-                            response.data[&quot;id&quot;] = _this._id;
+                            response.data.id = _this._id;
                             defered.resolve(response);
                         })
                         .catch(function (error) {
@@ -327,7 +327,7 @@ export default class OperationFinder extends GenericFinder {
     _composeUrl() {
         if (this._entity === &apos;operations&apos;) {
             var _limit_url = this._limit ? (&quot;?start=&quot; + this._limit.start + &quot;&amp;size=&quot; + this._limit.size) : &quot;&quot;;
-            var base_url = this._baseUrl + &quot;/&quot; + this._id + &quot;/operations&quot; + _limit_url
+            var base_url = this._baseUrl + &quot;/&quot; + this._id + &quot;/operations&quot; + _limit_url;
             console.log(&quot;COMPOSE_IF: &quot; + base_url);
             return base_url;
         }

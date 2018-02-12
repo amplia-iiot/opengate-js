@@ -250,7 +250,7 @@ export default class ByWeek extends ByGeneric{
 			}
 		}
 		if (not_found.length !== 0){
-			throw new Error(&quot;Any day into parameter days is not allowed. Parameter value &lt;&apos;&quot;+JSON.stringify(days)+&quot;&apos;&gt;, Months allowed &lt;&apos;&quot;+JSON.stringify(DAYS_ENUM)+&quot;&apos;&gt;&quot;)
+			throw new Error(&quot;Any day into parameter days is not allowed. Parameter value &lt;&apos;&quot; + JSON.stringify(days) + &quot;&apos;&gt;, Months allowed &lt;&apos;&quot; + JSON.stringify(DAYS_ENUM) + &quot;&apos;&gt;&quot;);
 		}
 		this._days = days;		
 		return this._build();

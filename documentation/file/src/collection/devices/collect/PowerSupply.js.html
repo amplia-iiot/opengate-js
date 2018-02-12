@@ -336,7 +336,7 @@ export default class PowerSupply {
             not_found.push(value);
         }
         if (not_found.length !== 0) {
-            console.warn(&quot;Parameter value not allowed &lt;&apos;&quot; + JSON.stringify(not_found) + &quot;&apos;&gt;, allowed &lt;&apos;&quot; + JSON.stringify(enumName) + &quot;&apos;&gt;&quot;)
+            console.warn(&quot;Parameter value not allowed &lt;&apos;&quot; + JSON.stringify(not_found) + &quot;&apos;&gt;, allowed &lt;&apos;&quot; + JSON.stringify(enumName) + &quot;&apos;&gt;&quot;);
         }
         return value;
     }
@@ -398,12 +398,12 @@ export default class PowerSupply {
                 &quot;status&quot;: this._batteryStatus,
                 &quot;percentage&quot;: this._percentage,
             }
-        }
+        };
         if(this._outageDate !== undefined || this._outageDuration !== undefined ){
-            powerSupply.outage =  {
+            powerSupply.outage = {
                 &quot;timestamp&quot;: this._outageDate,
                 &quot;duration&quot;: this._outageDuration
-            }
+            };
         }
         return powerSupply;
     }

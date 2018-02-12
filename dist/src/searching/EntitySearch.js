@@ -86,7 +86,10 @@ var EntitySearch = (function (_Search) {
                         }
                     }
                 }
-                defered.resolve({ data: resultQuery, statusCode: statusCode });
+                defered.resolve({
+                    data: resultQuery,
+                    statusCode: statusCode
+                });
             })['catch'](function (error) {
                 defered.reject(error);
             });

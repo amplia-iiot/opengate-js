@@ -248,7 +248,7 @@ export default class Operation {
             .put(this._resource, this._postObj)
             .then((response) =&gt; {
                 //console.log(&quot;UPDATE: &quot; + JSON.stringify(response));
-                let data = undefined;
+                let data;
                 try {
                     data = JSON.parse(response.text);
                 } catch (err) {
@@ -260,10 +260,10 @@ export default class Operation {
             .catch((error) =&gt; {
                 //console.log(&quot;ERROR: &quot; + JSON.stringify(error));
                 if (!error.data) {
-                    error[&quot;data&quot;] = {};
+                    error.data = {};
                 }
                 if (!error.data.errors) {
-                    error.data[&quot;errors&quot;] = [(typeof (error) === &quot;string&quot;) ? { message: error } : error];
+                    error.data.errors = [(typeof (error) === &quot;string&quot;) ? { message: error } : error];
                 }
                 defered.reject(error);
             });
@@ -282,7 +282,7 @@ export default class Operation {
         this._ogapi.Napi
             .post(this._resource, this._postObj)
             .then((response) =&gt; {
-                let data = undefined;
+                let data;
                 try {
                     data = JSON.parse(response.text);
                 } catch (err) {
@@ -292,10 +292,10 @@ export default class Operation {
             })
             .catch((error) =&gt; {
                 if (!error.data) {
-                    error[&quot;data&quot;] = {};
+                    error.data = {};
                 }
                 if (!error.data.errors) {
-                    error.data[&quot;errors&quot;] = [(typeof (error) === &quot;string&quot;) ? { message: error } : error];
+                    error.data.errors = [(typeof (error) === &quot;string&quot;) ? { message: error } : error];
                 }
                 defered.reject(error);
             });

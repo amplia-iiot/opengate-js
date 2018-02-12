@@ -212,9 +212,9 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/searching/StaticSearch.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-import Search from &apos;./Search&apos;
+import Search from &apos;./Search&apos;;
 import q from &apos;q&apos;;
 
 
@@ -268,11 +268,12 @@ export default class StaticSearch extends Search {
             collection = content;
         }
 
+        
         switch (_this._contentType) {
             case &apos;operationalStatus&apos;:
             case &apos;specificType&apos;:
                 for (var contentTmp in collection) {
-                    collection[contentTmp].forEach(function(finalValue) {
+                    collection[contentTmp].forEach(function (finalValue) {
                         if (!_this._customFilters.id || (_this._customFilters.id &amp;&amp; _this._customFilters.id === finalValue)) {
                             finalContent.push({
                                 &apos;entityType&apos;: contentTmp,
@@ -2106,7 +2107,7 @@ export default class StaticSearch extends Search {
                 }
             ]
         }[contentType];
-    };
+    }
 }</code></pre>
 
 </div>

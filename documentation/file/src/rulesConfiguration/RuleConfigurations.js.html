@@ -214,9 +214,9 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/rulesConfiguration/RuleConfigurations.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-import BaseProvision from &apos;../provision/BaseProvision&apos;
-import _RuleCondition from &apos;./_RuleCondition&apos;
-import _RuleNotification from &apos;./_RuleNotification&apos;
+import BaseProvision from &apos;../provision/BaseProvision&apos;;
+import _RuleCondition from &apos;./_RuleCondition&apos;;
+import _RuleNotification from &apos;./_RuleNotification&apos;;
 import q from &apos;q&apos;;
 
 /**
@@ -443,7 +443,7 @@ export default class RuleConfigurations extends BaseProvision {
      * @throws {Error} 
      */
     create() {
-        throw new Error(&quot;Rule configuration creation not allowed&quot;)
+        throw new Error(&quot;Rule configuration creation not allowed&quot;);
     }
 
     /** 

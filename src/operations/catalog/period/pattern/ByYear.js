@@ -69,7 +69,7 @@ export default class ByYear extends ByGeneric {
         }
         let found = MONTHS_ENUM.find(function(month) { return month == this; }, month);
         if (typeof found === "undefined") {
-            throw new Error("Any month into parameter months is not allowed. Parameter value <'" + month + "'>, Months allowed <'" + JSON.stringify(MONTHS_ENUM) + "'>")
+            throw new Error("Any month into parameter months is not allowed. Parameter value <'" + month + "'>, Months allowed <'" + JSON.stringify(MONTHS_ENUM) + "'>");
         }
         this._month = month;
         if (typeof this._day === "undefined") {

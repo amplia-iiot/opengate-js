@@ -58,7 +58,8 @@ var VALIDATE = {
     editable: function editable(value) {
         return true;
         // Desactivada comprobación, es incoherente el valor en el catalogo de operaciones.
-        if (!this) throw new Error("This parameter cannot be edited.");
+        /*if (!this)
+            throw new Error("This parameter cannot be edited.");*/
     }
 };
 

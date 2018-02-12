@@ -216,7 +216,7 @@
 
 import SearchWithSummaryBuilder from &apos;./SearchWithSummaryBuilder&apos;;
 import FieldFinder from &apos;../../util/searchingFields/FieldFinder&apos;;
-import EntitySearch from &apos;../EntitySearch&apos;
+import EntitySearch from &apos;../EntitySearch&apos;;
 export const TOKEN_URL = &apos;$_token&apos;;
 
 /**
@@ -252,7 +252,7 @@ export default class EntitiesSearchBuilder extends SearchWithSummaryBuilder {
                 this._url = this._url.replace(TOKEN_URL, this._routes[route]);
             }
         }
-        this._url = this._url.replace(TOKEN_URL, &apos;&apos;)
+        this._url = this._url.replace(TOKEN_URL, &apos;&apos;);
         return super._buildUrl();
     }
 

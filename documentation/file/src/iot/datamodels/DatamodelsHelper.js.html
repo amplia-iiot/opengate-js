@@ -213,9 +213,9 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/iot/datamodels/DatamodelsHelper.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
-import BaseProvision from &apos;../../provision/BaseProvision&apos;
-import Category from &apos;../catalog/Category&apos;
-import Datastream from &apos;../catalog/Datastream&apos;
+import BaseProvision from &apos;../../provision/BaseProvision&apos;;
+import Category from &apos;../catalog/Category&apos;;
+import Datastream from &apos;../catalog/Datastream&apos;;
 
 export const PRE_RESOURCE = &apos;/organizations&apos;;
 export const POST_RESOURCE = &apos;/datamodels&apos;;
@@ -337,8 +337,11 @@ export default class DatamodelsHelper extends BaseProvision {
         if (exists_category === -1) {
             throw new Error(&apos;Category &apos; + category + &apos; not exists for this datamodel. Use addCategory instead.&apos;);
         }
-        this._categories[exists_category].datastreams ? this._categories[exists_category].datastreams.push(datastream) :
-            this._categories[exists_category][&apos;datastreams&apos;] = [datastream];
+        if (this._categories[exists_category].datastreams) {
+            this._categories[exists_category].datastreams.push(datastream);
+        } else {
+            this._categories[exists_category].datastreams = [datastream];
+        }
         return this;
     }
 
@@ -374,11 +377,11 @@ export default class DatamodelsHelper extends BaseProvision {
         this._categories.forEach(function(_category, category_index) {
             if (_category.identifier === category) {
                 remove_category_index = category_index;
-                _category.datastreams.forEach(function(datastream, datastream_index) {
+                _category.datastreams.forEach(function (datastream, datastream_index) {
                     if (datastream.identifier === id_datastream) {
                         remove_datastream_index = datastream_index;
                     }
-                })
+                });
             }
         });
         if (remove_category_index === -1) {
@@ -470,7 +473,7 @@ export default class DatamodelsHelper extends BaseProvision {
             &apos;version&apos;: this._version,
             &apos;description&apos;: this._description,
             &apos;categories&apos;: this._categories
-        }
+        };
     }
 
     _buildURL() {

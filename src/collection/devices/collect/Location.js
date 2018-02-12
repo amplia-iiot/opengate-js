@@ -59,15 +59,15 @@ export default class Location {
 
     composeElement(){
         if(this._longitude === undefined && this._latitude ===  undefined){
-            throw new Error('The parameters latitude and longitude are required in location element')
+            throw new Error('The parameters latitude and longitude are required in location element');
         }
         var location = {
-                "timestamp": this._date,
-                "coordinates": {
-                    "latitude": this._latitude,
-                    "longitude": this._longitude
+            "timestamp": this._date,
+            "coordinates": {
+                "latitude": this._latitude,
+                "longitude": this._longitude
             }
-        }
+        };
         return location;
     }
 

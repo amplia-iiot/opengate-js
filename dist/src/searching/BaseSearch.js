@@ -48,21 +48,40 @@ var BaseSearch = (function () {
         }
         this._ogapi = ogapi;
         this._resource = 'search' + resource;
+        this._headers = undefined;
     }
 
-    /**
-     * This invoke a request to OpenGate North API and the callback is managed by promises
-     * @return {Promise}
-     * @property {function (result:object, statusCode:number)} then - When request it is OK
-     * @property {function (error:string)} catch - When request it is NOK
-     */
-
     _createClass(BaseSearch, [{
+        key: '_getExtraHeaders',
+        value: function _getExtraHeaders() {
+            return this._headers;
+        }
+    }, {
+        key: '_setExtraHeaders',
+        value: function _setExtraHeaders(headers) {
+            if (this._headers) {
+                var keys = Object.keys(headers);
+                for (var i = 0; i < keys.length; i++) {
+                    var key = keys[i];
+                    this._headers[key] = headers[key];
+                }
+            } else {
+                this._headers = headers;
+            }
+        }
+
+        /**
+         * This invoke a request to OpenGate North API and the callback is managed by promises
+         * @return {Promise}
+         * @property {function (result:object, statusCode:number)} then - When request it is OK
+         * @property {function (error:string)} catch - When request it is NOK
+         */
+    }, {
         key: 'execute',
         value: function execute() {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            this._ogapi.Napi.post(this._resource, this._filter(), this._timeout).then(function (response) {
+            this._ogapi.Napi.post(this._resource, this._filter(), this._timeout, this._getExtraHeaders()).then(function (response) {
                 var resultQuery = response.body;
                 var statusCode = response.statusCode;
                 defered.resolve({ data: resultQuery, statusCode: statusCode });
@@ -71,6 +90,13 @@ var BaseSearch = (function () {
             });
             return promise;
         }
+
+        /**
+         * This invoke a request to OpenGate North API and the callback is managed by promises
+         * @return {Promise} - Promise with data with format csv
+         * @property {function (result:object, statusCode:number)} then - When request it is OK
+         * @property {function (error:string)} catch - When request it is NOK
+         */
     }, {
         key: 'downloadCsv',
         value: function downloadCsv() {
@@ -81,8 +107,9 @@ var BaseSearch = (function () {
             if (filter && filter.limit) {
                 delete filter.limit;
             }
+            this._setExtraHeaders({ 'Accept': 'text/plain' });
 
-            this._ogapi.Napi.post_csv(this._resource, filter, this._timeout).then(function (response) {
+            this._ogapi.Napi.post(this._resource, filter, this._timeout, this._getExtraHeaders()).then(function (response) {
                 var resultQuery = response;
                 var statusCode = response.statusCode;
                 defered.resolve({ data: resultQuery, statusCode: statusCode });
@@ -128,7 +155,7 @@ var BaseSearch = (function () {
                     var message = typeof _this.cancel === 'string' ? _this.cancel : 'Cancel process';
                     defered.reject({ data: message, statusCode: 403 });
                 } else {
-                    _this._ogapi.Napi.post(_this._resource, filter, _this._timeout).then(function (response) {
+                    _this._ogapi.Napi.post(_this._resource, filter, _this._timeout, _this._getExtraHeaders()).then(function (response) {
                         var statusCode = response.statusCode;
                         var body = response.body;
                         if (!body && response.text) {

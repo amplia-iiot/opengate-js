@@ -1,4 +1,4 @@
-import NorthAmpliaREST from './NorthAmpliaREST'
+import NorthAmpliaREST from './NorthAmpliaREST';
 
 export default class SouthAmpliaREST extends NorthAmpliaREST {
 

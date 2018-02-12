@@ -251,7 +251,7 @@ export default class Software {
     withType(type) {
         if (typeof type !== &apos;string&apos; || type.length === 0)
             throw new Error(&apos;Parameter type must be a string and cannot be empty&apos;);
-        this._type = this._checkValues(type, SOFTWARE_TYPE_ENUM);;
+        this._type = this._checkValues(type, SOFTWARE_TYPE_ENUM);
         return this;
     }
 
@@ -275,7 +275,7 @@ export default class Software {
      */
     withDate(date) {
         if (typeof date  !== &apos;string&apos;  || date .length === 0  )
-            throw new Error(&apos;Parameter date must be a string and cannot be empty&apos;);;
+            throw new Error(&apos;Parameter date must be a string and cannot be empty&apos;);
         this._date = date ;
         return this;
     }
@@ -290,7 +290,7 @@ export default class Software {
             not_found.push(value);
         }
         if (not_found.length !== 0) {
-            console.warn(&quot;Parameter value not allowed &lt;&apos;&quot; + JSON.stringify(not_found) + &quot;&apos;&gt;, allowed &lt;&apos;&quot; + JSON.stringify(enumName) + &quot;&apos;&gt;&quot;)
+            console.warn(&quot;Parameter value not allowed &lt;&apos;&quot; + JSON.stringify(not_found) + &quot;&apos;&gt;, allowed &lt;&apos;&quot; + JSON.stringify(enumName) + &quot;&apos;&gt;&quot;);
         }
         return value;
     }
@@ -299,11 +299,11 @@ export default class Software {
     composeElement(){
 
         var software = {
-            &apos;name&apos; : this._name ,
-            &apos;type&apos; : this._type ,
-            &apos;version&apos; : this._version ,
-            &apos;date&apos; : this._date 
-        }
+            &apos;name&apos;: this._name,
+            &apos;type&apos;: this._type,
+            &apos;version&apos;: this._version,
+            &apos;date&apos;: this._date
+        };
         return software;
     }
 

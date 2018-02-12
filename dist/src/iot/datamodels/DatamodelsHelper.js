@@ -164,7 +164,11 @@ var DatamodelsHelper = (function (_BaseProvision) {
             if (exists_category === -1) {
                 throw new Error('Category ' + category + ' not exists for this datamodel. Use addCategory instead.');
             }
-            this._categories[exists_category].datastreams ? this._categories[exists_category].datastreams.push(datastream) : this._categories[exists_category]['datastreams'] = [datastream];
+            if (this._categories[exists_category].datastreams) {
+                this._categories[exists_category].datastreams.push(datastream);
+            } else {
+                this._categories[exists_category].datastreams = [datastream];
+            }
             return this;
         }
 

@@ -252,12 +252,7 @@ var NorthAmpliaREST = (function () {
         key: 'default',
         value: function _default() {
             return {
-                url: 'http://172.19.18.96:25281/v80',
-                timeout: 5000,
-                apiKey: '2829be88-a7d7-4f51-aefc-3cc2385b6506',
-                south: {
-                    url: 'http://172.19.18.96:9955/v80'
-                }
+                timeout: 5000
             };
         }
     }, {
@@ -270,34 +265,30 @@ var NorthAmpliaREST = (function () {
          * Invoke GET action to url specified
          * @param {!string} url - url to execute GET
          * @param {number} timeout - timeout in milliseconds    
+         * @param {object} headers - headers of request
          * @return {Promise} 
          */
     }, {
         key: 'get',
-        value: function get(url, timeout) {
+        value: function get(url, timeout, headers) {
             var req = _superagent2['default'].get(this._createUrl(url));
-            return this._createPromiseRequest(req, null, timeout);
+            return this._createPromiseRequest(req, null, timeout, headers);
         }
 
         /**
          * Invoke POST action to url and data specified
          * @param {!string} url - url to execute POST
          * @param {object} data - attach data to request POST
-         * @param {number} timeout - timeout in milliseconds       
+         * @param {number} timeout - timeout in milliseconds
+         * @param {object} headers - headers of request
          * @return {Promise} 
          */
     }, {
         key: 'post',
-        value: function post(url, data, timeout) {
+        value: function post(url, data, timeout, headers) {
             var req = _superagent2['default'].post(this._createUrl(url)).send(data);
 
-            return this._createPromiseRequest(req, null, timeout);
-        }
-    }, {
-        key: 'post_csv',
-        value: function post_csv(url, data, events, timeout) {
-            var req = _superagent2['default'].post(this._createUrl(url)).send(data).set('Accept', 'text/plain');
-            return this._createPromiseRequest(req, null, timeout);
+            return this._createPromiseRequest(req, null, timeout, headers);
         }
 
         /**
@@ -316,21 +307,21 @@ var NorthAmpliaREST = (function () {
             if (formData && (formData.meta || formData.file || formData.json || formData.certificate)) {
                 if (formData.meta) {
                     req.field('meta', formData.meta);
-                    delete formData['Fmeta'];
+                    delete formData.Fmeta;
                 }
                 if (formData.json) {
                     req.field('json', formData.json);
-                    delete formData['json'];
+                    delete formData.json;
                 }
 
                 if (formData.file) {
                     req.field('file', formData.file);
-                    delete formData['file'];
+                    delete formData.file;
                 }
 
                 if (formData.certificate) {
                     req.attach('certificate', formData.certificate);
-                    delete formData['certificate'];
+                    delete formData.certificate;
                 }
             } else if (formData.bulkFile) {
                 req.set('Content-Type', formData.ext);
@@ -346,33 +337,37 @@ var NorthAmpliaREST = (function () {
          * @param {!string} url - url to execute PUT
          * @param {object} data - attach data to request PUT
          * @param {number} timeout - timeout in milliseconds       
+         * @param {object} headers - headers of request
          * @return {Promise} 
          */
     }, {
         key: 'put',
-        value: function put(url, data, timeout) {
-            var url = this._createUrl(url);
-            var req = _superagent2['default'].put(url).set('Content-Type', 'application/json').send(data);
-            return this._createPromiseRequest(req, null, timeout);
-        }
-    }, {
-        key: 'put_multipart',
-        value: function put_multipart(url, data, timeout) {
+        value: function put(url, data, timeout, headers) {
             var req = _superagent2['default'].put(this._createUrl(url)).send(data);
-            return this._createPromiseRequest(req, null, timeout);
+
+            if (headers) {
+                headers['Content-Type'] = 'application/json';
+            } else {
+                headers = {
+                    'Content-Type': 'application/json'
+                };
+            }
+
+            return this._createPromiseRequest(req, null, timeout, headers);
         }
 
         /**
          * Invoke DELETE action to url specified
          * @param {!string} url - url to execute DELETE
          * @param {number} timeout - timeout in milliseconds    
+         * @param {object} headers - headers of request
          * @return {Promise} 
          */
     }, {
         key: 'delete',
-        value: function _delete(url, timeout) {
+        value: function _delete(url, timeout, headers) {
             var req = _superagent2['default']['delete'](this._createUrl(url));
-            return this._createPromiseRequest(req, null, timeout);
+            return this._createPromiseRequest(req, null, timeout, headers);
         }
     }, {
         key: '_createUrl',
@@ -393,14 +388,27 @@ var NorthAmpliaREST = (function () {
         }
     }, {
         key: '_createPromiseRequest',
-        value: function _createPromiseRequest(req, events, timeout) {
+        value: function _createPromiseRequest(req, events, timeout, headers) {
             var _timeout = timeout;
             if (typeof _timeout === "undefined" || _timeout === null) {
                 _timeout = this._options.timeout;
             }
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            var _req = req.set('x-apikey', this._options.apiKey).timeout(_timeout);
+            var apiKey = this._options.apiKey;
+            var _req = req.timeout(_timeout);
+
+            if (apiKey) {
+                _req = _req.set('x-apikey', this._options.apiKey);
+            }
+
+            if (headers) {
+                var keys = Object.keys(headers);
+                for (var i = 0; i < keys.length; i++) {
+                    var key = keys[i];
+                    _req = req.set(key, headers[key]);
+                }
+            }
 
             if (events) {
                 for (var _event in events) {
@@ -418,7 +426,10 @@ var NorthAmpliaREST = (function () {
                         data = err.message;
                         _status = 408;
                     }
-                    defered.reject({ statusCode: _status, 'data': data });
+                    defered.reject({
+                        statusCode: _status,
+                        'data': data
+                    });
                 } else {
                     defered.resolve(res);
                 }

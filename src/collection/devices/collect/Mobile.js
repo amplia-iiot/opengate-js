@@ -207,23 +207,23 @@ export default class Mobile {
 
     composeElement(){
 
-        var mobile =  {
-            "mr" : this._mr,
-            "apn" : this._apn,
-            "bcch" : this._bcch,
-            "cgi" : this._cgi,
-            "cellId" : this._cellId,
-            "lac" : this._lac,
-            "ratType" : this._ratType,
-            "plmn" : this._plmn,
-            "timingAdvance" : this._timingAdvance,
-            "signalStrength" : this._signalStrength,
-            "signalStrengthMax" : this._signalStrengthMax,
-            "signalStrengthMin" : this._signalStrengthMin,
-            "signalQuality" : this._signalQuality,
-            "signalQualityMax" : this._signalQualityMax,
-            "signalQualityMin" : this._signalQualityMin
-        }
+        var mobile = {
+            "mr": this._mr,
+            "apn": this._apn,
+            "bcch": this._bcch,
+            "cgi": this._cgi,
+            "cellId": this._cellId,
+            "lac": this._lac,
+            "ratType": this._ratType,
+            "plmn": this._plmn,
+            "timingAdvance": this._timingAdvance,
+            "signalStrength": this._signalStrength,
+            "signalStrengthMax": this._signalStrengthMax,
+            "signalStrengthMin": this._signalStrengthMin,
+            "signalQuality": this._signalQuality,
+            "signalQualityMax": this._signalQualityMax,
+            "signalQualityMin": this._signalQualityMin
+        };
         return mobile;
     }
 

@@ -1,5 +1,13 @@
 'use strict';
 
+import {
+    TEMPERATURE_STATUS_ENUM
+} from './enum/TEMPERATURE_STATUS_ENUM';
+
+import {
+    LEVEL_TREND_ENUM
+} from './enum/LEVEL_TREND_ENUM';
+
 
 /**
  * This is a base object that allows the user to create a Datapoint.
@@ -53,12 +61,12 @@ export default class Temperature {
      * @return {Event}
      */
     withStatusTemperature(statusTemperature) {
-        if (typeof statusTemperature !== 'statusTemperature' || statusTemperature.length === 0)
+        if (typeof statusTemperature !== 'string' || statusTemperature.length === 0)
             throw new Error('Parameter statusTemperature must be string type and cannot be empty');
         if (this._temperature === undefined) {
             this._temperature = {};
         }
-        this._temperature.status = this._checkValues(statusTemperature, TEMPERATURE_STATUS_ENUM);;
+        this._temperature.status = this._checkValues(statusTemperature, TEMPERATURE_STATUS_ENUM);
         return this;
     }
 
@@ -68,12 +76,12 @@ export default class Temperature {
      * @return {Event}
      */
     withTrendTemperature(trendTemperature) {
-        if (typeof trendTemperature !== 'trendTemperature' || trendTemperature.length === 0)
+        if (typeof trendTemperature !== 'string' || trendTemperature.length === 0)
             throw new Error('Parameter trendTemperature must be string type and cannot be empty');
         if (this._temperature === undefined) {
             this._temperature = {};
         }
-        this._temperature.trend = this._checkValues(trendTemperature, TEMPERATURE_TREND_ENUM);
+        this._temperature.trend = this._checkValues(trendTemperature, LEVEL_TREND_ENUM);
         return this;
     }
 
@@ -133,7 +141,7 @@ export default class Temperature {
             "average": this._average,
             "maximum": this._maximum,
             "minimum": this._minimum
-        }
+        };
         return temperature;
     }
 

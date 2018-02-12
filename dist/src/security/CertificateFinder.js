@@ -109,7 +109,7 @@ var CertificateFinder = (function (_ProvisionGenericFinder) {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
             var _error_not_found = this._error_not_found;
-            this._api.get(this._downloadUrl()).then(function (req) {
+            this._api.get(this._downloadUrl(), undefined, this._getExtraHeaders()).then(function (req) {
                 if (req.statusCode === 204) {
                     defered.reject({ data: _error_not_found, statusCode: _httpStatusCodes2['default'].NOT_FOUND });
                 } else {

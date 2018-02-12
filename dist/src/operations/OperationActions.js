@@ -346,22 +346,27 @@ var OperationActions = (function () {
                 if (!data) {
                     //BUG http://cm.amplia.es/jira/browse/ODMQA-1057
                     defered.reject("Operation with id " + _this._operationId + " not exists");
-                } else if (active) {
-                    _this.pause().then(function (response) {
-                        _this._update(config, forceToActivate || active).then(function (response) {
-                            defered.resolve(response);
-                        })['catch'](function (error) {
-                            defered.reject(_this._formatError(error));
-                        });
-                    })['catch'](function (error) {
-                        defered.reject(_this._formatError(error));
-                    });
                 } else {
-                    _this._update(config, forceToActivate || active).then(function (response) {
-                        defered.resolve(response);
-                    })['catch'](function (error) {
-                        defered.reject(_this._formatError(error));
-                    });
+                    (function () {
+                        var active = data.operation ? data.operation.active : false;
+                        if (active) {
+                            _this.pause().then(function (response) {
+                                _this._update(config, forceToActivate || active).then(function (response) {
+                                    defered.resolve(response);
+                                })['catch'](function (error) {
+                                    defered.reject(_this._formatError(error));
+                                });
+                            })['catch'](function (error) {
+                                defered.reject(_this._formatError(error));
+                            });
+                        } else {
+                            _this._update(config, forceToActivate || active).then(function (response) {
+                                defered.resolve(response);
+                            })['catch'](function (error) {
+                                defered.reject(_this._formatError(error));
+                            });
+                        }
+                    })();
                 }
             })['catch'](function (error) {
                 //console.log("_readAndUpdate find error: " + JSON.stringify(error));
@@ -424,10 +429,10 @@ var OperationActions = (function () {
         key: '_formatError',
         value: function _formatError(error) {
             if (!error.data) {
-                error["data"] = {};
+                error.data = {};
             }
             if (!error.data.errors) {
-                error.data["errors"] = [typeof error === "string" ? { message: error } : error];
+                error.data.errors = [typeof error === "string" ? { message: error } : error];
             }
             //console.log("_formatError: " + error);
             return error;

@@ -222,7 +222,7 @@
 		
 		/** @test {InternalOpenGateAPI#rawSearchBuilder} */
 		it(&apos;Set string parameter and get filter&apos;, function(){
-			var filter = {&quot;filter&quot;: {&quot;and&quot;: [{&quot;like&quot;: {&quot;entityId&quot;: &quot;0000000000000001&quot;}}]}}
+			var filter = { &quot;filter&quot;: { &quot;and&quot;: [{ &quot;like&quot;: { &quot;entityId&quot;: &quot;0000000000000001&quot; } }] } };
 			assert.isDefined(ogapi.rawSearchBuilder().filter(filter).from(&quot;&quot;).build()._filter());
 		});
 
@@ -231,7 +231,7 @@
 			var filter = {&quot;filter&quot;:{&quot;and&quot;: [{&quot;like&quot;: {&quot;entityId&quot;: &quot;0000000000000001&quot;}}]}};
 			var rawSearch = ogapi.rawSearchBuilder().from(&quot;&quot;).filter(filter).build();
 			var filterContainer = rawSearch._filter();
-			assert.strictEqual(filterContainer.filter, filter)
+			assert.strictEqual(filterContainer.filter, filter);
 		});
 
 		/** @test {InternalOpenGateAPI#rawSearchBuilder} */
@@ -258,8 +258,8 @@
             var limit = {&quot;start&quot;:1, &quot;size&quot;:1000};
             var rawSearch = ogapi.rawSearchBuilder().from(&quot;/catalog/hardwares&quot;).filter(filter).limit(limit).build();
             var filterContainer = rawSearch._filter();
-            assert.strictEqual(filterContainer.filter, filter)
-            assert.strictEqual(filterContainer.limit, limit)
+			assert.strictEqual(filterContainer.filter, filter);
+			assert.strictEqual(filterContainer.limit, limit);
         });
 
 	});

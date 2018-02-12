@@ -231,7 +231,7 @@ import {
 } from &apos;./MODE_VALIDATORS_ENUM&apos;;
 
 import q from &apos;q&apos;;
-import BaseProvision from &apos;../../provision/BaseProvision&apos;
+import BaseProvision from &apos;../../provision/BaseProvision&apos;;
 
 /**
  * This is a base object that contains all you can do about Deployment Element.
@@ -302,7 +302,7 @@ export default class DeploymentElement extends BaseProvision {
         }
 
         if (not_found !== &apos;&apos;) {
-            throw new Error({ message: &quot;OGAPI_NOT_ALLOWED_PARAMETER&quot;, parameter: JSON.stringify(not_found), allowed: JSON.stringify(TYPE_ENUM) })
+            throw new Error({ message: &quot;OGAPI_NOT_ALLOWED_PARAMETER&quot;, parameter: JSON.stringify(not_found), allowed: JSON.stringify(TYPE_ENUM) });
 
         }
         this._type = type;
@@ -354,7 +354,7 @@ export default class DeploymentElement extends BaseProvision {
 
         if (not_found !== &apos;&apos;) {
             throw new Error(&quot;Parameter operation is not allowed. Parameter value &lt;&apos;&quot; +
-                JSON.stringify(not_found) + &quot;&apos;&gt;, operation allowed &lt;&apos;&quot; + JSON.stringify(OPERATION_ENUM) + &quot;&apos;&gt;&quot;)
+                JSON.stringify(not_found) + &quot;&apos;&gt;, operation allowed &lt;&apos;&quot; + JSON.stringify(OPERATION_ENUM) + &quot;&apos;&gt;&quot;);
         }
         this._operation = operation;
         return this;
@@ -380,7 +380,7 @@ export default class DeploymentElement extends BaseProvision {
 
         if (not_found !== &apos;&apos;) {
             throw new Error(&quot;Parameter option is not allowed. Parameter value &lt;&apos;&quot; +
-                JSON.stringify(not_found) + &quot;&apos;&gt;, option allowed &lt;&apos;&quot; + JSON.stringify(OPTION_ENUM) + &quot;&apos;&gt;&quot;)
+                JSON.stringify(not_found) + &quot;&apos;&gt;, option allowed &lt;&apos;&quot; + JSON.stringify(OPTION_ENUM) + &quot;&apos;&gt;&quot;);
         }
         this._option = option;
         return this;
@@ -442,7 +442,7 @@ export default class DeploymentElement extends BaseProvision {
 
             if (not_found !== &apos;&apos;) {
                 throw new Error(&quot;Parameter type is not allowed. Parameter value &lt;&apos;&quot; +
-                    JSON.stringify(not_found) + &quot;&apos;&gt;, type allowed &lt;&apos;&quot; + JSON.stringify(MODE_VALIDATORS_ENUM) + &quot;&apos;&gt;&quot;)
+                    JSON.stringify(not_found) + &quot;&apos;&gt;, type allowed &lt;&apos;&quot; + JSON.stringify(MODE_VALIDATORS_ENUM) + &quot;&apos;&gt;&quot;);
             }
 
             // Se valida que TRUSTED_BOOT sea s&#xF3;lo para firmwares
@@ -475,7 +475,7 @@ export default class DeploymentElement extends BaseProvision {
 
             if (not_found !== &apos;&apos;) {
                 throw new Error(&quot;Parameter type is not allowed. Parameter value &lt;&apos;&quot; +
-                    JSON.stringify(not_found) + &quot;&apos;&gt;, type allowed &lt;&apos;&quot; + JSON.stringify(TYPE_VALIDATORS_ENUM) + &quot;&apos;&gt;&quot;)
+                    JSON.stringify(not_found) + &quot;&apos;&gt;, type allowed &lt;&apos;&quot; + JSON.stringify(TYPE_VALIDATORS_ENUM) + &quot;&apos;&gt;&quot;);
             }
 
             validatorElement.type = type;
@@ -600,22 +600,22 @@ export default class DeploymentElement extends BaseProvision {
             this._path === undefined || this._order === undefined || this._operation === undefined || this._option === undefined)
             throw new Error(&apos;Method not allowed - You must define the basic element [name, version, type, path, order, option and operation]&apos;);
         var meta = {
-                deploymentElement: {
-                    name: this._name || undefined,
-                    version: this._version || undefined,
-                    type: this._type || undefined,
-                    path: this._path || undefined,
-                    order: this._order || undefined,
-                    operation: this._operation || undefined,
-                    option: this._option || undefined,
-                    fileName: this._fileName || undefined,
-                    downloadUrl: this._downloadUrl || undefined,
-                    validators: this._validators || undefined,
-                    oldName: this._oldName || undefined,
-                    oldVersion: this._oldVersion || undefined,
-                    oldPath: this._oldPath || undefined
-                }
+            deploymentElement: {
+                name: this._name || undefined,
+                version: this._version || undefined,
+                type: this._type || undefined,
+                path: this._path || undefined,
+                order: this._order || undefined,
+                operation: this._operation || undefined,
+                option: this._option || undefined,
+                fileName: this._fileName || undefined,
+                downloadUrl: this._downloadUrl || undefined,
+                validators: this._validators || undefined,
+                oldName: this._oldName || undefined,
+                oldVersion: this._oldVersion || undefined,
+                oldPath: this._oldPath || undefined
             }
+        };
             //console.log(JSON.stringify(meta));
         return meta;
     }
@@ -635,7 +635,7 @@ export default class DeploymentElement extends BaseProvision {
     _buildURL() {
         if (this._name === undefined || this._version === undefined)
             throw new Error(&apos;Parameters name, version must be defined&apos;);
-        return this._resource + &quot;/&quot; + this._name + &quot;/version/&quot; + this._version;;
+        return this._resource + &quot;/&quot; + this._name + &quot;/version/&quot; + this._version;
     }
 
 
@@ -679,7 +679,7 @@ export default class DeploymentElement extends BaseProvision {
         this._ogapi.Napi.post_multipart(this._composeUrlCreate(), form, petitionOpts, this._timeout)
             .then((res) =&gt; {
                 if (res.statusCode === 201) {
-                    defered.resolve({ location: res.header[&apos;location&apos;], statusCode: res.statusCode });
+                    defered.resolve({ location: res.header.location, statusCode: res.statusCode });
                 } else {
                     defered.reject({ errors: res.errors, statusCode: res.statusCode });
                 }

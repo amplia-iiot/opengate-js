@@ -297,7 +297,7 @@ var Event = (function () {
             if (this._temperature === undefined) {
                 this._temperature = {};
             }
-            this._temperature.status = this._checkValues(unitTemperature, _enumTEMPERATURE_STATUS_ENUM.TEMPERATURE_STATUS_ENUM);;
+            this._temperature.status = this._checkValues(unitTemperature, _enumTEMPERATURE_STATUS_ENUM.TEMPERATURE_STATUS_ENUM);
             return this;
         }
 

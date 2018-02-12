@@ -10,12 +10,14 @@ module.exports = function() {
         function digestResponseData(response) {
             //console.log(JSON.stringify(response));
             _this.responseData = response;
+            _this.error = undefined;
         }
 
         function digestErrorData(response) {
             //console.log(JSON.stringify(response));
             _this.error = response;
             _this.responseData = response;
+            
         }
 
         try {
@@ -40,7 +42,6 @@ module.exports = function() {
             }
         } catch (err) {
             _this.error = err;
-            //console.log("RE: " + err);
             return;
         }
 

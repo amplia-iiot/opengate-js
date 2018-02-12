@@ -214,13 +214,13 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/operations/catalog/period/PeriodicityUpdateBuilder.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-import merge from &apos;merge&apos;
+import merge from &apos;merge&apos;;
 import moment from &apos;moment&apos;;
 
-import Operation from &apos;../Operation&apos;
+import Operation from &apos;../Operation&apos;;
 import ExecuteEvery from &apos;./ExecuteEveryBuilder&apos;;
 import ExecuteEach from &apos;./ExecuteEachBuilder&apos;;
-import ByGeneric from &apos;./pattern/ByGeneric&apos;
+import ByGeneric from &apos;./pattern/ByGeneric&apos;;
 
 import { TIME_FORMAT, DATE_FORMAT } from &apos;./../../../util/DATE_FORMAT&apos;;
 
@@ -262,6 +262,7 @@ export default class PeriodicityUpdateBuilder {
         let schedule = this._task.schedule;
         date = this._getStart(date);
         if (schedule &amp;&amp; schedule.repeating &amp;&amp; schedule.repeating.period) {
+            let period = schedule.repeating.period;
             return new ExecuteEach(this, date, null, _end)._addPeriod(period.each, period.unit);
         }
         return new ExecuteEach(this, date, null, _end);
@@ -292,7 +293,7 @@ export default class PeriodicityUpdateBuilder {
     build() {
         let _build = merge(true, this._build);
         //console.log(&quot;_BUILD: &quot; + JSON.stringify(_build));
-        let postObj = undefined;
+        let postObj;
         let errors = [];
         if (typeof this._build.task !== &quot;undefined&quot;) {
             let task = this._build.task;
@@ -337,7 +338,7 @@ export default class PeriodicityUpdateBuilder {
 
     _updateTask(_build) {
         let task = _build.task;
-        let now = moment(new Date);
+        let now = moment(new Date());
         let start = moment(task.start);
         //console.log(&quot;TASK: &quot; + JSON.stringify(_build.task));
         //console.log(&quot;NOW: &quot; + now);
@@ -349,15 +350,15 @@ export default class PeriodicityUpdateBuilder {
         };
         try {
             if (task.start) {
-                taskObj.task.schedule[&quot;start&quot;] = { &quot;date&quot;: start.format(DATE_FORMAT) };
+                taskObj.task.schedule.start = { &quot;date&quot;: start.format(DATE_FORMAT) };
             }
 
             if (task.stop) {
-                taskObj.task.schedule[&quot;stop&quot;] = { &quot;date&quot;: moment(task.stop).format(DATE_FORMAT) };
+                taskObj.task.schedule.stop = { &quot;date&quot;: moment(task.stop).format(DATE_FORMAT) };
             }
 
             if (task.repeating) {
-                taskObj.task.schedule[&quot;repeating&quot;] = task.repeating;
+                taskObj.task.schedule.repeating = task.repeating;
             }
         } catch (err) {
             //console.log(&quot;TASK_OBJ_ERROR: &quot; + err);
@@ -368,7 +369,7 @@ export default class PeriodicityUpdateBuilder {
             if (typeof task.stop.date !== &quot;undefined&quot;) {
                 taskObj.task.schedule.stop = {
                     date: moment(task.stop.date).format(DATE_FORMAT)
-                }
+                };
             } else {
                 taskObj.task.schedule.stop = task.stop;
             }

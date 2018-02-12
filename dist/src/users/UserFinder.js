@@ -49,6 +49,22 @@ var UserFinder = (function (_ProvisionGenericFinder) {
             this._id = email;
             return this._execute();
         }
+
+        /**
+         * Find a specific user with apiKey by a email and password. This execute a GET http method
+         * @test
+         *  ogapi.newUserFinder().findByEmail('mysuer@amplia.es', 'pass').then().catch();
+         * @param {string} email - Email of the user.
+         * @param {string} password - password of the user.
+         * @return {Promise}
+         */
+    }, {
+        key: 'findByEmailAndPassword',
+        value: function findByEmailAndPassword(email, password) {
+            this._id = email;
+            this._setExtraHeaders({ 'X-ApiPass': password });
+            return this._execute();
+        }
     }]);
 
     return UserFinder;

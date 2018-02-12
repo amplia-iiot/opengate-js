@@ -1,5 +1,7 @@
-import BaseSearch from './BaseSearch'
-import merge from 'merge'
+'use strict';
+
+import BaseSearch from './BaseSearch';
+import merge from 'merge';
 
 /** 
  * This extends BaseSearch and allow make request to any available resource into Opengate North API.
@@ -11,6 +13,9 @@ export default class Search extends BaseSearch {
     * @param {object} filter - this is the filter
     * @param {object} limit - this is the pagination about the search
     * @param {object} sort - this defined parameters to order the result of search
+	* @param {object} group
+	* @param {object} select
+   	* @param {nubmer} timeout
     */
 	constructor(ogapi, url, filter, limit = { limit: {} }, sort, group, select, timeout) {
 		super(ogapi, url, timeout);

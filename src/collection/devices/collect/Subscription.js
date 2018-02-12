@@ -152,7 +152,7 @@ export default class Subscription {
             not_found.push(value);
         }
         if (not_found.length !== 0) {
-            console.warn("Parameter value not allowed <'" + JSON.stringify(not_found) + "'>, allowed <'" + JSON.stringify(enumName) + "'>")
+            console.warn("Parameter value not allowed <'" + JSON.stringify(not_found) + "'>, allowed <'" + JSON.stringify(enumName) + "'>");
         }
         return value;
     }
@@ -161,20 +161,19 @@ export default class Subscription {
 
     composeElement(){
         var subscription = {
-            "id" : this._id,
-            "name" : this._name,
-            "type" : this._type,
-            "description" : this._description,
-            "operator" : this._operator,
-            "imsi" : this._imsi,
-            "msisdn" : this._msisdn,
-            "address" :{
-                "type" : this._addressType,
-                "value" : this._addressValue,
-                "apn" : this._addressApn
+            "id": this._id,
+            "name": this._name,
+            "type": this._type,
+            "description": this._description,
+            "operator": this._operator,
+            "imsi": this._imsi,
+            "msisdn": this._msisdn,
+            "address": {
+                "type": this._addressType,
+                "value": this._addressValue,
+                "apn": this._addressApn
             }
-
-        }        
+        };
         return subscription;
     }
 

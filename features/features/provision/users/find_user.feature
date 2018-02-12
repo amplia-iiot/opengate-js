@@ -9,7 +9,7 @@ I want to find an user
 So I can check if a user exists and get their information
 
 	Background:
-		Given an apikey user by "e265b68a-18c6-4b10-996d-8a7b9f12398a"
+		Given an apikey user by "require-real-apikey"
 		And an ogapi "user finder" util
 		Given I want to read a "user"
 

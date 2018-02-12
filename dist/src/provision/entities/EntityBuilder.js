@@ -149,7 +149,7 @@ var EntityBuilder = (function () {
                     }
                 }
             });
-            response['schemas'] = _this.schema;
+            response.schemas = _this.schema;
 
             return response;
         }

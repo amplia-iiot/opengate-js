@@ -1,6 +1,6 @@
 'use strict';
 
-import Security from './Security'
+import Security from './Security';
 import q from 'q';
 import {
     ADMINISTRATIVE_STATE_ENUM
@@ -111,7 +111,7 @@ export default class Certificates extends Security {
             }
         }
         if (not_found.length !== 0) {
-            throw new Error("There are not any parameters allowed. Parameters value: '" + JSON.stringify(not_found) + "'. Usages parameters allowed are: '" + JSON.stringify(USAGES_ENUM) + "'")
+            throw new Error("There are not any parameters allowed. Parameters value: '" + JSON.stringify(not_found) + "'. Usages parameters allowed are: '" + JSON.stringify(USAGES_ENUM) + "'");
         }
         this._usages = usages;
         return this;
@@ -182,7 +182,7 @@ export default class Certificates extends Security {
         if (typeof tags === "undefined" || tags.constructor !== Array || tags.length <= 0) {
             throw new Error("Parameter tags must be typeof Array and cannot be empty");
         }
-        let not_correct = []
+        let not_correct = [];
         for (let i = 0; i < tags.length; i++) {
             if (typeof tags[i] === "undefined" || typeof tags[i] !== 'string' || typeof tags[i].length <= 0) {
                 not_correct.push(tags[i]);
@@ -219,7 +219,7 @@ export default class Certificates extends Security {
         if (typeof domains === "undefined" || domains.constructor !== Array || domains.length <= 0) {
             throw new Error("Parameter domains must be typeof Array and cannot be empty");
         }
-        let not_correct = []
+        let not_correct = [];
         for (let i = 0; i < domains.length; i++) {
             if (typeof domains[i] === "undefined" || typeof domains[i] !== 'string' || typeof domains[i].length <= 0) {
                 not_correct.push(domains[i]);
@@ -260,7 +260,7 @@ export default class Certificates extends Security {
                 parameters: this._parameters || undefined,
                 domains: this._domains || undefined
             }
-        }
+        };
         return data;
 
     }
@@ -307,9 +307,9 @@ export default class Certificates extends Security {
                 let statusCode = response.statusCode;
                 if (statusCode === 201) {
                     if (typeof this._onCreated === "function") {
-                        this._onCreated(response.header['location']);
+                        this._onCreated(response.header.location);
                     }
-                    defered.resolve({ location: response.header['location'], statusCode: statusCode });
+                    defered.resolve({ location: response.header.location, statusCode: statusCode });
                 } else {
                     defered.reject({ errors: response.errors, statusCode: statusCode });
                 }

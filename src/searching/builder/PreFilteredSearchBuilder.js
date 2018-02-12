@@ -1,6 +1,6 @@
 'use strict';
 
-import FlattenedSearchBuilder from './FlattenedSearchBuilder'
+import FlattenedSearchBuilder from './FlattenedSearchBuilder';
 
 /**
  * This is a abstract class. It is a class that extends from base to make all kind of summary search request to OpenGate North API.

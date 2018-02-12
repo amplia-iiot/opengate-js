@@ -19,7 +19,7 @@ export default class Qrating {
         this._minRequired = {
             label: label,
             value: value
-        }
+        };
         return this;
     }
 
@@ -35,7 +35,7 @@ export default class Qrating {
         this._minDesired = {
             label: label,
             value: value
-        }
+        };
         return this;
     }
 
@@ -51,7 +51,7 @@ export default class Qrating {
         this._ideal = {
             label: label,
             value: value
-        }
+        };
         return this;
     }
 
@@ -67,7 +67,7 @@ export default class Qrating {
         this._maxDesired = {
             label: label,
             value: value
-        }
+        };
         return this;
     }
 
@@ -83,7 +83,7 @@ export default class Qrating {
         this._maxAllowed = {
             label: label,
             value: value
-        }
+        };
         return this;
     }
 
@@ -179,7 +179,7 @@ export default class Qrating {
             cumulative_period_divisor: this._cumulativePeriodDivisor,
             conversion_matrix: this._conversionMatrix,
             version: this._version
-        }
+        };
     }
 
     _isValidString(string, param_name, max_length) {

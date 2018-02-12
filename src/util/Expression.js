@@ -19,7 +19,7 @@ export default class Expression{
  * @param {String} value - This is the value of the field
  */
 	static eq(key, value){
-		return {eq : {[key] : value}}
+		return { eq: { [key]: value } };
 	}
 
 /**
@@ -39,7 +39,7 @@ export default class Expression{
  * @param {String} value - This is the value of the field
 */
 	static neq(key, value){
-		return {neq : {[key] : value}}
+		return { neq: { [key]: value } };
 	}
 
 /**
@@ -59,7 +59,7 @@ export default class Expression{
  * @param {String} value - This is the value of the field
  */
 	static like(key, value){
-		return {like : {[key] : value}}
+		return { like: { [key]: value } };
 	}
 	
 /**
@@ -79,7 +79,7 @@ export default class Expression{
  * @param {String} value - This is the value of the field
  */
 	static gt(key, value){
-		return {gt : {[key] : value}}
+		return { gt: { [key]: value } };
 	}
 
 /**
@@ -99,7 +99,7 @@ export default class Expression{
  * @param {String} value - This is the value of the field
  */	
 	static lt(key, value){
-		return {lt : {[key] : value}}
+		return { lt: { [key]: value } };
 	}
 
 /**
@@ -117,7 +117,7 @@ export default class Expression{
  * @param {String} value - This is the value of the field
  */	
 	static gte(key, value){
-		return {gte : {[key] : value}}
+		return { gte: { [key]: value } };
 	}
 
 /**
@@ -135,7 +135,7 @@ export default class Expression{
  * @param {String} value - This is the value of the field
  */	
 	static lte(key, value){
-		return {lte : {[key] : value}}
+		return { lte: { [key]: value } };
 	}
 
 /**
@@ -153,7 +153,7 @@ export default class Expression{
  * @param {String} value - This is the value of the field
  */	
 	static in(key, value){
-		return {in : {[key] : value}}
+		return { in: { [key]: value } };
 	}
 
 /**
@@ -180,9 +180,9 @@ export default class Expression{
  * @return {object} This returns a json with the query of the logical operator "or" built.
  */
 	static or(...args){
-		var filter = { or : []}
+		var filter = { or: [] };
 		for (var i = 0; i < args.length; i++)
-			filter.or.push(args[i])
+			filter.or.push(args[i]);
 		return filter;
 	}
 
@@ -210,9 +210,9 @@ export default class Expression{
  * @return {object} This returns a json with the query of the logical operator "and" built.
  */
 	static and(...args){
-		var filter = { and : []}
+		var filter = { and: [] };
 		for (var i = 0; i < args.length; i++)
-			filter.and.push(args[i])
+			filter.and.push(args[i]);
 		return filter;
 	}
 

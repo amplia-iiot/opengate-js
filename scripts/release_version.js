@@ -24,15 +24,15 @@ var gulp = require('gulp'),
 
 //STEP 1 
 gulp.task('create:release:branch', function(cb) {
-    git.checkout(temporalBranchRelease(), { args: '-b' }, function(err) {
+    git.checkout(temporalBranchRelease(), { args: '-b' }, function (err) {
         cb(err);
-    })
+    });
 });
 
 // STEP 2
-gulp.task('build:all', function(cb) {
+gulp.task('build:all', function (cb) {
     runSequence('increase:version', 'build', cb);
-})
+});
 
 gulp.task('increase:version', ['create:release:branch'], function() {
     return increase(versionType());
@@ -44,22 +44,22 @@ gulp.task('increase:version', ['create:release:branch'], function() {
 gulp.task('commit:increase:version', ['build:all'], function() {
     return gulp.src(['dist', './bower.json', './package.json', './documentation', './src/util/searchingFields/source-precompiled/Fields.js'])
         .pipe(git.add())
-        .pipe(git.commit('release ' + versionType() + ' version:' + versionNumber()))
+        .pipe(git.commit('release ' + versionType() + ' version:' + versionNumber()));
 });
 // STEP 3 
 
 // STEP 4
 gulp.task('checkout:master:increase', ['commit:increase:version'], function(cb) {
-    git.checkout(masterBranch(), function(err) {
-        cb(err);
-    })
-});
-
-gulp.task('merge:master:increase', ['checkout:master:increase'], function(cb) {
-    git.merge(temporalBranchRelease(), function(err) {
+    git.checkout(masterBranch(), function (err) {
         cb(err);
     });
-})
+});
+
+gulp.task('merge:master:increase', ['checkout:master:increase'], function (cb) {
+    git.merge(temporalBranchRelease(), function (err) {
+        cb(err);
+    });
+});
 
 gulp.task('prepare_tag:increase', ['merge:master:increase'], function() {
     return gulp.src(['./package.json'])
@@ -98,7 +98,7 @@ function increase(importance) {
         // bump the version number in those files 
         .pipe(bump({ type: importance }))
         // save it back to filesystem 
-        .pipe(gulp.dest('./'))
+        .pipe(gulp.dest('./'));
 }
 
 function temporalBranchRelease() {
@@ -121,8 +121,8 @@ function versionType() {
 }
 
 function versionNumber() {
-    var fs = require('fs')
-    var json = JSON.parse(fs.readFileSync('package.json', 'utf8'))
+    var fs = require('fs');
+    var json = JSON.parse(fs.readFileSync('package.json', 'utf8'));
     return json.version;
 }
 

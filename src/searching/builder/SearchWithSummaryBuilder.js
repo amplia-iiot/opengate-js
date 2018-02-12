@@ -1,6 +1,6 @@
 'use strict';
 
-import SearchBuilder from './SearchBuilder'
+import SearchBuilder from './SearchBuilder';
 
 /**
  * This is a abstract class. It is a class that extends from base to make all kind of summary search request to OpenGate North API.

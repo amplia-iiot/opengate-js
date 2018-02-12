@@ -80,6 +80,7 @@ var PeriodicityUpdateBuilder = (function () {
             var schedule = this._task.schedule;
             date = this._getStart(date);
             if (schedule && schedule.repeating && schedule.repeating.period) {
+                var period = schedule.repeating.period;
                 return new _ExecuteEachBuilder2['default'](this, date, null, _end)._addPeriod(period.each, period.unit);
             }
             return new _ExecuteEachBuilder2['default'](this, date, null, _end);
@@ -171,15 +172,15 @@ var PeriodicityUpdateBuilder = (function () {
             };
             try {
                 if (task.start) {
-                    taskObj.task.schedule["start"] = { "date": start.format(_utilDATE_FORMAT.DATE_FORMAT) };
+                    taskObj.task.schedule.start = { "date": start.format(_utilDATE_FORMAT.DATE_FORMAT) };
                 }
 
                 if (task.stop) {
-                    taskObj.task.schedule["stop"] = { "date": (0, _moment2['default'])(task.stop).format(_utilDATE_FORMAT.DATE_FORMAT) };
+                    taskObj.task.schedule.stop = { "date": (0, _moment2['default'])(task.stop).format(_utilDATE_FORMAT.DATE_FORMAT) };
                 }
 
                 if (task.repeating) {
-                    taskObj.task.schedule["repeating"] = task.repeating;
+                    taskObj.task.schedule.repeating = task.repeating;
                 }
             } catch (err) {
                 //console.log("TASK_OBJ_ERROR: " + err);

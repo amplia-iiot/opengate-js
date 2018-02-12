@@ -191,7 +191,6 @@ var Subscription = (function () {
                     "value": this._addressValue,
                     "apn": this._addressApn
                 }
-
             };
             return subscription;
         }

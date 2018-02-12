@@ -234,22 +234,22 @@
 					assert.equal(err.message, &quot;Timeout exceeded&quot;);
 					done();
 				});
-			})
+			});
 			/** @test {SearchBuilder#withTimeout}  */
 			it(&apos;It is all ok when not exceeded timeout&apos;, function () {
 				ogapi.devicesSearchBuilder().onProvisioned().addSortBy(&apos;prov.customId&apos;, &apos;ASCENDING&apos;).summary().withTimeout(10000).build().execute().then(function (response, statusCode) {
 					assert.equal(statusCode, 200);
 					done();
 				});
-			})
+			});
 			/** @test {SearchBuilder#withTimeout}  */
 			it(&apos;Check default timeout value when it is no setted&apos;, function () {
 				assert.strictEqual(ogapi.devicesSearchBuilder().onProvisioned().build()._timeout, 5000);
-			})
+			});
 			/** @test {SearchBuilder#withTimeout}  */
 			it(&apos;withTimeout parameter must be a number&apos;, function () {
-				assert.throws(function () { ogapi.devicesSearchBuilder().withTimeout(&quot;a&quot;) }, &quot;Parameter ms must be a number&quot;);
-			})
+				assert.throws(function () { ogapi.devicesSearchBuilder().withTimeout(&quot;a&quot;); }, &quot;Parameter ms must be a number&quot;);
+			});
 		});
 		/** @test {SearchBuilder}*/
 		describe(&apos;Check on entity searching:&apos;, function () {
@@ -362,8 +362,8 @@
 					assert.deepEqual(ogapi.devicesSearchBuilder().
 						onProvisioned().
 						filter(
-						ogapi.newFilterBuilder().
-							and(ogapi.EX.like(&quot;hello&quot;, &quot;world&quot;)))
+							ogapi.newFilterBuilder().
+								and(ogapi.EX.like(&quot;hello&quot;, &quot;world&quot;)))
 						.build()._postObj.filter, filterExpected);
 				});
 			});
@@ -656,7 +656,7 @@
 					});
 				});
 			});
-		})
+		});
 		describe(&apos;Check on alarm searching:&apos;, function () {
 			/** @test {AlarmsSearchBuilder#build}*/
 			it(&apos;without source data&apos;, function () {
@@ -707,7 +707,7 @@
 					});
 				});
 			});
-		})
+		});
 		describe(&apos;Check on bundles searching:&apos;, function () {
 			/** @test {BundlesSearchBuilder#build}*/
 			it(&apos;bundlesSearchBuilder&apos;, function () {
@@ -727,7 +727,7 @@
 				});
 			});
 		});
-	})
+	});
 });</code></pre>
 
 </div>

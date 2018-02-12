@@ -1,6 +1,6 @@
 'use strict';
 
-import AlarmOperationBuilder from './AlarmOperationBuilder'
+import AlarmOperationBuilder from './AlarmOperationBuilder';
 
 /**
 * Defines the builder to execute alarm close operation

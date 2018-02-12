@@ -214,8 +214,8 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/searching/builder/SubscriptionsSearchBuilder.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-import PreFilteredSearchBuilder from &apos;./PreFilteredSearchBuilder&apos;
-import FieldFinder from &apos;../../util/searchingFields/FieldFinder&apos;
+import PreFilteredSearchBuilder from &apos;./PreFilteredSearchBuilder&apos;;
+import FieldFinder from &apos;../../util/searchingFields/FieldFinder&apos;;
 
 const BASE_URL = &apos;/entities&apos;;
 /**
@@ -258,9 +258,9 @@ export default class SubscriptionsSearchBuilder extends PreFilteredSearchBuilder
             let filter = this._builderParams.filter;
             if (typeof filter._filterTemplate !== &quot;undefined&quot;) {
                 //return filter._filterTemplate;
-                finalFilter[&quot;and&quot;].push(filter._filterTemplate.filter);
+                finalFilter.and.push(filter._filterTemplate.filter);
             } else {
-                finalFilter[&quot;and&quot;].push(filter);
+                finalFilter.and.push(filter);
             }
         }
 

@@ -57,6 +57,24 @@ var GenericFinder = (function () {
             this._id = _id;
             return this;
         }
+    }, {
+        key: '_getExtraHeaders',
+        value: function _getExtraHeaders() {
+            return this._headers;
+        }
+    }, {
+        key: '_setExtraHeaders',
+        value: function _setExtraHeaders(headers) {
+            if (this._headers) {
+                var keys = Object.keys(headers);
+                for (var i = 0; i < keys.length; i++) {
+                    var key = keys[i];
+                    this._headers[key] = headers[key];
+                }
+            } else {
+                this._headers = headers;
+            }
+        }
 
         /**
          * @return {Promise}
@@ -70,7 +88,7 @@ var GenericFinder = (function () {
             var _entity = this._entity;
             var _error_not_found = this._error_not_found;
             //console.log("URL: " + this._composeUrl());
-            this._api.get(this._composeUrl()).then(function (req) {
+            this._api.get(this._composeUrl(), undefined, this._getExtraHeaders()).then(function (req) {
                 //console.log("STATUS_CODE: " + JSON.stringify(req));
                 if (req.statusCode === 204) {
                     defered.reject({ error: _error_not_found, statusCode: _httpStatusCodes2['default'].NOT_FOUND });

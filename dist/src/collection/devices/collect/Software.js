@@ -53,7 +53,7 @@ var Software = (function () {
         key: 'withType',
         value: function withType(type) {
             if (typeof type !== 'string' || type.length === 0) throw new Error('Parameter type must be a string and cannot be empty');
-            this._type = this._checkValues(type, _enumSOFTWARE_TYPE_ENUM.SOFTWARE_TYPE_ENUM);;
+            this._type = this._checkValues(type, _enumSOFTWARE_TYPE_ENUM.SOFTWARE_TYPE_ENUM);
             return this;
         }
 
@@ -78,7 +78,7 @@ var Software = (function () {
     }, {
         key: 'withDate',
         value: function withDate(date) {
-            if (typeof date !== 'string' || date.length === 0) throw new Error('Parameter date must be a string and cannot be empty');;
+            if (typeof date !== 'string' || date.length === 0) throw new Error('Parameter date must be a string and cannot be empty');
             this._date = date;
             return this;
         }

@@ -5,7 +5,7 @@ import {
 } from './ACTION_ENUM';
 import DeploymentElement from './deployment/DeploymentElement';
 import q from 'q';
-import BaseProvision from '../provision/BaseProvision'
+import BaseProvision from '../provision/BaseProvision';
 
 /**
  * This is a base object that contains all you can do about Bundles.
@@ -105,7 +105,7 @@ export default class Bundles extends BaseProvision {
             }
         }
         if (not_found.length !== 0) {
-            throw new Error("Any action into parameter " + name + " is not allowed. Parameter value <'" + JSON.stringify(not_found) + "'>, " + name + " allowed <'" + JSON.stringify(ACTION_ENUM) + "'>")
+            throw new Error("Any action into parameter " + name + " is not allowed. Parameter value <'" + JSON.stringify(not_found) + "'>, " + name + " allowed <'" + JSON.stringify(ACTION_ENUM) + "'>");
         }
         return actions;
     }
@@ -171,9 +171,7 @@ export default class Bundles extends BaseProvision {
                 userNotes: this._userNotes || undefined,
                 active: this._active || undefined
             }
-        }
-
-        //console.log(JSON.stringify(updateData));
+        };
 
         return updateData;
     }
@@ -223,7 +221,7 @@ export default class Bundles extends BaseProvision {
     deactivate() {
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Napi.put(this._buildURL(), { bundle: { active: false } })
+        this._ogapi.Napi.put(this._buildURL(), { bundle: { active: false } }, undefined)
             .then((res) => {
                 //console.log(JSON.stringify(res));
                 if (res.statusCode === 200) {
@@ -301,28 +299,28 @@ export default class Bundles extends BaseProvision {
         }
 
         _this._allPromisesOk = true;
-        let onCreateBundle = function(res) {
+        let onCreateBundle = function (res) {
             if (res.statusCode === 201) {
                 let bundleLocation = res;
                 if (_this._deploymentElements && _this._deploymentElements.length > 0) {
                     //console.log("previa de 2: ");
                     let dePromises = [];
-                    _this._deploymentElements.forEach(function(deTmp) {
+                    _this._deploymentElements.forEach(function (deTmp) {
                         dePromises.push(deTmp.deploy());
                     });
 
                     // update de bundle
-                    Promise.all(dePromises).then(function() {
+                    Promise.all(dePromises).then(function () {
                         if (_this._allPromisesOk) {
 
-                            _this.activate().then(function(status, data) {
+                            _this.activate().then(function (status, data) {
                                 defered.resolve(bundleLocation);
-                            }).catch(function(err) {
+                            }).catch(function (err) {
                                 defered.reject(err);
                             });
 
                         }
-                    }).catch(function(err) {
+                    }).catch(function (err) {
                         _this._allPromisesOk = false;
                         onCreateBundleError(err);
                     });
@@ -332,14 +330,14 @@ export default class Bundles extends BaseProvision {
             } else {
                 onCreateBundleError({ "statusCode": res.statusCode });
             }
-        }
+        };
 
-        let onCreateBundleError = function(err) {
+        let onCreateBundleError = function (err) {
             //console.log("Create error: " + JSON.stringify(err));
             //console.log('borrando bundle');
             super.delete();
             defered.reject(err);
-        }
+        };
 
         _this.create().then(onCreateBundle).catch(onCreateBundleError);
 
@@ -365,20 +363,20 @@ export default class Bundles extends BaseProvision {
         let defered = q.defer();
         let promise = defered.promise;
 
-        let onCreateBundle = function(res) {
+        let onCreateBundle = function (res) {
             if (res.statusCode === 201) {
                 //console.log("OK1: " + JSON.stringify(res));
                 defered.resolve(res);
             } else {
                 onCreateBundleError({ "statusCode": res.statusCode });
             }
-        }
+        };
 
-        let onCreateBundleError = function(err) {
+        let onCreateBundleError = function (err) {
             //console.log(JSON.stringify(err));
             //console.log('borrando bundle')
             defered.reject(err);
-        }
+        };
 
         // Se intenta crear primero el bundle
         let bundleFinder = _this._ogapi.newBundleFinder().findByNameAndVersion(_this._name, _this._version)
@@ -414,10 +412,10 @@ export default class Bundles extends BaseProvision {
         let promise = defered.promise;
         let bundleUpdate = this._composeElement();
 
-        delete bundleUpdate.bundle["name"];
-        delete bundleUpdate.bundle["version"];
-        delete bundleUpdate.bundle["workgroup"];
-        delete bundleUpdate.bundle["hardware"];
+        delete bundleUpdate.bundle.name;
+        delete bundleUpdate.bundle.version;
+        delete bundleUpdate.bundle.workgroup;
+        delete bundleUpdate.bundle.hardware;
 
         this._ogapi.Napi.put(this._buildURL(), bundleUpdate)
             .then((res) => {

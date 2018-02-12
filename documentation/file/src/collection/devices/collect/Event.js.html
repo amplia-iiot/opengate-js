@@ -471,7 +471,7 @@ export default class Event {
         if (this._temperature === undefined) {
             this._temperature = {};
         }
-        this._temperature.status = this._checkValues(unitTemperature, TEMPERATURE_STATUS_ENUM);;
+        this._temperature.status = this._checkValues(unitTemperature, TEMPERATURE_STATUS_ENUM);
         return this;
     }
 
@@ -633,7 +633,7 @@ export default class Event {
             not_found.push(value);
         }
         if (not_found.length !== 0) {
-            console.warn(&quot;Parameter value not allowed &lt;&apos;&quot; + JSON.stringify(not_found) + &quot;&apos;&gt;, allowed &lt;&apos;&quot; + JSON.stringify(enumName) + &quot;&apos;&gt;&quot;)
+            console.warn(&quot;Parameter value not allowed &lt;&apos;&quot; + JSON.stringify(not_found) + &quot;&apos;&gt;, allowed &lt;&apos;&quot; + JSON.stringify(enumName) + &quot;&apos;&gt;&quot;);
         }
         return value;
     }
@@ -651,7 +651,7 @@ export default class Event {
                 &apos;description&apos;: this._description,
                 &apos;operationalStatus&apos;: this._operationalStatus
             }
-        }
+        };
         if (this._hardware !== undefined) {
             event.device.hardware = this._hardware.composeElement();
         }

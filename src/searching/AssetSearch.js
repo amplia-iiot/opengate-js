@@ -1,4 +1,6 @@
-import Search from './Search'
+'use strict';
+
+import Search from './Search';
 import q from 'q';
 
 /** 
@@ -28,7 +30,7 @@ export default class AssetSearch extends Search {
         var promise = defered.promise;
         //console.log(JSON.stringify(this._filter()));
         this._ogapi.Napi
-            .post(this._resource, this._filter(), this._timeout)
+            .post(this._resource, this._filter(), this._timeout, this._getExtraHeaders())
             .then((response) => {
                 let resultQuery = response.body;
                 let statusCode = response.statusCode;

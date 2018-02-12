@@ -452,7 +452,7 @@ var DeploymentElement = (function (_BaseProvision) {
         key: '_buildURL',
         value: function _buildURL() {
             if (this._name === undefined || this._version === undefined) throw new Error('Parameters name, version must be defined');
-            return this._resource + "/" + this._name + "/version/" + this._version;;
+            return this._resource + "/" + this._name + "/version/" + this._version;
         }
 
         /**
@@ -496,7 +496,7 @@ var DeploymentElement = (function (_BaseProvision) {
 
             this._ogapi.Napi.post_multipart(this._composeUrlCreate(), form, petitionOpts, this._timeout).then(function (res) {
                 if (res.statusCode === 201) {
-                    defered.resolve({ location: res.header['location'], statusCode: res.statusCode });
+                    defered.resolve({ location: res.header.location, statusCode: res.statusCode });
                 } else {
                     defered.reject({ errors: res.errors, statusCode: res.statusCode });
                 }

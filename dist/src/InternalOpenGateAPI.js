@@ -935,16 +935,6 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a RelationsBuilder to build a specific RelationsBuilder
-         * @return {Relations}
-         */
-    }, {
-        key: 'relationsBuilder',
-        value: function relationsBuilder() {
-            return new Relations(this);
-        }
-
-        /**
          * This return a OperationalStatusSearchBuilder to build a specific OperationalStatusSearchBuilder
          * @return {OperationalStatusSearchBuilder}
          */

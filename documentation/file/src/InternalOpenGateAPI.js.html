@@ -214,96 +214,96 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/InternalOpenGateAPI.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-import Operations from &apos;./operations/Operations&apos;
-import UserFinder from &apos;./users/UserFinder&apos;
-import Certificates from &apos;./security/Certificates&apos;
-import Users from &apos;./users/Users&apos;
-import OrganizationFinder from &apos;./organizations/OrganizationFinder&apos;
-import ChannelFinder from &apos;./channels/ChannelFinder&apos;
-import AreasSearchBuilder from &apos;./searching/builder/AreasSearchBuilder&apos;
-import AreaFinder from &apos;./areas/AreaFinder&apos;
-import Channels from &apos;./channels/Channels&apos;
-import Areas from &apos;./areas/Areas&apos;
-import ChannelsSearchBuilder from &apos;./searching/builder/ChannelsSearchBuilder&apos;
-import RuleConfigurations from &apos;./rulesConfiguration/RuleConfigurations&apos;
-import RuleConfigurationsFinder from &apos;./rulesConfiguration/RuleConfigurationsFinder&apos;
-import RuleConfigurationsActions from &apos;./rulesConfiguration/RuleConfigurationsActions&apos;
-import CertificateFinder from &apos;./security/CertificateFinder&apos;
-import OperationFinder from &apos;./operations/OperationFinder&apos;
-import FilterBuilder from &apos;./searching/FilterBuilder&apos;
-import SelectBuilder from &apos;./searching/SelectBuilder&apos;
-import OperationActions from &apos;./operations/OperationActions&apos;
-import Expression from &apos;./util/Expression&apos;
-import SelectElement from &apos;./util/SelectElement&apos;
-import QuickSearch from &apos;./searching/QuickSearch&apos;
-import RawSearchBuilder from &apos;./searching/builder/RawSearchBuilder&apos;
-import DevicesSearchBuilder from &apos;./searching/builder/DevicesSearchBuilder&apos;
-import SubscribersSearchBuilder from &apos;./searching/builder/SubscribersSearchBuilder&apos;
-import SubscriptionsSearchBuilder from &apos;./searching/builder/SubscriptionsSearchBuilder&apos;
-import AssetsSearchBuilder from &apos;./searching/builder/AssetsSearchBuilder&apos;
-import OperationsSearchBuilder from &apos;./searching/builder/OperationsSearchBuilder&apos;
-import ExecutionsSearchBuilder from &apos;./searching/builder/ExecutionsSearchBuilder&apos;
-import AlarmsSearchBuilder from &apos;./searching/builder/AlarmsSearchBuilder&apos;
-import DatamodelsSearchBuilder from &apos;./searching/builder/DatamodelsSearchBuilder&apos;
-import FeedsSearchBuilder from &apos;./searching/builder/FeedsSearchBuilder&apos;
-import DatastreamsSearchBuilder from &apos;./searching/builder/DatastreamsSearchBuilder&apos;
-import DatapointsSearchBuilder from &apos;./searching/builder/DatapointsSearchBuilder&apos;
-import BundlesSearchBuilder from &apos;./searching/builder/BundlesSearchBuilder&apos;
-import CertificatesSearchBuilder from &apos;./searching/builder/CertificatesSearchBuilder&apos;
-import HardwaresSearchBuilder from &apos;./searching/builder/HardwaresSearchBuilder&apos;
-import SoftwaresSearchBuilder from &apos;./searching/builder/SoftwaresSearchBuilder&apos;
-import OperationalStatusSearchBuilder from &apos;./searching/builder/OperationalStatusSearchBuilder&apos;
-import SpecificTypeSearchBuilder from &apos;./searching/builder/SpecificTypeSearchBuilder&apos;
-import ServiceGroupSearchBuilder from &apos;./searching/builder/ServiceGroupSearchBuilder&apos;
-import AdministrativeStateSearchBuilder from &apos;./searching/builder/AdministrativeStateSearchBuilder&apos;
-import CommunicationsModuleTypeSearchBuilder from &apos;./searching/builder/CommunicationsModuleTypeSearchBuilder&apos;
-import FieldsDefinitionSearchBuilder from &apos;./searching/builder/FieldsDefinitionSearchBuilder&apos;
-import JsonSchemaSearchBuilder from &apos;./searching/builder/JsonSchemaSearchBuilder&apos;
-import MobilePhoneProviderSearchBuilder from &apos;./searching/builder/MobilePhoneProviderSearchBuilder&apos;
-import IoTDatastreamPeriodSearchBuilder from &apos;./searching/builder/IoTDatastreamPeriodSearchBuilder&apos;
-import ResourceTypeSearchBuilder from &apos;./searching/builder/ResourceTypeSearchBuilder&apos;
-import AllowedResourceTypeSearchBuilder from &apos;./searching/builder/AllowedResourceTypeSearchBuilder&apos;
-import IoTDatastreamAccessSearchBuilder from &apos;./searching/builder/IoTDatastreamAccessSearchBuilder&apos;
-import IoTDatastreamStoragePeriodSearchBuilder from &apos;./searching/builder/IoTDatastreamStoragePeriodSearchBuilder&apos;
-import RuleConfigurationSeveritySearchBuilder from &apos;./searching/builder/RuleConfigurationSeveritySearchBuilder&apos;
-import UsersSearchBuilder from &apos;./searching/builder/UsersSearchBuilder&apos;
-import DomainsSearchBuilder from &apos;./searching/builder/DomainsSearchBuilder&apos;
-import PlansSearchBuilder from &apos;./searching/builder/PlansSearchBuilder&apos;
-import Bundles from &apos;./bundles/Bundles&apos;
-import BundleFinder from &apos;./bundles/BundleFinder&apos;
-import Organizations from &apos;./organizations/Organizations&apos;
-import Domain from &apos;./domains/Domains&apos;
-import DomainFinder from &apos;./domains/DomainsFinder&apos;
-import DeviceFinder from &apos;./entities/DeviceFinder&apos;
-import SubscriptionsFinder from &apos;./entities/SubscriptionsFinder&apos;
-import SubscribersFinder from &apos;./entities/SubscribersFinder&apos;
-import DeviceMessage from &apos;./collection/devices/DeviceMessage&apos;
-import Datastream from &apos;./collection/devices/collect/Datastreams&apos;
-import Datapoint from &apos;./collection/devices/collect/Datapoint&apos;
-import Hardware from &apos;./collection/devices/collect/Hardware&apos;
-import Software from &apos;./collection/devices/collect/Software&apos;
-import Storage from &apos;./collection/devices/collect/Storage&apos;
-import Usage from &apos;./collection/devices/collect/Usage&apos;
-import PowerSupply from &apos;./collection/devices/collect/PowerSupply&apos;
-import CommsModuleMessage from &apos;./collection/devices/collect/CommsModuleMessage&apos;
-import Mobile from &apos;./collection/devices/collect/Mobile&apos;
-import SubscriberMessage from &apos;./collection/devices/collect/Subscriber&apos;
-import SubscriptionMessage from &apos;./collection/devices/collect/Subscription&apos;
-import WorkgroupRelations from &apos;./workgroups/WorkgroupRelations&apos;
-import Workgroups from &apos;./workgroups/Workgroups&apos;
-import WorkgroupFinder from &apos;./workgroups/WorkgroupFinder&apos;
-import WorkgroupsSearchBuilder from &apos;./searching/builder/WorkgroupsSearchBuilder&apos;
-import WorkgroupRelationsFinder from &apos;./workgroups/WorkgroupRelationsFinder&apos;
-import UserProfilesSearchBuilder from &apos;./searching/builder/UserProfilesSearchBuilder&apos;
-import Datamodels from &apos;./iot/datamodels/Datamodels&apos;
-import DatamodelsHelper from &apos;./iot/datamodels/DatamodelsHelper&apos;
-import DatamodelsFinder from &apos;./iot/datamodels/DatamodelsFinder&apos;
-import DatastreamsBuilder from &apos;./iot/catalog/Datastream&apos;
-import QratingsBuilder from &apos;./iot/catalog/Qrating&apos;
-import EntityBuilder from &apos;./provision/entities/EntityBuilder&apos;
-import EntitiesSearchBuilder from &apos;./searching/builder/EntitiesSearchBuilder&apos;
-import CountryCodesSearchBuilder from &apos;./searching/builder/CountryCodesSearchBuilder&apos;
-import UserLanguagesSearchBuilder from &apos;./searching/builder/UserLanguagesSearchBuilder&apos;
+import Operations from &apos;./operations/Operations&apos;;
+import UserFinder from &apos;./users/UserFinder&apos;;
+import Certificates from &apos;./security/Certificates&apos;;
+import Users from &apos;./users/Users&apos;;
+import OrganizationFinder from &apos;./organizations/OrganizationFinder&apos;;
+import ChannelFinder from &apos;./channels/ChannelFinder&apos;;
+import AreasSearchBuilder from &apos;./searching/builder/AreasSearchBuilder&apos;;
+import AreaFinder from &apos;./areas/AreaFinder&apos;;
+import Channels from &apos;./channels/Channels&apos;;
+import Areas from &apos;./areas/Areas&apos;;
+import ChannelsSearchBuilder from &apos;./searching/builder/ChannelsSearchBuilder&apos;;
+import RuleConfigurations from &apos;./rulesConfiguration/RuleConfigurations&apos;;
+import RuleConfigurationsFinder from &apos;./rulesConfiguration/RuleConfigurationsFinder&apos;;
+import RuleConfigurationsActions from &apos;./rulesConfiguration/RuleConfigurationsActions&apos;;
+import CertificateFinder from &apos;./security/CertificateFinder&apos;;
+import OperationFinder from &apos;./operations/OperationFinder&apos;;
+import FilterBuilder from &apos;./searching/FilterBuilder&apos;;
+import SelectBuilder from &apos;./searching/SelectBuilder&apos;;
+import OperationActions from &apos;./operations/OperationActions&apos;;
+import Expression from &apos;./util/Expression&apos;;
+import SelectElement from &apos;./util/SelectElement&apos;;
+import QuickSearch from &apos;./searching/QuickSearch&apos;;
+import RawSearchBuilder from &apos;./searching/builder/RawSearchBuilder&apos;;
+import DevicesSearchBuilder from &apos;./searching/builder/DevicesSearchBuilder&apos;;
+import SubscribersSearchBuilder from &apos;./searching/builder/SubscribersSearchBuilder&apos;;
+import SubscriptionsSearchBuilder from &apos;./searching/builder/SubscriptionsSearchBuilder&apos;;
+import AssetsSearchBuilder from &apos;./searching/builder/AssetsSearchBuilder&apos;;
+import OperationsSearchBuilder from &apos;./searching/builder/OperationsSearchBuilder&apos;;
+import ExecutionsSearchBuilder from &apos;./searching/builder/ExecutionsSearchBuilder&apos;;
+import AlarmsSearchBuilder from &apos;./searching/builder/AlarmsSearchBuilder&apos;;
+import DatamodelsSearchBuilder from &apos;./searching/builder/DatamodelsSearchBuilder&apos;;
+import FeedsSearchBuilder from &apos;./searching/builder/FeedsSearchBuilder&apos;;
+import DatastreamsSearchBuilder from &apos;./searching/builder/DatastreamsSearchBuilder&apos;;
+import DatapointsSearchBuilder from &apos;./searching/builder/DatapointsSearchBuilder&apos;;
+import BundlesSearchBuilder from &apos;./searching/builder/BundlesSearchBuilder&apos;;
+import CertificatesSearchBuilder from &apos;./searching/builder/CertificatesSearchBuilder&apos;;
+import HardwaresSearchBuilder from &apos;./searching/builder/HardwaresSearchBuilder&apos;;
+import SoftwaresSearchBuilder from &apos;./searching/builder/SoftwaresSearchBuilder&apos;;
+import OperationalStatusSearchBuilder from &apos;./searching/builder/OperationalStatusSearchBuilder&apos;;
+import SpecificTypeSearchBuilder from &apos;./searching/builder/SpecificTypeSearchBuilder&apos;;
+import ServiceGroupSearchBuilder from &apos;./searching/builder/ServiceGroupSearchBuilder&apos;;
+import AdministrativeStateSearchBuilder from &apos;./searching/builder/AdministrativeStateSearchBuilder&apos;;
+import CommunicationsModuleTypeSearchBuilder from &apos;./searching/builder/CommunicationsModuleTypeSearchBuilder&apos;;
+import FieldsDefinitionSearchBuilder from &apos;./searching/builder/FieldsDefinitionSearchBuilder&apos;;
+import JsonSchemaSearchBuilder from &apos;./searching/builder/JsonSchemaSearchBuilder&apos;;
+import MobilePhoneProviderSearchBuilder from &apos;./searching/builder/MobilePhoneProviderSearchBuilder&apos;;
+import IoTDatastreamPeriodSearchBuilder from &apos;./searching/builder/IoTDatastreamPeriodSearchBuilder&apos;;
+import ResourceTypeSearchBuilder from &apos;./searching/builder/ResourceTypeSearchBuilder&apos;;
+import AllowedResourceTypeSearchBuilder from &apos;./searching/builder/AllowedResourceTypeSearchBuilder&apos;;
+import IoTDatastreamAccessSearchBuilder from &apos;./searching/builder/IoTDatastreamAccessSearchBuilder&apos;;
+import IoTDatastreamStoragePeriodSearchBuilder from &apos;./searching/builder/IoTDatastreamStoragePeriodSearchBuilder&apos;;
+import RuleConfigurationSeveritySearchBuilder from &apos;./searching/builder/RuleConfigurationSeveritySearchBuilder&apos;;
+import UsersSearchBuilder from &apos;./searching/builder/UsersSearchBuilder&apos;;
+import DomainsSearchBuilder from &apos;./searching/builder/DomainsSearchBuilder&apos;;
+import PlansSearchBuilder from &apos;./searching/builder/PlansSearchBuilder&apos;;
+import Bundles from &apos;./bundles/Bundles&apos;;
+import BundleFinder from &apos;./bundles/BundleFinder&apos;;
+import Organizations from &apos;./organizations/Organizations&apos;;
+import Domain from &apos;./domains/Domains&apos;;
+import DomainFinder from &apos;./domains/DomainsFinder&apos;;
+import DeviceFinder from &apos;./entities/DeviceFinder&apos;;
+import SubscriptionsFinder from &apos;./entities/SubscriptionsFinder&apos;;
+import SubscribersFinder from &apos;./entities/SubscribersFinder&apos;;
+import DeviceMessage from &apos;./collection/devices/DeviceMessage&apos;;
+import Datastream from &apos;./collection/devices/collect/Datastreams&apos;;
+import Datapoint from &apos;./collection/devices/collect/Datapoint&apos;;
+import Hardware from &apos;./collection/devices/collect/Hardware&apos;;
+import Software from &apos;./collection/devices/collect/Software&apos;;
+import Storage from &apos;./collection/devices/collect/Storage&apos;;
+import Usage from &apos;./collection/devices/collect/Usage&apos;;
+import PowerSupply from &apos;./collection/devices/collect/PowerSupply&apos;;
+import CommsModuleMessage from &apos;./collection/devices/collect/CommsModuleMessage&apos;;
+import Mobile from &apos;./collection/devices/collect/Mobile&apos;;
+import SubscriberMessage from &apos;./collection/devices/collect/Subscriber&apos;;
+import SubscriptionMessage from &apos;./collection/devices/collect/Subscription&apos;;
+import WorkgroupRelations from &apos;./workgroups/WorkgroupRelations&apos;;
+import Workgroups from &apos;./workgroups/Workgroups&apos;;
+import WorkgroupFinder from &apos;./workgroups/WorkgroupFinder&apos;;
+import WorkgroupsSearchBuilder from &apos;./searching/builder/WorkgroupsSearchBuilder&apos;;
+import WorkgroupRelationsFinder from &apos;./workgroups/WorkgroupRelationsFinder&apos;;
+import UserProfilesSearchBuilder from &apos;./searching/builder/UserProfilesSearchBuilder&apos;;
+import Datamodels from &apos;./iot/datamodels/Datamodels&apos;;
+import DatamodelsHelper from &apos;./iot/datamodels/DatamodelsHelper&apos;;
+import DatamodelsFinder from &apos;./iot/datamodels/DatamodelsFinder&apos;;
+import DatastreamsBuilder from &apos;./iot/catalog/Datastream&apos;;
+import QratingsBuilder from &apos;./iot/catalog/Qrating&apos;;
+import EntityBuilder from &apos;./provision/entities/EntityBuilder&apos;;
+import EntitiesSearchBuilder from &apos;./searching/builder/EntitiesSearchBuilder&apos;;
+import CountryCodesSearchBuilder from &apos;./searching/builder/CountryCodesSearchBuilder&apos;;
+import UserLanguagesSearchBuilder from &apos;./searching/builder/UserLanguagesSearchBuilder&apos;;
 
 /**
  * This is a abstract class, it must be extended to another class that defined the backend, it will be used on request to Opengate North API by browser or nodejs server
@@ -764,16 +764,6 @@ export default class InternalOpenGateAPI {
         return new SoftwaresSearchBuilder(this);
     }
 
-
-    /**
-     * This return a RelationsBuilder to build a specific RelationsBuilder
-     * @return {Relations}
-     */
-    relationsBuilder() {
-        return new Relations(this);
-    }
-
-
     /**
      * This return a OperationalStatusSearchBuilder to build a specific OperationalStatusSearchBuilder
      * @return {OperationalStatusSearchBuilder}
@@ -980,7 +970,7 @@ export default class InternalOpenGateAPI {
      * @return {Datamodels}
      */
     datamodelsBuilder(organization) {
-        return new Datamodels(this, organization)
+        return new Datamodels(this, organization);
     }
 
     /**

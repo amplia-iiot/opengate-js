@@ -76,13 +76,13 @@ export default class Usage {
 
     composeElement(){
 
-        var usage =  {
-                    "unit": this._usageUnit,
-                    "current": this._current,
-                    "average": this._average,
-                    "maximum": this._maximum,
-                    "minimum": this._minimum
-                }
+        var usage = {
+            "unit": this._usageUnit,
+            "current": this._current,
+            "average": this._average,
+            "maximum": this._maximum,
+            "minimum": this._minimum
+        };
         return usage;
     }
 

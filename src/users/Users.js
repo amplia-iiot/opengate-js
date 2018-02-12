@@ -1,6 +1,6 @@
 'use strict';
 
-import BaseProvision from '../provision/BaseProvision'
+import BaseProvision from '../provision/BaseProvision';
 import q from 'q';
 
 const _length_name = 100;
@@ -13,12 +13,11 @@ const _length_password = 50;
 export default class User extends BaseProvision {
 
 
-
     /**     
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, "/users");
+        super(ogapi, "/users", undefined, ["email", "workgroup", "domain", "profile", "countryCode", "langCode"]);
     }
 
 
@@ -78,7 +77,7 @@ export default class User extends BaseProvision {
      */
     withWorkgroup(workgroup) {
         if (typeof workgroup !== 'string')
-            throw new Error('Parameter workgroup must be a string');
+            throw new Error('OGAPI_STRING_PARAMETER_WORKGROUP');
         this._workgroup = workgroup;
         return this;
     }
@@ -90,7 +89,7 @@ export default class User extends BaseProvision {
      */
     withDomain(domain) {
         if (typeof domain !== 'string')
-            throw new Error('Parameter domain must be a string');
+            throw new Error('OGAPI_STRING_PARAMETER_DOMAIN');
         this._domain = domain;
         return this;
     }
@@ -102,7 +101,7 @@ export default class User extends BaseProvision {
      */
     withProfile(profile) {
         if (typeof profile !== 'string')
-            throw new Error('Parameter profile must be a string');
+            throw new Error('OGAPI_STRING_PARAMETER_PROFILE');
         this._profile = profile;
         return this;
     }
@@ -114,7 +113,7 @@ export default class User extends BaseProvision {
      */
     withCountryCode(countryCode) {
         if (typeof countryCode !== 'string')
-            throw new Error('Parameter countryCode must be a string');
+            throw new Error('OGAPI_STRING_PARAMETER_COUNTRY_CODE');
         this._countryCode = countryCode;
         return this;
     }
@@ -126,7 +125,7 @@ export default class User extends BaseProvision {
      */
     withLangCode(langCode) {
         if (typeof langCode !== 'string')
-            throw new Error('Parameter langCode must be a string');
+            throw new Error('OGAPI_STRING_PARAMETER_LANGUAGE');
         this._langCode = langCode;
         return this;
     }
@@ -139,7 +138,7 @@ export default class User extends BaseProvision {
      */
     withDescription(description) {
         if (typeof description !== 'string')
-            throw new Error('Parameter description must be a string ');
+            throw new Error('OGAPI_STRING_PARAMETER_DESCRIPTION');
         this._description = description;
         return this;
 
@@ -152,7 +151,7 @@ export default class User extends BaseProvision {
      */
     _buildURL() {
         if (this._email === undefined)
-            throw new Error('Parameters email must be defined');
+            throw new Error('OGAPI_EMAIL_MUST_BE_DEFINED');
         var url = this._resource + "/" + this._email;
 
         return url;
@@ -165,13 +164,6 @@ export default class User extends BaseProvision {
      * @private
      */
     _composeElement() {
-        if (this._email === undefined ||
-            this._password === undefined ||
-            this._workgroup === undefined || this._domain === undefined ||
-            this._profile === undefined ||
-            this._countryCode === undefined ||
-            this._langCode === undefined)
-            throw new Error('Parameters Email, Password, Workgroup, Domain, Profile, Country, Language  must be defined');
 
         var data = {
             user: {
@@ -186,7 +178,7 @@ export default class User extends BaseProvision {
                 countryCode: this._countryCode || undefined,
                 langCode: this._langCode || undefined
             }
-        }
+        };
 
         return data;
 
@@ -198,17 +190,18 @@ export default class User extends BaseProvision {
      * @private
      */
     _composeUpdateElement() {
+        if (this._password) {
+            throw new Error('OGAPI_PASSWORD_NOT_ALLOWED');
+        }
         if (this._email === undefined ||
-            this._workgroup === undefined || this._domain === undefined ||
-            this._countryCode === undefined ||
-            this._langCode === undefined)
-            throw new Error('Parameters Email, Workgroup, Domain, Country, Language  must be defined');
+            (this._workgroup === undefined && this._domain !== undefined) ||
+            (this._workgroup !== undefined && this._domain === undefined))
+            throw new Error('OGAPI_USER_UPDATE_PARAMETER_MUST_BE_DEFINED');
 
         var data = {
             user: {
                 name: this._name || undefined,
                 surname: this._surname || undefined,
-                password: this._password || undefined,
                 description: this._description || undefined,
                 email: this._email || undefined,
                 workgroup: this._workgroup || undefined,
@@ -217,39 +210,55 @@ export default class User extends BaseProvision {
                 countryCode: this._countryCode || undefined,
                 langCode: this._langCode || undefined
             }
-        }
-
+        };
         return data;
-
     }
-
-
 
     /**
      * This invoke a request to OpenGate North API and the callback is managed by promises
-     * This function updates a entity of provision
+     * This function updates a password of a user
      * @return {Promise}
      * @property {function (result:object, statusCode:number)} then - When request it is OK
      * @property {function (error:string)} catch - When request it is NOK
      * @example
-     *  ogapi.organizationsBuilder().update()
+     *  ogapi.organizationsBuilder().withEmail(example@example.es).withPassword(oldPassword).updatePassword(newPassword);
      */
-    update() {
+    updatePassword(newPassword) {
+        this._newPassword = newPassword;
+        if (this._email === undefined || this._password || this._newPassword) {
+            throw new Error('OGAPI_USER_UPDATE_PASSWORD_PARAMETER_MUST_BE_DEFINED');
+        }
+
+        var data = {
+            user: {
+                password: this._newPassword
+            }
+        };
+
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement())
+
+        this._ogapi.Napi.put(this._buildURL(), data, undefined, this._password)
             .then((res) => {
                 if (res.statusCode === 200) {
-                    defered.resolve({ statusCode: res.statusCode });
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
                 } else if (res.status === 200) {
-                    defered.resolve({ statusCode: res.status });
+                    defered.resolve({
+                        statusCode: res.status
+                    });
                 } else {
-                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
                 }
             })
             .catch((error) => {
                 defered.reject(error);
             });
         return promise;
+
     }
 }

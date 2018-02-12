@@ -65,7 +65,7 @@ export default class Domains extends BaseProvision {
                 description: this._description || undefined,
                 parentDomain: this._parentDomain || undefined
             }
-        }
+        };
 
         return domain;
     }

@@ -215,7 +215,7 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
 import q from &apos;q&apos;;
-import BaseProvision from &apos;../provision/BaseProvision&apos;
+import BaseProvision from &apos;../provision/BaseProvision&apos;;
 
 /**
  * This is a base object that contains all you can do about Bundles.
@@ -297,7 +297,7 @@ export default class Channels extends BaseProvision {
                 description: this._description || undefined,
                 certificates: this._certificates || undefined
             }
-        }
+        };
         return channel;
     }
 

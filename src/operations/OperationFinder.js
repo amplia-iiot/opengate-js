@@ -67,7 +67,7 @@ export default class OperationFinder extends GenericFinder {
                     _this._execute()
                         .then(function (response) {
                             //console.log("2response: " + JSON.stringify(response));
-                            response.data["id"] = _this._id;
+                            response.data.id = _this._id;
                             defered.resolve(response);
                         })
                         .catch(function (error) {
@@ -113,7 +113,7 @@ export default class OperationFinder extends GenericFinder {
     _composeUrl() {
         if (this._entity === 'operations') {
             var _limit_url = this._limit ? ("?start=" + this._limit.start + "&size=" + this._limit.size) : "";
-            var base_url = this._baseUrl + "/" + this._id + "/operations" + _limit_url
+            var base_url = this._baseUrl + "/" + this._id + "/operations" + _limit_url;
             console.log("COMPOSE_IF: " + base_url);
             return base_url;
         }

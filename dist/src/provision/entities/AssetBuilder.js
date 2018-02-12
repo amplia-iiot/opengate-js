@@ -96,7 +96,7 @@ var BoxBuilder = (function () {
             });
             _this._wrappers.push(new WrapperBuilder(_this._ogapi, obj, _this._url.replace('entities', 'subscribers').replace('/' + _this._key._value._current.value, ''), obj[_SubscriberBuilder.SubscriberID]._value._current.value));
         });
-        _this._obj['resourceType'] = {
+        _this._obj.resourceType = {
             "_value": {
                 "_current": {
                     "value": "entity.asset"
@@ -165,7 +165,7 @@ var BoxBuilder = (function () {
                             if (res.statusCode === _httpStatusCodes2['default'].OK) {
                                 //console.log("CREATEOK: " + JSON.stringify(res));
                                 if (typeof _this._onCreated === "function") {
-                                    _this._onCreated(res.header['location']);
+                                    _this._onCreated(res.header.location);
                                 }
                                 defer.notify({
                                     entity: _this._key._value._current.value,
@@ -174,7 +174,7 @@ var BoxBuilder = (function () {
                                     percentage: 75
                                 });
                                 defer.resolve({
-                                    location: res.header['location'],
+                                    location: res.header.location,
                                     statusCode: res.statusCode
                                 });
                             } else {
@@ -188,7 +188,7 @@ var BoxBuilder = (function () {
                         if (res.statusCode === _httpStatusCodes2['default'].CREATED) {
                             console.log("CREATEOK: " + JSON.stringify(res));
                             if (typeof _this._onCreated === "function") {
-                                _this._onCreated(res.header['location']);
+                                _this._onCreated(res.header.location);
                             }
                             defer.notify({
                                 entity: _this._key._value._current.value,
@@ -197,7 +197,7 @@ var BoxBuilder = (function () {
                                 percentage: 75
                             });
                             defer.resolve({
-                                location: res.header['location'],
+                                location: res.header.location,
                                 statusCode: res.statusCode
                             });
                         } else {
@@ -263,7 +263,7 @@ var BoxBuilder = (function () {
                     if (res.statusCode === _httpStatusCodes2['default'].OK) {
                         console.log("CREATEOK: " + JSON.stringify(res));
                         if (typeof _this._onCreated === "function") {
-                            _this._onCreated(res.header['location']);
+                            _this._onCreated(res.header.location);
                         }
                         defer.notify({
                             entity: _this._key._value._current.value,
@@ -272,7 +272,7 @@ var BoxBuilder = (function () {
                             percentage: 90
                         });
                         defer.resolve({
-                            location: res.header['location'],
+                            location: res.header.location,
                             statusCode: res.statusCode
                         });
                     } else {
@@ -347,13 +347,13 @@ var WrapperBuilder = (function () {
                 if (!exists) {
                     create(defered, defer, percentage);
                 } else {
-                    defer.resolve({ message: OGAPI_ENTITY_ALREADY_CREATED, entity: _this._key });
+                    defer.resolve({ message: 'OGAPI_ENTITY_ALREADY_CREATED', entity: _this._key });
                 }
             })['catch'](function (exists) {
                 if (!exists) {
                     create(defered, defer, percentage);
                 } else {
-                    defer.resolve({ message: OGAPI_ENTITY_ALREADY_CREATED, entity: _this._key });
+                    defer.resolve({ message: 'OGAPI_ENTITY_ALREADY_CREATED', entity: _this._key });
                 }
             });
             return defer.promise;

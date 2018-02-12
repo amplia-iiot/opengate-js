@@ -214,7 +214,7 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/searching/FilterBuilder.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-import Ex from &apos;./../util/Expression&apos;
+import Ex from &apos;./../util/Expression&apos;;
 
 export default class FilterBuilder {
 
@@ -223,7 +223,7 @@ export default class FilterBuilder {
      * var fb = ogapi.newFilterBuilder()
      */
     constructor() {
-        this._filterTemplate = { filter: {} }
+        this._filterTemplate = { filter: {} };
     }
 
     /**
@@ -241,7 +241,7 @@ export default class FilterBuilder {
         }
 
         for (var i = 0; i &lt; args.length; i++)
-            this._filterTemplate.filter.or.push(args[i])
+            this._filterTemplate.filter.or.push(args[i]);
 
         return this;
     }
@@ -261,7 +261,7 @@ export default class FilterBuilder {
         }
 
         for (var i = 0; i &lt; args.length; i++)
-            this._filterTemplate.filter.and.push(args[i])
+            this._filterTemplate.filter.and.push(args[i]);
 
         return this;
     }

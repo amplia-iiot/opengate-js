@@ -273,10 +273,10 @@ export default class EntityBuilder {
             if (data.statusCode !== 200) {
                 defered.reject({ data: &apos;OGAPI_DATASTREAM_NOT_FOUND&apos;, statusCode: 204 });
             }
-            _this._getJsonPathElements().then(function() {
+            _this._getJsonPathElements().then(function () {
                 data.data = _this._setDevicesProperties(data.data, filterElement);
                 defered.resolve(data);
-            })
+            });
         }).catch(function(err) {
             defered.reject(err);
         });
@@ -318,7 +318,7 @@ export default class EntityBuilder {
                 }
             }
         });
-        response[&apos;schemas&apos;] = _this.schema;
+        response.schemas = _this.schema;
 
         return response;
 

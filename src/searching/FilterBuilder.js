@@ -1,6 +1,6 @@
 'use strict';
 
-import Ex from './../util/Expression'
+import Ex from './../util/Expression';
 
 export default class FilterBuilder {
 
@@ -9,7 +9,7 @@ export default class FilterBuilder {
      * var fb = ogapi.newFilterBuilder()
      */
     constructor() {
-        this._filterTemplate = { filter: {} }
+        this._filterTemplate = { filter: {} };
     }
 
     /**
@@ -27,7 +27,7 @@ export default class FilterBuilder {
         }
 
         for (var i = 0; i < args.length; i++)
-            this._filterTemplate.filter.or.push(args[i])
+            this._filterTemplate.filter.or.push(args[i]);
 
         return this;
     }
@@ -47,7 +47,7 @@ export default class FilterBuilder {
         }
 
         for (var i = 0; i < args.length; i++)
-            this._filterTemplate.filter.and.push(args[i])
+            this._filterTemplate.filter.and.push(args[i]);
 
         return this;
     }

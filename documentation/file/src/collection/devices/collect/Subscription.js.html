@@ -366,7 +366,7 @@ export default class Subscription {
             not_found.push(value);
         }
         if (not_found.length !== 0) {
-            console.warn(&quot;Parameter value not allowed &lt;&apos;&quot; + JSON.stringify(not_found) + &quot;&apos;&gt;, allowed &lt;&apos;&quot; + JSON.stringify(enumName) + &quot;&apos;&gt;&quot;)
+            console.warn(&quot;Parameter value not allowed &lt;&apos;&quot; + JSON.stringify(not_found) + &quot;&apos;&gt;, allowed &lt;&apos;&quot; + JSON.stringify(enumName) + &quot;&apos;&gt;&quot;);
         }
         return value;
     }
@@ -375,20 +375,19 @@ export default class Subscription {
 
     composeElement(){
         var subscription = {
-            &quot;id&quot; : this._id,
-            &quot;name&quot; : this._name,
-            &quot;type&quot; : this._type,
-            &quot;description&quot; : this._description,
-            &quot;operator&quot; : this._operator,
-            &quot;imsi&quot; : this._imsi,
-            &quot;msisdn&quot; : this._msisdn,
-            &quot;address&quot; :{
-                &quot;type&quot; : this._addressType,
-                &quot;value&quot; : this._addressValue,
-                &quot;apn&quot; : this._addressApn
+            &quot;id&quot;: this._id,
+            &quot;name&quot;: this._name,
+            &quot;type&quot;: this._type,
+            &quot;description&quot;: this._description,
+            &quot;operator&quot;: this._operator,
+            &quot;imsi&quot;: this._imsi,
+            &quot;msisdn&quot;: this._msisdn,
+            &quot;address&quot;: {
+                &quot;type&quot;: this._addressType,
+                &quot;value&quot;: this._addressValue,
+                &quot;apn&quot;: this._addressApn
             }
-
-        }        
+        };
         return subscription;
     }
 

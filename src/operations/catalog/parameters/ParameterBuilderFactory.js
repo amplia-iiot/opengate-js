@@ -16,7 +16,7 @@ export default class ParameterBuilderFactory{
 		const _parent = parent;		
 		for(let i in parameters){
 			let param = parameters[i];
-			this[createBuilderName(param.name)] = function(){return new BaseParameterBuilderWithParent(_ogapi ,param, _parent)};
+			this[createBuilderName(param.name)] = function () { return new BaseParameterBuilderWithParent(_ogapi, param, _parent);};
 		}
 
 		// Ejemplo, name = "profile" => return "newProfileParamBuilder"

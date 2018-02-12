@@ -214,7 +214,7 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/collection/devices/DeviceMessage.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-import q from &apos;q&apos;;;
+import q from &apos;q&apos;;
 import Event from &apos;./collect/Event&apos;;
 import Datastream from &apos;../devices/collect/Datastreams&apos;;
 /**
@@ -327,7 +327,7 @@ export default class DeviceMessage extends Event {
             &apos;version&apos;: this._dataStreamVersion,
             &apos;device&apos;: this._deviceId,
             &apos;datastreams&apos;: this._datastreams
-        }
+        };
         return iotMessage;
 
     }
@@ -340,7 +340,7 @@ export default class DeviceMessage extends Event {
         var dmmMessage = {
             &apos;version&apos;: this._version,
             &apos;event&apos;: event
-        }
+        };
         return dmmMessage;
 
     }

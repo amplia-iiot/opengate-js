@@ -285,7 +285,7 @@ export default class ExecuteEveryBuilder {
 			}
 		}
 		if (not_found.length !== 0) {
-			throw new Error(&quot;Any month into parameter months is not allowed. Parameter value &lt;&apos;&quot; + JSON.stringify(not_found) + &quot;&apos;&gt;, Months allowed &lt;&apos;&quot; + JSON.stringify(MONTHS_ENUM) + &quot;&apos;&gt;&quot;)
+			throw new Error(&quot;Any month into parameter months is not allowed. Parameter value &lt;&apos;&quot; + JSON.stringify(not_found) + &quot;&apos;&gt;, Months allowed &lt;&apos;&quot; + JSON.stringify(MONTHS_ENUM) + &quot;&apos;&gt;&quot;);
 		}
 		return new ByMonth(this._parent, this._date, this._periodicityName, months, this._end);
 	}

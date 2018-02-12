@@ -214,8 +214,6 @@ var Bundles = (function (_BaseProvision) {
                 }
             };
 
-            //console.log(JSON.stringify(updateData));
-
             return updateData;
         }
     }, {
@@ -266,7 +264,7 @@ var Bundles = (function (_BaseProvision) {
         value: function deactivate() {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            this._ogapi.Napi.put(this._buildURL(), { bundle: { active: false } }).then(function (res) {
+            this._ogapi.Napi.put(this._buildURL(), { bundle: { active: false } }, undefined).then(function (res) {
                 //console.log(JSON.stringify(res));
                 if (res.statusCode === 200) {
                     defered.resolve({ statusCode: res.statusCode });
@@ -464,10 +462,10 @@ var Bundles = (function (_BaseProvision) {
             var promise = defered.promise;
             var bundleUpdate = this._composeElement();
 
-            delete bundleUpdate.bundle["name"];
-            delete bundleUpdate.bundle["version"];
-            delete bundleUpdate.bundle["workgroup"];
-            delete bundleUpdate.bundle["hardware"];
+            delete bundleUpdate.bundle.name;
+            delete bundleUpdate.bundle.version;
+            delete bundleUpdate.bundle.workgroup;
+            delete bundleUpdate.bundle.hardware;
 
             this._ogapi.Napi.put(this._buildURL(), bundleUpdate).then(function (res) {
                 if (res.statusCode === 200) {

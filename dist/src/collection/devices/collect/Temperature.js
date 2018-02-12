@@ -1,8 +1,5 @@
 'use strict';
 
-/**
- * This is a base object that allows the user to create a Datapoint.
- */
 Object.defineProperty(exports, '__esModule', {
     value: true
 });
@@ -10,6 +7,14 @@ Object.defineProperty(exports, '__esModule', {
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+var _enumTEMPERATURE_STATUS_ENUM = require('./enum/TEMPERATURE_STATUS_ENUM');
+
+var _enumLEVEL_TREND_ENUM = require('./enum/LEVEL_TREND_ENUM');
+
+/**
+ * This is a base object that allows the user to create a Datapoint.
+ */
 
 var Temperature = (function () {
     function Temperature() {
@@ -65,11 +70,11 @@ var Temperature = (function () {
     }, {
         key: 'withStatusTemperature',
         value: function withStatusTemperature(statusTemperature) {
-            if (typeof statusTemperature !== 'statusTemperature' || statusTemperature.length === 0) throw new Error('Parameter statusTemperature must be string type and cannot be empty');
+            if (typeof statusTemperature !== 'string' || statusTemperature.length === 0) throw new Error('Parameter statusTemperature must be string type and cannot be empty');
             if (this._temperature === undefined) {
                 this._temperature = {};
             }
-            this._temperature.status = this._checkValues(statusTemperature, TEMPERATURE_STATUS_ENUM);;
+            this._temperature.status = this._checkValues(statusTemperature, _enumTEMPERATURE_STATUS_ENUM.TEMPERATURE_STATUS_ENUM);
             return this;
         }
 
@@ -81,11 +86,11 @@ var Temperature = (function () {
     }, {
         key: 'withTrendTemperature',
         value: function withTrendTemperature(trendTemperature) {
-            if (typeof trendTemperature !== 'trendTemperature' || trendTemperature.length === 0) throw new Error('Parameter trendTemperature must be string type and cannot be empty');
+            if (typeof trendTemperature !== 'string' || trendTemperature.length === 0) throw new Error('Parameter trendTemperature must be string type and cannot be empty');
             if (this._temperature === undefined) {
                 this._temperature = {};
             }
-            this._temperature.trend = this._checkValues(trendTemperature, TEMPERATURE_TREND_ENUM);
+            this._temperature.trend = this._checkValues(trendTemperature, _enumLEVEL_TREND_ENUM.LEVEL_TREND_ENUM);
             return this;
         }
 

@@ -30,6 +30,10 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
+var _merge = require('merge');
+
+var _merge2 = _interopRequireDefault(_merge);
+
 /**
  * This class generates all operations builders by a response to search into catalog/operations
  */
@@ -108,7 +112,7 @@ var Operations = (function () {
     }, {
         key: 'getOperationList',
         value: function getOperationList() {
-            return merge(true, this._operationNames);
+            return (0, _merge2['default'])(true, this._operationNames);
         }
     }, {
         key: '_createBuilder',

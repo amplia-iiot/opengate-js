@@ -217,15 +217,10 @@ export default class NorthAmpliaREST {
      * This return a default configuration object
      * @return {object}
      */
-    default() {
+    default () {
         return {
-            url: 'http://172.19.18.96:25281/v80',
-            timeout: 5000,
-            apiKey: '2829be88-a7d7-4f51-aefc-3cc2385b6506',
-            south: {
-                url: 'http://172.19.18.96:9955/v80',
-            }
-        }
+            timeout: 5000
+        };
     }
 
     _url(options) {
@@ -236,34 +231,30 @@ export default class NorthAmpliaREST {
      * Invoke GET action to url specified
      * @param {!string} url - url to execute GET
      * @param {number} timeout - timeout in milliseconds    
+     * @param {object} headers - headers of request
      * @return {Promise} 
      */
-    get(url, timeout) {
+    get(url, timeout, headers) {
         var req = request.get(this._createUrl(url));
-        return this._createPromiseRequest(req, null, timeout);
+        return this._createPromiseRequest(req, null, timeout, headers);
     }
 
     /**
      * Invoke POST action to url and data specified
      * @param {!string} url - url to execute POST
      * @param {object} data - attach data to request POST
-     * @param {number} timeout - timeout in milliseconds       
+     * @param {number} timeout - timeout in milliseconds
+     * @param {object} headers - headers of request
      * @return {Promise} 
      */
-    post(url, data, timeout) {
+    post(url, data, timeout, headers) {
         var req = request.post(this._createUrl(url))
             .send(data);
 
-        return this._createPromiseRequest(req, null, timeout);
+        return this._createPromiseRequest(req, null, timeout, headers);
     }
 
-    post_csv(url, data, events, timeout) {
-        var req = request.post(this._createUrl(url))
-            .send(data)
-            .set('Accept', 'text/plain');
-        return this._createPromiseRequest(req, null, timeout);
-    }
-
+    
     /**
      * Invoke POST multipart action to url and data specified
      * @param {!string} url - url to execute POST
@@ -278,27 +269,26 @@ export default class NorthAmpliaREST {
         if (formData && (formData.meta || formData.file || formData.json || formData.certificate)) {
             if (formData.meta) {
                 req.field('meta', formData.meta);
-                delete formData['Fmeta'];
+                delete formData.Fmeta;
             }
             if (formData.json) {
                 req.field('json', formData.json);
-                delete formData['json'];
+                delete formData.json;
             }
 
             if (formData.file) {
                 req.field('file', formData.file);
-                delete formData['file'];
+                delete formData.file;
             }
 
             if (formData.certificate) {
                 req.attach('certificate', formData.certificate);
-                delete formData['certificate'];
+                delete formData.certificate;
             }
 
-        }
-        else if (formData.bulkFile) {
+        } else if (formData.bulkFile) {
             req.set('Content-Type', formData.ext);
-            formData = formData.bulkFile
+            formData = formData.bulkFile;
         }
         req.send(formData);
 
@@ -311,31 +301,34 @@ export default class NorthAmpliaREST {
      * @param {!string} url - url to execute PUT
      * @param {object} data - attach data to request PUT
      * @param {number} timeout - timeout in milliseconds       
+     * @param {object} headers - headers of request
      * @return {Promise} 
      */
-    put(url, data, timeout) {
-        var url = this._createUrl(url);
-        var req = request.put(url)
-            .set('Content-Type', 'application/json')
-            .send(data);
-        return this._createPromiseRequest(req, null, timeout);
-    }
-
-    put_multipart(url, data, timeout) {
+    put(url, data, timeout, headers) {
         var req = request.put(this._createUrl(url))
             .send(data);
-        return this._createPromiseRequest(req, null, timeout);
+
+        if (headers) {
+            headers['Content-Type'] = 'application/json';
+        } else {
+            headers = {
+                'Content-Type': 'application/json'
+            };
+        }
+
+        return this._createPromiseRequest(req, null, timeout, headers);
     }
 
     /**
      * Invoke DELETE action to url specified
      * @param {!string} url - url to execute DELETE
      * @param {number} timeout - timeout in milliseconds    
+     * @param {object} headers - headers of request
      * @return {Promise} 
      */
-    delete(url, timeout) {
+    delete(url, timeout, headers) {
         var req = request.delete(this._createUrl(url));
-        return this._createPromiseRequest(req, null, timeout);
+        return this._createPromiseRequest(req, null, timeout, headers);
     }
 
     _createUrl(relativeUrl) {
@@ -354,16 +347,27 @@ export default class NorthAmpliaREST {
         return this._url(this._options) + "/" + encode.join("/");
     }
 
-    _createPromiseRequest(req, events, timeout) {
+    _createPromiseRequest(req, events, timeout, headers) {
         let _timeout = timeout;
         if (typeof _timeout === "undefined" || _timeout === null) {
             _timeout = this._options.timeout;
         }
         let defered = q.defer();
         let promise = defered.promise;
-        let _req = req
-            .set('x-apikey', this._options.apiKey)
-            .timeout(_timeout);
+        let apiKey = this._options.apiKey;
+        let _req = req.timeout(_timeout);
+
+        if (apiKey) {
+            _req = _req.set('x-apikey', this._options.apiKey);
+        }
+        
+        if (headers) {
+            var keys = Object.keys(headers);
+            for (var i = 0; i < keys.length; i++) {
+                var key = keys[i];
+                _req = req.set(key, headers[key]);
+            }
+        }
 
         if (events) {
             for (let event in events) {
@@ -381,7 +385,10 @@ export default class NorthAmpliaREST {
                     data = err.message;
                     status = 408;
                 }
-                defered.reject({ statusCode: status, 'data': data });
+                defered.reject({
+                    statusCode: status,
+                    'data': data
+                });
             } else {
                 defered.resolve(res);
             }

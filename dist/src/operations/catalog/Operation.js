@@ -64,10 +64,10 @@ var Operation = (function () {
             })['catch'](function (error) {
                 //console.log("ERROR: " + JSON.stringify(error));
                 if (!error.data) {
-                    error["data"] = {};
+                    error.data = {};
                 }
                 if (!error.data.errors) {
-                    error.data["errors"] = [typeof error === "string" ? { message: error } : error];
+                    error.data.errors = [typeof error === "string" ? { message: error } : error];
                 }
                 defered.reject(error);
             });
@@ -97,10 +97,10 @@ var Operation = (function () {
                 defered.resolve({ data: data ? data : {}, statusCode: response.statusCode, location: response.header.location });
             })['catch'](function (error) {
                 if (!error.data) {
-                    error["data"] = {};
+                    error.data = {};
                 }
                 if (!error.data.errors) {
-                    error.data["errors"] = [typeof error === "string" ? { message: error } : error];
+                    error.data.errors = [typeof error === "string" ? { message: error } : error];
                 }
                 defered.reject(error);
             });

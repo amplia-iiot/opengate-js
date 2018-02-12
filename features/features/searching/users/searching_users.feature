@@ -7,7 +7,7 @@ As a user of JsApi
 I want to search into users collection
 So I can add filter, sorting, limit to search any user
   Background:
-    Given an apikey user by "e265b68a-18c6-4b10-996d-8a7b9f12398a"
+    Given an apikey user by "require-real-apikey"
     And an ogapi "users search" util
 
   Scenario: Execute searching with a timeout less than expected

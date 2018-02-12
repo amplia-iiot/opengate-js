@@ -1,7 +1,7 @@
 'use strict';
-import BaseProvision from '../../provision/BaseProvision'
-import Category from '../catalog/Category'
-import Datastream from '../catalog/Datastream'
+import BaseProvision from '../../provision/BaseProvision';
+import Category from '../catalog/Category';
+import Datastream from '../catalog/Datastream';
 
 export const PRE_RESOURCE = '/organizations';
 export const POST_RESOURCE = '/datamodels';
@@ -123,8 +123,11 @@ export default class DatamodelsHelper extends BaseProvision {
         if (exists_category === -1) {
             throw new Error('Category ' + category + ' not exists for this datamodel. Use addCategory instead.');
         }
-        this._categories[exists_category].datastreams ? this._categories[exists_category].datastreams.push(datastream) :
-            this._categories[exists_category]['datastreams'] = [datastream];
+        if (this._categories[exists_category].datastreams) {
+            this._categories[exists_category].datastreams.push(datastream);
+        } else {
+            this._categories[exists_category].datastreams = [datastream];
+        }
         return this;
     }
 
@@ -160,11 +163,11 @@ export default class DatamodelsHelper extends BaseProvision {
         this._categories.forEach(function(_category, category_index) {
             if (_category.identifier === category) {
                 remove_category_index = category_index;
-                _category.datastreams.forEach(function(datastream, datastream_index) {
+                _category.datastreams.forEach(function (datastream, datastream_index) {
                     if (datastream.identifier === id_datastream) {
                         remove_datastream_index = datastream_index;
                     }
-                })
+                });
             }
         });
         if (remove_category_index === -1) {
@@ -256,7 +259,7 @@ export default class DatamodelsHelper extends BaseProvision {
             'version': this._version,
             'description': this._description,
             'categories': this._categories
-        }
+        };
     }
 
     _buildURL() {
