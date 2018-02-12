@@ -20,7 +20,7 @@ Feature: Create a bundle
     Given the "name" "ogux_cucumber_bundle"
     And the "version" "1.0.0"
   	And the "hardware" "OpenGate"
-  	And the "workgroup" "root"
+  	And the "workgroup" "base_organization"
     Then I delete it
     And I read the file from "/file_test/root.cer"
     And I create a "deployment element" from current "bundle" using previous file and next params:
@@ -41,7 +41,7 @@ Feature: Create a bundle
     Given the "name" "ogux_cucumber_single_bundle"
     And the "version" "1.0.0"
     And the "hardware" "OpenGate"
-    And the "workgroup" "root"
+    And the "workgroup" "base_organization"
     And I create a "deployment element" from current "bundle" using previous file and next params:
     | field  | content |
     | validators | [{"mode": "TRUSTED_BOOT","type":"SHA-1"}]  |
@@ -51,7 +51,7 @@ Feature: Create a bundle
     Given the "name" "ogux_cucumber_single_bundle"
     And the "version" "1.0.0"
     And the "hardware" "OpenGate"
-    And the "workgroup" "root"
+    And the "workgroup" "base_organization"
     And I create a "deployment element" from current "bundle" using previous file and next params:
     | field  | content |
     | type | FIRMWARE |
@@ -63,7 +63,7 @@ Feature: Create a bundle
     Given the "name" "ogux_cucumber_bundle_bad_deployment"
     And the "version" "1.0.0"
     And the "hardware" "OpenGate"
-    And the "workgroup" "root"
+    And the "workgroup" "base_organization"
     Then I delete it
     And I read the file from "/file_test/root.cer"
     And I create a "deployment element" from current "bundle" using previous file and next params:
@@ -92,7 +92,7 @@ Feature: Create a bundle
     Given the "name" "ogux_cucumber_multi_bundle"
     And the "version" "1.0.0"
     And the "hardware" "OpenGate"
-    And the "workgroup" "root"
+    And the "workgroup" "base_organization"
     Then I delete it
     And I read the file from "/file_test/root.cer"
     And I create a "deployment element" from current "bundle" using previous file and next params:
@@ -125,7 +125,7 @@ Feature: Create a bundle
     Given the "name" "ogux_cucumber_multi_bundle"
     And the "version" "1.0.0"
     And the "hardware" "OpenGate"
-    And the "workgroup" "root"
+    And the "workgroup" "base_organization"
     Then I delete it
     And I read the file from "/file_test/root.cer"
     And I create a "deployment element" from current "bundle" using previous file and next params:
@@ -155,7 +155,7 @@ Feature: Create a bundle
     Given the "name" "ogux_cucumber_bundle"
     And the "version" "1.0.0"
     And the "hardware" "OpenGate"
-    And the "workgroup" "root"
+    And the "workgroup" "base_organization"
     Then I delete it
     Then I create it
     And response code should be: 201
@@ -169,7 +169,7 @@ Feature: Create a bundle
     Given the "name" "ogux_cucumber_bundle_activation"
     And the "version" "1.0.0"
     And the "hardware" "OpenGate"
-    And the "workgroup" "root"
+    And the "workgroup" "base_organization"
     Then I delete it
     And I read the file from "/file_test/root.cer"
     And I create a "deployment element" from current "bundle" using previous file and next params:

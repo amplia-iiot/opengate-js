@@ -1,7 +1,7 @@
 var JSONPath = require('JSONPath');
 
-module.exports = function() {
-    this.Then(/^I can see into the result an "([^"]*)" as "([^"]*)"$/, function(getterName, getterValue, callback) {
+module.exports = function () {
+    this.Then(/^I can see into the result an "([^"]*)" as "([^"]*)"$/, function (getterName, getterValue, callback) {
         var data = this.responseData.data;
         //console.log("SEE INTO THE RESULT DATA: " + JSON.stringify(data));
         //console.log("SEE GETTER_NAME: " + getterName);
@@ -9,11 +9,17 @@ module.exports = function() {
         //console.log("SEE INTO THE json_attr: " + JSON.stringify(json_attr));
 
         var value = JSONPath({ json: data, path: json_attr })[0];
+        if (value !== getterValue && this.error) {
+            throw new Error(JSON.stringify(this.error));
+        }
+        if (value !== getterValue && this.error) {
+            throw new Error(JSON.stringify(this.error));
+        }
         this.expect(value).to.be.equal(getterValue);
         callback();
     });
 
-    this.Then(/^the content of file "([^"]*)" must be:$/, function(tmpFile, contentTmp, callback) {
+    this.Then(/^the content of file "([^"]*)" must be:$/, function (tmpFile, contentTmp, callback) {
         var data = this.responseData.data;
         //console.log(data);
         var header = data.headers["content-type"];
@@ -21,14 +27,14 @@ module.exports = function() {
         callback();
     });
 
-    this.Then(/^the result contains:$/, function(resultContent, callback) {
+    this.Then(/^the result contains:$/, function (resultContent, callback) {
         var data = this.responseData.data;
         this.expect(JSON.stringify(data)).to.be.equal(resultContent);
         callback();
     });
 
-    this.Then(/^I can see into the result an "([^"]*)" as$/, function(getterName, getterValue, callback) {
-        var data = undefined;
+    this.Then(/^I can see into the result an "([^"]*)" as$/, function (getterName, getterValue, callback) {
+        var data;
         //console.log("RESULT: " + JSON.stringify(this.responseData));
         data = this.responseData.data;
         //console.log("SEE INTO THE RESULT DATA: " + JSON.stringify(data));
@@ -40,4 +46,4 @@ module.exports = function() {
         callback();
     });
 
-}
+};

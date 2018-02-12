@@ -8,7 +8,7 @@ I want to create an user
 So, I can create a new user with the parametres that I have been defined
 
   Background:
-    Given an apikey user by "e265b68a-18c6-4b10-996d-8a7b9f12398a"
+    Given an apikey user by "require-real-apikey"
     And an ogapi "users builder" util
     And I want to create a "user"
     And the "email" "ogux_ogapi@amplia.com"

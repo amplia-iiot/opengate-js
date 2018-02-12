@@ -1,12 +1,12 @@
 'use strict';
 
-import merge from 'merge'
+import merge from 'merge';
 import moment from 'moment';
 
-import Operation from '../Operation'
+import Operation from '../Operation';
 import ExecuteEvery from './ExecuteEveryBuilder';
 import ExecuteEach from './ExecuteEachBuilder';
-import ByGeneric from './pattern/ByGeneric'
+import ByGeneric from './pattern/ByGeneric';
 
 import { TIME_FORMAT, DATE_FORMAT } from './../../../util/DATE_FORMAT';
 
@@ -48,6 +48,7 @@ export default class PeriodicityUpdateBuilder {
         let schedule = this._task.schedule;
         date = this._getStart(date);
         if (schedule && schedule.repeating && schedule.repeating.period) {
+            let period = schedule.repeating.period;
             return new ExecuteEach(this, date, null, _end)._addPeriod(period.each, period.unit);
         }
         return new ExecuteEach(this, date, null, _end);
@@ -78,7 +79,7 @@ export default class PeriodicityUpdateBuilder {
     build() {
         let _build = merge(true, this._build);
         //console.log("_BUILD: " + JSON.stringify(_build));
-        let postObj = undefined;
+        let postObj;
         let errors = [];
         if (typeof this._build.task !== "undefined") {
             let task = this._build.task;
@@ -123,7 +124,7 @@ export default class PeriodicityUpdateBuilder {
 
     _updateTask(_build) {
         let task = _build.task;
-        let now = moment(new Date);
+        let now = moment(new Date());
         let start = moment(task.start);
         //console.log("TASK: " + JSON.stringify(_build.task));
         //console.log("NOW: " + now);
@@ -135,15 +136,15 @@ export default class PeriodicityUpdateBuilder {
         };
         try {
             if (task.start) {
-                taskObj.task.schedule["start"] = { "date": start.format(DATE_FORMAT) };
+                taskObj.task.schedule.start = { "date": start.format(DATE_FORMAT) };
             }
 
             if (task.stop) {
-                taskObj.task.schedule["stop"] = { "date": moment(task.stop).format(DATE_FORMAT) };
+                taskObj.task.schedule.stop = { "date": moment(task.stop).format(DATE_FORMAT) };
             }
 
             if (task.repeating) {
-                taskObj.task.schedule["repeating"] = task.repeating;
+                taskObj.task.schedule.repeating = task.repeating;
             }
         } catch (err) {
             //console.log("TASK_OBJ_ERROR: " + err);
@@ -154,7 +155,7 @@ export default class PeriodicityUpdateBuilder {
             if (typeof task.stop.date !== "undefined") {
                 taskObj.task.schedule.stop = {
                     date: moment(task.stop.date).format(DATE_FORMAT)
-                }
+                };
             } else {
                 taskObj.task.schedule.stop = task.stop;
             }

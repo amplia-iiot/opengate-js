@@ -1,7 +1,7 @@
 'use strict';
 
 import q from 'q';
-import BaseProvision from '../provision/BaseProvision'
+import BaseProvision from '../provision/BaseProvision';
 
 /**
  * This is a base object that contains all you can do about Bundles.
@@ -83,7 +83,7 @@ export default class Channels extends BaseProvision {
                 description: this._description || undefined,
                 certificates: this._certificates || undefined
             }
-        }
+        };
         return channel;
     }
 

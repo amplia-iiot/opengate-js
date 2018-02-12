@@ -3,7 +3,7 @@
 import { TYPE_ENUM } from './TYPE_ENUM';
 
 import q from 'q';
-import BaseProvision from '../provision/BaseProvision'
+import BaseProvision from '../provision/BaseProvision';
 
 /**
  * This is a base object that contains all you can do about Areas.

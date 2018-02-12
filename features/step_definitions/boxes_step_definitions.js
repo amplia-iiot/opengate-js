@@ -7,7 +7,7 @@ module.exports = function() {
         _this.error = undefined;
 
         var model = "create";
-        var dependantObject = undefined;
+        var dependantObject;
 
         try {
             //console.log("datos dependantObjects");
@@ -26,10 +26,9 @@ module.exports = function() {
                     // el parametro tiene que ser un array de objetos validator
                     dependantObject = dependantObject[submethod](JSON.parse(data[i].content));
                 }
-            };
+            }
         } catch (err) {
             _this.error = err;
-
             callback();
         }
     });

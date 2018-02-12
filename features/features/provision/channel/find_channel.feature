@@ -31,22 +31,22 @@ Feature: Find an channel
   Scenario: Find channels by domain and workgroup
     When I try to find by...
       | field  | content                |
-      | domain   | root |
-      | workgroup   | root |
+      | domain | base_organization |
+      | workgroup | base_organization |
     Then response code should be: 200  
 
   Scenario: Find channels by domain and workgroup and organization that exists
     When I try to find by...
       | field  | content                |
-      | domain   | root |
-      | workgroup   | root |
+      | domain | base_organization |
+      | workgroup | base_organization |
       | organization | base_organization |
     Then response code should be: 200  
 
   Scenario: Find channels by domain and workgroup and organization that not exists
     When I try to find by...
       | field  | content                |
-      | domain   | root |
-      | workgroup   | root |
+      | domain | base_organization |
+      | workgroup | base_organization |
       | organization | alñksdjfalskjdfñ |
     Then response code should be: 404

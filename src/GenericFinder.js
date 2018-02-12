@@ -35,6 +35,22 @@ export default class GenericFinder {
         return this;
     }
 
+    _getExtraHeaders() {
+        return this._headers;
+    }
+
+    _setExtraHeaders(headers) {
+        if (this._headers) {
+            var keys = Object.keys(headers);
+            for (var i = 0; i < keys.length; i++) {
+                var key = keys[i];
+                this._headers[key] = headers[key];
+            }
+        } else {
+            this._headers = headers;
+        }
+    }
+
     /**
      * @return {Promise}
      * @private
@@ -45,7 +61,7 @@ export default class GenericFinder {
         let _entity = this._entity;
         let _error_not_found = this._error_not_found;
         //console.log("URL: " + this._composeUrl());
-        this._api.get(this._composeUrl())
+        this._api.get(this._composeUrl(), undefined, this._getExtraHeaders())
             .then((req) => {
                 //console.log("STATUS_CODE: " + JSON.stringify(req));
                 if (req.statusCode === 204) {

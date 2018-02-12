@@ -1,6 +1,6 @@
 'use strict';
 
-import q from 'q';;
+import q from 'q';
 import Event from './collect/Event';
 import Datastream from '../devices/collect/Datastreams';
 /**
@@ -113,7 +113,7 @@ export default class DeviceMessage extends Event {
             'version': this._dataStreamVersion,
             'device': this._deviceId,
             'datastreams': this._datastreams
-        }
+        };
         return iotMessage;
 
     }
@@ -126,7 +126,7 @@ export default class DeviceMessage extends Event {
         var dmmMessage = {
             'version': this._version,
             'event': event
-        }
+        };
         return dmmMessage;
 
     }

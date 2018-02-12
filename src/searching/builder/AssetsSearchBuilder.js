@@ -1,8 +1,8 @@
 'use strict';
 
-import PreFilteredSearchBuilder from './PreFilteredSearchBuilder'
-import FieldFinder from '../../util/searchingFields/FieldFinder'
-import AssetSearch from '../AssetSearch'
+import PreFilteredSearchBuilder from './PreFilteredSearchBuilder';
+import FieldFinder from '../../util/searchingFields/FieldFinder';
+import AssetSearch from '../AssetSearch';
 
 const BASE_URL = '/entities';
 /**
@@ -43,9 +43,9 @@ export default class AssetsSearchBuilder extends PreFilteredSearchBuilder {
             let filter = this._builderParams.filter;
             if (typeof filter._filterTemplate !== "undefined") {
                 //return filter._filterTemplate;
-                finalFilter["and"].push(filter._filterTemplate.filter);
+                finalFilter.and.push(filter._filterTemplate.filter);
             } else {
-                finalFilter["and"].push(filter);
+                finalFilter.and.push(filter);
             }
         }
 

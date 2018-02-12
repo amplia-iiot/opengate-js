@@ -1,7 +1,7 @@
 'use strict';
 
 import q from 'q';
-import merge from 'merge'
+import merge from 'merge';
 
 const LIMIT_SIZE_DEF_VALUE = 1000;
 
@@ -29,6 +29,23 @@ export default class BaseSearch {
         }
         this._ogapi = ogapi;
         this._resource = 'search' + resource;
+        this._headers = undefined;
+    }
+
+    _getExtraHeaders() {
+        return this._headers;
+    }
+
+    _setExtraHeaders(headers) {
+        if (this._headers) {
+            var keys = Object.keys(headers);
+            for (var i = 0; i < keys.length; i++){
+                var key = keys[i];
+                this._headers[key] = headers[key];
+            }
+        } else {
+            this._headers = headers;
+        }
     }
 
     /**
@@ -41,7 +58,7 @@ export default class BaseSearch {
         var defered = q.defer();
         var promise = defered.promise;
         this._ogapi.Napi
-            .post(this._resource, this._filter(), this._timeout)
+            .post(this._resource, this._filter(), this._timeout, this._getExtraHeaders())
             .then((response) => {
                 let resultQuery = response.body;
                 let statusCode = response.statusCode;
@@ -53,6 +70,12 @@ export default class BaseSearch {
         return promise;
     }
 
+    /**
+     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * @return {Promise} - Promise with data with format csv
+     * @property {function (result:object, statusCode:number)} then - When request it is OK
+     * @property {function (error:string)} catch - When request it is NOK
+     */
     downloadCsv() {
         var defered = q.defer();
         var promise = defered.promise;
@@ -61,8 +84,9 @@ export default class BaseSearch {
         if (filter && filter.limit) {
             delete filter.limit;
         }
+        this._setExtraHeaders({ 'Accept': 'text/plain' });
 
-        this._ogapi.Napi.post_csv(this._resource, filter, this._timeout)
+        this._ogapi.Napi.post(this._resource, filter, this._timeout, this._getExtraHeaders())
             .then((response) => {
                 let resultQuery = response;
                 let statusCode = response.statusCode;
@@ -81,7 +105,7 @@ export default class BaseSearch {
         var filter = this._filter();
 
         if (!filter.limit || !filter.limit.size) {
-            filter.limit = { size: LIMIT_SIZE_DEF_VALUE, start: 1 }
+            filter.limit = { size: LIMIT_SIZE_DEF_VALUE, start: 1 };
         } else {
             filter.limit.start = 1;
         }
@@ -108,7 +132,7 @@ export default class BaseSearch {
                 defered.reject({ data: message, statusCode: 403 });
             } else {
                 _this._ogapi.Napi
-                    .post(_this._resource, filter, _this._timeout)
+                    .post(_this._resource, filter, _this._timeout, _this._getExtraHeaders())
                     .then((response) => {
                         let statusCode = response.statusCode;
                         let body = response.body;
@@ -139,7 +163,7 @@ export default class BaseSearch {
                             if (paging) {
                                 defered.resolve({ data: 'DONE', statusCode: 200 });
                             } else
-                                defered.reject({ data: body, statusCode: statusCode })
+                                defered.reject({ data: body, statusCode: statusCode });
                         }
                     })
                     .catch((error) => {

@@ -122,7 +122,7 @@ const FIELD_SEARCHER = {
     },
     [COMPLEX_FIELDS]: function(states, context, primaryType, defered) {
         const finiteStateMachine = {
-            1: function(states, context) {
+            1: function (states, context) {
                 // Fields del primaryType + los fields de los relacionados = complexFields
                 return context[primaryType].concat(
                     complexFields.filter(
@@ -131,7 +131,7 @@ const FIELD_SEARCHER = {
                     )
                 );
             },
-            2: function(states, context) {
+            2: function (states, context) {
                 try {
                     // Fields del relacionado + fields_related
                     return appendPreviousStates(
@@ -143,7 +143,7 @@ const FIELD_SEARCHER = {
                     return [];
                 }
             },
-            3: function(states, context) {
+            3: function (states, context) {
                 let secondState = states[1];
                 if (fields_related.indexOf(secondState) === -1) return [];
                 try {
@@ -157,7 +157,7 @@ const FIELD_SEARCHER = {
                     return [];
                 }
             }
-        }
+        };
 
         let statesSize = states.length;
         let currentState = finiteStateMachine[statesSize];
@@ -176,7 +176,7 @@ const FIELD_SEARCHER = {
         }
 
         function appendPreviousStates(states, fields) {
-            let out = []
+            let out = [];
             fields.forEach(function(field) {
                 let arrayField = states.slice(0, -1);
                 arrayField.push(field);

@@ -41,7 +41,7 @@ So I can create a domain
   Scenario: Create a domain
     And the "name" "domain_test_ogapi"
     And the "description" "Domian created for testing ogapi"
-    And the "parentDomain" "root"
+    And the "parentDomain" "base_organization"
     And I delete it
     And I create it
     Then does not throws an error

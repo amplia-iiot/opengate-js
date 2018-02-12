@@ -34,7 +34,7 @@ export default class Operation {
             .put(this._resource, this._postObj)
             .then((response) => {
                 //console.log("UPDATE: " + JSON.stringify(response));
-                let data = undefined;
+                let data;
                 try {
                     data = JSON.parse(response.text);
                 } catch (err) {
@@ -46,10 +46,10 @@ export default class Operation {
             .catch((error) => {
                 //console.log("ERROR: " + JSON.stringify(error));
                 if (!error.data) {
-                    error["data"] = {};
+                    error.data = {};
                 }
                 if (!error.data.errors) {
-                    error.data["errors"] = [(typeof (error) === "string") ? { message: error } : error];
+                    error.data.errors = [(typeof (error) === "string") ? { message: error } : error];
                 }
                 defered.reject(error);
             });
@@ -68,7 +68,7 @@ export default class Operation {
         this._ogapi.Napi
             .post(this._resource, this._postObj)
             .then((response) => {
-                let data = undefined;
+                let data;
                 try {
                     data = JSON.parse(response.text);
                 } catch (err) {
@@ -78,10 +78,10 @@ export default class Operation {
             })
             .catch((error) => {
                 if (!error.data) {
-                    error["data"] = {};
+                    error.data = {};
                 }
                 if (!error.data.errors) {
-                    error.data["errors"] = [(typeof (error) === "string") ? { message: error } : error];
+                    error.data.errors = [(typeof (error) === "string") ? { message: error } : error];
                 }
                 defered.reject(error);
             });

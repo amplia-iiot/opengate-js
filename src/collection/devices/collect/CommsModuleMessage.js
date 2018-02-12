@@ -183,7 +183,7 @@ export default class CommsModuleMessage {
             not_found.push(value);
         }
         if (not_found.length !== 0) {
-            console.warn("Parameter value not allowed <'" + JSON.stringify(not_found) + "'>, allowed <'" + JSON.stringify(enumName) + "'>")
+            console.warn("Parameter value not allowed <'" + JSON.stringify(not_found) + "'>, allowed <'" + JSON.stringify(enumName) + "'>");
         }
         return value;
     }
@@ -198,7 +198,7 @@ export default class CommsModuleMessage {
             "hardware": this._hardware.composeElement(),
             "operationalStatus": this._operationalStatus,
             "antennaStatus": this._antennaStatus
-        }
+        };
         if (this._softwareList.length > 0) {
             commsModule.softwareList = this._softwareList;
         }

@@ -15,7 +15,7 @@ Feature: Delete and Create a workgroup
     Then I want to create an "domain"
   	And the "name" "domainWorkgroup_test_ogapi"
     And the "description" "Domain created for testing ogapi workgroups"
-  	And the "parentDomain" "root"
+    And the "parentDomain" "base_organization"
     Then I delete it
     And I create it
  	  And response code should be: 201

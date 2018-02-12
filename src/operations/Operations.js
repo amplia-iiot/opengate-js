@@ -3,8 +3,9 @@
 import AlarmAttendBuilder from './catalog/AlarmAttendBuilder';
 import AlarmCloseBuilder from './catalog/AlarmCloseBuilder';
 import BaseOperationBuilder from './catalog/BaseOperationBuilder';
-import PeriodicityUpdateBuilder from './catalog/period/PeriodicityUpdateBuilder'
+import PeriodicityUpdateBuilder from './catalog/period/PeriodicityUpdateBuilder';
 import q from 'q';
+import merge from 'merge';
 
 /**
  * This class generates all operations builders by a response to search into catalog/operations
@@ -29,7 +30,7 @@ export default class Operations {
      */
     updatePeriodicityBuilder(operationId) {
         if (typeof operationId !== "string") {
-            throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: "operationId" })
+            throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: "operationId" });
         }
         let defered = q.defer();
         let promise = defered.promise;
@@ -53,7 +54,7 @@ export default class Operations {
      */
     builderByOperationName(name) {
         if (typeof name !== "string") {
-            throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: "name" })
+            throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: "name" });
         }
         let defered = q.defer();
         let promise = defered.promise;

@@ -51,6 +51,7 @@ export default class ChannelFinder extends ProvisionGenericFinder {
         this._domain = domain;
 
         this._workgroup = workgroup;
+        let _error_not_found = this._error_not_found;
 
         let defered = q.defer();
         let promise = defered.promise;
@@ -140,12 +141,12 @@ export default class ChannelFinder extends ProvisionGenericFinder {
         let promise = defered.promise;
 
         let _error_not_found = this._error_not_found;
-        this._api.get(workgroupsRelationsUrl)
+        this._api.get(workgroupsRelationsUrl, undefined, this._getExtraHeaders())
             .then((req) => {
                 if (req.statusCode === 204) {
                     defered.reject({ data: _error_not_found, statusCode: HttpStatus.NOT_FOUND });
                 } else {
-                    defered.resolve({ data: req.body["workgroupRelation"], statusCode: req.statusCode });
+                    defered.resolve({ data: req.body.workgroupRelation, statusCode: req.statusCode });
                 }
             })
             .catch((error) => {

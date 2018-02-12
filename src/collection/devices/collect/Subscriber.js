@@ -69,9 +69,7 @@ export default class Subscriber {
             "id": this._id,
             "name": this._name,
             "type": this._type
-
-
-        }
+        };
         if (this._hardware !== undefined) {
             subscriber.hardware = this._hardware.composeElement();
         }

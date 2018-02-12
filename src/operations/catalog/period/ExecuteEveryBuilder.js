@@ -71,7 +71,7 @@ export default class ExecuteEveryBuilder {
 			}
 		}
 		if (not_found.length !== 0) {
-			throw new Error("Any month into parameter months is not allowed. Parameter value <'" + JSON.stringify(not_found) + "'>, Months allowed <'" + JSON.stringify(MONTHS_ENUM) + "'>")
+			throw new Error("Any month into parameter months is not allowed. Parameter value <'" + JSON.stringify(not_found) + "'>, Months allowed <'" + JSON.stringify(MONTHS_ENUM) + "'>");
 		}
 		return new ByMonth(this._parent, this._date, this._periodicityName, months, this._end);
 	}

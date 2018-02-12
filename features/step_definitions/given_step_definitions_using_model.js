@@ -59,9 +59,15 @@ module.exports = function () {
         // Write code here that turns the phrase above into concrete actions        
         var _this = this;
         this.util = this.utilsModel.util(utilName, this.ogapi, param);
-        return this.util.then(function (builder) {
-            _this.util = builder;
-        });
+        try {
+            return this.util.then(function (builder) {
+                _this.util = builder;
+            }).catch(function (err) {
+                
+            });
+        } catch (err) {
+            return;
+        }
     });
 
     this.Given(/^an ogapi "([^"]*)" util with "([^"]*)"$/, function (utilName, param, callback) {

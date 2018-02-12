@@ -17,7 +17,7 @@ import {
 } from './MODE_VALIDATORS_ENUM';
 
 import q from 'q';
-import BaseProvision from '../../provision/BaseProvision'
+import BaseProvision from '../../provision/BaseProvision';
 
 /**
  * This is a base object that contains all you can do about Deployment Element.
@@ -88,7 +88,7 @@ export default class DeploymentElement extends BaseProvision {
         }
 
         if (not_found !== '') {
-            throw new Error({ message: "OGAPI_NOT_ALLOWED_PARAMETER", parameter: JSON.stringify(not_found), allowed: JSON.stringify(TYPE_ENUM) })
+            throw new Error({ message: "OGAPI_NOT_ALLOWED_PARAMETER", parameter: JSON.stringify(not_found), allowed: JSON.stringify(TYPE_ENUM) });
 
         }
         this._type = type;
@@ -140,7 +140,7 @@ export default class DeploymentElement extends BaseProvision {
 
         if (not_found !== '') {
             throw new Error("Parameter operation is not allowed. Parameter value <'" +
-                JSON.stringify(not_found) + "'>, operation allowed <'" + JSON.stringify(OPERATION_ENUM) + "'>")
+                JSON.stringify(not_found) + "'>, operation allowed <'" + JSON.stringify(OPERATION_ENUM) + "'>");
         }
         this._operation = operation;
         return this;
@@ -166,7 +166,7 @@ export default class DeploymentElement extends BaseProvision {
 
         if (not_found !== '') {
             throw new Error("Parameter option is not allowed. Parameter value <'" +
-                JSON.stringify(not_found) + "'>, option allowed <'" + JSON.stringify(OPTION_ENUM) + "'>")
+                JSON.stringify(not_found) + "'>, option allowed <'" + JSON.stringify(OPTION_ENUM) + "'>");
         }
         this._option = option;
         return this;
@@ -228,7 +228,7 @@ export default class DeploymentElement extends BaseProvision {
 
             if (not_found !== '') {
                 throw new Error("Parameter type is not allowed. Parameter value <'" +
-                    JSON.stringify(not_found) + "'>, type allowed <'" + JSON.stringify(MODE_VALIDATORS_ENUM) + "'>")
+                    JSON.stringify(not_found) + "'>, type allowed <'" + JSON.stringify(MODE_VALIDATORS_ENUM) + "'>");
             }
 
             // Se valida que TRUSTED_BOOT sea sólo para firmwares
@@ -261,7 +261,7 @@ export default class DeploymentElement extends BaseProvision {
 
             if (not_found !== '') {
                 throw new Error("Parameter type is not allowed. Parameter value <'" +
-                    JSON.stringify(not_found) + "'>, type allowed <'" + JSON.stringify(TYPE_VALIDATORS_ENUM) + "'>")
+                    JSON.stringify(not_found) + "'>, type allowed <'" + JSON.stringify(TYPE_VALIDATORS_ENUM) + "'>");
             }
 
             validatorElement.type = type;
@@ -386,22 +386,22 @@ export default class DeploymentElement extends BaseProvision {
             this._path === undefined || this._order === undefined || this._operation === undefined || this._option === undefined)
             throw new Error('Method not allowed - You must define the basic element [name, version, type, path, order, option and operation]');
         var meta = {
-                deploymentElement: {
-                    name: this._name || undefined,
-                    version: this._version || undefined,
-                    type: this._type || undefined,
-                    path: this._path || undefined,
-                    order: this._order || undefined,
-                    operation: this._operation || undefined,
-                    option: this._option || undefined,
-                    fileName: this._fileName || undefined,
-                    downloadUrl: this._downloadUrl || undefined,
-                    validators: this._validators || undefined,
-                    oldName: this._oldName || undefined,
-                    oldVersion: this._oldVersion || undefined,
-                    oldPath: this._oldPath || undefined
-                }
+            deploymentElement: {
+                name: this._name || undefined,
+                version: this._version || undefined,
+                type: this._type || undefined,
+                path: this._path || undefined,
+                order: this._order || undefined,
+                operation: this._operation || undefined,
+                option: this._option || undefined,
+                fileName: this._fileName || undefined,
+                downloadUrl: this._downloadUrl || undefined,
+                validators: this._validators || undefined,
+                oldName: this._oldName || undefined,
+                oldVersion: this._oldVersion || undefined,
+                oldPath: this._oldPath || undefined
             }
+        };
             //console.log(JSON.stringify(meta));
         return meta;
     }
@@ -421,7 +421,7 @@ export default class DeploymentElement extends BaseProvision {
     _buildURL() {
         if (this._name === undefined || this._version === undefined)
             throw new Error('Parameters name, version must be defined');
-        return this._resource + "/" + this._name + "/version/" + this._version;;
+        return this._resource + "/" + this._name + "/version/" + this._version;
     }
 
 
@@ -465,7 +465,7 @@ export default class DeploymentElement extends BaseProvision {
         this._ogapi.Napi.post_multipart(this._composeUrlCreate(), form, petitionOpts, this._timeout)
             .then((res) => {
                 if (res.statusCode === 201) {
-                    defered.resolve({ location: res.header['location'], statusCode: res.statusCode });
+                    defered.resolve({ location: res.header.location, statusCode: res.statusCode });
                 } else {
                     defered.reject({ errors: res.errors, statusCode: res.statusCode });
                 }

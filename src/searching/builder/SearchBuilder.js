@@ -1,7 +1,7 @@
 'use strict';
 
-import Search from '../Search'
-import SearchBuilderError from '../error/SearchBuilderError'
+import Search from '../Search';
+import SearchBuilderError from '../error/SearchBuilderError';
 
 const LIMIT_START_DEF_VALUE = 1;
 const LIMIT_SIZE_DEF_VALUE = 1000;
@@ -37,7 +37,7 @@ export default class SearchBuilder {
             this[route] = (_route = route) => {
                 this._builderParams[_route] = true;
                 return this;
-            }
+            };
         }
     }
 
@@ -200,7 +200,7 @@ export default class SearchBuilder {
             return filter._filterTemplate;
         return {
             filter: filter
-        }
+        };
     }
 
     _buildSelect() {
@@ -209,7 +209,7 @@ export default class SearchBuilder {
             return select._selectTemplate;
         return {
             select: select
-        }
+        };
     }
     _buildGroup() {
         let group = this._builderParams.group;
@@ -217,7 +217,7 @@ export default class SearchBuilder {
             return group._groupTemplate;
         return {
             group: group
-        }
+        };
     }
 
     _buildLimit() {

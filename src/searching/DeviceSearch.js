@@ -1,4 +1,4 @@
-import Search from './Search'
+import Search from './Search';
 import q from 'q';
 
 /** 
@@ -27,7 +27,7 @@ export default class DeviceSearch extends Search {
         var defered = q.defer();
         var promise = defered.promise;
         this._ogapi.Napi
-            .post(this._resource, this._filter(), this._timeout)
+            .post(this._resource, this._filter(), this._timeout, this._getExtraHeaders())
             .then((response) => {
                 let resultQuery = response.body;
                 let statusCode = response.statusCode;

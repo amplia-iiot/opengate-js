@@ -33,7 +33,7 @@ export default class QuickSearch extends EntitySearch {
         super(ogapi, '/' + type, _createFilter().filter, limit);
 
         function _createFilter() {
-            let filterTemplate = { filter: { or: [] } }
+            let filterTemplate = { filter: { or: [] } };
             let like = { like: {} };
             if (!_checkEmpty()) {
                 for (let i = 0; i < DEFAULT_PARAMETERS.length; i++) {

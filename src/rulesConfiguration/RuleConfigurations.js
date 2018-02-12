@@ -1,8 +1,8 @@
 'use strict';
 
-import BaseProvision from '../provision/BaseProvision'
-import _RuleCondition from './_RuleCondition'
-import _RuleNotification from './_RuleNotification'
+import BaseProvision from '../provision/BaseProvision';
+import _RuleCondition from './_RuleCondition';
+import _RuleNotification from './_RuleNotification';
 import q from 'q';
 
 /**
@@ -229,7 +229,7 @@ export default class RuleConfigurations extends BaseProvision {
      * @throws {Error} 
      */
     create() {
-        throw new Error("Rule configuration creation not allowed")
+        throw new Error("Rule configuration creation not allowed");
     }
 
     /** 

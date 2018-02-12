@@ -33,7 +33,7 @@ I want to create or delete an organization
     And the "plan" "BASIC"
     And the "only assigned domain certificates" false
     And the "location" with 1 and 1
-    And the "domain" "root"
+    And the "domain" "base_organization"
     Then I delete it
     Then I create it
     And response code should be: 201
@@ -45,7 +45,7 @@ I want to create or delete an organization
     Given I want to create a "domain"
     And the "name" "domain_test_ogapi"
     And the "description" "Domian created for testing ogapi"
-    And the "parentDomain" "root"
+    And the "parentDomain" "base_organization"
     And I create it
     Then response code should be: 201
     And an ogapi "organizations builder" util
@@ -80,7 +80,7 @@ I want to create or delete an organization
     And I delete it
     And I create it
     Then response code should be: 201
-    And the "domain" "root"
+    And the "domain" "base_organization"
     And I update it
     Then throws an error equal to "The domain parameter is not allowed in the update"
     And I delete it

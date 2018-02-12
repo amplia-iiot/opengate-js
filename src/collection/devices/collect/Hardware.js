@@ -35,7 +35,7 @@ export default class Hardware {
      */
     withManufacturerName(manufacturerName) {
         if (typeof manufacturerName !== 'string' || manufacturerName.length === 0)
-            throw new Error('Parameter manufacturer Name must be a string and cannot be empty');;
+            throw new Error('Parameter manufacturer Name must be a string and cannot be empty');
         this._manufacturerName = manufacturerName;
         return this;
     }
@@ -47,7 +47,7 @@ export default class Hardware {
      */
     withManufacturerOui(manufacturerOui) {
         if (typeof manufacturerOui !== 'string' || manufacturerOui.length === 0)
-            throw new Error('Parameter manufacturer code must be a string and cannot be empty');;
+            throw new Error('Parameter manufacturer code must be a string and cannot be empty');
         this._manufacturerOui = manufacturerOui;
         return this;
     }
@@ -59,7 +59,7 @@ export default class Hardware {
      */
     withModelName(modelName) {
         if (typeof modelName !== 'string' || modelName.length === 0)
-            throw new Error('Parameter model Name must be a string and cannot be empty');;
+            throw new Error('Parameter model Name must be a string and cannot be empty');
         this._modelName = modelName;
         return this;
     }
@@ -71,7 +71,7 @@ export default class Hardware {
      */
     withModelVersion(modelVersion) {
         if (typeof modelVersion !== 'string' || modelVersion.length === 0)
-            throw new Error('Parameter model Version must be a string and cannot be empty');;
+            throw new Error('Parameter model Version must be a string and cannot be empty');
         this._modelVersion = modelVersion;
         return this;
     }
@@ -149,7 +149,7 @@ export default class Hardware {
                 'version': this._modelVersion || ""
             },
             'clockDate': this._clockDate
-        }
+        };
         return hardware;
     }
 

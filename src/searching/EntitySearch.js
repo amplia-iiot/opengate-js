@@ -1,6 +1,6 @@
-'use strict'
+'use strict';
 
-import Search from './Search'
+import Search from './Search';
 import q from 'q';
 
 /** 
@@ -61,7 +61,10 @@ export default class EntitySearch extends Search {
                     }
 
                 }
-                defered.resolve({ data: resultQuery, statusCode: statusCode });
+                defered.resolve({
+                    data: resultQuery,
+                    statusCode: statusCode
+                });
             })
             .catch((error) => {
                 defered.reject(error);

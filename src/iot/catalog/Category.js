@@ -76,6 +76,6 @@ export default class Category {
             'identifier': this._identifier,
             'name': this._name ? this._name : undefined,
             'datastreams': this._datastreams
-        }
+        };
     }
 }

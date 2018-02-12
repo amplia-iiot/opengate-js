@@ -21,7 +21,7 @@ export default class ByGeneric {
 					time: moment(date).format(TIME_FORMAT)
 				}
 			}
-		}
+		};
 		if (typeof end !== "undefined") {
 			let stop;
 			if (typeof end === "number") {

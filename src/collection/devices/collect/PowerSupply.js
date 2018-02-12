@@ -122,7 +122,7 @@ export default class PowerSupply {
             not_found.push(value);
         }
         if (not_found.length !== 0) {
-            console.warn("Parameter value not allowed <'" + JSON.stringify(not_found) + "'>, allowed <'" + JSON.stringify(enumName) + "'>")
+            console.warn("Parameter value not allowed <'" + JSON.stringify(not_found) + "'>, allowed <'" + JSON.stringify(enumName) + "'>");
         }
         return value;
     }
@@ -184,12 +184,12 @@ export default class PowerSupply {
                 "status": this._batteryStatus,
                 "percentage": this._percentage,
             }
-        }
+        };
         if(this._outageDate !== undefined || this._outageDuration !== undefined ){
-            powerSupply.outage =  {
+            powerSupply.outage = {
                 "timestamp": this._outageDate,
                 "duration": this._outageDuration
-            }
+            };
         }
         return powerSupply;
     }

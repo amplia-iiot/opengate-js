@@ -1,7 +1,7 @@
 'use strict';
 
 import q from 'q';
-import BaseProvision from '../provision/BaseProvision'
+import BaseProvision from '../provision/BaseProvision';
 
 /**
  * This is a base object that contains all you can do about workgroups.
@@ -74,7 +74,7 @@ export default class Workgroups extends BaseProvision {
                 description: this._description || undefined,
                 administrative: this._administrative || false
             }
-        }
+        };
 
         return workgroup;
     }
@@ -87,7 +87,7 @@ export default class Workgroups extends BaseProvision {
             "workgroup": {
                 description: this._description || undefined
             }
-        }
+        };
 
         return workgroup;
     }

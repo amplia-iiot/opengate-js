@@ -78,7 +78,7 @@ export default class Datapoint {
             'value': this._value,
             'tags': this._tags || undefined
 
-        }
+        };
         return datapoint;
     }
 

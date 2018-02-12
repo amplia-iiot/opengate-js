@@ -74,9 +74,9 @@ export default class RuleConfigurationsActions {
                 if (res.statusCode === 201) {
                     //console.log("CREATEOK: " + JSON.stringify(res));
                     if (typeof this._onCreated === "function") {
-                        this._onCreated(res.header['location']);
+                        this._onCreated(res.header.location);
                     }
-                    defered.resolve({ location: res.header['location'], statusCode: res.statusCode });
+                    defered.resolve({ location: res.header.location, statusCode: res.statusCode });
                 } else if (res.statusCode === 200) {
                     //console.log("POSTOK: " + JSON.stringify(res));
                     defered.resolve({ statusCode: res.statusCode });

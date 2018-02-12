@@ -1,7 +1,7 @@
 'use strict';
-import BaseProvision from '../../provision/BaseProvision'
-import Category from '../catalog/Category'
-import Datastream from '../catalog/Datastream'
+import BaseProvision from '../../provision/BaseProvision';
+import Category from '../catalog/Category';
+import Datastream from '../catalog/Datastream';
 
 export const PRE_RESOURCE = '/organizations';
 export const DATAMODELS_RESOURCE = '/datamodels';
@@ -111,8 +111,11 @@ export default class Datamodels extends BaseProvision {
         if (exists_category === -1) {
             throw new Error('Category ' + category + ' not exists for this datamodel. Use addCategory instead.');
         }
-        this._categories[exists_category].datastreams ? this._categories[exists_category].datastreams.push(datastream) :
-            this._categories[exists_category]['datastreams'] = [datastream];
+        if (this._categories[exists_category].datastreams) {
+            this._categories[exists_category].datastreams.push(datastream) 
+        } else {
+            this._categories[exists_category].datastreams = [datastream];
+        }   
         return this;
     }
 
@@ -133,7 +136,7 @@ export default class Datamodels extends BaseProvision {
             'description': this._description,
             'allowedResourceTypes': this._resourceType.length > 0 ? this._resourceType : undefined,
             'categories': this._categories.length > 0 ? this._categories : undefined
-        }
+        };
     }
 
     _buildURL() {

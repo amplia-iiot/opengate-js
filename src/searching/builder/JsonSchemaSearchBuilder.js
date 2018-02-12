@@ -1,7 +1,7 @@
 'use strict';
 
-import SearchBuilder from './SearchBuilder'
-import og_basic_types from './jsonSchema/og_basic_types'
+import SearchBuilder from './SearchBuilder';
+import og_basic_types from './jsonSchema/og_basic_types';
 import q from 'q';
 //import jp from 'jsonpath';
 import JSONPath from 'JSONPath';

@@ -20,22 +20,22 @@ define(function () {
 					assert.equal(err.message, "Timeout exceeded");
 					done();
 				});
-			})
+			});
 			/** @test {SearchBuilder#withTimeout}  */
 			it('It is all ok when not exceeded timeout', function () {
 				ogapi.devicesSearchBuilder().onProvisioned().addSortBy('prov.customId', 'ASCENDING').summary().withTimeout(10000).build().execute().then(function (response, statusCode) {
 					assert.equal(statusCode, 200);
 					done();
 				});
-			})
+			});
 			/** @test {SearchBuilder#withTimeout}  */
 			it('Check default timeout value when it is no setted', function () {
 				assert.strictEqual(ogapi.devicesSearchBuilder().onProvisioned().build()._timeout, 5000);
-			})
+			});
 			/** @test {SearchBuilder#withTimeout}  */
 			it('withTimeout parameter must be a number', function () {
-				assert.throws(function () { ogapi.devicesSearchBuilder().withTimeout("a") }, "Parameter ms must be a number");
-			})
+				assert.throws(function () { ogapi.devicesSearchBuilder().withTimeout("a"); }, "Parameter ms must be a number");
+			});
 		});
 		/** @test {SearchBuilder}*/
 		describe('Check on entity searching:', function () {
@@ -148,8 +148,8 @@ define(function () {
 					assert.deepEqual(ogapi.devicesSearchBuilder().
 						onProvisioned().
 						filter(
-						ogapi.newFilterBuilder().
-							and(ogapi.EX.like("hello", "world")))
+							ogapi.newFilterBuilder().
+								and(ogapi.EX.like("hello", "world")))
 						.build()._postObj.filter, filterExpected);
 				});
 			});
@@ -442,7 +442,7 @@ define(function () {
 					});
 				});
 			});
-		})
+		});
 		describe('Check on alarm searching:', function () {
 			/** @test {AlarmsSearchBuilder#build}*/
 			it('without source data', function () {
@@ -493,7 +493,7 @@ define(function () {
 					});
 				});
 			});
-		})
+		});
 		describe('Check on bundles searching:', function () {
 			/** @test {BundlesSearchBuilder#build}*/
 			it('bundlesSearchBuilder', function () {
@@ -513,5 +513,5 @@ define(function () {
 				});
 			});
 		});
-	})
+	});
 });

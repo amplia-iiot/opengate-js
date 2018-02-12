@@ -18,7 +18,7 @@ Feature: Find a bundle
     Given the "name" "ogux_cucumber_bundle_find"
     And the "version" "1.0.0"
     And the "hardware" "OpenGate"
-    And the "workgroup" "root"
+    And the "workgroup" "base_organization"
     Then I delete it
     Then I create it
     And response code should be: 201
@@ -35,6 +35,6 @@ Feature: Find a bundle
     Given the "name" "ogux_cucumber_bundle_find"
     And the "version" "1.0.0"
     And the "hardware" "OpenGate"
-    And the "workgroup" "root"
+    And the "workgroup" "base_organization"
     Then I delete it
     Then response code should be: 200

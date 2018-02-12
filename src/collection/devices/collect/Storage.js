@@ -42,12 +42,12 @@ export default class Storage extends Usage{
     composeElement(){
         var usage = super.composeElement();
 
-        var storage =  {
-                    "unit": this._unit,
-                    "total": this._total,
-                    "usage":  usage
+        var storage = {
+            "unit": this._unit,
+            "total": this._total,
+            "usage": usage
                     
-                }
+        };
 
         return storage;
     }

@@ -8,7 +8,7 @@ module.exports = function() {
         _this.responseData = undefined;
 
         var model = "create";
-        var deploymentElement = undefined;
+        var deploymentElement;
 
         try {
             //console.log("datos deploymentElements");
@@ -28,7 +28,7 @@ module.exports = function() {
                     // el parametro tiene que ser un array de objetos validator
                     deploymentElement = deploymentElement[submethod](JSON.parse(data[i].content));
                 }
-            };
+            }
 
             if (_this.fileData) {
                 //console.log("with file");
@@ -50,7 +50,7 @@ module.exports = function() {
         }
     });
 
-    this.Then(/^I delete the first deployment element from current bundle$/, function() {
+    this.Then(/^I delete the first deployment element from current bundle$/, function () {
        var _this = this;
         _this.error = undefined;
         _this.responseData = undefined;
@@ -62,7 +62,6 @@ module.exports = function() {
         }
 
         function catchErrorResponse(err) {
-            //console.log("NOK: " + JSON.stringify(err));
             _this.responseData = err;
             _this.error = err;
         }
@@ -112,12 +111,11 @@ module.exports = function() {
                 //console.log("Creando bundle 2");
                 return _this.util.deploy().then(catchResponse).catch(catchErrorResponse);
             } else {
-                throw new Error("No deploy method available")
+                throw new Error("No deploy method available");
             }
 
         } catch (err) {
             _this.error = err;
-            //console.log("error: " + err);
             return;
         }
     });
@@ -140,6 +138,7 @@ module.exports = function() {
             //console.log(JSON.stringify(err));
             _this.responseData = err;
             _this.error = err;
+            
         }
 
         try {
@@ -148,7 +147,6 @@ module.exports = function() {
 
         } catch (err) {
             _this.error = err;
-            //console.log(err);
             return;
         }
     });
@@ -170,6 +168,7 @@ module.exports = function() {
             //console.log(JSON.stringify(err));
             _this.responseData = err;
             _this.error = err;
+            
         }
 
         try {
@@ -177,7 +176,6 @@ module.exports = function() {
             return _this.util.deactivate().then(catchResponse).catch(catchErrorResponse);
         } catch (err) {
             _this.error = err;
-            //console.log(err);
             return;
         }
     });

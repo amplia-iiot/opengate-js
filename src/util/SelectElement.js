@@ -23,7 +23,7 @@ export default class SelectElement {
      * @param {[{field: field, alias:alias}]} fields - The fields that you want to show from that datastream
      */
     static element(name, fields) {
-        return { name: name, fields: fields }
+        return { name: name, fields: fields };
     }
 
 }
