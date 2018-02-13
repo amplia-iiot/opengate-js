@@ -53,7 +53,7 @@ module.exports = function() {
             //console.log("I WANT ERROR: " + error);
             _this.error = error;
             _this.responseData = response;
-            
+
         }
 
         try {
@@ -117,7 +117,7 @@ module.exports = function() {
             //console.log("STEP GENERIC_FINDER ERROR: " + JSON.stringify(error));
             _this.error = error;
             _this.responseData = error;
-            
+
         }
 
         var id;
@@ -163,7 +163,7 @@ module.exports = function() {
             //console.log("FIND BY EXECUTION ID ERROR: " + JSON.stringify(response));
             _this.error = response;
             _this.responseData = response;
-            
+
         }
 
         try {
@@ -329,7 +329,7 @@ module.exports = function() {
             //console.log("EXECUTE ERROR: " + JSON.stringify(err));
             _this.responseData = err;
             _this.error = err;
-            
+
         }
 
         try {
@@ -357,7 +357,7 @@ module.exports = function() {
             //console.log("EXECUTE ERROR: " + JSON.stringify(err));
             _this.responseData = err;
             _this.error = err;
-            
+
         }
 
         try {
@@ -388,7 +388,7 @@ module.exports = function() {
             //console.log("EXECUTE ERROR: " + JSON.stringify(err));
             _this.responseData = err;
             _this.error = err;
-            
+
         }
 
         function catchNotification(notification) {
@@ -424,7 +424,7 @@ module.exports = function() {
             //console.log("EXECUTE ERROR: " + JSON.stringify(err));
             _this.responseData = err;
             _this.error = err;
-            
+
         }
 
         function catchNotification(notification) {
@@ -461,7 +461,7 @@ module.exports = function() {
             //console.log("EXECUTE ERROR: " + JSON.stringify(err));
             _this.responseData = err;
             _this.error = err;
-            
+
         }
 
         function catchNotification(notification) {
@@ -509,7 +509,7 @@ module.exports = function() {
             //console.log("EXECUTE ERROR: " + error);
             _this.responseData = err;
             _this.error = error;
-            
+
         }
 
         try {
@@ -546,7 +546,7 @@ module.exports = function() {
             } else {
                 _this.error = err;
             }
-            
+
         }
 
         try {
@@ -587,7 +587,7 @@ module.exports = function() {
             } else {
                 _this.error = err;
             }
-            
+
         }
 
         try {
@@ -621,7 +621,7 @@ module.exports = function() {
             //console.log(JSON.stringify(err));
             _this.responseData = err;
             _this.error = err;
-            
+
         }
 
         try {
@@ -657,7 +657,7 @@ module.exports = function() {
             //console.log(JSON.stringify(err));
             _this.responseData = err;
             _this.error = err;
-            
+
         }
 
         try {
@@ -688,11 +688,37 @@ module.exports = function() {
         function catchErrorResponse(err) {
             _this.responseData = err;
             _this.error = err;
-            
+
         }
 
         try {
             return _this.util.update().then(catchResponse).catch(catchErrorResponse);
+        } catch (err) {
+            this.error = err;
+            //console.log(err);
+            return;
+        }
+    });
+
+    this.When(/^I update password with "([^"]*)"$/, function(field) {
+        var _this = this;
+        _this.error = undefined;
+        _this.responseData = undefined;
+
+        function catchResponse(data) {
+            _this.responseData = data;
+            _this.error = undefined;
+            //console.log(JSON.stringify(_this.data));
+        }
+
+        function catchErrorResponse(err) {
+            _this.responseData = err;
+            _this.error = err;
+
+        }
+
+        try {
+            return _this.util.updatePassword(field).then(catchResponse).catch(catchErrorResponse);
         } catch (err) {
             this.error = err;
             //console.log(err);
@@ -715,7 +741,7 @@ module.exports = function() {
             //console.log("EXECUTE ERROR: " + JSON.stringify(err));
             _this.responseData = err;
             _this.error = err;
-            
+
         }
 
         try {
@@ -740,7 +766,7 @@ module.exports = function() {
         function catchErrorResponse(err) {
             _this.responseData = err;
             _this.error = err;
-            
+
         }
 
         try {
@@ -803,7 +829,7 @@ module.exports = function() {
         function catchErrorResponse(err) {
             _this.responseData = err;
             _this.error = err;
-            
+
         }
 
         try {

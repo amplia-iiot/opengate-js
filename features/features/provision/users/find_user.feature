@@ -3,6 +3,7 @@
 @finder
 @find_provision
 @users
+@find_user
 Feature: Find an user
 As a user of JsApi
 I want to find an user
