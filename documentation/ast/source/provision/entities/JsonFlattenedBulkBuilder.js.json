@@ -46,8 +46,8 @@
             "type": "Identifier",
             "name": "BulkBuilder",
             "range": [
-              24,
-              35
+              22,
+              33
             ],
             "loc": {
               "start": {
@@ -61,8 +61,8 @@
             }
           },
           "range": [
-            24,
-            35
+            22,
+            33
           ],
           "loc": {
             "start": {
@@ -81,8 +81,8 @@
         "value": "./BulkBuilder",
         "raw": "'./BulkBuilder'",
         "range": [
-          41,
-          56
+          39,
+          54
         ],
         "loc": {
           "start": {
@@ -96,8 +96,8 @@
         }
       },
       "range": [
-        17,
-        57
+        15,
+        55
       ],
       "loc": {
         "start": {
@@ -112,10 +112,10 @@
       "trailingComments": [
         {
           "type": "Block",
-          "value": "*\r\n * Csv builder. This builder give you the necessary tools to create a csv bulk using our OpenGate REST.\r\n ",
+          "value": "*\n * Csv builder. This builder give you the necessary tools to create a csv bulk using our OpenGate REST.\n ",
           "range": [
-            61,
-            174
+            57,
+            168
           ],
           "loc": {
             "start": {
@@ -138,8 +138,8 @@
           "type": "Identifier",
           "name": "JsonFlattenedBulkBuilder",
           "range": [
-            197,
-            221
+            190,
+            214
           ],
           "loc": {
             "start": {
@@ -156,8 +156,8 @@
           "type": "Identifier",
           "name": "BulkBuilder",
           "range": [
-            230,
-            241
+            223,
+            234
           ],
           "loc": {
             "start": {
@@ -179,8 +179,8 @@
                 "type": "Identifier",
                 "name": "constructor",
                 "range": [
-                  506,
-                  517
+                  492,
+                  503
                 ],
                 "loc": {
                   "start": {
@@ -201,8 +201,8 @@
                     "type": "Identifier",
                     "name": "ogapi",
                     "range": [
-                      518,
-                      523
+                      504,
+                      509
                     ],
                     "loc": {
                       "start": {
@@ -219,8 +219,8 @@
                     "type": "Identifier",
                     "name": "organization",
                     "range": [
-                      525,
-                      537
+                      511,
+                      523
                     ],
                     "loc": {
                       "start": {
@@ -244,8 +244,8 @@
                         "callee": {
                           "type": "Super",
                           "range": [
-                            550,
-                            555
+                            535,
+                            540
                           ],
                           "loc": {
                             "start": {
@@ -263,8 +263,8 @@
                             "type": "Identifier",
                             "name": "ogapi",
                             "range": [
-                              556,
-                              561
+                              541,
+                              546
                             ],
                             "loc": {
                               "start": {
@@ -288,8 +288,8 @@
                                 "value": "provision/organizations/",
                                 "raw": "'provision/organizations/'",
                                 "range": [
-                                  563,
-                                  589
+                                  548,
+                                  574
                                 ],
                                 "loc": {
                                   "start": {
@@ -306,8 +306,8 @@
                                 "type": "Identifier",
                                 "name": "organization",
                                 "range": [
-                                  592,
-                                  604
+                                  577,
+                                  589
                                 ],
                                 "loc": {
                                   "start": {
@@ -321,8 +321,8 @@
                                 }
                               },
                               "range": [
-                                563,
-                                604
+                                548,
+                                589
                               ],
                               "loc": {
                                 "start": {
@@ -340,8 +340,8 @@
                               "value": "/bulk/entities?action=#actionName#&flattened=true",
                               "raw": "'/bulk/entities?action=#actionName#&flattened=true'",
                               "range": [
-                                607,
-                                658
+                                592,
+                                643
                               ],
                               "loc": {
                                 "start": {
@@ -355,8 +355,8 @@
                               }
                             },
                             "range": [
-                              563,
-                              658
+                              548,
+                              643
                             ],
                             "loc": {
                               "start": {
@@ -374,8 +374,8 @@
                             "value": "application/json",
                             "raw": "'application/json'",
                             "range": [
-                              661,
-                              679
+                              646,
+                              664
                             ],
                             "loc": {
                               "start": {
@@ -390,8 +390,8 @@
                           }
                         ],
                         "range": [
-                          550,
-                          680
+                          535,
+                          665
                         ],
                         "loc": {
                           "start": {
@@ -405,8 +405,8 @@
                         }
                       },
                       "range": [
-                        550,
-                        681
+                        535,
+                        666
                       ],
                       "loc": {
                         "start": {
@@ -421,8 +421,8 @@
                     }
                   ],
                   "range": [
-                    539,
-                    688
+                    525,
+                    672
                   ],
                   "loc": {
                     "start": {
@@ -438,8 +438,8 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  517,
-                  688
+                  503,
+                  672
                 ],
                 "loc": {
                   "start": {
@@ -455,8 +455,8 @@
               "kind": "constructor",
               "computed": false,
               "range": [
-                506,
-                688
+                492,
+                672
               ],
               "loc": {
                 "start": {
@@ -471,10 +471,10 @@
               "leadingComments": [
                 {
                   "type": "Block",
-                  "value": "*\r\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\r\n     * @param {!string} organization - this is the organization name where entities will be created\r\n     * @param {!extension} [extension] - extension header to send\r\n     ",
+                  "value": "*\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\n     * @param {!string} organization - this is the organization name where entities will be created\n     * @param {!extension} [extension] - extension header to send\n     ",
                   "range": [
-                    251,
-                    500
+                    242,
+                    487
                   ],
                   "loc": {
                     "start": {
@@ -492,8 +492,8 @@
             }
           ],
           "range": [
-            242,
-            693
+            235,
+            675
           ],
           "loc": {
             "start": {
@@ -507,8 +507,8 @@
           }
         },
         "range": [
-          191,
-          693
+          184,
+          675
         ],
         "loc": {
           "start": {
@@ -523,10 +523,10 @@
         "leadingComments": [
           {
             "type": "Block",
-            "value": "*\r\n * Csv builder. This builder give you the necessary tools to create a csv bulk using our OpenGate REST.\r\n ",
+            "value": "*\n * Csv builder. This builder give you the necessary tools to create a csv bulk using our OpenGate REST.\n ",
             "range": [
-              61,
-              174
+              57,
+              168
             ],
             "loc": {
               "start": {
@@ -543,8 +543,8 @@
         "trailingComments": []
       },
       "range": [
-        176,
-        693
+        169,
+        675
       ],
       "loc": {
         "start": {
@@ -559,10 +559,10 @@
       "leadingComments": [
         {
           "type": "Block",
-          "value": "*\r\n * Csv builder. This builder give you the necessary tools to create a csv bulk using our OpenGate REST.\r\n ",
+          "value": "*\n * Csv builder. This builder give you the necessary tools to create a csv bulk using our OpenGate REST.\n ",
           "range": [
-            61,
-            174
+            57,
+            168
           ],
           "loc": {
             "start": {
@@ -581,7 +581,7 @@
   "sourceType": "module",
   "range": [
     0,
-    693
+    675
   ],
   "loc": {
     "start": {
@@ -596,10 +596,10 @@
   "comments": [
     {
       "type": "Block",
-      "value": "*\r\n * Csv builder. This builder give you the necessary tools to create a csv bulk using our OpenGate REST.\r\n ",
+      "value": "*\n * Csv builder. This builder give you the necessary tools to create a csv bulk using our OpenGate REST.\n ",
       "range": [
-        61,
-        174
+        57,
+        168
       ],
       "loc": {
         "start": {
@@ -614,10 +614,10 @@
     },
     {
       "type": "Block",
-      "value": "*\r\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\r\n     * @param {!string} organization - this is the organization name where entities will be created\r\n     * @param {!extension} [extension] - extension header to send\r\n     ",
+      "value": "*\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\n     * @param {!string} organization - this is the organization name where entities will be created\n     * @param {!extension} [extension] - extension header to send\n     ",
       "range": [
-        251,
-        500
+        242,
+        487
       ],
       "loc": {
         "start": {

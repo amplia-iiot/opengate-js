@@ -196,4 +196,21 @@ export default class BaseProvision {
             });
         return promise;
     }
+
+
+    _getExtraHeaders() {
+        return this._headers;
+    }
+
+    _setExtraHeaders(headers) {
+        if (this._headers) {
+            var keys = Object.keys(headers);
+            for (var i = 0; i < keys.length; i++) {
+                var key = keys[i];
+                this._headers[key] = headers[key];
+            }
+        } else {
+            this._headers = headers;
+        }
+    }
 }

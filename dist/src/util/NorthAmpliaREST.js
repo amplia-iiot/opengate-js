@@ -78,7 +78,7 @@ var NorthAmpliaREST = (function () {
                             "description": "Workgroup description",
                             "domain": "amplia",
                             "administrative": true
-                          },
+                         },
                         {
                             "name": "Workgroup_2",
                             "description": "Workgroup description",
@@ -399,7 +399,7 @@ var NorthAmpliaREST = (function () {
             var _req = req.timeout(_timeout);
 
             if (apiKey) {
-                _req = _req.set('x-apikey', this._options.apiKey);
+                _req = _req.set('X-ApiKey', this._options.apiKey);
             }
 
             if (headers) {

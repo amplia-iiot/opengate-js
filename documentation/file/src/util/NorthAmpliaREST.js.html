@@ -468,7 +468,7 @@ export default class NorthAmpliaREST {
         return this._createPromiseRequest(req, null, timeout, headers);
     }
 
-    
+
     /**
      * Invoke POST multipart action to url and data specified
      * @param {!string} url - url to execute POST
@@ -549,7 +549,7 @@ export default class NorthAmpliaREST {
         var encode = [];
         var relativeUrlSplit = relativeUrl.split(&quot;/&quot;);
         var length = relativeUrlSplit.length;
-        relativeUrlSplit.forEach(function (item, index) {
+        relativeUrlSplit.forEach(function(item, index) {
             if (index === (length - 1) &amp;&amp; item.indexOf(&quot;?&quot;) &gt; 0) {
                 var parameters = item.substring(item.indexOf(&quot;?&quot;), item.length);
                 var _item = item.substring(0, item.indexOf(&quot;?&quot;));
@@ -572,9 +572,9 @@ export default class NorthAmpliaREST {
         let _req = req.timeout(_timeout);
 
         if (apiKey) {
-            _req = _req.set(&apos;x-apikey&apos;, this._options.apiKey);
+            _req = _req.set(&apos;X-ApiKey&apos;, this._options.apiKey);
         }
-        
+
         if (headers) {
             var keys = Object.keys(headers);
             for (var i = 0; i &lt; keys.length; i++) {
@@ -588,7 +588,7 @@ export default class NorthAmpliaREST {
                 _req = _req.on(event, events[event]);
             }
         }
-        _req = _req.end(function (err, res) {
+        _req = _req.end(function(err, res) {
             if (err !== null) {
                 let data;
                 let status;
