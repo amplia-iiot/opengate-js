@@ -225,7 +225,7 @@ export default class User extends BaseProvision {
      */
     updatePassword(newPassword) {
         this._newPassword = newPassword;
-        if (this._email === undefined || this._password || this._newPassword) {
+        if (this._email === undefined || this._password === undefined || this._newPassword === undefined) {
             throw new Error('OGAPI_USER_UPDATE_PASSWORD_PARAMETER_MUST_BE_DEFINED');
         }
 
@@ -237,8 +237,9 @@ export default class User extends BaseProvision {
 
         var defered = q.defer();
         var promise = defered.promise;
+        this._setExtraHeaders({ 'X-ApiPass': this._password });
 
-        this._ogapi.Napi.put(this._buildURL(), data, undefined, this._password)
+        this._ogapi.Napi.put(this._buildURL(), data, this._getExtraHeaders())
             .then((res) => {
                 if (res.statusCode === 200) {
                     defered.resolve({
