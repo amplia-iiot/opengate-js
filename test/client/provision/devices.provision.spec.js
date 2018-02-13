@@ -21,6 +21,15 @@ define(function() {
 
         });
     });
+
+    /**
+     * 
+     * var user = ogapi.usersBuilder();
+user.withEmail("katherin.moscoso@amplia.es").withPassword("amplia")
+.updatePassword("amplia123")
+.then(function(res){console.log(res)})
+.catch(function(err){console.log(err)})
+    */
     /*
 
        
