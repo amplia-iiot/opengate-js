@@ -18,6 +18,7 @@ So, I can create a new user with the parametres that I have been defined
     And the "email" "ogux_ogapi@amplia.com"
     And the "workgroup" "base_organization"
     And the "domain" "base_organization"
+    And the "password" "nvoiqewvouoiu32j@#!!"
     And the "profile" "admin"
     And the "countryCode" "ES"
     And the "langCode" "en"
@@ -39,6 +40,13 @@ So, I can create a new user with the parametres that I have been defined
     And the "surname" "surname updated"
     And the "description" "user description updated"
     Then I update it
+    And response code should be: 200
+
+  Scenario: Update an user passwords that already exists
+    Then I want to update a "user"
+    And the "email" "ogux_ogapi@amplia.com"
+    And the "password" "nvoiqewvouoiu32j@#!!"
+    Then I update password with "nvoiqewvouoiu32j"
     And response code should be: 200
 
   Scenario: Delete an user that already exists
