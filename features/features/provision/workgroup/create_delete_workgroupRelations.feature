@@ -92,3 +92,10 @@ Feature: Delete and Create a workgroupRelations
     Then the util "channel_workgroupRelations" into "channel"
     Then I create it
     And response code should be: 201
+
+    Scenario: Delete the organization
+      Given an ogapi "organizations builder" util
+      Then I want to create an "organization"
+      And the "name" "workgroupRelations_organization"
+      Then I delete it
+      And response code should be: 200

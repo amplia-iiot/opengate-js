@@ -168,8 +168,10 @@ So, I can update a Datamodel with the parametres that I have been defined
             | base_organization                                                                                            |
             | {"identifier":"profile_test","name":"profile_change","version":"2.0","description":"CHANGE","categories":[]} |
         And I want to update a "datamodel"
-        And the "add category" "1category"
-        And the "add category" "2category"
+        And the
+            | method      | value                                           |
+            | addCategory | {"name":"1category", "identifier": "1category"} |
+            | addCategory | {"name":"2category", "identifier": "2category"} |
         And the "add datastream" with...
             | param                                                                                                                                                                                                                                              |
             | 1category                                                                                                                                                                                                                                          |
@@ -256,7 +258,7 @@ So, I can update a Datamodel with the parametres that I have been defined
             | organization | base_organization |
             | id           | profile_test      |
         Then response code should be: 200
-        And I can see into the result an "category[0] identifier" as "category1"
+        And I can see into the result an "category[0] identifier" as "1category"
         And I can see into the result an "category[0] datastream[0] identifier" as "1category.example.test"
         And I can see into the result an "category[1] identifier" as "2category"
         And I can see into the result an "category[1] datastream[0] identifier" as "category2.example.test"
