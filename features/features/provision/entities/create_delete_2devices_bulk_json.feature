@@ -49,3 +49,10 @@ Feature: Delete and Create a device
     And I read the file from "/file_test/bulk_double.json"
     And I "deleteAll" it with bulk
   	And response code should be: 200
+
+  Scenario: Delete the organization
+    Given an ogapi "organizations builder" util
+    Then I want to create an "organization"
+    And the "name" "organization_bulk"
+    Then I delete it
+    And response code should be: 200

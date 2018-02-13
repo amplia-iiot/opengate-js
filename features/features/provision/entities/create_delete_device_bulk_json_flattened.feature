@@ -49,3 +49,10 @@ Feature: Delete and Create a device
     And I read the file from "/file_test/bulk_double_flattened.json"
     And I "delete" it with bulk
   	Then does not throws an error
+  
+  Scenario: Delete the organization
+    Given an ogapi "organizations builder" util
+    Then I want to create an "organization"
+    And the "name" "organization_bulk"
+    Then I delete it
+    And response code should be: 200
