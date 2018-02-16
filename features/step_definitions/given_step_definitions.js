@@ -100,14 +100,20 @@ module.exports = function() {
         callback();
     });
 
+    this.Given(/^the path "([^"]*)"$/, function(pathName, callback) {
+        // Write code here that turns the phrase above into concrete actions
+        this.util.withPath(pathName);
+        callback();
+    });
+
     this.Given(/^the operation by "([^"]*)"$/, function(builderName) {
         // Write code here that turns the phrase above into concrete actions        
         var _this = this;
         try {
-            return this.ogapi.operations.builderByOperationName(builderName).then(function (builder) {
+            return this.ogapi.operations.builderByOperationName(builderName).then(function(builder) {
                 _this.util = builder;
-            }).catch(function (err) {
-                
+            }).catch(function(err) {
+
             });
         } catch (err) {
             return;
@@ -124,10 +130,10 @@ module.exports = function() {
         var jobId = data.job ? data.job.id : data.id;
         //console.log("JOB_ID: " + jobId);
         try {
-            return this.ogapi.operations.updatePeriodicityBuilder(jobId).then(function (builder) {
+            return this.ogapi.operations.updatePeriodicityBuilder(jobId).then(function(builder) {
                 _this.util = builder;
-            }).catch(function (err) {
-                
+            }).catch(function(err) {
+
             });
         } catch (err) {
             return;

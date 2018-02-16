@@ -1,4 +1,4 @@
-# features/searching_areas.feature
+# features/searching/areas/searching_areas.feature
 @searching
 @searching_areas
 @areas

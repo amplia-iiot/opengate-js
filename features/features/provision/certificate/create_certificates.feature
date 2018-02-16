@@ -3,7 +3,6 @@
 @create_provision
 @create_certificates
 @certificates
-@ignore
 Feature: Create a certificate 
   As a user of JsApi
   I want to create a certificate
@@ -109,7 +108,6 @@ Feature: Create a certificate
    	|{"hardwareId" : "OpenGateSecure"}|{"hardwareId" : "OpenGateSecure"}|
     Then does not throws an error
 
-  @only_certificate
   Scenario: Create a certificate
     #And the "id" "certificado_cucumber_id"
   	And the "name" "certificado_cucumber_name"

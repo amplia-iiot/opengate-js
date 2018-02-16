@@ -10,15 +10,15 @@ require.config({
 require([
     'chai', 'chai-as-promised',
     '../../../bower_components/es6-promise/es6-promise.js',
-    '../../../dist/opengate-api-bower-3.2.0.js',
+    '../../../dist/opengate-api-bower-3.3.0.js',
     'devices.provision.spec.js'
     // FILE(S) BEING TESTED
 ], function(chai, chaiAsPromised, Ex, WB) {
     chai.use(chaiAsPromised);
     window.assert = chai.assert;
     window.ogapi = new window.OpenGateAPI({
-        apiKey: "api",
-        url: 'url'
+        apiKey: 'e265b68a-18c6-4b10-996d-8a7b9f12398a',
+        url: 'https://172.19.18.132:8444/v80'
     });
     if (window.mochaPhantomJS) {
         mochaPhantomJS.run();

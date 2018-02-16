@@ -190,6 +190,10 @@ var _searchingBuilderJsonSchemaSearchBuilder = require('./searching/builder/Json
 
 var _searchingBuilderJsonSchemaSearchBuilder2 = _interopRequireDefault(_searchingBuilderJsonSchemaSearchBuilder);
 
+var _searchingBuilderBasicTypesSearchBuilder = require('./searching/builder/BasicTypesSearchBuilder');
+
+var _searchingBuilderBasicTypesSearchBuilder2 = _interopRequireDefault(_searchingBuilderBasicTypesSearchBuilder);
+
 var _searchingBuilderMobilePhoneProviderSearchBuilder = require('./searching/builder/MobilePhoneProviderSearchBuilder');
 
 var _searchingBuilderMobilePhoneProviderSearchBuilder2 = _interopRequireDefault(_searchingBuilderMobilePhoneProviderSearchBuilder);
@@ -822,6 +826,15 @@ var InternalOpenGateAPI = (function () {
         key: 'jsonSchemaSearchBuilder',
         value: function jsonSchemaSearchBuilder() {
             return new _searchingBuilderJsonSchemaSearchBuilder2['default'](this);
+        }
+
+        /**
+         * 
+         */
+    }, {
+        key: 'basicTypesSearchBuilder',
+        value: function basicTypesSearchBuilder() {
+            return new _searchingBuilderBasicTypesSearchBuilder2['default'](this);
         }
 
         /**
