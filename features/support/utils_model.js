@@ -5,6 +5,9 @@ module.exports = {
             "alarms search": function(ogapi) {
                 return ogapi.alarmsSearchBuilder();
             },
+            "basicTypes search": function(ogapi) {
+                return ogapi.basicTypesSearchBuilder();
+            },
             "bundles search": function() {
                 return ogapi.bundlesSearchBuilder();
             },

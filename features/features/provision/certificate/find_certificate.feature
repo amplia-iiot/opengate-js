@@ -11,20 +11,35 @@ So I can check if a certificate exists and get their information
 		Given an apikey user by "require-real-apikey"
 		Given an ogapi "certificate finder" util
 		And I want to read a "certificate"
+	
+	Scenario: Create a certificate
+        #And the "id" "certificate_cucumber_to_find"
+  	    And the "name" "certificate_cucumber_to_find_name"
+        And the "description" "certificate_cucumber_to_find_description"
+  	    And the "administrativeState" "ACTIVE"
+  	    And the "usages"
+  	    | CERT_SIGN |
+        And the "tags"
+        | tag1|tag2|
+        And the "hardwares"
+        |{ "hardwareId" : "OpenGateSecure"}|
+        And I read the file from "/file_test/root.cer"
+        And I create it
+  	    Then does not throws an error
 
 	Scenario: Find a certificate that exists
 		When I try to find by...
-			| field | content  |
-			| id    | AmpliaCA |
-		Then I can see into the result an "certificate name" as "AmpliaCA"
+			| field | content                      |
+			| id    | certificate_cucumber_to_find |
+		Then I can see into the result an "certificate name" as "certificate_cucumber_to_find_name"
 
 	@ignore
 	Scenario: Download a certificate that exists
 		When I try to find by...
 			| field  | content    |
-			| id     | AmpliaCA   |
+			| id     | certificate_cucumber_to_find   |
 			| format | x-pem-file |
-		Then the content of file "AmpliaCA.x-pem-file" must be:
+		Then the content of file "certificate_cucumber_to_find.x-pem-file" must be:
 			"""
 			-----BEGIN CERTIFICATE-----
 			MIIF/DCCA+SgAwIBAgIJALydyb8gZ09+MA0GCSqGSIb3DQEBCwUAMIGKMQswCQYD

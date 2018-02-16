@@ -45,6 +45,7 @@ import AdministrativeStateSearchBuilder from './searching/builder/Administrative
 import CommunicationsModuleTypeSearchBuilder from './searching/builder/CommunicationsModuleTypeSearchBuilder';
 import FieldsDefinitionSearchBuilder from './searching/builder/FieldsDefinitionSearchBuilder';
 import JsonSchemaSearchBuilder from './searching/builder/JsonSchemaSearchBuilder';
+import BasicTypesSearchBuilder from './searching/builder/BasicTypesSearchBuilder';
 import MobilePhoneProviderSearchBuilder from './searching/builder/MobilePhoneProviderSearchBuilder';
 import IoTDatastreamPeriodSearchBuilder from './searching/builder/IoTDatastreamPeriodSearchBuilder';
 import ResourceTypeSearchBuilder from './searching/builder/ResourceTypeSearchBuilder';
@@ -460,6 +461,13 @@ export default class InternalOpenGateAPI {
      */
     jsonSchemaSearchBuilder() {
         return new JsonSchemaSearchBuilder(this);
+    }
+
+    /**
+     * 
+     */
+    basicTypesSearchBuilder() {
+        return new BasicTypesSearchBuilder(this);
     }
 
     /**

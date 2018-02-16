@@ -3,7 +3,6 @@
 @create_provision
 @delete_provision
 @certificates
-@ignore
 Feature: Delete a certificate
    As a user of JsApi
    I want to delete a certificate
