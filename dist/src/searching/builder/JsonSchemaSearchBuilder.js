@@ -26,11 +26,9 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
-//import jp from 'jsonpath';
+var _jsonpath = require('jsonpath');
 
-var _JSONPath = require('JSONPath');
-
-var _JSONPath2 = _interopRequireDefault(_JSONPath);
+var _jsonpath2 = _interopRequireDefault(_jsonpath);
 
 /**
  * Defined a search over jsonchema List
@@ -69,9 +67,7 @@ var JsonSchemaSearchBuilder = (function (_SearchBuilder) {
         key: '_getPathValue',
         value: function _getPathValue(path) {
             var _this = this;
-            /*with jsonpath
-            let jsonSchemaValue = jp.value(og_basic_types, path);*/
-            var jsonSchemaValue = (0, _JSONPath2['default'])({ json: _jsonSchemaOg_basic_types2['default'], path: path })[0];
+            var jsonSchemaValue = _jsonpath2['default'].value(_jsonSchemaOg_basic_types2['default'], path);
             if (jsonSchemaValue) {
                 return jsonSchemaValue;
             }
@@ -92,9 +88,7 @@ var JsonSchemaSearchBuilder = (function (_SearchBuilder) {
             if (!this.path) {
                 throw new Error('Path attributte is mandatory');
             }
-            /*with jsonpath
-            if (!jp.value(og_basic_types, path)) {*/
-            if (!(0, _JSONPath2['default'])({ json: _jsonSchemaOg_basic_types2['default'], path: this.path })[0]) {
+            if (!_jsonpath2['default'].value(_jsonSchemaOg_basic_types2['default'], this.path)) {
                 throw new Error('Path not found');
             }
             return this;

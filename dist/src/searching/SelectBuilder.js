@@ -14,10 +14,6 @@ var _utilSelectElement = require('./../util/SelectElement');
 
 var _utilSelectElement2 = _interopRequireDefault(_utilSelectElement);
 
-var _JSONPath = require('JSONPath');
-
-var _JSONPath2 = _interopRequireDefault(_JSONPath);
-
 var SelectBuilder = (function () {
 
     /**

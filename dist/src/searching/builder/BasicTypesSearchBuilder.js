@@ -18,9 +18,9 @@ var _merge = require('merge');
 
 var _merge2 = _interopRequireDefault(_merge);
 
-var _JSONPath = require('JSONPath');
+var _jsonpath = require('jsonpath');
 
-var _JSONPath2 = _interopRequireDefault(_JSONPath);
+var _jsonpath2 = _interopRequireDefault(_jsonpath);
 
 /** 
  * This is a abstract class, it must be extended to another class that defined the specific search.
@@ -39,6 +39,7 @@ var BasicTypesSearchBuilder = (function () {
         this._ogapi = ogapi;
         this._resource = 'resources/schemaTypes/og_basic_types';
         this._headers = undefined;
+        this._og_basic_types = {};
     }
 
     _createClass(BasicTypesSearchBuilder, [{
@@ -61,31 +62,6 @@ var BasicTypesSearchBuilder = (function () {
         }
 
         /**
-         * Sets id to search
-         *
-         * @description
-         * The list of types of communication modules is as follows:
-         * "string", "boolean", "calendar", "address", "number", "enumeration", "array", "coordinates", "topology", "object"
-         * @example
-         *  ogapi.fieldsDefinitionSearchBuilder().withType('string').build()
-         * @param {!string} fieldDefinitionType - specific type
-         * @throws {Error} throw error when type is not typeof string
-         * @return {fieldsDefinitionSearchBuilder}
-         */
-    }, {
-        key: '_getPathValue',
-        value: function _getPathValue(path) {
-            var _this = this;
-            /*with jsonpath
-            let jsonSchemaValue = jp.value(og_basic_types, path);*/
-            var jsonSchemaValue = (0, _JSONPath2['default'])({ json: og_basic_types, path: path })[0];
-            if (jsonSchemaValue) {
-                return jsonSchemaValue;
-            }
-            return null;
-        }
-
-        /**
          * This invoke a request to OpenGate North API and the callback is managed by promises
          * @return {Promise}
          * @property {function (result:object, statusCode:number)} then - When request it is OK
@@ -94,7 +70,7 @@ var BasicTypesSearchBuilder = (function () {
     }, {
         key: 'execute',
         value: function execute() {
-            var _this2 = this;
+            var _this = this;
 
             var defered = _q2['default'].defer();
             var promise = defered.promise;
@@ -102,11 +78,23 @@ var BasicTypesSearchBuilder = (function () {
             this._ogapi.Napi.get(this._resource, this._timeout, this._getExtraHeaders()).then(function (response) {
                 var resultQuery = response.body;
                 var statusCode = response.statusCode;
-                if (_this2.path) {
-                    var _og_basic_types = resultQuery.definitions;
-                    var jsonSchemaValue = (0, _JSONPath2['default'])({ json: _og_basic_types, path: _this2.path })[0] || { msg: 'not Found' };
+                _this._og_basic_types = resultQuery;
+                var nodes = _jsonpath2['default'].apply(_this._og_basic_types, "$..['$ref']", function (value, path) {
+                    var newPath = '$..' + value.split('#/definitions/')[1];
+                    var newValue = _jsonpath2['default'].query(resultQuery, newPath);
+                    return newValue[0];
+                });
+                nodes.forEach(function (element) {
+                    var pathExpression = _jsonpath2['default'].stringify(element.path);
+                    _jsonpath2['default'].value(resultQuery, pathExpression, element.value);
+                });
+
+                if (_this.path) {
+                    var path = _this.path.includes('$..') ? _this.path : '$..' + _this.path;
+                    var jsonSchemaValue = _jsonpath2['default'].query(resultQuery, path)[0] || { msg: 'not Found' };
                     defered.resolve({ data: jsonSchemaValue, statusCode: statusCode });
                 } else {
+
                     defered.resolve({ data: resultQuery, statusCode: statusCode });
                 }
             })['catch'](function (error) {

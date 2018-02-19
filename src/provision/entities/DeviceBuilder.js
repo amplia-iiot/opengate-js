@@ -9,7 +9,7 @@ import {
 } from './SubscriptionBuilder';
 import HttpStatus from 'http-status-codes';
 import q from 'q';
-import JSONPath from 'JSONPath';
+import jp from 'jsonpath';
 
 const ID = 'provision.device.identifier',
     PUT_METHOD = 'PUT',
@@ -186,9 +186,9 @@ class BoxBuilder {
                     console.log(JSON.stringify(errores));
 
                     if (errores.statusCode === HttpStatus.BAD_REQUEST) {
-                        let ms = JSONPath({ json: errores, path: "$..message" })[0];
-                        if (ms.includes("Entity duplicated")) {
-                            console.log("defer");
+                        let ms = jp.query(errores, '$..message')[0];
+
+                        if (ms.includes('Entity duplicated')) {
                             defer.reject({
                                 errors: errores.data.errors,
                                 statusCode: errores.statusCode

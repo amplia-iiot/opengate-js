@@ -30,9 +30,9 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
-var _JSONPath = require('JSONPath');
+var _jsonpath = require('jsonpath');
 
-var _JSONPath2 = _interopRequireDefault(_JSONPath);
+var _jsonpath2 = _interopRequireDefault(_jsonpath);
 
 var ID = 'provision.device.identifier',
     PUT_METHOD = 'PUT',
@@ -209,9 +209,9 @@ var BoxBuilder = (function () {
                     console.log(JSON.stringify(errores));
 
                     if (errores.statusCode === _httpStatusCodes2['default'].BAD_REQUEST) {
-                        var ms = (0, _JSONPath2['default'])({ json: errores, path: "$..message" })[0];
-                        if (ms.includes("Entity duplicated")) {
-                            console.log("defer");
+                        var ms = _jsonpath2['default'].query(errores, '$..message')[0];
+
+                        if (ms.includes('Entity duplicated')) {
                             defer.reject({
                                 errors: errores.data.errors,
                                 statusCode: errores.statusCode

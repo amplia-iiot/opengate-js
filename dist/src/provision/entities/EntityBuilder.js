@@ -18,6 +18,10 @@ var _JSONPath = require('JSONPath');
 
 var _JSONPath2 = _interopRequireDefault(_JSONPath);
 
+var _jsonpath = require('jsonpath');
+
+var _jsonpath2 = _interopRequireDefault(_jsonpath);
+
 var _jsonschema = require('jsonschema');
 
 var _jsonschema2 = _interopRequireDefault(_jsonschema);
@@ -131,9 +135,8 @@ var EntityBuilder = (function () {
         key: '_setDevicesProperties',
         value: function _setDevicesProperties(data, filter) {
             var _this = this;
-            /*with jsonpath
-            let allowedDatastreams = jp.query(data, "$.datamodels[*].categories[*].datastreams[*]");*/
-            var allowedDatastreams = (0, _JSONPath2['default'])({ json: data, path: "$.datamodels[*].categories[*].datastreams[*]" });
+            var allowedDatastreams = _jsonpath2['default'].query(data, "$.datamodels[*].categories[*].datastreams[*]");
+            //let allowedDatastreams = JSONPath({ json: data, path: "$.datamodels[*].categories[*].datastreams[*]" });
             var response = { allowedDatastreams: [], schemas: {} };
             _this.complexFunctions = [];
             _this.simpleFunctions = [];
