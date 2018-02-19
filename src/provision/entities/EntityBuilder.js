@@ -1,7 +1,8 @@
 'use strict';
 
 import q from 'q';
-import JSONPath from 'JSONPath';
+import jp from 'jsonpath';
+
 import jsonschema from 'jsonschema';
 import AssetBuilder from './AssetBuilder';
 import DeviceBuilder from './DeviceBuilder';
@@ -59,7 +60,7 @@ export default class EntityBuilder {
             if (data.statusCode !== 200) {
                 defered.reject({ data: 'OGAPI_DATASTREAM_NOT_FOUND', statusCode: 204 });
             }
-            _this._getJsonPathElements().then(function () {
+            _this._getJsonPathElements().then(function() {
                 data.data = _this._setDevicesProperties(data.data, filterElement);
                 defered.resolve(data);
             });
@@ -85,9 +86,7 @@ export default class EntityBuilder {
 
     _setDevicesProperties(data, filter) {
         let _this = this;
-        /*with jsonpath
-        let allowedDatastreams = jp.query(data, "$.datamodels[*].categories[*].datastreams[*]");*/
-        let allowedDatastreams = JSONPath({ json: data, path: "$.datamodels[*].categories[*].datastreams[*]" });
+        let allowedDatastreams = jp.query(data, "$.datamodels[*].categories[*].datastreams[*]");
         let response = { allowedDatastreams: [], schemas: {} };
         _this.complexFunctions = [];
         _this.simpleFunctions = [];

@@ -3,8 +3,7 @@
 import SearchBuilder from './SearchBuilder';
 import og_basic_types from './jsonSchema/og_basic_types';
 import q from 'q';
-//import jp from 'jsonpath';
-import JSONPath from 'JSONPath';
+import jp from 'jsonpath';
 
 
 /**
@@ -35,9 +34,7 @@ export default class JsonSchemaSearchBuilder extends SearchBuilder {
      */
     _getPathValue(path) {
         let _this = this;
-        /*with jsonpath
-        let jsonSchemaValue = jp.value(og_basic_types, path);*/
-        let jsonSchemaValue = JSONPath({ json: og_basic_types, path: path })[0];
+        let jsonSchemaValue = jp.value(og_basic_types, path);
         if (jsonSchemaValue) {
             return jsonSchemaValue;
         }
@@ -56,9 +53,7 @@ export default class JsonSchemaSearchBuilder extends SearchBuilder {
         if (!this.path) {
             throw new Error('Path attributte is mandatory');
         }
-        /*with jsonpath
-        if (!jp.value(og_basic_types, path)) {*/
-        if (!JSONPath({ json: og_basic_types, path: this.path })[0]) {
+        if (!jp.value(og_basic_types, this.path)) {
             throw new Error('Path not found');
         }
         return this;

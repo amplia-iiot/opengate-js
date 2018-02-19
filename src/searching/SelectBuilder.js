@@ -1,7 +1,6 @@
 'use strict';
 
 import Se from './../util/SelectElement';
-import JSONPath from 'JSONPath';
 export default class SelectBuilder {
 
     /**
