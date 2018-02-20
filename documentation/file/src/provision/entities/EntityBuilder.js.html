@@ -216,7 +216,8 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
 import q from &apos;q&apos;;
-import JSONPath from &apos;JSONPath&apos;;
+import jp from &apos;jsonpath&apos;;
+
 import jsonschema from &apos;jsonschema&apos;;
 import AssetBuilder from &apos;./AssetBuilder&apos;;
 import DeviceBuilder from &apos;./DeviceBuilder&apos;;
@@ -274,7 +275,7 @@ export default class EntityBuilder {
             if (data.statusCode !== 200) {
                 defered.reject({ data: &apos;OGAPI_DATASTREAM_NOT_FOUND&apos;, statusCode: 204 });
             }
-            _this._getJsonPathElements().then(function () {
+            _this._getJsonPathElements().then(function() {
                 data.data = _this._setDevicesProperties(data.data, filterElement);
                 defered.resolve(data);
             });
@@ -300,9 +301,7 @@ export default class EntityBuilder {
 
     _setDevicesProperties(data, filter) {
         let _this = this;
-        /*with jsonpath
-        let allowedDatastreams = jp.query(data, &quot;$.datamodels[*].categories[*].datastreams[*]&quot;);*/
-        let allowedDatastreams = JSONPath({ json: data, path: &quot;$.datamodels[*].categories[*].datastreams[*]&quot; });
+        let allowedDatastreams = jp.query(data, &quot;$.datamodels[*].categories[*].datastreams[*]&quot;);
         let response = { allowedDatastreams: [], schemas: {} };
         _this.complexFunctions = [];
         _this.simpleFunctions = [];

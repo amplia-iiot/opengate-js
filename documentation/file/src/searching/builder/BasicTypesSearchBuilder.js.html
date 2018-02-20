@@ -217,7 +217,7 @@
 
 import q from &apos;q&apos;;
 import merge from &apos;merge&apos;;
-import JSONPath from &apos;JSONPath&apos;;
+import jp from &apos;jsonpath&apos;;
 
 
 /** 
@@ -233,6 +233,7 @@ export default class BasicTypesSearchBuilder {
         this._ogapi = ogapi;
         this._resource = &apos;resources/schemaTypes/og_basic_types&apos;;
         this._headers = undefined;
+        this._og_basic_types = {};
     }
     _getExtraHeaders() {
         return this._headers;
@@ -250,35 +251,12 @@ export default class BasicTypesSearchBuilder {
         }
     }
 
-
     /**
-     * Sets id to search
-     *
-     * @description
-     * The list of types of communication modules is as follows:
-     * &quot;string&quot;, &quot;boolean&quot;, &quot;calendar&quot;, &quot;address&quot;, &quot;number&quot;, &quot;enumeration&quot;, &quot;array&quot;, &quot;coordinates&quot;, &quot;topology&quot;, &quot;object&quot;
-     * @example
-     *  ogapi.fieldsDefinitionSearchBuilder().withType(&apos;string&apos;).build()
-     * @param {!string} fieldDefinitionType - specific type
-     * @throws {Error} throw error when type is not typeof string
-     * @return {fieldsDefinitionSearchBuilder}
+     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * @return {Promise}
+     * @property {function (result:object, statusCode:number)} then - When request it is OK
+     * @property {function (error:string)} catch - When request it is NOK
      */
-    _getPathValue(path) {
-            let _this = this;
-            /*with jsonpath
-            let jsonSchemaValue = jp.value(og_basic_types, path);*/
-            let jsonSchemaValue = JSONPath({ json: og_basic_types, path: path })[0];
-            if (jsonSchemaValue) {
-                return jsonSchemaValue;
-            }
-            return null;
-        }
-        /**
-         * This invoke a request to OpenGate North API and the callback is managed by promises
-         * @return {Promise}
-         * @property {function (result:object, statusCode:number)} then - When request it is OK
-         * @property {function (error:string)} catch - When request it is NOK
-         */
     execute() {
         var defered = q.defer();
         var promise = defered.promise;
@@ -286,17 +264,28 @@ export default class BasicTypesSearchBuilder {
         this._ogapi.Napi
             .get(this._resource, this._timeout, this._getExtraHeaders())
             .then((response) =&gt; {
-                let resultQuery = response.body;
+                var resultQuery = response.body;
                 let statusCode = response.statusCode;
+                this._og_basic_types = resultQuery;
+                var nodes = jp.apply(this._og_basic_types, &quot;$..[&apos;$ref&apos;]&quot;,
+                    function(value, path) {
+                        let newPath = &apos;$..&apos; + value.split(&apos;#/definitions/&apos;)[1];
+                        var newValue = jp.query(resultQuery, newPath);
+                        return newValue[0];
+                    });
+                nodes.forEach(element =&gt; {
+                    var pathExpression = jp.stringify(element.path);
+                    jp.value(resultQuery, pathExpression, element.value);
+                });
+
                 if (this.path) {
-                    let og_basic_types = resultQuery.definitions;
-                    let jsonSchemaValue = JSONPath({ json: og_basic_types, path: this.path })[0] || { msg: &apos;not Found&apos; };
+                    let path = this.path.includes(&apos;$..&apos;) ? this.path : &apos;$..&apos; + this.path;
+                    let jsonSchemaValue = jp.query(resultQuery, path)[0] || { msg: &apos;not Found&apos; };
                     defered.resolve({ data: jsonSchemaValue, statusCode: statusCode });
                 } else {
+
                     defered.resolve({ data: resultQuery, statusCode: statusCode });
                 }
-
-
             })
             .catch((error) =&gt; {
                 defered.reject(error);

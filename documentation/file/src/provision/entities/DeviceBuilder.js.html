@@ -224,7 +224,7 @@ import {
 } from &apos;./SubscriptionBuilder&apos;;
 import HttpStatus from &apos;http-status-codes&apos;;
 import q from &apos;q&apos;;
-import JSONPath from &apos;JSONPath&apos;;
+import jp from &apos;jsonpath&apos;;
 
 const ID = &apos;provision.device.identifier&apos;,
     PUT_METHOD = &apos;PUT&apos;,
@@ -401,9 +401,9 @@ class BoxBuilder {
                     console.log(JSON.stringify(errores));
 
                     if (errores.statusCode === HttpStatus.BAD_REQUEST) {
-                        let ms = JSONPath({ json: errores, path: &quot;$..message&quot; })[0];
-                        if (ms.includes(&quot;Entity duplicated&quot;)) {
-                            console.log(&quot;defer&quot;);
+                        let ms = jp.query(errores, &apos;$..message&apos;)[0];
+
+                        if (ms.includes(&apos;Entity duplicated&apos;)) {
                             defer.reject({
                                 errors: errores.data.errors,
                                 statusCode: errores.statusCode
