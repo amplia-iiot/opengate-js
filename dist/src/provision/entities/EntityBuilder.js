@@ -30,6 +30,10 @@ var _DeviceBuilder = require('./DeviceBuilder');
 
 var _DeviceBuilder2 = _interopRequireDefault(_DeviceBuilder);
 
+var _TicketBuilder = require('./TicketBuilder');
+
+var _TicketBuilder2 = _interopRequireDefault(_TicketBuilder);
+
 var _SubscriberBuilder = require('./SubscriberBuilder');
 
 var _SubscriberBuilder2 = _interopRequireDefault(_SubscriberBuilder);
@@ -163,6 +167,13 @@ var EntityBuilder = (function () {
         value: function assetsBuilder(organization) {
             return this._genericBuilder(organization, 'entity.asset', 'provision', function (allowedDatastreams, definedSchemas) {
                 return new _AssetBuilder2['default'](this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
+            });
+        }
+    }, {
+        key: 'ticketsBuilder',
+        value: function ticketsBuilder(organization) {
+            return this._genericBuilder(organization, 'ticket', 'provision', function (allowedDatastreams, definedSchemas) {
+                return new _TicketBuilder2['default'](this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
             });
         }
     }, {

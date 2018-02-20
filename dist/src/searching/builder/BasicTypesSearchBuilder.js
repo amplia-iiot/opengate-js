@@ -90,7 +90,7 @@ var BasicTypesSearchBuilder = (function () {
                 });
 
                 if (_this.path) {
-                    var path = _this.path.includes('$..') ? _this.path : '$..' + _this.path;
+                    var path = _this.path.includes('$.') ? _this.path : '$..' + _this.path;
                     var jsonSchemaValue = _jsonpath2['default'].query(resultQuery, path)[0] || { msg: 'not Found' };
                     defered.resolve({ data: jsonSchemaValue, statusCode: statusCode });
                 } else {

@@ -6,6 +6,7 @@ import jp from 'jsonpath';
 import jsonschema from 'jsonschema';
 import AssetBuilder from './AssetBuilder';
 import DeviceBuilder from './DeviceBuilder';
+import TicketBuilder from './TicketBuilder';
 import SubscriberBuilder from './SubscriberBuilder';
 import SubscriptionBuilder from './SubscriptionBuilder';
 import CsvBulkBuilder from './CsvBulkBuilder';
@@ -121,6 +122,11 @@ export default class EntityBuilder {
         });
     }
 
+    ticketsBuilder(organization) {
+        return this._genericBuilder(organization, 'ticket', 'provision', function(allowedDatastreams, definedSchemas) {
+            return new TicketBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
+        });
+    }
     subscribersBuilder(organization) {
         return this._genericBuilder(organization, 'entity.subscriber', 'provision.device.communicationModules[].subscriber', function(allowedDatastreams, definedSchemas) {
             return new SubscriberBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);

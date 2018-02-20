@@ -64,7 +64,7 @@ export default class BasicTypesSearchBuilder {
                 });
 
                 if (this.path) {
-                    let path = this.path.includes('$..') ? this.path : '$..' + this.path;
+                    let path = this.path.includes('$.') ? this.path : '$..' + this.path;
                     let jsonSchemaValue = jp.query(resultQuery, path)[0] || { msg: 'not Found' };
                     defered.resolve({ data: jsonSchemaValue, statusCode: statusCode });
                 } else {
