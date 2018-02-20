@@ -257,6 +257,9 @@ module.exports = {
             "asset search": function(ogapi) {
                 return ogapi.assetsSearchBuilder();
             },
+            "tickets builder": function(ogapi, param1) {
+                return ogapi.entityBuilder.ticketsBuilder(param1);
+            },
             "entities search": function(ogapi) {
                 return ogapi.entitiesSearchBuilder();
             },
