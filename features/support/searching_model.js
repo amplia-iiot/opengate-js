@@ -1,5 +1,5 @@
 module.exports = {
-    setters: function (setter) {
+    setters: function(setter) {
         return {
             'hardware': {
                 'hardware id': 'withId',
@@ -49,6 +49,9 @@ module.exports = {
                 'on subscribers': 'onSubscribers',
                 'on subscriptions': 'onSubscriptions',
                 'on communications Modules': 'onCommunicationsModules'
+            },
+            "basicTypes search": {
+                "withPublicParameters": "withPublicParameters"
             }
         }[setter];
     }
