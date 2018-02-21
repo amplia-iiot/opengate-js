@@ -40,6 +40,7 @@ var BasicTypesSearchBuilder = (function () {
         this._resource = 'resources/schemaTypes/og_basic_types';
         this._headers = undefined;
         this._og_basic_types = {};
+        this.publicParameters = false;
     }
 
     _createClass(BasicTypesSearchBuilder, [{
@@ -79,8 +80,9 @@ var BasicTypesSearchBuilder = (function () {
                 var resultQuery = response.body;
                 var statusCode = response.statusCode;
                 _this._og_basic_types = resultQuery;
+
                 var nodes = _jsonpath2['default'].apply(_this._og_basic_types, "$..['$ref']", function (value, path) {
-                    var newPath = '$..' + value.split('#/definitions/')[1];
+                    var newPath = '$..' + value.replace('#/definitions/', '');
                     var newValue = _jsonpath2['default'].query(resultQuery, newPath);
                     return newValue[0];
                 });
@@ -88,13 +90,18 @@ var BasicTypesSearchBuilder = (function () {
                     var pathExpression = _jsonpath2['default'].stringify(element.path);
                     _jsonpath2['default'].value(resultQuery, pathExpression, element.value);
                 });
-
                 if (_this.path) {
                     var path = _this.path.includes('$.') ? _this.path : '$..' + _this.path;
                     var jsonSchemaValue = _jsonpath2['default'].query(resultQuery, path)[0] || { msg: 'not Found' };
                     defered.resolve({ data: jsonSchemaValue, statusCode: statusCode });
                 } else {
-
+                    if (_this.publicParameters) {
+                        for (var x in resultQuery.definitions) {
+                            if (!resultQuery.definitions[x]['public'] || resultQuery.definitions[x]['public'] === false) {
+                                delete resultQuery.definitions[x];
+                            }
+                        }
+                    }
                     defered.resolve({ data: resultQuery, statusCode: statusCode });
                 }
             })['catch'](function (error) {
@@ -116,6 +123,22 @@ var BasicTypesSearchBuilder = (function () {
         key: 'withPath',
         value: function withPath(path) {
             this.path = path;
+            return this;
+        }
+
+        /**
+         * Sets path to search
+         *
+         * @description
+         * @example
+         *  ogapi.JsonSchemaSearchBuilder().withPath('string').build()
+         * @param {!string} path - jsonSchemaPath
+         * @return {JsonSchemaSearchBuilder}
+         */
+    }, {
+        key: 'withPublicParameters',
+        value: function withPublicParameters(publicParameters) {
+            this.publicParameters = publicParameters;
             return this;
         }
     }, {

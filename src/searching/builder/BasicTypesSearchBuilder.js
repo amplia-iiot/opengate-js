@@ -19,6 +19,7 @@ export default class BasicTypesSearchBuilder {
         this._resource = 'resources/schemaTypes/og_basic_types';
         this._headers = undefined;
         this._og_basic_types = {};
+        this.publicParameters = false;
     }
     _getExtraHeaders() {
         return this._headers;
@@ -52,9 +53,10 @@ export default class BasicTypesSearchBuilder {
                 var resultQuery = response.body;
                 let statusCode = response.statusCode;
                 this._og_basic_types = resultQuery;
+
                 var nodes = jp.apply(this._og_basic_types, "$..['$ref']",
                     function(value, path) {
-                        let newPath = '$..' + value.split('#/definitions/')[1];
+                        let newPath = '$..' + value.replace('#/definitions/', '');
                         var newValue = jp.query(resultQuery, newPath);
                         return newValue[0];
                     });
@@ -62,13 +64,18 @@ export default class BasicTypesSearchBuilder {
                     var pathExpression = jp.stringify(element.path);
                     jp.value(resultQuery, pathExpression, element.value);
                 });
-
                 if (this.path) {
                     let path = this.path.includes('$.') ? this.path : '$..' + this.path;
                     let jsonSchemaValue = jp.query(resultQuery, path)[0] || { msg: 'not Found' };
                     defered.resolve({ data: jsonSchemaValue, statusCode: statusCode });
                 } else {
-
+                    if (this.publicParameters) {
+                        for (let x in resultQuery.definitions) {
+                            if (!resultQuery.definitions[x].public || resultQuery.definitions[x].public === false) {
+                                delete resultQuery.definitions[x];
+                            }
+                        }
+                    }
                     defered.resolve({ data: resultQuery, statusCode: statusCode });
                 }
             })
@@ -89,6 +96,20 @@ export default class BasicTypesSearchBuilder {
      */
     withPath(path) {
         this.path = path;
+        return this;
+    }
+
+    /**
+     * Sets path to search
+     *
+     * @description
+     * @example
+     *  ogapi.JsonSchemaSearchBuilder().withPath('string').build()
+     * @param {!string} path - jsonSchemaPath
+     * @return {JsonSchemaSearchBuilder}
+     */
+    withPublicParameters(publicParameters) {
+        this.publicParameters = publicParameters;
         return this;
     }
 
