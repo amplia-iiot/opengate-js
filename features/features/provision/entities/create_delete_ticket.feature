@@ -2,6 +2,7 @@
 @provision
 @create_provision
 @create_ticket
+@ticket
 @entities_provision
 @create_delete_ticket
 Feature: Delete and Create a device
@@ -92,21 +93,29 @@ So, I can create a new ticket with the parametres that I have been defined
         And I create it
         And response code should be: 201
 
-    Scenario: I want to delete the ticket
-        Given the entity of type "devices builder" with "ticket_organization"
-        When I try to define the entity with...
-            | datastream                            | typeFunction | value                         | parent |
-            | provision.administration.channel      | simple       | default_channel               |        |
-            | provision.administration.organization | simple       | ticket_organization           |        |
-            | provision.device.identifier           | simple       | device_ticket_testing_cucumber_ogapi |        |
-        Then I delete it
+    Scenario: I want to delete the ticket CREATED
+        And an ogapi "ticket search" util with "ticket_organization"
+        When I add a filter and with
+          | operator | key                                   | value                        |
+          | eq       | provision.administration.organization | ticket_organization |
+          | eq       | provision.ticket.name                 | ticket_cucumber |
+        When I build it
+        And I execute it
+        Then response code should be: 200
+        Given the entity of type "tickets builder" with "ticket_organization"
+        When I try to define the ticket with...
+            | datastream                            | typeFunction | value                                       | parent |
+            | provision.administration.organization | simple       | ticket_organization               |        |
+        When I try to define the datastream ticket "provision.ticket.identifier" with "provision.ticket.identifier._current.value" path of the previous response 
+        And I delete it
+        Then response code should be: 200
 
     Scenario: I want to delete the entity
         Given the entity of type "devices builder" with "ticket_organization"
         When I try to define the entity with...
-            | datastream                            | typeFunction | value                         | parent |
-            | provision.administration.channel      | simple       | default_channel               |        |
-            | provision.administration.organization | simple       | ticket_organization           |        |
+            | datastream                            | typeFunction | value                                | parent |
+            | provision.administration.channel      | simple       | default_channel                      |        |
+            | provision.administration.organization | simple       | ticket_organization                  |        |
             | provision.device.identifier           | simple       | device_ticket_testing_cucumber_ogapi |        |
         Then I delete it
 

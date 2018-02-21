@@ -27,6 +27,7 @@ import DevicesSearchBuilder from './searching/builder/DevicesSearchBuilder';
 import SubscribersSearchBuilder from './searching/builder/SubscribersSearchBuilder';
 import SubscriptionsSearchBuilder from './searching/builder/SubscriptionsSearchBuilder';
 import AssetsSearchBuilder from './searching/builder/AssetsSearchBuilder';
+import TicketsSearchBuilder from './searching/builder/TicketsSearchBuilder';
 import OperationsSearchBuilder from './searching/builder/OperationsSearchBuilder';
 import ExecutionsSearchBuilder from './searching/builder/ExecutionsSearchBuilder';
 import AlarmsSearchBuilder from './searching/builder/AlarmsSearchBuilder';
@@ -309,9 +310,15 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a CommunicationsModuleTypeSearchBuilder to build a specific CommunicationsModuleTypeSearch
-     * @return {CommunicationsModuleTypeSearchBuilder}
+     * This return a TicketsSearchBuilder to build a specific TicketSearch
      */
+    ticketsSearchBuilder() {
+            return new TicketsSearchBuilder(this);
+        }
+        /**
+         * This return a CommunicationsModuleTypeSearchBuilder to build a specific CommunicationsModuleTypeSearch
+         * @return {CommunicationsModuleTypeSearchBuilder}
+         */
     communicationsModuleTypeSearchBuilder() {
         return new CommunicationsModuleTypeSearchBuilder(this);
     }

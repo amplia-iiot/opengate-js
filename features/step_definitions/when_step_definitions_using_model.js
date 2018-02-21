@@ -1,6 +1,7 @@
 'use strict';
 var q = require('q');
 var assert = require('chai').assert;
+var jp = require('jsonpath');
 
 module.exports = function() {
     this.When(/^I try to find by...$/, function(table) {
@@ -355,6 +356,19 @@ module.exports = function() {
             }
             this.error = err;
             _er = true;
+        }
+        callback();
+    });
+
+    this.When(/^I try to define the datastream ticket "([^"]*)" with "([^"]*)" path of the previous response$/, function(datastream, path, callback) {
+        // Write code here that turns the phrase above into concrete actions
+        try {
+            var data = this.responseData.data;
+            var json_attr = path.includes('$.') ? path : '$..' + path;
+            var value = jp.value(data, json_attr);
+            this.util.with(datastream, value);
+        } catch (err) {
+            //console.log(err);
         }
         callback();
     });
