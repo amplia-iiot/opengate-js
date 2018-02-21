@@ -18,7 +18,7 @@ var _SimpleBuilder2 = require('./SimpleBuilder');
 
 var _SimpleBuilder3 = _interopRequireDefault(_SimpleBuilder2);
 
-var TicketID = 'provision.ticket';
+var TicketID = 'provision.ticket.identifier';
 
 exports.TicketID = TicketID;
 /**

@@ -118,6 +118,10 @@ var _searchingBuilderAssetsSearchBuilder = require('./searching/builder/AssetsSe
 
 var _searchingBuilderAssetsSearchBuilder2 = _interopRequireDefault(_searchingBuilderAssetsSearchBuilder);
 
+var _searchingBuilderTicketsSearchBuilder = require('./searching/builder/TicketsSearchBuilder');
+
+var _searchingBuilderTicketsSearchBuilder2 = _interopRequireDefault(_searchingBuilderTicketsSearchBuilder);
+
 var _searchingBuilderOperationsSearchBuilder = require('./searching/builder/OperationsSearchBuilder');
 
 var _searchingBuilderOperationsSearchBuilder2 = _interopRequireDefault(_searchingBuilderOperationsSearchBuilder);
@@ -636,6 +640,15 @@ var InternalOpenGateAPI = (function () {
         key: 'subscriptionsSearchBuilder',
         value: function subscriptionsSearchBuilder() {
             return new _searchingBuilderSubscriptionsSearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a TicketsSearchBuilder to build a specific TicketSearch
+         */
+    }, {
+        key: 'ticketsSearchBuilder',
+        value: function ticketsSearchBuilder() {
+            return new _searchingBuilderTicketsSearchBuilder2['default'](this);
         }
 
         /**

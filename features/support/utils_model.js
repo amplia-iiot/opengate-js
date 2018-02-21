@@ -260,6 +260,9 @@ module.exports = {
             "tickets builder": function(ogapi, param1) {
                 return ogapi.entityBuilder.ticketsBuilder(param1);
             },
+            "ticket search": function(ogapi) {
+                return ogapi.ticketsSearchBuilder();
+            },
             "entities search": function(ogapi) {
                 return ogapi.entitiesSearchBuilder();
             },

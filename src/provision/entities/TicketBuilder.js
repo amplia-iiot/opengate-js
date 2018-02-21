@@ -2,7 +2,7 @@
 
 import SimpleBuilder from './SimpleBuilder';
 
-export const TicketID = 'provision.ticket';
+export const TicketID = 'provision.ticket.identifier';
 
 /**
  * Subscription builder. This builder give you the necessary tools to create a subscription using our OpenGate REST.

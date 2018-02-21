@@ -1,6 +1,6 @@
 'use strict';
 
-import PreFilteredSearchBuilder from './PreFilteredSearchBuilder'
+import SearchBuilder from './SearchBuilder';
 import FieldFinder from '../../util/searchingFields/FieldFinder'
 
 const BASE_URL = '/tickets';
@@ -8,7 +8,7 @@ const BASE_URL = '/tickets';
  * Defined a search over Devices	
  * @example ogapi.devicesSearchBuilder()
  */
-export default class TicketsSearchBuilder extends PreFilteredSearchBuilder {
+export default class TicketsSearchBuilder extends SearchBuilder {
     /**
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */
@@ -29,10 +29,6 @@ export default class TicketsSearchBuilder extends PreFilteredSearchBuilder {
         return this;
     }
 
-    _buildFilter() {
-        return this._builderParams;
-    }
-
     /**
      * The search request will have this group by 
      * @example
@@ -41,6 +37,36 @@ export default class TicketsSearchBuilder extends PreFilteredSearchBuilder {
      */
     group(group) {
         this._builderParams.group = (group || {});
+        return this;
+    }
+
+    /**
+     * The search request will have this filter 
+     * @example
+     *  ogapi.ticketsSearchBuilder().select(
+     *      ogapi.newSelectBuilder().add(SE.element("provision.ticket.identifier", [[{"field": "value","alias": "identifier"}], ), SE.add("device.temperature.value", [[{"field": "value"}]))
+     *  ) // Setting SelectBuilder
+     *  ogapi.ticketsSearchBuilder().select({ "elements": [{"name": "provision.device.identifier",
+     *		"fields": [{"field": "value","alias": "identifier"}]},
+     *      {"name": "provision.ticket.name","fields": [{"field": "value","alias": "identifier"}]}]
+     *   }) //Custom select
+     * @param {!(SelectBuilder|object)} select
+     * @return {SearchBuilder} 
+     */
+    select(select) {
+        this._builderParams.select = (select);
+        return this;
+    }
+
+    /**
+     * The response will return a flattened response
+     * @example
+     *	ogapi.entitiesSearchBuilder().flattened() 
+     * @return {FlattenedSearchBuilder} 
+     */
+    flattened() {
+        this._url = this._url + '?flattened=true';
+
         return this;
     }
 }
