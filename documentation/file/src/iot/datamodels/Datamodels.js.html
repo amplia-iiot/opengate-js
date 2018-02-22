@@ -289,21 +289,26 @@ export default class Datamodels extends BaseProvision {
         return this;
     }
 
+    /**
+     * Set the addAllowedResourceType attribute
+     * @param {string} resourceType - required field
+     * @return {Datamodels}
+     */
     addAllowedResourceType(resourceType) {
-            if (resourceType)
-                this._isValidString(resourceType, &apos;resourceType&apos;, 100);
-            this._resourceType.push(resourceType);
-            return this;
-        }
-        /**
-         * Add a flavor. If the field datastreams have value, they will add to this flavor
-         * @param {!string} category
-         * @param {!Array} datastreams
-         * @return {Datamodels}
-         */
+        if (resourceType)
+            this._isValidString(resourceType, &apos;resourceType&apos;, 100);
+        this._resourceType.push(resourceType);
+        return this;
+    }
+    /**
+     * Add a flavor. If the field datastreams have value, they will add to this flavor
+     * @param {!string} category
+     * @param {!Array} datastreams
+     * @return {Datamodels}
+     */
     addCategory(category, datastreams) {
         this._isValidString(category, &apos;category&apos;, 100);
-        this._categories.forEach(function(_category, index) {
+        this._categories.forEach(function (_category, index) {
             if (category.name === _category) {
                 throw new Error(&apos;Category &apos; + category + &apos; already exists.&apos;);
             }
@@ -325,7 +330,7 @@ export default class Datamodels extends BaseProvision {
         this._isValidString(category, &apos;category&apos;, 100);
         //Buscamos category y si existe se a&#xF1;ade a la lista de categories
         var exists_category = -1;
-        this._categories.forEach(function(_category, index) {
+        this._categories.forEach(function (_category, index) {
             if (_category.identifier === category) {
                 exists_category = index;
             }
@@ -334,29 +339,32 @@ export default class Datamodels extends BaseProvision {
             throw new Error(&apos;Category &apos; + category + &apos; not exists for this datamodel. Use addCategory instead.&apos;);
         }
         if (this._categories[exists_category].datastreams) {
-            this._categories[exists_category].datastreams.push(datastream) 
+            this._categories[exists_category].datastreams.push(datastream)
         } else {
             this._categories[exists_category].datastreams = [datastream];
-        }   
+        }
         return this;
     }
 
     _composeElement() {
         if (!this._name) {
-            throw new Error(&apos;Name is required on IoTDatamodel&apos;);
+            throw new Error(&apos;name is required on IoTDatamodel&apos;);
         }
 
         if (!this._version) {
-            throw new Error(&apos;Version is required on IoTDatamodel&apos;);
+            throw new Error(&apos;version is required on IoTDatamodel&apos;);
         }
 
+        if (!this._resourceType) {
+            throw new Error(&apos;allowedResourceTypes is required on IoTDatamodel&apos;);
+        }
 
         return {
             &apos;identifier&apos;: this._identifier,
             &apos;name&apos;: this._name,
             &apos;version&apos;: this._version,
             &apos;description&apos;: this._description,
-            &apos;allowedResourceTypes&apos;: this._resourceType.length &gt; 0 ? this._resourceType : undefined,
+            &apos;allowedResourceTypes&apos;: this._resourceType,
             &apos;categories&apos;: this._categories.length &gt; 0 ? this._categories : undefined
         };
     }

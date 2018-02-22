@@ -67,21 +67,26 @@ export default class Datamodels extends BaseProvision {
         return this;
     }
 
+    /**
+     * Set the addAllowedResourceType attribute
+     * @param {string} resourceType - required field
+     * @return {Datamodels}
+     */
     addAllowedResourceType(resourceType) {
-            if (resourceType)
-                this._isValidString(resourceType, 'resourceType', 100);
-            this._resourceType.push(resourceType);
-            return this;
-        }
-        /**
-         * Add a flavor. If the field datastreams have value, they will add to this flavor
-         * @param {!string} category
-         * @param {!Array} datastreams
-         * @return {Datamodels}
-         */
+        if (resourceType)
+            this._isValidString(resourceType, 'resourceType', 100);
+        this._resourceType.push(resourceType);
+        return this;
+    }
+    /**
+     * Add a flavor. If the field datastreams have value, they will add to this flavor
+     * @param {!string} category
+     * @param {!Array} datastreams
+     * @return {Datamodels}
+     */
     addCategory(category, datastreams) {
         this._isValidString(category, 'category', 100);
-        this._categories.forEach(function(_category, index) {
+        this._categories.forEach(function (_category, index) {
             if (category.name === _category) {
                 throw new Error('Category ' + category + ' already exists.');
             }
@@ -103,7 +108,7 @@ export default class Datamodels extends BaseProvision {
         this._isValidString(category, 'category', 100);
         //Buscamos category y si existe se añade a la lista de categories
         var exists_category = -1;
-        this._categories.forEach(function(_category, index) {
+        this._categories.forEach(function (_category, index) {
             if (_category.identifier === category) {
                 exists_category = index;
             }
@@ -112,29 +117,32 @@ export default class Datamodels extends BaseProvision {
             throw new Error('Category ' + category + ' not exists for this datamodel. Use addCategory instead.');
         }
         if (this._categories[exists_category].datastreams) {
-            this._categories[exists_category].datastreams.push(datastream) 
+            this._categories[exists_category].datastreams.push(datastream)
         } else {
             this._categories[exists_category].datastreams = [datastream];
-        }   
+        }
         return this;
     }
 
     _composeElement() {
         if (!this._name) {
-            throw new Error('Name is required on IoTDatamodel');
+            throw new Error('name is required on IoTDatamodel');
         }
 
         if (!this._version) {
-            throw new Error('Version is required on IoTDatamodel');
+            throw new Error('version is required on IoTDatamodel');
         }
 
+        if (!this._resourceType) {
+            throw new Error('allowedResourceTypes is required on IoTDatamodel');
+        }
 
         return {
             'identifier': this._identifier,
             'name': this._name,
             'version': this._version,
             'description': this._description,
-            'allowedResourceTypes': this._resourceType.length > 0 ? this._resourceType : undefined,
+            'allowedResourceTypes': this._resourceType,
             'categories': this._categories.length > 0 ? this._categories : undefined
         };
     }

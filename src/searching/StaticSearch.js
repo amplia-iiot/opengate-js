@@ -598,10 +598,14 @@ export default class StaticSearch extends Search {
                 'INSTANT'
             ],
             'resourceType': ['asset', 'device'],
-            'allowedResourceType': ['entity.asset',
+            'allowedResourceType': [
+                'entity.asset',
                 'entity.device',
                 'entity.subscriber',
-                'entity.subscription'
+                'entity.subscription',
+                'ticket',
+                'organization',
+                'channel'
             ],
             'fieldsDefinition': {
                 'string': {

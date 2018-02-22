@@ -85,7 +85,7 @@ export default class DatamodelsHelper extends BaseProvision {
     addCategory(category, datastreams) {
         //this._isValidString(category, 'category', 100);
         if (this._categories) {
-            this._categories.forEach(function(_category, index) {
+            this._categories.forEach(function (_category, index) {
                 if (_category.identifier === category.identifier) {
                     throw new Error('Category ' + category.identifier + ' already exists.');
                 }
@@ -115,7 +115,7 @@ export default class DatamodelsHelper extends BaseProvision {
         this._isValidString(category, 'category', 100);
         //Buscamos category y si existe se añade a la lista de categories
         var exists_category = -1;
-        this._categories.forEach(function(_category, index) {
+        this._categories.forEach(function (_category, index) {
             if (_category.identifier === category) {
                 exists_category = index;
             }
@@ -139,7 +139,7 @@ export default class DatamodelsHelper extends BaseProvision {
     removeCategory(category) {
         this._isValidString(category, 'category', 100);
         var remove_index = -1;
-        this._categories.forEach(function(_category, index) {
+        this._categories.forEach(function (_category, index) {
             if (_category.identifier === category)
                 remove_index = index;
         });
@@ -160,7 +160,7 @@ export default class DatamodelsHelper extends BaseProvision {
         this._isValidString(category, 'category', 100);
         let remove_category_index = -1;
         let remove_datastream_index = -1;
-        this._categories.forEach(function(_category, category_index) {
+        this._categories.forEach(function (_category, category_index) {
             if (_category.identifier === category) {
                 remove_category_index = category_index;
                 _category.datastreams.forEach(function (datastream, datastream_index) {
@@ -197,7 +197,7 @@ export default class DatamodelsHelper extends BaseProvision {
         this._isValidString(old_category, 'old category', 100);
         let old_category_index = -1;
         let new_category_index = -1;
-        this._categories.forEach(function(category, index) {
+        this._categories.forEach(function (category, index) {
             switch (category.identifier) {
                 case old_category:
                     old_category_index = index;
@@ -232,10 +232,10 @@ export default class DatamodelsHelper extends BaseProvision {
         }
         let update_category_index = -1;
         let update_datastream_index = -1;
-        this._categories.forEach(function(_category, category_index) {
+        this._categories.forEach(function (_category, category_index) {
             if (_category.identifier === category) {
                 update_category_index = category_index;
-                _category.datastreams.forEach(function(_datastream, datastream_index) {
+                _category.datastreams.forEach(function (_datastream, datastream_index) {
                     if (_datastream.identifier === id_datastream) {
                         update_datastream_index = datastream_index;
                     }

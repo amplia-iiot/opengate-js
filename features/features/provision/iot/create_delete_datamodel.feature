@@ -6,6 +6,7 @@
 @create_provision_iot
 @create_iot_profile
 @create_datamodel
+@allowedResourceType
 Feature: Delete and Create a Datamodel
 As a device of JsApi
 I want to create an Datamodel
@@ -18,7 +19,7 @@ So, I can create a new Datamodel with the parametres that I have been defined
         And an ogapi "datamodels helper" util with...
             | param                                                                                                        |
             | base_organization                                                                                            |
-            | {"identifier":"profile_test","name":"profile_change","version":"2.0","description":"CHANGE","categories":[]} |
+            | {"identifier":"profile_test","name":"profile_change","version":"2.0","description":"CHANGE","allowedResourceTypes":["entity.device"],"categories":[]} |
         Then I delete it
 
     Scenario: Create and delete a datamodel that not exists
@@ -30,12 +31,13 @@ So, I can create a new Datamodel with the parametres that I have been defined
         And the "name" "profile_test"
         And the "version" "1.0"
         And the "description" "TESTING"
+        And the "allowed resource type" "entity.device"
         Then I create it
         And response code should be: 201
         And an ogapi "datamodels helper" util with...
             | param                                                                                                        |
             | base_organization                                                                                            |
-            | {"identifier":"profile_test","name":"profile_change","version":"2.0","description":"CHANGE","categories":[]} |
+            | {"identifier":"profile_test","name":"profile_change","version":"2.0","description":"CHANGE","allowedResourceTypes":["entity.device"],"categories":[]} |
         And I delete it
         Then response code should be: 200
 
@@ -44,7 +46,7 @@ So, I can create a new Datamodel with the parametres that I have been defined
         Given an ogapi "datamodels helper" util with...
             | param                                                                                                        |
             | base_organization                                                                                            |
-            | {"identifier":"profile_test","name":"profile_change","version":"2.0","description":"CHANGE","categories":[]} |
+            | {"identifier":"profile_test","name":"profile_change","version":"2.0","description":"CHANGE","allowedResourceTypes":["entity.device"],"categories":[]} |
         Then I delete it
         Then response code should be: 400
 
@@ -57,6 +59,7 @@ So, I can create a new Datamodel with the parametres that I have been defined
         And the "name" "profile_test"
         And the "version" "1.0"
         And the "description" "TESTING"
+        And the "allowed resource type" "entity.device"
         And I create it
         Then response code should be: 201
         And an ogapi "datamodels builder" util with...
@@ -67,6 +70,7 @@ So, I can create a new Datamodel with the parametres that I have been defined
         And the "name" "profile_test"
         And the "version" "1.0"
         And the "description" "TESTING"
+        And the "allowed resource type" "entity.device"
         And I create it
         Then response code should be: 400
         Then throws an error equal to "Element already exists"
@@ -75,6 +79,6 @@ So, I can create a new Datamodel with the parametres that I have been defined
         Given an ogapi "datamodels helper" util with...
             | param                                                                                                        |
             | base_organization                                                                                            |
-            | {"identifier":"profile_test","name":"profile_test","version":"1.0","description":"TESTING", "categories":[]} |
+            | {"identifier":"profile_test","name":"profile_test","version":"1.0","description":"TESTING","allowedResourceTypes":["entity.device"],"categories":[]} |
         And I delete it
         Then response code should be: 200

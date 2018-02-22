@@ -1,5 +1,5 @@
 module.exports = {
-    setters: function(setter) {
+    setters: function (setter) {
         return {
 
             'bundle': {
@@ -62,7 +62,7 @@ module.exports = {
             }
         }[setter];
     },
-    getter_response: function(getter) {
+    getter_response: function (getter) {
         return {
             'bundle name': 'name',
             'certificate name': 'name',
@@ -85,6 +85,7 @@ module.exports = {
             'datamodel name': 'name',
             'datamodel version': 'version',
             'datamodel description': 'description',
+            'datamodel allowed resource type': 'allowedResourceTypes',
             'category[0] identifier': 'categories[0].identifier',
             'category[1] identifier': 'categories[1].identifier',
             'category[0] datastream[0] identifier': 'categories[0].datastreams[0].identifier',

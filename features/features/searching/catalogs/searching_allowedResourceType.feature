@@ -3,6 +3,7 @@
 @catalogs
 @searching
 @searching_allowedResourceType
+@allowedResourceType
 Feature: Searching Allowed Resource Type provider in catalog
   As a user of JsApi
   I want to search into Allowed Resource Type provider catalog
@@ -17,5 +18,5 @@ Feature: Searching Allowed Resource Type provider in catalog
     Then response code should be: 200
     And the result contains:
     """
-{"allowedResourceType":["entity.asset","entity.device","entity.subscriber","entity.subscription"]}
+{"allowedResourceType":["entity.asset","entity.device","entity.subscriber","entity.subscription","ticket","organization","channel"]}
     """
