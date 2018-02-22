@@ -104,6 +104,12 @@ var Datamodels = (function (_BaseProvision) {
             this._description = description;
             return this;
         }
+
+        /**
+         * Set the addAllowedResourceType attribute
+         * @param {string} resourceType - required field
+         * @return {Datamodels}
+         */
     }, {
         key: 'addAllowedResourceType',
         value: function addAllowedResourceType(resourceType) {
@@ -164,11 +170,15 @@ var Datamodels = (function (_BaseProvision) {
         key: '_composeElement',
         value: function _composeElement() {
             if (!this._name) {
-                throw new Error('Name is required on IoTDatamodel');
+                throw new Error('name is required on IoTDatamodel');
             }
 
             if (!this._version) {
-                throw new Error('Version is required on IoTDatamodel');
+                throw new Error('version is required on IoTDatamodel');
+            }
+
+            if (!this._resourceType) {
+                throw new Error('allowedResourceTypes is required on IoTDatamodel');
             }
 
             return {
@@ -176,7 +186,7 @@ var Datamodels = (function (_BaseProvision) {
                 'name': this._name,
                 'version': this._version,
                 'description': this._description,
-                'allowedResourceTypes': this._resourceType.length > 0 ? this._resourceType : undefined,
+                'allowedResourceTypes': this._resourceType,
                 'categories': this._categories.length > 0 ? this._categories : undefined
             };
         }

@@ -550,7 +550,7 @@ var StaticSearch = (function (_Search) {
                 'ioTDatastreamStoragePeriod': ['DAYS', 'MONTHS', 'YEARS', 'FOREVER', 'NEVER'],
                 'ioTDatastreamPeriod': ['PULSE', 'CUMULATIVE', 'INSTANT'],
                 'resourceType': ['asset', 'device'],
-                'allowedResourceType': ['entity.asset', 'entity.device', 'entity.subscriber', 'entity.subscription'],
+                'allowedResourceType': ['entity.asset', 'entity.device', 'entity.subscriber', 'entity.subscription', 'ticket', 'organization', 'channel'],
                 'fieldsDefinition': {
                     'string': {
                         'description': 'Text based value',

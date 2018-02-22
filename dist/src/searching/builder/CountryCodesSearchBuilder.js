@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-    value: true
+  value: true
 });
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -28,39 +28,39 @@ var _StaticSearch2 = _interopRequireDefault(_StaticSearch);
  */
 
 var CountryCodesSearchBuilder = (function (_SearchBuilder) {
-    _inherits(CountryCodesSearchBuilder, _SearchBuilder);
+  _inherits(CountryCodesSearchBuilder, _SearchBuilder);
 
-    /**
-     *  @param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
-     */
+  /**
+   *  @param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
+   */
 
-    function CountryCodesSearchBuilder(parent) {
-        _classCallCheck(this, CountryCodesSearchBuilder);
+  function CountryCodesSearchBuilder(parent) {
+    _classCallCheck(this, CountryCodesSearchBuilder);
 
-        _get(Object.getPrototypeOf(CountryCodesSearchBuilder.prototype), 'constructor', this).call(this, parent, {});
+    _get(Object.getPrototypeOf(CountryCodesSearchBuilder.prototype), 'constructor', this).call(this, parent, {});
 
-        this._url = '/countryCodes';
-        //this.fluentFilter = parent.newFilterBuilder();
-        this.customFilters = {};
+    this._url = '/countryCodes';
+    //this.fluentFilter = parent.newFilterBuilder();
+    this.customFilters = {};
+  }
+
+  /**
+   * Build a instance of StaticSearch 
+   *
+   * @example
+   *   ogapi.countryCodesSearchBuilder().filter({and:[]}).build()
+   * @throws {SearchBuilderError} Throw error on url build
+   * @return {StaticSearch} 
+   */
+
+  _createClass(CountryCodesSearchBuilder, [{
+    key: 'build',
+    value: function build() {
+      return new _StaticSearch2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._builderParams.timeout, 'countryCodes', this.customFilters);
     }
+  }]);
 
-    /**
-     * Build a instance of StaticSearch 
-     *
-     * @example
-     *   ogapi.countryCodesSearchBuilder().filter({and:[]}).build()
-     * @throws {SearchBuilderError} Throw error on url build
-     * @return {StaticSearch} 
-     */
-
-    _createClass(CountryCodesSearchBuilder, [{
-        key: 'build',
-        value: function build() {
-            return new _StaticSearch2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._builderParams.timeout, 'countryCodes', this.customFilters);
-        }
-    }]);
-
-    return CountryCodesSearchBuilder;
+  return CountryCodesSearchBuilder;
 })(_SearchBuilder3['default']);
 
 exports['default'] = CountryCodesSearchBuilder;

@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-    value: true
+  value: true
 });
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -23,51 +23,51 @@ var _ProvisionGenericFinder3 = _interopRequireDefault(_ProvisionGenericFinder2);
  */
 
 var UserFinder = (function (_ProvisionGenericFinder) {
-    _inherits(UserFinder, _ProvisionGenericFinder);
+  _inherits(UserFinder, _ProvisionGenericFinder);
 
-    /**     
-     * @param {InternalOpenGateAPI} Reference to the API object.
-     */
+  /**     
+   * @param {InternalOpenGateAPI} Reference to the API object.
+   */
 
-    function UserFinder(ogapi) {
-        _classCallCheck(this, UserFinder);
+  function UserFinder(ogapi) {
+    _classCallCheck(this, UserFinder);
 
-        _get(Object.getPrototypeOf(UserFinder.prototype), 'constructor', this).call(this, ogapi, 'users', 'user', 'User not found');
+    _get(Object.getPrototypeOf(UserFinder.prototype), 'constructor', this).call(this, ogapi, 'users', 'user', 'User not found');
+  }
+
+  /**
+   * Find a specify user by a email. This execute a GET http method
+   * @test
+   *   ogapi.newUserFinder().findByEmail('myuser@amplia.es').then().catch();
+   * @param {string} email - Email of the user.
+   * @return {Promise} 
+   */
+
+  _createClass(UserFinder, [{
+    key: 'findByEmail',
+    value: function findByEmail(email) {
+      this._id = email;
+      return this._execute();
     }
 
     /**
-     * Find a specify user by a email. This execute a GET http method
+     * Find a specific user with apiKey by a email and password. This execute a GET http method
      * @test
-     *   ogapi.newUserFinder().findByEmail('myuser@amplia.es').then().catch();
+     *  ogapi.newUserFinder().findByEmail('mysuer@amplia.es', 'pass').then().catch();
      * @param {string} email - Email of the user.
-     * @return {Promise} 
+     * @param {string} password - password of the user.
+     * @return {Promise}
      */
+  }, {
+    key: 'findByEmailAndPassword',
+    value: function findByEmailAndPassword(email, password) {
+      this._id = email;
+      this._setExtraHeaders({ 'X-ApiPass': password });
+      return this._execute();
+    }
+  }]);
 
-    _createClass(UserFinder, [{
-        key: 'findByEmail',
-        value: function findByEmail(email) {
-            this._id = email;
-            return this._execute();
-        }
-
-        /**
-         * Find a specific user with apiKey by a email and password. This execute a GET http method
-         * @test
-         *  ogapi.newUserFinder().findByEmail('mysuer@amplia.es', 'pass').then().catch();
-         * @param {string} email - Email of the user.
-         * @param {string} password - password of the user.
-         * @return {Promise}
-         */
-    }, {
-        key: 'findByEmailAndPassword',
-        value: function findByEmailAndPassword(email, password) {
-            this._id = email;
-            this._setExtraHeaders({ 'X-ApiPass': password });
-            return this._execute();
-        }
-    }]);
-
-    return UserFinder;
+  return UserFinder;
 })(_ProvisionGenericFinder3['default']);
 
 exports['default'] = UserFinder;
