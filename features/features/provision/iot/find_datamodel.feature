@@ -7,6 +7,7 @@
 @find_provision_iot
 @find_iot_profile
 @find_datamodel
+@allowedResourceType
 Feature: Update a Datamodel
 As a device of JsApi
 I want to update an Datamodel
@@ -19,7 +20,7 @@ So, I can update a Datamodel with the parametres that I have been defined
     Given an ogapi "datamodels helper" util with...
       | param                                                                                                        |
       | base_organization                                                                                            |
-      | {"identifier":"profile_test","name":"profile_change","version":"2.0","description":"CHANGE","categories":[]} |
+      | {"identifier":"profile_test","name":"profile_change","version":"2.0","description":"CHANGE","allowedResourceTypes":["entity.device"],"categories":[]} |
     Then I delete it
     And an ogapi "datamodels builder" util with...
       | param             |
@@ -29,6 +30,7 @@ So, I can update a Datamodel with the parametres that I have been defined
     And the "name" "profile_test"
     And the "version" "1.0"
     And the "description" "TESTING"
+    And the "allowed resource type" "entity.device"
     And I create it
     Then response code should be: 201
 
@@ -64,6 +66,6 @@ So, I can update a Datamodel with the parametres that I have been defined
     Given an ogapi "datamodels helper" util with...
       | param                                                                                                        |
       | base_organization                                                                                            |
-      | {"identifier":"profile_test","name":"profile_change","version":"2.0","description":"CHANGE","categories":[]} |
+      | {"identifier":"profile_test","name":"profile_change","version":"2.0","description":"CHANGE","allowedResourceTypes":["entity.device"],"categories":[]} |
     And I delete it
     Then response code should be: 200

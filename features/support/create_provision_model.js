@@ -1,5 +1,5 @@
 module.exports = {
-    setters: function(setter) {
+    setters: function (setter) {
         return {
             'user': {
                 'email': 'withEmail',
@@ -93,7 +93,8 @@ module.exports = {
                 'update category': 'updateCategory',
                 'update datastream': 'updateDatastream',
                 'removeCategory': 'removeCategory',
-                'remove datastream': 'removeDatastream'
+                'remove datastream': 'removeDatastream',
+                'allowed resource type': 'addAllowedResourceType'
             },
             'datastream': {
                 'identifier': 'withId',
@@ -359,7 +360,7 @@ module.exports = {
 
         }[setter];
     },
-    getter_response: function(getter) {
+    getter_response: function (getter) {
         return {
             'user email': '/email',
             'organization name': '/name'
