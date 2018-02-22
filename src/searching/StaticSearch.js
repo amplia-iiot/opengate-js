@@ -54,7 +54,7 @@ export default class StaticSearch extends Search {
             collection = content;
         }
 
-        
+
         switch (_this._contentType) {
             case 'operationalStatus':
             case 'specificType':
@@ -70,7 +70,7 @@ export default class StaticSearch extends Search {
                 }
                 break;
             case 'administrativeState':
-                var createAndAddFileObj = function(obj) {
+                var createAndAddFileObj = function (obj) {
                     var finalObj = obj;
                     finalObj[ENTITY_TYPE] = entityTypeTmp;
                     finalContent.push(finalObj);
@@ -122,6 +122,10 @@ export default class StaticSearch extends Search {
                     finalContent = collection[entityType];
                 }
                 break;
+            case 'ticketType':
+            case 'ticketSeverity':
+            case 'ticketPriority':
+            case 'ticketStatus':
             case 'mobilePhoneProvider':
             case 'ruleConfigurationSeverity':
             case 'ioTDatastreamPeriod':
@@ -169,6 +173,24 @@ export default class StaticSearch extends Search {
 
     _content(contentType) {
         return {
+            'ticketType': [
+                'WORKORDER',
+                'INCIDENT'
+            ],
+            'ticketSeverity': [
+                'CRITICAL', 'URGENT', 'WARNING', 'NORMAL'
+            ],
+            'ticketPriority': [
+                'MAJOR', 'MINOR', 'CRITICAL', 'BLOCKER'
+            ],
+            'ticketStatus': [
+                'CREATED',
+                'ASSIGNED',
+                'ANSWERED',
+                'RESTORED',
+                'RESOLVED',
+                'CLOSED'
+            ],
             'serviceGroups': {
                 'ASSET': ['noUpdate',
                     'emptyServiceGroup',
@@ -367,7 +389,8 @@ export default class StaticSearch extends Search {
                 'SUBSCRIBER': ["ADSL", "CAN", "ETH", "GENERIC", "GSM", "HAN", "I2C", "LOWPAN", "MESH"],
                 'SUBSCRIPTION': ["ADSL", "CAN", "ETH", "GENERIC", "GSM", "HAN", "I2C", "LOWPAN", "MESH", "MOBILE", "PLC", "RS232", "RS422", "RS485", "SIGFOX", "UMTS", "WIFI", "ZIGBEE"],
                 'ASSET': ["BOX", "BUILDING", "CONTROL_HOUSE", "CRANE", "FOUNTAIN", "ENGINE", "HOUSE", "MACHINE", "OTHER", "PALLET", "PIPELINE", "SPOOL", "TOWER", "VEHICLE", "WIRE", "WORKER"],
-                'GATEWAY': ["GATEWAY", "BLOODPRESSURE_SENSOR", "COMHUB", "CONCENTRATOR", "CONTAINER", "COORDINATOR", "GENERIC", "GLUCOMETER_SENSOR", "METER", "MODEM", "ROUTER", "SENSOR", "TPV", "VEHICLE", "VENDING", "WEIGHT_SENSOR"]
+                'GATEWAY': ["GATEWAY", "BLOODPRESSURE_SENSOR", "COMHUB", "CONCENTRATOR", "CONTAINER", "COORDINATOR", "GENERIC", "GLUCOMETER_SENSOR", "METER", "MODEM", "ROUTER", "SENSOR", "TPV", "VEHICLE", "VENDING", "WEIGHT_SENSOR"],
+                'TICKET': ["INSTALLATION", "TEST", "TECHNICAL_TASK", "DESINSTALLATION"]
             },
             'communicationsModuleType': {
                 "GENERIC": {

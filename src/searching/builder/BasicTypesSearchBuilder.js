@@ -46,7 +46,9 @@ export default class BasicTypesSearchBuilder {
     execute() {
         var defered = q.defer();
         var promise = defered.promise;
-        this._setExtraHeaders({ 'Accept': 'application/json' });
+        this._setExtraHeaders({
+            'Accept': 'application/json'
+        });
         this._ogapi.Napi
             .get(this._resource, this._timeout, this._getExtraHeaders())
             .then((response) => {
@@ -55,7 +57,7 @@ export default class BasicTypesSearchBuilder {
                 this._og_basic_types = resultQuery;
 
                 var nodes = jp.apply(this._og_basic_types, "$..['$ref']",
-                    function(value, path) {
+                    function (value, path) {
                         let newPath = '$..' + value.replace('#/definitions/', '');
                         var newValue = jp.query(resultQuery, newPath);
                         return newValue[0];
@@ -66,8 +68,13 @@ export default class BasicTypesSearchBuilder {
                 });
                 if (this.path) {
                     let path = this.path.includes('$.') ? this.path : '$..' + this.path;
-                    let jsonSchemaValue = jp.query(resultQuery, path)[0] || { msg: 'not Found' };
-                    defered.resolve({ data: jsonSchemaValue, statusCode: statusCode });
+                    let jsonSchemaValue = jp.query(resultQuery, path)[0] || {
+                        msg: 'not Found'
+                    };
+                    defered.resolve({
+                        data: jsonSchemaValue,
+                        statusCode: statusCode
+                    });
                 } else {
                     if (this.publicParameters) {
                         for (let x in resultQuery.definitions) {
@@ -76,7 +83,10 @@ export default class BasicTypesSearchBuilder {
                             }
                         }
                     }
-                    defered.resolve({ data: resultQuery, statusCode: statusCode });
+                    defered.resolve({
+                        data: resultQuery,
+                        statusCode: statusCode
+                    });
                 }
             })
             .catch((error) => {
@@ -100,12 +110,12 @@ export default class BasicTypesSearchBuilder {
     }
 
     /**
-     * Sets path to search
+     * Sets publicParameters to search
      *
      * @description
      * @example
-     *  ogapi.JsonSchemaSearchBuilder().withPath('string').build()
-     * @param {!string} path - jsonSchemaPath
+     *  ogapi.JsonSchemaSearchBuilder().withPublicParameters(true).build()
+     * @param {!boolean} publicParameters - boolean
      * @return {JsonSchemaSearchBuilder}
      */
     withPublicParameters(publicParameters) {
