@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-  value: true
+    value: true
 });
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -28,39 +28,39 @@ var _StaticSearch2 = _interopRequireDefault(_StaticSearch);
  */
 
 var UserLanguagesSearchBuilder = (function (_SearchBuilder) {
-  _inherits(UserLanguagesSearchBuilder, _SearchBuilder);
+    _inherits(UserLanguagesSearchBuilder, _SearchBuilder);
 
-  /**
-   *  @param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
-   */
+    /**
+     *  @param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
+     */
 
-  function UserLanguagesSearchBuilder(parent) {
-    _classCallCheck(this, UserLanguagesSearchBuilder);
+    function UserLanguagesSearchBuilder(parent) {
+        _classCallCheck(this, UserLanguagesSearchBuilder);
 
-    _get(Object.getPrototypeOf(UserLanguagesSearchBuilder.prototype), 'constructor', this).call(this, parent, {});
+        _get(Object.getPrototypeOf(UserLanguagesSearchBuilder.prototype), 'constructor', this).call(this, parent, {});
 
-    this._url = '/userLanguages';
-    //this.fluentFilter = parent.newFilterBuilder();
-    this.customFilters = {};
-  }
-
-  /**
-   * Build a instance of StaticSearch 
-   *
-   * @example
-   *   ogapi.userLanguagesSearchBuilder().filter({and:[]}).build()
-   * @throws {SearchBuilderError} Throw error on url build
-   * @return {StaticSearch} 
-   */
-
-  _createClass(UserLanguagesSearchBuilder, [{
-    key: 'build',
-    value: function build() {
-      return new _StaticSearch2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._builderParams.timeout, 'userLanguages', this.customFilters);
+        this._url = '/userLanguages';
+        //this.fluentFilter = parent.newFilterBuilder();
+        this.customFilters = {};
     }
-  }]);
 
-  return UserLanguagesSearchBuilder;
+    /**
+     * Build a instance of StaticSearch 
+     *
+     * @example
+     *   ogapi.userLanguagesSearchBuilder().filter({and:[]}).build()
+     * @throws {SearchBuilderError} Throw error on url build
+     * @return {StaticSearch} 
+     */
+
+    _createClass(UserLanguagesSearchBuilder, [{
+        key: 'build',
+        value: function build() {
+            return new _StaticSearch2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._builderParams.timeout, 'userLanguages', this.customFilters);
+        }
+    }]);
+
+    return UserLanguagesSearchBuilder;
 })(_SearchBuilder3['default']);
 
 exports['default'] = UserLanguagesSearchBuilder;

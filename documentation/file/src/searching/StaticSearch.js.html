@@ -123,8 +123,10 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SimpleBuilder.js~SimpleBuilder.html">SimpleBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SubscriberBuilder.js~SubscriberBuilder.html">SubscriberBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SubscriptionBuilder.js~SubscriptionBuilder.html">SubscriptionBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/TicketBuilder.js~TicketBuilder.html">TicketBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SubscriberID">SubscriberID</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SubscriptionID">SubscriptionID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TicketID">TicketID</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">rulesConfiguration</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html">RuleConfigurations</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsActions.js~RuleConfigurationsActions.html">RuleConfigurationsActions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder.html">RuleConfigurationsFinder</a></span></span></li>
@@ -179,6 +181,11 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SpecificTypeSearchBuilder.js~SpecificTypeSearchBuilder.html">SpecificTypeSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscribersSearchBuilder.js~SubscribersSearchBuilder.html">SubscribersSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscriptionsSearchBuilder.js~SubscriptionsSearchBuilder.html">SubscriptionsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketPrioritySearchBuilder.js~TicketPrioritySearchBuilder.html">TicketPrioritySearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketSeveritySearchBuilder.js~TicketSeveritySearchBuilder.html">TicketSeveritySearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketStatusSearchBuilder.js~TicketStatusSearchBuilder.html">TicketStatusSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketTypeSearchBuilder.js~TicketTypeSearchBuilder.html">TicketTypeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketsSearchBuilder.js~TicketsSearchBuilder.html">TicketsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UserLanguagesSearchBuilder.js~UserLanguagesSearchBuilder.html">UserLanguagesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UserProfilesSearchBuilder.js~UserProfilesSearchBuilder.html">UserProfilesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UsersSearchBuilder.js~UsersSearchBuilder.html">UsersSearchBuilder</a></span></span></li>
@@ -269,7 +276,7 @@ export default class StaticSearch extends Search {
             collection = content;
         }
 
-        
+
         switch (_this._contentType) {
             case &apos;operationalStatus&apos;:
             case &apos;specificType&apos;:
@@ -285,7 +292,7 @@ export default class StaticSearch extends Search {
                 }
                 break;
             case &apos;administrativeState&apos;:
-                var createAndAddFileObj = function(obj) {
+                var createAndAddFileObj = function (obj) {
                     var finalObj = obj;
                     finalObj[ENTITY_TYPE] = entityTypeTmp;
                     finalContent.push(finalObj);
@@ -337,6 +344,10 @@ export default class StaticSearch extends Search {
                     finalContent = collection[entityType];
                 }
                 break;
+            case &apos;ticketType&apos;:
+            case &apos;ticketSeverity&apos;:
+            case &apos;ticketPriority&apos;:
+            case &apos;ticketStatus&apos;:
             case &apos;mobilePhoneProvider&apos;:
             case &apos;ruleConfigurationSeverity&apos;:
             case &apos;ioTDatastreamPeriod&apos;:
@@ -384,6 +395,24 @@ export default class StaticSearch extends Search {
 
     _content(contentType) {
         return {
+            &apos;ticketType&apos;: [
+                &apos;WORKORDER&apos;,
+                &apos;INCIDENT&apos;
+            ],
+            &apos;ticketSeverity&apos;: [
+                &apos;CRITICAL&apos;, &apos;URGENT&apos;, &apos;WARNING&apos;, &apos;NORMAL&apos;
+            ],
+            &apos;ticketPriority&apos;: [
+                &apos;MAJOR&apos;, &apos;MINOR&apos;, &apos;CRITICAL&apos;, &apos;BLOCKER&apos;
+            ],
+            &apos;ticketStatus&apos;: [
+                &apos;CREATED&apos;,
+                &apos;ASSIGNED&apos;,
+                &apos;ANSWERED&apos;,
+                &apos;RESTORED&apos;,
+                &apos;RESOLVED&apos;,
+                &apos;CLOSED&apos;
+            ],
             &apos;serviceGroups&apos;: {
                 &apos;ASSET&apos;: [&apos;noUpdate&apos;,
                     &apos;emptyServiceGroup&apos;,
@@ -582,7 +611,8 @@ export default class StaticSearch extends Search {
                 &apos;SUBSCRIBER&apos;: [&quot;ADSL&quot;, &quot;CAN&quot;, &quot;ETH&quot;, &quot;GENERIC&quot;, &quot;GSM&quot;, &quot;HAN&quot;, &quot;I2C&quot;, &quot;LOWPAN&quot;, &quot;MESH&quot;],
                 &apos;SUBSCRIPTION&apos;: [&quot;ADSL&quot;, &quot;CAN&quot;, &quot;ETH&quot;, &quot;GENERIC&quot;, &quot;GSM&quot;, &quot;HAN&quot;, &quot;I2C&quot;, &quot;LOWPAN&quot;, &quot;MESH&quot;, &quot;MOBILE&quot;, &quot;PLC&quot;, &quot;RS232&quot;, &quot;RS422&quot;, &quot;RS485&quot;, &quot;SIGFOX&quot;, &quot;UMTS&quot;, &quot;WIFI&quot;, &quot;ZIGBEE&quot;],
                 &apos;ASSET&apos;: [&quot;BOX&quot;, &quot;BUILDING&quot;, &quot;CONTROL_HOUSE&quot;, &quot;CRANE&quot;, &quot;FOUNTAIN&quot;, &quot;ENGINE&quot;, &quot;HOUSE&quot;, &quot;MACHINE&quot;, &quot;OTHER&quot;, &quot;PALLET&quot;, &quot;PIPELINE&quot;, &quot;SPOOL&quot;, &quot;TOWER&quot;, &quot;VEHICLE&quot;, &quot;WIRE&quot;, &quot;WORKER&quot;],
-                &apos;GATEWAY&apos;: [&quot;GATEWAY&quot;, &quot;BLOODPRESSURE_SENSOR&quot;, &quot;COMHUB&quot;, &quot;CONCENTRATOR&quot;, &quot;CONTAINER&quot;, &quot;COORDINATOR&quot;, &quot;GENERIC&quot;, &quot;GLUCOMETER_SENSOR&quot;, &quot;METER&quot;, &quot;MODEM&quot;, &quot;ROUTER&quot;, &quot;SENSOR&quot;, &quot;TPV&quot;, &quot;VEHICLE&quot;, &quot;VENDING&quot;, &quot;WEIGHT_SENSOR&quot;]
+                &apos;GATEWAY&apos;: [&quot;GATEWAY&quot;, &quot;BLOODPRESSURE_SENSOR&quot;, &quot;COMHUB&quot;, &quot;CONCENTRATOR&quot;, &quot;CONTAINER&quot;, &quot;COORDINATOR&quot;, &quot;GENERIC&quot;, &quot;GLUCOMETER_SENSOR&quot;, &quot;METER&quot;, &quot;MODEM&quot;, &quot;ROUTER&quot;, &quot;SENSOR&quot;, &quot;TPV&quot;, &quot;VEHICLE&quot;, &quot;VENDING&quot;, &quot;WEIGHT_SENSOR&quot;],
+                &apos;TICKET&apos;: [&quot;INSTALLATION&quot;, &quot;TEST&quot;, &quot;TECHNICAL_TASK&quot;, &quot;DESINSTALLATION&quot;]
             },
             &apos;communicationsModuleType&apos;: {
                 &quot;GENERIC&quot;: {

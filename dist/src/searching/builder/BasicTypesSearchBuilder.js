@@ -75,7 +75,9 @@ var BasicTypesSearchBuilder = (function () {
 
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            this._setExtraHeaders({ 'Accept': 'application/json' });
+            this._setExtraHeaders({
+                'Accept': 'application/json'
+            });
             this._ogapi.Napi.get(this._resource, this._timeout, this._getExtraHeaders()).then(function (response) {
                 var resultQuery = response.body;
                 var statusCode = response.statusCode;
@@ -92,8 +94,13 @@ var BasicTypesSearchBuilder = (function () {
                 });
                 if (_this.path) {
                     var path = _this.path.includes('$.') ? _this.path : '$..' + _this.path;
-                    var jsonSchemaValue = _jsonpath2['default'].query(resultQuery, path)[0] || { msg: 'not Found' };
-                    defered.resolve({ data: jsonSchemaValue, statusCode: statusCode });
+                    var jsonSchemaValue = _jsonpath2['default'].query(resultQuery, path)[0] || {
+                        msg: 'not Found'
+                    };
+                    defered.resolve({
+                        data: jsonSchemaValue,
+                        statusCode: statusCode
+                    });
                 } else {
                     if (_this.publicParameters) {
                         for (var x in resultQuery.definitions) {
@@ -102,7 +109,10 @@ var BasicTypesSearchBuilder = (function () {
                             }
                         }
                     }
-                    defered.resolve({ data: resultQuery, statusCode: statusCode });
+                    defered.resolve({
+                        data: resultQuery,
+                        statusCode: statusCode
+                    });
                 }
             })['catch'](function (error) {
                 defered.reject(error);
@@ -127,12 +137,12 @@ var BasicTypesSearchBuilder = (function () {
         }
 
         /**
-         * Sets path to search
+         * Sets publicParameters to search
          *
          * @description
          * @example
-         *  ogapi.JsonSchemaSearchBuilder().withPath('string').build()
-         * @param {!string} path - jsonSchemaPath
+         *  ogapi.JsonSchemaSearchBuilder().withPublicParameters(true).build()
+         * @param {!boolean} publicParameters - boolean
          * @return {JsonSchemaSearchBuilder}
          */
     }, {

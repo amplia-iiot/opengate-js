@@ -53,6 +53,10 @@ import ResourceTypeSearchBuilder from './searching/builder/ResourceTypeSearchBui
 import AllowedResourceTypeSearchBuilder from './searching/builder/AllowedResourceTypeSearchBuilder';
 import IoTDatastreamAccessSearchBuilder from './searching/builder/IoTDatastreamAccessSearchBuilder';
 import IoTDatastreamStoragePeriodSearchBuilder from './searching/builder/IoTDatastreamStoragePeriodSearchBuilder';
+import TicketTypeSearchBuilder from './searching/builder/TicketTypeSearchBuilder';
+import TicketSeveritySearchBuilder from './searching/builder/TicketSeveritySearchBuilder';
+import TicketPrioritySearchBuilder from './searching/builder/TicketPrioritySearchBuilder';
+import TicketStatusSearchBuilder from './searching/builder/TicketStatusSearchBuilder';
 import RuleConfigurationSeveritySearchBuilder from './searching/builder/RuleConfigurationSeveritySearchBuilder';
 import UsersSearchBuilder from './searching/builder/UsersSearchBuilder';
 import DomainsSearchBuilder from './searching/builder/DomainsSearchBuilder';
@@ -313,12 +317,12 @@ export default class InternalOpenGateAPI {
      * This return a TicketsSearchBuilder to build a specific TicketSearch
      */
     ticketsSearchBuilder() {
-            return new TicketsSearchBuilder(this);
-        }
-        /**
-         * This return a CommunicationsModuleTypeSearchBuilder to build a specific CommunicationsModuleTypeSearch
-         * @return {CommunicationsModuleTypeSearchBuilder}
-         */
+        return new TicketsSearchBuilder(this);
+    }
+    /**
+     * This return a CommunicationsModuleTypeSearchBuilder to build a specific CommunicationsModuleTypeSearch
+     * @return {CommunicationsModuleTypeSearchBuilder}
+     */
     communicationsModuleTypeSearchBuilder() {
         return new CommunicationsModuleTypeSearchBuilder(this);
     }
@@ -379,6 +383,38 @@ export default class InternalOpenGateAPI {
      */
     ioTDatastreamStoragePeriodSearchBuilder() {
         return new IoTDatastreamStoragePeriodSearchBuilder(this);
+    }
+
+    /**
+     * This return a TicketTypeSearchBuilder to build a specific TicketTypeSearchBuilder
+     * @return {TicketTypeSearchBuilder}
+     */
+    ticketTypeSearchBuilder() {
+        return new TicketTypeSearchBuilder(this);
+    }
+
+    /**
+     * This return a TicketSeveritySearchBuilder to build a specific TicketSeveritySearchBuilder
+     * @return {TicketSeveritySearchBuilder}
+     */
+    ticketSeveritySearchBuilder() {
+        return new TicketSeveritySearchBuilder(this);
+    }
+
+    /**
+     * This return a TicketPrioritySearchBuilder to build a specific TicketPrioritySearchBuilder
+     * @return {TicketPrioritySearchBuilder}
+     */
+    ticketPrioritySearchBuilder() {
+        return new TicketPrioritySearchBuilder(this);
+    }
+
+    /**
+     * This return a TicketStatusSearchBuilder to build a specific TicketStatusSearchBuilder
+     * @return {TicketStatusSearchBuilder}
+     */
+    ticketStatusSearchBuilder() {
+        return new TicketStatusSearchBuilder(this);
     }
 
     /**

@@ -222,6 +222,22 @@ var _searchingBuilderIoTDatastreamStoragePeriodSearchBuilder = require('./search
 
 var _searchingBuilderIoTDatastreamStoragePeriodSearchBuilder2 = _interopRequireDefault(_searchingBuilderIoTDatastreamStoragePeriodSearchBuilder);
 
+var _searchingBuilderTicketTypeSearchBuilder = require('./searching/builder/TicketTypeSearchBuilder');
+
+var _searchingBuilderTicketTypeSearchBuilder2 = _interopRequireDefault(_searchingBuilderTicketTypeSearchBuilder);
+
+var _searchingBuilderTicketSeveritySearchBuilder = require('./searching/builder/TicketSeveritySearchBuilder');
+
+var _searchingBuilderTicketSeveritySearchBuilder2 = _interopRequireDefault(_searchingBuilderTicketSeveritySearchBuilder);
+
+var _searchingBuilderTicketPrioritySearchBuilder = require('./searching/builder/TicketPrioritySearchBuilder');
+
+var _searchingBuilderTicketPrioritySearchBuilder2 = _interopRequireDefault(_searchingBuilderTicketPrioritySearchBuilder);
+
+var _searchingBuilderTicketStatusSearchBuilder = require('./searching/builder/TicketStatusSearchBuilder');
+
+var _searchingBuilderTicketStatusSearchBuilder2 = _interopRequireDefault(_searchingBuilderTicketStatusSearchBuilder);
+
 var _searchingBuilderRuleConfigurationSeveritySearchBuilder = require('./searching/builder/RuleConfigurationSeveritySearchBuilder');
 
 var _searchingBuilderRuleConfigurationSeveritySearchBuilder2 = _interopRequireDefault(_searchingBuilderRuleConfigurationSeveritySearchBuilder);
@@ -729,6 +745,46 @@ var InternalOpenGateAPI = (function () {
         key: 'ioTDatastreamStoragePeriodSearchBuilder',
         value: function ioTDatastreamStoragePeriodSearchBuilder() {
             return new _searchingBuilderIoTDatastreamStoragePeriodSearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a TicketTypeSearchBuilder to build a specific TicketTypeSearchBuilder
+         * @return {TicketTypeSearchBuilder}
+         */
+    }, {
+        key: 'ticketTypeSearchBuilder',
+        value: function ticketTypeSearchBuilder() {
+            return new _searchingBuilderTicketTypeSearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a TicketSeveritySearchBuilder to build a specific TicketSeveritySearchBuilder
+         * @return {TicketSeveritySearchBuilder}
+         */
+    }, {
+        key: 'ticketSeveritySearchBuilder',
+        value: function ticketSeveritySearchBuilder() {
+            return new _searchingBuilderTicketSeveritySearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a TicketPrioritySearchBuilder to build a specific TicketPrioritySearchBuilder
+         * @return {TicketPrioritySearchBuilder}
+         */
+    }, {
+        key: 'ticketPrioritySearchBuilder',
+        value: function ticketPrioritySearchBuilder() {
+            return new _searchingBuilderTicketPrioritySearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a TicketStatusSearchBuilder to build a specific TicketStatusSearchBuilder
+         * @return {TicketStatusSearchBuilder}
+         */
+    }, {
+        key: 'ticketStatusSearchBuilder',
+        value: function ticketStatusSearchBuilder() {
+            return new _searchingBuilderTicketStatusSearchBuilder2['default'](this);
         }
 
         /**

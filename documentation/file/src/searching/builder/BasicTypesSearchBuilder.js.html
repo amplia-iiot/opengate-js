@@ -123,8 +123,10 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SimpleBuilder.js~SimpleBuilder.html">SimpleBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SubscriberBuilder.js~SubscriberBuilder.html">SubscriberBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SubscriptionBuilder.js~SubscriptionBuilder.html">SubscriptionBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/TicketBuilder.js~TicketBuilder.html">TicketBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SubscriberID">SubscriberID</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SubscriptionID">SubscriptionID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TicketID">TicketID</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">rulesConfiguration</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html">RuleConfigurations</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsActions.js~RuleConfigurationsActions.html">RuleConfigurationsActions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder.html">RuleConfigurationsFinder</a></span></span></li>
@@ -179,6 +181,11 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SpecificTypeSearchBuilder.js~SpecificTypeSearchBuilder.html">SpecificTypeSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscribersSearchBuilder.js~SubscribersSearchBuilder.html">SubscribersSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscriptionsSearchBuilder.js~SubscriptionsSearchBuilder.html">SubscriptionsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketPrioritySearchBuilder.js~TicketPrioritySearchBuilder.html">TicketPrioritySearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketSeveritySearchBuilder.js~TicketSeveritySearchBuilder.html">TicketSeveritySearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketStatusSearchBuilder.js~TicketStatusSearchBuilder.html">TicketStatusSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketTypeSearchBuilder.js~TicketTypeSearchBuilder.html">TicketTypeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketsSearchBuilder.js~TicketsSearchBuilder.html">TicketsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UserLanguagesSearchBuilder.js~UserLanguagesSearchBuilder.html">UserLanguagesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UserProfilesSearchBuilder.js~UserProfilesSearchBuilder.html">UserProfilesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UsersSearchBuilder.js~UsersSearchBuilder.html">UsersSearchBuilder</a></span></span></li>
@@ -234,6 +241,7 @@ export default class BasicTypesSearchBuilder {
         this._resource = &apos;resources/schemaTypes/og_basic_types&apos;;
         this._headers = undefined;
         this._og_basic_types = {};
+        this.publicParameters = false;
     }
     _getExtraHeaders() {
         return this._headers;
@@ -260,16 +268,19 @@ export default class BasicTypesSearchBuilder {
     execute() {
         var defered = q.defer();
         var promise = defered.promise;
-        this._setExtraHeaders({ &apos;Accept&apos;: &apos;application/json&apos; });
+        this._setExtraHeaders({
+            &apos;Accept&apos;: &apos;application/json&apos;
+        });
         this._ogapi.Napi
             .get(this._resource, this._timeout, this._getExtraHeaders())
             .then((response) =&gt; {
                 var resultQuery = response.body;
                 let statusCode = response.statusCode;
                 this._og_basic_types = resultQuery;
+
                 var nodes = jp.apply(this._og_basic_types, &quot;$..[&apos;$ref&apos;]&quot;,
-                    function(value, path) {
-                        let newPath = &apos;$..&apos; + value.split(&apos;#/definitions/&apos;)[1];
+                    function (value, path) {
+                        let newPath = &apos;$..&apos; + value.replace(&apos;#/definitions/&apos;, &apos;&apos;);
                         var newValue = jp.query(resultQuery, newPath);
                         return newValue[0];
                     });
@@ -277,14 +288,27 @@ export default class BasicTypesSearchBuilder {
                     var pathExpression = jp.stringify(element.path);
                     jp.value(resultQuery, pathExpression, element.value);
                 });
-
                 if (this.path) {
-                    let path = this.path.includes(&apos;$..&apos;) ? this.path : &apos;$..&apos; + this.path;
-                    let jsonSchemaValue = jp.query(resultQuery, path)[0] || { msg: &apos;not Found&apos; };
-                    defered.resolve({ data: jsonSchemaValue, statusCode: statusCode });
+                    let path = this.path.includes(&apos;$.&apos;) ? this.path : &apos;$..&apos; + this.path;
+                    let jsonSchemaValue = jp.query(resultQuery, path)[0] || {
+                        msg: &apos;not Found&apos;
+                    };
+                    defered.resolve({
+                        data: jsonSchemaValue,
+                        statusCode: statusCode
+                    });
                 } else {
-
-                    defered.resolve({ data: resultQuery, statusCode: statusCode });
+                    if (this.publicParameters) {
+                        for (let x in resultQuery.definitions) {
+                            if (!resultQuery.definitions[x].public || resultQuery.definitions[x].public === false) {
+                                delete resultQuery.definitions[x];
+                            }
+                        }
+                    }
+                    defered.resolve({
+                        data: resultQuery,
+                        statusCode: statusCode
+                    });
                 }
             })
             .catch((error) =&gt; {
@@ -304,6 +328,20 @@ export default class BasicTypesSearchBuilder {
      */
     withPath(path) {
         this.path = path;
+        return this;
+    }
+
+    /**
+     * Sets publicParameters to search
+     *
+     * @description
+     * @example
+     *  ogapi.JsonSchemaSearchBuilder().withPublicParameters(true).build()
+     * @param {!boolean} publicParameters - boolean
+     * @return {JsonSchemaSearchBuilder}
+     */
+    withPublicParameters(publicParameters) {
+        this.publicParameters = publicParameters;
         return this;
     }
 
