@@ -1,6 +1,6 @@
 'use strict';
 
-import q from 'q';
+import q, { timeout } from 'q';
 import jp from 'jsonpath';
 
 import jsonschema from 'jsonschema';
@@ -138,14 +138,14 @@ export default class EntityBuilder {
             return new SubscriptionBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
         });
     }
-    newCsvBulkBuilder(organization) {
-        return new CsvBulkBuilder(this._ogapi, organization);
+    newCsvBulkBuilder(organization, timeout) {
+        return new CsvBulkBuilder(this._ogapi, organization, timeout);
     }
-    newJsonBulkBuilder(organization) {
-        return new JsonBulkBuilder(this._ogapi, organization);
+    newJsonBulkBuilder(organization, timeout) {
+        return new JsonBulkBuilder(this._ogapi, organization, timeout);
     }
-    newJsonFlattenedBulkBuilder(organization) {
-        return new JsonFlattenedBulkBuilder(this._ogapi, organization);
+    newJsonFlattenedBulkBuilder(organization, timeout) {
+        return new JsonFlattenedBulkBuilder(this._ogapi, organization, timeout);
     }
 
     _genericBuilder(organization, resourceType, field, onFindAllowedDatastreams) {

@@ -18,8 +18,9 @@ export default class BulkBuilder extends BaseProvision {
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!string} organization - this is the organization where can be create/delete/update the entity
      */
-    constructor(ogapi, resource, extension) {
+    constructor(ogapi, resource, extension, timeout) {
         super(ogapi, resource);
+        this._timeout = timeout;
         this._resource = resource;
         this._extension = extension;
 
