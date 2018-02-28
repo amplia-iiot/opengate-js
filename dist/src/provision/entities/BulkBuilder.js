@@ -42,10 +42,11 @@ var BulkBuilder = (function (_BaseProvision) {
      * @param {!string} organization - this is the organization where can be create/delete/update the entity
      */
 
-    function BulkBuilder(ogapi, resource, extension) {
+    function BulkBuilder(ogapi, resource, extension, timeout) {
         _classCallCheck(this, BulkBuilder);
 
         _get(Object.getPrototypeOf(BulkBuilder.prototype), 'constructor', this).call(this, ogapi, resource);
+        this._timeout = timeout;
         this._resource = resource;
         this._extension = extension;
     }

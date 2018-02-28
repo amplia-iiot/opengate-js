@@ -192,18 +192,18 @@ var EntityBuilder = (function () {
         }
     }, {
         key: 'newCsvBulkBuilder',
-        value: function newCsvBulkBuilder(organization) {
-            return new _CsvBulkBuilder2['default'](this._ogapi, organization);
+        value: function newCsvBulkBuilder(organization, timeout) {
+            return new _CsvBulkBuilder2['default'](this._ogapi, organization, timeout);
         }
     }, {
         key: 'newJsonBulkBuilder',
-        value: function newJsonBulkBuilder(organization) {
-            return new _JsonBulkBuilder2['default'](this._ogapi, organization);
+        value: function newJsonBulkBuilder(organization, timeout) {
+            return new _JsonBulkBuilder2['default'](this._ogapi, organization, timeout);
         }
     }, {
         key: 'newJsonFlattenedBulkBuilder',
-        value: function newJsonFlattenedBulkBuilder(organization) {
-            return new _JsonFlattenedBulkBuilder2['default'](this._ogapi, organization);
+        value: function newJsonFlattenedBulkBuilder(organization, timeout) {
+            return new _JsonFlattenedBulkBuilder2['default'](this._ogapi, organization, timeout);
         }
     }, {
         key: '_genericBuilder',

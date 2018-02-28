@@ -29,10 +29,10 @@ var CsvBulkBuilder = (function (_BulkBuilder) {
    * @param {!extension} [extension] - extension header to send
    */
 
-  function CsvBulkBuilder(ogapi, organization) {
+  function CsvBulkBuilder(ogapi, organization, timeout) {
     _classCallCheck(this, CsvBulkBuilder);
 
-    _get(Object.getPrototypeOf(CsvBulkBuilder.prototype), 'constructor', this).call(this, ogapi, 'provision/organizations/' + organization + '/bulk/entities?action=#actionName#', 'text/plain');
+    _get(Object.getPrototypeOf(CsvBulkBuilder.prototype), 'constructor', this).call(this, ogapi, 'provision/organizations/' + organization + '/bulk/entities?action=#actionName#', 'text/plain', timeout);
   }
 
   return CsvBulkBuilder;
