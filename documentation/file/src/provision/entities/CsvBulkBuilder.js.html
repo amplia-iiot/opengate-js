@@ -234,10 +234,9 @@ export default class CsvBulkBuilder extends BulkBuilder {
      * @param {!string} organization - this is the organization name where entities will be created
      * @param {!extension} [extension] - extension header to send
      */
-    constructor(ogapi, organization) {
-        super(ogapi, &apos;provision/organizations/&apos; + organization + &apos;/bulk/entities?action=#actionName#&apos; , &apos;text/plain&apos;);
+    constructor(ogapi, organization, timeout) {
+        super(ogapi, &apos;provision/organizations/&apos; + organization + &apos;/bulk/entities?action=#actionName#&apos;, &apos;text/plain&apos;, timeout);
     }
-
 }</code></pre>
 
 </div>
