@@ -32,7 +32,8 @@ const match_url = {
     '/devices': 'SearchOnDatamodel',
     '/subscriptions': 'SearchOnDatamodel',
     '/subscribers': 'SearchOnDatamodel',
-    '/entities': 'SearchOnDatamodel'
+    '/entities': 'SearchOnDatamodel',
+    '/tickets': 'SearchOnDatamodel'
 };
 
 const match_type = {
@@ -83,6 +84,9 @@ const FIELD_SEARCHER = {
             },
             '/entities': function(field) {
                 return true;
+            },
+            '/tickets': function(field) {
+                return true;
             }
         };
 
@@ -122,7 +126,7 @@ const FIELD_SEARCHER = {
     },
     [COMPLEX_FIELDS]: function(states, context, primaryType, defered) {
         const finiteStateMachine = {
-            1: function (states, context) {
+            1: function(states, context) {
                 // Fields del primaryType + los fields de los relacionados = complexFields
                 return context[primaryType].concat(
                     complexFields.filter(
@@ -131,7 +135,7 @@ const FIELD_SEARCHER = {
                     )
                 );
             },
-            2: function (states, context) {
+            2: function(states, context) {
                 try {
                     // Fields del relacionado + fields_related
                     return appendPreviousStates(
@@ -143,7 +147,7 @@ const FIELD_SEARCHER = {
                     return [];
                 }
             },
-            3: function (states, context) {
+            3: function(states, context) {
                 let secondState = states[1];
                 if (fields_related.indexOf(secondState) === -1) return [];
                 try {

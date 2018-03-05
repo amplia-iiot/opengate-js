@@ -48232,7 +48232,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import q from 'q';\nimport { GENERATED_FIELDS } from './source-precompiled/Fields';\nimport { IOT_FIELDS } from './IotFields';\n\nvar FIELDS = GENERATED_FIELDS;\nfor (var field in IOT_FIELDS) {\n    if (FIELDS[field]) {\n        for (var subfield in IOT_FIELDS[field]) {\n            FIELDS[field][subfield] = IOT_FIELDS[field][subfield];\n        }\n    } else {\n        FIELDS[field] = IOT_FIELDS[field];\n    }\n}\n\nconst match_url = {\n    '/jobs': 'JOB',\n    '/alarms': 'ENTITY_ALARM',\n    '/operations': 'ENTITY_OPERATION',\n    '/certificates': 'CERTIFICATE',\n    '/bundles': 'UPDATE_BUNDLE_VERSION',\n    '/datapoints': 'DATAPOINTS',\n    '/datastreams': 'DATASTREAMS',\n    '/datamodels': 'DATAMODELS',\n    '/dmmQRating': 'DMMQRATING',\n    '/iotQRating': 'IOTQRATING',\n    '/catalog/softwares': 'SOFTWARE_VERSION',\n    '/catalog/hardwares': 'MODEL',\n    '/domains': 'DOMAIN',\n    '/users': 'USER',\n    '/areas': 'AREAS',\n    '/devices': 'SearchOnDatamodel',\n    '/subscriptions': 'SearchOnDatamodel',\n    '/subscribers': 'SearchOnDatamodel',\n    '/entities': 'SearchOnDatamodel'\n};\n\nconst match_type = {\n    'subscriber': 'DEVICE_PART_SUBSCRIBER',\n    'subscription': 'DEVICE_PART_SUBSCRIPTION',\n    'communicationsModule': 'DEVICE_PART_COMMSMODULE',\n    'device': 'DEVICE_PART_DEVICE'\n};\n\nconst match_type_inverse = {\n    'DEVICE_PART_SUBSCRIBER': 'subscriber',\n    'DEVICE_PART_SUBSCRIPTION': 'subscription',\n    'DEVICE_PART_COMMSMODULE': 'communicationsModule',\n    'DEVICE_PART_DEVICE': 'device'\n};\n\nconst fields_related = ['relColl', 'relProv'];\n\nconst complexPrimaryType = ['DEVICE_PART_SUBSCRIBER', 'DEVICE_PART_SUBSCRIPTION', 'DEVICE_PART_COMMSMODULE', 'DEVICE_PART_DEVICE'];\nconst complexFields = ['subscriber', 'subscription', 'communicationsModule', 'device'];\nconst SIMPLE_FIELDS = 'simple';\nconst COMPLEX_FIELDS = 'complex';\nconst SEARCH_FIELDS = 'search';\n\nconst TYPE_FIELD = {\n    get: function(url) {\n        if (complexPrimaryType.indexOf(match_url[url]) >= 0) {\n            return COMPLEX_FIELDS;\n        }\n        if (match_url[url] === 'SearchOnDatamodel') {\n            return SEARCH_FIELDS;\n        }\n        return SIMPLE_FIELDS;\n    }\n};\n\nconst FIELD_SEARCHER = {\n    [SEARCH_FIELDS]: function(states, context, primaryType, defered) {\n        const filterByUrl = {\n            '/devices': function(field) {\n                return true;\n            },\n            '/subscriptions': function(field) {\n                return true;\n            },\n            '/subscribers': function(field) {\n                return true;\n            },\n            '/entities': function(field) {\n                return true;\n            }\n        };\n\n        this._ogapi.datamodelsSearchBuilder().build().execute().then(function(response) {\n            var datastreams = [];\n            if (response.statusCode === 200) {\n                datastreams = response.data.datamodels.map(function(datamodel) {\n                    var categories = datamodel.categories || [];\n                    return categories.map(function(category) {\n                        var datastreams = category.datastreams || [];\n                        return datastreams.map(function(ds) {\n                            return ds.identifier;\n                        });\n                    });\n                });\n                datastreams = reduce(datastreams);\n            }\n            defered.resolve(datastreams);\n        }).catch(function(error) {\n            defered.reject(error);\n        });\n\n        function reduce(array) {\n            if (array.length > 0 && array[0].constructor === Array) {\n                array = array.reduce(function(preVal, elem) {\n                    return preVal.concat(elem);\n                });\n                return reduce(array);\n            }\n            return array;\n        }\n\n    },\n    [SIMPLE_FIELDS]: function(states, context, primaryType, defered) {\n        if (states.length > 1) return defered.resolve([]);\n        defered.resolve(context[primaryType].slice());\n    },\n    [COMPLEX_FIELDS]: function(states, context, primaryType, defered) {\n        const finiteStateMachine = {\n            1: function (states, context) {\n                // Fields del primaryType + los fields de los relacionados = complexFields\n                return context[primaryType].concat(\n                    complexFields.filter(\n                        filterRelatedEntities,\n                        match_type_inverse[primaryType]\n                    )\n                );\n            },\n            2: function (states, context) {\n                try {\n                    // Fields del relacionado + fields_related\n                    return appendPreviousStates(\n                        states,\n                        fieldsNestedState(states[0], context).concat(fields_related)\n                    );\n                } catch (err) {\n                    //console.warn(err);\n                    return [];\n                }\n            },\n            3: function (states, context) {\n                let secondState = states[1];\n                if (fields_related.indexOf(secondState) === -1) return [];\n                try {\n                    // Fields del relacionado \n                    return appendPreviousStates(\n                        states,\n                        fieldsNestedState(states[0], context)\n                    );\n                } catch (err) {\n                    //console.warn(err);\n                    return [];\n                }\n            }\n        };\n\n        let statesSize = states.length;\n        let currentState = finiteStateMachine[statesSize];\n        if (typeof currentState === \"undefined\") return defered.resolve([]);\n        return defered.resolve(currentState(states, context));\n\n        function fieldsNestedState(state, context) {\n            let relatedPrimaryType, fieldsRelated;\n            if (!(fieldsNestedState = match_type[state]) || !(fieldsRelated = context[fieldsNestedState]))\n                throw new Error('Invalid primaryType: ' + state);\n            return fieldsRelated.slice();\n        }\n\n        function filterRelatedEntities(relatedEntity) {\n            return relatedEntity != this;\n        }\n\n        function appendPreviousStates(states, fields) {\n            let out = [];\n            fields.forEach(function(field) {\n                let arrayField = states.slice(0, -1);\n                arrayField.push(field);\n                out.push(arrayField.join(\".\"));\n            });\n            return out;\n        }\n    }\n}\n\nexport default class FieldFinder {\n    constructor(ogapi, url) {\n        this._ogapi = ogapi;\n        this._url = url;\n        this._type = TYPE_FIELD.get(url);\n    }\n\n    find(input = \"\") {\n        let defered = q.defer();\n        FIELD_SEARCHER[this._type].call(this, input.split('.'), FIELDS[match_url[this._url]], match_url[this._url], defered);\n        return defered.promise;\n    }\n}"
+    "content": "import q from 'q';\nimport { GENERATED_FIELDS } from './source-precompiled/Fields';\nimport { IOT_FIELDS } from './IotFields';\n\nvar FIELDS = GENERATED_FIELDS;\nfor (var field in IOT_FIELDS) {\n    if (FIELDS[field]) {\n        for (var subfield in IOT_FIELDS[field]) {\n            FIELDS[field][subfield] = IOT_FIELDS[field][subfield];\n        }\n    } else {\n        FIELDS[field] = IOT_FIELDS[field];\n    }\n}\n\nconst match_url = {\n    '/jobs': 'JOB',\n    '/alarms': 'ENTITY_ALARM',\n    '/operations': 'ENTITY_OPERATION',\n    '/certificates': 'CERTIFICATE',\n    '/bundles': 'UPDATE_BUNDLE_VERSION',\n    '/datapoints': 'DATAPOINTS',\n    '/datastreams': 'DATASTREAMS',\n    '/datamodels': 'DATAMODELS',\n    '/dmmQRating': 'DMMQRATING',\n    '/iotQRating': 'IOTQRATING',\n    '/catalog/softwares': 'SOFTWARE_VERSION',\n    '/catalog/hardwares': 'MODEL',\n    '/domains': 'DOMAIN',\n    '/users': 'USER',\n    '/areas': 'AREAS',\n    '/devices': 'SearchOnDatamodel',\n    '/subscriptions': 'SearchOnDatamodel',\n    '/subscribers': 'SearchOnDatamodel',\n    '/entities': 'SearchOnDatamodel',\n    '/tickets': 'SearchOnDatamodel'\n};\n\nconst match_type = {\n    'subscriber': 'DEVICE_PART_SUBSCRIBER',\n    'subscription': 'DEVICE_PART_SUBSCRIPTION',\n    'communicationsModule': 'DEVICE_PART_COMMSMODULE',\n    'device': 'DEVICE_PART_DEVICE'\n};\n\nconst match_type_inverse = {\n    'DEVICE_PART_SUBSCRIBER': 'subscriber',\n    'DEVICE_PART_SUBSCRIPTION': 'subscription',\n    'DEVICE_PART_COMMSMODULE': 'communicationsModule',\n    'DEVICE_PART_DEVICE': 'device'\n};\n\nconst fields_related = ['relColl', 'relProv'];\n\nconst complexPrimaryType = ['DEVICE_PART_SUBSCRIBER', 'DEVICE_PART_SUBSCRIPTION', 'DEVICE_PART_COMMSMODULE', 'DEVICE_PART_DEVICE'];\nconst complexFields = ['subscriber', 'subscription', 'communicationsModule', 'device'];\nconst SIMPLE_FIELDS = 'simple';\nconst COMPLEX_FIELDS = 'complex';\nconst SEARCH_FIELDS = 'search';\n\nconst TYPE_FIELD = {\n    get: function(url) {\n        if (complexPrimaryType.indexOf(match_url[url]) >= 0) {\n            return COMPLEX_FIELDS;\n        }\n        if (match_url[url] === 'SearchOnDatamodel') {\n            return SEARCH_FIELDS;\n        }\n        return SIMPLE_FIELDS;\n    }\n};\n\nconst FIELD_SEARCHER = {\n    [SEARCH_FIELDS]: function(states, context, primaryType, defered) {\n        const filterByUrl = {\n            '/devices': function(field) {\n                return true;\n            },\n            '/subscriptions': function(field) {\n                return true;\n            },\n            '/subscribers': function(field) {\n                return true;\n            },\n            '/entities': function(field) {\n                return true;\n            },\n            '/tickets': function(field) {\n                return true;\n            }\n        };\n\n        this._ogapi.datamodelsSearchBuilder().build().execute().then(function(response) {\n            var datastreams = [];\n            if (response.statusCode === 200) {\n                datastreams = response.data.datamodels.map(function(datamodel) {\n                    var categories = datamodel.categories || [];\n                    return categories.map(function(category) {\n                        var datastreams = category.datastreams || [];\n                        return datastreams.map(function(ds) {\n                            return ds.identifier;\n                        });\n                    });\n                });\n                datastreams = reduce(datastreams);\n            }\n            defered.resolve(datastreams);\n        }).catch(function(error) {\n            defered.reject(error);\n        });\n\n        function reduce(array) {\n            if (array.length > 0 && array[0].constructor === Array) {\n                array = array.reduce(function(preVal, elem) {\n                    return preVal.concat(elem);\n                });\n                return reduce(array);\n            }\n            return array;\n        }\n\n    },\n    [SIMPLE_FIELDS]: function(states, context, primaryType, defered) {\n        if (states.length > 1) return defered.resolve([]);\n        defered.resolve(context[primaryType].slice());\n    },\n    [COMPLEX_FIELDS]: function(states, context, primaryType, defered) {\n        const finiteStateMachine = {\n            1: function(states, context) {\n                // Fields del primaryType + los fields de los relacionados = complexFields\n                return context[primaryType].concat(\n                    complexFields.filter(\n                        filterRelatedEntities,\n                        match_type_inverse[primaryType]\n                    )\n                );\n            },\n            2: function(states, context) {\n                try {\n                    // Fields del relacionado + fields_related\n                    return appendPreviousStates(\n                        states,\n                        fieldsNestedState(states[0], context).concat(fields_related)\n                    );\n                } catch (err) {\n                    //console.warn(err);\n                    return [];\n                }\n            },\n            3: function(states, context) {\n                let secondState = states[1];\n                if (fields_related.indexOf(secondState) === -1) return [];\n                try {\n                    // Fields del relacionado \n                    return appendPreviousStates(\n                        states,\n                        fieldsNestedState(states[0], context)\n                    );\n                } catch (err) {\n                    //console.warn(err);\n                    return [];\n                }\n            }\n        };\n\n        let statesSize = states.length;\n        let currentState = finiteStateMachine[statesSize];\n        if (typeof currentState === \"undefined\") return defered.resolve([]);\n        return defered.resolve(currentState(states, context));\n\n        function fieldsNestedState(state, context) {\n            let relatedPrimaryType, fieldsRelated;\n            if (!(fieldsNestedState = match_type[state]) || !(fieldsRelated = context[fieldsNestedState]))\n                throw new Error('Invalid primaryType: ' + state);\n            return fieldsRelated.slice();\n        }\n\n        function filterRelatedEntities(relatedEntity) {\n            return relatedEntity != this;\n        }\n\n        function appendPreviousStates(states, fields) {\n            let out = [];\n            fields.forEach(function(field) {\n                let arrayField = states.slice(0, -1);\n                arrayField.push(field);\n                out.push(arrayField.join(\".\"));\n            });\n            return out;\n        }\n    }\n}\n\nexport default class FieldFinder {\n    constructor(ogapi, url) {\n        this._ogapi = ogapi;\n        this._url = url;\n        this._type = TYPE_FIELD.get(url);\n    }\n\n    find(input = \"\") {\n        let defered = q.defer();\n        FIELD_SEARCHER[this._type].call(this, input.split('.'), FIELDS[match_url[this._url]], match_url[this._url], defered);\n        return defered.promise;\n    }\n}"
   },
   {
     "__docId__": 1994,
@@ -48289,7 +48289,7 @@
     "importPath": "opengate-js/src/util/searchingFields/FieldFinder.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 38,
+    "lineNumber": 39,
     "undocument": true,
     "type": {
       "types": [
@@ -48310,7 +48310,7 @@
     "importPath": "opengate-js/src/util/searchingFields/FieldFinder.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 45,
+    "lineNumber": 46,
     "undocument": true,
     "type": {
       "types": [
@@ -48331,7 +48331,7 @@
     "importPath": "opengate-js/src/util/searchingFields/FieldFinder.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 52,
+    "lineNumber": 53,
     "undocument": true,
     "type": {
       "types": [
@@ -48352,7 +48352,7 @@
     "importPath": "opengate-js/src/util/searchingFields/FieldFinder.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 54,
+    "lineNumber": 55,
     "undocument": true,
     "type": {
       "types": [
@@ -48373,7 +48373,7 @@
     "importPath": "opengate-js/src/util/searchingFields/FieldFinder.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 55,
+    "lineNumber": 56,
     "undocument": true,
     "type": {
       "types": [
@@ -48394,7 +48394,7 @@
     "importPath": "opengate-js/src/util/searchingFields/FieldFinder.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 56,
+    "lineNumber": 57,
     "undocument": true,
     "type": {
       "types": [
@@ -48415,7 +48415,7 @@
     "importPath": "opengate-js/src/util/searchingFields/FieldFinder.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 57,
+    "lineNumber": 58,
     "undocument": true,
     "type": {
       "types": [
@@ -48436,7 +48436,7 @@
     "importPath": "opengate-js/src/util/searchingFields/FieldFinder.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 58,
+    "lineNumber": 59,
     "undocument": true,
     "type": {
       "types": [
@@ -48457,7 +48457,7 @@
     "importPath": "opengate-js/src/util/searchingFields/FieldFinder.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 60,
+    "lineNumber": 61,
     "undocument": true,
     "type": {
       "types": [
@@ -48478,7 +48478,7 @@
     "importPath": "opengate-js/src/util/searchingFields/FieldFinder.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 72,
+    "lineNumber": 73,
     "undocument": true,
     "type": {
       "types": [
@@ -48499,7 +48499,7 @@
     "importPath": "opengate-js/src/util/searchingFields/FieldFinder.js",
     "importStyle": "FieldFinder",
     "description": null,
-    "lineNumber": 190,
+    "lineNumber": 194,
     "undocument": true,
     "interface": false
   },
@@ -48513,7 +48513,7 @@
     "longname": "src/util/searchingFields/FieldFinder.js~FieldFinder#constructor",
     "access": null,
     "description": null,
-    "lineNumber": 191,
+    "lineNumber": 195,
     "undocument": true,
     "params": [
       {
@@ -48541,7 +48541,7 @@
     "longname": "src/util/searchingFields/FieldFinder.js~FieldFinder#_ogapi",
     "access": null,
     "description": null,
-    "lineNumber": 192,
+    "lineNumber": 196,
     "undocument": true,
     "type": {
       "types": [
@@ -48559,7 +48559,7 @@
     "longname": "src/util/searchingFields/FieldFinder.js~FieldFinder#_url",
     "access": null,
     "description": null,
-    "lineNumber": 193,
+    "lineNumber": 197,
     "undocument": true,
     "type": {
       "types": [
@@ -48577,7 +48577,7 @@
     "longname": "src/util/searchingFields/FieldFinder.js~FieldFinder#_type",
     "access": null,
     "description": null,
-    "lineNumber": 194,
+    "lineNumber": 198,
     "undocument": true,
     "type": {
       "types": [
@@ -48595,7 +48595,7 @@
     "longname": "src/util/searchingFields/FieldFinder.js~FieldFinder#find",
     "access": null,
     "description": null,
-    "lineNumber": 197,
+    "lineNumber": 201,
     "undocument": true,
     "params": [
       {

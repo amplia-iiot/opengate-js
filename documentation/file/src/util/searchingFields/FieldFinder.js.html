@@ -254,7 +254,8 @@ const match_url = {
     &apos;/devices&apos;: &apos;SearchOnDatamodel&apos;,
     &apos;/subscriptions&apos;: &apos;SearchOnDatamodel&apos;,
     &apos;/subscribers&apos;: &apos;SearchOnDatamodel&apos;,
-    &apos;/entities&apos;: &apos;SearchOnDatamodel&apos;
+    &apos;/entities&apos;: &apos;SearchOnDatamodel&apos;,
+    &apos;/tickets&apos;: &apos;SearchOnDatamodel&apos;
 };
 
 const match_type = {
@@ -305,6 +306,9 @@ const FIELD_SEARCHER = {
             },
             &apos;/entities&apos;: function(field) {
                 return true;
+            },
+            &apos;/tickets&apos;: function(field) {
+                return true;
             }
         };
 
@@ -344,7 +348,7 @@ const FIELD_SEARCHER = {
     },
     [COMPLEX_FIELDS]: function(states, context, primaryType, defered) {
         const finiteStateMachine = {
-            1: function (states, context) {
+            1: function(states, context) {
                 // Fields del primaryType + los fields de los relacionados = complexFields
                 return context[primaryType].concat(
                     complexFields.filter(
@@ -353,7 +357,7 @@ const FIELD_SEARCHER = {
                     )
                 );
             },
-            2: function (states, context) {
+            2: function(states, context) {
                 try {
                     // Fields del relacionado + fields_related
                     return appendPreviousStates(
@@ -365,7 +369,7 @@ const FIELD_SEARCHER = {
                     return [];
                 }
             },
-            3: function (states, context) {
+            3: function(states, context) {
                 let secondState = states[1];
                 if (fields_related.indexOf(secondState) === -1) return [];
                 try {
