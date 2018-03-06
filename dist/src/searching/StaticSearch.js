@@ -146,6 +146,13 @@ var StaticSearch = (function (_Search) {
                         finalContent = collection[entityType];
                     }
                     break;
+                case 'allowedResourceType':
+                    for (var resourceTypeIdx in collection) {
+                        if (!_this._customFilters.type || _this._customFilters.type && collection[resourceTypeIdx].types.indexOf(_this._customFilters.type) > -1) {
+                            finalContent.push(collection[resourceTypeIdx].resourceType);
+                        }
+                    }
+                    break;
                 case 'ticketType':
                 case 'ticketSeverity':
                 case 'ticketPriority':
@@ -155,7 +162,6 @@ var StaticSearch = (function (_Search) {
                 case 'ioTDatastreamPeriod':
                 case 'ioTDatastreamAccess':
                 case 'resourceType':
-                case 'allowedResourceType':
                 case 'countryCodes':
                 case 'userLanguages':
                 case 'ioTDatastreamStoragePeriod':
@@ -550,7 +556,7 @@ var StaticSearch = (function (_Search) {
                 'ioTDatastreamStoragePeriod': ['DAYS', 'MONTHS', 'YEARS', 'FOREVER', 'NEVER'],
                 'ioTDatastreamPeriod': ['PULSE', 'CUMULATIVE', 'INSTANT'],
                 'resourceType': ['asset', 'device'],
-                'allowedResourceType': ['entity.asset', 'entity.device', 'entity.subscriber', 'entity.subscription', 'ticket', 'organization', 'channel'],
+                'allowedResourceType': [{ resourceType: 'entity.asset', types: ['entity', 'asset'] }, { resourceType: 'entity.device', types: ['entity', 'device'] }, { resourceType: 'entity.subscriber', types: ['entity', 'subscriber'] }, { resourceType: 'entity.subscription', types: ['entity', 'subscription'] }, { resourceType: 'ticket', types: ['ticket'] }, { resourceType: 'organization', types: ['organization'] }, { resourceType: 'channel', types: ['channel'] }],
                 'fieldsDefinition': {
                     'string': {
                         'description': 'Text based value',

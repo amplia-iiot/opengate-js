@@ -281,7 +281,7 @@ export default class StaticSearch extends Search {
             case &apos;operationalStatus&apos;:
             case &apos;specificType&apos;:
                 for (var contentTmp in collection) {
-                    collection[contentTmp].forEach(function (finalValue) {
+                    collection[contentTmp].forEach(function(finalValue) {
                         if (!_this._customFilters.id || (_this._customFilters.id &amp;&amp; _this._customFilters.id === finalValue)) {
                             finalContent.push({
                                 &apos;entityType&apos;: contentTmp,
@@ -292,7 +292,7 @@ export default class StaticSearch extends Search {
                 }
                 break;
             case &apos;administrativeState&apos;:
-                var createAndAddFileObj = function (obj) {
+                var createAndAddFileObj = function(obj) {
                     var finalObj = obj;
                     finalObj[ENTITY_TYPE] = entityTypeTmp;
                     finalContent.push(finalObj);
@@ -344,6 +344,13 @@ export default class StaticSearch extends Search {
                     finalContent = collection[entityType];
                 }
                 break;
+            case &apos;allowedResourceType&apos;:
+                for (var resourceTypeIdx in collection) {
+                    if (!_this._customFilters.type || (_this._customFilters.type &amp;&amp; collection[resourceTypeIdx].types.indexOf(_this._customFilters.type) &gt; -1)) {
+                        finalContent.push(collection[resourceTypeIdx].resourceType);
+                    }
+                }
+                break;
             case &apos;ticketType&apos;:
             case &apos;ticketSeverity&apos;:
             case &apos;ticketPriority&apos;:
@@ -353,7 +360,6 @@ export default class StaticSearch extends Search {
             case &apos;ioTDatastreamPeriod&apos;:
             case &apos;ioTDatastreamAccess&apos;:
             case &apos;resourceType&apos;:
-            case &apos;allowedResourceType&apos;:
             case &apos;countryCodes&apos;:
             case &apos;userLanguages&apos;:
             case &apos;ioTDatastreamStoragePeriod&apos;:
@@ -821,13 +827,13 @@ export default class StaticSearch extends Search {
             ],
             &apos;resourceType&apos;: [&apos;asset&apos;, &apos;device&apos;],
             &apos;allowedResourceType&apos;: [
-                &apos;entity.asset&apos;,
-                &apos;entity.device&apos;,
-                &apos;entity.subscriber&apos;,
-                &apos;entity.subscription&apos;,
-                &apos;ticket&apos;,
-                &apos;organization&apos;,
-                &apos;channel&apos;
+                { resourceType: &apos;entity.asset&apos;, types: [&apos;entity&apos;, &apos;asset&apos;] },
+                { resourceType: &apos;entity.device&apos;, types: [&apos;entity&apos;, &apos;device&apos;] },
+                { resourceType: &apos;entity.subscriber&apos;, types: [&apos;entity&apos;, &apos;subscriber&apos;] },
+                { resourceType: &apos;entity.subscription&apos;, types: [&apos;entity&apos;, &apos;subscription&apos;] },
+                { resourceType: &apos;ticket&apos;, types: [&apos;ticket&apos;] },
+                { resourceType: &apos;organization&apos;, types: [&apos;organization&apos;] },
+                { resourceType: &apos;channel&apos;, types: [&apos;channel&apos;] }
             ],
             &apos;fieldsDefinition&apos;: {
                 &apos;string&apos;: {
