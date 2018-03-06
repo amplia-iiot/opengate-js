@@ -52,6 +52,9 @@ module.exports = {
             },
             "basicTypes search": {
                 "withPublicParameters": "withPublicParameters"
+            },
+            "Allowed Resource Type": {
+                "type": "withType"
             }
         }[setter];
     }

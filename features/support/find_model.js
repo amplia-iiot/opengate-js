@@ -1,5 +1,5 @@
 module.exports = {
-    setters: function (setter) {
+    setters: function(setter) {
         return {
 
             'bundle': {
@@ -58,11 +58,10 @@ module.exports = {
             },
             'bulkEntities': {
                 'organization': 'withOrganization'
-
             }
         }[setter];
     },
-    getter_response: function (getter) {
+    getter_response: function(getter) {
         return {
             'bundle name': 'name',
             'certificate name': 'name',

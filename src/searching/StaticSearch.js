@@ -59,7 +59,7 @@ export default class StaticSearch extends Search {
             case 'operationalStatus':
             case 'specificType':
                 for (var contentTmp in collection) {
-                    collection[contentTmp].forEach(function (finalValue) {
+                    collection[contentTmp].forEach(function(finalValue) {
                         if (!_this._customFilters.id || (_this._customFilters.id && _this._customFilters.id === finalValue)) {
                             finalContent.push({
                                 'entityType': contentTmp,
@@ -70,7 +70,7 @@ export default class StaticSearch extends Search {
                 }
                 break;
             case 'administrativeState':
-                var createAndAddFileObj = function (obj) {
+                var createAndAddFileObj = function(obj) {
                     var finalObj = obj;
                     finalObj[ENTITY_TYPE] = entityTypeTmp;
                     finalContent.push(finalObj);
@@ -122,6 +122,13 @@ export default class StaticSearch extends Search {
                     finalContent = collection[entityType];
                 }
                 break;
+            case 'allowedResourceType':
+                for (var resourceTypeIdx in collection) {
+                    if (!_this._customFilters.type || (_this._customFilters.type && collection[resourceTypeIdx].types.indexOf(_this._customFilters.type) > -1)) {
+                        finalContent.push(collection[resourceTypeIdx].resourceType);
+                    }
+                }
+                break;
             case 'ticketType':
             case 'ticketSeverity':
             case 'ticketPriority':
@@ -131,7 +138,6 @@ export default class StaticSearch extends Search {
             case 'ioTDatastreamPeriod':
             case 'ioTDatastreamAccess':
             case 'resourceType':
-            case 'allowedResourceType':
             case 'countryCodes':
             case 'userLanguages':
             case 'ioTDatastreamStoragePeriod':
@@ -599,13 +605,13 @@ export default class StaticSearch extends Search {
             ],
             'resourceType': ['asset', 'device'],
             'allowedResourceType': [
-                'entity.asset',
-                'entity.device',
-                'entity.subscriber',
-                'entity.subscription',
-                'ticket',
-                'organization',
-                'channel'
+                { resourceType: 'entity.asset', types: ['entity', 'asset'] },
+                { resourceType: 'entity.device', types: ['entity', 'device'] },
+                { resourceType: 'entity.subscriber', types: ['entity', 'subscriber'] },
+                { resourceType: 'entity.subscription', types: ['entity', 'subscription'] },
+                { resourceType: 'ticket', types: ['ticket'] },
+                { resourceType: 'organization', types: ['organization'] },
+                { resourceType: 'channel', types: ['channel'] }
             ],
             'fieldsDefinition': {
                 'string': {

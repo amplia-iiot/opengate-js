@@ -34,4 +34,21 @@ export default class AllowedResourceTypeSearchBuilder extends SearchBuilder {
     }
 
 
+    /**
+     * Sets type to search
+     *
+     * @example
+     *  ogapi.AllowedResourceTypeSearchBuilder().withType('device').build()
+     * @param {!string} type - type to searcg
+     * @throws {Error} throw error when type is not typeof string
+     * @return {AllowedResourceTypeSearchBuilder} 
+     */
+    withType(type) {
+        if (typeof type !== 'string') {
+            throw new Error('Parameter type must be a string');
+        }
+
+        this.customFilters.type = type.toLowerCase();
+        return this;
+    }
 }
