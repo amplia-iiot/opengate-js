@@ -57,7 +57,7 @@ export default class BasicTypesSearchBuilder {
                 this._og_basic_types = resultQuery;
 
                 var nodes = jp.apply(this._og_basic_types, "$..['$ref']",
-                    function (value, path) {
+                    function(value, path) {
                         let newPath = '$..' + value.replace('#/definitions/', '');
                         var newValue = jp.query(resultQuery, newPath);
                         return newValue[0];
@@ -67,7 +67,7 @@ export default class BasicTypesSearchBuilder {
                     jp.value(resultQuery, pathExpression, element.value);
                 });
                 if (this.path) {
-                    let path = this.path.includes('$.') ? this.path : '$..' + this.path;
+                    let path = this.path.includes('$') ? this.path : '$..' + this.path;
                     let jsonSchemaValue = jp.query(resultQuery, path)[0] || {
                         msg: 'not Found'
                     };
@@ -100,9 +100,9 @@ export default class BasicTypesSearchBuilder {
      *
      * @description
      * @example
-     *  ogapi.JsonSchemaSearchBuilder().withPath('string').build()
+     *  ogapi.basicTypesSearchBuilder().withPath('string').build()
      * @param {!string} path - jsonSchemaPath
-     * @return {JsonSchemaSearchBuilder}
+     * @return {BasicTypesSearchBuilder}
      */
     withPath(path) {
         this.path = path;
@@ -114,9 +114,9 @@ export default class BasicTypesSearchBuilder {
      *
      * @description
      * @example
-     *  ogapi.JsonSchemaSearchBuilder().withPublicParameters(true).build()
+     *  ogapi.basicTypesSearchBuilder().withPublicParameters(true).build()
      * @param {!boolean} publicParameters - boolean
-     * @return {JsonSchemaSearchBuilder}
+     * @return {BasicTypesSearchBuilder}
      */
     withPublicParameters(publicParameters) {
         this.publicParameters = publicParameters;

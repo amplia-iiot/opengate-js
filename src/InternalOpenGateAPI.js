@@ -45,7 +45,6 @@ import ServiceGroupSearchBuilder from './searching/builder/ServiceGroupSearchBui
 import AdministrativeStateSearchBuilder from './searching/builder/AdministrativeStateSearchBuilder';
 import CommunicationsModuleTypeSearchBuilder from './searching/builder/CommunicationsModuleTypeSearchBuilder';
 import FieldsDefinitionSearchBuilder from './searching/builder/FieldsDefinitionSearchBuilder';
-import JsonSchemaSearchBuilder from './searching/builder/JsonSchemaSearchBuilder';
 import BasicTypesSearchBuilder from './searching/builder/BasicTypesSearchBuilder';
 import MobilePhoneProviderSearchBuilder from './searching/builder/MobilePhoneProviderSearchBuilder';
 import IoTDatastreamPeriodSearchBuilder from './searching/builder/IoTDatastreamPeriodSearchBuilder';
@@ -317,12 +316,12 @@ export default class InternalOpenGateAPI {
      * This return a TicketsSearchBuilder to build a specific TicketSearch
      */
     ticketsSearchBuilder() {
-        return new TicketsSearchBuilder(this);
-    }
-    /**
-     * This return a CommunicationsModuleTypeSearchBuilder to build a specific CommunicationsModuleTypeSearch
-     * @return {CommunicationsModuleTypeSearchBuilder}
-     */
+            return new TicketsSearchBuilder(this);
+        }
+        /**
+         * This return a CommunicationsModuleTypeSearchBuilder to build a specific CommunicationsModuleTypeSearch
+         * @return {CommunicationsModuleTypeSearchBuilder}
+         */
     communicationsModuleTypeSearchBuilder() {
         return new CommunicationsModuleTypeSearchBuilder(this);
     }
@@ -496,14 +495,6 @@ export default class InternalOpenGateAPI {
      */
     certificatesSearchBuilder() {
         return new CertificatesSearchBuilder(this);
-    }
-
-    /**
-     * This return a JsonSchemaSearchBuilder to build a specific JsonSchemaSearchBuilder
-     * @return {JsonSchemaSearchBuilder}
-     */
-    jsonSchemaSearchBuilder() {
-        return new JsonSchemaSearchBuilder(this);
     }
 
     /**
