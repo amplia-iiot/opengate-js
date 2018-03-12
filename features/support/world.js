@@ -15,7 +15,6 @@ function World() {
     this.test_url_north = process.env.API_NORTH_INTERNAL || 'SECURE_URL_NORTH';
     this.test_url_south = process.env.API_SOUTH_INTERNAL || 'REQUIRE-URL_SOUTH';
     this.apikey = process.env.API_KEY || 'REQUIRE-API_KEY';
-    //this.apikey = process.env.API_KEY_ADMIN_DOMAIN || 'REQUIRE-API_KEY';
     chai.use(chai_as_promised);
     this.expect = chai.expect;
 

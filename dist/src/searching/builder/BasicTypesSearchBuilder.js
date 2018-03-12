@@ -93,7 +93,7 @@ var BasicTypesSearchBuilder = (function () {
                     _jsonpath2['default'].value(resultQuery, pathExpression, element.value);
                 });
                 if (_this.path) {
-                    var path = _this.path.includes('$.') ? _this.path : '$..' + _this.path;
+                    var path = _this.path.includes('$') ? _this.path : '$..' + _this.path;
                     var jsonSchemaValue = _jsonpath2['default'].query(resultQuery, path)[0] || {
                         msg: 'not Found'
                     };
@@ -125,9 +125,9 @@ var BasicTypesSearchBuilder = (function () {
          *
          * @description
          * @example
-         *  ogapi.JsonSchemaSearchBuilder().withPath('string').build()
+         *  ogapi.basicTypesSearchBuilder().withPath('string').build()
          * @param {!string} path - jsonSchemaPath
-         * @return {JsonSchemaSearchBuilder}
+         * @return {BasicTypesSearchBuilder}
          */
     }, {
         key: 'withPath',
@@ -141,9 +141,9 @@ var BasicTypesSearchBuilder = (function () {
          *
          * @description
          * @example
-         *  ogapi.JsonSchemaSearchBuilder().withPublicParameters(true).build()
+         *  ogapi.basicTypesSearchBuilder().withPublicParameters(true).build()
          * @param {!boolean} publicParameters - boolean
-         * @return {JsonSchemaSearchBuilder}
+         * @return {BasicTypesSearchBuilder}
          */
     }, {
         key: 'withPublicParameters',

@@ -164,7 +164,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamAccessSearchBuilder.js~IoTDatastreamAccessSearchBuilder.html">IoTDatastreamAccessSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamPeriodSearchBuilder.js~IoTDatastreamPeriodSearchBuilder.html">IoTDatastreamPeriodSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamStoragePeriodSearchBuilder.js~IoTDatastreamStoragePeriodSearchBuilder.html">IoTDatastreamStoragePeriodSearchBuilder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/JsonSchemaSearchBuilder.js~JsonSchemaSearchBuilder.html">JsonSchemaSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/MobilePhoneProviderSearchBuilder.js~MobilePhoneProviderSearchBuilder.html">MobilePhoneProviderSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationalStatusSearchBuilder.js~OperationalStatusSearchBuilder.html">OperationalStatusSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationsSearchBuilder.js~OperationsSearchBuilder.html">OperationsSearchBuilder</a></span></span></li>
@@ -267,7 +266,6 @@ import ServiceGroupSearchBuilder from &apos;./searching/builder/ServiceGroupSear
 import AdministrativeStateSearchBuilder from &apos;./searching/builder/AdministrativeStateSearchBuilder&apos;;
 import CommunicationsModuleTypeSearchBuilder from &apos;./searching/builder/CommunicationsModuleTypeSearchBuilder&apos;;
 import FieldsDefinitionSearchBuilder from &apos;./searching/builder/FieldsDefinitionSearchBuilder&apos;;
-import JsonSchemaSearchBuilder from &apos;./searching/builder/JsonSchemaSearchBuilder&apos;;
 import BasicTypesSearchBuilder from &apos;./searching/builder/BasicTypesSearchBuilder&apos;;
 import MobilePhoneProviderSearchBuilder from &apos;./searching/builder/MobilePhoneProviderSearchBuilder&apos;;
 import IoTDatastreamPeriodSearchBuilder from &apos;./searching/builder/IoTDatastreamPeriodSearchBuilder&apos;;
@@ -539,12 +537,12 @@ export default class InternalOpenGateAPI {
      * This return a TicketsSearchBuilder to build a specific TicketSearch
      */
     ticketsSearchBuilder() {
-        return new TicketsSearchBuilder(this);
-    }
-    /**
-     * This return a CommunicationsModuleTypeSearchBuilder to build a specific CommunicationsModuleTypeSearch
-     * @return {CommunicationsModuleTypeSearchBuilder}
-     */
+            return new TicketsSearchBuilder(this);
+        }
+        /**
+         * This return a CommunicationsModuleTypeSearchBuilder to build a specific CommunicationsModuleTypeSearch
+         * @return {CommunicationsModuleTypeSearchBuilder}
+         */
     communicationsModuleTypeSearchBuilder() {
         return new CommunicationsModuleTypeSearchBuilder(this);
     }
@@ -718,14 +716,6 @@ export default class InternalOpenGateAPI {
      */
     certificatesSearchBuilder() {
         return new CertificatesSearchBuilder(this);
-    }
-
-    /**
-     * This return a JsonSchemaSearchBuilder to build a specific JsonSchemaSearchBuilder
-     * @return {JsonSchemaSearchBuilder}
-     */
-    jsonSchemaSearchBuilder() {
-        return new JsonSchemaSearchBuilder(this);
     }
 
     /**

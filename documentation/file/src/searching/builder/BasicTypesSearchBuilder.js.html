@@ -164,7 +164,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamAccessSearchBuilder.js~IoTDatastreamAccessSearchBuilder.html">IoTDatastreamAccessSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamPeriodSearchBuilder.js~IoTDatastreamPeriodSearchBuilder.html">IoTDatastreamPeriodSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamStoragePeriodSearchBuilder.js~IoTDatastreamStoragePeriodSearchBuilder.html">IoTDatastreamStoragePeriodSearchBuilder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/JsonSchemaSearchBuilder.js~JsonSchemaSearchBuilder.html">JsonSchemaSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/MobilePhoneProviderSearchBuilder.js~MobilePhoneProviderSearchBuilder.html">MobilePhoneProviderSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationalStatusSearchBuilder.js~OperationalStatusSearchBuilder.html">OperationalStatusSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationsSearchBuilder.js~OperationsSearchBuilder.html">OperationsSearchBuilder</a></span></span></li>
@@ -279,7 +278,7 @@ export default class BasicTypesSearchBuilder {
                 this._og_basic_types = resultQuery;
 
                 var nodes = jp.apply(this._og_basic_types, &quot;$..[&apos;$ref&apos;]&quot;,
-                    function (value, path) {
+                    function(value, path) {
                         let newPath = &apos;$..&apos; + value.replace(&apos;#/definitions/&apos;, &apos;&apos;);
                         var newValue = jp.query(resultQuery, newPath);
                         return newValue[0];
@@ -289,7 +288,7 @@ export default class BasicTypesSearchBuilder {
                     jp.value(resultQuery, pathExpression, element.value);
                 });
                 if (this.path) {
-                    let path = this.path.includes(&apos;$.&apos;) ? this.path : &apos;$..&apos; + this.path;
+                    let path = this.path.includes(&apos;$&apos;) ? this.path : &apos;$..&apos; + this.path;
                     let jsonSchemaValue = jp.query(resultQuery, path)[0] || {
                         msg: &apos;not Found&apos;
                     };
@@ -322,9 +321,9 @@ export default class BasicTypesSearchBuilder {
      *
      * @description
      * @example
-     *  ogapi.JsonSchemaSearchBuilder().withPath(&apos;string&apos;).build()
+     *  ogapi.basicTypesSearchBuilder().withPath(&apos;string&apos;).build()
      * @param {!string} path - jsonSchemaPath
-     * @return {JsonSchemaSearchBuilder}
+     * @return {BasicTypesSearchBuilder}
      */
     withPath(path) {
         this.path = path;
@@ -336,9 +335,9 @@ export default class BasicTypesSearchBuilder {
      *
      * @description
      * @example
-     *  ogapi.JsonSchemaSearchBuilder().withPublicParameters(true).build()
+     *  ogapi.basicTypesSearchBuilder().withPublicParameters(true).build()
      * @param {!boolean} publicParameters - boolean
-     * @return {JsonSchemaSearchBuilder}
+     * @return {BasicTypesSearchBuilder}
      */
     withPublicParameters(publicParameters) {
         this.publicParameters = publicParameters;

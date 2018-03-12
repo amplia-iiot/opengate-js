@@ -121,9 +121,10 @@ var EntityBuilder = (function () {
         value: function _getJsonPathElements() {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            var jsonSchemaSearchBuilder = this._ogapi.jsonSchemaSearchBuilder();
 
-            jsonSchemaSearchBuilder.withPath('$').build().execute().then(function (res) {
+            var basicTypesSearchBuilder = this._ogapi.basicTypesSearchBuilder();
+
+            basicTypesSearchBuilder.withPath('$').build().execute().then(function (res) {
                 jsonSchemaValidator.addSchema(res.data, schema_base);
                 defered.resolve();
             })['catch'](function (err) {

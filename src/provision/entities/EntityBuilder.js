@@ -74,9 +74,10 @@ export default class EntityBuilder {
     _getJsonPathElements() {
         let defered = q.defer();
         let promise = defered.promise;
-        let jsonSchemaSearchBuilder = this._ogapi.jsonSchemaSearchBuilder();
 
-        jsonSchemaSearchBuilder.withPath('$').build().execute().then(function(res) {
+        let basicTypesSearchBuilder = this._ogapi.basicTypesSearchBuilder();
+
+        basicTypesSearchBuilder.withPath('$').build().execute().then(function(res) {
             jsonSchemaValidator.addSchema(res.data, schema_base);
             defered.resolve();
         }).catch(function(err) {

@@ -190,10 +190,6 @@ var _searchingBuilderFieldsDefinitionSearchBuilder = require('./searching/builde
 
 var _searchingBuilderFieldsDefinitionSearchBuilder2 = _interopRequireDefault(_searchingBuilderFieldsDefinitionSearchBuilder);
 
-var _searchingBuilderJsonSchemaSearchBuilder = require('./searching/builder/JsonSchemaSearchBuilder');
-
-var _searchingBuilderJsonSchemaSearchBuilder2 = _interopRequireDefault(_searchingBuilderJsonSchemaSearchBuilder);
-
 var _searchingBuilderBasicTypesSearchBuilder = require('./searching/builder/BasicTypesSearchBuilder');
 
 var _searchingBuilderBasicTypesSearchBuilder2 = _interopRequireDefault(_searchingBuilderBasicTypesSearchBuilder);
@@ -885,16 +881,6 @@ var InternalOpenGateAPI = (function () {
         key: 'certificatesSearchBuilder',
         value: function certificatesSearchBuilder() {
             return new _searchingBuilderCertificatesSearchBuilder2['default'](this);
-        }
-
-        /**
-         * This return a JsonSchemaSearchBuilder to build a specific JsonSchemaSearchBuilder
-         * @return {JsonSchemaSearchBuilder}
-         */
-    }, {
-        key: 'jsonSchemaSearchBuilder',
-        value: function jsonSchemaSearchBuilder() {
-            return new _searchingBuilderJsonSchemaSearchBuilder2['default'](this);
         }
 
         /**
