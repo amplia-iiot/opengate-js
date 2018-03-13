@@ -59,7 +59,7 @@ export default class StaticSearch extends Search {
             case 'operationalStatus':
             case 'specificType':
                 for (var contentTmp in collection) {
-                    collection[contentTmp].forEach(function(finalValue) {
+                    collection[contentTmp].forEach(function (finalValue) {
                         if (!_this._customFilters.id || (_this._customFilters.id && _this._customFilters.id === finalValue)) {
                             finalContent.push({
                                 'entityType': contentTmp,
@@ -70,7 +70,7 @@ export default class StaticSearch extends Search {
                 }
                 break;
             case 'administrativeState':
-                var createAndAddFileObj = function(obj) {
+                var createAndAddFileObj = function (obj) {
                     var finalObj = obj;
                     finalObj[ENTITY_TYPE] = entityTypeTmp;
                     finalContent.push(finalObj);
@@ -391,18 +391,44 @@ export default class StaticSearch extends Search {
                 'COMMUNICATIONS_MODULE': ['UNKNOWN', 'STOPPED', 'STARTING', 'RUNNING', 'STOPPING', 'ERROR']
             },
             'specificType': {
-                'COMMUNICATIONS_MODULE': ["ADSL", "CAN", "ETH", "GENERIC", "GSM", "HAN", "I2C", "LOWPAN", "MESH"],
-                'SUBSCRIBER': ["ADSL", "CAN", "ETH", "GENERIC", "GSM", "HAN", "I2C", "LOWPAN", "MESH"],
-                'SUBSCRIPTION': ["ADSL", "CAN", "ETH", "GENERIC", "GSM", "HAN", "I2C", "LOWPAN", "MESH", "MOBILE", "PLC", "RS232", "RS422", "RS485", "SIGFOX", "UMTS", "WIFI", "ZIGBEE"],
+                'COMMUNICATIONS_MODULE': ["ADSL", "CAN", "ETH", "GENERIC", "GSM", "HAN", "I2C", "LOWPAN", "LTE_M", "MESH", "NARROWBAND"],
+                'SUBSCRIBER': ["ADSL", "CAN", "ETH", "GENERIC", "GSM", "HAN", "I2C", "LOWPAN", "LTE_M", "MESH", "NARROWBAND"],
+                'SUBSCRIPTION': ["ADSL", "CAN", "ETH", "GENERIC", "GSM", "HAN", "I2C", "LOWPAN", "LTE_M", "MESH", "MOBILE", "NARROWBAND", "PLC", "RS232", "RS422", "RS485", "SIGFOX", "UMTS", "WIFI", "ZIGBEE"],
                 'ASSET': ["BOX", "BUILDING", "CONTROL_HOUSE", "CRANE", "FOUNTAIN", "ENGINE", "HOUSE", "MACHINE", "OTHER", "PALLET", "PIPELINE", "SPOOL", "TOWER", "VEHICLE", "WIRE", "WORKER"],
                 'GATEWAY': ["GATEWAY", "BLOODPRESSURE_SENSOR", "COMHUB", "CONCENTRATOR", "CONTAINER", "COORDINATOR", "GENERIC", "GLUCOMETER_SENSOR", "METER", "MODEM", "ROUTER", "SENSOR", "TPV", "VEHICLE", "VENDING", "WEIGHT_SENSOR"],
                 'TICKET': ["INSTALLATION", "TEST", "TECHNICAL_TASK", "DESINSTALLATION"]
             },
             'communicationsModuleType': {
+                "ADSL": {
+                    "COMMUNICATIONS_MODULE": {
+                        "mandatory": ["generatedEntityKey"],
+                        "optional": ["IMEI", "HARDWARE", "SOFTWARE"]
+                    },
+                    "SUBSCRIPTION": {
+                        "mandatory": ["generatedEntityKey"],
+                        "optional": ["administrativeState", "ADDRESS", "HOME_OPERATOR", "LOCATION"]
+                    }
+                },
+                "CAN": {
+                    "COMMUNICATIONS_MODULE": {
+                        "mandatory": ["entityKey"],
+                        "optional": []
+                    }
+                },
+                "ETH": {
+                    "COMMUNICATIONS_MODULE": {
+                        "mandatory": ["generatedEntityKey"],
+                        "optional": ["HARDWARE", "SOFTWARE"]
+                    },
+                    "SUBSCRIPTION": {
+                        "mandatory": ["generatedEntityKey"],
+                        "optional": ["administrativeState", "ADDRESS"]
+                    }
+                },
                 "GENERIC": {
                     "COMMUNICATIONS_MODULE": {
                         "mandatory": ["generatedEntityKey"],
-                        "optional": ["IMEI", "MAC", "HARDWARE", "SOFTWARE"]
+                        "optional": ["IMEI", "HARDWARE", "SOFTWARE"]
                     },
                     "SUBSCRIPTION": {
                         "mandatory": ["generatedEntityKey"],
@@ -413,96 +439,10 @@ export default class StaticSearch extends Search {
                         "optional": ["administrativeState", "ICC", "SERIAL_NUMBER"]
                     }
                 },
-                /*"WIFI": {
-                    "COMMUNICATIONS_MODULE": {
-                        "mandatory": ["generatedEntityKey", "MAC"],
-                        "optional": ["HARDWARE", "SOFTWARE"]
-                    },
-                    "SUBSCRIPTION": {
-                        "mandatory": ["generatedEntityKey"],
-                        "optional": ["administrativeState", "ADDRESS"]
-                    }
-                },*/
-                "ETH": {
-                    "COMMUNICATIONS_MODULE": {
-                        "mandatory": ["generatedEntityKey", "MAC"],
-                        "optional": ["HARDWARE", "SOFTWARE"]
-                    },
-                    "SUBSCRIPTION": {
-                        "mandatory": ["generatedEntityKey"],
-                        "optional": ["administrativeState", "ADDRESS"]
-                    }
-                },
-                /*"BLUETOOTH": {
-                    "COMMUNICATIONS_MODULE": {
-                        "mandatory": ["generatedEntityKey",MAC"],
-                        "optional": ["administrativeState", "HARDWARE", "SOFTWARE"]
-                    }
-                },*/
-                "MESH": {
-                    "COMMUNICATIONS_MODULE": {
-                        "mandatory": ["generatedEntityKey", "MAC"],
-                        "optional": ["HARDWARE", "SOFTWARE"]
-                    }
-                },
-                "LOWPAN": {
-                    "COMMUNICATIONS_MODULE": {
-                        "mandatory": ["generatedEntityKey", "MAC"],
-                        "optional": ["HARDWARE", "SOFTWARE"]
-                    },
-                    "SUBSCRIPTION": {
-                        "mandatory": ["generatedEntityKey"],
-                        "optional": ["administrativeState"]
-                    }
-                },
-                "PLC": {
-                    "COMMUNICATIONS_MODULE": {
-                        "mandatory": ["generatedEntityKey", "MAC"],
-                        "optional": ["HARDWARE", "SOFTWARE"]
-                    },
-                    "SUBSCRIPTION": {
-                        "mandatory": ["generatedEntityKey"],
-                        "optional": ["administrativeState"]
-                    }
-                },
-                "ZIGBEE": {
-                    "COMMUNICATIONS_MODULE": {
-                        "mandatory": ["generatedEntityKey", "MAC"],
-                        "optional": ["HARDWARE", "SOFTWARE"]
-                    },
-                    "SUBSCRIPTION": {
-                        "mandatory": ["generatedEntityKey"],
-                        "optional": ["administrativeState"]
-                    }
-                },
-                "ADSL": {
-                    "COMMUNICATIONS_MODULE": {
-                        "mandatory": ["generatedEntityKey"],
-                        "optional": ["IMEI", "MAC", "HARDWARE", "SOFTWARE"]
-                    },
-                    "SUBSCRIPTION": {
-                        "mandatory": ["generatedEntityKey"],
-                        "optional": ["administrativeState", "ADDRESS", "HOME_OPERATOR", "LOCATION"]
-                    }
-                },
-                "MOBILE": {
-                    "COMMUNICATIONS_MODULE": {
-                        "mandatory": ["generatedEntityKey"],
-                        "optional": ["IMEI", "MAC", "HARDWARE", "SOFTWARE"]
-                    },
-                    "SUBSCRIPTION": {
-                        "mandatory": ["generatedEntityKey"],
-                        "optional": ["administrativeState", "IMSI", "ADDRESS", "HOME_OPERATOR", "REGISTER_OPERATOR", "MSISDN", "LOCATION"]
-                    },
-                    "SUBSCRIBER": {
-                        "mandatory": ["generatedEntityKey"],
-                        "optional": ["administrativeState", "ICC"]
-                    }
-                },
                 "GSM": {
                     "COMMUNICATIONS_MODULE": {
                         "mandatory": ["generatedEntityKey"],
-                        "optional": ["IMEI", "MAC", "HARDWARE", "SOFTWARE"]
+                        "optional": ["IMEI", "HARDWARE", "SOFTWARE"]
                     },
                     "SUBSCRIPTION": {
                         "mandatory": ["generatedEntityKey"],
@@ -511,12 +451,6 @@ export default class StaticSearch extends Search {
                     "SUBSCRIBER": {
                         "mandatory": ["generatedEntityKey"],
                         "optional": ["administrativeState", "ICC"]
-                    }
-                },
-                "CAN": {
-                    "COMMUNICATIONS_MODULE": {
-                        "mandatory": ["entityKey"],
-                        "optional": []
                     }
                 },
                 "HAN": {
@@ -529,6 +463,74 @@ export default class StaticSearch extends Search {
                     "COMMUNICATIONS_MODULE": {
                         "mandatory": ["entityKey"],
                         "optional": []
+                    }
+                },
+                "LOWPAN": {
+                    "COMMUNICATIONS_MODULE": {
+                        "mandatory": ["generatedEntityKey"],
+                        "optional": ["HARDWARE", "SOFTWARE"]
+                    },
+                    "SUBSCRIPTION": {
+                        "mandatory": ["generatedEntityKey"],
+                        "optional": ["administrativeState"]
+                    }
+                },
+                "LTE_M": {
+                    "COMMUNICATIONS_MODULE": {
+                        "mandatory": ["generatedEntityKey"],
+                        "optional": ["IMEI", "HARDWARE", "SOFTWARE"]
+                    },
+                    "SUBSCRIPTION": {
+                        "mandatory": ["generatedEntityKey"],
+                        "optional": ["administrativeState", "IMSI", "ADDRESS", "HOME_OPERATOR", "REGISTER_OPERATOR", "MSISDN", "LOCATION"]
+                    },
+                    "SUBSCRIBER": {
+                        "mandatory": ["generatedEntityKey"],
+                        "optional": ["administrativeState", "ICC"]
+                    }
+                },
+                "MESH": {
+                    "COMMUNICATIONS_MODULE": {
+                        "mandatory": ["generatedEntityKey"],
+                        "optional": ["HARDWARE", "SOFTWARE"]
+                    }
+                },
+                "MOBILE": {
+                    "COMMUNICATIONS_MODULE": {
+                        "mandatory": ["generatedEntityKey"],
+                        "optional": ["IMEI", "HARDWARE", "SOFTWARE"]
+                    },
+                    "SUBSCRIPTION": {
+                        "mandatory": ["generatedEntityKey"],
+                        "optional": ["administrativeState", "IMSI", "ADDRESS", "HOME_OPERATOR", "REGISTER_OPERATOR", "MSISDN", "LOCATION"]
+                    },
+                    "SUBSCRIBER": {
+                        "mandatory": ["generatedEntityKey"],
+                        "optional": ["administrativeState", "ICC"]
+                    }
+                },
+                "NARROWBAND": {
+                    "COMMUNICATIONS_MODULE": {
+                        "mandatory": ["generatedEntityKey"],
+                        "optional": ["IMEI", "HARDWARE", "SOFTWARE"]
+                    },
+                    "SUBSCRIPTION": {
+                        "mandatory": ["generatedEntityKey"],
+                        "optional": ["administrativeState", "IMSI", "ADDRESS", "HOME_OPERATOR", "REGISTER_OPERATOR", "LOCATION"]
+                    },
+                    "SUBSCRIBER": {
+                        "mandatory": ["generatedEntityKey"],
+                        "optional": ["administrativeState", "ICC"]
+                    }
+                },
+                "PLC": {
+                    "COMMUNICATIONS_MODULE": {
+                        "mandatory": ["generatedEntityKey"],
+                        "optional": ["HARDWARE", "SOFTWARE"]
+                    },
+                    "SUBSCRIPTION": {
+                        "mandatory": ["generatedEntityKey"],
+                        "optional": ["administrativeState"]
                     }
                 },
                 "RS232": {
@@ -554,7 +556,35 @@ export default class StaticSearch extends Search {
                         "mandatory": ["entityKey"],
                         "optional": []
                     }
+                },
+                "ZIGBEE": {
+                    "COMMUNICATIONS_MODULE": {
+                        "mandatory": ["generatedEntityKey"],
+                        "optional": ["HARDWARE", "SOFTWARE"]
+                    },
+                    "SUBSCRIPTION": {
+                        "mandatory": ["generatedEntityKey"],
+                        "optional": ["administrativeState"]
+                    }
                 }
+
+                /*"WIFI": {
+                    "COMMUNICATIONS_MODULE": {
+                        "mandatory": ["generatedEntityKey"],
+                        "optional": ["HARDWARE", "SOFTWARE"]
+                    },
+                    "SUBSCRIPTION": {
+                        "mandatory": ["generatedEntityKey"],
+                        "optional": ["administrativeState", "ADDRESS"]
+                    }
+                },*/
+
+                /*"BLUETOOTH": {
+                    "COMMUNICATIONS_MODULE": {
+                        "mandatory": ["generatedEntityKey"],
+                        "optional": ["administrativeState", "HARDWARE", "SOFTWARE"]
+                    }
+                },*/
             },
             "mobilePhoneProvider": [
                 "Telefónica Móviles España, SAU",
@@ -604,14 +634,34 @@ export default class StaticSearch extends Search {
                 'INSTANT'
             ],
             'resourceType': ['asset', 'device'],
-            'allowedResourceType': [
-                { resourceType: 'entity.asset', types: ['entity', 'asset'] },
-                { resourceType: 'entity.device', types: ['entity', 'device'] },
-                { resourceType: 'entity.subscriber', types: ['entity', 'subscriber'] },
-                { resourceType: 'entity.subscription', types: ['entity', 'subscription'] },
-                { resourceType: 'ticket', types: ['ticket'] },
-                { resourceType: 'organization', types: ['organization'] },
-                { resourceType: 'channel', types: ['channel'] }
+            'allowedResourceType': [{
+                    resourceType: 'entity.asset',
+                    types: ['entity', 'asset']
+                },
+                {
+                    resourceType: 'entity.device',
+                    types: ['entity', 'device']
+                },
+                {
+                    resourceType: 'entity.subscriber',
+                    types: ['entity', 'subscriber']
+                },
+                {
+                    resourceType: 'entity.subscription',
+                    types: ['entity', 'subscription']
+                },
+                {
+                    resourceType: 'ticket',
+                    types: ['ticket']
+                },
+                {
+                    resourceType: 'organization',
+                    types: ['organization']
+                },
+                {
+                    resourceType: 'channel',
+                    types: ['channel']
+                }
             ],
             'fieldsDefinition': {
                 'string': {
