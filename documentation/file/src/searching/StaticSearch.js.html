@@ -236,7 +236,7 @@ export default class StaticSearch extends Search {
      * @param {object} filter - this is the filter
      */
     constructor(ogapi, url, filter, timeout, contentType, customFilters) {
-        super(ogapi, &quot;/catalog&quot; + url, filter, null, null, timeout);
+        super(ogapi, &apos;/catalog&apos; + url, filter, null, null, timeout);
         this._contentType = contentType;
         this._customFilters = customFilters;
     }
@@ -252,8 +252,8 @@ export default class StaticSearch extends Search {
         var _this = this;
         var finalContent = [];
 
-        var ENTITY_TYPE = &quot;entityType&quot;;
-        var TYPE = &quot;type&quot;;
+        var ENTITY_TYPE = &apos;entityType&apos;;
+        var TYPE = &apos;type&apos;;
 
         var defered = q.defer();
         var promise = defered.promise;
@@ -280,7 +280,7 @@ export default class StaticSearch extends Search {
             case &apos;operationalStatus&apos;:
             case &apos;specificType&apos;:
                 for (var contentTmp in collection) {
-                    collection[contentTmp].forEach(function (finalValue) {
+                    collection[contentTmp].forEach(function(finalValue) {
                         if (!_this._customFilters.id || (_this._customFilters.id &amp;&amp; _this._customFilters.id === finalValue)) {
                             finalContent.push({
                                 &apos;entityType&apos;: contentTmp,
@@ -291,7 +291,7 @@ export default class StaticSearch extends Search {
                 }
                 break;
             case &apos;administrativeState&apos;:
-                var createAndAddFileObj = function (obj) {
+                var createAndAddFileObj = function(obj) {
                     var finalObj = obj;
                     finalObj[ENTITY_TYPE] = entityTypeTmp;
                     finalContent.push(finalObj);
@@ -318,7 +318,7 @@ export default class StaticSearch extends Search {
                 var filter = isFilter &amp;&amp; _this._customFilters[TYPE];
                 if (typeof filter === &apos;undefined&apos;) {
                     defered.resolve({
-                        error: &quot;Filters not allowed&quot;,
+                        error: &apos;Filters not allowed&apos;,
                         statusCode: 400
                     });
                     break;
@@ -365,7 +365,7 @@ export default class StaticSearch extends Search {
                 {
                     if (filter) {
                         defered.resolve({
-                            error: &quot;Filters not supported&quot;,
+                            error: &apos;Filters not supported&apos;,
                             statuscode: 400
                         });
                         break;
@@ -612,224 +612,224 @@ export default class StaticSearch extends Search {
                 &apos;COMMUNICATIONS_MODULE&apos;: [&apos;UNKNOWN&apos;, &apos;STOPPED&apos;, &apos;STARTING&apos;, &apos;RUNNING&apos;, &apos;STOPPING&apos;, &apos;ERROR&apos;]
             },
             &apos;specificType&apos;: {
-                &apos;COMMUNICATIONS_MODULE&apos;: [&quot;ADSL&quot;, &quot;CAN&quot;, &quot;ETH&quot;, &quot;GENERIC&quot;, &quot;GSM&quot;, &quot;HAN&quot;, &quot;I2C&quot;, &quot;LOWPAN&quot;, &quot;LTE_M&quot;, &quot;MESH&quot;, &quot;NARROWBAND&quot;],
-                &apos;SUBSCRIBER&apos;: [&quot;ADSL&quot;, &quot;CAN&quot;, &quot;ETH&quot;, &quot;GENERIC&quot;, &quot;GSM&quot;, &quot;HAN&quot;, &quot;I2C&quot;, &quot;LOWPAN&quot;, &quot;LTE_M&quot;, &quot;MESH&quot;, &quot;NARROWBAND&quot;],
-                &apos;SUBSCRIPTION&apos;: [&quot;ADSL&quot;, &quot;CAN&quot;, &quot;ETH&quot;, &quot;GENERIC&quot;, &quot;GSM&quot;, &quot;HAN&quot;, &quot;I2C&quot;, &quot;LOWPAN&quot;, &quot;LTE_M&quot;, &quot;MESH&quot;, &quot;MOBILE&quot;, &quot;NARROWBAND&quot;, &quot;PLC&quot;, &quot;RS232&quot;, &quot;RS422&quot;, &quot;RS485&quot;, &quot;SIGFOX&quot;, &quot;UMTS&quot;, &quot;WIFI&quot;, &quot;ZIGBEE&quot;],
-                &apos;ASSET&apos;: [&quot;BOX&quot;, &quot;BUILDING&quot;, &quot;CONTROL_HOUSE&quot;, &quot;CRANE&quot;, &quot;FOUNTAIN&quot;, &quot;ENGINE&quot;, &quot;HOUSE&quot;, &quot;MACHINE&quot;, &quot;OTHER&quot;, &quot;PALLET&quot;, &quot;PIPELINE&quot;, &quot;SPOOL&quot;, &quot;TOWER&quot;, &quot;VEHICLE&quot;, &quot;WIRE&quot;, &quot;WORKER&quot;],
-                &apos;GATEWAY&apos;: [&quot;GATEWAY&quot;, &quot;BLOODPRESSURE_SENSOR&quot;, &quot;COMHUB&quot;, &quot;CONCENTRATOR&quot;, &quot;CONTAINER&quot;, &quot;COORDINATOR&quot;, &quot;GENERIC&quot;, &quot;GLUCOMETER_SENSOR&quot;, &quot;METER&quot;, &quot;MODEM&quot;, &quot;ROUTER&quot;, &quot;SENSOR&quot;, &quot;TPV&quot;, &quot;VEHICLE&quot;, &quot;VENDING&quot;, &quot;WEIGHT_SENSOR&quot;],
-                &apos;TICKET&apos;: [&quot;INSTALLATION&quot;, &quot;TEST&quot;, &quot;TECHNICAL_TASK&quot;, &quot;DESINSTALLATION&quot;]
+                &apos;COMMUNICATIONS_MODULE&apos;: [&apos;ADSL&apos;, &apos;CAN&apos;, &apos;ETH&apos;, &apos;GENERIC&apos;, &apos;GSM&apos;, &apos;HAN&apos;, &apos;I2C&apos;, &apos;LOWPAN&apos;, &apos;LTE_M&apos;, &apos;MESH&apos;, &apos;NARROWBAND&apos;],
+                &apos;SUBSCRIBER&apos;: [&apos;ADSL&apos;, &apos;CAN&apos;, &apos;ETH&apos;, &apos;GENERIC&apos;, &apos;GSM&apos;, &apos;HAN&apos;, &apos;I2C&apos;, &apos;LOWPAN&apos;, &apos;LTE_M&apos;, &apos;MESH&apos;, &apos;NARROWBAND&apos;],
+                &apos;SUBSCRIPTION&apos;: [&apos;ADSL&apos;, &apos;CAN&apos;, &apos;ETH&apos;, &apos;GENERIC&apos;, &apos;GSM&apos;, &apos;HAN&apos;, &apos;I2C&apos;, &apos;LOWPAN&apos;, &apos;LTE_M&apos;, &apos;MESH&apos;, &apos;MOBILE&apos;, &apos;NARROWBAND&apos;, &apos;PLC&apos;, &apos;RS232&apos;, &apos;RS422&apos;, &apos;RS485&apos;, &apos;SIGFOX&apos;, &apos;UMTS&apos;, &apos;WIFI&apos;, &apos;ZIGBEE&apos;],
+                &apos;ASSET&apos;: [&apos;BOX&apos;, &apos;BUILDING&apos;, &apos;CONTROL_HOUSE&apos;, &apos;CRANE&apos;, &apos;FOUNTAIN&apos;, &apos;ENGINE&apos;, &apos;HOUSE&apos;, &apos;MACHINE&apos;, &apos;OTHER&apos;, &apos;PALLET&apos;, &apos;PIPELINE&apos;, &apos;SPOOL&apos;, &apos;TOWER&apos;, &apos;VEHICLE&apos;, &apos;WIRE&apos;, &apos;WORKER&apos;],
+                &apos;GATEWAY&apos;: [&apos;GATEWAY&apos;, &apos;BLOODPRESSURE_SENSOR&apos;, &apos;COMHUB&apos;, &apos;CONCENTRATOR&apos;, &apos;CONTAINER&apos;, &apos;COORDINATOR&apos;, &apos;GENERIC&apos;, &apos;GLUCOMETER_SENSOR&apos;, &apos;METER&apos;, &apos;MODEM&apos;, &apos;ROUTER&apos;, &apos;SENSOR&apos;, &apos;TPV&apos;, &apos;VEHICLE&apos;, &apos;VENDING&apos;, &apos;WEIGHT_SENSOR&apos;],
+                &apos;TICKET&apos;: [&apos;INSTALLATION&apos;, &apos;TEST&apos;, &apos;TECHNICAL_TASK&apos;, &apos;DESINSTALLATION&apos;]
             },
             &apos;communicationsModuleType&apos;: {
-                &quot;ADSL&quot;: {
-                    &quot;COMMUNICATIONS_MODULE&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;IMEI&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                &apos;ADSL&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;IMEI&apos;, &apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
                     },
-                    &quot;SUBSCRIPTION&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;ADDRESS&quot;, &quot;HOME_OPERATOR&quot;, &quot;LOCATION&quot;]
+                    &apos;SUBSCRIPTION&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;LOCATION&apos;]
                     }
                 },
-                &quot;CAN&quot;: {
-                    &quot;COMMUNICATIONS_MODULE&quot;: {
-                        &quot;mandatory&quot;: [&quot;entityKey&quot;],
-                        &quot;optional&quot;: []
+                &apos;CAN&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;entityKey&apos;],
+                        &apos;optional&apos;: []
                     }
                 },
-                &quot;ETH&quot;: {
-                    &quot;COMMUNICATIONS_MODULE&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                &apos;ETH&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
                     },
-                    &quot;SUBSCRIPTION&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;ADDRESS&quot;]
+                    &apos;SUBSCRIPTION&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;ADDRESS&apos;]
                     }
                 },
-                &quot;GENERIC&quot;: {
-                    &quot;COMMUNICATIONS_MODULE&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;IMEI&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                &apos;GENERIC&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;IMEI&apos;, &apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
                     },
-                    &quot;SUBSCRIPTION&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;IMSI&quot;, &quot;ADDRESS&quot;, &quot;HOME_OPERATOR&quot;, &quot;REGISTER_OPERATOR&quot;, &quot;MSISDN&quot;, &quot;LOCATION&quot;]
+                    &apos;SUBSCRIPTION&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;IMSI&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;REGISTER_OPERATOR&apos;, &apos;MSISDN&apos;, &apos;LOCATION&apos;]
                     },
-                    &quot;SUBSCRIBER&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;ICC&quot;, &quot;SERIAL_NUMBER&quot;]
+                    &apos;SUBSCRIBER&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;ICC&apos;, &apos;SERIAL_NUMBER&apos;]
                     }
                 },
-                &quot;GSM&quot;: {
-                    &quot;COMMUNICATIONS_MODULE&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;IMEI&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                &apos;GSM&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;IMEI&apos;, &apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
                     },
-                    &quot;SUBSCRIPTION&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;IMSI&quot;, &quot;ADDRESS&quot;, &quot;HOME_OPERATOR&quot;, &quot;REGISTER_OPERATOR&quot;, &quot;MSISDN&quot;, &quot;LOCATION&quot;]
+                    &apos;SUBSCRIPTION&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;IMSI&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;REGISTER_OPERATOR&apos;, &apos;MSISDN&apos;, &apos;LOCATION&apos;]
                     },
-                    &quot;SUBSCRIBER&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;ICC&quot;]
+                    &apos;SUBSCRIBER&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;ICC&apos;]
                     }
                 },
-                &quot;HAN&quot;: {
-                    &quot;COMMUNICATIONS_MODULE&quot;: {
-                        &quot;mandatory&quot;: [&quot;entityKey&quot;],
-                        &quot;optional&quot;: []
+                &apos;HAN&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;entityKey&apos;],
+                        &apos;optional&apos;: []
                     }
                 },
-                &quot;I2C&quot;: {
-                    &quot;COMMUNICATIONS_MODULE&quot;: {
-                        &quot;mandatory&quot;: [&quot;entityKey&quot;],
-                        &quot;optional&quot;: []
+                &apos;I2C&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;entityKey&apos;],
+                        &apos;optional&apos;: []
                     }
                 },
-                &quot;LOWPAN&quot;: {
-                    &quot;COMMUNICATIONS_MODULE&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                &apos;LOWPAN&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
                     },
-                    &quot;SUBSCRIPTION&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;]
+                    &apos;SUBSCRIPTION&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;administrativeState&apos;]
                     }
                 },
-                &quot;LTE_M&quot;: {
-                    &quot;COMMUNICATIONS_MODULE&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;IMEI&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                &apos;LTE_M&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;IMEI&apos;, &apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
                     },
-                    &quot;SUBSCRIPTION&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;IMSI&quot;, &quot;ADDRESS&quot;, &quot;HOME_OPERATOR&quot;, &quot;REGISTER_OPERATOR&quot;, &quot;MSISDN&quot;, &quot;LOCATION&quot;]
+                    &apos;SUBSCRIPTION&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;IMSI&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;REGISTER_OPERATOR&apos;, &apos;MSISDN&apos;, &apos;LOCATION&apos;]
                     },
-                    &quot;SUBSCRIBER&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;ICC&quot;]
+                    &apos;SUBSCRIBER&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;ICC&apos;]
                     }
                 },
-                &quot;MESH&quot;: {
-                    &quot;COMMUNICATIONS_MODULE&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                &apos;MESH&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
                     }
                 },
-                &quot;MOBILE&quot;: {
-                    &quot;COMMUNICATIONS_MODULE&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;IMEI&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                &apos;MOBILE&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;IMEI&apos;, &apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
                     },
-                    &quot;SUBSCRIPTION&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;IMSI&quot;, &quot;ADDRESS&quot;, &quot;HOME_OPERATOR&quot;, &quot;REGISTER_OPERATOR&quot;, &quot;MSISDN&quot;, &quot;LOCATION&quot;]
+                    &apos;SUBSCRIPTION&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;IMSI&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;REGISTER_OPERATOR&apos;, &apos;MSISDN&apos;, &apos;LOCATION&apos;]
                     },
-                    &quot;SUBSCRIBER&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;ICC&quot;]
+                    &apos;SUBSCRIBER&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;ICC&apos;]
                     }
                 },
-                &quot;NARROWBAND&quot;: {
-                    &quot;COMMUNICATIONS_MODULE&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;IMEI&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                &apos;NARROWBAND&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;IMEI&apos;, &apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
                     },
-                    &quot;SUBSCRIPTION&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;IMSI&quot;, &quot;ADDRESS&quot;, &quot;HOME_OPERATOR&quot;, &quot;REGISTER_OPERATOR&quot;, &quot;LOCATION&quot;]
+                    &apos;SUBSCRIPTION&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;IMSI&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;REGISTER_OPERATOR&apos;, &apos;LOCATION&apos;]
                     },
-                    &quot;SUBSCRIBER&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;ICC&quot;]
+                    &apos;SUBSCRIBER&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;ICC&apos;]
                     }
                 },
-                &quot;PLC&quot;: {
-                    &quot;COMMUNICATIONS_MODULE&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                &apos;PLC&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
                     },
-                    &quot;SUBSCRIPTION&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;]
+                    &apos;SUBSCRIPTION&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;administrativeState&apos;]
                     }
                 },
-                &quot;RS232&quot;: {
-                    &quot;COMMUNICATIONS_MODULE&quot;: {
-                        &quot;mandatory&quot;: [&quot;entityKey&quot;],
-                        &quot;optional&quot;: []
+                &apos;RS232&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;entityKey&apos;],
+                        &apos;optional&apos;: []
                     }
                 },
-                &quot;RS422&quot;: {
-                    &quot;COMMUNICATIONS_MODULE&quot;: {
-                        &quot;mandatory&quot;: [&quot;entityKey&quot;],
-                        &quot;optional&quot;: []
+                &apos;RS422&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;entityKey&apos;],
+                        &apos;optional&apos;: []
                     }
                 },
-                &quot;RS485&quot;: {
-                    &quot;COMMUNICATIONS_MODULE&quot;: {
-                        &quot;mandatory&quot;: [&quot;entityKey&quot;],
-                        &quot;optional&quot;: []
+                &apos;RS485&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;entityKey&apos;],
+                        &apos;optional&apos;: []
                     }
                 },
-                &quot;SIGFOX&quot;: {
-                    &quot;COMMUNICATIONS_MODULE&quot;: {
-                        &quot;mandatory&quot;: [&quot;entityKey&quot;],
-                        &quot;optional&quot;: []
+                &apos;SIGFOX&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;entityKey&apos;],
+                        &apos;optional&apos;: []
                     }
                 },
-                &quot;ZIGBEE&quot;: {
-                    &quot;COMMUNICATIONS_MODULE&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                &apos;ZIGBEE&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
                     },
-                    &quot;SUBSCRIPTION&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;]
+                    &apos;SUBSCRIPTION&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;administrativeState&apos;]
                     }
                 }
 
-                /*&quot;WIFI&quot;: {
-                    &quot;COMMUNICATIONS_MODULE&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                /*&apos;WIFI&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
                     },
-                    &quot;SUBSCRIPTION&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;ADDRESS&quot;]
+                    &apos;SUBSCRIPTION&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;ADDRESS&apos;]
                     }
                 },*/
 
-                /*&quot;BLUETOOTH&quot;: {
-                    &quot;COMMUNICATIONS_MODULE&quot;: {
-                        &quot;mandatory&quot;: [&quot;generatedEntityKey&quot;],
-                        &quot;optional&quot;: [&quot;administrativeState&quot;, &quot;HARDWARE&quot;, &quot;SOFTWARE&quot;]
+                /*&apos;BLUETOOTH&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
                     }
                 },*/
             },
-            &quot;mobilePhoneProvider&quot;: [
-                &quot;Telef&#xF3;nica M&#xF3;viles Espa&#xF1;a, SAU&quot;,
-                &quot;Vodafone Espa&#xF1;a, SAU&quot;,
-                &quot;France Telecom Espa&#xF1;a, SA&quot;,
-                &quot;Xfera M&#xF3;viles, SA&quot;,
-                &quot;Euskaltel, SA&quot;,
-                &quot;BT Espa&#xF1;a Compa&#xF1;ia de Servicios Globales de Telecable de Asturias, SAU&quot;,
-                &quot;R Cable y Telecomunicaciones Galicia, SA&quot;,
-                &quot;Cableuropa, SAU&quot;,
-                &quot;E-Plus M&#xF3;viles, SL&quot;,
-                &quot;Fonyou Telecom, SL&quot;,
-                &quot;Jazz Telecom, SAU&quot;,
-                &quot;Best Spain Telecom, SL&quot;,
-                &quot;Barablu M&#xF3;vil Espa&#xF1;a, SLU&quot;,
-                &quot;Vizzavi Espa&#xF1;a, SL&quot;,
-                &quot;Lycamobile, SL&quot;,
-                &quot;Lleida Networks Serveis Telem&#xE1;tics, SL&quot;,
-                &quot;Vivo, SA&quot;
+            &apos;mobilePhoneProvider&apos;: [
+                &apos;Telef&#xF3;nica M&#xF3;viles Espa&#xF1;a, SAU&apos;,
+                &apos;Vodafone Espa&#xF1;a, SAU&apos;,
+                &apos;France Telecom Espa&#xF1;a, SA&apos;,
+                &apos;Xfera M&#xF3;viles, SA&apos;,
+                &apos;Euskaltel, SA&apos;,
+                &apos;BT Espa&#xF1;a Compa&#xF1;ia de Servicios Globales de Telecable de Asturias, SAU&apos;,
+                &apos;R Cable y Telecomunicaciones Galicia, SA&apos;,
+                &apos;Cableuropa, SAU&apos;,
+                &apos;E-Plus M&#xF3;viles, SL&apos;,
+                &apos;Fonyou Telecom, SL&apos;,
+                &apos;Jazz Telecom, SAU&apos;,
+                &apos;Best Spain Telecom, SL&apos;,
+                &apos;Barablu M&#xF3;vil Espa&#xF1;a, SLU&apos;,
+                &apos;Vizzavi Espa&#xF1;a, SL&apos;,
+                &apos;Lycamobile, SL&apos;,
+                &apos;Lleida Networks Serveis Telem&#xE1;tics, SL&apos;,
+                &apos;Vivo, SA&apos;
             ],
-            &quot;ruleConfigurationSeverity&quot;: [
-                &quot;INFORMATIVE&quot;,
-                &quot;URGENT&quot;,
-                &quot;CRITICAL&quot;
+            &apos;ruleConfigurationSeverity&apos;: [
+                &apos;INFORMATIVE&apos;,
+                &apos;URGENT&apos;,
+                &apos;CRITICAL&apos;
             ],
             &apos;userProfile&apos;: {
                 &apos;root&apos;: [&apos;admin_domain&apos;, &apos;admin&apos;, &apos;advanced&apos;, &apos;viewer&apos;],
@@ -843,11 +843,8 @@ export default class StaticSearch extends Search {
                 &apos;WRITE&apos;
             ],
             &apos;ioTDatastreamStoragePeriod&apos;: [
-                &apos;DAYS&apos;,
-                &apos;MONTHS&apos;,
-                &apos;YEARS&apos;,
-                &apos;FOREVER&apos;,
-                &apos;NEVER&apos;
+
+                &apos;SECONDS&apos;, &apos;MINUTES&apos;, &apos;HOURS&apos;, &apos;DAYS&apos;, &apos;MONTHS&apos;, &apos;YEARS&apos;, &apos;NEVER&apos;
             ],
             &apos;ioTDatastreamPeriod&apos;: [
                 &apos;PULSE&apos;,
@@ -928,1272 +925,1272 @@ export default class StaticSearch extends Search {
             },
             &apos;userLanguages&apos;: [{
                     &apos;code&apos;: &apos;es&apos;,
-                    &apos;language&apos;: &quot;Espa&#xF1;ol/Spanish&quot;
+                    &apos;language&apos;: &apos;Espa&#xF1;ol/Spanish&apos;
                 },
                 {
                     &apos;code&apos;: &apos;en&apos;,
-                    &apos;language&apos;: &quot;Ingl&#xE9;s/English&quot;
+                    &apos;language&apos;: &apos;Ingl&#xE9;s/English&apos;
                 }
             ],
             &apos;countryCodes&apos;: [{
-                    &quot;code&quot;: &quot;AD&quot;,
-                    &quot;country&quot;: &quot;Andorra&quot;,
-                    &quot;zone&quot;: &quot;Europe/Andorra&quot;
+                    &apos;code&apos;: &apos;AD&apos;,
+                    &apos;country&apos;: &apos;Andorra&apos;,
+                    &apos;zone&apos;: &apos;Europe/Andorra&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;AE&quot;,
-                    &quot;country&quot;: &quot;United Arab Emirates&quot;,
-                    &quot;zone&quot;: &quot;Asia/Dubai&quot;
+                    &apos;code&apos;: &apos;AE&apos;,
+                    &apos;country&apos;: &apos;United Arab Emirates&apos;,
+                    &apos;zone&apos;: &apos;Asia/Dubai&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;AF&quot;,
-                    &quot;country&quot;: &quot;Afghanistan&quot;,
-                    &quot;zone&quot;: &quot;Asia/Kabul&quot;
+                    &apos;code&apos;: &apos;AF&apos;,
+                    &apos;country&apos;: &apos;Afghanistan&apos;,
+                    &apos;zone&apos;: &apos;Asia/Kabul&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;AG&quot;,
-                    &quot;country&quot;: &quot;Antigua and Barbuda&quot;,
-                    &quot;zone&quot;: &quot;America/Antigua&quot;
+                    &apos;code&apos;: &apos;AG&apos;,
+                    &apos;country&apos;: &apos;Antigua and Barbuda&apos;,
+                    &apos;zone&apos;: &apos;America/Antigua&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;AI&quot;,
-                    &quot;country&quot;: &quot;Anguilla&quot;,
-                    &quot;zone&quot;: &quot;America/Anguilla&quot;
+                    &apos;code&apos;: &apos;AI&apos;,
+                    &apos;country&apos;: &apos;Anguilla&apos;,
+                    &apos;zone&apos;: &apos;America/Anguilla&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;AL&quot;,
-                    &quot;country&quot;: &quot;Albania&quot;,
-                    &quot;zone&quot;: &quot;Europe/Tirane&quot;
+                    &apos;code&apos;: &apos;AL&apos;,
+                    &apos;country&apos;: &apos;Albania&apos;,
+                    &apos;zone&apos;: &apos;Europe/Tirane&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;AM&quot;,
-                    &quot;country&quot;: &quot;Armenia&quot;,
-                    &quot;zone&quot;: &quot;Asia/Yerevan&quot;
+                    &apos;code&apos;: &apos;AM&apos;,
+                    &apos;country&apos;: &apos;Armenia&apos;,
+                    &apos;zone&apos;: &apos;Asia/Yerevan&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;AN&quot;,
-                    &quot;country&quot;: &quot;Netherlands Antilles&quot;,
-                    &quot;zone&quot;: &quot;Netherlands Antilles&quot;
+                    &apos;code&apos;: &apos;AN&apos;,
+                    &apos;country&apos;: &apos;Netherlands Antilles&apos;,
+                    &apos;zone&apos;: &apos;Netherlands Antilles&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;AO&quot;,
-                    &quot;country&quot;: &quot;Angola&quot;,
-                    &quot;zone&quot;: &quot;Africa/Luanda&quot;
+                    &apos;code&apos;: &apos;AO&apos;,
+                    &apos;country&apos;: &apos;Angola&apos;,
+                    &apos;zone&apos;: &apos;Africa/Luanda&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;AQ&quot;,
-                    &quot;country&quot;: &quot;Antarctica&quot;,
-                    &quot;zone&quot;: &quot;Antarctica/McMurdo&quot;
+                    &apos;code&apos;: &apos;AQ&apos;,
+                    &apos;country&apos;: &apos;Antarctica&apos;,
+                    &apos;zone&apos;: &apos;Antarctica/McMurdo&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;AR&quot;,
-                    &quot;country&quot;: &quot;Argentina&quot;,
-                    &quot;zone&quot;: &quot;America/Argentina/Buenos_Aires&quot;
+                    &apos;code&apos;: &apos;AR&apos;,
+                    &apos;country&apos;: &apos;Argentina&apos;,
+                    &apos;zone&apos;: &apos;America/Argentina/Buenos_Aires&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;AS&quot;,
-                    &quot;country&quot;: &quot;American Samoa&quot;,
-                    &quot;zone&quot;: &quot;Pacific/Pago_Pago&quot;
+                    &apos;code&apos;: &apos;AS&apos;,
+                    &apos;country&apos;: &apos;American Samoa&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Pago_Pago&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;AT&quot;,
-                    &quot;country&quot;: &quot;Austria&quot;,
-                    &quot;zone&quot;: &quot;Europe/Vienna&quot;
+                    &apos;code&apos;: &apos;AT&apos;,
+                    &apos;country&apos;: &apos;Austria&apos;,
+                    &apos;zone&apos;: &apos;Europe/Vienna&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;AU&quot;,
-                    &quot;country&quot;: &quot;Australia&quot;,
-                    &quot;zone&quot;: &quot;Australia/Lord_Howe&quot;
+                    &apos;code&apos;: &apos;AU&apos;,
+                    &apos;country&apos;: &apos;Australia&apos;,
+                    &apos;zone&apos;: &apos;Australia/Lord_Howe&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;AW&quot;,
-                    &quot;country&quot;: &quot;Aruba&quot;,
-                    &quot;zone&quot;: &quot;America/Aruba&quot;
+                    &apos;code&apos;: &apos;AW&apos;,
+                    &apos;country&apos;: &apos;Aruba&apos;,
+                    &apos;zone&apos;: &apos;America/Aruba&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;AX&quot;,
-                    &quot;country&quot;: &quot;Aland Islands&quot;,
-                    &quot;zone&quot;: &quot;Europe/Mariehamn&quot;
+                    &apos;code&apos;: &apos;AX&apos;,
+                    &apos;country&apos;: &apos;Aland Islands&apos;,
+                    &apos;zone&apos;: &apos;Europe/Mariehamn&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;AZ&quot;,
-                    &quot;country&quot;: &quot;Azerbaijan&quot;,
-                    &quot;zone&quot;: &quot;Asia/Baku&quot;
+                    &apos;code&apos;: &apos;AZ&apos;,
+                    &apos;country&apos;: &apos;Azerbaijan&apos;,
+                    &apos;zone&apos;: &apos;Asia/Baku&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;BA&quot;,
-                    &quot;country&quot;: &quot;Bosnia and Herzegovina&quot;,
-                    &quot;zone&quot;: &quot;Europe/Sarajevo&quot;
+                    &apos;code&apos;: &apos;BA&apos;,
+                    &apos;country&apos;: &apos;Bosnia and Herzegovina&apos;,
+                    &apos;zone&apos;: &apos;Europe/Sarajevo&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;BB&quot;,
-                    &quot;country&quot;: &quot;Barbados&quot;,
-                    &quot;zone&quot;: &quot;America/Barbados&quot;
+                    &apos;code&apos;: &apos;BB&apos;,
+                    &apos;country&apos;: &apos;Barbados&apos;,
+                    &apos;zone&apos;: &apos;America/Barbados&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;BD&quot;,
-                    &quot;country&quot;: &quot;Bangladesh&quot;,
-                    &quot;zone&quot;: &quot;Asia/Dhaka&quot;
+                    &apos;code&apos;: &apos;BD&apos;,
+                    &apos;country&apos;: &apos;Bangladesh&apos;,
+                    &apos;zone&apos;: &apos;Asia/Dhaka&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;BE&quot;,
-                    &quot;country&quot;: &quot;Belgium&quot;,
-                    &quot;zone&quot;: &quot;Europe/Brussels&quot;
+                    &apos;code&apos;: &apos;BE&apos;,
+                    &apos;country&apos;: &apos;Belgium&apos;,
+                    &apos;zone&apos;: &apos;Europe/Brussels&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;BF&quot;,
-                    &quot;country&quot;: &quot;Burkina Faso&quot;,
-                    &quot;zone&quot;: &quot;Africa/Ouagadougou&quot;
+                    &apos;code&apos;: &apos;BF&apos;,
+                    &apos;country&apos;: &apos;Burkina Faso&apos;,
+                    &apos;zone&apos;: &apos;Africa/Ouagadougou&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;BG&quot;,
-                    &quot;country&quot;: &quot;Bulgaria&quot;,
-                    &quot;zone&quot;: &quot;Europe/Sofia&quot;
+                    &apos;code&apos;: &apos;BG&apos;,
+                    &apos;country&apos;: &apos;Bulgaria&apos;,
+                    &apos;zone&apos;: &apos;Europe/Sofia&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;BH&quot;,
-                    &quot;country&quot;: &quot;Bahrain&quot;,
-                    &quot;zone&quot;: &quot;Asia/Bahrain&quot;
+                    &apos;code&apos;: &apos;BH&apos;,
+                    &apos;country&apos;: &apos;Bahrain&apos;,
+                    &apos;zone&apos;: &apos;Asia/Bahrain&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;BI&quot;,
-                    &quot;country&quot;: &quot;Burundi&quot;,
-                    &quot;zone&quot;: &quot;Africa/Bujumbura&quot;
+                    &apos;code&apos;: &apos;BI&apos;,
+                    &apos;country&apos;: &apos;Burundi&apos;,
+                    &apos;zone&apos;: &apos;Africa/Bujumbura&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;BJ&quot;,
-                    &quot;country&quot;: &quot;Benin&quot;,
-                    &quot;zone&quot;: &quot;Africa/Porto-Novo&quot;
+                    &apos;code&apos;: &apos;BJ&apos;,
+                    &apos;country&apos;: &apos;Benin&apos;,
+                    &apos;zone&apos;: &apos;Africa/Porto-Novo&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;BL&quot;,
-                    &quot;country&quot;: &quot;Saint Barth&#xE9;lemy&quot;,
-                    &quot;zone&quot;: &quot;America/St_Barthelemy&quot;
+                    &apos;code&apos;: &apos;BL&apos;,
+                    &apos;country&apos;: &apos;Saint Barth&#xE9;lemy&apos;,
+                    &apos;zone&apos;: &apos;America/St_Barthelemy&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;BM&quot;,
-                    &quot;country&quot;: &quot;Bermuda&quot;,
-                    &quot;zone&quot;: &quot;Atlantic/Bermuda&quot;
+                    &apos;code&apos;: &apos;BM&apos;,
+                    &apos;country&apos;: &apos;Bermuda&apos;,
+                    &apos;zone&apos;: &apos;Atlantic/Bermuda&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;BN&quot;,
-                    &quot;country&quot;: &quot;Brunei&quot;,
-                    &quot;zone&quot;: &quot;Asia/Brunei&quot;
+                    &apos;code&apos;: &apos;BN&apos;,
+                    &apos;country&apos;: &apos;Brunei&apos;,
+                    &apos;zone&apos;: &apos;Asia/Brunei&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;BO&quot;,
-                    &quot;country&quot;: &quot;Bolivia&quot;,
-                    &quot;zone&quot;: &quot;America/La_Paz&quot;
+                    &apos;code&apos;: &apos;BO&apos;,
+                    &apos;country&apos;: &apos;Bolivia&apos;,
+                    &apos;zone&apos;: &apos;America/La_Paz&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;BQ&quot;,
-                    &quot;country&quot;: &quot;Bonaire, Saint Eustatius and Saba&quot;,
-                    &quot;zone&quot;: &quot;America/Kralendijk&quot;
+                    &apos;code&apos;: &apos;BQ&apos;,
+                    &apos;country&apos;: &apos;Bonaire, Saint Eustatius and Saba&apos;,
+                    &apos;zone&apos;: &apos;America/Kralendijk&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;BR&quot;,
-                    &quot;country&quot;: &quot;Brazil&quot;,
-                    &quot;zone&quot;: &quot;America/Noronha&quot;
+                    &apos;code&apos;: &apos;BR&apos;,
+                    &apos;country&apos;: &apos;Brazil&apos;,
+                    &apos;zone&apos;: &apos;America/Noronha&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;BS&quot;,
-                    &quot;country&quot;: &quot;Bahamas&quot;,
-                    &quot;zone&quot;: &quot;America/Nassau&quot;
+                    &apos;code&apos;: &apos;BS&apos;,
+                    &apos;country&apos;: &apos;Bahamas&apos;,
+                    &apos;zone&apos;: &apos;America/Nassau&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;BT&quot;,
-                    &quot;country&quot;: &quot;Bhutan&quot;,
-                    &quot;zone&quot;: &quot;Asia/Thimphu&quot;
+                    &apos;code&apos;: &apos;BT&apos;,
+                    &apos;country&apos;: &apos;Bhutan&apos;,
+                    &apos;zone&apos;: &apos;Asia/Thimphu&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;BV&quot;,
-                    &quot;country&quot;: &quot;Bouvet Island&quot;,
-                    &quot;zone&quot;: &quot;Bouvet Island&quot;
+                    &apos;code&apos;: &apos;BV&apos;,
+                    &apos;country&apos;: &apos;Bouvet Island&apos;,
+                    &apos;zone&apos;: &apos;Bouvet Island&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;BW&quot;,
-                    &quot;country&quot;: &quot;Botswana&quot;,
-                    &quot;zone&quot;: &quot;Africa/Gaborone&quot;
+                    &apos;code&apos;: &apos;BW&apos;,
+                    &apos;country&apos;: &apos;Botswana&apos;,
+                    &apos;zone&apos;: &apos;Africa/Gaborone&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;BY&quot;,
-                    &quot;country&quot;: &quot;Belarus&quot;,
-                    &quot;zone&quot;: &quot;Europe/Minsk&quot;
+                    &apos;code&apos;: &apos;BY&apos;,
+                    &apos;country&apos;: &apos;Belarus&apos;,
+                    &apos;zone&apos;: &apos;Europe/Minsk&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;BZ&quot;,
-                    &quot;country&quot;: &quot;Belize&quot;,
-                    &quot;zone&quot;: &quot;America/Belize&quot;
+                    &apos;code&apos;: &apos;BZ&apos;,
+                    &apos;country&apos;: &apos;Belize&apos;,
+                    &apos;zone&apos;: &apos;America/Belize&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;CA&quot;,
-                    &quot;country&quot;: &quot;Canada&quot;,
-                    &quot;zone&quot;: &quot;America/St_Johns&quot;
+                    &apos;code&apos;: &apos;CA&apos;,
+                    &apos;country&apos;: &apos;Canada&apos;,
+                    &apos;zone&apos;: &apos;America/St_Johns&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;CC&quot;,
-                    &quot;country&quot;: &quot;Cocos Islands&quot;,
-                    &quot;zone&quot;: &quot;Indian/Cocos&quot;
+                    &apos;code&apos;: &apos;CC&apos;,
+                    &apos;country&apos;: &apos;Cocos Islands&apos;,
+                    &apos;zone&apos;: &apos;Indian/Cocos&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;CD&quot;,
-                    &quot;country&quot;: &quot;Democratic Republic of the Congo&quot;,
-                    &quot;zone&quot;: &quot;Africa/Kinshasa&quot;
+                    &apos;code&apos;: &apos;CD&apos;,
+                    &apos;country&apos;: &apos;Democratic Republic of the Congo&apos;,
+                    &apos;zone&apos;: &apos;Africa/Kinshasa&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;CF&quot;,
-                    &quot;country&quot;: &quot;Central African Republic&quot;,
-                    &quot;zone&quot;: &quot;Africa/Bangui&quot;
+                    &apos;code&apos;: &apos;CF&apos;,
+                    &apos;country&apos;: &apos;Central African Republic&apos;,
+                    &apos;zone&apos;: &apos;Africa/Bangui&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;CG&quot;,
-                    &quot;country&quot;: &quot;Republic of the Congo&quot;,
-                    &quot;zone&quot;: &quot;Africa/Brazzaville&quot;
+                    &apos;code&apos;: &apos;CG&apos;,
+                    &apos;country&apos;: &apos;Republic of the Congo&apos;,
+                    &apos;zone&apos;: &apos;Africa/Brazzaville&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;CH&quot;,
-                    &quot;country&quot;: &quot;Switzerland&quot;,
-                    &quot;zone&quot;: &quot;Europe/Zurich&quot;
+                    &apos;code&apos;: &apos;CH&apos;,
+                    &apos;country&apos;: &apos;Switzerland&apos;,
+                    &apos;zone&apos;: &apos;Europe/Zurich&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;CI&quot;,
-                    &quot;country&quot;: &quot;Ivory Coast&quot;,
-                    &quot;zone&quot;: &quot;Africa/Abidjan&quot;
+                    &apos;code&apos;: &apos;CI&apos;,
+                    &apos;country&apos;: &apos;Ivory Coast&apos;,
+                    &apos;zone&apos;: &apos;Africa/Abidjan&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;CK&quot;,
-                    &quot;country&quot;: &quot;Cook Islands&quot;,
-                    &quot;zone&quot;: &quot;Pacific/Rarotonga&quot;
+                    &apos;code&apos;: &apos;CK&apos;,
+                    &apos;country&apos;: &apos;Cook Islands&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Rarotonga&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;CL&quot;,
-                    &quot;country&quot;: &quot;Chile&quot;,
-                    &quot;zone&quot;: &quot;America/Santiago&quot;
+                    &apos;code&apos;: &apos;CL&apos;,
+                    &apos;country&apos;: &apos;Chile&apos;,
+                    &apos;zone&apos;: &apos;America/Santiago&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;CM&quot;,
-                    &quot;country&quot;: &quot;Cameroon&quot;,
-                    &quot;zone&quot;: &quot;Africa/Douala&quot;
+                    &apos;code&apos;: &apos;CM&apos;,
+                    &apos;country&apos;: &apos;Cameroon&apos;,
+                    &apos;zone&apos;: &apos;Africa/Douala&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;CN&quot;,
-                    &quot;country&quot;: &quot;China&quot;,
-                    &quot;zone&quot;: &quot;Asia/Shanghai&quot;
+                    &apos;code&apos;: &apos;CN&apos;,
+                    &apos;country&apos;: &apos;China&apos;,
+                    &apos;zone&apos;: &apos;Asia/Shanghai&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;CO&quot;,
-                    &quot;country&quot;: &quot;Colombia&quot;,
-                    &quot;zone&quot;: &quot;America/Bogota&quot;
+                    &apos;code&apos;: &apos;CO&apos;,
+                    &apos;country&apos;: &apos;Colombia&apos;,
+                    &apos;zone&apos;: &apos;America/Bogota&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;CR&quot;,
-                    &quot;country&quot;: &quot;Costa Rica&quot;,
-                    &quot;zone&quot;: &quot;America/Costa_Rica&quot;
+                    &apos;code&apos;: &apos;CR&apos;,
+                    &apos;country&apos;: &apos;Costa Rica&apos;,
+                    &apos;zone&apos;: &apos;America/Costa_Rica&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;CS&quot;,
-                    &quot;country&quot;: &quot;Serbia and Montenegro&quot;,
-                    &quot;zone&quot;: &quot;Serbia and Montenegro&quot;
+                    &apos;code&apos;: &apos;CS&apos;,
+                    &apos;country&apos;: &apos;Serbia and Montenegro&apos;,
+                    &apos;zone&apos;: &apos;Serbia and Montenegro&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;CU&quot;,
-                    &quot;country&quot;: &quot;Cuba&quot;,
-                    &quot;zone&quot;: &quot;America/Havana&quot;
+                    &apos;code&apos;: &apos;CU&apos;,
+                    &apos;country&apos;: &apos;Cuba&apos;,
+                    &apos;zone&apos;: &apos;America/Havana&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;CV&quot;,
-                    &quot;country&quot;: &quot;Cape Verde&quot;,
-                    &quot;zone&quot;: &quot;Atlantic/Cape_Verde&quot;
+                    &apos;code&apos;: &apos;CV&apos;,
+                    &apos;country&apos;: &apos;Cape Verde&apos;,
+                    &apos;zone&apos;: &apos;Atlantic/Cape_Verde&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;CW&quot;,
-                    &quot;country&quot;: &quot;Cura&#xE7;ao&quot;,
-                    &quot;zone&quot;: &quot;America/Curacao&quot;
+                    &apos;code&apos;: &apos;CW&apos;,
+                    &apos;country&apos;: &apos;Cura&#xE7;ao&apos;,
+                    &apos;zone&apos;: &apos;America/Curacao&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;CX&quot;,
-                    &quot;country&quot;: &quot;Christmas Island&quot;,
-                    &quot;zone&quot;: &quot;Indian/Christmas&quot;
+                    &apos;code&apos;: &apos;CX&apos;,
+                    &apos;country&apos;: &apos;Christmas Island&apos;,
+                    &apos;zone&apos;: &apos;Indian/Christmas&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;CY&quot;,
-                    &quot;country&quot;: &quot;Cyprus&quot;,
-                    &quot;zone&quot;: &quot;Asia/Nicosia&quot;
+                    &apos;code&apos;: &apos;CY&apos;,
+                    &apos;country&apos;: &apos;Cyprus&apos;,
+                    &apos;zone&apos;: &apos;Asia/Nicosia&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;CZ&quot;,
-                    &quot;country&quot;: &quot;Czech Republic&quot;,
-                    &quot;zone&quot;: &quot;Europe/Prague&quot;
+                    &apos;code&apos;: &apos;CZ&apos;,
+                    &apos;country&apos;: &apos;Czech Republic&apos;,
+                    &apos;zone&apos;: &apos;Europe/Prague&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;DE&quot;,
-                    &quot;country&quot;: &quot;Germany&quot;,
-                    &quot;zone&quot;: &quot;Europe/Berlin&quot;
+                    &apos;code&apos;: &apos;DE&apos;,
+                    &apos;country&apos;: &apos;Germany&apos;,
+                    &apos;zone&apos;: &apos;Europe/Berlin&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;DJ&quot;,
-                    &quot;country&quot;: &quot;Djibouti&quot;,
-                    &quot;zone&quot;: &quot;Africa/Djibouti&quot;
+                    &apos;code&apos;: &apos;DJ&apos;,
+                    &apos;country&apos;: &apos;Djibouti&apos;,
+                    &apos;zone&apos;: &apos;Africa/Djibouti&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;DK&quot;,
-                    &quot;country&quot;: &quot;Denmark&quot;,
-                    &quot;zone&quot;: &quot;Europe/Copenhagen&quot;
+                    &apos;code&apos;: &apos;DK&apos;,
+                    &apos;country&apos;: &apos;Denmark&apos;,
+                    &apos;zone&apos;: &apos;Europe/Copenhagen&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;DM&quot;,
-                    &quot;country&quot;: &quot;Dominica&quot;,
-                    &quot;zone&quot;: &quot;America/Dominica&quot;
+                    &apos;code&apos;: &apos;DM&apos;,
+                    &apos;country&apos;: &apos;Dominica&apos;,
+                    &apos;zone&apos;: &apos;America/Dominica&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;DO&quot;,
-                    &quot;country&quot;: &quot;Dominican Republic&quot;,
-                    &quot;zone&quot;: &quot;America/Santo_Domingo&quot;
+                    &apos;code&apos;: &apos;DO&apos;,
+                    &apos;country&apos;: &apos;Dominican Republic&apos;,
+                    &apos;zone&apos;: &apos;America/Santo_Domingo&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;DZ&quot;,
-                    &quot;country&quot;: &quot;Algeria&quot;,
-                    &quot;zone&quot;: &quot;Africa/Algiers&quot;
+                    &apos;code&apos;: &apos;DZ&apos;,
+                    &apos;country&apos;: &apos;Algeria&apos;,
+                    &apos;zone&apos;: &apos;Africa/Algiers&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;EC&quot;,
-                    &quot;country&quot;: &quot;Ecuador&quot;,
-                    &quot;zone&quot;: &quot;America/Guayaquil&quot;
+                    &apos;code&apos;: &apos;EC&apos;,
+                    &apos;country&apos;: &apos;Ecuador&apos;,
+                    &apos;zone&apos;: &apos;America/Guayaquil&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;EE&quot;,
-                    &quot;country&quot;: &quot;Estonia&quot;,
-                    &quot;zone&quot;: &quot;Europe/Tallinn&quot;
+                    &apos;code&apos;: &apos;EE&apos;,
+                    &apos;country&apos;: &apos;Estonia&apos;,
+                    &apos;zone&apos;: &apos;Europe/Tallinn&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;EG&quot;,
-                    &quot;country&quot;: &quot;Egypt&quot;,
-                    &quot;zone&quot;: &quot;Africa/Cairo&quot;
+                    &apos;code&apos;: &apos;EG&apos;,
+                    &apos;country&apos;: &apos;Egypt&apos;,
+                    &apos;zone&apos;: &apos;Africa/Cairo&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;EH&quot;,
-                    &quot;country&quot;: &quot;Western Sahara&quot;,
-                    &quot;zone&quot;: &quot;Africa/El_Aaiun&quot;
+                    &apos;code&apos;: &apos;EH&apos;,
+                    &apos;country&apos;: &apos;Western Sahara&apos;,
+                    &apos;zone&apos;: &apos;Africa/El_Aaiun&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;ER&quot;,
-                    &quot;country&quot;: &quot;Eritrea&quot;,
-                    &quot;zone&quot;: &quot;Africa/Asmara&quot;
+                    &apos;code&apos;: &apos;ER&apos;,
+                    &apos;country&apos;: &apos;Eritrea&apos;,
+                    &apos;zone&apos;: &apos;Africa/Asmara&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;ES&quot;,
-                    &quot;country&quot;: &quot;Spain&quot;,
-                    &quot;zone&quot;: &quot;Europe/Madrid&quot;
+                    &apos;code&apos;: &apos;ES&apos;,
+                    &apos;country&apos;: &apos;Spain&apos;,
+                    &apos;zone&apos;: &apos;Europe/Madrid&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;ET&quot;,
-                    &quot;country&quot;: &quot;Ethiopia&quot;,
-                    &quot;zone&quot;: &quot;Africa/Addis_Ababa&quot;
+                    &apos;code&apos;: &apos;ET&apos;,
+                    &apos;country&apos;: &apos;Ethiopia&apos;,
+                    &apos;zone&apos;: &apos;Africa/Addis_Ababa&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;FI&quot;,
-                    &quot;country&quot;: &quot;Finland&quot;,
-                    &quot;zone&quot;: &quot;Europe/Helsinki&quot;
+                    &apos;code&apos;: &apos;FI&apos;,
+                    &apos;country&apos;: &apos;Finland&apos;,
+                    &apos;zone&apos;: &apos;Europe/Helsinki&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;FJ&quot;,
-                    &quot;country&quot;: &quot;Fiji&quot;,
-                    &quot;zone&quot;: &quot;Pacific/Fiji&quot;
+                    &apos;code&apos;: &apos;FJ&apos;,
+                    &apos;country&apos;: &apos;Fiji&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Fiji&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;FK&quot;,
-                    &quot;country&quot;: &quot;Falkland Islands&quot;,
-                    &quot;zone&quot;: &quot;Atlantic/Stanley&quot;
+                    &apos;code&apos;: &apos;FK&apos;,
+                    &apos;country&apos;: &apos;Falkland Islands&apos;,
+                    &apos;zone&apos;: &apos;Atlantic/Stanley&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;FM&quot;,
-                    &quot;country&quot;: &quot;Micronesia&quot;,
-                    &quot;zone&quot;: &quot;Pacific/Chuuk&quot;
+                    &apos;code&apos;: &apos;FM&apos;,
+                    &apos;country&apos;: &apos;Micronesia&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Chuuk&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;FO&quot;,
-                    &quot;country&quot;: &quot;Faroe Islands&quot;,
-                    &quot;zone&quot;: &quot;Atlantic/Faroe&quot;
+                    &apos;code&apos;: &apos;FO&apos;,
+                    &apos;country&apos;: &apos;Faroe Islands&apos;,
+                    &apos;zone&apos;: &apos;Atlantic/Faroe&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;FR&quot;,
-                    &quot;country&quot;: &quot;France&quot;,
-                    &quot;zone&quot;: &quot;Europe/Paris&quot;
+                    &apos;code&apos;: &apos;FR&apos;,
+                    &apos;country&apos;: &apos;France&apos;,
+                    &apos;zone&apos;: &apos;Europe/Paris&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;GA&quot;,
-                    &quot;country&quot;: &quot;Gabon&quot;,
-                    &quot;zone&quot;: &quot;Africa/Libreville&quot;
+                    &apos;code&apos;: &apos;GA&apos;,
+                    &apos;country&apos;: &apos;Gabon&apos;,
+                    &apos;zone&apos;: &apos;Africa/Libreville&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;GB&quot;,
-                    &quot;country&quot;: &quot;United Kingdom&quot;,
-                    &quot;zone&quot;: &quot;Europe/London&quot;
+                    &apos;code&apos;: &apos;GB&apos;,
+                    &apos;country&apos;: &apos;United Kingdom&apos;,
+                    &apos;zone&apos;: &apos;Europe/London&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;GD&quot;,
-                    &quot;country&quot;: &quot;Grenada&quot;,
-                    &quot;zone&quot;: &quot;America/Grenada&quot;
+                    &apos;code&apos;: &apos;GD&apos;,
+                    &apos;country&apos;: &apos;Grenada&apos;,
+                    &apos;zone&apos;: &apos;America/Grenada&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;GE&quot;,
-                    &quot;country&quot;: &quot;Georgia&quot;,
-                    &quot;zone&quot;: &quot;Asia/Tbilisi&quot;
+                    &apos;code&apos;: &apos;GE&apos;,
+                    &apos;country&apos;: &apos;Georgia&apos;,
+                    &apos;zone&apos;: &apos;Asia/Tbilisi&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;GF&quot;,
-                    &quot;country&quot;: &quot;French Guiana&quot;,
-                    &quot;zone&quot;: &quot;America/Cayenne&quot;
+                    &apos;code&apos;: &apos;GF&apos;,
+                    &apos;country&apos;: &apos;French Guiana&apos;,
+                    &apos;zone&apos;: &apos;America/Cayenne&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;GG&quot;,
-                    &quot;country&quot;: &quot;Guernsey&quot;,
-                    &quot;zone&quot;: &quot;Europe/Guernsey&quot;
+                    &apos;code&apos;: &apos;GG&apos;,
+                    &apos;country&apos;: &apos;Guernsey&apos;,
+                    &apos;zone&apos;: &apos;Europe/Guernsey&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;GH&quot;,
-                    &quot;country&quot;: &quot;Ghana&quot;,
-                    &quot;zone&quot;: &quot;Africa/Accra&quot;
+                    &apos;code&apos;: &apos;GH&apos;,
+                    &apos;country&apos;: &apos;Ghana&apos;,
+                    &apos;zone&apos;: &apos;Africa/Accra&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;GI&quot;,
-                    &quot;country&quot;: &quot;Gibraltar&quot;,
-                    &quot;zone&quot;: &quot;Europe/Gibraltar&quot;
+                    &apos;code&apos;: &apos;GI&apos;,
+                    &apos;country&apos;: &apos;Gibraltar&apos;,
+                    &apos;zone&apos;: &apos;Europe/Gibraltar&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;GL&quot;,
-                    &quot;country&quot;: &quot;Greenland&quot;,
-                    &quot;zone&quot;: &quot;America/Godthab&quot;
+                    &apos;code&apos;: &apos;GL&apos;,
+                    &apos;country&apos;: &apos;Greenland&apos;,
+                    &apos;zone&apos;: &apos;America/Godthab&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;GM&quot;,
-                    &quot;country&quot;: &quot;Gambia&quot;,
-                    &quot;zone&quot;: &quot;Africa/Banjul&quot;
+                    &apos;code&apos;: &apos;GM&apos;,
+                    &apos;country&apos;: &apos;Gambia&apos;,
+                    &apos;zone&apos;: &apos;Africa/Banjul&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;GN&quot;,
-                    &quot;country&quot;: &quot;Guinea&quot;,
-                    &quot;zone&quot;: &quot;Africa/Conakry&quot;
+                    &apos;code&apos;: &apos;GN&apos;,
+                    &apos;country&apos;: &apos;Guinea&apos;,
+                    &apos;zone&apos;: &apos;Africa/Conakry&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;GP&quot;,
-                    &quot;country&quot;: &quot;Guadeloupe&quot;,
-                    &quot;zone&quot;: &quot;America/Guadeloupe&quot;
+                    &apos;code&apos;: &apos;GP&apos;,
+                    &apos;country&apos;: &apos;Guadeloupe&apos;,
+                    &apos;zone&apos;: &apos;America/Guadeloupe&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;GQ&quot;,
-                    &quot;country&quot;: &quot;Equatorial Guinea&quot;,
-                    &quot;zone&quot;: &quot;Africa/Malabo&quot;
+                    &apos;code&apos;: &apos;GQ&apos;,
+                    &apos;country&apos;: &apos;Equatorial Guinea&apos;,
+                    &apos;zone&apos;: &apos;Africa/Malabo&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;GR&quot;,
-                    &quot;country&quot;: &quot;Greece&quot;,
-                    &quot;zone&quot;: &quot;Europe/Athens&quot;
+                    &apos;code&apos;: &apos;GR&apos;,
+                    &apos;country&apos;: &apos;Greece&apos;,
+                    &apos;zone&apos;: &apos;Europe/Athens&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;GS&quot;,
-                    &quot;country&quot;: &quot;South Georgia and the South Sandwich Islands&quot;,
-                    &quot;zone&quot;: &quot;Atlantic/South_Georgia&quot;
+                    &apos;code&apos;: &apos;GS&apos;,
+                    &apos;country&apos;: &apos;South Georgia and the South Sandwich Islands&apos;,
+                    &apos;zone&apos;: &apos;Atlantic/South_Georgia&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;GT&quot;,
-                    &quot;country&quot;: &quot;Guatemala&quot;,
-                    &quot;zone&quot;: &quot;America/Guatemala&quot;
+                    &apos;code&apos;: &apos;GT&apos;,
+                    &apos;country&apos;: &apos;Guatemala&apos;,
+                    &apos;zone&apos;: &apos;America/Guatemala&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;GU&quot;,
-                    &quot;country&quot;: &quot;Guam&quot;,
-                    &quot;zone&quot;: &quot;Pacific/Guam&quot;
+                    &apos;code&apos;: &apos;GU&apos;,
+                    &apos;country&apos;: &apos;Guam&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Guam&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;GW&quot;,
-                    &quot;country&quot;: &quot;Guinea-Bissau&quot;,
-                    &quot;zone&quot;: &quot;Africa/Bissau&quot;
+                    &apos;code&apos;: &apos;GW&apos;,
+                    &apos;country&apos;: &apos;Guinea-Bissau&apos;,
+                    &apos;zone&apos;: &apos;Africa/Bissau&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;GY&quot;,
-                    &quot;country&quot;: &quot;Guyana&quot;,
-                    &quot;zone&quot;: &quot;America/Guyana&quot;
+                    &apos;code&apos;: &apos;GY&apos;,
+                    &apos;country&apos;: &apos;Guyana&apos;,
+                    &apos;zone&apos;: &apos;America/Guyana&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;HK&quot;,
-                    &quot;country&quot;: &quot;Hong Kong&quot;,
-                    &quot;zone&quot;: &quot;Asia/Hong_Kong&quot;
+                    &apos;code&apos;: &apos;HK&apos;,
+                    &apos;country&apos;: &apos;Hong Kong&apos;,
+                    &apos;zone&apos;: &apos;Asia/Hong_Kong&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;HM&quot;,
-                    &quot;country&quot;: &quot;Heard Island and McDonald Islands&quot;,
-                    &quot;zone&quot;: &quot;Heard Island and McDonald Islands&quot;
+                    &apos;code&apos;: &apos;HM&apos;,
+                    &apos;country&apos;: &apos;Heard Island and McDonald Islands&apos;,
+                    &apos;zone&apos;: &apos;Heard Island and McDonald Islands&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;HN&quot;,
-                    &quot;country&quot;: &quot;Honduras&quot;,
-                    &quot;zone&quot;: &quot;America/Tegucigalpa&quot;
+                    &apos;code&apos;: &apos;HN&apos;,
+                    &apos;country&apos;: &apos;Honduras&apos;,
+                    &apos;zone&apos;: &apos;America/Tegucigalpa&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;HR&quot;,
-                    &quot;country&quot;: &quot;Croatia&quot;,
-                    &quot;zone&quot;: &quot;Europe/Zagreb&quot;
+                    &apos;code&apos;: &apos;HR&apos;,
+                    &apos;country&apos;: &apos;Croatia&apos;,
+                    &apos;zone&apos;: &apos;Europe/Zagreb&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;HT&quot;,
-                    &quot;country&quot;: &quot;Haiti&quot;,
-                    &quot;zone&quot;: &quot;America/Port-au-Prince&quot;
+                    &apos;code&apos;: &apos;HT&apos;,
+                    &apos;country&apos;: &apos;Haiti&apos;,
+                    &apos;zone&apos;: &apos;America/Port-au-Prince&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;HU&quot;,
-                    &quot;country&quot;: &quot;Hungary&quot;,
-                    &quot;zone&quot;: &quot;Europe/Budapest&quot;
+                    &apos;code&apos;: &apos;HU&apos;,
+                    &apos;country&apos;: &apos;Hungary&apos;,
+                    &apos;zone&apos;: &apos;Europe/Budapest&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;ID&quot;,
-                    &quot;country&quot;: &quot;Indonesia&quot;,
-                    &quot;zone&quot;: &quot;Asia/Jakarta&quot;
+                    &apos;code&apos;: &apos;ID&apos;,
+                    &apos;country&apos;: &apos;Indonesia&apos;,
+                    &apos;zone&apos;: &apos;Asia/Jakarta&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;IE&quot;,
-                    &quot;country&quot;: &quot;Ireland&quot;,
-                    &quot;zone&quot;: &quot;Europe/Dublin&quot;
+                    &apos;code&apos;: &apos;IE&apos;,
+                    &apos;country&apos;: &apos;Ireland&apos;,
+                    &apos;zone&apos;: &apos;Europe/Dublin&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;IL&quot;,
-                    &quot;country&quot;: &quot;Israel&quot;,
-                    &quot;zone&quot;: &quot;Asia/Jerusalem&quot;
+                    &apos;code&apos;: &apos;IL&apos;,
+                    &apos;country&apos;: &apos;Israel&apos;,
+                    &apos;zone&apos;: &apos;Asia/Jerusalem&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;IM&quot;,
-                    &quot;country&quot;: &quot;Isle of Man&quot;,
-                    &quot;zone&quot;: &quot;Europe/Isle_of_Man&quot;
+                    &apos;code&apos;: &apos;IM&apos;,
+                    &apos;country&apos;: &apos;Isle of Man&apos;,
+                    &apos;zone&apos;: &apos;Europe/Isle_of_Man&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;IN&quot;,
-                    &quot;country&quot;: &quot;India&quot;,
-                    &quot;zone&quot;: &quot;Asia/Kolkata&quot;
+                    &apos;code&apos;: &apos;IN&apos;,
+                    &apos;country&apos;: &apos;India&apos;,
+                    &apos;zone&apos;: &apos;Asia/Kolkata&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;IO&quot;,
-                    &quot;country&quot;: &quot;British Indian Ocean Territory&quot;,
-                    &quot;zone&quot;: &quot;Indian/Chagos&quot;
+                    &apos;code&apos;: &apos;IO&apos;,
+                    &apos;country&apos;: &apos;British Indian Ocean Territory&apos;,
+                    &apos;zone&apos;: &apos;Indian/Chagos&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;IQ&quot;,
-                    &quot;country&quot;: &quot;Iraq&quot;,
-                    &quot;zone&quot;: &quot;Asia/Baghdad&quot;
+                    &apos;code&apos;: &apos;IQ&apos;,
+                    &apos;country&apos;: &apos;Iraq&apos;,
+                    &apos;zone&apos;: &apos;Asia/Baghdad&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;IR&quot;,
-                    &quot;country&quot;: &quot;Iran&quot;,
-                    &quot;zone&quot;: &quot;Asia/Tehran&quot;
+                    &apos;code&apos;: &apos;IR&apos;,
+                    &apos;country&apos;: &apos;Iran&apos;,
+                    &apos;zone&apos;: &apos;Asia/Tehran&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;IS&quot;,
-                    &quot;country&quot;: &quot;Iceland&quot;,
-                    &quot;zone&quot;: &quot;Atlantic/Reykjavik&quot;
+                    &apos;code&apos;: &apos;IS&apos;,
+                    &apos;country&apos;: &apos;Iceland&apos;,
+                    &apos;zone&apos;: &apos;Atlantic/Reykjavik&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;IT&quot;,
-                    &quot;country&quot;: &quot;Italy&quot;,
-                    &quot;zone&quot;: &quot;Europe/Rome&quot;
+                    &apos;code&apos;: &apos;IT&apos;,
+                    &apos;country&apos;: &apos;Italy&apos;,
+                    &apos;zone&apos;: &apos;Europe/Rome&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;JE&quot;,
-                    &quot;country&quot;: &quot;Jersey&quot;,
-                    &quot;zone&quot;: &quot;Europe/Jersey&quot;
+                    &apos;code&apos;: &apos;JE&apos;,
+                    &apos;country&apos;: &apos;Jersey&apos;,
+                    &apos;zone&apos;: &apos;Europe/Jersey&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;JM&quot;,
-                    &quot;country&quot;: &quot;Jamaica&quot;,
-                    &quot;zone&quot;: &quot;America/Jamaica&quot;
+                    &apos;code&apos;: &apos;JM&apos;,
+                    &apos;country&apos;: &apos;Jamaica&apos;,
+                    &apos;zone&apos;: &apos;America/Jamaica&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;JO&quot;,
-                    &quot;country&quot;: &quot;Jordan&quot;,
-                    &quot;zone&quot;: &quot;Asia/Amman&quot;
+                    &apos;code&apos;: &apos;JO&apos;,
+                    &apos;country&apos;: &apos;Jordan&apos;,
+                    &apos;zone&apos;: &apos;Asia/Amman&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;JP&quot;,
-                    &quot;country&quot;: &quot;Japan&quot;,
-                    &quot;zone&quot;: &quot;Asia/Tokyo&quot;
+                    &apos;code&apos;: &apos;JP&apos;,
+                    &apos;country&apos;: &apos;Japan&apos;,
+                    &apos;zone&apos;: &apos;Asia/Tokyo&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;KE&quot;,
-                    &quot;country&quot;: &quot;Kenya&quot;,
-                    &quot;zone&quot;: &quot;Africa/Nairobi&quot;
+                    &apos;code&apos;: &apos;KE&apos;,
+                    &apos;country&apos;: &apos;Kenya&apos;,
+                    &apos;zone&apos;: &apos;Africa/Nairobi&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;KG&quot;,
-                    &quot;country&quot;: &quot;Kyrgyzstan&quot;,
-                    &quot;zone&quot;: &quot;Asia/Bishkek&quot;
+                    &apos;code&apos;: &apos;KG&apos;,
+                    &apos;country&apos;: &apos;Kyrgyzstan&apos;,
+                    &apos;zone&apos;: &apos;Asia/Bishkek&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;KH&quot;,
-                    &quot;country&quot;: &quot;Cambodia&quot;,
-                    &quot;zone&quot;: &quot;Asia/Phnom_Penh&quot;
+                    &apos;code&apos;: &apos;KH&apos;,
+                    &apos;country&apos;: &apos;Cambodia&apos;,
+                    &apos;zone&apos;: &apos;Asia/Phnom_Penh&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;KI&quot;,
-                    &quot;country&quot;: &quot;Kiribati&quot;,
-                    &quot;zone&quot;: &quot;Pacific/Tarawa&quot;
+                    &apos;code&apos;: &apos;KI&apos;,
+                    &apos;country&apos;: &apos;Kiribati&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Tarawa&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;KM&quot;,
-                    &quot;country&quot;: &quot;Comoros&quot;,
-                    &quot;zone&quot;: &quot;Indian/Comoro&quot;
+                    &apos;code&apos;: &apos;KM&apos;,
+                    &apos;country&apos;: &apos;Comoros&apos;,
+                    &apos;zone&apos;: &apos;Indian/Comoro&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;KN&quot;,
-                    &quot;country&quot;: &quot;Saint Kitts and Nevis&quot;,
-                    &quot;zone&quot;: &quot;America/St_Kitts&quot;
+                    &apos;code&apos;: &apos;KN&apos;,
+                    &apos;country&apos;: &apos;Saint Kitts and Nevis&apos;,
+                    &apos;zone&apos;: &apos;America/St_Kitts&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;KP&quot;,
-                    &quot;country&quot;: &quot;North Korea&quot;,
-                    &quot;zone&quot;: &quot;Asia/Pyongyang&quot;
+                    &apos;code&apos;: &apos;KP&apos;,
+                    &apos;country&apos;: &apos;North Korea&apos;,
+                    &apos;zone&apos;: &apos;Asia/Pyongyang&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;KR&quot;,
-                    &quot;country&quot;: &quot;South Korea&quot;,
-                    &quot;zone&quot;: &quot;Asia/Seoul&quot;
+                    &apos;code&apos;: &apos;KR&apos;,
+                    &apos;country&apos;: &apos;South Korea&apos;,
+                    &apos;zone&apos;: &apos;Asia/Seoul&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;KW&quot;,
-                    &quot;country&quot;: &quot;Kuwait&quot;,
-                    &quot;zone&quot;: &quot;Asia/Kuwait&quot;
+                    &apos;code&apos;: &apos;KW&apos;,
+                    &apos;country&apos;: &apos;Kuwait&apos;,
+                    &apos;zone&apos;: &apos;Asia/Kuwait&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;KY&quot;,
-                    &quot;country&quot;: &quot;Cayman Islands&quot;,
-                    &quot;zone&quot;: &quot;America/Cayman&quot;
+                    &apos;code&apos;: &apos;KY&apos;,
+                    &apos;country&apos;: &apos;Cayman Islands&apos;,
+                    &apos;zone&apos;: &apos;America/Cayman&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;KZ&quot;,
-                    &quot;country&quot;: &quot;Kazakhstan&quot;,
-                    &quot;zone&quot;: &quot;Asia/Almaty&quot;
+                    &apos;code&apos;: &apos;KZ&apos;,
+                    &apos;country&apos;: &apos;Kazakhstan&apos;,
+                    &apos;zone&apos;: &apos;Asia/Almaty&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;LA&quot;,
-                    &quot;country&quot;: &quot;Laos&quot;,
-                    &quot;zone&quot;: &quot;Asia/Vientiane&quot;
+                    &apos;code&apos;: &apos;LA&apos;,
+                    &apos;country&apos;: &apos;Laos&apos;,
+                    &apos;zone&apos;: &apos;Asia/Vientiane&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;LB&quot;,
-                    &quot;country&quot;: &quot;Lebanon&quot;,
-                    &quot;zone&quot;: &quot;Asia/Beirut&quot;
+                    &apos;code&apos;: &apos;LB&apos;,
+                    &apos;country&apos;: &apos;Lebanon&apos;,
+                    &apos;zone&apos;: &apos;Asia/Beirut&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;LC&quot;,
-                    &quot;country&quot;: &quot;Saint Lucia&quot;,
-                    &quot;zone&quot;: &quot;America/St_Lucia&quot;
+                    &apos;code&apos;: &apos;LC&apos;,
+                    &apos;country&apos;: &apos;Saint Lucia&apos;,
+                    &apos;zone&apos;: &apos;America/St_Lucia&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;LI&quot;,
-                    &quot;country&quot;: &quot;Liechtenstein&quot;,
-                    &quot;zone&quot;: &quot;Europe/Vaduz&quot;
+                    &apos;code&apos;: &apos;LI&apos;,
+                    &apos;country&apos;: &apos;Liechtenstein&apos;,
+                    &apos;zone&apos;: &apos;Europe/Vaduz&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;LK&quot;,
-                    &quot;country&quot;: &quot;Sri Lanka&quot;,
-                    &quot;zone&quot;: &quot;Asia/Colombo&quot;
+                    &apos;code&apos;: &apos;LK&apos;,
+                    &apos;country&apos;: &apos;Sri Lanka&apos;,
+                    &apos;zone&apos;: &apos;Asia/Colombo&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;LR&quot;,
-                    &quot;country&quot;: &quot;Liberia&quot;,
-                    &quot;zone&quot;: &quot;Africa/Monrovia&quot;
+                    &apos;code&apos;: &apos;LR&apos;,
+                    &apos;country&apos;: &apos;Liberia&apos;,
+                    &apos;zone&apos;: &apos;Africa/Monrovia&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;LS&quot;,
-                    &quot;country&quot;: &quot;Lesotho&quot;,
-                    &quot;zone&quot;: &quot;Africa/Maseru&quot;
+                    &apos;code&apos;: &apos;LS&apos;,
+                    &apos;country&apos;: &apos;Lesotho&apos;,
+                    &apos;zone&apos;: &apos;Africa/Maseru&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;LT&quot;,
-                    &quot;country&quot;: &quot;Lithuania&quot;,
-                    &quot;zone&quot;: &quot;Europe/Vilnius&quot;
+                    &apos;code&apos;: &apos;LT&apos;,
+                    &apos;country&apos;: &apos;Lithuania&apos;,
+                    &apos;zone&apos;: &apos;Europe/Vilnius&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;LU&quot;,
-                    &quot;country&quot;: &quot;Luxembourg&quot;,
-                    &quot;zone&quot;: &quot;Europe/Luxembourg&quot;
+                    &apos;code&apos;: &apos;LU&apos;,
+                    &apos;country&apos;: &apos;Luxembourg&apos;,
+                    &apos;zone&apos;: &apos;Europe/Luxembourg&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;LV&quot;,
-                    &quot;country&quot;: &quot;Latvia&quot;,
-                    &quot;zone&quot;: &quot;Europe/Riga&quot;
+                    &apos;code&apos;: &apos;LV&apos;,
+                    &apos;country&apos;: &apos;Latvia&apos;,
+                    &apos;zone&apos;: &apos;Europe/Riga&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;LY&quot;,
-                    &quot;country&quot;: &quot;Libya&quot;,
-                    &quot;zone&quot;: &quot;Africa/Tripoli&quot;
+                    &apos;code&apos;: &apos;LY&apos;,
+                    &apos;country&apos;: &apos;Libya&apos;,
+                    &apos;zone&apos;: &apos;Africa/Tripoli&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;MA&quot;,
-                    &quot;country&quot;: &quot;Morocco&quot;,
-                    &quot;zone&quot;: &quot;Africa/Casablanca&quot;
+                    &apos;code&apos;: &apos;MA&apos;,
+                    &apos;country&apos;: &apos;Morocco&apos;,
+                    &apos;zone&apos;: &apos;Africa/Casablanca&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;MC&quot;,
-                    &quot;country&quot;: &quot;Monaco&quot;,
-                    &quot;zone&quot;: &quot;Europe/Monaco&quot;
+                    &apos;code&apos;: &apos;MC&apos;,
+                    &apos;country&apos;: &apos;Monaco&apos;,
+                    &apos;zone&apos;: &apos;Europe/Monaco&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;MD&quot;,
-                    &quot;country&quot;: &quot;Moldova&quot;,
-                    &quot;zone&quot;: &quot;Europe/Chisinau&quot;
+                    &apos;code&apos;: &apos;MD&apos;,
+                    &apos;country&apos;: &apos;Moldova&apos;,
+                    &apos;zone&apos;: &apos;Europe/Chisinau&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;ME&quot;,
-                    &quot;country&quot;: &quot;Montenegro&quot;,
-                    &quot;zone&quot;: &quot;Europe/Podgorica&quot;
+                    &apos;code&apos;: &apos;ME&apos;,
+                    &apos;country&apos;: &apos;Montenegro&apos;,
+                    &apos;zone&apos;: &apos;Europe/Podgorica&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;MF&quot;,
-                    &quot;country&quot;: &quot;Saint Martin&quot;,
-                    &quot;zone&quot;: &quot;America/Marigot&quot;
+                    &apos;code&apos;: &apos;MF&apos;,
+                    &apos;country&apos;: &apos;Saint Martin&apos;,
+                    &apos;zone&apos;: &apos;America/Marigot&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;MG&quot;,
-                    &quot;country&quot;: &quot;Madagascar&quot;,
-                    &quot;zone&quot;: &quot;Indian/Antananarivo&quot;
+                    &apos;code&apos;: &apos;MG&apos;,
+                    &apos;country&apos;: &apos;Madagascar&apos;,
+                    &apos;zone&apos;: &apos;Indian/Antananarivo&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;MH&quot;,
-                    &quot;country&quot;: &quot;Marshall Islands&quot;,
-                    &quot;zone&quot;: &quot;Pacific/Majuro&quot;
+                    &apos;code&apos;: &apos;MH&apos;,
+                    &apos;country&apos;: &apos;Marshall Islands&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Majuro&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;MK&quot;,
-                    &quot;country&quot;: &quot;Macedonia&quot;,
-                    &quot;zone&quot;: &quot;Europe/Skopje&quot;
+                    &apos;code&apos;: &apos;MK&apos;,
+                    &apos;country&apos;: &apos;Macedonia&apos;,
+                    &apos;zone&apos;: &apos;Europe/Skopje&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;ML&quot;,
-                    &quot;country&quot;: &quot;Mali&quot;,
-                    &quot;zone&quot;: &quot;Africa/Bamako&quot;
+                    &apos;code&apos;: &apos;ML&apos;,
+                    &apos;country&apos;: &apos;Mali&apos;,
+                    &apos;zone&apos;: &apos;Africa/Bamako&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;MM&quot;,
-                    &quot;country&quot;: &quot;Myanmar&quot;,
-                    &quot;zone&quot;: &quot;Asia/Yangon&quot;
+                    &apos;code&apos;: &apos;MM&apos;,
+                    &apos;country&apos;: &apos;Myanmar&apos;,
+                    &apos;zone&apos;: &apos;Asia/Yangon&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;MN&quot;,
-                    &quot;country&quot;: &quot;Mongolia&quot;,
-                    &quot;zone&quot;: &quot;Asia/Ulaanbaatar&quot;
+                    &apos;code&apos;: &apos;MN&apos;,
+                    &apos;country&apos;: &apos;Mongolia&apos;,
+                    &apos;zone&apos;: &apos;Asia/Ulaanbaatar&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;MO&quot;,
-                    &quot;country&quot;: &quot;Macao&quot;,
-                    &quot;zone&quot;: &quot;Asia/Macau&quot;
+                    &apos;code&apos;: &apos;MO&apos;,
+                    &apos;country&apos;: &apos;Macao&apos;,
+                    &apos;zone&apos;: &apos;Asia/Macau&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;MP&quot;,
-                    &quot;country&quot;: &quot;Northern Mariana Islands&quot;,
-                    &quot;zone&quot;: &quot;Pacific/Saipan&quot;
+                    &apos;code&apos;: &apos;MP&apos;,
+                    &apos;country&apos;: &apos;Northern Mariana Islands&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Saipan&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;MQ&quot;,
-                    &quot;country&quot;: &quot;Martinique&quot;,
-                    &quot;zone&quot;: &quot;America/Martinique&quot;
+                    &apos;code&apos;: &apos;MQ&apos;,
+                    &apos;country&apos;: &apos;Martinique&apos;,
+                    &apos;zone&apos;: &apos;America/Martinique&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;MR&quot;,
-                    &quot;country&quot;: &quot;Mauritania&quot;,
-                    &quot;zone&quot;: &quot;Africa/Nouakchott&quot;
+                    &apos;code&apos;: &apos;MR&apos;,
+                    &apos;country&apos;: &apos;Mauritania&apos;,
+                    &apos;zone&apos;: &apos;Africa/Nouakchott&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;MS&quot;,
-                    &quot;country&quot;: &quot;Montserrat&quot;,
-                    &quot;zone&quot;: &quot;America/Montserrat&quot;
+                    &apos;code&apos;: &apos;MS&apos;,
+                    &apos;country&apos;: &apos;Montserrat&apos;,
+                    &apos;zone&apos;: &apos;America/Montserrat&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;MT&quot;,
-                    &quot;country&quot;: &quot;Malta&quot;,
-                    &quot;zone&quot;: &quot;Europe/Malta&quot;
+                    &apos;code&apos;: &apos;MT&apos;,
+                    &apos;country&apos;: &apos;Malta&apos;,
+                    &apos;zone&apos;: &apos;Europe/Malta&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;MU&quot;,
-                    &quot;country&quot;: &quot;Mauritius&quot;,
-                    &quot;zone&quot;: &quot;Indian/Mauritius&quot;
+                    &apos;code&apos;: &apos;MU&apos;,
+                    &apos;country&apos;: &apos;Mauritius&apos;,
+                    &apos;zone&apos;: &apos;Indian/Mauritius&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;MV&quot;,
-                    &quot;country&quot;: &quot;Maldives&quot;,
-                    &quot;zone&quot;: &quot;Indian/Maldives&quot;
+                    &apos;code&apos;: &apos;MV&apos;,
+                    &apos;country&apos;: &apos;Maldives&apos;,
+                    &apos;zone&apos;: &apos;Indian/Maldives&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;MW&quot;,
-                    &quot;country&quot;: &quot;Malawi&quot;,
-                    &quot;zone&quot;: &quot;Africa/Blantyre&quot;
+                    &apos;code&apos;: &apos;MW&apos;,
+                    &apos;country&apos;: &apos;Malawi&apos;,
+                    &apos;zone&apos;: &apos;Africa/Blantyre&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;MX&quot;,
-                    &quot;country&quot;: &quot;Mexico&quot;,
-                    &quot;zone&quot;: &quot;America/Mexico_City&quot;
+                    &apos;code&apos;: &apos;MX&apos;,
+                    &apos;country&apos;: &apos;Mexico&apos;,
+                    &apos;zone&apos;: &apos;America/Mexico_City&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;MY&quot;,
-                    &quot;country&quot;: &quot;Malaysia&quot;,
-                    &quot;zone&quot;: &quot;Asia/Kuala_Lumpur&quot;
+                    &apos;code&apos;: &apos;MY&apos;,
+                    &apos;country&apos;: &apos;Malaysia&apos;,
+                    &apos;zone&apos;: &apos;Asia/Kuala_Lumpur&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;MZ&quot;,
-                    &quot;country&quot;: &quot;Mozambique&quot;,
-                    &quot;zone&quot;: &quot;Africa/Maputo&quot;
+                    &apos;code&apos;: &apos;MZ&apos;,
+                    &apos;country&apos;: &apos;Mozambique&apos;,
+                    &apos;zone&apos;: &apos;Africa/Maputo&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;NA&quot;,
-                    &quot;country&quot;: &quot;Namibia&quot;,
-                    &quot;zone&quot;: &quot;Africa/Windhoek&quot;
+                    &apos;code&apos;: &apos;NA&apos;,
+                    &apos;country&apos;: &apos;Namibia&apos;,
+                    &apos;zone&apos;: &apos;Africa/Windhoek&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;NC&quot;,
-                    &quot;country&quot;: &quot;New Caledonia&quot;,
-                    &quot;zone&quot;: &quot;Pacific/Noumea&quot;
+                    &apos;code&apos;: &apos;NC&apos;,
+                    &apos;country&apos;: &apos;New Caledonia&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Noumea&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;NE&quot;,
-                    &quot;country&quot;: &quot;Niger&quot;,
-                    &quot;zone&quot;: &quot;Africa/Niamey&quot;
+                    &apos;code&apos;: &apos;NE&apos;,
+                    &apos;country&apos;: &apos;Niger&apos;,
+                    &apos;zone&apos;: &apos;Africa/Niamey&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;NF&quot;,
-                    &quot;country&quot;: &quot;Norfolk Island&quot;,
-                    &quot;zone&quot;: &quot;Pacific/Norfolk&quot;
+                    &apos;code&apos;: &apos;NF&apos;,
+                    &apos;country&apos;: &apos;Norfolk Island&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Norfolk&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;NG&quot;,
-                    &quot;country&quot;: &quot;Nigeria&quot;,
-                    &quot;zone&quot;: &quot;Africa/Lagos&quot;
+                    &apos;code&apos;: &apos;NG&apos;,
+                    &apos;country&apos;: &apos;Nigeria&apos;,
+                    &apos;zone&apos;: &apos;Africa/Lagos&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;NI&quot;,
-                    &quot;country&quot;: &quot;Nicaragua&quot;,
-                    &quot;zone&quot;: &quot;America/Managua&quot;
+                    &apos;code&apos;: &apos;NI&apos;,
+                    &apos;country&apos;: &apos;Nicaragua&apos;,
+                    &apos;zone&apos;: &apos;America/Managua&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;NL&quot;,
-                    &quot;country&quot;: &quot;Netherlands&quot;,
-                    &quot;zone&quot;: &quot;Europe/Amsterdam&quot;
+                    &apos;code&apos;: &apos;NL&apos;,
+                    &apos;country&apos;: &apos;Netherlands&apos;,
+                    &apos;zone&apos;: &apos;Europe/Amsterdam&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;NO&quot;,
-                    &quot;country&quot;: &quot;Norway&quot;,
-                    &quot;zone&quot;: &quot;Europe/Oslo&quot;
+                    &apos;code&apos;: &apos;NO&apos;,
+                    &apos;country&apos;: &apos;Norway&apos;,
+                    &apos;zone&apos;: &apos;Europe/Oslo&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;NP&quot;,
-                    &quot;country&quot;: &quot;Nepal&quot;,
-                    &quot;zone&quot;: &quot;Asia/Kathmandu&quot;
+                    &apos;code&apos;: &apos;NP&apos;,
+                    &apos;country&apos;: &apos;Nepal&apos;,
+                    &apos;zone&apos;: &apos;Asia/Kathmandu&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;NR&quot;,
-                    &quot;country&quot;: &quot;Nauru&quot;,
-                    &quot;zone&quot;: &quot;Pacific/Nauru&quot;
+                    &apos;code&apos;: &apos;NR&apos;,
+                    &apos;country&apos;: &apos;Nauru&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Nauru&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;NU&quot;,
-                    &quot;country&quot;: &quot;Niue&quot;,
-                    &quot;zone&quot;: &quot;Pacific/Niue&quot;
+                    &apos;code&apos;: &apos;NU&apos;,
+                    &apos;country&apos;: &apos;Niue&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Niue&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;NZ&quot;,
-                    &quot;country&quot;: &quot;New Zealand&quot;,
-                    &quot;zone&quot;: &quot;Pacific/Auckland&quot;
+                    &apos;code&apos;: &apos;NZ&apos;,
+                    &apos;country&apos;: &apos;New Zealand&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Auckland&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;OM&quot;,
-                    &quot;country&quot;: &quot;Oman&quot;,
-                    &quot;zone&quot;: &quot;Asia/Muscat&quot;
+                    &apos;code&apos;: &apos;OM&apos;,
+                    &apos;country&apos;: &apos;Oman&apos;,
+                    &apos;zone&apos;: &apos;Asia/Muscat&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;PA&quot;,
-                    &quot;country&quot;: &quot;Panama&quot;,
-                    &quot;zone&quot;: &quot;America/Panama&quot;
+                    &apos;code&apos;: &apos;PA&apos;,
+                    &apos;country&apos;: &apos;Panama&apos;,
+                    &apos;zone&apos;: &apos;America/Panama&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;PE&quot;,
-                    &quot;country&quot;: &quot;Peru&quot;,
-                    &quot;zone&quot;: &quot;America/Lima&quot;
+                    &apos;code&apos;: &apos;PE&apos;,
+                    &apos;country&apos;: &apos;Peru&apos;,
+                    &apos;zone&apos;: &apos;America/Lima&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;PF&quot;,
-                    &quot;country&quot;: &quot;French Polynesia&quot;,
-                    &quot;zone&quot;: &quot;Pacific/Tahiti&quot;
+                    &apos;code&apos;: &apos;PF&apos;,
+                    &apos;country&apos;: &apos;French Polynesia&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Tahiti&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;PG&quot;,
-                    &quot;country&quot;: &quot;Papua New Guinea&quot;,
-                    &quot;zone&quot;: &quot;Pacific/Port_Moresby&quot;
+                    &apos;code&apos;: &apos;PG&apos;,
+                    &apos;country&apos;: &apos;Papua New Guinea&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Port_Moresby&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;PH&quot;,
-                    &quot;country&quot;: &quot;Philippines&quot;,
-                    &quot;zone&quot;: &quot;Asia/Manila&quot;
+                    &apos;code&apos;: &apos;PH&apos;,
+                    &apos;country&apos;: &apos;Philippines&apos;,
+                    &apos;zone&apos;: &apos;Asia/Manila&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;PK&quot;,
-                    &quot;country&quot;: &quot;Pakistan&quot;,
-                    &quot;zone&quot;: &quot;Asia/Karachi&quot;
+                    &apos;code&apos;: &apos;PK&apos;,
+                    &apos;country&apos;: &apos;Pakistan&apos;,
+                    &apos;zone&apos;: &apos;Asia/Karachi&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;PL&quot;,
-                    &quot;country&quot;: &quot;Poland&quot;,
-                    &quot;zone&quot;: &quot;Europe/Warsaw&quot;
+                    &apos;code&apos;: &apos;PL&apos;,
+                    &apos;country&apos;: &apos;Poland&apos;,
+                    &apos;zone&apos;: &apos;Europe/Warsaw&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;PM&quot;,
-                    &quot;country&quot;: &quot;Saint Pierre and Miquelon&quot;,
-                    &quot;zone&quot;: &quot;America/Miquelon&quot;
+                    &apos;code&apos;: &apos;PM&apos;,
+                    &apos;country&apos;: &apos;Saint Pierre and Miquelon&apos;,
+                    &apos;zone&apos;: &apos;America/Miquelon&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;PN&quot;,
-                    &quot;country&quot;: &quot;Pitcairn&quot;,
-                    &quot;zone&quot;: &quot;Pacific/Pitcairn&quot;
+                    &apos;code&apos;: &apos;PN&apos;,
+                    &apos;country&apos;: &apos;Pitcairn&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Pitcairn&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;PR&quot;,
-                    &quot;country&quot;: &quot;Puerto Rico&quot;,
-                    &quot;zone&quot;: &quot;America/Puerto_Rico&quot;
+                    &apos;code&apos;: &apos;PR&apos;,
+                    &apos;country&apos;: &apos;Puerto Rico&apos;,
+                    &apos;zone&apos;: &apos;America/Puerto_Rico&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;PS&quot;,
-                    &quot;country&quot;: &quot;Palestinian Territory&quot;,
-                    &quot;zone&quot;: &quot;Asia/Gaza&quot;
+                    &apos;code&apos;: &apos;PS&apos;,
+                    &apos;country&apos;: &apos;Palestinian Territory&apos;,
+                    &apos;zone&apos;: &apos;Asia/Gaza&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;PT&quot;,
-                    &quot;country&quot;: &quot;Portugal&quot;,
-                    &quot;zone&quot;: &quot;Europe/Lisbon&quot;
+                    &apos;code&apos;: &apos;PT&apos;,
+                    &apos;country&apos;: &apos;Portugal&apos;,
+                    &apos;zone&apos;: &apos;Europe/Lisbon&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;PW&quot;,
-                    &quot;country&quot;: &quot;Palau&quot;,
-                    &quot;zone&quot;: &quot;Pacific/Palau&quot;
+                    &apos;code&apos;: &apos;PW&apos;,
+                    &apos;country&apos;: &apos;Palau&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Palau&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;PY&quot;,
-                    &quot;country&quot;: &quot;Paraguay&quot;,
-                    &quot;zone&quot;: &quot;America/Asuncion&quot;
+                    &apos;code&apos;: &apos;PY&apos;,
+                    &apos;country&apos;: &apos;Paraguay&apos;,
+                    &apos;zone&apos;: &apos;America/Asuncion&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;QA&quot;,
-                    &quot;country&quot;: &quot;Qatar&quot;,
-                    &quot;zone&quot;: &quot;Asia/Qatar&quot;
+                    &apos;code&apos;: &apos;QA&apos;,
+                    &apos;country&apos;: &apos;Qatar&apos;,
+                    &apos;zone&apos;: &apos;Asia/Qatar&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;RE&quot;,
-                    &quot;country&quot;: &quot;Reunion&quot;,
-                    &quot;zone&quot;: &quot;Indian/Reunion&quot;
+                    &apos;code&apos;: &apos;RE&apos;,
+                    &apos;country&apos;: &apos;Reunion&apos;,
+                    &apos;zone&apos;: &apos;Indian/Reunion&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;RO&quot;,
-                    &quot;country&quot;: &quot;Romania&quot;,
-                    &quot;zone&quot;: &quot;Europe/Bucharest&quot;
+                    &apos;code&apos;: &apos;RO&apos;,
+                    &apos;country&apos;: &apos;Romania&apos;,
+                    &apos;zone&apos;: &apos;Europe/Bucharest&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;RS&quot;,
-                    &quot;country&quot;: &quot;Serbia&quot;,
-                    &quot;zone&quot;: &quot;Europe/Belgrade&quot;
+                    &apos;code&apos;: &apos;RS&apos;,
+                    &apos;country&apos;: &apos;Serbia&apos;,
+                    &apos;zone&apos;: &apos;Europe/Belgrade&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;RU&quot;,
-                    &quot;country&quot;: &quot;Russia&quot;,
-                    &quot;zone&quot;: &quot;Europe/Kaliningrad&quot;
+                    &apos;code&apos;: &apos;RU&apos;,
+                    &apos;country&apos;: &apos;Russia&apos;,
+                    &apos;zone&apos;: &apos;Europe/Kaliningrad&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;RW&quot;,
-                    &quot;country&quot;: &quot;Rwanda&quot;,
-                    &quot;zone&quot;: &quot;Africa/Kigali&quot;
+                    &apos;code&apos;: &apos;RW&apos;,
+                    &apos;country&apos;: &apos;Rwanda&apos;,
+                    &apos;zone&apos;: &apos;Africa/Kigali&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;SA&quot;,
-                    &quot;country&quot;: &quot;Saudi Arabia&quot;,
-                    &quot;zone&quot;: &quot;Asia/Riyadh&quot;
+                    &apos;code&apos;: &apos;SA&apos;,
+                    &apos;country&apos;: &apos;Saudi Arabia&apos;,
+                    &apos;zone&apos;: &apos;Asia/Riyadh&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;SB&quot;,
-                    &quot;country&quot;: &quot;Solomon Islands&quot;,
-                    &quot;zone&quot;: &quot;Pacific/Guadalcanal&quot;
+                    &apos;code&apos;: &apos;SB&apos;,
+                    &apos;country&apos;: &apos;Solomon Islands&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Guadalcanal&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;SC&quot;,
-                    &quot;country&quot;: &quot;Seychelles&quot;,
-                    &quot;zone&quot;: &quot;Indian/Mahe&quot;
+                    &apos;code&apos;: &apos;SC&apos;,
+                    &apos;country&apos;: &apos;Seychelles&apos;,
+                    &apos;zone&apos;: &apos;Indian/Mahe&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;SD&quot;,
-                    &quot;country&quot;: &quot;Sudan&quot;,
-                    &quot;zone&quot;: &quot;Africa/Khartoum&quot;
+                    &apos;code&apos;: &apos;SD&apos;,
+                    &apos;country&apos;: &apos;Sudan&apos;,
+                    &apos;zone&apos;: &apos;Africa/Khartoum&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;SE&quot;,
-                    &quot;country&quot;: &quot;Sweden&quot;,
-                    &quot;zone&quot;: &quot;Europe/Stockholm&quot;
+                    &apos;code&apos;: &apos;SE&apos;,
+                    &apos;country&apos;: &apos;Sweden&apos;,
+                    &apos;zone&apos;: &apos;Europe/Stockholm&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;SG&quot;,
-                    &quot;country&quot;: &quot;Singapore&quot;,
-                    &quot;zone&quot;: &quot;Asia/Singapore&quot;
+                    &apos;code&apos;: &apos;SG&apos;,
+                    &apos;country&apos;: &apos;Singapore&apos;,
+                    &apos;zone&apos;: &apos;Asia/Singapore&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;SH&quot;,
-                    &quot;country&quot;: &quot;Saint Helena&quot;,
-                    &quot;zone&quot;: &quot;Atlantic/St_Helena&quot;
+                    &apos;code&apos;: &apos;SH&apos;,
+                    &apos;country&apos;: &apos;Saint Helena&apos;,
+                    &apos;zone&apos;: &apos;Atlantic/St_Helena&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;SI&quot;,
-                    &quot;country&quot;: &quot;Slovenia&quot;,
-                    &quot;zone&quot;: &quot;Europe/Ljubljana&quot;
+                    &apos;code&apos;: &apos;SI&apos;,
+                    &apos;country&apos;: &apos;Slovenia&apos;,
+                    &apos;zone&apos;: &apos;Europe/Ljubljana&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;SJ&quot;,
-                    &quot;country&quot;: &quot;Svalbard and Jan Mayen&quot;,
-                    &quot;zone&quot;: &quot;Arctic/Longyearbyen&quot;
+                    &apos;code&apos;: &apos;SJ&apos;,
+                    &apos;country&apos;: &apos;Svalbard and Jan Mayen&apos;,
+                    &apos;zone&apos;: &apos;Arctic/Longyearbyen&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;SK&quot;,
-                    &quot;country&quot;: &quot;Slovakia&quot;,
-                    &quot;zone&quot;: &quot;Europe/Bratislava&quot;
+                    &apos;code&apos;: &apos;SK&apos;,
+                    &apos;country&apos;: &apos;Slovakia&apos;,
+                    &apos;zone&apos;: &apos;Europe/Bratislava&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;SL&quot;,
-                    &quot;country&quot;: &quot;Sierra Leone&quot;,
-                    &quot;zone&quot;: &quot;Africa/Freetown&quot;
+                    &apos;code&apos;: &apos;SL&apos;,
+                    &apos;country&apos;: &apos;Sierra Leone&apos;,
+                    &apos;zone&apos;: &apos;Africa/Freetown&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;SM&quot;,
-                    &quot;country&quot;: &quot;San Marino&quot;,
-                    &quot;zone&quot;: &quot;Europe/San_Marino&quot;
+                    &apos;code&apos;: &apos;SM&apos;,
+                    &apos;country&apos;: &apos;San Marino&apos;,
+                    &apos;zone&apos;: &apos;Europe/San_Marino&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;SN&quot;,
-                    &quot;country&quot;: &quot;Senegal&quot;,
-                    &quot;zone&quot;: &quot;Africa/Dakar&quot;
+                    &apos;code&apos;: &apos;SN&apos;,
+                    &apos;country&apos;: &apos;Senegal&apos;,
+                    &apos;zone&apos;: &apos;Africa/Dakar&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;SO&quot;,
-                    &quot;country&quot;: &quot;Somalia&quot;,
-                    &quot;zone&quot;: &quot;Africa/Mogadishu&quot;
+                    &apos;code&apos;: &apos;SO&apos;,
+                    &apos;country&apos;: &apos;Somalia&apos;,
+                    &apos;zone&apos;: &apos;Africa/Mogadishu&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;SR&quot;,
-                    &quot;country&quot;: &quot;Suriname&quot;,
-                    &quot;zone&quot;: &quot;America/Paramaribo&quot;
+                    &apos;code&apos;: &apos;SR&apos;,
+                    &apos;country&apos;: &apos;Suriname&apos;,
+                    &apos;zone&apos;: &apos;America/Paramaribo&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;SS&quot;,
-                    &quot;country&quot;: &quot;South Sudan&quot;,
-                    &quot;zone&quot;: &quot;Africa/Juba&quot;
+                    &apos;code&apos;: &apos;SS&apos;,
+                    &apos;country&apos;: &apos;South Sudan&apos;,
+                    &apos;zone&apos;: &apos;Africa/Juba&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;ST&quot;,
-                    &quot;country&quot;: &quot;Sao Tome and Principe&quot;,
-                    &quot;zone&quot;: &quot;Africa/Sao_Tome&quot;
+                    &apos;code&apos;: &apos;ST&apos;,
+                    &apos;country&apos;: &apos;Sao Tome and Principe&apos;,
+                    &apos;zone&apos;: &apos;Africa/Sao_Tome&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;SV&quot;,
-                    &quot;country&quot;: &quot;El Salvador&quot;,
-                    &quot;zone&quot;: &quot;America/El_Salvador&quot;
+                    &apos;code&apos;: &apos;SV&apos;,
+                    &apos;country&apos;: &apos;El Salvador&apos;,
+                    &apos;zone&apos;: &apos;America/El_Salvador&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;SX&quot;,
-                    &quot;country&quot;: &quot;Sint Maarten&quot;,
-                    &quot;zone&quot;: &quot;America/Lower_Princes&quot;
+                    &apos;code&apos;: &apos;SX&apos;,
+                    &apos;country&apos;: &apos;Sint Maarten&apos;,
+                    &apos;zone&apos;: &apos;America/Lower_Princes&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;SY&quot;,
-                    &quot;country&quot;: &quot;Syria&quot;,
-                    &quot;zone&quot;: &quot;Asia/Damascus&quot;
+                    &apos;code&apos;: &apos;SY&apos;,
+                    &apos;country&apos;: &apos;Syria&apos;,
+                    &apos;zone&apos;: &apos;Asia/Damascus&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;SZ&quot;,
-                    &quot;country&quot;: &quot;Swaziland&quot;,
-                    &quot;zone&quot;: &quot;Africa/Mbabane&quot;
+                    &apos;code&apos;: &apos;SZ&apos;,
+                    &apos;country&apos;: &apos;Swaziland&apos;,
+                    &apos;zone&apos;: &apos;Africa/Mbabane&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;TC&quot;,
-                    &quot;country&quot;: &quot;Turks and Caicos Islands&quot;,
-                    &quot;zone&quot;: &quot;America/Grand_Turk&quot;
+                    &apos;code&apos;: &apos;TC&apos;,
+                    &apos;country&apos;: &apos;Turks and Caicos Islands&apos;,
+                    &apos;zone&apos;: &apos;America/Grand_Turk&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;TD&quot;,
-                    &quot;country&quot;: &quot;Chad&quot;,
-                    &quot;zone&quot;: &quot;Africa/Ndjamena&quot;
+                    &apos;code&apos;: &apos;TD&apos;,
+                    &apos;country&apos;: &apos;Chad&apos;,
+                    &apos;zone&apos;: &apos;Africa/Ndjamena&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;TF&quot;,
-                    &quot;country&quot;: &quot;French Southern Territories&quot;,
-                    &quot;zone&quot;: &quot;Indian/Kerguelen&quot;
+                    &apos;code&apos;: &apos;TF&apos;,
+                    &apos;country&apos;: &apos;French Southern Territories&apos;,
+                    &apos;zone&apos;: &apos;Indian/Kerguelen&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;TG&quot;,
-                    &quot;country&quot;: &quot;Togo&quot;,
-                    &quot;zone&quot;: &quot;Africa/Lome&quot;
+                    &apos;code&apos;: &apos;TG&apos;,
+                    &apos;country&apos;: &apos;Togo&apos;,
+                    &apos;zone&apos;: &apos;Africa/Lome&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;TH&quot;,
-                    &quot;country&quot;: &quot;Thailand&quot;,
-                    &quot;zone&quot;: &quot;Asia/Bangkok&quot;
+                    &apos;code&apos;: &apos;TH&apos;,
+                    &apos;country&apos;: &apos;Thailand&apos;,
+                    &apos;zone&apos;: &apos;Asia/Bangkok&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;TJ&quot;,
-                    &quot;country&quot;: &quot;Tajikistan&quot;,
-                    &quot;zone&quot;: &quot;Asia/Dushanbe&quot;
+                    &apos;code&apos;: &apos;TJ&apos;,
+                    &apos;country&apos;: &apos;Tajikistan&apos;,
+                    &apos;zone&apos;: &apos;Asia/Dushanbe&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;TK&quot;,
-                    &quot;country&quot;: &quot;Tokelau&quot;,
-                    &quot;zone&quot;: &quot;Pacific/Fakaofo&quot;
+                    &apos;code&apos;: &apos;TK&apos;,
+                    &apos;country&apos;: &apos;Tokelau&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Fakaofo&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;TL&quot;,
-                    &quot;country&quot;: &quot;East Timor&quot;,
-                    &quot;zone&quot;: &quot;Asia/Dili&quot;
+                    &apos;code&apos;: &apos;TL&apos;,
+                    &apos;country&apos;: &apos;East Timor&apos;,
+                    &apos;zone&apos;: &apos;Asia/Dili&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;TM&quot;,
-                    &quot;country&quot;: &quot;Turkmenistan&quot;,
-                    &quot;zone&quot;: &quot;Asia/Ashgabat&quot;
+                    &apos;code&apos;: &apos;TM&apos;,
+                    &apos;country&apos;: &apos;Turkmenistan&apos;,
+                    &apos;zone&apos;: &apos;Asia/Ashgabat&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;TN&quot;,
-                    &quot;country&quot;: &quot;Tunisia&quot;,
-                    &quot;zone&quot;: &quot;Africa/Tunis&quot;
+                    &apos;code&apos;: &apos;TN&apos;,
+                    &apos;country&apos;: &apos;Tunisia&apos;,
+                    &apos;zone&apos;: &apos;Africa/Tunis&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;TO&quot;,
-                    &quot;country&quot;: &quot;Tonga&quot;,
-                    &quot;zone&quot;: &quot;Pacific/Tongatapu&quot;
+                    &apos;code&apos;: &apos;TO&apos;,
+                    &apos;country&apos;: &apos;Tonga&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Tongatapu&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;TR&quot;,
-                    &quot;country&quot;: &quot;Turkey&quot;,
-                    &quot;zone&quot;: &quot;Europe/Istanbul&quot;
+                    &apos;code&apos;: &apos;TR&apos;,
+                    &apos;country&apos;: &apos;Turkey&apos;,
+                    &apos;zone&apos;: &apos;Europe/Istanbul&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;TT&quot;,
-                    &quot;country&quot;: &quot;Trinidad and Tobago&quot;,
-                    &quot;zone&quot;: &quot;America/Port_of_Spain&quot;
+                    &apos;code&apos;: &apos;TT&apos;,
+                    &apos;country&apos;: &apos;Trinidad and Tobago&apos;,
+                    &apos;zone&apos;: &apos;America/Port_of_Spain&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;TV&quot;,
-                    &quot;country&quot;: &quot;Tuvalu&quot;,
-                    &quot;zone&quot;: &quot;Pacific/Funafuti&quot;
+                    &apos;code&apos;: &apos;TV&apos;,
+                    &apos;country&apos;: &apos;Tuvalu&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Funafuti&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;TW&quot;,
-                    &quot;country&quot;: &quot;Taiwan&quot;,
-                    &quot;zone&quot;: &quot;Asia/Taipei&quot;
+                    &apos;code&apos;: &apos;TW&apos;,
+                    &apos;country&apos;: &apos;Taiwan&apos;,
+                    &apos;zone&apos;: &apos;Asia/Taipei&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;TZ&quot;,
-                    &quot;country&quot;: &quot;Tanzania&quot;,
-                    &quot;zone&quot;: &quot;Africa/Dar_es_Salaam&quot;
+                    &apos;code&apos;: &apos;TZ&apos;,
+                    &apos;country&apos;: &apos;Tanzania&apos;,
+                    &apos;zone&apos;: &apos;Africa/Dar_es_Salaam&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;UA&quot;,
-                    &quot;country&quot;: &quot;Ukraine&quot;,
-                    &quot;zone&quot;: &quot;Europe/Kiev&quot;
+                    &apos;code&apos;: &apos;UA&apos;,
+                    &apos;country&apos;: &apos;Ukraine&apos;,
+                    &apos;zone&apos;: &apos;Europe/Kiev&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;UG&quot;,
-                    &quot;country&quot;: &quot;Uganda&quot;,
-                    &quot;zone&quot;: &quot;Africa/Kampala&quot;
+                    &apos;code&apos;: &apos;UG&apos;,
+                    &apos;country&apos;: &apos;Uganda&apos;,
+                    &apos;zone&apos;: &apos;Africa/Kampala&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;UM&quot;,
-                    &quot;country&quot;: &quot;United States Minor Outlying Islands&quot;,
-                    &quot;zone&quot;: &quot;Pacific/Midway&quot;
+                    &apos;code&apos;: &apos;UM&apos;,
+                    &apos;country&apos;: &apos;United States Minor Outlying Islands&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Midway&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;US&quot;,
-                    &quot;country&quot;: &quot;United States&quot;,
-                    &quot;zone&quot;: &quot;America/New_York&quot;
+                    &apos;code&apos;: &apos;US&apos;,
+                    &apos;country&apos;: &apos;United States&apos;,
+                    &apos;zone&apos;: &apos;America/New_York&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;UY&quot;,
-                    &quot;country&quot;: &quot;Uruguay&quot;,
-                    &quot;zone&quot;: &quot;America/Montevideo&quot;
+                    &apos;code&apos;: &apos;UY&apos;,
+                    &apos;country&apos;: &apos;Uruguay&apos;,
+                    &apos;zone&apos;: &apos;America/Montevideo&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;UZ&quot;,
-                    &quot;country&quot;: &quot;Uzbekistan&quot;,
-                    &quot;zone&quot;: &quot;Asia/Samarkand&quot;
+                    &apos;code&apos;: &apos;UZ&apos;,
+                    &apos;country&apos;: &apos;Uzbekistan&apos;,
+                    &apos;zone&apos;: &apos;Asia/Samarkand&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;VA&quot;,
-                    &quot;country&quot;: &quot;Vatican&quot;,
-                    &quot;zone&quot;: &quot;Europe/Vatican&quot;
+                    &apos;code&apos;: &apos;VA&apos;,
+                    &apos;country&apos;: &apos;Vatican&apos;,
+                    &apos;zone&apos;: &apos;Europe/Vatican&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;VC&quot;,
-                    &quot;country&quot;: &quot;Saint Vincent and the Grenadines&quot;,
-                    &quot;zone&quot;: &quot;America/St_Vincent&quot;
+                    &apos;code&apos;: &apos;VC&apos;,
+                    &apos;country&apos;: &apos;Saint Vincent and the Grenadines&apos;,
+                    &apos;zone&apos;: &apos;America/St_Vincent&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;VE&quot;,
-                    &quot;country&quot;: &quot;Venezuela&quot;,
-                    &quot;zone&quot;: &quot;America/Caracas&quot;
+                    &apos;code&apos;: &apos;VE&apos;,
+                    &apos;country&apos;: &apos;Venezuela&apos;,
+                    &apos;zone&apos;: &apos;America/Caracas&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;VG&quot;,
-                    &quot;country&quot;: &quot;British Virgin Islands&quot;,
-                    &quot;zone&quot;: &quot;America/Tortola&quot;
+                    &apos;code&apos;: &apos;VG&apos;,
+                    &apos;country&apos;: &apos;British Virgin Islands&apos;,
+                    &apos;zone&apos;: &apos;America/Tortola&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;VI&quot;,
-                    &quot;country&quot;: &quot;U.S. Virgin Islands&quot;,
-                    &quot;zone&quot;: &quot;America/St_Thomas&quot;
+                    &apos;code&apos;: &apos;VI&apos;,
+                    &apos;country&apos;: &apos;U.S. Virgin Islands&apos;,
+                    &apos;zone&apos;: &apos;America/St_Thomas&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;VN&quot;,
-                    &quot;country&quot;: &quot;Vietnam&quot;,
-                    &quot;zone&quot;: &quot;Asia/Ho_Chi_Minh&quot;
+                    &apos;code&apos;: &apos;VN&apos;,
+                    &apos;country&apos;: &apos;Vietnam&apos;,
+                    &apos;zone&apos;: &apos;Asia/Ho_Chi_Minh&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;VU&quot;,
-                    &quot;country&quot;: &quot;Vanuatu&quot;,
-                    &quot;zone&quot;: &quot;Pacific/Efate&quot;
+                    &apos;code&apos;: &apos;VU&apos;,
+                    &apos;country&apos;: &apos;Vanuatu&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Efate&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;WF&quot;,
-                    &quot;country&quot;: &quot;Wallis and Futuna&quot;,
-                    &quot;zone&quot;: &quot;Pacific/Wallis&quot;
+                    &apos;code&apos;: &apos;WF&apos;,
+                    &apos;country&apos;: &apos;Wallis and Futuna&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Wallis&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;WS&quot;,
-                    &quot;country&quot;: &quot;Samoa&quot;,
-                    &quot;zone&quot;: &quot;Pacific/Apia&quot;
+                    &apos;code&apos;: &apos;WS&apos;,
+                    &apos;country&apos;: &apos;Samoa&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Apia&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;XK&quot;,
-                    &quot;country&quot;: &quot;Kosovo&quot;,
-                    &quot;zone&quot;: &quot;Kosovo&quot;
+                    &apos;code&apos;: &apos;XK&apos;,
+                    &apos;country&apos;: &apos;Kosovo&apos;,
+                    &apos;zone&apos;: &apos;Kosovo&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;YE&quot;,
-                    &quot;country&quot;: &quot;Yemen&quot;,
-                    &quot;zone&quot;: &quot;Asia/Aden&quot;
+                    &apos;code&apos;: &apos;YE&apos;,
+                    &apos;country&apos;: &apos;Yemen&apos;,
+                    &apos;zone&apos;: &apos;Asia/Aden&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;YT&quot;,
-                    &quot;country&quot;: &quot;Mayotte&quot;,
-                    &quot;zone&quot;: &quot;Indian/Mayotte&quot;
+                    &apos;code&apos;: &apos;YT&apos;,
+                    &apos;country&apos;: &apos;Mayotte&apos;,
+                    &apos;zone&apos;: &apos;Indian/Mayotte&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;ZA&quot;,
-                    &quot;country&quot;: &quot;South Africa&quot;,
-                    &quot;zone&quot;: &quot;Africa/Johannesburg&quot;
+                    &apos;code&apos;: &apos;ZA&apos;,
+                    &apos;country&apos;: &apos;South Africa&apos;,
+                    &apos;zone&apos;: &apos;Africa/Johannesburg&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;ZM&quot;,
-                    &quot;country&quot;: &quot;Zambia&quot;,
-                    &quot;zone&quot;: &quot;Africa/Lusaka&quot;
+                    &apos;code&apos;: &apos;ZM&apos;,
+                    &apos;country&apos;: &apos;Zambia&apos;,
+                    &apos;zone&apos;: &apos;Africa/Lusaka&apos;
                 },
                 {
-                    &quot;code&quot;: &quot;ZW&quot;,
-                    &quot;country&quot;: &quot;Zimbabwe&quot;,
-                    &quot;zone&quot;: &quot;Africa/Harare&quot;
+                    &apos;code&apos;: &apos;ZW&apos;,
+                    &apos;country&apos;: &apos;Zimbabwe&apos;,
+                    &apos;zone&apos;: &apos;Africa/Harare&apos;
                 }
             ]
         }[contentType];
