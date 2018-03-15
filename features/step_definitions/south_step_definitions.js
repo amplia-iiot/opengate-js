@@ -16,19 +16,14 @@ module.exports = function() {
             for (var i = 0; i < data.length; i++) {
 
                 var submethod = _this.model_match(model).setters(entityName)[data[i].field];
-
-                var value = data[i].content;
-                if (data[i].type === "number") {
-                    value = eval(data[i].content);
-                }
-                if (data[i].type === "array") {
-                    value = data[i].content.split(",");
-                }
+                var value = _this.model_match(model).transform(data[i].type, data[i].content);
                 element = element[submethod](value);
+                this[entityName] = element;
+
 
             }
 
-            this[entityName] = element;
+
             callback();
         } catch (err) {
             _this.error = err;

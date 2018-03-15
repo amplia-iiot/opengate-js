@@ -231,15 +231,10 @@ module.exports = function() {
     this.Given(/^the "([^"]*)" "([^"]*)"$/, function(setterName, setterValue, callback) {
         this.error = undefined;
         try {
-            console.log(setterName);
-            console.log(this.currentModel);
-            console.log(this.currentEntity);
             var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
-            console.log(method);
             this.util[method](setterValue);
         } catch (err) {
             this.error = err;
-            console.log(err);
             //assert.ifError(this.error);
         }
 

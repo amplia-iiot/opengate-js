@@ -22,7 +22,7 @@ export default class Datapoint {
     withFrom(from) {
         if (from !== null) {
             if (typeof from !== 'number')
-                throw new Error({ message: 'OGAPI_NUMBER_PARAMETER', parameter: 'from' });
+                throw new Error('OGAPI_MUST_BE_NUMBER_PARAMETER');
             this._from = from;
         }
         return this;
@@ -36,7 +36,7 @@ export default class Datapoint {
     withAt(at) {
         if (at !== null) {
             if (typeof at !== 'number')
-                throw new Error({ message: 'OGAPI_NUMBER_PARAMETER', parameter: 'at' });
+                throw new Error('OGAPI_MUST_BE_NUMBER_PARAMETER');
             this._at = at;
         }
         return this;
@@ -49,7 +49,7 @@ export default class Datapoint {
      */
     withValue(value) {
         if (value === undefined || value.length === 0)
-            throw new Error({ message: 'OGAPI_DEFINED_PARAMETER', parameter: 'value' });
+            throw new Error('OGAPI_DEFINED_PARAMETER');
         this._value = value;
         return this;
     }
