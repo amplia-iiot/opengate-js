@@ -43,15 +43,6 @@ I want to search the collection of data points using asynchronous pagination
         And I create it
         And response code should be: 201
 
-    #    Scenario: Create a gateway that not exists
-    #     Given an ogapi "devices builder" util
-    #     And I want to create a "device"
-    #     #And the "serial number" "OGUX_SerialNumber_GATEWAY"
-    #     #And the "type" "gateway"
-    #     And I delete it
-    #     Then I create it
-    #     And response code should be: 201
-
     Scenario: Create a Iot message
         Given an ogapi "deviceMessage builder" util
         And I want to create a "deviceMessage"
