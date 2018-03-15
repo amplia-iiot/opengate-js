@@ -41,54 +41,89 @@ I want to create an entity and send iot data
         And response code should be: 201
 
     Scenario: Create a Iot message
-        Given an ogapi "deviceMessage builder" util as "IotMessage"
-        And the "datastreamVersion" "0.0.1" on util "IotMessage"
-        And the "id" "iot_testing_entity" on util "IotMessage"
-        And the "deviceId" "iot_testing_entity" on util "IotMessage"
-
-        And I want to create a "datapoints message" with this element:
-            | field | content            | type   |
-            | tags  | tag1,tag2          | array  |
+        Given an ogapi "deviceMessage builder" util
+        And I want to create a "deviceMessage"
+        And the "datastreamVersion" "0.0.1"
+        And the "id" "iot_testing_entity"
         And I want to create a "datastream" with this element:
             | field | content        | type   |
-            | feed  | feed element   | string |
             | id    | device.name    | string |
         And I want to define "datapoints message" in "datastream"
-        And I want to define "datastream" in "IotMessage"
+        And I want to create a "datapoints message" with this element:
+            | field | content            | type   |
+            | value | recolected_name    | string |
+        And I want to define "datapoints message" in "datastream"
+        And I want to define "datastream" in "deviceMessage"
         Then I create it
         And response code should be: 201
-         And I wait 15 seconds
+        Then I wait 15 seconds
 
 
-  Scenario: I want to download csv
-    And an ogapi "devices search" util
-    When I add a filter and with
-      | operator | key                                   | value                          |
-      | eq       | provision.administration.organization | iot_organization               |
+   Scenario: I want to download csv
+        And an ogapi "devices search" util
+        When I add a filter and with
+          | operator | key                                   | value                          |
+          | eq       | provision.administration.organization | iot_organization               |
+        
+        When I build it with select...
+          | datastreamId | fields                                   |
+          | device.name  | [{"field" : "value", "alias": "name"} ] |
+        And I download csv it
+        Then response code should be: 200
+        Then does not throws an error
+        Then the content of file "search.csv" must be:
+          """
+          name
+          recolected_name
+        
+          """
+        
+    Scenario: Create a Iot message
+        Given an ogapi "deviceMessage builder" util
+        And I want to create a "deviceMessage"
+        And the "datastreamVersion" "0.0.1"
+        And the "id" "iot_testing_entity"
+        And I want to create a "datastream" with this element:
+            | field | content        | type   |
+            | id    | device.location    | string |
+        And I want to define "datapoints message" in "datastream"
+        And I want to create a "datapoints message" with this element:
+            | field | content            | type   |
+            | value | {"position":{"type":"Point","coordinates":[-5.66194,43.5398]},"country":"Spain","postal":"28040","source":"MOBILE"} | json |
+        And I want to define "datapoints message" in "datastream"
+        And I want to define "datastream" in "deviceMessage"
+        Then I create it
+        And response code should be: 201
+        Then I wait 15 seconds 
 
-    When I build it with select...
-      | datastreamId                         | fields                                   |
-      | device.name | [{"field" : "value", "alias": "name"} ] |
-    And I download csv it
-    Then response code should be: 200
-    Then does not throws an error
-    Then the content of file "search.csv" must be:
-      """
-      name
-      recolected_name
-
-      """
+    Scenario: I want to download csv
+        And an ogapi "devices search" util
+        When I add a filter and with
+          | operator | key                                   | value                          |
+          | eq       | provision.administration.organization | iot_organization               |
+        
+        When I build it with select...
+          | datastreamId | fields                                   |
+          | device.location  | [{"field" : "value", "alias": "location"} ] |
+        And I download csv it
+        Then response code should be: 200
+        Then does not throws an error
+        Then the content of file "search.csv" must be:
+          """
+          location
+          {postal=28040, source=MOBILE, position={type=Point, coordinates=[-5.66194, 43.5398]}, country=Spain}
+        
+          """
 
   Scenario: I want to delete the entity
-    Given the entity of type "devices builder" with "iot_organization"
-    When I try to define the entity with...
-      | datastream                  | typeFunction | value          | parent |
-      | provision.device.identifier | simple       | iot_testing_entity |        |
-    And I delete it
-    Then response code should be: 200
-
-
+        Given the entity of type "devices builder" with "iot_organization"
+        When I try to define the entity with...
+          | datastream                  | typeFunction | value          | parent |
+          | provision.device.identifier | simple       | iot_testing_entity |        |
+        And I delete it
+        Then response code should be: 200
         Given an ogapi "organizations builder" util
         Then I want to delete an "organization"
         And the "name" "iot_organization"
         Then I delete it
+    

@@ -350,7 +350,7 @@ module.exports = function() {
         } catch (err) {
             //console.log(err);
             if (Object.keys(err).length === 0) {
-                console.log(err);
+                //console.log(err);
             } else {
                 console.log(JSON.stringify(err));
             }

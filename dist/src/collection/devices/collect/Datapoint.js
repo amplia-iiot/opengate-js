@@ -31,7 +31,7 @@ var Datapoint = (function () {
         key: 'withFrom',
         value: function withFrom(from) {
             if (from !== null) {
-                if (typeof from !== 'number') throw new Error({ message: 'OGAPI_NUMBER_PARAMETER', parameter: 'from' });
+                if (typeof from !== 'number') throw new Error('OGAPI_MUST_BE_NUMBER_PARAMETER');
                 this._from = from;
             }
             return this;
@@ -46,7 +46,7 @@ var Datapoint = (function () {
         key: 'withAt',
         value: function withAt(at) {
             if (at !== null) {
-                if (typeof at !== 'number') throw new Error({ message: 'OGAPI_NUMBER_PARAMETER', parameter: 'at' });
+                if (typeof at !== 'number') throw new Error('OGAPI_MUST_BE_NUMBER_PARAMETER');
                 this._at = at;
             }
             return this;
@@ -60,7 +60,7 @@ var Datapoint = (function () {
     }, {
         key: 'withValue',
         value: function withValue(value) {
-            if (value === undefined || value.length === 0) throw new Error({ message: 'OGAPI_DEFINED_PARAMETER', parameter: 'value' });
+            if (value === undefined || value.length === 0) throw new Error('OGAPI_DEFINED_PARAMETER');
             this._value = value;
             return this;
         }

@@ -165,7 +165,6 @@ var DeviceMessage = (function (_Event) {
             var promises = defered.promise;
 
             var boxPromises = [];
-
             if (this._datastreams.length > 0) {
                 boxPromises.push(this._ogapi.Sapi.post(this._buildIotURL(), this._composeIotMessage()).then(function (res) {
                     if (res.statusCode !== 201) {

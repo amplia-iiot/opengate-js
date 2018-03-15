@@ -1,5 +1,22 @@
 module.exports = {
-    setters: function (setter) {
+    transform: function(type, value) {
+        var utilsMath = {
+            'number': function(value) {
+                return parseInt(value);
+            },
+            'string': function(value) {
+                return value;
+            },
+            'array': function(values) {
+                return value.split(",");;
+            },
+            'json': function(values) {
+                return JSON.parse(value);
+            }
+        }
+        return utilsMath[type](value);
+    },
+    setters: function(setter) {
         return {
             'user': {
                 'email': 'withEmail',
@@ -97,6 +114,7 @@ module.exports = {
                 'allowed resource type': 'addAllowedResourceType'
             },
             'datastream': {
+                'id': 'withId',
                 'identifier': 'withId',
                 'name': 'withName',
                 'description': 'withDescription',
@@ -360,7 +378,7 @@ module.exports = {
 
         }[setter];
     },
-    getter_response: function (getter) {
+    getter_response: function(getter) {
         return {
             'user email': '/email',
             'organization name': '/name'

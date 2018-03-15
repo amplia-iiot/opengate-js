@@ -26,7 +26,7 @@ module.exports = function() {
         var data;
         data = this.responseData ? this.responseData.statusCode : this.data;
         var statusCodeResp = data;
-        console.log("RESPONSE_: " + JSON.stringify(this.responseData));
+        //console.log("RESPONSE_: " + JSON.stringify(this.responseData));
         if (parseInt(statusCode) !== statusCodeResp && this.error) {
             throw new Error(Object.keys(this.error).length > 0 ? JSON.stringify(this.error) : this.error);
         }

@@ -136,7 +136,6 @@ export default class DeviceMessage extends Event {
         var promises = defered.promise;
 
         let boxPromises = [];
-
         if (this._datastreams.length > 0) {
             boxPromises.push(this._ogapi.Sapi.post(this._buildIotURL(), this._composeIotMessage()).then(function(res) {
                 if (res.statusCode !== 201) {
