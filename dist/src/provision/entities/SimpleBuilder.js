@@ -70,22 +70,26 @@ var SimpleBuilder = (function (_BaseProvision) {
             var _this = this;
             var errors = [];
             Object.keys(this._entity).forEach(function (_id) {
-                if (!_this._definedSchemas[_id]) {
-                    throw new Error(ERROR_DATASTREAM_NOT_ALLOWED);
-                }
-                var jSchema = _this._definedSchemas[_id].value;
-                if (_this._entity[_id].constructor === Array) {
-                    _this._entity[_id].forEach(function (item) {
-                        var value = item._value._current.value;
-                        if (!_this._jsonSchemaValidator.validate(value, jSchema).valid) {
-                            errors.push(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
+                if (_id != 'resourceType') {
+                    (function () {
+                        if (!_this._definedSchemas[_id]) {
+                            throw new Error(ERROR_DATASTREAM_NOT_ALLOWED);
                         }
-                    });
-                } else {
-                    var value = _this._entity[_id]._value._current.value;
-                    if (!_this._jsonSchemaValidator.validate(value, jSchema).valid) {
-                        errors.push(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
-                    }
+                        var jSchema = _this._definedSchemas[_id].value;
+                        if (_this._entity[_id].constructor === Array) {
+                            _this._entity[_id].forEach(function (item) {
+                                var value = item._value._current.value;
+                                if (!_this._jsonSchemaValidator.validate(value, jSchema).valid) {
+                                    errors.push(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
+                                }
+                            });
+                        } else {
+                            var value = _this._entity[_id]._value._current.value;
+                            if (!_this._jsonSchemaValidator.validate(value, jSchema).valid) {
+                                errors.push(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
+                            }
+                        }
+                    })();
                 }
             });
 
@@ -145,6 +149,20 @@ var SimpleBuilder = (function (_BaseProvision) {
         key: 'getAllowedDatastreams',
         value: function getAllowedDatastreams() {
             return this._allowedDatastreams;
+        }
+    }, {
+        key: 'initFromFlattened',
+        value: function initFromFlattened(_flattenedEntityData) {
+            var _this = this;
+            if (_flattenedEntityData && Object.keys(_flattenedEntityData).length > 0) {
+                Object.keys(_flattenedEntityData).forEach(function (_id) {
+                    if (_id.toLowerCase().startsWith("provision")) {
+                        var _content = _flattenedEntityData[_id];
+
+                        _this['with'](_id, _content._value._current.value);
+                    }
+                });
+            }
         }
 
         /**

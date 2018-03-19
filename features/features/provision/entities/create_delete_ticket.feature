@@ -5,9 +5,10 @@
 @ticket
 @entities_provision
 @create_delete_ticket
-Feature: Delete and Create a device
-As a device of JsApi
-I want to create an device
+
+Feature: Delete and Create a ticket
+As a user of JsApi
+I want to create a ticket
 So, I can create a new ticket with the parametres that I have been defined
 
     Background:

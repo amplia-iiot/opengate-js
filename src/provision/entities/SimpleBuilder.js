@@ -41,24 +41,25 @@ export default class SimpleBuilder extends BaseProvision {
         let _this = this;
         let errors = [];
         Object.keys(this._entity).forEach(function(_id) {
-            if (!_this._definedSchemas[_id]) {
-                throw new Error(ERROR_DATASTREAM_NOT_ALLOWED);
-            }
-            let jSchema = _this._definedSchemas[_id].value;
-            if (_this._entity[_id].constructor === Array) {
-                _this._entity[_id].forEach(function(item) {
-                    let value = item._value._current.value;
+            if (_id != 'resourceType') {
+                if (!_this._definedSchemas[_id]) {
+                    throw new Error(ERROR_DATASTREAM_NOT_ALLOWED);
+                }
+                let jSchema = _this._definedSchemas[_id].value;
+                if (_this._entity[_id].constructor === Array) {
+                    _this._entity[_id].forEach(function(item) {
+                        let value = item._value._current.value;
+                        if (!_this._jsonSchemaValidator.validate(value, jSchema).valid) {
+                            errors.push(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
+                        }
+                    });
+                } else {
+                    let value = _this._entity[_id]._value._current.value;
                     if (!_this._jsonSchemaValidator.validate(value, jSchema).valid) {
                         errors.push(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
                     }
-                });
-            } else {
-                let value = _this._entity[_id]._value._current.value;
-                if (!_this._jsonSchemaValidator.validate(value, jSchema).valid) {
-                    errors.push(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
                 }
             }
-
         });
 
         if (errors.length > 0) {
@@ -110,6 +111,18 @@ export default class SimpleBuilder extends BaseProvision {
         return this._allowedDatastreams;
     }
 
+    initFromFlattened(_flattenedEntityData) {
+        let _this = this;
+        if (_flattenedEntityData && Object.keys(_flattenedEntityData).length > 0) {
+            Object.keys(_flattenedEntityData).forEach(function(_id) {
+                if (_id.toLowerCase().startsWith("provision")) {
+                    var _content = _flattenedEntityData[_id];
+
+                    _this.with(_id, _content._value._current.value);
+                }
+            });
+        }
+    }
 
     /**
      * This invoke a request to OpenGate North API and the callback is managed by promises
