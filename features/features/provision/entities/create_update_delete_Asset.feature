@@ -5,10 +5,11 @@
 @create_provision
 @asset_defaultCreate
 @entities_provision
-Feature: Delete and Create a device
-As a device of JsApi
-I want to create an device
-So, I can create a new user with the parametres that I have been defined
+
+Feature: Delete and Create an asset
+As a user of JsApi
+I want to create an asset
+So, I can create a new asset with the parametres that I have been defined
 
   Background:
     Given an apikey user by "require-real-apikey"
