@@ -220,11 +220,12 @@ var DatamodelsHelper = (function (_BaseProvision) {
             if (remove_datastream_index === -1) {
                 throw new Error('Datastream ' + id_datastream + ' not exists for this datamodel and category ' + category);
             }
-            /* if (this._categories[remove_category_index].datastreams.length === 1) {
-                 throw new Error('Datastream ' + id_datastream + ' can\'t remove, category ' + category + ' can\'t be empty');
-             }*/
+
             this._categories[remove_category_index].datastreams.splice(remove_datastream_index, 1);
             var _category = new _catalogCategory2['default'](this._ogapi, category, this._categories[remove_category_index].datastreams);
+            if (this._categories[remove_category_index].name) {
+                _category.withName(this._categories[remove_category_index].name);
+            }
             this._categories.splice(remove_category_index, 1);
             this._categories.push(_category._composeElement());
             return this;
