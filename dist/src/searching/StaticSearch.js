@@ -585,7 +585,7 @@ var StaticSearch = (function (_Search) {
                 'ioTDatastreamAccess': ['READ', 'WRITE'],
                 'ioTDatastreamStoragePeriod': ['SECONDS', 'MINUTES', 'HOURS', 'DAYS', 'MONTHS', 'YEARS', 'NEVER'],
                 'ioTDatastreamPeriod': ['PULSE', 'CUMULATIVE', 'INSTANT'],
-                'resourceType': ['asset', 'device'],
+                'resourceType': [{ identifier: 'entity.asset' }, { identifier: 'entity.device' }, { identifier: 'ticket' }],
                 'allowedResourceType': [{
                     resourceType: 'entity.asset',
                     types: ['entity', 'asset']

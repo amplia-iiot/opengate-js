@@ -852,7 +852,7 @@ export default class StaticSearch extends Search {
                 &apos;CUMULATIVE&apos;,
                 &apos;INSTANT&apos;
             ],
-            &apos;resourceType&apos;: [&apos;asset&apos;, &apos;device&apos;],
+            &apos;resourceType&apos;: [{ identifier: &apos;entity.asset&apos; }, { identifier: &apos;entity.device&apos; }, { identifier: &apos;ticket&apos; }],
             &apos;allowedResourceType&apos;: [{
                     resourceType: &apos;entity.asset&apos;,
                     types: [&apos;entity&apos;, &apos;asset&apos;]
