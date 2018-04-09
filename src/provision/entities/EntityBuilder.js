@@ -135,7 +135,7 @@ export default class EntityBuilder {
     }
 
     subscriptionsBuilder(organization) {
-        return this._genericBuilder(organization, 'entity.subscription', 'provision.device.communicationModules[].subscription', function(allowedDatastreams, definedSchemas) {
+        return this._genericBuilder(organization, 'entity.subscription', 'provision', function(allowedDatastreams, definedSchemas) {
             return new SubscriptionBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
         });
     }

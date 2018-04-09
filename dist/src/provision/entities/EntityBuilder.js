@@ -187,7 +187,7 @@ var EntityBuilder = (function () {
     }, {
         key: 'subscriptionsBuilder',
         value: function subscriptionsBuilder(organization) {
-            return this._genericBuilder(organization, 'entity.subscription', 'provision.device.communicationModules[].subscription', function (allowedDatastreams, definedSchemas) {
+            return this._genericBuilder(organization, 'entity.subscription', 'provision', function (allowedDatastreams, definedSchemas) {
                 return new _SubscriptionBuilder2['default'](this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
             });
         }
