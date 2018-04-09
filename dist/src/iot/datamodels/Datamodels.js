@@ -127,13 +127,22 @@ var Datamodels = (function (_BaseProvision) {
     }, {
         key: 'addCategory',
         value: function addCategory(category, datastreams) {
-            this._isValidString(category, 'category', 100);
+            //this._isValidString(category, 'category', 100);
+            if (typeof category === 'string' && (category.length === 0 || string.length > 100)) {
+                throw new Error('Parameter category must be a string, cannot be empty and has a maximum length of 100 on IoTDatamodel');
+            } else if (!category.identifier || this._isValidString(category.identifier, 'category', 100)) {
+                throw new Error('Category identifier is required');
+            }
+            var id = category.identifier ? category.identifier : category;
             this._categories.forEach(function (_category, index) {
-                if (category.name === _category) {
-                    throw new Error('Category ' + category + ' already exists.');
+                if (id === _category.identifier) {
+                    throw new Error('Category ' + id + ' already exists.');
                 }
             });
-            var _category = new _catalogCategory2['default'](this._ogapi, category);
+            var _category = new _catalogCategory2['default'](this._ogapi, id);
+            if (category.name) {
+                _category.withName(category.name);
+            }
             if (datastreams && datastreams.length > 0) _category.addDatastreams(datastreams);
             this._categories.push(_category._composeElement());
             return this;

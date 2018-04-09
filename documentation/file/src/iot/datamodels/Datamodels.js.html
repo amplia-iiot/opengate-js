@@ -306,14 +306,23 @@ export default class Datamodels extends BaseProvision {
      * @param {!Array} datastreams
      * @return {Datamodels}
      */
-    addCategory(category, datastreams) {
-        this._isValidString(category, &apos;category&apos;, 100);
-        this._categories.forEach(function (_category, index) {
-            if (category.name === _category) {
-                throw new Error(&apos;Category &apos; + category + &apos; already exists.&apos;);
+     addCategory(category, datastreams) {
+        //this._isValidString(category, &apos;category&apos;, 100);
+        if (typeof category === &apos;string&apos; &amp;&amp; (category.length === 0 || string.length &gt; 100)) {
+            throw new Error(&apos;Parameter category must be a string, cannot be empty and has a maximum length of 100 on IoTDatamodel&apos;);
+        } else if (!category.identifier || this._isValidString(category.identifier, &apos;category&apos;, 100)) {
+            throw new Error(&apos;Category identifier is required&apos;);
+        }
+        let id = category.identifier ? category.identifier : category;
+        this._categories.forEach(function(_category, index) {
+            if (id === _category.identifier) {
+                throw new Error(&apos;Category &apos; + id + &apos; already exists.&apos;);
             }
         });
-        let _category = new Category(this._ogapi, category);
+        let _category = new Category(this._ogapi, id);
+        if (category.name) {
+            _category.withName(category.name);
+        }
         if (datastreams &amp;&amp; datastreams.length &gt; 0)
             _category.addDatastreams(datastreams);
         this._categories.push(_category._composeElement());
