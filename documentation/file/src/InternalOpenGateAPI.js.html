@@ -186,6 +186,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketStatusSearchBuilder.js~TicketStatusSearchBuilder.html">TicketStatusSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketTypeSearchBuilder.js~TicketTypeSearchBuilder.html">TicketTypeSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketsSearchBuilder.js~TicketsSearchBuilder.html">TicketsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TimezoneSearchBuilder.js~TimezoneSearchBuilder.html">TimezoneSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UserLanguagesSearchBuilder.js~UserLanguagesSearchBuilder.html">UserLanguagesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UserProfilesSearchBuilder.js~UserProfilesSearchBuilder.html">UserProfilesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UsersSearchBuilder.js~UsersSearchBuilder.html">UsersSearchBuilder</a></span></span></li>
@@ -316,6 +317,7 @@ import QratingsBuilder from &apos;./iot/catalog/Qrating&apos;;
 import EntityBuilder from &apos;./provision/entities/EntityBuilder&apos;;
 import EntitiesSearchBuilder from &apos;./searching/builder/EntitiesSearchBuilder&apos;;
 import CountryCodesSearchBuilder from &apos;./searching/builder/CountryCodesSearchBuilder&apos;;
+import TimezoneSearchBuilder from &apos;./searching/builder/TimezoneSearchBuilder&apos;;
 import UserLanguagesSearchBuilder from &apos;./searching/builder/UserLanguagesSearchBuilder&apos;;
 
 /**
@@ -1061,6 +1063,14 @@ export default class InternalOpenGateAPI {
      */
     countryCodesSearchBuilder() {
         return new CountryCodesSearchBuilder(this);
+    }
+
+    /**
+     * This return a TimezoneSearchBuilder to build a specific TimezoneSearchBuilder
+     * @return {TimezoneSearchBuilder}
+     */
+    timezoneSearchBuilder() {
+        return new TimezoneSearchBuilder(this);
     }
 
     /**

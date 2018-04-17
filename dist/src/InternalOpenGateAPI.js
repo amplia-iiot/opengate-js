@@ -386,6 +386,10 @@ var _searchingBuilderCountryCodesSearchBuilder = require('./searching/builder/Co
 
 var _searchingBuilderCountryCodesSearchBuilder2 = _interopRequireDefault(_searchingBuilderCountryCodesSearchBuilder);
 
+var _searchingBuilderTimezoneSearchBuilder = require('./searching/builder/TimezoneSearchBuilder');
+
+var _searchingBuilderTimezoneSearchBuilder2 = _interopRequireDefault(_searchingBuilderTimezoneSearchBuilder);
+
 var _searchingBuilderUserLanguagesSearchBuilder = require('./searching/builder/UserLanguagesSearchBuilder');
 
 var _searchingBuilderUserLanguagesSearchBuilder2 = _interopRequireDefault(_searchingBuilderUserLanguagesSearchBuilder);
@@ -1312,6 +1316,16 @@ var InternalOpenGateAPI = (function () {
         key: 'countryCodesSearchBuilder',
         value: function countryCodesSearchBuilder() {
             return new _searchingBuilderCountryCodesSearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a TimezoneSearchBuilder to build a specific TimezoneSearchBuilder
+         * @return {TimezoneSearchBuilder}
+         */
+    }, {
+        key: 'timezoneSearchBuilder',
+        value: function timezoneSearchBuilder() {
+            return new _searchingBuilderTimezoneSearchBuilder2['default'](this);
         }
 
         /**

@@ -186,6 +186,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketStatusSearchBuilder.js~TicketStatusSearchBuilder.html">TicketStatusSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketTypeSearchBuilder.js~TicketTypeSearchBuilder.html">TicketTypeSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketsSearchBuilder.js~TicketsSearchBuilder.html">TicketsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TimezoneSearchBuilder.js~TimezoneSearchBuilder.html">TimezoneSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UserLanguagesSearchBuilder.js~UserLanguagesSearchBuilder.html">UserLanguagesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UserProfilesSearchBuilder.js~UserProfilesSearchBuilder.html">UserProfilesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UsersSearchBuilder.js~UsersSearchBuilder.html">UsersSearchBuilder</a></span></span></li>
@@ -367,6 +368,19 @@ export default class User extends BaseProvision {
     }
 
     /**
+     * Set the timezone attribute
+     * @param {string} timezone - required field
+     * @return {User}
+     */
+    withTimezone(timezone) {
+        if (typeof timezone !== &apos;string&apos;)
+            throw new Error(&apos;OGAPI_STRING_PARAMETER_TIMEZONE&apos;);
+        this._timezone = timezone;
+        return this;
+
+    }
+
+    /**
      * Compose url to delete an user
      * @return {String} This returns a string with the URL of the request.
      * @private
@@ -398,7 +412,8 @@ export default class User extends BaseProvision {
                 domain: this._domain || undefined,
                 profile: this._profile || undefined,
                 countryCode: this._countryCode || undefined,
-                langCode: this._langCode || undefined
+                langCode: this._langCode || undefined,
+                timezone: this._timezone || undefined
             }
         };
 
@@ -415,9 +430,7 @@ export default class User extends BaseProvision {
         if (this._password) {
             throw new Error(&apos;OGAPI_PASSWORD_NOT_ALLOWED&apos;);
         }
-        if (this._email === undefined ||
-            (this._workgroup === undefined &amp;&amp; this._domain !== undefined) ||
-            (this._workgroup !== undefined &amp;&amp; this._domain === undefined))
+        if (this._email === undefined)
             throw new Error(&apos;OGAPI_USER_UPDATE_PARAMETER_MUST_BE_DEFINED&apos;);
 
         var data = {
@@ -430,7 +443,8 @@ export default class User extends BaseProvision {
                 domain: this._domain || undefined,
                 profile: this._profile || undefined,
                 countryCode: this._countryCode || undefined,
-                langCode: this._langCode || undefined
+                langCode: this._langCode || undefined,
+                timezone: this._timezone || undefined
             }
         };
         return data;

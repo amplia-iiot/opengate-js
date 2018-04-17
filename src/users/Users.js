@@ -145,6 +145,19 @@ export default class User extends BaseProvision {
     }
 
     /**
+     * Set the timezone attribute
+     * @param {string} timezone - required field
+     * @return {User}
+     */
+    withTimezone(timezone) {
+        if (typeof timezone !== 'string')
+            throw new Error('OGAPI_STRING_PARAMETER_TIMEZONE');
+        this._timezone = timezone;
+        return this;
+
+    }
+
+    /**
      * Compose url to delete an user
      * @return {String} This returns a string with the URL of the request.
      * @private
@@ -176,7 +189,8 @@ export default class User extends BaseProvision {
                 domain: this._domain || undefined,
                 profile: this._profile || undefined,
                 countryCode: this._countryCode || undefined,
-                langCode: this._langCode || undefined
+                langCode: this._langCode || undefined,
+                timezone: this._timezone || undefined
             }
         };
 
@@ -193,9 +207,7 @@ export default class User extends BaseProvision {
         if (this._password) {
             throw new Error('OGAPI_PASSWORD_NOT_ALLOWED');
         }
-        if (this._email === undefined ||
-            (this._workgroup === undefined && this._domain !== undefined) ||
-            (this._workgroup !== undefined && this._domain === undefined))
+        if (this._email === undefined)
             throw new Error('OGAPI_USER_UPDATE_PARAMETER_MUST_BE_DEFINED');
 
         var data = {
@@ -208,7 +220,8 @@ export default class User extends BaseProvision {
                 domain: this._domain || undefined,
                 profile: this._profile || undefined,
                 countryCode: this._countryCode || undefined,
-                langCode: this._langCode || undefined
+                langCode: this._langCode || undefined,
+                timezone: this._timezone || undefined
             }
         };
         return data;

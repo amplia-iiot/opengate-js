@@ -175,6 +175,19 @@ var User = (function (_BaseProvision) {
         }
 
         /**
+         * Set the timezone attribute
+         * @param {string} timezone - required field
+         * @return {User}
+         */
+    }, {
+        key: 'withTimezone',
+        value: function withTimezone(timezone) {
+            if (typeof timezone !== 'string') throw new Error('OGAPI_STRING_PARAMETER_TIMEZONE');
+            this._timezone = timezone;
+            return this;
+        }
+
+        /**
          * Compose url to delete an user
          * @return {String} This returns a string with the URL of the request.
          * @private
@@ -208,7 +221,8 @@ var User = (function (_BaseProvision) {
                     domain: this._domain || undefined,
                     profile: this._profile || undefined,
                     countryCode: this._countryCode || undefined,
-                    langCode: this._langCode || undefined
+                    langCode: this._langCode || undefined,
+                    timezone: this._timezone || undefined
                 }
             };
 
@@ -226,7 +240,7 @@ var User = (function (_BaseProvision) {
             if (this._password) {
                 throw new Error('OGAPI_PASSWORD_NOT_ALLOWED');
             }
-            if (this._email === undefined || this._workgroup === undefined && this._domain !== undefined || this._workgroup !== undefined && this._domain === undefined) throw new Error('OGAPI_USER_UPDATE_PARAMETER_MUST_BE_DEFINED');
+            if (this._email === undefined) throw new Error('OGAPI_USER_UPDATE_PARAMETER_MUST_BE_DEFINED');
 
             var data = {
                 user: {
@@ -238,7 +252,8 @@ var User = (function (_BaseProvision) {
                     domain: this._domain || undefined,
                     profile: this._profile || undefined,
                     countryCode: this._countryCode || undefined,
-                    langCode: this._langCode || undefined
+                    langCode: this._langCode || undefined,
+                    timezone: this._timezone || undefined
                 }
             };
             return data;
