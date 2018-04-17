@@ -94,6 +94,7 @@ import QratingsBuilder from './iot/catalog/Qrating';
 import EntityBuilder from './provision/entities/EntityBuilder';
 import EntitiesSearchBuilder from './searching/builder/EntitiesSearchBuilder';
 import CountryCodesSearchBuilder from './searching/builder/CountryCodesSearchBuilder';
+import TimezoneSearchBuilder from './searching/builder/TimezoneSearchBuilder';
 import UserLanguagesSearchBuilder from './searching/builder/UserLanguagesSearchBuilder';
 
 /**
@@ -839,6 +840,14 @@ export default class InternalOpenGateAPI {
      */
     countryCodesSearchBuilder() {
         return new CountryCodesSearchBuilder(this);
+    }
+
+    /**
+     * This return a TimezoneSearchBuilder to build a specific TimezoneSearchBuilder
+     * @return {TimezoneSearchBuilder}
+     */
+    timezoneSearchBuilder() {
+        return new TimezoneSearchBuilder(this);
     }
 
     /**
