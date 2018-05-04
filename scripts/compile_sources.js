@@ -11,33 +11,46 @@ var gulp = require('gulp'),
     entryClient = 'opengate-api-bower.js',
     entryServer = 'opengate-api-npm.js',
     src = [entryServer, 'src/**/*.js'],
-    srcOption = { base: './' },
+    srcOption = {
+        base: './'
+    },
     dest = './dist';
 
-gulp.task('clean', function() {
-    return gulp.src(dest, { read: false })
-        .pipe(clean({ force: true }));
+gulp.task('clean', function () {
+    return gulp.src(dest, {
+            read: false
+        })
+        .pipe(clean({
+            force: true
+        }));
 });
 
-gulp.task('clean-doc', function() {
-    return gulp.src(['./documentation'], { read: false })
-        .pipe(clean({ force: true }));
+gulp.task('clean-doc', function () {
+    return gulp.src(['./documentation'], {
+            read: false
+        })
+        .pipe(clean({
+            force: true
+        }));
 });
 
-gulp.task('generate-doc', ['clean-doc'], function() {
+gulp.task('generate-doc', ['clean-doc'], function () {
     return gulp.src('.')
         .pipe(esdoc());
 });
 
-gulp.task('npm', ['clean'], function() {
+gulp.task('npm', ['clean'], function () {
     return gulp.src(src, srcOption)
         .pipe(sourcemaps.init())
         .pipe(babel())
-        .pipe(sourcemaps.write('.', { includeContent: false, sourceRoot: '..' }))
+        .pipe(sourcemaps.write('.', {
+            includeContent: false,
+            sourceRoot: '..'
+        }))
         .pipe(gulp.dest(dest));
 });
 
-gulp.task('bower', ['clean'], function() {
+gulp.task('bower', ['clean'], function () {
     return gulp.src(entryClient, srcOption)
         .pipe(sourcemaps.init())
         .pipe(browserify({
@@ -46,12 +59,15 @@ gulp.task('bower', ['clean'], function() {
             transform: ['babelify']
         }))
         .pipe(ver())
-        .pipe(sourcemaps.write('.', { includeContent: false, sourceRoot: '..' }))
+        .pipe(sourcemaps.write('.', {
+            includeContent: false,
+            sourceRoot: '..'
+        }))
 
         .pipe(gulp.dest(dest));
 });
 
-gulp.task('bower:min', ['clean'], function() {
+gulp.task('bower:min', ['clean'], function () {
     return gulp.src(entryClient, srcOption)
         .pipe(sourcemaps.init())
         .pipe(browserify({
@@ -64,7 +80,10 @@ gulp.task('bower:min', ['clean'], function() {
         .pipe(rename({
             suffix: ".min"
         }))
-        .pipe(sourcemaps.write('.', { includeContent: false, sourceRoot: '..' }))
+        .pipe(sourcemaps.write('.', {
+            includeContent: false,
+            sourceRoot: '..'
+        }))
         .pipe(gulp.dest(dest));
 });
 
@@ -75,6 +94,6 @@ gulp.task('build', ['compile', 'generate-doc']);
 
 gulp.task('default', ['watch-src']);
 
-gulp.task('watch-src', function() {
+gulp.task('watch-src', function () {
     gulp.watch(['src/**'], ['compile']);
 });
