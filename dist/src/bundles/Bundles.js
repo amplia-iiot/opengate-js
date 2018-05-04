@@ -313,8 +313,6 @@ var Bundles = (function (_BaseProvision) {
     }, {
         key: 'deployAndActivate',
         value: function deployAndActivate() {
-            var _this2 = this;
-
             var _this = this;
 
             var defered = _q2['default'].defer();
@@ -384,7 +382,7 @@ var Bundles = (function (_BaseProvision) {
             var onCreateBundleError = function onCreateBundleError(err) {
                 //console.log("Create error: " + JSON.stringify(err));
                 //console.log('borrando bundle');
-                _get(Object.getPrototypeOf(Bundles.prototype), 'delete', _this2).call(_this2);
+                _this['delete']();
                 defered.reject(err);
             };
 
@@ -403,8 +401,6 @@ var Bundles = (function (_BaseProvision) {
     }, {
         key: 'create',
         value: function create() {
-            var _this3 = this;
-
             if (this._name === undefined || this._version === undefined || this._hardware === undefined || this._workgroup === undefined) throw new Error('Parameters name, version, hardware and workgroup must be defined');
 
             //console.log("CREANDO");
@@ -432,14 +428,14 @@ var Bundles = (function (_BaseProvision) {
             var bundleFinder = _this._ogapi.newBundleFinder().findByNameAndVersion(_this._name, _this._version).then(function (ok) {
                 if (ok[1] === 204) {
                     //console.log("asdhflkasdfj 1");
-                    _get(Object.getPrototypeOf(Bundles.prototype), 'create', _this3).call(_this3).then(onCreateBundle)['catch'](onCreateBundleError);
+                    _this.create().then(onCreateBundle)['catch'](onCreateBundleError);
                 } else {
                     defered.reject({ "errors": "OGAPI_400_BUNDLE_EXIST", "statusCode": 400 });
                 }
             })['catch'](function (err) {
                 if (err.statusCode === 404) {
                     //console.log("asdhflkasdfj 2");
-                    _get(Object.getPrototypeOf(Bundles.prototype), 'create', _this3).call(_this3).then(onCreateBundle)['catch'](onCreateBundleError);
+                    _this.create().then(onCreateBundle)['catch'](onCreateBundleError);
                 } else {
                     defered.reject({ "errors": "OGAPI_400_BUNDLE_EXIST", "statusCode": 400 });
                 }

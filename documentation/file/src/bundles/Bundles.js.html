@@ -558,7 +558,7 @@ export default class Bundles extends BaseProvision {
         let onCreateBundleError = function (err) {
             //console.log(&quot;Create error: &quot; + JSON.stringify(err));
             //console.log(&apos;borrando bundle&apos;);
-            super.delete();
+            _this.delete();
             defered.reject(err);
         };
 
@@ -606,14 +606,14 @@ export default class Bundles extends BaseProvision {
             .then(function(ok) {
                 if (ok[1] === 204) {
                     //console.log(&quot;asdhflkasdfj 1&quot;);
-                    super.create().then(onCreateBundle).catch(onCreateBundleError);
+                    _this.create().then(onCreateBundle).catch(onCreateBundleError);
                 } else {
                     defered.reject({ &quot;errors&quot;: &quot;OGAPI_400_BUNDLE_EXIST&quot;, &quot;statusCode&quot;: 400 });
                 }
             }).catch(function(err) {
                 if (err.statusCode === 404) {
                     //console.log(&quot;asdhflkasdfj 2&quot;);
-                    super.create().then(onCreateBundle).catch(onCreateBundleError);
+                    _this.create().then(onCreateBundle).catch(onCreateBundleError);
                 } else {
                     defered.reject({ &quot;errors&quot;: &quot;OGAPI_400_BUNDLE_EXIST&quot;, &quot;statusCode&quot;: 400 });
                 }

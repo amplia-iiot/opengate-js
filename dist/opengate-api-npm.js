@@ -30,7 +30,11 @@ var OpenGateAPI = (function (_InternalOpenGateAPI) {
     function OpenGateAPI(_options) {
         _classCallCheck(this, OpenGateAPI);
 
-        _get(Object.getPrototypeOf(OpenGateAPI.prototype), 'constructor', this).call(this, new _srcUtilNorthAmpliaREST2['default'](_options, { 'Content-type': "application/json;charset=utf8" }), new _srcUtilSouthAmpliaREST2['default'](_options, { 'Content-type': "application/json;charset=utf8" }));
+        _get(Object.getPrototypeOf(OpenGateAPI.prototype), 'constructor', this).call(this, new _srcUtilNorthAmpliaREST2['default'](_options, {
+            'Content-type': "application/json;charset=utf8"
+        }), new _srcUtilSouthAmpliaREST2['default'](_options, {
+            'Content-type': "application/json;charset=utf8"
+        }));
     }
 
     return OpenGateAPI;

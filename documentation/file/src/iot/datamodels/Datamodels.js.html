@@ -309,7 +309,7 @@ export default class Datamodels extends BaseProvision {
      */
      addCategory(category, datastreams) {
         //this._isValidString(category, &apos;category&apos;, 100);
-        if (typeof category === &apos;string&apos; &amp;&amp; (category.length === 0 || string.length &gt; 100)) {
+        if (typeof category === &apos;string&apos; &amp;&amp; (category.length === 0 || category.length &gt; 100)) {
             throw new Error(&apos;Parameter category must be a string, cannot be empty and has a maximum length of 100 on IoTDatamodel&apos;);
         } else if (!category.identifier || this._isValidString(category.identifier, &apos;category&apos;, 100)) {
             throw new Error(&apos;Category identifier is required&apos;);

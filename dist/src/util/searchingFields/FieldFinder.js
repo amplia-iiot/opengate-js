@@ -147,7 +147,7 @@ var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEA
         }
     }
 }), _defineProperty(_FIELD_SEARCHER, SIMPLE_FIELDS, function (states, context, primaryType, defered) {
-    if (states.length > 1) return defered.resolve([]);
+    //if (states.length > 1) return defered.resolve([]);
     defered.resolve(context[primaryType].slice());
 }), _defineProperty(_FIELD_SEARCHER, COMPLEX_FIELDS, function (states, context, primaryType, defered) {
     var finiteStateMachine = {
