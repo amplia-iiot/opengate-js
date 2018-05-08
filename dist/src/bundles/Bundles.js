@@ -401,6 +401,8 @@ var Bundles = (function (_BaseProvision) {
     }, {
         key: 'create',
         value: function create() {
+            var _this2 = this;
+
             if (this._name === undefined || this._version === undefined || this._hardware === undefined || this._workgroup === undefined) throw new Error('Parameters name, version, hardware and workgroup must be defined');
 
             //console.log("CREANDO");
@@ -428,14 +430,14 @@ var Bundles = (function (_BaseProvision) {
             var bundleFinder = _this._ogapi.newBundleFinder().findByNameAndVersion(_this._name, _this._version).then(function (ok) {
                 if (ok[1] === 204) {
                     //console.log("asdhflkasdfj 1");
-                    _this.create().then(onCreateBundle)['catch'](onCreateBundleError);
+                    _get(Object.getPrototypeOf(Bundles.prototype), 'create', _this2).call(_this2).then(onCreateBundle)['catch'](onCreateBundleError);
                 } else {
                     defered.reject({ "errors": "OGAPI_400_BUNDLE_EXIST", "statusCode": 400 });
                 }
             })['catch'](function (err) {
                 if (err.statusCode === 404) {
                     //console.log("asdhflkasdfj 2");
-                    _this.create().then(onCreateBundle)['catch'](onCreateBundleError);
+                    _get(Object.getPrototypeOf(Bundles.prototype), 'create', _this2).call(_this2).then(onCreateBundle)['catch'](onCreateBundleError);
                 } else {
                     defered.reject({ "errors": "OGAPI_400_BUNDLE_EXIST", "statusCode": 400 });
                 }
