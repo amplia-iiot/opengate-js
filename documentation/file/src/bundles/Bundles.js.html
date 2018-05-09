@@ -522,28 +522,28 @@ export default class Bundles extends BaseProvision {
         }
 
         _this._allPromisesOk = true;
-        let onCreateBundle = function (res) {
+        let onCreateBundle = function(res) {
             if (res.statusCode === 201) {
                 let bundleLocation = res;
                 if (_this._deploymentElements &amp;&amp; _this._deploymentElements.length &gt; 0) {
                     //console.log(&quot;previa de 2: &quot;);
                     let dePromises = [];
-                    _this._deploymentElements.forEach(function (deTmp) {
+                    _this._deploymentElements.forEach(function(deTmp) {
                         dePromises.push(deTmp.deploy());
                     });
 
                     // update de bundle
-                    Promise.all(dePromises).then(function () {
+                    Promise.all(dePromises).then(function() {
                         if (_this._allPromisesOk) {
 
-                            _this.activate().then(function (status, data) {
+                            _this.activate().then(function(status, data) {
                                 defered.resolve(bundleLocation);
-                            }).catch(function (err) {
+                            }).catch(function(err) {
                                 defered.reject(err);
                             });
 
                         }
-                    }).catch(function (err) {
+                    }).catch(function(err) {
                         _this._allPromisesOk = false;
                         onCreateBundleError(err);
                     });
@@ -555,7 +555,7 @@ export default class Bundles extends BaseProvision {
             }
         };
 
-        let onCreateBundleError = function (err) {
+        let onCreateBundleError = function(err) {
             //console.log(&quot;Create error: &quot; + JSON.stringify(err));
             //console.log(&apos;borrando bundle&apos;);
             _this.delete();
@@ -586,7 +586,7 @@ export default class Bundles extends BaseProvision {
         let defered = q.defer();
         let promise = defered.promise;
 
-        let onCreateBundle = function (res) {
+        let onCreateBundle = function(res) {
             if (res.statusCode === 201) {
                 //console.log(&quot;OK1: &quot; + JSON.stringify(res));
                 defered.resolve(res);
@@ -595,7 +595,7 @@ export default class Bundles extends BaseProvision {
             }
         };
 
-        let onCreateBundleError = function (err) {
+        let onCreateBundleError = function(err) {
             //console.log(JSON.stringify(err));
             //console.log(&apos;borrando bundle&apos;)
             defered.reject(err);
@@ -606,14 +606,14 @@ export default class Bundles extends BaseProvision {
             .then(function(ok) {
                 if (ok[1] === 204) {
                     //console.log(&quot;asdhflkasdfj 1&quot;);
-                    _this.create().then(onCreateBundle).catch(onCreateBundleError);
+                    super.create().then(onCreateBundle).catch(onCreateBundleError);
                 } else {
                     defered.reject({ &quot;errors&quot;: &quot;OGAPI_400_BUNDLE_EXIST&quot;, &quot;statusCode&quot;: 400 });
                 }
             }).catch(function(err) {
                 if (err.statusCode === 404) {
                     //console.log(&quot;asdhflkasdfj 2&quot;);
-                    _this.create().then(onCreateBundle).catch(onCreateBundleError);
+                    super.create().then(onCreateBundle).catch(onCreateBundleError);
                 } else {
                     defered.reject({ &quot;errors&quot;: &quot;OGAPI_400_BUNDLE_EXIST&quot;, &quot;statusCode&quot;: 400 });
                 }
