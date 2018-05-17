@@ -116,14 +116,13 @@ var DatamodelsHelper = (function (_BaseProvision) {
 
         /**
          * Add a category. If the field datastreams have value, they will add to this category
-         * @param {!string} category
+         * @param {!Object} category
          * @param {Array} datastreams
          * @return {DatamodelsHelper}
          */
     }, {
         key: 'addCategory',
         value: function addCategory(category, datastreams) {
-            //this._isValidString(category, 'category', 100);
             if (this._categories) {
                 this._categories.forEach(function (_category, index) {
                     if (_category.identifier === category.identifier) {
