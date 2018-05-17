@@ -80,19 +80,16 @@ export default class Datamodels extends BaseProvision {
     }
     /**
      * Add a flavor. If the field datastreams have value, they will add to this flavor
-     * @param {!string} category
+     * @param {!Object} category
      * @param {!Array} datastreams
      * @return {Datamodels}
      */
-     addCategory(category, datastreams) {
-        //this._isValidString(category, 'category', 100);
-        if (typeof category === 'string' && (category.length === 0 || category.length > 100)) {
-            throw new Error('Parameter category must be a string, cannot be empty and has a maximum length of 100 on IoTDatamodel');
-        } else if (!category.identifier || this._isValidString(category.identifier, 'category', 100)) {
+    addCategory(category, datastreams) {
+        let id = category.identifier;
+        if (!id || this._isValidString(id, 'category', 100)) {
             throw new Error('Category identifier is required');
         }
-        let id = category.identifier ? category.identifier : category;
-        this._categories.forEach(function(_category, index) {
+        this._categories.forEach(function (_category, index) {
             if (id === _category.identifier) {
                 throw new Error('Category ' + id + ' already exists.');
             }

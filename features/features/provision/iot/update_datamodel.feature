@@ -7,6 +7,7 @@
 @update_iot_profile
 @update_datamodel
 @allowedResourceType
+@OUW-1388
 Feature: Update a Datamodel
 As a device of JsApi
 I want to update an Datamodel
