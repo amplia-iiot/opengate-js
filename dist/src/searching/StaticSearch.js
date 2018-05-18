@@ -541,8 +541,11 @@ var StaticSearch = (function (_Search) {
                     },
                     'SIGFOX': {
                         'COMMUNICATIONS_MODULE': {
-                            'mandatory': ['entityKey'],
+                            'mandatory': ['entityKey', 'PAC'],
                             'optional': []
+                        },
+                        'SUBSCRIPTION': {
+                            'mandatory': ['generatedEntityKey', 'HOME_OPERATOR']
                         }
                     },
                     'ZIGBEE': {
@@ -574,7 +577,7 @@ var StaticSearch = (function (_Search) {
                         }
                     },*/
                 },
-                'mobilePhoneProvider': ['Telefónica Móviles España, SAU', 'Vodafone España, SAU', 'France Telecom España, SA', 'Xfera Móviles, SA', 'Euskaltel, SA', 'BT España Compañia de Servicios Globales de Telecable de Asturias, SAU', 'R Cable y Telecomunicaciones Galicia, SA', 'Cableuropa, SAU', 'E-Plus Móviles, SL', 'Fonyou Telecom, SL', 'Jazz Telecom, SAU', 'Best Spain Telecom, SL', 'Barablu Móvil España, SLU', 'Vizzavi España, SL', 'Lycamobile, SL', 'Lleida Networks Serveis Telemátics, SL', 'Vivo, SA'],
+                'mobilePhoneProvider': ['Telefónica Móviles España, SAU', 'Vodafone España, SAU', 'France Telecom España, SA', 'Xfera Móviles, SA', 'Euskaltel, SA', 'BT España Compañia de Servicios Globales de Telecable de Asturias, SAU', 'R Cable y Telecomunicaciones Galicia, SA', 'Cableuropa, SAU', 'E-Plus Móviles, SL', 'Fonyou Telecom, SL', 'Jazz Telecom, SAU', 'Best Spain Telecom, SL', 'Barablu Móvil España, SLU', 'Vizzavi España, SL', 'Lycamobile, SL', 'Lleida Networks Serveis Telemátics, SL', 'Vivo, SA', 'SIGFOX'],
                 'ruleConfigurationSeverity': ['INFORMATIVE', 'URGENT', 'CRITICAL'],
                 'userProfile': {
                     'root': ['admin_domain', 'admin', 'advanced', 'viewer'],
