@@ -558,7 +558,7 @@ export default class StaticSearch extends Search {
                         'optional': []
                     },
                     'SUBSCRIPTION': {
-                        'mandatory': ['generatedEntityKey', 'HOME_OPERATOR']
+                        'mandatory': ['generatedEntityKey', 'HOME_OPERATOR', 'administrativeState']
                     }
                 },
                 'ZIGBEE': {
@@ -608,7 +608,7 @@ export default class StaticSearch extends Search {
                 'Lycamobile, SL',
                 'Lleida Networks Serveis Telemátics, SL',
                 'Vivo, SA',
-                'SIGFOX'
+                'Sigfox Operator'
             ],
             'ruleConfigurationSeverity': [
                 'INFORMATIVE',
