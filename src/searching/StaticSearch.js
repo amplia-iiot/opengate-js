@@ -554,8 +554,11 @@ export default class StaticSearch extends Search {
                 },
                 'SIGFOX': {
                     'COMMUNICATIONS_MODULE': {
-                        'mandatory': ['entityKey'],
+                        'mandatory': ['entityKey', 'PAC'],
                         'optional': []
+                    },
+                    'SUBSCRIPTION': {
+                        'mandatory': ['generatedEntityKey', 'HOME_OPERATOR']
                     }
                 },
                 'ZIGBEE': {
@@ -604,7 +607,8 @@ export default class StaticSearch extends Search {
                 'Vizzavi España, SL',
                 'Lycamobile, SL',
                 'Lleida Networks Serveis Telemátics, SL',
-                'Vivo, SA'
+                'Vivo, SA',
+                'SIGFOX'
             ],
             'ruleConfigurationSeverity': [
                 'INFORMATIVE',
