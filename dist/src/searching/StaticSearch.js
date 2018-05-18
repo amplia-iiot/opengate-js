@@ -545,7 +545,7 @@ var StaticSearch = (function (_Search) {
                             'optional': []
                         },
                         'SUBSCRIPTION': {
-                            'mandatory': ['generatedEntityKey', 'HOME_OPERATOR']
+                            'mandatory': ['generatedEntityKey', 'HOME_OPERATOR', 'administrativeState']
                         }
                     },
                     'ZIGBEE': {
@@ -577,7 +577,7 @@ var StaticSearch = (function (_Search) {
                         }
                     },*/
                 },
-                'mobilePhoneProvider': ['Telefónica Móviles España, SAU', 'Vodafone España, SAU', 'France Telecom España, SA', 'Xfera Móviles, SA', 'Euskaltel, SA', 'BT España Compañia de Servicios Globales de Telecable de Asturias, SAU', 'R Cable y Telecomunicaciones Galicia, SA', 'Cableuropa, SAU', 'E-Plus Móviles, SL', 'Fonyou Telecom, SL', 'Jazz Telecom, SAU', 'Best Spain Telecom, SL', 'Barablu Móvil España, SLU', 'Vizzavi España, SL', 'Lycamobile, SL', 'Lleida Networks Serveis Telemátics, SL', 'Vivo, SA', 'SIGFOX'],
+                'mobilePhoneProvider': ['Telefónica Móviles España, SAU', 'Vodafone España, SAU', 'France Telecom España, SA', 'Xfera Móviles, SA', 'Euskaltel, SA', 'BT España Compañia de Servicios Globales de Telecable de Asturias, SAU', 'R Cable y Telecomunicaciones Galicia, SA', 'Cableuropa, SAU', 'E-Plus Móviles, SL', 'Fonyou Telecom, SL', 'Jazz Telecom, SAU', 'Best Spain Telecom, SL', 'Barablu Móvil España, SLU', 'Vizzavi España, SL', 'Lycamobile, SL', 'Lleida Networks Serveis Telemátics, SL', 'Vivo, SA', 'Sigfox Operator'],
                 'ruleConfigurationSeverity': ['INFORMATIVE', 'URGENT', 'CRITICAL'],
                 'userProfile': {
                     'root': ['admin_domain', 'admin', 'advanced', 'viewer'],
