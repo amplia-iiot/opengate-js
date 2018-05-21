@@ -53,7 +53,24 @@ var match_url = {
     '/subscriptions': 'SearchOnDatamodel',
     '/subscribers': 'SearchOnDatamodel',
     '/entities': 'SearchOnDatamodel',
-    '/tickets': 'SearchOnDatamodel'
+    'entity-asset': 'SearchOnDatamodel',
+    '/tickets': 'SearchOnDatamodel',
+    '/channels': 'SearchOnDatamodel'
+};
+
+var match_url_resourceType = {
+    get: function get(url) {
+        switch (url) {
+            case 'entity-asset':
+                return ['entity.asset'];
+            case '/tickets':
+                return ['ticket'];
+            case '/channels':
+                return ['channel'];
+            default:
+                return undefined;
+        }
+    }
 };
 
 var match_type = {
@@ -106,10 +123,28 @@ var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEA
         },
         '/tickets': function tickets(field) {
             return true;
+        },
+        '/channels': function channels(field) {
+            return true;
         }
     };
 
-    this._ogapi.datamodelsSearchBuilder().build().execute().then(function (response) {
+    var datamodelSearchBuilder = this._ogapi.datamodelsSearchBuilder();
+
+    if (this._resourceTypes) {
+        var rtFilter = {
+            'and': [{
+                'in': {
+                    'datamodels.allowedResourceTypes': this._resourceTypes
+                }
+            }]
+
+        };
+
+        datamodelSearchBuilder.filter(rtFilter);
+    }
+
+    datamodelSearchBuilder.build().execute().then(function (response) {
         var datastreams = [];
         if (response.statusCode === 200) {
             datastreams = response.data.datamodels.map(function (datamodel) {
@@ -211,6 +246,10 @@ var FieldFinder = (function () {
         this._ogapi = ogapi;
         this._url = url;
         this._type = TYPE_FIELD.get(url);
+
+        if (this._type === SEARCH_FIELDS) {
+            this._resourceTypes = match_url_resourceType.get(url);
+        }
     }
 
     _createClass(FieldFinder, [{

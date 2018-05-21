@@ -42,7 +42,7 @@ var AssetsSearchBuilder = (function (_PreFilteredSearchBuilder) {
     function AssetsSearchBuilder(parent) {
         _classCallCheck(this, AssetsSearchBuilder);
 
-        _get(Object.getPrototypeOf(AssetsSearchBuilder.prototype), 'constructor', this).call(this, parent, {}, new _utilSearchingFieldsFieldFinder2['default'](parent, BASE_URL));
+        _get(Object.getPrototypeOf(AssetsSearchBuilder.prototype), 'constructor', this).call(this, parent, {}, new _utilSearchingFieldsFieldFinder2['default'](parent, 'entity-asset'));
         this._url = BASE_URL;
     }
 
