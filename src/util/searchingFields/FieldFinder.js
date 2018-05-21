@@ -37,7 +37,24 @@ const match_url = {
     '/subscriptions': 'SearchOnDatamodel',
     '/subscribers': 'SearchOnDatamodel',
     '/entities': 'SearchOnDatamodel',
-    '/tickets': 'SearchOnDatamodel'
+    'entity-asset': 'SearchOnDatamodel',
+    '/tickets': 'SearchOnDatamodel',
+    '/channels': 'SearchOnDatamodel'
+};
+
+const match_url_resourceType = {
+    get: function(url) {
+        switch (url) {
+            case 'entity-asset':
+                return ['entity.asset'];
+            case '/tickets':
+                return ['ticket'];
+            case '/channels':
+                return ['channel'];
+            default:
+                return undefined;
+        }
+    }
 };
 
 const match_type = {
@@ -63,7 +80,7 @@ const COMPLEX_FIELDS = 'complex';
 const SEARCH_FIELDS = 'search';
 
 const TYPE_FIELD = {
-    get: function (url) {
+    get: function(url) {
         if (complexPrimaryType.indexOf(match_url[url]) >= 0) {
             return COMPLEX_FIELDS;
         }
@@ -75,33 +92,51 @@ const TYPE_FIELD = {
 };
 
 const FIELD_SEARCHER = {
-    [SEARCH_FIELDS]: function (states, context, primaryType, defered) {
+    [SEARCH_FIELDS]: function(states, context, primaryType, defered) {
         const filterByUrl = {
-            '/devices': function (field) {
+            '/devices': function(field) {
                 return true;
             },
-            '/subscriptions': function (field) {
+            '/subscriptions': function(field) {
                 return true;
             },
-            '/subscribers': function (field) {
+            '/subscribers': function(field) {
                 return true;
             },
-            '/entities': function (field) {
+            '/entities': function(field) {
                 return true;
             },
-            '/tickets': function (field) {
+            '/tickets': function(field) {
+                return true;
+            },
+            '/channels': function(field) {
                 return true;
             }
         };
 
-        this._ogapi.datamodelsSearchBuilder().build().execute().then(function (response) {
+        let datamodelSearchBuilder = this._ogapi.datamodelsSearchBuilder();
+
+        if (this._resourceTypes) {
+            let rtFilter = {
+                'and': [{
+                    'in': {
+                        'datamodels.allowedResourceTypes': this._resourceTypes
+                    }
+                }]
+
+            };
+
+            datamodelSearchBuilder.filter(rtFilter)
+        }
+
+        datamodelSearchBuilder.build().execute().then(function(response) {
             var datastreams = [];
             if (response.statusCode === 200) {
-                datastreams = response.data.datamodels.map(function (datamodel) {
+                datastreams = response.data.datamodels.map(function(datamodel) {
                     var categories = datamodel.categories || [];
-                    return categories.map(function (category) {
+                    return categories.map(function(category) {
                         var datastreams = category.datastreams || [];
-                        return datastreams.map(function (ds) {
+                        return datastreams.map(function(ds) {
                             return ds.identifier;
                         });
                     });
@@ -109,13 +144,13 @@ const FIELD_SEARCHER = {
                 datastreams = reduce(datastreams);
             }
             defered.resolve(datastreams);
-        }).catch(function (error) {
+        }).catch(function(error) {
             defered.reject(error);
         });
 
         function reduce(array) {
             if (array.length > 0 && array[0].constructor === Array) {
-                array = array.reduce(function (preVal, elem) {
+                array = array.reduce(function(preVal, elem) {
                     return preVal.concat(elem);
                 });
                 return reduce(array);
@@ -124,13 +159,13 @@ const FIELD_SEARCHER = {
         }
 
     },
-    [SIMPLE_FIELDS]: function (states, context, primaryType, defered) {
+    [SIMPLE_FIELDS]: function(states, context, primaryType, defered) {
         //if (states.length > 1) return defered.resolve([]);
         defered.resolve(context[primaryType].slice());
     },
-    [COMPLEX_FIELDS]: function (states, context, primaryType, defered) {
+    [COMPLEX_FIELDS]: function(states, context, primaryType, defered) {
         const finiteStateMachine = {
-            1: function (states, context) {
+            1: function(states, context) {
                 // Fields del primaryType + los fields de los relacionados = complexFields
                 return context[primaryType].concat(
                     complexFields.filter(
@@ -139,7 +174,7 @@ const FIELD_SEARCHER = {
                     )
                 );
             },
-            2: function (states, context) {
+            2: function(states, context) {
                 try {
                     // Fields del relacionado + fields_related
                     return appendPreviousStates(
@@ -151,7 +186,7 @@ const FIELD_SEARCHER = {
                     return [];
                 }
             },
-            3: function (states, context) {
+            3: function(states, context) {
                 let secondState = states[1];
                 if (fields_related.indexOf(secondState) === -1) return [];
                 try {
@@ -185,7 +220,7 @@ const FIELD_SEARCHER = {
 
         function appendPreviousStates(states, fields) {
             let out = [];
-            fields.forEach(function (field) {
+            fields.forEach(function(field) {
                 let arrayField = states.slice(0, -1);
                 arrayField.push(field);
                 out.push(arrayField.join("."));
@@ -200,6 +235,10 @@ export default class FieldFinder {
         this._ogapi = ogapi;
         this._url = url;
         this._type = TYPE_FIELD.get(url);
+
+        if (this._type === SEARCH_FIELDS) {
+            this._resourceTypes = match_url_resourceType.get(url);
+        }
     }
 
     find(input = "") {
