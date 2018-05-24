@@ -586,7 +586,7 @@ var StaticSearch = (function (_Search) {
                     'advanced': [],
                     'viewer': []
                 },
-                'ioTDatastreamAccess': ['READ', 'WRITE'],
+                'ioTDatastreamAccess': ['READ', 'WRITE', 'READ,WRITE'],
                 'ioTDatastreamStoragePeriod': ['SECONDS', 'MINUTES', 'HOURS', 'DAYS', 'MONTHS', 'YEARS', 'NEVER'],
                 'ioTDatastreamPeriod': ['PULSE', 'CUMULATIVE', 'INSTANT'],
                 'resourceType': [{ identifier: 'entity.asset' }, { identifier: 'entity.device' }, { identifier: 'ticket' }],

@@ -9,7 +9,7 @@ let jsValidate = jsonSchema.validate;
  */
 export default class Datastream {
 
-    constructor() { }
+    constructor() {}
 
     /**
      * Set the id attribute
@@ -141,10 +141,9 @@ export default class Datastream {
      * @return {Datastream}
      */
     withAccess(access) {
-        if (access) {
-            if (!Array.isArray(access)) {
-                throw new Error('Access must be an array on Datastream');
-            }
+        this._isValidString(access, 'access', 50)
+        if (!access) {
+            throw new Error('Access must be a valid string');
         }
         this._access = access;
         return this;

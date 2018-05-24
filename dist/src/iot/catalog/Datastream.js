@@ -178,10 +178,9 @@ var Datastream = (function () {
     }, {
         key: 'withAccess',
         value: function withAccess(access) {
-            if (access) {
-                if (!Array.isArray(access)) {
-                    throw new Error('Access must be an array on Datastream');
-                }
+            this._isValidString(access, 'access', 50);
+            if (!access) {
+                throw new Error('Access must be a valid string');
             }
             this._access = access;
             return this;
