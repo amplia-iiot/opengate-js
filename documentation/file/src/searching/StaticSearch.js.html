@@ -777,8 +777,11 @@ export default class StaticSearch extends Search {
                 },
                 &apos;SIGFOX&apos;: {
                     &apos;COMMUNICATIONS_MODULE&apos;: {
-                        &apos;mandatory&apos;: [&apos;entityKey&apos;],
+                        &apos;mandatory&apos;: [&apos;entityKey&apos;, &apos;PAC&apos;],
                         &apos;optional&apos;: []
+                    },
+                    &apos;SUBSCRIPTION&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;, &apos;HOME_OPERATOR&apos;, &apos;administrativeState&apos;]
                     }
                 },
                 &apos;ZIGBEE&apos;: {
@@ -827,7 +830,8 @@ export default class StaticSearch extends Search {
                 &apos;Vizzavi Espa&#xF1;a, SL&apos;,
                 &apos;Lycamobile, SL&apos;,
                 &apos;Lleida Networks Serveis Telem&#xE1;tics, SL&apos;,
-                &apos;Vivo, SA&apos;
+                &apos;Vivo, SA&apos;,
+                &apos;Sigfox Operator&apos;
             ],
             &apos;ruleConfigurationSeverity&apos;: [
                 &apos;INFORMATIVE&apos;,
@@ -843,7 +847,8 @@ export default class StaticSearch extends Search {
             },
             &apos;ioTDatastreamAccess&apos;: [
                 &apos;READ&apos;,
-                &apos;WRITE&apos;
+                &apos;WRITE&apos;,
+                &apos;READ,WRITE&apos;
             ],
             &apos;ioTDatastreamStoragePeriod&apos;: [
 

@@ -260,7 +260,24 @@ const match_url = {
     &apos;/subscriptions&apos;: &apos;SearchOnDatamodel&apos;,
     &apos;/subscribers&apos;: &apos;SearchOnDatamodel&apos;,
     &apos;/entities&apos;: &apos;SearchOnDatamodel&apos;,
-    &apos;/tickets&apos;: &apos;SearchOnDatamodel&apos;
+    &apos;entity-asset&apos;: &apos;SearchOnDatamodel&apos;,
+    &apos;/tickets&apos;: &apos;SearchOnDatamodel&apos;,
+    &apos;/channels&apos;: &apos;SearchOnDatamodel&apos;
+};
+
+const match_url_resourceType = {
+    get: function(url) {
+        switch (url) {
+            case &apos;entity-asset&apos;:
+                return [&apos;entity.asset&apos;];
+            case &apos;/tickets&apos;:
+                return [&apos;ticket&apos;];
+            case &apos;/channels&apos;:
+                return [&apos;channel&apos;];
+            default:
+                return undefined;
+        }
+    }
 };
 
 const match_type = {
@@ -286,7 +303,7 @@ const COMPLEX_FIELDS = &apos;complex&apos;;
 const SEARCH_FIELDS = &apos;search&apos;;
 
 const TYPE_FIELD = {
-    get: function (url) {
+    get: function(url) {
         if (complexPrimaryType.indexOf(match_url[url]) &gt;= 0) {
             return COMPLEX_FIELDS;
         }
@@ -298,33 +315,51 @@ const TYPE_FIELD = {
 };
 
 const FIELD_SEARCHER = {
-    [SEARCH_FIELDS]: function (states, context, primaryType, defered) {
+    [SEARCH_FIELDS]: function(states, context, primaryType, defered) {
         const filterByUrl = {
-            &apos;/devices&apos;: function (field) {
+            &apos;/devices&apos;: function(field) {
                 return true;
             },
-            &apos;/subscriptions&apos;: function (field) {
+            &apos;/subscriptions&apos;: function(field) {
                 return true;
             },
-            &apos;/subscribers&apos;: function (field) {
+            &apos;/subscribers&apos;: function(field) {
                 return true;
             },
-            &apos;/entities&apos;: function (field) {
+            &apos;/entities&apos;: function(field) {
                 return true;
             },
-            &apos;/tickets&apos;: function (field) {
+            &apos;/tickets&apos;: function(field) {
+                return true;
+            },
+            &apos;/channels&apos;: function(field) {
                 return true;
             }
         };
 
-        this._ogapi.datamodelsSearchBuilder().build().execute().then(function (response) {
+        let datamodelSearchBuilder = this._ogapi.datamodelsSearchBuilder();
+
+        if (this._resourceTypes) {
+            let rtFilter = {
+                &apos;and&apos;: [{
+                    &apos;in&apos;: {
+                        &apos;datamodels.allowedResourceTypes&apos;: this._resourceTypes
+                    }
+                }]
+
+            };
+
+            datamodelSearchBuilder.filter(rtFilter)
+        }
+
+        datamodelSearchBuilder.build().execute().then(function(response) {
             var datastreams = [];
             if (response.statusCode === 200) {
-                datastreams = response.data.datamodels.map(function (datamodel) {
+                datastreams = response.data.datamodels.map(function(datamodel) {
                     var categories = datamodel.categories || [];
-                    return categories.map(function (category) {
+                    return categories.map(function(category) {
                         var datastreams = category.datastreams || [];
-                        return datastreams.map(function (ds) {
+                        return datastreams.map(function(ds) {
                             return ds.identifier;
                         });
                     });
@@ -332,13 +367,13 @@ const FIELD_SEARCHER = {
                 datastreams = reduce(datastreams);
             }
             defered.resolve(datastreams);
-        }).catch(function (error) {
+        }).catch(function(error) {
             defered.reject(error);
         });
 
         function reduce(array) {
             if (array.length &gt; 0 &amp;&amp; array[0].constructor === Array) {
-                array = array.reduce(function (preVal, elem) {
+                array = array.reduce(function(preVal, elem) {
                     return preVal.concat(elem);
                 });
                 return reduce(array);
@@ -347,13 +382,13 @@ const FIELD_SEARCHER = {
         }
 
     },
-    [SIMPLE_FIELDS]: function (states, context, primaryType, defered) {
+    [SIMPLE_FIELDS]: function(states, context, primaryType, defered) {
         //if (states.length &gt; 1) return defered.resolve([]);
         defered.resolve(context[primaryType].slice());
     },
-    [COMPLEX_FIELDS]: function (states, context, primaryType, defered) {
+    [COMPLEX_FIELDS]: function(states, context, primaryType, defered) {
         const finiteStateMachine = {
-            1: function (states, context) {
+            1: function(states, context) {
                 // Fields del primaryType + los fields de los relacionados = complexFields
                 return context[primaryType].concat(
                     complexFields.filter(
@@ -362,7 +397,7 @@ const FIELD_SEARCHER = {
                     )
                 );
             },
-            2: function (states, context) {
+            2: function(states, context) {
                 try {
                     // Fields del relacionado + fields_related
                     return appendPreviousStates(
@@ -374,7 +409,7 @@ const FIELD_SEARCHER = {
                     return [];
                 }
             },
-            3: function (states, context) {
+            3: function(states, context) {
                 let secondState = states[1];
                 if (fields_related.indexOf(secondState) === -1) return [];
                 try {
@@ -408,7 +443,7 @@ const FIELD_SEARCHER = {
 
         function appendPreviousStates(states, fields) {
             let out = [];
-            fields.forEach(function (field) {
+            fields.forEach(function(field) {
                 let arrayField = states.slice(0, -1);
                 arrayField.push(field);
                 out.push(arrayField.join(&quot;.&quot;));
@@ -423,6 +458,10 @@ export default class FieldFinder {
         this._ogapi = ogapi;
         this._url = url;
         this._type = TYPE_FIELD.get(url);
+
+        if (this._type === SEARCH_FIELDS) {
+            this._resourceTypes = match_url_resourceType.get(url);
+        }
     }
 
     find(input = &quot;&quot;) {
