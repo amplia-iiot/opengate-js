@@ -12,6 +12,7 @@ export const IOT_FIELDS = {
             "datapoints.subEntityIdentifier",
             "datapoints._current.feedId",
             "datapoints._current.date",
+            "datapoints._current.at",
             "datapoints._current.value",
             "datapoints._current.tags",
             "datapoints._current.scoring.performance",
@@ -179,17 +180,18 @@ export const IOT_FIELDS = {
         ]
     },
     "USER": {
-        "USER": [
-            "user.email",
-            "user.description",
-            "workgroup.name",
-            "domain.name",
-            "profile.name",
-            "user.name",
-            "user.surname",
-            "country.code",
-            "language.code"
-        ]
+        "USER": {
+            "email": "user.email",
+            "description": "user.description",
+            "workgroup": "workgroup.name",
+            "domain": "domain.name",
+            "profile": "profile.name",
+            "name": "user.name",
+            "surname": "user.surname",
+            "countryCode": "country.code",
+            "langCode": "language.code",
+            "timezone": "user.timezone"
+        }
     },
     "DOMAIN": {
         "DOMAIN": [
@@ -198,14 +200,14 @@ export const IOT_FIELDS = {
         ]
     },
     "AREAS": {
-        "AREAS": [
-            "areas.identifier",
-            "areas.name",
-            "areas.description",
-            "areas.entities",
-            "areas.geometry",
-            "areas.organization"
-        ]
+        "AREAS": {
+            "identifier": "areas.identifier",
+            "name": "areas.name",
+            "description": "areas.description",
+            "entities": "areas.entities",
+            "geometry": "areas.geometry",
+            "organization": "areas.organization"
+        }
     },
     "GENERAL": {
         "GENERAL": []

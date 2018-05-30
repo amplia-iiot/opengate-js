@@ -545,7 +545,7 @@ var StaticSearch = (function (_Search) {
                             'optional': []
                         },
                         'SUBSCRIPTION': {
-                            'mandatory': ['generatedEntityKey', 'HOME_OPERATOR', 'administrativeState']
+                            'mandatory': ['generatedEntityKey', 'HOME_OPERATOR', 'administrativeState', 'SIGFOX_DEVICE_TYPE']
                         }
                     },
                     'ZIGBEE': {

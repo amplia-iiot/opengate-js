@@ -58,6 +58,13 @@ var match_url = {
     '/channels': 'SearchOnDatamodel'
 };
 
+var match_context = {
+    'ENTITY_ALARM': 'alarm',
+    'UPDATE_BUNDLE_VERSION': 'bundle',
+    'DATAPOINTS': 'datapoints',
+    'ENTITY_OPERATION': ['operation', 'job']
+};
+
 var match_url_resourceType = {
     get: function get(url) {
         switch (url) {
@@ -163,27 +170,67 @@ var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEA
         defered.reject(error);
     });
 
-    function reduce(_x2) {
+    function reduce(_x3) {
         var _again = true;
 
         _function: while (_again) {
-            var array = _x2;
+            var array = _x3;
             _again = false;
 
             if (array.length > 0 && array[0].constructor === Array) {
                 array = array.reduce(function (preVal, elem) {
                     return preVal.concat(elem);
                 });
-                _x2 = array;
+                _x3 = array;
                 _again = true;
                 continue _function;
             }
             return array;
         }
     }
-}), _defineProperty(_FIELD_SEARCHER, SIMPLE_FIELDS, function (states, context, primaryType, defered) {
-    //if (states.length > 1) return defered.resolve([]);
-    defered.resolve(context[primaryType].slice());
+}), _defineProperty(_FIELD_SEARCHER, SIMPLE_FIELDS, function (states, context, primaryType, defered, field) {
+    var paths = [];
+    if (context[primaryType] instanceof Array) {
+        if (field) {
+            (function () {
+                var fieldIdx = 0;
+                var fieldMatch = null;
+
+                var _loop = function () {
+                    var fieldTmp = context[primaryType][fieldIdx];
+                    if (fieldTmp.toLowerCase() === field.toLowerCase() || fieldTmp.toLowerCase() === field.toLowerCase() + 'name') {
+                        fieldMatch = fieldTmp;
+                    } else if (match_context[primaryType]) {
+                        if (match_context[primaryType] instanceof Array) {
+                            match_context[primaryType].forEach(function (ctxMatch) {
+                                if (fieldTmp.toLowerCase() === ctxMatch + field.toLowerCase() || fieldTmp.toLowerCase() === ctxMatch + '.' + field.toLowerCase() || fieldTmp.toLowerCase() === ctxMatch + field.toLowerCase() + 'name' || fieldTmp.toLowerCase() === ctxMatch + '.' + field.toLowerCase() + 'name') {
+                                    if (!fieldMatch) fieldMatch = fieldTmp;
+                                }
+                            });
+                        } else {
+                            if (fieldTmp.toLowerCase() === match_context[primaryType] + field.toLowerCase() || fieldTmp.toLowerCase() === match_context[primaryType] + '.' + field.toLowerCase() || fieldTmp.toLowerCase() === match_context[primaryType] + field.toLowerCase() + 'name' || fieldTmp.toLowerCase() === match_context[primaryType] + '.' + field.toLowerCase() + 'name') {
+                                fieldMatch = fieldTmp;
+                            }
+                        }
+                    }
+                };
+
+                for (fieldIdx = 0; fieldMatch === null && fieldIdx < context[primaryType].length; fieldIdx++) {
+                    _loop();
+                }
+
+                if (fieldMatch) paths.push(fieldMatch);
+            })();
+        } else {
+            paths = context[primaryType].slice();
+        }
+    } else {
+        if (field && context[primaryType][field]) {
+            paths.push(context[primaryType][field]);
+        }
+    }
+
+    defered.resolve(paths.slice());
 }), _defineProperty(_FIELD_SEARCHER, COMPLEX_FIELDS, function (states, context, primaryType, defered) {
     var finiteStateMachine = {
         1: function _(states, context) {
@@ -259,6 +306,15 @@ var FieldFinder = (function () {
 
             var defered = _q2['default'].defer();
             FIELD_SEARCHER[this._type].call(this, input.split('.'), FIELDS[match_url[this._url]], match_url[this._url], defered);
+            return defered.promise;
+        }
+    }, {
+        key: 'findFieldPath',
+        value: function findFieldPath() {
+            var field = arguments.length <= 0 || arguments[0] === undefined ? "" : arguments[0];
+
+            var defered = _q2['default'].defer();
+            FIELD_SEARCHER[this._type].call(this, field, FIELDS[match_url[this._url]], match_url[this._url], defered, field);
             return defered.promise;
         }
     }]);

@@ -81,6 +81,16 @@ var SearchBuilder = (function () {
         }
 
         /**
+         * Return a promise which it will contains an string with the path of a field
+         * @return {Promise}
+         */
+    }, {
+        key: 'findFieldPath',
+        value: function findFieldPath(field) {
+            return this._fieldFinder.findFieldPath(field);
+        }
+
+        /**
          * The request will have a specific time out if it will be exceeded then the promise throw an exception
          * @example
          *  ogapi.subscriptionsSearchBuilder().withTimeout(2000) 
