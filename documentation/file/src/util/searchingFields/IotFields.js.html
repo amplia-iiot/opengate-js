@@ -235,6 +235,7 @@ export const IOT_FIELDS = {
             &quot;datapoints.subEntityIdentifier&quot;,
             &quot;datapoints._current.feedId&quot;,
             &quot;datapoints._current.date&quot;,
+            &quot;datapoints._current.at&quot;,
             &quot;datapoints._current.value&quot;,
             &quot;datapoints._current.tags&quot;,
             &quot;datapoints._current.scoring.performance&quot;,
@@ -402,17 +403,18 @@ export const IOT_FIELDS = {
         ]
     },
     &quot;USER&quot;: {
-        &quot;USER&quot;: [
-            &quot;user.email&quot;,
-            &quot;user.description&quot;,
-            &quot;workgroup.name&quot;,
-            &quot;domain.name&quot;,
-            &quot;profile.name&quot;,
-            &quot;user.name&quot;,
-            &quot;user.surname&quot;,
-            &quot;country.code&quot;,
-            &quot;language.code&quot;
-        ]
+        &quot;USER&quot;: {
+            &quot;email&quot;: &quot;user.email&quot;,
+            &quot;description&quot;: &quot;user.description&quot;,
+            &quot;workgroup&quot;: &quot;workgroup.name&quot;,
+            &quot;domain&quot;: &quot;domain.name&quot;,
+            &quot;profile&quot;: &quot;profile.name&quot;,
+            &quot;name&quot;: &quot;user.name&quot;,
+            &quot;surname&quot;: &quot;user.surname&quot;,
+            &quot;countryCode&quot;: &quot;country.code&quot;,
+            &quot;langCode&quot;: &quot;language.code&quot;,
+            &quot;timezone&quot;: &quot;user.timezone&quot;
+        }
     },
     &quot;DOMAIN&quot;: {
         &quot;DOMAIN&quot;: [
@@ -421,14 +423,14 @@ export const IOT_FIELDS = {
         ]
     },
     &quot;AREAS&quot;: {
-        &quot;AREAS&quot;: [
-            &quot;areas.identifier&quot;,
-            &quot;areas.name&quot;,
-            &quot;areas.description&quot;,
-            &quot;areas.entities&quot;,
-            &quot;areas.geometry&quot;,
-            &quot;areas.organization&quot;
-        ]
+        &quot;AREAS&quot;: {
+            &quot;identifier&quot;: &quot;areas.identifier&quot;,
+            &quot;name&quot;: &quot;areas.name&quot;,
+            &quot;description&quot;: &quot;areas.description&quot;,
+            &quot;entities&quot;: &quot;areas.entities&quot;,
+            &quot;geometry&quot;: &quot;areas.geometry&quot;,
+            &quot;organization&quot;: &quot;areas.organization&quot;
+        }
     },
     &quot;GENERAL&quot;: {
         &quot;GENERAL&quot;: []

@@ -265,6 +265,13 @@ const match_url = {
     &apos;/channels&apos;: &apos;SearchOnDatamodel&apos;
 };
 
+const match_context = {
+    &apos;ENTITY_ALARM&apos;: &apos;alarm&apos;,
+    &apos;UPDATE_BUNDLE_VERSION&apos;: &apos;bundle&apos;,
+    &apos;DATAPOINTS&apos;: &apos;datapoints&apos;,
+    &apos;ENTITY_OPERATION&apos;: [&apos;operation&apos;, &apos;job&apos;]
+};
+
 const match_url_resourceType = {
     get: function(url) {
         switch (url) {
@@ -382,9 +389,50 @@ const FIELD_SEARCHER = {
         }
 
     },
-    [SIMPLE_FIELDS]: function(states, context, primaryType, defered) {
-        //if (states.length &gt; 1) return defered.resolve([]);
-        defered.resolve(context[primaryType].slice());
+    [SIMPLE_FIELDS]: function(states, context, primaryType, defered, field) {
+        var paths = [];
+        if (context[primaryType] instanceof Array) {
+            if (field) {
+                let fieldIdx = 0;
+                let fieldMatch = null;
+                for (fieldIdx = 0; fieldMatch === null &amp;&amp; fieldIdx &lt; context[primaryType].length; fieldIdx++) {
+                    let fieldTmp = context[primaryType][fieldIdx];
+                    if (fieldTmp.toLowerCase() === field.toLowerCase() ||
+                        fieldTmp.toLowerCase() === (field.toLowerCase() + &apos;name&apos;)) {
+                        fieldMatch = fieldTmp;
+                    } else if (match_context[primaryType]) {
+                        if (match_context[primaryType] instanceof Array) {
+                            match_context[primaryType].forEach(function(ctxMatch) {
+                                if (fieldTmp.toLowerCase() === (ctxMatch + field.toLowerCase()) ||
+                                    fieldTmp.toLowerCase() === (ctxMatch + &apos;.&apos; + field.toLowerCase()) ||
+                                    fieldTmp.toLowerCase() === (ctxMatch + field.toLowerCase() + &apos;name&apos;) ||
+                                    fieldTmp.toLowerCase() === (ctxMatch + &apos;.&apos; + field.toLowerCase() + &apos;name&apos;)) {
+                                    if (!fieldMatch) fieldMatch = fieldTmp;
+                                }
+                            });
+                        } else {
+                            if (fieldTmp.toLowerCase() === (match_context[primaryType] + field.toLowerCase()) ||
+                                fieldTmp.toLowerCase() === (match_context[primaryType] + &apos;.&apos; + field.toLowerCase()) ||
+                                fieldTmp.toLowerCase() === (match_context[primaryType] + field.toLowerCase() + &apos;name&apos;) ||
+                                fieldTmp.toLowerCase() === (match_context[primaryType] + &apos;.&apos; + field.toLowerCase() + &apos;name&apos;)) {
+                                fieldMatch = fieldTmp;
+                            }
+                        }
+                    }
+                }
+
+                if (fieldMatch)
+                    paths.push(fieldMatch);
+            } else {
+                paths = context[primaryType].slice();
+            }
+        } else {
+            if (field &amp;&amp; context[primaryType][field]) {
+                paths.push(context[primaryType][field]);
+            }
+        }
+
+        defered.resolve(paths.slice());
     },
     [COMPLEX_FIELDS]: function(states, context, primaryType, defered) {
         const finiteStateMachine = {
@@ -467,6 +515,12 @@ export default class FieldFinder {
     find(input = &quot;&quot;) {
         let defered = q.defer();
         FIELD_SEARCHER[this._type].call(this, input.split(&apos;.&apos;), FIELDS[match_url[this._url]], match_url[this._url], defered);
+        return defered.promise;
+    }
+
+    findFieldPath(field = &quot;&quot;) {
+        let defered = q.defer();
+        FIELD_SEARCHER[this._type].call(this, field, FIELDS[match_url[this._url]], match_url[this._url], defered, field);
         return defered.promise;
     }
 }</code></pre>
