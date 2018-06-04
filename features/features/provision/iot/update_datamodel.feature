@@ -8,6 +8,7 @@
 @update_datamodel
 @allowedResourceType
 @OUW-1388
+@OUW-1412
 Feature: Update a Datamodel
 As a device of JsApi
 I want to update an Datamodel
@@ -149,11 +150,11 @@ So, I can update a Datamodel with the parametres that I have been defined
         And the "add datastream" with...
             | param                                                                                                                                                                                                                                               |
             | 1category                                                                                                                                                                                                                                           |
-            | {"identifier": "1category.example.test","name": "1category.example.test","description": "for tests","period": "PULSE","unit": {"type": "SI","label": "beats/second","symbol": "bpm"},"tags": ["test","category_1"], "schema" : { "type":"string"} } |
+            | {"identifier": "1category.example.test","name": "1category.example.test","description": "for tests","period": "PULSE","unit": {"type": "SI","label": "beats/second","symbol": "bpm"},"tags": ["test","category_1"], "schema" : { "type":"string"}, "access": "READ" }  |
         And the "add datastream" with...
             | param                                                                                                                                                                                                                                               |
             | 2category                                                                                                                                                                                                                                           |
-            | {"identifier": "2category.example.test","name": "2category.example.test","description": "for tests","period": "PULSE","unit": {"type": "SI","label": "beats/second","symbol": "bpm"},"tags": ["test","category_2"], "schema" : { "type":"string"} } |
+            | {"identifier": "2category.example.test","name": "2category.example.test","description": "for tests","period": "PULSE","unit": {"type": "SI","label": "beats/second","symbol": "bpm"},"tags": ["test","category_2"], "schema" : { "type":"string"}, "access": "WRITE" }  |
         And I update it
         Then response code should be: 200
         And an ogapi "datamodels finder" util
@@ -179,11 +180,11 @@ So, I can update a Datamodel with the parametres that I have been defined
         And the "add datastream" with...
             | param                                                                                                                                                                                                                                              |
             | 1category                                                                                                                                                                                                                                          |
-            | {"identifier": "1category.example.test","name": "1category.example.test","description": "for tests","period": "PULSE","unit": {"type": "SI","label": "beats/second","symbol": "bpm"},"tags": ["test","category_1"], "schema" : { "type":"string"}} |
+            | {"identifier": "1category.example.test","name": "1category.example.test","description": "for tests","period": "PULSE","unit": {"type": "SI","label": "beats/second","symbol": "bpm"},"tags": ["test","category_1"], "schema" : { "type":"string"}, "access": "READ,WRITE" } |
         And the "add datastream" with...
             | param                                                                                                                                                                                                                                              |
             | 2category                                                                                                                                                                                                                                          |
-            | {"identifier": "2category.example.test","name": "2category.example.test","description": "for tests","period": "PULSE","unit": {"type": "SI","label": "beats/second","symbol": "bpm"},"tags": ["test","category_2"], "schema" : { "type":"string"}} |
+            | {"identifier": "2category.example.test","name": "2category.example.test","description": "for tests","period": "PULSE","unit": {"type": "SI","label": "beats/second","symbol": "bpm"},"tags": ["test","category_2"], "schema" : { "type":"string"}, "access": "READ,WRITE" } |
         And the "add datastream" with...
             | param                                                                                                                                                                                                                                                                    |
             | 2category                                                                                                                                                                                                                                                                |

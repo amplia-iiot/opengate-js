@@ -21,5 +21,5 @@ Feature: Searching IoT datastream access provider in catalog
     Then response code should be: 200
     And the result contains:
     """
-{"ioTDatastreamAccess":["READ","WRITE"]}
+{"ioTDatastreamAccess":["READ","WRITE","READ,WRITE"]}
     """
