@@ -322,7 +322,7 @@ const TYPE_FIELD = {
 };
 
 const FIELD_SEARCHER = {
-    [SEARCH_FIELDS]: function(states, context, primaryType, defered) {
+    [SEARCH_FIELDS]: function(states, context, primaryType, defered, selectedField) {
         const filterByUrl = {
             &apos;/devices&apos;: function(field) {
                 return true;
@@ -346,34 +346,78 @@ const FIELD_SEARCHER = {
 
         let datamodelSearchBuilder = this._ogapi.datamodelsSearchBuilder();
 
+        // if (this._resourceTypes) {
+        //     let rtFilter = {
+        //         &apos;and&apos;: [{
+        //             &apos;in&apos;: {
+        //                 &apos;datamodels.allowedResourceTypes&apos;: this._resourceTypes
+        //             }
+        //         }]
+
+        //     };
+
+        //     datamodelSearchBuilder.filter(rtFilter)
+        // }
+
+        let rtFilter = {
+            &apos;and&apos;: []
+        };
+
         if (this._resourceTypes) {
-            let rtFilter = {
-                &apos;and&apos;: [{
-                    &apos;in&apos;: {
-                        &apos;datamodels.allowedResourceTypes&apos;: this._resourceTypes
-                    }
-                }]
+            rtFilter.and.push({
+                &apos;in&apos;: {
+                    &apos;datamodels.allowedResourceTypes&apos;: this._resourceTypes
+                }
+            });
+        }
 
-            };
+        if (selectedField) {
+            rtFilter.and.push({
+                &apos;eq&apos;: {
+                    &apos;datamodels.categories.datastreams.identifier&apos;: selectedField
+                }
+            });
+        }
 
-            datamodelSearchBuilder.filter(rtFilter)
+        if (rtFilter.and.length &gt; 0) {
+            datamodelSearchBuilder.filter(rtFilter);
         }
 
         datamodelSearchBuilder.build().execute().then(function(response) {
             var datastreams = [];
             if (response.statusCode === 200) {
-                datastreams = response.data.datamodels.map(function(datamodel) {
-                    var categories = datamodel.categories || [];
-                    return categories.map(function(category) {
-                        var datastreams = category.datastreams || [];
-                        return datastreams.map(function(ds) {
-                            return ds.identifier;
+                if (selectedField) {
+                    datastreams = response.data.datamodels.map(function(datamodel) {
+                        var categories = datamodel.categories || [];
+                        return categories.map(function(category) {
+                            var datastreams = category.datastreams || [];
+                            return datastreams.map(function(ds) {
+                                return ds;
+                            });
                         });
                     });
-                });
+                } else {
+                    datastreams = response.data.datamodels.map(function(datamodel) {
+                        var categories = datamodel.categories || [];
+                        return categories.map(function(category) {
+                            var datastreams = category.datastreams || [];
+                            return datastreams.map(function(ds) {
+                                return ds.identifier;
+                            });
+                        });
+                    });
+                }
+
                 datastreams = reduce(datastreams);
             }
-            defered.resolve(datastreams);
+            if (selectedField) {
+                defered.resolve(datastreams.filter(function(dsIdTmp) {
+                    return selectedField.indexOf(dsIdTmp.identifier) !== -1;
+                }));
+            } else {
+                defered.resolve(datastreams);
+            }
+
         }).catch(function(error) {
             defered.reject(error);
         });
