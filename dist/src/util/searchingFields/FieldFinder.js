@@ -114,7 +114,7 @@ var TYPE_FIELD = {
     }
 };
 
-var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEARCH_FIELDS, function (states, context, primaryType, defered) {
+var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEARCH_FIELDS, function (states, context, primaryType, defered, selectedField) {
     var filterByUrl = {
         '/devices': function devices(field) {
             return true;
@@ -138,34 +138,77 @@ var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEA
 
     var datamodelSearchBuilder = this._ogapi.datamodelsSearchBuilder();
 
+    // if (this._resourceTypes) {
+    //     let rtFilter = {
+    //         'and': [{
+    //             'in': {
+    //                 'datamodels.allowedResourceTypes': this._resourceTypes
+    //             }
+    //         }]
+
+    //     };
+
+    //     datamodelSearchBuilder.filter(rtFilter)
+    // }
+
+    var rtFilter = {
+        'and': []
+    };
+
     if (this._resourceTypes) {
-        var rtFilter = {
-            'and': [{
-                'in': {
-                    'datamodels.allowedResourceTypes': this._resourceTypes
-                }
-            }]
+        rtFilter.and.push({
+            'in': {
+                'datamodels.allowedResourceTypes': this._resourceTypes
+            }
+        });
+    }
 
-        };
+    if (selectedField) {
+        rtFilter.and.push({
+            'eq': {
+                'datamodels.categories.datastreams.identifier': selectedField
+            }
+        });
+    }
 
+    if (rtFilter.and.length > 0) {
         datamodelSearchBuilder.filter(rtFilter);
     }
 
     datamodelSearchBuilder.build().execute().then(function (response) {
         var datastreams = [];
         if (response.statusCode === 200) {
-            datastreams = response.data.datamodels.map(function (datamodel) {
-                var categories = datamodel.categories || [];
-                return categories.map(function (category) {
-                    var datastreams = category.datastreams || [];
-                    return datastreams.map(function (ds) {
-                        return ds.identifier;
+            if (selectedField) {
+                datastreams = response.data.datamodels.map(function (datamodel) {
+                    var categories = datamodel.categories || [];
+                    return categories.map(function (category) {
+                        var datastreams = category.datastreams || [];
+                        return datastreams.map(function (ds) {
+                            return ds;
+                        });
                     });
                 });
-            });
+            } else {
+                datastreams = response.data.datamodels.map(function (datamodel) {
+                    var categories = datamodel.categories || [];
+                    return categories.map(function (category) {
+                        var datastreams = category.datastreams || [];
+                        return datastreams.map(function (ds) {
+                            return ds.identifier;
+                        });
+                    });
+                });
+            }
+
             datastreams = reduce(datastreams);
         }
-        defered.resolve(datastreams);
+        if (selectedField) {
+            defered.resolve(datastreams.filter(function (dsIdTmp) {
+                return selectedField.indexOf(dsIdTmp.identifier) !== -1;
+            }));
+        } else {
+            defered.resolve(datastreams);
+        }
     })['catch'](function (error) {
         defered.reject(error);
     });
