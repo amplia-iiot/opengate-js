@@ -2,10 +2,12 @@
 @searching
 @searching_entities
 @select-fields
+@download_csv
+@csv
 Feature: Searching entities
-As a user of JsApi
-I want to search into entities collection
-So I can add filter, sorting, limit, select to search any device
+  As a user of JsApi
+  I want to search into entities collection
+  So I can add filter, sorting, limit, select to search any device
 
   Background:
     Given an apikey user by "require-real-apikey"

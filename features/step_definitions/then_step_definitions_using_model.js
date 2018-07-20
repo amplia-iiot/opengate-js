@@ -21,8 +21,6 @@ module.exports = function () {
 
     this.Then(/^the content of file "([^"]*)" must be:$/, function (tmpFile, contentTmp, callback) {
         var data = this.responseData.data;
-        //console.log(data);
-        var header = data.headers["content-type"];
         this.expect(contentTmp).to.be.equal(data.text);
         callback();
     });

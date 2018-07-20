@@ -19,9 +19,6 @@ module.exports = {
                 'identifier': 'withIdentifier',
                 'organization': 'withOrganization'
             },
-            'bulkEntities': {
-                'organization': 'withOrganization'
-            },
             'domain': {
                 'name': 'withName'
             }

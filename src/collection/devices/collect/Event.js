@@ -445,7 +445,7 @@ export default class Event {
             event.device.softwareList = this._softwareList;
         }
         if (this._location !== undefined) {
-            event.device.location = this._location;
+            event.entity.location = this._location;
         }
         if (this._temperature !== undefined) {
             event.device.temperature = this._temperature;

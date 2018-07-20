@@ -2,10 +2,12 @@
 @searching
 @searching_devices
 @select-fields
+@download_csv
+@csv
 Feature: Searching devices
-As a user of JsApi
-I want to search into devices collection
-So I can add filter, sorting, limit, select to search any device
+  As a user of JsApi
+  I want to search into devices collection
+  So I can add filter, sorting, limit, select to search any device
 
   Background:
     Given an apikey user by "require-real-apikey"

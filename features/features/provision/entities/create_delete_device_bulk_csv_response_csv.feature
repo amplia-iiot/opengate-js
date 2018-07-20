@@ -2,7 +2,8 @@
 @provision
 @create_provision
 @entities_provision
-@bulk_csv
+@bulk_csv_response_csv
+@bulk_response_csv
 @bulk
 @csv
 Feature: Delete and Create a device
@@ -30,26 +31,50 @@ Feature: Delete and Create a device
   Scenario: I want to create a device from csv file
     Given an ogapi "csv bulk builder" util with "organization_bulk"
     And I read the file from "/file_test/bulk_simple.csv"
-    And I "create" it with bulk
+    And I "create" it with bulk and response with format csv
     Then does not throws an error
+    Then the content of file "result.csv" must be:
+      """
+      statusCode;location;errors
+      201;https://172.19.18.132:8444/v80/provision/organizations/organization_bulk/devices/device_bulk_c1;
 
-  Scenario: I want to create a device from csv file
+      """
+
+  Scenario: I want to create a device from csv file - duplicated error
     Given an ogapi "csv bulk builder" util with "organization_bulk"
     And I read the file from "/file_test/bulk_simple.csv"
-    And I "create" it with bulk
+    And I "create" it with bulk and response with format csv
     Then does not throws an error
+    Then the content of file "result.csv" must be:
+      """
+      statusCode;location;errors
+      400;https://172.19.18.132:8444/v80/provision/organizations/organization_bulk/devices/device_bulk_c1;[{"code":"0x010114","message":"Entity duplicated.","context":[]}]
+
+      """
 
   Scenario: I want to update a device from csv file
     Given an ogapi "csv bulk builder" util with "organization_bulk"
     And I read the file from "/file_test/bulk_simple.csv"
-    And I "update" it with bulk
+    And I "update" it with bulk and response with format csv
     Then does not throws an error
+    Then the content of file "result.csv" must be:
+      """
+      statusCode;location;errors
+      200;https://172.19.18.132:8444/v80/provision/organizations/organization_bulk/devices/device_bulk_c1;
+
+      """
 
   Scenario: I want to delete a device from csv file
     Given an ogapi "csv bulk builder" util with "organization_bulk"
     And I read the file from "/file_test/bulk_simple.csv"
-    And I "delete" it with bulk
+    And I "delete" it with bulk and response with format csv
     Then does not throws an error
+    Then the content of file "result.csv" must be:
+      """
+      statusCode;location;errors
+      200;https://172.19.18.132:8444/v80/provision/organizations/organization_bulk/devices/device_bulk_c1;
+
+      """
 
 
   Scenario: Delete the organization
