@@ -309,7 +309,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/provision/entities/BulkBuilder.js~BulkBuilder.html#instance-method-create">create</a></span></span><span data-ice="signature">(rawFile: <span>*</span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/src/provision/entities/BulkBuilder.js~BulkBuilder.html#instance-method-create">create</a></span></span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>!Blob</span>, csv_response: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -334,7 +334,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/provision/entities/BulkBuilder.js~BulkBuilder.html#instance-method-delete">delete</a></span></span><span data-ice="signature">(rawFile: <span>*</span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/src/provision/entities/BulkBuilder.js~BulkBuilder.html#instance-method-delete">delete</a></span></span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>!Blob</span>, csv_response: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -359,7 +359,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/provision/entities/BulkBuilder.js~BulkBuilder.html#instance-method-deleteAll">deleteAll</a></span></span><span data-ice="signature">(rawFile: <span>*</span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/src/provision/entities/BulkBuilder.js~BulkBuilder.html#instance-method-deleteAll">deleteAll</a></span></span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>!Blob</span>, csv_response: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -384,7 +384,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/provision/entities/BulkBuilder.js~BulkBuilder.html#instance-method-update">update</a></span></span><span data-ice="signature">(rawFile: <span>*</span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/src/provision/entities/BulkBuilder.js~BulkBuilder.html#instance-method-update">update</a></span></span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>!Blob</span>, csv_response: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -570,11 +570,11 @@ This function updates a entity of provision</p>
     
     
     
-    <span data-ice="name">create</span><span data-ice="signature">(rawFile: <span>*</span>): <span>*</span></span>
+    <span data-ice="name">create</span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>!Blob</span>, csv_response: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/provision/entities/BulkBuilder.js.html#lineNumber39">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/provision/entities/BulkBuilder.js.html#lineNumber42">source</a></span></span>
     </span>
   </h3>
 
@@ -595,9 +595,17 @@ This function updates a entity of provision</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">rawFile</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>!Blob</span></td>
+      <td data-ice="appendix"><ul><li>nullable: false</li></ul></td>
+      <td data-ice="description"><p>file with format string or Blob</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">csv_response</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>true if you want a response on format csv. False or null if you want a response on format json</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -636,11 +644,11 @@ This function updates a entity of provision</p>
     
     
     
-    <span data-ice="name">delete</span><span data-ice="signature">(rawFile: <span>*</span>): <span>*</span></span>
+    <span data-ice="name">delete</span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>!Blob</span>, csv_response: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/provision/entities/BulkBuilder.js.html#lineNumber43">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/provision/entities/BulkBuilder.js.html#lineNumber51">source</a></span></span>
     </span>
   </h3>
 
@@ -661,9 +669,17 @@ This function updates a entity of provision</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">rawFile</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>!Blob</span></td>
+      <td data-ice="appendix"><ul><li>nullable: false</li></ul></td>
+      <td data-ice="description"><p>file with format string or Blob</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">csv_response</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>true if you want a response on format csv. False or null if you want a response on format json</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -702,11 +718,11 @@ This function updates a entity of provision</p>
     
     
     
-    <span data-ice="name">deleteAll</span><span data-ice="signature">(rawFile: <span>*</span>): <span>*</span></span>
+    <span data-ice="name">deleteAll</span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>!Blob</span>, csv_response: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/provision/entities/BulkBuilder.js.html#lineNumber47">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/provision/entities/BulkBuilder.js.html#lineNumber60">source</a></span></span>
     </span>
   </h3>
 
@@ -727,9 +743,17 @@ This function updates a entity of provision</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">rawFile</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>!Blob</span></td>
+      <td data-ice="appendix"><ul><li>nullable: false</li></ul></td>
+      <td data-ice="description"><p>file with format string or Blob</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">csv_response</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>true if you want a response on format csv. False or null if you want a response on format json</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -768,11 +792,11 @@ This function updates a entity of provision</p>
     
     
     
-    <span data-ice="name">update</span><span data-ice="signature">(rawFile: <span>*</span>): <span>*</span></span>
+    <span data-ice="name">update</span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>!Blob</span>, csv_response: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/provision/entities/BulkBuilder.js.html#lineNumber51">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/provision/entities/BulkBuilder.js.html#lineNumber69">source</a></span></span>
     </span>
   </h3>
 
@@ -793,9 +817,17 @@ This function updates a entity of provision</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">rawFile</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>!Blob</span></td>
+      <td data-ice="appendix"><ul><li>nullable: false</li></ul></td>
+      <td data-ice="description"><p>file with format string or Blob</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">csv_response</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>true if you want a response on format csv. False or null if you want a response on format json</p>
+</td>
     </tr>
 </tbody>
   </table>

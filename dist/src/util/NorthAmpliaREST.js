@@ -78,7 +78,7 @@ var NorthAmpliaREST = (function () {
                             "description": "Workgroup description",
                             "domain": "amplia",
                             "administrative": true
-                         },
+                          },
                         {
                             "name": "Workgroup_2",
                             "description": "Workgroup description",
@@ -297,11 +297,12 @@ var NorthAmpliaREST = (function () {
          * @param {FormData} formData - attach data to request POST
          * @param {object} events - events allowed, xhr.process 
          * @param {number} timeout - timeout in milliseconds       
+         * @param {object} headers - headers of request
          * @return {Promise} 
          */
     }, {
         key: 'post_multipart',
-        value: function post_multipart(url, formData, events, timeout) {
+        value: function post_multipart(url, formData, events, timeout, headers) {
             var req = _superagent2['default'].post(this._createUrl(url));
 
             if (formData && (formData.meta || formData.file || formData.json || formData.certificate)) {
@@ -327,9 +328,10 @@ var NorthAmpliaREST = (function () {
                 req.set('Content-Type', formData.ext);
                 formData = formData.bulkFile;
             }
+
             req.send(formData);
 
-            return this._createPromiseRequest(req, events, timeout);
+            return this._createPromiseRequest(req, events, timeout, headers);
         }
 
         /**

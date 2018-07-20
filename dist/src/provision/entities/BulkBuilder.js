@@ -61,29 +61,52 @@ var BulkBuilder = (function (_BaseProvision) {
         value: function _buildURL() {
             return this._resource;
         }
+
+        /**
+         * @param {!string|!Blob} rawFile - file with format string or Blob 
+         * @param {boolean} csv_response - true if you want a response on format csv. False or null if you want a response on format json
+         */
     }, {
         key: 'create',
-        value: function create(rawFile) {
-            return this._executeOperation(rawFile, 'CREATE');
+        value: function create(rawFile, csv_response) {
+            return this._executeOperation(rawFile, 'CREATE', csv_response);
         }
+
+        /**
+         * 
+         * @param {!string|!Blob} rawFile - file with format string or Blob 
+         * @param {boolean} csv_response - true if you want a response on format csv. False or null if you want a response on format json
+         */
     }, {
         key: 'delete',
-        value: function _delete(rawFile) {
-            return this._executeOperation(rawFile, 'DELETE');
+        value: function _delete(rawFile, csv_response) {
+            return this._executeOperation(rawFile, 'DELETE', csv_response);
         }
+
+        /**
+         * 
+         * @param {!string|!Blob} rawFile - file with format string or Blob 
+         * @param {boolean} csv_response - true if you want a response on format csv. False or null if you want a response on format json
+         */
     }, {
         key: 'deleteAll',
-        value: function deleteAll(rawFile) {
-            return this._executeOperation(rawFile, 'DELETE&full=true');
+        value: function deleteAll(rawFile, csv_response) {
+            return this._executeOperation(rawFile, 'DELETE&full=true', csv_response);
         }
+
+        /**
+         * 
+         * @param {!string|!Blob} rawFile - file with format string or Blob 
+         * @param {boolean} csv_response - true if you want a response on format csv. False or null if you want a response on format json
+         */
     }, {
         key: 'update',
-        value: function update(rawFile) {
-            return this._executeOperation(rawFile, 'UPDATE');
+        value: function update(rawFile, csv_response) {
+            return this._executeOperation(rawFile, 'UPDATE', csv_response);
         }
     }, {
         key: '_executeOperation',
-        value: function _executeOperation(rawFile, action) {
+        value: function _executeOperation(rawFile, action, csv_response) {
             var form = undefined;
             if (typeof rawFile !== 'string') {
                 form = {};
@@ -102,12 +125,25 @@ var BulkBuilder = (function (_BaseProvision) {
             form.ext = this._extension;
 
             var petitionUrl = this._buildURL().replace("#actionName#", action);
-            this._ogapi.Napi.post_multipart(petitionUrl, form, {}, this._timeout).then(function (response) {
+            this._ogapi.Napi.post_multipart(petitionUrl, form, {}, this._timeout, csv_response ? {
+                'accept': 'text/plain'
+            } : null).then(function (response) {
                 var statusCode = response.statusCode;
                 if (statusCode === 200) {
-                    defer.resolve(response);
+                    if (csv_response) {
+                        //Se hace esto para que la respuesta sea igual que al searching con resultado en csv
+                        var resultQuery = response;
+                        var _statusCode = response.statusCode;
+                        defer.resolve({
+                            data: resultQuery,
+                            statusCode: _statusCode
+                        });
+                    } else defer.resolve(response);
                 } else {
-                    defer.reject({ errors: response.data.errors, statusCode: response.statusCode });
+                    defer.reject({
+                        errors: response.data.errors,
+                        statusCode: response.statusCode
+                    });
                 }
             })['catch'](function (error) {
                 defer.reject(error);
