@@ -261,10 +261,11 @@ export default class NorthAmpliaREST {
      * @param {FormData} formData - attach data to request POST
      * @param {object} events - events allowed, xhr.process 
      * @param {number} timeout - timeout in milliseconds       
+     * @param {object} headers - headers of request
      * @return {Promise} 
      */
-    post_multipart(url, formData, events, timeout) {
-        var req = request.post(this._createUrl(url));
+    post_multipart(url, formData, events, timeout, headers) {
+        let req = request.post(this._createUrl(url));
 
         if (formData && (formData.meta || formData.file || formData.json || formData.certificate)) {
             if (formData.meta) {
@@ -290,10 +291,10 @@ export default class NorthAmpliaREST {
             req.set('Content-Type', formData.ext);
             formData = formData.bulkFile;
         }
+
         req.send(formData);
 
-
-        return this._createPromiseRequest(req, events, timeout);
+        return this._createPromiseRequest(req, events, timeout, headers);
     }
 
     /**
@@ -335,7 +336,7 @@ export default class NorthAmpliaREST {
         var encode = [];
         var relativeUrlSplit = relativeUrl.split("/");
         var length = relativeUrlSplit.length;
-        relativeUrlSplit.forEach(function(item, index) {
+        relativeUrlSplit.forEach(function (item, index) {
             if (index === (length - 1) && item.indexOf("?") > 0) {
                 var parameters = item.substring(item.indexOf("?"), item.length);
                 var _item = item.substring(0, item.indexOf("?"));
@@ -374,7 +375,7 @@ export default class NorthAmpliaREST {
                 _req = _req.on(event, events[event]);
             }
         }
-        _req = _req.end(function(err, res) {
+        _req = _req.end(function (err, res) {
             if (err !== null) {
                 let data;
                 let status;

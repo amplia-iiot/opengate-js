@@ -2,8 +2,10 @@
 @provision
 @create_provision
 @entities_provision
-@bulk_json
+@bulk_json_response_csv
+@bulk_response_csv
 @bulk
+@csv
 Feature: Delete and Create a device
   As a device of JsApi
   I want to create a device using json file
@@ -28,27 +30,51 @@ Feature: Delete and Create a device
 
   Scenario: I want to create a device from json file
     Given an ogapi "json bulk builder" util with "organization_bulk"
-    And I read the file from "/file_test/bulk_double.json"
-    And I "create" it with bulk
+    And I read the file from "/file_test/bulk_simple.json"
+    And I "create" it with bulk and response with format csv
     Then does not throws an error
+    Then the content of file "result.csv" must be:
+      """
+      statusCode;location;errors
+      201;https://172.19.18.132:8444/v80/provision/organizations/organization_bulk/devices/device_bulk_json_simple;
 
-  Scenario: I want to create a device from json file
+      """
+
+  Scenario: I want to create a device from json file - duplicated error
     Given an ogapi "json bulk builder" util with "organization_bulk"
-    And I read the file from "/file_test/bulk_double.json"
-    And I "create" it with bulk
+    And I read the file from "/file_test/bulk_simple.json"
+    And I "create" it with bulk and response with format csv
     Then does not throws an error
+    Then the content of file "result.csv" must be:
+      """
+      statusCode;location;errors
+      400;https://172.19.18.132:8444/v80/provision/organizations/organization_bulk/devices/device_bulk_json_simple;[{"code":"0x010114","message":"Entity duplicated.","context":[]}]
+
+      """
 
   Scenario: I want to update a device from json file
     Given an ogapi "json bulk builder" util with "organization_bulk"
-    And I read the file from "/file_test/bulk_double.json"
-    And I "update" it with bulk
+    And I read the file from "/file_test/bulk_simple.json"
+    And I "update" it with bulk and response with format csv
     Then does not throws an error
+    Then the content of file "result.csv" must be:
+      """
+      statusCode;location;errors
+      200;https://172.19.18.132:8444/v80/provision/organizations/organization_bulk/devices/device_bulk_json_simple;
+
+      """
 
   Scenario: I want to delete a device from json file
     Given an ogapi "json bulk builder" util with "organization_bulk"
-    And I read the file from "/file_test/bulk_double.json"
-    And I "deleteAll" it with bulk
+    And I read the file from "/file_test/bulk_simple.json"
+    And I "delete" it with bulk and response with format csv
     And response code should be: 200
+    Then the content of file "result.csv" must be:
+      """
+      statusCode;location;errors
+      200;https://172.19.18.132:8444/v80/provision/organizations/organization_bulk/devices/device_bulk_json_simple;
+
+      """
 
   Scenario: Delete the organization
     Given an ogapi "organizations builder" util

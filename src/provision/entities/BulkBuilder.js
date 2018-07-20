@@ -35,26 +35,44 @@ export default class BulkBuilder extends BaseProvision {
         return this._resource;
     }
 
-
-    create(rawFile) {
-        return this._executeOperation(rawFile, 'CREATE');
+    /**
+     * @param {!string|!Blob} rawFile - file with format string or Blob 
+     * @param {boolean} csv_response - true if you want a response on format csv. False or null if you want a response on format json
+     */
+    create(rawFile, csv_response) {
+        return this._executeOperation(rawFile, 'CREATE', csv_response);
     }
 
-    delete(rawFile) {
-        return this._executeOperation(rawFile, 'DELETE');
+    /**
+     * 
+     * @param {!string|!Blob} rawFile - file with format string or Blob 
+     * @param {boolean} csv_response - true if you want a response on format csv. False or null if you want a response on format json
+     */
+    delete(rawFile, csv_response) {
+        return this._executeOperation(rawFile, 'DELETE', csv_response);
     }
 
-    deleteAll(rawFile) {
-        return this._executeOperation(rawFile, 'DELETE&full=true');
+    /**
+     * 
+     * @param {!string|!Blob} rawFile - file with format string or Blob 
+     * @param {boolean} csv_response - true if you want a response on format csv. False or null if you want a response on format json
+     */
+    deleteAll(rawFile, csv_response) {
+        return this._executeOperation(rawFile, 'DELETE&full=true', csv_response);
     }
 
-    update(rawFile) {
-        return this._executeOperation(rawFile, 'UPDATE');
+    /**
+     * 
+     * @param {!string|!Blob} rawFile - file with format string or Blob 
+     * @param {boolean} csv_response - true if you want a response on format csv. False or null if you want a response on format json
+     */
+    update(rawFile, csv_response) {
+        return this._executeOperation(rawFile, 'UPDATE', csv_response);
     }
 
 
 
-    _executeOperation(rawFile, action) {
+    _executeOperation(rawFile, action, csv_response) {
         let form;
         if (typeof rawFile !== 'string') {
             form = {};
@@ -73,13 +91,27 @@ export default class BulkBuilder extends BaseProvision {
         form.ext = this._extension;
 
         var petitionUrl = this._buildURL().replace("#actionName#", action);
-        this._ogapi.Napi.post_multipart(petitionUrl, form, {}, this._timeout)
+        this._ogapi.Napi.post_multipart(petitionUrl, form, {}, this._timeout, csv_response ? {
+                'accept': 'text/plain'
+            } : null)
             .then((response) => {
                 let statusCode = response.statusCode;
                 if (statusCode === 200) {
-                    defer.resolve(response);
+                    if (csv_response) {
+                        //Se hace esto para que la respuesta sea igual que al searching con resultado en csv
+                        let resultQuery = response;
+                        let statusCode = response.statusCode;
+                        defer.resolve({
+                            data: resultQuery,
+                            statusCode: statusCode
+                        });
+                    } else
+                        defer.resolve(response);
                 } else {
-                    defer.reject({ errors: response.data.errors, statusCode: response.statusCode });
+                    defer.reject({
+                        errors: response.data.errors,
+                        statusCode: response.statusCode
+                    });
                 }
             })
             .catch((error) => {

@@ -370,10 +370,6 @@ module.exports = {
                 'description': 'withDescription',
                 'geometry': 'withGeometry',
                 'entities': 'withEntities'
-            },
-            'bulkEntities': {
-                'organization': 'withOrganization'
-
             }
 
         }[setter];
