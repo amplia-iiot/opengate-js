@@ -221,11 +221,7 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/operations/catalog/period/ExecuteEveryBuilder.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import moment from &apos;moment&apos;;
-import merge from &apos;merge&apos;;
-import { TIME_FORMAT } from &apos;./../../../util/DATE_FORMAT&apos;;
-
-import { MONTHS_ENUM } from &apos;./MONTHS_ENUM&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { MONTHS_ENUM } from &apos;./MONTHS_ENUM&apos;;
 
 import ByWeek from &apos;./pattern/ByWeek&apos;;
 import ByYear from &apos;./pattern/ByYear&apos;;
@@ -233,75 +229,72 @@ import ByMonth from &apos;./pattern/ByMonth&apos;;
 import ByGeneric from &apos;./pattern/ByGeneric&apos;;
 
 /**
-* Defines the builder to configure a period of operation. By this builder you can select period by day, week, month, year.
-*/
+ * Defines the builder to configure a period of operation. By this builder you can select period by day, week, month, year.
+ */
 export default class ExecuteEveryBuilder {
-	/**
-	* @param {!BaseOperationBuilder} parent - this is a operationBaseBuilder.
-	* @param {!Date} date - Date when operation will be executed
-	* @param {string} periodicityName - Name associated to periodicity	
-	*/
-	constructor(parent, date, periodicityName, end) {
-		this.year = new ByYear(parent, date, periodicityName, end);
-		this.week = new ByWeek(parent, date, periodicityName, end);
-		this._day = new ByGeneric(parent, date, periodicityName, end);
-		this._date = date;
-		this._end = end;
-		this._parent = parent;
-		this._periodicityName = periodicityName;
-	}
+    /**
+     * @param {!BaseOperationBuilder} parent - this is a operationBaseBuilder.
+     * @param {!Date} date - Date when operation will be executed
+     * @param {string} periodicityName - Name associated to periodicity	
+     */
+    constructor(parent, date, periodicityName, end) {
+        this.year = new ByYear(parent, date, periodicityName, end);
+        this.week = new ByWeek(parent, date, periodicityName, end);
+        this._day = new ByGeneric(parent, date, periodicityName, end);
+        this._date = date;
+        this._end = end;
+        this._parent = parent;
+        this._periodicityName = periodicityName;
+    }
 
-	/**
-	* Every day at time defined will be the pattern
-	* @return {BaseOperationBuilder}
-	*/
-	day() {
-		return this._day._build();
-	}
+    /**
+     * Every day at time defined will be the pattern
+     * @return {BaseOperationBuilder}
+     */
+    day() {
+        return this._day._build();
+    }
 
-	/**
-	* Each month at time and day defined will be the pattern
-	* @param {array} months - months on will be execute the operation
-	* @throws {Error} throw error when months is not typeof Array
-	* @throws {Error} throw error when any month is not found into MONTHS_ENUM
-	* @return {ByMonth}
-	*/
-	month(months) {
-		var _task = this._parent._task;
-		if (typeof months === &quot;undefined&quot; || months.constructor !== Array) {
-			var error = true;
-			if (_task) {
-				var pattern = _task.schedule.repeating.pattern;
-				if (pattern) {
-					var monthly = pattern.monthly;
-					if (monthly) {
-						error = false;
-						months = monthly.months;
-					}
-				}
-			}
-			if (error)
-				throw new Error(&quot;Parameter months must be typeof Array&quot;);
-		}
-		if (months.length === 0) {
-			throw new Error(&quot;Parameter months must have at least one month&quot;);
-		}
-		let not_found = [];
-		for (var i = 0; i &lt; months.length; i++) {
-			let found = MONTHS_ENUM.find(function (month) { return month == this; }, months[i]);
-			if (typeof found === &quot;undefined&quot;) {
-				not_found.push(found);
-			}
-		}
-		if (not_found.length !== 0) {
-			throw new Error(&quot;Any month into parameter months is not allowed. Parameter value &lt;&apos;&quot; + JSON.stringify(not_found) + &quot;&apos;&gt;, Months allowed &lt;&apos;&quot; + JSON.stringify(MONTHS_ENUM) + &quot;&apos;&gt;&quot;);
-		}
-		return new ByMonth(this._parent, this._date, this._periodicityName, months, this._end);
-	}
-}
-
-
-</code></pre>
+    /**
+     * Each month at time and day defined will be the pattern
+     * @param {array} months - months on will be execute the operation
+     * @throws {Error} throw error when months is not typeof Array
+     * @throws {Error} throw error when any month is not found into MONTHS_ENUM
+     * @return {ByMonth}
+     */
+    month(months) {
+        var _task = this._parent._task;
+        if (typeof months === &quot;undefined&quot; || months.constructor !== Array) {
+            var error = true;
+            if (_task) {
+                var pattern = _task.schedule.repeating.pattern;
+                if (pattern) {
+                    var monthly = pattern.monthly;
+                    if (monthly) {
+                        error = false;
+                        months = monthly.months;
+                    }
+                }
+            }
+            if (error)
+                throw new Error(&quot;Parameter months must be typeof Array&quot;);
+        }
+        if (months.length === 0) {
+            throw new Error(&quot;Parameter months must have at least one month&quot;);
+        }
+        let not_found = [];
+        for (var i = 0; i &lt; months.length; i++) {
+            let found = MONTHS_ENUM.find(function(month) { return month == this; }, months[i]);
+            if (typeof found === &quot;undefined&quot;) {
+                not_found.push(found);
+            }
+        }
+        if (not_found.length !== 0) {
+            throw new Error(&quot;Any month into parameter months is not allowed. Parameter value &lt;&apos;&quot; + JSON.stringify(not_found) + &quot;&apos;&gt;, Months allowed &lt;&apos;&quot; + JSON.stringify(MONTHS_ENUM) + &quot;&apos;&gt;&quot;);
+        }
+        return new ByMonth(this._parent, this._date, this._periodicityName, months, this._end);
+    }
+}</code></pre>
 
 </div>
 

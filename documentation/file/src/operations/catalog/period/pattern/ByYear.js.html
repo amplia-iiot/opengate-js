@@ -288,7 +288,7 @@ export default class ByYear extends ByGeneric {
             if (this._month) {
                 month = this._month;
             } else
-                throw new Error({ message: &quot;OGAPI_STRING_PARAMETER&quot;, parameter: &quot;month&quot; });
+                throw new Error(&quot;OGAPI_PARAMETER_MONTH_MUST_BE_STRING&quot;);
         }
         let found = MONTHS_ENUM.find(function(month) { return month == this; }, month);
         if (typeof found === &quot;undefined&quot;) {

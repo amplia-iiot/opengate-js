@@ -102,7 +102,7 @@ var ByYear = (function (_ByGeneric) {
             if (typeof month !== "string") {
                 if (this._month) {
                     month = this._month;
-                } else throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: "month" });
+                } else throw new Error("OGAPI_PARAMETER_MONTH_MUST_BE_STRING");
             }
             var found = _MONTHS_ENUM.MONTHS_ENUM.find(function (month) {
                 return month == this;
