@@ -105,11 +105,16 @@ var EntityBuilder = (function () {
                 return okh;
             }).then(function (data) {
                 if (data.statusCode !== 200) {
-                    defered.reject({ data: 'OGAPI_DATASTREAM_NOT_FOUND', statusCode: 204 });
+                    defered.reject({
+                        data: 'OGAPI_DATASTREAM_NOT_FOUND',
+                        statusCode: 204
+                    });
                 }
                 _this._getJsonPathElements().then(function () {
                     data.data = _this._setDevicesProperties(data.data, filterElement);
                     defered.resolve(data);
+                })['catch'](function (err) {
+                    defered.reject(err);
                 });
             })['catch'](function (err) {
                 defered.reject(err);
@@ -137,7 +142,10 @@ var EntityBuilder = (function () {
         value: function _setDevicesProperties(data, filter) {
             var _this = this;
             var allowedDatastreams = _jsonpath2['default'].query(data, "$.datamodels[*].categories[*].datastreams[*]");
-            var response = { allowedDatastreams: [], schemas: {} };
+            var response = {
+                allowedDatastreams: [],
+                schemas: {}
+            };
             _this.complexFunctions = [];
             _this.simpleFunctions = [];
 
@@ -146,9 +154,17 @@ var EntityBuilder = (function () {
                 if (_id.startsWith('provision.administration') || _id.startsWith(filter)) {
                     response.allowedDatastreams.push(element);
                     if (_id.includes('communicationModules')) {
-                        _this.schema[_id] = { value: element.schema, complex: filter.includes('subscriber') || filter.includes('subscription') ? false : true, 'function': filter.includes('subscriber') || filter.includes('subscription') ? 'with' : 'withComplex' };
+                        _this.schema[_id] = {
+                            value: element.schema,
+                            complex: filter.includes('subscriber') || filter.includes('subscription') ? false : true,
+                            'function': filter.includes('subscriber') || filter.includes('subscription') ? 'with' : 'withComplex'
+                        };
                     } else {
-                        _this.schema[_id] = { value: element.schema, complex: false, 'function': 'with' };
+                        _this.schema[_id] = {
+                            value: element.schema,
+                            complex: false,
+                            'function': 'with'
+                        };
                     }
                 }
             });
