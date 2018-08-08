@@ -110,7 +110,10 @@ var RuleConfigurations = (function (_BaseProvision) {
     }, {
         key: 'withDescription',
         value: function withDescription(description) {
-            if (typeof description !== 'string' || description.length > 250) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250", parameter: 'description' });
+            if (typeof description !== 'string' || description.length > 250) throw new Error({
+                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250",
+                parameter: 'description'
+            });
             this._description = description;
             return this;
         }
@@ -293,9 +296,14 @@ var RuleConfigurations = (function (_BaseProvision) {
             var promise = defered.promise;
             this._ogapi.Napi['delete'](this._buildURL() + '/' + this._name).then(function (res) {
                 if (res.statusCode === 200) {
-                    defered.resolve({ statusCode: res.statusCode });
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
                 } else {
-                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
                 }
             })['catch'](function (error) {
                 defered.reject(error);

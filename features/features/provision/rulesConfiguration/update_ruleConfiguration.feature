@@ -3,64 +3,71 @@
 @update_ruleConfiguration
 @rulesConfiguration
 Feature: Managing a rule configuration
-  As a user of JsApi
-  I want to update a rule configuration
-  So I can update a rule configuration
+    As a user of JsApi
+    I want to update a rule configuration
+    So I can update a rule configuration
 
-  Background:
-    Given an apikey user by "require-real-apikey"
-  	#And an ogapi "rule configuration builder" util 
-    And I want to update a "rule configuration"
+    Background:
+        Given an apikey user by "1e0a6fa7-d770-4072-ab4e-f98581522a65"
+        And I want to update a "rule configuration"
 
- # Scenario: Checking parameter description
-  #  And the "description" 3232
-   # Then throws an error equal to "Parameter description must be a string and has a maximum length of 250"
-
-  Scenario: updating a rule
-    When I want to manage the next rule configuration from organization "base_organization" and channel "base_channel":
-    """
-    {
-        "name": "mobileCoverageLow",
-        "enabled": true,
-        "severity": "INFORMATIVE",
-        "description": "Cobertura más baja que un umbral",
-        "conditions": [
+    Scenario: updating a rule
+        When I want to manage the next rule configuration from organization "base_organization" and channel "base_channel":
+            """
             {
-                "name": "mobileCoverageLow_1",
-                "parameters": [
-                    {
-                        "name": "threshold",
-                        "value": "-93"
-                    }
-                ]
-            },
-            {
-                "name": "mobileCoverageLow_2",
-                "delay": 300000,
-                "parameters": [
-                    {
-                        "name": "threshold",
-                        "value": "-93"
-                    }
-                ]
+            "name": "datastreamCurrentValueThresholdTemp",
+            "enabled": false,
+            "severity": "URGENT",
+            "open": true,
+            "groupParent": false,
+            "description": "Current value of datastream has an unusual value during a period",
+            "conditions": [{
+            "name": "datastreamCurrentValueThresholdTemp_2",
+            "delay": 15000,
+            "parameters": [{
+            "name": "datastream_name",
+            "value": "DATASTREAM"
+            }, {
+            "name": "operator",
+            "value": ">"
+            }, {
+            "name": "threshold",
+            "value": "0"
             }
-        ],
-        "notifications": [
-            {
-                "name": "mobileCoverageLow",
-                "enabled": true,
-                "bearers": [
-                    {
-                        "name": "snmp",
-                        "enabled": true,
-                        "recipients": [
-                            "172.19.17.80;162"
-                        ]
-                    }
-                ]
+            ]
+            }, {
+            "name": "datastreamCurrentValueThresholdTemp_1",
+            "parameters": [{
+            "name": "datastream_name",
+            "value": "DATASTREAM"
+            }, {
+            "name": "curvalue_operator",
+            "value": ">"
+            }, {
+            "name": "threshold",
+            "value": "0"
+            }, {
+            "name": "prevalue_operator",
+            "value": "<"
             }
-        ]
-    }
-"""
-  #Then I update it
-  And response code should be: 200 
+            ]
+            }
+            ],
+            "notifications": [{
+            "name": "datastreamCurrentValueThresholdTemp",
+            "enabled": false,
+            "bearers": [{
+            "name": "email",
+            "enabled": false
+            }, {
+            "name": "snmp",
+            "enabled": false
+            }
+            ]
+            }
+            ]
+            }
+            """
+        And response code should be: 200
+
+

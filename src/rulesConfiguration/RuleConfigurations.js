@@ -76,7 +76,10 @@ export default class RuleConfigurations extends BaseProvision {
      */
     withDescription(description) {
         if (typeof description !== 'string' || description.length > 250)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250", parameter: 'description' });
+            throw new Error({
+                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250",
+                parameter: 'description'
+            });
         this._description = description;
         return this;
     }
@@ -117,7 +120,7 @@ export default class RuleConfigurations extends BaseProvision {
             throw new Error('A rule must have conditions');
         }
 
-        conditions.forEach(function(condTmp, idx) {
+        conditions.forEach(function (condTmp, idx) {
             if (!condTmp.name) {
                 throw new Error('Every condition must contain a name');
             }
@@ -137,7 +140,7 @@ export default class RuleConfigurations extends BaseProvision {
         //    throw new Error('Parameter notifications must be an Array');
 
         if (notifications) {
-            notifications.forEach(function(notifTmp, idx) {
+            notifications.forEach(function (notifTmp, idx) {
                 if (!notifTmp.name) {
                     throw new Error('Every notification must contain a name');
                 }
@@ -175,7 +178,7 @@ export default class RuleConfigurations extends BaseProvision {
         let _condition = {};
         let _this = this;
         if (this._conditions && this._conditions.length > 0) {
-            this._conditions.forEach(function(condTmp, idx) {
+            this._conditions.forEach(function (condTmp, idx) {
                 if (condTmp.name === condName) {
                     //console.log(idx + ": " + condTmp);
                     _condition = condTmp;
@@ -202,7 +205,7 @@ export default class RuleConfigurations extends BaseProvision {
         let _notification = {};
         let _this = this;
         if (this._notifications && this._notifications.length > 0) {
-            this._notifications.forEach(function(notifTmp, idx) {
+            this._notifications.forEach(function (notifTmp, idx) {
                 if (notifTmp.name === notifName) {
                     //console.log(idx + ": " + notifTmp);
                     _notification = notifTmp;
@@ -246,9 +249,14 @@ export default class RuleConfigurations extends BaseProvision {
         this._ogapi.Napi.delete(this._buildURL() + '/' + this._name)
             .then((res) => {
                 if (res.statusCode === 200) {
-                    defered.resolve({ statusCode: res.statusCode });
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
                 } else {
-                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
                 }
             })
             .catch((error) => {

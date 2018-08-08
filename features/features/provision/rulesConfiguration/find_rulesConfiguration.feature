@@ -5,12 +5,12 @@
 @find_rules
 @fail
 Feature: Find an rulesConfiguration
-As a user of JsApi
-I want to find an rulesConfiguration
-So I can check if a rulesConfiguration exists and get their information
+  As a user of JsApi
+  I want to find an rulesConfiguration
+  So I can check if a rulesConfiguration exists and get their information
 
   Background:
-    Given an apikey user by "require-real-apikey"
+    Given an apikey user by "1e0a6fa7-d770-4072-ab4e-f98581522a65"
     And an ogapi "rule configurations finder" util
     And I want to read a "rule configuration"
 
@@ -23,9 +23,9 @@ So I can check if a rulesConfiguration exists and get their information
 
   Scenario: Find all rule configurations for an organization and channel that not exists
     When I try to find by...
-      | field        | content                     |
-      | organization | base_organization_not_exist |
-      | channel      | base_channel_not_exist      |
+      | field        | content                   |
+      | organization | organization_UX_not_exist |
+      | channel      | default_channel_not_exist |
     Then response code should be: 404
 
   Scenario: Find an rule configuration that exists
@@ -33,7 +33,7 @@ So I can check if a rulesConfiguration exists and get their information
       | field        | content           |
       | organization | base_organization |
       | channel      | base_channel      |
-      | name         | mobileCoverageLow |
+      | name         | gprsConnect       |
     Then response code should be: 200
 
   Scenario: Find only enabled rules configuration
@@ -42,7 +42,7 @@ So I can check if a rulesConfiguration exists and get their information
       | organization | base_organization |
       | channel      | base_channel      |
       | enabled      | true              |
-    Then response code should be: 200
+    Then response code should be: 404
 
 
   Scenario: Find an rulesConfiguration that not exists
