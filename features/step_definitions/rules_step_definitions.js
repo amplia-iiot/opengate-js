@@ -1,8 +1,8 @@
 'use strict';
 
-module.exports = function() {
+module.exports = function () {
 
-    this.When(/^I want to (manage|delete) the next rule configuration from organization "([^"]*)" and channel "([^"]*)":$/, function(action, organization, channel, ruleConfigurationData) {
+    this.When(/^I want to (manage|delete) the next rule configuration from organization "([^"]*)" and channel "([^"]*)":$/, function (action, organization, channel, ruleConfigurationData) {
         var _this = this;
         _this.error = undefined;
         _this.responseData = undefined;
@@ -14,10 +14,10 @@ module.exports = function() {
         }
 
         function digestErrorData(response) {
-            //console.log(JSON.stringify(response));
+            console.log("digestErrorData");
             _this.error = response;
             _this.responseData = response;
-            
+
         }
 
         try {
@@ -30,11 +30,21 @@ module.exports = function() {
             if (action === 'manage') {
                 return ruleConfiguration
                     .withEnabled(false)
-                    .condition("mobileCoverageLow_1")
+                    .condition("datastreamCurrentValueThresholdTemp_1")
                     .setParameterValue("threshold", "-100").parent()
-                    .condition("mobileCoverageLow_2")
+
+                    .condition("datastreamCurrentValueThresholdTemp_1")
+                    .setParameterValue("datastream_name", null).parent()
+
+                    .condition("datastreamCurrentValueThresholdTemp_1")
+                    .setParameterValue("curvalue_operator", undefined).parent()
+
+                    .condition("datastreamCurrentValueThresholdTemp_1")
+                    .setParameterValue("prevalue_operator").parent()
+
+                    .condition("datastreamCurrentValueThresholdTemp_2")
                     .setDelay(99999).setParameterValue("threshold", "-500").parent()
-                    .notification("mobileCoverageLow")
+                    .notification("datastreamCurrentValueThresholdTemp")
                     .setEnabled(false).setBearerRecipients("snmp", ["172.19.17.240;162"]).parent()
                     .update().then(digestResponseData).catch(digestErrorData);
             } else if (action === 'delete') {
@@ -42,6 +52,7 @@ module.exports = function() {
             }
         } catch (err) {
             _this.error = err;
+            console.log("err");
             return;
         }
 

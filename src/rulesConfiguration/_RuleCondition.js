@@ -69,16 +69,11 @@ export default class _RuleCondition {
                     if (typeof paramTmp.value === "undefined") {
                         throw new Error("Value not allowed for parameter " + parameterName + " in condition " + this._condition.name);
                     }
-
-                    paramTmp.value = parameterValue;
-
+                    paramTmp.value = !parameterValue ? "" : parameterValue;
                     return _this;
                 }
             }
-
             throw new Error("Parameter " + parameterName + " not exists for condition " + this._condition.name);
-        } else {
-            throw new Error("There is no parameters for condition " + this._condition.name);
         }
     }
 
