@@ -3,10 +3,11 @@
 @catalogs
 @searching
 @specificType
+@sigfox
 Feature: Searching communications module type in catalog
-As a user of JsApi
-I want to search into communications module type catalog
-So I can add filter, sorting, limit to search
+  As a user of JsApi
+  I want to search into communications module type catalog
+  So I can add filter, sorting, limit to search
 
   Background:
     Given an apikey user by "require-real-apikey"
@@ -48,5 +49,5 @@ So I can add filter, sorting, limit to search
       | RS232      | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["entityKey"],"optional":[]}}}                                                                                                                                                                                                                                                                                                                 |
       | RS422      | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["entityKey"],"optional":[]}}}                                                                                                                                                                                                                                                                                                                 |
       | RS485      | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["entityKey"],"optional":[]}}}                                                                                                                                                                                                                                                                                                                 |
-      | SIGFOX     | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["entityKey"],"optional":[]}}}                                                                                                                                                                                                                                                                                                                 |
+      | SIGFOX     | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["entityKey"],"optional":["PAC"]},"SUBSCRIPTION":{"mandatory":["generatedEntityKey","HOME_OPERATOR","administrativeState","SIGFOX_DEVICE_TYPE"]}}}                                                                                                                                                                                             |
       | ZIGBEE     | {"communicationsModuleType":{"COMMUNICATIONS_MODULE":{"mandatory":["generatedEntityKey"],"optional":["HARDWARE","SOFTWARE"]},"SUBSCRIPTION":{"mandatory":["generatedEntityKey"],"optional":["administrativeState"]}}}                                                                                                                                                                                            |

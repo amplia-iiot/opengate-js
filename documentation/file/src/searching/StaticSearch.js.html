@@ -282,7 +282,7 @@ export default class StaticSearch extends Search {
             case &apos;operationalStatus&apos;:
             case &apos;specificType&apos;:
                 for (var contentTmp in collection) {
-                    collection[contentTmp].forEach(function(finalValue) {
+                    collection[contentTmp].forEach(function (finalValue) {
                         if (!_this._customFilters.id || (_this._customFilters.id &amp;&amp; _this._customFilters.id === finalValue)) {
                             finalContent.push({
                                 &apos;entityType&apos;: contentTmp,
@@ -293,7 +293,7 @@ export default class StaticSearch extends Search {
                 }
                 break;
             case &apos;administrativeState&apos;:
-                var createAndAddFileObj = function(obj) {
+                var createAndAddFileObj = function (obj) {
                     var finalObj = obj;
                     finalObj[ENTITY_TYPE] = entityTypeTmp;
                     finalContent.push(finalObj);
@@ -777,8 +777,8 @@ export default class StaticSearch extends Search {
                 },
                 &apos;SIGFOX&apos;: {
                     &apos;COMMUNICATIONS_MODULE&apos;: {
-                        &apos;mandatory&apos;: [&apos;entityKey&apos;, &apos;PAC&apos;],
-                        &apos;optional&apos;: []
+                        &apos;mandatory&apos;: [&apos;entityKey&apos;],
+                        &apos;optional&apos;: [&apos;PAC&apos;]
                     },
                     &apos;SUBSCRIPTION&apos;: {
                         &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;, &apos;HOME_OPERATOR&apos;, &apos;administrativeState&apos;, &apos;SIGFOX_DEVICE_TYPE&apos;]
@@ -859,7 +859,13 @@ export default class StaticSearch extends Search {
                 &apos;CUMULATIVE&apos;,
                 &apos;INSTANT&apos;
             ],
-            &apos;resourceType&apos;: [{ identifier: &apos;entity.asset&apos; }, { identifier: &apos;entity.device&apos; }, { identifier: &apos;ticket&apos; }],
+            &apos;resourceType&apos;: [{
+                identifier: &apos;entity.asset&apos;
+            }, {
+                identifier: &apos;entity.device&apos;
+            }, {
+                identifier: &apos;ticket&apos;
+            }],
             &apos;allowedResourceType&apos;: [{
                     resourceType: &apos;entity.asset&apos;,
                     types: [&apos;entity&apos;, &apos;asset&apos;]

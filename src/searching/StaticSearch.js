@@ -59,7 +59,7 @@ export default class StaticSearch extends Search {
             case 'operationalStatus':
             case 'specificType':
                 for (var contentTmp in collection) {
-                    collection[contentTmp].forEach(function(finalValue) {
+                    collection[contentTmp].forEach(function (finalValue) {
                         if (!_this._customFilters.id || (_this._customFilters.id && _this._customFilters.id === finalValue)) {
                             finalContent.push({
                                 'entityType': contentTmp,
@@ -70,7 +70,7 @@ export default class StaticSearch extends Search {
                 }
                 break;
             case 'administrativeState':
-                var createAndAddFileObj = function(obj) {
+                var createAndAddFileObj = function (obj) {
                     var finalObj = obj;
                     finalObj[ENTITY_TYPE] = entityTypeTmp;
                     finalContent.push(finalObj);
@@ -554,8 +554,8 @@ export default class StaticSearch extends Search {
                 },
                 'SIGFOX': {
                     'COMMUNICATIONS_MODULE': {
-                        'mandatory': ['entityKey', 'PAC'],
-                        'optional': []
+                        'mandatory': ['entityKey'],
+                        'optional': ['PAC']
                     },
                     'SUBSCRIPTION': {
                         'mandatory': ['generatedEntityKey', 'HOME_OPERATOR', 'administrativeState', 'SIGFOX_DEVICE_TYPE']
@@ -636,7 +636,13 @@ export default class StaticSearch extends Search {
                 'CUMULATIVE',
                 'INSTANT'
             ],
-            'resourceType': [{ identifier: 'entity.asset' }, { identifier: 'entity.device' }, { identifier: 'ticket' }],
+            'resourceType': [{
+                identifier: 'entity.asset'
+            }, {
+                identifier: 'entity.device'
+            }, {
+                identifier: 'ticket'
+            }],
             'allowedResourceType': [{
                     resourceType: 'entity.asset',
                     types: ['entity', 'asset']

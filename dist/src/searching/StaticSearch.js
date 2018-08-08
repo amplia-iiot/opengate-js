@@ -541,8 +541,8 @@ var StaticSearch = (function (_Search) {
                     },
                     'SIGFOX': {
                         'COMMUNICATIONS_MODULE': {
-                            'mandatory': ['entityKey', 'PAC'],
-                            'optional': []
+                            'mandatory': ['entityKey'],
+                            'optional': ['PAC']
                         },
                         'SUBSCRIPTION': {
                             'mandatory': ['generatedEntityKey', 'HOME_OPERATOR', 'administrativeState', 'SIGFOX_DEVICE_TYPE']
@@ -589,7 +589,13 @@ var StaticSearch = (function (_Search) {
                 'ioTDatastreamAccess': ['READ', 'WRITE', 'READ,WRITE'],
                 'ioTDatastreamStoragePeriod': ['SECONDS', 'MINUTES', 'HOURS', 'DAYS', 'MONTHS', 'YEARS', 'NEVER'],
                 'ioTDatastreamPeriod': ['PULSE', 'CUMULATIVE', 'INSTANT'],
-                'resourceType': [{ identifier: 'entity.asset' }, { identifier: 'entity.device' }, { identifier: 'ticket' }],
+                'resourceType': [{
+                    identifier: 'entity.asset'
+                }, {
+                    identifier: 'entity.device'
+                }, {
+                    identifier: 'ticket'
+                }],
                 'allowedResourceType': [{
                     resourceType: 'entity.asset',
                     types: ['entity', 'asset']
