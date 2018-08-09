@@ -43,7 +43,7 @@ module.exports = function () {
                     .setParameterValue("prevalue_operator").parent()
 
                     .condition("datastreamCurrentValueThresholdTemp_2")
-                    .setDelay(99999).setParameterValue("threshold", "-500").parent()
+                    .setDelay(99999).parent()
                     .notification("datastreamCurrentValueThresholdTemp")
                     .setEnabled(false).setBearerRecipients("snmp", ["172.19.17.240;162"]).parent()
                     .update().then(digestResponseData).catch(digestErrorData);

@@ -10,7 +10,7 @@ Feature: Find an rulesConfiguration
   So I can check if a rulesConfiguration exists and get their information
 
   Background:
-    Given an apikey user by "1e0a6fa7-d770-4072-ab4e-f98581522a65"
+    Given an apikey user by "require-real-apikey"
     And an ogapi "rule configurations finder" util
     And I want to read a "rule configuration"
 
@@ -23,9 +23,9 @@ Feature: Find an rulesConfiguration
 
   Scenario: Find all rule configurations for an organization and channel that not exists
     When I try to find by...
-      | field        | content                   |
-      | organization | organization_UX_not_exist |
-      | channel      | default_channel_not_exist |
+      | field        | content                     |
+      | organization | base_organization_not_exist |
+      | channel      | base_channel_not_exist      |
     Then response code should be: 404
 
   Scenario: Find an rule configuration that exists
