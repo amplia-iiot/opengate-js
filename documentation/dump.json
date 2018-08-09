@@ -27119,7 +27119,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "'use strict';\r\n\r\nimport q from 'q';\r\n\r\n/**\r\n * This is an abstract class, it must be extended to another class that defines the different actions of a specific provision.\r\n * This class is responsible for managing the request to execute Norte OpenGate API\r\n */\r\nexport default class BaseProvision {\r\n    /**\r\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\r\n     * @param {!string} resource - this is a base url resource\r\n     * @param {!number} [timeout] - timeout on request\r\n     */\r\n    constructor(ogapi, resource, timeout, requiredParameters = []) {\r\n        if (this.constructor === BaseProvision) {\r\n            throw new Error(\"Cannot construct Abstract instances directly\");\r\n        }\r\n        if (typeof this._composeElement !== \"function\") {\r\n            throw new Error(\"Must override method:  composeElement\");\r\n        }\r\n        if (typeof this._buildURL !== \"function\") {\r\n            throw new Error(\"Must override method:  _buildURL\");\r\n        }\r\n        if (timeout) {\r\n            if (typeof timeout !== 'number') {\r\n                this._timeout = ogapi.Napi._options.timeout;\r\n            } else {\r\n                this._timeout = timeout;\r\n            }\r\n        }\r\n\r\n        this._ogapi = ogapi;\r\n        this._resource = 'provision' + resource;\r\n        this._requiredParameters = requiredParameters;\r\n    }\r\n\r\n    _checkRequiredParameters() {\r\n        let parametersNotFound = [];\r\n        if (this._requiredParameters && this._requiredParameters.length > 0) {\r\n            for (let i = 0; i < this._requiredParameters.length; i++) {\r\n                if (this[this._requiredParameters[i]] === undefined && this[\"_\" + this._requiredParameters[i]] === undefined) {\r\n                    parametersNotFound.push(this._requiredParameters[i]);\r\n                }\r\n            }\r\n\r\n            if (parametersNotFound.length > 0) {\r\n                throw new Error(\"There are required parameters that have not been set. Missing parameters: \" +\r\n                    JSON.stringify(parametersNotFound).replace(new RegExp(\"\\\"\", 'g'), \"\"));\r\n            }\r\n        }\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function create a entity of provision\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.organizationsBuilder().create()\r\n     */\r\n    create() {\r\n        this._checkRequiredParameters();\r\n\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n\r\n        //En muchas clases se genera this._resource en la llamada a la funcion this._composeElement()\r\n\r\n        let _postElement = this._composeElement();\r\n\r\n        this._ogapi.Napi.post(this._resource, _postElement)\r\n            .then((res) => {\r\n                if (res.statusCode === 201) {\r\n                    if (typeof this._onCreated === \"function\") {\r\n                        this._onCreated(res.header.location);\r\n                    }\r\n                    defered.resolve({\r\n                        location: res.header.location,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function deletes a entity of provision\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     * ogapi.organizationsBuilder().withName('delete_organization').delete();\r\n     * ogapi.usersBuilder().withEmail('delete@user.com').delete();\r\n     * ogapi.certificatesBuilder().withId('d3l3t3-c3rt1f1c4t3').delete();\r\n     */\r\n    delete() {\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n        this._ogapi.Napi.delete(this._buildURL())\r\n            .then((res) => {\r\n                if (res.statusCode === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function updates a entity of provision\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.organizationsBuilder().update()\r\n     */\r\n    update() {\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n\r\n        console.log(this._buildURL());\r\n        console.log(JSON.stringify(this._composeUpdateElement()));\r\n        this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement())\r\n            .then((res) => {\r\n                if (res.statusCode === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else if (res.status === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.status\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n\r\n    _composeUpdateElement() {\r\n        return this._composeElement();\r\n    }\r\n\r\n    _doNorthPost(resource, element) {\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n        var id = element;\r\n        this._ogapi.Napi.post(resource, element)\r\n            .then((res) => {\r\n                if (res.statusCode === 201) {\r\n                    if (typeof this._onCreated === \"function\") {\r\n                        this._onCreated(res.header.location);\r\n                    }\r\n                    defered.resolve({\r\n                        location: res.header.location,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else if (res.statusCode === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n\r\n\r\n    _getExtraHeaders() {\r\n        return this._headers;\r\n    }\r\n\r\n    _setExtraHeaders(headers) {\r\n        if (this._headers) {\r\n            var keys = Object.keys(headers);\r\n            for (var i = 0; i < keys.length; i++) {\r\n                var key = keys[i];\r\n                this._headers[key] = headers[key];\r\n            }\r\n        } else {\r\n            this._headers = headers;\r\n        }\r\n    }\r\n}"
+    "content": "'use strict';\r\n\r\nimport q from 'q';\r\n\r\n/**\r\n * This is an abstract class, it must be extended to another class that defines the different actions of a specific provision.\r\n * This class is responsible for managing the request to execute Norte OpenGate API\r\n */\r\nexport default class BaseProvision {\r\n    /**\r\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\r\n     * @param {!string} resource - this is a base url resource\r\n     * @param {!number} [timeout] - timeout on request\r\n     */\r\n    constructor(ogapi, resource, timeout, requiredParameters = []) {\r\n        if (this.constructor === BaseProvision) {\r\n            throw new Error(\"Cannot construct Abstract instances directly\");\r\n        }\r\n        if (typeof this._composeElement !== \"function\") {\r\n            throw new Error(\"Must override method:  composeElement\");\r\n        }\r\n        if (typeof this._buildURL !== \"function\") {\r\n            throw new Error(\"Must override method:  _buildURL\");\r\n        }\r\n        if (timeout) {\r\n            if (typeof timeout !== 'number') {\r\n                this._timeout = ogapi.Napi._options.timeout;\r\n            } else {\r\n                this._timeout = timeout;\r\n            }\r\n        }\r\n\r\n        this._ogapi = ogapi;\r\n        this._resource = 'provision' + resource;\r\n        this._requiredParameters = requiredParameters;\r\n    }\r\n\r\n    _checkRequiredParameters() {\r\n        let parametersNotFound = [];\r\n        if (this._requiredParameters && this._requiredParameters.length > 0) {\r\n            for (let i = 0; i < this._requiredParameters.length; i++) {\r\n                if (this[this._requiredParameters[i]] === undefined && this[\"_\" + this._requiredParameters[i]] === undefined) {\r\n                    parametersNotFound.push(this._requiredParameters[i]);\r\n                }\r\n            }\r\n\r\n            if (parametersNotFound.length > 0) {\r\n                throw new Error(\"There are required parameters that have not been set. Missing parameters: \" +\r\n                    JSON.stringify(parametersNotFound).replace(new RegExp(\"\\\"\", 'g'), \"\"));\r\n            }\r\n        }\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function create a entity of provision\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.organizationsBuilder().create()\r\n     */\r\n    create() {\r\n        this._checkRequiredParameters();\r\n\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n\r\n        //En muchas clases se genera this._resource en la llamada a la funcion this._composeElement()\r\n\r\n        let _postElement = this._composeElement();\r\n\r\n        this._ogapi.Napi.post(this._resource, _postElement)\r\n            .then((res) => {\r\n                if (res.statusCode === 201) {\r\n                    if (typeof this._onCreated === \"function\") {\r\n                        this._onCreated(res.header.location);\r\n                    }\r\n                    defered.resolve({\r\n                        location: res.header.location,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function deletes a entity of provision\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     * ogapi.organizationsBuilder().withName('delete_organization').delete();\r\n     * ogapi.usersBuilder().withEmail('delete@user.com').delete();\r\n     * ogapi.certificatesBuilder().withId('d3l3t3-c3rt1f1c4t3').delete();\r\n     */\r\n    delete() {\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n        this._ogapi.Napi.delete(this._buildURL())\r\n            .then((res) => {\r\n                if (res.statusCode === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function updates a entity of provision\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.organizationsBuilder().update()\r\n     */\r\n    update() {\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n\r\n        this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement())\r\n            .then((res) => {\r\n                if (res.statusCode === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else if (res.status === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.status\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n\r\n    _composeUpdateElement() {\r\n        return this._composeElement();\r\n    }\r\n\r\n    _doNorthPost(resource, element) {\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n        var id = element;\r\n        this._ogapi.Napi.post(resource, element)\r\n            .then((res) => {\r\n                if (res.statusCode === 201) {\r\n                    if (typeof this._onCreated === \"function\") {\r\n                        this._onCreated(res.header.location);\r\n                    }\r\n                    defered.resolve({\r\n                        location: res.header.location,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else if (res.statusCode === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n\r\n\r\n    _getExtraHeaders() {\r\n        return this._headers;\r\n    }\r\n\r\n    _setExtraHeaders(headers) {\r\n        if (this._headers) {\r\n            var keys = Object.keys(headers);\r\n            for (var i = 0; i < keys.length; i++) {\r\n                var key = keys[i];\r\n                this._headers[key] = headers[key];\r\n            }\r\n        } else {\r\n            this._headers = headers;\r\n        }\r\n    }\r\n}"
   },
   {
     "__docId__": 1146,
@@ -27438,7 +27438,7 @@
     "longname": "src/provision/BaseProvision.js~BaseProvision#_composeUpdateElement",
     "access": null,
     "description": null,
-    "lineNumber": 167,
+    "lineNumber": 165,
     "undocument": true,
     "params": [],
     "return": {
@@ -27458,7 +27458,7 @@
     "longname": "src/provision/BaseProvision.js~BaseProvision#_doNorthPost",
     "access": null,
     "description": null,
-    "lineNumber": 171,
+    "lineNumber": 169,
     "undocument": true,
     "params": [
       {
@@ -27491,7 +27491,7 @@
     "longname": "src/provision/BaseProvision.js~BaseProvision#_getExtraHeaders",
     "access": null,
     "description": null,
-    "lineNumber": 203,
+    "lineNumber": 201,
     "undocument": true,
     "params": [],
     "return": {
@@ -27511,7 +27511,7 @@
     "longname": "src/provision/BaseProvision.js~BaseProvision#_setExtraHeaders",
     "access": null,
     "description": null,
-    "lineNumber": 207,
+    "lineNumber": 205,
     "undocument": true,
     "params": [
       {
@@ -27533,7 +27533,7 @@
     "longname": "src/provision/BaseProvision.js~BaseProvision#_headers",
     "access": null,
     "description": null,
-    "lineNumber": 215,
+    "lineNumber": 213,
     "undocument": true,
     "type": {
       "types": [
@@ -30776,7 +30776,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "'use strict';\r\n\r\nimport BaseProvision from '../provision/BaseProvision';\r\nimport _RuleCondition from './_RuleCondition';\r\nimport _RuleNotification from './_RuleNotification';\r\nimport q from 'q';\r\n\r\n/**\r\n * This is a base object that contains all you can do about RulesConfigurations.\r\n */\r\nexport default class RuleConfigurations extends BaseProvision {\r\n\r\n    /**     \r\n     * @param {InternalOpenGateAPI} Reference to the API object.\r\n     */\r\n    constructor(ogapi, organization, channel, ruleConfigurationObj) {\r\n        super(ogapi, \"/organizations\");\r\n\r\n        this.withName(ruleConfigurationObj.name);\r\n\r\n        if (ruleConfigurationObj.description) {\r\n            this.withDescription(ruleConfigurationObj.description);\r\n        }\r\n\r\n        this.withEnabled(ruleConfigurationObj.enabled);\r\n        this.withSeverity(ruleConfigurationObj.severity);\r\n\r\n        this._withConditions(ruleConfigurationObj.conditions);\r\n        this._withNotifications(ruleConfigurationObj.notifications);\r\n\r\n        this.withOrganization(organization);\r\n        this.withChannel(channel);\r\n    }\r\n\r\n\r\n    /**\r\n     * Set the organization attribute\r\n     * @param {string} organization - required field\r\n     * @return {RulesConfigurations}\r\n     */\r\n    withOrganization(organization) {\r\n        if (typeof organization !== 'string' || organization.length === 0 || organization.length > 50)\r\n            throw new Error('Parameter organization must be a string, cannot be empty and has a maximum length of 50');\r\n        this._organization = organization;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the channel attribute\r\n     * @param {string} channel - required field\r\n     * @return {RulesConfigurations}\r\n     */\r\n    withChannel(channel) {\r\n        if (typeof channel !== 'string' || channel.length === 0 || channel.length > 50)\r\n            throw new Error('Parameter channel must be a string, cannot be empty and has a maximum length of 50');\r\n        this._channel = channel;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the name attribute\r\n     * @param {string} name - required field\r\n     * @return {RulesConfigurations}\r\n     */\r\n    withName(name) {\r\n        if (typeof name !== 'string' || name.length === 0 || name.length > 50)\r\n            throw new Error('Parameter name must be a string, cannot be empty and has a maximum length of 50');\r\n        this._name = name;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the description attribute\r\n     * @param {string} description \r\n     * @return {RulesConfigurations}\r\n     */\r\n    withDescription(description) {\r\n        if (typeof description !== 'string' || description.length > 250)\r\n            throw new Error({\r\n                message: \"OGAPI_STRING_PARAMETER_MAX_LENGTH_250\",\r\n                parameter: 'description'\r\n            });\r\n        this._description = description;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the enabled attribute\r\n     * @param {string} enabled \r\n     * @return {RulesConfigurations}\r\n     */\r\n    withEnabled(enabled) {\r\n        if (typeof enabled !== 'boolean')\r\n            throw new Error('Parameter enabled must be true or false');\r\n        this._enabled = enabled;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the severity attribute\r\n     * @param {string} severity \r\n     * @return {RulesConfigurations}\r\n     */\r\n    withSeverity(severity) {\r\n        if (typeof severity !== 'string')\r\n            throw new Error('Parameter severity must be a string');\r\n        this._severity = severity;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the conditions attribute\r\n     * @param {Array} conditions \r\n     * @return {RulesConfigurations}\r\n     */\r\n    _withConditions(conditions) {\r\n        //if (typeof conditions.constructor !== 'Array')\r\n        //    throw new Error('Parameter conditions must be an Array');\r\n        if (!conditions) {\r\n            throw new Error('A rule must have conditions');\r\n        }\r\n\r\n        conditions.forEach(function (condTmp, idx) {\r\n            if (!condTmp.name) {\r\n                throw new Error('Every condition must contain a name');\r\n            }\r\n        });\r\n\r\n        this._conditions = conditions;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the notifications attribute\r\n     * @param {Array} notifications \r\n     * @return {RulesConfigurations}\r\n     */\r\n    _withNotifications(notifications) {\r\n        //if (typeof notifications !== 'Array')\r\n        //    throw new Error('Parameter notifications must be an Array');\r\n\r\n        if (notifications) {\r\n            notifications.forEach(function (notifTmp, idx) {\r\n                if (!notifTmp.name) {\r\n                    throw new Error('Every notification must contain a name');\r\n                }\r\n            });\r\n\r\n            this._notifications = notifications;\r\n        }\r\n        return this;\r\n    }\r\n\r\n    _composeElement() {\r\n        if (this._name === undefined || this._enabled === undefined || this._organization === undefined || this._channel === undefined || this._severity === undefined)\r\n            throw new Error('Parameters organization, channel, severity, enabled and name must be defined');\r\n\r\n        let updateData = {\r\n            \"configurations\": [{\r\n                \"name\": this._name,\r\n                \"enabled\": this._enabled,\r\n                \"severity\": this._severity,\r\n                \"description\": (this._description ? this._description : undefined),\r\n                \"conditions\": this._conditions,\r\n                \"notifications\": this._notifications\r\n            }]\r\n        };\r\n\r\n        return updateData;\r\n    }\r\n\r\n    /**\r\n     * Allows the modification of a condition\r\n     * @param {string} condName \r\n     * @return {_RuleCondition}\r\n     */\r\n    condition(condName) {\r\n        let _condition = {};\r\n        let _this = this;\r\n        if (this._conditions && this._conditions.length > 0) {\r\n            this._conditions.forEach(function (condTmp, idx) {\r\n                if (condTmp.name === condName) {\r\n                    //console.log(idx + \": \" + condTmp);\r\n                    _condition = condTmp;\r\n                }\r\n            });\r\n\r\n            if (_condition.name) {\r\n                //console.log(_condition.name);\r\n                return new _RuleCondition(_this, _condition);\r\n            } else {\r\n                throw new Error(\"Condition \" + condName + \" not exists in rule \" + _this.name);\r\n            }\r\n        } else {\r\n            throw new Error(\"Condition \" + condName + \" not exists in rule \" + _this.name);\r\n        }\r\n    }\r\n\r\n    /**\r\n     * Allows the modification of a notification\r\n     * @param {string} notifName \r\n     * @return {_RuleCondition}\r\n     */\r\n    notification(notifName) {\r\n        let _notification = {};\r\n        let _this = this;\r\n        if (this._notifications && this._notifications.length > 0) {\r\n            this._notifications.forEach(function (notifTmp, idx) {\r\n                if (notifTmp.name === notifName) {\r\n                    //console.log(idx + \": \" + notifTmp);\r\n                    _notification = notifTmp;\r\n                }\r\n            });\r\n\r\n            if (_notification.name) {\r\n                //console.log(_notification.name);\r\n                return new _RuleNotification(_this, _notification);\r\n            } else {\r\n                throw new Error(\"Notification \" + notifName + \" not exists in rule \" + _this.name);\r\n            }\r\n        } else {\r\n            throw new Error(\"Notification \" + notifName + \" not exists in rule \" + _this.name);\r\n        }\r\n    }\r\n\r\n    _buildURL() {\r\n        return this._resource + \"/\" + this._organization + \"/channels/\" + this._channel + \"/ruleconfigurations\";\r\n    }\r\n\r\n    /** \r\n     * Create not allowed\r\n     * @throws {Error} \r\n     */\r\n    create() {\r\n        throw new Error(\"Rule configuration creation not allowed\");\r\n    }\r\n\r\n    /** \r\n     * Deletes the selected RuleConfiguration\r\n     * @return {Promise}\r\n     * @throws {Error} \r\n     */\r\n    delete() {\r\n        if (this._name === undefined || this._organization === undefined || this._channel === undefined)\r\n            throw new Error('Parameters organization, channel and name must be defined');\r\n\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n        this._ogapi.Napi.delete(this._buildURL() + '/' + this._name)\r\n            .then((res) => {\r\n                if (res.statusCode === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n}"
+    "content": "'use strict';\r\n\r\nimport BaseProvision from '../provision/BaseProvision';\r\nimport _RuleCondition from './_RuleCondition';\r\nimport _RuleNotification from './_RuleNotification';\r\nimport q from 'q';\r\n\r\n/**\r\n * This is a base object that contains all you can do about RulesConfigurations.\r\n */\r\nexport default class RuleConfigurations extends BaseProvision {\r\n\r\n    /**     \r\n     * @param {InternalOpenGateAPI} Reference to the API object.\r\n     */\r\n    constructor(ogapi, organization, channel, ruleConfigurationObj) {\r\n        super(ogapi, \"/organizations\");\r\n\r\n        this.withName(ruleConfigurationObj.name);\r\n\r\n        if (ruleConfigurationObj.description) {\r\n            this.withDescription(ruleConfigurationObj.description);\r\n        }\r\n\r\n        if (ruleConfigurationObj.enabled !== null && typeof ruleConfigurationObj.enabled !== 'undefined')\r\n            this.withEnabled(ruleConfigurationObj.enabled);\r\n\r\n        if (ruleConfigurationObj.severity !== null && typeof ruleConfigurationObj.severity !== 'undefined')\r\n            this.withSeverity(ruleConfigurationObj.severity);\r\n\r\n        if (ruleConfigurationObj.conditions !== null && typeof ruleConfigurationObj.conditions !== 'undefined')\r\n            this._withConditions(ruleConfigurationObj.conditions);\r\n        if (ruleConfigurationObj.notifications !== null && typeof ruleConfigurationObj.notifications !== 'undefined')\r\n            this._withNotifications(ruleConfigurationObj.notifications);\r\n\r\n        this.withOrganization(organization);\r\n        this.withChannel(channel);\r\n    }\r\n\r\n\r\n    /**\r\n     * Set the organization attribute\r\n     * @param {string} organization - required field\r\n     * @return {RulesConfigurations}\r\n     */\r\n    withOrganization(organization) {\r\n        if (typeof organization !== 'string' || organization.length === 0 || organization.length > 50)\r\n            throw new Error('Parameter organization must be a string, cannot be empty and has a maximum length of 50');\r\n        this._organization = organization;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the channel attribute\r\n     * @param {string} channel - required field\r\n     * @return {RulesConfigurations}\r\n     */\r\n    withChannel(channel) {\r\n        if (typeof channel !== 'string' || channel.length === 0 || channel.length > 50)\r\n            throw new Error('Parameter channel must be a string, cannot be empty and has a maximum length of 50');\r\n        this._channel = channel;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the name attribute\r\n     * @param {string} name - required field\r\n     * @return {RulesConfigurations}\r\n     */\r\n    withName(name) {\r\n        if (typeof name !== 'string' || name.length === 0 || name.length > 50)\r\n            throw new Error('Parameter name must be a string, cannot be empty and has a maximum length of 50');\r\n        this._name = name;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the description attribute\r\n     * @param {string} description \r\n     * @return {RulesConfigurations}\r\n     */\r\n    withDescription(description) {\r\n        if (typeof description !== 'string' || description.length > 250)\r\n            throw new Error({\r\n                message: \"OGAPI_STRING_PARAMETER_MAX_LENGTH_250\",\r\n                parameter: 'description'\r\n            });\r\n        this._description = description;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the enabled attribute\r\n     * @param {string} enabled \r\n     * @return {RulesConfigurations}\r\n     */\r\n    withEnabled(enabled) {\r\n        if (typeof enabled !== 'boolean')\r\n            throw new Error('Parameter enabled must be true or false');\r\n        this._enabled = enabled;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the severity attribute\r\n     * @param {string} severity \r\n     * @return {RulesConfigurations}\r\n     */\r\n    withSeverity(severity) {\r\n        if (typeof severity !== 'string')\r\n            throw new Error('Parameter severity must be a string');\r\n        this._severity = severity;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Allows the modification of a condition\r\n     * @param {string} condName \r\n     * @return {_RuleCondition}\r\n     */\r\n    condition(condName) {\r\n        let _condition = {};\r\n        let _this = this;\r\n        if (this._conditions && this._conditions.length > 0) {\r\n            this._conditions.forEach(function (condTmp, idx) {\r\n                if (condTmp.name === condName) {\r\n                    //console.log(idx + \": \" + condTmp);\r\n                    _condition = condTmp;\r\n                }\r\n            });\r\n\r\n            if (_condition.name) {\r\n                //console.log(_condition.name);\r\n                return new _RuleCondition(_this, _condition);\r\n            } else {\r\n                throw new Error(\"Condition \" + condName + \" not exists in rule \" + _this.name);\r\n            }\r\n        } else {\r\n            throw new Error(\"Condition \" + condName + \" not exists in rule \" + _this.name);\r\n        }\r\n    }\r\n\r\n    /**\r\n     * Allows the modification of a notification\r\n     * @param {string} notifName \r\n     * @return {_RuleCondition}\r\n     */\r\n    notification(notifName) {\r\n        let _notification = {};\r\n        let _this = this;\r\n        if (this._notifications && this._notifications.length > 0) {\r\n            this._notifications.forEach(function (notifTmp, idx) {\r\n                if (notifTmp.name === notifName) {\r\n                    //console.log(idx + \": \" + notifTmp);\r\n                    _notification = notifTmp;\r\n                }\r\n            });\r\n\r\n            if (_notification.name) {\r\n                //console.log(_notification.name);\r\n                return new _RuleNotification(_this, _notification);\r\n            } else {\r\n                throw new Error(\"Notification \" + notifName + \" not exists in rule \" + _this.name);\r\n            }\r\n        } else {\r\n            throw new Error(\"Notification \" + notifName + \" not exists in rule \" + _this.name);\r\n        }\r\n    }\r\n\r\n    /**\r\n     * Set the conditions attribute\r\n     * @param {Array} conditions \r\n     * @return {RulesConfigurations}\r\n     */\r\n    _withConditions(conditions) {\r\n        conditions.forEach(function (condition, idx) {\r\n            if (!condition.name) {\r\n                throw new Error('Every condition must contain a name');\r\n            }\r\n            if (condition.parameters) {\r\n                condition.parameters.forEach(function (parameter, index) {\r\n                    if (!parameter.value) {\r\n                        conditions[idx].parameters[index].value = \"\";\r\n                    }\r\n                });\r\n            }\r\n        });\r\n\r\n        this._conditions = conditions;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the notifications attribute\r\n     * @param {Array} notifications \r\n     * @return {RulesConfigurations}\r\n     */\r\n    _withNotifications(notifications) {\r\n        if (notifications) {\r\n            notifications.forEach(function (notifTmp, idx) {\r\n                if (!notifTmp.name) {\r\n                    throw new Error('Every notification must contain a name');\r\n                }\r\n            });\r\n\r\n            this._notifications = notifications;\r\n        }\r\n        return this;\r\n    }\r\n\r\n    _composeElement() {\r\n        if (this._name === undefined || this._enabled === undefined || this._organization === undefined || this._channel === undefined || this._severity === undefined)\r\n            throw new Error('Parameters organization, channel, severity, enabled and name must be defined');\r\n\r\n        if (!this._conditions) {\r\n            throw new Error('A rule must have conditions');\r\n        }\r\n\r\n\r\n        let updateData = {\r\n            \"configurations\": [{\r\n                \"name\": this._name,\r\n                \"enabled\": this._enabled,\r\n                \"severity\": this._severity,\r\n                \"description\": (this._description ? this._description : undefined),\r\n                \"conditions\": this._conditions,\r\n                \"notifications\": this._notifications\r\n            }]\r\n        };\r\n\r\n        return updateData;\r\n    }\r\n\r\n    _buildURL() {\r\n        return this._resource + \"/\" + this._organization + \"/channels/\" + this._channel + \"/ruleconfigurations\";\r\n    }\r\n\r\n    /** \r\n     * Create not allowed\r\n     * @throws {Error} \r\n     */\r\n    create() {\r\n        throw new Error(\"Rule configuration creation not allowed\");\r\n    }\r\n\r\n    /** \r\n     * Deletes the selected RuleConfiguration\r\n     * @return {Promise}\r\n     * @throws {Error} \r\n     */\r\n    delete() {\r\n        if (this._name === undefined || this._organization === undefined || this._channel === undefined)\r\n            throw new Error('Parameters organization, channel and name must be defined');\r\n\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n        this._ogapi.Napi.delete(this._buildURL() + '/' + this._name)\r\n            .then((res) => {\r\n                if (res.statusCode === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n}"
   },
   {
     "__docId__": 1287,
@@ -30832,7 +30832,7 @@
     "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#withOrganization",
     "access": null,
     "description": "Set the organization attribute",
-    "lineNumber": 41,
+    "lineNumber": 46,
     "params": [
       {
         "nullable": null,
@@ -30865,7 +30865,7 @@
     "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#_organization",
     "access": null,
     "description": null,
-    "lineNumber": 44,
+    "lineNumber": 49,
     "undocument": true,
     "type": {
       "types": [
@@ -30883,7 +30883,7 @@
     "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#withChannel",
     "access": null,
     "description": "Set the channel attribute",
-    "lineNumber": 53,
+    "lineNumber": 58,
     "params": [
       {
         "nullable": null,
@@ -30916,7 +30916,7 @@
     "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#_channel",
     "access": null,
     "description": null,
-    "lineNumber": 56,
+    "lineNumber": 61,
     "undocument": true,
     "type": {
       "types": [
@@ -30934,7 +30934,7 @@
     "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#withName",
     "access": null,
     "description": "Set the name attribute",
-    "lineNumber": 65,
+    "lineNumber": 70,
     "params": [
       {
         "nullable": null,
@@ -30967,7 +30967,7 @@
     "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#_name",
     "access": null,
     "description": null,
-    "lineNumber": 68,
+    "lineNumber": 73,
     "undocument": true,
     "type": {
       "types": [
@@ -30985,7 +30985,7 @@
     "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#withDescription",
     "access": null,
     "description": "Set the description attribute",
-    "lineNumber": 77,
+    "lineNumber": 82,
     "params": [
       {
         "nullable": null,
@@ -31018,7 +31018,7 @@
     "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#_description",
     "access": null,
     "description": null,
-    "lineNumber": 83,
+    "lineNumber": 88,
     "undocument": true,
     "type": {
       "types": [
@@ -31036,7 +31036,7 @@
     "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#withEnabled",
     "access": null,
     "description": "Set the enabled attribute",
-    "lineNumber": 92,
+    "lineNumber": 97,
     "params": [
       {
         "nullable": null,
@@ -31069,7 +31069,7 @@
     "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#_enabled",
     "access": null,
     "description": null,
-    "lineNumber": 95,
+    "lineNumber": 100,
     "undocument": true,
     "type": {
       "types": [
@@ -31087,7 +31087,7 @@
     "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#withSeverity",
     "access": null,
     "description": "Set the severity attribute",
-    "lineNumber": 104,
+    "lineNumber": 109,
     "params": [
       {
         "nullable": null,
@@ -31120,7 +31120,7 @@
     "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#_severity",
     "access": null,
     "description": null,
-    "lineNumber": 107,
+    "lineNumber": 112,
     "undocument": true,
     "type": {
       "types": [
@@ -31133,134 +31133,12 @@
     "kind": "method",
     "static": false,
     "variation": null,
-    "name": "_withConditions",
-    "memberof": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations",
-    "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#_withConditions",
-    "access": null,
-    "description": "Set the conditions attribute",
-    "lineNumber": 116,
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "Array"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "conditions",
-        "description": ""
-      }
-    ],
-    "return": {
-      "nullable": null,
-      "types": [
-        "RulesConfigurations"
-      ],
-      "spread": false,
-      "description": ""
-    },
-    "generator": false
-  },
-  {
-    "__docId__": 1302,
-    "kind": "member",
-    "static": false,
-    "variation": null,
-    "name": "_conditions",
-    "memberof": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations",
-    "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#_conditions",
-    "access": null,
-    "description": null,
-    "lineNumber": 129,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 1303,
-    "kind": "method",
-    "static": false,
-    "variation": null,
-    "name": "_withNotifications",
-    "memberof": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations",
-    "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#_withNotifications",
-    "access": null,
-    "description": "Set the notifications attribute",
-    "lineNumber": 138,
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "Array"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "notifications",
-        "description": ""
-      }
-    ],
-    "return": {
-      "nullable": null,
-      "types": [
-        "RulesConfigurations"
-      ],
-      "spread": false,
-      "description": ""
-    },
-    "generator": false
-  },
-  {
-    "__docId__": 1304,
-    "kind": "member",
-    "static": false,
-    "variation": null,
-    "name": "_notifications",
-    "memberof": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations",
-    "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#_notifications",
-    "access": null,
-    "description": null,
-    "lineNumber": 149,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 1305,
-    "kind": "method",
-    "static": false,
-    "variation": null,
-    "name": "_composeElement",
-    "memberof": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations",
-    "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#_composeElement",
-    "access": null,
-    "description": null,
-    "lineNumber": 154,
-    "undocument": true,
-    "params": [],
-    "return": {
-      "types": [
-        "*"
-      ]
-    },
-    "generator": false
-  },
-  {
-    "__docId__": 1306,
-    "kind": "method",
-    "static": false,
-    "variation": null,
     "name": "condition",
     "memberof": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations",
     "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#condition",
     "access": null,
     "description": "Allows the modification of a condition",
-    "lineNumber": 177,
+    "lineNumber": 121,
     "params": [
       {
         "nullable": null,
@@ -31284,7 +31162,7 @@
     "generator": false
   },
   {
-    "__docId__": 1307,
+    "__docId__": 1302,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -31293,7 +31171,7 @@
     "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#notification",
     "access": null,
     "description": "Allows the modification of a notification",
-    "lineNumber": 204,
+    "lineNumber": 148,
     "params": [
       {
         "nullable": null,
@@ -31317,6 +31195,128 @@
     "generator": false
   },
   {
+    "__docId__": 1303,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_withConditions",
+    "memberof": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations",
+    "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#_withConditions",
+    "access": null,
+    "description": "Set the conditions attribute",
+    "lineNumber": 175,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "conditions",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "RulesConfigurations"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 1304,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "_conditions",
+    "memberof": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations",
+    "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#_conditions",
+    "access": null,
+    "description": null,
+    "lineNumber": 189,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 1305,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_withNotifications",
+    "memberof": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations",
+    "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#_withNotifications",
+    "access": null,
+    "description": "Set the notifications attribute",
+    "lineNumber": 198,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "notifications",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "RulesConfigurations"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 1306,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "_notifications",
+    "memberof": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations",
+    "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#_notifications",
+    "access": null,
+    "description": null,
+    "lineNumber": 206,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 1307,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_composeElement",
+    "memberof": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations",
+    "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#_composeElement",
+    "access": null,
+    "description": null,
+    "lineNumber": 211,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
     "__docId__": 1308,
     "kind": "method",
     "static": false,
@@ -31326,7 +31326,7 @@
     "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#_buildURL",
     "access": null,
     "description": null,
-    "lineNumber": 226,
+    "lineNumber": 234,
     "undocument": true,
     "params": [],
     "return": {
@@ -31346,7 +31346,7 @@
     "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#create",
     "access": null,
     "description": "Create not allowed",
-    "lineNumber": 234,
+    "lineNumber": 242,
     "params": [],
     "throws": [
       {
@@ -31368,7 +31368,7 @@
     "longname": "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#delete",
     "access": null,
     "description": "Deletes the selected RuleConfiguration",
-    "lineNumber": 243,
+    "lineNumber": 251,
     "params": [],
     "return": {
       "nullable": null,

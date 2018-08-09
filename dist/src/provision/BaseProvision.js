@@ -162,8 +162,6 @@ var BaseProvision = (function () {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
 
-            console.log(this._buildURL());
-            console.log(JSON.stringify(this._composeUpdateElement()));
             this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement()).then(function (res) {
                 if (res.statusCode === 200) {
                     defered.resolve({

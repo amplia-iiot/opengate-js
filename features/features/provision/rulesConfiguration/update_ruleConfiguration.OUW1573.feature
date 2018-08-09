@@ -2,7 +2,8 @@
 @provision
 @update_ruleConfiguration
 @rulesConfiguration
-Feature: Managing a rule configuration
+@OUW-1573
+Feature: Managing a rule configuration - OUW-1573
     As a user of JsApi
     I want to update a rule configuration
     So I can update a rule configuration
@@ -11,7 +12,7 @@ Feature: Managing a rule configuration
         Given an apikey user by "require-real-apikey"
         And I want to update a "rule configuration"
 
-    Scenario: updating a rule
+    Scenario: updating a rule - OUW-1573
         When I want to manage the next rule configuration from organization "base_organization" and channel "base_channel":
             """
             {
@@ -38,17 +39,13 @@ Feature: Managing a rule configuration
             }, {
             "name": "datastreamCurrentValueThresholdTemp_1",
             "parameters": [{
-            "name": "datastream_name",
-            "value": "DATASTREAM"
+            "name": "datastream_name"
             }, {
-            "name": "curvalue_operator",
-            "value": ">"
+            "name": "curvalue_operator"
             }, {
-            "name": "threshold",
-            "value": "0"
+            "name": "threshold"
             }, {
-            "name": "prevalue_operator",
-            "value": "<"
+            "name": "prevalue_operator"
             }
             ]
             }

@@ -10,6 +10,14 @@ Feature: Cloning and deleting a rule configuration
     Background:
         Given an apikey user by "require-real-apikey"
 
+    Scenario: try deleting a rule
+        When I want to delete the next rule configuration from organization "base_organization" and channel "base_channel":
+            """
+            {
+            "name": "magneticTamperEvent_tests"
+            }
+            """
+
     Scenario: try cloning a rule with the same name
         Given an ogapi "rule configuration actions" util with...
             | param               |
@@ -54,28 +62,7 @@ Feature: Cloning and deleting a rule configuration
         When I want to delete the next rule configuration from organization "base_organization" and channel "base_channel":
             """
             {
-            "name": "magneticTamperEvent_tests",
-            "enabled": true,
-            "severity": "URGENT",
-            "open": true,
-            "close": "magneticTamperEvent",
-            "groupParent": false,
-            "groupRule": "eventReceived",
-            "description": "magneticTamperEvent evento",
-            "conditions": [{
-            "name": "magneticTamperEvent"
-            }],
-            "notifications": [{
-            "name": "magneticTamperEvent",
-            "enabled": false,
-            "bearers": [{
-            "name": "email",
-            "enabled": false
-            }, {
-            "name": "snmp",
-            "enabled": false
-            }]
-            }]
+            "name": "magneticTamperEvent_tests"
             }
             """
         And response code should be: 200
