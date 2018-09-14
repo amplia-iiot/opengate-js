@@ -12,9 +12,9 @@ findDeleteModel = require('./delete_provision_model');
 searchingModel = require('./searching_model');
 
 function World() {
-    this.test_url_north = process.env.API_NORTH_INTERNAL || 'SECURE_URL_NORTH';
-    this.test_url_south = process.env.API_SOUTH_INTERNAL || 'REQUIRE-URL_SOUTH';
-    this.apikey = process.env.API_KEY || 'REQUIRE-API_KEY';
+    this.test_url_north = process.env.API_NORTH_INTERNAL || 'API_NORTH';
+    this.test_url_south = process.env.API_SOUTH_INTERNAL || 'API_SOUTH';
+    this.apikey = process.env.API_KEY || 'API_KEY';
     chai.use(chai_as_promised);
     this.expect = chai.expect;
 
@@ -34,7 +34,7 @@ function World() {
             'read': this.findModel,
             'find': this.findModel,
             'search': this.searchingModel
-        }[model];
+        } [model];
     };
 
     var _this = this;

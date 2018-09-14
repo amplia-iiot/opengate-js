@@ -25,6 +25,12 @@ module.exports = function () {
         callback();
     });
 
+    this.Then(/^the content of file "([^"]*)" must match:$/, function (tmpFile, contentTmp, callback) {
+        var data = this.responseData.data;
+        this.expect(data.text).to.match(new RegExp(contentTmp));
+        callback();
+    });
+
     this.Then(/^the result contains:$/, function (resultContent, callback) {
         var data = this.responseData.data;
         this.expect(JSON.stringify(data)).to.be.equal(resultContent);

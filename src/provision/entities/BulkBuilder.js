@@ -1,12 +1,7 @@
 'use strict';
 
-import HttpStatus from 'http-status-codes';
 import BaseProvision from '../BaseProvision';
 import q from 'q';
-
-const ERROR_VALUE_NOT_ALLOWED = 'The value is not allowed. The value should be formatted as follows: ';
-const ERROR_DATASTREAM_NOT_ALLOWED = 'Datastream is not allowed.';
-const ERROR_ORGANIZATION = 'Parameters organization must be defined';
 
 
 /**
@@ -15,8 +10,10 @@ const ERROR_ORGANIZATION = 'Parameters organization must be defined';
 export default class BulkBuilder extends BaseProvision {
 
     /**
-     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
-     * @param {!string} organization - this is the organization where can be create/delete/update the entity
+     * @param {InternalOpenGateAPI} ogapi - required field. This is ogapi instance
+     * @param {resource} resource - required field. This is the resource used for the bulk provision
+     * @param {extension} extension - required field. Type of file to send
+     * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
      */
     constructor(ogapi, resource, extension, timeout) {
         super(ogapi, resource);
@@ -36,35 +33,48 @@ export default class BulkBuilder extends BaseProvision {
     }
 
     /**
-     * @param {!string|!Blob} rawFile - file with format string or Blob 
-     * @param {boolean} csv_response - true if you want a response on format csv. False or null if you want a response on format json
+     *  Execute the bulk creation operation
+     * @example 
+     *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).create(rawFile)
+     *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).create(new Blob(), ture)
+     * @param {string|Blob} rawFile - File with format string or Blob 
+     * @param {boolean} [csv_response] - true if you want a response on format csv. False or null if you want a response on format json
      */
     create(rawFile, csv_response) {
         return this._executeOperation(rawFile, 'CREATE', csv_response);
     }
 
     /**
-     * 
-     * @param {!string|!Blob} rawFile - file with format string or Blob 
-     * @param {boolean} csv_response - true if you want a response on format csv. False or null if you want a response on format json
+     *  Execute the bulk delete operation
+     * @example 
+     *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).delete(rawFile)
+     *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).delete(new Blob(), ture)
+     * @param {string|Blob} rawFile - File with format string or Blob 
+     * @param {boolean} [csv_response] - true if you want a response on format csv. False or null if you want a response on format json
      */
     delete(rawFile, csv_response) {
         return this._executeOperation(rawFile, 'DELETE', csv_response);
     }
 
     /**
-     * 
-     * @param {!string|!Blob} rawFile - file with format string or Blob 
-     * @param {boolean} csv_response - true if you want a response on format csv. False or null if you want a response on format json
+     *  Execute the bulk delete full operation
+     * @example 
+     *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).deleteAll(rawFile)
+     *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).deleteAll(new Blob(), ture)
+     * @param {string|Blob} rawFile - File with format string or Blob 
+     * @param {boolean} [csv_response] - true if you want a response on format csv. False or null if you want a response on format json
      */
     deleteAll(rawFile, csv_response) {
         return this._executeOperation(rawFile, 'DELETE&full=true', csv_response);
     }
 
     /**
-     * 
-     * @param {!string|!Blob} rawFile - file with format string or Blob 
-     * @param {boolean} csv_response - true if you want a response on format csv. False or null if you want a response on format json
+     *  Execute the bulk update operation
+     * @example 
+     *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).update(rawFile)
+     *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).update(new Blob(), ture)
+     * @param {string|Blob} rawFile - File with format string or Blob 
+     * @param {boolean} [csv_response] - true if you want a response on format csv. False or null if you want a response on format json
      */
     update(rawFile, csv_response) {
         return this._executeOperation(rawFile, 'UPDATE', csv_response);
