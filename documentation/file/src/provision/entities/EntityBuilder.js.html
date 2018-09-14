@@ -241,6 +241,8 @@ import JsonBulkBuilder from &apos;./JsonBulkBuilder&apos;;
 
 const jsonSchemaValidator = new jsonschema.Validator();
 const ERROR_ORGANIZATION = &apos;Parameters organization must be defined&apos;;
+const ERROR_BULK_RESOURCE = &apos;The parameters resources must be defined and must be some of these values: entities or tickets&apos;;
+const BULK_RESOURCES = [&apos;entities&apos;, &apos;tickets&apos;];
 const schema_base = &apos;/og_basic_types.json&apos;;
 
 /**
@@ -260,7 +262,6 @@ export default class EntityBuilder {
         let _this = this;
         let defered = q.defer();
         let promise = defered.promise;
-        let data = {};
         let f = _this._ogapi.newFilterBuilder();
         f.and({
             &quot;like&quot;: {
@@ -276,7 +277,6 @@ export default class EntityBuilder {
             }
         });
 
-        let allowedDatastreams = [];
         let allowedDatastreamsBuilder = this._ogapi.datamodelsSearchBuilder().filter(f).build();
 
         allowedDatastreamsBuilder.execute().then(function (okh) {
@@ -331,10 +331,11 @@ export default class EntityBuilder {
             if (_id.startsWith(&apos;provision.administration&apos;) || _id.startsWith(filter)) {
                 response.allowedDatastreams.push(element);
                 if (_id.includes(&apos;communicationModules&apos;)) {
+                    var includeSubscriberOrSubscription = filter.includes(&apos;subscriber&apos;) || filter.includes(&apos;subscription&apos;);
                     _this.schema[_id] = {
                         value: element.schema,
-                        complex: filter.includes(&apos;subscriber&apos;) || filter.includes(&apos;subscription&apos;) ? false : true,
-                        function: filter.includes(&apos;subscriber&apos;) || filter.includes(&apos;subscription&apos;) ? &apos;with&apos; : &apos;withComplex&apos;
+                        complex: includeSubscriberOrSubscription ? false : true,
+                        function: includeSubscriberOrSubscription ? &apos;with&apos; : &apos;withComplex&apos;
                     };
                 } else {
                     _this.schema[_id] = {
@@ -352,42 +353,116 @@ export default class EntityBuilder {
 
     }
 
+    /**
+     * Get a DeviceBuilder for operate with entities of type device
+     * @example
+     * ogapi.devicesBuilder(&apos;orgname&apos;).then(function(deviceBuilder){//...}).catch()
+     * @param {string} organization - required field
+     * @return {Promise}
+     */
     devicesBuilder(organization) {
         return this._genericBuilder(organization, &apos;entity.device&apos;, &apos;provision&apos;, function (allowedDatastreams, definedSchemas) {
             return new DeviceBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
         });
     }
 
+    /**
+     * Get a AssetBuilder for operate with entities of type asset
+     * @example
+     * ogapi.assetsBuilder(&apos;orgname&apos;).then(function(assetBuilder){//...}).catch()
+     * @param {string} organization - required field
+     * @return {Promise}
+     */
     assetsBuilder(organization) {
         return this._genericBuilder(organization, &apos;entity.asset&apos;, &apos;provision&apos;, function (allowedDatastreams, definedSchemas) {
             return new AssetBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
         });
     }
 
+    /**
+     * Get a TicketBuilder for operate with entities of type ticket
+     * @example
+     * ogapi.ticketsBuilder(&apos;orgname&apos;).then(function(ticketBuilder){//...}).catch()
+     * @param {string} organization - required field
+     * @return {Promise}
+     */
     ticketsBuilder(organization) {
         return this._genericBuilder(organization, &apos;ticket&apos;, &apos;provision&apos;, function (allowedDatastreams, definedSchemas) {
             return new TicketBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
         });
     }
+
+    /**
+     * Get a SubscriberBuilder for operate with entities of type subscriber
+     * @example
+     * ogapi.subscribersBuilder(&apos;orgname&apos;).then(function(subscriberBuilder){//...}).catch()
+     * @param {string} organization - required field
+     * @return {Promise}
+     */
     subscribersBuilder(organization) {
         return this._genericBuilder(organization, &apos;entity.subscriber&apos;, &apos;provision.device.communicationModules[].subscriber&apos;, function (allowedDatastreams, definedSchemas) {
             return new SubscriberBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
         });
     }
-
+    /**
+     * Get a SubscriptionBuilder for operate with entities of type subscription
+     * @example
+     * ogapi.subscriptionsBuilder(&apos;orgname&apos;).then(function(subscriptionBuilder){//...}).catch()
+     * @param {string} organization - required field
+     * @return {Promise}
+     */
     subscriptionsBuilder(organization) {
         return this._genericBuilder(organization, &apos;entity.subscription&apos;, &apos;provision&apos;, function (allowedDatastreams, definedSchemas) {
             return new SubscriptionBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
         });
     }
-    newCsvBulkBuilder(organization, timeout) {
-        return new CsvBulkBuilder(this._ogapi, organization, timeout);
+    /**
+     * Get a new CsvBulkBuilder 
+     * @example 
+     *  ogapi.newCsvBulkBuilder(&apos;orgname&apos;, &apos;entities&apos;, 10000)
+     * @param {string} organization - required field. 
+     * @param {string} resource - required field. Type of resource: entities or tickets
+     * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
+     * @return {CsvBulkBuilder}
+     */
+    newCsvBulkBuilder(organization, resource, timeout) {
+        this._validateBulk(organization, resource);
+        return new CsvBulkBuilder(this._ogapi, organization, resource, timeout);
     }
-    newJsonBulkBuilder(organization, timeout) {
-        return new JsonBulkBuilder(this._ogapi, organization, timeout);
+    /**
+     * Get a new JsonBulkBuilder 
+     * @example 
+     *  ogapi.newJsonBulkBuilder(&apos;orgname&apos;, &apos;entities&apos;, 10000)
+     * @param {string} organization - required field. 
+     * @param {string} resource - required field. Type of resource: entities or tickets
+     * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
+     * @return {JsonBulkBuilder}
+     */
+    newJsonBulkBuilder(organization, resource, timeout) {
+        this._validateBulk(organization, resource);
+        return new JsonBulkBuilder(this._ogapi, organization, resource, timeout);
     }
-    newJsonFlattenedBulkBuilder(organization, timeout) {
-        return new JsonFlattenedBulkBuilder(this._ogapi, organization, timeout);
+    /**
+     * Get a new JsonFlattenedBulkBuilder 
+     * @example 
+     *  ogapi.newJsonFlattenedBulkBuilder(&apos;orgname&apos;, &apos;entities&apos;, 10000)
+     * @param {string} organization - required field. 
+     * @param {string} resource - required field. Type of resource: entities or tickets
+     * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
+     * @return {JsonFlattenedBulkBuilder}
+     */
+    newJsonFlattenedBulkBuilder(organization, resource, timeout) {
+        this._validateBulk(organization, resource);
+        return new JsonFlattenedBulkBuilder(this._ogapi, organization, resource, timeout);
+    }
+
+    _validateBulk(organization, resource) {
+        if (!organization) {
+            throw new Error(ERROR_ORGANIZATION);
+        }
+        if (!resource || BULK_RESOURCES.indexOf(resource) === -1) {
+            throw new Error(ERROR_BULK_RESOURCE);
+        }
     }
 
     _genericBuilder(organization, resourceType, field, onFindAllowedDatastreams) {

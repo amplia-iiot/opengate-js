@@ -254,14 +254,14 @@ module.exports = {
             "entities search": function () {
                 return ogapi.entitiesSearchBuilder();
             },
-            "csv bulk builder": function (ogapi, param1) {
-                return ogapi.entityBuilder.newCsvBulkBuilder(param1);
+            "csv bulk builder": function (ogapi, param1, param2) {
+                return ogapi.entityBuilder.newCsvBulkBuilder(param1, param2);
             },
-            "json bulk builder": function (ogapi, param1) {
-                return ogapi.entityBuilder.newJsonBulkBuilder(param1);
+            "json bulk builder": function (ogapi, param1, param2) {
+                return ogapi.entityBuilder.newJsonBulkBuilder(param1, param2);
             },
-            "json flattened bulk builder": function (ogapi, param1) {
-                return ogapi.entityBuilder.newJsonFlattenedBulkBuilder(param1);
+            "json flattened bulk builder": function (ogapi, param1, param2) {
+                return ogapi.entityBuilder.newJsonFlattenedBulkBuilder(param1, param2);
             },
             "asset builder": function (ogapi, param1) {
                 return ogapi.entityBuilder.assetsBuilder(param1);

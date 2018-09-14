@@ -46,8 +46,8 @@
             "type": "Identifier",
             "name": "BulkBuilder",
             "range": [
-              22,
-              33
+              24,
+              35
             ],
             "loc": {
               "start": {
@@ -61,8 +61,8 @@
             }
           },
           "range": [
-            22,
-            33
+            24,
+            35
           ],
           "loc": {
             "start": {
@@ -81,8 +81,8 @@
         "value": "./BulkBuilder",
         "raw": "'./BulkBuilder'",
         "range": [
-          39,
-          54
+          41,
+          56
         ],
         "loc": {
           "start": {
@@ -96,8 +96,8 @@
         }
       },
       "range": [
-        15,
-        55
+        17,
+        57
       ],
       "loc": {
         "start": {
@@ -112,10 +112,10 @@
       "trailingComments": [
         {
           "type": "Block",
-          "value": "*\n * Csv builder. This builder give you the necessary tools to create a csv bulk using our OpenGate REST.\n ",
+          "value": "*\r\n * Csv builder. This builder give you the necessary tools to create a csv bulk using our OpenGate REST.\r\n ",
           "range": [
-            57,
-            168
+            61,
+            174
           ],
           "loc": {
             "start": {
@@ -138,8 +138,8 @@
           "type": "Identifier",
           "name": "CsvBulkBuilder",
           "range": [
-            190,
-            204
+            197,
+            211
           ],
           "loc": {
             "start": {
@@ -156,8 +156,8 @@
           "type": "Identifier",
           "name": "BulkBuilder",
           "range": [
-            213,
-            224
+            220,
+            231
           ],
           "loc": {
             "start": {
@@ -179,16 +179,16 @@
                 "type": "Identifier",
                 "name": "constructor",
                 "range": [
-                  482,
-                  493
+                  742,
+                  753
                 ],
                 "loc": {
                   "start": {
-                    "line": 15,
+                    "line": 16,
                     "column": 4
                   },
                   "end": {
-                    "line": 15,
+                    "line": 16,
                     "column": 15
                   }
                 }
@@ -201,16 +201,16 @@
                     "type": "Identifier",
                     "name": "ogapi",
                     "range": [
-                      494,
-                      499
+                      754,
+                      759
                     ],
                     "loc": {
                       "start": {
-                        "line": 15,
+                        "line": 16,
                         "column": 16
                       },
                       "end": {
-                        "line": 15,
+                        "line": 16,
                         "column": 21
                       }
                     }
@@ -219,17 +219,35 @@
                     "type": "Identifier",
                     "name": "organization",
                     "range": [
-                      501,
-                      513
+                      761,
+                      773
                     ],
                     "loc": {
                       "start": {
-                        "line": 15,
+                        "line": 16,
                         "column": 23
                       },
                       "end": {
-                        "line": 15,
+                        "line": 16,
                         "column": 35
+                      }
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "name": "resource",
+                    "range": [
+                      775,
+                      783
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 16,
+                        "column": 37
+                      },
+                      "end": {
+                        "line": 16,
+                        "column": 45
                       }
                     }
                   },
@@ -237,17 +255,17 @@
                     "type": "Identifier",
                     "name": "timeout",
                     "range": [
-                      515,
-                      522
+                      785,
+                      792
                     ],
                     "loc": {
                       "start": {
-                        "line": 15,
-                        "column": 37
+                        "line": 16,
+                        "column": 47
                       },
                       "end": {
-                        "line": 15,
-                        "column": 44
+                        "line": 16,
+                        "column": 54
                       }
                     }
                   }
@@ -262,16 +280,16 @@
                         "callee": {
                           "type": "Super",
                           "range": [
-                            534,
-                            539
+                            805,
+                            810
                           ],
                           "loc": {
                             "start": {
-                              "line": 16,
+                              "line": 17,
                               "column": 8
                             },
                             "end": {
-                              "line": 16,
+                              "line": 17,
                               "column": 13
                             }
                           }
@@ -281,16 +299,16 @@
                             "type": "Identifier",
                             "name": "ogapi",
                             "range": [
-                              540,
-                              545
+                              811,
+                              816
                             ],
                             "loc": {
                               "start": {
-                                "line": 16,
+                                "line": 17,
                                 "column": 14
                               },
                               "end": {
-                                "line": 16,
+                                "line": 17,
                                 "column": 19
                               }
                             }
@@ -302,88 +320,161 @@
                               "type": "BinaryExpression",
                               "operator": "+",
                               "left": {
-                                "type": "Literal",
-                                "value": "provision/organizations/",
-                                "raw": "'provision/organizations/'",
+                                "type": "BinaryExpression",
+                                "operator": "+",
+                                "left": {
+                                  "type": "BinaryExpression",
+                                  "operator": "+",
+                                  "left": {
+                                    "type": "Literal",
+                                    "value": "provision/organizations/",
+                                    "raw": "'provision/organizations/'",
+                                    "range": [
+                                      818,
+                                      844
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 17,
+                                        "column": 21
+                                      },
+                                      "end": {
+                                        "line": 17,
+                                        "column": 47
+                                      }
+                                    }
+                                  },
+                                  "right": {
+                                    "type": "Identifier",
+                                    "name": "organization",
+                                    "range": [
+                                      847,
+                                      859
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 17,
+                                        "column": 50
+                                      },
+                                      "end": {
+                                        "line": 17,
+                                        "column": 62
+                                      }
+                                    }
+                                  },
+                                  "range": [
+                                    818,
+                                    859
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 17,
+                                      "column": 21
+                                    },
+                                    "end": {
+                                      "line": 17,
+                                      "column": 62
+                                    }
+                                  }
+                                },
+                                "right": {
+                                  "type": "Literal",
+                                  "value": "/bulk/",
+                                  "raw": "'/bulk/'",
+                                  "range": [
+                                    862,
+                                    870
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 17,
+                                      "column": 65
+                                    },
+                                    "end": {
+                                      "line": 17,
+                                      "column": 73
+                                    }
+                                  }
+                                },
                                 "range": [
-                                  547,
-                                  573
+                                  818,
+                                  870
                                 ],
                                 "loc": {
                                   "start": {
-                                    "line": 16,
+                                    "line": 17,
                                     "column": 21
                                   },
                                   "end": {
-                                    "line": 16,
-                                    "column": 47
+                                    "line": 17,
+                                    "column": 73
                                   }
                                 }
                               },
                               "right": {
                                 "type": "Identifier",
-                                "name": "organization",
+                                "name": "resource",
                                 "range": [
-                                  576,
-                                  588
+                                  873,
+                                  881
                                 ],
                                 "loc": {
                                   "start": {
-                                    "line": 16,
-                                    "column": 50
+                                    "line": 17,
+                                    "column": 76
                                   },
                                   "end": {
-                                    "line": 16,
-                                    "column": 62
+                                    "line": 17,
+                                    "column": 84
                                   }
                                 }
                               },
                               "range": [
-                                547,
-                                588
+                                818,
+                                881
                               ],
                               "loc": {
                                 "start": {
-                                  "line": 16,
+                                  "line": 17,
                                   "column": 21
                                 },
                                 "end": {
-                                  "line": 16,
-                                  "column": 62
+                                  "line": 17,
+                                  "column": 84
                                 }
                               }
                             },
                             "right": {
                               "type": "Literal",
-                              "value": "/bulk/entities?action=#actionName#",
-                              "raw": "'/bulk/entities?action=#actionName#'",
+                              "value": "?action=#actionName#",
+                              "raw": "'?action=#actionName#'",
                               "range": [
-                                591,
-                                627
+                                884,
+                                906
                               ],
                               "loc": {
                                 "start": {
-                                  "line": 16,
-                                  "column": 65
+                                  "line": 17,
+                                  "column": 87
                                 },
                                 "end": {
-                                  "line": 16,
-                                  "column": 101
+                                  "line": 17,
+                                  "column": 109
                                 }
                               }
                             },
                             "range": [
-                              547,
-                              627
+                              818,
+                              906
                             ],
                             "loc": {
                               "start": {
-                                "line": 16,
+                                "line": 17,
                                 "column": 21
                               },
                               "end": {
-                                "line": 16,
-                                "column": 101
+                                "line": 17,
+                                "column": 109
                               }
                             }
                           },
@@ -392,17 +483,17 @@
                             "value": "text/plain",
                             "raw": "'text/plain'",
                             "range": [
-                              629,
-                              641
+                              908,
+                              920
                             ],
                             "loc": {
                               "start": {
-                                "line": 16,
-                                "column": 103
+                                "line": 17,
+                                "column": 111
                               },
                               "end": {
-                                "line": 16,
-                                "column": 115
+                                "line": 17,
+                                "column": 123
                               }
                             }
                           },
@@ -410,63 +501,63 @@
                             "type": "Identifier",
                             "name": "timeout",
                             "range": [
-                              643,
-                              650
+                              922,
+                              929
                             ],
                             "loc": {
                               "start": {
-                                "line": 16,
-                                "column": 117
+                                "line": 17,
+                                "column": 125
                               },
                               "end": {
-                                "line": 16,
-                                "column": 124
+                                "line": 17,
+                                "column": 132
                               }
                             }
                           }
                         ],
                         "range": [
-                          534,
-                          651
+                          805,
+                          930
                         ],
                         "loc": {
                           "start": {
-                            "line": 16,
+                            "line": 17,
                             "column": 8
                           },
                           "end": {
-                            "line": 16,
-                            "column": 125
+                            "line": 17,
+                            "column": 133
                           }
                         }
                       },
                       "range": [
-                        534,
-                        652
+                        805,
+                        931
                       ],
                       "loc": {
                         "start": {
-                          "line": 16,
+                          "line": 17,
                           "column": 8
                         },
                         "end": {
-                          "line": 16,
-                          "column": 126
+                          "line": 17,
+                          "column": 134
                         }
                       }
                     }
                   ],
                   "range": [
-                    524,
-                    658
+                    794,
+                    938
                   ],
                   "loc": {
                     "start": {
-                      "line": 15,
-                      "column": 46
+                      "line": 16,
+                      "column": 56
                     },
                     "end": {
-                      "line": 17,
+                      "line": 18,
                       "column": 5
                     }
                   }
@@ -474,16 +565,16 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  493,
-                  658
+                  753,
+                  938
                 ],
                 "loc": {
                   "start": {
-                    "line": 15,
+                    "line": 16,
                     "column": 15
                   },
                   "end": {
-                    "line": 17,
+                    "line": 18,
                     "column": 5
                   }
                 }
@@ -491,26 +582,26 @@
               "kind": "constructor",
               "computed": false,
               "range": [
-                482,
-                658
+                742,
+                938
               ],
               "loc": {
                 "start": {
-                  "line": 15,
+                  "line": 16,
                   "column": 4
                 },
                 "end": {
-                  "line": 17,
+                  "line": 18,
                   "column": 5
                 }
               },
               "leadingComments": [
                 {
                   "type": "Block",
-                  "value": "*\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\n     * @param {!string} organization - this is the organization name where entities will be created\n     * @param {!extension} [extension] - extension header to send\n     ",
+                  "value": "*\r\n     * @param {InternalOpenGateAPI} ogapi - required field. This is ogapi instance\r\n     * @param {string} organization - required field. This is the organization name where entities will be created, updated or deleted\r\n     * @param {resource} resource - required field. This is the resource used for the bulk provision\r\n     * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception\r\n     ",
                   "range": [
-                    232,
-                    477
+                    241,
+                    736
                   ],
                   "loc": {
                     "start": {
@@ -518,7 +609,7 @@
                       "column": 4
                     },
                     "end": {
-                      "line": 14,
+                      "line": 15,
                       "column": 7
                     }
                   }
@@ -528,8 +619,8 @@
             }
           ],
           "range": [
-            225,
-            660
+            232,
+            941
           ],
           "loc": {
             "start": {
@@ -537,14 +628,14 @@
               "column": 56
             },
             "end": {
-              "line": 18,
+              "line": 19,
               "column": 1
             }
           }
         },
         "range": [
-          184,
-          660
+          191,
+          941
         ],
         "loc": {
           "start": {
@@ -552,17 +643,17 @@
             "column": 15
           },
           "end": {
-            "line": 18,
+            "line": 19,
             "column": 1
           }
         },
         "leadingComments": [
           {
             "type": "Block",
-            "value": "*\n * Csv builder. This builder give you the necessary tools to create a csv bulk using our OpenGate REST.\n ",
+            "value": "*\r\n * Csv builder. This builder give you the necessary tools to create a csv bulk using our OpenGate REST.\r\n ",
             "range": [
-              57,
-              168
+              61,
+              174
             ],
             "loc": {
               "start": {
@@ -579,8 +670,8 @@
         "trailingComments": []
       },
       "range": [
-        169,
-        660
+        176,
+        941
       ],
       "loc": {
         "start": {
@@ -588,17 +679,17 @@
           "column": 0
         },
         "end": {
-          "line": 18,
+          "line": 19,
           "column": 1
         }
       },
       "leadingComments": [
         {
           "type": "Block",
-          "value": "*\n * Csv builder. This builder give you the necessary tools to create a csv bulk using our OpenGate REST.\n ",
+          "value": "*\r\n * Csv builder. This builder give you the necessary tools to create a csv bulk using our OpenGate REST.\r\n ",
           "range": [
-            57,
-            168
+            61,
+            174
           ],
           "loc": {
             "start": {
@@ -617,7 +708,7 @@
   "sourceType": "module",
   "range": [
     0,
-    660
+    941
   ],
   "loc": {
     "start": {
@@ -625,17 +716,17 @@
       "column": 0
     },
     "end": {
-      "line": 18,
+      "line": 19,
       "column": 1
     }
   },
   "comments": [
     {
       "type": "Block",
-      "value": "*\n * Csv builder. This builder give you the necessary tools to create a csv bulk using our OpenGate REST.\n ",
+      "value": "*\r\n * Csv builder. This builder give you the necessary tools to create a csv bulk using our OpenGate REST.\r\n ",
       "range": [
-        57,
-        168
+        61,
+        174
       ],
       "loc": {
         "start": {
@@ -650,10 +741,10 @@
     },
     {
       "type": "Block",
-      "value": "*\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\n     * @param {!string} organization - this is the organization name where entities will be created\n     * @param {!extension} [extension] - extension header to send\n     ",
+      "value": "*\r\n     * @param {InternalOpenGateAPI} ogapi - required field. This is ogapi instance\r\n     * @param {string} organization - required field. This is the organization name where entities will be created, updated or deleted\r\n     * @param {resource} resource - required field. This is the resource used for the bulk provision\r\n     * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception\r\n     ",
       "range": [
-        232,
-        477
+        241,
+        736
       ],
       "loc": {
         "start": {
@@ -661,7 +752,7 @@
           "column": 4
         },
         "end": {
-          "line": 14,
+          "line": 15,
           "column": 7
         }
       }

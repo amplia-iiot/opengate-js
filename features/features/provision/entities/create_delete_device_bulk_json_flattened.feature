@@ -1,9 +1,11 @@
-# features/create_delete_device_bulk.feature
+# features/provision/entities/create_delete_device_bulk_json_flattened.feature
 @provision
 @create_provision
 @entities_provision
 @bulk_json_flattened
+@bulk_entities_json_flattened
 @bulk
+@bulk_entities
 Feature: Delete and Create a device
   As a device of JsApi
   I want to create a device using json file
@@ -27,26 +29,26 @@ Feature: Delete and Create a device
     And response code should be: 201
 
   Scenario: I want to create a device from json file
-    Given an ogapi "json flattened bulk builder" util with "organization_bulk"
-    And I read the file from "/file_test/bulk_double_flattened.json"
+    Given an ogapi "json flattened bulk builder" util with "organization_bulk" and "entities"
+    And I read the file from "/file_test/bulk_double_flattened_entities.json"
     And I "create" it with bulk
     Then does not throws an error
 
   Scenario: I want to create a device from json file
-    Given an ogapi "json flattened bulk builder" util with "organization_bulk"
-    And I read the file from "/file_test/bulk_double_flattened.json"
+    Given an ogapi "json flattened bulk builder" util with "organization_bulk" and "entities"
+    And I read the file from "/file_test/bulk_double_flattened_entities.json"
     And I "create" it with bulk
     Then does not throws an error
 
   Scenario: I want to update a device from json file
-    Given an ogapi "json flattened bulk builder" util with "organization_bulk"
-    And I read the file from "/file_test/bulk_double_flattened.json"
+    Given an ogapi "json flattened bulk builder" util with "organization_bulk" and "entities"
+    And I read the file from "/file_test/bulk_double_flattened_entities.json"
     And I "update" it with bulk
     Then does not throws an error
 
   Scenario: I want to delete a device from json file
-    Given an ogapi "json flattened bulk builder" util with "organization_bulk"
-    And I read the file from "/file_test/bulk_double_flattened.json"
+    Given an ogapi "json flattened bulk builder" util with "organization_bulk" and "entities"
+    And I read the file from "/file_test/bulk_double_flattened_entities.json"
     And I "delete" it with bulk
     Then does not throws an error
 

@@ -14,10 +14,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _httpStatusCodes = require('http-status-codes');
-
-var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
-
 var _BaseProvision2 = require('../BaseProvision');
 
 var _BaseProvision3 = _interopRequireDefault(_BaseProvision2);
@@ -25,10 +21,6 @@ var _BaseProvision3 = _interopRequireDefault(_BaseProvision2);
 var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
-
-var ERROR_VALUE_NOT_ALLOWED = 'The value is not allowed. The value should be formatted as follows: ';
-var ERROR_DATASTREAM_NOT_ALLOWED = 'Datastream is not allowed.';
-var ERROR_ORGANIZATION = 'Parameters organization must be defined';
 
 /**
  * This class allow set simple values.
@@ -38,8 +30,10 @@ var BulkBuilder = (function (_BaseProvision) {
     _inherits(BulkBuilder, _BaseProvision);
 
     /**
-     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
-     * @param {!string} organization - this is the organization where can be create/delete/update the entity
+     * @param {InternalOpenGateAPI} ogapi - required field. This is ogapi instance
+     * @param {resource} resource - required field. This is the resource used for the bulk provision
+     * @param {extension} extension - required field. Type of file to send
+     * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
      */
 
     function BulkBuilder(ogapi, resource, extension, timeout) {
@@ -63,8 +57,12 @@ var BulkBuilder = (function (_BaseProvision) {
         }
 
         /**
-         * @param {!string|!Blob} rawFile - file with format string or Blob 
-         * @param {boolean} csv_response - true if you want a response on format csv. False or null if you want a response on format json
+         *  Execute the bulk creation operation
+         * @example 
+         *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).create(rawFile)
+         *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).create(new Blob(), ture)
+         * @param {string|Blob} rawFile - File with format string or Blob 
+         * @param {boolean} [csv_response] - true if you want a response on format csv. False or null if you want a response on format json
          */
     }, {
         key: 'create',
@@ -73,9 +71,12 @@ var BulkBuilder = (function (_BaseProvision) {
         }
 
         /**
-         * 
-         * @param {!string|!Blob} rawFile - file with format string or Blob 
-         * @param {boolean} csv_response - true if you want a response on format csv. False or null if you want a response on format json
+         *  Execute the bulk delete operation
+         * @example 
+         *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).delete(rawFile)
+         *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).delete(new Blob(), ture)
+         * @param {string|Blob} rawFile - File with format string or Blob 
+         * @param {boolean} [csv_response] - true if you want a response on format csv. False or null if you want a response on format json
          */
     }, {
         key: 'delete',
@@ -84,9 +85,12 @@ var BulkBuilder = (function (_BaseProvision) {
         }
 
         /**
-         * 
-         * @param {!string|!Blob} rawFile - file with format string or Blob 
-         * @param {boolean} csv_response - true if you want a response on format csv. False or null if you want a response on format json
+         *  Execute the bulk delete full operation
+         * @example 
+         *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).deleteAll(rawFile)
+         *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).deleteAll(new Blob(), ture)
+         * @param {string|Blob} rawFile - File with format string or Blob 
+         * @param {boolean} [csv_response] - true if you want a response on format csv. False or null if you want a response on format json
          */
     }, {
         key: 'deleteAll',
@@ -95,9 +99,12 @@ var BulkBuilder = (function (_BaseProvision) {
         }
 
         /**
-         * 
-         * @param {!string|!Blob} rawFile - file with format string or Blob 
-         * @param {boolean} csv_response - true if you want a response on format csv. False or null if you want a response on format json
+         *  Execute the bulk update operation
+         * @example 
+         *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).update(rawFile)
+         *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).update(new Blob(), ture)
+         * @param {string|Blob} rawFile - File with format string or Blob 
+         * @param {boolean} [csv_response] - true if you want a response on format csv. False or null if you want a response on format json
          */
     }, {
         key: 'update',

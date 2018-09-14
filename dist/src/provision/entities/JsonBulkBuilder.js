@@ -17,22 +17,23 @@ var _BulkBuilder2 = require('./BulkBuilder');
 var _BulkBuilder3 = _interopRequireDefault(_BulkBuilder2);
 
 /**
- * Csv builder. This builder give you the necessary tools to create a csv bulk using our OpenGate REST.
+ * Json builder. This builder give you the necessary tools to create a json bulk using our OpenGate REST.
  */
 
 var JsonBulkBuilder = (function (_BulkBuilder) {
   _inherits(JsonBulkBuilder, _BulkBuilder);
 
   /**
-   * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
-   * @param {!string} organization - this is the organization name where entities will be created
-   * @param {!extension} [extension] - extension header to send
+   * @param {InternalOpenGateAPI} ogapi - required field. This is ogapi instance
+   * @param {string} organization - required field. This is the organization name where entities will be created, updated or deleted
+   * @param {resource} resource - required field. This is the resource used for the bulk provision
+   * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
    */
 
-  function JsonBulkBuilder(ogapi, organization) {
+  function JsonBulkBuilder(ogapi, organization, resource, timeout) {
     _classCallCheck(this, JsonBulkBuilder);
 
-    _get(Object.getPrototypeOf(JsonBulkBuilder.prototype), 'constructor', this).call(this, ogapi, 'provision/organizations/' + organization + '/bulk/entities?action=#actionName#', 'application/json');
+    _get(Object.getPrototypeOf(JsonBulkBuilder.prototype), 'constructor', this).call(this, ogapi, 'provision/organizations/' + organization + '/bulk/' + resource + '?action=#actionName#', 'application/json', timeout);
   }
 
   return JsonBulkBuilder;

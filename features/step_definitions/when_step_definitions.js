@@ -572,7 +572,7 @@ module.exports = function () {
             //console.log("data: " + JSON.stringify(data));
             _this.responseData = data;
             _this.location = _this.responseData.location;
-            _this.error = undefined;
+            _this.error = this.error = undefined;
         }
 
         function catchErrorResponse(err) {

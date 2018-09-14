@@ -221,13 +221,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import BulkBuilder from &apos;<span><a href="file/src/provision/entities/BulkBuilder.js.html#lineNumber15">opengate-js/src/provision/entities/BulkBuilder.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import BulkBuilder from &apos;<span><a href="file/src/provision/entities/BulkBuilder.js.html#lineNumber10">opengate-js/src/provision/entities/BulkBuilder.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/provision/entities/BulkBuilder.js.html#lineNumber15">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/provision/entities/BulkBuilder.js.html#lineNumber10">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -276,7 +276,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/provision/entities/BulkBuilder.js~BulkBuilder.html#instance-constructor-constructor">constructor</a></span></span><span data-ice="signature">(ogapi: <span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html">InternalOpenGateAPI</a></span>, organization: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span>
+           <span data-ice="name"><span><a href="class/src/provision/entities/BulkBuilder.js~BulkBuilder.html#instance-constructor-constructor">constructor</a></span></span><span data-ice="signature">(ogapi: <span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html">InternalOpenGateAPI</a></span>, resource: <span>resource</span>, extension: <span>extension</span>, timeout: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>
         </p>
       </div>
       <div>
@@ -309,13 +309,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/provision/entities/BulkBuilder.js~BulkBuilder.html#instance-method-create">create</a></span></span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>!Blob</span>, csv_response: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/src/provision/entities/BulkBuilder.js~BulkBuilder.html#instance-method-create">create</a></span></span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>Blob</span>, csv_response: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p> Execute the bulk creation operation</p>
+</div>
       </div>
     </td>
     <td>
@@ -334,13 +335,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/provision/entities/BulkBuilder.js~BulkBuilder.html#instance-method-delete">delete</a></span></span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>!Blob</span>, csv_response: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/src/provision/entities/BulkBuilder.js~BulkBuilder.html#instance-method-delete">delete</a></span></span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>Blob</span>, csv_response: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p> Execute the bulk delete operation</p>
+</div>
       </div>
     </td>
     <td>
@@ -359,13 +361,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/provision/entities/BulkBuilder.js~BulkBuilder.html#instance-method-deleteAll">deleteAll</a></span></span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>!Blob</span>, csv_response: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/src/provision/entities/BulkBuilder.js~BulkBuilder.html#instance-method-deleteAll">deleteAll</a></span></span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>Blob</span>, csv_response: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p> Execute the bulk delete full operation</p>
+</div>
       </div>
     </td>
     <td>
@@ -384,13 +387,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/provision/entities/BulkBuilder.js~BulkBuilder.html#instance-method-update">update</a></span></span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>!Blob</span>, csv_response: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/src/provision/entities/BulkBuilder.js~BulkBuilder.html#instance-method-update">update</a></span></span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>Blob</span>, csv_response: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p> Execute the bulk update operation</p>
+</div>
       </div>
     </td>
     <td>
@@ -502,11 +506,11 @@ This function updates a entity of provision</p>
     
     
     
-    <span data-ice="name">constructor</span><span data-ice="signature">(ogapi: <span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html">InternalOpenGateAPI</a></span>, organization: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span>
+    <span data-ice="name">constructor</span><span data-ice="signature">(ogapi: <span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html">InternalOpenGateAPI</a></span>, resource: <span>resource</span>, extension: <span>extension</span>, timeout: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/provision/entities/BulkBuilder.js.html#lineNumber21">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/provision/entities/BulkBuilder.js.html#lineNumber18">source</a></span></span>
     </span>
   </h3>
 
@@ -528,15 +532,29 @@ This function updates a entity of provision</p>
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">ogapi</td>
       <td data-ice="type"><span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html">InternalOpenGateAPI</a></span></td>
-      <td data-ice="appendix"><ul><li>nullable: false</li></ul></td>
-      <td data-ice="description"><p>this is ogapi instance</p>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>required field. This is ogapi instance</p>
 </td>
     </tr>
 <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">organization</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
-      <td data-ice="appendix"><ul><li>nullable: false</li></ul></td>
-      <td data-ice="description"><p>this is the organization where can be create/delete/update the entity</p>
+      <td data-ice="name" data-depth="0">resource</td>
+      <td data-ice="type"><span>resource</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>required field. This is the resource used for the bulk provision</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">extension</td>
+      <td data-ice="type"><span>extension</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>required field. Type of file to send</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">timeout</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
+      <td data-ice="description"><p>timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception</p>
 </td>
     </tr>
 </tbody>
@@ -570,18 +588,19 @@ This function updates a entity of provision</p>
     
     
     
-    <span data-ice="name">create</span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>!Blob</span>, csv_response: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
+    <span data-ice="name">create</span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>Blob</span>, csv_response: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/provision/entities/BulkBuilder.js.html#lineNumber42">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/provision/entities/BulkBuilder.js.html#lineNumber43">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p> Execute the bulk creation operation</p>
+</div>
 
   <div data-ice="override"><h4>Override:</h4><span><a href="class/src/provision/BaseProvision.js~BaseProvision.html#instance-method-create">BaseProvision#create</a></span></div>
 
@@ -595,15 +614,15 @@ This function updates a entity of provision</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">rawFile</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>!Blob</span></td>
-      <td data-ice="appendix"><ul><li>nullable: false</li></ul></td>
-      <td data-ice="description"><p>file with format string or Blob</p>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>Blob</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>File with format string or Blob</p>
 </td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">csv_response</td>
       <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
-      <td data-ice="appendix"></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
       <td data-ice="description"><p>true if you want a response on format csv. False or null if you want a response on format json</p>
 </td>
     </tr>
@@ -630,7 +649,15 @@ This function updates a entity of provision</p>
 
   
 
-  
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.newCsvBulkBuilder(&apos;orgname&apos;, &apos;entities&apos;, 10000).create(rawFile)
+ ogapi.newCsvBulkBuilder(&apos;orgname&apos;, &apos;entities&apos;, 10000).create(new Blob(), ture)</code></pre>
+    </div>
+</div>
 
   
 
@@ -644,18 +671,19 @@ This function updates a entity of provision</p>
     
     
     
-    <span data-ice="name">delete</span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>!Blob</span>, csv_response: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
+    <span data-ice="name">delete</span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>Blob</span>, csv_response: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/provision/entities/BulkBuilder.js.html#lineNumber51">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/provision/entities/BulkBuilder.js.html#lineNumber55">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p> Execute the bulk delete operation</p>
+</div>
 
   <div data-ice="override"><h4>Override:</h4><span><a href="class/src/provision/BaseProvision.js~BaseProvision.html#instance-method-delete">BaseProvision#delete</a></span></div>
 
@@ -669,15 +697,15 @@ This function updates a entity of provision</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">rawFile</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>!Blob</span></td>
-      <td data-ice="appendix"><ul><li>nullable: false</li></ul></td>
-      <td data-ice="description"><p>file with format string or Blob</p>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>Blob</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>File with format string or Blob</p>
 </td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">csv_response</td>
       <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
-      <td data-ice="appendix"></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
       <td data-ice="description"><p>true if you want a response on format csv. False or null if you want a response on format json</p>
 </td>
     </tr>
@@ -704,7 +732,15 @@ This function updates a entity of provision</p>
 
   
 
-  
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.newCsvBulkBuilder(&apos;orgname&apos;, &apos;entities&apos;, 10000).delete(rawFile)
+ ogapi.newCsvBulkBuilder(&apos;orgname&apos;, &apos;entities&apos;, 10000).delete(new Blob(), ture)</code></pre>
+    </div>
+</div>
 
   
 
@@ -718,18 +754,19 @@ This function updates a entity of provision</p>
     
     
     
-    <span data-ice="name">deleteAll</span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>!Blob</span>, csv_response: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
+    <span data-ice="name">deleteAll</span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>Blob</span>, csv_response: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/provision/entities/BulkBuilder.js.html#lineNumber60">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/provision/entities/BulkBuilder.js.html#lineNumber67">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p> Execute the bulk delete full operation</p>
+</div>
 
   
 
@@ -743,15 +780,15 @@ This function updates a entity of provision</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">rawFile</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>!Blob</span></td>
-      <td data-ice="appendix"><ul><li>nullable: false</li></ul></td>
-      <td data-ice="description"><p>file with format string or Blob</p>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>Blob</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>File with format string or Blob</p>
 </td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">csv_response</td>
       <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
-      <td data-ice="appendix"></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
       <td data-ice="description"><p>true if you want a response on format csv. False or null if you want a response on format json</p>
 </td>
     </tr>
@@ -778,7 +815,15 @@ This function updates a entity of provision</p>
 
   
 
-  
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.newCsvBulkBuilder(&apos;orgname&apos;, &apos;entities&apos;, 10000).deleteAll(rawFile)
+ ogapi.newCsvBulkBuilder(&apos;orgname&apos;, &apos;entities&apos;, 10000).deleteAll(new Blob(), ture)</code></pre>
+    </div>
+</div>
 
   
 
@@ -792,18 +837,19 @@ This function updates a entity of provision</p>
     
     
     
-    <span data-ice="name">update</span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>!Blob</span>, csv_response: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
+    <span data-ice="name">update</span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>Blob</span>, csv_response: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/provision/entities/BulkBuilder.js.html#lineNumber69">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/provision/entities/BulkBuilder.js.html#lineNumber79">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p> Execute the bulk update operation</p>
+</div>
 
   <div data-ice="override"><h4>Override:</h4><span><a href="class/src/provision/BaseProvision.js~BaseProvision.html#instance-method-update">BaseProvision#update</a></span></div>
 
@@ -817,15 +863,15 @@ This function updates a entity of provision</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">rawFile</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>!Blob</span></td>
-      <td data-ice="appendix"><ul><li>nullable: false</li></ul></td>
-      <td data-ice="description"><p>file with format string or Blob</p>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>Blob</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>File with format string or Blob</p>
 </td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">csv_response</td>
       <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
-      <td data-ice="appendix"></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
       <td data-ice="description"><p>true if you want a response on format csv. False or null if you want a response on format json</p>
 </td>
     </tr>
@@ -852,7 +898,15 @@ This function updates a entity of provision</p>
 
   
 
-  
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.newCsvBulkBuilder(&apos;orgname&apos;, &apos;entities&apos;, 10000).update(rawFile)
+ ogapi.newCsvBulkBuilder(&apos;orgname&apos;, &apos;entities&apos;, 10000).update(new Blob(), ture)</code></pre>
+    </div>
+</div>
 
   
 
