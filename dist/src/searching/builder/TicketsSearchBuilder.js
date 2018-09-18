@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-    value: true
+  value: true
 });
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -29,83 +29,83 @@ var BASE_URL = '/tickets';
  */
 
 var TicketsSearchBuilder = (function (_SearchBuilder) {
-    _inherits(TicketsSearchBuilder, _SearchBuilder);
+  _inherits(TicketsSearchBuilder, _SearchBuilder);
 
-    /**
-     *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
-     */
+  /**
+   *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
+   */
 
-    function TicketsSearchBuilder(parent) {
-        _classCallCheck(this, TicketsSearchBuilder);
+  function TicketsSearchBuilder(parent) {
+    _classCallCheck(this, TicketsSearchBuilder);
 
-        _get(Object.getPrototypeOf(TicketsSearchBuilder.prototype), 'constructor', this).call(this, parent, {}, new _utilSearchingFieldsFieldFinder2['default'](parent, BASE_URL));
-        this._url = BASE_URL;
+    _get(Object.getPrototypeOf(TicketsSearchBuilder.prototype), 'constructor', this).call(this, parent, {}, new _utilSearchingFieldsFieldFinder2['default'](parent, BASE_URL));
+    this._url = BASE_URL;
+  }
+
+  /**
+   * The response will only have a summary information 
+   * @example
+   *	ogapi.devicesSearchBuilder().summary() 
+   * @return {TicketsSearchBuilder} 
+   */
+
+  _createClass(TicketsSearchBuilder, [{
+    key: 'summary',
+    value: function summary() {
+      this._url = this._url + '/summary';
+
+      return this;
     }
 
     /**
-     * The response will only have a summary information 
+     * The search request will have this group by 
      * @example
-     *	ogapi.devicesSearchBuilder().summary() 
-     * @return {TicketsSearchBuilder} 
+     * @param {!(object)} group 
+     * @return {SearchBuilder} 
      */
+  }, {
+    key: 'group',
+    value: function group(_group) {
+      this._builderParams.group = _group || {};
+      return this;
+    }
 
-    _createClass(TicketsSearchBuilder, [{
-        key: 'summary',
-        value: function summary() {
-            this._url = this._url + '/summary';
+    /**
+     * The search request will have this filter 
+     * @example
+     *  ogapi.ticketsSearchBuilder().select(
+     *      ogapi.newSelectBuilder().add(SE.element("provision.ticket.identifier", [[{"field": "value","alias": "identifier"}], ), SE.add("device.temperature.value", [[{"field": "value"}]))
+     *  ) // Setting SelectBuilder
+     *  ogapi.ticketsSearchBuilder().select({ "elements": [{"name": "provision.device.identifier",
+     *		"fields": [{"field": "value","alias": "identifier"}]},
+     *      {"name": "provision.ticket.name","fields": [{"field": "value","alias": "identifier"}]}]
+     *   }) //Custom select
+     * @param {!(SelectBuilder|object)} select
+     * @return {SearchBuilder} 
+     */
+  }, {
+    key: 'select',
+    value: function select(_select) {
+      this._builderParams.select = _select;
+      return this;
+    }
 
-            return this;
-        }
+    /**
+     * The response will return a flattened response
+     * @example
+     *	ogapi.entitiesSearchBuilder().flattened() 
+     * @return {FlattenedSearchBuilder} 
+     */
+  }, {
+    key: 'flattened',
+    value: function flattened() {
+      this._url = this._url + '?flattened=true';
 
-        /**
-         * The search request will have this group by 
-         * @example
-         * @param {!(object)} group 
-         * @return {SearchBuilder} 
-         */
-    }, {
-        key: 'group',
-        value: function group(_group) {
-            this._builderParams.group = _group || {};
-            return this;
-        }
+      return this;
+    }
+  }]);
 
-        /**
-         * The search request will have this filter 
-         * @example
-         *  ogapi.ticketsSearchBuilder().select(
-         *      ogapi.newSelectBuilder().add(SE.element("provision.ticket.identifier", [[{"field": "value","alias": "identifier"}], ), SE.add("device.temperature.value", [[{"field": "value"}]))
-         *  ) // Setting SelectBuilder
-         *  ogapi.ticketsSearchBuilder().select({ "elements": [{"name": "provision.device.identifier",
-         *		"fields": [{"field": "value","alias": "identifier"}]},
-         *      {"name": "provision.ticket.name","fields": [{"field": "value","alias": "identifier"}]}]
-         *   }) //Custom select
-         * @param {!(SelectBuilder|object)} select
-         * @return {SearchBuilder} 
-         */
-    }, {
-        key: 'select',
-        value: function select(_select) {
-            this._builderParams.select = _select;
-            return this;
-        }
-
-        /**
-         * The response will return a flattened response
-         * @example
-         *	ogapi.entitiesSearchBuilder().flattened() 
-         * @return {FlattenedSearchBuilder} 
-         */
-    }, {
-        key: 'flattened',
-        value: function flattened() {
-            this._url = this._url + '?flattened=true';
-
-            return this;
-        }
-    }]);
-
-    return TicketsSearchBuilder;
+  return TicketsSearchBuilder;
 })(_SearchBuilder3['default']);
 
 exports['default'] = TicketsSearchBuilder;
