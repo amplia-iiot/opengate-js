@@ -141,7 +141,8 @@ var EntityBuilder = (function () {
         key: '_setDevicesProperties',
         value: function _setDevicesProperties(data, filter) {
             var _this = this;
-            var allowedDatastreams = _jsonpath2['default'].query(data, "$.datamodels[*].categories[*].datastreams[*]");
+            //http://jekyll.amplia.es/OpenGateDoc/LATEST/opengate-doc-api/api-north/opengate-api-north.html#iotDatastreamTemplate - field calculated (OUW-1679)
+            var allowedDatastreams = _jsonpath2['default'].query(data, "$.datamodels[*].categories[*].datastreams[?(@.calculated === false)]");
             var response = {
                 allowedDatastreams: [],
                 schemas: {}

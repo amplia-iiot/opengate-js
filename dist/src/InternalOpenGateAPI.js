@@ -274,6 +274,10 @@ var _entitiesDeviceFinder = require('./entities/DeviceFinder');
 
 var _entitiesDeviceFinder2 = _interopRequireDefault(_entitiesDeviceFinder);
 
+var _entitiesTicketFinder = require('./entities/TicketFinder');
+
+var _entitiesTicketFinder2 = _interopRequireDefault(_entitiesTicketFinder);
+
 var _entitiesSubscriptionsFinder = require('./entities/SubscriptionsFinder');
 
 var _entitiesSubscriptionsFinder2 = _interopRequireDefault(_entitiesSubscriptionsFinder);
@@ -393,6 +397,10 @@ var _searchingBuilderTimezoneSearchBuilder2 = _interopRequireDefault(_searchingB
 var _searchingBuilderUserLanguagesSearchBuilder = require('./searching/builder/UserLanguagesSearchBuilder');
 
 var _searchingBuilderUserLanguagesSearchBuilder2 = _interopRequireDefault(_searchingBuilderUserLanguagesSearchBuilder);
+
+var _entitiesEntityFinder = require('./entities/EntityFinder');
+
+var _entitiesEntityFinder2 = _interopRequireDefault(_entitiesEntityFinder);
 
 /**
  * This is a abstract class, it must be extended to another class that defined the backend, it will be used on request to Opengate North API by browser or nodejs server
@@ -536,6 +544,16 @@ var InternalOpenGateAPI = (function () {
         key: 'newDeviceFinder',
         value: function newDeviceFinder() {
             return new _entitiesDeviceFinder2['default'](this);
+        }
+
+        /**
+         * This return a util to find a ticket
+         * @return {TicketFinder}
+         */
+    }, {
+        key: 'newTicketFinder',
+        value: function newTicketFinder() {
+            return new _entitiesTicketFinder2['default'](this);
         }
 
         /**

@@ -78,6 +78,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/EntityFinder.js~EntityFinder.html">EntityFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/SubscribersFinder.js~SubscribersFinder.html">SubscribersFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/SubscriptionsFinder.js~SubscriptionsFinder.html">SubscriptionsFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/TicketFinder.js~TicketFinder.html">TicketFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">iot/catalog</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/catalog/Category.js~Category.html">Category</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/catalog/Datastream.js~Datastream.html">Datastream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/catalog/Qrating.js~Qrating.html">Qrating</a></span></span></li>
@@ -254,8 +255,10 @@ export default class ComplexBuilder extends SimpleBuilder {
             console.warn(&apos;Communication module identifier not defined. This value wil be ignored&apos;);
             return this;
         }
-        if (this.getAllowedDatastreams().filter(function(ds) { return ds.identifier === _id; }).length !== 1) {
-            console.warn(&apos;Datastream not found. This value will be ignored. Datastream Name: &apos; + _id);
+        if (this.getAllowedDatastreams().filter(function (ds) {
+                return ds.identifier === _id;
+            }).length !== 1) {
+            console.warn(&apos;Datastream not found or operations can not be performed on it. This value will be ignored. Datastream Name: &apos; + _id);
             return this;
         }
         if (!this._entity[_id])

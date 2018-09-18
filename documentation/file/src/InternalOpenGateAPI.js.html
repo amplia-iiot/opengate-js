@@ -78,6 +78,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/EntityFinder.js~EntityFinder.html">EntityFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/SubscribersFinder.js~SubscribersFinder.html">SubscribersFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/SubscriptionsFinder.js~SubscriptionsFinder.html">SubscriptionsFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/TicketFinder.js~TicketFinder.html">TicketFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">iot/catalog</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/catalog/Category.js~Category.html">Category</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/catalog/Datastream.js~Datastream.html">Datastream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/catalog/Qrating.js~Qrating.html">Qrating</a></span></span></li>
@@ -289,6 +290,7 @@ import Organizations from &apos;./organizations/Organizations&apos;;
 import Domain from &apos;./domains/Domains&apos;;
 import DomainFinder from &apos;./domains/DomainsFinder&apos;;
 import DeviceFinder from &apos;./entities/DeviceFinder&apos;;
+import TicketFinder from &apos;./entities/TicketFinder&apos;;
 import SubscriptionsFinder from &apos;./entities/SubscriptionsFinder&apos;;
 import SubscribersFinder from &apos;./entities/SubscribersFinder&apos;;
 import DeviceMessage from &apos;./collection/devices/DeviceMessage&apos;;
@@ -319,6 +321,7 @@ import EntitiesSearchBuilder from &apos;./searching/builder/EntitiesSearchBuilde
 import CountryCodesSearchBuilder from &apos;./searching/builder/CountryCodesSearchBuilder&apos;;
 import TimezoneSearchBuilder from &apos;./searching/builder/TimezoneSearchBuilder&apos;;
 import UserLanguagesSearchBuilder from &apos;./searching/builder/UserLanguagesSearchBuilder&apos;;
+import EntityFinder from &apos;./entities/EntityFinder&apos;;
 
 /**
  * This is a abstract class, it must be extended to another class that defined the backend, it will be used on request to Opengate North API by browser or nodejs server
@@ -437,6 +440,14 @@ export default class InternalOpenGateAPI {
         return new DeviceFinder(this);
     }
 
+    /**
+     * This return a util to find a ticket
+     * @return {TicketFinder}
+     */
+    newTicketFinder() {
+        return new TicketFinder(this);
+    }
+
 
     /**
      * This return a util to find a Subscription
@@ -540,12 +551,12 @@ export default class InternalOpenGateAPI {
      * This return a TicketsSearchBuilder to build a specific TicketSearch
      */
     ticketsSearchBuilder() {
-            return new TicketsSearchBuilder(this);
-        }
-        /**
-         * This return a CommunicationsModuleTypeSearchBuilder to build a specific CommunicationsModuleTypeSearch
-         * @return {CommunicationsModuleTypeSearchBuilder}
-         */
+        return new TicketsSearchBuilder(this);
+    }
+    /**
+     * This return a CommunicationsModuleTypeSearchBuilder to build a specific CommunicationsModuleTypeSearch
+     * @return {CommunicationsModuleTypeSearchBuilder}
+     */
     communicationsModuleTypeSearchBuilder() {
         return new CommunicationsModuleTypeSearchBuilder(this);
     }

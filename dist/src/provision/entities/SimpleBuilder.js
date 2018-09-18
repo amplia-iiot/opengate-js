@@ -129,7 +129,7 @@ var SimpleBuilder = (function (_BaseProvision) {
             if (this.getAllowedDatastreams().filter(function (ds) {
                 return ds.identifier === _id;
             }).length !== 1) {
-                console.warn('Datastream not found. This value will be ignored. Datastream Name: ' + _id);
+                console.warn('Datastream not found or operations can not be performed on it. This value will be ignored. Datastream Name: ' + _id);
                 return this;
             }
             this._entity[_id] = {
@@ -180,9 +180,14 @@ var SimpleBuilder = (function (_BaseProvision) {
             var url = this._buildURL().split('?')[0] + "?full=true";
             this._ogapi.Napi['delete'](url).then(function (res) {
                 if (res.statusCode === _httpStatusCodes2['default'].OK) {
-                    defered.resolve({ statusCode: res.statusCode });
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
                 } else {
-                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
                 }
             })['catch'](function (error) {
                 defered.reject(error);

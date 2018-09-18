@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-  value: true
+    value: true
 });
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -28,37 +28,37 @@ var _StaticSearch2 = _interopRequireDefault(_StaticSearch);
  */
 
 var TicketTypeSearchBuilder = (function (_SearchBuilder) {
-  _inherits(TicketTypeSearchBuilder, _SearchBuilder);
+    _inherits(TicketTypeSearchBuilder, _SearchBuilder);
 
-  /**
-   *  @param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
-   */
+    /**
+     *  @param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
+     */
 
-  function TicketTypeSearchBuilder(parent) {
-    _classCallCheck(this, TicketTypeSearchBuilder);
+    function TicketTypeSearchBuilder(parent) {
+        _classCallCheck(this, TicketTypeSearchBuilder);
 
-    _get(Object.getPrototypeOf(TicketTypeSearchBuilder.prototype), 'constructor', this).call(this, parent, {});
-    this._url = '/ticketType';
-    this.customFilters = {};
-  }
-
-  /**
-   * Build a instance of StaticSearch 
-   *
-   * @example
-   *   ogapi.ticketTypeSearchBuilder().build()
-   * @throws {SearchBuilderError} Throw error on url build
-   * @return {StaticSearch}  
-   */
-
-  _createClass(TicketTypeSearchBuilder, [{
-    key: 'build',
-    value: function build() {
-      return new _StaticSearch2['default'](this._parent, this._buildUrl(), null, this._builderParams.timeout, 'ticketType', this.customFilters);
+        _get(Object.getPrototypeOf(TicketTypeSearchBuilder.prototype), 'constructor', this).call(this, parent, {});
+        this._url = '/ticketType';
+        this.customFilters = {};
     }
-  }]);
 
-  return TicketTypeSearchBuilder;
+    /**
+     * Build a instance of StaticSearch 
+     *
+     * @example
+     *   ogapi.ticketTypeSearchBuilder().build()
+     * @throws {SearchBuilderError} Throw error on url build
+     * @return {StaticSearch}  
+     */
+
+    _createClass(TicketTypeSearchBuilder, [{
+        key: 'build',
+        value: function build() {
+            return new _StaticSearch2['default'](this._parent, this._buildUrl(), null, this._builderParams.timeout, 'ticketType', this.customFilters);
+        }
+    }]);
+
+    return TicketTypeSearchBuilder;
 })(_SearchBuilder3['default']);
 
 exports['default'] = TicketTypeSearchBuilder;

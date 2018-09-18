@@ -842,6 +842,16 @@ module.exports = function () {
         callback();
     });
 
+    this.Given(/^I can not found "([^"]*)" as datastream name$/, function (dsName, callback) {
+        // Write code here that turns the phrase above into concrete actions
+        if (this.responseData.filter(function (item) {
+                return item.identifier === dsName;
+            }).length === 0) {
+            callback();
+        }
+        throw new Error('Datastream found. DSName:' + dsName);
+    });
+
 
     this.When(/^I delete all$/, function () {
 

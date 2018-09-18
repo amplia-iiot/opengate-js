@@ -17,7 +17,7 @@ var _EntityFinder2 = require('./EntityFinder');
 var _EntityFinder3 = _interopRequireDefault(_EntityFinder2);
 
 /**
- *   This class allow make get request to certificate resource into Opengate North API.
+ *   This class allow make get request to device provisioned resource into Opengate North API.
  */
 
 var DeviceFinder = (function (_EntityFinder) {

@@ -57,7 +57,7 @@ var ComplexBuilder = (function (_SimpleBuilder) {
             if (this.getAllowedDatastreams().filter(function (ds) {
                 return ds.identifier === _id;
             }).length !== 1) {
-                console.warn('Datastream not found. This value will be ignored. Datastream Name: ' + _id);
+                console.warn('Datastream not found or operations can not be performed on it. This value will be ignored. Datastream Name: ' + _id);
                 return this;
             }
             if (!this._entity[_id]) this._entity[_id] = [];
