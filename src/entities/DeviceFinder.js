@@ -3,7 +3,7 @@
 import EntityFinder from './EntityFinder';
 
 /**
- *   This class allow make get request to certificate resource into Opengate North API.
+ *   This class allow make get request to device provisioned resource into Opengate North API.
  */
 export default class DeviceFinder extends EntityFinder {
 

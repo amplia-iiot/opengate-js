@@ -62,6 +62,9 @@ module.exports = {
             "device finder": function (ogapi) {
                 return ogapi.newDeviceFinder();
             },
+            "ticket finder": function (ogapi) {
+                return ogapi.newTicketFinder();
+            },
             "devices search": function (ogapi) {
                 return ogapi.devicesSearchBuilder();
             },

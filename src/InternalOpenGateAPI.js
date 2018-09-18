@@ -66,6 +66,7 @@ import Organizations from './organizations/Organizations';
 import Domain from './domains/Domains';
 import DomainFinder from './domains/DomainsFinder';
 import DeviceFinder from './entities/DeviceFinder';
+import TicketFinder from './entities/TicketFinder';
 import SubscriptionsFinder from './entities/SubscriptionsFinder';
 import SubscribersFinder from './entities/SubscribersFinder';
 import DeviceMessage from './collection/devices/DeviceMessage';
@@ -96,6 +97,7 @@ import EntitiesSearchBuilder from './searching/builder/EntitiesSearchBuilder';
 import CountryCodesSearchBuilder from './searching/builder/CountryCodesSearchBuilder';
 import TimezoneSearchBuilder from './searching/builder/TimezoneSearchBuilder';
 import UserLanguagesSearchBuilder from './searching/builder/UserLanguagesSearchBuilder';
+import EntityFinder from './entities/EntityFinder';
 
 /**
  * This is a abstract class, it must be extended to another class that defined the backend, it will be used on request to Opengate North API by browser or nodejs server
@@ -214,6 +216,14 @@ export default class InternalOpenGateAPI {
         return new DeviceFinder(this);
     }
 
+    /**
+     * This return a util to find a ticket
+     * @return {TicketFinder}
+     */
+    newTicketFinder() {
+        return new TicketFinder(this);
+    }
+
 
     /**
      * This return a util to find a Subscription
@@ -317,12 +327,12 @@ export default class InternalOpenGateAPI {
      * This return a TicketsSearchBuilder to build a specific TicketSearch
      */
     ticketsSearchBuilder() {
-            return new TicketsSearchBuilder(this);
-        }
-        /**
-         * This return a CommunicationsModuleTypeSearchBuilder to build a specific CommunicationsModuleTypeSearch
-         * @return {CommunicationsModuleTypeSearchBuilder}
-         */
+        return new TicketsSearchBuilder(this);
+    }
+    /**
+     * This return a CommunicationsModuleTypeSearchBuilder to build a specific CommunicationsModuleTypeSearch
+     * @return {CommunicationsModuleTypeSearchBuilder}
+     */
     communicationsModuleTypeSearchBuilder() {
         return new CommunicationsModuleTypeSearchBuilder(this);
     }

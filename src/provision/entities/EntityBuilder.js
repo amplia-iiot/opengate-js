@@ -95,7 +95,8 @@ export default class EntityBuilder {
 
     _setDevicesProperties(data, filter) {
         let _this = this;
-        let allowedDatastreams = jp.query(data, "$.datamodels[*].categories[*].datastreams[*]");
+        //http://jekyll.amplia.es/OpenGateDoc/LATEST/opengate-doc-api/api-north/opengate-api-north.html#iotDatastreamTemplate - field calculated (OUW-1679)
+        let allowedDatastreams = jp.query(data, "$.datamodels[*].categories[*].datastreams[?(@.calculated === false)]");
         let response = {
             allowedDatastreams: [],
             schemas: {}

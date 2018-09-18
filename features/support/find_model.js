@@ -23,6 +23,9 @@ module.exports = {
             'device': {
                 'organizationAndid': 'findByOrganizationAndId'
             },
+            'ticket': {
+                'organizationAndid': 'findByOrganizationAndId'
+            },
             'domain': {
                 'name': 'findByName',
                 'nameWithHierarchy': 'findByNameWithHierarchy'
@@ -56,7 +59,7 @@ module.exports = {
                 'organizationAndidentifier': 'findByOrganizationAndIdentifier',
                 'organization': 'findByOrganization'
             }
-        }[setter];
+        } [setter];
     },
     getter_response: function (getter) {
         return {
@@ -65,6 +68,7 @@ module.exports = {
             'communications module id': 'id',
             'channel name': 'name',
             'device id': 'provision.device.identifier._current.value',
+            'ticket name': 'provision.ticket.name._current.value',
             'domain name': 'name',
             'hierarchy domain name': 'domains[0].name',
             'execution type': '*.name',
@@ -89,6 +93,6 @@ module.exports = {
             'category[1] datastream[0] identifier': 'categories[1].datastreams[0].identifier',
             'area identifier': 'identifier',
             'area name': 'name'
-        }[getter];
+        } [getter];
     }
 };
