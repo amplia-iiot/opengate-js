@@ -14,14 +14,15 @@ export default class ExecuteEveryBuilder {
      * @param {!Date} date - Date when operation will be executed
      * @param {string} periodicityName - Name associated to periodicity	
      */
-    constructor(parent, date, periodicityName, end) {
-        this.year = new ByYear(parent, date, periodicityName, end);
-        this.week = new ByWeek(parent, date, periodicityName, end);
-        this._day = new ByGeneric(parent, date, periodicityName, end);
+    constructor(parent, date, periodicityName, end, description) {
+        this.year = new ByYear(parent, date, periodicityName, end, description);
+        this.week = new ByWeek(parent, date, periodicityName, end, description);
+        this._day = new ByGeneric(parent, date, periodicityName, end, description);
         this._date = date;
         this._end = end;
         this._parent = parent;
         this._periodicityName = periodicityName;
+        this._description = description;
     }
 
     /**
@@ -69,6 +70,6 @@ export default class ExecuteEveryBuilder {
         if (not_found.length !== 0) {
             throw new Error("Any month into parameter months is not allowed. Parameter value <'" + JSON.stringify(not_found) + "'>, Months allowed <'" + JSON.stringify(MONTHS_ENUM) + "'>");
         }
-        return new ByMonth(this._parent, this._date, this._periodicityName, months, this._end);
+        return new ByMonth(this._parent, this._date, this._periodicityName, months, this._end, this._description);
     }
 }

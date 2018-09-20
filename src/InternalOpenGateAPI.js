@@ -19,6 +19,7 @@ import OperationFinder from './operations/OperationFinder';
 import FilterBuilder from './searching/FilterBuilder';
 import SelectBuilder from './searching/SelectBuilder';
 import OperationActions from './operations/OperationActions';
+import PeriodicityActions from './operations/PeriodicityActions';
 import Expression from './util/Expression';
 import SelectElement from './util/SelectElement';
 import QuickSearch from './searching/QuickSearch';
@@ -28,6 +29,7 @@ import SubscribersSearchBuilder from './searching/builder/SubscribersSearchBuild
 import SubscriptionsSearchBuilder from './searching/builder/SubscriptionsSearchBuilder';
 import AssetsSearchBuilder from './searching/builder/AssetsSearchBuilder';
 import TicketsSearchBuilder from './searching/builder/TicketsSearchBuilder';
+import TasksSearchBuilder from './searching/builder/TasksSearchBuilder';
 import OperationsSearchBuilder from './searching/builder/OperationsSearchBuilder';
 import ExecutionsSearchBuilder from './searching/builder/ExecutionsSearchBuilder';
 import AlarmsSearchBuilder from './searching/builder/AlarmsSearchBuilder';
@@ -436,6 +438,14 @@ export default class InternalOpenGateAPI {
     }
 
     /**
+     * This return a TasksSearchBuilder to build a specific TasksSearch
+     * @return {TasksSearchBuilder}
+     */
+    tasksSearchBuilder() {
+        return new TasksSearchBuilder(this);
+    }
+
+    /**
      * This return a OperationsSearchBuilder to build a specific ExecutionssSearch
      * @return {OperationsSearchBuilder}
      */
@@ -729,6 +739,15 @@ export default class InternalOpenGateAPI {
      */
     newOperationActions(operationId) {
         return new OperationActions(this, operationId);
+    }
+
+    /**
+     * This return a util to manage actions over periodicities
+     * @param {!string} taskId - identifier of operation
+     * @return {PeriodicityActions}
+     */
+    newPeriodicityActions(taskId) {
+        return new PeriodicityActions(this, taskId);
     }
 
     /**

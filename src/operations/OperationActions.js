@@ -242,7 +242,7 @@ export default class OperationActions {
         //console.log(_this._operationId);
         //console.log("OPERATION_ID: " + this._operationId);
         _this._ogapi.newOperationFinder().findById(_this._operationId)
-            .then(function (response) {
+            .then(function(response) {
                 var data = response.data;
                 if (!data || Object.keys(data).length == 0) {
                     //console.log("BUG");
@@ -260,18 +260,18 @@ export default class OperationActions {
                             case "PAUSE":
                             case "ACTIVE":
                                 _this._update(config)
-                                    .then(function (response) {
+                                    .then(function(response) {
                                         defered.resolve(response);
-                                    }).catch(function (error) {
+                                    }).catch(function(error) {
                                         defered.reject(error);
                                     });
                                 break;
                             case "CANCEL":
                                 _this._id = periodicityId;
                                 _this._cancel()
-                                    .then(function (response) {
+                                    .then(function(response) {
                                         defered.resolve(response);
-                                    }).catch(function (error) {
+                                    }).catch(function(error) {
                                         defered.reject(error);
                                     });
                                 break;
@@ -281,7 +281,7 @@ export default class OperationActions {
                     }
                 }
             })
-            .catch(function (error) {
+            .catch(function(error) {
                 //console.log("ERROR: " + error);
                 defered.reject(error);
             });
@@ -306,7 +306,7 @@ export default class OperationActions {
         let promise = defered.promise;
         var _this = this;
         _this._ogapi.newOperationFinder().findById(_this._operationId).then(
-            function (response) {
+            function(response) {
                 //console.log("_readAndUpdate find response: " + JSON.stringify(response));
                 var data = response.data;
                 if (!data) {
@@ -316,42 +316,42 @@ export default class OperationActions {
                     let active = data.operation ? data.operation.active : false;
                     if (active) {
                         _this.pause().then(
-                            function (response) {
+                            function(response) {
                                 _this._update(config, forceToActivate || active).then(
-                                    function (response) {
+                                    function(response) {
                                         defered.resolve(response);
                                     }
                                 ).catch(
-                                    function (error) {
+                                    function(error) {
                                         defered.reject(_this._formatError(error));
                                     }
                                 );
                             }
                         ).catch(
-                            function (error) {
+                            function(error) {
                                 defered.reject(_this._formatError(error));
                             }
                         );
 
                     } else {
                         _this._update(config, forceToActivate || active).then(
-                            function (response) {
+                            function(response) {
                                 defered.resolve(response);
                             }
                         ).catch(
-                            function (error) {
+                            function(error) {
                                 defered.reject(_this._formatError(error));
                             }
                         );
                     }
-                }     
+                }
             }
         ).catch(
-            function (error) {
+            function(error) {
                 //console.log("_readAndUpdate find error: " + JSON.stringify(error));
                 defered.reject(_this._formatError(error));
             }
-            );
+        );
 
         return promise;
     }
@@ -384,14 +384,14 @@ export default class OperationActions {
                 //console.log("_update response: " + JSON.stringify(response));
                 if (forceToActivate) {
                     _this.active().then(
-                        function (response) {
+                        function(response) {
                             defered.resolve(response);
                         }
                     ).catch(
-                        function (error) {
+                        function(error) {
                             defered.reject(this._formatError(error));
                         }
-                        );
+                    );
                 } else {
                     if (response.status === 200) {
                         let data = response.text != "" ? JSON.parse(response.text) : {};
@@ -414,7 +414,7 @@ export default class OperationActions {
             error.data = {};
         }
         if (!error.data.errors) {
-            error.data.errors = [(typeof (error) === "string") ? { message: error } : error];
+            error.data.errors = [(typeof(error) === "string") ? { message: error } : error];
         }
         //console.log("_formatError: " + error);
         return error;

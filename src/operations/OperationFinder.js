@@ -3,7 +3,6 @@
 import GenericFinder from '../GenericFinder';
 
 import q from 'q';
-import HttpStatus from 'http-status-codes';
 
 const LIMIT_START_DEF_VALUE = 1;
 const LIMIT_SIZE_DEF_VALUE = 10;
@@ -51,7 +50,7 @@ export default class OperationFinder extends GenericFinder {
         let defered = q.defer();
         let promise = defered.promise;
         _this.findById(id)
-            .then(function (response) {
+            .then(function(response) {
                 //console.log("1response: " + JSON.stringify(response));
                 var data = response.data;
                 if (!data || Object.keys(data).length == 0) {
@@ -65,19 +64,47 @@ export default class OperationFinder extends GenericFinder {
                     _this._error_not_found = "Operation is not periodic!";
                     //console.log("ID: " + _this._id);
                     _this._execute()
-                        .then(function (response) {
+                        .then(function(response) {
                             //console.log("2response: " + JSON.stringify(response));
                             response.data.id = _this._id;
                             defered.resolve(response);
                         })
-                        .catch(function (error) {
+                        .catch(function(error) {
                             //console.log("2error:" + JSON.stringify(error));
                             defered.reject(error);
                         });
                 }
             })
-            .catch(function (error) {
+            .catch(function(error) {
                 //console.log("1error:" + JSON.stringify(error));
+                defered.reject(error);
+            });
+        return promise;
+    }
+
+    /**
+     * Download information of periodicitiy  by its id. This execute a GET http method
+     * @example
+     *   ogapi.newOperationFinder().findPeriodicityByPeriodicityId('xxx-xx-xxx-xxx').then().catch();
+     * @param {string} periodicityId - Periodicity id.
+     * @return {Promise} 
+     */
+    findPeriodicityByPeriodicityId(periodicityId) {
+        var _this = this;
+        let defered = q.defer();
+        let promise = defered.promise;
+        _this._id = periodicityId;
+        _this._baseUrl = 'operation/tasks';
+        _this._entity = "task";
+        //console.log("ID: " + _this._id);
+        _this._execute()
+            .then(function(response) {
+                //console.log("2response: " + JSON.stringify(response));
+                response.data.id = _this._id;
+                defered.resolve(response);
+            })
+            .catch(function(error) {
+                //console.log("2error:" + JSON.stringify(error));
                 defered.reject(error);
             });
         return promise;
@@ -95,14 +122,14 @@ export default class OperationFinder extends GenericFinder {
      * @return {Promise} 
      */
     findExecutionsById(id, size = LIMIT_SIZE_DEF_VALUE, start = LIMIT_START_DEF_VALUE) {
-            this._id = id;
-            this._baseUrl = 'operation/jobs';
-            this._entity = 'operations';
-            this._error_not_found = 'Executions not found';
-            if (typeof size !== "number") throw new Error('size parameter must be a number');
-            if (typeof start !== "number" || start < 1)
-                start = LIMIT_START_DEF_VALUE;
-            this._limit = { size: size, start: start };
+        this._id = id;
+        this._baseUrl = 'operation/jobs';
+        this._entity = 'operations';
+        this._error_not_found = 'Executions not found';
+        if (typeof size !== "number") throw new Error('size parameter must be a number');
+        if (typeof start !== "number" || start < 1)
+            start = LIMIT_START_DEF_VALUE;
+        this._limit = { size: size, start: start };
         return this._execute();
     }
 

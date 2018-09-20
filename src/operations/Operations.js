@@ -111,17 +111,18 @@ export default class Operations {
     }
 
     _findOperation(name) {
-            return this._operations.find(function(config) {
-                return config.name == this;
-            }, name);
-        }
-        /**
-         * Create alarm close operation builder
-         *
-         * @example
-         *	ogapi.operations.builderFactory.newAlarmCloseBuilder()
-         * @return {AlarmCloseBuilder} 
-         */
+        return this._operations.find(function(config) {
+            return config.name == this;
+        }, name);
+    }
+
+    /**
+     * Create alarm close operation builder
+     *
+     * @example
+     *	ogapi.operations.builderFactory.newAlarmCloseBuilder()
+     * @return {AlarmCloseBuilder} 
+     */
     newAlarmCloseBuilder() {
         return new AlarmCloseBuilder(this._ogapi);
     }

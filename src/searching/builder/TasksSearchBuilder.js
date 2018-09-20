@@ -3,12 +3,12 @@
 import SearchWithSummaryBuilder from './SearchWithSummaryBuilder';
 import FieldFinder from '../../util/searchingFields/FieldFinder';
 
-const BASE_URL = '/jobs';
+const BASE_URL = '/tasks';
 /**
- * Defined a search over executions´s opreations
- * @example ogapi.operationsSearchBuilder()
+ * Defined a search over periodic executions´s operations
+ * @example ogapi.tasksSearchBuilder()
  */
-export default class OperationsSearchBuilder extends SearchWithSummaryBuilder {
+export default class TasksSearchBuilder extends SearchWithSummaryBuilder {
     /**
      *  @param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */
