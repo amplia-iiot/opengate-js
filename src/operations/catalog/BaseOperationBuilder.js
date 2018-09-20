@@ -18,18 +18,18 @@ const ACK_TIMEOUT = "ackTimeout",
     RETRIES = "retries",
     RETRIES_DELAY = "retriesDelay";
 const VALIDATE = {
-    gte: function (value) {
+    gte: function(value) {
         if (value < this)
             throw new Error("Value expected must be greater than <" + this + ">. Value setted <" + value + ">");
     },
-    list: function (value) {
-        let valueFound = this.find(function (value) {
+    list: function(value) {
+        let valueFound = this.find(function(value) {
             return value == this;
         }, value);
         if (typeof valueFound === "undefined")
             throw new Error("Value must be one of these: " + JSON.stringify(this));
     },
-    editable: function (value) {
+    editable: function(value) {
         return true;
         // Desactivada comprobación, es incoherente el valor en el catalogo de operaciones.
         /*if (!this)
@@ -93,23 +93,23 @@ export default class BaseOperationBuilder {
      * @return {BaseOperationBuilder}
      */
     withNotes(notes) {
-        if (notes === null) {
-            delete this._build.userNotes;
+            if (notes === null) {
+                delete this._build.userNotes;
+                return this;
+            }
+            if (typeof notes !== "string")
+                throw new Error('Parameter notes must be a string');
+            this._build.userNotes = notes;
             return this;
         }
-        if (typeof notes !== "string")
-            throw new Error('Parameter notes must be a string');
-        this._build.userNotes = notes;
-        return this;
-    }
-    /**
-     * Set a callback to operation. If it is set also will be set notify with true value
-     * @example
-     *  ogapi.operations.builderFactory.newXXXBuilder().withCallback("http://my.web")
-     * @param {string} url -  If null then parameter will be removed into builder
-     * @throws {Error} throw error when url is not typeof string
-     * @return {BaseOperationBuilder}
-     */
+        /**
+         * Set a callback to operation. If it is set also will be set notify with true value
+         * @example
+         *  ogapi.operations.builderFactory.newXXXBuilder().withCallback("http://my.web")
+         * @param {string} url -  If null then parameter will be removed into builder
+         * @throws {Error} throw error when url is not typeof string
+         * @return {BaseOperationBuilder}
+         */
     withCallback(url) {
         if (url === null) {
             delete this._build.callback;
@@ -237,10 +237,11 @@ export default class BaseOperationBuilder {
      * @param {string} name - Name associated to periodicity
      * @param {number or Date} end - When periodicity ends. By repetitions or by date
      * @param {boolean} active - If active is false, an operation is created in paused
+     * @param {string} description - Description associated to periodicity
      * @throws {Error} throw error when date is not typeof Date
      * @return {ExecuteEveryBuilder}
      */
-    executeEvery(date, name, end, active = true) {
+    executeEvery(date, name, end, active = true, description) {
         if (typeof date === "undefined" || date.constructor !== Date) {
             throw new Error("Parameter date must be typeof Date");
         }
@@ -248,7 +249,7 @@ export default class BaseOperationBuilder {
         let _name = this._getName(args.slice(1, 3));
         let _end = this._getEnd(args.slice(1, 3));
         this._build.active = active;
-        return new ExecuteEveryBuilder(this, date, _name, _end);
+        return new ExecuteEveryBuilder(this, date, _name, _end, description);
     }
 
     /**
@@ -257,10 +258,11 @@ export default class BaseOperationBuilder {
      * @param {string} name - Name associated to periodicity
      * @param {number or Date} end - When periodicity ends. By repetitions or by date   
      * @param {boolean} active - If active is false, an operation is created in paused
+     * @param {string} description - Description associated to periodicity
      * @throws {Error} throw error when date is not typeof Date
      * @return {ExecuteEachBuilder}
      */
-    executeEach(date, name, end, active = true) {
+    executeEach(date, name, end, active = true, description) {
         if (typeof date === "undefined" || date.constructor !== Date) {
             throw new Error("Parameter date must be typeof Date");
         }
@@ -268,7 +270,7 @@ export default class BaseOperationBuilder {
         let _name = this._getName(args.slice(1, 3));
         let _end = this._getEnd(args.slice(1, 3));
         this._build.active = active;
-        return new ExecuteEachBuilder(this, date, _name, _end);
+        return new ExecuteEachBuilder(this, date, _name, _end, description);
     }
 
     _getName(args) {
@@ -476,6 +478,7 @@ export default class BaseOperationBuilder {
             task: {
                 active: true,
                 name: task.name,
+                description: task.description,
                 job: jobObj.job,
                 schedule: {
                     start: {
@@ -522,7 +525,7 @@ export default class BaseOperationBuilder {
 
     _addSpecificParameter(value, paramName) {
         let param = this._config.genericParameters.find(
-            function (param) {
+            function(param) {
                 return param.name.split(".").pop() == this;
             },
             paramName);
@@ -547,9 +550,9 @@ export default class BaseOperationBuilder {
     _checkMandatoryParameters() {
         let parametersNotFound = [];
         for (let i = 0; i < this._requiredParameters.length; i++) {
-            if (typeof this._build.parameters.find(function (param) {
-                return param.name == this;
-            }, this._requiredParameters[i]) === "undefined") {
+            if (typeof this._build.parameters.find(function(param) {
+                    return param.name == this;
+                }, this._requiredParameters[i]) === "undefined") {
                 parametersNotFound.push(this._requiredParameters[i]);
             }
         }

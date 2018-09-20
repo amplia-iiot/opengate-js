@@ -1,5 +1,5 @@
 module.exports = {
-    setters: function (setter) {
+    setters: function(setter) {
         return {
 
             'bundle': {
@@ -61,7 +61,7 @@ module.exports = {
             }
         } [setter];
     },
-    getter_response: function (getter) {
+    getter_response: function(getter) {
         return {
             'bundle name': 'name',
             'certificate name': 'name',

@@ -20,10 +20,6 @@ var _utilSearchingFieldsFieldFinder = require('../../util/searchingFields/FieldF
 
 var _utilSearchingFieldsFieldFinder2 = _interopRequireDefault(_utilSearchingFieldsFieldFinder);
 
-var _merge = require('merge');
-
-var _merge2 = _interopRequireDefault(_merge);
-
 var BASE_URL = '/jobs';
 /**
  * Defined a search over executions´s opreations

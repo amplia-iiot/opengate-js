@@ -2,7 +2,6 @@
 
 import SearchWithSummaryBuilder from './SearchWithSummaryBuilder';
 import FieldFinder from '../../util/searchingFields/FieldFinder';
-import merge from 'merge';
 
 const BASE_URL = '/jobs';
 /**

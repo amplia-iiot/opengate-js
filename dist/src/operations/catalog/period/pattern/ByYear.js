@@ -30,10 +30,10 @@ var ByYear = (function (_ByGeneric) {
      * @param {!number or Date} end - When periodicity ends. By repetitions or by date		
      */
 
-    function ByYear(parent, date, name, end) {
+    function ByYear(parent, date, name, end, description) {
         _classCallCheck(this, ByYear);
 
-        _get(Object.getPrototypeOf(ByYear.prototype), 'constructor', this).call(this, parent, date, name, end);
+        _get(Object.getPrototypeOf(ByYear.prototype), 'constructor', this).call(this, parent, date, name, end, description);
         var _task = parent._task;
         if (_task) {
             var pattern = _task.schedule.repeating.pattern;

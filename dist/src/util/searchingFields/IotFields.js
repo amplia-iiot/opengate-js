@@ -36,14 +36,18 @@ var IOT_FIELDS = {
         "DOMAIN": ["domain.name", "domain.description"]
     },
     "AREAS": {
-        "AREAS": {
-            "identifier": "areas.identifier",
-            "name": "areas.name",
-            "description": "areas.description",
-            "entities": "areas.entities",
-            "geometry": "areas.geometry",
-            "organization": "areas.organization"
-        }
+        // "AREAS": {
+        //     "identifier": "areas.identifier",
+        //     "name": "areas.name",
+        //     "description": "areas.description",
+        //     "entities": "areas.entities",
+        //     "geometry": "areas.geometry",
+        //     "organization": "areas.organization"
+        // }
+        "AREAS": ["areas.identifier", "areas.name", "areas.description", "areas.entities", "areas.geometry", "areas.organization"]
+    },
+    "TASKS": {
+        "TASKS": ["tasks.id", "tasks.name", "tasks.description", "tasks.state", "tasks.domain", "tasks.workgroup", "tasks.job.request.user"]
     },
     "GENERAL": {
         "GENERAL": []

@@ -35,6 +35,7 @@ for (var field in _IotFields.IOT_FIELDS) {
 
 var match_url = {
     '/jobs': 'JOB',
+    '/tasks': 'TASKS',
     '/alarms': 'ENTITY_ALARM',
     '/operations': 'ENTITY_OPERATION',
     '/certificates': 'CERTIFICATE',

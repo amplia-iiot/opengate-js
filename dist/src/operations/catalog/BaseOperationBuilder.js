@@ -280,13 +280,14 @@ var BaseOperationBuilder = (function () {
          * @param {string} name - Name associated to periodicity
          * @param {number or Date} end - When periodicity ends. By repetitions or by date
          * @param {boolean} active - If active is false, an operation is created in paused
+         * @param {string} description - Description associated to periodicity
          * @throws {Error} throw error when date is not typeof Date
          * @return {ExecuteEveryBuilder}
          */
     }, {
         key: 'executeEvery',
-        value: function executeEvery(date, name, end) {
-            var active = arguments.length <= 3 || arguments[3] === undefined ? true : arguments[3];
+        value: function executeEvery(date, name, end, active, description) {
+            if (active === undefined) active = true;
 
             if (typeof date === "undefined" || date.constructor !== Date) {
                 throw new Error("Parameter date must be typeof Date");
@@ -295,7 +296,7 @@ var BaseOperationBuilder = (function () {
             var _name = this._getName(args.slice(1, 3));
             var _end = this._getEnd(args.slice(1, 3));
             this._build.active = active;
-            return new _periodExecuteEveryBuilder2['default'](this, date, _name, _end);
+            return new _periodExecuteEveryBuilder2['default'](this, date, _name, _end, description);
         }
 
         /**
@@ -304,13 +305,14 @@ var BaseOperationBuilder = (function () {
          * @param {string} name - Name associated to periodicity
          * @param {number or Date} end - When periodicity ends. By repetitions or by date   
          * @param {boolean} active - If active is false, an operation is created in paused
+         * @param {string} description - Description associated to periodicity
          * @throws {Error} throw error when date is not typeof Date
          * @return {ExecuteEachBuilder}
          */
     }, {
         key: 'executeEach',
-        value: function executeEach(date, name, end) {
-            var active = arguments.length <= 3 || arguments[3] === undefined ? true : arguments[3];
+        value: function executeEach(date, name, end, active, description) {
+            if (active === undefined) active = true;
 
             if (typeof date === "undefined" || date.constructor !== Date) {
                 throw new Error("Parameter date must be typeof Date");
@@ -319,7 +321,7 @@ var BaseOperationBuilder = (function () {
             var _name = this._getName(args.slice(1, 3));
             var _end = this._getEnd(args.slice(1, 3));
             this._build.active = active;
-            return new _periodExecuteEachBuilder2['default'](this, date, _name, _end);
+            return new _periodExecuteEachBuilder2['default'](this, date, _name, _end, description);
         }
     }, {
         key: '_getName',
@@ -543,6 +545,7 @@ var BaseOperationBuilder = (function () {
                 task: {
                     active: true,
                     name: task.name,
+                    description: task.description,
                     job: jobObj.job,
                     schedule: {
                         start: {

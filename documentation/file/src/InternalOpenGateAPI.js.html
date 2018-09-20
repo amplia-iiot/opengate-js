@@ -93,6 +93,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/OperationActions.js~OperationActions.html">OperationActions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/OperationFinder.js~OperationFinder.html">OperationFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/Operations.js~Operations.html">Operations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/PeriodicityActions.js~PeriodicityActions.html">PeriodicityActions</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations/catalog</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/AlarmAttendBuilder.js~AlarmAttendBuilder.html">AlarmAttendBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/AlarmCloseBuilder.js~AlarmCloseBuilder.html">AlarmCloseBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/AlarmOperationBuilder.js~AlarmOperationBuilder.html">AlarmOperationBuilder</a></span></span></li>
@@ -182,6 +183,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SpecificTypeSearchBuilder.js~SpecificTypeSearchBuilder.html">SpecificTypeSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscribersSearchBuilder.js~SubscribersSearchBuilder.html">SubscribersSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscriptionsSearchBuilder.js~SubscriptionsSearchBuilder.html">SubscriptionsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TasksSearchBuilder.js~TasksSearchBuilder.html">TasksSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketPrioritySearchBuilder.js~TicketPrioritySearchBuilder.html">TicketPrioritySearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketSeveritySearchBuilder.js~TicketSeveritySearchBuilder.html">TicketSeveritySearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketStatusSearchBuilder.js~TicketStatusSearchBuilder.html">TicketStatusSearchBuilder</a></span></span></li>
@@ -243,6 +245,7 @@ import OperationFinder from &apos;./operations/OperationFinder&apos;;
 import FilterBuilder from &apos;./searching/FilterBuilder&apos;;
 import SelectBuilder from &apos;./searching/SelectBuilder&apos;;
 import OperationActions from &apos;./operations/OperationActions&apos;;
+import PeriodicityActions from &apos;./operations/PeriodicityActions&apos;;
 import Expression from &apos;./util/Expression&apos;;
 import SelectElement from &apos;./util/SelectElement&apos;;
 import QuickSearch from &apos;./searching/QuickSearch&apos;;
@@ -252,6 +255,7 @@ import SubscribersSearchBuilder from &apos;./searching/builder/SubscribersSearch
 import SubscriptionsSearchBuilder from &apos;./searching/builder/SubscriptionsSearchBuilder&apos;;
 import AssetsSearchBuilder from &apos;./searching/builder/AssetsSearchBuilder&apos;;
 import TicketsSearchBuilder from &apos;./searching/builder/TicketsSearchBuilder&apos;;
+import TasksSearchBuilder from &apos;./searching/builder/TasksSearchBuilder&apos;;
 import OperationsSearchBuilder from &apos;./searching/builder/OperationsSearchBuilder&apos;;
 import ExecutionsSearchBuilder from &apos;./searching/builder/ExecutionsSearchBuilder&apos;;
 import AlarmsSearchBuilder from &apos;./searching/builder/AlarmsSearchBuilder&apos;;
@@ -660,6 +664,14 @@ export default class InternalOpenGateAPI {
     }
 
     /**
+     * This return a TasksSearchBuilder to build a specific TasksSearch
+     * @return {TasksSearchBuilder}
+     */
+    tasksSearchBuilder() {
+        return new TasksSearchBuilder(this);
+    }
+
+    /**
      * This return a OperationsSearchBuilder to build a specific ExecutionssSearch
      * @return {OperationsSearchBuilder}
      */
@@ -953,6 +965,15 @@ export default class InternalOpenGateAPI {
      */
     newOperationActions(operationId) {
         return new OperationActions(this, operationId);
+    }
+
+    /**
+     * This return a util to manage actions over periodicities
+     * @param {!string} taskId - identifier of operation
+     * @return {PeriodicityActions}
+     */
+    newPeriodicityActions(taskId) {
+        return new PeriodicityActions(this, taskId);
     }
 
     /**

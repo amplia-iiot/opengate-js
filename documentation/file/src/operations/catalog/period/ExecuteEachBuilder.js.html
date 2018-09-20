@@ -93,6 +93,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/OperationActions.js~OperationActions.html">OperationActions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/OperationFinder.js~OperationFinder.html">OperationFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/Operations.js~Operations.html">Operations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/PeriodicityActions.js~PeriodicityActions.html">PeriodicityActions</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations/catalog</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/AlarmAttendBuilder.js~AlarmAttendBuilder.html">AlarmAttendBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/AlarmCloseBuilder.js~AlarmCloseBuilder.html">AlarmCloseBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/AlarmOperationBuilder.js~AlarmOperationBuilder.html">AlarmOperationBuilder</a></span></span></li>
@@ -182,6 +183,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SpecificTypeSearchBuilder.js~SpecificTypeSearchBuilder.html">SpecificTypeSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscribersSearchBuilder.js~SubscribersSearchBuilder.html">SubscribersSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscriptionsSearchBuilder.js~SubscriptionsSearchBuilder.html">SubscriptionsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TasksSearchBuilder.js~TasksSearchBuilder.html">TasksSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketPrioritySearchBuilder.js~TicketPrioritySearchBuilder.html">TicketPrioritySearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketSeveritySearchBuilder.js~TicketSeveritySearchBuilder.html">TicketSeveritySearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketStatusSearchBuilder.js~TicketStatusSearchBuilder.html">TicketStatusSearchBuilder</a></span></span></li>
@@ -225,94 +227,98 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import merge from &apos;merge&apos;;
 import moment from &apos;moment&apos;;
 /**
-* Defines the builder to configure a period of operation. With this builder you can select how repeat the operation. By days, hours or minutes.
-*/
+ * Defines the builder to configure a period of operation. With this builder you can select how repeat the operation. By days, hours or minutes.
+ */
 export default class ExecuteEachBuilder {
-	/**
-	* @param {!BaseOperationBuilder} parent - this is a operationBaseBuilder.
-	* @param {!Date} date - Date when operation will be executed
-	* @param {string} periodicityName - Name associated to periodicity	
-	* @param {!number or Date} end - When periodicity ends. By repetitions or by date	
-	*/
-	constructor(parent, date, periodicityName, end) {
-		this._parent = parent;
-		this._skeleton = {
-			start: date,
-			stop: end,
-			name: periodicityName,
-			repeating: {
-				period: {
-					each: undefined,
-					unit: undefined
-				}
-			}
-		};
-		if (typeof end !== &quot;undefined&quot;) {
-			let stop;
-			if (typeof end === &quot;number&quot;) {
-				if (end &lt;= 0) {
-					throw new Error(&quot;Invalid stop value. Number of repetitions must be greater than 0.&quot;);
-				}
-				stop = {
-					&quot;executions&quot;: end
-				};
-			} else if (end.constructor === Date) {
-				let startDate = moment(date);
-				let stopDate = moment(end);
-				if (moment.max(startDate, stopDate) == startDate) {
-					throw new Error(&quot;Invalid stop date on executeEach method. Start date must be earlier than stop date.&quot;);
-				}
-				stop = {
-					&quot;date&quot;: end
-				};
-			}
-			this._skeleton.stop = stop;
-		}
-	}
-	/**
-	* Set a difference of minutes in each repetition
-	* @param {number} minutes
-	* @return {BaseOperationBuilder}
-	*/
-	minutes(minutes) {
-		const type = &quot;MINUTES&quot;;
-		if (typeof minutes !== &quot;number&quot;) {
-			throw new Error(&quot;Parameter minutes must be typeof number&quot;);
-		}
-		return this._addPeriod(minutes, type);
-	}
-	/**
-	* Set a difference of hours in each repetition
-	* @param {number} hours
-	* @return {BaseOperationBuilder}
-	*/
-	hours(hours) {
-		const type = &quot;HOURS&quot;;
-		if (typeof hours !== &quot;number&quot;) {
-			throw new Error(&quot;Parameter hours must be typeof number&quot;);
-		}
-		return this._addPeriod(hours, type);
-	}
-	/**
-	* Set a difference of days in each repetition
-	* @param {number} days
-	* @return {BaseOperationBuilder}
-	*/
-	days(days) {
-		const type = &quot;DAYS&quot;;
-		if (typeof days !== &quot;number&quot;) {
-			throw new Error(&quot;Parameter days must be typeof number&quot;);
-		}
-		return this._addPeriod(days, type);
-	}
+    /**
+     * @param {!BaseOperationBuilder} parent - this is a operationBaseBuilder.
+     * @param {!Date} date - Date when operation will be executed
+     * @param {string} periodicityName - Name associated to periodicity	
+     * @param {!number or Date} end - When periodicity ends. By repetitions or by date	
+     */
+    constructor(parent, date, periodicityName, end, description) {
+        this._parent = parent;
+        this._skeleton = {
+            start: date,
+            stop: end,
+            name: periodicityName,
+            description: description,
+            repeating: {
+                period: {
+                    each: undefined,
+                    unit: undefined
+                }
+            }
+        };
+        if (typeof end !== &quot;undefined&quot;) {
+            let stop;
+            if (typeof end === &quot;number&quot;) {
+                if (end &lt;= 0) {
+                    throw new Error(&quot;Invalid stop value. Number of repetitions must be greater than 0.&quot;);
+                }
+                stop = {
+                    &quot;executions&quot;: end
+                };
+            } else if (end.constructor === Date) {
+                let startDate = moment(date);
+                let stopDate = moment(end);
+                if (moment.max(startDate, stopDate) == startDate) {
+                    throw new Error(&quot;Invalid stop date on executeEach method. Start date must be earlier than stop date.&quot;);
+                }
+                stop = {
+                    &quot;date&quot;: end
+                };
+            }
+            this._skeleton.stop = stop;
+        }
+    }
 
-	_addPeriod(num, type) {
-		let skeleton = merge(true, this._skeleton);
-		skeleton.repeating.period.each = num;
-		skeleton.repeating.period.unit = type;
-		this._parent._build.task = skeleton;
-		return this._parent;
-	}
+    /**
+     * Set a difference of minutes in each repetition
+     * @param {number} minutes
+     * @return {BaseOperationBuilder}
+     */
+    minutes(minutes) {
+        const type = &quot;MINUTES&quot;;
+        if (typeof minutes !== &quot;number&quot;) {
+            throw new Error(&quot;Parameter minutes must be typeof number&quot;);
+        }
+        return this._addPeriod(minutes, type);
+    }
+
+    /**
+     * Set a difference of hours in each repetition
+     * @param {number} hours
+     * @return {BaseOperationBuilder}
+     */
+    hours(hours) {
+        const type = &quot;HOURS&quot;;
+        if (typeof hours !== &quot;number&quot;) {
+            throw new Error(&quot;Parameter hours must be typeof number&quot;);
+        }
+        return this._addPeriod(hours, type);
+    }
+
+    /**
+     * Set a difference of days in each repetition
+     * @param {number} days
+     * @return {BaseOperationBuilder}
+     */
+    days(days) {
+        const type = &quot;DAYS&quot;;
+        if (typeof days !== &quot;number&quot;) {
+            throw new Error(&quot;Parameter days must be typeof number&quot;);
+        }
+        return this._addPeriod(days, type);
+    }
+
+    _addPeriod(num, type) {
+        let skeleton = merge(true, this._skeleton);
+        skeleton.repeating.period.each = num;
+        skeleton.repeating.period.unit = type;
+        this._parent._build.task = skeleton;
+        return this._parent;
+    }
 }</code></pre>
 
 </div>

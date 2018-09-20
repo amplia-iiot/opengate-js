@@ -696,6 +696,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/operations/periodicityactions.js~periodicityactions",
+    "class/src/operations/PeriodicityActions.js~PeriodicityActions.html",
+    "<span>PeriodicityActions</span> <span class=\"search-result-import-path\">opengate-js/src/operations/PeriodicityActions.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/operations/catalog/period/periodicityupdatebuilder.js~periodicityupdatebuilder",
     "class/src/operations/catalog/period/PeriodicityUpdateBuilder.js~PeriodicityUpdateBuilder.html",
     "<span>PeriodicityUpdateBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/operations/catalog/period/PeriodicityUpdateBuilder.js</span>",
@@ -976,6 +982,12 @@ window.esdocSearchIndex = [
     "variable/index.html#static-variable-TYPE_VALIDATORS_ENUM",
     "<span>TYPE_VALIDATORS_ENUM</span> <span class=\"search-result-import-path\">opengate-js/src/bundles/deployment/TYPE_VALIDATORS_ENUM.js</span>",
     "variable"
+  ],
+  [
+    "opengate-js/src/searching/builder/taskssearchbuilder.js~taskssearchbuilder",
+    "class/src/searching/builder/TasksSearchBuilder.js~TasksSearchBuilder.html",
+    "<span>TasksSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/TasksSearchBuilder.js</span>",
+    "class"
   ],
   [
     "opengate-js/src/collection/devices/collect/temperature.js~temperature",
@@ -1477,13 +1489,13 @@ window.esdocSearchIndex = [
   ],
   [
     "internalopengateapi#bundlesbuilder() src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder()",
-    "test-file/client/collection/iot.spec.js.html#lineNumber4",
+    "test-file/client/device/device.spec.js.html#lineNumber4",
     "Check funcionality bundles module:",
     "test"
   ],
   [
     "internalopengateapi#bundlesbuilder() src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder()",
-    "test-file/client/device/device.spec.js.html#lineNumber4",
+    "test-file/client/collection/iot.spec.js.html#lineNumber4",
     "Check funcionality bundles module:",
     "test"
   ],
@@ -1519,13 +1531,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber180",
+    "test-file/client/device/device.spec.js.html#lineNumber185",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Operation",
     "test"
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber185",
+    "test-file/client/device/device.spec.js.html#lineNumber180",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Operation",
     "test"
   ],
@@ -1555,13 +1567,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber160",
+    "test-file/client/device/device.spec.js.html#lineNumber165",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Type",
     "test"
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber165",
+    "test-file/client/device/device.spec.js.html#lineNumber160",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Type",
     "test"
   ],
@@ -1663,13 +1675,13 @@ window.esdocSearchIndex = [
   ],
   [
     "internalopengateapi#bundlesbuilder src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder",
-    "test-file/client/device/device.spec.js.html#lineNumber10",
+    "test-file/client/collection/iot.spec.js.html#lineNumber10",
     "Check funcionality bundles module: Check basic parameters:",
     "test"
   ],
   [
     "internalopengateapi#bundlesbuilder src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder",
-    "test-file/client/collection/iot.spec.js.html#lineNumber10",
+    "test-file/client/device/device.spec.js.html#lineNumber10",
     "Check funcionality bundles module: Check basic parameters:",
     "test"
   ],
@@ -1687,13 +1699,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber12",
+    "test-file/client/collection/iot.spec.js.html#lineNumber12",
     "Check funcionality bundles module: Check basic parameters: Name is not a String",
     "test"
   ],
   [
     "",
-    "test-file/client/collection/iot.spec.js.html#lineNumber12",
+    "test-file/client/device/device.spec.js.html#lineNumber12",
     "Check funcionality bundles module: Check basic parameters: Name is not a String",
     "test"
   ],
@@ -2238,14 +2250,14 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortdescendingby,searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber94",
+    "searchbuilder#build searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortascendingby,searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber86",
     "Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort",
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortascendingby,searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber86",
+    "searchbuilder#build searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortdescendingby,searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber94",
     "Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort",
     "test"
   ],
@@ -2473,13 +2485,13 @@ window.esdocSearchIndex = [
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriptionssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriptionssearchbuilder,internalopengateapi#subscriptionssearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber120",
+    "test-file/client/searching/search.spec.js.html#lineNumber59",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscriptionsSearchBuilder",
     "test"
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriptionssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriptionssearchbuilder,internalopengateapi#subscriptionssearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber59",
+    "test-file/client/searching/search.spec.js.html#lineNumber120",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscriptionsSearchBuilder",
     "test"
   ],
@@ -2497,13 +2509,13 @@ window.esdocSearchIndex = [
   ],
   [
     "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber399",
+    "test-file/client/searching/search.spec.js.html#lineNumber393",
     "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
     "test"
   ],
   [
     "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber393",
+    "test-file/client/searching/search.spec.js.html#lineNumber399",
     "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
     "test"
   ],
@@ -2803,13 +2815,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber5",
+    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber13",
     "Testing fields finder api search a fields communicationsModulesSearchBuilder",
     "test"
   ],
   [
     "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber13",
+    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber5",
     "Testing fields finder api search a fields communicationsModulesSearchBuilder",
     "test"
   ],
@@ -3306,6 +3318,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#newperiodicityactions",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newPeriodicityActions",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newPeriodicityActions",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#newquicksearch",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newQuickSearch",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newQuickSearch",
@@ -3483,6 +3501,12 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#subscriptionssearchbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-subscriptionsSearchBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#subscriptionsSearchBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#taskssearchbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-tasksSearchBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#tasksSearchBuilder",
     "method"
   ],
   [
@@ -5556,6 +5580,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/operations/operationfinder.js~operationfinder#findperiodicitybyperiodicityid",
+    "class/src/operations/OperationFinder.js~OperationFinder.html#instance-method-findPeriodicityByPeriodicityId",
+    "src/operations/OperationFinder.js~OperationFinder#findPeriodicityByPeriodicityId",
+    "method"
+  ],
+  [
     "src/operations/operations.js",
     "file/src/operations/Operations.js.html",
     "src/operations/Operations.js",
@@ -5595,6 +5625,36 @@ window.esdocSearchIndex = [
     "src/operations/operations.js~operations#updateperiodicitybuilder",
     "class/src/operations/Operations.js~Operations.html#instance-method-updatePeriodicityBuilder",
     "src/operations/Operations.js~Operations#updatePeriodicityBuilder",
+    "method"
+  ],
+  [
+    "src/operations/periodicityactions.js",
+    "file/src/operations/PeriodicityActions.js.html",
+    "src/operations/PeriodicityActions.js",
+    "file"
+  ],
+  [
+    "src/operations/periodicityactions.js~periodicityactions#activate",
+    "class/src/operations/PeriodicityActions.js~PeriodicityActions.html#instance-method-activate",
+    "src/operations/PeriodicityActions.js~PeriodicityActions#activate",
+    "method"
+  ],
+  [
+    "src/operations/periodicityactions.js~periodicityactions#cancel",
+    "class/src/operations/PeriodicityActions.js~PeriodicityActions.html#instance-method-cancel",
+    "src/operations/PeriodicityActions.js~PeriodicityActions#cancel",
+    "method"
+  ],
+  [
+    "src/operations/periodicityactions.js~periodicityactions#constructor",
+    "class/src/operations/PeriodicityActions.js~PeriodicityActions.html#instance-constructor-constructor",
+    "src/operations/PeriodicityActions.js~PeriodicityActions#constructor",
+    "method"
+  ],
+  [
+    "src/operations/periodicityactions.js~periodicityactions#pause",
+    "class/src/operations/PeriodicityActions.js~PeriodicityActions.html#instance-method-pause",
+    "src/operations/PeriodicityActions.js~PeriodicityActions#pause",
     "method"
   ],
   [
@@ -7899,6 +7959,18 @@ window.esdocSearchIndex = [
     "src/searching/builder/subscriptionssearchbuilder.js~subscriptionssearchbuilder#constructor",
     "class/src/searching/builder/SubscriptionsSearchBuilder.js~SubscriptionsSearchBuilder.html#instance-constructor-constructor",
     "src/searching/builder/SubscriptionsSearchBuilder.js~SubscriptionsSearchBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/searching/builder/taskssearchbuilder.js",
+    "file/src/searching/builder/TasksSearchBuilder.js.html",
+    "src/searching/builder/TasksSearchBuilder.js",
+    "file"
+  ],
+  [
+    "src/searching/builder/taskssearchbuilder.js~taskssearchbuilder#constructor",
+    "class/src/searching/builder/TasksSearchBuilder.js~TasksSearchBuilder.html#instance-constructor-constructor",
+    "src/searching/builder/TasksSearchBuilder.js~TasksSearchBuilder#constructor",
     "method"
   ],
   [

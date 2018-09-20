@@ -93,6 +93,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/OperationActions.js~OperationActions.html">OperationActions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/OperationFinder.js~OperationFinder.html">OperationFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/Operations.js~Operations.html">Operations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/PeriodicityActions.js~PeriodicityActions.html">PeriodicityActions</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations/catalog</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/AlarmAttendBuilder.js~AlarmAttendBuilder.html">AlarmAttendBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/AlarmCloseBuilder.js~AlarmCloseBuilder.html">AlarmCloseBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/AlarmOperationBuilder.js~AlarmOperationBuilder.html">AlarmOperationBuilder</a></span></span></li>
@@ -182,6 +183,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SpecificTypeSearchBuilder.js~SpecificTypeSearchBuilder.html">SpecificTypeSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscribersSearchBuilder.js~SubscribersSearchBuilder.html">SubscribersSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscriptionsSearchBuilder.js~SubscriptionsSearchBuilder.html">SubscriptionsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TasksSearchBuilder.js~TasksSearchBuilder.html">TasksSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketPrioritySearchBuilder.js~TicketPrioritySearchBuilder.html">TicketPrioritySearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketSeveritySearchBuilder.js~TicketSeveritySearchBuilder.html">TicketSeveritySearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketStatusSearchBuilder.js~TicketStatusSearchBuilder.html">TicketStatusSearchBuilder</a></span></span></li>
@@ -227,7 +229,6 @@
 import GenericFinder from &apos;../GenericFinder&apos;;
 
 import q from &apos;q&apos;;
-import HttpStatus from &apos;http-status-codes&apos;;
 
 const LIMIT_START_DEF_VALUE = 1;
 const LIMIT_SIZE_DEF_VALUE = 10;
@@ -275,7 +276,7 @@ export default class OperationFinder extends GenericFinder {
         let defered = q.defer();
         let promise = defered.promise;
         _this.findById(id)
-            .then(function (response) {
+            .then(function(response) {
                 //console.log(&quot;1response: &quot; + JSON.stringify(response));
                 var data = response.data;
                 if (!data || Object.keys(data).length == 0) {
@@ -289,19 +290,47 @@ export default class OperationFinder extends GenericFinder {
                     _this._error_not_found = &quot;Operation is not periodic!&quot;;
                     //console.log(&quot;ID: &quot; + _this._id);
                     _this._execute()
-                        .then(function (response) {
+                        .then(function(response) {
                             //console.log(&quot;2response: &quot; + JSON.stringify(response));
                             response.data.id = _this._id;
                             defered.resolve(response);
                         })
-                        .catch(function (error) {
+                        .catch(function(error) {
                             //console.log(&quot;2error:&quot; + JSON.stringify(error));
                             defered.reject(error);
                         });
                 }
             })
-            .catch(function (error) {
+            .catch(function(error) {
                 //console.log(&quot;1error:&quot; + JSON.stringify(error));
+                defered.reject(error);
+            });
+        return promise;
+    }
+
+    /**
+     * Download information of periodicitiy  by its id. This execute a GET http method
+     * @example
+     *   ogapi.newOperationFinder().findPeriodicityByPeriodicityId(&apos;xxx-xx-xxx-xxx&apos;).then().catch();
+     * @param {string} periodicityId - Periodicity id.
+     * @return {Promise} 
+     */
+    findPeriodicityByPeriodicityId(periodicityId) {
+        var _this = this;
+        let defered = q.defer();
+        let promise = defered.promise;
+        _this._id = periodicityId;
+        _this._baseUrl = &apos;operation/tasks&apos;;
+        _this._entity = &quot;task&quot;;
+        //console.log(&quot;ID: &quot; + _this._id);
+        _this._execute()
+            .then(function(response) {
+                //console.log(&quot;2response: &quot; + JSON.stringify(response));
+                response.data.id = _this._id;
+                defered.resolve(response);
+            })
+            .catch(function(error) {
+                //console.log(&quot;2error:&quot; + JSON.stringify(error));
                 defered.reject(error);
             });
         return promise;
@@ -319,14 +348,14 @@ export default class OperationFinder extends GenericFinder {
      * @return {Promise} 
      */
     findExecutionsById(id, size = LIMIT_SIZE_DEF_VALUE, start = LIMIT_START_DEF_VALUE) {
-            this._id = id;
-            this._baseUrl = &apos;operation/jobs&apos;;
-            this._entity = &apos;operations&apos;;
-            this._error_not_found = &apos;Executions not found&apos;;
-            if (typeof size !== &quot;number&quot;) throw new Error(&apos;size parameter must be a number&apos;);
-            if (typeof start !== &quot;number&quot; || start &lt; 1)
-                start = LIMIT_START_DEF_VALUE;
-            this._limit = { size: size, start: start };
+        this._id = id;
+        this._baseUrl = &apos;operation/jobs&apos;;
+        this._entity = &apos;operations&apos;;
+        this._error_not_found = &apos;Executions not found&apos;;
+        if (typeof size !== &quot;number&quot;) throw new Error(&apos;size parameter must be a number&apos;);
+        if (typeof start !== &quot;number&quot; || start &lt; 1)
+            start = LIMIT_START_DEF_VALUE;
+        this._limit = { size: size, start: start };
         return this._execute();
     }
 
@@ -345,8 +374,7 @@ export default class OperationFinder extends GenericFinder {
         return this._baseUrl + &quot;/&quot; + this._id;
     }
 
-}
-</code></pre>
+}</code></pre>
 
 </div>
 

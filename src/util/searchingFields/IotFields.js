@@ -209,6 +209,17 @@ export const IOT_FIELDS = {
             "organization": "areas.organization"
         }
     },
+    "TASKS": {
+        "TASKS": [
+            "tasks.id",
+            "tasks.name",
+            "tasks.description",
+            "tasks.state",
+            "tasks.domain",
+            "tasks.workgroup",
+            "tasks.job.request.user"
+        ]
+    },
     "GENERAL": {
         "GENERAL": []
     },

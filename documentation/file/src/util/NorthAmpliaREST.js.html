@@ -93,6 +93,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/OperationActions.js~OperationActions.html">OperationActions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/OperationFinder.js~OperationFinder.html">OperationFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/Operations.js~Operations.html">Operations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/PeriodicityActions.js~PeriodicityActions.html">PeriodicityActions</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations/catalog</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/AlarmAttendBuilder.js~AlarmAttendBuilder.html">AlarmAttendBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/AlarmCloseBuilder.js~AlarmCloseBuilder.html">AlarmCloseBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/AlarmOperationBuilder.js~AlarmOperationBuilder.html">AlarmOperationBuilder</a></span></span></li>
@@ -182,6 +183,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SpecificTypeSearchBuilder.js~SpecificTypeSearchBuilder.html">SpecificTypeSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscribersSearchBuilder.js~SubscribersSearchBuilder.html">SubscribersSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscriptionsSearchBuilder.js~SubscriptionsSearchBuilder.html">SubscriptionsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TasksSearchBuilder.js~TasksSearchBuilder.html">TasksSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketPrioritySearchBuilder.js~TicketPrioritySearchBuilder.html">TicketPrioritySearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketSeveritySearchBuilder.js~TicketSeveritySearchBuilder.html">TicketSeveritySearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketStatusSearchBuilder.js~TicketStatusSearchBuilder.html">TicketStatusSearchBuilder</a></span></span></li>
@@ -246,7 +248,115 @@ export default class NorthAmpliaREST {
         this._options = merge.recursive(true, this.default(), _options);
         this._headers = headers;
 
-
+        // mock.post(_options.url + &apos;/search/tasks&apos;, function(req) {
+        //     return {
+        //         body: {
+        //             &quot;page&quot;: {
+        //                 &quot;number&quot;: 1
+        //             },
+        //             &quot;tasks&quot;: [{
+        //                     &quot;id&quot;: &quot;task_1&quot;,
+        //                     &quot;workgroup&quot;: &quot;user_wg&quot;,
+        //                     &quot;domain&quot;: &quot;user_domain&quot;,
+        //                     &quot;name&quot;: &quot;task_1_name&quot;,
+        //                     &quot;description&quot;: &quot;example task request&quot;,
+        //                     &quot;state&quot;: &quot;INACTIVE&quot;,
+        //                     &quot;schedule&quot;: {
+        //                         &quot;start&quot;: {
+        //                             &quot;date&quot;: &quot;2010-12-11T10:10:00Z&quot;
+        //                         },
+        //                         &quot;stop&quot;: {
+        //                             &quot;executions&quot;: 10
+        //                         },
+        //                         &quot;repeating&quot;: {
+        //                             &quot;period&quot;: {
+        //                                 &quot;each&quot;: 7,
+        //                                 &quot;unit&quot;: &quot;DAYS&quot;
+        //                             },
+        //                             &quot;pattern&quot;: {
+        //                                 &quot;time&quot;: &quot;10:30:00Z&quot;,
+        //                                 &quot;weekly&quot;: {
+        //                                     &quot;days&quot;: [
+        //                                         &quot;MON&quot;,
+        //                                         &quot;WED&quot;
+        //                                     ]
+        //                                 }
+        //                             }
+        //                         }
+        //                     },
+        //                     &quot;job&quot;: {
+        //                         &quot;request&quot;: {
+        //                             &quot;name&quot;: &quot;REBOOT_EQUIPMENT&quot;,
+        //                             &quot;parameters&quot;: [{
+        //                                 &quot;name&quot;: &quot;TYPE&quot;,
+        //                                 &quot;type&quot;: &quot;string&quot;,
+        //                                 &quot;value&quot;: {
+        //                                     &quot;string&quot;: &quot;HARDWARE&quot;
+        //                                 }
+        //                             }],
+        //                             &quot;schedule&quot;: {
+        //                                 &quot;stop&quot;: {
+        //                                     &quot;delayed&quot;: 300000
+        //                                 }
+        //                             },
+        //                             &quot;notify&quot;: true,
+        //                             &quot;user&quot;: &quot;user@mail.com&quot;,
+        //                             &quot;callback&quot;: &quot;http://[your_application_address]/[your_URI]&quot;,
+        //                             &quot;operationParameters&quot;: {
+        //                                 &quot;ackTimeout&quot;: 5000,
+        //                                 &quot;timeout&quot;: 6000,
+        //                                 &quot;retries&quot;: 0,
+        //                                 &quot;retriesDelay&quot;: 1000
+        //                             }
+        //                         }
+        //                     }
+        //                 },
+        //                 {
+        //                     &quot;id&quot;: &quot;task_2&quot;,
+        //                     &quot;workgroup&quot;: &quot;user_wg&quot;,
+        //                     &quot;domain&quot;: &quot;user_domain&quot;,
+        //                     &quot;name&quot;: &quot;task_2_name&quot;,
+        //                     &quot;description&quot;: &quot;example task request&quot;,
+        //                     &quot;state&quot;: &quot;ACTIVE&quot;,
+        //                     &quot;schedule&quot;: {
+        //                         &quot;start&quot;: {
+        //                             &quot;date&quot;: &quot;2011-01-11T10:10:00Z&quot;
+        //                         },
+        //                         &quot;stop&quot;: {
+        //                             &quot;date&quot;: &quot;2011-12-31T23:59:59Z&quot;
+        //                         },
+        //                         &quot;repeating&quot;: {
+        //                             &quot;period&quot;: {
+        //                                 &quot;each&quot;: 1,
+        //                                 &quot;unit&quot;: &quot;MONTH&quot;
+        //                             }
+        //                         }
+        //                     },
+        //                     &quot;job&quot;: {
+        //                         &quot;request&quot;: {
+        //                             &quot;name&quot;: &quot;REFRESH_INFO&quot;,
+        //                             &quot;schedule&quot;: {
+        //                                 &quot;stop&quot;: {
+        //                                     &quot;delayed&quot;: 300000
+        //                                 }
+        //                             },
+        //                             &quot;notify&quot;: true,
+        //                             &quot;user&quot;: &quot;user@mail.com&quot;,
+        //                             &quot;callback&quot;: &quot;http://[your_application_address]/[your_URI]&quot;,
+        //                             &quot;operationParameters&quot;: {
+        //                                 &quot;ackTimeout&quot;: 5000,
+        //                                 &quot;timeout&quot;: 6000,
+        //                                 &quot;retries&quot;: 0,
+        //                                 &quot;retriesDelay&quot;: 1000
+        //                             }
+        //                         }
+        //                     }
+        //                 }
+        //             ]
+        //         },
+        //         statusCode: 200
+        //     }
+        // });
         // Mocks for rule configuration clone/delete
         // clone ok
         // mock.post(_options.url + &apos;/provision/organizations/chema_organization/channels/default_channel/ruleconfigurations/batteryEvent/clone&apos;, function(req) {
@@ -560,7 +670,7 @@ export default class NorthAmpliaREST {
         var encode = [];
         var relativeUrlSplit = relativeUrl.split(&quot;/&quot;);
         var length = relativeUrlSplit.length;
-        relativeUrlSplit.forEach(function (item, index) {
+        relativeUrlSplit.forEach(function(item, index) {
             if (index === (length - 1) &amp;&amp; item.indexOf(&quot;?&quot;) &gt; 0) {
                 var parameters = item.substring(item.indexOf(&quot;?&quot;), item.length);
                 var _item = item.substring(0, item.indexOf(&quot;?&quot;));
@@ -599,7 +709,7 @@ export default class NorthAmpliaREST {
                 _req = _req.on(event, events[event]);
             }
         }
-        _req = _req.end(function (err, res) {
+        _req = _req.end(function(err, res) {
             if (err !== null) {
                 let data;
                 let status;

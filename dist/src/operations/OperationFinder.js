@@ -22,10 +22,6 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
-var _httpStatusCodes = require('http-status-codes');
-
-var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
-
 var LIMIT_START_DEF_VALUE = 1;
 var LIMIT_SIZE_DEF_VALUE = 10;
 
@@ -105,6 +101,34 @@ var OperationFinder = (function (_GenericFinder) {
                 }
             })['catch'](function (error) {
                 //console.log("1error:" + JSON.stringify(error));
+                defered.reject(error);
+            });
+            return promise;
+        }
+
+        /**
+         * Download information of periodicitiy  by its id. This execute a GET http method
+         * @example
+         *   ogapi.newOperationFinder().findPeriodicityByPeriodicityId('xxx-xx-xxx-xxx').then().catch();
+         * @param {string} periodicityId - Periodicity id.
+         * @return {Promise} 
+         */
+    }, {
+        key: 'findPeriodicityByPeriodicityId',
+        value: function findPeriodicityByPeriodicityId(periodicityId) {
+            var _this = this;
+            var defered = _q2['default'].defer();
+            var promise = defered.promise;
+            _this._id = periodicityId;
+            _this._baseUrl = 'operation/tasks';
+            _this._entity = "task";
+            //console.log("ID: " + _this._id);
+            _this._execute().then(function (response) {
+                //console.log("2response: " + JSON.stringify(response));
+                response.data.id = _this._id;
+                defered.resolve(response);
+            })['catch'](function (error) {
+                //console.log("2error:" + JSON.stringify(error));
                 defered.reject(error);
             });
             return promise;

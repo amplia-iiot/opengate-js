@@ -86,6 +86,10 @@ var _operationsOperationActions = require('./operations/OperationActions');
 
 var _operationsOperationActions2 = _interopRequireDefault(_operationsOperationActions);
 
+var _operationsPeriodicityActions = require('./operations/PeriodicityActions');
+
+var _operationsPeriodicityActions2 = _interopRequireDefault(_operationsPeriodicityActions);
+
 var _utilExpression = require('./util/Expression');
 
 var _utilExpression2 = _interopRequireDefault(_utilExpression);
@@ -121,6 +125,10 @@ var _searchingBuilderAssetsSearchBuilder2 = _interopRequireDefault(_searchingBui
 var _searchingBuilderTicketsSearchBuilder = require('./searching/builder/TicketsSearchBuilder');
 
 var _searchingBuilderTicketsSearchBuilder2 = _interopRequireDefault(_searchingBuilderTicketsSearchBuilder);
+
+var _searchingBuilderTasksSearchBuilder = require('./searching/builder/TasksSearchBuilder');
+
+var _searchingBuilderTasksSearchBuilder2 = _interopRequireDefault(_searchingBuilderTasksSearchBuilder);
 
 var _searchingBuilderOperationsSearchBuilder = require('./searching/builder/OperationsSearchBuilder');
 
@@ -816,6 +824,16 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
+         * This return a TasksSearchBuilder to build a specific TasksSearch
+         * @return {TasksSearchBuilder}
+         */
+    }, {
+        key: 'tasksSearchBuilder',
+        value: function tasksSearchBuilder() {
+            return new _searchingBuilderTasksSearchBuilder2['default'](this);
+        }
+
+        /**
          * This return a OperationsSearchBuilder to build a specific ExecutionssSearch
          * @return {OperationsSearchBuilder}
          */
@@ -1184,6 +1202,17 @@ var InternalOpenGateAPI = (function () {
         key: 'newOperationActions',
         value: function newOperationActions(operationId) {
             return new _operationsOperationActions2['default'](this, operationId);
+        }
+
+        /**
+         * This return a util to manage actions over periodicities
+         * @param {!string} taskId - identifier of operation
+         * @return {PeriodicityActions}
+         */
+    }, {
+        key: 'newPeriodicityActions',
+        value: function newPeriodicityActions(taskId) {
+            return new _operationsPeriodicityActions2['default'](this, taskId);
         }
 
         /**

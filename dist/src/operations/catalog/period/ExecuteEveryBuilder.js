@@ -39,16 +39,17 @@ var ExecuteEveryBuilder = (function () {
      * @param {string} periodicityName - Name associated to periodicity	
      */
 
-    function ExecuteEveryBuilder(parent, date, periodicityName, end) {
+    function ExecuteEveryBuilder(parent, date, periodicityName, end, description) {
         _classCallCheck(this, ExecuteEveryBuilder);
 
-        this.year = new _patternByYear2['default'](parent, date, periodicityName, end);
-        this.week = new _patternByWeek2['default'](parent, date, periodicityName, end);
-        this._day = new _patternByGeneric2['default'](parent, date, periodicityName, end);
+        this.year = new _patternByYear2['default'](parent, date, periodicityName, end, description);
+        this.week = new _patternByWeek2['default'](parent, date, periodicityName, end, description);
+        this._day = new _patternByGeneric2['default'](parent, date, periodicityName, end, description);
         this._date = date;
         this._end = end;
         this._parent = parent;
         this._periodicityName = periodicityName;
+        this._description = description;
     }
 
     /**
@@ -102,7 +103,7 @@ var ExecuteEveryBuilder = (function () {
             if (not_found.length !== 0) {
                 throw new Error("Any month into parameter months is not allowed. Parameter value <'" + JSON.stringify(not_found) + "'>, Months allowed <'" + JSON.stringify(_MONTHS_ENUM.MONTHS_ENUM) + "'>");
             }
-            return new _patternByMonth2['default'](this._parent, this._date, this._periodicityName, months, this._end);
+            return new _patternByMonth2['default'](this._parent, this._date, this._periodicityName, months, this._end, this._description);
         }
     }]);
 

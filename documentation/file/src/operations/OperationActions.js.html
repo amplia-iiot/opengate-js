@@ -93,6 +93,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/OperationActions.js~OperationActions.html">OperationActions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/OperationFinder.js~OperationFinder.html">OperationFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/Operations.js~Operations.html">Operations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/PeriodicityActions.js~PeriodicityActions.html">PeriodicityActions</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations/catalog</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/AlarmAttendBuilder.js~AlarmAttendBuilder.html">AlarmAttendBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/AlarmCloseBuilder.js~AlarmCloseBuilder.html">AlarmCloseBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/AlarmOperationBuilder.js~AlarmOperationBuilder.html">AlarmOperationBuilder</a></span></span></li>
@@ -182,6 +183,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SpecificTypeSearchBuilder.js~SpecificTypeSearchBuilder.html">SpecificTypeSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscribersSearchBuilder.js~SubscribersSearchBuilder.html">SubscribersSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscriptionsSearchBuilder.js~SubscriptionsSearchBuilder.html">SubscriptionsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TasksSearchBuilder.js~TasksSearchBuilder.html">TasksSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketPrioritySearchBuilder.js~TicketPrioritySearchBuilder.html">TicketPrioritySearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketSeveritySearchBuilder.js~TicketSeveritySearchBuilder.html">TicketSeveritySearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketStatusSearchBuilder.js~TicketStatusSearchBuilder.html">TicketStatusSearchBuilder</a></span></span></li>
@@ -466,7 +468,7 @@ export default class OperationActions {
         //console.log(_this._operationId);
         //console.log(&quot;OPERATION_ID: &quot; + this._operationId);
         _this._ogapi.newOperationFinder().findById(_this._operationId)
-            .then(function (response) {
+            .then(function(response) {
                 var data = response.data;
                 if (!data || Object.keys(data).length == 0) {
                     //console.log(&quot;BUG&quot;);
@@ -484,18 +486,18 @@ export default class OperationActions {
                             case &quot;PAUSE&quot;:
                             case &quot;ACTIVE&quot;:
                                 _this._update(config)
-                                    .then(function (response) {
+                                    .then(function(response) {
                                         defered.resolve(response);
-                                    }).catch(function (error) {
+                                    }).catch(function(error) {
                                         defered.reject(error);
                                     });
                                 break;
                             case &quot;CANCEL&quot;:
                                 _this._id = periodicityId;
                                 _this._cancel()
-                                    .then(function (response) {
+                                    .then(function(response) {
                                         defered.resolve(response);
-                                    }).catch(function (error) {
+                                    }).catch(function(error) {
                                         defered.reject(error);
                                     });
                                 break;
@@ -505,7 +507,7 @@ export default class OperationActions {
                     }
                 }
             })
-            .catch(function (error) {
+            .catch(function(error) {
                 //console.log(&quot;ERROR: &quot; + error);
                 defered.reject(error);
             });
@@ -530,7 +532,7 @@ export default class OperationActions {
         let promise = defered.promise;
         var _this = this;
         _this._ogapi.newOperationFinder().findById(_this._operationId).then(
-            function (response) {
+            function(response) {
                 //console.log(&quot;_readAndUpdate find response: &quot; + JSON.stringify(response));
                 var data = response.data;
                 if (!data) {
@@ -540,42 +542,42 @@ export default class OperationActions {
                     let active = data.operation ? data.operation.active : false;
                     if (active) {
                         _this.pause().then(
-                            function (response) {
+                            function(response) {
                                 _this._update(config, forceToActivate || active).then(
-                                    function (response) {
+                                    function(response) {
                                         defered.resolve(response);
                                     }
                                 ).catch(
-                                    function (error) {
+                                    function(error) {
                                         defered.reject(_this._formatError(error));
                                     }
                                 );
                             }
                         ).catch(
-                            function (error) {
+                            function(error) {
                                 defered.reject(_this._formatError(error));
                             }
                         );
 
                     } else {
                         _this._update(config, forceToActivate || active).then(
-                            function (response) {
+                            function(response) {
                                 defered.resolve(response);
                             }
                         ).catch(
-                            function (error) {
+                            function(error) {
                                 defered.reject(_this._formatError(error));
                             }
                         );
                     }
-                }     
+                }
             }
         ).catch(
-            function (error) {
+            function(error) {
                 //console.log(&quot;_readAndUpdate find error: &quot; + JSON.stringify(error));
                 defered.reject(_this._formatError(error));
             }
-            );
+        );
 
         return promise;
     }
@@ -608,14 +610,14 @@ export default class OperationActions {
                 //console.log(&quot;_update response: &quot; + JSON.stringify(response));
                 if (forceToActivate) {
                     _this.active().then(
-                        function (response) {
+                        function(response) {
                             defered.resolve(response);
                         }
                     ).catch(
-                        function (error) {
+                        function(error) {
                             defered.reject(this._formatError(error));
                         }
-                        );
+                    );
                 } else {
                     if (response.status === 200) {
                         let data = response.text != &quot;&quot; ? JSON.parse(response.text) : {};
@@ -638,7 +640,7 @@ export default class OperationActions {
             error.data = {};
         }
         if (!error.data.errors) {
-            error.data.errors = [(typeof (error) === &quot;string&quot;) ? { message: error } : error];
+            error.data.errors = [(typeof(error) === &quot;string&quot;) ? { message: error } : error];
         }
         //console.log(&quot;_formatError: &quot; + error);
         return error;

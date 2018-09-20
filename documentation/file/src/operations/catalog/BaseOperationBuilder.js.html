@@ -93,6 +93,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/OperationActions.js~OperationActions.html">OperationActions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/OperationFinder.js~OperationFinder.html">OperationFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/Operations.js~Operations.html">Operations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/PeriodicityActions.js~PeriodicityActions.html">PeriodicityActions</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations/catalog</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/AlarmAttendBuilder.js~AlarmAttendBuilder.html">AlarmAttendBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/AlarmCloseBuilder.js~AlarmCloseBuilder.html">AlarmCloseBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/AlarmOperationBuilder.js~AlarmOperationBuilder.html">AlarmOperationBuilder</a></span></span></li>
@@ -182,6 +183,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SpecificTypeSearchBuilder.js~SpecificTypeSearchBuilder.html">SpecificTypeSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscribersSearchBuilder.js~SubscribersSearchBuilder.html">SubscribersSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscriptionsSearchBuilder.js~SubscriptionsSearchBuilder.html">SubscriptionsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TasksSearchBuilder.js~TasksSearchBuilder.html">TasksSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketPrioritySearchBuilder.js~TicketPrioritySearchBuilder.html">TicketPrioritySearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketSeveritySearchBuilder.js~TicketSeveritySearchBuilder.html">TicketSeveritySearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketStatusSearchBuilder.js~TicketStatusSearchBuilder.html">TicketStatusSearchBuilder</a></span></span></li>
@@ -242,18 +244,18 @@ const ACK_TIMEOUT = &quot;ackTimeout&quot;,
     RETRIES = &quot;retries&quot;,
     RETRIES_DELAY = &quot;retriesDelay&quot;;
 const VALIDATE = {
-    gte: function (value) {
+    gte: function(value) {
         if (value &lt; this)
             throw new Error(&quot;Value expected must be greater than &lt;&quot; + this + &quot;&gt;. Value setted &lt;&quot; + value + &quot;&gt;&quot;);
     },
-    list: function (value) {
-        let valueFound = this.find(function (value) {
+    list: function(value) {
+        let valueFound = this.find(function(value) {
             return value == this;
         }, value);
         if (typeof valueFound === &quot;undefined&quot;)
             throw new Error(&quot;Value must be one of these: &quot; + JSON.stringify(this));
     },
-    editable: function (value) {
+    editable: function(value) {
         return true;
         // Desactivada comprobaci&#xF3;n, es incoherente el valor en el catalogo de operaciones.
         /*if (!this)
@@ -317,23 +319,23 @@ export default class BaseOperationBuilder {
      * @return {BaseOperationBuilder}
      */
     withNotes(notes) {
-        if (notes === null) {
-            delete this._build.userNotes;
+            if (notes === null) {
+                delete this._build.userNotes;
+                return this;
+            }
+            if (typeof notes !== &quot;string&quot;)
+                throw new Error(&apos;Parameter notes must be a string&apos;);
+            this._build.userNotes = notes;
             return this;
         }
-        if (typeof notes !== &quot;string&quot;)
-            throw new Error(&apos;Parameter notes must be a string&apos;);
-        this._build.userNotes = notes;
-        return this;
-    }
-    /**
-     * Set a callback to operation. If it is set also will be set notify with true value
-     * @example
-     *  ogapi.operations.builderFactory.newXXXBuilder().withCallback(&quot;http://my.web&quot;)
-     * @param {string} url -  If null then parameter will be removed into builder
-     * @throws {Error} throw error when url is not typeof string
-     * @return {BaseOperationBuilder}
-     */
+        /**
+         * Set a callback to operation. If it is set also will be set notify with true value
+         * @example
+         *  ogapi.operations.builderFactory.newXXXBuilder().withCallback(&quot;http://my.web&quot;)
+         * @param {string} url -  If null then parameter will be removed into builder
+         * @throws {Error} throw error when url is not typeof string
+         * @return {BaseOperationBuilder}
+         */
     withCallback(url) {
         if (url === null) {
             delete this._build.callback;
@@ -461,10 +463,11 @@ export default class BaseOperationBuilder {
      * @param {string} name - Name associated to periodicity
      * @param {number or Date} end - When periodicity ends. By repetitions or by date
      * @param {boolean} active - If active is false, an operation is created in paused
+     * @param {string} description - Description associated to periodicity
      * @throws {Error} throw error when date is not typeof Date
      * @return {ExecuteEveryBuilder}
      */
-    executeEvery(date, name, end, active = true) {
+    executeEvery(date, name, end, active = true, description) {
         if (typeof date === &quot;undefined&quot; || date.constructor !== Date) {
             throw new Error(&quot;Parameter date must be typeof Date&quot;);
         }
@@ -472,7 +475,7 @@ export default class BaseOperationBuilder {
         let _name = this._getName(args.slice(1, 3));
         let _end = this._getEnd(args.slice(1, 3));
         this._build.active = active;
-        return new ExecuteEveryBuilder(this, date, _name, _end);
+        return new ExecuteEveryBuilder(this, date, _name, _end, description);
     }
 
     /**
@@ -481,10 +484,11 @@ export default class BaseOperationBuilder {
      * @param {string} name - Name associated to periodicity
      * @param {number or Date} end - When periodicity ends. By repetitions or by date   
      * @param {boolean} active - If active is false, an operation is created in paused
+     * @param {string} description - Description associated to periodicity
      * @throws {Error} throw error when date is not typeof Date
      * @return {ExecuteEachBuilder}
      */
-    executeEach(date, name, end, active = true) {
+    executeEach(date, name, end, active = true, description) {
         if (typeof date === &quot;undefined&quot; || date.constructor !== Date) {
             throw new Error(&quot;Parameter date must be typeof Date&quot;);
         }
@@ -492,7 +496,7 @@ export default class BaseOperationBuilder {
         let _name = this._getName(args.slice(1, 3));
         let _end = this._getEnd(args.slice(1, 3));
         this._build.active = active;
-        return new ExecuteEachBuilder(this, date, _name, _end);
+        return new ExecuteEachBuilder(this, date, _name, _end, description);
     }
 
     _getName(args) {
@@ -700,6 +704,7 @@ export default class BaseOperationBuilder {
             task: {
                 active: true,
                 name: task.name,
+                description: task.description,
                 job: jobObj.job,
                 schedule: {
                     start: {
@@ -746,7 +751,7 @@ export default class BaseOperationBuilder {
 
     _addSpecificParameter(value, paramName) {
         let param = this._config.genericParameters.find(
-            function (param) {
+            function(param) {
                 return param.name.split(&quot;.&quot;).pop() == this;
             },
             paramName);
@@ -771,9 +776,9 @@ export default class BaseOperationBuilder {
     _checkMandatoryParameters() {
         let parametersNotFound = [];
         for (let i = 0; i &lt; this._requiredParameters.length; i++) {
-            if (typeof this._build.parameters.find(function (param) {
-                return param.name == this;
-            }, this._requiredParameters[i]) === &quot;undefined&quot;) {
+            if (typeof this._build.parameters.find(function(param) {
+                    return param.name == this;
+                }, this._requiredParameters[i]) === &quot;undefined&quot;) {
                 parametersNotFound.push(this._requiredParameters[i]);
             }
         }
@@ -783,8 +788,7 @@ export default class BaseOperationBuilder {
                 JSON.stringify(parametersNotFound).replace(new RegExp(&quot;\&quot;&quot;, &apos;g&apos;), &quot;&quot;));
         }
     }
-}
-</code></pre>
+}</code></pre>
 
 </div>
 

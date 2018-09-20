@@ -22,7 +22,115 @@ export default class NorthAmpliaREST {
         this._options = merge.recursive(true, this.default(), _options);
         this._headers = headers;
 
-
+        // mock.post(_options.url + '/search/tasks', function(req) {
+        //     return {
+        //         body: {
+        //             "page": {
+        //                 "number": 1
+        //             },
+        //             "tasks": [{
+        //                     "id": "task_1",
+        //                     "workgroup": "user_wg",
+        //                     "domain": "user_domain",
+        //                     "name": "task_1_name",
+        //                     "description": "example task request",
+        //                     "state": "INACTIVE",
+        //                     "schedule": {
+        //                         "start": {
+        //                             "date": "2010-12-11T10:10:00Z"
+        //                         },
+        //                         "stop": {
+        //                             "executions": 10
+        //                         },
+        //                         "repeating": {
+        //                             "period": {
+        //                                 "each": 7,
+        //                                 "unit": "DAYS"
+        //                             },
+        //                             "pattern": {
+        //                                 "time": "10:30:00Z",
+        //                                 "weekly": {
+        //                                     "days": [
+        //                                         "MON",
+        //                                         "WED"
+        //                                     ]
+        //                                 }
+        //                             }
+        //                         }
+        //                     },
+        //                     "job": {
+        //                         "request": {
+        //                             "name": "REBOOT_EQUIPMENT",
+        //                             "parameters": [{
+        //                                 "name": "TYPE",
+        //                                 "type": "string",
+        //                                 "value": {
+        //                                     "string": "HARDWARE"
+        //                                 }
+        //                             }],
+        //                             "schedule": {
+        //                                 "stop": {
+        //                                     "delayed": 300000
+        //                                 }
+        //                             },
+        //                             "notify": true,
+        //                             "user": "user@mail.com",
+        //                             "callback": "http://[your_application_address]/[your_URI]",
+        //                             "operationParameters": {
+        //                                 "ackTimeout": 5000,
+        //                                 "timeout": 6000,
+        //                                 "retries": 0,
+        //                                 "retriesDelay": 1000
+        //                             }
+        //                         }
+        //                     }
+        //                 },
+        //                 {
+        //                     "id": "task_2",
+        //                     "workgroup": "user_wg",
+        //                     "domain": "user_domain",
+        //                     "name": "task_2_name",
+        //                     "description": "example task request",
+        //                     "state": "ACTIVE",
+        //                     "schedule": {
+        //                         "start": {
+        //                             "date": "2011-01-11T10:10:00Z"
+        //                         },
+        //                         "stop": {
+        //                             "date": "2011-12-31T23:59:59Z"
+        //                         },
+        //                         "repeating": {
+        //                             "period": {
+        //                                 "each": 1,
+        //                                 "unit": "MONTH"
+        //                             }
+        //                         }
+        //                     },
+        //                     "job": {
+        //                         "request": {
+        //                             "name": "REFRESH_INFO",
+        //                             "schedule": {
+        //                                 "stop": {
+        //                                     "delayed": 300000
+        //                                 }
+        //                             },
+        //                             "notify": true,
+        //                             "user": "user@mail.com",
+        //                             "callback": "http://[your_application_address]/[your_URI]",
+        //                             "operationParameters": {
+        //                                 "ackTimeout": 5000,
+        //                                 "timeout": 6000,
+        //                                 "retries": 0,
+        //                                 "retriesDelay": 1000
+        //                             }
+        //                         }
+        //                     }
+        //                 }
+        //             ]
+        //         },
+        //         statusCode: 200
+        //     }
+        // });
         // Mocks for rule configuration clone/delete
         // clone ok
         // mock.post(_options.url + '/provision/organizations/chema_organization/channels/default_channel/ruleconfigurations/batteryEvent/clone', function(req) {
@@ -336,7 +444,7 @@ export default class NorthAmpliaREST {
         var encode = [];
         var relativeUrlSplit = relativeUrl.split("/");
         var length = relativeUrlSplit.length;
-        relativeUrlSplit.forEach(function (item, index) {
+        relativeUrlSplit.forEach(function(item, index) {
             if (index === (length - 1) && item.indexOf("?") > 0) {
                 var parameters = item.substring(item.indexOf("?"), item.length);
                 var _item = item.substring(0, item.indexOf("?"));
@@ -375,7 +483,7 @@ export default class NorthAmpliaREST {
                 _req = _req.on(event, events[event]);
             }
         }
-        _req = _req.end(function (err, res) {
+        _req = _req.end(function(err, res) {
             if (err !== null) {
                 let data;
                 let status;

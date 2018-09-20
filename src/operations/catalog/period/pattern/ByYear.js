@@ -9,8 +9,8 @@ export default class ByYear extends ByGeneric {
      * @param {string} periodicityName - Name associated to periodicity	
      * @param {!number or Date} end - When periodicity ends. By repetitions or by date		
      */
-    constructor(parent, date, name, end) {
-        super(parent, date, name, end);
+    constructor(parent, date, name, end, description) {
+        super(parent, date, name, end, description);
         let _task = parent._task;
         if (_task) {
             var pattern = _task.schedule.repeating.pattern;

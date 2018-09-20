@@ -19,6 +19,7 @@ for (var field in IOT_FIELDS) {
 
 const match_url = {
     '/jobs': 'JOB',
+    '/tasks': 'TASKS',
     '/alarms': 'ENTITY_ALARM',
     '/operations': 'ENTITY_OPERATION',
     '/certificates': 'CERTIFICATE',
