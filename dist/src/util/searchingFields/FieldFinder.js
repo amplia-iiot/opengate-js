@@ -269,8 +269,24 @@ var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEA
             paths = context[primaryType].slice();
         }
     } else {
-        if (field && context[primaryType][field]) {
-            paths.push(context[primaryType][field]);
+        if (field) {
+            if (context[primaryType][field]) {
+                paths.push(context[primaryType][field]);
+            } else {
+                var fieldsCfg = Object.keys(context[primaryType]);
+
+                for (var f = 0; f < fieldsCfg.length; f++) {
+                    if (context[primaryType][fieldsCfg[f]].toLowerCase().indexOf(field.toLowerCase()) > -1) {
+                        paths.push(context[primaryType][fieldsCfg[f]]);
+                    }
+                }
+            }
+        } else {
+            var fieldsCfg = Object.keys(context[primaryType]);
+
+            for (var f = 0; f < fieldsCfg.length; f++) {
+                paths.push(context[primaryType][fieldsCfg[f]]);
+            }
         }
     }
 
