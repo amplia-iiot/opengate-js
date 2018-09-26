@@ -2,6 +2,7 @@
 @searching_filter_fields
 @searching
 @catalogs
+@ignore
 Feature: Searching for all filter fields
 As a user of JsApi
 I want to search for all filter fields
@@ -50,14 +51,14 @@ So I can add filter with all filter fields to search any entity
     Then does not throws an error
 
   @bug @ODMQA-1150
-  Scenario: Execute all fields on operations searching
-    Given an apikey user by "require-real-apikey"
-    And an ogapi "operations search" util
-    When I try to search with all allow fields
-    When I build it
-    And I execute it
-    Then throws an error equal to "There is a parameter with incorrect value in the filter"
-    And response code should be: 400
+ Scenario: Execute all fields on operations searching
+   Given an apikey user by "require-real-apikey"
+   And an ogapi "operations search" util
+   When I try to search with all allow fields
+   When I build it
+   And I execute it
+   Then throws an error equal to "There is a parameter with incorrect value in the filter"
+   And response code should be: 400
 
   Scenario: Execute all fields on bundles searching
     Given an apikey user by "require-real-apikey"
