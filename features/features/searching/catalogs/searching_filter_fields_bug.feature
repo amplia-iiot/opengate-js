@@ -2,7 +2,6 @@
 @searching_filter_fields
 @searching
 @catalogs
-@ignore
 Feature: Searching for all filter fields
 As a user of JsApi
 I want to search for all filter fields

@@ -3,8 +3,8 @@ var q = require('q');
 var assert = require('chai').assert;
 var jp = require('jsonpath');
 
-module.exports = function () {
-    this.When(/^I try to find by...$/, function (table) {
+module.exports = function() {
+    this.When(/^I try to find by...$/, function(table) {
         // Write code here that turns the phrase above into concrete actions
 
         var _this = this;
@@ -65,7 +65,7 @@ module.exports = function () {
         }
     });
 
-    this.When(/^I try to search with...$/, function (table, callback) {
+    this.When(/^I try to search with...$/, function(table, callback) {
         // Write code here that turns the phrase above into concrete actions
 
         var _this = this;
@@ -91,7 +91,7 @@ module.exports = function () {
         callback();
     });
 
-    this.When(/^I try to search with all allow select fields$/, function (callback) {
+    this.When(/^I try to search with all allow select fields$/, function(callback) {
         var _this = this;
         var select = [];
 
@@ -100,15 +100,15 @@ module.exports = function () {
             case 'SubscriptionsSearchBuilder':
             case 'SubscribersSearchBuilder':
                 try {
-                    _this.util.findFields("").then(function (fields) {
+                    _this.util.findFields("").then(function(fields) {
                         var pArray = [];
-                        fields.forEach(function (field) {
+                        fields.forEach(function(field) {
                             addField(field);
                         });
                         //console.log("filter: " + JSON.stringify(select));
                         _this.util.select(select);
                         callback();
-                    }).catch(function (err) {
+                    }).catch(function(err) {
                         //console.log(JSON.stringify(err));
                         throw new Error(JSON.stringify(err));
 
@@ -119,17 +119,17 @@ module.exports = function () {
                 break;
             default:
                 try {
-                    return _this.util.findFields("").then(function (fields) {
+                    return _this.util.findFields("").then(function(fields) {
                         var pArray = [];
-                        fields.forEach(function (field) {
+                        fields.forEach(function(field) {
                             pArray.push(findFields(field + "."));
                         });
 
                         return q.all(pArray);
-                    }).catch(function (err) {
+                    }).catch(function(err) {
                         throw new Error(JSON.stringify(err));
 
-                    }).done(function () {
+                    }).done(function() {
                         //console.log("select: " + JSON.stringify(select));
                         _this.util.select(select);
                         callback();
@@ -142,10 +142,10 @@ module.exports = function () {
         function findFields(helpField) {
             var _helpField = helpField;
             try {
-                return _this.util.findFields(_helpField).then(function (fields) {
+                return _this.util.findFields(_helpField).then(function(fields) {
                     if (fields.length !== 0) {
                         var pArray = [];
-                        fields.forEach(function (field) {
+                        fields.forEach(function(field) {
                             pArray.push(findFields(field + "."));
                         });
                         return q.all(pArray);
@@ -153,7 +153,7 @@ module.exports = function () {
                         // Eliminar el último .
                         addField(helpField.slice(0, -1));
                     }
-                }).catch(function (err) {
+                }).catch(function(err) {
                     //console.error("ERR2: " + JSON.stringify(err));
                     throw new Error(JSON.stringify(err));
 
@@ -178,7 +178,7 @@ module.exports = function () {
         }
     });
 
-    this.When(/^I try to search with all allow select fields with utils$/, function (callback) {
+    this.When(/^I try to search with all allow select fields with utils$/, function(callback) {
         var _this = this;
         var selectBuilder = this.ogapi.newSelectBuilder();
 
@@ -187,15 +187,15 @@ module.exports = function () {
             case 'SubscriptionsSearchBuilder':
             case 'SubscribersSearchBuilder':
                 try {
-                    _this.util.findFields("").then(function (fields) {
+                    _this.util.findFields("").then(function(fields) {
                         var pArray = [];
-                        fields.forEach(function (field) {
+                        fields.forEach(function(field) {
                             addField(field);
                         });
                         //console.log("filter: " + selectBuilder.toString());
                         _this.util.select(selectBuilder);
                         callback();
-                    }).catch(function (err) {
+                    }).catch(function(err) {
                         //console.log(JSON.stringify(err));
                         throw new Error(JSON.stringify(err));
                     });
@@ -205,16 +205,16 @@ module.exports = function () {
                 break;
             default:
                 try {
-                    return _this.util.findFields("").then(function (fields) {
+                    return _this.util.findFields("").then(function(fields) {
                         var pArray = [];
-                        fields.forEach(function (field) {
+                        fields.forEach(function(field) {
                             pArray.push(findFields(field + "."));
                         });
 
                         return q.all(pArray);
-                    }).catch(function (err) {
+                    }).catch(function(err) {
                         throw new Error(JSON.stringify(err));
-                    }).done(function () {
+                    }).done(function() {
                         //console.log("select: " + selectBuilder.toString());
                         _this.util.select(selectBuilder);
                         callback();
@@ -228,10 +228,10 @@ module.exports = function () {
         function findFields(helpField) {
             var _helpField = helpField;
             try {
-                return _this.util.findFields(_helpField).then(function (fields) {
+                return _this.util.findFields(_helpField).then(function(fields) {
                     if (fields.length !== 0) {
                         var pArray = [];
-                        fields.forEach(function (field) {
+                        fields.forEach(function(field) {
                             pArray.push(findFields(field + "."));
                         });
                         return q.all(pArray);
@@ -239,7 +239,7 @@ module.exports = function () {
                         // Eliminar el último .
                         addField(helpField.slice(0, -1));
                     }
-                }).catch(function (err) {
+                }).catch(function(err) {
                     //console.error("ERR2: " + JSON.stringify(err));
                     throw new Error(JSON.stringify(err));
                 });
@@ -261,26 +261,26 @@ module.exports = function () {
     });
 
 
-    this.When(/^I try to search with all allow fields$/, function (callback) {
+    this.When(/^I try to search with all allow fields$/, function(callback) {
         var _this = this;
         var filter = {
             and: []
         };
-
+        console.log(_this.util.constructor.name);
         switch (_this.util.constructor.name) {
             case 'DevicesSearchBuilder':
             case 'SubscriptionsSearchBuilder':
             case 'SubscribersSearchBuilder':
                 try {
-                    _this.util.findFields("").then(function (fields) {
+                    _this.util.findFields("").then(function(fields) {
                         var pArray = [];
-                        fields.forEach(function (field) {
+                        fields.forEach(function(field) {
                             addField(field);
                         });
                         //console.log("filter: " + JSON.stringify(filter));
                         _this.util.filter(filter);
                         callback();
-                    }).catch(function (err) {
+                    }).catch(function(err) {
                         throw new Error(JSON.stringify(err));
                     });
                 } catch (err) {
@@ -289,16 +289,16 @@ module.exports = function () {
                 break;
             default:
                 try {
-                    return _this.util.findFields("").then(function (fields) {
+                    return _this.util.findFields("").then(function(fields) {
                         var pArray = [];
-                        fields.forEach(function (field) {
+                        fields.forEach(function(field) {
                             pArray.push(findFields(field + "."));
                         });
 
                         return q.all(pArray);
-                    }).catch(function (err) {
+                    }).catch(function(err) {
                         throw new Error(JSON.stringify(err));
-                    }).done(function () {
+                    }).done(function() {
                         //console.log("filter: " + JSON.stringify(filter));
                         _this.util.filter(filter);
                         callback();
@@ -312,10 +312,10 @@ module.exports = function () {
         function findFields(helpField) {
             var _helpField = helpField;
             try {
-                return _this.util.findFields(_helpField).then(function (fields) {
+                return _this.util.findFields(_helpField).then(function(fields) {
                     if (fields.length !== 0) {
                         var pArray = [];
-                        fields.forEach(function (field) {
+                        fields.forEach(function(field) {
                             pArray.push(findFields(field + "."));
                         });
                         return q.all(pArray);
@@ -323,7 +323,7 @@ module.exports = function () {
                         // Eliminar el último .
                         addField(helpField.slice(0, -1));
                     }
-                }).catch(function (err) {
+                }).catch(function(err) {
                     //console.error("ERR2: " + JSON.stringify(err));
                     throw new Error(JSON.stringify(err));
                 });
@@ -341,7 +341,7 @@ module.exports = function () {
         }
     });
 
-    this.When(/^I try to define the (entity|ticket) with GET previous flattened response$/, function (model, callback) {
+    this.When(/^I try to define the (entity|ticket) with GET previous flattened response$/, function(model, callback) {
         var _this = this;
 
         try {
@@ -360,7 +360,7 @@ module.exports = function () {
         callback();
     });
 
-    this.When(/^I try to define the (entity|ticket) with...$/, function (model, table, callback) {
+    this.When(/^I try to define the (entity|ticket) with...$/, function(model, table, callback) {
         // Write code here that turns the phrase above into concrete actions
         var _this = this;
         this.error = undefined;
@@ -390,7 +390,7 @@ module.exports = function () {
         callback();
     });
 
-    this.When(/^I try to define the datastream ticket "([^"]*)" with "([^"]*)" path of the previous response$/, function (datastream, path, callback) {
+    this.When(/^I try to define the datastream ticket "([^"]*)" with "([^"]*)" path of the previous response$/, function(datastream, path, callback) {
         // Write code here that turns the phrase above into concrete actions
         try {
             var data = this.responseData.data;
