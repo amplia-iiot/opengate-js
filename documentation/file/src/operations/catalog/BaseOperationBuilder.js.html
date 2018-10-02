@@ -510,7 +510,7 @@ export default class BaseOperationBuilder {
 
     _getEnd(args) {
         for (let i = 0; i &lt; args.length; i++) {
-            if (typeof args[i] === &quot;number&quot; || args[i].constructor === Date) {
+            if (args[i] &amp;&amp; (typeof args[i] === &quot;number&quot; || args[i].constructor === Date)) {
                 return args[i];
             }
         }
