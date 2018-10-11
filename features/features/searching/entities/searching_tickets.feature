@@ -4,6 +4,7 @@
 @ticket
 @download_csv
 @csv
+@OUW-1750
 Feature: Searching tickets
   As a user of JsApi
   I want to search into tickets collection
@@ -58,7 +59,7 @@ Feature: Searching tickets
       | provision.administration.identifier   | simple       | ticket_cucumber               |        |
       | provision.ticket.name                 | simple       | ticket_cucumber_search        |        |
       | provision.ticket.description          | simple       | TEST                          |        |
-      | provision.ticket.type                 | simple       | INCIDENT                      |        |
+      | provision.ticket.type                 | simple       | TEST                          |        |
       | provision.ticket.severity             | simple       | CRITICAL                      |        |
       | provision.ticket.priority             | simple       | CRITICAL                      |        |
       | provision.ticket.reporter             | simple       | asset_to_ticket               |        |

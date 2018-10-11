@@ -6,6 +6,7 @@
 @bulk_json
 @bulk
 @bulk_ticket
+@OUW-1750
 Feature: Delete and Create a ticket
   As a ticket of JsApi
   I want to create a ticket using json file

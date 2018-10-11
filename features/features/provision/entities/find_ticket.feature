@@ -5,6 +5,7 @@
 @find_provision
 @find_ticket
 @entities_provision
+@OUW-1750
 Feature: Find a ticket
     As a user of JsApi
     I want to find a ticket
@@ -51,7 +52,7 @@ Feature: Find a ticket
             | provision.administration.identifier   | simple       | ticket_cucumber                    |        |
             | provision.ticket.name                 | simple       | ticket_cucumber                    |        |
             | provision.ticket.description          | simple       | TEST                               |        |
-            | provision.ticket.type                 | simple       | INCIDENT                           |        |
+            | provision.ticket.type                 | simple       | TEST                               |        |
             | provision.ticket.severity             | simple       | CRITICAL                           |        |
             | provision.ticket.priority             | simple       | CRITICAL                           |        |
             | provision.ticket.reporter             | simple       | assigned_6_ticket_bulk_json_simple |        |

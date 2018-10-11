@@ -5,11 +5,11 @@
 @ticket
 @entities_provision
 @create_delete_ticket
-
+@OUW-1750
 Feature: Delete and Create a ticket
-As a user of JsApi
-I want to create a ticket
-So, I can create a new ticket with the parametres that I have been defined
+    As a user of JsApi
+    I want to create a ticket
+    So, I can create a new ticket with the parametres that I have been defined
 
     Background:
         Given an apikey user by "require-real-apikey"
@@ -34,25 +34,25 @@ So, I can create a new ticket with the parametres that I have been defined
         Then I get allowed Datastreams fields
         And I can found "provision.device.identifier" as datastream name
         When I try to define the entity with...
-            | datastream                            | typeFunction | value                                       | parent |
-            | provision.administration.channel      | simple       | default_channel                             |        |
-            | provision.administration.organization | simple       | ticket_organization                         |        |
-            | provision.administration.serviceGroup | simple       | emptyServiceGroup                           |        |
-            | provision.administration.defaultFeed  | simple       | feed_1                                      |        |
-            | provision.device.identifier           | simple       | device_ticket_testing_cucumber_ogapi        |        |
-            | provision.device.operationalStatus    | simple       | TEST                                        |        |
-            | provision.device.serialNumber         | simple       | serialNumber_TEST                           |        |
-            | provision.device.administrativeState  | simple       | TESTING                                     |        |
-            | provision.device.name                 | simple       | OGUX Device GATEWAY tester                  |        |
-            | provision.device.specificType         | simple       | CONCENTRATOR                                |        |
+            | datastream                            | typeFunction | value                                | parent |
+            | provision.administration.channel      | simple       | default_channel                      |        |
+            | provision.administration.organization | simple       | ticket_organization                  |        |
+            | provision.administration.serviceGroup | simple       | emptyServiceGroup                    |        |
+            | provision.administration.defaultFeed  | simple       | feed_1                               |        |
+            | provision.device.identifier           | simple       | device_ticket_testing_cucumber_ogapi |        |
+            | provision.device.operationalStatus    | simple       | TEST                                 |        |
+            | provision.device.serialNumber         | simple       | serialNumber_TEST                    |        |
+            | provision.device.administrativeState  | simple       | TESTING                              |        |
+            | provision.device.name                 | simple       | OGUX Device GATEWAY tester           |        |
+            | provision.device.specificType         | simple       | CONCENTRATOR                         |        |
         Then I delete it
         And I create it
         And response code should be: 201
-         When I wait 20 seconds
+        When I wait 10 seconds
 
     Scenario: Create and delete a ticket that not exists
         Given the entity of type "tickets builder" with "ticket_organization"
-        Then I get allowed Datastreams fields       
+        Then I get allowed Datastreams fields
         And I can found "provision.administration.identifier" as datastream name
         And I can found "provision.administration.organization" as datastream name
         And I can found "provision.ticket.identifier" as datastream name
@@ -63,33 +63,33 @@ So, I can create a new ticket with the parametres that I have been defined
         And I can found "provision.ticket.severity" as datastream name
         And I can found "provision.ticket.priority" as datastream name
         And I can found "provision.ticket.reporter" as datastream name
-        And I can found "provision.ticket.owner" as datastream name
+        #And I can found "provision.ticket.owner" as datastream name
         And I can found "provision.ticket.assignee" as datastream name
         And I can found "provision.ticket.status" as datastream name
         And I can found "provision.ticket.specificType" as datastream name
         And I can found "provision.ticket.section" as datastream name
         And I can found "provision.ticket.entity" as datastream name
-        And I can found "provision.ticket.creationDate" as datastream name
+        #And I can found "provision.ticket.creationDate" as datastream name
         And I can found "provision.ticket.reporterDate" as datastream name
-        And I can found "provision.ticket.assignedDate" as datastream name
-        And I can found "provision.ticket.answeredDate" as datastream name
-        And I can found "provision.ticket.updatedDate" as datastream name
-        And I can found "provision.ticket.restorationDate" as datastream name
-        And I can found "provision.ticket.resolutionDate" as datastream name
-        And I can found "provision.ticket.closedDate" as datastream name
+        #And I can found "provision.ticket.assignedDate" as datastream name
+        #nd I can found "provision.ticket.answeredDate" as datastream name
+        #And I can found "provision.ticket.updatedDate" as datastream name
+        #And I can found "provision.ticket.restorationDate" as datastream name
+        #And I can found "provision.ticket.resolutionDate" as datastream name
+        #And I can found "provision.ticket.closedDate" as datastream name
 
         When I try to define the ticket with...
-            | datastream                            | typeFunction | value                                       | parent |
-            | provision.administration.organization | simple       | ticket_organization                         |        |
-            | provision.administration.identifier   | simple       | ticket_cucumber                             |        |
-            | provision.ticket.name                 | simple       | ticket_cucumber                             |        |
-            | provision.ticket.description          | simple       | TEST                                        |        |
-            | provision.ticket.type                 | simple       | INCIDENT                                    |        |
-            | provision.ticket.severity             | simple       | CRITICAL                                    |        |
-            | provision.ticket.priority             | simple       | CRITICAL                                    |        |
-            | provision.ticket.reporter             | simple       | device_ticket_testing_cucumber_ogapi        |        |
-            | provision.ticket.status               | simple       | CREATED                                     |        |
-            | provision.ticket.reporterDate         | simple       | 2017-12-15T11:06:29.179Z                    |        |
+            | datastream                            | typeFunction | value                                | parent |
+            | provision.administration.organization | simple       | ticket_organization                  |        |
+            | provision.administration.identifier   | simple       | ticket_cucumber                      |        |
+            | provision.ticket.name                 | simple       | ticket_cucumber                      |        |
+            | provision.ticket.description          | simple       | TEST                                 |        |
+            | provision.ticket.type                 | simple       | TEST                                 |        |
+            | provision.ticket.severity             | simple       | CRITICAL                             |        |
+            | provision.ticket.priority             | simple       | CRITICAL                             |        |
+            | provision.ticket.reporter             | simple       | device_ticket_testing_cucumber_ogapi |        |
+            | provision.ticket.status               | simple       | CREATED                              |        |
+            | provision.ticket.reporterDate         | simple       | 2017-12-15T11:06:29.179Z             |        |
         Then I delete it
         And I create it
         And response code should be: 201
@@ -97,17 +97,17 @@ So, I can create a new ticket with the parametres that I have been defined
     Scenario: I want to delete the ticket CREATED
         And an ogapi "ticket search" util with "ticket_organization"
         When I add a filter and with
-          | operator | key                                   | value                        |
-          | eq       | provision.administration.organization | ticket_organization |
-          | eq       | provision.ticket.name                 | ticket_cucumber |
+            | operator | key                                   | value               |
+            | eq       | provision.administration.organization | ticket_organization |
+            | eq       | provision.ticket.name                 | ticket_cucumber     |
         When I build it
         And I execute it
         Then response code should be: 200
         Given the entity of type "tickets builder" with "ticket_organization"
         When I try to define the ticket with...
-            | datastream                            | typeFunction | value                                       | parent |
-            | provision.administration.organization | simple       | ticket_organization               |        |
-        When I try to define the datastream ticket "provision.ticket.identifier" with "provision.ticket.identifier._current.value" path of the previous response 
+            | datastream                            | typeFunction | value               | parent |
+            | provision.administration.organization | simple       | ticket_organization |        |
+        When I try to define the datastream ticket "provision.ticket.identifier" with "provision.ticket.identifier._current.value" path of the previous response
         And I delete it
         Then response code should be: 200
 

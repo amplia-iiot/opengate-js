@@ -39,9 +39,9 @@ export default class ServiceGroupSearchBuilder extends SearchBuilder {
      *
      * @example
      *  ogapi.serviceGroupSearchBuilder().withEntityType('myEntityType').build()
-     * @param {!string} entityType - model name
+     * @param {!string} entityType - entity type
      * @throws {Error} throw error when entityType is not typeof string
-     * @return {SpecificTypeSearchBuilder} 
+     * @return {ServiceGroupSearchBuilder} 
      */
     withEntityType(entityType) {
         if (typeof entityType !== 'string') {

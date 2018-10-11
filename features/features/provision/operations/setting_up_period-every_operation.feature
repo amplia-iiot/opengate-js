@@ -4,9 +4,9 @@
 @provision
 @fail
 Feature: Setting up period with every pattern to operations
-As a user of JsApi
-I want to execute an FACTORY_RESET operation with a specific every pattern period configuration
-So that I can execute FACTORY_RESET to some devices/subscriptions/subscribers/communications module with an every pattern period
+    As a user of JsApi
+    I want to execute an FACTORY_RESET operation with a specific every pattern period configuration
+    So that I can execute FACTORY_RESET to some devices/subscriptions/subscribers/communications module with an every pattern period
 
     Background:
         Given an apikey user by "require-real-apikey"

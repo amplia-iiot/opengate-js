@@ -10,6 +10,7 @@
 @bulk
 @bulk_ticket
 @csv
+@OUW-1750
 Feature: Delete and Create a ticket
   As a ticket of JsApi
   I want to create a ticket using csv file
