@@ -281,6 +281,17 @@ export default class StaticSearch extends Search {
 
         switch (_this._contentType) {
             case &apos;operationalStatus&apos;:
+                for (var contentTmp in collection) {
+                    collection[contentTmp].forEach(function (finalValue) {
+                        if (!_this._customFilters.id || (_this._customFilters.id &amp;&amp; _this._customFilters.id === finalValue)) {
+                            finalContent.push({
+                                &apos;entityType&apos;: contentTmp,
+                                &apos;id&apos;: finalValue
+                            });
+                        }
+                    });
+                }
+                break;
             case &apos;administrativeState&apos;:
                 var createAndAddFileObj = function (obj) {
                     var finalObj = obj;

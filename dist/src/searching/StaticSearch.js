@@ -81,6 +81,17 @@ var StaticSearch = (function (_Search) {
 
             switch (_this._contentType) {
                 case 'operationalStatus':
+                    for (var contentTmp in collection) {
+                        collection[contentTmp].forEach(function (finalValue) {
+                            if (!_this._customFilters.id || _this._customFilters.id && _this._customFilters.id === finalValue) {
+                                finalContent.push({
+                                    'entityType': contentTmp,
+                                    'id': finalValue
+                                });
+                            }
+                        });
+                    }
+                    break;
                 case 'administrativeState':
                     var createAndAddFileObj = function createAndAddFileObj(obj) {
                         var finalObj = obj;
