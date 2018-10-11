@@ -63,9 +63,9 @@ var ServiceGroupSearchBuilder = (function (_SearchBuilder) {
          *
          * @example
          *  ogapi.serviceGroupSearchBuilder().withEntityType('myEntityType').build()
-         * @param {!string} entityType - model name
+         * @param {!string} entityType - entity type
          * @throws {Error} throw error when entityType is not typeof string
-         * @return {SpecificTypeSearchBuilder} 
+         * @return {ServiceGroupSearchBuilder} 
          */
     }, {
         key: 'withEntityType',

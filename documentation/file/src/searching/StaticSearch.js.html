@@ -180,14 +180,12 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SearchWithSummaryBuilder.js~SearchWithSummaryBuilder.html">SearchWithSummaryBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ServiceGroupSearchBuilder.js~ServiceGroupSearchBuilder.html">ServiceGroupSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SoftwaresSearchBuilder.js~SoftwaresSearchBuilder.html">SoftwaresSearchBuilder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SpecificTypeSearchBuilder.js~SpecificTypeSearchBuilder.html">SpecificTypeSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscribersSearchBuilder.js~SubscribersSearchBuilder.html">SubscribersSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscriptionsSearchBuilder.js~SubscriptionsSearchBuilder.html">SubscriptionsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TasksSearchBuilder.js~TasksSearchBuilder.html">TasksSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketPrioritySearchBuilder.js~TicketPrioritySearchBuilder.html">TicketPrioritySearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketSeveritySearchBuilder.js~TicketSeveritySearchBuilder.html">TicketSeveritySearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketStatusSearchBuilder.js~TicketStatusSearchBuilder.html">TicketStatusSearchBuilder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketTypeSearchBuilder.js~TicketTypeSearchBuilder.html">TicketTypeSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketsSearchBuilder.js~TicketsSearchBuilder.html">TicketsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TimezoneSearchBuilder.js~TimezoneSearchBuilder.html">TimezoneSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UserLanguagesSearchBuilder.js~UserLanguagesSearchBuilder.html">UserLanguagesSearchBuilder</a></span></span></li>
@@ -283,18 +281,6 @@ export default class StaticSearch extends Search {
 
         switch (_this._contentType) {
             case &apos;operationalStatus&apos;:
-            case &apos;specificType&apos;:
-                for (var contentTmp in collection) {
-                    collection[contentTmp].forEach(function (finalValue) {
-                        if (!_this._customFilters.id || (_this._customFilters.id &amp;&amp; _this._customFilters.id === finalValue)) {
-                            finalContent.push({
-                                &apos;entityType&apos;: contentTmp,
-                                &apos;id&apos;: finalValue
-                            });
-                        }
-                    });
-                }
-                break;
             case &apos;administrativeState&apos;:
                 var createAndAddFileObj = function (obj) {
                     var finalObj = obj;
@@ -355,7 +341,6 @@ export default class StaticSearch extends Search {
                     }
                 }
                 break;
-            case &apos;ticketType&apos;:
             case &apos;ticketSeverity&apos;:
             case &apos;ticketPriority&apos;:
             case &apos;ticketStatus&apos;:
@@ -406,10 +391,6 @@ export default class StaticSearch extends Search {
 
     _content(contentType) {
         return {
-            &apos;ticketType&apos;: [
-                &apos;WORKORDER&apos;,
-                &apos;INCIDENT&apos;
-            ],
             &apos;ticketSeverity&apos;: [
                 &apos;CRITICAL&apos;, &apos;URGENT&apos;, &apos;WARNING&apos;, &apos;NORMAL&apos;
             ],
@@ -616,14 +597,6 @@ export default class StaticSearch extends Search {
                 &apos;ASSET&apos;: [&apos;UNKNOWN&apos;, &apos;NORMAL&apos;, &apos;ALARM&apos;, &apos;DOWN&apos;, &apos;SAFE_MODE&apos;, &apos;TAMPER&apos;, &apos;TEST&apos;],
                 &apos;GATEWAY&apos;: [&apos;UNKNOWN&apos;, &apos;NORMAL&apos;, &apos;ALARM&apos;, &apos;DOWN&apos;, &apos;SAFE_MODE&apos;, &apos;TAMPER&apos;, &apos;TEST&apos;],
                 &apos;COMMUNICATIONS_MODULE&apos;: [&apos;UNKNOWN&apos;, &apos;STOPPED&apos;, &apos;STARTING&apos;, &apos;RUNNING&apos;, &apos;STOPPING&apos;, &apos;ERROR&apos;]
-            },
-            &apos;specificType&apos;: {
-                &apos;COMMUNICATIONS_MODULE&apos;: [&apos;ADSL&apos;, &apos;CAN&apos;, &apos;ETH&apos;, &apos;GENERIC&apos;, &apos;GSM&apos;, &apos;HAN&apos;, &apos;I2C&apos;, &apos;LOWPAN&apos;, &apos;LTE_M&apos;, &apos;MESH&apos;, &apos;NARROWBAND&apos;],
-                &apos;SUBSCRIBER&apos;: [&apos;ADSL&apos;, &apos;CAN&apos;, &apos;ETH&apos;, &apos;GENERIC&apos;, &apos;GSM&apos;, &apos;HAN&apos;, &apos;I2C&apos;, &apos;LOWPAN&apos;, &apos;LTE_M&apos;, &apos;MESH&apos;, &apos;NARROWBAND&apos;],
-                &apos;SUBSCRIPTION&apos;: [&apos;ADSL&apos;, &apos;CAN&apos;, &apos;ETH&apos;, &apos;GENERIC&apos;, &apos;GSM&apos;, &apos;HAN&apos;, &apos;I2C&apos;, &apos;LOWPAN&apos;, &apos;LTE_M&apos;, &apos;MESH&apos;, &apos;MOBILE&apos;, &apos;NARROWBAND&apos;, &apos;PLC&apos;, &apos;RS232&apos;, &apos;RS422&apos;, &apos;RS485&apos;, &apos;SIGFOX&apos;, &apos;UMTS&apos;, &apos;WIFI&apos;, &apos;ZIGBEE&apos;],
-                &apos;ASSET&apos;: [&apos;BOX&apos;, &apos;BUILDING&apos;, &apos;CONTROL_HOUSE&apos;, &apos;CRANE&apos;, &apos;FOUNTAIN&apos;, &apos;ENGINE&apos;, &apos;HOUSE&apos;, &apos;MACHINE&apos;, &apos;OTHER&apos;, &apos;PALLET&apos;, &apos;PIPELINE&apos;, &apos;SPOOL&apos;, &apos;TOWER&apos;, &apos;VEHICLE&apos;, &apos;WIRE&apos;, &apos;WORKER&apos;],
-                &apos;GATEWAY&apos;: [&apos;GATEWAY&apos;, &apos;BLOODPRESSURE_SENSOR&apos;, &apos;COMHUB&apos;, &apos;CONCENTRATOR&apos;, &apos;CONTAINER&apos;, &apos;COORDINATOR&apos;, &apos;GENERIC&apos;, &apos;GLUCOMETER_SENSOR&apos;, &apos;METER&apos;, &apos;MODEM&apos;, &apos;ROUTER&apos;, &apos;SENSOR&apos;, &apos;TPV&apos;, &apos;VEHICLE&apos;, &apos;VENDING&apos;, &apos;WEIGHT_SENSOR&apos;],
-                &apos;TICKET&apos;: [&apos;INSTALLATION&apos;, &apos;TEST&apos;, &apos;TECHNICAL_TASK&apos;, &apos;DESINSTALLATION&apos;]
             },
             &apos;communicationsModuleType&apos;: {
                 &apos;ADSL&apos;: {
@@ -2773,7 +2746,7 @@ export default class StaticSearch extends Search {
                 &apos;Zulu&apos;
             ]
 
-        }[contentType];
+        } [contentType];
     }
 }</code></pre>
 

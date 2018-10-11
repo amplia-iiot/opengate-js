@@ -178,10 +178,6 @@ var _searchingBuilderOperationalStatusSearchBuilder = require('./searching/build
 
 var _searchingBuilderOperationalStatusSearchBuilder2 = _interopRequireDefault(_searchingBuilderOperationalStatusSearchBuilder);
 
-var _searchingBuilderSpecificTypeSearchBuilder = require('./searching/builder/SpecificTypeSearchBuilder');
-
-var _searchingBuilderSpecificTypeSearchBuilder2 = _interopRequireDefault(_searchingBuilderSpecificTypeSearchBuilder);
-
 var _searchingBuilderServiceGroupSearchBuilder = require('./searching/builder/ServiceGroupSearchBuilder');
 
 var _searchingBuilderServiceGroupSearchBuilder2 = _interopRequireDefault(_searchingBuilderServiceGroupSearchBuilder);
@@ -225,10 +221,6 @@ var _searchingBuilderIoTDatastreamAccessSearchBuilder2 = _interopRequireDefault(
 var _searchingBuilderIoTDatastreamStoragePeriodSearchBuilder = require('./searching/builder/IoTDatastreamStoragePeriodSearchBuilder');
 
 var _searchingBuilderIoTDatastreamStoragePeriodSearchBuilder2 = _interopRequireDefault(_searchingBuilderIoTDatastreamStoragePeriodSearchBuilder);
-
-var _searchingBuilderTicketTypeSearchBuilder = require('./searching/builder/TicketTypeSearchBuilder');
-
-var _searchingBuilderTicketTypeSearchBuilder2 = _interopRequireDefault(_searchingBuilderTicketTypeSearchBuilder);
 
 var _searchingBuilderTicketSeveritySearchBuilder = require('./searching/builder/TicketSeveritySearchBuilder');
 
@@ -774,16 +766,6 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a TicketTypeSearchBuilder to build a specific TicketTypeSearchBuilder
-         * @return {TicketTypeSearchBuilder}
-         */
-    }, {
-        key: 'ticketTypeSearchBuilder',
-        value: function ticketTypeSearchBuilder() {
-            return new _searchingBuilderTicketTypeSearchBuilder2['default'](this);
-        }
-
-        /**
          * This return a TicketSeveritySearchBuilder to build a specific TicketSeveritySearchBuilder
          * @return {TicketSeveritySearchBuilder}
          */
@@ -1050,16 +1032,6 @@ var InternalOpenGateAPI = (function () {
         key: 'operationalStatusSearchBuilder',
         value: function operationalStatusSearchBuilder() {
             return new _searchingBuilderOperationalStatusSearchBuilder2['default'](this);
-        }
-
-        /**
-         * This return a SpecificTypeSearchBuilder to build a specific SpecificTypeSearchBuilder
-         * @return {SpecificTypeSearchBuilder}
-         */
-    }, {
-        key: 'specificTypeSearchBuilder',
-        value: function specificTypeSearchBuilder() {
-            return new _searchingBuilderSpecificTypeSearchBuilder2['default'](this);
         }
 
         /**
