@@ -4,9 +4,9 @@
 @actions_execution
 @fail
 Feature: Execute actions on a particular execution
-As a user of JsApi
-I want to execute actions on a particular operation
-So I can check if the actions run correctly
+    As a user of JsApi
+    I want to execute actions on a particular operation
+    So I can check if the actions run correctly
 
     Background:
         Given an apikey user by "require-real-apikey"

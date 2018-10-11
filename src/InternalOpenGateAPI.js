@@ -42,7 +42,6 @@ import CertificatesSearchBuilder from './searching/builder/CertificatesSearchBui
 import HardwaresSearchBuilder from './searching/builder/HardwaresSearchBuilder';
 import SoftwaresSearchBuilder from './searching/builder/SoftwaresSearchBuilder';
 import OperationalStatusSearchBuilder from './searching/builder/OperationalStatusSearchBuilder';
-import SpecificTypeSearchBuilder from './searching/builder/SpecificTypeSearchBuilder';
 import ServiceGroupSearchBuilder from './searching/builder/ServiceGroupSearchBuilder';
 import AdministrativeStateSearchBuilder from './searching/builder/AdministrativeStateSearchBuilder';
 import CommunicationsModuleTypeSearchBuilder from './searching/builder/CommunicationsModuleTypeSearchBuilder';
@@ -54,7 +53,6 @@ import ResourceTypeSearchBuilder from './searching/builder/ResourceTypeSearchBui
 import AllowedResourceTypeSearchBuilder from './searching/builder/AllowedResourceTypeSearchBuilder';
 import IoTDatastreamAccessSearchBuilder from './searching/builder/IoTDatastreamAccessSearchBuilder';
 import IoTDatastreamStoragePeriodSearchBuilder from './searching/builder/IoTDatastreamStoragePeriodSearchBuilder';
-import TicketTypeSearchBuilder from './searching/builder/TicketTypeSearchBuilder';
 import TicketSeveritySearchBuilder from './searching/builder/TicketSeveritySearchBuilder';
 import TicketPrioritySearchBuilder from './searching/builder/TicketPrioritySearchBuilder';
 import TicketStatusSearchBuilder from './searching/builder/TicketStatusSearchBuilder';
@@ -398,14 +396,6 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a TicketTypeSearchBuilder to build a specific TicketTypeSearchBuilder
-     * @return {TicketTypeSearchBuilder}
-     */
-    ticketTypeSearchBuilder() {
-        return new TicketTypeSearchBuilder(this);
-    }
-
-    /**
      * This return a TicketSeveritySearchBuilder to build a specific TicketSeveritySearchBuilder
      * @return {TicketSeveritySearchBuilder}
      */
@@ -619,14 +609,6 @@ export default class InternalOpenGateAPI {
      */
     operationalStatusSearchBuilder() {
         return new OperationalStatusSearchBuilder(this);
-    }
-
-    /**
-     * This return a SpecificTypeSearchBuilder to build a specific SpecificTypeSearchBuilder
-     * @return {SpecificTypeSearchBuilder}
-     */
-    specificTypeSearchBuilder() {
-        return new SpecificTypeSearchBuilder(this);
     }
 
     /**

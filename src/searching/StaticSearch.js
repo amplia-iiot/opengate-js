@@ -57,18 +57,6 @@ export default class StaticSearch extends Search {
 
         switch (_this._contentType) {
             case 'operationalStatus':
-            case 'specificType':
-                for (var contentTmp in collection) {
-                    collection[contentTmp].forEach(function (finalValue) {
-                        if (!_this._customFilters.id || (_this._customFilters.id && _this._customFilters.id === finalValue)) {
-                            finalContent.push({
-                                'entityType': contentTmp,
-                                'id': finalValue
-                            });
-                        }
-                    });
-                }
-                break;
             case 'administrativeState':
                 var createAndAddFileObj = function (obj) {
                     var finalObj = obj;
@@ -129,7 +117,6 @@ export default class StaticSearch extends Search {
                     }
                 }
                 break;
-            case 'ticketType':
             case 'ticketSeverity':
             case 'ticketPriority':
             case 'ticketStatus':
@@ -180,10 +167,6 @@ export default class StaticSearch extends Search {
 
     _content(contentType) {
         return {
-            'ticketType': [
-                'WORKORDER',
-                'INCIDENT'
-            ],
             'ticketSeverity': [
                 'CRITICAL', 'URGENT', 'WARNING', 'NORMAL'
             ],
@@ -390,14 +373,6 @@ export default class StaticSearch extends Search {
                 'ASSET': ['UNKNOWN', 'NORMAL', 'ALARM', 'DOWN', 'SAFE_MODE', 'TAMPER', 'TEST'],
                 'GATEWAY': ['UNKNOWN', 'NORMAL', 'ALARM', 'DOWN', 'SAFE_MODE', 'TAMPER', 'TEST'],
                 'COMMUNICATIONS_MODULE': ['UNKNOWN', 'STOPPED', 'STARTING', 'RUNNING', 'STOPPING', 'ERROR']
-            },
-            'specificType': {
-                'COMMUNICATIONS_MODULE': ['ADSL', 'CAN', 'ETH', 'GENERIC', 'GSM', 'HAN', 'I2C', 'LOWPAN', 'LTE_M', 'MESH', 'NARROWBAND'],
-                'SUBSCRIBER': ['ADSL', 'CAN', 'ETH', 'GENERIC', 'GSM', 'HAN', 'I2C', 'LOWPAN', 'LTE_M', 'MESH', 'NARROWBAND'],
-                'SUBSCRIPTION': ['ADSL', 'CAN', 'ETH', 'GENERIC', 'GSM', 'HAN', 'I2C', 'LOWPAN', 'LTE_M', 'MESH', 'MOBILE', 'NARROWBAND', 'PLC', 'RS232', 'RS422', 'RS485', 'SIGFOX', 'UMTS', 'WIFI', 'ZIGBEE'],
-                'ASSET': ['BOX', 'BUILDING', 'CONTROL_HOUSE', 'CRANE', 'FOUNTAIN', 'ENGINE', 'HOUSE', 'MACHINE', 'OTHER', 'PALLET', 'PIPELINE', 'SPOOL', 'TOWER', 'VEHICLE', 'WIRE', 'WORKER'],
-                'GATEWAY': ['GATEWAY', 'BLOODPRESSURE_SENSOR', 'COMHUB', 'CONCENTRATOR', 'CONTAINER', 'COORDINATOR', 'GENERIC', 'GLUCOMETER_SENSOR', 'METER', 'MODEM', 'ROUTER', 'SENSOR', 'TPV', 'VEHICLE', 'VENDING', 'WEIGHT_SENSOR'],
-                'TICKET': ['INSTALLATION', 'TEST', 'TECHNICAL_TASK', 'DESINSTALLATION']
             },
             'communicationsModuleType': {
                 'ADSL': {
@@ -2547,6 +2522,6 @@ export default class StaticSearch extends Search {
                 'Zulu'
             ]
 
-        }[contentType];
+        } [contentType];
     }
 }

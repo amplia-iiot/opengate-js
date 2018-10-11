@@ -6,6 +6,7 @@
 @entities_provision
 @create_delete_ticket
 @OUW-1679
+@OUW-1750
 Feature: Create and update tickets with calculated datastreams
     As a user of JsApi
     I want to create and update a ticket
@@ -77,7 +78,7 @@ Feature: Create and update tickets with calculated datastreams
             | provision.administration.identifier   | simple       | ticket_cucumber                    |        |
             | provision.ticket.name                 | simple       | ticket_cucumber                    |        |
             | provision.ticket.description          | simple       | TEST                               |        |
-            | provision.ticket.type                 | simple       | INCIDENT                           |        |
+            | provision.ticket.type                 | simple       | TEST                               |        |
             | provision.ticket.severity             | simple       | CRITICAL                           |        |
             | provision.ticket.priority             | simple       | CRITICAL                           |        |
             | provision.ticket.reporter             | simple       | assigned_6_ticket_bulk_json_simple |        |
