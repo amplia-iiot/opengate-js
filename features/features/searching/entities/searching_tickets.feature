@@ -5,6 +5,7 @@
 @download_csv
 @csv
 @OUW-1750
+@OUW-1807
 Feature: Searching tickets
   As a user of JsApi
   I want to search into tickets collection
@@ -65,6 +66,7 @@ Feature: Searching tickets
       | provision.ticket.reporter             | simple       | asset_to_ticket               |        |
       | provision.ticket.status               | simple       | CREATED                       |        |
       | provision.ticket.reporterDate         | simple       | 2018-02-15T11:06:29.179Z      |        |
+      | provision.ticket.specificType         | simple       | WORKORDER                     |        |
     Then I delete it
     And I create it
     And response code should be: 201

@@ -7,6 +7,7 @@
 @create_delete_ticket
 @OUW-1679
 @OUW-1750
+@OUW-1807
 Feature: Create and update tickets with calculated datastreams
     As a user of JsApi
     I want to create and update a ticket
@@ -84,6 +85,7 @@ Feature: Create and update tickets with calculated datastreams
             | provision.ticket.reporter             | simple       | assigned_6_ticket_bulk_json_simple |        |
             | provision.ticket.status               | simple       | CREATED                            |        |
             | provision.ticket.reporterDate         | simple       | 2017-12-15T11:06:29.179Z           |        |
+            | provision.ticket.specificType         | simple       | WORKORDER                          |        |
         Then I delete it
         And I create it
         And response code should be: 201

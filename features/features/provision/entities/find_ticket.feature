@@ -6,6 +6,7 @@
 @find_ticket
 @entities_provision
 @OUW-1750
+@OUW-1807
 Feature: Find a ticket
     As a user of JsApi
     I want to find a ticket
@@ -58,6 +59,7 @@ Feature: Find a ticket
             | provision.ticket.reporter             | simple       | assigned_6_ticket_bulk_json_simple |        |
             | provision.ticket.status               | simple       | CREATED                            |        |
             | provision.ticket.reporterDate         | simple       | 2017-12-15T11:06:29.179Z           |        |
+            | provision.ticket.specificType         | simple       | WORKORDER                          |        |
         Then I delete it
         And I create it
         And response code should be: 201
