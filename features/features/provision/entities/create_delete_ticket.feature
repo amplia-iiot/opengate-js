@@ -6,6 +6,7 @@
 @entities_provision
 @create_delete_ticket
 @OUW-1750
+@OUW-1807
 Feature: Delete and Create a ticket
     As a user of JsApi
     I want to create a ticket
@@ -63,20 +64,21 @@ Feature: Delete and Create a ticket
         And I can found "provision.ticket.severity" as datastream name
         And I can found "provision.ticket.priority" as datastream name
         And I can found "provision.ticket.reporter" as datastream name
-        #And I can found "provision.ticket.owner" as datastream name
         And I can found "provision.ticket.assignee" as datastream name
         And I can found "provision.ticket.status" as datastream name
         And I can found "provision.ticket.specificType" as datastream name
         And I can found "provision.ticket.section" as datastream name
         And I can found "provision.ticket.entity" as datastream name
-        #And I can found "provision.ticket.creationDate" as datastream name
         And I can found "provision.ticket.reporterDate" as datastream name
-        #And I can found "provision.ticket.assignedDate" as datastream name
-        #nd I can found "provision.ticket.answeredDate" as datastream name
-        #And I can found "provision.ticket.updatedDate" as datastream name
-        #And I can found "provision.ticket.restorationDate" as datastream name
-        #And I can found "provision.ticket.resolutionDate" as datastream name
-        #And I can found "provision.ticket.closedDate" as datastream name
+        And I can found "provision.ticket.parentTicket" as datastream name
+        And I can found "provision.ticket.isOnSLA" as datastream name
+        And I can not found "provision.ticket.assignationTime" as datastream name
+        And I can not found "provision.ticket.answeringTime" as datastream name
+        And I can not found "provision.ticket.restorationTime" as datastream name
+        And I can not found "provision.ticket.resolutionTime" as datastream name
+        And I can not found "provision.ticket.closedDate" as datastream name
+        And I can not found "provision.ticket.confirmationTime" as datastream name
+        
 
         When I try to define the ticket with...
             | datastream                            | typeFunction | value                                | parent |
@@ -90,6 +92,7 @@ Feature: Delete and Create a ticket
             | provision.ticket.reporter             | simple       | device_ticket_testing_cucumber_ogapi |        |
             | provision.ticket.status               | simple       | CREATED                              |        |
             | provision.ticket.reporterDate         | simple       | 2017-12-15T11:06:29.179Z             |        |
+            | provision.ticket.specificType         | simple       | WORKORDER                            |        |
         Then I delete it
         And I create it
         And response code should be: 201

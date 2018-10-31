@@ -5,6 +5,7 @@
 @ticket_severity_search
 @catalogs
 @searching
+@OUW-1807
 Feature: Searching ticket severity in catalog
   As a user of JsApi
   I want to search into ticket severity catalog
