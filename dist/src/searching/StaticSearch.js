@@ -382,8 +382,8 @@ var StaticSearch = (function (_Search) {
                             'optional': ['IMEI', 'HARDWARE', 'SOFTWARE']
                         },
                         'SUBSCRIPTION': {
-                            'mandatory': ['generatedEntityKey'],
-                            'optional': ['administrativeState', 'ADDRESS', 'HOME_OPERATOR', 'LOCATION']
+                            'mandatory': [],
+                            'optional': ['generatedEntityKey', 'administrativeState', 'ADDRESS', 'HOME_OPERATOR', 'LOCATION']
                         }
                     },
                     'CAN': {
@@ -408,12 +408,12 @@ var StaticSearch = (function (_Search) {
                             'optional': ['IMEI', 'HARDWARE', 'SOFTWARE']
                         },
                         'SUBSCRIPTION': {
-                            'mandatory': ['generatedEntityKey'],
-                            'optional': ['administrativeState', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION']
+                            'mandatory': [],
+                            'optional': ['generatedEntityKey', 'administrativeState', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION']
                         },
                         'SUBSCRIBER': {
-                            'mandatory': ['generatedEntityKey'],
-                            'optional': ['administrativeState', 'ICC', 'SERIAL_NUMBER']
+                            'mandatory': [],
+                            'optional': ['generatedEntityKey', 'administrativeState', 'ICC', 'SERIAL_NUMBER']
                         }
                     },
                     'GSM': {
@@ -422,12 +422,12 @@ var StaticSearch = (function (_Search) {
                             'optional': ['IMEI', 'HARDWARE', 'SOFTWARE']
                         },
                         'SUBSCRIPTION': {
-                            'mandatory': ['generatedEntityKey'],
-                            'optional': ['administrativeState', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION']
+                            'mandatory': [],
+                            'optional': ['generatedEntityKey', 'administrativeState', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION']
                         },
                         'SUBSCRIBER': {
-                            'mandatory': ['generatedEntityKey'],
-                            'optional': ['administrativeState', 'ICC']
+                            'mandatory': [],
+                            'optional': ['generatedEntityKey', 'administrativeState', 'ICC']
                         }
                     },
                     'HAN': {
@@ -458,12 +458,12 @@ var StaticSearch = (function (_Search) {
                             'optional': ['IMEI', 'HARDWARE', 'SOFTWARE']
                         },
                         'SUBSCRIPTION': {
-                            'mandatory': ['generatedEntityKey'],
-                            'optional': ['administrativeState', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION']
+                            'mandatory': [],
+                            'optional': ['generatedEntityKey', 'administrativeState', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION']
                         },
                         'SUBSCRIBER': {
-                            'mandatory': ['generatedEntityKey'],
-                            'optional': ['administrativeState', 'ICC']
+                            'mandatory': [],
+                            'optional': ['generatedEntityKey', 'administrativeState', 'ICC']
                         }
                     },
                     'MESH': {
@@ -478,12 +478,12 @@ var StaticSearch = (function (_Search) {
                             'optional': ['IMEI', 'HARDWARE', 'SOFTWARE']
                         },
                         'SUBSCRIPTION': {
-                            'mandatory': ['generatedEntityKey'],
-                            'optional': ['administrativeState', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION']
+                            'mandatory': [],
+                            'optional': ['generatedEntityKey', 'administrativeState', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION']
                         },
                         'SUBSCRIBER': {
-                            'mandatory': ['generatedEntityKey'],
-                            'optional': ['administrativeState', 'ICC']
+                            'mandatory': [],
+                            'optional': ['generatedEntityKey', 'administrativeState', 'ICC']
                         }
                     },
                     'NARROWBAND': {
