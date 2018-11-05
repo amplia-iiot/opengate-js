@@ -58,7 +58,7 @@ export default class StaticSearch extends Search {
         switch (_this._contentType) {
             case 'operationalStatus':
                 for (var contentTmp in collection) {
-                    collection[contentTmp].forEach(function (finalValue) {
+                    collection[contentTmp].forEach(function(finalValue) {
                         if (!_this._customFilters.id || (_this._customFilters.id && _this._customFilters.id === finalValue)) {
                             finalContent.push({
                                 'entityType': contentTmp,
@@ -69,7 +69,7 @@ export default class StaticSearch extends Search {
                 }
                 break;
             case 'administrativeState':
-                var createAndAddFileObj = function (obj) {
+                var createAndAddFileObj = function(obj) {
                     var finalObj = obj;
                     finalObj[ENTITY_TYPE] = entityTypeTmp;
                     finalContent.push(finalObj);
@@ -392,8 +392,8 @@ export default class StaticSearch extends Search {
                         'optional': ['IMEI', 'HARDWARE', 'SOFTWARE']
                     },
                     'SUBSCRIPTION': {
-                        'mandatory': ['generatedEntityKey'],
-                        'optional': ['administrativeState', 'ADDRESS', 'HOME_OPERATOR', 'LOCATION']
+                        'mandatory': [],
+                        'optional': ['generatedEntityKey', 'administrativeState', 'ADDRESS', 'HOME_OPERATOR', 'LOCATION']
                     }
                 },
                 'CAN': {
@@ -418,12 +418,12 @@ export default class StaticSearch extends Search {
                         'optional': ['IMEI', 'HARDWARE', 'SOFTWARE']
                     },
                     'SUBSCRIPTION': {
-                        'mandatory': ['generatedEntityKey'],
-                        'optional': ['administrativeState', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION']
+                        'mandatory': [],
+                        'optional': ['generatedEntityKey', 'administrativeState', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION']
                     },
                     'SUBSCRIBER': {
-                        'mandatory': ['generatedEntityKey'],
-                        'optional': ['administrativeState', 'ICC', 'SERIAL_NUMBER']
+                        'mandatory': [],
+                        'optional': ['generatedEntityKey', 'administrativeState', 'ICC', 'SERIAL_NUMBER']
                     }
                 },
                 'GSM': {
@@ -432,12 +432,12 @@ export default class StaticSearch extends Search {
                         'optional': ['IMEI', 'HARDWARE', 'SOFTWARE']
                     },
                     'SUBSCRIPTION': {
-                        'mandatory': ['generatedEntityKey'],
-                        'optional': ['administrativeState', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION']
+                        'mandatory': [],
+                        'optional': ['generatedEntityKey', 'administrativeState', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION']
                     },
                     'SUBSCRIBER': {
-                        'mandatory': ['generatedEntityKey'],
-                        'optional': ['administrativeState', 'ICC']
+                        'mandatory': [],
+                        'optional': ['generatedEntityKey', 'administrativeState', 'ICC']
                     }
                 },
                 'HAN': {
@@ -468,12 +468,12 @@ export default class StaticSearch extends Search {
                         'optional': ['IMEI', 'HARDWARE', 'SOFTWARE']
                     },
                     'SUBSCRIPTION': {
-                        'mandatory': ['generatedEntityKey'],
-                        'optional': ['administrativeState', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION']
+                        'mandatory': [],
+                        'optional': ['generatedEntityKey', 'administrativeState', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION']
                     },
                     'SUBSCRIBER': {
-                        'mandatory': ['generatedEntityKey'],
-                        'optional': ['administrativeState', 'ICC']
+                        'mandatory': [],
+                        'optional': ['generatedEntityKey', 'administrativeState', 'ICC']
                     }
                 },
                 'MESH': {
@@ -488,12 +488,12 @@ export default class StaticSearch extends Search {
                         'optional': ['IMEI', 'HARDWARE', 'SOFTWARE']
                     },
                     'SUBSCRIPTION': {
-                        'mandatory': ['generatedEntityKey'],
-                        'optional': ['administrativeState', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION']
+                        'mandatory': [],
+                        'optional': ['generatedEntityKey', 'administrativeState', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION']
                     },
                     'SUBSCRIBER': {
-                        'mandatory': ['generatedEntityKey'],
-                        'optional': ['administrativeState', 'ICC']
+                        'mandatory': [],
+                        'optional': ['generatedEntityKey', 'administrativeState', 'ICC']
                     }
                 },
                 'NARROWBAND': {
@@ -614,7 +614,6 @@ export default class StaticSearch extends Search {
                 'READ,WRITE'
             ],
             'ioTDatastreamStoragePeriod': [
-
                 'SECONDS', 'MINUTES', 'HOURS', 'DAYS', 'MONTHS', 'YEARS', 'NEVER'
             ],
             'ioTDatastreamPeriod': [
@@ -2533,6 +2532,6 @@ export default class StaticSearch extends Search {
                 'Zulu'
             ]
 
-        } [contentType];
+        }[contentType];
     }
 }
