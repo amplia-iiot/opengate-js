@@ -282,7 +282,7 @@ export default class StaticSearch extends Search {
         switch (_this._contentType) {
             case &apos;operationalStatus&apos;:
                 for (var contentTmp in collection) {
-                    collection[contentTmp].forEach(function (finalValue) {
+                    collection[contentTmp].forEach(function(finalValue) {
                         if (!_this._customFilters.id || (_this._customFilters.id &amp;&amp; _this._customFilters.id === finalValue)) {
                             finalContent.push({
                                 &apos;entityType&apos;: contentTmp,
@@ -293,7 +293,7 @@ export default class StaticSearch extends Search {
                 }
                 break;
             case &apos;administrativeState&apos;:
-                var createAndAddFileObj = function (obj) {
+                var createAndAddFileObj = function(obj) {
                     var finalObj = obj;
                     finalObj[ENTITY_TYPE] = entityTypeTmp;
                     finalContent.push(finalObj);
@@ -616,8 +616,8 @@ export default class StaticSearch extends Search {
                         &apos;optional&apos;: [&apos;IMEI&apos;, &apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
                     },
                     &apos;SUBSCRIPTION&apos;: {
-                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
-                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;LOCATION&apos;]
+                        &apos;mandatory&apos;: [],
+                        &apos;optional&apos;: [&apos;generatedEntityKey&apos;, &apos;administrativeState&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;LOCATION&apos;]
                     }
                 },
                 &apos;CAN&apos;: {
@@ -642,12 +642,12 @@ export default class StaticSearch extends Search {
                         &apos;optional&apos;: [&apos;IMEI&apos;, &apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
                     },
                     &apos;SUBSCRIPTION&apos;: {
-                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
-                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;IMSI&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;REGISTER_OPERATOR&apos;, &apos;MSISDN&apos;, &apos;LOCATION&apos;]
+                        &apos;mandatory&apos;: [],
+                        &apos;optional&apos;: [&apos;generatedEntityKey&apos;, &apos;administrativeState&apos;, &apos;IMSI&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;REGISTER_OPERATOR&apos;, &apos;MSISDN&apos;, &apos;LOCATION&apos;]
                     },
                     &apos;SUBSCRIBER&apos;: {
-                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
-                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;ICC&apos;, &apos;SERIAL_NUMBER&apos;]
+                        &apos;mandatory&apos;: [],
+                        &apos;optional&apos;: [&apos;generatedEntityKey&apos;, &apos;administrativeState&apos;, &apos;ICC&apos;, &apos;SERIAL_NUMBER&apos;]
                     }
                 },
                 &apos;GSM&apos;: {
@@ -656,12 +656,12 @@ export default class StaticSearch extends Search {
                         &apos;optional&apos;: [&apos;IMEI&apos;, &apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
                     },
                     &apos;SUBSCRIPTION&apos;: {
-                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
-                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;IMSI&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;REGISTER_OPERATOR&apos;, &apos;MSISDN&apos;, &apos;LOCATION&apos;]
+                        &apos;mandatory&apos;: [],
+                        &apos;optional&apos;: [&apos;generatedEntityKey&apos;, &apos;administrativeState&apos;, &apos;IMSI&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;REGISTER_OPERATOR&apos;, &apos;MSISDN&apos;, &apos;LOCATION&apos;]
                     },
                     &apos;SUBSCRIBER&apos;: {
-                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
-                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;ICC&apos;]
+                        &apos;mandatory&apos;: [],
+                        &apos;optional&apos;: [&apos;generatedEntityKey&apos;, &apos;administrativeState&apos;, &apos;ICC&apos;]
                     }
                 },
                 &apos;HAN&apos;: {
@@ -692,12 +692,12 @@ export default class StaticSearch extends Search {
                         &apos;optional&apos;: [&apos;IMEI&apos;, &apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
                     },
                     &apos;SUBSCRIPTION&apos;: {
-                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
-                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;IMSI&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;REGISTER_OPERATOR&apos;, &apos;MSISDN&apos;, &apos;LOCATION&apos;]
+                        &apos;mandatory&apos;: [],
+                        &apos;optional&apos;: [&apos;generatedEntityKey&apos;, &apos;administrativeState&apos;, &apos;IMSI&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;REGISTER_OPERATOR&apos;, &apos;MSISDN&apos;, &apos;LOCATION&apos;]
                     },
                     &apos;SUBSCRIBER&apos;: {
-                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
-                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;ICC&apos;]
+                        &apos;mandatory&apos;: [],
+                        &apos;optional&apos;: [&apos;generatedEntityKey&apos;, &apos;administrativeState&apos;, &apos;ICC&apos;]
                     }
                 },
                 &apos;MESH&apos;: {
@@ -712,12 +712,12 @@ export default class StaticSearch extends Search {
                         &apos;optional&apos;: [&apos;IMEI&apos;, &apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
                     },
                     &apos;SUBSCRIPTION&apos;: {
-                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
-                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;IMSI&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;REGISTER_OPERATOR&apos;, &apos;MSISDN&apos;, &apos;LOCATION&apos;]
+                        &apos;mandatory&apos;: [],
+                        &apos;optional&apos;: [&apos;generatedEntityKey&apos;, &apos;administrativeState&apos;, &apos;IMSI&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;REGISTER_OPERATOR&apos;, &apos;MSISDN&apos;, &apos;LOCATION&apos;]
                     },
                     &apos;SUBSCRIBER&apos;: {
-                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
-                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;ICC&apos;]
+                        &apos;mandatory&apos;: [],
+                        &apos;optional&apos;: [&apos;generatedEntityKey&apos;, &apos;administrativeState&apos;, &apos;ICC&apos;]
                     }
                 },
                 &apos;NARROWBAND&apos;: {
@@ -838,7 +838,6 @@ export default class StaticSearch extends Search {
                 &apos;READ,WRITE&apos;
             ],
             &apos;ioTDatastreamStoragePeriod&apos;: [
-
                 &apos;SECONDS&apos;, &apos;MINUTES&apos;, &apos;HOURS&apos;, &apos;DAYS&apos;, &apos;MONTHS&apos;, &apos;YEARS&apos;, &apos;NEVER&apos;
             ],
             &apos;ioTDatastreamPeriod&apos;: [
@@ -2757,7 +2756,7 @@ export default class StaticSearch extends Search {
                 &apos;Zulu&apos;
             ]
 
-        } [contentType];
+        }[contentType];
     }
 }</code></pre>
 
