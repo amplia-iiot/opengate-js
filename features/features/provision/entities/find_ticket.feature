@@ -7,6 +7,7 @@
 @entities_provision
 @OUW-1750
 @OUW-1807
+@entity_finder
 Feature: Find a ticket
     As a user of JsApi
     I want to find a ticket

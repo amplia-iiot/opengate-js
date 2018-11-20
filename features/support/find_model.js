@@ -1,5 +1,5 @@
 module.exports = {
-    setters: function(setter) {
+    setters: function (setter) {
         return {
 
             'bundle': {
@@ -24,6 +24,15 @@ module.exports = {
                 'organizationAndid': 'findByOrganizationAndId'
             },
             'ticket': {
+                'organizationAndid': 'findByOrganizationAndId'
+            },
+            'subscription': {
+                'organizationAndid': 'findByOrganizationAndId'
+            },
+            'subscriber': {
+                'organizationAndid': 'findByOrganizationAndId'
+            },
+            'asset': {
                 'organizationAndid': 'findByOrganizationAndId'
             },
             'domain': {
@@ -61,13 +70,16 @@ module.exports = {
             }
         } [setter];
     },
-    getter_response: function(getter) {
+    getter_response: function (getter) {
         return {
             'bundle name': 'name',
             'certificate name': 'name',
             'communications module id': 'id',
             'channel name': 'name',
             'device id': 'provision.device.identifier._current.value',
+            'asset id': 'provision.asset.identifier._current.value',
+            'subscription id': 'provision.administration.identifier._current.value',
+            'subscriber id': 'provision.administration.identifier._current.value',
             'ticket name': 'provision.ticket.name._current.value',
             'domain name': 'name',
             'hierarchy domain name': 'domains[0].name',

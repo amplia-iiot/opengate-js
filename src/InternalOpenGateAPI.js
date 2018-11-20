@@ -242,6 +242,9 @@ export default class InternalOpenGateAPI {
     }
 
 
+    newEntityFinder() {
+        return new EntityFinder(this);
+    }
 
     /**
      * This return a util to create your own filter to make searching

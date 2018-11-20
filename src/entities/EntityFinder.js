@@ -3,16 +3,16 @@
 import ProvisionGenericFinder from '../ProvisionGenericFinder';
 
 /**
- *   This class allow make get request to certificate resource into Opengate North API.
+ *   *   This class allow make get request to entity provisioned resource into Opengate North API.
  */
 export default class EntityFinder extends ProvisionGenericFinder {
 
     /**     
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
-    constructor(ogapi, source, entity, error_not_found) {
-        super(ogapi, source, entity, error_not_found);
-        this._entitySource = this._entity + "s";
+    constructor(ogapi, entity, error_not_found, entitySource) {
+        super(ogapi, 'organizations', entity || 'entity', error_not_found || 'Entity not found');
+        this._entitySource = entitySource || 'entities';
         this._flattened = false;
     }
 
@@ -32,7 +32,10 @@ export default class EntityFinder extends ProvisionGenericFinder {
     /**
      * Download a specific entity by its organization and id. This execute a GET http method
      * @test
+     *   ogapi.newEntityFinder().findByOrganizationAndId('orgname', xxx-xx-xxx-xxx').then().catch();
      *   ogapi.newDeviceFinder().findByOrganizationAndId('orgname', xxx-xx-xxx-xxx').then().catch();
+     *   ogapi.newSubscribersFinder().findByOrganizationAndId('orgname', xxx-xx-xxx-xxx').then().catch();
+     *   ogapi.newSubscriptionsFinder().findByOrganizationAndId('orgname', xxx-xx-xxx-xxx').then().catch();
      * @param {string} organization - entity organization .
      * @param {string} id - entity id.
      * @param {string} flattened - flattened response flag.

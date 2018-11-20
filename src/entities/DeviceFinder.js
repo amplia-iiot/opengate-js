@@ -11,6 +11,6 @@ export default class DeviceFinder extends EntityFinder {
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, 'organizations', 'device', 'Device not found');
+        super(ogapi, 'device', 'Device not found');
     }
 }
