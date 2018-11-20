@@ -5,10 +5,11 @@
 @find_provision
 @find_device
 @entities_provision
+@entity_finder
 Feature: Find a device
-As a user of JsApi
-I want to find a device
-So I can check if a device exists and get their information
+    As a user of JsApi
+    I want to find a device
+    So I can check if a device exists and get their information
 
     Background:
         Given an apikey user by "require-real-apikey"

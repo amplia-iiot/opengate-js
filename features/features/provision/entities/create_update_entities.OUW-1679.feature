@@ -8,6 +8,7 @@
 @OUW-1679
 @OUW-1750
 @OUW-1807
+@entity_finder
 Feature: Create and update tickets with calculated datastreams
     As a user of JsApi
     I want to create and update a ticket

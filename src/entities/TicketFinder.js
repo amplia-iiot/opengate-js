@@ -11,6 +11,6 @@ export default class TicketFinder extends EntityFinder {
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, 'organizations', 'ticket', 'Ticket not found');
+        super(ogapi, 'ticket', 'Ticket not found', 'tickets');
     }
 }

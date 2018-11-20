@@ -11,6 +11,6 @@ export default class SubscriptionsFinder extends EntityFinder {
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, 'organizations', 'subscription', 'Subscription not found');
+        super(ogapi, 'subscription', 'Subscription not found');
     }
 }

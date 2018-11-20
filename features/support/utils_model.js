@@ -59,8 +59,17 @@ module.exports = {
             "datastreams search": function () {
                 return ogapi.datastreamsSearchBuilder();
             },
+            "entity finder": function (ogapi) {
+                return ogapi.newEntityFinder();
+            },
             "device finder": function (ogapi) {
                 return ogapi.newDeviceFinder();
+            },
+            "subscription finder": function (ogapi) {
+                return ogapi.newSubscriptionsFinder();
+            },
+            "subscriber finder": function (ogapi) {
+                return ogapi.newSubscribersFinder();
             },
             "ticket finder": function (ogapi) {
                 return ogapi.newTicketFinder();
