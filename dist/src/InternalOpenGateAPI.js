@@ -575,6 +575,11 @@ var InternalOpenGateAPI = (function () {
         value: function newSubscribersFinder() {
             return new _entitiesSubscribersFinder2['default'](this);
         }
+    }, {
+        key: 'newEntityFinder',
+        value: function newEntityFinder() {
+            return new _entitiesEntityFinder2['default'](this);
+        }
 
         /**
          * This return a util to create your own filter to make searching

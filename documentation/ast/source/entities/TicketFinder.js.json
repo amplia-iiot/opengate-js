@@ -46,8 +46,8 @@
             "type": "Identifier",
             "name": "EntityFinder",
             "range": [
-              22,
-              34
+              24,
+              36
             ],
             "loc": {
               "start": {
@@ -61,8 +61,8 @@
             }
           },
           "range": [
-            22,
-            34
+            24,
+            36
           ],
           "loc": {
             "start": {
@@ -81,8 +81,8 @@
         "value": "./EntityFinder",
         "raw": "'./EntityFinder'",
         "range": [
-          40,
-          56
+          42,
+          58
         ],
         "loc": {
           "start": {
@@ -96,8 +96,8 @@
         }
       },
       "range": [
-        15,
-        57
+        17,
+        59
       ],
       "loc": {
         "start": {
@@ -112,10 +112,10 @@
       "trailingComments": [
         {
           "type": "Block",
-          "value": "*\n *   This class allow make get request to ticket provisioned resource into Opengate North API.\n ",
+          "value": "*\r\n *   This class allow make get request to ticket provisioned resource into Opengate North API.\r\n ",
           "range": [
-            59,
-            161
+            63,
+            167
           ],
           "loc": {
             "start": {
@@ -138,8 +138,8 @@
           "type": "Identifier",
           "name": "TicketFinder",
           "range": [
-            183,
-            195
+            190,
+            202
           ],
           "loc": {
             "start": {
@@ -156,8 +156,8 @@
           "type": "Identifier",
           "name": "EntityFinder",
           "range": [
-            204,
-            216
+            211,
+            223
           ],
           "loc": {
             "start": {
@@ -179,8 +179,8 @@
                 "type": "Identifier",
                 "name": "constructor",
                 "range": [
-                  310,
-                  321
+                  322,
+                  333
                 ],
                 "loc": {
                   "start": {
@@ -201,8 +201,8 @@
                     "type": "Identifier",
                     "name": "ogapi",
                     "range": [
-                      322,
-                      327
+                      334,
+                      339
                     ],
                     "loc": {
                       "start": {
@@ -226,8 +226,8 @@
                         "callee": {
                           "type": "Super",
                           "range": [
-                            339,
-                            344
+                            352,
+                            357
                           ],
                           "loc": {
                             "start": {
@@ -245,8 +245,8 @@
                             "type": "Identifier",
                             "name": "ogapi",
                             "range": [
-                              345,
-                              350
+                              358,
+                              363
                             ],
                             "loc": {
                               "start": {
@@ -261,11 +261,11 @@
                           },
                           {
                             "type": "Literal",
-                            "value": "organizations",
-                            "raw": "'organizations'",
+                            "value": "ticket",
+                            "raw": "'ticket'",
                             "range": [
-                              352,
-                              367
+                              365,
+                              373
                             ],
                             "loc": {
                               "start": {
@@ -274,26 +274,7 @@
                               },
                               "end": {
                                 "line": 14,
-                                "column": 36
-                              }
-                            }
-                          },
-                          {
-                            "type": "Literal",
-                            "value": "ticket",
-                            "raw": "'ticket'",
-                            "range": [
-                              369,
-                              377
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 14,
-                                "column": 38
-                              },
-                              "end": {
-                                "line": 14,
-                                "column": 46
+                                "column": 29
                               }
                             }
                           },
@@ -302,24 +283,43 @@
                             "value": "Ticket not found",
                             "raw": "'Ticket not found'",
                             "range": [
-                              379,
-                              397
+                              375,
+                              393
                             ],
                             "loc": {
                               "start": {
                                 "line": 14,
-                                "column": 48
+                                "column": 31
                               },
                               "end": {
                                 "line": 14,
-                                "column": 66
+                                "column": 49
+                              }
+                            }
+                          },
+                          {
+                            "type": "Literal",
+                            "value": "tickets",
+                            "raw": "'tickets'",
+                            "range": [
+                              395,
+                              404
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 14,
+                                "column": 51
+                              },
+                              "end": {
+                                "line": 14,
+                                "column": 60
                               }
                             }
                           }
                         ],
                         "range": [
-                          339,
-                          398
+                          352,
+                          405
                         ],
                         "loc": {
                           "start": {
@@ -328,13 +328,13 @@
                           },
                           "end": {
                             "line": 14,
-                            "column": 67
+                            "column": 61
                           }
                         }
                       },
                       "range": [
-                        339,
-                        399
+                        352,
+                        406
                       ],
                       "loc": {
                         "start": {
@@ -343,14 +343,14 @@
                         },
                         "end": {
                           "line": 14,
-                          "column": 68
+                          "column": 62
                         }
                       }
                     }
                   ],
                   "range": [
-                    329,
-                    405
+                    341,
+                    413
                   ],
                   "loc": {
                     "start": {
@@ -366,8 +366,8 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  321,
-                  405
+                  333,
+                  413
                 ],
                 "loc": {
                   "start": {
@@ -383,8 +383,8 @@
               "kind": "constructor",
               "computed": false,
               "range": [
-                310,
-                405
+                322,
+                413
               ],
               "loc": {
                 "start": {
@@ -399,10 +399,10 @@
               "leadingComments": [
                 {
                   "type": "Block",
-                  "value": "*     \n     * @param {InternalOpenGateAPI} Reference to the API object.\n     ",
+                  "value": "*     \r\n     * @param {InternalOpenGateAPI} Reference to the API object.\r\n     ",
                   "range": [
-                    224,
-                    305
+                    233,
+                    316
                   ],
                   "loc": {
                     "start": {
@@ -420,8 +420,8 @@
             }
           ],
           "range": [
-            217,
-            407
+            224,
+            416
           ],
           "loc": {
             "start": {
@@ -435,8 +435,8 @@
           }
         },
         "range": [
-          177,
-          407
+          184,
+          416
         ],
         "loc": {
           "start": {
@@ -451,10 +451,10 @@
         "leadingComments": [
           {
             "type": "Block",
-            "value": "*\n *   This class allow make get request to ticket provisioned resource into Opengate North API.\n ",
+            "value": "*\r\n *   This class allow make get request to ticket provisioned resource into Opengate North API.\r\n ",
             "range": [
-              59,
-              161
+              63,
+              167
             ],
             "loc": {
               "start": {
@@ -471,8 +471,8 @@
         "trailingComments": []
       },
       "range": [
-        162,
-        407
+        169,
+        416
       ],
       "loc": {
         "start": {
@@ -487,10 +487,10 @@
       "leadingComments": [
         {
           "type": "Block",
-          "value": "*\n *   This class allow make get request to ticket provisioned resource into Opengate North API.\n ",
+          "value": "*\r\n *   This class allow make get request to ticket provisioned resource into Opengate North API.\r\n ",
           "range": [
-            59,
-            161
+            63,
+            167
           ],
           "loc": {
             "start": {
@@ -509,7 +509,7 @@
   "sourceType": "module",
   "range": [
     0,
-    407
+    416
   ],
   "loc": {
     "start": {
@@ -524,10 +524,10 @@
   "comments": [
     {
       "type": "Block",
-      "value": "*\n *   This class allow make get request to ticket provisioned resource into Opengate North API.\n ",
+      "value": "*\r\n *   This class allow make get request to ticket provisioned resource into Opengate North API.\r\n ",
       "range": [
-        59,
-        161
+        63,
+        167
       ],
       "loc": {
         "start": {
@@ -542,10 +542,10 @@
     },
     {
       "type": "Block",
-      "value": "*     \n     * @param {InternalOpenGateAPI} Reference to the API object.\n     ",
+      "value": "*     \r\n     * @param {InternalOpenGateAPI} Reference to the API object.\r\n     ",
       "range": [
-        224,
-        305
+        233,
+        316
       ],
       "loc": {
         "start": {

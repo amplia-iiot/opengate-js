@@ -30,7 +30,7 @@ var SubscriptionsFinder = (function (_EntityFinder) {
   function SubscriptionsFinder(ogapi) {
     _classCallCheck(this, SubscriptionsFinder);
 
-    _get(Object.getPrototypeOf(SubscriptionsFinder.prototype), 'constructor', this).call(this, ogapi, 'organizations', 'subscription', 'Subscription not found');
+    _get(Object.getPrototypeOf(SubscriptionsFinder.prototype), 'constructor', this).call(this, ogapi, 'subscription', 'Subscription not found');
   }
 
   return SubscriptionsFinder;

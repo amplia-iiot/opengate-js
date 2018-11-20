@@ -19,7 +19,7 @@ var _ProvisionGenericFinder2 = require('../ProvisionGenericFinder');
 var _ProvisionGenericFinder3 = _interopRequireDefault(_ProvisionGenericFinder2);
 
 /**
- *   This class allow make get request to certificate resource into Opengate North API.
+ *   *   This class allow make get request to entity provisioned resource into Opengate North API.
  */
 
 var EntityFinder = (function (_ProvisionGenericFinder) {
@@ -29,11 +29,11 @@ var EntityFinder = (function (_ProvisionGenericFinder) {
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 
-    function EntityFinder(ogapi, source, entity, error_not_found) {
+    function EntityFinder(ogapi, entity, error_not_found, entitySource) {
         _classCallCheck(this, EntityFinder);
 
-        _get(Object.getPrototypeOf(EntityFinder.prototype), 'constructor', this).call(this, ogapi, source, entity, error_not_found);
-        this._entitySource = this._entity + "s";
+        _get(Object.getPrototypeOf(EntityFinder.prototype), 'constructor', this).call(this, ogapi, 'organizations', entity || 'entity', error_not_found || 'Entity not found');
+        this._entitySource = entitySource || 'entities';
         this._flattened = false;
     }
 
@@ -55,7 +55,10 @@ var EntityFinder = (function (_ProvisionGenericFinder) {
         /**
          * Download a specific entity by its organization and id. This execute a GET http method
          * @test
+         *   ogapi.newEntityFinder().findByOrganizationAndId('orgname', xxx-xx-xxx-xxx').then().catch();
          *   ogapi.newDeviceFinder().findByOrganizationAndId('orgname', xxx-xx-xxx-xxx').then().catch();
+         *   ogapi.newSubscribersFinder().findByOrganizationAndId('orgname', xxx-xx-xxx-xxx').then().catch();
+         *   ogapi.newSubscriptionsFinder().findByOrganizationAndId('orgname', xxx-xx-xxx-xxx').then().catch();
          * @param {string} organization - entity organization .
          * @param {string} id - entity id.
          * @param {string} flattened - flattened response flag.

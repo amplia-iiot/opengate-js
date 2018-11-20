@@ -30,7 +30,7 @@ var SubscribersFinder = (function (_EntityFinder) {
   function SubscribersFinder(ogapi) {
     _classCallCheck(this, SubscribersFinder);
 
-    _get(Object.getPrototypeOf(SubscribersFinder.prototype), 'constructor', this).call(this, ogapi, 'organizations', 'subscriber', 'Subscriber not found');
+    _get(Object.getPrototypeOf(SubscribersFinder.prototype), 'constructor', this).call(this, ogapi, 'subscriber', 'Subscriber not found');
   }
 
   return SubscribersFinder;

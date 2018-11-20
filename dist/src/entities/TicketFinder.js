@@ -30,7 +30,7 @@ var TicketFinder = (function (_EntityFinder) {
   function TicketFinder(ogapi) {
     _classCallCheck(this, TicketFinder);
 
-    _get(Object.getPrototypeOf(TicketFinder.prototype), 'constructor', this).call(this, ogapi, 'organizations', 'ticket', 'Ticket not found');
+    _get(Object.getPrototypeOf(TicketFinder.prototype), 'constructor', this).call(this, ogapi, 'ticket', 'Ticket not found', 'tickets');
   }
 
   return TicketFinder;

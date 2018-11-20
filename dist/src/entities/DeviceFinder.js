@@ -30,7 +30,7 @@ var DeviceFinder = (function (_EntityFinder) {
   function DeviceFinder(ogapi) {
     _classCallCheck(this, DeviceFinder);
 
-    _get(Object.getPrototypeOf(DeviceFinder.prototype), 'constructor', this).call(this, ogapi, 'organizations', 'device', 'Device not found');
+    _get(Object.getPrototypeOf(DeviceFinder.prototype), 'constructor', this).call(this, ogapi, 'device', 'Device not found');
   }
 
   return DeviceFinder;
