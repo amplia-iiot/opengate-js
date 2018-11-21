@@ -28806,7 +28806,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "'use strict';\r\n\r\nimport SimpleBuilder from './SimpleBuilder';\r\n\r\n/**\r\n * This class extends SimpleBuilder to allow set complex values. What is a complex value? It is simple, It is a value \r\n * that need a communications module identifier to allow set into the box.\r\n */\r\nexport default class ComplexBuilder extends SimpleBuilder {\r\n\r\n\r\n    /**\r\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\r\n     * @param {!string} resource - this is the resource url where can be create/delete/update/read the entity\r\n     * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new entity\r\n     * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types\r\n     * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool\r\n     */\r\n    constructor(ogapi, resource, allowedDatastreams, definedSchemas, jsonSchemaValidator) {\r\n        super(ogapi, resource, allowedDatastreams, definedSchemas, jsonSchemaValidator);\r\n    }\r\n\r\n    /**\r\n     * Set a complex value to entity\r\n     * @param {!string} _id - Datastream identifier\r\n     * @param {!string} idCommunicationModules - Communications module identifier\r\n     * @param {object} val - Value to set.\r\n     */\r\n    withComplex(_id, idCommunicationModules, val) {\r\n        if (!idCommunicationModules) {\r\n            console.warn('Communication module identifier not defined. This value wil be ignored');\r\n            return this;\r\n        }\r\n        if (this.getAllowedDatastreams().filter(function (ds) {\r\n                return ds.identifier === _id;\r\n            }).length !== 1) {\r\n            console.warn('Datastream not found or operations can not be performed on it. This value will be ignored. Datastream Name: ' + _id);\r\n            return this;\r\n        }\r\n        if (!this._entity[_id])\r\n            this._entity[_id] = [];\r\n\r\n        let _found = false;\r\n\r\n        for (let _idx = 0; _idx < this._entity[_id].length; _idx++) {\r\n            let _rel = this._entity[_id][_idx];\r\n            if (_rel._index && _rel._index.value && _rel._index.value === idCommunicationModules) {\r\n                this._entity[_id][_idx] = {\r\n                    '_index': {\r\n                        'value': idCommunicationModules\r\n                    },\r\n                    '_value': {\r\n                        '_current': {\r\n                            'value': val\r\n                        }\r\n                    }\r\n                };\r\n\r\n                _found = true;\r\n            }\r\n        }\r\n\r\n        if (!_found) {\r\n            this._entity[_id].push({\r\n                '_index': {\r\n                    'value': idCommunicationModules\r\n                },\r\n                '_value': {\r\n                    '_current': {\r\n                        'value': val\r\n                    }\r\n                }\r\n            });\r\n        }\r\n\r\n        return this;\r\n    }\r\n}"
+    "content": "'use strict';\r\n\r\nimport SimpleBuilder from './SimpleBuilder';\r\n\r\n/**\r\n * This class extends SimpleBuilder to allow set complex values. What is a complex value? It is simple, It is a value \r\n * that need a communications module identifier to allow set into the box.\r\n */\r\nexport default class ComplexBuilder extends SimpleBuilder {\r\n\r\n\r\n    /**\r\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\r\n     * @param {!string} resource - this is the resource url where can be create/delete/update/read the entity\r\n     * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new entity\r\n     * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types\r\n     * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool\r\n     */\r\n    constructor(ogapi, resource, allowedDatastreams, definedSchemas, jsonSchemaValidator) {\r\n        super(ogapi, resource, allowedDatastreams, definedSchemas, jsonSchemaValidator);\r\n    }\r\n\r\n    initFromFlattened(_flattenedEntityData) {\r\n        let _this = this;\r\n        if (_flattenedEntityData && Object.keys(_flattenedEntityData).length > 0) {\r\n            Object.keys(_flattenedEntityData).forEach(function (_id) {\r\n                if (_id.toLowerCase().startsWith(\"provision\")) {\r\n                    var _content = _flattenedEntityData[_id];\r\n\r\n                    if (_content.forEach) {\r\n                        _content.forEach(function (_relation) {\r\n                            if (_relation._index.value && _relation._value && _relation._value._current) {\r\n                                _this.withComplex(_id, _relation._index.value._current.value, _relation._value._current.value);\r\n                            }\r\n                        });\r\n                    } else {\r\n                        _this.with(_id, _content._value._current.value);\r\n                    }\r\n                }\r\n            });\r\n        }\r\n    }\r\n\r\n    /**\r\n     * Set a complex value to entity\r\n     * @param {!string} _id - Datastream identifier\r\n     * @param {!string} idCommunicationModules - Communications module identifier\r\n     * @param {object} val - Value to set.\r\n     */\r\n    withComplex(_id, idCommunicationModules, val) {\r\n        if (!idCommunicationModules) {\r\n            console.warn('Communication module identifier not defined. This value wil be ignored');\r\n            return this;\r\n        }\r\n        if (this.getAllowedDatastreams().filter(function (ds) {\r\n                return ds.identifier === _id;\r\n            }).length !== 1) {\r\n            console.warn('Datastream not found or operations can not be performed on it. This value will be ignored. Datastream Name: ' + _id);\r\n            return this;\r\n        }\r\n        if (!this._entity[_id])\r\n            this._entity[_id] = [];\r\n\r\n        let _found = false;\r\n\r\n        for (let _idx = 0; _idx < this._entity[_id].length; _idx++) {\r\n            let _rel = this._entity[_id][_idx];\r\n            if (_rel._index && _rel._index.value && _rel._index.value === idCommunicationModules) {\r\n                this._entity[_id][_idx] = {\r\n                    '_index': {\r\n                        'value': idCommunicationModules\r\n                    },\r\n                    '_value': {\r\n                        '_current': {\r\n                            'value': val\r\n                        }\r\n                    }\r\n                };\r\n\r\n                _found = true;\r\n            }\r\n        }\r\n\r\n        if (!_found) {\r\n            this._entity[_id].push({\r\n                '_index': {\r\n                    'value': idCommunicationModules\r\n                },\r\n                '_value': {\r\n                    '_current': {\r\n                        'value': val\r\n                    }\r\n                }\r\n            });\r\n        }\r\n\r\n        return this;\r\n    }\r\n}"
   },
   {
     "__docId__": 1203,
@@ -28897,12 +28897,34 @@
     "kind": "method",
     "static": false,
     "variation": null,
+    "name": "initFromFlattened",
+    "memberof": "src/provision/entities/ComplexBuilder.js~ComplexBuilder",
+    "longname": "src/provision/entities/ComplexBuilder.js~ComplexBuilder#initFromFlattened",
+    "access": null,
+    "description": null,
+    "lineNumber": 23,
+    "undocument": true,
+    "params": [
+      {
+        "name": "_flattenedEntityData",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 1206,
+    "kind": "method",
+    "static": false,
+    "variation": null,
     "name": "withComplex",
     "memberof": "src/provision/entities/ComplexBuilder.js~ComplexBuilder",
     "longname": "src/provision/entities/ComplexBuilder.js~ComplexBuilder#withComplex",
     "access": null,
     "description": "Set a complex value to entity",
-    "lineNumber": 29,
+    "lineNumber": 50,
     "params": [
       {
         "nullable": false,
@@ -28943,7 +28965,7 @@
     "generator": false
   },
   {
-    "__docId__": 1206,
+    "__docId__": 1207,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -28956,7 +28978,7 @@
     "content": "'use strict';\r\n\r\nimport BulkBuilder from './BulkBuilder';\r\n\r\n/**\r\n * Csv builder. This builder give you the necessary tools to create a csv bulk using our OpenGate REST.\r\n */\r\nexport default class CsvBulkBuilder extends BulkBuilder {\r\n\r\n    /**\r\n     * @param {InternalOpenGateAPI} ogapi - required field. This is ogapi instance\r\n     * @param {string} organization - required field. This is the organization name where entities will be created, updated or deleted\r\n     * @param {resource} resource - required field. This is the resource used for the bulk provision\r\n     * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception\r\n     */\r\n    constructor(ogapi, organization, resource, timeout) {\r\n        super(ogapi, 'provision/organizations/' + organization + '/bulk/' + resource + '?action=#actionName#', 'text/plain', timeout);\r\n    }\r\n}"
   },
   {
-    "__docId__": 1207,
+    "__docId__": 1208,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -28975,7 +28997,7 @@
     ]
   },
   {
-    "__docId__": 1208,
+    "__docId__": 1209,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -29030,7 +29052,7 @@
     "generator": false
   },
   {
-    "__docId__": 1209,
+    "__docId__": 1210,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -29040,10 +29062,10 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "'use strict';\r\n\r\nimport ComplexBuilder from './ComplexBuilder';\r\nimport {\r\n    SubscriberID\r\n} from './SubscriberBuilder';\r\nimport {\r\n    SubscriptionID\r\n} from './SubscriptionBuilder';\r\nimport HttpStatus from 'http-status-codes';\r\nimport q from 'q';\r\nimport jp from 'jsonpath';\r\n\r\nconst ID = 'provision.device.identifier',\r\n    PUT_METHOD = 'PUT',\r\n    POST_METHOD = 'POST';\r\n\r\nclass BoxBuilder {\r\n    constructor(ogapi, obj, url, key) {\r\n        let _this = this;\r\n        let subscribers = {};\r\n        let subscriptions = {};\r\n\r\n        this._obj = obj;\r\n        this._url = url;\r\n        this._ogapi = ogapi;\r\n        this._key = key;\r\n        this._deviceKeys = Object.keys(obj).filter(function(dsName) {\r\n            return dsName.indexOf('subscriber') === -1 && dsName.indexOf('subscription') === -1;\r\n        });\r\n        this._subscriberKeys = Object.keys(obj).filter(function(dsName) {\r\n            return dsName.indexOf('subscriber') !== -1;\r\n        });\r\n        this._subscriptionKeys = Object.keys(obj).filter(function(dsName) {\r\n            return dsName.indexOf('subscription') !== -1;\r\n        });\r\n        this._administrationKeys = Object.keys(obj).filter(function(dsName) {\r\n            return dsName.indexOf('provision.administration') !== -1;\r\n        });\r\n        this._wrappers = [];\r\n\r\n        this._subscriberKeys.forEach((key) => {\r\n            _this._obj[key].forEach((value) => {\r\n                if (!subscribers[value._index.value]) {\r\n                    subscribers[value._index.value] = {};\r\n                }\r\n                subscribers[value._index.value][key] = {\r\n                    _value: value._value\r\n                };\r\n            });\r\n        });\r\n\r\n        this._subscriptionKeys.forEach((key) => {\r\n            _this._obj[key].forEach((value) => {\r\n                if (!subscriptions[value._index.value]) {\r\n                    subscriptions[value._index.value] = {};\r\n                }\r\n                subscriptions[value._index.value][key] = {\r\n                    _value: value._value\r\n                };\r\n            });\r\n        });\r\n\r\n        Object.keys(subscriptions).forEach((commsId) => {\r\n            let obj = subscriptions[commsId];\r\n            _this._administrationKeys.forEach((key) => {\r\n                obj[key] = _this._obj[key];\r\n            });\r\n            _this._wrappers.push(new WrapperBuilder(_this._ogapi, obj, _this._url.replace('devices', 'subscriptions').replace('/' + _this._key._value._current.value, ''), obj[SubscriptionID]._value._current.value));\r\n        });\r\n        Object.keys(subscribers).forEach((commsId) => {\r\n            let obj = subscribers[commsId];\r\n            _this._administrationKeys.forEach((key) => {\r\n                obj[key] = _this._obj[key];\r\n            });\r\n            _this._wrappers.push(new WrapperBuilder(_this._ogapi, obj, _this._url.replace('devices', 'subscribers').replace('/' + _this._key._value._current.value, ''), obj[SubscriberID]._value._current.value));\r\n        });\r\n    }\r\n\r\n    _urlWithKey() {\r\n        let splitted = this._url.split('?');\r\n        return splitted[0] + '/' + this._key._value._current.value + '?' + splitted[1];\r\n    }\r\n\r\n    create() {\r\n        let defer = q.defer();\r\n        let postObj = {};\r\n        let putObj = this._obj;\r\n        let childEntityPromises = [];\r\n        let _this = this;\r\n\r\n        Object.keys(putObj).filter((key) => {\r\n            return key.indexOf('subscriber') === -1 && key.indexOf('subscription') === -1;\r\n        }).forEach((deviceKey) => {\r\n            postObj[deviceKey] = putObj[deviceKey];\r\n        });\r\n\r\n        this._wrappers.forEach((wrapper) => {\r\n            childEntityPromises.push({\r\n                wrapper: wrapper,\r\n                promise: wrapper.execute(defer, 10)\r\n            });\r\n        });\r\n\r\n        q.allSettled(\r\n            childEntityPromises.reduce(function(previousValue, current) {\r\n                previousValue.push(current.promise);\r\n                return previousValue;\r\n            }, [])).then(() => {\r\n            defer.notify({\r\n                message: 'OGAPI_201_ENTITIES_CREATED',\r\n                type: 'success',\r\n                percentage: 20\r\n            });\r\n            defer.notify({\r\n                entity: _this._key._value._current.value,\r\n                message: 'OGAPI_CREATING_DEVICE',\r\n                type: 'success',\r\n                percentage: 25\r\n            });\r\n            return _this._ogapi.Napi.post(_this._url, postObj)\r\n                .then((res) => {\r\n                    defer.notify({\r\n                        entity: _this._key._value._current.value,\r\n                        message: 'OGAPI_DEVICE_CREATED',\r\n                        type: 'success',\r\n                        percentage: 50\r\n                    });\r\n                    if (_this._wrappers.length > 0) {\r\n                        defer.notify({\r\n                            message: 'OGAPI_ADDING_RELATED_ENTITIES',\r\n                            type: 'success',\r\n                            percentage: 55\r\n                        });\r\n                        return _this._ogapi.Napi.put(_this._urlWithKey(), putObj)\r\n                            .then((res) => {\r\n                                if (res.statusCode === HttpStatus.OK) {\r\n                                    console.log(\"CREATEOK: \" + JSON.stringify(res));\r\n                                    if (typeof _this._onCreated === \"function\") {\r\n                                        _this._onCreated(res.header.location);\r\n                                    }\r\n                                    defer.notify({\r\n                                        entity: _this._key._value._current.value,\r\n                                        message: 'OGAPI_DEVICE_CREATED ',\r\n                                        type: 'success',\r\n                                        percentage: 75\r\n                                    });\r\n                                    defer.resolve({\r\n                                        location: res.header.location,\r\n                                        statusCode: res.statusCode\r\n                                    });\r\n                                } else {\r\n                                    defer.reject({\r\n                                        errors: res.errors,\r\n                                        statusCode: res.statusCode\r\n                                    });\r\n                                }\r\n                            });\r\n                    } else {\r\n                        if (res.statusCode === HttpStatus.CREATED) {\r\n                            console.log(\"CREATEOK: \" + JSON.stringify(res));\r\n                            if (typeof _this._onCreated === \"function\") {\r\n                                _this._onCreated(res.header.location);\r\n                            }\r\n                            defer.notify({\r\n                                entity: _this._key._value._current.value,\r\n                                message: 'OGAPI_DEVICE_CREATED',\r\n                                type: 'success',\r\n                                percentage: 75\r\n                            });\r\n                            defer.resolve({\r\n                                location: res.header.location,\r\n                                statusCode: res.statusCode\r\n                            });\r\n                        } else {\r\n                            defer.reject({\r\n                                errors: res.errors,\r\n                                statusCode: res.statusCode\r\n                            });\r\n                        }\r\n                    }\r\n\r\n                })\r\n                .catch((errores) => {\r\n                    console.log(\"mostrando errores\");\r\n                    console.log(JSON.stringify(errores));\r\n\r\n                    if (errores.statusCode === HttpStatus.BAD_REQUEST) {\r\n                        let ms = jp.query(errores, '$..message')[0];\r\n\r\n                        if (ms.includes('Entity duplicated')) {\r\n                            defer.reject({\r\n                                errors: errores.data.errors,\r\n                                statusCode: errores.statusCode\r\n                            });\r\n                        } else {\r\n                            defer.reject({\r\n                                errors: errores.data.errors,\r\n                                statusCode: errores.statusCode\r\n                            });\r\n                        }\r\n\r\n                    }\r\n                });\r\n        }).catch((err) => {\r\n            err.data.errors.forEach((err) => {\r\n                var error = err.description;\r\n                if (err.label)\r\n                    error += \":\" + err.label;\r\n                defer.notify({\r\n                    message: 'Error: ' + error,\r\n                    type: 'error',\r\n                    percentage: 80\r\n                });\r\n            });\r\n            let deletePromises = [_this.delete(defer, 90)];\r\n            childEntityPromises.forEach((item) => {\r\n                deletePromises.push(item.wrapper.delete(defer, 90));\r\n            });\r\n            q.allSettled(deletePromises).then(() => {\r\n                defer.reject(err);\r\n            }).catch(() => {\r\n                defer.reject(err);\r\n            });\r\n        });\r\n        return defer.promise;\r\n    }\r\n    update() {\r\n        let defer = q.defer();\r\n        let putObj = this._obj;\r\n        let childEntityPromises = [];\r\n        let _this = this;\r\n\r\n        this._wrappers.forEach((wrapper) => {\r\n            childEntityPromises.push({\r\n                wrapper: wrapper,\r\n                promise: wrapper.execute(defer, 20)\r\n            });\r\n        });\r\n\r\n        q.allSettled(\r\n            childEntityPromises.reduce(function(previousValue, current) {\r\n                previousValue.push(current.promise);\r\n                return previousValue;\r\n            }, [])).then(() => {\r\n            defer.notify({\r\n                message: 'OGAPI_201_ENTITIES_CREATED',\r\n                type: 'success',\r\n                percentage: 40\r\n            });\r\n            defer.notify({\r\n                entity: _this._key._value._current.value,\r\n                message: 'OGAPI_ADDING_RELATED_ENTITIES',\r\n                type: 'success',\r\n                percentage: 45\r\n            });\r\n            return _this._ogapi.Napi.put(_this._url, putObj)\r\n                .then((res) => {\r\n                    if (res.statusCode === HttpStatus.OK) {\r\n                        console.log(\"CREATEOK: \" + JSON.stringify(res));\r\n                        if (typeof _this._onCreated === \"function\") {\r\n                            _this._onCreated(res.header.location);\r\n                        }\r\n                        defer.notify({\r\n                            entity: _this._key._value._current.value,\r\n                            message: 'OGAPI_DEVICE_UPDATED',\r\n                            type: 'success',\r\n                            percentage: 90\r\n                        });\r\n                        defer.resolve({\r\n                            location: res.header.location,\r\n                            statusCode: res.statusCode\r\n                        });\r\n                    } else {\r\n                        defer.reject({\r\n                            errors: res.errors,\r\n                            statusCode: res.statusCode\r\n                        });\r\n                    }\r\n                });\r\n        }).catch((err) => {\r\n            console.error(err);\r\n            defer.notify('OGAPI_SOMETHING_WRONG_UPDATING_DEVICE');\r\n            defer.reject(err);\r\n        });\r\n        return defer.promise;\r\n    }\r\n\r\n    delete(defered, percentage) {\r\n        let _this = this;\r\n        return this._ogapi.Napi.delete(this._urlWithKey())\r\n            .then((res) => {\r\n                defered.notify({\r\n                    entity: _this._key,\r\n                    message: 'OGAPI_ENTITY_DELETED',\r\n                    type: 'warning',\r\n                    percentage: percentage\r\n                });\r\n            });\r\n    }\r\n}\r\n\r\nclass WrapperBuilder {\r\n    constructor(ogapi, obj, url, key) {\r\n        this._obj = obj;\r\n        this._url = url;\r\n        this._ogapi = ogapi;\r\n        this._key = key;\r\n        this._created = false;\r\n    }\r\n\r\n    _urlWithKey() {\r\n        let splitted = this._url.split('?');\r\n        return splitted[0] + '/' + this._key + '?' + splitted[1];\r\n    }\r\n\r\n    _checkExists() {\r\n        return this._ogapi.Napi.get(this._urlWithKey()).then(function(response) {\r\n            return response.statusCode === HttpStatus.OK;\r\n        }).catch((err) => {\r\n            console.warn(err);\r\n            return false;\r\n        });\r\n    }\r\n\r\n\r\n    execute(defered, percentage) {\r\n        let defer = q.defer();\r\n        let _this = this;\r\n        this._checkExists().then((exists) => {\r\n            if (!exists) {\r\n                create(defered, defer, percentage);\r\n            } else {\r\n                defer.resolve({ message: 'OGAPI_ENTITY_ALREADY_CREATED', entity: _this._key });\r\n            }\r\n        }).catch((exists) => {\r\n            if (!exists) {\r\n                create(defered, defer, percentage);\r\n            } else {\r\n                defer.resolve({ message: 'OGAPI_ENTITY_ALREADY_CREATED', entity: _this._key });\r\n            }\r\n        });\r\n        return defer.promise;\r\n\r\n        function create(defered, defer, percentage) {\r\n            _this._ogapi.Napi.post(_this._url, _this._obj)\r\n                .then((res) => {\r\n                    _this._created = true;\r\n                    defered.notify({\r\n                        entity: _this._key,\r\n                        message: 'OGAPI_ENTITY_CREATED',\r\n                        type: 'success',\r\n                        percentage: percentage\r\n                    });\r\n                    defer.resolve({ message: 'OGAPI_ENTITY_CREATED', entity: _this._key });\r\n                }).catch((err) => {\r\n                    console.error(err);\r\n                    defered.notify({\r\n                        entity: _this._key,\r\n                        message: 'OGAPI_ENTITY_CREATED',\r\n                        type: 'warning',\r\n                        percentage: percentage\r\n                    });\r\n                    defer.reject({\r\n                        entity: _this._key,\r\n                        message: 'OGAPI_SOMETHING_WRONG_CREATING',\r\n                    });\r\n                });\r\n        }\r\n    }\r\n\r\n    delete(defered, percentage) {\r\n        let _this = this;\r\n        if (this._created) {\r\n            return this._ogapi.Napi.delete(this._urlWithKey())\r\n                .then((res) => {\r\n                    defered.notify({\r\n                        entity: _this._key,\r\n                        message: 'OGAPI_ENTITY_DELETED',\r\n                        type: 'warning',\r\n                        percentage: percentage\r\n                    });\r\n                });\r\n        }\r\n        return Q.fcall(() => {\r\n            return;\r\n        });\r\n    }\r\n\r\n}\r\n\r\n/**\r\n * Device builder. This builder give you the necessary tools to create a device using our OpenGate REST.\r\n */\r\nexport default class DeviceBuilder extends ComplexBuilder {\r\n\r\n    /**\r\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\r\n     * @param {!string} organization - this is the organization name where device will be created\r\n     * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new device\r\n     * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types\r\n     * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool\r\n     */\r\n    constructor(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator) {\r\n        super(ogapi, organization + '/devices', allowedDatastreams, definedSchemas, jsonSchemaValidator);\r\n        this._organization = organization;\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function create a entity of provision\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.organizationsBuilder().create()\r\n     */\r\n    create() {\r\n        this._checkRequiredParameters();\r\n        return (new BoxBuilder(this._ogapi, this._composeElement(), this._resource, this._getEntityKey())).create();\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function updates a entity of provision and check if any subscriber/subscription exits or no. \r\n     * If a subscriber/subscription not exists then this entities will be created and after that will be added to entity box.\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.entityBuilder.devicesBuilder().update()\r\n     */\r\n    update() {\r\n        return (new BoxBuilder(this._ogapi, this._composeElement(), this._buildURL(), this._getEntityKey())).update();\r\n    }\r\n\r\n    _getEntityKey() {\r\n        return this._entity[ID];\r\n    }\r\n\r\n    initFromFlattened(_flattenedEntityData) {\r\n        let _this = this;\r\n        if (_flattenedEntityData && Object.keys(_flattenedEntityData).length > 0) {\r\n            Object.keys(_flattenedEntityData).forEach(function(_id) {\r\n                if (_id.toLowerCase().startsWith(\"provision\")) {\r\n                    var _content = _flattenedEntityData[_id];\r\n\r\n                    if (_content.forEach) {\r\n                        _content.forEach(function(_relation) {\r\n                            if (_relation._index.value && _relation._value && _relation._value._current) {\r\n                                _this.withComplex(_id, _relation._index.value._current.value, _relation._value._current.value);\r\n                            }\r\n                        });\r\n                    } else {\r\n                        _this.with(_id, _content._value._current.value);\r\n                    }\r\n                }\r\n            });\r\n        }\r\n    }\r\n}"
+    "content": "'use strict';\r\n\r\nimport ComplexBuilder from './ComplexBuilder';\r\nimport {\r\n    SubscriberID\r\n} from './SubscriberBuilder';\r\nimport {\r\n    SubscriptionID\r\n} from './SubscriptionBuilder';\r\nimport HttpStatus from 'http-status-codes';\r\nimport q from 'q';\r\nimport jp from 'jsonpath';\r\n\r\nconst ID = 'provision.device.identifier',\r\n    PUT_METHOD = 'PUT',\r\n    POST_METHOD = 'POST';\r\n\r\nclass BoxBuilder {\r\n    constructor(ogapi, obj, url, key) {\r\n        let _this = this;\r\n        let subscribers = {};\r\n        let subscriptions = {};\r\n\r\n        this._obj = obj;\r\n        this._url = url;\r\n        this._ogapi = ogapi;\r\n        this._key = key;\r\n        this._deviceKeys = Object.keys(obj).filter(function (dsName) {\r\n            return dsName.indexOf('subscriber') === -1 && dsName.indexOf('subscription') === -1;\r\n        });\r\n        this._subscriberKeys = Object.keys(obj).filter(function (dsName) {\r\n            return dsName.indexOf('subscriber') !== -1;\r\n        });\r\n        this._subscriptionKeys = Object.keys(obj).filter(function (dsName) {\r\n            return dsName.indexOf('subscription') !== -1;\r\n        });\r\n        this._administrationKeys = Object.keys(obj).filter(function (dsName) {\r\n            return dsName.indexOf('provision.administration') !== -1;\r\n        });\r\n        this._wrappers = [];\r\n\r\n        this._subscriberKeys.forEach((key) => {\r\n            _this._obj[key].forEach((value) => {\r\n                if (!subscribers[value._index.value]) {\r\n                    subscribers[value._index.value] = {};\r\n                }\r\n                subscribers[value._index.value][key] = {\r\n                    _value: value._value\r\n                };\r\n            });\r\n        });\r\n\r\n        this._subscriptionKeys.forEach((key) => {\r\n            _this._obj[key].forEach((value) => {\r\n                if (!subscriptions[value._index.value]) {\r\n                    subscriptions[value._index.value] = {};\r\n                }\r\n                subscriptions[value._index.value][key] = {\r\n                    _value: value._value\r\n                };\r\n            });\r\n        });\r\n\r\n        Object.keys(subscriptions).forEach((commsId) => {\r\n            let obj = subscriptions[commsId];\r\n            _this._administrationKeys.forEach((key) => {\r\n                obj[key] = _this._obj[key];\r\n            });\r\n            _this._wrappers.push(new WrapperBuilder(_this._ogapi, obj, _this._url.replace('devices', 'subscriptions').replace('/' + _this._key._value._current.value, ''), obj[SubscriptionID]._value._current.value));\r\n        });\r\n        Object.keys(subscribers).forEach((commsId) => {\r\n            let obj = subscribers[commsId];\r\n            _this._administrationKeys.forEach((key) => {\r\n                obj[key] = _this._obj[key];\r\n            });\r\n            _this._wrappers.push(new WrapperBuilder(_this._ogapi, obj, _this._url.replace('devices', 'subscribers').replace('/' + _this._key._value._current.value, ''), obj[SubscriberID]._value._current.value));\r\n        });\r\n    }\r\n\r\n    _urlWithKey() {\r\n        let splitted = this._url.split('?');\r\n        return splitted[0] + '/' + this._key._value._current.value + '?' + splitted[1];\r\n    }\r\n\r\n    create() {\r\n        let defer = q.defer();\r\n        let postObj = {};\r\n        let putObj = this._obj;\r\n        let childEntityPromises = [];\r\n        let _this = this;\r\n\r\n        Object.keys(putObj).filter((key) => {\r\n            return key.indexOf('subscriber') === -1 && key.indexOf('subscription') === -1;\r\n        }).forEach((deviceKey) => {\r\n            postObj[deviceKey] = putObj[deviceKey];\r\n        });\r\n\r\n        this._wrappers.forEach((wrapper) => {\r\n            childEntityPromises.push({\r\n                wrapper: wrapper,\r\n                promise: wrapper.execute(defer, 10)\r\n            });\r\n        });\r\n\r\n        q.allSettled(\r\n            childEntityPromises.reduce(function (previousValue, current) {\r\n                previousValue.push(current.promise);\r\n                return previousValue;\r\n            }, [])).then(() => {\r\n            defer.notify({\r\n                message: 'OGAPI_201_ENTITIES_CREATED',\r\n                type: 'success',\r\n                percentage: 20\r\n            });\r\n            defer.notify({\r\n                entity: _this._key._value._current.value,\r\n                message: 'OGAPI_CREATING_DEVICE',\r\n                type: 'success',\r\n                percentage: 25\r\n            });\r\n            return _this._ogapi.Napi.post(_this._url, postObj)\r\n                .then((res) => {\r\n                    defer.notify({\r\n                        entity: _this._key._value._current.value,\r\n                        message: 'OGAPI_DEVICE_CREATED',\r\n                        type: 'success',\r\n                        percentage: 50\r\n                    });\r\n                    if (_this._wrappers.length > 0) {\r\n                        defer.notify({\r\n                            message: 'OGAPI_ADDING_RELATED_ENTITIES',\r\n                            type: 'success',\r\n                            percentage: 55\r\n                        });\r\n                        return _this._ogapi.Napi.put(_this._urlWithKey(), putObj)\r\n                            .then((res) => {\r\n                                if (res.statusCode === HttpStatus.OK) {\r\n                                    console.log(\"CREATEOK: \" + JSON.stringify(res));\r\n                                    if (typeof _this._onCreated === \"function\") {\r\n                                        _this._onCreated(res.header.location);\r\n                                    }\r\n                                    defer.notify({\r\n                                        entity: _this._key._value._current.value,\r\n                                        message: 'OGAPI_DEVICE_CREATED ',\r\n                                        type: 'success',\r\n                                        percentage: 75\r\n                                    });\r\n                                    defer.resolve({\r\n                                        location: res.header.location,\r\n                                        statusCode: res.statusCode\r\n                                    });\r\n                                } else {\r\n                                    defer.reject({\r\n                                        errors: res.errors,\r\n                                        statusCode: res.statusCode\r\n                                    });\r\n                                }\r\n                            });\r\n                    } else {\r\n                        if (res.statusCode === HttpStatus.CREATED) {\r\n                            console.log(\"CREATEOK: \" + JSON.stringify(res));\r\n                            if (typeof _this._onCreated === \"function\") {\r\n                                _this._onCreated(res.header.location);\r\n                            }\r\n                            defer.notify({\r\n                                entity: _this._key._value._current.value,\r\n                                message: 'OGAPI_DEVICE_CREATED',\r\n                                type: 'success',\r\n                                percentage: 75\r\n                            });\r\n                            defer.resolve({\r\n                                location: res.header.location,\r\n                                statusCode: res.statusCode\r\n                            });\r\n                        } else {\r\n                            defer.reject({\r\n                                errors: res.errors,\r\n                                statusCode: res.statusCode\r\n                            });\r\n                        }\r\n                    }\r\n\r\n                })\r\n                .catch((errores) => {\r\n                    console.log(\"mostrando errores\");\r\n                    console.log(JSON.stringify(errores));\r\n\r\n                    if (errores.statusCode === HttpStatus.BAD_REQUEST) {\r\n                        let ms = jp.query(errores, '$..message')[0];\r\n\r\n                        if (ms.includes('Entity duplicated')) {\r\n                            defer.reject({\r\n                                errors: errores.data.errors,\r\n                                statusCode: errores.statusCode\r\n                            });\r\n                        } else {\r\n                            defer.reject({\r\n                                errors: errores.data.errors,\r\n                                statusCode: errores.statusCode\r\n                            });\r\n                        }\r\n\r\n                    }\r\n                });\r\n        }).catch((err) => {\r\n            err.data.errors.forEach((err) => {\r\n                var error = err.description;\r\n                if (err.label)\r\n                    error += \":\" + err.label;\r\n                defer.notify({\r\n                    message: 'Error: ' + error,\r\n                    type: 'error',\r\n                    percentage: 80\r\n                });\r\n            });\r\n            let deletePromises = [_this.delete(defer, 90)];\r\n            childEntityPromises.forEach((item) => {\r\n                deletePromises.push(item.wrapper.delete(defer, 90));\r\n            });\r\n            q.allSettled(deletePromises).then(() => {\r\n                defer.reject(err);\r\n            }).catch(() => {\r\n                defer.reject(err);\r\n            });\r\n        });\r\n        return defer.promise;\r\n    }\r\n    update() {\r\n        let defer = q.defer();\r\n        let putObj = this._obj;\r\n        let childEntityPromises = [];\r\n        let _this = this;\r\n\r\n        this._wrappers.forEach((wrapper) => {\r\n            childEntityPromises.push({\r\n                wrapper: wrapper,\r\n                promise: wrapper.execute(defer, 20)\r\n            });\r\n        });\r\n\r\n        q.allSettled(\r\n            childEntityPromises.reduce(function (previousValue, current) {\r\n                previousValue.push(current.promise);\r\n                return previousValue;\r\n            }, [])).then(() => {\r\n            defer.notify({\r\n                message: 'OGAPI_201_ENTITIES_CREATED',\r\n                type: 'success',\r\n                percentage: 40\r\n            });\r\n            defer.notify({\r\n                entity: _this._key._value._current.value,\r\n                message: 'OGAPI_ADDING_RELATED_ENTITIES',\r\n                type: 'success',\r\n                percentage: 45\r\n            });\r\n            return _this._ogapi.Napi.put(_this._url, putObj)\r\n                .then((res) => {\r\n                    if (res.statusCode === HttpStatus.OK) {\r\n                        console.log(\"CREATEOK: \" + JSON.stringify(res));\r\n                        if (typeof _this._onCreated === \"function\") {\r\n                            _this._onCreated(res.header.location);\r\n                        }\r\n                        defer.notify({\r\n                            entity: _this._key._value._current.value,\r\n                            message: 'OGAPI_DEVICE_UPDATED',\r\n                            type: 'success',\r\n                            percentage: 90\r\n                        });\r\n                        defer.resolve({\r\n                            location: res.header.location,\r\n                            statusCode: res.statusCode\r\n                        });\r\n                    } else {\r\n                        defer.reject({\r\n                            errors: res.errors,\r\n                            statusCode: res.statusCode\r\n                        });\r\n                    }\r\n                });\r\n        }).catch((err) => {\r\n            console.error(err);\r\n            defer.notify('OGAPI_SOMETHING_WRONG_UPDATING_DEVICE');\r\n            defer.reject(err);\r\n        });\r\n        return defer.promise;\r\n    }\r\n\r\n    delete(defered, percentage) {\r\n        let _this = this;\r\n        return this._ogapi.Napi.delete(this._urlWithKey())\r\n            .then((res) => {\r\n                defered.notify({\r\n                    entity: _this._key,\r\n                    message: 'OGAPI_ENTITY_DELETED',\r\n                    type: 'warning',\r\n                    percentage: percentage\r\n                });\r\n            });\r\n    }\r\n}\r\n\r\nclass WrapperBuilder {\r\n    constructor(ogapi, obj, url, key) {\r\n        this._obj = obj;\r\n        this._url = url;\r\n        this._ogapi = ogapi;\r\n        this._key = key;\r\n        this._created = false;\r\n    }\r\n\r\n    _urlWithKey() {\r\n        let splitted = this._url.split('?');\r\n        return splitted[0] + '/' + this._key + '?' + splitted[1];\r\n    }\r\n\r\n    _checkExists() {\r\n        return this._ogapi.Napi.get(this._urlWithKey()).then(function (response) {\r\n            return response.statusCode === HttpStatus.OK;\r\n        }).catch((err) => {\r\n            console.warn(err);\r\n            return false;\r\n        });\r\n    }\r\n\r\n\r\n    execute(defered, percentage) {\r\n        let defer = q.defer();\r\n        let _this = this;\r\n        this._checkExists().then((exists) => {\r\n            if (!exists) {\r\n                create(defered, defer, percentage);\r\n            } else {\r\n                defer.resolve({\r\n                    message: 'OGAPI_ENTITY_ALREADY_CREATED',\r\n                    entity: _this._key\r\n                });\r\n            }\r\n        }).catch((exists) => {\r\n            if (!exists) {\r\n                create(defered, defer, percentage);\r\n            } else {\r\n                defer.resolve({\r\n                    message: 'OGAPI_ENTITY_ALREADY_CREATED',\r\n                    entity: _this._key\r\n                });\r\n            }\r\n        });\r\n        return defer.promise;\r\n\r\n        function create(defered, defer, percentage) {\r\n            _this._ogapi.Napi.post(_this._url, _this._obj)\r\n                .then((res) => {\r\n                    _this._created = true;\r\n                    defered.notify({\r\n                        entity: _this._key,\r\n                        message: 'OGAPI_ENTITY_CREATED',\r\n                        type: 'success',\r\n                        percentage: percentage\r\n                    });\r\n                    defer.resolve({\r\n                        message: 'OGAPI_ENTITY_CREATED',\r\n                        entity: _this._key\r\n                    });\r\n                }).catch((err) => {\r\n                    console.error(err);\r\n                    defered.notify({\r\n                        entity: _this._key,\r\n                        message: 'OGAPI_ENTITY_CREATED',\r\n                        type: 'warning',\r\n                        percentage: percentage\r\n                    });\r\n                    defer.reject({\r\n                        entity: _this._key,\r\n                        message: 'OGAPI_SOMETHING_WRONG_CREATING',\r\n                    });\r\n                });\r\n        }\r\n    }\r\n\r\n    delete(defered, percentage) {\r\n        let _this = this;\r\n        if (this._created) {\r\n            return this._ogapi.Napi.delete(this._urlWithKey())\r\n                .then((res) => {\r\n                    defered.notify({\r\n                        entity: _this._key,\r\n                        message: 'OGAPI_ENTITY_DELETED',\r\n                        type: 'warning',\r\n                        percentage: percentage\r\n                    });\r\n                });\r\n        }\r\n        return Q.fcall(() => {\r\n            return;\r\n        });\r\n    }\r\n\r\n}\r\n\r\n/**\r\n * Device builder. This builder give you the necessary tools to create a device using our OpenGate REST.\r\n */\r\nexport default class DeviceBuilder extends ComplexBuilder {\r\n\r\n    /**\r\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\r\n     * @param {!string} organization - this is the organization name where device will be created\r\n     * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new device\r\n     * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types\r\n     * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool\r\n     */\r\n    constructor(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator) {\r\n        super(ogapi, organization + '/devices', allowedDatastreams, definedSchemas, jsonSchemaValidator);\r\n        this._organization = organization;\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function create a entity of provision\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.organizationsBuilder().create()\r\n     */\r\n    create() {\r\n        this._checkRequiredParameters();\r\n        return (new BoxBuilder(this._ogapi, this._composeElement(), this._resource, this._getEntityKey())).create();\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function updates a entity of provision and check if any subscriber/subscription exits or no. \r\n     * If a subscriber/subscription not exists then this entities will be created and after that will be added to entity box.\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.entityBuilder.devicesBuilder().update()\r\n     */\r\n    update() {\r\n        return (new BoxBuilder(this._ogapi, this._composeElement(), this._buildURL(), this._getEntityKey())).update();\r\n    }\r\n\r\n    _getEntityKey() {\r\n        return this._entity[ID];\r\n    }\r\n\r\n}"
   },
   {
-    "__docId__": 1210,
+    "__docId__": 1211,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -29064,7 +29086,7 @@
     }
   },
   {
-    "__docId__": 1211,
+    "__docId__": 1212,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -29081,7 +29103,7 @@
     "interface": false
   },
   {
-    "__docId__": 1212,
+    "__docId__": 1213,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -29121,7 +29143,7 @@
     "generator": false
   },
   {
-    "__docId__": 1213,
+    "__docId__": 1214,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -29139,7 +29161,7 @@
     }
   },
   {
-    "__docId__": 1214,
+    "__docId__": 1215,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -29157,7 +29179,7 @@
     }
   },
   {
-    "__docId__": 1215,
+    "__docId__": 1216,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -29175,7 +29197,7 @@
     }
   },
   {
-    "__docId__": 1216,
+    "__docId__": 1217,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -29193,7 +29215,7 @@
     }
   },
   {
-    "__docId__": 1217,
+    "__docId__": 1218,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -29211,7 +29233,7 @@
     }
   },
   {
-    "__docId__": 1218,
+    "__docId__": 1219,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -29229,7 +29251,7 @@
     }
   },
   {
-    "__docId__": 1219,
+    "__docId__": 1220,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -29247,7 +29269,7 @@
     }
   },
   {
-    "__docId__": 1220,
+    "__docId__": 1221,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -29265,7 +29287,7 @@
     }
   },
   {
-    "__docId__": 1221,
+    "__docId__": 1222,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -29283,7 +29305,7 @@
     }
   },
   {
-    "__docId__": 1222,
+    "__docId__": 1223,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -29303,7 +29325,7 @@
     "generator": false
   },
   {
-    "__docId__": 1223,
+    "__docId__": 1224,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -29323,7 +29345,7 @@
     "generator": false
   },
   {
-    "__docId__": 1224,
+    "__docId__": 1225,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -29343,7 +29365,7 @@
     "generator": false
   },
   {
-    "__docId__": 1225,
+    "__docId__": 1226,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -29376,7 +29398,7 @@
     "generator": false
   },
   {
-    "__docId__": 1226,
+    "__docId__": 1227,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -29393,7 +29415,7 @@
     "interface": false
   },
   {
-    "__docId__": 1227,
+    "__docId__": 1228,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -29433,7 +29455,7 @@
     "generator": false
   },
   {
-    "__docId__": 1228,
+    "__docId__": 1229,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -29451,7 +29473,7 @@
     }
   },
   {
-    "__docId__": 1229,
+    "__docId__": 1230,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -29469,7 +29491,7 @@
     }
   },
   {
-    "__docId__": 1230,
+    "__docId__": 1231,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -29487,7 +29509,7 @@
     }
   },
   {
-    "__docId__": 1231,
+    "__docId__": 1232,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -29505,7 +29527,7 @@
     }
   },
   {
-    "__docId__": 1232,
+    "__docId__": 1233,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -29523,7 +29545,7 @@
     }
   },
   {
-    "__docId__": 1233,
+    "__docId__": 1234,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -29543,7 +29565,7 @@
     "generator": false
   },
   {
-    "__docId__": 1234,
+    "__docId__": 1235,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -29563,7 +29585,7 @@
     "generator": false
   },
   {
-    "__docId__": 1235,
+    "__docId__": 1236,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -29596,7 +29618,7 @@
     "generator": false
   },
   {
-    "__docId__": 1236,
+    "__docId__": 1237,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -29605,7 +29627,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~WrapperBuilder#delete",
     "access": null,
     "description": null,
-    "lineNumber": 372,
+    "lineNumber": 381,
     "undocument": true,
     "params": [
       {
@@ -29629,7 +29651,7 @@
     "generator": false
   },
   {
-    "__docId__": 1237,
+    "__docId__": 1238,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -29641,14 +29663,14 @@
     "importPath": "opengate-js/src/provision/entities/DeviceBuilder.js",
     "importStyle": "DeviceBuilder",
     "description": "Device builder. This builder give you the necessary tools to create a device using our OpenGate REST.",
-    "lineNumber": 395,
+    "lineNumber": 404,
     "interface": false,
     "extends": [
       "src/provision/entities/ComplexBuilder.js~ComplexBuilder"
     ]
   },
   {
-    "__docId__": 1238,
+    "__docId__": 1239,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -29657,7 +29679,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~DeviceBuilder#constructor",
     "access": null,
     "description": "",
-    "lineNumber": 404,
+    "lineNumber": 413,
     "params": [
       {
         "nullable": false,
@@ -29713,7 +29735,7 @@
     "generator": false
   },
   {
-    "__docId__": 1239,
+    "__docId__": 1240,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -29722,7 +29744,7 @@
     "longname": "src/provision/entities/DeviceBuilder.js~DeviceBuilder#_organization",
     "access": null,
     "description": null,
-    "lineNumber": 406,
+    "lineNumber": 415,
     "undocument": true,
     "type": {
       "types": [
@@ -29731,7 +29753,7 @@
     }
   },
   {
-    "__docId__": 1240,
+    "__docId__": 1241,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -29743,54 +29765,7 @@
     "examples": [
       " ogapi.organizationsBuilder().create()"
     ],
-    "lineNumber": 418,
-    "params": [],
-    "properties": [
-      {
-        "nullable": null,
-        "types": [
-          "function (result:object, statusCode:number)"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "then",
-        "description": "When request it is OK"
-      },
-      {
-        "nullable": null,
-        "types": [
-          "function (error:string)"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "catch",
-        "description": "When request it is NOK"
-      }
-    ],
-    "return": {
-      "nullable": null,
-      "types": [
-        "Promise"
-      ],
-      "spread": false,
-      "description": ""
-    },
-    "generator": false
-  },
-  {
-    "__docId__": 1241,
-    "kind": "method",
-    "static": false,
-    "variation": null,
-    "name": "update",
-    "memberof": "src/provision/entities/DeviceBuilder.js~DeviceBuilder",
-    "longname": "src/provision/entities/DeviceBuilder.js~DeviceBuilder#update",
-    "access": null,
-    "description": "This invoke a request to OpenGate North API and the callback is managed by promises\nThis function updates a entity of provision and check if any subscriber/subscription exits or no. \nIf a subscriber/subscription not exists then this entities will be created and after that will be added to entity box.",
-    "examples": [
-      " ogapi.entityBuilder.devicesBuilder().update()"
-    ],
-    "lineNumber": 433,
+    "lineNumber": 427,
     "params": [],
     "properties": [
       {
@@ -29829,18 +29804,45 @@
     "kind": "method",
     "static": false,
     "variation": null,
-    "name": "_getEntityKey",
+    "name": "update",
     "memberof": "src/provision/entities/DeviceBuilder.js~DeviceBuilder",
-    "longname": "src/provision/entities/DeviceBuilder.js~DeviceBuilder#_getEntityKey",
+    "longname": "src/provision/entities/DeviceBuilder.js~DeviceBuilder#update",
     "access": null,
-    "description": null,
-    "lineNumber": 437,
-    "undocument": true,
+    "description": "This invoke a request to OpenGate North API and the callback is managed by promises\nThis function updates a entity of provision and check if any subscriber/subscription exits or no. \nIf a subscriber/subscription not exists then this entities will be created and after that will be added to entity box.",
+    "examples": [
+      " ogapi.entityBuilder.devicesBuilder().update()"
+    ],
+    "lineNumber": 442,
     "params": [],
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "function (result:object, statusCode:number)"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "then",
+        "description": "When request it is OK"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "function (error:string)"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "catch",
+        "description": "When request it is NOK"
+      }
+    ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Promise"
+      ],
+      "spread": false,
+      "description": ""
     },
     "generator": false
   },
@@ -29849,21 +29851,19 @@
     "kind": "method",
     "static": false,
     "variation": null,
-    "name": "initFromFlattened",
+    "name": "_getEntityKey",
     "memberof": "src/provision/entities/DeviceBuilder.js~DeviceBuilder",
-    "longname": "src/provision/entities/DeviceBuilder.js~DeviceBuilder#initFromFlattened",
+    "longname": "src/provision/entities/DeviceBuilder.js~DeviceBuilder#_getEntityKey",
     "access": null,
     "description": null,
-    "lineNumber": 441,
+    "lineNumber": 446,
     "undocument": true,
-    "params": [
-      {
-        "name": "_flattenedEntityData",
-        "types": [
-          "*"
-        ]
-      }
-    ],
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
     "generator": false
   },
   {
@@ -30741,7 +30741,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "'use strict';\r\n\r\nimport HttpStatus from 'http-status-codes';\r\nimport BaseProvision from '../BaseProvision';\r\nimport q from 'q';\r\n\r\nconst ERROR_VALUE_NOT_ALLOWED = 'The value is not allowed. The value should be formatted as follows: ';\r\nconst ERROR_DATASTREAM_NOT_ALLOWED = 'Datastream is not allowed.';\r\nconst ERROR_ORGANIZATION = 'Parameters organization must be defined';\r\n\r\n\r\n/**\r\n * This class allow set simple values.\r\n */\r\nexport default class SimpleBuilder extends BaseProvision {\r\n\r\n    /**\r\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\r\n     * @param {!string} resource - this is the resource url where can be create/delete/update/read the entity\r\n     * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new entity\r\n     * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types\r\n     * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool\r\n     */\r\n    constructor(ogapi, resource, allowedDatastreams, definedSchemas, jsonSchemaValidator) {\r\n        super(ogapi, \"/organizations/\" + resource + '?flattened=true');\r\n        if (typeof this._getEntityKey !== \"function\") {\r\n            throw new Error(\"Must override method:  _getEntityKey\");\r\n        }\r\n        this._entity = {};\r\n        this._allowedDatastreams = allowedDatastreams;\r\n        this._definedSchemas = definedSchemas;\r\n        this._jsonSchemaValidator = jsonSchemaValidator;\r\n    }\r\n\r\n    _buildURL() {\r\n        var url = this._resource.split('?');\r\n        return url[0] + \"/\" + this.getEntityKey() + '?' + url[1];\r\n    }\r\n\r\n    _validate() {\r\n        let _this = this;\r\n        let errors = [];\r\n        Object.keys(this._entity).forEach(function (_id) {\r\n            if (_id != 'resourceType') {\r\n                if (!_this._definedSchemas[_id]) {\r\n                    throw new Error(ERROR_DATASTREAM_NOT_ALLOWED);\r\n                }\r\n                let jSchema = _this._definedSchemas[_id].value;\r\n                if (_this._entity[_id].constructor === Array) {\r\n                    _this._entity[_id].forEach(function (item) {\r\n                        let value = item._value._current.value;\r\n                        if (!_this._jsonSchemaValidator.validate(value, jSchema).valid) {\r\n                            errors.push(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));\r\n                        }\r\n                    });\r\n                } else {\r\n                    let value = _this._entity[_id]._value._current.value;\r\n                    if (!_this._jsonSchemaValidator.validate(value, jSchema).valid) {\r\n                        errors.push(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));\r\n                    }\r\n                }\r\n            }\r\n        });\r\n\r\n        if (errors.length > 0) {\r\n            throw new Error(JSON.stringify(errors).replace(new RegExp(\"\\\"\", 'g'), \"\"));\r\n        }\r\n    }\r\n\r\n    _composeElement() {\r\n        this._validate();\r\n        return this._entity;\r\n    }\r\n\r\n    /**\r\n     * @return {string} - Entity identifier\r\n     */\r\n    getEntityKey() {\r\n        return (this._getEntityKey() !== null) ? this._getEntityKey()._value._current.value : null;\r\n    }\r\n\r\n    /**\r\n     * Set new datastream value\r\n     * \r\n     * @param {!string} _id - Datastream identifier\r\n     * @param {!objecr} val - Datastream value. If this value is null then datastream value will be removed.\r\n     */\r\n    with(_id, val) {\r\n        if (!val) {\r\n            delete this._entity[_id];\r\n            return this;\r\n        }\r\n        if (this.getAllowedDatastreams().filter(function (ds) {\r\n                return ds.identifier === _id;\r\n            }).length !== 1) {\r\n            console.warn('Datastream not found or operations can not be performed on it. This value will be ignored. Datastream Name: ' + _id);\r\n            return this;\r\n        }\r\n        this._entity[_id] = {\r\n            '_value': {\r\n                '_current': {\r\n                    'value': val\r\n                }\r\n            }\r\n        };\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * @return {array} - Allowed Datastream definition array\r\n     */\r\n    getAllowedDatastreams() {\r\n        return this._allowedDatastreams;\r\n    }\r\n\r\n    initFromFlattened(_flattenedEntityData) {\r\n        let _this = this;\r\n        if (_flattenedEntityData && Object.keys(_flattenedEntityData).length > 0) {\r\n            Object.keys(_flattenedEntityData).forEach(function (_id) {\r\n                if (_id.toLowerCase().startsWith(\"provision\")) {\r\n                    var _content = _flattenedEntityData[_id];\r\n\r\n                    _this.with(_id, _content._value._current.value);\r\n                }\r\n            });\r\n        }\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function deletes a entity of provision\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     */\r\n    deleteAll() {\r\n        let defered = q.defer();\r\n        let promise = defered.promise;\r\n        let url = this._buildURL().split('?')[0] + \"?full=true\";\r\n        this._ogapi.Napi.delete(url)\r\n            .then((res) => {\r\n                if (res.statusCode === HttpStatus.OK) {\r\n                    defered.resolve({\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n}"
+    "content": "'use strict';\r\n\r\nimport HttpStatus from 'http-status-codes';\r\nimport BaseProvision from '../BaseProvision';\r\nimport q from 'q';\r\n\r\nconst ERROR_VALUE_NOT_ALLOWED = 'The value is not allowed. The value should be formatted as follows: ';\r\nconst ERROR_DATASTREAM_NOT_ALLOWED = 'Datastream is not allowed.';\r\nconst ERROR_ORGANIZATION = 'Parameters organization must be defined';\r\n\r\n\r\n/**\r\n * This class allow set simple values.\r\n */\r\nexport default class SimpleBuilder extends BaseProvision {\r\n\r\n    /**\r\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\r\n     * @param {!string} resource - this is the resource url where can be create/delete/update/read the entity\r\n     * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new entity\r\n     * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types\r\n     * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool\r\n     */\r\n    constructor(ogapi, resource, allowedDatastreams, definedSchemas, jsonSchemaValidator) {\r\n        super(ogapi, \"/organizations/\" + resource + '?flattened=true');\r\n        if (typeof this._getEntityKey !== \"function\") {\r\n            throw new Error(\"Must override method:  _getEntityKey\");\r\n        }\r\n        this._entity = {};\r\n        this._allowedDatastreams = allowedDatastreams;\r\n        this._definedSchemas = definedSchemas;\r\n        this._jsonSchemaValidator = jsonSchemaValidator;\r\n    }\r\n\r\n    _buildURL() {\r\n        var url = this._resource.split('?');\r\n        return url[0] + \"/\" + this.getEntityKey() + '?' + url[1];\r\n    }\r\n\r\n    _validate() {\r\n        let _this = this;\r\n        let errors = [];\r\n        Object.keys(this._entity).forEach(function (_id) {\r\n            if (_id != 'resourceType') {\r\n                if (!_this._definedSchemas[_id]) {\r\n                    throw new Error(ERROR_DATASTREAM_NOT_ALLOWED);\r\n                }\r\n                let jSchema = _this._definedSchemas[_id].value;\r\n                if (_this._entity[_id].constructor === Array) {\r\n                    _this._entity[_id].forEach(function (item) {\r\n                        let value = item._value._current.value;\r\n                        if (!_this._jsonSchemaValidator.validate(value, jSchema).valid) {\r\n                            errors.push(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));\r\n                        }\r\n                    });\r\n                } else {\r\n                    let value = _this._entity[_id]._value._current.value;\r\n                    if (!_this._jsonSchemaValidator.validate(value, jSchema).valid) {\r\n                        errors.push(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));\r\n                    }\r\n                }\r\n            }\r\n        });\r\n\r\n        if (errors.length > 0) {\r\n            throw new Error(JSON.stringify(errors).replace(new RegExp(\"\\\"\", 'g'), \"\"));\r\n        }\r\n    }\r\n\r\n    _composeElement() {\r\n        this._validate();\r\n        return this._entity;\r\n    }\r\n\r\n    /**\r\n     * @return {string} - Entity identifier\r\n     */\r\n    getEntityKey() {\r\n        return (this._getEntityKey() !== null) ? this._getEntityKey()._value._current.value : null;\r\n    }\r\n\r\n    /**\r\n     * Set new datastream value\r\n     * \r\n     * @param {!string} _id - Datastream identifier\r\n     * @param {!objecr} val - Datastream value. If this value is null then datastream value will be removed.\r\n     */\r\n    with(_id, val) {\r\n        if (!val) {\r\n            delete this._entity[_id];\r\n            return this;\r\n        }\r\n        if (this.getAllowedDatastreams().filter(function (ds) {\r\n                return ds.identifier === _id;\r\n            }).length !== 1) {\r\n            console.warn('Datastream not found or operations can not be performed on it. This value will be ignored. Datastream Name: ' + _id);\r\n            return this;\r\n        }\r\n        this._entity[_id] = {\r\n            '_value': {\r\n                '_current': {\r\n                    'value': val\r\n                }\r\n            }\r\n        };\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * @return {array} - Allowed Datastream definition array\r\n     */\r\n    getAllowedDatastreams() {\r\n        return this._allowedDatastreams;\r\n    }\r\n\r\n    initFromFlattened(_flattenedEntityData) {\r\n        let _this = this;\r\n        if (_flattenedEntityData && Object.keys(_flattenedEntityData).length > 0) {\r\n            Object.keys(_flattenedEntityData).forEach(function (_id) {\r\n                if (_id.toLowerCase().startsWith(\"provision\")) {\r\n                    var _content = _flattenedEntityData[_id];\r\n                    if (Array.isArray(_content)) {\r\n                        _content = _content[0];\r\n                    }\r\n                    _this.with(_id, _content._value._current.value);\r\n                }\r\n            });\r\n        }\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function deletes a entity of provision\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     */\r\n    deleteAll() {\r\n        let defered = q.defer();\r\n        let promise = defered.promise;\r\n        let url = this._buildURL().split('?')[0] + \"?full=true\";\r\n        this._ogapi.Napi.delete(url)\r\n            .then((res) => {\r\n                if (res.statusCode === HttpStatus.OK) {\r\n                    defered.resolve({\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n}"
   },
   {
     "__docId__": 1273,
@@ -31133,7 +31133,7 @@
     "longname": "src/provision/entities/SimpleBuilder.js~SimpleBuilder#deleteAll",
     "access": null,
     "description": "This invoke a request to OpenGate North API and the callback is managed by promises\nThis function deletes a entity of provision",
-    "lineNumber": 136,
+    "lineNumber": 138,
     "params": [],
     "properties": [
       {

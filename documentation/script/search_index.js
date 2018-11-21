@@ -6270,6 +6270,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/provision/entities/complexbuilder.js~complexbuilder#initfromflattened",
+    "class/src/provision/entities/ComplexBuilder.js~ComplexBuilder.html#instance-method-initFromFlattened",
+    "src/provision/entities/ComplexBuilder.js~ComplexBuilder#initFromFlattened",
+    "method"
+  ],
+  [
     "src/provision/entities/complexbuilder.js~complexbuilder#withcomplex",
     "class/src/provision/entities/ComplexBuilder.js~ComplexBuilder.html#instance-method-withComplex",
     "src/provision/entities/ComplexBuilder.js~ComplexBuilder#withComplex",
@@ -6303,12 +6309,6 @@ window.esdocSearchIndex = [
     "src/provision/entities/devicebuilder.js~devicebuilder#create",
     "class/src/provision/entities/DeviceBuilder.js~DeviceBuilder.html#instance-method-create",
     "src/provision/entities/DeviceBuilder.js~DeviceBuilder#create",
-    "method"
-  ],
-  [
-    "src/provision/entities/devicebuilder.js~devicebuilder#initfromflattened",
-    "class/src/provision/entities/DeviceBuilder.js~DeviceBuilder.html#instance-method-initFromFlattened",
-    "src/provision/entities/DeviceBuilder.js~DeviceBuilder#initFromFlattened",
     "method"
   ],
   [
