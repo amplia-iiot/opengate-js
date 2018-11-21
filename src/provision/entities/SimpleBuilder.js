@@ -119,7 +119,9 @@ export default class SimpleBuilder extends BaseProvision {
             Object.keys(_flattenedEntityData).forEach(function (_id) {
                 if (_id.toLowerCase().startsWith("provision")) {
                     var _content = _flattenedEntityData[_id];
-
+                    if (Array.isArray(_content)) {
+                        _content = _content[0];
+                    }
                     _this.with(_id, _content._value._current.value);
                 }
             });
