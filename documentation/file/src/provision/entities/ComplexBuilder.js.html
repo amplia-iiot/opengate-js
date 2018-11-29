@@ -265,6 +265,42 @@ export default class ComplexBuilder extends SimpleBuilder {
         }
     }
 
+
+    _initFormJson(_jsonEntityData, _path, complex) {
+        let _this = this;
+        if (_jsonEntityData) {
+            var keys = Object.keys(_jsonEntityData);
+            keys.forEach(function (key) {
+                var obj = _jsonEntityData[key];
+                var _current = obj._current;
+                var path = _path ? (_path + &apos;.&apos; + key) : key;
+                if (_current) {
+                    var value = _current.value;
+                    if (complex) {
+                        _this.withComplex(path, complex, value);
+                    } else {
+                        _this.with(path, value);
+                    }
+                } else {
+                    if (Array.isArray(obj)) {
+                        obj.forEach(function (cm) {
+                            _this._initFromJson(cm, path + &apos;[]&apos;, cm.identifier._current.value);
+                        });
+                    } else
+                        _this._initFromJson(obj, path, complex);
+                }
+            });
+        }
+    }
+
+    initFromJson(_jsonEntityData) {
+        let _this = this;
+        var provision = {};
+        if (_jsonEntityData &amp;&amp; (provision = _jsonEntityData.provision)) {
+            _this._initFromJson(provision, &apos;provision&apos;);
+        }
+    }
+
     /**
      * Set a complex value to entity
      * @param {!string} _id - Datastream identifier

@@ -62,6 +62,42 @@ var ComplexBuilder = (function (_SimpleBuilder) {
                 });
             }
         }
+    }, {
+        key: '_initFormJson',
+        value: function _initFormJson(_jsonEntityData, _path, complex) {
+            var _this = this;
+            if (_jsonEntityData) {
+                var keys = Object.keys(_jsonEntityData);
+                keys.forEach(function (key) {
+                    var obj = _jsonEntityData[key];
+                    var _current = obj._current;
+                    var path = _path ? _path + '.' + key : key;
+                    if (_current) {
+                        var value = _current.value;
+                        if (complex) {
+                            _this.withComplex(path, complex, value);
+                        } else {
+                            _this['with'](path, value);
+                        }
+                    } else {
+                        if (Array.isArray(obj)) {
+                            obj.forEach(function (cm) {
+                                _this._initFromJson(cm, path + '[]', cm.identifier._current.value);
+                            });
+                        } else _this._initFromJson(obj, path, complex);
+                    }
+                });
+            }
+        }
+    }, {
+        key: 'initFromJson',
+        value: function initFromJson(_jsonEntityData) {
+            var _this = this;
+            var provision = {};
+            if (_jsonEntityData && (provision = _jsonEntityData.provision)) {
+                _this._initFromJson(provision, 'provision');
+            }
+        }
 
         /**
          * Set a complex value to entity

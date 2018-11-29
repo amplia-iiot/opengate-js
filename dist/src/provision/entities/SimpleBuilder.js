@@ -166,6 +166,37 @@ var SimpleBuilder = (function (_BaseProvision) {
                 });
             }
         }
+    }, {
+        key: '_initFromJson',
+        value: function _initFromJson(_jsonEntityData, _path) {
+            var _this = this;
+            if (_jsonEntityData) {
+                var keys = Object.keys(_jsonEntityData);
+                keys.forEach(function (key) {
+                    var obj = _jsonEntityData[key];
+                    var _current = obj._current;
+                    var path = _path ? _path + '.' + key : key;
+                    if (_current) {
+                        _this['with'](path, _current.value);
+                    } else {
+                        if (Array.isArray(obj)) {
+                            _this._initFromJson(obj[0], path + '[]');
+                        } else {
+                            _this._initFromJson(obj, path);
+                        }
+                    }
+                });
+            }
+        }
+    }, {
+        key: 'initFromJson',
+        value: function initFromJson(_jsonEntityData) {
+            var _this = this;
+            var provision = {};
+            if (_jsonEntityData && (provision = _jsonEntityData.provision)) {
+                _this._initFromJson(provision, 'provision');
+            }
+        }
 
         /**
          * This invoke a request to OpenGate North API and the callback is managed by promises
