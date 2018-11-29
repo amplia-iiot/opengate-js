@@ -128,6 +128,35 @@ export default class SimpleBuilder extends BaseProvision {
         }
     }
 
+    _initFromJson(_jsonEntityData, _path) {
+        let _this = this;
+        if (_jsonEntityData) {
+            var keys = Object.keys(_jsonEntityData);
+            keys.forEach(function (key) {
+                var obj = _jsonEntityData[key];
+                var _current = obj._current;
+                var path = _path ? (_path + '.' + key) : key;
+                if (_current) {
+                    _this.with(path, _current.value);
+                } else {
+                    if (Array.isArray(obj)) {
+                        _this._initFromJson(obj[0], path + '[]');
+                    } else {
+                        _this._initFromJson(obj, path);
+                    }
+                }
+            });
+        }
+    }
+
+    initFromJson(_jsonEntityData) {
+        let _this = this;
+        var provision = {};
+        if (_jsonEntityData && (provision = _jsonEntityData.provision)) {
+            _this._initFromJson(provision, 'provision');
+        }
+    }
+
     /**
      * This invoke a request to OpenGate North API and the callback is managed by promises
      * This function deletes a entity of provision
