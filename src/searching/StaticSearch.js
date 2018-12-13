@@ -58,7 +58,7 @@ export default class StaticSearch extends Search {
         switch (_this._contentType) {
             case 'operationalStatus':
                 for (var contentTmp in collection) {
-                    collection[contentTmp].forEach(function(finalValue) {
+                    collection[contentTmp].forEach(function (finalValue) {
                         if (!_this._customFilters.id || (_this._customFilters.id && _this._customFilters.id === finalValue)) {
                             finalContent.push({
                                 'entityType': contentTmp,
@@ -69,7 +69,7 @@ export default class StaticSearch extends Search {
                 }
                 break;
             case 'administrativeState':
-                var createAndAddFileObj = function(obj) {
+                var createAndAddFileObj = function (obj) {
                     var finalObj = obj;
                     finalObj[ENTITY_TYPE] = entityTypeTmp;
                     finalContent.push(finalObj);
@@ -557,32 +557,15 @@ export default class StaticSearch extends Search {
                         'optional': ['administrativeState']
                     }
                 }
-
-                /*'WIFI': {
-                    'COMMUNICATIONS_MODULE': {
-                        'mandatory': ['generatedEntityKey'],
-                        'optional': ['HARDWARE', 'SOFTWARE']
-                    },
-                    'SUBSCRIPTION': {
-                        'mandatory': ['generatedEntityKey'],
-                        'optional': ['administrativeState', 'ADDRESS']
-                    }
-                },*/
-
-                /*'BLUETOOTH': {
-                    'COMMUNICATIONS_MODULE': {
-                        'mandatory': ['generatedEntityKey'],
-                        'optional': ['administrativeState', 'HARDWARE', 'SOFTWARE']
-                    }
-                },*/
             },
             'mobilePhoneProvider': [
-                'Telefónica Móviles España, SAU',
-                'Vodafone España, SAU',
-                'France Telecom España, SA',
+                'MOVISTAR',
+                'VODAFONE',
+                'ORANGE',
                 'Xfera Móviles, SA',
                 'Euskaltel, SA',
-                'BT España Compañia de Servicios Globales de Telecable de Asturias, SAU',
+                'BT España Compañia de Servicios Globales de',
+                'Telecable de Asturias, SAU',
                 'R Cable y Telecomunicaciones Galicia, SA',
                 'Cableuropa, SAU',
                 'E-Plus Móviles, SL',
@@ -594,6 +577,7 @@ export default class StaticSearch extends Search {
                 'Lycamobile, SL',
                 'Lleida Networks Serveis Telemátics, SL',
                 'Vivo, SA',
+                'Jasper Operator',
                 'Sigfox Operator'
             ],
             'ruleConfigurationSeverity': [
@@ -2532,6 +2516,6 @@ export default class StaticSearch extends Search {
                 'Zulu'
             ]
 
-        }[contentType];
+        } [contentType];
     }
 }
