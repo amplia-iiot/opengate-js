@@ -282,7 +282,7 @@ export default class StaticSearch extends Search {
         switch (_this._contentType) {
             case &apos;operationalStatus&apos;:
                 for (var contentTmp in collection) {
-                    collection[contentTmp].forEach(function(finalValue) {
+                    collection[contentTmp].forEach(function (finalValue) {
                         if (!_this._customFilters.id || (_this._customFilters.id &amp;&amp; _this._customFilters.id === finalValue)) {
                             finalContent.push({
                                 &apos;entityType&apos;: contentTmp,
@@ -293,7 +293,7 @@ export default class StaticSearch extends Search {
                 }
                 break;
             case &apos;administrativeState&apos;:
-                var createAndAddFileObj = function(obj) {
+                var createAndAddFileObj = function (obj) {
                     var finalObj = obj;
                     finalObj[ENTITY_TYPE] = entityTypeTmp;
                     finalContent.push(finalObj);
@@ -781,32 +781,15 @@ export default class StaticSearch extends Search {
                         &apos;optional&apos;: [&apos;administrativeState&apos;]
                     }
                 }
-
-                /*&apos;WIFI&apos;: {
-                    &apos;COMMUNICATIONS_MODULE&apos;: {
-                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
-                        &apos;optional&apos;: [&apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
-                    },
-                    &apos;SUBSCRIPTION&apos;: {
-                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
-                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;ADDRESS&apos;]
-                    }
-                },*/
-
-                /*&apos;BLUETOOTH&apos;: {
-                    &apos;COMMUNICATIONS_MODULE&apos;: {
-                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
-                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
-                    }
-                },*/
             },
             &apos;mobilePhoneProvider&apos;: [
-                &apos;Telef&#xF3;nica M&#xF3;viles Espa&#xF1;a, SAU&apos;,
-                &apos;Vodafone Espa&#xF1;a, SAU&apos;,
-                &apos;France Telecom Espa&#xF1;a, SA&apos;,
+                &apos;MOVISTAR&apos;,
+                &apos;VODAFONE&apos;,
+                &apos;ORANGE&apos;,
                 &apos;Xfera M&#xF3;viles, SA&apos;,
                 &apos;Euskaltel, SA&apos;,
-                &apos;BT Espa&#xF1;a Compa&#xF1;ia de Servicios Globales de Telecable de Asturias, SAU&apos;,
+                &apos;BT Espa&#xF1;a Compa&#xF1;ia de Servicios Globales de&apos;,
+                &apos;Telecable de Asturias, SAU&apos;,
                 &apos;R Cable y Telecomunicaciones Galicia, SA&apos;,
                 &apos;Cableuropa, SAU&apos;,
                 &apos;E-Plus M&#xF3;viles, SL&apos;,
@@ -818,6 +801,7 @@ export default class StaticSearch extends Search {
                 &apos;Lycamobile, SL&apos;,
                 &apos;Lleida Networks Serveis Telem&#xE1;tics, SL&apos;,
                 &apos;Vivo, SA&apos;,
+                &apos;Jasper Operator&apos;,
                 &apos;Sigfox Operator&apos;
             ],
             &apos;ruleConfigurationSeverity&apos;: [
@@ -2756,7 +2740,7 @@ export default class StaticSearch extends Search {
                 &apos;Zulu&apos;
             ]
 
-        }[contentType];
+        } [contentType];
     }
 }</code></pre>
 
