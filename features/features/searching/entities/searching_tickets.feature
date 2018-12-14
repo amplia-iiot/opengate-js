@@ -6,6 +6,8 @@
 @csv
 @OUW-1750
 @OUW-1807
+@urlParameters
+@disableOrder
 Feature: Searching tickets
   As a user of JsApi
   I want to search into tickets collection
@@ -82,6 +84,13 @@ Feature: Searching tickets
   Scenario: Execute searching with a flattened response
     And an ogapi "ticket search" util
     When I build it with flattened response
+    And I execute it
+    Then response code should be: 200
+    Then does not throws an error
+
+  Scenario: Execute searching with a flattened response and disable default order
+    And an ogapi "ticket search" util
+    When I build it with flattened and disable order response
     And I execute it
     Then response code should be: 200
     Then does not throws an error

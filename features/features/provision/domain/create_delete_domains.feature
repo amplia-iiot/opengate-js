@@ -3,10 +3,12 @@
 @crd_domain
 @create_provision
 @domain
+@urlParameters
+
 Feature: Create a domain
-As a user of JsApi
-I want to create a domain
-So I can create a domain
+  As a user of JsApi
+  I want to create a domain
+  So I can create a domain
 
   Background:
     Given an apikey user by "require-real-apikey"

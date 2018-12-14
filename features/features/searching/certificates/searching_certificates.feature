@@ -2,10 +2,12 @@
 @searching_certificates
 @searching
 @fail
+@urlParameters
+
 Feature: Searching certificates
-As a user of JsApi
-I want to search into certificates collection
-So I can add filter, sorting, limit to search any datapoint
+  As a user of JsApi
+  I want to search into certificates collection
+  So I can add filter, sorting, limit to search any datapoint
 
   Background:
     Given an apikey user by "require-real-apikey"

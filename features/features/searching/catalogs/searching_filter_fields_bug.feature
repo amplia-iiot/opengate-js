@@ -2,10 +2,12 @@
 @searching_filter_fields
 @searching
 @catalogs
+@urlParameters
+
 Feature: Searching for all filter fields
-As a user of JsApi
-I want to search for all filter fields
-So I can add filter with all filter fields to search any entity
+  As a user of JsApi
+  I want to search for all filter fields
+  So I can add filter with all filter fields to search any entity
 
   Scenario: Execute all fields on devices searching
     Given an apikey user by "require-real-apikey"
@@ -35,7 +37,7 @@ So I can add filter with all filter fields to search any entity
     When I build it
     And I execute it
     Then does not throws an error
-   # Then response code should be: 204
+  # Then response code should be: 204
 
   @bug @ODMQA-1151 @execution_search
   Scenario: Execute all fields on executions searching
@@ -50,14 +52,14 @@ So I can add filter with all filter fields to search any entity
     Then does not throws an error
 
   @bug @ODMQA-1150
- Scenario: Execute all fields on operations searching
-   Given an apikey user by "require-real-apikey"
-   And an ogapi "operations search" util
-   When I try to search with all allow fields
-   When I build it
-   And I execute it
-   Then throws an error equal to "There is a parameter with incorrect value in the filter"
-   And response code should be: 400
+  Scenario: Execute all fields on operations searching
+    Given an apikey user by "require-real-apikey"
+    And an ogapi "operations search" util
+    When I try to search with all allow fields
+    When I build it
+    And I execute it
+    Then throws an error equal to "There is a parameter with incorrect value in the filter"
+    And response code should be: 400
 
   Scenario: Execute all fields on bundles searching
     Given an apikey user by "require-real-apikey"

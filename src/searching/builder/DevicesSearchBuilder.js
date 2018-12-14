@@ -57,7 +57,7 @@ export default class DevicesSearchBuilder extends PreFilteredSearchBuilder {
      * The search request will have this group by 
      * @example
      * @param {!(object)} group 
-     * @return {SearchBuilder} 
+     * @return {DevicesSearchBuilder} 
      */
     group(group) {
         this._builderParams.group = (group || {});

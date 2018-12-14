@@ -4,10 +4,12 @@
 @find_provision
 @domain
 @find_domain
+@urlParameters
+
 Feature: Find an domain
-As a user of JsApi
-I want to find an domain
-So I can check if a domain exists and get their information
+  As a user of JsApi
+  I want to find an domain
+  So I can check if a domain exists and get their information
 
   Background:
     Given an apikey user by "require-real-apikey"

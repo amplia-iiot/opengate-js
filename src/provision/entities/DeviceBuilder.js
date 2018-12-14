@@ -11,9 +11,7 @@ import HttpStatus from 'http-status-codes';
 import q from 'q';
 import jp from 'jsonpath';
 
-const ID = 'provision.device.identifier',
-    PUT_METHOD = 'PUT',
-    POST_METHOD = 'POST';
+const ID = 'provision.device.identifier';
 
 class BoxBuilder {
     constructor(ogapi, obj, url, key) {
@@ -118,7 +116,9 @@ class BoxBuilder {
                 type: 'success',
                 percentage: 25
             });
-            return _this._ogapi.Napi.post(_this._url, postObj)
+            return _this._ogapi.Napi.post(_this._url, postObj, null, null, {
+                    flattened: true
+                })
                 .then((res) => {
                     defer.notify({
                         entity: _this._key._value._current.value,
@@ -349,7 +349,9 @@ class WrapperBuilder {
         return defer.promise;
 
         function create(defered, defer, percentage) {
-            _this._ogapi.Napi.post(_this._url, _this._obj)
+            _this._ogapi.Napi.post(_this._url, _this._obj, null, null, {
+                    flattened: true
+                })
                 .then((res) => {
                     _this._created = true;
                     defered.notify({

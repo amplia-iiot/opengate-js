@@ -18,6 +18,18 @@ export default class ChannelsSearchBuilder extends SearchWithSummaryBuilder {
         this._summary = false;
     }
 
+
+    /**
+     * The response will return a response without sorted
+     * @example
+     *	ogapi.channelsSearchBuilder().disableDefaultSorted() 
+     * @return {ChannelsSearchBuilder} 
+     */
+    disableDefaultSorted() {
+        this._urlParams.defaultSorted = false;
+        return this;
+    }
+
     /**
      * The response will only have a summary information 
      * @example

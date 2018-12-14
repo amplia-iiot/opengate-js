@@ -3,10 +3,12 @@
 @update_provision
 @users
 @update_user
+@urlParameters
+
 Feature: Delete and Create an user
-As a user of JsApi
-I want to create an user
-So, I can create a new user with the parametres that I have been defined
+  As a user of JsApi
+  I want to create an user
+  So, I can create a new user with the parametres that I have been defined
 
   Background:
     Given an apikey user by "require-real-apikey"

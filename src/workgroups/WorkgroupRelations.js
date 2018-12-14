@@ -1,6 +1,5 @@
 'use strict';
 
-import q from 'q';
 import BaseProvision from '../provision/BaseProvision';
 import Workgroups from './Workgroups';
 import Channels from '../channels/Channels';
@@ -74,19 +73,28 @@ export default class WorkgroupRelations extends BaseProvision {
     create() {
         var relations = this._composeElement();
 
-        var petitionUrl = this._resource + '?action=CREATE';
-
+        var petitionUrl = this._resource;
+        this._setUrlParameters({
+            action: 'CREATE'
+        });
         return this._doNorthPost(petitionUrl, relations);
     }
 
     delete() {
-        var petitionUrl = this._buildURL() + '?action=DELETE';
+        this._setUrlParameters({
+            action: 'DELETE'
+        });
+        var petitionUrl = this._buildURL();
 
         if (this._channels) {
             var relations = this._composeElement();
             return this._doNorthPost(petitionUrl, relations);
         } else {
-            return this._doNorthPost(petitionUrl, { "workgroupRelation": { "channels": [] } });
+            return this._doNorthPost(petitionUrl, {
+                "workgroupRelation": {
+                    "channels": []
+                }
+            });
         }
     }
 

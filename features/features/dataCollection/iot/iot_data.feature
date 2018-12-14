@@ -2,6 +2,8 @@
 @iot_data
 @download_
 @csv
+@urlParameters
+
 Feature: Recollet iot data
     As a user of ogapi
     I want to create an entity and send iot data

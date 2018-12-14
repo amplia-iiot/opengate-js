@@ -6,6 +6,8 @@
 @bulk_entities_json
 @bulk
 @bulk_entities
+@urlParameters
+
 Feature: Delete and Create a device
   As a device of JsApi
   I want to create a device using json file
@@ -17,7 +19,7 @@ Feature: Delete and Create a device
   Scenario: Creating an organization to use in create device
     Given an ogapi "organizations builder" util
     Then I want to create an "organization"
-    And the "name" "organization_bulk"
+    And the "name" "organization_bulk_10"
     And the "description" "device organization"
     And the "country code" "ES"
     And the "lang code" "es"
@@ -29,25 +31,25 @@ Feature: Delete and Create a device
     And response code should be: 201
 
   Scenario: I want to create a device from json file
-    Given an ogapi "json bulk builder" util with "organization_bulk" and "entities"
+    Given an ogapi "json bulk builder" util with "organization_bulk_10" and "entities"
     And I read the file from "/file_test/bulk_simple_entities.json"
     And I "create" it with bulk
     Then does not throws an error
 
   Scenario: I want to create a device from json file
-    Given an ogapi "json bulk builder" util with "organization_bulk" and "entities"
+    Given an ogapi "json bulk builder" util with "organization_bulk_10" and "entities"
     And I read the file from "/file_test/bulk_simple_entities.json"
     And I "create" it with bulk
     Then does not throws an error
 
   Scenario: I want to update a device from json file
-    Given an ogapi "json bulk builder" util with "organization_bulk" and "entities"
+    Given an ogapi "json bulk builder" util with "organization_bulk_10" and "entities"
     And I read the file from "/file_test/bulk_simple_entities.json"
     And I "update" it with bulk
     Then does not throws an error
 
   Scenario: I want to delete a device from json file
-    Given an ogapi "json bulk builder" util with "organization_bulk" and "entities"
+    Given an ogapi "json bulk builder" util with "organization_bulk_10" and "entities"
     And I read the file from "/file_test/bulk_simple_entities.json"
     And I "delete" it with bulk
     And response code should be: 200
@@ -55,6 +57,6 @@ Feature: Delete and Create a device
   Scenario: Delete the organization
     Given an ogapi "organizations builder" util
     Then I want to create an "organization"
-    And the "name" "organization_bulk"
+    And the "name" "organization_bulk_10"
     Then I delete it
     And response code should be: 200

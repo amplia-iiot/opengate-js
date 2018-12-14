@@ -20,7 +20,7 @@ export default class TicketsSearchBuilder extends SearchBuilder {
     /**
      * The response will only have a summary information 
      * @example
-     *	ogapi.devicesSearchBuilder().summary() 
+     *	ogapi.ticketsSearchBuilder().summary() 
      * @return {TicketsSearchBuilder} 
      */
     summary() {
@@ -61,12 +61,23 @@ export default class TicketsSearchBuilder extends SearchBuilder {
     /**
      * The response will return a flattened response
      * @example
-     *	ogapi.entitiesSearchBuilder().flattened() 
-     * @return {FlattenedSearchBuilder} 
+     *	ogapi.ticketsSearchBuilder().flattened() 
+     * @return {TicketsSearchBuilder} 
      */
     flattened() {
-        this._url = this._url + '?flattened=true';
+        this._urlParams.flattened = true;
 
+        return this;
+    }
+
+    /**
+     * The response will return a response without sorted
+     * @example
+     *	ogapi.ticketsSearchBuilder().disableDefaultSorted() 
+     * @return {TicketsSearchBuilder} 
+     */
+    disableDefaultSorted() {
+        this._urlParams.defaultSorted = false;
         return this;
     }
 }

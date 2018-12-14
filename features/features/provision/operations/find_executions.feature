@@ -3,10 +3,12 @@
 @find_executions
 @executions
 @operations
+@urlParameters
+
 Feature: Find a executions of an operation
-As a user of JsApi
-I want to find a executions of an operation
-So I can check if a operation exists and get their executions
+    As a user of JsApi
+    I want to find a executions of an operation
+    So I can check if a operation exists and get their executions
 
     Background:
         Given an apikey user by "require-real-apikey"
@@ -14,7 +16,7 @@ So I can check if a operation exists and get their executions
     Scenario: Creating an organization to use in create device
         Given an ogapi "organizations builder" util
         Then I want to create an "organization"
-        And the "name" "find_executions_organization"
+        And the "name" "find_find_executions_organization_10"
         And the "description" "find execution organization"
         And the "country code" "ES"
         And the "lang code" "es"
@@ -26,17 +28,17 @@ So I can check if a operation exists and get their executions
         And response code should be: 201
 
     Scenario: I want to create an entity
-        Given the entity of type "devices builder" with "find_executions_organization"
+        Given the entity of type "devices builder" with "find_find_executions_organization_10"
         And I get allowed Datastreams fields
         And I can found "provision.device.identifier" as datastream name
         When I try to define the entity with...
-            | datastream                            | typeFunction | value                        | parent |
-            | provision.administration.channel      | simple       | default_channel              |        |
-            | provision.administration.organization | simple       | find_executions_organization |        |
-            | provision.administration.serviceGroup | simple       | emptyServiceGroup            |        |
-            | provision.device.identifier           | simple       | find_executions_device       |        |
-            | provision.device.operationalStatus    | simple       | NORMAL                       |        |
-            | provision.device.administrativeState  | simple       | ACTIVE                       |        |
+            | datastream                            | typeFunction | value                                | parent |
+            | provision.administration.channel      | simple       | default_channel                      |        |
+            | provision.administration.organization | simple       | find_find_executions_organization_10 |        |
+            | provision.administration.serviceGroup | simple       | emptyServiceGroup                    |        |
+            | provision.device.identifier           | simple       | find_executions_device               |        |
+            | provision.device.operationalStatus    | simple       | NORMAL                               |        |
+            | provision.device.administrativeState  | simple       | ACTIVE                               |        |
 
         Then I create it
         And response code should be: 201
@@ -90,7 +92,7 @@ So I can check if a operation exists and get their executions
         Then I can see into the result an "execution type" as "ADMINISTRATIVE_STATUS_CHANGE"
 
     Scenario: I want to delete the entity
-        Given the entity of type "devices builder" with "find_executions_organization"
+        Given the entity of type "devices builder" with "find_find_executions_organization_10"
         And I get allowed Datastreams fields
         And I can found "provision.device.identifier" as datastream name
         When I try to define the entity with...
@@ -102,6 +104,6 @@ So I can check if a operation exists and get their executions
     Scenario: Deleting an organization
         Given an ogapi "organizations builder" util
         Then I want to delete an "organization"
-        And the "name" "find_executions_organization"
+        And the "name" "find_find_executions_organization_10"
         Then I delete it
         And response code should be: 200

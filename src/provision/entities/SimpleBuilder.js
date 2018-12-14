@@ -6,7 +6,6 @@ import q from 'q';
 
 const ERROR_VALUE_NOT_ALLOWED = 'The value is not allowed. The value should be formatted as follows: ';
 const ERROR_DATASTREAM_NOT_ALLOWED = 'Datastream is not allowed.';
-const ERROR_ORGANIZATION = 'Parameters organization must be defined';
 
 
 /**
@@ -22,10 +21,13 @@ export default class SimpleBuilder extends BaseProvision {
      * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool
      */
     constructor(ogapi, resource, allowedDatastreams, definedSchemas, jsonSchemaValidator) {
-        super(ogapi, "/organizations/" + resource + '?flattened=true');
+        super(ogapi, "/organizations/" + resource);
         if (typeof this._getEntityKey !== "function") {
             throw new Error("Must override method:  _getEntityKey");
         }
+        this._setUrlParameters({
+            flattened: true
+        });
         this._entity = {};
         this._allowedDatastreams = allowedDatastreams;
         this._definedSchemas = definedSchemas;
@@ -33,8 +35,7 @@ export default class SimpleBuilder extends BaseProvision {
     }
 
     _buildURL() {
-        var url = this._resource.split('?');
-        return url[0] + "/" + this.getEntityKey() + '?' + url[1];
+        return this._resource + "/" + this.getEntityKey();
     }
 
     _validate() {
@@ -167,8 +168,10 @@ export default class SimpleBuilder extends BaseProvision {
     deleteAll() {
         let defered = q.defer();
         let promise = defered.promise;
-        let url = this._buildURL().split('?')[0] + "?full=true";
-        this._ogapi.Napi.delete(url)
+        this._setUrlParameters({
+            full: true
+        });
+        this._ogapi.Napi.delete(this._buildURL(), this._timeout, this._getExtraHeaders(), this._getUrlParameters())
             .then((res) => {
                 if (res.statusCode === HttpStatus.OK) {
                     defered.resolve({

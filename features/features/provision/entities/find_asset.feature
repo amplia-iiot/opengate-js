@@ -6,6 +6,8 @@
 @find_asset
 @entities_provision
 @entity_finder
+@urlParameters
+
 Feature: Find a asset
     As a user of JsApi
     I want to find a asset
@@ -18,7 +20,7 @@ Feature: Find a asset
     Scenario: Creating an organization to use in create asset
         Given an ogapi "organizations builder" util
         Then I want to create an "organization"
-        And the "name" "find_asset_organization"
+        And the "name" "ofind_asset_organization_10"
         And the "description" "asset organization"
         And the "country code" "ES"
         And the "lang code" "es"
@@ -30,13 +32,13 @@ Feature: Find a asset
         And response code should be: 201
 
     Scenario: Find a asset that exists
-        Given the entity of type "asset builder" with "find_asset_organization"
+        Given the entity of type "asset builder" with "ofind_asset_organization_10"
         Then I get allowed Datastreams fields
         And I can found "provision.asset.identifier" as datastream name
         When I try to define the entity with...
             | datastream                            | typeFunction | value                                      | parent |
             | provision.administration.channel      | simple       | default_channel                            |        |
-            | provision.administration.organization | simple       | find_asset_organization                    |        |
+            | provision.administration.organization | simple       | ofind_asset_organization_10                |        |
             | provision.administration.serviceGroup | simple       | emptyServiceGroup                          |        |
             | provision.asset.identifier            | simple       | find_asset_asset_cucumber                  |        |
             | provision.asset.name                  | simple       | OGUX asset GATEWAY tester                  |        |
@@ -48,15 +50,15 @@ Feature: Find a asset
         Given an ogapi "entity finder" util
         And I want to read a "asset"
         When I try to find by...
-            | field        | content                   |
-            | organization | find_asset_organization   |
-            | id           | find_asset_asset_cucumber |
+            | field        | content                     |
+            | organization | ofind_asset_organization_10 |
+            | id           | find_asset_asset_cucumber   |
         And response code should be: 200
 
         Then I can see into the result an "asset id" as "find_asset_asset_cucumber"
 
     Scenario: I want to delete the entity
-        Given the entity of type "asset builder" with "find_asset_organization"
+        Given the entity of type "asset builder" with "ofind_asset_organization_10"
         When I try to define the entity with...
             | datastream                 | typeFunction | value                     | parent |
             | provision.asset.identifier | simple       | find_asset_asset_cucumber |        |
@@ -65,5 +67,5 @@ Feature: Find a asset
     Scenario: Deleting an organization to use in create asset
         Given an ogapi "organizations builder" util
         Then I want to delete an "organization"
-        And the "name" "find_asset_organization"
+        And the "name" "ofind_asset_organization_10"
         Then I delete it

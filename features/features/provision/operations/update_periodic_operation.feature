@@ -2,10 +2,12 @@
 @provision
 @operations
 @update_periodic_operation
+@urlParameters
+
 Feature: Update periodic operation
-As a user of JsApi
-I want to update periodic operation
-So I can check if a periodic run update is performed correctly
+    As a user of JsApi
+    I want to update periodic operation
+    So I can check if a periodic run update is performed correctly
 
     Background:
         Given an apikey user by "require-real-apikey"
@@ -13,7 +15,7 @@ So I can check if a periodic run update is performed correctly
     Scenario: Creating an organization to use in create device
         Given an ogapi "organizations builder" util
         Then I want to create an "organization"
-        And the "name" "update_periodic_organization"
+        And the "name" "fupdate_periodic_organization_10"
         And the "description" "actions execution organization"
         And the "country code" "ES"
         And the "lang code" "es"
@@ -25,17 +27,17 @@ So I can check if a periodic run update is performed correctly
         And response code should be: 201
 
     Scenario: I want to create an entity
-        Given the entity of type "devices builder" with "update_periodic_organization"
+        Given the entity of type "devices builder" with "fupdate_periodic_organization_10"
         And I get allowed Datastreams fields
         And I can found "provision.device.identifier" as datastream name
         When I try to define the entity with...
-            | datastream                            | typeFunction | value                        | parent |
-            | provision.administration.channel      | simple       | default_channel              |        |
-            | provision.administration.organization | simple       | update_periodic_organization |        |
-            | provision.administration.serviceGroup | simple       | emptyServiceGroup            |        |
-            | provision.device.identifier           | simple       | update_periodic_device       |        |
-            | provision.device.operationalStatus    | simple       | NORMAL                       |        |
-            | provision.device.administrativeState  | simple       | ACTIVE                       |        |
+            | datastream                            | typeFunction | value                            | parent |
+            | provision.administration.channel      | simple       | default_channel                  |        |
+            | provision.administration.organization | simple       | fupdate_periodic_organization_10 |        |
+            | provision.administration.serviceGroup | simple       | emptyServiceGroup                |        |
+            | provision.device.identifier           | simple       | update_periodic_device           |        |
+            | provision.device.operationalStatus    | simple       | NORMAL                           |        |
+            | provision.device.administrativeState  | simple       | ACTIVE                           |        |
 
         Then I create it
         And response code should be: 201
@@ -354,7 +356,7 @@ So I can check if a periodic run update is performed correctly
 
 
     Scenario: I want to delete the entity
-        Given the entity of type "devices builder" with "update_periodic_organization"
+        Given the entity of type "devices builder" with "fupdate_periodic_organization_10"
         And I get allowed Datastreams fields
         And I can found "provision.device.identifier" as datastream name
         When I try to define the entity with...
@@ -366,6 +368,6 @@ So I can check if a periodic run update is performed correctly
     Scenario: Deleting an organization
         Given an ogapi "organizations builder" util
         Then I want to delete an "organization"
-        And the "name" "update_periodic_organization"
+        And the "name" "fupdate_periodic_organization_10"
         Then I delete it
         And response code should be: 200

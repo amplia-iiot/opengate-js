@@ -3,10 +3,11 @@
 @create_provision
 @create_channel
 @channel
+@urlParameters
 Feature: Delete and Create a channel
-As a user of JsApi
-I want to create a channel
-So, I can create a new user with the parametres that I have been defined
+  As a user of JsApi
+  I want to create a channel
+  So, I can create a new user with the parametres that I have been defined
 
   Background:
     Given an apikey user by "require-real-apikey"
@@ -102,7 +103,7 @@ So, I can create a new user with the parametres that I have been defined
     And the "description" "channel description"
     And the "certificate" "not existing certificate"
     Then I create it
-    And throws an error equal to "Certificate not exists"
+    And throws an error equal to "Certificate not exists."
 
   @ignore
   Scenario: Create channel with a certificate

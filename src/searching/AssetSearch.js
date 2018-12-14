@@ -30,7 +30,7 @@ export default class AssetSearch extends Search {
         var promise = defered.promise;
         //console.log(JSON.stringify(this._filter()));
         this._ogapi.Napi
-            .post(this._resource, this._filter(), this._timeout, this._getExtraHeaders())
+            .post(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), this._getUrlParameters())
             .then((response) => {
                 let resultQuery = response.body;
                 let statusCode = response.statusCode;
@@ -39,7 +39,10 @@ export default class AssetSearch extends Search {
                     resultQuery.assets = resultQuery.entities;
                     delete resultQuery.entities;
                 }
-                defered.resolve({ data: resultQuery, statusCode: statusCode });
+                defered.resolve({
+                    data: resultQuery,
+                    statusCode: statusCode
+                });
             })
             .catch((error) => {
                 defered.reject(error);

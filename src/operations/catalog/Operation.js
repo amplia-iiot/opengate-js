@@ -41,7 +41,11 @@ export default class Operation {
                     console.warn("Error parsing response data when execute post action to " + this._resource);
                 }
                 //console.log("RESPONSE: " + JSON.stringify(response));
-                defered.resolve({ data: data ? data : {}, statusCode: response.statusCode, id: id });
+                defered.resolve({
+                    data: data ? data : {},
+                    statusCode: response.statusCode,
+                    id: id
+                });
             })
             .catch((error) => {
                 //console.log("ERROR: " + JSON.stringify(error));
@@ -49,7 +53,9 @@ export default class Operation {
                     error.data = {};
                 }
                 if (!error.data.errors) {
-                    error.data.errors = [(typeof (error) === "string") ? { message: error } : error];
+                    error.data.errors = [(typeof (error) === "string") ? {
+                        message: error
+                    } : error];
                 }
                 defered.reject(error);
             });
@@ -74,14 +80,20 @@ export default class Operation {
                 } catch (err) {
                     console.warn("Error parsing response data when execute post action to " + this._resource);
                 }
-                defered.resolve({ data: data ? data : {}, statusCode: response.statusCode, location: response.header.location });
+                defered.resolve({
+                    data: data ? data : {},
+                    statusCode: response.statusCode,
+                    location: response.header.location
+                });
             })
             .catch((error) => {
                 if (!error.data) {
                     error.data = {};
                 }
                 if (!error.data.errors) {
-                    error.data.errors = [(typeof (error) === "string") ? { message: error } : error];
+                    error.data.errors = [(typeof (error) === "string") ? {
+                        message: error
+                    } : error];
                 }
                 defered.reject(error);
             });

@@ -16,8 +16,8 @@ export default class EntitySearch extends Search {
      * @param {object} group - this define parameters to group
      * @param {object} select - this define fields to retrieve
      */
-    constructor(ogapi, url, filter, limit, sort, group, select, timeout) {
-        super(ogapi, url, filter, limit, sort, group, select, timeout);
+    constructor(ogapi, url, filter, limit, sort, group, select, timeout, urlParams) {
+        super(ogapi, url, filter, limit, sort, group, select, timeout, urlParams);
     }
 
     /**
@@ -30,19 +30,17 @@ export default class EntitySearch extends Search {
         var defered = q.defer();
         var promise = defered.promise;
         console.log(JSON.stringify(this._filter()));
+        var parameters = this._getUrlParameters();
         this._ogapi.Napi
-            .post(this._resource, this._filter(), this._timeout)
+            .post(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), parameters)
             .then((response) => {
                 let resultQuery = response.body;
                 let statusCode = response.statusCode;
 
                 if (statusCode === 200 && resultQuery.entities && resultQuery.entities.length > 0) {
                     // OUW-944
-                    var ele, flattened = false;
-
-                    if (resultQuery.entities[0]['provision.administration.identifier']) {
-                        flattened = true;
-                    }
+                    var ele = false;
+                    var flattened = (parameters && parameters.flattened) || false;
 
                     for (ele = 0; ele < resultQuery.entities.length; ele++) {
                         if (flattened) {

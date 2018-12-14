@@ -3,6 +3,8 @@
 @searching_select_fields
 @searching
 @catalogs
+@urlParameters
+
 Feature: Searching for all select fields
   As a user of JsApi
   I want to search for all select fields
@@ -11,21 +13,21 @@ Feature: Searching for all select fields
   Scenario: Execute all select fields on devices searching
     Given an apikey user by "require-real-apikey"
     And an ogapi "devices search" util
-    And I want to search a "entity" 
+    And I want to search a "entity"
     When I try to search with all allow select fields
     When I build it
     And I execute it
     Then does not throws an error
-   #Then response code should be: 204
+  #Then response code should be: 204
 
   Scenario: Execute all select fields on devices searching with utils
     Given an apikey user by "require-real-apikey"
     And an ogapi "devices search" util
-    And I want to search a "entity" 
+    And I want to search a "entity"
     When I try to search with all allow select fields with utils
     When I build it
     And I execute it
     Then does not throws an error
-   # Then response code should be: 204
+# Then response code should be: 204
 
 

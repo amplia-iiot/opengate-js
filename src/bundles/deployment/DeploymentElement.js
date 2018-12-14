@@ -53,7 +53,10 @@ export default class DeploymentElement extends BaseProvision {
      */
     withName(name) {
         if (typeof name !== 'string' || name.length > 50)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'name' });
+            throw new Error({
+                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50",
+                parameter: 'name'
+            });
         this._name = name;
         return this;
     }
@@ -65,7 +68,10 @@ export default class DeploymentElement extends BaseProvision {
      */
     withVersion(version) {
         if (typeof version !== 'string' || version.length > 50)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'version' });
+            throw new Error({
+                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50",
+                parameter: 'version'
+            });
         this._version = version;
         return this;
     }
@@ -77,10 +83,13 @@ export default class DeploymentElement extends BaseProvision {
      */
     withType(type) {
         if (typeof type === "undefined" || typeof type !== 'string') {
-            throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'type' });
+            throw new Error({
+                message: 'OGAPI_STRING_PARAMETER',
+                parameter: 'type'
+            });
         }
         let not_found = '';
-        let found = TYPE_ENUM.find(function(action) {
+        let found = TYPE_ENUM.find(function (action) {
             return action == this;
         }, type);
         if (typeof found === "undefined") {
@@ -88,7 +97,11 @@ export default class DeploymentElement extends BaseProvision {
         }
 
         if (not_found !== '') {
-            throw new Error({ message: "OGAPI_NOT_ALLOWED_PARAMETER", parameter: JSON.stringify(not_found), allowed: JSON.stringify(TYPE_ENUM) });
+            throw new Error({
+                message: "OGAPI_NOT_ALLOWED_PARAMETER",
+                parameter: JSON.stringify(not_found),
+                allowed: JSON.stringify(TYPE_ENUM)
+            });
 
         }
         this._type = type;
@@ -102,7 +115,10 @@ export default class DeploymentElement extends BaseProvision {
      */
     withPath(path) {
         if (typeof path !== 'string')
-            throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'path' });
+            throw new Error({
+                message: 'OGAPI_STRING_PARAMETER',
+                parameter: 'path'
+            });
         this._path = path;
         return this;
     }
@@ -126,11 +142,14 @@ export default class DeploymentElement extends BaseProvision {
      */
     withOperation(operation) {
         if (typeof operation === "undefined" || typeof operation !== 'string') {
-            throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: "operation" });
+            throw new Error({
+                message: "OGAPI_STRING_PARAMETER",
+                parameter: "operation"
+            });
         }
 
         let not_found = '';
-        let found = OPERATION_ENUM.find(function(operation) {
+        let found = OPERATION_ENUM.find(function (operation) {
             return operation == this;
         }, operation);
 
@@ -153,11 +172,14 @@ export default class DeploymentElement extends BaseProvision {
      */
     withOption(option) {
         if (typeof option === "undefined" || typeof option !== 'string') {
-            throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: "option" });
+            throw new Error({
+                message: "OGAPI_STRING_PARAMETER",
+                parameter: "option"
+            });
         }
 
         let not_found = '';
-        let found = OPTION_ENUM.find(function(option) {
+        let found = OPTION_ENUM.find(function (option) {
             return option == this;
         }, option);
         if (typeof found === "undefined") {
@@ -215,10 +237,13 @@ export default class DeploymentElement extends BaseProvision {
             let mode = validator.mode;
 
             if (typeof mode === "undefined" || typeof mode !== 'string') {
-                throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: "type" });
+                throw new Error({
+                    message: "OGAPI_STRING_PARAMETER",
+                    parameter: "type"
+                });
             }
 
-            let foundMode = MODE_VALIDATORS_ENUM.find(function(action) {
+            let foundMode = MODE_VALIDATORS_ENUM.find(function (action) {
                 return action == this;
             }, mode);
 
@@ -248,10 +273,13 @@ export default class DeploymentElement extends BaseProvision {
             let not_found = '';
             let type = validator.type;
             if (typeof type === "undefined" || typeof type !== 'string') {
-                throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: "type" });
+                throw new Error({
+                    message: "OGAPI_STRING_PARAMETER",
+                    parameter: "type"
+                });
             }
 
-            let found = TYPE_VALIDATORS_ENUM.find(function(action) {
+            let found = TYPE_VALIDATORS_ENUM.find(function (action) {
                 return action == this;
             }, type);
 
@@ -378,7 +406,10 @@ export default class DeploymentElement extends BaseProvision {
         if (this._name === undefined || this._version === undefined ||
             this._name === '' || this._version === '')
             throw new Error('Method not allowed - You must to define the name and version');
-        return this._resource + "?fileValidationRequired=" + this.validation;
+        this._setUrlParameters({
+            fileValidationRequired: this.validation
+        });
+        return this._resource;
     }
 
     _composeElement() {
@@ -402,7 +433,7 @@ export default class DeploymentElement extends BaseProvision {
                 oldPath: this._oldPath || undefined
             }
         };
-            //console.log(JSON.stringify(meta));
+        //console.log(JSON.stringify(meta));
         return meta;
     }
 
@@ -437,7 +468,9 @@ export default class DeploymentElement extends BaseProvision {
         let form;
         if (typeof rawFile !== 'string') {
             form = new FormData();
-            let blob = new Blob([JSON.stringify(this._composeElement())], { type: "application/octet-stream" });
+            let blob = new Blob([JSON.stringify(this._composeElement())], {
+                type: "application/octet-stream"
+            });
 
             form.append('meta', blob);
 
@@ -456,18 +489,26 @@ export default class DeploymentElement extends BaseProvision {
         var petitionOpts = {};
 
         if (this._progressEvent != undefined) {
-            petitionOpts = { 'progress': this._progressEvent };
+            petitionOpts = {
+                'progress': this._progressEvent
+            };
         }
 
         var defered = q.defer();
         var promise = defered.promise;
 
-        this._ogapi.Napi.post_multipart(this._composeUrlCreate(), form, petitionOpts, this._timeout)
+        this._ogapi.Napi.post_multipart(this._composeUrlCreate(), form, petitionOpts, this._timeout, this._getExtraHeaders(), this._getUrlParameters())
             .then((res) => {
                 if (res.statusCode === 201) {
-                    defered.resolve({ location: res.header.location, statusCode: res.statusCode });
+                    defered.resolve({
+                        location: res.header.location,
+                        statusCode: res.statusCode
+                    });
                 } else {
-                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
                 }
             })
             .catch((error) => {

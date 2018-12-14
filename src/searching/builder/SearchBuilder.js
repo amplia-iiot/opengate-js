@@ -1,7 +1,6 @@
 'use strict';
 
 import Search from '../Search';
-import SearchBuilderError from '../error/SearchBuilderError';
 
 const LIMIT_START_DEF_VALUE = 1;
 const LIMIT_SIZE_DEF_VALUE = 1000;
@@ -39,6 +38,7 @@ export default class SearchBuilder {
                 return this;
             };
         }
+        this._urlParams = {};
     }
 
     /**
@@ -132,9 +132,15 @@ export default class SearchBuilder {
                     }
                 }
 
-                if (!found) this._builderParams.sort.push({ name: filterField, type: typeSort });
+                if (!found) this._builderParams.sort.push({
+                    name: filterField,
+                    type: typeSort
+                });
             } else {
-                this._builderParams.sort.push({ name: filterField, type: typeSort });
+                this._builderParams.sort.push({
+                    name: filterField,
+                    type: typeSort
+                });
             }
         }
         return this;
@@ -179,7 +185,10 @@ export default class SearchBuilder {
         if (typeof size !== "number") throw new Error('size parameter must be a number');
         if (typeof start !== "number" || start < 1)
             start = LIMIT_START_DEF_VALUE;
-        this._builderParams.limit = { size: size, start: start };
+        this._builderParams.limit = {
+            size: size,
+            start: start
+        };
         return this;
     }
 
@@ -199,7 +208,8 @@ export default class SearchBuilder {
             this._buildSort(),
             this._buildGroup(),
             this._buildSelect(),
-            this._builderParams.timeout);
+            this._builderParams.timeout,
+            this._urlParams);
     }
 
     _buildFilter() {
@@ -237,7 +247,9 @@ export default class SearchBuilder {
                 }
             };
 
-        return { limit: this._builderParams.limit };
+        return {
+            limit: this._builderParams.limit
+        };
     }
 
     _buildSort() {

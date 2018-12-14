@@ -9,6 +9,8 @@
 @csv
 @OUW-1750
 @OUW-1807
+@urlParameters
+
 Feature: Delete and Create a ticket
   As a ticket of JsApi
   I want to create a ticket using csv file
@@ -20,7 +22,7 @@ Feature: Delete and Create a ticket
   Scenario: Creating an organization to use in create ticket
     Given an ogapi "organizations builder" util
     Then I want to create an "organization"
-    And the "name" "organization_bulk"
+    And the "name" "organization_bulk_10"
     And the "description" "ticket organization"
     And the "country code" "ES"
     And the "lang code" "es"
@@ -32,13 +34,13 @@ Feature: Delete and Create a ticket
     And response code should be: 201
 
   Scenario: I want to create an asset
-    Given the entity of type "asset builder" with "organization_bulk"
+    Given the entity of type "asset builder" with "organization_bulk_10"
     And I get allowed Datastreams fields
     And I can found "provision.asset.identifier" as datastream name
     When I try to define the entity with...
       | datastream                            | typeFunction | value                          | parent |
       | provision.administration.channel      | simple       | default_channel                |        |
-      | provision.administration.organization | simple       | organization_bulk              |        |
+      | provision.administration.organization | simple       | organization_bulk_10           |        |
       | provision.administration.serviceGroup | simple       | emptyServiceGroup              |        |
       | provision.asset.identifier            | simple       | reprtr_ticket_bulk_json_simple |        |
     Then I delete it
@@ -46,13 +48,13 @@ Feature: Delete and Create a ticket
     And response code should be: 201
 
   Scenario: I want to create an asset
-    Given the entity of type "asset builder" with "organization_bulk"
+    Given the entity of type "asset builder" with "organization_bulk_10"
     And I get allowed Datastreams fields
     And I can found "provision.asset.identifier" as datastream name
     When I try to define the entity with...
       | datastream                            | typeFunction | value                         | parent |
       | provision.administration.channel      | simple       | default_channel               |        |
-      | provision.administration.organization | simple       | organization_bulk             |        |
+      | provision.administration.organization | simple       | organization_bulk_10          |        |
       | provision.administration.serviceGroup | simple       | emptyServiceGroup             |        |
       | provision.asset.identifier            | simple       | assgn_ticket_bulk_json_simple |        |
     Then I delete it
@@ -60,13 +62,13 @@ Feature: Delete and Create a ticket
     And response code should be: 201
 
   Scenario: Create and delete a device that not exists
-    Given the entity of type "devices builder" with "organization_bulk"
+    Given the entity of type "devices builder" with "organization_bulk_10"
     Then I get allowed Datastreams fields
     And I can found "provision.device.identifier" as datastream name
     When I try to define the entity with...
       | datastream                            | typeFunction | value                        | parent |
       | provision.administration.channel      | simple       | default_channel              |        |
-      | provision.administration.organization | simple       | organization_bulk            |        |
+      | provision.administration.organization | simple       | organization_bulk_10         |        |
       | provision.administration.serviceGroup | simple       | emptyServiceGroup            |        |
       | provision.device.identifier           | simple       | entt_ticket_bulk_json_simple |        |
     Then I delete it
@@ -78,44 +80,44 @@ Feature: Delete and Create a ticket
   #de respuesta entre cada una de las definiciones de los steps
   #y así poder recuperar el id del ticket (autogenerado) de forma sencilla
   Scenario: I want to create update and delete a ticket from json file
-    Given an ogapi "csv bulk builder" util with "organization_bulk" and "tickets"
+    Given an ogapi "csv bulk builder" util with "organization_bulk_10" and "tickets"
     And I read the file from "/file_test/bulk_simple_tickets.csv" for provision tickets
     And I "create" it with bulk
     Then does not throws an error
-    Given an ogapi "csv bulk builder" util with "organization_bulk" and "tickets"
+    Given an ogapi "csv bulk builder" util with "organization_bulk_10" and "tickets"
     And I read the file from "/file_test/bulk_simple_tickets.csv" for provision tickets
     And I "update" it with bulk
     Then does not throws an error
-    Given an ogapi "csv bulk builder" util with "organization_bulk" and "tickets"
+    Given an ogapi "csv bulk builder" util with "organization_bulk_10" and "tickets"
     And I read the file from "/file_test/bulk_simple_tickets.csv" for provision tickets
     And I "delete" it with bulk
     And response code should be: 200
 
   Scenario: I want to delete the entity
-    Given the entity of type "asset builder" with "organization_bulk"
+    Given the entity of type "asset builder" with "organization_bulk_10"
     When I try to define the entity with...
       | datastream                            | typeFunction | value                          | parent |
       | provision.administration.channel      | simple       | default_channel                |        |
-      | provision.administration.organization | simple       | organization_bulk              |        |
+      | provision.administration.organization | simple       | organization_bulk_10           |        |
       | provision.asset.identifier            | simple       | reprtr_ticket_bulk_json_simple |        |
     Then I delete it
     And response code should be: 200
 
   Scenario: I want to delete the entity
-    Given the entity of type "asset builder" with "organization_bulk"
+    Given the entity of type "asset builder" with "organization_bulk_10"
     When I try to define the entity with...
       | datastream                            | typeFunction | value                         | parent |
       | provision.administration.channel      | simple       | default_channel               |        |
-      | provision.administration.organization | simple       | organization_bulk             |        |
+      | provision.administration.organization | simple       | organization_bulk_10          |        |
       | provision.asset.identifier            | simple       | assgn_ticket_bulk_json_simple |        |
     Then I delete it
     And response code should be: 200
   Scenario: I want to delete the entity
-    Given the entity of type "devices builder" with "organization_bulk"
+    Given the entity of type "devices builder" with "organization_bulk_10"
     When I try to define the entity with...
       | datastream                            | typeFunction | value                        | parent |
       | provision.administration.channel      | simple       | default_channel              |        |
-      | provision.administration.organization | simple       | organization_bulk            |        |
+      | provision.administration.organization | simple       | organization_bulk_10         |        |
       | provision.device.identifier           | simple       | entt_ticket_bulk_json_simple |        |
     Then I delete it
     And response code should be: 200
@@ -123,6 +125,6 @@ Feature: Delete and Create a ticket
   Scenario: Delete the organization
     Given an ogapi "organizations builder" util
     Then I want to create an "organization"
-    And the "name" "organization_bulk"
+    And the "name" "organization_bulk_10"
     Then I delete it
     And response code should be: 200

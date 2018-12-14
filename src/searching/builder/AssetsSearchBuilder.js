@@ -58,7 +58,7 @@ export default class AssetsSearchBuilder extends PreFilteredSearchBuilder {
      * The search request will have this group by 
      * @example
      * @param {!(object)} group 
-     * @return {SearchBuilder} 
+     * @return {AssetsSearchBuilder} 
      */
     group(group) {
         this._builderParams.group = (group || {});
@@ -95,7 +95,7 @@ export default class AssetsSearchBuilder extends PreFilteredSearchBuilder {
      *      {"name": "device.temperature.value","fields": [{"field": "value","alias": "identifier"}]}]
      *   }) //Custom select
      * @param {!(SelectBuilder|object)} select
-     * @return {SearchBuilder} 
+     * @return {AssetsSearchBuilder} 
      */
     select(select) {
         this._builderParams.select = (select || undefined);

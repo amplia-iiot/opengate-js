@@ -3,10 +3,12 @@
 @finder
 @find_provision
 @organizations
+@urlParameters
+
 Feature: Find an organization
-As a user of JsApi
-I want to find an organization
-So I can check if a organization exists and get their information
+  As a user of JsApi
+  I want to find an organization
+  So I can check if a organization exists and get their information
 
   Background:
     Given an apikey user by "require-real-apikey"

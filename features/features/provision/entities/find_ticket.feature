@@ -8,6 +8,8 @@
 @OUW-1750
 @OUW-1807
 @entity_finder
+@urlParameters
+
 Feature: Find a ticket
     As a user of JsApi
     I want to find a ticket
@@ -19,7 +21,7 @@ Feature: Find a ticket
     Scenario: Creating an organization to use in create ticket
         Given an ogapi "organizations builder" util
         Then I want to create an "organization"
-        And the "name" "ticket_organization"
+        And the "name" "ticket_organization_10"
         And the "description" "ticket organization"
         And the "country code" "ES"
         And the "lang code" "es"
@@ -31,13 +33,13 @@ Feature: Find a ticket
         And response code should be: 201
 
     Scenario: I want to create an asset
-        Given the entity of type "asset builder" with "ticket_organization"
+        Given the entity of type "asset builder" with "ticket_organization_10"
         And I get allowed Datastreams fields
         And I can found "provision.asset.identifier" as datastream name
         When I try to define the entity with...
             | datastream                            | typeFunction | value                              | parent |
             | provision.administration.channel      | simple       | default_channel                    |        |
-            | provision.administration.organization | simple       | ticket_organization                |        |
+            | provision.administration.organization | simple       | ticket_organization_10             |        |
             | provision.administration.serviceGroup | simple       | emptyServiceGroup                  |        |
             | provision.asset.identifier            | simple       | assigned_6_ticket_bulk_json_simple |        |
         Then I delete it
@@ -46,11 +48,11 @@ Feature: Find a ticket
 
 
     Scenario: Create and find a device that exists
-        Given the entity of type "tickets builder" with "ticket_organization"
+        Given the entity of type "tickets builder" with "ticket_organization_10"
         Then I get allowed Datastreams fields
         When I try to define the ticket with...
             | datastream                            | typeFunction | value                              | parent |
-            | provision.administration.organization | simple       | ticket_organization                |        |
+            | provision.administration.organization | simple       | ticket_organization_10             |        |
             | provision.administration.identifier   | simple       | ticket_cucumber                    |        |
             | provision.ticket.name                 | simple       | ticket_cucumber                    |        |
             | provision.ticket.description          | simple       | TEST                               |        |
@@ -69,34 +71,34 @@ Feature: Find a ticket
         And I want to read a "ticket"
         When I try to find by...
             | field        | content                         |
-            | organization | ticket_organization             |
+            | organization | ticket_organization_10          |
             | id           | from_location_previous_response |
         And response code should be: 200
         Then I can see into the result an "ticket name" as "ticket_cucumber"
 
     Scenario: I want to delete the ticket CREATED
-        And an ogapi "ticket search" util with "ticket_organization"
+        And an ogapi "ticket search" util with "ticket_organization_10"
         When I add a filter and with
-            | operator | key                                   | value               |
-            | eq       | provision.administration.organization | ticket_organization |
-            | eq       | provision.ticket.name                 | ticket_cucumber     |
+            | operator | key                                   | value                  |
+            | eq       | provision.administration.organization | ticket_organization_10 |
+            | eq       | provision.ticket.name                 | ticket_cucumber        |
         When I build it
         And I execute it
         Then response code should be: 200
-        Given the entity of type "tickets builder" with "ticket_organization"
+        Given the entity of type "tickets builder" with "ticket_organization_10"
         When I try to define the ticket with...
-            | datastream                            | typeFunction | value               | parent |
-            | provision.administration.organization | simple       | ticket_organization |        |
+            | datastream                            | typeFunction | value                  | parent |
+            | provision.administration.organization | simple       | ticket_organization_10 |        |
         When I try to define the datastream ticket "provision.ticket.identifier" with "provision.ticket.identifier._current.value" path of the previous response
         And I delete it
         Then response code should be: 200
 
     Scenario: I want to delete the entity
-        Given the entity of type "asset builder" with "ticket_organization"
+        Given the entity of type "asset builder" with "ticket_organization_10"
         When I try to define the entity with...
             | datastream                            | typeFunction | value                              | parent |
             | provision.administration.channel      | simple       | default_channel                    |        |
-            | provision.administration.organization | simple       | ticket_organization                |        |
+            | provision.administration.organization | simple       | ticket_organization_10             |        |
             | provision.asset.identifier            | simple       | assigned_6_ticket_bulk_json_simple |        |
         Then I delete it
         And response code should be: 200
@@ -104,6 +106,6 @@ Feature: Find a ticket
     Scenario: Delete the organization
         Given an ogapi "organizations builder" util
         Then I want to create an "organization"
-        And the "name" "ticket_organization"
+        And the "name" "ticket_organization_10"
         Then I delete it
         And response code should be: 200
