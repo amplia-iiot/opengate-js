@@ -33,7 +33,7 @@ var JsonBulkBuilder = (function (_BulkBuilder) {
   function JsonBulkBuilder(ogapi, organization, resource, timeout) {
     _classCallCheck(this, JsonBulkBuilder);
 
-    _get(Object.getPrototypeOf(JsonBulkBuilder.prototype), 'constructor', this).call(this, ogapi, 'provision/organizations/' + organization + '/bulk/' + resource + '?action=#actionName#', 'application/json', timeout);
+    _get(Object.getPrototypeOf(JsonBulkBuilder.prototype), 'constructor', this).call(this, ogapi, 'provision/organizations/' + organization + '/bulk/' + resource, 'application/json', timeout);
   }
 
   return JsonBulkBuilder;

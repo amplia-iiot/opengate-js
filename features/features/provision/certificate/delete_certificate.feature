@@ -3,9 +3,10 @@
 @create_provision
 @delete_provision
 @certificates
+@fail
 Feature: Delete a certificate
-   As a user of JsApi
-   I want to delete a certificate
+  As a user of JsApi
+  I want to delete a certificate
 
   Background:
     Given an apikey user by "require-real-apikey"
@@ -18,8 +19,8 @@ Feature: Delete a certificate
     And I want to delete a "certificate"
 
   #Scenario: Delete a certificate that exists
-    #And I delete it
-    #Then response code should be: 200
+  #And I delete it
+  #Then response code should be: 200
 
   Scenario: Delete a certificate that does not exist
     And I delete it

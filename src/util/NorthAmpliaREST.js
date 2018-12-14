@@ -340,10 +340,11 @@ export default class NorthAmpliaREST {
      * @param {!string} url - url to execute GET
      * @param {number} timeout - timeout in milliseconds    
      * @param {object} headers - headers of request
+     * @param {object} parameters - parameters of request
      * @return {Promise} 
      */
-    get(url, timeout, headers) {
-        var req = request.get(this._createUrl(url));
+    get(url, timeout, headers, parameters) {
+        var req = request.get(this._createUrl(url, parameters));
         return this._createPromiseRequest(req, null, timeout, headers);
     }
 
@@ -353,10 +354,11 @@ export default class NorthAmpliaREST {
      * @param {object} data - attach data to request POST
      * @param {number} timeout - timeout in milliseconds
      * @param {object} headers - headers of request
+     * @param {object} parameters - parameters of request
      * @return {Promise} 
      */
-    post(url, data, timeout, headers) {
-        var req = request.post(this._createUrl(url))
+    post(url, data, timeout, headers, parameters) {
+        var req = request.post(this._createUrl(url, parameters))
             .send(data);
 
         return this._createPromiseRequest(req, null, timeout, headers);
@@ -370,10 +372,11 @@ export default class NorthAmpliaREST {
      * @param {object} events - events allowed, xhr.process 
      * @param {number} timeout - timeout in milliseconds       
      * @param {object} headers - headers of request
+     * @param {object} parameters - parameters of request
      * @return {Promise} 
      */
-    post_multipart(url, formData, events, timeout, headers) {
-        let req = request.post(this._createUrl(url));
+    post_multipart(url, formData, events, timeout, headers, parameters) {
+        let req = request.post(this._createUrl(url, parameters));
 
         if (formData && (formData.meta || formData.file || formData.json || formData.certificate)) {
             if (formData.meta) {
@@ -411,10 +414,11 @@ export default class NorthAmpliaREST {
      * @param {object} data - attach data to request PUT
      * @param {number} timeout - timeout in milliseconds       
      * @param {object} headers - headers of request
+     * @param {object} parameters - parameters of request
      * @return {Promise} 
      */
-    put(url, data, timeout, headers) {
-        var req = request.put(this._createUrl(url))
+    put(url, data, timeout, headers, parameters) {
+        var req = request.put(this._createUrl(url, parameters))
             .send(data);
 
         if (headers) {
@@ -433,18 +437,38 @@ export default class NorthAmpliaREST {
      * @param {!string} url - url to execute DELETE
      * @param {number} timeout - timeout in milliseconds    
      * @param {object} headers - headers of request
+     * @param {object} parameters - parameters of request
      * @return {Promise} 
      */
-    delete(url, timeout, headers) {
-        var req = request.delete(this._createUrl(url));
+    delete(url, timeout, headers, parameters) {
+        var req = request.delete(this._createUrl(url, parameters));
         return this._createPromiseRequest(req, null, timeout, headers);
     }
 
-    _createUrl(relativeUrl) {
+    _createUrl(relativeUrl, parameters) {
         var encode = [];
+
+        if (parameters) {
+            var keys = Object.keys(parameters);
+            for (var i = 0; i < keys.length; i++) {
+                var key = keys[i];
+                var queryParameter = key + '=' + parameters[key];
+                if (i === 0) {
+                    relativeUrl = relativeUrl + '?' + queryParameter;
+                } else {
+                    relativeUrl = relativeUrl + '&' + queryParameter;
+                }
+
+            }
+            console.log(JSON.stringify(parameters));
+        }
+
+        console.log(relativeUrl);
+
         var relativeUrlSplit = relativeUrl.split("/");
         var length = relativeUrlSplit.length;
-        relativeUrlSplit.forEach(function(item, index) {
+
+        relativeUrlSplit.forEach(function (item, index) {
             if (index === (length - 1) && item.indexOf("?") > 0) {
                 var parameters = item.substring(item.indexOf("?"), item.length);
                 var _item = item.substring(0, item.indexOf("?"));
@@ -453,7 +477,9 @@ export default class NorthAmpliaREST {
                 encode.push(urlencode(item));
             }
         });
-        return this._url(this._options) + "/" + encode.join("/");
+        var returnUrl = this._url(this._options) + "/" + encode.join("/");
+        console.log(returnUrl);
+        return returnUrl;
     }
 
     _createPromiseRequest(req, events, timeout, headers) {
@@ -474,7 +500,7 @@ export default class NorthAmpliaREST {
             var keys = Object.keys(headers);
             for (var i = 0; i < keys.length; i++) {
                 var key = keys[i];
-                _req = req.set(key, headers[key]);
+                _req = _req.set(key, headers[key]);
             }
         }
 
@@ -483,7 +509,7 @@ export default class NorthAmpliaREST {
                 _req = _req.on(event, events[event]);
             }
         }
-        _req = _req.end(function(err, res) {
+        _req = _req.end(function (err, res) {
             if (err !== null) {
                 let data;
                 let status;

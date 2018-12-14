@@ -44,13 +44,26 @@ var ChannelsSearchBuilder = (function (_SearchWithSummaryBuilder) {
     }
 
     /**
-     * The response will only have a summary information 
+     * The response will return a response without sorted
      * @example
-     *	ogapi.channelsSearchBuilder().summary() 
-     * @return {SearchWithSummaryBuilder} 
+     *	ogapi.channelsSearchBuilder().disableDefaultSorted() 
+     * @return {ChannelsSearchBuilder} 
      */
 
     _createClass(ChannelsSearchBuilder, [{
+        key: 'disableDefaultSorted',
+        value: function disableDefaultSorted() {
+            this._urlParams.defaultSorted = false;
+            return this;
+        }
+
+        /**
+         * The response will only have a summary information 
+         * @example
+         *	ogapi.channelsSearchBuilder().summary() 
+         * @return {SearchWithSummaryBuilder} 
+         */
+    }, {
         key: 'summary',
         value: function summary() {
             this._summary = true;

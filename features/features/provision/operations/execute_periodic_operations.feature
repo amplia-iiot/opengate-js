@@ -2,10 +2,12 @@
 @provision
 @operations
 @periodic_operation
+@urlParameters
+
 Feature: Execute ADMINISTRATIVE_STATUS_CHANGE periodic operation
-As a user of JsApi
-I want to execute an ADMINISTRATIVE_STATUS_CHANGE periodic operation
-So that I can change the administrative status to some devices/subscriptions/subscribers/communications module
+    As a user of JsApi
+    I want to execute an ADMINISTRATIVE_STATUS_CHANGE periodic operation
+    So that I can change the administrative status to some devices/subscriptions/subscribers/communications module
 
     Background:
         Given an apikey user by "require-real-apikey"
@@ -14,7 +16,7 @@ So that I can change the administrative status to some devices/subscriptions/sub
     Scenario: Creating an organization to use in create device
         Given an ogapi "organizations builder" util
         Then I want to create an "organization"
-        And the "name" "execute_periodic_organization"
+        And the "name" "execute_periodic_organization_10"
         And the "description" "actions execution organization"
         And the "country code" "ES"
         And the "lang code" "es"
@@ -26,17 +28,17 @@ So that I can change the administrative status to some devices/subscriptions/sub
         And response code should be: 201
 
     Scenario: I want to create an entity
-        Given the entity of type "devices builder" with "execute_periodic_organization"
+        Given the entity of type "devices builder" with "execute_periodic_organization_10"
         And I get allowed Datastreams fields
         And I can found "provision.device.identifier" as datastream name
         When I try to define the entity with...
-            | datastream                            | typeFunction | value                         | parent |
-            | provision.administration.channel      | simple       | default_channel               |        |
-            | provision.administration.organization | simple       | execute_periodic_organization |        |
-            | provision.administration.serviceGroup | simple       | emptyServiceGroup             |        |
-            | provision.device.identifier           | simple       | execute_periodic_device       |        |
-            | provision.device.operationalStatus    | simple       | NORMAL                        |        |
-            | provision.device.administrativeState  | simple       | ACTIVE                        |        |
+            | datastream                            | typeFunction | value                            | parent |
+            | provision.administration.channel      | simple       | default_channel                  |        |
+            | provision.administration.organization | simple       | execute_periodic_organization_10 |        |
+            | provision.administration.serviceGroup | simple       | emptyServiceGroup                |        |
+            | provision.device.identifier           | simple       | execute_periodic_device          |        |
+            | provision.device.operationalStatus    | simple       | NORMAL                           |        |
+            | provision.device.administrativeState  | simple       | ACTIVE                           |        |
 
         Then I create it
         And response code should be: 201
@@ -330,6 +332,6 @@ So that I can change the administrative status to some devices/subscriptions/sub
     Scenario: Deleting an organization
         Given an ogapi "organizations builder" util
         Then I want to delete an "organization"
-        And the "name" "execute_periodic_organization"
+        And the "name" "execute_periodic_organization_10"
         Then I delete it
         And response code should be: 200

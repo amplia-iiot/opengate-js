@@ -41,6 +41,7 @@ var BasicTypesSearchBuilder = (function () {
         this._headers = undefined;
         this._og_basic_types = {};
         this.publicParameters = false;
+        this._urlParameters = undefined;
     }
 
     _createClass(BasicTypesSearchBuilder, [{
@@ -61,6 +62,24 @@ var BasicTypesSearchBuilder = (function () {
                 this._headers = headers;
             }
         }
+    }, {
+        key: '_getUrlParameters',
+        value: function _getUrlParameters() {
+            return this._urlParameters;
+        }
+    }, {
+        key: '_setUrlParameters',
+        value: function _setUrlParameters(parameters) {
+            if (this.parameters) {
+                var keys = Object.keys(parameters);
+                for (var i = 0; i < keys.length; i++) {
+                    var key = keys[i];
+                    this._urlParameters[key] = parameters[key];
+                }
+            } else {
+                this._urlParameters = parameters;
+            }
+        }
 
         /**
          * This invoke a request to OpenGate North API and the callback is managed by promises
@@ -78,7 +97,7 @@ var BasicTypesSearchBuilder = (function () {
             this._setExtraHeaders({
                 'Accept': 'application/json'
             });
-            this._ogapi.Napi.get(this._resource, this._timeout, this._getExtraHeaders()).then(function (response) {
+            this._ogapi.Napi.get(this._resource, this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (response) {
                 var resultQuery = response.body;
                 var statusCode = response.statusCode;
                 _this._og_basic_types = resultQuery;

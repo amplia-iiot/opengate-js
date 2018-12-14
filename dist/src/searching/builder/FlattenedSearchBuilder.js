@@ -46,15 +46,14 @@ var FlattenedSearchBuilder = (function (_SearchBuilder) {
     /**
      * The response will return a flattened response
      * @example
-     *	ogapi.subscribersSearchBuilder().flattened() 
+     *	ogapi.entitiesSearchBuilder().flattened() 
      * @return {FlattenedSearchBuilder} 
      */
 
     _createClass(FlattenedSearchBuilder, [{
         key: 'flattened',
         value: function flattened() {
-            this._url = this._url + '?flattened=true';
-
+            this._urlParams.flattened = true;
             return this;
         }
     }, {
@@ -74,7 +73,7 @@ var FlattenedSearchBuilder = (function (_SearchBuilder) {
     }, {
         key: 'build',
         value: function build() {
-            return new _DeviceSearch2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildLimit(), this._buildSort(), this._buildGroup(), this._buildSelect(), this._builderParams.timeout);
+            return new _DeviceSearch2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildLimit(), this._buildSort(), this._buildGroup(), this._buildSelect(), this._builderParams.timeout, this._urlParams);
         }
     }]);
 

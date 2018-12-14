@@ -14,7 +14,7 @@ export default class JsonBulkBuilder extends BulkBuilder {
      * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
      */
     constructor(ogapi, organization, resource, timeout) {
-        super(ogapi, 'provision/organizations/' + organization + '/bulk/' + resource + '?action=#actionName#', 'application/json', timeout);
+        super(ogapi, 'provision/organizations/' + organization + '/bulk/' + resource, 'application/json', timeout);
     }
 
 }

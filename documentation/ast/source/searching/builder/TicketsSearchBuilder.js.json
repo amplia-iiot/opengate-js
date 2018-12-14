@@ -706,7 +706,7 @@
               "trailingComments": [
                 {
                   "type": "Block",
-                  "value": "*\r\n     * The response will only have a summary information \r\n     * @example\r\n     *\togapi.devicesSearchBuilder().summary() \r\n     * @return {TicketsSearchBuilder} \r\n     ",
+                  "value": "*\r\n     * The response will only have a summary information \r\n     * @example\r\n     *\togapi.ticketsSearchBuilder().summary() \r\n     * @return {TicketsSearchBuilder} \r\n     ",
                   "range": [
                     550,
                     726
@@ -1016,7 +1016,7 @@
               "leadingComments": [
                 {
                   "type": "Block",
-                  "value": "*\r\n     * The response will only have a summary information \r\n     * @example\r\n     *\togapi.devicesSearchBuilder().summary() \r\n     * @return {TicketsSearchBuilder} \r\n     ",
+                  "value": "*\r\n     * The response will only have a summary information \r\n     * @example\r\n     *\togapi.ticketsSearchBuilder().summary() \r\n     * @return {TicketsSearchBuilder} \r\n     ",
                   "range": [
                     550,
                     726
@@ -1698,10 +1698,10 @@
               "trailingComments": [
                 {
                   "type": "Block",
-                  "value": "*\r\n     * The response will return a flattened response\r\n     * @example\r\n     *\togapi.entitiesSearchBuilder().flattened() \r\n     * @return {FlattenedSearchBuilder} \r\n     ",
+                  "value": "*\r\n     * The response will return a flattened response\r\n     * @example\r\n     *\togapi.ticketsSearchBuilder().flattened() \r\n     * @return {TicketsSearchBuilder} \r\n     ",
                   "range": [
                     1918,
-                    2094
+                    2091
                   ],
                   "loc": {
                     "start": {
@@ -1723,8 +1723,8 @@
                 "type": "Identifier",
                 "name": "flattened",
                 "range": [
-                  2100,
-                  2109
+                  2097,
+                  2106
                 ],
                 "loc": {
                   "start": {
@@ -1753,10 +1753,46 @@
                           "type": "MemberExpression",
                           "computed": false,
                           "object": {
-                            "type": "ThisExpression",
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "ThisExpression",
+                              "range": [
+                                2120,
+                                2124
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 68,
+                                  "column": 8
+                                },
+                                "end": {
+                                  "line": 68,
+                                  "column": 12
+                                }
+                              }
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "_urlParams",
+                              "range": [
+                                2125,
+                                2135
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 68,
+                                  "column": 13
+                                },
+                                "end": {
+                                  "line": 68,
+                                  "column": 23
+                                }
+                              }
+                            },
                             "range": [
-                              2123,
-                              2127
+                              2120,
+                              2135
                             ],
                             "loc": {
                               "start": {
@@ -1765,31 +1801,31 @@
                               },
                               "end": {
                                 "line": 68,
-                                "column": 12
+                                "column": 23
                               }
                             }
                           },
                           "property": {
                             "type": "Identifier",
-                            "name": "_url",
+                            "name": "flattened",
                             "range": [
-                              2128,
-                              2132
+                              2136,
+                              2145
                             ],
                             "loc": {
                               "start": {
                                 "line": 68,
-                                "column": 13
+                                "column": 24
                               },
                               "end": {
                                 "line": 68,
-                                "column": 17
+                                "column": 33
                               }
                             }
                           },
                           "range": [
-                            2123,
-                            2132
+                            2120,
+                            2145
                           ],
                           "loc": {
                             "start": {
@@ -1798,103 +1834,32 @@
                             },
                             "end": {
                               "line": 68,
-                              "column": 17
+                              "column": 33
                             }
                           }
                         },
                         "right": {
-                          "type": "BinaryExpression",
-                          "operator": "+",
-                          "left": {
-                            "type": "MemberExpression",
-                            "computed": false,
-                            "object": {
-                              "type": "ThisExpression",
-                              "range": [
-                                2135,
-                                2139
-                              ],
-                              "loc": {
-                                "start": {
-                                  "line": 68,
-                                  "column": 20
-                                },
-                                "end": {
-                                  "line": 68,
-                                  "column": 24
-                                }
-                              }
-                            },
-                            "property": {
-                              "type": "Identifier",
-                              "name": "_url",
-                              "range": [
-                                2140,
-                                2144
-                              ],
-                              "loc": {
-                                "start": {
-                                  "line": 68,
-                                  "column": 25
-                                },
-                                "end": {
-                                  "line": 68,
-                                  "column": 29
-                                }
-                              }
-                            },
-                            "range": [
-                              2135,
-                              2144
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 68,
-                                "column": 20
-                              },
-                              "end": {
-                                "line": 68,
-                                "column": 29
-                              }
-                            }
-                          },
-                          "right": {
-                            "type": "Literal",
-                            "value": "?flattened=true",
-                            "raw": "'?flattened=true'",
-                            "range": [
-                              2147,
-                              2164
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 68,
-                                "column": 32
-                              },
-                              "end": {
-                                "line": 68,
-                                "column": 49
-                              }
-                            }
-                          },
+                          "type": "Literal",
+                          "value": true,
+                          "raw": "true",
                           "range": [
-                            2135,
-                            2164
+                            2148,
+                            2152
                           ],
                           "loc": {
                             "start": {
                               "line": 68,
-                              "column": 20
+                              "column": 36
                             },
                             "end": {
                               "line": 68,
-                              "column": 49
+                              "column": 40
                             }
                           }
                         },
                         "range": [
-                          2123,
-                          2164
+                          2120,
+                          2152
                         ],
                         "loc": {
                           "start": {
@@ -1903,13 +1868,13 @@
                           },
                           "end": {
                             "line": 68,
-                            "column": 49
+                            "column": 40
                           }
                         }
                       },
                       "range": [
-                        2123,
-                        2165
+                        2120,
+                        2153
                       ],
                       "loc": {
                         "start": {
@@ -1918,7 +1883,7 @@
                         },
                         "end": {
                           "line": 68,
-                          "column": 50
+                          "column": 41
                         }
                       }
                     },
@@ -1927,8 +1892,8 @@
                       "argument": {
                         "type": "ThisExpression",
                         "range": [
-                          2184,
-                          2188
+                          2172,
+                          2176
                         ],
                         "loc": {
                           "start": {
@@ -1942,8 +1907,8 @@
                         }
                       },
                       "range": [
-                        2177,
-                        2189
+                        2165,
+                        2177
                       ],
                       "loc": {
                         "start": {
@@ -1958,8 +1923,8 @@
                     }
                   ],
                   "range": [
-                    2112,
-                    2196
+                    2109,
+                    2184
                   ],
                   "loc": {
                     "start": {
@@ -1975,8 +1940,8 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  2109,
-                  2196
+                  2106,
+                  2184
                 ],
                 "loc": {
                   "start": {
@@ -1992,8 +1957,8 @@
               "kind": "method",
               "computed": false,
               "range": [
-                2100,
-                2196
+                2097,
+                2184
               ],
               "loc": {
                 "start": {
@@ -2008,10 +1973,10 @@
               "leadingComments": [
                 {
                   "type": "Block",
-                  "value": "*\r\n     * The response will return a flattened response\r\n     * @example\r\n     *\togapi.entitiesSearchBuilder().flattened() \r\n     * @return {FlattenedSearchBuilder} \r\n     ",
+                  "value": "*\r\n     * The response will return a flattened response\r\n     * @example\r\n     *\togapi.ticketsSearchBuilder().flattened() \r\n     * @return {TicketsSearchBuilder} \r\n     ",
                   "range": [
                     1918,
-                    2094
+                    2091
                   ],
                   "loc": {
                     "start": {
@@ -2025,12 +1990,307 @@
                   }
                 }
               ],
+              "trailingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\r\n     * The response will return a response without sorted\r\n     * @example\r\n     *\togapi.ticketsSearchBuilder().disableDefaultSorted() \r\n     * @return {TicketsSearchBuilder} \r\n     ",
+                  "range": [
+                    2192,
+                    2381
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 73,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 78,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "static": false
+            },
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "disableDefaultSorted",
+                "range": [
+                  2387,
+                  2407
+                ],
+                "loc": {
+                  "start": {
+                    "line": 79,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 79,
+                    "column": 24
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "AssignmentExpression",
+                        "operator": "=",
+                        "left": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "ThisExpression",
+                              "range": [
+                                2421,
+                                2425
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 80,
+                                  "column": 8
+                                },
+                                "end": {
+                                  "line": 80,
+                                  "column": 12
+                                }
+                              }
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "_urlParams",
+                              "range": [
+                                2426,
+                                2436
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 80,
+                                  "column": 13
+                                },
+                                "end": {
+                                  "line": 80,
+                                  "column": 23
+                                }
+                              }
+                            },
+                            "range": [
+                              2421,
+                              2436
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 80,
+                                "column": 8
+                              },
+                              "end": {
+                                "line": 80,
+                                "column": 23
+                              }
+                            }
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "defaultSorted",
+                            "range": [
+                              2437,
+                              2450
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 80,
+                                "column": 24
+                              },
+                              "end": {
+                                "line": 80,
+                                "column": 37
+                              }
+                            }
+                          },
+                          "range": [
+                            2421,
+                            2450
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 80,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 80,
+                              "column": 37
+                            }
+                          }
+                        },
+                        "right": {
+                          "type": "Literal",
+                          "value": false,
+                          "raw": "false",
+                          "range": [
+                            2453,
+                            2458
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 80,
+                              "column": 40
+                            },
+                            "end": {
+                              "line": 80,
+                              "column": 45
+                            }
+                          }
+                        },
+                        "range": [
+                          2421,
+                          2458
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 80,
+                            "column": 8
+                          },
+                          "end": {
+                            "line": 80,
+                            "column": 45
+                          }
+                        }
+                      },
+                      "range": [
+                        2421,
+                        2459
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 80,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 80,
+                          "column": 46
+                        }
+                      }
+                    },
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "ThisExpression",
+                        "range": [
+                          2476,
+                          2480
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 81,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 81,
+                            "column": 19
+                          }
+                        }
+                      },
+                      "range": [
+                        2469,
+                        2481
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 81,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 81,
+                          "column": 20
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    2410,
+                    2488
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 79,
+                      "column": 27
+                    },
+                    "end": {
+                      "line": 82,
+                      "column": 5
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  2407,
+                  2488
+                ],
+                "loc": {
+                  "start": {
+                    "line": 79,
+                    "column": 24
+                  },
+                  "end": {
+                    "line": 82,
+                    "column": 5
+                  }
+                }
+              },
+              "kind": "method",
+              "computed": false,
+              "range": [
+                2387,
+                2488
+              ],
+              "loc": {
+                "start": {
+                  "line": 79,
+                  "column": 4
+                },
+                "end": {
+                  "line": 82,
+                  "column": 5
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\r\n     * The response will return a response without sorted\r\n     * @example\r\n     *\togapi.ticketsSearchBuilder().disableDefaultSorted() \r\n     * @return {TicketsSearchBuilder} \r\n     ",
+                  "range": [
+                    2192,
+                    2381
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 73,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 78,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
               "static": false
             }
           ],
           "range": [
             312,
-            2199
+            2491
           ],
           "loc": {
             "start": {
@@ -2038,14 +2298,14 @@
               "column": 64
             },
             "end": {
-              "line": 72,
+              "line": 83,
               "column": 1
             }
           }
         },
         "range": [
           263,
-          2199
+          2491
         ],
         "loc": {
           "start": {
@@ -2053,7 +2313,7 @@
             "column": 15
           },
           "end": {
-            "line": 72,
+            "line": 83,
             "column": 1
           }
         },
@@ -2081,7 +2341,7 @@
       },
       "range": [
         248,
-        2199
+        2491
       ],
       "loc": {
         "start": {
@@ -2089,7 +2349,7 @@
           "column": 0
         },
         "end": {
-          "line": 72,
+          "line": 83,
           "column": 1
         }
       },
@@ -2118,7 +2378,7 @@
   "sourceType": "module",
   "range": [
     0,
-    2199
+    2491
   ],
   "loc": {
     "start": {
@@ -2126,7 +2386,7 @@
       "column": 0
     },
     "end": {
-      "line": 72,
+      "line": 83,
       "column": 1
     }
   },
@@ -2169,7 +2429,7 @@
     },
     {
       "type": "Block",
-      "value": "*\r\n     * The response will only have a summary information \r\n     * @example\r\n     *\togapi.devicesSearchBuilder().summary() \r\n     * @return {TicketsSearchBuilder} \r\n     ",
+      "value": "*\r\n     * The response will only have a summary information \r\n     * @example\r\n     *\togapi.ticketsSearchBuilder().summary() \r\n     * @return {TicketsSearchBuilder} \r\n     ",
       "range": [
         550,
         726
@@ -2223,10 +2483,10 @@
     },
     {
       "type": "Block",
-      "value": "*\r\n     * The response will return a flattened response\r\n     * @example\r\n     *\togapi.entitiesSearchBuilder().flattened() \r\n     * @return {FlattenedSearchBuilder} \r\n     ",
+      "value": "*\r\n     * The response will return a flattened response\r\n     * @example\r\n     *\togapi.ticketsSearchBuilder().flattened() \r\n     * @return {TicketsSearchBuilder} \r\n     ",
       "range": [
         1918,
-        2094
+        2091
       ],
       "loc": {
         "start": {
@@ -2235,6 +2495,24 @@
         },
         "end": {
           "line": 66,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\r\n     * The response will return a response without sorted\r\n     * @example\r\n     *\togapi.ticketsSearchBuilder().disableDefaultSorted() \r\n     * @return {TicketsSearchBuilder} \r\n     ",
+      "range": [
+        2192,
+        2381
+      ],
+      "loc": {
+        "start": {
+          "line": 73,
+          "column": 4
+        },
+        "end": {
+          "line": 78,
           "column": 7
         }
       }

@@ -57,7 +57,7 @@ var AssetSearch = (function (_Search) {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
             //console.log(JSON.stringify(this._filter()));
-            this._ogapi.Napi.post(this._resource, this._filter(), this._timeout, this._getExtraHeaders()).then(function (response) {
+            this._ogapi.Napi.post(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (response) {
                 var resultQuery = response.body;
                 var statusCode = response.statusCode;
 
@@ -65,7 +65,10 @@ var AssetSearch = (function (_Search) {
                     resultQuery.assets = resultQuery.entities;
                     delete resultQuery.entities;
                 }
-                defered.resolve({ data: resultQuery, statusCode: statusCode });
+                defered.resolve({
+                    data: resultQuery,
+                    statusCode: statusCode
+                });
             })['catch'](function (error) {
                 defered.reject(error);
             });

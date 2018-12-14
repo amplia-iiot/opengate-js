@@ -325,15 +325,21 @@ var Certificates = (function (_Security) {
             var promise = defered.promise;
             this._ogapi.Napi.post_multipart(this._resource, form, {
                 // onprogress: this._progressEvent
-            }, this._timeout).then(function (response) {
+            }, this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (response) {
                 var statusCode = response.statusCode;
                 if (statusCode === 201) {
                     if (typeof _this._onCreated === "function") {
                         _this._onCreated(response.header.location);
                     }
-                    defered.resolve({ location: response.header.location, statusCode: statusCode });
+                    defered.resolve({
+                        location: response.header.location,
+                        statusCode: statusCode
+                    });
                 } else {
-                    defered.reject({ errors: response.errors, statusCode: statusCode });
+                    defered.reject({
+                        errors: response.errors,
+                        statusCode: statusCode
+                    });
                 }
             })['catch'](function (error) {
                 defered.reject(error);

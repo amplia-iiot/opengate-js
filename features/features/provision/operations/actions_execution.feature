@@ -3,6 +3,8 @@
 @operations
 @actions_execution
 @fail
+@urlParameters
+
 Feature: Execute actions on a particular execution
     As a user of JsApi
     I want to execute actions on a particular operation
@@ -16,7 +18,7 @@ Feature: Execute actions on a particular execution
     Scenario: Creating an organization to use in create device
         Given an ogapi "organizations builder" util
         Then I want to create an "organization"
-        And the "name" "actions_execution_organization"
+        And the "name" "actions_execution_organization_10"
         And the "description" "actions execution organization"
         And the "country code" "ES"
         And the "lang code" "es"
@@ -28,17 +30,17 @@ Feature: Execute actions on a particular execution
         And response code should be: 201
 
     Scenario: I want to create an entity
-        Given the entity of type "devices builder" with "actions_execution_organization"
+        Given the entity of type "devices builder" with "actions_execution_organization_10"
         And I get allowed Datastreams fields
         And I can found "provision.device.identifier" as datastream name
         When I try to define the entity with...
-            | datastream                            | typeFunction | value                          | parent |
-            | provision.administration.channel      | simple       | default_channel                |        |
-            | provision.administration.organization | simple       | actions_execution_organization |        |
-            | provision.administration.serviceGroup | simple       | emptyServiceGroup              |        |
-            | provision.device.identifier           | simple       | actions_execution_device       |        |
-            | provision.device.operationalStatus    | simple       | NORMAL                         |        |
-            | provision.device.administrativeState  | simple       | ACTIVE                         |        |
+            | datastream                            | typeFunction | value                             | parent |
+            | provision.administration.channel      | simple       | default_channel                   |        |
+            | provision.administration.organization | simple       | actions_execution_organization_10 |        |
+            | provision.administration.serviceGroup | simple       | emptyServiceGroup                 |        |
+            | provision.device.identifier           | simple       | actions_execution_device          |        |
+            | provision.device.operationalStatus    | simple       | NORMAL                            |        |
+            | provision.device.administrativeState  | simple       | ACTIVE                            |        |
 
         Then I create it
         And response code should be: 201
@@ -334,6 +336,6 @@ Feature: Execute actions on a particular execution
     Scenario: Deleting an organization
         Given an ogapi "organizations builder" util
         Then I want to delete an "organization"
-        And the "name" "actions_execution_organization"
+        And the "name" "actions_execution_organization_10"
         Then I delete it
         And response code should be: 200

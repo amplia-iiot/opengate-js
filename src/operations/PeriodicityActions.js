@@ -245,8 +245,6 @@ export default class PeriodicityActions {
                     );
                 } else {
                     if (response.status === 200) {
-                        let data = response.text != "" ? JSON.parse(response.text) : {};
-                        let _response = { statusCode: response.status, data: data };
                         defered.resolve(response);
                     } else {
                         defered.reject({ errors: response.errors, statusCode: response.status });

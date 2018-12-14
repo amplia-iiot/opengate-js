@@ -40,12 +40,13 @@ var Search = (function (_BaseSearch) {
    	* @param {nubmer} timeout
     */
 
-	function Search(ogapi, url, filter, limit, sort, group, select, timeout) {
+	function Search(ogapi, url, filter, limit, sort, group, select, timeout, urlParams) {
 		if (limit === undefined) limit = { limit: {} };
 
 		_classCallCheck(this, Search);
 
 		_get(Object.getPrototypeOf(Search.prototype), 'constructor', this).call(this, ogapi, url, timeout);
+		this._setUrlParameters(urlParams);
 		this._postObj = (0, _merge2['default'])(filter, limit, group, select);
 		if (typeof sort === 'object') {
 			this._postObj = (0, _merge2['default'])(this._postObj, sort);

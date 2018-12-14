@@ -86,7 +86,7 @@ var DevicesSearchBuilder = (function (_PreFilteredSearchBuilder) {
          * The search request will have this group by 
          * @example
          * @param {!(object)} group 
-         * @return {SearchBuilder} 
+         * @return {DevicesSearchBuilder} 
          */
     }, {
         key: 'group',

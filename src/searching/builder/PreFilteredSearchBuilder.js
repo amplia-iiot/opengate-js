@@ -54,10 +54,21 @@ export default class PreFilteredSearchBuilder extends FlattenedSearchBuilder {
      *      ]
      *  }) //Custom select
      * @param {!(SelectBuilder|object)} select
-     * @return {SearchBuilder} 
+     * @return {PreFilteredSearchBuilder} 
      */
     select(select) {
         this._builderParams.select = (select || []);
+        return this;
+    }
+
+    /**
+     * The response will return a response without sorted
+     * @example
+     *	ogapi.assetsSearchBuilder().disableDefaultSorted() 
+     * @return {PreFilteredSearchBuilder} 
+     */
+    disableDefaultSorted() {
+        this._urlParams.defaultSorted = false;
         return this;
     }
 

@@ -9,6 +9,8 @@
 @bulk_json_response_csv
 @bulk_entities_json_response_csv
 @csv
+@urlParameters
+
 Feature: Delete and Create a Device
   As a device of JsApi
   I want to create a device using json file
@@ -20,7 +22,7 @@ Feature: Delete and Create a Device
   Scenario: Creating an organization to use in create device
     Given an ogapi "organizations builder" util
     Then I want to create an "organization"
-    And the "name" "organization_bulk"
+    And the "name" "organization_bulk_1"
     And the "description" "device organization"
     And the "country code" "ES"
     And the "lang code" "es"
@@ -32,27 +34,27 @@ Feature: Delete and Create a Device
     And response code should be: 201
 
   Scenario: I want to create a device from json file
-    Given an ogapi "json bulk builder" util with "organization_bulk" and "entities"
+    Given an ogapi "json bulk builder" util with "organization_bulk_1" and "entities"
     And I read the file from "/file_test/bulk_double_entities.json"
     And I "create" it with bulk and response with format csv
     Then does not throws an error
     Then the content of file "result.csv" must match:
       """
-      statusCode;location;errors\n201;https:\/\/([\d\d\d]{1,3}\.){3}[\d\d\d]{1,3}:[\d\d\d]{1,4}\/v80\/provision\/organizations\/organization_bulk\/devices\/device_bulk_json_1;\n201;https:\/\/([\d\d\d]{1,3}\.){3}[\d\d\d]{1,3}:[\d\d\d]{1,4}\/v80\/provision\/organizations\/organization_bulk\/devices\/device_bulk_json_2;\n
+      statusCode;location;errors\n201;https:\/\/([\d\d\d]{1,3}\.){3}[\d\d\d]{1,3}:[\d\d\d]{1,4}\/v80\/provision\/organizations\/organization_bulk_1\/devices\/device_bulk_json_1;\n201;https:\/\/([\d\d\d]{1,3}\.){3}[\d\d\d]{1,3}:[\d\d\d]{1,4}\/v80\/provision\/organizations\/organization_bulk_1\/devices\/device_bulk_json_2;\n
       """
 
   Scenario: I want to create a device from json file - duplicated error
-    Given an ogapi "json bulk builder" util with "organization_bulk" and "entities"
+    Given an ogapi "json bulk builder" util with "organization_bulk_1" and "entities"
     And I read the file from "/file_test/bulk_double_entities.json"
     And I "create" it with bulk and response with format csv
     Then does not throws an error
     Then the content of file "result.csv" must match:
       """
-      statusCode;location;errors\n400;https:\/\/([\d\d\d]{1,3}\.){3}[\d\d\d]{1,3}:[\d\d\d]{1,4}\/v80\/provision\/organizations\/organization_bulk\/devices\/device_bulk_json_1;\[\{"code":"0x010114","message":"Entity duplicated\.","context":\[\]}]\n400;https:\/\/([\d\d\d]{1,3}\.){3}[\d\d\d]{1,3}:[\d\d\d]{1,4}\/v80\/provision\/organizations\/organization_bulk\/devices\/device_bulk_json_2;\[\{"code":"0x010114","message":"Entity duplicated\.","context":\[\]},{"code":"0x010114","message":"Entity duplicated\.","context":\[\]},{"code":"0x010114","message":"Entity duplicated\.","context":\[\]},{"code":"0x010114","message":"Entity duplicated\.","context":\[\]}]\n
+      statusCode;location;errors\n400;https:\/\/([\d\d\d]{1,3}\.){3}[\d\d\d]{1,3}:[\d\d\d]{1,4}\/v80\/provision\/organizations\/organization_bulk_1\/devices\/device_bulk_json_1;\[\{"code":"0x010114","message":"Entity duplicated\.","context":\[\]}]\n400;https:\/\/([\d\d\d]{1,3}\.){3}[\d\d\d]{1,3}:[\d\d\d]{1,4}\/v80\/provision\/organizations\/organization_bulk_1\/devices\/device_bulk_json_2;\[\{"code":"0x010114","message":"Entity duplicated\.","context":\[\]},{"code":"0x010114","message":"Entity duplicated\.","context":\[\]},{"code":"0x010114","message":"Entity duplicated\.","context":\[\]},{"code":"0x010114","message":"Entity duplicated\.","context":\[\]}]\n
       """
 
   Scenario: I want to update a device from json file
-    Given an ogapi "json bulk builder" util with "organization_bulk" and "entities"
+    Given an ogapi "json bulk builder" util with "organization_bulk_1" and "entities"
     And I read the file from "/file_test/bulk_double_entities.json"
     And I "update" it with bulk and response with format csv
     Then does not throws an error
@@ -65,18 +67,18 @@ Feature: Delete and Create a Device
       """
 
   Scenario: I want to delete a device from json file
-    Given an ogapi "json bulk builder" util with "organization_bulk" and "entities"
+    Given an ogapi "json bulk builder" util with "organization_bulk_1" and "entities"
     And I read the file from "/file_test/bulk_double_entities.json"
     And I "deleteAll" it with bulk and response with format csv
     And response code should be: 200
     Then the content of file "result.csv" must match:
       """
-      statusCode;location;errors\n200;https:\/\/([\d\d\d]{1,3}\.){3}[\d\d\d]{1,3}:[\d\d\d]{1,4}\/v80\/provision\/organizations\/organization_bulk\/devices\/device_bulk_json_1;\n200;https:\/\/([\d\d\d]{1,3}\.){3}[\d\d\d]{1,3}:[\d\d\d]{1,4}\/v80\/provision\/organizations\/organization_bulk\/devices\/device_bulk_json_2;\n
+      statusCode;location;errors\n200;https:\/\/([\d\d\d]{1,3}\.){3}[\d\d\d]{1,3}:[\d\d\d]{1,4}\/v80\/provision\/organizations\/organization_bulk_1\/devices\/device_bulk_json_1;\n200;https:\/\/([\d\d\d]{1,3}\.){3}[\d\d\d]{1,3}:[\d\d\d]{1,4}\/v80\/provision\/organizations\/organization_bulk_1\/devices\/device_bulk_json_2;\n
       """
 
   Scenario: Delete the organization
     Given an ogapi "organizations builder" util
     Then I want to create an "organization"
-    And the "name" "organization_bulk"
+    And the "name" "organization_bulk_1"
     Then I delete it
     And response code should be: 200

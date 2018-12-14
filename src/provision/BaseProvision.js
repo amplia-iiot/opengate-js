@@ -33,6 +33,8 @@ export default class BaseProvision {
         this._ogapi = ogapi;
         this._resource = 'provision' + resource;
         this._requiredParameters = requiredParameters;
+        this._headers = undefined;
+        this._urlParameters = undefined;
     }
 
     _checkRequiredParameters() {
@@ -69,8 +71,7 @@ export default class BaseProvision {
         //En muchas clases se genera this._resource en la llamada a la funcion this._composeElement()
 
         let _postElement = this._composeElement();
-
-        this._ogapi.Napi.post(this._resource, _postElement)
+        this._ogapi.Napi.post(this._resource, _postElement, this._timeout, this._getExtraHeaders(), this._getUrlParameters())
             .then((res) => {
                 if (res.statusCode === 201) {
                     if (typeof this._onCreated === "function") {
@@ -107,7 +108,7 @@ export default class BaseProvision {
     delete() {
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Napi.delete(this._buildURL())
+        this._ogapi.Napi.delete(this._buildURL(), this._timeout, this._getExtraHeaders(), this._getUrlParameters())
             .then((res) => {
                 if (res.statusCode === 200) {
                     defered.resolve({
@@ -139,7 +140,7 @@ export default class BaseProvision {
         var defered = q.defer();
         var promise = defered.promise;
 
-        this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement())
+        this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement(), this._timeout, this._getExtraHeaders(), this._getUrlParameters())
             .then((res) => {
                 if (res.statusCode === 200) {
                     defered.resolve({
@@ -169,8 +170,7 @@ export default class BaseProvision {
     _doNorthPost(resource, element) {
         var defered = q.defer();
         var promise = defered.promise;
-        var id = element;
-        this._ogapi.Napi.post(resource, element)
+        this._ogapi.Napi.post(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters())
             .then((res) => {
                 if (res.statusCode === 201) {
                     if (typeof this._onCreated === "function") {
@@ -197,7 +197,6 @@ export default class BaseProvision {
         return promise;
     }
 
-
     _getExtraHeaders() {
         return this._headers;
     }
@@ -213,4 +212,21 @@ export default class BaseProvision {
             this._headers = headers;
         }
     }
+
+    _getUrlParameters() {
+        return this._urlParameters;
+    }
+
+    _setUrlParameters(parameters) {
+        if (this.parameters) {
+            var keys = Object.keys(parameters);
+            for (var i = 0; i < keys.length; i++) {
+                var key = keys[i];
+                this._urlParameters[key] = parameters[key];
+            }
+        } else {
+            this._urlParameters = parameters;
+        }
+    }
+
 }

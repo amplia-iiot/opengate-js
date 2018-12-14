@@ -100,10 +100,16 @@ export default class BulkBuilder extends BaseProvision {
         let defer = q.defer();
         form.ext = this._extension;
 
-        var petitionUrl = this._buildURL().replace("#actionName#", action);
-        this._ogapi.Napi.post_multipart(petitionUrl, form, {}, this._timeout, csv_response ? {
+        var petitionUrl = this._buildURL();
+        //url, formData, events, timeout, headers, parameters
+        if (csv_response)
+            this._setExtraHeaders({
                 'accept': 'text/plain'
-            } : null)
+            });
+        this._setUrlParameters({
+            action: action
+        });
+        this._ogapi.Napi.post_multipart(petitionUrl, form, {}, this._timeout, this._getExtraHeaders(), this._getUrlParameters())
             .then((response) => {
                 let statusCode = response.statusCode;
                 if (statusCode === 200) {

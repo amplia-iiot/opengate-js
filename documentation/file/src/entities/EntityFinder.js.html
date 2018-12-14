@@ -245,12 +245,7 @@ export default class EntityFinder extends ProvisionGenericFinder {
      * @private
      */
     _composeUrl() {
-        if (this._flattened) {
-            return this._baseUrl + &quot;/&quot; + this._organization + &quot;/&quot; + this._entitySource + &quot;/&quot; + this._id + &quot;?flattened=true&quot;;
-        } else {
-            return this._baseUrl + &quot;/&quot; + this._organization + &quot;/&quot; + this._entitySource + &quot;/&quot; + this._id;
-        }
-
+        return this._baseUrl + &quot;/&quot; + this._organization + &quot;/&quot; + this._entitySource + &quot;/&quot; + this._id;
     }
 
     /**
@@ -268,7 +263,9 @@ export default class EntityFinder extends ProvisionGenericFinder {
     findByOrganizationAndId(organization, id, flattened) {
         this._organization = organization;
         this._id = id;
-        this._flattened = flattened;
+        this._setUrlParameters({
+            flattened: flattened
+        });
         return this._execute();
     }
 }</code></pre>

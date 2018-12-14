@@ -24,13 +24,24 @@ export default class EntitiesSearchBuilder extends SearchWithSummaryBuilder {
      * The response will return a flattened response
      * @example
      *	ogapi.entitiesSearchBuilder().flattened() 
-     * @return {FlattenedSearchBuilder} 
+     * @return {EntitiesSearchBuilder} 
      */
     flattened() {
-        this._url = this._url + '?flattened=true';
-
+        this._urlParams.flattened = true;
         return this;
     }
+
+    /**
+     * The response will return a response without sorted
+     * @example
+     *	ogapi.entitiesSearchBuilder().disableDefaultSorted() 
+     * @return {EntitiesSearchBuilder} 
+     */
+    disableDefaultSorted() {
+        this._urlParams.defaultSorted = false;
+        return this;
+    }
+
 
     _buildUrl() {
         for (let route in this._routes) {
@@ -46,7 +57,7 @@ export default class EntitiesSearchBuilder extends SearchWithSummaryBuilder {
      * The search request will have this group by 
      * @example
      * @param {!(object)} group 
-     * @return {SearchBuilder} 
+     * @return {EntitiesSearchBuilder} 
      */
     group(group) {
         this._builderParams.group = (group || {});
@@ -65,7 +76,7 @@ export default class EntitiesSearchBuilder extends SearchWithSummaryBuilder {
      *      {"name": "device.temperature.value","fields": [{"field": "value","alias": "identifier"}]}]
      *   }) //Custom select
      * @param {!(SelectBuilder|object)} select
-     * @return {SearchBuilder} 
+     * @return {EntitiesSearchBuilder} 
      */
     select(select) {
         this._builderParams.select = (select || []);
@@ -89,7 +100,7 @@ export default class EntitiesSearchBuilder extends SearchWithSummaryBuilder {
             this._buildSort(),
             this._buildGroup(),
             this._buildSelect(),
-            this._builderParams.timeout);
+            this._builderParams.timeout, this._urlParams);
     }
 
 }

@@ -284,9 +284,11 @@ var User = (function (_BaseProvision) {
 
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            this._setExtraHeaders({ 'X-ApiPass': this._password });
+            this._setExtraHeaders({
+                'X-ApiPass': this._password
+            });
 
-            this._ogapi.Napi.put(this._buildURL(), data, undefined, this._getExtraHeaders()).then(function (res) {
+            this._ogapi.Napi.put(this._buildURL(), data, undefined, this._getExtraHeaders(), this._getUrlParameters()).then(function (res) {
                 if (res.statusCode === 200) {
                     defered.resolve({
                         statusCode: res.statusCode

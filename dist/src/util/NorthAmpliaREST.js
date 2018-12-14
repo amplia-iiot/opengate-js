@@ -375,12 +375,13 @@ var NorthAmpliaREST = (function () {
          * @param {!string} url - url to execute GET
          * @param {number} timeout - timeout in milliseconds    
          * @param {object} headers - headers of request
+         * @param {object} parameters - parameters of request
          * @return {Promise} 
          */
     }, {
         key: 'get',
-        value: function get(url, timeout, headers) {
-            var req = _superagent2['default'].get(this._createUrl(url));
+        value: function get(url, timeout, headers, parameters) {
+            var req = _superagent2['default'].get(this._createUrl(url, parameters));
             return this._createPromiseRequest(req, null, timeout, headers);
         }
 
@@ -390,12 +391,13 @@ var NorthAmpliaREST = (function () {
          * @param {object} data - attach data to request POST
          * @param {number} timeout - timeout in milliseconds
          * @param {object} headers - headers of request
+         * @param {object} parameters - parameters of request
          * @return {Promise} 
          */
     }, {
         key: 'post',
-        value: function post(url, data, timeout, headers) {
-            var req = _superagent2['default'].post(this._createUrl(url)).send(data);
+        value: function post(url, data, timeout, headers, parameters) {
+            var req = _superagent2['default'].post(this._createUrl(url, parameters)).send(data);
 
             return this._createPromiseRequest(req, null, timeout, headers);
         }
@@ -407,12 +409,13 @@ var NorthAmpliaREST = (function () {
          * @param {object} events - events allowed, xhr.process 
          * @param {number} timeout - timeout in milliseconds       
          * @param {object} headers - headers of request
+         * @param {object} parameters - parameters of request
          * @return {Promise} 
          */
     }, {
         key: 'post_multipart',
-        value: function post_multipart(url, formData, events, timeout, headers) {
-            var req = _superagent2['default'].post(this._createUrl(url));
+        value: function post_multipart(url, formData, events, timeout, headers, parameters) {
+            var req = _superagent2['default'].post(this._createUrl(url, parameters));
 
             if (formData && (formData.meta || formData.file || formData.json || formData.certificate)) {
                 if (formData.meta) {
@@ -449,12 +452,13 @@ var NorthAmpliaREST = (function () {
          * @param {object} data - attach data to request PUT
          * @param {number} timeout - timeout in milliseconds       
          * @param {object} headers - headers of request
+         * @param {object} parameters - parameters of request
          * @return {Promise} 
          */
     }, {
         key: 'put',
-        value: function put(url, data, timeout, headers) {
-            var req = _superagent2['default'].put(this._createUrl(url)).send(data);
+        value: function put(url, data, timeout, headers, parameters) {
+            var req = _superagent2['default'].put(this._createUrl(url, parameters)).send(data);
 
             if (headers) {
                 headers['Content-Type'] = 'application/json';
@@ -472,20 +476,39 @@ var NorthAmpliaREST = (function () {
          * @param {!string} url - url to execute DELETE
          * @param {number} timeout - timeout in milliseconds    
          * @param {object} headers - headers of request
+         * @param {object} parameters - parameters of request
          * @return {Promise} 
          */
     }, {
         key: 'delete',
-        value: function _delete(url, timeout, headers) {
-            var req = _superagent2['default']['delete'](this._createUrl(url));
+        value: function _delete(url, timeout, headers, parameters) {
+            var req = _superagent2['default']['delete'](this._createUrl(url, parameters));
             return this._createPromiseRequest(req, null, timeout, headers);
         }
     }, {
         key: '_createUrl',
-        value: function _createUrl(relativeUrl) {
+        value: function _createUrl(relativeUrl, parameters) {
             var encode = [];
+
+            if (parameters) {
+                var keys = Object.keys(parameters);
+                for (var i = 0; i < keys.length; i++) {
+                    var key = keys[i];
+                    var queryParameter = key + '=' + parameters[key];
+                    if (i === 0) {
+                        relativeUrl = relativeUrl + '?' + queryParameter;
+                    } else {
+                        relativeUrl = relativeUrl + '&' + queryParameter;
+                    }
+                }
+                console.log(JSON.stringify(parameters));
+            }
+
+            console.log(relativeUrl);
+
             var relativeUrlSplit = relativeUrl.split("/");
             var length = relativeUrlSplit.length;
+
             relativeUrlSplit.forEach(function (item, index) {
                 if (index === length - 1 && item.indexOf("?") > 0) {
                     var parameters = item.substring(item.indexOf("?"), item.length);
@@ -495,7 +518,9 @@ var NorthAmpliaREST = (function () {
                     encode.push((0, _urlencode2['default'])(item));
                 }
             });
-            return this._url(this._options) + "/" + encode.join("/");
+            var returnUrl = this._url(this._options) + "/" + encode.join("/");
+            console.log(returnUrl);
+            return returnUrl;
         }
     }, {
         key: '_createPromiseRequest',
@@ -517,7 +542,7 @@ var NorthAmpliaREST = (function () {
                 var keys = Object.keys(headers);
                 for (var i = 0; i < keys.length; i++) {
                     var key = keys[i];
-                    _req = req.set(key, headers[key]);
+                    _req = _req.set(key, headers[key]);
                 }
             }
 

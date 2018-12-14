@@ -38,7 +38,10 @@ export default class CertificateFinder extends ProvisionGenericFinder {
      * @private
      */
     _downloadUrl() {
-        return this._composeUrl() + "?format=" + this._type;
+        this._setUrlParameters({
+            format: this._type
+        });
+        return this._composeUrl();
     }
 
     /**
@@ -51,7 +54,7 @@ export default class CertificateFinder extends ProvisionGenericFinder {
      */
     findByIdAndFormat(id, mimetype) {
         let not_found = '';
-        let found = MIME_TYPES_ENUM.find(function(mime_type) {
+        let found = MIME_TYPES_ENUM.find(function (mime_type) {
             return mime_type == this;
         }, mimetype);
         if (typeof found === "undefined") {
@@ -78,12 +81,18 @@ export default class CertificateFinder extends ProvisionGenericFinder {
         let defered = q.defer();
         let promise = defered.promise;
         let _error_not_found = this._error_not_found;
-        this._api.get(this._downloadUrl(), undefined, this._getExtraHeaders())
+        this._api.get(this._downloadUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters())
             .then((req) => {
                 if (req.statusCode === 204) {
-                    defered.reject({ data: _error_not_found, statusCode: HttpStatus.NOT_FOUND });
+                    defered.reject({
+                        data: _error_not_found,
+                        statusCode: HttpStatus.NOT_FOUND
+                    });
                 } else {
-                    defered.resolve({ data: req, statusCode: req.statusCode });
+                    defered.resolve({
+                        data: req,
+                        statusCode: req.statusCode
+                    });
                 }
             })
             .catch((error) => {

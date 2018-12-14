@@ -90,7 +90,7 @@ var AssetsSearchBuilder = (function (_PreFilteredSearchBuilder) {
          * The search request will have this group by 
          * @example
          * @param {!(object)} group 
-         * @return {SearchBuilder} 
+         * @return {AssetsSearchBuilder} 
          */
     }, {
         key: 'group',
@@ -124,7 +124,7 @@ var AssetsSearchBuilder = (function (_PreFilteredSearchBuilder) {
          *      {"name": "device.temperature.value","fields": [{"field": "value","alias": "identifier"}]}]
          *   }) //Custom select
          * @param {!(SelectBuilder|object)} select
-         * @return {SearchBuilder} 
+         * @return {AssetsSearchBuilder} 
          */
     }, {
         key: 'select',

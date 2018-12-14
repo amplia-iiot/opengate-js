@@ -39,10 +39,10 @@ var EntitySearch = (function (_Search) {
      * @param {object} select - this define fields to retrieve
      */
 
-    function EntitySearch(ogapi, url, filter, limit, sort, group, select, timeout) {
+    function EntitySearch(ogapi, url, filter, limit, sort, group, select, timeout, urlParams) {
         _classCallCheck(this, EntitySearch);
 
-        _get(Object.getPrototypeOf(EntitySearch.prototype), 'constructor', this).call(this, ogapi, url, filter, limit, sort, group, select, timeout);
+        _get(Object.getPrototypeOf(EntitySearch.prototype), 'constructor', this).call(this, ogapi, url, filter, limit, sort, group, select, timeout, urlParams);
     }
 
     /**
@@ -58,18 +58,15 @@ var EntitySearch = (function (_Search) {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
             console.log(JSON.stringify(this._filter()));
-            this._ogapi.Napi.post(this._resource, this._filter(), this._timeout).then(function (response) {
+            var parameters = this._getUrlParameters();
+            this._ogapi.Napi.post(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), parameters).then(function (response) {
                 var resultQuery = response.body;
                 var statusCode = response.statusCode;
 
                 if (statusCode === 200 && resultQuery.entities && resultQuery.entities.length > 0) {
                     // OUW-944
-                    var ele,
-                        flattened = false;
-
-                    if (resultQuery.entities[0]['provision.administration.identifier']) {
-                        flattened = true;
-                    }
+                    var ele = false;
+                    var flattened = parameters && parameters.flattened || false;
 
                     for (ele = 0; ele < resultQuery.entities.length; ele++) {
                         if (flattened) {

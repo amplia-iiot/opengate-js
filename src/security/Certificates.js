@@ -75,7 +75,7 @@ export default class Certificates extends Security {
         }
 
         let not_found = '';
-        let found = ADMINISTRATIVE_STATE_ENUM.find(function(administrativeState) {
+        let found = ADMINISTRATIVE_STATE_ENUM.find(function (administrativeState) {
             return administrativeState == this;
         }, administrativeState);
         if (typeof found === "undefined") {
@@ -103,7 +103,7 @@ export default class Certificates extends Security {
         }
         let not_found = [];
         for (let i = 0; i < usages.length; i++) {
-            let found = USAGES_ENUM.find(function(usages) {
+            let found = USAGES_ENUM.find(function (usages) {
                 return usages == this;
             }, usages[i]);
             if (typeof found === "undefined") {
@@ -151,32 +151,32 @@ export default class Certificates extends Security {
     }
 
     _checkHardware(hardware) {
-            if (typeof hardware === 'string') {
-                hardware = eval('(' + hardware + ')');
-            }
-
-            let length = Object.keys(hardware).length;
-
-            let valid = false;
-
-            if (length === 1 && hardware.hardwareId &&
-                typeof hardware.hardwareId === 'string' && hardware.hardwareId.length > 0) {
-                valid = true;
-            } else if (length === 3 && hardware.manufacturer && hardware.model && hardware.modelVersion &&
-                typeof hardware.manufacturer === 'string' &&
-                typeof hardware.model === 'string' &&
-                typeof hardware.modelVersion === 'string' &&
-                hardware.manufacturer.length > 0 && hardware.model.length > 0 &&
-                hardware.modelVersion.length > 0) {
-                valid = true;
-            }
-            return valid;
+        if (typeof hardware === 'string') {
+            hardware = eval('(' + hardware + ')');
         }
-        /**
-         * Set the tags attribute
-         * @param {Array} tags 
-         * @return {Certificates}
-         */
+
+        let length = Object.keys(hardware).length;
+
+        let valid = false;
+
+        if (length === 1 && hardware.hardwareId &&
+            typeof hardware.hardwareId === 'string' && hardware.hardwareId.length > 0) {
+            valid = true;
+        } else if (length === 3 && hardware.manufacturer && hardware.model && hardware.modelVersion &&
+            typeof hardware.manufacturer === 'string' &&
+            typeof hardware.model === 'string' &&
+            typeof hardware.modelVersion === 'string' &&
+            hardware.manufacturer.length > 0 && hardware.model.length > 0 &&
+            hardware.modelVersion.length > 0) {
+            valid = true;
+        }
+        return valid;
+    }
+    /**
+     * Set the tags attribute
+     * @param {Array} tags 
+     * @return {Certificates}
+     */
 
     withTags(tags) {
         if (typeof tags === "undefined" || tags.constructor !== Array || tags.length <= 0) {
@@ -302,16 +302,22 @@ export default class Certificates extends Security {
         let promise = defered.promise;
         this._ogapi.Napi.post_multipart(this._resource, form, {
                 // onprogress: this._progressEvent
-            }, this._timeout)
+            }, this._timeout, this._getExtraHeaders(), this._getUrlParameters())
             .then((response) => {
                 let statusCode = response.statusCode;
                 if (statusCode === 201) {
                     if (typeof this._onCreated === "function") {
                         this._onCreated(response.header.location);
                     }
-                    defered.resolve({ location: response.header.location, statusCode: statusCode });
+                    defered.resolve({
+                        location: response.header.location,
+                        statusCode: statusCode
+                    });
                 } else {
-                    defered.reject({ errors: response.errors, statusCode: statusCode });
+                    defered.reject({
+                        errors: response.errors,
+                        statusCode: statusCode
+                    });
                 }
             })
             .catch((error) => {

@@ -14,10 +14,6 @@ var _Search = require('../Search');
 
 var _Search2 = _interopRequireDefault(_Search);
 
-var _errorSearchBuilderError = require('../error/SearchBuilderError');
-
-var _errorSearchBuilderError2 = _interopRequireDefault(_errorSearchBuilderError);
-
 var LIMIT_START_DEF_VALUE = 1;
 var LIMIT_SIZE_DEF_VALUE = 1000;
 
@@ -67,6 +63,7 @@ var SearchBuilder = (function () {
         for (var route in this._routes) {
             _loop(route);
         }
+        this._urlParams = {};
     }
 
     /**
@@ -177,9 +174,15 @@ var SearchBuilder = (function () {
                         }
                     }
 
-                    if (!found) this._builderParams.sort.push({ name: filterField, type: typeSort });
+                    if (!found) this._builderParams.sort.push({
+                        name: filterField,
+                        type: typeSort
+                    });
                 } else {
-                    this._builderParams.sort.push({ name: filterField, type: typeSort });
+                    this._builderParams.sort.push({
+                        name: filterField,
+                        type: typeSort
+                    });
                 }
             }
             return this;
@@ -229,7 +232,10 @@ var SearchBuilder = (function () {
 
             if (typeof size !== "number") throw new Error('size parameter must be a number');
             if (typeof start !== "number" || start < 1) start = LIMIT_START_DEF_VALUE;
-            this._builderParams.limit = { size: size, start: start };
+            this._builderParams.limit = {
+                size: size,
+                start: start
+            };
             return this;
         }
 
@@ -244,7 +250,7 @@ var SearchBuilder = (function () {
     }, {
         key: 'build',
         value: function build() {
-            return new _Search2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildLimit(), this._buildSort(), this._buildGroup(), this._buildSelect(), this._builderParams.timeout);
+            return new _Search2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildLimit(), this._buildSort(), this._buildGroup(), this._buildSelect(), this._builderParams.timeout, this._urlParams);
         }
     }, {
         key: '_buildFilter',
@@ -283,7 +289,9 @@ var SearchBuilder = (function () {
                 }
             };
 
-            return { limit: this._builderParams.limit };
+            return {
+                limit: this._builderParams.limit
+            };
         }
     }, {
         key: '_buildSort',

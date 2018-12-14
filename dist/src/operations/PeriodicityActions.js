@@ -249,8 +249,6 @@ var PeriodicityActions = (function () {
                     });
                 } else {
                     if (response.status === 200) {
-                        var data = response.text != "" ? JSON.parse(response.text) : {};
-                        var _response = { statusCode: response.status, data: data };
                         defered.resolve(response);
                     } else {
                         defered.reject({ errors: response.errors, statusCode: response.status });

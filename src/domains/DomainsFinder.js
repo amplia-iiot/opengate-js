@@ -19,7 +19,10 @@ export default class DomainFinder extends ProvisionGenericFinder {
      * @private
      */
     _composeUrl() {
-        return this._baseUrl + "/" + this._name + '?hierarchy=' + this._hierarchy;
+        this._setUrlParameters({
+            hierarchy: this._hierarchy
+        });
+        return this._baseUrl + "/" + this._name;
     }
 
     /**

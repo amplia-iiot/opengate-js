@@ -28,7 +28,6 @@ var _q2 = _interopRequireDefault(_q);
 
 var ERROR_VALUE_NOT_ALLOWED = 'The value is not allowed. The value should be formatted as follows: ';
 var ERROR_DATASTREAM_NOT_ALLOWED = 'Datastream is not allowed.';
-var ERROR_ORGANIZATION = 'Parameters organization must be defined';
 
 /**
  * This class allow set simple values.
@@ -48,10 +47,13 @@ var SimpleBuilder = (function (_BaseProvision) {
     function SimpleBuilder(ogapi, resource, allowedDatastreams, definedSchemas, jsonSchemaValidator) {
         _classCallCheck(this, SimpleBuilder);
 
-        _get(Object.getPrototypeOf(SimpleBuilder.prototype), 'constructor', this).call(this, ogapi, "/organizations/" + resource + '?flattened=true');
+        _get(Object.getPrototypeOf(SimpleBuilder.prototype), 'constructor', this).call(this, ogapi, "/organizations/" + resource);
         if (typeof this._getEntityKey !== "function") {
             throw new Error("Must override method:  _getEntityKey");
         }
+        this._setUrlParameters({
+            flattened: true
+        });
         this._entity = {};
         this._allowedDatastreams = allowedDatastreams;
         this._definedSchemas = definedSchemas;
@@ -61,8 +63,7 @@ var SimpleBuilder = (function (_BaseProvision) {
     _createClass(SimpleBuilder, [{
         key: '_buildURL',
         value: function _buildURL() {
-            var url = this._resource.split('?');
-            return url[0] + "/" + this.getEntityKey() + '?' + url[1];
+            return this._resource + "/" + this.getEntityKey();
         }
     }, {
         key: '_validate',
@@ -210,8 +211,10 @@ var SimpleBuilder = (function (_BaseProvision) {
         value: function deleteAll() {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            var url = this._buildURL().split('?')[0] + "?full=true";
-            this._ogapi.Napi['delete'](url).then(function (res) {
+            this._setUrlParameters({
+                full: true
+            });
+            this._ogapi.Napi['delete'](this._buildURL(), this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (res) {
                 if (res.statusCode === _httpStatusCodes2['default'].OK) {
                     defered.resolve({
                         statusCode: res.statusCode

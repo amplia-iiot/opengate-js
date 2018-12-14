@@ -83,7 +83,9 @@ var OperationFinder = (function (_GenericFinder) {
                 if (!data || Object.keys(data).length == 0) {
                     //console.log("BUG");
                     //BUG http://cm.amplia.es/jira/browse/ODMQA-1057
-                    defered.reject({ errors: _this._error_not_found });
+                    defered.reject({
+                        errors: _this._error_not_found
+                    });
                 } else {
                     _this._id = response.data.taskId;
                     _this._baseUrl = 'operation/tasks';
@@ -157,7 +159,10 @@ var OperationFinder = (function (_GenericFinder) {
             this._error_not_found = 'Executions not found';
             if (typeof size !== "number") throw new Error('size parameter must be a number');
             if (typeof start !== "number" || start < 1) start = LIMIT_START_DEF_VALUE;
-            this._limit = { size: size, start: start };
+            this._limit = {
+                size: size,
+                start: start
+            };
             return this._execute();
         }
 
@@ -169,8 +174,13 @@ var OperationFinder = (function (_GenericFinder) {
         key: '_composeUrl',
         value: function _composeUrl() {
             if (this._entity === 'operations') {
-                var _limit_url = this._limit ? "?start=" + this._limit.start + "&size=" + this._limit.size : "";
-                var base_url = this._baseUrl + "/" + this._id + "/operations" + _limit_url;
+                if (this._limit) {
+                    this._setUrlParameters({
+                        start: this._limit.start,
+                        size: this._limit.size
+                    });
+                }
+                var base_url = this._baseUrl + "/" + this._id + "/operations";
                 console.log("COMPOSE_IF: " + base_url);
                 return base_url;
             }

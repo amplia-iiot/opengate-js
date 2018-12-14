@@ -45,11 +45,7 @@ var EntityFinder = (function (_ProvisionGenericFinder) {
     _createClass(EntityFinder, [{
         key: '_composeUrl',
         value: function _composeUrl() {
-            if (this._flattened) {
-                return this._baseUrl + "/" + this._organization + "/" + this._entitySource + "/" + this._id + "?flattened=true";
-            } else {
-                return this._baseUrl + "/" + this._organization + "/" + this._entitySource + "/" + this._id;
-            }
+            return this._baseUrl + "/" + this._organization + "/" + this._entitySource + "/" + this._id;
         }
 
         /**
@@ -69,7 +65,9 @@ var EntityFinder = (function (_ProvisionGenericFinder) {
         value: function findByOrganizationAndId(organization, id, flattened) {
             this._organization = organization;
             this._id = id;
-            this._flattened = flattened;
+            this._setUrlParameters({
+                flattened: flattened
+            });
             return this._execute();
         }
     }]);

@@ -33,7 +33,7 @@ var CsvBulkBuilder = (function (_BulkBuilder) {
   function CsvBulkBuilder(ogapi, organization, resource, timeout) {
     _classCallCheck(this, CsvBulkBuilder);
 
-    _get(Object.getPrototypeOf(CsvBulkBuilder.prototype), 'constructor', this).call(this, ogapi, 'provision/organizations/' + organization + '/bulk/' + resource + '?action=#actionName#', 'text/plain', timeout);
+    _get(Object.getPrototypeOf(CsvBulkBuilder.prototype), 'constructor', this).call(this, ogapi, 'provision/organizations/' + organization + '/bulk/' + resource, 'text/plain', timeout);
   }
 
   return CsvBulkBuilder;

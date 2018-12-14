@@ -265,7 +265,11 @@ export default class Operation {
                     console.warn(&quot;Error parsing response data when execute post action to &quot; + this._resource);
                 }
                 //console.log(&quot;RESPONSE: &quot; + JSON.stringify(response));
-                defered.resolve({ data: data ? data : {}, statusCode: response.statusCode, id: id });
+                defered.resolve({
+                    data: data ? data : {},
+                    statusCode: response.statusCode,
+                    id: id
+                });
             })
             .catch((error) =&gt; {
                 //console.log(&quot;ERROR: &quot; + JSON.stringify(error));
@@ -273,7 +277,9 @@ export default class Operation {
                     error.data = {};
                 }
                 if (!error.data.errors) {
-                    error.data.errors = [(typeof (error) === &quot;string&quot;) ? { message: error } : error];
+                    error.data.errors = [(typeof (error) === &quot;string&quot;) ? {
+                        message: error
+                    } : error];
                 }
                 defered.reject(error);
             });
@@ -298,21 +304,26 @@ export default class Operation {
                 } catch (err) {
                     console.warn(&quot;Error parsing response data when execute post action to &quot; + this._resource);
                 }
-                defered.resolve({ data: data ? data : {}, statusCode: response.statusCode, location: response.header.location });
+                defered.resolve({
+                    data: data ? data : {},
+                    statusCode: response.statusCode,
+                    location: response.header.location
+                });
             })
             .catch((error) =&gt; {
                 if (!error.data) {
                     error.data = {};
                 }
                 if (!error.data.errors) {
-                    error.data.errors = [(typeof (error) === &quot;string&quot;) ? { message: error } : error];
+                    error.data.errors = [(typeof (error) === &quot;string&quot;) ? {
+                        message: error
+                    } : error];
                 }
                 defered.reject(error);
             });
         return defered.promise;
     }
-}
-</code></pre>
+}</code></pre>
 
 </div>
 

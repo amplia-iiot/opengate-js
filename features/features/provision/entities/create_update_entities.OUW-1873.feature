@@ -4,6 +4,8 @@
 @entities_provision
 @OUW-1873
 @entity_finder
+@urlParameters
+
 Feature: Create and update subscription and ticket on mode no flattened
     As a user of JsApi
     I want to create and update a subscription and ticket on mode no flattened
@@ -15,7 +17,7 @@ Feature: Create and update subscription and ticket on mode no flattened
     Scenario: Creating an organization to use in create subscription and ticket
         Given an ogapi "organizations builder" util
         Then I want to create an "organization"
-        And the "name" "organization_1873"
+        And the "name" "organization_1873_10"
         And the "description" "subscription organization"
         And the "country code" "ES"
         And the "lang code" "es"
@@ -27,16 +29,16 @@ Feature: Create and update subscription and ticket on mode no flattened
         And response code should be: 201
 
     Scenario: Create subscription
-        Given the entity of type "subscriptions builder" with "organization_1873"
+        Given the entity of type "subscriptions builder" with "organization_1873_10"
         Then I get allowed Datastreams fields
         And I can found "provision.device.communicationModules[].subscription.identifier" as datastream name
         When I try to define the entity with...
-            | datastream                                                               | typeFunction | value              | parent |
-            | provision.administration.channel                                         | simple       | default_channel    |        |
-            | provision.administration.organization                                    | simple       | organization_1873  |        |
-            | provision.administration.serviceGroup                                    | simple       | emptyServiceGroup  |        |
-            | provision.device.communicationModules[].subscription.administrativeState | simple       | ACTIVE             |        |
-            | provision.device.communicationModules[].subscription.identifier          | simple       | tsubscription_1873 |        |
+            | datastream                                                               | typeFunction | value                | parent |
+            | provision.administration.channel                                         | simple       | default_channel      |        |
+            | provision.administration.organization                                    | simple       | organization_1873_10 |        |
+            | provision.administration.serviceGroup                                    | simple       | emptyServiceGroup    |        |
+            | provision.device.communicationModules[].subscription.administrativeState | simple       | ACTIVE               |        |
+            | provision.device.communicationModules[].subscription.identifier          | simple       | tsubscription_1873   |        |
         Then I delete it
         Then I create it
         And response code should be: 201
@@ -46,11 +48,11 @@ Feature: Create and update subscription and ticket on mode no flattened
         Given an ogapi "entity finder" util
         And I want to read a "subscription"
         When I try to find by...
-            | field        | content            |
-            | organization | organization_1873  |
-            | id           | tsubscription_1873 |
+            | field        | content              |
+            | organization | organization_1873_10 |
+            | id           | tsubscription_1873   |
         And response code should be: 200
-        Given the entity of type "subscriptions builder" with "organization_1873"
+        Given the entity of type "subscriptions builder" with "organization_1873_10"
         When I try to define the entity with GET previous json response
         When I try to define the entity with...
             | datastream                                                        | typeFunction | value                   | parent |
@@ -63,36 +65,36 @@ Feature: Create and update subscription and ticket on mode no flattened
         Given an ogapi "entity finder" util
         And I want to read a "subscription"
         When I try to find by...
-            | field        | content            |
-            | organization | organization_1873  |
-            | id           | tsubscription_1873 |
+            | field        | content              |
+            | organization | organization_1873_10 |
+            | id           | tsubscription_1873   |
         And response code should be: 200
-        Given the entity of type "subscriptions builder" with "organization_1873"
+        Given the entity of type "subscriptions builder" with "organization_1873_10"
         When I try to define the entity with GET previous json response
         And I delete it
         Then response code should be: 200
 
 
     Scenario: I want to create an asset
-        Given the entity of type "asset builder" with "organization_1873"
+        Given the entity of type "asset builder" with "organization_1873_10"
         And I get allowed Datastreams fields
         And I can found "provision.asset.identifier" as datastream name
         When I try to define the entity with...
-            | datastream                            | typeFunction | value             | parent |
-            | provision.administration.channel      | simple       | default_channel   |        |
-            | provision.administration.organization | simple       | organization_1873 |        |
-            | provision.administration.serviceGroup | simple       | emptyServiceGroup |        |
-            | provision.asset.identifier            | simple       | asset_1873        |        |
+            | datastream                            | typeFunction | value                | parent |
+            | provision.administration.channel      | simple       | default_channel      |        |
+            | provision.administration.organization | simple       | organization_1873_10 |        |
+            | provision.administration.serviceGroup | simple       | emptyServiceGroup    |        |
+            | provision.asset.identifier            | simple       | asset_1873           |        |
         Then I delete it
         Then I create it
         And response code should be: 201
 
     Scenario: Create and update a ticket from no flattened
-        Given the entity of type "tickets builder" with "organization_1873"
+        Given the entity of type "tickets builder" with "organization_1873_10"
 
         When I try to define the ticket with...
             | datastream                            | typeFunction | value                    | parent |
-            | provision.administration.organization | simple       | organization_1873        |        |
+            | provision.administration.organization | simple       | organization_1873_10     |        |
             | provision.administration.identifier   | simple       | ticket_1873              |        |
             | provision.ticket.name                 | simple       | ticket_1873              |        |
             | provision.ticket.description          | simple       | TEST                     |        |
@@ -111,44 +113,44 @@ Feature: Create and update subscription and ticket on mode no flattened
         And I want to read a "ticket"
         When I try to find by...
             | field        | content                         |
-            | organization | organization_1873               |
+            | organization | organization_1873_10            |
             | id           | from_location_previous_response |
         And response code should be: 200
-        Given the entity of type "tickets builder" with "organization_1873"
+        Given the entity of type "tickets builder" with "organization_1873_10"
         When I try to define the ticket with GET previous json response
         And I update it
         Then response code should be: 200
 
 
     Scenario: I want to delete the ticket CREATED
-        And an ogapi "ticket search" util with "organization_1873"
+        And an ogapi "ticket search" util with "organization_1873_10"
         When I add a filter and with
-            | operator | key                                   | value             |
-            | eq       | provision.administration.organization | organization_1873 |
-            | eq       | provision.ticket.name                 | ticket_1873       |
+            | operator | key                                   | value                |
+            | eq       | provision.administration.organization | organization_1873_10 |
+            | eq       | provision.ticket.name                 | ticket_1873          |
         When I build it
         And I execute it
         Then response code should be: 200
-        Given the entity of type "tickets builder" with "organization_1873"
+        Given the entity of type "tickets builder" with "organization_1873_10"
         When I try to define the ticket with...
-            | datastream                            | typeFunction | value             | parent |
-            | provision.administration.organization | simple       | organization_1873 |        |
+            | datastream                            | typeFunction | value                | parent |
+            | provision.administration.organization | simple       | organization_1873_10 |        |
         When I try to define the datastream ticket "provision.ticket.identifier" with "provision.ticket.identifier._current.value" path of the previous response
         And I delete it
         Then response code should be: 200
 
     Scenario: I want to delete the entity
-        Given the entity of type "asset builder" with "organization_1873"
+        Given the entity of type "asset builder" with "organization_1873_10"
         When I try to define the entity with...
-            | datastream                            | typeFunction | value             | parent |
-            | provision.administration.organization | simple       | organization_1873 |        |
-            | provision.asset.identifier            | simple       | asset_1873        |        |
+            | datastream                            | typeFunction | value                | parent |
+            | provision.administration.organization | simple       | organization_1873_10 |        |
+            | provision.asset.identifier            | simple       | asset_1873           |        |
         Then I delete it
         And response code should be: 200
 
     Scenario: Delete the organization
         Given an ogapi "organizations builder" util
         Then I want to create an "organization"
-        And the "name" "organization_1873"
+        And the "name" "organization_1873_10"
         Then I delete it
         And response code should be: 200

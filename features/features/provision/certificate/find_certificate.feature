@@ -2,30 +2,32 @@
 @provision
 @find_certificate
 @certificates
+@urlParameters
+@fail
 Feature: Find a certificate
-As a user of JsApi
-I want to find a certificate
-So I can check if a certificate exists and get their information
+	As a user of JsApi
+	I want to find a certificate
+	So I can check if a certificate exists and get their information
 
 	Background:
 		Given an apikey user by "require-real-apikey"
 		Given an ogapi "certificate finder" util
 		And I want to read a "certificate"
-	
+
 	Scenario: Create a certificate
-        #And the "id" "certificate_cucumber_to_find"
-  	    And the "name" "certificate_cucumber_to_find_name"
-        And the "description" "certificate_cucumber_to_find_description"
-  	    And the "administrativeState" "ACTIVE"
-  	    And the "usages"
-  	    | CERT_SIGN |
-        And the "tags"
-        | tag1|tag2|
-        And the "hardwares"
-        |{ "hardwareId" : "OpenGateSecure"}|
-        And I read the file from "/file_test/root.cer"
-        And I create it
-  	    Then does not throws an error
+		#And the "id" "certificate_cucumber_to_find"
+		And the "name" "certificate_cucumber_to_find_name"
+		And the "description" "certificate_cucumber_to_find_description"
+		And the "administrativeState" "ACTIVE"
+		And the "usages"
+			| CERT_SIGN |
+		And the "tags"
+			| tag1 | tag2 |
+		And the "hardwares"
+			| { "hardwareId" : "OpenGateSecure"} |
+		And I read the file from "/file_test/root.cer"
+		And I create it
+		Then does not throws an error
 
 	Scenario: Find a certificate that exists
 		When I try to find by...
@@ -36,9 +38,9 @@ So I can check if a certificate exists and get their information
 	@ignore
 	Scenario: Download a certificate that exists
 		When I try to find by...
-			| field  | content    |
-			| id     | certificate_cucumber_to_find   |
-			| format | x-pem-file |
+			| field  | content                      |
+			| id     | certificate_cucumber_to_find |
+			| format | x-pem-file                   |
 		Then the content of file "certificate_cucumber_to_find.x-pem-file" must be:
 			"""
 			-----BEGIN CERTIFICATE-----

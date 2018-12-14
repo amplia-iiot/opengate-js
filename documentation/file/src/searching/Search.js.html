@@ -241,8 +241,9 @@ export default class Search extends BaseSearch {
 	* @param {object} select
    	* @param {nubmer} timeout
     */
-	constructor(ogapi, url, filter, limit = { limit: {} }, sort, group, select, timeout) {
+	constructor(ogapi, url, filter, limit = { limit: {} }, sort, group, select, timeout, urlParams) {
 		super(ogapi, url, timeout);
+		this._setUrlParameters(urlParams);
 		this._postObj = merge(filter, limit, group, select);
 		if (typeof sort === &apos;object&apos;) {
 			this._postObj = merge(this._postObj, sort);

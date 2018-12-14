@@ -289,6 +289,19 @@ module.exports = function () {
         callback();
     });
 
+    this.When(/^I build it with flattened and disable order response$/, function (callback) {
+        this.error = undefined;
+
+        try {
+            //console.log("UTIL: " + this.util);
+            this.build = this.util.flattened().disableDefaultSorted().build();
+        } catch (err) {
+            this.error = err;
+            //console.log(this.error);
+        }
+        callback();
+    });
+
     this.When(/^I build it with summary response$/, function (callback) {
         this.error = undefined;
 

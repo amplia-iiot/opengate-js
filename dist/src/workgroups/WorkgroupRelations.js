@@ -14,10 +14,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _q = require('q');
-
-var _q2 = _interopRequireDefault(_q);
-
 var _provisionBaseProvision = require('../provision/BaseProvision');
 
 var _provisionBaseProvision2 = _interopRequireDefault(_provisionBaseProvision);
@@ -109,20 +105,29 @@ var WorkgroupRelations = (function (_BaseProvision) {
         value: function create() {
             var relations = this._composeElement();
 
-            var petitionUrl = this._resource + '?action=CREATE';
-
+            var petitionUrl = this._resource;
+            this._setUrlParameters({
+                action: 'CREATE'
+            });
             return this._doNorthPost(petitionUrl, relations);
         }
     }, {
         key: 'delete',
         value: function _delete() {
-            var petitionUrl = this._buildURL() + '?action=DELETE';
+            this._setUrlParameters({
+                action: 'DELETE'
+            });
+            var petitionUrl = this._buildURL();
 
             if (this._channels) {
                 var relations = this._composeElement();
                 return this._doNorthPost(petitionUrl, relations);
             } else {
-                return this._doNorthPost(petitionUrl, { "workgroupRelation": { "channels": [] } });
+                return this._doNorthPost(petitionUrl, {
+                    "workgroupRelation": {
+                        "channels": []
+                    }
+                });
             }
         }
 

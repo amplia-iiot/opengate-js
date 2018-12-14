@@ -38,10 +38,10 @@ var DeviceSearch = (function (_Search) {
      * @param {object} group - this defined the group by
      */
 
-    function DeviceSearch(ogapi, url, filter, limit, sort, group, select, timeout) {
+    function DeviceSearch(ogapi, url, filter, limit, sort, group, select, timeout, urlParams) {
         _classCallCheck(this, DeviceSearch);
 
-        _get(Object.getPrototypeOf(DeviceSearch.prototype), 'constructor', this).call(this, ogapi, url, filter, limit, sort, group, select, timeout);
+        _get(Object.getPrototypeOf(DeviceSearch.prototype), 'constructor', this).call(this, ogapi, url, filter, limit, sort, group, select, timeout, urlParams);
     }
 
     /**
@@ -56,7 +56,8 @@ var DeviceSearch = (function (_Search) {
         value: function execute() {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            this._ogapi.Napi.post(this._resource, this._filter(), this._timeout, this._getExtraHeaders()).then(function (response) {
+            var parameters = this._getUrlParameters();
+            this._ogapi.Napi.post(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), parameters).then(function (response) {
                 var resultQuery = response.body;
                 var statusCode = response.statusCode;
 
@@ -66,12 +67,8 @@ var DeviceSearch = (function (_Search) {
                     // OUW-944
                     if (resultQuery.devices.length > 0) {
 
-                        var ele,
-                            flattened = false;
-
-                        if (resultQuery.devices[0]['provision.administration.identifier']) {
-                            flattened = true;
-                        }
+                        var ele = false;
+                        var flattened = parameters && parameters.flattened || false;
 
                         for (ele = 0; ele < resultQuery.devices.length; ele++) {
                             if (flattened) {
@@ -91,7 +88,10 @@ var DeviceSearch = (function (_Search) {
 
                     delete resultQuery.entities;
                 }
-                defered.resolve({ data: resultQuery, statusCode: statusCode });
+                defered.resolve({
+                    data: resultQuery,
+                    statusCode: statusCode
+                });
             })['catch'](function (error) {
                 defered.reject(error);
             });

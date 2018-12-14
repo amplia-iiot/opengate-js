@@ -238,7 +238,7 @@ export default class CsvBulkBuilder extends BulkBuilder {
      * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
      */
     constructor(ogapi, organization, resource, timeout) {
-        super(ogapi, &apos;provision/organizations/&apos; + organization + &apos;/bulk/&apos; + resource + &apos;?action=#actionName#&apos;, &apos;text/plain&apos;, timeout);
+        super(ogapi, &apos;provision/organizations/&apos; + organization + &apos;/bulk/&apos; + resource, &apos;text/plain&apos;, timeout);
     }
 }</code></pre>
 

@@ -1555,13 +1555,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber160",
+    "test-file/client/device/device.spec.js.html#lineNumber165",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Type",
     "test"
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber165",
+    "test-file/client/device/device.spec.js.html#lineNumber160",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Type",
     "test"
   ],
@@ -1633,13 +1633,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber303",
+    "test-file/client/device/device.spec.js.html#lineNumber312",
     "Check funcionality bundles module: Check Deployment Element: Check DeploymentElement basic elements: Create a deployment element",
     "test"
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber312",
+    "test-file/client/device/device.spec.js.html#lineNumber303",
     "Check funcionality bundles module: Check Deployment Element: Check DeploymentElement basic elements: Create a deployment element",
     "test"
   ],
@@ -2238,14 +2238,14 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortascendingby,searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber86",
+    "searchbuilder#build searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortdescendingby,searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber94",
     "Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort",
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortdescendingby,searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber94",
+    "searchbuilder#build searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortascendingby,searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber86",
     "Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort",
     "test"
   ],
@@ -2437,20 +2437,14 @@ window.esdocSearchIndex = [
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder,internalopengateapi#communicationsmodulessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber136",
-    "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: communicationsModulesSearchBuilder",
-    "test"
-  ],
-  [
-    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder,internalopengateapi#communicationsmodulessearchbuilder",
     "test-file/client/searching/search.spec.js.html#lineNumber76",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: communicationsModulesSearchBuilder",
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber112",
-    "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: devicesSearchBuilder",
+    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder,internalopengateapi#communicationsmodulessearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber136",
+    "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: communicationsModulesSearchBuilder",
     "test"
   ],
   [
@@ -2460,9 +2454,9 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriberssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber128",
-    "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder",
+    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber112",
+    "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: devicesSearchBuilder",
     "test"
   ],
   [
@@ -2472,14 +2466,20 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriptionssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriptionssearchbuilder,internalopengateapi#subscriptionssearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber120",
-    "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscriptionsSearchBuilder",
+    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriberssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber128",
+    "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder",
     "test"
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriptionssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriptionssearchbuilder,internalopengateapi#subscriptionssearchbuilder",
     "test-file/client/searching/search.spec.js.html#lineNumber59",
+    "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscriptionsSearchBuilder",
+    "test"
+  ],
+  [
+    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriptionssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriptionssearchbuilder,internalopengateapi#subscriptionssearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber120",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscriptionsSearchBuilder",
     "test"
   ],
@@ -7032,6 +7032,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/searching/builder/channelssearchbuilder.js~channelssearchbuilder#disabledefaultsorted",
+    "class/src/searching/builder/ChannelsSearchBuilder.js~ChannelsSearchBuilder.html#instance-method-disableDefaultSorted",
+    "src/searching/builder/ChannelsSearchBuilder.js~ChannelsSearchBuilder#disableDefaultSorted",
+    "method"
+  ],
+  [
     "src/searching/builder/channelssearchbuilder.js~channelssearchbuilder#summary",
     "class/src/searching/builder/ChannelsSearchBuilder.js~ChannelsSearchBuilder.html#instance-method-summary",
     "src/searching/builder/ChannelsSearchBuilder.js~ChannelsSearchBuilder#summary",
@@ -7227,6 +7233,12 @@ window.esdocSearchIndex = [
     "src/searching/builder/entitiessearchbuilder.js~entitiessearchbuilder#constructor",
     "class/src/searching/builder/EntitiesSearchBuilder.js~EntitiesSearchBuilder.html#instance-constructor-constructor",
     "src/searching/builder/EntitiesSearchBuilder.js~EntitiesSearchBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/searching/builder/entitiessearchbuilder.js~entitiessearchbuilder#disabledefaultsorted",
+    "class/src/searching/builder/EntitiesSearchBuilder.js~EntitiesSearchBuilder.html#instance-method-disableDefaultSorted",
+    "src/searching/builder/EntitiesSearchBuilder.js~EntitiesSearchBuilder#disableDefaultSorted",
     "method"
   ],
   [
@@ -7605,6 +7617,12 @@ window.esdocSearchIndex = [
     "src/searching/builder/prefilteredsearchbuilder.js~prefilteredsearchbuilder#constructor",
     "class/src/searching/builder/PreFilteredSearchBuilder.js~PreFilteredSearchBuilder.html#instance-constructor-constructor",
     "src/searching/builder/PreFilteredSearchBuilder.js~PreFilteredSearchBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/searching/builder/prefilteredsearchbuilder.js~prefilteredsearchbuilder#disabledefaultsorted",
+    "class/src/searching/builder/PreFilteredSearchBuilder.js~PreFilteredSearchBuilder.html#instance-method-disableDefaultSorted",
+    "src/searching/builder/PreFilteredSearchBuilder.js~PreFilteredSearchBuilder#disableDefaultSorted",
     "method"
   ],
   [
@@ -8013,6 +8031,12 @@ window.esdocSearchIndex = [
     "src/searching/builder/ticketssearchbuilder.js~ticketssearchbuilder#constructor",
     "class/src/searching/builder/TicketsSearchBuilder.js~TicketsSearchBuilder.html#instance-constructor-constructor",
     "src/searching/builder/TicketsSearchBuilder.js~TicketsSearchBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/searching/builder/ticketssearchbuilder.js~ticketssearchbuilder#disabledefaultsorted",
+    "class/src/searching/builder/TicketsSearchBuilder.js~TicketsSearchBuilder.html#instance-method-disableDefaultSorted",
+    "src/searching/builder/TicketsSearchBuilder.js~TicketsSearchBuilder#disableDefaultSorted",
     "method"
   ],
   [

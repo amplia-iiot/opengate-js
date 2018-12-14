@@ -91,7 +91,10 @@ var ChannelFinder = (function (_ProvisionGenericFinder) {
 
             this._executeWorkgroupRelation().then(function (request) {
                 if (request.statusCode === 204) {
-                    defered.reject({ data: _error_not_found, statusCode: _httpStatusCodes2['default'].NO_CONTENT });
+                    defered.reject({
+                        data: _error_not_found,
+                        statusCode: _httpStatusCodes2['default'].NO_CONTENT
+                    });
                 } else {
                     var globalData = request.data;
                     var finalData = [];
@@ -103,7 +106,10 @@ var ChannelFinder = (function (_ProvisionGenericFinder) {
                         });
                     }
 
-                    defered.resolve({ data: finalData, statusCode: request.statusCode });
+                    defered.resolve({
+                        data: finalData,
+                        statusCode: request.statusCode
+                    });
                 }
             })['catch'](function (error) {
                 defered.reject(error);
@@ -137,7 +143,10 @@ var ChannelFinder = (function (_ProvisionGenericFinder) {
             _this._executeWorkgroupRelation().then(function (request) {
 
                 if (request.statusCode === 204) {
-                    defered.reject({ data: _error_not_found, statusCode: _httpStatusCodes2['default'].NOT_FOUND });
+                    defered.reject({
+                        data: _error_not_found,
+                        statusCode: _httpStatusCodes2['default'].NOT_FOUND
+                    });
                 } else {
                     var globalData = request.data;
                     var finalData = [];
@@ -152,9 +161,15 @@ var ChannelFinder = (function (_ProvisionGenericFinder) {
                     }
 
                     if (finalData.length > 0) {
-                        defered.resolve({ data: finalData, statusCode: request.statusCode });
+                        defered.resolve({
+                            data: finalData,
+                            statusCode: request.statusCode
+                        });
                     } else {
-                        defered.reject({ data: _error_not_found, statusCode: _httpStatusCodes2['default'].NOT_FOUND });
+                        defered.reject({
+                            data: _error_not_found,
+                            statusCode: _httpStatusCodes2['default'].NOT_FOUND
+                        });
                     }
                 }
             })['catch'](function (error) {
@@ -178,11 +193,17 @@ var ChannelFinder = (function (_ProvisionGenericFinder) {
             var promise = defered.promise;
 
             var _error_not_found = this._error_not_found;
-            this._api.get(workgroupsRelationsUrl, undefined, this._getExtraHeaders()).then(function (req) {
+            this._api.get(workgroupsRelationsUrl, undefined, this._getExtraHeaders(), this._getUrlParameters()).then(function (req) {
                 if (req.statusCode === 204) {
-                    defered.reject({ data: _error_not_found, statusCode: _httpStatusCodes2['default'].NOT_FOUND });
+                    defered.reject({
+                        data: _error_not_found,
+                        statusCode: _httpStatusCodes2['default'].NOT_FOUND
+                    });
                 } else {
-                    defered.resolve({ data: req.body.workgroupRelation, statusCode: req.statusCode });
+                    defered.resolve({
+                        data: req.body.workgroupRelation,
+                        statusCode: req.statusCode
+                    });
                 }
             })['catch'](function (error) {
                 defered.reject(error);

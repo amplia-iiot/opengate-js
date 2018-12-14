@@ -60,14 +60,20 @@ var Operation = (function () {
                     console.warn("Error parsing response data when execute post action to " + _this._resource);
                 }
                 //console.log("RESPONSE: " + JSON.stringify(response));
-                defered.resolve({ data: data ? data : {}, statusCode: response.statusCode, id: id });
+                defered.resolve({
+                    data: data ? data : {},
+                    statusCode: response.statusCode,
+                    id: id
+                });
             })['catch'](function (error) {
                 //console.log("ERROR: " + JSON.stringify(error));
                 if (!error.data) {
                     error.data = {};
                 }
                 if (!error.data.errors) {
-                    error.data.errors = [typeof error === "string" ? { message: error } : error];
+                    error.data.errors = [typeof error === "string" ? {
+                        message: error
+                    } : error];
                 }
                 defered.reject(error);
             });
@@ -94,13 +100,19 @@ var Operation = (function () {
                 } catch (err) {
                     console.warn("Error parsing response data when execute post action to " + _this2._resource);
                 }
-                defered.resolve({ data: data ? data : {}, statusCode: response.statusCode, location: response.header.location });
+                defered.resolve({
+                    data: data ? data : {},
+                    statusCode: response.statusCode,
+                    location: response.header.location
+                });
             })['catch'](function (error) {
                 if (!error.data) {
                     error.data = {};
                 }
                 if (!error.data.errors) {
-                    error.data.errors = [typeof error === "string" ? { message: error } : error];
+                    error.data.errors = [typeof error === "string" ? {
+                        message: error
+                    } : error];
                 }
                 defered.reject(error);
             });

@@ -474,9 +474,11 @@ export default class User extends BaseProvision {
 
         var defered = q.defer();
         var promise = defered.promise;
-        this._setExtraHeaders({ &apos;X-ApiPass&apos;: this._password });
+        this._setExtraHeaders({
+            &apos;X-ApiPass&apos;: this._password
+        });
 
-        this._ogapi.Napi.put(this._buildURL(), data, undefined, this._getExtraHeaders())
+        this._ogapi.Napi.put(this._buildURL(), data, undefined, this._getExtraHeaders(), this._getUrlParameters())
             .then((res) =&gt; {
                 if (res.statusCode === 200) {
                     defered.resolve({

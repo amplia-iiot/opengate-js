@@ -21,12 +21,11 @@ export default class FlattenedSearchBuilder extends SearchBuilder {
     /**
      * The response will return a flattened response
      * @example
-     *	ogapi.subscribersSearchBuilder().flattened() 
+     *	ogapi.entitiesSearchBuilder().flattened() 
      * @return {FlattenedSearchBuilder} 
      */
     flattened() {
-        this._url = this._url + '?flattened=true';
-
+        this._urlParams.flattened = true;
         return this;
     }
 
@@ -51,7 +50,7 @@ export default class FlattenedSearchBuilder extends SearchBuilder {
             this._buildSort(),
             this._buildGroup(),
             this._buildSelect(),
-            this._builderParams.timeout);
+            this._builderParams.timeout, this._urlParams);
     }
 
 }

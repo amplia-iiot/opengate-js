@@ -67,7 +67,10 @@ var CertificateFinder = (function (_ProvisionGenericFinder) {
     }, {
         key: '_downloadUrl',
         value: function _downloadUrl() {
-            return this._composeUrl() + "?format=" + this._type;
+            this._setUrlParameters({
+                format: this._type
+            });
+            return this._composeUrl();
         }
 
         /**
@@ -109,11 +112,17 @@ var CertificateFinder = (function (_ProvisionGenericFinder) {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
             var _error_not_found = this._error_not_found;
-            this._api.get(this._downloadUrl(), undefined, this._getExtraHeaders()).then(function (req) {
+            this._api.get(this._downloadUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters()).then(function (req) {
                 if (req.statusCode === 204) {
-                    defered.reject({ data: _error_not_found, statusCode: _httpStatusCodes2['default'].NOT_FOUND });
+                    defered.reject({
+                        data: _error_not_found,
+                        statusCode: _httpStatusCodes2['default'].NOT_FOUND
+                    });
                 } else {
-                    defered.resolve({ data: req, statusCode: req.statusCode });
+                    defered.resolve({
+                        data: req,
+                        statusCode: req.statusCode
+                    });
                 }
             })['catch'](function (error) {
                 defered.reject(error);

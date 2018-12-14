@@ -51,6 +51,8 @@ var BaseProvision = (function () {
         this._ogapi = ogapi;
         this._resource = 'provision' + resource;
         this._requiredParameters = requiredParameters;
+        this._headers = undefined;
+        this._urlParameters = undefined;
     }
 
     _createClass(BaseProvision, [{
@@ -92,8 +94,7 @@ var BaseProvision = (function () {
             //En muchas clases se genera this._resource en la llamada a la funcion this._composeElement()
 
             var _postElement = this._composeElement();
-
-            this._ogapi.Napi.post(this._resource, _postElement).then(function (res) {
+            this._ogapi.Napi.post(this._resource, _postElement, this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (res) {
                 if (res.statusCode === 201) {
                     if (typeof _this._onCreated === "function") {
                         _this._onCreated(res.header.location);
@@ -130,7 +131,7 @@ var BaseProvision = (function () {
         value: function _delete() {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            this._ogapi.Napi['delete'](this._buildURL()).then(function (res) {
+            this._ogapi.Napi['delete'](this._buildURL(), this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (res) {
                 if (res.statusCode === 200) {
                     defered.resolve({
                         statusCode: res.statusCode
@@ -162,7 +163,7 @@ var BaseProvision = (function () {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
 
-            this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement()).then(function (res) {
+            this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement(), this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (res) {
                 if (res.statusCode === 200) {
                     defered.resolve({
                         statusCode: res.statusCode
@@ -194,8 +195,7 @@ var BaseProvision = (function () {
 
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            var id = element;
-            this._ogapi.Napi.post(resource, element).then(function (res) {
+            this._ogapi.Napi.post(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (res) {
                 if (res.statusCode === 201) {
                     if (typeof _this2._onCreated === "function") {
                         _this2._onCreated(res.header.location);
@@ -235,6 +235,24 @@ var BaseProvision = (function () {
                 }
             } else {
                 this._headers = headers;
+            }
+        }
+    }, {
+        key: '_getUrlParameters',
+        value: function _getUrlParameters() {
+            return this._urlParameters;
+        }
+    }, {
+        key: '_setUrlParameters',
+        value: function _setUrlParameters(parameters) {
+            if (this.parameters) {
+                var keys = Object.keys(parameters);
+                for (var i = 0; i < keys.length; i++) {
+                    var key = keys[i];
+                    this._urlParameters[key] = parameters[key];
+                }
+            } else {
+                this._urlParameters = parameters;
             }
         }
     }]);

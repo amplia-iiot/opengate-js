@@ -225,7 +225,6 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
 import Search from &apos;../Search&apos;;
-import SearchBuilderError from &apos;../error/SearchBuilderError&apos;;
 
 const LIMIT_START_DEF_VALUE = 1;
 const LIMIT_SIZE_DEF_VALUE = 1000;
@@ -263,6 +262,7 @@ export default class SearchBuilder {
                 return this;
             };
         }
+        this._urlParams = {};
     }
 
     /**
@@ -356,9 +356,15 @@ export default class SearchBuilder {
                     }
                 }
 
-                if (!found) this._builderParams.sort.push({ name: filterField, type: typeSort });
+                if (!found) this._builderParams.sort.push({
+                    name: filterField,
+                    type: typeSort
+                });
             } else {
-                this._builderParams.sort.push({ name: filterField, type: typeSort });
+                this._builderParams.sort.push({
+                    name: filterField,
+                    type: typeSort
+                });
             }
         }
         return this;
@@ -403,7 +409,10 @@ export default class SearchBuilder {
         if (typeof size !== &quot;number&quot;) throw new Error(&apos;size parameter must be a number&apos;);
         if (typeof start !== &quot;number&quot; || start &lt; 1)
             start = LIMIT_START_DEF_VALUE;
-        this._builderParams.limit = { size: size, start: start };
+        this._builderParams.limit = {
+            size: size,
+            start: start
+        };
         return this;
     }
 
@@ -423,7 +432,8 @@ export default class SearchBuilder {
             this._buildSort(),
             this._buildGroup(),
             this._buildSelect(),
-            this._builderParams.timeout);
+            this._builderParams.timeout,
+            this._urlParams);
     }
 
     _buildFilter() {
@@ -461,7 +471,9 @@ export default class SearchBuilder {
                 }
             };
 
-        return { limit: this._builderParams.limit };
+        return {
+            limit: this._builderParams.limit
+        };
     }
 
     _buildSort() {

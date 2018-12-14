@@ -49,6 +49,7 @@ var BaseSearch = (function () {
         this._ogapi = ogapi;
         this._resource = 'search' + resource;
         this._headers = undefined;
+        this._urlParameters = undefined;
     }
 
     _createClass(BaseSearch, [{
@@ -69,6 +70,24 @@ var BaseSearch = (function () {
                 this._headers = headers;
             }
         }
+    }, {
+        key: '_getUrlParameters',
+        value: function _getUrlParameters() {
+            return this._urlParameters;
+        }
+    }, {
+        key: '_setUrlParameters',
+        value: function _setUrlParameters(parameters) {
+            if (this._urlParameters) {
+                var keys = Object.keys(parameters);
+                for (var i = 0; i < keys.length; i++) {
+                    var key = keys[i];
+                    this._urlParameters[key] = parameters[key];
+                }
+            } else {
+                this._urlParameters = parameters;
+            }
+        }
 
         /**
          * This invoke a request to OpenGate North API and the callback is managed by promises
@@ -81,10 +100,13 @@ var BaseSearch = (function () {
         value: function execute() {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            this._ogapi.Napi.post(this._resource, this._filter(), this._timeout, this._getExtraHeaders()).then(function (response) {
+            this._ogapi.Napi.post(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (response) {
                 var resultQuery = response.body;
                 var statusCode = response.statusCode;
-                defered.resolve({ data: resultQuery, statusCode: statusCode });
+                defered.resolve({
+                    data: resultQuery,
+                    statusCode: statusCode
+                });
             })['catch'](function (error) {
                 defered.reject(error);
             });
@@ -107,12 +129,17 @@ var BaseSearch = (function () {
             if (filter && filter.limit) {
                 delete filter.limit;
             }
-            this._setExtraHeaders({ 'Accept': 'text/plain' });
+            this._setExtraHeaders({
+                'Accept': 'text/plain'
+            });
 
-            this._ogapi.Napi.post(this._resource, filter, this._timeout, this._getExtraHeaders()).then(function (response) {
+            this._ogapi.Napi.post(this._resource, filter, this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (response) {
                 var resultQuery = response;
                 var statusCode = response.statusCode;
-                defered.resolve({ data: resultQuery, statusCode: statusCode });
+                defered.resolve({
+                    data: resultQuery,
+                    statusCode: statusCode
+                });
             })['catch'](function (error) {
                 defered.reject(error);
             });
@@ -128,7 +155,10 @@ var BaseSearch = (function () {
             var filter = this._filter();
 
             if (!filter.limit || !filter.limit.size) {
-                filter.limit = { size: LIMIT_SIZE_DEF_VALUE, start: 1 };
+                filter.limit = {
+                    size: LIMIT_SIZE_DEF_VALUE,
+                    start: 1
+                };
             } else {
                 filter.limit.start = 1;
             }
@@ -153,9 +183,12 @@ var BaseSearch = (function () {
                 console.log(JSON.stringify(filter));
                 if (_this.cancel || typeof _this.cancel === 'string') {
                     var message = typeof _this.cancel === 'string' ? _this.cancel : 'Cancel process';
-                    defered.reject({ data: message, statusCode: 403 });
+                    defered.reject({
+                        data: message,
+                        statusCode: 403
+                    });
                 } else {
-                    _this._ogapi.Napi.post(_this._resource, filter, _this._timeout, _this._getExtraHeaders()).then(function (response) {
+                    _this._ogapi.Napi.post(_this._resource, filter, _this._timeout, _this._getExtraHeaders(), _this._getUrlParameters()).then(function (response) {
                         var statusCode = response.statusCode;
                         var body = response.body;
                         if (!body && response.text) {
@@ -179,12 +212,21 @@ var BaseSearch = (function () {
                                 filter.limit.start += 1;
                                 loadAll();
                             } else {
-                                defered.resolve({ data: 'DONE', statusCode: 200 });
+                                defered.resolve({
+                                    data: 'DONE',
+                                    statusCode: 200
+                                });
                             }
                         } else {
                             if (paging) {
-                                defered.resolve({ data: 'DONE', statusCode: 200 });
-                            } else defered.reject({ data: body, statusCode: statusCode });
+                                defered.resolve({
+                                    data: 'DONE',
+                                    statusCode: 200
+                                });
+                            } else defered.reject({
+                                data: body,
+                                statusCode: statusCode
+                            });
                         }
                     })['catch'](function (error) {
                         defered.reject(error);

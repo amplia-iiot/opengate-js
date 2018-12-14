@@ -57,14 +57,26 @@ var EntitiesSearchBuilder = (function (_SearchWithSummaryBuilder) {
      * The response will return a flattened response
      * @example
      *	ogapi.entitiesSearchBuilder().flattened() 
-     * @return {FlattenedSearchBuilder} 
+     * @return {EntitiesSearchBuilder} 
      */
 
     _createClass(EntitiesSearchBuilder, [{
         key: 'flattened',
         value: function flattened() {
-            this._url = this._url + '?flattened=true';
+            this._urlParams.flattened = true;
+            return this;
+        }
 
+        /**
+         * The response will return a response without sorted
+         * @example
+         *	ogapi.entitiesSearchBuilder().disableDefaultSorted() 
+         * @return {EntitiesSearchBuilder} 
+         */
+    }, {
+        key: 'disableDefaultSorted',
+        value: function disableDefaultSorted() {
+            this._urlParams.defaultSorted = false;
             return this;
         }
     }, {
@@ -83,7 +95,7 @@ var EntitiesSearchBuilder = (function (_SearchWithSummaryBuilder) {
          * The search request will have this group by 
          * @example
          * @param {!(object)} group 
-         * @return {SearchBuilder} 
+         * @return {EntitiesSearchBuilder} 
          */
     }, {
         key: 'group',
@@ -103,7 +115,7 @@ var EntitiesSearchBuilder = (function (_SearchWithSummaryBuilder) {
          *      {"name": "device.temperature.value","fields": [{"field": "value","alias": "identifier"}]}]
          *   }) //Custom select
          * @param {!(SelectBuilder|object)} select
-         * @return {SearchBuilder} 
+         * @return {EntitiesSearchBuilder} 
          */
     }, {
         key: 'select',
@@ -124,7 +136,7 @@ var EntitiesSearchBuilder = (function (_SearchWithSummaryBuilder) {
         key: 'build',
         value: function build() {
             // OUW-944
-            return new _EntitySearch2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildLimit(), this._buildSort(), this._buildGroup(), this._buildSelect(), this._builderParams.timeout);
+            return new _EntitySearch2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildLimit(), this._buildSort(), this._buildGroup(), this._buildSelect(), this._builderParams.timeout, this._urlParams);
         }
     }]);
 

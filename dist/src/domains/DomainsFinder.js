@@ -43,7 +43,10 @@ var DomainFinder = (function (_ProvisionGenericFinder) {
     _createClass(DomainFinder, [{
         key: '_composeUrl',
         value: function _composeUrl() {
-            return this._baseUrl + "/" + this._name + '?hierarchy=' + this._hierarchy;
+            this._setUrlParameters({
+                hierarchy: this._hierarchy
+            });
+            return this._baseUrl + "/" + this._name;
         }
 
         /**

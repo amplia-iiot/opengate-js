@@ -56,9 +56,12 @@ export default class ChannelFinder extends ProvisionGenericFinder {
         let defered = q.defer();
         let promise = defered.promise;
 
-        this._executeWorkgroupRelation().then(function(request) {
+        this._executeWorkgroupRelation().then(function (request) {
             if (request.statusCode === 204) {
-                defered.reject({ data: _error_not_found, statusCode: HttpStatus.NO_CONTENT });
+                defered.reject({
+                    data: _error_not_found,
+                    statusCode: HttpStatus.NO_CONTENT
+                });
             } else {
                 let globalData = request.data;
                 let finalData = [];
@@ -70,9 +73,12 @@ export default class ChannelFinder extends ProvisionGenericFinder {
                     });
                 }
 
-                defered.resolve({ data: finalData, statusCode: request.statusCode });
+                defered.resolve({
+                    data: finalData,
+                    statusCode: request.statusCode
+                });
             }
-        }).catch(function(error) {
+        }).catch(function (error) {
             defered.reject(error);
         });
 
@@ -99,10 +105,13 @@ export default class ChannelFinder extends ProvisionGenericFinder {
         let defered = q.defer();
         let promise = defered.promise;
 
-        _this._executeWorkgroupRelation().then(function(request) {
+        _this._executeWorkgroupRelation().then(function (request) {
 
             if (request.statusCode === 204) {
-                defered.reject({ data: _error_not_found, statusCode: HttpStatus.NOT_FOUND });
+                defered.reject({
+                    data: _error_not_found,
+                    statusCode: HttpStatus.NOT_FOUND
+                });
             } else {
                 let globalData = request.data;
                 let finalData = [];
@@ -117,12 +126,18 @@ export default class ChannelFinder extends ProvisionGenericFinder {
                 }
 
                 if (finalData.length > 0) {
-                    defered.resolve({ data: finalData, statusCode: request.statusCode });
+                    defered.resolve({
+                        data: finalData,
+                        statusCode: request.statusCode
+                    });
                 } else {
-                    defered.reject({ data: _error_not_found, statusCode: HttpStatus.NOT_FOUND });
+                    defered.reject({
+                        data: _error_not_found,
+                        statusCode: HttpStatus.NOT_FOUND
+                    });
                 }
             }
-        }).catch(function(error) {
+        }).catch(function (error) {
             defered.reject(error);
         });
 
@@ -141,12 +156,18 @@ export default class ChannelFinder extends ProvisionGenericFinder {
         let promise = defered.promise;
 
         let _error_not_found = this._error_not_found;
-        this._api.get(workgroupsRelationsUrl, undefined, this._getExtraHeaders())
+        this._api.get(workgroupsRelationsUrl, undefined, this._getExtraHeaders(), this._getUrlParameters())
             .then((req) => {
                 if (req.statusCode === 204) {
-                    defered.reject({ data: _error_not_found, statusCode: HttpStatus.NOT_FOUND });
+                    defered.reject({
+                        data: _error_not_found,
+                        statusCode: HttpStatus.NOT_FOUND
+                    });
                 } else {
-                    defered.resolve({ data: req.body.workgroupRelation, statusCode: req.statusCode });
+                    defered.resolve({
+                        data: req.body.workgroupRelation,
+                        statusCode: req.statusCode
+                    });
                 }
             })
             .catch((error) => {

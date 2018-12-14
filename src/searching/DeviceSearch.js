@@ -13,8 +13,8 @@ export default class DeviceSearch extends Search {
      * @param {object} sort - this defined parameters to order the result of search
      * @param {object} group - this defined the group by
      */
-    constructor(ogapi, url, filter, limit, sort, group, select, timeout) {
-        super(ogapi, url, filter, limit, sort, group, select, timeout);
+    constructor(ogapi, url, filter, limit, sort, group, select, timeout, urlParams) {
+        super(ogapi, url, filter, limit, sort, group, select, timeout, urlParams);
     }
 
     /**
@@ -26,8 +26,9 @@ export default class DeviceSearch extends Search {
     execute() {
         var defered = q.defer();
         var promise = defered.promise;
+        var parameters = this._getUrlParameters();
         this._ogapi.Napi
-            .post(this._resource, this._filter(), this._timeout, this._getExtraHeaders())
+            .post(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), parameters)
             .then((response) => {
                 let resultQuery = response.body;
                 let statusCode = response.statusCode;
@@ -38,11 +39,8 @@ export default class DeviceSearch extends Search {
                     // OUW-944
                     if (resultQuery.devices.length > 0) {
 
-                        var ele, flattened = false;
-
-                        if (resultQuery.devices[0]['provision.administration.identifier']) {
-                            flattened = true;
-                        }
+                        var ele = false;
+                        var flattened = (parameters && parameters.flattened) || false;
 
                         for (ele = 0; ele < resultQuery.devices.length; ele++) {
                             if (flattened) {
@@ -64,7 +62,10 @@ export default class DeviceSearch extends Search {
 
                     delete resultQuery.entities;
                 }
-                defered.resolve({ data: resultQuery, statusCode: statusCode });
+                defered.resolve({
+                    data: resultQuery,
+                    statusCode: statusCode
+                });
             })
             .catch((error) => {
                 defered.reject(error);

@@ -39,6 +39,8 @@ var GenericFinder = (function () {
         this._entity = entity;
         this._error_not_found = error_not_found;
         this._id = undefined;
+        this._headers = undefined;
+        this._urlParameters = undefined;
     }
 
     /**
@@ -75,6 +77,24 @@ var GenericFinder = (function () {
                 this._headers = headers;
             }
         }
+    }, {
+        key: '_getUrlParameters',
+        value: function _getUrlParameters() {
+            return this._urlParameters;
+        }
+    }, {
+        key: '_setUrlParameters',
+        value: function _setUrlParameters(parameters) {
+            if (this.parameters) {
+                var keys = Object.keys(parameters);
+                for (var i = 0; i < keys.length; i++) {
+                    var key = keys[i];
+                    this._urlParameters[key] = parameters[key];
+                }
+            } else {
+                this._urlParameters = parameters;
+            }
+        }
 
         /**
          * @return {Promise}
@@ -88,16 +108,26 @@ var GenericFinder = (function () {
             var _entity = this._entity;
             var _error_not_found = this._error_not_found;
             //console.log("URL: " + this._composeUrl());
-            this._api.get(this._composeUrl(), undefined, this._getExtraHeaders()).then(function (req) {
+            this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters()).then(function (req) {
                 //console.log("STATUS_CODE: " + JSON.stringify(req));
                 if (req.statusCode === 204) {
-                    defered.reject({ error: _error_not_found, statusCode: _httpStatusCodes2['default'].NOT_FOUND });
+                    defered.reject({
+                        error: _error_not_found,
+                        statusCode: _httpStatusCodes2['default'].NOT_FOUND
+                    });
                 } else {
                     if (req.body.syncCache) {
-                        defered.resolve({ data: req.body[_entity], statusCode: req.statusCode, syncCache: req.body.syncCache });
+                        defered.resolve({
+                            data: req.body[_entity],
+                            statusCode: req.statusCode,
+                            syncCache: req.body.syncCache
+                        });
                     } else {
                         var data = req.body[_entity];
-                        defered.resolve({ data: data ? data : req.body, statusCode: req.statusCode });
+                        defered.resolve({
+                            data: data ? data : req.body,
+                            statusCode: req.statusCode
+                        });
                     }
                 }
             })['catch'](function (error) {

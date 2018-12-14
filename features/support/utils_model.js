@@ -284,9 +284,6 @@ module.exports = {
             "ticket search": function (ogapi) {
                 return ogapi.ticketsSearchBuilder();
             },
-            "entities search": function (ogapi) {
-                return ogapi.entitiesSearchBuilder();
-            },
             "Country Codes search": function (ogapi) {
                 return ogapi.countryCodesSearchBuilder();
             },

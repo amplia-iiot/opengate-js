@@ -81,12 +81,25 @@ var PreFilteredSearchBuilder = (function (_FlattenedSearchBuilder) {
          *      ]
          *  }) //Custom select
          * @param {!(SelectBuilder|object)} select
-         * @return {SearchBuilder} 
+         * @return {PreFilteredSearchBuilder} 
          */
     }, {
         key: 'select',
         value: function select(_select) {
             this._builderParams.select = _select || [];
+            return this;
+        }
+
+        /**
+         * The response will return a response without sorted
+         * @example
+         *	ogapi.assetsSearchBuilder().disableDefaultSorted() 
+         * @return {PreFilteredSearchBuilder} 
+         */
+    }, {
+        key: 'disableDefaultSorted',
+        value: function disableDefaultSorted() {
+            this._urlParams.defaultSorted = false;
             return this;
         }
     }]);

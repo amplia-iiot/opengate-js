@@ -46,9 +46,12 @@ export default class OrganizationFinder extends ProvisionGenericFinder {
         let promise = defered.promise;
         let _error_not_found = this._error_not_found;
 
-        this._executeWorkgroupRelation().then(function(request) {
+        this._executeWorkgroupRelation().then(function (request) {
             if (request.statusCode === 204) {
-                defered.reject({ data: _error_not_found, statusCode: HttpStatus.NOT_FOUND });
+                defered.reject({
+                    data: _error_not_found,
+                    statusCode: HttpStatus.NOT_FOUND
+                });
             } else {
                 let globalData = request.data;
                 let organizations = {};
@@ -57,18 +60,26 @@ export default class OrganizationFinder extends ProvisionGenericFinder {
                 for (let idx in globalData.channels) {
                     if (!organizations[globalData.channels[idx].organization]) {
                         organizations[globalData.channels[idx].organization] = globalData.channels[idx].organization;
-                        finalData.push({ "name": globalData.channels[idx].organization });
+                        finalData.push({
+                            "name": globalData.channels[idx].organization
+                        });
                     }
 
                 }
 
                 if (finalData.length > 0) {
-                    defered.resolve({ data: finalData, statusCode: request.statusCode });
+                    defered.resolve({
+                        data: finalData,
+                        statusCode: request.statusCode
+                    });
                 } else {
-                    defered.reject({ data: _error_not_found, statusCode: HttpStatus.NOT_FOUND });
+                    defered.reject({
+                        data: _error_not_found,
+                        statusCode: HttpStatus.NOT_FOUND
+                    });
                 }
             }
-        }).catch(function(error) {
+        }).catch(function (error) {
             defered.reject(error);
         });
 
@@ -87,12 +98,18 @@ export default class OrganizationFinder extends ProvisionGenericFinder {
         let promise = defered.promise;
 
         let _error_not_found = this._error_not_found;
-        this._api.get(workgroupsRelationsUrl, undefined, this._getExtraHeaders())
+        this._api.get(workgroupsRelationsUrl, undefined, this._getExtraHeaders(), this._getUrlParameters())
             .then((req) => {
                 if (req.statusCode === 204) {
-                    defered.reject({ data: _error_not_found, statusCode: HttpStatus.NOT_FOUND });
+                    defered.reject({
+                        data: _error_not_found,
+                        statusCode: HttpStatus.NOT_FOUND
+                    });
                 } else {
-                    defered.resolve({ data: req.body.workgroupRelation, statusCode: req.statusCode });
+                    defered.resolve({
+                        data: req.body.workgroupRelation,
+                        statusCode: req.statusCode
+                    });
                 }
             })
             .catch((error) => {

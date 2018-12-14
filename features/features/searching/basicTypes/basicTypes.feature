@@ -3,6 +3,8 @@
 @searching_basicTypes
 @basicTypes
 @sigfox
+@urlParameters
+
 Feature: Searching basicTypes
   As a user of JsApi
   I want to search into basicTypes collection

@@ -5,6 +5,8 @@
 @select-fields
 @download_csv
 @csv
+@urlParameters
+@disableOrder
 Feature: Searching asset
   As a user of JsApi
   I want to search into asset collection
@@ -24,7 +26,7 @@ Feature: Searching asset
   Scenario: Creating an organization to use in create device
     Given an ogapi "organizations builder" util
     Then I want to create an "organization"
-    And the "name" "asset_organization_searching"
+    And the "name" "asset_organization_searching_10"
     And the "description" "asset organization"
     And the "country code" "ES"
     And the "lang code" "es"
@@ -36,15 +38,15 @@ Feature: Searching asset
     And response code should be: 201
 
   Scenario: I want to get the allowed datastream
-    Given the entity of type "asset builder" with "asset_organization_searching"
+    Given the entity of type "asset builder" with "asset_organization_searching_10"
     And I get allowed Datastreams fields
     And I can found "provision.asset.identifier" as datastream name
     When I try to define the entity with...
-      | datastream                            | typeFunction | value                        | parent |
-      | provision.administration.channel      | simple       | default_channel              |        |
-      | provision.administration.organization | simple       | asset_organization_searching |        |
-      | provision.administration.serviceGroup | simple       | emptyServiceGroup            |        |
-      | provision.asset.identifier            | simple       | asset_ogapi_search           |        |
+      | datastream                            | typeFunction | value                           | parent |
+      | provision.administration.channel      | simple       | default_channel                 |        |
+      | provision.administration.organization | simple       | asset_organization_searching_10 |        |
+      | provision.administration.serviceGroup | simple       | emptyServiceGroup               |        |
+      | provision.asset.identifier            | simple       | asset_ogapi_search              |        |
     Then I create it
     And response code should be: 201
 
@@ -64,6 +66,13 @@ Feature: Searching asset
     Then response code should be: 200
     Then does not throws an error
 
+  Scenario: Execute searching with a flattened response and disable order response
+    And an ogapi "asset search" util
+    When I build it with flattened and disable order response
+    And I execute it
+    Then response code should be: 200
+    Then does not throws an error
+
   Scenario: I want to obtain the summary
     And an ogapi "asset search" util
     When I build it with summary response
@@ -72,10 +81,10 @@ Feature: Searching asset
     Then does not throws an error
 
   Scenario: I want to download csv
-    And an ogapi "asset search" util with "asset_organization_searching"
+    And an ogapi "asset search" util with "asset_organization_searching_10"
     When I add a filter and with
-      | operator | key                                   | value                        |
-      | eq       | provision.administration.organization | asset_organization_searching |
+      | operator | key                                   | value                           |
+      | eq       | provision.administration.organization | asset_organization_searching_10 |
 
     When I build it with select...
       | datastreamId               | fields                                   |
@@ -93,7 +102,7 @@ Feature: Searching asset
 
 
   Scenario: I want to delete the entity
-    Given the entity of type "asset builder" with "asset_organization_searching"
+    Given the entity of type "asset builder" with "asset_organization_searching_10"
     When I try to define the entity with...
       | datastream                 | typeFunction | value              | parent |
       | provision.asset.identifier | simple       | asset_ogapi_search |        |
@@ -103,6 +112,6 @@ Feature: Searching asset
   Scenario: Deleting an organization
     Given an ogapi "organizations builder" util
     Then I want to delete an "organization"
-    And the "name" "asset_organization_searching"
+    And the "name" "asset_organization_searching_10"
     Then I delete it
     And response code should be: 200

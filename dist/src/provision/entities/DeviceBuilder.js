@@ -34,9 +34,7 @@ var _jsonpath = require('jsonpath');
 
 var _jsonpath2 = _interopRequireDefault(_jsonpath);
 
-var ID = 'provision.device.identifier',
-    PUT_METHOD = 'PUT',
-    POST_METHOD = 'POST';
+var ID = 'provision.device.identifier';
 
 var BoxBuilder = (function () {
     function BoxBuilder(ogapi, obj, url, key) {
@@ -145,7 +143,9 @@ var BoxBuilder = (function () {
                     type: 'success',
                     percentage: 25
                 });
-                return _this._ogapi.Napi.post(_this._url, postObj).then(function (res) {
+                return _this._ogapi.Napi.post(_this._url, postObj, null, null, {
+                    flattened: true
+                }).then(function (res) {
                     defer.notify({
                         entity: _this._key._value._current.value,
                         message: 'OGAPI_DEVICE_CREATED',
@@ -382,7 +382,9 @@ var WrapperBuilder = (function () {
             return defer.promise;
 
             function create(defered, defer, percentage) {
-                _this._ogapi.Napi.post(_this._url, _this._obj).then(function (res) {
+                _this._ogapi.Napi.post(_this._url, _this._obj, null, null, {
+                    flattened: true
+                }).then(function (res) {
                     _this._created = true;
                     defered.notify({
                         entity: _this._key,

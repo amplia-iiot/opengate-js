@@ -254,6 +254,7 @@ export default class BaseSearch {
         this._ogapi = ogapi;
         this._resource = &apos;search&apos; + resource;
         this._headers = undefined;
+        this._urlParameters = undefined;
     }
 
     _getExtraHeaders() {
@@ -263,12 +264,28 @@ export default class BaseSearch {
     _setExtraHeaders(headers) {
         if (this._headers) {
             var keys = Object.keys(headers);
-            for (var i = 0; i &lt; keys.length; i++){
+            for (var i = 0; i &lt; keys.length; i++) {
                 var key = keys[i];
                 this._headers[key] = headers[key];
             }
         } else {
             this._headers = headers;
+        }
+    }
+
+    _getUrlParameters() {
+        return this._urlParameters;
+    }
+
+    _setUrlParameters(parameters) {
+        if (this._urlParameters) {
+            var keys = Object.keys(parameters);
+            for (var i = 0; i &lt; keys.length; i++) {
+                var key = keys[i];
+                this._urlParameters[key] = parameters[key];
+            }
+        } else {
+            this._urlParameters = parameters;
         }
     }
 
@@ -282,11 +299,14 @@ export default class BaseSearch {
         var defered = q.defer();
         var promise = defered.promise;
         this._ogapi.Napi
-            .post(this._resource, this._filter(), this._timeout, this._getExtraHeaders())
+            .post(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), this._getUrlParameters())
             .then((response) =&gt; {
                 let resultQuery = response.body;
                 let statusCode = response.statusCode;
-                defered.resolve({ data: resultQuery, statusCode: statusCode });
+                defered.resolve({
+                    data: resultQuery,
+                    statusCode: statusCode
+                });
             })
             .catch((error) =&gt; {
                 defered.reject(error);
@@ -308,13 +328,18 @@ export default class BaseSearch {
         if (filter &amp;&amp; filter.limit) {
             delete filter.limit;
         }
-        this._setExtraHeaders({ &apos;Accept&apos;: &apos;text/plain&apos; });
+        this._setExtraHeaders({
+            &apos;Accept&apos;: &apos;text/plain&apos;
+        });
 
-        this._ogapi.Napi.post(this._resource, filter, this._timeout, this._getExtraHeaders())
+        this._ogapi.Napi.post(this._resource, filter, this._timeout, this._getExtraHeaders(), this._getUrlParameters())
             .then((response) =&gt; {
                 let resultQuery = response;
                 let statusCode = response.statusCode;
-                defered.resolve({ data: resultQuery, statusCode: statusCode });
+                defered.resolve({
+                    data: resultQuery,
+                    statusCode: statusCode
+                });
             })
             .catch((error) =&gt; {
                 defered.reject(error);
@@ -329,7 +354,10 @@ export default class BaseSearch {
         var filter = this._filter();
 
         if (!filter.limit || !filter.limit.size) {
-            filter.limit = { size: LIMIT_SIZE_DEF_VALUE, start: 1 };
+            filter.limit = {
+                size: LIMIT_SIZE_DEF_VALUE,
+                start: 1
+            };
         } else {
             filter.limit.start = 1;
         }
@@ -353,10 +381,13 @@ export default class BaseSearch {
             console.log(JSON.stringify(filter));
             if (_this.cancel || typeof _this.cancel === &apos;string&apos;) {
                 var message = typeof _this.cancel === &apos;string&apos; ? _this.cancel : &apos;Cancel process&apos;;
-                defered.reject({ data: message, statusCode: 403 });
+                defered.reject({
+                    data: message,
+                    statusCode: 403
+                });
             } else {
                 _this._ogapi.Napi
-                    .post(_this._resource, filter, _this._timeout, _this._getExtraHeaders())
+                    .post(_this._resource, filter, _this._timeout, _this._getExtraHeaders(), _this._getUrlParameters())
                     .then((response) =&gt; {
                         let statusCode = response.statusCode;
                         let body = response.body;
@@ -381,13 +412,22 @@ export default class BaseSearch {
                                 filter.limit.start += 1;
                                 loadAll();
                             } else {
-                                defered.resolve({ data: &apos;DONE&apos;, statusCode: 200 });
+                                defered.resolve({
+                                    data: &apos;DONE&apos;,
+                                    statusCode: 200
+                                });
                             }
                         } else {
                             if (paging) {
-                                defered.resolve({ data: &apos;DONE&apos;, statusCode: 200 });
+                                defered.resolve({
+                                    data: &apos;DONE&apos;,
+                                    statusCode: 200
+                                });
                             } else
-                                defered.reject({ data: body, statusCode: statusCode });
+                                defered.reject({
+                                    data: body,
+                                    statusCode: statusCode
+                                });
                         }
                     })
                     .catch((error) =&gt; {

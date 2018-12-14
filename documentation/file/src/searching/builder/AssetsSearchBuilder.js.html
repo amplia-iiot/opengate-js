@@ -282,7 +282,7 @@ export default class AssetsSearchBuilder extends PreFilteredSearchBuilder {
      * The search request will have this group by 
      * @example
      * @param {!(object)} group 
-     * @return {SearchBuilder} 
+     * @return {AssetsSearchBuilder} 
      */
     group(group) {
         this._builderParams.group = (group || {});
@@ -319,7 +319,7 @@ export default class AssetsSearchBuilder extends PreFilteredSearchBuilder {
      *      {&quot;name&quot;: &quot;device.temperature.value&quot;,&quot;fields&quot;: [{&quot;field&quot;: &quot;value&quot;,&quot;alias&quot;: &quot;identifier&quot;}]}]
      *   }) //Custom select
      * @param {!(SelectBuilder|object)} select
-     * @return {SearchBuilder} 
+     * @return {AssetsSearchBuilder} 
      */
     select(select) {
         this._builderParams.select = (select || undefined);

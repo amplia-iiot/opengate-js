@@ -20,6 +20,7 @@ export default class BasicTypesSearchBuilder {
         this._headers = undefined;
         this._og_basic_types = {};
         this.publicParameters = false;
+        this._urlParameters = undefined;
     }
     _getExtraHeaders() {
         return this._headers;
@@ -37,6 +38,22 @@ export default class BasicTypesSearchBuilder {
         }
     }
 
+    _getUrlParameters() {
+        return this._urlParameters;
+    }
+
+    _setUrlParameters(parameters) {
+        if (this.parameters) {
+            var keys = Object.keys(parameters);
+            for (var i = 0; i < keys.length; i++) {
+                var key = keys[i];
+                this._urlParameters[key] = parameters[key];
+            }
+        } else {
+            this._urlParameters = parameters;
+        }
+    }
+
     /**
      * This invoke a request to OpenGate North API and the callback is managed by promises
      * @return {Promise}
@@ -50,14 +67,14 @@ export default class BasicTypesSearchBuilder {
             'Accept': 'application/json'
         });
         this._ogapi.Napi
-            .get(this._resource, this._timeout, this._getExtraHeaders())
+            .get(this._resource, this._timeout, this._getExtraHeaders(), this._getUrlParameters())
             .then((response) => {
                 var resultQuery = response.body;
                 let statusCode = response.statusCode;
                 this._og_basic_types = resultQuery;
 
                 var nodes = jp.apply(this._og_basic_types, "$..['$ref']",
-                    function(value, path) {
+                    function (value, path) {
                         let newPath = '$..' + value.replace('#/definitions/', '');
                         var newValue = jp.query(resultQuery, newPath);
                         return newValue[0];

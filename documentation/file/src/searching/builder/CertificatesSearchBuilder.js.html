@@ -284,20 +284,11 @@ export default class CertificatesSearchBuilder extends SearchBuilder {
 
     _buildUrl() {
         let url = this._url;
-        let params;
         if (this._fetch === true) {
-            params = &quot;?fetch=1&quot;;
+            this._urlParams.fetch = 1;
         }
         if (this._assignable === true) {
-            if (typeof params === &quot;undefined&quot;) {
-                params = &quot;?&quot;;
-            } else {
-                params = params + &quot;&amp;&quot;;
-            }
-            params = params + &quot;visibility=assignable&quot;;
-        }
-        if (typeof params === &quot;string&quot;) {
-            url = url + params;
+            this._urlParams.visibility = &apos;assignable&apos;;
         }
         return url;
     }
