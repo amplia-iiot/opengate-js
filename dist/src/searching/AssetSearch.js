@@ -38,10 +38,10 @@ var AssetSearch = (function (_Search) {
      * @param {object} group - this defined the group by
      */
 
-    function AssetSearch(ogapi, url, filter, limit, sort, group, select, timeout) {
+    function AssetSearch(ogapi, url, filter, limit, sort, group, select, timeout, urlParams) {
         _classCallCheck(this, AssetSearch);
 
-        _get(Object.getPrototypeOf(AssetSearch.prototype), 'constructor', this).call(this, ogapi, url, filter, limit, sort, group, select, timeout);
+        _get(Object.getPrototypeOf(AssetSearch.prototype), 'constructor', this).call(this, ogapi, url, filter, limit, sort, group, select, timeout, urlParams);
     }
 
     /**
@@ -57,7 +57,9 @@ var AssetSearch = (function (_Search) {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
             //console.log(JSON.stringify(this._filter()));
-            this._ogapi.Napi.post(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (response) {
+            var parameters = this._getUrlParameters();
+
+            this._ogapi.Napi.post(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), parameters).then(function (response) {
                 var resultQuery = response.body;
                 var statusCode = response.statusCode;
 
