@@ -14,7 +14,7 @@ export default class AssetsSearchBuilder extends PreFilteredSearchBuilder {
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */
     constructor(parent) {
-        super(parent, {}, new FieldFinder(parent, 'entity-asset'));
+        super(parent, {}, new FieldFinder(parent, BASE_URL));
         this._url = BASE_URL;
     }
 
