@@ -110,7 +110,7 @@ var AssetsSearchBuilder = (function (_PreFilteredSearchBuilder) {
     }, {
         key: 'build',
         value: function build() {
-            return new _AssetSearch2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildLimit(), this._buildSort(), this._buildGroup(), this._buildSelect(), this._builderParams.timeout);
+            return new _AssetSearch2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildLimit(), this._buildSort(), this._buildGroup(), this._buildSelect(), this._builderParams.timeout, this._urlParams);
         }
 
         /**
