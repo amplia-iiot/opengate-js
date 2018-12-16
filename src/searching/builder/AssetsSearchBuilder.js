@@ -81,7 +81,7 @@ export default class AssetsSearchBuilder extends PreFilteredSearchBuilder {
             this._buildSort(),
             this._buildGroup(),
             this._buildSelect(),
-            this._builderParams.timeout);
+            this._builderParams.timeout, this._urlParams);
     }
 
     /**
