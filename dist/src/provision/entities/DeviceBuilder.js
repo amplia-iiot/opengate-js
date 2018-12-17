@@ -103,8 +103,7 @@ var BoxBuilder = (function () {
     _createClass(BoxBuilder, [{
         key: '_urlWithKey',
         value: function _urlWithKey() {
-            var splitted = this._url;
-            return splitted[0] + '/' + this._key._value._current.value;
+            return this._url + '/' + this._key._value._current.value;
         }
     }, {
         key: 'create',
@@ -346,8 +345,7 @@ var WrapperBuilder = (function () {
     _createClass(WrapperBuilder, [{
         key: '_urlWithKey',
         value: function _urlWithKey() {
-            var splitted = this._url;
-            return splitted[0] + '/' + this._key;
+            return this._url + '/' + this._key;
         }
     }, {
         key: '_checkExists',
