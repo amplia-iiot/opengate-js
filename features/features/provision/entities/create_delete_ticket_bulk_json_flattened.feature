@@ -9,7 +9,7 @@
 @OUW-1750
 @OUW-1807
 @urlParameters
-
+#@fail_bulk
 Feature: Delete and Create a ticket
   As a ticket of JsApi
   I want to create a ticket using json file

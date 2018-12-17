@@ -2,6 +2,7 @@
 @provision
 @create_provision
 @tickets_provision
+@bulk
 @bulk_ticket_json_response_csv
 @bulk_json_response_csv
 @bulk_ticket_response_csv
@@ -11,7 +12,7 @@
 @OUW-1750
 @OUW-1807
 @urlParameters
-
+#@fail_bulk
 Feature: Delete and Create a ticket
   As a ticket of JsApi
   I want to create a ticket using json file

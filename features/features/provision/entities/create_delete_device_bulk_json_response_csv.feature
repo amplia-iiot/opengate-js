@@ -10,7 +10,7 @@
 @bulk_entities
 @csv
 @urlParameters
-
+#@fail_bulk
 Feature: Delete and Create a device
   As a device of JsApi
   I want to create a device using json file
