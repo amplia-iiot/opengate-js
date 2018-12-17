@@ -39,7 +39,10 @@ export default class Bundles extends BaseProvision {
      */
     withVersion(version) {
         if (typeof version !== 'string' || version.length > 50)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'version' });
+            throw new Error({
+                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50",
+                parameter: 'version'
+            });
         this._version = version;
         return this;
     }
@@ -63,19 +66,22 @@ export default class Bundles extends BaseProvision {
      * @return {Bundles}
      */
     withWorkgroup(workgroup) {
-            if (typeof workgroup !== 'string')
-                throw new Error('Parameter workgroup must be a string');
-            this._workgroup = workgroup;
-            return this;
-        }
-        /**
-         * Set the description attribute
-         * @param {string} description 
-         * @return {Bundles}
-         */
+        if (typeof workgroup !== 'string')
+            throw new Error('Parameter workgroup must be a string');
+        this._workgroup = workgroup;
+        return this;
+    }
+    /**
+     * Set the description attribute
+     * @param {string} description 
+     * @return {Bundles}
+     */
     withDescription(description) {
         if (typeof description !== 'string' || description.length > 250)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250", parameter: 'description' });
+            throw new Error({
+                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250",
+                parameter: 'description'
+            });
         this._description = description;
         return this;
     }
@@ -97,7 +103,7 @@ export default class Bundles extends BaseProvision {
         }
         let not_found = [];
         for (var i = 0; i < actions.length; i++) {
-            let found = ACTION_ENUM.find(function(action) {
+            let found = ACTION_ENUM.find(function (action) {
                 return action == this;
             }, actions[i]);
             if (typeof found === "undefined") {
@@ -137,7 +143,10 @@ export default class Bundles extends BaseProvision {
      */
     withUserNotes(userNotes) {
         if (typeof userNotes !== 'string' || userNotes.length > 250)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250", parameter: 'notes' });
+            throw new Error({
+                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250",
+                parameter: 'notes'
+            });
         this._userNotes = userNotes;
         return this;
     }
@@ -195,12 +204,21 @@ export default class Bundles extends BaseProvision {
     activate() {
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Napi.put(this._buildURL(), { bundle: { active: true } })
+        this._ogapi.Napi.put(this._buildURL(), {
+                bundle: {
+                    active: true
+                }
+            }, undefined, this._getExtraHeaders(), this._getUrlParameters())
             .then((res) => {
                 if (res.statusCode === 200) {
-                    defered.resolve({ statusCode: res.statusCode });
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
                 } else {
-                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
                 }
             })
             .catch((error) => {
@@ -221,13 +239,22 @@ export default class Bundles extends BaseProvision {
     deactivate() {
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Napi.put(this._buildURL(), { bundle: { active: false } }, undefined)
+        this._ogapi.Napi.put(this._buildURL(), {
+                bundle: {
+                    active: false
+                }
+            }, undefined, this._getExtraHeaders(), this._getUrlParameters())
             .then((res) => {
                 //console.log(JSON.stringify(res));
                 if (res.statusCode === 200) {
-                    defered.resolve({ statusCode: res.statusCode });
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
                 } else {
-                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
                 }
             })
             .catch((error) => {
@@ -299,28 +326,28 @@ export default class Bundles extends BaseProvision {
         }
 
         _this._allPromisesOk = true;
-        let onCreateBundle = function(res) {
+        let onCreateBundle = function (res) {
             if (res.statusCode === 201) {
                 let bundleLocation = res;
                 if (_this._deploymentElements && _this._deploymentElements.length > 0) {
                     //console.log("previa de 2: ");
                     let dePromises = [];
-                    _this._deploymentElements.forEach(function(deTmp) {
+                    _this._deploymentElements.forEach(function (deTmp) {
                         dePromises.push(deTmp.deploy());
                     });
 
                     // update de bundle
-                    Promise.all(dePromises).then(function() {
+                    Promise.all(dePromises).then(function () {
                         if (_this._allPromisesOk) {
 
-                            _this.activate().then(function(status, data) {
+                            _this.activate().then(function (status, data) {
                                 defered.resolve(bundleLocation);
-                            }).catch(function(err) {
+                            }).catch(function (err) {
                                 defered.reject(err);
                             });
 
                         }
-                    }).catch(function(err) {
+                    }).catch(function (err) {
                         _this._allPromisesOk = false;
                         onCreateBundleError(err);
                     });
@@ -328,11 +355,13 @@ export default class Bundles extends BaseProvision {
                     defered.resolve(bundleLocation);
                 }
             } else {
-                onCreateBundleError({ "statusCode": res.statusCode });
+                onCreateBundleError({
+                    "statusCode": res.statusCode
+                });
             }
         };
 
-        let onCreateBundleError = function(err) {
+        let onCreateBundleError = function (err) {
             //console.log("Create error: " + JSON.stringify(err));
             //console.log('borrando bundle');
             _this.delete();
@@ -363,16 +392,18 @@ export default class Bundles extends BaseProvision {
         let defered = q.defer();
         let promise = defered.promise;
 
-        let onCreateBundle = function(res) {
+        let onCreateBundle = function (res) {
             if (res.statusCode === 201) {
                 //console.log("OK1: " + JSON.stringify(res));
                 defered.resolve(res);
             } else {
-                onCreateBundleError({ "statusCode": res.statusCode });
+                onCreateBundleError({
+                    "statusCode": res.statusCode
+                });
             }
         };
 
-        let onCreateBundleError = function(err) {
+        let onCreateBundleError = function (err) {
             //console.log(JSON.stringify(err));
             //console.log('borrando bundle')
             defered.reject(err);
@@ -380,19 +411,25 @@ export default class Bundles extends BaseProvision {
 
         // Se intenta crear primero el bundle
         let bundleFinder = _this._ogapi.newBundleFinder().findByNameAndVersion(_this._name, _this._version)
-            .then(function(ok) {
+            .then(function (ok) {
                 if (ok[1] === 204) {
                     //console.log("asdhflkasdfj 1");
                     super.create().then(onCreateBundle).catch(onCreateBundleError);
                 } else {
-                    defered.reject({ "errors": "OGAPI_400_BUNDLE_EXIST", "statusCode": 400 });
+                    defered.reject({
+                        "errors": "OGAPI_400_BUNDLE_EXIST",
+                        "statusCode": 400
+                    });
                 }
-            }).catch(function(err) {
+            }).catch(function (err) {
                 if (err.statusCode === 404) {
                     //console.log("asdhflkasdfj 2");
                     super.create().then(onCreateBundle).catch(onCreateBundleError);
                 } else {
-                    defered.reject({ "errors": "OGAPI_400_BUNDLE_EXIST", "statusCode": 400 });
+                    defered.reject({
+                        "errors": "OGAPI_400_BUNDLE_EXIST",
+                        "statusCode": 400
+                    });
                 }
 
             });
@@ -417,12 +454,17 @@ export default class Bundles extends BaseProvision {
         delete bundleUpdate.bundle.workgroup;
         delete bundleUpdate.bundle.hardware;
 
-        this._ogapi.Napi.put(this._buildURL(), bundleUpdate)
+        this._ogapi.Napi.put(this._buildURL(), bundleUpdate, undefined, this._getExtraHeaders(), this._getUrlParameters())
             .then((res) => {
                 if (res.statusCode === 200) {
-                    defered.resolve({ statusCode: res.statusCode });
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
                 } else {
-                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
                 }
             })
             .catch((error) => {

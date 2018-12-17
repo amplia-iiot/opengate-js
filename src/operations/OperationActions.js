@@ -222,9 +222,17 @@ export default class OperationActions {
             .then((response) => {
                 //console.log("cancel response: " + JSON.stringify(response));
                 if (response.statusCode === 200) {
-                    defered.resolve({ statusCode: response.statusCode, data: { id: this._id } });
+                    defered.resolve({
+                        statusCode: response.statusCode,
+                        data: {
+                            id: this._id
+                        }
+                    });
                 } else {
-                    defered.reject({ errors: response.errors, statusCode: response.statusCode });
+                    defered.reject({
+                        errors: response.errors,
+                        statusCode: response.statusCode
+                    });
                 }
             })
             .catch((error) => {
@@ -242,17 +250,21 @@ export default class OperationActions {
         //console.log(_this._operationId);
         //console.log("OPERATION_ID: " + this._operationId);
         _this._ogapi.newOperationFinder().findById(_this._operationId)
-            .then(function(response) {
+            .then(function (response) {
                 var data = response.data;
                 if (!data || Object.keys(data).length == 0) {
                     //console.log("BUG");
                     //BUG http://cm.amplia.es/jira/browse/ODMQA-1057
-                    defered.reject({ errors: "Operation with id " + _this._operationId + " not exists" });
+                    defered.reject({
+                        errors: "Operation with id " + _this._operationId + " not exists"
+                    });
                 } else {
                     //console.log("RESPONSE_DATA: " + JSON.stringify(data));
                     let periodicityId = data.taskId;
                     if (!periodicityId) {
-                        defered.reject({ errors: "Operation is not periodic!" });
+                        defered.reject({
+                            errors: "Operation is not periodic!"
+                        });
                     } else {
                         _this._resource = _this._resource + periodicityId;
                         //console.log("RESOURCE_DATA: " + _this._resource);
@@ -260,28 +272,30 @@ export default class OperationActions {
                             case "PAUSE":
                             case "ACTIVE":
                                 _this._update(config)
-                                    .then(function(response) {
+                                    .then(function (response) {
                                         defered.resolve(response);
-                                    }).catch(function(error) {
+                                    }).catch(function (error) {
                                         defered.reject(error);
                                     });
                                 break;
                             case "CANCEL":
                                 _this._id = periodicityId;
                                 _this._cancel()
-                                    .then(function(response) {
+                                    .then(function (response) {
                                         defered.resolve(response);
-                                    }).catch(function(error) {
+                                    }).catch(function (error) {
                                         defered.reject(error);
                                     });
                                 break;
                             default:
-                                defered.reject({ errors: "Not implemented action: " + action });
+                                defered.reject({
+                                    errors: "Not implemented action: " + action
+                                });
                         }
                     }
                 }
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 //console.log("ERROR: " + error);
                 defered.reject(error);
             });
@@ -306,7 +320,7 @@ export default class OperationActions {
         let promise = defered.promise;
         var _this = this;
         _this._ogapi.newOperationFinder().findById(_this._operationId).then(
-            function(response) {
+            function (response) {
                 //console.log("_readAndUpdate find response: " + JSON.stringify(response));
                 var data = response.data;
                 if (!data) {
@@ -316,30 +330,30 @@ export default class OperationActions {
                     let active = data.operation ? data.operation.active : false;
                     if (active) {
                         _this.pause().then(
-                            function(response) {
+                            function (response) {
                                 _this._update(config, forceToActivate || active).then(
-                                    function(response) {
+                                    function (response) {
                                         defered.resolve(response);
                                     }
                                 ).catch(
-                                    function(error) {
+                                    function (error) {
                                         defered.reject(_this._formatError(error));
                                     }
                                 );
                             }
                         ).catch(
-                            function(error) {
+                            function (error) {
                                 defered.reject(_this._formatError(error));
                             }
                         );
 
                     } else {
                         _this._update(config, forceToActivate || active).then(
-                            function(response) {
+                            function (response) {
                                 defered.resolve(response);
                             }
                         ).catch(
-                            function(error) {
+                            function (error) {
                                 defered.reject(_this._formatError(error));
                             }
                         );
@@ -347,7 +361,7 @@ export default class OperationActions {
                 }
             }
         ).catch(
-            function(error) {
+            function (error) {
                 //console.log("_readAndUpdate find error: " + JSON.stringify(error));
                 defered.reject(_this._formatError(error));
             }
@@ -384,21 +398,27 @@ export default class OperationActions {
                 //console.log("_update response: " + JSON.stringify(response));
                 if (forceToActivate) {
                     _this.active().then(
-                        function(response) {
+                        function (response) {
                             defered.resolve(response);
                         }
                     ).catch(
-                        function(error) {
+                        function (error) {
                             defered.reject(this._formatError(error));
                         }
                     );
                 } else {
                     if (response.status === 200) {
                         let data = response.text != "" ? JSON.parse(response.text) : {};
-                        let _response = { statusCode: response.status, data: data };
+                        let _response = {
+                            statusCode: response.status,
+                            data: data
+                        };
                         defered.resolve(response);
                     } else {
-                        defered.reject({ errors: response.errors, statusCode: response.status });
+                        defered.reject({
+                            errors: response.errors,
+                            statusCode: response.status
+                        });
                     }
                 }
             })
@@ -414,7 +434,9 @@ export default class OperationActions {
             error.data = {};
         }
         if (!error.data.errors) {
-            error.data.errors = [(typeof(error) === "string") ? { message: error } : error];
+            error.data.errors = [(typeof (error) === "string") ? {
+                message: error
+            } : error];
         }
         //console.log("_formatError: " + error);
         return error;

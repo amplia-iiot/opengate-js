@@ -23,7 +23,10 @@ export default class Workgroups extends BaseProvision {
      */
     withName(name) {
         if (typeof name !== 'string' || name.length > 50)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'name' });
+            throw new Error({
+                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50",
+                parameter: 'name'
+            });
         this._name = name;
         return this;
     }
@@ -35,7 +38,10 @@ export default class Workgroups extends BaseProvision {
      */
     withDescription(description) {
         if (typeof description !== 'string' || description.length > 250)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250", parameter: 'description' });
+            throw new Error({
+                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250",
+                parameter: 'description'
+            });
         this._description = description;
         return this;
     }
@@ -59,7 +65,10 @@ export default class Workgroups extends BaseProvision {
      */
     withDomainName(domainName) {
         if (typeof domainName !== 'string' || domainName.length > 50)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'domainName' });
+            throw new Error({
+                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50",
+                parameter: 'domainName'
+            });
         this._domainName = domainName;
         return this;
     }
@@ -100,14 +109,21 @@ export default class Workgroups extends BaseProvision {
     update() {
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Napi.put(this._buildURL(), this._composeElementUpdate())
+        this._ogapi.Napi.put(this._buildURL(), this._composeElementUpdate(), undefined, this._getExtraHeaders(), this._getUrlParameters())
             .then((res) => {
                 if (res.statusCode === 200) {
-                    defered.resolve({ statusCode: res.statusCode });
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
                 } else if (res.status === 200) {
-                    defered.resolve({ statusCode: res.status });
+                    defered.resolve({
+                        statusCode: res.status
+                    });
                 } else {
-                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
                 }
             })
             .catch((error) => {
