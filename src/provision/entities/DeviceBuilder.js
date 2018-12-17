@@ -76,8 +76,7 @@ class BoxBuilder {
     }
 
     _urlWithKey() {
-        let splitted = this._url;
-        return splitted[0] + '/' + this._key._value._current.value;
+        return this._url + '/' + this._key._value._current.value;
     }
 
     create() {
@@ -314,8 +313,7 @@ class WrapperBuilder {
     }
 
     _urlWithKey() {
-        let splitted = this._url;
-        return splitted[0] + '/' + this._key;
+        return this._url + '/' + this._key;
     }
 
     _checkExists() {
