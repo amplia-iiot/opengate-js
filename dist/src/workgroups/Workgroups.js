@@ -49,7 +49,10 @@ var Workgroups = (function (_BaseProvision) {
     _createClass(Workgroups, [{
         key: 'withName',
         value: function withName(name) {
-            if (typeof name !== 'string' || name.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'name' });
+            if (typeof name !== 'string' || name.length > 50) throw new Error({
+                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50",
+                parameter: 'name'
+            });
             this._name = name;
             return this;
         }
@@ -62,7 +65,10 @@ var Workgroups = (function (_BaseProvision) {
     }, {
         key: 'withDescription',
         value: function withDescription(description) {
-            if (typeof description !== 'string' || description.length > 250) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250", parameter: 'description' });
+            if (typeof description !== 'string' || description.length > 250) throw new Error({
+                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250",
+                parameter: 'description'
+            });
             this._description = description;
             return this;
         }
@@ -89,7 +95,10 @@ var Workgroups = (function (_BaseProvision) {
     }, {
         key: 'withDomainName',
         value: function withDomainName(domainName) {
-            if (typeof domainName !== 'string' || domainName.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'domainName' });
+            if (typeof domainName !== 'string' || domainName.length > 50) throw new Error({
+                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50",
+                parameter: 'domainName'
+            });
             this._domainName = domainName;
             return this;
         }
@@ -134,13 +143,20 @@ var Workgroups = (function (_BaseProvision) {
         value: function update() {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            this._ogapi.Napi.put(this._buildURL(), this._composeElementUpdate()).then(function (res) {
+            this._ogapi.Napi.put(this._buildURL(), this._composeElementUpdate(), undefined, this._getExtraHeaders(), this._getUrlParameters()).then(function (res) {
                 if (res.statusCode === 200) {
-                    defered.resolve({ statusCode: res.statusCode });
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
                 } else if (res.status === 200) {
-                    defered.resolve({ statusCode: res.status });
+                    defered.resolve({
+                        statusCode: res.status
+                    });
                 } else {
-                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
                 }
             })['catch'](function (error) {
                 defered.reject(error);

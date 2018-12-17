@@ -158,7 +158,9 @@ var BoxBuilder = (function () {
                             type: 'success',
                             percentage: 55
                         });
-                        return _this._ogapi.Napi.put(_this._urlWithKey(), putObj).then(function (res) {
+                        return _this._ogapi.Napi.put(_this._urlWithKey(), putObj, null, null, {
+                            flattened: true
+                        }).then(function (res) {
                             if (res.statusCode === _httpStatusCodes2['default'].OK) {
                                 console.log("CREATEOK: " + JSON.stringify(res));
                                 if (typeof _this._onCreated === "function") {
@@ -276,7 +278,9 @@ var BoxBuilder = (function () {
                     type: 'success',
                     percentage: 45
                 });
-                return _this._ogapi.Napi.put(_this._url, putObj).then(function (res) {
+                return _this._ogapi.Napi.put(_this._url, putObj, null, null, {
+                    flattened: true
+                }).then(function (res) {
                     if (res.statusCode === _httpStatusCodes2['default'].OK) {
                         console.log("CREATEOK: " + JSON.stringify(res));
                         if (typeof _this._onCreated === "function") {

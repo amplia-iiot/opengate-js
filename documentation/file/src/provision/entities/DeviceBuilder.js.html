@@ -356,7 +356,9 @@ class BoxBuilder {
                             type: &apos;success&apos;,
                             percentage: 55
                         });
-                        return _this._ogapi.Napi.put(_this._urlWithKey(), putObj)
+                        return _this._ogapi.Napi.put(_this._urlWithKey(), putObj, null, null, {
+                                flattened: true
+                            })
                             .then((res) =&gt; {
                                 if (res.statusCode === HttpStatus.OK) {
                                     console.log(&quot;CREATEOK: &quot; + JSON.stringify(res));
@@ -478,7 +480,9 @@ class BoxBuilder {
                 type: &apos;success&apos;,
                 percentage: 45
             });
-            return _this._ogapi.Napi.put(_this._url, putObj)
+            return _this._ogapi.Napi.put(_this._url, putObj, null, null, {
+                    flattened: true
+                })
                 .then((res) =&gt; {
                     if (res.statusCode === HttpStatus.OK) {
                         console.log(&quot;CREATEOK: &quot; + JSON.stringify(res));

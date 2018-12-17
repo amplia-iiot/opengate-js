@@ -370,7 +370,7 @@ var Certificates = (function (_Security) {
 
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            this._ogapi.Napi.put(this._buildURL(), form).then(function (response) {
+            this._ogapi.Napi.put(this._buildURL(), form, undefined, this._getExtraHeaders(), this._getUrlParameters()).then(function (response) {
                 var data = response.body;
                 if (typeof data === "undefined") defered.reject("Cannot update the certificate");else defered.resolve(data, response.statusCode);
             })['catch'](function (error) {

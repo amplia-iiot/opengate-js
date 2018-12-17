@@ -263,7 +263,10 @@ export default class Bundles extends BaseProvision {
      */
     withVersion(version) {
         if (typeof version !== &apos;string&apos; || version.length &gt; 50)
-            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_50&quot;, parameter: &apos;version&apos; });
+            throw new Error({
+                message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_50&quot;,
+                parameter: &apos;version&apos;
+            });
         this._version = version;
         return this;
     }
@@ -287,19 +290,22 @@ export default class Bundles extends BaseProvision {
      * @return {Bundles}
      */
     withWorkgroup(workgroup) {
-            if (typeof workgroup !== &apos;string&apos;)
-                throw new Error(&apos;Parameter workgroup must be a string&apos;);
-            this._workgroup = workgroup;
-            return this;
-        }
-        /**
-         * Set the description attribute
-         * @param {string} description 
-         * @return {Bundles}
-         */
+        if (typeof workgroup !== &apos;string&apos;)
+            throw new Error(&apos;Parameter workgroup must be a string&apos;);
+        this._workgroup = workgroup;
+        return this;
+    }
+    /**
+     * Set the description attribute
+     * @param {string} description 
+     * @return {Bundles}
+     */
     withDescription(description) {
         if (typeof description !== &apos;string&apos; || description.length &gt; 250)
-            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_250&quot;, parameter: &apos;description&apos; });
+            throw new Error({
+                message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_250&quot;,
+                parameter: &apos;description&apos;
+            });
         this._description = description;
         return this;
     }
@@ -321,7 +327,7 @@ export default class Bundles extends BaseProvision {
         }
         let not_found = [];
         for (var i = 0; i &lt; actions.length; i++) {
-            let found = ACTION_ENUM.find(function(action) {
+            let found = ACTION_ENUM.find(function (action) {
                 return action == this;
             }, actions[i]);
             if (typeof found === &quot;undefined&quot;) {
@@ -361,7 +367,10 @@ export default class Bundles extends BaseProvision {
      */
     withUserNotes(userNotes) {
         if (typeof userNotes !== &apos;string&apos; || userNotes.length &gt; 250)
-            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_250&quot;, parameter: &apos;notes&apos; });
+            throw new Error({
+                message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_250&quot;,
+                parameter: &apos;notes&apos;
+            });
         this._userNotes = userNotes;
         return this;
     }
@@ -419,12 +428,21 @@ export default class Bundles extends BaseProvision {
     activate() {
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Napi.put(this._buildURL(), { bundle: { active: true } })
+        this._ogapi.Napi.put(this._buildURL(), {
+                bundle: {
+                    active: true
+                }
+            }, undefined, this._getExtraHeaders(), this._getUrlParameters())
             .then((res) =&gt; {
                 if (res.statusCode === 200) {
-                    defered.resolve({ statusCode: res.statusCode });
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
                 } else {
-                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
                 }
             })
             .catch((error) =&gt; {
@@ -445,13 +463,22 @@ export default class Bundles extends BaseProvision {
     deactivate() {
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Napi.put(this._buildURL(), { bundle: { active: false } }, undefined)
+        this._ogapi.Napi.put(this._buildURL(), {
+                bundle: {
+                    active: false
+                }
+            }, undefined, this._getExtraHeaders(), this._getUrlParameters())
             .then((res) =&gt; {
                 //console.log(JSON.stringify(res));
                 if (res.statusCode === 200) {
-                    defered.resolve({ statusCode: res.statusCode });
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
                 } else {
-                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
                 }
             })
             .catch((error) =&gt; {
@@ -523,28 +550,28 @@ export default class Bundles extends BaseProvision {
         }
 
         _this._allPromisesOk = true;
-        let onCreateBundle = function(res) {
+        let onCreateBundle = function (res) {
             if (res.statusCode === 201) {
                 let bundleLocation = res;
                 if (_this._deploymentElements &amp;&amp; _this._deploymentElements.length &gt; 0) {
                     //console.log(&quot;previa de 2: &quot;);
                     let dePromises = [];
-                    _this._deploymentElements.forEach(function(deTmp) {
+                    _this._deploymentElements.forEach(function (deTmp) {
                         dePromises.push(deTmp.deploy());
                     });
 
                     // update de bundle
-                    Promise.all(dePromises).then(function() {
+                    Promise.all(dePromises).then(function () {
                         if (_this._allPromisesOk) {
 
-                            _this.activate().then(function(status, data) {
+                            _this.activate().then(function (status, data) {
                                 defered.resolve(bundleLocation);
-                            }).catch(function(err) {
+                            }).catch(function (err) {
                                 defered.reject(err);
                             });
 
                         }
-                    }).catch(function(err) {
+                    }).catch(function (err) {
                         _this._allPromisesOk = false;
                         onCreateBundleError(err);
                     });
@@ -552,11 +579,13 @@ export default class Bundles extends BaseProvision {
                     defered.resolve(bundleLocation);
                 }
             } else {
-                onCreateBundleError({ &quot;statusCode&quot;: res.statusCode });
+                onCreateBundleError({
+                    &quot;statusCode&quot;: res.statusCode
+                });
             }
         };
 
-        let onCreateBundleError = function(err) {
+        let onCreateBundleError = function (err) {
             //console.log(&quot;Create error: &quot; + JSON.stringify(err));
             //console.log(&apos;borrando bundle&apos;);
             _this.delete();
@@ -587,16 +616,18 @@ export default class Bundles extends BaseProvision {
         let defered = q.defer();
         let promise = defered.promise;
 
-        let onCreateBundle = function(res) {
+        let onCreateBundle = function (res) {
             if (res.statusCode === 201) {
                 //console.log(&quot;OK1: &quot; + JSON.stringify(res));
                 defered.resolve(res);
             } else {
-                onCreateBundleError({ &quot;statusCode&quot;: res.statusCode });
+                onCreateBundleError({
+                    &quot;statusCode&quot;: res.statusCode
+                });
             }
         };
 
-        let onCreateBundleError = function(err) {
+        let onCreateBundleError = function (err) {
             //console.log(JSON.stringify(err));
             //console.log(&apos;borrando bundle&apos;)
             defered.reject(err);
@@ -604,19 +635,25 @@ export default class Bundles extends BaseProvision {
 
         // Se intenta crear primero el bundle
         let bundleFinder = _this._ogapi.newBundleFinder().findByNameAndVersion(_this._name, _this._version)
-            .then(function(ok) {
+            .then(function (ok) {
                 if (ok[1] === 204) {
                     //console.log(&quot;asdhflkasdfj 1&quot;);
                     super.create().then(onCreateBundle).catch(onCreateBundleError);
                 } else {
-                    defered.reject({ &quot;errors&quot;: &quot;OGAPI_400_BUNDLE_EXIST&quot;, &quot;statusCode&quot;: 400 });
+                    defered.reject({
+                        &quot;errors&quot;: &quot;OGAPI_400_BUNDLE_EXIST&quot;,
+                        &quot;statusCode&quot;: 400
+                    });
                 }
-            }).catch(function(err) {
+            }).catch(function (err) {
                 if (err.statusCode === 404) {
                     //console.log(&quot;asdhflkasdfj 2&quot;);
                     super.create().then(onCreateBundle).catch(onCreateBundleError);
                 } else {
-                    defered.reject({ &quot;errors&quot;: &quot;OGAPI_400_BUNDLE_EXIST&quot;, &quot;statusCode&quot;: 400 });
+                    defered.reject({
+                        &quot;errors&quot;: &quot;OGAPI_400_BUNDLE_EXIST&quot;,
+                        &quot;statusCode&quot;: 400
+                    });
                 }
 
             });
@@ -641,12 +678,17 @@ export default class Bundles extends BaseProvision {
         delete bundleUpdate.bundle.workgroup;
         delete bundleUpdate.bundle.hardware;
 
-        this._ogapi.Napi.put(this._buildURL(), bundleUpdate)
+        this._ogapi.Napi.put(this._buildURL(), bundleUpdate, undefined, this._getExtraHeaders(), this._getUrlParameters())
             .then((res) =&gt; {
                 if (res.statusCode === 200) {
-                    defered.resolve({ statusCode: res.statusCode });
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
                 } else {
-                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
                 }
             })
             .catch((error) =&gt; {

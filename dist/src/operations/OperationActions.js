@@ -259,9 +259,17 @@ var OperationActions = (function () {
             this._ogapi.Napi['delete'](this._resource).then(function (response) {
                 //console.log("cancel response: " + JSON.stringify(response));
                 if (response.statusCode === 200) {
-                    defered.resolve({ statusCode: response.statusCode, data: { id: _this2._id } });
+                    defered.resolve({
+                        statusCode: response.statusCode,
+                        data: {
+                            id: _this2._id
+                        }
+                    });
                 } else {
-                    defered.reject({ errors: response.errors, statusCode: response.statusCode });
+                    defered.reject({
+                        errors: response.errors,
+                        statusCode: response.statusCode
+                    });
                 }
             })['catch'](function (error) {
                 //console.log("cancel error: " + JSON.stringify(error));
@@ -283,12 +291,16 @@ var OperationActions = (function () {
                 if (!data || Object.keys(data).length == 0) {
                     //console.log("BUG");
                     //BUG http://cm.amplia.es/jira/browse/ODMQA-1057
-                    defered.reject({ errors: "Operation with id " + _this._operationId + " not exists" });
+                    defered.reject({
+                        errors: "Operation with id " + _this._operationId + " not exists"
+                    });
                 } else {
                     //console.log("RESPONSE_DATA: " + JSON.stringify(data));
                     var periodicityId = data.taskId;
                     if (!periodicityId) {
-                        defered.reject({ errors: "Operation is not periodic!" });
+                        defered.reject({
+                            errors: "Operation is not periodic!"
+                        });
                     } else {
                         _this._resource = _this._resource + periodicityId;
                         //console.log("RESOURCE_DATA: " + _this._resource);
@@ -310,7 +322,9 @@ var OperationActions = (function () {
                                 });
                                 break;
                             default:
-                                defered.reject({ errors: "Not implemented action: " + action });
+                                defered.reject({
+                                    errors: "Not implemented action: " + action
+                                });
                         }
                     }
                 }
@@ -413,10 +427,16 @@ var OperationActions = (function () {
                 } else {
                     if (response.status === 200) {
                         var data = response.text != "" ? JSON.parse(response.text) : {};
-                        var _response = { statusCode: response.status, data: data };
+                        var _response = {
+                            statusCode: response.status,
+                            data: data
+                        };
                         defered.resolve(response);
                     } else {
-                        defered.reject({ errors: response.errors, statusCode: response.status });
+                        defered.reject({
+                            errors: response.errors,
+                            statusCode: response.status
+                        });
                     }
                 }
             })['catch'](function (error) {
@@ -432,7 +452,9 @@ var OperationActions = (function () {
                 error.data = {};
             }
             if (!error.data.errors) {
-                error.data.errors = [typeof error === "string" ? { message: error } : error];
+                error.data.errors = [typeof error === "string" ? {
+                    message: error
+                } : error];
             }
             //console.log("_formatError: " + error);
             return error;

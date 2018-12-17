@@ -247,7 +247,10 @@ export default class Workgroups extends BaseProvision {
      */
     withName(name) {
         if (typeof name !== &apos;string&apos; || name.length &gt; 50)
-            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_50&quot;, parameter: &apos;name&apos; });
+            throw new Error({
+                message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_50&quot;,
+                parameter: &apos;name&apos;
+            });
         this._name = name;
         return this;
     }
@@ -259,7 +262,10 @@ export default class Workgroups extends BaseProvision {
      */
     withDescription(description) {
         if (typeof description !== &apos;string&apos; || description.length &gt; 250)
-            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_250&quot;, parameter: &apos;description&apos; });
+            throw new Error({
+                message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_250&quot;,
+                parameter: &apos;description&apos;
+            });
         this._description = description;
         return this;
     }
@@ -283,7 +289,10 @@ export default class Workgroups extends BaseProvision {
      */
     withDomainName(domainName) {
         if (typeof domainName !== &apos;string&apos; || domainName.length &gt; 50)
-            throw new Error({ message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_50&quot;, parameter: &apos;domainName&apos; });
+            throw new Error({
+                message: &quot;OGAPI_STRING_PARAMETER_MAX_LENGTH_50&quot;,
+                parameter: &apos;domainName&apos;
+            });
         this._domainName = domainName;
         return this;
     }
@@ -324,14 +333,21 @@ export default class Workgroups extends BaseProvision {
     update() {
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Napi.put(this._buildURL(), this._composeElementUpdate())
+        this._ogapi.Napi.put(this._buildURL(), this._composeElementUpdate(), undefined, this._getExtraHeaders(), this._getUrlParameters())
             .then((res) =&gt; {
                 if (res.statusCode === 200) {
-                    defered.resolve({ statusCode: res.statusCode });
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
                 } else if (res.status === 200) {
-                    defered.resolve({ statusCode: res.status });
+                    defered.resolve({
+                        statusCode: res.status
+                    });
                 } else {
-                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
                 }
             })
             .catch((error) =&gt; {

@@ -67,7 +67,10 @@ var Bundles = (function (_BaseProvision) {
     }, {
         key: 'withVersion',
         value: function withVersion(version) {
-            if (typeof version !== 'string' || version.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'version' });
+            if (typeof version !== 'string' || version.length > 50) throw new Error({
+                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50",
+                parameter: 'version'
+            });
             this._version = version;
             return this;
         }
@@ -106,7 +109,10 @@ var Bundles = (function (_BaseProvision) {
     }, {
         key: 'withDescription',
         value: function withDescription(description) {
-            if (typeof description !== 'string' || description.length > 250) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250", parameter: 'description' });
+            if (typeof description !== 'string' || description.length > 250) throw new Error({
+                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250",
+                parameter: 'description'
+            });
             this._description = description;
             return this;
         }
@@ -176,7 +182,10 @@ var Bundles = (function (_BaseProvision) {
     }, {
         key: 'withUserNotes',
         value: function withUserNotes(userNotes) {
-            if (typeof userNotes !== 'string' || userNotes.length > 250) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250", parameter: 'notes' });
+            if (typeof userNotes !== 'string' || userNotes.length > 250) throw new Error({
+                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250",
+                parameter: 'notes'
+            });
             this._userNotes = userNotes;
             return this;
         }
@@ -238,11 +247,20 @@ var Bundles = (function (_BaseProvision) {
         value: function activate() {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            this._ogapi.Napi.put(this._buildURL(), { bundle: { active: true } }).then(function (res) {
+            this._ogapi.Napi.put(this._buildURL(), {
+                bundle: {
+                    active: true
+                }
+            }, undefined, this._getExtraHeaders(), this._getUrlParameters()).then(function (res) {
                 if (res.statusCode === 200) {
-                    defered.resolve({ statusCode: res.statusCode });
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
                 } else {
-                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
                 }
             })['catch'](function (error) {
                 defered.reject(error);
@@ -264,12 +282,21 @@ var Bundles = (function (_BaseProvision) {
         value: function deactivate() {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            this._ogapi.Napi.put(this._buildURL(), { bundle: { active: false } }, undefined).then(function (res) {
+            this._ogapi.Napi.put(this._buildURL(), {
+                bundle: {
+                    active: false
+                }
+            }, undefined, this._getExtraHeaders(), this._getUrlParameters()).then(function (res) {
                 //console.log(JSON.stringify(res));
                 if (res.statusCode === 200) {
-                    defered.resolve({ statusCode: res.statusCode });
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
                 } else {
-                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
                 }
             })['catch'](function (error) {
                 //console.log(error);
@@ -375,7 +402,9 @@ var Bundles = (function (_BaseProvision) {
                         }
                     })();
                 } else {
-                    onCreateBundleError({ "statusCode": res.statusCode });
+                    onCreateBundleError({
+                        "statusCode": res.statusCode
+                    });
                 }
             };
 
@@ -416,7 +445,9 @@ var Bundles = (function (_BaseProvision) {
                     //console.log("OK1: " + JSON.stringify(res));
                     defered.resolve(res);
                 } else {
-                    onCreateBundleError({ "statusCode": res.statusCode });
+                    onCreateBundleError({
+                        "statusCode": res.statusCode
+                    });
                 }
             };
 
@@ -432,14 +463,20 @@ var Bundles = (function (_BaseProvision) {
                     //console.log("asdhflkasdfj 1");
                     _get(Object.getPrototypeOf(Bundles.prototype), 'create', _this2).call(_this2).then(onCreateBundle)['catch'](onCreateBundleError);
                 } else {
-                    defered.reject({ "errors": "OGAPI_400_BUNDLE_EXIST", "statusCode": 400 });
+                    defered.reject({
+                        "errors": "OGAPI_400_BUNDLE_EXIST",
+                        "statusCode": 400
+                    });
                 }
             })['catch'](function (err) {
                 if (err.statusCode === 404) {
                     //console.log("asdhflkasdfj 2");
                     _get(Object.getPrototypeOf(Bundles.prototype), 'create', _this2).call(_this2).then(onCreateBundle)['catch'](onCreateBundleError);
                 } else {
-                    defered.reject({ "errors": "OGAPI_400_BUNDLE_EXIST", "statusCode": 400 });
+                    defered.reject({
+                        "errors": "OGAPI_400_BUNDLE_EXIST",
+                        "statusCode": 400
+                    });
                 }
             });
 
@@ -465,11 +502,16 @@ var Bundles = (function (_BaseProvision) {
             delete bundleUpdate.bundle.workgroup;
             delete bundleUpdate.bundle.hardware;
 
-            this._ogapi.Napi.put(this._buildURL(), bundleUpdate).then(function (res) {
+            this._ogapi.Napi.put(this._buildURL(), bundleUpdate, undefined, this._getExtraHeaders(), this._getUrlParameters()).then(function (res) {
                 if (res.statusCode === 200) {
-                    defered.resolve({ statusCode: res.statusCode });
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
                 } else {
-                    defered.reject({ errors: res.errors, statusCode: res.statusCode });
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
                 }
             })['catch'](function (error) {
                 defered.reject(error);
