@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-  value: true
+    value: true
 });
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -26,47 +26,47 @@ exports.DATAMODEL_RESOURCE = DATAMODEL_RESOURCE;
  */
 
 var DatamodelsFinder = (function (_ProvisionGenericFinder) {
-  _inherits(DatamodelsFinder, _ProvisionGenericFinder);
+    _inherits(DatamodelsFinder, _ProvisionGenericFinder);
 
-  /**
-   * @param {InternalOpenGateAPI} Reference to the API object.
-   */
+    /**
+     * @param {InternalOpenGateAPI} Reference to the API object.
+     */
 
-  function DatamodelsFinder(ogapi) {
-    _classCallCheck(this, DatamodelsFinder);
+    function DatamodelsFinder(ogapi) {
+        _classCallCheck(this, DatamodelsFinder);
 
-    _get(Object.getPrototypeOf(DatamodelsFinder.prototype), 'constructor', this).call(this, ogapi, 'organizations/', 'datamodels', 'Datamodel not found');
-  }
-
-  /**
-   * @return {String} This returns a string with the URL of the request.
-   * @private
-   */
-
-  _createClass(DatamodelsFinder, [{
-    key: '_composeUrl',
-    value: function _composeUrl() {
-      return this._baseUrl + this._organization + DATAMODEL_RESOURCE + this._id;
+        _get(Object.getPrototypeOf(DatamodelsFinder.prototype), 'constructor', this).call(this, ogapi, 'organizations/', 'datamodels', 'Datamodel not found');
     }
 
     /**
-     * Download a specific IoT Datamodel by its organization and id. This execute a GET http method
-     * @test
-     *   ogapi.newDatamodelsFinder().findByOrganizationAndId('orgname', 'xxx-xx-xxx-xxx').then().catch();
-     * @param {string} organization - datamodel organization .
-     * @param {string} id - datamodel id.
-     * @return {Promise} 
+     * @return {String} This returns a string with the URL of the request.
+     * @private
      */
-  }, {
-    key: 'findByOrganizationAndId',
-    value: function findByOrganizationAndId(organization, id) {
-      this._organization = organization;
-      this._id = id;
-      return this._execute();
-    }
-  }]);
 
-  return DatamodelsFinder;
+    _createClass(DatamodelsFinder, [{
+        key: '_composeUrl',
+        value: function _composeUrl() {
+            return this._baseUrl + this._organization + DATAMODEL_RESOURCE + this._id;
+        }
+
+        /**
+         * Download a specific IoT Datamodel by its organization and id. This execute a GET http method
+         * @test
+         *   ogapi.newDatamodelsFinder().findByOrganizationAndId('orgname', 'xxx-xx-xxx-xxx').then().catch();
+         * @param {string} organization - datamodel organization .
+         * @param {string} id - datamodel id.
+         * @return {Promise} 
+         */
+    }, {
+        key: 'findByOrganizationAndId',
+        value: function findByOrganizationAndId(organization, id) {
+            this._organization = organization;
+            this._id = id;
+            return this._execute();
+        }
+    }]);
+
+    return DatamodelsFinder;
 })(_ProvisionGenericFinder3['default']);
 
 exports['default'] = DatamodelsFinder;
