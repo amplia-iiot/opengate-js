@@ -346,7 +346,7 @@ export default class Certificates extends Security {
 
         let defered = q.defer();
         let promise = defered.promise;
-        this._ogapi.Napi.put(this._buildURL(), form)
+        this._ogapi.Napi.put(this._buildURL(), form, undefined, this._getExtraHeaders(), this._getUrlParameters())
             .then((response) => {
                 let data = response.body;
                 if (typeof data === "undefined")
