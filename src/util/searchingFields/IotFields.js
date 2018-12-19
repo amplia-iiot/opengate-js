@@ -10,6 +10,7 @@ export const IOT_FIELDS = {
             "datapoints.datastreamId",
             "datapoints.entityIdentifier",
             "datapoints.subEntityIdentifier",
+            "datapoints.entityRelated",
             "datapoints._current.feedId",
             "datapoints._current.date",
             "datapoints._current.at",
