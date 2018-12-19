@@ -4,8 +4,8 @@ import HttpStatus from 'http-status-codes';
 import BaseProvision from '../BaseProvision';
 import q from 'q';
 
-const ERROR_VALUE_NOT_ALLOWED = 'The value is not allowed. The value should be formatted as follows: ';
-const ERROR_DATASTREAM_NOT_ALLOWED = 'Datastream is not allowed.';
+const ERROR_VALUE_NOT_ALLOWED = 'value is not allowed. The value should be formatted as follows: ';
+const ERROR_DATASTREAM_NOT_ALLOWED = 'Datastream is not allowed';
 
 
 /**
@@ -41,23 +41,23 @@ export default class SimpleBuilder extends BaseProvision {
     _validate() {
         let _this = this;
         let errors = [];
-        Object.keys(this._entity).forEach(function (_id) {
+        Object.keys(this._entity).forEach(function(_id) {
             if (_id != 'resourceType') {
                 if (!_this._definedSchemas[_id]) {
-                    throw new Error(ERROR_DATASTREAM_NOT_ALLOWED);
+                    throw new Error(ERROR_DATASTREAM_NOT_ALLOWED + ': ' + _id);
                 }
                 let jSchema = _this._definedSchemas[_id].value;
                 if (_this._entity[_id].constructor === Array) {
-                    _this._entity[_id].forEach(function (item) {
+                    _this._entity[_id].forEach(function(item) {
                         let value = item._value._current.value;
                         if (!_this._jsonSchemaValidator.validate(value, jSchema).valid) {
-                            errors.push(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
+                            errors.push(_id + ' ' + ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
                         }
                     });
                 } else {
                     let value = _this._entity[_id]._value._current.value;
                     if (!_this._jsonSchemaValidator.validate(value, jSchema).valid) {
-                        errors.push(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
+                        errors.push(_id + ' ' + ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
                     }
                 }
             }
@@ -91,7 +91,7 @@ export default class SimpleBuilder extends BaseProvision {
             delete this._entity[_id];
             return this;
         }
-        if (this.getAllowedDatastreams().filter(function (ds) {
+        if (this.getAllowedDatastreams().filter(function(ds) {
                 return ds.identifier === _id;
             }).length !== 1) {
             console.warn('Datastream not found or operations can not be performed on it. This value will be ignored. Datastream Name: ' + _id);
@@ -117,7 +117,7 @@ export default class SimpleBuilder extends BaseProvision {
     initFromFlattened(_flattenedEntityData) {
         let _this = this;
         if (_flattenedEntityData && Object.keys(_flattenedEntityData).length > 0) {
-            Object.keys(_flattenedEntityData).forEach(function (_id) {
+            Object.keys(_flattenedEntityData).forEach(function(_id) {
                 if (_id.toLowerCase().startsWith("provision")) {
                     var _content = _flattenedEntityData[_id];
                     if (Array.isArray(_content)) {
@@ -133,7 +133,7 @@ export default class SimpleBuilder extends BaseProvision {
         let _this = this;
         if (_jsonEntityData) {
             var keys = Object.keys(_jsonEntityData);
-            keys.forEach(function (key) {
+            keys.forEach(function(key) {
                 var obj = _jsonEntityData[key];
                 var _current = obj._current;
                 var path = _path ? (_path + '.' + key) : key;

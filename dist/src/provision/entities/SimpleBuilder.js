@@ -26,8 +26,8 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
-var ERROR_VALUE_NOT_ALLOWED = 'The value is not allowed. The value should be formatted as follows: ';
-var ERROR_DATASTREAM_NOT_ALLOWED = 'Datastream is not allowed.';
+var ERROR_VALUE_NOT_ALLOWED = 'value is not allowed. The value should be formatted as follows: ';
+var ERROR_DATASTREAM_NOT_ALLOWED = 'Datastream is not allowed';
 
 /**
  * This class allow set simple values.
@@ -74,20 +74,20 @@ var SimpleBuilder = (function (_BaseProvision) {
                 if (_id != 'resourceType') {
                     (function () {
                         if (!_this._definedSchemas[_id]) {
-                            throw new Error(ERROR_DATASTREAM_NOT_ALLOWED);
+                            throw new Error(ERROR_DATASTREAM_NOT_ALLOWED + ': ' + _id);
                         }
                         var jSchema = _this._definedSchemas[_id].value;
                         if (_this._entity[_id].constructor === Array) {
                             _this._entity[_id].forEach(function (item) {
                                 var value = item._value._current.value;
                                 if (!_this._jsonSchemaValidator.validate(value, jSchema).valid) {
-                                    errors.push(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
+                                    errors.push(_id + ' ' + ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
                                 }
                             });
                         } else {
                             var value = _this._entity[_id]._value._current.value;
                             if (!_this._jsonSchemaValidator.validate(value, jSchema).valid) {
-                                errors.push(ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
+                                errors.push(_id + ' ' + ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
                             }
                         }
                     })();
