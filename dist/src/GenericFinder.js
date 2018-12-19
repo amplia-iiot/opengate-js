@@ -123,9 +123,9 @@ var GenericFinder = (function () {
                             syncCache: req.body.syncCache
                         });
                     } else {
-                        var data = req.body[_entity];
+                        var data = Object.keys(req.body).length === 1 && req.body[_entity] ? req.body[_entity] : req.body;
                         defered.resolve({
-                            data: data ? data : req.body,
+                            data: data,
                             statusCode: req.statusCode
                         });
                     }
