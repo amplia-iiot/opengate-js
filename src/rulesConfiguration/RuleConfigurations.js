@@ -236,6 +236,7 @@ export default class RuleConfigurations extends BaseProvision {
             "configurations": [{
                 "name": this._name,
                 "enabled": this._enabled,
+                "open": this._open,
                 "severity": this._severity,
                 "description": (this._description ? this._description : undefined),
                 "conditions": this._conditions,
