@@ -249,6 +249,9 @@ export default class RuleConfigurations extends BaseProvision {
         if (ruleConfigurationObj.enabled !== null &amp;&amp; typeof ruleConfigurationObj.enabled !== &apos;undefined&apos;)
             this.withEnabled(ruleConfigurationObj.enabled);
 
+        if (ruleConfigurationObj.open !== null &amp;&amp; typeof ruleConfigurationObj.open !== &apos;undefined&apos;)
+            this.withOpen(ruleConfigurationObj.open);
+
         if (ruleConfigurationObj.severity !== null &amp;&amp; typeof ruleConfigurationObj.severity !== &apos;undefined&apos;)
             this.withSeverity(ruleConfigurationObj.severity);
 
@@ -314,8 +317,20 @@ export default class RuleConfigurations extends BaseProvision {
     }
 
     /**
+     * Set the open attribute
+     * @param {boolean} open 
+     * @return {RulesConfigurations}
+     */
+    withOpen(open) {
+        if (typeof open !== &apos;boolean&apos;)
+            throw new Error(&apos;Parameter open must be true or false&apos;);
+        this._open = open;
+        return this;
+    }
+
+    /**
      * Set the enabled attribute
-     * @param {string} enabled 
+     * @param {boolean} enabled 
      * @return {RulesConfigurations}
      */
     withEnabled(enabled) {

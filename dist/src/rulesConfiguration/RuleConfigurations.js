@@ -54,6 +54,8 @@ var RuleConfigurations = (function (_BaseProvision) {
 
         if (ruleConfigurationObj.enabled !== null && typeof ruleConfigurationObj.enabled !== 'undefined') this.withEnabled(ruleConfigurationObj.enabled);
 
+        if (ruleConfigurationObj.open !== null && typeof ruleConfigurationObj.open !== 'undefined') this.withOpen(ruleConfigurationObj.open);
+
         if (ruleConfigurationObj.severity !== null && typeof ruleConfigurationObj.severity !== 'undefined') this.withSeverity(ruleConfigurationObj.severity);
 
         if (ruleConfigurationObj.conditions !== null && typeof ruleConfigurationObj.conditions !== 'undefined') this._withConditions(ruleConfigurationObj.conditions);
@@ -120,8 +122,21 @@ var RuleConfigurations = (function (_BaseProvision) {
         }
 
         /**
+         * Set the open attribute
+         * @param {boolean} open 
+         * @return {RulesConfigurations}
+         */
+    }, {
+        key: 'withOpen',
+        value: function withOpen(open) {
+            if (typeof open !== 'boolean') throw new Error('Parameter open must be true or false');
+            this._open = open;
+            return this;
+        }
+
+        /**
          * Set the enabled attribute
-         * @param {string} enabled 
+         * @param {boolean} enabled 
          * @return {RulesConfigurations}
          */
     }, {
