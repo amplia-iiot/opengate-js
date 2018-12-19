@@ -1,22 +1,22 @@
 module.exports = {
-    transform: function(type, value) {
+    transform: function (type, value) {
         var utilsMath = {
-            'number': function(value) {
+            'number': function (value) {
                 return parseInt(value);
             },
-            'string': function(value) {
+            'string': function (value) {
                 return value;
             },
-            'array': function(values) {
+            'array': function (values) {
                 return value.split(",");;
             },
-            'json': function(values) {
+            'json': function (values) {
                 return JSON.parse(value);
             }
         }
         return utilsMath[type](value);
     },
-    setters: function(setter) {
+    setters: function (setter) {
         return {
             'user': {
                 'email': 'withEmail',
@@ -332,6 +332,7 @@ module.exports = {
                 'name': 'withName',
                 'description': 'withDescription',
                 'enabled': 'withEnabled',
+                'open': 'withOpen',
                 'severity': 'withSeverity'
             },
             'domain': {
@@ -372,12 +373,12 @@ module.exports = {
                 'entities': 'withEntities'
             }
 
-        }[setter];
+        } [setter];
     },
-    getter_response: function(getter) {
+    getter_response: function (getter) {
         return {
             'user email': '/email',
             'organization name': '/name'
-        }[getter];
+        } [getter];
     }
 };
