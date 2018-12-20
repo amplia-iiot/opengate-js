@@ -1,4 +1,4 @@
-# features/update_ruleConfiguration.feature
+#features/clone_delete_ruleConfiguration.feature
 @provision
 @clone_ruleConfiguration
 @delete_ruleConfiguration

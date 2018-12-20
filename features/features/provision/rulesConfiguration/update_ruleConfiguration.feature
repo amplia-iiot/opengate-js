@@ -48,19 +48,9 @@ Feature: Managing a rule configuration
             }, {
             "name": "threshold",
             "value": "0"
-            }
-            ]
-            }, {
-            "name": "datastreamCurrentValueThreshold",
-            "parameters": [{
-            "name": "datastream_name",
-            "value": "DATASTREAM"
             }, {
             "name": "curvalue_operator",
             "value": ">"
-            }, {
-            "name": "threshold",
-            "value": "0"
             }, {
             "name": "prevalue_operator",
             "value": "<"
