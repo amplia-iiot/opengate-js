@@ -468,7 +468,7 @@ export default class NorthAmpliaREST {
         var relativeUrlSplit = relativeUrl.split("/");
         var length = relativeUrlSplit.length;
 
-        relativeUrlSplit.forEach(function (item, index) {
+        relativeUrlSplit.forEach(function(item, index) {
             if (index === (length - 1) && item.indexOf("?") > 0) {
                 var parameters = item.substring(item.indexOf("?"), item.length);
                 var _item = item.substring(0, item.indexOf("?"));
@@ -478,7 +478,6 @@ export default class NorthAmpliaREST {
             }
         });
         var returnUrl = this._url(this._options) + "/" + encode.join("/");
-        console.log(returnUrl);
         return returnUrl;
     }
 
@@ -490,7 +489,7 @@ export default class NorthAmpliaREST {
         let defered = q.defer();
         let promise = defered.promise;
         let apiKey = this._options.apiKey;
-        let _req = req.timeout(_timeout);
+        let _req = _timeout === -1 ? req : req.timeout(_timeout);
 
         if (apiKey) {
             _req = _req.set('X-ApiKey', this._options.apiKey);
@@ -509,7 +508,7 @@ export default class NorthAmpliaREST {
                 _req = _req.on(event, events[event]);
             }
         }
-        _req = _req.end(function (err, res) {
+        _req = _req.end(function(err, res) {
             if (err !== null) {
                 let data;
                 let status;
