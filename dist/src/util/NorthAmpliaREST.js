@@ -519,7 +519,6 @@ var NorthAmpliaREST = (function () {
                 }
             });
             var returnUrl = this._url(this._options) + "/" + encode.join("/");
-            console.log(returnUrl);
             return returnUrl;
         }
     }, {
@@ -532,7 +531,7 @@ var NorthAmpliaREST = (function () {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
             var apiKey = this._options.apiKey;
-            var _req = req.timeout(_timeout);
+            var _req = _timeout === -1 ? req : req.timeout(_timeout);
 
             if (apiKey) {
                 _req = _req.set('X-ApiKey', this._options.apiKey);
