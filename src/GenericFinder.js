@@ -78,7 +78,6 @@ export default class GenericFinder {
         let promise = defered.promise;
         let _entity = this._entity;
         let _error_not_found = this._error_not_found;
-        //console.log("URL: " + this._composeUrl());
         this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters())
             .then((req) => {
                 //console.log("STATUS_CODE: " + JSON.stringify(req));
@@ -95,9 +94,10 @@ export default class GenericFinder {
                             syncCache: req.body.syncCache
                         });
                     } else {
-                        var data = (Object.keys(req.body).length === 1 && req.body[_entity]) ? req.body[_entity] : req.body;
+
+                        var data = req.body[_entity] && req.body.provision ? req.body : req.body[_entity];
                         defered.resolve({
-                            data: data,
+                            data: data ? data : req.body,
                             statusCode: req.statusCode
                         });
                     }

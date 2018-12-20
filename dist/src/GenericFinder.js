@@ -107,7 +107,6 @@ var GenericFinder = (function () {
             var promise = defered.promise;
             var _entity = this._entity;
             var _error_not_found = this._error_not_found;
-            //console.log("URL: " + this._composeUrl());
             this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters()).then(function (req) {
                 //console.log("STATUS_CODE: " + JSON.stringify(req));
                 if (req.statusCode === 204) {
@@ -123,9 +122,10 @@ var GenericFinder = (function () {
                             syncCache: req.body.syncCache
                         });
                     } else {
-                        var data = Object.keys(req.body).length === 1 && req.body[_entity] ? req.body[_entity] : req.body;
+
+                        var data = req.body[_entity] && req.body.provision ? req.body : req.body[_entity];
                         defered.resolve({
-                            data: data,
+                            data: data ? data : req.body,
                             statusCode: req.statusCode
                         });
                     }
