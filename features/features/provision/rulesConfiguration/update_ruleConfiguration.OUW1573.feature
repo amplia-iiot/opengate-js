@@ -1,4 +1,4 @@
-# features/update_ruleConfiguration.feature
+#features/update_ruleConfiguration.OUW1573.feature
 @provision
 @update_ruleConfiguration
 @rulesConfiguration
@@ -49,16 +49,8 @@ Feature: Managing a rule configuration - OUW-1573
             }, {
             "name": "threshold",
             "value": "0"
-            }
-            ]
-            }, {
-            "name": "datastreamCurrentValueThreshold",
-            "parameters": [{
-            "name": "datastream_name"
             }, {
             "name": "curvalue_operator"
-            }, {
-            "name": "threshold"
             }, {
             "name": "prevalue_operator"
             }
