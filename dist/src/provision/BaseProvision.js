@@ -245,7 +245,7 @@ var BaseProvision = (function () {
     }, {
         key: '_setUrlParameters',
         value: function _setUrlParameters(parameters) {
-            if (this.parameters) {
+            if (this._urlParameters) {
                 var keys = Object.keys(parameters);
                 for (var i = 0; i < keys.length; i++) {
                     var key = keys[i];
