@@ -7,6 +7,7 @@
 @csv
 @urlParameters
 @disableOrder
+@disableCaseSensitive
 Feature: Searching asset
   As a user of JsApi
   I want to search into asset collection
@@ -69,6 +70,14 @@ Feature: Searching asset
   Scenario: Execute searching with a flattened response and disable order response
     And an ogapi "asset search" util
     When I build it with flattened and disable order response
+    And I execute it
+    Then response code should be: 200
+    Then does not throws an error
+
+
+  Scenario: Execute searching with a flattened response, disable order and disable case sensitive response
+    And an ogapi "asset search" util
+    When I build it with flattened, disable order and disable case sensitivie response
     And I execute it
     Then response code should be: 200
     Then does not throws an error

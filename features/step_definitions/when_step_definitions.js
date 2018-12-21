@@ -302,6 +302,19 @@ module.exports = function () {
         callback();
     });
 
+    this.When(/^I build it with flattened, disable order and disable case sensitivie response$/, function (callback) {
+        this.error = undefined;
+
+        try {
+            //console.log("UTIL: " + this.util);
+            this.build = this.util.flattened().disableDefaultSorted().disableCaseSensitive().build();
+        } catch (err) {
+            this.error = err;
+            //console.log(this.error);
+        }
+        callback();
+    });
+
     this.When(/^I build it with summary response$/, function (callback) {
         this.error = undefined;
 
