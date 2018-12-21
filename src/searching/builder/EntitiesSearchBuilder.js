@@ -42,6 +42,16 @@ export default class EntitiesSearchBuilder extends SearchWithSummaryBuilder {
         return this;
     }
 
+    /**
+     * The response will return a response by applying the filter with likes case-no-sensitive
+     * @example
+     *	ogapi.entitiesSearchBuilder().disableCaseSensitive() 
+     * @return {EntitiesSearchBuilder} 
+     */
+    disableCaseSensitive() {
+        this._urlParams.caseSensitive = false;
+        return this;
+    }
 
     _buildUrl() {
         for (let route in this._routes) {
