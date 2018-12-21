@@ -79,6 +79,19 @@ var EntitiesSearchBuilder = (function (_SearchWithSummaryBuilder) {
             this._urlParams.defaultSorted = false;
             return this;
         }
+
+        /**
+         * The response will return a response by applying the filter with likes case-no-sensitive
+         * @example
+         *	ogapi.entitiesSearchBuilder().disableCaseSensitive() 
+         * @return {EntitiesSearchBuilder} 
+         */
+    }, {
+        key: 'disableCaseSensitive',
+        value: function disableCaseSensitive() {
+            this._urlParams.caseSensitive = false;
+            return this;
+        }
     }, {
         key: '_buildUrl',
         value: function _buildUrl() {
