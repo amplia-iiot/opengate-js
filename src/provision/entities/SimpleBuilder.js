@@ -20,8 +20,8 @@ export default class SimpleBuilder extends BaseProvision {
      * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types
      * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool
      */
-    constructor(ogapi, resource, allowedDatastreams, definedSchemas, jsonSchemaValidator) {
-        super(ogapi, "/organizations/" + resource);
+    constructor(ogapi, resource, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout) {
+        super(ogapi, "/organizations/" + resource, timeout);
         if (typeof this._getEntityKey !== "function") {
             throw new Error("Must override method:  _getEntityKey");
         }
