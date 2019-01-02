@@ -247,16 +247,16 @@ class BoxBuilder {
         this._url = url;
         this._ogapi = ogapi;
         this._key = key;
-        this._deviceKeys = Object.keys(obj).filter(function (dsName) {
+        this._deviceKeys = Object.keys(obj).filter(function(dsName) {
             return dsName.indexOf(&apos;subscriber&apos;) === -1 &amp;&amp; dsName.indexOf(&apos;subscription&apos;) === -1;
         });
-        this._subscriberKeys = Object.keys(obj).filter(function (dsName) {
+        this._subscriberKeys = Object.keys(obj).filter(function(dsName) {
             return dsName.indexOf(&apos;subscriber&apos;) !== -1;
         });
-        this._subscriptionKeys = Object.keys(obj).filter(function (dsName) {
+        this._subscriptionKeys = Object.keys(obj).filter(function(dsName) {
             return dsName.indexOf(&apos;subscription&apos;) !== -1;
         });
-        this._administrationKeys = Object.keys(obj).filter(function (dsName) {
+        this._administrationKeys = Object.keys(obj).filter(function(dsName) {
             return dsName.indexOf(&apos;provision.administration&apos;) !== -1;
         });
         this._wrappers = [];
@@ -324,7 +324,7 @@ class BoxBuilder {
         });
 
         q.allSettled(
-            childEntityPromises.reduce(function (previousValue, current) {
+            childEntityPromises.reduce(function(previousValue, current) {
                 previousValue.push(current.promise);
                 return previousValue;
             }, [])).then(() =&gt; {
@@ -464,7 +464,7 @@ class BoxBuilder {
         });
 
         q.allSettled(
-            childEntityPromises.reduce(function (previousValue, current) {
+            childEntityPromises.reduce(function(previousValue, current) {
                 previousValue.push(current.promise);
                 return previousValue;
             }, [])).then(() =&gt; {
@@ -541,7 +541,7 @@ class WrapperBuilder {
     }
 
     _checkExists() {
-        return this._ogapi.Napi.get(this._urlWithKey()).then(function (response) {
+        return this._ogapi.Napi.get(this._urlWithKey()).then(function(response) {
             return response.statusCode === HttpStatus.OK;
         }).catch((err) =&gt; {
             console.warn(err);
@@ -638,8 +638,9 @@ export default class DeviceBuilder extends ComplexBuilder {
      * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types
      * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool
      */
-    constructor(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator) {
-        super(ogapi, organization + &apos;/devices&apos;, allowedDatastreams, definedSchemas, jsonSchemaValidator);
+
+    constructor(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout) {
+        super(ogapi, organization + &apos;/devices&apos;, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout);
         this._organization = organization;
     }
 

@@ -34,10 +34,10 @@ var ComplexBuilder = (function (_SimpleBuilder) {
      * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool
      */
 
-    function ComplexBuilder(ogapi, resource, allowedDatastreams, definedSchemas, jsonSchemaValidator) {
+    function ComplexBuilder(ogapi, resource, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout) {
         _classCallCheck(this, ComplexBuilder);
 
-        _get(Object.getPrototypeOf(ComplexBuilder.prototype), 'constructor', this).call(this, ogapi, resource, allowedDatastreams, definedSchemas, jsonSchemaValidator);
+        _get(Object.getPrototypeOf(ComplexBuilder.prototype), 'constructor', this).call(this, ogapi, resource, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout);
     }
 
     _createClass(ComplexBuilder, [{

@@ -447,10 +447,10 @@ var DeviceBuilder = (function (_ComplexBuilder) {
      * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool
      */
 
-    function DeviceBuilder(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator) {
+    function DeviceBuilder(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout) {
         _classCallCheck(this, DeviceBuilder);
 
-        _get(Object.getPrototypeOf(DeviceBuilder.prototype), 'constructor', this).call(this, ogapi, organization + '/devices', allowedDatastreams, definedSchemas, jsonSchemaValidator);
+        _get(Object.getPrototypeOf(DeviceBuilder.prototype), 'constructor', this).call(this, ogapi, organization + '/devices', allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout);
         this._organization = organization;
     }
 

@@ -36,10 +36,10 @@ var AssetBuilder = (function (_SimpleBuilder) {
      * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool
      */
 
-    function AssetBuilder(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator) {
+    function AssetBuilder(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout) {
         _classCallCheck(this, AssetBuilder);
 
-        _get(Object.getPrototypeOf(AssetBuilder.prototype), 'constructor', this).call(this, ogapi, organization + '/entities', allowedDatastreams, definedSchemas, jsonSchemaValidator);
+        _get(Object.getPrototypeOf(AssetBuilder.prototype), 'constructor', this).call(this, ogapi, organization + '/entities', allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout);
         this._entity['resourceType'] = {
             "_value": {
                 "_current": {

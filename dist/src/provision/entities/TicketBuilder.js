@@ -36,10 +36,10 @@ var TicketBuilder = (function (_SimpleBuilder) {
      * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool
      */
 
-    function TicketBuilder(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator) {
+    function TicketBuilder(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout) {
         _classCallCheck(this, TicketBuilder);
 
-        _get(Object.getPrototypeOf(TicketBuilder.prototype), 'constructor', this).call(this, ogapi, organization + '/tickets', allowedDatastreams, definedSchemas, jsonSchemaValidator);
+        _get(Object.getPrototypeOf(TicketBuilder.prototype), 'constructor', this).call(this, ogapi, organization + '/tickets', allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout);
     }
 
     _createClass(TicketBuilder, [{

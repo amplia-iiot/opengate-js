@@ -35,10 +35,10 @@ var SubscriberBuilder = (function (_SimpleBuilder) {
      * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool
      */
 
-    function SubscriberBuilder(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator) {
+    function SubscriberBuilder(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout) {
         _classCallCheck(this, SubscriberBuilder);
 
-        _get(Object.getPrototypeOf(SubscriberBuilder.prototype), 'constructor', this).call(this, ogapi, organization + '/subscribers', allowedDatastreams, definedSchemas, jsonSchemaValidator);
+        _get(Object.getPrototypeOf(SubscriberBuilder.prototype), 'constructor', this).call(this, ogapi, organization + '/subscribers', allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout);
     }
 
     _createClass(SubscriberBuilder, [{

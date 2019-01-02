@@ -180,13 +180,14 @@ var EntityBuilder = (function () {
          * @example
          * ogapi.devicesBuilder('orgname').then(function(deviceBuilder){//...}).catch()
          * @param {string} organization - required field
+         * @param {!number} [timeout] - timeout on request
          * @return {Promise}
          */
     }, {
         key: 'devicesBuilder',
-        value: function devicesBuilder(organization) {
+        value: function devicesBuilder(organization, timeout) {
             return this._genericBuilder(organization, 'entity.device', 'provision', function (allowedDatastreams, definedSchemas) {
-                return new _DeviceBuilder2['default'](this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
+                return new _DeviceBuilder2['default'](this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout);
             });
         }
 
@@ -195,13 +196,14 @@ var EntityBuilder = (function () {
          * @example
          * ogapi.assetsBuilder('orgname').then(function(assetBuilder){//...}).catch()
          * @param {string} organization - required field
+         * @param {!number} [timeout] - timeout on request
          * @return {Promise}
          */
     }, {
         key: 'assetsBuilder',
-        value: function assetsBuilder(organization) {
+        value: function assetsBuilder(organization, timeout) {
             return this._genericBuilder(organization, 'entity.asset', 'provision', function (allowedDatastreams, definedSchemas) {
-                return new _AssetBuilder2['default'](this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
+                return new _AssetBuilder2['default'](this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout);
             });
         }
 
@@ -210,13 +212,14 @@ var EntityBuilder = (function () {
          * @example
          * ogapi.ticketsBuilder('orgname').then(function(ticketBuilder){//...}).catch()
          * @param {string} organization - required field
+         * @param {!number} [timeout] - timeout on request
          * @return {Promise}
          */
     }, {
         key: 'ticketsBuilder',
-        value: function ticketsBuilder(organization) {
+        value: function ticketsBuilder(organization, timeout) {
             return this._genericBuilder(organization, 'ticket', 'provision', function (allowedDatastreams, definedSchemas) {
-                return new _TicketBuilder2['default'](this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
+                return new _TicketBuilder2['default'](this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout);
             });
         }
 
@@ -225,13 +228,14 @@ var EntityBuilder = (function () {
          * @example
          * ogapi.subscribersBuilder('orgname').then(function(subscriberBuilder){//...}).catch()
          * @param {string} organization - required field
+         * @param {!number} [timeout] - timeout on request
          * @return {Promise}
          */
     }, {
         key: 'subscribersBuilder',
-        value: function subscribersBuilder(organization) {
+        value: function subscribersBuilder(organization, timeout) {
             return this._genericBuilder(organization, 'entity.subscriber', 'provision.device.communicationModules[].subscriber', function (allowedDatastreams, definedSchemas) {
-                return new _SubscriberBuilder2['default'](this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
+                return new _SubscriberBuilder2['default'](this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout);
             });
         }
 
@@ -240,13 +244,14 @@ var EntityBuilder = (function () {
          * @example
          * ogapi.subscriptionsBuilder('orgname').then(function(subscriptionBuilder){//...}).catch()
          * @param {string} organization - required field
+         * @param {!number} [timeout] - timeout on request
          * @return {Promise}
          */
     }, {
         key: 'subscriptionsBuilder',
-        value: function subscriptionsBuilder(organization) {
+        value: function subscriptionsBuilder(organization, timeout) {
             return this._genericBuilder(organization, 'entity.subscription', 'provision', function (allowedDatastreams, definedSchemas) {
-                return new _SubscriptionBuilder2['default'](this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator);
+                return new _SubscriptionBuilder2['default'](this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout);
             });
         }
 

@@ -44,10 +44,10 @@ var SimpleBuilder = (function (_BaseProvision) {
      * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool
      */
 
-    function SimpleBuilder(ogapi, resource, allowedDatastreams, definedSchemas, jsonSchemaValidator) {
+    function SimpleBuilder(ogapi, resource, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout) {
         _classCallCheck(this, SimpleBuilder);
 
-        _get(Object.getPrototypeOf(SimpleBuilder.prototype), 'constructor', this).call(this, ogapi, "/organizations/" + resource);
+        _get(Object.getPrototypeOf(SimpleBuilder.prototype), 'constructor', this).call(this, ogapi, "/organizations/" + resource, timeout);
         if (typeof this._getEntityKey !== "function") {
             throw new Error("Must override method:  _getEntityKey");
         }
