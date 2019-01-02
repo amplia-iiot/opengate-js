@@ -136,6 +136,7 @@ export default class EntityBuilder {
      * @example
      * ogapi.devicesBuilder('orgname').then(function(deviceBuilder){//...}).catch()
      * @param {string} organization - required field
+     * @param {!number} [timeout] - timeout on request
      * @return {Promise}
      */
     devicesBuilder(organization, timeout) {
@@ -149,6 +150,7 @@ export default class EntityBuilder {
      * @example
      * ogapi.assetsBuilder('orgname').then(function(assetBuilder){//...}).catch()
      * @param {string} organization - required field
+     * @param {!number} [timeout] - timeout on request
      * @return {Promise}
      */
     assetsBuilder(organization, timeout) {
@@ -162,6 +164,7 @@ export default class EntityBuilder {
      * @example
      * ogapi.ticketsBuilder('orgname').then(function(ticketBuilder){//...}).catch()
      * @param {string} organization - required field
+     * @param {!number} [timeout] - timeout on request
      * @return {Promise}
      */
     ticketsBuilder(organization, timeout) {
@@ -175,6 +178,7 @@ export default class EntityBuilder {
      * @example
      * ogapi.subscribersBuilder('orgname').then(function(subscriberBuilder){//...}).catch()
      * @param {string} organization - required field
+     * @param {!number} [timeout] - timeout on request
      * @return {Promise}
      */
     subscribersBuilder(organization, timeout) {
@@ -187,6 +191,7 @@ export default class EntityBuilder {
          * @example
          * ogapi.subscriptionsBuilder('orgname').then(function(subscriptionBuilder){//...}).catch()
          * @param {string} organization - required field
+         * @param {!number} [timeout] - timeout on request
          * @return {Promise}
          */
     subscriptionsBuilder(organization, timeout) {
