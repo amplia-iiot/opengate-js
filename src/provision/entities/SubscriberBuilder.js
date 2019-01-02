@@ -15,8 +15,8 @@ export default class SubscriberBuilder extends SimpleBuilder {
      * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types
      * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool
      */
-    constructor(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator) {
-        super(ogapi, organization + '/subscribers', allowedDatastreams, definedSchemas, jsonSchemaValidator);
+    constructor(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout) {
+        super(ogapi, organization + '/subscribers', allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout);
     }
 
     _getEntityKey() {

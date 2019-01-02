@@ -16,8 +16,8 @@ export default class TicketBuilder extends SimpleBuilder {
      * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types
      * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool
      */
-    constructor(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator) {
-        super(ogapi, organization + '/tickets', allowedDatastreams, definedSchemas, jsonSchemaValidator);
+    constructor(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout) {
+        super(ogapi, organization + '/tickets', allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout);
     }
 
     _getEntityKey() {
