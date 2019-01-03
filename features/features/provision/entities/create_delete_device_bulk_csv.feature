@@ -9,7 +9,7 @@
 @csv
 @urlParameters
 
-Feature: Delete and Create a device
+Feature: Delete and Create a device - bulk csv
   As a device of JsApi
   I want to create a device using csv file
   So, I can create a new user with the parametres that I have been defined

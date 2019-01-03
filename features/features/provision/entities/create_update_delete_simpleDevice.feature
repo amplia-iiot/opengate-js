@@ -5,7 +5,7 @@
 @create_provision
 @device_defaultCreate
 @entities_provision
-Feature: Delete and Create a device
+Feature: Delete and Create a device - simple device
 As a device of JsApi
 I want to create an device
 So, I can create a new user with the parametres that I have been defined

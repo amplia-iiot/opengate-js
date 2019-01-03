@@ -11,7 +11,7 @@
 @csv
 @urlParameters
 @fail_bulk
-Feature: Delete and Create a Device
+Feature: Delete and Create a Device - 2 devices bulk response csv
   As a device of JsApi
   I want to create a device using json file
   So, I can create a new user with the parametres that I have been defined
