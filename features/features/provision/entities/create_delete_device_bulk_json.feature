@@ -8,7 +8,7 @@
 @bulk_entities
 @urlParameters
 
-Feature: Delete and Create a device
+Feature: Delete and Create a device - bulk json
   As a device of JsApi
   I want to create a device using json file
   So, I can create a new user with the parametres that I have been defined
