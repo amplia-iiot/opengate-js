@@ -1,5 +1,4 @@
 var gulp = require('gulp'),
-    gutil = require('gulp-util'),
     uglify = require('gulp-uglify'),
     ver = require('gulp-ver'),
     esdoc = require("gulp-esdoc"),
@@ -16,7 +15,7 @@ var gulp = require('gulp'),
     },
     dest = './dist';
 
-gulp.task('clean', function () {
+gulp.task('clean', function() {
     return gulp.src(dest, {
             read: false
         })
@@ -25,8 +24,9 @@ gulp.task('clean', function () {
         }));
 });
 
-gulp.task('clean-doc', function () {
+gulp.task('clean-doc', function() {
     return gulp.src(['./documentation'], {
+            allowEmpty: true,
             read: false
         })
         .pipe(clean({
@@ -34,12 +34,16 @@ gulp.task('clean-doc', function () {
         }));
 });
 
-gulp.task('generate-doc', ['clean-doc'], function () {
+
+gulp.task('esdoc', function() {
     return gulp.src('.')
         .pipe(esdoc());
 });
 
-gulp.task('npm', ['clean'], function () {
+gulp.task('generate-doc', gulp.series('clean-doc', 'esdoc'));
+
+
+gulp.task('npm', function() {
     return gulp.src(src, srcOption)
         .pipe(sourcemaps.init())
         .pipe(babel())
@@ -50,12 +54,12 @@ gulp.task('npm', ['clean'], function () {
         .pipe(gulp.dest(dest));
 });
 
-gulp.task('bower', ['clean'], function () {
+gulp.task('bower', function() {
     return gulp.src(entryClient, srcOption)
         .pipe(sourcemaps.init())
         .pipe(browserify({
             insertGlobals: true,
-            debug: !gulp.env.production,
+            debug: gulp.env && !gulp.env.production,
             transform: ['babelify']
         }))
         .pipe(ver())
@@ -64,10 +68,10 @@ gulp.task('bower', ['clean'], function () {
             sourceRoot: '..'
         }))
 
-        .pipe(gulp.dest(dest));
+    .pipe(gulp.dest(dest));
 });
 
-gulp.task('bower:min', ['clean'], function () {
+gulp.task('bower:min', function() {
     return gulp.src(entryClient, srcOption)
         .pipe(sourcemaps.init())
         .pipe(browserify({
@@ -88,12 +92,14 @@ gulp.task('bower:min', ['clean'], function () {
 });
 
 
-gulp.task('compile', ['clean', 'npm', 'bower', 'bower:min']);
+gulp.task('compile', gulp.series('clean', 'npm', 'bower', 'bower:min'));
 
-gulp.task('build', ['compile', 'generate-doc']);
+gulp.task('build', gulp.series('compile', 'generate-doc'));
 
-gulp.task('default', ['watch-src']);
 
-gulp.task('watch-src', function () {
-    gulp.watch(['src/**'], ['compile']);
+gulp.task('watch-src', function(done) {
+    gulp.watch(['src/**'], gulp.series('compile'));
+    done();
 });
+
+gulp.task('default', gulp.parallel('watch-src'));

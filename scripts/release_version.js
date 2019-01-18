@@ -1,11 +1,9 @@
 'use strict';
 
 var gulp = require('gulp'),
-    ver = require('gulp-ver'),
     git = require('gulp-git'),
     bump = require('gulp-bump'),
     argv = require('yargs').argv,
-    runSequence = require('run-sequence'),
     tag_version = require('gulp-tag-version');
 
 /**
@@ -24,24 +22,23 @@ var gulp = require('gulp'),
 
 //STEP 1 
 gulp.task('create:release:branch', function(cb) {
-    git.checkout(temporalBranchRelease(), { args: '-b' }, function (err) {
+    git.checkout(temporalBranchRelease(), { args: '-b' }, function(err) {
         cb(err);
     });
 });
-
-// STEP 2
-gulp.task('build:all', function (cb) {
-    runSequence('increase:version', 'build', cb);
-});
-
-gulp.task('increase:version', ['create:release:branch'], function() {
+gulp.task('increase:version', function() {
     return increase(versionType());
 });
+
+gulp.task('build:all', gulp.series('build', 'create:release:branch', 'increase:version'));
+
+// STEP 2
+
 
 // STEP 2
 
 // STEP 3 
-gulp.task('commit:increase:version', ['build:all'], function() {
+gulp.task('commit:increase:version', function() {
     return gulp.src(['dist', './bower.json', './package.json', './documentation', './src/util/searchingFields/source-precompiled/Fields.js'])
         .pipe(git.add())
         .pipe(git.commit('release ' + versionType() + ' version:' + versionNumber()));
@@ -49,24 +46,26 @@ gulp.task('commit:increase:version', ['build:all'], function() {
 // STEP 3 
 
 // STEP 4
-gulp.task('checkout:master:increase', ['commit:increase:version'], function(cb) {
-    git.checkout(masterBranch(), function (err) {
+gulp.task('checkout:master:increase', function(cb) {
+    git.checkout(masterBranch(), function(err) {
         cb(err);
     });
 });
 
-gulp.task('merge:master:increase', ['checkout:master:increase'], function (cb) {
-    git.merge(temporalBranchRelease(), function (err) {
+gulp.task('merge:master:increase', function(cb) {
+    git.merge(temporalBranchRelease(), function(err) {
         cb(err);
     });
 });
 
-gulp.task('prepare_tag:increase', ['merge:master:increase'], function() {
+gulp.task('change:tab_version:increase', function() {
     return gulp.src(['./package.json'])
         .pipe(tag_version());
 });
 
-gulp.task('prepare:develop:increase', ['prepare_tag:increase'], function(cb) {
+gulp.task('prepare_tag:increase', gulp.series('commit:increase:version', 'checkout:master:increase', 'merge:master:increase', 'change:tab_version:increase'));
+
+gulp.task('checkout:develop', function(cb) {
     git.checkout(developBranch(), function(err) {
         if (!err) {
             git.merge(masterBranch(), function(err) {
@@ -78,9 +77,10 @@ gulp.task('prepare:develop:increase', ['prepare_tag:increase'], function(cb) {
         }
     });
 });
-// STEP 4
 
-gulp.task('push:increase', ['prepare:develop:increase', 'prepare_tag:increase'], function(cb) {
+gulp.task('prepare:develop:increase', gulp.series('build:all', 'prepare_tag:increase', 'checkout:develop'));
+// STEP 4
+gulp.task('push:increase:build', function(cb) {
     git.push('origin', [masterBranch(), developBranch()], { args: " --follow-tags" }, function(err) {
         if (!err) {
             git.branch(temporalBranchRelease(), { args: "-D" }, function(err) {
@@ -91,6 +91,7 @@ gulp.task('push:increase', ['prepare:develop:increase', 'prepare_tag:increase'],
         }
     });
 });
+gulp.task('push:increase', gulp.series('prepare:develop:increase', 'push:increase:build'));
 
 function increase(importance) {
     // get all the files to bump version in 
