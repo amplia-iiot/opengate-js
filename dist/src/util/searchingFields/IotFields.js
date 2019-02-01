@@ -48,6 +48,27 @@ var IOT_FIELDS = {
     "TASKS": {
         "TASKS": ["tasks.id", "tasks.name", "tasks.description", "tasks.state", "tasks.domain", "tasks.workgroup", "tasks.job.request.user"]
     },
+    "BULK": {
+        "BULK": {
+            "identifier": "bulks.identifier",
+            "organization": "bulks.organization",
+            "fileName": "bulks.request.fileName",
+            "userEmail": "bulks.request.userEmail",
+            "headerAccept": "bulks.request.header.accept",
+            "contentType": "bulks.request.header.contentType",
+            "headerCsvFormat": "bulks.request.header.csvFormat",
+            "paramsFlattened": "bulks.request.params.flattened",
+            "paramsAction": "bulks.request.params.action",
+            "paramsFull": "bulks.request.params.full",
+            "paramsType": "bulks.request.params.type",
+            "status": "bulks.status",
+            "startedDate": "bulks.startedDate",
+            "finishedDate": "bulks.finishedDate",
+            "processed": "bulks.summary.processed",
+            "successful": "bulks.summary.successful",
+            "error": "bulks.summary.error"
+        }
+    },
     "GENERAL": {
         "GENERAL": []
     },

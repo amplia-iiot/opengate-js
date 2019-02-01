@@ -182,61 +182,69 @@ export default class EntityBuilder {
      * @return {Promise}
      */
     subscribersBuilder(organization, timeout) {
-            return this._genericBuilder(organization, 'entity.subscriber', 'provision.device.communicationModules[].subscriber', function(allowedDatastreams, definedSchemas) {
-                return new SubscriberBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout);
-            });
-        }
-        /**
-         * Get a SubscriptionBuilder for operate with entities of type subscription
-         * @example
-         * ogapi.subscriptionsBuilder('orgname').then(function(subscriptionBuilder){//...}).catch()
-         * @param {string} organization - required field
-         * @param {!number} [timeout] - timeout on request
-         * @return {Promise}
-         */
+        return this._genericBuilder(organization, 'entity.subscriber', 'provision.device.communicationModules[].subscriber', function(allowedDatastreams, definedSchemas) {
+            return new SubscriberBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout);
+        });
+    }
+
+    /**
+     * Get a SubscriptionBuilder for operate with entities of type subscription
+     * @example
+     * ogapi.subscriptionsBuilder('orgname').then(function(subscriptionBuilder){//...}).catch()
+     * @param {string} organization - required field
+     * @param {!number} [timeout] - timeout on request
+     * @return {Promise}
+     */
     subscriptionsBuilder(organization, timeout) {
-            return this._genericBuilder(organization, 'entity.subscription', 'provision', function(allowedDatastreams, definedSchemas) {
-                return new SubscriptionBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout);
-            });
-        }
-        /**
-         * Get a new CsvBulkBuilder 
-         * @example 
-         *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000)
-         * @param {string} organization - required field. 
-         * @param {string} resource - required field. Type of resource: entities or tickets
-         * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
-         * @return {CsvBulkBuilder}
-         */
-    newCsvBulkBuilder(organization, resource, timeout) {
-            this._validateBulk(organization, resource);
-            return new CsvBulkBuilder(this._ogapi, organization, resource, timeout);
-        }
-        /**
-         * Get a new JsonBulkBuilder 
-         * @example 
-         *  ogapi.newJsonBulkBuilder('orgname', 'entities', 10000)
-         * @param {string} organization - required field. 
-         * @param {string} resource - required field. Type of resource: entities or tickets
-         * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
-         * @return {JsonBulkBuilder}
-         */
-    newJsonBulkBuilder(organization, resource, timeout) {
-            this._validateBulk(organization, resource);
-            return new JsonBulkBuilder(this._ogapi, organization, resource, timeout);
-        }
-        /**
-         * Get a new JsonFlattenedBulkBuilder 
-         * @example 
-         *  ogapi.newJsonFlattenedBulkBuilder('orgname', 'entities', 10000)
-         * @param {string} organization - required field. 
-         * @param {string} resource - required field. Type of resource: entities or tickets
-         * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
-         * @return {JsonFlattenedBulkBuilder}
-         */
-    newJsonFlattenedBulkBuilder(organization, resource, timeout) {
+        return this._genericBuilder(organization, 'entity.subscription', 'provision', function(allowedDatastreams, definedSchemas) {
+            return new SubscriptionBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout);
+        });
+    }
+
+    /**
+     * Get a new CsvBulkBuilder 
+     * @example 
+     *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000, false)
+     *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000, true)
+     * @param {string} organization - required field. 
+     * @param {string} resource - required field. Type of resource: entities or tickets
+     * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
+     * @param {boolean} [async] - forces async execution for the bulk operation
+     * @return {CsvBulkBuilder}
+     */
+    newCsvBulkBuilder(organization, resource, timeout, async) {
         this._validateBulk(organization, resource);
-        return new JsonFlattenedBulkBuilder(this._ogapi, organization, resource, timeout);
+        return new CsvBulkBuilder(this._ogapi, organization, resource, timeout, async);
+    }
+
+    /**
+     * Get a new JsonBulkBuilder 
+     * @example 
+     *  ogapi.newJsonBulkBuilder('orgname', 'entities', 10000)
+     * @param {string} organization - required field. 
+     * @param {string} resource - required field. Type of resource: entities or tickets
+     * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
+     * @param {boolean} [async] - forces async execution for the bulk operation
+     * @return {JsonBulkBuilder}
+     */
+    newJsonBulkBuilder(organization, resource, timeout, async) {
+        this._validateBulk(organization, resource);
+        return new JsonBulkBuilder(this._ogapi, organization, resource, timeout, async);
+    }
+
+    /**
+     * Get a new JsonFlattenedBulkBuilder 
+     * @example 
+     *  ogapi.newJsonFlattenedBulkBuilder('orgname', 'entities', 10000)
+     * @param {string} organization - required field. 
+     * @param {string} resource - required field. Type of resource: entities or tickets
+     * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
+     * @param {boolean} [async] - forces async execution for the bulk operation
+     * @return {JsonFlattenedBulkBuilder}
+     */
+    newJsonFlattenedBulkBuilder(organization, resource, timeout, async) {
+        this._validateBulk(organization, resource);
+        return new JsonFlattenedBulkBuilder(this._ogapi, organization, resource, timeout, async);
     }
 
     _validateBulk(organization, resource) {

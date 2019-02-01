@@ -58,7 +58,7 @@ export default class StaticSearch extends Search {
         switch (_this._contentType) {
             case 'operationalStatus':
                 for (var contentTmp in collection) {
-                    collection[contentTmp].forEach(function (finalValue) {
+                    collection[contentTmp].forEach(function(finalValue) {
                         if (!_this._customFilters.id || (_this._customFilters.id && _this._customFilters.id === finalValue)) {
                             finalContent.push({
                                 'entityType': contentTmp,
@@ -69,7 +69,7 @@ export default class StaticSearch extends Search {
                 }
                 break;
             case 'administrativeState':
-                var createAndAddFileObj = function (obj) {
+                var createAndAddFileObj = function(obj) {
                     var finalObj = obj;
                     finalObj[ENTITY_TYPE] = entityTypeTmp;
                     finalContent.push(finalObj);
@@ -2516,6 +2516,6 @@ export default class StaticSearch extends Search {
                 'Zulu'
             ]
 
-        } [contentType];
+        }[contentType];
     }
 }

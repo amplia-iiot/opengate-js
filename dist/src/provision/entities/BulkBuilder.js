@@ -60,7 +60,7 @@ var BulkBuilder = (function (_BaseProvision) {
          *  Execute the bulk creation operation
          * @example 
          *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).create(rawFile)
-         *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).create(new Blob(), ture)
+         *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).create(new Blob(), true)
          * @param {string|Blob} rawFile - File with format string or Blob 
          * @param {boolean} [csv_response] - true if you want a response on format csv. False or null if you want a response on format json
          */
@@ -74,7 +74,7 @@ var BulkBuilder = (function (_BaseProvision) {
          *  Execute the bulk delete operation
          * @example 
          *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).delete(rawFile)
-         *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).delete(new Blob(), ture)
+         *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).delete(new Blob(), true)
          * @param {string|Blob} rawFile - File with format string or Blob 
          * @param {boolean} [csv_response] - true if you want a response on format csv. False or null if you want a response on format json
          */
@@ -88,7 +88,7 @@ var BulkBuilder = (function (_BaseProvision) {
          *  Execute the bulk delete full operation
          * @example 
          *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).deleteAll(rawFile)
-         *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).deleteAll(new Blob(), ture)
+         *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).deleteAll(new Blob(), true)
          * @param {string|Blob} rawFile - File with format string or Blob 
          * @param {boolean} [csv_response] - true if you want a response on format csv. False or null if you want a response on format json
          */
@@ -102,7 +102,7 @@ var BulkBuilder = (function (_BaseProvision) {
          *  Execute the bulk update operation
          * @example 
          *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).update(rawFile)
-         *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).update(new Blob(), ture)
+         *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).update(new Blob(), true)
          * @param {string|Blob} rawFile - File with format string or Blob 
          * @param {boolean} [csv_response] - true if you want a response on format csv. False or null if you want a response on format json
          */
@@ -141,8 +141,8 @@ var BulkBuilder = (function (_BaseProvision) {
             });
             this._ogapi.Napi.post_multipart(petitionUrl, form, {}, this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (response) {
                 var statusCode = response.statusCode;
-                if (statusCode === 200) {
-                    if (csv_response) {
+                if (statusCode === 200 || statusCode === 201) {
+                    if (csv_response && !response.location) {
                         //Se hace esto para que la respuesta sea igual que al searching con resultado en csv
                         var resultQuery = response;
                         var _statusCode = response.statusCode;

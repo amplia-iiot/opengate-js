@@ -50,6 +50,7 @@ var match_url = {
     '/domains': 'DOMAIN',
     '/users': 'USER',
     '/areas': 'AREAS',
+    '/bulk/async': 'BULK',
     '/devices': 'SearchOnDatamodel',
     '/subscriptions': 'SearchOnDatamodel',
     '/subscribers': 'SearchOnDatamodel',

@@ -28,14 +28,17 @@ var JsonFlattenedBulkBuilder = (function (_BulkBuilder) {
      * @param {string} organization - required field. This is the organization name where entities will be created, updated or deleted
      * @param {resource} resource - required field. This is the resource used for the bulk provision
      * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
+     * @param {boolean} [async] - forces async execution for the bulk operation
      */
 
-    function JsonFlattenedBulkBuilder(ogapi, organization, resource, timeout) {
+    function JsonFlattenedBulkBuilder(ogapi, organization, resource, timeout, async) {
         _classCallCheck(this, JsonFlattenedBulkBuilder);
 
-        _get(Object.getPrototypeOf(JsonFlattenedBulkBuilder.prototype), 'constructor', this).call(this, ogapi, 'provision/organizations/' + organization + '/bulk/' + resource, 'application/json', timeout);
+        _get(Object.getPrototypeOf(JsonFlattenedBulkBuilder.prototype), 'constructor', this).call(this, ogapi, 'provision/organizations/' + organization + '/bulk/' + (async ? 'async' : resource.toLowerCase()), 'application/json', timeout);
+
         this._setUrlParameters({
-            flattened: true
+            flattened: true,
+            type: async ? resource.toUpperCase() : undefined
         });
     }
 

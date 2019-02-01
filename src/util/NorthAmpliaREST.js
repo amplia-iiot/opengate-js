@@ -22,119 +22,49 @@ export default class NorthAmpliaREST {
         this._options = merge.recursive(true, this.default(), _options);
         this._headers = headers;
 
-        // mock.post(_options.url + '/search/tasks', function(req) {
+        // mock.post(_options.url + '/provision/organizations/:organizationName/bulk/async?type=ENTITIES&action=CREATE', function(req, res) {
+        //     return {
+        //         location: _options.url + '/provision/organizations/' + req.params.organizationName + '/bulk/async/' + new Date().getTime(),
+        //         statusCode: 201
+        //     };
+        // });
+
+
+        // mock.get(_options.url + '/provision/organizations/:organizationName/bulk/async/:id', function(req, res) {
         //     return {
         //         body: {
-        //             "page": {
-        //                 "number": 1
-        //             },
-        //             "tasks": [{
-        //                     "id": "task_1",
-        //                     "workgroup": "user_wg",
-        //                     "domain": "user_domain",
-        //                     "name": "task_1_name",
-        //                     "description": "example task request",
-        //                     "state": "INACTIVE",
-        //                     "schedule": {
-        //                         "start": {
-        //                             "date": "2010-12-11T10:10:00Z"
-        //                         },
-        //                         "stop": {
-        //                             "executions": 10
-        //                         },
-        //                         "repeating": {
-        //                             "period": {
-        //                                 "each": 7,
-        //                                 "unit": "DAYS"
-        //                             },
-        //                             "pattern": {
-        //                                 "time": "10:30:00Z",
-        //                                 "weekly": {
-        //                                     "days": [
-        //                                         "MON",
-        //                                         "WED"
-        //                                     ]
-        //                                 }
-        //                             }
-        //                         }
-        //                     },
-        //                     "job": {
-        //                         "request": {
-        //                             "name": "REBOOT_EQUIPMENT",
-        //                             "parameters": [{
-        //                                 "name": "TYPE",
-        //                                 "type": "string",
-        //                                 "value": {
-        //                                     "string": "HARDWARE"
-        //                                 }
-        //                             }],
-        //                             "schedule": {
-        //                                 "stop": {
-        //                                     "delayed": 300000
-        //                                 }
-        //                             },
-        //                             "notify": true,
-        //                             "user": "user@mail.com",
-        //                             "callback": "http://[your_application_address]/[your_URI]",
-        //                             "operationParameters": {
-        //                                 "ackTimeout": 5000,
-        //                                 "timeout": 6000,
-        //                                 "retries": 0,
-        //                                 "retriesDelay": 1000
-        //                             }
-        //                         }
-        //                     }
+        //             "id": "76796426-ec3e-11e1-aff1-0800200c9a66",
+        //             "organizarion": "chamcorp",
+        //             "request": {
+        //                 "fileName": "bulk.json",
+        //                 "userEmail": "admin@bulk.es",
+        //                 "header": {
+        //                     "Accept": "text/plain",
+        //                     "Content-type": "application/json"
         //                 },
-        //                 {
-        //                     "id": "task_2",
-        //                     "workgroup": "user_wg",
-        //                     "domain": "user_domain",
-        //                     "name": "task_2_name",
-        //                     "description": "example task request",
-        //                     "state": "ACTIVE",
-        //                     "schedule": {
-        //                         "start": {
-        //                             "date": "2011-01-11T10:10:00Z"
-        //                         },
-        //                         "stop": {
-        //                             "date": "2011-12-31T23:59:59Z"
-        //                         },
-        //                         "repeating": {
-        //                             "period": {
-        //                                 "each": 1,
-        //                                 "unit": "MONTH"
-        //                             }
-        //                         }
-        //                     },
-        //                     "job": {
-        //                         "request": {
-        //                             "name": "REFRESH_INFO",
-        //                             "schedule": {
-        //                                 "stop": {
-        //                                     "delayed": 300000
-        //                                 }
-        //                             },
-        //                             "notify": true,
-        //                             "user": "user@mail.com",
-        //                             "callback": "http://[your_application_address]/[your_URI]",
-        //                             "operationParameters": {
-        //                                 "ackTimeout": 5000,
-        //                                 "timeout": 6000,
-        //                                 "retries": 0,
-        //                                 "retriesDelay": 1000
-        //                             }
-        //                         }
-        //                     }
+        //                 "params": {
+        //                     "type": "ENTITIES",
+        //                     "flattened": true,
+        //                     "action": "DELETE",
+        //                     "full": true,
         //                 }
-        //             ]
+        //             },
+        //             "status": "IN_PROGRESS",
+        //             "startedDate": "2010-12-11T10:11:00Z",
+        //             "finishedDate": "2010-12-11T10:30:00Z",
+        //             "summary": {
+        //                 "processed": 10,
+        //                 "successful": 8,
+        //                 "error": 2
+        //             }
         //         },
         //         statusCode: 200
-        //     }
+        //     };
         // });
-        // Mocks for rule configuration clone/delete
-        // clone ok
-        // mock.post(_options.url + '/provision/organizations/chema_organization/channels/default_channel/ruleconfigurations/batteryEvent/clone', function(req) {
+
+        // mock.get(_options.url + '/provision/organizations/:organizationName/bulk/async/:id?format=raw', function(req, res) {
         //     return {
+        //         data: "asldkfjadfkjladkjsflkasdfjkl",
         //         statusCode: 200
         //     };
         // });
@@ -146,27 +76,89 @@ export default class NorthAmpliaREST {
         //     };
         // });
 
-        /*mock.post(_options.url + '/search/workgroups', function(req) {
-            return {
-                body: {
-                    "workgroups": [{
-                            "name": "Workgroup_1",
-                            "description": "Workgroup description",
-                            "domain": "amplia",
-                            "administrative": true
-
-                        },
-                        {
-                            "name": "Workgroup_2",
-                            "description": "Workgroup description",
-                            "domain": "amplia",
-                            "administrative": true
-                        }
-                    ]
-                },
-                statusCode: 200
-            }
-        });*/
+        // mock.post(_options.url + '/search/bulk/async', function(req) {
+        //     return {
+        //         body: {
+        //             "bulks": [{
+        //                     "id": "76796426-ec3e-11e1-aff1-0800200c9a66",
+        //                     "organizarion": "chamcorp",
+        //                     "request": {
+        //                         "fileName": "bulk.json",
+        //                         "userEmail": "admin@bulk.es",
+        //                         "header": {
+        //                             "Accept": "text/plain",
+        //                             "Content-type": "application/json"
+        //                         },
+        //                         "params": {
+        //                             "type": "ENTITIES",
+        //                             "flattened": true,
+        //                             "action": "DELETE",
+        //                             "full": true,
+        //                         }
+        //                     },
+        //                     "status": "IN_PROGRESS",
+        //                     "startedDate": "2010-12-11T10:11:00Z",
+        //                     "finishedDate": "2010-12-11T10:30:00Z",
+        //                     "summary": {
+        //                         "processed": 10,
+        //                         "successful": 8,
+        //                         "error": 2
+        //                     }
+        //                 },
+        //                 {
+        //                     "id": "76796426-ec3e-11e1-aff1-SDFSDFSDF",
+        //                     "organizarion": "chamcorp",
+        //                     "request": {
+        //                         "fileName": "bulk.json",
+        //                         "userEmail": "admin@bulk.es",
+        //                         "header": {
+        //                             "Accept": "text/plain",
+        //                             "Content-type": "application/json"
+        //                         },
+        //                         "params": {
+        //                             "type": "TICKETS",
+        //                             "flattened": true,
+        //                             "action": "UPDATE"
+        //                         }
+        //                     },
+        //                     "status": "WAITING",
+        //                     "startedDate": "2010-12-11T10:11:00Z",
+        //                     "summary": {
+        //                         "processed": 10,
+        //                         "successful": 8,
+        //                         "error": 2
+        //                     }
+        //                 },
+        //                 {
+        //                     "id": "76796426-ec3e-11e1-aff1-0800200c9a66",
+        //                     "organizarion": "chamcorp",
+        //                     "request": {
+        //                         "fileName": "bulk2.csv",
+        //                         "userEmail": "admin@bulk.es",
+        //                         "header": {
+        //                             "Accept": "text/plain",
+        //                             "Content-type": "text/plain",
+        //                             "CsvFormat": "qouteChar=\""
+        //                         },
+        //                         "params": {
+        //                             "type": "ENTITIES",
+        //                             "action": "CREATE"
+        //                         }
+        //                     },
+        //                     "status": "FINISHED",
+        //                     "startedDate": "2010-12-10T10:11:00Z",
+        //                     "finishedDate": "2010-12-10T10:30:00Z",
+        //                     "summary": {
+        //                         "processed": "10",
+        //                         "successful": "8",
+        //                         "error": "2"
+        //                     }
+        //                 }
+        //             ]
+        //         },
+        //         statusCode: 200
+        //     }
+        // });
 
         // ----------------------------------
         // MOCK domain searching

@@ -258,17 +258,19 @@ var EntityBuilder = (function () {
         /**
          * Get a new CsvBulkBuilder 
          * @example 
-         *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000)
+         *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000, false)
+         *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000, true)
          * @param {string} organization - required field. 
          * @param {string} resource - required field. Type of resource: entities or tickets
          * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
+         * @param {boolean} [async] - forces async execution for the bulk operation
          * @return {CsvBulkBuilder}
          */
     }, {
         key: 'newCsvBulkBuilder',
-        value: function newCsvBulkBuilder(organization, resource, timeout) {
+        value: function newCsvBulkBuilder(organization, resource, timeout, async) {
             this._validateBulk(organization, resource);
-            return new _CsvBulkBuilder2['default'](this._ogapi, organization, resource, timeout);
+            return new _CsvBulkBuilder2['default'](this._ogapi, organization, resource, timeout, async);
         }
 
         /**
@@ -278,13 +280,14 @@ var EntityBuilder = (function () {
          * @param {string} organization - required field. 
          * @param {string} resource - required field. Type of resource: entities or tickets
          * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
+         * @param {boolean} [async] - forces async execution for the bulk operation
          * @return {JsonBulkBuilder}
          */
     }, {
         key: 'newJsonBulkBuilder',
-        value: function newJsonBulkBuilder(organization, resource, timeout) {
+        value: function newJsonBulkBuilder(organization, resource, timeout, async) {
             this._validateBulk(organization, resource);
-            return new _JsonBulkBuilder2['default'](this._ogapi, organization, resource, timeout);
+            return new _JsonBulkBuilder2['default'](this._ogapi, organization, resource, timeout, async);
         }
 
         /**
@@ -294,13 +297,14 @@ var EntityBuilder = (function () {
          * @param {string} organization - required field. 
          * @param {string} resource - required field. Type of resource: entities or tickets
          * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
+         * @param {boolean} [async] - forces async execution for the bulk operation
          * @return {JsonFlattenedBulkBuilder}
          */
     }, {
         key: 'newJsonFlattenedBulkBuilder',
-        value: function newJsonFlattenedBulkBuilder(organization, resource, timeout) {
+        value: function newJsonFlattenedBulkBuilder(organization, resource, timeout, async) {
             this._validateBulk(organization, resource);
-            return new _JsonFlattenedBulkBuilder2['default'](this._ogapi, organization, resource, timeout);
+            return new _JsonFlattenedBulkBuilder2['default'](this._ogapi, organization, resource, timeout, async);
         }
     }, {
         key: '_validateBulk',

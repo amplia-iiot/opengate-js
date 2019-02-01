@@ -42,6 +42,14 @@ var _areasAreaFinder = require('./areas/AreaFinder');
 
 var _areasAreaFinder2 = _interopRequireDefault(_areasAreaFinder);
 
+var _searchingBuilderBulkSearchBuilder = require('./searching/builder/BulkSearchBuilder');
+
+var _searchingBuilderBulkSearchBuilder2 = _interopRequireDefault(_searchingBuilderBulkSearchBuilder);
+
+var _bulkBulkFinder = require('./bulk/BulkFinder');
+
+var _bulkBulkFinder2 = _interopRequireDefault(_bulkBulkFinder);
+
 var _channelsChannels = require('./channels/Channels');
 
 var _channelsChannels2 = _interopRequireDefault(_channelsChannels);
@@ -471,6 +479,26 @@ var InternalOpenGateAPI = (function () {
         key: 'areasSearchBuilder',
         value: function areasSearchBuilder() {
             return new _searchingBuilderAreasSearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a BulkSearchBuilder to build a specific BulkSearchBuilder
+         * @return {BulkSearchBuilder}
+         */
+    }, {
+        key: 'bulkSearchBuilder',
+        value: function bulkSearchBuilder() {
+            return new _searchingBuilderBulkSearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a util to find and download a bulk
+         * @return {BulkFinder}
+         */
+    }, {
+        key: 'newBulkFinder',
+        value: function newBulkFinder() {
+            return new _bulkBulkFinder2['default'](this);
         }
 
         /**
