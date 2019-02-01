@@ -8,6 +8,8 @@ import OrganizationFinder from './organizations/OrganizationFinder';
 import ChannelFinder from './channels/ChannelFinder';
 import AreasSearchBuilder from './searching/builder/AreasSearchBuilder';
 import AreaFinder from './areas/AreaFinder';
+import BulkSearchBuilder from './searching/builder/BulkSearchBuilder';
+import BulkFinder from './bulk/BulkFinder';
 import Channels from './channels/Channels';
 import Areas from './areas/Areas';
 import ChannelsSearchBuilder from './searching/builder/ChannelsSearchBuilder';
@@ -155,6 +157,22 @@ export default class InternalOpenGateAPI {
      */
     areasSearchBuilder() {
         return new AreasSearchBuilder(this);
+    }
+
+    /**
+     * This return a BulkSearchBuilder to build a specific BulkSearchBuilder
+     * @return {BulkSearchBuilder}
+     */
+    bulkSearchBuilder() {
+        return new BulkSearchBuilder(this);
+    }
+
+    /**
+     * This return a util to find and download a bulk
+     * @return {BulkFinder}
+     */
+    newBulkFinder() {
+        return new BulkFinder(this);
     }
 
     /**
@@ -330,12 +348,12 @@ export default class InternalOpenGateAPI {
      * This return a TicketsSearchBuilder to build a specific TicketSearch
      */
     ticketsSearchBuilder() {
-        return new TicketsSearchBuilder(this);
-    }
-    /**
-     * This return a CommunicationsModuleTypeSearchBuilder to build a specific CommunicationsModuleTypeSearch
-     * @return {CommunicationsModuleTypeSearchBuilder}
-     */
+            return new TicketsSearchBuilder(this);
+        }
+        /**
+         * This return a CommunicationsModuleTypeSearchBuilder to build a specific CommunicationsModuleTypeSearch
+         * @return {CommunicationsModuleTypeSearchBuilder}
+         */
     communicationsModuleTypeSearchBuilder() {
         return new CommunicationsModuleTypeSearchBuilder(this);
     }
