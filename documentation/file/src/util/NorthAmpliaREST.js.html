@@ -38,6 +38,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">areas</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/areas/AreaFinder.js~AreaFinder.html">AreaFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/areas/Areas.js~Areas.html">Areas</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_ENUM">TYPE_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">bulk</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bulk/BulkFinder.js~BulkFinder.html">BulkFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">bundles</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/BundleFinder.js~BundleFinder.html">BundleFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/Bundles.js~Bundles.html">Bundles</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACTION_ENUM">ACTION_ENUM</a></span></span></li>
@@ -148,6 +149,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AreasSearchBuilder.js~AreasSearchBuilder.html">AreasSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AssetsSearchBuilder.js~AssetsSearchBuilder.html">AssetsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BasicTypesSearchBuilder.js~BasicTypesSearchBuilder.html">BasicTypesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BulkSearchBuilder.js~BulkSearchBuilder.html">BulkSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BundlesSearchBuilder.js~BundlesSearchBuilder.html">BundlesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CertificatesSearchBuilder.js~CertificatesSearchBuilder.html">CertificatesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ChannelsSearchBuilder.js~ChannelsSearchBuilder.html">ChannelsSearchBuilder</a></span></span></li>
@@ -246,119 +248,49 @@ export default class NorthAmpliaREST {
         this._options = merge.recursive(true, this.default(), _options);
         this._headers = headers;
 
-        // mock.post(_options.url + &apos;/search/tasks&apos;, function(req) {
+        // mock.post(_options.url + &apos;/provision/organizations/:organizationName/bulk/async?type=ENTITIES&amp;action=CREATE&apos;, function(req, res) {
+        //     return {
+        //         location: _options.url + &apos;/provision/organizations/&apos; + req.params.organizationName + &apos;/bulk/async/&apos; + new Date().getTime(),
+        //         statusCode: 201
+        //     };
+        // });
+
+
+        // mock.get(_options.url + &apos;/provision/organizations/:organizationName/bulk/async/:id&apos;, function(req, res) {
         //     return {
         //         body: {
-        //             &quot;page&quot;: {
-        //                 &quot;number&quot;: 1
-        //             },
-        //             &quot;tasks&quot;: [{
-        //                     &quot;id&quot;: &quot;task_1&quot;,
-        //                     &quot;workgroup&quot;: &quot;user_wg&quot;,
-        //                     &quot;domain&quot;: &quot;user_domain&quot;,
-        //                     &quot;name&quot;: &quot;task_1_name&quot;,
-        //                     &quot;description&quot;: &quot;example task request&quot;,
-        //                     &quot;state&quot;: &quot;INACTIVE&quot;,
-        //                     &quot;schedule&quot;: {
-        //                         &quot;start&quot;: {
-        //                             &quot;date&quot;: &quot;2010-12-11T10:10:00Z&quot;
-        //                         },
-        //                         &quot;stop&quot;: {
-        //                             &quot;executions&quot;: 10
-        //                         },
-        //                         &quot;repeating&quot;: {
-        //                             &quot;period&quot;: {
-        //                                 &quot;each&quot;: 7,
-        //                                 &quot;unit&quot;: &quot;DAYS&quot;
-        //                             },
-        //                             &quot;pattern&quot;: {
-        //                                 &quot;time&quot;: &quot;10:30:00Z&quot;,
-        //                                 &quot;weekly&quot;: {
-        //                                     &quot;days&quot;: [
-        //                                         &quot;MON&quot;,
-        //                                         &quot;WED&quot;
-        //                                     ]
-        //                                 }
-        //                             }
-        //                         }
-        //                     },
-        //                     &quot;job&quot;: {
-        //                         &quot;request&quot;: {
-        //                             &quot;name&quot;: &quot;REBOOT_EQUIPMENT&quot;,
-        //                             &quot;parameters&quot;: [{
-        //                                 &quot;name&quot;: &quot;TYPE&quot;,
-        //                                 &quot;type&quot;: &quot;string&quot;,
-        //                                 &quot;value&quot;: {
-        //                                     &quot;string&quot;: &quot;HARDWARE&quot;
-        //                                 }
-        //                             }],
-        //                             &quot;schedule&quot;: {
-        //                                 &quot;stop&quot;: {
-        //                                     &quot;delayed&quot;: 300000
-        //                                 }
-        //                             },
-        //                             &quot;notify&quot;: true,
-        //                             &quot;user&quot;: &quot;user@mail.com&quot;,
-        //                             &quot;callback&quot;: &quot;http://[your_application_address]/[your_URI]&quot;,
-        //                             &quot;operationParameters&quot;: {
-        //                                 &quot;ackTimeout&quot;: 5000,
-        //                                 &quot;timeout&quot;: 6000,
-        //                                 &quot;retries&quot;: 0,
-        //                                 &quot;retriesDelay&quot;: 1000
-        //                             }
-        //                         }
-        //                     }
+        //             &quot;id&quot;: &quot;76796426-ec3e-11e1-aff1-0800200c9a66&quot;,
+        //             &quot;organizarion&quot;: &quot;chamcorp&quot;,
+        //             &quot;request&quot;: {
+        //                 &quot;fileName&quot;: &quot;bulk.json&quot;,
+        //                 &quot;userEmail&quot;: &quot;admin@bulk.es&quot;,
+        //                 &quot;header&quot;: {
+        //                     &quot;Accept&quot;: &quot;text/plain&quot;,
+        //                     &quot;Content-type&quot;: &quot;application/json&quot;
         //                 },
-        //                 {
-        //                     &quot;id&quot;: &quot;task_2&quot;,
-        //                     &quot;workgroup&quot;: &quot;user_wg&quot;,
-        //                     &quot;domain&quot;: &quot;user_domain&quot;,
-        //                     &quot;name&quot;: &quot;task_2_name&quot;,
-        //                     &quot;description&quot;: &quot;example task request&quot;,
-        //                     &quot;state&quot;: &quot;ACTIVE&quot;,
-        //                     &quot;schedule&quot;: {
-        //                         &quot;start&quot;: {
-        //                             &quot;date&quot;: &quot;2011-01-11T10:10:00Z&quot;
-        //                         },
-        //                         &quot;stop&quot;: {
-        //                             &quot;date&quot;: &quot;2011-12-31T23:59:59Z&quot;
-        //                         },
-        //                         &quot;repeating&quot;: {
-        //                             &quot;period&quot;: {
-        //                                 &quot;each&quot;: 1,
-        //                                 &quot;unit&quot;: &quot;MONTH&quot;
-        //                             }
-        //                         }
-        //                     },
-        //                     &quot;job&quot;: {
-        //                         &quot;request&quot;: {
-        //                             &quot;name&quot;: &quot;REFRESH_INFO&quot;,
-        //                             &quot;schedule&quot;: {
-        //                                 &quot;stop&quot;: {
-        //                                     &quot;delayed&quot;: 300000
-        //                                 }
-        //                             },
-        //                             &quot;notify&quot;: true,
-        //                             &quot;user&quot;: &quot;user@mail.com&quot;,
-        //                             &quot;callback&quot;: &quot;http://[your_application_address]/[your_URI]&quot;,
-        //                             &quot;operationParameters&quot;: {
-        //                                 &quot;ackTimeout&quot;: 5000,
-        //                                 &quot;timeout&quot;: 6000,
-        //                                 &quot;retries&quot;: 0,
-        //                                 &quot;retriesDelay&quot;: 1000
-        //                             }
-        //                         }
-        //                     }
+        //                 &quot;params&quot;: {
+        //                     &quot;type&quot;: &quot;ENTITIES&quot;,
+        //                     &quot;flattened&quot;: true,
+        //                     &quot;action&quot;: &quot;DELETE&quot;,
+        //                     &quot;full&quot;: true,
         //                 }
-        //             ]
+        //             },
+        //             &quot;status&quot;: &quot;IN_PROGRESS&quot;,
+        //             &quot;startedDate&quot;: &quot;2010-12-11T10:11:00Z&quot;,
+        //             &quot;finishedDate&quot;: &quot;2010-12-11T10:30:00Z&quot;,
+        //             &quot;summary&quot;: {
+        //                 &quot;processed&quot;: 10,
+        //                 &quot;successful&quot;: 8,
+        //                 &quot;error&quot;: 2
+        //             }
         //         },
         //         statusCode: 200
-        //     }
+        //     };
         // });
-        // Mocks for rule configuration clone/delete
-        // clone ok
-        // mock.post(_options.url + &apos;/provision/organizations/chema_organization/channels/default_channel/ruleconfigurations/batteryEvent/clone&apos;, function(req) {
+
+        // mock.get(_options.url + &apos;/provision/organizations/:organizationName/bulk/async/:id?format=raw&apos;, function(req, res) {
         //     return {
+        //         data: &quot;asldkfjadfkjladkjsflkasdfjkl&quot;,
         //         statusCode: 200
         //     };
         // });
@@ -370,27 +302,89 @@ export default class NorthAmpliaREST {
         //     };
         // });
 
-        /*mock.post(_options.url + &apos;/search/workgroups&apos;, function(req) {
-            return {
-                body: {
-                    &quot;workgroups&quot;: [{
-                            &quot;name&quot;: &quot;Workgroup_1&quot;,
-                            &quot;description&quot;: &quot;Workgroup description&quot;,
-                            &quot;domain&quot;: &quot;amplia&quot;,
-                            &quot;administrative&quot;: true
-
-                        },
-                        {
-                            &quot;name&quot;: &quot;Workgroup_2&quot;,
-                            &quot;description&quot;: &quot;Workgroup description&quot;,
-                            &quot;domain&quot;: &quot;amplia&quot;,
-                            &quot;administrative&quot;: true
-                        }
-                    ]
-                },
-                statusCode: 200
-            }
-        });*/
+        // mock.post(_options.url + &apos;/search/bulk/async&apos;, function(req) {
+        //     return {
+        //         body: {
+        //             &quot;bulks&quot;: [{
+        //                     &quot;id&quot;: &quot;76796426-ec3e-11e1-aff1-0800200c9a66&quot;,
+        //                     &quot;organizarion&quot;: &quot;chamcorp&quot;,
+        //                     &quot;request&quot;: {
+        //                         &quot;fileName&quot;: &quot;bulk.json&quot;,
+        //                         &quot;userEmail&quot;: &quot;admin@bulk.es&quot;,
+        //                         &quot;header&quot;: {
+        //                             &quot;Accept&quot;: &quot;text/plain&quot;,
+        //                             &quot;Content-type&quot;: &quot;application/json&quot;
+        //                         },
+        //                         &quot;params&quot;: {
+        //                             &quot;type&quot;: &quot;ENTITIES&quot;,
+        //                             &quot;flattened&quot;: true,
+        //                             &quot;action&quot;: &quot;DELETE&quot;,
+        //                             &quot;full&quot;: true,
+        //                         }
+        //                     },
+        //                     &quot;status&quot;: &quot;IN_PROGRESS&quot;,
+        //                     &quot;startedDate&quot;: &quot;2010-12-11T10:11:00Z&quot;,
+        //                     &quot;finishedDate&quot;: &quot;2010-12-11T10:30:00Z&quot;,
+        //                     &quot;summary&quot;: {
+        //                         &quot;processed&quot;: 10,
+        //                         &quot;successful&quot;: 8,
+        //                         &quot;error&quot;: 2
+        //                     }
+        //                 },
+        //                 {
+        //                     &quot;id&quot;: &quot;76796426-ec3e-11e1-aff1-SDFSDFSDF&quot;,
+        //                     &quot;organizarion&quot;: &quot;chamcorp&quot;,
+        //                     &quot;request&quot;: {
+        //                         &quot;fileName&quot;: &quot;bulk.json&quot;,
+        //                         &quot;userEmail&quot;: &quot;admin@bulk.es&quot;,
+        //                         &quot;header&quot;: {
+        //                             &quot;Accept&quot;: &quot;text/plain&quot;,
+        //                             &quot;Content-type&quot;: &quot;application/json&quot;
+        //                         },
+        //                         &quot;params&quot;: {
+        //                             &quot;type&quot;: &quot;TICKETS&quot;,
+        //                             &quot;flattened&quot;: true,
+        //                             &quot;action&quot;: &quot;UPDATE&quot;
+        //                         }
+        //                     },
+        //                     &quot;status&quot;: &quot;WAITING&quot;,
+        //                     &quot;startedDate&quot;: &quot;2010-12-11T10:11:00Z&quot;,
+        //                     &quot;summary&quot;: {
+        //                         &quot;processed&quot;: 10,
+        //                         &quot;successful&quot;: 8,
+        //                         &quot;error&quot;: 2
+        //                     }
+        //                 },
+        //                 {
+        //                     &quot;id&quot;: &quot;76796426-ec3e-11e1-aff1-0800200c9a66&quot;,
+        //                     &quot;organizarion&quot;: &quot;chamcorp&quot;,
+        //                     &quot;request&quot;: {
+        //                         &quot;fileName&quot;: &quot;bulk2.csv&quot;,
+        //                         &quot;userEmail&quot;: &quot;admin@bulk.es&quot;,
+        //                         &quot;header&quot;: {
+        //                             &quot;Accept&quot;: &quot;text/plain&quot;,
+        //                             &quot;Content-type&quot;: &quot;text/plain&quot;,
+        //                             &quot;CsvFormat&quot;: &quot;qouteChar=\&quot;&quot;
+        //                         },
+        //                         &quot;params&quot;: {
+        //                             &quot;type&quot;: &quot;ENTITIES&quot;,
+        //                             &quot;action&quot;: &quot;CREATE&quot;
+        //                         }
+        //                     },
+        //                     &quot;status&quot;: &quot;FINISHED&quot;,
+        //                     &quot;startedDate&quot;: &quot;2010-12-10T10:11:00Z&quot;,
+        //                     &quot;finishedDate&quot;: &quot;2010-12-10T10:30:00Z&quot;,
+        //                     &quot;summary&quot;: {
+        //                         &quot;processed&quot;: &quot;10&quot;,
+        //                         &quot;successful&quot;: &quot;8&quot;,
+        //                         &quot;error&quot;: &quot;2&quot;
+        //                     }
+        //                 }
+        //             ]
+        //         },
+        //         statusCode: 200
+        //     }
+        // });
 
         // ----------------------------------
         // MOCK domain searching

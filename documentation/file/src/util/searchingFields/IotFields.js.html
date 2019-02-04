@@ -38,6 +38,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">areas</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/areas/AreaFinder.js~AreaFinder.html">AreaFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/areas/Areas.js~Areas.html">Areas</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_ENUM">TYPE_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">bulk</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bulk/BulkFinder.js~BulkFinder.html">BulkFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">bundles</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/BundleFinder.js~BundleFinder.html">BundleFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/Bundles.js~Bundles.html">Bundles</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACTION_ENUM">ACTION_ENUM</a></span></span></li>
@@ -148,6 +149,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AreasSearchBuilder.js~AreasSearchBuilder.html">AreasSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AssetsSearchBuilder.js~AssetsSearchBuilder.html">AssetsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BasicTypesSearchBuilder.js~BasicTypesSearchBuilder.html">BasicTypesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BulkSearchBuilder.js~BulkSearchBuilder.html">BulkSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BundlesSearchBuilder.js~BundlesSearchBuilder.html">BundlesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CertificatesSearchBuilder.js~CertificatesSearchBuilder.html">CertificatesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ChannelsSearchBuilder.js~ChannelsSearchBuilder.html">ChannelsSearchBuilder</a></span></span></li>
@@ -444,6 +446,27 @@ export const IOT_FIELDS = {
             &quot;tasks.workgroup&quot;,
             &quot;tasks.job.request.user&quot;
         ]
+    },
+    &quot;BULK&quot;: {
+        &quot;BULK&quot;: {
+            &quot;identifier&quot;: &quot;bulks.identifier&quot;,
+            &quot;organization&quot;: &quot;bulks.organization&quot;,
+            &quot;fileName&quot;: &quot;bulks.request.fileName&quot;,
+            &quot;userEmail&quot;: &quot;bulks.request.userEmail&quot;,
+            &quot;headerAccept&quot;: &quot;bulks.request.header.accept&quot;,
+            &quot;contentType&quot;: &quot;bulks.request.header.contentType&quot;,
+            &quot;headerCsvFormat&quot;: &quot;bulks.request.header.csvFormat&quot;,
+            &quot;paramsFlattened&quot;: &quot;bulks.request.params.flattened&quot;,
+            &quot;paramsAction&quot;: &quot;bulks.request.params.action&quot;,
+            &quot;paramsFull&quot;: &quot;bulks.request.params.full&quot;,
+            &quot;paramsType&quot;: &quot;bulks.request.params.type&quot;,
+            &quot;status&quot;: &quot;bulks.status&quot;,
+            &quot;startedDate&quot;: &quot;bulks.startedDate&quot;,
+            &quot;finishedDate&quot;: &quot;bulks.finishedDate&quot;,
+            &quot;processed&quot;: &quot;bulks.summary.processed&quot;,
+            &quot;successful&quot;: &quot;bulks.summary.successful&quot;,
+            &quot;error&quot;: &quot;bulks.summary.error&quot;
+        }
     },
     &quot;GENERAL&quot;: {
         &quot;GENERAL&quot;: []

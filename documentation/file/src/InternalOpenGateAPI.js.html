@@ -38,6 +38,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">areas</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/areas/AreaFinder.js~AreaFinder.html">AreaFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/areas/Areas.js~Areas.html">Areas</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_ENUM">TYPE_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">bulk</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bulk/BulkFinder.js~BulkFinder.html">BulkFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">bundles</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/BundleFinder.js~BundleFinder.html">BundleFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/Bundles.js~Bundles.html">Bundles</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACTION_ENUM">ACTION_ENUM</a></span></span></li>
@@ -148,6 +149,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AreasSearchBuilder.js~AreasSearchBuilder.html">AreasSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AssetsSearchBuilder.js~AssetsSearchBuilder.html">AssetsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BasicTypesSearchBuilder.js~BasicTypesSearchBuilder.html">BasicTypesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BulkSearchBuilder.js~BulkSearchBuilder.html">BulkSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BundlesSearchBuilder.js~BundlesSearchBuilder.html">BundlesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CertificatesSearchBuilder.js~CertificatesSearchBuilder.html">CertificatesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ChannelsSearchBuilder.js~ChannelsSearchBuilder.html">ChannelsSearchBuilder</a></span></span></li>
@@ -232,6 +234,8 @@ import OrganizationFinder from &apos;./organizations/OrganizationFinder&apos;;
 import ChannelFinder from &apos;./channels/ChannelFinder&apos;;
 import AreasSearchBuilder from &apos;./searching/builder/AreasSearchBuilder&apos;;
 import AreaFinder from &apos;./areas/AreaFinder&apos;;
+import BulkSearchBuilder from &apos;./searching/builder/BulkSearchBuilder&apos;;
+import BulkFinder from &apos;./bulk/BulkFinder&apos;;
 import Channels from &apos;./channels/Channels&apos;;
 import Areas from &apos;./areas/Areas&apos;;
 import ChannelsSearchBuilder from &apos;./searching/builder/ChannelsSearchBuilder&apos;;
@@ -379,6 +383,22 @@ export default class InternalOpenGateAPI {
      */
     areasSearchBuilder() {
         return new AreasSearchBuilder(this);
+    }
+
+    /**
+     * This return a BulkSearchBuilder to build a specific BulkSearchBuilder
+     * @return {BulkSearchBuilder}
+     */
+    bulkSearchBuilder() {
+        return new BulkSearchBuilder(this);
+    }
+
+    /**
+     * This return a util to find and download a bulk
+     * @return {BulkFinder}
+     */
+    newBulkFinder() {
+        return new BulkFinder(this);
     }
 
     /**
@@ -554,12 +574,12 @@ export default class InternalOpenGateAPI {
      * This return a TicketsSearchBuilder to build a specific TicketSearch
      */
     ticketsSearchBuilder() {
-        return new TicketsSearchBuilder(this);
-    }
-    /**
-     * This return a CommunicationsModuleTypeSearchBuilder to build a specific CommunicationsModuleTypeSearch
-     * @return {CommunicationsModuleTypeSearchBuilder}
-     */
+            return new TicketsSearchBuilder(this);
+        }
+        /**
+         * This return a CommunicationsModuleTypeSearchBuilder to build a specific CommunicationsModuleTypeSearch
+         * @return {CommunicationsModuleTypeSearchBuilder}
+         */
     communicationsModuleTypeSearchBuilder() {
         return new CommunicationsModuleTypeSearchBuilder(this);
     }

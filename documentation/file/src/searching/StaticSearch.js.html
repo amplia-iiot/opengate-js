@@ -38,6 +38,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">areas</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/areas/AreaFinder.js~AreaFinder.html">AreaFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/areas/Areas.js~Areas.html">Areas</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_ENUM">TYPE_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">bulk</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bulk/BulkFinder.js~BulkFinder.html">BulkFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">bundles</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/BundleFinder.js~BundleFinder.html">BundleFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/Bundles.js~Bundles.html">Bundles</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACTION_ENUM">ACTION_ENUM</a></span></span></li>
@@ -148,6 +149,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AreasSearchBuilder.js~AreasSearchBuilder.html">AreasSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AssetsSearchBuilder.js~AssetsSearchBuilder.html">AssetsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BasicTypesSearchBuilder.js~BasicTypesSearchBuilder.html">BasicTypesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BulkSearchBuilder.js~BulkSearchBuilder.html">BulkSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BundlesSearchBuilder.js~BundlesSearchBuilder.html">BundlesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CertificatesSearchBuilder.js~CertificatesSearchBuilder.html">CertificatesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ChannelsSearchBuilder.js~ChannelsSearchBuilder.html">ChannelsSearchBuilder</a></span></span></li>
@@ -282,7 +284,7 @@ export default class StaticSearch extends Search {
         switch (_this._contentType) {
             case &apos;operationalStatus&apos;:
                 for (var contentTmp in collection) {
-                    collection[contentTmp].forEach(function (finalValue) {
+                    collection[contentTmp].forEach(function(finalValue) {
                         if (!_this._customFilters.id || (_this._customFilters.id &amp;&amp; _this._customFilters.id === finalValue)) {
                             finalContent.push({
                                 &apos;entityType&apos;: contentTmp,
@@ -293,7 +295,7 @@ export default class StaticSearch extends Search {
                 }
                 break;
             case &apos;administrativeState&apos;:
-                var createAndAddFileObj = function (obj) {
+                var createAndAddFileObj = function(obj) {
                     var finalObj = obj;
                     finalObj[ENTITY_TYPE] = entityTypeTmp;
                     finalContent.push(finalObj);
@@ -693,7 +695,7 @@ export default class StaticSearch extends Search {
                     },
                     &apos;SUBSCRIPTION&apos;: {
                         &apos;mandatory&apos;: [],
-                        &apos;optional&apos;: [&apos;generatedEntityKey&apos;, &apos;administrativeState&apos;, &apos;IMSI&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;REGISTER_OPERATOR&apos;, &apos;MSISDN&apos;, &apos;LOCATION&apos;, &apos;RADIUS_USERNAME&apos;, &apos;RADIUS_PASSWORD&apos;, &apos;RADIUS_FRAMED_IP_NETMASK&apos;]
+                        &apos;optional&apos;: [&apos;generatedEntityKey&apos;, &apos;administrativeState&apos;, &apos;IMSI&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;REGISTER_OPERATOR&apos;, &apos;MSISDN&apos;, &apos;LOCATION&apos;, &apos;RADIUS_USERNAME&apos;, &apos;RADIUS_PASSWORD&apos;, &apos;RADIUS_FRAMED_IP_NETMASK&apos;, &apos;MSISDN_VOICE&apos;]
                     },
                     &apos;SUBSCRIBER&apos;: {
                         &apos;mandatory&apos;: [],
@@ -713,7 +715,7 @@ export default class StaticSearch extends Search {
                     },
                     &apos;SUBSCRIPTION&apos;: {
                         &apos;mandatory&apos;: [],
-                        &apos;optional&apos;: [&apos;generatedEntityKey&apos;, &apos;administrativeState&apos;, &apos;IMSI&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;REGISTER_OPERATOR&apos;, &apos;MSISDN&apos;, &apos;LOCATION&apos;, &apos;RADIUS_USERNAME&apos;, &apos;RADIUS_PASSWORD&apos;, &apos;RADIUS_FRAMED_IP_NETMASK&apos;]
+                        &apos;optional&apos;: [&apos;generatedEntityKey&apos;, &apos;administrativeState&apos;, &apos;IMSI&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;REGISTER_OPERATOR&apos;, &apos;MSISDN&apos;, &apos;LOCATION&apos;, &apos;RADIUS_USERNAME&apos;, &apos;RADIUS_PASSWORD&apos;, &apos;RADIUS_FRAMED_IP_NETMASK&apos;, &apos;MSISDN_VOICE&apos;]
                     },
                     &apos;SUBSCRIBER&apos;: {
                         &apos;mandatory&apos;: [],
@@ -2740,7 +2742,7 @@ export default class StaticSearch extends Search {
                 &apos;Zulu&apos;
             ]
 
-        } [contentType];
+        }[contentType];
     }
 }</code></pre>
 
