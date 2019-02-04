@@ -30,7 +30,7 @@ gulp.task('increase:version', function() {
     return increase(versionType());
 });
 
-gulp.task('build:all', gulp.series('build', 'create:release:branch', 'increase:version'));
+gulp.task('build:all', gulp.series('create:release:branch', 'increase:version', 'build'));
 
 // STEP 2
 
