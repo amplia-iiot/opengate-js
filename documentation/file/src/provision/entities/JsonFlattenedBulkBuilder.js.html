@@ -245,8 +245,13 @@ export default class JsonFlattenedBulkBuilder extends BulkBuilder {
 
         this._setUrlParameters({
             flattened: true,
-            type: async ? resource.toUpperCase() : undefined
         });
+        if (async) {
+            this._setUrlParameters({
+                flattened: true,
+                type: resource.toUpperCase()
+            });
+        }
     }
 
 }</code></pre>

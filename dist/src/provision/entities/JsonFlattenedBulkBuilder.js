@@ -37,9 +37,14 @@ var JsonFlattenedBulkBuilder = (function (_BulkBuilder) {
         _get(Object.getPrototypeOf(JsonFlattenedBulkBuilder.prototype), 'constructor', this).call(this, ogapi, 'provision/organizations/' + organization + '/bulk/' + (async ? 'async' : resource.toLowerCase()), 'application/json', timeout);
 
         this._setUrlParameters({
-            flattened: true,
-            type: async ? resource.toUpperCase() : undefined
+            flattened: true
         });
+        if (async) {
+            this._setUrlParameters({
+                flattened: true,
+                type: resource.toUpperCase()
+            });
+        }
     }
 
     return JsonFlattenedBulkBuilder;
