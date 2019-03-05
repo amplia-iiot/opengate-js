@@ -315,7 +315,7 @@ export default class DeploymentElement extends BaseProvision {
             });
         }
         let not_found = &apos;&apos;;
-        let found = TYPE_ENUM.find(function (action) {
+        let found = TYPE_ENUM.find(function(action) {
             return action == this;
         }, type);
         if (typeof found === &quot;undefined&quot;) {
@@ -375,7 +375,7 @@ export default class DeploymentElement extends BaseProvision {
         }
 
         let not_found = &apos;&apos;;
-        let found = OPERATION_ENUM.find(function (operation) {
+        let found = OPERATION_ENUM.find(function(operation) {
             return operation == this;
         }, operation);
 
@@ -405,7 +405,7 @@ export default class DeploymentElement extends BaseProvision {
         }
 
         let not_found = &apos;&apos;;
-        let found = OPTION_ENUM.find(function (option) {
+        let found = OPTION_ENUM.find(function(option) {
             return option == this;
         }, option);
         if (typeof found === &quot;undefined&quot;) {
@@ -469,7 +469,7 @@ export default class DeploymentElement extends BaseProvision {
                 });
             }
 
-            let foundMode = MODE_VALIDATORS_ENUM.find(function (action) {
+            let foundMode = MODE_VALIDATORS_ENUM.find(function(action) {
                 return action == this;
             }, mode);
 
@@ -505,7 +505,7 @@ export default class DeploymentElement extends BaseProvision {
                 });
             }
 
-            let found = TYPE_VALIDATORS_ENUM.find(function (action) {
+            let found = TYPE_VALIDATORS_ENUM.find(function(action) {
                 return action == this;
             }, type);
 
@@ -639,7 +639,13 @@ export default class DeploymentElement extends BaseProvision {
     }
 
     _composeElement() {
-        if (this._name === undefined || this._version === undefined || this._type === undefined ||
+        if (this._operation === &apos;UPGRADE&apos;) {
+            if (this._name === undefined || this._version === undefined || this._type === undefined ||
+                this._path === undefined || this._order === undefined || this._operation === undefined ||
+                this._oldName === undefined || this._oldVersion === undefined || this._oldPath === undefined)
+                throw new Error(&apos;Method not allowed - You must define the basic element [name, version, type, path, order, operation, oldName, oldVersion and oldPath ]&apos;);
+
+        } else if (this._name === undefined || this._version === undefined || this._type === undefined ||
             this._path === undefined || this._order === undefined || this._operation === undefined || this._option === undefined)
             throw new Error(&apos;Method not allowed - You must define the basic element [name, version, type, path, order, option and operation]&apos;);
         var meta = {
@@ -732,8 +738,11 @@ export default class DeploymentElement extends BaseProvision {
                     });
                 } else {
                     defered.reject({
-                        errors: res.errors,
-                        statusCode: res.statusCode
+                        &quot;errors&quot;: [{
+                            code: res.statusCode,
+                            message: &quot;OGAPI_FILE_NOT_CREATE&quot;
+                        }],
+                        &quot;statusCode&quot;: res.statusCode
                     });
                 }
             })

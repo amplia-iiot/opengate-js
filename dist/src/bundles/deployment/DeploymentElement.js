@@ -445,7 +445,9 @@ var DeploymentElement = (function (_BaseProvision) {
     }, {
         key: '_composeElement',
         value: function _composeElement() {
-            if (this._name === undefined || this._version === undefined || this._type === undefined || this._path === undefined || this._order === undefined || this._operation === undefined || this._option === undefined) throw new Error('Method not allowed - You must define the basic element [name, version, type, path, order, option and operation]');
+            if (this._operation === 'UPGRADE') {
+                if (this._name === undefined || this._version === undefined || this._type === undefined || this._path === undefined || this._order === undefined || this._operation === undefined || this._oldName === undefined || this._oldVersion === undefined || this._oldPath === undefined) throw new Error('Method not allowed - You must define the basic element [name, version, type, path, order, operation, oldName, oldVersion and oldPath ]');
+            } else if (this._name === undefined || this._version === undefined || this._type === undefined || this._path === undefined || this._order === undefined || this._operation === undefined || this._option === undefined) throw new Error('Method not allowed - You must define the basic element [name, version, type, path, order, option and operation]');
             var meta = {
                 deploymentElement: {
                     name: this._name || undefined,
@@ -537,8 +539,11 @@ var DeploymentElement = (function (_BaseProvision) {
                     });
                 } else {
                     defered.reject({
-                        errors: res.errors,
-                        statusCode: res.statusCode
+                        "errors": [{
+                            code: res.statusCode,
+                            message: "OGAPI_FILE_NOT_CREATE"
+                        }],
+                        "statusCode": res.statusCode
                     });
                 }
             })['catch'](function (error) {

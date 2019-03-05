@@ -258,8 +258,11 @@ var Bundles = (function (_BaseProvision) {
                     });
                 } else {
                     defered.reject({
-                        errors: res.errors,
-                        statusCode: res.statusCode
+                        "errors": [{
+                            code: res.statusCode,
+                            message: "OGAPI_BUNDLE_NOT_ACTIVE"
+                        }],
+                        "statusCode": res.statusCode
                     });
                 }
             })['catch'](function (error) {
@@ -294,8 +297,11 @@ var Bundles = (function (_BaseProvision) {
                     });
                 } else {
                     defered.reject({
-                        errors: res.errors,
-                        statusCode: res.statusCode
+                        "errors": [{
+                            code: res.statusCode,
+                            message: "OGAPI_BUNDLE_NOT_DEACTIVE"
+                        }],
+                        "statusCode": res.statusCode
                     });
                 }
             })['catch'](function (error) {
@@ -464,7 +470,10 @@ var Bundles = (function (_BaseProvision) {
                     _get(Object.getPrototypeOf(Bundles.prototype), 'create', _this2).call(_this2).then(onCreateBundle)['catch'](onCreateBundleError);
                 } else {
                     defered.reject({
-                        "errors": "OGAPI_400_BUNDLE_EXIST",
+                        "errors": [{
+                            code: 204,
+                            message: "OGAPI_400_BUNDLE_EXIST"
+                        }],
                         "statusCode": 400
                     });
                 }
@@ -474,7 +483,10 @@ var Bundles = (function (_BaseProvision) {
                     _get(Object.getPrototypeOf(Bundles.prototype), 'create', _this2).call(_this2).then(onCreateBundle)['catch'](onCreateBundleError);
                 } else {
                     defered.reject({
-                        "errors": "OGAPI_400_BUNDLE_EXIST",
+                        "errors": [{
+                            code: 204,
+                            message: "OGAPI_400_BUNDLE_EXIST"
+                        }],
                         "statusCode": 400
                     });
                 }
@@ -509,8 +521,11 @@ var Bundles = (function (_BaseProvision) {
                     });
                 } else {
                     defered.reject({
-                        errors: res.errors,
-                        statusCode: res.statusCode
+                        "errors": [{
+                            code: res.statusCode,
+                            message: "OGAPI_400_BUNDLE_NOT_UPDATED"
+                        }],
+                        "statusCode": res.statusCode
                     });
                 }
             })['catch'](function (error) {

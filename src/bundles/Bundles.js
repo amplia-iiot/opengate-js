@@ -66,16 +66,16 @@ export default class Bundles extends BaseProvision {
      * @return {Bundles}
      */
     withWorkgroup(workgroup) {
-        if (typeof workgroup !== 'string')
-            throw new Error('Parameter workgroup must be a string');
-        this._workgroup = workgroup;
-        return this;
-    }
-    /**
-     * Set the description attribute
-     * @param {string} description 
-     * @return {Bundles}
-     */
+            if (typeof workgroup !== 'string')
+                throw new Error('Parameter workgroup must be a string');
+            this._workgroup = workgroup;
+            return this;
+        }
+        /**
+         * Set the description attribute
+         * @param {string} description 
+         * @return {Bundles}
+         */
     withDescription(description) {
         if (typeof description !== 'string' || description.length > 250)
             throw new Error({
@@ -103,7 +103,7 @@ export default class Bundles extends BaseProvision {
         }
         let not_found = [];
         for (var i = 0; i < actions.length; i++) {
-            let found = ACTION_ENUM.find(function (action) {
+            let found = ACTION_ENUM.find(function(action) {
                 return action == this;
             }, actions[i]);
             if (typeof found === "undefined") {
@@ -216,8 +216,11 @@ export default class Bundles extends BaseProvision {
                     });
                 } else {
                     defered.reject({
-                        errors: res.errors,
-                        statusCode: res.statusCode
+                        "errors": [{
+                            code: res.statusCode,
+                            message: "OGAPI_BUNDLE_NOT_ACTIVE"
+                        }],
+                        "statusCode": res.statusCode
                     });
                 }
             })
@@ -252,8 +255,11 @@ export default class Bundles extends BaseProvision {
                     });
                 } else {
                     defered.reject({
-                        errors: res.errors,
-                        statusCode: res.statusCode
+                        "errors": [{
+                            code: res.statusCode,
+                            message: "OGAPI_BUNDLE_NOT_DEACTIVE"
+                        }],
+                        "statusCode": res.statusCode
                     });
                 }
             })
@@ -326,28 +332,28 @@ export default class Bundles extends BaseProvision {
         }
 
         _this._allPromisesOk = true;
-        let onCreateBundle = function (res) {
+        let onCreateBundle = function(res) {
             if (res.statusCode === 201) {
                 let bundleLocation = res;
                 if (_this._deploymentElements && _this._deploymentElements.length > 0) {
                     //console.log("previa de 2: ");
                     let dePromises = [];
-                    _this._deploymentElements.forEach(function (deTmp) {
+                    _this._deploymentElements.forEach(function(deTmp) {
                         dePromises.push(deTmp.deploy());
                     });
 
                     // update de bundle
-                    Promise.all(dePromises).then(function () {
+                    Promise.all(dePromises).then(function() {
                         if (_this._allPromisesOk) {
 
-                            _this.activate().then(function (status, data) {
+                            _this.activate().then(function(status, data) {
                                 defered.resolve(bundleLocation);
-                            }).catch(function (err) {
+                            }).catch(function(err) {
                                 defered.reject(err);
                             });
 
                         }
-                    }).catch(function (err) {
+                    }).catch(function(err) {
                         _this._allPromisesOk = false;
                         onCreateBundleError(err);
                     });
@@ -361,7 +367,7 @@ export default class Bundles extends BaseProvision {
             }
         };
 
-        let onCreateBundleError = function (err) {
+        let onCreateBundleError = function(err) {
             //console.log("Create error: " + JSON.stringify(err));
             //console.log('borrando bundle');
             _this.delete();
@@ -392,7 +398,7 @@ export default class Bundles extends BaseProvision {
         let defered = q.defer();
         let promise = defered.promise;
 
-        let onCreateBundle = function (res) {
+        let onCreateBundle = function(res) {
             if (res.statusCode === 201) {
                 //console.log("OK1: " + JSON.stringify(res));
                 defered.resolve(res);
@@ -403,7 +409,7 @@ export default class Bundles extends BaseProvision {
             }
         };
 
-        let onCreateBundleError = function (err) {
+        let onCreateBundleError = function(err) {
             //console.log(JSON.stringify(err));
             //console.log('borrando bundle')
             defered.reject(err);
@@ -411,23 +417,29 @@ export default class Bundles extends BaseProvision {
 
         // Se intenta crear primero el bundle
         let bundleFinder = _this._ogapi.newBundleFinder().findByNameAndVersion(_this._name, _this._version)
-            .then(function (ok) {
+            .then(function(ok) {
                 if (ok[1] === 204) {
                     //console.log("asdhflkasdfj 1");
                     super.create().then(onCreateBundle).catch(onCreateBundleError);
                 } else {
                     defered.reject({
-                        "errors": "OGAPI_400_BUNDLE_EXIST",
+                        "errors": [{
+                            code: 204,
+                            message: "OGAPI_400_BUNDLE_EXIST"
+                        }],
                         "statusCode": 400
                     });
                 }
-            }).catch(function (err) {
+            }).catch(function(err) {
                 if (err.statusCode === 404) {
                     //console.log("asdhflkasdfj 2");
                     super.create().then(onCreateBundle).catch(onCreateBundleError);
                 } else {
                     defered.reject({
-                        "errors": "OGAPI_400_BUNDLE_EXIST",
+                        "errors": [{
+                            code: 204,
+                            message: "OGAPI_400_BUNDLE_EXIST"
+                        }],
                         "statusCode": 400
                     });
                 }
@@ -462,8 +474,11 @@ export default class Bundles extends BaseProvision {
                     });
                 } else {
                     defered.reject({
-                        errors: res.errors,
-                        statusCode: res.statusCode
+                        "errors": [{
+                            code: res.statusCode,
+                            message: "OGAPI_400_BUNDLE_NOT_UPDATED"
+                        }],
+                        "statusCode": res.statusCode
                     });
                 }
             })
