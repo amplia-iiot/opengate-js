@@ -78,8 +78,21 @@ export default class PreFilteredSearchBuilder extends FlattenedSearchBuilder {
      *	ogapi.entitiesSearchBuilder().disableCaseSensitive() 
      * @return {EntitiesSearchBuilder} 
      */
-    disableCaseSensitive() {
-        this._urlParams.caseSensitive = false;
+    disableCaseSensitive(flag) {
+        this._urlParams.caseSensitive = flag ? flag : false;
+        return this;
+    }
+
+
+    /**
+     * The response will return a response by applying the filter with likes case-no-sensitive
+     * @example
+     *	ogapi.entitiesSearchBuilder().removeCaseSensitive() 
+     * @return {EntitiesSearchBuilder} 
+     */
+    removeCaseSensitive() {
+        if (this._urlParams)
+            delete this._urlParams.caseSensitive;
         return this;
     }
 

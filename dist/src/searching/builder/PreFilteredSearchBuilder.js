@@ -111,8 +111,21 @@ var PreFilteredSearchBuilder = (function (_FlattenedSearchBuilder) {
          */
     }, {
         key: 'disableCaseSensitive',
-        value: function disableCaseSensitive() {
-            this._urlParams.caseSensitive = false;
+        value: function disableCaseSensitive(flag) {
+            this._urlParams.caseSensitive = flag ? flag : false;
+            return this;
+        }
+
+        /**
+         * The response will return a response by applying the filter with likes case-no-sensitive
+         * @example
+         *	ogapi.entitiesSearchBuilder().removeCaseSensitive() 
+         * @return {EntitiesSearchBuilder} 
+         */
+    }, {
+        key: 'removeCaseSensitive',
+        value: function removeCaseSensitive() {
+            if (this._urlParams) delete this._urlParams.caseSensitive;
             return this;
         }
     }]);

@@ -48,8 +48,20 @@ export default class EntitiesSearchBuilder extends SearchWithSummaryBuilder {
      *	ogapi.entitiesSearchBuilder().disableCaseSensitive() 
      * @return {EntitiesSearchBuilder} 
      */
-    disableCaseSensitive() {
-        this._urlParams.caseSensitive = false;
+    disableCaseSensitive(flag) {
+        this._urlParams.caseSensitive = flag ? flag : false;
+        return this;
+    }
+
+    /**
+     * The response will return a response by deleteing the parameters with likes case-no-sensitive
+     * @example
+     *	ogapi.entitiesSearchBuilder().disableCaseSensitive() 
+     * @return {EntitiesSearchBuilder} 
+     */
+    removeCaseSensitive() {
+        if (this._urlParams)
+            delete this._urlParams.caseSensitive;
         return this;
     }
 
