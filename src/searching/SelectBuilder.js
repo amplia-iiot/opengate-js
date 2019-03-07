@@ -31,7 +31,19 @@ export default class SelectBuilder {
                         var input_fields = input_element.fields;
                         for (var k = 0; k < input_fields.length; k++) {
                             var input_field = input_fields[i];
-                            if (element.fields.indexOf(input_field) == -1) {
+
+                            var fieldExists = false;
+                            for (var z = 0; z < element.fields.length; z++) {
+                                if (element.fields[z].field === input_field.field) {
+                                    fieldExists = true;
+
+                                    if (input_field.alias) {
+                                        element.fields[z].alias = input_field.alias;
+                                    }
+                                }
+                            }
+
+                            if (!fieldExists) {
                                 this._selectTemplate.select[j].fields.push(input_field);
                             }
                         }
