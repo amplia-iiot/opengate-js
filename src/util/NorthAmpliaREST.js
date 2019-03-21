@@ -508,8 +508,19 @@ export default class NorthAmpliaREST {
                     data = err.response.body;
                     status = err.status;
                 } else {
-                    data = err.message;
-                    status = 408;
+                    if (!status) {
+                        let errorMessage = {
+                            errors: [{
+                                code: status,
+                                message: 'Something is broken. Please contact with your administrator.'
+                            }]
+                        };
+                        data = errorMessage;
+                        status = 500;
+                    } else {
+                        data = err.message;
+                        status = 408;
+                    }
                 }
                 defered.reject({
                     statusCode: status,
