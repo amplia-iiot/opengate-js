@@ -223,6 +223,11 @@ var BoxBuilder = (function () {
                                 statusCode: errores.statusCode
                             });
                         }
+                    } else {
+                        defer.reject({
+                            errors: errores.data,
+                            statusCode: errores.statusCode
+                        });
                     }
                 });
             })['catch'](function (err) {

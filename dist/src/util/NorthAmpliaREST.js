@@ -550,8 +550,19 @@ var NorthAmpliaREST = (function () {
                         data = err.response.body;
                         _status = err.status;
                     } else {
-                        data = err.message;
-                        _status = 408;
+                        if (!_status) {
+                            var errorMessage = {
+                                errors: [{
+                                    code: _status,
+                                    message: 'Something is broken. Please contact with your administrator.'
+                                }]
+                            };
+                            data = errorMessage;
+                            _status = 500;
+                        } else {
+                            data = err.message;
+                            _status = 408;
+                        }
                     }
                     defered.reject({
                         statusCode: _status,

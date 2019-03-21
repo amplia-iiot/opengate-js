@@ -201,6 +201,11 @@ class BoxBuilder {
                             });
                         }
 
+                    } else {
+                        defer.reject({
+                            errors: errores.data,
+                            statusCode: errores.statusCode
+                        });
                     }
                 });
         }).catch((err) => {
