@@ -151,6 +151,8 @@ var BulkBuilder = (function (_BaseProvision) {
                             statusCode: _statusCode
                         });
                     } else defer.resolve(response);
+                } else if (statusCode === 204) {
+                    defer.resolve(response);
                 } else {
                     defer.reject({
                         errors: response.data.errors,
