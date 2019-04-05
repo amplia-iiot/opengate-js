@@ -546,17 +546,17 @@ var NorthAmpliaREST = (function () {
                 if (err !== null) {
                     var data = undefined;
                     var _status = undefined;
+                    var errorMessage = {
+                        errors: [{
+                            code: err.status ? err.status : _status,
+                            message: 'Something is broken. Please contact with your administrator.'
+                        }]
+                    };
                     if (typeof err.response !== "undefined") {
-                        data = err.response.body;
+                        data = err.response.body ? err.response.body : errorMessage;
                         _status = err.status;
                     } else {
                         if (!_status) {
-                            var errorMessage = {
-                                errors: [{
-                                    code: _status,
-                                    message: 'Something is broken. Please contact with your administrator.'
-                                }]
-                            };
                             data = errorMessage;
                             _status = 500;
                         } else {

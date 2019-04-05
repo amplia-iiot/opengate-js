@@ -731,17 +731,17 @@ export default class NorthAmpliaREST {
             if (err !== null) {
                 let data;
                 let status;
+                let errorMessage = {
+                    errors: [{
+                        code: err.status ? err.status : status,
+                        message: &apos;Something is broken. Please contact with your administrator.&apos;
+                    }]
+                };
                 if (typeof err.response !== &quot;undefined&quot;) {
-                    data = err.response.body;
+                    data = err.response.body ? err.response.body : errorMessage;
                     status = err.status;
                 } else {
                     if (!status) {
-                        let errorMessage = {
-                            errors: [{
-                                code: status,
-                                message: &apos;Something is broken. Please contact with your administrator.&apos;
-                            }]
-                        };
                         data = errorMessage;
                         status = 500;
                     } else {
