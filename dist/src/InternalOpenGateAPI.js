@@ -38,6 +38,10 @@ var _searchingBuilderAreasSearchBuilder = require('./searching/builder/AreasSear
 
 var _searchingBuilderAreasSearchBuilder2 = _interopRequireDefault(_searchingBuilderAreasSearchBuilder);
 
+var _searchingBuilderDatasetsCatalogSearchBuilder = require('./searching/builder/DatasetsCatalogSearchBuilder');
+
+var _searchingBuilderDatasetsCatalogSearchBuilder2 = _interopRequireDefault(_searchingBuilderDatasetsCatalogSearchBuilder);
+
 var _areasAreaFinder = require('./areas/AreaFinder');
 
 var _areasAreaFinder2 = _interopRequireDefault(_areasAreaFinder);
@@ -479,6 +483,16 @@ var InternalOpenGateAPI = (function () {
         key: 'areasSearchBuilder',
         value: function areasSearchBuilder() {
             return new _searchingBuilderAreasSearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a DatasetsCatalogSearchBuilder to build a specific DatasetsCatalogSearc
+         * @return {DatasetsCatalogSearchBuilder}
+         */
+    }, {
+        key: 'datasetsCatalogSearchBuilder',
+        value: function datasetsCatalogSearchBuilder() {
+            return new _searchingBuilderDatasetsCatalogSearchBuilder2['default'](this);
         }
 
         /**

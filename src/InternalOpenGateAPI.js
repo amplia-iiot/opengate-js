@@ -7,6 +7,7 @@ import Users from './users/Users';
 import OrganizationFinder from './organizations/OrganizationFinder';
 import ChannelFinder from './channels/ChannelFinder';
 import AreasSearchBuilder from './searching/builder/AreasSearchBuilder';
+import DatasetsCatalogSearchBuilder from './searching/builder/DatasetsCatalogSearchBuilder';
 import AreaFinder from './areas/AreaFinder';
 import BulkSearchBuilder from './searching/builder/BulkSearchBuilder';
 import BulkFinder from './bulk/BulkFinder';
@@ -157,6 +158,14 @@ export default class InternalOpenGateAPI {
      */
     areasSearchBuilder() {
         return new AreasSearchBuilder(this);
+    }
+
+    /**
+     * This return a DatasetsCatalogSearchBuilder to build a specific DatasetsCatalogSearc
+     * @return {DatasetsCatalogSearchBuilder}
+     */
+    datasetsCatalogSearchBuilder() {
+        return new DatasetsCatalogSearchBuilder(this);
     }
 
     /**

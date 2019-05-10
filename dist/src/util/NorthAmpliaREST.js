@@ -55,6 +55,30 @@ var NorthAmpliaREST = (function () {
         this._options = _merge2['default'].recursive(true, this['default'](), _options);
         this._headers = headers;
 
+        mock.post(_options.url + '/search/datasets/catalog', function (req, res) {
+            return {
+                body: {
+                    "page": {
+                        "number": 1
+                    },
+                    "datasets": [{
+                        "identifier": "dataset_identifier",
+                        "organization": "organizationName",
+                        "description": "dataset de ejemplo",
+                        "creationDate": "2017-12-01T08:52:37.643Z",
+                        "updatedDate": "2017-12-01T08:52:37.643Z"
+                    }, {
+                        "identifier": "Dataset_1555328208451",
+                        "organization": "chemacorp",
+                        "description": "dataset bueno",
+                        "creationDate": "2019-05-01T10:52:37.643Z",
+                        "updatedDate": "2019-05-10T08:52:37.643Z"
+                    }]
+                },
+                statusCode: 200
+            };
+        });
+
         // mock.post(_options.url + '/provision/organizations/:organizationName/bulk/async?type=ENTITIES&action=CREATE', function(req, res) {
         //     return {
         //         location: _options.url + '/provision/organizations/' + req.params.organizationName + '/bulk/async/' + new Date().getTime(),
