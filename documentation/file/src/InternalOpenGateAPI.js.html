@@ -157,6 +157,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CountryCodesSearchBuilder.js~CountryCodesSearchBuilder.html">CountryCodesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatamodelsSearchBuilder.js~DatamodelsSearchBuilder.html">DatamodelsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatapointsSearchBuilder.js~DatapointsSearchBuilder.html">DatapointsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatasetEntitiesSearchBuilder.js~DatasetEntitiesSearchBuilder.html">DatasetEntitiesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatasetsCatalogSearchBuilder.js~DatasetsCatalogSearchBuilder.html">DatasetsCatalogSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatastreamsSearchBuilder.js~DatastreamsSearchBuilder.html">DatastreamsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DevicesSearchBuilder.js~DevicesSearchBuilder.html">DevicesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DomainsSearchBuilder.js~DomainsSearchBuilder.html">DomainsSearchBuilder</a></span></span></li>
@@ -196,6 +198,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/WorkgroupsSearchBuilder.js~WorkgroupsSearchBuilder.html">WorkgroupsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOKEN_URL">TOKEN_URL</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOKEN_URL">TOKEN_URL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOKEN_URL">TOKEN_URL</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOFTWARE_TYPES_ENUM">SOFTWARE_TYPES_ENUM</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching/error</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/error/SearchBuilderError.js~SearchBuilderError.html">SearchBuilderError</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">security</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/security/CertificateFinder.js~CertificateFinder.html">CertificateFinder</a></span></span></li>
@@ -233,6 +236,7 @@ import Users from &apos;./users/Users&apos;;
 import OrganizationFinder from &apos;./organizations/OrganizationFinder&apos;;
 import ChannelFinder from &apos;./channels/ChannelFinder&apos;;
 import AreasSearchBuilder from &apos;./searching/builder/AreasSearchBuilder&apos;;
+import DatasetsCatalogSearchBuilder from &apos;./searching/builder/DatasetsCatalogSearchBuilder&apos;;
 import AreaFinder from &apos;./areas/AreaFinder&apos;;
 import BulkSearchBuilder from &apos;./searching/builder/BulkSearchBuilder&apos;;
 import BulkFinder from &apos;./bulk/BulkFinder&apos;;
@@ -322,6 +326,7 @@ import DatastreamsBuilder from &apos;./iot/catalog/Datastream&apos;;
 import QratingsBuilder from &apos;./iot/catalog/Qrating&apos;;
 import EntityBuilder from &apos;./provision/entities/EntityBuilder&apos;;
 import EntitiesSearchBuilder from &apos;./searching/builder/EntitiesSearchBuilder&apos;;
+import DatasetEntitiesSearchBuilder from &apos;./searching/builder/DatasetEntitiesSearchBuilder&apos;;
 import CountryCodesSearchBuilder from &apos;./searching/builder/CountryCodesSearchBuilder&apos;;
 import TimezoneSearchBuilder from &apos;./searching/builder/TimezoneSearchBuilder&apos;;
 import UserLanguagesSearchBuilder from &apos;./searching/builder/UserLanguagesSearchBuilder&apos;;
@@ -383,6 +388,14 @@ export default class InternalOpenGateAPI {
      */
     areasSearchBuilder() {
         return new AreasSearchBuilder(this);
+    }
+
+    /**
+     * This return a DatasetsCatalogSearchBuilder to build a specific DatasetsCatalogSearc
+     * @return {DatasetsCatalogSearchBuilder}
+     */
+    datasetsCatalogSearchBuilder() {
+        return new DatasetsCatalogSearchBuilder(this);
     }
 
     /**
@@ -763,11 +776,19 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a ExecutionsSearchBuilder to build a specific ExecutionsSearch
-     * @return {ExecutionsSearchBuilder}
+     * This return a EntitiesSearchBuilder to build a specific EntitiesSearch
+     * @return {EntitiesSearchBuilder}
      */
     entitiesSearchBuilder() {
         return new EntitiesSearchBuilder(this);
+    }
+
+    /**
+     * This return a DatasetEntitiesSearchBuilder to build a specific DatasetEntitiesSearch
+     * @return {DatasetEntitiesSearchBuilder}
+     */
+    datasetEntitiesSearchBuilder(organization, dataset) {
+        return new DatasetEntitiesSearchBuilder(this, organization, dataset);
     }
 
     /**
