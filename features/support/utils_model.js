@@ -296,6 +296,10 @@ module.exports = {
             "User Languages search": function(ogapi) {
                 return ogapi.userLanguagesSearchBuilder();
             },
+            "datasets catalog search": function(ogapi) {
+                return ogapi.datasetsCatalogSearchBuilder();
+            },
+
         };
         return utilsMath[utilName](ogapi, param, param2);
     }

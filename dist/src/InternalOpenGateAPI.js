@@ -398,6 +398,10 @@ var _searchingBuilderEntitiesSearchBuilder = require('./searching/builder/Entiti
 
 var _searchingBuilderEntitiesSearchBuilder2 = _interopRequireDefault(_searchingBuilderEntitiesSearchBuilder);
 
+var _searchingBuilderDatasetEntitiesSearchBuilder = require('./searching/builder/DatasetEntitiesSearchBuilder');
+
+var _searchingBuilderDatasetEntitiesSearchBuilder2 = _interopRequireDefault(_searchingBuilderDatasetEntitiesSearchBuilder);
+
 var _searchingBuilderCountryCodesSearchBuilder = require('./searching/builder/CountryCodesSearchBuilder');
 
 var _searchingBuilderCountryCodesSearchBuilder2 = _interopRequireDefault(_searchingBuilderCountryCodesSearchBuilder);
@@ -962,13 +966,23 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a ExecutionsSearchBuilder to build a specific ExecutionsSearch
-         * @return {ExecutionsSearchBuilder}
+         * This return a EntitiesSearchBuilder to build a specific EntitiesSearch
+         * @return {EntitiesSearchBuilder}
          */
     }, {
         key: 'entitiesSearchBuilder',
         value: function entitiesSearchBuilder() {
             return new _searchingBuilderEntitiesSearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a DatasetEntitiesSearchBuilder to build a specific DatasetEntitiesSearch
+         * @return {DatasetEntitiesSearchBuilder}
+         */
+    }, {
+        key: 'datasetEntitiesSearchBuilder',
+        value: function datasetEntitiesSearchBuilder(organization, dataset) {
+            return new _searchingBuilderDatasetEntitiesSearchBuilder2['default'](this, organization, dataset);
         }
 
         /**
