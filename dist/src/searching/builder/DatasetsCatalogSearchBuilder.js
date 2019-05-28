@@ -20,7 +20,7 @@ var _utilSearchingFieldsFieldFinder = require('../../util/searchingFields/FieldF
 
 var _utilSearchingFieldsFieldFinder2 = _interopRequireDefault(_utilSearchingFieldsFieldFinder);
 
-var BASE_URL = '/datasets/catalog';
+var BASE_URL = '/catalog/datasets';
 /**
  * Defined a search over Areas	
  * @example ogapi.datasetsCatalogSearchBuilder()

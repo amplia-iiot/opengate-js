@@ -49,7 +49,7 @@ var DatasetEntitiesSearchBuilder = (function (_SearchWithSummaryBuilder) {
             _get(Object.getPrototypeOf(DatasetEntitiesSearchBuilder.prototype), 'constructor', this).call(this, parent, {
                 onDevices: '/'
             }, fieldFinder);
-            this._url = '/datasets/' + organization + '/' + dataset + TOKEN_URL;
+            this._url = '/organizations/' + organization + '/datasets/' + dataset + TOKEN_URL;
         }).apply(this, arguments);
     }
 
