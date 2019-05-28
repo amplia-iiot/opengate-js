@@ -14,7 +14,7 @@ import jp from 'jsonpath';
 const ID = 'provision.device.identifier';
 
 class BoxBuilder {
-    constructor(ogapi, obj, url, key) {
+    constructor(ogapi, obj, url, key, urlParameters) {
         let _this = this;
         let subscribers = {};
         let subscriptions = {};
@@ -36,6 +36,8 @@ class BoxBuilder {
             return dsName.indexOf('provision.administration') !== -1;
         });
         this._wrappers = [];
+        this._urlParameters = urlParameters;
+
 
         this._subscriberKeys.forEach((key) => {
             _this._obj[key].forEach((value) => {
@@ -78,6 +80,23 @@ class BoxBuilder {
     _urlWithKey() {
         return this._url + '/' + this._key._value._current.value;
     }
+
+    _getUrlParameters() {
+        return this._urlParameters;
+    }
+
+    _setUrlParameters(parameters) {
+        if (this._urlParameters) {
+            var keys = Object.keys(parameters);
+            for (var i = 0; i < keys.length; i++) {
+                var key = keys[i];
+                this._urlParameters[key] = parameters[key];
+            }
+        } else {
+            this._urlParameters = parameters;
+        }
+    }
+
 
     create() {
         let defer = q.defer();
@@ -131,9 +150,10 @@ class BoxBuilder {
                             type: 'success',
                             percentage: 55
                         });
-                        return _this._ogapi.Napi.put(_this._urlWithKey(), putObj, null, null, {
-                                flattened: true
-                            })
+                        this._setUrlParameters({
+                            'flattened': true
+                        });
+                        return _this._ogapi.Napi.put(_this._urlWithKey(), putObj, null, null, this._getUrlParameters())
                             .then((res) => {
                                 if (res.statusCode === HttpStatus.OK) {
                                     console.log("CREATEOK: " + JSON.stringify(res));
@@ -260,9 +280,10 @@ class BoxBuilder {
                 type: 'success',
                 percentage: 45
             });
-            return _this._ogapi.Napi.put(_this._url, putObj, null, null, {
-                    flattened: true
-                })
+            this._setUrlParameters({
+                'flattened': true
+            });
+            return _this._ogapi.Napi.put(_this._url, putObj, null, null, this._getUrlParameters())
                 .then((res) => {
                     if (res.statusCode === HttpStatus.OK) {
                         console.log("CREATEOK: " + JSON.stringify(res));
@@ -436,7 +457,7 @@ export default class DeviceBuilder extends ComplexBuilder {
      */
     create() {
         this._checkRequiredParameters();
-        return (new BoxBuilder(this._ogapi, this._composeElement(), this._resource, this._getEntityKey())).create();
+        return (new BoxBuilder(this._ogapi, this._composeElement(), this._resource, this._getEntityKey(), this._getUrlParameters())).create();
     }
 
     /**
@@ -450,7 +471,7 @@ export default class DeviceBuilder extends ComplexBuilder {
      *  ogapi.entityBuilder.devicesBuilder().update()
      */
     update() {
-        return (new BoxBuilder(this._ogapi, this._composeElement(), this._buildURL(), this._getEntityKey())).update();
+        return (new BoxBuilder(this._ogapi, this._composeElement(), this._buildURL(), this._getEntityKey(), this._getUrlParameters())).update();
     }
 
     _getEntityKey() {

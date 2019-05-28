@@ -37,7 +37,7 @@ var _jsonpath2 = _interopRequireDefault(_jsonpath);
 var ID = 'provision.device.identifier';
 
 var BoxBuilder = (function () {
-    function BoxBuilder(ogapi, obj, url, key) {
+    function BoxBuilder(ogapi, obj, url, key, urlParameters) {
         _classCallCheck(this, BoxBuilder);
 
         var _this = this;
@@ -61,6 +61,7 @@ var BoxBuilder = (function () {
             return dsName.indexOf('provision.administration') !== -1;
         });
         this._wrappers = [];
+        this._urlParameters = urlParameters;
 
         this._subscriberKeys.forEach(function (key) {
             _this._obj[key].forEach(function (value) {
@@ -106,8 +107,28 @@ var BoxBuilder = (function () {
             return this._url + '/' + this._key._value._current.value;
         }
     }, {
+        key: '_getUrlParameters',
+        value: function _getUrlParameters() {
+            return this._urlParameters;
+        }
+    }, {
+        key: '_setUrlParameters',
+        value: function _setUrlParameters(parameters) {
+            if (this._urlParameters) {
+                var keys = Object.keys(parameters);
+                for (var i = 0; i < keys.length; i++) {
+                    var key = keys[i];
+                    this._urlParameters[key] = parameters[key];
+                }
+            } else {
+                this._urlParameters = parameters;
+            }
+        }
+    }, {
         key: 'create',
         value: function create() {
+            var _this2 = this;
+
             var defer = _q2['default'].defer();
             var postObj = {};
             var putObj = this._obj;
@@ -157,9 +178,10 @@ var BoxBuilder = (function () {
                             type: 'success',
                             percentage: 55
                         });
-                        return _this._ogapi.Napi.put(_this._urlWithKey(), putObj, null, null, {
-                            flattened: true
-                        }).then(function (res) {
+                        _this2._setUrlParameters({
+                            'flattened': true
+                        });
+                        return _this._ogapi.Napi.put(_this._urlWithKey(), putObj, null, null, _this2._getUrlParameters()).then(function (res) {
                             if (res.statusCode === _httpStatusCodes2['default'].OK) {
                                 console.log("CREATEOK: " + JSON.stringify(res));
                                 if (typeof _this._onCreated === "function") {
@@ -255,6 +277,8 @@ var BoxBuilder = (function () {
     }, {
         key: 'update',
         value: function update() {
+            var _this3 = this;
+
             var defer = _q2['default'].defer();
             var putObj = this._obj;
             var childEntityPromises = [];
@@ -282,9 +306,10 @@ var BoxBuilder = (function () {
                     type: 'success',
                     percentage: 45
                 });
-                return _this._ogapi.Napi.put(_this._url, putObj, null, null, {
-                    flattened: true
-                }).then(function (res) {
+                _this3._setUrlParameters({
+                    'flattened': true
+                });
+                return _this._ogapi.Napi.put(_this._url, putObj, null, null, _this3._getUrlParameters()).then(function (res) {
                     if (res.statusCode === _httpStatusCodes2['default'].OK) {
                         console.log("CREATEOK: " + JSON.stringify(res));
                         if (typeof _this._onCreated === "function") {
@@ -473,7 +498,7 @@ var DeviceBuilder = (function (_ComplexBuilder) {
         key: 'create',
         value: function create() {
             this._checkRequiredParameters();
-            return new BoxBuilder(this._ogapi, this._composeElement(), this._resource, this._getEntityKey()).create();
+            return new BoxBuilder(this._ogapi, this._composeElement(), this._resource, this._getEntityKey(), this._getUrlParameters()).create();
         }
 
         /**
@@ -489,7 +514,7 @@ var DeviceBuilder = (function (_ComplexBuilder) {
     }, {
         key: 'update',
         value: function update() {
-            return new BoxBuilder(this._ogapi, this._composeElement(), this._buildURL(), this._getEntityKey()).update();
+            return new BoxBuilder(this._ogapi, this._composeElement(), this._buildURL(), this._getEntityKey(), this._getUrlParameters()).update();
         }
     }, {
         key: '_getEntityKey',
