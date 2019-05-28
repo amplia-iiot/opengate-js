@@ -17,7 +17,7 @@ export default class DatasetEntitiesSearchBuilder extends SearchWithSummaryBuild
         super(parent, {
             onDevices: '/',
         }, fieldFinder);
-        this._url = '/datasets/' + organization + '/' + dataset + TOKEN_URL;
+        this._url = '/organizations/' + organization + '/datasets/' + dataset + TOKEN_URL;
     }
 
     /**
