@@ -230,10 +230,8 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
 import { TYPE_ENUM } from &apos;./TYPE_ENUM&apos;;
-
-import q from &apos;q&apos;;
 import BaseProvision from &apos;../provision/BaseProvision&apos;;
-
+import checkType from &apos;../util/formats/check_types&apos;
 /**
  * This is a base object that contains all you can do about Areas.
  */
@@ -258,7 +256,7 @@ export default class Areas extends BaseProvision {
      * @return {Areas}
      */
     withOrganization(organization) {
-        this._checkString(organization, 50, &apos;organization&apos;);
+        checkType._checkString(organization, 50, &apos;organization&apos;);
         this._organization = organization;
         return this;
     }
@@ -269,7 +267,7 @@ export default class Areas extends BaseProvision {
      * @return {Areas}
      */
     withIdentifier(identifier) {
-        this._checkString(identifier, 50, &apos;identifier&apos;);
+        checkType._checkString(identifier, 50, &apos;identifier&apos;);
         this._identifier = identifier;
         return this;
     }
@@ -280,7 +278,7 @@ export default class Areas extends BaseProvision {
      * @return {Areas}
      */
     withName(name) {
-        this._checkString(name, 50, &apos;name&apos;);
+        checkType._checkString(name, 50, &apos;name&apos;);
         this._name = name;
         return this;
     }
@@ -291,10 +289,23 @@ export default class Areas extends BaseProvision {
      * @return {Areas}
      */
     withDescription(description) {
-        this._checkString(description, 50, &apos;description&apos;);
+        checkType._checkString(description, 50, &apos;description&apos;);
         this._description = description;
         return this;
     }
+
+
+    /**
+     * Set the order attribute
+     * @param {number} order - required field
+     * @return {Areas}
+     */
+    withOrder(order) {
+        checkType._checkNumber(order, &apos;order&apos;);
+        this._order = order;
+        return this;
+    }
+
 
     /**
      * Set the geometry attribute
@@ -303,8 +314,8 @@ export default class Areas extends BaseProvision {
      * @return {Areas}
      */
     withGeometry(type, coordinates) {
-        this._checkType(type);
-        this._checkArray(coordinates, &apos;coordinates&apos;);
+        checkType._checkType(type, TYPE_ENUM);
+        checkType._checkArray(coordinates, &apos;coordinates&apos;);
         this._type = type;
         this._coordinates = coordinates;
         return this;
@@ -316,38 +327,11 @@ export default class Areas extends BaseProvision {
      * @return {Areas}
      */
     withEntities(entities) {
-        this._checkArray(entities, &apos;entities&apos;);
+        checkType._checkArray(entities, &apos;entities&apos;);
         this._entities = entities;
         return this;
     }
 
-    /* fields validations */
-    _checkType(type) {
-        let not_found = [];
-        let found = TYPE_ENUM.find(function(type) {
-            return type == this;
-        }, type);
-
-        if (typeof found === &quot;undefined&quot;) {
-            not_found.push(type);
-        }
-        if (not_found.length !== 0) {
-            throw new Error({ message: &quot;OGAPI_NOT_ALLOWED_PARAMETER&quot;, parameter: JSON.stringify(not_found), allowed: JSON.stringify(TYPE_ENUM) });
-        }
-        return type;
-    }
-
-    _checkString(parameter, length, name) {
-        if (typeof parameter !== &apos;string&apos; || parameter.length &gt; length) {
-            throw new Error([{ message: &apos;OGAPI_STRING_PARAMETER&apos;, parameter: name }, { message: &apos;OGAPI_MAX_LENGTH&apos;, parameter: length }]);
-        }
-    }
-
-    _checkArray(parameter, name) {
-        if (!Array.isArray(parameter) || parameter.length === 0) {
-            throw new Error({ message: &apos;OGAPI_ARRAY_PARAMETER&apos;, parameter: name });
-        }
-    }
 
     _composeElement() {
         this._resource = &apos;provision/organizations/&apos; + this._organization + &apos;/areas/&apos;;
@@ -355,6 +339,8 @@ export default class Areas extends BaseProvision {
             identifier: this._identifier,
             name: this._name,
             description: this._description,
+            order: this._order,
+
             geometry: {
                 type: this._type,
                 coordinates: this._coordinates

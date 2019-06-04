@@ -16,13 +16,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== 'function' 
 
 var _TYPE_ENUM = require('./TYPE_ENUM');
 
-var _q = require('q');
-
-var _q2 = _interopRequireDefault(_q);
-
 var _provisionBaseProvision = require('../provision/BaseProvision');
 
 var _provisionBaseProvision2 = _interopRequireDefault(_provisionBaseProvision);
+
+var _utilFormatsCheck_types = require('../util/formats/check_types');
+
+var _utilFormatsCheck_types2 = _interopRequireDefault(_utilFormatsCheck_types);
 
 /**
  * This is a base object that contains all you can do about Areas.
@@ -56,7 +56,7 @@ var Areas = (function (_BaseProvision) {
     }, {
         key: 'withOrganization',
         value: function withOrganization(organization) {
-            this._checkString(organization, 50, 'organization');
+            _utilFormatsCheck_types2['default']._checkString(organization, 50, 'organization');
             this._organization = organization;
             return this;
         }
@@ -69,7 +69,7 @@ var Areas = (function (_BaseProvision) {
     }, {
         key: 'withIdentifier',
         value: function withIdentifier(identifier) {
-            this._checkString(identifier, 50, 'identifier');
+            _utilFormatsCheck_types2['default']._checkString(identifier, 50, 'identifier');
             this._identifier = identifier;
             return this;
         }
@@ -82,7 +82,7 @@ var Areas = (function (_BaseProvision) {
     }, {
         key: 'withName',
         value: function withName(name) {
-            this._checkString(name, 50, 'name');
+            _utilFormatsCheck_types2['default']._checkString(name, 50, 'name');
             this._name = name;
             return this;
         }
@@ -95,8 +95,21 @@ var Areas = (function (_BaseProvision) {
     }, {
         key: 'withDescription',
         value: function withDescription(description) {
-            this._checkString(description, 50, 'description');
+            _utilFormatsCheck_types2['default']._checkString(description, 50, 'description');
             this._description = description;
+            return this;
+        }
+
+        /**
+         * Set the order attribute
+         * @param {number} order - required field
+         * @return {Areas}
+         */
+    }, {
+        key: 'withOrder',
+        value: function withOrder(order) {
+            _utilFormatsCheck_types2['default']._checkNumber(order, 'order');
+            this._order = order;
             return this;
         }
 
@@ -109,8 +122,8 @@ var Areas = (function (_BaseProvision) {
     }, {
         key: 'withGeometry',
         value: function withGeometry(type, coordinates) {
-            this._checkType(type);
-            this._checkArray(coordinates, 'coordinates');
+            _utilFormatsCheck_types2['default']._checkType(type, _TYPE_ENUM.TYPE_ENUM);
+            _utilFormatsCheck_types2['default']._checkArray(coordinates, 'coordinates');
             this._type = type;
             this._coordinates = coordinates;
             return this;
@@ -124,41 +137,9 @@ var Areas = (function (_BaseProvision) {
     }, {
         key: 'withEntities',
         value: function withEntities(entities) {
-            this._checkArray(entities, 'entities');
+            _utilFormatsCheck_types2['default']._checkArray(entities, 'entities');
             this._entities = entities;
             return this;
-        }
-
-        /* fields validations */
-    }, {
-        key: '_checkType',
-        value: function _checkType(type) {
-            var not_found = [];
-            var found = _TYPE_ENUM.TYPE_ENUM.find(function (type) {
-                return type == this;
-            }, type);
-
-            if (typeof found === "undefined") {
-                not_found.push(type);
-            }
-            if (not_found.length !== 0) {
-                throw new Error({ message: "OGAPI_NOT_ALLOWED_PARAMETER", parameter: JSON.stringify(not_found), allowed: JSON.stringify(_TYPE_ENUM.TYPE_ENUM) });
-            }
-            return type;
-        }
-    }, {
-        key: '_checkString',
-        value: function _checkString(parameter, length, name) {
-            if (typeof parameter !== 'string' || parameter.length > length) {
-                throw new Error([{ message: 'OGAPI_STRING_PARAMETER', parameter: name }, { message: 'OGAPI_MAX_LENGTH', parameter: length }]);
-            }
-        }
-    }, {
-        key: '_checkArray',
-        value: function _checkArray(parameter, name) {
-            if (!Array.isArray(parameter) || parameter.length === 0) {
-                throw new Error({ message: 'OGAPI_ARRAY_PARAMETER', parameter: name });
-            }
         }
     }, {
         key: '_composeElement',
@@ -168,6 +149,8 @@ var Areas = (function (_BaseProvision) {
                 identifier: this._identifier,
                 name: this._name,
                 description: this._description,
+                order: this._order,
+
                 geometry: {
                     type: this._type,
                     coordinates: this._coordinates
