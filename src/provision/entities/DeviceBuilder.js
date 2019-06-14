@@ -14,7 +14,7 @@ import jp from 'jsonpath';
 const ID = 'provision.device.identifier';
 
 class BoxBuilder {
-    constructor(ogapi, obj, url, key, urlParameters) {
+    constructor(ogapi, obj, url, key, urlParameters, timeout) {
         let _this = this;
         let subscribers = {};
         let subscriptions = {};
@@ -23,6 +23,8 @@ class BoxBuilder {
         this._url = url;
         this._ogapi = ogapi;
         this._key = key;
+        this._timeout = timeout || null;
+
         this._deviceKeys = Object.keys(obj).filter(function(dsName) {
             return dsName.indexOf('subscriber') === -1 && dsName.indexOf('subscription') === -1;
         });
@@ -153,7 +155,7 @@ class BoxBuilder {
                         this._setUrlParameters({
                             'flattened': true
                         });
-                        return _this._ogapi.Napi.put(_this._urlWithKey(), putObj, null, null, this._getUrlParameters())
+                        return _this._ogapi.Napi.put(_this._urlWithKey(), putObj, this._timeout, null, this._getUrlParameters())
                             .then((res) => {
                                 if (res.statusCode === HttpStatus.OK) {
                                     console.log("CREATEOK: " + JSON.stringify(res));
@@ -283,7 +285,7 @@ class BoxBuilder {
             this._setUrlParameters({
                 'flattened': true
             });
-            return _this._ogapi.Napi.put(_this._url, putObj, null, null, this._getUrlParameters())
+            return _this._ogapi.Napi.put(_this._url, putObj, this._timeout, null, this._getUrlParameters())
                 .then((res) => {
                     if (res.statusCode === HttpStatus.OK) {
                         console.log("CREATEOK: " + JSON.stringify(res));
@@ -439,6 +441,7 @@ export default class DeviceBuilder extends ComplexBuilder {
      * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new device
      * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types
      * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool
+     * @param {number} ms - timeout in milliseconds    
      */
 
     constructor(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout) {
@@ -457,7 +460,7 @@ export default class DeviceBuilder extends ComplexBuilder {
      */
     create() {
         this._checkRequiredParameters();
-        return (new BoxBuilder(this._ogapi, this._composeElement(), this._resource, this._getEntityKey(), this._getUrlParameters())).create();
+        return (new BoxBuilder(this._ogapi, this._composeElement(), this._resource, this._getEntityKey(), this._getUrlParameters(), this._timeout)).create();
     }
 
     /**
@@ -471,7 +474,7 @@ export default class DeviceBuilder extends ComplexBuilder {
      *  ogapi.entityBuilder.devicesBuilder().update()
      */
     update() {
-        return (new BoxBuilder(this._ogapi, this._composeElement(), this._buildURL(), this._getEntityKey(), this._getUrlParameters())).update();
+        return (new BoxBuilder(this._ogapi, this._composeElement(), this._buildURL(), this._getEntityKey(), this._getUrlParameters(), this._timeout)).update();
     }
 
     _getEntityKey() {

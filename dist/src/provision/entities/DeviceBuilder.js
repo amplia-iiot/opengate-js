@@ -37,7 +37,7 @@ var _jsonpath2 = _interopRequireDefault(_jsonpath);
 var ID = 'provision.device.identifier';
 
 var BoxBuilder = (function () {
-    function BoxBuilder(ogapi, obj, url, key, urlParameters) {
+    function BoxBuilder(ogapi, obj, url, key, urlParameters, timeout) {
         _classCallCheck(this, BoxBuilder);
 
         var _this = this;
@@ -48,6 +48,8 @@ var BoxBuilder = (function () {
         this._url = url;
         this._ogapi = ogapi;
         this._key = key;
+        this._timeout = timeout || null;
+
         this._deviceKeys = Object.keys(obj).filter(function (dsName) {
             return dsName.indexOf('subscriber') === -1 && dsName.indexOf('subscription') === -1;
         });
@@ -181,7 +183,7 @@ var BoxBuilder = (function () {
                         _this2._setUrlParameters({
                             'flattened': true
                         });
-                        return _this._ogapi.Napi.put(_this._urlWithKey(), putObj, null, null, _this2._getUrlParameters()).then(function (res) {
+                        return _this._ogapi.Napi.put(_this._urlWithKey(), putObj, _this2._timeout, null, _this2._getUrlParameters()).then(function (res) {
                             if (res.statusCode === _httpStatusCodes2['default'].OK) {
                                 console.log("CREATEOK: " + JSON.stringify(res));
                                 if (typeof _this._onCreated === "function") {
@@ -309,7 +311,7 @@ var BoxBuilder = (function () {
                 _this3._setUrlParameters({
                     'flattened': true
                 });
-                return _this._ogapi.Napi.put(_this._url, putObj, null, null, _this3._getUrlParameters()).then(function (res) {
+                return _this._ogapi.Napi.put(_this._url, putObj, _this3._timeout, null, _this3._getUrlParameters()).then(function (res) {
                     if (res.statusCode === _httpStatusCodes2['default'].OK) {
                         console.log("CREATEOK: " + JSON.stringify(res));
                         if (typeof _this._onCreated === "function") {
@@ -475,6 +477,7 @@ var DeviceBuilder = (function (_ComplexBuilder) {
      * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new device
      * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types
      * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool
+     * @param {number} ms - timeout in milliseconds    
      */
 
     function DeviceBuilder(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout) {
@@ -498,7 +501,7 @@ var DeviceBuilder = (function (_ComplexBuilder) {
         key: 'create',
         value: function create() {
             this._checkRequiredParameters();
-            return new BoxBuilder(this._ogapi, this._composeElement(), this._resource, this._getEntityKey(), this._getUrlParameters()).create();
+            return new BoxBuilder(this._ogapi, this._composeElement(), this._resource, this._getEntityKey(), this._getUrlParameters(), this._timeout).create();
         }
 
         /**
@@ -514,7 +517,7 @@ var DeviceBuilder = (function (_ComplexBuilder) {
     }, {
         key: 'update',
         value: function update() {
-            return new BoxBuilder(this._ogapi, this._composeElement(), this._buildURL(), this._getEntityKey(), this._getUrlParameters()).update();
+            return new BoxBuilder(this._ogapi, this._composeElement(), this._buildURL(), this._getEntityKey(), this._getUrlParameters(), this._timeout).update();
         }
     }, {
         key: '_getEntityKey',
