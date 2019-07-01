@@ -57,12 +57,18 @@ var BulkFinder = (function (_ProvisionGenericFinder) {
 
     _createClass(BulkFinder, [{
         key: 'findByOrganizationAndId',
-        value: function findByOrganizationAndId(organization, id, format) {
+        value: function findByOrganizationAndId(organization, id, format, accept) {
             this._organization = organization;
             this._id = id;
             this._setUrlParameters({
                 format: format
             });
+
+            if (accept) {
+                this._setExtraHeaders({
+                    'accept': accept
+                });
+            }
             return this._download();
         }
 
