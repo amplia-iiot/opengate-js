@@ -28,12 +28,18 @@ export default class BulkFinder extends ProvisionGenericFinder {
      * @param {string} format - format response flag.
      * @return {Promise} 
      */
-    findByOrganizationAndId(organization, id, format) {
+    findByOrganizationAndId(organization, id, format, accept) {
         this._organization = organization;
         this._id = id;
         this._setUrlParameters({
             format: format
         });
+
+        if (accept) {
+            this._setExtraHeaders({
+                'accept': accept
+            });
+        }
         return this._download();
     }
 
