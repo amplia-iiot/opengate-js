@@ -101,7 +101,8 @@ const TYPE_FIELD = {
 };
 
 const FIELD_SEARCHER = {
-    [SEARCH_FIELDS]: function(states, context, primaryType, defered, selectedField) {
+    
+    [SEARCH_FIELDS]: function(states, context, primaryType, defered, selectedField, selectAll) {
         const filterByUrl = {
             '/devices': function(field) {
                 return true;
@@ -165,7 +166,18 @@ const FIELD_SEARCHER = {
         datamodelSearchBuilder.build().execute().then(function(response) {
             var datastreams = [];
             if (response.statusCode === 200) {
-                if (selectedField) {
+                if(selectAll){
+                    datastreams = response.data.datamodels.map(function(datamodel) {
+                        var categories = datamodel.categories || [];
+                        return categories.map(function(category) {
+                            var datastreams = category.datastreams || [];
+                            return datastreams.map(function(ds) {
+                                return ds;
+                            });
+                        });
+                    });
+                }
+                else if (selectedField) {
                     datastreams = response.data.datamodels.map(function(datamodel) {
                         var categories = datamodel.categories || [];
                         return categories.map(function(category) {
@@ -354,6 +366,11 @@ export default class FieldFinder {
     find(input = "") {
         let defered = q.defer();
         FIELD_SEARCHER[this._type].call(this, input.split('.'), FIELDS[match_url[this._url]], match_url[this._url], defered);
+        return defered.promise;
+    }
+    findAll(input = "") {
+        let defered = q.defer();
+        FIELD_SEARCHER[this._type].call(this, input.split('.'),  FIELDS[match_url[this._url]], match_url[this._url], defered, input ,true);
         return defered.promise;
     }
 

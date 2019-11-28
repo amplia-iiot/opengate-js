@@ -116,7 +116,7 @@ var TYPE_FIELD = {
     }
 };
 
-var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEARCH_FIELDS, function (states, context, primaryType, defered, selectedField) {
+var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEARCH_FIELDS, function (states, context, primaryType, defered, selectedField, selectAll) {
     var filterByUrl = {
         '/devices': function devices(field) {
             return true;
@@ -180,7 +180,17 @@ var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEA
     datamodelSearchBuilder.build().execute().then(function (response) {
         var datastreams = [];
         if (response.statusCode === 200) {
-            if (selectedField) {
+            if (selectAll) {
+                datastreams = response.data.datamodels.map(function (datamodel) {
+                    var categories = datamodel.categories || [];
+                    return categories.map(function (category) {
+                        var datastreams = category.datastreams || [];
+                        return datastreams.map(function (ds) {
+                            return ds;
+                        });
+                    });
+                });
+            } else if (selectedField) {
                 datastreams = response.data.datamodels.map(function (datamodel) {
                     var categories = datamodel.categories || [];
                     return categories.map(function (category) {
@@ -215,18 +225,18 @@ var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEA
         defered.reject(error);
     });
 
-    function reduce(_x3) {
+    function reduce(_x4) {
         var _again = true;
 
         _function: while (_again) {
-            var array = _x3;
+            var array = _x4;
             _again = false;
 
             if (array.length > 0 && array[0].constructor === Array) {
                 array = array.reduce(function (preVal, elem) {
                     return preVal.concat(elem);
                 });
-                _x3 = array;
+                _x4 = array;
                 _again = true;
                 continue _function;
             }
@@ -367,6 +377,15 @@ var FieldFinder = (function () {
 
             var defered = _q2['default'].defer();
             FIELD_SEARCHER[this._type].call(this, input.split('.'), FIELDS[match_url[this._url]], match_url[this._url], defered);
+            return defered.promise;
+        }
+    }, {
+        key: 'findAll',
+        value: function findAll() {
+            var input = arguments.length <= 0 || arguments[0] === undefined ? "" : arguments[0];
+
+            var defered = _q2['default'].defer();
+            FIELD_SEARCHER[this._type].call(this, input.split('.'), FIELDS[match_url[this._url]], match_url[this._url], defered, input, true);
             return defered.promise;
         }
     }, {

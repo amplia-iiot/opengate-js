@@ -78,6 +78,16 @@ var SearchBuilder = (function () {
         }
 
         /**
+         * Return a promise which it will contains an array with fields recommended with complete structure
+         * @return {Promise}
+         */
+    }, {
+        key: 'findFieldsComplete',
+        value: function findFieldsComplete(input) {
+            return this._fieldFinder.findAll(input);
+        }
+
+        /**
          * Return a promise which it will contains an string with the path of a field
          * @return {Promise}
          */
