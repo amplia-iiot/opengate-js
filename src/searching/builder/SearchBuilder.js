@@ -48,6 +48,13 @@ export default class SearchBuilder {
     findFields(input) {
         return this._fieldFinder.find(input);
     }
+    /**
+     * Return a promise which it will contains an array with fields recommended with complete structure
+     * @return {Promise}
+     */
+    findFieldsComplete(input) {
+        return this._fieldFinder.findAll(input);
+    }
 
     /**
      * Return a promise which it will contains an string with the path of a field
