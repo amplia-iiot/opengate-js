@@ -316,7 +316,7 @@ export default class SimpleBuilder extends BaseProvision {
      * @param {!objecr} val - Datastream value. If this value is null then datastream value will be removed.
      */
     with(_id, val) {
-        if (!val) {
+        if (val === undefined || val.length === 0) {
             delete this._entity[_id];
             return this;
         }
