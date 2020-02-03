@@ -123,7 +123,7 @@ var SimpleBuilder = (function (_BaseProvision) {
     }, {
         key: 'with',
         value: function _with(_id, val) {
-            if (!val) {
+            if (val === undefined || val.length === 0) {
                 delete this._entity[_id];
                 return this;
             }
