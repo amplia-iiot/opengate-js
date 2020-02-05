@@ -42,17 +42,18 @@ export default class SearchBuilder {
     }
 
     /**
-     * Return a promise which it will contains an array with fields recommended
+     * Return a promise which it will contains an array with fields recommended with only identifier
      * @return {Promise}
      */
     findFields(input) {
         return this._fieldFinder.find(input);
     }
+
     /**
      * Return a promise which it will contains an array with fields recommended with complete structure
      * @return {Promise}
      */
-    findFieldsComplete(input) {
+    findAllFields(input) {
         return this._fieldFinder.findAll(input);
     }
 
