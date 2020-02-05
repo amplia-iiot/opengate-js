@@ -67,7 +67,7 @@ var SearchBuilder = (function () {
     }
 
     /**
-     * Return a promise which it will contains an array with fields recommended
+     * Return a promise which it will contains an array with fields recommended with only identifier
      * @return {Promise}
      */
 
@@ -82,8 +82,8 @@ var SearchBuilder = (function () {
          * @return {Promise}
          */
     }, {
-        key: 'findFieldsComplete',
-        value: function findFieldsComplete(input) {
+        key: 'findAllFields',
+        value: function findAllFields(input) {
             return this._fieldFinder.findAll(input);
         }
 

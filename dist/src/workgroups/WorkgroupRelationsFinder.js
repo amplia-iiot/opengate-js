@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-  value: true
+    value: true
 });
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -23,44 +23,44 @@ var _ProvisionGenericFinder3 = _interopRequireDefault(_ProvisionGenericFinder2);
  */
 
 var WorkgroupRelationsFinder = (function (_ProvisionGenericFinder) {
-  _inherits(WorkgroupRelationsFinder, _ProvisionGenericFinder);
+    _inherits(WorkgroupRelationsFinder, _ProvisionGenericFinder);
 
-  /**     
-   * @param {InternalOpenGateAPI} Reference to the API object.
-   */
+    /**     
+     * @param {InternalOpenGateAPI} Reference to the API object.
+     */
 
-  function WorkgroupRelationsFinder(ogapi) {
-    _classCallCheck(this, WorkgroupRelationsFinder);
+    function WorkgroupRelationsFinder(ogapi) {
+        _classCallCheck(this, WorkgroupRelationsFinder);
 
-    _get(Object.getPrototypeOf(WorkgroupRelationsFinder.prototype), 'constructor', this).call(this, ogapi, 'domains', 'workgroup', 'Workgroup relation not found');
-  }
-
-  /**
-   * @return {String} This returns a string with the URL of the request.
-   * @private
-   */
-
-  _createClass(WorkgroupRelationsFinder, [{
-    key: '_composeUrl',
-    value: function _composeUrl() {
-      return this._baseUrl + "/" + this._domain + "/workgroups/" + this._name + "/relations";
+        _get(Object.getPrototypeOf(WorkgroupRelationsFinder.prototype), 'constructor', this).call(this, ogapi, 'domains', 'workgroup', 'Workgroup relation not found');
     }
 
     /**
-     * @param {string} domain - domain name 
-     * @param {string} name - workgroup name
-     * @return {Promise} 
+     * @return {String} This returns a string with the URL of the request.
+     * @private
      */
-  }, {
-    key: 'findByDomainAndName',
-    value: function findByDomainAndName(domain, name) {
-      this._domain = domain;
-      this._name = name;
-      return this._execute();
-    }
-  }]);
 
-  return WorkgroupRelationsFinder;
+    _createClass(WorkgroupRelationsFinder, [{
+        key: '_composeUrl',
+        value: function _composeUrl() {
+            return this._baseUrl + "/" + this._domain + "/workgroups/" + this._name + "/relations";
+        }
+
+        /**
+         * @param {string} domain - domain name 
+         * @param {string} name - workgroup name
+         * @return {Promise} 
+         */
+    }, {
+        key: 'findByDomainAndName',
+        value: function findByDomainAndName(domain, name) {
+            this._domain = domain;
+            this._name = name;
+            return this._execute();
+        }
+    }]);
+
+    return WorkgroupRelationsFinder;
 })(_ProvisionGenericFinder3['default']);
 
 exports['default'] = WorkgroupRelationsFinder;

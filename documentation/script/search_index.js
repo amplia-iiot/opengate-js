@@ -7950,6 +7950,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/searching/builder/searchbuilder.js~searchbuilder#findallfields",
+    "class/src/searching/builder/SearchBuilder.js~SearchBuilder.html#instance-method-findAllFields",
+    "src/searching/builder/SearchBuilder.js~SearchBuilder#findAllFields",
+    "method"
+  ],
+  [
     "src/searching/builder/searchbuilder.js~searchbuilder#findfieldpath",
     "class/src/searching/builder/SearchBuilder.js~SearchBuilder.html#instance-method-findFieldPath",
     "src/searching/builder/SearchBuilder.js~SearchBuilder#findFieldPath",
@@ -7959,12 +7965,6 @@ window.esdocSearchIndex = [
     "src/searching/builder/searchbuilder.js~searchbuilder#findfields",
     "class/src/searching/builder/SearchBuilder.js~SearchBuilder.html#instance-method-findFields",
     "src/searching/builder/SearchBuilder.js~SearchBuilder#findFields",
-    "method"
-  ],
-  [
-    "src/searching/builder/searchbuilder.js~searchbuilder#findfieldscomplete",
-    "class/src/searching/builder/SearchBuilder.js~SearchBuilder.html#instance-method-findFieldsComplete",
-    "src/searching/builder/SearchBuilder.js~SearchBuilder#findFieldsComplete",
     "method"
   ],
   [

@@ -103,41 +103,7 @@ const TYPE_FIELD = {
 const FIELD_SEARCHER = {
     
     [SEARCH_FIELDS]: function(states, context, primaryType, defered, selectedField, selectAll) {
-        const filterByUrl = {
-            '/devices': function(field) {
-                return true;
-            },
-            '/subscriptions': function(field) {
-                return true;
-            },
-            '/subscribers': function(field) {
-                return true;
-            },
-            '/entities': function(field) {
-                return true;
-            },
-            '/tickets': function(field) {
-                return true;
-            },
-            '/channels': function(field) {
-                return true;
-            }
-        };
-
         let datamodelSearchBuilder = this._ogapi.datamodelsSearchBuilder();
-
-        // if (this._resourceTypes) {
-        //     let rtFilter = {
-        //         'and': [{
-        //             'in': {
-        //                 'datamodels.allowedResourceTypes': this._resourceTypes
-        //             }
-        //         }]
-
-        //     };
-
-        //     datamodelSearchBuilder.filter(rtFilter)
-        // }
 
         let rtFilter = {
             'and': []
@@ -166,49 +132,27 @@ const FIELD_SEARCHER = {
         datamodelSearchBuilder.build().execute().then(function(response) {
             var datastreams = [];
             if (response.statusCode === 200) {
-                if(selectAll){
-                    datastreams = response.data.datamodels.map(function(datamodel) {
-                        var categories = datamodel.categories || [];
-                        return categories.map(function(category) {
-                            var datastreams = category.datastreams || [];
-                            return datastreams.map(function(ds) {
+                datastreams = response.data.datamodels.map(function(datamodel) {
+                    var categories = datamodel.categories || [];
+                    return categories.map(function(category) {
+                        var datastreams = category.datastreams || [];
+                        return datastreams.map(function(ds) {
+                            if (selectedField || selectAll) {
                                 return ds;
-                            });
+                            }
+                            return ds.identifier;
                         });
                     });
-                }
-                else if (selectedField) {
-                    datastreams = response.data.datamodels.map(function(datamodel) {
-                        var categories = datamodel.categories || [];
-                        return categories.map(function(category) {
-                            var datastreams = category.datastreams || [];
-                            return datastreams.map(function(ds) {
-                                return ds;
-                            });
-                        });
-                    });
-                } else {
-                    datastreams = response.data.datamodels.map(function(datamodel) {
-                        var categories = datamodel.categories || [];
-                        return categories.map(function(category) {
-                            var datastreams = category.datastreams || [];
-                            return datastreams.map(function(ds) {
-                                return ds.identifier;
-                            });
-                        });
-                    });
-                }
-
+                });
                 datastreams = reduce(datastreams);
             }
             if (selectedField) {
-                defered.resolve(datastreams.filter(function(dsIdTmp) {
-                    return selectedField.indexOf(dsIdTmp.identifier) !== -1;
+                defered.resolve(datastreams.find(function(dsIdTmp) {
+                    return selectedField === dsIdTmp.identifier;
                 }));
             } else {
                 defered.resolve(datastreams);
             }
-
         }).catch(function(error) {
             defered.reject(error);
         });
@@ -330,7 +274,7 @@ const FIELD_SEARCHER = {
         return defered.resolve(currentState(states, context));
 
         function fieldsNestedState(state, context) {
-            let relatedPrimaryType, fieldsRelated;
+            let fieldsRelated;
             if (!(fieldsNestedState = match_type[state]) || !(fieldsRelated = context[fieldsNestedState]))
                 throw new Error('Invalid primaryType: ' + state);
             return fieldsRelated.slice();
@@ -370,7 +314,7 @@ export default class FieldFinder {
     }
     findAll(input = "") {
         let defered = q.defer();
-        FIELD_SEARCHER[this._type].call(this, input.split('.'),  FIELDS[match_url[this._url]], match_url[this._url], defered, input ,true);
+        FIELD_SEARCHER[this._type].call(this, input.split('.'),  FIELDS[match_url[this._url]], match_url[this._url], defered, null ,true);
         return defered.promise;
     }
 
