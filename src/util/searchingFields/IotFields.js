@@ -3,9 +3,7 @@
 export const IOT_FIELDS = {
     "DATAPOINTS": {
         "DATAPOINTS": [
-            "datapoints.organizationId",
             "datapoints.organization",
-            "datapoints.channelId",
             "datapoints.channel",
             "datapoints.datastreamId",
             "datapoints.entityIdentifier",
