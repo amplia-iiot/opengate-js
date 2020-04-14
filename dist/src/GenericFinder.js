@@ -115,20 +115,19 @@ var GenericFinder = (function () {
                         statusCode: _httpStatusCodes2['default'].NOT_FOUND
                     });
                 } else {
-                    if (req.body.syncCache) {
-                        defered.resolve({
-                            data: req.body[_entity],
-                            statusCode: req.statusCode,
-                            syncCache: req.body.syncCache
-                        });
-                    } else {
-
-                        var data = req.body[_entity] && req.body.provision ? req.body : req.body[_entity];
-                        defered.resolve({
-                            data: data ? data : req.body,
-                            statusCode: req.statusCode
-                        });
-                    }
+                    // if (req.body.syncCache) {
+                    //     defered.resolve({
+                    //         data: req.body[_entity],
+                    //         statusCode: req.statusCode,
+                    //         syncCache: req.body.syncCache
+                    //     });
+                    // } else {
+                    var data = req.body[_entity] && req.body.provision ? req.body : req.body[_entity];
+                    defered.resolve({
+                        data: data ? data : req.body,
+                        statusCode: req.statusCode
+                    });
+                    // }
                 }
             })['catch'](function (error) {
                 // BUG RELACIONADO (http://cm.amplia.es/jira/browse/OGODM-3250)

@@ -87,20 +87,19 @@ export default class GenericFinder {
                         statusCode: HttpStatus.NOT_FOUND
                     });
                 } else {
-                    if (req.body.syncCache) {
-                        defered.resolve({
-                            data: req.body[_entity],
-                            statusCode: req.statusCode,
-                            syncCache: req.body.syncCache
-                        });
-                    } else {
-
-                        var data = req.body[_entity] && req.body.provision ? req.body : req.body[_entity];
-                        defered.resolve({
-                            data: data ? data : req.body,
-                            statusCode: req.statusCode
-                        });
-                    }
+                    // if (req.body.syncCache) {
+                    //     defered.resolve({
+                    //         data: req.body[_entity],
+                    //         statusCode: req.statusCode,
+                    //         syncCache: req.body.syncCache
+                    //     });
+                    // } else {
+                    var data = req.body[_entity] && req.body.provision ? req.body : req.body[_entity];
+                    defered.resolve({
+                        data: data ? data : req.body,
+                        statusCode: req.statusCode
+                    });
+                    // }
                 }
             })
             .catch((error) => {

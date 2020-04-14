@@ -69,6 +69,14 @@ var IOT_FIELDS = {
             "error": "bulks.summary.error"
         }
     },
+    "RULE": {
+        "RULE": {
+            "organizationId": "rule.organizationId",
+            "channelId": "rule.channelId",
+            "name": "rule.name",
+            "active": "rule.active"
+        }
+    },
     "GENERAL": {
         "GENERAL": []
     },

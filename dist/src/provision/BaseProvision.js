@@ -189,6 +189,32 @@ var BaseProvision = (function () {
             return this._composeElement();
         }
     }, {
+        key: '_doNorthPut',
+        value: function _doNorthPut(resource, element) {
+            var defered = _q2['default'].defer();
+            var promise = defered.promise;
+
+            this._ogapi.Napi.put(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (res) {
+                if (res.statusCode === 200) {
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
+                } else if (res.status === 200) {
+                    defered.resolve({
+                        statusCode: res.status
+                    });
+                } else {
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
+                }
+            })['catch'](function (error) {
+                defered.reject(error);
+            });
+            return promise;
+        }
+    }, {
         key: '_doNorthPost',
         value: function _doNorthPost(resource, element) {
             var _this2 = this;

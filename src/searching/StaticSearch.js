@@ -133,6 +133,8 @@ export default class StaticSearch extends Search {
             case 'ticketStatus':
             case 'mobilePhoneProvider':
             case 'ruleConfigurationSeverity':
+            case 'ruleMode':
+            case 'ruleType':
             case 'ioTDatastreamPeriod':
             case 'ioTDatastreamAccess':
             case 'resourceType':
@@ -579,6 +581,15 @@ export default class StaticSearch extends Search {
                 'Vivo, SA',
                 'Jasper Operator',
                 'Sigfox Operator'
+            ],
+            'ruleMode': [
+                'EASY',
+                'ADVANCED'
+            ],
+            'ruleType': [
+                'DATASTREAM',
+                'OPERATION',
+                'EVENT'
             ],
             'ruleConfigurationSeverity': [
                 'INFORMATIVE',

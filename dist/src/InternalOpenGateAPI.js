@@ -74,9 +74,11 @@ var _rulesConfigurationRuleConfigurationsFinder = require('./rulesConfiguration/
 
 var _rulesConfigurationRuleConfigurationsFinder2 = _interopRequireDefault(_rulesConfigurationRuleConfigurationsFinder);
 
-var _rulesConfigurationRuleConfigurationsActions = require('./rulesConfiguration/RuleConfigurationsActions');
+var _rulesConfigurationRuleConfigurationsCatalog = require('./rulesConfiguration/RuleConfigurationsCatalog');
 
-var _rulesConfigurationRuleConfigurationsActions2 = _interopRequireDefault(_rulesConfigurationRuleConfigurationsActions);
+var _rulesConfigurationRuleConfigurationsCatalog2 = _interopRequireDefault(_rulesConfigurationRuleConfigurationsCatalog);
+
+// import RuleConfigurationsActions from './rulesConfiguration/RuleConfigurationsActions';
 
 var _securityCertificateFinder = require('./security/CertificateFinder');
 
@@ -249,6 +251,10 @@ var _searchingBuilderTicketStatusSearchBuilder2 = _interopRequireDefault(_search
 var _searchingBuilderRuleConfigurationSeveritySearchBuilder = require('./searching/builder/RuleConfigurationSeveritySearchBuilder');
 
 var _searchingBuilderRuleConfigurationSeveritySearchBuilder2 = _interopRequireDefault(_searchingBuilderRuleConfigurationSeveritySearchBuilder);
+
+var _searchingBuilderRulesSearchBuilder = require('./searching/builder/RulesSearchBuilder');
+
+var _searchingBuilderRulesSearchBuilder2 = _interopRequireDefault(_searchingBuilderRulesSearchBuilder);
 
 var _searchingBuilderUsersSearchBuilder = require('./searching/builder/UsersSearchBuilder');
 
@@ -550,13 +556,23 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
+         * This return a util to find Rule Configurations Templates
+         * @return {RuleConfigurationsCatalog}
+         */
+    }, {
+        key: 'newRuleConfigurationsCatalog',
+        value: function newRuleConfigurationsCatalog() {
+            return new _rulesConfigurationRuleConfigurationsCatalog2['default'](this);
+        }
+
+        /**
          * This return a util to update a Rule Configuration
          * @return {RuleConfigurations}
          */
     }, {
         key: 'ruleConfigurationBuilder',
-        value: function ruleConfigurationBuilder(organization, channel, ruleConfigObj) {
-            return new _rulesConfigurationRuleConfigurations2['default'](this, organization, channel, ruleConfigObj);
+        value: function ruleConfigurationBuilder(organization, channel, name, ruleConfigObj) {
+            return new _rulesConfigurationRuleConfigurations2['default'](this, organization, channel, name, ruleConfigObj);
         }
 
         /**
@@ -566,11 +582,9 @@ var InternalOpenGateAPI = (function () {
          * @param {!string} name - rule name
          * @return {RuleConfigurationsActions}
          */
-    }, {
-        key: 'newRuleConfigurationsActions',
-        value: function newRuleConfigurationsActions(organization, channel, name) {
-            return new _rulesConfigurationRuleConfigurationsActions2['default'](this, organization, channel, name);
-        }
+        // newRuleConfigurationsActions(organization, channel, name) {
+        //     return new RuleConfigurationsActions(this, organization, channel, name);
+        // }
 
         /**
          * This return a util to find a certificate
@@ -850,10 +864,18 @@ var InternalOpenGateAPI = (function () {
          * This return a RuleConfigurationSeveritySearchBuilder to build a specific RuleConfigurationSeveritySearchBuilder
          * @return {RuleConfigurationSeveritySearchBuilder}
          */
+        // ruleConfigurationSeveritySearchBuilder() {
+        //     return new RuleConfigurationSeveritySearchBuilder(this);
+        // }
+
+        /**
+         * This return a RulesSearchBuilder to build a specific RulesSearch
+         * @return {RulesSearchBuilder}
+         */
     }, {
-        key: 'ruleConfigurationSeveritySearchBuilder',
-        value: function ruleConfigurationSeveritySearchBuilder() {
-            return new _searchingBuilderRuleConfigurationSeveritySearchBuilder2['default'](this);
+        key: 'rulesSearchBuilder',
+        value: function rulesSearchBuilder() {
+            return new _searchingBuilderRulesSearchBuilder2['default'](this);
         }
 
         /**
