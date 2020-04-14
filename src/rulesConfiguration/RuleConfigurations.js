@@ -13,31 +13,60 @@ export default class RuleConfigurations extends BaseProvision {
     /**     
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
-    constructor(ogapi, organization, channel, ruleConfigurationObj) {
+    constructor(ogapi, organization, channel, identifier, ruleConfigurationObj) {
         super(ogapi, "/organizations");
 
-        this.withName(ruleConfigurationObj.name);
-
-        if (ruleConfigurationObj.description) {
-            this.withDescription(ruleConfigurationObj.description);
-        }
-
-        if (ruleConfigurationObj.enabled !== null && typeof ruleConfigurationObj.enabled !== 'undefined')
-            this.withEnabled(ruleConfigurationObj.enabled);
-
-        if (ruleConfigurationObj.open !== null && typeof ruleConfigurationObj.open !== 'undefined')
-            this.withOpen(ruleConfigurationObj.open);
-
-        if (ruleConfigurationObj.severity !== null && typeof ruleConfigurationObj.severity !== 'undefined')
-            this.withSeverity(ruleConfigurationObj.severity);
-
-        if (ruleConfigurationObj.conditions !== null && typeof ruleConfigurationObj.conditions !== 'undefined')
-            this._withConditions(ruleConfigurationObj.conditions);
-        if (ruleConfigurationObj.notifications !== null && typeof ruleConfigurationObj.notifications !== 'undefined')
-            this._withNotifications(ruleConfigurationObj.notifications);
-
+        // Required
         this.withOrganization(organization);
         this.withChannel(channel);
+        
+        // only for updates
+        if (identifier) {
+            this.withIdentifier(identifier);
+        }
+        
+        if (ruleConfigurationObj) {
+            if (ruleConfigurationObj.name) {
+                this.withName(ruleConfigurationObj.name);
+            }
+
+            if (ruleConfigurationObj.mode) {
+                this.withMode(ruleConfigurationObj.mode);
+            }
+
+            if (ruleConfigurationObj.type) {
+                this.withType(ruleConfigurationObj.type);
+            }
+
+            if (ruleConfigurationObj.description) {
+                this.withDescription(ruleConfigurationObj.description);
+            }
+
+            if (ruleConfigurationObj.active !== null && typeof ruleConfigurationObj.active !== 'undefined') {
+                this.withActive(ruleConfigurationObj.active);
+            } else {
+                this.withActive(false);
+            }
+
+            if (ruleConfigurationObj.condition !== null && typeof ruleConfigurationObj.condition !== 'undefined')
+                this.withCondition(ruleConfigurationObj.condition);
+
+            if (ruleConfigurationObj.actionsDelay) {
+                this.withActionsDelay(ruleConfigurationObj.actionsDelay);
+            }
+
+            if (ruleConfigurationObj.actions) {
+                this.withActions(ruleConfigurationObj.actions);
+            }
+
+            if (ruleConfigurationObj.parameters) {
+                this.withParameters(ruleConfigurationObj.parameters);
+            }
+
+            if (ruleConfigurationObj.javascript) {
+                this.withJavascript(ruleConfigurationObj.javascript);
+            }
+        }
     }
 
 
@@ -62,6 +91,18 @@ export default class RuleConfigurations extends BaseProvision {
         if (typeof channel !== 'string' || channel.length === 0 || channel.length > 50)
             throw new Error('Parameter channel must be a string, cannot be empty and has a maximum length of 50');
         this._channel = channel;
+        return this;
+    }
+
+    /**
+     * Set the identifier attribute
+     * @param {string} identifier - required field
+     * @return {RulesConfigurations}
+     */
+    withIdentifier(identifier) {
+        if (typeof identifier !== 'string' || identifier.length === 0 || identifier.length > 50)
+            throw new Error('Parameter identifier must be a string, cannot be empty and has a maximum length of 50');
+        this._identifier = identifier;
         return this;
     }
 
@@ -93,170 +134,150 @@ export default class RuleConfigurations extends BaseProvision {
     }
 
     /**
-     * Set the open attribute
-     * @param {boolean} open 
+     * Set the javascript attribute
+     * @param {string} javascript 
      * @return {RulesConfigurations}
      */
-    withOpen(open) {
-        if (typeof open !== 'boolean')
-            throw new Error('Parameter open must be true or false');
-        this._open = open;
+    withJavascript(javascript) {
+        if (typeof javascript !== 'string')
+            throw new Error('Parameter name must be a string and cannot be empty');
+        this._javascript = javascript;
         return this;
     }
 
     /**
-     * Set the enabled attribute
-     * @param {boolean} enabled 
+     * Set the mode attribute
+     * @param {string} mode 
      * @return {RulesConfigurations}
      */
-    withEnabled(enabled) {
-        if (typeof enabled !== 'boolean')
-            throw new Error('Parameter enabled must be true or false');
-        this._enabled = enabled;
+    withMode(mode) {
+        this._mode = mode;
         return this;
     }
 
     /**
-     * Set the severity attribute
-     * @param {string} severity 
+     * Set the type attribute
+     * @param {string} type 
      * @return {RulesConfigurations}
      */
-    withSeverity(severity) {
-        if (typeof severity !== 'string')
-            throw new Error('Parameter severity must be a string');
-        this._severity = severity;
+    withType(type) {
+        this._type = type;
+        return this;
+    }
+
+    /**
+     * Set the active attribute
+     * @param {boolean} active 
+     * @return {RulesConfigurations}
+     */
+    withActive(active) {
+        if (typeof active !== 'boolean')
+            throw new Error('Parameter active must be true or false');
+        this._active = active;
+        return this;
+    }
+
+    /**
+     * Set the actions delay attribute
+     * @param {number} actionsDelay 
+     * @return {RulesConfigurations}
+     */
+    withActionsDelay(actionsDelay) {
+        if (typeof actionsDelay !== 'number')
+            throw new Error('Parameter actionsDelay must be a number');
+        this._actionsDelay = actionsDelay;
         return this;
     }
 
     /**
      * Allows the modification of a condition
-     * @param {string} condName 
+     * @param {string} conditionFilter 
      * @return {_RuleCondition}
      */
-    condition(condName) {
-        let _condition = {};
-        let _this = this;
-        if (this._conditions && this._conditions.length > 0) {
-            this._conditions.forEach(function (condTmp, idx) {
-                if (condTmp.name === condName) {
-                    //console.log(idx + ": " + condTmp);
-                    _condition = condTmp;
-                }
-            });
+    withCondition(conditionFilter) {
+        this._condition = conditionFilter || {};
 
-            if (_condition.name) {
-                //console.log(_condition.name);
-                return new _RuleCondition(_this, _condition);
-            } else {
-                throw new Error("Condition " + condName + " not exists in rule " + _this.name);
-            }
-        } else {
-            throw new Error("Condition " + condName + " not exists in rule " + _this.name);
-        }
-    }
-
-    /**
-     * Allows the modification of a notification
-     * @param {string} notifName 
-     * @return {_RuleCondition}
-     */
-    notification(notifName) {
-        let _notification = {};
-        let _this = this;
-        if (this._notifications && this._notifications.length > 0) {
-            this._notifications.forEach(function (notifTmp, idx) {
-                if (notifTmp.name === notifName) {
-                    //console.log(idx + ": " + notifTmp);
-                    _notification = notifTmp;
-                }
-            });
-
-            if (_notification.name) {
-                //console.log(_notification.name);
-                return new _RuleNotification(_this, _notification);
-            } else {
-                throw new Error("Notification " + notifName + " not exists in rule " + _this.name);
-            }
-        } else {
-            throw new Error("Notification " + notifName + " not exists in rule " + _this.name);
-        }
-    }
-
-    /**
-     * Set the conditions attribute
-     * @param {Array} conditions 
-     * @return {RulesConfigurations}
-     */
-    _withConditions(conditions) {
-        conditions.forEach(function (condition, idx) {
-            if (!condition.name) {
-                throw new Error('Every condition must contain a name');
-            }
-            if (condition.parameters) {
-                condition.parameters.forEach(function (parameter, index) {
-                    if (!parameter.value) {
-                        conditions[idx].parameters[index].value = "";
-                    }
-                });
-            }
-        });
-
-        this._conditions = conditions;
         return this;
     }
 
     /**
-     * Set the notifications attribute
-     * @param {Array} notifications 
-     * @return {RulesConfigurations}
+     * Allows the modification of the actions
+     * @param {object} actions 
+     * @return {_RuleCondition}
      */
-    _withNotifications(notifications) {
-        if (notifications) {
-            notifications.forEach(function (notifTmp, idx) {
-                if (!notifTmp.name) {
-                    throw new Error('Every notification must contain a name');
-                }
-            });
+    withActions(actions) {
+        this._actions = actions || {};
 
-            this._notifications = notifications;
-        }
+        return this;
+    }
+
+    /**
+     * Allows the modification of the actions
+     * @param {array} parameters 
+     * @return {_RuleCondition}
+     */
+    withParameters(parameters) {
+        this._parameters = parameters || [];
+
         return this;
     }
 
     _composeElement() {
-        if (this._name === undefined || this._enabled === undefined || this._organization === undefined || this._channel === undefined || this._severity === undefined)
-            throw new Error('Parameters organization, channel, severity, enabled and name must be defined');
-
-        if (!this._conditions) {
-            throw new Error('A rule must have conditions');
-        }
-
+        this._checkRequiredParameters();
 
         let updateData = {
-            "configurations": [{
-                "name": this._name,
-                "enabled": this._enabled,
-                "open": this._open,
-                "severity": this._severity,
-                "description": (this._description ? this._description : undefined),
-                "conditions": this._conditions,
-                "notifications": this._notifications
-            }]
+            "identifier": this._identifier,
+            "name": this._name,
+            "active": this._active,
+            "mode": this._mode,
+            "type": this._type,
+            "severity": this._severity,
+            "description": (this._description ? this._description : undefined),
+            "parameters": this._parameters,
+            "condition": this._mode ==='EASY'?this._condition: undefined,
+            "actionsDelay": this._mode ==='EASY'?this._actionsDelay: undefined,
+            "actions": this._mode ==='EASY'?this._actions: undefined,
+            "javascript": this._mode ==='ADVANCED'?this._javascript:undefined
         };
 
         return updateData;
     }
 
+
+    _checkRequiredParameters(isUpdate) {
+        if (isUpdate) {
+            if (this._identifier === undefined || this._organization === undefined || this._channel === undefined || this._active === undefined || this._mode === undefined)
+            throw new Error('Parameters organization, channel, active, mode and identifier must be defined');
+        } else {
+            if (this._name === undefined || this._organization === undefined || this._channel === undefined || this._active === undefined || this._mode === undefined)
+            throw new Error('Parameters organization, channel, active, mode and name must be defined');
+        }
+    }
+
     _buildURL() {
-        return this._resource + "/" + this._organization + "/channels/" + this._channel + "/ruleconfigurations";
+        return "rules/" + this._resource + "/" + this._organization + "/channels/" + this._channel + "/";
     }
 
     /** 
-     * Create not allowed
+     * Create a new Rule
+     * @return {Promise}
      * @throws {Error} 
      */
     create() {
-        throw new Error("Rule configuration creation not allowed");
+        this._checkRequiredParameters();
+
+        return this._doNorthPost(this._buildURL(), this._composeElement());
+    }
+
+    /** 
+     * Udpate a Rule
+     * @return {Promise}
+     * @throws {Error} 
+     */
+    update() {
+        this._checkRequiredParameters(true);
+
+        return this._doNorthPut(this._buildURL() + '/' + this._identifier, this._composeElement());
     }
 
     /** 
@@ -265,12 +286,12 @@ export default class RuleConfigurations extends BaseProvision {
      * @throws {Error} 
      */
     delete() {
-        if (this._name === undefined || this._organization === undefined || this._channel === undefined)
+        if (this._identifier === undefined || this._organization === undefined || this._channel === undefined)
             throw new Error('Parameters organization, channel and name must be defined');
 
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Napi.delete(this._buildURL() + '/' + this._name)
+        this._ogapi.Napi.delete(this._buildURL() + '/' + this._identifier)
             .then((res) => {
                 if (res.statusCode === 200) {
                     defered.resolve({

@@ -16,7 +16,8 @@ import Areas from './areas/Areas';
 import ChannelsSearchBuilder from './searching/builder/ChannelsSearchBuilder';
 import RuleConfigurations from './rulesConfiguration/RuleConfigurations';
 import RuleConfigurationsFinder from './rulesConfiguration/RuleConfigurationsFinder';
-import RuleConfigurationsActions from './rulesConfiguration/RuleConfigurationsActions';
+import RuleConfigurationsCatalog from './rulesConfiguration/RuleConfigurationsCatalog';
+// import RuleConfigurationsActions from './rulesConfiguration/RuleConfigurationsActions';
 import CertificateFinder from './security/CertificateFinder';
 import OperationFinder from './operations/OperationFinder';
 import FilterBuilder from './searching/FilterBuilder';
@@ -60,6 +61,7 @@ import TicketSeveritySearchBuilder from './searching/builder/TicketSeveritySearc
 import TicketPrioritySearchBuilder from './searching/builder/TicketPrioritySearchBuilder';
 import TicketStatusSearchBuilder from './searching/builder/TicketStatusSearchBuilder';
 import RuleConfigurationSeveritySearchBuilder from './searching/builder/RuleConfigurationSeveritySearchBuilder';
+import RulesSearchBuilder from './searching/builder/RulesSearchBuilder';
 import UsersSearchBuilder from './searching/builder/UsersSearchBuilder';
 import DomainsSearchBuilder from './searching/builder/DomainsSearchBuilder';
 import PlansSearchBuilder from './searching/builder/PlansSearchBuilder';
@@ -210,11 +212,19 @@ export default class InternalOpenGateAPI {
     }
 
     /**
+     * This return a util to find Rule Configurations Templates
+     * @return {RuleConfigurationsCatalog}
+     */
+    newRuleConfigurationsCatalog() {
+        return new RuleConfigurationsCatalog(this);
+    }
+
+    /**
      * This return a util to update a Rule Configuration
      * @return {RuleConfigurations}
      */
-    ruleConfigurationBuilder(organization, channel, ruleConfigObj) {
-        return new RuleConfigurations(this, organization, channel, ruleConfigObj);
+    ruleConfigurationBuilder(organization, channel, name, ruleConfigObj) {
+        return new RuleConfigurations(this, organization, channel, name, ruleConfigObj);
     }
 
     /**
@@ -224,9 +234,9 @@ export default class InternalOpenGateAPI {
      * @param {!string} name - rule name
      * @return {RuleConfigurationsActions}
      */
-    newRuleConfigurationsActions(organization, channel, name) {
-        return new RuleConfigurationsActions(this, organization, channel, name);
-    }
+    // newRuleConfigurationsActions(organization, channel, name) {
+    //     return new RuleConfigurationsActions(this, organization, channel, name);
+    // }
 
     /**
      * This return a util to find a certificate
@@ -454,8 +464,16 @@ export default class InternalOpenGateAPI {
      * This return a RuleConfigurationSeveritySearchBuilder to build a specific RuleConfigurationSeveritySearchBuilder
      * @return {RuleConfigurationSeveritySearchBuilder}
      */
-    ruleConfigurationSeveritySearchBuilder() {
-        return new RuleConfigurationSeveritySearchBuilder(this);
+    // ruleConfigurationSeveritySearchBuilder() {
+    //     return new RuleConfigurationSeveritySearchBuilder(this);
+    // }
+
+    /**
+     * This return a RulesSearchBuilder to build a specific RulesSearch
+     * @return {RulesSearchBuilder}
+     */
+    rulesSearchBuilder() {
+        return new RulesSearchBuilder(this);
     }
 
     /**
