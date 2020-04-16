@@ -798,9 +798,33 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/rulesconfiguration/ruleconfigurationscatalog.js~ruleconfigurationscatalog",
+    "class/src/rulesConfiguration/RuleConfigurationsCatalog.js~RuleConfigurationsCatalog.html",
+    "<span>RuleConfigurationsCatalog</span> <span class=\"search-result-import-path\">opengate-js/src/rulesConfiguration/RuleConfigurationsCatalog.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/rulesconfiguration/ruleconfigurationsfinder.js~ruleconfigurationsfinder",
     "class/src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder.html",
     "<span>RuleConfigurationsFinder</span> <span class=\"search-result-import-path\">opengate-js/src/rulesConfiguration/RuleConfigurationsFinder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/searching/builder/rulemodesearchbuilder.js~rulemodesearchbuilder",
+    "class/src/searching/builder/RuleModeSearchBuilder.js~RuleModeSearchBuilder.html",
+    "<span>RuleModeSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/RuleModeSearchBuilder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/searching/builder/ruletypesearchbuilder.js~ruletypesearchbuilder",
+    "class/src/searching/builder/RuleTypeSearchBuilder.js~RuleTypeSearchBuilder.html",
+    "<span>RuleTypeSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/RuleTypeSearchBuilder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/searching/builder/rulessearchbuilder.js~rulessearchbuilder",
+    "class/src/searching/builder/RulesSearchBuilder.js~RulesSearchBuilder.html",
+    "<span>RulesSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/RulesSearchBuilder.js</span>",
     "class"
   ],
   [
@@ -1561,13 +1585,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber190",
+    "test-file/client/device/device.spec.js.html#lineNumber195",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Option",
     "test"
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber195",
+    "test-file/client/device/device.spec.js.html#lineNumber190",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Option",
     "test"
   ],
@@ -1609,13 +1633,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber256",
+    "test-file/client/device/device.spec.js.html#lineNumber243",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter mode in validator is typeof string",
     "test"
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber243",
+    "test-file/client/device/device.spec.js.html#lineNumber256",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter mode in validator is typeof string",
     "test"
   ],
@@ -1837,13 +1861,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/security/certificates.spec.js.html#lineNumber30",
+    "test-file/client/security/certificates.spec.js.html#lineNumber23",
     "Check funcionality certificates: Check basic parameters: administrativeState is not a String",
     "test"
   ],
   [
     "",
-    "test-file/client/security/certificates.spec.js.html#lineNumber23",
+    "test-file/client/security/certificates.spec.js.html#lineNumber30",
     "Check funcionality certificates: Check basic parameters: administrativeState is not a String",
     "test"
   ],
@@ -2503,13 +2527,13 @@ window.esdocSearchIndex = [
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriptionssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriptionssearchbuilder,internalopengateapi#subscriptionssearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber59",
+    "test-file/client/searching/search.spec.js.html#lineNumber120",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscriptionsSearchBuilder",
     "test"
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriptionssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriptionssearchbuilder,internalopengateapi#subscriptionssearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber120",
+    "test-file/client/searching/search.spec.js.html#lineNumber59",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscriptionsSearchBuilder",
     "test"
   ],
@@ -2521,7 +2545,7 @@ window.esdocSearchIndex = [
   ],
   [
     "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber393",
+    "test-file/client/searching/search.spec.js.html#lineNumber405",
     "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
     "test"
   ],
@@ -2533,7 +2557,7 @@ window.esdocSearchIndex = [
   ],
   [
     "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber405",
+    "test-file/client/searching/search.spec.js.html#lineNumber393",
     "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
     "test"
   ],
@@ -2833,13 +2857,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber13",
+    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber5",
     "Testing fields finder api search a fields communicationsModulesSearchBuilder",
     "test"
   ],
   [
     "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber5",
+    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber13",
     "Testing fields finder api search a fields communicationsModulesSearchBuilder",
     "test"
   ],
@@ -3378,9 +3402,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/internalopengateapi.js~internalopengateapi#newruleconfigurationsactions",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newRuleConfigurationsActions",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newRuleConfigurationsActions",
+    "src/internalopengateapi.js~internalopengateapi#newruleconfigurationscatalog",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newRuleConfigurationsCatalog",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newRuleConfigurationsCatalog",
     "method"
   ],
   [
@@ -3492,9 +3516,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/internalopengateapi.js~internalopengateapi#ruleconfigurationseveritysearchbuilder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-ruleConfigurationSeveritySearchBuilder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#ruleConfigurationSeveritySearchBuilder",
+    "src/internalopengateapi.js~internalopengateapi#rulessearchbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-rulesSearchBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#rulesSearchBuilder",
     "method"
   ],
   [
@@ -6576,12 +6600,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/rulesconfiguration/ruleconfigurations.js~ruleconfigurations#condition",
-    "class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html#instance-method-condition",
-    "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#condition",
-    "method"
-  ],
-  [
     "src/rulesconfiguration/ruleconfigurations.js~ruleconfigurations#constructor",
     "class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html#instance-constructor-constructor",
     "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#constructor",
@@ -6600,9 +6618,27 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/rulesconfiguration/ruleconfigurations.js~ruleconfigurations#notification",
-    "class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html#instance-method-notification",
-    "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#notification",
+    "src/rulesconfiguration/ruleconfigurations.js~ruleconfigurations#update",
+    "class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html#instance-method-update",
+    "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#update",
+    "method"
+  ],
+  [
+    "src/rulesconfiguration/ruleconfigurations.js~ruleconfigurations#withactions",
+    "class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html#instance-method-withActions",
+    "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#withActions",
+    "method"
+  ],
+  [
+    "src/rulesconfiguration/ruleconfigurations.js~ruleconfigurations#withactionsdelay",
+    "class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html#instance-method-withActionsDelay",
+    "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#withActionsDelay",
+    "method"
+  ],
+  [
+    "src/rulesconfiguration/ruleconfigurations.js~ruleconfigurations#withactive",
+    "class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html#instance-method-withActive",
+    "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#withActive",
     "method"
   ],
   [
@@ -6612,15 +6648,33 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/rulesconfiguration/ruleconfigurations.js~ruleconfigurations#withcondition",
+    "class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html#instance-method-withCondition",
+    "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#withCondition",
+    "method"
+  ],
+  [
     "src/rulesconfiguration/ruleconfigurations.js~ruleconfigurations#withdescription",
     "class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html#instance-method-withDescription",
     "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#withDescription",
     "method"
   ],
   [
-    "src/rulesconfiguration/ruleconfigurations.js~ruleconfigurations#withenabled",
-    "class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html#instance-method-withEnabled",
-    "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#withEnabled",
+    "src/rulesconfiguration/ruleconfigurations.js~ruleconfigurations#withidentifier",
+    "class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html#instance-method-withIdentifier",
+    "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#withIdentifier",
+    "method"
+  ],
+  [
+    "src/rulesconfiguration/ruleconfigurations.js~ruleconfigurations#withjavascript",
+    "class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html#instance-method-withJavascript",
+    "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#withJavascript",
+    "method"
+  ],
+  [
+    "src/rulesconfiguration/ruleconfigurations.js~ruleconfigurations#withmode",
+    "class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html#instance-method-withMode",
+    "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#withMode",
     "method"
   ],
   [
@@ -6630,21 +6684,21 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/rulesconfiguration/ruleconfigurations.js~ruleconfigurations#withopen",
-    "class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html#instance-method-withOpen",
-    "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#withOpen",
-    "method"
-  ],
-  [
     "src/rulesconfiguration/ruleconfigurations.js~ruleconfigurations#withorganization",
     "class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html#instance-method-withOrganization",
     "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#withOrganization",
     "method"
   ],
   [
-    "src/rulesconfiguration/ruleconfigurations.js~ruleconfigurations#withseverity",
-    "class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html#instance-method-withSeverity",
-    "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#withSeverity",
+    "src/rulesconfiguration/ruleconfigurations.js~ruleconfigurations#withparameters",
+    "class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html#instance-method-withParameters",
+    "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#withParameters",
+    "method"
+  ],
+  [
+    "src/rulesconfiguration/ruleconfigurations.js~ruleconfigurations#withtype",
+    "class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html#instance-method-withType",
+    "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#withType",
     "method"
   ],
   [
@@ -6666,6 +6720,24 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/rulesconfiguration/ruleconfigurationscatalog.js",
+    "file/src/rulesConfiguration/RuleConfigurationsCatalog.js.html",
+    "src/rulesConfiguration/RuleConfigurationsCatalog.js",
+    "file"
+  ],
+  [
+    "src/rulesconfiguration/ruleconfigurationscatalog.js~ruleconfigurationscatalog#constructor",
+    "class/src/rulesConfiguration/RuleConfigurationsCatalog.js~RuleConfigurationsCatalog.html#instance-constructor-constructor",
+    "src/rulesConfiguration/RuleConfigurationsCatalog.js~RuleConfigurationsCatalog#constructor",
+    "method"
+  ],
+  [
+    "src/rulesconfiguration/ruleconfigurationscatalog.js~ruleconfigurationscatalog#gettemplates",
+    "class/src/rulesConfiguration/RuleConfigurationsCatalog.js~RuleConfigurationsCatalog.html#instance-method-getTemplates",
+    "src/rulesConfiguration/RuleConfigurationsCatalog.js~RuleConfigurationsCatalog#getTemplates",
+    "method"
+  ],
+  [
     "src/rulesconfiguration/ruleconfigurationsfinder.js",
     "file/src/rulesConfiguration/RuleConfigurationsFinder.js.html",
     "src/rulesConfiguration/RuleConfigurationsFinder.js",
@@ -6675,18 +6747,6 @@ window.esdocSearchIndex = [
     "src/rulesconfiguration/ruleconfigurationsfinder.js~ruleconfigurationsfinder#constructor",
     "class/src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder.html#instance-constructor-constructor",
     "src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder#constructor",
-    "method"
-  ],
-  [
-    "src/rulesconfiguration/ruleconfigurationsfinder.js~ruleconfigurationsfinder#findbyorganizationandchannel",
-    "class/src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder.html#instance-method-findByOrganizationAndChannel",
-    "src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder#findByOrganizationAndChannel",
-    "method"
-  ],
-  [
-    "src/rulesconfiguration/ruleconfigurationsfinder.js~ruleconfigurationsfinder#findbyorganizationandchannelandenabled",
-    "class/src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder.html#instance-method-findByOrganizationAndChannelAndEnabled",
-    "src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder#findByOrganizationAndChannelAndEnabled",
     "method"
   ],
   [
@@ -7906,6 +7966,66 @@ window.esdocSearchIndex = [
     "class/src/searching/builder/RuleConfigurationSeveritySearchBuilder.js~RuleConfigurationSeveritySearchBuilder.html#instance-member-customFilters",
     "src/searching/builder/RuleConfigurationSeveritySearchBuilder.js~RuleConfigurationSeveritySearchBuilder#customFilters",
     "member"
+  ],
+  [
+    "src/searching/builder/rulemodesearchbuilder.js",
+    "file/src/searching/builder/RuleModeSearchBuilder.js.html",
+    "src/searching/builder/RuleModeSearchBuilder.js",
+    "file"
+  ],
+  [
+    "src/searching/builder/rulemodesearchbuilder.js~rulemodesearchbuilder#build",
+    "class/src/searching/builder/RuleModeSearchBuilder.js~RuleModeSearchBuilder.html#instance-method-build",
+    "src/searching/builder/RuleModeSearchBuilder.js~RuleModeSearchBuilder#build",
+    "method"
+  ],
+  [
+    "src/searching/builder/rulemodesearchbuilder.js~rulemodesearchbuilder#constructor",
+    "class/src/searching/builder/RuleModeSearchBuilder.js~RuleModeSearchBuilder.html#instance-constructor-constructor",
+    "src/searching/builder/RuleModeSearchBuilder.js~RuleModeSearchBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/searching/builder/rulemodesearchbuilder.js~rulemodesearchbuilder#customfilters",
+    "class/src/searching/builder/RuleModeSearchBuilder.js~RuleModeSearchBuilder.html#instance-member-customFilters",
+    "src/searching/builder/RuleModeSearchBuilder.js~RuleModeSearchBuilder#customFilters",
+    "member"
+  ],
+  [
+    "src/searching/builder/ruletypesearchbuilder.js",
+    "file/src/searching/builder/RuleTypeSearchBuilder.js.html",
+    "src/searching/builder/RuleTypeSearchBuilder.js",
+    "file"
+  ],
+  [
+    "src/searching/builder/ruletypesearchbuilder.js~ruletypesearchbuilder#build",
+    "class/src/searching/builder/RuleTypeSearchBuilder.js~RuleTypeSearchBuilder.html#instance-method-build",
+    "src/searching/builder/RuleTypeSearchBuilder.js~RuleTypeSearchBuilder#build",
+    "method"
+  ],
+  [
+    "src/searching/builder/ruletypesearchbuilder.js~ruletypesearchbuilder#constructor",
+    "class/src/searching/builder/RuleTypeSearchBuilder.js~RuleTypeSearchBuilder.html#instance-constructor-constructor",
+    "src/searching/builder/RuleTypeSearchBuilder.js~RuleTypeSearchBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/searching/builder/ruletypesearchbuilder.js~ruletypesearchbuilder#customfilters",
+    "class/src/searching/builder/RuleTypeSearchBuilder.js~RuleTypeSearchBuilder.html#instance-member-customFilters",
+    "src/searching/builder/RuleTypeSearchBuilder.js~RuleTypeSearchBuilder#customFilters",
+    "member"
+  ],
+  [
+    "src/searching/builder/rulessearchbuilder.js",
+    "file/src/searching/builder/RulesSearchBuilder.js.html",
+    "src/searching/builder/RulesSearchBuilder.js",
+    "file"
+  ],
+  [
+    "src/searching/builder/rulessearchbuilder.js~rulessearchbuilder#constructor",
+    "class/src/searching/builder/RulesSearchBuilder.js~RulesSearchBuilder.html#instance-constructor-constructor",
+    "src/searching/builder/RulesSearchBuilder.js~RulesSearchBuilder#constructor",
+    "method"
   ],
   [
     "src/searching/builder/searchbuilder.js",

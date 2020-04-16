@@ -133,6 +133,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TicketID">TicketID</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">rulesConfiguration</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html">RuleConfigurations</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsActions.js~RuleConfigurationsActions.html">RuleConfigurationsActions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsCatalog.js~RuleConfigurationsCatalog.html">RuleConfigurationsCatalog</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder.html">RuleConfigurationsFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/AssetSearch.js~AssetSearch.html">AssetSearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/BaseSearch.js~BaseSearch.html">BaseSearch</a></span></span></li>
@@ -180,6 +181,9 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RawSearchBuilder.js~RawSearchBuilder.html">RawSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ResourceTypeSearchBuilder.js~ResourceTypeSearchBuilder.html">ResourceTypeSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RuleConfigurationSeveritySearchBuilder.js~RuleConfigurationSeveritySearchBuilder.html">RuleConfigurationSeveritySearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RuleModeSearchBuilder.js~RuleModeSearchBuilder.html">RuleModeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RuleTypeSearchBuilder.js~RuleTypeSearchBuilder.html">RuleTypeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RulesSearchBuilder.js~RulesSearchBuilder.html">RulesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SearchBuilder.js~SearchBuilder.html">SearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SearchWithSummaryBuilder.js~SearchWithSummaryBuilder.html">SearchWithSummaryBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ServiceGroupSearchBuilder.js~ServiceGroupSearchBuilder.html">ServiceGroupSearchBuilder</a></span></span></li>
@@ -251,311 +255,7 @@ export default class NorthAmpliaREST {
         this._options = merge.recursive(true, this.default(), _options);
         this._headers = headers;
 
-        // mock.post(_options.url + &apos;/search/datasets/catalog&apos;, function(req, res) {
-        //     return {
-        //         body: {
-        //             &quot;page&quot;: {
-        //                 &quot;number&quot;: 1
-        //             },
-        //             &quot;datasets&quot;: [{
-        //                     &quot;identifier&quot;: &quot;dataset_identifier&quot;,
-        //                     &quot;organization&quot;: &quot;organizationName&quot;,
-        //                     &quot;description&quot;: &quot;dataset de ejemplo&quot;,
-        //                     &quot;creationDate&quot;: &quot;2017-12-01T08:52:37.643Z&quot;,
-        //                     &quot;updatedDate&quot;: &quot;2017-12-01T08:52:37.643Z&quot;
-        //                 },
-        //                 {
-        //                     &quot;identifier&quot;: &quot;Dataset_1555328208451&quot;,
-        //                     &quot;organization&quot;: &quot;chemacorp&quot;,
-        //                     &quot;description&quot;: &quot;dataset bueno&quot;,
-        //                     &quot;creationDate&quot;: &quot;2019-05-01T10:52:37.643Z&quot;,
-        //                     &quot;updatedDate&quot;: &quot;2019-05-10T08:52:37.643Z&quot;
-        //                 }
-        //             ]
-        //         },
-        //         statusCode: 200
-        //     };
-        // });
-
-        // mock.post(_options.url + &apos;/search/datasets/chemacorp/Dataset_1555328208451?defaultSorted=true&apos;, function(req, res) {
-        //     return {
-        //         body: { &quot;page&quot;: { &quot;number&quot;: 1 }, &quot;entities&quot;: [{ &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_1&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_2&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_3&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_4&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_5&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_6&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_7&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_8&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_9&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_10&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_11&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_12&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_13&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_14&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_15&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_16&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_17&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_18&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_19&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_20&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_21&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_22&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_23&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_24&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_25&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_26&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_27&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_28&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_29&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_30&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_31&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_32&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_33&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_34&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_35&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_36&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_37&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_38&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_39&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_40&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_41&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_42&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_43&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_44&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_45&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_46&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_47&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_48&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_49&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }, { &quot;resourceType&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;entity.device&quot; } }, &quot;provision&quot;: { &quot;administration&quot;: { &quot;channel&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;default_channel&quot; } }, &quot;identifier&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;CHD_BULK_50&quot; } }, &quot;organization&quot;: { &quot;_current&quot;: { &quot;value&quot;: &quot;chemacorp&quot; } } } } }] },
-        //         statusCode: 200
-        //     };
-        // });
-
-        // mock.post(_options.url + &apos;/provision/organizations/:organizationName/bulk/async?type=ENTITIES&amp;action=CREATE&apos;, function(req, res) {
-        //     return {
-        //         location: _options.url + &apos;/provision/organizations/&apos; + req.params.organizationName + &apos;/bulk/async/&apos; + new Date().getTime(),
-        //         statusCode: 201
-        //     };
-        // });
-
-
-        // mock.get(_options.url + &apos;/provision/organizations/:organizationName/bulk/async/:id&apos;, function(req, res) {
-        //     return {
-        //         body: {
-        //             &quot;id&quot;: &quot;76796426-ec3e-11e1-aff1-0800200c9a66&quot;,
-        //             &quot;organizarion&quot;: &quot;chamcorp&quot;,
-        //             &quot;request&quot;: {
-        //                 &quot;fileName&quot;: &quot;bulk.json&quot;,
-        //                 &quot;userEmail&quot;: &quot;admin@bulk.es&quot;,
-        //                 &quot;header&quot;: {
-        //                     &quot;Accept&quot;: &quot;text/plain&quot;,
-        //                     &quot;Content-type&quot;: &quot;application/json&quot;
-        //                 },
-        //                 &quot;params&quot;: {
-        //                     &quot;type&quot;: &quot;ENTITIES&quot;,
-        //                     &quot;flattened&quot;: true,
-        //                     &quot;action&quot;: &quot;DELETE&quot;,
-        //                     &quot;full&quot;: true,
-        //                 }
-        //             },
-        //             &quot;status&quot;: &quot;IN_PROGRESS&quot;,
-        //             &quot;startedDate&quot;: &quot;2010-12-11T10:11:00Z&quot;,
-        //             &quot;finishedDate&quot;: &quot;2010-12-11T10:30:00Z&quot;,
-        //             &quot;summary&quot;: {
-        //                 &quot;processed&quot;: 10,
-        //                 &quot;successful&quot;: 8,
-        //                 &quot;error&quot;: 2
-        //             }
-        //         },
-        //         statusCode: 200
-        //     };
-        // });
-
-        // mock.get(_options.url + &apos;/provision/organizations/:organizationName/bulk/async/:id?format=raw&apos;, function(req, res) {
-        //     return {
-        //         data: &quot;asldkfjadfkjladkjsflkasdfjkl&quot;,
-        //         statusCode: 200
-        //     };
-        // });
-
-        // // delete ok
-        // mock.del(_options.url + &apos;/provision/organizations/chema_organization/channels/default_channel/ruleconfigurations/autoprovisionedEntity&apos;, function(req) {
-        //     return {
-        //         statusCode: 200
-        //     };
-        // });
-
-        // mock.post(_options.url + &apos;/search/bulk/async&apos;, function(req) {
-        //     return {
-        //         body: {
-        //             &quot;bulks&quot;: [{
-        //                     &quot;id&quot;: &quot;76796426-ec3e-11e1-aff1-0800200c9a66&quot;,
-        //                     &quot;organizarion&quot;: &quot;chamcorp&quot;,
-        //                     &quot;request&quot;: {
-        //                         &quot;fileName&quot;: &quot;bulk.json&quot;,
-        //                         &quot;userEmail&quot;: &quot;admin@bulk.es&quot;,
-        //                         &quot;header&quot;: {
-        //                             &quot;Accept&quot;: &quot;text/plain&quot;,
-        //                             &quot;Content-type&quot;: &quot;application/json&quot;
-        //                         },
-        //                         &quot;params&quot;: {
-        //                             &quot;type&quot;: &quot;ENTITIES&quot;,
-        //                             &quot;flattened&quot;: true,
-        //                             &quot;action&quot;: &quot;DELETE&quot;,
-        //                             &quot;full&quot;: true,
-        //                         }
-        //                     },
-        //                     &quot;status&quot;: &quot;IN_PROGRESS&quot;,
-        //                     &quot;startedDate&quot;: &quot;2010-12-11T10:11:00Z&quot;,
-        //                     &quot;finishedDate&quot;: &quot;2010-12-11T10:30:00Z&quot;,
-        //                     &quot;summary&quot;: {
-        //                         &quot;processed&quot;: 10,
-        //                         &quot;successful&quot;: 8,
-        //                         &quot;error&quot;: 2
-        //                     }
-        //                 },
-        //                 {
-        //                     &quot;id&quot;: &quot;76796426-ec3e-11e1-aff1-SDFSDFSDF&quot;,
-        //                     &quot;organizarion&quot;: &quot;chamcorp&quot;,
-        //                     &quot;request&quot;: {
-        //                         &quot;fileName&quot;: &quot;bulk.json&quot;,
-        //                         &quot;userEmail&quot;: &quot;admin@bulk.es&quot;,
-        //                         &quot;header&quot;: {
-        //                             &quot;Accept&quot;: &quot;text/plain&quot;,
-        //                             &quot;Content-type&quot;: &quot;application/json&quot;
-        //                         },
-        //                         &quot;params&quot;: {
-        //                             &quot;type&quot;: &quot;TICKETS&quot;,
-        //                             &quot;flattened&quot;: true,
-        //                             &quot;action&quot;: &quot;UPDATE&quot;
-        //                         }
-        //                     },
-        //                     &quot;status&quot;: &quot;WAITING&quot;,
-        //                     &quot;startedDate&quot;: &quot;2010-12-11T10:11:00Z&quot;,
-        //                     &quot;summary&quot;: {
-        //                         &quot;processed&quot;: 10,
-        //                         &quot;successful&quot;: 8,
-        //                         &quot;error&quot;: 2
-        //                     }
-        //                 },
-        //                 {
-        //                     &quot;id&quot;: &quot;76796426-ec3e-11e1-aff1-0800200c9a66&quot;,
-        //                     &quot;organizarion&quot;: &quot;chamcorp&quot;,
-        //                     &quot;request&quot;: {
-        //                         &quot;fileName&quot;: &quot;bulk2.csv&quot;,
-        //                         &quot;userEmail&quot;: &quot;admin@bulk.es&quot;,
-        //                         &quot;header&quot;: {
-        //                             &quot;Accept&quot;: &quot;text/plain&quot;,
-        //                             &quot;Content-type&quot;: &quot;text/plain&quot;,
-        //                             &quot;CsvFormat&quot;: &quot;qouteChar=\&quot;&quot;
-        //                         },
-        //                         &quot;params&quot;: {
-        //                             &quot;type&quot;: &quot;ENTITIES&quot;,
-        //                             &quot;action&quot;: &quot;CREATE&quot;
-        //                         }
-        //                     },
-        //                     &quot;status&quot;: &quot;FINISHED&quot;,
-        //                     &quot;startedDate&quot;: &quot;2010-12-10T10:11:00Z&quot;,
-        //                     &quot;finishedDate&quot;: &quot;2010-12-10T10:30:00Z&quot;,
-        //                     &quot;summary&quot;: {
-        //                         &quot;processed&quot;: &quot;10&quot;,
-        //                         &quot;successful&quot;: &quot;8&quot;,
-        //                         &quot;error&quot;: &quot;2&quot;
-        //                     }
-        //                 }
-        //             ]
-        //         },
-        //         statusCode: 200
-        //     }
-        // });
-
         // ----------------------------------
-        // MOCK domain searching
-        /*mock.post(_options.url + &apos;/search/domains&apos;, function(req) {
-            return {
-                body: {
-                    &quot;domains&quot;: [{
-                        &quot;name&quot;: &quot;Domain_3&quot;,
-                        &quot;description&quot;: &quot;Domain description&quot;,
-                        &quot;parentDomain&quot;: &quot;Domain_2&quot;
-                    }]
-                },
-                statusCode: 200
-            };
-        });
-        */
-        /*mock.get(_options.url + &apos;/provision/domains/root?hierarchy=true&apos;, function(req) {
-            return {
-                body: {
-                    &quot;domain&quot;: {
-                        &quot;name&quot;: &quot;opengate&quot;,
-                        &quot;description&quot;: &quot;Domain description&quot;,
-                        &quot;parentDomain&quot;: req.params.id,
-                        &quot;domains&quot;: [{
-                                &quot;name&quot;: &quot;Domain_1_2&quot;,
-                                &quot;description&quot;: &quot;Domain description&quot;,
-                                &quot;parentDomain&quot;: &quot;opengate&quot;,
-                                &quot;domains&quot;: [{
-                                        &quot;name&quot;: &quot;Domain_1_2_1&quot;,
-                                        &quot;description&quot;: &quot;Domain description&quot;,
-                                        &quot;parentDomain&quot;: &quot;Domain_1_2&quot;,
-                                        &quot;domains&quot;: [{
-                                            &quot;name&quot;: &quot;Domain_1_2_1_1&quot;,
-                                            &quot;description&quot;: &quot;Domain description&quot;,
-                                            &quot;parentDomain&quot;: &quot;Domain_1_2_1&quot;,
-                                            &quot;domains&quot;: [{
-                                                &quot;name&quot;: &quot;Domain_1_2_1_1_1&quot;,
-                                                &quot;description&quot;: &quot;Domain description&quot;,
-                                                &quot;parentDomain&quot;: &quot;Domain_1_2_1_1&quot;
-                                            }]
-                                        }]
-                                    },
-                                    {
-                                        &quot;name&quot;: &quot;Domain_1_2_2&quot;,
-                                        &quot;description&quot;: &quot;Domain description&quot;,
-                                        &quot;parentDomain&quot;: &quot;Domain_1_2&quot;,
-                                        &quot;domains&quot;: [{
-                                                &quot;name&quot;: &quot;Domain_1_2_2_1&quot;,
-                                                &quot;description&quot;: &quot;Domain description&quot;,
-                                                &quot;parentDomain&quot;: &quot;Domain_1_2_2&quot;,
-                                                &quot;domains&quot;: [{
-                                                    &quot;name&quot;: &quot;Domain_1_2_2_1_1&quot;,
-                                                    &quot;description&quot;: &quot;Domain description&quot;,
-                                                    &quot;parentDomain&quot;: &quot;Domain_1_2_2_1&quot;
-                                                }]
-                                            },
-                                            {
-                                                &quot;name&quot;: &quot;Domain_1_2_2_2&quot;,
-                                                &quot;description&quot;: &quot;Domain description&quot;,
-                                                &quot;parentDomain&quot;: &quot;Domain_1_2_2&quot;,
-                                                &quot;domains&quot;: [{
-                                                        &quot;name&quot;: &quot;Domain_1_2_2_2_1&quot;,
-                                                        &quot;description&quot;: &quot;Domain description&quot;,
-                                                        &quot;parentDomain&quot;: &quot;Domain_1_2_2_2&quot;
-                                                    },
-                                                    {
-                                                        &quot;name&quot;: &quot;Domain_1_2_2_2_2&quot;,
-                                                        &quot;description&quot;: &quot;Domain description&quot;,
-                                                        &quot;parentDomain&quot;: &quot;Domain_1_2_2_2&quot;
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                &quot;name&quot;: &quot;Domain_1_3&quot;,
-                                &quot;description&quot;: &quot;Domain description&quot;,
-                                &quot;parentDomain&quot;: &quot;opengate&quot;,
-                                &quot;domains&quot;: [{
-                                        &quot;name&quot;: &quot;Domain_1_3_1&quot;,
-                                        &quot;description&quot;: &quot;Domain description&quot;,
-                                        &quot;parentDomain&quot;: &quot;Domain_1_3&quot;,
-                                        &quot;domains&quot;: [{
-                                            &quot;name&quot;: &quot;Domain_1_3_1_1&quot;,
-                                            &quot;description&quot;: &quot;Domain description&quot;,
-                                            &quot;parentDomain&quot;: &quot;Domain_1_3_1&quot;,
-                                            &quot;domains&quot;: [{
-                                                &quot;name&quot;: &quot;Domain_1_3_1_1_1&quot;,
-                                                &quot;description&quot;: &quot;Domain description&quot;,
-                                                &quot;parentDomain&quot;: &quot;Domain_1_3_1_1&quot;
-                                            }]
-                                        }]
-                                    },
-                                    {
-                                        &quot;name&quot;: &quot;Domain_1_3_2&quot;,
-                                        &quot;description&quot;: &quot;Domain description&quot;,
-                                        &quot;parentDomain&quot;: &quot;Domain_1_3&quot;,
-                                        &quot;domains&quot;: [{
-                                                &quot;name&quot;: &quot;Domain_1_3_2_1&quot;,
-                                                &quot;description&quot;: &quot;Domain description&quot;,
-                                                &quot;parentDomain&quot;: &quot;Domain_1_3_2&quot;,
-                                                &quot;domains&quot;: [{
-                                                    &quot;name&quot;: &quot;Domain_1_3_2_1_1&quot;,
-                                                    &quot;description&quot;: &quot;Domain description&quot;,
-                                                    &quot;parentDomain&quot;: &quot;Domain_1_3_2_1&quot;
-                                                }]
-                                            },
-                                            {
-                                                &quot;name&quot;: &quot;Domain_1_3_2_2&quot;,
-                                                &quot;description&quot;: &quot;Domain description&quot;,
-                                                &quot;parentDomain&quot;: &quot;Domain_1_3_2&quot;,
-                                                &quot;domains&quot;: [{
-                                                        &quot;name&quot;: &quot;Domain_1_3_2_2_1&quot;,
-                                                        &quot;description&quot;: &quot;Domain description&quot;,
-                                                        &quot;parentDomain&quot;: &quot;Domain_1_3_2_2&quot;
-                                                    },
-                                                    {
-                                                        &quot;name&quot;: &quot;Domain_1_3_2_2_2&quot;,
-                                                        &quot;description&quot;: &quot;Domain description&quot;,
-                                                        &quot;parentDomain&quot;: &quot;Domain_1_3_2_2&quot;
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                },
-                statusCode: 200
-            };
-        });*/
         /*
         mock.post(_options.url + &apos;/search/channels&apos;, function(req) {
             return {
@@ -766,13 +466,14 @@ export default class NorthAmpliaREST {
         _req = _req.end(function(err, res) {
             if (err !== null) {
                 let data;
-                let status;
+                let status = err.status ? err.status : undefined;
                 let errorMessage = {
                     errors: [{
-                        code: err.status ? err.status : status,
-                        message: &apos;Something is broken. Please contact with your administrator.&apos;
+                        code: status,
+                        message: &apos;OGAPI: Something is broken. Please contact with your administrator.&apos;
                     }]
                 };
+                
                 if (typeof err.response !== &quot;undefined&quot;) {
                     data = err.response.body ? err.response.body : errorMessage;
                     status = err.status;

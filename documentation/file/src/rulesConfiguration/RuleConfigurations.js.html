@@ -133,6 +133,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TicketID">TicketID</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">rulesConfiguration</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html">RuleConfigurations</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsActions.js~RuleConfigurationsActions.html">RuleConfigurationsActions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsCatalog.js~RuleConfigurationsCatalog.html">RuleConfigurationsCatalog</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder.html">RuleConfigurationsFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/AssetSearch.js~AssetSearch.html">AssetSearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/BaseSearch.js~BaseSearch.html">BaseSearch</a></span></span></li>
@@ -180,6 +181,9 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RawSearchBuilder.js~RawSearchBuilder.html">RawSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ResourceTypeSearchBuilder.js~ResourceTypeSearchBuilder.html">ResourceTypeSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RuleConfigurationSeveritySearchBuilder.js~RuleConfigurationSeveritySearchBuilder.html">RuleConfigurationSeveritySearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RuleModeSearchBuilder.js~RuleModeSearchBuilder.html">RuleModeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RuleTypeSearchBuilder.js~RuleTypeSearchBuilder.html">RuleTypeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RulesSearchBuilder.js~RulesSearchBuilder.html">RulesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SearchBuilder.js~SearchBuilder.html">SearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SearchWithSummaryBuilder.js~SearchWithSummaryBuilder.html">SearchWithSummaryBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ServiceGroupSearchBuilder.js~ServiceGroupSearchBuilder.html">ServiceGroupSearchBuilder</a></span></span></li>
@@ -242,31 +246,60 @@ export default class RuleConfigurations extends BaseProvision {
     /**     
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
-    constructor(ogapi, organization, channel, ruleConfigurationObj) {
+    constructor(ogapi, organization, channel, identifier, ruleConfigurationObj) {
         super(ogapi, &quot;/organizations&quot;);
 
-        this.withName(ruleConfigurationObj.name);
-
-        if (ruleConfigurationObj.description) {
-            this.withDescription(ruleConfigurationObj.description);
-        }
-
-        if (ruleConfigurationObj.enabled !== null &amp;&amp; typeof ruleConfigurationObj.enabled !== &apos;undefined&apos;)
-            this.withEnabled(ruleConfigurationObj.enabled);
-
-        if (ruleConfigurationObj.open !== null &amp;&amp; typeof ruleConfigurationObj.open !== &apos;undefined&apos;)
-            this.withOpen(ruleConfigurationObj.open);
-
-        if (ruleConfigurationObj.severity !== null &amp;&amp; typeof ruleConfigurationObj.severity !== &apos;undefined&apos;)
-            this.withSeverity(ruleConfigurationObj.severity);
-
-        if (ruleConfigurationObj.conditions !== null &amp;&amp; typeof ruleConfigurationObj.conditions !== &apos;undefined&apos;)
-            this._withConditions(ruleConfigurationObj.conditions);
-        if (ruleConfigurationObj.notifications !== null &amp;&amp; typeof ruleConfigurationObj.notifications !== &apos;undefined&apos;)
-            this._withNotifications(ruleConfigurationObj.notifications);
-
+        // Required
         this.withOrganization(organization);
         this.withChannel(channel);
+        
+        // only for updates
+        if (identifier) {
+            this.withIdentifier(identifier);
+        }
+        
+        if (ruleConfigurationObj) {
+            if (ruleConfigurationObj.name) {
+                this.withName(ruleConfigurationObj.name);
+            }
+
+            if (ruleConfigurationObj.mode) {
+                this.withMode(ruleConfigurationObj.mode);
+            }
+
+            if (ruleConfigurationObj.type) {
+                this.withType(ruleConfigurationObj.type);
+            }
+
+            if (ruleConfigurationObj.description) {
+                this.withDescription(ruleConfigurationObj.description);
+            }
+
+            if (ruleConfigurationObj.active !== null &amp;&amp; typeof ruleConfigurationObj.active !== &apos;undefined&apos;) {
+                this.withActive(ruleConfigurationObj.active);
+            } else {
+                this.withActive(false);
+            }
+
+            if (ruleConfigurationObj.condition !== null &amp;&amp; typeof ruleConfigurationObj.condition !== &apos;undefined&apos;)
+                this.withCondition(ruleConfigurationObj.condition);
+
+            if (ruleConfigurationObj.actionsDelay) {
+                this.withActionsDelay(ruleConfigurationObj.actionsDelay);
+            }
+
+            if (ruleConfigurationObj.actions) {
+                this.withActions(ruleConfigurationObj.actions);
+            }
+
+            if (ruleConfigurationObj.parameters) {
+                this.withParameters(ruleConfigurationObj.parameters);
+            }
+
+            if (ruleConfigurationObj.javascript) {
+                this.withJavascript(ruleConfigurationObj.javascript);
+            }
+        }
     }
 
 
@@ -291,6 +324,18 @@ export default class RuleConfigurations extends BaseProvision {
         if (typeof channel !== &apos;string&apos; || channel.length === 0 || channel.length &gt; 50)
             throw new Error(&apos;Parameter channel must be a string, cannot be empty and has a maximum length of 50&apos;);
         this._channel = channel;
+        return this;
+    }
+
+    /**
+     * Set the identifier attribute
+     * @param {string} identifier - required field
+     * @return {RulesConfigurations}
+     */
+    withIdentifier(identifier) {
+        if (typeof identifier !== &apos;string&apos; || identifier.length === 0 || identifier.length &gt; 50)
+            throw new Error(&apos;Parameter identifier must be a string, cannot be empty and has a maximum length of 50&apos;);
+        this._identifier = identifier;
         return this;
     }
 
@@ -322,170 +367,150 @@ export default class RuleConfigurations extends BaseProvision {
     }
 
     /**
-     * Set the open attribute
-     * @param {boolean} open 
+     * Set the javascript attribute
+     * @param {string} javascript 
      * @return {RulesConfigurations}
      */
-    withOpen(open) {
-        if (typeof open !== &apos;boolean&apos;)
-            throw new Error(&apos;Parameter open must be true or false&apos;);
-        this._open = open;
+    withJavascript(javascript) {
+        if (typeof javascript !== &apos;string&apos;)
+            throw new Error(&apos;Parameter name must be a string and cannot be empty&apos;);
+        this._javascript = javascript;
         return this;
     }
 
     /**
-     * Set the enabled attribute
-     * @param {boolean} enabled 
+     * Set the mode attribute
+     * @param {string} mode 
      * @return {RulesConfigurations}
      */
-    withEnabled(enabled) {
-        if (typeof enabled !== &apos;boolean&apos;)
-            throw new Error(&apos;Parameter enabled must be true or false&apos;);
-        this._enabled = enabled;
+    withMode(mode) {
+        this._mode = mode;
         return this;
     }
 
     /**
-     * Set the severity attribute
-     * @param {string} severity 
+     * Set the type attribute
+     * @param {string} type 
      * @return {RulesConfigurations}
      */
-    withSeverity(severity) {
-        if (typeof severity !== &apos;string&apos;)
-            throw new Error(&apos;Parameter severity must be a string&apos;);
-        this._severity = severity;
+    withType(type) {
+        this._type = type;
+        return this;
+    }
+
+    /**
+     * Set the active attribute
+     * @param {boolean} active 
+     * @return {RulesConfigurations}
+     */
+    withActive(active) {
+        if (typeof active !== &apos;boolean&apos;)
+            throw new Error(&apos;Parameter active must be true or false&apos;);
+        this._active = active;
+        return this;
+    }
+
+    /**
+     * Set the actions delay attribute
+     * @param {number} actionsDelay 
+     * @return {RulesConfigurations}
+     */
+    withActionsDelay(actionsDelay) {
+        if (typeof actionsDelay !== &apos;number&apos;)
+            throw new Error(&apos;Parameter actionsDelay must be a number&apos;);
+        this._actionsDelay = actionsDelay;
         return this;
     }
 
     /**
      * Allows the modification of a condition
-     * @param {string} condName 
+     * @param {string} conditionFilter 
      * @return {_RuleCondition}
      */
-    condition(condName) {
-        let _condition = {};
-        let _this = this;
-        if (this._conditions &amp;&amp; this._conditions.length &gt; 0) {
-            this._conditions.forEach(function (condTmp, idx) {
-                if (condTmp.name === condName) {
-                    //console.log(idx + &quot;: &quot; + condTmp);
-                    _condition = condTmp;
-                }
-            });
+    withCondition(conditionFilter) {
+        this._condition = conditionFilter || {};
 
-            if (_condition.name) {
-                //console.log(_condition.name);
-                return new _RuleCondition(_this, _condition);
-            } else {
-                throw new Error(&quot;Condition &quot; + condName + &quot; not exists in rule &quot; + _this.name);
-            }
-        } else {
-            throw new Error(&quot;Condition &quot; + condName + &quot; not exists in rule &quot; + _this.name);
-        }
-    }
-
-    /**
-     * Allows the modification of a notification
-     * @param {string} notifName 
-     * @return {_RuleCondition}
-     */
-    notification(notifName) {
-        let _notification = {};
-        let _this = this;
-        if (this._notifications &amp;&amp; this._notifications.length &gt; 0) {
-            this._notifications.forEach(function (notifTmp, idx) {
-                if (notifTmp.name === notifName) {
-                    //console.log(idx + &quot;: &quot; + notifTmp);
-                    _notification = notifTmp;
-                }
-            });
-
-            if (_notification.name) {
-                //console.log(_notification.name);
-                return new _RuleNotification(_this, _notification);
-            } else {
-                throw new Error(&quot;Notification &quot; + notifName + &quot; not exists in rule &quot; + _this.name);
-            }
-        } else {
-            throw new Error(&quot;Notification &quot; + notifName + &quot; not exists in rule &quot; + _this.name);
-        }
-    }
-
-    /**
-     * Set the conditions attribute
-     * @param {Array} conditions 
-     * @return {RulesConfigurations}
-     */
-    _withConditions(conditions) {
-        conditions.forEach(function (condition, idx) {
-            if (!condition.name) {
-                throw new Error(&apos;Every condition must contain a name&apos;);
-            }
-            if (condition.parameters) {
-                condition.parameters.forEach(function (parameter, index) {
-                    if (!parameter.value) {
-                        conditions[idx].parameters[index].value = &quot;&quot;;
-                    }
-                });
-            }
-        });
-
-        this._conditions = conditions;
         return this;
     }
 
     /**
-     * Set the notifications attribute
-     * @param {Array} notifications 
-     * @return {RulesConfigurations}
+     * Allows the modification of the actions
+     * @param {object} actions 
+     * @return {_RuleCondition}
      */
-    _withNotifications(notifications) {
-        if (notifications) {
-            notifications.forEach(function (notifTmp, idx) {
-                if (!notifTmp.name) {
-                    throw new Error(&apos;Every notification must contain a name&apos;);
-                }
-            });
+    withActions(actions) {
+        this._actions = actions || {};
 
-            this._notifications = notifications;
-        }
+        return this;
+    }
+
+    /**
+     * Allows the modification of the actions
+     * @param {array} parameters 
+     * @return {_RuleCondition}
+     */
+    withParameters(parameters) {
+        this._parameters = parameters || [];
+
         return this;
     }
 
     _composeElement() {
-        if (this._name === undefined || this._enabled === undefined || this._organization === undefined || this._channel === undefined || this._severity === undefined)
-            throw new Error(&apos;Parameters organization, channel, severity, enabled and name must be defined&apos;);
-
-        if (!this._conditions) {
-            throw new Error(&apos;A rule must have conditions&apos;);
-        }
-
+        this._checkRequiredParameters();
 
         let updateData = {
-            &quot;configurations&quot;: [{
-                &quot;name&quot;: this._name,
-                &quot;enabled&quot;: this._enabled,
-                &quot;open&quot;: this._open,
-                &quot;severity&quot;: this._severity,
-                &quot;description&quot;: (this._description ? this._description : undefined),
-                &quot;conditions&quot;: this._conditions,
-                &quot;notifications&quot;: this._notifications
-            }]
+            &quot;identifier&quot;: this._identifier,
+            &quot;name&quot;: this._name,
+            &quot;active&quot;: this._active,
+            &quot;mode&quot;: this._mode,
+            &quot;type&quot;: this._type,
+            &quot;severity&quot;: this._severity,
+            &quot;description&quot;: (this._description ? this._description : undefined),
+            &quot;parameters&quot;: this._parameters,
+            &quot;condition&quot;: this._mode ===&apos;EASY&apos;?this._condition: undefined,
+            &quot;actionsDelay&quot;: this._mode ===&apos;EASY&apos;?this._actionsDelay: undefined,
+            &quot;actions&quot;: this._mode ===&apos;EASY&apos;?this._actions: undefined,
+            &quot;javascript&quot;: this._mode ===&apos;ADVANCED&apos;?this._javascript:undefined
         };
 
         return updateData;
     }
 
+
+    _checkRequiredParameters(isUpdate) {
+        if (isUpdate) {
+            if (this._identifier === undefined || this._organization === undefined || this._channel === undefined || this._active === undefined || this._mode === undefined)
+            throw new Error(&apos;Parameters organization, channel, active, mode and identifier must be defined&apos;);
+        } else {
+            if (this._name === undefined || this._organization === undefined || this._channel === undefined || this._active === undefined || this._mode === undefined)
+            throw new Error(&apos;Parameters organization, channel, active, mode and name must be defined&apos;);
+        }
+    }
+
     _buildURL() {
-        return this._resource + &quot;/&quot; + this._organization + &quot;/channels/&quot; + this._channel + &quot;/ruleconfigurations&quot;;
+        return &quot;rules/&quot; + this._resource + &quot;/&quot; + this._organization + &quot;/channels/&quot; + this._channel + &quot;/&quot;;
     }
 
     /** 
-     * Create not allowed
+     * Create a new Rule
+     * @return {Promise}
      * @throws {Error} 
      */
     create() {
-        throw new Error(&quot;Rule configuration creation not allowed&quot;);
+        this._checkRequiredParameters();
+
+        return this._doNorthPost(this._buildURL(), this._composeElement());
+    }
+
+    /** 
+     * Udpate a Rule
+     * @return {Promise}
+     * @throws {Error} 
+     */
+    update() {
+        this._checkRequiredParameters(true);
+
+        return this._doNorthPut(this._buildURL() + &apos;/&apos; + this._identifier, this._composeElement());
     }
 
     /** 
@@ -494,12 +519,12 @@ export default class RuleConfigurations extends BaseProvision {
      * @throws {Error} 
      */
     delete() {
-        if (this._name === undefined || this._organization === undefined || this._channel === undefined)
+        if (this._identifier === undefined || this._organization === undefined || this._channel === undefined)
             throw new Error(&apos;Parameters organization, channel and name must be defined&apos;);
 
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Napi.delete(this._buildURL() + &apos;/&apos; + this._name)
+        this._ogapi.Napi.delete(this._buildURL() + &apos;/&apos; + this._identifier)
             .then((res) =&gt; {
                 if (res.statusCode === 200) {
                     defered.resolve({
