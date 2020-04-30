@@ -1,11 +1,11 @@
 'use strict';
 
-import AlarmOperationBuilder from './AlarmOperationBuilder';
+import AlarmActionBuilder from './AlarmActionBuilder';
 
 /**
 * Defines the builder to execute alarm attend operation
 */
-export default class AlarmAttendBuilder extends AlarmOperationBuilder{
+export default class AlarmAttendBuilder extends AlarmActionBuilder{
 	/**
 	* @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
 	*/

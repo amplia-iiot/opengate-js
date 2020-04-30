@@ -1,11 +1,11 @@
 'use strict';
 
-import Operation from './Operation';
+import Alarm from './Alarm';
 
 /**
-* Defines the builder to execute alarm operations
+* Defines the builder to execute alarm actions
 */
-export default class AlarmOperationBuilder{
+export default class AlarmActionBuilder{
 	/**
 	* @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
 	* @param {!string} action - This action can be ATTEND or CLOSE
@@ -13,13 +13,13 @@ export default class AlarmOperationBuilder{
 	constructor(ogapi,action){
 		this._ogapi = ogapi;
 		this._action = action;
-		this._resource = '/alarms';
+		this._resource = 'alarms';
 		this._build = {
 			alarms:[],
 			notes:undefined,
 			action: action
 		};
-		if (this.constructor === AlarmOperationBuilder) {
+		if (this.constructor === AlarmActionBuilder) {
 			throw new Error("Cannot construct Abstract instances directly");
 		}
 	}
@@ -27,10 +27,10 @@ export default class AlarmOperationBuilder{
 	/**
 	* Add alarmId to operation
 	* @example
-	*	ogapi.operations.builderFactory.newAlarmCloseBuilder().addAlarmId("")
+	*	ogapi.alarms.builderFactory.newAlarmCloseBuilder().addAlarmId("")
 	* @param {!string} alarmId - AlarmId of Alarm
 	* @throws {Error} throw error when alarmId is not typeof string
-	* @return {AlarmOperationBuilder}
+	* @return {AlarmActionBuilder}
 	*/
 	addAlarmId(alarmId){
 		if (typeof alarmId !== 'string') 
@@ -45,7 +45,7 @@ export default class AlarmOperationBuilder{
 	*	ogapi.operations.builderFactory.newAlarmCloseBuilder().withNotes("")
 	* @param {!string} notes - Notes about operation
 	* @throws {Error} throw error when notes is not typeof string
-	* @return {AlarmOperationBuilder}
+	* @return {AlarmActionBuilder}
 	*/
 	withNotes(notes){
 		if (typeof notes !== 'string') 
@@ -69,7 +69,7 @@ export default class AlarmOperationBuilder{
 		if (typeof this._build.notes !== 'string'){
 			delete this._build.notes;
 		}
-		return new Operation(this._ogapi, this._resource, this._build);
+		return new Alarm(this._ogapi, this._resource, this._build);
 	}
 
 }

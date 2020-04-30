@@ -104,6 +104,7 @@ import CountryCodesSearchBuilder from './searching/builder/CountryCodesSearchBui
 import TimezoneSearchBuilder from './searching/builder/TimezoneSearchBuilder';
 import UserLanguagesSearchBuilder from './searching/builder/UserLanguagesSearchBuilder';
 import EntityFinder from './entities/EntityFinder';
+import AlarmActions from './alarms/AlarmActions';
 
 /**
  * This is a abstract class, it must be extended to another class that defined the backend, it will be used on request to Opengate North API by browser or nodejs server
@@ -128,6 +129,7 @@ export default class InternalOpenGateAPI {
         this.EX = Expression;
         this.SE = SelectElement;
         this.operations = new Operations(this);
+        this.alarms = new AlarmActions(this)
         this.entityBuilder = new EntityBuilder(this);
     }
 
