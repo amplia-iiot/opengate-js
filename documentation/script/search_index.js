@@ -30,21 +30,27 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "opengate-js/src/operations/catalog/alarmattendbuilder.js~alarmattendbuilder",
-    "class/src/operations/catalog/AlarmAttendBuilder.js~AlarmAttendBuilder.html",
-    "<span>AlarmAttendBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/operations/catalog/AlarmAttendBuilder.js</span>",
+    "opengate-js/src/alarms/actions/alarmactionbuilder.js~alarmactionbuilder",
+    "class/src/alarms/actions/AlarmActionBuilder.js~AlarmActionBuilder.html",
+    "<span>AlarmActionBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/alarms/actions/AlarmActionBuilder.js</span>",
     "class"
   ],
   [
-    "opengate-js/src/operations/catalog/alarmclosebuilder.js~alarmclosebuilder",
-    "class/src/operations/catalog/AlarmCloseBuilder.js~AlarmCloseBuilder.html",
-    "<span>AlarmCloseBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/operations/catalog/AlarmCloseBuilder.js</span>",
+    "opengate-js/src/alarms/alarmactions.js~alarmactions",
+    "class/src/alarms/AlarmActions.js~AlarmActions.html",
+    "<span>AlarmActions</span> <span class=\"search-result-import-path\">opengate-js/src/alarms/AlarmActions.js</span>",
     "class"
   ],
   [
-    "opengate-js/src/operations/catalog/alarmoperationbuilder.js~alarmoperationbuilder",
-    "class/src/operations/catalog/AlarmOperationBuilder.js~AlarmOperationBuilder.html",
-    "<span>AlarmOperationBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/operations/catalog/AlarmOperationBuilder.js</span>",
+    "opengate-js/src/alarms/actions/alarmattendbuilder.js~alarmattendbuilder",
+    "class/src/alarms/actions/AlarmAttendBuilder.js~AlarmAttendBuilder.html",
+    "<span>AlarmAttendBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/alarms/actions/AlarmAttendBuilder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/alarms/actions/alarmclosebuilder.js~alarmclosebuilder",
+    "class/src/alarms/actions/AlarmCloseBuilder.js~AlarmCloseBuilder.html",
+    "<span>AlarmCloseBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/alarms/actions/AlarmCloseBuilder.js</span>",
     "class"
   ],
   [
@@ -634,6 +640,12 @@ window.esdocSearchIndex = [
     "variable/index.html#static-variable-OPTION_ENUM",
     "<span>OPTION_ENUM</span> <span class=\"search-result-import-path\">opengate-js/src/bundles/deployment/OPTION_ENUM.js</span>",
     "variable"
+  ],
+  [
+    "opengate-js/src/alarms/actions/alarm.js~operation",
+    "class/src/alarms/actions/Alarm.js~Operation.html",
+    "<span>Operation</span> <span class=\"search-result-import-path\">opengate-js/src/alarms/actions/Alarm.js</span>",
+    "class"
   ],
   [
     "opengate-js/src/operations/catalog/operation.js~operation",
@@ -1585,13 +1597,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber195",
+    "test-file/client/device/device.spec.js.html#lineNumber190",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Option",
     "test"
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber190",
+    "test-file/client/device/device.spec.js.html#lineNumber195",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Option",
     "test"
   ],
@@ -1609,13 +1621,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber165",
+    "test-file/client/device/device.spec.js.html#lineNumber160",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Type",
     "test"
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber160",
+    "test-file/client/device/device.spec.js.html#lineNumber165",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Type",
     "test"
   ],
@@ -1861,13 +1873,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/security/certificates.spec.js.html#lineNumber23",
+    "test-file/client/security/certificates.spec.js.html#lineNumber30",
     "Check funcionality certificates: Check basic parameters: administrativeState is not a String",
     "test"
   ],
   [
     "",
-    "test-file/client/security/certificates.spec.js.html#lineNumber30",
+    "test-file/client/security/certificates.spec.js.html#lineNumber23",
     "Check funcionality certificates: Check basic parameters: administrativeState is not a String",
     "test"
   ],
@@ -2292,14 +2304,14 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortascendingby,searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber86",
+    "searchbuilder#build searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortdescendingby,searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber94",
     "Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort",
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortdescendingby,searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber94",
+    "searchbuilder#build searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortascendingby,searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber86",
     "Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort",
     "test"
   ],
@@ -2478,14 +2490,14 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "searchbuilder#filter src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter",
-    "test-file/client/searching/search.spec.js.html#lineNumber43",
+    "",
+    "test-file/client/searching/search.spec.js.html#lineNumber106",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter:",
     "test"
   ],
   [
-    "",
-    "test-file/client/searching/search.spec.js.html#lineNumber106",
+    "searchbuilder#filter src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter",
+    "test-file/client/searching/search.spec.js.html#lineNumber43",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter:",
     "test"
   ],
@@ -2503,13 +2515,13 @@ window.esdocSearchIndex = [
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber50",
+    "test-file/client/searching/search.spec.js.html#lineNumber112",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: devicesSearchBuilder",
     "test"
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber112",
+    "test-file/client/searching/search.spec.js.html#lineNumber50",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: devicesSearchBuilder",
     "test"
   ],
@@ -2551,13 +2563,13 @@ window.esdocSearchIndex = [
   ],
   [
     "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber399",
+    "test-file/client/searching/search.spec.js.html#lineNumber393",
     "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
     "test"
   ],
   [
     "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber393",
+    "test-file/client/searching/search.spec.js.html#lineNumber399",
     "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
     "test"
   ],
@@ -2857,13 +2869,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber5",
+    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber13",
     "Testing fields finder api search a fields communicationsModulesSearchBuilder",
     "test"
   ],
   [
     "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber13",
+    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber5",
     "Testing fields finder api search a fields communicationsModulesSearchBuilder",
     "test"
   ],
@@ -3052,6 +3064,12 @@ window.esdocSearchIndex = [
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-administrativeStateSearchBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#administrativeStateSearchBuilder",
     "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#alarms",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-member-alarms",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#alarms",
+    "member"
   ],
   [
     "src/internalopengateapi.js~internalopengateapi#alarmssearchbuilder",
@@ -3663,6 +3681,102 @@ window.esdocSearchIndex = [
     "src/provisiongenericfinder.js~provisiongenericfinder#constructor",
     "class/src/ProvisionGenericFinder.js~ProvisionGenericFinder.html#instance-constructor-constructor",
     "src/ProvisionGenericFinder.js~ProvisionGenericFinder#constructor",
+    "method"
+  ],
+  [
+    "src/alarms/alarmactions.js",
+    "file/src/alarms/AlarmActions.js.html",
+    "src/alarms/AlarmActions.js",
+    "file"
+  ],
+  [
+    "src/alarms/alarmactions.js~alarmactions#constructor",
+    "class/src/alarms/AlarmActions.js~AlarmActions.html#instance-constructor-constructor",
+    "src/alarms/AlarmActions.js~AlarmActions#constructor",
+    "method"
+  ],
+  [
+    "src/alarms/alarmactions.js~alarmactions#newattendbuilder",
+    "class/src/alarms/AlarmActions.js~AlarmActions.html#instance-method-newAttendBuilder",
+    "src/alarms/AlarmActions.js~AlarmActions#newAttendBuilder",
+    "method"
+  ],
+  [
+    "src/alarms/alarmactions.js~alarmactions#newclosebuilder",
+    "class/src/alarms/AlarmActions.js~AlarmActions.html#instance-method-newCloseBuilder",
+    "src/alarms/AlarmActions.js~AlarmActions#newCloseBuilder",
+    "method"
+  ],
+  [
+    "src/alarms/actions/alarm.js",
+    "file/src/alarms/actions/Alarm.js.html",
+    "src/alarms/actions/Alarm.js",
+    "file"
+  ],
+  [
+    "src/alarms/actions/alarm.js~operation#constructor",
+    "class/src/alarms/actions/Alarm.js~Operation.html#instance-constructor-constructor",
+    "src/alarms/actions/Alarm.js~Operation#constructor",
+    "method"
+  ],
+  [
+    "src/alarms/actions/alarm.js~operation#execute",
+    "class/src/alarms/actions/Alarm.js~Operation.html#instance-method-execute",
+    "src/alarms/actions/Alarm.js~Operation#execute",
+    "method"
+  ],
+  [
+    "src/alarms/actions/alarmactionbuilder.js",
+    "file/src/alarms/actions/AlarmActionBuilder.js.html",
+    "src/alarms/actions/AlarmActionBuilder.js",
+    "file"
+  ],
+  [
+    "src/alarms/actions/alarmactionbuilder.js~alarmactionbuilder#addalarmid",
+    "class/src/alarms/actions/AlarmActionBuilder.js~AlarmActionBuilder.html#instance-method-addAlarmId",
+    "src/alarms/actions/AlarmActionBuilder.js~AlarmActionBuilder#addAlarmId",
+    "method"
+  ],
+  [
+    "src/alarms/actions/alarmactionbuilder.js~alarmactionbuilder#build",
+    "class/src/alarms/actions/AlarmActionBuilder.js~AlarmActionBuilder.html#instance-method-build",
+    "src/alarms/actions/AlarmActionBuilder.js~AlarmActionBuilder#build",
+    "method"
+  ],
+  [
+    "src/alarms/actions/alarmactionbuilder.js~alarmactionbuilder#constructor",
+    "class/src/alarms/actions/AlarmActionBuilder.js~AlarmActionBuilder.html#instance-constructor-constructor",
+    "src/alarms/actions/AlarmActionBuilder.js~AlarmActionBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/alarms/actions/alarmactionbuilder.js~alarmactionbuilder#withnotes",
+    "class/src/alarms/actions/AlarmActionBuilder.js~AlarmActionBuilder.html#instance-method-withNotes",
+    "src/alarms/actions/AlarmActionBuilder.js~AlarmActionBuilder#withNotes",
+    "method"
+  ],
+  [
+    "src/alarms/actions/alarmattendbuilder.js",
+    "file/src/alarms/actions/AlarmAttendBuilder.js.html",
+    "src/alarms/actions/AlarmAttendBuilder.js",
+    "file"
+  ],
+  [
+    "src/alarms/actions/alarmattendbuilder.js~alarmattendbuilder#constructor",
+    "class/src/alarms/actions/AlarmAttendBuilder.js~AlarmAttendBuilder.html#instance-constructor-constructor",
+    "src/alarms/actions/AlarmAttendBuilder.js~AlarmAttendBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/alarms/actions/alarmclosebuilder.js",
+    "file/src/alarms/actions/AlarmCloseBuilder.js.html",
+    "src/alarms/actions/AlarmCloseBuilder.js",
+    "file"
+  ],
+  [
+    "src/alarms/actions/alarmclosebuilder.js~alarmclosebuilder#constructor",
+    "class/src/alarms/actions/AlarmCloseBuilder.js~AlarmCloseBuilder.html#instance-constructor-constructor",
+    "src/alarms/actions/AlarmCloseBuilder.js~AlarmCloseBuilder#constructor",
     "method"
   ],
   [
@@ -5694,18 +5808,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/operations/operations.js~operations#newalarmattendbuilder",
-    "class/src/operations/Operations.js~Operations.html#instance-method-newAlarmAttendBuilder",
-    "src/operations/Operations.js~Operations#newAlarmAttendBuilder",
-    "method"
-  ],
-  [
-    "src/operations/operations.js~operations#newalarmclosebuilder",
-    "class/src/operations/Operations.js~Operations.html#instance-method-newAlarmCloseBuilder",
-    "src/operations/Operations.js~Operations#newAlarmCloseBuilder",
-    "method"
-  ],
-  [
     "src/operations/operations.js~operations#updateperiodicitybuilder",
     "class/src/operations/Operations.js~Operations.html#instance-method-updatePeriodicityBuilder",
     "src/operations/Operations.js~Operations#updatePeriodicityBuilder",
@@ -5739,60 +5841,6 @@ window.esdocSearchIndex = [
     "src/operations/periodicityactions.js~periodicityactions#pause",
     "class/src/operations/PeriodicityActions.js~PeriodicityActions.html#instance-method-pause",
     "src/operations/PeriodicityActions.js~PeriodicityActions#pause",
-    "method"
-  ],
-  [
-    "src/operations/catalog/alarmattendbuilder.js",
-    "file/src/operations/catalog/AlarmAttendBuilder.js.html",
-    "src/operations/catalog/AlarmAttendBuilder.js",
-    "file"
-  ],
-  [
-    "src/operations/catalog/alarmattendbuilder.js~alarmattendbuilder#constructor",
-    "class/src/operations/catalog/AlarmAttendBuilder.js~AlarmAttendBuilder.html#instance-constructor-constructor",
-    "src/operations/catalog/AlarmAttendBuilder.js~AlarmAttendBuilder#constructor",
-    "method"
-  ],
-  [
-    "src/operations/catalog/alarmclosebuilder.js",
-    "file/src/operations/catalog/AlarmCloseBuilder.js.html",
-    "src/operations/catalog/AlarmCloseBuilder.js",
-    "file"
-  ],
-  [
-    "src/operations/catalog/alarmclosebuilder.js~alarmclosebuilder#constructor",
-    "class/src/operations/catalog/AlarmCloseBuilder.js~AlarmCloseBuilder.html#instance-constructor-constructor",
-    "src/operations/catalog/AlarmCloseBuilder.js~AlarmCloseBuilder#constructor",
-    "method"
-  ],
-  [
-    "src/operations/catalog/alarmoperationbuilder.js",
-    "file/src/operations/catalog/AlarmOperationBuilder.js.html",
-    "src/operations/catalog/AlarmOperationBuilder.js",
-    "file"
-  ],
-  [
-    "src/operations/catalog/alarmoperationbuilder.js~alarmoperationbuilder#addalarmid",
-    "class/src/operations/catalog/AlarmOperationBuilder.js~AlarmOperationBuilder.html#instance-method-addAlarmId",
-    "src/operations/catalog/AlarmOperationBuilder.js~AlarmOperationBuilder#addAlarmId",
-    "method"
-  ],
-  [
-    "src/operations/catalog/alarmoperationbuilder.js~alarmoperationbuilder#build",
-    "class/src/operations/catalog/AlarmOperationBuilder.js~AlarmOperationBuilder.html#instance-method-build",
-    "src/operations/catalog/AlarmOperationBuilder.js~AlarmOperationBuilder#build",
-    "method"
-  ],
-  [
-    "src/operations/catalog/alarmoperationbuilder.js~alarmoperationbuilder#constructor",
-    "class/src/operations/catalog/AlarmOperationBuilder.js~AlarmOperationBuilder.html#instance-constructor-constructor",
-    "src/operations/catalog/AlarmOperationBuilder.js~AlarmOperationBuilder#constructor",
-    "method"
-  ],
-  [
-    "src/operations/catalog/alarmoperationbuilder.js~alarmoperationbuilder#withnotes",
-    "class/src/operations/catalog/AlarmOperationBuilder.js~AlarmOperationBuilder.html#instance-method-withNotes",
-    "src/operations/catalog/AlarmOperationBuilder.js~AlarmOperationBuilder#withNotes",
     "method"
   ],
   [
