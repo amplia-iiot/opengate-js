@@ -424,6 +424,10 @@ var _entitiesEntityFinder = require('./entities/EntityFinder');
 
 var _entitiesEntityFinder2 = _interopRequireDefault(_entitiesEntityFinder);
 
+var _alarmsAlarmActions = require('./alarms/AlarmActions');
+
+var _alarmsAlarmActions2 = _interopRequireDefault(_alarmsAlarmActions);
+
 /**
  * This is a abstract class, it must be extended to another class that defined the backend, it will be used on request to Opengate North API by browser or nodejs server
  */
@@ -451,6 +455,7 @@ var InternalOpenGateAPI = (function () {
         this.EX = _utilExpression2['default'];
         this.SE = _utilSelectElement2['default'];
         this.operations = new _operationsOperations2['default'](this);
+        this.alarms = new _alarmsAlarmActions2['default'](this);
         this.entityBuilder = new _provisionEntitiesEntityBuilder2['default'](this);
     }
 

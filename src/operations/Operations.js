@@ -1,7 +1,5 @@
 'use strict';
 
-import AlarmAttendBuilder from './catalog/AlarmAttendBuilder';
-import AlarmCloseBuilder from './catalog/AlarmCloseBuilder';
 import BaseOperationBuilder from './catalog/BaseOperationBuilder';
 import PeriodicityUpdateBuilder from './catalog/period/PeriodicityUpdateBuilder';
 import q from 'q';
@@ -15,12 +13,9 @@ export default class Operations {
      * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
      */
     constructor(ogapi) {
-        const _this = this;
         this._ogapi = ogapi;
         this._operations = [];
-        this._operationNames = ['ALARM_CLOSE', 'ALARM_ATTEND'];
-        this._operations.push({ name: 'ALARM_CLOSE', builder: new AlarmCloseBuilder(ogapi) });
-        this._operations.push({ name: 'ALARM_ATTEND', builder: new AlarmAttendBuilder(ogapi) });
+        this._operationNames = [];
     }
 
     /**	
@@ -115,27 +110,4 @@ export default class Operations {
             return config.name == this;
         }, name);
     }
-
-    /**
-     * Create alarm close operation builder
-     *
-     * @example
-     *	ogapi.operations.builderFactory.newAlarmCloseBuilder()
-     * @return {AlarmCloseBuilder} 
-     */
-    newAlarmCloseBuilder() {
-        return new AlarmCloseBuilder(this._ogapi);
-    }
-
-    /**
-     * Create alarm attend operation builder
-     *
-     * @example
-     *	ogapi.operations.builderFactory.newAlarmAttendBuilder()
-     * @return {AlarmAttendBuilder} 
-     */
-    newAlarmAttendBuilder() {
-        return new AlarmAttendBuilder(this._ogapi);
-    }
-
 }

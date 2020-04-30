@@ -10,14 +10,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var _catalogAlarmAttendBuilder = require('./catalog/AlarmAttendBuilder');
-
-var _catalogAlarmAttendBuilder2 = _interopRequireDefault(_catalogAlarmAttendBuilder);
-
-var _catalogAlarmCloseBuilder = require('./catalog/AlarmCloseBuilder');
-
-var _catalogAlarmCloseBuilder2 = _interopRequireDefault(_catalogAlarmCloseBuilder);
-
 var _catalogBaseOperationBuilder = require('./catalog/BaseOperationBuilder');
 
 var _catalogBaseOperationBuilder2 = _interopRequireDefault(_catalogBaseOperationBuilder);
@@ -46,12 +38,9 @@ var Operations = (function () {
     function Operations(ogapi) {
         _classCallCheck(this, Operations);
 
-        var _this = this;
         this._ogapi = ogapi;
         this._operations = [];
-        this._operationNames = ['ALARM_CLOSE', 'ALARM_ATTEND'];
-        this._operations.push({ name: 'ALARM_CLOSE', builder: new _catalogAlarmCloseBuilder2['default'](ogapi) });
-        this._operations.push({ name: 'ALARM_ATTEND', builder: new _catalogAlarmAttendBuilder2['default'](ogapi) });
+        this._operationNames = [];
     }
 
     /**	
@@ -153,32 +142,6 @@ var Operations = (function () {
             return this._operations.find(function (config) {
                 return config.name == this;
             }, name);
-        }
-
-        /**
-         * Create alarm close operation builder
-         *
-         * @example
-         *	ogapi.operations.builderFactory.newAlarmCloseBuilder()
-         * @return {AlarmCloseBuilder} 
-         */
-    }, {
-        key: 'newAlarmCloseBuilder',
-        value: function newAlarmCloseBuilder() {
-            return new _catalogAlarmCloseBuilder2['default'](this._ogapi);
-        }
-
-        /**
-         * Create alarm attend operation builder
-         *
-         * @example
-         *	ogapi.operations.builderFactory.newAlarmAttendBuilder()
-         * @return {AlarmAttendBuilder} 
-         */
-    }, {
-        key: 'newAlarmAttendBuilder',
-        value: function newAlarmAttendBuilder() {
-            return new _catalogAlarmAttendBuilder2['default'](this._ogapi);
         }
     }]);
 
