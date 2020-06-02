@@ -562,6 +562,7 @@ export default class StaticSearch extends Search {
                 'MOVISTAR',
                 'VODAFONE',
                 'ORANGE',
+                'RDN',
                 'Xfera Móviles, SA',
                 'Euskaltel, SA',
                 'BT España Compañia de Servicios Globales de',
