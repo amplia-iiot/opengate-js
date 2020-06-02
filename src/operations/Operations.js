@@ -74,6 +74,7 @@ export default class Operations {
     getOperationList() {
         return merge(true, this._operationNames);
     }
+    
     _createBuilder(config) {
         return new BaseOperationBuilder(this._ogapi, config);
     }

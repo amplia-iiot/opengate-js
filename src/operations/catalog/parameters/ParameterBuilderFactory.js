@@ -1,6 +1,10 @@
 'use strict';
 
 import BaseParameterBuilderWithParent from './BaseParameterBuilderWithParent';
+// import jsf from 'json-schema-faker';
+
+// jsf.option('useDefaultValue', true);
+// jsf.option('alwaysFakeOptionals', true);
 
 /**
 * This class generates all operation parameters builders by "parameters" attribute that there is into config operation json
@@ -13,11 +17,17 @@ export default class ParameterBuilderFactory{
 	*/
 	constructor(ogapi,parameters,parent){
 		const _ogapi = ogapi;
-		const _parent = parent;		
-		for(let i in parameters){
-			let param = parameters[i];
-			this[createBuilderName(param.name)] = function () { return new BaseParameterBuilderWithParent(_ogapi, param, _parent);};
-		}
+		const _parent = parent;
+
+		// const paramsExample = jsf.generate(parameters);
+
+		// for(let i in paramsExample){
+		// 	// let param = paramsExample[i];
+		// 	// this[createBuilderName(param)] = function (value) { 
+		// 	// 	return new BaseParameterBuilderWithParent(_ogapi, param, _parent);
+		// 	// };
+		// 	console.log('parameter-' + i)
+		// }
 
 		// Ejemplo, name = "profile" => return "newProfileParamBuilder"
 		function createBuilderName(name){

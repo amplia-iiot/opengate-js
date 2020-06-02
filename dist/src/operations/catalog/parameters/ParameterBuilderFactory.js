@@ -12,6 +12,11 @@ var _BaseParameterBuilderWithParent = require('./BaseParameterBuilderWithParent'
 
 var _BaseParameterBuilderWithParent2 = _interopRequireDefault(_BaseParameterBuilderWithParent);
 
+// import jsf from 'json-schema-faker';
+
+// jsf.option('useDefaultValue', true);
+// jsf.option('alwaysFakeOptionals', true);
+
 /**
 * This class generates all operation parameters builders by "parameters" attribute that there is into config operation json
 */
@@ -23,23 +28,20 @@ var ParameterBuilderFactory =
 * @param {!BaseOperationBuilder} parent - this is a instance of BaseOperationBuilder
 */
 function ParameterBuilderFactory(ogapi, parameters, parent) {
-	var _this = this;
-
 	_classCallCheck(this, ParameterBuilderFactory);
 
 	var _ogapi = ogapi;
 	var _parent = parent;
 
-	var _loop = function (i) {
-		var param = parameters[i];
-		_this[createBuilderName(param.name)] = function () {
-			return new _BaseParameterBuilderWithParent2['default'](_ogapi, param, _parent);
-		};
-	};
+	// const paramsExample = jsf.generate(parameters);
 
-	for (var i in parameters) {
-		_loop(i);
-	}
+	// for(let i in paramsExample){
+	// 	// let param = paramsExample[i];
+	// 	// this[createBuilderName(param)] = function (value) {
+	// 	// 	return new BaseParameterBuilderWithParent(_ogapi, param, _parent);
+	// 	// };
+	// 	console.log('parameter-' + i)
+	// }
 
 	// Ejemplo, name = "profile" => return "newProfileParamBuilder"
 	function createBuilderName(name) {

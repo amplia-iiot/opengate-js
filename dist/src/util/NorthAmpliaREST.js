@@ -71,6 +71,47 @@ var NorthAmpliaREST = (function () {
             };
         });        
         */
+        //   mock.post(_options.url + '/search/catalog/operations', function(req) {
+        //     return {
+        //         body: {
+        //             "operations": [
+        //                 {
+        //                     "name": "ADMINISTRATIVE_STATUS_CHANGE",
+        //                     "title": "Administrative status change params",
+        //                     "description": "Allows to change the administrative status of an entity",
+        //                     "applicableTo": [
+        //                       "GATEWAY",
+        //                       "ASSET",
+        //                       "SUBSCRIPTION",
+        //                       "SUBSCRIBER"
+        //                     ],
+        //                     "categoryPath": "/admin",
+        //                     "parameters": {
+        //                         "schema": {
+        //                             "type": "object",
+        //                             "properties": {
+        //                             "admsts": {
+        //                                 "type": "string",
+        //                                 "title": "Administrative status"
+        //                             }
+        //                             },
+        //                             "additionalProperties": false,
+        //                             "required": ["admsts"]
+        //                         }
+        //                     },
+        //                     "steps": [
+        //                       {
+        //                         "name": "ADMINISTRATIVE_STATUS_CHANGE",
+        //                         "title": "Administrative Status Change",
+        //                         "description": ""
+        //                       }
+        //                     ]
+        //                   },
+        //             ]
+        //         },
+        //         statusCode: 200
+        //     };
+        // });       
         // ----------------------------------
     }
 

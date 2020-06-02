@@ -12,6 +12,8 @@ import ExecuteEveryBuilder from './period/ExecuteEveryBuilder';
 import moment from 'moment';
 import { TIME_FORMAT, DATE_FORMAT } from './../../util/DATE_FORMAT';
 
+import Ajv from 'ajv'
+
 const DEFAULT_DELAYED_STOP = 43200; //Valor por defecto, 43200 minutos, equivale a un mes de retraso. Conclusión a la que se ha llegado mediante inspiración divina.
 const ACK_TIMEOUT = "ackTimeout",
     TIMEOUT = "timeout",
@@ -46,7 +48,8 @@ export default class BaseOperationBuilder {
      * @param {!object} config - this is configuration about operation. 
      */
     constructor(ogapi, config) {
-        this._requiredParameters = [];
+        this._ajv = new Ajv({useDefaults: "empty", coerceTypes: true})
+        // this._requiredParameters = [];
         /**
          * Util used into BaseOperationBuilder to append entities the three different ways. By filter, By tags, By entityList
          */
@@ -68,18 +71,19 @@ export default class BaseOperationBuilder {
             name: config.name,
             schedule: {}
         };
-        if (typeof config.parameters !== "undefined" && config.parameters.length > 0) {
+        //if (typeof config.parameters !== "undefined" && config.parameters.length > 0) {
+        if (typeof config.parameters !== "undefined") {
             /**
              * This class contains all operation parameters builders
              */
-            this.paramBuilderFactory = new ParameterBuilderFactory(ogapi, config.parameters, this);
-            this._build.parameters = [];
-            for (let i = 0; i < config.parameters.length; i++) {
-                let param = config.parameters[i];
-                if (param.required === true) {
-                    this._requiredParameters.push(param.name);
-                }
-            }
+            // this.paramBuilderFactory = new ParameterBuilderFactory(ogapi, config.parameters, this);
+            this._build.parameters = {};
+            // for (let i = 0; i < config.parameters.length; i++) {
+            //     let param = config.parameters[i];
+            //     if (param.required === true) {
+            //         this._requiredParameters.push(param.name);
+            //     }
+            // }
         }
     }
 
@@ -368,7 +372,36 @@ export default class BaseOperationBuilder {
         return this;
     }
 
+    /**
+     * Set parameters of the operation
+     * @example
+     *  ogapi.operations.builderFactory.newXXXBuilder().withParameters({ param1: 'value1', param2: 'value2'})
+     * @param {!object} parameters   
+     * @throws {Error} throw error when parameters is not typeof object  
+     * @return {BaseOperationBuilder}
+     */
+    withParameters(parameters) {
+        if (this._config.parameters) {
+            this._build.parameters = parameters;
+            this._checkMandatoryParameters();
+            return this;
+        } else {
+            throw new Error('This operation does not support parameters')
+        }
+    }
 
+    withParameter(parameter, value) {
+        if (this._config.parameters) { 
+            if ( !this._build.parameters) {
+                this._build.parameters = {}
+            }
+            
+            this._build.parameters[parameter] = value;
+            return this;
+        } else {
+            throw new Error('This operation does not support parameters')
+        }
+    }
 
     /**
      * Build a instance of Operation 
@@ -522,15 +555,7 @@ export default class BaseOperationBuilder {
         };
     }
 
-
     _addSpecificParameter(value, paramName) {
-        let param = this._config.genericParameters.find(
-            function(param) {
-                return param.name.split(".").pop() == this;
-            },
-            paramName);
-        if (typeof param !== "undefined")
-            this._checkParam(value, param);
         this._build.operationParameters[paramName] = value;
     }
 
@@ -548,18 +573,12 @@ export default class BaseOperationBuilder {
     }
 
     _checkMandatoryParameters() {
-        let parametersNotFound = [];
-        for (let i = 0; i < this._requiredParameters.length; i++) {
-            if (typeof this._build.parameters.find(function(param) {
-                    return param.name == this;
-                }, this._requiredParameters[i]) === "undefined") {
-                parametersNotFound.push(this._requiredParameters[i]);
+        if (this._config.parameters && this._config.parameters.schema) {
+            const validate = this._ajv.compile(this._config.parameters.schema)
+            const valid = validate(this._build.parameters)
+            if(!valid) {
+                throw new Error(validate.errors)
             }
-        }
-        if (parametersNotFound.length > 0) {
-            throw new Error("This operation <" + this._build.name +
-                "> there are required parameters who have not been set. Parameters required: " +
-                JSON.stringify(parametersNotFound).replace(new RegExp("\"", 'g'), ""));
         }
     }
 }
