@@ -470,7 +470,7 @@ export default class RuleConfigurations extends BaseProvision {
             &quot;description&quot;: (this._description ? this._description : undefined),
             &quot;parameters&quot;: this._parameters,
             &quot;condition&quot;: this._mode ===&apos;EASY&apos;?this._condition: undefined,
-            &quot;actionsDelay&quot;: this._mode ===&apos;EASY&apos;?this._actionsDelay: undefined,
+            &quot;actionsDelay&quot;: this._actionsDelay,
             &quot;actions&quot;: this._mode ===&apos;EASY&apos;?this._actions: undefined,
             &quot;javascript&quot;: this._mode ===&apos;ADVANCED&apos;?this._javascript:undefined
         };
