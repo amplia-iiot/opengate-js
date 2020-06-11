@@ -247,6 +247,8 @@ import ExecuteEveryBuilder from &apos;./period/ExecuteEveryBuilder&apos;;
 import moment from &apos;moment&apos;;
 import { TIME_FORMAT, DATE_FORMAT } from &apos;./../../util/DATE_FORMAT&apos;;
 
+import Ajv from &apos;ajv&apos;
+
 const DEFAULT_DELAYED_STOP = 43200; //Valor por defecto, 43200 minutos, equivale a un mes de retraso. Conclusi&#xF3;n a la que se ha llegado mediante inspiraci&#xF3;n divina.
 const ACK_TIMEOUT = &quot;ackTimeout&quot;,
     TIMEOUT = &quot;timeout&quot;,
@@ -281,7 +283,8 @@ export default class BaseOperationBuilder {
      * @param {!object} config - this is configuration about operation. 
      */
     constructor(ogapi, config) {
-        this._requiredParameters = [];
+        this._ajv = new Ajv({useDefaults: &quot;empty&quot;, coerceTypes: true})
+        // this._requiredParameters = [];
         /**
          * Util used into BaseOperationBuilder to append entities the three different ways. By filter, By tags, By entityList
          */
@@ -303,18 +306,19 @@ export default class BaseOperationBuilder {
             name: config.name,
             schedule: {}
         };
-        if (typeof config.parameters !== &quot;undefined&quot; &amp;&amp; config.parameters.length &gt; 0) {
+        //if (typeof config.parameters !== &quot;undefined&quot; &amp;&amp; config.parameters.length &gt; 0) {
+        if (typeof config.parameters !== &quot;undefined&quot;) {
             /**
              * This class contains all operation parameters builders
              */
-            this.paramBuilderFactory = new ParameterBuilderFactory(ogapi, config.parameters, this);
-            this._build.parameters = [];
-            for (let i = 0; i &lt; config.parameters.length; i++) {
-                let param = config.parameters[i];
-                if (param.required === true) {
-                    this._requiredParameters.push(param.name);
-                }
-            }
+            // this.paramBuilderFactory = new ParameterBuilderFactory(ogapi, config.parameters, this);
+            this._build.parameters = {};
+            // for (let i = 0; i &lt; config.parameters.length; i++) {
+            //     let param = config.parameters[i];
+            //     if (param.required === true) {
+            //         this._requiredParameters.push(param.name);
+            //     }
+            // }
         }
     }
 
@@ -603,7 +607,36 @@ export default class BaseOperationBuilder {
         return this;
     }
 
+    /**
+     * Set parameters of the operation
+     * @example
+     *  ogapi.operations.builderFactory.newXXXBuilder().withParameters({ param1: &apos;value1&apos;, param2: &apos;value2&apos;})
+     * @param {!object} parameters   
+     * @throws {Error} throw error when parameters is not typeof object  
+     * @return {BaseOperationBuilder}
+     */
+    withParameters(parameters) {
+        if (this._config.parameters) {
+            this._build.parameters = parameters;
+            this._checkMandatoryParameters();
+            return this;
+        } else {
+            throw new Error(&apos;This operation does not support parameters&apos;)
+        }
+    }
 
+    withParameter(parameter, value) {
+        if (this._config.parameters) { 
+            if ( !this._build.parameters) {
+                this._build.parameters = {}
+            }
+            
+            this._build.parameters[parameter] = value;
+            return this;
+        } else {
+            throw new Error(&apos;This operation does not support parameters&apos;)
+        }
+    }
 
     /**
      * Build a instance of Operation 
@@ -757,15 +790,7 @@ export default class BaseOperationBuilder {
         };
     }
 
-
     _addSpecificParameter(value, paramName) {
-        let param = this._config.genericParameters.find(
-            function(param) {
-                return param.name.split(&quot;.&quot;).pop() == this;
-            },
-            paramName);
-        if (typeof param !== &quot;undefined&quot;)
-            this._checkParam(value, param);
         this._build.operationParameters[paramName] = value;
     }
 
@@ -783,18 +808,12 @@ export default class BaseOperationBuilder {
     }
 
     _checkMandatoryParameters() {
-        let parametersNotFound = [];
-        for (let i = 0; i &lt; this._requiredParameters.length; i++) {
-            if (typeof this._build.parameters.find(function(param) {
-                    return param.name == this;
-                }, this._requiredParameters[i]) === &quot;undefined&quot;) {
-                parametersNotFound.push(this._requiredParameters[i]);
+        if (this._config.parameters &amp;&amp; this._config.parameters.schema) {
+            const validate = this._ajv.compile(this._config.parameters.schema)
+            const valid = validate(this._build.parameters)
+            if(!valid) {
+                throw new Error(validate.errors)
             }
-        }
-        if (parametersNotFound.length &gt; 0) {
-            throw new Error(&quot;This operation &lt;&quot; + this._build.name +
-                &quot;&gt; there are required parameters who have not been set. Parameters required: &quot; +
-                JSON.stringify(parametersNotFound).replace(new RegExp(&quot;\&quot;&quot;, &apos;g&apos;), &quot;&quot;));
         }
     }
 }</code></pre>
