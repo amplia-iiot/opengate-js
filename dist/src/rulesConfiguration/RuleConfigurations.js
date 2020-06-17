@@ -74,8 +74,8 @@ var RuleConfigurations = (function (_BaseProvision) {
 
             if (ruleConfigurationObj.active !== null && typeof ruleConfigurationObj.active !== 'undefined') {
                 this.withActive(ruleConfigurationObj.active);
-            } else {
-                this.withActive(false);
+                // } else {
+                //     this.withActive(false);
             }
 
             if (ruleConfigurationObj.condition !== null && typeof ruleConfigurationObj.condition !== 'undefined') this.withCondition(ruleConfigurationObj.condition);
@@ -271,7 +271,7 @@ var RuleConfigurations = (function (_BaseProvision) {
     }, {
         key: '_composeElement',
         value: function _composeElement() {
-            this._checkRequiredParameters();
+            // this._checkRequiredParameters();
 
             var updateData = {
                 "identifier": this._identifier,
@@ -328,7 +328,22 @@ var RuleConfigurations = (function (_BaseProvision) {
         value: function update() {
             this._checkRequiredParameters(true);
 
-            return this._doNorthPut(this._buildURL() + '/' + this._identifier, this._composeElement());
+            return this._doNorthPut(this._buildURL() + this._identifier, this._composeElement());
+        }
+
+        /** 
+         * Udpate a Rule
+         * @return {Promise}
+         * @throws {Error} 
+         */
+    }, {
+        key: 'updateParameters',
+        value: function updateParameters(newParameters) {
+            if (this._identifier === undefined || this._organization === undefined || this._channel === undefined) {
+                throw new Error('Parameters organization, channel and identifier must be defined');
+            }
+
+            return this._doNorthPut(this._buildURL() + this._identifier + '/parameters', newParameters || this._parameters || []);
         }
 
         /** 
@@ -343,7 +358,7 @@ var RuleConfigurations = (function (_BaseProvision) {
 
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            this._ogapi.Napi['delete'](this._buildURL() + '/' + this._identifier).then(function (res) {
+            this._ogapi.Napi['delete'](this._buildURL() + this._identifier).then(function (res) {
                 if (res.statusCode === 200) {
                     defered.resolve({
                         statusCode: res.statusCode
