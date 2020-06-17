@@ -279,8 +279,8 @@ export default class RuleConfigurations extends BaseProvision {
 
             if (ruleConfigurationObj.active !== null &amp;&amp; typeof ruleConfigurationObj.active !== &apos;undefined&apos;) {
                 this.withActive(ruleConfigurationObj.active);
-            } else {
-                this.withActive(false);
+            // } else {
+            //     this.withActive(false);
             }
 
             if (ruleConfigurationObj.condition !== null &amp;&amp; typeof ruleConfigurationObj.condition !== &apos;undefined&apos;)
@@ -458,7 +458,7 @@ export default class RuleConfigurations extends BaseProvision {
     }
 
     _composeElement() {
-        this._checkRequiredParameters();
+        // this._checkRequiredParameters();
 
         let updateData = {
             &quot;identifier&quot;: this._identifier,
@@ -482,10 +482,10 @@ export default class RuleConfigurations extends BaseProvision {
     _checkRequiredParameters(isUpdate) {
         if (isUpdate) {
             if (this._identifier === undefined || this._organization === undefined || this._channel === undefined || this._active === undefined || this._mode === undefined)
-            throw new Error(&apos;Parameters organization, channel, active, mode and identifier must be defined&apos;);
+                throw new Error(&apos;Parameters organization, channel, active, mode and identifier must be defined&apos;);
         } else {
             if (this._name === undefined || this._organization === undefined || this._channel === undefined || this._active === undefined || this._mode === undefined)
-            throw new Error(&apos;Parameters organization, channel, active, mode and name must be defined&apos;);
+                throw new Error(&apos;Parameters organization, channel, active, mode and name must be defined&apos;);
         }
     }
 
@@ -512,7 +512,20 @@ export default class RuleConfigurations extends BaseProvision {
     update() {
         this._checkRequiredParameters(true);
 
-        return this._doNorthPut(this._buildURL() + &apos;/&apos; + this._identifier, this._composeElement());
+        return this._doNorthPut(this._buildURL() + this._identifier, this._composeElement());
+    }
+
+    /** 
+     * Udpate a Rule
+     * @return {Promise}
+     * @throws {Error} 
+     */
+    updateParameters(newParameters) {
+        if (this._identifier === undefined || this._organization === undefined || this._channel === undefined) {
+            throw new Error(&apos;Parameters organization, channel and identifier must be defined&apos;);
+        }
+
+        return this._doNorthPut(this._buildURL() + this._identifier + &apos;/parameters&apos;, newParameters || this._parameters || []);
     }
 
     /** 
@@ -526,7 +539,7 @@ export default class RuleConfigurations extends BaseProvision {
 
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Napi.delete(this._buildURL() + &apos;/&apos; + this._identifier)
+        this._ogapi.Napi.delete(this._buildURL() + this._identifier)
             .then((res) =&gt; {
                 if (res.statusCode === 200) {
                     defered.resolve({

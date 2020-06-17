@@ -1543,13 +1543,13 @@ window.esdocSearchIndex = [
   ],
   [
     "internalopengateapi#bundlesbuilder() src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder()",
-    "test-file/client/collection/iot.spec.js.html#lineNumber4",
+    "test-file/client/bundles/bundles.spec.js.html#lineNumber4",
     "Check funcionality bundles module:",
     "test"
   ],
   [
     "internalopengateapi#bundlesbuilder() src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder()",
-    "test-file/client/bundles/bundles.spec.js.html#lineNumber4",
+    "test-file/client/collection/iot.spec.js.html#lineNumber4",
     "Check funcionality bundles module:",
     "test"
   ],
@@ -1597,13 +1597,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber195",
+    "test-file/client/device/device.spec.js.html#lineNumber190",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Option",
     "test"
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber190",
+    "test-file/client/device/device.spec.js.html#lineNumber195",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Option",
     "test"
   ],
@@ -1621,13 +1621,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber160",
+    "test-file/client/device/device.spec.js.html#lineNumber165",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Type",
     "test"
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber165",
+    "test-file/client/device/device.spec.js.html#lineNumber160",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Type",
     "test"
   ],
@@ -1729,13 +1729,13 @@ window.esdocSearchIndex = [
   ],
   [
     "internalopengateapi#bundlesbuilder src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder",
-    "test-file/client/device/device.spec.js.html#lineNumber10",
+    "test-file/client/collection/iot.spec.js.html#lineNumber10",
     "Check funcionality bundles module: Check basic parameters:",
     "test"
   ],
   [
     "internalopengateapi#bundlesbuilder src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder",
-    "test-file/client/collection/iot.spec.js.html#lineNumber10",
+    "test-file/client/device/device.spec.js.html#lineNumber10",
     "Check funcionality bundles module: Check basic parameters:",
     "test"
   ],
@@ -1753,13 +1753,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber12",
+    "test-file/client/collection/iot.spec.js.html#lineNumber12",
     "Check funcionality bundles module: Check basic parameters: Name is not a String",
     "test"
   ],
   [
     "",
-    "test-file/client/collection/iot.spec.js.html#lineNumber12",
+    "test-file/client/device/device.spec.js.html#lineNumber12",
     "Check funcionality bundles module: Check basic parameters: Name is not a String",
     "test"
   ],
@@ -1873,13 +1873,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/security/certificates.spec.js.html#lineNumber30",
+    "test-file/client/security/certificates.spec.js.html#lineNumber23",
     "Check funcionality certificates: Check basic parameters: administrativeState is not a String",
     "test"
   ],
   [
     "",
-    "test-file/client/security/certificates.spec.js.html#lineNumber23",
+    "test-file/client/security/certificates.spec.js.html#lineNumber30",
     "Check funcionality certificates: Check basic parameters: administrativeState is not a String",
     "test"
   ],
@@ -2490,14 +2490,14 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "",
-    "test-file/client/searching/search.spec.js.html#lineNumber106",
+    "searchbuilder#filter src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter",
+    "test-file/client/searching/search.spec.js.html#lineNumber43",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter:",
     "test"
   ],
   [
-    "searchbuilder#filter src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter",
-    "test-file/client/searching/search.spec.js.html#lineNumber43",
+    "",
+    "test-file/client/searching/search.spec.js.html#lineNumber106",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter:",
     "test"
   ],
@@ -2527,13 +2527,13 @@ window.esdocSearchIndex = [
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriberssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber128",
+    "test-file/client/searching/search.spec.js.html#lineNumber68",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder",
     "test"
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriberssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber68",
+    "test-file/client/searching/search.spec.js.html#lineNumber128",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder",
     "test"
   ],
@@ -2557,6 +2557,12 @@ window.esdocSearchIndex = [
   ],
   [
     "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
+    "test-file/client/searching/search.spec.js.html#lineNumber393",
+    "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
+    "test"
+  ],
+  [
+    "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
     "test-file/client/searching/search.spec.js.html#lineNumber405",
     "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
     "test"
@@ -2564,12 +2570,6 @@ window.esdocSearchIndex = [
   [
     "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
     "test-file/client/searching/search.spec.js.html#lineNumber399",
-    "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
-    "test"
-  ],
-  [
-    "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber393",
     "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
     "test"
   ],
@@ -6675,6 +6675,12 @@ window.esdocSearchIndex = [
     "src/rulesconfiguration/ruleconfigurations.js~ruleconfigurations#update",
     "class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html#instance-method-update",
     "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#update",
+    "method"
+  ],
+  [
+    "src/rulesconfiguration/ruleconfigurations.js~ruleconfigurations#updateparameters",
+    "class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html#instance-method-updateParameters",
+    "src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations#updateParameters",
     "method"
   ],
   [
