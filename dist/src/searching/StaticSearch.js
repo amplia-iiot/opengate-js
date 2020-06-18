@@ -155,7 +155,6 @@ var StaticSearch = (function (_Search) {
                 case 'ticketSeverity':
                 case 'ticketPriority':
                 case 'ticketStatus':
-                case 'mobilePhoneProvider':
                 case 'ruleConfigurationSeverity':
                 case 'ruleMode':
                 case 'ruleType':
@@ -550,7 +549,6 @@ var StaticSearch = (function (_Search) {
                         }
                     }
                 },
-                'mobilePhoneProvider': ['MOVISTAR', 'VODAFONE', 'ORANGE', 'RDN', 'Xfera Móviles, SA', 'Euskaltel, SA', 'BT España Compañia de Servicios Globales de', 'Telecable de Asturias, SAU', 'R Cable y Telecomunicaciones Galicia, SA', 'Cableuropa, SAU', 'E-Plus Móviles, SL', 'Fonyou Telecom, SL', 'Jazz Telecom, SAU', 'Best Spain Telecom, SL', 'Barablu Móvil España, SLU', 'Vizzavi España, SL', 'Lycamobile, SL', 'Lleida Networks Serveis Telemátics, SL', 'Vivo, SA', 'Jasper Operator', 'Sigfox Operator'],
                 'ruleMode': ['EASY', 'ADVANCED'],
                 'ruleType': ['DATASTREAM', 'OPERATION', 'EVENT'],
                 'ruleConfigurationSeverity': ['INFORMATIVE', 'URGENT', 'CRITICAL'],

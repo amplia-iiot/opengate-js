@@ -82,6 +82,9 @@ var IOT_FIELDS = {
     },
     "EMPTY": {
         "EMPTY": []
+    },
+    "OPERATORS": {
+        "OPERATORS": ["operator.name"]
     }
 };
 exports.IOT_FIELDS = IOT_FIELDS;

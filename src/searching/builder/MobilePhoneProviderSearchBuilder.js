@@ -1,7 +1,9 @@
 'use strict';
 
 import SearchBuilder from './SearchBuilder';
-import StaticSearch from '../StaticSearch';
+import FieldFinder from '../../util/searchingFields/FieldFinder';
+
+const BASE_URL = '/catalog/operators';
 
 /**
  * Defined a search over mobile phone provider catalog
@@ -9,29 +11,10 @@ import StaticSearch from '../StaticSearch';
  */
 export default class MobilePhoneProviderSearchBuilder extends SearchBuilder {
     /**
-     *  @param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
+     *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */
     constructor(parent) {
-        super(parent, {});
-        this._url = '/mobilePhoneProvider';
-        this.customFilters = {};
+        super(parent, {}, new FieldFinder(parent, BASE_URL));
+        this._url = BASE_URL;
     }
-
-    /**
-     * Build a instance of StaticSearch 
-     *
-     * @example
-     *   ogapi.mobilePhoneProviderSearchBuilder().build()
-     * @throws {SearchBuilderError} Throw error on url build
-     * @return {StaticSearch}  
-     */
-    build() {
-        return new StaticSearch(this._parent,
-            this._buildUrl(),
-            null,
-            this._builderParams.timeout,
-            'mobilePhoneProvider', this.customFilters);
-    }
-
-
 }

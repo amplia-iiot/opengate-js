@@ -253,5 +253,10 @@ export const IOT_FIELDS = {
     },
     "EMPTY": {
         "EMPTY": []
+    },
+    "OPERATORS": {
+        "OPERATORS": [
+            "operator.name"
+        ]
     }
 };
