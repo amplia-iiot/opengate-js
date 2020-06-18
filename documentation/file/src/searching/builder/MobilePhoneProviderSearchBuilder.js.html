@@ -236,7 +236,9 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
 import SearchBuilder from &apos;./SearchBuilder&apos;;
-import StaticSearch from &apos;../StaticSearch&apos;;
+import FieldFinder from &apos;../../util/searchingFields/FieldFinder&apos;;
+
+const BASE_URL = &apos;/catalog/operators&apos;;
 
 /**
  * Defined a search over mobile phone provider catalog
@@ -244,31 +246,12 @@ import StaticSearch from &apos;../StaticSearch&apos;;
  */
 export default class MobilePhoneProviderSearchBuilder extends SearchBuilder {
     /**
-     *  @param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
+     *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */
     constructor(parent) {
-        super(parent, {});
-        this._url = &apos;/mobilePhoneProvider&apos;;
-        this.customFilters = {};
+        super(parent, {}, new FieldFinder(parent, BASE_URL));
+        this._url = BASE_URL;
     }
-
-    /**
-     * Build a instance of StaticSearch 
-     *
-     * @example
-     *   ogapi.mobilePhoneProviderSearchBuilder().build()
-     * @throws {SearchBuilderError} Throw error on url build
-     * @return {StaticSearch}  
-     */
-    build() {
-        return new StaticSearch(this._parent,
-            this._buildUrl(),
-            null,
-            this._builderParams.timeout,
-            &apos;mobilePhoneProvider&apos;, this.customFilters);
-    }
-
-
 }
 </code></pre>
 
