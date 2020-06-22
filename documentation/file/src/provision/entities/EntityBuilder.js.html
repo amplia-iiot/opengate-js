@@ -240,7 +240,7 @@ import q, {
 } from &apos;q&apos;;
 import jp from &apos;jsonpath&apos;;
 
-import jsonschema from &apos;jsonschema&apos;;
+import Ajv from &apos;ajv&apos;;
 import AssetBuilder from &apos;./AssetBuilder&apos;;
 import DeviceBuilder from &apos;./DeviceBuilder&apos;;
 import TicketBuilder from &apos;./TicketBuilder&apos;;
@@ -250,8 +250,7 @@ import CsvBulkBuilder from &apos;./CsvBulkBuilder&apos;;
 import JsonFlattenedBulkBuilder from &apos;./JsonFlattenedBulkBuilder&apos;;
 import JsonBulkBuilder from &apos;./JsonBulkBuilder&apos;;
 
-
-const jsonSchemaValidator = new jsonschema.Validator();
+const jsonSchemaValidator = new Ajv();
 const ERROR_ORGANIZATION = &apos;Parameters organization must be defined&apos;;
 const ERROR_BULK_RESOURCE = &apos;The parameters resources must be defined and must be some of these values: entities or tickets&apos;;
 const BULK_RESOURCES = [&apos;entities&apos;, &apos;tickets&apos;];
@@ -320,6 +319,10 @@ export default class EntityBuilder {
         let basicTypesSearchBuilder = this._ogapi.basicTypesSearchBuilder();
 
         basicTypesSearchBuilder.withPath(&apos;$&apos;).build().execute().then(function(res) {
+            if (jsonSchemaValidator.getSchema(schema_base)) {
+                jsonSchemaValidator.removeSchema(schema_base);
+            }
+
             jsonSchemaValidator.addSchema(res.data, schema_base);
             defered.resolve();
         }).catch(function(err) {
