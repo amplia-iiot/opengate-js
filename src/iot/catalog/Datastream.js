@@ -1,9 +1,9 @@
 'use strict';
+import Ajv from 'ajv';
 
-import jsonSchema from 'jsonschema';
-import Qrating from './Qrating';
+// import jsonSchema from 'jsonschema';
+// import Qrating from './Qrating';
 
-let jsValidate = jsonSchema.validate;
 /**
  * Defines the builder to configure a datastream of IoT datamodel. With this builder you can configure a datastream
  */
@@ -191,7 +191,8 @@ export default class Datastream {
         }
 
         try {
-            jsValidate(4, this._schema);
+            var ajv = new Ajv()
+            ajv.compile(this._schema);
         } catch (errValidation) {
             throw new Error('Schema not valid: ' + errValidation);
         }
