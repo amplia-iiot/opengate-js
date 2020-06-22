@@ -31,6 +31,7 @@ const match_url = {
     '/iotQRating': 'IOTQRATING',
     '/catalog/softwares': 'SOFTWARE_VERSION',
     '/catalog/hardwares': 'MODEL',
+    '/catalog/operators': 'OPERATORS',
     '/domains': 'DOMAIN',
     '/users': 'USER',
     '/areas': 'AREAS',

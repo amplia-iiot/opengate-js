@@ -6,7 +6,7 @@ import q from 'q';
 
 const ERROR_VALUE_NOT_ALLOWED = 'value is not allowed. The value should be formatted as follows: ';
 const ERROR_DATASTREAM_NOT_ALLOWED = 'Datastream is not allowed';
-
+const schema_base = '/og_basic_types.json';
 
 /**
  * This class allow set simple values.
@@ -50,14 +50,14 @@ export default class SimpleBuilder extends BaseProvision {
                 if (_this._entity[_id].constructor === Array) {
                     _this._entity[_id].forEach(function(item) {
                         let value = item._value._current.value;
-                        if (!_this._jsonSchemaValidator.validate(value, jSchema).valid) {
-                            errors.push(_id + ' ' + ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
+                        if (!_this._jsonSchemaValidator.validate(schema_base, value)) {
+                            errors.push(_id + ' [' +  value + '] ' + ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
                         }
                     });
                 } else {
                     let value = _this._entity[_id]._value._current.value;
-                    if (!_this._jsonSchemaValidator.validate(value, jSchema).valid) {
-                        errors.push(_id + ' ' + ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
+                    if (!_this._jsonSchemaValidator.validate(schema_base, value)) {
+                        errors.push(_id + ' [' +  value + '] ' + ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));
                     }
                 }
             }

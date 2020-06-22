@@ -18,9 +18,9 @@ var _jsonpath = require('jsonpath');
 
 var _jsonpath2 = _interopRequireDefault(_jsonpath);
 
-var _jsonschema = require('jsonschema');
+var _ajv = require('ajv');
 
-var _jsonschema2 = _interopRequireDefault(_jsonschema);
+var _ajv2 = _interopRequireDefault(_ajv);
 
 var _AssetBuilder = require('./AssetBuilder');
 
@@ -54,7 +54,7 @@ var _JsonBulkBuilder = require('./JsonBulkBuilder');
 
 var _JsonBulkBuilder2 = _interopRequireDefault(_JsonBulkBuilder);
 
-var jsonSchemaValidator = new _jsonschema2['default'].Validator();
+var jsonSchemaValidator = new _ajv2['default']();
 var ERROR_ORGANIZATION = 'Parameters organization must be defined';
 var ERROR_BULK_RESOURCE = 'The parameters resources must be defined and must be some of these values: entities or tickets';
 var BULK_RESOURCES = ['entities', 'tickets'];
@@ -130,6 +130,10 @@ var EntityBuilder = (function () {
             var basicTypesSearchBuilder = this._ogapi.basicTypesSearchBuilder();
 
             basicTypesSearchBuilder.withPath('$').build().execute().then(function (res) {
+                if (jsonSchemaValidator.getSchema(schema_base)) {
+                    jsonSchemaValidator.removeSchema(schema_base);
+                }
+
                 jsonSchemaValidator.addSchema(res.data, schema_base);
                 defered.resolve();
             })['catch'](function (err) {
