@@ -1,5 +1,4 @@
 'use strict';
-
 Object.defineProperty(exports, '__esModule', {
     value: true
 });
@@ -10,15 +9,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var _jsonschema = require('jsonschema');
+var _ajv = require('ajv');
 
-var _jsonschema2 = _interopRequireDefault(_jsonschema);
+var _ajv2 = _interopRequireDefault(_ajv);
 
-var _Qrating = require('./Qrating');
+// import jsonSchema from 'jsonschema';
+// import Qrating from './Qrating';
 
-var _Qrating2 = _interopRequireDefault(_Qrating);
-
-var jsValidate = _jsonschema2['default'].validate;
 /**
  * Defines the builder to configure a datastream of IoT datamodel. With this builder you can configure a datastream
  */
@@ -232,7 +229,8 @@ var Datastream = (function () {
             }
 
             try {
-                jsValidate(4, this._schema);
+                var ajv = new _ajv2['default']();
+                ajv.compile(this._schema);
             } catch (errValidation) {
                 throw new Error('Schema not valid: ' + errValidation);
             }
