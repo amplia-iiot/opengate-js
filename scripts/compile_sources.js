@@ -25,7 +25,7 @@ gulp.task('clean', function() {
 });
 
 gulp.task('clean-doc', function() {
-    return gulp.src(['./documentation'], {
+    return gulp.src(['./docs'], {
             allowEmpty: true,
             read: false
         })
