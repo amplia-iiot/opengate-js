@@ -550,7 +550,7 @@ var StaticSearch = (function (_Search) {
                         }
                     }
                 },
-                'mobilePhoneProvider': ['MOVISTAR', 'VODAFONE', 'ORANGE', 'RDN', 'Xfera Móviles, SA', 'Euskaltel, SA', 'BT España Compañia de Servicios Globales de', 'Telecable de Asturias, SAU', 'R Cable y Telecomunicaciones Galicia, SA', 'Cableuropa, SAU', 'E-Plus Móviles, SL', 'Fonyou Telecom, SL', 'Jazz Telecom, SAU', 'Best Spain Telecom, SL', 'Barablu Móvil España, SLU', 'Vizzavi España, SL', 'Lycamobile, SL', 'Lleida Networks Serveis Telemátics, SL', 'Vivo, SA', 'Jasper Operator', 'Sigfox Operator'],
+                'mobilePhoneProvider': ['MOVISTAR', 'VODAFONE', 'ORANGE', 'RDN', 'Xfera Móviles, SA', 'Euskaltel, SA', 'BT España Compañia de Servicios Globales de', 'Telecable de Asturias, SAU', 'R Cable y Telecomunicaciones Galicia, SA', 'Cableuropa, SAU', 'E-Plus Móviles, SL', 'Fonyou Telecom, SL', 'Jazz Telecom, SAU', 'Best Spain Telecom, SL', 'Barablu Móvil España, SLU', 'Vizzavi España, SL', 'Lycamobile, SL', 'Lleida Networks Serveis Telemátics, SL', 'Vivo, SA', 'Jasper Operator', 'Sigfox Operator', 'CLARO_BR_GO', 'CLARO_BR_SP', 'VIVO_BR_GO', 'VIVO_BR_SP', 'MOVISTAR_CH', 'CLARO_CH', 'ENTEL_CH'],
                 'ruleMode': ['EASY', 'ADVANCED'],
                 'ruleType': ['DATASTREAM', 'OPERATION', 'EVENT'],
                 'ruleConfigurationSeverity': ['INFORMATIVE', 'URGENT', 'CRITICAL'],
