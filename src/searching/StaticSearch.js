@@ -579,7 +579,14 @@ export default class StaticSearch extends Search {
                 'Lleida Networks Serveis Telemátics, SL',
                 'Vivo, SA',
                 'Jasper Operator',
-                'Sigfox Operator'
+                'Sigfox Operator',
+                'CLARO_BR_GO',
+                'CLARO_BR_SP',
+                'VIVO_BR_GO',
+                'VIVO_BR_SP',
+                'MOVISTAR_CH',
+                'CLARO_CH',
+                'ENTEL_CH'
             ],
             'ruleConfigurationSeverity': [
                 'INFORMATIVE',
