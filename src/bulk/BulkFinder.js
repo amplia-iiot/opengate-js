@@ -26,6 +26,7 @@ export default class BulkFinder extends ProvisionGenericFinder {
      * @param {string} organization - entity organization .
      * @param {string} id - entity id.
      * @param {string} format - format response flag.
+     * @param {string} accept - accept.
      * @return {Promise} 
      */
     findByOrganizationAndId(organization, id, format, accept) {

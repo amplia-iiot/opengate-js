@@ -205,6 +205,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOKEN_URL">TOKEN_URL</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOKEN_URL">TOKEN_URL</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOKEN_URL">TOKEN_URL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOKEN_URL">TOKEN_URL</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOFTWARE_TYPES_ENUM">SOFTWARE_TYPES_ENUM</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching/error</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/error/SearchBuilderError.js~SearchBuilderError.html">SearchBuilderError</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">security</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/security/CertificateFinder.js~CertificateFinder.html">CertificateFinder</a></span></span></li>
@@ -235,21 +236,32 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/searching/builder/AlarmsSearchBuilder.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-import ExecutionsSearchBuilder from &apos;./ExecutionsSearchBuilder&apos;;
-import { TOKEN_URL } from &apos;./ExecutionsSearchBuilder&apos;;
+import SearchWithSummaryBuilder from &apos;./SearchWithSummaryBuilder&apos;;
 import FieldFinder from &apos;../../util/searchingFields/FieldFinder&apos;;
+
+export const TOKEN_URL = &apos;$_token&apos;;
 
 /**
  * Defined a search over Alarms	
  * @example ogapi.alarmsSearchBuilder()
  */
-export default class AlarmsSearchBuilder extends ExecutionsSearchBuilder {
+export default class AlarmsSearchBuilder extends SearchWithSummaryBuilder {
     /**
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */
-    constructor(parent) {
-        super(parent, new FieldFinder(parent, &apos;/alarms&apos;));
+    constructor(parent, fieldFinder = new FieldFinder(parent, &apos;/alarms&apos;)) {
+        super(parent, { onDevices: &apos;/devices&apos;, onSubscriptions: &apos;/subscriptions&apos; }, fieldFinder);
         this._url = &apos;/entities&apos; + TOKEN_URL + &apos;/alarms&apos;;
+    }
+
+    _buildUrl() {
+        for (let route in this._routes) {
+            if (this._builderParams[route]) {
+                this._url = this._url.replace(TOKEN_URL, this._routes[route]);
+            }
+        }
+        this._url = this._url.replace(TOKEN_URL, &apos;&apos;);
+        return super._buildUrl();
     }
 }</code></pre>
 

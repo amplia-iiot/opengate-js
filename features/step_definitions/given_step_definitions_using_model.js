@@ -389,7 +389,7 @@ module.exports = function () {
             var myArr = Array.prototype.slice.apply(setterValue);
             try {
                 myArr = JSON.parse(myArr);
-            } catch (errDumm) {}
+            } catch (errDumm) { }
             if (myArr.constructor !== Array) {
                 myArr = [myArr];
             }
@@ -545,5 +545,13 @@ module.exports = function () {
         callback();
     });
 
-
+    this.Given(/^I want to search into "([^"]*)" and throw error 'is not a function'$/, function (setterName, callback) {
+        try {
+            var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
+            this.util[method]();
+            callback(false, "this.util[method] is a function" );
+        } catch (err) {
+            callback();
+        }
+    });
 };
