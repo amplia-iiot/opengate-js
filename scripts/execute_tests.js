@@ -18,16 +18,18 @@ argv.push("~@ignore");
 var cucumberOptions = minimist(argv, cucumberOptionsCatalog);
 
 gulp.task('create:html-report:folder', function(done) {
-    mkdirp('html-report', function(err) {
-        if (err) return console.error(err);
+    mkdirp('html-report').then(function(){
         done();
-    });
+    }).catch(function(err){
+        done(err)
+    })
 });
 gulp.task('create:target:folder', function(done) {
-    mkdirp('target', function(err) {
-        if (err) return console.error(err);
+    mkdirp('target').then(function(){
         done();
-    });
+    }).catch(function(err){
+        done(err)
+    })
 });
 
 gulp.task('cucumber:default', function(done) {
