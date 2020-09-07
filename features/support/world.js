@@ -1,7 +1,8 @@
 // features/support/world.js
-var chai, chaiAsPromised, OpengateAPI, utilsModel, findModel, findCreateModel, findDeleteModel, searchingModel;
+var chai, OpengateAPI, utilsModel, findModel, findCreateModel, findDeleteModel, searchingModel;
 
 //var formData = require('form-data');
+var {setWorldConstructor} = require('cucumber');
 chai = require('chai');
 chai_as_promised = require('chai-as-promised');
 OpengateAPI = require(process.cwd() + '/dist/opengate-api-npm');
@@ -48,6 +49,4 @@ function World() {
     };
 }
 
-module.exports = function () {
-    this.World = World;
-};
+setWorldConstructor(World);
