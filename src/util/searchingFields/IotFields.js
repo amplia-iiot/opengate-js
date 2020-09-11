@@ -248,6 +248,29 @@ export const IOT_FIELDS = {
             "active": "rule.active"
         }
     },
+    "ENTITY_ALARM": {
+        "ENTITY_ALARM": {
+            "alarmId": "alarm.identifier",
+            "alarmSubEntityIdentifier": "alarm.subEntityIdentifier", 
+            "entityId": "alarm.entityIdentifier",
+            "entityType": "alarm.resourceType",
+            "organizationName": "alarm.organization",
+            "channelName": "alarm.channel",
+            "alarmRuleName": "alarm.rule",
+            "alarmName": "alarm.name",
+            "alarmSeverity": "alarm.severity",
+            "alarmPriority":"alarm.priority",
+            "alarmDescription": "alarm.description",
+            "alarmStatus": "alarm.status",
+            "alarmOpenDate": "alarm.openingDate",
+            "alarmAttentionDate":"alarm.attentionDate",
+            "alarmAttentionUser": "alarm.attentionUser",
+            "alarmAttentionNote": "alarm.attentionNote",
+            "alarmClosureDate": "alarm.closureDate",
+            "alarmClosureUser": "alarm.closureUser",
+            "alarmClosureNote": "alarm.closureNote"
+        }
+    },
     "GENERAL": {
         "GENERAL": []
     },
