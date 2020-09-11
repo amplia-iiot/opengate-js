@@ -1,6 +1,5 @@
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
-    mochaPhantomJS = require('gulp-mocha-phantomjs'),
     cucumber = require('gulp-cucumber'),
     argv = process.argv.slice(2),
     minimist = require('minimist'),
@@ -9,25 +8,27 @@ var gulp = require('gulp'),
     cucumberOptionsCatalog = {
         string: 'tags',
         default: {
-            'tags': '~@ignore'
+            'tags': 'not @ignore and not @operations and not @searching_select_fields and not @searching_filter_fields'
         }
     };
 argv.push("--tags");
-argv.push("~@ignore");
+argv.push("not @ignore and not @operations and not @searching_select_fields and not @searching_filter_fields");
 
 var cucumberOptions = minimist(argv, cucumberOptionsCatalog);
 
 gulp.task('create:html-report:folder', function(done) {
-    mkdirp('html-report', function(err) {
-        if (err) return console.error(err);
+    mkdirp('html-report').then(function(){
         done();
-    });
+    }).catch(function(err){
+        done(err)
+    })
 });
 gulp.task('create:target:folder', function(done) {
-    mkdirp('target', function(err) {
-        if (err) return console.error(err);
+    mkdirp('target').then(function(){
         done();
-    });
+    }).catch(function(err){
+        done(err)
+    })
 });
 
 gulp.task('cucumber:default', function(done) {
@@ -37,7 +38,7 @@ gulp.task('cucumber:default', function(done) {
     var cucumberFinalOptions = {
         'steps': '*features/step_definitions/*.js',
         'support': '*features/support/*.js',
-        'format': ['json:target/resultTESTS.json', 'pretty'],
+        'format': ['json:target/resultTESTS.json'],
         'emitErrors': true,
         'tags': cucumberOptions.tags
     };
@@ -62,20 +63,3 @@ gulp.task('generate:report', function() {
 });
 
 gulp.task('cucumberTestsNightly', gulp.series('cucumber', 'generate:report'));
-
-gulp.task('test-client', function() {
-    return gulp
-        .src('test/client/**/fields.test.html')
-        .pipe(mochaPhantomJS({
-            reporter: 'spec',
-            timeout: 25000,
-            phantomjs: {
-                useColors: true,
-                settings: {
-                    resourceTimeout: 30000,
-                    localToRemoteUrlAccessEnabled: true
-                }
-            }
-        }))
-        .on('error', gutil.log);
-});
