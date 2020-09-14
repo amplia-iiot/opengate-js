@@ -39,7 +39,7 @@ gulp.task('build:all', gulp.series('create:release:branch', 'increase:version', 
 
 // STEP 3 
 gulp.task('commit:increase:version', function() {
-    return gulp.src(['dist', './bower.json', './package.json', './documentation', './src/util/searchingFields/source-precompiled/Fields.js'])
+    return gulp.src(['dist', './bower.json', './package.json', './docs', './src/util/searchingFields/source-precompiled/Fields.js'])
         .pipe(git.add())
         .pipe(git.commit('release ' + versionType() + ' version:' + versionNumber()));
 });
