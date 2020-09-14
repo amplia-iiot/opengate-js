@@ -582,8 +582,7 @@ export default class StaticSearch extends Search {
             },
             'ioTDatastreamAccess': [
                 'READ',
-                'WRITE',
-                'READ,WRITE'
+                'WRITE'
             ],
             'ioTDatastreamStoragePeriod': [
                 'SECONDS', 'MINUTES', 'HOURS', 'DAYS', 'MONTHS', 'YEARS', 'NEVER'
