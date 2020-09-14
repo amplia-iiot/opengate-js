@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">src/InternalOpenGateAPI.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <a data-ice="repoURL" href="https://github.com/amplia-iiot/opengate-js.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/GenericFinder.js~GenericFinder.html">GenericFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html">InternalOpenGateAPI</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/ProvisionGenericFinder.js~ProvisionGenericFinder.html">ProvisionGenericFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">alarms</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarms/AlarmActions.js~AlarmActions.html">AlarmActions</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">alarms/actions</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarms/actions/Alarm.js~Operation.html">Operation</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarms/actions/AlarmActionBuilder.js~AlarmActionBuilder.html">AlarmActionBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarms/actions/AlarmAttendBuilder.js~AlarmAttendBuilder.html">AlarmAttendBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarms/actions/AlarmCloseBuilder.js~AlarmCloseBuilder.html">AlarmCloseBuilder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">areas</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/areas/AreaFinder.js~AreaFinder.html">AreaFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/areas/Areas.js~Areas.html">Areas</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_ENUM">TYPE_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">bulk</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bulk/BulkFinder.js~BulkFinder.html">BulkFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">bundles</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/BundleFinder.js~BundleFinder.html">BundleFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/Bundles.js~Bundles.html">Bundles</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACTION_ENUM">ACTION_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">bundles/deployment</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/deployment/DeploymentElement.js~DeploymentElement.html">DeploymentElement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MODE_VALIDATORS_ENUM">MODE_VALIDATORS_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-OPERATION_ENUM">OPERATION_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-OPTION_ENUM">OPTION_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_ENUM">TYPE_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_VALIDATORS_ENUM">TYPE_VALIDATORS_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">channels</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/channels/ChannelFinder.js~ChannelFinder.html">ChannelFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/channels/Channels.js~Channels.html">Channels</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">collection/devices</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/DeviceMessage.js~DeviceMessage.html">DeviceMessage</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">collection/devices/collect</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/CommsModuleMessage.js~CommsModuleMessage.html">CommsModuleMessage</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Datapoint.js~Datapoint.html">Datapoint</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Datastreams.js~Datastream.html">Datastream</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Event.js~Event.html">Event</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Hardware.js~Hardware.html">Hardware</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Location.js~Location.html">Location</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Mobile.js~Mobile.html">Mobile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/PowerSupply.js~PowerSupply.html">PowerSupply</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Software.js~Software.html">Software</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Storage.js~Storage.html">Storage</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Subscriber.js~Subscriber.html">Subscriber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Subscription.js~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Temperature.js~Temperature.html">Temperature</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Usage.js~Usage.html">Usage</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">collection/devices/collect/enum</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ADDRESS_TYPE_ENUM">ADDRESS_TYPE_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ANTENNA_STATUS_ENUM">ANTENNA_STATUS_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BATTERY_CHARGE_LEVEL_STATUS_ENUM">BATTERY_CHARGE_LEVEL_STATUS_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BATTERY_CHARGE_STATUS_ENUM">BATTERY_CHARGE_STATUS_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LEVEL_TREND_ENUM">LEVEL_TREND_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-POWER_SUPPLY_SOURCE_ENUM">POWER_SUPPLY_SOURCE_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOFTWARE_TYPE_ENUM">SOFTWARE_TYPE_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEMPERATURE_STATUS_ENUM">TEMPERATURE_STATUS_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">domains</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/domains/Domains.js~Domains.html">Domains</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/domains/DomainsFinder.js~DomainFinder.html">DomainFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">entities</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/DeviceFinder.js~DeviceFinder.html">DeviceFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/EntityFinder.js~EntityFinder.html">EntityFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/SubscribersFinder.js~SubscribersFinder.html">SubscribersFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/SubscriptionsFinder.js~SubscriptionsFinder.html">SubscriptionsFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/TicketFinder.js~TicketFinder.html">TicketFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">iot/catalog</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/catalog/Category.js~Category.html">Category</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/catalog/Datastream.js~Datastream.html">Datastream</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/catalog/Qrating.js~Qrating.html">Qrating</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">iot/datamodels</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/datamodels/Datamodels.js~Datamodels.html">Datamodels</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/datamodels/DatamodelsFinder.js~DatamodelsFinder.html">DatamodelsFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper.html">DatamodelsHelper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATAMODELS_RESOURCE">DATAMODELS_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PRE_RESOURCE">PRE_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATAMODEL_RESOURCE">DATAMODEL_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-POST_RESOURCE">POST_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PRE_RESOURCE">PRE_RESOURCE</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/OperationActions.js~OperationActions.html">OperationActions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/OperationFinder.js~OperationFinder.html">OperationFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/Operations.js~Operations.html">Operations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/PeriodicityActions.js~PeriodicityActions.html">PeriodicityActions</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations/catalog</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/AppendEntitiesBy.js~AppendEntitiesBy.html">AppendEntitiesBy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder.html">BaseOperationBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/Operation.js~Operation.html">Operation</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations/catalog/parameters</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/parameters/BaseParameterBuilderWithParent.js~BaseParameterBuilderWithParent.html">BaseParameterBuilderWithParent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/parameters/ParameterBuilderFactory.js~ParameterBuilderFactory.html">ParameterBuilderFactory</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations/catalog/period</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/ExecuteEachBuilder.js~ExecuteEachBuilder.html">ExecuteEachBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/ExecuteEveryBuilder.js~ExecuteEveryBuilder.html">ExecuteEveryBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/PeriodicityUpdateBuilder.js~PeriodicityUpdateBuilder.html">PeriodicityUpdateBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DAYS_ENUM">DAYS_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MONTHS_ENUM">MONTHS_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations/catalog/period/pattern</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByGeneric.js~ByGeneric.html">ByGeneric</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByMonth.js~ByMonth.html">ByMonth</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByWeek.js~ByWeek.html">ByWeek</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByYear.js~ByYear.html">ByYear</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">organizations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/OrganizationFinder.js~OrganizationFinder.html">OrganizationFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/Organizations.js~Organizations.html">Organizations</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/BaseProvision.js~BaseProvision.html">BaseProvision</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision/entities</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/AssetBuilder.js~AssetBuilder.html">AssetBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/BulkBuilder.js~BulkBuilder.html">BulkBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/ComplexBuilder.js~ComplexBuilder.html">ComplexBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/CsvBulkBuilder.js~CsvBulkBuilder.html">CsvBulkBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/DeviceBuilder.js~DeviceBuilder.html">DeviceBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/EntityBuilder.js~EntityBuilder.html">EntityBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/JsonBulkBuilder.js~JsonBulkBuilder.html">JsonBulkBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/JsonFlattenedBulkBuilder.js~JsonFlattenedBulkBuilder.html">JsonFlattenedBulkBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SimpleBuilder.js~SimpleBuilder.html">SimpleBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SubscriberBuilder.js~SubscriberBuilder.html">SubscriberBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SubscriptionBuilder.js~SubscriptionBuilder.html">SubscriptionBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/TicketBuilder.js~TicketBuilder.html">TicketBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-AssetID">AssetID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SubscriberID">SubscriberID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SubscriptionID">SubscriptionID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TicketID">TicketID</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">rulesConfiguration</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html">RuleConfigurations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsActions.js~RuleConfigurationsActions.html">RuleConfigurationsActions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsCatalog.js~RuleConfigurationsCatalog.html">RuleConfigurationsCatalog</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder.html">RuleConfigurationsFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/AssetSearch.js~AssetSearch.html">AssetSearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/BaseSearch.js~BaseSearch.html">BaseSearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/DeviceSearch.js~DeviceSearch.html">DeviceSearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/EntitySearch.js~EntitySearch.html">EntitySearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/FilterBuilder.js~FilterBuilder.html">FilterBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/QuickSearch.js~QuickSearch.html">QuickSearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/Search.js~Search.html">Search</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/SelectBuilder.js~SelectBuilder.html">SelectBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/StaticSearch.js~StaticSearch.html">StaticSearch</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching/builder</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AdministrativeStateSearchBuilder.js~AdministrativeStateSearchBuilder.html">AdministrativeStateSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AlarmsSearchBuilder.js~AlarmsSearchBuilder.html">AlarmsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AllowedResourceTypeSearchBuilder.js~AllowedResourceTypeSearchBuilder.html">AllowedResourceTypeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AreasSearchBuilder.js~AreasSearchBuilder.html">AreasSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AssetsSearchBuilder.js~AssetsSearchBuilder.html">AssetsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BasicTypesSearchBuilder.js~BasicTypesSearchBuilder.html">BasicTypesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BulkSearchBuilder.js~BulkSearchBuilder.html">BulkSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BundlesSearchBuilder.js~BundlesSearchBuilder.html">BundlesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CertificatesSearchBuilder.js~CertificatesSearchBuilder.html">CertificatesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ChannelsSearchBuilder.js~ChannelsSearchBuilder.html">ChannelsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CommunicationsModuleTypeSearchBuilder.js~CommunicationsModuleTypeSearchBuilder.html">CommunicationsModuleTypeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CountryCodesSearchBuilder.js~CountryCodesSearchBuilder.html">CountryCodesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatamodelsSearchBuilder.js~DatamodelsSearchBuilder.html">DatamodelsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatapointsSearchBuilder.js~DatapointsSearchBuilder.html">DatapointsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatasetEntitiesSearchBuilder.js~DatasetEntitiesSearchBuilder.html">DatasetEntitiesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatasetsCatalogSearchBuilder.js~DatasetsCatalogSearchBuilder.html">DatasetsCatalogSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatastreamsSearchBuilder.js~DatastreamsSearchBuilder.html">DatastreamsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DevicesSearchBuilder.js~DevicesSearchBuilder.html">DevicesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DomainsSearchBuilder.js~DomainsSearchBuilder.html">DomainsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/EntitiesSearchBuilder.js~EntitiesSearchBuilder.html">EntitiesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ExecutionsSearchBuilder.js~ExecutionsSearchBuilder.html">ExecutionsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/FeedsSearchBuilder.js~FeedsSearchBuilder.html">FeedsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/FieldsDefinitionSearchBuilder.js~FieldsDefinitionSearchBuilder.html">FieldsDefinitionSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/FlattenedSearchBuilder.js~FlattenedSearchBuilder.html">FlattenedSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html">HardwaresSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamAccessSearchBuilder.js~IoTDatastreamAccessSearchBuilder.html">IoTDatastreamAccessSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamPeriodSearchBuilder.js~IoTDatastreamPeriodSearchBuilder.html">IoTDatastreamPeriodSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamStoragePeriodSearchBuilder.js~IoTDatastreamStoragePeriodSearchBuilder.html">IoTDatastreamStoragePeriodSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/MobilePhoneProviderSearchBuilder.js~MobilePhoneProviderSearchBuilder.html">MobilePhoneProviderSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationalStatusSearchBuilder.js~OperationalStatusSearchBuilder.html">OperationalStatusSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationsSearchBuilder.js~OperationsSearchBuilder.html">OperationsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html">OrganizationsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/PlansSearchBuilder.js~PlansSearchBuilder.html">PlansSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/PreFilteredSearchBuilder.js~PreFilteredSearchBuilder.html">PreFilteredSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RawSearchBuilder.js~RawSearchBuilder.html">RawSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ResourceTypeSearchBuilder.js~ResourceTypeSearchBuilder.html">ResourceTypeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RuleConfigurationSeveritySearchBuilder.js~RuleConfigurationSeveritySearchBuilder.html">RuleConfigurationSeveritySearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RuleModeSearchBuilder.js~RuleModeSearchBuilder.html">RuleModeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RuleTypeSearchBuilder.js~RuleTypeSearchBuilder.html">RuleTypeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RulesSearchBuilder.js~RulesSearchBuilder.html">RulesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SearchBuilder.js~SearchBuilder.html">SearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SearchWithSummaryBuilder.js~SearchWithSummaryBuilder.html">SearchWithSummaryBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ServiceGroupSearchBuilder.js~ServiceGroupSearchBuilder.html">ServiceGroupSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SoftwaresSearchBuilder.js~SoftwaresSearchBuilder.html">SoftwaresSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscribersSearchBuilder.js~SubscribersSearchBuilder.html">SubscribersSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscriptionsSearchBuilder.js~SubscriptionsSearchBuilder.html">SubscriptionsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TasksSearchBuilder.js~TasksSearchBuilder.html">TasksSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketPrioritySearchBuilder.js~TicketPrioritySearchBuilder.html">TicketPrioritySearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketSeveritySearchBuilder.js~TicketSeveritySearchBuilder.html">TicketSeveritySearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketStatusSearchBuilder.js~TicketStatusSearchBuilder.html">TicketStatusSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketsSearchBuilder.js~TicketsSearchBuilder.html">TicketsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TimezoneSearchBuilder.js~TimezoneSearchBuilder.html">TimezoneSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UserLanguagesSearchBuilder.js~UserLanguagesSearchBuilder.html">UserLanguagesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UserProfilesSearchBuilder.js~UserProfilesSearchBuilder.html">UserProfilesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UsersSearchBuilder.js~UsersSearchBuilder.html">UsersSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/WorkgroupsSearchBuilder.js~WorkgroupsSearchBuilder.html">WorkgroupsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOKEN_URL">TOKEN_URL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOKEN_URL">TOKEN_URL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOKEN_URL">TOKEN_URL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOKEN_URL">TOKEN_URL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOFTWARE_TYPES_ENUM">SOFTWARE_TYPES_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching/error</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/error/SearchBuilderError.js~SearchBuilderError.html">SearchBuilderError</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">security</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/security/CertificateFinder.js~CertificateFinder.html">CertificateFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/security/Certificates.js~Certificates.html">Certificates</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/security/Security.js~Security.html">Security</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ADMINISTRATIVE_STATE_ENUM">ADMINISTRATIVE_STATE_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MIME_TYPES_ENUM">MIME_TYPES_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-USAGES_ENUM">USAGES_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">users</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/users/UserFinder.js~UserFinder.html">UserFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/users/Users.js~User.html">User</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">util</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/Expression.js~Expression.html">Expression</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/NorthAmpliaREST.js~NorthAmpliaREST.html">NorthAmpliaREST</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/SelectElement.js~SelectElement.html">SelectElement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/SouthAmpliaREST.js~SouthAmpliaREST.html">SouthAmpliaREST</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATE_FORMAT">DATE_FORMAT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TIME_FORMAT">TIME_FORMAT</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">util/searchingFields</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/searchingFields/FieldFinder.js~FieldFinder.html">FieldFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-IOT_FIELDS">IOT_FIELDS</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">util/searchingFields/source-precompiled</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-GENERATED_FIELDS">GENERATED_FIELDS</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">workgroups</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/workgroups/WorkgroupFinder.js~WorkgroupFinder.html">WorkgroupFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/workgroups/WorkgroupRelations.js~WorkgroupRelations.html">WorkgroupRelations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/workgroups/WorkgroupRelationsFinder.js~WorkgroupRelationsFinder.html">WorkgroupRelationsFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/workgroups/Workgroups.js~Workgroups.html">Workgroups</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/InternalOpenGateAPI.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
+
+import Operations from &apos;./operations/Operations&apos;;
+import UserFinder from &apos;./users/UserFinder&apos;;
+import Certificates from &apos;./security/Certificates&apos;;
+import Users from &apos;./users/Users&apos;;
+import OrganizationFinder from &apos;./organizations/OrganizationFinder&apos;;
+import ChannelFinder from &apos;./channels/ChannelFinder&apos;;
+import AreasSearchBuilder from &apos;./searching/builder/AreasSearchBuilder&apos;;
+import DatasetsCatalogSearchBuilder from &apos;./searching/builder/DatasetsCatalogSearchBuilder&apos;;
+import AreaFinder from &apos;./areas/AreaFinder&apos;;
+import BulkSearchBuilder from &apos;./searching/builder/BulkSearchBuilder&apos;;
+import BulkFinder from &apos;./bulk/BulkFinder&apos;;
+import Channels from &apos;./channels/Channels&apos;;
+import Areas from &apos;./areas/Areas&apos;;
+import ChannelsSearchBuilder from &apos;./searching/builder/ChannelsSearchBuilder&apos;;
+import RuleConfigurations from &apos;./rulesConfiguration/RuleConfigurations&apos;;
+import RuleConfigurationsFinder from &apos;./rulesConfiguration/RuleConfigurationsFinder&apos;;
+import RuleConfigurationsCatalog from &apos;./rulesConfiguration/RuleConfigurationsCatalog&apos;;
+// import RuleConfigurationsActions from &apos;./rulesConfiguration/RuleConfigurationsActions&apos;;
+import CertificateFinder from &apos;./security/CertificateFinder&apos;;
+import OperationFinder from &apos;./operations/OperationFinder&apos;;
+import FilterBuilder from &apos;./searching/FilterBuilder&apos;;
+import SelectBuilder from &apos;./searching/SelectBuilder&apos;;
+import OperationActions from &apos;./operations/OperationActions&apos;;
+import PeriodicityActions from &apos;./operations/PeriodicityActions&apos;;
+import Expression from &apos;./util/Expression&apos;;
+import SelectElement from &apos;./util/SelectElement&apos;;
+import QuickSearch from &apos;./searching/QuickSearch&apos;;
+import RawSearchBuilder from &apos;./searching/builder/RawSearchBuilder&apos;;
+import DevicesSearchBuilder from &apos;./searching/builder/DevicesSearchBuilder&apos;;
+import SubscribersSearchBuilder from &apos;./searching/builder/SubscribersSearchBuilder&apos;;
+import SubscriptionsSearchBuilder from &apos;./searching/builder/SubscriptionsSearchBuilder&apos;;
+import AssetsSearchBuilder from &apos;./searching/builder/AssetsSearchBuilder&apos;;
+import TicketsSearchBuilder from &apos;./searching/builder/TicketsSearchBuilder&apos;;
+import TasksSearchBuilder from &apos;./searching/builder/TasksSearchBuilder&apos;;
+import OperationsSearchBuilder from &apos;./searching/builder/OperationsSearchBuilder&apos;;
+import ExecutionsSearchBuilder from &apos;./searching/builder/ExecutionsSearchBuilder&apos;;
+import AlarmsSearchBuilder from &apos;./searching/builder/AlarmsSearchBuilder&apos;;
+import DatamodelsSearchBuilder from &apos;./searching/builder/DatamodelsSearchBuilder&apos;;
+import FeedsSearchBuilder from &apos;./searching/builder/FeedsSearchBuilder&apos;;
+import DatastreamsSearchBuilder from &apos;./searching/builder/DatastreamsSearchBuilder&apos;;
+import DatapointsSearchBuilder from &apos;./searching/builder/DatapointsSearchBuilder&apos;;
+import BundlesSearchBuilder from &apos;./searching/builder/BundlesSearchBuilder&apos;;
+import CertificatesSearchBuilder from &apos;./searching/builder/CertificatesSearchBuilder&apos;;
+import HardwaresSearchBuilder from &apos;./searching/builder/HardwaresSearchBuilder&apos;;
+import SoftwaresSearchBuilder from &apos;./searching/builder/SoftwaresSearchBuilder&apos;;
+import OperationalStatusSearchBuilder from &apos;./searching/builder/OperationalStatusSearchBuilder&apos;;
+import ServiceGroupSearchBuilder from &apos;./searching/builder/ServiceGroupSearchBuilder&apos;;
+import AdministrativeStateSearchBuilder from &apos;./searching/builder/AdministrativeStateSearchBuilder&apos;;
+import CommunicationsModuleTypeSearchBuilder from &apos;./searching/builder/CommunicationsModuleTypeSearchBuilder&apos;;
+import FieldsDefinitionSearchBuilder from &apos;./searching/builder/FieldsDefinitionSearchBuilder&apos;;
+import BasicTypesSearchBuilder from &apos;./searching/builder/BasicTypesSearchBuilder&apos;;
+import MobilePhoneProviderSearchBuilder from &apos;./searching/builder/MobilePhoneProviderSearchBuilder&apos;;
+import IoTDatastreamPeriodSearchBuilder from &apos;./searching/builder/IoTDatastreamPeriodSearchBuilder&apos;;
+import ResourceTypeSearchBuilder from &apos;./searching/builder/ResourceTypeSearchBuilder&apos;;
+import AllowedResourceTypeSearchBuilder from &apos;./searching/builder/AllowedResourceTypeSearchBuilder&apos;;
+import IoTDatastreamAccessSearchBuilder from &apos;./searching/builder/IoTDatastreamAccessSearchBuilder&apos;;
+import IoTDatastreamStoragePeriodSearchBuilder from &apos;./searching/builder/IoTDatastreamStoragePeriodSearchBuilder&apos;;
+import TicketSeveritySearchBuilder from &apos;./searching/builder/TicketSeveritySearchBuilder&apos;;
+import TicketPrioritySearchBuilder from &apos;./searching/builder/TicketPrioritySearchBuilder&apos;;
+import TicketStatusSearchBuilder from &apos;./searching/builder/TicketStatusSearchBuilder&apos;;
+import RuleConfigurationSeveritySearchBuilder from &apos;./searching/builder/RuleConfigurationSeveritySearchBuilder&apos;;
+import RulesSearchBuilder from &apos;./searching/builder/RulesSearchBuilder&apos;;
+import UsersSearchBuilder from &apos;./searching/builder/UsersSearchBuilder&apos;;
+import DomainsSearchBuilder from &apos;./searching/builder/DomainsSearchBuilder&apos;;
+import PlansSearchBuilder from &apos;./searching/builder/PlansSearchBuilder&apos;;
+import Bundles from &apos;./bundles/Bundles&apos;;
+import BundleFinder from &apos;./bundles/BundleFinder&apos;;
+import Organizations from &apos;./organizations/Organizations&apos;;
+import Domain from &apos;./domains/Domains&apos;;
+import DomainFinder from &apos;./domains/DomainsFinder&apos;;
+import DeviceFinder from &apos;./entities/DeviceFinder&apos;;
+import TicketFinder from &apos;./entities/TicketFinder&apos;;
+import SubscriptionsFinder from &apos;./entities/SubscriptionsFinder&apos;;
+import SubscribersFinder from &apos;./entities/SubscribersFinder&apos;;
+import DeviceMessage from &apos;./collection/devices/DeviceMessage&apos;;
+import Datastream from &apos;./collection/devices/collect/Datastreams&apos;;
+import Datapoint from &apos;./collection/devices/collect/Datapoint&apos;;
+import Hardware from &apos;./collection/devices/collect/Hardware&apos;;
+import Software from &apos;./collection/devices/collect/Software&apos;;
+import Storage from &apos;./collection/devices/collect/Storage&apos;;
+import Usage from &apos;./collection/devices/collect/Usage&apos;;
+import PowerSupply from &apos;./collection/devices/collect/PowerSupply&apos;;
+import CommsModuleMessage from &apos;./collection/devices/collect/CommsModuleMessage&apos;;
+import Mobile from &apos;./collection/devices/collect/Mobile&apos;;
+import SubscriberMessage from &apos;./collection/devices/collect/Subscriber&apos;;
+import SubscriptionMessage from &apos;./collection/devices/collect/Subscription&apos;;
+import WorkgroupRelations from &apos;./workgroups/WorkgroupRelations&apos;;
+import Workgroups from &apos;./workgroups/Workgroups&apos;;
+import WorkgroupFinder from &apos;./workgroups/WorkgroupFinder&apos;;
+import WorkgroupsSearchBuilder from &apos;./searching/builder/WorkgroupsSearchBuilder&apos;;
+import WorkgroupRelationsFinder from &apos;./workgroups/WorkgroupRelationsFinder&apos;;
+import UserProfilesSearchBuilder from &apos;./searching/builder/UserProfilesSearchBuilder&apos;;
+import Datamodels from &apos;./iot/datamodels/Datamodels&apos;;
+import DatamodelsHelper from &apos;./iot/datamodels/DatamodelsHelper&apos;;
+import DatamodelsFinder from &apos;./iot/datamodels/DatamodelsFinder&apos;;
+import DatastreamsBuilder from &apos;./iot/catalog/Datastream&apos;;
+import QratingsBuilder from &apos;./iot/catalog/Qrating&apos;;
+import EntityBuilder from &apos;./provision/entities/EntityBuilder&apos;;
+import EntitiesSearchBuilder from &apos;./searching/builder/EntitiesSearchBuilder&apos;;
+import DatasetEntitiesSearchBuilder from &apos;./searching/builder/DatasetEntitiesSearchBuilder&apos;;
+import CountryCodesSearchBuilder from &apos;./searching/builder/CountryCodesSearchBuilder&apos;;
+import TimezoneSearchBuilder from &apos;./searching/builder/TimezoneSearchBuilder&apos;;
+import UserLanguagesSearchBuilder from &apos;./searching/builder/UserLanguagesSearchBuilder&apos;;
+import EntityFinder from &apos;./entities/EntityFinder&apos;;
+import AlarmActions from &apos;./alarms/AlarmActions&apos;;
+
+/**
+ * This is a abstract class, it must be extended to another class that defined the backend, it will be used on request to Opengate North API by browser or nodejs server
+ */
+export default class InternalOpenGateAPI {
+    /**
+     * @param {{ url: string,port: string,version: string,apiKey: string}} _options - this is configuration about Opengate North API.
+     * @param {AmpliaREST} ampliaREST - this is a backend selected to manage a request to Opengate North API.
+     */
+    constructor(northAmpliaREST, southAmpliaREST) {
+        if (this.constructor === InternalOpenGateAPI) {
+            throw new Error(&quot;Cannot construct Abstract instances directly&quot;);
+        }
+        if (typeof northAmpliaREST !== &quot;object&quot;) {
+            throw new Error(&quot;Must instance mandatory parameter: northAmpliaREST&quot;);
+        }
+        if (typeof southAmpliaREST !== &quot;object&quot;) {
+            throw new Error(&quot;Must instance mandatory parameter: southAmpliaREST&quot;);
+        }
+        this.Napi = northAmpliaREST;
+        this.Sapi = southAmpliaREST;
+        this.EX = Expression;
+        this.SE = SelectElement;
+        this.operations = new Operations(this);
+        this.alarms = new AlarmActions(this)
+        this.entityBuilder = new EntityBuilder(this);
+    }
+
+    /**
+     * This return a util to find a user
+     * @return {UserFinder}
+     */
+    newUserFinder() {
+        return new UserFinder(this);
+    }
+
+    /**
+     * This return a util to find a organization
+     * @return {OrganizationFinder}
+     */
+    newOrganizationFinder() {
+        return new OrganizationFinder(this);
+    }
+
+    /**
+     * This return a util to find a channel
+     * @return {ChannelFinder}
+     */
+    newChannelFinder() {
+        return new ChannelFinder(this);
+    }
+
+    /**
+     * This return a AreasSearchBuilder to build a specific AreasSearch
+     * @return {AreasSearchBuilder}
+     */
+    areasSearchBuilder() {
+        return new AreasSearchBuilder(this);
+    }
+
+    /**
+     * This return a DatasetsCatalogSearchBuilder to build a specific DatasetsCatalogSearc
+     * @return {DatasetsCatalogSearchBuilder}
+     */
+    datasetsCatalogSearchBuilder() {
+        return new DatasetsCatalogSearchBuilder(this);
+    }
+
+    /**
+     * This return a BulkSearchBuilder to build a specific BulkSearchBuilder
+     * @return {BulkSearchBuilder}
+     */
+    bulkSearchBuilder() {
+        return new BulkSearchBuilder(this);
+    }
+
+    /**
+     * This return a util to find and download a bulk
+     * @return {BulkFinder}
+     */
+    newBulkFinder() {
+        return new BulkFinder(this);
+    }
+
+    /**
+     * This return a util to find a area
+     * @return {AreaFinder}
+     */
+    newAreaFinder() {
+        return new AreaFinder(this);
+    }
+
+    /**
+     * This return a util to find a operation
+     * @return {OperationFinder}
+     */
+    newOperationFinder() {
+        return new OperationFinder(this);
+    }
+
+    /**
+     * This return a util to find Rule Configurations
+     * @return {RuleConfigurationsFinder}
+     */
+    newRuleConfigurationsFinder() {
+        return new RuleConfigurationsFinder(this);
+    }
+
+    /**
+     * This return a util to find Rule Configurations Templates
+     * @return {RuleConfigurationsCatalog}
+     */
+    newRuleConfigurationsCatalog() {
+        return new RuleConfigurationsCatalog(this);
+    }
+
+    /**
+     * This return a util to update a Rule Configuration
+     * @return {RuleConfigurations}
+     */
+    ruleConfigurationBuilder(organization, channel, name, ruleConfigObj) {
+        return new RuleConfigurations(this, organization, channel, name, ruleConfigObj);
+    }
+
+    /**
+     * This return a util to launch actions on a rule
+     * @param {!string} organization - organization name of the rule
+     * @param {!string} channel - channel name of the rule
+     * @param {!string} name - rule name
+     * @return {RuleConfigurationsActions}
+     */
+    // newRuleConfigurationsActions(organization, channel, name) {
+    //     return new RuleConfigurationsActions(this, organization, channel, name);
+    // }
+
+    /**
+     * This return a util to find a certificate
+     * @return {CertificateFinder}
+     */
+    newCertificateFinder() {
+        return new CertificateFinder(this);
+    }
+
+    /**
+     * This return a util to find a device
+     * @return {DeviceFinder}
+     */
+    newDeviceFinder() {
+        return new DeviceFinder(this);
+    }
+
+    /**
+     * This return a util to find a ticket
+     * @return {TicketFinder}
+     */
+    newTicketFinder() {
+        return new TicketFinder(this);
+    }
+
+
+    /**
+     * This return a util to find a Subscription
+     * @return {SubscriptionsFinder}
+     */
+    newSubscriptionsFinder() {
+        return new SubscriptionsFinder(this);
+    }
+
+    /**
+     * This return a util to find a Subscriber
+     * @return {SubscribersFinder}
+     */
+    newSubscribersFinder() {
+        return new SubscribersFinder(this);
+    }
+
+
+    newEntityFinder() {
+        return new EntityFinder(this);
+    }
+
+    /**
+     * This return a util to create your own filter to make searching
+     * @return {FilterBuilder}
+     */
+    newFilterBuilder() {
+        return new FilterBuilder();
+    }
+
+    /**
+     * This return a util to create your own select to make searching
+     * @return {SelectBuilder}
+     */
+    newSelectBuilder() {
+        return new SelectBuilder();
+    }
+
+    /**
+     * This return a util to find devices by a defined filter
+     * @return {QuickSearch}
+     */
+    newQuickSearch(param, limit, type) {
+        return new QuickSearch(this, param, limit, type);
+    }
+
+    /**
+     * Create custom search with custom url and raw filter
+     * @return {RawSearchBuilder}
+     */
+    rawSearchBuilder() {
+        return new RawSearchBuilder(this);
+    }
+
+    /**
+     * This return a UsersSearchBuilder to build a specific UsersSearch
+     * @return {UsersSearchBuilder}
+     */
+    usersSearchBuilder() {
+        return new UsersSearchBuilder(this);
+    }
+
+    /**
+     * This return a DomainsSearchBuilder to build a specific DomainsSearch
+     * @return {DomainsSearchBuilder}
+     */
+    domainsSearchBuilder() {
+        return new DomainsSearchBuilder(this);
+    }
+
+    /**
+     * This return a DevicesSearchBuilder to build a specific DeviceSearch
+     * @return {DevicesSearchBuilder}
+     */
+    devicesSearchBuilder() {
+        return new DevicesSearchBuilder(this);
+    }
+
+    /**
+     * This return a AssetsSearchBuilder to build a specific AssetSearch
+     * @return {AssetsSearchBuilder}
+     */
+    assetsSearchBuilder() {
+        return new AssetsSearchBuilder(this);
+    }
+
+    /**
+     * This return a SubscribersSearchBuilder to build a specific DeviceSearch
+     * @return {SubscribersSearchBuilder}
+     */
+    subscribersSearchBuilder() {
+        return new SubscribersSearchBuilder(this);
+    }
+
+    /**
+     * This return a SubscriptionsSearchBuilder to build a specific DeviceSearch
+     * @return {SubscriptionsSearchBuilder}
+     */
+    subscriptionsSearchBuilder() {
+        return new SubscriptionsSearchBuilder(this);
+    }
+
+    /**
+     * This return a TicketsSearchBuilder to build a specific TicketSearch
+     */
+    ticketsSearchBuilder() {
+            return new TicketsSearchBuilder(this);
+        }
+        /**
+         * This return a CommunicationsModuleTypeSearchBuilder to build a specific CommunicationsModuleTypeSearch
+         * @return {CommunicationsModuleTypeSearchBuilder}
+         */
+    communicationsModuleTypeSearchBuilder() {
+        return new CommunicationsModuleTypeSearchBuilder(this);
+    }
+
+    /**
+     * This return a FieldsDefinitionSearchBuilder to build a specific FieldsDefinitionSearchBuilder
+     * @return {FieldsDefinitionSearchBuilder}
+     */
+    fieldsDefinitionSearchBuilder() {
+        return new FieldsDefinitionSearchBuilder(this);
+    }
+
+    /**
+     * This return a MobilePhoneProviderSearchBuilder to build a specific MobilePhoneProviderTypeSearch
+     * @return {MobilePhoneProviderSearchBuilder}
+     */
+    mobilePhoneProviderSearchBuilder() {
+        return new MobilePhoneProviderSearchBuilder(this);
+    }
+
+    /**
+     * This return a IoTDatastreamPeriodSearchBuilder to build a specific IoTDatastreamPeriodSearchBuilder
+     * @return {IoTDatastreamPeriodSearchBuilder}
+     */
+    ioTDatastreamPeriodSearchBuilder() {
+        return new IoTDatastreamPeriodSearchBuilder(this);
+    }
+
+    /**
+     * This return a ResourceTypeSearchBuilder to build a specific ResourceTypeSearchBuilder
+     * @return {ResourceTypeSearchBuilder}
+     */
+    resourceTypeSearchBuilder() {
+        return new ResourceTypeSearchBuilder(this);
+    }
+
+    /**
+     * This return a AllowedResourceTypeSearchBuilder to build a specific AllowedResourceTypeSearchBuilder
+     * @return {AllowedResourceTypeSearchBuilder}
+     */
+    allowedResourceTypeSearchBuilder() {
+        return new AllowedResourceTypeSearchBuilder(this);
+    }
+
+
+
+    /**
+     * This return a IoTDatastreamAccessSearchBuilder to build a specific IoTDatastreamAccessSearchBuilder
+     * @return {IoTDatastreamAccessSearchBuilder}
+     */
+    ioTDatastreamAccessSearchBuilder() {
+        return new IoTDatastreamAccessSearchBuilder(this);
+    }
+
+    /**
+     * This return a IoTDatastreamStoragePeriodSearchBuilder to build a specific IoTDatastreamStoragePeriodSearchBuilder
+     * @return {IoTDatastreamStoragePeriodSearchBuilder}
+     */
+    ioTDatastreamStoragePeriodSearchBuilder() {
+        return new IoTDatastreamStoragePeriodSearchBuilder(this);
+    }
+
+    /**
+     * This return a TicketSeveritySearchBuilder to build a specific TicketSeveritySearchBuilder
+     * @return {TicketSeveritySearchBuilder}
+     */
+    ticketSeveritySearchBuilder() {
+        return new TicketSeveritySearchBuilder(this);
+    }
+
+    /**
+     * This return a TicketPrioritySearchBuilder to build a specific TicketPrioritySearchBuilder
+     * @return {TicketPrioritySearchBuilder}
+     */
+    ticketPrioritySearchBuilder() {
+        return new TicketPrioritySearchBuilder(this);
+    }
+
+    /**
+     * This return a TicketStatusSearchBuilder to build a specific TicketStatusSearchBuilder
+     * @return {TicketStatusSearchBuilder}
+     */
+    ticketStatusSearchBuilder() {
+        return new TicketStatusSearchBuilder(this);
+    }
+
+    /**
+     * This return a RuleConfigurationSeveritySearchBuilder to build a specific RuleConfigurationSeveritySearchBuilder
+     * @return {RuleConfigurationSeveritySearchBuilder}
+     */
+    // ruleConfigurationSeveritySearchBuilder() {
+    //     return new RuleConfigurationSeveritySearchBuilder(this);
+    // }
+
+    /**
+     * This return a RulesSearchBuilder to build a specific RulesSearch
+     * @return {RulesSearchBuilder}
+     */
+    rulesSearchBuilder() {
+        return new RulesSearchBuilder(this);
+    }
+
+    /**
+     * This return a TasksSearchBuilder to build a specific TasksSearch
+     * @return {TasksSearchBuilder}
+     */
+    tasksSearchBuilder() {
+        return new TasksSearchBuilder(this);
+    }
+
+    /**
+     * This return a OperationsSearchBuilder to build a specific ExecutionssSearch
+     * @return {OperationsSearchBuilder}
+     */
+    operationsSearchBuilder() {
+        return new OperationsSearchBuilder(this);
+    }
+
+    /**
+     * This return a ExecutionsSearchBuilder to build a specific ExecutionsSearch
+     * @return {ExecutionsSearchBuilder}
+     */
+    executionsSearchBuilder() {
+        return new ExecutionsSearchBuilder(this);
+    }
+
+    /**
+     * This return a AlarmsSearchBuilder to build a specific AlarmsSearch
+     * @return {AlarmsSearchBuilder}
+     */
+    alarmsSearchBuilder() {
+        return new AlarmsSearchBuilder(this);
+    }
+
+    /**
+     * This return a DatastreamsSearchBuilder to build a specific DatastreamsSearchBuilder
+     * @return {DatastreamsSearchBuilder}
+     */
+    datastreamsSearchBuilder() {
+        return new DatastreamsSearchBuilder(this);
+    }
+
+    /**
+     * This return a DatamodelsSearchBuilder to build a specific DatamodelsSearchBuilder
+     * @return {DatamodelsSearchBuilder}
+     */
+    datamodelsSearchBuilder() {
+        return new DatamodelsSearchBuilder(this);
+    }
+
+    /**
+     * This return a FeedsSearchBuilder to build a specific FeedsSearchBuilder
+     * @return {FeedsSearchBuilder}
+     */
+    feedsSearchBuilder() {
+        return new FeedsSearchBuilder(this);
+    }
+
+
+    /**
+     * This return a DatapointsSearchBuilder to build a specific DatapointsSearchBuilder
+     * @return {DatapointsSearchBuilder}
+     */
+    datapointsSearchBuilder() {
+        return new DatapointsSearchBuilder(this);
+    }
+
+    /**
+     * This return a BundlesSearchBuilder to build a specific BundlesSearchBuilder
+     * @return {BundlesSearchBuilder}
+     */
+    bundlesSearchBuilder() {
+        return new BundlesSearchBuilder(this);
+    }
+
+    /**
+     * This return a CertificatesSearchBuilder to build a specific CertificatesSearchBuilder
+     * @return {CertificatesSearchBuilder}
+     */
+    certificatesSearchBuilder() {
+        return new CertificatesSearchBuilder(this);
+    }
+
+    /**
+     * 
+     */
+    basicTypesSearchBuilder() {
+        return new BasicTypesSearchBuilder(this);
+    }
+
+    /**
+     * This return a EntitiesSearchBuilder to build a specific EntitiesSearch
+     * @return {EntitiesSearchBuilder}
+     */
+    entitiesSearchBuilder() {
+        return new EntitiesSearchBuilder(this);
+    }
+
+    /**
+     * This return a DatasetEntitiesSearchBuilder to build a specific DatasetEntitiesSearch
+     * @return {DatasetEntitiesSearchBuilder}
+     */
+    datasetEntitiesSearchBuilder(organization, dataset) {
+        return new DatasetEntitiesSearchBuilder(this, organization, dataset);
+    }
+
+    /**
+     * This return a PlansSearchBuilder to build a specific PlansSearchBuilder
+     * @return {PlansSearchBuilder}
+     */
+    plansSearchBuilder() {
+        return new PlansSearchBuilder(this);
+    }
+
+    /**
+     * This return a BundlesBuilder to build a specific BundlesBuilder
+     * @return {Bundles}
+     */
+    bundlesBuilder() {
+        return new Bundles(this);
+    }
+
+    /**
+     * This return a util to find a bundle
+     * @return {BundleFinder}
+     */
+    newBundleFinder() {
+        return new BundleFinder(this);
+    }
+
+    /**
+     * This return a OrganizationsBuilder to build a specific OrganizationsBuilder
+     * @return {Organizations}
+     */
+    organizationsBuilder() {
+        return new Organizations(this);
+    }
+
+    /**
+     * This return a DomainsBuilder to build a specific DomainsBuilder
+     * @return {Domain}
+     */
+    domainsBuilder() {
+        return new Domain(this);
+    }
+
+    /**
+     * This return a util to find a domain
+     * @return {DomainFinder}
+     */
+    newDomainFinder() {
+        return new DomainFinder(this);
+    }
+
+    /**
+     * This return a util to create a user
+     * @return {User}
+     */
+    usersBuilder() {
+        return new Users(this);
+    }
+
+    /**
+     * This return a util to create a certificate
+     * @return {Certificates}
+     */
+    certificatesBuilder() {
+        return new Certificates(this);
+    }
+
+    /**
+     * This return a HardwaresSearchBuilder to build a specific HardwaresSearchBuilder
+     * @return {HardwaresSearchBuilder}
+     */
+    hardwaresSearchBuilder() {
+        return new HardwaresSearchBuilder(this);
+    }
+
+    /**
+     * This return a SoftwaresSearchBuilder to build a specific SoftwaresSearchBuilder
+     * @return {SoftwaresSearchBuilder}
+     */
+    softwaresSearchBuilder() {
+        return new SoftwaresSearchBuilder(this);
+    }
+
+    /**
+     * This return a OperationalStatusSearchBuilder to build a specific OperationalStatusSearchBuilder
+     * @return {OperationalStatusSearchBuilder}
+     */
+    operationalStatusSearchBuilder() {
+        return new OperationalStatusSearchBuilder(this);
+    }
+
+    /**
+     * This return a ServiceGroupSearchBuilder to build a specific ServiceGroupSearchBuilder
+     * @return {ServiceGroupSearchBuilder}
+     */
+    serviceGroupSearchBuilder() {
+        return new ServiceGroupSearchBuilder(this);
+    }
+
+    /**
+     * This return a AdministrativeStateSearchBuilder to build a specific AdministrativeStateSearchBuilder
+     * @return {AdministrativeStateSearchBuilder}
+     */
+    administrativeStateSearchBuilder() {
+        return new AdministrativeStateSearchBuilder(this);
+    }
+
+    /**
+     * This return a DevicesSouth to build a specific DevicesSouth
+     * @return {DeviceMessage}
+     */
+    deviceMessageBuilder() {
+        return new DeviceMessage(this);
+    }
+
+    /**
+     * This return a datastreamBuilder to build a specific Datastream
+     * @return {Datastream}
+     */
+    datastreamBuilder() {
+        return new Datastream(this);
+    }
+
+    /**
+     * This return a datapointsBuilder to build a specific Datapoint
+     * @return {Datapoint}
+     */
+    datapointsBuilder() {
+        return new Datapoint(this);
+    }
+
+    /**
+     * @return {Hardware}
+     */
+    hardwareMessageBuilder() {
+        return new Hardware(this);
+    }
+
+    /**
+     * @return {Software}
+     */
+    softwareMessageBuilder() {
+        return new Software(this);
+    }
+
+    /**
+     * @return {Storage}
+     */
+    storageMessageBuilder() {
+        return new Storage(this);
+    }
+
+    /**
+     * @return {Usage}
+     */
+    usageMessageBuilder() {
+        return new Usage(this);
+    }
+
+    /**
+     * @return {PowerSupply}
+     */
+    powerSupplyMessageBuilder() {
+        return new PowerSupply(this);
+    }
+
+    /**
+     * @return {CommsModuleMessage}
+     */
+    commsModuleMessageMessageBuilder() {
+        return new CommsModuleMessage(this);
+    }
+
+    /**
+     * @return {SubscriberMessage}
+     */
+    subscriberMessageBuilder() {
+        return new SubscriberMessage(this);
+    }
+
+    /**
+     * @return {SubscriptionMessage}
+     */
+    subscriptionMessageBuilder() {
+        return new SubscriptionMessage(this);
+    }
+
+    /**
+     * @return {Mobile}
+     */
+    mobileMessageMessageBuilder() {
+        return new Mobile(this);
+    }
+
+    /**
+     * This return a util to operation actions on an operation
+     * @param {!string} operationId - identifier of operation
+     * @return {OperationActions}
+     */
+    newOperationActions(operationId) {
+        return new OperationActions(this, operationId);
+    }
+
+    /**
+     * This return a util to manage actions over periodicities
+     * @param {!string} taskId - identifier of operation
+     * @return {PeriodicityActions}
+     */
+    newPeriodicityActions(taskId) {
+        return new PeriodicityActions(this, taskId);
+    }
+
+    /**
+     * This return a WorkgroupRelationsBuilder to build a specific workgroup relation
+     * @return {WorkgroupRelations}
+     */
+    workgroupRelationsBuilder() {
+        return new WorkgroupRelations(this);
+    }
+
+    /**
+     * This return a WorkgroupRelationsFinder 
+     * @return {WorkgroupRelationsFinder}
+     */
+    newWorkgroupRelationsFinder() {
+        return new WorkgroupRelationsFinder(this);
+    }
+
+
+    /**
+     * This return a WorkgroupsBuilder to build a specific workgroup
+     * @return {Workgroups}
+     */
+    workgroupsBuilder() {
+        return new Workgroups(this);
+    }
+
+    /**
+     * This return a util to find a workgroup
+     * @return {WorkgroupFinder}
+     */
+    newWorkgroupFinder() {
+        return new WorkgroupFinder(this);
+    }
+
+    /**
+     * This return a WorkgroupsSearchBuilder to build a specific WorkgroupsSearch
+     * @return {WorkgroupsSearchBuilder}
+     */
+    workgroupsSearchBuilder() {
+        return new WorkgroupsSearchBuilder(this);
+    }
+
+    /**
+     * This return a ChannelsBuilder to build a specific WorkgroupsSearch
+     * @return {Channels}
+     */
+    channelsBuilder() {
+        return new Channels(this);
+    }
+
+    /**
+     * This return a AreasBuilder to build a specific area
+     * @return {Areas}
+     */
+    areasBuilder() {
+        return new Areas(this);
+    }
+
+    /**
+     * This return a ChannelsSearchBuilder to build a specific ChannelsSearch
+     * @return {ChannelsSearchBuilder}
+     */
+    channelsSearchBuilder() {
+        return new ChannelsSearchBuilder(this);
+    }
+
+    /**
+     * This return a UserProfilesSearchBuilder to build a specific UserProfilesSearchBuilder
+     * @return {UserProfilesSearchBuilder}
+     */
+    userProfilesSearchBuilder() {
+        return new UserProfilesSearchBuilder(this);
+    }
+
+    /**
+     * This return a Datamodels to build a specific Datamodels
+     * @return {Datamodels}
+     */
+    datamodelsBuilder(organization) {
+        return new Datamodels(this, organization);
+    }
+
+    /**
+     * This return a DatamodelsHelper to build a specific DatamodelsHelper
+     * @return {DatamodelsHelper}
+     */
+    datamodelsHelper(organization, datamodel) {
+        return new DatamodelsHelper(this, organization, datamodel);
+    }
+
+    /**
+     * This return a util to find a datamodel
+     * @return {DatamodelsFinder}
+     */
+    newDatamodelsFinder() {
+        return new DatamodelsFinder(this);
+    }
+
+    /**
+     * This return a datastream to build a specific Datastream
+     * @return {DatastreamsBuilder}
+     */
+    datastreamsBuilder() {
+        return new DatastreamsBuilder(this);
+    }
+
+    /**
+     * This return a Qrating to build a specific Qrating
+     * @return {QratingsBuilder}
+     */
+    qratingsBuilder() {
+        return new QratingsBuilder(this);
+    }
+
+    /**
+     * This return a CountryCodesSearchBuilder to build a specific CountryCodesSearchBuilder
+     * @return {CountryCodesSearchBuilder}
+     */
+    countryCodesSearchBuilder() {
+        return new CountryCodesSearchBuilder(this);
+    }
+
+    /**
+     * This return a TimezoneSearchBuilder to build a specific TimezoneSearchBuilder
+     * @return {TimezoneSearchBuilder}
+     */
+    timezoneSearchBuilder() {
+        return new TimezoneSearchBuilder(this);
+    }
+
+    /**
+     * This return a UserLanguagesSearchBuilder to build a specific UserLanguagesSearchBuilder
+     * @return {UserLanguagesSearchBuilder}
+     */
+    userLanguagesSearchBuilder() {
+        return new UserLanguagesSearchBuilder(this);
+    }
+}</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

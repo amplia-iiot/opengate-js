@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/operations/OperationActions.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <a data-ice="repoURL" href="https://github.com/amplia-iiot/opengate-js.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/GenericFinder.js~GenericFinder.html">GenericFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html">InternalOpenGateAPI</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/ProvisionGenericFinder.js~ProvisionGenericFinder.html">ProvisionGenericFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">alarms</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarms/AlarmActions.js~AlarmActions.html">AlarmActions</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">alarms/actions</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarms/actions/Alarm.js~Operation.html">Operation</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarms/actions/AlarmActionBuilder.js~AlarmActionBuilder.html">AlarmActionBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarms/actions/AlarmAttendBuilder.js~AlarmAttendBuilder.html">AlarmAttendBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarms/actions/AlarmCloseBuilder.js~AlarmCloseBuilder.html">AlarmCloseBuilder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">areas</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/areas/AreaFinder.js~AreaFinder.html">AreaFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/areas/Areas.js~Areas.html">Areas</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_ENUM">TYPE_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">bulk</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bulk/BulkFinder.js~BulkFinder.html">BulkFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">bundles</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/BundleFinder.js~BundleFinder.html">BundleFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/Bundles.js~Bundles.html">Bundles</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACTION_ENUM">ACTION_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">bundles/deployment</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/deployment/DeploymentElement.js~DeploymentElement.html">DeploymentElement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MODE_VALIDATORS_ENUM">MODE_VALIDATORS_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-OPERATION_ENUM">OPERATION_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-OPTION_ENUM">OPTION_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_ENUM">TYPE_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_VALIDATORS_ENUM">TYPE_VALIDATORS_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">channels</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/channels/ChannelFinder.js~ChannelFinder.html">ChannelFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/channels/Channels.js~Channels.html">Channels</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">collection/devices</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/DeviceMessage.js~DeviceMessage.html">DeviceMessage</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">collection/devices/collect</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/CommsModuleMessage.js~CommsModuleMessage.html">CommsModuleMessage</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Datapoint.js~Datapoint.html">Datapoint</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Datastreams.js~Datastream.html">Datastream</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Event.js~Event.html">Event</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Hardware.js~Hardware.html">Hardware</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Location.js~Location.html">Location</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Mobile.js~Mobile.html">Mobile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/PowerSupply.js~PowerSupply.html">PowerSupply</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Software.js~Software.html">Software</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Storage.js~Storage.html">Storage</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Subscriber.js~Subscriber.html">Subscriber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Subscription.js~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Temperature.js~Temperature.html">Temperature</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Usage.js~Usage.html">Usage</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">collection/devices/collect/enum</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ADDRESS_TYPE_ENUM">ADDRESS_TYPE_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ANTENNA_STATUS_ENUM">ANTENNA_STATUS_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BATTERY_CHARGE_LEVEL_STATUS_ENUM">BATTERY_CHARGE_LEVEL_STATUS_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BATTERY_CHARGE_STATUS_ENUM">BATTERY_CHARGE_STATUS_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LEVEL_TREND_ENUM">LEVEL_TREND_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-POWER_SUPPLY_SOURCE_ENUM">POWER_SUPPLY_SOURCE_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOFTWARE_TYPE_ENUM">SOFTWARE_TYPE_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEMPERATURE_STATUS_ENUM">TEMPERATURE_STATUS_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">domains</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/domains/Domains.js~Domains.html">Domains</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/domains/DomainsFinder.js~DomainFinder.html">DomainFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">entities</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/DeviceFinder.js~DeviceFinder.html">DeviceFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/EntityFinder.js~EntityFinder.html">EntityFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/SubscribersFinder.js~SubscribersFinder.html">SubscribersFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/SubscriptionsFinder.js~SubscriptionsFinder.html">SubscriptionsFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/TicketFinder.js~TicketFinder.html">TicketFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">iot/catalog</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/catalog/Category.js~Category.html">Category</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/catalog/Datastream.js~Datastream.html">Datastream</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/catalog/Qrating.js~Qrating.html">Qrating</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">iot/datamodels</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/datamodels/Datamodels.js~Datamodels.html">Datamodels</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/datamodels/DatamodelsFinder.js~DatamodelsFinder.html">DatamodelsFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper.html">DatamodelsHelper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATAMODELS_RESOURCE">DATAMODELS_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PRE_RESOURCE">PRE_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATAMODEL_RESOURCE">DATAMODEL_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-POST_RESOURCE">POST_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PRE_RESOURCE">PRE_RESOURCE</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/OperationActions.js~OperationActions.html">OperationActions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/OperationFinder.js~OperationFinder.html">OperationFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/Operations.js~Operations.html">Operations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/PeriodicityActions.js~PeriodicityActions.html">PeriodicityActions</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations/catalog</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/AppendEntitiesBy.js~AppendEntitiesBy.html">AppendEntitiesBy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder.html">BaseOperationBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/Operation.js~Operation.html">Operation</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations/catalog/parameters</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/parameters/BaseParameterBuilderWithParent.js~BaseParameterBuilderWithParent.html">BaseParameterBuilderWithParent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/parameters/ParameterBuilderFactory.js~ParameterBuilderFactory.html">ParameterBuilderFactory</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations/catalog/period</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/ExecuteEachBuilder.js~ExecuteEachBuilder.html">ExecuteEachBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/ExecuteEveryBuilder.js~ExecuteEveryBuilder.html">ExecuteEveryBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/PeriodicityUpdateBuilder.js~PeriodicityUpdateBuilder.html">PeriodicityUpdateBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DAYS_ENUM">DAYS_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MONTHS_ENUM">MONTHS_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations/catalog/period/pattern</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByGeneric.js~ByGeneric.html">ByGeneric</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByMonth.js~ByMonth.html">ByMonth</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByWeek.js~ByWeek.html">ByWeek</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByYear.js~ByYear.html">ByYear</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">organizations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/OrganizationFinder.js~OrganizationFinder.html">OrganizationFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/Organizations.js~Organizations.html">Organizations</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/BaseProvision.js~BaseProvision.html">BaseProvision</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision/entities</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/AssetBuilder.js~AssetBuilder.html">AssetBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/BulkBuilder.js~BulkBuilder.html">BulkBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/ComplexBuilder.js~ComplexBuilder.html">ComplexBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/CsvBulkBuilder.js~CsvBulkBuilder.html">CsvBulkBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/DeviceBuilder.js~DeviceBuilder.html">DeviceBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/EntityBuilder.js~EntityBuilder.html">EntityBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/JsonBulkBuilder.js~JsonBulkBuilder.html">JsonBulkBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/JsonFlattenedBulkBuilder.js~JsonFlattenedBulkBuilder.html">JsonFlattenedBulkBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SimpleBuilder.js~SimpleBuilder.html">SimpleBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SubscriberBuilder.js~SubscriberBuilder.html">SubscriberBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SubscriptionBuilder.js~SubscriptionBuilder.html">SubscriptionBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/TicketBuilder.js~TicketBuilder.html">TicketBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-AssetID">AssetID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SubscriberID">SubscriberID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SubscriptionID">SubscriptionID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TicketID">TicketID</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">rulesConfiguration</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html">RuleConfigurations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsActions.js~RuleConfigurationsActions.html">RuleConfigurationsActions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsCatalog.js~RuleConfigurationsCatalog.html">RuleConfigurationsCatalog</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder.html">RuleConfigurationsFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/AssetSearch.js~AssetSearch.html">AssetSearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/BaseSearch.js~BaseSearch.html">BaseSearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/DeviceSearch.js~DeviceSearch.html">DeviceSearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/EntitySearch.js~EntitySearch.html">EntitySearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/FilterBuilder.js~FilterBuilder.html">FilterBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/QuickSearch.js~QuickSearch.html">QuickSearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/Search.js~Search.html">Search</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/SelectBuilder.js~SelectBuilder.html">SelectBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/StaticSearch.js~StaticSearch.html">StaticSearch</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching/builder</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AdministrativeStateSearchBuilder.js~AdministrativeStateSearchBuilder.html">AdministrativeStateSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AlarmsSearchBuilder.js~AlarmsSearchBuilder.html">AlarmsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AllowedResourceTypeSearchBuilder.js~AllowedResourceTypeSearchBuilder.html">AllowedResourceTypeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AreasSearchBuilder.js~AreasSearchBuilder.html">AreasSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AssetsSearchBuilder.js~AssetsSearchBuilder.html">AssetsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BasicTypesSearchBuilder.js~BasicTypesSearchBuilder.html">BasicTypesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BulkSearchBuilder.js~BulkSearchBuilder.html">BulkSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BundlesSearchBuilder.js~BundlesSearchBuilder.html">BundlesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CertificatesSearchBuilder.js~CertificatesSearchBuilder.html">CertificatesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ChannelsSearchBuilder.js~ChannelsSearchBuilder.html">ChannelsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CommunicationsModuleTypeSearchBuilder.js~CommunicationsModuleTypeSearchBuilder.html">CommunicationsModuleTypeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CountryCodesSearchBuilder.js~CountryCodesSearchBuilder.html">CountryCodesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatamodelsSearchBuilder.js~DatamodelsSearchBuilder.html">DatamodelsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatapointsSearchBuilder.js~DatapointsSearchBuilder.html">DatapointsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatasetEntitiesSearchBuilder.js~DatasetEntitiesSearchBuilder.html">DatasetEntitiesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatasetsCatalogSearchBuilder.js~DatasetsCatalogSearchBuilder.html">DatasetsCatalogSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatastreamsSearchBuilder.js~DatastreamsSearchBuilder.html">DatastreamsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DevicesSearchBuilder.js~DevicesSearchBuilder.html">DevicesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DomainsSearchBuilder.js~DomainsSearchBuilder.html">DomainsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/EntitiesSearchBuilder.js~EntitiesSearchBuilder.html">EntitiesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ExecutionsSearchBuilder.js~ExecutionsSearchBuilder.html">ExecutionsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/FeedsSearchBuilder.js~FeedsSearchBuilder.html">FeedsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/FieldsDefinitionSearchBuilder.js~FieldsDefinitionSearchBuilder.html">FieldsDefinitionSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/FlattenedSearchBuilder.js~FlattenedSearchBuilder.html">FlattenedSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html">HardwaresSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamAccessSearchBuilder.js~IoTDatastreamAccessSearchBuilder.html">IoTDatastreamAccessSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamPeriodSearchBuilder.js~IoTDatastreamPeriodSearchBuilder.html">IoTDatastreamPeriodSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamStoragePeriodSearchBuilder.js~IoTDatastreamStoragePeriodSearchBuilder.html">IoTDatastreamStoragePeriodSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/MobilePhoneProviderSearchBuilder.js~MobilePhoneProviderSearchBuilder.html">MobilePhoneProviderSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationalStatusSearchBuilder.js~OperationalStatusSearchBuilder.html">OperationalStatusSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationsSearchBuilder.js~OperationsSearchBuilder.html">OperationsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html">OrganizationsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/PlansSearchBuilder.js~PlansSearchBuilder.html">PlansSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/PreFilteredSearchBuilder.js~PreFilteredSearchBuilder.html">PreFilteredSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RawSearchBuilder.js~RawSearchBuilder.html">RawSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ResourceTypeSearchBuilder.js~ResourceTypeSearchBuilder.html">ResourceTypeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RuleConfigurationSeveritySearchBuilder.js~RuleConfigurationSeveritySearchBuilder.html">RuleConfigurationSeveritySearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RuleModeSearchBuilder.js~RuleModeSearchBuilder.html">RuleModeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RuleTypeSearchBuilder.js~RuleTypeSearchBuilder.html">RuleTypeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RulesSearchBuilder.js~RulesSearchBuilder.html">RulesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SearchBuilder.js~SearchBuilder.html">SearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SearchWithSummaryBuilder.js~SearchWithSummaryBuilder.html">SearchWithSummaryBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ServiceGroupSearchBuilder.js~ServiceGroupSearchBuilder.html">ServiceGroupSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SoftwaresSearchBuilder.js~SoftwaresSearchBuilder.html">SoftwaresSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscribersSearchBuilder.js~SubscribersSearchBuilder.html">SubscribersSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscriptionsSearchBuilder.js~SubscriptionsSearchBuilder.html">SubscriptionsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TasksSearchBuilder.js~TasksSearchBuilder.html">TasksSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketPrioritySearchBuilder.js~TicketPrioritySearchBuilder.html">TicketPrioritySearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketSeveritySearchBuilder.js~TicketSeveritySearchBuilder.html">TicketSeveritySearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketStatusSearchBuilder.js~TicketStatusSearchBuilder.html">TicketStatusSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketsSearchBuilder.js~TicketsSearchBuilder.html">TicketsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TimezoneSearchBuilder.js~TimezoneSearchBuilder.html">TimezoneSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UserLanguagesSearchBuilder.js~UserLanguagesSearchBuilder.html">UserLanguagesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UserProfilesSearchBuilder.js~UserProfilesSearchBuilder.html">UserProfilesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UsersSearchBuilder.js~UsersSearchBuilder.html">UsersSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/WorkgroupsSearchBuilder.js~WorkgroupsSearchBuilder.html">WorkgroupsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOKEN_URL">TOKEN_URL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOKEN_URL">TOKEN_URL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOKEN_URL">TOKEN_URL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOKEN_URL">TOKEN_URL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOFTWARE_TYPES_ENUM">SOFTWARE_TYPES_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching/error</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/error/SearchBuilderError.js~SearchBuilderError.html">SearchBuilderError</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">security</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/security/CertificateFinder.js~CertificateFinder.html">CertificateFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/security/Certificates.js~Certificates.html">Certificates</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/security/Security.js~Security.html">Security</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ADMINISTRATIVE_STATE_ENUM">ADMINISTRATIVE_STATE_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MIME_TYPES_ENUM">MIME_TYPES_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-USAGES_ENUM">USAGES_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">users</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/users/UserFinder.js~UserFinder.html">UserFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/users/Users.js~User.html">User</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">util</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/Expression.js~Expression.html">Expression</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/NorthAmpliaREST.js~NorthAmpliaREST.html">NorthAmpliaREST</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/SelectElement.js~SelectElement.html">SelectElement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/SouthAmpliaREST.js~SouthAmpliaREST.html">SouthAmpliaREST</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATE_FORMAT">DATE_FORMAT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TIME_FORMAT">TIME_FORMAT</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">util/searchingFields</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/searchingFields/FieldFinder.js~FieldFinder.html">FieldFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-IOT_FIELDS">IOT_FIELDS</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">util/searchingFields/source-precompiled</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-GENERATED_FIELDS">GENERATED_FIELDS</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">workgroups</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/workgroups/WorkgroupFinder.js~WorkgroupFinder.html">WorkgroupFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/workgroups/WorkgroupRelations.js~WorkgroupRelations.html">WorkgroupRelations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/workgroups/WorkgroupRelationsFinder.js~WorkgroupRelationsFinder.html">WorkgroupRelationsFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/workgroups/Workgroups.js~Workgroups.html">Workgroups</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/operations/OperationActions.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
+
+import q from &apos;q&apos;;
+import moment from &apos;moment&apos;;
+
+const JOB_RESOURCE = &quot;/jobs/&quot;;
+const TASK_RESOURCE = &quot;/tasks/&quot;;
+const LIMIT_SIZE_DEF_VALUE = 10;
+
+export default class OperationActions {
+
+    /**
+     * @param {InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
+     * @param {string} operationId - Identifier of the operation on which the action will be carried out
+     */
+    constructor(ogapi, operationId) {
+        if (typeof operationId !== &apos;string&apos;)
+            throw new Error(&apos;Parameter operationId must be a string&apos;);
+        this._ogapi = ogapi;
+        this._resource = &apos;operation&apos;;
+        this._operationId = operationId;
+    }
+
+    /**
+     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * This function active an operation
+     * @example 
+     * ogapi.newOperationActions(&quot;xxxxx-xxx-xxxx-xxxxx&quot;).active()
+     * @return {Promise} 
+     * @property {function (statusCode:number)} then - When request it is OK
+     * @property {function (errors:array, statusCode:number)} then - When request it is NOK
+     * @property {function (errors:array)} catch - When request it is NOK
+     */
+    active() {
+        let config = {
+            request: {
+                active: true
+            }
+        };
+        this._key = &quot;job&quot;;
+        this._resource = this._resource + JOB_RESOURCE + this._operationId;
+        //console.log(&quot;active with config: &quot; + JSON.stringify(config));
+        return this._update(config);
+    }
+
+    /**
+     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * This function pause an operation
+     * @example 
+     * ogapi.OperationActions(&quot;xxxxx-xxx-xxxx-xxxxx&quot;).pause()
+     * @return {Promise} 
+     * @property {function (statusCode:number)} then - When request it is OK
+     * @property {function (errors:array, statusCode:number)} then - When request it is NOK
+     * @property {function (errors:array)} catch - When request it is NOK
+     */
+    pause() {
+        let config = {
+            request: {
+                active: false
+            }
+        };
+        this._key = &quot;job&quot;;
+        this._resource = this._resource + JOB_RESOURCE + this._operationId;
+        //console.log(&quot;pause with config: &quot; + JSON.stringify(config));
+        return this._update(config);
+    }
+
+    /**
+     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * This function cancela operation
+     * @return {Promise}
+     * @property {function (result:object, statusCode:number)} then - When request it is OK
+     * @property {function (errors:array, statusCode:number)} then - When request it is NOK
+     * @property {function (errors:array)} catch - When request it is NOK
+     * @example
+     * Actions(&quot;xxxxx-xxx-xxxx-xxxxx&quot;).cancel();
+     */
+    cancel() {
+        //console.log(&quot;cancel&quot;);
+        this._id = this._operationId;
+        this._resource = this._resource + JOB_RESOURCE + this._id;
+        return this._cancel(this._resource);
+    }
+
+    /**
+     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * This function active periodicity of an operation
+     * @example 
+     * ogapi.newOperationActions(&quot;xxxxx-xxx-xxxx-xxxxx&quot;).activePeriodicity()
+     * @return {Promise} 
+     * @property {function (statusCode:number)} then - When request it is OK
+     * @property {function (errors:array, statusCode:number)} then - When request it is NOK
+     * @property {function (errors:array)} catch - When request it is NOK
+     */
+    activePeriodicity() {
+        let config = {
+            active: true
+        };
+
+        this._key = &quot;task&quot;;
+        this._resource = this._resource + TASK_RESOURCE;
+        //console.log(&quot;active with config: &quot; + JSON.stringify(config));
+        return this._periodicityActions(&quot;ACTIVE&quot;, config);
+    }
+
+    /**
+     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * This function pause periodicity of an operation
+     * @example 
+     * ogapi.OperationActions(&quot;xxxxx-xxx-xxxx-xxxxx&quot;).pausePeriodicity()
+     * @return {Promise} 
+     * @property {function (statusCode:number)} then - When request it is OK
+     * @property {function (errors:array, statusCode:number)} then - When request it is NOK
+     * @property {function (errors:array)} catch - When request it is NOK
+     */
+    pausePeriodicity() {
+        let config = {
+            active: false
+        };
+        //console.log(&quot;pause with config: &quot; + JSON.stringify(config));
+        this._key = &quot;task&quot;;
+        this._resource = this._resource + TASK_RESOURCE;
+        //console.log(&quot;PAUSE_PERIODICITY_resource: &quot; + this._resource);
+        return this._periodicityActions(&quot;PAUSE&quot;, config);
+    }
+
+    /**
+     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * This function cancel the periodicity of an operation
+     * @return {Promise}
+     * @property {function (result:object, statusCode:number)} then - When request it is OK
+     * @property {function (errors:array, statusCode:number)} then - When request it is NOK
+     * @property {function (errors:array)} catch - When request it is NOK
+     * @example
+     * ogapi.OperationActions(&quot;xxxxx-xxx-xxxx-xxxxx&quot;).cancelPeriodicity();
+     */
+    cancelPeriodicity() {
+        //console.log(&quot;cancel&quot;);
+        this._resource = this._resource + TASK_RESOURCE;
+        return this._periodicityActions(&quot;CANCEL&quot;);
+    }
+
+    /**
+     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * This function pause, update its delay and active an operation for execute immediately
+     * @example 
+     * ogapi.OperationActions(&quot;xxxxx-xxx-xxxx-xxxxx&quot;).executeNow()
+     * @return {Promise} 
+     * @property {function (statusCode:number)} then - When request it is OK
+     * @property {function (errors:array, statusCode:number)} then - When request it is NOK
+     * @property {function (errors:array)} catch - When request it is NOK
+     */
+    executeNow() {
+        let config = {
+            request: {
+                schedule: {
+                    start: {}
+                }
+            }
+        };
+        //console.log(&quot;executeNow with config: &quot; + JSON.stringify(config));
+        return this._readAndUpdate(config, true);
+    }
+
+    /**
+     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * This function pauses (if it was active), updates the delay and passes the operation to the initial state (if activated, activated again)
+     * @example 
+     * ogapi.OperationActions(&quot;xxxxx-xxx-xxxx-xxxxx&quot;).executeLater(10)
+     * @param {!number} minutes 
+     * @return {promise} 
+     * @property {function (statusCode:number)} then - When request it is OK
+     * @property {function (errors:array, statusCode:number)} then - When request it is NOK
+     * @property {function (errors:array)} catch - When request it is NOK
+     */
+    executeLater(minutes) {
+        //console.log(&quot;typeof minutes: &quot; + typeof (minutes));
+        if (typeof minutes !== &quot;number&quot;) {
+            throw new Error(&quot;Parameter minutes must be typeof number&quot;);
+        }
+        let config = {
+            request: {
+                schedule: {
+                    start: {
+                        delayed: moment.duration(minutes, &apos;minutes&apos;).asMilliseconds()
+                    }
+                }
+            }
+        };
+        //console.log(&quot;executeLater with config: &quot; + JSON.stringify(config));
+        return this._readAndUpdate(config);
+    }
+
+    /**
+     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * This function pauses (if it was active), updates the callback and passes the operation to the initial state (if activated, activated again)
+     * @example 
+     * ogapi.OperationActions(&quot;xxxxx-xxx-xxxx-xxxxx&quot;).changeCallback(&quot;http://[your_application_address]/[your_URI]&quot;)
+     * @param {!string} url 
+     * @return {promise} 
+     * @property {function (statusCode:number)} then - When request it is OK
+     * @property {function (errors:array, statusCode:number)} then - When request it is NOK
+     * @property {function (errors:array)} catch - When request it is NOK
+     */
+    changeCallback(url) {
+        if (typeof url !== &quot;string&quot;)
+            throw new Error(&apos;Parameter url must be a string&apos;);
+        let config = {
+            request: {
+                callback: url
+            }
+        };
+        //console.log(&quot;changeCallback with config: &quot; + JSON.stringify(config));
+        return this._readAndUpdate(config);
+    }
+
+    _cancel() {
+        //console.log(&quot;cancel&quot;);
+        var defered = q.defer();
+        var promise = defered.promise;
+        this._ogapi.Napi.delete(this._resource)
+            .then((response) =&gt; {
+                //console.log(&quot;cancel response: &quot; + JSON.stringify(response));
+                if (response.statusCode === 200) {
+                    defered.resolve({
+                        statusCode: response.statusCode,
+                        data: {
+                            id: this._id
+                        }
+                    });
+                } else {
+                    defered.reject({
+                        errors: response.errors,
+                        statusCode: response.statusCode
+                    });
+                }
+            })
+            .catch((error) =&gt; {
+                //console.log(&quot;cancel error: &quot; + JSON.stringify(error));
+                defered.reject(this._formatError(error));
+            });
+        return promise;
+    }
+
+    _periodicityActions(action, config) {
+        //console.log(&quot;_periodicityActions&quot;);
+        var _this = this;
+        var defered = q.defer();
+        var promise = defered.promise;
+        //console.log(_this._operationId);
+        //console.log(&quot;OPERATION_ID: &quot; + this._operationId);
+        _this._ogapi.newOperationFinder().findById(_this._operationId)
+            .then(function (response) {
+                var data = response.data;
+                if (!data || Object.keys(data).length == 0) {
+                    //console.log(&quot;BUG&quot;);
+                    //BUG http://cm.amplia.es/jira/browse/ODMQA-1057
+                    defered.reject({
+                        errors: &quot;Operation with id &quot; + _this._operationId + &quot; not exists&quot;
+                    });
+                } else {
+                    //console.log(&quot;RESPONSE_DATA: &quot; + JSON.stringify(data));
+                    let periodicityId = data.taskId;
+                    if (!periodicityId) {
+                        defered.reject({
+                            errors: &quot;Operation is not periodic!&quot;
+                        });
+                    } else {
+                        _this._resource = _this._resource + periodicityId;
+                        //console.log(&quot;RESOURCE_DATA: &quot; + _this._resource);
+                        switch (action) {
+                            case &quot;PAUSE&quot;:
+                            case &quot;ACTIVE&quot;:
+                                _this._update(config)
+                                    .then(function (response) {
+                                        defered.resolve(response);
+                                    }).catch(function (error) {
+                                        defered.reject(error);
+                                    });
+                                break;
+                            case &quot;CANCEL&quot;:
+                                _this._id = periodicityId;
+                                _this._cancel()
+                                    .then(function (response) {
+                                        defered.resolve(response);
+                                    }).catch(function (error) {
+                                        defered.reject(error);
+                                    });
+                                break;
+                            default:
+                                defered.reject({
+                                    errors: &quot;Not implemented action: &quot; + action
+                                });
+                        }
+                    }
+                }
+            })
+            .catch(function (error) {
+                //console.log(&quot;ERROR: &quot; + error);
+                defered.reject(error);
+            });
+        return promise;
+    }
+
+    /**
+     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * This function read and update an operation
+     * @example 
+     * ogapi.OperationActions(&quot;xxxxx-xxx-xxxx-xxxxx&quot;)._readAndUpdate({})
+     * @param {object} - config 
+     * @param {boolean} - forceToActivate
+     * @return {Promise} 
+     * @property {function (statusCode:number)} then - When request it is OK
+     * @property {function (errors:array, statusCode:number)} then - When request it is NOK
+     * @property {function (error:string)} catch - When request it is NOK
+     */
+    _readAndUpdate(config, forceToActivate) {
+        //console.log(&quot;_readAndUpdate with config: &quot; + JSON.stringify(config) + &quot; and forceToActivate: &quot; + forceToActivate);
+        let defered = q.defer();
+        let promise = defered.promise;
+        var _this = this;
+        _this._ogapi.newOperationFinder().findById(_this._operationId).then(
+            function (response) {
+                //console.log(&quot;_readAndUpdate find response: &quot; + JSON.stringify(response));
+                var data = response.data;
+                if (!data) {
+                    //BUG http://cm.amplia.es/jira/browse/ODMQA-1057
+                    defered.reject(&quot;Operation with id &quot; + _this._operationId + &quot; not exists&quot;);
+                } else {
+                    let active = data.operation ? data.operation.active : false;
+                    if (active) {
+                        _this.pause().then(
+                            function (response) {
+                                _this._update(config, forceToActivate || active).then(
+                                    function (response) {
+                                        defered.resolve(response);
+                                    }
+                                ).catch(
+                                    function (error) {
+                                        defered.reject(_this._formatError(error));
+                                    }
+                                );
+                            }
+                        ).catch(
+                            function (error) {
+                                defered.reject(_this._formatError(error));
+                            }
+                        );
+
+                    } else {
+                        _this._update(config, forceToActivate || active).then(
+                            function (response) {
+                                defered.resolve(response);
+                            }
+                        ).catch(
+                            function (error) {
+                                defered.reject(_this._formatError(error));
+                            }
+                        );
+                    }
+                }
+            }
+        ).catch(
+            function (error) {
+                //console.log(&quot;_readAndUpdate find error: &quot; + JSON.stringify(error));
+                defered.reject(_this._formatError(error));
+            }
+        );
+
+        return promise;
+    }
+
+    /**
+     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * This function update an operation
+     * @example 
+     * ogapi.OperationActions(&quot;xxxxx-xxx-xxxx-xxxxx&quot;)._update({})
+     * ogapi.OperationActions(&quot;xxxxx-xxx-xxxx-xxxxx&quot;)._update({}, _defered, _promise)
+     * @return {Promise} 
+     * @property {function (statusCode:number)} then - When request it is OK
+     * @property {function (errors:array, statusCode:number)} then - When request it is NOK
+     * @property {function (error:string)} catch - When request it is NOK
+     */
+    _update(config, forceToActivate) {
+        //console.log(&quot;_update with config: &quot; + JSON.stringify(config) + &quot; and forceToActivate: &quot; + forceToActivate);
+        //console.log(&quot;_update: &quot; + JSON.stringify(config));
+        var _this = this;
+        let defered = q.defer();
+        let promise = defered.promise;
+        let obj = {};
+        //console.log(&quot;_update_key: &quot; + _this._key);
+        obj[_this._key] = config;
+        //console.log(&quot;_update_obj: &quot; + JSON.stringify(obj));
+        //console.log(&quot;_update_resource: &quot; + this._resource);
+        this._ogapi.Napi
+            .put(this._resource, obj)
+            .then((response) =&gt; {
+                //console.log(&quot;_update response: &quot; + JSON.stringify(response));
+                if (forceToActivate) {
+                    _this.active().then(
+                        function (response) {
+                            defered.resolve(response);
+                        }
+                    ).catch(
+                        function (error) {
+                            defered.reject(this._formatError(error));
+                        }
+                    );
+                } else {
+                    if (response.status === 200) {
+                        let data = response.text != &quot;&quot; ? JSON.parse(response.text) : {};
+                        let _response = {
+                            statusCode: response.status,
+                            data: data
+                        };
+                        defered.resolve(response);
+                    } else {
+                        defered.reject({
+                            errors: response.errors,
+                            statusCode: response.status
+                        });
+                    }
+                }
+            })
+            .catch((error) =&gt; {
+                //console.log(&quot;_update error: &quot; + error);
+                defered.reject(this._formatError(error));
+            });
+        return promise;
+    }
+
+    _formatError(error) {
+        if (!error.data) {
+            error.data = {};
+        }
+        if (!error.data.errors) {
+            error.data.errors = [(typeof (error) === &quot;string&quot;) ? {
+                message: error
+            } : error];
+        }
+        //console.log(&quot;_formatError: &quot; + error);
+        return error;
+    }
+
+
+}</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
