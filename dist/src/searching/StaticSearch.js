@@ -559,7 +559,7 @@ var StaticSearch = (function (_Search) {
                     'advanced': [],
                     'viewer': []
                 },
-                'ioTDatastreamAccess': ['READ', 'WRITE', 'READ,WRITE'],
+                'ioTDatastreamAccess': ['READ', 'WRITE'],
                 'ioTDatastreamStoragePeriod': ['SECONDS', 'MINUTES', 'HOURS', 'DAYS', 'MONTHS', 'YEARS', 'NEVER'],
                 'ioTDatastreamPeriod': ['PULSE', 'CUMULATIVE', 'INSTANT'],
                 'resourceType': [{
