@@ -1,20 +1,68 @@
 {
-  "type": "Program",
-  "body": [
-    {
-      "type": "ExportNamedDeclaration",
-      "declaration": {
-        "type": "VariableDeclaration",
-        "declarations": [
-          {
-            "type": "VariableDeclarator",
-            "id": {
-              "type": "Identifier",
-              "name": "POWER_SUPPLY_SOURCE_ENUM",
-              "range": [
-                67,
-                91
-              ],
+  "type": "File",
+  "start": 0,
+  "end": 160,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 4,
+      "column": 106
+    }
+  },
+  "program": {
+    "type": "Program",
+    "start": 0,
+    "end": 160,
+    "loc": {
+      "start": {
+        "line": 1,
+        "column": 0
+      },
+      "end": {
+        "line": 4,
+        "column": 106
+      }
+    },
+    "sourceType": "module",
+    "body": [
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 54,
+        "end": 160,
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 0
+          },
+          "end": {
+            "line": 4,
+            "column": 106
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 61,
+          "end": 160,
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 7
+            },
+            "end": {
+              "line": 4,
+              "column": 106
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 67,
+              "end": 159,
               "loc": {
                 "start": {
                   "line": 4,
@@ -22,163 +70,174 @@
                 },
                 "end": {
                   "line": 4,
-                  "column": 37
-                }
-              }
-            },
-            "init": {
-              "type": "ArrayExpression",
-              "elements": [
-                {
-                  "type": "Literal",
-                  "value": "NETWORK_PLUGGED",
-                  "raw": "\"NETWORK_PLUGGED\"",
-                  "range": [
-                    96,
-                    113
-                  ],
-                  "loc": {
-                    "start": {
-                      "line": 4,
-                      "column": 42
-                    },
-                    "end": {
-                      "line": 4,
-                      "column": 59
-                    }
-                  }
-                },
-                {
-                  "type": "Literal",
-                  "value": "DIESEL_GENERATOR",
-                  "raw": "\"DIESEL_GENERATOR\"",
-                  "range": [
-                    114,
-                    132
-                  ],
-                  "loc": {
-                    "start": {
-                      "line": 4,
-                      "column": 60
-                    },
-                    "end": {
-                      "line": 4,
-                      "column": 78
-                    }
-                  }
-                },
-                {
-                  "type": "Literal",
-                  "value": "SOLAR",
-                  "raw": "\"SOLAR\"",
-                  "range": [
-                    133,
-                    140
-                  ],
-                  "loc": {
-                    "start": {
-                      "line": 4,
-                      "column": 79
-                    },
-                    "end": {
-                      "line": 4,
-                      "column": 86
-                    }
-                  }
-                },
-                {
-                  "type": "Literal",
-                  "value": "BATTERY",
-                  "raw": "\"BATTERY\"",
-                  "range": [
-                    141,
-                    150
-                  ],
-                  "loc": {
-                    "start": {
-                      "line": 4,
-                      "column": 87
-                    },
-                    "end": {
-                      "line": 4,
-                      "column": 96
-                    }
-                  }
-                },
-                {
-                  "type": "Literal",
-                  "value": "OTHER",
-                  "raw": "\"OTHER\"",
-                  "range": [
-                    151,
-                    158
-                  ],
-                  "loc": {
-                    "start": {
-                      "line": 4,
-                      "column": 97
-                    },
-                    "end": {
-                      "line": 4,
-                      "column": 104
-                    }
-                  }
-                }
-              ],
-              "range": [
-                94,
-                159
-              ],
-              "loc": {
-                "start": {
-                  "line": 4,
-                  "column": 40
-                },
-                "end": {
-                  "line": 4,
                   "column": 105
                 }
-              }
-            },
-            "range": [
-              67,
-              159
-            ],
-            "loc": {
-              "start": {
-                "line": 4,
-                "column": 13
               },
-              "end": {
-                "line": 4,
-                "column": 105
+              "id": {
+                "type": "Identifier",
+                "start": 67,
+                "end": 91,
+                "loc": {
+                  "start": {
+                    "line": 4,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 37
+                  },
+                  "identifierName": "POWER_SUPPLY_SOURCE_ENUM"
+                },
+                "name": "POWER_SUPPLY_SOURCE_ENUM",
+                "leadingComments": null
+              },
+              "init": {
+                "type": "ArrayExpression",
+                "start": 94,
+                "end": 159,
+                "loc": {
+                  "start": {
+                    "line": 4,
+                    "column": 40
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 105
+                  }
+                },
+                "elements": [
+                  {
+                    "type": "StringLiteral",
+                    "start": 96,
+                    "end": 113,
+                    "loc": {
+                      "start": {
+                        "line": 4,
+                        "column": 42
+                      },
+                      "end": {
+                        "line": 4,
+                        "column": 59
+                      }
+                    },
+                    "extra": {
+                      "rawValue": "NETWORK_PLUGGED",
+                      "raw": "\"NETWORK_PLUGGED\""
+                    },
+                    "value": "NETWORK_PLUGGED"
+                  },
+                  {
+                    "type": "StringLiteral",
+                    "start": 114,
+                    "end": 132,
+                    "loc": {
+                      "start": {
+                        "line": 4,
+                        "column": 60
+                      },
+                      "end": {
+                        "line": 4,
+                        "column": 78
+                      }
+                    },
+                    "extra": {
+                      "rawValue": "DIESEL_GENERATOR",
+                      "raw": "\"DIESEL_GENERATOR\""
+                    },
+                    "value": "DIESEL_GENERATOR"
+                  },
+                  {
+                    "type": "StringLiteral",
+                    "start": 133,
+                    "end": 140,
+                    "loc": {
+                      "start": {
+                        "line": 4,
+                        "column": 79
+                      },
+                      "end": {
+                        "line": 4,
+                        "column": 86
+                      }
+                    },
+                    "extra": {
+                      "rawValue": "SOLAR",
+                      "raw": "\"SOLAR\""
+                    },
+                    "value": "SOLAR"
+                  },
+                  {
+                    "type": "StringLiteral",
+                    "start": 141,
+                    "end": 150,
+                    "loc": {
+                      "start": {
+                        "line": 4,
+                        "column": 87
+                      },
+                      "end": {
+                        "line": 4,
+                        "column": 96
+                      }
+                    },
+                    "extra": {
+                      "rawValue": "BATTERY",
+                      "raw": "\"BATTERY\""
+                    },
+                    "value": "BATTERY"
+                  },
+                  {
+                    "type": "StringLiteral",
+                    "start": 151,
+                    "end": 158,
+                    "loc": {
+                      "start": {
+                        "line": 4,
+                        "column": 97
+                      },
+                      "end": {
+                        "line": 4,
+                        "column": 104
+                      }
+                    },
+                    "extra": {
+                      "rawValue": "OTHER",
+                      "raw": "\"OTHER\""
+                    },
+                    "value": "OTHER"
+                  }
+                ]
+              },
+              "leadingComments": null
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [
+            {
+              "type": "CommentBlock",
+              "value": "*\r\n * POWER_SUPPLY_SOURCE_ENUM values allowed\r\n ",
+              "start": 0,
+              "end": 52,
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 0
+                },
+                "end": {
+                  "line": 3,
+                  "column": 3
+                }
               }
             }
-          }
-        ],
-        "kind": "const",
-        "range": [
-          61,
-          160
-        ],
-        "loc": {
-          "start": {
-            "line": 4,
-            "column": 7
-          },
-          "end": {
-            "line": 4,
-            "column": 106
-          }
+          ],
+          "trailingComments": []
         },
         "leadingComments": [
           {
-            "type": "Block",
+            "type": "CommentBlock",
             "value": "*\r\n * POWER_SUPPLY_SOURCE_ENUM values allowed\r\n ",
-            "range": [
-              0,
-              52
-            ],
+            "start": 0,
+            "end": 52,
             "loc": {
               "start": {
                 "line": 1,
@@ -190,70 +249,17 @@
               }
             }
           }
-        ],
-        "trailingComments": []
-      },
-      "specifiers": [],
-      "source": null,
-      "range": [
-        54,
-        160
-      ],
-      "loc": {
-        "start": {
-          "line": 4,
-          "column": 0
-        },
-        "end": {
-          "line": 4,
-          "column": 106
-        }
-      },
-      "leadingComments": [
-        {
-          "type": "Block",
-          "value": "*\r\n * POWER_SUPPLY_SOURCE_ENUM values allowed\r\n ",
-          "range": [
-            0,
-            52
-          ],
-          "loc": {
-            "start": {
-              "line": 1,
-              "column": 0
-            },
-            "end": {
-              "line": 3,
-              "column": 3
-            }
-          }
-        }
-      ]
-    }
-  ],
-  "sourceType": "module",
-  "range": [
-    54,
-    160
-  ],
-  "loc": {
-    "start": {
-      "line": 4,
-      "column": 0
-    },
-    "end": {
-      "line": 4,
-      "column": 106
-    }
+        ]
+      }
+    ],
+    "directives": []
   },
   "comments": [
     {
-      "type": "Block",
+      "type": "CommentBlock",
       "value": "*\r\n * POWER_SUPPLY_SOURCE_ENUM values allowed\r\n ",
-      "range": [
-        0,
-        52
-      ],
+      "start": 0,
+      "end": 52,
       "loc": {
         "start": {
           "line": 1,
@@ -262,6 +268,476 @@
         "end": {
           "line": 3,
           "column": 3
+        }
+      }
+    }
+  ],
+  "tokens": [
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n * POWER_SUPPLY_SOURCE_ENUM values allowed\r\n ",
+      "start": 0,
+      "end": 52,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
+      "start": 54,
+      "end": 60,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "const",
+        "keyword": "const",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "const",
+      "start": 61,
+      "end": 66,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 7
+        },
+        "end": {
+          "line": 4,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "POWER_SUPPLY_SOURCE_ENUM",
+      "start": 67,
+      "end": 91,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 13
+        },
+        "end": {
+          "line": 4,
+          "column": 37
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 92,
+      "end": 93,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 38
+        },
+        "end": {
+          "line": 4,
+          "column": 39
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "[",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 94,
+      "end": 95,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 40
+        },
+        "end": {
+          "line": 4,
+          "column": 41
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "NETWORK_PLUGGED",
+      "start": 96,
+      "end": 113,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 42
+        },
+        "end": {
+          "line": 4,
+          "column": 59
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 113,
+      "end": 114,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 59
+        },
+        "end": {
+          "line": 4,
+          "column": 60
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "DIESEL_GENERATOR",
+      "start": 114,
+      "end": 132,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 60
+        },
+        "end": {
+          "line": 4,
+          "column": 78
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 132,
+      "end": 133,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 78
+        },
+        "end": {
+          "line": 4,
+          "column": 79
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "SOLAR",
+      "start": 133,
+      "end": 140,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 79
+        },
+        "end": {
+          "line": 4,
+          "column": 86
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 140,
+      "end": 141,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 86
+        },
+        "end": {
+          "line": 4,
+          "column": 87
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "BATTERY",
+      "start": 141,
+      "end": 150,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 87
+        },
+        "end": {
+          "line": 4,
+          "column": 96
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 150,
+      "end": 151,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 96
+        },
+        "end": {
+          "line": 4,
+          "column": 97
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "OTHER",
+      "start": 151,
+      "end": 158,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 97
+        },
+        "end": {
+          "line": 4,
+          "column": 104
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "]",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 158,
+      "end": 159,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 104
+        },
+        "end": {
+          "line": 4,
+          "column": 105
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 159,
+      "end": 160,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 105
+        },
+        "end": {
+          "line": 4,
+          "column": 106
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "eof",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 160,
+      "end": 160,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 106
+        },
+        "end": {
+          "line": 4,
+          "column": 106
         }
       }
     }

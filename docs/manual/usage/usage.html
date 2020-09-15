@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">Usage</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container manual-root" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <a data-ice="repoURL" href="https://github.com/amplia-iiot/opengate-js.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div class="manual-toc-root">
+  
+<div data-ice="manual" data-toc-name="installation">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1 manual-color manual-color-installation" data-section-count="&#x25A0;" data-link="manual/installation/installation.html"><a href="manual/installation/installation.html" data-ice="link">Instalation Guide</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/installation/installation.html"><a href="manual/installation/installation.html#development-guide" data-ice="link">Development Guide</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/installation/installation.html"><a href="manual/installation/installation.html#gulp-tasks-available" data-ice="link">Gulp tasks available</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="usage">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1 manual-color manual-color-usage" data-section-count="&#x25A0;&#x25A0;&#x25A0;&#x25A0;" data-link="manual/usage/usage.html"><a href="manual/usage/usage.html" data-ice="link">Examples about how to use our OpengateJS</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/usage/usage.html"><a href="manual/usage/usage.html#search-into-entities-data" data-ice="link">Search into entities data</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/usage/usage.html"><a href="manual/usage/usage.html#search-provision-devices-info" data-ice="link">Search provision devices info</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/usage/usage.html"><a href="manual/usage/usage.html#search-provision-subscribers-info" data-ice="link">Search provision subscribers info</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/usage/usage.html"><a href="manual/usage/usage.html#search-provision-subscriptions-info" data-ice="link">Search provision subscriptions info</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/usage/usage.html"><a href="manual/usage/usage.html#search-provision-communicationsmodules-info" data-ice="link">Search provision communicationsModules info</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/usage/usage.html"><a href="manual/usage/usage.html#search-into-executions-data-of-a-operation" data-ice="link">Search into executions data of a operation</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/usage/usage.html"><a href="manual/usage/usage.html#search-into-alarms-data" data-ice="link">Search into alarms data</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/usage/usage.html"><a href="manual/usage/usage.html#search-into-iot-data" data-ice="link">Search into iot data</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/usage/usage.html"><a href="manual/usage/usage.html#search-into-datastreams-and-profiles-collections" data-ice="link">Search into datastreams and profiles collections</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/usage/usage.html"><a href="manual/usage/usage.html#search-into-datapoints-collections" data-ice="link">Search into datapoints collections</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/usage/usage.html"><a href="manual/usage/usage.html#setting-timeout-in-all-searches" data-ice="link">Setting timeout in all searches</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/usage/usage.html"><a href="manual/usage/usage.html#execute-an-operation" data-ice="link">Execute an operation</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/usage/usage.html"><a href="manual/usage/usage.html#ok-i-have-an-operation-builder-but-now-what-could-i-do-" data-ice="link">OK I have an operation builder but now. What could i do ?</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/usage/usage.html"><a href="manual/usage/usage.html#how-can-i-add-a-specific-parameter-" data-ice="link">How can i add a specific parameter ?</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/usage/usage.html"><a href="manual/usage/usage.html#execute-actions-on-the-executions" data-ice="link">Execute actions on the executions</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/usage/usage.html"><a href="manual/usage/usage.html#active" data-ice="link">Active</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/usage/usage.html"><a href="manual/usage/usage.html#pause" data-ice="link">Pause</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/usage/usage.html"><a href="manual/usage/usage.html#cancel" data-ice="link">Cancel</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="example">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1 manual-color manual-color-example" data-section-count="&#x25A0;&#x25A0;" data-link="manual/example/example.html"><a href="manual/example/example.html" data-ice="link">Interactive examples</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/example/example.html"><a href="manual/example/example.html#searchs-" data-ice="link">Searchs:</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/example/example.html"><a href="manual/example/example.html#operations-" data-ice="link">Operations:</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/example/example.html"><a href="manual/example/example.html#finder" data-ice="link">Finder</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/example/example.html"><a href="manual/example/example.html#an-user" data-ice="link">An User</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/example/example.html"><a href="manual/example/example.html#an-organization" data-ice="link">An Organization</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/example/example.html"><a href="manual/example/example.html#an-certificate" data-ice="link">An Certificate</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/example/example.html"><a href="manual/example/example.html#execute-actions-on-the-executions" data-ice="link">Execute actions on the executions</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="reference">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1 manual-color manual-color-reference" data-section-count="&#x25A0;&#x25A0;&#x25A0;&#x25A0;&#x25A0;" data-link="identifiers.html"><a href="identifiers.html" data-ice="link">Reference</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="identifiers.html"><a href="identifiers.html#class" data-ice="link">Class</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="identifiers.html"><a href="identifiers.html#variable" data-ice="link">Variable</a></li>
+</ul>
+  </div>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="github-markdown">
+  <div class="manual-breadcrumb-list">
+    <a href="./manual/./index.html">Manual</a>
+    <span>&#xBB;</span>
+    <span data-ice="title">Usage</span>
+  </div>
+  <div data-ice="content"><h1 id="examples-about-how-to-use-our-opengatejs">Examples about how to use our OpengateJS</h1>
+<h2 id="search-into-entities-data">Search into entities data</h2>
+<h3 id="search-provision-devices-info">Search provision devices info</h3>
+<p>The first that you need obtain is a new Builder instance: </p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    ogapi.
+    devicesSearchBuilder()</code>
+</code></pre>
+<p>If you need information about collected data:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    ogapi.
+    devicesSearchBuilder().
+    onCollected().....</code>
+</code></pre>
+<p>Or you need information about provisioned data:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    ogapi.
+    devicesSearchBuilder().
+    onProvisioned().....</code>
+</code></pre>
+<p>Uhmm, If you need all information, provisioned and collected, because you want to be enlightened:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    ogapi.
+    devicesSearchBuilder().
+    onProvisioned().
+    onCollected()....</code>
+</code></pre>
+<p>Well, Now you only want summary information:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">// Collected Data
+    ogapi.
+    devicesSearchBuilder().
+    onProvisioned().
+    summary()....
+// Provisioned Data
+    ogapi.
+    devicesSearchBuilder().
+    onProvisioned().
+    summary()....
+// Provisioned and Collected Data
+    ogapi.
+    devicesSearchBuilder().
+    onProvisioned().
+    summary()....</code>
+</code></pre>
+<p>Now, we can only make the invoke to build method and catch the response</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    var builder = 
+    ogapi.
+    devicesSearchBuilder().
+    onProvisioned();
+    var search;
+    try{
+        search = builder.build();
+    }catch(builderError){
+        console.log(builderError);
+    }
+    search.
+    execute().
+    then(function(response,statusCode){
+        //Here you could search all you want into response object
+    }).
+    catch(function(error){
+        alert(error);
+    })</code>
+</code></pre>
+<h3 id="search-provision-subscribers-info">Search provision subscribers info</h3>
+<p>Is the same that device info, You only change this:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    ogapi.
+    devicesSearchBuilder().</code>
+</code></pre>
+<p>To this:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    ogapi.
+    subscribersSearchBuilder().</code>
+</code></pre>
+<h3 id="search-provision-subscriptions-info">Search provision subscriptions info</h3>
+<p>Is the same that device info, You only change this:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    ogapi.
+    devicesSearchBuilder().</code>
+</code></pre>
+<p>To this:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    ogapi.
+    subscriptionsSearchBuilder().</code>
+</code></pre>
+<h3 id="search-provision-communicationsmodules-info">Search provision communicationsModules info</h3>
+<p>Is the same that device info, You only change this:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    ogapi.
+    devicesSearchBuilder().</code>
+</code></pre>
+<p>To this:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    ogapi.
+    communicationsModulesSearchBuilder().</code>
+</code></pre>
+<h2 id="search-into-executions-data-of-a-operation">Search into executions data of a operation</h2>
+<p>The first that you need obtain is a new Builder instance: </p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    ogapi.
+    executionsSearchBuilder()</code>
+</code></pre>
+<p>If you need select the source about executions data of a operation :</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    ogapi.
+    executionsSearchBuilder().
+    onDevices().....
+    // Or
+    ogapi.
+    executionsSearchBuilder().
+    onSubscribers().....
+    // Or
+    ogapi.
+    executionsSearchBuilder().
+    onSubscriptions().....
+    // Or
+    ogapi.
+    executionsSearchBuilder().
+    onCommunicationsModules().....</code>
+</code></pre>
+<p>Important, You only can select one of this resources. If you select more than one, a exception will be thrown when you invoke build method.</p>
+<p>If you need summary information:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    ogapi.
+    executionsSearchBuilder().
+    onCommunicationsModules().
+    summary()...</code>
+</code></pre>
+<p>Now, we can only make the invoke to build method and catch the response</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    var builder = 
+    ogapi.
+    executionsSearchBuilder().
+    onCommunicationsModules();
+    var search;
+    try{
+        search = builder.build();
+    }catch(builderError){
+        console.log(builderError);
+    }
+    search.
+    execute().
+    then(function(response,statusCode){
+        //Here you could search all you want into response object
+    }).
+    catch(function(error){
+        alert(error);
+    })</code>
+</code></pre>
+<h2 id="search-into-alarms-data">Search into alarms data</h2>
+<p>Is the same that execution info of a operation, You only change this:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    ogapi.
+    executionsSearchBuilder().</code>
+</code></pre>
+<p>To this:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    ogapi.
+    alarmsSearchBuilder().</code>
+</code></pre>
+<h2 id="search-into-iot-data">Search into iot data</h2>
+<h3 id="search-into-datastreams-and-profiles-collections">Search into datastreams and profiles collections</h3>
+<p>The first that you need obtain is a new Builder instance: </p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    var builder = ogapi.
+    datastreamsSearchBuilder()</code>
+</code></pre>
+<p>or </p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    var builder = ogapi.
+    profilesSearchBuilder()</code>
+</code></pre>
+<p>If you want you can create a filter to restrict the response much as you want.</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    builder.filter(ogapi.newFilterBuilder().and(ogapi.EX.eq(&apos;myparam&apos;,&apos;myvalue&apos;)))</code>
+</code></pre>
+<p>Now, we can only make the invoke to build method and catch the response</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    var builder = 
+    ogapi.
+    profilesSearchBuilder().
+    .filter(ogapi.newFilterBuilder().and(ogapi.EX.eq(&apos;myparam&apos;,&apos;myvalue&apos;)))
+    var search;
+    try{
+        search = builder.build();
+    }catch(builderError){
+        console.log(builderError);
+    }
+    search.
+    execute().
+    then(function(response,statusCode){
+        //Here you could search all you want into response object
+    }).
+    catch(function(error){
+        alert(error);
+    })</code>
+</code></pre>
+<h3 id="search-into-datapoints-collections">Search into datapoints collections</h3>
+<p>The first that you need obtain is a new Builder instance: </p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    var builder = ogapi.
+    datapointsSearchBuilder()</code>
+</code></pre>
+<p>If you want you can create a filter to restrict the response much as you want.</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    builder.filter(ogapi.newFilterBuilder().and(ogapi.EX.eq(&apos;myparam&apos;,&apos;myvalue&apos;)))</code>
+</code></pre>
+<p>or you can use the way filter fluent to make a filter more straightforward</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    builder.betweenDates(new Date(),new Date()).withFeed(&apos;myFeed&apos;).withDeviceId(&apos;myDevice&apos;)....</code>
+</code></pre>
+<p>Now, we can only make the invoke to build method and catch the response</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    var builder = 
+    ogapi.
+    datapointsSearchBuilder().
+    .betweenDates(new Date(),new Date()).withFeed(&apos;myFeed&apos;).withDeviceId(&apos;myDevice&apos;);
+    var search;
+    try{
+        search = builder.build();
+    }catch(builderError){
+        console.log(builderError);
+    }
+    search.
+    execute().
+    then(function(response,statusCode){
+        //Here you could search all you want into response object
+    }).
+    catch(function(error){
+        alert(error);
+    })</code>
+</code></pre>
+<h2 id="setting-timeout-in-all-searches">Setting timeout in all searches</h2>
+<p>We can configure the request timeout in all request.
+How can i do it ?</p>
+<p>It is very simple, we must only invoke a <em>withTimeout</em> method. Here there is a example:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">    ogapi.
+    devicesSearchBuilder().
+    withTimeout(2000).....</code>
+</code></pre>
+<p>Then, if timeout is exceeded. The promise throw an exception with a message like this: &quot;Timeout exceeded&quot;</p>
+<h2 id="execute-an-operation">Execute an operation</h2>
+<p>Here <code>ogapi.operations</code> is where you can find all you need to execute an operation.</p>
+<p>At this point <code>ogapi.operations</code>, you have access to:</p>
+<ul>
+<li>builderByOperationName(operation_name) -&gt; It will return a promise and into then callback you will have the builder as a function argument but if anything gone wrong the catch callback would tell you what happens by error </li>
+<li>getOperationList() -&gt; It will return an array with available operations</li>
+</ul>
+<h3 id="ok-i-have-an-operation-builder-but-now-what-could-i-do-">OK I have an operation builder but now. What could i do ?</h3>
+<p>Might be two kinds of builder:</p>
+<ul>
+<li>Attend or close alarms</li>
+<li>Operations defined into user catalog</li>
+</ul>
+<p>It is a builder factory, Here will have all operations that the user have available</p>
+<p>Examples:</p>
+<ul>
+<li><code>ogapi.operations.builderByOperationName(&apos;ALARM_CLOSE&apos;)</code></li>
+<li><code>ogapi.operations.builderByOperationName(&apos;ADMINISTRATIVE_STATUS_CHANGE&apos;)</code></li>
+</ul>
+<p>Methods available to attend or close alarms:</p>
+<ul>
+<li>withNotes()</li>
+<li>addAlarmId()</li>
+<li>build()</li>
+</ul>
+<p>Methods available to others operations:</p>
+<ul>
+<li>withNotes()</li>
+<li>withCallback()</li>
+<li>withAckTimeout()</li>
+<li>withDelayedStop()</li>
+<li>withDelayedStart()</li>
+<li>withScatteringMaxSpread()</li>
+<li>withScatteringStrategy()</li>
+<li>executeImmediately()</li>
+<li>executeIDLE()</li>
+<li>executeLater()</li>
+<li>withTimeout() </li>
+<li>withRetriesDelay()</li>
+<li>withRetries() </li>
+<li>appendEntitiesBy.filter(newFilterBuilder().build())</li>
+<li>appendEntitiesBy.list() </li>
+<li>appendEntitiesBy.tag()</li>
+</ul>
+<h4 id="how-can-i-add-a-specific-parameter-">How can i add a specific parameter ?</h4>
+<p>Access:</p>
+<pre><code><code class="source-code prettyprint">            var builder = ogapi.operations.builderFactory.newSetClockEquipmentBuilder();
+            //Acceso a los par&#xE1;metros de esta operaci&#xF3;n
+            builder.paramBuilderFactory</code>
+</code></pre><p>The paramBuilderFactory element will have an catalog and it will have inside a list about allowed parameters.<br>This parameters can be as a simple type, array type, array of simple type, a complex type, etc. Every parameter will have their own builder.</p>
+<p>Examples:</p>
+<ul>
+<li>Simple type with default value <code>builder.paramBuilderFactory.newAdministrativeStatusParamBuilder().buildAndAppend()</code></li>
+<li>This parameter have defined an enumeration with allowed values <code>builder.paramBuilderFactory.newChannelParamBuilder().withChannel(&apos;channelName&apos;)</code>. If channelName is not defined into enumeration, the builder throw an error</li>
+<li>Array of complex object <code>builder.paramBuilderFactory.newVariableListParamBuilder().addVariableList({&apos;variableName&apos;:&apos;nombre&apos;,&apos;variableValue&apos;:&apos;valor&apos;}).addVariableList({&apos;variableName&apos;:&apos;nombre&apos;,&apos;variableValue&apos;:&apos;valor&apos;})</code></li>
+<li>String array <code>builder.paramBuilderFactory.newApnParamBuilder().addApn(&apos;apn1&apos;).addApn(&apos;apn2&apos;).buildAndAppend()</code></li>
+</ul>
+<h2 id="execute-actions-on-the-executions">Execute actions on the executions</h2>
+<p>When you create an operation, it creates a &quot;run&quot; that groups each of the operations per entity that are generated.
+<code>ogapi.newExecutionActions(execution_id)</code> offers a series of actions to activate, paused and cancel these executions:</p>
+<h3 id="active">Active</h3>
+<p><code>ogapi.newExecutionActions(execution_id).active();</code></p>
+<p>We can activate a execution that is in the IDLE or PAUSED state.
+Once the execution is activated it will go to one of the following states: </p>
+<ul>
+<li>SCHEDULE if the previous state was IDLE</li>
+<li>IN_PROGRESS if the previous state was PAUSED or IDLE (if the timing forces the start)</li>
+</ul>
+<h3 id="pause">Pause</h3>
+<p><code>ogapi.newExecutionActions(execution_id).pause();</code></p>
+<p>We can pause an execution.
+Once the execution is paused it will go to one of the following states: </p>
+<ul>
+<li>IDLE if the previous state was SCHEDULE</li>
+<li>PAUSED if the previous state was IN_PROGRESS</li>
+</ul>
+<h3 id="cancel">Cancel</h3>
+<p><code>ogapi.newExecutionActions(execution_id).cancel();</code></p>
+<p>We can cancel an execution at any time.
+The status of execution passes through two states: CANCELLING and CANCELLED</p>
+</div>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.5.2)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
