@@ -111,6 +111,20 @@ var BulkBuilder = (function (_BaseProvision) {
         value: function update(rawFile, csv_response) {
             return this._executeOperation(rawFile, 'UPDATE', csv_response);
         }
+
+        /**
+         *  Execute the bulk patch operation
+         * @example 
+         *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).update(rawFile)
+         *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).update(new Blob(), true)
+         * @param {string|Blob} rawFile - File with format string or Blob 
+         * @param {boolean} [csv_response] - true if you want a response on format csv. False or null if you want a response on format json
+         */
+    }, {
+        key: 'patch',
+        value: function patch(rawFile, csv_response) {
+            return this._executeOperation(rawFile, 'PATCH', csv_response);
+        }
     }, {
         key: '_executeOperation',
         value: function _executeOperation(rawFile, action, csv_response) {

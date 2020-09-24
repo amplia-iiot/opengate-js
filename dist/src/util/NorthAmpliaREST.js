@@ -149,6 +149,23 @@ var NorthAmpliaREST = (function () {
         }
 
         /**
+         * Invoke PATCH action to url and data specified
+         * @param {!string} url - url to execute PATCH
+         * @param {object} data - attach data to request PATCH
+         * @param {number} timeout - timeout in milliseconds
+         * @param {object} headers - headers of request
+         * @param {object} parameters - parameters of request
+         * @return {Promise} 
+         */
+    }, {
+        key: 'patch',
+        value: function patch(url, data, timeout, headers, parameters) {
+            var req = _superagent2['default'].patch(this._createUrl(url, parameters)).send(data);
+
+            return this._createPromiseRequest(req, null, timeout, headers);
+        }
+
+        /**
          * Invoke POST action to url and data specified
          * @param {!string} url - url to execute POST
          * @param {object} data - attach data to request POST

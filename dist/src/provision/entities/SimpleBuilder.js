@@ -231,6 +231,78 @@ var SimpleBuilder = (function (_BaseProvision) {
             });
             return promise;
         }
+
+        /**
+         * This invoke a request to OpenGate North API and the callback is managed by promises
+         * This function updates a entity of provision
+         * @return {Promise}
+         * @property {function (result:object, statusCode:number)} then - When request it is OK
+         * @property {function (error:string)} catch - When request it is NOK
+         * @example
+         *  ogapi.organizationsBuilder().update()
+         */
+    }, {
+        key: 'update',
+        value: function update() {
+            var defered = _q2['default'].defer();
+            var promise = defered.promise;
+
+            this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement(), this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (res) {
+                if (res.statusCode === 200) {
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
+                } else if (res.status === 200) {
+                    defered.resolve({
+                        statusCode: res.status
+                    });
+                } else {
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
+                }
+            })['catch'](function (error) {
+                defered.reject(error);
+            });
+            return promise;
+        }
+
+        /**
+         * This invoke a request to OpenGate North API and the callback is managed by promises
+         * This function patch a entity of provision
+         * @return {Promise}
+         * @property {function (result:object, statusCode:number)} then - When request it is OK
+         * @property {function (error:string)} catch - When request it is NOK
+         * @example
+         *  ogapi.organizationsBuilder().update()
+         */
+    }, {
+        key: 'patch',
+        value: function patch() {
+            var defered = _q2['default'].defer();
+            var promise = defered.promise;
+
+            this._ogapi.Napi.patch(this._buildURL(), this._composeUpdateElement(), this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (res) {
+                if (res.statusCode === 200) {
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
+                } else if (res.status === 200) {
+                    defered.resolve({
+                        statusCode: res.status
+                    });
+                } else {
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
+                }
+            })['catch'](function (error) {
+                defered.reject(error);
+            });
+            return promise;
+        }
     }]);
 
     return SimpleBuilder;

@@ -253,6 +253,7 @@ class BoxBuilder {
         });
         return defer.promise;
     }
+    
     update() {
         let defer = q.defer();
         let putObj = this._obj;
@@ -285,7 +286,73 @@ class BoxBuilder {
             this._setUrlParameters({
                 'flattened': true
             });
+            
             return _this._ogapi.Napi.put(_this._url, putObj, this._timeout, null, this._getUrlParameters())
+                .then((res) => {
+                    if (res.statusCode === HttpStatus.OK) {
+                        console.log("CREATEOK: " + JSON.stringify(res));
+                        if (typeof _this._onCreated === "function") {
+                            _this._onCreated(res.header.location);
+                        }
+                        defer.notify({
+                            entity: _this._key._value._current.value,
+                            message: 'OGAPI_DEVICE_UPDATED',
+                            type: 'success',
+                            percentage: 90
+                        });
+                        defer.resolve({
+                            location: res.header.location,
+                            statusCode: res.statusCode
+                        });
+                    } else {
+                        defer.reject({
+                            errors: res.errors,
+                            statusCode: res.statusCode
+                        });
+                    }
+                });
+        }).catch((err) => {
+            console.error(err);
+            defer.notify('OGAPI_SOMETHING_WRONG_UPDATING_DEVICE');
+            defer.reject(err);
+        });
+        return defer.promise;
+    }
+
+    patch() {
+        let defer = q.defer();
+        let putObj = this._obj;
+        let childEntityPromises = [];
+        let _this = this;
+
+        this._wrappers.forEach((wrapper) => {
+            childEntityPromises.push({
+                wrapper: wrapper,
+                promise: wrapper.execute(defer, 20)
+            });
+        });
+
+        q.allSettled(
+            childEntityPromises.reduce(function(previousValue, current) {
+                previousValue.push(current.promise);
+                return previousValue;
+            }, [])).then(() => {
+            defer.notify({
+                message: 'OGAPI_201_ENTITIES_CREATED',
+                type: 'success',
+                percentage: 40
+            });
+            defer.notify({
+                entity: _this._key._value._current.value,
+                message: 'OGAPI_ADDING_RELATED_ENTITIES',
+                type: 'success',
+                percentage: 45
+            });
+            this._setUrlParameters({
+                'flattened': true
+            });
+            
+            return _this._ogapi.Napi.patch(_this._url, putObj, this._timeout, null, this._getUrlParameters())
                 .then((res) => {
                     if (res.statusCode === HttpStatus.OK) {
                         console.log("CREATEOK: " + JSON.stringify(res));
