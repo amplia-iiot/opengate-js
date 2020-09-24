@@ -315,6 +315,18 @@ export default class BulkBuilder extends BaseProvision {
         return this._executeOperation(rawFile, &apos;UPDATE&apos;, csv_response);
     }
 
+    /**
+     *  Execute the bulk patch operation
+     * @example 
+     *  ogapi.newCsvBulkBuilder(&apos;orgname&apos;, &apos;entities&apos;, 10000).update(rawFile)
+     *  ogapi.newCsvBulkBuilder(&apos;orgname&apos;, &apos;entities&apos;, 10000).update(new Blob(), true)
+     * @param {string|Blob} rawFile - File with format string or Blob 
+     * @param {boolean} [csv_response] - true if you want a response on format csv. False or null if you want a response on format json
+     */
+    patch(rawFile, csv_response) {
+        return this._executeOperation(rawFile, &apos;PATCH&apos;, csv_response);
+    }
+
     _executeOperation(rawFile, action, csv_response) {
         let form;
         if (typeof rawFile !== &apos;string&apos;) {
