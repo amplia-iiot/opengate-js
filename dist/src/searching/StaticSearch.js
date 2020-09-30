@@ -487,6 +487,20 @@ var StaticSearch = (function (_Search) {
                             'optional': ['generatedEntityKey', 'administrativeState', 'ICC']
                         }
                     },
+                    'MULTIMOBILE': {
+                        'COMMUNICATIONS_MODULE': {
+                            'mandatory': ['generatedEntityKey'],
+                            'optional': ['IMEI', 'HARDWARE', 'SOFTWARE']
+                        },
+                        'SUBSCRIPTION': {
+                            'mandatory': [],
+                            'optional': ['generatedEntityKey', 'administrativeState', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION', 'RADIUS_USERNAME', 'RADIUS_PASSWORD', 'RADIUS_FRAMED_IP_NETMASK', 'MSISDN_VOICE', 'SUBSCRIPTION_ICC']
+                        },
+                        'SUBSCRIBER': {
+                            'mandatory': [],
+                            'optional': ['generatedEntityKey', 'administrativeState', 'ICC']
+                        }
+                    },
                     'NARROWBAND': {
                         'COMMUNICATIONS_MODULE': {
                             'mandatory': ['generatedEntityKey'],
