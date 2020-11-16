@@ -62,15 +62,34 @@ var AppendEntitiesBy = (function () {
 	}, {
 		key: "list",
 		value: function list(entities) {
+			var _this = this;
+
 			if (typeof entities === "undefined" || entities.constructor !== Array) {
 				throw new Error("Parameter entities must be typeof Array");
 			}
 			if (typeof this._parent._build.target !== "undefined") console.warn("An Operation only allow one kind of way to append entities. " + "Filter | Tag | List of entities. Now  List of entities will remove the last way appended .");
+
 			this._parent._build.target = {
-				append: {
-					entities: entities
-				}
+				append: {}
 			};
+
+			entities.forEach(function (entity) {
+				if (entity.constructor === String) {
+					if (!_this._parent._build.target.append.entities) {
+						_this._parent._build.target.append.entities = [];
+					}
+					_this._parent._build.target.append.entities.push(entity);
+				} else {
+					if (entity.id && entity.parameters) {
+						if (!_this._parent._build.target.append.entitiesWithParameters) {
+							_this._parent._build.target.append.entitiesWithParameters = [];
+						}
+						_this._parent._build.target.append.entitiesWithParameters.push(entity);
+					} else {
+						throw new Error("Entity parameters must include id and parameters: " + JSON.stringify(entity));
+					}
+				}
+			});
 			return this._parent;
 		}
 
