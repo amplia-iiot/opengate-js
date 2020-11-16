@@ -41,6 +41,7 @@ export default class AppendEntitiesBy {
 		}
 		return this._parent;
 	}
+	
 	/**
 	* Append entity list to operation target
 	* @param {!EntityListBuilder} entities 
@@ -53,13 +54,32 @@ export default class AppendEntitiesBy {
 		if (typeof this._parent._build.target !== "undefined") 
 			console.warn("An Operation only allow one kind of way to append entities. "+
 			"Filter | Tag | List of entities. Now  List of entities will remove the last way appended .");
+		
+
 		this._parent._build.target = {
-			append:{
-				entities:entities
-			}
+			append:{}
 		};
+
+		entities.forEach((entity) => {
+			if (entity.constructor === String) {
+				if (!this._parent._build.target.append.entities) {
+					this._parent._build.target.append.entities = [];
+				}
+				this._parent._build.target.append.entities.push(entity);
+			} else {
+				if (entity.id && entity.parameters) {
+					if (!this._parent._build.target.append.entitiesWithParameters) {
+						this._parent._build.target.append.entitiesWithParameters = [];
+					}
+					this._parent._build.target.append.entitiesWithParameters.push(entity);
+				} else {
+					throw new Error("Entity parameters must include id and parameters: " + JSON.stringify(entity));
+				}
+			}
+		})
 		return this._parent;
 	}
+	
 	/**
 	* Set tag to operation target
 	* @param {!string} tag 
