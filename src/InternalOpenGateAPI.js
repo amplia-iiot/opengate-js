@@ -12,6 +12,10 @@ import AreaFinder from './areas/AreaFinder';
 import BulkSearchBuilder from './searching/builder/BulkSearchBuilder';
 import BulkFinder from './bulk/BulkFinder';
 import Channels from './channels/Channels';
+import ConnectorFunctions from './connectorFunctions/ConnectorFunctions';
+import ConnectorFunctionFinder from './connectorFunctions/ConnectorFunctionFinder';
+import ConnectorFunctionsCatalog from './connectorFunctions/ConnectorFunctionsCatalog';
+import ConnectorsCatalog from './connectorFunctions/ConnectorsCatalog';
 import Areas from './areas/Areas';
 import ChannelsSearchBuilder from './searching/builder/ChannelsSearchBuilder';
 import RuleConfigurations from './rulesConfiguration/RuleConfigurations';
@@ -32,6 +36,7 @@ import DevicesSearchBuilder from './searching/builder/DevicesSearchBuilder';
 import SubscribersSearchBuilder from './searching/builder/SubscribersSearchBuilder';
 import SubscriptionsSearchBuilder from './searching/builder/SubscriptionsSearchBuilder';
 import AssetsSearchBuilder from './searching/builder/AssetsSearchBuilder';
+import ConnectorFunctionsSearchBuilder from './searching/builder/ConnectorFunctionsSearchBuilder';
 import TicketsSearchBuilder from './searching/builder/TicketsSearchBuilder';
 import TasksSearchBuilder from './searching/builder/TasksSearchBuilder';
 import OperationsSearchBuilder from './searching/builder/OperationsSearchBuilder';
@@ -133,6 +138,27 @@ export default class InternalOpenGateAPI {
         this.entityBuilder = new EntityBuilder(this);
     }
 
+    /**
+     * This return a util to find a connectorFunction
+     * @return {ConnectorFunctionFinder}
+     */
+    newConnectorFunctionFinder() {
+        return new ConnectorFunctionFinder(this);
+    }
+    /**
+     * This return a util to get the connectorFunctions templates
+     * @return {ConnectorFunctionsCatalog}
+     */
+    newConnectorFunctionsCatalog() {
+        return new ConnectorFunctionsCatalog(this);
+    }
+    /**
+     * This return a util to get the connector templates
+     * @return {ConnectorsCatalog}
+     */
+    newConnectorsCatalog() {
+        return new ConnectorsCatalog(this);
+    }
     /**
      * This return a util to find a user
      * @return {UserFinder}
@@ -348,6 +374,14 @@ export default class InternalOpenGateAPI {
      */
     assetsSearchBuilder() {
         return new AssetsSearchBuilder(this);
+    }
+
+    /**
+     * This return a ConnectorFunctionsSearchBuilder to build a specific AssetSearch
+     * @return {ConnectorFunctionsSearchBuilder}
+     */
+    connectorFunctionsSearchBuilder() {
+        return new ConnectorFunctionsSearchBuilder(this);
     }
 
     /**
@@ -838,6 +872,14 @@ export default class InternalOpenGateAPI {
      */
     channelsBuilder() {
         return new Channels(this);
+    }
+
+    /**
+     * This return a connectorFunctionsBuilder to build a specific ConnectorFunction
+     * @return {ConnectorFunctions}
+     */
+    connectorFunctionsBuilder() {
+        return new ConnectorFunctions(this);
     }
 
     /**

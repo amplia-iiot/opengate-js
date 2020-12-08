@@ -2032,5 +2032,12 @@ export const GENERATED_FIELDS = {
             "certificateValidUntil",
             "certificateVersion"
         ]
+    },
+    "CONNECTOR_FUNCTIONS": {
+        "CONNECTOR_FUNCTIONS": [
+            "name",
+            "channel",
+            "organization"
+        ]
     }
 }

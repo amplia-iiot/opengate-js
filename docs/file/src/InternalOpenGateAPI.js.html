@@ -77,6 +77,10 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-POWER_SUPPLY_SOURCE_ENUM">POWER_SUPPLY_SOURCE_ENUM</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOFTWARE_TYPE_ENUM">SOFTWARE_TYPE_ENUM</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEMPERATURE_STATUS_ENUM">TEMPERATURE_STATUS_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">connectorFunctions</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorFunctions/ConnectorFunctionFinder.js~ConnectorFunctionFinder.html">ConnectorFunctionFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorFunctions/ConnectorFunctions.js~ConnectorFunctions.html">ConnectorFunctions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorFunctions/ConnectorFunctionsCatalog.js~ConnectorFunctionsCatalog.html">ConnectorFunctionsCatalog</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorFunctions/ConnectorsCatalog.js~ConnectorsCatalog.html">ConnectorsCatalog</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">domains</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/domains/Domains.js~Domains.html">Domains</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/domains/DomainsFinder.js~DomainFinder.html">DomainFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">entities</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/DeviceFinder.js~DeviceFinder.html">DeviceFinder</a></span></span></li>
@@ -156,6 +160,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CertificatesSearchBuilder.js~CertificatesSearchBuilder.html">CertificatesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ChannelsSearchBuilder.js~ChannelsSearchBuilder.html">ChannelsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CommunicationsModuleTypeSearchBuilder.js~CommunicationsModuleTypeSearchBuilder.html">CommunicationsModuleTypeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ConnectorFunctionsSearchBuilder.js~ConnectorFunctionsSearchBuilder.html">ConnectorFunctionsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CountryCodesSearchBuilder.js~CountryCodesSearchBuilder.html">CountryCodesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatamodelsSearchBuilder.js~DatamodelsSearchBuilder.html">DatamodelsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatapointsSearchBuilder.js~DatapointsSearchBuilder.html">DatapointsSearchBuilder</a></span></span></li>
@@ -247,6 +252,10 @@ import AreaFinder from &apos;./areas/AreaFinder&apos;;
 import BulkSearchBuilder from &apos;./searching/builder/BulkSearchBuilder&apos;;
 import BulkFinder from &apos;./bulk/BulkFinder&apos;;
 import Channels from &apos;./channels/Channels&apos;;
+import ConnectorFunctions from &apos;./connectorFunctions/ConnectorFunctions&apos;;
+import ConnectorFunctionFinder from &apos;./connectorFunctions/ConnectorFunctionFinder&apos;;
+import ConnectorFunctionsCatalog from &apos;./connectorFunctions/ConnectorFunctionsCatalog&apos;;
+import ConnectorsCatalog from &apos;./connectorFunctions/ConnectorsCatalog&apos;;
 import Areas from &apos;./areas/Areas&apos;;
 import ChannelsSearchBuilder from &apos;./searching/builder/ChannelsSearchBuilder&apos;;
 import RuleConfigurations from &apos;./rulesConfiguration/RuleConfigurations&apos;;
@@ -267,6 +276,7 @@ import DevicesSearchBuilder from &apos;./searching/builder/DevicesSearchBuilder&
 import SubscribersSearchBuilder from &apos;./searching/builder/SubscribersSearchBuilder&apos;;
 import SubscriptionsSearchBuilder from &apos;./searching/builder/SubscriptionsSearchBuilder&apos;;
 import AssetsSearchBuilder from &apos;./searching/builder/AssetsSearchBuilder&apos;;
+import ConnectorFunctionsSearchBuilder from &apos;./searching/builder/ConnectorFunctionsSearchBuilder&apos;;
 import TicketsSearchBuilder from &apos;./searching/builder/TicketsSearchBuilder&apos;;
 import TasksSearchBuilder from &apos;./searching/builder/TasksSearchBuilder&apos;;
 import OperationsSearchBuilder from &apos;./searching/builder/OperationsSearchBuilder&apos;;
@@ -368,6 +378,27 @@ export default class InternalOpenGateAPI {
         this.entityBuilder = new EntityBuilder(this);
     }
 
+    /**
+     * This return a util to find a connectorFunction
+     * @return {ConnectorFunctionFinder}
+     */
+    newConnectorFunctionFinder() {
+        return new ConnectorFunctionFinder(this);
+    }
+    /**
+     * This return a util to get the connectorFunctions templates
+     * @return {ConnectorFunctionsCatalog}
+     */
+    newConnectorFunctionsCatalog() {
+        return new ConnectorFunctionsCatalog(this);
+    }
+    /**
+     * This return a util to get the connector templates
+     * @return {ConnectorsCatalog}
+     */
+    newConnectorsCatalog() {
+        return new ConnectorsCatalog(this);
+    }
     /**
      * This return a util to find a user
      * @return {UserFinder}
@@ -583,6 +614,14 @@ export default class InternalOpenGateAPI {
      */
     assetsSearchBuilder() {
         return new AssetsSearchBuilder(this);
+    }
+
+    /**
+     * This return a ConnectorFunctionsSearchBuilder to build a specific AssetSearch
+     * @return {ConnectorFunctionsSearchBuilder}
+     */
+    connectorFunctionsSearchBuilder() {
+        return new ConnectorFunctionsSearchBuilder(this);
     }
 
     /**
@@ -1073,6 +1112,14 @@ export default class InternalOpenGateAPI {
      */
     channelsBuilder() {
         return new Channels(this);
+    }
+
+    /**
+     * This return a connectorFunctionsBuilder to build a specific ConnectorFunction
+     * @return {ConnectorFunctions}
+     */
+    connectorFunctionsBuilder() {
+        return new ConnectorFunctions(this);
     }
 
     /**

@@ -58,6 +58,22 @@ var _channelsChannels = require('./channels/Channels');
 
 var _channelsChannels2 = _interopRequireDefault(_channelsChannels);
 
+var _connectorFunctionsConnectorFunctions = require('./connectorFunctions/ConnectorFunctions');
+
+var _connectorFunctionsConnectorFunctions2 = _interopRequireDefault(_connectorFunctionsConnectorFunctions);
+
+var _connectorFunctionsConnectorFunctionFinder = require('./connectorFunctions/ConnectorFunctionFinder');
+
+var _connectorFunctionsConnectorFunctionFinder2 = _interopRequireDefault(_connectorFunctionsConnectorFunctionFinder);
+
+var _connectorFunctionsConnectorFunctionsCatalog = require('./connectorFunctions/ConnectorFunctionsCatalog');
+
+var _connectorFunctionsConnectorFunctionsCatalog2 = _interopRequireDefault(_connectorFunctionsConnectorFunctionsCatalog);
+
+var _connectorFunctionsConnectorsCatalog = require('./connectorFunctions/ConnectorsCatalog');
+
+var _connectorFunctionsConnectorsCatalog2 = _interopRequireDefault(_connectorFunctionsConnectorsCatalog);
+
 var _areasAreas = require('./areas/Areas');
 
 var _areasAreas2 = _interopRequireDefault(_areasAreas);
@@ -135,6 +151,10 @@ var _searchingBuilderSubscriptionsSearchBuilder2 = _interopRequireDefault(_searc
 var _searchingBuilderAssetsSearchBuilder = require('./searching/builder/AssetsSearchBuilder');
 
 var _searchingBuilderAssetsSearchBuilder2 = _interopRequireDefault(_searchingBuilderAssetsSearchBuilder);
+
+var _searchingBuilderConnectorFunctionsSearchBuilder = require('./searching/builder/ConnectorFunctionsSearchBuilder');
+
+var _searchingBuilderConnectorFunctionsSearchBuilder2 = _interopRequireDefault(_searchingBuilderConnectorFunctionsSearchBuilder);
 
 var _searchingBuilderTicketsSearchBuilder = require('./searching/builder/TicketsSearchBuilder');
 
@@ -460,11 +480,41 @@ var InternalOpenGateAPI = (function () {
     }
 
     /**
-     * This return a util to find a user
-     * @return {UserFinder}
+     * This return a util to find a connectorFunction
+     * @return {ConnectorFunctionFinder}
      */
 
     _createClass(InternalOpenGateAPI, [{
+        key: 'newConnectorFunctionFinder',
+        value: function newConnectorFunctionFinder() {
+            return new _connectorFunctionsConnectorFunctionFinder2['default'](this);
+        }
+
+        /**
+         * This return a util to get the connectorFunctions templates
+         * @return {ConnectorFunctionsCatalog}
+         */
+    }, {
+        key: 'newConnectorFunctionsCatalog',
+        value: function newConnectorFunctionsCatalog() {
+            return new _connectorFunctionsConnectorFunctionsCatalog2['default'](this);
+        }
+
+        /**
+         * This return a util to get the connector templates
+         * @return {ConnectorsCatalog}
+         */
+    }, {
+        key: 'newConnectorsCatalog',
+        value: function newConnectorsCatalog() {
+            return new _connectorFunctionsConnectorsCatalog2['default'](this);
+        }
+
+        /**
+         * This return a util to find a user
+         * @return {UserFinder}
+         */
+    }, {
         key: 'newUserFinder',
         value: function newUserFinder() {
             return new _usersUserFinder2['default'](this);
@@ -724,6 +774,16 @@ var InternalOpenGateAPI = (function () {
         key: 'assetsSearchBuilder',
         value: function assetsSearchBuilder() {
             return new _searchingBuilderAssetsSearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a ConnectorFunctionsSearchBuilder to build a specific AssetSearch
+         * @return {ConnectorFunctionsSearchBuilder}
+         */
+    }, {
+        key: 'connectorFunctionsSearchBuilder',
+        value: function connectorFunctionsSearchBuilder() {
+            return new _searchingBuilderConnectorFunctionsSearchBuilder2['default'](this);
         }
 
         /**
@@ -1333,6 +1393,16 @@ var InternalOpenGateAPI = (function () {
         key: 'channelsBuilder',
         value: function channelsBuilder() {
             return new _channelsChannels2['default'](this);
+        }
+
+        /**
+         * This return a connectorFunctionsBuilder to build a specific ConnectorFunction
+         * @return {ConnectorFunctions}
+         */
+    }, {
+        key: 'connectorFunctionsBuilder',
+        value: function connectorFunctionsBuilder() {
+            return new _connectorFunctionsConnectorFunctions2['default'](this);
         }
 
         /**

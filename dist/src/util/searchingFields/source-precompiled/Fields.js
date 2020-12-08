@@ -56,6 +56,9 @@ var GENERATED_FIELDS = {
     },
     "CERTIFICATE": {
         "CERTIFICATE": ["certificateAdministrativeState", "certificateDescription", "certificateDomain", "certificateId", "certificateIssuer", "certificateManufacturer", "certificateModel", "certificateModelIdentifier", "certificateModelVersion", "certificateName", "certificatePublicKeyAlgorithm", "certificatePublicKeyFormat", "certificatePublicKeySize", "certificateSerialNumber", "certificateSubject", "certificateTag", "certificateTrustChain", "certificateUsage", "certificateValidFrom", "certificateValidUntil", "certificateVersion"]
+    },
+    "CONNECTOR_FUNCTIONS": {
+        "CONNECTOR_FUNCTIONS": ["name", "channel", "organization"]
     }
 };
 exports.GENERATED_FIELDS = GENERATED_FIELDS;

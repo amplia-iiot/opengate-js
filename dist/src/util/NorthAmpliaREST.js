@@ -312,7 +312,6 @@ var NorthAmpliaREST = (function () {
             var promise = defered.promise;
             var apiKey = this._options.apiKey;
             var _req = _timeout === -1 ? req : req.timeout(_timeout);
-
             if (apiKey) {
                 _req = _req.set('X-ApiKey', this._options.apiKey);
             }

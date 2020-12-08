@@ -268,7 +268,6 @@ export default class NorthAmpliaREST {
         let promise = defered.promise;
         let apiKey = this._options.apiKey;
         let _req = _timeout === -1 ? req : req.timeout(_timeout);
-
         if (apiKey) {
             _req = _req.set('X-ApiKey', this._options.apiKey);
         }
