@@ -32,6 +32,7 @@ const match_url = {
     '/catalog/softwares': 'SOFTWARE_VERSION',
     '/catalog/hardwares': 'MODEL',
     '/catalog/operators': 'OPERATORS',
+    '/connectorFunctions/search': 'CONNECTOR_FUNCTIONS',
     '/domains': 'DOMAIN',
     '/users': 'USER',
     '/areas': 'AREAS',
