@@ -4,7 +4,7 @@ import merge from 'merge';
 import urlencode from 'urlencode';
 import request from 'superagent';
 import q from 'q';
-import fs from 'fs';
+import _ from 'lodash'
 //  MOCK user searching
 import _mock from 'superagent-mocker';
 const mock = _mock(request);
@@ -21,66 +21,25 @@ export default class NorthAmpliaREST {
     constructor(_options, headers) {
         this._options = merge.recursive(true, this.default(), _options);
         this._headers = headers;
+        if (!_.isEmpty(_options.mocks)) {
+            this._applyMocks(_options.mocks)
+        }
+    }
 
-        // ----------------------------------
-        /*
-        mock.post(_options.url + '/search/channels', function(req) {
-            return {
-                body: {
-                    "channels": [{
-                        "name": "default_channel",
-                        "description": "Automatic channel",
-                        "organization": "organization_GetSetParam",
-                        "certificates": []
-                    }]
-                },
-                statusCode: 200
-            };
-        });        
-       */
-    //   mock.post(_options.url + '/search/catalog/operations', function(req) {
-    //     return {
-    //         body: {
-    //             "operations": [
-    //                 {
-    //                     "name": "ADMINISTRATIVE_STATUS_CHANGE",
-    //                     "title": "Administrative status change params",
-    //                     "description": "Allows to change the administrative status of an entity",
-    //                     "applicableTo": [
-    //                       "GATEWAY",
-    //                       "ASSET",
-    //                       "SUBSCRIPTION",
-    //                       "SUBSCRIBER"
-    //                     ],
-    //                     "categoryPath": "/admin",
-    //                     "parameters": {
-    //                         "schema": {
-    //                             "type": "object",
-    //                             "properties": {
-    //                             "admsts": {
-    //                                 "type": "string",
-    //                                 "title": "Administrative status"
-    //                             }
-    //                             },
-    //                             "additionalProperties": false,
-    //                             "required": ["admsts"]
-    //                         }
-    //                     },
-    //                     "steps": [
-    //                       {
-    //                         "name": "ADMINISTRATIVE_STATUS_CHANGE",
-    //                         "title": "Administrative Status Change",
-    //                         "description": ""
-    //                       }
-    //                     ]
-    //                   },
-    //             ]
-    //         },
-    //         statusCode: 200
-    //     };
-    // });        
-        // ----------------------------------
-
+    _applyMocks (mocks) {
+        const methods = Object.keys(mocks).filter((method) => !_.isEmpty(mocks[method]))
+        methods.forEach(method => {
+            //console.log(`Mocking ${method.toLocaleUpperCase()} requests`);
+            Object.keys(mocks[method]).forEach(url => {
+                //console.log('Mocking url:', url);
+                //console.log('Data returned:', mocks[method][url])
+                mock[method](this._options.url + url, () => {
+                    const data = mocks[method][url]
+                    if (!data.header) data.header = {}
+                    return data
+                });
+            })
+        })
     }
 
     /**
@@ -93,7 +52,7 @@ export default class NorthAmpliaREST {
         };
     }
 
-    _url(options) {
+    _url (options) {
         return options.url;
     }
 
@@ -105,7 +64,7 @@ export default class NorthAmpliaREST {
      * @param {object} parameters - parameters of request
      * @return {Promise} 
      */
-    get(url, timeout, headers, parameters) {
+    get (url, timeout, headers, parameters) {
         var req = request.get(this._createUrl(url, parameters));
         return this._createPromiseRequest(req, null, timeout, headers);
     }
@@ -119,7 +78,7 @@ export default class NorthAmpliaREST {
      * @param {object} parameters - parameters of request
      * @return {Promise} 
      */
-    patch(url, data, timeout, headers, parameters) {
+    patch (url, data, timeout, headers, parameters) {
         var req = request.patch(this._createUrl(url, parameters))
             .send(data);
 
@@ -135,7 +94,7 @@ export default class NorthAmpliaREST {
      * @param {object} parameters - parameters of request
      * @return {Promise} 
      */
-    post(url, data, timeout, headers, parameters) {
+    post (url, data, timeout, headers, parameters) {
         var req = request.post(this._createUrl(url, parameters))
             .send(data);
 
@@ -153,7 +112,7 @@ export default class NorthAmpliaREST {
      * @param {object} parameters - parameters of request
      * @return {Promise} 
      */
-    post_multipart(url, formData, events, timeout, headers, parameters) {
+    post_multipart (url, formData, events, timeout, headers, parameters) {
         let req = request.post(this._createUrl(url, parameters));
 
         if (formData && (formData.meta || formData.file || formData.json || formData.certificate)) {
@@ -195,7 +154,7 @@ export default class NorthAmpliaREST {
      * @param {object} parameters - parameters of request
      * @return {Promise} 
      */
-    put(url, data, timeout, headers, parameters) {
+    put (url, data, timeout, headers, parameters) {
         var req = request.put(this._createUrl(url, parameters))
             .send(data);
 
@@ -218,12 +177,12 @@ export default class NorthAmpliaREST {
      * @param {object} parameters - parameters of request
      * @return {Promise} 
      */
-    delete(url, timeout, headers, parameters) {
-        var req = request.delete(this._createUrl(url, parameters));
+    delete (url, timeout, headers, parameters) {
+        var req = request.del(this._createUrl(url, parameters));
         return this._createPromiseRequest(req, null, timeout, headers);
     }
 
-    _createUrl(relativeUrl, parameters) {
+    _createUrl (relativeUrl, parameters) {
         var encode = [];
 
         if (parameters) {
@@ -243,7 +202,7 @@ export default class NorthAmpliaREST {
         var relativeUrlSplit = relativeUrl.split("/");
         var length = relativeUrlSplit.length;
 
-        relativeUrlSplit.forEach(function(item, index) {
+        relativeUrlSplit.forEach(function (item, index) {
             if (index === (length - 1) && item.indexOf("?") > 0) {
                 var parameters = item.substring(item.indexOf("?"), item.length);
                 var _item = item.substring(0, item.indexOf("?"));
@@ -256,7 +215,7 @@ export default class NorthAmpliaREST {
         return returnUrl;
     }
 
-    _createPromiseRequest(req, events, timeout, headers) {
+    _createPromiseRequest (req, events, timeout, headers) {
         let _timeout = timeout;
         if (typeof _timeout === "undefined" || _timeout === null) {
             _timeout = this._options.timeout;
@@ -283,7 +242,7 @@ export default class NorthAmpliaREST {
                 _req = _req.on(event, events[event]);
             }
         }
-        _req = _req.end(function(err, res) {
+        _req = _req.end(function (err, res) {
             if (err !== null) {
                 let data;
                 let status = err.status ? err.status : undefined;
@@ -293,7 +252,7 @@ export default class NorthAmpliaREST {
                         message: 'OGAPI: Something is broken. Please contact with your administrator.'
                     }]
                 };
-                
+
                 if (typeof err.response !== "undefined") {
                     data = err.response.body ? err.response.body : errorMessage;
                     status = err.status;
