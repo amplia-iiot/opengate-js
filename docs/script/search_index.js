@@ -270,6 +270,36 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/connectorfunctions/connectorfunctionfinder.js~connectorfunctionfinder",
+    "class/src/connectorFunctions/ConnectorFunctionFinder.js~ConnectorFunctionFinder.html",
+    "<span>ConnectorFunctionFinder</span> <span class=\"search-result-import-path\">opengate-js/src/connectorFunctions/ConnectorFunctionFinder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/connectorfunctions/connectorfunctions.js~connectorfunctions",
+    "class/src/connectorFunctions/ConnectorFunctions.js~ConnectorFunctions.html",
+    "<span>ConnectorFunctions</span> <span class=\"search-result-import-path\">opengate-js/src/connectorFunctions/ConnectorFunctions.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/connectorfunctions/connectorfunctionscatalog.js~connectorfunctionscatalog",
+    "class/src/connectorFunctions/ConnectorFunctionsCatalog.js~ConnectorFunctionsCatalog.html",
+    "<span>ConnectorFunctionsCatalog</span> <span class=\"search-result-import-path\">opengate-js/src/connectorFunctions/ConnectorFunctionsCatalog.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/searching/builder/connectorfunctionssearchbuilder.js~connectorfunctionssearchbuilder",
+    "class/src/searching/builder/ConnectorFunctionsSearchBuilder.js~ConnectorFunctionsSearchBuilder.html",
+    "<span>ConnectorFunctionsSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/ConnectorFunctionsSearchBuilder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/connectorfunctions/connectorscatalog.js~connectorscatalog",
+    "class/src/connectorFunctions/ConnectorsCatalog.js~ConnectorsCatalog.html",
+    "<span>ConnectorsCatalog</span> <span class=\"search-result-import-path\">opengate-js/src/connectorFunctions/ConnectorsCatalog.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/searching/builder/countrycodessearchbuilder.js~countrycodessearchbuilder",
     "class/src/searching/builder/CountryCodesSearchBuilder.js~CountryCodesSearchBuilder.html",
     "<span>CountryCodesSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/CountryCodesSearchBuilder.js</span>",
@@ -1543,6 +1573,12 @@ window.esdocSearchIndex = [
   ],
   [
     "internalopengateapi#bundlesbuilder() src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder()",
+    "test-file/client/collection/iot.spec.js.html#lineNumber4",
+    "Check funcionality bundles module:",
+    "test"
+  ],
+  [
+    "internalopengateapi#bundlesbuilder() src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder()",
     "test-file/client/device/device.spec.js.html#lineNumber4",
     "Check funcionality bundles module:",
     "test"
@@ -1550,12 +1586,6 @@ window.esdocSearchIndex = [
   [
     "internalopengateapi#bundlesbuilder() src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder()",
     "test-file/client/bundles/bundles.spec.js.html#lineNumber4",
-    "Check funcionality bundles module:",
-    "test"
-  ],
-  [
-    "internalopengateapi#bundlesbuilder() src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder()",
-    "test-file/client/collection/iot.spec.js.html#lineNumber4",
     "Check funcionality bundles module:",
     "test"
   ],
@@ -1597,13 +1627,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber195",
+    "test-file/client/device/device.spec.js.html#lineNumber190",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Option",
     "test"
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber190",
+    "test-file/client/device/device.spec.js.html#lineNumber195",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter Option",
     "test"
   ],
@@ -1645,13 +1675,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber256",
+    "test-file/client/device/device.spec.js.html#lineNumber243",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter mode in validator is typeof string",
     "test"
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber243",
+    "test-file/client/device/device.spec.js.html#lineNumber256",
     "Check funcionality bundles module: Check Deployment Element: Check Deployment Element basic elements: Check parameter mode in validator is typeof string",
     "test"
   ],
@@ -1699,13 +1729,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber303",
+    "test-file/client/device/device.spec.js.html#lineNumber312",
     "Check funcionality bundles module: Check Deployment Element: Check DeploymentElement basic elements: Create a deployment element",
     "test"
   ],
   [
     "",
-    "test-file/client/device/device.spec.js.html#lineNumber312",
+    "test-file/client/device/device.spec.js.html#lineNumber303",
     "Check funcionality bundles module: Check Deployment Element: Check DeploymentElement basic elements: Create a deployment element",
     "test"
   ],
@@ -1729,13 +1759,13 @@ window.esdocSearchIndex = [
   ],
   [
     "internalopengateapi#bundlesbuilder src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder",
-    "test-file/client/collection/iot.spec.js.html#lineNumber10",
+    "test-file/client/device/device.spec.js.html#lineNumber10",
     "Check funcionality bundles module: Check basic parameters:",
     "test"
   ],
   [
     "internalopengateapi#bundlesbuilder src/internalopengateapi.js~internalopengateapi#bundlesbuilder,internalopengateapi#bundlesbuilder",
-    "test-file/client/device/device.spec.js.html#lineNumber10",
+    "test-file/client/collection/iot.spec.js.html#lineNumber10",
     "Check funcionality bundles module: Check basic parameters:",
     "test"
   ],
@@ -1873,13 +1903,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/security/certificates.spec.js.html#lineNumber23",
+    "test-file/client/security/certificates.spec.js.html#lineNumber30",
     "Check funcionality certificates: Check basic parameters: administrativeState is not a String",
     "test"
   ],
   [
     "",
-    "test-file/client/security/certificates.spec.js.html#lineNumber30",
+    "test-file/client/security/certificates.spec.js.html#lineNumber23",
     "Check funcionality certificates: Check basic parameters: administrativeState is not a String",
     "test"
   ],
@@ -2304,14 +2334,14 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortdescendingby,searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber94",
+    "searchbuilder#build searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortascendingby,searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber86",
     "Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort",
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortascendingby,searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber86",
+    "searchbuilder#build searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortdescendingby,searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber94",
     "Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort",
     "test"
   ],
@@ -2515,25 +2545,25 @@ window.esdocSearchIndex = [
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber112",
-    "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: devicesSearchBuilder",
-    "test"
-  ],
-  [
-    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
     "test-file/client/searching/search.spec.js.html#lineNumber50",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: devicesSearchBuilder",
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriberssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber68",
-    "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder",
+    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber112",
+    "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: devicesSearchBuilder",
     "test"
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriberssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder",
     "test-file/client/searching/search.spec.js.html#lineNumber128",
+    "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder",
+    "test"
+  ],
+  [
+    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriberssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber68",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder",
     "test"
   ],
@@ -2557,7 +2587,7 @@ window.esdocSearchIndex = [
   ],
   [
     "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber405",
+    "test-file/client/searching/search.spec.js.html#lineNumber393",
     "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
     "test"
   ],
@@ -2569,7 +2599,7 @@ window.esdocSearchIndex = [
   ],
   [
     "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber393",
+    "test-file/client/searching/search.spec.js.html#lineNumber405",
     "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
     "test"
   ],
@@ -2869,13 +2899,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber13",
+    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber5",
     "Testing fields finder api search a fields communicationsModulesSearchBuilder",
     "test"
   ],
   [
     "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber5",
+    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber13",
     "Testing fields finder api search a fields communicationsModulesSearchBuilder",
     "test"
   ],
@@ -3162,6 +3192,18 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#connectorfunctionsbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-connectorFunctionsBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#connectorFunctionsBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#connectorfunctionssearchbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-connectorFunctionsSearchBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#connectorFunctionsSearchBuilder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#constructor",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-constructor-constructor",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#constructor",
@@ -3357,6 +3399,24 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#newchannelfinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newChannelFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newChannelFinder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#newconnectorfunctionfinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newConnectorFunctionFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newConnectorFunctionFinder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#newconnectorfunctionscatalog",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newConnectorFunctionsCatalog",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newConnectorFunctionsCatalog",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#newconnectorscatalog",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newConnectorsCatalog",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newConnectorsCatalog",
     "method"
   ],
   [
@@ -5104,6 +5164,126 @@ window.esdocSearchIndex = [
     "file/src/collection/devices/collect/enum/TEMPERATURE_STATUS_ENUM.js.html",
     "src/collection/devices/collect/enum/TEMPERATURE_STATUS_ENUM.js",
     "file"
+  ],
+  [
+    "src/connectorfunctions/connectorfunctionfinder.js",
+    "file/src/connectorFunctions/ConnectorFunctionFinder.js.html",
+    "src/connectorFunctions/ConnectorFunctionFinder.js",
+    "file"
+  ],
+  [
+    "src/connectorfunctions/connectorfunctionfinder.js~connectorfunctionfinder#constructor",
+    "class/src/connectorFunctions/ConnectorFunctionFinder.js~ConnectorFunctionFinder.html#instance-constructor-constructor",
+    "src/connectorFunctions/ConnectorFunctionFinder.js~ConnectorFunctionFinder#constructor",
+    "method"
+  ],
+  [
+    "src/connectorfunctions/connectorfunctionfinder.js~connectorfunctionfinder#findbyorganizationandchannelandname",
+    "class/src/connectorFunctions/ConnectorFunctionFinder.js~ConnectorFunctionFinder.html#instance-method-findByOrganizationAndChannelAndName",
+    "src/connectorFunctions/ConnectorFunctionFinder.js~ConnectorFunctionFinder#findByOrganizationAndChannelAndName",
+    "method"
+  ],
+  [
+    "src/connectorfunctions/connectorfunctions.js",
+    "file/src/connectorFunctions/ConnectorFunctions.js.html",
+    "src/connectorFunctions/ConnectorFunctions.js",
+    "file"
+  ],
+  [
+    "src/connectorfunctions/connectorfunctions.js~connectorfunctions#constructor",
+    "class/src/connectorFunctions/ConnectorFunctions.js~ConnectorFunctions.html#instance-constructor-constructor",
+    "src/connectorFunctions/ConnectorFunctions.js~ConnectorFunctions#constructor",
+    "method"
+  ],
+  [
+    "src/connectorfunctions/connectorfunctions.js~connectorfunctions#withchannel",
+    "class/src/connectorFunctions/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withChannel",
+    "src/connectorFunctions/ConnectorFunctions.js~ConnectorFunctions#withChannel",
+    "method"
+  ],
+  [
+    "src/connectorfunctions/connectorfunctions.js~connectorfunctions#withconnector",
+    "class/src/connectorFunctions/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withConnector",
+    "src/connectorFunctions/ConnectorFunctions.js~ConnectorFunctions#withConnector",
+    "method"
+  ],
+  [
+    "src/connectorfunctions/connectorfunctions.js~connectorfunctions#withconnectorfields",
+    "class/src/connectorFunctions/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withConnectorFields",
+    "src/connectorFunctions/ConnectorFunctions.js~ConnectorFunctions#withConnectorFields",
+    "method"
+  ],
+  [
+    "src/connectorfunctions/connectorfunctions.js~connectorfunctions#withconverter",
+    "class/src/connectorFunctions/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withConverter",
+    "src/connectorFunctions/ConnectorFunctions.js~ConnectorFunctions#withConverter",
+    "method"
+  ],
+  [
+    "src/connectorfunctions/connectorfunctions.js~connectorfunctions#withdecoder",
+    "class/src/connectorFunctions/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withDecoder",
+    "src/connectorFunctions/ConnectorFunctions.js~ConnectorFunctions#withDecoder",
+    "method"
+  ],
+  [
+    "src/connectorfunctions/connectorfunctions.js~connectorfunctions#withencoder",
+    "class/src/connectorFunctions/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withEncoder",
+    "src/connectorFunctions/ConnectorFunctions.js~ConnectorFunctions#withEncoder",
+    "method"
+  ],
+  [
+    "src/connectorfunctions/connectorfunctions.js~connectorfunctions#withname",
+    "class/src/connectorFunctions/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withName",
+    "src/connectorFunctions/ConnectorFunctions.js~ConnectorFunctions#withName",
+    "method"
+  ],
+  [
+    "src/connectorfunctions/connectorfunctions.js~connectorfunctions#withorganization",
+    "class/src/connectorFunctions/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withOrganization",
+    "src/connectorFunctions/ConnectorFunctions.js~ConnectorFunctions#withOrganization",
+    "method"
+  ],
+  [
+    "src/connectorfunctions/connectorfunctions.js~connectorfunctions#withvalidator",
+    "class/src/connectorFunctions/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withValidator",
+    "src/connectorFunctions/ConnectorFunctions.js~ConnectorFunctions#withValidator",
+    "method"
+  ],
+  [
+    "src/connectorfunctions/connectorfunctionscatalog.js",
+    "file/src/connectorFunctions/ConnectorFunctionsCatalog.js.html",
+    "src/connectorFunctions/ConnectorFunctionsCatalog.js",
+    "file"
+  ],
+  [
+    "src/connectorfunctions/connectorfunctionscatalog.js~connectorfunctionscatalog#constructor",
+    "class/src/connectorFunctions/ConnectorFunctionsCatalog.js~ConnectorFunctionsCatalog.html#instance-constructor-constructor",
+    "src/connectorFunctions/ConnectorFunctionsCatalog.js~ConnectorFunctionsCatalog#constructor",
+    "method"
+  ],
+  [
+    "src/connectorfunctions/connectorfunctionscatalog.js~connectorfunctionscatalog#gettemplates",
+    "class/src/connectorFunctions/ConnectorFunctionsCatalog.js~ConnectorFunctionsCatalog.html#instance-method-getTemplates",
+    "src/connectorFunctions/ConnectorFunctionsCatalog.js~ConnectorFunctionsCatalog#getTemplates",
+    "method"
+  ],
+  [
+    "src/connectorfunctions/connectorscatalog.js",
+    "file/src/connectorFunctions/ConnectorsCatalog.js.html",
+    "src/connectorFunctions/ConnectorsCatalog.js",
+    "file"
+  ],
+  [
+    "src/connectorfunctions/connectorscatalog.js~connectorscatalog#constructor",
+    "class/src/connectorFunctions/ConnectorsCatalog.js~ConnectorsCatalog.html#instance-constructor-constructor",
+    "src/connectorFunctions/ConnectorsCatalog.js~ConnectorsCatalog#constructor",
+    "method"
+  ],
+  [
+    "src/connectorfunctions/connectorscatalog.js~connectorscatalog#gettemplates",
+    "class/src/connectorFunctions/ConnectorsCatalog.js~ConnectorsCatalog.html#instance-method-getTemplates",
+    "src/connectorFunctions/ConnectorsCatalog.js~ConnectorsCatalog#getTemplates",
+    "method"
   ],
   [
     "src/domains/domains.js",
@@ -7203,6 +7383,24 @@ window.esdocSearchIndex = [
     "src/searching/builder/communicationsmoduletypesearchbuilder.js~communicationsmoduletypesearchbuilder#withtype",
     "class/src/searching/builder/CommunicationsModuleTypeSearchBuilder.js~CommunicationsModuleTypeSearchBuilder.html#instance-method-withType",
     "src/searching/builder/CommunicationsModuleTypeSearchBuilder.js~CommunicationsModuleTypeSearchBuilder#withType",
+    "method"
+  ],
+  [
+    "src/searching/builder/connectorfunctionssearchbuilder.js",
+    "file/src/searching/builder/ConnectorFunctionsSearchBuilder.js.html",
+    "src/searching/builder/ConnectorFunctionsSearchBuilder.js",
+    "file"
+  ],
+  [
+    "src/searching/builder/connectorfunctionssearchbuilder.js~connectorfunctionssearchbuilder#build",
+    "class/src/searching/builder/ConnectorFunctionsSearchBuilder.js~ConnectorFunctionsSearchBuilder.html#instance-method-build",
+    "src/searching/builder/ConnectorFunctionsSearchBuilder.js~ConnectorFunctionsSearchBuilder#build",
+    "method"
+  ],
+  [
+    "src/searching/builder/connectorfunctionssearchbuilder.js~connectorfunctionssearchbuilder#constructor",
+    "class/src/searching/builder/ConnectorFunctionsSearchBuilder.js~ConnectorFunctionsSearchBuilder.html#instance-constructor-constructor",
+    "src/searching/builder/ConnectorFunctionsSearchBuilder.js~ConnectorFunctionsSearchBuilder#constructor",
     "method"
   ],
   [

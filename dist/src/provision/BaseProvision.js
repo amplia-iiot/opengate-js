@@ -92,23 +92,23 @@ var BaseProvision = (function () {
             var promise = defered.promise;
 
             //En muchas clases se genera this._resource en la llamada a la funcion this._composeElement()
-
-            var _postElement = this._composeElement();
-            this._ogapi.Napi.post(this._resource, _postElement, this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (res) {
-                if (res.statusCode === 201) {
-                    if (typeof _this._onCreated === "function") {
-                        _this._onCreated(res.header.location);
+            this._promisify(this._composeElement()).then(function (_postElement) {
+                return _this._ogapi.Napi.post(_this._resource, _postElement, _this._timeout, _this._getExtraHeaders(), _this._getUrlParameters()).then(function (res) {
+                    if (res.statusCode === 201) {
+                        if (typeof _this._onCreated === "function") {
+                            _this._onCreated(res.header.location);
+                        }
+                        defered.resolve({
+                            location: res.header.location,
+                            statusCode: res.statusCode
+                        });
+                    } else {
+                        defered.reject({
+                            errors: res.errors,
+                            statusCode: res.statusCode
+                        });
                     }
-                    defered.resolve({
-                        location: res.header.location,
-                        statusCode: res.statusCode
-                    });
-                } else {
-                    defered.reject({
-                        errors: res.errors,
-                        statusCode: res.statusCode
-                    });
-                }
+                });
             })['catch'](function (error) {
                 defered.reject(error);
             });
@@ -160,28 +160,37 @@ var BaseProvision = (function () {
     }, {
         key: 'update',
         value: function update() {
+            var _this2 = this;
+
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-
-            this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement(), this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (res) {
-                if (res.statusCode === 200) {
-                    defered.resolve({
-                        statusCode: res.statusCode
-                    });
-                } else if (res.status === 200) {
-                    defered.resolve({
-                        statusCode: res.status
-                    });
-                } else {
-                    defered.reject({
-                        errors: res.errors,
-                        statusCode: res.statusCode
-                    });
-                }
+            this._promisify(this._composeUpdateElement()).then(function (_putElement) {
+                return _this2._ogapi.Napi.put(_this2._buildURL(), _putElement, _this2._timeout, _this2._getExtraHeaders(), _this2._getUrlParameters()).then(function (res) {
+                    if (res.statusCode === 200) {
+                        defered.resolve({
+                            statusCode: res.statusCode
+                        });
+                    } else if (res.status === 200) {
+                        defered.resolve({
+                            statusCode: res.status
+                        });
+                    } else {
+                        defered.reject({
+                            errors: res.errors,
+                            statusCode: res.statusCode
+                        });
+                    }
+                });
             })['catch'](function (error) {
                 defered.reject(error);
             });
             return promise;
+        }
+    }, {
+        key: '_promisify',
+        value: function _promisify(elem) {
+            if (typeof elem.then === 'function') return elem;
+            return Promise.resolve(elem);
         }
     }, {
         key: '_composeUpdateElement',
@@ -217,14 +226,14 @@ var BaseProvision = (function () {
     }, {
         key: '_doNorthPost',
         value: function _doNorthPost(resource, element) {
-            var _this2 = this;
+            var _this3 = this;
 
             var defered = _q2['default'].defer();
             var promise = defered.promise;
             this._ogapi.Napi.post(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (res) {
                 if (res.statusCode === 201) {
-                    if (typeof _this2._onCreated === "function") {
-                        _this2._onCreated(res.header.location);
+                    if (typeof _this3._onCreated === "function") {
+                        _this3._onCreated(res.header.location);
                     }
                     defered.resolve({
                         location: res.header.location,

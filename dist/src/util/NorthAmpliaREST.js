@@ -26,9 +26,9 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
-var _fs = require('fs');
+var _lodash = require('lodash');
 
-var _fs2 = _interopRequireDefault(_fs);
+var _lodash2 = _interopRequireDefault(_lodash);
 
 //  MOCK user searching
 
@@ -54,73 +54,38 @@ var NorthAmpliaREST = (function () {
 
         this._options = _merge2['default'].recursive(true, this['default'](), _options);
         this._headers = headers;
-
-        // ----------------------------------
-        /*
-        mock.post(_options.url + '/search/channels', function(req) {
-            return {
-                body: {
-                    "channels": [{
-                        "name": "default_channel",
-                        "description": "Automatic channel",
-                        "organization": "organization_GetSetParam",
-                        "certificates": []
-                    }]
-                },
-                statusCode: 200
-            };
-        });        
-        */
-        //   mock.post(_options.url + '/search/catalog/operations', function(req) {
-        //     return {
-        //         body: {
-        //             "operations": [
-        //                 {
-        //                     "name": "ADMINISTRATIVE_STATUS_CHANGE",
-        //                     "title": "Administrative status change params",
-        //                     "description": "Allows to change the administrative status of an entity",
-        //                     "applicableTo": [
-        //                       "GATEWAY",
-        //                       "ASSET",
-        //                       "SUBSCRIPTION",
-        //                       "SUBSCRIBER"
-        //                     ],
-        //                     "categoryPath": "/admin",
-        //                     "parameters": {
-        //                         "schema": {
-        //                             "type": "object",
-        //                             "properties": {
-        //                             "admsts": {
-        //                                 "type": "string",
-        //                                 "title": "Administrative status"
-        //                             }
-        //                             },
-        //                             "additionalProperties": false,
-        //                             "required": ["admsts"]
-        //                         }
-        //                     },
-        //                     "steps": [
-        //                       {
-        //                         "name": "ADMINISTRATIVE_STATUS_CHANGE",
-        //                         "title": "Administrative Status Change",
-        //                         "description": ""
-        //                       }
-        //                     ]
-        //                   },
-        //             ]
-        //         },
-        //         statusCode: 200
-        //     };
-        // });       
-        // ----------------------------------
+        if (!_lodash2['default'].isEmpty(_options.mocks)) {
+            this._applyMocks(_options.mocks);
+        }
     }
 
-    /**
-     * This return a default configuration object
-     * @return {object}
-     */
-
     _createClass(NorthAmpliaREST, [{
+        key: '_applyMocks',
+        value: function _applyMocks(mocks) {
+            var _this = this;
+
+            var methods = Object.keys(mocks).filter(function (method) {
+                return !_lodash2['default'].isEmpty(mocks[method]);
+            });
+            methods.forEach(function (method) {
+                //console.log(`Mocking ${method.toLocaleUpperCase()} requests`);
+                Object.keys(mocks[method]).forEach(function (url) {
+                    //console.log('Mocking url:', url);
+                    //console.log('Data returned:', mocks[method][url])
+                    mock[method](_this._options.url + url, function () {
+                        var data = mocks[method][url];
+                        if (!data.header) data.header = {};
+                        return data;
+                    });
+                });
+            });
+        }
+
+        /**
+         * This return a default configuration object
+         * @return {object}
+         */
+    }, {
         key: 'default',
         value: function _default() {
             return {
@@ -262,7 +227,7 @@ var NorthAmpliaREST = (function () {
     }, {
         key: 'delete',
         value: function _delete(url, timeout, headers, parameters) {
-            var req = _superagent2['default']['delete'](this._createUrl(url, parameters));
+            var req = _superagent2['default'].del(this._createUrl(url, parameters));
             return this._createPromiseRequest(req, null, timeout, headers);
         }
     }, {
@@ -281,10 +246,7 @@ var NorthAmpliaREST = (function () {
                         relativeUrl = relativeUrl + '&' + queryParameter;
                     }
                 }
-                console.log(JSON.stringify(parameters));
             }
-
-            console.log(relativeUrl);
 
             var relativeUrlSplit = relativeUrl.split("/");
             var length = relativeUrlSplit.length;
@@ -312,7 +274,6 @@ var NorthAmpliaREST = (function () {
             var promise = defered.promise;
             var apiKey = this._options.apiKey;
             var _req = _timeout === -1 ? req : req.timeout(_timeout);
-
             if (apiKey) {
                 _req = _req.set('X-ApiKey', this._options.apiKey);
             }
