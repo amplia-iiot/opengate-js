@@ -1,66 +1,182 @@
 const _ = require('lodash')
 const Ogapi = require('../dist/opengate-api-npm')
-const ogapi = new Ogapi({
-    'apiKey': process.env.apikey,
-    'url': process.env.url,
-    'timeout': 20000,
-})
+const catalog = [{
+    "name": "CoAP",
+    "connectorSchemaFields": {
+        "uriUplink": {
+            "type": "string"
+        },
+        "uriDownLink": {
+            "type": "string"
+        },
+        "manufacturer": {
+            "type": "string"
+        },
+        "model": {
+            "type": "string"
+        }
+    }
+}]
+const connectorFunctionsCatalog = [
+    {
+      "name": "MQTT_TEMPLATE",
+      "connector": "MQTT",
+      "connectorFields": {
+        "topicUplink": "???",
+        "topicDownLink": "???",
+        "manufacturer": "???",
+        "model": "????"
+      },
+      "functions": {
+        "decoder": "function() {}",
+        "converter": "function() {}",
+        "validator": "function() {}",
+        "encoder": "function() {}"
+      }
+    }
+  ]
+const search = [
+    {
+      "functions": {
+        "converter": "a",
+        "validator": "a",
+        "decoder": "a",
+        "encoder": "a"
+      },
+      "connector": "MQTT",
+      "organization": "gtrrz.victor",
+      "name": "test1",
+      "channel": "default_channel"
+    }
+  ]
 
 describe('connectorFunctions', () => {
-    beforeEach(async () => {
-        try {
-            await ogapi.connectorFunctionsBuilder()
-                .withName('test-ogapi')
-                .withConnector('MQTT')
-                .withChannel('default_channel')
-                .withOrganization('gtrrz.victor')
-                .delete() // This organization should be the same as process.env.apikey user's organization
-        } catch (err) { }
-    })
-
     test('GET ConnectorFunctionsCatalog', async () => {
-        const response = await ogapi.newConnectorFunctionsCatalog().getTemplates()
+        const _ogapi = new Ogapi({
+            'url': process.env.url,
+            mocks: {
+                get: {
+                    '/catalogs/connectorFunctions': {
+                        statusCode: 200, body: connectorFunctionsCatalog
+                    }
+                }
+            }
+        })
+        const response = await _ogapi.newConnectorFunctionsCatalog().getTemplates()
         expect(response.statusCode).toBe(200);
-        expect(_.isArray(response.data)).toBe(true);
+        expect(response.data).toEqual(connectorFunctionsCatalog);
     });
 
     test('GET ConnectorsCatalog', async () => {
-        const response = await ogapi.newConnectorsCatalog().getTemplates()
+        const _ogapi = new Ogapi({
+            'url': process.env.url,
+            mocks: {
+                get: {
+                    '/catalogs/conectors': {
+                        statusCode: 200, body: catalog
+                    }
+                }
+            }
+        })
+        const response = await _ogapi.newConnectorsCatalog().getTemplates()
         expect(response.statusCode).toBe(200);
-        expect(_.isArray(response.data)).toBe(true);
+        expect(response.data).toEqual([{
+            "name": "CoAP",
+            "connectorSchemaFields": {
+                "uriUplink": {
+                    "type": "string"
+                },
+                "uriDownLink": {
+                    "type": "string"
+                },
+                "manufacturer": {
+                    "type": "string"
+                },
+                "model": {
+                    "type": "string"
+                }
+            }
+        }]);
     });
 
     test('POST searching with filter', async () => {
-        const response = await ogapi.connectorFunctionsSearchBuilder()
+        const _ogapi = new Ogapi({
+            'url': process.env.url,
+            mocks: {
+                post: {
+                    '/connectorFunctions/search': {
+                        statusCode: 200, body: search
+                    }
+                }
+            }
+        })
+        const response = await _ogapi.connectorFunctionsSearchBuilder()
             .filter({
                 "functions.converter": "a"
             }).build().execute()
         expect(response.statusCode).toBe(200);
-        expect(_.isArray(response.data)).toBe(true);
+        expect(response.data).toEqual(search);
     })
+
     test('POST searching with descending sorting', async () => {
-        const response = await ogapi
+        const _ogapi = new Ogapi({
+            'url': process.env.url,
+            mocks: {
+                post: {
+                    '/connectorFunctions/search': {
+                        statusCode: 200, body: search
+                    }
+                }
+            }
+        })
+        const response = await _ogapi
             .connectorFunctionsSearchBuilder()
             .addSortDescendingBy("name")
             .build()
             .execute()
-        expect(response.statusCode).toBe(200);
-        expect(_.isArray(response.data)).toBe(true);
+        expect(response.statusCode).toBe(200);        
+        expect(response.data).toEqual(search);
     })
+    
     test('POST searching with ascending sorting', async () => {
-        const response = await ogapi
+        const _ogapi = new Ogapi({
+            'url': process.env.url,
+            mocks: {
+                post: {
+                    '/connectorFunctions/search': {
+                        statusCode: 200, body: search
+                    }
+                }
+            }
+        })
+        const response = await _ogapi
             .connectorFunctionsSearchBuilder()
             .addSortAscendingBy("name")
             .build()
             .execute()
-        expect(response.statusCode).toBe(200);
-        expect(_.isArray(response.data)).toBe(true);
+        expect(response.statusCode).toBe(200);    
+        expect(response.data).toEqual(search);
     })
 
     test('POST new ConnectorFunction with the minimal data needed', async () => {
-        const response = await ogapi.connectorFunctionsBuilder()
+        const _ogapi = new Ogapi({
+            'url': process.env.url,
+            mocks: {
+                post: {
+                    '/connectorFunctions': {
+                        statusCode: 201
+                    }
+                },
+                get: {
+                    '/catalogs/conectors': {
+                        statusCode: 200, body: catalog
+                    }
+                }
+            }
+        })
+        const response = await _ogapi.connectorFunctionsBuilder()
             .withName('test-ogapi')
-            .withConnector('MQTT')
+            .withConnector('CoAP')
             .withChannel('default_channel')
             .withOrganization('gtrrz.victor')
             .create()
@@ -68,9 +184,19 @@ describe('connectorFunctions', () => {
     })
 
     test('POST new ConnectorFunction with an unknown connector', async () => {
+        const _ogapi = new Ogapi({
+            'url': process.env.url,
+            mocks: {
+                get: {
+                    '/catalogs/conectors': {
+                        statusCode: 200, body: catalog
+                    }
+                }
+            }
+        })
         let error
         try {
-            await ogapi.connectorFunctionsBuilder()
+            await _ogapi.connectorFunctionsBuilder()
                 .withName('test-ogapi')
                 .withConnector('NOT_EXISTS')
                 .withChannel('default_channel')
@@ -85,11 +211,21 @@ describe('connectorFunctions', () => {
     })
 
     test('POST new ConnectorFunction with a known connector but unknown connectorField', async () => {
+        const _ogapi = new Ogapi({
+            'url': process.env.url,
+            mocks: {
+                get: {
+                    '/catalogs/conectors': {
+                        statusCode: 200, body: catalog
+                    }
+                }
+            }
+        })
         let error
         try {
-            await ogapi.connectorFunctionsBuilder()
+            await _ogapi.connectorFunctionsBuilder()
                 .withName('test-ogapi')
-                .withConnector('MQTT')
+                .withConnector('CoAP')
                 .withConnectorField('NOT_VALID', 'value1')
                 .withChannel('default_channel')
                 .withOrganization('gtrrz.victor')
@@ -102,16 +238,18 @@ describe('connectorFunctions', () => {
         ).toBe("is not allowed to have the additional property \"NOT_VALID\"")
     })
 
-
     test('PUT a existing ConnectorFunction with a different connector name', async () => {
-        await ogapi.connectorFunctionsBuilder()
-            .withName('test-ogapi')
-            .withConnector('MQTT')
-            .withChannel('default_channel')
-            .withOrganization('gtrrz.victor')
-            .create()
-
-        const response = await ogapi.connectorFunctionsBuilder()
+        const _ogapi = new Ogapi({
+            'url': process.env.url,
+            mocks: {
+                put: {
+                    '/connectorFunctions/gtrrz.victor/default_channel/test-ogapi': {
+                        statusCode: 200, body: {}
+                    }
+                }
+            }
+        })
+        const response = await _ogapi.connectorFunctionsBuilder()
             .withName('test-ogapi')
             .withConnector('CoAP')
             .withChannel('default_channel')
@@ -124,14 +262,23 @@ describe('connectorFunctions', () => {
     })
 
     test('GET a existing ConnectorFunction', async () => {
-        await ogapi.connectorFunctionsBuilder()
-            .withName('test-ogapi')
-            .withConnector('MQTT')
-            .withChannel('default_channel')
-            .withOrganization('gtrrz.victor')
-            .create()
-
-        const response = await ogapi
+        const responseGet = {
+            "name": "test-ogapi",
+            "connector": "CoAP",
+            "channel": "default_channel",
+            "organization": "gtrrz.victor"
+        }
+        const _ogapi = new Ogapi({
+            'url': process.env.url,
+            mocks: {
+                get: {
+                    '/connectorFunctions/gtrrz.victor/default_channel/test-ogapi': {
+                        statusCode: 200, body: responseGet
+                    }
+                }
+            }
+        })
+        const response = await _ogapi
             .newConnectorFunctionFinder()
             .findByOrganizationAndChannelAndName('gtrrz.victor', 'default_channel', 'test-ogapi')
         expect(
@@ -139,12 +286,29 @@ describe('connectorFunctions', () => {
         ).toBe(200)
         expect(
             response.data
-        ).toEqual({ 
-            "name": "test-ogapi", 
-            "connector": "MQTT", 
-            "channel": "default_channel", 
-            "organization": "gtrrz.victor" 
+        ).toEqual(responseGet)
+    })
+
+    test('DELETE a existing ConnectorFunction', async () => {
+        const _ogapi = new Ogapi({
+            'url': process.env.url,
+            mocks: {
+                del: {
+                    '/connectorFunctions/gtrrz.victor/default_channel/test-ogapi': {
+                        statusCode: 200
+                    }
+                }
+            }
         })
+        
+        const response = await _ogapi.connectorFunctionsBuilder()
+        .withName('test-ogapi')
+        .withChannel('default_channel')
+        .withOrganization('gtrrz.victor')
+        .delete()
+        expect(
+            response.statusCode
+        ).toBe(200)
     })
 
 });
