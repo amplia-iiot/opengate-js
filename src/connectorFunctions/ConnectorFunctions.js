@@ -1,6 +1,8 @@
 'use strict';
 
 import BaseProvision from '../provision/BaseProvision';
+import ConnectorsCatalog from './ConnectorsCatalog'
+import { validate } from 'jsonschema'
 
 const RESOURCE = 'connectorFunctions'
 const SCHEMA_DEFINITION_RESOURCE = 'openapi'
@@ -14,6 +16,7 @@ export default class ConnectorFunctions extends BaseProvision {
      */
     constructor(ogapi) {
         super(ogapi, undefined, undefined, ["organization", "channel", "name", "connector"]);
+        this._connectorCatalog = new ConnectorsCatalog(ogapi)
         this._ogapi = ogapi;
         this._resource = RESOURCE
         this._body = {}
@@ -49,12 +52,14 @@ export default class ConnectorFunctions extends BaseProvision {
     }
 
     /**
-     * Set the connectorFields attribute
-     * @param {string} connectorFields
+     * Set a connectorField value
+     * @param {string} connectorField name of the connectorField
+     * @param {string} value value of the connectorField
      * @return {ConnectorFunctions}
      */
-    withConnectorFields (connectorFields) {
-        this._body.connectorFields = connectorFields;
+    withConnectorField (connectorField, value) {
+        if (!this._body.connectorFields) this._body.connectorFields = {}
+        this._body.connectorFields[connectorField] = value;
         return this;
     }
 
@@ -131,32 +136,29 @@ export default class ConnectorFunctions extends BaseProvision {
         this._body.organization = this._organization = organization;
         return this;
     }
-    /*
-        create () {
-    
-            validator.validateModel(pet, 'Pet', function (err, result) {
-                console.log(result.humanReadable());
-            });
-    
-            return this._ogapi.Napi.get().then((response) => {
-                this._openapi = YAML.parse(response.text)
+
+    _composeElement () {
+        return new Promise((resolve, reject) => {
+            this._connectorCatalog.getTemplates().then(({ data }) => {
+                const connector = data.find((connector) => connector.name === this._body.connector)
+                if (connector === undefined) return reject(`Invalid connector name. Value: ${this._body.connector}. Valid values ${data.map(({ name }) => name)}`)
+                if (this._body.connectorFields && connector.connectorSchemaFields) {
+                    const { errors, valid } = validate(
+                        this._body.connectorFields,
+                        this._createConnectorJsonSchema(connector.connectorSchemaFields)
+                    )
+                    if (!valid) return reject(errors)
+                }
+                resolve(this._body)
             }).catch((err) => {
-                console.warn('Something has happened while the json schema was requested')
+                console.warn('Something wrong have happened while the connector catalog was requested')
                 console.warn(err);
-            }).finally(()=>{
-                return super.create()
+                resolve(this._body)
             })
-        }
-    
-        _composeElement () {
-            if (!this._openapi) return this._body
-            console.log(this._openapi.components.schemas.connectorFunctions_functions);
-            this._validator.addSchema(this._openapi.components.schemas.connectorFunctions_functions, '#/components/schemas/connectorFunctions_functions');
-            const { instance, errors, valid } = this._validator.validate(this._body, this._openapi.components.schemas.connectorFunctions,)
-            if (!valid) throw errors
-            return instance;
-        }*/
-        _composeElement(){
-            return this._body
-        }
+        })
+    }
+
+    _createConnectorJsonSchema (fieldsSchema) {
+        return { type: 'object', properties: fieldsSchema, additionalProperties: false }
+    }
 }

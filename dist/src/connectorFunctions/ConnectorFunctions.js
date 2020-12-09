@@ -18,6 +18,12 @@ var _provisionBaseProvision = require('../provision/BaseProvision');
 
 var _provisionBaseProvision2 = _interopRequireDefault(_provisionBaseProvision);
 
+var _ConnectorsCatalog = require('./ConnectorsCatalog');
+
+var _ConnectorsCatalog2 = _interopRequireDefault(_ConnectorsCatalog);
+
+var _jsonschema = require('jsonschema');
+
 var RESOURCE = 'connectorFunctions';
 var SCHEMA_DEFINITION_RESOURCE = 'openapi';
 /**
@@ -35,6 +41,7 @@ var ConnectorFunctions = (function (_BaseProvision) {
         _classCallCheck(this, ConnectorFunctions);
 
         _get(Object.getPrototypeOf(ConnectorFunctions.prototype), 'constructor', this).call(this, ogapi, undefined, undefined, ["organization", "channel", "name", "connector"]);
+        this._connectorCatalog = new _ConnectorsCatalog2['default'](ogapi);
         this._ogapi = ogapi;
         this._resource = RESOURCE;
         this._body = {};
@@ -74,14 +81,16 @@ var ConnectorFunctions = (function (_BaseProvision) {
         }
 
         /**
-         * Set the connectorFields attribute
-         * @param {string} connectorFields
+         * Set a connectorField value
+         * @param {string} connectorField name of the connectorField
+         * @param {string} value value of the connectorField
          * @return {ConnectorFunctions}
          */
     }, {
-        key: 'withConnectorFields',
-        value: function withConnectorFields(connectorFields) {
-            this._body.connectorFields = connectorFields;
+        key: 'withConnectorField',
+        value: function withConnectorField(connectorField, value) {
+            if (!this._body.connectorFields) this._body.connectorFields = {};
+            this._body.connectorFields[connectorField] = value;
             return this;
         }
 
@@ -166,36 +175,42 @@ var ConnectorFunctions = (function (_BaseProvision) {
             this._body.organization = this._organization = organization;
             return this;
         }
-
-        /*
-            create () {
-        
-                validator.validateModel(pet, 'Pet', function (err, result) {
-                    console.log(result.humanReadable());
-                });
-        
-                return this._ogapi.Napi.get().then((response) => {
-                    this._openapi = YAML.parse(response.text)
-                }).catch((err) => {
-                    console.warn('Something has happened while the json schema was requested')
-                    console.warn(err);
-                }).finally(()=>{
-                    return super.create()
-                })
-            }
-        
-            _composeElement () {
-                if (!this._openapi) return this._body
-                console.log(this._openapi.components.schemas.connectorFunctions_functions);
-                this._validator.addSchema(this._openapi.components.schemas.connectorFunctions_functions, '#/components/schemas/connectorFunctions_functions');
-                const { instance, errors, valid } = this._validator.validate(this._body, this._openapi.components.schemas.connectorFunctions,)
-                if (!valid) throw errors
-                return instance;
-            }*/
     }, {
         key: '_composeElement',
         value: function _composeElement() {
-            return this._body;
+            var _this = this;
+
+            return new Promise(function (resolve, reject) {
+                _this._connectorCatalog.getTemplates().then(function (_ref) {
+                    var data = _ref.data;
+
+                    var connector = data.find(function (connector) {
+                        return connector.name === _this._body.connector;
+                    });
+                    if (connector === undefined) return reject('Invalid connector name. Value: ' + _this._body.connector + '. Valid values ' + data.map(function (_ref2) {
+                        var name = _ref2.name;
+                        return name;
+                    }));
+                    if (_this._body.connectorFields && connector.connectorSchemaFields) {
+                        var _validate = (0, _jsonschema.validate)(_this._body.connectorFields, _this._createConnectorJsonSchema(connector.connectorSchemaFields));
+
+                        var errors = _validate.errors;
+                        var valid = _validate.valid;
+
+                        if (!valid) return reject(errors);
+                    }
+                    resolve(_this._body);
+                })['catch'](function (err) {
+                    console.warn('Something wrong have happened while the connector catalog was requested');
+                    console.warn(err);
+                    resolve(_this._body);
+                });
+            });
+        }
+    }, {
+        key: '_createConnectorJsonSchema',
+        value: function _createConnectorJsonSchema(fieldsSchema) {
+            return { type: 'object', properties: fieldsSchema, additionalProperties: false };
         }
     }]);
 
