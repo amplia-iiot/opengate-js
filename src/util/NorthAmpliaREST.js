@@ -238,10 +238,7 @@ export default class NorthAmpliaREST {
                 }
 
             }
-            console.log(JSON.stringify(parameters));
         }
-
-        console.log(relativeUrl);
 
         var relativeUrlSplit = relativeUrl.split("/");
         var length = relativeUrlSplit.length;

@@ -37,7 +37,7 @@ export default class BaseProvision {
         this._urlParameters = undefined;
     }
 
-    _checkRequiredParameters() {
+    _checkRequiredParameters () {
         let parametersNotFound = [];
         if (this._requiredParameters && this._requiredParameters.length > 0) {
             for (let i = 0; i < this._requiredParameters.length; i++) {
@@ -62,35 +62,34 @@ export default class BaseProvision {
      * @example
      *  ogapi.organizationsBuilder().create()
      */
-    create() {
+    create () {
         this._checkRequiredParameters();
 
         var defered = q.defer();
         var promise = defered.promise;
 
         //En muchas clases se genera this._resource en la llamada a la funcion this._composeElement()
-
-        let _postElement = this._composeElement();
-        this._ogapi.Napi.post(this._resource, _postElement, this._timeout, this._getExtraHeaders(), this._getUrlParameters())
-            .then((res) => {
-                if (res.statusCode === 201) {
-                    if (typeof this._onCreated === "function") {
-                        this._onCreated(res.header.location);
+        this._promisify(this._composeElement()).then((_postElement) => {
+            return this._ogapi.Napi.post(this._resource, _postElement, this._timeout, this._getExtraHeaders(), this._getUrlParameters())
+                .then((res) => {
+                    if (res.statusCode === 201) {
+                        if (typeof this._onCreated === "function") {
+                            this._onCreated(res.header.location);
+                        }
+                        defered.resolve({
+                            location: res.header.location,
+                            statusCode: res.statusCode
+                        });
+                    } else {
+                        defered.reject({
+                            errors: res.errors,
+                            statusCode: res.statusCode
+                        });
                     }
-                    defered.resolve({
-                        location: res.header.location,
-                        statusCode: res.statusCode
-                    });
-                } else {
-                    defered.reject({
-                        errors: res.errors,
-                        statusCode: res.statusCode
-                    });
-                }
-            })
-            .catch((error) => {
-                defered.reject(error);
-            });
+                })
+        }).catch((error) => {
+            defered.reject(error);
+        });
         return promise;
     }
 
@@ -105,7 +104,7 @@ export default class BaseProvision {
      * ogapi.usersBuilder().withEmail('delete@user.com').delete();
      * ogapi.certificatesBuilder().withId('d3l3t3-c3rt1f1c4t3').delete();
      */
-    delete() {
+    delete () {
         var defered = q.defer();
         var promise = defered.promise;
         this._ogapi.Napi.delete(this._buildURL(), this._timeout, this._getExtraHeaders(), this._getUrlParameters())
@@ -136,38 +135,43 @@ export default class BaseProvision {
      * @example
      *  ogapi.organizationsBuilder().update()
      */
-    update() {
+    update () {
         var defered = q.defer();
         var promise = defered.promise;
-
-        this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement(), this._timeout, this._getExtraHeaders(), this._getUrlParameters())
-            .then((res) => {
-                if (res.statusCode === 200) {
-                    defered.resolve({
-                        statusCode: res.statusCode
-                    });
-                } else if (res.status === 200) {
-                    defered.resolve({
-                        statusCode: res.status
-                    });
-                } else {
-                    defered.reject({
-                        errors: res.errors,
-                        statusCode: res.statusCode
-                    });
-                }
-            })
-            .catch((error) => {
-                defered.reject(error);
-            });
+        this._promisify(this._composeUpdateElement()).then((_putElement) => {
+            return this._ogapi.Napi.put(this._buildURL(), _putElement, this._timeout, this._getExtraHeaders(), this._getUrlParameters())
+                .then((res) => {
+                    if (res.statusCode === 200) {
+                        defered.resolve({
+                            statusCode: res.statusCode
+                        });
+                    } else if (res.status === 200) {
+                        defered.resolve({
+                            statusCode: res.status
+                        });
+                    } else {
+                        defered.reject({
+                            errors: res.errors,
+                            statusCode: res.statusCode
+                        });
+                    }
+                })
+        }).catch((error) => {
+            defered.reject(error);
+        });
         return promise;
     }
 
-    _composeUpdateElement() {
+    _promisify (elem) {
+        if (typeof elem.then === 'function') return elem
+        return Promise.resolve(elem)
+    }
+
+    _composeUpdateElement () {
         return this._composeElement();
     }
 
-    _doNorthPut(resource, element) {
+    _doNorthPut (resource, element) {
         var defered = q.defer();
         var promise = defered.promise;
 
@@ -194,7 +198,7 @@ export default class BaseProvision {
         return promise;
     }
 
-    _doNorthPost(resource, element) {
+    _doNorthPost (resource, element) {
         var defered = q.defer();
         var promise = defered.promise;
         this._ogapi.Napi.post(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters())
@@ -224,11 +228,11 @@ export default class BaseProvision {
         return promise;
     }
 
-    _getExtraHeaders() {
+    _getExtraHeaders () {
         return this._headers;
     }
 
-    _setExtraHeaders(headers) {
+    _setExtraHeaders (headers) {
         if (this._headers) {
             var keys = Object.keys(headers);
             for (var i = 0; i < keys.length; i++) {
@@ -240,11 +244,11 @@ export default class BaseProvision {
         }
     }
 
-    _getUrlParameters() {
+    _getUrlParameters () {
         return this._urlParameters;
     }
 
-    _setUrlParameters(parameters) {
+    _setUrlParameters (parameters) {
         if (this._urlParameters) {
             var keys = Object.keys(parameters);
             for (var i = 0; i < keys.length; i++) {
