@@ -17,16 +17,14 @@ export default class ConnectorFunctionFinder extends GenericFinder {
     /**
      * Performs a get that returns connectorFunction matched
      * @test
-     *   ogapi.newConnectorFunctionFinder().findByOrganizationAndChannelAndName('xxx-xx-xxx-xxx', 'xxxxx-xxxx-xxxx', 'xxxxx-xxxx-xxxx').then().catch();
+     *   ogapi.newConnectorFunctionFinder().findByOrganizationAndChannelAndConnector('xxx-xx-xxx-xxx', 'xxxxx-xxxx-xxxx', 'xxxxx-xxxx-xxxx').then().catch();
      * @param {string} organization - organization 
      * @param {string} channel - channel.
-     * @param {string} name - name.
+     * @param {string} connector - connector.
      * @return {Promise} 
      */
-    findByOrganizationAndChannelAndName(organization, channel, name) {
-        this._withId(`${organization}/${channel}/${name}`)
-
-
+    findByOrganizationAndChannelAndConnector(organization, channel, connector) {
+        this._withId(`${organization}/${channel}/${connector}`)
         return this._execute();
     }
 }

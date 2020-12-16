@@ -175,7 +175,7 @@ describe('connectorFunctions', () => {
             }
         })
         const response = await _ogapi.connectorFunctionsBuilder()
-            .withName('test-ogapi')
+            .withContentType('text')
             .withConnector('CoAP')
             .withChannel('default_channel')
             .withOrganization('gtrrz.victor')
@@ -197,7 +197,7 @@ describe('connectorFunctions', () => {
         let error
         try {
             await _ogapi.connectorFunctionsBuilder()
-                .withName('test-ogapi')
+                .withContentType('text')
                 .withConnector('NOT_EXISTS')
                 .withChannel('default_channel')
                 .withOrganization('gtrrz.victor')
@@ -224,8 +224,8 @@ describe('connectorFunctions', () => {
         let error
         try {
             await _ogapi.connectorFunctionsBuilder()
-                .withName('test-ogapi')
                 .withConnector('CoAP')
+                .withContentType('text')
                 .withConnectorField('NOT_VALID', 'value1')
                 .withChannel('default_channel')
                 .withOrganization('gtrrz.victor')
@@ -243,7 +243,7 @@ describe('connectorFunctions', () => {
             'url': process.env.url,
             mocks: {
                 put: {
-                    '/connectorFunctions/gtrrz.victor/default_channel/test-ogapi': {
+                    '/connectorFunctions/gtrrz.victor/default_channel/CoAP': {
                         statusCode: 200, body: {}
                     }
                 }
@@ -252,6 +252,7 @@ describe('connectorFunctions', () => {
         const response = await _ogapi.connectorFunctionsBuilder()
             .withName('test-ogapi')
             .withConnector('CoAP')
+            .withContentType('text')
             .withChannel('default_channel')
             .withOrganization('gtrrz.victor')
             .update()
@@ -266,13 +267,14 @@ describe('connectorFunctions', () => {
             "name": "test-ogapi",
             "connector": "CoAP",
             "channel": "default_channel",
+            "contentType":"number",
             "organization": "gtrrz.victor"
         }
         const _ogapi = new Ogapi({
             'url': process.env.url,
             mocks: {
                 get: {
-                    '/connectorFunctions/gtrrz.victor/default_channel/test-ogapi': {
+                    '/connectorFunctions/gtrrz.victor/default_channel/CoAP': {
                         statusCode: 200, body: responseGet
                     }
                 }
@@ -280,7 +282,7 @@ describe('connectorFunctions', () => {
         })
         const response = await _ogapi
             .newConnectorFunctionFinder()
-            .findByOrganizationAndChannelAndName('gtrrz.victor', 'default_channel', 'test-ogapi')
+            .findByOrganizationAndChannelAndConnector('gtrrz.victor', 'default_channel', 'CoAP')
         expect(
             response.statusCode
         ).toBe(200)
@@ -294,7 +296,7 @@ describe('connectorFunctions', () => {
             'url': process.env.url,
             mocks: {
                 del: {
-                    '/connectorFunctions/gtrrz.victor/default_channel/test-ogapi': {
+                    '/connectorFunctions/gtrrz.victor/default_channel/CoAP': {
                         statusCode: 200
                     }
                 }
@@ -302,7 +304,7 @@ describe('connectorFunctions', () => {
         })
         
         const response = await _ogapi.connectorFunctionsBuilder()
-        .withName('test-ogapi')
+        .withConnector('CoAP')
         .withChannel('default_channel')
         .withOrganization('gtrrz.victor')
         .delete()
