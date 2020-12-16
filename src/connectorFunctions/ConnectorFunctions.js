@@ -15,7 +15,7 @@ export default class ConnectorFunctions extends BaseProvision {
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, undefined, undefined, ["organization", "channel", "name", "connector"]);
+        super(ogapi, undefined, undefined, ["organization", "channel", "contentType", "connector"]);
         this._connectorCatalog = new ConnectorsCatalog(ogapi)
         this._ogapi = ogapi;
         this._resource = RESOURCE
@@ -24,18 +24,18 @@ export default class ConnectorFunctions extends BaseProvision {
     }
 
     _buildURL () {
-        return `${this._resource}/${this._organization}/${this._channel}/${this._name}`;
+        return `${this._resource}/${this._organization}/${this._channel}/${this._connector}`;
     }
 
     /**
      * Set the name attribute
-     * @param {string} name - required field
+     * @param {string} name 
      * @return {ConnectorFunctions}
      */
     withName (name) {
         if (typeof name !== 'string' || name.length === 0 || name.length > 50)
             throw new Error("OGAPI_STRING_PARAMETER_MAX_LENGTH_50");
-        this._body.name = this._name = name;
+        this._body.name = name;
         return this;
     }
 
@@ -48,6 +48,18 @@ export default class ConnectorFunctions extends BaseProvision {
         if (typeof connector !== 'string')
             throw new Error("OGAPI_STRING_PARAMETER");
         this._body.connector = this._connector = connector;
+        return this;
+    }
+
+    /**
+     * Set the contentType attribute
+     * @param {string} contentType  - required field
+     * @return {ConnectorFunctions}
+     */
+    withContentType (contentType) {
+        if (typeof contentType !== 'string')
+            throw new Error("OGAPI_STRING_PARAMETER");
+        this._body.contentType = this._contentType = contentType;
         return this;
     }
 

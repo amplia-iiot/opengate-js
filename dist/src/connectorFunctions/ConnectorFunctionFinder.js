@@ -38,18 +38,17 @@ var ConnectorFunctionFinder = (function (_GenericFinder) {
   /**
    * Performs a get that returns connectorFunction matched
    * @test
-   *   ogapi.newConnectorFunctionFinder().findByOrganizationAndChannelAndName('xxx-xx-xxx-xxx', 'xxxxx-xxxx-xxxx', 'xxxxx-xxxx-xxxx').then().catch();
+   *   ogapi.newConnectorFunctionFinder().findByOrganizationAndChannelAndConnector('xxx-xx-xxx-xxx', 'xxxxx-xxxx-xxxx', 'xxxxx-xxxx-xxxx').then().catch();
    * @param {string} organization - organization 
    * @param {string} channel - channel.
-   * @param {string} name - name.
+   * @param {string} connector - connector.
    * @return {Promise} 
    */
 
   _createClass(ConnectorFunctionFinder, [{
-    key: 'findByOrganizationAndChannelAndName',
-    value: function findByOrganizationAndChannelAndName(organization, channel, name) {
-      this._withId(organization + '/' + channel + '/' + name);
-
+    key: 'findByOrganizationAndChannelAndConnector',
+    value: function findByOrganizationAndChannelAndConnector(organization, channel, connector) {
+      this._withId(organization + '/' + channel + '/' + connector);
       return this._execute();
     }
   }]);

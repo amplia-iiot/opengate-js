@@ -40,7 +40,7 @@ var ConnectorFunctions = (function (_BaseProvision) {
     function ConnectorFunctions(ogapi) {
         _classCallCheck(this, ConnectorFunctions);
 
-        _get(Object.getPrototypeOf(ConnectorFunctions.prototype), 'constructor', this).call(this, ogapi, undefined, undefined, ["organization", "channel", "name", "connector"]);
+        _get(Object.getPrototypeOf(ConnectorFunctions.prototype), 'constructor', this).call(this, ogapi, undefined, undefined, ["organization", "channel", "contentType", "connector"]);
         this._connectorCatalog = new _ConnectorsCatalog2['default'](ogapi);
         this._ogapi = ogapi;
         this._resource = RESOURCE;
@@ -51,19 +51,19 @@ var ConnectorFunctions = (function (_BaseProvision) {
     _createClass(ConnectorFunctions, [{
         key: '_buildURL',
         value: function _buildURL() {
-            return this._resource + '/' + this._organization + '/' + this._channel + '/' + this._name;
+            return this._resource + '/' + this._organization + '/' + this._channel + '/' + this._connector;
         }
 
         /**
          * Set the name attribute
-         * @param {string} name - required field
+         * @param {string} name 
          * @return {ConnectorFunctions}
          */
     }, {
         key: 'withName',
         value: function withName(name) {
             if (typeof name !== 'string' || name.length === 0 || name.length > 50) throw new Error("OGAPI_STRING_PARAMETER_MAX_LENGTH_50");
-            this._body.name = this._name = name;
+            this._body.name = name;
             return this;
         }
 
@@ -77,6 +77,19 @@ var ConnectorFunctions = (function (_BaseProvision) {
         value: function withConnector(connector) {
             if (typeof connector !== 'string') throw new Error("OGAPI_STRING_PARAMETER");
             this._body.connector = this._connector = connector;
+            return this;
+        }
+
+        /**
+         * Set the contentType attribute
+         * @param {string} contentType  - required field
+         * @return {ConnectorFunctions}
+         */
+    }, {
+        key: 'withContentType',
+        value: function withContentType(contentType) {
+            if (typeof contentType !== 'string') throw new Error("OGAPI_STRING_PARAMETER");
+            this._body.contentType = this._contentType = contentType;
             return this;
         }
 
