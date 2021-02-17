@@ -78,7 +78,17 @@ var _rulesConfigurationRuleConfigurationsCatalog = require('./rulesConfiguration
 
 var _rulesConfigurationRuleConfigurationsCatalog2 = _interopRequireDefault(_rulesConfigurationRuleConfigurationsCatalog);
 
-// import RuleConfigurationsActions from './rulesConfiguration/RuleConfigurationsActions';
+var _operationTypesOperationType = require('./operationTypes/OperationType');
+
+var _operationTypesOperationType2 = _interopRequireDefault(_operationTypesOperationType);
+
+var _operationTypesOperationTypeFinder = require('./operationTypes/OperationTypeFinder');
+
+var _operationTypesOperationTypeFinder2 = _interopRequireDefault(_operationTypesOperationTypeFinder);
+
+var _operationTypesOperationTypeCatalog = require('./operationTypes/OperationTypeCatalog');
+
+var _operationTypesOperationTypeCatalog2 = _interopRequireDefault(_operationTypesOperationTypeCatalog);
 
 var _securityCertificateFinder = require('./security/CertificateFinder');
 
@@ -248,13 +258,13 @@ var _searchingBuilderTicketStatusSearchBuilder = require('./searching/builder/Ti
 
 var _searchingBuilderTicketStatusSearchBuilder2 = _interopRequireDefault(_searchingBuilderTicketStatusSearchBuilder);
 
-var _searchingBuilderRuleConfigurationSeveritySearchBuilder = require('./searching/builder/RuleConfigurationSeveritySearchBuilder');
-
-var _searchingBuilderRuleConfigurationSeveritySearchBuilder2 = _interopRequireDefault(_searchingBuilderRuleConfigurationSeveritySearchBuilder);
-
 var _searchingBuilderRulesSearchBuilder = require('./searching/builder/RulesSearchBuilder');
 
 var _searchingBuilderRulesSearchBuilder2 = _interopRequireDefault(_searchingBuilderRulesSearchBuilder);
+
+var _searchingBuilderOperationTypesSearchBuilder = require('./searching/builder/OperationTypesSearchBuilder');
+
+var _searchingBuilderOperationTypesSearchBuilder2 = _interopRequireDefault(_searchingBuilderOperationTypesSearchBuilder);
 
 var _searchingBuilderUsersSearchBuilder = require('./searching/builder/UsersSearchBuilder');
 
@@ -548,6 +558,36 @@ var InternalOpenGateAPI = (function () {
         key: 'newOperationFinder',
         value: function newOperationFinder() {
             return new _operationsOperationFinder2['default'](this);
+        }
+
+        /**
+         * This return a util to find Operation Types
+         * @return {OperationType}
+         */
+    }, {
+        key: 'newOperationTypeFinder',
+        value: function newOperationTypeFinder() {
+            return new _operationTypesOperationTypeFinder2['default'](this);
+        }
+
+        /**
+         * This return a util to find Operation Types Templates
+         * @return {OperationTypeCatalog}
+         */
+    }, {
+        key: 'newOperationTypeCatalog',
+        value: function newOperationTypeCatalog() {
+            return new _operationTypesOperationTypeCatalog2['default'](this);
+        }
+
+        /**
+         * This return a util to update an Operation Type
+         * @return {OperationType}
+         */
+    }, {
+        key: 'operationTypeBuilder',
+        value: function operationTypeBuilder(organization, name, operationTypeObj) {
+            return new _operationTypesOperationType2['default'](this, organization, name, operationTypeObj);
         }
 
         /**
@@ -866,14 +906,6 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a RuleConfigurationSeveritySearchBuilder to build a specific RuleConfigurationSeveritySearchBuilder
-         * @return {RuleConfigurationSeveritySearchBuilder}
-         */
-        // ruleConfigurationSeveritySearchBuilder() {
-        //     return new RuleConfigurationSeveritySearchBuilder(this);
-        // }
-
-        /**
          * This return a RulesSearchBuilder to build a specific RulesSearch
          * @return {RulesSearchBuilder}
          */
@@ -881,6 +913,16 @@ var InternalOpenGateAPI = (function () {
         key: 'rulesSearchBuilder',
         value: function rulesSearchBuilder() {
             return new _searchingBuilderRulesSearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a OperationTypesSearchBuilder to build a specific OperationTypesSearch
+         * @return {OperationTypesSearchBuilder}
+         */
+    }, {
+        key: 'operationTypesSearchBuilder',
+        value: function operationTypesSearchBuilder() {
+            return new _searchingBuilderOperationTypesSearchBuilder2['default'](this);
         }
 
         /**

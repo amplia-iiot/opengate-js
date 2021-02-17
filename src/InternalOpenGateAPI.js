@@ -17,7 +17,9 @@ import ChannelsSearchBuilder from './searching/builder/ChannelsSearchBuilder';
 import RuleConfigurations from './rulesConfiguration/RuleConfigurations';
 import RuleConfigurationsFinder from './rulesConfiguration/RuleConfigurationsFinder';
 import RuleConfigurationsCatalog from './rulesConfiguration/RuleConfigurationsCatalog';
-// import RuleConfigurationsActions from './rulesConfiguration/RuleConfigurationsActions';
+import OperationType from './operationTypes/OperationType';
+import OperationTypeFinder from './operationTypes/OperationTypeFinder';
+import OperationTypeCatalog from './operationTypes/OperationTypeCatalog';
 import CertificateFinder from './security/CertificateFinder';
 import OperationFinder from './operations/OperationFinder';
 import FilterBuilder from './searching/FilterBuilder';
@@ -60,8 +62,8 @@ import IoTDatastreamStoragePeriodSearchBuilder from './searching/builder/IoTData
 import TicketSeveritySearchBuilder from './searching/builder/TicketSeveritySearchBuilder';
 import TicketPrioritySearchBuilder from './searching/builder/TicketPrioritySearchBuilder';
 import TicketStatusSearchBuilder from './searching/builder/TicketStatusSearchBuilder';
-import RuleConfigurationSeveritySearchBuilder from './searching/builder/RuleConfigurationSeveritySearchBuilder';
 import RulesSearchBuilder from './searching/builder/RulesSearchBuilder';
+import OperationTypesSearchBuilder from './searching/builder/OperationTypesSearchBuilder';
 import UsersSearchBuilder from './searching/builder/UsersSearchBuilder';
 import DomainsSearchBuilder from './searching/builder/DomainsSearchBuilder';
 import PlansSearchBuilder from './searching/builder/PlansSearchBuilder';
@@ -203,6 +205,30 @@ export default class InternalOpenGateAPI {
      */
     newOperationFinder() {
         return new OperationFinder(this);
+    }
+
+    /**
+     * This return a util to find Operation Types
+     * @return {OperationType}
+     */
+    newOperationTypeFinder() {
+        return new OperationTypeFinder(this);
+    }
+
+    /**
+     * This return a util to find Operation Types Templates
+     * @return {OperationTypeCatalog}
+     */
+    newOperationTypeCatalog() {
+        return new OperationTypeCatalog(this);
+    }
+
+    /**
+     * This return a util to update an Operation Type
+     * @return {OperationType}
+     */
+    operationTypeBuilder(organization, name, operationTypeObj) {
+        return new OperationType(this, organization, name, operationTypeObj);
     }
 
     /**
@@ -463,19 +489,19 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a RuleConfigurationSeveritySearchBuilder to build a specific RuleConfigurationSeveritySearchBuilder
-     * @return {RuleConfigurationSeveritySearchBuilder}
-     */
-    // ruleConfigurationSeveritySearchBuilder() {
-    //     return new RuleConfigurationSeveritySearchBuilder(this);
-    // }
-
-    /**
      * This return a RulesSearchBuilder to build a specific RulesSearch
      * @return {RulesSearchBuilder}
      */
     rulesSearchBuilder() {
         return new RulesSearchBuilder(this);
+    }
+
+    /**
+     * This return a OperationTypesSearchBuilder to build a specific OperationTypesSearch
+     * @return {OperationTypesSearchBuilder}
+     */
+    operationTypesSearchBuilder() {
+        return new OperationTypesSearchBuilder(this);
     }
 
     /**
