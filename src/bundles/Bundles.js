@@ -392,15 +392,11 @@ export default class Bundles extends BaseProvision {
             this._hardware === undefined || this._workgroup === undefined)
             throw new Error('Parameters name, version, hardware and workgroup must be defined');
 
-        //console.log("CREANDO");
-        let _this = this;
-
         let defered = q.defer();
         let promise = defered.promise;
 
         let onCreateBundle = function(res) {
             if (res.statusCode === 201) {
-                //console.log("OK1: " + JSON.stringify(res));
                 defered.resolve(res);
             } else {
                 onCreateBundleError({
@@ -410,16 +406,13 @@ export default class Bundles extends BaseProvision {
         };
 
         let onCreateBundleError = function(err) {
-            //console.log(JSON.stringify(err));
-            //console.log('borrando bundle')
             defered.reject(err);
         };
 
         // Se intenta crear primero el bundle
-        let bundleFinder = _this._ogapi.newBundleFinder().findByNameAndVersion(_this._name, _this._version)
-            .then(function(ok) {
-                if (ok[1] === 204) {
-                    //console.log("asdhflkasdfj 1");
+        this._ogapi.newBundleFinder().findByNameAndVersion(this._name, this._version)
+            .then((response) => {
+                if (response.statusCode === 204) {
                     super.create().then(onCreateBundle).catch(onCreateBundleError);
                 } else {
                     defered.reject({
@@ -430,9 +423,8 @@ export default class Bundles extends BaseProvision {
                         "statusCode": 400
                     });
                 }
-            }).catch(function(err) {
+            }).catch((err) => {
                 if (err.statusCode === 404) {
-                    //console.log("asdhflkasdfj 2");
                     super.create().then(onCreateBundle).catch(onCreateBundleError);
                 } else {
                     defered.reject({
