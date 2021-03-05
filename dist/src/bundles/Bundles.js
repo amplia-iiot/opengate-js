@@ -440,15 +440,11 @@ var Bundles = (function (_BaseProvision) {
 
             if (this._name === undefined || this._version === undefined || this._hardware === undefined || this._workgroup === undefined) throw new Error('Parameters name, version, hardware and workgroup must be defined');
 
-            //console.log("CREANDO");
-            var _this = this;
-
             var defered = _q2['default'].defer();
             var promise = defered.promise;
 
             var onCreateBundle = function onCreateBundle(res) {
                 if (res.statusCode === 201) {
-                    //console.log("OK1: " + JSON.stringify(res));
                     defered.resolve(res);
                 } else {
                     onCreateBundleError({
@@ -458,15 +454,12 @@ var Bundles = (function (_BaseProvision) {
             };
 
             var onCreateBundleError = function onCreateBundleError(err) {
-                //console.log(JSON.stringify(err));
-                //console.log('borrando bundle')
                 defered.reject(err);
             };
 
             // Se intenta crear primero el bundle
-            var bundleFinder = _this._ogapi.newBundleFinder().findByNameAndVersion(_this._name, _this._version).then(function (ok) {
-                if (ok[1] === 204) {
-                    //console.log("asdhflkasdfj 1");
+            this._ogapi.newBundleFinder().findByNameAndVersion(this._name, this._version).then(function (response) {
+                if (response.statusCode === 204) {
                     _get(Object.getPrototypeOf(Bundles.prototype), 'create', _this2).call(_this2).then(onCreateBundle)['catch'](onCreateBundleError);
                 } else {
                     defered.reject({
@@ -479,7 +472,6 @@ var Bundles = (function (_BaseProvision) {
                 }
             })['catch'](function (err) {
                 if (err.statusCode === 404) {
-                    //console.log("asdhflkasdfj 2");
                     _get(Object.getPrototypeOf(Bundles.prototype), 'create', _this2).call(_this2).then(onCreateBundle)['catch'](onCreateBundleError);
                 } else {
                     defered.reject({
