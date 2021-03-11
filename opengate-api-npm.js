@@ -13,7 +13,8 @@ export default class OpenGateAPI extends InternalOpenGateAPI {
             }),
             new SouthAmpliaREST(_options, {
                 'Content-type': "application/json;charset=utf8"
-            })
+            }),
+            _options
         );
     }
 }

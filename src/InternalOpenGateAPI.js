@@ -105,7 +105,26 @@ import TimezoneSearchBuilder from './searching/builder/TimezoneSearchBuilder';
 import UserLanguagesSearchBuilder from './searching/builder/UserLanguagesSearchBuilder';
 import EntityFinder from './entities/EntityFinder';
 import AlarmActions from './alarms/AlarmActions';
+import _superagent from 'superagent';
 
+const RequestEndMonkeyPatching = (function(){
+    let beforeStart
+    const end = _superagent.Request.prototype.end;
+
+    _superagent.Request.prototype.end = function (cb) {
+        if (beforeStart && beforeStart.call) beforeStart(this)
+        return end.call(this, function (err, res) {
+            if (typeof cb !== 'function') {
+                return;
+            }
+            cb(err, res);
+        });
+    };
+
+    return function setCallback(cb){
+        beforeStart = cb
+    }
+})()
 /**
  * This is a abstract class, it must be extended to another class that defined the backend, it will be used on request to Opengate North API by browser or nodejs server
  */
@@ -114,7 +133,7 @@ export default class InternalOpenGateAPI {
      * @param {{ url: string,port: string,version: string,apiKey: string}} _options - this is configuration about Opengate North API.
      * @param {AmpliaREST} ampliaREST - this is a backend selected to manage a request to Opengate North API.
      */
-    constructor(northAmpliaREST, southAmpliaREST) {
+    constructor(northAmpliaREST, southAmpliaREST, _options) {
         if (this.constructor === InternalOpenGateAPI) {
             throw new Error("Cannot construct Abstract instances directly");
         }
@@ -123,6 +142,9 @@ export default class InternalOpenGateAPI {
         }
         if (typeof southAmpliaREST !== "object") {
             throw new Error("Must instance mandatory parameter: southAmpliaREST");
+        }
+        if (_options.hooks && _options.hooks.beforeStart && typeof _options.hooks.beforeStart === 'function'){
+            RequestEndMonkeyPatching(_options.hooks.beforeStart)
         }
         this.Napi = northAmpliaREST;
         this.Sapi = southAmpliaREST;
