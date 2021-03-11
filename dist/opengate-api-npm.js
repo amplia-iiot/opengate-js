@@ -34,7 +34,7 @@ var OpenGateAPI = (function (_InternalOpenGateAPI) {
             'Content-type': "application/json;charset=utf8"
         }), new _srcUtilSouthAmpliaREST2['default'](_options, {
             'Content-type': "application/json;charset=utf8"
-        }));
+        }), _options);
     }
 
     return OpenGateAPI;
