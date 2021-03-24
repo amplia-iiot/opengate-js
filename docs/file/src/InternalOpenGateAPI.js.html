@@ -96,6 +96,9 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATAMODEL_RESOURCE">DATAMODEL_RESOURCE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-POST_RESOURCE">POST_RESOURCE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PRE_RESOURCE">PRE_RESOURCE</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operationTypes</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operationTypes/OperationType.js~OperationType.html">OperationType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operationTypes/OperationTypeCatalog.js~OperationTypesCatalog.html">OperationTypesCatalog</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operationTypes/OperationTypeFinder.js~OperationTypeFinder.html">OperationTypeFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/OperationActions.js~OperationActions.html">OperationActions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/OperationFinder.js~OperationFinder.html">OperationFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/Operations.js~Operations.html">Operations</a></span></span></li>
@@ -175,6 +178,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamPeriodSearchBuilder.js~IoTDatastreamPeriodSearchBuilder.html">IoTDatastreamPeriodSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamStoragePeriodSearchBuilder.js~IoTDatastreamStoragePeriodSearchBuilder.html">IoTDatastreamStoragePeriodSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/MobilePhoneProviderSearchBuilder.js~MobilePhoneProviderSearchBuilder.html">MobilePhoneProviderSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationTypesSearchBuilder.js~OperationTypesBuilder.html">OperationTypesBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationalStatusSearchBuilder.js~OperationalStatusSearchBuilder.html">OperationalStatusSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationsSearchBuilder.js~OperationsSearchBuilder.html">OperationsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html">OrganizationsSearchBuilder</a></span></span></li>
@@ -253,7 +257,9 @@ import ChannelsSearchBuilder from &apos;./searching/builder/ChannelsSearchBuilde
 import RuleConfigurations from &apos;./rulesConfiguration/RuleConfigurations&apos;;
 import RuleConfigurationsFinder from &apos;./rulesConfiguration/RuleConfigurationsFinder&apos;;
 import RuleConfigurationsCatalog from &apos;./rulesConfiguration/RuleConfigurationsCatalog&apos;;
-// import RuleConfigurationsActions from &apos;./rulesConfiguration/RuleConfigurationsActions&apos;;
+import OperationType from &apos;./operationTypes/OperationType&apos;;
+import OperationTypeFinder from &apos;./operationTypes/OperationTypeFinder&apos;;
+import OperationTypeCatalog from &apos;./operationTypes/OperationTypeCatalog&apos;;
 import CertificateFinder from &apos;./security/CertificateFinder&apos;;
 import OperationFinder from &apos;./operations/OperationFinder&apos;;
 import FilterBuilder from &apos;./searching/FilterBuilder&apos;;
@@ -296,8 +302,8 @@ import IoTDatastreamStoragePeriodSearchBuilder from &apos;./searching/builder/Io
 import TicketSeveritySearchBuilder from &apos;./searching/builder/TicketSeveritySearchBuilder&apos;;
 import TicketPrioritySearchBuilder from &apos;./searching/builder/TicketPrioritySearchBuilder&apos;;
 import TicketStatusSearchBuilder from &apos;./searching/builder/TicketStatusSearchBuilder&apos;;
-import RuleConfigurationSeveritySearchBuilder from &apos;./searching/builder/RuleConfigurationSeveritySearchBuilder&apos;;
 import RulesSearchBuilder from &apos;./searching/builder/RulesSearchBuilder&apos;;
+import OperationTypesSearchBuilder from &apos;./searching/builder/OperationTypesSearchBuilder&apos;;
 import UsersSearchBuilder from &apos;./searching/builder/UsersSearchBuilder&apos;;
 import DomainsSearchBuilder from &apos;./searching/builder/DomainsSearchBuilder&apos;;
 import PlansSearchBuilder from &apos;./searching/builder/PlansSearchBuilder&apos;;
@@ -461,6 +467,30 @@ export default class InternalOpenGateAPI {
      */
     newOperationFinder() {
         return new OperationFinder(this);
+    }
+
+    /**
+     * This return a util to find Operation Types
+     * @return {OperationType}
+     */
+    newOperationTypeFinder() {
+        return new OperationTypeFinder(this);
+    }
+
+    /**
+     * This return a util to find Operation Types Templates
+     * @return {OperationTypeCatalog}
+     */
+    newOperationTypeCatalog() {
+        return new OperationTypeCatalog(this);
+    }
+
+    /**
+     * This return a util to update an Operation Type
+     * @return {OperationType}
+     */
+    operationTypeBuilder(organization, name, operationTypeObj) {
+        return new OperationType(this, organization, name, operationTypeObj);
     }
 
     /**
@@ -721,19 +751,19 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a RuleConfigurationSeveritySearchBuilder to build a specific RuleConfigurationSeveritySearchBuilder
-     * @return {RuleConfigurationSeveritySearchBuilder}
-     */
-    // ruleConfigurationSeveritySearchBuilder() {
-    //     return new RuleConfigurationSeveritySearchBuilder(this);
-    // }
-
-    /**
      * This return a RulesSearchBuilder to build a specific RulesSearch
      * @return {RulesSearchBuilder}
      */
     rulesSearchBuilder() {
         return new RulesSearchBuilder(this);
+    }
+
+    /**
+     * This return a OperationTypesSearchBuilder to build a specific OperationTypesSearch
+     * @return {OperationTypesSearchBuilder}
+     */
+    operationTypesSearchBuilder() {
+        return new OperationTypesSearchBuilder(this);
     }
 
     /**

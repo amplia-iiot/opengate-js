@@ -666,6 +666,30 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/operationtypes/operationtype.js~operationtype",
+    "class/src/operationTypes/OperationType.js~OperationType.html",
+    "<span>OperationType</span> <span class=\"search-result-import-path\">opengate-js/src/operationTypes/OperationType.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/operationtypes/operationtypefinder.js~operationtypefinder",
+    "class/src/operationTypes/OperationTypeFinder.js~OperationTypeFinder.html",
+    "<span>OperationTypeFinder</span> <span class=\"search-result-import-path\">opengate-js/src/operationTypes/OperationTypeFinder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/searching/builder/operationtypessearchbuilder.js~operationtypesbuilder",
+    "class/src/searching/builder/OperationTypesSearchBuilder.js~OperationTypesBuilder.html",
+    "<span>OperationTypesBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/OperationTypesSearchBuilder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/operationtypes/operationtypecatalog.js~operationtypescatalog",
+    "class/src/operationTypes/OperationTypeCatalog.js~OperationTypesCatalog.html",
+    "<span>OperationTypesCatalog</span> <span class=\"search-result-import-path\">opengate-js/src/operationTypes/OperationTypeCatalog.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/searching/builder/operationalstatussearchbuilder.js~operationalstatussearchbuilder",
     "class/src/searching/builder/OperationalStatusSearchBuilder.js~OperationalStatusSearchBuilder.html",
     "<span>OperationalStatusSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/OperationalStatusSearchBuilder.js</span>",
@@ -3408,6 +3432,18 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#newoperationtypecatalog",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newOperationTypeCatalog",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newOperationTypeCatalog",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#newoperationtypefinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newOperationTypeFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newOperationTypeFinder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#neworganizationfinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newOrganizationFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newOrganizationFinder",
@@ -3477,6 +3513,18 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#newworkgrouprelationsfinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newWorkgroupRelationsFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newWorkgroupRelationsFinder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#operationtypebuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-operationTypeBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#operationTypeBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#operationtypessearchbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-operationTypesSearchBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#operationTypesSearchBuilder",
     "method"
   ],
   [
@@ -5688,6 +5736,132 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/operationtypes/operationtype.js",
+    "file/src/operationTypes/OperationType.js.html",
+    "src/operationTypes/OperationType.js",
+    "file"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#applicableto",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-applicableTo",
+    "src/operationTypes/OperationType.js~OperationType#applicableTo",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#constructor",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-constructor-constructor",
+    "src/operationTypes/OperationType.js~OperationType#constructor",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#create",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-create",
+    "src/operationTypes/OperationType.js~OperationType#create",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#delete",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-delete",
+    "src/operationTypes/OperationType.js~OperationType#delete",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#fromcatalog",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-fromCatalog",
+    "src/operationTypes/OperationType.js~OperationType#fromCatalog",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#update",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-update",
+    "src/operationTypes/OperationType.js~OperationType#update",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#withdescription",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-withDescription",
+    "src/operationTypes/OperationType.js~OperationType#withDescription",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#withidentifier",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-withIdentifier",
+    "src/operationTypes/OperationType.js~OperationType#withIdentifier",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#withmodels",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-withModels",
+    "src/operationTypes/OperationType.js~OperationType#withModels",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#withname",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-withName",
+    "src/operationTypes/OperationType.js~OperationType#withName",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#withorganization",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-withOrganization",
+    "src/operationTypes/OperationType.js~OperationType#withOrganization",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#withparameters",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-withParameters",
+    "src/operationTypes/OperationType.js~OperationType#withParameters",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#withsteps",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-withSteps",
+    "src/operationTypes/OperationType.js~OperationType#withSteps",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#withtitle",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-withTitle",
+    "src/operationTypes/OperationType.js~OperationType#withTitle",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtypecatalog.js",
+    "file/src/operationTypes/OperationTypeCatalog.js.html",
+    "src/operationTypes/OperationTypeCatalog.js",
+    "file"
+  ],
+  [
+    "src/operationtypes/operationtypecatalog.js~operationtypescatalog#constructor",
+    "class/src/operationTypes/OperationTypeCatalog.js~OperationTypesCatalog.html#instance-constructor-constructor",
+    "src/operationTypes/OperationTypeCatalog.js~OperationTypesCatalog#constructor",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtypecatalog.js~operationtypescatalog#getoperationtypes",
+    "class/src/operationTypes/OperationTypeCatalog.js~OperationTypesCatalog.html#instance-method-getOperationTypes",
+    "src/operationTypes/OperationTypeCatalog.js~OperationTypesCatalog#getOperationTypes",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtypefinder.js",
+    "file/src/operationTypes/OperationTypeFinder.js.html",
+    "src/operationTypes/OperationTypeFinder.js",
+    "file"
+  ],
+  [
+    "src/operationtypes/operationtypefinder.js~operationtypefinder#constructor",
+    "class/src/operationTypes/OperationTypeFinder.js~OperationTypeFinder.html#instance-constructor-constructor",
+    "src/operationTypes/OperationTypeFinder.js~OperationTypeFinder#constructor",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtypefinder.js~operationtypefinder#findbyorganizationandname",
+    "class/src/operationTypes/OperationTypeFinder.js~OperationTypeFinder.html#instance-method-findByOrganizationAndName",
+    "src/operationTypes/OperationTypeFinder.js~OperationTypeFinder#findByOrganizationAndName",
+    "method"
+  ],
+  [
     "src/operations/operationactions.js",
     "file/src/operations/OperationActions.js.html",
     "src/operations/OperationActions.js",
@@ -7791,6 +7965,18 @@ window.esdocSearchIndex = [
     "src/searching/builder/mobilephoneprovidersearchbuilder.js~mobilephoneprovidersearchbuilder#constructor",
     "class/src/searching/builder/MobilePhoneProviderSearchBuilder.js~MobilePhoneProviderSearchBuilder.html#instance-constructor-constructor",
     "src/searching/builder/MobilePhoneProviderSearchBuilder.js~MobilePhoneProviderSearchBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/searching/builder/operationtypessearchbuilder.js",
+    "file/src/searching/builder/OperationTypesSearchBuilder.js.html",
+    "src/searching/builder/OperationTypesSearchBuilder.js",
+    "file"
+  ],
+  [
+    "src/searching/builder/operationtypessearchbuilder.js~operationtypesbuilder#constructor",
+    "class/src/searching/builder/OperationTypesSearchBuilder.js~OperationTypesBuilder.html#instance-constructor-constructor",
+    "src/searching/builder/OperationTypesSearchBuilder.js~OperationTypesBuilder#constructor",
     "method"
   ],
   [

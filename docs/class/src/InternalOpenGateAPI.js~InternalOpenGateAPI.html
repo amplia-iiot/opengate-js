@@ -96,6 +96,9 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATAMODEL_RESOURCE">DATAMODEL_RESOURCE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-POST_RESOURCE">POST_RESOURCE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PRE_RESOURCE">PRE_RESOURCE</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operationTypes</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operationTypes/OperationType.js~OperationType.html">OperationType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operationTypes/OperationTypeCatalog.js~OperationTypesCatalog.html">OperationTypesCatalog</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operationTypes/OperationTypeFinder.js~OperationTypeFinder.html">OperationTypeFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/OperationActions.js~OperationActions.html">OperationActions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/OperationFinder.js~OperationFinder.html">OperationFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/Operations.js~Operations.html">Operations</a></span></span></li>
@@ -175,6 +178,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamPeriodSearchBuilder.js~IoTDatastreamPeriodSearchBuilder.html">IoTDatastreamPeriodSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamStoragePeriodSearchBuilder.js~IoTDatastreamStoragePeriodSearchBuilder.html">IoTDatastreamStoragePeriodSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/MobilePhoneProviderSearchBuilder.js~MobilePhoneProviderSearchBuilder.html">MobilePhoneProviderSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationTypesSearchBuilder.js~OperationTypesBuilder.html">OperationTypesBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationalStatusSearchBuilder.js~OperationalStatusSearchBuilder.html">OperationalStatusSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationsSearchBuilder.js~OperationsSearchBuilder.html">OperationsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html">OrganizationsSearchBuilder</a></span></span></li>
@@ -234,13 +238,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import InternalOpenGateAPI from &apos;<span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber131">opengate-js/src/InternalOpenGateAPI.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import InternalOpenGateAPI from &apos;<span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber133">opengate-js/src/InternalOpenGateAPI.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber131">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber133">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -2036,6 +2040,62 @@
         <p>
           
           
+          <span data-ice="name"><span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newOperationTypeCatalog">newOperationTypeCatalog</a></span></span><span data-ice="signature">(): <span>OperationTypeCatalog</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>This return a util to find Operation Types Templates</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newOperationTypeFinder">newOperationTypeFinder</a></span></span><span data-ice="signature">(): <span><a href="class/src/operationTypes/OperationType.js~OperationType.html">OperationType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>This return a util to find Operation Types</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
           <span data-ice="name"><span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newOrganizationFinder">newOrganizationFinder</a></span></span><span data-ice="signature">(): <span><a href="class/src/organizations/OrganizationFinder.js~OrganizationFinder.html">OrganizationFinder</a></span></span>
         </p>
       </div>
@@ -2351,6 +2411,62 @@
         
         
         <div data-ice="description"><p>This return a WorkgroupRelationsFinder </p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-operationTypeBuilder">operationTypeBuilder</a></span></span><span data-ice="signature">(organization: <span>*</span>, name: <span>*</span>, operationTypeObj: <span>*</span>): <span><a href="class/src/operationTypes/OperationType.js~OperationType.html">OperationType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>This return a util to update an Operation Type</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-operationTypesSearchBuilder">operationTypesSearchBuilder</a></span></span><span data-ice="signature">(): <span>OperationTypesSearchBuilder</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>This return a OperationTypesSearchBuilder to build a specific OperationTypesSearch</p>
 </div>
       </div>
     </td>
@@ -3271,7 +3387,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber136">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber138">source</a></span></span>
     </span>
   </h3>
 
@@ -3341,7 +3457,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber151">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber153">source</a></span></span>
     </span>
   </h3>
 
@@ -3384,7 +3500,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber149">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber151">source</a></span></span>
     </span>
   </h3>
 
@@ -3427,7 +3543,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber152">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber154">source</a></span></span>
     </span>
   </h3>
 
@@ -3470,7 +3586,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber150">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber152">source</a></span></span>
     </span>
   </h3>
 
@@ -3513,7 +3629,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber154">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber156">source</a></span></span>
     </span>
   </h3>
 
@@ -3556,7 +3672,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber155">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber157">source</a></span></span>
     </span>
   </h3>
 
@@ -3599,7 +3715,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber153">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber155">source</a></span></span>
     </span>
   </h3>
 
@@ -3645,7 +3761,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber707">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber733">source</a></span></span>
     </span>
   </h3>
 
@@ -3701,7 +3817,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber531">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber557">source</a></span></span>
     </span>
   </h3>
 
@@ -3764,7 +3880,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber441">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber467">source</a></span></span>
     </span>
   </h3>
 
@@ -3820,7 +3936,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber869">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber895">source</a></span></span>
     </span>
   </h3>
 
@@ -3876,7 +3992,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber186">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber188">source</a></span></span>
     </span>
   </h3>
 
@@ -3932,7 +4048,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber371">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber397">source</a></span></span>
     </span>
   </h3>
 
@@ -3988,7 +4104,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber587">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber613">source</a></span></span>
     </span>
   </h3>
 
@@ -4043,7 +4159,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber202">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber204">source</a></span></span>
     </span>
   </h3>
 
@@ -4099,7 +4215,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber619">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber645">source</a></span></span>
     </span>
   </h3>
 
@@ -4166,7 +4282,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber572">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber598">source</a></span></span>
     </span>
   </h3>
 
@@ -4229,7 +4345,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber667">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber693">source</a></span></span>
     </span>
   </h3>
 
@@ -4291,7 +4407,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber580">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber606">source</a></span></span>
     </span>
   </h3>
 
@@ -4347,7 +4463,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber861">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber887">source</a></span></span>
     </span>
   </h3>
 
@@ -4403,7 +4519,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber877">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber903">source</a></span></span>
     </span>
   </h3>
 
@@ -4459,7 +4575,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber773">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber799">source</a></span></span>
     </span>
   </h3>
 
@@ -4514,7 +4630,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber401">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber427">source</a></span></span>
     </span>
   </h3>
 
@@ -4570,7 +4686,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber933">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber959">source</a></span></span>
     </span>
   </h3>
 
@@ -4626,7 +4742,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber893">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber919">source</a></span></span>
     </span>
   </h3>
 
@@ -4698,7 +4814,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber901">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber927">source</a></span></span>
     </span>
   </h3>
 
@@ -4776,7 +4892,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber547">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber573">source</a></span></span>
     </span>
   </h3>
 
@@ -4832,7 +4948,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber731">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber757">source</a></span></span>
     </span>
   </h3>
 
@@ -4888,7 +5004,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber564">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber590">source</a></span></span>
     </span>
   </h3>
 
@@ -4951,7 +5067,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber603">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber629">source</a></span></span>
     </span>
   </h3>
 
@@ -5029,7 +5145,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber194">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber196">source</a></span></span>
     </span>
   </h3>
 
@@ -5085,7 +5201,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber723">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber749">source</a></span></span>
     </span>
   </h3>
 
@@ -5141,7 +5257,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber917">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber943">source</a></span></span>
     </span>
   </h3>
 
@@ -5197,7 +5313,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber539">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber565">source</a></span></span>
     </span>
   </h3>
 
@@ -5253,7 +5369,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber715">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber741">source</a></span></span>
     </span>
   </h3>
 
@@ -5309,7 +5425,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber363">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber389">source</a></span></span>
     </span>
   </h3>
 
@@ -5378,7 +5494,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber643">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber669">source</a></span></span>
     </span>
   </h3>
 
@@ -5434,7 +5550,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber355">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber381">source</a></span></span>
     </span>
   </h3>
 
@@ -5490,7 +5606,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber595">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber621">source</a></span></span>
     </span>
   </h3>
 
@@ -5546,7 +5662,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber523">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber549">source</a></span></span>
     </span>
   </h3>
 
@@ -5609,7 +5725,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber555">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber581">source</a></span></span>
     </span>
   </h3>
 
@@ -5665,7 +5781,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber409">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber435">source</a></span></span>
     </span>
   </h3>
 
@@ -5721,7 +5837,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber738">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber764">source</a></span></span>
     </span>
   </h3>
 
@@ -5776,7 +5892,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber675">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber701">source</a></span></span>
     </span>
   </h3>
 
@@ -5832,7 +5948,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber451">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber477">source</a></span></span>
     </span>
   </h3>
 
@@ -5888,7 +6004,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber425">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber451">source</a></span></span>
     </span>
   </h3>
 
@@ -5944,7 +6060,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber459">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber485">source</a></span></span>
     </span>
   </h3>
 
@@ -6000,7 +6116,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber794">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber820">source</a></span></span>
     </span>
   </h3>
 
@@ -6055,7 +6171,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber417">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber443">source</a></span></span>
     </span>
   </h3>
 
@@ -6111,7 +6227,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber218">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber220">source</a></span></span>
     </span>
   </h3>
 
@@ -6167,7 +6283,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber210">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber212">source</a></span></span>
     </span>
   </h3>
 
@@ -6223,7 +6339,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber627">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber653">source</a></span></span>
     </span>
   </h3>
 
@@ -6279,7 +6395,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber269">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber295">source</a></span></span>
     </span>
   </h3>
 
@@ -6335,7 +6451,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber178">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber180">source</a></span></span>
     </span>
   </h3>
 
@@ -6391,7 +6507,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber909">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber935">source</a></span></span>
     </span>
   </h3>
 
@@ -6447,7 +6563,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber277">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber303">source</a></span></span>
     </span>
   </h3>
 
@@ -6503,7 +6619,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber651">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber677">source</a></span></span>
     </span>
   </h3>
 
@@ -6559,7 +6675,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber307">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber333">source</a></span></span>
     </span>
   </h3>
 
@@ -6614,7 +6730,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber315">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber341">source</a></span></span>
     </span>
   </h3>
 
@@ -6676,7 +6792,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber803">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber829">source</a></span></span>
     </span>
   </h3>
 
@@ -6749,7 +6865,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber226">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber228">source</a></span></span>
     </span>
   </h3>
 
@@ -6794,6 +6910,118 @@
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-newOperationTypeCatalog">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span data-ice="name">newOperationTypeCatalog</span><span data-ice="signature">(): <span>OperationTypeCatalog</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber244">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>This return a util to find Operation Types Templates</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type" data-ice="returnType"><span>OperationTypeCatalog</span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-newOperationTypeFinder">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span data-ice="name">newOperationTypeFinder</span><span data-ice="signature">(): <span><a href="class/src/operationTypes/OperationType.js~OperationType.html">OperationType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber236">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>This return a util to find Operation Types</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type" data-ice="returnType"><span><a href="class/src/operationTypes/OperationType.js~OperationType.html">OperationType</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-newOrganizationFinder">
     <span class="access" data-ice="access">public</span>
     
@@ -6805,7 +7033,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber170">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber172">source</a></span></span>
     </span>
   </h3>
 
@@ -6861,7 +7089,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber812">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber838">source</a></span></span>
     </span>
   </h3>
 
@@ -6934,7 +7162,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber331">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber357">source</a></span></span>
     </span>
   </h3>
 
@@ -7027,7 +7255,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber242">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber268">source</a></span></span>
     </span>
   </h3>
 
@@ -7083,7 +7311,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber234">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber260">source</a></span></span>
     </span>
   </h3>
 
@@ -7139,7 +7367,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber323">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber349">source</a></span></span>
     </span>
   </h3>
 
@@ -7195,7 +7423,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber302">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber328">source</a></span></span>
     </span>
   </h3>
 
@@ -7251,7 +7479,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber294">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber320">source</a></span></span>
     </span>
   </h3>
 
@@ -7307,7 +7535,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber285">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber311">source</a></span></span>
     </span>
   </h3>
 
@@ -7363,7 +7591,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber162">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber164">source</a></span></span>
     </span>
   </h3>
 
@@ -7419,7 +7647,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber845">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber871">source</a></span></span>
     </span>
   </h3>
 
@@ -7475,7 +7703,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber828">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber854">source</a></span></span>
     </span>
   </h3>
 
@@ -7520,6 +7748,146 @@
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-operationTypeBuilder">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span data-ice="name">operationTypeBuilder</span><span data-ice="signature">(organization: <span>*</span>, name: <span>*</span>, operationTypeObj: <span>*</span>): <span><a href="class/src/operationTypes/OperationType.js~OperationType.html">OperationType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber252">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>This return a util to update an Operation Type</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">organization</td>
+      <td data-ice="type"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">name</td>
+      <td data-ice="type"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">operationTypeObj</td>
+      <td data-ice="type"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type" data-ice="returnType"><span><a href="class/src/operationTypes/OperationType.js~OperationType.html">OperationType</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-operationTypesSearchBuilder">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span data-ice="name">operationTypesSearchBuilder</span><span data-ice="signature">(): <span>OperationTypesSearchBuilder</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber525">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>This return a OperationTypesSearchBuilder to build a specific OperationTypesSearch</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type" data-ice="returnType"><span>OperationTypesSearchBuilder</span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-operationalStatusSearchBuilder">
     <span class="access" data-ice="access">public</span>
     
@@ -7531,7 +7899,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber691">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber717">source</a></span></span>
     </span>
   </h3>
 
@@ -7587,7 +7955,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber515">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber541">source</a></span></span>
     </span>
   </h3>
 
@@ -7650,7 +8018,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber635">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber661">source</a></span></span>
     </span>
   </h3>
 
@@ -7706,7 +8074,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber611">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber637">source</a></span></span>
     </span>
   </h3>
 
@@ -7762,7 +8130,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber766">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber792">source</a></span></span>
     </span>
   </h3>
 
@@ -7817,7 +8185,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber925">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber951">source</a></span></span>
     </span>
   </h3>
 
@@ -7873,7 +8241,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber339">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber365">source</a></span></span>
     </span>
   </h3>
 
@@ -7942,7 +8310,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber433">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber459">source</a></span></span>
     </span>
   </h3>
 
@@ -7998,7 +8366,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber250">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber276">source</a></span></span>
     </span>
   </h3>
 
@@ -8088,7 +8456,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber499">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber517">source</a></span></span>
     </span>
   </h3>
 
@@ -8144,7 +8512,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber699">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber725">source</a></span></span>
     </span>
   </h3>
 
@@ -8200,7 +8568,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber745">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber771">source</a></span></span>
     </span>
   </h3>
 
@@ -8255,7 +8623,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber683">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber709">source</a></span></span>
     </span>
   </h3>
 
@@ -8311,7 +8679,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber752">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber778">source</a></span></span>
     </span>
   </h3>
 
@@ -8366,7 +8734,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber780">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber806">source</a></span></span>
     </span>
   </h3>
 
@@ -8421,7 +8789,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber379">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber405">source</a></span></span>
     </span>
   </h3>
 
@@ -8486,7 +8854,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber787">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber813">source</a></span></span>
     </span>
   </h3>
 
@@ -8541,7 +8909,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber387">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber413">source</a></span></span>
     </span>
   </h3>
 
@@ -8606,7 +8974,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber507">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber533">source</a></span></span>
     </span>
   </h3>
 
@@ -8662,7 +9030,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber475">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber501">source</a></span></span>
     </span>
   </h3>
 
@@ -8718,7 +9086,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber467">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber493">source</a></span></span>
     </span>
   </h3>
 
@@ -8774,7 +9142,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber483">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber509">source</a></span></span>
     </span>
   </h3>
 
@@ -8830,7 +9198,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber394">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber420">source</a></span></span>
     </span>
   </h3>
 
@@ -8886,7 +9254,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber941">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber967">source</a></span></span>
     </span>
   </h3>
 
@@ -8942,7 +9310,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber759">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber785">source</a></span></span>
     </span>
   </h3>
 
@@ -8997,7 +9365,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber949">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber975">source</a></span></span>
     </span>
   </h3>
 
@@ -9053,7 +9421,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber885">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber911">source</a></span></span>
     </span>
   </h3>
 
@@ -9109,7 +9477,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber659">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber685">source</a></span></span>
     </span>
   </h3>
 
@@ -9165,7 +9533,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber347">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber373">source</a></span></span>
     </span>
   </h3>
 
@@ -9221,7 +9589,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber820">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber846">source</a></span></span>
     </span>
   </h3>
 
@@ -9277,7 +9645,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber837">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber863">source</a></span></span>
     </span>
   </h3>
 
@@ -9333,7 +9701,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber853">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/InternalOpenGateAPI.js.html#lineNumber879">source</a></span></span>
     </span>
   </h3>
 
