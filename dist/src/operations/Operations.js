@@ -120,9 +120,10 @@ var Operations = (function () {
             var _this = this;
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            this._ogapi.rawSearchBuilder().from('/catalog/operations').build().execute().then(function (data) {
+            //this._ogapi.rawSearchBuilder().from('/catalog/operations').build().execute().
+            this._ogapi.operationTypesSearchBuilder().build().execute().then(function (data) {
                 if (data.statusCode === 200) {
-                    var operations = data.data.operations;
+                    var operations = data.data;
                     for (var i in operations) {
                         var _name = operations[i].name.toUpperCase();
                         _this._operationNames.push(_name);
