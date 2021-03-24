@@ -8,7 +8,8 @@ export default class OpenGateAPI extends InternalOpenGateAPI {
     constructor(_options) {
         super(
             new NorthAmpliaREST(_options),
-            new SouthAmpliaREST(_options)
+            new SouthAmpliaREST(_options),
+            _options
         );
     }
 }
