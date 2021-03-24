@@ -45,6 +45,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_ENUM">TYPE_ENUM</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">bulk</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bulk/BulkFinder.js~BulkFinder.html">BulkFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">bundles</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/BundleFinder.js~BundleFinder.html">BundleFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/Bundles.js~Bundles.html">Bundles</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACTION_ENUM">ACTION_ENUM</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">bundles/deployment</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/deployment/DeploymentElement.js~DeploymentElement.html">DeploymentElement</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MODE_VALIDATORS_ENUM">MODE_VALIDATORS_ENUM</a></span></span></li>
@@ -340,7 +341,26 @@ import TimezoneSearchBuilder from &apos;./searching/builder/TimezoneSearchBuilde
 import UserLanguagesSearchBuilder from &apos;./searching/builder/UserLanguagesSearchBuilder&apos;;
 import EntityFinder from &apos;./entities/EntityFinder&apos;;
 import AlarmActions from &apos;./alarms/AlarmActions&apos;;
+import _superagent from &apos;superagent&apos;;
 
+const RequestEndMonkeyPatching = (function(){
+    let beforeStart
+    const end = _superagent.Request.prototype.end;
+
+    _superagent.Request.prototype.end = function (cb) {
+        if (beforeStart &amp;&amp; beforeStart.call) beforeStart(this)
+        return end.call(this, function (err, res) {
+            if (typeof cb !== &apos;function&apos;) {
+                return;
+            }
+            cb(err, res);
+        });
+    };
+
+    return function setCallback(cb){
+        beforeStart = cb
+    }
+})()
 /**
  * This is a abstract class, it must be extended to another class that defined the backend, it will be used on request to Opengate North API by browser or nodejs server
  */
@@ -349,7 +369,7 @@ export default class InternalOpenGateAPI {
      * @param {{ url: string,port: string,version: string,apiKey: string}} _options - this is configuration about Opengate North API.
      * @param {AmpliaREST} ampliaREST - this is a backend selected to manage a request to Opengate North API.
      */
-    constructor(northAmpliaREST, southAmpliaREST) {
+    constructor(northAmpliaREST, southAmpliaREST, _options) {
         if (this.constructor === InternalOpenGateAPI) {
             throw new Error(&quot;Cannot construct Abstract instances directly&quot;);
         }
@@ -358,6 +378,9 @@ export default class InternalOpenGateAPI {
         }
         if (typeof southAmpliaREST !== &quot;object&quot;) {
             throw new Error(&quot;Must instance mandatory parameter: southAmpliaREST&quot;);
+        }
+        if (_options.hooks &amp;&amp; _options.hooks.beforeStart &amp;&amp; typeof _options.hooks.beforeStart === &apos;function&apos;){
+            RequestEndMonkeyPatching(_options.hooks.beforeStart)
         }
         this.Napi = northAmpliaREST;
         this.Sapi = southAmpliaREST;

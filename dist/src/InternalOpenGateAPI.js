@@ -438,6 +438,28 @@ var _alarmsAlarmActions = require('./alarms/AlarmActions');
 
 var _alarmsAlarmActions2 = _interopRequireDefault(_alarmsAlarmActions);
 
+var _superagent2 = require('superagent');
+
+var _superagent3 = _interopRequireDefault(_superagent2);
+
+var RequestEndMonkeyPatching = (function () {
+    var beforeStart = undefined;
+    var end = _superagent3['default'].Request.prototype.end;
+
+    _superagent3['default'].Request.prototype.end = function (cb) {
+        if (beforeStart && beforeStart.call) beforeStart(this);
+        return end.call(this, function (err, res) {
+            if (typeof cb !== 'function') {
+                return;
+            }
+            cb(err, res);
+        });
+    };
+
+    return function setCallback(cb) {
+        beforeStart = cb;
+    };
+})();
 /**
  * This is a abstract class, it must be extended to another class that defined the backend, it will be used on request to Opengate North API by browser or nodejs server
  */
@@ -448,7 +470,7 @@ var InternalOpenGateAPI = (function () {
      * @param {AmpliaREST} ampliaREST - this is a backend selected to manage a request to Opengate North API.
      */
 
-    function InternalOpenGateAPI(northAmpliaREST, southAmpliaREST) {
+    function InternalOpenGateAPI(northAmpliaREST, southAmpliaREST, _options) {
         _classCallCheck(this, InternalOpenGateAPI);
 
         if (this.constructor === InternalOpenGateAPI) {
@@ -459,6 +481,9 @@ var InternalOpenGateAPI = (function () {
         }
         if (typeof southAmpliaREST !== "object") {
             throw new Error("Must instance mandatory parameter: southAmpliaREST");
+        }
+        if (_options.hooks && _options.hooks.beforeStart && typeof _options.hooks.beforeStart === 'function') {
+            RequestEndMonkeyPatching(_options.hooks.beforeStart);
         }
         this.Napi = northAmpliaREST;
         this.Sapi = southAmpliaREST;
