@@ -17,6 +17,8 @@ import ChannelsSearchBuilder from './searching/builder/ChannelsSearchBuilder';
 import RuleConfigurations from './rulesConfiguration/RuleConfigurations';
 import RuleConfigurationsFinder from './rulesConfiguration/RuleConfigurationsFinder';
 import RuleConfigurationsCatalog from './rulesConfiguration/RuleConfigurationsCatalog';
+import BulkTemplateBuilder from './bulk/BulkTemplateBuilder';
+import BulkFinder from './bulk/BulkFinder';
 import OperationType from './operationTypes/OperationType';
 import OperationTypeFinder from './operationTypes/OperationTypeFinder';
 import OperationTypeCatalog from './operationTypes/OperationTypeCatalog';
@@ -275,6 +277,21 @@ export default class InternalOpenGateAPI {
      */
     ruleConfigurationBuilder(organization, channel, name, ruleConfigObj) {
         return new RuleConfigurations(this, organization, channel, name, ruleConfigObj);
+    }
+
+    /**
+     * This return a util to manage a bulk templates
+     * @return {BulkTemplateBuilder}
+     */
+     bulkTemplateBuilder(organization, name, template) {
+        return new BulkTemplateBuilder(this, organization, name, template);
+    }
+    /**
+     * This return a util to find bulk template
+     * @return {BulkFinder}
+     */
+     newBulkFinder() {
+        return new BulkFinder(this);
     }
 
     /**
