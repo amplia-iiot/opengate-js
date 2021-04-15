@@ -26,15 +26,24 @@ export default class BulkTemplateBuilder extends BaseProvision {
             this.withIdentifier(identifier)
 
         if(template){
-            if(template.filetype){
-                this.withFileType(template.filetype)
+            //required
+            this.withFileType(template.filetype)
+
+            //others
+            switch (this._filetype) {
+                case 'csv':
+                    this.withCsvParser(template.parser)
+                    this.        
+                    break;
+                case 'excel':
+                    this.withExcelParser(template.parser)        
+                    break;
+                default: 
+                    throw new Error('Parameter filetype must be a string and must be one of csv or excel');
             }
-            if(template.parser){
-                this.withParser(template.parser)
-            }
-            if(template.mapping){
-                this.withMapping(template.mapping)
-            }
+            
+            this.withMapping(template.mapping)
+            
         }
     }
 
@@ -68,14 +77,24 @@ export default class BulkTemplateBuilder extends BaseProvision {
     }
 
     /**
+     * Set the filetype attribute, must be one of csv or excel
+     * @param {string} filetype - Must be one of csv or excel
+     * @return {BulkTemplateBuilder}
+     */
+     withFiletype(filetype) {
+        if (typeof filetype !== 'string' || !newline.match(/csv|excel/))
+            throw new Error('Parameter filetype must be a string and must be one of csv or excel');
+        this._filetype = filetype;
+        return this;
+    }
+
+    /**
      * Set settings used during csv parsing
      * @param {object} parser - settings used during csv parsing
      * @return {_CsvParser}
      */
      withCsvParser(parser) {
-        this._parser = parser || {};
-
-        return this;
+        return (new _CsvParser(this, parser || {}))._build();
     }
 
     /**
@@ -84,9 +103,25 @@ export default class BulkTemplateBuilder extends BaseProvision {
      * @return {_ExcelParser}
      */
      withExcelParser(parser) {
-        this._parser = parser || {};
+        return (new _ExcelParser(this, parser || {}))._build();
+    }
 
+    /**
+     * Set settings used during values mapping
+     * @param {object} mapping - settings used during values mapping
+     * @return {_ExcelParser}
+     */
+    withMapping(mapping){
+        this._mapping = mapping || {};
         return this;
+    }
+
+    _composeElement() {
+        return {
+            filetype: this._filetype,
+            parser: this._parser,
+            mapping: this._mapping
+        }
     }
     
 }

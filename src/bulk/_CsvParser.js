@@ -15,7 +15,17 @@ export default class _CsvParser {
         }
 
         this._bulkTemplateBuilder = parent;
-        this._parser = parser;
+        this._parser = {};
+
+        this.setDelimiter(parser.delimiter);
+        this.setNewLine(parser.newline);
+        this.setQuoteChar(parser.quoteChar);
+        this.setEscapeChar(parser.escapeChar);
+        this.setHeader(parser.header);
+        this.setDynamicTyping(parser.dynamicTyping);
+        this.setEncoding(parser.encoding);
+        this.setComments(parser.comments);
+        this._build()
     }
 
     /**
@@ -27,7 +37,7 @@ export default class _CsvParser {
     setDelimiter(delimiter) {
         if (typeof delimiter !== 'string' && delimiter !== undefined && delimiter === null)
             throw new Error('Parameter delimiter must be a string');
-        this._delimiter = delimiter
+        this._parser._delimiter = delimiter
         return this;
     }
 
@@ -40,7 +50,7 @@ export default class _CsvParser {
      setNewLine(newline) {
         if ((typeof newline !== 'string' | !newline.match(/\\r\\n|\\r|\\n/)) && newline !== undefined && newline === null)
             throw new Error('Parameter newline must be a string and must be one of \r, \n, or \r\n');
-        this._newline = newline
+        this._parser._newline = newline
         return this;
     }
 
@@ -53,7 +63,7 @@ export default class _CsvParser {
      setQuoteChar(quoteChar) {
         if (typeof quoteChar !== 'string' && quoteChar !== undefined && quoteChar === null)
             throw new Error('Parameter quoteChar must be a string');
-        this._quoteChar = quoteChar
+        this._parser._quoteChar = quoteChar
         return this;
     }
 
@@ -66,7 +76,7 @@ export default class _CsvParser {
      setEscapeChar(escapeChar) {
         if (typeof escapeChar !== 'string' && escapeChar !== undefined && escapeChar === null)
             throw new Error('Parameter escapeChar must be a string');
-        this._escapeChar = escapeChar
+        this._parser._escapeChar = escapeChar
         return this;
     }
 
@@ -79,7 +89,7 @@ export default class _CsvParser {
      setHeader(header) {
         if (typeof header !== 'boolean')
             throw new Error('Parameter header must be a boolean');
-        this._header = header
+        this._parser._header = header
         return this;
     }
 
@@ -92,7 +102,7 @@ export default class _CsvParser {
      setDynamicTyping(dynamicTyping) {
         if (typeof dynamicTyping !== 'boolean')
             throw new Error('Parameter dynamicTyping must be a boolean');
-        this._dynamicTyping = dynamicTyping
+        this._parser._dynamicTyping = dynamicTyping
         return this;
     }
 
@@ -105,7 +115,7 @@ export default class _CsvParser {
      setEncoding(encoding) {
         if (typeof encoding !== 'string' && encoding !== undefined && encoding === null)
             throw new Error('Parameter encoding must be a string');
-        this._encoding = encoding
+        this._parser._encoding = encoding
         return this;
     }
 
@@ -118,8 +128,13 @@ export default class _CsvParser {
      setComments(comments) {
         if (typeof comments !== 'string' && comments !== undefined && comments === null)
             throw new Error('Parameter comments must be a string');
-        this._comments = comments
+        this._parser._comments = comments
         return this;
+    }
+
+    _build() {
+        this._bulkTemplateBuilder._parser = merge(true, this._parser);
+        return this._bulkTemplateBuilder;
     }
     
    /**
