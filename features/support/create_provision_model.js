@@ -371,6 +371,15 @@ module.exports = {
                 'description': 'withDescription',
                 'geometry': 'withGeometry',
                 'entities': 'withEntities'
+            },
+            'bulk template': {
+                'identifier': 'withIdentifier',
+                'organization': 'withOrganization',
+                'filetype': 'withFiletype',
+                'parser': 'withParser',
+                'csvParser': 'withCsvParser',
+                'excelParser': 'withExcelParser',
+                'mapping': 'withMapping'
             }
 
         } [setter];

@@ -559,8 +559,8 @@ When(/^I create it$/, function () {
     }
 
     function catchErrorResponse (err) {
-        //console.log("NOK");
-        //console.log("ERROR: " + JSON.stringify(err));
+        console.log("NOK");
+        console.log("ERROR: " + JSON.stringify(err));
         _this.responseData = err;
         if (err.errors) {
             _this.error = err.errors;

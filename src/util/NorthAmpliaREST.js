@@ -22,10 +22,54 @@ export default class NorthAmpliaREST {
         this._options = merge.recursive(true, this.default(), _options);
         this._headers = headers;
 
-        mock.post();
-        mock.put();
-        mock.get();
-        mock.delete();
+        //bulk template
+        mock.post(_options.url + '/provision/organizations/:organization/bulk/templates/:identifier', function(req){
+            console.log('REQ');
+            console.log(req);
+            const params = req.params
+            if(params.organization === 'bulk_template_organization' && params.identifier === 'mock_bulk_template'){
+                console.log('End req');
+                return { statusCode: 201}
+            }else{
+                console.log('End req 400');
+                return {statusCode: 400}
+            }
+        });
+        mock.put(_options.url + '/provision/organizations/:organization/bulk/templates/:identifier', function(req){
+            const params = req.params
+            const body = req.body
+            if(params.organization === 'bulk_template_organization'){
+                switch (params.identifier) {
+                    case 'mock_csv_bulk_template':
+                        console.log(body.parser);  
+                        break;
+                    case 'mock_excel_bulk_template':
+                        console.log(body.parser);
+                        break;
+                    default:
+                        break;
+                }
+                return {statusCode: 200}
+            }else{
+                return {statusCode: 400}
+            }
+        });
+        mock.get(_options.url + '/provision/organizations/:organization/bulk/templates/:identifier', function(req){
+            const params = req.params
+            if(params.organization === 'bulk_template_organization' && params.identifier === 'mock_bulk_template'){
+                return { statusCode: 201}
+            }else{
+                return {statusCode: 400}
+            }
+        });
+        mock.del(_options.url + '/provision/organizations/:organization/bulk/templates/:identifier', function(req){
+            const params = req.params
+            if(params.organization === 'bulk_template_organization' && params.identifier === 'mock_bulk_template'){
+                return { statusCode: 201}
+            }else{
+                return {statusCode: 400}
+            }
+        });
 
         // ----------------------------------
         /*
@@ -94,7 +138,7 @@ export default class NorthAmpliaREST {
      */
     default () {
         return {
-            timeout: 5000
+            timeout: 60000
         };
     }
 

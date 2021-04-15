@@ -18,7 +18,7 @@ import RuleConfigurations from './rulesConfiguration/RuleConfigurations';
 import RuleConfigurationsFinder from './rulesConfiguration/RuleConfigurationsFinder';
 import RuleConfigurationsCatalog from './rulesConfiguration/RuleConfigurationsCatalog';
 import BulkTemplateBuilder from './bulk/BulkTemplateBuilder';
-import BulkFinder from './bulk/BulkFinder';
+import BulkFTemplateinder from './bulk/BulkTemplateFinder';
 import OperationType from './operationTypes/OperationType';
 import OperationTypeFinder from './operationTypes/OperationTypeFinder';
 import OperationTypeCatalog from './operationTypes/OperationTypeCatalog';
@@ -110,6 +110,7 @@ import UserLanguagesSearchBuilder from './searching/builder/UserLanguagesSearchB
 import EntityFinder from './entities/EntityFinder';
 import AlarmActions from './alarms/AlarmActions';
 import _superagent from 'superagent';
+import BulkTemplateFinder from './bulk/BulkTemplateFinder';
 
 const RequestEndMonkeyPatching = (function(){
     let beforeStart
@@ -288,10 +289,10 @@ export default class InternalOpenGateAPI {
     }
     /**
      * This return a util to find bulk template
-     * @return {BulkFinder}
+     * @return {BulkTemplateFinder}
      */
-     newBulkFinder() {
-        return new BulkFinder(this);
+     newBulkFTemplateinder() {
+        return new BulkTemplateFinder(this);
     }
 
     /**
