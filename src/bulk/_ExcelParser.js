@@ -15,7 +15,12 @@ export default class _ExcelParser {
         }
 
         this._bulkTemplateBuilder = parent;
-        this._parser = parser;
+        this._parser = {};
+
+        this.setEncoding(parser.encoding);
+        this.setHeader(parser.header);
+        this.setSheets(parser.sheets);
+        this._build()
     }
 
     /**
@@ -57,6 +62,11 @@ export default class _ExcelParser {
         return this;
     }
     
+    _build() {
+        this._bulkTemplateBuilder._parser = merge(true, this._parser);
+        return this._bulkTemplateBuilder;
+    }
+
    /**
      * Returns parent
      * @returns {BulkTemplateBuilder}

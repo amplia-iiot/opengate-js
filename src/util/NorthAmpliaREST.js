@@ -22,6 +22,11 @@ export default class NorthAmpliaREST {
         this._options = merge.recursive(true, this.default(), _options);
         this._headers = headers;
 
+        mock.post();
+        mock.put();
+        mock.get();
+        mock.delete();
+
         // ----------------------------------
         /*
         mock.post(_options.url + '/search/channels', function(req) {
