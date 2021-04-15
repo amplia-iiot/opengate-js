@@ -15,40 +15,13 @@ export default class BulkTemplateBuilder extends BaseProvision {
      * @param {string} identifier 
      * @param {object} template 
      */
-    constructor(ogapi, organization, identifier, template) {
+    constructor(ogapi) {
         super(ogapi, '/organizations/', undefined, ['identifier', 'organization', "filetype"]);
-
-        //Required
-        this.withOrganization(organization)
-        
-        // only for updates
-        if(identifier)
-            this.withIdentifier(identifier)
-
-        if(template){
-            //required
-            this.withFileType(template.filetype)
-
-            //others
-            switch (this._filetype) {
-                case 'csv':
-                    this.withCsvParser(template.parser)
-                    this.        
-                    break;
-                case 'excel':
-                    this.withExcelParser(template.parser)        
-                    break;
-                default: 
-                    throw new Error('Parameter filetype must be a string and must be one of csv or excel');
-            }
-            
-            this.withMapping(template.mapping)
-            
-        }
     }
 
     _buildURL() {
         let url = 'provision/organizations/' + this._organization + '/bulk/templates/' + this._identifier;
+        console.log('URL: ' + url);
         return url;
     }
 
@@ -82,10 +55,26 @@ export default class BulkTemplateBuilder extends BaseProvision {
      * @return {BulkTemplateBuilder}
      */
      withFiletype(filetype) {
-        if (typeof filetype !== 'string' || !newline.match(/csv|excel/))
+        if (typeof filetype !== 'string' || !filetype.match(/csv|excel/))
             throw new Error('Parameter filetype must be a string and must be one of csv or excel');
         this._filetype = filetype;
         return this;
+    }
+
+    /**
+     * Set settings used during parsing and set the filetype atrribute
+     * @param {object} parser - settings used during csv parsing
+     * @param {filetype} filetype - Must be one of csv or excel
+     * @return {_CsvParser}
+     */
+     withParser(parser, filetype) {
+        this.withFiletype(filetype)
+        switch(this._filetype){
+            case 'csv':
+                return (new _CsvParser(this, parser || {}))._build();
+            case 'excel': 
+                return (new _ExcelParser(this, parser || {}))._build();
+        }
     }
 
     /**
@@ -117,6 +106,7 @@ export default class BulkTemplateBuilder extends BaseProvision {
     }
 
     _composeElement() {
+        this._resource = 'provision/organizations/' + this._organization + '/bulk/templates/' + this._identifier;
         return {
             filetype: this._filetype,
             parser: this._parser,

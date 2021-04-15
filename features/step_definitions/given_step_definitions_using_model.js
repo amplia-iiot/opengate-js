@@ -240,7 +240,7 @@ Given(/^the "([^"]*)" "([^"]*)"$/, function (setterName, setterValue, callback) 
         this.util[method](setterValue);
     } catch (err) {
         this.error = err;
-        //assert.ifError(this.error);
+        assert.ifError(this.error);
     }
 
     callback();
@@ -528,7 +528,7 @@ Given(/^an apikey user by "([^"]*)"$/, function (apikey, callback) {
     var config = {
         'apiKey': this.apikey || apikey,
         'url': this.test_url_north,
-        'timeout': 20000,
+        'timeout': 60000,
         south: {
             'url': this.test_url_south
         }
@@ -545,7 +545,7 @@ Given(/^I want to search into "([^"]*)"$/, function (setterName, callback) {
     callback();
 });
 
-this.Given(/^I want to search into "([^"]*)" and throw error 'is not a function'$/, function (setterName, callback) {
+Given(/^I want to search into "([^"]*)" and throw error 'is not a function'$/, function (setterName, callback) {
         try {
             var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
             this.util[method]();
@@ -554,4 +554,3 @@ this.Given(/^I want to search into "([^"]*)" and throw error 'is not a function'
             callback();
         }
     });
-};

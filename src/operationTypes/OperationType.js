@@ -86,7 +86,7 @@ export default class OperationType extends BaseProvision {
 
     /**
      * Set the title attribute
-     * @param {string} tiltle - required field
+     * @param {string} title - required field
      * @return {OperationType}
      */
     withTitle(title) {

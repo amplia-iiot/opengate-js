@@ -230,6 +230,12 @@ module.exports = {
             "rule configuration actions": function(ogapi, organization, channel, name) {
                 return ogapi.newRuleConfigurationsActions(organization, channel, param3);
             },
+            "bulk template builder": function(ogapi) {
+                return ogapi.bulkTemplateBuilder()
+            },
+            "bulk template finder": function(ogapi) {
+                return ogapi.newBulkFinder()
+            },
             "executions search": function() {
                 return ogapi.executionsSearchBuilder();
             },
