@@ -1,66 +1,115 @@
-var OpengateAPI = require(process.cwd() + '/dist/opengate-api-npm');
-var { Given } = require('cucumber');
-var { JSDOM } = require("jsdom");
-var fs = require('fs');
+var moment = require("moment");
 var assert = require('chai').assert;
-global.window = new JSDOM().window;
-global.FormData = window.FormData;
-global.Blob = window.Blob;
+var { Given } = require('cucumber');
 
-Given(/^an ogapi "([^"]*)" util$/, function (utilName, callback) {
-    this.util = this.utilsModel.util(utilName, this.ogapi);
-    callback();
-});
+var builderNameSkeleton = "new$1ParamBuilder";
+var paramSingleNameSkeleton = "with$1";
+var paramMultipleNameSkeleton = "add$1";
 
-Given(/^an ogapi "([^"]*)" util with responseId$/, function (utilName, callback) {
-    var id;
+function getParameterName(paramName) {
+    return paramName[0].toUpperCase() + paramName.slice(1);
+}
 
-    if (this.responseData.location)
-        id = this.responseData.location.substring(this.responseData.location.lastIndexOf("/") + 1);
-    else if (this.responseData.data)
-        id = this.responseData.data.id;
-    else if (this.responseData[0])
-        id = this.responseData[0].id;
-    //console.log("ID_: " + JSON.stringify(id));
-    this.util = this.utilsModel.util(utilName, this.ogapi, id);
-    callback();
-});
+function getBuilderParam(paramName) {
+    return this.util.paramBuilderFactory[builderNameSkeleton.replace("$1", paramName)]();
+}
 
-Given(/^an ogapi "([^"]*)" util with...$/, function (utilName, table, callback) {
-    this.error = undefined;
+function setSingleValueToParameter(_paramName, value) {
+    var paramName = getParameterName(_paramName);
+    var paramBuilder = getBuilderParam.call(this, paramName);
+    paramBuilder[paramSingleNameSkeleton.replace("$1", paramName)](value);
+    paramBuilder.buildAndAppend();
+}
+
+function setMultipleValueToParameter(_paramName, values) {
+    var paramName = getParameterName(_paramName);
+    var paramBuilder = getBuilderParam.call(this, paramName);
+    for (var i = 0; i < values.length; i++) {
+        paramBuilder[paramMultipleNameSkeleton.replace("$1", paramName)](values[i]);
+    }
+    paramBuilder.buildAndAppend();
+}
+
+Given(/^the start limit by "([^"]*)" and size limit by "([^"]*)"$/, function (start, size, callback) {
+    start = eval(start);
+    size = eval(size);
     try {
-        var args = [utilName, this.ogapi];
-        var data = table.hashes();
-        if (data.length > 0) {
-            for (var i = 0; i < data.length; i++) {
-                var param = data[i].param;
-                try {
-                    param = JSON.parse(param);
-                } catch (err) {
-                    //console.info("No json");
-                }
-                if (!isNaN(param))
-                    param = param * 1;
-                args.push(param);
-            }
-            this.util = this.utilsModel.util.apply(null, args);
-        } else {
-            this.error = "No params found";
-        }
+        this.util = this.util.limit(size, start);
     } catch (err) {
         this.error = err;
-        assert.ifError(this.error);
+    }
+    callback();
+});
+
+Given(/^the resource by "([^"]*)"$/, function (resource, callback) {
+    try {
+        this.util.resource = resource;
+    } catch (err) {
+        this.error = err;
     }
     callback();
 });
 
 
-Given(/^the entity of type "([^"]*)" with "([^"]*)"$/, function (utilName, param) {
+Given(/^parameter "([^"]*)" by "([^"]*)" not allowed$/, function (paramName, value, callback) {
+    // Write code here that turns the phrase above into concrete actions
+
+    var _this = this;
+
+    function MyFun() {
+        setSingleValueToParameter.call(_this, paramName, value);
+    }
+    this.expect(MyFun).to.not.increase(this.util._build.parameters, 'length');
+
+    callback();
+});
+
+
+Given(/^parameter "([^"]*)" as object by:$/, function (paramName, table, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    setMultipleValueToParameter.call(this, paramName, table.hashes());
+    callback();
+});
+
+
+Given(/^parameter "([^"]*)" by:$/, function (paramName, table, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    var values = [];
+    if (table.raw()[0].length === 1) {
+        var rows = table.raw();
+        for (var i = 0; i < rows.length; i++) {
+            values.push(rows[i][0]);
+        }
+    } else {
+        values = table.hashes();
+    }
+    setMultipleValueToParameter.call(this, paramName, values);
+    callback();
+});
+
+Given(/^parameter "([^"]*)" by "([^"]*)"$/, function (paramName, value, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    setSingleValueToParameter.call(this, paramName, value);
+    callback();
+});
+
+Given(/^parameter "([^"]*)" by "([^"]*)" as */, function (paramName, value, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    setSingleValueToParameter.call(this, paramName, eval(value));
+    callback();
+});
+
+Given(/^the path "([^"]*)"$/, function (pathName, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    this.util.withPath(pathName);
+    callback();
+});
+
+Given(/^the operation by "([^"]*)"$/, function (builderName) {
     // Write code here that turns the phrase above into concrete actions        
     var _this = this;
-    this.util = this.utilsModel.util(utilName, this.ogapi, param);
     try {
-        return this.util.then(function (builder) {
+        return this.ogapi.operations.builderByOperationName(builderName).then(function (builder) {
             _this.util = builder;
         }).catch(function (err) {
 
@@ -70,487 +119,588 @@ Given(/^the entity of type "([^"]*)" with "([^"]*)"$/, function (utilName, param
     }
 });
 
-Given(/^an ogapi "([^"]*)" util with "([^"]*)"$/, function (utilName, param, callback) {
-    this.util = this.utilsModel.util(utilName, this.ogapi, param);
-    callback();
-});
-
-Given(/^an ogapi "([^"]*)" util with "([^"]*)" and "([^"]*)"$/, function (utilName, param1, param2, callback) {
-    this.util = this.utilsModel.util(utilName, this.ogapi, param1, param2);
-    callback();
-});
-
-Given(/^an ogapi "([^"]*)" util as "([^"]*)"$/, function (utilName, utilAlias, callback) {
-    var newUtil = this.utilsModel.util(utilName, this.ogapi);
-    if (!this.extraUtils) this.extraUtils = {};
-    this.extraUtils[utilAlias] = newUtil;
-    callback();
-});
-
-Given(/^I want to (create|find|read|delete|update|search) (a|an) "([^"]*)"$/, function (model, dummyWildcard, entity, callback) {
-    this.currentModel = model;
-    this.currentEntity = entity;
-    callback();
-});
-
-Given(/^I want to (create|find|read|delete|update|search) (a|an) "([^"]*)" and the start limit by "([^"]*)" and size limit by "([^"]*)"$/, function (model, dummyWildcard, entity, start, size, callback) {
-    this.currentModel = model;
-    this.currentEntity = entity;
-    this.limit = {
-        'size': size,
-        'start': start
-    };
-    callback();
-});
-
-Given(/^the "([^"]*)" "([^"]*)" on util "([^"]*)"$/, function (setterName, setterValue, utilAlias, callback) {
-    this.error = undefined;
-    try {
-        var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
-        this.extraUtils[utilAlias][method](setterValue);
-    } catch (err) {
-        this.error = err;
-    }
-    callback();
-});
-
-Given(/^the "([^"]*)" '(.*)' json on util "([^"]*)"$/, function (setterName, setterValue, utilAlias, callback) {
-    this.error = undefined;
-    try {
-        var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
-        this.extraUtils[utilAlias][method](JSON.parse(setterValue));
-    } catch (err) {
-        this.error = err;
-    }
-    callback();
-});
-
-Given(/^the "([^"]*)" "([^"]*)" build on util "([^"]*)"$/, function (setterName, setterValue, utilAlias, callback) {
-    this.error = undefined;
-    try {
-        var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
-        this.extraUtils[utilAlias][method](this.extraUtils[setterValue].build());
-    } catch (err) {
-        this.error = err;
-    }
-    callback();
-});
-
-Given(/^the "([^"]*)" (\d+) on util "([^"]*)"$/, function (setterName, setterValue, utilAlias, callback) {
-    this.error = undefined;
-    try {
-        setterValue = setterValue * 1;
-        var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
-        this.extraUtils[utilAlias][method](setterValue);
-    } catch (err) {
-        this.error = err;
-    }
-
-    callback();
-});
-
-Given(/^the util "([^"]*)" on util "([^"]*)" into "([^"]*)"$/, function (fromUtilAlias, toUtilAlias, setterName, callback) {
-    this.error = undefined;
-    try {
-        var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
-        this.extraUtils[toUtilAlias][method](this.extraUtils[fromUtilAlias]);
-    } catch (err) {
-        this.error = err;
-    }
-    callback();
-});
-
-Given(/^the util "([^"]*)" into "([^"]*)"$/, function (utilAlias, setterName, callback) {
-    this.error = undefined;
-    try {
-        var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
-        this.util[method](this.extraUtils[utilAlias]);
-    } catch (err) {
-        this.error = err;
-    }
-
-    callback();
-});
-
-
-Given(/^the "([^"]*)" with util "([^"]*)" and with...$/, function (setterName, utilAlias, table, callback) {
-    this.error = undefined;
-    try {
-        var args = [];
-        var data = table.hashes();
-        if (data.length > 0) {
-            for (var i = 0; i < data.length; i++) {
-                var param = data[i].param;
-                try {
-                    param = JSON.parse(param);
-                } catch (err) {
-                    //console.info("No json");
-                }
-                if (!isNaN(param))
-                    param = param * 1;
-                args.push(param);
-            }
-            args.push(this.extraUtils[utilAlias]);
-            var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
-            this.util = this.util[method].apply(this.util, args);
-        } else {
-            this.error = "No params found";
-        }
-    } catch (err) {
-        this.error = err;
-        assert.ifError(this.error);
-    }
-    callback();
-});
-
-Given(/^the "([^"]*)" with util build "([^"]*)" and with...$/, function (setterName, utilAlias, table, callback) {
-    this.error = undefined;
-    try {
-        var args = [];
-        var data = table.hashes();
-        if (data.length > 0) {
-            for (var i = 0; i < data.length; i++) {
-                var param = data[i].param;
-                try {
-                    param = JSON.parse(param);
-                } catch (err) {
-                    //console.info("No json");
-                }
-                if (!isNaN(param))
-                    param = param * 1;
-                args.push(param);
-            }
-            args.push(this.extraUtils[utilAlias].build());
-            var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
-            this.util = this.util[method].apply(this.util, args);
-        } else {
-            this.error = "No params found";
-        }
-    } catch (err) {
-        this.error = err;
-        assert.ifError(this.error);
-    }
-    callback();
-});
-
-Given(/^the "([^"]*)" "([^"]*)"$/, function (setterName, setterValue, callback) {
-    this.error = undefined;
-    try {
-        var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
-        this.util[method](setterValue);
-    } catch (err) {
-        this.error = err;
-        //assert.ifError(this.error);
-    }
-
-    callback();
-});
-
-Given(/^the$/, function (table, callback) {
-    var data = table.hashes();
-    // this.currentModel = model;
-    //this.currentEntity = entity;
-    //console.log(this.currentEntity);
-    if (data.length > 0) {
-        for (var i = 0; i < data.length; i++) {
-            try {
-                var setterName = data[i].method;
-                var setterValue = data[i].value;
-                //console.log(setterName);
-                //console.log(JSON.parse(setterValue));
-                var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
-                this.util[method](JSON.parse(setterValue));
-            } catch (err) {
-                this.error = err;
-                //console.log(err);
-            }
-        }
-    }
-    callback();
-});
-
-Given(/^the "([^"]*)" with...$/, function (setterName, table, callback) {
-    this.error = undefined;
-    try {
-        var args = [];
-        var data = table.hashes();
-        if (data.length > 0) {
-            for (var i = 0; i < data.length; i++) {
-                var param = data[i].param;
-                try {
-                    param = JSON.parse(param);
-                } catch (err) {
-                    //console.info("No json")M
-                }
-                if (!isNaN(param)) {
-                    param = param * 1;
-                }
-                args.push(param);
-            }
-            var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
-            this.util = this.util[method].apply(this.util, args);
-        } else {
-            this.error = "No params found";
-        }
-    } catch (err) {
-        this.error = err;
-        //assert.ifError(this.error);
-    }
-    callback();
-});
-
-Given(/^the "([^"]*)" on util "([^"]*)" with...$/, function (setterName, utilAlias, table, callback) {
-    this.error = undefined;
-    try {
-        var args = [];
-        var data = table.hashes();
-        if (data.length > 0) {
-            for (var i = 0; i < data.length; i++) {
-                var param = data[i].param;
-                try {
-                    param = JSON.parse(param);
-                } catch (err) {
-                    //console.info("No json")M
-                }
-                if (!isNaN(param))
-                    param = param * 1;
-
-                args.push(param);
-            }
-            var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
-            this.util = this.extraUtils[utilAlias][method].apply(this.extraUtils[utilAlias], args);
-        } else {
-            this.error = "No params found";
-        }
-    } catch (err) {
-        this.error = err;
-        assert.ifError(this.error);
-    }
-    callback();
-});
-
-Given(/^the "([^"]*)" (\d+)$/, function (setterName, setterValue, callback) {
-    this.error = undefined;
-    try {
-        setterValue = setterValue * 1;
-        var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
-        this.util[method](setterValue);
-    } catch (err) {
-        this.error = err;
-    }
-
-    callback();
-});
-
-Given(/^the "([^"]*)" (\d+)\.(\d+)$/, function (setterName, setterValue1, setterValue2, callback) {
-    this.error = undefined;
-    try {
-        /*jshint -W061 */
-        setterValue = eval(setterValue1 + "." + setterValue2);
-        var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
-        this.util[method](setterValue);
-    } catch (err) {
-        this.error = err;
-    }
-
-    callback();
-});
-
-Given(/^the "([^"]*)" \-(\d+)$/, function (setterName, setterValue, callback) {
-    this.error = undefined;
-    try {
-        setterValue = setterValue * 1;
-        var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
-        this.util[method](setterValue);
-    } catch (err) {
-        this.error = err;
-    }
-
-    callback();
-});
-
-Given(/^the "([^"]*)" (false|true)$/, function (setterName, setterValue, callback) {
-    this.error = undefined;
-    try {
-        var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
-        this.util[method](setterValue.toLowerCase() === 'true');
-    } catch (err) {
-        this.error = err;
-    }
-
-    callback();
-});
-
-Given(/^the "([^"]*)"$/, function (setterName, setterValue, callback) {
-    this.error = undefined;
-    //console.log(setterName);
-    try {
-        setterValue = setterValue.raw()[0];
-        var myArr = Array.prototype.slice.apply(setterValue);
-        try {
-            myArr = JSON.parse(myArr);
-        } catch (errDumm) { }
-        if (myArr.constructor !== Array) {
-            myArr = [myArr];
-        }
-        var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
-        this.util[method](myArr);
-    } catch (err) {
-        this.error = err;
-    }
-
-    callback();
-});
-
-
-Given(/^the "([^"]*)" "([^"]*)" and "([^"]*)"$/, function (setterName, setterValue1, setterValue2, callback) {
-    this.error = undefined;
-    try {
-        var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
-        this.util[method](setterValue1, setterValue2);
-    } catch (err) {
-        this.error = err;
-    }
-
-    callback();
-});
-
-Given(/^the "([^"]*)" with (\d+) and (\d+)$/, function (setterName, setterValue1, setterValue2, callback) {
-    this.error = undefined;
-    try {
-        var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
-        this.util[method](setterValue1, setterValue2);
-    } catch (err) {
-        this.error = err;
-    }
-
-    callback();
-});
-
-Given(/^I read the file from "([^"]*)" for provision tickets$/, function (fileName, callback) {
-    // Write code here that turns the phrase above into concrete actions
+Given(/^an update periodicity by operation's id$/, function () {
+    // Write code here that turns the phrase above into concrete actions        
     var _this = this;
-    var file = fs.readFileSync(__dirname + fileName, 'utf8');
-    if (_this.responseData) {
-        var body = _this.responseData.body;
-        var text = _this.responseData.data && _this.responseData.data.text;
-        var id = [];
-        if (body) {
-            body.forEach(function (element) {
-                var location = element.location;
-                id.push(location.substring(location.lastIndexOf("/") + 1));
-            });
-        } else if (text) {
-            var locations = text.split('\n');
-            locations.shift();
-            locations.pop();
-            locations.forEach(function (location) {
-                var _location = location.substring(location.lastIndexOf("/") + 1);
-                _location = _location.substring(0, _location.indexOf(';'));
-                id.push(_location);
-            });
-        }
-        if (id.length === 0) {
-            id = _this.id;
-        } else {
-            _this.id = id;
-        }
 
-        var extension = fileName.substring(fileName.lastIndexOf('.') + 1);
-        switch (extension) {
-            case 'json':
-                var fileJ = JSON.parse(file);
-                fileJ.entities.forEach(function (ticket, index) {
-                    var _current = {
-                        "_current": {
-                            "value": id[index]
-                        }
-                    };
-                    //flattened
-                    if (ticket["provision.administration.organization"]) {
-                        ticket["provision.administration.identifier"] = {
-                            "_value": _current
-                        };
-                        ticket["provision.ticket.identifier"] = {
-                            "_value": _current
-                        };
-                    } else {
-                        ticket.provision.administration.identifier = _current;
-                        ticket.provision.ticket.identifier = _current;
-                    }
-                });
-                file = JSON.stringify(fileJ);
-                break;
-            case 'csv':
-                var fileCSV = file.split('\n');
-                var newFile = '';
-                fileCSV.forEach(function (line, index) {
-                    var idIndex = index - 1;
-                    if (index === 0) {
-                        line = line.concat(';provision.ticket.identifier;provision.administration.identifier').replace(/[\n\r]+/g, '');
-                        newFile = line + '\n';
-                    } else if (id[idIndex]) {
-                        line = line.concat(';' + id[idIndex] + ';' + id[idIndex]).replace(/[\n\r]+/g, '');
-                        newFile += line + '\n';
-                    }
-                });
-                file = newFile;
-                break;
-            default:
-                break;
-        }
-    }
-    if (file) {
-        this.fileData = file;
-        this.filePath = __dirname + fileName;
-    } else {
-        callback(false, "not found");
-    }
-    callback();
-});
-
-Given(/^I read the file from "([^"]*)"$/, function (fileName, callback) {
-    // Write code here that turns the phrase above into concrete actions
-    var file = fs.readFileSync(__dirname + fileName, 'utf8');
-
-    //var file = fs.createReadStream(__dirname + fileName);
-    if (file) {
-        this.fileData = file;
-        this.filePath = __dirname + fileName;
-    } else {
-        callback(false, "not found");
-    }
-    callback();
-
-});
-
-Given(/^an apikey user by "([^"]*)"$/, function (apikey, callback) {
-    var config = {
-        'apiKey': this.apikey || apikey,
-        'url': this.test_url_north,
-        'timeout': 60000,
-        south: {
-            'url': this.test_url_south
-        }
-    };
-
-    this.ogapi = new OpengateAPI(config);
-
-    callback();
-});
-
-Given(/^I want to search into "([^"]*)"$/, function (setterName, callback) {
-    var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
-    this.util[method]();
-    callback();
-});
-
-Given(/^I want to search into "([^"]*)" and throw error 'is not a function'$/, function (setterName, callback) {
+    var data;
+    //console.log("JOB: " + JSON.stringify(_this.responseData));
+    data = _this.responseData.data;
+    var jobId = data.job ? data.job.id : data.id;
+    //console.log("JOB_ID: " + jobId);
     try {
-        var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
-        this.util[method]();
-        callback(false, "this.util[method] is a function");
+        return this.ogapi.operations.updatePeriodicityBuilder(jobId).then(function (builder) {
+            _this.util = builder;
+        }).catch(function (err) {
+
+        });
     } catch (err) {
-        callback();
+        return;
     }
 });
+
+Given(/^execute immediately$/, function (callback) {
+    // Write code here that turns the phrase above into concrete actions
+    this.util.executeImmediately();
+    callback();
+});
+
+Given(/^append entities by "([^"]*)" as filter with "([^"]*)" as entityType$/, function (filter, entityType, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    this.util.appendEntitiesBy.filter(JSON.parse(filter), entityType);
+    callback();
+});
+
+
+Given(/^append entities by "([^"]*)" as tag$/, function (tag, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    this.util.appendEntitiesBy.tag(tag);
+    callback();
+});
+
+Given(/^append entities by:$/, function (table, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    var position_of_entity_key_into_array = 0;
+    var entityList = [];
+    for (var i = 0; i < table.raw().length; i++) {
+        entityList.push(table.raw()[i][position_of_entity_key_into_array]);
+    }
+    this.util.appendEntitiesBy.list(entityList);
+    callback();
+});
+
+Given(/^the job timeout by (\d+) minutes$/, function (minutes, callback) {
+    minutes = eval(minutes);
+    this.util.withJobTimeout(minutes);
+    callback();
+});
+
+
+Given(/^the retriesDelay by (\d+)$/, function (milliseconds, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    milliseconds = eval(milliseconds);
+    this.util.withRetriesDelay(milliseconds);
+    callback();
+});
+
+Given(/^the retries by (\d+)$/, function (retries, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    retries = eval(retries);
+    this.util.withRetries(retries);
+    callback();
+});
+
+Given(/^the ackTimeout by (\d+)$/, function (milliseconds, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    milliseconds = eval(milliseconds);
+    this.util.withAckTimeout(milliseconds);
+    callback();
+});
+
+Given(/^the timeout by (\d+)$/, function (milliseconds, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    milliseconds = eval(milliseconds);
+    this.util
+        .withTimeout(milliseconds);
+    callback();
+});
+
+Given(/^the notes by "([^"]*)"$/, function (notes, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    if (eval(notes) === null) {
+        notes = eval(notes);
+    }
+    this.util.withNotes(notes)
+    callback();
+});
+
+Given(/^the callback by "([^"]*)"$/, function (url, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    this.util.withCallback(url)
+    callback();
+});
+
+Given(/^the email by "([^"]*)"$/, function (email, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    if (eval(email) === null) {
+        email = eval(email);
+    }
+    this.util.withEmail(email);
+    callback();
+});
+
+Given(/^the password by "([^"]*)"$/, function (password, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    if (eval(password) === null) {
+        password = eval(password);
+    }
+    this.util.withPassword(password);
+    callback();
+});
+
+Given(/^execute in (\d+) minutes$/, function (minutes, callback) {
+    minutes = eval(minutes);
+    this.util.executeLater(minutes);
+    callback();
+});
+
+Given(/^execute each (\d+) minutes$/, function (minutes, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    minutes = eval(minutes);
+    this.util.executeEach(new Date, "task_name").minutes(minutes);
+    callback();
+});
+Given(/^execute each (\d+) days/, function (days, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    days = eval(days);
+    this.util.executeEach(new Date, "task_name").days(days);
+    callback();
+});
+Given(/^execute each (\d+) hours/, function (hours, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    hours = eval(hours);
+    this.util.executeEach(new Date, "task_name").hours(hours);
+    callback();
+});
+
+Given(/^execute every day at "([^"]*)"$/, function (when, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    var date;
+    if (when === "now") {
+        date = new Date();
+    } else {
+        date = new Date(Date.parse(when));
+    }
+    this.util.executeEvery(date, "task_name").day();
+    callback();
+});
+
+Given(/^update execute every day at "([^"]*)"$/, function (when, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    var date;
+    if (when === "now") {
+        date = new Date();
+    } else {
+        date = new Date(Date.parse(when));
+    }
+
+    this.util.executeEvery(date);
+    callback();
+});
+
+Given(/^execute every week at "([^"]*)" on days:$/, function (when, table, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    var date;
+    if (when === "now") {
+        date = new Date();
+    } else {
+        date = new Date(Date.parse(when));
+    }
+    var days = [];
+    for (var i = 0; i < table.raw().length; i++) {
+        days.push(table.raw()[i][0]);
+    }
+    this.util.executeEvery(date, "task_name").week.days(days);
+    callback();
+});
+
+Given(/^update execute every week at on days:$/, function (table, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    var days = [];
+    for (var i = 0; i < table.raw().length; i++) {
+        days.push(table.raw()[i][0]);
+    }
+    this.util.executeEvery().week.days(days);
+    callback();
+});
+
+Given(/^execute every week at on days:$/, function (table, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    var days = [];
+    for (var i = 0; i < table.raw().length; i++) {
+        days.push(table.raw()[i][0]);
+    }
+    try {
+        this.util.executeEvery("task_name").week.days(days);
+    } catch (error) {
+        this.error = error;
+    }
+    callback();
+});
+
+Given(/^update execute every week at "([^"]*)" on days:$/, function (when, table, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    var date;
+    if (when === "now") {
+        date = new Date();
+    } else {
+        date = new Date(Date.parse(when));
+    }
+    var days = [];
+    for (var i = 0; i < table.raw().length; i++) {
+        days.push(table.raw()[i][0]);
+    }
+    this.util.executeEvery(date).week.days(days);
+    callback();
+});
+
+Given(/^execute every month at "([^"]*)" at day (\d+) on months:$/, function (when, day, table, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    var date;
+    if (when === "now") {
+        date = new Date();
+    } else {
+        date = new Date(Date.parse(when));
+    }
+    var months = [];
+    for (var i = 0; i < table.raw().length; i++) {
+        months.push(table.raw()[i][0]);
+    }
+    this.util.executeEvery(date, "task_name").month(months).day(eval(day));
+    callback();
+});
+
+Given(/^update execute every month at "([^"]*)" at day (\d+) on months:$/, function (when, day, table, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    var date;
+    if (when === "now") {
+        date = new Date();
+    } else {
+        date = new Date(Date.parse(when));
+    }
+    var months = [];
+    for (var i = 0; i < table.raw().length; i++) {
+        months.push(table.raw()[i][0]);
+    }
+    this.util.executeEvery(date).month(months).day(eval(day));
+    callback();
+});
+
+Given(/^update execute every month at "([^"]*)" on months:$/, function (when, table, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    var date;
+    if (when === "now") {
+        date = new Date();
+    } else {
+        date = new Date(Date.parse(when));
+    }
+    var months = [];
+    for (var i = 0; i < table.raw().length; i++) {
+        months.push(table.raw()[i][0]);
+    }
+    this.util.executeEvery(date).month(months);
+    callback();
+});
+
+Given(/^execute every month at "([^"]*)" on months:$/, function (when, table, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    var date;
+    if (when === "now") {
+        date = new Date();
+    } else {
+        date = new Date(Date.parse(when));
+    }
+    var months = [];
+    for (var i = 0; i < table.raw().length; i++) {
+        months.push(table.raw()[i][0]);
+    }
+    this.util.executeEvery(date, "task_name").month(months);
+    callback();
+});
+
+Given(/^update execute every month at "([^"]*)" at day (\d+)$/, function (when, day, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    var date;
+    if (when === "now") {
+        date = new Date();
+    } else {
+        date = new Date(Date.parse(when));
+    }
+
+    this.util.executeEvery(date).month().day(eval(day));
+    callback();
+});
+
+Given(/^execute every month at "([^"]*)" at day (\d+)$/, function (when, day, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    var date;
+    if (when === "now") {
+        date = new Date();
+    } else {
+        date = new Date(Date.parse(when));
+    }
+    try {
+        this.util.executeEvery(date, "task_name").month().day(eval(day));
+    } catch (error) {
+        this.error = error;
+    }
+    callback();
+});
+
+Given(/^update execute every month at day (\d+) on months:$/, function (day, table, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    var months = [];
+    for (var i = 0; i < table.raw().length; i++) {
+        months.push(table.raw()[i][0]);
+    }
+    this.util.executeEvery().month(months).day(eval(day));
+    callback();
+});
+
+Given(/^execute every month at day (\d+) on months:$/, function (day, table, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    var months = [];
+    for (var i = 0; i < table.raw().length; i++) {
+        months.push(table.raw()[i][0]);
+    }
+    try {
+        this.util.executeEvery("task_name").month(months).day(eval(day));
+    } catch (error) {
+        this.error = error;
+    }
+    callback();
+});
+
+Given(/^update execute every month on months:$/, function (table, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    var months = [];
+    for (var i = 0; i < table.raw().length; i++) {
+        months.push(table.raw()[i][0]);
+    }
+    this.util.executeEvery().month(months);
+    callback();
+});
+
+Given(/^execute every month on months:$/, function (table, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    var months = [];
+    for (var i = 0; i < table.raw().length; i++) {
+        months.push(table.raw()[i][0]);
+    }
+    try {
+        this.util.executeEvery("task_name").month(months);
+    } catch (error) {
+        this.error = error;
+    }
+    callback();
+});
+
+Given(/^update execute every month at day (\d+)$/, function (day, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    this.util.executeEvery().month().day(eval(day));
+    callback();
+});
+
+Given(/^execute every month at day (\d+)$/, function (day, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    try {
+        this.util.executeEvery("task_name").month().day(eval(day));
+    } catch (error) {
+        this.error = error;
+    }
+    callback();
+});
+
+Given(/^execute every year at "([^"]*)" at day (\d+) on month "([^"]*)"$/, function (when, day, month, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    var date;
+    if (when === "now") {
+        date = new Date();
+    } else {
+        date = new Date(Date.parse(when));
+    }
+
+    this.util.executeEvery(date, "task_name").year.month(month).day(eval(day));
+    callback();
+});
+
+Given(/^update execute every year at "([^"]*)" at day (\d+) on month "([^"]*)"$/, function (when, day, month, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    var date;
+    if (when === "now") {
+        date = new Date();
+    } else {
+        date = new Date(Date.parse(when));
+    }
+
+    this.util.executeEvery(date).year.month(month).day(eval(day));
+    callback();
+});
+
+Given(/^update execute every year at "([^"]*)" on month "([^"]*)"$/, function (when, month, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    var date;
+    if (when === "now") {
+        date = new Date();
+    } else {
+        date = new Date(Date.parse(when));
+    }
+
+    this.util.executeEvery(date).year.month(month);
+    callback();
+});
+
+Given(/^execute every year at "([^"]*)" on month "([^"]*)"$/, function (when, month, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    var date;
+    if (when === "now") {
+        date = new Date();
+    } else {
+        date = new Date(Date.parse(when));
+    }
+
+    this.util.executeEvery(date, "task_name").year.month(month);
+    callback();
+});
+
+Given(/^update execute every year at "([^"]*)" at day (\d+)$/, function (when, day, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    var date;
+    if (when === "now") {
+        date = new Date();
+    } else {
+        date = new Date(Date.parse(when));
+    }
+
+    this.util.executeEvery(date).year.day(eval(day));
+    callback();
+});
+
+Given(/^execute every year at "([^"]*)" at day (\d+)$/, function (when, day, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    var date;
+    if (when === "now") {
+        date = new Date();
+    } else {
+        date = new Date(Date.parse(when));
+    }
+
+    this.util.executeEvery(date, "task_name").year.day(eval(day));
+    callback();
+});
+
+Given(/^update execute every year at day (\d+) on month "([^"]*)"$/, function (day, month, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    this.util.executeEvery().year.month(month).day(eval(day));
+    callback();
+});
+
+Given(/^execute every year at day (\d+) on month "([^"]*)"$/, function (day, month, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    try {
+        this.util.executeEvery("task_name").year.month(month).day(eval(day));
+    } catch (error) {
+        this.error = error;
+    }
+    callback();
+});
+
+Given(/^update execute every year on month "([^"]*)"$/, function (month, callback) {
+    // Write code here that turns the phrase above into concrete actions
+
+    this.util.executeEvery().year.month(month);
+    callback();
+});
+
+Given(/^execute every year on month "([^"]*)"$/, function (month, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    try {
+        this.util.executeEvery("task_name").year.month(month);
+    } catch (error) {
+        this.error = error;
+    }
+    callback();
+});
+
+Given(/^update execute every year at day (\d+)$/, function (day, callback) {
+    // Write code here that turns the phrase above into concrete actions
+
+    this.util.executeEvery().year.day(eval(day));
+    callback();
+});
+
+Given(/^execute every year at day (\d+)$/, function (day, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    try {
+        this.util.executeEvery("task_name").year.day(eval(day));
+    } catch (error) {
+        this.error = error;
+    }
+    callback();
+});
+
+
+Given(/^execute each with stop date (\d+) "([^"]*)" earlier than current date$/, function (stopDelay, delayType, callback) {
+    try {
+        executeEachNowEarlierThan.call(this, stopDelay, delayType);
+    } catch (err) {
+        this.error = err.message;
+    }
+    callback();
+});
+
+
+Given(/^execute each with (\d+) as a number of repetitions$/, function (repetitions, callback) {
+    var start = moment(new Date());
+    try {
+        this.util.executeEach(start.toDate(), eval(repetitions));
+    } catch (err) {
+        this.error = err.message;
+    }
+    callback();
+});
+
+Given(/^execute each with stop date (\d+) "([^"]*)" later than the start date as now$/, function (stopDelay, delayType, callback) {
+    try {
+        executeEachNowLaterThan.call(this, stopDelay, delayType);
+    } catch (err) {
+        //console.log(err);
+        this.error = err.message;
+    }
+    callback();
+});
+
+Given(/^execute each (\d+) "([^"]*)" with stop date (\d+) "([^"]*)" later than the start date as now$/, function (eachValue, eachType, stopDelay, delayType, callback) {
+    executeEachNowLaterThan.call(this, stopDelay, delayType)[eachType](eval(eachValue));
+    callback();
+});
+
+Given(/^I wait (\d+) seconds$/, function (seconds, callback) {
+    setTimeout(callback, seconds * 1000);
+});
+
+Given(/^I wait for DONE every (\d+) seconds, maximum (\d+) seconds$/, function (every_seconds, seconds, callback) {
+    var _this = this;
+    assert.isAbove(seconds * 1000, every_seconds * 1000, 'Maximum seconds must be strictly greater than every second');
+    var everyTimeout;
+    var globalTimeout = setTimeout(
+        function () {
+            clearTimeout(everyTimeout);
+            callback();
+        }, seconds * 1000);
+
+    function isDone() {
+        if (this.responseData !== 'DONE')
+            everyTimeout = setTimeout(isDone, every_seconds * seconds);
+        else
+            clearTimeout(globalTimeout);
+    }
+    isDone();
+});
+
+
+function executeEachNowLaterThan(stopDelay, delayType) {
+    var start = moment(new Date());
+    var stop = moment(new Date()).add(stopDelay, delayType);
+    return executeEach.call(this, start, stop);
+}
+
+function executeEachNowEarlierThan(stopDelay, delayType) {
+    var start = moment(new Date());
+    var stop = moment(new Date()).subtract(stopDelay, delayType);
+    return executeEach.call(this, start, stop);
+}
+
+function executeEach(start, stop) {
+    return this.util.executeEach(start.toDate(), stop.toDate());
+}
