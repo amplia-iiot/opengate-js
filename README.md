@@ -24,3 +24,15 @@ Can generate version of the project with the jenkins job http://constructor.ampl
 2. Select "incrementVersion"
 3. Introduce Project "opengate-js"
 4. Click on button Ejecución
+
+Once the version is generated, update dependencies:
+
+1. Update into package.json
+```bash
+$ yarn upgrade opengate-js@[version]
+```
+
+2. Update the version into the project  
+```js
+import {} from 'opengate-js/dist/opengate-api-bower-[version]'
+```
