@@ -32,7 +32,6 @@ export default class Areas extends BaseProvision {
         return this;
     }
 
-
     /**
      * Set the identifier attribute
      * @param {string} identifier - required field
@@ -41,16 +40,6 @@ export default class Areas extends BaseProvision {
     withIdentifier(identifier) {
         checkType._checkString(identifier, 50, 'identifier');
         this._identifier = identifier;
-        return this;
-    }
-    /**
-     * Set the color attribute
-     * @param {string} color - required field
-     * @return {Areas}
-     */
-    withColor(name) {
-        checkType._checkString(name, 50, 'color');
-        this._color = color;
         return this;
     }
 
@@ -122,7 +111,6 @@ export default class Areas extends BaseProvision {
             name: this._name,
             description: this._description,
             order: this._order,
-            color: this._color,
 
             geometry: {
                 type: this._type,
