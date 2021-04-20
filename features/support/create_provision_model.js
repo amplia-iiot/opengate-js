@@ -371,7 +371,7 @@ module.exports = {
                 'description': 'withDescription',
                 'geometry': 'withGeometry',
                 'entities': 'withEntities',
-                'name': 'withName'
+                'color': 'withColor'
             }
 
         }[setter];
