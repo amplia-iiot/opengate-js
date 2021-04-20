@@ -370,15 +370,16 @@ module.exports = {
                 'organization': 'withOrganization',
                 'description': 'withDescription',
                 'geometry': 'withGeometry',
+                'color': 'withColor',
                 'entities': 'withEntities'
             }
 
-        } [setter];
+        }[setter];
     },
     getter_response: function (getter) {
         return {
             'user email': '/email',
             'organization name': '/name'
-        } [getter];
+        }[getter];
     }
 };
