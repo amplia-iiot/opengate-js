@@ -121,6 +121,7 @@ export default class Areas extends BaseProvision {
             name: this._name,
             description: this._description,
             order: this._order,
+            color: this._color,
 
             geometry: {
                 type: this._type,
