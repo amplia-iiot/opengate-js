@@ -15,3 +15,12 @@
 ## Documentation
 
 To generate the API documentation you can execute `gulp build` and open the generated HTML on: **documentation/index.html**
+
+## Generate version
+
+Can generate version of the project with the jenkins job http://constructor.amplia.es:8080/jenkins/job/og-ux_generate_release_from_github/
+
+1. Click on "Build with Parameters"
+2. Select "incrementVersion"
+3. Introduce Project "opengate-js"
+4. Click on button Ejecución
