@@ -32,6 +32,7 @@ So, I can create a new area with the parametres that I have been defined
         And the "name" "mock_area"
         And the "identifier" "mock_area"
         And the "description" "area description"
+        And the "color" "#FF00C8FF"
         And the "geometry" with...
             | param                                                                                                                                                                |
             | Polygon                                                                                                                                                              |
@@ -48,6 +49,7 @@ So, I can create a new area with the parametres that I have been defined
         And I want to create an "area"
         And the "organization" "area_organization"
         And the "name" "mock_area"
+        And the "color" "#FF00C8FF"
         And the "identifier" "mock_area"
         And the "description" "area description"
         And the "geometry" with...
@@ -69,6 +71,7 @@ So, I can create a new area with the parametres that I have been defined
         And I want to create an "area"
         And the "organization" "area_organization"
         And the "name" "mock_area"
+        And the "color" "#FF00C8FF"
         And the "identifier" "mock_area"
         And the "description" "area description"
         And the "geometry" with...
