@@ -29,10 +29,9 @@ So, I can create a new area with the parametres that I have been defined
         And an ogapi "areas builder" util
         And I want to create an "area"
         And the "organization" "area_organization"
-        And the "name" "area"
+        And the "name" "mock_area"
         And the "identifier" "mock_area"
         And the "description" "area description"
-        And the "color" "#FF5733"
         And the "geometry" with...
             | param                                                                                                                                                                |
             | Polygon                                                                                                                                                              |
@@ -48,10 +47,9 @@ So, I can create a new area with the parametres that I have been defined
         And an ogapi "areas builder" util
         And I want to create an "area"
         And the "organization" "area_organization"
-        And the "name" "area"
+        And the "name" "mock_area"
         And the "identifier" "mock_area"
         And the "description" "area description"
-        And the "color" "#FF5733"
         And the "geometry" with...
             | param                                                                                                                                                                |
             | Polygon                                                                                                                                                              |
@@ -70,10 +68,9 @@ So, I can create a new area with the parametres that I have been defined
         And an ogapi "areas builder" util
         And I want to create an "area"
         And the "organization" "area_organization"
-        And the "name" "area"
+        And the "name" "mock_area"
         And the "identifier" "mock_area"
         And the "description" "area description"
-        And the "color" "#FF5733"
         And the "geometry" with...
             | param                                                                                                                                                                |
             | Polygon                                                                                                                                                              |
