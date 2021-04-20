@@ -1,4 +1,3 @@
-// features/step_definitions/given_step_definitions.js
 var moment = require("moment");
 var assert = require('chai').assert;
 var { Given } = require('cucumber');
@@ -7,22 +6,22 @@ var builderNameSkeleton = "new$1ParamBuilder";
 var paramSingleNameSkeleton = "with$1";
 var paramMultipleNameSkeleton = "add$1";
 
-function getParameterName (paramName) {
+function getParameterName(paramName) {
     return paramName[0].toUpperCase() + paramName.slice(1);
 }
 
-function getBuilderParam (paramName) {
+function getBuilderParam(paramName) {
     return this.util.paramBuilderFactory[builderNameSkeleton.replace("$1", paramName)]();
 }
 
-function setSingleValueToParameter (_paramName, value) {
+function setSingleValueToParameter(_paramName, value) {
     var paramName = getParameterName(_paramName);
     var paramBuilder = getBuilderParam.call(this, paramName);
     paramBuilder[paramSingleNameSkeleton.replace("$1", paramName)](value);
     paramBuilder.buildAndAppend();
 }
 
-function setMultipleValueToParameter (_paramName, values) {
+function setMultipleValueToParameter(_paramName, values) {
     var paramName = getParameterName(_paramName);
     var paramBuilder = getBuilderParam.call(this, paramName);
     for (var i = 0; i < values.length; i++) {
@@ -57,7 +56,7 @@ Given(/^parameter "([^"]*)" by "([^"]*)" not allowed$/, function (paramName, val
 
     var _this = this;
 
-    function MyFun () {
+    function MyFun() {
         setSingleValueToParameter.call(_this, paramName, value);
     }
     this.expect(MyFun).to.not.increase(this.util._build.parameters, 'length');
@@ -680,7 +679,7 @@ Given(/^I wait for DONE every (\d+) seconds, maximum (\d+) seconds$/, function (
             callback();
         }, seconds * 1000);
 
-    function isDone () {
+    function isDone() {
         if (this.responseData !== 'DONE')
             everyTimeout = setTimeout(isDone, every_seconds * seconds);
         else
@@ -690,18 +689,18 @@ Given(/^I wait for DONE every (\d+) seconds, maximum (\d+) seconds$/, function (
 });
 
 
-function executeEachNowLaterThan (stopDelay, delayType) {
+function executeEachNowLaterThan(stopDelay, delayType) {
     var start = moment(new Date());
     var stop = moment(new Date()).add(stopDelay, delayType);
     return executeEach.call(this, start, stop);
 }
 
-function executeEachNowEarlierThan (stopDelay, delayType) {
+function executeEachNowEarlierThan(stopDelay, delayType) {
     var start = moment(new Date());
     var stop = moment(new Date()).subtract(stopDelay, delayType);
     return executeEach.call(this, start, stop);
 }
 
-function executeEach (start, stop) {
+function executeEach(start, stop) {
     return this.util.executeEach(start.toDate(), stop.toDate());
 }
