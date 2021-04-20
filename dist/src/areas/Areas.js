@@ -75,6 +75,19 @@ var Areas = (function (_BaseProvision) {
         }
 
         /**
+         * Set the color attribute
+         * @param {string} color - required field
+         * @return {Areas}
+         */
+    }, {
+        key: 'withColor',
+        value: function withColor(name) {
+            _utilFormatsCheck_types2['default']._checkString(name, 50, 'color');
+            this._color = color;
+            return this;
+        }
+
+        /**
          * Set the name attribute
          * @param {string} name - required field
          * @return {Areas}
@@ -150,6 +163,7 @@ var Areas = (function (_BaseProvision) {
                 name: this._name,
                 description: this._description,
                 order: this._order,
+                color: this._color,
 
                 geometry: {
                     type: this._type,
