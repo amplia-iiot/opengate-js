@@ -3864,6 +3864,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/areas/areas.js~areas#withcolor",
+    "class/src/areas/Areas.js~Areas.html#instance-method-withColor",
+    "src/areas/Areas.js~Areas#withColor",
+    "method"
+  ],
+  [
     "src/areas/areas.js~areas#withdescription",
     "class/src/areas/Areas.js~Areas.html#instance-method-withDescription",
     "src/areas/Areas.js~Areas#withDescription",
