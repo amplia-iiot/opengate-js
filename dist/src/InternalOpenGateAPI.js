@@ -18,6 +18,10 @@ var _usersUserFinder = require('./users/UserFinder');
 
 var _usersUserFinder2 = _interopRequireDefault(_usersUserFinder);
 
+var _geoclusterGeoclusterFinder = require('./geocluster/GeoclusterFinder');
+
+var _geoclusterGeoclusterFinder2 = _interopRequireDefault(_geoclusterGeoclusterFinder);
+
 var _securityCertificates = require('./security/Certificates');
 
 var _securityCertificates2 = _interopRequireDefault(_securityCertificates);
@@ -503,6 +507,16 @@ var InternalOpenGateAPI = (function () {
         key: 'newUserFinder',
         value: function newUserFinder() {
             return new _usersUserFinder2['default'](this);
+        }
+
+        /**
+         * This return a util to find a user
+         * @return {GeoclusterFinder}
+         */
+    }, {
+        key: 'newGeoclusterFinder',
+        value: function newGeoclusterFinder() {
+            return new _geoclusterGeoclusterFinder2['default'](this);
         }
 
         /**

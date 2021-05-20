@@ -528,6 +528,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/geocluster/geoclusterfinder.js~geoclusterfinder",
+    "class/src/geocluster/GeoclusterFinder.js~GeoclusterFinder.html",
+    "<span>GeoclusterFinder</span> <span class=\"search-result-import-path\">opengate-js/src/geocluster/GeoclusterFinder.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/collection/devices/collect/hardware.js~hardware",
     "class/src/collection/devices/collect/Hardware.js~Hardware.html",
     "<span>Hardware</span> <span class=\"search-result-import-path\">opengate-js/src/collection/devices/collect/Hardware.js</span>",
@@ -3420,6 +3426,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#newgeoclusterfinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newGeoclusterFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newGeoclusterFinder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#newoperationactions",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newOperationActions",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newOperationActions",
@@ -5391,6 +5403,36 @@ window.esdocSearchIndex = [
     "src/entities/ticketfinder.js~ticketfinder#constructor",
     "class/src/entities/TicketFinder.js~TicketFinder.html#instance-constructor-constructor",
     "src/entities/TicketFinder.js~TicketFinder#constructor",
+    "method"
+  ],
+  [
+    "src/geocluster/geoclusterfinder.js",
+    "file/src/geocluster/GeoclusterFinder.js.html",
+    "src/geocluster/GeoclusterFinder.js",
+    "file"
+  ],
+  [
+    "src/geocluster/geoclusterfinder.js~geoclusterfinder#constructor",
+    "class/src/geocluster/GeoclusterFinder.js~GeoclusterFinder.html#instance-constructor-constructor",
+    "src/geocluster/GeoclusterFinder.js~GeoclusterFinder#constructor",
+    "method"
+  ],
+  [
+    "src/geocluster/geoclusterfinder.js~geoclusterfinder#findall",
+    "class/src/geocluster/GeoclusterFinder.js~GeoclusterFinder.html#instance-method-findAll",
+    "src/geocluster/GeoclusterFinder.js~GeoclusterFinder#findAll",
+    "method"
+  ],
+  [
+    "src/geocluster/geoclusterfinder.js~geoclusterfinder#findbyid",
+    "class/src/geocluster/GeoclusterFinder.js~GeoclusterFinder.html#instance-method-findById",
+    "src/geocluster/GeoclusterFinder.js~GeoclusterFinder#findById",
+    "method"
+  ],
+  [
+    "src/geocluster/geoclusterfinder.js~geoclusterfinder#findfeatures",
+    "class/src/geocluster/GeoclusterFinder.js~GeoclusterFinder.html#instance-method-findFeatures",
+    "src/geocluster/GeoclusterFinder.js~GeoclusterFinder#findFeatures",
     "method"
   ],
   [
