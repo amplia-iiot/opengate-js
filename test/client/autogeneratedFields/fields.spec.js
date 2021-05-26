@@ -2,22 +2,7 @@ define(function () {
     mocha.setup('bdd');
 
     describe('Testing fields finder api', function () {
-        it('search a fields communicationsModulesSearchBuilder', function () {
-            return ogapi.communicationsModulesSearchBuilder().findFields("sub").then(function (fields) {
-                assert.notEqual(fields.length, 0);
-            }).catch(function (err) {
-                assert.strictEqual(true, false);
-            });
-        });
-
-        it('search a fields communicationsModulesSearchBuilder', function () {
-            return ogapi.communicationsModulesSearchBuilder().findFields("alarmAttentionDate.a").then(function (fields) {
-                console.log(fields);
-            }).catch(function (err) {
-                assert.strictEqual(true, false);
-            });
-        });
-
+        
         it('search a fields devicesSearchBuilder', function () {
             return ogapi.devicesSearchBuilder().findFields("sub").then(function (fields) {
                 assert.notEqual(fields.length, 0);
