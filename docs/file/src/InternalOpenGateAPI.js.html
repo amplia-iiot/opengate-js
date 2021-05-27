@@ -146,7 +146,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/DeviceSearch.js~DeviceSearch.html">DeviceSearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/EntitySearch.js~EntitySearch.html">EntitySearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/FilterBuilder.js~FilterBuilder.html">FilterBuilder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/QuickSearch.js~QuickSearch.html">QuickSearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/Search.js~Search.html">Search</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/SelectBuilder.js~SelectBuilder.html">SelectBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/StaticSearch.js~StaticSearch.html">StaticSearch</a></span></span></li>
@@ -270,7 +269,6 @@ import OperationActions from &apos;./operations/OperationActions&apos;;
 import PeriodicityActions from &apos;./operations/PeriodicityActions&apos;;
 import Expression from &apos;./util/Expression&apos;;
 import SelectElement from &apos;./util/SelectElement&apos;;
-import QuickSearch from &apos;./searching/QuickSearch&apos;;
 import RawSearchBuilder from &apos;./searching/builder/RawSearchBuilder&apos;;
 import DevicesSearchBuilder from &apos;./searching/builder/DevicesSearchBuilder&apos;;
 import SubscribersSearchBuilder from &apos;./searching/builder/SubscribersSearchBuilder&apos;;
@@ -597,14 +595,6 @@ export default class InternalOpenGateAPI {
      */
     newSelectBuilder() {
         return new SelectBuilder();
-    }
-
-    /**
-     * This return a util to find devices by a defined filter
-     * @return {QuickSearch}
-     */
-    newQuickSearch(param, limit, type) {
-        return new QuickSearch(this, param, limit, type);
     }
 
     /**

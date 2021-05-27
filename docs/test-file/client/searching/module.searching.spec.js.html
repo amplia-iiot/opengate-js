@@ -146,7 +146,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/DeviceSearch.js~DeviceSearch.html">DeviceSearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/EntitySearch.js~EntitySearch.html">EntitySearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/FilterBuilder.js~FilterBuilder.html">FilterBuilder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/QuickSearch.js~QuickSearch.html">QuickSearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/Search.js~Search.html">Search</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/SelectBuilder.js~SelectBuilder.html">SelectBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/StaticSearch.js~StaticSearch.html">StaticSearch</a></span></span></li>
@@ -243,10 +242,6 @@
 	mocha.setup(&apos;bdd&apos;);
 	/** @test {InternalOpenGateAPI} */
 	describe(&apos;Check if all searching modules exists:&apos;, function () {
-		/** @test {InternalOpenGateAPI#newQuickSearch} */
-		it(&apos;Exist newQuickSearch function&apos;, function () {
-			assert.isFunction(ogapi.newQuickSearch, &apos;Module newQuickSearch is not loaded&apos;);
-		});
 		/** @test {InternalOpenGateAPI#rawSearchBuilder} */
 		it(&apos;Exist rawSearchBuilder function&apos;, function () {
 			assert.isFunction(ogapi.rawSearchBuilder, &apos;Module rawSearchBuilder is not loaded&apos;);
@@ -262,10 +257,6 @@
 		/** @test {InternalOpenGateAPI#subscribersSearchBuilder} */
 		it(&apos;Exist Builder subscribersSearchBuilder function&apos;, function () {
 			assert.isFunction(ogapi.subscribersSearchBuilder, &apos;Builder subscribersSearchBuilder is not loaded&apos;);
-		});
-		/** @test {InternalOpenGateAPI#communicationsModulesSearchBuilder} */
-		it(&apos;Exist Builder communicationsModulesSearchBuilder function&apos;, function () {
-			assert.isFunction(ogapi.communicationsModulesSearchBuilder, &apos;Builder communicationsModulesSearchBuilder is not loaded&apos;);
 		});
 		/** @test {InternalOpenGateAPI#operationsSearchBuilder} */
 		it(&apos;Exist Builder operationsSearchBuilder function&apos;, function () {

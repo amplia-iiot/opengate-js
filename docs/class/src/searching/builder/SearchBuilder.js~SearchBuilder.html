@@ -146,7 +146,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/DeviceSearch.js~DeviceSearch.html">DeviceSearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/EntitySearch.js~EntitySearch.html">EntitySearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/FilterBuilder.js~FilterBuilder.html">FilterBuilder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/QuickSearch.js~QuickSearch.html">QuickSearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/Search.js~Search.html">Search</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/SelectBuilder.js~SelectBuilder.html">SelectBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/StaticSearch.js~StaticSearch.html">StaticSearch</a></span></span></li>
@@ -277,8 +276,8 @@
     <h4>Test:</h4>
     <ul>
       
-    <li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber16">Check funcionality newSearchBuilder module: Check setting timeout</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber41">Check funcionality newSearchBuilder module: Check on entity searching:</a></span></li>
+    <li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber15">Check funcionality newSearchBuilder module: Check setting timeout</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber40">Check funcionality newSearchBuilder module: Check on entity searching:</a></span></li>
 </ul>
   </div>
 
@@ -872,7 +871,7 @@
     <h4>Test:</h4>
     <ul>
       
-    <li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber86">Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort</a></span></li>
+    <li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber77">Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort</a></span></li>
 </ul>
   </div>
 
@@ -957,7 +956,7 @@
   <div class="example-doc" data-ice="exampleDoc">
       
       <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.subscriptionsSearchBuilder().addSortBy(&apos;prov.customid&apos;,&apos;ASCENDING&apos;) // Order by prov.customid Ascending
- ogapi.communicationsModulesSearchBuilder().addSortBy(&apos;prov.customid&apos;,&apos;DESCENDING&apos;) // Order by prov.customid Descending </code></pre>
+ ogapi.devicesSearchBuilder().addSortBy(&apos;prov.customid&apos;,&apos;DESCENDING&apos;) // Order by prov.customid Descending </code></pre>
     </div>
 </div>
 
@@ -965,7 +964,7 @@
     <h4>Test:</h4>
     <ul>
       
-    <li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber102">Check funcionality newSearchBuilder module: Check on entity searching: On sort: Generic sort</a></span></li>
+    <li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber93">Check funcionality newSearchBuilder module: Check on entity searching: On sort: Generic sort</a></span></li>
 </ul>
   </div>
 
@@ -1043,7 +1042,7 @@
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.communicationsModulesSearchBuilder().addSortDescendingBy(&apos;prov.customid&apos;) // Order by prov.customid Descending</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.devicesSearchBuilder().addSortDescendingBy(&apos;prov.customid&apos;) // Order by prov.customid Descending</code></pre>
     </div>
 </div>
 
@@ -1051,7 +1050,7 @@
     <h4>Test:</h4>
     <ul>
       
-    <li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber94">Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort</a></span></li>
+    <li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber85">Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort</a></span></li>
 </ul>
   </div>
 
@@ -1132,38 +1131,36 @@
     <h4>Test:</h4>
     <ul>
       
-    <li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber145">Check funcionality newSearchBuilder module: Check on entity searching: using filterBuilder:</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber211">Check funcionality newSearchBuilder module: Check on entity searching: On collected and provisioned data:</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber50">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: devicesSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber59">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscriptionsSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber68">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber76">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: communicationsModulesSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber86">Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber94">Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber102">Check funcionality newSearchBuilder module: Check on entity searching: On sort: Generic sort</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber112">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: devicesSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber120">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscriptionsSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber128">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber136">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: communicationsModulesSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber213">Check funcionality newSearchBuilder module: Check on entity searching: On collected and provisioned data: devicesSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber217">Check funcionality newSearchBuilder module: Check on entity searching: On collected and provisioned data: subscriptionsSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber221">Check funcionality newSearchBuilder module: Check on entity searching: On collected and provisioned data: subscribersSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber236">Check funcionality newSearchBuilder module: Check on entity searching: Summary data: without source data: devicesSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber243">Check funcionality newSearchBuilder module: Check on entity searching: Summary data: without source data: subscriptionsSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber250">Check funcionality newSearchBuilder module: Check on entity searching: Summary data: without source data: subscribersSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber330">Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On collected and provisioned data devicesSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber337">Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On collected and provisioned data subscriptionsSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber344">Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On collected and provisioned data subscribersSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber362">Check funcionality newSearchBuilder module: Check on entity searching: On without source data: devicesSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber369">Check funcionality newSearchBuilder module: Check on entity searching: On without source data: subscriptionsSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber376">Check funcionality newSearchBuilder module: Check on entity searching: On without source data: subscribersSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber393">Check funcionality newSearchBuilder module: Check on operation searching: 				</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber399">Check funcionality newSearchBuilder module: Check on operation searching: 				</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber405">Check funcionality newSearchBuilder module: Check on operation searching: 				</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber448">Check funcionality newSearchBuilder module: Check on alarm searching: without source data</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber452">Check funcionality newSearchBuilder module: Check on alarm searching: single source data</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber456">Check funcionality newSearchBuilder module: Check on alarm searching: multiple source data</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber499">Check funcionality newSearchBuilder module: Check on bundles searching: bundlesSearchBuilder</a></span></li>
+    <li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber128">Check funcionality newSearchBuilder module: Check on entity searching: using filterBuilder:</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber186">Check funcionality newSearchBuilder module: Check on entity searching: On collected and provisioned data:</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber49">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: devicesSearchBuilder</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber58">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscriptionsSearchBuilder</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber67">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber77">Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber85">Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber93">Check funcionality newSearchBuilder module: Check on entity searching: On sort: Generic sort</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber103">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: devicesSearchBuilder</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber111">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscriptionsSearchBuilder</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber119">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber188">Check funcionality newSearchBuilder module: Check on entity searching: On collected and provisioned data: devicesSearchBuilder</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber192">Check funcionality newSearchBuilder module: Check on entity searching: On collected and provisioned data: subscriptionsSearchBuilder</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber196">Check funcionality newSearchBuilder module: Check on entity searching: On collected and provisioned data: subscribersSearchBuilder</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber207">Check funcionality newSearchBuilder module: Check on entity searching: Summary data: without source data: devicesSearchBuilder</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber214">Check funcionality newSearchBuilder module: Check on entity searching: Summary data: without source data: subscriptionsSearchBuilder</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber221">Check funcionality newSearchBuilder module: Check on entity searching: Summary data: without source data: subscribersSearchBuilder</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber280">Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On collected and provisioned data devicesSearchBuilder</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber287">Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On collected and provisioned data subscriptionsSearchBuilder</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber294">Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On collected and provisioned data subscribersSearchBuilder</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber305">Check funcionality newSearchBuilder module: Check on entity searching: On without source data: devicesSearchBuilder</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber312">Check funcionality newSearchBuilder module: Check on entity searching: On without source data: subscriptionsSearchBuilder</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber319">Check funcionality newSearchBuilder module: Check on entity searching: On without source data: subscribersSearchBuilder</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber329">Check funcionality newSearchBuilder module: Check on operation searching: 				</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber335">Check funcionality newSearchBuilder module: Check on operation searching: 				</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber341">Check funcionality newSearchBuilder module: Check on operation searching: 				</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber384">Check funcionality newSearchBuilder module: Check on alarm searching: without source data</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber388">Check funcionality newSearchBuilder module: Check on alarm searching: single source data</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber392">Check funcionality newSearchBuilder module: Check on alarm searching: multiple source data</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber435">Check funcionality newSearchBuilder module: Check on bundles searching: bundlesSearchBuilder</a></span></li>
 </ul>
   </div>
 
@@ -1253,16 +1250,14 @@
     <h4>Test:</h4>
     <ul>
       
-    <li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber43">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter:</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber145">Check funcionality newSearchBuilder module: Check on entity searching: using filterBuilder:</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber50">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: devicesSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber59">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscriptionsSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber68">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber76">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: communicationsModulesSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber112">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: devicesSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber120">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscriptionsSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber128">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber136">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: communicationsModulesSearchBuilder</a></span></li>
+    <li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber42">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter:</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber128">Check funcionality newSearchBuilder module: Check on entity searching: using filterBuilder:</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber49">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: devicesSearchBuilder</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber58">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscriptionsSearchBuilder</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber67">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber103">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: devicesSearchBuilder</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber111">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscriptionsSearchBuilder</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber119">Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder</a></span></li>
 </ul>
   </div>
 
@@ -1573,7 +1568,7 @@
     <h4>Test:</h4>
     <ul>
       
-    <li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber157">Check funcionality newSearchBuilder module: Check on entity searching: On limit:</a></span></li>
+    <li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber140">Check funcionality newSearchBuilder module: Check on entity searching: On limit:</a></span></li>
 </ul>
   </div>
 
@@ -1740,10 +1735,10 @@
     <h4>Test:</h4>
     <ul>
       
-    <li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber18">Check funcionality newSearchBuilder module: Check setting timeout Throw error on exceeded timeout</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber25">Check funcionality newSearchBuilder module: Check setting timeout It is all ok when not exceeded timeout</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber32">Check funcionality newSearchBuilder module: Check setting timeout Check default timeout value when it is no setted</a></span></li>
-<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber36">Check funcionality newSearchBuilder module: Check setting timeout withTimeout parameter must be a number</a></span></li>
+    <li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber17">Check funcionality newSearchBuilder module: Check setting timeout Throw error on exceeded timeout</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber24">Check funcionality newSearchBuilder module: Check setting timeout It is all ok when not exceeded timeout</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber31">Check funcionality newSearchBuilder module: Check setting timeout Check default timeout value when it is no setted</a></span></li>
+<li data-ice="test"><span><a href="test-file/client/searching/search.spec.js.html#lineNumber35">Check funcionality newSearchBuilder module: Check setting timeout withTimeout parameter must be a number</a></span></li>
 </ul>
   </div>
 

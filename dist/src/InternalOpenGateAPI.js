@@ -126,10 +126,6 @@ var _utilSelectElement = require('./util/SelectElement');
 
 var _utilSelectElement2 = _interopRequireDefault(_utilSelectElement);
 
-var _searchingQuickSearch = require('./searching/QuickSearch');
-
-var _searchingQuickSearch2 = _interopRequireDefault(_searchingQuickSearch);
-
 var _searchingBuilderRawSearchBuilder = require('./searching/builder/RawSearchBuilder');
 
 var _searchingBuilderRawSearchBuilder2 = _interopRequireDefault(_searchingBuilderRawSearchBuilder);
@@ -743,16 +739,6 @@ var InternalOpenGateAPI = (function () {
         key: 'newSelectBuilder',
         value: function newSelectBuilder() {
             return new _searchingSelectBuilder2['default']();
-        }
-
-        /**
-         * This return a util to find devices by a defined filter
-         * @return {QuickSearch}
-         */
-    }, {
-        key: 'newQuickSearch',
-        value: function newQuickSearch(param, limit, type) {
-            return new _searchingQuickSearch2['default'](this, param, limit, type);
         }
 
         /**

@@ -146,7 +146,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/DeviceSearch.js~DeviceSearch.html">DeviceSearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/EntitySearch.js~EntitySearch.html">EntitySearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/FilterBuilder.js~FilterBuilder.html">FilterBuilder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/QuickSearch.js~QuickSearch.html">QuickSearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/Search.js~Search.html">Search</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/SelectBuilder.js~SelectBuilder.html">SelectBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/StaticSearch.js~StaticSearch.html">StaticSearch</a></span></span></li>
@@ -243,22 +242,7 @@
     mocha.setup(&apos;bdd&apos;);
 
     describe(&apos;Testing fields finder api&apos;, function () {
-        it(&apos;search a fields communicationsModulesSearchBuilder&apos;, function () {
-            return ogapi.communicationsModulesSearchBuilder().findFields(&quot;sub&quot;).then(function (fields) {
-                assert.notEqual(fields.length, 0);
-            }).catch(function (err) {
-                assert.strictEqual(true, false);
-            });
-        });
-
-        it(&apos;search a fields communicationsModulesSearchBuilder&apos;, function () {
-            return ogapi.communicationsModulesSearchBuilder().findFields(&quot;alarmAttentionDate.a&quot;).then(function (fields) {
-                console.log(fields);
-            }).catch(function (err) {
-                assert.strictEqual(true, false);
-            });
-        });
-
+        
         it(&apos;search a fields devicesSearchBuilder&apos;, function () {
             return ogapi.devicesSearchBuilder().findFields(&quot;sub&quot;).then(function (fields) {
                 assert.notEqual(fields.length, 0);

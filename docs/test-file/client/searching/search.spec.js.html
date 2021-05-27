@@ -146,7 +146,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/DeviceSearch.js~DeviceSearch.html">DeviceSearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/EntitySearch.js~EntitySearch.html">EntitySearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/FilterBuilder.js~FilterBuilder.html">FilterBuilder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/QuickSearch.js~QuickSearch.html">QuickSearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/Search.js~Search.html">Search</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/SelectBuilder.js~SelectBuilder.html">SelectBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/StaticSearch.js~StaticSearch.html">StaticSearch</a></span></span></li>
@@ -245,7 +244,6 @@
 		@test {InternalOpenGateAPI#devicesSearchBuilder} 
 		@test {InternalOpenGateAPI#subscribersSearchBuilder} 		
 		@test {InternalOpenGateAPI#subscriptionsSearchBuilder} 
-		@test {InternalOpenGateAPI#communicationsModulesSearchBuilder}		
 		@test {InternalOpenGateAPI#executionsSearchBuilder} 
 		@test {InternalOpenGateAPI#operationsSearchBuilder} 
 		@test {InternalOpenGateAPI#alarmsSearchBuilder}  
@@ -309,14 +307,6 @@
 				it(&apos;subscribersSearchBuilder&apos;, function () {
 					assert.doesNotThrow(function () { ogapi.subscribersSearchBuilder().filter().onProvisioned().build(); });
 				});
-				/** @test {SearchBuilder#build} 
-					@test {SearchBuilder#filter}
-					@test {EntitySearchBuilder#onProvisioned}
-					@test {InternalOpenGateAPI#communicationsModulesSearchBuilder}
-				*/
-				it(&apos;communicationsModulesSearchBuilder&apos;, function () {
-					assert.doesNotThrow(function () { ogapi.communicationsModulesSearchBuilder().filter().onProvisioned().build(); });
-				});
 			});
 			describe(&apos;On sort:&apos;, function () {
 				/** @test {SearchBuilder#build} 
@@ -369,14 +359,6 @@
 				it(&apos;subscribersSearchBuilder&apos;, function () {
 					assert.doesNotThrow(function () { ogapi.subscribersSearchBuilder().filter().onProvisioned().build(); });
 				});
-				/** @test {SearchBuilder#build} 
-					@test {SearchBuilder#filter}
-					@test {EntitySearchBuilder#onProvisioned}
-					@test {InternalOpenGateAPI#communicationsModulesSearchBuilder}
-				*/
-				it(&apos;communicationsModulesSearchBuilder&apos;, function () {
-					assert.doesNotThrow(function () { ogapi.communicationsModulesSearchBuilder().filter().onProvisioned().build(); });
-				});
 			});
 			/** @test {SearchBuilder#build} 
 				@test {SearchBuilder#filter}
@@ -424,10 +406,6 @@
 				it(&apos;subscribersSearchBuilder&apos;, function () {
 					assert.strictEqual(ogapi.subscribersSearchBuilder().onProvisioned().build()._resource, &apos;search/entities/subscribers/provision&apos;);
 				});
-				/** @test {CommunicationsModulesSearchBuilder#onProvisioned}*/
-				it(&apos;communicationsModulesSearchBuilder&apos;, function () {
-					assert.strictEqual(ogapi.communicationsModulesSearchBuilder().onProvisioned().build()._resource, &apos;search/entities/communicationsModules/provision&apos;);
-				});
 			});
 			/** @test {EntitySearchBuilder#onCollected}*/
 			describe(&apos;On collected data:&apos;, function () {
@@ -443,10 +421,6 @@
 				it(&apos;subscribersSearchBuilder&apos;, function () {
 					assert.strictEqual(ogapi.subscribersSearchBuilder().onCollected().build()._resource, &apos;search/entities/subscribers/collection&apos;);
 				});
-				/** @test {CommunicationsModulesSearchBuilder#onCollected}*/
-				it(&apos;communicationsModulesSearchBuilder&apos;, function () {
-					assert.strictEqual(ogapi.communicationsModulesSearchBuilder().onCollected().build()._resource, &apos;search/entities/communicationsModules/collection&apos;);
-				});
 			});
 			/** @test {SearchBuilder#build}*/
 			describe(&apos;On collected and provisioned data:&apos;, function () {
@@ -461,10 +435,6 @@
 				/** @test {SubscribersSearchBuilder#build}*/
 				it(&apos;subscribersSearchBuilder&apos;, function () {
 					assert.strictEqual(ogapi.subscribersSearchBuilder().onCollected().onProvisioned().build()._resource, &apos;search/entities/subscribers&apos;);
-				});
-				/** @test {CommunicationsModulesSearchBuilder#build}*/
-				it(&apos;communicationsModulesSearchBuilder&apos;, function () {
-					assert.strictEqual(ogapi.communicationsModulesSearchBuilder().onCollected().onProvisioned().build()._resource, &apos;search/entities/communicationsModules&apos;);
 				});
 			});
 			/** @test {SearchBuilder#summary}*/
@@ -490,13 +460,6 @@
 					*/
 					it(&apos;subscribersSearchBuilder&apos;, function () {
 						assert.throws(function () { ogapi.subscribersSearchBuilder().summary().build(); }, &apos;Must select one at least: [&quot;onProvisioned&quot;,&quot;onCollected&quot;]&apos;);
-					});
-					/** 
-						@test {CommunicationsModulesSearchBuilder#summary}
-						@test {CommunicationsModulesSearchBuilder#build}	
-					*/
-					it(&apos;communicationsModulesSearchBuilder&apos;, function () {
-						assert.throws(function () { ogapi.communicationsModulesSearchBuilder().summary().build(); }, &apos;Must select one at least: [&quot;onProvisioned&quot;,&quot;onCollected&quot;]&apos;);
 					});
 				});
 				/** 
@@ -525,13 +488,6 @@
 					it(&apos;subscribersSearchBuilder&apos;, function () {
 						assert.strictEqual(ogapi.subscribersSearchBuilder().onProvisioned().summary().build()._resource, &apos;search/entities/subscribers/provision/summary&apos;);
 					});
-					/** 
-						@test {CommunicationsModulesSearchBuilder#summary}
-						@test {CommunicationsModulesSearchBuilder#onProvisioned}
-					*/
-					it(&apos;communicationsModulesSearchBuilder&apos;, function () {
-						assert.strictEqual(ogapi.communicationsModulesSearchBuilder().onProvisioned().summary().build()._resource, &apos;search/entities/communicationsModules/provision/summary&apos;);
-					});
 				});
 				describe(&apos;On collected data:&apos;, function () {
 					/** 
@@ -555,13 +511,6 @@
 					it(&apos;subscribersSearchBuilder&apos;, function () {
 						assert.strictEqual(ogapi.subscribersSearchBuilder().onCollected().summary().build()._resource, &apos;search/entities/subscribers/collection/summary&apos;);
 					});
-					/** 
-						@test {CommunicationsModulesSearchBuilder#summary}
-						@test {CommunicationsModulesSearchBuilder#onProvisioned}
-					*/
-					it(&apos;communicationsModulesSearchBuilder&apos;, function () {
-						assert.strictEqual(ogapi.communicationsModulesSearchBuilder().onCollected().summary().build()._resource, &apos;search/entities/communicationsModules/collection/summary&apos;);
-					});
 				});
 				describe(&apos;On collected and provisioned data&apos;, function () {
 					/** 
@@ -584,13 +533,6 @@
 					*/
 					it(&apos;subscribersSearchBuilder&apos;, function () {
 						assert.strictEqual(ogapi.subscribersSearchBuilder().onCollected().onProvisioned().summary().build()._resource, &apos;search/entities/subscribers/summary&apos;);
-					});
-					/** 
-						@test {CommunicationsModulesSearchBuilder#summary}
-						@test {CommunicationsModulesSearchBuilder#build}
-					*/
-					it(&apos;communicationsModulesSearchBuilder&apos;, function () {
-						assert.strictEqual(ogapi.communicationsModulesSearchBuilder().onCollected().onProvisioned().summary().build()._resource, &apos;search/entities/communicationsModules/summary&apos;);
 					});
 				});
 
@@ -616,13 +558,6 @@
 				*/
 				it(&apos;subscribersSearchBuilder&apos;, function () {
 					assert.throws(function () { ogapi.subscribersSearchBuilder().build(); }, &apos;Must select one at least: [&quot;onProvisioned&quot;,&quot;onCollected&quot;]&apos;);
-				});
-				/** 
-					@test {CommunicationsModulesSearchBuilder#summary}
-					@test {CommunicationsModulesSearchBuilder#build}
-				*/
-				it(&apos;communicationsModulesSearchBuilder&apos;, function () {
-					assert.throws(function () { ogapi.communicationsModulesSearchBuilder().build(); }, &apos;Must select one at least: [&quot;onProvisioned&quot;,&quot;onCollected&quot;]&apos;);
 				});
 			});
 		});

@@ -47,7 +47,6 @@
 <li data-ice="manualNav" class="indent-h3" data-link="manual/usage/usage.html"><a href="manual/usage/usage.html#search-provision-devices-info" data-ice="link">Search provision devices info</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/usage/usage.html"><a href="manual/usage/usage.html#search-provision-subscribers-info" data-ice="link">Search provision subscribers info</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/usage/usage.html"><a href="manual/usage/usage.html#search-provision-subscriptions-info" data-ice="link">Search provision subscriptions info</a></li>
-<li data-ice="manualNav" class="indent-h3" data-link="manual/usage/usage.html"><a href="manual/usage/usage.html#search-provision-communicationsmodules-info" data-ice="link">Search provision communicationsModules info</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/usage/usage.html"><a href="manual/usage/usage.html#search-into-executions-data-of-a-operation" data-ice="link">Search into executions data of a operation</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/usage/usage.html"><a href="manual/usage/usage.html#search-into-alarms-data" data-ice="link">Search into alarms data</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/usage/usage.html"><a href="manual/usage/usage.html#search-into-iot-data" data-ice="link">Search into iot data</a></li>
@@ -178,10 +177,6 @@ The npm version what we are using is: <code>3.10.3</code></p><p>We hope that you
     devicesSearchBuilder().</code>
 </code></pre><p>To this:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">    ogapi.
     subscriptionsSearchBuilder().</code>
-</code></pre><h3>Search provision communicationsModules info</h3><p>Is the same that device info, You only change this:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">    ogapi.
-    devicesSearchBuilder().</code>
-</code></pre><p>To this:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">    ogapi.
-    communicationsModulesSearchBuilder().</code>
 </code></pre><h2>Search into executions data of a operation</h2><p>The first that you need obtain is a new Builder instance: </p><pre><code class="lang-javascript"><code class="source-code prettyprint">    ogapi.
     executionsSearchBuilder()</code>
 </code></pre><p>If you need select the source about executions data of a operation :</p><pre><code class="lang-javascript"><code class="source-code prettyprint">    ogapi.
@@ -3482,34 +3477,6 @@ The status of execution passes through two states: CANCELLING and CANCELLED</p><
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/searching/QuickSearch.js~QuickSearch.html">QuickSearch</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>This extends EntitySearch and it allow make request to /device resource with a predefined filter at Opengate North API</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
           <span data-ice="name"><span><a href="class/src/searching/builder/RawSearchBuilder.js~RawSearchBuilder.html">RawSearchBuilder</a></span></span>
         </p>
       </div>
@@ -5276,7 +5243,7 @@ The status of execution passes through two states: CANCELLING and CANCELLED</p><
         <p>
           
           
-          <span data-ice="name"><span><a href="variable/index.html#static-variable-GENERATED_FIELDS">GENERATED_FIELDS</a></span></span><span data-ice="signature">: {&quot;DEVICE_PART_COMMSMODULE&quot;: <span>*</span>, &quot;DEVICE_PART_SUBSCRIBER&quot;: <span>*</span>, &quot;DEVICE_PART_DEVICE&quot;: <span>*</span>, &quot;DEVICE_PART_SUBSCRIPTION&quot;: <span>*</span>, &quot;MANUFACTURER&quot;: <span>*</span>, &quot;ENTITY_OPERATION&quot;: <span>*</span>, &quot;JOB&quot;: <span>*</span>, &quot;MODEL&quot;: <span>*</span>, &quot;OPERATION_TYPE&quot;: <span>*</span>, &quot;SOFTWARE_VERSION&quot;: <span>*</span>, &quot;UPDATE_BUNDLE_VERSION&quot;: <span>*</span>, &quot;DATAMODEL&quot;: <span>*</span>, &quot;CERTIFICATE&quot;: <span>*</span>}</span>
+          <span data-ice="name"><span><a href="variable/index.html#static-variable-GENERATED_FIELDS">GENERATED_FIELDS</a></span></span><span data-ice="signature">: {&quot;ENTITY_OPERATION&quot;: <span>*</span>, &quot;MANUFACTURER&quot;: <span>*</span>, &quot;MODEL&quot;: <span>*</span>, &quot;JOB&quot;: <span>*</span>, &quot;SOFTWARE_VERSION&quot;: <span>*</span>, &quot;UPDATE_BUNDLE_VERSION&quot;: <span>*</span>, &quot;CERTIFICATE&quot;: <span>*</span>}</span>
         </p>
       </div>
       <div>
