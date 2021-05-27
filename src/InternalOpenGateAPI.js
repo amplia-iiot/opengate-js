@@ -29,7 +29,6 @@ import OperationActions from './operations/OperationActions';
 import PeriodicityActions from './operations/PeriodicityActions';
 import Expression from './util/Expression';
 import SelectElement from './util/SelectElement';
-import QuickSearch from './searching/QuickSearch';
 import RawSearchBuilder from './searching/builder/RawSearchBuilder';
 import DevicesSearchBuilder from './searching/builder/DevicesSearchBuilder';
 import SubscribersSearchBuilder from './searching/builder/SubscribersSearchBuilder';
@@ -356,14 +355,6 @@ export default class InternalOpenGateAPI {
      */
     newSelectBuilder() {
         return new SelectBuilder();
-    }
-
-    /**
-     * This return a util to find devices by a defined filter
-     * @return {QuickSearch}
-     */
-    newQuickSearch(param, limit, type) {
-        return new QuickSearch(this, param, limit, type);
     }
 
     /**
