@@ -110,7 +110,7 @@ export default class SearchBuilder {
     /**
      * Add descending param into the sort search object 
      * @example
-     *  ogapi.communicationsModulesSearchBuilder().addSortDescendingBy('prov.customid') // Order by prov.customid Descending
+     *  ogapi.devicesSearchBuilder().addSortDescendingBy('prov.customid') // Order by prov.customid Descending
      * @param {!string} filterField - This field must be allowed into the specific resource
      * @return {SearchBuilder} 
      */
@@ -123,7 +123,7 @@ export default class SearchBuilder {
      * Add ascending/descending param into the sort search object 
      * @example
      *  ogapi.subscriptionsSearchBuilder().addSortBy('prov.customid','ASCENDING') // Order by prov.customid Ascending
-     *  ogapi.communicationsModulesSearchBuilder().addSortBy('prov.customid','DESCENDING') // Order by prov.customid Descending 
+     *  ogapi.devicesSearchBuilder().addSortBy('prov.customid','DESCENDING') // Order by prov.customid Descending 
      * @param {!string} filterField - This field must be allowed into the specific resource
      * @param {!string} typeSort
      * @return {SearchBuilder} 

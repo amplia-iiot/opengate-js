@@ -44,14 +44,8 @@ module.exports = {
             "channels search": function(ogapi) {
                 return ogapi.channelsSearchBuilder();
             },
-            "communications modules builder": function(ogapi) {
-                return ogapi.communicationsModulesBuilder();
-            },
             "communications module finder": function(ogapi) {
                 return ogapi.newCommunicationsModuleFinder();
-            },
-            "communications module search": function(ogapi) {
-                return ogapi.communicationsModulesSearchBuilder();
             },
             "datapoints search": function(ogapi) {
                 return ogapi.datapointsSearchBuilder();

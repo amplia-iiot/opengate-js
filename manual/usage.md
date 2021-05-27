@@ -102,18 +102,6 @@ To this:
 	ogapi.
 	subscriptionsSearchBuilder().
 ```
-### Search provision communicationsModules info
-Is the same that device info, You only change this:
-```javascript
-	ogapi.
-	devicesSearchBuilder().
-```
-To this:
-```javascript
-	ogapi.
-	communicationsModulesSearchBuilder().
-```
-
 
 
 ## Search into executions data of a operation 
