@@ -11,5 +11,7 @@ I want to regenerate a geocluster to update the geoclasterized entities
 
     Scenario: regenerate geocluster
         And an ogapi "regenerate geocluster" util
-        And the "identifier" "mock_area"
+        And I want to create an "geocluster"
+        And the "identifier" "entities.default"
+        And I update it
         Then response code should be: 200
