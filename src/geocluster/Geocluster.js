@@ -1,6 +1,6 @@
 'use strict';
 
-
+import q from 'q';
 import BaseProvision from '../provision/BaseProvision';
 import checkType from '../util/formats/check_types'
 /**
@@ -13,7 +13,8 @@ export default class Geocluster extends BaseProvision {
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, undefined, ['identifier']);
+        console.log("ogapi", ogapi)
+        super(ogapi, "/geocluster", undefined, 'identifier');
     }
 
     _buildURL() {
@@ -27,30 +28,23 @@ export default class Geocluster extends BaseProvision {
      * @return {Geocluster}
      */
 
-    withGeoclusterid(identifier) {
+    withIdentifier(identifier) {
         checkType._checkString(identifier, 50, 'identifier');
         this._identifier = identifier;
         return this;
     }
-
     _composeElement() {
         this._resource = 'provision/geocluster/' + this._identifier + '/clustering';
     }
 
-    /**
- * This invoke a request to OpenGate North API and the callback is managed by promises
- * This function updates a entity of provision
- * @return {Promise}
- * @property {function (result:object, statusCode:number)} then - When request it is OK
- * @property {function (error:string)} catch - When request it is NOK
- * @example
- *  ogapi.regenerateGeocluster().update()
- */
+    _composeElementUpdate() {
+        let geocluster = super._composeUpdateElement();
+        return geocluster;
+    }
     update() {
         var defered = q.defer();
         var promise = defered.promise;
-
-        this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement(), this._timeout, this._getExtraHeaders(), this._getUrlParameters())
+        this._ogapi.Napi.put(this._buildURL(), this._composeElementUpdate(), undefined, this._getExtraHeaders(), this._getUrlParameters())
             .then((res) => {
                 if (res.statusCode === 200) {
                     defered.resolve({
@@ -72,10 +66,6 @@ export default class Geocluster extends BaseProvision {
             });
         return promise;
     }
-
-    _composeUpdateElement() {
-        let geocluster = super._composeUpdateElement();
-        return geocluster;
-    }
-
+    
+    
 }
