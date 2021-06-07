@@ -8,12 +8,12 @@ var gulp = require('gulp'),
     cucumberOptionsCatalog = {
         string: 'tags',
         default: {
-            'tags': '@prueba'
+            'tags': 'not @ignore and not @operations and not @searching_select_fields and not @searching_filter_fields'
         }
     };
 argv.push("--tags");
+argv.push("not @ignore and not @operations and not @searching_select_fields and not @searching_filter_fields");
 
-argv.push("@prueba"); 
 var cucumberOptions = minimist(argv, cucumberOptionsCatalog);
 
 gulp.task('create:html-report:folder', function(done) {
