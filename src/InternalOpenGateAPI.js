@@ -3,6 +3,7 @@
 import Operations from './operations/Operations';
 import UserFinder from './users/UserFinder';
 import GeoclusterFinder from './geocluster/GeoclusterFinder';
+import Geocluster from './geocluster/Geocluster';
 import Certificates from './security/Certificates';
 import Users from './users/Users';
 import OrganizationFinder from './organizations/OrganizationFinder';
@@ -172,6 +173,14 @@ export default class InternalOpenGateAPI {
         return new GeoclusterFinder(this);
     }
 
+    /**
+     * This return a util to regenerate geloclouster a user
+     * @return {Geocluster}
+     */
+        regenerateGeocluster() {
+            return new Geocluster(this);
+    }
+    
     /**
      * This return a util to find a organization
      * @return {OrganizationFinder}
