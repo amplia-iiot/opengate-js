@@ -174,11 +174,11 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to regenerate geloclouster a user
+     * This return a util to regenerate geloclouster
      * @return {Geocluster}
      */
-        regenerateGeocluster() {
-            return new Geocluster(this);
+    geoclusterBuilder() {
+        return new Geocluster(this);
     }
     
     /**
