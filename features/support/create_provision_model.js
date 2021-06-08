@@ -371,7 +371,10 @@ module.exports = {
                 'description': 'withDescription',
                 'geometry': 'withGeometry',
                 'color': 'withColor',
-                'entities': 'withEntities'
+                'entities': 'withEntities',
+            },
+            'geocluster': {
+                'identifier': 'withIdentifier',
             }
 
         }[setter];
