@@ -92,8 +92,8 @@ module.exports = {
             "hardwares search": function(ogapi) {
                 return ogapi.hardwaresSearchBuilder();
             },
-            "regenerate geocluster": function(ogapi){ 
-                return ogapi.regenerateGeocluster(); 
+            "geocluster builder": function(ogapi){ 
+                return ogapi.geoclusterBuilder(); 
             }, 
             "operation finder": function(ogapi) {
                 return ogapi.newOperationFinder();
