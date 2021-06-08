@@ -528,6 +528,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/geocluster/geocluster.js~geocluster",
+    "class/src/geocluster/Geocluster.js~Geocluster.html",
+    "<span>Geocluster</span> <span class=\"search-result-import-path\">opengate-js/src/geocluster/Geocluster.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/geocluster/geoclusterfinder.js~geoclusterfinder",
     "class/src/geocluster/GeoclusterFinder.js~GeoclusterFinder.html",
     "<span>GeoclusterFinder</span> <span class=\"search-result-import-path\">opengate-js/src/geocluster/GeoclusterFinder.js</span>",
@@ -3204,6 +3210,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#geoclusterbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-geoclusterBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#geoclusterBuilder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#hardwaremessagebuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-hardwareMessageBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#hardwareMessageBuilder",
@@ -5277,6 +5289,30 @@ window.esdocSearchIndex = [
     "src/entities/ticketfinder.js~ticketfinder#constructor",
     "class/src/entities/TicketFinder.js~TicketFinder.html#instance-constructor-constructor",
     "src/entities/TicketFinder.js~TicketFinder#constructor",
+    "method"
+  ],
+  [
+    "src/geocluster/geocluster.js",
+    "file/src/geocluster/Geocluster.js.html",
+    "src/geocluster/Geocluster.js",
+    "file"
+  ],
+  [
+    "src/geocluster/geocluster.js~geocluster#constructor",
+    "class/src/geocluster/Geocluster.js~Geocluster.html#instance-constructor-constructor",
+    "src/geocluster/Geocluster.js~Geocluster#constructor",
+    "method"
+  ],
+  [
+    "src/geocluster/geocluster.js~geocluster#update",
+    "class/src/geocluster/Geocluster.js~Geocluster.html#instance-method-update",
+    "src/geocluster/Geocluster.js~Geocluster#update",
+    "method"
+  ],
+  [
+    "src/geocluster/geocluster.js~geocluster#withidentifier",
+    "class/src/geocluster/Geocluster.js~Geocluster.html#instance-method-withIdentifier",
+    "src/geocluster/Geocluster.js~Geocluster#withIdentifier",
     "method"
   ],
   [

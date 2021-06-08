@@ -22,6 +22,10 @@ var _geoclusterGeoclusterFinder = require('./geocluster/GeoclusterFinder');
 
 var _geoclusterGeoclusterFinder2 = _interopRequireDefault(_geoclusterGeoclusterFinder);
 
+var _geoclusterGeocluster = require('./geocluster/Geocluster');
+
+var _geoclusterGeocluster2 = _interopRequireDefault(_geoclusterGeocluster);
+
 var _securityCertificates = require('./security/Certificates');
 
 var _securityCertificates2 = _interopRequireDefault(_securityCertificates);
@@ -513,6 +517,16 @@ var InternalOpenGateAPI = (function () {
         key: 'newGeoclusterFinder',
         value: function newGeoclusterFinder() {
             return new _geoclusterGeoclusterFinder2['default'](this);
+        }
+
+        /**
+         * This return a util to regenerate geloclouster
+         * @return {Geocluster}
+         */
+    }, {
+        key: 'geoclusterBuilder',
+        value: function geoclusterBuilder() {
+            return new _geoclusterGeocluster2['default'](this);
         }
 
         /**
