@@ -68,10 +68,10 @@ var NorthAmpliaREST = (function () {
                 return !_lodash2['default'].isEmpty(mocks[method]);
             });
             methods.forEach(function (method) {
-                //console.log(`Mocking ${method.toLocaleUpperCase()} requests`);
+                console.log('Mocking ' + method.toLocaleUpperCase() + ' requests');
                 Object.keys(mocks[method]).forEach(function (url) {
-                    //console.log('Mocking url:', url);
-                    //console.log('Data returned:', mocks[method][url])
+                    console.log('Mocking url:', url);
+                    console.log('Data returned:', mocks[method][url]);
                     mock[method](_this._options.url + url, function () {
                         var data = mocks[method][url];
                         if (!data.headers) data.headers = {};

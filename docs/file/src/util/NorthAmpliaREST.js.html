@@ -270,10 +270,10 @@ export default class NorthAmpliaREST {
     _applyMocks (mocks) {
         const methods = Object.keys(mocks).filter((method) =&gt; !_.isEmpty(mocks[method]))
         methods.forEach(method =&gt; {
-            //console.log(`Mocking ${method.toLocaleUpperCase()} requests`);
+            console.log(`Mocking ${method.toLocaleUpperCase()} requests`);
             Object.keys(mocks[method]).forEach(url =&gt; {
-                //console.log(&apos;Mocking url:&apos;, url);
-                //console.log(&apos;Data returned:&apos;, mocks[method][url])
+                console.log(&apos;Mocking url:&apos;, url);
+                console.log(&apos;Data returned:&apos;, mocks[method][url])
                 mock[method](this._options.url + url, () =&gt; {
                     const data = mocks[method][url]
                     if (!data.headers) data.headers = {}
