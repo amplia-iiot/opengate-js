@@ -86,6 +86,10 @@ var _rulesConfigurationRuleConfigurationsCatalog = require('./rulesConfiguration
 
 var _rulesConfigurationRuleConfigurationsCatalog2 = _interopRequireDefault(_rulesConfigurationRuleConfigurationsCatalog);
 
+var _rulesConfigurationRuleConfigurationsHelper = require('./rulesConfiguration/RuleConfigurationsHelper');
+
+var _rulesConfigurationRuleConfigurationsHelper2 = _interopRequireDefault(_rulesConfigurationRuleConfigurationsHelper);
+
 var _operationTypesOperationType = require('./operationTypes/OperationType');
 
 var _operationTypesOperationType2 = _interopRequireDefault(_operationTypesOperationType);
@@ -647,6 +651,16 @@ var InternalOpenGateAPI = (function () {
         key: 'newRuleConfigurationsFinder',
         value: function newRuleConfigurationsFinder() {
             return new _rulesConfigurationRuleConfigurationsFinder2['default'](this);
+        }
+
+        /**
+         * This return a util  RuleConfigurationsHelper
+         * @return {RuleConfigurationsHelper
+         */
+    }, {
+        key: 'newRuleConfigurationsHelper',
+        value: function newRuleConfigurationsHelper() {
+            return new _rulesConfigurationRuleConfigurationsHelper2['default'](this);
         }
 
         /**

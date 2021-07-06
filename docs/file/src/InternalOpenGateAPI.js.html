@@ -142,6 +142,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsActions.js~RuleConfigurationsActions.html">RuleConfigurationsActions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsCatalog.js~RuleConfigurationsCatalog.html">RuleConfigurationsCatalog</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder.html">RuleConfigurationsFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper.html">RuleConfigurationsHelper</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/AssetSearch.js~AssetSearch.html">AssetSearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/BaseSearch.js~BaseSearch.html">BaseSearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/DeviceSearch.js~DeviceSearch.html">DeviceSearch</a></span></span></li>
@@ -260,6 +261,7 @@ import ChannelsSearchBuilder from &apos;./searching/builder/ChannelsSearchBuilde
 import RuleConfigurations from &apos;./rulesConfiguration/RuleConfigurations&apos;;
 import RuleConfigurationsFinder from &apos;./rulesConfiguration/RuleConfigurationsFinder&apos;;
 import RuleConfigurationsCatalog from &apos;./rulesConfiguration/RuleConfigurationsCatalog&apos;;
+import RuleConfigurationsHelper from &apos;./rulesConfiguration/RuleConfigurationsHelper&apos;;
 import OperationType from &apos;./operationTypes/OperationType&apos;;
 import OperationTypeFinder from &apos;./operationTypes/OperationTypeFinder&apos;;
 import OperationTypeCatalog from &apos;./operationTypes/OperationTypeCatalog&apos;;
@@ -518,6 +520,13 @@ export default class InternalOpenGateAPI {
         return new RuleConfigurationsFinder(this);
     }
 
+    /**
+     * This return a util  RuleConfigurationsHelper
+     * @return {RuleConfigurationsHelper
+     */
+     newRuleConfigurationsHelper() {
+        return new RuleConfigurationsHelper(this);
+    }
     /**
      * This return a util to find Rule Configurations Templates
      * @return {RuleConfigurationsCatalog}
