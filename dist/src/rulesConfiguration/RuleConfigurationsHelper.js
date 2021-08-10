@@ -32,7 +32,7 @@ var RuleConfigurationsHelper = (function (_GenericFinder) {
     function RuleConfigurationsHelper(ogapi) {
         _classCallCheck(this, RuleConfigurationsHelper);
 
-        _get(Object.getPrototypeOf(RuleConfigurationsHelper.prototype), 'constructor', this).call(this, ogapi, 'rules/');
+        _get(Object.getPrototypeOf(RuleConfigurationsHelper.prototype), 'constructor', this).call(this, ogapi, 'rules');
         this._jsHeaders = {
             'Accept': 'application/javascript'
         };
