@@ -83,11 +83,6 @@ var RuleConfigurationsHelper = (function (_GenericFinder) {
             this._id = 'doc/javascriptFunctions';
             return this._execute();
         }
-    }, {
-        key: '_composeUrl',
-        value: function _composeUrl() {
-            return this._baseUrl;
-        }
     }]);
 
     return RuleConfigurationsHelper;

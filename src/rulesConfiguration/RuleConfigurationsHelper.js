@@ -55,7 +55,4 @@ export default class RuleConfigurationsHelper extends GenericFinder {
         return this._execute();
     }
 
-    _composeUrl() {
-        return this._baseUrl;
-    }
 }
