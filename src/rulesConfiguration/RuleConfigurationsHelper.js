@@ -11,7 +11,7 @@ export default class RuleConfigurationsHelper extends GenericFinder {
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, 'rules/');
+        super(ogapi, 'rules');
         this._jsHeaders ={
             'Accept': 'application/javascript'
         };
