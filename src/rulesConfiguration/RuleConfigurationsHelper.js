@@ -27,7 +27,7 @@ export default class RuleConfigurationsHelper extends GenericFinder {
      * @return {Promise} 
      */
     getdDummyFunctions() {
-        this._headers = this._jsHeaders
+        //this._headers = this._jsHeaders
         this._id = 'js/dummyFunctions'
         return this._execute();
     }
@@ -39,7 +39,7 @@ export default class RuleConfigurationsHelper extends GenericFinder {
      * @return {Promise} 
      */
      getDocPrivateJavascriptFunctions() {
-        this._headers = this._mdHeaders
+        //this._headers = this._mdHeaders
         this._id = 'doc/private/javascriptFunctions'
         return this._execute();
     }
@@ -50,7 +50,7 @@ export default class RuleConfigurationsHelper extends GenericFinder {
      * @return {Promise} 
      */
      getDocJavascriptFunctions() {
-        this._headers = this._mdHeaders
+        //this._headers = this._mdHeaders
         this._id = 'doc/javascriptFunctions'
         return this._execute();
     }
