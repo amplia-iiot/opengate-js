@@ -266,6 +266,23 @@ export default class NorthAmpliaREST {
         if (!_.isEmpty(_options.mocks)) {
             this._applyMocks(_options.mocks)
         }
+
+        // ---------------------------------- EXAMPLE
+        /*
+        mock.post(_options.url + &apos;/search/channels&apos;, function(req) {
+            return {
+                body: {
+                    &quot;channels&quot;: [{
+                        &quot;name&quot;: &quot;default_channel&quot;,
+                        &quot;description&quot;: &quot;Automatic channel&quot;,
+                        &quot;organization&quot;: &quot;organization_GetSetParam&quot;,
+                        &quot;certificates&quot;: []
+                    }]
+                },
+                statusCode: 200
+            };
+        });        
+       */
     }
 
     _applyMocks (mocks) {

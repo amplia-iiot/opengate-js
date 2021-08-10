@@ -32,11 +32,17 @@ var RuleConfigurationsHelper = (function (_GenericFinder) {
     function RuleConfigurationsHelper(ogapi) {
         _classCallCheck(this, RuleConfigurationsHelper);
 
-        _get(Object.getPrototypeOf(RuleConfigurationsHelper.prototype), 'constructor', this).call(this, ogapi, 'helper/dummyFunctions');
+        _get(Object.getPrototypeOf(RuleConfigurationsHelper.prototype), 'constructor', this).call(this, ogapi, 'rules/');
+        this._jsHeaders = {
+            'Accept': 'application/javascript'
+        };
+        this._mdHeaders = {
+            'Accept': 'text/markdown'
+        };
     }
 
     /**
-     * Performs a get that returns dummyFunctions
+     * Performs a get that returns dummy functions from rules service
      * @test
      *   ogapi.newRuleConfigurationsHelper().getdDummyFunctions();
      * @return {Promise} 
@@ -45,6 +51,36 @@ var RuleConfigurationsHelper = (function (_GenericFinder) {
     _createClass(RuleConfigurationsHelper, [{
         key: 'getdDummyFunctions',
         value: function getdDummyFunctions() {
+            this._headers = this._jsHeaders;
+            this._id = 'js/dummyFunctions';
+            return this._execute();
+        }
+
+        /**
+         * Performs a get that returns documentation private of javascript functions from rules service
+         * @test
+         *   ogapi.newRuleConfigurationsHelper().getDocPrivateJavascriptFunctions();
+         * @return {Promise} 
+         */
+    }, {
+        key: 'getDocPrivateJavascriptFunctions',
+        value: function getDocPrivateJavascriptFunctions() {
+            this._headers = this._mdHeaders;
+            this._id = 'doc/private/javascriptFunctions';
+            return this._execute();
+        }
+
+        /**
+         * Performs a get that returns documentation of javascript functions from rules service
+         * @test
+         *   ogapi.newRuleConfigurationsHelper().getDocJavascriptFunctions();
+         * @return {Promise} 
+         */
+    }, {
+        key: 'getDocJavascriptFunctions',
+        value: function getDocJavascriptFunctions() {
+            this._headers = this._mdHeaders;
+            this._id = 'doc/javascriptFunctions';
             return this._execute();
         }
     }, {

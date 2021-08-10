@@ -253,16 +253,47 @@ export default class RuleConfigurationsHelper extends GenericFinder {
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, &apos;helper/dummyFunctions&apos;);
+        super(ogapi, &apos;rules/&apos;);
+        this._jsHeaders ={
+            &apos;Accept&apos;: &apos;application/javascript&apos;
+        };
+        this._mdHeaders =  {
+            &apos;Accept&apos;: &apos;text/markdown&apos;
+        }
     }
 
     /**
-     * Performs a get that returns dummyFunctions
+     * Performs a get that returns dummy functions from rules service
      * @test
      *   ogapi.newRuleConfigurationsHelper().getdDummyFunctions();
      * @return {Promise} 
      */
     getdDummyFunctions() {
+        this._headers = this._jsHeaders
+        this._id = &apos;js/dummyFunctions&apos;
+        return this._execute();
+    }
+
+    /**
+     * Performs a get that returns documentation private of javascript functions from rules service
+     * @test
+     *   ogapi.newRuleConfigurationsHelper().getDocPrivateJavascriptFunctions();
+     * @return {Promise} 
+     */
+     getDocPrivateJavascriptFunctions() {
+        this._headers = this._mdHeaders
+        this._id = &apos;doc/private/javascriptFunctions&apos;
+        return this._execute();
+    }
+    /**
+     * Performs a get that returns documentation of javascript functions from rules service
+     * @test
+     *   ogapi.newRuleConfigurationsHelper().getDocJavascriptFunctions();
+     * @return {Promise} 
+     */
+     getDocJavascriptFunctions() {
+        this._headers = this._mdHeaders
+        this._id = &apos;doc/javascriptFunctions&apos;
         return this._execute();
     }
 

@@ -57,6 +57,23 @@ var NorthAmpliaREST = (function () {
         if (!_lodash2['default'].isEmpty(_options.mocks)) {
             this._applyMocks(_options.mocks);
         }
+
+        // ---------------------------------- EXAMPLE
+        /*
+        mock.post(_options.url + '/search/channels', function(req) {
+            return {
+                body: {
+                    "channels": [{
+                        "name": "default_channel",
+                        "description": "Automatic channel",
+                        "organization": "organization_GetSetParam",
+                        "certificates": []
+                    }]
+                },
+                statusCode: 200
+            };
+        });        
+        */
     }
 
     _createClass(NorthAmpliaREST, [{
