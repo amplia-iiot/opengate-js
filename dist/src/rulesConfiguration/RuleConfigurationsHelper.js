@@ -51,7 +51,7 @@ var RuleConfigurationsHelper = (function (_GenericFinder) {
     _createClass(RuleConfigurationsHelper, [{
         key: 'getdDummyFunctions',
         value: function getdDummyFunctions() {
-            this._headers = this._jsHeaders;
+            //this._headers = this._jsHeaders
             this._id = 'js/dummyFunctions';
             return this._execute();
         }
@@ -65,7 +65,7 @@ var RuleConfigurationsHelper = (function (_GenericFinder) {
     }, {
         key: 'getDocPrivateJavascriptFunctions',
         value: function getDocPrivateJavascriptFunctions() {
-            this._headers = this._mdHeaders;
+            //this._headers = this._mdHeaders
             this._id = 'doc/private/javascriptFunctions';
             return this._execute();
         }
@@ -79,7 +79,7 @@ var RuleConfigurationsHelper = (function (_GenericFinder) {
     }, {
         key: 'getDocJavascriptFunctions',
         value: function getDocJavascriptFunctions() {
-            this._headers = this._mdHeaders;
+            //this._headers = this._mdHeaders
             this._id = 'doc/javascriptFunctions';
             return this._execute();
         }
