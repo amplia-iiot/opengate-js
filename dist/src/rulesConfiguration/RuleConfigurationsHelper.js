@@ -110,7 +110,7 @@ var RuleConfigurationsHelper = (function (_GenericFinder) {
                     });
                 } else {
                     defered.resolve({
-                        data: response,
+                        data: req,
                         statusCode: req.statusCode
                     });
                 }
