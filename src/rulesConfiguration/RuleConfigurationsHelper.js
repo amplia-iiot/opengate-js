@@ -1,6 +1,8 @@
 'use strict';
 
 import GenericFinder from '../GenericFinder';
+import q from 'q';
+import HttpStatus from 'http-status-codes';
 
 /**
  *   This class allow make get request to RuleConfigurationsHelper resource into Opengate North API.
@@ -71,12 +73,8 @@ export default class RuleConfigurationsHelper extends GenericFinder {
                         statusCode: HttpStatus.NOT_FOUND
                     });
                 } else {
-                    var data = {
-                        text: req.text,
-                        type: req.type
-                    } ;
                     defered.resolve({
-                        data: data,
+                        data: response,
                         statusCode: req.statusCode
                     });
                 }
