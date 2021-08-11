@@ -4,7 +4,7 @@ import merge from 'merge';
 import urlencode from 'urlencode';
 import request from 'superagent';
 import q from 'q';
-import fs from 'fs';
+import _ from 'lodash'
 //  MOCK user searching
 import _mock from 'superagent-mocker';
 const mock = _mock(request);
@@ -21,8 +21,11 @@ export default class NorthAmpliaREST {
     constructor(_options, headers) {
         this._options = merge.recursive(true, this.default(), _options);
         this._headers = headers;
+        if (!_.isEmpty(_options.mocks)) {
+            this._applyMocks(_options.mocks)
+        }
 
-        // ----------------------------------
+        // ---------------------------------- EXAMPLE
         /*
         mock.post(_options.url + '/search/channels', function(req) {
             return {
@@ -38,49 +41,22 @@ export default class NorthAmpliaREST {
             };
         });        
        */
-    //   mock.post(_options.url + '/search/catalog/operations', function(req) {
-    //     return {
-    //         body: {
-    //             "operations": [
-    //                 {
-    //                     "name": "ADMINISTRATIVE_STATUS_CHANGE",
-    //                     "title": "Administrative status change params",
-    //                     "description": "Allows to change the administrative status of an entity",
-    //                     "applicableTo": [
-    //                       "GATEWAY",
-    //                       "ASSET",
-    //                       "SUBSCRIPTION",
-    //                       "SUBSCRIBER"
-    //                     ],
-    //                     "categoryPath": "/admin",
-    //                     "parameters": {
-    //                         "schema": {
-    //                             "type": "object",
-    //                             "properties": {
-    //                             "admsts": {
-    //                                 "type": "string",
-    //                                 "title": "Administrative status"
-    //                             }
-    //                             },
-    //                             "additionalProperties": false,
-    //                             "required": ["admsts"]
-    //                         }
-    //                     },
-    //                     "steps": [
-    //                       {
-    //                         "name": "ADMINISTRATIVE_STATUS_CHANGE",
-    //                         "title": "Administrative Status Change",
-    //                         "description": ""
-    //                       }
-    //                     ]
-    //                   },
-    //             ]
-    //         },
-    //         statusCode: 200
-    //     };
-    // });        
-        // ----------------------------------
+    }
 
+    _applyMocks (mocks) {
+        const methods = Object.keys(mocks).filter((method) => !_.isEmpty(mocks[method]))
+        methods.forEach(method => {
+            console.log(`Mocking ${method.toLocaleUpperCase()} requests`);
+            Object.keys(mocks[method]).forEach(url => {
+                console.log('Mocking url:', url);
+                console.log('Data returned:', mocks[method][url])
+                mock[method](this._options.url + url, () => {
+                    const data = mocks[method][url]
+                    if (!data.headers) data.headers = {}
+                    return data
+                });
+            })
+        })
     }
 
     /**

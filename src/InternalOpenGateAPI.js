@@ -19,6 +19,7 @@ import ChannelsSearchBuilder from './searching/builder/ChannelsSearchBuilder';
 import RuleConfigurations from './rulesConfiguration/RuleConfigurations';
 import RuleConfigurationsFinder from './rulesConfiguration/RuleConfigurationsFinder';
 import RuleConfigurationsCatalog from './rulesConfiguration/RuleConfigurationsCatalog';
+import RuleConfigurationsHelper from './rulesConfiguration/RuleConfigurationsHelper';
 import OperationType from './operationTypes/OperationType';
 import OperationTypeFinder from './operationTypes/OperationTypeFinder';
 import OperationTypeCatalog from './operationTypes/OperationTypeCatalog';
@@ -277,6 +278,13 @@ export default class InternalOpenGateAPI {
         return new RuleConfigurationsFinder(this);
     }
 
+    /**
+     * This return a util  RuleConfigurationsHelper
+     * @return {RuleConfigurationsHelper
+     */
+     newRuleConfigurationsHelper() {
+        return new RuleConfigurationsHelper(this);
+    }
     /**
      * This return a util to find Rule Configurations Templates
      * @return {RuleConfigurationsCatalog}

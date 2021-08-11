@@ -852,6 +852,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/rulesconfiguration/ruleconfigurationshelper.js~ruleconfigurationshelper",
+    "class/src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper.html",
+    "<span>RuleConfigurationsHelper</span> <span class=\"search-result-import-path\">opengate-js/src/rulesConfiguration/RuleConfigurationsHelper.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/searching/builder/rulemodesearchbuilder.js~rulemodesearchbuilder",
     "class/src/searching/builder/RuleModeSearchBuilder.js~RuleModeSearchBuilder.html",
     "<span>RuleModeSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/RuleModeSearchBuilder.js</span>",
@@ -3369,6 +3375,12 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#newruleconfigurationsfinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newRuleConfigurationsFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newRuleConfigurationsFinder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#newruleconfigurationshelper",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newRuleConfigurationsHelper",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newRuleConfigurationsHelper",
     "method"
   ],
   [
@@ -6975,6 +6987,36 @@ window.esdocSearchIndex = [
     "src/rulesconfiguration/ruleconfigurationsfinder.js~ruleconfigurationsfinder#findbyorganizationandchannelandname",
     "class/src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder.html#instance-method-findByOrganizationAndChannelAndName",
     "src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder#findByOrganizationAndChannelAndName",
+    "method"
+  ],
+  [
+    "src/rulesconfiguration/ruleconfigurationshelper.js",
+    "file/src/rulesConfiguration/RuleConfigurationsHelper.js.html",
+    "src/rulesConfiguration/RuleConfigurationsHelper.js",
+    "file"
+  ],
+  [
+    "src/rulesconfiguration/ruleconfigurationshelper.js~ruleconfigurationshelper#constructor",
+    "class/src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper.html#instance-constructor-constructor",
+    "src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper#constructor",
+    "method"
+  ],
+  [
+    "src/rulesconfiguration/ruleconfigurationshelper.js~ruleconfigurationshelper#getdocjavascriptfunctions",
+    "class/src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper.html#instance-method-getDocJavascriptFunctions",
+    "src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper#getDocJavascriptFunctions",
+    "method"
+  ],
+  [
+    "src/rulesconfiguration/ruleconfigurationshelper.js~ruleconfigurationshelper#getdocprivatejavascriptfunctions",
+    "class/src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper.html#instance-method-getDocPrivateJavascriptFunctions",
+    "src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper#getDocPrivateJavascriptFunctions",
+    "method"
+  ],
+  [
+    "src/rulesconfiguration/ruleconfigurationshelper.js~ruleconfigurationshelper#getddummyfunctions",
+    "class/src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper.html#instance-method-getdDummyFunctions",
+    "src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper#getdDummyFunctions",
     "method"
   ],
   [

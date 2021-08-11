@@ -56,6 +56,11 @@ module.exports = {
             'user': {
                 'email': 'findByEmail'
             },
+            ruleConfigurationsHelper: {
+                'functions': 'getdDummyFunctions',
+                'documentaion': 'getDocJavascriptFunctions',
+                'privateDocumentation': 'getDocPrivateJavascriptFunctions'
+            },
             'rule configuration': {
                 'organizationAndchannelAndenabled': 'findByOrganizationAndChannelAndEnabled',
                 'organizationAndchannelAndname': 'findByOrganizationAndChannelAndName',

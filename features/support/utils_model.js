@@ -98,6 +98,9 @@ module.exports = {
             "operation finder": function(ogapi) {
                 return ogapi.newOperationFinder();
             },
+            "ruleConfigurationsHelper finder": function(ogapio) {
+                return ogapi.newRuleConfigurationsHelper();
+            },
             "organization finder": function(ogapi) {
                 return ogapi.newOrganizationFinder();
             },
