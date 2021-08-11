@@ -74,7 +74,7 @@ export default class RuleConfigurationsHelper extends GenericFinder {
                     });
                 } else {
                     defered.resolve({
-                        data: response,
+                        data: req,
                         statusCode: req.statusCode
                     });
                 }
