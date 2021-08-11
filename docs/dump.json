@@ -39571,7 +39571,7 @@
     "__docId__": 1479,
     "kind": "file",
     "name": "src/rulesConfiguration/RuleConfigurationsHelper.js",
-    "content": "'use strict';\n\nimport GenericFinder from '../GenericFinder';\n\n/**\n *   This class allow make get request to RuleConfigurationsHelper resource into Opengate North API.\n */\nexport default class RuleConfigurationsHelper extends GenericFinder {\n\n    /**     \n     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.\n     */\n    constructor(ogapi) {\n        super(ogapi, 'rules');\n        this._jsHeaders ={\n            'accept': 'application/javascript'\n        };\n        this._mdHeaders =  {\n            'accept': 'text/markdown'\n        }\n    }\n\n    /**\n     * Performs a get that returns dummy functions from rules service\n     * @test\n     *   ogapi.newRuleConfigurationsHelper().getdDummyFunctions();\n     * @return {Promise} \n     */\n    getdDummyFunctions() {\n        this._setExtraHeaders(this._jsHeaders)\n        this._id = 'js/dummyFunctions'\n        return this._execute();\n    }\n\n    /**\n     * Performs a get that returns documentation private of javascript functions from rules service\n     * @test\n     *   ogapi.newRuleConfigurationsHelper().getDocPrivateJavascriptFunctions();\n     * @return {Promise} \n     */\n     getDocPrivateJavascriptFunctions() {\n        this._setExtraHeaders(this._mdHeaders)\n        this._id = 'doc/private/javascriptFunctions'\n        return this._execute();\n    }\n    /**\n     * Performs a get that returns documentation of javascript functions from rules service\n     * @test\n     *   ogapi.newRuleConfigurationsHelper().getDocJavascriptFunctions();\n     * @return {Promise} \n     */\n     getDocJavascriptFunctions() {\n        this._setExtraHeaders(this._mdHeaders)\n        this._id = 'doc/javascriptFunctions'\n        return this._execute();\n    }\n\n    /**\n     * @return {Promise}\n     * @private\n     */\n     _execute() {\n        let defered = q.defer();\n        let promise = defered.promise;\n        let _error_not_found = this._error_not_found;\n        this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters())\n            .then((req) => {\n                if (req.statusCode === 204) {\n                    defered.reject({\n                        error: _error_not_found,\n                        statusCode: HttpStatus.NOT_FOUND\n                    });\n                } else {\n                    var data = {\n                        text: req.text,\n                        type: req.type\n                    } ;\n                    defered.resolve({\n                        data: data,\n                        statusCode: req.statusCode\n                    });\n                }\n            })\n            .catch((error) => {\n                defered.reject(error);\n            });\n        return promise;\n    }\n\n}",
+    "content": "'use strict';\n\nimport GenericFinder from '../GenericFinder';\nimport q from 'q';\nimport HttpStatus from 'http-status-codes';\n\n/**\n *   This class allow make get request to RuleConfigurationsHelper resource into Opengate North API.\n */\nexport default class RuleConfigurationsHelper extends GenericFinder {\n\n    /**     \n     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.\n     */\n    constructor(ogapi) {\n        super(ogapi, 'rules');\n        this._jsHeaders ={\n            'accept': 'application/javascript'\n        };\n        this._mdHeaders =  {\n            'accept': 'text/markdown'\n        }\n    }\n\n    /**\n     * Performs a get that returns dummy functions from rules service\n     * @test\n     *   ogapi.newRuleConfigurationsHelper().getdDummyFunctions();\n     * @return {Promise} \n     */\n    getdDummyFunctions() {\n        this._setExtraHeaders(this._jsHeaders)\n        this._id = 'js/dummyFunctions'\n        return this._execute();\n    }\n\n    /**\n     * Performs a get that returns documentation private of javascript functions from rules service\n     * @test\n     *   ogapi.newRuleConfigurationsHelper().getDocPrivateJavascriptFunctions();\n     * @return {Promise} \n     */\n     getDocPrivateJavascriptFunctions() {\n        this._setExtraHeaders(this._mdHeaders)\n        this._id = 'doc/private/javascriptFunctions'\n        return this._execute();\n    }\n    /**\n     * Performs a get that returns documentation of javascript functions from rules service\n     * @test\n     *   ogapi.newRuleConfigurationsHelper().getDocJavascriptFunctions();\n     * @return {Promise} \n     */\n     getDocJavascriptFunctions() {\n        this._setExtraHeaders(this._mdHeaders)\n        this._id = 'doc/javascriptFunctions'\n        return this._execute();\n    }\n\n    /**\n     * @return {Promise}\n     * @private\n     */\n     _execute() {\n        let defered = q.defer();\n        let promise = defered.promise;\n        let _error_not_found = this._error_not_found;\n        this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters())\n            .then((req) => {\n                if (req.statusCode === 204) {\n                    defered.reject({\n                        error: _error_not_found,\n                        statusCode: HttpStatus.NOT_FOUND\n                    });\n                } else {\n                    defered.resolve({\n                        data: response,\n                        statusCode: req.statusCode\n                    });\n                }\n            })\n            .catch((error) => {\n                defered.reject(error);\n            });\n        return promise;\n    }\n\n}",
     "static": true,
     "longname": "src/rulesConfiguration/RuleConfigurationsHelper.js",
     "access": null,
@@ -39590,7 +39590,7 @@
     "importPath": "opengate-js/src/rulesConfiguration/RuleConfigurationsHelper.js",
     "importStyle": "RuleConfigurationsHelper",
     "description": "  This class allow make get request to RuleConfigurationsHelper resource into Opengate North API.",
-    "lineNumber": 8,
+    "lineNumber": 10,
     "interface": false,
     "extends": [
       "src/GenericFinder.js~GenericFinder"
@@ -39607,7 +39607,7 @@
     "longname": "src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper#constructor",
     "access": null,
     "description": "    ",
-    "lineNumber": 13,
+    "lineNumber": 15,
     "params": [
       {
         "nullable": null,
@@ -39630,7 +39630,7 @@
     "longname": "src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper#_jsHeaders",
     "access": null,
     "description": null,
-    "lineNumber": 15,
+    "lineNumber": 17,
     "undocument": true,
     "unknown": [
       {
@@ -39653,7 +39653,7 @@
     "longname": "src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper#_mdHeaders",
     "access": null,
     "description": null,
-    "lineNumber": 18,
+    "lineNumber": 20,
     "undocument": true,
     "unknown": [
       {
@@ -39678,7 +39678,7 @@
     "longname": "src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper#getdDummyFunctions",
     "access": null,
     "description": "Performs a get that returns dummy functions from rules service",
-    "lineNumber": 29,
+    "lineNumber": 31,
     "unknown": [
       {
         "tagName": "@test",
@@ -39704,7 +39704,7 @@
     "longname": "src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper#_id",
     "access": null,
     "description": null,
-    "lineNumber": 31,
+    "lineNumber": 33,
     "undocument": true,
     "unknown": [
       {
@@ -39729,7 +39729,7 @@
     "longname": "src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper#getDocPrivateJavascriptFunctions",
     "access": null,
     "description": "Performs a get that returns documentation private of javascript functions from rules service",
-    "lineNumber": 41,
+    "lineNumber": 43,
     "unknown": [
       {
         "tagName": "@test",
@@ -39755,7 +39755,7 @@
     "longname": "src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper#_id",
     "access": null,
     "description": null,
-    "lineNumber": 43,
+    "lineNumber": 45,
     "undocument": true,
     "unknown": [
       {
@@ -39780,7 +39780,7 @@
     "longname": "src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper#getDocJavascriptFunctions",
     "access": null,
     "description": "Performs a get that returns documentation of javascript functions from rules service",
-    "lineNumber": 52,
+    "lineNumber": 54,
     "unknown": [
       {
         "tagName": "@test",
@@ -39806,7 +39806,7 @@
     "longname": "src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper#_id",
     "access": null,
     "description": null,
-    "lineNumber": 54,
+    "lineNumber": 56,
     "undocument": true,
     "unknown": [
       {
@@ -39831,7 +39831,7 @@
     "longname": "src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper#_execute",
     "access": "private",
     "description": "",
-    "lineNumber": 62,
+    "lineNumber": 64,
     "params": [],
     "return": {
       "nullable": null,

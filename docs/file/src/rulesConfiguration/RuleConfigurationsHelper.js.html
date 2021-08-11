@@ -243,6 +243,8 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
 import GenericFinder from &apos;../GenericFinder&apos;;
+import q from &apos;q&apos;;
+import HttpStatus from &apos;http-status-codes&apos;;
 
 /**
  *   This class allow make get request to RuleConfigurationsHelper resource into Opengate North API.
@@ -313,12 +315,8 @@ export default class RuleConfigurationsHelper extends GenericFinder {
                         statusCode: HttpStatus.NOT_FOUND
                     });
                 } else {
-                    var data = {
-                        text: req.text,
-                        type: req.type
-                    } ;
                     defered.resolve({
-                        data: data,
+                        data: response,
                         statusCode: req.statusCode
                     });
                 }

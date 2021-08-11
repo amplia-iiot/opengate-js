@@ -18,6 +18,14 @@ var _GenericFinder2 = require('../GenericFinder');
 
 var _GenericFinder3 = _interopRequireDefault(_GenericFinder2);
 
+var _q = require('q');
+
+var _q2 = _interopRequireDefault(_q);
+
+var _httpStatusCodes = require('http-status-codes');
+
+var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
+
 /**
  *   This class allow make get request to RuleConfigurationsHelper resource into Opengate North API.
  */
@@ -91,22 +99,18 @@ var RuleConfigurationsHelper = (function (_GenericFinder) {
     }, {
         key: '_execute',
         value: function _execute() {
-            var defered = q.defer();
+            var defered = _q2['default'].defer();
             var promise = defered.promise;
             var _error_not_found = this._error_not_found;
             this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters()).then(function (req) {
                 if (req.statusCode === 204) {
                     defered.reject({
                         error: _error_not_found,
-                        statusCode: HttpStatus.NOT_FOUND
+                        statusCode: _httpStatusCodes2['default'].NOT_FOUND
                     });
                 } else {
-                    var data = {
-                        text: req.text,
-                        type: req.type
-                    };
                     defered.resolve({
-                        data: data,
+                        data: response,
                         statusCode: req.statusCode
                     });
                 }
