@@ -13,10 +13,10 @@ export default class RuleConfigurationsHelper extends GenericFinder {
     constructor(ogapi) {
         super(ogapi, 'rules');
         this._jsHeaders ={
-            'Accept': 'application/javascript'
+            'accept': 'application/javascript'
         };
         this._mdHeaders =  {
-            'Accept': 'text/markdown'
+            'accept': 'text/markdown'
         }
     }
 
@@ -27,7 +27,7 @@ export default class RuleConfigurationsHelper extends GenericFinder {
      * @return {Promise} 
      */
     getdDummyFunctions() {
-        //this._headers = this._jsHeaders
+        this._setExtraHeaders(this._jsHeaders)
         this._id = 'js/dummyFunctions'
         return this._execute();
     }
@@ -39,7 +39,7 @@ export default class RuleConfigurationsHelper extends GenericFinder {
      * @return {Promise} 
      */
      getDocPrivateJavascriptFunctions() {
-        //this._headers = this._mdHeaders
+        this._setExtraHeaders(this._mdHeaders)
         this._id = 'doc/private/javascriptFunctions'
         return this._execute();
     }
@@ -50,9 +50,41 @@ export default class RuleConfigurationsHelper extends GenericFinder {
      * @return {Promise} 
      */
      getDocJavascriptFunctions() {
-        //this._headers = this._mdHeaders
+        this._setExtraHeaders(this._mdHeaders)
         this._id = 'doc/javascriptFunctions'
         return this._execute();
+    }
+
+    /**
+     * @return {Promise}
+     * @private
+     */
+     _execute() {
+        let defered = q.defer();
+        let promise = defered.promise;
+        let _error_not_found = this._error_not_found;
+        this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters())
+            .then((req) => {
+                if (req.statusCode === 204) {
+                    defered.reject({
+                        error: _error_not_found,
+                        statusCode: HttpStatus.NOT_FOUND
+                    });
+                } else {
+                    var data = {
+                        text: req.text,
+                        type: req.type
+                    } ;
+                    defered.resolve({
+                        data: data,
+                        statusCode: req.statusCode
+                    });
+                }
+            })
+            .catch((error) => {
+                defered.reject(error);
+            });
+        return promise;
     }
 
 }
