@@ -34,10 +34,10 @@ var RuleConfigurationsHelper = (function (_GenericFinder) {
 
         _get(Object.getPrototypeOf(RuleConfigurationsHelper.prototype), 'constructor', this).call(this, ogapi, 'rules');
         this._jsHeaders = {
-            'Accept': 'application/javascript'
+            'accept': 'application/javascript'
         };
         this._mdHeaders = {
-            'Accept': 'text/markdown'
+            'accept': 'text/markdown'
         };
     }
 
@@ -51,7 +51,7 @@ var RuleConfigurationsHelper = (function (_GenericFinder) {
     _createClass(RuleConfigurationsHelper, [{
         key: 'getdDummyFunctions',
         value: function getdDummyFunctions() {
-            //this._headers = this._jsHeaders
+            this._setExtraHeaders(this._jsHeaders);
             this._id = 'js/dummyFunctions';
             return this._execute();
         }
@@ -65,7 +65,7 @@ var RuleConfigurationsHelper = (function (_GenericFinder) {
     }, {
         key: 'getDocPrivateJavascriptFunctions',
         value: function getDocPrivateJavascriptFunctions() {
-            //this._headers = this._mdHeaders
+            this._setExtraHeaders(this._mdHeaders);
             this._id = 'doc/private/javascriptFunctions';
             return this._execute();
         }
@@ -79,9 +79,41 @@ var RuleConfigurationsHelper = (function (_GenericFinder) {
     }, {
         key: 'getDocJavascriptFunctions',
         value: function getDocJavascriptFunctions() {
-            //this._headers = this._mdHeaders
+            this._setExtraHeaders(this._mdHeaders);
             this._id = 'doc/javascriptFunctions';
             return this._execute();
+        }
+
+        /**
+         * @return {Promise}
+         * @private
+         */
+    }, {
+        key: '_execute',
+        value: function _execute() {
+            var defered = q.defer();
+            var promise = defered.promise;
+            var _error_not_found = this._error_not_found;
+            this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters()).then(function (req) {
+                if (req.statusCode === 204) {
+                    defered.reject({
+                        error: _error_not_found,
+                        statusCode: HttpStatus.NOT_FOUND
+                    });
+                } else {
+                    var data = {
+                        text: req.text,
+                        type: req.type
+                    };
+                    defered.resolve({
+                        data: data,
+                        statusCode: req.statusCode
+                    });
+                }
+            })['catch'](function (error) {
+                defered.reject(error);
+            });
+            return promise;
         }
     }]);
 
