@@ -42,7 +42,8 @@ const match_url = {
     '/entities': 'SearchOnDatamodel',
     'entity-asset': 'SearchOnDatamodel',
     '/tickets': 'SearchOnDatamodel',
-    '/channels': 'SearchOnDatamodel'
+    '/channels': 'SearchOnDatamodel',
+    '/datasets': 'SearchOnDataset'
 };
 
 const match_context = {
@@ -88,16 +89,21 @@ const complexFields = ['subscriber', 'subscription', 'communicationsModule', 'de
 const SIMPLE_FIELDS = 'simple';
 const COMPLEX_FIELDS = 'complex';
 const SEARCH_FIELDS = 'search';
+const SEARCH_COLUMNS = 'dataset';
 
 const TYPE_FIELD = {
     get: function(url) {
         if (complexPrimaryType.indexOf(match_url[url]) >= 0) {
             return COMPLEX_FIELDS;
         }
-        if (match_url[url] === 'SearchOnDatamodel') {
-            return SEARCH_FIELDS;
+        switch (match_url[url]) {
+            case 'SearchOnDatamodel':       
+                return SEARCH_FIELDS;
+            case 'SearchOnDataset':
+                return SEARCH_COLUMNS;
+            default:
+                return SIMPLE_FIELDS;
         }
-        return SIMPLE_FIELDS;
     }
 };
 
@@ -294,6 +300,9 @@ const FIELD_SEARCHER = {
             });
             return out;
         }
+    },
+    [SEARCH_COLUMNS]: function(states, context, primaryType, defered, selectedField, selectAll){
+        //newDatasetFinder
     }
 }
 
@@ -307,7 +316,6 @@ export default class FieldFinder {
             this._resourceTypes = match_url_resourceType.get(url);
         }
     }
-
     find(input = "") {
         let defered = q.defer();
         FIELD_SEARCHER[this._type].call(this, input.split('.'), FIELDS[match_url[this._url]], match_url[this._url], defered);

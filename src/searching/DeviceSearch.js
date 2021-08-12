@@ -2,7 +2,7 @@ import Search from './Search';
 import q from 'q';
 
 /** 
- * This extends BaseSearch and allow make request to any available resource into Opengate North API.
+ * This extends Search and allow make request to any available resource into Opengate North API.
  */
 export default class DeviceSearch extends Search {
     /**
