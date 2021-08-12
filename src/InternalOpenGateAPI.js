@@ -20,6 +20,7 @@ import RuleConfigurations from './rulesConfiguration/RuleConfigurations';
 import RuleConfigurationsFinder from './rulesConfiguration/RuleConfigurationsFinder';
 import RuleConfigurationsCatalog from './rulesConfiguration/RuleConfigurationsCatalog';
 import RuleConfigurationsHelper from './rulesConfiguration/RuleConfigurationsHelper';
+import DatasetFinder from './datasets/DatasetFinder';
 import OperationType from './operationTypes/OperationType';
 import OperationTypeFinder from './operationTypes/OperationTypeFinder';
 import OperationTypeCatalog from './operationTypes/OperationTypeCatalog';
@@ -285,6 +286,15 @@ export default class InternalOpenGateAPI {
      newRuleConfigurationsHelper() {
         return new RuleConfigurationsHelper(this);
     }
+    
+    /**
+     * This return a to find Dataset configuration
+     * @return {DatasetFinder}
+     */
+     newDatasetFinder() {
+        return new DatasetFinder(this);
+    }
+    
     /**
      * This return a util to find Rule Configurations Templates
      * @return {RuleConfigurationsCatalog}

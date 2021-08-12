@@ -18,7 +18,7 @@ export default class Search extends BaseSearch {
    	* @param {nubmer} timeout
     */
 	constructor(ogapi, url, filter, limit = { limit: {} }, sort, group, select, timeout, urlParams) {
-		super(ogapi, url, timeout);
+		super(ogapi, 'search' + url, timeout);
 		this._setUrlParameters(urlParams);
 		this._postObj = merge(filter, limit, group, select);
 		if (typeof sort === 'object') {
