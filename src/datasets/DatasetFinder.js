@@ -18,7 +18,7 @@ export default class DatasetFinder extends GenericFinder {
      * Performs a get that returns list of datasets
      * @test
      *   ogapi.newDatasetFinder().findByOrganization(organization);
-     * @param {organization} string - organization
+     * @param {string} organization - organization
      * @return {Promise} 
      */
      findByOrganization(organization) {
@@ -30,8 +30,8 @@ export default class DatasetFinder extends GenericFinder {
      * Performs a get that returns a definition of dataset
      * @test
      *   ogapi.newDatasetFinder().findByOrganizationAndDatasetId(organization, datasetId);
-     * @param {organization} string - organization
-     * @param {datasetId} string - dataset identifier
+     * @param {string} organization - organization
+     * @param {string} datasetId - dataset identifier
      * @return {Promise} 
      */
      findByOrganizationAndDatasetId(organization, datasetId) {

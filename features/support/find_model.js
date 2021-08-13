@@ -61,6 +61,10 @@ module.exports = {
                 'documentaion': 'getDocJavascriptFunctions',
                 'privateDocumentation': 'getDocPrivateJavascriptFunctions'
             },
+            'dataset':{
+                'organizationId': 'findByOrganization',
+                'organizationIdAnddatasetId': 'findByOrganizationAndDatasetId'
+            },
             'rule configuration': {
                 'organizationAndchannelAndenabled': 'findByOrganizationAndChannelAndEnabled',
                 'organizationAndchannelAndname': 'findByOrganizationAndChannelAndName',
