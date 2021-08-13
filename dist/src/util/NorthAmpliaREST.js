@@ -74,6 +74,36 @@ var NorthAmpliaREST = (function () {
             };
         });        
         */
+        mock.get(_options.url + '/datasets/provision/organizations/:organization', function (req) {
+            return {
+                body: {
+                    datasets: [{
+                        name: 'dataset1',
+                        identifier: '111',
+                        description: 'mock',
+                        type: 'CURRENT'
+                    }, {
+                        name: 'dataset2',
+                        identifier: '2222',
+                        description: 'mock',
+                        type: 'HISTORY'
+                    }]
+                },
+                statusCode: 200
+            };
+        });
+        mock.get(_options.url + '/datasets/provision/organizations/:organization/:dataset', function (req) {
+            return {
+                body: {
+                    name: 'dataset1',
+                    identifier: '111',
+                    description: 'mock',
+                    type: 'CURRENT',
+                    columns: []
+                },
+                statusCode: 200
+            };
+        });
     }
 
     _createClass(NorthAmpliaREST, [{

@@ -58,7 +58,8 @@ var match_url = {
     '/entities': 'SearchOnDatamodel',
     'entity-asset': 'SearchOnDatamodel',
     '/tickets': 'SearchOnDatamodel',
-    '/channels': 'SearchOnDatamodel'
+    '/channels': 'SearchOnDatamodel',
+    '/datasets': 'SearchOnDataset'
 };
 
 var match_context = {
@@ -104,16 +105,21 @@ var complexFields = ['subscriber', 'subscription', 'communicationsModule', 'devi
 var SIMPLE_FIELDS = 'simple';
 var COMPLEX_FIELDS = 'complex';
 var SEARCH_FIELDS = 'search';
+var SEARCH_COLUMNS = 'dataset';
 
 var TYPE_FIELD = {
     get: function get(url) {
         if (complexPrimaryType.indexOf(match_url[url]) >= 0) {
             return COMPLEX_FIELDS;
         }
-        if (match_url[url] === 'SearchOnDatamodel') {
-            return SEARCH_FIELDS;
+        switch (match_url[url]) {
+            case 'SearchOnDatamodel':
+                return SEARCH_FIELDS;
+            case 'SearchOnDataset':
+                return SEARCH_COLUMNS;
+            default:
+                return SIMPLE_FIELDS;
         }
-        return SIMPLE_FIELDS;
     }
 };
 
@@ -301,6 +307,8 @@ var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEA
         });
         return out;
     }
+}), _defineProperty(_FIELD_SEARCHER, SEARCH_COLUMNS, function (states, context, primaryType, defered, selectedField, selectAll) {
+    //newDatasetFinder
 }), _FIELD_SEARCHER);
 
 var FieldFinder = (function () {

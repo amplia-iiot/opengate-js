@@ -45,7 +45,7 @@ var Search = (function (_BaseSearch) {
 
 		_classCallCheck(this, Search);
 
-		_get(Object.getPrototypeOf(Search.prototype), 'constructor', this).call(this, ogapi, url, timeout);
+		_get(Object.getPrototypeOf(Search.prototype), 'constructor', this).call(this, ogapi, 'search' + url, timeout);
 		this._setUrlParameters(urlParams);
 		this._postObj = (0, _merge2['default'])(filter, limit, group, select);
 		if (typeof sort === 'object') {

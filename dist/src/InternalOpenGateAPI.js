@@ -90,6 +90,10 @@ var _rulesConfigurationRuleConfigurationsHelper = require('./rulesConfiguration/
 
 var _rulesConfigurationRuleConfigurationsHelper2 = _interopRequireDefault(_rulesConfigurationRuleConfigurationsHelper);
 
+var _datasetsDatasetFinder = require('./datasets/DatasetFinder');
+
+var _datasetsDatasetFinder2 = _interopRequireDefault(_datasetsDatasetFinder);
+
 var _operationTypesOperationType = require('./operationTypes/OperationType');
 
 var _operationTypesOperationType2 = _interopRequireDefault(_operationTypesOperationType);
@@ -661,6 +665,16 @@ var InternalOpenGateAPI = (function () {
         key: 'newRuleConfigurationsHelper',
         value: function newRuleConfigurationsHelper() {
             return new _rulesConfigurationRuleConfigurationsHelper2['default'](this);
+        }
+
+        /**
+         * This return a to find Dataset configuration
+         * @return {DatasetFinder}
+         */
+    }, {
+        key: 'newDatasetFinder',
+        value: function newDatasetFinder() {
+            return new _datasetsDatasetFinder2['default'](this);
         }
 
         /**
