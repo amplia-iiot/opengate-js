@@ -3,38 +3,35 @@
 @filter_fields
 @filtering
 @urlParameters
-@fail
+@wip
+@wip
 Feature: Searching device fields
      As a user of JsApi
      I want to get the searching fields
-     So I can create a device
 
      Background:
           Given an apikey user by "require-real-apikey"
-          And an ogapi "certificates search" util
-          Given I want to search a "certificates"
+          And an ogapi "entities search" util
+          Given I want to search a "entities"
 
 
-     Scenario: Execute searching over assignable certificates
-          When I try to search with...
+     Scenario: Execute searching over assignable entities
+          When I get filter fields...
                | field      | content |
                | findFields |         |
-          Then I get filter fields
           Then response data should has elements
 
-     Scenario: Execute searching over assignable certificates
-          When I try to search with...
+     Scenario: Execute searching over assignable entities
+          When I get filter fields...
                | field      | content |
                | findFields |         |
-          Then I get filter fields
           Then response data should has elements
 
-     Scenario: Execute searching over assignable certificates
-          When I try to search with...
+     Scenario: Execute searching over assignable certifentitiesicates
+          When I get filter fields...
                | field      | content                |
-               | findFields | subscriber.relColl.col |
-          Then I get filter fields
-          Then response data should has no elements
+               | findFields | device.model._current.value.manufacturer |
+          Then response data should has elements
 
 
 

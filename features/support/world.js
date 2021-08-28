@@ -13,9 +13,9 @@ findDeleteModel = require('./delete_provision_model');
 searchingModel = require('./searching_model');
 
 function World() {
-    this.test_url_north = process.env.API_NORTH_INTERNAL || 'API_NORTH';
-    this.test_url_south = process.env.API_SOUTH_INTERNAL || 'API_SOUTH';
-    this.apikey = process.env.API_KEY || 'API_KEY';
+    this.test_url_north = process.env.API_NORTH_INTERNAL || 'https://api.opengate.es/north/v80';
+    this.test_url_south = process.env.API_SOUTH_INTERNAL || 'https://api.opengate.es/south/v80';
+    this.apikey = process.env.API_KEY || 'd3014072-798b-4712-9c82-110a8c726865';
     chai.use(chai_as_promised);
     this.expect = chai.expect;
 

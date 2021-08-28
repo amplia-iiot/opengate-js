@@ -74,10 +74,7 @@ When(/^I try to search with...$/, function (table, callback) {
         var data = table.hashes();
         if (data.length > 0) {
             for (var i = 0; i < data.length; i++) {
-                //console.log(data[i]);
                 var withMethod = this.model_match(this.currentModel).setters(this.currentEntity)[data[i].field];
-                //console.log(data[i]);
-                //console.log(his.util);
                 this.util = this.util[withMethod](data[i].content);
             }
         } else {
