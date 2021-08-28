@@ -3162,6 +3162,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#datasetsearchbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-datasetSearchBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#datasetSearchBuilder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#datasetscatalogsearchbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-datasetsCatalogSearchBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#datasetsCatalogSearchBuilder",

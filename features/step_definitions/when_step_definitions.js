@@ -778,30 +778,40 @@ When(/^I update password with "([^"]*)"$/, function (field) {
     }
 });
 
-When(/^I get filter fields$/, function () {
+When(/^I get filter fields...$/, function (table, callback) {
     var _this = this;
     _this.error = undefined;
     _this.responseData = undefined;
 
     function catchResponse (data) {
-        //console.log("EXECUTE RESPONSE: " + JSON.stringify(data));
+        console.log("EXECUTE RESPONSE: " + JSON.stringify(data));
         _this.responseData = data;
         _this.error = undefined;
+        callback()
     }
 
     function catchErrorResponse (err) {
-        //console.log("EXECUTE ERROR: " + JSON.stringify(err));
+        console.log("EXECUTE ERROR: " + JSON.stringify(err));
         _this.responseData = err;
         _this.error = err;
-
+        callback()
     }
 
     try {
-        return this.util.then(catchResponse).catch(catchErrorResponse);
+        var data = table.hashes();
+        if (data.length > 0) {
+            for (var i = 0; i < data.length; i++) {
+                var withMethod = this.model_match(this.currentModel).setters(this.currentEntity)[data[i].field];
+                this.util[withMethod](data[i].content).then(catchResponse).catch(catchErrorResponse);
+            }
+        } else {
+            this.error = "No params found";
+            callback()
+        }
     } catch (err) {
-        //console.log(err);
+        console.log(err);
         this.error = err;
-        return;
+        callback()
     }
 });
 

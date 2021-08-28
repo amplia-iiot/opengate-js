@@ -105,6 +105,7 @@ import QratingsBuilder from './iot/catalog/Qrating';
 import EntityBuilder from './provision/entities/EntityBuilder';
 import EntitiesSearchBuilder from './searching/builder/EntitiesSearchBuilder';
 import DatasetEntitiesSearchBuilder from './searching/builder/DatasetEntitiesSearchBuilder';
+import DatasetSearchBuilder from './searching/builder/DatasetSearchBuilder';
 import CountryCodesSearchBuilder from './searching/builder/CountryCodesSearchBuilder';
 import TimezoneSearchBuilder from './searching/builder/TimezoneSearchBuilder';
 import UserLanguagesSearchBuilder from './searching/builder/UserLanguagesSearchBuilder';
@@ -655,6 +656,15 @@ export default class InternalOpenGateAPI {
     datasetEntitiesSearchBuilder(organization, dataset) {
         return new DatasetEntitiesSearchBuilder(this, organization, dataset);
     }
+
+    /**
+     * This return a DatasetSearchBuilder to build a specific DatasetSearch
+     * @return {DatasetSearchBuilder}
+     */
+     datasetSearchBuilder(organization, dataset) {
+        return new DatasetSearchBuilder(this, organization, dataset);
+    }
+    
 
     /**
      * This return a PlansSearchBuilder to build a specific PlansSearchBuilder

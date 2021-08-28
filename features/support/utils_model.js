@@ -26,6 +26,9 @@ module.exports = {
             "certificates search": function(ogapi) {
                 return ogapi.certificatesSearchBuilder();
             },
+            "datasets search": function(ogapi, param, param2) {
+                return ogapi.datasetSearchBuilder(param, param2);
+            },
             "channel finder": function(ogapi) {
                 return ogapi.newChannelFinder();
             },

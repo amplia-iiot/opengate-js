@@ -281,7 +281,7 @@
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">ogapi.datasetSearchBuilder()</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">ogapi.datasetSearchBuilder(organization, datasetId)</code></pre>
     </div>
 </div>
 
@@ -896,7 +896,7 @@
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.datasetSearchBuilder().onProvisioned().build()</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.datasetSearchBuilder(organization, datasetId).build()</code></pre>
     </div>
 </div>
 
@@ -1054,10 +1054,10 @@
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.datasetSearchBuilder().select(
+      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.datasetSearchBuilder(organization, datasetId).select(
      ogapi.newSelectBuilder().add(SE.element(&quot;provision.device.identifier&quot;, [&quot;value&quot;], &quot;id&quot;), SE.add(&quot;device.temperature.value&quot;, [&quot;value&quot;]))
  ) // Setting SelectBuilder
- ogapi.datasetSearchBuilder().select({ &quot;elements&quot;: [{&quot;name&quot;: &quot;provision.device.identifier&quot;,
+ ogapi.datasetSearchBuilder(organization, datasetId).select({ &quot;elements&quot;: [{&quot;name&quot;: &quot;provision.device.identifier&quot;,
 	&quot;fields&quot;: [{&quot;field&quot;: &quot;value&quot;,&quot;alias&quot;: &quot;identifier&quot;}]},
      {&quot;name&quot;: &quot;device.temperature.value&quot;,&quot;fields&quot;: [{&quot;field&quot;: &quot;value&quot;,&quot;alias&quot;: &quot;identifier&quot;}]}]
   }) //Custom select</code></pre>

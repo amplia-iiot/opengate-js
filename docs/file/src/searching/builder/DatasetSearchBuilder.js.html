@@ -253,14 +253,14 @@ export const BASE_URL = &apos;/datasets&apos;;
 
 /**
  * Defined a search over Executions	
- * @example ogapi.datasetSearchBuilder()
+ * @example ogapi.datasetSearchBuilder(organization, datasetId)
  */
 export default class DatasetSearchBuilder extends SearchBuilder {
     /**
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */
     constructor(parent, organization, dataset){
-        super(parent, {}, new FieldFinder(parent, BASE_URL))
+        super(parent, {}, new FieldFinder(parent, BASE_URL, {organization: organization, dataset: dataset}))
         this._url = BASE_URL + &apos;/provision/organizations/&apos; + organization + &apos;/&apos; + dataset + &apos;/data&apos;
     }
     
@@ -279,10 +279,10 @@ export default class DatasetSearchBuilder extends SearchBuilder {
     /**
      * The search request will have this filter 
      * @example
-     *  ogapi.datasetSearchBuilder().select(
+     *  ogapi.datasetSearchBuilder(organization, datasetId).select(
      *      ogapi.newSelectBuilder().add(SE.element(&quot;provision.device.identifier&quot;, [&quot;value&quot;], &quot;id&quot;), SE.add(&quot;device.temperature.value&quot;, [&quot;value&quot;]))
      *  ) // Setting SelectBuilder
-     *  ogapi.datasetSearchBuilder().select({ &quot;elements&quot;: [{&quot;name&quot;: &quot;provision.device.identifier&quot;,
+     *  ogapi.datasetSearchBuilder(organization, datasetId).select({ &quot;elements&quot;: [{&quot;name&quot;: &quot;provision.device.identifier&quot;,
      *		&quot;fields&quot;: [{&quot;field&quot;: &quot;value&quot;,&quot;alias&quot;: &quot;identifier&quot;}]},
      *      {&quot;name&quot;: &quot;device.temperature.value&quot;,&quot;fields&quot;: [{&quot;field&quot;: &quot;value&quot;,&quot;alias&quot;: &quot;identifier&quot;}]}]
      *   }) //Custom select
@@ -298,7 +298,7 @@ export default class DatasetSearchBuilder extends SearchBuilder {
      * Build a instance of Search 
      *
      * @example
-     *  ogapi.datasetSearchBuilder().onProvisioned().build()
+     *  ogapi.datasetSearchBuilder(organization, datasetId).build()
      * @throws {SearchBuilderError} Throw error on url build
      * @return {Search} 
      */

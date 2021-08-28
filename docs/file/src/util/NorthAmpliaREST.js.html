@@ -248,7 +248,7 @@
 
 import merge from &apos;merge&apos;;
 import urlencode from &apos;urlencode&apos;;
-import request from &apos;superagent&apos;;
+import request, { mkcol } from &apos;superagent&apos;;
 import q from &apos;q&apos;;
 import _ from &apos;lodash&apos;
 //  MOCK user searching
@@ -287,6 +287,42 @@ export default class NorthAmpliaREST {
             };
         });        
        */
+      mock.post(_options.url + &apos;/datasets/provision/organizations/organization/dataset/data&apos;, function(req){
+        return {
+            body: {
+                &quot;page&quot;: {
+                  &quot;number&quot;: 26
+                },
+                &quot;columns&quot;: [
+                  &quot;Coll Mobile ICC value&quot;,
+                  &quot;Coll Mobile ICC date&quot;,
+                  &quot;Prov Identifier&quot;,
+                  &quot;Coll manufacturer&quot;,
+                  &quot;Coll model&quot;,
+                  &quot;Prov Mobile ICC value&quot;
+                ],
+                &quot;data&quot;: [
+                  [
+                    &quot;icc1&quot;,
+                    &quot;2021-04-06T12:35:22.784Z&quot;,
+                    &quot;MyDevice1&quot;,
+                    &quot;OpenGate&quot;,
+                    &quot;OpenGate&quot;,
+                    &quot;icc1&quot;
+                  ],
+                  [
+                    &quot;icc2&quot;,
+                    &quot;2021-04-06T07:45:57.468Z&quot;,
+                    &quot;MyDevice2&quot;,
+                    &quot;OpenGate&quot;,
+                    &quot;OpenGate&quot;,
+                    &quot;icc2&quot;
+                  ]
+                ]
+              },
+              statusCode: 200
+        };
+      });
         mock.get(_options.url + &apos;/datasets/provision/organizations/:organization&apos;, function(req) {
             return {
                 body: {
@@ -311,13 +347,37 @@ export default class NorthAmpliaREST {
         mock.get(_options.url + &apos;/datasets/provision/organizations/:organization/:dataset&apos;, function(req) {
             return {
                 body: 
-                       {
-                           name: &apos;dataset1&apos;,
-                           identifier: &apos;111&apos;,
-                           description: &apos;mock&apos;,
-                           type: &apos;CURRENT&apos;,
-                           columns: []
-                },
+                {
+                    &quot;name&quot;: &quot;dataset_name&quot;,
+                    &quot;description&quot;: &quot;My dataset to get inventory data&quot;,
+                    &quot;type&quot;: &quot;CURRENT&quot;,
+                    &quot;columns&quot;: [
+                        {
+                            &quot;path&quot;: &quot;provision.device.identifier._current.value&quot;,
+                            &quot;name&quot;: &quot;Prov identifier&quot;,
+                            &quot;filter&quot;: &quot;YES&quot;,
+                            &quot;sort&quot;: true
+                          },
+                          {
+                            &quot;path&quot;: &quot;device.model._current.value.manufacturer&quot;,
+                            &quot;name&quot;: &quot;Manufacturer&quot;,
+                            &quot;filter&quot;: &quot;ALWAYS&quot;,
+                            &quot;sort&quot;: false
+                          },
+                          {
+                            &quot;path&quot;: &quot;device.communicationModules[0].subscriber.mobile.icc._current.value&quot;,
+                            &quot;name&quot;: &quot;ICC&quot;,
+                            &quot;filter&quot;: &quot;NO&quot;,
+                            &quot;sort&quot;: false
+                          },
+                          {
+                            &quot;path&quot;: &quot;device.communicationModules[0].subscriber.mobile.icc._current.at&quot;,
+                            &quot;name&quot;: &quot;ICC Date&quot;,
+                            &quot;filter&quot;: &quot;YES&quot;,
+                            &quot;sort&quot;: false
+                          }
+                    ]
+                  },
                 statusCode: 200
              };
         });        

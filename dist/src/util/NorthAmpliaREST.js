@@ -74,6 +74,18 @@ var NorthAmpliaREST = (function () {
             };
         });        
         */
+        mock.post(_options.url + '/datasets/provision/organizations/organization/dataset/data', function (req) {
+            return {
+                body: {
+                    "page": {
+                        "number": 26
+                    },
+                    "columns": ["Coll Mobile ICC value", "Coll Mobile ICC date", "Prov Identifier", "Coll manufacturer", "Coll model", "Prov Mobile ICC value"],
+                    "data": [["icc1", "2021-04-06T12:35:22.784Z", "MyDevice1", "OpenGate", "OpenGate", "icc1"], ["icc2", "2021-04-06T07:45:57.468Z", "MyDevice2", "OpenGate", "OpenGate", "icc2"]]
+                },
+                statusCode: 200
+            };
+        });
         mock.get(_options.url + '/datasets/provision/organizations/:organization', function (req) {
             return {
                 body: {
@@ -95,11 +107,30 @@ var NorthAmpliaREST = (function () {
         mock.get(_options.url + '/datasets/provision/organizations/:organization/:dataset', function (req) {
             return {
                 body: {
-                    name: 'dataset1',
-                    identifier: '111',
-                    description: 'mock',
-                    type: 'CURRENT',
-                    columns: []
+                    "name": "dataset_name",
+                    "description": "My dataset to get inventory data",
+                    "type": "CURRENT",
+                    "columns": [{
+                        "path": "provision.device.identifier._current.value",
+                        "name": "Prov identifier",
+                        "filter": "YES",
+                        "sort": true
+                    }, {
+                        "path": "device.model._current.value.manufacturer",
+                        "name": "Manufacturer",
+                        "filter": "ALWAYS",
+                        "sort": false
+                    }, {
+                        "path": "device.communicationModules[0].subscriber.mobile.icc._current.value",
+                        "name": "ICC",
+                        "filter": "NO",
+                        "sort": false
+                    }, {
+                        "path": "device.communicationModules[0].subscriber.mobile.icc._current.at",
+                        "name": "ICC Date",
+                        "filter": "YES",
+                        "sort": false
+                    }]
                 },
                 statusCode: 200
             };

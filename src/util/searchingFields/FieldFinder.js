@@ -1,10 +1,13 @@
+//https://github.com/kriskowal/q
 import q from 'q';
+import jp from 'jsonpath';
 import {
     GENERATED_FIELDS
 } from './source-precompiled/Fields';
 import {
     IOT_FIELDS
 } from './IotFields';
+import { defer } from 'underscore';
 
 var FIELDS = GENERATED_FIELDS;
 for (var field in IOT_FIELDS) {
@@ -106,76 +109,102 @@ const TYPE_FIELD = {
         }
     }
 };
+const _getCustomSchema = function(_ds, schema) {
+    let result
+    const ds = _ds[0]
+    if(!ds || !schema.properties || !schema.properties[ds]){
+        result =  schema
+    } else{
+        result = _getCustomSchema(_ds.slice(1), schema.properties[ds])
+    }
+    return result
+}
+
+const _getDatamodelFields = function(parent, objSearcher){
+    let defered = q.defer();
+    const selectedField = objSearcher.selectedField
+    const selectAll = objSearcher.selectAll
+    let datamodelSearchBuilder = parent._ogapi.datamodelsSearchBuilder();
+
+    let rtFilter = {
+        'and': []
+    };
+
+    if (parent._resourceTypes) {
+        rtFilter.and.push({
+            'in': {
+                'datamodels.allowedResourceTypes': parent._resourceTypes
+            }
+        });
+    }
+
+    if (selectedField) {
+        rtFilter.and.push({
+            'eq': {
+                'datamodels.categories.datastreams.identifier': selectedField
+            }
+        });
+    }
+
+    if (rtFilter.and.length > 0) {
+        datamodelSearchBuilder.filter(rtFilter);
+    }
+
+    datamodelSearchBuilder.build().execute().then(function(response) {
+        var datastreams = [];
+        if (response.statusCode === 200) {
+            datastreams = response.data.datamodels.map(function(datamodel) {
+                var categories = datamodel.categories || [];
+                return categories.map(function(category) {
+                    var datastreams = category.datastreams || [];
+                    return datastreams.map(function(ds) {
+                        if (selectedField || selectAll) {
+                            return ds;
+                        }
+                        return ds.identifier;
+                    });
+                });
+            });
+            datastreams = reduce(datastreams);
+        }
+        if (selectedField) {
+            defered.resolve(datastreams.find(function(dsIdTmp) {
+                return selectedField === dsIdTmp.identifier;
+            }));
+        } else {
+            defered.resolve(datastreams);
+        }
+    }).catch(function(error) {
+        defered.reject(error);
+    });
+
+    function reduce(array) {
+        if (array.length > 0 && array[0].constructor === Array) {
+            array = array.reduce(function(preVal, elem) {
+                return preVal.concat(elem);
+            });
+            return reduce(array);
+        }
+        return array;
+    }
+    return defered.promise
+}
+
 
 const FIELD_SEARCHER = {
     
-    [SEARCH_FIELDS]: function(states, context, primaryType, defered, selectedField, selectAll) {
-        let datamodelSearchBuilder = this._ogapi.datamodelsSearchBuilder();
-
-        let rtFilter = {
-            'and': []
-        };
-
-        if (this._resourceTypes) {
-            rtFilter.and.push({
-                'in': {
-                    'datamodels.allowedResourceTypes': this._resourceTypes
-                }
-            });
-        }
-
-        if (selectedField) {
-            rtFilter.and.push({
-                'eq': {
-                    'datamodels.categories.datastreams.identifier': selectedField
-                }
-            });
-        }
-
-        if (rtFilter.and.length > 0) {
-            datamodelSearchBuilder.filter(rtFilter);
-        }
-
-        datamodelSearchBuilder.build().execute().then(function(response) {
-            var datastreams = [];
-            if (response.statusCode === 200) {
-                datastreams = response.data.datamodels.map(function(datamodel) {
-                    var categories = datamodel.categories || [];
-                    return categories.map(function(category) {
-                        var datastreams = category.datastreams || [];
-                        return datastreams.map(function(ds) {
-                            if (selectedField || selectAll) {
-                                return ds;
-                            }
-                            return ds.identifier;
-                        });
-                    });
-                });
-                datastreams = reduce(datastreams);
-            }
-            if (selectedField) {
-                defered.resolve(datastreams.find(function(dsIdTmp) {
-                    return selectedField === dsIdTmp.identifier;
-                }));
-            } else {
-                defered.resolve(datastreams);
-            }
-        }).catch(function(error) {
-            defered.reject(error);
-        });
-
-        function reduce(array) {
-            if (array.length > 0 && array[0].constructor === Array) {
-                array = array.reduce(function(preVal, elem) {
-                    return preVal.concat(elem);
-                });
-                return reduce(array);
-            }
-            return array;
-        }
-
+    [SEARCH_FIELDS]: function(objSearcher, defered) {
+        https://github.com/kriskowal/q#using-deferreds
+        _getDatamodelFields(this, objSearcher).then(function(response){
+            defered.resolve(response)
+        }).catch(function(err){
+            defered.reject(err)
+        })
     },
-    [SIMPLE_FIELDS]: function(states, context, primaryType, defered, field) {
+    [SIMPLE_FIELDS]: function(objSearcher, defered) {
+        const context = objSearcher.contecontextxt
+        const primaryType = objSearcher.primaryType
+        const field = objSearcher.selectedField
         var paths = [];
         if (context[primaryType] instanceof Array) {
             if (field) {
@@ -236,7 +265,11 @@ const FIELD_SEARCHER = {
 
         defered.resolve(paths.slice());
     },
-    [COMPLEX_FIELDS]: function(states, context, primaryType, defered) {
+    [COMPLEX_FIELDS]: function(objSearcher, defered) {
+        const states = objSearcher.states
+        const context = objSearcher.context
+        const primaryType = objSearcher.primaryType
+
         const finiteStateMachine = {
             1: function(states, context) {
                 // Fields del primaryType + los fields de los relacionados = complexFields
@@ -301,16 +334,140 @@ const FIELD_SEARCHER = {
             return out;
         }
     },
-    [SEARCH_COLUMNS]: function(states, context, primaryType, defered, selectedField, selectAll){
-        //newDatasetFinder
+    //TODO: refactorizar método
+    [SEARCH_COLUMNS]: function(objSearcher, defered) {
+        https://github.com/kriskowal/q#using-deferreds
+        const selectedField = objSearcher.selectedField
+        //GET dataset by organization and datasetId
+        var columnDatastreams = []
+        const _this = this
+        _this._ogapi.newDatasetFinder().findByOrganizationAndDatasetId(objSearcher.organization, objSearcher.dataset)
+        .then(function(response){
+            if (response.statusCode === 200) {
+                var columns = response.data.columns
+                //search de la definición de schemas de opengate
+                _this._ogapi.basicTypesSearchBuilder().build().execute().then(function (basicTypes) {
+                    //solo queremos recuperar la definición de una columna
+                    if (selectedField) {
+                        const column = columns.find(function (column) {
+                            return selectedField === column.name
+                        })
+                        //Expresión regular para recuperar el path del datastream (1) y, si se tratase de un datastream complejo, también el path hasta el dato simple (2).
+                        //Datastream simple: provision.device.identifier._current.value, device.communicationModules[0].subscriber.mobile.icc._current.at
+                        //Datastream complejo: device.model._current.value.manufacturer, device.location._current.value.position.type
+                        const datastreamMatch = column.path.match(new RegExp("^(.+)._current\.?(.+)?$"));
+                        const datastream  = datastreamMatch[1].replace(new RegExp("\[0\]"), "")
+                        const subdatastream = datastreamMatch[2].replace('value.', '');
+                        if (subdatastream) {
+                            const sds = subdatastream.split('.')
+                            //busqueda directa para datastream complejo
+                            //TODO: hay que reacer esto ya que no se tiene en cuenta los custom datastreams, en este caso solo se tendría en cuenta los datos de opengate
+                            // y estos podrían coincidir con los schema custom datastream
+                            column.schema = basicTypes.data.definitions[sds[sds.length - 1]]
+                        } 
+                        //Busqueda de schema para datastream simple y datastraems custom
+                        if(!column.schema){
+                            //Buscamos la definición del datastream en el datamodel
+                            _getDatamodelFields(_this, {selectedField: datastream}).then(
+                                function (datamodelField) {
+                                    const schema = datamodelField.schema
+                                    // si es un datastream simple, la asignación es directa
+                                    if(!subdatastream){
+                                        column.schema = schema
+                                    } else {
+                                        //si es un datastream complejo (y custom), hay que navegar por el schema hasta encontrar su tipo
+                                        const sds = subdatastream.split('.')
+                                        if(sds.length > 1){
+                                            column.schema = _getCustomSchema(sds, schema)
+                                        }else{
+                                            column.schema = schema
+                                        }
+                                    }
+                                    //simular los campos de un datastream
+                                    column.identifier = column.name
+                                    column.indexed = column.filter === 'YES' || column.filter === 'ALLWAYS'
+                                    column.notFilterable = column.filter === 'NO'
+                                    defered.resolve(column);
+                                }
+                            ).catch(function(error) {
+                                console.log(error)
+                                defered.reject(error);
+                            });
+                        } else {
+                            //simular los campos de un datastream
+                            column.identifier = column.name
+                            column.indexed = column.filter === 'YES' || column.filter === 'ALLWAYS'
+                            column.notFilterable = column.filter === 'NO'
+                            defered.resolve(column);
+                        }
+                    } else {
+                        
+                        //recuperamos la defnición de todas las columnas y todos los datastreams
+                        _getDatamodelFields(_this, {selectAll: true}).then(function (datamodelFields) {
+                            columns.forEach(function(column){
+                                //Expresión regular para recuperar el path del datastream (1) y, si se tratase de un datastream complejo, también el path hasta el dato simple (2).
+                                //Datastream simple: provision.device.identifier._current.value, device.communicationModules[0].subscriber.mobile.icc._current.at
+                                //Datastream complejo: device.model._current.value.manufacturer, device.location._current.value.position.type
+                                const datastreamMatch = column.path.match(new RegExp("^(.+)._current\.?(.+)?$"));
+                                const datastream  = datastreamMatch[1].replace(new RegExp("\[0\]"), "")
+                                const subdatastream = datastreamMatch[2].replace('value.', '');
+                                if (subdatastream) {
+                                    const sds = subdatastream.split('.')
+                                    //busqueda directa para datastream complejo
+                                    //TODO: hay que reacer esto ya que no se tiene en cuenta los custom datastreams, en este caso solo se tendría en cuenta los datos de opengate
+                                    // y estos podrían coincidir con los schema custom datastream
+                                    column.schema = basicTypes.data.definitions[sds[sds.length - 1]]
+                                } 
+                                //Busqueda de schema para datastream simple y datastraems custom
+                                if(!column.schema){
+                                    //Buscamos la definición del datastream en el datamodel
+                                    const datamodelField = datamodelFields.find(function(df){
+                                        return datastream === df.identifier
+                                    })
+                                    const schema = datamodelField.schema
+                                    // si es un datastream simple, la asignación es directa
+                                    if(!subdatastream){
+                                        column.schema = schema
+                                    } else {
+                                        //si es un datastream complejo (y custom), hay que navegar por el schema hasta encontrar su tipo
+                                        const sds = subdatastream.split('.')
+                                        if(sds.length > 1){
+                                            column.schema = _getCustomSchema(sds, schema)
+                                        }else{
+                                            column.schema = schema
+                                        }
+                                    }
+                                } 
+                                //simular los campos de un datastream
+                                column.identifier = column.name
+                                column.indexed = column.filter === 'YES' || column.filter === 'ALLWAYS'
+                                column.notFilterable = column.filter === 'NO'
+                                columnDatastreams.push(column)
+                            })
+                            defered.resolve(columnDatastreams);
+                        }).catch(function(error) {
+                            console.log(error)
+                            defered.reject(error);
+                        });
+                    }
+                }).catch(function(error) {
+                    console.log(error)
+                    defered.reject(error);
+                });
+            }
+        }).catch(function(error) {
+            console.log(error)
+            defered.reject(error);
+        });
     }
 }
 
 export default class FieldFinder {
-    constructor(ogapi, url) {
+    constructor(ogapi, url, extraData) {
         this._ogapi = ogapi;
         this._url = url;
         this._type = TYPE_FIELD.get(url);
+        this._extraData = extraData
 
         if (this._type === SEARCH_FIELDS) {
             this._resourceTypes = match_url_resourceType.get(url);
@@ -318,18 +475,38 @@ export default class FieldFinder {
     }
     find(input = "") {
         let defered = q.defer();
-        FIELD_SEARCHER[this._type].call(this, input.split('.'), FIELDS[match_url[this._url]], match_url[this._url], defered);
+        let objSearcher = {
+            states : input.split('.'),
+            context:FIELDS[match_url[this._url]],
+            primaryType: match_url[this._url],
+            extraData: this._extraData
+        }
+        FIELD_SEARCHER[this._type].call(this, objSearcher, defered);
         return defered.promise;
     }
     findAll(input = "") {
         let defered = q.defer();
-        FIELD_SEARCHER[this._type].call(this, input.split('.'),  FIELDS[match_url[this._url]], match_url[this._url], defered, null ,true);
+        let objSearcher = {
+            states : input.split('.'),
+            context:FIELDS[match_url[this._url]],
+            primaryType: match_url[this._url], 
+            selectAll: true,
+            extraData: this._extraData
+        }
+        FIELD_SEARCHER[this._type].call(this, objSearcher, defered);
         return defered.promise;
     }
 
     findFieldPath(field = "") {
         let defered = q.defer();
-        FIELD_SEARCHER[this._type].call(this, field, FIELDS[match_url[this._url]], match_url[this._url], defered, field);
+        let objSearcher = {
+            states : field,
+            context:FIELDS[match_url[this._url]],
+            primaryType: match_url[this._url],
+            selectedField: field,
+            extraData: this._extraData
+        }
+        FIELD_SEARCHER[this._type].call(this, objSearcher, defered);
         return defered.promise;
     }
 }
