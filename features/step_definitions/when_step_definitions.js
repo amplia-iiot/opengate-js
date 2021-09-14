@@ -343,14 +343,14 @@ When(/^I execute it$/, function () {
     _this.responseData = undefined;
 
     function catchResponse (data) {
-        // console.log("EXECUTE RESPONSE: " + JSON.stringify(data));
+        console.log("EXECUTE RESPONSE: " + JSON.stringify(data));
         _this.responseData = data;
         _this.error = undefined;
     }
 
     function catchErrorResponse (err) {
         // console.log(err);
-        //console.log("EXECUTE ERROR: " + JSON.stringify(err));
+        console.log("EXECUTE ERROR: " + JSON.stringify(err));
         _this.responseData = err;
         _this.error = err;
 
@@ -360,7 +360,7 @@ When(/^I execute it$/, function () {
         // console.log(this.build);
         return this.build.execute().then(catchResponse).catch(catchErrorResponse);
     } catch (err) {
-        // console.log(err);
+        console.log(err);
         this.error = err;
         return;
     }

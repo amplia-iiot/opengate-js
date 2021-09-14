@@ -74,14 +74,14 @@ var NorthAmpliaREST = (function () {
             };
         });        
         */
-        mock.post(_options.url + '/datasets/provision/organizations/organization/dataset/data', function (req) {
+        mock.post(_options.url + '/datasets/provision/organizations/:organization/:dataset/data', function (req) {
             return {
                 body: {
                     "page": {
                         "number": 26
                     },
-                    "columns": ["Coll Mobile ICC value", "Coll Mobile ICC date", "Prov Identifier", "Coll manufacturer", "Coll model", "Prov Mobile ICC value"],
-                    "data": [["icc1", "2021-04-06T12:35:22.784Z", "MyDevice1", "OpenGate", "OpenGate", "icc1"], ["icc2", "2021-04-06T07:45:57.468Z", "MyDevice2", "OpenGate", "OpenGate", "icc2"]]
+                    "columns": ["Coll Mobile ICC value", "Coll Mobile ICC date", "Prov Identifier", "Coll manufacturer"],
+                    "data": [["icc1", "2021-04-06T12:35:22.784Z", "MyDevice1", "OpenGate"], ["icc2", "2021-04-06T07:45:57.468Z", "MyDevice2", "OpenGate"]]
                 },
                 statusCode: 200
             };
@@ -117,17 +117,17 @@ var NorthAmpliaREST = (function () {
                         "sort": true
                     }, {
                         "path": "device.model._current.value.manufacturer",
-                        "name": "Manufacturer",
+                        "name": "Coll manufacturer",
                         "filter": "ALWAYS",
                         "sort": false
                     }, {
                         "path": "device.communicationModules[0].subscriber.mobile.icc._current.value",
-                        "name": "ICC",
+                        "name": "Coll Mobile ICC value",
                         "filter": "NO",
                         "sort": false
                     }, {
                         "path": "device.communicationModules[0].subscriber.mobile.icc._current.at",
-                        "name": "ICC Date",
+                        "name": "Coll Mobile ICC date",
                         "filter": "YES",
                         "sort": false
                     }]

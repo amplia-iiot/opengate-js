@@ -3,7 +3,7 @@
 import SearchBuilder from './SearchBuilder';
 import FieldFinder from '../../util/searchingFields/FieldFinder';
 import WPSearch from '../WPSearch';
-export const BASE_URL = '/datasets';
+export const BASE_URL = 'datasets';
 
 /**
  * Defined a search over Executions	

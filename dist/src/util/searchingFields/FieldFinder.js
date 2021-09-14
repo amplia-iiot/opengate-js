@@ -227,7 +227,7 @@ var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEA
         defered.reject(err);
     });
 }), _defineProperty(_FIELD_SEARCHER, SIMPLE_FIELDS, function (objSearcher, defered) {
-    var context = objSearcher.contecontextxt;
+    var context = objSearcher.context;
     var primaryType = objSearcher.primaryType;
     var field = objSearcher.selectedField;
     var paths = [];

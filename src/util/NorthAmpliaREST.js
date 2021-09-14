@@ -41,7 +41,7 @@ export default class NorthAmpliaREST {
             };
         });        
        */
-      mock.post(_options.url + '/datasets/provision/organizations/organization/dataset/data', function(req){
+      mock.post(_options.url + '/datasets/provision/organizations/:organization/:dataset/data', function(req){
         return {
             body: {
                 "page": {
@@ -51,26 +51,20 @@ export default class NorthAmpliaREST {
                   "Coll Mobile ICC value",
                   "Coll Mobile ICC date",
                   "Prov Identifier",
-                  "Coll manufacturer",
-                  "Coll model",
-                  "Prov Mobile ICC value"
+                  "Coll manufacturer"
                 ],
                 "data": [
                   [
                     "icc1",
                     "2021-04-06T12:35:22.784Z",
                     "MyDevice1",
-                    "OpenGate",
-                    "OpenGate",
-                    "icc1"
+                    "OpenGate"
                   ],
                   [
                     "icc2",
                     "2021-04-06T07:45:57.468Z",
                     "MyDevice2",
-                    "OpenGate",
-                    "OpenGate",
-                    "icc2"
+                    "OpenGate"
                   ]
                 ]
               },
@@ -114,19 +108,19 @@ export default class NorthAmpliaREST {
                           },
                           {
                             "path": "device.model._current.value.manufacturer",
-                            "name": "Manufacturer",
+                            "name": "Coll manufacturer",
                             "filter": "ALWAYS",
                             "sort": false
                           },
                           {
                             "path": "device.communicationModules[0].subscriber.mobile.icc._current.value",
-                            "name": "ICC",
+                            "name": "Coll Mobile ICC value",
                             "filter": "NO",
                             "sort": false
                           },
                           {
                             "path": "device.communicationModules[0].subscriber.mobile.icc._current.at",
-                            "name": "ICC Date",
+                            "name": "Coll Mobile ICC date",
                             "filter": "YES",
                             "sort": false
                           }

@@ -26,7 +26,7 @@ var _WPSearch = require('../WPSearch');
 
 var _WPSearch2 = _interopRequireDefault(_WPSearch);
 
-var BASE_URL = '/datasets';
+var BASE_URL = 'datasets';
 
 exports.BASE_URL = BASE_URL;
 /**

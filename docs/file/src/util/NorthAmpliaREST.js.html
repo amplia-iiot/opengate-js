@@ -287,7 +287,7 @@ export default class NorthAmpliaREST {
             };
         });        
        */
-      mock.post(_options.url + &apos;/datasets/provision/organizations/organization/dataset/data&apos;, function(req){
+      mock.post(_options.url + &apos;/datasets/provision/organizations/:organization/:dataset/data&apos;, function(req){
         return {
             body: {
                 &quot;page&quot;: {
@@ -297,26 +297,20 @@ export default class NorthAmpliaREST {
                   &quot;Coll Mobile ICC value&quot;,
                   &quot;Coll Mobile ICC date&quot;,
                   &quot;Prov Identifier&quot;,
-                  &quot;Coll manufacturer&quot;,
-                  &quot;Coll model&quot;,
-                  &quot;Prov Mobile ICC value&quot;
+                  &quot;Coll manufacturer&quot;
                 ],
                 &quot;data&quot;: [
                   [
                     &quot;icc1&quot;,
                     &quot;2021-04-06T12:35:22.784Z&quot;,
                     &quot;MyDevice1&quot;,
-                    &quot;OpenGate&quot;,
-                    &quot;OpenGate&quot;,
-                    &quot;icc1&quot;
+                    &quot;OpenGate&quot;
                   ],
                   [
                     &quot;icc2&quot;,
                     &quot;2021-04-06T07:45:57.468Z&quot;,
                     &quot;MyDevice2&quot;,
-                    &quot;OpenGate&quot;,
-                    &quot;OpenGate&quot;,
-                    &quot;icc2&quot;
+                    &quot;OpenGate&quot;
                   ]
                 ]
               },
@@ -360,19 +354,19 @@ export default class NorthAmpliaREST {
                           },
                           {
                             &quot;path&quot;: &quot;device.model._current.value.manufacturer&quot;,
-                            &quot;name&quot;: &quot;Manufacturer&quot;,
+                            &quot;name&quot;: &quot;Coll manufacturer&quot;,
                             &quot;filter&quot;: &quot;ALWAYS&quot;,
                             &quot;sort&quot;: false
                           },
                           {
                             &quot;path&quot;: &quot;device.communicationModules[0].subscriber.mobile.icc._current.value&quot;,
-                            &quot;name&quot;: &quot;ICC&quot;,
+                            &quot;name&quot;: &quot;Coll Mobile ICC value&quot;,
                             &quot;filter&quot;: &quot;NO&quot;,
                             &quot;sort&quot;: false
                           },
                           {
                             &quot;path&quot;: &quot;device.communicationModules[0].subscriber.mobile.icc._current.at&quot;,
-                            &quot;name&quot;: &quot;ICC Date&quot;,
+                            &quot;name&quot;: &quot;Coll Mobile ICC date&quot;,
                             &quot;filter&quot;: &quot;YES&quot;,
                             &quot;sort&quot;: false
                           }
