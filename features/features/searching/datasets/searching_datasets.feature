@@ -1,32 +1,27 @@
 # features/searching/datasets/searching_datasets_catalog.feature
 @searching
-@searching_datasets_catalog
+@searching_datasets_data
 @datasets
-Feature: Searching datasets catalog
+@wip
+Feature: Searching datasets data
   As a user of JsApi
-  I want to search into datasets catalog collection
-  So I can add filter, sorting, limit to search any user
+  I want to search into datasets data collection
+  So I can add filter, sorting, limit to search any dataset
   
   Background:
     Given an apikey user by "require-real-apikey"
-    And an ogapi "datasets catalog search" util
+    And an ogapi "datasets search" util with "organization_mc" and "dataset"
     
-  Scenario: Execute searching with a timeout less than expected
-    And the timeout by 10
-   When I build it
-    And I execute it
-   Then response code should be: 408
-  
   Scenario: Execute searching with a invalid start limit
+    
     And the start limit by "null" and size limit by "5"
-   When I build it
+    When I build it
     And I execute it
-   #Then response code should be: 204
+    Then response code should be: 200
     Then does not throws an error
 
-Scenario: Execute searching
+  Scenario: Execute searching
     And I build it
     And I execute it
-   #Then response code should be: 204
+   Then response code should be: 200
     Then does not throws an error
-   

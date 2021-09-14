@@ -262,7 +262,6 @@ When(/^I try to search with all allow fields$/, function (callback) {
     var filter = {
         and: []
     };
-    console.log(_this.util.constructor.name);
     switch (_this.util.constructor.name) {
         case 'DevicesSearchBuilder':
         case 'SubscriptionsSearchBuilder':
