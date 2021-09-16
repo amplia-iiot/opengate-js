@@ -66,7 +66,7 @@ var match_url = {
     'entity-asset': 'SearchOnDatamodel',
     '/tickets': 'SearchOnDatamodel',
     '/channels': 'SearchOnDatamodel',
-    '/datasets': 'SearchOnDataset'
+    'datasets': 'SearchOnDataset'
 };
 
 var match_context = {

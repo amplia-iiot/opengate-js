@@ -2,7 +2,6 @@
 @searching
 @searching_datasets_data
 @datasets
-@wip
 Feature: Searching datasets data
   As a user of JsApi
   I want to search into datasets data collection
@@ -10,7 +9,7 @@ Feature: Searching datasets data
   
   Background:
     Given an apikey user by "require-real-apikey"
-    And an ogapi "datasets search" util with "organization_mc" and "dataset"
+    And an ogapi "datasets search" util with "require-real-organization" and "require-real-dataset"
     
   Scenario: Execute searching with a invalid start limit
     
