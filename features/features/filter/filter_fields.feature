@@ -3,13 +3,14 @@
 @filter_fields
 @filtering
 @urlParameters
+
 Feature: Searching device fields
      As a user of JsApi
      I want to get the searching fields
 
      Background:
           Given an apikey user by "require-real-apikey"
-          And an ogapi "entities search" util with "organization_mc"
+          And an ogapi "entities search" util with "require_real-organization"
           Given I want to search a "entities"
 
 

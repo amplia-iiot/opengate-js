@@ -351,7 +351,7 @@ When(/^I execute it$/, function () {
     function catchErrorResponse (err) {
         // console.log(err);
         console.log("EXECUTE ERROR: " + JSON.stringify(err));
-        _this.responseData = err;
+        _this.responseData = undefined;
         _this.error = err;
 
     }
@@ -792,7 +792,7 @@ When(/^I get filter fields...$/, function (table, callback) {
 
     function catchErrorResponse (err) {
         console.log("EXECUTE ERROR: " + JSON.stringify(err));
-        _this.responseData = err;
+        _this.responseData = undefined;
         _this.error = err;
         callback()
     }
