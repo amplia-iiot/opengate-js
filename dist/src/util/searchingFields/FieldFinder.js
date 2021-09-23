@@ -19,15 +19,9 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
-var _jsonpath = require('jsonpath');
-
-var _jsonpath2 = _interopRequireDefault(_jsonpath);
-
 var _sourcePrecompiledFields = require('./source-precompiled/Fields');
 
 var _IotFields = require('./IotFields');
-
-var _underscore = require('underscore');
 
 var FIELDS = _sourcePrecompiledFields.GENERATED_FIELDS;
 for (var field in _IotFields.IOT_FIELDS) {
@@ -144,6 +138,7 @@ var _getDatamodelFields = function _getDatamodelFields(parent, objSearcher) {
     var defered = _q2['default'].defer();
     var selectedField = objSearcher.selectedField;
     var selectAll = objSearcher.selectAll;
+    var organization = objSearcher.organization;
     var datamodelSearchBuilder = parent._ogapi.datamodelsSearchBuilder();
 
     var rtFilter = {
@@ -157,7 +152,13 @@ var _getDatamodelFields = function _getDatamodelFields(parent, objSearcher) {
             }
         });
     }
-
+    if (organization) {
+        rtFilter.and.push({
+            'eq': {
+                'datamodels.organizationName': organization
+            }
+        });
+    }
     if (selectedField) {
         rtFilter.and.push({
             'eq': {
@@ -354,110 +355,59 @@ var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEA
         if (response.statusCode === 200) {
             var columns = response.data.columns;
             //search de la definición de schemas de opengate
-            _this._ogapi.basicTypesSearchBuilder().build().execute().then(function (basicTypes) {
-                //solo queremos recuperar la definición de una columna
+            _this._ogapi.basicTypesSearchBuilder().withPath('$').build().execute().then(function (basicTypes) {
+                var definitions = basicTypes.data.definitions;
+                var query = { selectAll: true };
                 if (selectedField) {
-                    (function () {
-                        var column = columns.find(function (column) {
-                            return selectedField === column.name;
-                        });
+                    columns = columns.filter(function (column) {
+                        return selectedField === column.name;
+                    });
+                    var column = columns[0];
+                    var datastreamMatch = column.path.match(new RegExp("^(.+)._current\.?(.+)?$"));
+                    var datastream = datastreamMatch[1].replace(new RegExp("\[0\]"), "");
+                    query = { selectedField: datastream };
+                }
+                query.organization = objSearcher.organization;
+                //recuperamos la defnición de todas las columnas y todos los datastreams
+                _getDatamodelFields(_this, query).then(function (datamodelFields) {
+                    columns.forEach(function (column) {
                         //Expresión regular para recuperar el path del datastream (1) y, si se tratase de un datastream complejo, también el path hasta el dato simple (2).
                         //Datastream simple: provision.device.identifier._current.value, device.communicationModules[0].subscriber.mobile.icc._current.at
                         //Datastream complejo: device.model._current.value.manufacturer, device.location._current.value.position.type
                         var datastreamMatch = column.path.match(new RegExp("^(.+)._current\.?(.+)?$"));
                         var datastream = datastreamMatch[1].replace(new RegExp("\[0\]"), "");
-                        var subdatastream = datastreamMatch[2].replace('value.', '');
-                        if (subdatastream) {
-                            var sds = subdatastream.split('.');
-                            //busqueda directa para datastream complejo
-                            //TODO: hay que reacer esto ya que no se tiene en cuenta los custom datastreams, en este caso solo se tendría en cuenta los datos de opengate
-                            // y estos podrían coincidir con los schema custom datastream
-                            column.schema = basicTypes.data.definitions[sds[sds.length - 1]];
-                        }
-                        //Busqueda de schema para datastream simple y datastraems custom
-                        if (!column.schema) {
-                            //Buscamos la definición del datastream en el datamodel
-                            _getDatamodelFields(_this, { selectedField: datastream }).then(function (datamodelField) {
-                                var schema = datamodelField.schema;
-                                // si es un datastream simple, la asignación es directa
-                                if (!subdatastream) {
-                                    column.schema = schema;
-                                } else {
-                                    //si es un datastream complejo (y custom), hay que navegar por el schema hasta encontrar su tipo
-                                    var sds = subdatastream.split('.');
-                                    if (sds.length > 1) {
-                                        column.schema = _getCustomSchema(sds, schema);
-                                    } else {
-                                        column.schema = schema;
-                                    }
-                                }
-                                //simular los campos de un datastream
-                                column.identifier = column.name;
-                                column.indexed = column.filter === 'YES' || column.filter === 'ALLWAYS';
-                                column.notFilterable = column.filter === 'NO';
-                                defered.resolve(column);
-                            })['catch'](function (error) {
-                                console.log(error);
-                                defered.reject(error);
-                            });
-                        } else {
-                            //simular los campos de un datastream
-                            column.identifier = column.name;
-                            column.indexed = column.filter === 'YES' || column.filter === 'ALLWAYS';
-                            column.notFilterable = column.filter === 'NO';
-                            defered.resolve(column);
-                        }
-                    })();
-                } else {
-
-                    //recuperamos la defnición de todas las columnas y todos los datastreams
-                    _getDatamodelFields(_this, { selectAll: true }).then(function (datamodelFields) {
-                        columns.forEach(function (column) {
-                            //Expresión regular para recuperar el path del datastream (1) y, si se tratase de un datastream complejo, también el path hasta el dato simple (2).
-                            //Datastream simple: provision.device.identifier._current.value, device.communicationModules[0].subscriber.mobile.icc._current.at
-                            //Datastream complejo: device.model._current.value.manufacturer, device.location._current.value.position.type
-                            var datastreamMatch = column.path.match(new RegExp("^(.+)._current\.?(.+)?$"));
-                            var datastream = datastreamMatch[1].replace(new RegExp("\[0\]"), "");
-                            var subdatastream = datastreamMatch[2].replace('value.', '');
-                            if (subdatastream) {
-                                var sds = subdatastream.split('.');
-                                //busqueda directa para datastream complejo
-                                //TODO: hay que reacer esto ya que no se tiene en cuenta los custom datastreams, en este caso solo se tendría en cuenta los datos de opengate
-                                // y estos podrían coincidir con los schema custom datastream
-                                column.schema = basicTypes.data.definitions[sds[sds.length - 1]];
-                            }
-                            //Busqueda de schema para datastream simple y datastraems custom
-                            if (!column.schema) {
-                                //Buscamos la definición del datastream en el datamodel
-                                var datamodelField = datamodelFields.find(function (df) {
-                                    return datastream === df.identifier;
-                                });
-                                var schema = datamodelField.schema;
-                                // si es un datastream simple, la asignación es directa
-                                if (!subdatastream) {
-                                    column.schema = schema;
-                                } else {
-                                    //si es un datastream complejo (y custom), hay que navegar por el schema hasta encontrar su tipo
-                                    var sds = subdatastream.split('.');
-                                    if (sds.length > 1) {
-                                        column.schema = _getCustomSchema(sds, schema);
-                                    } else {
-                                        column.schema = schema;
-                                    }
-                                }
-                            }
-                            //simular los campos de un datastream
-                            column.identifier = column.name;
-                            column.indexed = column.filter === 'YES' || column.filter === 'ALLWAYS';
-                            column.notFilterable = column.filter === 'NO';
-                            columnDatastreams.push(column);
+                        var subdatastream = datastreamMatch[2].replace(new RegExp('value\.?'), '');
+                        //Buscamos la definición del datastream en el datamodel
+                        var datamodelField = datamodelFields.find(function (df) {
+                            return datastream === df.identifier;
                         });
-                        defered.resolve(columnDatastreams);
-                    })['catch'](function (error) {
-                        console.log(error);
-                        defered.reject(error);
+                        var schema = datamodelField.schema;
+                        // si es un datastream simple, la asignación es directa
+                        if (!subdatastream) {
+                            column.schema = schema;
+                        } else {
+                            (function () {
+                                //si es un datastream complejo hay que navegar por el schema hasta encontrar su tipo
+                                var sds = subdatastream.split('.');
+                                var _schema = schema.$ref && definitions[schema.$ref.replace(new RegExp('.*#/definitions/'), '')] || schema;
+                                sds.forEach(function (sd) {
+                                    // caso: device.model._current.at - no hay schema
+                                    _schema = _schema && _schema.properties && _schema.properties[sd];
+                                });
+                                column.schema = _schema;
+                            })();
+                        }
+                        //simular los campos de un datastream
+                        column.identifier = column.name;
+                        column.indexed = column.filter === 'YES' || column.filter === 'ALLWAYS';
+                        column.notFilterable = column.filter === 'NO';
+                        columnDatastreams.push(column);
                     });
-                }
+                    defered.resolve(columnDatastreams);
+                })['catch'](function (error) {
+                    console.log(error);
+                    defered.reject(error);
+                });
             })['catch'](function (error) {
                 console.log(error);
                 defered.reject(error);
