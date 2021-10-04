@@ -41,7 +41,7 @@ export default class NorthAmpliaREST {
             };
         });        
        */
-      mock.post(_options.url + '/datasets/provision/organizations/:organization/:dataset/data', function(req){
+      /*mock.post(_options.url + '/datasets/provision/organizations/:organization/:dataset/data', function(req){
         return {
             body: {
                 "page": {
@@ -129,6 +129,7 @@ export default class NorthAmpliaREST {
                 statusCode: 200
              };
         });        
+        */
     }
 
     _applyMocks (mocks) {
