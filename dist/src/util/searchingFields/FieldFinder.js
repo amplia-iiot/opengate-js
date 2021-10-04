@@ -138,7 +138,7 @@ var _getDatamodelFields = function _getDatamodelFields(parent, objSearcher) {
     var defered = _q2['default'].defer();
     var selectedField = objSearcher.selectedField;
     var selectAll = objSearcher.selectAll;
-    var organization = objSearcher.organization;
+    var organization = objSearcher.extraData.organization;
     var datamodelSearchBuilder = parent._ogapi.datamodelsSearchBuilder();
 
     var rtFilter = {
@@ -351,7 +351,9 @@ var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEA
     //GET dataset by organization and datasetId
     var columnDatastreams = [];
     var _this = this;
-    _this._ogapi.newDatasetFinder().findByOrganizationAndDatasetId(objSearcher.organization, objSearcher.dataset).then(function (response) {
+    var organization = objSearcher.extraData.organization;
+    var dataset = objSearcher.extraData.dataset;
+    _this._ogapi.newDatasetFinder().findByOrganizationAndDatasetId(organization, dataset).then(function (response) {
         if (response.statusCode === 200) {
             var columns = response.data.columns;
             //search de la definición de schemas de opengate
@@ -367,7 +369,7 @@ var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEA
                     var datastream = datastreamMatch[1].replace(new RegExp("\[0\]"), "");
                     query = { selectedField: datastream };
                 }
-                query.organization = objSearcher.organization;
+                query.organization = organization;
                 //recuperamos la defnición de todas las columnas y todos los datastreams
                 _getDatamodelFields(_this, query).then(function (datamodelFields) {
                     columns.forEach(function (column) {

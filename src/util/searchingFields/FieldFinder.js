@@ -122,7 +122,7 @@ const _getDatamodelFields = function(parent, objSearcher){
     let defered = q.defer();
     const selectedField = objSearcher.selectedField
     const selectAll = objSearcher.selectAll
-    const organization = objSearcher.organization
+    const organization = objSearcher.extraData.organization
     let datamodelSearchBuilder = parent._ogapi.datamodelsSearchBuilder();
 
     let rtFilter = {
@@ -346,7 +346,9 @@ const FIELD_SEARCHER = {
         //GET dataset by organization and datasetId
         var columnDatastreams = []
         const _this = this
-        _this._ogapi.newDatasetFinder().findByOrganizationAndDatasetId(objSearcher.organization, objSearcher.dataset)
+        var organization = objSearcher.extraData.organization
+        var dataset = objSearcher.extraData.dataset
+        _this._ogapi.newDatasetFinder().findByOrganizationAndDatasetId(organization, dataset)
         .then(function (response) {
             if (response.statusCode === 200) {
                 var columns = response.data.columns
@@ -361,7 +363,7 @@ const FIELD_SEARCHER = {
                         const datastream = datastreamMatch[1].replace(new RegExp("\[0\]"), "")
                         query = {selectedField: datastream}
                     }
-                    query.organization = objSearcher.organization
+                    query.organization = organization
                     //recuperamos la defnición de todas las columnas y todos los datastreams
                     _getDatamodelFields(_this, query).then(function (datamodelFields) {
                         columns.forEach(function (column) {
