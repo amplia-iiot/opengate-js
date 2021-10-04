@@ -138,7 +138,7 @@ var _getDatamodelFields = function _getDatamodelFields(parent, objSearcher) {
     var defered = _q2['default'].defer();
     var selectedField = objSearcher.selectedField;
     var selectAll = objSearcher.selectAll;
-    var organization = objSearcher.extraData.organization;
+    var organization = objSearcher.extraData && objSearcher.extraData.organization;
     var datamodelSearchBuilder = parent._ogapi.datamodelsSearchBuilder();
 
     var rtFilter = {

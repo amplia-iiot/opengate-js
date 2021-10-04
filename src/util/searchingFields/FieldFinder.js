@@ -122,7 +122,7 @@ const _getDatamodelFields = function(parent, objSearcher){
     let defered = q.defer();
     const selectedField = objSearcher.selectedField
     const selectAll = objSearcher.selectAll
-    const organization = objSearcher.extraData.organization
+    const organization = objSearcher.extraData && objSearcher.extraData.organization
     let datamodelSearchBuilder = parent._ogapi.datamodelsSearchBuilder();
 
     let rtFilter = {
