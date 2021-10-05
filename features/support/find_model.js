@@ -113,7 +113,9 @@ module.exports = {
             'category[0] datastream[0] qrating version': 'categories[0].datastreams[0].qrating.version',
             'category[1] datastream[0] identifier': 'categories[1].datastreams[0].identifier',
             'area identifier': 'identifier',
-            'area name': 'name'
+            'area name': 'name',
+            'dataset identifier': 'identifier',
+            'dataset name': 'name'
         } [getter];
     }
 };

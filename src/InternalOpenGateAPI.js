@@ -15,6 +15,7 @@ import BulkSearchBuilder from './searching/builder/BulkSearchBuilder';
 import BulkFinder from './bulk/BulkFinder';
 import Channels from './channels/Channels';
 import Areas from './areas/Areas';
+import Datasets from './datasets/Datasets';
 import ChannelsSearchBuilder from './searching/builder/ChannelsSearchBuilder';
 import RuleConfigurations from './rulesConfiguration/RuleConfigurations';
 import RuleConfigurationsFinder from './rulesConfiguration/RuleConfigurationsFinder';
@@ -930,6 +931,14 @@ export default class InternalOpenGateAPI {
      */
     areasBuilder() {
         return new Areas(this);
+    }
+
+    /**
+     * This return a DatasetBuilder to build a specific dataset
+     * @return {Datasets}
+     */
+     datasetsBuilder() {
+        return new Datasets(this);
     }
 
     /**

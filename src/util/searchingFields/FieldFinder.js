@@ -167,7 +167,7 @@ const _getDatamodelFields = function(parent, objSearcher){
                             return ds;
                         }
                         return ds.identifier;
-                    });
+                    }); 
                 });
             });
             datastreams = reduce(datastreams);
@@ -374,9 +374,9 @@ const FIELD_SEARCHER = {
                             const datastream = datastreamMatch[1].replace(new RegExp("\[0\]"), "")
                             const subdatastream = datastreamMatch[2].replace(new RegExp('value\.?'), '');
                             //Buscamos la definición del datastream en el datamodel
-                            const datamodelField = datamodelFields.find(function (df) {
+                            const datamodelField = Array.isArray(datamodelFields) ? datamodelFields.find(function (df) {
                                 return datastream === df.identifier
-                            })
+                            }) : datamodelFields
                             const schema = datamodelField.schema
                             // si es un datastream simple, la asignación es directa
                             if (!subdatastream) {

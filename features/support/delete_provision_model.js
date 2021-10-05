@@ -19,6 +19,10 @@ module.exports = {
                 'identifier': 'withIdentifier',
                 'organization': 'withOrganization'
             },
+            'dataset': {
+                'identifier': 'withIdentifier',
+                'organization': 'withOrganization'
+            },
             'domain': {
                 'name': 'withName'
             }
@@ -31,6 +35,7 @@ module.exports = {
             'organization': 'withName',
             'bundle': 'withVersion',
             'area': 'withIdentifier',
+            'dataset': 'withIdentifier',
             'domain': 'withDomain'
         }[method];
     }
