@@ -48,7 +48,7 @@ When(/^I want "([^"]*)"( (\d*) minutes| for this url "([^"]*)" for)? (a|of a) op
             return value;
         });
         cache = null; // Enable garbage collection
-        //console.log("I WANT ERROR: " + error);
+        console.log("I WANT ERROR: " + error);
         _this.error = error;
         _this.responseData = response;
 
@@ -92,7 +92,7 @@ When(/^I want "([^"]*)"( (\d*) minutes| for this url "([^"]*)" for)? (a|of a) op
         //console.log("MINUTES: " + minutes);
         return util.call(this.util, (data || (minutes * 1))).then(digestResponseData).catch(digestErrorData);
     } catch (err) {
-        //console.log(err)
+        console.log(err)
         this.error = err;
         throw new Error(JSON.stringify(err));
     }
@@ -343,15 +343,15 @@ When(/^I execute it$/, function () {
     _this.responseData = undefined;
 
     function catchResponse (data) {
-        // console.log("EXECUTE RESPONSE: " + JSON.stringify(data));
+        console.log("EXECUTE RESPONSE: " + JSON.stringify(data));
         _this.responseData = data;
         _this.error = undefined;
     }
 
     function catchErrorResponse (err) {
         // console.log(err);
-        //console.log("EXECUTE ERROR: " + JSON.stringify(err));
-        _this.responseData = err;
+        console.log("EXECUTE ERROR: " + JSON.stringify(err));
+        _this.responseData = undefined;
         _this.error = err;
 
     }
@@ -360,7 +360,7 @@ When(/^I execute it$/, function () {
         // console.log(this.build);
         return this.build.execute().then(catchResponse).catch(catchErrorResponse);
     } catch (err) {
-        // console.log(err);
+        console.log(err);
         this.error = err;
         return;
     }
@@ -690,6 +690,43 @@ When(/^I delete it$/, function () {
     }
 });
 
+When(/^I delete it with location as a identifier$/, function () {
+
+    var _this = this;
+    _this.error = undefined;
+    _this.responseData = undefined;
+
+    function catchResponse (data) {
+        //console.log("OK");
+        //console.log(JSON.stringify(data));
+        _this.responseData = data;
+        _this.error = undefined;
+        //console.log(data);
+    }
+
+    function catchErrorResponse (err) {
+        //console.log("NOK");
+        //console.log(JSON.stringify(err));
+        _this.responseData = err;
+        _this.error = err;
+
+    }
+
+    try {
+        //console.log("location:" + location);
+        //console.log("this.location:" + _this.location);
+        var id = this.location.substring(this.location.lastIndexOf("/") + 1);
+        return _this.util.withIdentifier(id).delete().then(catchResponse).catch(catchErrorResponse);
+
+    } catch (err) {
+        //console.error(err);
+        _this.responseData = err;
+        _this.error = err;
+        //this.expect(this.error).to.be.undefined;
+        return;
+    }
+});
+
 When(/^I delete it all$/, function () {
 
     var _this = this;
@@ -778,30 +815,40 @@ When(/^I update password with "([^"]*)"$/, function (field) {
     }
 });
 
-When(/^I get filter fields$/, function () {
+When(/^I get filter fields...$/, function (table, callback) {
     var _this = this;
     _this.error = undefined;
     _this.responseData = undefined;
 
     function catchResponse (data) {
-        //console.log("EXECUTE RESPONSE: " + JSON.stringify(data));
+        console.log("EXECUTE RESPONSE: " + JSON.stringify(data));
         _this.responseData = data;
         _this.error = undefined;
+        callback()
     }
 
     function catchErrorResponse (err) {
-        //console.log("EXECUTE ERROR: " + JSON.stringify(err));
-        _this.responseData = err;
+        console.log("EXECUTE ERROR: " + JSON.stringify(err));
+        _this.responseData = undefined;
         _this.error = err;
-
+        callback()
     }
 
     try {
-        return this.util.then(catchResponse).catch(catchErrorResponse);
+        var data = table.hashes();
+        if (data.length > 0) {
+            for (var i = 0; i < data.length; i++) {
+                var withMethod = this.model_match(this.currentModel).setters(this.currentEntity)[data[i].field];
+                this.util[withMethod](data[i].content ).then(catchResponse).catch(catchErrorResponse);
+            }
+        } else {
+            this.error = "No params found";
+            callback()
+        }
     } catch (err) {
-        //console.log(err);
+        console.log(err);
         this.error = err;
-        return;
+        callback()
     }
 });
 

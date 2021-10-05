@@ -26,6 +26,9 @@ module.exports = {
             "certificates search": function(ogapi) {
                 return ogapi.certificatesSearchBuilder();
             },
+            "datasets search": function(ogapi, param, param2) {
+                return ogapi.datasetSearchBuilder(param, param2);
+            },
             "channel finder": function(ogapi) {
                 return ogapi.newChannelFinder();
             },
@@ -40,6 +43,9 @@ module.exports = {
             },
             "areas builder": function(ogapi) {
                 return ogapi.areasBuilder();
+            },
+            "datasets builder": function(ogapi) {
+                return ogapi.datasetsBuilder();
             },
             "channels search": function(ogapi) {
                 return ogapi.channelsSearchBuilder();
@@ -98,8 +104,11 @@ module.exports = {
             "operation finder": function(ogapi) {
                 return ogapi.newOperationFinder();
             },
-            "ruleConfigurationsHelper finder": function(ogapio) {
+            "ruleConfigurationsHelper finder": function(ogapi) {
                 return ogapi.newRuleConfigurationsHelper();
+            },
+            "dataset finder": function(ogapi) {
+                return ogapi.newDatasetFinder();
             },
             "organization finder": function(ogapi) {
                 return ogapi.newOrganizationFinder();

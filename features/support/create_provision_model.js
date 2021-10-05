@@ -373,6 +373,14 @@ module.exports = {
                 'color': 'withColor',
                 'entities': 'withEntities',
             },
+            'dataset': {
+                'identifier': 'withIdentifier',
+                'name': 'withName',
+                'organization': 'withOrganization',
+                'description': 'withDescription',
+                'columns': 'withColumns',
+                'type': 'withType'
+            },
             'geocluster': {
                 'identifier': 'withIdentifier',
             }

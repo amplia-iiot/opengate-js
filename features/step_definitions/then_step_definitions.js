@@ -61,7 +61,7 @@ Then(/^response data should has elements$/, function (callback) {
     // Write code here that turns the phrase above into concrete actions
     var data;
     data = this.responseData;
-    //console.log("RESPONSE_: " + JSON.stringify(data));
+    console.log("RESPONSE_: " + JSON.stringify(data));
     this.expect(data.length).to.not.equal(0);
     callback();
 });

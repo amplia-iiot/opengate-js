@@ -15,11 +15,13 @@ import BulkSearchBuilder from './searching/builder/BulkSearchBuilder';
 import BulkFinder from './bulk/BulkFinder';
 import Channels from './channels/Channels';
 import Areas from './areas/Areas';
+import Datasets from './datasets/Datasets';
 import ChannelsSearchBuilder from './searching/builder/ChannelsSearchBuilder';
 import RuleConfigurations from './rulesConfiguration/RuleConfigurations';
 import RuleConfigurationsFinder from './rulesConfiguration/RuleConfigurationsFinder';
 import RuleConfigurationsCatalog from './rulesConfiguration/RuleConfigurationsCatalog';
 import RuleConfigurationsHelper from './rulesConfiguration/RuleConfigurationsHelper';
+import DatasetFinder from './datasets/DatasetFinder';
 import OperationType from './operationTypes/OperationType';
 import OperationTypeFinder from './operationTypes/OperationTypeFinder';
 import OperationTypeCatalog from './operationTypes/OperationTypeCatalog';
@@ -104,6 +106,7 @@ import QratingsBuilder from './iot/catalog/Qrating';
 import EntityBuilder from './provision/entities/EntityBuilder';
 import EntitiesSearchBuilder from './searching/builder/EntitiesSearchBuilder';
 import DatasetEntitiesSearchBuilder from './searching/builder/DatasetEntitiesSearchBuilder';
+import DatasetSearchBuilder from './searching/builder/DatasetSearchBuilder';
 import CountryCodesSearchBuilder from './searching/builder/CountryCodesSearchBuilder';
 import TimezoneSearchBuilder from './searching/builder/TimezoneSearchBuilder';
 import UserLanguagesSearchBuilder from './searching/builder/UserLanguagesSearchBuilder';
@@ -285,6 +288,15 @@ export default class InternalOpenGateAPI {
      newRuleConfigurationsHelper() {
         return new RuleConfigurationsHelper(this);
     }
+    
+    /**
+     * This return a to find Dataset configuration
+     * @return {DatasetFinder}
+     */
+     newDatasetFinder() {
+        return new DatasetFinder(this);
+    }
+    
     /**
      * This return a util to find Rule Configurations Templates
      * @return {RuleConfigurationsCatalog}
@@ -647,6 +659,15 @@ export default class InternalOpenGateAPI {
     }
 
     /**
+     * This return a DatasetSearchBuilder to build a specific DatasetSearch
+     * @return {DatasetSearchBuilder}
+     */
+     datasetSearchBuilder(organization, dataset) {
+        return new DatasetSearchBuilder(this, organization, dataset);
+    }
+    
+
+    /**
      * This return a PlansSearchBuilder to build a specific PlansSearchBuilder
      * @return {PlansSearchBuilder}
      */
@@ -910,6 +931,14 @@ export default class InternalOpenGateAPI {
      */
     areasBuilder() {
         return new Areas(this);
+    }
+
+    /**
+     * This return a DatasetBuilder to build a specific dataset
+     * @return {Datasets}
+     */
+     datasetsBuilder() {
+        return new Datasets(this);
     }
 
     /**

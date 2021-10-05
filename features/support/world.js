@@ -13,9 +13,9 @@ findDeleteModel = require('./delete_provision_model');
 searchingModel = require('./searching_model');
 
 function World() {
-    this.test_url_north = process.env.API_NORTH_INTERNAL || 'API_NORTH';
-    this.test_url_south = process.env.API_SOUTH_INTERNAL || 'API_SOUTH';
-    this.apikey = process.env.API_KEY || 'API_KEY';
+    this.test_url_north = process.env.API_NORTH_INTERNAL || 'API_NORTH_INTERNAL';
+    this.test_url_south = process.env.API_SOUTH_INTERNAL || 'API_SOUTH_INTERNAL';
+    this.apikey = process.env.API_KEY || 'MY_APY_KEY';
     chai.use(chai_as_promised);
     this.expect = chai.expect;
 
