@@ -44,6 +44,9 @@ module.exports = {
             "areas builder": function(ogapi) {
                 return ogapi.areasBuilder();
             },
+            "datasets builder": function(ogapi) {
+                return ogapi.datasetsBuilder();
+            },
             "channels search": function(ogapi) {
                 return ogapi.channelsSearchBuilder();
             },

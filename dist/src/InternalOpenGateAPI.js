@@ -70,6 +70,10 @@ var _areasAreas = require('./areas/Areas');
 
 var _areasAreas2 = _interopRequireDefault(_areasAreas);
 
+var _datasetsDatasets = require('./datasets/Datasets');
+
+var _datasetsDatasets2 = _interopRequireDefault(_datasetsDatasets);
+
 var _searchingBuilderChannelsSearchBuilder = require('./searching/builder/ChannelsSearchBuilder');
 
 var _searchingBuilderChannelsSearchBuilder2 = _interopRequireDefault(_searchingBuilderChannelsSearchBuilder);
@@ -1466,6 +1470,16 @@ var InternalOpenGateAPI = (function () {
         key: 'areasBuilder',
         value: function areasBuilder() {
             return new _areasAreas2['default'](this);
+        }
+
+        /**
+         * This return a DatasetBuilder to build a specific dataset
+         * @return {Datasets}
+         */
+    }, {
+        key: 'datasetsBuilder',
+        value: function datasetsBuilder() {
+            return new _datasetsDatasets2['default'](this);
         }
 
         /**

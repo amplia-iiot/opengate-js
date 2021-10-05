@@ -306,6 +306,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "opengate-js/src/datasets/datasets.js~datasets_types_enum",
+    "variable/index.html#static-variable-DATASETS_TYPES_ENUM",
+    "<span>DATASETS_TYPES_ENUM</span> <span class=\"search-result-import-path\">opengate-js/src/datasets/Datasets.js</span>",
+    "variable"
+  ],
+  [
     "opengate-js/src/util/date_format.js~date_format",
     "variable/index.html#static-variable-DATE_FORMAT",
     "<span>DATE_FORMAT</span> <span class=\"search-result-import-path\">opengate-js/src/util/DATE_FORMAT.js</span>",
@@ -369,6 +375,12 @@ window.esdocSearchIndex = [
     "opengate-js/src/searching/builder/datasetsearchbuilder.js~datasetsearchbuilder",
     "class/src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder.html",
     "<span>DatasetSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/DatasetSearchBuilder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/datasets/datasets.js~datasets",
+    "class/src/datasets/Datasets.js~Datasets.html",
+    "<span>Datasets</span> <span class=\"search-result-import-path\">opengate-js/src/datasets/Datasets.js</span>",
     "class"
   ],
   [
@@ -3168,6 +3180,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#datasetsbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-datasetsBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#datasetsBuilder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#datasetscatalogsearchbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-datasetsCatalogSearchBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#datasetsCatalogSearchBuilder",
@@ -5241,6 +5259,60 @@ window.esdocSearchIndex = [
     "src/datasets/datasetfinder.js~datasetfinder#findbyorganizationanddatasetid",
     "class/src/datasets/DatasetFinder.js~DatasetFinder.html#instance-method-findByOrganizationAndDatasetId",
     "src/datasets/DatasetFinder.js~DatasetFinder#findByOrganizationAndDatasetId",
+    "method"
+  ],
+  [
+    "src/datasets/datasets.js",
+    "file/src/datasets/Datasets.js.html",
+    "src/datasets/Datasets.js",
+    "file"
+  ],
+  [
+    "src/datasets/datasets.js~datasets#constructor",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-constructor-constructor",
+    "src/datasets/Datasets.js~Datasets#constructor",
+    "method"
+  ],
+  [
+    "src/datasets/datasets.js~datasets#update",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-method-update",
+    "src/datasets/Datasets.js~Datasets#update",
+    "method"
+  ],
+  [
+    "src/datasets/datasets.js~datasets#withcolumns",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-method-withColumns",
+    "src/datasets/Datasets.js~Datasets#withColumns",
+    "method"
+  ],
+  [
+    "src/datasets/datasets.js~datasets#withdescription",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-method-withDescription",
+    "src/datasets/Datasets.js~Datasets#withDescription",
+    "method"
+  ],
+  [
+    "src/datasets/datasets.js~datasets#withidentifier",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-method-withIdentifier",
+    "src/datasets/Datasets.js~Datasets#withIdentifier",
+    "method"
+  ],
+  [
+    "src/datasets/datasets.js~datasets#withname",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-method-withName",
+    "src/datasets/Datasets.js~Datasets#withName",
+    "method"
+  ],
+  [
+    "src/datasets/datasets.js~datasets#withorganization",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-method-withOrganization",
+    "src/datasets/Datasets.js~Datasets#withOrganization",
+    "method"
+  ],
+  [
+    "src/datasets/datasets.js~datasets#withtype",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-method-withType",
+    "src/datasets/Datasets.js~Datasets#withType",
     "method"
   ],
   [

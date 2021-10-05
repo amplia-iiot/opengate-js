@@ -380,9 +380,9 @@ var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEA
                         var datastream = datastreamMatch[1].replace(new RegExp("\[0\]"), "");
                         var subdatastream = datastreamMatch[2].replace(new RegExp('value\.?'), '');
                         //Buscamos la definición del datastream en el datamodel
-                        var datamodelField = datamodelFields.find(function (df) {
+                        var datamodelField = Array.isArray(datamodelFields) ? datamodelFields.find(function (df) {
                             return datastream === df.identifier;
-                        });
+                        }) : datamodelFields;
                         var schema = datamodelField.schema;
                         // si es un datastream simple, la asignación es directa
                         if (!subdatastream) {
