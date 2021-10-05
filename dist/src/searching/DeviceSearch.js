@@ -23,7 +23,7 @@ var _q = require('q');
 var _q2 = _interopRequireDefault(_q);
 
 /** 
- * This extends BaseSearch and allow make request to any available resource into Opengate North API.
+ * This extends Search and allow make request to any available resource into Opengate North API.
  */
 
 var DeviceSearch = (function (_Search) {

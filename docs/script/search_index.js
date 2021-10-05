@@ -114,6 +114,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/searching/builder/datasetsearchbuilder.js~base_url",
+    "variable/index.html#static-variable-BASE_URL",
+    "<span>BASE_URL</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/DatasetSearchBuilder.js</span>",
+    "variable"
+  ],
+  [
     "opengate-js/src/collection/devices/collect/enum/battery_charge_level_status_enum.js~battery_charge_level_status_enum",
     "variable/index.html#static-variable-BATTERY_CHARGE_LEVEL_STATUS_ENUM",
     "<span>BATTERY_CHARGE_LEVEL_STATUS_ENUM</span> <span class=\"search-result-import-path\">opengate-js/src/collection/devices/collect/enum/BATTERY_CHARGE_LEVEL_STATUS_ENUM.js</span>",
@@ -300,6 +306,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "opengate-js/src/datasets/datasets.js~datasets_types_enum",
+    "variable/index.html#static-variable-DATASETS_TYPES_ENUM",
+    "<span>DATASETS_TYPES_ENUM</span> <span class=\"search-result-import-path\">opengate-js/src/datasets/Datasets.js</span>",
+    "variable"
+  ],
+  [
     "opengate-js/src/util/date_format.js~date_format",
     "variable/index.html#static-variable-DATE_FORMAT",
     "<span>DATE_FORMAT</span> <span class=\"search-result-import-path\">opengate-js/src/util/DATE_FORMAT.js</span>",
@@ -351,6 +363,24 @@ window.esdocSearchIndex = [
     "opengate-js/src/searching/builder/datasetentitiessearchbuilder.js~datasetentitiessearchbuilder",
     "class/src/searching/builder/DatasetEntitiesSearchBuilder.js~DatasetEntitiesSearchBuilder.html",
     "<span>DatasetEntitiesSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/DatasetEntitiesSearchBuilder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/datasets/datasetfinder.js~datasetfinder",
+    "class/src/datasets/DatasetFinder.js~DatasetFinder.html",
+    "<span>DatasetFinder</span> <span class=\"search-result-import-path\">opengate-js/src/datasets/DatasetFinder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/searching/builder/datasetsearchbuilder.js~datasetsearchbuilder",
+    "class/src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder.html",
+    "<span>DatasetSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/DatasetSearchBuilder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/datasets/datasets.js~datasets",
+    "class/src/datasets/Datasets.js~Datasets.html",
+    "<span>Datasets</span> <span class=\"search-result-import-path\">opengate-js/src/datasets/Datasets.js</span>",
     "class"
   ],
   [
@@ -1185,6 +1215,12 @@ window.esdocSearchIndex = [
     "opengate-js/src/searching/builder/userssearchbuilder.js~userssearchbuilder",
     "class/src/searching/builder/UsersSearchBuilder.js~UsersSearchBuilder.html",
     "<span>UsersSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/UsersSearchBuilder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/searching/wpsearch.js~wpsearch",
+    "class/src/searching/WPSearch.js~WPSearch.html",
+    "<span>WPSearch</span> <span class=\"search-result-import-path\">opengate-js/src/searching/WPSearch.js</span>",
     "class"
   ],
   [
@@ -3138,6 +3174,18 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#datasetsearchbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-datasetSearchBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#datasetSearchBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#datasetsbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-datasetsBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#datasetsBuilder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#datasetscatalogsearchbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-datasetsCatalogSearchBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#datasetsCatalogSearchBuilder",
@@ -3297,6 +3345,12 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#newdatamodelsfinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newDatamodelsFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newDatamodelsFinder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#newdatasetfinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newDatasetFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newDatasetFinder",
     "method"
   ],
   [
@@ -5182,6 +5236,84 @@ window.esdocSearchIndex = [
     "file/src/collection/devices/collect/enum/TEMPERATURE_STATUS_ENUM.js.html",
     "src/collection/devices/collect/enum/TEMPERATURE_STATUS_ENUM.js",
     "file"
+  ],
+  [
+    "src/datasets/datasetfinder.js",
+    "file/src/datasets/DatasetFinder.js.html",
+    "src/datasets/DatasetFinder.js",
+    "file"
+  ],
+  [
+    "src/datasets/datasetfinder.js~datasetfinder#constructor",
+    "class/src/datasets/DatasetFinder.js~DatasetFinder.html#instance-constructor-constructor",
+    "src/datasets/DatasetFinder.js~DatasetFinder#constructor",
+    "method"
+  ],
+  [
+    "src/datasets/datasetfinder.js~datasetfinder#findbyorganization",
+    "class/src/datasets/DatasetFinder.js~DatasetFinder.html#instance-method-findByOrganization",
+    "src/datasets/DatasetFinder.js~DatasetFinder#findByOrganization",
+    "method"
+  ],
+  [
+    "src/datasets/datasetfinder.js~datasetfinder#findbyorganizationanddatasetid",
+    "class/src/datasets/DatasetFinder.js~DatasetFinder.html#instance-method-findByOrganizationAndDatasetId",
+    "src/datasets/DatasetFinder.js~DatasetFinder#findByOrganizationAndDatasetId",
+    "method"
+  ],
+  [
+    "src/datasets/datasets.js",
+    "file/src/datasets/Datasets.js.html",
+    "src/datasets/Datasets.js",
+    "file"
+  ],
+  [
+    "src/datasets/datasets.js~datasets#constructor",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-constructor-constructor",
+    "src/datasets/Datasets.js~Datasets#constructor",
+    "method"
+  ],
+  [
+    "src/datasets/datasets.js~datasets#update",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-method-update",
+    "src/datasets/Datasets.js~Datasets#update",
+    "method"
+  ],
+  [
+    "src/datasets/datasets.js~datasets#withcolumns",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-method-withColumns",
+    "src/datasets/Datasets.js~Datasets#withColumns",
+    "method"
+  ],
+  [
+    "src/datasets/datasets.js~datasets#withdescription",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-method-withDescription",
+    "src/datasets/Datasets.js~Datasets#withDescription",
+    "method"
+  ],
+  [
+    "src/datasets/datasets.js~datasets#withidentifier",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-method-withIdentifier",
+    "src/datasets/Datasets.js~Datasets#withIdentifier",
+    "method"
+  ],
+  [
+    "src/datasets/datasets.js~datasets#withname",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-method-withName",
+    "src/datasets/Datasets.js~Datasets#withName",
+    "method"
+  ],
+  [
+    "src/datasets/datasets.js~datasets#withorganization",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-method-withOrganization",
+    "src/datasets/Datasets.js~Datasets#withOrganization",
+    "method"
+  ],
+  [
+    "src/datasets/datasets.js~datasets#withtype",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-method-withType",
+    "src/datasets/Datasets.js~Datasets#withType",
+    "method"
   ],
   [
     "src/domains/domains.js",
@@ -7200,6 +7332,18 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/searching/wpsearch.js",
+    "file/src/searching/WPSearch.js.html",
+    "src/searching/WPSearch.js",
+    "file"
+  ],
+  [
+    "src/searching/wpsearch.js~wpsearch#constructor",
+    "class/src/searching/WPSearch.js~WPSearch.html#instance-constructor-constructor",
+    "src/searching/WPSearch.js~WPSearch#constructor",
+    "method"
+  ],
+  [
     "src/searching/builder/administrativestatesearchbuilder.js",
     "file/src/searching/builder/AdministrativeStateSearchBuilder.js.html",
     "src/searching/builder/AdministrativeStateSearchBuilder.js",
@@ -7623,6 +7767,36 @@ window.esdocSearchIndex = [
     "src/searching/builder/datasetentitiessearchbuilder.js~datasetentitiessearchbuilder#select",
     "class/src/searching/builder/DatasetEntitiesSearchBuilder.js~DatasetEntitiesSearchBuilder.html#instance-method-select",
     "src/searching/builder/DatasetEntitiesSearchBuilder.js~DatasetEntitiesSearchBuilder#select",
+    "method"
+  ],
+  [
+    "src/searching/builder/datasetsearchbuilder.js",
+    "file/src/searching/builder/DatasetSearchBuilder.js.html",
+    "src/searching/builder/DatasetSearchBuilder.js",
+    "file"
+  ],
+  [
+    "src/searching/builder/datasetsearchbuilder.js~datasetsearchbuilder#build",
+    "class/src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder.html#instance-method-build",
+    "src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder#build",
+    "method"
+  ],
+  [
+    "src/searching/builder/datasetsearchbuilder.js~datasetsearchbuilder#constructor",
+    "class/src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder.html#instance-constructor-constructor",
+    "src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/searching/builder/datasetsearchbuilder.js~datasetsearchbuilder#group",
+    "class/src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder.html#instance-method-group",
+    "src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder#group",
+    "method"
+  ],
+  [
+    "src/searching/builder/datasetsearchbuilder.js~datasetsearchbuilder#select",
+    "class/src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder.html#instance-method-select",
+    "src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder#select",
     "method"
   ],
   [

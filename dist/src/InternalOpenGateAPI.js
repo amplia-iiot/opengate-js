@@ -70,6 +70,10 @@ var _areasAreas = require('./areas/Areas');
 
 var _areasAreas2 = _interopRequireDefault(_areasAreas);
 
+var _datasetsDatasets = require('./datasets/Datasets');
+
+var _datasetsDatasets2 = _interopRequireDefault(_datasetsDatasets);
+
 var _searchingBuilderChannelsSearchBuilder = require('./searching/builder/ChannelsSearchBuilder');
 
 var _searchingBuilderChannelsSearchBuilder2 = _interopRequireDefault(_searchingBuilderChannelsSearchBuilder);
@@ -89,6 +93,10 @@ var _rulesConfigurationRuleConfigurationsCatalog2 = _interopRequireDefault(_rule
 var _rulesConfigurationRuleConfigurationsHelper = require('./rulesConfiguration/RuleConfigurationsHelper');
 
 var _rulesConfigurationRuleConfigurationsHelper2 = _interopRequireDefault(_rulesConfigurationRuleConfigurationsHelper);
+
+var _datasetsDatasetFinder = require('./datasets/DatasetFinder');
+
+var _datasetsDatasetFinder2 = _interopRequireDefault(_datasetsDatasetFinder);
 
 var _operationTypesOperationType = require('./operationTypes/OperationType');
 
@@ -426,6 +434,10 @@ var _searchingBuilderDatasetEntitiesSearchBuilder = require('./searching/builder
 
 var _searchingBuilderDatasetEntitiesSearchBuilder2 = _interopRequireDefault(_searchingBuilderDatasetEntitiesSearchBuilder);
 
+var _searchingBuilderDatasetSearchBuilder = require('./searching/builder/DatasetSearchBuilder');
+
+var _searchingBuilderDatasetSearchBuilder2 = _interopRequireDefault(_searchingBuilderDatasetSearchBuilder);
+
 var _searchingBuilderCountryCodesSearchBuilder = require('./searching/builder/CountryCodesSearchBuilder');
 
 var _searchingBuilderCountryCodesSearchBuilder2 = _interopRequireDefault(_searchingBuilderCountryCodesSearchBuilder);
@@ -661,6 +673,16 @@ var InternalOpenGateAPI = (function () {
         key: 'newRuleConfigurationsHelper',
         value: function newRuleConfigurationsHelper() {
             return new _rulesConfigurationRuleConfigurationsHelper2['default'](this);
+        }
+
+        /**
+         * This return a to find Dataset configuration
+         * @return {DatasetFinder}
+         */
+    }, {
+        key: 'newDatasetFinder',
+        value: function newDatasetFinder() {
+            return new _datasetsDatasetFinder2['default'](this);
         }
 
         /**
@@ -1108,6 +1130,16 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
+         * This return a DatasetSearchBuilder to build a specific DatasetSearch
+         * @return {DatasetSearchBuilder}
+         */
+    }, {
+        key: 'datasetSearchBuilder',
+        value: function datasetSearchBuilder(organization, dataset) {
+            return new _searchingBuilderDatasetSearchBuilder2['default'](this, organization, dataset);
+        }
+
+        /**
          * This return a PlansSearchBuilder to build a specific PlansSearchBuilder
          * @return {PlansSearchBuilder}
          */
@@ -1438,6 +1470,16 @@ var InternalOpenGateAPI = (function () {
         key: 'areasBuilder',
         value: function areasBuilder() {
             return new _areasAreas2['default'](this);
+        }
+
+        /**
+         * This return a DatasetBuilder to build a specific dataset
+         * @return {Datasets}
+         */
+    }, {
+        key: 'datasetsBuilder',
+        value: function datasetsBuilder() {
+            return new _datasetsDatasets2['default'](this);
         }
 
         /**
