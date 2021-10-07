@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-    value: true
+  value: true
 });
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -35,69 +35,69 @@ exports.BASE_URL = BASE_URL;
  */
 
 var DatasetSearchBuilder = (function (_SearchBuilder) {
-    _inherits(DatasetSearchBuilder, _SearchBuilder);
+  _inherits(DatasetSearchBuilder, _SearchBuilder);
 
-    /**
-     *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
-     */
+  /**
+   *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
+   */
 
-    function DatasetSearchBuilder(parent, organization, dataset) {
-        _classCallCheck(this, DatasetSearchBuilder);
+  function DatasetSearchBuilder(parent, organization, dataset) {
+    _classCallCheck(this, DatasetSearchBuilder);
 
-        _get(Object.getPrototypeOf(DatasetSearchBuilder.prototype), 'constructor', this).call(this, parent, {}, new _utilSearchingFieldsFieldFinder2['default'](parent, BASE_URL, { organization: organization, dataset: dataset }));
-        this._url = BASE_URL + '/provision/organizations/' + organization + '/' + dataset + '/data';
+    _get(Object.getPrototypeOf(DatasetSearchBuilder.prototype), 'constructor', this).call(this, parent, {}, new _utilSearchingFieldsFieldFinder2['default'](parent, BASE_URL, { organization: organization, dataset: dataset }));
+    this._url = BASE_URL + '/provision/organizations/' + organization + '/' + dataset + '/data';
+  }
+
+  /**
+   * The search request will have this group by 
+   * @example
+   * @param {!(object)} group 
+   * @return {DatasetSearchBuilder} 
+   */
+
+  _createClass(DatasetSearchBuilder, [{
+    key: 'group',
+    value: function group(_group) {
+      this._builderParams.group = _group || {};
+      return this;
     }
 
     /**
-     * The search request will have this group by 
+     * The search request will have this filter 
      * @example
-     * @param {!(object)} group 
+     *  ogapi.datasetSearchBuilder(organization, datasetId).select(
+     *      ogapi.newSelectBuilder().add(SE.element("provision.device.identifier", ["value"], "id"), SE.add("device.temperature.value", ["value"]))
+     *  ) // Setting SelectBuilder
+     *  ogapi.datasetSearchBuilder(organization, datasetId).select({ "elements": [{"name": "provision.device.identifier",
+     *		"fields": [{"field": "value","alias": "identifier"}]},
+     *      {"name": "device.temperature.value","fields": [{"field": "value","alias": "identifier"}]}]
+     *   }) //Custom select
+     * @param {!(SelectBuilder|object)} select
      * @return {DatasetSearchBuilder} 
      */
+  }, {
+    key: 'select',
+    value: function select(_select) {
+      this._builderParams.select = _select || [];
+      return this;
+    }
 
-    _createClass(DatasetSearchBuilder, [{
-        key: 'group',
-        value: function group(_group) {
-            this._builderParams.group = _group || {};
-            return this;
-        }
+    /**
+     * Build a instance of Search 
+     *
+     * @example
+     *  ogapi.datasetSearchBuilder(organization, datasetId).build()
+     * @throws {SearchBuilderError} Throw error on url build
+     * @return {Search} 
+     */
+  }, {
+    key: 'build',
+    value: function build() {
+      return new _WPSearch2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildLimit(), this._buildSort(), this._buildGroup(), this._buildSelect(), this._builderParams.timeout, this._urlParams);
+    }
+  }]);
 
-        /**
-         * The search request will have this filter 
-         * @example
-         *  ogapi.datasetSearchBuilder(organization, datasetId).select(
-         *      ogapi.newSelectBuilder().add(SE.element("provision.device.identifier", ["value"], "id"), SE.add("device.temperature.value", ["value"]))
-         *  ) // Setting SelectBuilder
-         *  ogapi.datasetSearchBuilder(organization, datasetId).select({ "elements": [{"name": "provision.device.identifier",
-         *		"fields": [{"field": "value","alias": "identifier"}]},
-         *      {"name": "device.temperature.value","fields": [{"field": "value","alias": "identifier"}]}]
-         *   }) //Custom select
-         * @param {!(SelectBuilder|object)} select
-         * @return {DatasetSearchBuilder} 
-         */
-    }, {
-        key: 'select',
-        value: function select(_select) {
-            this._builderParams.select = _select || [];
-            return this;
-        }
-
-        /**
-         * Build a instance of Search 
-         *
-         * @example
-         *  ogapi.datasetSearchBuilder(organization, datasetId).build()
-         * @throws {SearchBuilderError} Throw error on url build
-         * @return {Search} 
-         */
-    }, {
-        key: 'build',
-        value: function build() {
-            return new _WPSearch2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildLimit(), this._buildSort(), this._buildGroup(), this._buildSelect(), this._builderParams.timeout, this._urlParams);
-        }
-    }]);
-
-    return DatasetSearchBuilder;
+  return DatasetSearchBuilder;
 })(_SearchBuilder3['default']);
 
 exports['default'] = DatasetSearchBuilder;
