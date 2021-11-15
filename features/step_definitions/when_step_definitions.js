@@ -544,7 +544,7 @@ When(/^I update periodicity$/, function () {
     }
 });
 
-When(/^I create it$/, function () {
+When(/^I create it$/, {timeout: 60 * 1000}, function () {
 
     var _this = this;
     _this.error = undefined;
