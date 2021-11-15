@@ -366,7 +366,7 @@ var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEA
                     });
                     var column = columns[0];
                     var datastreamMatch = column.path.match(new RegExp("^(.+)._current\.?(.+)?$"));
-                    var datastream = datastreamMatch[1].replace(new RegExp("\[0\]"), "");
+                    var datastream = datastreamMatch[1].replace(new RegExp("\[[0-9]+\]"), "[]");
                     query = { selectedField: datastream };
                 }
                 query.organization = organization;
@@ -377,7 +377,7 @@ var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEA
                         //Datastream simple: provision.device.identifier._current.value, device.communicationModules[0].subscriber.mobile.icc._current.at
                         //Datastream complejo: device.model._current.value.manufacturer, device.location._current.value.position.type
                         var datastreamMatch = column.path.match(new RegExp("^(.+)._current\.?(.+)?$"));
-                        var datastream = datastreamMatch[1].replace(new RegExp("\[0\]"), "");
+                        var datastream = datastreamMatch[1].replace(new RegExp("\[[0-9]+\]"), "[]");
                         var subdatastream = datastreamMatch[2].replace(new RegExp('value\.?'), '');
                         //Buscamos la definición del datastream en el datamodel
                         var datamodelField = Array.isArray(datamodelFields) ? datamodelFields.find(function (df) {
