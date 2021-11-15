@@ -360,7 +360,7 @@ const FIELD_SEARCHER = {
                         columns = columns.filter(function (column) { return selectedField === column.name })
                         const column = columns[0]
                         const datastreamMatch = column.path.match(new RegExp("^(.+)._current\.?(.+)?$"));
-                        const datastream = datastreamMatch[1].replace(new RegExp("\[0\]"), "")
+                        const datastream = datastreamMatch[1].replace(new RegExp("\[[0-9]+\]"), "[]")
                         query = {selectedField: datastream}
                     }
                     query.organization = organization
@@ -371,7 +371,7 @@ const FIELD_SEARCHER = {
                             //Datastream simple: provision.device.identifier._current.value, device.communicationModules[0].subscriber.mobile.icc._current.at
                             //Datastream complejo: device.model._current.value.manufacturer, device.location._current.value.position.type
                             const datastreamMatch = column.path.match(new RegExp("^(.+)._current\.?(.+)?$"));
-                            const datastream = datastreamMatch[1].replace(new RegExp("\[0\]"), "")
+                            const datastream = datastreamMatch[1].replace(new RegExp("\[[0-9]+\]"), "[]")
                             const subdatastream = datastreamMatch[2].replace(new RegExp('value\.?'), '');
                             //Buscamos la definición del datastream en el datamodel
                             const datamodelField = Array.isArray(datamodelFields) ? datamodelFields.find(function (df) {
