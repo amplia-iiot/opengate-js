@@ -654,7 +654,7 @@ When(/^I "([^"]*)" it with bulk and response with format csv$/, function (action
 });
 
 
-When(/^I delete it$/, function () {
+When(/^I delete it$/, {timeout: 60 * 1000}, function () {
 
     var _this = this;
     _this.error = undefined;
