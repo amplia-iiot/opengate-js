@@ -34,7 +34,7 @@ Feature: Searching datasets fields
           And the "type" "HISTORY"
           And the "columns" with...
                | param                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-               | [{"path": "provision.device.identifier._current.value", "name": "Prov identifier",  "filter": "YES", "sort": true }, { "path": "device.model._current.value.manufacturer", "name": "Manufacturer", "filter": "ALWAYS", "sort": false }, { "path": "device.model._current.at",  "name": "Manufacturer Date", "filter": "YES", "sort": false }, { "path": "device.communicationModules[0].subscriber.mobile.icc._current.value", "name": "ICC", "filter": "NO", "sort": false }] |
+               | [{"path": "provision.device.identifier._current.value", "name": "Prov identifier",  "filter": "YES", "sort": true }, { "path": "device.model._current.value.manufacturer", "name": "Manufacturer", "filter": "ALWAYS", "sort": false }, { "path": "device.model._current.at",  "name": "Manufacturer Date", "filter": "YES", "sort": false }, { "path": "device.communicationModules[0].subscriber.mobile.icc._current.value", "name": "ICC", "filter": "NO", "sort": false }, { "path": "entity.location._current.value.position.coordinates[0]", "name": "Latitud", "filter": "NO", "sort": false }] |
           Then I create it
           And response code should be: 201
 
@@ -52,6 +52,15 @@ Feature: Searching datasets fields
                | field         | content         |
                | findFieldPath | Manufacturer |
           Then response data should has elements
+          When I get filter fields...
+               | field         | content         |
+               | findFieldPath | ICC |
+          Then response data should has elements
+          When I get filter fields...
+               | field         | content         |
+               | findFieldPath | Latitud |
+          Then response data should has elements
+
 
           And an ogapi "datasets builder" util
           And I want to delete a "dataset"

@@ -18,6 +18,11 @@ for (var field in IOT_FIELDS) {
     }
 }
 
+const REGEX_PATH_CURRENT = new RegExp("^(.+)._current\\.?(.+)?$")
+const REGEX_PATH_ARRAY = new RegExp("\\[[0-9]+\\]")
+const REGEX_DATASTREAM_VALUE = new RegExp('value\\.?')
+
+
 const match_url = {
     '/jobs': 'JOB',
     '/tasks': 'TASKS',
@@ -150,7 +155,6 @@ const _getDatamodelFields = function(parent, objSearcher){
             }
         });
     }
-
     if (rtFilter.and.length > 0) {
         datamodelSearchBuilder.filter(rtFilter);
     }
@@ -355,24 +359,24 @@ const FIELD_SEARCHER = {
                 //search de la definición de schemas de opengate
                 _this._ogapi.basicTypesSearchBuilder().withPath('$').build().execute().then(function (basicTypes) {
                     const definitions = basicTypes.data.definitions
-                    let query = {selectAll: true}
+                    objSearcher.selectAll = true
                     if (selectedField) {
                         columns = columns.filter(function (column) { return selectedField === column.name })
                         const column = columns[0]
-                        const datastreamMatch = column.path.match(new RegExp("^(.+)._current\.?(.+)?$"));
-                        const datastream = datastreamMatch[1].replace(new RegExp("\[[0-9]+\]"), "[]")
-                        query = {selectedField: datastream}
+                        const datastreamMatch = column.path.match(REGEX_PATH_CURRENT);
+                        const datastream = datastreamMatch[1].replace(REGEX_PATH_ARRAY, "[]")
+                        objSearcher.selectedField = datastream
                     }
-                    query.organization = organization
                     //recuperamos la defnición de todas las columnas y todos los datastreams
-                    _getDatamodelFields(_this, query).then(function (datamodelFields) {
+                    _getDatamodelFields(_this, objSearcher).then(function (datamodelFields) {
                         columns.forEach(function (column) {
                             //Expresión regular para recuperar el path del datastream (1) y, si se tratase de un datastream complejo, también el path hasta el dato simple (2).
                             //Datastream simple: provision.device.identifier._current.value, device.communicationModules[0].subscriber.mobile.icc._current.at
                             //Datastream complejo: device.model._current.value.manufacturer, device.location._current.value.position.type
-                            const datastreamMatch = column.path.match(new RegExp("^(.+)._current\.?(.+)?$"));
-                            const datastream = datastreamMatch[1].replace(new RegExp("\[[0-9]+\]"), "[]")
-                            const subdatastream = datastreamMatch[2].replace(new RegExp('value\.?'), '');
+                            const datastreamMatch = column.path.match(REGEX_PATH_CURRENT);
+                            //Eliminamos el indice para los modulos de comunicaciones y los arrays para el resto de datastreams
+                            const datastream = datastreamMatch[1].replace(REGEX_PATH_ARRAY, "[]")
+                            const subdatastream = datastreamMatch[2].replace(REGEX_DATASTREAM_VALUE, '').replace(REGEX_PATH_ARRAY, '');
                             //Buscamos la definición del datastream en el datamodel
                             const datamodelField = Array.isArray(datamodelFields) ? datamodelFields.find(function (df) {
                                 return datastream === df.identifier
