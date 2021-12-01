@@ -34,6 +34,10 @@ for (var field in _IotFields.IOT_FIELDS) {
     }
 }
 
+var REGEX_PATH_CURRENT = new RegExp("^(.+)._current\\.?(.+)?$");
+var REGEX_PATH_ARRAY = new RegExp("\\[[0-9]+\\]");
+var REGEX_DATASTREAM_VALUE = new RegExp('value\\.?');
+
 var match_url = {
     '/jobs': 'JOB',
     '/tasks': 'TASKS',
@@ -166,7 +170,6 @@ var _getDatamodelFields = function _getDatamodelFields(parent, objSearcher) {
             }
         });
     }
-
     if (rtFilter.and.length > 0) {
         datamodelSearchBuilder.filter(rtFilter);
     }
@@ -359,26 +362,26 @@ var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEA
             //search de la definición de schemas de opengate
             _this._ogapi.basicTypesSearchBuilder().withPath('$').build().execute().then(function (basicTypes) {
                 var definitions = basicTypes.data.definitions;
-                var query = { selectAll: true };
+                objSearcher.selectAll = true;
                 if (selectedField) {
                     columns = columns.filter(function (column) {
                         return selectedField === column.name;
                     });
                     var column = columns[0];
-                    var datastreamMatch = column.path.match(new RegExp("^(.+)._current\.?(.+)?$"));
-                    var datastream = datastreamMatch[1].replace(new RegExp("\[[0-9]+\]"), "[]");
-                    query = { selectedField: datastream };
+                    var datastreamMatch = column.path.match(REGEX_PATH_CURRENT);
+                    var datastream = datastreamMatch[1].replace(REGEX_PATH_ARRAY, "[]");
+                    objSearcher.selectedField = datastream;
                 }
-                query.organization = organization;
                 //recuperamos la defnición de todas las columnas y todos los datastreams
-                _getDatamodelFields(_this, query).then(function (datamodelFields) {
+                _getDatamodelFields(_this, objSearcher).then(function (datamodelFields) {
                     columns.forEach(function (column) {
                         //Expresión regular para recuperar el path del datastream (1) y, si se tratase de un datastream complejo, también el path hasta el dato simple (2).
                         //Datastream simple: provision.device.identifier._current.value, device.communicationModules[0].subscriber.mobile.icc._current.at
                         //Datastream complejo: device.model._current.value.manufacturer, device.location._current.value.position.type
-                        var datastreamMatch = column.path.match(new RegExp("^(.+)._current\.?(.+)?$"));
-                        var datastream = datastreamMatch[1].replace(new RegExp("\[[0-9]+\]"), "[]");
-                        var subdatastream = datastreamMatch[2].replace(new RegExp('value\.?'), '');
+                        var datastreamMatch = column.path.match(REGEX_PATH_CURRENT);
+                        //Eliminamos el indice para los modulos de comunicaciones y los arrays para el resto de datastreams
+                        var datastream = datastreamMatch[1].replace(REGEX_PATH_ARRAY, "[]");
+                        var subdatastream = datastreamMatch[2].replace(REGEX_DATASTREAM_VALUE, '').replace(REGEX_PATH_ARRAY, '');
                         //Buscamos la definición del datastream en el datamodel
                         var datamodelField = Array.isArray(datamodelFields) ? datamodelFields.find(function (df) {
                             return datastream === df.identifier;
