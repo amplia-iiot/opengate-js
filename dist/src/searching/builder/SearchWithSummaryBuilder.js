@@ -53,11 +53,6 @@ var SearchWithSummaryBuilder = (function (_SearchBuilder) {
 
             return this;
         }
-    }, {
-        key: '_buildUrl',
-        value: function _buildUrl() {
-            return _get(Object.getPrototypeOf(SearchWithSummaryBuilder.prototype), '_buildUrl', this).call(this);
-        }
     }]);
 
     return SearchWithSummaryBuilder;

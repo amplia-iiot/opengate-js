@@ -42,6 +42,7 @@ import TicketsSearchBuilder from './searching/builder/TicketsSearchBuilder';
 import TasksSearchBuilder from './searching/builder/TasksSearchBuilder';
 import OperationsSearchBuilder from './searching/builder/OperationsSearchBuilder';
 import ExecutionsSearchBuilder from './searching/builder/ExecutionsSearchBuilder';
+import ExecutionsHistorySearchBuilder from './searching/builder/ExecutionsHistorySearchBuilder';
 import AlarmsSearchBuilder from './searching/builder/AlarmsSearchBuilder';
 import DatamodelsSearchBuilder from './searching/builder/DatamodelsSearchBuilder';
 import FeedsSearchBuilder from './searching/builder/FeedsSearchBuilder';
@@ -577,6 +578,13 @@ export default class InternalOpenGateAPI {
     executionsSearchBuilder() {
         return new ExecutionsSearchBuilder(this);
     }
+    /**
+     * This return a ExecutionsHistorySearchBuilder to build a specific ExecutionsSearch
+     * @return {ExecutionsHistorySearchBuilder}
+     */
+     executionsHistorySearchBuilder() {
+            return new ExecutionsHistorySearchBuilder(this);
+        }
 
     /**
      * This return a AlarmsSearchBuilder to build a specific AlarmsSearch
