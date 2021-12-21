@@ -9,16 +9,15 @@ OpengateAPI = require(process.cwd() + '/dist/opengate-api-npm');
 utilsModel = require('./utils_model');
 findModel = require('./find_model');
 findCreateModel = require('./create_provision_model');
-findDeleteModel = require('./delete_provision_model');
+findDeleteModel = require('./delete_provision_model'); 
 searchingModel = require('./searching_model');
 
 function World() {
-    this.test_url_north = process.env.API_NORTH_INTERNAL || 'API_NORTH_INTERNAL';
-    this.test_url_south = process.env.API_SOUTH_INTERNAL || 'API_SOUTH_INTERNAL';
-    this.apikey = process.env.API_KEY || 'MY_APY_KEY';
+    this.test_url_north = process.env.API_NORTH_INTERNAL || 'https://172.19.18.132:9082/north/v80';
+    this.test_url_south = process.env.API_SOUTH_INTERNAL || 'https://172.19.18.132:9082/south/v80';
+    this.apikey = process.env.API_KEY || '620567f8-cfc6-4707-a6a7-8206052e5c4a';
     chai.use(chai_as_promised);
     this.expect = chai.expect;
-
     // Own dependencies with the model
     this.utilsModel = utilsModel;
     this.findModel = findModel;
