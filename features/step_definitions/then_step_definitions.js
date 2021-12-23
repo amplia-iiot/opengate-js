@@ -341,7 +341,8 @@ Then(/^throws an error equal to "([^"]*)"$/, function (errorMessage, callback) {
 });
 
 Then(/^does not throws an error$/, function (callback) {
-    console.log(this.error);
+    console.log('pruebaaaaaaaaaaaaaaaaaaa')
+    console.log('error', this.error);
     this.expect(this.error).not.to.exist;
     callback();
 });

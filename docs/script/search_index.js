@@ -7944,12 +7944,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/searching/builder/executionshistorysearchbuilder.js~executionshistorysearchbuilder#summary",
-    "class/src/searching/builder/ExecutionsHistorySearchBuilder.js~ExecutionsHistorySearchBuilder.html#instance-method-summary",
-    "src/searching/builder/ExecutionsHistorySearchBuilder.js~ExecutionsHistorySearchBuilder#summary",
-    "method"
-  ],
-  [
     "src/searching/builder/executionssearchbuilder.js",
     "file/src/searching/builder/ExecutionsSearchBuilder.js.html",
     "src/searching/builder/ExecutionsSearchBuilder.js",
