@@ -116,6 +116,10 @@ module.exports = {
             "organizations builder": function(ogapi) {
                 return ogapi.organizationsBuilder();
             },
+            "executions history builder": function(ogapi) {
+                console.log('gapi,', ogapi)
+                return ogapi.executionsHistorySearchBuilder();
+            },
             "softwares search": function(ogapi) {
                 return ogapi.softwaresSearchBuilder();
             },

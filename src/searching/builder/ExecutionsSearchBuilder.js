@@ -32,6 +32,4 @@ export default class ExecutionsSearchBuilder extends SearchWithSummaryBuilder {
         }
         return super._buildUrl();
     }
-
-
 }

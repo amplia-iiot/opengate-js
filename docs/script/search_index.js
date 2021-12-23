@@ -504,6 +504,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/searching/builder/executionshistorysearchbuilder.js~executionshistorysearchbuilder",
+    "class/src/searching/builder/ExecutionsHistorySearchBuilder.js~ExecutionsHistorySearchBuilder.html",
+    "<span>ExecutionsHistorySearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/ExecutionsHistorySearchBuilder.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/searching/builder/executionssearchbuilder.js~executionssearchbuilder",
     "class/src/searching/builder/ExecutionsSearchBuilder.js~ExecutionsSearchBuilder.html",
     "<span>ExecutionsSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/ExecutionsSearchBuilder.js</span>",
@@ -3244,6 +3250,12 @@ window.esdocSearchIndex = [
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-member-entityBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#entityBuilder",
     "member"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#executionshistorysearchbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-executionsHistorySearchBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#executionsHistorySearchBuilder",
+    "method"
   ],
   [
     "src/internalopengateapi.js~internalopengateapi#executionssearchbuilder",
@@ -7917,6 +7929,18 @@ window.esdocSearchIndex = [
     "src/searching/builder/entitiessearchbuilder.js~entitiessearchbuilder#select",
     "class/src/searching/builder/EntitiesSearchBuilder.js~EntitiesSearchBuilder.html#instance-method-select",
     "src/searching/builder/EntitiesSearchBuilder.js~EntitiesSearchBuilder#select",
+    "method"
+  ],
+  [
+    "src/searching/builder/executionshistorysearchbuilder.js",
+    "file/src/searching/builder/ExecutionsHistorySearchBuilder.js.html",
+    "src/searching/builder/ExecutionsHistorySearchBuilder.js",
+    "file"
+  ],
+  [
+    "src/searching/builder/executionshistorysearchbuilder.js~executionshistorysearchbuilder#constructor",
+    "class/src/searching/builder/ExecutionsHistorySearchBuilder.js~ExecutionsHistorySearchBuilder.html#instance-constructor-constructor",
+    "src/searching/builder/ExecutionsHistorySearchBuilder.js~ExecutionsHistorySearchBuilder#constructor",
     "method"
   ],
   [

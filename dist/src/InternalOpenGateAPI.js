@@ -178,6 +178,10 @@ var _searchingBuilderExecutionsSearchBuilder = require('./searching/builder/Exec
 
 var _searchingBuilderExecutionsSearchBuilder2 = _interopRequireDefault(_searchingBuilderExecutionsSearchBuilder);
 
+var _searchingBuilderExecutionsHistorySearchBuilder = require('./searching/builder/ExecutionsHistorySearchBuilder');
+
+var _searchingBuilderExecutionsHistorySearchBuilder2 = _interopRequireDefault(_searchingBuilderExecutionsHistorySearchBuilder);
+
 var _searchingBuilderAlarmsSearchBuilder = require('./searching/builder/AlarmsSearchBuilder');
 
 var _searchingBuilderAlarmsSearchBuilder2 = _interopRequireDefault(_searchingBuilderAlarmsSearchBuilder);
@@ -1028,6 +1032,16 @@ var InternalOpenGateAPI = (function () {
         key: 'executionsSearchBuilder',
         value: function executionsSearchBuilder() {
             return new _searchingBuilderExecutionsSearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a ExecutionsHistorySearchBuilder to build a specific ExecutionsSearch
+         * @return {ExecutionsHistorySearchBuilder}
+         */
+    }, {
+        key: 'executionsHistorySearchBuilder',
+        value: function executionsHistorySearchBuilder() {
+            return new _searchingBuilderExecutionsHistorySearchBuilder2['default'](this);
         }
 
         /**
