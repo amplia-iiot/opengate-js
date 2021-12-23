@@ -209,6 +209,8 @@ export default class SearchBuilder {
      * @return {Search} 
      */
     build() {
+        try{
+            
         return new Search(this._parent,
             this._buildUrl(),
             this._buildFilter(),
@@ -218,6 +220,10 @@ export default class SearchBuilder {
             this._buildSelect(),
             this._builderParams.timeout,
             this._urlParams);
+        }
+        catch(error){
+            console.log('!errrrror!!!!!!', error)
+        }
     }
 
     _buildFilter() {

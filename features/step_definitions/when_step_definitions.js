@@ -358,6 +358,7 @@ When(/^I execute it$/, function () {
 
     try {
         // console.log(this.build);
+        console.log('this.build', this.build)
         return this.build.execute().then(catchResponse).catch(catchErrorResponse);
     } catch (err) {
         console.log(err);
