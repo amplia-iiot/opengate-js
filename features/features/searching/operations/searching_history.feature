@@ -3,7 +3,7 @@
 @operations
 @searching
 @searching_executions
-@prueba23
+
 Feature: Searching operation's executions
 As a user of JsApi
 I want to search operation's executions

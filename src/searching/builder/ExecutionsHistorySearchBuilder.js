@@ -14,8 +14,7 @@ export default class ExecutionsHistorySearchBuilder extends SearchWithSummaryBui
      */
     constructor(parent, fieldFinder = new FieldFinder(parent, '/operations')) {
         super(parent, {}, fieldFinder);
-        this._url = '/entities' + '/operations';
-        super(parent, {}, new FieldFinder(parent));
+        this._url = '/entities/operations/history';
     }
     /**
      * The response will only have a summary information 
@@ -23,13 +22,4 @@ export default class ExecutionsHistorySearchBuilder extends SearchWithSummaryBui
      *	ogapi.executionsHistorySearchBuilder().summary() 
      * @return {ExecutionsHistorySearchBuilder} 
      */
-
-     summary() {
-        this._url = this._url + '/summary';
-        return this;
-    }
-
-    _buildUrl() {
-        return super._buildUrl();
-    }
 }
