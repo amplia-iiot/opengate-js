@@ -260,7 +260,12 @@ var SearchBuilder = (function () {
     }, {
         key: 'build',
         value: function build() {
-            return new _Search2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildLimit(), this._buildSort(), this._buildGroup(), this._buildSelect(), this._builderParams.timeout, this._urlParams);
+            try {
+
+                return new _Search2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildLimit(), this._buildSort(), this._buildGroup(), this._buildSelect(), this._builderParams.timeout, this._urlParams);
+            } catch (error) {
+                console.log('!errrrror!!!!!!', error);
+            }
         }
     }, {
         key: '_buildFilter',
