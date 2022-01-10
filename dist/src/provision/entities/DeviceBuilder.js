@@ -168,12 +168,6 @@ var BoxBuilder = (function () {
                 return _this._ogapi.Napi.post(_this._url, postObj, null, null, {
                     flattened: true
                 }).then(function (res) {
-                    defer.notify({
-                        entity: _this._key._value._current.value,
-                        message: 'OGAPI_DEVICE_CREATED',
-                        type: 'success',
-                        percentage: 50
-                    });
                     if (_this._wrappers.length > 0) {
                         defer.notify({
                             message: 'OGAPI_ADDING_RELATED_ENTITIES',

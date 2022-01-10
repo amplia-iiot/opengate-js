@@ -360,7 +360,7 @@ class BoxBuilder {
             return key.indexOf(&apos;subscriber&apos;) === -1 &amp;&amp; key.indexOf(&apos;subscription&apos;) === -1;
         }).forEach((deviceKey) =&gt; {
             postObj[deviceKey] = putObj[deviceKey];
-        });
+        }); 
 
         this._wrappers.forEach((wrapper) =&gt; {
             childEntityPromises.push({
@@ -389,12 +389,6 @@ class BoxBuilder {
                     flattened: true
                 })
                 .then((res) =&gt; {
-                    defer.notify({
-                        entity: _this._key._value._current.value,
-                        message: &apos;OGAPI_DEVICE_CREATED&apos;,
-                        type: &apos;success&apos;,
-                        percentage: 50
-                    });
                     if (_this._wrappers.length &gt; 0) {
                         defer.notify({
                             message: &apos;OGAPI_ADDING_RELATED_ENTITIES&apos;,
