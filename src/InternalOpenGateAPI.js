@@ -10,7 +10,9 @@ import AreasSearchBuilder from './searching/builder/AreasSearchBuilder';
 import DatasetsCatalogSearchBuilder from './searching/builder/DatasetsCatalogSearchBuilder';
 import AreaFinder from './areas/AreaFinder';
 import BulkSearchBuilder from './searching/builder/BulkSearchBuilder';
+import BulkProcessorSearchBuilder from './searching/builder/BulkProcessorSearchBuilder';
 import BulkFinder from './bulk/BulkFinder';
+import BulkProcessorsFinder from './bulk/BulkProcessorsFinder'
 import Channels from './channels/Channels';
 import Areas from './areas/Areas';
 import ChannelsSearchBuilder from './searching/builder/ChannelsSearchBuilder';
@@ -98,6 +100,7 @@ import DatamodelsFinder from './iot/datamodels/DatamodelsFinder';
 import DatastreamsBuilder from './iot/catalog/Datastream';
 import QratingsBuilder from './iot/catalog/Qrating';
 import EntityBuilder from './provision/entities/EntityBuilder';
+import BulkProcessorBuilder from './provision/bulk/BulkProcessorBuilder'
 import EntitiesSearchBuilder from './searching/builder/EntitiesSearchBuilder';
 import DatasetEntitiesSearchBuilder from './searching/builder/DatasetEntitiesSearchBuilder';
 import CountryCodesSearchBuilder from './searching/builder/CountryCodesSearchBuilder';
@@ -204,11 +207,27 @@ export default class InternalOpenGateAPI {
     }
 
     /**
+     * This return a BulkProcessorSearchBuilder to build a specific BulkProcessorSearchBuilder
+     * @return {BulkProcessorSearchBuilder}
+     */
+    bulkProcessorSearchBuilder() {
+        return new BulkProcessorSearchBuilder(this);
+    }
+
+    /**
      * This return a util to find and download a bulk
      * @return {BulkFinder}
      */
     newBulkFinder() {
         return new BulkFinder(this);
+    }
+
+    /**
+     * This return a util to find summary and download a bulk with provision processor
+     * @return {BulkFinder}
+     */
+    newBulkProcessorsFinder(){
+        return new BulkProcessorsFinder(this)
     }
 
     /**
@@ -916,6 +935,14 @@ export default class InternalOpenGateAPI {
      */
     datastreamsBuilder() {
         return new DatastreamsBuilder(this);
+    }
+
+    /**
+     * This return a util to create a bulk with provision processor
+     * @return {BulkProcessorBuilder}
+     */
+    bulkProcessorBuilder(organization, processorId, timeout) {
+        return new BulkProcessorBuilder(this, organization, processorId, timeout)
     }
 
     /**
