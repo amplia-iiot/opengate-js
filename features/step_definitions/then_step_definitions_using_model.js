@@ -19,6 +19,12 @@ Then(/^I can see into the result an "([^"]*)" as "([^"]*)"$/, function (getterNa
     callback();
 });
 
+Then(/^the content of response must be:$/, function (tmpFile, contentTmp, callback) {
+    var data = this.responseData.data;
+    this.expect(contentTmp).to.be.equal(data);
+    callback();
+});
+
 Then(/^the content of file "([^"]*)" must be:$/, function (tmpFile, contentTmp, callback) {
     var data = this.responseData.data;
     this.expect(contentTmp).to.be.equal(data.text);

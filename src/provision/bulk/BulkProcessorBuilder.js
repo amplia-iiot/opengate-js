@@ -19,7 +19,7 @@ export default class BulkProcessorBuilder extends BaseProvision {
      * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
      */
     constructor(ogapi, organization, processorId, timeout) {
-        super(ogapi, '/provisionProcessors/provision/organizations/' + organization + '/' + processorId + '/', tiemout, ['organization', 'processorId']);
+        super(ogapi, 'provisionProcessors/provision/organizations/' + organization + '/' + processorId + '/', tiemout, ['organization', 'processorId']);
         this._timeout = timeout;
         this._resource = resource;
         this._organization  = organization;
