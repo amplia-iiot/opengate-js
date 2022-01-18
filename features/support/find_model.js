@@ -5,6 +5,9 @@ module.exports = {
             'bundle': {
                 'nameAndversion': 'findByNameAndVersion'
             },
+            'bulk provision processor': {
+                'organizationAndId': 'findByOrganizationAndId'
+            },
             'communications module': {
                 'organizationAndid': 'findByOrganizationAndId'
             },

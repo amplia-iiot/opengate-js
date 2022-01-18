@@ -544,7 +544,7 @@ When(/^I update periodicity$/, function () {
     }
 });
 
-When(/^I create it$/, function () {
+When(/^I create it$/, {timeout: 60 * 1000}, function () {
 
     var _this = this;
     _this.error = undefined;
@@ -616,6 +616,44 @@ When(/^I "([^"]*)" it with bulk$/, function (action) {
     try {
         if (_this.fileData) {
             return _this.util[action](_this.fileData).then(catchResponse).catch(catchErrorResponse);
+        }
+    } catch (err) {
+        this.error = err;
+        //console.log(err);
+        return;
+    }
+});
+
+When(/^I "([^"]*)" it with bulk with provision processor$/, function (action) {
+    var _this = this;
+    _this.error = undefined;
+    _this.responseData = undefined;
+
+    function catchResponse (data) {
+        //console.log("OK");
+        //console.log("data: " + JSON.stringify(data));
+        _this.responseData = data;
+        _this.location = _this.responseData.location;
+        _this.error = this.error = undefined;
+    }
+
+    function catchErrorResponse (err) {
+        //console.log("NOK");
+        //console.log("ERROR: " + JSON.stringify(err));
+        _this.responseData = err;
+        if (err.errors) {
+            _this.error = err.errors;
+        } else if (err.data.errors) {
+            _this.error = err.data.errors;
+        } else {
+            _this.error = err;
+        }
+
+    }
+
+    try {
+        if (_this.fileData) {
+            return _this.util[action](_this.fileData, 'xlsx').then(catchResponse).catch(catchErrorResponse);
         }
     } catch (err) {
         this.error = err;

@@ -256,6 +256,7 @@ export default class NorthAmpliaREST {
             }
         });
         var returnUrl = this._url(this._options) + "/" + encode.join("/");
+        
         return returnUrl;
     }
 

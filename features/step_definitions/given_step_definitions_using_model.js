@@ -26,6 +26,20 @@ Given(/^an ogapi "([^"]*)" util with responseId$/, function (utilName, callback)
     callback();
 });
 
+Given(/^an ogapi "([^"]*)" util with "([^"]*)" and responseId$/, function (utilName, param1, callback) {
+    var id;
+
+    if (this.responseData.location)
+        id = this.responseData.location.substring(this.responseData.location.lastIndexOf("/") + 1);
+    else if (this.responseData.data)
+        id = this.responseData.data.id;
+    else if (this.responseData[0])
+        id = this.responseData[0].id;
+    //console.log("ID_: " + JSON.stringify(id));
+    this.util = this.utilsModel.util(utilName, this.ogapi, param1, id);
+    callback();
+});
+
 Given(/^an ogapi "([^"]*)" util with...$/, function (utilName, table, callback) {
     this.error = undefined;
     try {
@@ -545,7 +559,7 @@ Given(/^I want to search into "([^"]*)"$/, function (setterName, callback) {
     callback();
 });
 
-this.Given(/^I want to search into "([^"]*)" and throw error 'is not a function'$/, function (setterName, callback) {
+Given(/^I want to search into "([^"]*)" and throw error 'is not a function'$/, function (setterName, callback) {
         try {
             var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
             this.util[method]();
@@ -553,5 +567,4 @@ this.Given(/^I want to search into "([^"]*)" and throw error 'is not a function'
         } catch (err) {
             callback();
         }
-    });
-};
+});
