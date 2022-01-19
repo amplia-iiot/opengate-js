@@ -15,7 +15,7 @@ searchingModel = require('./searching_model');
 function World() {
     this.test_url_north = process.env.API_NORTH_INTERNAL || 'https://172.19.18.132:9082/north/v80';
     this.test_url_south = process.env.API_SOUTH_INTERNAL || 'https://172.19.18.132:9082/south/v80';
-    this.apikey = process.env.API_KEY || '620567f8-cfc6-4707-a6a7-8206052e5c4a';
+    this.apikey = process.env.API_KEY || '2829be88-a7d7-4f51-aefc-3cc2385b6506';
     chai.use(chai_as_promised);
     this.expect = chai.expect;
     // Own dependencies with the model
