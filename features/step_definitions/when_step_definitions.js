@@ -544,24 +544,28 @@ When(/^I update periodicity$/, function () {
     }
 });
 
-When(/^I create it$/, function () {
+When(/^I create it$/, {timeout: 60 * 1000}, function () {
 
     var _this = this;
     _this.error = undefined;
     _this.responseData = undefined;
+    console.log('responseData1',  _this.responseData)
 
     function catchResponse (data) {
-        //console.log("OK");
-        //console.log("data: " + JSON.stringify(data));
+        console.log("OK");
+        console.log("data: " + JSON.stringify(data));
         _this.responseData = data;
         _this.location = _this.responseData.location;
         _this.error = undefined;
+        console.log('responseData2',  _this.responseData)
+
     }
 
     function catchErrorResponse (err) {
-        //console.log("NOK");
-        //console.log("ERROR: " + JSON.stringify(err));
+        console.log("NOK");
+        console.log("ERROR: " + JSON.stringify(err));
         _this.responseData = err;
+        console.log('responseData3',  _this.responseData)
         if (err.errors) {
             _this.error = err.errors;
         } else if (err.data.errors) {

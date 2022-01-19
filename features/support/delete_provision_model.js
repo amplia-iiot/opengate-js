@@ -21,6 +21,9 @@ module.exports = {
             },
             'domain': {
                 'name': 'withName'
+            },
+            'provisionProcessors':{
+                'identifier': 'withIdentifier'
             }
         }[setter];
     },

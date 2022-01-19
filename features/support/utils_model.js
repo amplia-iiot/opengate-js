@@ -107,6 +107,12 @@ module.exports = {
             "organizations builder": function(ogapi) {
                 return ogapi.organizationsBuilder();
             },
+            "provision processors builder": function(ogapi) {
+                return ogapi.provisionProcessorsBuilder();
+            },
+            "provision processors finder": function(ogapi) {
+                return ogapi.newProvisionProcessorsFinder();
+            },
             "softwares search": function(ogapi) {
                 return ogapi.softwaresSearchBuilder();
             },
