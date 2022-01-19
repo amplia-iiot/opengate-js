@@ -371,8 +371,14 @@ module.exports = {
                 'description': 'withDescription',
                 'geometry': 'withGeometry',
                 'entities': 'withEntities'
+            },
+            'provisionProcessors':{
+                'identifier': 'withIdentifier',
+                'name':'withName',
+                'organization': 'withOrganization',
+                'configurationParams': 'withConfigurationParams',
+                'scriptProcessor': 'withScriptProcessor'
             }
-
         } [setter];
     },
     getter_response: function (getter) {

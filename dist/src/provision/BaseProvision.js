@@ -94,6 +94,8 @@ var BaseProvision = (function () {
             //En muchas clases se genera this._resource en la llamada a la funcion this._composeElement()
 
             var _postElement = this._composeElement();
+            console.log('this._resource', this._resource);
+            console.log('_postElement', _postElement);
             this._ogapi.Napi.post(this._resource, _postElement, this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (res) {
                 if (res.statusCode === 201) {
                     if (typeof _this._onCreated === "function") {

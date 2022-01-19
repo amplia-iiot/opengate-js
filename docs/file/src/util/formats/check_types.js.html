@@ -133,6 +133,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SubscriberID">SubscriberID</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SubscriptionID">SubscriptionID</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TicketID">TicketID</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provisionProcessors</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provisionProcessors/provisionProcessors.js~ProvisionProcessors.html">ProvisionProcessors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provisionProcessors/provisionProcessorsFinder.js~provisionProcessorsFinder.html">provisionProcessorsFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">rulesConfiguration</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html">RuleConfigurations</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsActions.js~RuleConfigurationsActions.html">RuleConfigurationsActions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsCatalog.js~RuleConfigurationsCatalog.html">RuleConfigurationsCatalog</a></span></span></li>
@@ -242,11 +244,11 @@
             return type == this;
         }, type);
 
-        if (typeof found === &quot;undefined&quot;) {
+        if (typeof found === &apos;undefined&apos;) {
             not_found.push(type);
         }
         if (not_found.length !== 0) {
-            throw new Error({ message: &quot;OGAPI_NOT_ALLOWED_PARAMETER&quot;, parameter: JSON.stringify(not_found), allowed: JSON.stringify(TYPE_ENUM) });
+            throw new Error({ message: &apos;OGAPI_NOT_ALLOWED_PARAMETER&apos;, parameter: JSON.stringify(not_found), allowed: JSON.stringify(TYPE_ENUM) });
         }
         return type;
     },
@@ -265,6 +267,11 @@
     _checkArray: function(parameter, name) {
         if (!Array.isArray(parameter) || parameter.length === 0) {
             throw new Error({ message: &apos;OGAPI_ARRAY_PARAMETER&apos;, parameter: name });
+        }
+    },
+    _checkObject: function(parameter, name) {
+        if (typeof parameter !== &apos;object&apos;) {
+            throw new Error({ message: &apos;OGAPI_OBJECT_PARAMETER&apos;, parameter: name });
         }
     }
 
