@@ -420,6 +420,14 @@ var _searchingBuilderUserLanguagesSearchBuilder = require('./searching/builder/U
 
 var _searchingBuilderUserLanguagesSearchBuilder2 = _interopRequireDefault(_searchingBuilderUserLanguagesSearchBuilder);
 
+var _provisionProcessorsProvisionProcessors = require('./provisionProcessors/provisionProcessors');
+
+var _provisionProcessorsProvisionProcessors2 = _interopRequireDefault(_provisionProcessorsProvisionProcessors);
+
+var _provisionProcessorsProvisionProcessorsFinder = require('./provisionProcessors/provisionProcessorsFinder');
+
+var _provisionProcessorsProvisionProcessorsFinder2 = _interopRequireDefault(_provisionProcessorsProvisionProcessorsFinder);
+
 var _entitiesEntityFinder = require('./entities/EntityFinder');
 
 var _entitiesEntityFinder2 = _interopRequireDefault(_entitiesEntityFinder);
@@ -1468,6 +1476,26 @@ var InternalOpenGateAPI = (function () {
         key: 'userLanguagesSearchBuilder',
         value: function userLanguagesSearchBuilder() {
             return new _searchingBuilderUserLanguagesSearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a ProvisionsProcesorsBuilder to build a specific ProvisionsProcesorsBuilder
+         * @return {provisionProcessorsBuilder}
+         */
+    }, {
+        key: 'provisionProcessorsBuilder',
+        value: function provisionProcessorsBuilder() {
+            return new _provisionProcessorsProvisionProcessors2['default'](this);
+        }
+
+        /**
+         * This return a util to find a provision procesor
+         * @return {ProvisionProcessorsFinder}
+         */
+    }, {
+        key: 'newProvisionProcessorsFinder',
+        value: function newProvisionProcessorsFinder() {
+            return new _provisionProcessorsProvisionProcessorsFinder2['default'](this);
         }
     }]);
 
