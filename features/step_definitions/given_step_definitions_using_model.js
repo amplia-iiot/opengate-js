@@ -425,7 +425,7 @@ Given(/^the "([^"]*)" "([^"]*)" and "([^"]*)"$/, function (setterName, setterVal
     } catch (err) {
         this.error = err;
     }
-  
+
     callback();
 });
 
@@ -560,11 +560,11 @@ Given(/^I want to search into "([^"]*)"$/, function (setterName, callback) {
 });
 
 Given(/^I want to search into "([^"]*)" and throw error 'is not a function'$/, function (setterName, callback) {
-        try {
-            var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
-            this.util[method]();
-            callback(false, "this.util[method] is a function" );
-        } catch (err) {
-            callback();
-        }
+    try {
+        var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
+        this.util[method]();
+        callback(false, "this.util[method] is a function");
+    } catch (err) {
+        callback();
+    }
 });
