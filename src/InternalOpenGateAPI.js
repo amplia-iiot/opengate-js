@@ -111,8 +111,6 @@ import DatasetSearchBuilder from './searching/builder/DatasetSearchBuilder';
 import CountryCodesSearchBuilder from './searching/builder/CountryCodesSearchBuilder';
 import TimezoneSearchBuilder from './searching/builder/TimezoneSearchBuilder';
 import UserLanguagesSearchBuilder from './searching/builder/UserLanguagesSearchBuilder';
-import ProvisionProcessors from './provisionProcessors/provisionProcessors';
-import ProvisionProcessorsFinder from './provisionProcessors/provisionProcessorsFinder';
 import EntityFinder from './entities/EntityFinder';
 import AlarmActions from './alarms/AlarmActions';
 import _superagent from 'superagent';
@@ -1029,20 +1027,5 @@ export default class InternalOpenGateAPI {
      */
     userLanguagesSearchBuilder() {
         return new UserLanguagesSearchBuilder(this);
-    }
-
-    /**
-     * This return a ProvisionsProcesorsBuilder to build a specific ProvisionsProcesorsBuilder
-     * @return {provisionProcessorsBuilder}
-     */
-    provisionProcessorsBuilder() {
-        return new ProvisionProcessors(this);
-    }
-    /**
-     * This return a util to find a provision procesor
-     * @return {ProvisionProcessorsFinder}
-     */
-     newProvisionProcessorsFinder() {
-         return new ProvisionProcessorsFinder(this);
     }
 }
