@@ -141,8 +141,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SubscriberID">SubscriberID</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SubscriptionID">SubscriptionID</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TicketID">TicketID</a></span></span></li>
-<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provisionProcessors</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provisionProcessors/provisionProcessors.js~ProvisionProcessors.html">ProvisionProcessors</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provisionProcessors/provisionProcessorsFinder.js~provisionProcessorsFinder.html">provisionProcessorsFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">rulesConfiguration</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html">RuleConfigurations</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsActions.js~RuleConfigurationsActions.html">RuleConfigurationsActions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsCatalog.js~RuleConfigurationsCatalog.html">RuleConfigurationsCatalog</a></span></span></li>
@@ -362,8 +360,6 @@ import DatasetSearchBuilder from &apos;./searching/builder/DatasetSearchBuilder&
 import CountryCodesSearchBuilder from &apos;./searching/builder/CountryCodesSearchBuilder&apos;;
 import TimezoneSearchBuilder from &apos;./searching/builder/TimezoneSearchBuilder&apos;;
 import UserLanguagesSearchBuilder from &apos;./searching/builder/UserLanguagesSearchBuilder&apos;;
-import ProvisionProcessors from &apos;./provisionProcessors/provisionProcessors&apos;;
-import ProvisionProcessorsFinder from &apos;./provisionProcessors/provisionProcessorsFinder&apos;;
 import EntityFinder from &apos;./entities/EntityFinder&apos;;
 import AlarmActions from &apos;./alarms/AlarmActions&apos;;
 import _superagent from &apos;superagent&apos;;
@@ -1280,21 +1276,6 @@ export default class InternalOpenGateAPI {
      */
     userLanguagesSearchBuilder() {
         return new UserLanguagesSearchBuilder(this);
-    }
-
-    /**
-     * This return a ProvisionsProcesorsBuilder to build a specific ProvisionsProcesorsBuilder
-     * @return {provisionProcessorsBuilder}
-     */
-    provisionProcessorsBuilder() {
-        return new ProvisionProcessors(this);
-    }
-    /**
-     * This return a util to find a provision procesor
-     * @return {ProvisionProcessorsFinder}
-     */
-     newProvisionProcessorsFinder() {
-         return new ProvisionProcessorsFinder(this);
     }
 }</code></pre>
 

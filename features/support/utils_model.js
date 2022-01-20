@@ -116,11 +116,9 @@ module.exports = {
             "organizations builder": function(ogapi) {
                 return ogapi.organizationsBuilder();
             },
-            "provision processors builder": function(ogapi) {
-                return ogapi.provisionProcessorsBuilder();
-            },
-            "provision processors finder": function(ogapi) {
-                return ogapi.newProvisionProcessorsFinder();
+            "executions history builder": function(ogapi) {
+                console.log('gapi,', ogapi)
+                return ogapi.executionsHistorySearchBuilder();
             },
             "softwares search": function(ogapi) {
                 return ogapi.softwaresSearchBuilder();
