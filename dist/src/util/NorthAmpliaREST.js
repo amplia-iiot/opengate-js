@@ -370,7 +370,6 @@ var NorthAmpliaREST = (function () {
                 }
             });
             var returnUrl = this._url(this._options) + "/" + encode.join("/");
-            console.log('URL QUE ENVIA', returnUrl);
             return returnUrl;
         }
     }, {

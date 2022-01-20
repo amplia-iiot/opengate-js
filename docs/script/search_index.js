@@ -840,12 +840,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "opengate-js/src/provisionprocessors/provisionprocessors.js~provisionprocessors",
-    "class/src/provisionProcessors/provisionProcessors.js~ProvisionProcessors.html",
-    "<span>ProvisionProcessors</span> <span class=\"search-result-import-path\">opengate-js/src/provisionProcessors/provisionProcessors.js</span>",
-    "class"
-  ],
-  [
     "opengate-js/src/iot/catalog/qrating.js~qrating",
     "class/src/iot/catalog/Qrating.js~Qrating.html",
     "<span>Qrating</span> <span class=\"search-result-import-path\">opengate-js/src/iot/catalog/Qrating.js</span>",
@@ -1263,12 +1257,6 @@ window.esdocSearchIndex = [
     "opengate-js/src/searching/builder/workgroupssearchbuilder.js~workgroupssearchbuilder",
     "class/src/searching/builder/WorkgroupsSearchBuilder.js~WorkgroupsSearchBuilder.html",
     "<span>WorkgroupsSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/WorkgroupsSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-js/src/provisionprocessors/provisionprocessorsfinder.js~provisionprocessorsfinder",
-    "class/src/provisionProcessors/provisionProcessorsFinder.js~provisionProcessorsFinder.html",
-    "<span>provisionProcessorsFinder</span> <span class=\"search-result-import-path\">opengate-js/src/provisionProcessors/provisionProcessorsFinder.js</span>",
     "class"
   ],
   [
@@ -3444,21 +3432,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-<<<<<<< HEAD
-=======
-    "src/internalopengateapi.js~internalopengateapi#newprovisionprocessorsfinder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newProvisionProcessorsFinder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newProvisionProcessorsFinder",
-    "method"
-  ],
-  [
-    "src/internalopengateapi.js~internalopengateapi#newquicksearch",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newQuickSearch",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newQuickSearch",
-    "method"
-  ],
-  [
->>>>>>> OUW-3347-B
     "src/internalopengateapi.js~internalopengateapi#newruleconfigurationscatalog",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newRuleConfigurationsCatalog",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newRuleConfigurationsCatalog",
@@ -3564,12 +3537,6 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#powersupplymessagebuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-powerSupplyMessageBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#powerSupplyMessageBuilder",
-    "method"
-  ],
-  [
-    "src/internalopengateapi.js~internalopengateapi#provisionprocessorsbuilder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-provisionProcessorsBuilder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#provisionProcessorsBuilder",
     "method"
   ],
   [
@@ -6996,72 +6963,6 @@ window.esdocSearchIndex = [
     "src/provision/entities/ticketbuilder.js~ticketbuilder#constructor",
     "class/src/provision/entities/TicketBuilder.js~TicketBuilder.html#instance-constructor-constructor",
     "src/provision/entities/TicketBuilder.js~TicketBuilder#constructor",
-    "method"
-  ],
-  [
-    "src/provisionprocessors/provisionprocessors.js",
-    "file/src/provisionProcessors/provisionProcessors.js.html",
-    "src/provisionProcessors/provisionProcessors.js",
-    "file"
-  ],
-  [
-    "src/provisionprocessors/provisionprocessors.js~provisionprocessors#constructor",
-    "class/src/provisionProcessors/provisionProcessors.js~ProvisionProcessors.html#instance-constructor-constructor",
-    "src/provisionProcessors/provisionProcessors.js~ProvisionProcessors#constructor",
-    "method"
-  ],
-  [
-    "src/provisionprocessors/provisionprocessors.js~provisionprocessors#withconfigurationparams",
-    "class/src/provisionProcessors/provisionProcessors.js~ProvisionProcessors.html#instance-method-withConfigurationParams",
-    "src/provisionProcessors/provisionProcessors.js~ProvisionProcessors#withConfigurationParams",
-    "method"
-  ],
-  [
-    "src/provisionprocessors/provisionprocessors.js~provisionprocessors#withidentifier",
-    "class/src/provisionProcessors/provisionProcessors.js~ProvisionProcessors.html#instance-method-withIdentifier",
-    "src/provisionProcessors/provisionProcessors.js~ProvisionProcessors#withIdentifier",
-    "method"
-  ],
-  [
-    "src/provisionprocessors/provisionprocessors.js~provisionprocessors#withname",
-    "class/src/provisionProcessors/provisionProcessors.js~ProvisionProcessors.html#instance-method-withName",
-    "src/provisionProcessors/provisionProcessors.js~ProvisionProcessors#withName",
-    "method"
-  ],
-  [
-    "src/provisionprocessors/provisionprocessors.js~provisionprocessors#withorganization",
-    "class/src/provisionProcessors/provisionProcessors.js~ProvisionProcessors.html#instance-method-withOrganization",
-    "src/provisionProcessors/provisionProcessors.js~ProvisionProcessors#withOrganization",
-    "method"
-  ],
-  [
-    "src/provisionprocessors/provisionprocessors.js~provisionprocessors#withscriptprocessor",
-    "class/src/provisionProcessors/provisionProcessors.js~ProvisionProcessors.html#instance-method-withScriptProcessor",
-    "src/provisionProcessors/provisionProcessors.js~ProvisionProcessors#withScriptProcessor",
-    "method"
-  ],
-  [
-    "src/provisionprocessors/provisionprocessorsfinder.js",
-    "file/src/provisionProcessors/provisionProcessorsFinder.js.html",
-    "src/provisionProcessors/provisionProcessorsFinder.js",
-    "file"
-  ],
-  [
-    "src/provisionprocessors/provisionprocessorsfinder.js~provisionprocessorsfinder#constructor",
-    "class/src/provisionProcessors/provisionProcessorsFinder.js~provisionProcessorsFinder.html#instance-constructor-constructor",
-    "src/provisionProcessors/provisionProcessorsFinder.js~provisionProcessorsFinder#constructor",
-    "method"
-  ],
-  [
-    "src/provisionprocessors/provisionprocessorsfinder.js~provisionprocessorsfinder#findbyorganization",
-    "class/src/provisionProcessors/provisionProcessorsFinder.js~provisionProcessorsFinder.html#instance-method-findByOrganization",
-    "src/provisionProcessors/provisionProcessorsFinder.js~provisionProcessorsFinder#findByOrganization",
-    "method"
-  ],
-  [
-    "src/provisionprocessors/provisionprocessorsfinder.js~provisionprocessorsfinder#findbyorganizationandprovisionprocessorid",
-    "class/src/provisionProcessors/provisionProcessorsFinder.js~provisionProcessorsFinder.html#instance-method-findByOrganizationAndProvisionProcessorId",
-    "src/provisionProcessors/provisionProcessorsFinder.js~provisionProcessorsFinder#findByOrganizationAndProvisionProcessorId",
     "method"
   ],
   [

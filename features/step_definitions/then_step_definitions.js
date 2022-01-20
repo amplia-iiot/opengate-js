@@ -26,7 +26,6 @@ Then(/^response code should be: (\d+)$/, function (statusCode, callback) {
     var data;
     data = this.responseData ? this.responseData.statusCode : this.data;
     var statusCodeResp = data;
-    console.log('data!!', data)
     if (parseInt(statusCode) !== statusCodeResp && this.error) {
         throw new Error(Object.keys(this.error).length > 0 ? JSON.stringify(this.error) : this.error);
     }
