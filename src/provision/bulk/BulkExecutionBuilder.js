@@ -8,9 +8,9 @@ export const TYPES = {
 }
 
 /**
- * This builder give you the necessary tools to create a bulk with provision processors using our OpenGate REST
+ * This builder give you the necessary tools to create a bulk executions using our OpenGate REST
  */
-export default class BulkProcessorBuilder extends BaseProvision {
+export default class BulkExecutionBuilder extends BaseProvision {
 
     /**
      * @param {InternalOpenGateAPI} ogapi - required field. This is ogapi instance
@@ -19,11 +19,11 @@ export default class BulkProcessorBuilder extends BaseProvision {
      * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
      */
     constructor(ogapi, organization, processorId, timeout) {
-        super(ogapi, 'provisionProcessors/provision/organizations/' + organization + '/' + processorId + '/', tiemout, ['organization', 'processorId']);
+        super(ogapi, undefined, timeout, ['organization', 'processorId']);
         this._timeout = timeout;
-        this._resource = resource;
         this._organization  = organization;
         this._processorId = processorId;
+        this._resource = 'provisionProcessors/provision/organizations/' + organization + '/' + processorId + '/'
 
     }
 
@@ -38,8 +38,8 @@ export default class BulkProcessorBuilder extends BaseProvision {
     /**
      * Instead of creating a bulk process, return the provision process planning for specified entries. This is is synch process that does not cause changes in the database
      * @example 
-     *  ogapi.newBulkProcessorBuilder('orgname', 'processorId', 10000).plan(rawFile, extension)
-     *  ogapi.newBulkProcessorBuilder('orgname', 'processorId', 10000).plan(rawFile, extension, numberOfEntriesToProcess)
+     *  ogapi.newBulkExecutionBuilder('orgname', 'processorId', 10000).plan(rawFile, extension)
+     *  ogapi.newBulkExecutionBuilder('orgname', 'processorId', 10000).plan(rawFile, extension, numberOfEntriesToProcess)
      * @param {string|Blob} rawFile - File with format string or Blob 
      * @param {string} [extension] - File format
      * @param {number} [numberOfEntriesToProcess] - Number of entries to be processed.
@@ -52,14 +52,17 @@ export default class BulkProcessorBuilder extends BaseProvision {
             numberOfEntriesToProcess: numberOfEntriesToProcess || 1
         });
         this._type = 'plan'
+        this._setExtraHeaders({
+            'accept': 'application/json'
+        });
         return this._executeOperation(rawFile);
     }
 
     /**
      * Do a bulk using specific Provision Processor.
      * @example 
-     *  ogapi.newBulkProcessorBuilder('orgname', 'processorId', 10000).bulk(rawFile, extension)
-     * @param {string|Blob} rawFile - File with format string or Blob 
+     *  ogapi.newBulkExecutionBuilder('orgname', 'processorId', 10000).bulk(rawFile, extension)
+     * @param {File} rawFile - File with data
      * @param {string} [extension] - File format
      */
      bulk(rawFile, extension) {
@@ -67,50 +70,62 @@ export default class BulkProcessorBuilder extends BaseProvision {
         if(typeof this._extension !== 'string')
             throw new Error('Parameter extension must be a string (xls or xlsx) and cannot be empty')
         this._type = 'bulk'
+        this._setExtraHeaders({
+            'accept': this._extension
+        });
         return this._executeOperation(rawFile);
     }
     _executeOperation(rawFile) {
         let form;
-        if (typeof rawFile !== 'string') {
-            form = {};
-            if (rawFile) {
-                let bulkFile = new Blob([rawFile]);
-                form.bulkFile = bulkFile;
+            if (typeof rawFile !== 'string') {
+                form = new FormData();
+                const processorBulkFile = new Blob([rawFile ], {
+                    type: this._extension
+                });
+                form.append('processorBulkFile', processorBulkFile);
+            } else {
+                form = {};
+                form.processorBulkFile = rawFile;
             }
-        } else {
-            form = {};
+            this._setExtraHeaders({
+                'Content-Type': 'multipart/form-data'
+            })
 
-            if (rawFile) {
-                form.bulkFile = rawFile;
-            }
-        }
-        let defer = q.defer();
-        form.ext = this._extension;
-
+        const defer = q.defer();
+        
         var petitionUrl = this._buildURL();
         //url, formData, events, timeout, headers, parameters
         this._ogapi.Napi.post_multipart(petitionUrl, form, {}, this._timeout, this._getExtraHeaders(), this._getUrlParameters())
             .then((response) => {
                 let statusCode = response.statusCode;
-                if (statusCode === 200 || statusCode === 201) {
-                    if (csv_response && !response.location) {
-                        //Se hace esto para que la respuesta sea igual que al searching con resultado en csv
-                        let resultQuery = response;
-                        let statusCode = response.statusCode;
+                switch (statusCode) {
+                    case 200:{
+                        const resultQuery = response.text != "" ? JSON.parse(response.text) : {};
+                        const _statusCode = response.status;
                         defer.resolve({
                             data: resultQuery,
-                            statusCode: statusCode
+                            statusCode: _statusCode
                         });
-                    } else
+                        break
+                    }
+                    case 201:{
+                        const _statusCode = response.status;
+                        const location = response.location || response.headers.location || response.header.location
+                        defer.resolve({
+                            location: location,
+                            statusCode: _statusCode
+                        });
+                        break
+                    }
+                    case 204:
                         defer.resolve(response);
-                } else if (statusCode === 204) {
-                    defer.resolve(response);
-
-                } else {
-                    defer.reject({
-                        errors: response.data.errors,
-                        statusCode: response.statusCode
-                    });
+                        break
+                    default:
+                        defer.reject({
+                            errors: response.data.errors,
+                            statusCode: response.statusCode
+                        });
+                        break
                 }
             })
             .catch((error) => {

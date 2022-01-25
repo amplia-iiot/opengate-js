@@ -7,9 +7,9 @@ const BASE_URL = 'provisionProcessors/bulk/search';
 
 /**
  * Searching over all the created bulk process, which are already done or still in progress.	
- * @example ogapi.bulkProcessorSearchBuilder()
+ * @example ogapi.bulkExecutionSearchBuilder()
  */
-export default class BulkProcessorSearchBuilder extends SearchBuilder {
+export default class BulkExecutionSearchBuilder extends SearchBuilder {
     /**
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */
@@ -22,7 +22,7 @@ export default class BulkProcessorSearchBuilder extends SearchBuilder {
      * Build a instance of WPSearch 
      *
      * @example
-     *  ogapi.bulkProcessorSearchBuilder().build()
+     *  ogapi.bulkExecutionSearchBuilder().build()
      * @throws {SearchBuilderError} Throw error on url build
      * @return {WPSearch} 
      */
