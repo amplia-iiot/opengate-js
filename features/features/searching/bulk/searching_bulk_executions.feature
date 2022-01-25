@@ -3,7 +3,7 @@
 @searching_bulks
 @bulk
 @provision_processors
-@wip
+#@wip
 Feature: Searching bulks
   As a user of JsApi
   I want to search into bulks collection

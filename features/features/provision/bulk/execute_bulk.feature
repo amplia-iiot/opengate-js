@@ -2,7 +2,7 @@
 @provision
 @bulk
 @provision_processors
-@wip
+#@wip
 Feature: Execute bulk
   As a device of JsApi
   I want to execute bulk

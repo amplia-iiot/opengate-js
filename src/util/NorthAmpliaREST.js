@@ -103,12 +103,12 @@ export default class NorthAmpliaREST {
      * @param {number} timeout - timeout in milliseconds    
      * @param {object} headers - headers of request
      * @param {object} parameters - parameters of request
-     * @param {boolean} onBuffer - response body as buffer
+     * @param {boolean} asBuffer - response body as buffer (Uint8Array)
      * @return {Promise} 
      */
-    get(url, timeout, headers, parameters, onBuffer) {
+    get(url, timeout, headers, parameters, asBuffer) {
         var req = request.get(this._createUrl(url, parameters));
-        return this._createPromiseRequest(req, null, timeout, headers, onBuffer);
+        return this._createPromiseRequest(req, null, timeout, headers, asBuffer);
     }
 
     /**
@@ -262,7 +262,7 @@ export default class NorthAmpliaREST {
         return returnUrl;
     }
 
-    _createPromiseRequest(req, events, timeout, headers, onBuffer) {
+    _createPromiseRequest(req, events, timeout, headers, asBuffer) {
         let _timeout = timeout;
         if (typeof _timeout === "undefined" || _timeout === null) {
             _timeout = this._options.timeout;
@@ -318,15 +318,27 @@ export default class NorthAmpliaREST {
                     'data': data
                 });
             } else {
-                if(onBuffer){
+                if(asBuffer){
                     var chunks = []
                     res.on("data", function (chunk) {
                         chunks.push(chunk);
                       });
                     
                       res.on("end", function (chunk) {
-                        var body = Buffer.concat(chunks);
-                        res.body = body
+                            let length = 0
+
+                            for(let i = 0; i < chunks.length; i++){
+                                length += chunks[i].length
+                            }
+                            const resultArray = new Uint8Array(length)
+                            let offset = 0
+
+                            for(let i = 0; i < chunks.length; i++){
+                                const c = chunks[i]
+                                resultArray.set(c, offset)
+                                offset += c.length
+                            }
+                            res.body = resultArray
                       });
                 }
                 defered.resolve(res);
