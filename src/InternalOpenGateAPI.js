@@ -10,9 +10,9 @@ import AreasSearchBuilder from './searching/builder/AreasSearchBuilder';
 import DatasetsCatalogSearchBuilder from './searching/builder/DatasetsCatalogSearchBuilder';
 import AreaFinder from './areas/AreaFinder';
 import BulkSearchBuilder from './searching/builder/BulkSearchBuilder';
-import BulkProcessorSearchBuilder from './searching/builder/BulkProcessorSearchBuilder';
+import BulkExecutionSearchBuilder from './searching/builder/BulkExecutionSearchBuilder';
 import BulkFinder from './bulk/BulkFinder';
-import BulkProcessorsFinder from './bulk/BulkProcessorsFinder'
+import BulkExecutionFinder from './bulk/BulkExecutionFinder'
 import Channels from './channels/Channels';
 import Areas from './areas/Areas';
 import ChannelsSearchBuilder from './searching/builder/ChannelsSearchBuilder';
@@ -100,7 +100,7 @@ import DatamodelsFinder from './iot/datamodels/DatamodelsFinder';
 import DatastreamsBuilder from './iot/catalog/Datastream';
 import QratingsBuilder from './iot/catalog/Qrating';
 import EntityBuilder from './provision/entities/EntityBuilder';
-import BulkProcessorBuilder from './provision/bulk/BulkProcessorBuilder'
+import BulkExecutionBuilder from './provision/bulk/BulkExecutionBuilder'
 import EntitiesSearchBuilder from './searching/builder/EntitiesSearchBuilder';
 import DatasetEntitiesSearchBuilder from './searching/builder/DatasetEntitiesSearchBuilder';
 import CountryCodesSearchBuilder from './searching/builder/CountryCodesSearchBuilder';
@@ -209,11 +209,11 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a BulkProcessorSearchBuilder to build a specific BulkProcessorSearchBuilder
-     * @return {BulkProcessorSearchBuilder}
+     * This return a BulkExecutionSearchBuilder to build a specific bulk
+     * @return {BulkExecutionSearchBuilder}
      */
-    bulkProcessorSearchBuilder() {
-        return new BulkProcessorSearchBuilder(this);
+    bulkExecutionSearchBuilder() {
+        return new BulkExecutionSearchBuilder(this);
     }
 
     /**
@@ -225,11 +225,11 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find summary and download a bulk with provision processor
+     * This return a util to find summary and download a bulk executions
      * @return {BulkFinder}
      */
-    newBulkProcessorsFinder(){
-        return new BulkProcessorsFinder(this)
+    newBulkExecutionFinder(){
+        return new BulkExecutionFinder(this)
     }
 
     /**
@@ -940,11 +940,11 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to create a bulk with provision processor
-     * @return {BulkProcessorBuilder}
+     * This return a util to create a bulk execution
+     * @return {BulkExecutionBuilder}
      */
-    bulkProcessorBuilder(organization, processorId, timeout) {
-        return new BulkProcessorBuilder(this, organization, processorId, timeout)
+    bulkExecutionBuilder(organization, processorId, timeout) {
+        return new BulkExecutionBuilder(this, organization, processorId, timeout)
     }
 
     /**

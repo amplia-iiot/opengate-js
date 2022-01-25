@@ -17,8 +17,8 @@ module.exports = {
             "bundle finder": function(ogapi) {
                 return ogapi.newBundleFinder();
             },
-            "bulk provision processor finder": function(ogapi) {
-                return ogapi.newBulkProcessorsFinder();
+            "bulk execution finder": function(ogapi) {
+                return ogapi.newBulkExecutionFinder();
             },
             "certificates builder": function(ogapi) {
                 return ogapi.certificatesBuilder();
@@ -275,8 +275,8 @@ module.exports = {
             "csv bulk builder": function(ogapi, param1, param2) {
                 return ogapi.entityBuilder.newCsvBulkBuilder(param1, param2);
             },
-            "bulk processor builder": function(ogapi, param1, param2){
-                return ogapi.bulkProcessorBuilder(param1, param2);
+            "bulk execution builder": function(ogapi, param1, param2){
+                return ogapi.bulkExecutionBuilder(param1, param2);
             },
             "json bulk builder": function(ogapi, param1, param2) {
                 return ogapi.entityBuilder.newJsonBulkBuilder(param1, param2);
@@ -290,8 +290,8 @@ module.exports = {
             "bulks search": function(ogapi) {
                 return ogapi.bulkSearchBuilder();
             },
-            "bulks processros search": function(ogapi) {
-                return ogapi.bulkProcessorSearchBuilder();
+            "bulk executions search": function(ogapi) {
+                return ogapi.bulkExecutionSearchBuilder();
             },
             "asset builder": function(ogapi, param1) {
                 return ogapi.entityBuilder.assetsBuilder(param1);

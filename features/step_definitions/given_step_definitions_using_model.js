@@ -6,6 +6,7 @@ var assert = require('chai').assert;
 global.window = new JSDOM().window;
 global.FormData = window.FormData;
 global.Blob = window.Blob;
+global.File = window.File;
 
 Given(/^an ogapi "([^"]*)" util$/, function (utilName, callback) {
     this.util = this.utilsModel.util(utilName, this.ogapi);
@@ -527,7 +528,29 @@ Given(/^I read the file from "([^"]*)"$/, function (fileName, callback) {
     // Write code here that turns the phrase above into concrete actions
     var file = fs.readFileSync(__dirname + fileName, 'utf8');
 
-    //var file = fs.createReadStream(__dirname + fileName);
+    if (file) {
+        this.fileData = file;
+        this.filePath = __dirname + fileName;
+    } else {
+        callback(false, "not found");
+    }
+    callback();
+
+});
+
+
+Given(/^I download and read the file from "([^"]*)"$/, function (fileName, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    if (this.responseData.data) {
+        let writeStream = fs.createWriteStream(__dirname + fileName);
+        writeStream.write(this.responseData.data.body)
+        writeStream.on('finish', () => {
+            console.log('wrote all data to file');
+          });
+          writeStream.end();
+    }
+    var file = fs.readFileSync(__dirname + fileName, 'utf8');
+
     if (file) {
         this.fileData = file;
         this.filePath = __dirname + fileName;
