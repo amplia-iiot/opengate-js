@@ -28,7 +28,7 @@ export default class BaseSearch {
             this._timeout = timeout;
         }
         this._ogapi = ogapi;
-        this._resource = 'search' + resource;
+        this._resource = resource;
         this._headers = undefined;
         this._urlParameters = undefined;
     }

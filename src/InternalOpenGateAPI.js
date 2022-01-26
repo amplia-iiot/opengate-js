@@ -10,7 +10,9 @@ import AreasSearchBuilder from './searching/builder/AreasSearchBuilder';
 import DatasetsCatalogSearchBuilder from './searching/builder/DatasetsCatalogSearchBuilder';
 import AreaFinder from './areas/AreaFinder';
 import BulkSearchBuilder from './searching/builder/BulkSearchBuilder';
+import BulkExecutionSearchBuilder from './searching/builder/BulkExecutionSearchBuilder';
 import BulkFinder from './bulk/BulkFinder';
+import BulkExecutionFinder from './bulk/BulkExecutionFinder'
 import Channels from './channels/Channels';
 import Areas from './areas/Areas';
 import ChannelsSearchBuilder from './searching/builder/ChannelsSearchBuilder';
@@ -98,6 +100,7 @@ import DatamodelsFinder from './iot/datamodels/DatamodelsFinder';
 import DatastreamsBuilder from './iot/catalog/Datastream';
 import QratingsBuilder from './iot/catalog/Qrating';
 import EntityBuilder from './provision/entities/EntityBuilder';
+import BulkExecutionBuilder from './provision/bulk/BulkExecutionBuilder'
 import EntitiesSearchBuilder from './searching/builder/EntitiesSearchBuilder';
 import DatasetEntitiesSearchBuilder from './searching/builder/DatasetEntitiesSearchBuilder';
 import CountryCodesSearchBuilder from './searching/builder/CountryCodesSearchBuilder';
@@ -206,11 +209,27 @@ export default class InternalOpenGateAPI {
     }
 
     /**
+     * This return a BulkExecutionSearchBuilder to build a specific bulk
+     * @return {BulkExecutionSearchBuilder}
+     */
+    bulkExecutionSearchBuilder() {
+        return new BulkExecutionSearchBuilder(this);
+    }
+
+    /**
      * This return a util to find and download a bulk
      * @return {BulkFinder}
      */
     newBulkFinder() {
         return new BulkFinder(this);
+    }
+
+    /**
+     * This return a util to find summary and download a bulk executions
+     * @return {BulkFinder}
+     */
+    newBulkExecutionFinder(){
+        return new BulkExecutionFinder(this)
     }
 
     /**
@@ -918,6 +937,14 @@ export default class InternalOpenGateAPI {
      */
     datastreamsBuilder() {
         return new DatastreamsBuilder(this);
+    }
+
+    /**
+     * This return a util to create a bulk execution
+     * @return {BulkExecutionBuilder}
+     */
+    bulkExecutionBuilder(organization, processorId, timeout) {
+        return new BulkExecutionBuilder(this, organization, processorId, timeout)
     }
 
     /**

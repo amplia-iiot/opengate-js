@@ -5,6 +5,10 @@ module.exports = {
             'bundle': {
                 'nameAndversion': 'findByNameAndVersion'
             },
+            'bulk execution': {
+                'organizationAndid': 'findByOrganizationAndId',
+                'organizationAndidAndaccept': 'findByOrganizationAndId'
+            },
             'communications module': {
                 'organizationAndid': 'findByOrganizationAndId'
             },
