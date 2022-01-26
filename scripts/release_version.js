@@ -47,13 +47,13 @@ gulp.task('commit:increase:version', function() {
 
 // STEP 4
 gulp.task('checkout:master:increase', function(cb) {
-    git.checkout(masterBranch(), function(err) {
+    git.checkout(masterBranch(), {maxBuffer: Infinity}, function(err) {
         cb(err);
     });
 });
 
 gulp.task('merge:master:increase', function(cb) {
-    git.merge(temporalBranchRelease(), function(err) {
+    git.merge(temporalBranchRelease(), {maxBuffer: Infinity}, function(err) {
         cb(err);
     });
 });
@@ -66,9 +66,9 @@ gulp.task('change:tab_version:increase', function() {
 gulp.task('prepare_tag:increase', gulp.series('commit:increase:version', 'checkout:master:increase', 'merge:master:increase', 'change:tab_version:increase'));
 
 gulp.task('checkout:develop', function(cb) {
-    git.checkout(developBranch(), function(err) {
+    git.checkout(developBranch(), {maxBuffer: Infinity}, function(err) {
         if (!err) {
-            git.merge(masterBranch(), function(err) {
+            git.merge(masterBranch(), {maxBuffer: Infinity}, function(err) {
                 cb(err);
             });
         } else {
