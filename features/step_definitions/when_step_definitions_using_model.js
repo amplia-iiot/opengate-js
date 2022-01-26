@@ -59,6 +59,7 @@ When(/^I try to find by...$/, function (table) {
         this.error = "No params found";
         return;
     } catch (err) {
+        console.log('ERROR: ', err)
         this.error = err;
         return;
     }

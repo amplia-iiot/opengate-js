@@ -103,11 +103,12 @@ export default class NorthAmpliaREST {
      * @param {number} timeout - timeout in milliseconds    
      * @param {object} headers - headers of request
      * @param {object} parameters - parameters of request
+     * @param {boolean} asBuffer - response body as buffer (Uint8Array)
      * @return {Promise} 
      */
-    get(url, timeout, headers, parameters) {
+    get(url, timeout, headers, parameters, asBuffer) {
         var req = request.get(this._createUrl(url, parameters));
-        return this._createPromiseRequest(req, null, timeout, headers);
+        return this._createPromiseRequest(req, null, timeout, headers, asBuffer);
     }
 
     /**
@@ -175,13 +176,15 @@ export default class NorthAmpliaREST {
                 req.attach('certificate', formData.certificate);
                 delete formData.certificate;
             }
-
+            req.send(formData);
         } else if (formData.bulkFile) {
             req.set('Content-Type', formData.ext);
             formData = formData.bulkFile;
+            req.send(formData);
+        } else if(formData.processorBulkFile){
+            req.attach('file', formData.processorBulkFile);
+            delete formData.processorBulkFile;
         }
-
-        req.send(formData);
 
         return this._createPromiseRequest(req, events, timeout, headers);
     }
@@ -196,8 +199,7 @@ export default class NorthAmpliaREST {
      * @return {Promise} 
      */
     put(url, data, timeout, headers, parameters) {
-        var req = request.put(this._createUrl(url, parameters))
-            .send(data);
+        var req = request.put(this._createUrl(url, parameters)).send(data);
 
         if (headers) {
             headers['Content-Type'] = 'application/json';
@@ -256,10 +258,11 @@ export default class NorthAmpliaREST {
             }
         });
         var returnUrl = this._url(this._options) + "/" + encode.join("/");
+        
         return returnUrl;
     }
 
-    _createPromiseRequest(req, events, timeout, headers) {
+    _createPromiseRequest(req, events, timeout, headers, asBuffer) {
         let _timeout = timeout;
         if (typeof _timeout === "undefined" || _timeout === null) {
             _timeout = this._options.timeout;
@@ -315,6 +318,29 @@ export default class NorthAmpliaREST {
                     'data': data
                 });
             } else {
+                if(asBuffer){
+                    var chunks = []
+                    res.on("data", function (chunk) {
+                        chunks.push(chunk);
+                      });
+                    
+                      res.on("end", function (chunk) {
+                            let length = 0
+
+                            for(let i = 0; i < chunks.length; i++){
+                                length += chunks[i].length
+                            }
+                            const resultArray = new Uint8Array(length)
+                            let offset = 0
+
+                            for(let i = 0; i < chunks.length; i++){
+                                const c = chunks[i]
+                                resultArray.set(c, offset)
+                                offset += c.length
+                            }
+                            res.body = resultArray
+                      });
+                }
                 defered.resolve(res);
             }
         });
