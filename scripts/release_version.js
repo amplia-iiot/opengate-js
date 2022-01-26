@@ -40,8 +40,8 @@ gulp.task('build:all', gulp.series('create:release:branch', 'increase:version', 
 // STEP 3 
 gulp.task('commit:increase:version', function() {
     return gulp.src(['dist', './bower.json', './package.json', './docs', './src/util/searchingFields/source-precompiled/Fields.js'])
-        .pipe(git.add())
-        .pipe(git.commit('release ' + versionType() + ' version:' + versionNumber()));
+        .pipe(git.add({maxBuffer: Infinity}))
+        .pipe(git.commit('release ' + versionType() + ' version:' + versionNumber(), {maxBuffer: Infinity}));
 });
 // STEP 3 
 
@@ -81,9 +81,9 @@ gulp.task('checkout:develop', function(cb) {
 gulp.task('prepare:develop:increase', gulp.series('build:all', 'prepare_tag:increase', 'checkout:develop'));
 // STEP 4
 gulp.task('push:increase:build', function(cb) {
-    git.push('origin', [masterBranch(), developBranch()], { args: " --follow-tags" }, function(err) {
+    git.push('origin', [masterBranch(), developBranch()], { args: " --follow-tags", maxBuffer: Infinity }, function(err) {
         if (!err) {
-            git.branch(temporalBranchRelease(), { args: "-D" }, function(err) {
+            git.branch(temporalBranchRelease(), { args: "-D", maxBuffer: Infinity }, function(err) {
                 cb(err);
             });
         } else {
