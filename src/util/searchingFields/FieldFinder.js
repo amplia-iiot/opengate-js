@@ -36,7 +36,7 @@ const match_url = {
     '/users': 'USER',
     '/areas': 'AREAS',
     '/bulk/async': 'LEGACY_BULK',
-    '/provisionProcessors/bulk/search': 'BULK',
+    'provisionProcessors/bulk/search': 'BULK',
     '/devices': 'SearchOnDatamodel',
     '/subscriptions': 'SearchOnDatamodel',
     '/subscribers': 'SearchOnDatamodel',
