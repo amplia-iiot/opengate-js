@@ -139,13 +139,14 @@ var NorthAmpliaREST = (function () {
          * @param {number} timeout - timeout in milliseconds    
          * @param {object} headers - headers of request
          * @param {object} parameters - parameters of request
+         * @param {boolean} asBuffer - response body as buffer (Uint8Array)
          * @return {Promise} 
          */
     }, {
         key: 'get',
-        value: function get(url, timeout, headers, parameters) {
+        value: function get(url, timeout, headers, parameters, asBuffer) {
             var req = _superagent2['default'].get(this._createUrl(url, parameters));
-            return this._createPromiseRequest(req, null, timeout, headers);
+            return this._createPromiseRequest(req, null, timeout, headers, asBuffer);
         }
 
         /**
@@ -216,12 +217,15 @@ var NorthAmpliaREST = (function () {
                     req.attach('certificate', formData.certificate);
                     delete formData.certificate;
                 }
+                req.send(formData);
             } else if (formData.bulkFile) {
                 req.set('Content-Type', formData.ext);
                 formData = formData.bulkFile;
+                req.send(formData);
+            } else if (formData.processorBulkFile) {
+                req.attach('file', formData.processorBulkFile);
+                delete formData.processorBulkFile;
             }
-
-            req.send(formData);
 
             return this._createPromiseRequest(req, events, timeout, headers);
         }
@@ -299,12 +303,12 @@ var NorthAmpliaREST = (function () {
                 }
             });
             var returnUrl = this._url(this._options) + "/" + encode.join("/");
-            console.log('URL QUE ENVIA', returnUrl);
+
             return returnUrl;
         }
     }, {
         key: '_createPromiseRequest',
-        value: function _createPromiseRequest(req, events, timeout, headers) {
+        value: function _createPromiseRequest(req, events, timeout, headers, asBuffer) {
             var _timeout = timeout;
             if (typeof _timeout === "undefined" || _timeout === null) {
                 _timeout = this._options.timeout;
@@ -359,6 +363,29 @@ var NorthAmpliaREST = (function () {
                         'data': data
                     });
                 } else {
+                    if (asBuffer) {
+                        var chunks = [];
+                        res.on("data", function (chunk) {
+                            chunks.push(chunk);
+                        });
+
+                        res.on("end", function (chunk) {
+                            var length = 0;
+
+                            for (var _i = 0; _i < chunks.length; _i++) {
+                                length += chunks[_i].length;
+                            }
+                            var resultArray = new Uint8Array(length);
+                            var offset = 0;
+
+                            for (var _i2 = 0; _i2 < chunks.length; _i2++) {
+                                var c = chunks[_i2];
+                                resultArray.set(c, offset);
+                                offset += c.length;
+                            }
+                            res.body = resultArray;
+                        });
+                    }
                     defered.resolve(res);
                 }
             });
