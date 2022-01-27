@@ -3,7 +3,7 @@
 import SearchBuilder from './SearchBuilder';
 import FieldFinder from '../../util/searchingFields/FieldFinder';
 import WPSearch from '../WPSearch';
-const BASE_URL = '/provisionProcessors/bulk/search';
+const BASE_URL = 'provisionProcessors/bulk/search';
 
 /**
  * Searching over all the created bulk process, which are already done or still in progress.	
