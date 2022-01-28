@@ -335,7 +335,7 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/provision/bulk/BulkExecutionBuilder.js~BulkExecutionBuilder.html#instance-method-bulk">bulk</a></span></span><span data-ice="signature">(rawFile: <span>File</span>, extension: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>*</span></span>
+          <span data-ice="name"><span><a href="class/src/provision/bulk/BulkExecutionBuilder.js~BulkExecutionBuilder.html#instance-method-bulk">bulk</a></span></span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>File</span>, extension: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -363,7 +363,7 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/provision/bulk/BulkExecutionBuilder.js~BulkExecutionBuilder.html#instance-method-plan">plan</a></span></span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>Blob</span>, extension: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, numberOfEntriesToProcess: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>*</span></span>
+          <span data-ice="name"><span><a href="class/src/provision/bulk/BulkExecutionBuilder.js~BulkExecutionBuilder.html#instance-method-plan">plan</a></span></span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>File</span>, extension: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, numberOfEntriesToProcess: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -574,7 +574,7 @@ This function updates a entity of provision</p>
     
     
     
-    <span data-ice="name">bulk</span><span data-ice="signature">(rawFile: <span>File</span>, extension: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>*</span></span>
+    <span data-ice="name">bulk</span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>File</span>, extension: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
@@ -600,9 +600,9 @@ This function updates a entity of provision</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">rawFile</td>
-      <td data-ice="type"><span>File</span></td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>File</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"><p>File with data</p>
+      <td data-ice="description"><p>String with path of file or File (Blob)</p>
 </td>
     </tr>
 <tr data-ice="property" data-depth="0">
@@ -644,7 +644,7 @@ This function updates a entity of provision</p>
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.newBulkExecutionBuilder(&apos;orgname&apos;, &apos;processorId&apos;, 10000).bulk(rawFile, extension)</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.bulkExecutionBuilder(&apos;orgname&apos;, &apos;processorId&apos;, 10000).bulk(rawFile, extension)</code></pre>
     </div>
 </div>
 
@@ -661,7 +661,7 @@ This function updates a entity of provision</p>
     
     
     
-    <span data-ice="name">plan</span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>Blob</span>, extension: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, numberOfEntriesToProcess: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>*</span></span>
+    <span data-ice="name">plan</span><span data-ice="signature">(rawFile: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>File</span>, extension: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, numberOfEntriesToProcess: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
@@ -687,9 +687,9 @@ This function updates a entity of provision</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">rawFile</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>Blob</span></td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span>File</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"><p>File with format string or Blob</p>
+      <td data-ice="description"><p>String with path of file or File (Blob)</p>
 </td>
     </tr>
 <tr data-ice="property" data-depth="0">
@@ -738,8 +738,8 @@ This function updates a entity of provision</p>
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.newBulkExecutionBuilder(&apos;orgname&apos;, &apos;processorId&apos;, 10000).plan(rawFile, extension)
- ogapi.newBulkExecutionBuilder(&apos;orgname&apos;, &apos;processorId&apos;, 10000).plan(rawFile, extension, numberOfEntriesToProcess)</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.bulkExecutionBuilder(&apos;orgname&apos;, &apos;processorId&apos;, 10000).plan(rawFile, extension)
+ ogapi.bulkExecutionBuilder(&apos;orgname&apos;, &apos;processorId&apos;, 10000).plan(rawFile, extension, numberOfEntriesToProcess)</code></pre>
     </div>
 </div>
 

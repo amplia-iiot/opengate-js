@@ -401,36 +401,33 @@ export default class NorthAmpliaREST {
     post_multipart(url, formData, events, timeout, headers, parameters) {
         let req = request.post(this._createUrl(url, parameters));
 
-        if (formData &amp;&amp; (formData.meta || formData.file || formData.json || formData.certificate)) {
-            if (formData.meta) {
-                req.field(&apos;meta&apos;, formData.meta);
-                delete formData.Fmeta;
+        let sendFormData = true
+        const formDataKeys = Object.keys(formData)
+        formDataKeys.forEach(key =&gt; {
+            switch (key) {
+                case &apos;meta&apos;:
+                case &apos;json&apos;:
+                case &apos;file&apos;:
+                    req.field(key, formData[key]);    
+                    delete formData[key]
+                    break
+                case &apos;certificate&apos;: 
+                case &apos;processorBulkFile&apos;:
+                    req.attach(&apos;file&apos;, formData.processorBulkFile);
+                    sendFormData = false
+                    break
+                case &apos;bulkFile&apos;:
+                    req.set(&apos;Content-Type&apos;, formData.ext);
+                    formData = formData.bulkFile;
+                    break
+                default:
+                    break;
             }
-            if (formData.json) {
-                req.field(&apos;json&apos;, formData.json);
-                delete formData.json;
-            }
-
-            if (formData.file) {
-                req.field(&apos;file&apos;, formData.file);
-                delete formData.file;
-            }
-
-            if (formData.certificate) {
-                req.attach(&apos;certificate&apos;, formData.certificate);
-                delete formData.certificate;
-            }
+        })
+        if(sendFormData)
             req.send(formData);
-        } else if (formData.bulkFile) {
-            req.set(&apos;Content-Type&apos;, formData.ext);
-            formData = formData.bulkFile;
-            req.send(formData);
-        } else if(formData.processorBulkFile){
-            req.attach(&apos;file&apos;, formData.processorBulkFile);
-            delete formData.processorBulkFile;
-        }
-
         return this._createPromiseRequest(req, events, timeout, headers);
+        
     }
 
     /**

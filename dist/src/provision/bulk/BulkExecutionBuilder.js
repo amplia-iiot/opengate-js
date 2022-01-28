@@ -66,9 +66,9 @@ var BulkExecutionBuilder = (function (_BaseProvision) {
         /**
          * Instead of creating a bulk process, return the provision process planning for specified entries. This is is synch process that does not cause changes in the database
          * @example 
-         *  ogapi.newBulkExecutionBuilder('orgname', 'processorId', 10000).plan(rawFile, extension)
-         *  ogapi.newBulkExecutionBuilder('orgname', 'processorId', 10000).plan(rawFile, extension, numberOfEntriesToProcess)
-         * @param {string|Blob} rawFile - File with format string or Blob 
+         *  ogapi.bulkExecutionBuilder('orgname', 'processorId', 10000).plan(rawFile, extension)
+         *  ogapi.bulkExecutionBuilder('orgname', 'processorId', 10000).plan(rawFile, extension, numberOfEntriesToProcess)
+         * @param {string|File} rawFile - String with path of file or File (Blob)
          * @param {string} [extension] - File format
          * @param {number} [numberOfEntriesToProcess] - Number of entries to be processed.
          */
@@ -90,8 +90,8 @@ var BulkExecutionBuilder = (function (_BaseProvision) {
         /**
          * Do a bulk using specific Provision Processor.
          * @example 
-         *  ogapi.newBulkExecutionBuilder('orgname', 'processorId', 10000).bulk(rawFile, extension)
-         * @param {File} rawFile - File with data
+         *  ogapi.bulkExecutionBuilder('orgname', 'processorId', 10000).bulk(rawFile, extension)
+         * @param {string|File} rawFile - String with path of file or File (Blob)
          * @param {string} [extension] - File format
          */
     }, {
@@ -114,14 +114,11 @@ var BulkExecutionBuilder = (function (_BaseProvision) {
                 var processorBulkFile = new Blob([rawFile], {
                     type: this._extension
                 });
-                form.append('processorBulkFile', processorBulkFile);
+                form.append('file', processorBulkFile);
             } else {
                 form = {};
                 form.processorBulkFile = rawFile;
             }
-            this._setExtraHeaders({
-                'Content-Type': 'multipart/form-data'
-            });
 
             var defer = _q2['default'].defer();
 

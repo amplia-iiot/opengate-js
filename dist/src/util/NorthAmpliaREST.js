@@ -198,35 +198,30 @@ var NorthAmpliaREST = (function () {
         value: function post_multipart(url, formData, events, timeout, headers, parameters) {
             var req = _superagent2['default'].post(this._createUrl(url, parameters));
 
-            if (formData && (formData.meta || formData.file || formData.json || formData.certificate)) {
-                if (formData.meta) {
-                    req.field('meta', formData.meta);
-                    delete formData.Fmeta;
+            var sendFormData = true;
+            var formDataKeys = Object.keys(formData);
+            formDataKeys.forEach(function (key) {
+                switch (key) {
+                    case 'meta':
+                    case 'json':
+                    case 'file':
+                        req.field(key, formData[key]);
+                        delete formData[key];
+                        break;
+                    case 'certificate':
+                    case 'processorBulkFile':
+                        req.attach('file', formData.processorBulkFile);
+                        sendFormData = false;
+                        break;
+                    case 'bulkFile':
+                        req.set('Content-Type', formData.ext);
+                        formData = formData.bulkFile;
+                        break;
+                    default:
+                        break;
                 }
-                if (formData.json) {
-                    req.field('json', formData.json);
-                    delete formData.json;
-                }
-
-                if (formData.file) {
-                    req.field('file', formData.file);
-                    delete formData.file;
-                }
-
-                if (formData.certificate) {
-                    req.attach('certificate', formData.certificate);
-                    delete formData.certificate;
-                }
-                req.send(formData);
-            } else if (formData.bulkFile) {
-                req.set('Content-Type', formData.ext);
-                formData = formData.bulkFile;
-                req.send(formData);
-            } else if (formData.processorBulkFile) {
-                req.attach('file', formData.processorBulkFile);
-                delete formData.processorBulkFile;
-            }
-
+            });
+            if (sendFormData) req.send(formData);
             return this._createPromiseRequest(req, events, timeout, headers);
         }
 
