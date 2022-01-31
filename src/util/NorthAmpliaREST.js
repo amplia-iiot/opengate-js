@@ -103,12 +103,12 @@ export default class NorthAmpliaREST {
      * @param {number} timeout - timeout in milliseconds    
      * @param {object} headers - headers of request
      * @param {object} parameters - parameters of request
-     * @param {boolean} asBuffer - response body as buffer (Uint8Array)
+     * @param {boolean} asBlob - response body as Blob
      * @return {Promise} 
      */
-    get(url, timeout, headers, parameters, asBuffer) {
+    get(url, timeout, headers, parameters, asBlob) {
         var req = request.get(this._createUrl(url, parameters));
-        return this._createPromiseRequest(req, null, timeout, headers, asBuffer);
+        return this._createPromiseRequest(req, null, timeout, headers, asBlob);
     }
 
     /**
@@ -259,7 +259,7 @@ export default class NorthAmpliaREST {
         return returnUrl;
     }
 
-    _createPromiseRequest(req, events, timeout, headers, asBuffer) {
+    _createPromiseRequest(req, events, timeout, headers, asBlob) {
         let _timeout = timeout;
         if (typeof _timeout === "undefined" || _timeout === null) {
             _timeout = this._options.timeout;
@@ -286,6 +286,9 @@ export default class NorthAmpliaREST {
             for (let event in events) {
                 _req = _req.on(event, events[event]);
             }
+        }
+        if(asBlob){
+            req.responseType('blob')
         }
         _req = _req.end(function(err, res) {
             if (err !== null) {
@@ -315,29 +318,7 @@ export default class NorthAmpliaREST {
                     'data': data
                 });
             } else {
-                if(asBuffer){
-                    var chunks = []
-                    res.on("data", function (chunk) {
-                        chunks.push(chunk);
-                      });
-                    
-                      res.on("end", function (chunk) {
-                            let length = 0
-
-                            for(let i = 0; i < chunks.length; i++){
-                                length += chunks[i].length
-                            }
-                            const resultArray = new Uint8Array(length)
-                            let offset = 0
-
-                            for(let i = 0; i < chunks.length; i++){
-                                const c = chunks[i]
-                                resultArray.set(c, offset)
-                                offset += c.length
-                            }
-                            res.body = resultArray
-                      });
-                }
+                
                 defered.resolve(res);
             }
         });
