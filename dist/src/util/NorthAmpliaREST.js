@@ -139,14 +139,14 @@ var NorthAmpliaREST = (function () {
          * @param {number} timeout - timeout in milliseconds    
          * @param {object} headers - headers of request
          * @param {object} parameters - parameters of request
-         * @param {boolean} asBuffer - response body as buffer (Uint8Array)
+         * @param {boolean} asBlob - response body as Blob
          * @return {Promise} 
          */
     }, {
         key: 'get',
-        value: function get(url, timeout, headers, parameters, asBuffer) {
+        value: function get(url, timeout, headers, parameters, asBlob) {
             var req = _superagent2['default'].get(this._createUrl(url, parameters));
-            return this._createPromiseRequest(req, null, timeout, headers, asBuffer);
+            return this._createPromiseRequest(req, null, timeout, headers, asBlob);
         }
 
         /**
@@ -303,7 +303,7 @@ var NorthAmpliaREST = (function () {
         }
     }, {
         key: '_createPromiseRequest',
-        value: function _createPromiseRequest(req, events, timeout, headers, asBuffer) {
+        value: function _createPromiseRequest(req, events, timeout, headers, asBlob) {
             var _timeout = timeout;
             if (typeof _timeout === "undefined" || _timeout === null) {
                 _timeout = this._options.timeout;
@@ -329,6 +329,9 @@ var NorthAmpliaREST = (function () {
                 for (var _event in events) {
                     _req = _req.on(_event, events[_event]);
                 }
+            }
+            if (asBlob) {
+                req.responseType('blob');
             }
             _req = _req.end(function (err, res) {
                 if (err !== null) {
@@ -358,29 +361,7 @@ var NorthAmpliaREST = (function () {
                         'data': data
                     });
                 } else {
-                    if (asBuffer) {
-                        var chunks = [];
-                        res.on("data", function (chunk) {
-                            chunks.push(chunk);
-                        });
 
-                        res.on("end", function (chunk) {
-                            var length = 0;
-
-                            for (var _i = 0; _i < chunks.length; _i++) {
-                                length += chunks[_i].length;
-                            }
-                            var resultArray = new Uint8Array(length);
-                            var offset = 0;
-
-                            for (var _i2 = 0; _i2 < chunks.length; _i2++) {
-                                var c = chunks[_i2];
-                                resultArray.set(c, offset);
-                                offset += c.length;
-                            }
-                            res.body = resultArray;
-                        });
-                    }
                     defered.resolve(res);
                 }
             });
