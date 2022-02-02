@@ -114,6 +114,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/searching/builder/datasetsearchbuilder.js~base_url",
+    "variable/index.html#static-variable-BASE_URL",
+    "<span>BASE_URL</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/DatasetSearchBuilder.js</span>",
+    "variable"
+  ],
+  [
     "opengate-js/src/collection/devices/collect/enum/battery_charge_level_status_enum.js~battery_charge_level_status_enum",
     "variable/index.html#static-variable-BATTERY_CHARGE_LEVEL_STATUS_ENUM",
     "<span>BATTERY_CHARGE_LEVEL_STATUS_ENUM</span> <span class=\"search-result-import-path\">opengate-js/src/collection/devices/collect/enum/BATTERY_CHARGE_LEVEL_STATUS_ENUM.js</span>",
@@ -318,6 +324,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "opengate-js/src/datasets/datasets.js~datasets_types_enum",
+    "variable/index.html#static-variable-DATASETS_TYPES_ENUM",
+    "<span>DATASETS_TYPES_ENUM</span> <span class=\"search-result-import-path\">opengate-js/src/datasets/Datasets.js</span>",
+    "variable"
+  ],
+  [
     "opengate-js/src/util/date_format.js~date_format",
     "variable/index.html#static-variable-DATE_FORMAT",
     "<span>DATE_FORMAT</span> <span class=\"search-result-import-path\">opengate-js/src/util/DATE_FORMAT.js</span>",
@@ -369,6 +381,24 @@ window.esdocSearchIndex = [
     "opengate-js/src/searching/builder/datasetentitiessearchbuilder.js~datasetentitiessearchbuilder",
     "class/src/searching/builder/DatasetEntitiesSearchBuilder.js~DatasetEntitiesSearchBuilder.html",
     "<span>DatasetEntitiesSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/DatasetEntitiesSearchBuilder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/datasets/datasetfinder.js~datasetfinder",
+    "class/src/datasets/DatasetFinder.js~DatasetFinder.html",
+    "<span>DatasetFinder</span> <span class=\"search-result-import-path\">opengate-js/src/datasets/DatasetFinder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/searching/builder/datasetsearchbuilder.js~datasetsearchbuilder",
+    "class/src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder.html",
+    "<span>DatasetSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/DatasetSearchBuilder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/datasets/datasets.js~datasets",
+    "class/src/datasets/Datasets.js~Datasets.html",
+    "<span>Datasets</span> <span class=\"search-result-import-path\">opengate-js/src/datasets/Datasets.js</span>",
     "class"
   ],
   [
@@ -492,6 +522,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/searching/builder/executionshistorysearchbuilder.js~executionshistorysearchbuilder",
+    "class/src/searching/builder/ExecutionsHistorySearchBuilder.js~ExecutionsHistorySearchBuilder.html",
+    "<span>ExecutionsHistorySearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/ExecutionsHistorySearchBuilder.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/searching/builder/executionssearchbuilder.js~executionssearchbuilder",
     "class/src/searching/builder/ExecutionsSearchBuilder.js~ExecutionsSearchBuilder.html",
     "<span>ExecutionsSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/ExecutionsSearchBuilder.js</span>",
@@ -543,6 +579,18 @@ window.esdocSearchIndex = [
     "opengate-js/src/genericfinder.js~genericfinder",
     "class/src/GenericFinder.js~GenericFinder.html",
     "<span>GenericFinder</span> <span class=\"search-result-import-path\">opengate-js/src/GenericFinder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/geocluster/geocluster.js~geocluster",
+    "class/src/geocluster/Geocluster.js~Geocluster.html",
+    "<span>Geocluster</span> <span class=\"search-result-import-path\">opengate-js/src/geocluster/Geocluster.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/geocluster/geoclusterfinder.js~geoclusterfinder",
+    "class/src/geocluster/GeoclusterFinder.js~GeoclusterFinder.html",
+    "<span>GeoclusterFinder</span> <span class=\"search-result-import-path\">opengate-js/src/geocluster/GeoclusterFinder.js</span>",
     "class"
   ],
   [
@@ -690,6 +738,30 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/operationtypes/operationtype.js~operationtype",
+    "class/src/operationTypes/OperationType.js~OperationType.html",
+    "<span>OperationType</span> <span class=\"search-result-import-path\">opengate-js/src/operationTypes/OperationType.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/operationtypes/operationtypefinder.js~operationtypefinder",
+    "class/src/operationTypes/OperationTypeFinder.js~OperationTypeFinder.html",
+    "<span>OperationTypeFinder</span> <span class=\"search-result-import-path\">opengate-js/src/operationTypes/OperationTypeFinder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/searching/builder/operationtypessearchbuilder.js~operationtypesbuilder",
+    "class/src/searching/builder/OperationTypesSearchBuilder.js~OperationTypesBuilder.html",
+    "<span>OperationTypesBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/OperationTypesSearchBuilder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/operationtypes/operationtypecatalog.js~operationtypescatalog",
+    "class/src/operationTypes/OperationTypeCatalog.js~OperationTypesCatalog.html",
+    "<span>OperationTypesCatalog</span> <span class=\"search-result-import-path\">opengate-js/src/operationTypes/OperationTypeCatalog.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/searching/builder/operationalstatussearchbuilder.js~operationalstatussearchbuilder",
     "class/src/searching/builder/OperationalStatusSearchBuilder.js~OperationalStatusSearchBuilder.html",
     "<span>OperationalStatusSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/OperationalStatusSearchBuilder.js</span>",
@@ -804,12 +876,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "opengate-js/src/searching/quicksearch.js~quicksearch",
-    "class/src/searching/QuickSearch.js~QuickSearch.html",
-    "<span>QuickSearch</span> <span class=\"search-result-import-path\">opengate-js/src/searching/QuickSearch.js</span>",
-    "class"
-  ],
-  [
     "opengate-js/src/searching/builder/rawsearchbuilder.js~rawsearchbuilder",
     "class/src/searching/builder/RawSearchBuilder.js~RawSearchBuilder.html",
     "<span>RawSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/RawSearchBuilder.js</span>",
@@ -849,6 +915,12 @@ window.esdocSearchIndex = [
     "opengate-js/src/rulesconfiguration/ruleconfigurationsfinder.js~ruleconfigurationsfinder",
     "class/src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder.html",
     "<span>RuleConfigurationsFinder</span> <span class=\"search-result-import-path\">opengate-js/src/rulesConfiguration/RuleConfigurationsFinder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/rulesconfiguration/ruleconfigurationshelper.js~ruleconfigurationshelper",
+    "class/src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper.html",
+    "<span>RuleConfigurationsHelper</span> <span class=\"search-result-import-path\">opengate-js/src/rulesConfiguration/RuleConfigurationsHelper.js</span>",
     "class"
   ],
   [
@@ -2034,30 +2106,6 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "internalopengateapi src/internalopengateapi.js~internalopengateapi,internalopengateapi",
-    "test-file/client/searching/quicksearch.spec.js.html#lineNumber4",
-    "Check funcionality newQuickSearch module:",
-    "test"
-  ],
-  [
-    "internalopengateapi#newquicksearch src/internalopengateapi.js~internalopengateapi#newquicksearch,internalopengateapi#newquicksearch",
-    "test-file/client/searching/quicksearch.spec.js.html#lineNumber6",
-    "Check funcionality newQuickSearch module: Create new QuickSearch object",
-    "test"
-  ],
-  [
-    "internalopengateapi#newquicksearch src/internalopengateapi.js~internalopengateapi#newquicksearch,internalopengateapi#newquicksearch",
-    "test-file/client/searching/quicksearch.spec.js.html#lineNumber14",
-    "Check funcionality newQuickSearch module: Set string parameter and check filter",
-    "test"
-  ],
-  [
-    "internalopengateapi#newquicksearch src/internalopengateapi.js~internalopengateapi#newquicksearch,internalopengateapi#newquicksearch",
-    "test-file/client/searching/quicksearch.spec.js.html#lineNumber10",
-    "Check funcionality newQuickSearch module: Set string parameter and get filter",
-    "test"
-  ],
-  [
     "internalopengateapi#rawsearchbuilder src/internalopengateapi.js~internalopengateapi#rawsearchbuilder,internalopengateapi#rawsearchbuilder",
     "test-file/client/searching/rawsearch.spec.js.html#lineNumber4",
     "Check funcionality newRawSearch module:",
@@ -2106,614 +2154,554 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "internalopengateapi#devicessearchbuilder internalopengateapi#subscriberssearchbuilder internalopengateapi#subscriptionssearchbuilder internalopengateapi#communicationsmodulessearchbuilder internalopengateapi#executionssearchbuilder internalopengateapi#operationssearchbuilder internalopengateapi#alarmssearchbuilder internalopengateapi#bundlessearchbuilder src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder src/internalopengateapi.js~internalopengateapi#subscriptionssearchbuilder,internalopengateapi#subscriptionssearchbuilder internalopengateapi#communicationsmodulessearchbuilder,internalopengateapi#communicationsmodulessearchbuilder src/internalopengateapi.js~internalopengateapi#executionssearchbuilder,internalopengateapi#executionssearchbuilder src/internalopengateapi.js~internalopengateapi#operationssearchbuilder,internalopengateapi#operationssearchbuilder src/internalopengateapi.js~internalopengateapi#alarmssearchbuilder,internalopengateapi#alarmssearchbuilder src/internalopengateapi.js~internalopengateapi#bundlessearchbuilder,internalopengateapi#bundlessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber13",
+    "internalopengateapi#devicessearchbuilder internalopengateapi#subscriberssearchbuilder internalopengateapi#subscriptionssearchbuilder internalopengateapi#executionssearchbuilder internalopengateapi#operationssearchbuilder internalopengateapi#alarmssearchbuilder internalopengateapi#bundlessearchbuilder src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder src/internalopengateapi.js~internalopengateapi#subscriptionssearchbuilder,internalopengateapi#subscriptionssearchbuilder src/internalopengateapi.js~internalopengateapi#executionssearchbuilder,internalopengateapi#executionssearchbuilder src/internalopengateapi.js~internalopengateapi#operationssearchbuilder,internalopengateapi#operationssearchbuilder src/internalopengateapi.js~internalopengateapi#alarmssearchbuilder,internalopengateapi#alarmssearchbuilder src/internalopengateapi.js~internalopengateapi#bundlessearchbuilder,internalopengateapi#bundlessearchbuilder",
+    "test-file/client/searching/search.spec.js.html#lineNumber12",
     "Check funcionality newSearchBuilder module:",
     "test"
   ],
   [
     "",
-    "test-file/client/searching/search.spec.js.html#lineNumber446",
+    "test-file/client/searching/search.spec.js.html#lineNumber382",
     "Check funcionality newSearchBuilder module: Check on alarm searching:",
     "test"
   ],
   [
     "",
-    "test-file/client/searching/search.spec.js.html#lineNumber460",
+    "test-file/client/searching/search.spec.js.html#lineNumber396",
     "Check funcionality newSearchBuilder module: Check on alarm searching: all kind source data:",
     "test"
   ],
   [
     "alarmssearchbuilder#oncommunicationsmodules alarmssearchbuilder#oncommunicationsmodules,alarmssearchbuilder#oncommunicationsmodules",
-    "test-file/client/searching/search.spec.js.html#lineNumber474",
+    "test-file/client/searching/search.spec.js.html#lineNumber410",
     "Check funcionality newSearchBuilder module: Check on alarm searching: all kind source data: from communicationsModules",
     "test"
   ],
   [
     "alarmssearchbuilder#ondevices alarmssearchbuilder#ondevices,alarmssearchbuilder#ondevices",
-    "test-file/client/searching/search.spec.js.html#lineNumber462",
+    "test-file/client/searching/search.spec.js.html#lineNumber398",
     "Check funcionality newSearchBuilder module: Check on alarm searching: all kind source data: from devices",
     "test"
   ],
   [
     "alarmssearchbuilder#onsubscribers alarmssearchbuilder#onsubscribers,alarmssearchbuilder#onsubscribers",
-    "test-file/client/searching/search.spec.js.html#lineNumber470",
+    "test-file/client/searching/search.spec.js.html#lineNumber406",
     "Check funcionality newSearchBuilder module: Check on alarm searching: all kind source data: from subscribers",
     "test"
   ],
   [
     "alarmssearchbuilder#onsubscriptions alarmssearchbuilder#onsubscriptions,alarmssearchbuilder#onsubscriptions",
-    "test-file/client/searching/search.spec.js.html#lineNumber466",
+    "test-file/client/searching/search.spec.js.html#lineNumber402",
     "Check funcionality newSearchBuilder module: Check on alarm searching: all kind source data: from subscriptions",
     "test"
   ],
   [
     "",
-    "test-file/client/searching/search.spec.js.html#lineNumber477",
+    "test-file/client/searching/search.spec.js.html#lineNumber413",
     "Check funcionality newSearchBuilder module: Check on alarm searching: all kind source data: summary:",
     "test"
   ],
   [
     "alarmssearchbuilder#summary src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,alarmssearchbuilder#summary",
-    "test-file/client/searching/search.spec.js.html#lineNumber491",
+    "test-file/client/searching/search.spec.js.html#lineNumber427",
     "Check funcionality newSearchBuilder module: Check on alarm searching: all kind source data: summary: from communicationsModules",
     "test"
   ],
   [
     "alarmssearchbuilder#summary src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,alarmssearchbuilder#summary",
-    "test-file/client/searching/search.spec.js.html#lineNumber479",
+    "test-file/client/searching/search.spec.js.html#lineNumber415",
     "Check funcionality newSearchBuilder module: Check on alarm searching: all kind source data: summary: from devices",
     "test"
   ],
   [
     "alarmssearchbuilder#summary src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,alarmssearchbuilder#summary",
-    "test-file/client/searching/search.spec.js.html#lineNumber487",
+    "test-file/client/searching/search.spec.js.html#lineNumber423",
     "Check funcionality newSearchBuilder module: Check on alarm searching: all kind source data: summary: from subscribers",
     "test"
   ],
   [
     "alarmssearchbuilder#summary src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,alarmssearchbuilder#summary",
-    "test-file/client/searching/search.spec.js.html#lineNumber483",
+    "test-file/client/searching/search.spec.js.html#lineNumber419",
     "Check funcionality newSearchBuilder module: Check on alarm searching: all kind source data: summary: from subscriptions",
     "test"
   ],
   [
     "alarmssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,alarmssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber456",
+    "test-file/client/searching/search.spec.js.html#lineNumber392",
     "Check funcionality newSearchBuilder module: Check on alarm searching: multiple source data",
     "test"
   ],
   [
     "alarmssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,alarmssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber452",
+    "test-file/client/searching/search.spec.js.html#lineNumber388",
     "Check funcionality newSearchBuilder module: Check on alarm searching: single source data",
     "test"
   ],
   [
     "alarmssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,alarmssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber448",
+    "test-file/client/searching/search.spec.js.html#lineNumber384",
     "Check funcionality newSearchBuilder module: Check on alarm searching: without source data",
     "test"
   ],
   [
     "",
-    "test-file/client/searching/search.spec.js.html#lineNumber497",
+    "test-file/client/searching/search.spec.js.html#lineNumber433",
     "Check funcionality newSearchBuilder module: Check on bundles searching:",
     "test"
   ],
   [
     "",
-    "test-file/client/searching/search.spec.js.html#lineNumber502",
+    "test-file/client/searching/search.spec.js.html#lineNumber438",
     "Check funcionality newSearchBuilder module: Check on bundles searching: On Limit:",
     "test"
   ],
   [
     "bundlessearchbuilder#build bundlessearchbuilder#build,bundlessearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber505",
+    "test-file/client/searching/search.spec.js.html#lineNumber441",
     "Check funcionality newSearchBuilder module: Check on bundles searching: On Limit: limit",
     "test"
   ],
   [
     "",
-    "test-file/client/searching/search.spec.js.html#lineNumber508",
+    "test-file/client/searching/search.spec.js.html#lineNumber444",
     "Check funcionality newSearchBuilder module: Check on bundles searching: On Limit: simple filter",
     "test"
   ],
   [
     "bundlessearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,bundlessearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber499",
+    "test-file/client/searching/search.spec.js.html#lineNumber435",
     "Check funcionality newSearchBuilder module: Check on bundles searching: bundlesSearchBuilder",
     "test"
   ],
   [
     "searchbuilder src/searching/builder/searchbuilder.js~searchbuilder,searchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber41",
+    "test-file/client/searching/search.spec.js.html#lineNumber40",
     "Check funcionality newSearchBuilder module: Check on entity searching:",
     "test"
   ],
   [
     "searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber211",
+    "test-file/client/searching/search.spec.js.html#lineNumber186",
     "Check funcionality newSearchBuilder module: Check on entity searching: On collected and provisioned data:",
     "test"
   ],
   [
-    "communicationsmodulessearchbuilder#build communicationsmodulessearchbuilder#build,communicationsmodulessearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber225",
-    "Check funcionality newSearchBuilder module: Check on entity searching: On collected and provisioned data: communicationsModulesSearchBuilder",
-    "test"
-  ],
-  [
     "devicessearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,devicessearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber213",
+    "test-file/client/searching/search.spec.js.html#lineNumber188",
     "Check funcionality newSearchBuilder module: Check on entity searching: On collected and provisioned data: devicesSearchBuilder",
     "test"
   ],
   [
     "subscriberssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,subscriberssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber221",
+    "test-file/client/searching/search.spec.js.html#lineNumber196",
     "Check funcionality newSearchBuilder module: Check on entity searching: On collected and provisioned data: subscribersSearchBuilder",
     "test"
   ],
   [
     "subscriptionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,subscriptionssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber217",
+    "test-file/client/searching/search.spec.js.html#lineNumber192",
     "Check funcionality newSearchBuilder module: Check on entity searching: On collected and provisioned data: subscriptionsSearchBuilder",
     "test"
   ],
   [
     "entitysearchbuilder#oncollected entitysearchbuilder#oncollected,entitysearchbuilder#oncollected",
-    "test-file/client/searching/search.spec.js.html#lineNumber192",
+    "test-file/client/searching/search.spec.js.html#lineNumber171",
     "Check funcionality newSearchBuilder module: Check on entity searching: On collected data:",
     "test"
   ],
   [
-    "communicationsmodulessearchbuilder#oncollected communicationsmodulessearchbuilder#oncollected,communicationsmodulessearchbuilder#oncollected",
-    "test-file/client/searching/search.spec.js.html#lineNumber206",
-    "Check funcionality newSearchBuilder module: Check on entity searching: On collected data: communicationsModulesSearchBuilder",
-    "test"
-  ],
-  [
     "devicessearchbuilder#oncollected devicessearchbuilder#oncollected,devicessearchbuilder#oncollected",
-    "test-file/client/searching/search.spec.js.html#lineNumber194",
+    "test-file/client/searching/search.spec.js.html#lineNumber173",
     "Check funcionality newSearchBuilder module: Check on entity searching: On collected data: devicesSearchBuilder",
     "test"
   ],
   [
     "subscriberssearchbuilder#oncollected subscriberssearchbuilder#oncollected,subscriberssearchbuilder#oncollected",
-    "test-file/client/searching/search.spec.js.html#lineNumber202",
+    "test-file/client/searching/search.spec.js.html#lineNumber181",
     "Check funcionality newSearchBuilder module: Check on entity searching: On collected data: subscribersSearchBuilder",
     "test"
   ],
   [
     "subscriptionssearchbuilder#oncollected subscriptionssearchbuilder#oncollected,subscriptionssearchbuilder#oncollected",
-    "test-file/client/searching/search.spec.js.html#lineNumber198",
+    "test-file/client/searching/search.spec.js.html#lineNumber177",
     "Check funcionality newSearchBuilder module: Check on entity searching: On collected data: subscriptionsSearchBuilder",
     "test"
   ],
   [
     "searchbuilder#limit src/searching/builder/searchbuilder.js~searchbuilder#limit,searchbuilder#limit",
-    "test-file/client/searching/search.spec.js.html#lineNumber157",
+    "test-file/client/searching/search.spec.js.html#lineNumber140",
     "Check funcionality newSearchBuilder module: Check on entity searching: On limit:",
     "test"
   ],
   [
     "",
-    "test-file/client/searching/search.spec.js.html#lineNumber161",
+    "test-file/client/searching/search.spec.js.html#lineNumber144",
     "Check funcionality newSearchBuilder module: Check on entity searching: On limit: size parameter not a number",
     "test"
   ],
   [
     "",
-    "test-file/client/searching/search.spec.js.html#lineNumber158",
+    "test-file/client/searching/search.spec.js.html#lineNumber141",
     "Check funcionality newSearchBuilder module: Check on entity searching: On limit: undefined size parameter",
     "test"
   ],
   [
     "",
-    "test-file/client/searching/search.spec.js.html#lineNumber164",
+    "test-file/client/searching/search.spec.js.html#lineNumber147",
     "Check funcionality newSearchBuilder module: Check on entity searching: On limit: well build with only size",
     "test"
   ],
   [
     "",
-    "test-file/client/searching/search.spec.js.html#lineNumber167",
+    "test-file/client/searching/search.spec.js.html#lineNumber150",
     "Check funcionality newSearchBuilder module: Check on entity searching: On limit: well build with size and offset",
     "test"
   ],
   [
     "entitysearchbuilder#onprovisioned entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned",
-    "test-file/client/searching/search.spec.js.html#lineNumber173",
+    "test-file/client/searching/search.spec.js.html#lineNumber156",
     "Check funcionality newSearchBuilder module: Check on entity searching: On provisioned data:",
     "test"
   ],
   [
-    "communicationsmodulessearchbuilder#onprovisioned communicationsmodulessearchbuilder#onprovisioned,communicationsmodulessearchbuilder#onprovisioned",
-    "test-file/client/searching/search.spec.js.html#lineNumber187",
-    "Check funcionality newSearchBuilder module: Check on entity searching: On provisioned data: communicationsModulesSearchBuilder",
-    "test"
-  ],
-  [
     "devicessearchbuilder#onprovisioned devicessearchbuilder#onprovisioned,devicessearchbuilder#onprovisioned",
-    "test-file/client/searching/search.spec.js.html#lineNumber175",
+    "test-file/client/searching/search.spec.js.html#lineNumber158",
     "Check funcionality newSearchBuilder module: Check on entity searching: On provisioned data: devicesSearchBuilder",
     "test"
   ],
   [
     "subscriberssearchbuilder#onprovisioned subscriberssearchbuilder#onprovisioned,subscriberssearchbuilder#onprovisioned",
-    "test-file/client/searching/search.spec.js.html#lineNumber183",
+    "test-file/client/searching/search.spec.js.html#lineNumber166",
     "Check funcionality newSearchBuilder module: Check on entity searching: On provisioned data: subscribersSearchBuilder",
     "test"
   ],
   [
     "subscriptionssearchbuilder#onprovisioned subscriptionssearchbuilder#onprovisioned,subscriptionssearchbuilder#onprovisioned",
-    "test-file/client/searching/search.spec.js.html#lineNumber179",
+    "test-file/client/searching/search.spec.js.html#lineNumber162",
     "Check funcionality newSearchBuilder module: Check on entity searching: On provisioned data: subscriptionsSearchBuilder",
     "test"
   ],
   [
     "",
-    "test-file/client/searching/search.spec.js.html#lineNumber80",
+    "test-file/client/searching/search.spec.js.html#lineNumber71",
     "Check funcionality newSearchBuilder module: Check on entity searching: On sort:",
     "test"
   ],
   [
     "searchbuilder#build searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortascendingby,searchbuilder#addsortascendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber86",
+    "test-file/client/searching/search.spec.js.html#lineNumber77",
     "Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort",
     "test"
   ],
   [
     "searchbuilder#build searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortdescendingby,searchbuilder#addsortdescendingby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber94",
+    "test-file/client/searching/search.spec.js.html#lineNumber85",
     "Check funcionality newSearchBuilder module: Check on entity searching: On sort: Ascending sort",
     "test"
   ],
   [
     "searchbuilder#build searchbuilder#addsortby entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#addsortby,searchbuilder#addsortby entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber102",
+    "test-file/client/searching/search.spec.js.html#lineNumber93",
     "Check funcionality newSearchBuilder module: Check on entity searching: On sort: Generic sort",
     "test"
   ],
   [
     "",
-    "test-file/client/searching/search.spec.js.html#lineNumber357",
+    "test-file/client/searching/search.spec.js.html#lineNumber300",
     "Check funcionality newSearchBuilder module: Check on entity searching: On without source data:",
     "test"
   ],
   [
-    "communicationsmodulessearchbuilder#summary communicationsmodulessearchbuilder#build communicationsmodulessearchbuilder#summary,communicationsmodulessearchbuilder#summary communicationsmodulessearchbuilder#build,communicationsmodulessearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber383",
-    "Check funcionality newSearchBuilder module: Check on entity searching: On without source data: communicationsModulesSearchBuilder",
-    "test"
-  ],
-  [
     "devicessearchbuilder#summary devicessearchbuilder#build src/searching/builder/devicessearchbuilder.js~devicessearchbuilder#summary,devicessearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,devicessearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber362",
+    "test-file/client/searching/search.spec.js.html#lineNumber305",
     "Check funcionality newSearchBuilder module: Check on entity searching: On without source data: devicesSearchBuilder",
     "test"
   ],
   [
     "subscriberssearchbuilder#summary subscriberssearchbuilder#build subscriberssearchbuilder#summary,subscriberssearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,subscriberssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber376",
+    "test-file/client/searching/search.spec.js.html#lineNumber319",
     "Check funcionality newSearchBuilder module: Check on entity searching: On without source data: subscribersSearchBuilder",
     "test"
   ],
   [
     "subscriptionssearchbuilder#summary subscriptionssearchbuilder#build subscriptionssearchbuilder#summary,subscriptionssearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,subscriptionssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber369",
+    "test-file/client/searching/search.spec.js.html#lineNumber312",
     "Check funcionality newSearchBuilder module: Check on entity searching: On without source data: subscriptionsSearchBuilder",
     "test"
   ],
   [
     "searchbuilder#summary searchbuilder#summary,searchbuilder#summary",
-    "test-file/client/searching/search.spec.js.html#lineNumber230",
+    "test-file/client/searching/search.spec.js.html#lineNumber201",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data:",
     "test"
   ],
   [
     "",
-    "test-file/client/searching/search.spec.js.html#lineNumber325",
+    "test-file/client/searching/search.spec.js.html#lineNumber275",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On collected and provisioned data",
     "test"
   ],
   [
-    "communicationsmodulessearchbuilder#summary communicationsmodulessearchbuilder#build communicationsmodulessearchbuilder#summary,communicationsmodulessearchbuilder#summary communicationsmodulessearchbuilder#build,communicationsmodulessearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber351",
-    "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On collected and provisioned data communicationsModulesSearchBuilder",
-    "test"
-  ],
-  [
     "devicessearchbuilder#summary devicessearchbuilder#build src/searching/builder/devicessearchbuilder.js~devicessearchbuilder#summary,devicessearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,devicessearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber330",
+    "test-file/client/searching/search.spec.js.html#lineNumber280",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On collected and provisioned data devicesSearchBuilder",
     "test"
   ],
   [
     "subscriberssearchbuilder#summary subscriberssearchbuilder#build subscriberssearchbuilder#summary,subscriberssearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,subscriberssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber344",
+    "test-file/client/searching/search.spec.js.html#lineNumber294",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On collected and provisioned data subscribersSearchBuilder",
     "test"
   ],
   [
     "subscriptionssearchbuilder#summary subscriptionssearchbuilder#build subscriptionssearchbuilder#summary,subscriptionssearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,subscriptionssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber337",
+    "test-file/client/searching/search.spec.js.html#lineNumber287",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On collected and provisioned data subscriptionsSearchBuilder",
     "test"
   ],
   [
     "",
-    "test-file/client/searching/search.spec.js.html#lineNumber295",
+    "test-file/client/searching/search.spec.js.html#lineNumber252",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On collected data:",
     "test"
   ],
   [
-    "communicationsmodulessearchbuilder#summary communicationsmodulessearchbuilder#onprovisioned communicationsmodulessearchbuilder#summary,communicationsmodulessearchbuilder#summary communicationsmodulessearchbuilder#onprovisioned,communicationsmodulessearchbuilder#onprovisioned",
-    "test-file/client/searching/search.spec.js.html#lineNumber321",
-    "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On collected data: communicationsModulesSearchBuilder",
-    "test"
-  ],
-  [
     "devicessearchbuilder#summary devicessearchbuilder#onprovisioned src/searching/builder/devicessearchbuilder.js~devicessearchbuilder#summary,devicessearchbuilder#summary devicessearchbuilder#onprovisioned,devicessearchbuilder#onprovisioned",
-    "test-file/client/searching/search.spec.js.html#lineNumber300",
+    "test-file/client/searching/search.spec.js.html#lineNumber257",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On collected data: devicesSearchBuilder",
     "test"
   ],
   [
     "subscriberssearchbuilder#summary subscriberssearchbuilder#onprovisioned subscriberssearchbuilder#summary,subscriberssearchbuilder#summary subscriberssearchbuilder#onprovisioned,subscriberssearchbuilder#onprovisioned",
-    "test-file/client/searching/search.spec.js.html#lineNumber314",
+    "test-file/client/searching/search.spec.js.html#lineNumber271",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On collected data: subscribersSearchBuilder",
     "test"
   ],
   [
     "subscriptionssearchbuilder#summary subscriptionssearchbuilder#onprovisioned subscriptionssearchbuilder#summary,subscriptionssearchbuilder#summary subscriptionssearchbuilder#onprovisioned,subscriptionssearchbuilder#onprovisioned",
-    "test-file/client/searching/search.spec.js.html#lineNumber307",
+    "test-file/client/searching/search.spec.js.html#lineNumber264",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On collected data: subscriptionsSearchBuilder",
     "test"
   ],
   [
     "searchbuilder#summary entitysearchbuilder#onprovisioned searchbuilder#summary,searchbuilder#summary entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned",
-    "test-file/client/searching/search.spec.js.html#lineNumber265",
+    "test-file/client/searching/search.spec.js.html#lineNumber229",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On provisioned data:",
     "test"
   ],
   [
-    "communicationsmodulessearchbuilder#summary communicationsmodulessearchbuilder#onprovisioned communicationsmodulessearchbuilder#summary,communicationsmodulessearchbuilder#summary communicationsmodulessearchbuilder#onprovisioned,communicationsmodulessearchbuilder#onprovisioned",
-    "test-file/client/searching/search.spec.js.html#lineNumber291",
-    "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On provisioned data: communicationsModulesSearchBuilder",
-    "test"
-  ],
-  [
     "devicessearchbuilder#summary devicessearchbuilder#onprovisioned src/searching/builder/devicessearchbuilder.js~devicessearchbuilder#summary,devicessearchbuilder#summary devicessearchbuilder#onprovisioned,devicessearchbuilder#onprovisioned",
-    "test-file/client/searching/search.spec.js.html#lineNumber270",
+    "test-file/client/searching/search.spec.js.html#lineNumber234",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On provisioned data: devicesSearchBuilder",
     "test"
   ],
   [
     "subscriberssearchbuilder#summary subscriberssearchbuilder#onprovisioned subscriberssearchbuilder#summary,subscriberssearchbuilder#summary subscriberssearchbuilder#onprovisioned,subscriberssearchbuilder#onprovisioned",
-    "test-file/client/searching/search.spec.js.html#lineNumber284",
+    "test-file/client/searching/search.spec.js.html#lineNumber248",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On provisioned data: subscribersSearchBuilder",
     "test"
   ],
   [
     "subscriptionssearchbuilder#summary subscriptionssearchbuilder#onprovisioned subscriptionssearchbuilder#summary,subscriptionssearchbuilder#summary subscriptionssearchbuilder#onprovisioned,subscriptionssearchbuilder#onprovisioned",
-    "test-file/client/searching/search.spec.js.html#lineNumber277",
+    "test-file/client/searching/search.spec.js.html#lineNumber241",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: On provisioned data: subscriptionsSearchBuilder",
     "test"
   ],
   [
     "",
-    "test-file/client/searching/search.spec.js.html#lineNumber231",
+    "test-file/client/searching/search.spec.js.html#lineNumber202",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: without source data:",
     "test"
   ],
   [
-    "communicationsmodulessearchbuilder#summary communicationsmodulessearchbuilder#build communicationsmodulessearchbuilder#summary,communicationsmodulessearchbuilder#summary communicationsmodulessearchbuilder#build,communicationsmodulessearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber257",
-    "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: without source data: communicationsModulesSearchBuilder",
-    "test"
-  ],
-  [
     "devicessearchbuilder#summary devicessearchbuilder#build src/searching/builder/devicessearchbuilder.js~devicessearchbuilder#summary,devicessearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,devicessearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber236",
+    "test-file/client/searching/search.spec.js.html#lineNumber207",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: without source data: devicesSearchBuilder",
     "test"
   ],
   [
     "subscriberssearchbuilder#summary subscriberssearchbuilder#build subscriberssearchbuilder#summary,subscriberssearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,subscriberssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber250",
+    "test-file/client/searching/search.spec.js.html#lineNumber221",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: without source data: subscribersSearchBuilder",
     "test"
   ],
   [
     "subscriptionssearchbuilder#summary subscriptionssearchbuilder#build subscriptionssearchbuilder#summary,subscriptionssearchbuilder#summary src/searching/builder/searchbuilder.js~searchbuilder#build,subscriptionssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber243",
+    "test-file/client/searching/search.spec.js.html#lineNumber214",
     "Check funcionality newSearchBuilder module: Check on entity searching: Summary data: without source data: subscriptionsSearchBuilder",
     "test"
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber145",
+    "test-file/client/searching/search.spec.js.html#lineNumber128",
     "Check funcionality newSearchBuilder module: Check on entity searching: using filterBuilder:",
     "test"
   ],
   [
     "",
-    "test-file/client/searching/search.spec.js.html#lineNumber146",
+    "test-file/client/searching/search.spec.js.html#lineNumber129",
     "Check funcionality newSearchBuilder module: Check on entity searching: using filterBuilder: simple filter",
     "test"
   ],
   [
     "searchbuilder#filter src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter",
-    "test-file/client/searching/search.spec.js.html#lineNumber43",
+    "test-file/client/searching/search.spec.js.html#lineNumber42",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter:",
     "test"
   ],
   [
     "",
-    "test-file/client/searching/search.spec.js.html#lineNumber106",
+    "test-file/client/searching/search.spec.js.html#lineNumber97",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter:",
     "test"
   ],
   [
-    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder,internalopengateapi#communicationsmodulessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber76",
-    "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: communicationsModulesSearchBuilder",
-    "test"
-  ],
-  [
-    "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned internalopengateapi#communicationsmodulessearchbuilder,internalopengateapi#communicationsmodulessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber136",
-    "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: communicationsModulesSearchBuilder",
-    "test"
-  ],
-  [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber50",
+    "test-file/client/searching/search.spec.js.html#lineNumber49",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: devicesSearchBuilder",
     "test"
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#devicessearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber112",
+    "test-file/client/searching/search.spec.js.html#lineNumber103",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: devicesSearchBuilder",
     "test"
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriberssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber68",
+    "test-file/client/searching/search.spec.js.html#lineNumber67",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder",
     "test"
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriberssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber128",
+    "test-file/client/searching/search.spec.js.html#lineNumber119",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscribersSearchBuilder",
     "test"
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriptionssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriptionssearchbuilder,internalopengateapi#subscriptionssearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber59",
+    "test-file/client/searching/search.spec.js.html#lineNumber58",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscriptionsSearchBuilder",
     "test"
   ],
   [
     "searchbuilder#build searchbuilder#filter entitysearchbuilder#onprovisioned internalopengateapi#subscriptionssearchbuilder src/searching/builder/searchbuilder.js~searchbuilder#build,searchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#filter,searchbuilder#filter entitysearchbuilder#onprovisioned,entitysearchbuilder#onprovisioned src/internalopengateapi.js~internalopengateapi#subscriptionssearchbuilder,internalopengateapi#subscriptionssearchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber120",
+    "test-file/client/searching/search.spec.js.html#lineNumber111",
     "Check funcionality newSearchBuilder module: Check on entity searching: with empty filter: subscriptionsSearchBuilder",
     "test"
   ],
   [
     "",
-    "test-file/client/searching/search.spec.js.html#lineNumber389",
+    "test-file/client/searching/search.spec.js.html#lineNumber325",
     "Check funcionality newSearchBuilder module: Check on operation searching:",
     "test"
   ],
   [
     "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber393",
+    "test-file/client/searching/search.spec.js.html#lineNumber329",
     "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
     "test"
   ],
   [
     "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber399",
+    "test-file/client/searching/search.spec.js.html#lineNumber335",
     "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
     "test"
   ],
   [
     "executionssearchbuilder#build src/searching/builder/searchbuilder.js~searchbuilder#build,executionssearchbuilder#build",
-    "test-file/client/searching/search.spec.js.html#lineNumber405",
+    "test-file/client/searching/search.spec.js.html#lineNumber341",
     "Check funcionality newSearchBuilder module: Check on operation searching: \t\t\t\t",
     "test"
   ],
   [
     "",
-    "test-file/client/searching/search.spec.js.html#lineNumber409",
+    "test-file/client/searching/search.spec.js.html#lineNumber345",
     "Check funcionality newSearchBuilder module: Check on operation searching: all kind source data:",
     "test"
   ],
   [
     "executionssearchbuilder#oncommunicationsmodules executionssearchbuilder#oncommunicationsmodules,executionssearchbuilder#oncommunicationsmodules",
-    "test-file/client/searching/search.spec.js.html#lineNumber423",
+    "test-file/client/searching/search.spec.js.html#lineNumber359",
     "Check funcionality newSearchBuilder module: Check on operation searching: all kind source data: from communicationsModules",
     "test"
   ],
   [
     "executionssearchbuilder#ondevices executionssearchbuilder#ondevices,executionssearchbuilder#ondevices",
-    "test-file/client/searching/search.spec.js.html#lineNumber411",
+    "test-file/client/searching/search.spec.js.html#lineNumber347",
     "Check funcionality newSearchBuilder module: Check on operation searching: all kind source data: from devices",
     "test"
   ],
   [
     "executionssearchbuilder#onsubscribers executionssearchbuilder#onsubscribers,executionssearchbuilder#onsubscribers",
-    "test-file/client/searching/search.spec.js.html#lineNumber419",
+    "test-file/client/searching/search.spec.js.html#lineNumber355",
     "Check funcionality newSearchBuilder module: Check on operation searching: all kind source data: from subscribers",
     "test"
   ],
   [
     "executionssearchbuilder#onsubscriptions executionssearchbuilder#onsubscriptions,executionssearchbuilder#onsubscriptions",
-    "test-file/client/searching/search.spec.js.html#lineNumber415",
+    "test-file/client/searching/search.spec.js.html#lineNumber351",
     "Check funcionality newSearchBuilder module: Check on operation searching: all kind source data: from subscriptions",
     "test"
   ],
   [
     "",
-    "test-file/client/searching/search.spec.js.html#lineNumber426",
+    "test-file/client/searching/search.spec.js.html#lineNumber362",
     "Check funcionality newSearchBuilder module: Check on operation searching: all kind source data: summary:",
     "test"
   ],
   [
     "executionssearchbuilder#summary src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,executionssearchbuilder#summary",
-    "test-file/client/searching/search.spec.js.html#lineNumber440",
+    "test-file/client/searching/search.spec.js.html#lineNumber376",
     "Check funcionality newSearchBuilder module: Check on operation searching: all kind source data: summary: from communicationsModules",
     "test"
   ],
   [
     "executionssearchbuilder#summary src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,executionssearchbuilder#summary",
-    "test-file/client/searching/search.spec.js.html#lineNumber428",
+    "test-file/client/searching/search.spec.js.html#lineNumber364",
     "Check funcionality newSearchBuilder module: Check on operation searching: all kind source data: summary: from devices",
     "test"
   ],
   [
     "executionssearchbuilder#summary src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,executionssearchbuilder#summary",
-    "test-file/client/searching/search.spec.js.html#lineNumber436",
+    "test-file/client/searching/search.spec.js.html#lineNumber372",
     "Check funcionality newSearchBuilder module: Check on operation searching: all kind source data: summary: from subscribers",
     "test"
   ],
   [
     "executionssearchbuilder#summary src/searching/builder/searchwithsummarybuilder.js~searchwithsummarybuilder#summary,executionssearchbuilder#summary",
-    "test-file/client/searching/search.spec.js.html#lineNumber432",
+    "test-file/client/searching/search.spec.js.html#lineNumber368",
     "Check funcionality newSearchBuilder module: Check on operation searching: all kind source data: summary: from subscriptions",
     "test"
   ],
   [
     "searchbuilder src/searching/builder/searchbuilder.js~searchbuilder,searchbuilder",
-    "test-file/client/searching/search.spec.js.html#lineNumber16",
+    "test-file/client/searching/search.spec.js.html#lineNumber15",
     "Check funcionality newSearchBuilder module: Check setting timeout",
     "test"
   ],
   [
     "searchbuilder#withtimeout src/searching/builder/searchbuilder.js~searchbuilder#withtimeout,searchbuilder#withtimeout",
-    "test-file/client/searching/search.spec.js.html#lineNumber32",
+    "test-file/client/searching/search.spec.js.html#lineNumber31",
     "Check funcionality newSearchBuilder module: Check setting timeout Check default timeout value when it is no setted",
     "test"
   ],
   [
     "searchbuilder#withtimeout src/searching/builder/searchbuilder.js~searchbuilder#withtimeout,searchbuilder#withtimeout",
-    "test-file/client/searching/search.spec.js.html#lineNumber25",
+    "test-file/client/searching/search.spec.js.html#lineNumber24",
     "Check funcionality newSearchBuilder module: Check setting timeout It is all ok when not exceeded timeout",
     "test"
   ],
   [
     "searchbuilder#withtimeout src/searching/builder/searchbuilder.js~searchbuilder#withtimeout,searchbuilder#withtimeout",
-    "test-file/client/searching/search.spec.js.html#lineNumber18",
+    "test-file/client/searching/search.spec.js.html#lineNumber17",
     "Check funcionality newSearchBuilder module: Check setting timeout Throw error on exceeded timeout",
     "test"
   ],
   [
     "searchbuilder#withtimeout src/searching/builder/searchbuilder.js~searchbuilder#withtimeout,searchbuilder#withtimeout",
-    "test-file/client/searching/search.spec.js.html#lineNumber36",
+    "test-file/client/searching/search.spec.js.html#lineNumber35",
     "Check funcionality newSearchBuilder module: Check setting timeout withTimeout parameter must be a number",
     "test"
   ],
@@ -2725,61 +2713,49 @@ window.esdocSearchIndex = [
   ],
   [
     "internalopengateapi#alarmssearchbuilder src/internalopengateapi.js~internalopengateapi#alarmssearchbuilder,internalopengateapi#alarmssearchbuilder",
-    "test-file/client/searching/module.searching.spec.js.html#lineNumber38",
+    "test-file/client/searching/module.searching.spec.js.html#lineNumber30",
     "Check if all searching modules exists: Exist Builder alarmsSearchBuilder function",
     "test"
   ],
   [
     "internalopengateapi#bundlessearchbuilder src/internalopengateapi.js~internalopengateapi#bundlessearchbuilder,internalopengateapi#bundlessearchbuilder",
-    "test-file/client/searching/module.searching.spec.js.html#lineNumber42",
+    "test-file/client/searching/module.searching.spec.js.html#lineNumber34",
     "Check if all searching modules exists: Exist Builder bundlesSearchBuilder function",
     "test"
   ],
   [
-    "internalopengateapi#communicationsmodulessearchbuilder internalopengateapi#communicationsmodulessearchbuilder,internalopengateapi#communicationsmodulessearchbuilder",
-    "test-file/client/searching/module.searching.spec.js.html#lineNumber26",
-    "Check if all searching modules exists: Exist Builder communicationsModulesSearchBuilder function",
-    "test"
-  ],
-  [
     "internalopengateapi#devicessearchbuilder src/internalopengateapi.js~internalopengateapi#devicessearchbuilder,internalopengateapi#devicessearchbuilder",
-    "test-file/client/searching/module.searching.spec.js.html#lineNumber14",
+    "test-file/client/searching/module.searching.spec.js.html#lineNumber10",
     "Check if all searching modules exists: Exist Builder devicesSearchBuilder function",
     "test"
   ],
   [
     "internalopengateapi#executionssearchbuilder src/internalopengateapi.js~internalopengateapi#executionssearchbuilder,internalopengateapi#executionssearchbuilder",
-    "test-file/client/searching/module.searching.spec.js.html#lineNumber34",
+    "test-file/client/searching/module.searching.spec.js.html#lineNumber26",
     "Check if all searching modules exists: Exist Builder executionsSearchBuilder function",
     "test"
   ],
   [
     "internalopengateapi#operationssearchbuilder src/internalopengateapi.js~internalopengateapi#operationssearchbuilder,internalopengateapi#operationssearchbuilder",
-    "test-file/client/searching/module.searching.spec.js.html#lineNumber30",
+    "test-file/client/searching/module.searching.spec.js.html#lineNumber22",
     "Check if all searching modules exists: Exist Builder operationsSearchBuilder function",
     "test"
   ],
   [
     "internalopengateapi#subscriberssearchbuilder src/internalopengateapi.js~internalopengateapi#subscriberssearchbuilder,internalopengateapi#subscriberssearchbuilder",
-    "test-file/client/searching/module.searching.spec.js.html#lineNumber22",
+    "test-file/client/searching/module.searching.spec.js.html#lineNumber18",
     "Check if all searching modules exists: Exist Builder subscribersSearchBuilder function",
     "test"
   ],
   [
     "internalopengateapi#subscriptionssearchbuilder src/internalopengateapi.js~internalopengateapi#subscriptionssearchbuilder,internalopengateapi#subscriptionssearchbuilder",
-    "test-file/client/searching/module.searching.spec.js.html#lineNumber18",
+    "test-file/client/searching/module.searching.spec.js.html#lineNumber14",
     "Check if all searching modules exists: Exist Builder subscriptionsSearchBuilder function",
     "test"
   ],
   [
-    "internalopengateapi#newquicksearch src/internalopengateapi.js~internalopengateapi#newquicksearch,internalopengateapi#newquicksearch",
-    "test-file/client/searching/module.searching.spec.js.html#lineNumber6",
-    "Check if all searching modules exists: Exist newQuickSearch function",
-    "test"
-  ],
-  [
     "internalopengateapi#rawsearchbuilder src/internalopengateapi.js~internalopengateapi#rawsearchbuilder,internalopengateapi#rawsearchbuilder",
-    "test-file/client/searching/module.searching.spec.js.html#lineNumber10",
+    "test-file/client/searching/module.searching.spec.js.html#lineNumber6",
     "Check if all searching modules exists: Exist rawSearchBuilder function",
     "test"
   ],
@@ -2905,73 +2881,61 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber87",
+    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber72",
     "Testing fields finder api search a fields alarmsSearchBuilder",
     "test"
   ],
   [
     "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber102",
+    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber87",
     "Testing fields finder api search a fields bundlesSearchBuilder",
     "test"
   ],
   [
     "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber94",
+    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber79",
     "Testing fields finder api search a fields certificatesSearchBuilder",
     "test"
   ],
   [
     "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber5",
-    "Testing fields finder api search a fields communicationsModulesSearchBuilder",
-    "test"
-  ],
-  [
-    "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber13",
-    "Testing fields finder api search a fields communicationsModulesSearchBuilder",
-    "test"
-  ],
-  [
-    "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber21",
+    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber6",
     "Testing fields finder api search a fields devicesSearchBuilder",
     "test"
   ],
   [
     "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber54",
+    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber39",
     "Testing fields finder api search a fields devicesSearchBuilder that does not exist",
     "test"
   ],
   [
     "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber38",
+    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber23",
     "Testing fields finder api search a fields devicesSearchBuilder with different level",
     "test"
   ],
   [
     "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber29",
+    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber14",
     "Testing fields finder api search a fields devicesSearchBuilder with first level nested",
     "test"
   ],
   [
     "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber64",
+    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber49",
     "Testing fields finder api search a fields devicesSearchBuilder with second level nested",
     "test"
   ],
   [
     "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber80",
+    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber65",
     "Testing fields finder api search a fields executionsSearchBuilder",
     "test"
   ],
   [
     "",
-    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber72",
+    "test-file/client/autogeneratedFields/fields.spec.js.html#lineNumber57",
     "Testing fields finder api search a fields operationsSearchBuilder",
     "test"
   ],
@@ -3033,12 +2997,6 @@ window.esdocSearchIndex = [
     "client/searching/module.searching.spec.js",
     "test-file/client/searching/module.searching.spec.js.html",
     "client/searching/module.searching.spec.js",
-    "testFile"
-  ],
-  [
-    "client/searching/quicksearch.spec.js",
-    "test-file/client/searching/quicksearch.spec.js.html",
-    "client/searching/quicksearch.spec.js",
     "testFile"
   ],
   [
@@ -3276,6 +3234,18 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#datasetsearchbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-datasetSearchBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#datasetSearchBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#datasetsbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-datasetsBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#datasetsBuilder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#datasetscatalogsearchbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-datasetsCatalogSearchBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#datasetsCatalogSearchBuilder",
@@ -3336,6 +3306,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#executionshistorysearchbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-executionsHistorySearchBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#executionsHistorySearchBuilder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#executionssearchbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-executionsSearchBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#executionsSearchBuilder",
@@ -3351,6 +3327,12 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#fieldsdefinitionsearchbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-fieldsDefinitionSearchBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#fieldsDefinitionSearchBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#geoclusterbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-geoclusterBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#geoclusterBuilder",
     "method"
   ],
   [
@@ -3438,6 +3420,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#newdatasetfinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newDatasetFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newDatasetFinder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#newdevicefinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newDeviceFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newDeviceFinder",
@@ -3462,6 +3450,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#newgeoclusterfinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newGeoclusterFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newGeoclusterFinder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#newoperationactions",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newOperationActions",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newOperationActions",
@@ -3471,6 +3465,18 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#newoperationfinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newOperationFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newOperationFinder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#newoperationtypecatalog",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newOperationTypeCatalog",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newOperationTypeCatalog",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#newoperationtypefinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newOperationTypeFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newOperationTypeFinder",
     "method"
   ],
   [
@@ -3492,12 +3498,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/internalopengateapi.js~internalopengateapi#newquicksearch",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newQuickSearch",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newQuickSearch",
-    "method"
-  ],
-  [
     "src/internalopengateapi.js~internalopengateapi#newruleconfigurationscatalog",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newRuleConfigurationsCatalog",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newRuleConfigurationsCatalog",
@@ -3507,6 +3507,12 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#newruleconfigurationsfinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newRuleConfigurationsFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newRuleConfigurationsFinder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#newruleconfigurationshelper",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newRuleConfigurationsHelper",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newRuleConfigurationsHelper",
     "method"
   ],
   [
@@ -3549,6 +3555,18 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#newworkgrouprelationsfinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newWorkgroupRelationsFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newWorkgroupRelationsFinder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#operationtypebuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-operationTypeBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#operationTypeBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#operationtypessearchbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-operationTypesSearchBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#operationTypesSearchBuilder",
     "method"
   ],
   [
@@ -3891,6 +3909,12 @@ window.esdocSearchIndex = [
     "src/areas/areas.js~areas#constructor",
     "class/src/areas/Areas.js~Areas.html#instance-constructor-constructor",
     "src/areas/Areas.js~Areas#constructor",
+    "method"
+  ],
+  [
+    "src/areas/areas.js~areas#withcolor",
+    "class/src/areas/Areas.js~Areas.html#instance-method-withColor",
+    "src/areas/Areas.js~Areas#withColor",
     "method"
   ],
   [
@@ -5316,6 +5340,84 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/datasets/datasetfinder.js",
+    "file/src/datasets/DatasetFinder.js.html",
+    "src/datasets/DatasetFinder.js",
+    "file"
+  ],
+  [
+    "src/datasets/datasetfinder.js~datasetfinder#constructor",
+    "class/src/datasets/DatasetFinder.js~DatasetFinder.html#instance-constructor-constructor",
+    "src/datasets/DatasetFinder.js~DatasetFinder#constructor",
+    "method"
+  ],
+  [
+    "src/datasets/datasetfinder.js~datasetfinder#findbyorganization",
+    "class/src/datasets/DatasetFinder.js~DatasetFinder.html#instance-method-findByOrganization",
+    "src/datasets/DatasetFinder.js~DatasetFinder#findByOrganization",
+    "method"
+  ],
+  [
+    "src/datasets/datasetfinder.js~datasetfinder#findbyorganizationanddatasetid",
+    "class/src/datasets/DatasetFinder.js~DatasetFinder.html#instance-method-findByOrganizationAndDatasetId",
+    "src/datasets/DatasetFinder.js~DatasetFinder#findByOrganizationAndDatasetId",
+    "method"
+  ],
+  [
+    "src/datasets/datasets.js",
+    "file/src/datasets/Datasets.js.html",
+    "src/datasets/Datasets.js",
+    "file"
+  ],
+  [
+    "src/datasets/datasets.js~datasets#constructor",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-constructor-constructor",
+    "src/datasets/Datasets.js~Datasets#constructor",
+    "method"
+  ],
+  [
+    "src/datasets/datasets.js~datasets#update",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-method-update",
+    "src/datasets/Datasets.js~Datasets#update",
+    "method"
+  ],
+  [
+    "src/datasets/datasets.js~datasets#withcolumns",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-method-withColumns",
+    "src/datasets/Datasets.js~Datasets#withColumns",
+    "method"
+  ],
+  [
+    "src/datasets/datasets.js~datasets#withdescription",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-method-withDescription",
+    "src/datasets/Datasets.js~Datasets#withDescription",
+    "method"
+  ],
+  [
+    "src/datasets/datasets.js~datasets#withidentifier",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-method-withIdentifier",
+    "src/datasets/Datasets.js~Datasets#withIdentifier",
+    "method"
+  ],
+  [
+    "src/datasets/datasets.js~datasets#withname",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-method-withName",
+    "src/datasets/Datasets.js~Datasets#withName",
+    "method"
+  ],
+  [
+    "src/datasets/datasets.js~datasets#withorganization",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-method-withOrganization",
+    "src/datasets/Datasets.js~Datasets#withOrganization",
+    "method"
+  ],
+  [
+    "src/datasets/datasets.js~datasets#withtype",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-method-withType",
+    "src/datasets/Datasets.js~Datasets#withType",
+    "method"
+  ],
+  [
     "src/domains/domains.js",
     "file/src/domains/Domains.js.html",
     "src/domains/Domains.js",
@@ -5433,6 +5535,60 @@ window.esdocSearchIndex = [
     "src/entities/ticketfinder.js~ticketfinder#constructor",
     "class/src/entities/TicketFinder.js~TicketFinder.html#instance-constructor-constructor",
     "src/entities/TicketFinder.js~TicketFinder#constructor",
+    "method"
+  ],
+  [
+    "src/geocluster/geocluster.js",
+    "file/src/geocluster/Geocluster.js.html",
+    "src/geocluster/Geocluster.js",
+    "file"
+  ],
+  [
+    "src/geocluster/geocluster.js~geocluster#constructor",
+    "class/src/geocluster/Geocluster.js~Geocluster.html#instance-constructor-constructor",
+    "src/geocluster/Geocluster.js~Geocluster#constructor",
+    "method"
+  ],
+  [
+    "src/geocluster/geocluster.js~geocluster#update",
+    "class/src/geocluster/Geocluster.js~Geocluster.html#instance-method-update",
+    "src/geocluster/Geocluster.js~Geocluster#update",
+    "method"
+  ],
+  [
+    "src/geocluster/geocluster.js~geocluster#withidentifier",
+    "class/src/geocluster/Geocluster.js~Geocluster.html#instance-method-withIdentifier",
+    "src/geocluster/Geocluster.js~Geocluster#withIdentifier",
+    "method"
+  ],
+  [
+    "src/geocluster/geoclusterfinder.js",
+    "file/src/geocluster/GeoclusterFinder.js.html",
+    "src/geocluster/GeoclusterFinder.js",
+    "file"
+  ],
+  [
+    "src/geocluster/geoclusterfinder.js~geoclusterfinder#constructor",
+    "class/src/geocluster/GeoclusterFinder.js~GeoclusterFinder.html#instance-constructor-constructor",
+    "src/geocluster/GeoclusterFinder.js~GeoclusterFinder#constructor",
+    "method"
+  ],
+  [
+    "src/geocluster/geoclusterfinder.js~geoclusterfinder#findall",
+    "class/src/geocluster/GeoclusterFinder.js~GeoclusterFinder.html#instance-method-findAll",
+    "src/geocluster/GeoclusterFinder.js~GeoclusterFinder#findAll",
+    "method"
+  ],
+  [
+    "src/geocluster/geoclusterfinder.js~geoclusterfinder#findbyid",
+    "class/src/geocluster/GeoclusterFinder.js~GeoclusterFinder.html#instance-method-findById",
+    "src/geocluster/GeoclusterFinder.js~GeoclusterFinder#findById",
+    "method"
+  ],
+  [
+    "src/geocluster/geoclusterfinder.js~geoclusterfinder#findfeatures",
+    "class/src/geocluster/GeoclusterFinder.js~GeoclusterFinder.html#instance-method-findFeatures",
+    "src/geocluster/GeoclusterFinder.js~GeoclusterFinder#findFeatures",
     "method"
   ],
   [
@@ -5781,6 +5937,132 @@ window.esdocSearchIndex = [
     "src/iot/datamodels/datamodelshelper.js~datamodelshelper#withversion",
     "class/src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper.html#instance-method-withVersion",
     "src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper#withVersion",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js",
+    "file/src/operationTypes/OperationType.js.html",
+    "src/operationTypes/OperationType.js",
+    "file"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#applicableto",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-applicableTo",
+    "src/operationTypes/OperationType.js~OperationType#applicableTo",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#constructor",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-constructor-constructor",
+    "src/operationTypes/OperationType.js~OperationType#constructor",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#create",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-create",
+    "src/operationTypes/OperationType.js~OperationType#create",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#delete",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-delete",
+    "src/operationTypes/OperationType.js~OperationType#delete",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#fromcatalog",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-fromCatalog",
+    "src/operationTypes/OperationType.js~OperationType#fromCatalog",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#update",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-update",
+    "src/operationTypes/OperationType.js~OperationType#update",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#withdescription",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-withDescription",
+    "src/operationTypes/OperationType.js~OperationType#withDescription",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#withidentifier",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-withIdentifier",
+    "src/operationTypes/OperationType.js~OperationType#withIdentifier",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#withmodels",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-withModels",
+    "src/operationTypes/OperationType.js~OperationType#withModels",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#withname",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-withName",
+    "src/operationTypes/OperationType.js~OperationType#withName",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#withorganization",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-withOrganization",
+    "src/operationTypes/OperationType.js~OperationType#withOrganization",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#withparameters",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-withParameters",
+    "src/operationTypes/OperationType.js~OperationType#withParameters",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#withsteps",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-withSteps",
+    "src/operationTypes/OperationType.js~OperationType#withSteps",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#withtitle",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-withTitle",
+    "src/operationTypes/OperationType.js~OperationType#withTitle",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtypecatalog.js",
+    "file/src/operationTypes/OperationTypeCatalog.js.html",
+    "src/operationTypes/OperationTypeCatalog.js",
+    "file"
+  ],
+  [
+    "src/operationtypes/operationtypecatalog.js~operationtypescatalog#constructor",
+    "class/src/operationTypes/OperationTypeCatalog.js~OperationTypesCatalog.html#instance-constructor-constructor",
+    "src/operationTypes/OperationTypeCatalog.js~OperationTypesCatalog#constructor",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtypecatalog.js~operationtypescatalog#getoperationtypes",
+    "class/src/operationTypes/OperationTypeCatalog.js~OperationTypesCatalog.html#instance-method-getOperationTypes",
+    "src/operationTypes/OperationTypeCatalog.js~OperationTypesCatalog#getOperationTypes",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtypefinder.js",
+    "file/src/operationTypes/OperationTypeFinder.js.html",
+    "src/operationTypes/OperationTypeFinder.js",
+    "file"
+  ],
+  [
+    "src/operationtypes/operationtypefinder.js~operationtypefinder#constructor",
+    "class/src/operationTypes/OperationTypeFinder.js~OperationTypeFinder.html#instance-constructor-constructor",
+    "src/operationTypes/OperationTypeFinder.js~OperationTypeFinder#constructor",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtypefinder.js~operationtypefinder#findbyorganizationandname",
+    "class/src/operationTypes/OperationTypeFinder.js~OperationTypeFinder.html#instance-method-findByOrganizationAndName",
+    "src/operationTypes/OperationTypeFinder.js~OperationTypeFinder#findByOrganizationAndName",
     "method"
   ],
   [
@@ -7032,6 +7314,36 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/rulesconfiguration/ruleconfigurationshelper.js",
+    "file/src/rulesConfiguration/RuleConfigurationsHelper.js.html",
+    "src/rulesConfiguration/RuleConfigurationsHelper.js",
+    "file"
+  ],
+  [
+    "src/rulesconfiguration/ruleconfigurationshelper.js~ruleconfigurationshelper#constructor",
+    "class/src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper.html#instance-constructor-constructor",
+    "src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper#constructor",
+    "method"
+  ],
+  [
+    "src/rulesconfiguration/ruleconfigurationshelper.js~ruleconfigurationshelper#getdocjavascriptfunctions",
+    "class/src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper.html#instance-method-getDocJavascriptFunctions",
+    "src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper#getDocJavascriptFunctions",
+    "method"
+  ],
+  [
+    "src/rulesconfiguration/ruleconfigurationshelper.js~ruleconfigurationshelper#getdocprivatejavascriptfunctions",
+    "class/src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper.html#instance-method-getDocPrivateJavascriptFunctions",
+    "src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper#getDocPrivateJavascriptFunctions",
+    "method"
+  ],
+  [
+    "src/rulesconfiguration/ruleconfigurationshelper.js~ruleconfigurationshelper#getddummyfunctions",
+    "class/src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper.html#instance-method-getdDummyFunctions",
+    "src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper#getdDummyFunctions",
+    "method"
+  ],
+  [
     "src/rulesconfiguration/_rulecondition.js",
     "file/src/rulesConfiguration/_RuleCondition.js.html",
     "src/rulesConfiguration/_RuleCondition.js",
@@ -7161,18 +7473,6 @@ window.esdocSearchIndex = [
     "src/searching/filterbuilder.js~filterbuilder#or",
     "class/src/searching/FilterBuilder.js~FilterBuilder.html#instance-method-or",
     "src/searching/FilterBuilder.js~FilterBuilder#or",
-    "method"
-  ],
-  [
-    "src/searching/quicksearch.js",
-    "file/src/searching/QuickSearch.js.html",
-    "src/searching/QuickSearch.js",
-    "file"
-  ],
-  [
-    "src/searching/quicksearch.js~quicksearch#constructor",
-    "class/src/searching/QuickSearch.js~QuickSearch.html#instance-constructor-constructor",
-    "src/searching/QuickSearch.js~QuickSearch#constructor",
     "method"
   ],
   [
@@ -7680,6 +7980,36 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/searching/builder/datasetsearchbuilder.js",
+    "file/src/searching/builder/DatasetSearchBuilder.js.html",
+    "src/searching/builder/DatasetSearchBuilder.js",
+    "file"
+  ],
+  [
+    "src/searching/builder/datasetsearchbuilder.js~datasetsearchbuilder#build",
+    "class/src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder.html#instance-method-build",
+    "src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder#build",
+    "method"
+  ],
+  [
+    "src/searching/builder/datasetsearchbuilder.js~datasetsearchbuilder#constructor",
+    "class/src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder.html#instance-constructor-constructor",
+    "src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/searching/builder/datasetsearchbuilder.js~datasetsearchbuilder#group",
+    "class/src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder.html#instance-method-group",
+    "src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder#group",
+    "method"
+  ],
+  [
+    "src/searching/builder/datasetsearchbuilder.js~datasetsearchbuilder#select",
+    "class/src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder.html#instance-method-select",
+    "src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder#select",
+    "method"
+  ],
+  [
     "src/searching/builder/datasetscatalogsearchbuilder.js",
     "file/src/searching/builder/DatasetsCatalogSearchBuilder.js.html",
     "src/searching/builder/DatasetsCatalogSearchBuilder.js",
@@ -7797,6 +8127,18 @@ window.esdocSearchIndex = [
     "src/searching/builder/entitiessearchbuilder.js~entitiessearchbuilder#select",
     "class/src/searching/builder/EntitiesSearchBuilder.js~EntitiesSearchBuilder.html#instance-method-select",
     "src/searching/builder/EntitiesSearchBuilder.js~EntitiesSearchBuilder#select",
+    "method"
+  ],
+  [
+    "src/searching/builder/executionshistorysearchbuilder.js",
+    "file/src/searching/builder/ExecutionsHistorySearchBuilder.js.html",
+    "src/searching/builder/ExecutionsHistorySearchBuilder.js",
+    "file"
+  ],
+  [
+    "src/searching/builder/executionshistorysearchbuilder.js~executionshistorysearchbuilder#constructor",
+    "class/src/searching/builder/ExecutionsHistorySearchBuilder.js~ExecutionsHistorySearchBuilder.html#instance-constructor-constructor",
+    "src/searching/builder/ExecutionsHistorySearchBuilder.js~ExecutionsHistorySearchBuilder#constructor",
     "method"
   ],
   [
@@ -8007,6 +8349,18 @@ window.esdocSearchIndex = [
     "src/searching/builder/mobilephoneprovidersearchbuilder.js~mobilephoneprovidersearchbuilder#constructor",
     "class/src/searching/builder/MobilePhoneProviderSearchBuilder.js~MobilePhoneProviderSearchBuilder.html#instance-constructor-constructor",
     "src/searching/builder/MobilePhoneProviderSearchBuilder.js~MobilePhoneProviderSearchBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/searching/builder/operationtypessearchbuilder.js",
+    "file/src/searching/builder/OperationTypesSearchBuilder.js.html",
+    "src/searching/builder/OperationTypesSearchBuilder.js",
+    "file"
+  ],
+  [
+    "src/searching/builder/operationtypessearchbuilder.js~operationtypesbuilder#constructor",
+    "class/src/searching/builder/OperationTypesSearchBuilder.js~OperationTypesBuilder.html#instance-constructor-constructor",
+    "src/searching/builder/OperationTypesSearchBuilder.js~OperationTypesBuilder#constructor",
     "method"
   ],
   [

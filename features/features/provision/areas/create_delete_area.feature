@@ -29,9 +29,10 @@ So, I can create a new area with the parametres that I have been defined
         And an ogapi "areas builder" util
         And I want to create an "area"
         And the "organization" "area_organization"
-        And the "name" "mock_area"
+        And the "name" "mockArea"
         And the "identifier" "mock_area"
         And the "description" "area description"
+        And the "color" "#FF00C8"
         And the "geometry" with...
             | param                                                                                                                                                                |
             | Polygon                                                                                                                                                              |
@@ -47,7 +48,8 @@ So, I can create a new area with the parametres that I have been defined
         And an ogapi "areas builder" util
         And I want to create an "area"
         And the "organization" "area_organization"
-        And the "name" "mock_area"
+        And the "name" "mockArea"
+        And the "color" "#FF00C8"
         And the "identifier" "mock_area"
         And the "description" "area description"
         And the "geometry" with...
@@ -68,7 +70,8 @@ So, I can create a new area with the parametres that I have been defined
         And an ogapi "areas builder" util
         And I want to create an "area"
         And the "organization" "area_organization"
-        And the "name" "mock_area"
+        And the "name" "mockArea"
+        And the "color" "#FF00C8"
         And the "identifier" "mock_area"
         And the "description" "area description"
         And the "geometry" with...

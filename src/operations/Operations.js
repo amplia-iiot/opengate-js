@@ -88,10 +88,11 @@ export default class Operations {
         let _this = this;
         let defered = q.defer();
         let promise = defered.promise;
-        this._ogapi.rawSearchBuilder().from('/catalog/operations').build().execute().
+        //this._ogapi.rawSearchBuilder().from('/catalog/operations').build().execute().
+        this._ogapi.operationTypesSearchBuilder().build().execute().
         then(function(data) {
             if (data.statusCode === 200) {
-                const operations = data.data.operations;
+                const operations = data.data;
                 for (let i in operations) {
                     let name = operations[i].name.toUpperCase();
                     _this._operationNames.push(name);

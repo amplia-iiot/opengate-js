@@ -9,7 +9,7 @@ OpengateAPI = require(process.cwd() + '/dist/opengate-api-npm');
 utilsModel = require('./utils_model');
 findModel = require('./find_model');
 findCreateModel = require('./create_provision_model');
-findDeleteModel = require('./delete_provision_model');
+findDeleteModel = require('./delete_provision_model'); 
 searchingModel = require('./searching_model');
 
 function World() {
@@ -18,7 +18,6 @@ function World() {
     this.apikey = process.env.API_KEY || 'API_KEY';
     chai.use(chai_as_promised);
     this.expect = chai.expect;
-
     // Own dependencies with the model
     this.utilsModel = utilsModel;
     this.findModel = findModel;

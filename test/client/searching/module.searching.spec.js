@@ -2,10 +2,6 @@ define(function () {
 	mocha.setup('bdd');
 	/** @test {InternalOpenGateAPI} */
 	describe('Check if all searching modules exists:', function () {
-		/** @test {InternalOpenGateAPI#newQuickSearch} */
-		it('Exist newQuickSearch function', function () {
-			assert.isFunction(ogapi.newQuickSearch, 'Module newQuickSearch is not loaded');
-		});
 		/** @test {InternalOpenGateAPI#rawSearchBuilder} */
 		it('Exist rawSearchBuilder function', function () {
 			assert.isFunction(ogapi.rawSearchBuilder, 'Module rawSearchBuilder is not loaded');
@@ -21,10 +17,6 @@ define(function () {
 		/** @test {InternalOpenGateAPI#subscribersSearchBuilder} */
 		it('Exist Builder subscribersSearchBuilder function', function () {
 			assert.isFunction(ogapi.subscribersSearchBuilder, 'Builder subscribersSearchBuilder is not loaded');
-		});
-		/** @test {InternalOpenGateAPI#communicationsModulesSearchBuilder} */
-		it('Exist Builder communicationsModulesSearchBuilder function', function () {
-			assert.isFunction(ogapi.communicationsModulesSearchBuilder, 'Builder communicationsModulesSearchBuilder is not loaded');
 		});
 		/** @test {InternalOpenGateAPI#operationsSearchBuilder} */
 		it('Exist Builder operationsSearchBuilder function', function () {

@@ -18,6 +18,14 @@ var _usersUserFinder = require('./users/UserFinder');
 
 var _usersUserFinder2 = _interopRequireDefault(_usersUserFinder);
 
+var _geoclusterGeoclusterFinder = require('./geocluster/GeoclusterFinder');
+
+var _geoclusterGeoclusterFinder2 = _interopRequireDefault(_geoclusterGeoclusterFinder);
+
+var _geoclusterGeocluster = require('./geocluster/Geocluster');
+
+var _geoclusterGeocluster2 = _interopRequireDefault(_geoclusterGeocluster);
+
 var _securityCertificates = require('./security/Certificates');
 
 var _securityCertificates2 = _interopRequireDefault(_securityCertificates);
@@ -70,6 +78,10 @@ var _areasAreas = require('./areas/Areas');
 
 var _areasAreas2 = _interopRequireDefault(_areasAreas);
 
+var _datasetsDatasets = require('./datasets/Datasets');
+
+var _datasetsDatasets2 = _interopRequireDefault(_datasetsDatasets);
+
 var _searchingBuilderChannelsSearchBuilder = require('./searching/builder/ChannelsSearchBuilder');
 
 var _searchingBuilderChannelsSearchBuilder2 = _interopRequireDefault(_searchingBuilderChannelsSearchBuilder);
@@ -86,7 +98,25 @@ var _rulesConfigurationRuleConfigurationsCatalog = require('./rulesConfiguration
 
 var _rulesConfigurationRuleConfigurationsCatalog2 = _interopRequireDefault(_rulesConfigurationRuleConfigurationsCatalog);
 
-// import RuleConfigurationsActions from './rulesConfiguration/RuleConfigurationsActions';
+var _rulesConfigurationRuleConfigurationsHelper = require('./rulesConfiguration/RuleConfigurationsHelper');
+
+var _rulesConfigurationRuleConfigurationsHelper2 = _interopRequireDefault(_rulesConfigurationRuleConfigurationsHelper);
+
+var _datasetsDatasetFinder = require('./datasets/DatasetFinder');
+
+var _datasetsDatasetFinder2 = _interopRequireDefault(_datasetsDatasetFinder);
+
+var _operationTypesOperationType = require('./operationTypes/OperationType');
+
+var _operationTypesOperationType2 = _interopRequireDefault(_operationTypesOperationType);
+
+var _operationTypesOperationTypeFinder = require('./operationTypes/OperationTypeFinder');
+
+var _operationTypesOperationTypeFinder2 = _interopRequireDefault(_operationTypesOperationTypeFinder);
+
+var _operationTypesOperationTypeCatalog = require('./operationTypes/OperationTypeCatalog');
+
+var _operationTypesOperationTypeCatalog2 = _interopRequireDefault(_operationTypesOperationTypeCatalog);
 
 var _securityCertificateFinder = require('./security/CertificateFinder');
 
@@ -119,10 +149,6 @@ var _utilExpression2 = _interopRequireDefault(_utilExpression);
 var _utilSelectElement = require('./util/SelectElement');
 
 var _utilSelectElement2 = _interopRequireDefault(_utilSelectElement);
-
-var _searchingQuickSearch = require('./searching/QuickSearch');
-
-var _searchingQuickSearch2 = _interopRequireDefault(_searchingQuickSearch);
 
 var _searchingBuilderRawSearchBuilder = require('./searching/builder/RawSearchBuilder');
 
@@ -159,6 +185,10 @@ var _searchingBuilderOperationsSearchBuilder2 = _interopRequireDefault(_searchin
 var _searchingBuilderExecutionsSearchBuilder = require('./searching/builder/ExecutionsSearchBuilder');
 
 var _searchingBuilderExecutionsSearchBuilder2 = _interopRequireDefault(_searchingBuilderExecutionsSearchBuilder);
+
+var _searchingBuilderExecutionsHistorySearchBuilder = require('./searching/builder/ExecutionsHistorySearchBuilder');
+
+var _searchingBuilderExecutionsHistorySearchBuilder2 = _interopRequireDefault(_searchingBuilderExecutionsHistorySearchBuilder);
 
 var _searchingBuilderAlarmsSearchBuilder = require('./searching/builder/AlarmsSearchBuilder');
 
@@ -256,13 +286,13 @@ var _searchingBuilderTicketStatusSearchBuilder = require('./searching/builder/Ti
 
 var _searchingBuilderTicketStatusSearchBuilder2 = _interopRequireDefault(_searchingBuilderTicketStatusSearchBuilder);
 
-var _searchingBuilderRuleConfigurationSeveritySearchBuilder = require('./searching/builder/RuleConfigurationSeveritySearchBuilder');
-
-var _searchingBuilderRuleConfigurationSeveritySearchBuilder2 = _interopRequireDefault(_searchingBuilderRuleConfigurationSeveritySearchBuilder);
-
 var _searchingBuilderRulesSearchBuilder = require('./searching/builder/RulesSearchBuilder');
 
 var _searchingBuilderRulesSearchBuilder2 = _interopRequireDefault(_searchingBuilderRulesSearchBuilder);
+
+var _searchingBuilderOperationTypesSearchBuilder = require('./searching/builder/OperationTypesSearchBuilder');
+
+var _searchingBuilderOperationTypesSearchBuilder2 = _interopRequireDefault(_searchingBuilderOperationTypesSearchBuilder);
 
 var _searchingBuilderUsersSearchBuilder = require('./searching/builder/UsersSearchBuilder');
 
@@ -420,6 +450,10 @@ var _searchingBuilderDatasetEntitiesSearchBuilder = require('./searching/builder
 
 var _searchingBuilderDatasetEntitiesSearchBuilder2 = _interopRequireDefault(_searchingBuilderDatasetEntitiesSearchBuilder);
 
+var _searchingBuilderDatasetSearchBuilder = require('./searching/builder/DatasetSearchBuilder');
+
+var _searchingBuilderDatasetSearchBuilder2 = _interopRequireDefault(_searchingBuilderDatasetSearchBuilder);
+
 var _searchingBuilderCountryCodesSearchBuilder = require('./searching/builder/CountryCodesSearchBuilder');
 
 var _searchingBuilderCountryCodesSearchBuilder2 = _interopRequireDefault(_searchingBuilderCountryCodesSearchBuilder);
@@ -513,6 +547,26 @@ var InternalOpenGateAPI = (function () {
         key: 'newUserFinder',
         value: function newUserFinder() {
             return new _usersUserFinder2['default'](this);
+        }
+
+        /**
+         * This return a util to find a user
+         * @return {GeoclusterFinder}
+         */
+    }, {
+        key: 'newGeoclusterFinder',
+        value: function newGeoclusterFinder() {
+            return new _geoclusterGeoclusterFinder2['default'](this);
+        }
+
+        /**
+         * This return a util to regenerate geloclouster
+         * @return {Geocluster}
+         */
+    }, {
+        key: 'geoclusterBuilder',
+        value: function geoclusterBuilder() {
+            return new _geoclusterGeocluster2['default'](this);
         }
 
         /**
@@ -616,6 +670,36 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
+         * This return a util to find Operation Types
+         * @return {OperationType}
+         */
+    }, {
+        key: 'newOperationTypeFinder',
+        value: function newOperationTypeFinder() {
+            return new _operationTypesOperationTypeFinder2['default'](this);
+        }
+
+        /**
+         * This return a util to find Operation Types Templates
+         * @return {OperationTypeCatalog}
+         */
+    }, {
+        key: 'newOperationTypeCatalog',
+        value: function newOperationTypeCatalog() {
+            return new _operationTypesOperationTypeCatalog2['default'](this);
+        }
+
+        /**
+         * This return a util to update an Operation Type
+         * @return {OperationType}
+         */
+    }, {
+        key: 'operationTypeBuilder',
+        value: function operationTypeBuilder(organization, name, operationTypeObj) {
+            return new _operationTypesOperationType2['default'](this, organization, name, operationTypeObj);
+        }
+
+        /**
          * This return a util to find Rule Configurations
          * @return {RuleConfigurationsFinder}
          */
@@ -623,6 +707,26 @@ var InternalOpenGateAPI = (function () {
         key: 'newRuleConfigurationsFinder',
         value: function newRuleConfigurationsFinder() {
             return new _rulesConfigurationRuleConfigurationsFinder2['default'](this);
+        }
+
+        /**
+         * This return a util  RuleConfigurationsHelper
+         * @return {RuleConfigurationsHelper
+         */
+    }, {
+        key: 'newRuleConfigurationsHelper',
+        value: function newRuleConfigurationsHelper() {
+            return new _rulesConfigurationRuleConfigurationsHelper2['default'](this);
+        }
+
+        /**
+         * This return a to find Dataset configuration
+         * @return {DatasetFinder}
+         */
+    }, {
+        key: 'newDatasetFinder',
+        value: function newDatasetFinder() {
+            return new _datasetsDatasetFinder2['default'](this);
         }
 
         /**
@@ -729,16 +833,6 @@ var InternalOpenGateAPI = (function () {
         key: 'newSelectBuilder',
         value: function newSelectBuilder() {
             return new _searchingSelectBuilder2['default']();
-        }
-
-        /**
-         * This return a util to find devices by a defined filter
-         * @return {QuickSearch}
-         */
-    }, {
-        key: 'newQuickSearch',
-        value: function newQuickSearch(param, limit, type) {
-            return new _searchingQuickSearch2['default'](this, param, limit, type);
         }
 
         /**
@@ -931,14 +1025,6 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a RuleConfigurationSeveritySearchBuilder to build a specific RuleConfigurationSeveritySearchBuilder
-         * @return {RuleConfigurationSeveritySearchBuilder}
-         */
-        // ruleConfigurationSeveritySearchBuilder() {
-        //     return new RuleConfigurationSeveritySearchBuilder(this);
-        // }
-
-        /**
          * This return a RulesSearchBuilder to build a specific RulesSearch
          * @return {RulesSearchBuilder}
          */
@@ -946,6 +1032,16 @@ var InternalOpenGateAPI = (function () {
         key: 'rulesSearchBuilder',
         value: function rulesSearchBuilder() {
             return new _searchingBuilderRulesSearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a OperationTypesSearchBuilder to build a specific OperationTypesSearch
+         * @return {OperationTypesSearchBuilder}
+         */
+    }, {
+        key: 'operationTypesSearchBuilder',
+        value: function operationTypesSearchBuilder() {
+            return new _searchingBuilderOperationTypesSearchBuilder2['default'](this);
         }
 
         /**
@@ -976,6 +1072,16 @@ var InternalOpenGateAPI = (function () {
         key: 'executionsSearchBuilder',
         value: function executionsSearchBuilder() {
             return new _searchingBuilderExecutionsSearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a ExecutionsHistorySearchBuilder to build a specific ExecutionsSearch
+         * @return {ExecutionsHistorySearchBuilder}
+         */
+    }, {
+        key: 'executionsHistorySearchBuilder',
+        value: function executionsHistorySearchBuilder() {
+            return new _searchingBuilderExecutionsHistorySearchBuilder2['default'](this);
         }
 
         /**
@@ -1075,6 +1181,16 @@ var InternalOpenGateAPI = (function () {
         key: 'datasetEntitiesSearchBuilder',
         value: function datasetEntitiesSearchBuilder(organization, dataset) {
             return new _searchingBuilderDatasetEntitiesSearchBuilder2['default'](this, organization, dataset);
+        }
+
+        /**
+         * This return a DatasetSearchBuilder to build a specific DatasetSearch
+         * @return {DatasetSearchBuilder}
+         */
+    }, {
+        key: 'datasetSearchBuilder',
+        value: function datasetSearchBuilder(organization, dataset) {
+            return new _searchingBuilderDatasetSearchBuilder2['default'](this, organization, dataset);
         }
 
         /**
@@ -1408,6 +1524,16 @@ var InternalOpenGateAPI = (function () {
         key: 'areasBuilder',
         value: function areasBuilder() {
             return new _areasAreas2['default'](this);
+        }
+
+        /**
+         * This return a DatasetBuilder to build a specific dataset
+         * @return {Datasets}
+         */
+    }, {
+        key: 'datasetsBuilder',
+        value: function datasetsBuilder() {
+            return new _datasetsDatasets2['default'](this);
         }
 
         /**

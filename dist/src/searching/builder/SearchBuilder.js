@@ -150,7 +150,7 @@ var SearchBuilder = (function () {
         /**
          * Add descending param into the sort search object 
          * @example
-         *  ogapi.communicationsModulesSearchBuilder().addSortDescendingBy('prov.customid') // Order by prov.customid Descending
+         *  ogapi.devicesSearchBuilder().addSortDescendingBy('prov.customid') // Order by prov.customid Descending
          * @param {!string} filterField - This field must be allowed into the specific resource
          * @return {SearchBuilder} 
          */
@@ -165,7 +165,7 @@ var SearchBuilder = (function () {
          * Add ascending/descending param into the sort search object 
          * @example
          *  ogapi.subscriptionsSearchBuilder().addSortBy('prov.customid','ASCENDING') // Order by prov.customid Ascending
-         *  ogapi.communicationsModulesSearchBuilder().addSortBy('prov.customid','DESCENDING') // Order by prov.customid Descending 
+         *  ogapi.devicesSearchBuilder().addSortBy('prov.customid','DESCENDING') // Order by prov.customid Descending 
          * @param {!string} filterField - This field must be allowed into the specific resource
          * @param {!string} typeSort
          * @return {SearchBuilder} 
@@ -260,7 +260,12 @@ var SearchBuilder = (function () {
     }, {
         key: 'build',
         value: function build() {
-            return new _Search2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildLimit(), this._buildSort(), this._buildGroup(), this._buildSelect(), this._builderParams.timeout, this._urlParams);
+            try {
+
+                return new _Search2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildLimit(), this._buildSort(), this._buildGroup(), this._buildSelect(), this._builderParams.timeout, this._urlParams);
+            } catch (error) {
+                console.log('!errrrror!!!!!!', error);
+            }
         }
     }, {
         key: '_buildFilter',

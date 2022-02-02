@@ -26,9 +26,9 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
-var _fs = require('fs');
+var _lodash = require('lodash');
 
-var _fs2 = _interopRequireDefault(_fs);
+var _lodash2 = _interopRequireDefault(_lodash);
 
 //  MOCK user searching
 
@@ -54,8 +54,11 @@ var NorthAmpliaREST = (function () {
 
         this._options = _merge2['default'].recursive(true, this['default'](), _options);
         this._headers = headers;
+        if (!_lodash2['default'].isEmpty(_options.mocks)) {
+            this._applyMocks(_options.mocks);
+        }
 
-        // ----------------------------------
+        // ---------------------------------- EXAMPLE
         /*
         mock.post(_options.url + '/search/channels', function(req) {
             return {
@@ -71,56 +74,124 @@ var NorthAmpliaREST = (function () {
             };
         });        
         */
-        //   mock.post(_options.url + '/search/catalog/operations', function(req) {
-        //     return {
-        //         body: {
-        //             "operations": [
-        //                 {
-        //                     "name": "ADMINISTRATIVE_STATUS_CHANGE",
-        //                     "title": "Administrative status change params",
-        //                     "description": "Allows to change the administrative status of an entity",
-        //                     "applicableTo": [
-        //                       "GATEWAY",
-        //                       "ASSET",
-        //                       "SUBSCRIPTION",
-        //                       "SUBSCRIBER"
-        //                     ],
-        //                     "categoryPath": "/admin",
-        //                     "parameters": {
-        //                         "schema": {
-        //                             "type": "object",
-        //                             "properties": {
-        //                             "admsts": {
-        //                                 "type": "string",
-        //                                 "title": "Administrative status"
-        //                             }
-        //                             },
-        //                             "additionalProperties": false,
-        //                             "required": ["admsts"]
-        //                         }
-        //                     },
-        //                     "steps": [
-        //                       {
-        //                         "name": "ADMINISTRATIVE_STATUS_CHANGE",
-        //                         "title": "Administrative Status Change",
-        //                         "description": ""
-        //                       }
-        //                     ]
-        //                   },
-        //             ]
-        //         },
-        //         statusCode: 200
-        //     };
-        // });       
-        // ----------------------------------
+        /*mock.post(_options.url + '/datasets/provision/organizations/:organization/:dataset/data', function(req){
+          return {
+              body: {
+                  "page": {
+                    "number": 26
+                  },
+                  "columns": [
+                    "Coll Mobile ICC value",
+                    "Coll Mobile ICC date",
+                    "Prov Identifier",
+                    "Coll manufacturer"
+                  ],
+                  "data": [
+                    [
+                      "icc1",
+                      "2021-04-06T12:35:22.784Z",
+                      "MyDevice1",
+                      "OpenGate"
+                    ],
+                    [
+                      "icc2",
+                      "2021-04-06T07:45:57.468Z",
+                      "MyDevice2",
+                      "OpenGate"
+                    ]
+                  ]
+                },
+                statusCode: 200
+          };
+        });
+          mock.get(_options.url + '/datasets/provision/organizations/:organization', function(req) {
+              return {
+                  body: {
+                      datasets: [
+                         {
+                             name: 'dataset1',
+                             identifier: '111',
+                             description: 'mock',
+                             type: 'CURRENT'
+                         },
+                         {
+                          name: 'dataset2',
+                          identifier: '2222',
+                          description: 'mock',
+                          type: 'HISTORY'
+                          }
+                      ]
+                  },
+                  statusCode: 200
+              };
+          });        
+          mock.get(_options.url + '/datasets/provision/organizations/:organization/:dataset', function(req) {
+              return {
+                  body: 
+                  {
+                      "name": "dataset_name",
+                      "description": "My dataset to get inventory data",
+                      "type": "CURRENT",
+                      "columns": [
+                          {
+                              "path": "provision.device.identifier._current.value",
+                              "name": "Prov identifier",
+                              "filter": "YES",
+                              "sort": true
+                            },
+                            {
+                              "path": "device.model._current.value.manufacturer",
+                              "name": "Coll manufacturer",
+                              "filter": "ALWAYS",
+                              "sort": false
+                            },
+                            {
+                              "path": "device.communicationModules[0].subscriber.mobile.icc._current.value",
+                              "name": "Coll Mobile ICC value",
+                              "filter": "NO",
+                              "sort": false
+                            },
+                            {
+                              "path": "device.communicationModules[0].subscriber.mobile.icc._current.at",
+                              "name": "Coll Mobile ICC date",
+                              "filter": "YES",
+                              "sort": false
+                            }
+                      ]
+                    },
+                  statusCode: 200
+               };
+          });        
+          */
     }
 
-    /**
-     * This return a default configuration object
-     * @return {object}
-     */
-
     _createClass(NorthAmpliaREST, [{
+        key: '_applyMocks',
+        value: function _applyMocks(mocks) {
+            var _this = this;
+
+            var methods = Object.keys(mocks).filter(function (method) {
+                return !_lodash2['default'].isEmpty(mocks[method]);
+            });
+            methods.forEach(function (method) {
+                console.log('Mocking ' + method.toLocaleUpperCase() + ' requests');
+                Object.keys(mocks[method]).forEach(function (url) {
+                    console.log('Mocking url:', url);
+                    console.log('Data returned:', mocks[method][url]);
+                    mock[method](_this._options.url + url, function () {
+                        var data = mocks[method][url];
+                        if (!data.headers) data.headers = {};
+                        return data;
+                    });
+                });
+            });
+        }
+
+        /**
+         * This return a default configuration object
+         * @return {object}
+         */
+    }, {
         key: 'default',
         value: function _default() {
             return {

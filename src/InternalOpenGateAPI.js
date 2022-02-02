@@ -2,6 +2,8 @@
 
 import Operations from './operations/Operations';
 import UserFinder from './users/UserFinder';
+import GeoclusterFinder from './geocluster/GeoclusterFinder';
+import Geocluster from './geocluster/Geocluster';
 import Certificates from './security/Certificates';
 import Users from './users/Users';
 import OrganizationFinder from './organizations/OrganizationFinder';
@@ -15,11 +17,16 @@ import BulkFinder from './bulk/BulkFinder';
 import BulkExecutionFinder from './bulk/BulkExecutionFinder'
 import Channels from './channels/Channels';
 import Areas from './areas/Areas';
+import Datasets from './datasets/Datasets';
 import ChannelsSearchBuilder from './searching/builder/ChannelsSearchBuilder';
 import RuleConfigurations from './rulesConfiguration/RuleConfigurations';
 import RuleConfigurationsFinder from './rulesConfiguration/RuleConfigurationsFinder';
 import RuleConfigurationsCatalog from './rulesConfiguration/RuleConfigurationsCatalog';
-// import RuleConfigurationsActions from './rulesConfiguration/RuleConfigurationsActions';
+import RuleConfigurationsHelper from './rulesConfiguration/RuleConfigurationsHelper';
+import DatasetFinder from './datasets/DatasetFinder';
+import OperationType from './operationTypes/OperationType';
+import OperationTypeFinder from './operationTypes/OperationTypeFinder';
+import OperationTypeCatalog from './operationTypes/OperationTypeCatalog';
 import CertificateFinder from './security/CertificateFinder';
 import OperationFinder from './operations/OperationFinder';
 import FilterBuilder from './searching/FilterBuilder';
@@ -28,7 +35,6 @@ import OperationActions from './operations/OperationActions';
 import PeriodicityActions from './operations/PeriodicityActions';
 import Expression from './util/Expression';
 import SelectElement from './util/SelectElement';
-import QuickSearch from './searching/QuickSearch';
 import RawSearchBuilder from './searching/builder/RawSearchBuilder';
 import DevicesSearchBuilder from './searching/builder/DevicesSearchBuilder';
 import SubscribersSearchBuilder from './searching/builder/SubscribersSearchBuilder';
@@ -38,6 +44,7 @@ import TicketsSearchBuilder from './searching/builder/TicketsSearchBuilder';
 import TasksSearchBuilder from './searching/builder/TasksSearchBuilder';
 import OperationsSearchBuilder from './searching/builder/OperationsSearchBuilder';
 import ExecutionsSearchBuilder from './searching/builder/ExecutionsSearchBuilder';
+import ExecutionsHistorySearchBuilder from './searching/builder/ExecutionsHistorySearchBuilder';
 import AlarmsSearchBuilder from './searching/builder/AlarmsSearchBuilder';
 import DatamodelsSearchBuilder from './searching/builder/DatamodelsSearchBuilder';
 import FeedsSearchBuilder from './searching/builder/FeedsSearchBuilder';
@@ -62,8 +69,8 @@ import IoTDatastreamStoragePeriodSearchBuilder from './searching/builder/IoTData
 import TicketSeveritySearchBuilder from './searching/builder/TicketSeveritySearchBuilder';
 import TicketPrioritySearchBuilder from './searching/builder/TicketPrioritySearchBuilder';
 import TicketStatusSearchBuilder from './searching/builder/TicketStatusSearchBuilder';
-import RuleConfigurationSeveritySearchBuilder from './searching/builder/RuleConfigurationSeveritySearchBuilder';
 import RulesSearchBuilder from './searching/builder/RulesSearchBuilder';
+import OperationTypesSearchBuilder from './searching/builder/OperationTypesSearchBuilder';
 import UsersSearchBuilder from './searching/builder/UsersSearchBuilder';
 import DomainsSearchBuilder from './searching/builder/DomainsSearchBuilder';
 import PlansSearchBuilder from './searching/builder/PlansSearchBuilder';
@@ -103,6 +110,7 @@ import EntityBuilder from './provision/entities/EntityBuilder';
 import BulkExecutionBuilder from './provision/bulk/BulkExecutionBuilder'
 import EntitiesSearchBuilder from './searching/builder/EntitiesSearchBuilder';
 import DatasetEntitiesSearchBuilder from './searching/builder/DatasetEntitiesSearchBuilder';
+import DatasetSearchBuilder from './searching/builder/DatasetSearchBuilder';
 import CountryCodesSearchBuilder from './searching/builder/CountryCodesSearchBuilder';
 import TimezoneSearchBuilder from './searching/builder/TimezoneSearchBuilder';
 import UserLanguagesSearchBuilder from './searching/builder/UserLanguagesSearchBuilder';
@@ -167,7 +175,22 @@ export default class InternalOpenGateAPI {
     newUserFinder() {
         return new UserFinder(this);
     }
+    /**
+     * This return a util to find a user
+     * @return {GeoclusterFinder}
+     */
+    newGeoclusterFinder() {
+        return new GeoclusterFinder(this);
+    }
 
+    /**
+     * This return a util to regenerate geloclouster
+     * @return {Geocluster}
+     */
+    geoclusterBuilder() {
+        return new Geocluster(this);
+    }
+    
     /**
      * This return a util to find a organization
      * @return {OrganizationFinder}
@@ -249,6 +272,30 @@ export default class InternalOpenGateAPI {
     }
 
     /**
+     * This return a util to find Operation Types
+     * @return {OperationType}
+     */
+    newOperationTypeFinder() {
+        return new OperationTypeFinder(this);
+    }
+
+    /**
+     * This return a util to find Operation Types Templates
+     * @return {OperationTypeCatalog}
+     */
+    newOperationTypeCatalog() {
+        return new OperationTypeCatalog(this);
+    }
+
+    /**
+     * This return a util to update an Operation Type
+     * @return {OperationType}
+     */
+    operationTypeBuilder(organization, name, operationTypeObj) {
+        return new OperationType(this, organization, name, operationTypeObj);
+    }
+
+    /**
      * This return a util to find Rule Configurations
      * @return {RuleConfigurationsFinder}
      */
@@ -256,6 +303,22 @@ export default class InternalOpenGateAPI {
         return new RuleConfigurationsFinder(this);
     }
 
+    /**
+     * This return a util  RuleConfigurationsHelper
+     * @return {RuleConfigurationsHelper
+     */
+     newRuleConfigurationsHelper() {
+        return new RuleConfigurationsHelper(this);
+    }
+    
+    /**
+     * This return a to find Dataset configuration
+     * @return {DatasetFinder}
+     */
+     newDatasetFinder() {
+        return new DatasetFinder(this);
+    }
+    
     /**
      * This return a util to find Rule Configurations Templates
      * @return {RuleConfigurationsCatalog}
@@ -343,14 +406,6 @@ export default class InternalOpenGateAPI {
      */
     newSelectBuilder() {
         return new SelectBuilder();
-    }
-
-    /**
-     * This return a util to find devices by a defined filter
-     * @return {QuickSearch}
-     */
-    newQuickSearch(param, limit, type) {
-        return new QuickSearch(this, param, limit, type);
     }
 
     /**
@@ -506,19 +561,19 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a RuleConfigurationSeveritySearchBuilder to build a specific RuleConfigurationSeveritySearchBuilder
-     * @return {RuleConfigurationSeveritySearchBuilder}
-     */
-    // ruleConfigurationSeveritySearchBuilder() {
-    //     return new RuleConfigurationSeveritySearchBuilder(this);
-    // }
-
-    /**
      * This return a RulesSearchBuilder to build a specific RulesSearch
      * @return {RulesSearchBuilder}
      */
     rulesSearchBuilder() {
         return new RulesSearchBuilder(this);
+    }
+
+    /**
+     * This return a OperationTypesSearchBuilder to build a specific OperationTypesSearch
+     * @return {OperationTypesSearchBuilder}
+     */
+    operationTypesSearchBuilder() {
+        return new OperationTypesSearchBuilder(this);
     }
 
     /**
@@ -544,6 +599,13 @@ export default class InternalOpenGateAPI {
     executionsSearchBuilder() {
         return new ExecutionsSearchBuilder(this);
     }
+    /**
+     * This return a ExecutionsHistorySearchBuilder to build a specific ExecutionsSearch
+     * @return {ExecutionsHistorySearchBuilder}
+     */
+     executionsHistorySearchBuilder() {
+            return new ExecutionsHistorySearchBuilder(this);
+        }
 
     /**
      * This return a AlarmsSearchBuilder to build a specific AlarmsSearch
@@ -624,6 +686,15 @@ export default class InternalOpenGateAPI {
     datasetEntitiesSearchBuilder(organization, dataset) {
         return new DatasetEntitiesSearchBuilder(this, organization, dataset);
     }
+
+    /**
+     * This return a DatasetSearchBuilder to build a specific DatasetSearch
+     * @return {DatasetSearchBuilder}
+     */
+     datasetSearchBuilder(organization, dataset) {
+        return new DatasetSearchBuilder(this, organization, dataset);
+    }
+    
 
     /**
      * This return a PlansSearchBuilder to build a specific PlansSearchBuilder
@@ -889,6 +960,14 @@ export default class InternalOpenGateAPI {
      */
     areasBuilder() {
         return new Areas(this);
+    }
+
+    /**
+     * This return a DatasetBuilder to build a specific dataset
+     * @return {Datasets}
+     */
+     datasetsBuilder() {
+        return new Datasets(this);
     }
 
     /**

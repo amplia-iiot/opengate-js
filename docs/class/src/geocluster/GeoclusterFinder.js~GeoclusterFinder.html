@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">GeoclusterFinder | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <a data-ice="repoURL" href="https://github.com/amplia-iiot/opengate-js.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/GenericFinder.js~GenericFinder.html">GenericFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html">InternalOpenGateAPI</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/ProvisionGenericFinder.js~ProvisionGenericFinder.html">ProvisionGenericFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">alarms</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarms/AlarmActions.js~AlarmActions.html">AlarmActions</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">alarms/actions</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarms/actions/Alarm.js~Operation.html">Operation</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarms/actions/AlarmActionBuilder.js~AlarmActionBuilder.html">AlarmActionBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarms/actions/AlarmAttendBuilder.js~AlarmAttendBuilder.html">AlarmAttendBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarms/actions/AlarmCloseBuilder.js~AlarmCloseBuilder.html">AlarmCloseBuilder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">areas</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/areas/AreaFinder.js~AreaFinder.html">AreaFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/areas/Areas.js~Areas.html">Areas</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_ENUM">TYPE_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">bulk</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bulk/BulkExecutionFinder.js~BulkExecutionFinder.html">BulkExecutionFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bulk/BulkFinder.js~BulkFinder.html">BulkFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MIME_TYPES_ENUM">MIME_TYPES_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">bundles</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/BundleFinder.js~BundleFinder.html">BundleFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/Bundles.js~Bundles.html">Bundles</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACTION_ENUM">ACTION_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">bundles/deployment</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/deployment/DeploymentElement.js~DeploymentElement.html">DeploymentElement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MODE_VALIDATORS_ENUM">MODE_VALIDATORS_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-OPERATION_ENUM">OPERATION_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-OPTION_ENUM">OPTION_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_ENUM">TYPE_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_VALIDATORS_ENUM">TYPE_VALIDATORS_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">channels</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/channels/ChannelFinder.js~ChannelFinder.html">ChannelFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/channels/Channels.js~Channels.html">Channels</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">collection/devices</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/DeviceMessage.js~DeviceMessage.html">DeviceMessage</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">collection/devices/collect</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/CommsModuleMessage.js~CommsModuleMessage.html">CommsModuleMessage</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Datapoint.js~Datapoint.html">Datapoint</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Datastreams.js~Datastream.html">Datastream</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Event.js~Event.html">Event</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Hardware.js~Hardware.html">Hardware</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Location.js~Location.html">Location</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Mobile.js~Mobile.html">Mobile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/PowerSupply.js~PowerSupply.html">PowerSupply</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Software.js~Software.html">Software</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Storage.js~Storage.html">Storage</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Subscriber.js~Subscriber.html">Subscriber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Subscription.js~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Temperature.js~Temperature.html">Temperature</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Usage.js~Usage.html">Usage</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">collection/devices/collect/enum</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ADDRESS_TYPE_ENUM">ADDRESS_TYPE_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ANTENNA_STATUS_ENUM">ANTENNA_STATUS_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BATTERY_CHARGE_LEVEL_STATUS_ENUM">BATTERY_CHARGE_LEVEL_STATUS_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BATTERY_CHARGE_STATUS_ENUM">BATTERY_CHARGE_STATUS_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LEVEL_TREND_ENUM">LEVEL_TREND_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-POWER_SUPPLY_SOURCE_ENUM">POWER_SUPPLY_SOURCE_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOFTWARE_TYPE_ENUM">SOFTWARE_TYPE_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEMPERATURE_STATUS_ENUM">TEMPERATURE_STATUS_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">datasets</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/datasets/DatasetFinder.js~DatasetFinder.html">DatasetFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/datasets/Datasets.js~Datasets.html">Datasets</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATASETS_TYPES_ENUM">DATASETS_TYPES_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">domains</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/domains/Domains.js~Domains.html">Domains</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/domains/DomainsFinder.js~DomainFinder.html">DomainFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">entities</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/DeviceFinder.js~DeviceFinder.html">DeviceFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/EntityFinder.js~EntityFinder.html">EntityFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/SubscribersFinder.js~SubscribersFinder.html">SubscribersFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/SubscriptionsFinder.js~SubscriptionsFinder.html">SubscriptionsFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/TicketFinder.js~TicketFinder.html">TicketFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">geocluster</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/geocluster/Geocluster.js~Geocluster.html">Geocluster</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/geocluster/GeoclusterFinder.js~GeoclusterFinder.html">GeoclusterFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">iot/catalog</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/catalog/Category.js~Category.html">Category</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/catalog/Datastream.js~Datastream.html">Datastream</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/catalog/Qrating.js~Qrating.html">Qrating</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">iot/datamodels</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/datamodels/Datamodels.js~Datamodels.html">Datamodels</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/datamodels/DatamodelsFinder.js~DatamodelsFinder.html">DatamodelsFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper.html">DatamodelsHelper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATAMODELS_RESOURCE">DATAMODELS_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PRE_RESOURCE">PRE_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATAMODEL_RESOURCE">DATAMODEL_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-POST_RESOURCE">POST_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PRE_RESOURCE">PRE_RESOURCE</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operationTypes</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operationTypes/OperationType.js~OperationType.html">OperationType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operationTypes/OperationTypeCatalog.js~OperationTypesCatalog.html">OperationTypesCatalog</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operationTypes/OperationTypeFinder.js~OperationTypeFinder.html">OperationTypeFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/OperationActions.js~OperationActions.html">OperationActions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/OperationFinder.js~OperationFinder.html">OperationFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/Operations.js~Operations.html">Operations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/PeriodicityActions.js~PeriodicityActions.html">PeriodicityActions</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations/catalog</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/AppendEntitiesBy.js~AppendEntitiesBy.html">AppendEntitiesBy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder.html">BaseOperationBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/Operation.js~Operation.html">Operation</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations/catalog/parameters</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/parameters/BaseParameterBuilderWithParent.js~BaseParameterBuilderWithParent.html">BaseParameterBuilderWithParent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/parameters/ParameterBuilderFactory.js~ParameterBuilderFactory.html">ParameterBuilderFactory</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations/catalog/period</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/ExecuteEachBuilder.js~ExecuteEachBuilder.html">ExecuteEachBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/ExecuteEveryBuilder.js~ExecuteEveryBuilder.html">ExecuteEveryBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/PeriodicityUpdateBuilder.js~PeriodicityUpdateBuilder.html">PeriodicityUpdateBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DAYS_ENUM">DAYS_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MONTHS_ENUM">MONTHS_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations/catalog/period/pattern</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByGeneric.js~ByGeneric.html">ByGeneric</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByMonth.js~ByMonth.html">ByMonth</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByWeek.js~ByWeek.html">ByWeek</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByYear.js~ByYear.html">ByYear</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">organizations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/OrganizationFinder.js~OrganizationFinder.html">OrganizationFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/Organizations.js~Organizations.html">Organizations</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/BaseProvision.js~BaseProvision.html">BaseProvision</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision/bulk</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/bulk/BulkExecutionBuilder.js~BulkExecutionBuilder.html">BulkExecutionBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPES">TYPES</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision/entities</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/AssetBuilder.js~AssetBuilder.html">AssetBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/BulkBuilder.js~BulkBuilder.html">BulkBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/ComplexBuilder.js~ComplexBuilder.html">ComplexBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/CsvBulkBuilder.js~CsvBulkBuilder.html">CsvBulkBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/DeviceBuilder.js~DeviceBuilder.html">DeviceBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/EntityBuilder.js~EntityBuilder.html">EntityBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/JsonBulkBuilder.js~JsonBulkBuilder.html">JsonBulkBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/JsonFlattenedBulkBuilder.js~JsonFlattenedBulkBuilder.html">JsonFlattenedBulkBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SimpleBuilder.js~SimpleBuilder.html">SimpleBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SubscriberBuilder.js~SubscriberBuilder.html">SubscriberBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SubscriptionBuilder.js~SubscriptionBuilder.html">SubscriptionBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/TicketBuilder.js~TicketBuilder.html">TicketBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-AssetID">AssetID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SubscriberID">SubscriberID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SubscriptionID">SubscriptionID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TicketID">TicketID</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provisionProcessors</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provisionProcessors/provisionProcessors.js~ProvisionProcessors.html">ProvisionProcessors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provisionProcessors/provisionProcessorsFinder.js~provisionProcessorsFinder.html">provisionProcessorsFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">rulesConfiguration</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html">RuleConfigurations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsActions.js~RuleConfigurationsActions.html">RuleConfigurationsActions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsCatalog.js~RuleConfigurationsCatalog.html">RuleConfigurationsCatalog</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder.html">RuleConfigurationsFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper.html">RuleConfigurationsHelper</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/AssetSearch.js~AssetSearch.html">AssetSearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/BaseSearch.js~BaseSearch.html">BaseSearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/DeviceSearch.js~DeviceSearch.html">DeviceSearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/EntitySearch.js~EntitySearch.html">EntitySearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/FilterBuilder.js~FilterBuilder.html">FilterBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/Search.js~Search.html">Search</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/SelectBuilder.js~SelectBuilder.html">SelectBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/StaticSearch.js~StaticSearch.html">StaticSearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/WPSearch.js~WPSearch.html">WPSearch</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching/builder</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AdministrativeStateSearchBuilder.js~AdministrativeStateSearchBuilder.html">AdministrativeStateSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AlarmsSearchBuilder.js~AlarmsSearchBuilder.html">AlarmsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AllowedResourceTypeSearchBuilder.js~AllowedResourceTypeSearchBuilder.html">AllowedResourceTypeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AreasSearchBuilder.js~AreasSearchBuilder.html">AreasSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AssetsSearchBuilder.js~AssetsSearchBuilder.html">AssetsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BasicTypesSearchBuilder.js~BasicTypesSearchBuilder.html">BasicTypesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BulkExecutionSearchBuilder.js~BulkExecutionSearchBuilder.html">BulkExecutionSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BulkSearchBuilder.js~BulkSearchBuilder.html">BulkSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BundlesSearchBuilder.js~BundlesSearchBuilder.html">BundlesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CertificatesSearchBuilder.js~CertificatesSearchBuilder.html">CertificatesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ChannelsSearchBuilder.js~ChannelsSearchBuilder.html">ChannelsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CommunicationsModuleTypeSearchBuilder.js~CommunicationsModuleTypeSearchBuilder.html">CommunicationsModuleTypeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CountryCodesSearchBuilder.js~CountryCodesSearchBuilder.html">CountryCodesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatamodelsSearchBuilder.js~DatamodelsSearchBuilder.html">DatamodelsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatapointsSearchBuilder.js~DatapointsSearchBuilder.html">DatapointsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatasetEntitiesSearchBuilder.js~DatasetEntitiesSearchBuilder.html">DatasetEntitiesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder.html">DatasetSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatasetsCatalogSearchBuilder.js~DatasetsCatalogSearchBuilder.html">DatasetsCatalogSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatastreamsSearchBuilder.js~DatastreamsSearchBuilder.html">DatastreamsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DevicesSearchBuilder.js~DevicesSearchBuilder.html">DevicesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DomainsSearchBuilder.js~DomainsSearchBuilder.html">DomainsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/EntitiesSearchBuilder.js~EntitiesSearchBuilder.html">EntitiesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ExecutionsHistorySearchBuilder.js~ExecutionsHistorySearchBuilder.html">ExecutionsHistorySearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ExecutionsSearchBuilder.js~ExecutionsSearchBuilder.html">ExecutionsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/FeedsSearchBuilder.js~FeedsSearchBuilder.html">FeedsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/FieldsDefinitionSearchBuilder.js~FieldsDefinitionSearchBuilder.html">FieldsDefinitionSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/FlattenedSearchBuilder.js~FlattenedSearchBuilder.html">FlattenedSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html">HardwaresSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamAccessSearchBuilder.js~IoTDatastreamAccessSearchBuilder.html">IoTDatastreamAccessSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamPeriodSearchBuilder.js~IoTDatastreamPeriodSearchBuilder.html">IoTDatastreamPeriodSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamStoragePeriodSearchBuilder.js~IoTDatastreamStoragePeriodSearchBuilder.html">IoTDatastreamStoragePeriodSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/MobilePhoneProviderSearchBuilder.js~MobilePhoneProviderSearchBuilder.html">MobilePhoneProviderSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationTypesSearchBuilder.js~OperationTypesBuilder.html">OperationTypesBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationalStatusSearchBuilder.js~OperationalStatusSearchBuilder.html">OperationalStatusSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationsSearchBuilder.js~OperationsSearchBuilder.html">OperationsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html">OrganizationsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/PlansSearchBuilder.js~PlansSearchBuilder.html">PlansSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/PreFilteredSearchBuilder.js~PreFilteredSearchBuilder.html">PreFilteredSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RawSearchBuilder.js~RawSearchBuilder.html">RawSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ResourceTypeSearchBuilder.js~ResourceTypeSearchBuilder.html">ResourceTypeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RuleConfigurationSeveritySearchBuilder.js~RuleConfigurationSeveritySearchBuilder.html">RuleConfigurationSeveritySearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RuleModeSearchBuilder.js~RuleModeSearchBuilder.html">RuleModeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RuleTypeSearchBuilder.js~RuleTypeSearchBuilder.html">RuleTypeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RulesSearchBuilder.js~RulesSearchBuilder.html">RulesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SearchBuilder.js~SearchBuilder.html">SearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SearchWithSummaryBuilder.js~SearchWithSummaryBuilder.html">SearchWithSummaryBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ServiceGroupSearchBuilder.js~ServiceGroupSearchBuilder.html">ServiceGroupSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SoftwaresSearchBuilder.js~SoftwaresSearchBuilder.html">SoftwaresSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscribersSearchBuilder.js~SubscribersSearchBuilder.html">SubscribersSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscriptionsSearchBuilder.js~SubscriptionsSearchBuilder.html">SubscriptionsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TasksSearchBuilder.js~TasksSearchBuilder.html">TasksSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketPrioritySearchBuilder.js~TicketPrioritySearchBuilder.html">TicketPrioritySearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketSeveritySearchBuilder.js~TicketSeveritySearchBuilder.html">TicketSeveritySearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketStatusSearchBuilder.js~TicketStatusSearchBuilder.html">TicketStatusSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketsSearchBuilder.js~TicketsSearchBuilder.html">TicketsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TimezoneSearchBuilder.js~TimezoneSearchBuilder.html">TimezoneSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UserLanguagesSearchBuilder.js~UserLanguagesSearchBuilder.html">UserLanguagesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UserProfilesSearchBuilder.js~UserProfilesSearchBuilder.html">UserProfilesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UsersSearchBuilder.js~UsersSearchBuilder.html">UsersSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/WorkgroupsSearchBuilder.js~WorkgroupsSearchBuilder.html">WorkgroupsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOKEN_URL">TOKEN_URL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOKEN_URL">TOKEN_URL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BASE_URL">BASE_URL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOKEN_URL">TOKEN_URL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOKEN_URL">TOKEN_URL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOFTWARE_TYPES_ENUM">SOFTWARE_TYPES_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching/error</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/error/SearchBuilderError.js~SearchBuilderError.html">SearchBuilderError</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">security</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/security/CertificateFinder.js~CertificateFinder.html">CertificateFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/security/Certificates.js~Certificates.html">Certificates</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/security/Security.js~Security.html">Security</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ADMINISTRATIVE_STATE_ENUM">ADMINISTRATIVE_STATE_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MIME_TYPES_ENUM">MIME_TYPES_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-USAGES_ENUM">USAGES_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">users</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/users/UserFinder.js~UserFinder.html">UserFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/users/Users.js~User.html">User</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">util</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/Expression.js~Expression.html">Expression</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/NorthAmpliaREST.js~NorthAmpliaREST.html">NorthAmpliaREST</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/SelectElement.js~SelectElement.html">SelectElement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/SouthAmpliaREST.js~SouthAmpliaREST.html">SouthAmpliaREST</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATE_FORMAT">DATE_FORMAT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TIME_FORMAT">TIME_FORMAT</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">util/searchingFields</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/searchingFields/FieldFinder.js~FieldFinder.html">FieldFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-IOT_FIELDS">IOT_FIELDS</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">util/searchingFields/source-precompiled</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-GENERATED_FIELDS">GENERATED_FIELDS</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">workgroups</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/workgroups/WorkgroupFinder.js~WorkgroupFinder.html">WorkgroupFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/workgroups/WorkgroupRelations.js~WorkgroupRelations.html">WorkgroupRelations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/workgroups/WorkgroupRelationsFinder.js~WorkgroupRelationsFinder.html">WorkgroupRelationsFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/workgroups/Workgroups.js~Workgroups.html">Workgroups</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="header-notice">
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import GeoclusterFinder from &apos;<span><a href="file/src/geocluster/GeoclusterFinder.js.html#lineNumber8">opengate-js/src/geocluster/GeoclusterFinder.js</a></span>&apos;</code></pre></div>
+  <span data-ice="access">public</span>
+  <span data-ice="kind">class</span>
+  
+  
+  
+  <span data-ice="source">| <span><a href="file/src/geocluster/GeoclusterFinder.js.html#lineNumber8">source</a></span></span>
+</div>
+
+<div class="self-detail detail">
+  <h1 data-ice="name">GeoclusterFinder</h1>
+
+  
+
+  
+  
+  <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span><a href="class/src/GenericFinder.js~GenericFinder.html">GenericFinder</a></span> &#x2192; <span><a href="class/src/ProvisionGenericFinder.js~ProvisionGenericFinder.html">ProvisionGenericFinder</a></span> &#x2192; GeoclusterFinder</div></div>
+  
+  
+  
+  
+  
+  
+
+  
+  
+  <div class="description" data-ice="description"><p>  This class allow make get request to user resource into Opengate North API.</p>
+</div>
+  
+
+  
+
+  
+
+  
+
+  
+</div>
+
+
+
+<div data-ice="constructorSummary"><h2>Constructor Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Public Constructor</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="class/src/geocluster/GeoclusterFinder.js~GeoclusterFinder.html#instance-constructor-constructor">constructor</a></span></span><span data-ice="signature">(Reference: <span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html">InternalOpenGateAPI</a></span>)</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+<div data-ice="methodSummary"><h2>Method Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Public Methods</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="class/src/geocluster/GeoclusterFinder.js~GeoclusterFinder.html#instance-method-findAll">findAll</a></span></span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Find all available geocluster.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="class/src/geocluster/GeoclusterFinder.js~GeoclusterFinder.html#instance-method-findById">findById</a></span></span><span data-ice="signature">(id: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Find a specify geocluster by an identifier.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="class/src/geocluster/GeoclusterFinder.js~GeoclusterFinder.html#instance-method-findFeatures">findFeatures</a></span></span><span data-ice="signature">(id: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, coordinates: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Find features inside the coordinates.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+
+
+
+
+<div data-ice="constructorDetails"><h2 data-ice="title">Public Constructors</h2>
+
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-constructor-constructor">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span data-ice="name">constructor</span><span data-ice="signature">(Reference: <span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html">InternalOpenGateAPI</a></span>)</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/geocluster/GeoclusterFinder.js.html#lineNumber13">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  <div data-ice="override"><h4>Override:</h4><span><a href="class/src/ProvisionGenericFinder.js~ProvisionGenericFinder.html#instance-constructor-constructor">ProvisionGenericFinder#constructor</a></span></div>
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">Reference</td>
+      <td data-ice="type"><span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html">InternalOpenGateAPI</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>to the API object.</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+</div>
+
+<div data-ice="methodDetails"><h2 data-ice="title">Public Methods</h2>
+
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-findAll">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span data-ice="name">findAll</span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/geocluster/GeoclusterFinder.js.html#lineNumber36">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Find all available geocluster. This execute a GET http method</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-findById">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span data-ice="name">findById</span><span data-ice="signature">(id: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/geocluster/GeoclusterFinder.js.html#lineNumber24">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Find a specify geocluster by an identifier. This execute a GET http method</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">id</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Identifier of the geocluster.</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-findFeatures">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span data-ice="name">findFeatures</span><span data-ice="signature">(id: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, coordinates: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/geocluster/GeoclusterFinder.js.html#lineNumber50">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Find features inside the coordinates. This execute a GET http method</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">id</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Identifier of the geocluster.</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">coordinates</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>square defined by the coordinates and the zoom used to find the inside features .</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.5.2)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
