@@ -110,7 +110,7 @@ export default class SearchBuilder {
     /**
      * Add descending param into the sort search object 
      * @example
-     *  ogapi.communicationsModulesSearchBuilder().addSortDescendingBy('prov.customid') // Order by prov.customid Descending
+     *  ogapi.devicesSearchBuilder().addSortDescendingBy('prov.customid') // Order by prov.customid Descending
      * @param {!string} filterField - This field must be allowed into the specific resource
      * @return {SearchBuilder} 
      */
@@ -123,7 +123,7 @@ export default class SearchBuilder {
      * Add ascending/descending param into the sort search object 
      * @example
      *  ogapi.subscriptionsSearchBuilder().addSortBy('prov.customid','ASCENDING') // Order by prov.customid Ascending
-     *  ogapi.communicationsModulesSearchBuilder().addSortBy('prov.customid','DESCENDING') // Order by prov.customid Descending 
+     *  ogapi.devicesSearchBuilder().addSortBy('prov.customid','DESCENDING') // Order by prov.customid Descending 
      * @param {!string} filterField - This field must be allowed into the specific resource
      * @param {!string} typeSort
      * @return {SearchBuilder} 
@@ -209,6 +209,8 @@ export default class SearchBuilder {
      * @return {Search} 
      */
     build() {
+        try{
+            
         return new Search(this._parent,
             this._buildUrl(),
             this._buildFilter(),
@@ -218,6 +220,10 @@ export default class SearchBuilder {
             this._buildSelect(),
             this._builderParams.timeout,
             this._urlParams);
+        }
+        catch(error){
+            console.log('!errrrror!!!!!!', error)
+        }
     }
 
     _buildFilter() {

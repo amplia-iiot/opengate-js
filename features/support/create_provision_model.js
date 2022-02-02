@@ -370,7 +370,8 @@ module.exports = {
                 'organization': 'withOrganization',
                 'description': 'withDescription',
                 'geometry': 'withGeometry',
-                'entities': 'withEntities'
+                'color': 'withColor',
+                'entities': 'withEntities',
             },
             'provisionProcessors':{
                 'identifier': 'withIdentifier',
@@ -378,13 +379,25 @@ module.exports = {
                 'organization': 'withOrganization',
                 'configurationParams': 'withConfigurationParams',
                 'scriptProcessor': 'withScriptProcessor'
+            },
+            'dataset': {
+                'identifier': 'withIdentifier',
+                'name': 'withName',
+                'organization': 'withOrganization',
+                'description': 'withDescription',
+                'columns': 'withColumns',
+                'type': 'withType'
+            },
+            'geocluster': {
+                'identifier': 'withIdentifier',
             }
-        } [setter];
+
+        }[setter];
     },
     getter_response: function (getter) {
         return {
             'user email': '/email',
             'organization name': '/name'
-        } [getter];
+        }[getter];
     }
 };

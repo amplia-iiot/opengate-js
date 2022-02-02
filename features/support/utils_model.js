@@ -29,6 +29,9 @@ module.exports = {
             "certificates search": function(ogapi) {
                 return ogapi.certificatesSearchBuilder();
             },
+            "datasets search": function(ogapi, param, param2) {
+                return ogapi.datasetSearchBuilder(param, param2);
+            },
             "channel finder": function(ogapi) {
                 return ogapi.newChannelFinder();
             },
@@ -44,17 +47,14 @@ module.exports = {
             "areas builder": function(ogapi) {
                 return ogapi.areasBuilder();
             },
+            "datasets builder": function(ogapi) {
+                return ogapi.datasetsBuilder();
+            },
             "channels search": function(ogapi) {
                 return ogapi.channelsSearchBuilder();
             },
-            "communications modules builder": function(ogapi) {
-                return ogapi.communicationsModulesBuilder();
-            },
             "communications module finder": function(ogapi) {
                 return ogapi.newCommunicationsModuleFinder();
-            },
-            "communications module search": function(ogapi) {
-                return ogapi.communicationsModulesSearchBuilder();
             },
             "datapoints search": function(ogapi) {
                 return ogapi.datapointsSearchBuilder();
@@ -101,8 +101,17 @@ module.exports = {
             "hardwares search": function(ogapi) {
                 return ogapi.hardwaresSearchBuilder();
             },
+            "geocluster builder": function(ogapi){ 
+                return ogapi.geoclusterBuilder(); 
+            }, 
             "operation finder": function(ogapi) {
                 return ogapi.newOperationFinder();
+            },
+            "ruleConfigurationsHelper finder": function(ogapi) {
+                return ogapi.newRuleConfigurationsHelper();
+            },
+            "dataset finder": function(ogapi) {
+                return ogapi.newDatasetFinder();
             },
             "organization finder": function(ogapi) {
                 return ogapi.newOrganizationFinder();
@@ -115,6 +124,10 @@ module.exports = {
             },
             "provision processors finder": function(ogapi) {
                 return ogapi.newProvisionProcessorsFinder();
+            },
+            "executions history builder": function(ogapi) {
+                console.log('gapi,', ogapi)
+                return ogapi.executionsHistorySearchBuilder();
             },
             "softwares search": function(ogapi) {
                 return ogapi.softwaresSearchBuilder();

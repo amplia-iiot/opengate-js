@@ -93,6 +93,9 @@ Given(/^an ogapi "([^"]*)" util with "([^"]*)"$/, function (utilName, param, cal
 });
 
 Given(/^an ogapi "([^"]*)" util with "([^"]*)" and "([^"]*)"$/, function (utilName, param1, param2, callback) {
+    if(param2 === 'from_location_previous_response'){
+        param2 = this.location.substring(this.location.lastIndexOf("/") + 1);
+    }
     this.util = this.utilsModel.util(utilName, this.ogapi, param1, param2);
     callback();
 });
@@ -304,13 +307,16 @@ Given(/^the "([^"]*)" with...$/, function (setterName, table, callback) {
                 }
                 args.push(param);
             }
+            
             var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
+            
             this.util = this.util[method].apply(this.util, args);
         } else {
             this.error = "No params found";
         }
     } catch (err) {
         this.error = err;
+        console.log(err)
         //assert.ifError(this.error);
     }
     callback();
@@ -575,7 +581,7 @@ Given(/^an apikey user by "([^"]*)"$/, function (apikey, callback) {
     var config = {
         'apiKey': this.apikey || apikey,
         'url': this.test_url_north,
-        'timeout': 20000,
+        'timeout': 60000,
         south: {
             'url': this.test_url_south
         }

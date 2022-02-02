@@ -29,8 +29,4 @@ export default class SearchWithSummaryBuilder extends SearchBuilder {
         return this;
     }
 
-    _buildUrl() {
-        return super._buildUrl();
-    }
-
 }

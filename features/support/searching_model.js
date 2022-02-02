@@ -50,6 +50,16 @@ module.exports = {
                 'on subscriptions': 'onSubscriptions',
                 'on communications Modules': 'onCommunicationsModules'
             },
+            'entities': {
+                'findAllFields': 'findAllFields',
+                'findFields': 'findFields',
+                'findFieldPath': 'findFieldPath'
+            },
+            'datasets': {
+                'findAllFields': 'findAllFields',
+                'findFields': 'findFields',
+                'findFieldPath': 'findFieldPath'
+            },
             "basicTypes search": {
                 "withPublicParameters": "withPublicParameters"
             },

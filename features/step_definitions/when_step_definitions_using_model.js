@@ -75,10 +75,7 @@ When(/^I try to search with...$/, function (table, callback) {
         var data = table.hashes();
         if (data.length > 0) {
             for (var i = 0; i < data.length; i++) {
-                //console.log(data[i]);
                 var withMethod = this.model_match(this.currentModel).setters(this.currentEntity)[data[i].field];
-                //console.log(data[i]);
-                //console.log(his.util);
                 this.util = this.util[withMethod](data[i].content);
             }
         } else {
@@ -266,7 +263,6 @@ When(/^I try to search with all allow fields$/, function (callback) {
     var filter = {
         and: []
     };
-    console.log(_this.util.constructor.name);
     switch (_this.util.constructor.name) {
         case 'DevicesSearchBuilder':
         case 'SubscriptionsSearchBuilder':

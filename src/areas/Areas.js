@@ -53,6 +53,16 @@ export default class Areas extends BaseProvision {
         this._name = name;
         return this;
     }
+    /**
+ * Set the color attribute
+ * @param {string} color - required field
+ * @return {Areas}
+ */
+    withColor(color) {
+        checkType._checkString(color, 50, 'color');
+        this._color = color;
+        return this;
+    }
 
     /**
      * Set the description attribute
@@ -111,6 +121,7 @@ export default class Areas extends BaseProvision {
             name: this._name,
             description: this._description,
             order: this._order,
+            color: this._color,
 
             geometry: {
                 type: this._type,
