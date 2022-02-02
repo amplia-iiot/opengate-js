@@ -205,6 +205,7 @@ export const IOT_FIELDS = {
             "description": "areas.description",
             "entities": "areas.entities",
             "geometry": "areas.geometry",
+            "color": "areas.color",
             "organization": "areas.organization"
         }
     },
@@ -245,6 +246,7 @@ export const IOT_FIELDS = {
             "identifier": "bulks.identifier",
             "provisionProcessorId": "bulks.provisionProcessorId",
             "organization": "bulks.organization",
+            "userEmail": "bulks.request.userEmail",
             "fileName": "bulks.request.fileName",
             "headerAccept": "bulks.request.header.accept",
             "contentType": "bulks.request.header.contentType",
@@ -267,7 +269,7 @@ export const IOT_FIELDS = {
     "ENTITY_ALARM": {
         "ENTITY_ALARM": {
             "alarmId": "alarm.identifier",
-            "alarmSubEntityIdentifier": "alarm.subEntityIdentifier", 
+            "alarmSubEntityIdentifier": "alarm.subEntityIdentifier",
             "entityId": "alarm.entityIdentifier",
             "entityType": "alarm.resourceType",
             "organizationName": "alarm.organization",
@@ -275,11 +277,11 @@ export const IOT_FIELDS = {
             "alarmRuleName": "alarm.rule",
             "alarmName": "alarm.name",
             "alarmSeverity": "alarm.severity",
-            "alarmPriority":"alarm.priority",
+            "alarmPriority": "alarm.priority",
             "alarmDescription": "alarm.description",
             "alarmStatus": "alarm.status",
             "alarmOpenDate": "alarm.openingDate",
-            "alarmAttentionDate":"alarm.attentionDate",
+            "alarmAttentionDate": "alarm.attentionDate",
             "alarmAttentionUser": "alarm.attentionUser",
             "alarmAttentionNote": "alarm.attentionNote",
             "alarmClosureDate": "alarm.closureDate",
