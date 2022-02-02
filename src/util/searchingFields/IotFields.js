@@ -246,6 +246,7 @@ export const IOT_FIELDS = {
             "identifier": "bulks.identifier",
             "provisionProcessorId": "bulks.provisionProcessorId",
             "organization": "bulks.organization",
+            "userEmail": "bulks.request.userEmail",
             "fileName": "bulks.request.fileName",
             "headerAccept": "bulks.request.header.accept",
             "contentType": "bulks.request.header.contentType",
