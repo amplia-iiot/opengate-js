@@ -449,6 +449,7 @@ export const IOT_FIELDS = {
             &quot;description&quot;: &quot;areas.description&quot;,
             &quot;entities&quot;: &quot;areas.entities&quot;,
             &quot;geometry&quot;: &quot;areas.geometry&quot;,
+            &quot;color&quot;: &quot;areas.color&quot;,
             &quot;organization&quot;: &quot;areas.organization&quot;
         }
     },
@@ -489,6 +490,7 @@ export const IOT_FIELDS = {
             &quot;identifier&quot;: &quot;bulks.identifier&quot;,
             &quot;provisionProcessorId&quot;: &quot;bulks.provisionProcessorId&quot;,
             &quot;organization&quot;: &quot;bulks.organization&quot;,
+            &quot;userEmail&quot;: &quot;bulks.request.userEmail&quot;,
             &quot;fileName&quot;: &quot;bulks.request.fileName&quot;,
             &quot;headerAccept&quot;: &quot;bulks.request.header.accept&quot;,
             &quot;contentType&quot;: &quot;bulks.request.header.contentType&quot;,
@@ -511,7 +513,7 @@ export const IOT_FIELDS = {
     &quot;ENTITY_ALARM&quot;: {
         &quot;ENTITY_ALARM&quot;: {
             &quot;alarmId&quot;: &quot;alarm.identifier&quot;,
-            &quot;alarmSubEntityIdentifier&quot;: &quot;alarm.subEntityIdentifier&quot;, 
+            &quot;alarmSubEntityIdentifier&quot;: &quot;alarm.subEntityIdentifier&quot;,
             &quot;entityId&quot;: &quot;alarm.entityIdentifier&quot;,
             &quot;entityType&quot;: &quot;alarm.resourceType&quot;,
             &quot;organizationName&quot;: &quot;alarm.organization&quot;,
@@ -519,11 +521,11 @@ export const IOT_FIELDS = {
             &quot;alarmRuleName&quot;: &quot;alarm.rule&quot;,
             &quot;alarmName&quot;: &quot;alarm.name&quot;,
             &quot;alarmSeverity&quot;: &quot;alarm.severity&quot;,
-            &quot;alarmPriority&quot;:&quot;alarm.priority&quot;,
+            &quot;alarmPriority&quot;: &quot;alarm.priority&quot;,
             &quot;alarmDescription&quot;: &quot;alarm.description&quot;,
             &quot;alarmStatus&quot;: &quot;alarm.status&quot;,
             &quot;alarmOpenDate&quot;: &quot;alarm.openingDate&quot;,
-            &quot;alarmAttentionDate&quot;:&quot;alarm.attentionDate&quot;,
+            &quot;alarmAttentionDate&quot;: &quot;alarm.attentionDate&quot;,
             &quot;alarmAttentionUser&quot;: &quot;alarm.attentionUser&quot;,
             &quot;alarmAttentionNote&quot;: &quot;alarm.attentionNote&quot;,
             &quot;alarmClosureDate&quot;: &quot;alarm.closureDate&quot;,
