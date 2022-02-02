@@ -168,11 +168,12 @@ export default class NorthAmpliaREST {
      * @param {number} timeout - timeout in milliseconds    
      * @param {object} headers - headers of request
      * @param {object} parameters - parameters of request
+     * @param {boolean} asBlob - response body as Blob
      * @return {Promise} 
      */
-    get(url, timeout, headers, parameters) {
+    get(url, timeout, headers, parameters, asBlob) {
         var req = request.get(this._createUrl(url, parameters));
-        return this._createPromiseRequest(req, null, timeout, headers);
+        return this._createPromiseRequest(req, null, timeout, headers, asBlob);
     }
 
     /**
@@ -221,34 +222,33 @@ export default class NorthAmpliaREST {
     post_multipart(url, formData, events, timeout, headers, parameters) {
         let req = request.post(this._createUrl(url, parameters));
 
-        if (formData && (formData.meta || formData.file || formData.json || formData.certificate)) {
-            if (formData.meta) {
-                req.field('meta', formData.meta);
-                delete formData.Fmeta;
+        let sendFormData = true
+        const formDataKeys = Object.keys(formData)
+        formDataKeys.forEach(key => {
+            switch (key) {
+                case 'meta':
+                case 'json':
+                case 'file':
+                    req.field(key, formData[key]);    
+                    delete formData[key]
+                    break
+                case 'certificate': 
+                case 'processorBulkFile':
+                    req.attach('file', formData.processorBulkFile);
+                    sendFormData = false
+                    break
+                case 'bulkFile':
+                    req.set('Content-Type', formData.ext);
+                    formData = formData.bulkFile;
+                    break
+                default:
+                    break;
             }
-            if (formData.json) {
-                req.field('json', formData.json);
-                delete formData.json;
-            }
-
-            if (formData.file) {
-                req.field('file', formData.file);
-                delete formData.file;
-            }
-
-            if (formData.certificate) {
-                req.attach('certificate', formData.certificate);
-                delete formData.certificate;
-            }
-
-        } else if (formData.bulkFile) {
-            req.set('Content-Type', formData.ext);
-            formData = formData.bulkFile;
-        }
-
-        req.send(formData);
-
+        })
+        if(sendFormData)
+            req.send(formData);
         return this._createPromiseRequest(req, events, timeout, headers);
+        
     }
 
     /**
@@ -261,8 +261,7 @@ export default class NorthAmpliaREST {
      * @return {Promise} 
      */
     put(url, data, timeout, headers, parameters) {
-        var req = request.put(this._createUrl(url, parameters))
-            .send(data);
+        var req = request.put(this._createUrl(url, parameters)).send(data);
 
         if (headers) {
             headers['Content-Type'] = 'application/json';
@@ -321,10 +320,11 @@ export default class NorthAmpliaREST {
             }
         });
         var returnUrl = this._url(this._options) + "/" + encode.join("/");
+        
         return returnUrl;
     }
 
-    _createPromiseRequest(req, events, timeout, headers) {
+    _createPromiseRequest(req, events, timeout, headers, asBlob) {
         let _timeout = timeout;
         if (typeof _timeout === "undefined" || _timeout === null) {
             _timeout = this._options.timeout;
@@ -351,6 +351,9 @@ export default class NorthAmpliaREST {
             for (let event in events) {
                 _req = _req.on(event, events[event]);
             }
+        }
+        if(asBlob){
+            req.responseType('blob')
         }
         _req = _req.end(function(err, res) {
             if (err !== null) {
@@ -380,6 +383,7 @@ export default class NorthAmpliaREST {
                     'data': data
                 });
             } else {
+                
                 defered.resolve(res);
             }
         });
