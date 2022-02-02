@@ -6,6 +6,9 @@ var assert = require('chai').assert;
 global.window = new JSDOM().window;
 global.FormData = window.FormData;
 global.Blob = window.Blob;
+global.File = window.File;
+global.Uint8Array = window.Uint8Array;
+global.FileReader = window.FileReader
 
 Given(/^an ogapi "([^"]*)" util$/, function (utilName, callback) {
     this.util = this.utilsModel.util(utilName, this.ogapi);
@@ -23,6 +26,20 @@ Given(/^an ogapi "([^"]*)" util with responseId$/, function (utilName, callback)
         id = this.responseData[0].id;
     //console.log("ID_: " + JSON.stringify(id));
     this.util = this.utilsModel.util(utilName, this.ogapi, id);
+    callback();
+});
+
+Given(/^an ogapi "([^"]*)" util with "([^"]*)" and responseId$/, function (utilName, param1, callback) {
+    var id;
+
+    if (this.responseData.location)
+        id = this.responseData.location.substring(this.responseData.location.lastIndexOf("/") + 1);
+    else if (this.responseData.data)
+        id = this.responseData.data.id;
+    else if (this.responseData[0])
+        id = this.responseData[0].id;
+    //console.log("ID_: " + JSON.stringify(id));
+    this.util = this.utilsModel.util(utilName, this.ogapi, param1, id);
     callback();
 });
 
@@ -519,7 +536,6 @@ Given(/^I read the file from "([^"]*)"$/, function (fileName, callback) {
     // Write code here that turns the phrase above into concrete actions
     var file = fs.readFileSync(__dirname + fileName, 'utf8');
 
-    //var file = fs.createReadStream(__dirname + fileName);
     if (file) {
         this.fileData = file;
         this.filePath = __dirname + fileName;
@@ -527,6 +543,37 @@ Given(/^I read the file from "([^"]*)"$/, function (fileName, callback) {
         callback(false, "not found");
     }
     callback();
+
+});
+
+
+Given(/^I download and read the file from "([^"]*)"$/, function (fileName, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    console.log(this.responseData.data.body)
+    if (this.responseData.data) {
+        let writeStream = fs.createWriteStream(__dirname + fileName);
+        writeStream.write(this.responseData.data.body)
+        writeStream.on('finish', () => {
+        console.log('wrote all data to file');
+        // for client-side
+        /*var bytes = this.responseData.data.body.buffer
+        var blob = new Blob([bytes], {type: "application/vnd.ms-excel"})
+        var fileReader = new FileReader()
+        fileReader.onload = function(event){
+            console.log(JSON.stringify(fileReader.result));
+        };
+        fileReader.readAsText(blob)*/
+            var file = fs.readFileSync(__dirname + fileName, 'utf8');
+            if (file) {
+                callback();
+            } else {
+                callback(false, "not found");
+            }
+        });
+        writeStream.end();
+        
+    }
+    
 
 });
 

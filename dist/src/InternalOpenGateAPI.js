@@ -58,9 +58,17 @@ var _searchingBuilderBulkSearchBuilder = require('./searching/builder/BulkSearch
 
 var _searchingBuilderBulkSearchBuilder2 = _interopRequireDefault(_searchingBuilderBulkSearchBuilder);
 
+var _searchingBuilderBulkExecutionSearchBuilder = require('./searching/builder/BulkExecutionSearchBuilder');
+
+var _searchingBuilderBulkExecutionSearchBuilder2 = _interopRequireDefault(_searchingBuilderBulkExecutionSearchBuilder);
+
 var _bulkBulkFinder = require('./bulk/BulkFinder');
 
 var _bulkBulkFinder2 = _interopRequireDefault(_bulkBulkFinder);
+
+var _bulkBulkExecutionFinder = require('./bulk/BulkExecutionFinder');
+
+var _bulkBulkExecutionFinder2 = _interopRequireDefault(_bulkBulkExecutionFinder);
 
 var _channelsChannels = require('./channels/Channels');
 
@@ -430,6 +438,10 @@ var _provisionEntitiesEntityBuilder = require('./provision/entities/EntityBuilde
 
 var _provisionEntitiesEntityBuilder2 = _interopRequireDefault(_provisionEntitiesEntityBuilder);
 
+var _provisionBulkBulkExecutionBuilder = require('./provision/bulk/BulkExecutionBuilder');
+
+var _provisionBulkBulkExecutionBuilder2 = _interopRequireDefault(_provisionBulkBulkExecutionBuilder);
+
 var _searchingBuilderEntitiesSearchBuilder = require('./searching/builder/EntitiesSearchBuilder');
 
 var _searchingBuilderEntitiesSearchBuilder2 = _interopRequireDefault(_searchingBuilderEntitiesSearchBuilder);
@@ -453,6 +465,14 @@ var _searchingBuilderTimezoneSearchBuilder2 = _interopRequireDefault(_searchingB
 var _searchingBuilderUserLanguagesSearchBuilder = require('./searching/builder/UserLanguagesSearchBuilder');
 
 var _searchingBuilderUserLanguagesSearchBuilder2 = _interopRequireDefault(_searchingBuilderUserLanguagesSearchBuilder);
+
+var _provisionProcessorsProvisionProcessors = require('./provisionProcessors/provisionProcessors');
+
+var _provisionProcessorsProvisionProcessors2 = _interopRequireDefault(_provisionProcessorsProvisionProcessors);
+
+var _provisionProcessorsProvisionProcessorsFinder = require('./provisionProcessors/provisionProcessorsFinder');
+
+var _provisionProcessorsProvisionProcessorsFinder2 = _interopRequireDefault(_provisionProcessorsProvisionProcessorsFinder);
 
 var _entitiesEntityFinder = require('./entities/EntityFinder');
 
@@ -600,6 +620,16 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
+         * This return a BulkExecutionSearchBuilder to build a specific bulk
+         * @return {BulkExecutionSearchBuilder}
+         */
+    }, {
+        key: 'bulkExecutionSearchBuilder',
+        value: function bulkExecutionSearchBuilder() {
+            return new _searchingBuilderBulkExecutionSearchBuilder2['default'](this);
+        }
+
+        /**
          * This return a util to find and download a bulk
          * @return {BulkFinder}
          */
@@ -607,6 +637,16 @@ var InternalOpenGateAPI = (function () {
         key: 'newBulkFinder',
         value: function newBulkFinder() {
             return new _bulkBulkFinder2['default'](this);
+        }
+
+        /**
+         * This return a util to find summary and download a bulk executions
+         * @return {BulkFinder}
+         */
+    }, {
+        key: 'newBulkExecutionFinder',
+        value: function newBulkExecutionFinder() {
+            return new _bulkBulkExecutionFinder2['default'](this);
         }
 
         /**
@@ -1557,6 +1597,16 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
+         * This return a util to create a bulk execution
+         * @return {BulkExecutionBuilder}
+         */
+    }, {
+        key: 'bulkExecutionBuilder',
+        value: function bulkExecutionBuilder(organization, processorId, timeout) {
+            return new _provisionBulkBulkExecutionBuilder2['default'](this, organization, processorId, timeout);
+        }
+
+        /**
          * This return a Qrating to build a specific Qrating
          * @return {QratingsBuilder}
          */
@@ -1594,6 +1644,26 @@ var InternalOpenGateAPI = (function () {
         key: 'userLanguagesSearchBuilder',
         value: function userLanguagesSearchBuilder() {
             return new _searchingBuilderUserLanguagesSearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a ProvisionsProcesorsBuilder to build a specific ProvisionsProcesorsBuilder
+         * @return {provisionProcessorsBuilder}
+         */
+    }, {
+        key: 'provisionProcessorsBuilder',
+        value: function provisionProcessorsBuilder() {
+            return new _provisionProcessorsProvisionProcessors2['default'](this);
+        }
+
+        /**
+         * This return a util to find a provision procesor
+         * @return {ProvisionProcessorsFinder}
+         */
+    }, {
+        key: 'newProvisionProcessorsFinder',
+        value: function newProvisionProcessorsFinder() {
+            return new _provisionProcessorsProvisionProcessorsFinder2['default'](this);
         }
     }]);
 

@@ -49,8 +49,8 @@ var IOT_FIELDS = {
     "TASKS": {
         "TASKS": ["tasks.id", "tasks.name", "tasks.description", "tasks.state", "tasks.domain", "tasks.workgroup", "tasks.job.request.user"]
     },
-    "BULK": {
-        "BULK": {
+    "LEGACY_BULK": {
+        "LEGACY_BULK": {
             "identifier": "bulks.identifier",
             "organization": "bulks.organization",
             "fileName": "bulks.request.fileName",
@@ -62,6 +62,23 @@ var IOT_FIELDS = {
             "paramsAction": "bulks.request.params.action",
             "paramsFull": "bulks.request.params.full",
             "paramsType": "bulks.request.params.type",
+            "status": "bulks.status",
+            "startedDate": "bulks.startedDate",
+            "finishedDate": "bulks.finishedDate",
+            "processed": "bulks.summary.processed",
+            "successful": "bulks.summary.successful",
+            "error": "bulks.summary.error"
+        }
+    },
+    "BULK": {
+        "BULK": {
+            "identifier": "bulks.identifier",
+            "provisionProcessorId": "bulks.provisionProcessorId",
+            "organization": "bulks.organization",
+            "userEmail": "bulks.request.userEmail",
+            "fileName": "bulks.request.fileName",
+            "headerAccept": "bulks.request.header.accept",
+            "contentType": "bulks.request.header.contentType",
             "status": "bulks.status",
             "startedDate": "bulks.startedDate",
             "finishedDate": "bulks.finishedDate",

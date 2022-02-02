@@ -8,11 +8,11 @@ var gulp = require('gulp'),
     cucumberOptionsCatalog = {
         string: 'tags',
         default: {
-            'tags': '@prueba23'
+            'tags': 'not @ignore and @wip'
         }
     };
 argv.push("--tags");
-argv.push("@prueba23");
+argv.push("not @ignore and @wip");
 
 var cucumberOptions = minimist(argv, cucumberOptionsCatalog);
 

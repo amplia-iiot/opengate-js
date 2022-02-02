@@ -210,13 +210,14 @@ var NorthAmpliaREST = (function () {
          * @param {number} timeout - timeout in milliseconds    
          * @param {object} headers - headers of request
          * @param {object} parameters - parameters of request
+         * @param {boolean} asBlob - response body as Blob
          * @return {Promise} 
          */
     }, {
         key: 'get',
-        value: function get(url, timeout, headers, parameters) {
+        value: function get(url, timeout, headers, parameters, asBlob) {
             var req = _superagent2['default'].get(this._createUrl(url, parameters));
-            return this._createPromiseRequest(req, null, timeout, headers);
+            return this._createPromiseRequest(req, null, timeout, headers, asBlob);
         }
 
         /**
@@ -268,32 +269,30 @@ var NorthAmpliaREST = (function () {
         value: function post_multipart(url, formData, events, timeout, headers, parameters) {
             var req = _superagent2['default'].post(this._createUrl(url, parameters));
 
-            if (formData && (formData.meta || formData.file || formData.json || formData.certificate)) {
-                if (formData.meta) {
-                    req.field('meta', formData.meta);
-                    delete formData.Fmeta;
+            var sendFormData = true;
+            var formDataKeys = Object.keys(formData);
+            formDataKeys.forEach(function (key) {
+                switch (key) {
+                    case 'meta':
+                    case 'json':
+                    case 'file':
+                        req.field(key, formData[key]);
+                        delete formData[key];
+                        break;
+                    case 'certificate':
+                    case 'processorBulkFile':
+                        req.attach('file', formData.processorBulkFile);
+                        sendFormData = false;
+                        break;
+                    case 'bulkFile':
+                        req.set('Content-Type', formData.ext);
+                        formData = formData.bulkFile;
+                        break;
+                    default:
+                        break;
                 }
-                if (formData.json) {
-                    req.field('json', formData.json);
-                    delete formData.json;
-                }
-
-                if (formData.file) {
-                    req.field('file', formData.file);
-                    delete formData.file;
-                }
-
-                if (formData.certificate) {
-                    req.attach('certificate', formData.certificate);
-                    delete formData.certificate;
-                }
-            } else if (formData.bulkFile) {
-                req.set('Content-Type', formData.ext);
-                formData = formData.bulkFile;
-            }
-
-            req.send(formData);
-
+            });
+            if (sendFormData) req.send(formData);
             return this._createPromiseRequest(req, events, timeout, headers);
         }
 
@@ -370,11 +369,12 @@ var NorthAmpliaREST = (function () {
                 }
             });
             var returnUrl = this._url(this._options) + "/" + encode.join("/");
+
             return returnUrl;
         }
     }, {
         key: '_createPromiseRequest',
-        value: function _createPromiseRequest(req, events, timeout, headers) {
+        value: function _createPromiseRequest(req, events, timeout, headers, asBlob) {
             var _timeout = timeout;
             if (typeof _timeout === "undefined" || _timeout === null) {
                 _timeout = this._options.timeout;
@@ -400,6 +400,9 @@ var NorthAmpliaREST = (function () {
                 for (var _event in events) {
                     _req = _req.on(_event, events[_event]);
                 }
+            }
+            if (asBlob) {
+                req.responseType('blob');
             }
             _req = _req.end(function (err, res) {
                 if (err !== null) {
@@ -429,6 +432,7 @@ var NorthAmpliaREST = (function () {
                         'data': data
                     });
                 } else {
+
                     defered.resolve(res);
                 }
             });

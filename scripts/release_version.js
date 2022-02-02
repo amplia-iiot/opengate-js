@@ -40,20 +40,20 @@ gulp.task('build:all', gulp.series('create:release:branch', 'increase:version', 
 // STEP 3 
 gulp.task('commit:increase:version', function() {
     return gulp.src(['dist', './bower.json', './package.json', './docs', './src/util/searchingFields/source-precompiled/Fields.js'])
-        .pipe(git.add())
-        .pipe(git.commit('release ' + versionType() + ' version:' + versionNumber()));
+        .pipe(git.add({maxBuffer: Infinity}))
+        .pipe(git.commit('release ' + versionType() + ' version:' + versionNumber(), {maxBuffer: Infinity}));
 });
 // STEP 3 
 
 // STEP 4
 gulp.task('checkout:master:increase', function(cb) {
-    git.checkout(masterBranch(), function(err) {
+    git.checkout(masterBranch(), {maxBuffer: Infinity}, function(err) {
         cb(err);
     });
 });
 
 gulp.task('merge:master:increase', function(cb) {
-    git.merge(temporalBranchRelease(), function(err) {
+    git.merge(temporalBranchRelease(), {maxBuffer: Infinity}, function(err) {
         cb(err);
     });
 });
@@ -66,9 +66,9 @@ gulp.task('change:tab_version:increase', function() {
 gulp.task('prepare_tag:increase', gulp.series('commit:increase:version', 'checkout:master:increase', 'merge:master:increase', 'change:tab_version:increase'));
 
 gulp.task('checkout:develop', function(cb) {
-    git.checkout(developBranch(), function(err) {
+    git.checkout(developBranch(), {maxBuffer: Infinity}, function(err) {
         if (!err) {
-            git.merge(masterBranch(), function(err) {
+            git.merge(masterBranch(), {maxBuffer: Infinity}, function(err) {
                 cb(err);
             });
         } else {
@@ -81,9 +81,9 @@ gulp.task('checkout:develop', function(cb) {
 gulp.task('prepare:develop:increase', gulp.series('build:all', 'prepare_tag:increase', 'checkout:develop'));
 // STEP 4
 gulp.task('push:increase:build', function(cb) {
-    git.push('origin', [masterBranch(), developBranch()], { args: " --follow-tags" }, function(err) {
+    git.push('origin', [masterBranch(), developBranch()], { args: " --follow-tags", maxBuffer: Infinity }, function(err) {
         if (!err) {
-            git.branch(temporalBranchRelease(), { args: "-D" }, function(err) {
+            git.branch(temporalBranchRelease(), { args: "-D", maxBuffer: Infinity }, function(err) {
                 cb(err);
             });
         } else {
