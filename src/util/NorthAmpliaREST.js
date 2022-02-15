@@ -139,10 +139,15 @@ export default class NorthAmpliaREST {
             Object.keys(mocks[method]).forEach(url => {
                 console.log('Mocking url:', url);
                 console.log('Data returned:', mocks[method][url])
-                mock[method](this._options.url + url, () => {
-                    const data = mocks[method][url]
-                    if (!data.headers) data.headers = {}
-                    return data
+                const methodByUrl = mocks[method][url]
+                mock[method](this._options.url + url, (req) => {
+                    if(typeof methodByUrl  === 'function'){
+                        return methodByUrl(req)
+                    } else{
+                        const data = mocks[method][url]
+                        if (!data.headers) data.headers = {}
+                        return data
+                    }
                 });
             })
         })
