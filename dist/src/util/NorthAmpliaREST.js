@@ -178,10 +178,15 @@ var NorthAmpliaREST = (function () {
                 Object.keys(mocks[method]).forEach(function (url) {
                     console.log('Mocking url:', url);
                     console.log('Data returned:', mocks[method][url]);
-                    mock[method](_this._options.url + url, function () {
-                        var data = mocks[method][url];
-                        if (!data.headers) data.headers = {};
-                        return data;
+                    var methodByUrl = mocks[method][url];
+                    mock[method](_this._options.url + url, function (req) {
+                        if (typeof methodByUrl === 'function') {
+                            return methodByUrl(req);
+                        } else {
+                            var data = mocks[method][url];
+                            if (!data.headers) data.headers = {};
+                            return data;
+                        }
                     });
                 });
             });
