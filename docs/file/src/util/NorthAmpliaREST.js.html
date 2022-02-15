@@ -246,9 +246,9 @@
 
 import merge from &apos;merge&apos;;
 import urlencode from &apos;urlencode&apos;;
-import request from &apos;superagent&apos;;
+import request, { mkcol } from &apos;superagent&apos;;
 import q from &apos;q&apos;;
-import fs from &apos;fs&apos;;
+import _ from &apos;lodash&apos;
 //  MOCK user searching
 import _mock from &apos;superagent-mocker&apos;;
 const mock = _mock(request);
@@ -265,8 +265,11 @@ export default class NorthAmpliaREST {
     constructor(_options, headers) {
         this._options = merge.recursive(true, this.default(), _options);
         this._headers = headers;
+        if (!_.isEmpty(_options.mocks)) {
+            this._applyMocks(_options.mocks)
+        }
 
-        // ----------------------------------
+        // ---------------------------------- EXAMPLE
         /*
         mock.post(_options.url + &apos;/search/channels&apos;, function(req) {
             return {
@@ -282,49 +285,116 @@ export default class NorthAmpliaREST {
             };
         });        
        */
-    //   mock.post(_options.url + &apos;/search/catalog/operations&apos;, function(req) {
-    //     return {
-    //         body: {
-    //             &quot;operations&quot;: [
-    //                 {
-    //                     &quot;name&quot;: &quot;ADMINISTRATIVE_STATUS_CHANGE&quot;,
-    //                     &quot;title&quot;: &quot;Administrative status change params&quot;,
-    //                     &quot;description&quot;: &quot;Allows to change the administrative status of an entity&quot;,
-    //                     &quot;applicableTo&quot;: [
-    //                       &quot;GATEWAY&quot;,
-    //                       &quot;ASSET&quot;,
-    //                       &quot;SUBSCRIPTION&quot;,
-    //                       &quot;SUBSCRIBER&quot;
-    //                     ],
-    //                     &quot;categoryPath&quot;: &quot;/admin&quot;,
-    //                     &quot;parameters&quot;: {
-    //                         &quot;schema&quot;: {
-    //                             &quot;type&quot;: &quot;object&quot;,
-    //                             &quot;properties&quot;: {
-    //                             &quot;admsts&quot;: {
-    //                                 &quot;type&quot;: &quot;string&quot;,
-    //                                 &quot;title&quot;: &quot;Administrative status&quot;
-    //                             }
-    //                             },
-    //                             &quot;additionalProperties&quot;: false,
-    //                             &quot;required&quot;: [&quot;admsts&quot;]
-    //                         }
-    //                     },
-    //                     &quot;steps&quot;: [
-    //                       {
-    //                         &quot;name&quot;: &quot;ADMINISTRATIVE_STATUS_CHANGE&quot;,
-    //                         &quot;title&quot;: &quot;Administrative Status Change&quot;,
-    //                         &quot;description&quot;: &quot;&quot;
-    //                       }
-    //                     ]
-    //                   },
-    //             ]
-    //         },
-    //         statusCode: 200
-    //     };
-    // });        
-        // ----------------------------------
+      /*mock.post(_options.url + &apos;/datasets/provision/organizations/:organization/:dataset/data&apos;, function(req){
+        return {
+            body: {
+                &quot;page&quot;: {
+                  &quot;number&quot;: 26
+                },
+                &quot;columns&quot;: [
+                  &quot;Coll Mobile ICC value&quot;,
+                  &quot;Coll Mobile ICC date&quot;,
+                  &quot;Prov Identifier&quot;,
+                  &quot;Coll manufacturer&quot;
+                ],
+                &quot;data&quot;: [
+                  [
+                    &quot;icc1&quot;,
+                    &quot;2021-04-06T12:35:22.784Z&quot;,
+                    &quot;MyDevice1&quot;,
+                    &quot;OpenGate&quot;
+                  ],
+                  [
+                    &quot;icc2&quot;,
+                    &quot;2021-04-06T07:45:57.468Z&quot;,
+                    &quot;MyDevice2&quot;,
+                    &quot;OpenGate&quot;
+                  ]
+                ]
+              },
+              statusCode: 200
+        };
+      });
+        mock.get(_options.url + &apos;/datasets/provision/organizations/:organization&apos;, function(req) {
+            return {
+                body: {
+                    datasets: [
+                       {
+                           name: &apos;dataset1&apos;,
+                           identifier: &apos;111&apos;,
+                           description: &apos;mock&apos;,
+                           type: &apos;CURRENT&apos;
+                       },
+                       {
+                        name: &apos;dataset2&apos;,
+                        identifier: &apos;2222&apos;,
+                        description: &apos;mock&apos;,
+                        type: &apos;HISTORY&apos;
+                        }
+                    ]
+                },
+                statusCode: 200
+            };
+        });        
+        mock.get(_options.url + &apos;/datasets/provision/organizations/:organization/:dataset&apos;, function(req) {
+            return {
+                body: 
+                {
+                    &quot;name&quot;: &quot;dataset_name&quot;,
+                    &quot;description&quot;: &quot;My dataset to get inventory data&quot;,
+                    &quot;type&quot;: &quot;CURRENT&quot;,
+                    &quot;columns&quot;: [
+                        {
+                            &quot;path&quot;: &quot;provision.device.identifier._current.value&quot;,
+                            &quot;name&quot;: &quot;Prov identifier&quot;,
+                            &quot;filter&quot;: &quot;YES&quot;,
+                            &quot;sort&quot;: true
+                          },
+                          {
+                            &quot;path&quot;: &quot;device.model._current.value.manufacturer&quot;,
+                            &quot;name&quot;: &quot;Coll manufacturer&quot;,
+                            &quot;filter&quot;: &quot;ALWAYS&quot;,
+                            &quot;sort&quot;: false
+                          },
+                          {
+                            &quot;path&quot;: &quot;device.communicationModules[0].subscriber.mobile.icc._current.value&quot;,
+                            &quot;name&quot;: &quot;Coll Mobile ICC value&quot;,
+                            &quot;filter&quot;: &quot;NO&quot;,
+                            &quot;sort&quot;: false
+                          },
+                          {
+                            &quot;path&quot;: &quot;device.communicationModules[0].subscriber.mobile.icc._current.at&quot;,
+                            &quot;name&quot;: &quot;Coll Mobile ICC date&quot;,
+                            &quot;filter&quot;: &quot;YES&quot;,
+                            &quot;sort&quot;: false
+                          }
+                    ]
+                  },
+                statusCode: 200
+             };
+        });        
+        */
+    }
 
+    _applyMocks (mocks) {
+        const methods = Object.keys(mocks).filter((method) =&gt; !_.isEmpty(mocks[method]))
+        methods.forEach(method =&gt; {
+            console.log(`Mocking ${method.toLocaleUpperCase()} requests`);
+            Object.keys(mocks[method]).forEach(url =&gt; {
+                console.log(&apos;Mocking url:&apos;, url);
+                console.log(&apos;Data returned:&apos;, mocks[method][url])
+                const methodByUrl = mocks[method][url]
+                mock[method](this._options.url + url, (req) =&gt; {
+                    if(typeof methodByUrl  === &apos;function&apos;){
+                        return methodByUrl(req)
+                    } else{
+                        const data = mocks[method][url]
+                        if (!data.headers) data.headers = {}
+                        return data
+                    }
+                });
+            })
+        })
     }
 
     /**
