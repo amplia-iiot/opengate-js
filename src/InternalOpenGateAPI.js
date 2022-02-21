@@ -114,6 +114,9 @@ import UserLanguagesSearchBuilder from './searching/builder/UserLanguagesSearchB
 import EntityFinder from './entities/EntityFinder';
 import AlarmActions from './alarms/AlarmActions';
 import _superagent from 'superagent';
+import ConnectorFunctionsHelper from './connectorsFunctionsConfiguration/ConnectorFunctionsHelper';
+import ConnectorFunctionsFinder from './connectorsFunctionsConfiguration/ConnectorFunctionsFinder';
+import ConnectorFunctions from './connectorsFunctionsConfiguration/ConnectorFunctions';
 
 const RequestEndMonkeyPatching = (function(){
     let beforeStart
@@ -1027,5 +1030,29 @@ export default class InternalOpenGateAPI {
      */
     userLanguagesSearchBuilder() {
         return new UserLanguagesSearchBuilder(this);
+    }
+
+    /**
+     * This return a ConnectorFunctionsFinder 
+     * @return {ConnectorFunctionsFinder}
+     */
+    newConnectorFunctionsFinder() {
+        return new ConnectorFunctionsFinder(this)
+    }
+
+    /**
+     * This return a ConnectorFunctionsHelper
+     * @return {ConnectorFunctionsHelper}
+     */
+    newConnectorFunctionsHelper() {
+        return new ConnectorFunctionsHelper(this)
+    }
+
+    /**
+     * This return a ConnectorFunctions
+     * @return {ConnectorFunctions}
+     */
+    connectorFunctionsBuilder(organization, channel, identifier, connectorFunctionData) {
+        return new ConnectorFunctions(this, organization, channel, identifier, connectorFunctionData)
     }
 }

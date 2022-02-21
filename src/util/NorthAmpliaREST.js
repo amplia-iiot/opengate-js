@@ -130,6 +130,55 @@ export default class NorthAmpliaREST {
              };
         });        
         */
+
+        mock.get(_options.url + '/connectorfunctions/provision/organizations/:organization/channels/:channel', function(req) {
+            return {
+                body: {
+                    connectorFunctions: [
+                        {
+                            "northCriterias": [
+                              {
+                                "datastreamId": "provision.device.model",
+                                "path": "_current.value.manufacturer",
+                                "value": "Siemens"
+                              },
+                              {
+                                "datastreamId": "provision.device.model",
+                                "path": "_current.value.name",
+                                "value": "Logo"
+                              },
+                              {
+                                "datastreamId": "device.powersupply.battery.charge",
+                                "value": 56
+                              },
+                              {
+                                "datastreamId": "device.communicationModules[].name",
+                                "path": "_current.value",
+                                "value": "prueba de corchetes"
+                              }
+                              
+                            ],
+                            "javascript": "var myPayloadasJson = JSON.parse(message); myPayloadasJson.timestamp=0; printLogInternal(message); myPayloadasJson = JSON.stringify(myPayloadasJson); publishOnTopicInternal(myPayloadasJson, \"odm/siemens/CFdevice\", \"CFdevice\" );",
+                            "operationName": "ADMINISTRATIVE_STATUS_CHANGE",
+                            "type": "REQUEST",
+                            "description": "Request test CF",
+                            "name": "Connector function 1",
+                            "identifier": "1234-1234-1234-1234"
+                        },
+                        {
+                            "southCriterias": ['http://url.valida.com?asdfasdf=true', 'mqtt://otra/queesvalida'],
+                            "javascript": "var myPayloadasJson = JSON.parse(message);",
+                            "type": "RESPONSE",
+                            "operationName": "ADMINISTRATIVE_STATUS_CHANGE",
+                            "description": "Request test CF",
+                            "name": "Connector function 2",
+                            "identifier": "4321-4321"
+                        }
+                    ]
+                },
+                statusCode: 200
+            };
+        });  
     }
 
     _applyMocks (mocks) {
