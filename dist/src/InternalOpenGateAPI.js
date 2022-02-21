@@ -466,6 +466,18 @@ var _superagent2 = require('superagent');
 
 var _superagent3 = _interopRequireDefault(_superagent2);
 
+var _connectorsFunctionsConfigurationConnectorFunctionsHelper = require('./connectorsFunctionsConfiguration/ConnectorFunctionsHelper');
+
+var _connectorsFunctionsConfigurationConnectorFunctionsHelper2 = _interopRequireDefault(_connectorsFunctionsConfigurationConnectorFunctionsHelper);
+
+var _connectorsFunctionsConfigurationConnectorFunctionsFinder = require('./connectorsFunctionsConfiguration/ConnectorFunctionsFinder');
+
+var _connectorsFunctionsConfigurationConnectorFunctionsFinder2 = _interopRequireDefault(_connectorsFunctionsConfigurationConnectorFunctionsFinder);
+
+var _connectorsFunctionsConfigurationConnectorFunctions = require('./connectorsFunctionsConfiguration/ConnectorFunctions');
+
+var _connectorsFunctionsConfigurationConnectorFunctions2 = _interopRequireDefault(_connectorsFunctionsConfigurationConnectorFunctions);
+
 var RequestEndMonkeyPatching = (function () {
     var beforeStart = undefined;
     var end = _superagent3['default'].Request.prototype.end;
@@ -1594,6 +1606,36 @@ var InternalOpenGateAPI = (function () {
         key: 'userLanguagesSearchBuilder',
         value: function userLanguagesSearchBuilder() {
             return new _searchingBuilderUserLanguagesSearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a ConnectorFunctionsFinder 
+         * @return {ConnectorFunctionsFinder}
+         */
+    }, {
+        key: 'newConnectorFunctionsFinder',
+        value: function newConnectorFunctionsFinder() {
+            return new _connectorsFunctionsConfigurationConnectorFunctionsFinder2['default'](this);
+        }
+
+        /**
+         * This return a ConnectorFunctionsHelper
+         * @return {ConnectorFunctionsHelper}
+         */
+    }, {
+        key: 'newConnectorFunctionsHelper',
+        value: function newConnectorFunctionsHelper() {
+            return new _connectorsFunctionsConfigurationConnectorFunctionsHelper2['default'](this);
+        }
+
+        /**
+         * This return a ConnectorFunctions
+         * @return {ConnectorFunctions}
+         */
+    }, {
+        key: 'connectorFunctionsBuilder',
+        value: function connectorFunctionsBuilder(organization, channel, identifier, connectorFunctionData) {
+            return new _connectorsFunctionsConfigurationConnectorFunctions2['default'](this, organization, channel, identifier, connectorFunctionData);
         }
     }]);
 
