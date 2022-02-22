@@ -27,7 +27,7 @@ export default class Datasets extends BaseProvision {
      * @return {Datasets}
      */
     withOrganization(organization) {
-        checkType._checkString(organization, 50, 'organization');
+        checkType._checkStringAndLength(organization, 50, 'organization');
         this._organization = organization;
         return this;
     }
@@ -38,7 +38,7 @@ export default class Datasets extends BaseProvision {
      * @return {Datasets}
      */
      withIdentifier(identifier) {
-        checkType._checkString(identifier, 50, 'identifier');
+        checkType._checkString(identifier, 'identifier');
         this._identifier = identifier;
         return this;
     }
@@ -49,7 +49,7 @@ export default class Datasets extends BaseProvision {
      * @return {Datasets}
      */
     withName(name) {
-        checkType._checkString(name, 50, 'name');
+        checkType._checkString(name, 'name');
         this._name = name;
         return this;
     }
@@ -71,7 +71,7 @@ export default class Datasets extends BaseProvision {
      * @return {Datasets}
      */
     withDescription(description) {
-        checkType._checkString(description, 50, 'description');
+        checkType._checkString(description, 'description');
         this._description = description;
         return this;
     }

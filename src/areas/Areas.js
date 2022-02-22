@@ -27,7 +27,7 @@ export default class Areas extends BaseProvision {
      * @return {Areas}
      */
     withOrganization(organization) {
-        checkType._checkString(organization, 50, 'organization');
+        checkType._checkStringAndLength(organization, 50, 'organization');
         this._organization = organization;
         return this;
     }
@@ -38,7 +38,7 @@ export default class Areas extends BaseProvision {
      * @return {Areas}
      */
     withIdentifier(identifier) {
-        checkType._checkString(identifier, 50, 'identifier');
+        checkType._checkStringAndLength(identifier, 50, 'identifier');
         this._identifier = identifier;
         return this;
     }
@@ -49,7 +49,7 @@ export default class Areas extends BaseProvision {
      * @return {Areas}
      */
     withName(name) {
-        checkType._checkString(name, 50, 'name');
+        checkType._checkStringAndLength(name, 50, 'name');
         this._name = name;
         return this;
     }
@@ -59,7 +59,7 @@ export default class Areas extends BaseProvision {
  * @return {Areas}
  */
     withColor(color) {
-        checkType._checkString(color, 50, 'color');
+        checkType._checkStringAndLength(color, 50, 'color');
         this._color = color;
         return this;
     }
@@ -70,7 +70,7 @@ export default class Areas extends BaseProvision {
      * @return {Areas}
      */
     withDescription(description) {
-        checkType._checkString(description, 50, 'description');
+        checkType._checkStringAndLength(description, 50, 'description');
         this._description = description;
         return this;
     }
