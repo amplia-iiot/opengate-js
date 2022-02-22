@@ -285,10 +285,16 @@ export default class NorthAmpliaREST {
      * @param {number} timeout - timeout in milliseconds    
      * @param {object} headers - headers of request
      * @param {object} parameters - parameters of request
+     * @param {object} body - body of request
      * @return {Promise} 
      */
-    delete(url, timeout, headers, parameters) {
-        var req = request.delete(this._createUrl(url, parameters));
+    delete(url, timeout, headers, parameters, body) {
+        var req
+        if(body){
+            req = request('DELETE', this._createUrl(url, parameters)).send(body)
+        }else{
+            req = request.delete(this._createUrl(url, parameters));
+        }
         return this._createPromiseRequest(req, null, timeout, headers);
     }
 
