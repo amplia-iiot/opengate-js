@@ -138,32 +138,29 @@ export default class NorthAmpliaREST {
                         {
                             "northCriterias": [
                               {
-                                "datastreamId": "provision.device.model",
-                                "path": "_current.value.manufacturer",
+                                "path": "provision.device.model._current.value.manufacturer",
                                 "value": "Siemens"
                               },
                               {
-                                "datastreamId": "provision.device.model",
-                                "path": "_current.value.name",
+                                "path": "provision.device.model._current.value.name",
                                 "value": "Logo"
                               },
                               {
-                                "datastreamId": "device.powersupply.battery.charge",
+                                "path": "device.powersupply.battery.charge._current.value",
                                 "value": 56
                               },
                               {
-                                "datastreamId": "device.communicationModules[].name",
-                                "path": "_current.value",
+                                "path": "device.communicationModules[0].name._current.value",
                                 "value": "prueba de corchetes"
                               }
-                              
                             ],
-                            "javascript": "var myPayloadasJson = JSON.parse(message); myPayloadasJson.timestamp=0; printLogInternal(message); myPayloadasJson = JSON.stringify(myPayloadasJson); publishOnTopicInternal(myPayloadasJson, \"odm/siemens/CFdevice\", \"CFdevice\" );",
+                            "javascript": "var myPayloadasJson = JSON.parse(message);",
                             "operationName": "ADMINISTRATIVE_STATUS_CHANGE",
                             "type": "REQUEST",
                             "description": "Request test CF",
                             "name": "Connector function 1",
-                            "identifier": "1234-1234-1234-1234"
+                            "identifier": "1234-1234-1234-1234",
+                            "operationalStatus": "PRODUCTION"
                         },
                         {
                             "southCriterias": ['http://url.valida.com?asdfasdf=true', 'mqtt://otra/queesvalida'],
@@ -172,7 +169,17 @@ export default class NorthAmpliaREST {
                             "operationName": "ADMINISTRATIVE_STATUS_CHANGE",
                             "description": "Request test CF",
                             "name": "Connector function 2",
-                            "identifier": "4321-4321"
+                            "identifier": "4321-4321",
+                            "operationalStatus": "TEST"
+                        },
+                        {
+                            "southCriterias": ['http://url.valida.com?asdfasdf=true', 'mqtt://otra/queesvalida'],
+                            "javascript": "var myPayloadasJson = JSON.parse(message);",
+                            "type": "COLLECTION",
+                            "description": "Request test CF COLLECTION",
+                            "name": "Connector function 3",
+                            "identifier": "666666666-66666",
+                            "operationalStatus": "DISABLED"
                         }
                     ]
                 },
