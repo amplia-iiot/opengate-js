@@ -4,6 +4,8 @@ import GenericFinder from '../GenericFinder';
 import q from 'q';
 import HttpStatus from 'http-status-codes';
 
+import dummyFunctions from './dummyClientActionFunctions'
+
 import {
     CONNECTOR_FUNCTION_SOUTH_PROTOCOLS,
     CONNECTOR_FUNCTION_SOUTH_CRITERIAS_INTERNAL
@@ -36,7 +38,18 @@ export default class ConnectorFunctionsHelper extends GenericFinder {
     getdDummyFunctions() {
         this._setExtraHeaders(this._jsHeaders)
         this._id = 'js/dummyFunctions'
-        return this._execute();
+        //return this._execute();
+
+        let defered = q.defer();
+        let promise = defered.promise;
+        defered.resolve({
+            data: {
+                text: dummyFunctions
+            },
+            statusCode: 200
+        });
+    
+        return promise;
     }
 
     /**
@@ -48,7 +61,20 @@ export default class ConnectorFunctionsHelper extends GenericFinder {
      getDocPrivateJavascriptFunctions() {
         this._setExtraHeaders(this._mdHeaders)
         this._id = 'doc/private/javascriptFunctions'
-        return this._execute();
+        //return this._execute();
+
+        let data = "### ejemplo de docu de connector functions"
+
+        let defered = q.defer();
+        let promise = defered.promise;
+        defered.resolve({
+            data: {
+                text: data
+            },
+            statusCode: 200
+        });
+    
+        return promise;
     }
     /**
      * Performs a get that returns documentation of javascript functions from rules service
@@ -59,7 +85,20 @@ export default class ConnectorFunctionsHelper extends GenericFinder {
      getDocJavascriptFunctions() {
         this._setExtraHeaders(this._mdHeaders)
         this._id = 'doc/javascriptFunctions'
-        return this._execute();
+        //return this._execute();
+
+        let data = "### ejemplo de docu de connector functions 2"
+
+        let defered = q.defer();
+        let promise = defered.promise;
+        defered.resolve({
+            data: {
+                text: data
+            },
+            statusCode: 200
+        });
+    
+        return promise;
     }
 
     /**

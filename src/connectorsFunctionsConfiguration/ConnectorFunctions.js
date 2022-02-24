@@ -2,7 +2,8 @@
 
 import BaseProvision from '../provision/BaseProvision';
 import {
-    CONNECTOR_FUNCTION_TYPES
+    CONNECTOR_FUNCTION_TYPES,
+    CONNECTOR_FUNCTION_OPERATIONAL_STATUS
 } from './enum/_CONNECTOR_FUNCTIONS_ENUMS';
 
 import q from 'q';
@@ -35,6 +36,10 @@ export default class ConnectorFunctions extends BaseProvision {
                 this.withOperationName(connectorFunctionsObj.operationName);
             }
 
+            if (connectorFunctionsObj.operationalStatus) {
+                this.withOperationalStatus(connectorFunctionsObj.operationalStatus);
+            }
+
             if (connectorFunctionsObj.type) {
                 this.withType(connectorFunctionsObj.type);
             }
@@ -49,6 +54,10 @@ export default class ConnectorFunctions extends BaseProvision {
 
             if (connectorFunctionsObj.southCriterias) {
                 this.withSouthCriterias(connectorFunctionsObj.southCriterias);
+            }
+
+            if (connectorFunctionsObj.javascript) {
+                this.withJavascript(connectorFunctionsObj.javascript);
             }
         }
     }
@@ -147,9 +156,9 @@ export default class ConnectorFunctions extends BaseProvision {
      * @return {ConnectorFunctions}
      */
     withNorthCriterias(criterias) {
-        if (typeof criterias !== 'array' || criterias.length === 0)
+        if (!(criterias instanceof Array) || criterias.length === 0)
             throw new Error('Parameter north criteria must be an array and cannot be empty');
-        this._northCriterias = javascript;
+        this._northCriterias = criterias;
         return this;
     }
 
@@ -159,7 +168,7 @@ export default class ConnectorFunctions extends BaseProvision {
      * @return {ConnectorFunctions}
      */
     withSouthCriterias(criterias) {
-        if (typeof criterias !== 'array' || criterias.length === 0)
+        if (!(criterias instanceof Array) || criterias.length === 0)
             throw new Error('Parameter south criteria must be an array and cannot be empty');
         
         criterias.forEach((crit) => {
@@ -200,14 +209,15 @@ export default class ConnectorFunctions extends BaseProvision {
     }
 
     /**
-     * Set the active attribute
-     * @param {boolean} active 
+     * Set the operational status attribute
+     * @param {boolean} operationalStatus 
      * @return {ConnectorFunctions}
      */
-    withActive(active) {
-        if (typeof active !== 'boolean')
-            throw new Error('Parameter active must be true or false');
-        this._active = active;
+    withOperationalStatus(operationalStatus) {
+        if (typeof operationalStatus !== 'string' || !this._checkValues(operationalStatus, CONNECTOR_FUNCTION_OPERATIONAL_STATUS))
+            throw new Error('Parameter operational status must be a string and must be one of these values: ' + CONNECTOR_FUNCTION_OPERATIONAL_STATUS);
+        
+        this._operationalStatus = operationalStatus;
         return this;
     }
 
@@ -217,7 +227,7 @@ export default class ConnectorFunctions extends BaseProvision {
         let updateData = {
             "identifier": this._identifier,
             "name": this._name,
-            "active": this._active,
+            "operationalStatus": this._operationalStatus,
             "type": this._type,
             "description": (this._description ? this._description : undefined),
             "northCriterias": this._type === 'REQUEST'?this._northCriterias : undefined,
@@ -230,11 +240,11 @@ export default class ConnectorFunctions extends BaseProvision {
 
     _checkRequiredParameters(isUpdate) {
         if (isUpdate) {
-            if (this._identifier === undefined || this._organization === undefined || this._channel === undefined || this._active === undefined || this._type === undefined  || this._javascript === undefined)
-                throw new Error('Parameters organization, channel, active, type, javascript and identifier must be defined');
+            if (this._identifier === undefined || this._organization === undefined || this._channel === undefined || this._operationalStatus === undefined || this._type === undefined  || this._javascript === undefined)
+                throw new Error('Parameters organization, channel, operational status, type, javascript and identifier must be defined');
         } else {
-            if (this._name === undefined || this._organization === undefined || this._channel === undefined || this._active === undefined || this._type === undefined  || this._javascript === undefined)
-                throw new Error('Parameters organization, channel, active, type, javascript and name must be defined');
+            if (this._name === undefined || this._organization === undefined || this._channel === undefined || this._operationalStatus === undefined || this._type === undefined  || this._javascript === undefined)
+                throw new Error('Parameters organization, channel, operational status, type, javascript and name must be defined');
         }
     }
 

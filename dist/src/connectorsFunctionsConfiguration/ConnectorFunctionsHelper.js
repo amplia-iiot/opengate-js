@@ -26,6 +26,10 @@ var _httpStatusCodes = require('http-status-codes');
 
 var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
 
+var _dummyClientActionFunctions = require('./dummyClientActionFunctions');
+
+var _dummyClientActionFunctions2 = _interopRequireDefault(_dummyClientActionFunctions);
+
 var _enum_CONNECTOR_FUNCTIONS_ENUMS = require('./enum/_CONNECTOR_FUNCTIONS_ENUMS');
 
 /**
@@ -63,7 +67,18 @@ var ConnectorFunctionsHelper = (function (_GenericFinder) {
         value: function getdDummyFunctions() {
             this._setExtraHeaders(this._jsHeaders);
             this._id = 'js/dummyFunctions';
-            return this._execute();
+            //return this._execute();
+
+            var defered = _q2['default'].defer();
+            var promise = defered.promise;
+            defered.resolve({
+                data: {
+                    text: _dummyClientActionFunctions2['default']
+                },
+                statusCode: 200
+            });
+
+            return promise;
         }
 
         /**
@@ -77,7 +92,20 @@ var ConnectorFunctionsHelper = (function (_GenericFinder) {
         value: function getDocPrivateJavascriptFunctions() {
             this._setExtraHeaders(this._mdHeaders);
             this._id = 'doc/private/javascriptFunctions';
-            return this._execute();
+            //return this._execute();
+
+            var data = "### ejemplo de docu de connector functions";
+
+            var defered = _q2['default'].defer();
+            var promise = defered.promise;
+            defered.resolve({
+                data: {
+                    text: data
+                },
+                statusCode: 200
+            });
+
+            return promise;
         }
 
         /**
@@ -91,7 +119,20 @@ var ConnectorFunctionsHelper = (function (_GenericFinder) {
         value: function getDocJavascriptFunctions() {
             this._setExtraHeaders(this._mdHeaders);
             this._id = 'doc/javascriptFunctions';
-            return this._execute();
+            //return this._execute();
+
+            var data = "### ejemplo de docu de connector functions 2";
+
+            var defered = _q2['default'].defer();
+            var promise = defered.promise;
+            defered.resolve({
+                data: {
+                    text: data
+                },
+                statusCode: 200
+            });
+
+            return promise;
         }
 
         /**
