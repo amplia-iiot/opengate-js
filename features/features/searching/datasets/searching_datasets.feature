@@ -11,7 +11,7 @@ Feature: Searching datasets data
     Given an apikey user by "require-real-apikey"
     And an ogapi "datasets search" util with "require-real-organization" and "require-real-dataset"
     
-  Scenario: Execute searching with a invalid start limit
+  Scenario: Execute searching with a valid start limit
     
     And the start limit by "null" and size limit by "5"
     When I build it

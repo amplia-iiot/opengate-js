@@ -32,6 +32,9 @@ module.exports = {
             "datasets search": function(ogapi, param, param2) {
                 return ogapi.datasetSearchBuilder(param, param2);
             },
+            "timeseries search": function(ogapi, param, param2) {
+                return ogapi.timeserieSearchBuilder(param, param2);
+            },
             "channel finder": function(ogapi) {
                 return ogapi.newChannelFinder();
             },
@@ -49,6 +52,9 @@ module.exports = {
             },
             "datasets builder": function(ogapi) {
                 return ogapi.datasetsBuilder();
+            },
+            "timeseries builder": function(ogapi) {
+                return ogapi.timeseriesBuilder();
             },
             "channels search": function(ogapi) {
                 return ogapi.channelsSearchBuilder();
@@ -113,6 +119,9 @@ module.exports = {
             "dataset finder": function(ogapi) {
                 return ogapi.newDatasetFinder();
             },
+            "timeserie finder": function(ogapi) {
+                return ogapi.newTimeserieFinder();
+            },
             "organization finder": function(ogapi) {
                 return ogapi.newOrganizationFinder();
             },
@@ -126,7 +135,6 @@ module.exports = {
                 return ogapi.newProvisionProcessorsFinder();
             },
             "executions history builder": function(ogapi) {
-                console.log('gapi,', ogapi)
                 return ogapi.executionsHistorySearchBuilder();
             },
             "softwares search": function(ogapi) {

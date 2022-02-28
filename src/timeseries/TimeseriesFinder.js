@@ -34,7 +34,7 @@ export default class TimeseriesFinder extends GenericFinder {
      * @param {string} timeserieId - timeserie identifier
      * @return {Promise} 
      */
-     findByOrganizationAndDatasetId(organization, timeserieId) {
+     findByOrganizationAndTimeserieId(organization, timeserieId) {
         this._withId(organization + '/' + timeserieId);
         return this._execute();
     }

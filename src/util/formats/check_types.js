@@ -25,13 +25,18 @@ module.exports = {
         }
     },
     _checkStringAndPattern: function(parameter, pattern, name) {
-        if (typeof parameter !== 'string' || new RegExp(pattern).test(parameter) ) {
+        if (typeof parameter !== 'string' || !new RegExp(pattern).test(parameter) ) {
             throw new Error([{ message: 'OGAPI_STRING_PARAMETER', parameter: name }, { message: 'OGAPI_STRING_PATTERN', parameter: name, pattern: pattern }]);
         }
     },
     _checkStringAndLength: function(parameter, length, name) {
         if (typeof parameter !== 'string' || parameter.length > length) {
             throw new Error([{ message: 'OGAPI_STRING_PARAMETER', parameter: name }, { message: 'OGAPI_MAX_LENGTH', parameter: length }]);
+        }
+    },
+    _checkString: function(parameter, length, name) {
+        if (typeof parameter !== 'string') {
+            throw new Error([{ message: 'OGAPI_STRING_PARAMETER', parameter: name }]);
         }
     },
     _checkNumber: function(parameter, name) {
