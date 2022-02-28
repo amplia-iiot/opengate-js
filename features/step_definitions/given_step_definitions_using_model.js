@@ -24,7 +24,6 @@ Given(/^an ogapi "([^"]*)" util with responseId$/, function (utilName, callback)
         id = this.responseData.data.id;
     else if (this.responseData[0])
         id = this.responseData[0].id;
-    //console.log("ID_: " + JSON.stringify(id));
     this.util = this.utilsModel.util(utilName, this.ogapi, id);
     callback();
 });
@@ -38,7 +37,6 @@ Given(/^an ogapi "([^"]*)" util with "([^"]*)" and responseId$/, function (utilN
         id = this.responseData.data.id;
     else if (this.responseData[0])
         id = this.responseData[0].id;
-    //console.log("ID_: " + JSON.stringify(id));
     this.util = this.utilsModel.util(utilName, this.ogapi, param1, id);
     callback();
 });
@@ -54,7 +52,7 @@ Given(/^an ogapi "([^"]*)" util with...$/, function (utilName, table, callback) 
                 try {
                     param = JSON.parse(param);
                 } catch (err) {
-                    //console.info("No json");
+                    console.error('ERROR: ', err)
                 }
                 if (!isNaN(param))
                     param = param * 1;
@@ -204,7 +202,7 @@ Given(/^the "([^"]*)" with util "([^"]*)" and with...$/, function (setterName, u
                 try {
                     param = JSON.parse(param);
                 } catch (err) {
-                    //console.info("No json");
+                    console.error('ERROR: ', err)
                 }
                 if (!isNaN(param))
                     param = param * 1;
@@ -234,7 +232,7 @@ Given(/^the "([^"]*)" with util build "([^"]*)" and with...$/, function (setterN
                 try {
                     param = JSON.parse(param);
                 } catch (err) {
-                    //console.info("No json");
+                    console.error('ERROR: ', err)
                 }
                 if (!isNaN(param))
                     param = param * 1;
@@ -260,29 +258,23 @@ Given(/^the "([^"]*)" "([^"]*)"$/, function (setterName, setterValue, callback) 
         this.util[method](setterValue);
     } catch (err) {
         this.error = err;
-        //assert.ifError(this.error);
+        assert.ifError(this.error);
     }
-
     callback();
 });
 
 Given(/^the$/, function (table, callback) {
     var data = table.hashes();
-    // this.currentModel = model;
-    //this.currentEntity = entity;
-    //console.log(this.currentEntity);
     if (data.length > 0) {
         for (var i = 0; i < data.length; i++) {
             try {
                 var setterName = data[i].method;
                 var setterValue = data[i].value;
-                //console.log(setterName);
-                //console.log(JSON.parse(setterValue));
                 var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
                 this.util[method](JSON.parse(setterValue));
             } catch (err) {
+                console.error('ERROR: ', err)
                 this.error = err;
-                //console.log(err);
             }
         }
     }
@@ -300,7 +292,7 @@ Given(/^the "([^"]*)" with...$/, function (setterName, table, callback) {
                 try {
                     param = JSON.parse(param);
                 } catch (err) {
-                    //console.info("No json")M
+                    console.error('ERROR: ', err)
                 }
                 if (!isNaN(param)) {
                     param = param * 1;
@@ -316,8 +308,7 @@ Given(/^the "([^"]*)" with...$/, function (setterName, table, callback) {
         }
     } catch (err) {
         this.error = err;
-        console.log(err)
-        //assert.ifError(this.error);
+        console.error('ERROR: ', err)
     }
     callback();
 });
@@ -333,7 +324,7 @@ Given(/^the "([^"]*)" on util "([^"]*)" with...$/, function (setterName, utilAli
                 try {
                     param = JSON.parse(param);
                 } catch (err) {
-                    //console.info("No json")M
+                    console.error('ERROR: ', err)
                 }
                 if (!isNaN(param))
                     param = param * 1;
@@ -406,7 +397,6 @@ Given(/^the "([^"]*)" (false|true)$/, function (setterName, setterValue, callbac
 
 Given(/^the "([^"]*)"$/, function (setterName, setterValue, callback) {
     this.error = undefined;
-    //console.log(setterName);
     try {
         setterValue = setterValue.raw()[0];
         var myArr = Array.prototype.slice.apply(setterValue);
@@ -419,6 +409,7 @@ Given(/^the "([^"]*)"$/, function (setterName, setterValue, callback) {
         var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
         this.util[method](myArr);
     } catch (err) {
+        console.error('ERROR: ', err)
         this.error = err;
     }
 
@@ -549,12 +540,10 @@ Given(/^I read the file from "([^"]*)"$/, function (fileName, callback) {
 
 Given(/^I download and read the file from "([^"]*)"$/, function (fileName, callback) {
     // Write code here that turns the phrase above into concrete actions
-    console.log(this.responseData.data.body)
     if (this.responseData.data) {
         let writeStream = fs.createWriteStream(__dirname + fileName);
         writeStream.write(this.responseData.data.body)
         writeStream.on('finish', () => {
-        console.log('wrote all data to file');
         // for client-side
         /*var bytes = this.responseData.data.body.buffer
         var blob = new Blob([bytes], {type: "application/vnd.ms-excel"})
@@ -587,6 +576,23 @@ Given(/^an apikey user by "([^"]*)"$/, function (apikey, callback) {
         }
     };
 
+    this.ogapi = new OpengateAPI(config);
+
+    callback();
+});
+
+
+Given(/^with mock "([^"]*)" for "([^"]*)"$/, function (mock, identifier, callback) {
+    var config = {
+        'apiKey': this.apikey,
+        'url': this.test_url_north,
+        'timeout': 60000,
+        south: {
+            'url': this.test_url_south
+        }
+    };
+    var mocks = this.mocksModel[mock][identifier]
+    config.mocks = mocks
     this.ogapi = new OpengateAPI(config);
 
     callback();

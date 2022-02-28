@@ -29,7 +29,6 @@ export default class EntitySearch extends Search {
     execute() {
         var defered = q.defer();
         var promise = defered.promise;
-        console.log(JSON.stringify(this._filter()));
         var parameters = this._getUrlParameters();
         this._ogapi.Napi
             .post(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), parameters)

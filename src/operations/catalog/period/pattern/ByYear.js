@@ -15,7 +15,6 @@ export default class ByYear extends ByGeneric {
         if (_task) {
             var pattern = _task.schedule.repeating.pattern;
             if (pattern) {
-                //console.log("PATTERN: " + JSON.stringify(pattern));
                 var yearly = pattern.yearly;
                 if (yearly) {
                     this._day = yearly.day;

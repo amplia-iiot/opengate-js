@@ -125,17 +125,16 @@ Given(/^an update periodicity by operation's id$/, function () {
     var _this = this;
 
     var data;
-    //console.log("JOB: " + JSON.stringify(_this.responseData));
     data = _this.responseData.data;
     var jobId = data.job ? data.job.id : data.id;
-    //console.log("JOB_ID: " + jobId);
     try {
         return this.ogapi.operations.updatePeriodicityBuilder(jobId).then(function (builder) {
             _this.util = builder;
         }).catch(function (err) {
-
+            console.error('ERROR: ', err)
         });
     } catch (err) {
+        console.error('ERROR: ', err)
         return;
     }
 });
@@ -655,7 +654,7 @@ Given(/^execute each with stop date (\d+) "([^"]*)" later than the start date as
     try {
         executeEachNowLaterThan.call(this, stopDelay, delayType);
     } catch (err) {
-        //console.log(err);
+        console.error('ERROR: ', err);
         this.error = err.message;
     }
     callback();

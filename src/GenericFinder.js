@@ -80,20 +80,12 @@ export default class GenericFinder {
         let _error_not_found = this._error_not_found;
         this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters())
             .then((req) => {
-                //console.log("STATUS_CODE: " + JSON.stringify(req));
                 if (req.statusCode === 204) {
                     defered.reject({
                         error: _error_not_found,
                         statusCode: HttpStatus.NOT_FOUND
                     });
                 } else {
-                    // if (req.body.syncCache) {
-                    //     defered.resolve({
-                    //         data: req.body[_entity],
-                    //         statusCode: req.statusCode,
-                    //         syncCache: req.body.syncCache
-                    //     });
-                    // } else {
                     var data = req.body[_entity] && req.body.provision ? req.body : req.body[_entity];
                     defered.resolve({
                         data: data ? data : req.body,
@@ -104,7 +96,6 @@ export default class GenericFinder {
             })
             .catch((error) => {
                 // BUG RELACIONADO (http://cm.amplia.es/jira/browse/OGODM-3250)
-                //console.log("ERROR: " + error.statusCode);
                 if (error.statusCode === 400) {
                     error.statusCode = HttpStatus.NOT_FOUND;
                 }

@@ -10,7 +10,6 @@ Then(/^I create a "([^"]*)" from current "([^"]*)" using previous file and next 
     var deploymentElement;
 
     try {
-        //console.log("datos deploymentElements");
         var method = _this.model_match(_this.currentModel).setters(currentEntity)[setterName];
         deploymentElement = _this.util[method](_this.uploadProgress);
 
@@ -30,21 +29,16 @@ Then(/^I create a "([^"]*)" from current "([^"]*)" using previous file and next 
         }
 
         if (_this.fileData) {
-            //console.log("with file");
-            //return deploymentElement.create(_this.fileData).then(catchResponse).catch(catchErrorResponse);
             deploymentElement = deploymentElement.withFile(_this.fileData);
-
-            //console.log(JSON.stringify(deploymentElement));
 
             callback();
         } else {
-            //console.log("without file");
             _this.error = 'ERROR: No previous file loaded!!!';
             callback();
         }
     } catch (err) {
+        console.error('ERROR: ', err);
         _this.error = err;
-        //console.log("DE: " + err);
         callback();
     }
 });
@@ -55,12 +49,13 @@ Then(/^I delete the first deployment element from current bundle$/, function () 
     _this.responseData = undefined;
 
     function catchResponse (data) {
-        //console.log("OK: " + JSON.stringify(data));
+        //console.log('catchResponse', data)
         _this.responseData = data;
         _this.error = undefined;
     }
 
     function catchErrorResponse (err) {
+        console.error('catchErrorResponse', err)
         _this.responseData = err;
         _this.error = err;
     }
@@ -68,6 +63,7 @@ Then(/^I delete the first deployment element from current bundle$/, function () 
     try {
         return _this.util._deploymentElements[0].delete().then(catchResponse).catch(catchErrorResponse);
     } catch (err) {
+        console.error('ERROR: ', err)
         _this.error = err;
         return;
     }
@@ -88,7 +84,7 @@ When(/^I deploy it$/, function () {
     _this.responseData = undefined;
 
     function catchResponse (data) {
-        //console.log("OK: " + JSON.stringify(data));
+        //console.log('catchResponse', data)
         _this.responseData = data;
 
         _this.location = _this.responseData.location;
@@ -96,24 +92,22 @@ When(/^I deploy it$/, function () {
     }
 
     function catchErrorResponse (err) {
-        //console.log("NOK: " + JSON.stringify(err));
+        console.error('catchErrorResponse', err)
         _this.responseData = err;
         _this.error = err;
     }
 
     try {
-        //console.log("Creando bundle");
         if (_this.util.deployAndActivate) {
-            //console.log("Creando bundle 1");
             return _this.util.deployAndActivate().then(catchResponse).catch(catchErrorResponse);
         } else if (_this.util.deploy) {
-            //console.log("Creando bundle 2");
             return _this.util.deploy().then(catchResponse).catch(catchErrorResponse);
         } else {
             throw new Error("No deploy method available");
         }
 
     } catch (err) {
+        console.error('ERROR: ', err)
         _this.error = err;
         return;
     }
@@ -126,7 +120,7 @@ When(/^I activate it$/, function () {
     _this.responseData = undefined;
 
     function catchResponse (data) {
-        //console.log(JSON.stringify(data));
+        //console.log('catchResponse', data)
 
         _this.responseData = data;
 
@@ -134,17 +128,17 @@ When(/^I activate it$/, function () {
     }
 
     function catchErrorResponse (err) {
-        //console.log(JSON.stringify(err));
+        console.error('catchErrorResponse', err)
         _this.responseData = err;
         _this.error = err;
 
     }
 
     try {
-        //console.log("activating");
         return _this.util.activate().then(catchResponse).catch(catchErrorResponse);
 
     } catch (err) {
+        console.error('ERROR: ', err)
         _this.error = err;
         return;
     }
@@ -157,23 +151,23 @@ When(/^I deactivate it$/, function () {
     _this.responseData = undefined;
 
     function catchResponse (data) {
-        //console.log(JSON.stringify(data));
+        //console.log('catchResponse', data)
         _this.responseData = data;
 
         _this.error = undefined;
     }
 
     function catchErrorResponse (err) {
-        //console.log(JSON.stringify(err));
+        console.error('catchErrorResponse', err)
         _this.responseData = err;
         _this.error = err;
 
     }
 
     try {
-        //console.log("deactivating");
         return _this.util.deactivate().then(catchResponse).catch(catchErrorResponse);
     } catch (err) {
+        console.error('ERROR: ', err)
         _this.error = err;
         return;
     }

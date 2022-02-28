@@ -152,7 +152,6 @@ class BoxBuilder {
                         return _this._ogapi.Napi.put(_this._urlWithKey(), putObj, this._timeout, null, this._getUrlParameters())
                             .then((res) => {
                                 if (res.statusCode === HttpStatus.OK) {
-                                    console.log("CREATEOK: " + JSON.stringify(res));
                                     if (typeof _this._onCreated === "function") {
                                         _this._onCreated(res.header.location);
                                     }
@@ -175,7 +174,6 @@ class BoxBuilder {
                             });
                     } else {
                         if (res.statusCode === HttpStatus.CREATED) {
-                            console.log("CREATEOK: " + JSON.stringify(res));
                             if (typeof _this._onCreated === "function") {
                                 _this._onCreated(res.header.location);
                             }
@@ -199,9 +197,7 @@ class BoxBuilder {
 
                 })
                 .catch((errores) => {
-                    console.log("mostrando errores");
-                    console.log(JSON.stringify(errores));
-
+                    
                     if (errores.statusCode === HttpStatus.BAD_REQUEST) {
                         let ms = jp.query(errores, '$..message')[0];
 
@@ -284,7 +280,6 @@ class BoxBuilder {
             return _this._ogapi.Napi.put(_this._url, putObj, this._timeout, null, this._getUrlParameters())
                 .then((res) => {
                     if (res.statusCode === HttpStatus.OK) {
-                        console.log("CREATEOK: " + JSON.stringify(res));
                         if (typeof _this._onCreated === "function") {
                             _this._onCreated(res.header.location);
                         }
@@ -306,7 +301,6 @@ class BoxBuilder {
                     }
                 });
         }).catch((err) => {
-            console.error(err);
             defer.notify('OGAPI_SOMETHING_WRONG_UPDATING_DEVICE');
             defer.reject(err);
         });
@@ -349,7 +343,6 @@ class BoxBuilder {
             return _this._ogapi.Napi.patch(_this._url, putObj, this._timeout, null, this._getUrlParameters())
                 .then((res) => {
                     if (res.statusCode === HttpStatus.OK) {
-                        console.log("CREATEOK: " + JSON.stringify(res));
                         if (typeof _this._onCreated === "function") {
                             _this._onCreated(res.header.location);
                         }
@@ -371,7 +364,6 @@ class BoxBuilder {
                     }
                 });
         }).catch((err) => {
-            console.error(err);
             defer.notify('OGAPI_SOMETHING_WRONG_UPDATING_DEVICE');
             defer.reject(err);
         });
