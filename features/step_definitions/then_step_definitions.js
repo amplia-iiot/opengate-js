@@ -26,7 +26,6 @@ Then(/^response code should be: (\d+)$/, function (statusCode, callback) {
     var data;
     data = this.responseData ? this.responseData.statusCode : this.data;
     var statusCodeResp = data;
-    console.log('data!!', data)
     if (parseInt(statusCode) !== statusCodeResp && this.error) {
         throw new Error(Object.keys(this.error).length > 0 ? JSON.stringify(this.error) : this.error);
     }
@@ -40,7 +39,6 @@ Then(/^response code should be: "([^"]*)"$/, function (response, callback) {
     var data;
     data = this.responseData && this.responseData.data ? this.responseData.data : this.responseData;
     var statusCodeResp = data;
-    //console.log("RESPONSE_: " + JSON.stringify(this.responseData));
     if (response !== statusCodeResp && this.error) {
         throw new Error(JSON.stringify(this.error));
     }
@@ -53,7 +51,6 @@ Then(/^response data should has no elements$/, function (callback) {
     // Write code here that turns the phrase above into concrete actions
     var data;
     data = this.responseData;
-    //console.log("RESPONSE_: " + JSON.stringify(data));
     this.expect(data.length).to.equal(0);
     callback();
 });
@@ -62,7 +59,6 @@ Then(/^response data should has elements$/, function (callback) {
     // Write code here that turns the phrase above into concrete actions
     var data;
     data = this.responseData;
-    console.log("RESPONSE_: " + JSON.stringify(data));
     this.expect(data.length).to.not.equal(0);
     callback();
 });
@@ -118,7 +114,6 @@ Then(/^response must have attached an entity list with "([^"]*)" type defined by
             for (var i = 0; i < table.raw().length; i++) {
                 var provCustomId = table.raw()[i];
                 var operationFound = responseData.operations.find(_findEntityIntoOperationsResponse, provCustomId);
-                //console.info("Trying to find operation with entity <'" + provCustomId + "'>");
                 expect(operationFound).to.exist;
             }
         }).
@@ -342,8 +337,6 @@ Then(/^throws an error equal to "([^"]*)"$/, function (errorMessage, callback) {
 });
 
 Then(/^does not throws an error$/, function (callback) {
-    console.log('pruebaaaaaaaaaaaaaaaaaaa')
-    console.log('error', this.error);
     this.expect(this.error).not.to.exist;
     callback();
 });

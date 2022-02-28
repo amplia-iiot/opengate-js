@@ -46,7 +46,7 @@ gulp.task('cucumber:default', function(done) {
         .pipe(cucumber(cucumberFinalOptions))
         .on('error', function(error) {
             // we have an error
-            console.log(error);
+            console.error('ERROR: ', error);
             done();
         }).on('end', function() {
             // in case of success

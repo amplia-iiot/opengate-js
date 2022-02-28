@@ -538,7 +538,6 @@ export default class BaseOperationBuilder {
                         "It happened because you passed a lot of time between configuration of an operation and create the operation.");
                 }
             }
-            //console.log("Start date configured on operation period is later than current date. Start date will be changed to  current date.");
             delete taskObj.task.schedule.start;
         }
         return taskObj;

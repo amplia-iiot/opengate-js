@@ -35,7 +35,6 @@ export default class provisionProcessorsFinder extends GenericFinder {
      * @return {Promise} 
      */
      findByOrganizationAndProvisionProcessorId(organization, identifier) {
-         console.log('estoy aqui', organization + '/' + identifier)
         this._withId(organization + '/' + identifier);
         return this._execute();
     }

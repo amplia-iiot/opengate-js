@@ -16,7 +16,6 @@ export default class Operation {
         this._ogapi = ogapi;
         this._resource = resource;
         this._postObj = postObj;
-        //console.log("C_OPERATION: " + JSON.stringify(this._postObj));
     }
 
     /**
@@ -27,7 +26,6 @@ export default class Operation {
      */
     execute() {
         let defered = q.defer();
-        //console.log("OPERATIONS: " + JSON.stringify(this._postObj));
         this._ogapi.Napi
             .post(this._resource, this._postObj)
             .then((response) => {

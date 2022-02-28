@@ -182,7 +182,6 @@ export default class BaseSearch {
         let paging = false;
         //Funcion que realizara la llamada al search paginado y, de forma recursiva, llamara a todas las paginas
         function loadAll() {
-            console.log(JSON.stringify(filter));
             if (_this.cancel || typeof _this.cancel === 'string') {
                 var message = typeof _this.cancel === 'string' ? _this.cancel : 'Cancel process';
                 defered.reject({

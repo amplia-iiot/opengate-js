@@ -25,11 +25,9 @@ import BaseProvision from '../../provision/BaseProvision';
 export default class DeploymentElement extends BaseProvision {
     constructor(context, ogapi, url, progressEvent) {
         super(ogapi, url + "/deploymentElements");
-        // this.Napi = Napi;
         this._progressEvent = progressEvent;
 
         this._resource = url + "/deploymentElements";
-        //console.log(this._resource);
         this.validation = false;
         this._name = undefined;
         this._version = undefined;
@@ -393,7 +391,6 @@ export default class DeploymentElement extends BaseProvision {
      * @return {DeploymentElement}
      */
     withFile(rawFile) {
-        //console.log(rawFile);
         this._rawFile = rawFile;
         return this;
     }
@@ -439,7 +436,6 @@ export default class DeploymentElement extends BaseProvision {
                 oldPath: this._oldPath || undefined
             }
         };
-        //console.log(JSON.stringify(meta));
         return meta;
     }
 
@@ -535,7 +531,6 @@ export default class DeploymentElement extends BaseProvision {
      * @return {Promise}     
      */
     deploy() {
-        //console.log("creando antes file: " + this._rawFile);
         return this.createWithFile(this._rawFile);
     }
 

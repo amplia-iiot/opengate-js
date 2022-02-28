@@ -13,7 +13,6 @@ export default class Geocluster extends BaseProvision {
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
-        console.log("ogapi", ogapi)
         super(ogapi, "/geocluster", undefined, 'identifier');
     }
 

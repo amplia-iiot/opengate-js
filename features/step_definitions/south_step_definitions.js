@@ -25,6 +25,7 @@ Given(/^I want to create (a|an) "([^"]*)" with this element:$/, function (dummyW
 
         callback();
     } catch (err) {
+        console.error('ERROR: ', err)
         _this.error = err;
 
         callback();
@@ -32,8 +33,6 @@ Given(/^I want to create (a|an) "([^"]*)" with this element:$/, function (dummyW
 });
 
 Given(/^I want to define "([^"]*)" in "([^"]*)"$/, function (entityName, entityParent, callback) {
-    //console.log(entityName);
-    //console.log(entityParent);
     var _this = this;
     _this.error = undefined;
     var model = "create";
@@ -49,6 +48,7 @@ Given(/^I want to define "([^"]*)" in "([^"]*)"$/, function (entityName, entityP
         callback();
 
     } catch (err) {
+        console.error('ERROR: ', err)
         _this.error = err;
         callback();
     }

@@ -248,7 +248,6 @@ export default class Bundles extends BaseProvision {
                 }
             }, undefined, this._getExtraHeaders(), this._getUrlParameters())
             .then((res) => {
-                //console.log(JSON.stringify(res));
                 if (res.statusCode === 200) {
                     defered.resolve({
                         statusCode: res.statusCode
@@ -264,7 +263,6 @@ export default class Bundles extends BaseProvision {
                 }
             })
             .catch((error) => {
-                //console.log(error);
                 defered.reject(error);
             });
         return promise;
@@ -313,11 +311,9 @@ export default class Bundles extends BaseProvision {
             let de = 0;
             for (de = 0; de < _this._deploymentElements.length; de++) {
                 let val = 0;
-                //console.log(de + ":" + JSON.stringify(_this._deploymentElements[de]));
 
                 if (_this._deploymentElements[de]._validators && _this._deploymentElements[de]._validators.length > 0) {
                     for (val = 0; val < _this._deploymentElements[de]._validators.length; val++) {
-                        //console.log(JSON.stringify(_this._deploymentElements[de]._validators[val]));
                         if (_this._deploymentElements[de]._validators[val].mode === 'TRUSTED_BOOT') {
                             totalTB += 1;
                         }
@@ -336,7 +332,6 @@ export default class Bundles extends BaseProvision {
             if (res.statusCode === 201) {
                 let bundleLocation = res;
                 if (_this._deploymentElements && _this._deploymentElements.length > 0) {
-                    //console.log("previa de 2: ");
                     let dePromises = [];
                     _this._deploymentElements.forEach(function(deTmp) {
                         dePromises.push(deTmp.deploy());
@@ -368,8 +363,6 @@ export default class Bundles extends BaseProvision {
         };
 
         let onCreateBundleError = function(err) {
-            //console.log("Create error: " + JSON.stringify(err));
-            //console.log('borrando bundle');
             _this.delete();
             defered.reject(err);
         };
