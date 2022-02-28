@@ -2,6 +2,7 @@
 
 import BaseProvision from '../provision/BaseProvision';
 import checkType from '../util/formats/check_types'
+export const URL = 'timeseries/provision/organizations/';
 /**
  * This is a base object that contains all you can do about Timeseries.
  */
@@ -16,10 +17,8 @@ export default class Timeseries extends BaseProvision {
     }
 
     _buildURL() {
-        const url = '/timeseries/provision/organizations/' + this._organization + '/' + this._identifier;
-        const deleteUrl = (this._deleteData && '/data') || ''
-        this._deleteData = false
-        return url + deleteUrl;
+        const url = URL + this._organization + '/' + this._identifier;
+        return url;
     }
 
     /**
@@ -129,7 +128,7 @@ export default class Timeseries extends BaseProvision {
     }
 
     _composeElement() {
-        this._resource = '/timeseries/provision/organizations/' + this._organization;
+        this._resource = URL + this._organization;
         if(this._timeBucket === 0){
             checkType._checkStringAndPattern(this._bucketColumn, "^[a-zA-Z0-9 _-]*$", 'bucketColumn');
         }
@@ -146,18 +145,6 @@ export default class Timeseries extends BaseProvision {
         return timeserie;
     }
 
-    /**
-     * Delete data aplying filter in request body
-     * @return {Promise} 
-     * @property {function (result:object, statusCode:number)} then - When request it is OK
-     * @property {function (error:string)} catch - When request it is NOK
-     * @example
-     * ogapi.timeseriesBuilder().withIdentifier('identifier').deleteData()
-     */
-    deleteData() {
-        this._deleteData = true
-        return this.delete()
-    }
     /**
      * This method invalidates the update option
      * @throws {Allways} Timeseries cannot be updated.

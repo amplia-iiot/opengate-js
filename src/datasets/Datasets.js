@@ -17,7 +17,7 @@ export default class Datasets extends BaseProvision {
     }
 
     _buildURL() {
-        let url = '/datasets/provision/organizations/' + this._organization + '/' + this._identifier;
+        let url = 'datasets/provision/organizations/' + this._organization + '/' + this._identifier;
         return url;
     }
 
@@ -88,7 +88,7 @@ export default class Datasets extends BaseProvision {
     
 
     _composeElement() {
-        this._resource = '/datasets/provision/organizations/' + this._organization;
+        this._resource = 'datasets/provision/organizations/' + this._organization;
         let dataset = {
             name: this._name,
             description: this._description,

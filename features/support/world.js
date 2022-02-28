@@ -11,6 +11,7 @@ findModel = require('./find_model');
 findCreateModel = require('./create_provision_model');
 findDeleteModel = require('./delete_provision_model'); 
 searchingModel = require('./searching_model');
+mocksModel = require('./mocks/mockModel')
 
 function World() {
     this.test_url_north = process.env.API_NORTH_INTERNAL || 'https://IP:PORT/north/v80';
@@ -24,6 +25,7 @@ function World() {
     this.findCreateModel = findCreateModel;
     this.findDeleteModel = findDeleteModel;
     this.searchingModel = searchingModel;
+    this.mocksModel = mocksModel;
 
     this.model_match = function (model) {
         return {
