@@ -12,7 +12,7 @@ export default class ConnectorFunctionsFinder extends GenericFinder {
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, 'connectorfunctions/provision/organizations', "connectorfunctions", 'Connector functions not found');
+        super(ogapi, 'connectorFunctions/provision/organizations', "connectorFunctions", 'Connector functions not found');
     }
 
     /**

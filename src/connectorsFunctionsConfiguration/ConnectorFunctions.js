@@ -184,7 +184,7 @@ export default class ConnectorFunctions extends BaseProvision {
     }
 
     addSouthCriteria(criteria) {
-        if (typeof type !== 'string')
+        if (typeof criteria !== 'string')
             throw new Error('South criteria must be a string');
         
         if (!this._southCriterias) {
@@ -228,7 +228,9 @@ export default class ConnectorFunctions extends BaseProvision {
             "identifier": this._identifier,
             "name": this._name,
             "operationalStatus": this._operationalStatus,
+            "operationName": this._type !== 'COLLECTION'?this._operationName:undefined,
             "type": this._type,
+            "javascript": this._javascript,
             "description": (this._description ? this._description : undefined),
             "northCriterias": this._type === 'REQUEST'?this._northCriterias : undefined,
             "southCriterias": this._type !== 'REQUEST'?this._southCriterias : undefined
@@ -249,7 +251,7 @@ export default class ConnectorFunctions extends BaseProvision {
     }
 
     _buildURL() {
-        return "connectorfunctions/" + this._resource + "/" + this._organization + "/channels/" + this._channel + "/";
+        return "connectorFunctions/" + this._resource + "/" + this._organization + "/channels/" + this._channel + "/";
     }
 
     /** 

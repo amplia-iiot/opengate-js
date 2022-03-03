@@ -131,61 +131,54 @@ export default class NorthAmpliaREST {
         });        
         */
 
-        mock.get(_options.url + '/connectorfunctions/provision/organizations/:organization/channels/:channel', function(req) {
-            return {
-                body: {
-                    connectorFunctions: [
-                        {
-                            "northCriterias": [
-                              {
-                                "path": "provision.device.model._current.value.manufacturer",
-                                "value": "Siemens"
-                              },
-                              {
-                                "path": "provision.device.model._current.value.name",
-                                "value": "Logo"
-                              },
-                              {
-                                "path": "device.powersupply.battery.charge._current.value",
-                                "value": 56
-                              },
-                              {
-                                "path": "device.communicationModules[0].name._current.value",
-                                "value": "prueba de corchetes"
-                              }
-                            ],
-                            "javascript": "var myPayloadasJson = JSON.parse(message);",
-                            "operationName": "ADMINISTRATIVE_STATUS_CHANGE",
-                            "type": "REQUEST",
-                            "description": "Request test CF",
-                            "name": "Connector function 1",
-                            "identifier": "1234-1234-1234-1234",
-                            "operationalStatus": "PRODUCTION"
-                        },
-                        {
-                            "southCriterias": ['http://url.valida.com?asdfasdf=true', 'mqtt://otra/queesvalida'],
-                            "javascript": "var myPayloadasJson = JSON.parse(message);",
-                            "type": "RESPONSE",
-                            "operationName": "ADMINISTRATIVE_STATUS_CHANGE",
-                            "description": "Request test CF",
-                            "name": "Connector function 2",
-                            "identifier": "4321-4321",
-                            "operationalStatus": "TEST"
-                        },
-                        {
-                            "southCriterias": ['http://url.valida.com?asdfasdf=true', 'mqtt://otra/queesvalida'],
-                            "javascript": "var myPayloadasJson = JSON.parse(message);",
-                            "type": "COLLECTION",
-                            "description": "Request test CF COLLECTION",
-                            "name": "Connector function 3",
-                            "identifier": "666666666-66666",
-                            "operationalStatus": "DISABLED"
-                        }
-                    ]
-                },
-                statusCode: 200
-            };
-        });  
+        // mock.get(_options.url + '/connectorfunctions/provision/organizations/:organization/channels/:channel', function(req) {
+        //     return {
+        //         body: {
+        //             "connectorFunctions": [
+        //               {
+        //                 "identifier": "ebe9fbb2-3a53-4770-87bc-b05742827489",
+        //                 "connectorFunctionName": "connectorFunction_1",
+        //                 "description": "First test",
+        //                 "operationalStatus": "PRODUCTION",
+        //                 "type": "COLLECTION",
+        //                 "southCriterias": [
+        //                   "mqtt://just_a_test"
+        //                 ],
+        //                 "javascript": "var get_text_request = { 'method': 'GET', 'uri': 'http://localhost:8080/textResponse', 'headers': { 'Accept': 'text/plain' } } var get_binary_request = { 'method': 'GET', 'uri': 'http://localhost:8080/binaryResponse', 'headers': { 'Accept': 'application/octet-stream' } } var post_binary_request = { 'method': 'POST', 'uri': 'http://localhost:8080/binaryBody', 'headers': { 'Content-Type': 'application/octet-stream', 'Accept': 'text/plain' } } response = doHttpRequestInternal(get_text_request, binaryObject); printInfoLogInternal('Get text done: ' + JSON.stringify(response));return 'good bye';"
+        //               },
+        //               {
+        //                 "identifier": "b0af2fe7-b320-4ab9-8b14-7e20e4c61d72",
+        //                 "connectorFunctionName": "operation_request_1",
+        //                 "description": "First test",
+        //                 "operationalStatus": "PRODUCTION",
+        //                 "operationName": "NO_WORKING_OPERATION",
+        //                 "type": "REQUEST",
+        //                 "northCriterias": [
+        //                   {
+        //                     "path": "provision.device.model._current.value.manufacturer",
+        //                     "value": "manufacturerName"
+        //                   }
+        //                 ],
+        //                 "javascript": "var get_text_request = { 'method': 'GET', 'uri': 'http://localhost:8080/textResponse', 'headers': { 'Accept': 'text/plain' } } var get_binary_request = { 'method': 'GET', 'uri': 'http://localhost:8080/binaryResponse', 'headers': { 'Accept': 'application/octet-stream' } } var post_binary_request = { 'method': 'POST', 'uri': 'http://localhost:8080/binaryBody', 'headers': { 'Content-Type': 'application/octet-stream', 'Accept': 'text/plain' } } response = doHttpRequestInternal(get_text_request, binaryObject); printInfoLogInternal('Get text done: ' + JSON.stringify(response));return 'good bye';"
+        //               },
+        //               {
+        //                 "identifier": "08caebd3-3d60-4f75-a5b7-32239ceb8c60",
+        //                 "connectorFunctionName": "collection_1",
+        //                 "description": "First test",
+        //                 "operationalStatus": "PRODUCTION",
+        //                 "type": "COLLECTION",
+        //                 "southCriterias": [
+        //                   "mqtt://odm/reponse/undeterminedDevice"
+        //                 ],
+        //                 "javascript": "return 'printInfoLogInternal('hello world');hello world';"
+        //               }
+        //             ]
+        //           }
+        //         ,
+        //         statusCode: 200
+        //     };
+        // });
+
     }
 
     _applyMocks (mocks) {

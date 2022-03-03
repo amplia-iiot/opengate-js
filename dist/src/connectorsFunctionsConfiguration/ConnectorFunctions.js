@@ -218,7 +218,7 @@ var ConnectorFunctions = (function (_BaseProvision) {
     }, {
         key: 'addSouthCriteria',
         value: function addSouthCriteria(criteria) {
-            if (typeof type !== 'string') throw new Error('South criteria must be a string');
+            if (typeof criteria !== 'string') throw new Error('South criteria must be a string');
 
             if (!this._southCriterias) {
                 this._southCriterias = [];
@@ -264,7 +264,9 @@ var ConnectorFunctions = (function (_BaseProvision) {
                 "identifier": this._identifier,
                 "name": this._name,
                 "operationalStatus": this._operationalStatus,
+                "operationName": this._type !== 'COLLECTION' ? this._operationName : undefined,
                 "type": this._type,
+                "javascript": this._javascript,
                 "description": this._description ? this._description : undefined,
                 "northCriterias": this._type === 'REQUEST' ? this._northCriterias : undefined,
                 "southCriterias": this._type !== 'REQUEST' ? this._southCriterias : undefined
@@ -284,7 +286,7 @@ var ConnectorFunctions = (function (_BaseProvision) {
     }, {
         key: '_buildURL',
         value: function _buildURL() {
-            return "connectorfunctions/" + this._resource + "/" + this._organization + "/channels/" + this._channel + "/";
+            return "connectorFunctions/" + this._resource + "/" + this._organization + "/channels/" + this._channel + "/";
         }
 
         /** 

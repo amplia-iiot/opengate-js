@@ -33,7 +33,7 @@ var ConnectorFunctionsFinder = (function (_GenericFinder) {
     function ConnectorFunctionsFinder(ogapi) {
         _classCallCheck(this, ConnectorFunctionsFinder);
 
-        _get(Object.getPrototypeOf(ConnectorFunctionsFinder.prototype), 'constructor', this).call(this, ogapi, 'connectorfunctions/provision/organizations', "connectorfunctions", 'Connector functions not found');
+        _get(Object.getPrototypeOf(ConnectorFunctionsFinder.prototype), 'constructor', this).call(this, ogapi, 'connectorFunctions/provision/organizations', "connectorFunctions", 'Connector functions not found');
     }
 
     /**
