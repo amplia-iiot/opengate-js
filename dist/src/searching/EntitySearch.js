@@ -57,7 +57,6 @@ var EntitySearch = (function (_Search) {
         value: function execute() {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            console.log(JSON.stringify(this._filter()));
             var parameters = this._getUrlParameters();
             this._ogapi.Napi.post(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), parameters).then(function (response) {
                 var resultQuery = response.body;

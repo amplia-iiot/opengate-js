@@ -32,7 +32,6 @@ var Operation = (function () {
         this._ogapi = ogapi;
         this._resource = resource;
         this._postObj = postObj;
-        //console.log("C_OPERATION: " + JSON.stringify(this._postObj));
     }
 
     /**
@@ -48,7 +47,6 @@ var Operation = (function () {
             var _this = this;
 
             var defered = _q2['default'].defer();
-            //console.log("OPERATIONS: " + JSON.stringify(this._postObj));
             this._ogapi.Napi.post(this._resource, this._postObj).then(function (response) {
                 var data = undefined;
                 try {

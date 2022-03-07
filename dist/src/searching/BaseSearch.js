@@ -113,6 +113,35 @@ var BaseSearch = (function () {
             return promise;
         }
 
+        /** TODO: no implementado todavía. Ver tarea OUW-3577
+         * This invoke a request to OpenGate North API and the callback is managed by promises
+         * @return {Promise}
+         * @property {function (result:object, statusCode:number)} then - When request it is OK
+         * @property {function (error:string)} catch - When request it is NOK
+         
+        delete() {
+            var defered = q.defer();
+            var promise = defered.promise;
+            this._ogapi.Napi
+                .delete(this._resource, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._filter(),)
+                .then((response) => {
+                    if (response.statusCode === 200) {
+                        defered.resolve({
+                            statusCode: response.statusCode
+                        });
+                    } else {
+                        defered.reject({
+                            errors: response.errors,
+                            statusCode: response.statusCode
+                        });
+                    }
+                })
+                .catch((error) => {
+                    defered.reject(error);
+                });
+            return promise;
+        }*/
+
         /**
          * This invoke a request to OpenGate North API and the callback is managed by promises
          * @return {Promise} - Promise with data with format csv
@@ -180,7 +209,6 @@ var BaseSearch = (function () {
             var paging = false;
             //Funcion que realizara la llamada al search paginado y, de forma recursiva, llamara a todas las paginas
             function loadAll() {
-                console.log(JSON.stringify(filter));
                 if (_this.cancel || typeof _this.cancel === 'string') {
                     var message = typeof _this.cancel === 'string' ? _this.cancel : 'Cancel process';
                     defered.reject({

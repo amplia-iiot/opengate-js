@@ -33,16 +33,6 @@ function ParameterBuilderFactory(ogapi, parameters, parent) {
 	var _ogapi = ogapi;
 	var _parent = parent;
 
-	// const paramsExample = jsf.generate(parameters);
-
-	// for(let i in paramsExample){
-	// 	// let param = paramsExample[i];
-	// 	// this[createBuilderName(param)] = function (value) {
-	// 	// 	return new BaseParameterBuilderWithParent(_ogapi, param, _parent);
-	// 	// };
-	// 	console.log('parameter-' + i)
-	// }
-
 	// Ejemplo, name = "profile" => return "newProfileParamBuilder"
 	function createBuilderName(name) {
 		var firstChar = name[0].toUpperCase();

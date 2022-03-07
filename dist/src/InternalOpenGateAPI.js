@@ -82,6 +82,10 @@ var _datasetsDatasets = require('./datasets/Datasets');
 
 var _datasetsDatasets2 = _interopRequireDefault(_datasetsDatasets);
 
+var _timeseriesTimeseries = require('./timeseries/Timeseries');
+
+var _timeseriesTimeseries2 = _interopRequireDefault(_timeseriesTimeseries);
+
 var _searchingBuilderChannelsSearchBuilder = require('./searching/builder/ChannelsSearchBuilder');
 
 var _searchingBuilderChannelsSearchBuilder2 = _interopRequireDefault(_searchingBuilderChannelsSearchBuilder);
@@ -105,6 +109,10 @@ var _rulesConfigurationRuleConfigurationsHelper2 = _interopRequireDefault(_rules
 var _datasetsDatasetFinder = require('./datasets/DatasetFinder');
 
 var _datasetsDatasetFinder2 = _interopRequireDefault(_datasetsDatasetFinder);
+
+var _timeseriesTimeseriesFinder = require('./timeseries/TimeseriesFinder');
+
+var _timeseriesTimeseriesFinder2 = _interopRequireDefault(_timeseriesTimeseriesFinder);
 
 var _operationTypesOperationType = require('./operationTypes/OperationType');
 
@@ -454,6 +462,10 @@ var _searchingBuilderDatasetSearchBuilder = require('./searching/builder/Dataset
 
 var _searchingBuilderDatasetSearchBuilder2 = _interopRequireDefault(_searchingBuilderDatasetSearchBuilder);
 
+var _searchingBuilderTimeserieSearchBuilder = require('./searching/builder/TimeserieSearchBuilder');
+
+var _searchingBuilderTimeserieSearchBuilder2 = _interopRequireDefault(_searchingBuilderTimeserieSearchBuilder);
+
 var _searchingBuilderCountryCodesSearchBuilder = require('./searching/builder/CountryCodesSearchBuilder');
 
 var _searchingBuilderCountryCodesSearchBuilder2 = _interopRequireDefault(_searchingBuilderCountryCodesSearchBuilder);
@@ -727,6 +739,16 @@ var InternalOpenGateAPI = (function () {
         key: 'newDatasetFinder',
         value: function newDatasetFinder() {
             return new _datasetsDatasetFinder2['default'](this);
+        }
+
+        /**
+         * This return a to find Timeserie configuration
+         * @return {TimeserieFinder}
+         */
+    }, {
+        key: 'newTimeserieFinder',
+        value: function newTimeserieFinder() {
+            return new _timeseriesTimeseriesFinder2['default'](this);
         }
 
         /**
@@ -1194,6 +1216,16 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
+         * This return a TimeserieSearchBuilder to build a specific TimeserieSearch
+         * @return {TimeserieSearchBuilder}
+         */
+    }, {
+        key: 'timeserieSearchBuilder',
+        value: function timeserieSearchBuilder(organization, timeserie) {
+            return new _searchingBuilderTimeserieSearchBuilder2['default'](this, organization, timeserie);
+        }
+
+        /**
          * This return a PlansSearchBuilder to build a specific PlansSearchBuilder
          * @return {PlansSearchBuilder}
          */
@@ -1534,6 +1566,16 @@ var InternalOpenGateAPI = (function () {
         key: 'datasetsBuilder',
         value: function datasetsBuilder() {
             return new _datasetsDatasets2['default'](this);
+        }
+
+        /**
+         * This return a TimeserieBuilder to build a specific timeserie
+         * @return {Timeseries}
+         */
+    }, {
+        key: 'timeseriesBuilder',
+        value: function timeseriesBuilder() {
+            return new _timeseriesTimeseries2['default'](this);
         }
 
         /**

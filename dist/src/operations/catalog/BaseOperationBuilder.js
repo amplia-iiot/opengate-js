@@ -611,7 +611,6 @@ var BaseOperationBuilder = (function () {
                         throw new Error("Can not create operation object because stop operation period is earlier than current date. " + "It happened because you passed a lot of time between configuration of an operation and create the operation.");
                     }
                 }
-                //console.log("Start date configured on operation period is later than current date. Start date will be changed to  current date.");
                 delete taskObj.task.schedule.start;
             }
             return taskObj;

@@ -59,7 +59,6 @@ var OperationActions = (function () {
             };
             this._key = "job";
             this._resource = this._resource + JOB_RESOURCE + this._operationId;
-            //console.log("active with config: " + JSON.stringify(config));
             return this._update(config);
         }
 
@@ -83,7 +82,6 @@ var OperationActions = (function () {
             };
             this._key = "job";
             this._resource = this._resource + JOB_RESOURCE + this._operationId;
-            //console.log("pause with config: " + JSON.stringify(config));
             return this._update(config);
         }
 
@@ -100,7 +98,6 @@ var OperationActions = (function () {
     }, {
         key: 'cancel',
         value: function cancel() {
-            //console.log("cancel");
             this._id = this._operationId;
             this._resource = this._resource + JOB_RESOURCE + this._id;
             return this._cancel(this._resource);
@@ -125,7 +122,6 @@ var OperationActions = (function () {
 
             this._key = "task";
             this._resource = this._resource + TASK_RESOURCE;
-            //console.log("active with config: " + JSON.stringify(config));
             return this._periodicityActions("ACTIVE", config);
         }
 
@@ -145,10 +141,8 @@ var OperationActions = (function () {
             var config = {
                 active: false
             };
-            //console.log("pause with config: " + JSON.stringify(config));
             this._key = "task";
             this._resource = this._resource + TASK_RESOURCE;
-            //console.log("PAUSE_PERIODICITY_resource: " + this._resource);
             return this._periodicityActions("PAUSE", config);
         }
 
@@ -165,7 +159,6 @@ var OperationActions = (function () {
     }, {
         key: 'cancelPeriodicity',
         value: function cancelPeriodicity() {
-            //console.log("cancel");
             this._resource = this._resource + TASK_RESOURCE;
             return this._periodicityActions("CANCEL");
         }
@@ -190,7 +183,6 @@ var OperationActions = (function () {
                     }
                 }
             };
-            //console.log("executeNow with config: " + JSON.stringify(config));
             return this._readAndUpdate(config, true);
         }
 
@@ -208,7 +200,6 @@ var OperationActions = (function () {
     }, {
         key: 'executeLater',
         value: function executeLater(minutes) {
-            //console.log("typeof minutes: " + typeof (minutes));
             if (typeof minutes !== "number") {
                 throw new Error("Parameter minutes must be typeof number");
             }
@@ -221,7 +212,6 @@ var OperationActions = (function () {
                     }
                 }
             };
-            //console.log("executeLater with config: " + JSON.stringify(config));
             return this._readAndUpdate(config);
         }
 
@@ -245,7 +235,6 @@ var OperationActions = (function () {
                     callback: url
                 }
             };
-            //console.log("changeCallback with config: " + JSON.stringify(config));
             return this._readAndUpdate(config);
         }
     }, {
@@ -253,11 +242,9 @@ var OperationActions = (function () {
         value: function _cancel() {
             var _this2 = this;
 
-            //console.log("cancel");
             var defered = _q2['default'].defer();
             var promise = defered.promise;
             this._ogapi.Napi['delete'](this._resource).then(function (response) {
-                //console.log("cancel response: " + JSON.stringify(response));
                 if (response.statusCode === 200) {
                     defered.resolve({
                         statusCode: response.statusCode,
@@ -272,7 +259,6 @@ var OperationActions = (function () {
                     });
                 }
             })['catch'](function (error) {
-                //console.log("cancel error: " + JSON.stringify(error));
                 defered.reject(_this2._formatError(error));
             });
             return promise;
@@ -280,22 +266,17 @@ var OperationActions = (function () {
     }, {
         key: '_periodicityActions',
         value: function _periodicityActions(action, config) {
-            //console.log("_periodicityActions");
             var _this = this;
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            //console.log(_this._operationId);
-            //console.log("OPERATION_ID: " + this._operationId);
             _this._ogapi.newOperationFinder().findById(_this._operationId).then(function (response) {
                 var data = response.data;
                 if (!data || Object.keys(data).length == 0) {
-                    //console.log("BUG");
                     //BUG http://cm.amplia.es/jira/browse/ODMQA-1057
                     defered.reject({
                         errors: "Operation with id " + _this._operationId + " not exists"
                     });
                 } else {
-                    //console.log("RESPONSE_DATA: " + JSON.stringify(data));
                     var periodicityId = data.taskId;
                     if (!periodicityId) {
                         defered.reject({
@@ -303,7 +284,6 @@ var OperationActions = (function () {
                         });
                     } else {
                         _this._resource = _this._resource + periodicityId;
-                        //console.log("RESOURCE_DATA: " + _this._resource);
                         switch (action) {
                             case "PAUSE":
                             case "ACTIVE":
@@ -329,7 +309,6 @@ var OperationActions = (function () {
                     }
                 }
             })['catch'](function (error) {
-                //console.log("ERROR: " + error);
                 defered.reject(error);
             });
             return promise;
@@ -350,12 +329,10 @@ var OperationActions = (function () {
     }, {
         key: '_readAndUpdate',
         value: function _readAndUpdate(config, forceToActivate) {
-            //console.log("_readAndUpdate with config: " + JSON.stringify(config) + " and forceToActivate: " + forceToActivate);
             var defered = _q2['default'].defer();
             var promise = defered.promise;
             var _this = this;
             _this._ogapi.newOperationFinder().findById(_this._operationId).then(function (response) {
-                //console.log("_readAndUpdate find response: " + JSON.stringify(response));
                 var data = response.data;
                 if (!data) {
                     //BUG http://cm.amplia.es/jira/browse/ODMQA-1057
@@ -383,7 +360,6 @@ var OperationActions = (function () {
                     })();
                 }
             })['catch'](function (error) {
-                //console.log("_readAndUpdate find error: " + JSON.stringify(error));
                 defered.reject(_this._formatError(error));
             });
 
@@ -406,18 +382,12 @@ var OperationActions = (function () {
         value: function _update(config, forceToActivate) {
             var _this3 = this;
 
-            //console.log("_update with config: " + JSON.stringify(config) + " and forceToActivate: " + forceToActivate);
-            //console.log("_update: " + JSON.stringify(config));
             var _this = this;
             var defered = _q2['default'].defer();
             var promise = defered.promise;
             var obj = {};
-            //console.log("_update_key: " + _this._key);
             obj[_this._key] = config;
-            //console.log("_update_obj: " + JSON.stringify(obj));
-            //console.log("_update_resource: " + this._resource);
             this._ogapi.Napi.put(this._resource, obj).then(function (response) {
-                //console.log("_update response: " + JSON.stringify(response));
                 if (forceToActivate) {
                     _this.active().then(function (response) {
                         defered.resolve(response);
@@ -440,7 +410,6 @@ var OperationActions = (function () {
                     }
                 }
             })['catch'](function (error) {
-                //console.log("_update error: " + error);
                 defered.reject(_this3._formatError(error));
             });
             return promise;
@@ -456,7 +425,6 @@ var OperationActions = (function () {
                     message: error
                 } : error];
             }
-            //console.log("_formatError: " + error);
             return error;
         }
     }]);

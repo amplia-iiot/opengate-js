@@ -59,10 +59,8 @@ var Operations = (function () {
             var promise = defered.promise;
             var _this = this;
             this._ogapi.newOperationFinder().findPeriodicityById(operationId).then(function (response) {
-                //console.log("RESPONSE_UPDATE_BUILDER: " + JSON.stringify(response));
                 defered.resolve(_this._createPeriodicBuilder(response.data));
             })['catch'](function (error) {
-                //console.log("ERROR_UPDATE_BUILDER: " + JSON.stringify(error));
                 defered.reject(error);
             });
             return promise;
@@ -111,7 +109,6 @@ var Operations = (function () {
     }, {
         key: '_createPeriodicBuilder',
         value: function _createPeriodicBuilder(task) {
-            //console.log("TASK: " + task.id);
             return new _catalogPeriodPeriodicityUpdateBuilder2['default'](this._ogapi, task.id, task);
         }
     }, {
@@ -120,7 +117,6 @@ var Operations = (function () {
             var _this = this;
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            //this._ogapi.rawSearchBuilder().from('/catalog/operations').build().execute().
             this._ogapi.operationTypesSearchBuilder().build().execute().then(function (data) {
                 if (data.statusCode === 200) {
                     var operations = data.data;
@@ -132,7 +128,6 @@ var Operations = (function () {
                 }
                 defered.resolve(_this);
             })['catch'](function (err) {
-                //console.log(err);
                 defered.resolve(_this);
             });
             return promise;

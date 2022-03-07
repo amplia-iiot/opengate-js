@@ -120,6 +120,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "opengate-js/src/searching/builder/timeseriesearchbuilder.js~base_url",
+    "variable/index.html#static-variable-BASE_URL",
+    "<span>BASE_URL</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/TimeserieSearchBuilder.js</span>",
+    "variable"
+  ],
+  [
     "opengate-js/src/collection/devices/collect/enum/battery_charge_level_status_enum.js~battery_charge_level_status_enum",
     "variable/index.html#static-variable-BATTERY_CHARGE_LEVEL_STATUS_ENUM",
     "<span>BATTERY_CHARGE_LEVEL_STATUS_ENUM</span> <span class=\"search-result-import-path\">opengate-js/src/collection/devices/collect/enum/BATTERY_CHARGE_LEVEL_STATUS_ENUM.js</span>",
@@ -321,12 +327,6 @@ window.esdocSearchIndex = [
     "opengate-js/src/iot/datamodels/datamodelsfinder.js~datamodel_resource",
     "variable/index.html#static-variable-DATAMODEL_RESOURCE",
     "<span>DATAMODEL_RESOURCE</span> <span class=\"search-result-import-path\">opengate-js/src/iot/datamodels/DatamodelsFinder.js</span>",
-    "variable"
-  ],
-  [
-    "opengate-js/src/datasets/datasets.js~datasets_types_enum",
-    "variable/index.html#static-variable-DATASETS_TYPES_ENUM",
-    "<span>DATASETS_TYPES_ENUM</span> <span class=\"search-result-import-path\">opengate-js/src/datasets/Datasets.js</span>",
     "variable"
   ],
   [
@@ -1212,10 +1212,34 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/searching/builder/timeseriesearchbuilder.js~timeseriesearchbuilder",
+    "class/src/searching/builder/TimeserieSearchBuilder.js~TimeserieSearchBuilder.html",
+    "<span>TimeserieSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/TimeserieSearchBuilder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/timeseries/timeseries.js~timeseries",
+    "class/src/timeseries/Timeseries.js~Timeseries.html",
+    "<span>Timeseries</span> <span class=\"search-result-import-path\">opengate-js/src/timeseries/Timeseries.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/timeseries/timeseriesfinder.js~timeseriesfinder",
+    "class/src/timeseries/TimeseriesFinder.js~TimeseriesFinder.html",
+    "<span>TimeseriesFinder</span> <span class=\"search-result-import-path\">opengate-js/src/timeseries/TimeseriesFinder.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/searching/builder/timezonesearchbuilder.js~timezonesearchbuilder",
     "class/src/searching/builder/TimezoneSearchBuilder.js~TimezoneSearchBuilder.html",
     "<span>TimezoneSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/TimezoneSearchBuilder.js</span>",
     "class"
+  ],
+  [
+    "opengate-js/src/timeseries/timeseries.js~url",
+    "variable/index.html#static-variable-URL",
+    "<span>URL</span> <span class=\"search-result-import-path\">opengate-js/src/timeseries/Timeseries.js</span>",
+    "variable"
   ],
   [
     "opengate-js/src/security/usages_enum.js~usages_enum",
@@ -3540,6 +3564,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#newtimeseriefinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newTimeserieFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newTimeserieFinder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#newuserfinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newUserFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newUserFinder",
@@ -3717,6 +3747,18 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#ticketssearchbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-ticketsSearchBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#ticketsSearchBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#timeseriesearchbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-timeserieSearchBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#timeserieSearchBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#timeseriesbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-timeseriesBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#timeseriesBuilder",
     "method"
   ],
   [
@@ -5409,12 +5451,6 @@ window.esdocSearchIndex = [
     "src/datasets/datasets.js~datasets#withorganization",
     "class/src/datasets/Datasets.js~Datasets.html#instance-method-withOrganization",
     "src/datasets/Datasets.js~Datasets#withOrganization",
-    "method"
-  ],
-  [
-    "src/datasets/datasets.js~datasets#withtype",
-    "class/src/datasets/Datasets.js~Datasets.html#instance-method-withType",
-    "src/datasets/Datasets.js~Datasets#withType",
     "method"
   ],
   [
@@ -9030,6 +9066,36 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/searching/builder/timeseriesearchbuilder.js",
+    "file/src/searching/builder/TimeserieSearchBuilder.js.html",
+    "src/searching/builder/TimeserieSearchBuilder.js",
+    "file"
+  ],
+  [
+    "src/searching/builder/timeseriesearchbuilder.js~timeseriesearchbuilder#build",
+    "class/src/searching/builder/TimeserieSearchBuilder.js~TimeserieSearchBuilder.html#instance-method-build",
+    "src/searching/builder/TimeserieSearchBuilder.js~TimeserieSearchBuilder#build",
+    "method"
+  ],
+  [
+    "src/searching/builder/timeseriesearchbuilder.js~timeseriesearchbuilder#constructor",
+    "class/src/searching/builder/TimeserieSearchBuilder.js~TimeserieSearchBuilder.html#instance-constructor-constructor",
+    "src/searching/builder/TimeserieSearchBuilder.js~TimeserieSearchBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/searching/builder/timeseriesearchbuilder.js~timeseriesearchbuilder#group",
+    "class/src/searching/builder/TimeserieSearchBuilder.js~TimeserieSearchBuilder.html#instance-method-group",
+    "src/searching/builder/TimeserieSearchBuilder.js~TimeserieSearchBuilder#group",
+    "method"
+  ],
+  [
+    "src/searching/builder/timeseriesearchbuilder.js~timeseriesearchbuilder#select",
+    "class/src/searching/builder/TimeserieSearchBuilder.js~TimeserieSearchBuilder.html#instance-method-select",
+    "src/searching/builder/TimeserieSearchBuilder.js~TimeserieSearchBuilder#select",
+    "method"
+  ],
+  [
     "src/searching/builder/timezonesearchbuilder.js",
     "file/src/searching/builder/TimezoneSearchBuilder.js.html",
     "src/searching/builder/TimezoneSearchBuilder.js",
@@ -9274,6 +9340,108 @@ window.esdocSearchIndex = [
     "file/src/security/USAGES_ENUM.js.html",
     "src/security/USAGES_ENUM.js",
     "file"
+  ],
+  [
+    "src/timeseries/timeseries.js",
+    "file/src/timeseries/Timeseries.js.html",
+    "src/timeseries/Timeseries.js",
+    "file"
+  ],
+  [
+    "src/timeseries/timeseries.js~timeseries#constructor",
+    "class/src/timeseries/Timeseries.js~Timeseries.html#instance-constructor-constructor",
+    "src/timeseries/Timeseries.js~Timeseries#constructor",
+    "method"
+  ],
+  [
+    "src/timeseries/timeseries.js~timeseries#update",
+    "class/src/timeseries/Timeseries.js~Timeseries.html#instance-method-update",
+    "src/timeseries/Timeseries.js~Timeseries#update",
+    "method"
+  ],
+  [
+    "src/timeseries/timeseries.js~timeseries#withbucketcolumn",
+    "class/src/timeseries/Timeseries.js~Timeseries.html#instance-method-withBucketColumn",
+    "src/timeseries/Timeseries.js~Timeseries#withBucketColumn",
+    "method"
+  ],
+  [
+    "src/timeseries/timeseries.js~timeseries#withcolumns",
+    "class/src/timeseries/Timeseries.js~Timeseries.html#instance-method-withColumns",
+    "src/timeseries/Timeseries.js~Timeseries#withColumns",
+    "method"
+  ],
+  [
+    "src/timeseries/timeseries.js~timeseries#withcontext",
+    "class/src/timeseries/Timeseries.js~Timeseries.html#instance-method-withContext",
+    "src/timeseries/Timeseries.js~Timeseries#withContext",
+    "method"
+  ],
+  [
+    "src/timeseries/timeseries.js~timeseries#withdescription",
+    "class/src/timeseries/Timeseries.js~Timeseries.html#instance-method-withDescription",
+    "src/timeseries/Timeseries.js~Timeseries#withDescription",
+    "method"
+  ],
+  [
+    "src/timeseries/timeseries.js~timeseries#withidentifier",
+    "class/src/timeseries/Timeseries.js~Timeseries.html#instance-method-withIdentifier",
+    "src/timeseries/Timeseries.js~Timeseries#withIdentifier",
+    "method"
+  ],
+  [
+    "src/timeseries/timeseries.js~timeseries#withname",
+    "class/src/timeseries/Timeseries.js~Timeseries.html#instance-method-withName",
+    "src/timeseries/Timeseries.js~Timeseries#withName",
+    "method"
+  ],
+  [
+    "src/timeseries/timeseries.js~timeseries#withorganization",
+    "class/src/timeseries/Timeseries.js~Timeseries.html#instance-method-withOrganization",
+    "src/timeseries/Timeseries.js~Timeseries#withOrganization",
+    "method"
+  ],
+  [
+    "src/timeseries/timeseries.js~timeseries#withorigin",
+    "class/src/timeseries/Timeseries.js~Timeseries.html#instance-method-withOrigin",
+    "src/timeseries/Timeseries.js~Timeseries#withOrigin",
+    "method"
+  ],
+  [
+    "src/timeseries/timeseries.js~timeseries#withretention",
+    "class/src/timeseries/Timeseries.js~Timeseries.html#instance-method-withRetention",
+    "src/timeseries/Timeseries.js~Timeseries#withRetention",
+    "method"
+  ],
+  [
+    "src/timeseries/timeseries.js~timeseries#withtimebucket",
+    "class/src/timeseries/Timeseries.js~Timeseries.html#instance-method-withTimeBucket",
+    "src/timeseries/Timeseries.js~Timeseries#withTimeBucket",
+    "method"
+  ],
+  [
+    "src/timeseries/timeseriesfinder.js",
+    "file/src/timeseries/TimeseriesFinder.js.html",
+    "src/timeseries/TimeseriesFinder.js",
+    "file"
+  ],
+  [
+    "src/timeseries/timeseriesfinder.js~timeseriesfinder#constructor",
+    "class/src/timeseries/TimeseriesFinder.js~TimeseriesFinder.html#instance-constructor-constructor",
+    "src/timeseries/TimeseriesFinder.js~TimeseriesFinder#constructor",
+    "method"
+  ],
+  [
+    "src/timeseries/timeseriesfinder.js~timeseriesfinder#findbyorganization",
+    "class/src/timeseries/TimeseriesFinder.js~TimeseriesFinder.html#instance-method-findByOrganization",
+    "src/timeseries/TimeseriesFinder.js~TimeseriesFinder#findByOrganization",
+    "method"
+  ],
+  [
+    "src/timeseries/timeseriesfinder.js~timeseriesfinder#findbyorganizationandtimeserieid",
+    "class/src/timeseries/TimeseriesFinder.js~TimeseriesFinder.html#instance-method-findByOrganizationAndTimeserieId",
+    "src/timeseries/TimeseriesFinder.js~TimeseriesFinder#findByOrganizationAndTimeserieId",
+    "method"
   ],
   [
     "src/users/userfinder.js",

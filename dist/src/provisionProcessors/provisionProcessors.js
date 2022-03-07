@@ -56,7 +56,7 @@ var ProvisionProcessors = (function (_BaseProvision) {
     }, {
         key: 'withOrganization',
         value: function withOrganization(organization) {
-            _utilFormatsCheck_types2['default']._checkString(organization, 50, 'organization');
+            _utilFormatsCheck_types2['default']._checkStringAndLength(organization, 50, 'organization');
             this._organization = organization;
             return this;
         }
@@ -69,7 +69,7 @@ var ProvisionProcessors = (function (_BaseProvision) {
     }, {
         key: 'withIdentifier',
         value: function withIdentifier(identifier) {
-            _utilFormatsCheck_types2['default']._checkString(identifier, 50, 'identifier');
+            _utilFormatsCheck_types2['default']._checkString(identifier, 'identifier');
             this._identifier = identifier;
             return this;
         }
@@ -82,7 +82,7 @@ var ProvisionProcessors = (function (_BaseProvision) {
     }, {
         key: 'withName',
         value: function withName(name) {
-            _utilFormatsCheck_types2['default']._checkString(name, 50, 'name');
+            _utilFormatsCheck_types2['default']._checkString(name, 'name');
             this._name = name;
             return this;
         }

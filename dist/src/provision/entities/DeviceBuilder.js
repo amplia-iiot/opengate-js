@@ -179,7 +179,6 @@ var BoxBuilder = (function () {
                         });
                         return _this._ogapi.Napi.put(_this._urlWithKey(), putObj, _this2._timeout, null, _this2._getUrlParameters()).then(function (res) {
                             if (res.statusCode === _httpStatusCodes2['default'].OK) {
-                                console.log("CREATEOK: " + JSON.stringify(res));
                                 if (typeof _this._onCreated === "function") {
                                     _this._onCreated(res.header.location);
                                 }
@@ -202,7 +201,6 @@ var BoxBuilder = (function () {
                         });
                     } else {
                         if (res.statusCode === _httpStatusCodes2['default'].CREATED) {
-                            console.log("CREATEOK: " + JSON.stringify(res));
                             if (typeof _this._onCreated === "function") {
                                 _this._onCreated(res.header.location);
                             }
@@ -224,8 +222,6 @@ var BoxBuilder = (function () {
                         }
                     }
                 })['catch'](function (errores) {
-                    console.log("mostrando errores");
-                    console.log(JSON.stringify(errores));
 
                     if (errores.statusCode === _httpStatusCodes2['default'].BAD_REQUEST) {
                         var ms = _jsonpath2['default'].query(errores, '$..message')[0];
@@ -308,7 +304,6 @@ var BoxBuilder = (function () {
 
                 return _this._ogapi.Napi.put(_this._url, putObj, _this3._timeout, null, _this3._getUrlParameters()).then(function (res) {
                     if (res.statusCode === _httpStatusCodes2['default'].OK) {
-                        console.log("CREATEOK: " + JSON.stringify(res));
                         if (typeof _this._onCreated === "function") {
                             _this._onCreated(res.header.location);
                         }
@@ -330,7 +325,6 @@ var BoxBuilder = (function () {
                     }
                 });
             })['catch'](function (err) {
-                console.error(err);
                 defer.notify('OGAPI_SOMETHING_WRONG_UPDATING_DEVICE');
                 defer.reject(err);
             });
@@ -374,7 +368,6 @@ var BoxBuilder = (function () {
 
                 return _this._ogapi.Napi.patch(_this._url, putObj, _this4._timeout, null, _this4._getUrlParameters()).then(function (res) {
                     if (res.statusCode === _httpStatusCodes2['default'].OK) {
-                        console.log("CREATEOK: " + JSON.stringify(res));
                         if (typeof _this._onCreated === "function") {
                             _this._onCreated(res.header.location);
                         }
@@ -396,7 +389,6 @@ var BoxBuilder = (function () {
                     }
                 });
             })['catch'](function (err) {
-                console.error(err);
                 defer.notify('OGAPI_SOMETHING_WRONG_UPDATING_DEVICE');
                 defer.reject(err);
             });

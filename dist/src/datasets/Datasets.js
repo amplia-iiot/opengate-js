@@ -22,8 +22,6 @@ var _utilFormatsCheck_types = require('../util/formats/check_types');
 
 var _utilFormatsCheck_types2 = _interopRequireDefault(_utilFormatsCheck_types);
 
-var DATASETS_TYPES_ENUM = ['CURRENT', 'HISTORY'];
-exports.DATASETS_TYPES_ENUM = DATASETS_TYPES_ENUM;
 /**
  * This is a base object that contains all you can do about Datasets.
  */
@@ -38,13 +36,13 @@ var Datasets = (function (_BaseProvision) {
     function Datasets(ogapi) {
         _classCallCheck(this, Datasets);
 
-        _get(Object.getPrototypeOf(Datasets.prototype), 'constructor', this).call(this, ogapi, '/organizations/', undefined, ['name', 'organization', "type", 'columns']);
+        _get(Object.getPrototypeOf(Datasets.prototype), 'constructor', this).call(this, ogapi, '/organizations/', undefined, ['name', 'organization', 'columns']);
     }
 
     _createClass(Datasets, [{
         key: '_buildURL',
         value: function _buildURL() {
-            var url = '/datasets/provision/organizations/' + this._organization + '/' + this._identifier;
+            var url = 'datasets/provision/organizations/' + this._organization + '/' + this._identifier;
             return url;
         }
 
@@ -56,7 +54,7 @@ var Datasets = (function (_BaseProvision) {
     }, {
         key: 'withOrganization',
         value: function withOrganization(organization) {
-            _utilFormatsCheck_types2['default']._checkString(organization, 50, 'organization');
+            _utilFormatsCheck_types2['default']._checkStringAndLength(organization, 50, 'organization');
             this._organization = organization;
             return this;
         }
@@ -69,7 +67,7 @@ var Datasets = (function (_BaseProvision) {
     }, {
         key: 'withIdentifier',
         value: function withIdentifier(identifier) {
-            _utilFormatsCheck_types2['default']._checkString(identifier, 50, 'identifier');
+            _utilFormatsCheck_types2['default']._checkString(identifier, 'identifier');
             this._identifier = identifier;
             return this;
         }
@@ -82,21 +80,8 @@ var Datasets = (function (_BaseProvision) {
     }, {
         key: 'withName',
         value: function withName(name) {
-            _utilFormatsCheck_types2['default']._checkString(name, 50, 'name');
+            _utilFormatsCheck_types2['default']._checkString(name, 'name');
             this._name = name;
-            return this;
-        }
-
-        /**
-        * Set the type attribute
-        * @param {string} type - required field
-        * @return {Datasets}
-        */
-    }, {
-        key: 'withType',
-        value: function withType(type) {
-            _utilFormatsCheck_types2['default']._checkType(type, DATASETS_TYPES_ENUM);
-            this._type = type;
             return this;
         }
 
@@ -108,7 +93,7 @@ var Datasets = (function (_BaseProvision) {
     }, {
         key: 'withDescription',
         value: function withDescription(description) {
-            _utilFormatsCheck_types2['default']._checkString(description, 50, 'description');
+            _utilFormatsCheck_types2['default']._checkString(description, 'description');
             this._description = description;
             return this;
         }
@@ -128,7 +113,7 @@ var Datasets = (function (_BaseProvision) {
     }, {
         key: '_composeElement',
         value: function _composeElement() {
-            this._resource = '/datasets/provision/organizations/' + this._organization;
+            this._resource = 'datasets/provision/organizations/' + this._organization;
             var dataset = {
                 name: this._name,
                 description: this._description,
@@ -153,4 +138,5 @@ var Datasets = (function (_BaseProvision) {
 })(_provisionBaseProvision2['default']);
 
 exports['default'] = Datasets;
+module.exports = exports['default'];
 //# sourceMappingURL=Datasets.js.map

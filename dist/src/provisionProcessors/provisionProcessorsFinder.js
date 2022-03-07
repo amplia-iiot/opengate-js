@@ -61,7 +61,6 @@ var provisionProcessorsFinder = (function (_GenericFinder) {
   }, {
     key: 'findByOrganizationAndProvisionProcessorId',
     value: function findByOrganizationAndProvisionProcessorId(organization, identifier) {
-      console.log('estoy aqui', organization + '/' + identifier);
       this._withId(organization + '/' + identifier);
       return this._execute();
     }

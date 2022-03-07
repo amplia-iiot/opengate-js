@@ -314,7 +314,6 @@ var Certificates = (function (_Security) {
                     //form.append('certificate', rawFile);
                 }
             } else {
-                    //console.log("fileData");
                     form = {};
                     form.json = JSON.stringify(this._composeElement());
 
@@ -374,7 +373,6 @@ var Certificates = (function (_Security) {
                 var data = response.body;
                 if (typeof data === "undefined") defered.reject("Cannot update the certificate");else defered.resolve(data, response.statusCode);
             })['catch'](function (error) {
-                console.log(error);
                 defered.reject(error);
             });
             return promise;

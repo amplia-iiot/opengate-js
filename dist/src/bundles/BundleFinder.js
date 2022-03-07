@@ -43,7 +43,6 @@ var BundleFinder = (function (_ProvisionGenericFinder) {
     _createClass(BundleFinder, [{
         key: '_composeUrl',
         value: function _composeUrl() {
-            //console.log(this._baseUrl + "/" + this._name + "/versions/" + this._version);
             return this._baseUrl + "/" + this._name + "/versions/" + this._version;
         }
 

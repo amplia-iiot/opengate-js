@@ -43,11 +43,9 @@ var DeploymentElement = (function (_BaseProvision) {
         _classCallCheck(this, DeploymentElement);
 
         _get(Object.getPrototypeOf(DeploymentElement.prototype), 'constructor', this).call(this, ogapi, url + "/deploymentElements");
-        // this.Napi = Napi;
         this._progressEvent = progressEvent;
 
         this._resource = url + "/deploymentElements";
-        //console.log(this._resource);
         this.validation = false;
         this._name = undefined;
         this._version = undefined;
@@ -424,7 +422,6 @@ var DeploymentElement = (function (_BaseProvision) {
     }, {
         key: 'withFile',
         value: function withFile(rawFile) {
-            //console.log(rawFile);
             this._rawFile = rawFile;
             return this;
         }
@@ -465,7 +462,6 @@ var DeploymentElement = (function (_BaseProvision) {
                     oldPath: this._oldPath || undefined
                 }
             };
-            //console.log(JSON.stringify(meta));
             return meta;
         }
 
@@ -563,7 +559,6 @@ var DeploymentElement = (function (_BaseProvision) {
     }, {
         key: 'deploy',
         value: function deploy() {
-            //console.log("creando antes file: " + this._rawFile);
             return this.createWithFile(this._rawFile);
         }
 

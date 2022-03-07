@@ -40,7 +40,6 @@ var Geocluster = (function (_BaseProvision) {
     function Geocluster(ogapi) {
         _classCallCheck(this, Geocluster);
 
-        console.log("ogapi", ogapi);
         _get(Object.getPrototypeOf(Geocluster.prototype), 'constructor', this).call(this, ogapi, "/geocluster", undefined, 'identifier');
     }
 
@@ -60,7 +59,7 @@ var Geocluster = (function (_BaseProvision) {
     }, {
         key: 'withIdentifier',
         value: function withIdentifier(identifier) {
-            _utilFormatsCheck_types2['default']._checkString(identifier, 50, 'identifier');
+            _utilFormatsCheck_types2['default']._checkStringAndLength(identifier, 50, 'identifier');
             this._identifier = identifier;
             return this;
         }
