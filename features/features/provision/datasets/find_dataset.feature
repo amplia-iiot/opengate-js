@@ -31,7 +31,6 @@ So I can check if a user exists and get their information
         And the "organization" "dataset_organization"
         And the "name" "mockDataset"
         And the "description" "dataset description"
-        And the "type" "HISTORY"
         And the "columns" with...
             | param                                                                                                                                                                |
             | [{"path": "provision.device.identifier._current.value", "name": "Prov identifier",  "filter": "YES", "sort": true }, { "path": "device.model._current.value.manufacturer", "name": "Manufacturer", "filter": "ALWAYS", "sort": false }, { "path": "device.model._current.at",  "name": "Manufacturer Date", "filter": "YES", "sort": false }, { "path": "device.communicationModules[0].subscriber.mobile.icc._current.value", "name": "ICC", "filter": "NO", "sort": false }] |
