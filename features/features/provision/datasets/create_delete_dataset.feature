@@ -3,7 +3,6 @@
 @provision
 @dataset
 @create_daataset
-
 Feature: Delete and Create a dataset
 As a user of JsApi
 I want to create a dataset
@@ -32,7 +31,6 @@ So, I can create a new dataset with the parametres that I have been defined
         And the "organization" "dataset_organization"
         And the "name" "mockDataset"
         And the "description" "dataset description"
-        And the "type" "HISTORY"
         And the "columns" with...
             | param                                                                                                                                                                |
             | [{"path": "provision.device.identifier._current.value", "name": "Prov identifier",  "filter": "YES", "sort": true }, { "path": "device.model._current.value.manufacturer", "name": "Manufacturer", "filter": "ALWAYS", "sort": false }, { "path": "device.model._current.at",  "name": "Manufacturer Date", "filter": "YES", "sort": false }, { "path": "device.communicationModules[0].subscriber.mobile.icc._current.value", "name": "ICC", "filter": "NO", "sort": false }] |
@@ -47,7 +45,6 @@ So, I can create a new dataset with the parametres that I have been defined
         And the "organization" "dataset_organization"
         And the "name" "mockDataset"
         And the "description" "dataset description"
-        And the "type" "HISTORY"
         And the "columns" with...
             | param                                                                                                                                                                |
             | [{"path": "provision.device.identifier._current.value", "name": "Prov identifier",  "filter": "YES", "sort": true }, { "path": "device.model._current.value.manufacturer", "name": "Manufacturer", "filter": "ALWAYS", "sort": false }, { "path": "device.model._current.at",  "name": "Manufacturer Date", "filter": "YES", "sort": false }, { "path": "device.communicationModules[0].subscriber.mobile.icc._current.value", "name": "ICC", "filter": "NO", "sort": false }] |
@@ -62,7 +59,7 @@ So, I can create a new dataset with the parametres that I have been defined
         And an ogapi "datasets builder" util
         And I want to create a "datasets"
         Then I create it
-        And throws an error equal to "There are required parameters that have not been set. Missing parameters: [name,organization,type,columns]"
+        And throws an error equal to "There are required parameters that have not been set. Missing parameters: [name,organization,columns]"
 
     Scenario: Deleting an organization
         Given an ogapi "organizations builder" util

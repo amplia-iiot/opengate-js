@@ -12,7 +12,7 @@ export default class Datasets extends BaseProvision {
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, '/organizations/', undefined, ['name', 'organization', "type", 'columns']);
+        super(ogapi, '/organizations/', undefined, ['name', 'organization', 'columns']);
     }
 
     _buildURL() {
