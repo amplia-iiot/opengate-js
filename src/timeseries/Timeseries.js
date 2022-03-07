@@ -129,7 +129,7 @@ export default class Timeseries extends BaseProvision {
 
     _composeElement() {
         this._resource = URL + this._organization;
-        if(this._timeBucket === 0){
+        if(this._timeBucket > 0){
             checkType._checkStringAndPattern(this._bucketColumn, "^[a-zA-Z0-9 _-]*$", 'bucketColumn');
         }
         const timeserie = {

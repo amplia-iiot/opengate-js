@@ -1,12 +1,13 @@
 # features/provision/datasets/create_delete_dataset.feature
 @create_provision
 @provision
-@dataset
+@datasets
 @create_daataset
+
 Feature: Delete and Create a dataset
-As a user of JsApi
-I want to create a dataset
-So, I can create a new dataset with the parametres that I have been defined
+    As a user of JsApi
+    I want to create a dataset
+    So, I can create a new dataset with the parametres that I have been defined
 
     Background:
         Given an apikey user by "require-real-apikey"
@@ -32,7 +33,7 @@ So, I can create a new dataset with the parametres that I have been defined
         And the "name" "mockDataset"
         And the "description" "dataset description"
         And the "columns" with...
-            | param                                                                                                                                                                |
+            | param                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
             | [{"path": "provision.device.identifier._current.value", "name": "Prov identifier",  "filter": "YES", "sort": true }, { "path": "device.model._current.value.manufacturer", "name": "Manufacturer", "filter": "ALWAYS", "sort": false }, { "path": "device.model._current.at",  "name": "Manufacturer Date", "filter": "YES", "sort": false }, { "path": "device.communicationModules[0].subscriber.mobile.icc._current.value", "name": "ICC", "filter": "NO", "sort": false }] |
         Then I create it
         And response code should be: 201
@@ -46,7 +47,7 @@ So, I can create a new dataset with the parametres that I have been defined
         And the "name" "mockDataset"
         And the "description" "dataset description"
         And the "columns" with...
-            | param                                                                                                                                                                |
+            | param                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
             | [{"path": "provision.device.identifier._current.value", "name": "Prov identifier",  "filter": "YES", "sort": true }, { "path": "device.model._current.value.manufacturer", "name": "Manufacturer", "filter": "ALWAYS", "sort": false }, { "path": "device.model._current.at",  "name": "Manufacturer Date", "filter": "YES", "sort": false }, { "path": "device.communicationModules[0].subscriber.mobile.icc._current.value", "name": "ICC", "filter": "NO", "sort": false }] |
         Then I create it
         And response code should be: 201
