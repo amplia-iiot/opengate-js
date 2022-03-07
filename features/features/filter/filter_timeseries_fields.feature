@@ -4,13 +4,14 @@
 @filtering
 @urlParameters
 @timeseries
+
 Feature: Searching timeseries fields
      As a user of JsApi
      I want to get the searching fields
 
      Background:
           Given an apikey user by "require-real-apikey"
-          #TESTS WITH MOCK, ONLY TIMESERIES URIS: Given with mock "timeseries" for "filterFields"
+     #TESTS WITH MOCK, ONLY TIMESERIES URIS: Given with mock "timeseries" for "filterFields"
 
      Scenario: Creating an organization to use in timeseries tests
           Given an ogapi "organizations builder" util
@@ -27,19 +28,19 @@ Feature: Searching timeseries fields
           And response code should be: 201
 
      Scenario: Execute searching over assignable timeseries
-        And an ogapi "timeseries builder" util
-        And I want to create a "timeserie"
-        And the "organization" "timeserie_organization"
-        And the "organization" "timeserie_organization"
-        And the "name" "mockTimeserie"
-        And the "timeBucket" 86400
-        And the "description" "timeserie description"
-        And the "columns" with...
-            | param                                                                                                                                                                |
-            | [{  "path": "device.communicationModules[].subscription.traffic.sentBytes._current.value",  "alias": "Daily sent bytes",  "filter": "NO",  "sort": false,  "aggregationFunction": "SUM"},{  "path": "device.communicationModules[].subscription.traffic.receivedBytes",  "alias": "Daily received bytes",  "filter": "NO",  "aggregationFunction": "SUM",  "sort": false},{  "path": "device.communicationModules[].subscription.presence.unifiedPresence",  "alias": "Last presence",  "filter": "YES",  "sort": false,  "aggregationFunction": "LAST"},{  "path": "device.communicationModules[].subscription.mobile.signalStrength",  "alias": "Average Signal strength",  "filter": "YES",  "sort": false,  "aggregationFunction": "AVG"}] |
-        And the "context" with...
-            | param                                                                                                                                                                |
-            | [{  "path": "provision.device.identifier._current.value",  "alias": "Prov identifier",  "filter": "YES",  "sort": true},{  "path": "device.model._current.value.manufacturer",  "alias": "Manufacturer",  "filter": "ALWAYS",  "sort": false},{  "path": "device.communicationModules[0].subscriber.mobile.icc._current.value",  "alias": "ICC",  "filter": "NO",  "sort": false}] |
+          And an ogapi "timeseries builder" util
+          And I want to create a "timeserie"
+          And the "organization" "timeserie_organization"
+          And the "name" "mockTimeserie"
+          And the "timeBucket" 86400
+          And the "bucketColumn" "bucket_id"
+          And the "description" "timeserie description"
+          And the "columns" with...
+               | param                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+               | [{  "path": "device.communicationModules[0].subscription.traffic.sentBytes._current.value",  "name": "Daily sent bytes",  "filter": "NO",  "sort": false,  "aggregationFunction": "SUM"},{  "path": "device.communicationModules[0].subscription.traffic.receivedBytes._current.value",  "name": "Daily received bytes",  "filter": "NO",  "aggregationFunction": "SUM",  "sort": false},{  "path": "device.communicationModules[0].subscription.presence.unifiedPresence._current.value",  "name": "Last presence",  "filter": "YES",  "sort": false,  "aggregationFunction": "LAST"},{  "path": "device.communicationModules[0].subscription.mobile.signalStrength._current.value",  "name": "Average Signal strength",  "filter": "YES",  "sort": false,  "aggregationFunction": "AVG"}] |
+          And the "context" with...
+               | param                                                                                                                                                                                                                                                                                                                                                                           |
+               | [{  "path": "provision.device.identifier._current.value",  "name": "Prov identifier",  "filter": "YES",  "sort": true},{  "path": "device.model._current.value.manufacturer",  "name": "Manufacturer",  "filter": "ALWAYS",  "sort": false},{  "path": "device.communicationModules[0].subscriber.mobile.icc._current.value",  "name": "ICC",  "filter": "NO",  "sort": false}] |
           Then I create it
           And response code should be: 201
 
@@ -54,15 +55,15 @@ Feature: Searching timeseries fields
                | findFields |         |
           Then response data should has elements
           When I get filter fields...
-               | field         | content         |
+               | field         | content      |
                | findFieldPath | Manufacturer |
           Then response data should has elements
           When I get filter fields...
-               | field         | content         |
-               | findFieldPath | ICC |
+               | field         | content |
+               | findFieldPath | ICC     |
           Then response data should has elements
           When I get filter fields...
-               | field         | content         |
+               | field         | content          |
                | findFieldPath | Daily sent bytes |
           Then response data should has elements
 

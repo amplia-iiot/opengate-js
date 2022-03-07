@@ -90,12 +90,12 @@ export default class BaseSearch {
         return promise;
     }
 
-    /**
+    /** TODO: no implementado todavía. Ver tarea OUW-3577
      * This invoke a request to OpenGate North API and the callback is managed by promises
      * @return {Promise}
      * @property {function (result:object, statusCode:number)} then - When request it is OK
      * @property {function (error:string)} catch - When request it is NOK
-     */
+     
     delete() {
         var defered = q.defer();
         var promise = defered.promise;
@@ -117,7 +117,8 @@ export default class BaseSearch {
                 defered.reject(error);
             });
         return promise;
-    }
+    }*/
+    
     /**
      * This invoke a request to OpenGate North API and the callback is managed by promises
      * @return {Promise} - Promise with data with format csv
