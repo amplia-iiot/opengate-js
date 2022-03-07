@@ -2,7 +2,6 @@
 
 import BaseProvision from '../provision/BaseProvision';
 import checkType from '../util/formats/check_types'
-export const DATASETS_TYPES_ENUM = ['CURRENT', 'HISTORY'];
 /**
  * This is a base object that contains all you can do about Datasets.
  */
@@ -51,17 +50,6 @@ export default class Datasets extends BaseProvision {
     withName(name) {
         checkType._checkString(name, 'name');
         this._name = name;
-        return this;
-    }
-
-    /**
-    * Set the type attribute
-    * @param {string} type - required field
-    * @return {Datasets}
-    */
-    withType(type) {
-        checkType._checkType(type, DATASETS_TYPES_ENUM);
-        this._type = type;
         return this;
     }
 
