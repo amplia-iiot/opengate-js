@@ -10,7 +10,7 @@ Feature: Searching timeseries fields
      I want to get the searching fields
 
      Background:
-          Given an apikey user by "require-real-apikey"
+          Given an apikey user by "2829be88-a7d7-4f51-aefc-3cc2385b6506"
      #TESTS WITH MOCK, ONLY TIMESERIES URIS: Given with mock "timeseries" for "filterFields"
 
      Scenario: Creating an organization to use in timeseries tests
@@ -33,8 +33,10 @@ Feature: Searching timeseries fields
           And the "organization" "timeserie_organization"
           And the "name" "mockTimeserie"
           And the "timeBucket" 86400
+          And the "identifierColumn" "Identifier"
           And the "bucketColumn" "bucket_id"
           And the "description" "timeserie description"
+          And the "identifierColumn" "Identifier"
           And the "columns" with...
                | param                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
                | [{  "path": "device.communicationModules[0].subscription.traffic.sentBytes._current.value",  "name": "Daily sent bytes",  "filter": "NO",  "sort": false,  "aggregationFunction": "SUM"},{  "path": "device.communicationModules[0].subscription.traffic.receivedBytes._current.value",  "name": "Daily received bytes",  "filter": "NO",  "aggregationFunction": "SUM",  "sort": false},{  "path": "device.communicationModules[0].subscription.presence.unifiedPresence._current.value",  "name": "Last presence",  "filter": "YES",  "sort": false,  "aggregationFunction": "LAST"},{  "path": "device.communicationModules[0].subscription.mobile.signalStrength._current.value",  "name": "Average Signal strength",  "filter": "YES",  "sort": false,  "aggregationFunction": "AVG"}] |

@@ -4,6 +4,7 @@ const body = {
     "name": "timeserie_name",
     "description": "My timeserie to get inventory data",
     "timeBucket": 3600,
+    "identifierColumn": "Identifier",
     "bucketColumn": "Bucket date",
     "retention": 3600000,
     "origin": "2021-01-01T00:00:00.000Z",
@@ -48,7 +49,7 @@ module.exports = {
                 }
             },
             '/timeseries/provision/organizations/:organization': function (req) {
-                const requiredFields = ['name', 'timeBucket', 'columns']
+                const requiredFields = ['name', 'timeBucket', 'columns', 'identifierColumn']
                 const errors = [{
                     "code": 0,
                     "message": "Error on post",
@@ -163,6 +164,7 @@ module.exports = {
                             "name": "timeserie_name",
                             "description": "My timeserie to get inventory data",
                             "timeBucket": 3600,
+                            "identifierColumn": "Identifier",
                             "bucketColumn": "Bucket date",
                             "retention": 3600000,
                             "origin": "2021-01-01T00:00:00.000Z"
@@ -205,6 +207,7 @@ module.exports = {
                         "name": "timeserie_name",
                         "description": "My timeserie to get inventory data",
                         "timeBucket": 3600,
+                        "identifierColumn": "Identifier",
                         "bucketColumn": "Bucket date",
                         "retention": 3600000,
                         "origin": "2021-01-01T00:00:00.000Z",
@@ -292,6 +295,7 @@ module.exports = {
                             "name": body.name,
                             "description": body.description,
                             "timeBucket": body.timeBucket,
+                            "identifierColumn": body.identifierColumn,
                             "bucketColumn": body.bucketColumn,
                             "retention": body.retention,
                             "origin": body.origin
@@ -335,6 +339,7 @@ module.exports = {
                         "name": body.name,
                         "description": body.description,
                         "timeBucket": body.timeBucket,
+                        "identifierColumn": body.identifierColumn,
                         "bucketColumn": body.bucketColumn,
                         "retention": body.retention,
                         "origin": body.origin,
@@ -448,6 +453,7 @@ module.exports = {
                         "name": body.name,
                         "description": body.description,
                         "timeBucket": body.timeBucket,
+                        "identifierColumn": body.identifierColumn,
                         "bucketColumn": body.bucketColumn,
                         "retention": body.retention,
                         "origin": body.origin,

@@ -386,6 +386,7 @@ module.exports = {
                 'organization': 'withOrganization',
                 'description': 'withDescription',
                 'columns': 'withColumns',
+                'identifierColumn': "withIdentifierColumn",
                 'type': 'withType'
             },
             'timeserie': {
@@ -394,6 +395,7 @@ module.exports = {
                 'name': 'withName',
                 'description': 'withDescription',
                 'timeBucket': 'withTimeBucket',
+                'identifierColumn': "withIdentifierColumn",
                 'bucketColumn': 'withBucketColumn',
                 'retention': 'withRetention',
                 'origin': 'withOrigin',
