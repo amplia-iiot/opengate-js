@@ -2,14 +2,14 @@
 @searching
 @searching_datasets_data
 @datasets
-
+@wip
 Feature: Searching datasets data
   As a user of JsApi
   I want to search into datasets data collection
   So I can add filter, sorting, limit to search any dataset
 
   Background:
-    Given an apikey user by "2829be88-a7d7-4f51-aefc-3cc2385b6506"
+    Given an apikey user by "require-real-apikey"
 
   Scenario: Creating an organization to use in datasets tests
     Given an ogapi "organizations builder" util

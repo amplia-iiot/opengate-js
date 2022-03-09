@@ -2,14 +2,14 @@
 @finder
 @timeseries
 @find_timeseries
-
+@wip
 Feature: Find a timeserie
     As a user of JsApi
     I want to find a timeserie
     So I can check if a user exists and get their information
 
     Background:
-        Given an apikey user by "2829be88-a7d7-4f51-aefc-3cc2385b6506"
+        Given an apikey user by "require-real-apikey"
     #TESTS WITH MOCK, ONLY TIMESERIES URIS: Given with mock "timeseries" for "find"
 
     Scenario: Creating an organization to use in timeserie tests

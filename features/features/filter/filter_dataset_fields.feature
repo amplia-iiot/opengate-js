@@ -3,12 +3,13 @@
 @filter_fields
 @filtering
 @urlParameters
+@wip
 Feature: Searching datasets fields
      As a user of JsApi
      I want to get the searching fields
 
      Background:
-          Given an apikey user by "2829be88-a7d7-4f51-aefc-3cc2385b6506"
+          Given an apikey user by "require-real-apikey"
 
      Scenario: Creating an organization to use in datasets tests
           Given an ogapi "organizations builder" util
