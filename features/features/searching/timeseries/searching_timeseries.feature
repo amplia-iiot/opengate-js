@@ -2,14 +2,14 @@
 @searching
 @searching_timeseries_data
 @timeseries
-
+@wip
 Feature: Searching timeseriess data
   As a user of JsApi
   I want to search into timeseriess data collection
   So I can add filter, sorting, limit to search any timeseries, and delete it
 
   Background:
-    Given an apikey user by "2829be88-a7d7-4f51-aefc-3cc2385b6506"
+    Given an apikey user by "require-real-apikey"
   #TESTS WITH MOCK, ONLY TIMESERIES URIS: Given with mock "timeseries" for "searching"
 
   Scenario: Creating an organization to use in timeseries tests

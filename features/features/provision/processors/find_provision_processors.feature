@@ -1,15 +1,15 @@
-# features/provision/areas/find_provision_processors.feature
+# features/provision/processors/find_provision_processors.feature
 @provision
 @finder
 @find_provision
 
-Feature: Find an area
+Feature: Find an provision processor
 As a user of JsApi
 I want to find an provisionProcessors
 So I can check if a provisionProcessors exists and get their information
 
     Background:
-        Given an apikey user by "2829be88-a7d7-4f51-aefc-3cc2385b6506"
+        Given an apikey user by "require-real-apikey"
 
     Scenario: Creating an organization to use in processors tests
         Given an ogapi "organizations builder" util

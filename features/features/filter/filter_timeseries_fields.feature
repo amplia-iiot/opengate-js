@@ -4,13 +4,13 @@
 @filtering
 @urlParameters
 @timeseries
-
+@wip
 Feature: Searching timeseries fields
      As a user of JsApi
      I want to get the searching fields
 
      Background:
-          Given an apikey user by "2829be88-a7d7-4f51-aefc-3cc2385b6506"
+          Given an apikey user by "require-real-apikey"
      #TESTS WITH MOCK, ONLY TIMESERIES URIS: Given with mock "timeseries" for "filterFields"
 
      Scenario: Creating an organization to use in timeseries tests

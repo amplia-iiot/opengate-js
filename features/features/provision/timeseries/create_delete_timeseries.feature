@@ -3,14 +3,14 @@
 @provision
 @timeseries
 @create_timeseries
-
+@wip
 Feature: Delete and Create a timeserie
     As a user of JsApi
     I want to create a timeserie
     So, I can create a new timeserie with the parametres that I have been defined
 
     Background:
-        Given an apikey user by "2829be88-a7d7-4f51-aefc-3cc2385b6506"
+        Given an apikey user by "require-real-apikey"
     #TESTS WITH MOCK, ONLY TIMESERIES URIS: Given with mock "timeseries" for "createDelete"
 
     Scenario: Creating an organization to use in timeseries tests
