@@ -88,7 +88,7 @@ var ProvisionProcessors = (function (_BaseProvision) {
         }
 
         /**
-         * Set the columns attribute
+         * Set the ConfigurationParams attribute
          * @param {object} configurationParams - required field
          * @return {ProvisionPrecessors}
          */
@@ -101,7 +101,7 @@ var ProvisionProcessors = (function (_BaseProvision) {
         }
 
         /**
-         * Set the columns attribute
+         * Set the ScriptProcessor attribute
          * @param {object} scriptProcessor - required field
          * @return {ProvisionPrecessors}
          */

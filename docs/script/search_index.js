@@ -5442,6 +5442,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/datasets/datasets.js~datasets#withidentifiercolumn",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-method-withIdentifierColumn",
+    "src/datasets/Datasets.js~Datasets#withIdentifierColumn",
+    "method"
+  ],
+  [
     "src/datasets/datasets.js~datasets#withname",
     "class/src/datasets/Datasets.js~Datasets.html#instance-method-withName",
     "src/datasets/Datasets.js~Datasets#withName",
@@ -9387,6 +9393,12 @@ window.esdocSearchIndex = [
     "src/timeseries/timeseries.js~timeseries#withidentifier",
     "class/src/timeseries/Timeseries.js~Timeseries.html#instance-method-withIdentifier",
     "src/timeseries/Timeseries.js~Timeseries#withIdentifier",
+    "method"
+  ],
+  [
+    "src/timeseries/timeseries.js~timeseries#withidentifiercolumn",
+    "class/src/timeseries/Timeseries.js~Timeseries.html#instance-method-withIdentifierColumn",
+    "src/timeseries/Timeseries.js~Timeseries#withIdentifierColumn",
     "method"
   ],
   [

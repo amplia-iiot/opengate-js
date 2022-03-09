@@ -36,7 +36,7 @@ var Datasets = (function (_BaseProvision) {
     function Datasets(ogapi) {
         _classCallCheck(this, Datasets);
 
-        _get(Object.getPrototypeOf(Datasets.prototype), 'constructor', this).call(this, ogapi, '/organizations/', undefined, ['name', 'organization', 'columns']);
+        _get(Object.getPrototypeOf(Datasets.prototype), 'constructor', this).call(this, ogapi, '/organizations/', undefined, ['name', 'organization', 'columns', 'identifierColumn']);
     }
 
     _createClass(Datasets, [{
@@ -86,6 +86,19 @@ var Datasets = (function (_BaseProvision) {
         }
 
         /**
+         * Set the identifierColumn attribute
+         * @param {string} identifierColumn - required field
+         * @return {Datasets}
+         */
+    }, {
+        key: 'withIdentifierColumn',
+        value: function withIdentifierColumn(identifierColumn) {
+            _utilFormatsCheck_types2['default']._checkString(identifierColumn, 'identifierColumn');
+            this._identifierColumn = identifierColumn;
+            return this;
+        }
+
+        /**
          * Set the description attribute
          * @param {string} description
          * @return {Datasets}
@@ -118,6 +131,7 @@ var Datasets = (function (_BaseProvision) {
                 name: this._name,
                 description: this._description,
                 type: this._type,
+                identifierColumn: this._identifierColumn,
                 columns: this._columns
             };
             return dataset;

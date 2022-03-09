@@ -38,7 +38,7 @@ var Timeseries = (function (_BaseProvision) {
     function Timeseries(ogapi) {
         _classCallCheck(this, Timeseries);
 
-        _get(Object.getPrototypeOf(Timeseries.prototype), 'constructor', this).call(this, ogapi, '/organizations/', undefined, ['name', 'organization', "timeBucket", 'columns']);
+        _get(Object.getPrototypeOf(Timeseries.prototype), 'constructor', this).call(this, ogapi, '/organizations/', undefined, ['name', 'organization', "timeBucket", 'columns', 'identifierColumn']);
     }
 
     _createClass(Timeseries, [{
@@ -84,6 +84,19 @@ var Timeseries = (function (_BaseProvision) {
         value: function withName(name) {
             _utilFormatsCheck_types2['default']._checkStringAndPattern(name, "^[a-zA-Z0-9_@.-]*$", 'name');
             this._name = name;
+            return this;
+        }
+
+        /**
+         * Set the identifierColumn attribute
+         * @param {string} identifierColumn - required field
+         * @return {Datasets}
+         */
+    }, {
+        key: 'withIdentifierColumn',
+        value: function withIdentifierColumn(identifierColumn) {
+            _utilFormatsCheck_types2['default']._checkString(identifierColumn, 'identifierColumn');
+            this._identifierColumn = identifierColumn;
             return this;
         }
 
@@ -192,6 +205,7 @@ var Timeseries = (function (_BaseProvision) {
                 retention: this._retention,
                 origin: this._origin,
                 context: this._context,
+                identifierColumn: this._identifierColumn,
                 columns: this._columns
             };
             return timeserie;
