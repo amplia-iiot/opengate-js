@@ -9,7 +9,7 @@ Feature: Find a dataset
     So I can check if a user exists and get their information
 
     Background:
-        Given an apikey user by "require-real-apikey"
+        Given an apikey user by "2829be88-a7d7-4f51-aefc-3cc2385b6506"
 
     Scenario: Creating an organization to use in datasets tests
         Given an ogapi "organizations builder" util
@@ -31,6 +31,7 @@ Feature: Find a dataset
         And the "organization" "dataset_organization"
         And the "name" "mockDataset"
         And the "description" "dataset description"
+        And the "identifierColumn" "Identifier"
         And the "columns" with...
             | param                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
             | [{"path": "provision.device.identifier._current.value", "name": "Prov identifier",  "filter": "YES", "sort": true }, { "path": "device.model._current.value.manufacturer", "name": "Manufacturer", "filter": "ALWAYS", "sort": false }, { "path": "device.model._current.at",  "name": "Manufacturer Date", "filter": "YES", "sort": false }, { "path": "device.communicationModules[0].subscriber.mobile.icc._current.value", "name": "ICC", "filter": "NO", "sort": false }] |

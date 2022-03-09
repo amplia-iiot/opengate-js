@@ -9,7 +9,7 @@ Feature: Searching timeseriess data
   So I can add filter, sorting, limit to search any timeseries, and delete it
 
   Background:
-    Given an apikey user by "require-real-apikey"
+    Given an apikey user by "2829be88-a7d7-4f51-aefc-3cc2385b6506"
   #TESTS WITH MOCK, ONLY TIMESERIES URIS: Given with mock "timeseries" for "searching"
 
   Scenario: Creating an organization to use in timeseries tests
@@ -32,6 +32,7 @@ Feature: Searching timeseriess data
     And the "organization" "timeserie_organization"
     And the "name" "mockTimeserie1"
     And the "timeBucket" 86400
+    And the "identifierColumn" "Identifier"
     And the "bucketColumn" "bucket_id"
     And the "description" "timeserie description"
     And the "columns" with...
@@ -56,6 +57,7 @@ Feature: Searching timeseriess data
     And the "organization" "timeserie_organization"
     And the "name" "mockTimeserie2"
     And the "timeBucket" 86400
+    And the "identifierColumn" "Identifier"
     And the "bucketColumn" "bucket_id"
     And the "description" "timeserie description"
     And the "columns" with...
@@ -84,6 +86,7 @@ Feature: Searching timeseriess data
     And the "organization" "timeserie_organization"
     And the "name" "mockTimeserie1"
     And the "timeBucket" 86400
+    And the "identifierColumn" "Identifier"
     And the "bucketColumn" "bucket_id"
     And the "description" "timeserie description"
     And the "columns" with...

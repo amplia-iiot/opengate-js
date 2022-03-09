@@ -12,7 +12,7 @@ export default class Datasets extends BaseProvision {
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, '/organizations/', undefined, ['name', 'organization', 'columns']);
+        super(ogapi, '/organizations/', undefined, ['name', 'organization', 'columns', 'identifierColumn']);
     }
 
     _buildURL() {
@@ -54,6 +54,17 @@ export default class Datasets extends BaseProvision {
     }
 
     /**
+     * Set the identifierColumn attribute
+     * @param {string} identifierColumn - required field
+     * @return {Datasets}
+     */
+     withIdentifierColumn(identifierColumn) {
+        checkType._checkString(identifierColumn, 'identifierColumn');
+        this._identifierColumn = identifierColumn;
+        return this;
+    }
+
+    /**
      * Set the description attribute
      * @param {string} description
      * @return {Datasets}
@@ -81,6 +92,7 @@ export default class Datasets extends BaseProvision {
             name: this._name,
             description: this._description,
             type: this._type,
+            identifierColumn: this._identifierColumn,
             columns: this._columns
         };
         return dataset;

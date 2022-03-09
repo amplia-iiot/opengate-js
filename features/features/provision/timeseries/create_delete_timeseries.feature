@@ -10,7 +10,7 @@ Feature: Delete and Create a timeserie
     So, I can create a new timeserie with the parametres that I have been defined
 
     Background:
-        Given an apikey user by "require-real-apikey"
+        Given an apikey user by "2829be88-a7d7-4f51-aefc-3cc2385b6506"
     #TESTS WITH MOCK, ONLY TIMESERIES URIS: Given with mock "timeseries" for "createDelete"
 
     Scenario: Creating an organization to use in timeseries tests
@@ -33,6 +33,7 @@ Feature: Delete and Create a timeserie
         And the "organization" "timeserie_organization"
         And the "name" "mockTimeserie"
         And the "timeBucket" 86400
+        And the "identifierColumn" "Identifier"
         And the "bucketColumn" "bucket_id"
         And the "description" "timeserie description"
         And the "columns" with...
@@ -53,6 +54,7 @@ Feature: Delete and Create a timeserie
         And the "name" "existsTimeseries"
         And the "description" "dataset description"
         And the "timeBucket" 86400
+        And the "identifierColumn" "Identifier"
         And the "bucketColumn" "bucket_id"
         And the "columns" with...
             | param                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
@@ -71,7 +73,7 @@ Feature: Delete and Create a timeserie
         And an ogapi "timeseries builder" util
         And I want to create a "timeseries"
         Then I create it
-        And throws an error equal to "There are required parameters that have not been set. Missing parameters: [name,organization,timeBucket,columns]"
+        And throws an error equal to "There are required parameters that have not been set. Missing parameters: [name,organization,timeBucket,columns,identifierColumn]"
 
 
     Scenario: Deleting an organization

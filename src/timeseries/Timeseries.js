@@ -13,7 +13,7 @@ export default class Timeseries extends BaseProvision {
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, '/organizations/', undefined, ['name', 'organization', "timeBucket", 'columns']);
+        super(ogapi, '/organizations/', undefined, ['name', 'organization', "timeBucket", 'columns', 'identifierColumn']);
     }
 
     _buildURL() {
@@ -51,6 +51,17 @@ export default class Timeseries extends BaseProvision {
     withName(name) {
         checkType._checkStringAndPattern(name, "^[a-zA-Z0-9_@.-]*$", 'name');
         this._name = name;
+        return this;
+    }
+
+    /**
+     * Set the identifierColumn attribute
+     * @param {string} identifierColumn - required field
+     * @return {Datasets}
+     */
+     withIdentifierColumn(identifierColumn) {
+        checkType._checkString(identifierColumn, 'identifierColumn');
+        this._identifierColumn = identifierColumn;
         return this;
     }
 
@@ -140,6 +151,7 @@ export default class Timeseries extends BaseProvision {
             retention: this._retention,
             origin: this._origin,
             context: this._context,
+            identifierColumn: this._identifierColumn,
             columns: this._columns
         };
         return timeserie;

@@ -55,7 +55,7 @@ export default class ProvisionProcessors extends BaseProvision {
     }
 
     /**
-     * Set the columns attribute
+     * Set the ConfigurationParams attribute
      * @param {object} configurationParams - required field
      * @return {ProvisionPrecessors}
      */
@@ -66,7 +66,7 @@ export default class ProvisionProcessors extends BaseProvision {
     }
 
     /**
-     * Set the columns attribute
+     * Set the ScriptProcessor attribute
      * @param {object} scriptProcessor - required field
      * @return {ProvisionPrecessors}
      */
