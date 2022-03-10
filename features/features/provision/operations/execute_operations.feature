@@ -50,6 +50,7 @@ So that I can change the administrative status to some devices/subscriptions/sub
         And the ackTimeout by 0
         And the retries by 0
         And the retriesDelay by 0
+        And the retryResultList by "ERROR_TIMEOUT"
         And parameter "admsts" by "inventado"
         And the job timeout by 5 minutes
         And execute immediately

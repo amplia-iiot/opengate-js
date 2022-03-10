@@ -198,6 +198,12 @@ Given(/^the ackTimeout by (\d+)$/, function (milliseconds, callback) {
     callback();
 });
 
+Given(/^the operationRetries by (\d+)$/, function (operationRetries, callback) {
+    // Write code here that operationRetries
+    this.util.withOperationRetries(operationRetries);
+    callback();
+});
+
 Given(/^the timeout by (\d+)$/, function (milliseconds, callback) {
     // Write code here that turns the phrase above into concrete actions
     milliseconds = eval(milliseconds);
