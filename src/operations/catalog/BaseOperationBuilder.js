@@ -19,6 +19,7 @@ const ACK_TIMEOUT = "ackTimeout",
     TIMEOUT = "timeout",
     RETRIES = "retries",
     RETRIES_DELAY = "retriesDelay";
+const RETRY_RESULT_LIST = "retryResultList";
 const VALIDATE = {
     gte: function(value) {
         if (value < this)
@@ -66,7 +67,8 @@ export default class BaseOperationBuilder {
                 ackTimeout: 0,
                 timeout: 90000,
                 retries: 0,
-                retriesDelay: 0
+                retriesDelay: 0,
+                retryResultList:[]
             },
             name: config.name,
             schedule: {}
@@ -356,6 +358,19 @@ export default class BaseOperationBuilder {
      */
     withRetriesDelay(milliseconds, format = "milliseconds") {
         this._addSpecificParameter(moment.duration(milliseconds, format).asMilliseconds(), RETRIES_DELAY);
+        return this;
+    }
+
+    /**
+     * Set operation retries
+     * @example
+     *  ogapi.operations.builderFactory.newXXXBuilder().withOperationRetries(11)
+     * @param {Array} operationRetries    
+     * @throws {Error} throw error when operationRetries is not typeof string   
+     * @return {BaseOperationBuilder}
+     */
+    withOperationRetries(operationRetries) {
+        this._addSpecificParameter(operationRetries, RETRY_RESULT_LIST);
         return this;
     }
 
