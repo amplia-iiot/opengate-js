@@ -6336,6 +6336,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/operations/catalog/baseoperationbuilder.js~baseoperationbuilder#withoperationretries",
+    "class/src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder.html#instance-method-withOperationRetries",
+    "src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder#withOperationRetries",
+    "method"
+  ],
+  [
     "src/operations/catalog/baseoperationbuilder.js~baseoperationbuilder#withparameter",
     "class/src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder.html#instance-method-withParameter",
     "src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder#withParameter",
