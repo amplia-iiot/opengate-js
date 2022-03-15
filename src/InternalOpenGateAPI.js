@@ -12,7 +12,9 @@ import AreasSearchBuilder from './searching/builder/AreasSearchBuilder';
 import DatasetsCatalogSearchBuilder from './searching/builder/DatasetsCatalogSearchBuilder';
 import AreaFinder from './areas/AreaFinder';
 import BulkSearchBuilder from './searching/builder/BulkSearchBuilder';
+import BulkExecutionSearchBuilder from './searching/builder/BulkExecutionSearchBuilder';
 import BulkFinder from './bulk/BulkFinder';
+import BulkExecutionFinder from './bulk/BulkExecutionFinder'
 import Channels from './channels/Channels';
 import Areas from './areas/Areas';
 import Datasets from './datasets/Datasets';
@@ -105,12 +107,15 @@ import DatamodelsFinder from './iot/datamodels/DatamodelsFinder';
 import DatastreamsBuilder from './iot/catalog/Datastream';
 import QratingsBuilder from './iot/catalog/Qrating';
 import EntityBuilder from './provision/entities/EntityBuilder';
+import BulkExecutionBuilder from './provision/bulk/BulkExecutionBuilder'
 import EntitiesSearchBuilder from './searching/builder/EntitiesSearchBuilder';
 import DatasetEntitiesSearchBuilder from './searching/builder/DatasetEntitiesSearchBuilder';
 import DatasetSearchBuilder from './searching/builder/DatasetSearchBuilder';
 import CountryCodesSearchBuilder from './searching/builder/CountryCodesSearchBuilder';
 import TimezoneSearchBuilder from './searching/builder/TimezoneSearchBuilder';
 import UserLanguagesSearchBuilder from './searching/builder/UserLanguagesSearchBuilder';
+import ProvisionProcessors from './provisionProcessors/provisionProcessors';
+import ProvisionProcessorsFinder from './provisionProcessors/provisionProcessorsFinder';
 import EntityFinder from './entities/EntityFinder';
 import AlarmActions from './alarms/AlarmActions';
 import _superagent from 'superagent';
@@ -230,11 +235,27 @@ export default class InternalOpenGateAPI {
     }
 
     /**
+     * This return a BulkExecutionSearchBuilder to build a specific bulk
+     * @return {BulkExecutionSearchBuilder}
+     */
+    bulkExecutionSearchBuilder() {
+        return new BulkExecutionSearchBuilder(this);
+    }
+
+    /**
      * This return a util to find and download a bulk
      * @return {BulkFinder}
      */
     newBulkFinder() {
         return new BulkFinder(this);
+    }
+
+    /**
+     * This return a util to find summary and download a bulk executions
+     * @return {BulkFinder}
+     */
+    newBulkExecutionFinder(){
+        return new BulkExecutionFinder(this)
     }
 
     /**
@@ -1001,6 +1022,14 @@ export default class InternalOpenGateAPI {
     }
 
     /**
+     * This return a util to create a bulk execution
+     * @return {BulkExecutionBuilder}
+     */
+    bulkExecutionBuilder(organization, processorId, timeout) {
+        return new BulkExecutionBuilder(this, organization, processorId, timeout)
+    }
+
+    /**
      * This return a Qrating to build a specific Qrating
      * @return {QratingsBuilder}
      */
@@ -1054,5 +1083,20 @@ export default class InternalOpenGateAPI {
      */
     connectorFunctionsBuilder(organization, channel, identifier, connectorFunctionData) {
         return new ConnectorFunctions(this, organization, channel, identifier, connectorFunctionData)
+    }
+
+    /**
+     * This return a ProvisionsProcesorsBuilder to build a specific ProvisionsProcesorsBuilder
+     * @return {provisionProcessorsBuilder}
+     */
+    provisionProcessorsBuilder() {
+        return new ProvisionProcessors(this);
+    }
+    /**
+     * This return a util to find a provision procesor
+     * @return {ProvisionProcessorsFinder}
+     */
+     newProvisionProcessorsFinder() {
+         return new ProvisionProcessorsFinder(this);
     }
 }
