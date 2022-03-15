@@ -26,10 +26,6 @@ var _httpStatusCodes = require('http-status-codes');
 
 var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
 
-var _dummyClientActionFunctions = require('./dummyClientActionFunctions');
-
-var _dummyClientActionFunctions2 = _interopRequireDefault(_dummyClientActionFunctions);
-
 var _enum_CONNECTOR_FUNCTIONS_ENUMS = require('./enum/_CONNECTOR_FUNCTIONS_ENUMS');
 
 /**
@@ -46,7 +42,7 @@ var ConnectorFunctionsHelper = (function (_GenericFinder) {
     function ConnectorFunctionsHelper(ogapi) {
         _classCallCheck(this, ConnectorFunctionsHelper);
 
-        _get(Object.getPrototypeOf(ConnectorFunctionsHelper.prototype), 'constructor', this).call(this, ogapi, 'connectorfunctions');
+        _get(Object.getPrototypeOf(ConnectorFunctionsHelper.prototype), 'constructor', this).call(this, ogapi, 'connectorFunctions');
         this._jsHeaders = {
             'accept': 'application/javascript'
         };
@@ -66,19 +62,8 @@ var ConnectorFunctionsHelper = (function (_GenericFinder) {
         key: 'getdDummyFunctions',
         value: function getdDummyFunctions() {
             this._setExtraHeaders(this._jsHeaders);
-            this._id = 'js/dummyFunctions';
-            //return this._execute();
-
-            var defered = _q2['default'].defer();
-            var promise = defered.promise;
-            defered.resolve({
-                data: {
-                    text: _dummyClientActionFunctions2['default']
-                },
-                statusCode: 200
-            });
-
-            return promise;
+            this._id = 'doc/jsApi/javascript';
+            return this._execute();
         }
 
         /**
@@ -91,21 +76,21 @@ var ConnectorFunctionsHelper = (function (_GenericFinder) {
         key: 'getDocPrivateJavascriptFunctions',
         value: function getDocPrivateJavascriptFunctions() {
             this._setExtraHeaders(this._mdHeaders);
-            this._id = 'doc/private/javascriptFunctions';
-            //return this._execute();
+            this._id = 'doc/jsApi/internal';
+            return this._execute();
 
-            var data = "### ejemplo de docu de connector functions";
+            // let data = "### ejemplo de docu de connector functions"
 
-            var defered = _q2['default'].defer();
-            var promise = defered.promise;
-            defered.resolve({
-                data: {
-                    text: data
-                },
-                statusCode: 200
-            });
+            // let defered = q.defer();
+            // let promise = defered.promise;
+            // defered.resolve({
+            //     data: {
+            //         text: data
+            //     },
+            //     statusCode: 200
+            // });
 
-            return promise;
+            // return promise;
         }
 
         /**
@@ -118,21 +103,21 @@ var ConnectorFunctionsHelper = (function (_GenericFinder) {
         key: 'getDocJavascriptFunctions',
         value: function getDocJavascriptFunctions() {
             this._setExtraHeaders(this._mdHeaders);
-            this._id = 'doc/javascriptFunctions';
-            //return this._execute();
+            this._id = 'doc/jsApi/client';
+            return this._execute();
 
-            var data = "### ejemplo de docu de connector functions 2";
+            // let data = "### ejemplo de docu de connector functions 2"
 
-            var defered = _q2['default'].defer();
-            var promise = defered.promise;
-            defered.resolve({
-                data: {
-                    text: data
-                },
-                statusCode: 200
-            });
+            // let defered = q.defer();
+            // let promise = defered.promise;
+            // defered.resolve({
+            //     data: {
+            //         text: data
+            //     },
+            //     statusCode: 200
+            // });
 
-            return promise;
+            // return promise;
         }
 
         /**
