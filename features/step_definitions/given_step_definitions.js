@@ -198,6 +198,12 @@ Given(/^the ackTimeout by (\d+)$/, function (milliseconds, callback) {
     callback();
 });
 
+Given(/^the operationRetries by (\d+)$/, function (operationRetries, callback) {
+    // Write code here that operationRetries
+    this.util.withOperationRetries(operationRetries);
+    callback();
+});
+
 Given(/^the timeout by (\d+)$/, function (milliseconds, callback) {
     // Write code here that turns the phrase above into concrete actions
     milliseconds = eval(milliseconds);
@@ -666,11 +672,11 @@ Given(/^execute each (\d+) "([^"]*)" with stop date (\d+) "([^"]*)" later than t
     callback();
 });
 
-Given(/^I wait (\d+) seconds$/, function (seconds, callback) {
+Given(/^I wait (\d+) seconds$/, {timeout: 60*1000}, function (seconds, callback) {
     setTimeout(callback, seconds * 1000);
 });
 
-Given(/^I wait for DONE every (\d+) seconds, maximum (\d+) seconds$/, function (every_seconds, seconds, callback) {
+Given(/^I wait for DONE every (\d+) seconds, maximum (\d+) seconds$/, {timeout: 60*1000}, function (every_seconds, seconds, callback) {
     var _this = this;
     assert.isAbove(seconds * 1000, every_seconds * 1000, 'Maximum seconds must be strictly greater than every second');
     var everyTimeout;

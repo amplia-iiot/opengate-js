@@ -49,6 +49,7 @@ var ACK_TIMEOUT = "ackTimeout",
     TIMEOUT = "timeout",
     RETRIES = "retries",
     RETRIES_DELAY = "retriesDelay";
+var RETRY_RESULT_LIST = "retryResultList";
 var VALIDATE = {
     gte: function gte(value) {
         if (value < this) throw new Error("Value expected must be greater than <" + this + ">. Value setted <" + value + ">");
@@ -98,7 +99,8 @@ var BaseOperationBuilder = (function () {
                 ackTimeout: 0,
                 timeout: 90000,
                 retries: 0,
-                retriesDelay: 0
+                retriesDelay: 0,
+                retryResultList: []
             },
             name: config.name,
             schedule: {}
@@ -425,6 +427,21 @@ var BaseOperationBuilder = (function () {
             var format = arguments.length <= 1 || arguments[1] === undefined ? "milliseconds" : arguments[1];
 
             this._addSpecificParameter(_moment2['default'].duration(milliseconds, format).asMilliseconds(), RETRIES_DELAY);
+            return this;
+        }
+
+        /**
+         * Set operation retries
+         * @example
+         *  ogapi.operations.builderFactory.newXXXBuilder().withOperationRetries(11)
+         * @param {Array} operationRetries    
+         * @throws {Error} throw error when operationRetries is not typeof string   
+         * @return {BaseOperationBuilder}
+         */
+    }, {
+        key: 'withOperationRetries',
+        value: function withOperationRetries(operationRetries) {
+            this._addSpecificParameter(operationRetries, RETRY_RESULT_LIST);
             return this;
         }
 

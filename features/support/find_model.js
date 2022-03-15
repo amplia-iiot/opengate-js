@@ -5,6 +5,10 @@ module.exports = {
             'bundle': {
                 'nameAndversion': 'findByNameAndVersion'
             },
+            'bulk execution': {
+                'organizationAndid': 'findByOrganizationAndId',
+                'organizationAndidAndaccept': 'findByOrganizationAndId'
+            },
             'communications module': {
                 'organizationAndid': 'findByOrganizationAndId'
             },
@@ -76,8 +80,13 @@ module.exports = {
             'area': {
                 'organizationAndidentifier': 'findByOrganizationAndIdentifier',
                 'organization': 'findByOrganization'
-            }
+            },
+            'provisionProcessors':{
+                'organizationId': 'findByOrganization',
+                'organizationIdAndProvisionProcessorId':'findByOrganizationAndProvisionProcessorId',
+            },
         } [setter];
+        ///home/manuel/Escritorio/proyectos/opengateJs/opengate-js/features/support/find_model.js
     },
     getter_response: function (getter) {
         return {

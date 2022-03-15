@@ -373,6 +373,13 @@ module.exports = {
                 'color': 'withColor',
                 'entities': 'withEntities',
             },
+            'provisionProcessors':{
+                'identifier': 'withIdentifier',
+                'name':'withName',
+                'organization': 'withOrganization',
+                'configurationParams': 'withConfigurationParams',
+                'scriptProcessor': 'withScriptProcessor'
+            },
             'dataset': {
                 'identifier': 'withIdentifier',
                 'name': 'withName',
