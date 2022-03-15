@@ -4,7 +4,6 @@ import GenericFinder from '../GenericFinder';
 import q from 'q';
 import HttpStatus from 'http-status-codes';
 
-import dummyFunctions from './dummyClientActionFunctions'
 
 import {
     CONNECTOR_FUNCTION_SOUTH_PROTOCOLS,
@@ -20,7 +19,7 @@ export default class ConnectorFunctionsHelper extends GenericFinder {
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, 'connectorfunctions');
+        super(ogapi, 'connectorFunctions');
         this._jsHeaders ={
             'accept': 'application/javascript'
         };
@@ -37,19 +36,8 @@ export default class ConnectorFunctionsHelper extends GenericFinder {
      */
     getdDummyFunctions() {
         this._setExtraHeaders(this._jsHeaders)
-        this._id = 'js/dummyFunctions'
-        //return this._execute();
-
-        let defered = q.defer();
-        let promise = defered.promise;
-        defered.resolve({
-            data: {
-                text: dummyFunctions
-            },
-            statusCode: 200
-        });
-    
-        return promise;
+        this._id = 'doc/jsApi/javascript'
+        return this._execute();
     }
 
     /**
@@ -60,21 +48,21 @@ export default class ConnectorFunctionsHelper extends GenericFinder {
      */
      getDocPrivateJavascriptFunctions() {
         this._setExtraHeaders(this._mdHeaders)
-        this._id = 'doc/private/javascriptFunctions'
-        //return this._execute();
+        this._id = 'doc/jsApi/internal'
+        return this._execute();
 
-        let data = "### ejemplo de docu de connector functions"
+        // let data = "### ejemplo de docu de connector functions"
 
-        let defered = q.defer();
-        let promise = defered.promise;
-        defered.resolve({
-            data: {
-                text: data
-            },
-            statusCode: 200
-        });
+        // let defered = q.defer();
+        // let promise = defered.promise;
+        // defered.resolve({
+        //     data: {
+        //         text: data
+        //     },
+        //     statusCode: 200
+        // });
     
-        return promise;
+        // return promise;
     }
     /**
      * Performs a get that returns documentation of javascript functions from rules service
@@ -84,21 +72,21 @@ export default class ConnectorFunctionsHelper extends GenericFinder {
      */
      getDocJavascriptFunctions() {
         this._setExtraHeaders(this._mdHeaders)
-        this._id = 'doc/javascriptFunctions'
-        //return this._execute();
+        this._id = 'doc/jsApi/client'
+        return this._execute();
 
-        let data = "### ejemplo de docu de connector functions 2"
+        // let data = "### ejemplo de docu de connector functions 2"
 
-        let defered = q.defer();
-        let promise = defered.promise;
-        defered.resolve({
-            data: {
-                text: data
-            },
-            statusCode: 200
-        });
+        // let defered = q.defer();
+        // let promise = defered.promise;
+        // defered.resolve({
+        //     data: {
+        //         text: data
+        //     },
+        //     statusCode: 200
+        // });
     
-        return promise;
+        // return promise;
     }
 
     /**
