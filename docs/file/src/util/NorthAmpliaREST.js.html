@@ -80,6 +80,13 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-POWER_SUPPLY_SOURCE_ENUM">POWER_SUPPLY_SOURCE_ENUM</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOFTWARE_TYPE_ENUM">SOFTWARE_TYPE_ENUM</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEMPERATURE_STATUS_ENUM">TEMPERATURE_STATUS_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">connectorsFunctionsConfiguration</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions.html">ConnectorFunctions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctionsConfiguration/ConnectorFunctionsFinder.js~ConnectorFunctionsFinder.html">ConnectorFunctionsFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctionsConfiguration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper.html">ConnectorFunctionsHelper</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">connectorsFunctionsConfiguration/enum</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONNECTOR_FUNCTION_OPERATIONAL_STATUS">CONNECTOR_FUNCTION_OPERATIONAL_STATUS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONNECTOR_FUNCTION_SOUTH_CRITERIAS_INTERNAL">CONNECTOR_FUNCTION_SOUTH_CRITERIAS_INTERNAL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONNECTOR_FUNCTION_SOUTH_PROTOCOLS">CONNECTOR_FUNCTION_SOUTH_PROTOCOLS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONNECTOR_FUNCTION_TYPES">CONNECTOR_FUNCTION_TYPES</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">datasets</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/datasets/DatasetFinder.js~DatasetFinder.html">DatasetFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/datasets/Datasets.js~Datasets.html">Datasets</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATASETS_TYPES_ENUM">DATASETS_TYPES_ENUM</a></span></span></li>
@@ -386,6 +393,55 @@ export default class NorthAmpliaREST {
              };
         });        
         */
+
+        // mock.get(_options.url + &apos;/connectorfunctions/provision/organizations/:organization/channels/:channel&apos;, function(req) {
+        //     return {
+        //         body: {
+        //             &quot;connectorFunctions&quot;: [
+        //               {
+        //                 &quot;identifier&quot;: &quot;ebe9fbb2-3a53-4770-87bc-b05742827489&quot;,
+        //                 &quot;connectorFunctionName&quot;: &quot;connectorFunction_1&quot;,
+        //                 &quot;description&quot;: &quot;First test&quot;,
+        //                 &quot;operationalStatus&quot;: &quot;PRODUCTION&quot;,
+        //                 &quot;type&quot;: &quot;COLLECTION&quot;,
+        //                 &quot;southCriterias&quot;: [
+        //                   &quot;mqtt://just_a_test&quot;
+        //                 ],
+        //                 &quot;javascript&quot;: &quot;var get_text_request = { &apos;method&apos;: &apos;GET&apos;, &apos;uri&apos;: &apos;http://localhost:8080/textResponse&apos;, &apos;headers&apos;: { &apos;Accept&apos;: &apos;text/plain&apos; } } var get_binary_request = { &apos;method&apos;: &apos;GET&apos;, &apos;uri&apos;: &apos;http://localhost:8080/binaryResponse&apos;, &apos;headers&apos;: { &apos;Accept&apos;: &apos;application/octet-stream&apos; } } var post_binary_request = { &apos;method&apos;: &apos;POST&apos;, &apos;uri&apos;: &apos;http://localhost:8080/binaryBody&apos;, &apos;headers&apos;: { &apos;Content-Type&apos;: &apos;application/octet-stream&apos;, &apos;Accept&apos;: &apos;text/plain&apos; } } response = doHttpRequestInternal(get_text_request, binaryObject); printInfoLogInternal(&apos;Get text done: &apos; + JSON.stringify(response));return &apos;good bye&apos;;&quot;
+        //               },
+        //               {
+        //                 &quot;identifier&quot;: &quot;b0af2fe7-b320-4ab9-8b14-7e20e4c61d72&quot;,
+        //                 &quot;connectorFunctionName&quot;: &quot;operation_request_1&quot;,
+        //                 &quot;description&quot;: &quot;First test&quot;,
+        //                 &quot;operationalStatus&quot;: &quot;PRODUCTION&quot;,
+        //                 &quot;operationName&quot;: &quot;NO_WORKING_OPERATION&quot;,
+        //                 &quot;type&quot;: &quot;REQUEST&quot;,
+        //                 &quot;northCriterias&quot;: [
+        //                   {
+        //                     &quot;path&quot;: &quot;provision.device.model._current.value.manufacturer&quot;,
+        //                     &quot;value&quot;: &quot;manufacturerName&quot;
+        //                   }
+        //                 ],
+        //                 &quot;javascript&quot;: &quot;var get_text_request = { &apos;method&apos;: &apos;GET&apos;, &apos;uri&apos;: &apos;http://localhost:8080/textResponse&apos;, &apos;headers&apos;: { &apos;Accept&apos;: &apos;text/plain&apos; } } var get_binary_request = { &apos;method&apos;: &apos;GET&apos;, &apos;uri&apos;: &apos;http://localhost:8080/binaryResponse&apos;, &apos;headers&apos;: { &apos;Accept&apos;: &apos;application/octet-stream&apos; } } var post_binary_request = { &apos;method&apos;: &apos;POST&apos;, &apos;uri&apos;: &apos;http://localhost:8080/binaryBody&apos;, &apos;headers&apos;: { &apos;Content-Type&apos;: &apos;application/octet-stream&apos;, &apos;Accept&apos;: &apos;text/plain&apos; } } response = doHttpRequestInternal(get_text_request, binaryObject); printInfoLogInternal(&apos;Get text done: &apos; + JSON.stringify(response));return &apos;good bye&apos;;&quot;
+        //               },
+        //               {
+        //                 &quot;identifier&quot;: &quot;08caebd3-3d60-4f75-a5b7-32239ceb8c60&quot;,
+        //                 &quot;connectorFunctionName&quot;: &quot;collection_1&quot;,
+        //                 &quot;description&quot;: &quot;First test&quot;,
+        //                 &quot;operationalStatus&quot;: &quot;PRODUCTION&quot;,
+        //                 &quot;type&quot;: &quot;COLLECTION&quot;,
+        //                 &quot;southCriterias&quot;: [
+        //                   &quot;mqtt://odm/reponse/undeterminedDevice&quot;
+        //                 ],
+        //                 &quot;javascript&quot;: &quot;return &apos;printInfoLogInternal(&apos;hello world&apos;);hello world&apos;;&quot;
+        //               }
+        //             ]
+        //           }
+        //         ,
+        //         statusCode: 200
+        //     };
+        // });
+
     }
 
     _applyMocks (mocks) {
