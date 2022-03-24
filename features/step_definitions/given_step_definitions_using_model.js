@@ -253,6 +253,19 @@ Given(/^the "([^"]*)" with util build "([^"]*)" and with...$/, function (setterN
     callback();
 });
 
+Given(/^the "([^"]*)" with null value$/, function (setterName, callback) {
+    this.error = undefined;
+    try {
+        var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
+        this.util[method](null);
+    } catch (err) {
+        this.error = err;
+        assert.ifError(this.error);
+    }
+
+    callback();
+});
+
 Given(/^the "([^"]*)" "([^"]*)"$/, function (setterName, setterValue, callback) {
     this.error = undefined;
     try {
@@ -260,7 +273,7 @@ Given(/^the "([^"]*)" "([^"]*)"$/, function (setterName, setterValue, callback) 
         this.util[method](setterValue);
     } catch (err) {
         this.error = err;
-        //assert.ifError(this.error);
+        assert.ifError(this.error);
     }
 
     callback();
