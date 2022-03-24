@@ -1,0 +1,2833 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/searching/StaticSearch.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <a data-ice="repoURL" href="https://github.com/amplia-iiot/opengate-js.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/GenericFinder.js~GenericFinder.html">GenericFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html">InternalOpenGateAPI</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/ProvisionGenericFinder.js~ProvisionGenericFinder.html">ProvisionGenericFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">alarms</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarms/AlarmActions.js~AlarmActions.html">AlarmActions</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">alarms/actions</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarms/actions/Alarm.js~Operation.html">Operation</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarms/actions/AlarmActionBuilder.js~AlarmActionBuilder.html">AlarmActionBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarms/actions/AlarmAttendBuilder.js~AlarmAttendBuilder.html">AlarmAttendBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarms/actions/AlarmCloseBuilder.js~AlarmCloseBuilder.html">AlarmCloseBuilder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">areas</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/areas/AreaFinder.js~AreaFinder.html">AreaFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/areas/Areas.js~Areas.html">Areas</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_ENUM">TYPE_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">bulk</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bulk/BulkExecutionFinder.js~BulkExecutionFinder.html">BulkExecutionFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bulk/BulkFinder.js~BulkFinder.html">BulkFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MIME_TYPES_ENUM">MIME_TYPES_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">bundles</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/BundleFinder.js~BundleFinder.html">BundleFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/Bundles.js~Bundles.html">Bundles</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACTION_ENUM">ACTION_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">bundles/deployment</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/bundles/deployment/DeploymentElement.js~DeploymentElement.html">DeploymentElement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MODE_VALIDATORS_ENUM">MODE_VALIDATORS_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-OPERATION_ENUM">OPERATION_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-OPTION_ENUM">OPTION_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_ENUM">TYPE_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPE_VALIDATORS_ENUM">TYPE_VALIDATORS_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">channels</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/channels/ChannelFinder.js~ChannelFinder.html">ChannelFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/channels/Channels.js~Channels.html">Channels</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">collection/devices</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/DeviceMessage.js~DeviceMessage.html">DeviceMessage</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">collection/devices/collect</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/CommsModuleMessage.js~CommsModuleMessage.html">CommsModuleMessage</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Datapoint.js~Datapoint.html">Datapoint</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Datastreams.js~Datastream.html">Datastream</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Event.js~Event.html">Event</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Hardware.js~Hardware.html">Hardware</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Location.js~Location.html">Location</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Mobile.js~Mobile.html">Mobile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/PowerSupply.js~PowerSupply.html">PowerSupply</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Software.js~Software.html">Software</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Storage.js~Storage.html">Storage</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Subscriber.js~Subscriber.html">Subscriber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Subscription.js~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Temperature.js~Temperature.html">Temperature</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/collection/devices/collect/Usage.js~Usage.html">Usage</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">collection/devices/collect/enum</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ADDRESS_TYPE_ENUM">ADDRESS_TYPE_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ANTENNA_STATUS_ENUM">ANTENNA_STATUS_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BATTERY_CHARGE_LEVEL_STATUS_ENUM">BATTERY_CHARGE_LEVEL_STATUS_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BATTERY_CHARGE_STATUS_ENUM">BATTERY_CHARGE_STATUS_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LEVEL_TREND_ENUM">LEVEL_TREND_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-POWER_SUPPLY_SOURCE_ENUM">POWER_SUPPLY_SOURCE_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOFTWARE_TYPE_ENUM">SOFTWARE_TYPE_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEMPERATURE_STATUS_ENUM">TEMPERATURE_STATUS_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">connectorsFunctionsConfiguration</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions.html">ConnectorFunctions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctionsConfiguration/ConnectorFunctionsFinder.js~ConnectorFunctionsFinder.html">ConnectorFunctionsFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctionsConfiguration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper.html">ConnectorFunctionsHelper</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">connectorsFunctionsConfiguration/enum</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONNECTOR_FUNCTION_OPERATIONAL_STATUS">CONNECTOR_FUNCTION_OPERATIONAL_STATUS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONNECTOR_FUNCTION_SOUTH_CRITERIAS_INTERNAL">CONNECTOR_FUNCTION_SOUTH_CRITERIAS_INTERNAL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONNECTOR_FUNCTION_SOUTH_PROTOCOLS">CONNECTOR_FUNCTION_SOUTH_PROTOCOLS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONNECTOR_FUNCTION_TYPES">CONNECTOR_FUNCTION_TYPES</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">datasets</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/datasets/DatasetFinder.js~DatasetFinder.html">DatasetFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/datasets/Datasets.js~Datasets.html">Datasets</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">domains</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/domains/Domains.js~Domains.html">Domains</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/domains/DomainsFinder.js~DomainFinder.html">DomainFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">entities</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/DeviceFinder.js~DeviceFinder.html">DeviceFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/EntityFinder.js~EntityFinder.html">EntityFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/SubscribersFinder.js~SubscribersFinder.html">SubscribersFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/SubscriptionsFinder.js~SubscriptionsFinder.html">SubscriptionsFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/TicketFinder.js~TicketFinder.html">TicketFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">geocluster</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/geocluster/Geocluster.js~Geocluster.html">Geocluster</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/geocluster/GeoclusterFinder.js~GeoclusterFinder.html">GeoclusterFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">iot/catalog</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/catalog/Category.js~Category.html">Category</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/catalog/Datastream.js~Datastream.html">Datastream</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/catalog/Qrating.js~Qrating.html">Qrating</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">iot/datamodels</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/datamodels/Datamodels.js~Datamodels.html">Datamodels</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/datamodels/DatamodelsFinder.js~DatamodelsFinder.html">DatamodelsFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/iot/datamodels/DatamodelsHelper.js~DatamodelsHelper.html">DatamodelsHelper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATAMODELS_RESOURCE">DATAMODELS_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PRE_RESOURCE">PRE_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATAMODEL_RESOURCE">DATAMODEL_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-POST_RESOURCE">POST_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PRE_RESOURCE">PRE_RESOURCE</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operationTypes</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operationTypes/OperationType.js~OperationType.html">OperationType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operationTypes/OperationTypeCatalog.js~OperationTypesCatalog.html">OperationTypesCatalog</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operationTypes/OperationTypeFinder.js~OperationTypeFinder.html">OperationTypeFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/OperationActions.js~OperationActions.html">OperationActions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/OperationFinder.js~OperationFinder.html">OperationFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/Operations.js~Operations.html">Operations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/PeriodicityActions.js~PeriodicityActions.html">PeriodicityActions</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations/catalog</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/AppendEntitiesBy.js~AppendEntitiesBy.html">AppendEntitiesBy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder.html">BaseOperationBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/Operation.js~Operation.html">Operation</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations/catalog/parameters</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/parameters/BaseParameterBuilderWithParent.js~BaseParameterBuilderWithParent.html">BaseParameterBuilderWithParent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/parameters/ParameterBuilderFactory.js~ParameterBuilderFactory.html">ParameterBuilderFactory</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations/catalog/period</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/ExecuteEachBuilder.js~ExecuteEachBuilder.html">ExecuteEachBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/ExecuteEveryBuilder.js~ExecuteEveryBuilder.html">ExecuteEveryBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/PeriodicityUpdateBuilder.js~PeriodicityUpdateBuilder.html">PeriodicityUpdateBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DAYS_ENUM">DAYS_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MONTHS_ENUM">MONTHS_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operations/catalog/period/pattern</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByGeneric.js~ByGeneric.html">ByGeneric</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByMonth.js~ByMonth.html">ByMonth</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByWeek.js~ByWeek.html">ByWeek</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByYear.js~ByYear.html">ByYear</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">organizations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/OrganizationFinder.js~OrganizationFinder.html">OrganizationFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/Organizations.js~Organizations.html">Organizations</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/BaseProvision.js~BaseProvision.html">BaseProvision</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision/bulk</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/bulk/BulkExecutionBuilder.js~BulkExecutionBuilder.html">BulkExecutionBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPES">TYPES</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision/entities</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/AssetBuilder.js~AssetBuilder.html">AssetBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/BulkBuilder.js~BulkBuilder.html">BulkBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/ComplexBuilder.js~ComplexBuilder.html">ComplexBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/CsvBulkBuilder.js~CsvBulkBuilder.html">CsvBulkBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/DeviceBuilder.js~DeviceBuilder.html">DeviceBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/EntityBuilder.js~EntityBuilder.html">EntityBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/JsonBulkBuilder.js~JsonBulkBuilder.html">JsonBulkBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/JsonFlattenedBulkBuilder.js~JsonFlattenedBulkBuilder.html">JsonFlattenedBulkBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SimpleBuilder.js~SimpleBuilder.html">SimpleBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SubscriberBuilder.js~SubscriberBuilder.html">SubscriberBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/SubscriptionBuilder.js~SubscriptionBuilder.html">SubscriptionBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/entities/TicketBuilder.js~TicketBuilder.html">TicketBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-AssetID">AssetID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SubscriberID">SubscriberID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SubscriptionID">SubscriptionID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TicketID">TicketID</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provisionProcessors</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provisionProcessors/provisionProcessors.js~ProvisionProcessors.html">ProvisionProcessors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provisionProcessors/provisionProcessorsFinder.js~provisionProcessorsFinder.html">provisionProcessorsFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">rulesConfiguration</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurations.js~RuleConfigurations.html">RuleConfigurations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsActions.js~RuleConfigurationsActions.html">RuleConfigurationsActions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsCatalog.js~RuleConfigurationsCatalog.html">RuleConfigurationsCatalog</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsFinder.js~RuleConfigurationsFinder.html">RuleConfigurationsFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper.html">RuleConfigurationsHelper</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/AssetSearch.js~AssetSearch.html">AssetSearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/BaseSearch.js~BaseSearch.html">BaseSearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/DeviceSearch.js~DeviceSearch.html">DeviceSearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/EntitySearch.js~EntitySearch.html">EntitySearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/FilterBuilder.js~FilterBuilder.html">FilterBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/Search.js~Search.html">Search</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/SelectBuilder.js~SelectBuilder.html">SelectBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/StaticSearch.js~StaticSearch.html">StaticSearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/WPSearch.js~WPSearch.html">WPSearch</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching/builder</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AdministrativeStateSearchBuilder.js~AdministrativeStateSearchBuilder.html">AdministrativeStateSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AlarmsSearchBuilder.js~AlarmsSearchBuilder.html">AlarmsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AllowedResourceTypeSearchBuilder.js~AllowedResourceTypeSearchBuilder.html">AllowedResourceTypeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AreasSearchBuilder.js~AreasSearchBuilder.html">AreasSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/AssetsSearchBuilder.js~AssetsSearchBuilder.html">AssetsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BasicTypesSearchBuilder.js~BasicTypesSearchBuilder.html">BasicTypesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BulkExecutionSearchBuilder.js~BulkExecutionSearchBuilder.html">BulkExecutionSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BulkSearchBuilder.js~BulkSearchBuilder.html">BulkSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/BundlesSearchBuilder.js~BundlesSearchBuilder.html">BundlesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CertificatesSearchBuilder.js~CertificatesSearchBuilder.html">CertificatesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ChannelsSearchBuilder.js~ChannelsSearchBuilder.html">ChannelsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CommunicationsModuleTypeSearchBuilder.js~CommunicationsModuleTypeSearchBuilder.html">CommunicationsModuleTypeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/CountryCodesSearchBuilder.js~CountryCodesSearchBuilder.html">CountryCodesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatamodelsSearchBuilder.js~DatamodelsSearchBuilder.html">DatamodelsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatapointsSearchBuilder.js~DatapointsSearchBuilder.html">DatapointsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatasetEntitiesSearchBuilder.js~DatasetEntitiesSearchBuilder.html">DatasetEntitiesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder.html">DatasetSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatasetsCatalogSearchBuilder.js~DatasetsCatalogSearchBuilder.html">DatasetsCatalogSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatastreamsSearchBuilder.js~DatastreamsSearchBuilder.html">DatastreamsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DevicesSearchBuilder.js~DevicesSearchBuilder.html">DevicesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DomainsSearchBuilder.js~DomainsSearchBuilder.html">DomainsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/EntitiesSearchBuilder.js~EntitiesSearchBuilder.html">EntitiesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ExecutionsHistorySearchBuilder.js~ExecutionsHistorySearchBuilder.html">ExecutionsHistorySearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ExecutionsSearchBuilder.js~ExecutionsSearchBuilder.html">ExecutionsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/FeedsSearchBuilder.js~FeedsSearchBuilder.html">FeedsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/FieldsDefinitionSearchBuilder.js~FieldsDefinitionSearchBuilder.html">FieldsDefinitionSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/FlattenedSearchBuilder.js~FlattenedSearchBuilder.html">FlattenedSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html">HardwaresSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamAccessSearchBuilder.js~IoTDatastreamAccessSearchBuilder.html">IoTDatastreamAccessSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamPeriodSearchBuilder.js~IoTDatastreamPeriodSearchBuilder.html">IoTDatastreamPeriodSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamStoragePeriodSearchBuilder.js~IoTDatastreamStoragePeriodSearchBuilder.html">IoTDatastreamStoragePeriodSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/MobilePhoneProviderSearchBuilder.js~MobilePhoneProviderSearchBuilder.html">MobilePhoneProviderSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationTypesSearchBuilder.js~OperationTypesBuilder.html">OperationTypesBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationalStatusSearchBuilder.js~OperationalStatusSearchBuilder.html">OperationalStatusSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OperationsSearchBuilder.js~OperationsSearchBuilder.html">OperationsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html">OrganizationsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/PlansSearchBuilder.js~PlansSearchBuilder.html">PlansSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/PreFilteredSearchBuilder.js~PreFilteredSearchBuilder.html">PreFilteredSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RawSearchBuilder.js~RawSearchBuilder.html">RawSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ResourceTypeSearchBuilder.js~ResourceTypeSearchBuilder.html">ResourceTypeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RuleConfigurationSeveritySearchBuilder.js~RuleConfigurationSeveritySearchBuilder.html">RuleConfigurationSeveritySearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RuleModeSearchBuilder.js~RuleModeSearchBuilder.html">RuleModeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RuleTypeSearchBuilder.js~RuleTypeSearchBuilder.html">RuleTypeSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/RulesSearchBuilder.js~RulesSearchBuilder.html">RulesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SearchBuilder.js~SearchBuilder.html">SearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SearchWithSummaryBuilder.js~SearchWithSummaryBuilder.html">SearchWithSummaryBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ServiceGroupSearchBuilder.js~ServiceGroupSearchBuilder.html">ServiceGroupSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SoftwaresSearchBuilder.js~SoftwaresSearchBuilder.html">SoftwaresSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscribersSearchBuilder.js~SubscribersSearchBuilder.html">SubscribersSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/SubscriptionsSearchBuilder.js~SubscriptionsSearchBuilder.html">SubscriptionsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TasksSearchBuilder.js~TasksSearchBuilder.html">TasksSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketPrioritySearchBuilder.js~TicketPrioritySearchBuilder.html">TicketPrioritySearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketSeveritySearchBuilder.js~TicketSeveritySearchBuilder.html">TicketSeveritySearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketStatusSearchBuilder.js~TicketStatusSearchBuilder.html">TicketStatusSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketsSearchBuilder.js~TicketsSearchBuilder.html">TicketsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TimeserieSearchBuilder.js~TimeserieSearchBuilder.html">TimeserieSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TimezoneSearchBuilder.js~TimezoneSearchBuilder.html">TimezoneSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UserLanguagesSearchBuilder.js~UserLanguagesSearchBuilder.html">UserLanguagesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UserProfilesSearchBuilder.js~UserProfilesSearchBuilder.html">UserProfilesSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UsersSearchBuilder.js~UsersSearchBuilder.html">UsersSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/WorkgroupsSearchBuilder.js~WorkgroupsSearchBuilder.html">WorkgroupsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOKEN_URL">TOKEN_URL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOKEN_URL">TOKEN_URL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BASE_URL">BASE_URL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOKEN_URL">TOKEN_URL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOKEN_URL">TOKEN_URL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOFTWARE_TYPES_ENUM">SOFTWARE_TYPES_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BASE_URL">BASE_URL</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching/error</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/error/SearchBuilderError.js~SearchBuilderError.html">SearchBuilderError</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">security</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/security/CertificateFinder.js~CertificateFinder.html">CertificateFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/security/Certificates.js~Certificates.html">Certificates</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/security/Security.js~Security.html">Security</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ADMINISTRATIVE_STATE_ENUM">ADMINISTRATIVE_STATE_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MIME_TYPES_ENUM">MIME_TYPES_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-USAGES_ENUM">USAGES_ENUM</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">timeseries</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/timeseries/Timeseries.js~Timeseries.html">Timeseries</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/timeseries/TimeseriesFinder.js~TimeseriesFinder.html">TimeseriesFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-URL">URL</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">users</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/users/UserFinder.js~UserFinder.html">UserFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/users/Users.js~User.html">User</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">util</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/Expression.js~Expression.html">Expression</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/NorthAmpliaREST.js~NorthAmpliaREST.html">NorthAmpliaREST</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/SelectElement.js~SelectElement.html">SelectElement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/SouthAmpliaREST.js~SouthAmpliaREST.html">SouthAmpliaREST</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATE_FORMAT">DATE_FORMAT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TIME_FORMAT">TIME_FORMAT</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">util/searchingFields</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/searchingFields/FieldFinder.js~FieldFinder.html">FieldFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-IOT_FIELDS">IOT_FIELDS</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">util/searchingFields/source-precompiled</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-GENERATED_FIELDS">GENERATED_FIELDS</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">workgroups</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/workgroups/WorkgroupFinder.js~WorkgroupFinder.html">WorkgroupFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/workgroups/WorkgroupRelations.js~WorkgroupRelations.html">WorkgroupRelations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/workgroups/WorkgroupRelationsFinder.js~WorkgroupRelationsFinder.html">WorkgroupRelationsFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/workgroups/Workgroups.js~Workgroups.html">Workgroups</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/searching/StaticSearch.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
+
+import Search from &apos;./Search&apos;;
+import q from &apos;q&apos;;
+
+
+/**
+ * This extends Search and it allow make request to any available resource into static resources for Opengate North API
+ */
+export default class StaticSearch extends Search {
+
+    /**
+     * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
+     * @param {!string} url - this define a specific resource to make the search
+     * @param {object} filter - this is the filter
+     */
+    constructor(ogapi, url, filter, timeout, contentType, customFilters) {
+        super(ogapi, &apos;/catalog&apos; + url, filter, null, null, timeout);
+        this._contentType = contentType;
+        this._customFilters = customFilters;
+    }
+
+
+    /**
+     * This invoke a dummy request to OpenGate North API and the callback is managed by promises
+     * @return {Promise}
+     * @property {function (result:object, statusCode:number)} then - When request it is OK
+     * @property {function (error:string)} catch - When request it is NOK
+     */
+    execute() {
+        var _this = this;
+        var finalContent = [];
+
+        var ENTITY_TYPE = &apos;entityType&apos;;
+        var TYPE = &apos;type&apos;;
+
+        var defered = q.defer();
+        var promise = defered.promise;
+
+        //recuperamos el catalogo pedido
+        var content = _this._content(_this._contentType);
+        //algunos catalogos van en funci&#xF3;n del tipo de entidad. Recuperamos la entidad por la que filtrar
+        var entityType = _this._customFilters &amp;&amp; _this._customFilters[ENTITY_TYPE];
+
+        //A parte del tipo de entidad, recuperamos el resto de filtros
+        var count_filters = Object.keys(_this._customFilters).length;
+        var isFilter = count_filters &gt; 1 || (count_filters === 1 &amp;&amp; !entityType);
+
+        //Objeto donde se guardaran los objetos recuperados del primer prefiltro - por tipo de entidad
+        var collection = {};
+        if (entityType) {
+            collection[entityType] = content[entityType];
+        } else {
+            collection = content;
+        }
+
+
+        switch (_this._contentType) {
+            case &apos;operationalStatus&apos;:
+                for (var contentTmp in collection) {
+                    collection[contentTmp].forEach(function(finalValue) {
+                        if (!_this._customFilters.id || (_this._customFilters.id &amp;&amp; _this._customFilters.id === finalValue)) {
+                            finalContent.push({
+                                &apos;entityType&apos;: contentTmp,
+                                &apos;id&apos;: finalValue
+                            });
+                        }
+                    });
+                }
+                break;
+            case &apos;administrativeState&apos;:
+                var createAndAddFileObj = function(obj) {
+                    var finalObj = obj;
+                    finalObj[ENTITY_TYPE] = entityTypeTmp;
+                    finalContent.push(finalObj);
+                };
+                for (var entityTypeTmp in collection) {
+                    var typeTmp = collection[entityTypeTmp];
+                    for (var dataTmp in typeTmp) {
+                        if (isFilter) {
+                            for (var filterTmp in _this._customFilters) {
+                                if (typeTmp[dataTmp][filterTmp] === _this._customFilters[filterTmp]) {
+                                    createAndAddFileObj(typeTmp[dataTmp]);
+                                    break;
+                                }
+                            }
+                        } else {
+                            createAndAddFileObj(typeTmp[dataTmp]);
+                        }
+                    }
+                }
+                break;
+            case &apos;fieldsDefinition&apos;:
+            case &apos;communicationsModuleType&apos;:
+                //Solo filtramos por tipo de modulo de comunicaciones o tipo de field
+                var filter = isFilter &amp;&amp; _this._customFilters[TYPE];
+                if (typeof filter === &apos;undefined&apos;) {
+                    defered.resolve({
+                        error: &apos;Filters not allowed&apos;,
+                        statusCode: 400
+                    });
+                    break;
+                }
+                var result = filter ? collection[filter] : collection;
+                finalContent = result;
+                break;
+            case &apos;userProfile&apos;:
+                for (var profileTmp in collection) {
+                    if (!_this._customFilters.id || (_this._customFilters.id &amp;&amp; _this._customFilters.id === profileTmp)) {
+                        if (collection[profileTmp].length &gt; 0) {
+                            finalContent.push({
+                                &apos;id&apos;: profileTmp,
+                                &apos;managed&apos;: collection[profileTmp]
+                            });
+                        }
+                    }
+                }
+                break;
+            case &apos;serviceGroups&apos;:
+                if (entityType) {
+                    finalContent = collection[entityType];
+                }
+                break;
+            case &apos;allowedResourceType&apos;:
+                for (var resourceTypeIdx in collection) {
+                    if (!_this._customFilters.type || (_this._customFilters.type &amp;&amp; collection[resourceTypeIdx].types.indexOf(_this._customFilters.type) &gt; -1)) {
+                        finalContent.push(collection[resourceTypeIdx].resourceType);
+                    }
+                }
+                break;
+            case &apos;ticketSeverity&apos;:
+            case &apos;ticketPriority&apos;:
+            case &apos;ticketStatus&apos;:
+            case &apos;ruleConfigurationSeverity&apos;:
+            case &apos;ruleMode&apos;:
+            case &apos;ruleType&apos;:
+            case &apos;ioTDatastreamPeriod&apos;:
+            case &apos;ioTDatastreamAccess&apos;:
+            case &apos;resourceType&apos;:
+            case &apos;countryCodes&apos;:
+            case &apos;timezones&apos;:
+            case &apos;userLanguages&apos;:
+            case &apos;ioTDatastreamStoragePeriod&apos;:
+                {
+                    if (filter) {
+                        defered.resolve({
+                            error: &apos;Filters not supported&apos;,
+                            statuscode: 400
+                        });
+                        break;
+                    }
+                    finalContent = finalContent.concat(collection);
+                    break;
+                }
+            default:
+                //No existe el catalogo
+                defered.resolve({
+                    data: {},
+                    statusCode: 400
+                });
+        }
+        if (finalContent &amp;&amp; Object.keys(finalContent).length &gt; 0) {
+            var resultContent = {};
+            resultContent[_this._contentType] = finalContent;
+            defered.resolve({
+                data: resultContent,
+                statusCode: 200
+            });
+        } else {
+            //Existe el catalogo pero no hay datos
+            defered.resolve({
+                data: {},
+                statusCode: 204
+            });
+        }
+
+        return promise;
+    }
+
+    _content(contentType) {
+        return {
+            &apos;ticketSeverity&apos;: [
+                &apos;CRITICAL&apos;, &apos;URGENT&apos;, &apos;WARNING&apos;, &apos;NORMAL&apos;
+            ],
+            &apos;ticketPriority&apos;: [
+                &apos;MAJOR&apos;, &apos;MINOR&apos;, &apos;CRITICAL&apos;, &apos;BLOCKER&apos;
+            ],
+            &apos;ticketStatus&apos;: [
+                &apos;CREATED&apos;,
+                &apos;ASSIGNED&apos;,
+                &apos;ANSWERED&apos;,
+                &apos;RESTORED&apos;,
+                &apos;RESOLVED&apos;,
+                &apos;CLOSED&apos;
+            ],
+            &apos;serviceGroups&apos;: {
+                &apos;ASSET&apos;: [&apos;noUpdate&apos;,
+                    &apos;emptyServiceGroup&apos;,
+                    &apos;emptyServiceGroup_onSession&apos;,
+                    &apos;emptyServiceGroup_onDemand&apos;,
+                    &apos;level1SecurityServiceGroup&apos;,
+                    &apos;level2SecurityServiceGroup&apos;,
+                    &apos;level3SecurityServiceGroup&apos;,
+                    &apos;trustedNoneSecurityServiceGroup&apos;,
+                    &apos;trustedNoneSecurityServiceGroup_onDemand&apos;,
+                    &apos;trustedLevel1SecurityServiceGroup&apos;,
+                    &apos;trustedLevel2SecurityServiceGroup&apos;,
+                    &apos;trustedLevel3SecurityServiceGroup&apos;
+                ],
+                &apos;SUBSCRIBER&apos;: [&apos;emptyServiceGroup&apos;],
+                &apos;SUBSCRIPTION&apos;: [&apos;emptyServiceGroup&apos;],
+                &apos;GATEWAY&apos;: [&apos;noUpdate&apos;,
+                    &apos;emptyServiceGroup&apos;,
+                    &apos;emptyServiceGroup_onSession&apos;,
+                    &apos;emptyServiceGroup_onDemand&apos;,
+                    &apos;level1SecurityServiceGroup&apos;,
+                    &apos;level2SecurityServiceGroup&apos;,
+                    &apos;level3SecurityServiceGroup&apos;,
+                    &apos;trustedNoneSecurityServiceGroup&apos;,
+                    &apos;trustedNoneSecurityServiceGroup_onDemand&apos;,
+                    &apos;trustedLevel1SecurityServiceGroup&apos;,
+                    &apos;trustedLevel2SecurityServiceGroup&apos;,
+                    &apos;trustedLevel3SecurityServiceGroup&apos;
+                ]
+            },
+            &apos;administrativeState&apos;: {
+                &apos;ASSET&apos;: [{
+                    &apos;id&apos;: &apos;BANNED&apos;,
+                    &apos;description&apos;: &apos;Asset banned, It means that received information of this asset is not going to be collected&apos;
+                }, {
+                    &apos;id&apos;: &apos;DELETED&apos;,
+                    &apos;description&apos;: &apos;Asset removed from available stock&apos;
+                }, {
+                    &apos;id&apos;: &apos;IN_MAINTENANCE&apos;,
+                    &apos;description&apos;: &apos;Asset in maintenance&apos;
+                }, {
+                    &apos;id&apos;: &apos;IN_STOCK&apos;,
+                    &apos;description&apos;: &apos;Asset in stock&apos;
+                }, {
+                    &apos;id&apos;: &apos;IN_TRANSIT&apos;,
+                    &apos;description&apos;: &apos;Asset in transit&apos;
+                }, {
+                    &apos;id&apos;: &apos;IN_USE&apos;,
+                    &apos;description&apos;: &apos;Asset in use&apos;
+                }, {
+                    &apos;id&apos;: &apos;MISSING&apos;,
+                    &apos;description&apos;: &apos;Asset missing&apos;
+                }, {
+                    &apos;id&apos;: &apos;ORDERED&apos;,
+                    &apos;description&apos;: &apos;Asset ordered&apos;
+                }, {
+                    &apos;id&apos;: &apos;READY&apos;,
+                    &apos;description&apos;: &apos;Asset ready for installation&apos;
+                }, {
+                    &apos;id&apos;: &apos;RETIRED&apos;,
+                    &apos;description&apos;: &apos;Field entity withdrawal&apos;
+                }],
+                &apos;GATEWAY&apos;: [{
+                    &apos;id&apos;: &apos;REQUESTED&apos;,
+                    &apos;description&apos;: &apos;Entity requested to the supplier&apos;
+                }, {
+                    &apos;id&apos;: &apos;READY&apos;,
+                    &apos;description&apos;: &apos;Entity ready for installation&apos;
+                }, {
+                    &apos;id&apos;: &apos;REPAIR&apos;,
+                    &apos;description&apos;: &apos;Entity under repair&apos;
+                }, {
+                    &apos;id&apos;: &apos;TESTING&apos;,
+                    &apos;description&apos;: &apos;Entity in tests&apos;
+                }, {
+                    &apos;id&apos;: &apos;ACTIVE&apos;,
+                    &apos;description&apos;: &apos;Field deployed entity&apos;
+                }, {
+                    &apos;id&apos;: &apos;SUSPENDED&apos;,
+                    &apos;description&apos;: &apos;Suspended its operation&apos;
+                }, {
+                    &apos;id&apos;: &apos;DELETED&apos;,
+                    &apos;description&apos;: &apos;Entity removed from available stock&apos;
+                }, {
+                    &apos;id&apos;: &apos;RETIRED&apos;,
+                    &apos;description&apos;: &apos;Field entity withdrawal&apos;
+                }, {
+                    &apos;id&apos;: &apos;BANNED&apos;,
+                    &apos;description&apos;: &apos;Entity banned, It means that received information of this entity is not going to be collected&apos;
+                }],
+                &apos;COMMUNICATIONS_MODULE&apos;: [{
+                    &apos;id&apos;: &apos;REQUESTED&apos;,
+                    &apos;description&apos;: &apos;Entity requested to the supplier&apos;
+                }, {
+                    &apos;id&apos;: &apos;READY&apos;,
+                    &apos;description&apos;: &apos;Entity ready for installation&apos;
+                }, {
+                    &apos;id&apos;: &apos;REPAIR&apos;,
+                    &apos;description&apos;: &apos;Entity under repair&apos;
+                }, {
+                    &apos;id&apos;: &apos;TESTING&apos;,
+                    &apos;description&apos;: &apos;Entity in tests&apos;
+                }, {
+                    &apos;id&apos;: &apos;ACTIVE&apos;,
+                    &apos;description&apos;: &apos;Field deployed entity&apos;
+                }, {
+                    &apos;id&apos;: &apos;SUSPENDED&apos;,
+                    &apos;description&apos;: &apos;Suspended its operation&apos;
+                }, {
+                    &apos;id&apos;: &apos;DELETED&apos;,
+                    &apos;description&apos;: &apos;Entity removed from available stock&apos;
+                }, {
+                    &apos;id&apos;: &apos;RETIRED&apos;,
+                    &apos;description&apos;: &apos;Field entity withdrawal&apos;
+                }, {
+                    &apos;id&apos;: &apos;BANNED&apos;,
+                    &apos;description&apos;: &apos;Entity banned, It means that received information of this entity is not going to be collected&apos;
+                }],
+                &apos;SUBSCRIBER&apos;: [{
+                    &apos;id&apos;: &apos;REQUESTED&apos;,
+                    &apos;description&apos;: &apos;Entity requested to the supplier&apos;
+                }, {
+                    &apos;id&apos;: &apos;READY&apos;,
+                    &apos;description&apos;: &apos;Entity ready for installation&apos;
+                }, {
+                    &apos;id&apos;: &apos;REPAIR&apos;,
+                    &apos;description&apos;: &apos;Entity under repair&apos;
+                }, {
+                    &apos;id&apos;: &apos;TESTING&apos;,
+                    &apos;description&apos;: &apos;Entity in tests&apos;
+                }, {
+                    &apos;id&apos;: &apos;ACTIVE&apos;,
+                    &apos;description&apos;: &apos;Field deployed entity&apos;
+                }, {
+                    &apos;id&apos;: &apos;SUSPENDED&apos;,
+                    &apos;description&apos;: &apos;Suspended its operation&apos;
+                }, {
+                    &apos;id&apos;: &apos;DELETED&apos;,
+                    &apos;description&apos;: &apos;Entity removed from available stock&apos;
+                }, {
+                    &apos;id&apos;: &apos;RETIRED&apos;,
+                    &apos;description&apos;: &apos;Field entity withdrawal&apos;
+                }, {
+                    &apos;id&apos;: &apos;BANNED&apos;,
+                    &apos;description&apos;: &apos;Entity banned, It means that received information of this entity is not going to be collected&apos;
+                }],
+                &apos;SUBSCRIPTION&apos;: [{
+                    &apos;id&apos;: &apos;REQUESTED&apos;,
+                    &apos;description&apos;: &apos;Entity requested to the supplier&apos;
+                }, {
+                    &apos;id&apos;: &apos;READY&apos;,
+                    &apos;description&apos;: &apos;Entity ready for installation&apos;
+                }, {
+                    &apos;id&apos;: &apos;REPAIR&apos;,
+                    &apos;description&apos;: &apos;Entity under repair&apos;
+                }, {
+                    &apos;id&apos;: &apos;TESTING&apos;,
+                    &apos;description&apos;: &apos;Entity in tests&apos;
+                }, {
+                    &apos;id&apos;: &apos;ACTIVE&apos;,
+                    &apos;description&apos;: &apos;Field deployed entity&apos;
+                }, {
+                    &apos;id&apos;: &apos;SUSPENDED&apos;,
+                    &apos;description&apos;: &apos;Suspended its operation&apos;
+                }, {
+                    &apos;id&apos;: &apos;DELETED&apos;,
+                    &apos;description&apos;: &apos;Entity removed from available stock&apos;
+                }, {
+                    &apos;id&apos;: &apos;RETIRED&apos;,
+                    &apos;description&apos;: &apos;Field entity withdrawal&apos;
+                }, {
+                    &apos;id&apos;: &apos;BANNED&apos;,
+                    &apos;description&apos;: &apos;Entity banned, It means that received information of this entity is not going to be collected&apos;
+                }],
+                &apos;CERTIFICATE&apos;: [{
+                    &apos;id&apos;: &apos;NOT_ACTIVE&apos;,
+                    &apos;description&apos;: &apos;NOT_ACTIVE&apos;
+                }, {
+                    &apos;id&apos;: &apos;ACTIVE&apos;,
+                    &apos;description&apos;: &apos;ACTIVE&apos;
+                }, {
+                    &apos;id&apos;: &apos;REVOKED&apos;,
+                    &apos;description&apos;: &apos;REVOKED&apos;
+                }, {
+                    &apos;id&apos;: &apos;EXPIRED&apos;,
+                    &apos;description&apos;: &apos;EXPIRED&apos;
+                }]
+            },
+            &apos;operationalStatus&apos;: {
+                &apos;ASSET&apos;: [&apos;UNKNOWN&apos;, &apos;NORMAL&apos;, &apos;ALARM&apos;, &apos;DOWN&apos;, &apos;SAFE_MODE&apos;, &apos;TAMPER&apos;, &apos;TEST&apos;],
+                &apos;GATEWAY&apos;: [&apos;UNKNOWN&apos;, &apos;NORMAL&apos;, &apos;ALARM&apos;, &apos;DOWN&apos;, &apos;SAFE_MODE&apos;, &apos;TAMPER&apos;, &apos;TEST&apos;],
+                &apos;COMMUNICATIONS_MODULE&apos;: [&apos;UNKNOWN&apos;, &apos;STOPPED&apos;, &apos;STARTING&apos;, &apos;RUNNING&apos;, &apos;STOPPING&apos;, &apos;ERROR&apos;]
+            },
+            &apos;communicationsModuleType&apos;: {
+                &apos;ADSL&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;IMEI&apos;, &apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
+                    },
+                    &apos;SUBSCRIPTION&apos;: {
+                        &apos;mandatory&apos;: [],
+                        &apos;optional&apos;: [&apos;generatedEntityKey&apos;, &apos;administrativeState&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;LOCATION&apos;]
+                    }
+                },
+                &apos;CAN&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;entityKey&apos;],
+                        &apos;optional&apos;: []
+                    }
+                },
+                &apos;ETH&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
+                    },
+                    &apos;SUBSCRIPTION&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;ADDRESS&apos;]
+                    }
+                },
+                &apos;GENERIC&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;IMEI&apos;, &apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
+                    },
+                    &apos;SUBSCRIPTION&apos;: {
+                        &apos;mandatory&apos;: [],
+                        &apos;optional&apos;: [&apos;generatedEntityKey&apos;, &apos;administrativeState&apos;, &apos;IMSI&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;REGISTER_OPERATOR&apos;, &apos;MSISDN&apos;, &apos;LOCATION&apos;]
+                    },
+                    &apos;SUBSCRIBER&apos;: {
+                        &apos;mandatory&apos;: [],
+                        &apos;optional&apos;: [&apos;generatedEntityKey&apos;, &apos;administrativeState&apos;, &apos;ICC&apos;, &apos;SERIAL_NUMBER&apos;]
+                    }
+                },
+                &apos;GSM&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;IMEI&apos;, &apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
+                    },
+                    &apos;SUBSCRIPTION&apos;: {
+                        &apos;mandatory&apos;: [],
+                        &apos;optional&apos;: [&apos;generatedEntityKey&apos;, &apos;administrativeState&apos;, &apos;IMSI&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;REGISTER_OPERATOR&apos;, &apos;MSISDN&apos;, &apos;LOCATION&apos;]
+                    },
+                    &apos;SUBSCRIBER&apos;: {
+                        &apos;mandatory&apos;: [],
+                        &apos;optional&apos;: [&apos;generatedEntityKey&apos;, &apos;administrativeState&apos;, &apos;ICC&apos;]
+                    }
+                },
+                &apos;HAN&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;entityKey&apos;],
+                        &apos;optional&apos;: []
+                    }
+                },
+                &apos;I2C&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;entityKey&apos;],
+                        &apos;optional&apos;: []
+                    }
+                },
+                &apos;LOWPAN&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
+                    },
+                    &apos;SUBSCRIPTION&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;administrativeState&apos;]
+                    }
+                },
+                &apos;LTE_M&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;IMEI&apos;, &apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
+                    },
+                    &apos;SUBSCRIPTION&apos;: {
+                        &apos;mandatory&apos;: [],
+                        &apos;optional&apos;: [&apos;generatedEntityKey&apos;, &apos;administrativeState&apos;, &apos;IMSI&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;REGISTER_OPERATOR&apos;, &apos;MSISDN&apos;, &apos;LOCATION&apos;, &apos;RADIUS_USERNAME&apos;, &apos;RADIUS_PASSWORD&apos;, &apos;RADIUS_FRAMED_IP_NETMASK&apos;, &apos;MSISDN_VOICE&apos;]
+                    },
+                    &apos;SUBSCRIBER&apos;: {
+                        &apos;mandatory&apos;: [],
+                        &apos;optional&apos;: [&apos;generatedEntityKey&apos;, &apos;administrativeState&apos;, &apos;ICC&apos;]
+                    }
+                },
+                &apos;MESH&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
+                    }
+                },
+                &apos;MOBILE&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;IMEI&apos;, &apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
+                    },
+                    &apos;SUBSCRIPTION&apos;: {
+                        &apos;mandatory&apos;: [],
+                        &apos;optional&apos;: [&apos;generatedEntityKey&apos;, &apos;administrativeState&apos;, &apos;IMSI&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;REGISTER_OPERATOR&apos;, &apos;MSISDN&apos;, &apos;LOCATION&apos;, &apos;RADIUS_USERNAME&apos;, &apos;RADIUS_PASSWORD&apos;, &apos;RADIUS_FRAMED_IP_NETMASK&apos;, &apos;MSISDN_VOICE&apos;, &apos;SUBSCRIPTION_ICC&apos;]
+                    },
+                    &apos;SUBSCRIBER&apos;: {
+                        &apos;mandatory&apos;: [],
+                        &apos;optional&apos;: [&apos;generatedEntityKey&apos;, &apos;administrativeState&apos;, &apos;ICC&apos;]
+                    }
+                },
+                &apos;MULTIMOBILE&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;IMEI&apos;, &apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
+                    },
+                    &apos;SUBSCRIPTION&apos;: {
+                        &apos;mandatory&apos;: [],
+                        &apos;optional&apos;: [&apos;generatedEntityKey&apos;, &apos;administrativeState&apos;, &apos;IMSI&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;REGISTER_OPERATOR&apos;, &apos;MSISDN&apos;, &apos;LOCATION&apos;, &apos;RADIUS_USERNAME&apos;, &apos;RADIUS_PASSWORD&apos;, &apos;RADIUS_FRAMED_IP_NETMASK&apos;, &apos;MSISDN_VOICE&apos;, &apos;SUBSCRIPTION_ICC&apos;]
+                    },
+                    &apos;SUBSCRIBER&apos;: {
+                        &apos;mandatory&apos;: [],
+                        &apos;optional&apos;: [&apos;generatedEntityKey&apos;, &apos;administrativeState&apos;, &apos;ICC&apos;]
+                    }
+                },
+                &apos;NARROWBAND&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;IMEI&apos;, &apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
+                    },
+                    &apos;SUBSCRIPTION&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;IMSI&apos;, &apos;ADDRESS&apos;, &apos;HOME_OPERATOR&apos;, &apos;REGISTER_OPERATOR&apos;, &apos;LOCATION&apos;]
+                    },
+                    &apos;SUBSCRIBER&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;ICC&apos;]
+                    }
+                },
+                &apos;PLC&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
+                    },
+                    &apos;SUBSCRIPTION&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;administrativeState&apos;]
+                    }
+                },
+                &apos;RS232&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;entityKey&apos;],
+                        &apos;optional&apos;: []
+                    }
+                },
+                &apos;RS422&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;entityKey&apos;],
+                        &apos;optional&apos;: []
+                    }
+                },
+                &apos;RS485&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;entityKey&apos;],
+                        &apos;optional&apos;: []
+                    }
+                },
+                &apos;SIGFOX&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;entityKey&apos;],
+                        &apos;optional&apos;: [&apos;PAC&apos;]
+                    },
+                    &apos;SUBSCRIPTION&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;, &apos;HOME_OPERATOR&apos;, &apos;administrativeState&apos;, &apos;SIGFOX_DEVICE_TYPE&apos;]
+                    }
+                },
+                &apos;ZIGBEE&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;HARDWARE&apos;, &apos;SOFTWARE&apos;]
+                    },
+                    &apos;SUBSCRIPTION&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;administrativeState&apos;]
+                    }
+                }
+            },
+            &apos;ruleMode&apos;: [
+                &apos;EASY&apos;,
+                &apos;ADVANCED&apos;
+            ],
+            &apos;ruleType&apos;: [
+                &apos;DATASTREAM&apos;,
+                &apos;OPERATION&apos;,
+                &apos;EVENT&apos;
+            ],
+            &apos;ruleConfigurationSeverity&apos;: [
+                &apos;INFORMATIVE&apos;,
+                &apos;URGENT&apos;,
+                &apos;CRITICAL&apos;
+            ],
+            &apos;userProfile&apos;: {
+                &apos;root&apos;: [&apos;admin_domain&apos;, &apos;admin&apos;, &apos;advanced&apos;, &apos;viewer&apos;],
+                &apos;admin_domain&apos;: [&apos;admin_domain&apos;, &apos;admin&apos;, &apos;advanced&apos;, &apos;viewer&apos;],
+                &apos;admin&apos;: [&apos;admin&apos;, &apos;advanced&apos;, &apos;viewer&apos;],
+                &apos;advanced&apos;: [],
+                &apos;viewer&apos;: []
+            },
+            &apos;ioTDatastreamAccess&apos;: [
+                &apos;READ&apos;,
+                &apos;WRITE&apos;
+            ],
+            &apos;ioTDatastreamStoragePeriod&apos;: [
+                &apos;SECONDS&apos;, &apos;MINUTES&apos;, &apos;HOURS&apos;, &apos;DAYS&apos;, &apos;MONTHS&apos;, &apos;YEARS&apos;, &apos;NEVER&apos;
+            ],
+            &apos;ioTDatastreamPeriod&apos;: [
+                &apos;PULSE&apos;,
+                &apos;CUMULATIVE&apos;,
+                &apos;INSTANT&apos;
+            ],
+            &apos;resourceType&apos;: [{
+                identifier: &apos;entity.asset&apos;
+            }, {
+                identifier: &apos;entity.device&apos;
+            }, {
+                identifier: &apos;ticket&apos;
+            }],
+            &apos;allowedResourceType&apos;: [{
+                    resourceType: &apos;entity.asset&apos;,
+                    types: [&apos;entity&apos;, &apos;asset&apos;]
+                },
+                {
+                    resourceType: &apos;entity.device&apos;,
+                    types: [&apos;entity&apos;, &apos;device&apos;]
+                },
+                {
+                    resourceType: &apos;entity.subscriber&apos;,
+                    types: [&apos;entity&apos;, &apos;subscriber&apos;]
+                },
+                {
+                    resourceType: &apos;entity.subscription&apos;,
+                    types: [&apos;entity&apos;, &apos;subscription&apos;]
+                },
+                {
+                    resourceType: &apos;ticket&apos;,
+                    types: [&apos;ticket&apos;]
+                },
+                {
+                    resourceType: &apos;organization&apos;,
+                    types: [&apos;organization&apos;]
+                },
+                {
+                    resourceType: &apos;channel&apos;,
+                    types: [&apos;channel&apos;]
+                }
+            ],
+            &apos;fieldsDefinition&apos;: {
+                &apos;string&apos;: {
+                    &apos;description&apos;: &apos;Text based value&apos;,
+                    &apos;subtype&apos;: [&apos;text&apos;, &apos;password&apos;]
+                },
+                &apos;boolean&apos;: {
+                    &apos;description&apos;: &apos;Boolean based value&apos;,
+                    &apos;subtype&apos;: []
+                },
+                &apos;calendar&apos;: {
+                    &apos;description&apos;: &apos;Format is described in the ISO 8601 or in http://www.w3.org/TR/NOTE-datetime&apos;,
+                    &apos;subtype&apos;: [&apos;datetime&apos;, &apos;date&apos;, &apos;time&apos;]
+                },
+                &apos;address&apos;: {
+                    &apos;description&apos;: &apos;Network address value&apos;,
+                    &apos;subtype&apos;: [&apos;ip&apos;, &apos;ipv4&apos;, &apos;ipv6&apos;, &apos;mac48&apos;]
+                },
+                &apos;number&apos;: {
+                    &apos;description&apos;: &apos;Numeric value&apos;,
+                    &apos;subtype&apos;: [&apos;integer&apos;, &apos;float&apos;, &apos;percentage&apos;]
+                },
+                &apos;enumeration&apos;: {
+                    &apos;description&apos;: &apos;Choice list values&apos;,
+                    &apos;subtype&apos;: [&apos;string&apos;, &apos;number&apos;]
+                },
+                &apos;array&apos;: {
+                    &apos;description&apos;: &apos;Array of values&apos;,
+                    &apos;subtype&apos;: [&apos;string&apos;, &apos;number&apos;]
+                },
+                &apos;coordinates&apos;: {
+                    &apos;description&apos;: &apos;Object indicating coordinates and timestamp in geotime subtype&apos;,
+                    &apos;subtype&apos;: [&apos;geo&apos;, &apos;geotime&apos;, &apos;geojson&apos;]
+                },
+                &apos;topology&apos;: {
+                    &apos;description&apos;: &apos;Object indicating relations&apos;,
+                    &apos;subtype&apos;: [&apos;path&apos;, &apos;tree (not supported yet)&apos;]
+                },
+                &apos;object&apos;: {
+                    &apos;description&apos;: &apos;Not yet supported. For future uses only&apos;,
+                    &apos;subtype&apos;: []
+                }
+            },
+            &apos;userLanguages&apos;: [{
+                    &apos;code&apos;: &apos;es&apos;,
+                    &apos;language&apos;: &apos;Espa&#xF1;ol/Spanish&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;en&apos;,
+                    &apos;language&apos;: &apos;Ingl&#xE9;s/English&apos;
+                }
+            ],
+            &apos;countryCodes&apos;: [{
+                    &apos;code&apos;: &apos;AD&apos;,
+                    &apos;country&apos;: &apos;Andorra&apos;,
+                    &apos;zone&apos;: &apos;Europe/Andorra&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;AE&apos;,
+                    &apos;country&apos;: &apos;United Arab Emirates&apos;,
+                    &apos;zone&apos;: &apos;Asia/Dubai&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;AF&apos;,
+                    &apos;country&apos;: &apos;Afghanistan&apos;,
+                    &apos;zone&apos;: &apos;Asia/Kabul&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;AG&apos;,
+                    &apos;country&apos;: &apos;Antigua and Barbuda&apos;,
+                    &apos;zone&apos;: &apos;America/Antigua&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;AI&apos;,
+                    &apos;country&apos;: &apos;Anguilla&apos;,
+                    &apos;zone&apos;: &apos;America/Anguilla&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;AL&apos;,
+                    &apos;country&apos;: &apos;Albania&apos;,
+                    &apos;zone&apos;: &apos;Europe/Tirane&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;AM&apos;,
+                    &apos;country&apos;: &apos;Armenia&apos;,
+                    &apos;zone&apos;: &apos;Asia/Yerevan&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;AN&apos;,
+                    &apos;country&apos;: &apos;Netherlands Antilles&apos;,
+                    &apos;zone&apos;: &apos;Netherlands Antilles&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;AO&apos;,
+                    &apos;country&apos;: &apos;Angola&apos;,
+                    &apos;zone&apos;: &apos;Africa/Luanda&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;AQ&apos;,
+                    &apos;country&apos;: &apos;Antarctica&apos;,
+                    &apos;zone&apos;: &apos;Antarctica/McMurdo&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;AR&apos;,
+                    &apos;country&apos;: &apos;Argentina&apos;,
+                    &apos;zone&apos;: &apos;America/Argentina/Buenos_Aires&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;AS&apos;,
+                    &apos;country&apos;: &apos;American Samoa&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Pago_Pago&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;AT&apos;,
+                    &apos;country&apos;: &apos;Austria&apos;,
+                    &apos;zone&apos;: &apos;Europe/Vienna&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;AU&apos;,
+                    &apos;country&apos;: &apos;Australia&apos;,
+                    &apos;zone&apos;: &apos;Australia/Lord_Howe&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;AW&apos;,
+                    &apos;country&apos;: &apos;Aruba&apos;,
+                    &apos;zone&apos;: &apos;America/Aruba&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;AX&apos;,
+                    &apos;country&apos;: &apos;Aland Islands&apos;,
+                    &apos;zone&apos;: &apos;Europe/Mariehamn&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;AZ&apos;,
+                    &apos;country&apos;: &apos;Azerbaijan&apos;,
+                    &apos;zone&apos;: &apos;Asia/Baku&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;BA&apos;,
+                    &apos;country&apos;: &apos;Bosnia and Herzegovina&apos;,
+                    &apos;zone&apos;: &apos;Europe/Sarajevo&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;BB&apos;,
+                    &apos;country&apos;: &apos;Barbados&apos;,
+                    &apos;zone&apos;: &apos;America/Barbados&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;BD&apos;,
+                    &apos;country&apos;: &apos;Bangladesh&apos;,
+                    &apos;zone&apos;: &apos;Asia/Dhaka&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;BE&apos;,
+                    &apos;country&apos;: &apos;Belgium&apos;,
+                    &apos;zone&apos;: &apos;Europe/Brussels&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;BF&apos;,
+                    &apos;country&apos;: &apos;Burkina Faso&apos;,
+                    &apos;zone&apos;: &apos;Africa/Ouagadougou&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;BG&apos;,
+                    &apos;country&apos;: &apos;Bulgaria&apos;,
+                    &apos;zone&apos;: &apos;Europe/Sofia&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;BH&apos;,
+                    &apos;country&apos;: &apos;Bahrain&apos;,
+                    &apos;zone&apos;: &apos;Asia/Bahrain&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;BI&apos;,
+                    &apos;country&apos;: &apos;Burundi&apos;,
+                    &apos;zone&apos;: &apos;Africa/Bujumbura&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;BJ&apos;,
+                    &apos;country&apos;: &apos;Benin&apos;,
+                    &apos;zone&apos;: &apos;Africa/Porto-Novo&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;BL&apos;,
+                    &apos;country&apos;: &apos;Saint Barth&#xE9;lemy&apos;,
+                    &apos;zone&apos;: &apos;America/St_Barthelemy&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;BM&apos;,
+                    &apos;country&apos;: &apos;Bermuda&apos;,
+                    &apos;zone&apos;: &apos;Atlantic/Bermuda&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;BN&apos;,
+                    &apos;country&apos;: &apos;Brunei&apos;,
+                    &apos;zone&apos;: &apos;Asia/Brunei&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;BO&apos;,
+                    &apos;country&apos;: &apos;Bolivia&apos;,
+                    &apos;zone&apos;: &apos;America/La_Paz&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;BQ&apos;,
+                    &apos;country&apos;: &apos;Bonaire, Saint Eustatius and Saba&apos;,
+                    &apos;zone&apos;: &apos;America/Kralendijk&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;BR&apos;,
+                    &apos;country&apos;: &apos;Brazil&apos;,
+                    &apos;zone&apos;: &apos;America/Noronha&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;BS&apos;,
+                    &apos;country&apos;: &apos;Bahamas&apos;,
+                    &apos;zone&apos;: &apos;America/Nassau&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;BT&apos;,
+                    &apos;country&apos;: &apos;Bhutan&apos;,
+                    &apos;zone&apos;: &apos;Asia/Thimphu&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;BV&apos;,
+                    &apos;country&apos;: &apos;Bouvet Island&apos;,
+                    &apos;zone&apos;: &apos;Bouvet Island&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;BW&apos;,
+                    &apos;country&apos;: &apos;Botswana&apos;,
+                    &apos;zone&apos;: &apos;Africa/Gaborone&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;BY&apos;,
+                    &apos;country&apos;: &apos;Belarus&apos;,
+                    &apos;zone&apos;: &apos;Europe/Minsk&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;BZ&apos;,
+                    &apos;country&apos;: &apos;Belize&apos;,
+                    &apos;zone&apos;: &apos;America/Belize&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;CA&apos;,
+                    &apos;country&apos;: &apos;Canada&apos;,
+                    &apos;zone&apos;: &apos;America/St_Johns&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;CC&apos;,
+                    &apos;country&apos;: &apos;Cocos Islands&apos;,
+                    &apos;zone&apos;: &apos;Indian/Cocos&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;CD&apos;,
+                    &apos;country&apos;: &apos;Democratic Republic of the Congo&apos;,
+                    &apos;zone&apos;: &apos;Africa/Kinshasa&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;CF&apos;,
+                    &apos;country&apos;: &apos;Central African Republic&apos;,
+                    &apos;zone&apos;: &apos;Africa/Bangui&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;CG&apos;,
+                    &apos;country&apos;: &apos;Republic of the Congo&apos;,
+                    &apos;zone&apos;: &apos;Africa/Brazzaville&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;CH&apos;,
+                    &apos;country&apos;: &apos;Switzerland&apos;,
+                    &apos;zone&apos;: &apos;Europe/Zurich&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;CI&apos;,
+                    &apos;country&apos;: &apos;Ivory Coast&apos;,
+                    &apos;zone&apos;: &apos;Africa/Abidjan&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;CK&apos;,
+                    &apos;country&apos;: &apos;Cook Islands&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Rarotonga&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;CL&apos;,
+                    &apos;country&apos;: &apos;Chile&apos;,
+                    &apos;zone&apos;: &apos;America/Santiago&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;CM&apos;,
+                    &apos;country&apos;: &apos;Cameroon&apos;,
+                    &apos;zone&apos;: &apos;Africa/Douala&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;CN&apos;,
+                    &apos;country&apos;: &apos;China&apos;,
+                    &apos;zone&apos;: &apos;Asia/Shanghai&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;CO&apos;,
+                    &apos;country&apos;: &apos;Colombia&apos;,
+                    &apos;zone&apos;: &apos;America/Bogota&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;CR&apos;,
+                    &apos;country&apos;: &apos;Costa Rica&apos;,
+                    &apos;zone&apos;: &apos;America/Costa_Rica&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;CS&apos;,
+                    &apos;country&apos;: &apos;Serbia and Montenegro&apos;,
+                    &apos;zone&apos;: &apos;Serbia and Montenegro&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;CU&apos;,
+                    &apos;country&apos;: &apos;Cuba&apos;,
+                    &apos;zone&apos;: &apos;America/Havana&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;CV&apos;,
+                    &apos;country&apos;: &apos;Cape Verde&apos;,
+                    &apos;zone&apos;: &apos;Atlantic/Cape_Verde&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;CW&apos;,
+                    &apos;country&apos;: &apos;Cura&#xE7;ao&apos;,
+                    &apos;zone&apos;: &apos;America/Curacao&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;CX&apos;,
+                    &apos;country&apos;: &apos;Christmas Island&apos;,
+                    &apos;zone&apos;: &apos;Indian/Christmas&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;CY&apos;,
+                    &apos;country&apos;: &apos;Cyprus&apos;,
+                    &apos;zone&apos;: &apos;Asia/Nicosia&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;CZ&apos;,
+                    &apos;country&apos;: &apos;Czech Republic&apos;,
+                    &apos;zone&apos;: &apos;Europe/Prague&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;DE&apos;,
+                    &apos;country&apos;: &apos;Germany&apos;,
+                    &apos;zone&apos;: &apos;Europe/Berlin&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;DJ&apos;,
+                    &apos;country&apos;: &apos;Djibouti&apos;,
+                    &apos;zone&apos;: &apos;Africa/Djibouti&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;DK&apos;,
+                    &apos;country&apos;: &apos;Denmark&apos;,
+                    &apos;zone&apos;: &apos;Europe/Copenhagen&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;DM&apos;,
+                    &apos;country&apos;: &apos;Dominica&apos;,
+                    &apos;zone&apos;: &apos;America/Dominica&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;DO&apos;,
+                    &apos;country&apos;: &apos;Dominican Republic&apos;,
+                    &apos;zone&apos;: &apos;America/Santo_Domingo&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;DZ&apos;,
+                    &apos;country&apos;: &apos;Algeria&apos;,
+                    &apos;zone&apos;: &apos;Africa/Algiers&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;EC&apos;,
+                    &apos;country&apos;: &apos;Ecuador&apos;,
+                    &apos;zone&apos;: &apos;America/Guayaquil&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;EE&apos;,
+                    &apos;country&apos;: &apos;Estonia&apos;,
+                    &apos;zone&apos;: &apos;Europe/Tallinn&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;EG&apos;,
+                    &apos;country&apos;: &apos;Egypt&apos;,
+                    &apos;zone&apos;: &apos;Africa/Cairo&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;EH&apos;,
+                    &apos;country&apos;: &apos;Western Sahara&apos;,
+                    &apos;zone&apos;: &apos;Africa/El_Aaiun&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;ER&apos;,
+                    &apos;country&apos;: &apos;Eritrea&apos;,
+                    &apos;zone&apos;: &apos;Africa/Asmara&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;ES&apos;,
+                    &apos;country&apos;: &apos;Spain&apos;,
+                    &apos;zone&apos;: &apos;Europe/Madrid&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;ET&apos;,
+                    &apos;country&apos;: &apos;Ethiopia&apos;,
+                    &apos;zone&apos;: &apos;Africa/Addis_Ababa&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;FI&apos;,
+                    &apos;country&apos;: &apos;Finland&apos;,
+                    &apos;zone&apos;: &apos;Europe/Helsinki&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;FJ&apos;,
+                    &apos;country&apos;: &apos;Fiji&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Fiji&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;FK&apos;,
+                    &apos;country&apos;: &apos;Falkland Islands&apos;,
+                    &apos;zone&apos;: &apos;Atlantic/Stanley&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;FM&apos;,
+                    &apos;country&apos;: &apos;Micronesia&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Chuuk&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;FO&apos;,
+                    &apos;country&apos;: &apos;Faroe Islands&apos;,
+                    &apos;zone&apos;: &apos;Atlantic/Faroe&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;FR&apos;,
+                    &apos;country&apos;: &apos;France&apos;,
+                    &apos;zone&apos;: &apos;Europe/Paris&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;GA&apos;,
+                    &apos;country&apos;: &apos;Gabon&apos;,
+                    &apos;zone&apos;: &apos;Africa/Libreville&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;GB&apos;,
+                    &apos;country&apos;: &apos;United Kingdom&apos;,
+                    &apos;zone&apos;: &apos;Europe/London&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;GD&apos;,
+                    &apos;country&apos;: &apos;Grenada&apos;,
+                    &apos;zone&apos;: &apos;America/Grenada&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;GE&apos;,
+                    &apos;country&apos;: &apos;Georgia&apos;,
+                    &apos;zone&apos;: &apos;Asia/Tbilisi&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;GF&apos;,
+                    &apos;country&apos;: &apos;French Guiana&apos;,
+                    &apos;zone&apos;: &apos;America/Cayenne&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;GG&apos;,
+                    &apos;country&apos;: &apos;Guernsey&apos;,
+                    &apos;zone&apos;: &apos;Europe/Guernsey&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;GH&apos;,
+                    &apos;country&apos;: &apos;Ghana&apos;,
+                    &apos;zone&apos;: &apos;Africa/Accra&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;GI&apos;,
+                    &apos;country&apos;: &apos;Gibraltar&apos;,
+                    &apos;zone&apos;: &apos;Europe/Gibraltar&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;GL&apos;,
+                    &apos;country&apos;: &apos;Greenland&apos;,
+                    &apos;zone&apos;: &apos;America/Godthab&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;GM&apos;,
+                    &apos;country&apos;: &apos;Gambia&apos;,
+                    &apos;zone&apos;: &apos;Africa/Banjul&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;GN&apos;,
+                    &apos;country&apos;: &apos;Guinea&apos;,
+                    &apos;zone&apos;: &apos;Africa/Conakry&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;GP&apos;,
+                    &apos;country&apos;: &apos;Guadeloupe&apos;,
+                    &apos;zone&apos;: &apos;America/Guadeloupe&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;GQ&apos;,
+                    &apos;country&apos;: &apos;Equatorial Guinea&apos;,
+                    &apos;zone&apos;: &apos;Africa/Malabo&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;GR&apos;,
+                    &apos;country&apos;: &apos;Greece&apos;,
+                    &apos;zone&apos;: &apos;Europe/Athens&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;GS&apos;,
+                    &apos;country&apos;: &apos;South Georgia and the South Sandwich Islands&apos;,
+                    &apos;zone&apos;: &apos;Atlantic/South_Georgia&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;GT&apos;,
+                    &apos;country&apos;: &apos;Guatemala&apos;,
+                    &apos;zone&apos;: &apos;America/Guatemala&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;GU&apos;,
+                    &apos;country&apos;: &apos;Guam&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Guam&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;GW&apos;,
+                    &apos;country&apos;: &apos;Guinea-Bissau&apos;,
+                    &apos;zone&apos;: &apos;Africa/Bissau&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;GY&apos;,
+                    &apos;country&apos;: &apos;Guyana&apos;,
+                    &apos;zone&apos;: &apos;America/Guyana&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;HK&apos;,
+                    &apos;country&apos;: &apos;Hong Kong&apos;,
+                    &apos;zone&apos;: &apos;Asia/Hong_Kong&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;HM&apos;,
+                    &apos;country&apos;: &apos;Heard Island and McDonald Islands&apos;,
+                    &apos;zone&apos;: &apos;Heard Island and McDonald Islands&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;HN&apos;,
+                    &apos;country&apos;: &apos;Honduras&apos;,
+                    &apos;zone&apos;: &apos;America/Tegucigalpa&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;HR&apos;,
+                    &apos;country&apos;: &apos;Croatia&apos;,
+                    &apos;zone&apos;: &apos;Europe/Zagreb&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;HT&apos;,
+                    &apos;country&apos;: &apos;Haiti&apos;,
+                    &apos;zone&apos;: &apos;America/Port-au-Prince&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;HU&apos;,
+                    &apos;country&apos;: &apos;Hungary&apos;,
+                    &apos;zone&apos;: &apos;Europe/Budapest&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;ID&apos;,
+                    &apos;country&apos;: &apos;Indonesia&apos;,
+                    &apos;zone&apos;: &apos;Asia/Jakarta&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;IE&apos;,
+                    &apos;country&apos;: &apos;Ireland&apos;,
+                    &apos;zone&apos;: &apos;Europe/Dublin&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;IL&apos;,
+                    &apos;country&apos;: &apos;Israel&apos;,
+                    &apos;zone&apos;: &apos;Asia/Jerusalem&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;IM&apos;,
+                    &apos;country&apos;: &apos;Isle of Man&apos;,
+                    &apos;zone&apos;: &apos;Europe/Isle_of_Man&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;IN&apos;,
+                    &apos;country&apos;: &apos;India&apos;,
+                    &apos;zone&apos;: &apos;Asia/Kolkata&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;IO&apos;,
+                    &apos;country&apos;: &apos;British Indian Ocean Territory&apos;,
+                    &apos;zone&apos;: &apos;Indian/Chagos&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;IQ&apos;,
+                    &apos;country&apos;: &apos;Iraq&apos;,
+                    &apos;zone&apos;: &apos;Asia/Baghdad&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;IR&apos;,
+                    &apos;country&apos;: &apos;Iran&apos;,
+                    &apos;zone&apos;: &apos;Asia/Tehran&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;IS&apos;,
+                    &apos;country&apos;: &apos;Iceland&apos;,
+                    &apos;zone&apos;: &apos;Atlantic/Reykjavik&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;IT&apos;,
+                    &apos;country&apos;: &apos;Italy&apos;,
+                    &apos;zone&apos;: &apos;Europe/Rome&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;JE&apos;,
+                    &apos;country&apos;: &apos;Jersey&apos;,
+                    &apos;zone&apos;: &apos;Europe/Jersey&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;JM&apos;,
+                    &apos;country&apos;: &apos;Jamaica&apos;,
+                    &apos;zone&apos;: &apos;America/Jamaica&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;JO&apos;,
+                    &apos;country&apos;: &apos;Jordan&apos;,
+                    &apos;zone&apos;: &apos;Asia/Amman&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;JP&apos;,
+                    &apos;country&apos;: &apos;Japan&apos;,
+                    &apos;zone&apos;: &apos;Asia/Tokyo&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;KE&apos;,
+                    &apos;country&apos;: &apos;Kenya&apos;,
+                    &apos;zone&apos;: &apos;Africa/Nairobi&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;KG&apos;,
+                    &apos;country&apos;: &apos;Kyrgyzstan&apos;,
+                    &apos;zone&apos;: &apos;Asia/Bishkek&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;KH&apos;,
+                    &apos;country&apos;: &apos;Cambodia&apos;,
+                    &apos;zone&apos;: &apos;Asia/Phnom_Penh&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;KI&apos;,
+                    &apos;country&apos;: &apos;Kiribati&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Tarawa&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;KM&apos;,
+                    &apos;country&apos;: &apos;Comoros&apos;,
+                    &apos;zone&apos;: &apos;Indian/Comoro&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;KN&apos;,
+                    &apos;country&apos;: &apos;Saint Kitts and Nevis&apos;,
+                    &apos;zone&apos;: &apos;America/St_Kitts&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;KP&apos;,
+                    &apos;country&apos;: &apos;North Korea&apos;,
+                    &apos;zone&apos;: &apos;Asia/Pyongyang&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;KR&apos;,
+                    &apos;country&apos;: &apos;South Korea&apos;,
+                    &apos;zone&apos;: &apos;Asia/Seoul&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;KW&apos;,
+                    &apos;country&apos;: &apos;Kuwait&apos;,
+                    &apos;zone&apos;: &apos;Asia/Kuwait&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;KY&apos;,
+                    &apos;country&apos;: &apos;Cayman Islands&apos;,
+                    &apos;zone&apos;: &apos;America/Cayman&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;KZ&apos;,
+                    &apos;country&apos;: &apos;Kazakhstan&apos;,
+                    &apos;zone&apos;: &apos;Asia/Almaty&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;LA&apos;,
+                    &apos;country&apos;: &apos;Laos&apos;,
+                    &apos;zone&apos;: &apos;Asia/Vientiane&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;LB&apos;,
+                    &apos;country&apos;: &apos;Lebanon&apos;,
+                    &apos;zone&apos;: &apos;Asia/Beirut&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;LC&apos;,
+                    &apos;country&apos;: &apos;Saint Lucia&apos;,
+                    &apos;zone&apos;: &apos;America/St_Lucia&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;LI&apos;,
+                    &apos;country&apos;: &apos;Liechtenstein&apos;,
+                    &apos;zone&apos;: &apos;Europe/Vaduz&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;LK&apos;,
+                    &apos;country&apos;: &apos;Sri Lanka&apos;,
+                    &apos;zone&apos;: &apos;Asia/Colombo&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;LR&apos;,
+                    &apos;country&apos;: &apos;Liberia&apos;,
+                    &apos;zone&apos;: &apos;Africa/Monrovia&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;LS&apos;,
+                    &apos;country&apos;: &apos;Lesotho&apos;,
+                    &apos;zone&apos;: &apos;Africa/Maseru&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;LT&apos;,
+                    &apos;country&apos;: &apos;Lithuania&apos;,
+                    &apos;zone&apos;: &apos;Europe/Vilnius&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;LU&apos;,
+                    &apos;country&apos;: &apos;Luxembourg&apos;,
+                    &apos;zone&apos;: &apos;Europe/Luxembourg&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;LV&apos;,
+                    &apos;country&apos;: &apos;Latvia&apos;,
+                    &apos;zone&apos;: &apos;Europe/Riga&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;LY&apos;,
+                    &apos;country&apos;: &apos;Libya&apos;,
+                    &apos;zone&apos;: &apos;Africa/Tripoli&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;MA&apos;,
+                    &apos;country&apos;: &apos;Morocco&apos;,
+                    &apos;zone&apos;: &apos;Africa/Casablanca&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;MC&apos;,
+                    &apos;country&apos;: &apos;Monaco&apos;,
+                    &apos;zone&apos;: &apos;Europe/Monaco&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;MD&apos;,
+                    &apos;country&apos;: &apos;Moldova&apos;,
+                    &apos;zone&apos;: &apos;Europe/Chisinau&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;ME&apos;,
+                    &apos;country&apos;: &apos;Montenegro&apos;,
+                    &apos;zone&apos;: &apos;Europe/Podgorica&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;MF&apos;,
+                    &apos;country&apos;: &apos;Saint Martin&apos;,
+                    &apos;zone&apos;: &apos;America/Marigot&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;MG&apos;,
+                    &apos;country&apos;: &apos;Madagascar&apos;,
+                    &apos;zone&apos;: &apos;Indian/Antananarivo&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;MH&apos;,
+                    &apos;country&apos;: &apos;Marshall Islands&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Majuro&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;MK&apos;,
+                    &apos;country&apos;: &apos;Macedonia&apos;,
+                    &apos;zone&apos;: &apos;Europe/Skopje&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;ML&apos;,
+                    &apos;country&apos;: &apos;Mali&apos;,
+                    &apos;zone&apos;: &apos;Africa/Bamako&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;MM&apos;,
+                    &apos;country&apos;: &apos;Myanmar&apos;,
+                    &apos;zone&apos;: &apos;Asia/Yangon&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;MN&apos;,
+                    &apos;country&apos;: &apos;Mongolia&apos;,
+                    &apos;zone&apos;: &apos;Asia/Ulaanbaatar&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;MO&apos;,
+                    &apos;country&apos;: &apos;Macao&apos;,
+                    &apos;zone&apos;: &apos;Asia/Macau&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;MP&apos;,
+                    &apos;country&apos;: &apos;Northern Mariana Islands&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Saipan&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;MQ&apos;,
+                    &apos;country&apos;: &apos;Martinique&apos;,
+                    &apos;zone&apos;: &apos;America/Martinique&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;MR&apos;,
+                    &apos;country&apos;: &apos;Mauritania&apos;,
+                    &apos;zone&apos;: &apos;Africa/Nouakchott&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;MS&apos;,
+                    &apos;country&apos;: &apos;Montserrat&apos;,
+                    &apos;zone&apos;: &apos;America/Montserrat&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;MT&apos;,
+                    &apos;country&apos;: &apos;Malta&apos;,
+                    &apos;zone&apos;: &apos;Europe/Malta&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;MU&apos;,
+                    &apos;country&apos;: &apos;Mauritius&apos;,
+                    &apos;zone&apos;: &apos;Indian/Mauritius&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;MV&apos;,
+                    &apos;country&apos;: &apos;Maldives&apos;,
+                    &apos;zone&apos;: &apos;Indian/Maldives&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;MW&apos;,
+                    &apos;country&apos;: &apos;Malawi&apos;,
+                    &apos;zone&apos;: &apos;Africa/Blantyre&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;MX&apos;,
+                    &apos;country&apos;: &apos;Mexico&apos;,
+                    &apos;zone&apos;: &apos;America/Mexico_City&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;MY&apos;,
+                    &apos;country&apos;: &apos;Malaysia&apos;,
+                    &apos;zone&apos;: &apos;Asia/Kuala_Lumpur&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;MZ&apos;,
+                    &apos;country&apos;: &apos;Mozambique&apos;,
+                    &apos;zone&apos;: &apos;Africa/Maputo&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;NA&apos;,
+                    &apos;country&apos;: &apos;Namibia&apos;,
+                    &apos;zone&apos;: &apos;Africa/Windhoek&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;NC&apos;,
+                    &apos;country&apos;: &apos;New Caledonia&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Noumea&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;NE&apos;,
+                    &apos;country&apos;: &apos;Niger&apos;,
+                    &apos;zone&apos;: &apos;Africa/Niamey&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;NF&apos;,
+                    &apos;country&apos;: &apos;Norfolk Island&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Norfolk&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;NG&apos;,
+                    &apos;country&apos;: &apos;Nigeria&apos;,
+                    &apos;zone&apos;: &apos;Africa/Lagos&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;NI&apos;,
+                    &apos;country&apos;: &apos;Nicaragua&apos;,
+                    &apos;zone&apos;: &apos;America/Managua&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;NL&apos;,
+                    &apos;country&apos;: &apos;Netherlands&apos;,
+                    &apos;zone&apos;: &apos;Europe/Amsterdam&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;NO&apos;,
+                    &apos;country&apos;: &apos;Norway&apos;,
+                    &apos;zone&apos;: &apos;Europe/Oslo&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;NP&apos;,
+                    &apos;country&apos;: &apos;Nepal&apos;,
+                    &apos;zone&apos;: &apos;Asia/Kathmandu&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;NR&apos;,
+                    &apos;country&apos;: &apos;Nauru&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Nauru&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;NU&apos;,
+                    &apos;country&apos;: &apos;Niue&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Niue&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;NZ&apos;,
+                    &apos;country&apos;: &apos;New Zealand&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Auckland&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;OM&apos;,
+                    &apos;country&apos;: &apos;Oman&apos;,
+                    &apos;zone&apos;: &apos;Asia/Muscat&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;PA&apos;,
+                    &apos;country&apos;: &apos;Panama&apos;,
+                    &apos;zone&apos;: &apos;America/Panama&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;PE&apos;,
+                    &apos;country&apos;: &apos;Peru&apos;,
+                    &apos;zone&apos;: &apos;America/Lima&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;PF&apos;,
+                    &apos;country&apos;: &apos;French Polynesia&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Tahiti&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;PG&apos;,
+                    &apos;country&apos;: &apos;Papua New Guinea&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Port_Moresby&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;PH&apos;,
+                    &apos;country&apos;: &apos;Philippines&apos;,
+                    &apos;zone&apos;: &apos;Asia/Manila&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;PK&apos;,
+                    &apos;country&apos;: &apos;Pakistan&apos;,
+                    &apos;zone&apos;: &apos;Asia/Karachi&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;PL&apos;,
+                    &apos;country&apos;: &apos;Poland&apos;,
+                    &apos;zone&apos;: &apos;Europe/Warsaw&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;PM&apos;,
+                    &apos;country&apos;: &apos;Saint Pierre and Miquelon&apos;,
+                    &apos;zone&apos;: &apos;America/Miquelon&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;PN&apos;,
+                    &apos;country&apos;: &apos;Pitcairn&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Pitcairn&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;PR&apos;,
+                    &apos;country&apos;: &apos;Puerto Rico&apos;,
+                    &apos;zone&apos;: &apos;America/Puerto_Rico&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;PS&apos;,
+                    &apos;country&apos;: &apos;Palestinian Territory&apos;,
+                    &apos;zone&apos;: &apos;Asia/Gaza&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;PT&apos;,
+                    &apos;country&apos;: &apos;Portugal&apos;,
+                    &apos;zone&apos;: &apos;Europe/Lisbon&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;PW&apos;,
+                    &apos;country&apos;: &apos;Palau&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Palau&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;PY&apos;,
+                    &apos;country&apos;: &apos;Paraguay&apos;,
+                    &apos;zone&apos;: &apos;America/Asuncion&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;QA&apos;,
+                    &apos;country&apos;: &apos;Qatar&apos;,
+                    &apos;zone&apos;: &apos;Asia/Qatar&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;RE&apos;,
+                    &apos;country&apos;: &apos;Reunion&apos;,
+                    &apos;zone&apos;: &apos;Indian/Reunion&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;RO&apos;,
+                    &apos;country&apos;: &apos;Romania&apos;,
+                    &apos;zone&apos;: &apos;Europe/Bucharest&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;RS&apos;,
+                    &apos;country&apos;: &apos;Serbia&apos;,
+                    &apos;zone&apos;: &apos;Europe/Belgrade&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;RU&apos;,
+                    &apos;country&apos;: &apos;Russia&apos;,
+                    &apos;zone&apos;: &apos;Europe/Kaliningrad&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;RW&apos;,
+                    &apos;country&apos;: &apos;Rwanda&apos;,
+                    &apos;zone&apos;: &apos;Africa/Kigali&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;SA&apos;,
+                    &apos;country&apos;: &apos;Saudi Arabia&apos;,
+                    &apos;zone&apos;: &apos;Asia/Riyadh&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;SB&apos;,
+                    &apos;country&apos;: &apos;Solomon Islands&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Guadalcanal&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;SC&apos;,
+                    &apos;country&apos;: &apos;Seychelles&apos;,
+                    &apos;zone&apos;: &apos;Indian/Mahe&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;SD&apos;,
+                    &apos;country&apos;: &apos;Sudan&apos;,
+                    &apos;zone&apos;: &apos;Africa/Khartoum&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;SE&apos;,
+                    &apos;country&apos;: &apos;Sweden&apos;,
+                    &apos;zone&apos;: &apos;Europe/Stockholm&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;SG&apos;,
+                    &apos;country&apos;: &apos;Singapore&apos;,
+                    &apos;zone&apos;: &apos;Asia/Singapore&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;SH&apos;,
+                    &apos;country&apos;: &apos;Saint Helena&apos;,
+                    &apos;zone&apos;: &apos;Atlantic/St_Helena&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;SI&apos;,
+                    &apos;country&apos;: &apos;Slovenia&apos;,
+                    &apos;zone&apos;: &apos;Europe/Ljubljana&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;SJ&apos;,
+                    &apos;country&apos;: &apos;Svalbard and Jan Mayen&apos;,
+                    &apos;zone&apos;: &apos;Arctic/Longyearbyen&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;SK&apos;,
+                    &apos;country&apos;: &apos;Slovakia&apos;,
+                    &apos;zone&apos;: &apos;Europe/Bratislava&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;SL&apos;,
+                    &apos;country&apos;: &apos;Sierra Leone&apos;,
+                    &apos;zone&apos;: &apos;Africa/Freetown&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;SM&apos;,
+                    &apos;country&apos;: &apos;San Marino&apos;,
+                    &apos;zone&apos;: &apos;Europe/San_Marino&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;SN&apos;,
+                    &apos;country&apos;: &apos;Senegal&apos;,
+                    &apos;zone&apos;: &apos;Africa/Dakar&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;SO&apos;,
+                    &apos;country&apos;: &apos;Somalia&apos;,
+                    &apos;zone&apos;: &apos;Africa/Mogadishu&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;SR&apos;,
+                    &apos;country&apos;: &apos;Suriname&apos;,
+                    &apos;zone&apos;: &apos;America/Paramaribo&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;SS&apos;,
+                    &apos;country&apos;: &apos;South Sudan&apos;,
+                    &apos;zone&apos;: &apos;Africa/Juba&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;ST&apos;,
+                    &apos;country&apos;: &apos;Sao Tome and Principe&apos;,
+                    &apos;zone&apos;: &apos;Africa/Sao_Tome&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;SV&apos;,
+                    &apos;country&apos;: &apos;El Salvador&apos;,
+                    &apos;zone&apos;: &apos;America/El_Salvador&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;SX&apos;,
+                    &apos;country&apos;: &apos;Sint Maarten&apos;,
+                    &apos;zone&apos;: &apos;America/Lower_Princes&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;SY&apos;,
+                    &apos;country&apos;: &apos;Syria&apos;,
+                    &apos;zone&apos;: &apos;Asia/Damascus&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;SZ&apos;,
+                    &apos;country&apos;: &apos;Swaziland&apos;,
+                    &apos;zone&apos;: &apos;Africa/Mbabane&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;TC&apos;,
+                    &apos;country&apos;: &apos;Turks and Caicos Islands&apos;,
+                    &apos;zone&apos;: &apos;America/Grand_Turk&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;TD&apos;,
+                    &apos;country&apos;: &apos;Chad&apos;,
+                    &apos;zone&apos;: &apos;Africa/Ndjamena&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;TF&apos;,
+                    &apos;country&apos;: &apos;French Southern Territories&apos;,
+                    &apos;zone&apos;: &apos;Indian/Kerguelen&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;TG&apos;,
+                    &apos;country&apos;: &apos;Togo&apos;,
+                    &apos;zone&apos;: &apos;Africa/Lome&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;TH&apos;,
+                    &apos;country&apos;: &apos;Thailand&apos;,
+                    &apos;zone&apos;: &apos;Asia/Bangkok&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;TJ&apos;,
+                    &apos;country&apos;: &apos;Tajikistan&apos;,
+                    &apos;zone&apos;: &apos;Asia/Dushanbe&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;TK&apos;,
+                    &apos;country&apos;: &apos;Tokelau&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Fakaofo&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;TL&apos;,
+                    &apos;country&apos;: &apos;East Timor&apos;,
+                    &apos;zone&apos;: &apos;Asia/Dili&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;TM&apos;,
+                    &apos;country&apos;: &apos;Turkmenistan&apos;,
+                    &apos;zone&apos;: &apos;Asia/Ashgabat&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;TN&apos;,
+                    &apos;country&apos;: &apos;Tunisia&apos;,
+                    &apos;zone&apos;: &apos;Africa/Tunis&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;TO&apos;,
+                    &apos;country&apos;: &apos;Tonga&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Tongatapu&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;TR&apos;,
+                    &apos;country&apos;: &apos;Turkey&apos;,
+                    &apos;zone&apos;: &apos;Europe/Istanbul&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;TT&apos;,
+                    &apos;country&apos;: &apos;Trinidad and Tobago&apos;,
+                    &apos;zone&apos;: &apos;America/Port_of_Spain&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;TV&apos;,
+                    &apos;country&apos;: &apos;Tuvalu&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Funafuti&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;TW&apos;,
+                    &apos;country&apos;: &apos;Taiwan&apos;,
+                    &apos;zone&apos;: &apos;Asia/Taipei&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;TZ&apos;,
+                    &apos;country&apos;: &apos;Tanzania&apos;,
+                    &apos;zone&apos;: &apos;Africa/Dar_es_Salaam&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;UA&apos;,
+                    &apos;country&apos;: &apos;Ukraine&apos;,
+                    &apos;zone&apos;: &apos;Europe/Kiev&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;UG&apos;,
+                    &apos;country&apos;: &apos;Uganda&apos;,
+                    &apos;zone&apos;: &apos;Africa/Kampala&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;UM&apos;,
+                    &apos;country&apos;: &apos;United States Minor Outlying Islands&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Midway&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;US&apos;,
+                    &apos;country&apos;: &apos;United States&apos;,
+                    &apos;zone&apos;: &apos;America/New_York&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;UY&apos;,
+                    &apos;country&apos;: &apos;Uruguay&apos;,
+                    &apos;zone&apos;: &apos;America/Montevideo&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;UZ&apos;,
+                    &apos;country&apos;: &apos;Uzbekistan&apos;,
+                    &apos;zone&apos;: &apos;Asia/Samarkand&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;VA&apos;,
+                    &apos;country&apos;: &apos;Vatican&apos;,
+                    &apos;zone&apos;: &apos;Europe/Vatican&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;VC&apos;,
+                    &apos;country&apos;: &apos;Saint Vincent and the Grenadines&apos;,
+                    &apos;zone&apos;: &apos;America/St_Vincent&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;VE&apos;,
+                    &apos;country&apos;: &apos;Venezuela&apos;,
+                    &apos;zone&apos;: &apos;America/Caracas&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;VG&apos;,
+                    &apos;country&apos;: &apos;British Virgin Islands&apos;,
+                    &apos;zone&apos;: &apos;America/Tortola&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;VI&apos;,
+                    &apos;country&apos;: &apos;U.S. Virgin Islands&apos;,
+                    &apos;zone&apos;: &apos;America/St_Thomas&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;VN&apos;,
+                    &apos;country&apos;: &apos;Vietnam&apos;,
+                    &apos;zone&apos;: &apos;Asia/Ho_Chi_Minh&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;VU&apos;,
+                    &apos;country&apos;: &apos;Vanuatu&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Efate&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;WF&apos;,
+                    &apos;country&apos;: &apos;Wallis and Futuna&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Wallis&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;WS&apos;,
+                    &apos;country&apos;: &apos;Samoa&apos;,
+                    &apos;zone&apos;: &apos;Pacific/Apia&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;XK&apos;,
+                    &apos;country&apos;: &apos;Kosovo&apos;,
+                    &apos;zone&apos;: &apos;Kosovo&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;YE&apos;,
+                    &apos;country&apos;: &apos;Yemen&apos;,
+                    &apos;zone&apos;: &apos;Asia/Aden&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;YT&apos;,
+                    &apos;country&apos;: &apos;Mayotte&apos;,
+                    &apos;zone&apos;: &apos;Indian/Mayotte&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;ZA&apos;,
+                    &apos;country&apos;: &apos;South Africa&apos;,
+                    &apos;zone&apos;: &apos;Africa/Johannesburg&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;ZM&apos;,
+                    &apos;country&apos;: &apos;Zambia&apos;,
+                    &apos;zone&apos;: &apos;Africa/Lusaka&apos;
+                },
+                {
+                    &apos;code&apos;: &apos;ZW&apos;,
+                    &apos;country&apos;: &apos;Zimbabwe&apos;,
+                    &apos;zone&apos;: &apos;Africa/Harare&apos;
+                }
+            ],
+            &apos;timezones&apos;: [
+                &apos;ACT&apos;,
+                &apos;AET&apos;,
+                &apos;Africa/Abidjan&apos;,
+                &apos;Africa/Accra&apos;,
+                &apos;Africa/Addis_Ababa&apos;,
+                &apos;Africa/Algiers&apos;,
+                &apos;Africa/Asmara&apos;,
+                &apos;Africa/Asmera&apos;,
+                &apos;Africa/Bamako&apos;,
+                &apos;Africa/Bangui&apos;,
+                &apos;Africa/Banjul&apos;,
+                &apos;Africa/Bissau&apos;,
+                &apos;Africa/Blantyre&apos;,
+                &apos;Africa/Brazzaville&apos;,
+                &apos;Africa/Bujumbura&apos;,
+                &apos;Africa/Cairo&apos;,
+                &apos;Africa/Casablanca&apos;,
+                &apos;Africa/Ceuta&apos;,
+                &apos;Africa/Conakry&apos;,
+                &apos;Africa/Dakar&apos;,
+                &apos;Africa/Dar_es_Salaam&apos;,
+                &apos;Africa/Djibouti&apos;,
+                &apos;Africa/Douala&apos;,
+                &apos;Africa/El_Aaiun&apos;,
+                &apos;Africa/Freetown&apos;,
+                &apos;Africa/Gaborone&apos;,
+                &apos;Africa/Harare&apos;,
+                &apos;Africa/Johannesburg&apos;,
+                &apos;Africa/Juba&apos;,
+                &apos;Africa/Kampala&apos;,
+                &apos;Africa/Khartoum&apos;,
+                &apos;Africa/Kigali&apos;,
+                &apos;Africa/Kinshasa&apos;,
+                &apos;Africa/Lagos&apos;,
+                &apos;Africa/Libreville&apos;,
+                &apos;Africa/Lome&apos;,
+                &apos;Africa/Luanda&apos;,
+                &apos;Africa/Lubumbashi&apos;,
+                &apos;Africa/Lusaka&apos;,
+                &apos;Africa/Malabo&apos;,
+                &apos;Africa/Maputo&apos;,
+                &apos;Africa/Maseru&apos;,
+                &apos;Africa/Mbabane&apos;,
+                &apos;Africa/Mogadishu&apos;,
+                &apos;Africa/Monrovia&apos;,
+                &apos;Africa/Nairobi&apos;,
+                &apos;Africa/Ndjamena&apos;,
+                &apos;Africa/Niamey&apos;,
+                &apos;Africa/Nouakchott&apos;,
+                &apos;Africa/Ouagadougou&apos;,
+                &apos;Africa/Porto-Novo&apos;,
+                &apos;Africa/Sao_Tome&apos;,
+                &apos;Africa/Timbuktu&apos;,
+                &apos;Africa/Tripoli&apos;,
+                &apos;Africa/Tunis&apos;,
+                &apos;Africa/Windhoek&apos;,
+                &apos;AGT&apos;,
+                &apos;America/Adak&apos;,
+                &apos;America/Anchorage&apos;,
+                &apos;America/Anguilla&apos;,
+                &apos;America/Antigua&apos;,
+                &apos;America/Araguaina&apos;,
+                &apos;America/Argentina/Buenos_Aires&apos;,
+                &apos;America/Argentina/Catamarca&apos;,
+                &apos;America/Argentina/ComodRivadavia&apos;,
+                &apos;America/Argentina/Cordoba&apos;,
+                &apos;America/Argentina/Jujuy&apos;,
+                &apos;America/Argentina/La_Rioja&apos;,
+                &apos;America/Argentina/Mendoza&apos;,
+                &apos;America/Argentina/Rio_Gallegos&apos;,
+                &apos;America/Argentina/Salta&apos;,
+                &apos;America/Argentina/San_Juan&apos;,
+                &apos;America/Argentina/San_Luis&apos;,
+                &apos;America/Argentina/Tucuman&apos;,
+                &apos;America/Argentina/Ushuaia&apos;,
+                &apos;America/Aruba&apos;,
+                &apos;America/Asuncion&apos;,
+                &apos;America/Atikokan&apos;,
+                &apos;America/Atka&apos;,
+                &apos;America/Bahia&apos;,
+                &apos;America/Bahia_Banderas&apos;,
+                &apos;America/Barbados&apos;,
+                &apos;America/Belem&apos;,
+                &apos;America/Belize&apos;,
+                &apos;America/Blanc-Sablon&apos;,
+                &apos;America/Boa_Vista&apos;,
+                &apos;America/Bogota&apos;,
+                &apos;America/Boise&apos;,
+                &apos;America/Buenos_Aires&apos;,
+                &apos;America/Cambridge_Bay&apos;,
+                &apos;America/Campo_Grande&apos;,
+                &apos;America/Cancun&apos;,
+                &apos;America/Caracas&apos;,
+                &apos;America/Catamarca&apos;,
+                &apos;America/Cayenne&apos;,
+                &apos;America/Cayman&apos;,
+                &apos;America/Chicago&apos;,
+                &apos;America/Chihuahua&apos;,
+                &apos;America/Coral_Harbour&apos;,
+                &apos;America/Cordoba&apos;,
+                &apos;America/Costa_Rica&apos;,
+                &apos;America/Creston&apos;,
+                &apos;America/Cuiaba&apos;,
+                &apos;America/Curacao&apos;,
+                &apos;America/Danmarkshavn&apos;,
+                &apos;America/Dawson&apos;,
+                &apos;America/Dawson_Creek&apos;,
+                &apos;America/Denver&apos;,
+                &apos;America/Detroit&apos;,
+                &apos;America/Dominica&apos;,
+                &apos;America/Edmonton&apos;,
+                &apos;America/Eirunepe&apos;,
+                &apos;America/El_Salvador&apos;,
+                &apos;America/Ensenada&apos;,
+                &apos;America/Fort_Nelson&apos;,
+                &apos;America/Fort_Wayne&apos;,
+                &apos;America/Fortaleza&apos;,
+                &apos;America/Glace_Bay&apos;,
+                &apos;America/Godthab&apos;,
+                &apos;America/Goose_Bay&apos;,
+                &apos;America/Grand_Turk&apos;,
+                &apos;America/Grenada&apos;,
+                &apos;America/Guadeloupe&apos;,
+                &apos;America/Guatemala&apos;,
+                &apos;America/Guayaquil&apos;,
+                &apos;America/Guyana&apos;,
+                &apos;America/Halifax&apos;,
+                &apos;America/Havana&apos;,
+                &apos;America/Hermosillo&apos;,
+                &apos;America/Indiana/Indianapolis&apos;,
+                &apos;America/Indiana/Knox&apos;,
+                &apos;America/Indiana/Marengo&apos;,
+                &apos;America/Indiana/Petersburg&apos;,
+                &apos;America/Indiana/Tell_City&apos;,
+                &apos;America/Indiana/Vevay&apos;,
+                &apos;America/Indiana/Vincennes&apos;,
+                &apos;America/Indiana/Winamac&apos;,
+                &apos;America/Indianapolis&apos;,
+                &apos;America/Inuvik&apos;,
+                &apos;America/Iqaluit&apos;,
+                &apos;America/Jamaica&apos;,
+                &apos;America/Jujuy&apos;,
+                &apos;America/Juneau&apos;,
+                &apos;America/Kentucky/Louisville&apos;,
+                &apos;America/Kentucky/Monticello&apos;,
+                &apos;America/Knox_IN&apos;,
+                &apos;America/Kralendijk&apos;,
+                &apos;America/La_Paz&apos;,
+                &apos;America/Lima&apos;,
+                &apos;America/Los_Angeles&apos;,
+                &apos;America/Louisville&apos;,
+                &apos;America/Lower_Princes&apos;,
+                &apos;America/Maceio&apos;,
+                &apos;America/Managua&apos;,
+                &apos;America/Manaus&apos;,
+                &apos;America/Marigot&apos;,
+                &apos;America/Martinique&apos;,
+                &apos;America/Matamoros&apos;,
+                &apos;America/Mazatlan&apos;,
+                &apos;America/Mendoza&apos;,
+                &apos;America/Menominee&apos;,
+                &apos;America/Merida&apos;,
+                &apos;America/Metlakatla&apos;,
+                &apos;America/Mexico_City&apos;,
+                &apos;America/Miquelon&apos;,
+                &apos;America/Moncton&apos;,
+                &apos;America/Monterrey&apos;,
+                &apos;America/Montevideo&apos;,
+                &apos;America/Montreal&apos;,
+                &apos;America/Montserrat&apos;,
+                &apos;America/Nassau&apos;,
+                &apos;America/New_York&apos;,
+                &apos;America/Nipigon&apos;,
+                &apos;America/Nome&apos;,
+                &apos;America/Noronha&apos;,
+                &apos;America/North_Dakota/Beulah&apos;,
+                &apos;America/North_Dakota/Center&apos;,
+                &apos;America/North_Dakota/New_Salem&apos;,
+                &apos;America/Ojinaga&apos;,
+                &apos;America/Panama&apos;,
+                &apos;America/Pangnirtung&apos;,
+                &apos;America/Paramaribo&apos;,
+                &apos;America/Phoenix&apos;,
+                &apos;America/Port_of_Spain&apos;,
+                &apos;America/Port-au-Prince&apos;,
+                &apos;America/Porto_Acre&apos;,
+                &apos;America/Porto_Velho&apos;,
+                &apos;America/Puerto_Rico&apos;,
+                &apos;America/Rainy_River&apos;,
+                &apos;America/Rankin_Inlet&apos;,
+                &apos;America/Recife&apos;,
+                &apos;America/Regina&apos;,
+                &apos;America/Resolute&apos;,
+                &apos;America/Rio_Branco&apos;,
+                &apos;America/Rosario&apos;,
+                &apos;America/Santa_Isabel&apos;,
+                &apos;America/Santarem&apos;,
+                &apos;America/Santiago&apos;,
+                &apos;America/Santo_Domingo&apos;,
+                &apos;America/Sao_Paulo&apos;,
+                &apos;America/Scoresbysund&apos;,
+                &apos;America/Shiprock&apos;,
+                &apos;America/Sitka&apos;,
+                &apos;America/St_Barthelemy&apos;,
+                &apos;America/St_Johns&apos;,
+                &apos;America/St_Kitts&apos;,
+                &apos;America/St_Lucia&apos;,
+                &apos;America/St_Thomas&apos;,
+                &apos;America/St_Vincent&apos;,
+                &apos;America/Swift_Current&apos;,
+                &apos;America/Tegucigalpa&apos;,
+                &apos;America/Thule&apos;,
+                &apos;America/Thunder_Bay&apos;,
+                &apos;America/Tijuana&apos;,
+                &apos;America/Toronto&apos;,
+                &apos;America/Tortola&apos;,
+                &apos;America/Vancouver&apos;,
+                &apos;America/Virgin&apos;,
+                &apos;America/Whitehorse&apos;,
+                &apos;America/Winnipeg&apos;,
+                &apos;America/Yakutat&apos;,
+                &apos;America/Yellowknife&apos;,
+                &apos;Antarctica/Casey&apos;,
+                &apos;Antarctica/Davis&apos;,
+                &apos;Antarctica/DumontDUrville&apos;,
+                &apos;Antarctica/Macquarie&apos;,
+                &apos;Antarctica/Mawson&apos;,
+                &apos;Antarctica/McMurdo&apos;,
+                &apos;Antarctica/Palmer&apos;,
+                &apos;Antarctica/Rothera&apos;,
+                &apos;Antarctica/South_Pole&apos;,
+                &apos;Antarctica/Syowa&apos;,
+                &apos;Antarctica/Troll&apos;,
+                &apos;Antarctica/Vostok&apos;,
+                &apos;Arctic/Longyearbyen&apos;,
+                &apos;ART&apos;,
+                &apos;Asia/Aden&apos;,
+                &apos;Asia/Almaty&apos;,
+                &apos;Asia/Amman&apos;,
+                &apos;Asia/Anadyr&apos;,
+                &apos;Asia/Aqtau&apos;,
+                &apos;Asia/Aqtobe&apos;,
+                &apos;Asia/Ashgabat&apos;,
+                &apos;Asia/Ashkhabad&apos;,
+                &apos;Asia/Baghdad&apos;,
+                &apos;Asia/Bahrain&apos;,
+                &apos;Asia/Baku&apos;,
+                &apos;Asia/Bangkok&apos;,
+                &apos;Asia/Barnaul&apos;,
+                &apos;Asia/Beirut&apos;,
+                &apos;Asia/Bishkek&apos;,
+                &apos;Asia/Brunei&apos;,
+                &apos;Asia/Calcutta&apos;,
+                &apos;Asia/Chita&apos;,
+                &apos;Asia/Choibalsan&apos;,
+                &apos;Asia/Chongqing&apos;,
+                &apos;Asia/Chungking&apos;,
+                &apos;Asia/Colombo&apos;,
+                &apos;Asia/Dacca&apos;,
+                &apos;Asia/Damascus&apos;,
+                &apos;Asia/Dhaka&apos;,
+                &apos;Asia/Dili&apos;,
+                &apos;Asia/Dubai&apos;,
+                &apos;Asia/Dushanbe&apos;,
+                &apos;Asia/Gaza&apos;,
+                &apos;Asia/Harbin&apos;,
+                &apos;Asia/Hebron&apos;,
+                &apos;Asia/Ho_Chi_Minh&apos;,
+                &apos;Asia/Hong_Kong&apos;,
+                &apos;Asia/Hovd&apos;,
+                &apos;Asia/Irkutsk&apos;,
+                &apos;Asia/Istanbul&apos;,
+                &apos;Asia/Jakarta&apos;,
+                &apos;Asia/Jayapura&apos;,
+                &apos;Asia/Jerusalem&apos;,
+                &apos;Asia/Kabul&apos;,
+                &apos;Asia/Kamchatka&apos;,
+                &apos;Asia/Karachi&apos;,
+                &apos;Asia/Kashgar&apos;,
+                &apos;Asia/Kathmandu&apos;,
+                &apos;Asia/Katmandu&apos;,
+                &apos;Asia/Khandyga&apos;,
+                &apos;Asia/Kolkata&apos;,
+                &apos;Asia/Krasnoyarsk&apos;,
+                &apos;Asia/Kuala_Lumpur&apos;,
+                &apos;Asia/Kuching&apos;,
+                &apos;Asia/Kuwait&apos;,
+                &apos;Asia/Macao&apos;,
+                &apos;Asia/Macau&apos;,
+                &apos;Asia/Magadan&apos;,
+                &apos;Asia/Makassar&apos;,
+                &apos;Asia/Manila&apos;,
+                &apos;Asia/Muscat&apos;,
+                &apos;Asia/Nicosia&apos;,
+                &apos;Asia/Novokuznetsk&apos;,
+                &apos;Asia/Novosibirsk&apos;,
+                &apos;Asia/Omsk&apos;,
+                &apos;Asia/Oral&apos;,
+                &apos;Asia/Phnom_Penh&apos;,
+                &apos;Asia/Pontianak&apos;,
+                &apos;Asia/Pyongyang&apos;,
+                &apos;Asia/Qatar&apos;,
+                &apos;Asia/Qyzylorda&apos;,
+                &apos;Asia/Rangoon&apos;,
+                &apos;Asia/Riyadh&apos;,
+                &apos;Asia/Saigon&apos;,
+                &apos;Asia/Sakhalin&apos;,
+                &apos;Asia/Samarkand&apos;,
+                &apos;Asia/Seoul&apos;,
+                &apos;Asia/Shanghai&apos;,
+                &apos;Asia/Singapore&apos;,
+                &apos;Asia/Srednekolymsk&apos;,
+                &apos;Asia/Taipei&apos;,
+                &apos;Asia/Tashkent&apos;,
+                &apos;Asia/Tbilisi&apos;,
+                &apos;Asia/Tehran&apos;,
+                &apos;Asia/Tel_Aviv&apos;,
+                &apos;Asia/Thimbu&apos;,
+                &apos;Asia/Thimphu&apos;,
+                &apos;Asia/Tokyo&apos;,
+                &apos;Asia/Tomsk&apos;,
+                &apos;Asia/Ujung_Pandang&apos;,
+                &apos;Asia/Ulaanbaatar&apos;,
+                &apos;Asia/Ulan_Bator&apos;,
+                &apos;Asia/Urumqi&apos;,
+                &apos;Asia/Ust-Nera&apos;,
+                &apos;Asia/Vientiane&apos;,
+                &apos;Asia/Vladivostok&apos;,
+                &apos;Asia/Yakutsk&apos;,
+                &apos;Asia/Yekaterinburg&apos;,
+                &apos;Asia/Yerevan&apos;,
+                &apos;AST&apos;,
+                &apos;Atlantic/Azores&apos;,
+                &apos;Atlantic/Bermuda&apos;,
+                &apos;Atlantic/Canary&apos;,
+                &apos;Atlantic/Cape_Verde&apos;,
+                &apos;Atlantic/Faeroe&apos;,
+                &apos;Atlantic/Faroe&apos;,
+                &apos;Atlantic/Jan_Mayen&apos;,
+                &apos;Atlantic/Madeira&apos;,
+                &apos;Atlantic/Reykjavik&apos;,
+                &apos;Atlantic/South_Georgia&apos;,
+                &apos;Atlantic/St_Helena&apos;,
+                &apos;Atlantic/Stanley&apos;,
+                &apos;Australia/ACT&apos;,
+                &apos;Australia/Adelaide&apos;,
+                &apos;Australia/Brisbane&apos;,
+                &apos;Australia/Broken_Hill&apos;,
+                &apos;Australia/Canberra&apos;,
+                &apos;Australia/Currie&apos;,
+                &apos;Australia/Darwin&apos;,
+                &apos;Australia/Eucla&apos;,
+                &apos;Australia/Hobart&apos;,
+                &apos;Australia/LHI&apos;,
+                &apos;Australia/Lindeman&apos;,
+                &apos;Australia/Lord_Howe&apos;,
+                &apos;Australia/Melbourne&apos;,
+                &apos;Australia/North&apos;,
+                &apos;Australia/NSW&apos;,
+                &apos;Australia/Perth&apos;,
+                &apos;Australia/Queensland&apos;,
+                &apos;Australia/South&apos;,
+                &apos;Australia/Sydney&apos;,
+                &apos;Australia/Tasmania&apos;,
+                &apos;Australia/Victoria&apos;,
+                &apos;Australia/West&apos;,
+                &apos;Australia/Yancowinna&apos;,
+                &apos;BET&apos;,
+                &apos;Brazil/Acre&apos;,
+                &apos;Brazil/DeNoronha&apos;,
+                &apos;Brazil/East&apos;,
+                &apos;Brazil/West&apos;,
+                &apos;BST&apos;,
+                &apos;Canada/Atlantic&apos;,
+                &apos;Canada/Central&apos;,
+                &apos;Canada/East-Saskatchewan&apos;,
+                &apos;Canada/Eastern&apos;,
+                &apos;Canada/Mountain&apos;,
+                &apos;Canada/Newfoundland&apos;,
+                &apos;Canada/Pacific&apos;,
+                &apos;Canada/Saskatchewan&apos;,
+                &apos;Canada/Yukon&apos;,
+                &apos;CAT&apos;,
+                &apos;CET&apos;,
+                &apos;Chile/Continental&apos;,
+                &apos;Chile/EasterIsland&apos;,
+                &apos;CNT&apos;,
+                &apos;CST&apos;,
+                &apos;CST6CDT&apos;,
+                &apos;CTT&apos;,
+                &apos;Cuba&apos;,
+                &apos;EAT&apos;,
+                &apos;ECT&apos;,
+                &apos;EET&apos;,
+                &apos;Egypt&apos;,
+                &apos;Eire&apos;,
+                &apos;EST&apos;,
+                &apos;EST5EDT&apos;,
+                &apos;Europe/Amsterdam&apos;,
+                &apos;Europe/Andorra&apos;,
+                &apos;Europe/Astrakhan&apos;,
+                &apos;Europe/Athens&apos;,
+                &apos;Europe/Belfast&apos;,
+                &apos;Europe/Belgrade&apos;,
+                &apos;Europe/Berlin&apos;,
+                &apos;Europe/Bratislava&apos;,
+                &apos;Europe/Brussels&apos;,
+                &apos;Europe/Bucharest&apos;,
+                &apos;Europe/Budapest&apos;,
+                &apos;Europe/Busingen&apos;,
+                &apos;Europe/Chisinau&apos;,
+                &apos;Europe/Copenhagen&apos;,
+                &apos;Europe/Dublin&apos;,
+                &apos;Europe/Gibraltar&apos;,
+                &apos;Europe/Guernsey&apos;,
+                &apos;Europe/Helsinki&apos;,
+                &apos;Europe/Isle_of_Man&apos;,
+                &apos;Europe/Istanbul&apos;,
+                &apos;Europe/Jersey&apos;,
+                &apos;Europe/Kaliningrad&apos;,
+                &apos;Europe/Kiev&apos;,
+                &apos;Europe/Kirov&apos;,
+                &apos;Europe/Lisbon&apos;,
+                &apos;Europe/Ljubljana&apos;,
+                &apos;Europe/London&apos;,
+                &apos;Europe/Luxembourg&apos;,
+                &apos;Europe/Madrid&apos;,
+                &apos;Europe/Malta&apos;,
+                &apos;Europe/Mariehamn&apos;,
+                &apos;Europe/Minsk&apos;,
+                &apos;Europe/Monaco&apos;,
+                &apos;Europe/Moscow&apos;,
+                &apos;Europe/Nicosia&apos;,
+                &apos;Europe/Oslo&apos;,
+                &apos;Europe/Paris&apos;,
+                &apos;Europe/Podgorica&apos;,
+                &apos;Europe/Prague&apos;,
+                &apos;Europe/Riga&apos;,
+                &apos;Europe/Rome&apos;,
+                &apos;Europe/Samara&apos;,
+                &apos;Europe/San_Marino&apos;,
+                &apos;Europe/Sarajevo&apos;,
+                &apos;Europe/Simferopol&apos;,
+                &apos;Europe/Skopje&apos;,
+                &apos;Europe/Sofia&apos;,
+                &apos;Europe/Stockholm&apos;,
+                &apos;Europe/Tallinn&apos;,
+                &apos;Europe/Tirane&apos;,
+                &apos;Europe/Tiraspol&apos;,
+                &apos;Europe/Ulyanovsk&apos;,
+                &apos;Europe/Uzhgorod&apos;,
+                &apos;Europe/Vaduz&apos;,
+                &apos;Europe/Vatican&apos;,
+                &apos;Europe/Vienna&apos;,
+                &apos;Europe/Vilnius&apos;,
+                &apos;Europe/Volgograd&apos;,
+                &apos;Europe/Warsaw&apos;,
+                &apos;Europe/Zagreb&apos;,
+                &apos;Europe/Zaporozhye&apos;,
+                &apos;Europe/Zurich&apos;,
+                &apos;GB&apos;,
+                &apos;GB-Eire&apos;,
+                &apos;GMT&apos;,
+                &apos;GMT0&apos;,
+                &apos;Greenwich&apos;,
+                &apos;Hongkong&apos;,
+                &apos;HST&apos;,
+                &apos;Iceland&apos;,
+                &apos;IET&apos;,
+                &apos;Indian/Antananarivo&apos;,
+                &apos;Indian/Chagos&apos;,
+                &apos;Indian/Christmas&apos;,
+                &apos;Indian/Cocos&apos;,
+                &apos;Indian/Comoro&apos;,
+                &apos;Indian/Kerguelen&apos;,
+                &apos;Indian/Mahe&apos;,
+                &apos;Indian/Maldives&apos;,
+                &apos;Indian/Mauritius&apos;,
+                &apos;Indian/Mayotte&apos;,
+                &apos;Indian/Reunion&apos;,
+                &apos;Iran&apos;,
+                &apos;Israel&apos;,
+                &apos;IST&apos;,
+                &apos;Jamaica&apos;,
+                &apos;Japan&apos;,
+                &apos;JST&apos;,
+                &apos;Kwajalein&apos;,
+                &apos;Libya&apos;,
+                &apos;MET&apos;,
+                &apos;Mexico/BajaNorte&apos;,
+                &apos;Mexico/BajaSur&apos;,
+                &apos;Mexico/General&apos;,
+                &apos;MIT&apos;,
+                &apos;MST&apos;,
+                &apos;MST7MDT&apos;,
+                &apos;Navajo&apos;,
+                &apos;NET&apos;,
+                &apos;NST&apos;,
+                &apos;NZ&apos;,
+                &apos;NZ-CHAT&apos;,
+                &apos;Pacific/Apia&apos;,
+                &apos;Pacific/Auckland&apos;,
+                &apos;Pacific/Bougainville&apos;,
+                &apos;Pacific/Chatham&apos;,
+                &apos;Pacific/Chuuk&apos;,
+                &apos;Pacific/Easter&apos;,
+                &apos;Pacific/Efate&apos;,
+                &apos;Pacific/Enderbury&apos;,
+                &apos;Pacific/Fakaofo&apos;,
+                &apos;Pacific/Fiji&apos;,
+                &apos;Pacific/Funafuti&apos;,
+                &apos;Pacific/Galapagos&apos;,
+                &apos;Pacific/Gambier&apos;,
+                &apos;Pacific/Guadalcanal&apos;,
+                &apos;Pacific/Guam&apos;,
+                &apos;Pacific/Honolulu&apos;,
+                &apos;Pacific/Johnston&apos;,
+                &apos;Pacific/Kiritimati&apos;,
+                &apos;Pacific/Kosrae&apos;,
+                &apos;Pacific/Kwajalein&apos;,
+                &apos;Pacific/Majuro&apos;,
+                &apos;Pacific/Marquesas&apos;,
+                &apos;Pacific/Midway&apos;,
+                &apos;Pacific/Nauru&apos;,
+                &apos;Pacific/Niue&apos;,
+                &apos;Pacific/Norfolk&apos;,
+                &apos;Pacific/Noumea&apos;,
+                &apos;Pacific/Pago_Pago&apos;,
+                &apos;Pacific/Palau&apos;,
+                &apos;Pacific/Pitcairn&apos;,
+                &apos;Pacific/Pohnpei&apos;,
+                &apos;Pacific/Ponape&apos;,
+                &apos;Pacific/Port_Moresby&apos;,
+                &apos;Pacific/Rarotonga&apos;,
+                &apos;Pacific/Saipan&apos;,
+                &apos;Pacific/Samoa&apos;,
+                &apos;Pacific/Tahiti&apos;,
+                &apos;Pacific/Tarawa&apos;,
+                &apos;Pacific/Tongatapu&apos;,
+                &apos;Pacific/Truk&apos;,
+                &apos;Pacific/Wake&apos;,
+                &apos;Pacific/Wallis&apos;,
+                &apos;Pacific/Yap&apos;,
+                &apos;PLT&apos;,
+                &apos;PNT&apos;,
+                &apos;Poland&apos;,
+                &apos;Portugal&apos;,
+                &apos;PRC&apos;,
+                &apos;PRT&apos;,
+                &apos;PST&apos;,
+                &apos;PST8PDT&apos;,
+                &apos;ROK&apos;,
+                &apos;Singapore&apos;,
+                &apos;SST&apos;,
+                &apos;SystemV/AST4&apos;,
+                &apos;SystemV/AST4ADT&apos;,
+                &apos;SystemV/CST6&apos;,
+                &apos;SystemV/CST6CDT&apos;,
+                &apos;SystemV/EST5&apos;,
+                &apos;SystemV/EST5EDT&apos;,
+                &apos;SystemV/HST10&apos;,
+                &apos;SystemV/MST7&apos;,
+                &apos;SystemV/MST7MDT&apos;,
+                &apos;SystemV/PST8&apos;,
+                &apos;SystemV/PST8PDT&apos;,
+                &apos;SystemV/YST9&apos;,
+                &apos;SystemV/YST9YDT&apos;,
+                &apos;Turkey&apos;,
+                &apos;UCT&apos;,
+                &apos;Universal&apos;,
+                &apos;US/Alaska&apos;,
+                &apos;US/Aleutian&apos;,
+                &apos;US/Arizona&apos;,
+                &apos;US/Central&apos;,
+                &apos;US/East-Indiana&apos;,
+                &apos;US/Eastern&apos;,
+                &apos;US/Hawaii&apos;,
+                &apos;US/Indiana-Starke&apos;,
+                &apos;US/Michigan&apos;,
+                &apos;US/Mountain&apos;,
+                &apos;US/Pacific&apos;,
+                &apos;US/Pacific-New&apos;,
+                &apos;US/Samoa&apos;,
+                &apos;UTC&apos;,
+                &apos;VST&apos;,
+                &apos;W-SU&apos;,
+                &apos;WET&apos;,
+                &apos;Zulu&apos;
+            ]
+
+        }[contentType];
+    }
+}</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.5.2)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
