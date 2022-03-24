@@ -394,10 +394,10 @@ export default class ConnectorFunctions extends BaseProvision {
      * @param {string} operationName - required field
      * @return {ConnectorFunctions}
      */
-     withOperationName(name) {
-        if (typeof name !== &apos;string&apos; || name.length === 0 || name.length &gt; 50)
+     withOperationName(operationName) {
+        if (typeof operationName !== &apos;string&apos; || operationName.length === 0 || operationName.length &gt; 50)
             throw new Error(&apos;Parameter operation name must be a string, cannot be empty and has a maximum length of 50&apos;);
-        this._operationName = name;
+        this._operationName = operationName;
         return this;
     }
 

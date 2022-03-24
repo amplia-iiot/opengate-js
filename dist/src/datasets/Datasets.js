@@ -108,7 +108,7 @@ var Datasets = (function (_BaseProvision) {
     }, {
         key: 'withDescription',
         value: function withDescription(description) {
-            _utilFormatsCheck_types2['default']._checkString(description, 50, 'description');
+            if (description) _utilFormatsCheck_types2['default']._checkString(description, 250, 'description');
             this._description = description;
             return this;
         }

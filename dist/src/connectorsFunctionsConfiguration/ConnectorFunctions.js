@@ -160,9 +160,9 @@ var ConnectorFunctions = (function (_BaseProvision) {
          */
     }, {
         key: 'withOperationName',
-        value: function withOperationName(name) {
-            if (typeof name !== 'string' || name.length === 0 || name.length > 50) throw new Error('Parameter operation name must be a string, cannot be empty and has a maximum length of 50');
-            this._operationName = name;
+        value: function withOperationName(operationName) {
+            if (typeof operationName !== 'string' || operationName.length === 0 || operationName.length > 50) throw new Error('Parameter operation name must be a string, cannot be empty and has a maximum length of 50');
+            this._operationName = operationName;
             return this;
         }
 

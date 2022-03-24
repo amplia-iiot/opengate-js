@@ -334,7 +334,8 @@ export default class Datasets extends BaseProvision {
      * @return {Datasets}
      */
     withDescription(description) {
-        checkType._checkString(description, 50, &apos;description&apos;);
+        if(description)
+            checkType._checkString(description, 250, &apos;description&apos;);
         this._description = description;
         return this;
     }
