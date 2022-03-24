@@ -34,7 +34,7 @@ module.exports = {
             throw new Error([{ message: 'OGAPI_STRING_PARAMETER', parameter: name }, { message: 'OGAPI_MAX_LENGTH', parameter: length }]);
         }
     },
-    _checkString: function(parameter, length, name) {
+    _checkString: function(parameter, name) {
         if (typeof parameter !== 'string') {
             throw new Error([{ message: 'OGAPI_STRING_PARAMETER', parameter: name }]);
         }
