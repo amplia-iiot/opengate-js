@@ -256,4 +256,18 @@ export default class BaseProvision {
         }
     }
 
+    _checkValues(value, enumName) {
+        let not_found = [];
+        let found = enumName.find(function(value) {
+            return value == this;
+        }, value);
+
+        if (typeof found === "undefined") {
+            not_found.push(value);
+        }
+        if (not_found.length !== 0) {
+            console.warn("Parameter value not allowed <'" + JSON.stringify(not_found) + "'>, allowed <'" + JSON.stringify(enumName) + "'>");
+        }
+        return value;
+    }
 }
