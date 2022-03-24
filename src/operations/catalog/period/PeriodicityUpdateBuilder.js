@@ -57,7 +57,6 @@ export default class PeriodicityUpdateBuilder {
     _getStart(date) {
         let schedule = this._task.schedule;
         if (!date && (schedule.start && schedule.start.date)) {
-            //console.log("DATE: " + date);
             date = new Date(schedule.start.date);
         }
         return date;
@@ -78,7 +77,6 @@ export default class PeriodicityUpdateBuilder {
 
     build() {
         let _build = merge(true, this._build);
-        //console.log("_BUILD: " + JSON.stringify(_build));
         let postObj;
         let errors = [];
         if (typeof this._build.task !== "undefined") {
@@ -110,12 +108,9 @@ export default class PeriodicityUpdateBuilder {
             this._build = _build;
             throw errors;
         }
-        //console.log("T_B_T: " + JSON.stringify(this._build.task));
         if (typeof this._build.task !== "undefined") {
             postObj = this._updateTask(this._build);
         }
-        //console.log("POSTOBJ: " + JSON.stringify(postObj));
-        //console.log("UP_RESOURCE: " + this._resource);
         let op = new Operation(this._ogapi, this._resource, postObj);
         // Se deshacen todos los por defectos aplicados al objeto builder, para no condicionar el siguiente .build 
         this._build = _build;
@@ -126,9 +121,7 @@ export default class PeriodicityUpdateBuilder {
         let task = _build.task;
         let now = moment(new Date());
         let start = moment(task.start);
-        //console.log("TASK: " + JSON.stringify(_build.task));
-        //console.log("NOW: " + now);
-
+        
         let taskObj = {
             task: {
                 schedule: {}
@@ -147,10 +140,8 @@ export default class PeriodicityUpdateBuilder {
                 taskObj.task.schedule.repeating = task.repeating;
             }
         } catch (err) {
-            //console.log("TASK_OBJ_ERROR: " + err);
         }
         delete taskObj.task.schedule.name;
-        //console.log("TASK_OBJ: " + JSON.stringify(taskObj));
         if (typeof task.stop !== "undefined") {
             if (typeof task.stop.date !== "undefined") {
                 taskObj.task.schedule.stop = {
@@ -160,9 +151,7 @@ export default class PeriodicityUpdateBuilder {
                 taskObj.task.schedule.stop = task.stop;
             }
         }
-        //console.log("TASK_OBJ_1: " + JSON.stringify(taskObj));
         if (moment.max(now, start) == now) {
-            //console.log("DELETE START???");
             if (typeof task.stop !== "undefined" && typeof task.stop.date !== "undefined") {
                 let stopDate = moment(task.stop.date);
                 if (moment.max(now, stopDate) == now) {
@@ -170,10 +159,8 @@ export default class PeriodicityUpdateBuilder {
                         "It happened because you passed a lot of time between configuration of an operation and create the operation.");
                 }
             }
-            //console.log("Start date configured on operation period is later than current date. Start date will be changed to  current date.");
             delete taskObj.task.schedule.start;
         }
-        //console.log("TASK_OBJ_2: " + JSON.stringify(taskObj));
         return taskObj;
     }
 }

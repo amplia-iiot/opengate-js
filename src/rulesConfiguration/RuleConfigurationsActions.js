@@ -72,16 +72,13 @@ export default class RuleConfigurationsActions {
         _this._ogapi.Napi.post(this._resource + '/clone', cloneInfo)
             .then((res) => {
                 if (res.statusCode === 201) {
-                    //console.log("CREATEOK: " + JSON.stringify(res));
                     if (typeof this._onCreated === "function") {
                         this._onCreated(res.header.location);
                     }
                     defered.resolve({ location: res.header.location, statusCode: res.statusCode });
                 } else if (res.statusCode === 200) {
-                    //console.log("POSTOK: " + JSON.stringify(res));
                     defered.resolve({ statusCode: res.statusCode });
                 } else {
-                    //console.log("ERROR " + JSON.stringify(res.errors));
                     defered.reject({ errors: res.errors, statusCode: res.statusCode });
                 }
             })

@@ -291,7 +291,6 @@ export default class Certificates extends Security {
                 //form.append('certificate', rawFile);
             }
         } else {
-            //console.log("fileData");
             form = {};
             form.json = JSON.stringify(this._composeElement());
 
@@ -355,7 +354,6 @@ export default class Certificates extends Security {
                     defered.resolve(data, response.statusCode);
             })
             .catch((error) => {
-                console.log(error);
                 defered.reject(error);
             });
         return promise;

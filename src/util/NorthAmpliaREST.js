@@ -24,7 +24,6 @@ export default class NorthAmpliaREST {
         if (!_.isEmpty(_options.mocks)) {
             this._applyMocks(_options.mocks)
         }
-
         // ---------------------------------- EXAMPLE
         /*
         mock.post(_options.url + '/search/channels', function(req) {
@@ -41,144 +40,7 @@ export default class NorthAmpliaREST {
             };
         });        
        */
-      /*mock.post(_options.url + '/datasets/provision/organizations/:organization/:dataset/data', function(req){
-        return {
-            body: {
-                "page": {
-                  "number": 26
-                },
-                "columns": [
-                  "Coll Mobile ICC value",
-                  "Coll Mobile ICC date",
-                  "Prov Identifier",
-                  "Coll manufacturer"
-                ],
-                "data": [
-                  [
-                    "icc1",
-                    "2021-04-06T12:35:22.784Z",
-                    "MyDevice1",
-                    "OpenGate"
-                  ],
-                  [
-                    "icc2",
-                    "2021-04-06T07:45:57.468Z",
-                    "MyDevice2",
-                    "OpenGate"
-                  ]
-                ]
-              },
-              statusCode: 200
-        };
-      });
-        mock.get(_options.url + '/datasets/provision/organizations/:organization', function(req) {
-            return {
-                body: {
-                    datasets: [
-                       {
-                           name: 'dataset1',
-                           identifier: '111',
-                           description: 'mock',
-                           type: 'CURRENT'
-                       },
-                       {
-                        name: 'dataset2',
-                        identifier: '2222',
-                        description: 'mock',
-                        type: 'HISTORY'
-                        }
-                    ]
-                },
-                statusCode: 200
-            };
-        });        
-        mock.get(_options.url + '/datasets/provision/organizations/:organization/:dataset', function(req) {
-            return {
-                body: 
-                {
-                    "name": "dataset_name",
-                    "description": "My dataset to get inventory data",
-                    "type": "CURRENT",
-                    "columns": [
-                        {
-                            "path": "provision.device.identifier._current.value",
-                            "name": "Prov identifier",
-                            "filter": "YES",
-                            "sort": true
-                          },
-                          {
-                            "path": "device.model._current.value.manufacturer",
-                            "name": "Coll manufacturer",
-                            "filter": "ALWAYS",
-                            "sort": false
-                          },
-                          {
-                            "path": "device.communicationModules[0].subscriber.mobile.icc._current.value",
-                            "name": "Coll Mobile ICC value",
-                            "filter": "NO",
-                            "sort": false
-                          },
-                          {
-                            "path": "device.communicationModules[0].subscriber.mobile.icc._current.at",
-                            "name": "Coll Mobile ICC date",
-                            "filter": "YES",
-                            "sort": false
-                          }
-                    ]
-                  },
-                statusCode: 200
-             };
-        });        
-        */
-
-        // mock.get(_options.url + '/connectorfunctions/provision/organizations/:organization/channels/:channel', function(req) {
-        //     return {
-        //         body: {
-        //             "connectorFunctions": [
-        //               {
-        //                 "identifier": "ebe9fbb2-3a53-4770-87bc-b05742827489",
-        //                 "connectorFunctionName": "connectorFunction_1",
-        //                 "description": "First test",
-        //                 "operationalStatus": "PRODUCTION",
-        //                 "type": "COLLECTION",
-        //                 "southCriterias": [
-        //                   "mqtt://just_a_test"
-        //                 ],
-        //                 "javascript": "var get_text_request = { 'method': 'GET', 'uri': 'http://localhost:8080/textResponse', 'headers': { 'Accept': 'text/plain' } } var get_binary_request = { 'method': 'GET', 'uri': 'http://localhost:8080/binaryResponse', 'headers': { 'Accept': 'application/octet-stream' } } var post_binary_request = { 'method': 'POST', 'uri': 'http://localhost:8080/binaryBody', 'headers': { 'Content-Type': 'application/octet-stream', 'Accept': 'text/plain' } } response = doHttpRequestInternal(get_text_request, binaryObject); printInfoLogInternal('Get text done: ' + JSON.stringify(response));return 'good bye';"
-        //               },
-        //               {
-        //                 "identifier": "b0af2fe7-b320-4ab9-8b14-7e20e4c61d72",
-        //                 "connectorFunctionName": "operation_request_1",
-        //                 "description": "First test",
-        //                 "operationalStatus": "PRODUCTION",
-        //                 "operationName": "NO_WORKING_OPERATION",
-        //                 "type": "REQUEST",
-        //                 "northCriterias": [
-        //                   {
-        //                     "path": "provision.device.model._current.value.manufacturer",
-        //                     "value": "manufacturerName"
-        //                   }
-        //                 ],
-        //                 "javascript": "var get_text_request = { 'method': 'GET', 'uri': 'http://localhost:8080/textResponse', 'headers': { 'Accept': 'text/plain' } } var get_binary_request = { 'method': 'GET', 'uri': 'http://localhost:8080/binaryResponse', 'headers': { 'Accept': 'application/octet-stream' } } var post_binary_request = { 'method': 'POST', 'uri': 'http://localhost:8080/binaryBody', 'headers': { 'Content-Type': 'application/octet-stream', 'Accept': 'text/plain' } } response = doHttpRequestInternal(get_text_request, binaryObject); printInfoLogInternal('Get text done: ' + JSON.stringify(response));return 'good bye';"
-        //               },
-        //               {
-        //                 "identifier": "08caebd3-3d60-4f75-a5b7-32239ceb8c60",
-        //                 "connectorFunctionName": "collection_1",
-        //                 "description": "First test",
-        //                 "operationalStatus": "PRODUCTION",
-        //                 "type": "COLLECTION",
-        //                 "southCriterias": [
-        //                   "mqtt://odm/reponse/undeterminedDevice"
-        //                 ],
-        //                 "javascript": "return 'printInfoLogInternal('hello world');hello world';"
-        //               }
-        //             ]
-        //           }
-        //         ,
-        //         statusCode: 200
-        //     };
-        // });
-
+      
     }
 
     _applyMocks (mocks) {
@@ -187,13 +49,14 @@ export default class NorthAmpliaREST {
             console.log(`Mocking ${method.toLocaleUpperCase()} requests`);
             Object.keys(mocks[method]).forEach(url => {
                 console.log('Mocking url:', url);
-                console.log('Data returned:', mocks[method][url])
                 const methodByUrl = mocks[method][url]
                 mock[method](this._options.url + url, (req) => {
                     if(typeof methodByUrl  === 'function'){
+                        console.log('Function returned')
                         return methodByUrl(req)
                     } else{
                         const data = mocks[method][url]
+                        console.log('Data returned:', data)
                         if (!data.headers) data.headers = {}
                         return data
                     }
@@ -226,7 +89,9 @@ export default class NorthAmpliaREST {
      * @return {Promise} 
      */
     get(url, timeout, headers, parameters, asBlob) {
-        var req = request.get(this._createUrl(url, parameters));
+        const _url = this._createUrl(url, parameters)
+        console.info('GET', _url)
+        var req = request.get(_url);
         return this._createPromiseRequest(req, null, timeout, headers, asBlob);
     }
 
@@ -240,7 +105,9 @@ export default class NorthAmpliaREST {
      * @return {Promise} 
      */
     patch(url, data, timeout, headers, parameters) {
-        var req = request.patch(this._createUrl(url, parameters))
+        const _url = this._createUrl(url, parameters)
+        console.info('PATCH', _url)
+        var req = request.patch(_url)
             .send(data);
 
         return this._createPromiseRequest(req, null, timeout, headers);
@@ -256,7 +123,9 @@ export default class NorthAmpliaREST {
      * @return {Promise} 
      */
     post(url, data, timeout, headers, parameters) {
-        var req = request.post(this._createUrl(url, parameters))
+        const _url = this._createUrl(url, parameters)
+        console.info('POST', _url)
+        var req = request.post(_url)
             .send(data);
 
         return this._createPromiseRequest(req, null, timeout, headers);
@@ -274,7 +143,9 @@ export default class NorthAmpliaREST {
      * @return {Promise} 
      */
     post_multipart(url, formData, events, timeout, headers, parameters) {
-        let req = request.post(this._createUrl(url, parameters));
+        const _url = this._createUrl(url, parameters)
+        console.info('POST_MULTIPART', _url)
+        let req = request.post(_url);
 
         let sendFormData = true
         const formDataKeys = Object.keys(formData)
@@ -315,7 +186,9 @@ export default class NorthAmpliaREST {
      * @return {Promise} 
      */
     put(url, data, timeout, headers, parameters) {
-        var req = request.put(this._createUrl(url, parameters)).send(data);
+        const _url = this._createUrl(url, parameters)
+        console.info('PUT', _url)
+        var req = request.put(_url).send(data);
 
         if (headers) {
             headers['Content-Type'] = 'application/json';
@@ -334,16 +207,24 @@ export default class NorthAmpliaREST {
      * @param {number} timeout - timeout in milliseconds    
      * @param {object} headers - headers of request
      * @param {object} parameters - parameters of request
+     * @param {object} body - body of request
      * @return {Promise} 
      */
-    delete(url, timeout, headers, parameters) {
-        var req = request.delete(this._createUrl(url, parameters));
+    delete(url, timeout, headers, parameters, body) {
+        const _url = this._createUrl(url, parameters)
+        console.info('DELETE', _url)
+        var req
+        if(body){
+            req = request.del(_url).send(body);
+            //req = request('DELETE', url)
+        }else{
+            req = request.del(_url);
+        }
         return this._createPromiseRequest(req, null, timeout, headers);
     }
 
     _createUrl(relativeUrl, parameters) {
         var encode = [];
-
         if (parameters) {
             var keys = Object.keys(parameters);
             for (var i = 0; i < keys.length; i++) {
@@ -374,7 +255,6 @@ export default class NorthAmpliaREST {
             }
         });
         var returnUrl = this._url(this._options) + "/" + encode.join("/");
-        
         return returnUrl;
     }
 
@@ -411,6 +291,7 @@ export default class NorthAmpliaREST {
         }
         _req = _req.end(function(err, res) {
             if (err !== null) {
+                console.error(err)
                 let data;
                 let status = err.status ? err.status : undefined;
                 let errorMessage = {

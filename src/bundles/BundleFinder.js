@@ -19,7 +19,6 @@ export default class BundleFinder extends ProvisionGenericFinder {
      * @private
      */
     _composeUrl() {
-        //console.log(this._baseUrl + "/" + this._name + "/versions/" + this._version);
         return this._baseUrl + "/" + this._name + "/versions/" + this._version;
     }
 

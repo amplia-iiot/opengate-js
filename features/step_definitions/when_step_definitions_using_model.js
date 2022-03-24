@@ -10,13 +10,13 @@ When(/^I try to find by...$/, function (table) {
     this.error = undefined;
 
     function digestResponseData (response) {
-        //console.log("RESPONSE: " + JSON.stringify(response));
+        //console.log('digestResponseData', response)
         _this.responseData = response;
         _this.error = undefined;
     }
 
     function digestErrorData (response) {
-        //console.log("ERROR: " + JSON.stringify(response));
+        console.error('digestErrorData', response)
         _this.error = response;
         _this.responseData = response;
 
@@ -59,7 +59,7 @@ When(/^I try to find by...$/, function (table) {
         this.error = "No params found";
         return;
     } catch (err) {
-        console.log('ERROR: ', err)
+        console.error('ERROR: ', err)
         this.error = err;
         return;
     }
@@ -102,15 +102,15 @@ When(/^I try to search with all allow select fields$/, function (callback) {
                     fields.forEach(function (field) {
                         addField(field);
                     });
-                    //console.log("filter: " + JSON.stringify(select));
                     _this.util.select(select);
                     callback();
                 }).catch(function (err) {
-                    //console.log(JSON.stringify(err));
+                    console.error('ERROR: ', err)
                     throw new Error(JSON.stringify(err));
 
                 });
             } catch (err) {
+                console.error('ERROR: ', err)
                 throw new Error(JSON.stringify(err));
             }
             break;
@@ -124,14 +124,15 @@ When(/^I try to search with all allow select fields$/, function (callback) {
 
                     return q.all(pArray);
                 }).catch(function (err) {
+                    console.error('ERROR: ', err)
                     throw new Error(JSON.stringify(err));
 
                 }).done(function () {
-                    //console.log("select: " + JSON.stringify(select));
                     _this.util.select(select);
                     callback();
                 });
             } catch (err) {
+                console.error('ERROR: ', err)
                 throw new Error(JSON.stringify(err));
             }
     }
@@ -151,11 +152,12 @@ When(/^I try to search with all allow select fields$/, function (callback) {
                     addField(helpField.slice(0, -1));
                 }
             }).catch(function (err) {
-                //console.error("ERR2: " + JSON.stringify(err));
+                console.error('ERROR: ', err)
                 throw new Error(JSON.stringify(err));
 
             });
         } catch (err) {
+            console.error('ERROR: ', err)
             throw new Error(JSON.stringify(err));
         }
     }
@@ -189,14 +191,14 @@ When(/^I try to search with all allow select fields with utils$/, function (call
                     fields.forEach(function (field) {
                         addField(field);
                     });
-                    //console.log("filter: " + selectBuilder.toString());
                     _this.util.select(selectBuilder);
                     callback();
                 }).catch(function (err) {
-                    //console.log(JSON.stringify(err));
+                    console.error('ERROR: ', err)
                     throw new Error(JSON.stringify(err));
                 });
             } catch (err) {
+                console.error('ERROR: ', err)
                 throw new Error(JSON.stringify(err));
             }
             break;
@@ -210,13 +212,14 @@ When(/^I try to search with all allow select fields with utils$/, function (call
 
                     return q.all(pArray);
                 }).catch(function (err) {
+                    console.error('ERROR: ', err)
                     throw new Error(JSON.stringify(err));
                 }).done(function () {
-                    //console.log("select: " + selectBuilder.toString());
                     _this.util.select(selectBuilder);
                     callback();
                 });
             } catch (err) {
+                console.error('ERROR: ', err)
                 throw new Error(JSON.stringify(err));
             }
 
@@ -237,10 +240,11 @@ When(/^I try to search with all allow select fields with utils$/, function (call
                     addField(helpField.slice(0, -1));
                 }
             }).catch(function (err) {
-                //console.error("ERR2: " + JSON.stringify(err));
+                console.error('ERROR: ', err)
                 throw new Error(JSON.stringify(err));
             });
         } catch (err) {
+            console.error('ERROR: ', err)
             throw new Error(JSON.stringify(err));
         }
     }
@@ -273,13 +277,14 @@ When(/^I try to search with all allow fields$/, function (callback) {
                     fields.forEach(function (field) {
                         addField(field);
                     });
-                    //console.log("filter: " + JSON.stringify(filter));
                     _this.util.filter(filter);
                     callback();
                 }).catch(function (err) {
+                    console.error('ERROR: ', err)
                     throw new Error(JSON.stringify(err));
                 });
             } catch (err) {
+                console.error('ERROR: ', err)
                 throw new Error(JSON.stringify(err));
             }
             break;
@@ -293,13 +298,14 @@ When(/^I try to search with all allow fields$/, function (callback) {
 
                     return q.all(pArray);
                 }).catch(function (err) {
+                    console.error('ERROR: ', err)
                     throw new Error(JSON.stringify(err));
                 }).done(function () {
-                    //console.log("filter: " + JSON.stringify(filter));
                     _this.util.filter(filter);
                     callback();
                 });
             } catch (err) {
+                console.error('ERROR: ', err)
                 throw new Error(JSON.stringify(err));
             }
 
@@ -320,10 +326,11 @@ When(/^I try to search with all allow fields$/, function (callback) {
                     addField(helpField.slice(0, -1));
                 }
             }).catch(function (err) {
-                //console.error("ERR2: " + JSON.stringify(err));
+                console.error('ERROR: ', err)
                 throw new Error(JSON.stringify(err));
             });
         } catch (err) {
+            console.error('ERROR: ', err)
             throw new Error(JSON.stringify(err));
         }
     }
@@ -345,11 +352,10 @@ When(/^I try to define the (entity|ticket) with GET previous flattened response$
         this.util.initFromFlattened(flattened);
 
     } catch (err) {
-        //console.log(err);
         if (Object.keys(err).length === 0) {
-            //console.log(err);
+            console.error('ERROR: ', err);
         } else {
-            console.log(JSON.stringify(err));
+            console.error('ERROR: ', JSON.stringify(err));
         }
         this.error = err;
     }
@@ -364,11 +370,10 @@ When(/^I try to define the (entity|ticket) with GET previous json response$/, fu
         this.util.initFromJson(json);
 
     } catch (err) {
-        //console.log(err);
         if (Object.keys(err).length === 0) {
-            //console.log(err);
+            console.error('ERROR: ', err);
         } else {
-            console.log(JSON.stringify(err));
+            console.error('ERROR: ', JSON.stringify(err));
         }
         this.error = err;
     }
@@ -394,11 +399,10 @@ When(/^I try to define the (entity|ticket) with...$/, function (model, table, ca
             this.error = "No params found";
         }
     } catch (err) {
-        //console.log(err);
         if (Object.keys(err).length === 0) {
-            //console.log(err);
+            console.error('ERROR: ', err);
         } else {
-            console.log(JSON.stringify(err));
+            console.error('ERROR: ', JSON.stringify(err));
         }
         this.error = err;
     }
@@ -413,7 +417,7 @@ When(/^I try to define the datastream ticket "([^"]*)" with "([^"]*)" path of th
         var value = jp.value(data, json_attr);
         this.util.with(datastream, value);
     } catch (err) {
-        //console.log(err);
+        console.error('ERROR: ', err);
     }
     callback();
 });

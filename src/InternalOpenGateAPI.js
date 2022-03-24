@@ -18,12 +18,14 @@ import BulkExecutionFinder from './bulk/BulkExecutionFinder'
 import Channels from './channels/Channels';
 import Areas from './areas/Areas';
 import Datasets from './datasets/Datasets';
+import Timeseries from './timeseries/Timeseries';
 import ChannelsSearchBuilder from './searching/builder/ChannelsSearchBuilder';
 import RuleConfigurations from './rulesConfiguration/RuleConfigurations';
 import RuleConfigurationsFinder from './rulesConfiguration/RuleConfigurationsFinder';
 import RuleConfigurationsCatalog from './rulesConfiguration/RuleConfigurationsCatalog';
 import RuleConfigurationsHelper from './rulesConfiguration/RuleConfigurationsHelper';
 import DatasetFinder from './datasets/DatasetFinder';
+import TimeserieFinder from './timeseries/TimeseriesFinder';
 import OperationType from './operationTypes/OperationType';
 import OperationTypeFinder from './operationTypes/OperationTypeFinder';
 import OperationTypeCatalog from './operationTypes/OperationTypeCatalog';
@@ -111,6 +113,7 @@ import BulkExecutionBuilder from './provision/bulk/BulkExecutionBuilder'
 import EntitiesSearchBuilder from './searching/builder/EntitiesSearchBuilder';
 import DatasetEntitiesSearchBuilder from './searching/builder/DatasetEntitiesSearchBuilder';
 import DatasetSearchBuilder from './searching/builder/DatasetSearchBuilder';
+import TimeserieSearchBuilder from './searching/builder/TimeserieSearchBuilder';
 import CountryCodesSearchBuilder from './searching/builder/CountryCodesSearchBuilder';
 import TimezoneSearchBuilder from './searching/builder/TimezoneSearchBuilder';
 import UserLanguagesSearchBuilder from './searching/builder/UserLanguagesSearchBuilder';
@@ -320,6 +323,14 @@ export default class InternalOpenGateAPI {
      */
      newDatasetFinder() {
         return new DatasetFinder(this);
+    }
+
+    /**
+     * This return a to find Timeserie configuration
+     * @return {TimeserieFinder}
+     */
+     newTimeserieFinder() {
+        return new TimeserieFinder(this);
     }
     
     /**
@@ -697,6 +708,14 @@ export default class InternalOpenGateAPI {
      datasetSearchBuilder(organization, dataset) {
         return new DatasetSearchBuilder(this, organization, dataset);
     }
+
+    /**
+     * This return a TimeserieSearchBuilder to build a specific TimeserieSearch
+     * @return {TimeserieSearchBuilder}
+     */
+     timeserieSearchBuilder(organization, timeserie) {
+        return new TimeserieSearchBuilder(this, organization, timeserie);
+    }
     
 
     /**
@@ -971,6 +990,14 @@ export default class InternalOpenGateAPI {
      */
      datasetsBuilder() {
         return new Datasets(this);
+    }
+
+    /**
+     * This return a TimeserieBuilder to build a specific timeserie
+     * @return {Timeseries}
+     */
+     timeseriesBuilder() {
+        return new Timeseries(this);
     }
 
     /**

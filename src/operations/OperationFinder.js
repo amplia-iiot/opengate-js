@@ -29,11 +29,9 @@ export default class OperationFinder extends GenericFinder {
      */
     findById(id) {
         this._id = id;
-        console.log("THIS._ID: " + this._id);
         this._baseUrl = 'operation/jobs';
         this._entity = 'job';
         this._error_not_found = 'Operation not found';
-        //console.log("FIND_BY_ID: " + id);
         return this._execute();
     }
 
@@ -51,10 +49,8 @@ export default class OperationFinder extends GenericFinder {
         let promise = defered.promise;
         _this.findById(id)
             .then(function (response) {
-                //console.log("1response: " + JSON.stringify(response));
                 var data = response.data;
                 if (!data || Object.keys(data).length == 0) {
-                    //console.log("BUG");
                     //BUG http://cm.amplia.es/jira/browse/ODMQA-1057
                     defered.reject({
                         errors: _this._error_not_found
@@ -64,21 +60,17 @@ export default class OperationFinder extends GenericFinder {
                     _this._baseUrl = 'operation/tasks';
                     _this._entity = "task";
                     _this._error_not_found = "Operation is not periodic!";
-                    //console.log("ID: " + _this._id);
                     _this._execute()
                         .then(function (response) {
-                            //console.log("2response: " + JSON.stringify(response));
                             response.data.id = _this._id;
                             defered.resolve(response);
                         })
                         .catch(function (error) {
-                            //console.log("2error:" + JSON.stringify(error));
                             defered.reject(error);
                         });
                 }
             })
             .catch(function (error) {
-                //console.log("1error:" + JSON.stringify(error));
                 defered.reject(error);
             });
         return promise;
@@ -98,15 +90,12 @@ export default class OperationFinder extends GenericFinder {
         _this._id = periodicityId;
         _this._baseUrl = 'operation/tasks';
         _this._entity = "task";
-        //console.log("ID: " + _this._id);
         _this._execute()
             .then(function (response) {
-                //console.log("2response: " + JSON.stringify(response));
                 response.data.id = _this._id;
                 defered.resolve(response);
             })
             .catch(function (error) {
-                //console.log("2error:" + JSON.stringify(error));
                 defered.reject(error);
             });
         return promise;
@@ -151,10 +140,8 @@ export default class OperationFinder extends GenericFinder {
                 });
             }
             var base_url = this._baseUrl + "/" + this._id + "/operations";
-            console.log("COMPOSE_IF: " + base_url);
             return base_url;
         }
-        console.log("COMPOSE: " + this._baseUrl + "/" + this._id);
         return this._baseUrl + "/" + this._id;
     }
 

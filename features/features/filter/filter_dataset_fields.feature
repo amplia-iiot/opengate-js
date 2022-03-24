@@ -3,7 +3,7 @@
 @filter_fields
 @filtering
 @urlParameters
-
+@wip
 Feature: Searching datasets fields
      As a user of JsApi
      I want to get the searching fields
@@ -31,7 +31,7 @@ Feature: Searching datasets fields
           And the "organization" "dataset_organization"
           And the "name" "mockDataset"
           And the "description" "dataset description"
-          And the "type" "HISTORY"
+          And the "identifierColumn" "Identifier"
           And the "columns" with...
                | param                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
                | [{"path": "provision.device.identifier._current.value", "name": "Prov identifier",  "filter": "YES", "sort": true }, { "path": "device.model._current.value.manufacturer", "name": "Manufacturer", "filter": "ALWAYS", "sort": false }, { "path": "device.model._current.at",  "name": "Manufacturer Date", "filter": "YES", "sort": false }, { "path": "device.communicationModules[0].subscriber.mobile.icc._current.value", "name": "ICC", "filter": "NO", "sort": false }, { "path": "entity.location._current.value.position.coordinates[0]", "name": "Latitud", "filter": "NO", "sort": false }] |

@@ -386,7 +386,21 @@ module.exports = {
                 'organization': 'withOrganization',
                 'description': 'withDescription',
                 'columns': 'withColumns',
+                'identifierColumn': "withIdentifierColumn",
                 'type': 'withType'
+            },
+            'timeserie': {
+                'identifier': 'withIdentifier',
+                'organization': 'withOrganization',
+                'name': 'withName',
+                'description': 'withDescription',
+                'timeBucket': 'withTimeBucket',
+                'identifierColumn': "withIdentifierColumn",
+                'bucketColumn': 'withBucketColumn',
+                'retention': 'withRetention',
+                'origin': 'withOrigin',
+                'context': 'withContext',
+                'columns': 'withColumns'
             },
             'geocluster': {
                 'identifier': 'withIdentifier',

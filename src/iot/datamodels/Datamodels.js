@@ -154,7 +154,6 @@ export default class Datamodels extends BaseProvision {
     }
 
     _buildURL() {
-        //console.log('URL: ' + this._resource);
         return this._resource;
     }
 
