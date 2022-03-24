@@ -1,9 +1,7 @@
-# features/provision/datasets/update_provision_processors.feature
+# features/provision/processors/update_provision_processors.feature
 @provision
 @processors
 @update_processors
-@prueba23
-
 
 Feature: Delete and Create a processors
 As a user of JsApi
@@ -11,7 +9,7 @@ I want to create a processors
 So, I can create a new processors with the parametres that I have been defined
 
     Background:
-        Given an apikey user by "2829be88-a7d7-4f51-aefc-3cc2385b6506"
+        Given an apikey user by "require-real-apikey"
 
     Scenario: Update processors
         And an ogapi "provision processors builder" util

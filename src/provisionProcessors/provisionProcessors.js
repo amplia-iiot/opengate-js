@@ -27,7 +27,7 @@ export default class ProvisionProcessors extends BaseProvision {
      * @return {ProvisionPrecessors}
      */
     withOrganization(organization) {
-        checkType._checkString(organization, 50, 'organization');
+        checkType._checkStringAndLength(organization, 50, 'organization');
         this._organization = organization;
         return this;
     }
@@ -38,7 +38,7 @@ export default class ProvisionProcessors extends BaseProvision {
      * @return {ProvisionPrecessors}
      */
      withIdentifier(identifier) {
-        checkType._checkString(identifier, 50, 'identifier');
+        checkType._checkString(identifier, 'identifier');
         this._identifier = identifier;
         return this;
     }
@@ -49,13 +49,13 @@ export default class ProvisionProcessors extends BaseProvision {
      * @return {ProvisionPrecessors}
      */
     withName(name) {
-        checkType._checkString(name, 50, 'name');
+        checkType._checkString(name, 'name');
         this._name = name;
         return this;
     }
 
     /**
-     * Set the columns attribute
+     * Set the ConfigurationParams attribute
      * @param {object} configurationParams - required field
      * @return {ProvisionPrecessors}
      */
@@ -66,7 +66,7 @@ export default class ProvisionProcessors extends BaseProvision {
     }
 
     /**
-     * Set the columns attribute
+     * Set the ScriptProcessor attribute
      * @param {object} scriptProcessor - required field
      * @return {ProvisionPrecessors}
      */

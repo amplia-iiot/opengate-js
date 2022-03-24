@@ -7,13 +7,13 @@ When(/^I want to (manage|delete) the next rule configuration from organization "
     _this.responseData = undefined;
 
     function digestResponseData (response) {
-        //console.log(JSON.stringify(response));
+        //console.log('digestResponseData', response);
         _this.responseData = response;
         _this.error = undefined;
     }
 
     function digestErrorData (response) {
-        console.log("digestErrorData");
+        console.error("digestErrorData", response);
         _this.error = response;
         _this.responseData = response;
 
@@ -48,8 +48,8 @@ When(/^I want to (manage|delete) the next rule configuration from organization "
             return ruleConfiguration.delete().then(digestResponseData).catch(digestErrorData);
         }
     } catch (err) {
+        console.error('ERROR: ', err)
         _this.error = err;
-        console.log("err");
         return;
     }
 

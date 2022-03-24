@@ -14,13 +14,31 @@ module.exports = {
         }
         return type;
     },
-
-    _checkString: function(parameter, length, name) {
+    _checkISODateTime: function(parameter, name){
+        if (typeof parameter !== 'string' || new RegExp("\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d+(Z|[+-]\\d{2}:\\d{2})").test(parameter) ) {
+            throw new Error([{ message: 'OGAPI_ISO_DATE_TIME_PARAMETER', parameter: name }, { message: 'OGAPI_STRING_PATTERN', parameter: name }]);
+        }
+        try {
+            new Date(parameter)
+        } catch(err){
+            throw new Error([{ message: 'OGAPI_ISO_DATE_TIME_PARAMETER', parameter: name }, { message: 'OGAPI_STRING_PATTERN', parameter: name }]);
+        }
+    },
+    _checkStringAndPattern: function(parameter, pattern, name) {
+        if (typeof parameter !== 'string' || !new RegExp(pattern).test(parameter) ) {
+            throw new Error([{ message: 'OGAPI_STRING_PARAMETER', parameter: name }, { message: 'OGAPI_STRING_PATTERN', parameter: name, pattern: pattern }]);
+        }
+    },
+    _checkStringAndLength: function(parameter, length, name) {
         if (typeof parameter !== 'string' || parameter.length > length) {
             throw new Error([{ message: 'OGAPI_STRING_PARAMETER', parameter: name }, { message: 'OGAPI_MAX_LENGTH', parameter: length }]);
         }
     },
-
+    _checkString: function(parameter, name) {
+        if (typeof parameter !== 'string') {
+            throw new Error([{ message: 'OGAPI_STRING_PARAMETER', parameter: name }]);
+        }
+    },
     _checkNumber: function(parameter, name) {
         if (typeof parameter !== 'number') {
             throw new Error([{ message: 'OGAPI_NUMBER_PARAMETER', parameter: name }]);

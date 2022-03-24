@@ -69,6 +69,10 @@ module.exports = {
                 'organizationId': 'findByOrganization',
                 'organizationIdAnddatasetId': 'findByOrganizationAndDatasetId'
             },
+            'timeserie':{
+                'organizationId': 'findByOrganization',
+                'organizationIdAndtimeserieId': 'findByOrganizationAndTimeserieId'
+            },
             'rule configuration': {
                 'organizationAndchannelAndenabled': 'findByOrganizationAndChannelAndEnabled',
                 'organizationAndchannelAndname': 'findByOrganizationAndChannelAndName',
@@ -124,7 +128,9 @@ module.exports = {
             'area identifier': 'identifier',
             'area name': 'name',
             'dataset identifier': 'identifier',
-            'dataset name': 'name'
+            'timeset identifier': 'identifier',
+            'dataset name': 'name',
+            'timeset name': 'name'
         } [getter];
     }
 };

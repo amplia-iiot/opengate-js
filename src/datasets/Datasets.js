@@ -2,7 +2,6 @@
 
 import BaseProvision from '../provision/BaseProvision';
 import checkType from '../util/formats/check_types'
-export const DATASETS_TYPES_ENUM = ['CURRENT', 'HISTORY'];
 /**
  * This is a base object that contains all you can do about Datasets.
  */
@@ -13,11 +12,11 @@ export default class Datasets extends BaseProvision {
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, '/organizations/', undefined, ['name', 'organization', "type", 'columns']);
+        super(ogapi, '/organizations/', undefined, ['name', 'organization', 'columns', 'identifierColumn']);
     }
 
     _buildURL() {
-        let url = '/datasets/provision/organizations/' + this._organization + '/' + this._identifier;
+        let url = 'datasets/provision/organizations/' + this._organization + '/' + this._identifier;
         return url;
     }
 
@@ -27,7 +26,7 @@ export default class Datasets extends BaseProvision {
      * @return {Datasets}
      */
     withOrganization(organization) {
-        checkType._checkString(organization, 50, 'organization');
+        checkType._checkStringAndLength(organization, 50, 'organization');
         this._organization = organization;
         return this;
     }
@@ -38,7 +37,7 @@ export default class Datasets extends BaseProvision {
      * @return {Datasets}
      */
      withIdentifier(identifier) {
-        checkType._checkString(identifier, 50, 'identifier');
+        checkType._checkString(identifier, 'identifier');
         this._identifier = identifier;
         return this;
     }
@@ -49,19 +48,19 @@ export default class Datasets extends BaseProvision {
      * @return {Datasets}
      */
     withName(name) {
-        checkType._checkString(name, 50, 'name');
+        checkType._checkString(name, 'name');
         this._name = name;
         return this;
     }
 
     /**
-    * Set the type attribute
-    * @param {string} type - required field
-    * @return {Datasets}
-    */
-    withType(type) {
-        checkType._checkType(type, DATASETS_TYPES_ENUM);
-        this._type = type;
+     * Set the identifierColumn attribute
+     * @param {string} identifierColumn - required field
+     * @return {Datasets}
+     */
+     withIdentifierColumn(identifierColumn) {
+        checkType._checkString(identifierColumn, 'identifierColumn');
+        this._identifierColumn = identifierColumn;
         return this;
     }
 
@@ -72,7 +71,7 @@ export default class Datasets extends BaseProvision {
      */
     withDescription(description) {
         if(description)
-            checkType._checkString(description, 250, 'description');
+            checkType._checkString(description, 'description');
         this._description = description;
         return this;
     }
@@ -89,11 +88,12 @@ export default class Datasets extends BaseProvision {
     
 
     _composeElement() {
-        this._resource = '/datasets/provision/organizations/' + this._organization;
+        this._resource = 'datasets/provision/organizations/' + this._organization;
         let dataset = {
             name: this._name,
             description: this._description,
             type: this._type,
+            identifierColumn: this._identifierColumn,
             columns: this._columns
         };
         return dataset;

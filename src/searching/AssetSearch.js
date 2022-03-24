@@ -28,7 +28,6 @@ export default class AssetSearch extends Search {
     execute() {
         var defered = q.defer();
         var promise = defered.promise;
-        //console.log(JSON.stringify(this._filter()));
         var parameters = this._getUrlParameters();
 
         this._ogapi.Napi

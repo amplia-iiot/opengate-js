@@ -56,7 +56,7 @@ var Areas = (function (_BaseProvision) {
     }, {
         key: 'withOrganization',
         value: function withOrganization(organization) {
-            _utilFormatsCheck_types2['default']._checkString(organization, 50, 'organization');
+            _utilFormatsCheck_types2['default']._checkStringAndLength(organization, 50, 'organization');
             this._organization = organization;
             return this;
         }
@@ -69,7 +69,7 @@ var Areas = (function (_BaseProvision) {
     }, {
         key: 'withIdentifier',
         value: function withIdentifier(identifier) {
-            _utilFormatsCheck_types2['default']._checkString(identifier, 50, 'identifier');
+            _utilFormatsCheck_types2['default']._checkStringAndLength(identifier, 50, 'identifier');
             this._identifier = identifier;
             return this;
         }
@@ -82,7 +82,7 @@ var Areas = (function (_BaseProvision) {
     }, {
         key: 'withName',
         value: function withName(name) {
-            _utilFormatsCheck_types2['default']._checkString(name, 50, 'name');
+            _utilFormatsCheck_types2['default']._checkStringAndLength(name, 50, 'name');
             this._name = name;
             return this;
         }
@@ -95,7 +95,7 @@ var Areas = (function (_BaseProvision) {
     }, {
         key: 'withColor',
         value: function withColor(color) {
-            _utilFormatsCheck_types2['default']._checkString(color, 50, 'color');
+            _utilFormatsCheck_types2['default']._checkStringAndLength(color, 50, 'color');
             this._color = color;
             return this;
         }
@@ -108,7 +108,7 @@ var Areas = (function (_BaseProvision) {
     }, {
         key: 'withDescription',
         value: function withDescription(description) {
-            _utilFormatsCheck_types2['default']._checkString(description, 50, 'description');
+            _utilFormatsCheck_types2['default']._checkStringAndLength(description, 50, 'description');
             this._description = description;
             return this;
         }

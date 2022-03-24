@@ -90,7 +90,6 @@ var PeriodicityUpdateBuilder = (function () {
         value: function _getStart(date) {
             var schedule = this._task.schedule;
             if (!date && schedule.start && schedule.start.date) {
-                //console.log("DATE: " + date);
                 date = new Date(schedule.start.date);
             }
             return date;
@@ -113,7 +112,6 @@ var PeriodicityUpdateBuilder = (function () {
         key: 'build',
         value: function build() {
             var _build = (0, _merge2['default'])(true, this._build);
-            //console.log("_BUILD: " + JSON.stringify(_build));
             var postObj = undefined;
             var errors = [];
             if (typeof this._build.task !== "undefined") {
@@ -145,12 +143,9 @@ var PeriodicityUpdateBuilder = (function () {
                 this._build = _build;
                 throw errors;
             }
-            //console.log("T_B_T: " + JSON.stringify(this._build.task));
             if (typeof this._build.task !== "undefined") {
                 postObj = this._updateTask(this._build);
             }
-            //console.log("POSTOBJ: " + JSON.stringify(postObj));
-            //console.log("UP_RESOURCE: " + this._resource);
             var op = new _Operation2['default'](this._ogapi, this._resource, postObj);
             // Se deshacen todos los por defectos aplicados al objeto builder, para no condicionar el siguiente .build
             this._build = _build;
@@ -162,8 +157,6 @@ var PeriodicityUpdateBuilder = (function () {
             var task = _build.task;
             var now = (0, _moment2['default'])(new Date());
             var start = (0, _moment2['default'])(task.start);
-            //console.log("TASK: " + JSON.stringify(_build.task));
-            //console.log("NOW: " + now);
 
             var taskObj = {
                 task: {
@@ -182,11 +175,8 @@ var PeriodicityUpdateBuilder = (function () {
                 if (task.repeating) {
                     taskObj.task.schedule.repeating = task.repeating;
                 }
-            } catch (err) {
-                //console.log("TASK_OBJ_ERROR: " + err);
-            }
+            } catch (err) {}
             delete taskObj.task.schedule.name;
-            //console.log("TASK_OBJ: " + JSON.stringify(taskObj));
             if (typeof task.stop !== "undefined") {
                 if (typeof task.stop.date !== "undefined") {
                     taskObj.task.schedule.stop = {
@@ -196,19 +186,15 @@ var PeriodicityUpdateBuilder = (function () {
                     taskObj.task.schedule.stop = task.stop;
                 }
             }
-            //console.log("TASK_OBJ_1: " + JSON.stringify(taskObj));
             if (_moment2['default'].max(now, start) == now) {
-                //console.log("DELETE START???");
                 if (typeof task.stop !== "undefined" && typeof task.stop.date !== "undefined") {
                     var stopDate = (0, _moment2['default'])(task.stop.date);
                     if (_moment2['default'].max(now, stopDate) == now) {
                         throw new Error("Can not create operation object because stop operation period is earlier than current date. " + "It happened because you passed a lot of time between configuration of an operation and create the operation.");
                     }
                 }
-                //console.log("Start date configured on operation period is later than current date. Start date will be changed to  current date.");
                 delete taskObj.task.schedule.start;
             }
-            //console.log("TASK_OBJ_2: " + JSON.stringify(taskObj));
             return taskObj;
         }
     }]);

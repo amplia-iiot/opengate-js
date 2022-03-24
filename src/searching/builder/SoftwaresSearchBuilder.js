@@ -203,8 +203,6 @@ export default class SoftwaresSearchBuilder extends SearchWithSummaryBuilder {
         } else if (typeof _fluentFilter !== "undefined" && Object.keys(_fluentFilter).length > 0) {
             filter.filter = _fluentFilter;
         }
-
-        //console.log(JSON.stringify(filter));
         return filter;
     }
 }

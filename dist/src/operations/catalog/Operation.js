@@ -32,7 +32,6 @@ var Operation = (function () {
         this._ogapi = ogapi;
         this._resource = 'operation' + resource;
         this._postObj = postObj;
-        //console.log("C_OPERATION: " + JSON.stringify(this._postObj));
     }
 
     /**
@@ -49,24 +48,19 @@ var Operation = (function () {
 
             var defered = _q2['default'].defer();
             var id = this._resource.substring(this._resource.lastIndexOf("/") + 1);
-            //console.log("UP_OPERATION: " + JSON.stringify(this._postObj));
-            //console.log("RESOURCE: " + this._resource);
             this._ogapi.Napi.put(this._resource, this._postObj).then(function (response) {
-                //console.log("UPDATE: " + JSON.stringify(response));
                 var data = undefined;
                 try {
                     data = JSON.parse(response.text);
                 } catch (err) {
                     console.warn("Error parsing response data when execute post action to " + _this._resource);
                 }
-                //console.log("RESPONSE: " + JSON.stringify(response));
                 defered.resolve({
                     data: data ? data : {},
                     statusCode: response.statusCode,
                     id: id
                 });
             })['catch'](function (error) {
-                //console.log("ERROR: " + JSON.stringify(error));
                 if (!error.data) {
                     error.data = {};
                 }
@@ -92,7 +86,6 @@ var Operation = (function () {
             var _this2 = this;
 
             var defered = _q2['default'].defer();
-            //console.log("OPERATIONS: " + JSON.stringify(this._postObj));
             this._ogapi.Napi.post(this._resource, this._postObj).then(function (response) {
                 var data = undefined;
                 try {

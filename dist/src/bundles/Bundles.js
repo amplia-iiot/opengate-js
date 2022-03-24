@@ -290,7 +290,6 @@ var Bundles = (function (_BaseProvision) {
                     active: false
                 }
             }, undefined, this._getExtraHeaders(), this._getUrlParameters()).then(function (res) {
-                //console.log(JSON.stringify(res));
                 if (res.statusCode === 200) {
                     defered.resolve({
                         statusCode: res.statusCode
@@ -305,7 +304,6 @@ var Bundles = (function (_BaseProvision) {
                     });
                 }
             })['catch'](function (error) {
-                //console.log(error);
                 defered.reject(error);
             });
             return promise;
@@ -358,11 +356,9 @@ var Bundles = (function (_BaseProvision) {
                 var de = 0;
                 for (de = 0; de < _this._deploymentElements.length; de++) {
                     var val = 0;
-                    //console.log(de + ":" + JSON.stringify(_this._deploymentElements[de]));
 
                     if (_this._deploymentElements[de]._validators && _this._deploymentElements[de]._validators.length > 0) {
                         for (val = 0; val < _this._deploymentElements[de]._validators.length; val++) {
-                            //console.log(JSON.stringify(_this._deploymentElements[de]._validators[val]));
                             if (_this._deploymentElements[de]._validators[val].mode === 'TRUSTED_BOOT') {
                                 totalTB += 1;
                             }
@@ -382,7 +378,6 @@ var Bundles = (function (_BaseProvision) {
                         var bundleLocation = res;
                         if (_this._deploymentElements && _this._deploymentElements.length > 0) {
                             (function () {
-                                //console.log("previa de 2: ");
                                 var dePromises = [];
                                 _this._deploymentElements.forEach(function (deTmp) {
                                     dePromises.push(deTmp.deploy());
@@ -415,8 +410,6 @@ var Bundles = (function (_BaseProvision) {
             };
 
             var onCreateBundleError = function onCreateBundleError(err) {
-                //console.log("Create error: " + JSON.stringify(err));
-                //console.log('borrando bundle');
                 _this['delete']();
                 defered.reject(err);
             };

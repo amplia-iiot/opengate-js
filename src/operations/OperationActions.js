@@ -39,7 +39,6 @@ export default class OperationActions {
         };
         this._key = "job";
         this._resource = this._resource + JOB_RESOURCE + this._operationId;
-        //console.log("active with config: " + JSON.stringify(config));
         return this._update(config);
     }
 
@@ -61,7 +60,6 @@ export default class OperationActions {
         };
         this._key = "job";
         this._resource = this._resource + JOB_RESOURCE + this._operationId;
-        //console.log("pause with config: " + JSON.stringify(config));
         return this._update(config);
     }
 
@@ -76,7 +74,6 @@ export default class OperationActions {
      * Actions("xxxxx-xxx-xxxx-xxxxx").cancel();
      */
     cancel() {
-        //console.log("cancel");
         this._id = this._operationId;
         this._resource = this._resource + JOB_RESOURCE + this._id;
         return this._cancel(this._resource);
@@ -99,7 +96,6 @@ export default class OperationActions {
 
         this._key = "task";
         this._resource = this._resource + TASK_RESOURCE;
-        //console.log("active with config: " + JSON.stringify(config));
         return this._periodicityActions("ACTIVE", config);
     }
 
@@ -117,10 +113,8 @@ export default class OperationActions {
         let config = {
             active: false
         };
-        //console.log("pause with config: " + JSON.stringify(config));
         this._key = "task";
         this._resource = this._resource + TASK_RESOURCE;
-        //console.log("PAUSE_PERIODICITY_resource: " + this._resource);
         return this._periodicityActions("PAUSE", config);
     }
 
@@ -135,7 +129,6 @@ export default class OperationActions {
      * ogapi.OperationActions("xxxxx-xxx-xxxx-xxxxx").cancelPeriodicity();
      */
     cancelPeriodicity() {
-        //console.log("cancel");
         this._resource = this._resource + TASK_RESOURCE;
         return this._periodicityActions("CANCEL");
     }
@@ -158,7 +151,6 @@ export default class OperationActions {
                 }
             }
         };
-        //console.log("executeNow with config: " + JSON.stringify(config));
         return this._readAndUpdate(config, true);
     }
 
@@ -174,7 +166,6 @@ export default class OperationActions {
      * @property {function (errors:array)} catch - When request it is NOK
      */
     executeLater(minutes) {
-        //console.log("typeof minutes: " + typeof (minutes));
         if (typeof minutes !== "number") {
             throw new Error("Parameter minutes must be typeof number");
         }
@@ -187,7 +178,6 @@ export default class OperationActions {
                 }
             }
         };
-        //console.log("executeLater with config: " + JSON.stringify(config));
         return this._readAndUpdate(config);
     }
 
@@ -210,17 +200,14 @@ export default class OperationActions {
                 callback: url
             }
         };
-        //console.log("changeCallback with config: " + JSON.stringify(config));
         return this._readAndUpdate(config);
     }
 
     _cancel() {
-        //console.log("cancel");
         var defered = q.defer();
         var promise = defered.promise;
         this._ogapi.Napi.delete(this._resource)
             .then((response) => {
-                //console.log("cancel response: " + JSON.stringify(response));
                 if (response.statusCode === 200) {
                     defered.resolve({
                         statusCode: response.statusCode,
@@ -236,30 +223,24 @@ export default class OperationActions {
                 }
             })
             .catch((error) => {
-                //console.log("cancel error: " + JSON.stringify(error));
                 defered.reject(this._formatError(error));
             });
         return promise;
     }
 
     _periodicityActions(action, config) {
-        //console.log("_periodicityActions");
         var _this = this;
         var defered = q.defer();
         var promise = defered.promise;
-        //console.log(_this._operationId);
-        //console.log("OPERATION_ID: " + this._operationId);
         _this._ogapi.newOperationFinder().findById(_this._operationId)
             .then(function (response) {
                 var data = response.data;
                 if (!data || Object.keys(data).length == 0) {
-                    //console.log("BUG");
                     //BUG http://cm.amplia.es/jira/browse/ODMQA-1057
                     defered.reject({
                         errors: "Operation with id " + _this._operationId + " not exists"
                     });
                 } else {
-                    //console.log("RESPONSE_DATA: " + JSON.stringify(data));
                     let periodicityId = data.taskId;
                     if (!periodicityId) {
                         defered.reject({
@@ -267,7 +248,6 @@ export default class OperationActions {
                         });
                     } else {
                         _this._resource = _this._resource + periodicityId;
-                        //console.log("RESOURCE_DATA: " + _this._resource);
                         switch (action) {
                             case "PAUSE":
                             case "ACTIVE":
@@ -296,7 +276,6 @@ export default class OperationActions {
                 }
             })
             .catch(function (error) {
-                //console.log("ERROR: " + error);
                 defered.reject(error);
             });
         return promise;
@@ -315,13 +294,11 @@ export default class OperationActions {
      * @property {function (error:string)} catch - When request it is NOK
      */
     _readAndUpdate(config, forceToActivate) {
-        //console.log("_readAndUpdate with config: " + JSON.stringify(config) + " and forceToActivate: " + forceToActivate);
         let defered = q.defer();
         let promise = defered.promise;
         var _this = this;
         _this._ogapi.newOperationFinder().findById(_this._operationId).then(
             function (response) {
-                //console.log("_readAndUpdate find response: " + JSON.stringify(response));
                 var data = response.data;
                 if (!data) {
                     //BUG http://cm.amplia.es/jira/browse/ODMQA-1057
@@ -362,7 +339,6 @@ export default class OperationActions {
             }
         ).catch(
             function (error) {
-                //console.log("_readAndUpdate find error: " + JSON.stringify(error));
                 defered.reject(_this._formatError(error));
             }
         );
@@ -382,20 +358,14 @@ export default class OperationActions {
      * @property {function (error:string)} catch - When request it is NOK
      */
     _update(config, forceToActivate) {
-        //console.log("_update with config: " + JSON.stringify(config) + " and forceToActivate: " + forceToActivate);
-        //console.log("_update: " + JSON.stringify(config));
         var _this = this;
         let defered = q.defer();
         let promise = defered.promise;
         let obj = {};
-        //console.log("_update_key: " + _this._key);
         obj[_this._key] = config;
-        //console.log("_update_obj: " + JSON.stringify(obj));
-        //console.log("_update_resource: " + this._resource);
         this._ogapi.Napi
             .put(this._resource, obj)
             .then((response) => {
-                //console.log("_update response: " + JSON.stringify(response));
                 if (forceToActivate) {
                     _this.active().then(
                         function (response) {
@@ -423,7 +393,6 @@ export default class OperationActions {
                 }
             })
             .catch((error) => {
-                //console.log("_update error: " + error);
                 defered.reject(this._formatError(error));
             });
         return promise;
@@ -438,7 +407,6 @@ export default class OperationActions {
                 message: error
             } : error];
         }
-        //console.log("_formatError: " + error);
         return error;
     }
 

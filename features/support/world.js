@@ -11,11 +11,12 @@ findModel = require('./find_model');
 findCreateModel = require('./create_provision_model');
 findDeleteModel = require('./delete_provision_model'); 
 searchingModel = require('./searching_model');
+mocksModel = require('./mocks/mockModel')
 
 function World() {
-    this.test_url_north = process.env.API_NORTH_INTERNAL || 'https://IP:PORT/north/v80';
-    this.test_url_south = process.env.API_SOUTH_INTERNAL || 'https://IP:PORT/south/v80';
-    this.apikey = process.env.API_KEY || 'API_KEY';
+    this.test_url_north = process.env.API_NORTH_INTERNAL || 'http://IP:PORT/north/v80';
+    this.test_url_south = process.env.API_SOUTH_INTERNAL || 'http://IP:PORT/south/v80';
+    this.apikey = process.env.API_KEY || 'require-real-apikey';
     chai.use(chai_as_promised);
     this.expect = chai.expect;
     // Own dependencies with the model
@@ -24,6 +25,7 @@ function World() {
     this.findCreateModel = findCreateModel;
     this.findDeleteModel = findDeleteModel;
     this.searchingModel = searchingModel;
+    this.mocksModel = mocksModel;
 
     this.model_match = function (model) {
         return {

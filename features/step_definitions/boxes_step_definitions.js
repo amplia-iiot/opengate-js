@@ -9,7 +9,6 @@ Then(/^I create a "([^"]*)" from current "([^"]*)" with next params:$/, function
     var dependantObject;
 
     try {
-        //console.log("datos dependantObjects");
         var method = _this.model_match(_this.currentModel).setters(currentEntity)[setterName];
         dependantObject = _this.util[method](this.uploadProgress);
 

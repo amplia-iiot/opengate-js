@@ -60,6 +60,11 @@ module.exports = {
                 'findFields': 'findFields',
                 'findFieldPath': 'findFieldPath'
             },
+            'timeseries': {
+                'findAllFields': 'findAllFields',
+                'findFields': 'findFields',
+                'findFieldPath': 'findFieldPath'
+            },
             "basicTypes search": {
                 "withPublicParameters": "withPublicParameters"
             },

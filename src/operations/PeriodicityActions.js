@@ -31,8 +31,6 @@ export default class PeriodicityActions {
         let config = {
             active: true
         };
-
-        //console.log("active with config: " + JSON.stringify(config));
         return this._periodicityActions("ACTIVE", config);
     }
 
@@ -50,9 +48,6 @@ export default class PeriodicityActions {
         let config = {
             active: false
         };
-        //console.log("pause with config: " + JSON.stringify(config));
-
-        //console.log("PAUSE_PERIODICITY_resource: " + this._resource);
         return this._periodicityActions("PAUSE", config);
     }
 
@@ -67,18 +62,14 @@ export default class PeriodicityActions {
      * ogapi.periodicityActions("xxxxx-xxx-xxxx-xxxxx").cancelPeriodicity();
      */
     cancel() {
-        //console.log("cancel");
-
         return this._periodicityActions("CANCEL");
     }
 
     _cancel() {
-        //console.log("cancel");
         var defered = q.defer();
         var promise = defered.promise;
         this._ogapi.Napi.delete(this._resource)
             .then((response) => {
-                //console.log("cancel response: " + JSON.stringify(response));
                 if (response.statusCode === 200) {
                     defered.resolve({ statusCode: response.statusCode, data: { id: this._id } });
                 } else {
@@ -86,29 +77,23 @@ export default class PeriodicityActions {
                 }
             })
             .catch((error) => {
-                //console.log("cancel error: " + JSON.stringify(error));
                 defered.reject(this._formatError(error));
             });
         return promise;
     }
 
     _periodicityActions(action, config) {
-        //console.log("_periodicityActions");
         var _this = this;
         var defered = q.defer();
         var promise = defered.promise;
-        //console.log(_this._taskId);
-        //console.log("OPERATION_ID: " + this._taskId);
         _this._ogapi.newOperationFinder().findPeriodicityByPeriodicityId(_this._taskId)
             .then(function(response) {
                 var data = response.data;
                 if (!data || Object.keys(data).length == 0) {
                     defered.reject("Periodicity with id " + _this._taskId + " not exists");
                 } else {
-                    //console.log("RESPONSE_DATA: " + JSON.stringify(data));
                     let periodicityId = data.id;
                     _this._resource = _this._resource + periodicityId;
-                    //console.log("RESOURCE_DATA: " + _this._resource);
                     switch (action) {
                         case "PAUSE":
                         case "ACTIVE":
@@ -134,7 +119,6 @@ export default class PeriodicityActions {
                 }
             })
             .catch(function(error) {
-                //console.log("ERROR: " + error);
                 defered.reject(error);
             });
         return promise;
@@ -153,13 +137,11 @@ export default class PeriodicityActions {
      * @property {function (error:string)} catch - When request it is NOK
      */
     _readAndUpdate(config, forceToActivate) {
-        //console.log("_readAndUpdate with config: " + JSON.stringify(config) + " and forceToActivate: " + forceToActivate);
         let defered = q.defer();
         let promise = defered.promise;
         var _this = this;
         _this._ogapi.newOperationFinder().findPeriodicityByPeriodicityId(_this._taskId).then(
             function(response) {
-                //console.log("_readAndUpdate find response: " + JSON.stringify(response));
                 var data = response.data;
                 if (!data) {
                     defered.reject("Periodicity with id " + _this._taskId + " not exists");
@@ -199,7 +181,6 @@ export default class PeriodicityActions {
             }
         ).catch(
             function(error) {
-                //console.log("_readAndUpdate find error: " + JSON.stringify(error));
                 defered.reject(_this._formatError(error));
             }
         );
@@ -219,20 +200,14 @@ export default class PeriodicityActions {
      * @property {function (error:string)} catch - When request it is NOK
      */
     _update(config, forceToActivate) {
-        //console.log("_update with config: " + JSON.stringify(config) + " and forceToActivate: " + forceToActivate);
-        //console.log("_update: " + JSON.stringify(config));
         var _this = this;
         let defered = q.defer();
         let promise = defered.promise;
         let obj = {};
-        //console.log("_update_key: " + _this._key);
         obj[_this._key] = config;
-        //console.log("_update_obj: " + JSON.stringify(obj));
-        //console.log("_update_resource: " + this._resource);
         this._ogapi.Napi
             .put(this._resource, obj)
             .then((response) => {
-                //console.log("_update response: " + JSON.stringify(response));
                 if (forceToActivate) {
                     _this.active().then(
                         function(response) {
@@ -252,7 +227,6 @@ export default class PeriodicityActions {
                 }
             })
             .catch((error) => {
-                //console.log("_update error: " + error);
                 defered.reject(this._formatError(error));
             });
         return promise;
@@ -265,7 +239,6 @@ export default class PeriodicityActions {
         if (!error.data.errors) {
             error.data.errors = [(typeof(error) === "string") ? { message: error } : error];
         }
-        //console.log("_formatError: " + error);
         return error;
     }
 

@@ -108,7 +108,6 @@ export default class Hardware {
 
         // CHECK m TYPE
         if (typeof m !== 'object' && m !== null && m.size !== 3) {
-            console.log(2);
             return false;
         }
 
@@ -118,17 +117,14 @@ export default class Hardware {
 
         // YEAR CHECK
         if ((m[1].length < 4) || m[1] < minYear || m[1] > thisYear) {
-            console.log(3);
             ret = false;
         }
         // MONTH CHECK          
         if ((m[2].length < 2) || m[2] < 1 || m[2] > 12) {
-            console.log(4);
             ret = false;
         }
         // DAY CHECK
         if ((m[3].length < 2) || m[3] < 1 || m[3] > 31) {
-            console.log(5);
             ret = false;
         }
 
