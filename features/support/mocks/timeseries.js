@@ -352,16 +352,6 @@ module.exports = {
     },
     filterFields: {
         post: {
-            '/_provision/organizations': function (req) {
-                const organization = req.body.name
-                return {
-                    statusCode: 201,
-                    status: 201,
-                    header: {
-                        location: 'https://mock/north/v80/provision/organizations/' + organization
-                    }
-                }
-            },
             '/timeseries/provision/organizations/:organization': function (req) {
                 const organization = req.params.organization
                 return {
@@ -464,10 +454,6 @@ module.exports = {
             }
         },
         del: {
-            '/_provision/organizations/:organization': {
-                statusCode: 200,
-                status: 200
-            },
             '/timeseries/provision/organizations/:organization/:id': {
                 statusCode: 200,
                 status: 200

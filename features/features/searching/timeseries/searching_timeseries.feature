@@ -2,7 +2,7 @@
 @searching
 @searching_timeseries_data
 @timeseries
-@wip
+
 Feature: Searching timeseriess data
   As a user of JsApi
   I want to search into timeseriess data collection
