@@ -3,7 +3,8 @@
 import BaseProvision from '../provision/BaseProvision';
 import {
     CONNECTOR_FUNCTION_TYPES,
-    CONNECTOR_FUNCTION_OPERATIONAL_STATUS
+    CONNECTOR_FUNCTION_OPERATIONAL_STATUS,
+    CONNECTOR_FUNCTION_PAYLOAD_TYPES
 } from './enum/_CONNECTOR_FUNCTIONS_ENUMS';
 
 import q from 'q';
@@ -42,6 +43,10 @@ export default class ConnectorFunctions extends BaseProvision {
 
             if (connectorFunctionsObj.type) {
                 this.withType(connectorFunctionsObj.type);
+            }
+
+            if (connectorFunctionsObj.payloadType) {
+                this.withPayloadType(connectorFunctionsObj.payloadType);
             }
 
             if (connectorFunctionsObj.description) {
@@ -209,6 +214,19 @@ export default class ConnectorFunctions extends BaseProvision {
     }
 
     /**
+     * Set the payload type attribute
+     * @param {string} payloadType 
+     * @return {ConnectorFunctions}
+     */
+     withPayloadType(payloadType) {
+        if (typeof payloadType !== 'string' || !this._checkValues(payloadType, CONNECTOR_FUNCTION_PAYLOAD_TYPES))
+            throw new Error('Parameter payload type must be a string and must be one of these values: ' + CONNECTOR_FUNCTION_PAYLOAD_TYPES);
+        
+        this._payloadType = payloadType;
+        return this;
+    }
+
+    /**
      * Set the operational status attribute
      * @param {boolean} operationalStatus 
      * @return {ConnectorFunctions}
@@ -230,6 +248,7 @@ export default class ConnectorFunctions extends BaseProvision {
             "operationalStatus": this._operationalStatus,
             "operationName": this._type !== 'COLLECTION'?this._operationName:undefined,
             "type": this._type,
+            "payloadType": this._payloadType,
             "javascript": this._javascript,
             "description": (this._description ? this._description : undefined),
             "northCriterias": this._type === 'REQUEST'?this._northCriterias : undefined,
@@ -242,11 +261,15 @@ export default class ConnectorFunctions extends BaseProvision {
 
     _checkRequiredParameters(isUpdate) {
         if (isUpdate) {
-            if (this._identifier === undefined || this._organization === undefined || this._channel === undefined || this._operationalStatus === undefined || this._type === undefined  || this._javascript === undefined)
-                throw new Error('Parameters organization, channel, operational status, type, javascript and identifier must be defined');
+            if (this._identifier === undefined || this._organization === undefined || this._channel === undefined || this._operationalStatus === undefined || this._type === undefined || this._payloadType === undefined || this._javascript === undefined)
+                throw new Error('Parameters organization, channel, operational status, type, payloadType, javascript and identifier must be defined');
         } else {
-            if (this._name === undefined || this._organization === undefined || this._channel === undefined || this._operationalStatus === undefined || this._type === undefined  || this._javascript === undefined)
-                throw new Error('Parameters organization, channel, operational status, type, javascript and name must be defined');
+            if (this._name === undefined || this._organization === undefined || this._channel === undefined || this._operationalStatus === undefined || this._type === undefined || this._payloadType === undefined || this._javascript === undefined)
+                throw new Error('Parameters organization, channel, operational status, type, payloadType, javascript and name must be defined');
+        }
+
+        if (this._type === 'REQUEST' &&  this._payloadType !== 'JSON') {
+            throw new Error('Parameter payload type must be JSON when type REQUEST');
         }
     }
 
