@@ -2,7 +2,7 @@
 @searching
 @searching_datasets_data
 @datasets
-@wip
+
 Feature: Searching datasets data
   As a user of JsApi
   I want to search into datasets data collection

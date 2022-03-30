@@ -2,7 +2,7 @@
 @finder
 @datasets
 @find_dataset
-@wip
+
 Feature: Find a dataset
     As a user of JsApi
     I want to find a dataset
