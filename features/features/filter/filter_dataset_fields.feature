@@ -3,7 +3,7 @@
 @filter_fields
 @filtering
 @urlParameters
-@wip
+
 Feature: Searching datasets fields
      As a user of JsApi
      I want to get the searching fields

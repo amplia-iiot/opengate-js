@@ -3,7 +3,7 @@
 @provision
 @timeseries
 @create_timeseries
-@wip
+
 Feature: Delete and Create a timeserie
     As a user of JsApi
     I want to create a timeserie

@@ -3,7 +3,7 @@
 @provision
 @datasets
 @create_daataset
-@wip
+
 Feature: Delete and Create a dataset
     As a user of JsApi
     I want to create a dataset
