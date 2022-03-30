@@ -11,7 +11,7 @@ Feature: Searching timeseries fields
 
      Background:
           Given an apikey user by "require-real-apikey"
-     #TESTS WITH MOCK, ONLY TIMESERIES URIS: Given with mock "timeseries" for "filterFields"
+          #TESTS WITH MOCK, ONLY TIMESERIES URIS: Given with mock "timeseries" for "filterFields"
 
      Scenario: Creating an organization to use in timeseries tests
           Given an ogapi "organizations builder" util
