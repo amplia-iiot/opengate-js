@@ -241,7 +241,7 @@ var _searchColumns = function _searchColumns(_this, finder, objSearcher, defered
     var id = objSearcher.extraData[finder.entity];
     _this._ogapi[finder.api]()[finder.method](organization, id).then(function (response) {
         if (response.statusCode === 200) {
-            var columns = response.data.columns || [].concat(response.data.context || []);
+            var columns = _lodash2['default'].concat(response.data.columns || [], response.data.context || []);
 
             //search de la definición de schemas de opengate
             _this._ogapi.basicTypesSearchBuilder().withPath('$').build().execute().then(function (basicTypes) {
