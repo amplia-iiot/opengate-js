@@ -157,6 +157,11 @@ var ConnectorFunctionsHelper = (function (_GenericFinder) {
         value: function getInternalSouthCriterias() {
             return _enum_CONNECTOR_FUNCTIONS_ENUMS.CONNECTOR_FUNCTION_SOUTH_CRITERIAS_INTERNAL;
         }
+    }, {
+        key: 'getPayloadTypes',
+        value: function getPayloadTypes() {
+            return _enum_CONNECTOR_FUNCTIONS_ENUMS.CONNECTOR_FUNCTION_PAYLOAD_TYPES;
+        }
     }]);
 
     return ConnectorFunctionsHelper;
