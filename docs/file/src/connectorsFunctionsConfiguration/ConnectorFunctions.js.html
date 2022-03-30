@@ -84,6 +84,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctionsConfiguration/ConnectorFunctionsFinder.js~ConnectorFunctionsFinder.html">ConnectorFunctionsFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctionsConfiguration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper.html">ConnectorFunctionsHelper</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">connectorsFunctionsConfiguration/enum</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONNECTOR_FUNCTION_OPERATIONAL_STATUS">CONNECTOR_FUNCTION_OPERATIONAL_STATUS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONNECTOR_FUNCTION_PAYLOAD_TYPES">CONNECTOR_FUNCTION_PAYLOAD_TYPES</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONNECTOR_FUNCTION_SOUTH_CRITERIAS_INTERNAL">CONNECTOR_FUNCTION_SOUTH_CRITERIAS_INTERNAL</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONNECTOR_FUNCTION_SOUTH_PROTOCOLS">CONNECTOR_FUNCTION_SOUTH_PROTOCOLS</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONNECTOR_FUNCTION_TYPES">CONNECTOR_FUNCTION_TYPES</a></span></span></li>
@@ -270,7 +271,8 @@
 import BaseProvision from &apos;../provision/BaseProvision&apos;;
 import {
     CONNECTOR_FUNCTION_TYPES,
-    CONNECTOR_FUNCTION_OPERATIONAL_STATUS
+    CONNECTOR_FUNCTION_OPERATIONAL_STATUS,
+    CONNECTOR_FUNCTION_PAYLOAD_TYPES
 } from &apos;./enum/_CONNECTOR_FUNCTIONS_ENUMS&apos;;
 
 import q from &apos;q&apos;;
@@ -309,6 +311,10 @@ export default class ConnectorFunctions extends BaseProvision {
 
             if (connectorFunctionsObj.type) {
                 this.withType(connectorFunctionsObj.type);
+            }
+
+            if (connectorFunctionsObj.payloadType) {
+                this.withPayloadType(connectorFunctionsObj.payloadType);
             }
 
             if (connectorFunctionsObj.description) {
@@ -476,6 +482,19 @@ export default class ConnectorFunctions extends BaseProvision {
     }
 
     /**
+     * Set the payload type attribute
+     * @param {string} payloadType 
+     * @return {ConnectorFunctions}
+     */
+     withPayloadType(payloadType) {
+        if (typeof payloadType !== &apos;string&apos; || !this._checkValues(payloadType, CONNECTOR_FUNCTION_PAYLOAD_TYPES))
+            throw new Error(&apos;Parameter payload type must be a string and must be one of these values: &apos; + CONNECTOR_FUNCTION_PAYLOAD_TYPES);
+        
+        this._payloadType = payloadType;
+        return this;
+    }
+
+    /**
      * Set the operational status attribute
      * @param {boolean} operationalStatus 
      * @return {ConnectorFunctions}
@@ -497,6 +516,7 @@ export default class ConnectorFunctions extends BaseProvision {
             &quot;operationalStatus&quot;: this._operationalStatus,
             &quot;operationName&quot;: this._type !== &apos;COLLECTION&apos;?this._operationName:undefined,
             &quot;type&quot;: this._type,
+            &quot;payloadType&quot;: this._payloadType,
             &quot;javascript&quot;: this._javascript,
             &quot;description&quot;: (this._description ? this._description : undefined),
             &quot;northCriterias&quot;: this._type === &apos;REQUEST&apos;?this._northCriterias : undefined,
@@ -509,11 +529,15 @@ export default class ConnectorFunctions extends BaseProvision {
 
     _checkRequiredParameters(isUpdate) {
         if (isUpdate) {
-            if (this._identifier === undefined || this._organization === undefined || this._channel === undefined || this._operationalStatus === undefined || this._type === undefined  || this._javascript === undefined)
-                throw new Error(&apos;Parameters organization, channel, operational status, type, javascript and identifier must be defined&apos;);
+            if (this._identifier === undefined || this._organization === undefined || this._channel === undefined || this._operationalStatus === undefined || this._type === undefined || this._payloadType === undefined || this._javascript === undefined)
+                throw new Error(&apos;Parameters organization, channel, operational status, type, payloadType, javascript and identifier must be defined&apos;);
         } else {
-            if (this._name === undefined || this._organization === undefined || this._channel === undefined || this._operationalStatus === undefined || this._type === undefined  || this._javascript === undefined)
-                throw new Error(&apos;Parameters organization, channel, operational status, type, javascript and name must be defined&apos;);
+            if (this._name === undefined || this._organization === undefined || this._channel === undefined || this._operationalStatus === undefined || this._type === undefined || this._payloadType === undefined || this._javascript === undefined)
+                throw new Error(&apos;Parameters organization, channel, operational status, type, payloadType, javascript and name must be defined&apos;);
+        }
+
+        if (this._type === &apos;REQUEST&apos; &amp;&amp;  this._payloadType !== &apos;JSON&apos;) {
+            throw new Error(&apos;Parameter payload type must be JSON when type REQUEST&apos;);
         }
     }
 
