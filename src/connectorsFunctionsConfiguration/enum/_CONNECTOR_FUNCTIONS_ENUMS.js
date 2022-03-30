@@ -8,6 +8,12 @@
  */
  export const CONNECTOR_FUNCTION_TYPES = [ "COLLECTION", "REQUEST", "RESPONSE"];
 
+
+ /**
+ * CONNECTOR_FUNCTION_PAYLOAD_TYPES values allowed
+ */
+  export const CONNECTOR_FUNCTION_PAYLOAD_TYPES = ["TEXT", "JSON", "BINARY"];
+
  /**
  * CONNECTOR_FUNCTION_SOUTH_PROTOCOLS values allowed
  */
