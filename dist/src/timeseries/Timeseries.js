@@ -121,7 +121,10 @@ var Timeseries = (function (_BaseProvision) {
     }, {
         key: 'withDescription',
         value: function withDescription(description) {
-            _utilFormatsCheck_types2['default']._checkString(description, 'description');
+            if (description) {
+                _utilFormatsCheck_types2['default']._checkString(description, 'description');
+            }
+
             this._description = description;
             return this;
         }

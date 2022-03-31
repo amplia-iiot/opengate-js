@@ -82,7 +82,10 @@ export default class Timeseries extends BaseProvision {
      * @return {Timeseries}
      */
     withDescription(description) {
-        checkType._checkString(description, 'description');
+        if (description) {
+            checkType._checkString(description, 'description');
+        }
+        
         this._description = description;
         return this;
     }
