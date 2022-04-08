@@ -1,29 +1,29 @@
 {
   "type": "File",
   "start": 0,
-  "end": 739,
+  "end": 581,
   "loc": {
     "start": {
       "line": 1,
       "column": 0
     },
     "end": {
-      "line": 25,
-      "column": 100
+      "line": 22,
+      "column": 0
     }
   },
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 739,
+    "end": 581,
     "loc": {
       "start": {
         "line": 1,
         "column": 0
       },
       "end": {
-        "line": 25,
-        "column": 100
+        "line": 22,
+        "column": 0
       }
     },
     "sourceType": "module",
@@ -685,7 +685,7 @@
       {
         "type": "ExportNamedDeclaration",
         "start": 494,
-        "end": 567,
+        "end": 579,
         "loc": {
           "start": {
             "line": 20,
@@ -693,7 +693,7 @@
           },
           "end": {
             "line": 20,
-            "column": 75
+            "column": 87
           }
         },
         "specifiers": [],
@@ -701,7 +701,7 @@
         "declaration": {
           "type": "VariableDeclaration",
           "start": 501,
-          "end": 567,
+          "end": 579,
           "loc": {
             "start": {
               "line": 20,
@@ -709,14 +709,14 @@
             },
             "end": {
               "line": 20,
-              "column": 75
+              "column": 87
             }
           },
           "declarations": [
             {
               "type": "VariableDeclarator",
               "start": 507,
-              "end": 566,
+              "end": 578,
               "loc": {
                 "start": {
                   "line": 20,
@@ -724,7 +724,7 @@
                 },
                 "end": {
                   "line": 20,
-                  "column": 74
+                  "column": 86
                 }
               },
               "id": {
@@ -748,7 +748,7 @@
               "init": {
                 "type": "ArrayExpression",
                 "start": 544,
-                "end": 566,
+                "end": 578,
                 "loc": {
                   "start": {
                     "line": 20,
@@ -756,14 +756,14 @@
                   },
                   "end": {
                     "line": 20,
-                    "column": 74
+                    "column": 86
                   }
                 },
                 "elements": [
                   {
                     "type": "StringLiteral",
                     "start": 545,
-                    "end": 554,
+                    "end": 555,
                     "loc": {
                       "start": {
                         "line": 20,
@@ -771,23 +771,23 @@
                       },
                       "end": {
                         "line": 20,
-                        "column": 62
+                        "column": 63
                       }
                     },
                     "extra": {
-                      "rawValue": "mqtt://",
-                      "raw": "\"mqtt://\""
+                      "rawValue": "https://",
+                      "raw": "\"https://\""
                     },
-                    "value": "mqtt://"
+                    "value": "https://"
                   },
                   {
                     "type": "StringLiteral",
-                    "start": 556,
+                    "start": 557,
                     "end": 565,
                     "loc": {
                       "start": {
                         "line": 20,
-                        "column": 64
+                        "column": 65
                       },
                       "end": {
                         "line": 20,
@@ -795,10 +795,30 @@
                       }
                     },
                     "extra": {
-                      "rawValue": "http://",
-                      "raw": "\"http://\""
+                      "rawValue": "wss://",
+                      "raw": "\"wss://\""
                     },
-                    "value": "http://"
+                    "value": "wss://"
+                  },
+                  {
+                    "type": "StringLiteral",
+                    "start": 567,
+                    "end": 577,
+                    "loc": {
+                      "start": {
+                        "line": 20,
+                        "column": 75
+                      },
+                      "end": {
+                        "line": 20,
+                        "column": 85
+                      }
+                    },
+                    "extra": {
+                      "rawValue": "mqtts://",
+                      "raw": "\"mqtts://\""
+                    },
+                    "value": "mqtts://"
                   }
                 ]
               },
@@ -824,24 +844,7 @@
               }
             }
           ],
-          "trailingComments": [
-            {
-              "type": "CommentBlock",
-              "value": "*\n * CONNECTOR_FUNCTION_SOUTH_CRITERIAS_EXAMPLES values allowed\n ",
-              "start": 569,
-              "end": 638,
-              "loc": {
-                "start": {
-                  "line": 22,
-                  "column": 0
-                },
-                "end": {
-                  "line": 24,
-                  "column": 3
-                }
-              }
-            }
-          ]
+          "trailingComments": []
         },
         "leadingComments": [
           {
@@ -856,187 +859,6 @@
               },
               "end": {
                 "line": 19,
-                "column": 3
-              }
-            }
-          }
-        ],
-        "trailingComments": [
-          {
-            "type": "CommentBlock",
-            "value": "*\n * CONNECTOR_FUNCTION_SOUTH_CRITERIAS_EXAMPLES values allowed\n ",
-            "start": 569,
-            "end": 638,
-            "loc": {
-              "start": {
-                "line": 22,
-                "column": 0
-              },
-              "end": {
-                "line": 24,
-                "column": 3
-              }
-            }
-          }
-        ]
-      },
-      {
-        "type": "ExportNamedDeclaration",
-        "start": 640,
-        "end": 739,
-        "loc": {
-          "start": {
-            "line": 25,
-            "column": 1
-          },
-          "end": {
-            "line": 25,
-            "column": 100
-          }
-        },
-        "specifiers": [],
-        "source": null,
-        "declaration": {
-          "type": "VariableDeclaration",
-          "start": 647,
-          "end": 739,
-          "loc": {
-            "start": {
-              "line": 25,
-              "column": 8
-            },
-            "end": {
-              "line": 25,
-              "column": 100
-            }
-          },
-          "declarations": [
-            {
-              "type": "VariableDeclarator",
-              "start": 653,
-              "end": 738,
-              "loc": {
-                "start": {
-                  "line": 25,
-                  "column": 14
-                },
-                "end": {
-                  "line": 25,
-                  "column": 99
-                }
-              },
-              "id": {
-                "type": "Identifier",
-                "start": 653,
-                "end": 696,
-                "loc": {
-                  "start": {
-                    "line": 25,
-                    "column": 14
-                  },
-                  "end": {
-                    "line": 25,
-                    "column": 57
-                  },
-                  "identifierName": "CONNECTOR_FUNCTION_SOUTH_CRITERIAS_INTERNAL"
-                },
-                "name": "CONNECTOR_FUNCTION_SOUTH_CRITERIAS_INTERNAL",
-                "leadingComments": null
-              },
-              "init": {
-                "type": "ArrayExpression",
-                "start": 699,
-                "end": 738,
-                "loc": {
-                  "start": {
-                    "line": 25,
-                    "column": 60
-                  },
-                  "end": {
-                    "line": 25,
-                    "column": 99
-                  }
-                },
-                "elements": [
-                  {
-                    "type": "StringLiteral",
-                    "start": 701,
-                    "end": 718,
-                    "loc": {
-                      "start": {
-                        "line": 25,
-                        "column": 62
-                      },
-                      "end": {
-                        "line": 25,
-                        "column": 79
-                      }
-                    },
-                    "extra": {
-                      "rawValue": "mqtt://odm/iot/",
-                      "raw": "\"mqtt://odm/iot/\""
-                    },
-                    "value": "mqtt://odm/iot/"
-                  },
-                  {
-                    "type": "StringLiteral",
-                    "start": 720,
-                    "end": 737,
-                    "loc": {
-                      "start": {
-                        "line": 25,
-                        "column": 81
-                      },
-                      "end": {
-                        "line": 25,
-                        "column": 98
-                      }
-                    },
-                    "extra": {
-                      "rawValue": "http://odm/iot/",
-                      "raw": "\"http://odm/iot/\""
-                    },
-                    "value": "http://odm/iot/"
-                  }
-                ]
-              },
-              "leadingComments": null
-            }
-          ],
-          "kind": "const",
-          "leadingComments": [
-            {
-              "type": "CommentBlock",
-              "value": "*\n * CONNECTOR_FUNCTION_SOUTH_CRITERIAS_EXAMPLES values allowed\n ",
-              "start": 569,
-              "end": 638,
-              "loc": {
-                "start": {
-                  "line": 22,
-                  "column": 0
-                },
-                "end": {
-                  "line": 24,
-                  "column": 3
-                }
-              }
-            }
-          ],
-          "trailingComments": []
-        },
-        "leadingComments": [
-          {
-            "type": "CommentBlock",
-            "value": "*\n * CONNECTOR_FUNCTION_SOUTH_CRITERIAS_EXAMPLES values allowed\n ",
-            "start": 569,
-            "end": 638,
-            "loc": {
-              "start": {
-                "line": 22,
-                "column": 0
-              },
-              "end": {
-                "line": 24,
                 "column": 3
               }
             }
@@ -1107,22 +929,6 @@
         },
         "end": {
           "line": 19,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "CommentBlock",
-      "value": "*\n * CONNECTOR_FUNCTION_SOUTH_CRITERIAS_EXAMPLES values allowed\n ",
-      "start": 569,
-      "end": 638,
-      "loc": {
-        "start": {
-          "line": 22,
-          "column": 0
-        },
-        "end": {
-          "line": 24,
           "column": 3
         }
       }
@@ -2301,9 +2107,9 @@
         "binop": null,
         "updateContext": null
       },
-      "value": "mqtt://",
+      "value": "https://",
       "start": 545,
-      "end": 554,
+      "end": 555,
       "loc": {
         "start": {
           "line": 20,
@@ -2311,7 +2117,7 @@
         },
         "end": {
           "line": 20,
-          "column": 62
+          "column": 63
         }
       }
     },
@@ -2328,16 +2134,16 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 554,
-      "end": 555,
+      "start": 555,
+      "end": 556,
       "loc": {
         "start": {
           "line": 20,
-          "column": 62
+          "column": 63
         },
         "end": {
           "line": 20,
-          "column": 63
+          "column": 64
         }
       }
     },
@@ -2354,13 +2160,13 @@
         "binop": null,
         "updateContext": null
       },
-      "value": "http://",
-      "start": 556,
+      "value": "wss://",
+      "start": 557,
       "end": 565,
       "loc": {
         "start": {
           "line": 20,
-          "column": 64
+          "column": 65
         },
         "end": {
           "line": 20,
@@ -2370,8 +2176,8 @@
     },
     {
       "type": {
-        "label": "]",
-        "beforeExpr": false,
+        "label": ",",
+        "beforeExpr": true,
         "startsExpr": false,
         "rightAssociative": false,
         "isLoop": false,
@@ -2396,9 +2202,9 @@
     },
     {
       "type": {
-        "label": ";",
-        "beforeExpr": true,
-        "startsExpr": false,
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
         "rightAssociative": false,
         "isLoop": false,
         "isAssign": false,
@@ -2407,247 +2213,17 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 566,
-      "end": 567,
+      "value": "mqtts://",
+      "start": 567,
+      "end": 577,
       "loc": {
         "start": {
-          "line": 20,
-          "column": 74
-        },
-        "end": {
           "line": 20,
           "column": 75
-        }
-      }
-    },
-    {
-      "type": "CommentBlock",
-      "value": "*\n * CONNECTOR_FUNCTION_SOUTH_CRITERIAS_EXAMPLES values allowed\n ",
-      "start": 569,
-      "end": 638,
-      "loc": {
-        "start": {
-          "line": 22,
-          "column": 0
         },
         "end": {
-          "line": 24,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "export",
-        "keyword": "export",
-        "beforeExpr": false,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "value": "export",
-      "start": 640,
-      "end": 646,
-      "loc": {
-        "start": {
-          "line": 25,
-          "column": 1
-        },
-        "end": {
-          "line": 25,
-          "column": 7
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "const",
-        "keyword": "const",
-        "beforeExpr": false,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "value": "const",
-      "start": 647,
-      "end": 652,
-      "loc": {
-        "start": {
-          "line": 25,
-          "column": 8
-        },
-        "end": {
-          "line": 25,
-          "column": 13
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "name",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "value": "CONNECTOR_FUNCTION_SOUTH_CRITERIAS_INTERNAL",
-      "start": 653,
-      "end": 696,
-      "loc": {
-        "start": {
-          "line": 25,
-          "column": 14
-        },
-        "end": {
-          "line": 25,
-          "column": 57
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "=",
-        "beforeExpr": true,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": true,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "value": "=",
-      "start": 697,
-      "end": 698,
-      "loc": {
-        "start": {
-          "line": 25,
-          "column": 58
-        },
-        "end": {
-          "line": 25,
-          "column": 59
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "[",
-        "beforeExpr": true,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "start": 699,
-      "end": 700,
-      "loc": {
-        "start": {
-          "line": 25,
-          "column": 60
-        },
-        "end": {
-          "line": 25,
-          "column": 61
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "string",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "value": "mqtt://odm/iot/",
-      "start": 701,
-      "end": 718,
-      "loc": {
-        "start": {
-          "line": 25,
-          "column": 62
-        },
-        "end": {
-          "line": 25,
-          "column": 79
-        }
-      }
-    },
-    {
-      "type": {
-        "label": ",",
-        "beforeExpr": true,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "start": 718,
-      "end": 719,
-      "loc": {
-        "start": {
-          "line": 25,
-          "column": 79
-        },
-        "end": {
-          "line": 25,
-          "column": 80
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "string",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "value": "http://odm/iot/",
-      "start": 720,
-      "end": 737,
-      "loc": {
-        "start": {
-          "line": 25,
-          "column": 81
-        },
-        "end": {
-          "line": 25,
-          "column": 98
+          "line": 20,
+          "column": 85
         }
       }
     },
@@ -2664,16 +2240,16 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 737,
-      "end": 738,
+      "start": 577,
+      "end": 578,
       "loc": {
         "start": {
-          "line": 25,
-          "column": 98
+          "line": 20,
+          "column": 85
         },
         "end": {
-          "line": 25,
-          "column": 99
+          "line": 20,
+          "column": 86
         }
       }
     },
@@ -2690,16 +2266,16 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 738,
-      "end": 739,
+      "start": 578,
+      "end": 579,
       "loc": {
         "start": {
-          "line": 25,
-          "column": 99
+          "line": 20,
+          "column": 86
         },
         "end": {
-          "line": 25,
-          "column": 100
+          "line": 20,
+          "column": 87
         }
       }
     },
@@ -2716,16 +2292,16 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 739,
-      "end": 739,
+      "start": 581,
+      "end": 581,
       "loc": {
         "start": {
-          "line": 25,
-          "column": 100
+          "line": 22,
+          "column": 0
         },
         "end": {
-          "line": 25,
-          "column": 100
+          "line": 22,
+          "column": 0
         }
       }
     }

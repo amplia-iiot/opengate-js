@@ -258,12 +258,6 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
-    "opengate-js/src/connectorsfunctionsconfiguration/enum/_connector_functions_enums.js~connector_function_south_criterias_internal",
-    "variable/index.html#static-variable-CONNECTOR_FUNCTION_SOUTH_CRITERIAS_INTERNAL",
-    "<span>CONNECTOR_FUNCTION_SOUTH_CRITERIAS_INTERNAL</span> <span class=\"search-result-import-path\">opengate-js/src/connectorsFunctionsConfiguration/enum/_CONNECTOR_FUNCTIONS_ENUMS.js</span>",
-    "variable"
-  ],
-  [
     "opengate-js/src/connectorsfunctionsconfiguration/enum/_connector_functions_enums.js~connector_function_south_protocols",
     "variable/index.html#static-variable-CONNECTOR_FUNCTION_SOUTH_PROTOCOLS",
     "<span>CONNECTOR_FUNCTION_SOUTH_PROTOCOLS</span> <span class=\"search-result-import-path\">opengate-js/src/connectorsFunctionsConfiguration/enum/_CONNECTOR_FUNCTIONS_ENUMS.js</span>",
@@ -5601,12 +5595,6 @@ window.esdocSearchIndex = [
     "src/connectorsfunctionsconfiguration/connectorfunctionshelper.js~connectorfunctionshelper#getdocprivatejavascriptfunctions",
     "class/src/connectorsFunctionsConfiguration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper.html#instance-method-getDocPrivateJavascriptFunctions",
     "src/connectorsFunctionsConfiguration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper#getDocPrivateJavascriptFunctions",
-    "method"
-  ],
-  [
-    "src/connectorsfunctionsconfiguration/connectorfunctionshelper.js~connectorfunctionshelper#getinternalsouthcriterias",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper.html#instance-method-getInternalSouthCriterias",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper#getInternalSouthCriterias",
     "method"
   ],
   [
