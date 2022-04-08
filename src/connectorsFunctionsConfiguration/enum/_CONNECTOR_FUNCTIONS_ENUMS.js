@@ -17,9 +17,5 @@
  /**
  * CONNECTOR_FUNCTION_SOUTH_PROTOCOLS values allowed
  */
-  export const CONNECTOR_FUNCTION_SOUTH_PROTOCOLS = ["mqtt://", "http://"];
+  export const CONNECTOR_FUNCTION_SOUTH_PROTOCOLS = ["https://", "wss://", "mqtts://"];
 
-/**
- * CONNECTOR_FUNCTION_SOUTH_CRITERIAS_EXAMPLES values allowed
- */
- export const CONNECTOR_FUNCTION_SOUTH_CRITERIAS_INTERNAL = [ "mqtt://odm/iot/", "http://odm/iot/"];
