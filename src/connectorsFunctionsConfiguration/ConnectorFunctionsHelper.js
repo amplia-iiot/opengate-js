@@ -7,7 +7,6 @@ import HttpStatus from 'http-status-codes';
 
 import {
     CONNECTOR_FUNCTION_SOUTH_PROTOCOLS,
-    CONNECTOR_FUNCTION_SOUTH_CRITERIAS_INTERNAL,
     CONNECTOR_FUNCTION_PAYLOAD_TYPES
 } from './enum/_CONNECTOR_FUNCTIONS_ENUMS';
 
@@ -120,10 +119,6 @@ export default class ConnectorFunctionsHelper extends GenericFinder {
 
     getSouthCriteriasProtocols() {
         return CONNECTOR_FUNCTION_SOUTH_PROTOCOLS;
-    }
-
-    getInternalSouthCriterias() {
-        return CONNECTOR_FUNCTION_SOUTH_CRITERIAS_INTERNAL;
     }
 
     getPayloadTypes() {
