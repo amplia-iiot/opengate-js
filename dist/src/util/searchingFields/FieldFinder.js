@@ -241,21 +241,6 @@ var _searchColumns = function _searchColumns(_this, finder, objSearcher, defered
     var id = objSearcher.extraData[finder.entity];
     _this._ogapi[finder.api]()[finder.method](organization, id).then(function (response) {
         if (response.statusCode === 200) {
-            /*
-            aggregationFunction: "AVG"
-            filter: "YES"
-            name: "battery charge average"
-            path: "device.powersupply.battery.charge._current.value"
-            sort: true
-            type: "number"
-            
-            identifier: "battery charge average"
-            indexed: true
-            notFilterable: false
-            schema: {type: 'number'}
-            
-            */
-
             if (response.data.identifierColumn) {
                 columnDatastreams.push({
                     identifier: response.data.identifierColumn,

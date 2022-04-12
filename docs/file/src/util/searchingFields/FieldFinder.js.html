@@ -481,9 +481,40 @@ const _searchColumns = function(_this, finder, objSearcher, defered){
         var id = objSearcher.extraData[finder.entity]
         _this._ogapi[finder.api]()[finder.method](organization, id)
         .then(function (response) {
-            if (response.statusCode === 200) {
+            if (response.statusCode === 200) {                
+                if (response.data.identifierColumn) {
+                    columnDatastreams.push({
+                        identifier: response.data.identifierColumn,
+                        name: response.data.identifierColumn,
+                        path: &apos;provision.administration.identifier._current.value&apos;,
+                        indexed: true,
+                        sort: true,
+                        notFilterable: false,
+                        filter: &apos;YES&apos;,
+                        type: &quot;string&quot;,
+                        schema: {type: &apos;string&apos;}
+                      })
+                }
+
+                if (response.data.bucketColumn) {
+                    columnDatastreams.push({
+                        identifier: response.data.bucketColumn,
+                        name: response.data.bucketColumn,
+                        path: &apos;provision.administration.identifier._current.at&apos;,
+                        indexed: true,
+                        sort: true,
+                        notFilterable: false,
+                        filter: &apos;YES&apos;,
+                        type: &quot;string&quot;,
+                        schema: {
+                            type: &apos;string&apos;,
+                            format: &apos;datetime&apos;
+                        }
+                      })
+                }
+
                 var columns = _.concat(response.data.columns || [], response.data.context || [])
-                
+
                 //search de la definici&#xF3;n de schemas de opengate
                 _this._ogapi.basicTypesSearchBuilder().withPath(&apos;$&apos;).build().execute().then(function (basicTypes) {
                     const definitions = basicTypes.data.definitions
@@ -498,35 +529,61 @@ const _searchColumns = function(_this, finder, objSearcher, defered){
                     //recuperamos la defnici&#xF3;n de todas las columnas y todos los datastreams
                     _getDatamodelFields(_this, objSearcher).then(function (datamodelFields) {
                         columns.forEach(function (column) {
-                            //Expresi&#xF3;n regular para recuperar el path del datastream (1) y, si se tratase de un datastream complejo, tambi&#xE9;n el path hasta el dato simple (2).
-                            //Datastream simple: provision.device.identifier._current.value, device.communicationModules[0].subscriber.mobile.icc._current.at
-                            //Datastream complejo: device.model._current.value.manufacturer, device.location._current.value.position.type
-                            const datastreamMatch = column.path.match(REGEX_PATH_CURRENT);
-                            //Eliminamos el indice para los modulos de comunicaciones y los arrays para el resto de datastreams
-                            const datastream = datastreamMatch[1].replace(REGEX_PATH_ARRAY, &quot;[]&quot;)
-                            const subdatastream = datastreamMatch[2].replace(REGEX_DATASTREAM_VALUE, &apos;&apos;).replace(REGEX_PATH_ARRAY, &apos;&apos;);
-                            //Buscamos la definici&#xF3;n del datastream en el datamodel
-                            const datamodelField = Array.isArray(datamodelFields) ? datamodelFields.find(function (df) {
-                                return datastream === df.identifier
-                            }) : datamodelFields
-                            const schema = datamodelField.schema
-                            // si es un datastream simple, la asignaci&#xF3;n es directa
-                            if (!subdatastream) {
-                                column.schema = schema
+                            // console.log(&apos;--------------------------------&apos; + column)
+
+                            // Se calcula el schema dependiendo del tipo de dato
+                            if (column.type !== &apos;date-time&apos;) {
+                                column.schema = {
+                                    type: column.type
+                                }
                             } else {
-                                //si es un datastream complejo hay que navegar por el schema hasta encontrar su tipo
-                                const sds = subdatastream.split(&apos;.&apos;)
-                                let _schema = (schema.$ref &amp;&amp; definitions[schema.$ref.replace(new RegExp(&apos;.*#/definitions/&apos;), &apos;&apos;)]) || schema
-                                sds.forEach(function (sd) {
-                                    // caso: device.model._current.at - no hay schema
-                                    _schema = _schema &amp;&amp; _schema.properties &amp;&amp; _schema.properties[sd]
-                                })
-                                column.schema = _schema
+                                column.schema = {
+                                    type: &apos;string&apos;,
+                                    format: &apos;datetime&apos;
+                                }
                             }
+
+                            if (column.path.endsWith(&apos;._current.value&apos;)) {
+                                //console.log(&apos;---------------------------------------------&apos;)
+                                const datastreamMatch = column.path.substring(0, column.path.indexOf(&apos;._current.value&apos;));
+
+                                //Buscamos la definici&#xF3;n del datastream en el datamodel
+                                const datamodelField = Array.isArray(datamodelFields) ? datamodelFields.find(function (df) {
+                                    return datastreamMatch === df.identifier
+                                }) : datamodelFields
+                            }
+
+                            // //Expresi&#xF3;n regular para recuperar el path del datastream (1) y, si se tratase de un datastream complejo, tambi&#xE9;n el path hasta el dato simple (2).
+                            // //Datastream simple: provision.device.identifier._current.value, device.communicationModules[0].subscriber.mobile.icc._current.at
+                            // //Datastream complejo: device.model._current.value.manufacturer, device.location._current.value.position.type
+                            // const datastreamMatch = column.path.match(REGEX_PATH_CURRENT);
+                            // //Eliminamos el indice para los modulos de comunicaciones y los arrays para el resto de datastreams
+                            // const datastream = datastreamMatch[1].replace(REGEX_PATH_ARRAY, &quot;[]&quot;)
+                            // const subdatastream = datastreamMatch[2].replace(REGEX_DATASTREAM_VALUE, &apos;&apos;).replace(REGEX_PATH_ARRAY, &apos;&apos;);
+                            // //Buscamos la definici&#xF3;n del datastream en el datamodel
+                            // const datamodelField = Array.isArray(datamodelFields) ? datamodelFields.find(function (df) {
+                            //     return datastream === df.identifier
+                            // }) : datamodelFields
+                            // const schema = datamodelField.schema
+                            // // si es un datastream simple, la asignaci&#xF3;n es directa
+                            // if (!subdatastream) {
+                            //     column.schema = schema
+                            // } else {
+                            //     //si es un datastream complejo hay que navegar por el schema hasta encontrar su tipo
+                            //     const sds = subdatastream.split(&apos;.&apos;)
+                            //     let _schema = (schema.$ref &amp;&amp; definitions[schema.$ref.replace(new RegExp(&apos;.*#/definitions/&apos;), &apos;&apos;)]) || schema
+                            //     sds.forEach(function (sd) {
+                            //         // caso: device.model._current.at - no hay schema
+                            //         _schema = _schema &amp;&amp; _schema.properties &amp;&amp; _schema.properties[sd]
+                            //     })
+                            //     column.schema = _schema
+                            // }
                             //simular los campos de un datastream
                             column.identifier = (column.name || column.alias)
-                            column.indexed = column.filter === &apos;YES&apos; || column.filter === &apos;ALLWAYS&apos;
+                            column.indexed = column.filter !== &apos;NO&apos; // column.filter === &apos;YES&apos; || column.filter === &apos;ALWAYS&apos;
                             column.notFilterable = column.filter === &apos;NO&apos;
+
+                            // console.log(&apos;=============================&apos; + column)
                             columnDatastreams.push(column)
                         })
                         defered.resolve(columnDatastreams);
