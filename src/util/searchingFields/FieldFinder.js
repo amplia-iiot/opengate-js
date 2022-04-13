@@ -238,7 +238,7 @@ const _searchColumns = function(_this, finder, objSearcher, defered){
                         sort: true,
                         notFilterable: false,
                         filter: 'YES',
-                        type: "string",
+                        type: "date-time",
                         schema: {
                             type: 'string',
                             format: 'datetime'
