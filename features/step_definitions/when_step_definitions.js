@@ -1,7 +1,10 @@
 // features/step_definitions/when_step_definitions.js
 
 var GenericFinder = require(process.cwd() + '/dist/src/GenericFinder');
-var { When, Given } = require('cucumber');
+var {
+    When,
+    Given
+} = require('cucumber');
 
 When(/^I want "([^"]*)"( (\d*) minutes| for this url "([^"]*)" for)? (a|of a) operation$/, function (action, nothing, minutes, data, exclude) {
     var _this = this;
@@ -556,7 +559,9 @@ When(/^I update periodicity$/, function () {
     }
 });
 
-When(/^I create it$/, {timeout: 60 * 1000}, function () {
+When(/^I create it$/, {
+    timeout: 60 * 1000
+}, function () {
 
     var _this = this;
     _this.error = undefined;
@@ -635,7 +640,9 @@ When(/^I "([^"]*)" it with bulk$/, function (action) {
     }
 });
 
-When(/^I "([^"]*)" it with bulk execution$/, {timeout: 60*1000}, function (action) {
+When(/^I "([^"]*)" it with bulk execution$/, {
+    timeout: 60 * 1000
+}, function (action) {
     var _this = this;
     _this.error = undefined;
     _this.responseData = undefined;
@@ -698,7 +705,51 @@ When(/^I "([^"]*)" it with bulk and response with format csv$/, function (action
         return;
     }
 });
+When(/^I delete it with identfier from location$/, function () {
 
+    var _this = this;
+    _this.error = undefined;
+    _this.responseData = undefined;
+
+    function catchResponse(data) {
+        //console.log("OK");
+        //console.log(JSON.stringify(data));
+        _this.responseData = data;
+        _this.error = undefined;
+        //console.log(data);
+    }
+
+    function catchErrorResponse(err) {
+        //console.log("NOK");
+        //console.log(JSON.stringify(err));
+        _this.responseData = err;
+        _this.error = err;
+
+    }
+    var id;
+    try {
+        if(this.responseData){
+            if (this.responseData.location)
+                id = this.responseData.location.substring(this.responseData.location.lastIndexOf("/") + 1);
+            else if (this.responseData.data)
+                id = this.responseData.data.id;
+            else if (this.responseData[0])
+                id = this.responseData[0].id;
+        }else if(this.location){
+            id = this.location.substring(this.location.lastIndexOf("/") + 1);
+        }
+        
+        _this.util.withIdentifier(id)
+        return _this.util.delete().then(catchResponse).catch(catchErrorResponse);
+
+    } catch (err) {
+        //console.error(err);
+        _this.responseData = err;
+        _this.error = err;
+        //this.expect(this.error).to.be.undefined;
+        return;
+    }
+});
 
 When(/^I delete it$/, {timeout: 60 * 1000}, function () {
 
@@ -787,6 +838,44 @@ When(/^I delete it all$/, function () {
         console.error('ERROR: ', err);
         _this.responseData = err;
         _this.error = err;
+        return;
+    }
+});
+
+When(/^I update it with identfier from location$/, function () {
+    var _this = this;
+    _this.error = undefined;
+    _this.responseData = undefined;
+
+    function catchResponse(data) {
+        _this.responseData = data;
+        _this.error = undefined;
+        //console.log(JSON.stringify(_this.data));
+    }
+
+    function catchErrorResponse(err) {
+        _this.responseData = err;
+        _this.error = err;
+
+    }
+    var id
+    try {
+        if(this.responseData){
+            if (this.responseData.location)
+                id = this.responseData.location.substring(this.responseData.location.lastIndexOf("/") + 1);
+            else if (this.responseData.data)
+                id = this.responseData.data.id;
+            else if (this.responseData[0])
+                id = this.responseData[0].id;
+        }else if(this.location){
+            id = this.location.substring(this.location.lastIndexOf("/") + 1);
+        }
+        
+        _this.util.withIdentifier(id)
+        return _this.util.update().then(catchResponse).catch(catchErrorResponse);
+    } catch (err) {
+        this.error = err;
+        //console.log(err);
         return;
     }
 });
@@ -890,12 +979,12 @@ When(/^I clone it with...$/, function (table) {
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         _this.responseData = data;
         _this.error = undefined;
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         _this.responseData = err;
         _this.error = err;
 
@@ -940,8 +1029,8 @@ When(/^I get allowed Datastreams fields$/, function (callback) {
 Given(/^I can found "([^"]*)" as datastream name$/, function (dsName, callback) {
     // Write code here that turns the phrase above into concrete actions
     if (this.responseData.filter(function (item) {
-        return item.identifier === dsName;
-    }).length === 0) {
+            return item.identifier === dsName;
+        }).length === 0) {
         throw new Error('Datastream not found. DSName:' + dsName);
     }
     callback();
@@ -950,8 +1039,8 @@ Given(/^I can found "([^"]*)" as datastream name$/, function (dsName, callback) 
 Given(/^I can not found "([^"]*)" as datastream name$/, function (dsName, callback) {
     // Write code here that turns the phrase above into concrete actions
     if (this.responseData.filter(function (item) {
-        return item.identifier === dsName;
-    }).length === 0) {
+            return item.identifier === dsName;
+        }).length === 0) {
         callback();
     }
     throw new Error('Datastream found. DSName:' + dsName);

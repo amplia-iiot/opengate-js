@@ -29,7 +29,6 @@ So, I can create a new processors with the parametres that I have been defined
         And an ogapi "provision processors builder" util
         And I want to create a "provisionProcessors"
         And the "organization" "provisionProcessors"
-        And the "identifier" "provision_Processor_id_1"
         And the "name" "mockProvisionProcessors"
         And the "configurationParams" with...
             | param                                                                                                                                                                |
@@ -39,6 +38,8 @@ So, I can create a new processors with the parametres that I have been defined
             |     {"script": "function normalizeRawObject(rawObject) { try { var normalizedObject = {}; return normalizedObject; } catch (e) { printLog('>> normalizeRawObject(): exception: ' + e); throw e; } } function actionsPlanning(normalizedObject) { try { var actions = []; return actions; } catch (e) { printLog('>> actionsPlanning(): exception: ' + e); throw e; } }"} |
         Then I create it
         And response code should be: 201
+        Then I delete it with identfier from location        
+        And response code should be: 200
 
     Scenario: Deleting an organization
         Given an ogapi "organizations builder" util
