@@ -79,10 +79,7 @@ export default class BulkExecutionBuilder extends BaseProvision {
         let form;
             if (typeof rawFile !== 'string') {
                 form = new FormData();
-                const processorBulkFile = new Blob([rawFile ], {
-                    type: this._extension
-                });
-                form.append('file', processorBulkFile);
+                form.append('file', rawFile);
             } else {
                 form = {};
                 form.processorBulkFile = rawFile;

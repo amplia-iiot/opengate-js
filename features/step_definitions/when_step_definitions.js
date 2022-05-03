@@ -1,12 +1,15 @@
 // features/step_definitions/when_step_definitions.js
 
 var GenericFinder = require(process.cwd() + '/dist/src/GenericFinder');
-var { When, Given } = require('cucumber');
+var {
+    When,
+    Given
+} = require('cucumber');
 
 When(/^I want "([^"]*)"( (\d*) minutes| for this url "([^"]*)" for)? (a|of a) operation$/, function (action, nothing, minutes, data, exclude) {
     var _this = this;
 
-    function digestResponseData (response) {
+    function digestResponseData(response) {
         //Guardamos el identificador anterior por si hiciera falta para el siguiente paso
         var id = _this.responseData.id;
         var location = _this.responseData.location;
@@ -33,7 +36,7 @@ When(/^I want "([^"]*)"( (\d*) minutes| for this url "([^"]*)" for)? (a|of a) op
         this.error = undefined;
     }
 
-    function digestErrorData (response) {
+    function digestErrorData(response) {
 
         var cache = [];
         var error = JSON.stringify(response, function (key, value) {
@@ -102,7 +105,7 @@ When(/^I try to find an operation for its id of periodicity and save its id$/, f
     var _this = this;
     _this.error = undefined;
 
-    function digestResponseData (response) {
+    function digestResponseData(response) {
         _this.responseData = {
             data: response.data[0],
             statusCode: response.statusCode,
@@ -111,7 +114,7 @@ When(/^I try to find an operation for its id of periodicity and save its id$/, f
         _this.error = undefined;
     }
 
-    function digestErrorData (error) {
+    function digestErrorData(error) {
         //console.log("STEP GENERIC_FINDER ERROR: " + JSON.stringify(error));
         _this.error = error;
         _this.responseData = error;
@@ -139,7 +142,7 @@ When(/^I try to find by operation's id$/, function () {
     var _this = this;
     this.error = undefined;
 
-    function digestResponseData (response) {
+    function digestResponseData(response) {
         //console.log("FIND BY EXECUTION ID RESPONSE: " + JSON.stringify(response));
         //Guardamos el id y/o location por si hiciera falta en el siguiente step
         var id = _this.responseData.id;
@@ -157,7 +160,7 @@ When(/^I try to find by operation's id$/, function () {
         this.error = undefined;
     }
 
-    function digestErrorData (response) {
+    function digestErrorData(response) {
         //console.log("FIND BY EXECUTION ID ERROR: " + JSON.stringify(response));
         _this.error = response;
         _this.responseData = response;
@@ -342,13 +345,13 @@ When(/^I execute it$/, function () {
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         // console.log("EXECUTE RESPONSE: " + JSON.stringify(data));
         _this.responseData = data;
         _this.error = undefined;
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         // console.log(err);
         //console.log("EXECUTE ERROR: " + JSON.stringify(err));
         _this.responseData = err;
@@ -371,12 +374,12 @@ When(/^I download csv it$/, function () {
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         _this.responseData = data;
         _this.error = undefined;
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         //console.log("EXECUTE ERROR: " + JSON.stringify(err));
         _this.responseData = err;
         _this.error = err;
@@ -400,21 +403,21 @@ When(/^I execute with async paging it$/, function () {
     _this.responseData = undefined;
     _this.data = [];
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log("EXECUTE RESPONSE: " + JSON.stringify(data));
         _this.responseData = data;
         _this.error = undefined;
         //console.log(data);
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         //console.log("EXECUTE ERROR: " + JSON.stringify(err));
         _this.responseData = err;
         _this.error = err;
 
     }
 
-    function catchNotification (notification) {
+    function catchNotification(notification) {
         //console.log("EXECUTE NOTIFICATION: " + JSON.stringify(notification));
         _this.error = undefined;
         _this.responseData = undefined;
@@ -436,21 +439,21 @@ When(/^I execute with async paging it and cancel it$/, function () {
     _this.responseData = undefined;
     _this.data = [];
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log("EXECUTE RESPONSE: " + JSON.stringify(data));
         _this.responseData = data;
         _this.error = undefined;
         //console.log(data);
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         //console.log("EXECUTE ERROR: " + JSON.stringify(err));
         _this.responseData = err;
         _this.error = err;
 
     }
 
-    function catchNotification (notification) {
+    function catchNotification(notification) {
         //console.log("EXECUTE NOTIFICATION: " + JSON.stringify(notification));
         _this.error = undefined;
         _this.responseData = undefined;
@@ -473,21 +476,21 @@ When(/^I execute with async paging it and cancel it with custom message$/, funct
     _this.responseData = undefined;
     _this.data = [];
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log("EXECUTE RESPONSE: " + JSON.stringify(data));
         _this.responseData = data;
         _this.error = undefined;
         //console.log(data);
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         //console.log("EXECUTE ERROR: " + JSON.stringify(err));
         _this.responseData = err;
         _this.error = err;
 
     }
 
-    function catchNotification (notification) {
+    function catchNotification(notification) {
         //console.log("EXECUTE NOTIFICATION: " + JSON.stringify(notification));
         _this.error = undefined;
         _this.responseData = undefined;
@@ -509,13 +512,13 @@ When(/^I update periodicity$/, function () {
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log("EXECUTE RESPONSE: " + JSON.stringify(data));
         _this.responseData = data;
         _this.error = undefined;
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         var cache = [];
         var error = JSON.stringify(err.data.errors, function (key, value) {
             if (typeof value === 'object' && value !== null) {
@@ -544,28 +547,30 @@ When(/^I update periodicity$/, function () {
     }
 });
 
-When(/^I create it$/, {timeout: 60 * 1000}, function () {
+When(/^I create it$/, {
+    timeout: 60 * 1000
+}, function () {
 
     var _this = this;
     _this.error = undefined;
     _this.responseData = undefined;
-    console.log('responseData1',  _this.responseData)
+    console.log('responseData1', _this.responseData)
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         console.log("OK");
         console.log("data: " + JSON.stringify(data));
         _this.responseData = data;
         _this.location = _this.responseData.location;
         _this.error = undefined;
-        console.log('responseData2',  _this.responseData)
+        console.log('responseData2', _this.responseData)
 
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         console.log("NOK");
         console.log("ERROR: " + JSON.stringify(err));
         _this.responseData = err;
-        console.log('responseData3',  _this.responseData)
+        console.log('responseData3', _this.responseData)
         if (err.errors) {
             _this.error = err.errors;
         } else if (err.data.errors) {
@@ -595,7 +600,7 @@ When(/^I "([^"]*)" it with bulk$/, function (action) {
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log("OK");
         //console.log("data: " + JSON.stringify(data));
         _this.responseData = data;
@@ -603,7 +608,7 @@ When(/^I "([^"]*)" it with bulk$/, function (action) {
         _this.error = this.error = undefined;
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         //console.log("NOK");
         //console.log("ERROR: " + JSON.stringify(err));
         _this.responseData = err;
@@ -628,12 +633,14 @@ When(/^I "([^"]*)" it with bulk$/, function (action) {
     }
 });
 
-When(/^I "([^"]*)" it with bulk execution$/, {timeout: 60*1000}, function (action) {
+When(/^I "([^"]*)" it with bulk execution$/, {
+    timeout: 60 * 1000
+}, function (action) {
     var _this = this;
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log("OK");
         //console.log("data: " + JSON.stringify(data));
         //console.log("_this.responseData: ", _this.responseData);
@@ -642,7 +649,7 @@ When(/^I "([^"]*)" it with bulk execution$/, {timeout: 60*1000}, function (actio
         _this.error = this.error = undefined;
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         //console.log(err)
         //console.log("NOK");
         //console.log("ERROR: " + JSON.stringify(err));
@@ -673,14 +680,14 @@ When(/^I "([^"]*)" it with bulk and response with format csv$/, function (action
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log("OK");
         //console.log("data: " + JSON.stringify(data));
         _this.responseData = data;
         _this.error = undefined;
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         //console.log("EXECUTE ERROR: " + JSON.stringify(err));
         _this.responseData = err;
         _this.error = err;
@@ -696,15 +703,13 @@ When(/^I "([^"]*)" it with bulk and response with format csv$/, function (action
         return;
     }
 });
-
-
-When(/^I delete it$/, function () {
+When(/^I delete it with identfier from location$/, function () {
 
     var _this = this;
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log("OK");
         //console.log(JSON.stringify(data));
         _this.responseData = data;
@@ -712,7 +717,53 @@ When(/^I delete it$/, function () {
         //console.log(data);
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
+        //console.log("NOK");
+        //console.log(JSON.stringify(err));
+        _this.responseData = err;
+        _this.error = err;
+
+    }
+    var id;
+    try {
+        if(this.responseData){
+            if (this.responseData.location)
+                id = this.responseData.location.substring(this.responseData.location.lastIndexOf("/") + 1);
+            else if (this.responseData.data)
+                id = this.responseData.data.id;
+            else if (this.responseData[0])
+                id = this.responseData[0].id;
+        }else if(this.location){
+            id = this.location.substring(this.location.lastIndexOf("/") + 1);
+        }
+        
+        _this.util.withIdentifier(id)
+        return _this.util.delete().then(catchResponse).catch(catchErrorResponse);
+
+    } catch (err) {
+        //console.error(err);
+        _this.responseData = err;
+        _this.error = err;
+        //this.expect(this.error).to.be.undefined;
+        return;
+    }
+});
+
+When(/^I delete it$/, function () {
+
+    var _this = this;
+    _this.error = undefined;
+    _this.responseData = undefined;
+
+    function catchResponse(data) {
+        //console.log("OK");
+        //console.log(JSON.stringify(data));
+        _this.responseData = data;
+        _this.error = undefined;
+        //console.log(data);
+    }
+
+    function catchErrorResponse(err) {
         //console.log("NOK");
         //console.log(JSON.stringify(err));
         _this.responseData = err;
@@ -740,7 +791,7 @@ When(/^I delete it all$/, function () {
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log("OK");
         //console.log(JSON.stringify(data));
         _this.responseData = data;
@@ -748,7 +799,7 @@ When(/^I delete it all$/, function () {
         //console.log(data);
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         //console.log("NOK");
         //console.log(JSON.stringify(err));
         _this.responseData = err;
@@ -770,18 +821,56 @@ When(/^I delete it all$/, function () {
     }
 });
 
-When(/^I update it$/, function () {
+When(/^I update it with identfier from location$/, function () {
     var _this = this;
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         _this.responseData = data;
         _this.error = undefined;
         //console.log(JSON.stringify(_this.data));
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
+        _this.responseData = err;
+        _this.error = err;
+
+    }
+    var id
+    try {
+        if(this.responseData){
+            if (this.responseData.location)
+                id = this.responseData.location.substring(this.responseData.location.lastIndexOf("/") + 1);
+            else if (this.responseData.data)
+                id = this.responseData.data.id;
+            else if (this.responseData[0])
+                id = this.responseData[0].id;
+        }else if(this.location){
+            id = this.location.substring(this.location.lastIndexOf("/") + 1);
+        }
+        
+        _this.util.withIdentifier(id)
+        return _this.util.update().then(catchResponse).catch(catchErrorResponse);
+    } catch (err) {
+        this.error = err;
+        //console.log(err);
+        return;
+    }
+});
+
+When(/^I update it$/, function () {
+    var _this = this;
+    _this.error = undefined;
+    _this.responseData = undefined;
+
+    function catchResponse(data) {
+        _this.responseData = data;
+        _this.error = undefined;
+        //console.log(JSON.stringify(_this.data));
+    }
+
+    function catchErrorResponse(err) {
         _this.responseData = err;
         _this.error = err;
 
@@ -801,13 +890,13 @@ When(/^I update password with "([^"]*)"$/, function (field) {
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         _this.responseData = data;
         _this.error = undefined;
         //console.log(JSON.stringify(_this.data));
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         _this.responseData = err;
         _this.error = err;
 
@@ -827,13 +916,13 @@ When(/^I get filter fields$/, function () {
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log("EXECUTE RESPONSE: " + JSON.stringify(data));
         _this.responseData = data;
         _this.error = undefined;
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         //console.log("EXECUTE ERROR: " + JSON.stringify(err));
         _this.responseData = err;
         _this.error = err;
@@ -854,12 +943,12 @@ When(/^I clone it with...$/, function (table) {
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         _this.responseData = data;
         _this.error = undefined;
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         _this.responseData = err;
         _this.error = err;
 
@@ -903,8 +992,8 @@ When(/^I get allowed Datastreams fields$/, function (callback) {
 Given(/^I can found "([^"]*)" as datastream name$/, function (dsName, callback) {
     // Write code here that turns the phrase above into concrete actions
     if (this.responseData.filter(function (item) {
-        return item.identifier === dsName;
-    }).length === 0) {
+            return item.identifier === dsName;
+        }).length === 0) {
         throw new Error('Datastream not found. DSName:' + dsName);
     }
     callback();
@@ -913,8 +1002,8 @@ Given(/^I can found "([^"]*)" as datastream name$/, function (dsName, callback) 
 Given(/^I can not found "([^"]*)" as datastream name$/, function (dsName, callback) {
     // Write code here that turns the phrase above into concrete actions
     if (this.responseData.filter(function (item) {
-        return item.identifier === dsName;
-    }).length === 0) {
+            return item.identifier === dsName;
+        }).length === 0) {
         callback();
     }
     throw new Error('Datastream found. DSName:' + dsName);
@@ -927,12 +1016,12 @@ When(/^I delete all$/, function () {
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         _this.responseData = data;
         _this.error = undefined;
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         _this.responseData = err;
         _this.error = err;
 

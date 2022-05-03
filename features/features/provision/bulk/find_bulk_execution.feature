@@ -2,7 +2,6 @@
 @finder
 @bulk
 @provision_processors
-@wip
 Feature: Find bulk executions
   As a device of JsApi
   I want to find bulk
