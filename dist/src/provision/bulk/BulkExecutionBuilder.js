@@ -111,10 +111,7 @@ var BulkExecutionBuilder = (function (_BaseProvision) {
             var form = undefined;
             if (typeof rawFile !== 'string') {
                 form = new FormData();
-                var processorBulkFile = new Blob([rawFile], {
-                    type: this._extension
-                });
-                form.append('file', processorBulkFile);
+                form.append('file', rawFile);
             } else {
                 form = {};
                 form.processorBulkFile = rawFile;
