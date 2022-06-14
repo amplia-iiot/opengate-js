@@ -394,7 +394,7 @@ export default class StaticSearch extends Search {
                     },
                     'SUBSCRIPTION': {
                         'mandatory': [],
-                        'optional': ['generatedEntityKey', 'administrativeState', 'ADDRESS', 'HOME_OPERATOR', 'LOCATION']
+                        'optional': ['generatedEntityKey', 'administrativeState', 'description', 'ADDRESS', 'HOME_OPERATOR', 'LOCATION']
                     }
                 },
                 'CAN': {
@@ -410,7 +410,7 @@ export default class StaticSearch extends Search {
                     },
                     'SUBSCRIPTION': {
                         'mandatory': ['generatedEntityKey'],
-                        'optional': ['administrativeState', 'ADDRESS']
+                        'optional': ['description', 'administrativeState', 'ADDRESS']
                     }
                 },
                 'GENERIC': {
@@ -420,11 +420,11 @@ export default class StaticSearch extends Search {
                     },
                     'SUBSCRIPTION': {
                         'mandatory': [],
-                        'optional': ['generatedEntityKey', 'administrativeState', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION']
+                        'optional': ['generatedEntityKey', 'description', 'administrativeState', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION']
                     },
                     'SUBSCRIBER': {
                         'mandatory': [],
-                        'optional': ['generatedEntityKey', 'administrativeState', 'ICC', 'SERIAL_NUMBER']
+                        'optional': ['generatedEntityKey', 'description', 'administrativeState', 'ICC', 'SERIAL_NUMBER']
                     }
                 },
                 'GSM': {
@@ -434,11 +434,11 @@ export default class StaticSearch extends Search {
                     },
                     'SUBSCRIPTION': {
                         'mandatory': [],
-                        'optional': ['generatedEntityKey', 'administrativeState', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION']
+                        'optional': ['generatedEntityKey', 'description', 'administrativeState', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION']
                     },
                     'SUBSCRIBER': {
                         'mandatory': [],
-                        'optional': ['generatedEntityKey', 'administrativeState', 'ICC']
+                        'optional': ['generatedEntityKey', 'description', 'administrativeState', 'ICC']
                     }
                 },
                 'HAN': {
@@ -460,7 +460,7 @@ export default class StaticSearch extends Search {
                     },
                     'SUBSCRIPTION': {
                         'mandatory': ['generatedEntityKey'],
-                        'optional': ['administrativeState']
+                        'optional': ['administrativeState','description']
                     }
                 },
                 'LTE_M': {
@@ -470,11 +470,11 @@ export default class StaticSearch extends Search {
                     },
                     'SUBSCRIPTION': {
                         'mandatory': [],
-                        'optional': ['generatedEntityKey', 'administrativeState', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION', 'RADIUS_USERNAME', 'RADIUS_PASSWORD', 'RADIUS_FRAMED_IP_NETMASK', 'MSISDN_VOICE']
+                        'optional': ['generatedEntityKey', 'administrativeState', 'description', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION', 'RADIUS_USERNAME', 'RADIUS_PASSWORD', 'RADIUS_FRAMED_IP_NETMASK', 'MSISDN_VOICE']
                     },
                     'SUBSCRIBER': {
                         'mandatory': [],
-                        'optional': ['generatedEntityKey', 'administrativeState', 'ICC']
+                        'optional': ['generatedEntityKey', 'administrativeState', 'description', 'ICC']
                     }
                 },
                 'MESH': {
@@ -490,11 +490,11 @@ export default class StaticSearch extends Search {
                     },
                     'SUBSCRIPTION': {
                         'mandatory': [],
-                        'optional': ['generatedEntityKey', 'administrativeState', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION', 'RADIUS_USERNAME', 'RADIUS_PASSWORD', 'RADIUS_FRAMED_IP_NETMASK', 'MSISDN_VOICE', 'SUBSCRIPTION_ICC']
+                        'optional': ['generatedEntityKey', 'administrativeState', 'description', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION', 'RADIUS_USERNAME', 'RADIUS_PASSWORD', 'RADIUS_FRAMED_IP_NETMASK', 'MSISDN_VOICE', 'SUBSCRIPTION_ICC']
                     },
                     'SUBSCRIBER': {
                         'mandatory': [],
-                        'optional': ['generatedEntityKey', 'administrativeState', 'ICC']
+                        'optional': ['generatedEntityKey', 'administrativeState', 'description', 'ICC']
                     }
                 },
                 'MULTIMOBILE': {
@@ -504,11 +504,11 @@ export default class StaticSearch extends Search {
                     },
                     'SUBSCRIPTION': {
                         'mandatory': [],
-                        'optional': ['generatedEntityKey', 'administrativeState', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION', 'RADIUS_USERNAME', 'RADIUS_PASSWORD', 'RADIUS_FRAMED_IP_NETMASK', 'MSISDN_VOICE', 'SUBSCRIPTION_ICC']
+                        'optional': ['generatedEntityKey', 'administrativeState', 'description', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'MSISDN', 'LOCATION', 'RADIUS_USERNAME', 'RADIUS_PASSWORD', 'RADIUS_FRAMED_IP_NETMASK', 'MSISDN_VOICE', 'SUBSCRIPTION_ICC']
                     },
                     'SUBSCRIBER': {
                         'mandatory': [],
-                        'optional': ['generatedEntityKey', 'administrativeState', 'ICC']
+                        'optional': ['generatedEntityKey', 'administrativeState', 'description', 'ICC']
                     }
                 },
                 'NARROWBAND': {
@@ -518,11 +518,11 @@ export default class StaticSearch extends Search {
                     },
                     'SUBSCRIPTION': {
                         'mandatory': ['generatedEntityKey'],
-                        'optional': ['administrativeState', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'LOCATION']
+                        'optional': ['administrativeState', 'description', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'LOCATION']
                     },
                     'SUBSCRIBER': {
                         'mandatory': ['generatedEntityKey'],
-                        'optional': ['administrativeState', 'ICC']
+                        'optional': ['administrativeState', 'description', 'ICC']
                     }
                 },
                 'PLC': {
@@ -532,7 +532,7 @@ export default class StaticSearch extends Search {
                     },
                     'SUBSCRIPTION': {
                         'mandatory': ['generatedEntityKey'],
-                        'optional': ['administrativeState']
+                        'optional': ['administrativeState', 'description']
                     }
                 },
                 'RS232': {
@@ -559,7 +559,7 @@ export default class StaticSearch extends Search {
                         'optional': ['PAC']
                     },
                     'SUBSCRIPTION': {
-                        'mandatory': ['generatedEntityKey', 'HOME_OPERATOR', 'administrativeState', 'SIGFOX_DEVICE_TYPE']
+                        'mandatory': ['generatedEntityKey', 'HOME_OPERATOR', 'administrativeState', 'description', 'SIGFOX_DEVICE_TYPE']
                     }
                 },
                 'ZIGBEE': {
@@ -569,7 +569,7 @@ export default class StaticSearch extends Search {
                     },
                     'SUBSCRIPTION': {
                         'mandatory': ['generatedEntityKey'],
-                        'optional': ['administrativeState']
+                        'optional': ['administrativeState', 'description']
                     }
                 }
             },
