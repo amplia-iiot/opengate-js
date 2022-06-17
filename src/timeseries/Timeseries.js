@@ -13,7 +13,7 @@ export default class Timeseries extends BaseProvision {
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, '/organizations/', undefined, ['name', 'organization', "timeBucket", 'columns', 'identifierColumn']);
+        super(ogapi, '/organizations/', undefined, ['name', 'organization', "timeBucket", 'identifierColumn']);
     }
 
     _buildURL() {
@@ -153,9 +153,9 @@ export default class Timeseries extends BaseProvision {
             bucketColumn: this._bucketColumn,
             retention: this._retention,
             origin: this._origin,
-            context: this._context,
+            context: this._context || [],
             identifierColumn: this._identifierColumn,
-            columns: this._columns
+            columns: this._columns || []
         };
         return timeserie;
     }
