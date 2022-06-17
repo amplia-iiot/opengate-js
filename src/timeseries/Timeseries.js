@@ -150,7 +150,7 @@ export default class Timeseries extends BaseProvision {
             name: this._name,
             description: this._description,
             timeBucket: this._timeBucket,
-            bucketColumn: this._bucketColumn,
+            bucketColumn: this._timeBucket?this._bucketColumn: undefined,
             retention: this._retention,
             origin: this._origin,
             context: this._context || [],
