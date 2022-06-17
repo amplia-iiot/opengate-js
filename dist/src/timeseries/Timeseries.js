@@ -38,7 +38,7 @@ var Timeseries = (function (_BaseProvision) {
     function Timeseries(ogapi) {
         _classCallCheck(this, Timeseries);
 
-        _get(Object.getPrototypeOf(Timeseries.prototype), 'constructor', this).call(this, ogapi, '/organizations/', undefined, ['name', 'organization', "timeBucket", 'columns', 'identifierColumn']);
+        _get(Object.getPrototypeOf(Timeseries.prototype), 'constructor', this).call(this, ogapi, '/organizations/', undefined, ['name', 'organization', "timeBucket", 'identifierColumn']);
     }
 
     _createClass(Timeseries, [{
@@ -204,12 +204,12 @@ var Timeseries = (function (_BaseProvision) {
                 name: this._name,
                 description: this._description,
                 timeBucket: this._timeBucket,
-                bucketColumn: this._bucketColumn,
+                bucketColumn: this._timeBucket ? this._bucketColumn : undefined,
                 retention: this._retention,
                 origin: this._origin,
-                context: this._context,
+                context: this._context || [],
                 identifierColumn: this._identifierColumn,
-                columns: this._columns
+                columns: this._columns || []
             };
             return timeserie;
         }
