@@ -1373,8 +1373,8 @@ var InternalOpenGateAPI = (function () {
          */
     }, {
         key: 'deviceMessageBuilder',
-        value: function deviceMessageBuilder() {
-            return new _collectionDevicesDeviceMessage2['default'](this);
+        value: function deviceMessageBuilder(connectorUrl) {
+            return new _collectionDevicesDeviceMessage2['default'](this, connectorUrl);
         }
 
         /**

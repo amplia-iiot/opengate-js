@@ -278,7 +278,7 @@ export default class DeviceMessage extends Event {
     /**     
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
-    constructor(ogapi, resource, timeout) {
+    constructor(ogapi, connectorFunction) {
         super();
         this._ogapi = ogapi;
         this._resource = &apos;devices&apos;;
@@ -289,6 +289,7 @@ export default class DeviceMessage extends Event {
         this._dataStreamVersion = undefined;
         this._deviceId = undefined;
         this._datastreams = [];
+        this._connectorFunction = connectorFunction || null
     }
 
 
@@ -359,7 +360,7 @@ export default class DeviceMessage extends Event {
     _buildIotURL() {
         if (this._id === undefined)
             throw new Error(&apos;Parameters id must be defined&apos;);
-        let url = this._resource + &quot;/&quot; + this._id + &quot;/collect/iot&quot;;
+        let url = this._resource + &quot;/&quot; + this._id + &quot;/collect/iot&quot; + (this._connectorFunction? &apos;/&apos; + _connectorFunction: &apos;&apos;);
         return url;
 
     }

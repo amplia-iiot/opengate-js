@@ -37,7 +37,7 @@ var DeviceMessage = (function (_Event) {
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 
-    function DeviceMessage(ogapi, resource, timeout) {
+    function DeviceMessage(ogapi, connectorFunction) {
         _classCallCheck(this, DeviceMessage);
 
         _get(Object.getPrototypeOf(DeviceMessage.prototype), 'constructor', this).call(this);
@@ -50,6 +50,7 @@ var DeviceMessage = (function (_Event) {
         this._dataStreamVersion = undefined;
         this._deviceId = undefined;
         this._datastreams = [];
+        this._connectorFunction = connectorFunction || null;
     }
 
     /**
@@ -122,7 +123,7 @@ var DeviceMessage = (function (_Event) {
         key: '_buildIotURL',
         value: function _buildIotURL() {
             if (this._id === undefined) throw new Error('Parameters id must be defined');
-            var url = this._resource + "/" + this._id + "/collect/iot";
+            var url = this._resource + "/" + this._id + '/' + (this._connectorFunction || "collect/iot");
             return url;
         }
     }, {
