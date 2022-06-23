@@ -20,6 +20,7 @@ var _utilSearchingFieldsFieldFinder = require('../../util/searchingFields/FieldF
 
 var _utilSearchingFieldsFieldFinder2 = _interopRequireDefault(_utilSearchingFieldsFieldFinder);
 
+var BASE_URL = '/operations/history';
 /**
  * Defined a search over Executions	
  * @example ogapi.executionsHistorySearchBuilder()
@@ -33,12 +34,12 @@ var ExecutionsHistorySearchBuilder = (function (_SearchWithSummaryBuilder) {
    */
 
   function ExecutionsHistorySearchBuilder(parent) {
-    var fieldFinder = arguments.length <= 1 || arguments[1] === undefined ? new _utilSearchingFieldsFieldFinder2['default'](parent, '/operations') : arguments[1];
+    var fieldFinder = arguments.length <= 1 || arguments[1] === undefined ? new _utilSearchingFieldsFieldFinder2['default'](parent, '/operations/history') : arguments[1];
     return (function () {
       _classCallCheck(this, ExecutionsHistorySearchBuilder);
 
       _get(Object.getPrototypeOf(ExecutionsHistorySearchBuilder.prototype), 'constructor', this).call(this, parent, {}, fieldFinder);
-      this._url = '/entities/operations/history';
+      this._url = '/entities' + BASE_URL;
     }).apply(this, arguments);
   }
 

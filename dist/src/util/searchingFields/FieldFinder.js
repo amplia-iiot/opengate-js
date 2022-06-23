@@ -47,6 +47,7 @@ var match_url = {
     '/tasks': 'TASKS',
     '/alarms': 'ENTITY_ALARM',
     '/operations': 'ENTITY_OPERATION',
+    '/operations/history': 'ENTITY_OPERATION_HISTORY',
     '/certificates': 'CERTIFICATE',
     '/bundles': 'UPDATE_BUNDLE_VERSION',
     '/datapoints': 'DATAPOINTS',

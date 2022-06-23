@@ -269,8 +269,7 @@
 
 import SearchWithSummaryBuilder from &apos;./SearchWithSummaryBuilder&apos;;
 import FieldFinder from &apos;../../util/searchingFields/FieldFinder&apos;;
-
-
+const BASE_URL = &apos;/operations/history&apos;;
 /**
  * Defined a search over Executions	
  * @example ogapi.executionsHistorySearchBuilder()
@@ -279,9 +278,9 @@ export default class ExecutionsHistorySearchBuilder extends SearchWithSummaryBui
     /**
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */
-    constructor(parent, fieldFinder = new FieldFinder(parent, &apos;/operations&apos;)) {
+    constructor(parent, fieldFinder = new FieldFinder(parent, &apos;/operations/history&apos;)) {
         super(parent, {}, fieldFinder);
-        this._url = &apos;/entities/operations/history&apos;;
+        this._url = &apos;/entities&apos; + BASE_URL;
     }
     /**
      * The response will only have a summary information 
