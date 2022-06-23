@@ -1,6 +1,29 @@
 // Fields generated at: Fri May 07 2021 12:57:57 GMT+0200 (Central European Summer Time)
 // DB: 172.19.18.242:1521/QA
 export const GENERATED_FIELDS = {
+  "ENTITY_OPERATION_HISTORY": {
+    "ENTITY_OPERATION_HISTORY":[
+      "applicationEmail",
+      "entityId",
+      "entityType",
+      "jobActivatedDate",
+      "jobId",
+      "jobUserNotes",
+      "operationAttemptCurrent",
+      "operationAttemptMax",
+      "operationDate",
+      "operationDetails",
+      "operationEndDate",
+      "operationId",
+      "operationInitDate",
+      "operationName",
+      "operationNotify",
+      "operationParameters",
+      "operationResult",
+      "operationStatus",
+      "operationSteps"
+    ]
+  },
   "ENTITY_OPERATION": {
     "ENTITY_OPERATION": [
       "applicationEmail",
