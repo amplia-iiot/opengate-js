@@ -826,8 +826,8 @@ export default class InternalOpenGateAPI {
      * This return a DevicesSouth to build a specific DevicesSouth
      * @return {DeviceMessage}
      */
-    deviceMessageBuilder() {
-        return new DeviceMessage(this);
+    deviceMessageBuilder(connectorUrl) {
+        return new DeviceMessage(this, connectorUrl);
     }
 
     /**
