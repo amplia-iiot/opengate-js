@@ -65,31 +65,31 @@ export default class BulkExecutionFinder extends GenericFinder {
          return this._execute();
      }
 
-    /**
-     * @return {Promise}* @private
-     */
-    _download() {
-        let defered = q.defer();
-        let promise = defered.promise;
-        let _error_not_found = this._error_not_found;
-        this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), true)
-            .then((req) => {
-                if (req.statusCode === 204) {
-                    defered.reject({
-                        data: _error_not_found,
-                        statusCode: HttpStatus.NOT_FOUND
-                    });
-                } else {
-                    defered.resolve({
-                        data: req,
-                        statusCode: req.statusCode
-                    });
-                }
-            })
-            .catch((error) => {
-                defered.reject(error);
-            });
-        return promise;
-    }
-
+    // SE usa el del BaseProvision
+    // /**
+    //  * @return {Promise}* @private
+    //  */
+    // _download() {
+    //     let defered = q.defer();
+    //     let promise = defered.promise;
+    //     let _error_not_found = this._error_not_found;
+    //     this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), true)
+    //         .then((req) => {
+    //             if (req.statusCode === 204) {
+    //                 defered.reject({
+    //                     data: _error_not_found,
+    //                     statusCode: HttpStatus.NOT_FOUND
+    //                 });
+    //             } else {
+    //                 defered.resolve({
+    //                     data: req,
+    //                     statusCode: req.statusCode
+    //                 });
+    //             }
+    //         })
+    //         .catch((error) => {
+    //             defered.reject(error);
+    //         });
+    //     return promise;
+    // }
 }

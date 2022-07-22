@@ -36,27 +36,27 @@ var Transformers = (function (_BaseProvision) {
     function Transformers(ogapi) {
         _classCallCheck(this, Transformers);
 
-        _get(Object.getPrototypeOf(Transformers.prototype), 'constructor', this).call(this, ogapi, "/organizations", undefined, ["name", "organization", "files"], 'v1');
+        _get(Object.getPrototypeOf(Transformers.prototype), 'constructor', this).call(this, ogapi, "/organizations", undefined, ["organization", "files"], 'v1');
         this._ogapi = ogapi;
     }
 
     _createClass(Transformers, [{
         key: '_buildURL',
         value: function _buildURL() {
-            var url = this._organization + '/transformers/' + this._name;
+            var url = this._organization + '/transformers/' + this._identifier;
             return url;
         }
 
         /**
-         * Set the name attribute
-         * @param {string} name - required field
+         * Set the identifier attribute
+         * @param {string} identifier
          * @return {Transformers}
          */
     }, {
-        key: 'withName',
-        value: function withName(name) {
-            if (typeof name !== 'string' || name.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'name' });
-            this._name = name;
+        key: 'withIdentifier',
+        value: function withIdentifier(identifier) {
+            if (typeof identifier !== 'string' || identifier.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'identifier' });
+            this._identifier = identifier;
             return this;
         }
 
@@ -99,7 +99,6 @@ var Transformers = (function (_BaseProvision) {
 
             var transformer = {
                 "transformer": {
-                    name: this._name || undefined,
                     files: this._files || undefined
                 }
             };

@@ -11,26 +11,26 @@ export default class AIModels extends BaseProvision {
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, "/organizations", undefined, ["name", "organization", "files"], 'v1');
+        super(ogapi, "/organizations", undefined, ["organization", "file"], 'v1');
         this._ogapi = ogapi;
     }
 
     _buildURL() {
-        var url = this._organization + '/models/' + this._name;
+        var url = this._organization + '/models/' + this._identifier;
         return url;
     }
 
     /**
-     * Set the name attribute
-     * @param {string} name - required field
+     * Set the identifier attribute
+     * @param {string} identifier
      * @return {Transformers}
      */
-    withName(name) {
-        if (typeof name !== 'string' || name.length > 50)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'name' });
-        this._name = name;
-        return this;
-    }
+    withIdentifier(identifier) {
+            if (typeof identifier !== 'string' || identifier.length > 50)
+                throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'identifier' });
+            this._identifier = identifier;
+            return this;
+        }
 
     /**
      * Set the organization attribute
@@ -44,34 +44,24 @@ export default class AIModels extends BaseProvision {
         return this;
     }
 
-    addFile(file) {
+    withFile(file) {
         // if (typeof file !== 'object')
         //     throw new Error({ message: "Parameter action requires name and type", parameter: 'action' });
-
-        if(!this._files) {
-            this._files = []
-        }
-
-        this._files.push(file)
+        this._file = file
     }
-
 
     _composeElement() {
         this._checkRequiredParameters();
         this._resource = this._organization + '/models';
 
         var transformer = {
-            "model": {
-                name: this._name || undefined,
-                files:  this._files || undefined,
-            }
+            modelFile:  this._file || undefined
         };
         return transformer;
     }
 
     _composeUpdateElement() {
         let model = super._composeUpdateElement();
-        delete model.model.name;
         return model;
     }
 }

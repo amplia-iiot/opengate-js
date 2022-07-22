@@ -18,6 +18,14 @@ var _GenericFinder2 = require('../GenericFinder');
 
 var _GenericFinder3 = _interopRequireDefault(_GenericFinder2);
 
+var _q = require('q');
+
+var _q2 = _interopRequireDefault(_q);
+
+var _httpStatusCodes = require('http-status-codes');
+
+var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
+
 /**
  *   This class allow make get request to transformer resource into Opengate North API.
  */
@@ -53,17 +61,34 @@ var TransformerFinder = (function (_GenericFinder) {
         /**
          * Download a specific transformer by its organization and id. This execute a GET http method
          * @test
-         *   ogapi.newTransformerFinder().findByOrganizationAndName('orgname', xxx-xx-xxx-xxx').then().catch();
+         *   ogapi.newTransformerFinder().findByOrganizationAndIdentifier('orgname', xxx-xx-xxx-xxx').then().catch();
          * @param {string} organization - transformer organization .
-         * @param {string} name - transformer name.
+         * @param {string} identifier - transformer identifier.
          * @return {Promise} 
          */
     }, {
-        key: 'findByOrganizationAndName',
-        value: function findByOrganizationAndName(organization, name) {
+        key: 'findByOrganizationAndIdentifier',
+        value: function findByOrganizationAndIdentifier(organization, identifier) {
             this._organization = organization;
-            this._name = name;
+            this._identifier = identifier;
             return this._execute();
+        }
+
+        /**
+        * Download a specific transformer by its organization and id. This execute a GET http method
+        * @test
+        *   ogapi.newTransformerFinder().findByOrganizationAndIdentifier('orgname', xxx-xx-xxx-xxx').then().catch();
+        * @param {string} organization - transformer organization .
+        * @param {string} identifier - transformer identifier.
+        * @return {Promise} 
+        */
+    }, {
+        key: 'downloadByOrganizationAndIdentifierAndFilename',
+        value: function downloadByOrganizationAndIdentifierAndFilename(organization, identifier, filename) {
+            this._organization = organization;
+            this._identifier = identifier;
+            this._filename = filename;
+            return this._download();
         }
 
         /**
@@ -73,7 +98,7 @@ var TransformerFinder = (function (_GenericFinder) {
     }, {
         key: '_composeUrl',
         value: function _composeUrl() {
-            return this._baseUrl + "/" + this._organization + "/transformers" + (this._name ? '/' + this._name : '');
+            return this._baseUrl + "/" + this._organization + "/transformers" + (this._identifier ? '/' + this._identifier + (this._filename ? '/' + this._filename : '') : '');
         }
     }]);
 

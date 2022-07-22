@@ -32,27 +32,27 @@ var AIModels = (function (_BaseProvision) {
     function AIModels(ogapi) {
         _classCallCheck(this, AIModels);
 
-        _get(Object.getPrototypeOf(AIModels.prototype), 'constructor', this).call(this, ogapi, "/organizations", undefined, ["name", "organization", "files"], 'v1');
+        _get(Object.getPrototypeOf(AIModels.prototype), 'constructor', this).call(this, ogapi, "/organizations", undefined, ["organization", "file"], 'v1');
         this._ogapi = ogapi;
     }
 
     _createClass(AIModels, [{
         key: '_buildURL',
         value: function _buildURL() {
-            var url = this._organization + '/models/' + this._name;
+            var url = this._organization + '/models/' + this._identifier;
             return url;
         }
 
         /**
-         * Set the name attribute
-         * @param {string} name - required field
+         * Set the identifier attribute
+         * @param {string} identifier
          * @return {Transformers}
          */
     }, {
-        key: 'withName',
-        value: function withName(name) {
-            if (typeof name !== 'string' || name.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'name' });
-            this._name = name;
+        key: 'withIdentifier',
+        value: function withIdentifier(identifier) {
+            if (typeof identifier !== 'string' || identifier.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'identifier' });
+            this._identifier = identifier;
             return this;
         }
 
@@ -69,16 +69,11 @@ var AIModels = (function (_BaseProvision) {
             return this;
         }
     }, {
-        key: 'addFile',
-        value: function addFile(file) {
+        key: 'withFile',
+        value: function withFile(file) {
             // if (typeof file !== 'object')
             //     throw new Error({ message: "Parameter action requires name and type", parameter: 'action' });
-
-            if (!this._files) {
-                this._files = [];
-            }
-
-            this._files.push(file);
+            this._file = file;
         }
     }, {
         key: '_composeElement',
@@ -87,10 +82,7 @@ var AIModels = (function (_BaseProvision) {
             this._resource = this._organization + '/models';
 
             var transformer = {
-                "model": {
-                    name: this._name || undefined,
-                    files: this._files || undefined
-                }
+                modelFile: this._file || undefined
             };
             return transformer;
         }
@@ -98,7 +90,6 @@ var AIModels = (function (_BaseProvision) {
         key: '_composeUpdateElement',
         value: function _composeUpdateElement() {
             var model = _get(Object.getPrototypeOf(AIModels.prototype), '_composeUpdateElement', this).call(this);
-            delete model.model.name;
             return model;
         }
     }]);
