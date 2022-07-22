@@ -27,17 +27,32 @@ export default class AIModelsFinder extends GenericFinder {
     }
 
     /**
-     * Download a specific aiModel by its organization and id. This execute a GET http method
+     * Gets a specific ai model by its organization and id. This execute a GET http method
      * @test
-     *   ogapi.newAIModelFinder().findByOrganizationAndName('orgname', xxx-xx-xxx-xxx').then().catch();
-     * @param {string} organization - aiModel organization .
-     * @param {string} name - aiModel name.
+     *   ogapi.newTransformerFinder().findByOrganizationAndIdentifier('orgname', xxx-xx-xxx-xxx').then().catch();
+     * @param {string} organization - transformer organization .
+     * @param {string} identifier - transformer identifier.
      * @return {Promise} 
      */
-    findByOrganizationAndName(organization, name) {
+     findByOrganizationAndIdentifier(organization, identifier) {
         this._organization = organization;
-        this._name = name;
+        this._identifier = identifier;
         return this._execute();
+    }
+
+     /**
+     * Download a specific ai model by its organization and id. This execute a GET http method
+     * @test
+     *   ogapi.newTransformerFinder().findByOrganizationAndIdentifier('orgname', xxx-xx-xxx-xxx').then().catch();
+     * @param {string} organization - transformer organization .
+     * @param {string} identifier - transformer identifier.
+     * @return {Promise} 
+     */
+      downloadByOrganizationAndIdentifierAndFilename(organization, identifier, filename) {
+        this._organization = organization;
+        this._identifier = identifier;
+        this._filename = filename
+        return thi._download();
     }
 
     /**
@@ -45,6 +60,6 @@ export default class AIModelsFinder extends GenericFinder {
      * @private
      */
     _composeUrl() {
-        return this._baseUrl + "/" + this._organization + "/models" + (this._name?'/'+ this._name:'');
+        return this._baseUrl + "/" + this._organization + "/models" +(this._identifier?'/'+ this._identifier + (this._filename?'/'+ this._filename:''):'');
     }
 }
