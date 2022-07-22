@@ -55,7 +55,7 @@ export default class TransformerFinder extends GenericFinder {
         this._organization = organization;
         this._identifier = identifier;
         this._filename = filename
-        return this._download();
+        return thi._download();
     }
 
     /**
