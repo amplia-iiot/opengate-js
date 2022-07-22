@@ -14,7 +14,7 @@ export default class GenericFinder {
      * @param {string} reponseJsonData - Relative url where is located the resource. Can be null
      * @param {string} error_not_found - String error which will be thrown on not_found error.
      */
-    constructor(ogapi, source, entity, error_not_found) {
+    constructor(ogapi, source, entity, error_not_found, serviceBaseURL) {
         this._api = ogapi.Napi;
         this._baseUrl = source;
         this._entity = entity;
@@ -22,6 +22,7 @@ export default class GenericFinder {
         this._id = undefined;
         this._headers = undefined;
         this._urlParameters = undefined;
+        this._serviceBaseURL = serviceBaseURL;
     }
 
     /**
@@ -78,7 +79,7 @@ export default class GenericFinder {
         let promise = defered.promise;
         let _entity = this._entity;
         let _error_not_found = this._error_not_found;
-        this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters())
+        this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), false, this._getServiceBaseURL())
             .then((req) => {
                 if (req.statusCode === 204) {
                     defered.reject({
@@ -103,6 +104,10 @@ export default class GenericFinder {
                 defered.reject(error);
             });
         return promise;
+    }
+
+    _getServiceBaseURL() {
+        return this._serviceBaseURL;
     }
 
 }

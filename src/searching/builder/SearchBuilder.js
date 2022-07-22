@@ -222,7 +222,7 @@ export default class SearchBuilder {
             this._urlParams);
         }
         catch(error){
-            console.log('!errrrror!!!!!!', error)
+            console.error('!errrrror!!!!!!', error)
         }
     }
 
