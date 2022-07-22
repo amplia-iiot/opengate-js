@@ -12,24 +12,24 @@ export default class Transformers extends BaseProvision {
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, "/organizations", undefined, ["name", "organization", "files"], 'v1');
+        super(ogapi, "/organizations", undefined, ["organization", "files"], 'v1');
         this._ogapi = ogapi;
     }
 
     _buildURL() {
-        var url = this._organization + '/transformers/' + this._name;
+        var url = this._organization + '/transformers/' + this._identifier;
         return url;
     }
 
     /**
-     * Set the name attribute
-     * @param {string} name - required field
+     * Set the identifier attribute
+     * @param {string} identifier
      * @return {Transformers}
      */
-    withName(name) {
-        if (typeof name !== 'string' || name.length > 50)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'name' });
-        this._name = name;
+    withIdentifier(identifier) {
+        if (typeof identifier !== 'string' || identifier.length > 50)
+            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'identifier' });
+        this._identifier = identifier;
         return this;
     }
 
@@ -69,7 +69,6 @@ export default class Transformers extends BaseProvision {
 
         var transformer = {
             "transformer": {
-                name: this._name || undefined,
                 files:  this._files || undefined,
             }
         };

@@ -1,6 +1,9 @@
 'use strict';
 
 import GenericFinder from '../GenericFinder';
+import q from 'q';
+
+import HttpStatus from 'http-status-codes';
 
 /**
  *   This class allow make get request to transformer resource into Opengate North API.
@@ -29,15 +32,30 @@ export default class TransformerFinder extends GenericFinder {
     /**
      * Download a specific transformer by its organization and id. This execute a GET http method
      * @test
-     *   ogapi.newTransformerFinder().findByOrganizationAndName('orgname', xxx-xx-xxx-xxx').then().catch();
+     *   ogapi.newTransformerFinder().findByOrganizationAndIdentifier('orgname', xxx-xx-xxx-xxx').then().catch();
      * @param {string} organization - transformer organization .
-     * @param {string} name - transformer name.
+     * @param {string} identifier - transformer identifier.
      * @return {Promise} 
      */
-    findByOrganizationAndName(organization, name) {
+    findByOrganizationAndIdentifier(organization, identifier) {
         this._organization = organization;
-        this._name = name;
+        this._identifier = identifier;
         return this._execute();
+    }
+
+     /**
+     * Download a specific transformer by its organization and id. This execute a GET http method
+     * @test
+     *   ogapi.newTransformerFinder().findByOrganizationAndIdentifier('orgname', xxx-xx-xxx-xxx').then().catch();
+     * @param {string} organization - transformer organization .
+     * @param {string} identifier - transformer identifier.
+     * @return {Promise} 
+     */
+    downloadByOrganizationAndIdentifierAndFilename(organization, identifier, filename) {
+        this._organization = organization;
+        this._identifier = identifier;
+        this._filename = filename
+        return this._download();
     }
 
     /**
@@ -45,6 +63,6 @@ export default class TransformerFinder extends GenericFinder {
      * @private
      */
     _composeUrl() {
-        return this._baseUrl + "/" + this._organization + "/transformers" + (this._name?'/'+ this._name:'');
+        return this._baseUrl + "/" + this._organization + "/transformers" + (this._identifier?'/'+ this._identifier + (this._filename?'/'+ this._filename:''):'');
     }
 }

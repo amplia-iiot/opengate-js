@@ -106,6 +106,33 @@ export default class GenericFinder {
         return promise;
     }
 
+    /**
+     * @return {Promise}* @private
+     */
+     _download() {
+        let defered = q.defer();
+        let promise = defered.promise;
+        let _error_not_found = this._error_not_found;
+        this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), true, this._getServiceBaseURL())
+            .then((req) => {
+                if (req.statusCode === 204) {
+                    defered.reject({
+                        data: _error_not_found,
+                        statusCode: HttpStatus.NOT_FOUND
+                    });
+                } else {
+                    defered.resolve({
+                        data: req,
+                        statusCode: req.statusCode
+                    });
+                }
+            })
+            .catch((error) => {
+                defered.reject(error);
+            });
+        return promise;
+    }
+
     _getServiceBaseURL() {
         return this._serviceBaseURL;
     }
