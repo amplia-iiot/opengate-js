@@ -26,8 +26,8 @@ var BaseProvision = (function () {
      * @param {!number} [timeout] - timeout on request
      */
 
-    function BaseProvision(ogapi, resource, timeout) {
-        var requiredParameters = arguments.length <= 3 || arguments[3] === undefined ? [] : arguments[3];
+    function BaseProvision(ogapi, resource, timeout, requiredParameters, serviceBaseURL) {
+        if (requiredParameters === undefined) requiredParameters = [];
 
         _classCallCheck(this, BaseProvision);
 
@@ -53,6 +53,7 @@ var BaseProvision = (function () {
         this._requiredParameters = requiredParameters;
         this._headers = undefined;
         this._urlParameters = undefined;
+        this._serviceBaseURL = serviceBaseURL;
     }
 
     _createClass(BaseProvision, [{
@@ -94,7 +95,7 @@ var BaseProvision = (function () {
             //En muchas clases se genera this._resource en la llamada a la funcion this._composeElement()
 
             var _postElement = this._composeElement();
-            this._ogapi.Napi.post(this._resource, _postElement, this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (res) {
+            this._ogapi.Napi.post(this._resource, _postElement, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL()).then(function (res) {
                 if (res.statusCode === 201) {
                     if (typeof _this._onCreated === "function") {
                         _this._onCreated(res.header.location);
@@ -131,7 +132,7 @@ var BaseProvision = (function () {
         value: function _delete() {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            this._ogapi.Napi['delete'](this._buildURL(), this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (res) {
+            this._ogapi.Napi['delete'](this._buildURL(), this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL()).then(function (res) {
                 if (res.statusCode === 200) {
                     defered.resolve({
                         statusCode: res.statusCode
@@ -163,7 +164,7 @@ var BaseProvision = (function () {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
 
-            this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement(), this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (res) {
+            this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement(), this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL()).then(function (res) {
                 if (res.statusCode === 200) {
                     defered.resolve({
                         statusCode: res.statusCode
@@ -194,7 +195,7 @@ var BaseProvision = (function () {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
 
-            this._ogapi.Napi.put(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (res) {
+            this._ogapi.Napi.put(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL()).then(function (res) {
                 if (res.statusCode === 200) {
                     defered.resolve({
                         statusCode: res.statusCode
@@ -221,7 +222,7 @@ var BaseProvision = (function () {
 
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            this._ogapi.Napi.post(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (res) {
+            this._ogapi.Napi.post(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL()).then(function (res) {
                 if (res.statusCode === 201) {
                     if (typeof _this2._onCreated === "function") {
                         _this2._onCreated(res.header.location);
@@ -296,6 +297,11 @@ var BaseProvision = (function () {
                 console.warn("Parameter value not allowed <'" + JSON.stringify(not_found) + "'>, allowed <'" + JSON.stringify(enumName) + "'>");
             }
             return value;
+        }
+    }, {
+        key: '_getServiceBaseURL',
+        value: function _getServiceBaseURL() {
+            return this._serviceBaseURL;
         }
     }]);
 

@@ -25,6 +25,7 @@ var SouthAmpliaREST = (function (_NorthAmpliaREST) {
         _classCallCheck(this, SouthAmpliaREST);
 
         _get(Object.getPrototypeOf(SouthAmpliaREST.prototype), 'constructor', this).call(this, _options, headers);
+        this._isSouth = true;
     }
 
     _createClass(SouthAmpliaREST, [{

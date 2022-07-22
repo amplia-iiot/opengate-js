@@ -31,7 +31,7 @@ var GenericFinder = (function () {
      * @param {string} error_not_found - String error which will be thrown on not_found error.
      */
 
-    function GenericFinder(ogapi, source, entity, error_not_found) {
+    function GenericFinder(ogapi, source, entity, error_not_found, serviceBaseURL) {
         _classCallCheck(this, GenericFinder);
 
         this._api = ogapi.Napi;
@@ -41,6 +41,7 @@ var GenericFinder = (function () {
         this._id = undefined;
         this._headers = undefined;
         this._urlParameters = undefined;
+        this._serviceBaseURL = serviceBaseURL;
     }
 
     /**
@@ -107,7 +108,7 @@ var GenericFinder = (function () {
             var promise = defered.promise;
             var _entity = this._entity;
             var _error_not_found = this._error_not_found;
-            this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters()).then(function (req) {
+            this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), false, this._getServiceBaseURL()).then(function (req) {
                 if (req.statusCode === 204) {
                     defered.reject({
                         error: _error_not_found,
@@ -130,6 +131,11 @@ var GenericFinder = (function () {
                 defered.reject(error);
             });
             return promise;
+        }
+    }, {
+        key: '_getServiceBaseURL',
+        value: function _getServiceBaseURL() {
+            return this._serviceBaseURL;
         }
     }]);
 

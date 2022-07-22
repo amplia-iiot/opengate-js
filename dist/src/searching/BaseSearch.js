@@ -32,7 +32,7 @@ var BaseSearch = (function () {
      * @param {!number} [timeout] - timeout on request
      */
 
-    function BaseSearch(ogapi, resource, timeout) {
+    function BaseSearch(ogapi, resource, timeout, serviceBaseURL) {
         _classCallCheck(this, BaseSearch);
 
         if (this.constructor === BaseSearch) {
@@ -50,6 +50,7 @@ var BaseSearch = (function () {
         this._resource = resource;
         this._headers = undefined;
         this._urlParameters = undefined;
+        this._serviceBaseURL = serviceBaseURL;
     }
 
     _createClass(BaseSearch, [{
@@ -100,7 +101,7 @@ var BaseSearch = (function () {
         value: function execute() {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            this._ogapi.Napi.post(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (response) {
+            this._ogapi.Napi.post(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL()).then(function (response) {
                 var resultQuery = response.body;
                 var statusCode = response.statusCode;
                 defered.resolve({
@@ -162,7 +163,7 @@ var BaseSearch = (function () {
                 'Accept': 'text/plain'
             });
 
-            this._ogapi.Napi.post(this._resource, filter, this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (response) {
+            this._ogapi.Napi.post(this._resource, filter, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL()).then(function (response) {
                 var resultQuery = response;
                 var statusCode = response.statusCode;
                 defered.resolve({
@@ -216,7 +217,7 @@ var BaseSearch = (function () {
                         statusCode: 403
                     });
                 } else {
-                    _this._ogapi.Napi.post(_this._resource, filter, _this._timeout, _this._getExtraHeaders(), _this._getUrlParameters()).then(function (response) {
+                    _this._ogapi.Napi.post(_this._resource, filter, _this._timeout, _this._getExtraHeaders(), _this._getUrlParameters(), _this._getServiceBaseURL()).then(function (response) {
                         var statusCode = response.statusCode;
                         var body = response.body;
                         if (!body && response.text) {
@@ -289,6 +290,11 @@ var BaseSearch = (function () {
             });
 
             return promise;
+        }
+    }, {
+        key: '_getServiceBaseURL',
+        value: function _getServiceBaseURL() {
+            return this._serviceBaseURL;
         }
     }]);
 

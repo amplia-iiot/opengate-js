@@ -125,6 +125,11 @@ import _superagent from 'superagent';
 import ConnectorFunctionsHelper from './connectorsFunctionsConfiguration/ConnectorFunctionsHelper';
 import ConnectorFunctionsFinder from './connectorsFunctionsConfiguration/ConnectorFunctionsFinder';
 import ConnectorFunctions from './connectorsFunctionsConfiguration/ConnectorFunctions';
+import PipelineFinder from './pipelines/PipelineFinder';
+import TransformerFinder from './transformers/TransformerFinder';
+import AIModelsFinder from './AIModels/AIModelsFinder';
+import Transformers from './transformers/Transformers';
+import AIModels from './AIModels/AIModels';
 
 const RequestEndMonkeyPatching = (function(){
     let beforeStart
@@ -1126,4 +1131,45 @@ export default class InternalOpenGateAPI {
      newProvisionProcessorsFinder() {
          return new ProvisionProcessorsFinder(this);
     }
+
+    /**
+     * This return a util to find a pipeline
+     * @return {PipelineFinder}
+     */
+     newPipelineFinder() {
+        return new PipelineFinder(this);
+    }
+
+    /**
+     * This return a util to find a transformer
+     * @return {TransformerFinder}
+     */
+    newTransformerFinder() {
+        return new TransformerFinder(this);
+    }
+
+    /**
+     * This return a util to find an ai model
+     * @return {AIModelFinder}
+     */
+    newAIModelFinder() {
+        return new AIModelsFinder(this);
+    }
+
+    /**
+     * This return a TransformersBuilder to build a specific transformersBuilder
+     * @return {Transformers}
+     */
+    transformersBuilder() {
+        return new Transformers(this);
+    }
+    
+    /**
+     * This return a AIModelsBuilder to build a specific aiModelsBuilder
+     * @return {AIModels}
+     */
+    aiModelsBuilder() {
+        return new AIModels(this);
+    }
+    
 }
