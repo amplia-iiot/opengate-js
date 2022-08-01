@@ -42,7 +42,7 @@ class BoxBuilder {
 
 
         this._subscriberKeys.forEach((key) => {
-            _this._obj[key].forEach((value) => {
+            Array.isArray(_this._obj[key]) && _this._obj[key].forEach((value) => {
                 if (!subscribers[value._index.value]) {
                     subscribers[value._index.value] = {};
                 }
@@ -53,7 +53,7 @@ class BoxBuilder {
         });
 
         this._subscriptionKeys.forEach((key) => {
-            _this._obj[key].forEach((value) => {
+            Array.isArray(_this._obj[key]) && _this._obj[key].forEach((value) => {
                 if (!subscriptions[value._index.value]) {
                     subscriptions[value._index.value] = {};
                 }
