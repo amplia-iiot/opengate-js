@@ -106,14 +106,18 @@ export default class GenericFinder {
         return promise;
     }
 
+    _downloadUrl() {
+        return this._composeUrl();
+    }
+
     /**
      * @return {Promise}* @private
      */
-     _download() {
+     _download(noBlob) {
         let defered = q.defer();
         let promise = defered.promise;
         let _error_not_found = this._error_not_found;
-        this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), true, this._getServiceBaseURL())
+        this._api.get(this._downloadUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), (noBlob?false:true), this._getServiceBaseURL())
             .then((req) => {
                 if (req.statusCode === 204) {
                     defered.reject({

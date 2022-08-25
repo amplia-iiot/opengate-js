@@ -12,7 +12,7 @@ export default class Transformers extends BaseProvision {
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, "/organizations", undefined, ["organization", "files"], 'v1');
+        super(ogapi, "/organizations", undefined, ["organization", "files"], 'v1/ai');
         this._ogapi = ogapi;
     }
 
@@ -57,7 +57,7 @@ export default class Transformers extends BaseProvision {
     }
 
     withFiles(files) {
-        if (typeof files !== 'array')
+        if (!(files instanceof Array))
              throw new Error({ message: "Parameter files requires an array", parameter: 'files' });
 
         this._files = files
@@ -68,16 +68,68 @@ export default class Transformers extends BaseProvision {
         this._resource = this._organization + '/transformers';
 
         var transformer = {
-            "transformer": {
-                files:  this._files || undefined,
-            }
+            files:  this._files || undefined,
         };
         return transformer;
     }
 
     _composeUpdateElement() {
         let transformer = super._composeUpdateElement();
-        delete transformer.transformer.name;
+        delete transformer.name;
         return transformer;
     }
+
+    create() {
+        let _postElement = this._composeElement();
+        
+        let form = new FormData();
+        _postElement.files.forEach(function (fileTmp) {
+            form.append('files', fileTmp);
+        });
+        
+        // form.append('files', _postElement.files);
+        
+        const defer = q.defer();
+        
+        //var petitionUrl = this._buildURL();
+        //url, formData, events, timeout, headers, parameters
+        this._ogapi.Napi.post_multipart(this._resource, form, {}, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
+            .then((response) => {
+                let statusCode = response.statusCode;
+                switch (statusCode) {
+                    case 200:{
+                        const resultQuery = response.text != "" ? JSON.parse(response.text) : {};
+                        const _statusCode = response.status;
+                        defer.resolve({
+                            data: resultQuery,
+                            statusCode: _statusCode
+                        });
+                        break
+                    }
+                    case 201:{
+                        const _statusCode = response.status;
+                        const location = response.location || response.headers || response.headers.location || response.header.location
+                        defer.resolve({
+                            location: location,
+                            statusCode: _statusCode
+                        });
+                        break
+                    }
+                    case 204:
+                        defer.resolve(response);
+                        break
+                    default:
+                        defer.reject({
+                            errors: response.data.errors,
+                            statusCode: response.statusCode
+                        });
+                        break
+                }
+            })
+            .catch((error) => {
+                defer.reject(error);
+            });
+        return defer.promise;
+    }
+
 }

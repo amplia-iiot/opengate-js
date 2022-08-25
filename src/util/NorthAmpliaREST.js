@@ -208,6 +208,7 @@ export default class NorthAmpliaREST {
      * @param {object} headers - headers of request
      * @param {object} parameters - parameters of request
      * @param {object} body - body of request
+     * @param {string} serviceBaseURL - base of the uri petition
      * @return {Promise} 
      */
     delete(url, timeout, headers, parameters, body, serviceBaseURL) {

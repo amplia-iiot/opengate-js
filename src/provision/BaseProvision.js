@@ -106,10 +106,10 @@ export default class BaseProvision {
      * ogapi.usersBuilder().withEmail('delete@user.com').delete();
      * ogapi.certificatesBuilder().withId('d3l3t3-c3rt1f1c4t3').delete();
      */
-    delete() {
+    delete(body) {
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Napi.delete(this._buildURL(), this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
+        this._ogapi.Napi.delete(this._buildURL(), this._timeout, this._getExtraHeaders(), this._getUrlParameters(), body, this._getServiceBaseURL())
             .then((res) => {
                 if (res.statusCode === 200) {
                     defered.resolve({
