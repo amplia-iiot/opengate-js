@@ -36,7 +36,7 @@ var Transformers = (function (_BaseProvision) {
     function Transformers(ogapi) {
         _classCallCheck(this, Transformers);
 
-        _get(Object.getPrototypeOf(Transformers.prototype), 'constructor', this).call(this, ogapi, "/organizations", undefined, ["organization", "files"], 'v1');
+        _get(Object.getPrototypeOf(Transformers.prototype), 'constructor', this).call(this, ogapi, "/organizations", undefined, ["organization", "files"], 'v1/ai');
         this._ogapi = ogapi;
     }
 
@@ -87,7 +87,7 @@ var Transformers = (function (_BaseProvision) {
     }, {
         key: 'withFiles',
         value: function withFiles(files) {
-            if (typeof files !== 'array') throw new Error({ message: "Parameter files requires an array", parameter: 'files' });
+            if (!(files instanceof Array)) throw new Error({ message: "Parameter files requires an array", parameter: 'files' });
 
             this._files = files;
         }
@@ -98,9 +98,7 @@ var Transformers = (function (_BaseProvision) {
             this._resource = this._organization + '/transformers';
 
             var transformer = {
-                "transformer": {
-                    files: this._files || undefined
-                }
+                files: this._files || undefined
             };
             return transformer;
         }
@@ -108,8 +106,62 @@ var Transformers = (function (_BaseProvision) {
         key: '_composeUpdateElement',
         value: function _composeUpdateElement() {
             var transformer = _get(Object.getPrototypeOf(Transformers.prototype), '_composeUpdateElement', this).call(this);
-            delete transformer.transformer.name;
+            delete transformer.name;
             return transformer;
+        }
+    }, {
+        key: 'create',
+        value: function create() {
+            var _postElement = this._composeElement();
+
+            var form = new FormData();
+            _postElement.files.forEach(function (fileTmp) {
+                form.append('files', fileTmp);
+            });
+
+            // form.append('files', _postElement.files);
+
+            var defer = _q2['default'].defer();
+
+            //var petitionUrl = this._buildURL();
+            //url, formData, events, timeout, headers, parameters
+            this._ogapi.Napi.post_multipart(this._resource, form, {}, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL()).then(function (response) {
+                var statusCode = response.statusCode;
+                switch (statusCode) {
+                    case 200:
+                        {
+                            var resultQuery = response.text != "" ? JSON.parse(response.text) : {};
+                            var _statusCode = response.status;
+                            defer.resolve({
+                                data: resultQuery,
+                                statusCode: _statusCode
+                            });
+                            break;
+                        }
+                    case 201:
+                        {
+                            var _statusCode = response.status;
+                            var _location = response.location || response.headers || response.headers.location || response.header.location;
+                            defer.resolve({
+                                location: _location,
+                                statusCode: _statusCode
+                            });
+                            break;
+                        }
+                    case 204:
+                        defer.resolve(response);
+                        break;
+                    default:
+                        defer.reject({
+                            errors: response.data.errors,
+                            statusCode: response.statusCode
+                        });
+                        break;
+                }
+            })['catch'](function (error) {
+                defer.reject(error);
+            });
+            return defer.promise;
         }
     }]);
 

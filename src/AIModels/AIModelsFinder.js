@@ -52,7 +52,7 @@ export default class AIModelsFinder extends GenericFinder {
         this._organization = organization;
         this._identifier = identifier;
         this._filename = filename
-        return thi._download();
+        return this._download();
     }
 
     /**

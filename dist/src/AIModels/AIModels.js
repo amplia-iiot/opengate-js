@@ -14,6 +14,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var _q = require('q');
+
+var _q2 = _interopRequireDefault(_q);
+
 var _provisionBaseProvision = require('../provision/BaseProvision');
 
 var _provisionBaseProvision2 = _interopRequireDefault(_provisionBaseProvision);
@@ -32,7 +36,7 @@ var AIModels = (function (_BaseProvision) {
     function AIModels(ogapi) {
         _classCallCheck(this, AIModels);
 
-        _get(Object.getPrototypeOf(AIModels.prototype), 'constructor', this).call(this, ogapi, "/organizations", undefined, ["organization", "file"], 'v1');
+        _get(Object.getPrototypeOf(AIModels.prototype), 'constructor', this).call(this, ogapi, "/ai", undefined, ["organization", "file"], 'v1/ai');
         this._ogapi = ogapi;
     }
 
@@ -91,6 +95,56 @@ var AIModels = (function (_BaseProvision) {
         value: function _composeUpdateElement() {
             var model = _get(Object.getPrototypeOf(AIModels.prototype), '_composeUpdateElement', this).call(this);
             return model;
+        }
+    }, {
+        key: 'create',
+        value: function create() {
+            var _postElement = this._composeElement();
+
+            var form = new FormData();
+            form.append('modelFile', _postElement.modelFile);
+
+            var defer = _q2['default'].defer();
+
+            //var petitionUrl = this._buildURL();
+            //url, formData, events, timeout, headers, parameters
+            this._ogapi.Napi.post_multipart(this._resource, form, {}, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL()).then(function (response) {
+                var statusCode = response.statusCode;
+                switch (statusCode) {
+                    case 200:
+                        {
+                            var resultQuery = response.text != "" ? JSON.parse(response.text) : {};
+                            var _statusCode = response.status;
+                            defer.resolve({
+                                data: resultQuery,
+                                statusCode: _statusCode
+                            });
+                            break;
+                        }
+                    case 201:
+                        {
+                            var _statusCode = response.status;
+                            var _location = response.location || response.headers || response.headers.location || response.header.location;
+                            defer.resolve({
+                                location: _location,
+                                statusCode: _statusCode
+                            });
+                            break;
+                        }
+                    case 204:
+                        defer.resolve(response);
+                        break;
+                    default:
+                        defer.reject({
+                            errors: response.data.errors,
+                            statusCode: response.statusCode
+                        });
+                        break;
+                }
+            })['catch'](function (error) {
+                defer.reject(error);
+            });
+            return defer.promise;
         }
     }]);
 

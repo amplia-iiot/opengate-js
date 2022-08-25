@@ -254,6 +254,7 @@ var NorthAmpliaREST = (function () {
          * @param {object} headers - headers of request
          * @param {object} parameters - parameters of request
          * @param {object} body - body of request
+         * @param {string} serviceBaseURL - base of the uri petition
          * @return {Promise} 
          */
     }, {

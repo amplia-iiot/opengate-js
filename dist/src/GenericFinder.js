@@ -132,17 +132,22 @@ var GenericFinder = (function () {
             });
             return promise;
         }
+    }, {
+        key: '_downloadUrl',
+        value: function _downloadUrl() {
+            return this._composeUrl();
+        }
 
         /**
          * @return {Promise}* @private
          */
     }, {
         key: '_download',
-        value: function _download() {
+        value: function _download(noBlob) {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
             var _error_not_found = this._error_not_found;
-            this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), true, this._getServiceBaseURL()).then(function (req) {
+            this._api.get(this._downloadUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), noBlob ? false : true, this._getServiceBaseURL()).then(function (req) {
                 if (req.statusCode === 204) {
                     defered.reject({
                         data: _error_not_found,

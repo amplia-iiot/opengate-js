@@ -129,10 +129,10 @@ var BaseProvision = (function () {
          */
     }, {
         key: 'delete',
-        value: function _delete() {
+        value: function _delete(body) {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            this._ogapi.Napi['delete'](this._buildURL(), this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL()).then(function (res) {
+            this._ogapi.Napi['delete'](this._buildURL(), this._timeout, this._getExtraHeaders(), this._getUrlParameters(), body, this._getServiceBaseURL()).then(function (res) {
                 if (res.statusCode === 200) {
                     defered.resolve({
                         statusCode: res.statusCode
