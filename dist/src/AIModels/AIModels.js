@@ -97,6 +97,24 @@ var AIModels = (function (_BaseProvision) {
             return model;
         }
     }, {
+        key: 'prediction',
+        value: function prediction(body_data) {
+            var defered = _q2['default'].defer();
+            var promise = defered.promise;
+
+            //En muchas clases se genera this._resource en la llamada a la funcion this._composeElement()
+
+            this._ogapi.Napi.post(this._buildURL() + '/prediction', body_data, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL()).then(function (res) {
+                defered.resolve({
+                    statusCode: res.statusCode,
+                    body: res.body
+                });
+            })['catch'](function (error) {
+                defered.reject(error);
+            });
+            return promise;
+        }
+    }, {
         key: 'create',
         value: function create() {
             var _postElement = this._composeElement();

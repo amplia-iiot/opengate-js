@@ -36,15 +36,28 @@ var Pipelines = (function (_BaseProvision) {
     function Pipelines(ogapi) {
         _classCallCheck(this, Pipelines);
 
-        _get(Object.getPrototypeOf(Pipelines.prototype), 'constructor', this).call(this, ogapi, "/organizations", undefined, ["name", "organization"]);
+        _get(Object.getPrototypeOf(Pipelines.prototype), 'constructor', this).call(this, ogapi, "/organizations", undefined, ["name", "actions", "organization"], 'v1/ai');
         this._ogapi = ogapi;
     }
 
     _createClass(Pipelines, [{
         key: '_buildURL',
         value: function _buildURL() {
-            var url = 'provision/organizations/' + this._organization + '/pipelines/' + this._name;
+            var url = this._organization + '/pipelines/' + this._identifier;
             return url;
+        }
+
+        /**
+         * Set the identifier attribute
+         * @param {string} identifier
+         * @return {Transformers}
+         */
+    }, {
+        key: 'withIdentifier',
+        value: function withIdentifier(identifier) {
+            if (typeof identifier !== 'string' || identifier.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'identifier' });
+            this._identifier = identifier;
+            return this;
         }
 
         /**
@@ -72,10 +85,33 @@ var Pipelines = (function (_BaseProvision) {
             this._organization = organization;
             return this;
         }
+
+        /**
+         * Sets the actions for the pipeline
+         * @param {Array} actions
+         */
+    }, {
+        key: 'withActions',
+        value: function withActions(actions) {
+            var _this = this;
+
+            if (!(actions instanceof Array)) throw new Error({ message: "Parameter actions requires an array", parameter: 'actions' });
+
+            this._actions = [];
+
+            actions.forEach(function (actionTmp) {
+                _this.addAction(actionTmp);
+            });
+        }
+
+        /**
+         * Adds an action item
+         * @param {Object} action to be added
+         */
     }, {
         key: 'addAction',
         value: function addAction(action) {
-            if (typeof action !== 'object' || !action.name || typeof action.name !== 'string' || !action.type || typeof action.type !== 'string') throw new Error({ message: "Parameter action requires name and type", parameter: 'action' });
+            if (typeof action !== 'object' || !action.name || typeof action.name !== 'string' || !action.type || typeof action.type !== 'string') throw new Error({ message: "Parameter action requires name and type", parameter: 'actions' });
 
             if (!this._actions) {
                 this._actions = [];
@@ -84,15 +120,49 @@ var Pipelines = (function (_BaseProvision) {
             this._actions.push(action);
         }
     }, {
+        key: 'prediction',
+        value: function prediction(body_data, deviceId, datastream) {
+            var defered = _q2['default'].defer();
+            var promise = defered.promise;
+
+            var finalData = {
+                input: {
+                    data: body_data,
+                    date: new Date().toISOString()
+                }
+            };
+
+            if (deviceId && datastream) {
+                finalData.collect = {
+                    deviceId: deviceId,
+                    datastream: datastream
+                };
+            }
+
+            //En muchas clases se genera this._resource en la llamada a la funcion this._composeElement()
+            var defered = _q2['default'].defer();
+            var promise = defered.promise;
+
+            //En muchas clases se genera this._resource en la llamada a la funcion this._composeElement()
+
+            this._ogapi.Napi.post(this._buildURL() + '/prediction', finalData, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL()).then(function (res) {
+                defered.resolve({
+                    statusCode: res.statusCode,
+                    body: res.body
+                });
+            })['catch'](function (error) {
+                defered.reject(error);
+            });
+            return promise;
+        }
+    }, {
         key: '_composeElement',
         value: function _composeElement() {
             this._checkRequiredParameters();
-            this._resource = 'provision/organizations/' + this._organization + '/pipelines';
+            this._resource = this._organization + '/pipelines';
             var pipeline = {
-                "pipeline": {
-                    name: this._name || undefined,
-                    actions: this._actions || undefined
-                }
+                name: this._name || undefined,
+                actions: this._actions || undefined
             };
             return pipeline;
         }
@@ -102,11 +172,6 @@ var Pipelines = (function (_BaseProvision) {
             var pipeline = _get(Object.getPrototypeOf(Pipelines.prototype), '_composeUpdateElement', this).call(this);
             delete pipeline.pipeline.name;
             return pipeline;
-        }
-    }, {
-        key: '_getVersion',
-        value: function _getVersion() {
-            return 'v1';
         }
     }]);
 

@@ -530,6 +530,10 @@ var _AIModelsAIModels = require('./AIModels/AIModels');
 
 var _AIModelsAIModels2 = _interopRequireDefault(_AIModelsAIModels);
 
+var _pipelinesPipelines = require('./pipelines/Pipelines');
+
+var _pipelinesPipelines2 = _interopRequireDefault(_pipelinesPipelines);
+
 var RequestEndMonkeyPatching = (function () {
     var beforeStart = undefined;
     var end = _superagent3['default'].Request.prototype.end;
@@ -1818,6 +1822,16 @@ var InternalOpenGateAPI = (function () {
         key: 'aiModelsBuilder',
         value: function aiModelsBuilder() {
             return new _AIModelsAIModels2['default'](this);
+        }
+
+        /**
+         * This return a PipelinesBuilder to build a specific pipelinesBuilder
+         * @return {Pipelines}
+         */
+    }, {
+        key: 'pipelinesBuilder',
+        value: function pipelinesBuilder() {
+            return new _pipelinesPipelines2['default'](this);
         }
     }]);
 
