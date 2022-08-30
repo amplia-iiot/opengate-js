@@ -79,6 +79,30 @@ export default class Transformers extends BaseProvision {
         return transformer;
     }
 
+    performTest(body_data) {
+        var finalBody = {
+            data: body_data,
+            date: new Date().toISOString()
+        }
+
+        var defered = q.defer();
+        var promise = defered.promise;
+
+        //En muchas clases se genera this._resource en la llamada a la funcion this._composeElement()
+
+        this._ogapi.Napi.post(this._buildURL() + '/transform', finalBody, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
+            .then((res) => {
+                defered.resolve({
+                    statusCode: res.statusCode,
+                    body: res.body
+                });
+            })
+            .catch((error) => {
+                defered.reject(error);
+            });
+        return promise;
+    }
+
     create() {
         let _postElement = this._composeElement();
         

@@ -130,6 +130,7 @@ import TransformerFinder from './transformers/TransformerFinder';
 import AIModelsFinder from './AIModels/AIModelsFinder';
 import Transformers from './transformers/Transformers';
 import AIModels from './AIModels/AIModels';
+import Pipelines from './pipelines/Pipelines';
 
 const RequestEndMonkeyPatching = (function(){
     let beforeStart
@@ -1170,6 +1171,14 @@ export default class InternalOpenGateAPI {
      */
     aiModelsBuilder() {
         return new AIModels(this);
+    }
+
+    /**
+     * This return a PipelinesBuilder to build a specific pipelinesBuilder
+     * @return {Pipelines}
+     */
+    pipelinesBuilder() {
+        return new Pipelines(this);
     }
     
 }
