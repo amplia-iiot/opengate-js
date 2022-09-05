@@ -4,7 +4,7 @@
 @filtering
 @urlParameters
 @timeseries
-@wip
+
 Feature: Searching timeseries fields
      As a user of JsApi
      I want to get the searching fields

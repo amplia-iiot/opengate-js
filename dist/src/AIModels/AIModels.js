@@ -119,14 +119,15 @@ var AIModels = (function (_BaseProvision) {
         value: function create() {
             var _postElement = this._composeElement();
 
-            var form = new FormData();
-            form.append('modelFile', _postElement.modelFile);
+            // let form = new FormData();
+
+            // form.set('modelFile', _postElement.modelFile);
 
             var defer = _q2['default'].defer();
 
             //var petitionUrl = this._buildURL();
             //url, formData, events, timeout, headers, parameters
-            this._ogapi.Napi.post_multipart(this._resource, form, {}, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL()).then(function (response) {
+            this._ogapi.Napi.post_multipart(this._resource, { 'modelFile': _postElement.modelFile }, {}, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL()).then(function (response) {
                 var statusCode = response.statusCode;
                 switch (statusCode) {
                     case 200:

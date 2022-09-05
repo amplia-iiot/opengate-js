@@ -162,6 +162,21 @@ export default class NorthAmpliaREST {
                     req.attach('file', formData.processorBulkFile);
                     sendFormData = false
                     break
+                case 'files':
+                    formData[key].forEach((item, index) => {
+                        debugger
+                        console.log(item.name)
+                        req.attach(key, item, !index?{contentType: 'text/python'}:{});
+                    })
+                   
+                    delete formData[key]
+                    sendFormData = false
+                    break
+                case 'modelFile':
+                    req.field(key, formData[key]);
+                    delete formData[key]
+                    sendFormData = false
+                    break
                 case 'bulkFile':
                     req.set('Content-Type', formData.ext);
                     formData = formData.bulkFile;

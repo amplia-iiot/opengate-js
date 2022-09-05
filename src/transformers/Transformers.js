@@ -106,10 +106,10 @@ export default class Transformers extends BaseProvision {
     create() {
         let _postElement = this._composeElement();
         
-        let form = new FormData();
-        _postElement.files.forEach(function (fileTmp) {
-            form.append('files', fileTmp);
-        });
+        // let form = new FormData();
+        // _postElement.files.forEach(function (fileTmp) {
+        //     form.append('files', fileTmp);
+        // });
         
         // form.append('files', _postElement.files);
         
@@ -117,7 +117,7 @@ export default class Transformers extends BaseProvision {
         
         //var petitionUrl = this._buildURL();
         //url, formData, events, timeout, headers, parameters
-        this._ogapi.Napi.post_multipart(this._resource, form, {}, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
+        this._ogapi.Napi.post_multipart(this._resource, {files: _postElement.files}, {}, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
             .then((response) => {
                 let statusCode = response.statusCode;
                 switch (statusCode) {
