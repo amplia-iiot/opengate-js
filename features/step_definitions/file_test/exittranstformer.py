@@ -1,0 +1,1 @@
+X = body["result"][0]["dense_34"][0][0]

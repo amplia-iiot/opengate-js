@@ -89,14 +89,15 @@ export default class AIModels extends BaseProvision {
     create() {
         let _postElement = this._composeElement();
         
-        let form = new FormData();
-        form.append('modelFile', _postElement.modelFile);
-        
+        // let form = new FormData();
+
+        // form.set('modelFile', _postElement.modelFile);
+
         const defer = q.defer();
         
         //var petitionUrl = this._buildURL();
         //url, formData, events, timeout, headers, parameters
-        this._ogapi.Napi.post_multipart(this._resource, form, {}, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
+        this._ogapi.Napi.post_multipart(this._resource, {'modelFile': _postElement.modelFile}, {}, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
             .then((response) => {
                 let statusCode = response.statusCode;
                 switch (statusCode) {

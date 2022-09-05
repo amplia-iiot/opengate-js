@@ -404,8 +404,17 @@ module.exports = {
             },
             'geocluster': {
                 'identifier': 'withIdentifier',
+            },
+            'transformer': {
+                'identifier': 'withIdentifier',
+                'organization': 'withOrganization',
+                'file': 'addFile'
+            },
+            'aimodel': {
+                'identifier': 'withIdentifier',
+                'organization': 'withOrganization',
+                'file': 'withFile'
             }
-
         }[setter];
     },
     getter_response: function (getter) {

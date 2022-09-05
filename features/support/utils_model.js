@@ -335,7 +335,12 @@ module.exports = {
             "datasets catalog search": function(ogapi) {
                 return ogapi.datasetsCatalogSearchBuilder();
             },
-
+            "transformer builder": function(ogapi) {
+                return ogapi.transformersBuilder();
+            },
+            "aimodel builder": function(ogapi) {
+                return ogapi.aiModelsBuilder();
+            },
         };
         return utilsMath[utilName](ogapi, param, param2);
     }
