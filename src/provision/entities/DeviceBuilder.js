@@ -24,6 +24,7 @@ class BoxBuilder {
         this._ogapi = ogapi;
         this._key = key;
         this._timeout = timeout || null;
+        this._objClone = Object.assign({}, obj);
 
         this._deviceKeys = Object.keys(obj).filter(function(dsName) {
             return dsName.indexOf('subscriber') === -1 && dsName.indexOf('subscription') === -1;
@@ -103,7 +104,7 @@ class BoxBuilder {
     create() {
         let defer = q.defer();
         let postObj = {};
-        let putObj = this._obj;
+        let putObj =  this._objClone;
         let childEntityPromises = [];
         let _this = this;
 
@@ -246,7 +247,7 @@ class BoxBuilder {
     
     update() {
         let defer = q.defer();
-        let putObj = this._obj;
+        let putObj = this._objClone;
         let childEntityPromises = [];
         let _this = this;
 
@@ -432,6 +433,7 @@ class WrapperBuilder {
         return defer.promise;
 
         function create(defered, defer, percentage) {
+            _this._obj['provision.administration.serviceGroup'] = "emptyServiceGroup"
             _this._ogapi.Napi.post(_this._url, _this._obj, null, null, {
                     flattened: true
                 })
