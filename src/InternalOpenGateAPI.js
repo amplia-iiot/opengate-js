@@ -125,6 +125,8 @@ import _superagent from 'superagent';
 import ConnectorFunctionsHelper from './connectorsFunctionsConfiguration/ConnectorFunctionsHelper';
 import ConnectorFunctionsFinder from './connectorsFunctionsConfiguration/ConnectorFunctionsFinder';
 import ConnectorFunctions from './connectorsFunctionsConfiguration/ConnectorFunctions';
+import ManufacturersBuilder from './manufacturers/Manufacturer'
+import ManufacturerModelsBuilder from './manufacturers/Model'
 
 const RequestEndMonkeyPatching = (function(){
     let beforeStart
@@ -1119,11 +1121,28 @@ export default class InternalOpenGateAPI {
     provisionProcessorsBuilder() {
         return new ProvisionProcessors(this);
     }
+
     /**
      * This return a util to find a provision procesor
      * @return {ProvisionProcessorsFinder}
      */
-     newProvisionProcessorsFinder() {
+    newProvisionProcessorsFinder() {
          return new ProvisionProcessorsFinder(this);
+    }
+
+    /**
+     * This return a ManufacturersBuilder to build a specific ManufacturersBuilder
+     * @return {ManufacturersBuilder}
+     */
+    manufacturersBuilder() {
+        return new ManufacturersBuilder(this);
+    }
+    
+    /**
+     * This return a ManufacturerModelsBuilder to build a specific ManufacturerModelsBuilder
+     * @return {ManufacturerModelsBuilder}
+     */
+    manufacturerModelsBuilder() {
+        return new ManufacturerModelsBuilder(this);
     }
 }
