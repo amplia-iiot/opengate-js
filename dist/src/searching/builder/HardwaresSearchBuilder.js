@@ -43,13 +43,6 @@ var HardwaresSearchBuilder = (function (_SearchBuilder) {
     }
 
     /**
-     * The response will only have a summary information 
-     * @example
-     *	ogapi.HardwaresSearchBuilder().summary() 
-     * @return {HardwaresSearchBuilder} 
-     */
-
-    /**
      * The search request will have this group by 
      * @example
      * @param {!(object)} group 
