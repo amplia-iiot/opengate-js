@@ -8520,42 +8520,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#fluentfilter",
-    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-member-fluentFilter",
-    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#fluentFilter",
-    "member"
-  ],
-  [
-    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#tagsfilter",
-    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-member-tagsFilter",
-    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#tagsFilter",
-    "member"
-  ],
-  [
-    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#withid",
-    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-withId",
-    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#withId",
-    "method"
-  ],
-  [
-    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#withmanufacturer",
-    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-withManufacturer",
-    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#withManufacturer",
-    "method"
-  ],
-  [
-    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#withmodel",
-    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-withModel",
-    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#withModel",
-    "method"
-  ],
-  [
-    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#withmodelversion",
-    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-withModelVersion",
-    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#withModelVersion",
-    "method"
-  ],
-  [
     "src/searching/builder/iotdatastreamaccesssearchbuilder.js",
     "file/src/searching/builder/IoTDatastreamAccessSearchBuilder.js.html",
     "src/searching/builder/IoTDatastreamAccessSearchBuilder.js",
