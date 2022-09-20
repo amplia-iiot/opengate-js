@@ -7890,6 +7890,30 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#disabledefaultsorted",
+    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-disableDefaultSorted",
+    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#disableDefaultSorted",
+    "method"
+  ],
+  [
+    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#flattened",
+    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-flattened",
+    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#flattened",
+    "method"
+  ],
+  [
+    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#group",
+    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-group",
+    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#group",
+    "method"
+  ],
+  [
+    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#select",
+    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-select",
+    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#select",
+    "method"
+  ],
+  [
     "src/searching/builder/iotdatastreamaccesssearchbuilder.js",
     "file/src/searching/builder/IoTDatastreamAccessSearchBuilder.js.html",
     "src/searching/builder/IoTDatastreamAccessSearchBuilder.js",
