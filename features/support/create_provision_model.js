@@ -412,6 +412,7 @@ module.exports = {
                 'notes': 'withNotes',
                 'telephone': 'withTelephone',
                 'address': 'withAddress',
+                'email': 'withEmail',
                 'fax': 'withFax',
                 'url': 'withUrl',
                 'manufacturer model': 'modelBuilder',

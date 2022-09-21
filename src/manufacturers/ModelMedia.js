@@ -12,7 +12,7 @@ export default class ModelMedia extends BaseProvision {
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi, modelId) {
-        super(ogapi, "/models/" + modelId + '/media', undefined, ['identifier', 'name']);
+        super(ogapi, "/models/" + modelId + '/media', undefined, ['identifier']);
     }
 
     //http://cm.amplia.es/jira/browse/OGODM-3201
@@ -98,26 +98,38 @@ export default class ModelMedia extends BaseProvision {
      */
     create(rawFile) {
         let form;
-        if (typeof rawFile !== 'string') {
-            form = new FormData();
-            let blob = new Blob([this._composeElement()], {
-                type: "application/json"
-            });
+        
+        if (rawFile) {
+            if (typeof rawFile !== 'string') {
+                form = new FormData();
+                let blob = new Blob([this._composeElement()], {
+                    type: "application/json"
+                });
 
-            form.append('json', blob);
+                form.append('json', blob);
 
-            if (rawFile) {
-                form.append('file', rawFile);
+                if (rawFile) {
+                    form.append('file', rawFile);
+                }
+            } else {
+                form = {};
+                form.json = JSON.stringify(this._composeElement());
+
+                if (rawFile) {
+                    form.hardwareMedia = rawFile;
+                }
             }
         } else {
-            form = {};
-            form.json = JSON.stringify(this._composeElement());
+            form = new FormData();
+            let blob = new Blob([JSON.stringify(this._composeElement())], {
+                type: "application/octet-stream"
+            });
+            
+            form.append('json', blob);
 
-            if (rawFile) {
-                form.hardwareMedia = rawFile;
-            }
+            form.append('file', this._file);
         }
-
+        
         var petitionOpts = {};
 
         if (this._progressEvent != undefined) {

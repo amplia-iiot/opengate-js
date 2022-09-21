@@ -112,6 +112,18 @@ export default class Manufacturers extends BaseProvision {
         return this;
     }
 
+    /**
+     * Set the email attribute
+     * @param {string} email 
+     * @return {Manufacturers}
+     */
+    withEmail(email) {
+        if (typeof email !== 'string')
+           throw new Error("OGAPI_STRING_PARAMETER");
+        this._email = email;
+        return this;
+    }
+
     mediaBuilder() {
         if (!this._identifier)
             throw new Error("Required manufacturer identifier");
@@ -119,7 +131,7 @@ export default class Manufacturers extends BaseProvision {
     }
 
     modelBuilder() {
-        if (!this._identifier || !this._name)
+        if (!this._identifier)
             throw new Error("Required manufacturer identifier and name");
         return new Model(this._ogapi, this)
     }
@@ -136,7 +148,8 @@ export default class Manufacturers extends BaseProvision {
                 address: this._address || undefined,
                 fax: this._fax || undefined,
                 url: this._manufUrl || undefined,
-                notes: this._notes || undefined
+                notes: this._notes || undefined,
+                email: this._email || undefined
             }
         };
 
