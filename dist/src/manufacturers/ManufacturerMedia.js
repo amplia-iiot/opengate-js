@@ -76,7 +76,7 @@ var ManufacturerMedia = (function (_BaseProvision) {
     }, {
         key: 'withFile',
         value: function withFile(file) {
-            if (typeof file !== 'string') throw new Error("OGAPI_STRING_PARAMETER");
+            if (!file) throw new Error("OGAPI_NOT_EMPTY_PARAMETER");
             this._file = file;
             return this;
         }
@@ -119,24 +119,36 @@ var ManufacturerMedia = (function (_BaseProvision) {
         key: 'create',
         value: function create(rawFile) {
             var form = undefined;
-            if (typeof rawFile !== 'string') {
+
+            if (rawFile) {
+                if (typeof rawFile !== 'string') {
+                    form = new FormData();
+                    var blob = new Blob([this._composeElement()], {
+                        type: "application/json"
+                    });
+
+                    form.append('json', blob);
+
+                    if (rawFile) {
+                        form.append('file', rawFile);
+                    }
+                } else {
+                    form = {};
+                    form.json = JSON.stringify(this._composeElement());
+
+                    if (rawFile) {
+                        form.hardwareMedia = rawFile;
+                    }
+                }
+            } else {
                 form = new FormData();
-                var blob = new Blob([this._composeElement()], {
-                    type: "application/json"
+                var blob = new Blob([JSON.stringify(this._composeElement())], {
+                    type: "application/octet-stream"
                 });
 
                 form.append('json', blob);
 
-                if (rawFile) {
-                    form.append('file', rawFile);
-                }
-            } else {
-                form = {};
-                form.json = JSON.stringify(this._composeElement());
-
-                if (rawFile) {
-                    form.hardwareMedia = rawFile;
-                }
+                form.append('file', this._file);
             }
 
             var petitionOpts = {};

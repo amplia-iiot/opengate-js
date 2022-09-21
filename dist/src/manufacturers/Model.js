@@ -125,19 +125,6 @@ var Models = (function (_BaseProvision) {
         }
 
         /**
-         * Set the manufacturer attribute
-         * @param {Manufacturers} manufacturer 
-         * @return {Models}
-         */
-    }, {
-        key: 'withManufacturer',
-        value: function withManufacturer(manufacturer) {
-            if (!manufacturer) throw new Error("OGAPI_NOT_EMPTY_PARAMETER");
-            this._manufacturer = manufacturer;
-            return this;
-        }
-
-        /**
          * Set the manufacturer identifier attribute
          * @param {string} id
          * @return {Manufacturers}

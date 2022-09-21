@@ -47,8 +47,8 @@ export default class ManufacturerMedia extends BaseProvision {
      * @return {ManufacturerMedia}
      */
     withFile(file) {
-        if (typeof file !== 'string')
-            throw new Error("OGAPI_STRING_PARAMETER");
+        if (!file)
+            throw new Error("OGAPI_NOT_EMPTY_PARAMETER");
         this._file = file;
         return this;
     }
@@ -86,26 +86,38 @@ export default class ManufacturerMedia extends BaseProvision {
      */
     create(rawFile) {
         let form;
-        if (typeof rawFile !== 'string') {
-            form = new FormData();
-            let blob = new Blob([this._composeElement()], {
-                type: "application/json"
-            });
 
+        if (rawFile) {
+            if (typeof rawFile !== 'string') {
+                form = new FormData();
+                let blob = new Blob([this._composeElement()], {
+                    type: "application/json"
+                });
+    
+                form.append('json', blob);
+    
+                if (rawFile) {
+                    form.append('file', rawFile);
+                }
+            } else {
+                form = {};
+                form.json = JSON.stringify(this._composeElement());
+    
+                if (rawFile) {
+                    form.hardwareMedia = rawFile;
+                }
+            }    
+        } else {
+            form = new FormData();
+            let blob = new Blob([JSON.stringify(this._composeElement())], {
+                type: "application/octet-stream"
+            });
+            
             form.append('json', blob);
 
-            if (rawFile) {
-                form.append('file', rawFile);
-            }
-        } else {
-            form = {};
-            form.json = JSON.stringify(this._composeElement());
-
-            if (rawFile) {
-                form.hardwareMedia = rawFile;
-            }
+            form.append('file', this._file);
         }
-
+        
         var petitionOpts = {};
 
         if (this._progressEvent != undefined) {

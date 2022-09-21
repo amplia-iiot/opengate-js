@@ -26,6 +26,7 @@ Feature: Create a manufacturer
     And the "telephone" "666555444"
     And the "address" "666555444"
     And the "fax" "666555444"
+    And the "email" "email@email.email"
     And the "description" "666555444"
     And the "notes" "666555444"
     And the "url" "https://opengate.es"

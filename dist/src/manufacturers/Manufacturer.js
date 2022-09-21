@@ -147,6 +147,19 @@ var Manufacturers = (function (_BaseProvision) {
             this._address = address;
             return this;
         }
+
+        /**
+         * Set the email attribute
+         * @param {string} email 
+         * @return {Manufacturers}
+         */
+    }, {
+        key: 'withEmail',
+        value: function withEmail(email) {
+            if (typeof email !== 'string') throw new Error("OGAPI_STRING_PARAMETER");
+            this._email = email;
+            return this;
+        }
     }, {
         key: 'mediaBuilder',
         value: function mediaBuilder() {
@@ -156,7 +169,7 @@ var Manufacturers = (function (_BaseProvision) {
     }, {
         key: 'modelBuilder',
         value: function modelBuilder() {
-            if (!this._identifier || !this._name) throw new Error("Required manufacturer identifier and name");
+            if (!this._identifier) throw new Error("Required manufacturer identifier and name");
             return new _Model2['default'](this._ogapi, this);
         }
     }, {
@@ -173,7 +186,8 @@ var Manufacturers = (function (_BaseProvision) {
                     address: this._address || undefined,
                     fax: this._fax || undefined,
                     url: this._manufUrl || undefined,
-                    notes: this._notes || undefined
+                    notes: this._notes || undefined,
+                    email: this._email || undefined
                 }
             };
 
