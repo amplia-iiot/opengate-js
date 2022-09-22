@@ -244,121 +244,67 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/searching/builder/HardwaresSearchBuilder.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-import SearchWithSummaryBuilder from &apos;./SearchWithSummaryBuilder&apos;;
-import merge from &apos;merge&apos;;
-
-import FieldFinder from &apos;../../util/searchingFields/FieldFinder&apos;;
+import SearchBuilder from &apos;./SearchBuilder&apos;;
+import FieldFinder from &apos;../../util/searchingFields/FieldFinder&apos;
 
 const BASE_URL = &apos;/catalog/hardwares&apos;;
 /**
- * Defined a search over Datastreams	
- * @example ogapi.hardwareSearchBuilder()
+ * Defined a search over Devices	
+ * @example ogapi.devicesSearchBuilder()
  */
-export default class HardwaresSearchBuilder extends SearchWithSummaryBuilder {
+export default class HardwaresSearchBuilder extends SearchBuilder {
     /**
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */
     constructor(parent) {
         super(parent, {}, new FieldFinder(parent, BASE_URL));
         this._url = BASE_URL;
-        this.fluentFilter = parent.newFilterBuilder();
-        this.tagsFilter = [];
     }
 
     /**
-     * Sets id to search
-     *
+     * The search request will have this group by 
      * @example
-     *	ogapi.hardwareSearchBuilder().withId(&apos;myHardware&apos;).build()
-     * @param {!string} hardwareId - hardware id
-     * @throws {Error} throw error when hardwareId is not typeof string
-     * @return {HardwaresSearchBuilder} 
+     * @param {!(object)} group 
+     * @return {SearchBuilder} 
      */
-    withId(hardwareId) {
-        if (typeof hardwareId !== &apos;string&apos;) {
-            throw new Error(&apos;Parameter hardwareId must be a string&apos;);
-        }
-        this.fluentFilter.and(this._parent.EX.eq(&apos;manufacturerIdentifier&apos;, hardwareId));
+    group(group) {
+        this._builderParams.group = (group || {});
         return this;
     }
 
     /**
-     * Set modelName to search
-     *
+     * The search request will have this filter 
      * @example
-     *	ogapi.hardwareSearchBuilder().withModel(&apos;myModel&apos;).build()
-     * @param {!string} modelName - model name
-     * @throws {Error} throw error when modelName is not typeof string
-     * @return {HardwaresSearchBuilder} 
+     *  ogapi.HardwaresSearchBuilder().select(...)
+     * @param {!(SelectBuilder|object)} select
+     * @return {SearchBuilder} 
      */
-    withModel(modelName) {
-        if (typeof modelName !== &apos;string&apos;) {
-            throw new Error(&apos;Parameter modelName must be a string&apos;);
-        }
-        this.fluentFilter.and(this._parent.EX.eq(&apos;modelName&apos;, modelName));
+    select(select) {
+        this._builderParams.select = (select);
         return this;
     }
 
     /**
-     * Set modelVersion to search
-     *
+     * The response will return a flattened response
      * @example
-     *	ogapi.hardwareSearchBuilder().withModelVersion(&apos;myModelVersion).build()
-     * @param {!string} modelVersion - model version
-     * @throws {Error} throw error when modelVersion is not typeof string
+     *	ogapi.HardwaresSearchBuilder().flattened() 
      * @return {HardwaresSearchBuilder} 
      */
-    withModelVersion(modelVersion) {
-        if (typeof modelVersion !== &apos;string&apos;) {
-            throw new Error(&apos;Parameter modelVersion must be a string&apos;);
-        }
-        this.fluentFilter.and(this._parent.EX.eq(&apos;modelVersion&apos;, modelVersion));
+    flattened() {
+        this._urlParams.flattened = true;
+
         return this;
     }
 
     /**
-     * Set feedName to search
-     *
+     * The response will return a response without sorted
      * @example
-     *	ogapi.hardwareSearchBuilder().withManufacturer(&apos;myManufacturer&apos;).build()
-     * @param {!string} manufacturerName - manufacturer name
-     * @throws {Error} throw error when modelName is not typeof string
+     *	ogapi.HardwaresSearchBuilder().disableDefaultSorted() 
      * @return {HardwaresSearchBuilder} 
      */
-    withManufacturer(manufacturerName) {
-        if (typeof manufacturerName !== &apos;string&apos;) {
-            throw new Error(&apos;Parameter manufacturerName must be a string&apos;);
-        }
-        this.fluentFilter.and(this._parent.EX.eq(&apos;manufacturerName&apos;, manufacturerName));
+    disableDefaultSorted() {
+        this._urlParams.defaultSorted = false;
         return this;
-    }
-
-    _buildFilter() {
-        let filter = { filter: {} };
-
-        let _fluentFilter = merge(true, this.fluentFilter);
-        let _customFilter = this._builderParams.filter;
-
-        //if (this.tagsFilter.length &gt; 0){
-        //	_fluentFilter.and(this._parent.EX.in(&apos;datapoint.tag&apos;,this.tagsFilter));				
-        //}
-
-        _fluentFilter = _fluentFilter._filterTemplate.filter;
-
-        if (typeof _customFilter._filterTemplate === &quot;object&quot;) {
-            _customFilter = _customFilter._filterTemplate.filter;
-        }
-
-        if ((typeof _customFilter !== &quot;undefined&quot; &amp;&amp; Object.keys(_customFilter).length &gt; 0) &amp;&amp; (typeof _fluentFilter !== &quot;undefined&quot; &amp;&amp; Object.keys(_fluentFilter).length &gt; 0)) {
-            throw new Error(&apos;Incompatible filters. You only can create a filter using fluent mode [withId, withModel, withModelVersion, withManufacturer] methods or custom filter [filter] method&apos;);
-        }
-
-        if (typeof _customFilter !== &quot;undefined&quot; &amp;&amp; Object.keys(_customFilter).length &gt; 0) {
-            filter.filter = _customFilter;
-        } else if (typeof _fluentFilter !== &quot;undefined&quot; &amp;&amp; Object.keys(_fluentFilter).length &gt; 0) {
-            filter.filter = _fluentFilter;
-        }
-        return filter;
     }
 }</code></pre>
 

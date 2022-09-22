@@ -46,7 +46,7 @@ var match_url = {
     '/dmmQRating': 'DMMQRATING',
     '/iotQRating': 'IOTQRATING',
     '/catalog/softwares': 'SOFTWARE_VERSION',
-    '/catalog/hardwares': 'MODEL',
+    '/catalog/hardwares': 'MANUFACTURER',
     '/catalog/operators': 'OPERATORS',
     '/domains': 'DOMAIN',
     '/users': 'USER',
