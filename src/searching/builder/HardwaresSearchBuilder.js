@@ -1,119 +1,65 @@
 'use strict';
 
-import SearchWithSummaryBuilder from './SearchWithSummaryBuilder';
-import merge from 'merge';
-
-import FieldFinder from '../../util/searchingFields/FieldFinder';
+import SearchBuilder from './SearchBuilder';
+import FieldFinder from '../../util/searchingFields/FieldFinder'
 
 const BASE_URL = '/catalog/hardwares';
 /**
- * Defined a search over Datastreams	
- * @example ogapi.hardwareSearchBuilder()
+ * Defined a search over Devices	
+ * @example ogapi.devicesSearchBuilder()
  */
-export default class HardwaresSearchBuilder extends SearchWithSummaryBuilder {
+export default class HardwaresSearchBuilder extends SearchBuilder {
     /**
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */
     constructor(parent) {
         super(parent, {}, new FieldFinder(parent, BASE_URL));
         this._url = BASE_URL;
-        this.fluentFilter = parent.newFilterBuilder();
-        this.tagsFilter = [];
     }
 
     /**
-     * Sets id to search
-     *
+     * The search request will have this group by 
      * @example
-     *	ogapi.hardwareSearchBuilder().withId('myHardware').build()
-     * @param {!string} hardwareId - hardware id
-     * @throws {Error} throw error when hardwareId is not typeof string
-     * @return {HardwaresSearchBuilder} 
+     * @param {!(object)} group 
+     * @return {SearchBuilder} 
      */
-    withId(hardwareId) {
-        if (typeof hardwareId !== 'string') {
-            throw new Error('Parameter hardwareId must be a string');
-        }
-        this.fluentFilter.and(this._parent.EX.eq('manufacturerIdentifier', hardwareId));
+    group(group) {
+        this._builderParams.group = (group || {});
         return this;
     }
 
     /**
-     * Set modelName to search
-     *
+     * The search request will have this filter 
      * @example
-     *	ogapi.hardwareSearchBuilder().withModel('myModel').build()
-     * @param {!string} modelName - model name
-     * @throws {Error} throw error when modelName is not typeof string
-     * @return {HardwaresSearchBuilder} 
+     *  ogapi.HardwaresSearchBuilder().select(...)
+     * @param {!(SelectBuilder|object)} select
+     * @return {SearchBuilder} 
      */
-    withModel(modelName) {
-        if (typeof modelName !== 'string') {
-            throw new Error('Parameter modelName must be a string');
-        }
-        this.fluentFilter.and(this._parent.EX.eq('modelName', modelName));
+    select(select) {
+        this._builderParams.select = (select);
         return this;
     }
 
     /**
-     * Set modelVersion to search
-     *
+     * The response will return a flattened response
      * @example
-     *	ogapi.hardwareSearchBuilder().withModelVersion('myModelVersion).build()
-     * @param {!string} modelVersion - model version
-     * @throws {Error} throw error when modelVersion is not typeof string
+     *	ogapi.HardwaresSearchBuilder().flattened() 
      * @return {HardwaresSearchBuilder} 
      */
-    withModelVersion(modelVersion) {
-        if (typeof modelVersion !== 'string') {
-            throw new Error('Parameter modelVersion must be a string');
-        }
-        this.fluentFilter.and(this._parent.EX.eq('modelVersion', modelVersion));
+    flattened() {
+        this._urlParams.flattened = true;
+
         return this;
     }
 
     /**
-     * Set feedName to search
-     *
+     * The response will return a response without sorted
      * @example
-     *	ogapi.hardwareSearchBuilder().withManufacturer('myManufacturer').build()
-     * @param {!string} manufacturerName - manufacturer name
-     * @throws {Error} throw error when modelName is not typeof string
+     *	ogapi.HardwaresSearchBuilder().disableDefaultSorted() 
      * @return {HardwaresSearchBuilder} 
      */
-    withManufacturer(manufacturerName) {
-        if (typeof manufacturerName !== 'string') {
-            throw new Error('Parameter manufacturerName must be a string');
-        }
-        this.fluentFilter.and(this._parent.EX.eq('manufacturerName', manufacturerName));
+    disableDefaultSorted() {
+        this._urlParams.defaultSorted = false;
         return this;
-    }
-
-    _buildFilter() {
-        let filter = { filter: {} };
-
-        let _fluentFilter = merge(true, this.fluentFilter);
-        let _customFilter = this._builderParams.filter;
-
-        //if (this.tagsFilter.length > 0){
-        //	_fluentFilter.and(this._parent.EX.in('datapoint.tag',this.tagsFilter));				
-        //}
-
-        _fluentFilter = _fluentFilter._filterTemplate.filter;
-
-        if (typeof _customFilter._filterTemplate === "object") {
-            _customFilter = _customFilter._filterTemplate.filter;
-        }
-
-        if ((typeof _customFilter !== "undefined" && Object.keys(_customFilter).length > 0) && (typeof _fluentFilter !== "undefined" && Object.keys(_fluentFilter).length > 0)) {
-            throw new Error('Incompatible filters. You only can create a filter using fluent mode [withId, withModel, withModelVersion, withManufacturer] methods or custom filter [filter] method');
-        }
-
-        if (typeof _customFilter !== "undefined" && Object.keys(_customFilter).length > 0) {
-            filter.filter = _customFilter;
-        } else if (typeof _fluentFilter !== "undefined" && Object.keys(_fluentFilter).length > 0) {
-            filter.filter = _fluentFilter;
-        }
-        return filter;
     }
 }

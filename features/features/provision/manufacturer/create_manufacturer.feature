@@ -78,7 +78,7 @@ Feature: Create a manufacturer
     And the "name" "ogux_cucumber_model_name_2"
     And the "version" "0.2"
     And the "description" "la descripcion 2"
-    And the "notes" "las notas "
+    And the "notes" "las notas"
     And the "url" "urltest2"
     Then the "manufacturer id" "ogux_cucumber_manufacturer"
     And the "manufacturer name" "ogux_cucumber_manufacturer"

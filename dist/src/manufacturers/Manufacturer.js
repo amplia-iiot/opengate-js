@@ -194,6 +194,15 @@ var Manufacturers = (function (_BaseProvision) {
             return updateData;
         }
     }, {
+        key: '_composeUpdateElement',
+        value: function _composeUpdateElement() {
+            var updateElement = this._composeElement();
+
+            delete updateElement.manufacturer.id;
+
+            return updateElement;
+        }
+    }, {
         key: '_buildURL',
         value: function _buildURL() {
             var url = this._resource + "/" + this._identifier;

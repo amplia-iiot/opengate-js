@@ -89,7 +89,7 @@ var ModelMedia = (function (_BaseProvision) {
     }, {
         key: 'withFile',
         value: function withFile(file) {
-            if (typeof file !== 'string') throw new Error("OGAPI_STRING_PARAMETER");
+            if (!file) throw new Error("OGAPI_NOT_EMPTY_PARAMETER");
             this._file = file;
             return this;
         }

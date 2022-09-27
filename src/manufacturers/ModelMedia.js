@@ -59,8 +59,8 @@ export default class ModelMedia extends BaseProvision {
      * @return {ModelMedia}
      */
     withFile(file) {
-        if (typeof file !== 'string')
-            throw new Error("OGAPI_STRING_PARAMETER");
+        if (!file)
+            throw new Error("OGAPI_NOT_EMPTY_PARAMETER");
         this._file = file;
         return this;
     }

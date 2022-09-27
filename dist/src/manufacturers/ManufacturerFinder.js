@@ -18,8 +18,16 @@ var _ProvisionGenericFinder2 = require('../ProvisionGenericFinder');
 
 var _ProvisionGenericFinder3 = _interopRequireDefault(_ProvisionGenericFinder2);
 
+var _q = require('q');
+
+var _q2 = _interopRequireDefault(_q);
+
+var _httpStatusCodes = require('http-status-codes');
+
+var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
+
 /**
- *   This class allow make get request to certificate resource into Opengate North API.
+ *   This class allow make get request to hardware manufacturers resource into Opengate North API.
  */
 
 var ManufacturerFinder = (function (_ProvisionGenericFinder) {
@@ -43,7 +51,7 @@ var ManufacturerFinder = (function (_ProvisionGenericFinder) {
     _createClass(ManufacturerFinder, [{
         key: '_composeUrl',
         value: function _composeUrl() {
-            return this._baseUrl + "/" + this._identifier;
+            return this._baseUrl + "/" + this._identifier + (this._mediaIdentifier ? "/media/" + this._mediaIdentifier + '?format=raw' : '');
         }
 
         /**
@@ -58,6 +66,48 @@ var ManufacturerFinder = (function (_ProvisionGenericFinder) {
         value: function findById(identifier) {
             this._identifier = identifier;
             return this._execute();
+        }
+
+        /**
+         * Download a specific manufacturer media by its ids. This execute a GET http method
+         * @test
+         *   ogapi.newManufacturerFinder().findMediaById('manufacturername').then().catch();
+         * @param {string} identifier - manufacturer name .
+         * @return {Promise} 
+         */
+    }, {
+        key: 'findMediaById',
+        value: function findMediaById(manufacturerId, mediaIdentifier) {
+            this._identifier = manufacturerId;
+            this._mediaIdentifier = mediaIdentifier;
+            return this._download();
+        }
+
+        /**
+         * @return {Promise}* @private
+         */
+    }, {
+        key: '_download',
+        value: function _download() {
+            var defered = _q2['default'].defer();
+            var promise = defered.promise;
+            var _error_not_found = this._error_not_found;
+            this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), true).then(function (req) {
+                if (req.statusCode === 204) {
+                    defered.reject({
+                        data: _error_not_found,
+                        statusCode: _httpStatusCodes2['default'].NOT_FOUND
+                    });
+                } else {
+                    defered.resolve({
+                        data: req,
+                        statusCode: req.statusCode
+                    });
+                }
+            })['catch'](function (error) {
+                defered.reject(error);
+            });
+            return promise;
         }
     }]);
 
