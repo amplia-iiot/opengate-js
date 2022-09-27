@@ -5,15 +5,15 @@ import q from 'q';
 import HttpStatus from 'http-status-codes';
 
 /**
- *   This class allow make get request to hardware manufacturers resource into Opengate North API.
+ *   This class allow make get request to hardware models resource into Opengate North API.
  */
-export default class ManufacturerFinder extends ProvisionGenericFinder {
+export default class ModelFinder extends ProvisionGenericFinder {
 
     /**     
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, 'manufacturers', 'manufacturer', 'Manufacturer not found');
+        super(ogapi, 'models', 'model', 'Model not found');
     }
 
     /**
@@ -25,10 +25,10 @@ export default class ManufacturerFinder extends ProvisionGenericFinder {
     }
 
     /**
-     * Download a specific manufacturer by its id. This execute a GET http method
+     * Download a specific model by its id. This execute a GET http method
      * @test
-     *   ogapi.newManufacturerFinder().findById('manufacturername').then().catch();
-     * @param {string} identifier - manufacturer name .
+     *   ogapi.newModelFinder().findById('modelname').then().catch();
+     * @param {string} identifier - model name .
      * @return {Promise} 
      */
     findById(identifier) {
@@ -37,14 +37,14 @@ export default class ManufacturerFinder extends ProvisionGenericFinder {
     }
 
     /**
-     * Download a specific manufacturer media by its ids. This execute a GET http method
+     * Download a specific model media by its ids. This execute a GET http method
      * @test
-     *   ogapi.newManufacturerFinder().findMediaById('manufacturername').then().catch();
-     * @param {string} identifier - manufacturer name .
+     *   ogapi.newModelFinder().findMediaById('modelname').then().catch();
+     * @param {string} identifier - model name .
      * @return {Promise} 
      */
-    findMediaById(manufacturerId, mediaIdentifier) {
-        this._identifier = manufacturerId;
+    findMediaById(modelId, mediaIdentifier) {
+        this._identifier = modelId;
         this._mediaIdentifier = mediaIdentifier;
         return this._download();
     }

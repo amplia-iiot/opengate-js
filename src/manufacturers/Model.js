@@ -151,6 +151,14 @@ export default class Models extends BaseProvision {
         return updateData;
     }
 
+    _composeUpdateElement() {
+        var updateElement = this._composeElement()
+
+        delete updateElement.model.id
+
+        return updateElement
+    }
+
     _buildURL() {
         var url = this._resource + "/" + this._identifier
         return url;

@@ -127,6 +127,8 @@ import ConnectorFunctionsFinder from './connectorsFunctionsConfiguration/Connect
 import ConnectorFunctions from './connectorsFunctionsConfiguration/ConnectorFunctions';
 import ManufacturersBuilder from './manufacturers/Manufacturer'
 import ManufacturerModelsBuilder from './manufacturers/Model'
+import ManufacturerFinder from './manufacturers/ManufacturerFinder'
+import ModelFinder from './manufacturers/ModelFinder'
 
 const RequestEndMonkeyPatching = (function(){
     let beforeStart
@@ -1144,5 +1146,21 @@ export default class InternalOpenGateAPI {
      */
     manufacturerModelsBuilder() {
         return new ManufacturerModelsBuilder(this);
+    }
+
+    /**
+     * This return a util to find a hardware manufacturer
+     * @return {ManufacturerFinder}
+     */
+    newManufacturersFinder() {
+        return new ManufacturerFinder(this);
+    }
+
+    /**
+     * This return a util to find a hardware model
+     * @return {ModelFinder}
+     */
+    newModelFinder() {
+        return new ModelFinder(this);
     }
 }
