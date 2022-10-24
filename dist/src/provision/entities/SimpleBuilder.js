@@ -26,6 +26,10 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
+var _lodash = require('lodash');
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
 var ERROR_VALUE_NOT_ALLOWED = 'value is not allowed. The value should be formatted as follows: ';
 var ERROR_DATASTREAM_NOT_ALLOWED = 'Datastream is not allowed';
 var schema_base = '/og_basic_types.json';
@@ -125,9 +129,13 @@ var SimpleBuilder = (function (_BaseProvision) {
         key: 'with',
         value: function _with(_id, val) {
             if (val === undefined || val.length === 0) {
-                delete this._entity[_id];
-                return this;
+                // Si es un array vacío debe continuar
+                if (!_lodash2['default'].isArray(val)) {
+                    delete this._entity[_id];
+                    return this;
+                }
             }
+
             if (this.getAllowedDatastreams().filter(function (ds) {
                 return ds.identifier === _id;
             }).length !== 1) {
