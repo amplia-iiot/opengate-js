@@ -40484,7 +40484,7 @@
     "__docId__": 1519,
     "kind": "file",
     "name": "src/provision/entities/SimpleBuilder.js",
-    "content": "'use strict';\r\n\r\nimport HttpStatus from 'http-status-codes';\r\nimport BaseProvision from '../BaseProvision';\r\nimport q from 'q';\r\n\r\nconst ERROR_VALUE_NOT_ALLOWED = 'value is not allowed. The value should be formatted as follows: ';\r\nconst ERROR_DATASTREAM_NOT_ALLOWED = 'Datastream is not allowed';\r\nconst schema_base = '/og_basic_types.json';\r\n\r\n/**\r\n * This class allow set simple values.\r\n */\r\nexport default class SimpleBuilder extends BaseProvision {\r\n\r\n    /**\r\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\r\n     * @param {!string} resource - this is the resource url where can be create/delete/update/read the entity\r\n     * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new entity\r\n     * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types\r\n     * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool\r\n     */\r\n    constructor(ogapi, resource, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout) {\r\n        super(ogapi, \"/organizations/\" + resource, timeout);\r\n        if (typeof this._getEntityKey !== \"function\") {\r\n            throw new Error(\"Must override method:  _getEntityKey\");\r\n        }\r\n        this._setUrlParameters({\r\n            flattened: true\r\n        });\r\n        this._entity = {};\r\n        this._allowedDatastreams = allowedDatastreams;\r\n        this._definedSchemas = definedSchemas;\r\n        this._jsonSchemaValidator = jsonSchemaValidator;\r\n    }\r\n\r\n    _buildURL() {\r\n        return this._resource + \"/\" + this.getEntityKey();\r\n    }\r\n\r\n    _validate() {\r\n        let _this = this;\r\n        let errors = [];\r\n        Object.keys(this._entity).forEach(function(_id) {\r\n            if (_id != 'resourceType') {\r\n                if (!_this._definedSchemas[_id]) {\r\n                    throw new Error(ERROR_DATASTREAM_NOT_ALLOWED + ': ' + _id);\r\n                }\r\n                let jSchema = _this._definedSchemas[_id].value;\r\n                if (_this._entity[_id].constructor === Array) {\r\n                    _this._entity[_id].forEach(function(item) {\r\n                        let value = item._value._current.value;\r\n                        if (!_this._jsonSchemaValidator.validate(schema_base, value)) {\r\n                            errors.push(_id + ' [' +  value + '] ' + ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));\r\n                        }\r\n                    });\r\n                } else {\r\n                    let value = _this._entity[_id]._value._current.value;\r\n                    if (!_this._jsonSchemaValidator.validate(schema_base, value)) {\r\n                        errors.push(_id + ' [' +  value + '] ' + ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));\r\n                    }\r\n                }\r\n            }\r\n        });\r\n\r\n        if (errors.length > 0) {\r\n            throw new Error(JSON.stringify(errors).replace(new RegExp(\"\\\"\", 'g'), \"\"));\r\n        }\r\n    }\r\n\r\n    _composeElement() {\r\n        this._validate();\r\n        return this._entity;\r\n    }\r\n\r\n    /**\r\n     * @return {string} - Entity identifier\r\n     */\r\n    getEntityKey() {\r\n        return (this._getEntityKey() !== null) ? this._getEntityKey()._value._current.value : null;\r\n    }\r\n\r\n    /**\r\n     * Set new datastream value\r\n     * \r\n     * @param {!string} _id - Datastream identifier\r\n     * @param {!objecr} val - Datastream value. If this value is null then datastream value will be removed.\r\n     */\r\n    with(_id, val) {\r\n        if (val === undefined || val.length === 0) {\r\n            delete this._entity[_id];\r\n            return this;\r\n        }\r\n        if (this.getAllowedDatastreams().filter(function(ds) {\r\n                return ds.identifier === _id;\r\n            }).length !== 1) {\r\n            console.warn('Datastream not found or operations can not be performed on it. This value will be ignored. Datastream Name: ' + _id);\r\n            return this;\r\n        }\r\n        this._entity[_id] = {\r\n            '_value': {\r\n                '_current': {\r\n                    'value': val\r\n                }\r\n            }\r\n        };\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * @return {array} - Allowed Datastream definition array\r\n     */\r\n    getAllowedDatastreams() {\r\n        return this._allowedDatastreams;\r\n    }\r\n\r\n    initFromFlattened(_flattenedEntityData) {\r\n        let _this = this;\r\n        if (_flattenedEntityData && Object.keys(_flattenedEntityData).length > 0) {\r\n            Object.keys(_flattenedEntityData).forEach(function(_id) {\r\n                if (_id.toLowerCase().startsWith(\"provision\")) {\r\n                    var _content = _flattenedEntityData[_id];\r\n                    if (Array.isArray(_content)) {\r\n                        _content = _content[0];\r\n                    }\r\n                    _this.with(_id, _content._value._current.value);\r\n                }\r\n            });\r\n        }\r\n    }\r\n\r\n    _initFromJson(_jsonEntityData, _path) {\r\n        let _this = this;\r\n        if (_jsonEntityData) {\r\n            var keys = Object.keys(_jsonEntityData);\r\n            keys.forEach(function(key) {\r\n                var obj = _jsonEntityData[key];\r\n                var _current = obj._current;\r\n                var path = _path ? (_path + '.' + key) : key;\r\n                if (_current) {\r\n                    _this.with(path, _current.value);\r\n                } else {\r\n                    if (Array.isArray(obj)) {\r\n                        _this._initFromJson(obj[0], path + '[]');\r\n                    } else {\r\n                        _this._initFromJson(obj, path);\r\n                    }\r\n                }\r\n            });\r\n        }\r\n    }\r\n\r\n    initFromJson(_jsonEntityData) {\r\n        let _this = this;\r\n        var provision = {};\r\n        if (_jsonEntityData && (provision = _jsonEntityData.provision)) {\r\n            _this._initFromJson(provision, 'provision');\r\n        }\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function deletes a entity of provision\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     */\r\n    deleteAll() {\r\n        let defered = q.defer();\r\n        let promise = defered.promise;\r\n        this._setUrlParameters({\r\n            full: true\r\n        });\r\n        this._ogapi.Napi.delete(this._buildURL(), this._timeout, this._getExtraHeaders(), this._getUrlParameters())\r\n            .then((res) => {\r\n                if (res.statusCode === HttpStatus.OK) {\r\n                    defered.resolve({\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function updates a entity of provision\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.organizationsBuilder().update()\r\n     */\r\n    update() {\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n\r\n        this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement(), this._timeout, this._getExtraHeaders(), this._getUrlParameters())\r\n            .then((res) => {\r\n                if (res.statusCode === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else if (res.status === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.status\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function patch a entity of provision\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.organizationsBuilder().update()\r\n     */\r\n    patch() {\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n\r\n        this._ogapi.Napi.patch(this._buildURL(), this._composeUpdateElement(), this._timeout, this._getExtraHeaders(), this._getUrlParameters())\r\n            .then((res) => {\r\n                if (res.statusCode === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else if (res.status === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.status\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n}",
+    "content": "'use strict';\r\n\r\nimport HttpStatus from 'http-status-codes';\r\nimport BaseProvision from '../BaseProvision';\r\nimport q from 'q';\r\nimport _ from 'lodash'\r\n\r\nconst ERROR_VALUE_NOT_ALLOWED = 'value is not allowed. The value should be formatted as follows: ';\r\nconst ERROR_DATASTREAM_NOT_ALLOWED = 'Datastream is not allowed';\r\nconst schema_base = '/og_basic_types.json';\r\n\r\n/**\r\n * This class allow set simple values.\r\n */\r\nexport default class SimpleBuilder extends BaseProvision {\r\n\r\n    /**\r\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\r\n     * @param {!string} resource - this is the resource url where can be create/delete/update/read the entity\r\n     * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new entity\r\n     * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types\r\n     * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool\r\n     */\r\n    constructor(ogapi, resource, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout) {\r\n        super(ogapi, \"/organizations/\" + resource, timeout);\r\n        if (typeof this._getEntityKey !== \"function\") {\r\n            throw new Error(\"Must override method:  _getEntityKey\");\r\n        }\r\n        this._setUrlParameters({\r\n            flattened: true\r\n        });\r\n        this._entity = {};\r\n        this._allowedDatastreams = allowedDatastreams;\r\n        this._definedSchemas = definedSchemas;\r\n        this._jsonSchemaValidator = jsonSchemaValidator;\r\n    }\r\n\r\n    _buildURL() {\r\n        return this._resource + \"/\" + this.getEntityKey();\r\n    }\r\n\r\n    _validate() {\r\n        let _this = this;\r\n        let errors = [];\r\n        Object.keys(this._entity).forEach(function(_id) {\r\n            if (_id != 'resourceType') {\r\n                if (!_this._definedSchemas[_id]) {\r\n                    throw new Error(ERROR_DATASTREAM_NOT_ALLOWED + ': ' + _id);\r\n                }\r\n                let jSchema = _this._definedSchemas[_id].value;\r\n                if (_this._entity[_id].constructor === Array) {\r\n                    _this._entity[_id].forEach(function(item) {\r\n                        let value = item._value._current.value;\r\n                        if (!_this._jsonSchemaValidator.validate(schema_base, value)) {\r\n                            errors.push(_id + ' [' +  value + '] ' + ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));\r\n                        }\r\n                    });\r\n                } else {\r\n                    let value = _this._entity[_id]._value._current.value;\r\n                    if (!_this._jsonSchemaValidator.validate(schema_base, value)) {\r\n                        errors.push(_id + ' [' +  value + '] ' + ERROR_VALUE_NOT_ALLOWED + JSON.stringify(jSchema));\r\n                    }\r\n                }\r\n            }\r\n        });\r\n\r\n        if (errors.length > 0) {\r\n            throw new Error(JSON.stringify(errors).replace(new RegExp(\"\\\"\", 'g'), \"\"));\r\n        }\r\n    }\r\n\r\n    _composeElement() {\r\n        this._validate();\r\n        return this._entity;\r\n    }\r\n\r\n    /**\r\n     * @return {string} - Entity identifier\r\n     */\r\n    getEntityKey() {\r\n        return (this._getEntityKey() !== null) ? this._getEntityKey()._value._current.value : null;\r\n    }\r\n\r\n    /**\r\n     * Set new datastream value\r\n     * \r\n     * @param {!string} _id - Datastream identifier\r\n     * @param {!objecr} val - Datastream value. If this value is null then datastream value will be removed.\r\n     */\r\n    with(_id, val) {\r\n        if (val === undefined || val.length === 0) {\r\n            // Si es un array vacío debe continuar\r\n            if (!_.isArray(val)) {\r\n                delete this._entity[_id];\r\n                return this;\r\n            }\r\n        }\r\n\r\n        if (this.getAllowedDatastreams().filter(function(ds) {\r\n                return ds.identifier === _id;\r\n            }).length !== 1) {\r\n            console.warn('Datastream not found or operations can not be performed on it. This value will be ignored. Datastream Name: ' + _id);\r\n            return this;\r\n        }\r\n        this._entity[_id] = {\r\n            '_value': {\r\n                '_current': {\r\n                    'value': val\r\n                }\r\n            }\r\n        };\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * @return {array} - Allowed Datastream definition array\r\n     */\r\n    getAllowedDatastreams() {\r\n        return this._allowedDatastreams;\r\n    }\r\n\r\n    initFromFlattened(_flattenedEntityData) {\r\n        let _this = this;\r\n        if (_flattenedEntityData && Object.keys(_flattenedEntityData).length > 0) {\r\n            Object.keys(_flattenedEntityData).forEach(function(_id) {\r\n                if (_id.toLowerCase().startsWith(\"provision\")) {\r\n                    var _content = _flattenedEntityData[_id];\r\n                    if (Array.isArray(_content)) {\r\n                        _content = _content[0];\r\n                    }\r\n                    _this.with(_id, _content._value._current.value);\r\n                }\r\n            });\r\n        }\r\n    }\r\n\r\n    _initFromJson(_jsonEntityData, _path) {\r\n        let _this = this;\r\n        if (_jsonEntityData) {\r\n            var keys = Object.keys(_jsonEntityData);\r\n            keys.forEach(function(key) {\r\n                var obj = _jsonEntityData[key];\r\n                var _current = obj._current;\r\n                var path = _path ? (_path + '.' + key) : key;\r\n                if (_current) {\r\n                    _this.with(path, _current.value);\r\n                } else {\r\n                    if (Array.isArray(obj)) {\r\n                        _this._initFromJson(obj[0], path + '[]');\r\n                    } else {\r\n                        _this._initFromJson(obj, path);\r\n                    }\r\n                }\r\n            });\r\n        }\r\n    }\r\n\r\n    initFromJson(_jsonEntityData) {\r\n        let _this = this;\r\n        var provision = {};\r\n        if (_jsonEntityData && (provision = _jsonEntityData.provision)) {\r\n            _this._initFromJson(provision, 'provision');\r\n        }\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function deletes a entity of provision\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     */\r\n    deleteAll() {\r\n        let defered = q.defer();\r\n        let promise = defered.promise;\r\n        this._setUrlParameters({\r\n            full: true\r\n        });\r\n        this._ogapi.Napi.delete(this._buildURL(), this._timeout, this._getExtraHeaders(), this._getUrlParameters())\r\n            .then((res) => {\r\n                if (res.statusCode === HttpStatus.OK) {\r\n                    defered.resolve({\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function updates a entity of provision\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.organizationsBuilder().update()\r\n     */\r\n    update() {\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n\r\n        this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement(), this._timeout, this._getExtraHeaders(), this._getUrlParameters())\r\n            .then((res) => {\r\n                if (res.statusCode === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else if (res.status === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.status\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function patch a entity of provision\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.organizationsBuilder().update()\r\n     */\r\n    patch() {\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n\r\n        this._ogapi.Napi.patch(this._buildURL(), this._composeUpdateElement(), this._timeout, this._getExtraHeaders(), this._getUrlParameters())\r\n            .then((res) => {\r\n                if (res.statusCode === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else if (res.status === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.status\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n}",
     "static": true,
     "longname": "src/provision/entities/SimpleBuilder.js",
     "access": null,
@@ -40503,7 +40503,7 @@
     "importPath": "opengate-js/src/provision/entities/SimpleBuilder.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 7,
+    "lineNumber": 8,
     "undocument": true,
     "unknown": [
       {
@@ -40529,7 +40529,7 @@
     "importPath": "opengate-js/src/provision/entities/SimpleBuilder.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 8,
+    "lineNumber": 9,
     "undocument": true,
     "unknown": [
       {
@@ -40555,7 +40555,7 @@
     "importPath": "opengate-js/src/provision/entities/SimpleBuilder.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 9,
+    "lineNumber": 10,
     "undocument": true,
     "unknown": [
       {
@@ -40581,7 +40581,7 @@
     "importPath": "opengate-js/src/provision/entities/SimpleBuilder.js",
     "importStyle": "SimpleBuilder",
     "description": "This class allow set simple values.",
-    "lineNumber": 14,
+    "lineNumber": 15,
     "interface": false,
     "extends": [
       "src/provision/BaseProvision.js~BaseProvision"
@@ -40598,7 +40598,7 @@
     "longname": "src/provision/entities/SimpleBuilder.js~SimpleBuilder#constructor",
     "access": null,
     "description": "",
-    "lineNumber": 23,
+    "lineNumber": 24,
     "params": [
       {
         "nullable": false,
@@ -40661,7 +40661,7 @@
     "longname": "src/provision/entities/SimpleBuilder.js~SimpleBuilder#_entity",
     "access": null,
     "description": null,
-    "lineNumber": 31,
+    "lineNumber": 32,
     "undocument": true,
     "unknown": [
       {
@@ -40684,7 +40684,7 @@
     "longname": "src/provision/entities/SimpleBuilder.js~SimpleBuilder#_allowedDatastreams",
     "access": null,
     "description": null,
-    "lineNumber": 32,
+    "lineNumber": 33,
     "undocument": true,
     "unknown": [
       {
@@ -40707,7 +40707,7 @@
     "longname": "src/provision/entities/SimpleBuilder.js~SimpleBuilder#_definedSchemas",
     "access": null,
     "description": null,
-    "lineNumber": 33,
+    "lineNumber": 34,
     "undocument": true,
     "unknown": [
       {
@@ -40730,7 +40730,7 @@
     "longname": "src/provision/entities/SimpleBuilder.js~SimpleBuilder#_jsonSchemaValidator",
     "access": null,
     "description": null,
-    "lineNumber": 34,
+    "lineNumber": 35,
     "undocument": true,
     "unknown": [
       {
@@ -40755,7 +40755,7 @@
     "longname": "src/provision/entities/SimpleBuilder.js~SimpleBuilder#_buildURL",
     "access": null,
     "description": null,
-    "lineNumber": 37,
+    "lineNumber": 38,
     "undocument": true,
     "unknown": [
       {
@@ -40781,7 +40781,7 @@
     "longname": "src/provision/entities/SimpleBuilder.js~SimpleBuilder#_validate",
     "access": null,
     "description": null,
-    "lineNumber": 41,
+    "lineNumber": 42,
     "undocument": true,
     "unknown": [
       {
@@ -40802,7 +40802,7 @@
     "longname": "src/provision/entities/SimpleBuilder.js~SimpleBuilder#_composeElement",
     "access": null,
     "description": null,
-    "lineNumber": 71,
+    "lineNumber": 72,
     "undocument": true,
     "unknown": [
       {
@@ -40828,7 +40828,7 @@
     "longname": "src/provision/entities/SimpleBuilder.js~SimpleBuilder#getEntityKey",
     "access": null,
     "description": "",
-    "lineNumber": 79,
+    "lineNumber": 80,
     "params": [],
     "return": {
       "nullable": null,
@@ -40850,7 +40850,7 @@
     "longname": "src/provision/entities/SimpleBuilder.js~SimpleBuilder#with",
     "access": null,
     "description": "Set new datastream value",
-    "lineNumber": 89,
+    "lineNumber": 90,
     "params": [
       {
         "nullable": false,
@@ -40890,7 +40890,7 @@
     "longname": "src/provision/entities/SimpleBuilder.js~SimpleBuilder#getAllowedDatastreams",
     "access": null,
     "description": "",
-    "lineNumber": 113,
+    "lineNumber": 118,
     "params": [],
     "return": {
       "nullable": null,
@@ -40912,7 +40912,7 @@
     "longname": "src/provision/entities/SimpleBuilder.js~SimpleBuilder#initFromFlattened",
     "access": null,
     "description": null,
-    "lineNumber": 117,
+    "lineNumber": 122,
     "undocument": true,
     "unknown": [
       {
@@ -40940,7 +40940,7 @@
     "longname": "src/provision/entities/SimpleBuilder.js~SimpleBuilder#_initFromJson",
     "access": null,
     "description": null,
-    "lineNumber": 132,
+    "lineNumber": 137,
     "undocument": true,
     "unknown": [
       {
@@ -40974,7 +40974,7 @@
     "longname": "src/provision/entities/SimpleBuilder.js~SimpleBuilder#initFromJson",
     "access": null,
     "description": null,
-    "lineNumber": 153,
+    "lineNumber": 158,
     "undocument": true,
     "unknown": [
       {
@@ -41002,7 +41002,7 @@
     "longname": "src/provision/entities/SimpleBuilder.js~SimpleBuilder#deleteAll",
     "access": null,
     "description": "This invoke a request to OpenGate North API and the callback is managed by promises\nThis function deletes a entity of provision",
-    "lineNumber": 168,
+    "lineNumber": 173,
     "params": [],
     "properties": [
       {
@@ -41049,7 +41049,7 @@
     "examples": [
       " ogapi.organizationsBuilder().update()"
     ],
-    "lineNumber": 202,
+    "lineNumber": 207,
     "params": [],
     "properties": [
       {
@@ -41096,7 +41096,7 @@
     "examples": [
       " ogapi.organizationsBuilder().update()"
     ],
-    "lineNumber": 238,
+    "lineNumber": 243,
     "params": [],
     "properties": [
       {
