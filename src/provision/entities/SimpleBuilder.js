@@ -3,6 +3,7 @@
 import HttpStatus from 'http-status-codes';
 import BaseProvision from '../BaseProvision';
 import q from 'q';
+import _ from 'lodash'
 
 const ERROR_VALUE_NOT_ALLOWED = 'value is not allowed. The value should be formatted as follows: ';
 const ERROR_DATASTREAM_NOT_ALLOWED = 'Datastream is not allowed';
@@ -88,9 +89,13 @@ export default class SimpleBuilder extends BaseProvision {
      */
     with(_id, val) {
         if (val === undefined || val.length === 0) {
-            delete this._entity[_id];
-            return this;
+            // Si es un array vacío debe continuar
+            if (!_.isArray(val)) {
+                delete this._entity[_id];
+                return this;
+            }
         }
+
         if (this.getAllowedDatastreams().filter(function(ds) {
                 return ds.identifier === _id;
             }).length !== 1) {
