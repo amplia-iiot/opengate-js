@@ -314,6 +314,10 @@ var _searchingBuilderPlansSearchBuilder = require('./searching/builder/PlansSear
 
 var _searchingBuilderPlansSearchBuilder2 = _interopRequireDefault(_searchingBuilderPlansSearchBuilder);
 
+var _searchingBuilderDevicesPlansSearchBuilder = require('./searching/builder/DevicesPlansSearchBuilder');
+
+var _searchingBuilderDevicesPlansSearchBuilder2 = _interopRequireDefault(_searchingBuilderDevicesPlansSearchBuilder);
+
 var _bundlesBundles = require('./bundles/Bundles');
 
 var _bundlesBundles2 = _interopRequireDefault(_bundlesBundles);
@@ -1245,6 +1249,16 @@ var InternalOpenGateAPI = (function () {
         key: 'plansSearchBuilder',
         value: function plansSearchBuilder() {
             return new _searchingBuilderPlansSearchBuilder2['default'](this);
+        }
+
+        /**
+         * This return a DevicePlansSearchBuilder to build a specific DevicePlansSearchBuilder
+         * @return {PlansSearchBuilder}
+         */
+    }, {
+        key: 'devicesPlansSearchBuilder',
+        value: function devicesPlansSearchBuilder() {
+            return new _searchingBuilderDevicesPlansSearchBuilder2['default'](this);
         }
 
         /**
