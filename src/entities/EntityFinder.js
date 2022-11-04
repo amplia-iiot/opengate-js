@@ -40,7 +40,7 @@ export default class EntityFinder extends ProvisionGenericFinder {
         this._organization = organization;
         this._id = id;
         this._setUrlParameters({
-            flattened: flattened
+            flattened: !!flattened
         });
         return this._execute();
     }
