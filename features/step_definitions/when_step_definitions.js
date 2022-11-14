@@ -1,5 +1,7 @@
 // features/step_definitions/when_step_definitions.js
-
+var Imap = require('imap'),
+    inspet = require('util').inspect;
+var q = require('q');
 var GenericFinder = require(process.cwd() + '/dist/src/GenericFinder');
 var {
     When,
@@ -908,6 +910,140 @@ When(/^I update it$/, function () {
     }
 });
 
+When(/^I request reset password$/, function () {
+    var _this = this;
+    _this.error = undefined;
+    _this.responseData = undefined;
+
+    function catchResponse (data) {
+        //console.log('catchResponse', data);
+        _this.responseData = data;
+        _this.error = undefined;
+        
+    }
+
+    function catchErrorResponse (err) {
+        console.error('catchErrorResponse', err);
+        _this.responseData = err;
+        _this.error = err;
+
+    }
+
+    try {
+        return _this.util.requestResetPassword().then(catchResponse).catch(catchErrorResponse);
+    } catch (err) {
+        console.error('ERROR: ', err);
+        this.error = err;
+        
+        return;
+    }
+});
+
+When(/^I read reset password mail and save token mock$/, function () {
+    var _this = this;
+    
+    _this.values = {
+        token: 'akdjfkasdjfklsadjflkjasld'
+    };
+})
+
+When(/^I read reset password mail and save token$/, {timeout: 15000}, async function () {
+    var _this = this;
+    await new Promise((callback, error) => {
+        _this.error = undefined;
+        _this.responseData = undefined;
+        _this.values = {
+            token: undefined
+        };
+        
+        // ¡¡¡¡¡¡¡¡NO SUBIR INFORMACIÓN RELEVANTE A CUENTAS DE CORREO!!!!!!!!!
+        /**
+         * Execute:
+         * - linux: $ export MAIL_USER=xxx@xxx.xx && export MAIL_PASSWORD='xxxxxxx' && export MAIL_HOST=xxx.xxxx.xx && gulp cucumber
+         * - powerShell: > $env:MAIL_USER="xxx@xxx.xx"; $env:MAIL_PASSWORD='xxxx'; $env:MAIL_HOST="xxx.xxxx.xx"; gulp cucumber
+         */
+        var imap = new Imap({
+            // ¡¡¡¡¡¡¡¡NO SUBIR INFORMACIÓN RELEVANTE A CUENTAS DE CORREO!!!!!!!!!
+            user: process.env.MAIL_USER || 'MAIL_NOT_FOUND',
+            // ¡¡¡¡¡¡¡¡NO SUBIR INFORMACIÓN RELEVANTE A CUENTAS DE CORREO!!!!!!!!!
+            password: process.env.MAIL_PASSWORD || 'PASSWORD_NOT_FOUND',
+            // ¡¡¡¡¡¡¡¡NO SUBIR INFORMACIÓN RELEVANTE A CUENTAS DE CORREO!!!!!!!!!
+            port: 0,
+            host: process.env.MAIL_HOST || 'HOST_NOT_FOUND',
+            port: process.env.MAIL_PORT || 993,
+            tls: true,
+            debug: console.log,
+            tlsOptions: { rejectUnauthorized: false }
+          });
+
+          // ¡¡¡¡¡¡¡¡NO SUBIR INFORMACIÓN RELEVANTE A CUENTAS DE CORREO!!!!!!!!!
+          /**
+           * GMAIL STEPS AND CONFIGURATION: 
+           * 
+           * https://support.google.com/mail/answer/7126229?hl=en#zippy=%2Cstep-check-that-imap-is-turned-on%2Cstep-change-smtp-other-settings-in-your-email-client
+           * Go to https://myaccount.google.com/
+           * Go to Security section on the left navigation panel.
+           * Find Less secure app access block, it is somewhere below, scroll to it.
+           * Turn it to ON
+           * host: 'imap.gmail.com',
+           */
+          // ¡¡¡¡¡¡¡¡NO SUBIR INFORMACIÓN RELEVANTE A CUENTAS DE CORREO!!!!!!!!!
+
+          function openInbox(cb) {
+            imap.openBox('INBOX', true, cb);
+          }
+          //TODO: leer el mensaje y guardar el tokenId en la variable "_this.values.token", inicializada al inicio del método
+          imap.once('ready', function() {
+            openInbox(function(err, box) {
+              if (err) throw err;
+              var f = imap.seq.fetch(box.messages.total + ':*')
+              f.on('message', function(msg, seqno) {
+                console.log('Message ', msg);
+                
+              })
+              msg.on('body', function(stream, info) {
+                if (info.which === 'TEXT')
+                  console.log(prefix + 'Body [%s] found, %d total bytes', inspect(info.which), info.size);
+                var buffer = '', count = 0;
+                stream.on('data', function(chunk) {
+                  count += chunk.length;
+                  buffer += chunk.toString('utf8');
+                  if (info.which === 'TEXT')
+                    console.log(prefix + 'Body [%s] (%d/%d)', inspect(info.which), count, info.size);
+                });
+                stream.once('end', function() {
+                  if (info.which !== 'TEXT')
+                    console.log(prefix + 'Parsed header: %s', inspect(Imap.parseHeader(buffer)));
+                  else
+                    console.log(prefix + 'Body [%s] Finished', inspect(info.which));
+                });
+              });
+              msg.once('attributes', function(attrs) {
+                console.log(prefix + 'Attributes: %s', inspect(attrs, false, 8));
+              });
+              msg.once('end', function() {
+                console.log(prefix + 'Finished');
+              });
+            });
+          });
+          
+          imap.once('error', function(err) {
+            console.log(err);
+            _this.error = err;
+            error(JSON.stringify(err));
+          });
+          
+          imap.once('end', function() {
+            console.log('Connection ended');
+            callback();
+          });
+          
+    
+          imap.connect();  
+    })
+});
+
+
 When(/^I update password with "([^"]*)"$/, function (field) {
     var _this = this;
     _this.error = undefined;
@@ -929,6 +1065,36 @@ When(/^I update password with "([^"]*)"$/, function (field) {
 
     try {
         return _this.util.updatePassword(field).then(catchResponse).catch(catchErrorResponse);
+    } catch (err) {
+        console.error('ERROR: ', err);
+        this.error = err;
+        
+        return;
+    }
+});
+
+When(/^I update password with "([^"]*)" and token$/, function (password) {
+    var _this = this;
+    _this.error = undefined;
+    _this.responseData = undefined;
+    var token = _this.values && _this.values.token
+    function catchResponse (data) {
+        //console.log('catchResponse', data);
+        _this.responseData = data;
+        _this.error = undefined;
+        
+    }
+
+    function catchErrorResponse (err) {
+        console.error('catchErrorResponse', err);
+        _this.responseData = err;
+        _this.error = err;
+
+    }
+
+    try {
+
+        return _this.util.updatePassword(password, token).then(catchResponse).catch(catchErrorResponse);
     } catch (err) {
         console.error('ERROR: ', err);
         this.error = err;

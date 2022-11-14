@@ -2,6 +2,7 @@
 
 import BaseProvision from '../provision/BaseProvision';
 import q from 'q';
+import _ from 'lodash';
 
 const _length_name = 100;
 const _length_surname = 100;
@@ -227,34 +228,11 @@ export default class User extends BaseProvision {
         return data;
     }
 
-    /**
-     * This invoke a request to OpenGate North API and the callback is managed by promises
-     * This function updates a password of a user
-     * @return {Promise}
-     * @property {function (result:object, statusCode:number)} then - When request it is OK
-     * @property {function (error:string)} catch - When request it is NOK
-     * @example
-     *  ogapi.organizationsBuilder().withEmail(example@example.es).withPassword(oldPassword).updatePassword(newPassword);
-     */
-    updatePassword(newPassword) {
-        this._newPassword = newPassword;
-        if (this._email === undefined || this._password === undefined || this._newPassword === undefined) {
-            throw new Error('OGAPI_USER_UPDATE_PASSWORD_PARAMETER_MUST_BE_DEFINED');
-        }
-
-        var data = {
-            user: {
-                password: this._newPassword
-            }
-        };
-
+    _post(url, data) {
         var defered = q.defer();
         var promise = defered.promise;
-        this._setExtraHeaders({
-            'X-ApiPass': this._password
-        });
-
-        this._ogapi.Napi.put(this._buildURL(), data, undefined, this._getExtraHeaders(), this._getUrlParameters())
+        
+        this._ogapi.Napi.post(url, data, undefined, this._getExtraHeaders(), this._getUrlParameters())
             .then((res) => {
                 if (res.statusCode === 200) {
                     defered.resolve({
@@ -275,6 +253,87 @@ export default class User extends BaseProvision {
                 defered.reject(error);
             });
         return promise;
-
     }
+    /**
+     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * This function updates a password of a user
+     * @return {Promise}
+     * @param {String} newPassword - required field
+     * @property {function (result:object, statusCode:number)} then - When request it is OK
+     * @property {function (error:string)} catch - When request it is NOK
+     * @example
+     *  ogapi.usersBuilder().withEmail(example@example.es).withPassword(oldPassword).updatePassword(newPassword);
+     */
+    updatePassword(newPassword) {
+        this._newPassword = newPassword;
+        if (_.isEmpty(this._email) || _.isEmpty(this._password) || _.isEmpty(this._newPassword)) {
+            throw new Error('OGAPI_USER_UPDATE_PASSWORD_PARAMETER_MUST_BE_DEFINED');
+        }
+
+        var data = {
+            user: {
+                password: this._newPassword
+            }
+        };
+
+        this._setExtraHeaders({
+            'X-ApiPass': this._password
+        });
+
+        return this._doNorthPost(this._buildURL(), data);
+    }
+
+    /**
+     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * This function request for new password when the user forgets it. 
+     * Sends a password recovery email
+     * @return {Promise}
+     * @property {function (result:object, statusCode:number)} then - When request it is OK
+     * @property {function (error:string)} catch - When request it is NOK
+     * @example
+     *  ogapi.usersBuilder().withEmail(example@example.es).requestResetPassword()
+     */
+    requestResetPassword() {
+        if (_.isEmpty(this._email)) {
+            throw new Error('OGAPI_USER_MAIL_RESET_PASSWORD_PARAMETER_MUST_BE_DEFINED');
+        }
+        var url = this._buildURL() + '/reset'
+        return this._doNorthPost(url);
+    }
+
+    /**
+     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * This function updates a password of a user with a tokenId
+     * @param {String} newPassword - required field
+     * @param {String} tokenId - required field
+     * @return {Promise}
+     * @property {function (result:object, statusCode:number)} then - When request it is OK
+     * @property {function (error:string)} catch - When request it is NOK
+     * @example
+     *  ogapi.usersBuilder().withEmail(example@example.es).updatePassword(newPassword, tokenid);
+     */
+     updatePassword(newPassword, tokenId) {
+        this._newPassword = newPassword;
+        this._tokenId = tokenId;
+        if (_.isEmpty(this._email)){
+            throw new Error('OGAPI_USER_MAIL_RESET_PASSWORD_PARAMETER_MUST_BE_DEFINED');
+        }
+        if(_.isEmpty(this._newPassword)){
+            throw new Error('OGAPI_USER_PASSWORD_RESET_PASSWORD_PARAMETER_MUST_BE_DEFINED');
+        }
+
+        if(_.isEmpty(tokenId)){
+            throw new Error('OGAPI_USER_TOKENID_RESET_PASSWORD_PARAMETER_MUST_BE_DEFINED');
+        }
+
+        var data = {
+            password: this._newPassword
+        };
+
+
+        var url = this._buildURL() + '/reset/' + tokenId
+        
+        return this._doNorthPost(url, data);
+    }
+    
 }
