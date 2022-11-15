@@ -109,6 +109,12 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATAMODEL_RESOURCE">DATAMODEL_RESOURCE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-POST_RESOURCE">POST_RESOURCE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PRE_RESOURCE">PRE_RESOURCE</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">manufacturers</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/manufacturers/Manufacturer.js~Manufacturers.html">Manufacturers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/manufacturers/ManufacturerFinder.js~ManufacturerFinder.html">ManufacturerFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/manufacturers/ManufacturerMedia.js~ManufacturerMedia.html">ManufacturerMedia</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/manufacturers/Model.js~Models.html">Models</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/manufacturers/ModelFinder.js~ModelFinder.html">ModelFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/manufacturers/ModelMedia.js~ModelMedia.html">ModelMedia</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operationTypes</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operationTypes/OperationType.js~OperationType.html">OperationType</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operationTypes/OperationTypeCatalog.js~OperationTypesCatalog.html">OperationTypesCatalog</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operationTypes/OperationTypeFinder.js~OperationTypeFinder.html">OperationTypeFinder</a></span></span></li>
@@ -416,6 +422,8 @@ export default class NorthAmpliaREST {
         let req = request.post(_url);
 
         let sendFormData = true
+
+        // Esta parte es s&#xF3;lo para cuando viene de tests o node
         const formDataKeys = Object.keys(formData)
         formDataKeys.forEach(key =&gt; {
             switch (key) {
@@ -425,9 +433,10 @@ export default class NorthAmpliaREST {
                     req.field(key, formData[key]);    
                     delete formData[key]
                     break
+                case &apos;hardwareMedia&apos;: 
                 case &apos;certificate&apos;: 
                 case &apos;processorBulkFile&apos;:
-                    req.attach(&apos;file&apos;, formData.processorBulkFile);
+                    req.attach(&apos;file&apos;, formData[key]);
                     sendFormData = false
                     break
                 case &apos;bulkFile&apos;:
