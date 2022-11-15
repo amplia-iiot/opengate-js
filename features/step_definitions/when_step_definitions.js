@@ -968,7 +968,6 @@ When(/^I read reset password mail and save token$/, {timeout: 15000}, async func
             // ¡¡¡¡¡¡¡¡NO SUBIR INFORMACIÓN RELEVANTE A CUENTAS DE CORREO!!!!!!!!!
             password: process.env.MAIL_PASSWORD || 'PASSWORD_NOT_FOUND',
             // ¡¡¡¡¡¡¡¡NO SUBIR INFORMACIÓN RELEVANTE A CUENTAS DE CORREO!!!!!!!!!
-            port: 0,
             host: process.env.MAIL_HOST || 'HOST_NOT_FOUND',
             port: process.env.MAIL_PORT || 993,
             tls: true,
