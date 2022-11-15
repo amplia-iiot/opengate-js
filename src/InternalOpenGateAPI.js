@@ -126,6 +126,10 @@ import _superagent from 'superagent';
 import ConnectorFunctionsHelper from './connectorsFunctionsConfiguration/ConnectorFunctionsHelper';
 import ConnectorFunctionsFinder from './connectorsFunctionsConfiguration/ConnectorFunctionsFinder';
 import ConnectorFunctions from './connectorsFunctionsConfiguration/ConnectorFunctions';
+import ManufacturersBuilder from './manufacturers/Manufacturer'
+import ManufacturerModelsBuilder from './manufacturers/Model'
+import ManufacturerFinder from './manufacturers/ManufacturerFinder'
+import ModelFinder from './manufacturers/ModelFinder'
 
 const RequestEndMonkeyPatching = (function(){
     let beforeStart
@@ -1128,11 +1132,44 @@ export default class InternalOpenGateAPI {
     provisionProcessorsBuilder() {
         return new ProvisionProcessors(this);
     }
+
     /**
      * This return a util to find a provision procesor
      * @return {ProvisionProcessorsFinder}
      */
-     newProvisionProcessorsFinder() {
+    newProvisionProcessorsFinder() {
          return new ProvisionProcessorsFinder(this);
+    }
+
+    /**
+     * This return a ManufacturersBuilder to build a specific ManufacturersBuilder
+     * @return {ManufacturersBuilder}
+     */
+    manufacturersBuilder() {
+        return new ManufacturersBuilder(this);
+    }
+    
+    /**
+     * This return a ManufacturerModelsBuilder to build a specific ManufacturerModelsBuilder
+     * @return {ManufacturerModelsBuilder}
+     */
+    manufacturerModelsBuilder() {
+        return new ManufacturerModelsBuilder(this);
+    }
+
+    /**
+     * This return a util to find a hardware manufacturer
+     * @return {ManufacturerFinder}
+     */
+    newManufacturersFinder() {
+        return new ManufacturerFinder(this);
+    }
+
+    /**
+     * This return a util to find a hardware model
+     * @return {ModelFinder}
+     */
+    newModelFinder() {
+        return new ModelFinder(this);
     }
 }

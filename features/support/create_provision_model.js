@@ -404,8 +404,40 @@ module.exports = {
             },
             'geocluster': {
                 'identifier': 'withIdentifier',
-            }
-
+            },
+            'manufacturer': {
+                'identifier': 'withIdentifier',
+                'name': 'withName',
+                'description': 'withDescription',
+                'notes': 'withNotes',
+                'telephone': 'withTelephone',
+                'address': 'withAddress',
+                'email': 'withEmail',
+                'fax': 'withFax',
+                'url': 'withUrl',
+                'manufacturer model': 'modelBuilder',
+                'manufacturer media': 'mediaBuilder'
+            },
+            'manufacturer media': {
+                'identifier': 'withIdentifier',
+                'name': 'withName'
+            },
+            'manufacturer model': {
+                'identifier': 'withIdentifier',
+                'name': 'withName',
+                'version': 'withVersion',
+                'description': 'withDescription',
+                'notes': 'withNotes',
+                'url': 'withUrl',
+                'manufacturer': 'withManufacturer',
+                'manufacturer id': 'withManufacturerIdentifier',
+                'manufacturer name': 'withManufacturerName',
+                'manufacturer model media': 'mediaBuilder'
+            },
+            'manufacturer model media': {
+                'identifier': 'withIdentifier',
+                'name': 'withName'
+            },
         }[setter];
     },
     getter_response: function (getter) {
