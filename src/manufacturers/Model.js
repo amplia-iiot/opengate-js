@@ -74,7 +74,7 @@ export default class Models extends BaseProvision {
     withUrl(url) {
         if (typeof url !== 'string')
            throw new Error("OGAPI_STRING_PARAMETER");
-        this._manufUrl = url;
+        this._modelUrl = url;
         return this;
     }
 
@@ -141,6 +141,7 @@ export default class Models extends BaseProvision {
                 description: this._description || undefined,
                 version: this._version || undefined,
                 notes: this._notes || undefined,
+                url: this._modelUrl || undefined,
                 manufacturer: {
                     id: this._manufacturer._identifier || undefined,
                     name: this._manufacturer._name || undefined    
