@@ -76,6 +76,7 @@ import OperationTypesSearchBuilder from './searching/builder/OperationTypesSearc
 import UsersSearchBuilder from './searching/builder/UsersSearchBuilder';
 import DomainsSearchBuilder from './searching/builder/DomainsSearchBuilder';
 import PlansSearchBuilder from './searching/builder/PlansSearchBuilder';
+import DevicesPlansSearchBuilder from './searching/builder/DevicesPlansSearchBuilder';
 import Bundles from './bundles/Bundles';
 import BundleFinder from './bundles/BundleFinder';
 import Organizations from './organizations/Organizations';
@@ -728,6 +729,14 @@ export default class InternalOpenGateAPI {
      */
     plansSearchBuilder() {
         return new PlansSearchBuilder(this);
+    }
+
+    /**
+     * This return a DevicePlansSearchBuilder to build a specific DevicePlansSearchBuilder
+     * @return {PlansSearchBuilder}
+     */
+    devicesPlansSearchBuilder() {
+        return new DevicesPlansSearchBuilder(this);
     }
 
     /**

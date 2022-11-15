@@ -498,6 +498,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/searching/builder/devicesplanssearchbuilder.js~devicesplanssearchbuilder",
+    "class/src/searching/builder/DevicesPlansSearchBuilder.js~DevicesPlansSearchBuilder.html",
+    "<span>DevicesPlansSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/DevicesPlansSearchBuilder.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/searching/builder/devicessearchbuilder.js~devicessearchbuilder",
     "class/src/searching/builder/DevicesSearchBuilder.js~DevicesSearchBuilder.html",
     "<span>DevicesSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/DevicesSearchBuilder.js</span>",
@@ -3345,6 +3351,12 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#devicemessagebuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-deviceMessageBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#deviceMessageBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#devicesplanssearchbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-devicesPlansSearchBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#devicesPlansSearchBuilder",
     "method"
   ],
   [
@@ -8319,6 +8331,24 @@ window.esdocSearchIndex = [
     "src/searching/builder/datastreamssearchbuilder.js~datastreamssearchbuilder#constructor",
     "class/src/searching/builder/DatastreamsSearchBuilder.js~DatastreamsSearchBuilder.html#instance-constructor-constructor",
     "src/searching/builder/DatastreamsSearchBuilder.js~DatastreamsSearchBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/searching/builder/devicesplanssearchbuilder.js",
+    "file/src/searching/builder/DevicesPlansSearchBuilder.js.html",
+    "src/searching/builder/DevicesPlansSearchBuilder.js",
+    "file"
+  ],
+  [
+    "src/searching/builder/devicesplanssearchbuilder.js~devicesplanssearchbuilder#constructor",
+    "class/src/searching/builder/DevicesPlansSearchBuilder.js~DevicesPlansSearchBuilder.html#instance-constructor-constructor",
+    "src/searching/builder/DevicesPlansSearchBuilder.js~DevicesPlansSearchBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/searching/builder/devicesplanssearchbuilder.js~devicesplanssearchbuilder#withdomain",
+    "class/src/searching/builder/DevicesPlansSearchBuilder.js~DevicesPlansSearchBuilder.html#instance-method-withDomain",
+    "src/searching/builder/DevicesPlansSearchBuilder.js~DevicesPlansSearchBuilder#withDomain",
     "method"
   ],
   [

@@ -186,6 +186,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder.html">DatasetSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatasetsCatalogSearchBuilder.js~DatasetsCatalogSearchBuilder.html">DatasetsCatalogSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatastreamsSearchBuilder.js~DatastreamsSearchBuilder.html">DatastreamsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DevicesPlansSearchBuilder.js~DevicesPlansSearchBuilder.html">DevicesPlansSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DevicesSearchBuilder.js~DevicesSearchBuilder.html">DevicesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DomainsSearchBuilder.js~DomainsSearchBuilder.html">DomainsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/EntitiesSearchBuilder.js~EntitiesSearchBuilder.html">EntitiesSearchBuilder</a></span></span></li>
@@ -270,6 +271,7 @@
 import HttpStatus from &apos;http-status-codes&apos;;
 import BaseProvision from &apos;../BaseProvision&apos;;
 import q from &apos;q&apos;;
+import _ from &apos;lodash&apos;
 
 const ERROR_VALUE_NOT_ALLOWED = &apos;value is not allowed. The value should be formatted as follows: &apos;;
 const ERROR_DATASTREAM_NOT_ALLOWED = &apos;Datastream is not allowed&apos;;
@@ -355,9 +357,13 @@ export default class SimpleBuilder extends BaseProvision {
      */
     with(_id, val) {
         if (val === undefined || val.length === 0) {
-            delete this._entity[_id];
-            return this;
+            // Si es un array vac&#xED;o debe continuar
+            if (!_.isArray(val)) {
+                delete this._entity[_id];
+                return this;
+            }
         }
+
         if (this.getAllowedDatastreams().filter(function(ds) {
                 return ds.identifier === _id;
             }).length !== 1) {

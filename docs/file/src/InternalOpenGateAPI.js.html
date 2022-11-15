@@ -186,6 +186,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder.html">DatasetSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatasetsCatalogSearchBuilder.js~DatasetsCatalogSearchBuilder.html">DatasetsCatalogSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatastreamsSearchBuilder.js~DatastreamsSearchBuilder.html">DatastreamsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DevicesPlansSearchBuilder.js~DevicesPlansSearchBuilder.html">DevicesPlansSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DevicesSearchBuilder.js~DevicesSearchBuilder.html">DevicesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DomainsSearchBuilder.js~DomainsSearchBuilder.html">DomainsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/EntitiesSearchBuilder.js~EntitiesSearchBuilder.html">EntitiesSearchBuilder</a></span></span></li>
@@ -343,6 +344,7 @@ import OperationTypesSearchBuilder from &apos;./searching/builder/OperationTypes
 import UsersSearchBuilder from &apos;./searching/builder/UsersSearchBuilder&apos;;
 import DomainsSearchBuilder from &apos;./searching/builder/DomainsSearchBuilder&apos;;
 import PlansSearchBuilder from &apos;./searching/builder/PlansSearchBuilder&apos;;
+import DevicesPlansSearchBuilder from &apos;./searching/builder/DevicesPlansSearchBuilder&apos;;
 import Bundles from &apos;./bundles/Bundles&apos;;
 import BundleFinder from &apos;./bundles/BundleFinder&apos;;
 import Organizations from &apos;./organizations/Organizations&apos;;
@@ -991,6 +993,14 @@ export default class InternalOpenGateAPI {
      */
     plansSearchBuilder() {
         return new PlansSearchBuilder(this);
+    }
+
+    /**
+     * This return a DevicePlansSearchBuilder to build a specific DevicePlansSearchBuilder
+     * @return {PlansSearchBuilder}
+     */
+    devicesPlansSearchBuilder() {
+        return new DevicesPlansSearchBuilder(this);
     }
 
     /**
