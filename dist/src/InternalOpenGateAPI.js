@@ -514,6 +514,22 @@ var _connectorsFunctionsConfigurationConnectorFunctions = require('./connectorsF
 
 var _connectorsFunctionsConfigurationConnectorFunctions2 = _interopRequireDefault(_connectorsFunctionsConfigurationConnectorFunctions);
 
+var _manufacturersManufacturer = require('./manufacturers/Manufacturer');
+
+var _manufacturersManufacturer2 = _interopRequireDefault(_manufacturersManufacturer);
+
+var _manufacturersModel = require('./manufacturers/Model');
+
+var _manufacturersModel2 = _interopRequireDefault(_manufacturersModel);
+
+var _manufacturersManufacturerFinder = require('./manufacturers/ManufacturerFinder');
+
+var _manufacturersManufacturerFinder2 = _interopRequireDefault(_manufacturersManufacturerFinder);
+
+var _manufacturersModelFinder = require('./manufacturers/ModelFinder');
+
+var _manufacturersModelFinder2 = _interopRequireDefault(_manufacturersModelFinder);
+
 var RequestEndMonkeyPatching = (function () {
     var beforeStart = undefined;
     var end = _superagent3['default'].Request.prototype.end;
@@ -1762,6 +1778,46 @@ var InternalOpenGateAPI = (function () {
         key: 'newProvisionProcessorsFinder',
         value: function newProvisionProcessorsFinder() {
             return new _provisionProcessorsProvisionProcessorsFinder2['default'](this);
+        }
+
+        /**
+         * This return a ManufacturersBuilder to build a specific ManufacturersBuilder
+         * @return {ManufacturersBuilder}
+         */
+    }, {
+        key: 'manufacturersBuilder',
+        value: function manufacturersBuilder() {
+            return new _manufacturersManufacturer2['default'](this);
+        }
+
+        /**
+         * This return a ManufacturerModelsBuilder to build a specific ManufacturerModelsBuilder
+         * @return {ManufacturerModelsBuilder}
+         */
+    }, {
+        key: 'manufacturerModelsBuilder',
+        value: function manufacturerModelsBuilder() {
+            return new _manufacturersModel2['default'](this);
+        }
+
+        /**
+         * This return a util to find a hardware manufacturer
+         * @return {ManufacturerFinder}
+         */
+    }, {
+        key: 'newManufacturersFinder',
+        value: function newManufacturersFinder() {
+            return new _manufacturersManufacturerFinder2['default'](this);
+        }
+
+        /**
+         * This return a util to find a hardware model
+         * @return {ModelFinder}
+         */
+    }, {
+        key: 'newModelFinder',
+        value: function newModelFinder() {
+            return new _manufacturersModelFinder2['default'](this);
         }
     }]);
 

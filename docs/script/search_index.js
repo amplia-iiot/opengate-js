@@ -8550,39 +8550,27 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#fluentfilter",
-    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-member-fluentFilter",
-    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#fluentFilter",
-    "member"
-  ],
-  [
-    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#tagsfilter",
-    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-member-tagsFilter",
-    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#tagsFilter",
-    "member"
-  ],
-  [
-    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#withid",
-    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-withId",
-    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#withId",
+    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#disabledefaultsorted",
+    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-disableDefaultSorted",
+    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#disableDefaultSorted",
     "method"
   ],
   [
-    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#withmanufacturer",
-    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-withManufacturer",
-    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#withManufacturer",
+    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#flattened",
+    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-flattened",
+    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#flattened",
     "method"
   ],
   [
-    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#withmodel",
-    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-withModel",
-    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#withModel",
+    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#group",
+    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-group",
+    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#group",
     "method"
   ],
   [
-    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#withmodelversion",
-    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-withModelVersion",
-    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#withModelVersion",
+    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#select",
+    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-select",
+    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#select",
     "method"
   ],
   [
