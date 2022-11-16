@@ -964,6 +964,18 @@ When(/^I read reset password mail and save token$/, { timeout: 15000 }, async fu
          * - linux: $ export MAIL_USER=xxx@xxx.xx && export MAIL_PASSWORD='xxxxxxx' && export MAIL_HOST=xxx.xxxx.xx && gulp cucumber
          * - powerShell: > $env:MAIL_USER="xxx@xxx.xx"; $env:MAIL_PASSWORD='xxxx'; $env:MAIL_HOST="xxx.xxxx.xx"; gulp cucumber
          */
+        //
+          /** 
+           * GMAIL STEPS AND CONFIGURATION:  
+           *  
+           * https://support.google.com/mail/answer/7126229?hl=en#zippy=%2Cstep-check-that-imap-is-turned-on%2Cstep-change-smtp-other-settings-in-your-email-client 
+           * Go to https://myaccount.google.com/ 
+           * Go to Security section on the left navigation panel. 
+           * Find Less secure app access block, it is somewhere below, scroll to it. 
+           * Turn it to ON 
+           * host: 'imap.gmail.com', 
+           */ 
+        // ¡¡¡¡¡¡¡¡NO SUBIR INFORMACIÓN RELEVANTE A CUENTAS DE CORREO!!!!!!!!! 
         const imapConfig = {
             // ¡¡¡¡¡¡¡¡NO SUBIR INFORMACIÓN RELEVANTE A CUENTAS DE CORREO!!!!!!!!!
             user: process.env.MAIL_USER || 'MAIL_NOT_FOUND',
