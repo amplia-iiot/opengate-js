@@ -990,7 +990,6 @@ When(/^I read reset password mail and save token$/, { timeout: 15000 }, async fu
                                     _this.error = err;
                                     error(JSON.stringify(err)); 
                                 }
-                                console.log('regexToken', regexToken)
                                 _this.values.token = regexToken;
                             });
                         });
@@ -1008,8 +1007,7 @@ When(/^I read reset password mail and save token$/, { timeout: 15000 }, async fu
                     });
                     f.once('end', () => {
                         console.log('finish reading the mail');
-                        imap.end();
-                        callback();           
+                        imap.end();      
                     });
                 });
             });
@@ -1022,6 +1020,7 @@ When(/^I read reset password mail and save token$/, { timeout: 15000 }, async fu
 
         imap.once('end', () => {
             console.log('Connection ended');
+            callback();     
         });
 
         imap.connect();
