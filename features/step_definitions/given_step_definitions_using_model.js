@@ -267,8 +267,12 @@ Given(/^the "([^"]*)" with null value$/, function (setterName, callback) {
 Given(/^the "([^"]*)" "([^"]*)"$/, function (setterName, setterValue, callback) {
     this.error = undefined;
     try {
+        var value = setterValue
+        if(setterValue === "from the saved variable"){
+            value = this.values && this.values[setterName]
+        }
         var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
-        this.util[method](setterValue);
+        this.util[method](value);
     } catch (err) {
         this.error = err;
         assert.ifError(this.error);
@@ -582,6 +586,20 @@ Given(/^I download and read the file from "([^"]*)"$/, function (fileName, callb
 Given(/^an apikey user by "([^"]*)"$/, function (apikey, callback) {
     var config = {
         'apiKey': this.apikey || apikey,
+        'url': this.test_url_north,
+        'timeout': 60000,
+        south: {
+            'url': this.test_url_south
+        }
+    };
+
+    this.ogapi = new OpengateAPI(config);
+
+    callback();
+});
+
+Given('an user remove her apikey', function (callback) {
+    var config = {
         'url': this.test_url_north,
         'timeout': 60000,
         south: {

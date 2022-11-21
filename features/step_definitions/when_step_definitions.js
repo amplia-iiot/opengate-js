@@ -1,5 +1,9 @@
 // features/step_definitions/when_step_definitions.js
+var Imap = require('imap');
+const { simpleParser } = require('mailparser');
 
+inspet = require('util').inspect;
+var q = require('q');
 var GenericFinder = require(process.cwd() + '/dist/src/GenericFinder');
 var {
     When,
@@ -9,7 +13,7 @@ var {
 When(/^I want "([^"]*)"( (\d*) minutes| for this url "([^"]*)" for)? (a|of a) operation$/, function (action, nothing, minutes, data, exclude) {
     var _this = this;
 
-    function digestResponseData (response) {
+    function digestResponseData(response) {
         //console.log('digestResponseData', response)
         //Guardamos el identificador anterior por si hiciera falta para el siguiente paso
         var id = _this.responseData.id;
@@ -37,7 +41,7 @@ When(/^I want "([^"]*)"( (\d*) minutes| for this url "([^"]*)" for)? (a|of a) op
         this.error = undefined;
     }
 
-    function digestErrorData (response) {
+    function digestErrorData(response) {
         console.error('digestErrorData', response)
         var cache = [];
         var error = JSON.stringify(response, function (key, value) {
@@ -52,7 +56,7 @@ When(/^I want "([^"]*)"( (\d*) minutes| for this url "([^"]*)" for)? (a|of a) op
             return value;
         });
         cache = null; // Enable garbage collection
-        
+
         _this.error = error;
         _this.responseData = response;
 
@@ -104,7 +108,7 @@ When(/^I try to find an operation for its id of periodicity and save its id$/, f
     var _this = this;
     _this.error = undefined;
 
-    function digestResponseData (response) {
+    function digestResponseData(response) {
         //console.log('digestResponseData', response)
         _this.responseData = {
             data: response.data[0],
@@ -114,7 +118,7 @@ When(/^I try to find an operation for its id of periodicity and save its id$/, f
         _this.error = undefined;
     }
 
-    function digestErrorData (error) {
+    function digestErrorData(error) {
         console.error('digestErrorData', err)
         _this.error = error;
         _this.responseData = error;
@@ -142,7 +146,7 @@ When(/^I try to find by operation's id$/, function () {
     var _this = this;
     this.error = undefined;
 
-    function digestResponseData (response) {
+    function digestResponseData(response) {
         //console.log('digestResponseData', response)
         var id = _this.responseData.id;
         var location = _this.responseData.location;
@@ -159,7 +163,7 @@ When(/^I try to find by operation's id$/, function () {
         this.error = undefined;
     }
 
-    function digestErrorData (response) {
+    function digestErrorData(response) {
         console.error('digestErrorData', response)
         _this.error = response;
         _this.responseData = response;
@@ -334,13 +338,13 @@ When(/^I execute it$/, function () {
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log("catchResponse", data);
         _this.responseData = data;
         _this.error = undefined;
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         console.error("catchErrorResponse", err);
         _this.responseData = undefined;
         _this.error = err;
@@ -361,13 +365,13 @@ When(/^I delete data$/, function () {
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log("catchResponse", data);
         _this.responseData = data;
         _this.error = undefined;
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         console.error("catchErrorResponse", err);
         _this.responseData = undefined;
         _this.error = err;
@@ -388,13 +392,13 @@ When(/^I download csv it$/, function () {
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log('catchResponse', data)
         _this.responseData = data;
         _this.error = undefined;
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         console.error('catchErrorResponse', err)
         _this.responseData = err;
         _this.error = err;
@@ -418,20 +422,20 @@ When(/^I execute with async paging it$/, function () {
     _this.responseData = undefined;
     _this.data = [];
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log('catchResponse', data)
         _this.responseData = data;
         _this.error = undefined;
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         console.error('catchErrorResponse', err)
         _this.responseData = err;
         _this.error = err;
 
     }
 
-    function catchNotification (notification) {
+    function catchNotification(notification) {
         //console.log('catchNotification', notification)
         _this.error = undefined;
         _this.responseData = undefined;
@@ -453,20 +457,20 @@ When(/^I execute with async paging it and cancel it$/, function () {
     _this.responseData = undefined;
     _this.data = [];
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log('catchResponse', data)
         _this.responseData = data;
         _this.error = undefined;
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         console.error('catchErrorResponse', err)
         _this.responseData = err;
         _this.error = err;
 
     }
 
-    function catchNotification (notification) {
+    function catchNotification(notification) {
         //console.log('catchNotification', notification)
         _this.error = undefined;
         _this.responseData = undefined;
@@ -489,20 +493,20 @@ When(/^I execute with async paging it and cancel it with custom message$/, funct
     _this.responseData = undefined;
     _this.data = [];
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log('catchResponse', data)
         _this.responseData = data;
         _this.error = undefined;
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         console.error('catchErrorResponse', err)
         _this.responseData = err;
         _this.error = err;
 
     }
 
-    function catchNotification (notification) {
+    function catchNotification(notification) {
         //console.log('catchNotification', notification)
         _this.error = undefined;
         _this.responseData = undefined;
@@ -524,13 +528,13 @@ When(/^I update periodicity$/, function () {
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log('catchResponse', data)
         _this.responseData = data;
         _this.error = undefined;
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         console.error('catchErrorResponse', err)
         var cache = [];
         var error = JSON.stringify(err.data.errors, function (key, value) {
@@ -567,7 +571,7 @@ When(/^I create it$/, {
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log("catchResponse", data);
         _this.responseData = data;
         _this.location = _this.responseData.location;
@@ -575,10 +579,10 @@ When(/^I create it$/, {
 
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         console.error("catchErrorResponse", err)
         _this.responseData = err;
-        
+
         if (err.errors) {
             _this.error = err.errors;
         } else if (err.data.errors) {
@@ -598,7 +602,7 @@ When(/^I create it$/, {
     } catch (err) {
         console.error('ERROR: ', err);
         this.error = err;
-        
+
         return;
     }
 });
@@ -609,14 +613,14 @@ When(/^I "([^"]*)" it with bulk$/, function (action) {
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log('catchResponse', data)
         _this.responseData = data;
         _this.location = _this.responseData.location;
         _this.error = this.error = undefined;
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         console.error('catchErrorResponse', err)
         _this.responseData = err;
         if (err.errors) {
@@ -647,14 +651,14 @@ When(/^I "([^"]*)" it with bulk execution$/, {
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log('catchResponse', data)
         _this.responseData = data;
         _this.location = _this.responseData.location;
         _this.error = this.error = undefined;
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         console.error('catchErrorResponse', err)
         _this.responseData = err;
         if (err.errors) {
@@ -673,7 +677,7 @@ When(/^I "([^"]*)" it with bulk execution$/, {
         }
     } catch (err) {
         console.error('ERROR: ', err);
-        this.error = err;        
+        this.error = err;
         return;
     }
 });
@@ -683,13 +687,13 @@ When(/^I "([^"]*)" it with bulk and response with format csv$/, function (action
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log('catchResponse', data)
         _this.responseData = data;
         _this.error = undefined;
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         console.error('catchErrorResponse', err)
         _this.responseData = err;
         _this.error = err;
@@ -728,17 +732,17 @@ When(/^I delete it with identfier from location$/, function () {
     }
     var id;
     try {
-        if(this.responseData){
+        if (this.responseData) {
             if (this.responseData.location)
                 id = this.responseData.location.substring(this.responseData.location.lastIndexOf("/") + 1);
             else if (this.responseData.data)
                 id = this.responseData.data.id;
             else if (this.responseData[0])
                 id = this.responseData[0].id;
-        }else if(this.location){
+        } else if (this.location) {
             id = this.location.substring(this.location.lastIndexOf("/") + 1);
         }
-        
+
         _this.util.withIdentifier(id)
         return _this.util.delete().then(catchResponse).catch(catchErrorResponse);
 
@@ -751,26 +755,27 @@ When(/^I delete it with identfier from location$/, function () {
     }
 });
 
-When(/^I delete it$/, {timeout: 60 * 1000}, function () {
+When(/^I delete it$/, { timeout: 60 * 1000 }, function () {
 
     var _this = this;
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log('catchResponse', data);
         _this.responseData = data;
         _this.error = undefined;
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         console.error('catchErrorResponse', err);
         _this.responseData = err;
         _this.error = err;
 
     }
 
-    try {;
+    try {
+        ;
         return _this.util.delete().then(catchResponse).catch(catchErrorResponse);
 
     } catch (err) {
@@ -787,13 +792,13 @@ When(/^I delete it with location as a identifier$/, function () {
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log('catchResponse', data);
         _this.responseData = data;
         _this.error = undefined;
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         console.error('catchErrorResponse', err);
         _this.responseData = err;
         _this.error = err;
@@ -818,13 +823,13 @@ When(/^I delete it all$/, function () {
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log('catchResponse', data)
         _this.responseData = data;
         _this.error = undefined;
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         console.error('catchErrorResponse', err)
         _this.responseData = err;
         _this.error = err;
@@ -860,17 +865,17 @@ When(/^I update it with identfier from location$/, function () {
     }
     var id
     try {
-        if(this.responseData){
+        if (this.responseData) {
             if (this.responseData.location)
                 id = this.responseData.location.substring(this.responseData.location.lastIndexOf("/") + 1);
             else if (this.responseData.data)
                 id = this.responseData.data.id;
             else if (this.responseData[0])
                 id = this.responseData[0].id;
-        }else if(this.location){
+        } else if (this.location) {
             id = this.location.substring(this.location.lastIndexOf("/") + 1);
         }
-        
+
         _this.util.withIdentifier(id)
         return _this.util.update().then(catchResponse).catch(catchErrorResponse);
     } catch (err) {
@@ -885,13 +890,13 @@ When(/^I update it$/, function () {
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log('catchResponse', _this.data);
         _this.responseData = data;
         _this.error = undefined;
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         console.error('catchErrorResponse', err);
         _this.responseData = err;
         _this.error = err;
@@ -903,24 +908,151 @@ When(/^I update it$/, function () {
     } catch (err) {
         console.error('ERROR: ', err);
         this.error = err;
-        
+
         return;
     }
 });
+
+When(/^I request reset password$/, function () {
+    var _this = this;
+    _this.error = undefined;
+    _this.responseData = undefined;
+
+    function catchResponse(data) {
+        //console.log('catchResponse', data);
+        _this.responseData = data;
+        _this.error = undefined;
+
+    }
+
+    function catchErrorResponse(err) {
+        console.error('catchErrorResponse', err);
+        _this.responseData = err;
+        _this.error = err;
+
+    }
+
+    try {
+        return _this.util.requestResetPassword().then(catchResponse).catch(catchErrorResponse);
+    } catch (err) {
+        console.error('ERROR: ', err);
+        this.error = err;
+
+        return;
+    }
+});
+
+When(/^I read reset password mail and save token mock$/, function () {
+    var _this = this;
+
+    _this.values = {
+        token: 'akdjfkasdjfklsadjflkjasld'
+    };
+})
+
+When(/^I read reset password mail and save token$/, { timeout: 15000 }, async function () {
+    var _this = this;
+    await new Promise((callback, error) => {
+        _this.error = undefined;
+        _this.responseData = undefined;
+        _this.values = {
+            token: undefined
+        };
+        // ¡¡¡¡¡¡¡¡NO SUBIR INFORMACIÓN RELEVANTE A CUENTAS DE CORREO!!!!!!!!!
+        /**
+         * Execute:
+         * - linux: $ export MAIL_USER=xxx@xxx.xx && export MAIL_PASSWORD='xxxxxxx' && export MAIL_HOST=xxx.xxxx.xx && gulp cucumber
+         * - powerShell: > $env:MAIL_USER="xxx@xxx.xx"; $env:MAIL_PASSWORD='xxxx'; $env:MAIL_HOST="xxx.xxxx.xx"; gulp cucumber
+         */
+        //
+          /** 
+           * GMAIL STEPS AND CONFIGURATION:  
+           *  
+           * https://support.google.com/mail/answer/7126229?hl=en#zippy=%2Cstep-check-that-imap-is-turned-on%2Cstep-change-smtp-other-settings-in-your-email-client 
+           * Go to https://myaccount.google.com/ 
+           * Go to Security section on the left navigation panel. 
+           * Find Less secure app access block, it is somewhere below, scroll to it. 
+           * Turn it to ON 
+           * host: 'imap.gmail.com', 
+           */ 
+        // ¡¡¡¡¡¡¡¡NO SUBIR INFORMACIÓN RELEVANTE A CUENTAS DE CORREO!!!!!!!!! 
+        const imapConfig = {
+            // ¡¡¡¡¡¡¡¡NO SUBIR INFORMACIÓN RELEVANTE A CUENTAS DE CORREO!!!!!!!!!
+            user: process.env.MAIL_USER || 'MAIL_NOT_FOUND',
+            // ¡¡¡¡¡¡¡¡NO SUBIR INFORMACIÓN RELEVANTE A CUENTAS DE CORREO!!!!!!!!!
+            password: process.env.MAIL_PASSWORD || 'PASSWORD_NOT_FOUND',
+            // ¡¡¡¡¡¡¡¡NO SUBIR INFORMACIÓN RELEVANTE A CUENTAS DE CORREO!!!!!!!!!
+            host: process.env.MAIL_HOST || 'HOST_NOT_FOUND',
+            port: process.env.MAIL_PORT || 993,
+            tls: true,
+            debug: console.log,
+            tlsOptions: { rejectUnauthorized: false }
+        };
+        const imap = new Imap(imapConfig);
+        imap.once('ready', () => {
+            imap.openBox('INBOX', false, () => {
+                imap.search(['UNSEEN', ['SINCE', new Date()]], (err, results) => {
+                    const f = imap.fetch(results, { bodies: '' })
+                    f.on('message', msg => {
+                        msg.on('body', stream => {
+                            simpleParser(stream, async (err, parsed) => {
+                                const regexToken = parsed.text.match(/tokenId=([^&>;]*)/g) && parsed.text.match(/tokenId=([^&>;]*)/g)[0].split("=")[1];
+                                if (err ||!regexToken){
+                                    console.log(err); 
+                                    _this.error = err;
+                                    error(JSON.stringify(err)); 
+                                }
+                                _this.values.token = regexToken;
+                            });
+                        });
+                        msg.once('attributes', attrs => {
+                            const { uid } = attrs;
+                            imap.addFlags(uid, ['\\Seen'], () => {
+                                console.log('Message marked as read');
+                            });
+                        });
+                    });
+                    f.once('error', err => {
+                        console.log(err); 
+                        _this.error = err; 
+                        error(JSON.stringify(err)); 
+                    });
+                    f.once('end', () => {
+                        console.log('finish reading the mail');
+                        imap.end();      
+                    });
+                });
+            });
+        });
+        imap.once('error', err => {
+            console.log(err); 
+            _this.error = err; 
+            error(JSON.stringify(err)); 
+        });
+
+        imap.once('end', () => {
+            console.log('Connection ended');
+            callback();     
+        });
+
+        imap.connect();
+    })
+});
+
 
 When(/^I update password with "([^"]*)"$/, function (field) {
     var _this = this;
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log('catchResponse', data);
         _this.responseData = data;
         _this.error = undefined;
-        
+
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         console.error('catchErrorResponse', err);
         _this.responseData = err;
         _this.error = err;
@@ -932,7 +1064,37 @@ When(/^I update password with "([^"]*)"$/, function (field) {
     } catch (err) {
         console.error('ERROR: ', err);
         this.error = err;
-        
+
+        return;
+    }
+});
+
+When(/^I update password with "([^"]*)" and token$/, function (password) {
+    var _this = this;
+    _this.error = undefined;
+    _this.responseData = undefined;
+    var token = _this.values && _this.values.token
+    function catchResponse(data) {
+        //console.log('catchResponse', data);
+        _this.responseData = data;
+        _this.error = undefined;
+
+    }
+
+    function catchErrorResponse(err) {
+        console.error('catchErrorResponse', err);
+        _this.responseData = err;
+        _this.error = err;
+
+    }
+
+    try {
+
+        return _this.util.updatePassword(password, token).then(catchResponse).catch(catchErrorResponse);
+    } catch (err) {
+        console.error('ERROR: ', err);
+        this.error = err;
+
         return;
     }
 });
@@ -942,14 +1104,14 @@ When(/^I get filter fields...$/, function (table, callback) {
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.log('catchResponse', data);
         _this.responseData = data;
         _this.error = undefined;
         callback()
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         console.error("catchErrorResponse", err);
         _this.responseData = undefined;
         _this.error = err;
@@ -961,7 +1123,7 @@ When(/^I get filter fields...$/, function (table, callback) {
         if (data.length > 0) {
             for (var i = 0; i < data.length; i++) {
                 var withMethod = this.model_match(this.currentModel).setters(this.currentEntity)[data[i].field];
-                this.util[withMethod](data[i].content ).then(catchResponse).catch(catchErrorResponse);
+                this.util[withMethod](data[i].content).then(catchResponse).catch(catchErrorResponse);
             }
         } else {
             this.error = "No params found";
@@ -1012,7 +1174,7 @@ When(/^I clone it with...$/, function (table) {
     } catch (err) {
         console.error('ERROR: ', err);
         this.error = err;
-        
+
         return;
     }
 
@@ -1029,8 +1191,8 @@ When(/^I get allowed Datastreams fields$/, function (callback) {
 Given(/^I can found "([^"]*)" as datastream name$/, function (dsName, callback) {
     // Write code here that turns the phrase above into concrete actions
     if (this.responseData.filter(function (item) {
-            return item.identifier === dsName;
-        }).length === 0) {
+        return item.identifier === dsName;
+    }).length === 0) {
         throw new Error('Datastream not found. DSName:' + dsName);
     }
     callback();
@@ -1039,8 +1201,8 @@ Given(/^I can found "([^"]*)" as datastream name$/, function (dsName, callback) 
 Given(/^I can not found "([^"]*)" as datastream name$/, function (dsName, callback) {
     // Write code here that turns the phrase above into concrete actions
     if (this.responseData.filter(function (item) {
-            return item.identifier === dsName;
-        }).length === 0) {
+        return item.identifier === dsName;
+    }).length === 0) {
         callback();
     }
     throw new Error('Datastream found. DSName:' + dsName);
@@ -1053,13 +1215,13 @@ When(/^I delete all$/, function () {
     _this.error = undefined;
     _this.responseData = undefined;
 
-    function catchResponse (data) {
+    function catchResponse(data) {
         //console.error('catchResponse', data);
         _this.responseData = data;
         _this.error = undefined;
     }
 
-    function catchErrorResponse (err) {
+    function catchErrorResponse(err) {
         console.error('catchErrorResponse', err);
         _this.responseData = err;
         _this.error = err;
