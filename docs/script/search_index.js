@@ -10098,6 +10098,18 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/users/users.js~user#requestresetpassword",
+    "class/src/users/Users.js~User.html#instance-method-requestResetPassword",
+    "src/users/Users.js~User#requestResetPassword",
+    "method"
+  ],
+  [
+    "src/users/users.js~user#updatepassword",
+    "class/src/users/Users.js~User.html#instance-method-updatePassword",
+    "src/users/Users.js~User#updatePassword",
+    "method"
+  ],
+  [
     "src/users/users.js~user#updatepassword",
     "class/src/users/Users.js~User.html#instance-method-updatePassword",
     "src/users/Users.js~User#updatePassword",
