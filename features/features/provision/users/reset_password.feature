@@ -1,4 +1,4 @@
-# features/update_user.feature
+# features/provision/users/reset_password.feature
 @provision
 @users
 @resetpassword
@@ -10,7 +10,7 @@ Feature: Reset password when the user forgets it
   So, I can change the password when dthe user forgets it.
 
   Scenario: Precondition - Prepare scenario
-    Given an apikey user by "b4b508f3-d953-4f03-9da8-2dbb8c55172e"
+    Given an apikey user by "require-real-apikey"
     Then an ogapi "organizations builder" util
     And I want to create a "organization"
     And the "name" "resetPasswordOrganization"
@@ -57,7 +57,7 @@ Feature: Reset password when the user forgets it
     Then response code should be: 200
 
   Scenario: Delete an user that already exists
-    Given an apikey user by "b4b508f3-d953-4f03-9da8-2dbb8c55172e"
+    Given an apikey user by "require-real-apikey"
     Then an ogapi "users builder" util
     And I want to delete a "user"
     And the "email" "theodmteam@amplia-iiot.es"
