@@ -1,5 +1,7 @@
 var timeseries = require('./timeseries')
+var resetPassword = require('./resetPassword')
 
 module.exports = {
-    timeseries: timeseries
+    timeseries: timeseries,
+    resetPassword: resetPassword
 }
