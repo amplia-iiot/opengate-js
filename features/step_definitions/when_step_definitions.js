@@ -1,5 +1,6 @@
 // features/step_definitions/when_step_definitions.js
 var Imap = require('imap');
+var axios = require('axios');
 const { simpleParser } = require('mailparser');
 
 inspet = require('util').inspect;
@@ -933,6 +934,7 @@ When(/^I request reset password$/, function () {
     }
 
     try {
+        console.log('_this.util', _this.util)
         return _this.util.requestResetPassword().then(catchResponse).catch(catchErrorResponse);
     } catch (err) {
         console.error('ERROR: ', err);
@@ -950,92 +952,99 @@ When(/^I read reset password mail and save token mock$/, function () {
     };
 })
 
-When(/^I read reset password mail and save token$/, { timeout: 15000 }, async function () {
+When(/^I read reset password mail and save token$/, { timeout: 30000 }, async function () {
     var _this = this;
-    await new Promise((callback, error) => {
+    await new Promise(async (callback, error) => {
         _this.error = undefined;
         _this.responseData = undefined;
         _this.values = {
             token: undefined
         };
-        // ¡¡¡¡¡¡¡¡NO SUBIR INFORMACIÓN RELEVANTE A CUENTAS DE CORREO!!!!!!!!!
+        // ****** IMPORTANT ******
+
+        // *******NO SUBIR INFORMACIÓN RELEVANTE A CUENTAS DE CORREO *******
+
+        // Configuration and execute test: 
+        // 1* First you will have to create a user in guerrilla mail
+        // 2* Execute commands without entering the @. test@guerrillamailblock.com, the email_user part would be ‘test’
+        // 3*
         /**
          * Execute:
-         * - linux: $ export MAIL_USER=xxx@xxx.xx && export MAIL_PASSWORD='xxxxxxx' && export MAIL_HOST=xxx.xxxx.xx && gulp cucumber
-         * - powerShell: > $env:MAIL_USER="xxx@xxx.xx"; $env:MAIL_PASSWORD='xxxx'; $env:MAIL_HOST="xxx.xxxx.xx"; gulp cucumber
+         * - linux: $ export MAIL_USER=xxx && gulp cucumber
+         * - powerShell: > $env:MAIL_USER="xxx"; gulp cucumber
          */
-        //
-          /** 
-           * GMAIL STEPS AND CONFIGURATION:  
-           *  
-           * https://support.google.com/mail/answer/7126229?hl=en#zippy=%2Cstep-check-that-imap-is-turned-on%2Cstep-change-smtp-other-settings-in-your-email-client 
-           * Go to https://myaccount.google.com/ 
-           * Go to Security section on the left navigation panel. 
-           * Find Less secure app access block, it is somewhere below, scroll to it. 
-           * Turn it to ON 
-           * host: 'imap.gmail.com', 
-           */ 
-        // ¡¡¡¡¡¡¡¡NO SUBIR INFORMACIÓN RELEVANTE A CUENTAS DE CORREO!!!!!!!!! 
-        const imapConfig = {
-            // ¡¡¡¡¡¡¡¡NO SUBIR INFORMACIÓN RELEVANTE A CUENTAS DE CORREO!!!!!!!!!
-            user: process.env.MAIL_USER || 'MAIL_NOT_FOUND',
-            // ¡¡¡¡¡¡¡¡NO SUBIR INFORMACIÓN RELEVANTE A CUENTAS DE CORREO!!!!!!!!!
-            password: process.env.MAIL_PASSWORD || 'PASSWORD_NOT_FOUND',
-            // ¡¡¡¡¡¡¡¡NO SUBIR INFORMACIÓN RELEVANTE A CUENTAS DE CORREO!!!!!!!!!
-            host: process.env.MAIL_HOST || 'HOST_NOT_FOUND',
-            port: process.env.MAIL_PORT || 993,
-            tls: true,
-            debug: console.log,
-            tlsOptions: { rejectUnauthorized: false }
-        };
-        const imap = new Imap(imapConfig);
-        imap.once('ready', () => {
-            imap.openBox('INBOX', false, () => {
-                imap.search(['UNSEEN', ['SINCE', new Date()]], (err, results) => {
-                    const f = imap.fetch(results, { bodies: '' })
-                    f.on('message', msg => {
-                        msg.on('body', stream => {
-                            simpleParser(stream, async (err, parsed) => {
-                                const regexToken = parsed.text.match(/tokenId=([^&>;]*)/g) && parsed.text.match(/tokenId=([^&>;]*)/g)[0].split("=")[1];
-                                if (err ||!regexToken){
-                                    console.log(err); 
+
+        const baseUrl = 'https://api.guerrillamail.com/ajax.php?f=';
+
+        const setEmailUserUrl = 'set_email_user';
+        const getEmailListUrl = 'get_email_list';
+        const fetchEmailUrl = 'fetch_email';
+
+        const configUserEmail = {
+            email_user: process.env.MAIL_USER || 'MAIL_NOT_FOUND',
+            lang: 'en',
+            sid_token: undefined,
+            email_addr: undefined,
+            email_id: undefined
+        }
+
+        if (configUserEmail.user === 'MAIL_NOT_FOUND') {
+            return error('You need to enter a user')
+        }
+        try {
+            axios
+                .get(`${baseUrl}${setEmailUserUrl}`, {
+                    params: {
+                        email_user: configUserEmail.email_user,
+                        lang: 'en'
+                    }
+                })
+                .then((response) => {
+                    configUserEmail.sid_token = response.data.sid_token
+                    axios
+                        .get(`${baseUrl}${getEmailListUrl}`, {
+                            params: {
+                                offset: 0,
+                                sid_token: configUserEmail.sid_token
+                            }
+                        })
+                        .then((response) => {
+                            configUserEmail.email_id = response.data.list[0].mail_id
+                            axios
+                                .get(`${baseUrl}${fetchEmailUrl}`, {
+                                    params: {
+                                        email_id: configUserEmail.email_id,
+                                        sid_token: configUserEmail.sid_token
+                                    }
+                                })
+                                .catch((err) => {
+                                    console.log(err);
                                     _this.error = err;
-                                    error(JSON.stringify(err)); 
-                                }
-                                _this.values.token = regexToken;
-                            });
-                        });
-                        msg.once('attributes', attrs => {
-                            const { uid } = attrs;
-                            imap.addFlags(uid, ['\\Seen'], () => {
-                                console.log('Message marked as read');
-                            });
-                        });
-                    });
-                    f.once('error', err => {
-                        console.log(err); 
-                        _this.error = err; 
-                        error(JSON.stringify(err)); 
-                    });
-                    f.once('end', () => {
-                        console.log('finish reading the mail');
-                        imap.end();      
-                    });
-                });
-            });
-        });
-        imap.once('error', err => {
-            console.log(err); 
-            _this.error = err; 
-            error(JSON.stringify(err)); 
-        });
-
-        imap.once('end', () => {
-            console.log('Connection ended');
-            callback();     
-        });
-
-        imap.connect();
+                                    error(JSON.stringify(err))
+                                })
+                                .then((response) => {
+                                    const getEmail = response.data.mail_body
+                                    const getToken = getEmail.match(/tokenId=([^&>;]*)/g) && getEmail.match(/tokenId=([^&>;]*)/g)[0].split("=")[1];
+                                    if (err || !getToken) {
+                                        console.log(err);
+                                        _this.error = err;
+                                        error(JSON.stringify(err));
+                                    }
+                                    _this.values.token = getToken;
+                                    callback();
+                                })
+                        })
+                })
+                .catch((err) => {
+                    console.log(err);
+                    _this.error = err;
+                    error(JSON.stringify(err));
+                })
+        } catch (err) {
+            console.log(err);
+            _this.error = err;
+            error(JSON.stringify(err));
+        }
     })
 });
 
