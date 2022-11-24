@@ -17,7 +17,8 @@ function World() {
     this.test_url_north = process.env.API_NORTH_INTERNAL || 'API_NORTH_INTERNAL';
     this.test_url_south = process.env.API_SOUTH_INTERNAL || 'API_SOUTH_INTERNAL';
     this.apikey = process.env.API_KEY || 'API_KEY';
-    this.guerrillaApi = 'https://api.guerrillamail.com/ajax.php?f='
+    this.guerrillaApi = 'https://api.guerrillamail.com/'
+    this.guerillaPath = 'ajax.php'
     chai.use(chai_as_promised);
     this.expect = chai.expect;
     // Own dependencies with the model

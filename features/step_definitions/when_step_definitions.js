@@ -1,6 +1,5 @@
 // features/step_definitions/when_step_definitions.js
-var axios = require('axios');
-
+var OpengateAPI = require(process.cwd() + '/dist/opengate-api-npm');
 inspet = require('util').inspect;
 var GenericFinder = require(process.cwd() + '/dist/src/GenericFinder');
 var {
@@ -949,14 +948,13 @@ When(/^I read reset password mail and save token mock$/, function () {
 
 When(/^I read reset password mail and save token$/, { timeout: 30000 }, async function () {
     var _this = this;
+    this.ogapiFG = new OpengateAPI({url: this.guerrillaApi})
     await new Promise(async (callback, error) => {
         _this.error = undefined;
         _this.responseData = undefined;
         _this.values = {
             token: undefined
         };
-        
-        const baseUrl = this.guerrillaApi;
 
         const setEmailUserUrl = 'set_email_user';
         const getEmailListUrl = 'get_email_list';
@@ -971,40 +969,40 @@ When(/^I read reset password mail and save token$/, { timeout: 30000 }, async fu
         }
 
         try {
-            axios
-                .get(`${baseUrl}${setEmailUserUrl}`, {
-                    params: {
+            this.ogapiFG.Napi
+                .get(_this.guerillaPath, undefined, undefined, {
+                        f: setEmailUserUrl,
                         email_user: configUserEmail.email_user,
                         lang: 'en'
                     }
-                })
+                )
                 .then((response) => {
-                    configUserEmail.sid_token = response.data.sid_token
-                    axios
-                        .get(`${baseUrl}${getEmailListUrl}`, {
-                            params: {
+                    configUserEmail.sid_token = response.body.sid_token
+                    this.ogapiFG.Napi
+                        .get(_this.guerillaPath, undefined, undefined, {
+                                f: getEmailListUrl,
                                 offset: 0,
                                 sid_token: configUserEmail.sid_token
                             }
-                        })
+                        )
                         .then((response) => {
-                            const list = response.data && response.data.list || []
+                            const list = response.body && response.body.list || []
                             const email = list[0]
                             configUserEmail.email_id = email && email.mail_id
-                            axios
-                                .get(`${baseUrl}${fetchEmailUrl}`, {
-                                    params: {
+                            this.ogapiFG.Napi
+                                .get(_this.guerillaPath, undefined, undefined, {
+                                        f: fetchEmailUrl,
                                         email_id: configUserEmail.email_id,
                                         sid_token: configUserEmail.sid_token
                                     }
-                                })
+                                )
                                 .catch((err) => {
                                     console.log(err);
                                     _this.error = err;
                                     error(JSON.stringify(err))
                                 })
                                 .then((response) => {
-                                    const getEmail = response.data.mail_body || ''
+                                    const getEmail = response.body.mail_body || ''
                                     const getToken = getEmail.match(/tokenId=([^&>;]*)"/) && getEmail.match(/tokenId=([^&>;]*)"/)[1];
                                     if (!getToken) {
                                         error('Token or email not exists!!!');
