@@ -9,6 +9,7 @@ Feature: Reset password when the user forgets it
   I want to reset password
   So, I can change the password when dthe user forgets it.
 
+  @guerrilla
   Scenario: Precondition - Prepare scenario
     Given an apikey user by "require-real-apikey"
     Then an ogapi "organizations builder" util
@@ -24,8 +25,8 @@ Feature: Reset password when the user forgets it
     Then I create it
     Then response code should be: 201
     Given an ogapi "users builder" util
-    Then I want to update a "user"
-    And the "email" "theodmteam@amplia-iiot.es"
+    Then I want to create a "user"
+    And the "email" "ogapi@guerrillamailblock.com"
     And the "workgroup" "resetPasswordOrganization"
     And the "domain" "resetPasswordOrganization"
     And the "password" "Nvoiqewvouoiu32j@#!!"
@@ -43,16 +44,17 @@ Feature: Reset password when the user forgets it
     Given an user remove her apikey
     Then an ogapi "users builder" util
     Then I want to update a "user"
-    And the "email" "theodmteam@amplia-iiot.es"
+    And the "email" "ogapi@guerrillamailblock.com"
     Then I request reset password
     Then response code should be: 200
 
   Scenario: Read mail, save token and set new password
+    And I wait 20 seconds
     And I read reset password mail and save token
     Given an user remove her apikey
     Then an ogapi "users builder" util
     Then I want to update a "user"
-    And the "email" "theodmteam@amplia-iiot.es"
+    And the "email" "ogapi@guerrillamailblock.com"
     Then I update password with "Nvoiqewvouoiu32j@" and token
     Then response code should be: 200
 
@@ -60,12 +62,12 @@ Feature: Reset password when the user forgets it
     Given an apikey user by "require-real-apikey"
     Then an ogapi "users builder" util
     And I want to delete a "user"
-    And the "email" "theodmteam@amplia-iiot.es"
+    And the "email" "ogapi@guerrillamailblock.com"
     Then I delete it
     And response code should be: 200
     Given an ogapi "organizations builder" util
     Then I want to create a "organization"
-    And the "name" "theodmteam@amplia-iiot.es"
+    And the "name" "resetPasswordOrganization"
     And I delete it
     Then response code should be: 200
 

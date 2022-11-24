@@ -1,10 +1,7 @@
 // features/step_definitions/when_step_definitions.js
-var Imap = require('imap');
 var axios = require('axios');
-const { simpleParser } = require('mailparser');
 
 inspet = require('util').inspect;
-var q = require('q');
 var GenericFinder = require(process.cwd() + '/dist/src/GenericFinder');
 var {
     When,
@@ -564,9 +561,7 @@ When(/^I update periodicity$/, function () {
     }
 });
 
-When(/^I create it$/, {
-    timeout: 60 * 1000
-}, function () {
+When(/^I create it$/, {timeout: 60 * 1000}, function () {
 
     var _this = this;
     _this.error = undefined;
@@ -960,37 +955,21 @@ When(/^I read reset password mail and save token$/, { timeout: 30000 }, async fu
         _this.values = {
             token: undefined
         };
-        // ****** IMPORTANT ******
-
-        // *******NO SUBIR INFORMACIÓN RELEVANTE A CUENTAS DE CORREO *******
-
-        // Configuration and execute test: 
-        // 1* First you will have to create a user in guerrilla mail
-        // 2* Execute commands without entering the @. test@guerrillamailblock.com, the email_user part would be ‘test’
-        // 3*
-        /**
-         * Execute:
-         * - linux: $ export MAIL_USER=xxx && gulp cucumber
-         * - powerShell: > $env:MAIL_USER="xxx"; gulp cucumber
-         */
-
-        const baseUrl = 'https://api.guerrillamail.com/ajax.php?f=';
+        
+        const baseUrl = this.guerrillaApi;
 
         const setEmailUserUrl = 'set_email_user';
         const getEmailListUrl = 'get_email_list';
         const fetchEmailUrl = 'fetch_email';
 
         const configUserEmail = {
-            email_user: process.env.MAIL_USER || 'MAIL_NOT_FOUND',
+            email_user: 'ogapi',
             lang: 'en',
             sid_token: undefined,
             email_addr: undefined,
             email_id: undefined
         }
 
-        if (configUserEmail.user === 'MAIL_NOT_FOUND') {
-            return error('You need to enter a user')
-        }
         try {
             axios
                 .get(`${baseUrl}${setEmailUserUrl}`, {
@@ -1009,7 +988,9 @@ When(/^I read reset password mail and save token$/, { timeout: 30000 }, async fu
                             }
                         })
                         .then((response) => {
-                            configUserEmail.email_id = response.data.list[0].mail_id
+                            const list = response.data && response.data.list || []
+                            const email = list[0]
+                            configUserEmail.email_id = email && email.mail_id
                             axios
                                 .get(`${baseUrl}${fetchEmailUrl}`, {
                                     params: {
@@ -1023,12 +1004,10 @@ When(/^I read reset password mail and save token$/, { timeout: 30000 }, async fu
                                     error(JSON.stringify(err))
                                 })
                                 .then((response) => {
-                                    const getEmail = response.data.mail_body
-                                    const getToken = getEmail.match(/tokenId=([^&>;]*)/g) && getEmail.match(/tokenId=([^&>;]*)/g)[0].split("=")[1];
-                                    if (err || !getToken) {
-                                        console.log(err);
-                                        _this.error = err;
-                                        error(JSON.stringify(err));
+                                    const getEmail = response.data.mail_body || ''
+                                    const getToken = getEmail.match(/tokenId=([^&>;]*)"/) && getEmail.match(/tokenId=([^&>;]*)"/)[1];
+                                    if (!getToken) {
+                                        error('Token or email not exists!!!');
                                     }
                                     _this.values.token = getToken;
                                     callback();
