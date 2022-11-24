@@ -2,7 +2,6 @@
 @create_provision
 @create_manufacturer
 @manufacturer
-@wip
 
 Feature: Create a manufacturer
   As a user of JsApi

@@ -14,9 +14,10 @@ searchingModel = require('./searching_model');
 mocksModel = require('./mocks/mockModel')
 
 function World() {
-    this.test_url_north = process.env.API_NORTH_INTERNAL || 'https://172.19.18.132:9082/north/v80';
-    this.test_url_south = process.env.API_SOUTH_INTERNAL || 'https://172.19.18.132:9082/south/v80';
-    this.apikey = process.env.API_KEY || '2829be88-a7d7-4f51-aefc-3cc2385b6506';
+    this.test_url_north = process.env.API_NORTH_INTERNAL || 'API_NORTH_INTERNAL';
+    this.test_url_south = process.env.API_SOUTH_INTERNAL || 'API_SOUTH_INTERNAL';
+    this.apikey = process.env.API_KEY || 'API_KEY';
+    this.guerrillaApi = 'https://api.guerrillamail.com/ajax.php?f='
     chai.use(chai_as_promised);
     this.expect = chai.expect;
     // Own dependencies with the model

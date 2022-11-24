@@ -25,7 +25,7 @@ Feature: Reset password when the user forgets it
     Then response code should be: 201
     Given an ogapi "users builder" util
     Then I want to create a "user"
-    And the "email" "resetpassword@amplia.com"
+    And the "email" "ogapi@guerrillamailblock.com"
     And the "workgroup" "resetPasswordOrganization"
     And the "domain" "resetPasswordOrganization"
     And the "password" "Nvoiqewvouoiu32j@#!!"
@@ -45,7 +45,7 @@ Feature: Reset password when the user forgets it
     Given an user remove her apikey
     Then an ogapi "users builder" util
     Then I want to update a "user"
-    And the "email" "resetpassword@amplia.com"
+    And the "email" "ogapi@guerrillamailblock.com"
     Then I request reset password
     Then response code should be: 200
 
@@ -55,7 +55,7 @@ Feature: Reset password when the user forgets it
     Given an user remove her apikey
     Then an ogapi "users builder" util
     Then I want to update a "user"
-    And the "email" "resetpassword@amplia.com"
+    And the "email" "ogapi@guerrillamailblock.com"
     Then I update password with "Nvoiqewvouoiu32j@" and token
     Then response code should be: 200
 
@@ -63,7 +63,7 @@ Feature: Reset password when the user forgets it
     Given an apikey user by "require-real-apikey"
     Then an ogapi "users builder" util
     And I want to delete a "user"
-    And the "email" "resetpassword@amplia.com"
+    And the "email" "ogapi@guerrillamailblock.com"
     Then I delete it
     And response code should be: 200
     Given an ogapi "organizations builder" util
