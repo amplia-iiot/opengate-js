@@ -405,6 +405,16 @@ module.exports = {
             'geocluster': {
                 'identifier': 'withIdentifier',
             },
+            'transformer': {
+                'identifier': 'withIdentifier',
+                'organization': 'withOrganization',
+                'file': 'addFile'
+            },
+            'aimodel': {
+                'identifier': 'withIdentifier',
+                'organization': 'withOrganization',
+                'file': 'withFile'
+            },
             'manufacturer': {
                 'identifier': 'withIdentifier',
                 'name': 'withName',

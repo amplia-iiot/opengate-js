@@ -12,7 +12,7 @@ export default class BaseProvision {
      * @param {!string} resource - this is a base url resource
      * @param {!number} [timeout] - timeout on request
      */
-    constructor(ogapi, resource, timeout, requiredParameters = []) {
+    constructor(ogapi, resource, timeout, requiredParameters = [], serviceBaseURL) {
         if (this.constructor === BaseProvision) {
             throw new Error("Cannot construct Abstract instances directly");
         }
@@ -35,6 +35,7 @@ export default class BaseProvision {
         this._requiredParameters = requiredParameters;
         this._headers = undefined;
         this._urlParameters = undefined;
+        this._serviceBaseURL = serviceBaseURL
     }
 
     _checkRequiredParameters() {
@@ -71,7 +72,7 @@ export default class BaseProvision {
         //En muchas clases se genera this._resource en la llamada a la funcion this._composeElement()
 
         let _postElement = this._composeElement();
-        this._ogapi.Napi.post(this._resource, _postElement, this._timeout, this._getExtraHeaders(), this._getUrlParameters())
+        this._ogapi.Napi.post(this._resource, _postElement, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
             .then((res) => {
                 if (res.statusCode === 201) {
                     if (typeof this._onCreated === "function") {
@@ -105,10 +106,10 @@ export default class BaseProvision {
      * ogapi.usersBuilder().withEmail('delete@user.com').delete();
      * ogapi.certificatesBuilder().withId('d3l3t3-c3rt1f1c4t3').delete();
      */
-    delete() {
+    delete(body) {
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Napi.delete(this._buildURL(), this._timeout, this._getExtraHeaders(), this._getUrlParameters())
+        this._ogapi.Napi.delete(this._buildURL(), this._timeout, this._getExtraHeaders(), this._getUrlParameters(), body, this._getServiceBaseURL())
             .then((res) => {
                 if (res.statusCode === 200) {
                     defered.resolve({
@@ -140,7 +141,7 @@ export default class BaseProvision {
         var defered = q.defer();
         var promise = defered.promise;
 
-        this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement(), this._timeout, this._getExtraHeaders(), this._getUrlParameters())
+        this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement(), this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
             .then((res) => {
                 if (res.statusCode === 200) {
                     defered.resolve({
@@ -171,7 +172,7 @@ export default class BaseProvision {
         var defered = q.defer();
         var promise = defered.promise;
 
-        this._ogapi.Napi.put(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters())
+        this._ogapi.Napi.put(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
             .then((res) => {
                 if (res.statusCode === 200) {
                     defered.resolve({
@@ -197,7 +198,7 @@ export default class BaseProvision {
     _doNorthPost(resource, element) {
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Napi.post(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters())
+        this._ogapi.Napi.post(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
             .then((res) => {
                 if (res.statusCode === 201) {
                     if (typeof this._onCreated === "function") {
@@ -269,5 +270,9 @@ export default class BaseProvision {
             console.warn("Parameter value not allowed <'" + JSON.stringify(not_found) + "'>, allowed <'" + JSON.stringify(enumName) + "'>");
         }
         return value;
+    }
+
+    _getServiceBaseURL() {
+        return this._serviceBaseURL
     }
 }

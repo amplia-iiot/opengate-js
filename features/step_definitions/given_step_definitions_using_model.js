@@ -280,6 +280,29 @@ Given(/^the "([^"]*)" "([^"]*)"$/, function (setterName, setterValue, callback) 
     callback();
 });
 
+Given(/^the "([^"]*)" with file "([^"]*)"$/, function (setterName, fileName, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    //var file = fs.readFileSync(__dirname + fileName);
+    
+    var file = fs.createReadStream(__dirname + fileName);
+
+    if (!file) {
+        callback(false, "not found");
+    }
+
+    try {
+        var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
+        //this.util[method](new Blob(file));
+        this.util[method](file);
+    } catch (err) {
+        this.error = err;
+        assert.ifError(this.error);
+    }
+
+    callback();
+});
+
+
 Given(/^the$/, function (table, callback) {
     var data = table.hashes();
     if (data.length > 0) {

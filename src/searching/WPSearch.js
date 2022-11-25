@@ -60,7 +60,7 @@ export default class WPSearch extends BaseSearch {
                                     body = parsedResult;
                                 }
                             } catch (ignoreError) {
-                                console.error("Impossible to parse text from response");
+                                console.warn("Impossible to parse text from response: " + response.text);
                             }
                         }
 

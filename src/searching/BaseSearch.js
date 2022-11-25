@@ -15,7 +15,7 @@ export default class BaseSearch {
      * @param {!string} resource - this is a base url resource
      * @param {!number} [timeout] - timeout on request
      */
-    constructor(ogapi, resource, timeout) {
+    constructor(ogapi, resource, timeout, serviceBaseURL) {
         if (this.constructor === BaseSearch) {
             throw new Error("Cannot construct Abstract instances directly");
         }
@@ -31,6 +31,7 @@ export default class BaseSearch {
         this._resource = resource;
         this._headers = undefined;
         this._urlParameters = undefined;
+        this._serviceBaseURL = serviceBaseURL
     }
 
     _getExtraHeaders() {
@@ -75,7 +76,7 @@ export default class BaseSearch {
         var defered = q.defer();
         var promise = defered.promise;
         this._ogapi.Napi
-            .post(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), this._getUrlParameters())
+            .post(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
             .then((response) => {
                 let resultQuery = response.body;
                 let statusCode = response.statusCode;
@@ -137,7 +138,7 @@ export default class BaseSearch {
             'Accept': 'text/plain'
         });
 
-        this._ogapi.Napi.post(this._resource, filter, this._timeout, this._getExtraHeaders(), this._getUrlParameters())
+        this._ogapi.Napi.post(this._resource, filter, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
             .then((response) => {
                 let resultQuery = response;
                 let statusCode = response.statusCode;
@@ -191,7 +192,7 @@ export default class BaseSearch {
                 });
             } else {
                 _this._ogapi.Napi
-                    .post(_this._resource, filter, _this._timeout, _this._getExtraHeaders(), _this._getUrlParameters())
+                    .post(_this._resource, filter, _this._timeout, _this._getExtraHeaders(), _this._getUrlParameters(), _this._getServiceBaseURL())
                     .then((response) => {
                         let statusCode = response.statusCode;
                         let body = response.body;
@@ -272,5 +273,7 @@ export default class BaseSearch {
         return promise;
     }
 
-
+    _getServiceBaseURL() {
+        return this._serviceBaseURL
+    }
 }
