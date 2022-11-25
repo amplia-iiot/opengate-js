@@ -314,6 +314,10 @@ var _searchingBuilderPlansSearchBuilder = require('./searching/builder/PlansSear
 
 var _searchingBuilderPlansSearchBuilder2 = _interopRequireDefault(_searchingBuilderPlansSearchBuilder);
 
+var _searchingBuilderDevicesPlansSearchBuilder = require('./searching/builder/DevicesPlansSearchBuilder');
+
+var _searchingBuilderDevicesPlansSearchBuilder2 = _interopRequireDefault(_searchingBuilderDevicesPlansSearchBuilder);
+
 var _bundlesBundles = require('./bundles/Bundles');
 
 var _bundlesBundles2 = _interopRequireDefault(_bundlesBundles);
@@ -533,6 +537,22 @@ var _AIModelsAIModels2 = _interopRequireDefault(_AIModelsAIModels);
 var _pipelinesPipelines = require('./pipelines/Pipelines');
 
 var _pipelinesPipelines2 = _interopRequireDefault(_pipelinesPipelines);
+
+var _manufacturersManufacturer = require('./manufacturers/Manufacturer');
+
+var _manufacturersManufacturer2 = _interopRequireDefault(_manufacturersManufacturer);
+
+var _manufacturersModel = require('./manufacturers/Model');
+
+var _manufacturersModel2 = _interopRequireDefault(_manufacturersModel);
+
+var _manufacturersManufacturerFinder = require('./manufacturers/ManufacturerFinder');
+
+var _manufacturersManufacturerFinder2 = _interopRequireDefault(_manufacturersManufacturerFinder);
+
+var _manufacturersModelFinder = require('./manufacturers/ModelFinder');
+
+var _manufacturersModelFinder2 = _interopRequireDefault(_manufacturersModelFinder);
 
 var RequestEndMonkeyPatching = (function () {
     var beforeStart = undefined;
@@ -1272,6 +1292,16 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
+         * This return a DevicePlansSearchBuilder to build a specific DevicePlansSearchBuilder
+         * @return {PlansSearchBuilder}
+         */
+    }, {
+        key: 'devicesPlansSearchBuilder',
+        value: function devicesPlansSearchBuilder() {
+            return new _searchingBuilderDevicesPlansSearchBuilder2['default'](this);
+        }
+
+        /**
          * This return a BundlesBuilder to build a specific BundlesBuilder
          * @return {Bundles}
          */
@@ -1832,6 +1862,45 @@ var InternalOpenGateAPI = (function () {
         key: 'pipelinesBuilder',
         value: function pipelinesBuilder() {
             return new _pipelinesPipelines2['default'](this);
+        }
+
+        /** This return a ManufacturersBuilder to build a specific ManufacturersBuilder
+         * @return {ManufacturersBuilder}
+         */
+    }, {
+        key: 'manufacturersBuilder',
+        value: function manufacturersBuilder() {
+            return new _manufacturersManufacturer2['default'](this);
+        }
+
+        /**
+         * This return a ManufacturerModelsBuilder to build a specific ManufacturerModelsBuilder
+         * @return {ManufacturerModelsBuilder}
+         */
+    }, {
+        key: 'manufacturerModelsBuilder',
+        value: function manufacturerModelsBuilder() {
+            return new _manufacturersModel2['default'](this);
+        }
+
+        /**
+         * This return a util to find a hardware manufacturer
+         * @return {ManufacturerFinder}
+         */
+    }, {
+        key: 'newManufacturersFinder',
+        value: function newManufacturersFinder() {
+            return new _manufacturersManufacturerFinder2['default'](this);
+        }
+
+        /**
+         * This return a util to find a hardware model
+         * @return {ModelFinder}
+         */
+    }, {
+        key: 'newModelFinder',
+        value: function newModelFinder() {
+            return new _manufacturersModelFinder2['default'](this);
         }
     }]);
 

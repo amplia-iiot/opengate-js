@@ -32,7 +32,7 @@ var AIModelsFinder = (function (_GenericFinder) {
     function AIModelsFinder(ogapi) {
         _classCallCheck(this, AIModelsFinder);
 
-        _get(Object.getPrototypeOf(AIModelsFinder.prototype), 'constructor', this).call(this, ogapi, 'ai', 'list', 'AIModel not found', 'v1');
+        _get(Object.getPrototypeOf(AIModelsFinder.prototype), 'constructor', this).call(this, ogapi, 'ai', 'list', 'AIModel not found', 'north');
     }
 
     /**

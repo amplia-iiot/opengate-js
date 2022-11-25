@@ -11,7 +11,7 @@ export default class PipelineFinder extends GenericFinder {
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, 'ai', 'list', 'Pipeline not found', 'v1');
+        super(ogapi, 'ai', 'list', 'Pipeline not found', 'north');
     }
 
      /**

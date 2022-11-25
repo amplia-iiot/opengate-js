@@ -36,7 +36,7 @@ var Transformers = (function (_BaseProvision) {
     function Transformers(ogapi) {
         _classCallCheck(this, Transformers);
 
-        _get(Object.getPrototypeOf(Transformers.prototype), 'constructor', this).call(this, ogapi, "/organizations", undefined, ["organization", "files"], 'v1/ai');
+        _get(Object.getPrototypeOf(Transformers.prototype), 'constructor', this).call(this, ogapi, "/organizations", undefined, ["organization", "files"], 'north/ai');
         this._ogapi = ogapi;
     }
 
@@ -164,7 +164,7 @@ var Transformers = (function (_BaseProvision) {
                     case 201:
                         {
                             var _statusCode = response.status;
-                            var _location = response.location || response.headers || response.headers.location || response.header.location;
+                            var _location = response.header && response.header.location;
                             defer.resolve({
                                 location: _location,
                                 statusCode: _statusCode

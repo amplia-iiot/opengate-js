@@ -40,7 +40,7 @@ var TransformerFinder = (function (_GenericFinder) {
     function TransformerFinder(ogapi) {
         _classCallCheck(this, TransformerFinder);
 
-        _get(Object.getPrototypeOf(TransformerFinder.prototype), 'constructor', this).call(this, ogapi, 'ai', 'list', 'Transformer not found', 'v1');
+        _get(Object.getPrototypeOf(TransformerFinder.prototype), 'constructor', this).call(this, ogapi, 'ai', 'list', 'Transformer not found', 'north');
     }
 
     /**

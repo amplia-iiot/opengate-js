@@ -498,6 +498,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/searching/builder/devicesplanssearchbuilder.js~devicesplanssearchbuilder",
+    "class/src/searching/builder/DevicesPlansSearchBuilder.js~DevicesPlansSearchBuilder.html",
+    "<span>DevicesPlansSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/DevicesPlansSearchBuilder.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/searching/builder/devicessearchbuilder.js~devicessearchbuilder",
     "class/src/searching/builder/DevicesSearchBuilder.js~DevicesSearchBuilder.html",
     "<span>DevicesSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/DevicesSearchBuilder.js</span>",
@@ -726,6 +732,24 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "opengate-js/src/manufacturers/manufacturerfinder.js~manufacturerfinder",
+    "class/src/manufacturers/ManufacturerFinder.js~ManufacturerFinder.html",
+    "<span>ManufacturerFinder</span> <span class=\"search-result-import-path\">opengate-js/src/manufacturers/ManufacturerFinder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/manufacturers/manufacturermedia.js~manufacturermedia",
+    "class/src/manufacturers/ManufacturerMedia.js~ManufacturerMedia.html",
+    "<span>ManufacturerMedia</span> <span class=\"search-result-import-path\">opengate-js/src/manufacturers/ManufacturerMedia.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/manufacturers/manufacturer.js~manufacturers",
+    "class/src/manufacturers/Manufacturer.js~Manufacturers.html",
+    "<span>Manufacturers</span> <span class=\"search-result-import-path\">opengate-js/src/manufacturers/Manufacturer.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/collection/devices/collect/mobile.js~mobile",
     "class/src/collection/devices/collect/Mobile.js~Mobile.html",
     "<span>Mobile</span> <span class=\"search-result-import-path\">opengate-js/src/collection/devices/collect/Mobile.js</span>",
@@ -735,6 +759,24 @@ window.esdocSearchIndex = [
     "opengate-js/src/searching/builder/mobilephoneprovidersearchbuilder.js~mobilephoneprovidersearchbuilder",
     "class/src/searching/builder/MobilePhoneProviderSearchBuilder.js~MobilePhoneProviderSearchBuilder.html",
     "<span>MobilePhoneProviderSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/MobilePhoneProviderSearchBuilder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/manufacturers/modelfinder.js~modelfinder",
+    "class/src/manufacturers/ModelFinder.js~ModelFinder.html",
+    "<span>ModelFinder</span> <span class=\"search-result-import-path\">opengate-js/src/manufacturers/ModelFinder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/manufacturers/modelmedia.js~modelmedia",
+    "class/src/manufacturers/ModelMedia.js~ModelMedia.html",
+    "<span>ModelMedia</span> <span class=\"search-result-import-path\">opengate-js/src/manufacturers/ModelMedia.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/manufacturers/model.js~models",
+    "class/src/manufacturers/Model.js~Models.html",
+    "<span>Models</span> <span class=\"search-result-import-path\">opengate-js/src/manufacturers/Model.js</span>",
     "class"
   ],
   [
@@ -3348,6 +3390,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#devicesplanssearchbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-devicesPlansSearchBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#devicesPlansSearchBuilder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#devicessearchbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-devicesSearchBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#devicesSearchBuilder",
@@ -3435,6 +3483,18 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#iotdatastreamstorageperiodsearchbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-ioTDatastreamStoragePeriodSearchBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#ioTDatastreamStoragePeriodSearchBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#manufacturermodelsbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-manufacturerModelsBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#manufacturerModelsBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#manufacturersbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-manufacturersBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#manufacturersBuilder",
     "method"
   ],
   [
@@ -3537,6 +3597,18 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#newgeoclusterfinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newGeoclusterFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newGeoclusterFinder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#newmanufacturersfinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newManufacturersFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newManufacturersFinder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#newmodelfinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newModelFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newModelFinder",
     "method"
   ],
   [
@@ -6222,6 +6294,288 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/manufacturers/manufacturer.js",
+    "file/src/manufacturers/Manufacturer.js.html",
+    "src/manufacturers/Manufacturer.js",
+    "file"
+  ],
+  [
+    "src/manufacturers/manufacturer.js~manufacturers#constructor",
+    "class/src/manufacturers/Manufacturer.js~Manufacturers.html#instance-constructor-constructor",
+    "src/manufacturers/Manufacturer.js~Manufacturers#constructor",
+    "method"
+  ],
+  [
+    "src/manufacturers/manufacturer.js~manufacturers#mediabuilder",
+    "class/src/manufacturers/Manufacturer.js~Manufacturers.html#instance-method-mediaBuilder",
+    "src/manufacturers/Manufacturer.js~Manufacturers#mediaBuilder",
+    "method"
+  ],
+  [
+    "src/manufacturers/manufacturer.js~manufacturers#modelbuilder",
+    "class/src/manufacturers/Manufacturer.js~Manufacturers.html#instance-method-modelBuilder",
+    "src/manufacturers/Manufacturer.js~Manufacturers#modelBuilder",
+    "method"
+  ],
+  [
+    "src/manufacturers/manufacturer.js~manufacturers#withaddress",
+    "class/src/manufacturers/Manufacturer.js~Manufacturers.html#instance-method-withAddress",
+    "src/manufacturers/Manufacturer.js~Manufacturers#withAddress",
+    "method"
+  ],
+  [
+    "src/manufacturers/manufacturer.js~manufacturers#withdescription",
+    "class/src/manufacturers/Manufacturer.js~Manufacturers.html#instance-method-withDescription",
+    "src/manufacturers/Manufacturer.js~Manufacturers#withDescription",
+    "method"
+  ],
+  [
+    "src/manufacturers/manufacturer.js~manufacturers#withemail",
+    "class/src/manufacturers/Manufacturer.js~Manufacturers.html#instance-method-withEmail",
+    "src/manufacturers/Manufacturer.js~Manufacturers#withEmail",
+    "method"
+  ],
+  [
+    "src/manufacturers/manufacturer.js~manufacturers#withfax",
+    "class/src/manufacturers/Manufacturer.js~Manufacturers.html#instance-method-withFax",
+    "src/manufacturers/Manufacturer.js~Manufacturers#withFax",
+    "method"
+  ],
+  [
+    "src/manufacturers/manufacturer.js~manufacturers#withidentifier",
+    "class/src/manufacturers/Manufacturer.js~Manufacturers.html#instance-method-withIdentifier",
+    "src/manufacturers/Manufacturer.js~Manufacturers#withIdentifier",
+    "method"
+  ],
+  [
+    "src/manufacturers/manufacturer.js~manufacturers#withname",
+    "class/src/manufacturers/Manufacturer.js~Manufacturers.html#instance-method-withName",
+    "src/manufacturers/Manufacturer.js~Manufacturers#withName",
+    "method"
+  ],
+  [
+    "src/manufacturers/manufacturer.js~manufacturers#withnotes",
+    "class/src/manufacturers/Manufacturer.js~Manufacturers.html#instance-method-withNotes",
+    "src/manufacturers/Manufacturer.js~Manufacturers#withNotes",
+    "method"
+  ],
+  [
+    "src/manufacturers/manufacturer.js~manufacturers#withtelephone",
+    "class/src/manufacturers/Manufacturer.js~Manufacturers.html#instance-method-withTelephone",
+    "src/manufacturers/Manufacturer.js~Manufacturers#withTelephone",
+    "method"
+  ],
+  [
+    "src/manufacturers/manufacturer.js~manufacturers#withurl",
+    "class/src/manufacturers/Manufacturer.js~Manufacturers.html#instance-method-withUrl",
+    "src/manufacturers/Manufacturer.js~Manufacturers#withUrl",
+    "method"
+  ],
+  [
+    "src/manufacturers/manufacturerfinder.js",
+    "file/src/manufacturers/ManufacturerFinder.js.html",
+    "src/manufacturers/ManufacturerFinder.js",
+    "file"
+  ],
+  [
+    "src/manufacturers/manufacturerfinder.js~manufacturerfinder#constructor",
+    "class/src/manufacturers/ManufacturerFinder.js~ManufacturerFinder.html#instance-constructor-constructor",
+    "src/manufacturers/ManufacturerFinder.js~ManufacturerFinder#constructor",
+    "method"
+  ],
+  [
+    "src/manufacturers/manufacturerfinder.js~manufacturerfinder#findbyid",
+    "class/src/manufacturers/ManufacturerFinder.js~ManufacturerFinder.html#instance-method-findById",
+    "src/manufacturers/ManufacturerFinder.js~ManufacturerFinder#findById",
+    "method"
+  ],
+  [
+    "src/manufacturers/manufacturerfinder.js~manufacturerfinder#findmediabyid",
+    "class/src/manufacturers/ManufacturerFinder.js~ManufacturerFinder.html#instance-method-findMediaById",
+    "src/manufacturers/ManufacturerFinder.js~ManufacturerFinder#findMediaById",
+    "method"
+  ],
+  [
+    "src/manufacturers/manufacturermedia.js",
+    "file/src/manufacturers/ManufacturerMedia.js.html",
+    "src/manufacturers/ManufacturerMedia.js",
+    "file"
+  ],
+  [
+    "src/manufacturers/manufacturermedia.js~manufacturermedia#constructor",
+    "class/src/manufacturers/ManufacturerMedia.js~ManufacturerMedia.html#instance-constructor-constructor",
+    "src/manufacturers/ManufacturerMedia.js~ManufacturerMedia#constructor",
+    "method"
+  ],
+  [
+    "src/manufacturers/manufacturermedia.js~manufacturermedia#create",
+    "class/src/manufacturers/ManufacturerMedia.js~ManufacturerMedia.html#instance-method-create",
+    "src/manufacturers/ManufacturerMedia.js~ManufacturerMedia#create",
+    "method"
+  ],
+  [
+    "src/manufacturers/manufacturermedia.js~manufacturermedia#update",
+    "class/src/manufacturers/ManufacturerMedia.js~ManufacturerMedia.html#instance-method-update",
+    "src/manufacturers/ManufacturerMedia.js~ManufacturerMedia#update",
+    "method"
+  ],
+  [
+    "src/manufacturers/manufacturermedia.js~manufacturermedia#withfile",
+    "class/src/manufacturers/ManufacturerMedia.js~ManufacturerMedia.html#instance-method-withFile",
+    "src/manufacturers/ManufacturerMedia.js~ManufacturerMedia#withFile",
+    "method"
+  ],
+  [
+    "src/manufacturers/manufacturermedia.js~manufacturermedia#withidentifier",
+    "class/src/manufacturers/ManufacturerMedia.js~ManufacturerMedia.html#instance-method-withIdentifier",
+    "src/manufacturers/ManufacturerMedia.js~ManufacturerMedia#withIdentifier",
+    "method"
+  ],
+  [
+    "src/manufacturers/manufacturermedia.js~manufacturermedia#withname",
+    "class/src/manufacturers/ManufacturerMedia.js~ManufacturerMedia.html#instance-method-withName",
+    "src/manufacturers/ManufacturerMedia.js~ManufacturerMedia#withName",
+    "method"
+  ],
+  [
+    "src/manufacturers/model.js",
+    "file/src/manufacturers/Model.js.html",
+    "src/manufacturers/Model.js",
+    "file"
+  ],
+  [
+    "src/manufacturers/model.js~models#constructor",
+    "class/src/manufacturers/Model.js~Models.html#instance-constructor-constructor",
+    "src/manufacturers/Model.js~Models#constructor",
+    "method"
+  ],
+  [
+    "src/manufacturers/model.js~models#mediabuilder",
+    "class/src/manufacturers/Model.js~Models.html#instance-method-mediaBuilder",
+    "src/manufacturers/Model.js~Models#mediaBuilder",
+    "method"
+  ],
+  [
+    "src/manufacturers/model.js~models#withdescription",
+    "class/src/manufacturers/Model.js~Models.html#instance-method-withDescription",
+    "src/manufacturers/Model.js~Models#withDescription",
+    "method"
+  ],
+  [
+    "src/manufacturers/model.js~models#withidentifier",
+    "class/src/manufacturers/Model.js~Models.html#instance-method-withIdentifier",
+    "src/manufacturers/Model.js~Models#withIdentifier",
+    "method"
+  ],
+  [
+    "src/manufacturers/model.js~models#withmanufactureridentifier",
+    "class/src/manufacturers/Model.js~Models.html#instance-method-withManufacturerIdentifier",
+    "src/manufacturers/Model.js~Models#withManufacturerIdentifier",
+    "method"
+  ],
+  [
+    "src/manufacturers/model.js~models#withmanufacturername",
+    "class/src/manufacturers/Model.js~Models.html#instance-method-withManufacturerName",
+    "src/manufacturers/Model.js~Models#withManufacturerName",
+    "method"
+  ],
+  [
+    "src/manufacturers/model.js~models#withname",
+    "class/src/manufacturers/Model.js~Models.html#instance-method-withName",
+    "src/manufacturers/Model.js~Models#withName",
+    "method"
+  ],
+  [
+    "src/manufacturers/model.js~models#withnotes",
+    "class/src/manufacturers/Model.js~Models.html#instance-method-withNotes",
+    "src/manufacturers/Model.js~Models#withNotes",
+    "method"
+  ],
+  [
+    "src/manufacturers/model.js~models#withurl",
+    "class/src/manufacturers/Model.js~Models.html#instance-method-withUrl",
+    "src/manufacturers/Model.js~Models#withUrl",
+    "method"
+  ],
+  [
+    "src/manufacturers/model.js~models#withversion",
+    "class/src/manufacturers/Model.js~Models.html#instance-method-withVersion",
+    "src/manufacturers/Model.js~Models#withVersion",
+    "method"
+  ],
+  [
+    "src/manufacturers/modelfinder.js",
+    "file/src/manufacturers/ModelFinder.js.html",
+    "src/manufacturers/ModelFinder.js",
+    "file"
+  ],
+  [
+    "src/manufacturers/modelfinder.js~modelfinder#constructor",
+    "class/src/manufacturers/ModelFinder.js~ModelFinder.html#instance-constructor-constructor",
+    "src/manufacturers/ModelFinder.js~ModelFinder#constructor",
+    "method"
+  ],
+  [
+    "src/manufacturers/modelfinder.js~modelfinder#findbyid",
+    "class/src/manufacturers/ModelFinder.js~ModelFinder.html#instance-method-findById",
+    "src/manufacturers/ModelFinder.js~ModelFinder#findById",
+    "method"
+  ],
+  [
+    "src/manufacturers/modelfinder.js~modelfinder#findmediabyid",
+    "class/src/manufacturers/ModelFinder.js~ModelFinder.html#instance-method-findMediaById",
+    "src/manufacturers/ModelFinder.js~ModelFinder#findMediaById",
+    "method"
+  ],
+  [
+    "src/manufacturers/modelmedia.js",
+    "file/src/manufacturers/ModelMedia.js.html",
+    "src/manufacturers/ModelMedia.js",
+    "file"
+  ],
+  [
+    "src/manufacturers/modelmedia.js~modelmedia#constructor",
+    "class/src/manufacturers/ModelMedia.js~ModelMedia.html#instance-constructor-constructor",
+    "src/manufacturers/ModelMedia.js~ModelMedia#constructor",
+    "method"
+  ],
+  [
+    "src/manufacturers/modelmedia.js~modelmedia#create",
+    "class/src/manufacturers/ModelMedia.js~ModelMedia.html#instance-method-create",
+    "src/manufacturers/ModelMedia.js~ModelMedia#create",
+    "method"
+  ],
+  [
+    "src/manufacturers/modelmedia.js~modelmedia#update",
+    "class/src/manufacturers/ModelMedia.js~ModelMedia.html#instance-method-update",
+    "src/manufacturers/ModelMedia.js~ModelMedia#update",
+    "method"
+  ],
+  [
+    "src/manufacturers/modelmedia.js~modelmedia#withfile",
+    "class/src/manufacturers/ModelMedia.js~ModelMedia.html#instance-method-withFile",
+    "src/manufacturers/ModelMedia.js~ModelMedia#withFile",
+    "method"
+  ],
+  [
+    "src/manufacturers/modelmedia.js~modelmedia#withfilename",
+    "class/src/manufacturers/ModelMedia.js~ModelMedia.html#instance-method-withFileName",
+    "src/manufacturers/ModelMedia.js~ModelMedia#withFileName",
+    "method"
+  ],
+  [
+    "src/manufacturers/modelmedia.js~modelmedia#withidentifier",
+    "class/src/manufacturers/ModelMedia.js~ModelMedia.html#instance-method-withIdentifier",
+    "src/manufacturers/ModelMedia.js~ModelMedia#withIdentifier",
+    "method"
+  ],
+  [
+    "src/manufacturers/modelmedia.js~modelmedia#withname",
+    "class/src/manufacturers/ModelMedia.js~ModelMedia.html#instance-method-withName",
+    "src/manufacturers/ModelMedia.js~ModelMedia#withName",
+    "method"
+  ],
+  [
     "src/operationtypes/operationtype.js",
     "file/src/operationTypes/OperationType.js.html",
     "src/operationTypes/OperationType.js",
@@ -8322,6 +8676,24 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/searching/builder/devicesplanssearchbuilder.js",
+    "file/src/searching/builder/DevicesPlansSearchBuilder.js.html",
+    "src/searching/builder/DevicesPlansSearchBuilder.js",
+    "file"
+  ],
+  [
+    "src/searching/builder/devicesplanssearchbuilder.js~devicesplanssearchbuilder#constructor",
+    "class/src/searching/builder/DevicesPlansSearchBuilder.js~DevicesPlansSearchBuilder.html#instance-constructor-constructor",
+    "src/searching/builder/DevicesPlansSearchBuilder.js~DevicesPlansSearchBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/searching/builder/devicesplanssearchbuilder.js~devicesplanssearchbuilder#withdomain",
+    "class/src/searching/builder/DevicesPlansSearchBuilder.js~DevicesPlansSearchBuilder.html#instance-method-withDomain",
+    "src/searching/builder/DevicesPlansSearchBuilder.js~DevicesPlansSearchBuilder#withDomain",
+    "method"
+  ],
+  [
     "src/searching/builder/devicessearchbuilder.js",
     "file/src/searching/builder/DevicesSearchBuilder.js.html",
     "src/searching/builder/DevicesSearchBuilder.js",
@@ -8520,39 +8892,27 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#fluentfilter",
-    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-member-fluentFilter",
-    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#fluentFilter",
-    "member"
-  ],
-  [
-    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#tagsfilter",
-    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-member-tagsFilter",
-    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#tagsFilter",
-    "member"
-  ],
-  [
-    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#withid",
-    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-withId",
-    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#withId",
+    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#disabledefaultsorted",
+    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-disableDefaultSorted",
+    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#disableDefaultSorted",
     "method"
   ],
   [
-    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#withmanufacturer",
-    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-withManufacturer",
-    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#withManufacturer",
+    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#flattened",
+    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-flattened",
+    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#flattened",
     "method"
   ],
   [
-    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#withmodel",
-    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-withModel",
-    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#withModel",
+    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#group",
+    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-group",
+    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#group",
     "method"
   ],
   [
-    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#withmodelversion",
-    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-withModelVersion",
-    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#withModelVersion",
+    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#select",
+    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-select",
+    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#select",
     "method"
   ],
   [

@@ -36,7 +36,7 @@ var Pipelines = (function (_BaseProvision) {
     function Pipelines(ogapi) {
         _classCallCheck(this, Pipelines);
 
-        _get(Object.getPrototypeOf(Pipelines.prototype), 'constructor', this).call(this, ogapi, "/organizations", undefined, ["name", "actions", "organization"], 'v1/ai');
+        _get(Object.getPrototypeOf(Pipelines.prototype), 'constructor', this).call(this, ogapi, "/organizations", undefined, ["name", "actions", "organization"], 'north/ai');
         this._ogapi = ogapi;
     }
 

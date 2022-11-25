@@ -36,7 +36,7 @@ var AIModels = (function (_BaseProvision) {
     function AIModels(ogapi) {
         _classCallCheck(this, AIModels);
 
-        _get(Object.getPrototypeOf(AIModels.prototype), 'constructor', this).call(this, ogapi, "/ai", undefined, ["organization", "file"], 'v1/ai');
+        _get(Object.getPrototypeOf(AIModels.prototype), 'constructor', this).call(this, ogapi, "/ai", undefined, ["organization", "file"], 'north/ai');
         this._ogapi = ogapi;
     }
 
@@ -143,7 +143,7 @@ var AIModels = (function (_BaseProvision) {
                     case 201:
                         {
                             var _statusCode = response.status;
-                            var _location = response.location || response.headers || response.headers.location || response.header.location;
+                            var _location = response.header && response.header.location;
                             defer.resolve({
                                 location: _location,
                                 statusCode: _statusCode

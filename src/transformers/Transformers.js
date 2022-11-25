@@ -12,7 +12,7 @@ export default class Transformers extends BaseProvision {
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, "/organizations", undefined, ["organization", "files"], 'v1/ai');
+        super(ogapi, "/organizations", undefined, ["organization", "files"], 'north/ai');
         this._ogapi = ogapi;
     }
 
@@ -132,7 +132,7 @@ export default class Transformers extends BaseProvision {
                     }
                     case 201:{
                         const _statusCode = response.status;
-                        const location = response.location || response.headers || response.headers.location || response.header.location
+                        const location = response.header && response.header.location
                         defer.resolve({
                             location: location,
                             statusCode: _statusCode

@@ -32,7 +32,7 @@ var PipelineFinder = (function (_GenericFinder) {
     function PipelineFinder(ogapi) {
         _classCallCheck(this, PipelineFinder);
 
-        _get(Object.getPrototypeOf(PipelineFinder.prototype), 'constructor', this).call(this, ogapi, 'ai', 'list', 'Pipeline not found', 'v1');
+        _get(Object.getPrototypeOf(PipelineFinder.prototype), 'constructor', this).call(this, ogapi, 'ai', 'list', 'Pipeline not found', 'north');
     }
 
     /**

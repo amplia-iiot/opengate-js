@@ -49,6 +49,7 @@ var BoxBuilder = (function () {
         this._ogapi = ogapi;
         this._key = key;
         this._timeout = timeout || null;
+        this._objClone = Object.assign({}, obj);
 
         this._deviceKeys = Object.keys(obj).filter(function (dsName) {
             return dsName.indexOf('subscriber') === -1 && dsName.indexOf('subscription') === -1;
@@ -133,7 +134,7 @@ var BoxBuilder = (function () {
 
             var defer = _q2['default'].defer();
             var postObj = {};
-            var putObj = this._obj;
+            var putObj = this._objClone;
             var childEntityPromises = [];
             var _this = this;
 
@@ -272,7 +273,7 @@ var BoxBuilder = (function () {
             var _this3 = this;
 
             var defer = _q2['default'].defer();
-            var putObj = this._obj;
+            var putObj = this._objClone;
             var childEntityPromises = [];
             var _this = this;
 
@@ -469,6 +470,7 @@ var WrapperBuilder = (function () {
             return defer.promise;
 
             function create(defered, defer, percentage) {
+                _this._obj['provision.administration.serviceGroup'] = "emptyServiceGroup";
                 _this._ogapi.Napi.post(_this._url, _this._obj, null, null, {
                     flattened: true
                 }).then(function (res) {

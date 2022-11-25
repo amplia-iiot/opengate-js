@@ -109,6 +109,12 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATAMODEL_RESOURCE">DATAMODEL_RESOURCE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-POST_RESOURCE">POST_RESOURCE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PRE_RESOURCE">PRE_RESOURCE</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">manufacturers</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/manufacturers/Manufacturer.js~Manufacturers.html">Manufacturers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/manufacturers/ManufacturerFinder.js~ManufacturerFinder.html">ManufacturerFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/manufacturers/ManufacturerMedia.js~ManufacturerMedia.html">ManufacturerMedia</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/manufacturers/Model.js~Models.html">Models</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/manufacturers/ModelFinder.js~ModelFinder.html">ModelFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/manufacturers/ModelMedia.js~ModelMedia.html">ModelMedia</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operationTypes</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operationTypes/OperationType.js~OperationType.html">OperationType</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operationTypes/OperationTypeCatalog.js~OperationTypesCatalog.html">OperationTypesCatalog</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operationTypes/OperationTypeFinder.js~OperationTypeFinder.html">OperationTypeFinder</a></span></span></li>
@@ -186,6 +192,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder.html">DatasetSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatasetsCatalogSearchBuilder.js~DatasetsCatalogSearchBuilder.html">DatasetsCatalogSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatastreamsSearchBuilder.js~DatastreamsSearchBuilder.html">DatastreamsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DevicesPlansSearchBuilder.js~DevicesPlansSearchBuilder.html">DevicesPlansSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DevicesSearchBuilder.js~DevicesSearchBuilder.html">DevicesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DomainsSearchBuilder.js~DomainsSearchBuilder.html">DomainsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/EntitiesSearchBuilder.js~EntitiesSearchBuilder.html">EntitiesSearchBuilder</a></span></span></li>
@@ -343,6 +350,7 @@ import OperationTypesSearchBuilder from &apos;./searching/builder/OperationTypes
 import UsersSearchBuilder from &apos;./searching/builder/UsersSearchBuilder&apos;;
 import DomainsSearchBuilder from &apos;./searching/builder/DomainsSearchBuilder&apos;;
 import PlansSearchBuilder from &apos;./searching/builder/PlansSearchBuilder&apos;;
+import DevicesPlansSearchBuilder from &apos;./searching/builder/DevicesPlansSearchBuilder&apos;;
 import Bundles from &apos;./bundles/Bundles&apos;;
 import BundleFinder from &apos;./bundles/BundleFinder&apos;;
 import Organizations from &apos;./organizations/Organizations&apos;;
@@ -392,6 +400,10 @@ import _superagent from &apos;superagent&apos;;
 import ConnectorFunctionsHelper from &apos;./connectorsFunctionsConfiguration/ConnectorFunctionsHelper&apos;;
 import ConnectorFunctionsFinder from &apos;./connectorsFunctionsConfiguration/ConnectorFunctionsFinder&apos;;
 import ConnectorFunctions from &apos;./connectorsFunctionsConfiguration/ConnectorFunctions&apos;;
+import ManufacturersBuilder from &apos;./manufacturers/Manufacturer&apos;
+import ManufacturerModelsBuilder from &apos;./manufacturers/Model&apos;
+import ManufacturerFinder from &apos;./manufacturers/ManufacturerFinder&apos;
+import ModelFinder from &apos;./manufacturers/ModelFinder&apos;
 
 const RequestEndMonkeyPatching = (function(){
     let beforeStart
@@ -994,6 +1006,14 @@ export default class InternalOpenGateAPI {
     }
 
     /**
+     * This return a DevicePlansSearchBuilder to build a specific DevicePlansSearchBuilder
+     * @return {PlansSearchBuilder}
+     */
+    devicesPlansSearchBuilder() {
+        return new DevicesPlansSearchBuilder(this);
+    }
+
+    /**
      * This return a BundlesBuilder to build a specific BundlesBuilder
      * @return {Bundles}
      */
@@ -1386,12 +1406,45 @@ export default class InternalOpenGateAPI {
     provisionProcessorsBuilder() {
         return new ProvisionProcessors(this);
     }
+
     /**
      * This return a util to find a provision procesor
      * @return {ProvisionProcessorsFinder}
      */
-     newProvisionProcessorsFinder() {
+    newProvisionProcessorsFinder() {
          return new ProvisionProcessorsFinder(this);
+    }
+
+    /**
+     * This return a ManufacturersBuilder to build a specific ManufacturersBuilder
+     * @return {ManufacturersBuilder}
+     */
+    manufacturersBuilder() {
+        return new ManufacturersBuilder(this);
+    }
+    
+    /**
+     * This return a ManufacturerModelsBuilder to build a specific ManufacturerModelsBuilder
+     * @return {ManufacturerModelsBuilder}
+     */
+    manufacturerModelsBuilder() {
+        return new ManufacturerModelsBuilder(this);
+    }
+
+    /**
+     * This return a util to find a hardware manufacturer
+     * @return {ManufacturerFinder}
+     */
+    newManufacturersFinder() {
+        return new ManufacturerFinder(this);
+    }
+
+    /**
+     * This return a util to find a hardware model
+     * @return {ModelFinder}
+     */
+    newModelFinder() {
+        return new ModelFinder(this);
     }
 }</code></pre>
 

@@ -14,7 +14,7 @@ export default class TransformerFinder extends GenericFinder {
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, 'ai', 'list', 'Transformer not found', 'v1');
+        super(ogapi, 'ai', 'list', 'Transformer not found', 'north');
     }
 
      /**

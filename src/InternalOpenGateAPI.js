@@ -76,6 +76,7 @@ import OperationTypesSearchBuilder from './searching/builder/OperationTypesSearc
 import UsersSearchBuilder from './searching/builder/UsersSearchBuilder';
 import DomainsSearchBuilder from './searching/builder/DomainsSearchBuilder';
 import PlansSearchBuilder from './searching/builder/PlansSearchBuilder';
+import DevicesPlansSearchBuilder from './searching/builder/DevicesPlansSearchBuilder';
 import Bundles from './bundles/Bundles';
 import BundleFinder from './bundles/BundleFinder';
 import Organizations from './organizations/Organizations';
@@ -131,6 +132,10 @@ import AIModelsFinder from './AIModels/AIModelsFinder';
 import Transformers from './transformers/Transformers';
 import AIModels from './AIModels/AIModels';
 import Pipelines from './pipelines/Pipelines';
+import ManufacturersBuilder from './manufacturers/Manufacturer'
+import ManufacturerModelsBuilder from './manufacturers/Model'
+import ManufacturerFinder from './manufacturers/ManufacturerFinder'
+import ModelFinder from './manufacturers/ModelFinder'
 
 const RequestEndMonkeyPatching = (function(){
     let beforeStart
@@ -733,6 +738,14 @@ export default class InternalOpenGateAPI {
     }
 
     /**
+     * This return a DevicePlansSearchBuilder to build a specific DevicePlansSearchBuilder
+     * @return {PlansSearchBuilder}
+     */
+    devicesPlansSearchBuilder() {
+        return new DevicesPlansSearchBuilder(this);
+    }
+
+    /**
      * This return a BundlesBuilder to build a specific BundlesBuilder
      * @return {Bundles}
      */
@@ -1125,11 +1138,12 @@ export default class InternalOpenGateAPI {
     provisionProcessorsBuilder() {
         return new ProvisionProcessors(this);
     }
+
     /**
      * This return a util to find a provision procesor
      * @return {ProvisionProcessorsFinder}
      */
-     newProvisionProcessorsFinder() {
+    newProvisionProcessorsFinder() {
          return new ProvisionProcessorsFinder(this);
     }
 
@@ -1181,4 +1195,34 @@ export default class InternalOpenGateAPI {
         return new Pipelines(this);
     }
     
+    /** This return a ManufacturersBuilder to build a specific ManufacturersBuilder
+     * @return {ManufacturersBuilder}
+     */
+    manufacturersBuilder() {
+        return new ManufacturersBuilder(this);
+    }
+    
+    /**
+     * This return a ManufacturerModelsBuilder to build a specific ManufacturerModelsBuilder
+     * @return {ManufacturerModelsBuilder}
+     */
+    manufacturerModelsBuilder() {
+        return new ManufacturerModelsBuilder(this);
+    }
+
+    /**
+     * This return a util to find a hardware manufacturer
+     * @return {ManufacturerFinder}
+     */
+    newManufacturersFinder() {
+        return new ManufacturerFinder(this);
+    }
+
+    /**
+     * This return a util to find a hardware model
+     * @return {ModelFinder}
+     */
+    newModelFinder() {
+        return new ModelFinder(this);
+    }
 }

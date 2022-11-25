@@ -194,6 +194,8 @@ var NorthAmpliaREST = (function () {
             var req = _superagent2['default'].post(_url);
 
             var sendFormData = true;
+
+            // Esta parte es sólo para cuando viene de tests o node
             var formDataKeys = Object.keys(formData);
             formDataKeys.forEach(function (key) {
                 switch (key) {
@@ -203,16 +205,17 @@ var NorthAmpliaREST = (function () {
                         req.field(key, formData[key]);
                         delete formData[key];
                         break;
+                    case 'hardwareMedia':
                     case 'certificate':
                     case 'processorBulkFile':
-                        req.attach('file', formData.processorBulkFile);
+                        req.attach('file', formData[key]);
                         sendFormData = false;
                         break;
                     case 'files':
                         formData[key].forEach(function (item, index) {
-                            debugger;
+                            //debugger
                             console.log(item.name);
-                            req.attach(key, item, !index ? { contentType: 'text/python' } : {});
+                            req.attach(key, item);
                         });
 
                         delete formData[key];
