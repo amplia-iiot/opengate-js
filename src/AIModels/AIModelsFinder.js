@@ -11,7 +11,7 @@ export default class AIModelsFinder extends GenericFinder {
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, 'ai', 'list', 'AIModel not found', 'v1');
+        super(ogapi, 'ai', 'list', 'AIModel not found', 'north');
     }
 
      /**

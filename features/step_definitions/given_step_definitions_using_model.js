@@ -649,3 +649,100 @@ Given(/^I want to search into "([^"]*)" and throw error 'is not a function'$/, f
         callback();
     }
 });
+
+Given(/^I create (a|an) "([^"]*)" from current "([^"]*)" using previous file and params:$/, function (dummyWc1, setterName, currentEntity, table) {
+    var _this = this;
+    _this.error = undefined;
+    _this.responseData = undefined;
+
+    function catchResponse1 (data) {
+        //console.log("catchResponse", data);
+        _this.responseData = data;
+        _this.location = _this.responseData.location;
+        _this.error = undefined;
+    }
+
+    function catchErrorResponse1 (err) {
+        console.error("catchErrorResponse", err)
+        _this.responseData = err;
+        
+        if (err.errors) {
+            _this.error = err.errors;
+        } else if (err.data.errors) {
+            _this.error = err.data.errors;
+        } else {
+            _this.error = err;
+        }
+    }
+
+    var model = "create";
+    var element;
+
+    try {
+        var method = _this.model_match(_this.currentModel).setters(currentEntity)[setterName];
+        element = _this.util[method](_this.uploadProgress);
+
+        var data = table.hashes();
+
+        for (var i = 0; i < data.length; i++) {
+            // se valida si se inyectan validators
+            var submethod = _this.model_match(model).setters(setterName)[data[i].field];
+
+            element = element[submethod](data[i].content);
+        }
+
+        return element.create(_this.filePath).then(catchResponse1).catch(catchErrorResponse1);
+    } catch (err) {
+        console.error('ERROR: ', err);
+        _this.error = err;
+    }
+});
+
+Given(/^I (create|delete) (a|an) "([^"]*)" from current "([^"]*)" using params:$/, function (selectedAction, dummyWc1, setterName, currentEntity, table) {
+    var _this = this;
+    _this.error = undefined;
+    _this.responseData = undefined;
+
+    function catchResponse (data) {
+        //console.log("catchResponse", data);
+        _this.responseData = data;
+        _this.location = _this.responseData.location;
+        _this.error = undefined;
+    }
+
+    function catchErrorResponse (err) {
+        console.error("catchErrorResponse", err)
+        _this.responseData = err;
+        
+        if (err.errors) {
+            _this.error = err.errors;
+        } else if (err.data.errors) {
+            _this.error = err.data.errors;
+        } else {
+            _this.error = err;
+        }
+    }
+
+    var model = "create";
+    var element;
+
+    try {
+        var method = _this.model_match(_this.currentModel).setters(currentEntity)[setterName];
+        element = _this.util[method](_this.uploadProgress);
+
+        var data = table.hashes();
+
+
+        for (var i = 0; i < data.length; i++) {
+            // se valida si se inyectan validators
+            var submethod = _this.model_match(model).setters(setterName)[data[i].field];
+
+            element = element[submethod](data[i].content);
+        }
+
+        return element[selectedAction]().then(catchResponse).catch(catchErrorResponse);
+    } catch (err) {
+        console.error('ERROR: ', err);
+        _this.error = err;
+    }
+});

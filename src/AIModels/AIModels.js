@@ -13,7 +13,7 @@ export default class AIModels extends BaseProvision {
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, "/ai", undefined, ["organization", "file"], 'v1/ai');
+        super(ogapi, "/ai", undefined, ["organization", "file"], 'north/ai');
         this._ogapi = ogapi;
     }
 
@@ -112,7 +112,7 @@ export default class AIModels extends BaseProvision {
                     }
                     case 201:{
                         const _statusCode = response.status;
-                        const location = response.location || response.headers || response.headers.location || response.header.location
+                        const location =  response.header && response.header.location
                         defer.resolve({
                             location: location,
                             statusCode: _statusCode

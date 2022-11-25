@@ -12,7 +12,7 @@ export default class Pipelines extends BaseProvision {
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, "/organizations", undefined, ["name", "actions", "organization"], 'v1/ai');
+        super(ogapi, "/organizations", undefined, ["name", "actions", "organization"], 'north/ai');
         this._ogapi = ogapi;
     }
 

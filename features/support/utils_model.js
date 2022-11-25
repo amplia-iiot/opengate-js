@@ -341,6 +341,12 @@ module.exports = {
             "aimodel builder": function(ogapi) {
                 return ogapi.aiModelsBuilder();
             },
+            "manufacturers builder": function(ogapi) {
+                return ogapi.manufacturersBuilder();
+            },
+            "manufacturer models builder": function(ogapi) {
+                return ogapi.manufacturerModelsBuilder();
+            }
         };
         return utilsMath[utilName](ogapi, param, param2);
     }
