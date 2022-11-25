@@ -18,6 +18,18 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "opengate-js/src/aimodels/aimodels.js~aimodels",
+    "class/src/AIModels/AIModels.js~AIModels.html",
+    "<span>AIModels</span> <span class=\"search-result-import-path\">opengate-js/src/AIModels/AIModels.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/aimodels/aimodelsfinder.js~aimodelsfinder",
+    "class/src/AIModels/AIModelsFinder.js~AIModelsFinder.html",
+    "<span>AIModelsFinder</span> <span class=\"search-result-import-path\">opengate-js/src/AIModels/AIModelsFinder.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/collection/devices/collect/enum/antenna_status_enum.js~antenna_status_enum",
     "variable/index.html#static-variable-ANTENNA_STATUS_ENUM",
     "<span>ANTENNA_STATUS_ENUM</span> <span class=\"search-result-import-path\">opengate-js/src/collection/devices/collect/enum/ANTENNA_STATUS_ENUM.js</span>",
@@ -924,6 +936,18 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/pipelines/pipelinefinder.js~pipelinefinder",
+    "class/src/pipelines/PipelineFinder.js~PipelineFinder.html",
+    "<span>PipelineFinder</span> <span class=\"search-result-import-path\">opengate-js/src/pipelines/PipelineFinder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/pipelines/pipelines.js~pipelines",
+    "class/src/pipelines/Pipelines.js~Pipelines.html",
+    "<span>Pipelines</span> <span class=\"search-result-import-path\">opengate-js/src/pipelines/Pipelines.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/searching/builder/planssearchbuilder.js~planssearchbuilder",
     "class/src/searching/builder/PlansSearchBuilder.js~PlansSearchBuilder.html",
     "<span>PlansSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/PlansSearchBuilder.js</span>",
@@ -1317,6 +1341,18 @@ window.esdocSearchIndex = [
     "opengate-js/src/searching/builder/timezonesearchbuilder.js~timezonesearchbuilder",
     "class/src/searching/builder/TimezoneSearchBuilder.js~TimezoneSearchBuilder.html",
     "<span>TimezoneSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/TimezoneSearchBuilder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/transformers/transformerfinder.js~transformerfinder",
+    "class/src/transformers/TransformerFinder.js~TransformerFinder.html",
+    "<span>TransformerFinder</span> <span class=\"search-result-import-path\">opengate-js/src/transformers/TransformerFinder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/transformers/transformers.js~transformers",
+    "class/src/transformers/Transformers.js~Transformers.html",
+    "<span>Transformers</span> <span class=\"search-result-import-path\">opengate-js/src/transformers/Transformers.js</span>",
     "class"
   ],
   [
@@ -3138,6 +3174,78 @@ window.esdocSearchIndex = [
     "testFile"
   ],
   [
+    "src/aimodels/aimodels.js",
+    "file/src/AIModels/AIModels.js.html",
+    "src/AIModels/AIModels.js",
+    "file"
+  ],
+  [
+    "src/aimodels/aimodels.js~aimodels#constructor",
+    "class/src/AIModels/AIModels.js~AIModels.html#instance-constructor-constructor",
+    "src/AIModels/AIModels.js~AIModels#constructor",
+    "method"
+  ],
+  [
+    "src/aimodels/aimodels.js~aimodels#create",
+    "class/src/AIModels/AIModels.js~AIModels.html#instance-method-create",
+    "src/AIModels/AIModels.js~AIModels#create",
+    "method"
+  ],
+  [
+    "src/aimodels/aimodels.js~aimodels#prediction",
+    "class/src/AIModels/AIModels.js~AIModels.html#instance-method-prediction",
+    "src/AIModels/AIModels.js~AIModels#prediction",
+    "method"
+  ],
+  [
+    "src/aimodels/aimodels.js~aimodels#withfile",
+    "class/src/AIModels/AIModels.js~AIModels.html#instance-method-withFile",
+    "src/AIModels/AIModels.js~AIModels#withFile",
+    "method"
+  ],
+  [
+    "src/aimodels/aimodels.js~aimodels#withidentifier",
+    "class/src/AIModels/AIModels.js~AIModels.html#instance-method-withIdentifier",
+    "src/AIModels/AIModels.js~AIModels#withIdentifier",
+    "method"
+  ],
+  [
+    "src/aimodels/aimodels.js~aimodels#withorganization",
+    "class/src/AIModels/AIModels.js~AIModels.html#instance-method-withOrganization",
+    "src/AIModels/AIModels.js~AIModels#withOrganization",
+    "method"
+  ],
+  [
+    "src/aimodels/aimodelsfinder.js",
+    "file/src/AIModels/AIModelsFinder.js.html",
+    "src/AIModels/AIModelsFinder.js",
+    "file"
+  ],
+  [
+    "src/aimodels/aimodelsfinder.js~aimodelsfinder#constructor",
+    "class/src/AIModels/AIModelsFinder.js~AIModelsFinder.html#instance-constructor-constructor",
+    "src/AIModels/AIModelsFinder.js~AIModelsFinder#constructor",
+    "method"
+  ],
+  [
+    "src/aimodels/aimodelsfinder.js~aimodelsfinder#downloadbyorganizationandidentifierandfilename",
+    "class/src/AIModels/AIModelsFinder.js~AIModelsFinder.html#instance-method-downloadByOrganizationAndIdentifierAndFilename",
+    "src/AIModels/AIModelsFinder.js~AIModelsFinder#downloadByOrganizationAndIdentifierAndFilename",
+    "method"
+  ],
+  [
+    "src/aimodels/aimodelsfinder.js~aimodelsfinder#findbyorganization",
+    "class/src/AIModels/AIModelsFinder.js~AIModelsFinder.html#instance-method-findByOrganization",
+    "src/AIModels/AIModelsFinder.js~AIModelsFinder#findByOrganization",
+    "method"
+  ],
+  [
+    "src/aimodels/aimodelsfinder.js~aimodelsfinder#findbyorganizationandidentifier",
+    "class/src/AIModels/AIModelsFinder.js~AIModelsFinder.html#instance-method-findByOrganizationAndIdentifier",
+    "src/AIModels/AIModelsFinder.js~AIModelsFinder#findByOrganizationAndIdentifier",
+    "method"
+  ],
+  [
     "src/genericfinder.js",
     "file/src/GenericFinder.js.html",
     "src/GenericFinder.js",
@@ -3183,6 +3291,12 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#administrativestatesearchbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-administrativeStateSearchBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#administrativeStateSearchBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#aimodelsbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-aiModelsBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#aiModelsBuilder",
     "method"
   ],
   [
@@ -3510,6 +3624,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#newaimodelfinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newAIModelFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newAIModelFinder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#newareafinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newAreaFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newAreaFinder",
@@ -3648,6 +3768,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#newpipelinefinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newPipelineFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newPipelineFinder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#newprovisionprocessorsfinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newProvisionProcessorsFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newProvisionProcessorsFinder",
@@ -3702,6 +3828,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#newtransformerfinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newTransformerFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newTransformerFinder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#newuserfinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newUserFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newUserFinder",
@@ -3753,6 +3885,12 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#organizationsbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-organizationsBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#organizationsBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#pipelinesbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-pipelinesBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#pipelinesBuilder",
     "method"
   ],
   [
@@ -3897,6 +4035,12 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#timezonesearchbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-timezoneSearchBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#timezoneSearchBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#transformersbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-transformersBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#transformersBuilder",
     "method"
   ],
   [
@@ -7368,6 +7512,78 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/pipelines/pipelinefinder.js",
+    "file/src/pipelines/PipelineFinder.js.html",
+    "src/pipelines/PipelineFinder.js",
+    "file"
+  ],
+  [
+    "src/pipelines/pipelinefinder.js~pipelinefinder#constructor",
+    "class/src/pipelines/PipelineFinder.js~PipelineFinder.html#instance-constructor-constructor",
+    "src/pipelines/PipelineFinder.js~PipelineFinder#constructor",
+    "method"
+  ],
+  [
+    "src/pipelines/pipelinefinder.js~pipelinefinder#findbyorganization",
+    "class/src/pipelines/PipelineFinder.js~PipelineFinder.html#instance-method-findByOrganization",
+    "src/pipelines/PipelineFinder.js~PipelineFinder#findByOrganization",
+    "method"
+  ],
+  [
+    "src/pipelines/pipelinefinder.js~pipelinefinder#findbyorganizationandname",
+    "class/src/pipelines/PipelineFinder.js~PipelineFinder.html#instance-method-findByOrganizationAndName",
+    "src/pipelines/PipelineFinder.js~PipelineFinder#findByOrganizationAndName",
+    "method"
+  ],
+  [
+    "src/pipelines/pipelines.js",
+    "file/src/pipelines/Pipelines.js.html",
+    "src/pipelines/Pipelines.js",
+    "file"
+  ],
+  [
+    "src/pipelines/pipelines.js~pipelines#addaction",
+    "class/src/pipelines/Pipelines.js~Pipelines.html#instance-method-addAction",
+    "src/pipelines/Pipelines.js~Pipelines#addAction",
+    "method"
+  ],
+  [
+    "src/pipelines/pipelines.js~pipelines#constructor",
+    "class/src/pipelines/Pipelines.js~Pipelines.html#instance-constructor-constructor",
+    "src/pipelines/Pipelines.js~Pipelines#constructor",
+    "method"
+  ],
+  [
+    "src/pipelines/pipelines.js~pipelines#prediction",
+    "class/src/pipelines/Pipelines.js~Pipelines.html#instance-method-prediction",
+    "src/pipelines/Pipelines.js~Pipelines#prediction",
+    "method"
+  ],
+  [
+    "src/pipelines/pipelines.js~pipelines#withactions",
+    "class/src/pipelines/Pipelines.js~Pipelines.html#instance-method-withActions",
+    "src/pipelines/Pipelines.js~Pipelines#withActions",
+    "method"
+  ],
+  [
+    "src/pipelines/pipelines.js~pipelines#withidentifier",
+    "class/src/pipelines/Pipelines.js~Pipelines.html#instance-method-withIdentifier",
+    "src/pipelines/Pipelines.js~Pipelines#withIdentifier",
+    "method"
+  ],
+  [
+    "src/pipelines/pipelines.js~pipelines#withname",
+    "class/src/pipelines/Pipelines.js~Pipelines.html#instance-method-withName",
+    "src/pipelines/Pipelines.js~Pipelines#withName",
+    "method"
+  ],
+  [
+    "src/pipelines/pipelines.js~pipelines#withorganization",
+    "class/src/pipelines/Pipelines.js~Pipelines.html#instance-method-withOrganization",
+    "src/pipelines/Pipelines.js~Pipelines#withOrganization",
+    "method"
+  ],
+  [
     "src/provision/baseprovision.js",
     "file/src/provision/BaseProvision.js.html",
     "src/provision/BaseProvision.js",
@@ -10059,6 +10275,84 @@ window.esdocSearchIndex = [
     "src/timeseries/timeseriesfinder.js~timeseriesfinder#findbyorganizationandtimeserieid",
     "class/src/timeseries/TimeseriesFinder.js~TimeseriesFinder.html#instance-method-findByOrganizationAndTimeserieId",
     "src/timeseries/TimeseriesFinder.js~TimeseriesFinder#findByOrganizationAndTimeserieId",
+    "method"
+  ],
+  [
+    "src/transformers/transformerfinder.js",
+    "file/src/transformers/TransformerFinder.js.html",
+    "src/transformers/TransformerFinder.js",
+    "file"
+  ],
+  [
+    "src/transformers/transformerfinder.js~transformerfinder#constructor",
+    "class/src/transformers/TransformerFinder.js~TransformerFinder.html#instance-constructor-constructor",
+    "src/transformers/TransformerFinder.js~TransformerFinder#constructor",
+    "method"
+  ],
+  [
+    "src/transformers/transformerfinder.js~transformerfinder#downloadbyorganizationandidentifierandfilename",
+    "class/src/transformers/TransformerFinder.js~TransformerFinder.html#instance-method-downloadByOrganizationAndIdentifierAndFilename",
+    "src/transformers/TransformerFinder.js~TransformerFinder#downloadByOrganizationAndIdentifierAndFilename",
+    "method"
+  ],
+  [
+    "src/transformers/transformerfinder.js~transformerfinder#findbyorganization",
+    "class/src/transformers/TransformerFinder.js~TransformerFinder.html#instance-method-findByOrganization",
+    "src/transformers/TransformerFinder.js~TransformerFinder#findByOrganization",
+    "method"
+  ],
+  [
+    "src/transformers/transformerfinder.js~transformerfinder#findbyorganizationandidentifier",
+    "class/src/transformers/TransformerFinder.js~TransformerFinder.html#instance-method-findByOrganizationAndIdentifier",
+    "src/transformers/TransformerFinder.js~TransformerFinder#findByOrganizationAndIdentifier",
+    "method"
+  ],
+  [
+    "src/transformers/transformers.js",
+    "file/src/transformers/Transformers.js.html",
+    "src/transformers/Transformers.js",
+    "file"
+  ],
+  [
+    "src/transformers/transformers.js~transformers#addfile",
+    "class/src/transformers/Transformers.js~Transformers.html#instance-method-addFile",
+    "src/transformers/Transformers.js~Transformers#addFile",
+    "method"
+  ],
+  [
+    "src/transformers/transformers.js~transformers#constructor",
+    "class/src/transformers/Transformers.js~Transformers.html#instance-constructor-constructor",
+    "src/transformers/Transformers.js~Transformers#constructor",
+    "method"
+  ],
+  [
+    "src/transformers/transformers.js~transformers#create",
+    "class/src/transformers/Transformers.js~Transformers.html#instance-method-create",
+    "src/transformers/Transformers.js~Transformers#create",
+    "method"
+  ],
+  [
+    "src/transformers/transformers.js~transformers#performtest",
+    "class/src/transformers/Transformers.js~Transformers.html#instance-method-performTest",
+    "src/transformers/Transformers.js~Transformers#performTest",
+    "method"
+  ],
+  [
+    "src/transformers/transformers.js~transformers#withfiles",
+    "class/src/transformers/Transformers.js~Transformers.html#instance-method-withFiles",
+    "src/transformers/Transformers.js~Transformers#withFiles",
+    "method"
+  ],
+  [
+    "src/transformers/transformers.js~transformers#withidentifier",
+    "class/src/transformers/Transformers.js~Transformers.html#instance-method-withIdentifier",
+    "src/transformers/Transformers.js~Transformers#withIdentifier",
+    "method"
+  ],
+  [
+    "src/transformers/transformers.js~transformers#withorganization",
+    "class/src/transformers/Transformers.js~Transformers.html#instance-method-withOrganization",
+    "src/transformers/Transformers.js~Transformers#withOrganization",
     "method"
   ],
   [

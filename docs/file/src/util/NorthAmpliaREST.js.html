@@ -35,6 +35,8 @@
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/GenericFinder.js~GenericFinder.html">GenericFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html">InternalOpenGateAPI</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/ProvisionGenericFinder.js~ProvisionGenericFinder.html">ProvisionGenericFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">AIModels</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/AIModels/AIModels.js~AIModels.html">AIModels</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/AIModels/AIModelsFinder.js~AIModelsFinder.html">AIModelsFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">alarms</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarms/AlarmActions.js~AlarmActions.html">AlarmActions</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">alarms/actions</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarms/actions/Alarm.js~Operation.html">Operation</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/alarms/actions/AlarmActionBuilder.js~AlarmActionBuilder.html">AlarmActionBuilder</a></span></span></li>
@@ -138,6 +140,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByYear.js~ByYear.html">ByYear</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">organizations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/OrganizationFinder.js~OrganizationFinder.html">OrganizationFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/Organizations.js~Organizations.html">Organizations</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">pipelines</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pipelines/PipelineFinder.js~PipelineFinder.html">PipelineFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pipelines/Pipelines.js~Pipelines.html">Pipelines</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/BaseProvision.js~BaseProvision.html">BaseProvision</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision/bulk</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/bulk/BulkExecutionBuilder.js~BulkExecutionBuilder.html">BulkExecutionBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPES">TYPES</a></span></span></li>
@@ -252,6 +256,8 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">timeseries</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/timeseries/Timeseries.js~Timeseries.html">Timeseries</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/timeseries/TimeseriesFinder.js~TimeseriesFinder.html">TimeseriesFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-URL">URL</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">transformers</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/transformers/TransformerFinder.js~TransformerFinder.html">TransformerFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/transformers/Transformers.js~Transformers.html">Transformers</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">users</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/users/UserFinder.js~UserFinder.html">UserFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/users/Users.js~User.html">User</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">util</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/util/Expression.js~Expression.html">Expression</a></span></span></li>
@@ -362,8 +368,8 @@ export default class NorthAmpliaREST {
      * @param {boolean} asBlob - response body as Blob
      * @return {Promise} 
      */
-    get(url, timeout, headers, parameters, asBlob) {
-        const _url = this._createUrl(url, parameters)
+    get(url, timeout, headers, parameters, asBlob, serviceBaseURL) {
+        const _url = this._createUrl(url, parameters, serviceBaseURL)
         console.info(&apos;GET&apos;, _url)
         var req = request.get(_url);
         return this._createPromiseRequest(req, null, timeout, headers, asBlob);
@@ -378,8 +384,8 @@ export default class NorthAmpliaREST {
      * @param {object} parameters - parameters of request
      * @return {Promise} 
      */
-    patch(url, data, timeout, headers, parameters) {
-        const _url = this._createUrl(url, parameters)
+    patch(url, data, timeout, headers, parameters, serviceBaseURL) {
+        const _url = this._createUrl(url, parameters, serviceBaseURL)
         console.info(&apos;PATCH&apos;, _url)
         var req = request.patch(_url)
             .send(data);
@@ -396,8 +402,8 @@ export default class NorthAmpliaREST {
      * @param {object} parameters - parameters of request
      * @return {Promise} 
      */
-    post(url, data, timeout, headers, parameters) {
-        const _url = this._createUrl(url, parameters)
+    post(url, data, timeout, headers, parameters, serviceBaseURL) {
+        const _url = this._createUrl(url, parameters, serviceBaseURL)
         console.info(&apos;POST&apos;, _url)
         var req = request.post(_url)
             .send(data);
@@ -416,8 +422,8 @@ export default class NorthAmpliaREST {
      * @param {object} parameters - parameters of request
      * @return {Promise} 
      */
-    post_multipart(url, formData, events, timeout, headers, parameters) {
-        const _url = this._createUrl(url, parameters)
+    post_multipart(url, formData, events, timeout, headers, parameters, serviceBaseURL) {
+        const _url = this._createUrl(url, parameters, serviceBaseURL)
         console.info(&apos;POST_MULTIPART&apos;, _url)
         let req = request.post(_url);
 
@@ -437,6 +443,20 @@ export default class NorthAmpliaREST {
                 case &apos;certificate&apos;: 
                 case &apos;processorBulkFile&apos;:
                     req.attach(&apos;file&apos;, formData[key]);
+                    sendFormData = false
+                    break
+                case &apos;files&apos;:
+                    formData[key].forEach((item, index) =&gt; {
+                        console.log(item.name)
+                        req.attach(key, item);
+                    })
+                   
+                    delete formData[key]
+                    sendFormData = false
+                    break
+                case &apos;modelFile&apos;:
+                    req.field(key, formData[key]);
+                    delete formData[key]
                     sendFormData = false
                     break
                 case &apos;bulkFile&apos;:
@@ -462,8 +482,8 @@ export default class NorthAmpliaREST {
      * @param {object} parameters - parameters of request
      * @return {Promise} 
      */
-    put(url, data, timeout, headers, parameters) {
-        const _url = this._createUrl(url, parameters)
+    put(url, data, timeout, headers, parameters, serviceBaseURL) {
+        const _url = this._createUrl(url, parameters, serviceBaseURL)
         console.info(&apos;PUT&apos;, _url)
         var req = request.put(_url).send(data);
 
@@ -485,10 +505,11 @@ export default class NorthAmpliaREST {
      * @param {object} headers - headers of request
      * @param {object} parameters - parameters of request
      * @param {object} body - body of request
+     * @param {string} serviceBaseURL - base of the uri petition
      * @return {Promise} 
      */
-    delete(url, timeout, headers, parameters, body) {
-        const _url = this._createUrl(url, parameters)
+    delete(url, timeout, headers, parameters, body, serviceBaseURL) {
+        const _url = this._createUrl(url, parameters, serviceBaseURL)
         console.info(&apos;DELETE&apos;, _url)
         var req
         if(body){
@@ -500,7 +521,7 @@ export default class NorthAmpliaREST {
         return this._createPromiseRequest(req, null, timeout, headers);
     }
 
-    _createUrl(relativeUrl, parameters) {
+    _createUrl(relativeUrl, parameters, serviceBaseURL) {
         var encode = [];
         if (parameters) {
             var keys = Object.keys(parameters);
@@ -514,10 +535,10 @@ export default class NorthAmpliaREST {
                 }
 
             }
-            console.log(JSON.stringify(parameters));
+            // console.log(JSON.stringify(parameters));
         }
 
-        console.log(relativeUrl);
+        // console.log(relativeUrl);
 
         var relativeUrlSplit = relativeUrl.split(&quot;/&quot;);
         var length = relativeUrlSplit.length;
@@ -531,8 +552,20 @@ export default class NorthAmpliaREST {
                 encode.push(urlencode(item));
             }
         });
-        var returnUrl = this._url(this._options) + &quot;/&quot; + encode.join(&quot;/&quot;);
-        return returnUrl;
+
+        return this._url(this._options) +  &quot;/&quot; + this._getDefaultBaseURL(serviceBaseURL) + &apos;/&apos; + encode.join(&quot;/&quot;);
+    }
+
+    _getDefaultBaseURL(serviceBaseURL) {
+        if (!serviceBaseURL) {
+            if (this._isSouth) {
+                return &apos;v80&apos;
+            } else {
+                return &apos;north/v80&apos;
+            }
+        } 
+
+        return serviceBaseURL
     }
 
     _createPromiseRequest(req, events, timeout, headers, asBlob) {
@@ -568,6 +601,7 @@ export default class NorthAmpliaREST {
         }
         _req = _req.end(function(err, res) {
             if (err !== null) {
+                console.error(&quot;OGAPI ERROR: &quot;)
                 console.error(err)
                 let data;
                 let status = err.status ? err.status : undefined;
