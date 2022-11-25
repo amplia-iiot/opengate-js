@@ -36,3 +36,20 @@ $ yarn upgrade opengate-js@[version]
 ```js
 import {} from 'opengate-js/dist/opengate-api-bower-[version]'
 ```
+
+## Tests
+
+Before running the tests you must configure the following values:
+
+- features/support/world.js
+-- this.test_url_north
+-- this.test_url_south
+-- this.apikey
+
+- features/feaures/**.feature
+-- require-real-apikey
+
+You can run the tests by running the following command:
+```bash
+$ gulp cucumber [--tags @[tags]]
+```
