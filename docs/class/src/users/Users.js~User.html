@@ -272,13 +272,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import User from &apos;<span><a href="file/src/users/Users.js.html#lineNumber13">opengate-js/src/users/Users.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import User from &apos;<span><a href="file/src/users/Users.js.html#lineNumber14">opengate-js/src/users/Users.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/users/Users.js.html#lineNumber13">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/users/Users.js.html#lineNumber14">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -365,7 +365,36 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/users/Users.js~User.html#instance-method-updatePassword">updatePassword</a></span></span><span data-ice="signature">(newPassword: <span>*</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span data-ice="name"><span><a href="class/src/users/Users.js~User.html#instance-method-requestResetPassword">requestResetPassword</a></span></span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>This invoke a request to OpenGate North API and the callback is managed by promises
+This function request for new password when the user forgets it.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="class/src/users/Users.js~User.html#instance-method-updatePassword">updatePassword</a></span></span><span data-ice="signature">(newPassword: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -373,6 +402,35 @@
         
         <div data-ice="description"><p>This invoke a request to OpenGate North API and the callback is managed by promises
 This function updates a password of a user</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="class/src/users/Users.js~User.html#instance-method-updatePassword">updatePassword</a></span></span><span data-ice="signature">(newPassword: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, tokenId: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>This invoke a request to OpenGate North API and the callback is managed by promises
+This function updates a password of a user with a tokenId</p>
 </div>
       </div>
     </td>
@@ -804,7 +862,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber19">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber20">source</a></span></span>
     </span>
   </h3>
 
@@ -857,6 +915,95 @@ This function updates a entity of provision</p>
 <div data-ice="methodDetails"><h2 data-ice="title">Public Methods</h2>
 
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-requestResetPassword">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span data-ice="name">requestResetPassword</span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber296">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>This invoke a request to OpenGate North API and the callback is managed by promises
+This function request for new password when the user forgets it. 
+Sends a password recovery email</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties"><div data-ice="properties">
+  <h4 data-ice="title">Return Properties:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">then</td>
+      <td data-ice="type"><span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(result: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, statusCode: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>When request it is OK</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">catch</td>
+      <td data-ice="type"><span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(error: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>When request it is NOK</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.usersBuilder().withEmail(example@example.es).requestResetPassword()</code></pre>
+    </div>
+</div>
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-updatePassword">
     <span class="access" data-ice="access">public</span>
     
@@ -864,11 +1011,11 @@ This function updates a entity of provision</p>
     
     
     
-    <span data-ice="name">updatePassword</span><span data-ice="signature">(newPassword: <span>*</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span data-ice="name">updatePassword</span><span data-ice="signature">(newPassword: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber239">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber267">source</a></span></span>
     </span>
   </h3>
 
@@ -891,9 +1038,10 @@ This function updates a password of a user</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">newPassword</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>required field</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -951,7 +1099,119 @@ This function updates a password of a user</p>
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.organizationsBuilder().withEmail(example@example.es).withPassword(oldPassword).updatePassword(newPassword);</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.usersBuilder().withEmail(example@example.es).withPassword(oldPassword).updatePassword(newPassword);</code></pre>
+    </div>
+</div>
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-updatePassword">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span data-ice="name">updatePassword</span><span data-ice="signature">(newPassword: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, tokenId: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber315">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>This invoke a request to OpenGate North API and the callback is managed by promises
+This function updates a password of a user with a tokenId</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">newPassword</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>required field</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">tokenId</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>required field</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties"><div data-ice="properties">
+  <h4 data-ice="title">Return Properties:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">then</td>
+      <td data-ice="type"><span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(result: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, statusCode: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>When request it is OK</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">catch</td>
+      <td data-ice="type"><span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(error: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>When request it is NOK</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.usersBuilder().withEmail(example@example.es).updatePassword(newPassword, tokenid);</code></pre>
     </div>
 </div>
 
@@ -972,7 +1232,7 @@ This function updates a password of a user</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber114">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber115">source</a></span></span>
     </span>
   </h3>
 
@@ -1045,7 +1305,7 @@ This function updates a password of a user</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber139">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber140">source</a></span></span>
     </span>
   </h3>
 
@@ -1118,7 +1378,7 @@ This function updates a password of a user</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber90">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber91">source</a></span></span>
     </span>
   </h3>
 
@@ -1191,7 +1451,7 @@ This function updates a password of a user</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber54">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber55">source</a></span></span>
     </span>
   </h3>
 
@@ -1264,7 +1524,7 @@ This function updates a password of a user</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber126">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber127">source</a></span></span>
     </span>
   </h3>
 
@@ -1337,7 +1597,7 @@ This function updates a password of a user</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber30">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber31">source</a></span></span>
     </span>
   </h3>
 
@@ -1410,7 +1670,7 @@ This function updates a password of a user</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber66">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber67">source</a></span></span>
     </span>
   </h3>
 
@@ -1483,7 +1743,7 @@ This function updates a password of a user</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber102">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber103">source</a></span></span>
     </span>
   </h3>
 
@@ -1556,7 +1816,7 @@ This function updates a password of a user</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber42">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber43">source</a></span></span>
     </span>
   </h3>
 
@@ -1629,7 +1889,7 @@ This function updates a password of a user</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber152">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber153">source</a></span></span>
     </span>
   </h3>
 
@@ -1702,7 +1962,7 @@ This function updates a password of a user</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber78">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber79">source</a></span></span>
     </span>
   </h3>
 

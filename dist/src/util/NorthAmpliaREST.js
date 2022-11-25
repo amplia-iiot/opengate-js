@@ -213,7 +213,6 @@ var NorthAmpliaREST = (function () {
                         break;
                     case 'files':
                         formData[key].forEach(function (item, index) {
-                            //debugger
                             console.log(item.name);
                             req.attach(key, item);
                         });
