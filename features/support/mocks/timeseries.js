@@ -537,7 +537,7 @@ module.exports = {
                 const organization = req.params.organization
                 const identifier = req.params.identifier
                 const body = req.body
-                console.log(body)
+
                 const errors = [{
                     "code": 0,
                     "message": "Error on post",

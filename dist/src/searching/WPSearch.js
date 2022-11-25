@@ -90,7 +90,7 @@ var WPSearch = (function (_BaseSearch) {
                                     body = parsedResult;
                                 }
                             } catch (ignoreError) {
-                                console.error("Impossible to parse text from response");
+                                console.warn("Impossible to parse text from response: " + response.text);
                             }
                         }
 

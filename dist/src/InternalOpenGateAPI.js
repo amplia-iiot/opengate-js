@@ -514,6 +514,30 @@ var _connectorsFunctionsConfigurationConnectorFunctions = require('./connectorsF
 
 var _connectorsFunctionsConfigurationConnectorFunctions2 = _interopRequireDefault(_connectorsFunctionsConfigurationConnectorFunctions);
 
+var _pipelinesPipelineFinder = require('./pipelines/PipelineFinder');
+
+var _pipelinesPipelineFinder2 = _interopRequireDefault(_pipelinesPipelineFinder);
+
+var _transformersTransformerFinder = require('./transformers/TransformerFinder');
+
+var _transformersTransformerFinder2 = _interopRequireDefault(_transformersTransformerFinder);
+
+var _AIModelsAIModelsFinder = require('./AIModels/AIModelsFinder');
+
+var _AIModelsAIModelsFinder2 = _interopRequireDefault(_AIModelsAIModelsFinder);
+
+var _transformersTransformers = require('./transformers/Transformers');
+
+var _transformersTransformers2 = _interopRequireDefault(_transformersTransformers);
+
+var _AIModelsAIModels = require('./AIModels/AIModels');
+
+var _AIModelsAIModels2 = _interopRequireDefault(_AIModelsAIModels);
+
+var _pipelinesPipelines = require('./pipelines/Pipelines');
+
+var _pipelinesPipelines2 = _interopRequireDefault(_pipelinesPipelines);
+
 var _manufacturersManufacturer = require('./manufacturers/Manufacturer');
 
 var _manufacturersManufacturer2 = _interopRequireDefault(_manufacturersManufacturer);
@@ -1781,7 +1805,66 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a ManufacturersBuilder to build a specific ManufacturersBuilder
+         * This return a util to find a pipeline
+         * @return {PipelineFinder}
+         */
+    }, {
+        key: 'newPipelineFinder',
+        value: function newPipelineFinder() {
+            return new _pipelinesPipelineFinder2['default'](this);
+        }
+
+        /**
+         * This return a util to find a transformer
+         * @return {TransformerFinder}
+         */
+    }, {
+        key: 'newTransformerFinder',
+        value: function newTransformerFinder() {
+            return new _transformersTransformerFinder2['default'](this);
+        }
+
+        /**
+         * This return a util to find an ai model
+         * @return {AIModelFinder}
+         */
+    }, {
+        key: 'newAIModelFinder',
+        value: function newAIModelFinder() {
+            return new _AIModelsAIModelsFinder2['default'](this);
+        }
+
+        /**
+         * This return a TransformersBuilder to build a specific transformersBuilder
+         * @return {Transformers}
+         */
+    }, {
+        key: 'transformersBuilder',
+        value: function transformersBuilder() {
+            return new _transformersTransformers2['default'](this);
+        }
+
+        /**
+         * This return a AIModelsBuilder to build a specific aiModelsBuilder
+         * @return {AIModels}
+         */
+    }, {
+        key: 'aiModelsBuilder',
+        value: function aiModelsBuilder() {
+            return new _AIModelsAIModels2['default'](this);
+        }
+
+        /**
+         * This return a PipelinesBuilder to build a specific pipelinesBuilder
+         * @return {Pipelines}
+         */
+    }, {
+        key: 'pipelinesBuilder',
+        value: function pipelinesBuilder() {
+            return new _pipelinesPipelines2['default'](this);
+        }
+
+        /** This return a ManufacturersBuilder to build a specific ManufacturersBuilder
          * @return {ManufacturersBuilder}
          */
     }, {

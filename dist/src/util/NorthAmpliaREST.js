@@ -131,8 +131,8 @@ var NorthAmpliaREST = (function () {
          */
     }, {
         key: 'get',
-        value: function get(url, timeout, headers, parameters, asBlob) {
-            var _url = this._createUrl(url, parameters);
+        value: function get(url, timeout, headers, parameters, asBlob, serviceBaseURL) {
+            var _url = this._createUrl(url, parameters, serviceBaseURL);
             console.info('GET', _url);
             var req = _superagent2['default'].get(_url);
             return this._createPromiseRequest(req, null, timeout, headers, asBlob);
@@ -149,8 +149,8 @@ var NorthAmpliaREST = (function () {
          */
     }, {
         key: 'patch',
-        value: function patch(url, data, timeout, headers, parameters) {
-            var _url = this._createUrl(url, parameters);
+        value: function patch(url, data, timeout, headers, parameters, serviceBaseURL) {
+            var _url = this._createUrl(url, parameters, serviceBaseURL);
             console.info('PATCH', _url);
             var req = _superagent2['default'].patch(_url).send(data);
 
@@ -168,8 +168,8 @@ var NorthAmpliaREST = (function () {
          */
     }, {
         key: 'post',
-        value: function post(url, data, timeout, headers, parameters) {
-            var _url = this._createUrl(url, parameters);
+        value: function post(url, data, timeout, headers, parameters, serviceBaseURL) {
+            var _url = this._createUrl(url, parameters, serviceBaseURL);
             console.info('POST', _url);
             var req = _superagent2['default'].post(_url).send(data);
 
@@ -188,8 +188,8 @@ var NorthAmpliaREST = (function () {
          */
     }, {
         key: 'post_multipart',
-        value: function post_multipart(url, formData, events, timeout, headers, parameters) {
-            var _url = this._createUrl(url, parameters);
+        value: function post_multipart(url, formData, events, timeout, headers, parameters, serviceBaseURL) {
+            var _url = this._createUrl(url, parameters, serviceBaseURL);
             console.info('POST_MULTIPART', _url);
             var req = _superagent2['default'].post(_url);
 
@@ -209,6 +209,20 @@ var NorthAmpliaREST = (function () {
                     case 'certificate':
                     case 'processorBulkFile':
                         req.attach('file', formData[key]);
+                        sendFormData = false;
+                        break;
+                    case 'files':
+                        formData[key].forEach(function (item, index) {
+                            console.log(item.name);
+                            req.attach(key, item);
+                        });
+
+                        delete formData[key];
+                        sendFormData = false;
+                        break;
+                    case 'modelFile':
+                        req.field(key, formData[key]);
+                        delete formData[key];
                         sendFormData = false;
                         break;
                     case 'bulkFile':
@@ -234,8 +248,8 @@ var NorthAmpliaREST = (function () {
          */
     }, {
         key: 'put',
-        value: function put(url, data, timeout, headers, parameters) {
-            var _url = this._createUrl(url, parameters);
+        value: function put(url, data, timeout, headers, parameters, serviceBaseURL) {
+            var _url = this._createUrl(url, parameters, serviceBaseURL);
             console.info('PUT', _url);
             var req = _superagent2['default'].put(_url).send(data);
 
@@ -257,12 +271,13 @@ var NorthAmpliaREST = (function () {
          * @param {object} headers - headers of request
          * @param {object} parameters - parameters of request
          * @param {object} body - body of request
+         * @param {string} serviceBaseURL - base of the uri petition
          * @return {Promise} 
          */
     }, {
         key: 'delete',
-        value: function _delete(url, timeout, headers, parameters, body) {
-            var _url = this._createUrl(url, parameters);
+        value: function _delete(url, timeout, headers, parameters, body, serviceBaseURL) {
+            var _url = this._createUrl(url, parameters, serviceBaseURL);
             console.info('DELETE', _url);
             var req;
             if (body) {
@@ -275,7 +290,7 @@ var NorthAmpliaREST = (function () {
         }
     }, {
         key: '_createUrl',
-        value: function _createUrl(relativeUrl, parameters) {
+        value: function _createUrl(relativeUrl, parameters, serviceBaseURL) {
             var encode = [];
             if (parameters) {
                 var keys = Object.keys(parameters);
@@ -288,10 +303,10 @@ var NorthAmpliaREST = (function () {
                         relativeUrl = relativeUrl + '&' + queryParameter;
                     }
                 }
-                console.log(JSON.stringify(parameters));
+                // console.log(JSON.stringify(parameters));
             }
 
-            console.log(relativeUrl);
+            // console.log(relativeUrl);
 
             var relativeUrlSplit = relativeUrl.split("/");
             var length = relativeUrlSplit.length;
@@ -305,8 +320,21 @@ var NorthAmpliaREST = (function () {
                     encode.push((0, _urlencode2['default'])(item));
                 }
             });
-            var returnUrl = this._url(this._options) + "/" + encode.join("/");
-            return returnUrl;
+
+            return this._url(this._options) + "/" + this._getDefaultBaseURL(serviceBaseURL) + '/' + encode.join("/");
+        }
+    }, {
+        key: '_getDefaultBaseURL',
+        value: function _getDefaultBaseURL(serviceBaseURL) {
+            if (!serviceBaseURL) {
+                if (this._isSouth) {
+                    return 'v80';
+                } else {
+                    return 'north/v80';
+                }
+            }
+
+            return serviceBaseURL;
         }
     }, {
         key: '_createPromiseRequest',
@@ -342,6 +370,7 @@ var NorthAmpliaREST = (function () {
             }
             _req = _req.end(function (err, res) {
                 if (err !== null) {
+                    console.error("OGAPI ERROR: ");
                     console.error(err);
                     var data = undefined;
                     var _status = err.status ? err.status : undefined;

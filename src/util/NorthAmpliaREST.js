@@ -88,8 +88,8 @@ export default class NorthAmpliaREST {
      * @param {boolean} asBlob - response body as Blob
      * @return {Promise} 
      */
-    get(url, timeout, headers, parameters, asBlob) {
-        const _url = this._createUrl(url, parameters)
+    get(url, timeout, headers, parameters, asBlob, serviceBaseURL) {
+        const _url = this._createUrl(url, parameters, serviceBaseURL)
         console.info('GET', _url)
         var req = request.get(_url);
         return this._createPromiseRequest(req, null, timeout, headers, asBlob);
@@ -104,8 +104,8 @@ export default class NorthAmpliaREST {
      * @param {object} parameters - parameters of request
      * @return {Promise} 
      */
-    patch(url, data, timeout, headers, parameters) {
-        const _url = this._createUrl(url, parameters)
+    patch(url, data, timeout, headers, parameters, serviceBaseURL) {
+        const _url = this._createUrl(url, parameters, serviceBaseURL)
         console.info('PATCH', _url)
         var req = request.patch(_url)
             .send(data);
@@ -122,8 +122,8 @@ export default class NorthAmpliaREST {
      * @param {object} parameters - parameters of request
      * @return {Promise} 
      */
-    post(url, data, timeout, headers, parameters) {
-        const _url = this._createUrl(url, parameters)
+    post(url, data, timeout, headers, parameters, serviceBaseURL) {
+        const _url = this._createUrl(url, parameters, serviceBaseURL)
         console.info('POST', _url)
         var req = request.post(_url)
             .send(data);
@@ -142,8 +142,8 @@ export default class NorthAmpliaREST {
      * @param {object} parameters - parameters of request
      * @return {Promise} 
      */
-    post_multipart(url, formData, events, timeout, headers, parameters) {
-        const _url = this._createUrl(url, parameters)
+    post_multipart(url, formData, events, timeout, headers, parameters, serviceBaseURL) {
+        const _url = this._createUrl(url, parameters, serviceBaseURL)
         console.info('POST_MULTIPART', _url)
         let req = request.post(_url);
 
@@ -163,6 +163,20 @@ export default class NorthAmpliaREST {
                 case 'certificate': 
                 case 'processorBulkFile':
                     req.attach('file', formData[key]);
+                    sendFormData = false
+                    break
+                case 'files':
+                    formData[key].forEach((item, index) => {
+                        console.log(item.name)
+                        req.attach(key, item);
+                    })
+                   
+                    delete formData[key]
+                    sendFormData = false
+                    break
+                case 'modelFile':
+                    req.field(key, formData[key]);
+                    delete formData[key]
                     sendFormData = false
                     break
                 case 'bulkFile':
@@ -188,8 +202,8 @@ export default class NorthAmpliaREST {
      * @param {object} parameters - parameters of request
      * @return {Promise} 
      */
-    put(url, data, timeout, headers, parameters) {
-        const _url = this._createUrl(url, parameters)
+    put(url, data, timeout, headers, parameters, serviceBaseURL) {
+        const _url = this._createUrl(url, parameters, serviceBaseURL)
         console.info('PUT', _url)
         var req = request.put(_url).send(data);
 
@@ -211,10 +225,11 @@ export default class NorthAmpliaREST {
      * @param {object} headers - headers of request
      * @param {object} parameters - parameters of request
      * @param {object} body - body of request
+     * @param {string} serviceBaseURL - base of the uri petition
      * @return {Promise} 
      */
-    delete(url, timeout, headers, parameters, body) {
-        const _url = this._createUrl(url, parameters)
+    delete(url, timeout, headers, parameters, body, serviceBaseURL) {
+        const _url = this._createUrl(url, parameters, serviceBaseURL)
         console.info('DELETE', _url)
         var req
         if(body){
@@ -226,7 +241,7 @@ export default class NorthAmpliaREST {
         return this._createPromiseRequest(req, null, timeout, headers);
     }
 
-    _createUrl(relativeUrl, parameters) {
+    _createUrl(relativeUrl, parameters, serviceBaseURL) {
         var encode = [];
         if (parameters) {
             var keys = Object.keys(parameters);
@@ -240,10 +255,10 @@ export default class NorthAmpliaREST {
                 }
 
             }
-            console.log(JSON.stringify(parameters));
+            // console.log(JSON.stringify(parameters));
         }
 
-        console.log(relativeUrl);
+        // console.log(relativeUrl);
 
         var relativeUrlSplit = relativeUrl.split("/");
         var length = relativeUrlSplit.length;
@@ -257,8 +272,20 @@ export default class NorthAmpliaREST {
                 encode.push(urlencode(item));
             }
         });
-        var returnUrl = this._url(this._options) + "/" + encode.join("/");
-        return returnUrl;
+
+        return this._url(this._options) +  "/" + this._getDefaultBaseURL(serviceBaseURL) + '/' + encode.join("/");
+    }
+
+    _getDefaultBaseURL(serviceBaseURL) {
+        if (!serviceBaseURL) {
+            if (this._isSouth) {
+                return 'v80'
+            } else {
+                return 'north/v80'
+            }
+        } 
+
+        return serviceBaseURL
     }
 
     _createPromiseRequest(req, events, timeout, headers, asBlob) {
@@ -294,6 +321,7 @@ export default class NorthAmpliaREST {
         }
         _req = _req.end(function(err, res) {
             if (err !== null) {
+                console.error("OGAPI ERROR: ")
                 console.error(err)
                 let data;
                 let status = err.status ? err.status : undefined;
