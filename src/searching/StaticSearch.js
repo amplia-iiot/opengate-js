@@ -588,7 +588,8 @@ export default class StaticSearch extends Search {
                 'CRITICAL'
             ],
             'userProfile': {
-                'root': ['admin_domain', 'admin', 'advanced', 'viewer'],
+                'root': ['admin_domain', 'admin', 'advanced', 'viewer', 'super_admin_domain'],
+                'super_admin_domain': ['admin_domain', 'admin', 'advanced', 'viewer'],
                 'admin_domain': ['admin_domain', 'admin', 'advanced', 'viewer'],
                 'admin': ['admin', 'advanced', 'viewer'],
                 'advanced': [],
