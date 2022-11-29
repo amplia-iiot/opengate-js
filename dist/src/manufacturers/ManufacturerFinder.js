@@ -71,8 +71,9 @@ var ManufacturerFinder = (function (_ProvisionGenericFinder) {
         /**
          * Download a specific manufacturer media by its ids. This execute a GET http method
          * @test
-         *   ogapi.newManufacturerFinder().findMediaById('manufacturername').then().catch();
-         * @param {string} identifier - manufacturer name .
+         *   ogapi.newManufacturerFinder().findMediaById('manufacturerId', 'mediaIdentifier').then().catch();
+         * @param {string} manufacturerId - manufacturer identifier .
+         * @param {string} mediaIdentifier - media identifier.
          * @return {Promise} 
          */
     }, {

@@ -567,7 +567,8 @@ var StaticSearch = (function (_Search) {
                 'ruleType': ['DATASTREAM', 'OPERATION', 'EVENT'],
                 'ruleConfigurationSeverity': ['INFORMATIVE', 'URGENT', 'CRITICAL'],
                 'userProfile': {
-                    'root': ['admin_domain', 'admin', 'advanced', 'viewer'],
+                    'root': ['admin_domain', 'admin', 'advanced', 'viewer', 'super_admin_domain'],
+                    'super_admin_domain': ['admin_domain', 'admin', 'advanced', 'viewer'],
                     'admin_domain': ['admin_domain', 'admin', 'advanced', 'viewer'],
                     'admin': ['admin', 'advanced', 'viewer'],
                     'advanced': [],

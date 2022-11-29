@@ -319,8 +319,9 @@ export default class ManufacturerFinder extends ProvisionGenericFinder {
     /**
      * Download a specific manufacturer media by its ids. This execute a GET http method
      * @test
-     *   ogapi.newManufacturerFinder().findMediaById(&apos;manufacturername&apos;).then().catch();
-     * @param {string} identifier - manufacturer name .
+     *   ogapi.newManufacturerFinder().findMediaById(&apos;manufacturerId&apos;, &apos;mediaIdentifier&apos;).then().catch();
+     * @param {string} manufacturerId - manufacturer identifier .
+     * @param {string} mediaIdentifier - media identifier.
      * @return {Promise} 
      */
     findMediaById(manufacturerId, mediaIdentifier) {

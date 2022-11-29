@@ -319,8 +319,9 @@ export default class ModelFinder extends ProvisionGenericFinder {
     /**
      * Download a specific model media by its ids. This execute a GET http method
      * @test
-     *   ogapi.newModelFinder().findMediaById(&apos;modelname&apos;).then().catch();
-     * @param {string} identifier - model name .
+     *   ogapi.newModelFinder().findMediaById(&apos;modelId&apos;, &apos;mediaIdentifier&apos;).then().catch();
+     * @param {string} modelId - model identifier .
+     * @param {string} mediaIdentifier - media identifier.
      * @return {Promise} 
      */
     findMediaById(modelId, mediaIdentifier) {
