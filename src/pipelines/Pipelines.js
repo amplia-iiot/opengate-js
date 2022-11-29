@@ -94,10 +94,7 @@ export default class Pipelines extends BaseProvision {
         var promise = defered.promise;
 
         const finalData = {
-            input: {
-                data: body_data,
-                date: new Date().toISOString()
-            }
+            input: body_data
         }
 
         if (deviceId && datastream) {

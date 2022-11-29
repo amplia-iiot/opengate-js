@@ -126,10 +126,7 @@ var Pipelines = (function (_BaseProvision) {
             var promise = defered.promise;
 
             var finalData = {
-                input: {
-                    data: body_data,
-                    date: new Date().toISOString()
-                }
+                input: body_data
             };
 
             if (deviceId && datastream) {
