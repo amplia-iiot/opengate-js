@@ -219,6 +219,65 @@ export default class NorthAmpliaREST {
     }
 
     /**
+     * Invoke put multipart action to url and data specified
+     * @param {!string} url - url to execute POST
+     * @param {FormData} formData - attach data to request POST
+     * @param {object} events - events allowed, xhr.process 
+     * @param {number} timeout - timeout in milliseconds       
+     * @param {object} headers - headers of request
+     * @param {object} parameters - parameters of request
+     * @return {Promise} 
+     */
+    put_multipart(url, formData, events, timeout, headers, parameters, serviceBaseURL) {
+        const _url = this._createUrl(url, parameters, serviceBaseURL)
+        console.info('PUT_MULTIPART', _url)
+        let req = request.put(_url);
+
+        let sendFormData = true
+
+        // Esta parte es sólo para cuando viene de tests o node
+        const formDataKeys = Object.keys(formData)
+        formDataKeys.forEach(key => {
+            switch (key) {
+                case 'meta':
+                case 'json':
+                case 'file':
+                    req.field(key, formData[key]);    
+                    delete formData[key]
+                    break
+                case 'hardwareMedia': 
+                case 'certificate': 
+                case 'processorBulkFile':
+                    req.attach('file', formData[key]);
+                    sendFormData = false
+                    break
+                case 'files':
+                    formData[key].forEach((item, index) => {
+                        console.log(item.name)
+                        req.attach(key, item);
+                    })
+                   
+                    delete formData[key]
+                    sendFormData = false
+                    break
+                case 'modelFile':
+                    req.field(key, formData[key]);
+                    delete formData[key]
+                    sendFormData = false
+                    break
+                case 'bulkFile':
+                    req.set('Content-Type', formData.ext);
+                    formData = formData.bulkFile;
+                    break
+                default:
+                    break;
+            }
+        })
+        if(sendFormData)
+            req.send(formData);
+        return this._createPromiseRequest(req, events, timeout, headers);
+    }
+    /**
      * Invoke DELETE action to url specified
      * @param {!string} url - url to execute DELETE
      * @param {number} timeout - timeout in milliseconds    

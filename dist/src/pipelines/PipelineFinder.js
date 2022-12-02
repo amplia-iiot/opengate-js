@@ -55,14 +55,14 @@ var PipelineFinder = (function (_GenericFinder) {
          * @test
          *   ogapi.newPipelineFinder().findByOrganizationAndName('orgname', xxx-xx-xxx-xxx').then().catch();
          * @param {string} organization - pipeline organization .
-         * @param {string} name - pipeline name.
+         * @param {string} identifier - pipeline identifier.
          * @return {Promise} 
          */
     }, {
-        key: 'findByOrganizationAndName',
-        value: function findByOrganizationAndName(organization, name) {
+        key: 'findByOrganizationAndIdentifier',
+        value: function findByOrganizationAndIdentifier(organization, identifier) {
             this._organization = organization;
-            this._name = name;
+            this._identifier = identifier;
             return this._execute();
         }
 
@@ -73,7 +73,7 @@ var PipelineFinder = (function (_GenericFinder) {
     }, {
         key: '_composeUrl',
         value: function _composeUrl() {
-            return this._baseUrl + "/" + this._organization + "/pipelines" + (this._name ? '/' + this._name : '');
+            return this._baseUrl + "/" + this._organization + "/pipelines" + (this._identifier ? '/' + this._identifier : '');
         }
     }]);
 

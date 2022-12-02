@@ -163,13 +163,6 @@ var Pipelines = (function (_BaseProvision) {
             };
             return pipeline;
         }
-    }, {
-        key: '_composeUpdateElement',
-        value: function _composeUpdateElement() {
-            var pipeline = _get(Object.getPrototypeOf(Pipelines.prototype), '_composeUpdateElement', this).call(this);
-            delete pipeline.pipeline.name;
-            return pipeline;
-        }
     }]);
 
     return Pipelines;

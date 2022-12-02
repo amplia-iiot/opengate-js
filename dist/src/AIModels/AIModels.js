@@ -119,14 +119,8 @@ var AIModels = (function (_BaseProvision) {
         value: function create() {
             var _postElement = this._composeElement();
 
-            // let form = new FormData();
-
-            // form.set('modelFile', _postElement.modelFile);
-
             var defer = _q2['default'].defer();
 
-            //var petitionUrl = this._buildURL();
-            //url, formData, events, timeout, headers, parameters
             this._ogapi.Napi.post_multipart(this._resource, { 'modelFile': _postElement.modelFile }, {}, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL()).then(function (response) {
                 var statusCode = response.statusCode;
                 switch (statusCode) {
@@ -153,6 +147,38 @@ var AIModels = (function (_BaseProvision) {
                     case 204:
                         defer.resolve(response);
                         break;
+                    default:
+                        defer.reject({
+                            errors: response.data.errors,
+                            statusCode: response.statusCode
+                        });
+                        break;
+                }
+            })['catch'](function (error) {
+                defer.reject(error);
+            });
+            return defer.promise;
+        }
+    }, {
+        key: 'update',
+        value: function update() {
+            var _postElement = this._composeElement();
+
+            var defer = _q2['default'].defer();
+
+            this._ogapi.Napi.put_multipart(this._buildURL(), { 'modelFile': _postElement.modelFile }, {}, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL()).then(function (response) {
+                var statusCode = response.statusCode;
+                switch (statusCode) {
+                    case 200:
+                        {
+                            var resultQuery = response.text != "" ? JSON.parse(response.text) : {};
+                            var _statusCode = response.status;
+                            defer.resolve({
+                                data: resultQuery,
+                                statusCode: _statusCode
+                            });
+                            break;
+                        }
                     default:
                         defer.reject({
                             errors: response.data.errors,

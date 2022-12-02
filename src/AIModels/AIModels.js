@@ -89,14 +89,8 @@ export default class AIModels extends BaseProvision {
     create() {
         let _postElement = this._composeElement();
         
-        // let form = new FormData();
-
-        // form.set('modelFile', _postElement.modelFile);
-
         const defer = q.defer();
         
-        //var petitionUrl = this._buildURL();
-        //url, formData, events, timeout, headers, parameters
         this._ogapi.Napi.post_multipart(this._resource, {'modelFile': _postElement.modelFile}, {}, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
             .then((response) => {
                 let statusCode = response.statusCode;
@@ -122,6 +116,38 @@ export default class AIModels extends BaseProvision {
                     case 204:
                         defer.resolve(response);
                         break
+                    default:
+                        defer.reject({
+                            errors: response.data.errors,
+                            statusCode: response.statusCode
+                        });
+                        break
+                }
+            })
+            .catch((error) => {
+                defer.reject(error);
+            });
+        return defer.promise;
+    }
+
+    update() {
+        let _postElement = this._composeElement();
+
+        const defer = q.defer();
+        
+        this._ogapi.Napi.put_multipart( this._buildURL(), {'modelFile': _postElement.modelFile}, {}, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
+            .then((response) => {
+                let statusCode = response.statusCode;
+                switch (statusCode) {
+                    case 200:{
+                        const resultQuery = response.text != "" ? JSON.parse(response.text) : {};
+                        const _statusCode = response.status;
+                        defer.resolve({
+                            data: resultQuery,
+                            statusCode: _statusCode
+                        });
+                        break
+                    }
                     default:
                         defer.reject({
                             errors: response.data.errors,
