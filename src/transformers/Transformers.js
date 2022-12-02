@@ -151,4 +151,35 @@ export default class Transformers extends BaseProvision {
         return defer.promise;
     }
 
+    update() {
+        let _postElement = this._composeElement();
+
+        const defer = q.defer();
+        
+        this._ogapi.Napi.put_multipart( this._buildURL(),  {files: _postElement.files}, {}, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
+            .then((response) => {
+                let statusCode = response.statusCode;
+                switch (statusCode) {
+                    case 200:{
+                        const resultQuery = response.text != "" ? JSON.parse(response.text) : {};
+                        const _statusCode = response.status;
+                        defer.resolve({
+                            data: resultQuery,
+                            statusCode: _statusCode
+                        });
+                        break
+                    }
+                    default:
+                        defer.reject({
+                            errors: response.data.errors,
+                            statusCode: response.statusCode
+                        });
+                        break
+                }
+            })
+            .catch((error) => {
+                defer.reject(error);
+            });
+        return defer.promise;
+    }
 }
