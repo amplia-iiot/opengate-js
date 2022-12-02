@@ -133,10 +133,4 @@ export default class Pipelines extends BaseProvision {
         };
         return pipeline;
     }
-
-    _composeUpdateElement() {
-        let pipeline = super._composeUpdateElement();
-        delete pipeline.pipeline.name;
-        return pipeline;
-    }
 }
