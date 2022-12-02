@@ -3198,6 +3198,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/aimodels/aimodels.js~aimodels#update",
+    "class/src/AIModels/AIModels.js~AIModels.html#instance-method-update",
+    "src/AIModels/AIModels.js~AIModels#update",
+    "method"
+  ],
+  [
     "src/aimodels/aimodels.js~aimodels#withfile",
     "class/src/AIModels/AIModels.js~AIModels.html#instance-method-withFile",
     "src/AIModels/AIModels.js~AIModels#withFile",
@@ -7530,9 +7536,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/pipelines/pipelinefinder.js~pipelinefinder#findbyorganizationandname",
-    "class/src/pipelines/PipelineFinder.js~PipelineFinder.html#instance-method-findByOrganizationAndName",
-    "src/pipelines/PipelineFinder.js~PipelineFinder#findByOrganizationAndName",
+    "src/pipelines/pipelinefinder.js~pipelinefinder#findbyorganizationandidentifier",
+    "class/src/pipelines/PipelineFinder.js~PipelineFinder.html#instance-method-findByOrganizationAndIdentifier",
+    "src/pipelines/PipelineFinder.js~PipelineFinder#findByOrganizationAndIdentifier",
     "method"
   ],
   [
@@ -10338,6 +10344,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/transformers/transformers.js~transformers#update",
+    "class/src/transformers/Transformers.js~Transformers.html#instance-method-update",
+    "src/transformers/Transformers.js~Transformers#update",
+    "method"
+  ],
+  [
     "src/transformers/transformers.js~transformers#withfiles",
     "class/src/transformers/Transformers.js~Transformers.html#instance-method-withFiles",
     "src/transformers/Transformers.js~Transformers#withFiles",
@@ -10599,6 +10611,12 @@ window.esdocSearchIndex = [
     "src/util/northampliarest.js~northampliarest#put",
     "class/src/util/NorthAmpliaREST.js~NorthAmpliaREST.html#instance-method-put",
     "src/util/NorthAmpliaREST.js~NorthAmpliaREST#put",
+    "method"
+  ],
+  [
+    "src/util/northampliarest.js~northampliarest#put_multipart",
+    "class/src/util/NorthAmpliaREST.js~NorthAmpliaREST.html#instance-method-put_multipart",
+    "src/util/NorthAmpliaREST.js~NorthAmpliaREST#put_multipart",
     "method"
   ],
   [
