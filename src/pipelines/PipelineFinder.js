@@ -31,12 +31,12 @@ export default class PipelineFinder extends GenericFinder {
      * @test
      *   ogapi.newPipelineFinder().findByOrganizationAndName('orgname', xxx-xx-xxx-xxx').then().catch();
      * @param {string} organization - pipeline organization .
-     * @param {string} name - pipeline name.
+     * @param {string} identifier - pipeline identifier.
      * @return {Promise} 
      */
-    findByOrganizationAndName(organization, name) {
+    findByOrganizationAndIdentifier(organization, identifier) {
         this._organization = organization;
-        this._name = name;
+        this._identifier = identifier;
         return this._execute();
     }
 
@@ -45,6 +45,6 @@ export default class PipelineFinder extends GenericFinder {
      * @private
      */
     _composeUrl() {
-        return this._baseUrl + "/" + this._organization + "/pipelines" + (this._name?'/'+ this._name:'');
+        return this._baseUrl + "/" + this._organization + "/pipelines" + (this._identifier?'/'+ this._identifier:'');
     }
 }
