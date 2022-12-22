@@ -1,6 +1,5 @@
 // features/step_definitions/when_step_definitions.js
-var OpengateAPI = require(process.cwd() + '/dist/opengate-api-npm');
-inspet = require('util').inspect;
+var request = require('superagent')
 var GenericFinder = require(process.cwd() + '/dist/src/GenericFinder');
 var {
     When,
@@ -948,7 +947,7 @@ When(/^I read reset password mail and save token mock$/, function () {
 
 When(/^I read reset password mail and save token$/, { timeout: 30000 }, async function () {
     var _this = this;
-    this.ogapiFG = new OpengateAPI({url: this.guerrillaApi})
+    
     await new Promise(async (callback, error) => {
         _this.error = undefined;
         _this.responseData = undefined;
@@ -969,39 +968,44 @@ When(/^I read reset password mail and save token$/, { timeout: 30000 }, async fu
         }
 
         try {
-            this.ogapiFG.Napi
-                .get(_this.guerillaPath, undefined, undefined, {
-                        f: setEmailUserUrl,
-                        email_user: configUserEmail.email_user,
-                        lang: 'en'
-                    }
-                )
-                .then((response) => {
+            request.get(_this.guerrillaApi).query({
+                f: setEmailUserUrl,
+                email_user: configUserEmail.email_user,
+                lang: 'en'
+            }).end((err, response) => {
+                if(err){
+                    console.log(err);
+                    _this.error = err;
+                    error(JSON.stringify(err));
+                }else{
                     configUserEmail.sid_token = response.body.sid_token
-                    this.ogapiFG.Napi
-                        .get(_this.guerillaPath, undefined, undefined, {
-                                f: getEmailListUrl,
-                                offset: 0,
-                                sid_token: configUserEmail.sid_token
-                            }
-                        )
-                        .then((response) => {
+                    request.get(_this.guerrillaApi).query(
+                        {
+                            f: getEmailListUrl,
+                            offset: 0,
+                            sid_token: configUserEmail.sid_token
+                        }
+                    )
+                    .end((err, response) => {
+                        if(err){
+                            console.log(err);
+                            _this.error = err;
+                            error(JSON.stringify(err));
+                        }else{
                             const list = response.body && response.body.list || []
                             const email = list[0]
                             configUserEmail.email_id = email && email.mail_id
-                            this.ogapiFG.Napi
-                                .get(_this.guerillaPath, undefined, undefined, {
-                                        f: fetchEmailUrl,
-                                        email_id: configUserEmail.email_id,
-                                        sid_token: configUserEmail.sid_token
-                                    }
-                                )
-                                .catch((err) => {
+                            request.get(_this.guerrillaApi).query({
+                                f: fetchEmailUrl,
+                                email_id: configUserEmail.email_id,
+                                sid_token: configUserEmail.sid_token
+                            })
+                            .end((err, response) => {
+                                if(err){
                                     console.log(err);
                                     _this.error = err;
                                     error(JSON.stringify(err))
-                                })
-                                .then((response) => {
+                                }else{
                                     const getEmail = response.body.mail_body || ''
                                     const getToken = getEmail.match(/tokenId=([^&>;]*)"/) && getEmail.match(/tokenId=([^&>;]*)"/)[1];
                                     if (!getToken) {
@@ -1009,14 +1013,12 @@ When(/^I read reset password mail and save token$/, { timeout: 30000 }, async fu
                                     }
                                     _this.values.token = getToken;
                                     callback();
-                                })
-                        })
-                })
-                .catch((err) => {
-                    console.log(err);
-                    _this.error = err;
-                    error(JSON.stringify(err));
-                })
+                                }
+                            })
+                        }
+                    })
+                }
+            })
         } catch (err) {
             console.log(err);
             _this.error = err;

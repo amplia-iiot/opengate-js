@@ -1,7 +1,6 @@
 # features/features/provision/analytics/create_delete_analytics.feature
 @create_provision
 @provision
-@wip
 
 Feature: Delete and Create an analytics pipeline
     As a user of JsApi

@@ -86,6 +86,7 @@ export default class NorthAmpliaREST {
      * @param {object} headers - headers of request
      * @param {object} parameters - parameters of request
      * @param {boolean} asBlob - response body as Blob
+     * @param {string} serviceBaseURL - base of the uri petition
      * @return {Promise} 
      */
     get(url, timeout, headers, parameters, asBlob, serviceBaseURL) {
@@ -102,6 +103,7 @@ export default class NorthAmpliaREST {
      * @param {number} timeout - timeout in milliseconds
      * @param {object} headers - headers of request
      * @param {object} parameters - parameters of request
+     * @param {string} serviceBaseURL - base of the uri petition
      * @return {Promise} 
      */
     patch(url, data, timeout, headers, parameters, serviceBaseURL) {
@@ -120,6 +122,7 @@ export default class NorthAmpliaREST {
      * @param {number} timeout - timeout in milliseconds
      * @param {object} headers - headers of request
      * @param {object} parameters - parameters of request
+     * @param {string} serviceBaseURL - base of the uri petition
      * @return {Promise} 
      */
     post(url, data, timeout, headers, parameters, serviceBaseURL) {
@@ -140,6 +143,7 @@ export default class NorthAmpliaREST {
      * @param {number} timeout - timeout in milliseconds       
      * @param {object} headers - headers of request
      * @param {object} parameters - parameters of request
+     * @param {string} serviceBaseURL - base of the uri petition
      * @return {Promise} 
      */
     post_multipart(url, formData, events, timeout, headers, parameters, serviceBaseURL) {
@@ -200,6 +204,7 @@ export default class NorthAmpliaREST {
      * @param {number} timeout - timeout in milliseconds       
      * @param {object} headers - headers of request
      * @param {object} parameters - parameters of request
+     * @param {string} serviceBaseURL - base of the uri petition
      * @return {Promise} 
      */
     put(url, data, timeout, headers, parameters, serviceBaseURL) {
@@ -226,6 +231,7 @@ export default class NorthAmpliaREST {
      * @param {number} timeout - timeout in milliseconds       
      * @param {object} headers - headers of request
      * @param {object} parameters - parameters of request
+     * @param {string} serviceBaseURL - base of the uri petition
      * @return {Promise} 
      */
     put_multipart(url, formData, events, timeout, headers, parameters, serviceBaseURL) {

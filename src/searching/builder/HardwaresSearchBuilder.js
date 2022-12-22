@@ -1,6 +1,6 @@
 'use strict';
 
-import SearchBuilder from './SearchBuilder';
+import SearchWithSummaryBuilder from './SearchWithSummaryBuilder';
 import FieldFinder from '../../util/searchingFields/FieldFinder'
 
 const BASE_URL = '/catalog/hardwares';
@@ -8,7 +8,7 @@ const BASE_URL = '/catalog/hardwares';
  * Defined a search over Devices	
  * @example ogapi.devicesSearchBuilder()
  */
-export default class HardwaresSearchBuilder extends SearchBuilder {
+export default class HardwaresSearchBuilder extends SearchWithSummaryBuilder {
     /**
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */

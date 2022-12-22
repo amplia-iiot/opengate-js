@@ -2,7 +2,6 @@
 @provision
 @users
 @resetpassword
-#@wip
 
 Feature: Reset password when the user forgets it
   As a user of JsApi
