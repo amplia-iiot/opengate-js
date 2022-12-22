@@ -2,7 +2,7 @@
 @provision
 @users
 @resetpassword
-#@wip
+@wip
 
 Feature: Reset password when the user forgets it
   As a user of JsApi
@@ -11,7 +11,7 @@ Feature: Reset password when the user forgets it
 
   @guerrilla
   Scenario: Precondition - Prepare scenario
-    Given an apikey user by "require-real-apikey"
+    Given an apikey user by "1e0a6fa7-d770-4072-ab4e-f98581522a65"
     Then an ogapi "organizations builder" util
     And I want to create a "organization"
     And the "name" "resetPasswordOrganization"
@@ -59,7 +59,7 @@ Feature: Reset password when the user forgets it
     Then response code should be: 200
 
   Scenario: Delete an user that already exists
-    Given an apikey user by "require-real-apikey"
+    Given an apikey user by "1e0a6fa7-d770-4072-ab4e-f98581522a65"
     Then an ogapi "users builder" util
     And I want to delete a "user"
     And the "email" "ogapi@guerrillamailblock.com"
