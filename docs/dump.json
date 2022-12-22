@@ -790,7 +790,7 @@
     "__docId__": 30,
     "kind": "file",
     "name": "src/GenericFinder.js",
-    "content": "'use strict';\n\nimport q from 'q';\nimport HttpStatus from 'http-status-codes';\n\n/**\n *   This class allow make get request to user resource into Opengate North API.\n */\nexport default class GenericFinder {\n\n    /**     \n     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.\n     * @param {string} source - Relative url where is located the resource.\n     * @param {string} reponseJsonData - Relative url where is located the resource. Can be null\n     * @param {string} error_not_found - String error which will be thrown on not_found error.\n     */\n    constructor(ogapi, source, entity, error_not_found, serviceBaseURL) {\n        this._api = ogapi.Napi;\n        this._baseUrl = source;\n        this._entity = entity;\n        this._error_not_found = error_not_found;\n        this._id = undefined;\n        this._headers = undefined;\n        this._urlParameters = undefined;\n        this._serviceBaseURL = serviceBaseURL;\n    }\n\n    /**\n     * @return {String} This returns a string with the URL of the request.\n     * @private\n     */\n    _composeUrl() {\n        return this._baseUrl + \"/\" + this._id;\n    }\n\n    _withId(_id) {\n        this._id = _id;\n        return this;\n    }\n\n    _getExtraHeaders() {\n        return this._headers;\n    }\n\n    _setExtraHeaders(headers) {\n        if (this._headers) {\n            var keys = Object.keys(headers);\n            for (var i = 0; i < keys.length; i++) {\n                var key = keys[i];\n                this._headers[key] = headers[key];\n            }\n        } else {\n            this._headers = headers;\n        }\n    }\n\n    _getUrlParameters() {\n        return this._urlParameters;\n    }\n\n    _setUrlParameters(parameters) {\n        if (this.parameters) {\n            var keys = Object.keys(parameters);\n            for (var i = 0; i < keys.length; i++) {\n                var key = keys[i];\n                this._urlParameters[key] = parameters[key];\n            }\n        } else {\n            this._urlParameters = parameters;\n        }\n    }\n\n    /**\n     * @return {Promise}\n     * @private\n     */\n    _execute() {\n        let defered = q.defer();\n        let promise = defered.promise;\n        let _entity = this._entity;\n        let _error_not_found = this._error_not_found;\n        this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), false, this._getServiceBaseURL())\n            .then((req) => {\n                if (req.statusCode === 204) {\n                    defered.reject({\n                        error: _error_not_found,\n                        statusCode: HttpStatus.NOT_FOUND\n                    });\n                } else {\n                    var data = req.body[_entity] && req.body.provision ? req.body : req.body[_entity];\n                    defered.resolve({\n                        data: data ? data : req.body,\n                        statusCode: req.statusCode\n                    });\n                    // }\n                }\n            })\n            .catch((error) => {\n                // BUG RELACIONADO (http://cm.amplia.es/jira/browse/OGODM-3250)\n                if (error.statusCode === 400) {\n                    error.statusCode = HttpStatus.NOT_FOUND;\n                }\n\n                defered.reject(error);\n            });\n        return promise;\n    }\n\n    _downloadUrl() {\n        return this._composeUrl();\n    }\n\n    /**\n     * @return {Promise}* @private\n     */\n     _download(noBlob) {\n        let defered = q.defer();\n        let promise = defered.promise;\n        let _error_not_found = this._error_not_found;\n        this._api.get(this._downloadUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), (noBlob?false:true), this._getServiceBaseURL())\n            .then((req) => {\n                if (req.statusCode === 204) {\n                    defered.reject({\n                        data: _error_not_found,\n                        statusCode: HttpStatus.NOT_FOUND\n                    });\n                } else {\n                    defered.resolve({\n                        data: req,\n                        statusCode: req.statusCode\n                    });\n                }\n            })\n            .catch((error) => {\n                defered.reject(error);\n            });\n        return promise;\n    }\n\n    _getServiceBaseURL() {\n        return this._serviceBaseURL;\n    }\n\n}",
+    "content": "'use strict';\n\nimport q from 'q';\nimport HttpStatus from 'http-status-codes';\n\n/**\n *   This class allow make get request to user resource into Opengate North API.\n */\nexport default class GenericFinder {\n\n    /**     \n     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.\n     * @param {string} source - Relative url where is located the resource.\n     * @param {string} reponseJsonData - Relative url where is located the resource. Can be null\n     * @param {string} error_not_found - String error which will be thrown on not_found error.\n     * @param {string} serviceBaseURL - base of the uri petition\n     */\n    constructor(ogapi, source, entity, error_not_found, serviceBaseURL) {\n        this._api = ogapi.Napi;\n        this._baseUrl = source;\n        this._entity = entity;\n        this._error_not_found = error_not_found;\n        this._id = undefined;\n        this._headers = undefined;\n        this._urlParameters = undefined;\n        this._serviceBaseURL = serviceBaseURL;\n    }\n\n    /**\n     * @return {String} This returns a string with the URL of the request.\n     * @private\n     */\n    _composeUrl() {\n        return this._baseUrl + \"/\" + this._id;\n    }\n\n    _withId(_id) {\n        this._id = _id;\n        return this;\n    }\n\n    _getExtraHeaders() {\n        return this._headers;\n    }\n\n    _setExtraHeaders(headers) {\n        if (this._headers) {\n            var keys = Object.keys(headers);\n            for (var i = 0; i < keys.length; i++) {\n                var key = keys[i];\n                this._headers[key] = headers[key];\n            }\n        } else {\n            this._headers = headers;\n        }\n    }\n\n    _getUrlParameters() {\n        return this._urlParameters;\n    }\n\n    _setUrlParameters(parameters) {\n        if (this.parameters) {\n            var keys = Object.keys(parameters);\n            for (var i = 0; i < keys.length; i++) {\n                var key = keys[i];\n                this._urlParameters[key] = parameters[key];\n            }\n        } else {\n            this._urlParameters = parameters;\n        }\n    }\n\n    /**\n     * @return {Promise}\n     * @private\n     */\n    _execute() {\n        let defered = q.defer();\n        let promise = defered.promise;\n        let _entity = this._entity;\n        let _error_not_found = this._error_not_found;\n        this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), false, this._getServiceBaseURL())\n            .then((req) => {\n                if (req.statusCode === 204) {\n                    defered.reject({\n                        error: _error_not_found,\n                        statusCode: HttpStatus.NOT_FOUND\n                    });\n                } else {\n                    var data = req.body[_entity] && req.body.provision ? req.body : req.body[_entity];\n                    defered.resolve({\n                        data: data ? data : req.body,\n                        statusCode: req.statusCode\n                    });\n                    // }\n                }\n            })\n            .catch((error) => {\n                // BUG RELACIONADO (http://cm.amplia.es/jira/browse/OGODM-3250)\n                if (error.statusCode === 400) {\n                    error.statusCode = HttpStatus.NOT_FOUND;\n                }\n\n                defered.reject(error);\n            });\n        return promise;\n    }\n\n    _downloadUrl() {\n        return this._composeUrl();\n    }\n\n    /**\n     * @return {Promise}* @private\n     */\n     _download(noBlob) {\n        let defered = q.defer();\n        let promise = defered.promise;\n        let _error_not_found = this._error_not_found;\n        this._api.get(this._downloadUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), (noBlob?false:true), this._getServiceBaseURL())\n            .then((req) => {\n                if (req.statusCode === 204) {\n                    defered.reject({\n                        data: _error_not_found,\n                        statusCode: HttpStatus.NOT_FOUND\n                    });\n                } else {\n                    defered.resolve({\n                        data: req,\n                        statusCode: req.statusCode\n                    });\n                }\n            })\n            .catch((error) => {\n                defered.reject(error);\n            });\n        return promise;\n    }\n\n    _getServiceBaseURL() {\n        return this._serviceBaseURL;\n    }\n\n}",
     "static": true,
     "longname": "src/GenericFinder.js",
     "access": null,
@@ -823,7 +823,7 @@
     "longname": "src/GenericFinder.js~GenericFinder#constructor",
     "access": null,
     "description": "    ",
-    "lineNumber": 17,
+    "lineNumber": 18,
     "params": [
       {
         "nullable": null,
@@ -864,6 +864,16 @@
         "optional": false,
         "name": "error_not_found",
         "description": "String error which will be thrown on not_found error."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "serviceBaseURL",
+        "description": "base of the uri petition"
       }
     ]
   },
@@ -876,7 +886,7 @@
     "longname": "src/GenericFinder.js~GenericFinder#_api",
     "access": null,
     "description": null,
-    "lineNumber": 18,
+    "lineNumber": 19,
     "undocument": true,
     "unknown": [
       {
@@ -899,7 +909,7 @@
     "longname": "src/GenericFinder.js~GenericFinder#_baseUrl",
     "access": null,
     "description": null,
-    "lineNumber": 19,
+    "lineNumber": 20,
     "undocument": true,
     "unknown": [
       {
@@ -922,7 +932,7 @@
     "longname": "src/GenericFinder.js~GenericFinder#_entity",
     "access": null,
     "description": null,
-    "lineNumber": 20,
+    "lineNumber": 21,
     "undocument": true,
     "unknown": [
       {
@@ -945,7 +955,7 @@
     "longname": "src/GenericFinder.js~GenericFinder#_error_not_found",
     "access": null,
     "description": null,
-    "lineNumber": 21,
+    "lineNumber": 22,
     "undocument": true,
     "unknown": [
       {
@@ -968,7 +978,7 @@
     "longname": "src/GenericFinder.js~GenericFinder#_id",
     "access": null,
     "description": null,
-    "lineNumber": 22,
+    "lineNumber": 23,
     "undocument": true,
     "unknown": [
       {
@@ -991,7 +1001,7 @@
     "longname": "src/GenericFinder.js~GenericFinder#_headers",
     "access": null,
     "description": null,
-    "lineNumber": 23,
+    "lineNumber": 24,
     "undocument": true,
     "unknown": [
       {
@@ -1014,7 +1024,7 @@
     "longname": "src/GenericFinder.js~GenericFinder#_urlParameters",
     "access": null,
     "description": null,
-    "lineNumber": 24,
+    "lineNumber": 25,
     "undocument": true,
     "unknown": [
       {
@@ -1037,7 +1047,7 @@
     "longname": "src/GenericFinder.js~GenericFinder#_serviceBaseURL",
     "access": null,
     "description": null,
-    "lineNumber": 25,
+    "lineNumber": 26,
     "undocument": true,
     "unknown": [
       {
@@ -1062,7 +1072,7 @@
     "longname": "src/GenericFinder.js~GenericFinder#_composeUrl",
     "access": "private",
     "description": "",
-    "lineNumber": 32,
+    "lineNumber": 33,
     "params": [],
     "return": {
       "nullable": null,
@@ -1084,7 +1094,7 @@
     "longname": "src/GenericFinder.js~GenericFinder#_withId",
     "access": null,
     "description": null,
-    "lineNumber": 36,
+    "lineNumber": 37,
     "undocument": true,
     "unknown": [
       {
@@ -1115,7 +1125,7 @@
     "longname": "src/GenericFinder.js~GenericFinder#_id",
     "access": null,
     "description": null,
-    "lineNumber": 37,
+    "lineNumber": 38,
     "undocument": true,
     "unknown": [
       {
@@ -1140,7 +1150,7 @@
     "longname": "src/GenericFinder.js~GenericFinder#_getExtraHeaders",
     "access": null,
     "description": null,
-    "lineNumber": 41,
+    "lineNumber": 42,
     "undocument": true,
     "unknown": [
       {
@@ -1166,7 +1176,7 @@
     "longname": "src/GenericFinder.js~GenericFinder#_setExtraHeaders",
     "access": null,
     "description": null,
-    "lineNumber": 45,
+    "lineNumber": 46,
     "undocument": true,
     "unknown": [
       {
@@ -1192,7 +1202,7 @@
     "longname": "src/GenericFinder.js~GenericFinder#_headers",
     "access": null,
     "description": null,
-    "lineNumber": 53,
+    "lineNumber": 54,
     "undocument": true,
     "unknown": [
       {
@@ -1217,7 +1227,7 @@
     "longname": "src/GenericFinder.js~GenericFinder#_getUrlParameters",
     "access": null,
     "description": null,
-    "lineNumber": 57,
+    "lineNumber": 58,
     "undocument": true,
     "unknown": [
       {
@@ -1243,7 +1253,7 @@
     "longname": "src/GenericFinder.js~GenericFinder#_setUrlParameters",
     "access": null,
     "description": null,
-    "lineNumber": 61,
+    "lineNumber": 62,
     "undocument": true,
     "unknown": [
       {
@@ -1269,7 +1279,7 @@
     "longname": "src/GenericFinder.js~GenericFinder#_urlParameters",
     "access": null,
     "description": null,
-    "lineNumber": 69,
+    "lineNumber": 70,
     "undocument": true,
     "unknown": [
       {
@@ -1294,7 +1304,7 @@
     "longname": "src/GenericFinder.js~GenericFinder#_execute",
     "access": "private",
     "description": "",
-    "lineNumber": 77,
+    "lineNumber": 78,
     "params": [],
     "return": {
       "nullable": null,
@@ -1316,7 +1326,7 @@
     "longname": "src/GenericFinder.js~GenericFinder#_downloadUrl",
     "access": null,
     "description": null,
-    "lineNumber": 109,
+    "lineNumber": 110,
     "undocument": true,
     "unknown": [
       {
@@ -1342,7 +1352,7 @@
     "longname": "src/GenericFinder.js~GenericFinder#_download",
     "access": null,
     "description": "",
-    "lineNumber": 116,
+    "lineNumber": 117,
     "params": [
       {
         "name": "noBlob",
@@ -1371,7 +1381,7 @@
     "longname": "src/GenericFinder.js~GenericFinder#_getServiceBaseURL",
     "access": null,
     "description": null,
-    "lineNumber": 140,
+    "lineNumber": 141,
     "undocument": true,
     "unknown": [
       {
@@ -40551,7 +40561,7 @@
     "__docId__": 1548,
     "kind": "file",
     "name": "src/provision/BaseProvision.js",
-    "content": "'use strict';\r\n\r\nimport q from 'q';\r\n\r\n/**\r\n * This is an abstract class, it must be extended to another class that defines the different actions of a specific provision.\r\n * This class is responsible for managing the request to execute Norte OpenGate API\r\n */\r\nexport default class BaseProvision {\r\n    /**\r\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\r\n     * @param {!string} resource - this is a base url resource\r\n     * @param {!number} [timeout] - timeout on request\r\n     */\r\n    constructor(ogapi, resource, timeout, requiredParameters = [], serviceBaseURL) {\r\n        if (this.constructor === BaseProvision) {\r\n            throw new Error(\"Cannot construct Abstract instances directly\");\r\n        }\r\n        if (typeof this._composeElement !== \"function\") {\r\n            throw new Error(\"Must override method:  composeElement\");\r\n        }\r\n        if (typeof this._buildURL !== \"function\") {\r\n            throw new Error(\"Must override method:  _buildURL\");\r\n        }\r\n        if (timeout) {\r\n            if (typeof timeout !== 'number') {\r\n                this._timeout = ogapi.Napi._options.timeout;\r\n            } else {\r\n                this._timeout = timeout;\r\n            }\r\n        }\r\n\r\n        this._ogapi = ogapi;\r\n        this._resource = 'provision' + resource;\r\n        this._requiredParameters = requiredParameters;\r\n        this._headers = undefined;\r\n        this._urlParameters = undefined;\r\n        this._serviceBaseURL = serviceBaseURL\r\n    }\r\n\r\n    _checkRequiredParameters() {\r\n        let parametersNotFound = [];\r\n        if (this._requiredParameters && this._requiredParameters.length > 0) {\r\n            for (let i = 0; i < this._requiredParameters.length; i++) {\r\n                if (this[this._requiredParameters[i]] === undefined && this[\"_\" + this._requiredParameters[i]] === undefined) {\r\n                    parametersNotFound.push(this._requiredParameters[i]);\r\n                }\r\n            }\r\n\r\n            if (parametersNotFound.length > 0) {\r\n                throw new Error(\"There are required parameters that have not been set. Missing parameters: \" +\r\n                    JSON.stringify(parametersNotFound).replace(new RegExp(\"\\\"\", 'g'), \"\"));\r\n            }\r\n        }\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function create a entity of provision\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.organizationsBuilder().create()\r\n     */\r\n    create() {\r\n        this._checkRequiredParameters();\r\n\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n\r\n        //En muchas clases se genera this._resource en la llamada a la funcion this._composeElement()\r\n\r\n        let _postElement = this._composeElement();\r\n        this._ogapi.Napi.post(this._resource, _postElement, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())\r\n            .then((res) => {\r\n                if (res.statusCode === 201) {\r\n                    if (typeof this._onCreated === \"function\") {\r\n                        this._onCreated(res.header.location);\r\n                    }\r\n                    defered.resolve({\r\n                        location: res.header.location,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function deletes a entity of provision\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     * ogapi.organizationsBuilder().withName('delete_organization').delete();\r\n     * ogapi.usersBuilder().withEmail('delete@user.com').delete();\r\n     * ogapi.certificatesBuilder().withId('d3l3t3-c3rt1f1c4t3').delete();\r\n     */\r\n    delete(body) {\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n        this._ogapi.Napi.delete(this._buildURL(), this._timeout, this._getExtraHeaders(), this._getUrlParameters(), body, this._getServiceBaseURL())\r\n            .then((res) => {\r\n                if (res.statusCode === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function updates a entity of provision\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.organizationsBuilder().update()\r\n     */\r\n    update() {\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n\r\n        this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement(), this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())\r\n            .then((res) => {\r\n                if (res.statusCode === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else if (res.status === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.status\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n\r\n    _composeUpdateElement() {\r\n        return this._composeElement();\r\n    }\r\n\r\n    _doNorthPut(resource, element) {\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n\r\n        this._ogapi.Napi.put(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())\r\n            .then((res) => {\r\n                if (res.statusCode === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else if (res.status === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.status\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n\r\n    _doNorthPost(resource, element) {\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n        this._ogapi.Napi.post(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())\r\n            .then((res) => {\r\n                if (res.statusCode === 201) {\r\n                    if (typeof this._onCreated === \"function\") {\r\n                        this._onCreated(res.header.location);\r\n                    }\r\n                    defered.resolve({\r\n                        location: res.header.location,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else if (res.statusCode === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n\r\n    _getExtraHeaders() {\r\n        return this._headers;\r\n    }\r\n\r\n    _setExtraHeaders(headers) {\r\n        if (this._headers) {\r\n            var keys = Object.keys(headers);\r\n            for (var i = 0; i < keys.length; i++) {\r\n                var key = keys[i];\r\n                this._headers[key] = headers[key];\r\n            }\r\n        } else {\r\n            this._headers = headers;\r\n        }\r\n    }\r\n\r\n    _getUrlParameters() {\r\n        return this._urlParameters;\r\n    }\r\n\r\n    _setUrlParameters(parameters) {\r\n        if (this._urlParameters) {\r\n            var keys = Object.keys(parameters);\r\n            for (var i = 0; i < keys.length; i++) {\r\n                var key = keys[i];\r\n                this._urlParameters[key] = parameters[key];\r\n            }\r\n        } else {\r\n            this._urlParameters = parameters;\r\n        }\r\n    }\r\n\r\n    _checkValues(value, enumName) {\r\n        let not_found = [];\r\n        let found = enumName.find(function(value) {\r\n            return value == this;\r\n        }, value);\r\n\r\n        if (typeof found === \"undefined\") {\r\n            not_found.push(value);\r\n        }\r\n        if (not_found.length !== 0) {\r\n            console.warn(\"Parameter value not allowed <'\" + JSON.stringify(not_found) + \"'>, allowed <'\" + JSON.stringify(enumName) + \"'>\");\r\n        }\r\n        return value;\r\n    }\r\n\r\n    _getServiceBaseURL() {\r\n        return this._serviceBaseURL\r\n    }\r\n}",
+    "content": "'use strict';\r\n\r\nimport q from 'q';\r\n\r\n/**\r\n * This is an abstract class, it must be extended to another class that defines the different actions of a specific provision.\r\n * This class is responsible for managing the request to execute Norte OpenGate API\r\n */\r\nexport default class BaseProvision {\r\n    /**\r\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\r\n     * @param {!string} resource - this is a base url resource\r\n     * @param {!number} [timeout] - timeout on request\r\n     * @param {array} requiredParameters\r\n     * @param {string} serviceBaseURL - base of the uri petition\r\n     */\r\n    constructor(ogapi, resource, timeout, requiredParameters = [], serviceBaseURL) {\r\n        if (this.constructor === BaseProvision) {\r\n            throw new Error(\"Cannot construct Abstract instances directly\");\r\n        }\r\n        if (typeof this._composeElement !== \"function\") {\r\n            throw new Error(\"Must override method:  composeElement\");\r\n        }\r\n        if (typeof this._buildURL !== \"function\") {\r\n            throw new Error(\"Must override method:  _buildURL\");\r\n        }\r\n        if (timeout) {\r\n            if (typeof timeout !== 'number') {\r\n                this._timeout = ogapi.Napi._options.timeout;\r\n            } else {\r\n                this._timeout = timeout;\r\n            }\r\n        }\r\n\r\n        this._ogapi = ogapi;\r\n        this._resource = 'provision' + resource;\r\n        this._requiredParameters = requiredParameters;\r\n        this._headers = undefined;\r\n        this._urlParameters = undefined;\r\n        this._serviceBaseURL = serviceBaseURL\r\n    }\r\n\r\n    _checkRequiredParameters() {\r\n        let parametersNotFound = [];\r\n        if (this._requiredParameters && this._requiredParameters.length > 0) {\r\n            for (let i = 0; i < this._requiredParameters.length; i++) {\r\n                if (this[this._requiredParameters[i]] === undefined && this[\"_\" + this._requiredParameters[i]] === undefined) {\r\n                    parametersNotFound.push(this._requiredParameters[i]);\r\n                }\r\n            }\r\n\r\n            if (parametersNotFound.length > 0) {\r\n                throw new Error(\"There are required parameters that have not been set. Missing parameters: \" +\r\n                    JSON.stringify(parametersNotFound).replace(new RegExp(\"\\\"\", 'g'), \"\"));\r\n            }\r\n        }\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function create a entity of provision\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.organizationsBuilder().create()\r\n     */\r\n    create() {\r\n        this._checkRequiredParameters();\r\n\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n\r\n        //En muchas clases se genera this._resource en la llamada a la funcion this._composeElement()\r\n\r\n        let _postElement = this._composeElement();\r\n        this._ogapi.Napi.post(this._resource, _postElement, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())\r\n            .then((res) => {\r\n                if (res.statusCode === 201) {\r\n                    if (typeof this._onCreated === \"function\") {\r\n                        this._onCreated(res.header.location);\r\n                    }\r\n                    defered.resolve({\r\n                        location: res.header.location,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function deletes a entity of provision\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     * ogapi.organizationsBuilder().withName('delete_organization').delete();\r\n     * ogapi.usersBuilder().withEmail('delete@user.com').delete();\r\n     * ogapi.certificatesBuilder().withId('d3l3t3-c3rt1f1c4t3').delete();\r\n     */\r\n    delete(body) {\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n        this._ogapi.Napi.delete(this._buildURL(), this._timeout, this._getExtraHeaders(), this._getUrlParameters(), body, this._getServiceBaseURL())\r\n            .then((res) => {\r\n                if (res.statusCode === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function updates a entity of provision\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.organizationsBuilder().update()\r\n     */\r\n    update() {\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n\r\n        this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement(), this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())\r\n            .then((res) => {\r\n                if (res.statusCode === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else if (res.status === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.status\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n\r\n    _composeUpdateElement() {\r\n        return this._composeElement();\r\n    }\r\n\r\n    _doNorthPut(resource, element) {\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n\r\n        this._ogapi.Napi.put(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())\r\n            .then((res) => {\r\n                if (res.statusCode === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else if (res.status === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.status\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n\r\n    _doNorthPost(resource, element) {\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n        this._ogapi.Napi.post(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())\r\n            .then((res) => {\r\n                if (res.statusCode === 201) {\r\n                    if (typeof this._onCreated === \"function\") {\r\n                        this._onCreated(res.header.location);\r\n                    }\r\n                    defered.resolve({\r\n                        location: res.header.location,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else if (res.statusCode === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n\r\n    _getExtraHeaders() {\r\n        return this._headers;\r\n    }\r\n\r\n    _setExtraHeaders(headers) {\r\n        if (this._headers) {\r\n            var keys = Object.keys(headers);\r\n            for (var i = 0; i < keys.length; i++) {\r\n                var key = keys[i];\r\n                this._headers[key] = headers[key];\r\n            }\r\n        } else {\r\n            this._headers = headers;\r\n        }\r\n    }\r\n\r\n    _getUrlParameters() {\r\n        return this._urlParameters;\r\n    }\r\n\r\n    _setUrlParameters(parameters) {\r\n        if (this._urlParameters) {\r\n            var keys = Object.keys(parameters);\r\n            for (var i = 0; i < keys.length; i++) {\r\n                var key = keys[i];\r\n                this._urlParameters[key] = parameters[key];\r\n            }\r\n        } else {\r\n            this._urlParameters = parameters;\r\n        }\r\n    }\r\n\r\n    _checkValues(value, enumName) {\r\n        let not_found = [];\r\n        let found = enumName.find(function(value) {\r\n            return value == this;\r\n        }, value);\r\n\r\n        if (typeof found === \"undefined\") {\r\n            not_found.push(value);\r\n        }\r\n        if (not_found.length !== 0) {\r\n            console.warn(\"Parameter value not allowed <'\" + JSON.stringify(not_found) + \"'>, allowed <'\" + JSON.stringify(enumName) + \"'>\");\r\n        }\r\n        return value;\r\n    }\r\n\r\n    _getServiceBaseURL() {\r\n        return this._serviceBaseURL\r\n    }\r\n}",
     "static": true,
     "longname": "src/provision/BaseProvision.js",
     "access": null,
@@ -40584,7 +40594,7 @@
     "longname": "src/provision/BaseProvision.js~BaseProvision#constructor",
     "access": null,
     "description": "",
-    "lineNumber": 15,
+    "lineNumber": 17,
     "params": [
       {
         "nullable": false,
@@ -40615,34 +40625,31 @@
         "optional": true,
         "name": "timeout",
         "description": "timeout on request"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "requiredParameters",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "serviceBaseURL",
+        "description": "base of the uri petition"
       }
     ]
   },
   {
     "__docId__": 1551,
-    "kind": "member",
-    "name": "_timeout",
-    "memberof": "src/provision/BaseProvision.js~BaseProvision",
-    "static": false,
-    "longname": "src/provision/BaseProvision.js~BaseProvision#_timeout",
-    "access": null,
-    "description": null,
-    "lineNumber": 27,
-    "undocument": true,
-    "unknown": [
-      {
-        "tagName": "@_undocument",
-        "tagValue": ""
-      }
-    ],
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 1552,
     "kind": "member",
     "name": "_timeout",
     "memberof": "src/provision/BaseProvision.js~BaseProvision",
@@ -40665,6 +40672,29 @@
     }
   },
   {
+    "__docId__": 1552,
+    "kind": "member",
+    "name": "_timeout",
+    "memberof": "src/provision/BaseProvision.js~BaseProvision",
+    "static": false,
+    "longname": "src/provision/BaseProvision.js~BaseProvision#_timeout",
+    "access": null,
+    "description": null,
+    "lineNumber": 31,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
     "__docId__": 1553,
     "kind": "member",
     "name": "_ogapi",
@@ -40673,7 +40703,7 @@
     "longname": "src/provision/BaseProvision.js~BaseProvision#_ogapi",
     "access": null,
     "description": null,
-    "lineNumber": 33,
+    "lineNumber": 35,
     "undocument": true,
     "unknown": [
       {
@@ -40696,7 +40726,7 @@
     "longname": "src/provision/BaseProvision.js~BaseProvision#_resource",
     "access": null,
     "description": null,
-    "lineNumber": 34,
+    "lineNumber": 36,
     "undocument": true,
     "unknown": [
       {
@@ -40719,7 +40749,7 @@
     "longname": "src/provision/BaseProvision.js~BaseProvision#_requiredParameters",
     "access": null,
     "description": null,
-    "lineNumber": 35,
+    "lineNumber": 37,
     "undocument": true,
     "unknown": [
       {
@@ -40742,7 +40772,7 @@
     "longname": "src/provision/BaseProvision.js~BaseProvision#_headers",
     "access": null,
     "description": null,
-    "lineNumber": 36,
+    "lineNumber": 38,
     "undocument": true,
     "unknown": [
       {
@@ -40765,7 +40795,7 @@
     "longname": "src/provision/BaseProvision.js~BaseProvision#_urlParameters",
     "access": null,
     "description": null,
-    "lineNumber": 37,
+    "lineNumber": 39,
     "undocument": true,
     "unknown": [
       {
@@ -40788,7 +40818,7 @@
     "longname": "src/provision/BaseProvision.js~BaseProvision#_serviceBaseURL",
     "access": null,
     "description": null,
-    "lineNumber": 38,
+    "lineNumber": 40,
     "undocument": true,
     "unknown": [
       {
@@ -40813,7 +40843,7 @@
     "longname": "src/provision/BaseProvision.js~BaseProvision#_checkRequiredParameters",
     "access": null,
     "description": null,
-    "lineNumber": 41,
+    "lineNumber": 43,
     "undocument": true,
     "unknown": [
       {
@@ -40837,7 +40867,7 @@
     "examples": [
       " ogapi.organizationsBuilder().create()"
     ],
-    "lineNumber": 66,
+    "lineNumber": 68,
     "params": [],
     "properties": [
       {
@@ -40884,7 +40914,7 @@
     "examples": [
       "ogapi.organizationsBuilder().withName('delete_organization').delete();\nogapi.usersBuilder().withEmail('delete@user.com').delete();\nogapi.certificatesBuilder().withId('d3l3t3-c3rt1f1c4t3').delete();"
     ],
-    "lineNumber": 109,
+    "lineNumber": 111,
     "params": [
       {
         "name": "body",
@@ -40938,7 +40968,7 @@
     "examples": [
       " ogapi.organizationsBuilder().update()"
     ],
-    "lineNumber": 140,
+    "lineNumber": 142,
     "params": [],
     "properties": [
       {
@@ -40982,7 +41012,7 @@
     "longname": "src/provision/BaseProvision.js~BaseProvision#_composeUpdateElement",
     "access": null,
     "description": null,
-    "lineNumber": 167,
+    "lineNumber": 169,
     "undocument": true,
     "unknown": [
       {
@@ -41008,7 +41038,7 @@
     "longname": "src/provision/BaseProvision.js~BaseProvision#_doNorthPut",
     "access": null,
     "description": null,
-    "lineNumber": 171,
+    "lineNumber": 173,
     "undocument": true,
     "unknown": [
       {
@@ -41047,7 +41077,7 @@
     "longname": "src/provision/BaseProvision.js~BaseProvision#_doNorthPost",
     "access": null,
     "description": null,
-    "lineNumber": 198,
+    "lineNumber": 200,
     "undocument": true,
     "unknown": [
       {
@@ -41086,7 +41116,7 @@
     "longname": "src/provision/BaseProvision.js~BaseProvision#_getExtraHeaders",
     "access": null,
     "description": null,
-    "lineNumber": 228,
+    "lineNumber": 230,
     "undocument": true,
     "unknown": [
       {
@@ -41112,7 +41142,7 @@
     "longname": "src/provision/BaseProvision.js~BaseProvision#_setExtraHeaders",
     "access": null,
     "description": null,
-    "lineNumber": 232,
+    "lineNumber": 234,
     "undocument": true,
     "unknown": [
       {
@@ -41138,7 +41168,7 @@
     "longname": "src/provision/BaseProvision.js~BaseProvision#_headers",
     "access": null,
     "description": null,
-    "lineNumber": 240,
+    "lineNumber": 242,
     "undocument": true,
     "unknown": [
       {
@@ -41163,7 +41193,7 @@
     "longname": "src/provision/BaseProvision.js~BaseProvision#_getUrlParameters",
     "access": null,
     "description": null,
-    "lineNumber": 244,
+    "lineNumber": 246,
     "undocument": true,
     "unknown": [
       {
@@ -41189,7 +41219,7 @@
     "longname": "src/provision/BaseProvision.js~BaseProvision#_setUrlParameters",
     "access": null,
     "description": null,
-    "lineNumber": 248,
+    "lineNumber": 250,
     "undocument": true,
     "unknown": [
       {
@@ -41215,7 +41245,7 @@
     "longname": "src/provision/BaseProvision.js~BaseProvision#_urlParameters",
     "access": null,
     "description": null,
-    "lineNumber": 256,
+    "lineNumber": 258,
     "undocument": true,
     "unknown": [
       {
@@ -41240,7 +41270,7 @@
     "longname": "src/provision/BaseProvision.js~BaseProvision#_checkValues",
     "access": null,
     "description": null,
-    "lineNumber": 260,
+    "lineNumber": 262,
     "undocument": true,
     "unknown": [
       {
@@ -41279,7 +41309,7 @@
     "longname": "src/provision/BaseProvision.js~BaseProvision#_getServiceBaseURL",
     "access": null,
     "description": null,
-    "lineNumber": 275,
+    "lineNumber": 277,
     "undocument": true,
     "unknown": [
       {
@@ -49099,7 +49129,7 @@
     "__docId__": 1837,
     "kind": "file",
     "name": "src/searching/BaseSearch.js",
-    "content": "'use strict';\r\n\r\nimport q from 'q';\r\nimport merge from 'merge';\r\n\r\nconst LIMIT_SIZE_DEF_VALUE = 1000;\r\n\r\n/** \r\n * This is a abstract class, it must be extended to another class that defined the specific search.\r\n * This class is responsible to manage execute request to OpenGate North API\r\n */\r\nexport default class BaseSearch {\r\n    /**\r\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\r\n     * @param {!string} resource - this is a base url resource\r\n     * @param {!number} [timeout] - timeout on request\r\n     */\r\n    constructor(ogapi, resource, timeout, serviceBaseURL) {\r\n        if (this.constructor === BaseSearch) {\r\n            throw new Error(\"Cannot construct Abstract instances directly\");\r\n        }\r\n        if (typeof this._filter !== \"function\") {\r\n            throw new Error(\"Must override method: filter\");\r\n        }\r\n        if (typeof timeout !== 'number') {\r\n            this._timeout = ogapi.Napi._options.timeout;\r\n        } else {\r\n            this._timeout = timeout;\r\n        }\r\n        this._ogapi = ogapi;\r\n        this._resource = resource;\r\n        this._headers = undefined;\r\n        this._urlParameters = undefined;\r\n        this._serviceBaseURL = serviceBaseURL\r\n    }\r\n\r\n    _getExtraHeaders() {\r\n        return this._headers;\r\n    }\r\n\r\n    _setExtraHeaders(headers) {\r\n        if (this._headers) {\r\n            var keys = Object.keys(headers);\r\n            for (var i = 0; i < keys.length; i++) {\r\n                var key = keys[i];\r\n                this._headers[key] = headers[key];\r\n            }\r\n        } else {\r\n            this._headers = headers;\r\n        }\r\n    }\r\n\r\n    _getUrlParameters() {\r\n        return this._urlParameters;\r\n    }\r\n\r\n    _setUrlParameters(parameters) {\r\n        if (this._urlParameters) {\r\n            var keys = Object.keys(parameters);\r\n            for (var i = 0; i < keys.length; i++) {\r\n                var key = keys[i];\r\n                this._urlParameters[key] = parameters[key];\r\n            }\r\n        } else {\r\n            this._urlParameters = parameters;\r\n        }\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     */\r\n    execute() {\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n        this._ogapi.Napi\r\n            .post(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())\r\n            .then((response) => {\r\n                let resultQuery = response.body;\r\n                let statusCode = response.statusCode;\r\n                defered.resolve({\r\n                    data: resultQuery,\r\n                    statusCode: statusCode\r\n                });\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n\r\n    /** TODO: no implementado todavía. Ver tarea OUW-3577\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     \r\n    delete() {\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n        this._ogapi.Napi\r\n            .delete(this._resource, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._filter(),)\r\n            .then((response) => {\r\n                if (response.statusCode === 200) {\r\n                    defered.resolve({\r\n                        statusCode: response.statusCode\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: response.errors,\r\n                        statusCode: response.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }*/\r\n    \r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * @return {Promise} - Promise with data with format csv\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     */\r\n    downloadCsv() {\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n        var filter = this._filter();\r\n\r\n        if (filter && filter.limit) {\r\n            delete filter.limit;\r\n        }\r\n        this._setExtraHeaders({\r\n            'Accept': 'text/plain'\r\n        });\r\n\r\n        this._ogapi.Napi.post(this._resource, filter, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())\r\n            .then((response) => {\r\n                let resultQuery = response;\r\n                let statusCode = response.statusCode;\r\n                defered.resolve({\r\n                    data: resultQuery,\r\n                    statusCode: statusCode\r\n                });\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n\r\n    //Se debera fijar simpre un objeto limit en la paginacion asincrona\r\n    //Si no existiera el objeto limit se creara uno por defecto\r\n    //Si tuviera se modficara para que siempre comience en la primera pagina\r\n    _asyncPagingFilter() {\r\n        var filter = this._filter();\r\n\r\n        if (!filter.limit || !filter.limit.size) {\r\n            filter.limit = {\r\n                size: LIMIT_SIZE_DEF_VALUE,\r\n                start: 1\r\n            };\r\n        } else {\r\n            filter.limit.start = 1;\r\n        }\r\n        return filter;\r\n    }\r\n\r\n    cancelAsyncPaging(message) {\r\n        if (typeof message === 'string' && message.length > 0) {\r\n            this.cancel = message;\r\n        } else\r\n            this.cancel = true;\r\n    }\r\n\r\n    _loadData(resource) {\r\n        let _this = this;\r\n        let defered = q.defer();\r\n        let filter = _this._asyncPagingFilter();\r\n        let paging = false;\r\n        //Funcion que realizara la llamada al search paginado y, de forma recursiva, llamara a todas las paginas\r\n        function loadAll() {\r\n            if (_this.cancel || typeof _this.cancel === 'string') {\r\n                var message = typeof _this.cancel === 'string' ? _this.cancel : 'Cancel process';\r\n                defered.reject({\r\n                    data: message,\r\n                    statusCode: 403\r\n                });\r\n            } else {\r\n                _this._ogapi.Napi\r\n                    .post(_this._resource, filter, _this._timeout, _this._getExtraHeaders(), _this._getUrlParameters(), _this._getServiceBaseURL())\r\n                    .then((response) => {\r\n                        let statusCode = response.statusCode;\r\n                        let body = response.body;\r\n                        if (!body && response.text) {\r\n                            try {\r\n                                let parsedResult = JSON.parse(response.text);\r\n\r\n                                if (parsedResult) {\r\n                                    body = parsedResult;\r\n                                }\r\n                            } catch (ignoreError) {\r\n                                console.error(\"Impossible to parse text from response\");\r\n                            }\r\n                        }\r\n\r\n                        if (statusCode === 200 || statusCode === 200) {\r\n                            paging = true;\r\n                            let result = body.data ? body.data[resource] : body[resource];\r\n                            defered.notify(result);\r\n                            //Se permite devolver un boolean o un string que reemplazará el mensaje por defecto\r\n                            if (result.length === filter.limit.size) {\r\n                                filter.limit.start += 1;\r\n                                loadAll();\r\n                            } else {\r\n                                defered.resolve({\r\n                                    data: 'DONE',\r\n                                    statusCode: 200\r\n                                });\r\n                            }\r\n                        } else {\r\n                            if (paging) {\r\n                                defered.resolve({\r\n                                    data: 'DONE',\r\n                                    statusCode: 200\r\n                                });\r\n                            } else\r\n                                defered.reject({\r\n                                    data: body,\r\n                                    statusCode: statusCode\r\n                                });\r\n                        }\r\n                    })\r\n                    .catch((error) => {\r\n                        defered.reject(error);\r\n                    });\r\n            }\r\n        }\r\n        loadAll();\r\n        return defered.promise;\r\n    }\r\n\r\n    /**\r\n     * This invokes a request for asynchronous paging to the OpenGate North API and the return of the pages is managed by promises and its notify object\r\n     * To cancel the process in the notify method return false or string with custom message for response\r\n     * In case of canceling the process, the response will be 403: Forbidden -> {data: 'Cancel process'|| custom_message, statusCode: 403}\r\n     * @param {string} resource - resource to find.\r\n     * @return {Promise}\r\n     * @property {function (), null, function ()} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     */\r\n    executeWithAsyncPaging(resource) {\r\n        let defered = q.defer();\r\n        let promise = defered.promise;\r\n        //Comenzamos con la carga asincrona\r\n        this._loadData(resource)\r\n            .then(\r\n                (response) => {\r\n                    defered.resolve(response);\r\n                }, null,\r\n                (notify) => {\r\n                    defered.notify(notify);\r\n                })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n\r\n\r\n        return promise;\r\n    }\r\n\r\n    _getServiceBaseURL() {\r\n        return this._serviceBaseURL\r\n    }\r\n}",
+    "content": "'use strict';\r\n\r\nimport q from 'q';\r\nimport merge from 'merge';\r\n\r\nconst LIMIT_SIZE_DEF_VALUE = 1000;\r\n\r\n/** \r\n * This is a abstract class, it must be extended to another class that defined the specific search.\r\n * This class is responsible to manage execute request to OpenGate North API\r\n */\r\nexport default class BaseSearch {\r\n    /**\r\n     * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance\r\n     * @param {!string} resource - this is a base url resource\r\n     * @param {!number} [timeout] - timeout on request\r\n     * @param {string} serviceBaseURL - base of the uri petition\r\n     */\r\n    constructor(ogapi, resource, timeout, serviceBaseURL) {\r\n        if (this.constructor === BaseSearch) {\r\n            throw new Error(\"Cannot construct Abstract instances directly\");\r\n        }\r\n        if (typeof this._filter !== \"function\") {\r\n            throw new Error(\"Must override method: filter\");\r\n        }\r\n        if (typeof timeout !== 'number') {\r\n            this._timeout = ogapi.Napi._options.timeout;\r\n        } else {\r\n            this._timeout = timeout;\r\n        }\r\n        this._ogapi = ogapi;\r\n        this._resource = resource;\r\n        this._headers = undefined;\r\n        this._urlParameters = undefined;\r\n        this._serviceBaseURL = serviceBaseURL\r\n    }\r\n\r\n    _getExtraHeaders() {\r\n        return this._headers;\r\n    }\r\n\r\n    _setExtraHeaders(headers) {\r\n        if (this._headers) {\r\n            var keys = Object.keys(headers);\r\n            for (var i = 0; i < keys.length; i++) {\r\n                var key = keys[i];\r\n                this._headers[key] = headers[key];\r\n            }\r\n        } else {\r\n            this._headers = headers;\r\n        }\r\n    }\r\n\r\n    _getUrlParameters() {\r\n        return this._urlParameters;\r\n    }\r\n\r\n    _setUrlParameters(parameters) {\r\n        if (this._urlParameters) {\r\n            var keys = Object.keys(parameters);\r\n            for (var i = 0; i < keys.length; i++) {\r\n                var key = keys[i];\r\n                this._urlParameters[key] = parameters[key];\r\n            }\r\n        } else {\r\n            this._urlParameters = parameters;\r\n        }\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     */\r\n    execute() {\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n        this._ogapi.Napi\r\n            .post(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())\r\n            .then((response) => {\r\n                let resultQuery = response.body;\r\n                let statusCode = response.statusCode;\r\n                defered.resolve({\r\n                    data: resultQuery,\r\n                    statusCode: statusCode\r\n                });\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n\r\n    /** TODO: no implementado todavía. Ver tarea OUW-3577\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     \r\n    delete() {\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n        this._ogapi.Napi\r\n            .delete(this._resource, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._filter(),)\r\n            .then((response) => {\r\n                if (response.statusCode === 200) {\r\n                    defered.resolve({\r\n                        statusCode: response.statusCode\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: response.errors,\r\n                        statusCode: response.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }*/\r\n    \r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * @return {Promise} - Promise with data with format csv\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     */\r\n    downloadCsv() {\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n        var filter = this._filter();\r\n\r\n        if (filter && filter.limit) {\r\n            delete filter.limit;\r\n        }\r\n        this._setExtraHeaders({\r\n            'Accept': 'text/plain'\r\n        });\r\n\r\n        this._ogapi.Napi.post(this._resource, filter, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())\r\n            .then((response) => {\r\n                let resultQuery = response;\r\n                let statusCode = response.statusCode;\r\n                defered.resolve({\r\n                    data: resultQuery,\r\n                    statusCode: statusCode\r\n                });\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n\r\n    //Se debera fijar simpre un objeto limit en la paginacion asincrona\r\n    //Si no existiera el objeto limit se creara uno por defecto\r\n    //Si tuviera se modficara para que siempre comience en la primera pagina\r\n    _asyncPagingFilter() {\r\n        var filter = this._filter();\r\n\r\n        if (!filter.limit || !filter.limit.size) {\r\n            filter.limit = {\r\n                size: LIMIT_SIZE_DEF_VALUE,\r\n                start: 1\r\n            };\r\n        } else {\r\n            filter.limit.start = 1;\r\n        }\r\n        return filter;\r\n    }\r\n\r\n    cancelAsyncPaging(message) {\r\n        if (typeof message === 'string' && message.length > 0) {\r\n            this.cancel = message;\r\n        } else\r\n            this.cancel = true;\r\n    }\r\n\r\n    _loadData(resource) {\r\n        let _this = this;\r\n        let defered = q.defer();\r\n        let filter = _this._asyncPagingFilter();\r\n        let paging = false;\r\n        //Funcion que realizara la llamada al search paginado y, de forma recursiva, llamara a todas las paginas\r\n        function loadAll() {\r\n            if (_this.cancel || typeof _this.cancel === 'string') {\r\n                var message = typeof _this.cancel === 'string' ? _this.cancel : 'Cancel process';\r\n                defered.reject({\r\n                    data: message,\r\n                    statusCode: 403\r\n                });\r\n            } else {\r\n                _this._ogapi.Napi\r\n                    .post(_this._resource, filter, _this._timeout, _this._getExtraHeaders(), _this._getUrlParameters(), _this._getServiceBaseURL())\r\n                    .then((response) => {\r\n                        let statusCode = response.statusCode;\r\n                        let body = response.body;\r\n                        if (!body && response.text) {\r\n                            try {\r\n                                let parsedResult = JSON.parse(response.text);\r\n\r\n                                if (parsedResult) {\r\n                                    body = parsedResult;\r\n                                }\r\n                            } catch (ignoreError) {\r\n                                console.error(\"Impossible to parse text from response\");\r\n                            }\r\n                        }\r\n\r\n                        if (statusCode === 200 || statusCode === 200) {\r\n                            paging = true;\r\n                            let result = body.data ? body.data[resource] : body[resource];\r\n                            defered.notify(result);\r\n                            //Se permite devolver un boolean o un string que reemplazará el mensaje por defecto\r\n                            if (result.length === filter.limit.size) {\r\n                                filter.limit.start += 1;\r\n                                loadAll();\r\n                            } else {\r\n                                defered.resolve({\r\n                                    data: 'DONE',\r\n                                    statusCode: 200\r\n                                });\r\n                            }\r\n                        } else {\r\n                            if (paging) {\r\n                                defered.resolve({\r\n                                    data: 'DONE',\r\n                                    statusCode: 200\r\n                                });\r\n                            } else\r\n                                defered.reject({\r\n                                    data: body,\r\n                                    statusCode: statusCode\r\n                                });\r\n                        }\r\n                    })\r\n                    .catch((error) => {\r\n                        defered.reject(error);\r\n                    });\r\n            }\r\n        }\r\n        loadAll();\r\n        return defered.promise;\r\n    }\r\n\r\n    /**\r\n     * This invokes a request for asynchronous paging to the OpenGate North API and the return of the pages is managed by promises and its notify object\r\n     * To cancel the process in the notify method return false or string with custom message for response\r\n     * In case of canceling the process, the response will be 403: Forbidden -> {data: 'Cancel process'|| custom_message, statusCode: 403}\r\n     * @param {string} resource - resource to find.\r\n     * @return {Promise}\r\n     * @property {function (), null, function ()} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     */\r\n    executeWithAsyncPaging(resource) {\r\n        let defered = q.defer();\r\n        let promise = defered.promise;\r\n        //Comenzamos con la carga asincrona\r\n        this._loadData(resource)\r\n            .then(\r\n                (response) => {\r\n                    defered.resolve(response);\r\n                }, null,\r\n                (notify) => {\r\n                    defered.notify(notify);\r\n                })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n\r\n\r\n        return promise;\r\n    }\r\n\r\n    _getServiceBaseURL() {\r\n        return this._serviceBaseURL\r\n    }\r\n}",
     "static": true,
     "longname": "src/searching/BaseSearch.js",
     "access": null,
@@ -49158,7 +49188,7 @@
     "longname": "src/searching/BaseSearch.js~BaseSearch#constructor",
     "access": null,
     "description": "",
-    "lineNumber": 18,
+    "lineNumber": 19,
     "params": [
       {
         "nullable": false,
@@ -49189,6 +49219,16 @@
         "optional": true,
         "name": "timeout",
         "description": "timeout on request"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "serviceBaseURL",
+        "description": "base of the uri petition"
       }
     ]
   },
@@ -49201,7 +49241,7 @@
     "longname": "src/searching/BaseSearch.js~BaseSearch#_timeout",
     "access": null,
     "description": null,
-    "lineNumber": 26,
+    "lineNumber": 27,
     "undocument": true,
     "unknown": [
       {
@@ -49224,7 +49264,7 @@
     "longname": "src/searching/BaseSearch.js~BaseSearch#_timeout",
     "access": null,
     "description": null,
-    "lineNumber": 28,
+    "lineNumber": 29,
     "undocument": true,
     "unknown": [
       {
@@ -49247,7 +49287,7 @@
     "longname": "src/searching/BaseSearch.js~BaseSearch#_ogapi",
     "access": null,
     "description": null,
-    "lineNumber": 30,
+    "lineNumber": 31,
     "undocument": true,
     "unknown": [
       {
@@ -49270,7 +49310,7 @@
     "longname": "src/searching/BaseSearch.js~BaseSearch#_resource",
     "access": null,
     "description": null,
-    "lineNumber": 31,
+    "lineNumber": 32,
     "undocument": true,
     "unknown": [
       {
@@ -49293,7 +49333,7 @@
     "longname": "src/searching/BaseSearch.js~BaseSearch#_headers",
     "access": null,
     "description": null,
-    "lineNumber": 32,
+    "lineNumber": 33,
     "undocument": true,
     "unknown": [
       {
@@ -49316,7 +49356,7 @@
     "longname": "src/searching/BaseSearch.js~BaseSearch#_urlParameters",
     "access": null,
     "description": null,
-    "lineNumber": 33,
+    "lineNumber": 34,
     "undocument": true,
     "unknown": [
       {
@@ -49339,7 +49379,7 @@
     "longname": "src/searching/BaseSearch.js~BaseSearch#_serviceBaseURL",
     "access": null,
     "description": null,
-    "lineNumber": 34,
+    "lineNumber": 35,
     "undocument": true,
     "unknown": [
       {
@@ -49364,7 +49404,7 @@
     "longname": "src/searching/BaseSearch.js~BaseSearch#_getExtraHeaders",
     "access": null,
     "description": null,
-    "lineNumber": 37,
+    "lineNumber": 38,
     "undocument": true,
     "unknown": [
       {
@@ -49390,7 +49430,7 @@
     "longname": "src/searching/BaseSearch.js~BaseSearch#_setExtraHeaders",
     "access": null,
     "description": null,
-    "lineNumber": 41,
+    "lineNumber": 42,
     "undocument": true,
     "unknown": [
       {
@@ -49416,7 +49456,7 @@
     "longname": "src/searching/BaseSearch.js~BaseSearch#_headers",
     "access": null,
     "description": null,
-    "lineNumber": 49,
+    "lineNumber": 50,
     "undocument": true,
     "unknown": [
       {
@@ -49441,7 +49481,7 @@
     "longname": "src/searching/BaseSearch.js~BaseSearch#_getUrlParameters",
     "access": null,
     "description": null,
-    "lineNumber": 53,
+    "lineNumber": 54,
     "undocument": true,
     "unknown": [
       {
@@ -49467,7 +49507,7 @@
     "longname": "src/searching/BaseSearch.js~BaseSearch#_setUrlParameters",
     "access": null,
     "description": null,
-    "lineNumber": 57,
+    "lineNumber": 58,
     "undocument": true,
     "unknown": [
       {
@@ -49493,7 +49533,7 @@
     "longname": "src/searching/BaseSearch.js~BaseSearch#_urlParameters",
     "access": null,
     "description": null,
-    "lineNumber": 65,
+    "lineNumber": 66,
     "undocument": true,
     "unknown": [
       {
@@ -49518,7 +49558,7 @@
     "longname": "src/searching/BaseSearch.js~BaseSearch#execute",
     "access": null,
     "description": "This invoke a request to OpenGate North API and the callback is managed by promises",
-    "lineNumber": 75,
+    "lineNumber": 76,
     "params": [],
     "properties": [
       {
@@ -49562,7 +49602,7 @@
     "longname": "src/searching/BaseSearch.js~BaseSearch#downloadCsv",
     "access": null,
     "description": "This invoke a request to OpenGate North API and the callback is managed by promises",
-    "lineNumber": 129,
+    "lineNumber": 130,
     "params": [],
     "properties": [
       {
@@ -49606,7 +49646,7 @@
     "longname": "src/searching/BaseSearch.js~BaseSearch#_asyncPagingFilter",
     "access": null,
     "description": null,
-    "lineNumber": 159,
+    "lineNumber": 160,
     "undocument": true,
     "unknown": [
       {
@@ -49632,7 +49672,7 @@
     "longname": "src/searching/BaseSearch.js~BaseSearch#cancelAsyncPaging",
     "access": null,
     "description": null,
-    "lineNumber": 173,
+    "lineNumber": 174,
     "undocument": true,
     "unknown": [
       {
@@ -49658,7 +49698,7 @@
     "longname": "src/searching/BaseSearch.js~BaseSearch#cancel",
     "access": null,
     "description": null,
-    "lineNumber": 175,
+    "lineNumber": 176,
     "undocument": true,
     "unknown": [
       {
@@ -49681,7 +49721,7 @@
     "longname": "src/searching/BaseSearch.js~BaseSearch#cancel",
     "access": null,
     "description": null,
-    "lineNumber": 177,
+    "lineNumber": 178,
     "undocument": true,
     "unknown": [
       {
@@ -49706,7 +49746,7 @@
     "longname": "src/searching/BaseSearch.js~BaseSearch#_loadData",
     "access": null,
     "description": null,
-    "lineNumber": 180,
+    "lineNumber": 181,
     "undocument": true,
     "unknown": [
       {
@@ -49739,7 +49779,7 @@
     "longname": "src/searching/BaseSearch.js~BaseSearch#executeWithAsyncPaging",
     "access": null,
     "description": "This invokes a request for asynchronous paging to the OpenGate North API and the return of the pages is managed by promises and its notify object\nTo cancel the process in the notify method return false or string with custom message for response\nIn case of canceling the process, the response will be 403: Forbidden -> {data: 'Cancel process'|| custom_message, statusCode: 403}",
-    "lineNumber": 256,
+    "lineNumber": 257,
     "params": [
       {
         "nullable": null,
@@ -49794,7 +49834,7 @@
     "longname": "src/searching/BaseSearch.js~BaseSearch#_getServiceBaseURL",
     "access": null,
     "description": null,
-    "lineNumber": 276,
+    "lineNumber": 277,
     "undocument": true,
     "unknown": [
       {
@@ -56876,7 +56916,7 @@
     "__docId__": 2141,
     "kind": "file",
     "name": "src/searching/builder/HardwaresSearchBuilder.js",
-    "content": "'use strict';\r\n\r\nimport SearchBuilder from './SearchBuilder';\r\nimport FieldFinder from '../../util/searchingFields/FieldFinder'\r\n\r\nconst BASE_URL = '/catalog/hardwares';\r\n/**\r\n * Defined a search over Devices\t\r\n * @example ogapi.devicesSearchBuilder()\r\n */\r\nexport default class HardwaresSearchBuilder extends SearchBuilder {\r\n    /**\r\n     *\t@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI\r\n     */\r\n    constructor(parent) {\r\n        super(parent, {}, new FieldFinder(parent, BASE_URL));\r\n        this._url = BASE_URL;\r\n    }\r\n\r\n    /**\r\n     * The search request will have this group by \r\n     * @example\r\n     * @param {!(object)} group \r\n     * @return {SearchBuilder} \r\n     */\r\n    group(group) {\r\n        this._builderParams.group = (group || {});\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * The search request will have this filter \r\n     * @example\r\n     *  ogapi.HardwaresSearchBuilder().select(...)\r\n     * @param {!(SelectBuilder|object)} select\r\n     * @return {SearchBuilder} \r\n     */\r\n    select(select) {\r\n        this._builderParams.select = (select);\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * The response will return a flattened response\r\n     * @example\r\n     *\togapi.HardwaresSearchBuilder().flattened() \r\n     * @return {HardwaresSearchBuilder} \r\n     */\r\n    flattened() {\r\n        this._urlParams.flattened = true;\r\n\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * The response will return a response without sorted\r\n     * @example\r\n     *\togapi.HardwaresSearchBuilder().disableDefaultSorted() \r\n     * @return {HardwaresSearchBuilder} \r\n     */\r\n    disableDefaultSorted() {\r\n        this._urlParams.defaultSorted = false;\r\n        return this;\r\n    }\r\n}",
+    "content": "'use strict';\r\n\r\nimport SearchWithSummaryBuilder from './SearchWithSummaryBuilder';\r\nimport FieldFinder from '../../util/searchingFields/FieldFinder'\r\n\r\nconst BASE_URL = '/catalog/hardwares';\r\n/**\r\n * Defined a search over Devices\t\r\n * @example ogapi.devicesSearchBuilder()\r\n */\r\nexport default class HardwaresSearchBuilder extends SearchWithSummaryBuilder {\r\n    /**\r\n     *\t@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI\r\n     */\r\n    constructor(parent) {\r\n        super(parent, {}, new FieldFinder(parent, BASE_URL));\r\n        this._url = BASE_URL;\r\n    }\r\n\r\n    /**\r\n     * The search request will have this group by \r\n     * @example\r\n     * @param {!(object)} group \r\n     * @return {SearchBuilder} \r\n     */\r\n    group(group) {\r\n        this._builderParams.group = (group || {});\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * The search request will have this filter \r\n     * @example\r\n     *  ogapi.HardwaresSearchBuilder().select(...)\r\n     * @param {!(SelectBuilder|object)} select\r\n     * @return {SearchBuilder} \r\n     */\r\n    select(select) {\r\n        this._builderParams.select = (select);\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * The response will return a flattened response\r\n     * @example\r\n     *\togapi.HardwaresSearchBuilder().flattened() \r\n     * @return {HardwaresSearchBuilder} \r\n     */\r\n    flattened() {\r\n        this._urlParams.flattened = true;\r\n\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * The response will return a response without sorted\r\n     * @example\r\n     *\togapi.HardwaresSearchBuilder().disableDefaultSorted() \r\n     * @return {HardwaresSearchBuilder} \r\n     */\r\n    disableDefaultSorted() {\r\n        this._urlParams.defaultSorted = false;\r\n        return this;\r\n    }\r\n}",
     "static": true,
     "longname": "src/searching/builder/HardwaresSearchBuilder.js",
     "access": null,
@@ -56927,7 +56967,7 @@
     "lineNumber": 11,
     "interface": false,
     "extends": [
-      "src/searching/builder/SearchBuilder.js~SearchBuilder"
+      "src/searching/builder/SearchWithSummaryBuilder.js~SearchWithSummaryBuilder"
     ]
   },
   {
@@ -66883,7 +66923,7 @@
     "__docId__": 2537,
     "kind": "file",
     "name": "src/users/Users.js",
-    "content": "'use strict';\r\n\r\nimport BaseProvision from '../provision/BaseProvision';\r\nimport q from 'q';\r\nimport _ from 'lodash';\r\n\r\nconst _length_name = 100;\r\nconst _length_surname = 100;\r\nconst _length_email = 100;\r\nconst _length_password = 50;\r\n/**\r\n *   This class allow make get request to user resource into Opengate North API.\r\n */\r\nexport default class User extends BaseProvision {\r\n\r\n\r\n    /**     \r\n     * @param {InternalOpenGateAPI} Reference to the API object.\r\n     */\r\n    constructor(ogapi) {\r\n        super(ogapi, \"/users\", undefined, [\"email\", \"workgroup\", \"domain\", \"profile\", \"countryCode\", \"langCode\"]);\r\n    }\r\n\r\n\r\n\r\n    /**\r\n     * Set the name attribute\r\n     * @param {string} name - required field\r\n     * @return {User}\r\n     */\r\n    withName(name) {\r\n        if (typeof name !== 'string' || name.length > _length_name)\r\n            throw new Error('Parameter name must be a string and has a maximum length of ' + _length_name);\r\n        this._name = name;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the surname attribute\r\n     * @param {string} surname - required field\r\n     * @return {User}\r\n     */\r\n    withSurname(surname) {\r\n        if (typeof surname !== 'string' || surname.length > _length_surname)\r\n            throw new Error('Parameter surname must be a string and has a maximum length of ' + _length_surname);\r\n        this._surname = surname;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the email attribute\r\n     * @param {string} email - required field\r\n     * @return {User}\r\n     */\r\n    withEmail(email) {\r\n        if (typeof email !== 'string' || email.length > _length_email)\r\n            throw new Error('Parameter email must be a string and has a maximum length of ' + _length_email);\r\n        this._email = email;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the password attribute\r\n     * @param {string} password - required field\r\n     * @return {User}\r\n     */\r\n    withPassword(password) {\r\n        if (typeof password !== 'string' || password.length > _length_password)\r\n            throw new Error('Parameter password must be a string and has a maximum length of ' + _length_password);\r\n        this._password = password;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the workgroup attribute\r\n     * @param {string} workgroup - required field\r\n     * @return {User}\r\n     */\r\n    withWorkgroup(workgroup) {\r\n        if (typeof workgroup !== 'string')\r\n            throw new Error('OGAPI_STRING_PARAMETER_WORKGROUP');\r\n        this._workgroup = workgroup;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the domain attribute\r\n     * @param {string} domain - required field\r\n     * @return {User}\r\n     */\r\n    withDomain(domain) {\r\n        if (typeof domain !== 'string')\r\n            throw new Error('OGAPI_STRING_PARAMETER_DOMAIN');\r\n        this._domain = domain;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the profile attribute\r\n     * @param {string} profile - required field\r\n     * @return {User}\r\n     */\r\n    withProfile(profile) {\r\n        if (typeof profile !== 'string')\r\n            throw new Error('OGAPI_STRING_PARAMETER_PROFILE');\r\n        this._profile = profile;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the countryCode attribute\r\n     * @param {string} countryCode - required field\r\n     * @return {User}\r\n     */\r\n    withCountryCode(countryCode) {\r\n        if (typeof countryCode !== 'string')\r\n            throw new Error('OGAPI_STRING_PARAMETER_COUNTRY_CODE');\r\n        this._countryCode = countryCode;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the langCode attribute\r\n     * @param {string} langCode - required field\r\n     * @return {User}\r\n     */\r\n    withLangCode(langCode) {\r\n        if (typeof langCode !== 'string')\r\n            throw new Error('OGAPI_STRING_PARAMETER_LANGUAGE');\r\n        this._langCode = langCode;\r\n        return this;\r\n    }\r\n\r\n\r\n    /**\r\n     * Set the description attribute\r\n     * @param {string} description - required field\r\n     * @return {User}\r\n     */\r\n    withDescription(description) {\r\n        if (typeof description !== 'string')\r\n            throw new Error('OGAPI_STRING_PARAMETER_DESCRIPTION');\r\n        this._description = description;\r\n        return this;\r\n\r\n    }\r\n\r\n    /**\r\n     * Set the timezone attribute\r\n     * @param {string} timezone - required field\r\n     * @return {User}\r\n     */\r\n    withTimezone(timezone) {\r\n        if (typeof timezone !== 'string')\r\n            throw new Error('OGAPI_STRING_PARAMETER_TIMEZONE');\r\n        this._timezone = timezone;\r\n        return this;\r\n\r\n    }\r\n\r\n    /**\r\n     * Compose url to delete an user\r\n     * @return {String} This returns a string with the URL of the request.\r\n     * @private\r\n     */\r\n    _buildURL() {\r\n        if (this._email === undefined)\r\n            throw new Error('OGAPI_EMAIL_MUST_BE_DEFINED');\r\n        var url = this._resource + \"/\" + this._email;\r\n\r\n        return url;\r\n\r\n    }\r\n\r\n    /**\r\n     * Compose json message to create a user\r\n     * @return {String} This returns a message with user's parameters\r\n     * @private\r\n     */\r\n    _composeElement() {\r\n\r\n        var data = {\r\n            user: {\r\n                name: this._name || undefined,\r\n                surname: this._surname || undefined,\r\n                password: this._password || undefined,\r\n                description: this._description || undefined,\r\n                email: this._email || undefined,\r\n                workgroup: this._workgroup || undefined,\r\n                domain: this._domain || undefined,\r\n                profile: this._profile || undefined,\r\n                countryCode: this._countryCode || undefined,\r\n                langCode: this._langCode || undefined,\r\n                timezone: this._timezone || undefined\r\n            }\r\n        };\r\n\r\n        return data;\r\n\r\n    }\r\n\r\n    /**\r\n     * Compose json message to update a user\r\n     * @return {String} This returns a message with user's parameters\r\n     * @private\r\n     */\r\n    _composeUpdateElement() {\r\n        if (this._password) {\r\n            throw new Error('OGAPI_PASSWORD_NOT_ALLOWED');\r\n        }\r\n        if (this._email === undefined)\r\n            throw new Error('OGAPI_USER_UPDATE_PARAMETER_MUST_BE_DEFINED');\r\n\r\n        var data = {\r\n            user: {\r\n                name: this._name || undefined,\r\n                surname: this._surname || undefined,\r\n                description: this._description || undefined,\r\n                email: this._email || undefined,\r\n                workgroup: this._workgroup || undefined,\r\n                domain: this._domain || undefined,\r\n                profile: this._profile || undefined,\r\n                countryCode: this._countryCode || undefined,\r\n                langCode: this._langCode || undefined,\r\n                timezone: this._timezone || undefined\r\n            }\r\n        };\r\n        return data;\r\n    }\r\n\r\n    _post(url, data) {\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n        \r\n        this._ogapi.Napi.post(url, data, undefined, this._getExtraHeaders(), this._getUrlParameters())\r\n            .then((res) => {\r\n                if (res.statusCode === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else if (res.status === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.status\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function updates a password of a user\r\n     * @return {Promise}\r\n     * @param {String} newPassword - required field\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.usersBuilder().withEmail(example@example.es).withPassword(oldPassword).updatePassword(newPassword);\r\n     */\r\n    updatePassword(newPassword) {\r\n        this._newPassword = newPassword;\r\n        if (_.isEmpty(this._email) || _.isEmpty(this._password) || _.isEmpty(this._newPassword)) {\r\n            throw new Error('OGAPI_USER_UPDATE_PASSWORD_PARAMETER_MUST_BE_DEFINED');\r\n        }\r\n\r\n        var data = {\r\n            user: {\r\n                password: this._newPassword\r\n            }\r\n        };\r\n\r\n        this._setExtraHeaders({\r\n            'X-ApiPass': this._password\r\n        });\r\n\r\n        return this._doNorthPost(this._buildURL(), data);\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function request for new password when the user forgets it. \r\n     * Sends a password recovery email\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.usersBuilder().withEmail(example@example.es).requestResetPassword()\r\n     */\r\n    requestResetPassword() {\r\n        if (_.isEmpty(this._email)) {\r\n            throw new Error('OGAPI_USER_MAIL_RESET_PASSWORD_PARAMETER_MUST_BE_DEFINED');\r\n        }\r\n        var url = this._buildURL() + '/reset'\r\n        return this._doNorthPost(url);\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function updates a password of a user with a tokenId\r\n     * @param {String} newPassword - required field\r\n     * @param {String} tokenId - required field\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.usersBuilder().withEmail(example@example.es).updatePassword(newPassword, tokenid);\r\n     */\r\n     updatePassword(newPassword, tokenId) {\r\n        this._newPassword = newPassword;\r\n        this._tokenId = tokenId;\r\n        if (_.isEmpty(this._email)){\r\n            throw new Error('OGAPI_USER_MAIL_RESET_PASSWORD_PARAMETER_MUST_BE_DEFINED');\r\n        }\r\n        if(_.isEmpty(this._newPassword)){\r\n            throw new Error('OGAPI_USER_PASSWORD_RESET_PASSWORD_PARAMETER_MUST_BE_DEFINED');\r\n        }\r\n\r\n        if(_.isEmpty(tokenId)){\r\n            throw new Error('OGAPI_USER_TOKENID_RESET_PASSWORD_PARAMETER_MUST_BE_DEFINED');\r\n        }\r\n\r\n        var data = {\r\n            password: this._newPassword\r\n        };\r\n\r\n\r\n        var url = this._buildURL() + '/reset/' + tokenId\r\n        \r\n        return this._doNorthPost(url, data);\r\n    }\r\n    \r\n}",
+    "content": "'use strict';\r\n\r\nimport BaseProvision from '../provision/BaseProvision';\r\nimport q from 'q';\r\nimport _ from 'lodash';\r\n\r\nconst _length_name = 100;\r\nconst _length_surname = 100;\r\nconst _length_email = 100;\r\nconst _length_password = 50;\r\n/**\r\n *   This class allow make get request to user resource into Opengate North API.\r\n */\r\nexport default class User extends BaseProvision {\r\n\r\n\r\n    /**     \r\n     * @param {InternalOpenGateAPI} Reference to the API object.\r\n     */\r\n    constructor(ogapi) {\r\n        super(ogapi, \"/users\", undefined, [\"email\", \"workgroup\", \"domain\", \"profile\", \"countryCode\", \"langCode\"]);\r\n    }\r\n\r\n\r\n\r\n    /**\r\n     * Set the name attribute\r\n     * @param {string} name - required field\r\n     * @return {User}\r\n     */\r\n    withName(name) {\r\n        if (typeof name !== 'string' || name.length > _length_name)\r\n            throw new Error('Parameter name must be a string and has a maximum length of ' + _length_name);\r\n        this._name = name;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the surname attribute\r\n     * @param {string} surname - required field\r\n     * @return {User}\r\n     */\r\n    withSurname(surname) {\r\n        if (typeof surname !== 'string' || surname.length > _length_surname)\r\n            throw new Error('Parameter surname must be a string and has a maximum length of ' + _length_surname);\r\n        this._surname = surname;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the email attribute\r\n     * @param {string} email - required field\r\n     * @return {User}\r\n     */\r\n    withEmail(email) {\r\n        if (typeof email !== 'string' || email.length > _length_email)\r\n            throw new Error('Parameter email must be a string and has a maximum length of ' + _length_email);\r\n        this._email = email;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the password attribute\r\n     * @param {string} password - required field\r\n     * @return {User}\r\n     */\r\n    withPassword(password) {\r\n        if (typeof password !== 'string' || password.length > _length_password)\r\n            throw new Error('Parameter password must be a string and has a maximum length of ' + _length_password);\r\n        this._password = password;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the workgroup attribute\r\n     * @param {string} workgroup - required field\r\n     * @return {User}\r\n     */\r\n    withWorkgroup(workgroup) {\r\n        if (typeof workgroup !== 'string')\r\n            throw new Error('OGAPI_STRING_PARAMETER_WORKGROUP');\r\n        this._workgroup = workgroup;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the domain attribute\r\n     * @param {string} domain - required field\r\n     * @return {User}\r\n     */\r\n    withDomain(domain) {\r\n        if (typeof domain !== 'string')\r\n            throw new Error('OGAPI_STRING_PARAMETER_DOMAIN');\r\n        this._domain = domain;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the profile attribute\r\n     * @param {string} profile - required field\r\n     * @return {User}\r\n     */\r\n    withProfile(profile) {\r\n        if (typeof profile !== 'string')\r\n            throw new Error('OGAPI_STRING_PARAMETER_PROFILE');\r\n        this._profile = profile;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the countryCode attribute\r\n     * @param {string} countryCode - required field\r\n     * @return {User}\r\n     */\r\n    withCountryCode(countryCode) {\r\n        if (typeof countryCode !== 'string')\r\n            throw new Error('OGAPI_STRING_PARAMETER_COUNTRY_CODE');\r\n        this._countryCode = countryCode;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Set the langCode attribute\r\n     * @param {string} langCode - required field\r\n     * @return {User}\r\n     */\r\n    withLangCode(langCode) {\r\n        if (typeof langCode !== 'string')\r\n            throw new Error('OGAPI_STRING_PARAMETER_LANGUAGE');\r\n        this._langCode = langCode;\r\n        return this;\r\n    }\r\n\r\n\r\n    /**\r\n     * Set the description attribute\r\n     * @param {string} description - required field\r\n     * @return {User}\r\n     */\r\n    withDescription(description) {\r\n        if (typeof description !== 'string')\r\n            throw new Error('OGAPI_STRING_PARAMETER_DESCRIPTION');\r\n        this._description = description;\r\n        return this;\r\n\r\n    }\r\n\r\n    /**\r\n     * Set the timezone attribute\r\n     * @param {string} timezone - required field\r\n     * @return {User}\r\n     */\r\n    withTimezone(timezone) {\r\n        if (typeof timezone !== 'string')\r\n            throw new Error('OGAPI_STRING_PARAMETER_TIMEZONE');\r\n        this._timezone = timezone;\r\n        return this;\r\n\r\n    }\r\n\r\n    /**\r\n     * Compose url to delete an user\r\n     * @return {String} This returns a string with the URL of the request.\r\n     * @private\r\n     */\r\n    _buildURL() {\r\n        if (this._email === undefined)\r\n            throw new Error('OGAPI_EMAIL_MUST_BE_DEFINED');\r\n        var url = this._resource + \"/\" + this._email;\r\n\r\n        return url;\r\n\r\n    }\r\n\r\n    /**\r\n     * Compose json message to create a user\r\n     * @return {String} This returns a message with user's parameters\r\n     * @private\r\n     */\r\n    _composeElement() {\r\n\r\n        var data = {\r\n            user: {\r\n                name: this._name || undefined,\r\n                surname: this._surname || undefined,\r\n                password: this._password || undefined,\r\n                description: this._description || undefined,\r\n                email: this._email || undefined,\r\n                workgroup: this._workgroup || undefined,\r\n                domain: this._domain || undefined,\r\n                profile: this._profile || undefined,\r\n                countryCode: this._countryCode || undefined,\r\n                langCode: this._langCode || undefined,\r\n                timezone: this._timezone || undefined\r\n            }\r\n        };\r\n\r\n        return data;\r\n\r\n    }\r\n\r\n    /**\r\n     * Compose json message to update a user\r\n     * @return {String} This returns a message with user's parameters\r\n     * @private\r\n     */\r\n    _composeUpdateElement() {\r\n        if (this._password) {\r\n            throw new Error('OGAPI_PASSWORD_NOT_ALLOWED');\r\n        }\r\n        if (this._email === undefined)\r\n            throw new Error('OGAPI_USER_UPDATE_PARAMETER_MUST_BE_DEFINED');\r\n\r\n        var data = {\r\n            user: {\r\n                name: this._name || undefined,\r\n                surname: this._surname || undefined,\r\n                description: this._description || undefined,\r\n                email: this._email || undefined,\r\n                workgroup: this._workgroup || undefined,\r\n                domain: this._domain || undefined,\r\n                profile: this._profile || undefined,\r\n                countryCode: this._countryCode || undefined,\r\n                langCode: this._langCode || undefined,\r\n                timezone: this._timezone || undefined\r\n            }\r\n        };\r\n        return data;\r\n    }\r\n\r\n    _post(url, data) {\r\n        var defered = q.defer();\r\n        var promise = defered.promise;\r\n        \r\n        this._ogapi.Napi.post(url, data, undefined, this._getExtraHeaders(), this._getUrlParameters())\r\n            .then((res) => {\r\n                if (res.statusCode === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.statusCode\r\n                    });\r\n                } else if (res.status === 200) {\r\n                    defered.resolve({\r\n                        statusCode: res.status\r\n                    });\r\n                } else {\r\n                    defered.reject({\r\n                        errors: res.errors,\r\n                        statusCode: res.statusCode\r\n                    });\r\n                }\r\n            })\r\n            .catch((error) => {\r\n                defered.reject(error);\r\n            });\r\n        return promise;\r\n    }\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function updates a password of a user\r\n     * @return {Promise}\r\n     * @param {String} newPassword - required field\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.usersBuilder().withEmail(example@example.es).withPassword(oldPassword).changePassword(newPassword);\r\n     */\r\n    changePassword(newPassword) {\r\n        this._newPassword = newPassword;\r\n        if (_.isEmpty(this._email) || _.isEmpty(this._password) || _.isEmpty(this._newPassword)) {\r\n            throw new Error('OGAPI_USER_UPDATE_PASSWORD_PARAMETER_MUST_BE_DEFINED');\r\n        }\r\n\r\n        var data = {\r\n            user: {\r\n                password: this._newPassword\r\n            }\r\n        };\r\n\r\n        this._setExtraHeaders({\r\n            'X-ApiPass': this._password\r\n        });\r\n\r\n        return this._doNorthPost(this._buildURL(), data);\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function request for new password when the user forgets it. \r\n     * Sends a password recovery email\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.usersBuilder().withEmail(example@example.es).requestResetPassword()\r\n     */\r\n    requestResetPassword() {\r\n        if (_.isEmpty(this._email)) {\r\n            throw new Error('OGAPI_USER_MAIL_RESET_PASSWORD_PARAMETER_MUST_BE_DEFINED');\r\n        }\r\n        var url = this._buildURL() + '/reset'\r\n        return this._doNorthPost(url);\r\n    }\r\n\r\n    /**\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function updates a password of a user with a tokenId\r\n     * @param {String} newPassword - required field\r\n     * @param {String} tokenId - required field\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.usersBuilder().withEmail(example@example.es).updatePassword(newPassword, tokenid);\r\n     */\r\n     updatePassword(newPassword, tokenId) {\r\n        this._newPassword = newPassword;\r\n        this._tokenId = tokenId;\r\n        if (_.isEmpty(this._email)){\r\n            throw new Error('OGAPI_USER_MAIL_RESET_PASSWORD_PARAMETER_MUST_BE_DEFINED');\r\n        }\r\n        if(_.isEmpty(this._newPassword)){\r\n            throw new Error('OGAPI_USER_PASSWORD_RESET_PASSWORD_PARAMETER_MUST_BE_DEFINED');\r\n        }\r\n\r\n        if(_.isEmpty(tokenId)){\r\n            throw new Error('OGAPI_USER_TOKENID_RESET_PASSWORD_PARAMETER_MUST_BE_DEFINED');\r\n        }\r\n\r\n        var data = {\r\n            password: this._newPassword\r\n        };\r\n\r\n\r\n        var url = this._buildURL() + '/reset/' + tokenId\r\n        \r\n        return this._doNorthPost(url, data);\r\n    }\r\n    \r\n}",
     "static": true,
     "longname": "src/users/Users.js",
     "access": null,
@@ -67761,16 +67801,16 @@
   {
     "__docId__": 2570,
     "kind": "method",
-    "name": "updatePassword",
+    "name": "changePassword",
     "memberof": "src/users/Users.js~User",
     "generator": false,
     "async": false,
     "static": false,
-    "longname": "src/users/Users.js~User#updatePassword",
+    "longname": "src/users/Users.js~User#changePassword",
     "access": null,
     "description": "This invoke a request to OpenGate North API and the callback is managed by promises\nThis function updates a password of a user",
     "examples": [
-      " ogapi.usersBuilder().withEmail(example@example.es).withPassword(oldPassword).updatePassword(newPassword);"
+      " ogapi.usersBuilder().withEmail(example@example.es).withPassword(oldPassword).changePassword(newPassword);"
     ],
     "lineNumber": 267,
     "params": [
@@ -68520,7 +68560,7 @@
     "__docId__": 2591,
     "kind": "file",
     "name": "src/util/NorthAmpliaREST.js",
-    "content": "'use strict';\r\n\r\nimport merge from 'merge';\r\nimport urlencode from 'urlencode';\r\nimport request, { mkcol } from 'superagent';\r\nimport q from 'q';\r\nimport _ from 'lodash'\r\n//  MOCK user searching\r\nimport _mock from 'superagent-mocker';\r\nconst mock = _mock(request);\r\n//\r\n\r\n/**\r\n * This is a wrapper of a Rest api javascript\r\n */\r\nexport default class NorthAmpliaREST {\r\n    /**\r\n     * @param {{ url: string,port: string,version: string,apiKey: string}} _options - this is configuration about Opengate North API.\r\n     * @param {function} backend - this is a backend selected to manage a request to Opengate North API.\r\n     */\r\n    constructor(_options, headers) {\r\n        this._options = merge.recursive(true, this.default(), _options);\r\n        this._headers = headers;\r\n        if (!_.isEmpty(_options.mocks)) {\r\n            this._applyMocks(_options.mocks)\r\n        }\r\n        // ---------------------------------- EXAMPLE\r\n        /*\r\n        mock.post(_options.url + '/search/channels', function(req) {\r\n            return {\r\n                body: {\r\n                    \"channels\": [{\r\n                        \"name\": \"default_channel\",\r\n                        \"description\": \"Automatic channel\",\r\n                        \"organization\": \"organization_GetSetParam\",\r\n                        \"certificates\": []\r\n                    }]\r\n                },\r\n                statusCode: 200\r\n            };\r\n        });        \r\n       */\r\n      \r\n    }\r\n\r\n    _applyMocks (mocks) {\r\n        const methods = Object.keys(mocks).filter((method) => !_.isEmpty(mocks[method]))\r\n        methods.forEach(method => {\r\n            console.log(`Mocking ${method.toLocaleUpperCase()} requests`);\r\n            Object.keys(mocks[method]).forEach(url => {\r\n                console.log('Mocking url:', url);\r\n                const methodByUrl = mocks[method][url]\r\n                mock[method](this._options.url + url, (req) => {\r\n                    if(typeof methodByUrl  === 'function'){\r\n                        console.log('Function returned')\r\n                        return methodByUrl(req)\r\n                    } else{\r\n                        const data = mocks[method][url]\r\n                        console.log('Data returned:', data)\r\n                        if (!data.headers) data.headers = {}\r\n                        return data\r\n                    }\r\n                });\r\n            })\r\n        })\r\n    }\r\n\r\n    /**\r\n     * This return a default configuration object\r\n     * @return {object}\r\n     */\r\n    default () {\r\n        return {\r\n            timeout: 5000\r\n        };\r\n    }\r\n\r\n    _url(options) {\r\n        return options.url;\r\n    }\r\n\r\n    /**\r\n     * Invoke GET action to url specified\r\n     * @param {!string} url - url to execute GET\r\n     * @param {number} timeout - timeout in milliseconds    \r\n     * @param {object} headers - headers of request\r\n     * @param {object} parameters - parameters of request\r\n     * @param {boolean} asBlob - response body as Blob\r\n     * @return {Promise} \r\n     */\r\n    get(url, timeout, headers, parameters, asBlob, serviceBaseURL) {\r\n        const _url = this._createUrl(url, parameters, serviceBaseURL)\r\n        console.info('GET', _url)\r\n        var req = request.get(_url);\r\n        return this._createPromiseRequest(req, null, timeout, headers, asBlob);\r\n    }\r\n\r\n    /**\r\n     * Invoke PATCH action to url and data specified\r\n     * @param {!string} url - url to execute PATCH\r\n     * @param {object} data - attach data to request PATCH\r\n     * @param {number} timeout - timeout in milliseconds\r\n     * @param {object} headers - headers of request\r\n     * @param {object} parameters - parameters of request\r\n     * @return {Promise} \r\n     */\r\n    patch(url, data, timeout, headers, parameters, serviceBaseURL) {\r\n        const _url = this._createUrl(url, parameters, serviceBaseURL)\r\n        console.info('PATCH', _url)\r\n        var req = request.patch(_url)\r\n            .send(data);\r\n\r\n        return this._createPromiseRequest(req, null, timeout, headers);\r\n    }\r\n\r\n    /**\r\n     * Invoke POST action to url and data specified\r\n     * @param {!string} url - url to execute POST\r\n     * @param {object} data - attach data to request POST\r\n     * @param {number} timeout - timeout in milliseconds\r\n     * @param {object} headers - headers of request\r\n     * @param {object} parameters - parameters of request\r\n     * @return {Promise} \r\n     */\r\n    post(url, data, timeout, headers, parameters, serviceBaseURL) {\r\n        const _url = this._createUrl(url, parameters, serviceBaseURL)\r\n        console.info('POST', _url)\r\n        var req = request.post(_url)\r\n            .send(data);\r\n\r\n        return this._createPromiseRequest(req, null, timeout, headers);\r\n    }\r\n\r\n\r\n    /**\r\n     * Invoke POST multipart action to url and data specified\r\n     * @param {!string} url - url to execute POST\r\n     * @param {FormData} formData - attach data to request POST\r\n     * @param {object} events - events allowed, xhr.process \r\n     * @param {number} timeout - timeout in milliseconds       \r\n     * @param {object} headers - headers of request\r\n     * @param {object} parameters - parameters of request\r\n     * @return {Promise} \r\n     */\r\n    post_multipart(url, formData, events, timeout, headers, parameters, serviceBaseURL) {\r\n        const _url = this._createUrl(url, parameters, serviceBaseURL)\r\n        console.info('POST_MULTIPART', _url)\r\n        let req = request.post(_url);\r\n\r\n        let sendFormData = true\r\n\r\n        // Esta parte es sólo para cuando viene de tests o node\r\n        const formDataKeys = Object.keys(formData)\r\n        formDataKeys.forEach(key => {\r\n            switch (key) {\r\n                case 'meta':\r\n                case 'json':\r\n                case 'file':\r\n                    req.field(key, formData[key]);    \r\n                    delete formData[key]\r\n                    break\r\n                case 'hardwareMedia': \r\n                case 'certificate': \r\n                case 'processorBulkFile':\r\n                    req.attach('file', formData[key]);\r\n                    sendFormData = false\r\n                    break\r\n                case 'files':\r\n                    formData[key].forEach((item, index) => {\r\n                        console.log(item.name)\r\n                        req.attach(key, item);\r\n                    })\r\n                   \r\n                    delete formData[key]\r\n                    sendFormData = false\r\n                    break\r\n                case 'modelFile':\r\n                    req.field(key, formData[key]);\r\n                    delete formData[key]\r\n                    sendFormData = false\r\n                    break\r\n                case 'bulkFile':\r\n                    req.set('Content-Type', formData.ext);\r\n                    formData = formData.bulkFile;\r\n                    break\r\n                default:\r\n                    break;\r\n            }\r\n        })\r\n        if(sendFormData)\r\n            req.send(formData);\r\n        return this._createPromiseRequest(req, events, timeout, headers);\r\n        \r\n    }\r\n\r\n    /**\r\n     * Invoke PUT action to url and data specified\r\n     * @param {!string} url - url to execute PUT\r\n     * @param {object} data - attach data to request PUT\r\n     * @param {number} timeout - timeout in milliseconds       \r\n     * @param {object} headers - headers of request\r\n     * @param {object} parameters - parameters of request\r\n     * @return {Promise} \r\n     */\r\n    put(url, data, timeout, headers, parameters, serviceBaseURL) {\r\n        const _url = this._createUrl(url, parameters, serviceBaseURL)\r\n        console.info('PUT', _url)\r\n        var req = request.put(_url).send(data);\r\n\r\n        if (headers) {\r\n            headers['Content-Type'] = 'application/json';\r\n        } else {\r\n            headers = {\r\n                'Content-Type': 'application/json'\r\n            };\r\n        }\r\n\r\n        return this._createPromiseRequest(req, null, timeout, headers);\r\n    }\r\n\r\n    /**\r\n     * Invoke put multipart action to url and data specified\r\n     * @param {!string} url - url to execute POST\r\n     * @param {FormData} formData - attach data to request POST\r\n     * @param {object} events - events allowed, xhr.process \r\n     * @param {number} timeout - timeout in milliseconds       \r\n     * @param {object} headers - headers of request\r\n     * @param {object} parameters - parameters of request\r\n     * @return {Promise} \r\n     */\r\n    put_multipart(url, formData, events, timeout, headers, parameters, serviceBaseURL) {\r\n        const _url = this._createUrl(url, parameters, serviceBaseURL)\r\n        console.info('PUT_MULTIPART', _url)\r\n        let req = request.put(_url);\r\n\r\n        let sendFormData = true\r\n\r\n        // Esta parte es sólo para cuando viene de tests o node\r\n        const formDataKeys = Object.keys(formData)\r\n        formDataKeys.forEach(key => {\r\n            switch (key) {\r\n                case 'meta':\r\n                case 'json':\r\n                case 'file':\r\n                    req.field(key, formData[key]);    \r\n                    delete formData[key]\r\n                    break\r\n                case 'hardwareMedia': \r\n                case 'certificate': \r\n                case 'processorBulkFile':\r\n                    req.attach('file', formData[key]);\r\n                    sendFormData = false\r\n                    break\r\n                case 'files':\r\n                    formData[key].forEach((item, index) => {\r\n                        console.log(item.name)\r\n                        req.attach(key, item);\r\n                    })\r\n                   \r\n                    delete formData[key]\r\n                    sendFormData = false\r\n                    break\r\n                case 'modelFile':\r\n                    req.field(key, formData[key]);\r\n                    delete formData[key]\r\n                    sendFormData = false\r\n                    break\r\n                case 'bulkFile':\r\n                    req.set('Content-Type', formData.ext);\r\n                    formData = formData.bulkFile;\r\n                    break\r\n                default:\r\n                    break;\r\n            }\r\n        })\r\n        if(sendFormData)\r\n            req.send(formData);\r\n        return this._createPromiseRequest(req, events, timeout, headers);\r\n    }\r\n    /**\r\n     * Invoke DELETE action to url specified\r\n     * @param {!string} url - url to execute DELETE\r\n     * @param {number} timeout - timeout in milliseconds    \r\n     * @param {object} headers - headers of request\r\n     * @param {object} parameters - parameters of request\r\n     * @param {object} body - body of request\r\n     * @param {string} serviceBaseURL - base of the uri petition\r\n     * @return {Promise} \r\n     */\r\n    delete(url, timeout, headers, parameters, body, serviceBaseURL) {\r\n        const _url = this._createUrl(url, parameters, serviceBaseURL)\r\n        console.info('DELETE', _url)\r\n        var req\r\n        if(body){\r\n            req = request.del(_url).send(body);\r\n            //req = request('DELETE', url)\r\n        }else{\r\n            req = request.del(_url);\r\n        }\r\n        return this._createPromiseRequest(req, null, timeout, headers);\r\n    }\r\n\r\n    _createUrl(relativeUrl, parameters, serviceBaseURL) {\r\n        var encode = [];\r\n        if (parameters) {\r\n            var keys = Object.keys(parameters);\r\n            for (var i = 0; i < keys.length; i++) {\r\n                var key = keys[i];\r\n                var queryParameter = key + '=' + parameters[key];\r\n                if (i === 0) {\r\n                    relativeUrl = relativeUrl + '?' + queryParameter;\r\n                } else {\r\n                    relativeUrl = relativeUrl + '&' + queryParameter;\r\n                }\r\n\r\n            }\r\n            // console.log(JSON.stringify(parameters));\r\n        }\r\n\r\n        // console.log(relativeUrl);\r\n\r\n        var relativeUrlSplit = relativeUrl.split(\"/\");\r\n        var length = relativeUrlSplit.length;\r\n\r\n        relativeUrlSplit.forEach(function(item, index) {\r\n            if (index === (length - 1) && item.indexOf(\"?\") > 0) {\r\n                var parameters = item.substring(item.indexOf(\"?\"), item.length);\r\n                var _item = item.substring(0, item.indexOf(\"?\"));\r\n                encode.push(urlencode(_item) + parameters);\r\n            } else {\r\n                encode.push(urlencode(item));\r\n            }\r\n        });\r\n\r\n        return this._url(this._options) +  \"/\" + this._getDefaultBaseURL(serviceBaseURL) + '/' + encode.join(\"/\");\r\n    }\r\n\r\n    _getDefaultBaseURL(serviceBaseURL) {\r\n        if (!serviceBaseURL) {\r\n            if (this._isSouth) {\r\n                return 'v80'\r\n            } else {\r\n                return 'north/v80'\r\n            }\r\n        } \r\n\r\n        return serviceBaseURL\r\n    }\r\n\r\n    _createPromiseRequest(req, events, timeout, headers, asBlob) {\r\n        let _timeout = timeout;\r\n        if (typeof _timeout === \"undefined\" || _timeout === null) {\r\n            _timeout = this._options.timeout;\r\n        }\r\n        let defered = q.defer();\r\n        let promise = defered.promise;\r\n        let apiKey = this._options.apiKey;\r\n        let _req = _timeout === -1 ? req : req.timeout(_timeout);\r\n\r\n        if (apiKey) {\r\n            _req = _req.set('X-ApiKey', this._options.apiKey);\r\n        }\r\n\r\n        if (headers) {\r\n            var keys = Object.keys(headers);\r\n            for (var i = 0; i < keys.length; i++) {\r\n                var key = keys[i];\r\n                if (headers[key] !== undefined)\r\n                    _req = _req.set(key, headers[key]);\r\n            }\r\n        }\r\n\r\n        if (events) {\r\n            for (let event in events) {\r\n                _req = _req.on(event, events[event]);\r\n            }\r\n        }\r\n        if(asBlob){\r\n            req.responseType('blob')\r\n        }\r\n        _req = _req.end(function(err, res) {\r\n            if (err !== null) {\r\n                console.error(\"OGAPI ERROR: \")\r\n                console.error(err)\r\n                let data;\r\n                let status = err.status ? err.status : undefined;\r\n                let errorMessage = {\r\n                    errors: [{\r\n                        code: status,\r\n                        message: 'OGAPI: Something is broken. Please contact with your administrator.'\r\n                    }]\r\n                };\r\n                \r\n                if (typeof err.response !== \"undefined\") {\r\n                    data = err.response.body ? err.response.body : errorMessage;\r\n                    status = err.status;\r\n                } else {\r\n                    if (!status) {\r\n                        data = errorMessage;\r\n                        status = 500;\r\n                    } else {\r\n                        data = err.message;\r\n                        status = 408;\r\n                    }\r\n                }\r\n                defered.reject({\r\n                    statusCode: status,\r\n                    'data': data\r\n                });\r\n            } else {\r\n                \r\n                defered.resolve(res);\r\n            }\r\n        });\r\n\r\n        return promise;\r\n    }\r\n}",
+    "content": "'use strict';\r\n\r\nimport merge from 'merge';\r\nimport urlencode from 'urlencode';\r\nimport request, { mkcol } from 'superagent';\r\nimport q from 'q';\r\nimport _ from 'lodash'\r\n//  MOCK user searching\r\nimport _mock from 'superagent-mocker';\r\nconst mock = _mock(request);\r\n//\r\n\r\n/**\r\n * This is a wrapper of a Rest api javascript\r\n */\r\nexport default class NorthAmpliaREST {\r\n    /**\r\n     * @param {{ url: string,port: string,version: string,apiKey: string}} _options - this is configuration about Opengate North API.\r\n     * @param {function} backend - this is a backend selected to manage a request to Opengate North API.\r\n     */\r\n    constructor(_options, headers) {\r\n        this._options = merge.recursive(true, this.default(), _options);\r\n        this._headers = headers;\r\n        if (!_.isEmpty(_options.mocks)) {\r\n            this._applyMocks(_options.mocks)\r\n        }\r\n        // ---------------------------------- EXAMPLE\r\n        /*\r\n        mock.post(_options.url + '/search/channels', function(req) {\r\n            return {\r\n                body: {\r\n                    \"channels\": [{\r\n                        \"name\": \"default_channel\",\r\n                        \"description\": \"Automatic channel\",\r\n                        \"organization\": \"organization_GetSetParam\",\r\n                        \"certificates\": []\r\n                    }]\r\n                },\r\n                statusCode: 200\r\n            };\r\n        });        \r\n       */\r\n      \r\n    }\r\n\r\n    _applyMocks (mocks) {\r\n        const methods = Object.keys(mocks).filter((method) => !_.isEmpty(mocks[method]))\r\n        methods.forEach(method => {\r\n            console.log(`Mocking ${method.toLocaleUpperCase()} requests`);\r\n            Object.keys(mocks[method]).forEach(url => {\r\n                console.log('Mocking url:', url);\r\n                const methodByUrl = mocks[method][url]\r\n                mock[method](this._options.url + url, (req) => {\r\n                    if(typeof methodByUrl  === 'function'){\r\n                        console.log('Function returned')\r\n                        return methodByUrl(req)\r\n                    } else{\r\n                        const data = mocks[method][url]\r\n                        console.log('Data returned:', data)\r\n                        if (!data.headers) data.headers = {}\r\n                        return data\r\n                    }\r\n                });\r\n            })\r\n        })\r\n    }\r\n\r\n    /**\r\n     * This return a default configuration object\r\n     * @return {object}\r\n     */\r\n    default () {\r\n        return {\r\n            timeout: 5000\r\n        };\r\n    }\r\n\r\n    _url(options) {\r\n        return options.url;\r\n    }\r\n\r\n    /**\r\n     * Invoke GET action to url specified\r\n     * @param {!string} url - url to execute GET\r\n     * @param {number} timeout - timeout in milliseconds    \r\n     * @param {object} headers - headers of request\r\n     * @param {object} parameters - parameters of request\r\n     * @param {boolean} asBlob - response body as Blob\r\n     * @param {string} serviceBaseURL - base of the uri petition\r\n     * @return {Promise} \r\n     */\r\n    get(url, timeout, headers, parameters, asBlob, serviceBaseURL) {\r\n        const _url = this._createUrl(url, parameters, serviceBaseURL)\r\n        console.info('GET', _url)\r\n        var req = request.get(_url);\r\n        return this._createPromiseRequest(req, null, timeout, headers, asBlob);\r\n    }\r\n\r\n    /**\r\n     * Invoke PATCH action to url and data specified\r\n     * @param {!string} url - url to execute PATCH\r\n     * @param {object} data - attach data to request PATCH\r\n     * @param {number} timeout - timeout in milliseconds\r\n     * @param {object} headers - headers of request\r\n     * @param {object} parameters - parameters of request\r\n     * @param {string} serviceBaseURL - base of the uri petition\r\n     * @return {Promise} \r\n     */\r\n    patch(url, data, timeout, headers, parameters, serviceBaseURL) {\r\n        const _url = this._createUrl(url, parameters, serviceBaseURL)\r\n        console.info('PATCH', _url)\r\n        var req = request.patch(_url)\r\n            .send(data);\r\n\r\n        return this._createPromiseRequest(req, null, timeout, headers);\r\n    }\r\n\r\n    /**\r\n     * Invoke POST action to url and data specified\r\n     * @param {!string} url - url to execute POST\r\n     * @param {object} data - attach data to request POST\r\n     * @param {number} timeout - timeout in milliseconds\r\n     * @param {object} headers - headers of request\r\n     * @param {object} parameters - parameters of request\r\n     * @param {string} serviceBaseURL - base of the uri petition\r\n     * @return {Promise} \r\n     */\r\n    post(url, data, timeout, headers, parameters, serviceBaseURL) {\r\n        const _url = this._createUrl(url, parameters, serviceBaseURL)\r\n        console.info('POST', _url)\r\n        var req = request.post(_url)\r\n            .send(data);\r\n\r\n        return this._createPromiseRequest(req, null, timeout, headers);\r\n    }\r\n\r\n\r\n    /**\r\n     * Invoke POST multipart action to url and data specified\r\n     * @param {!string} url - url to execute POST\r\n     * @param {FormData} formData - attach data to request POST\r\n     * @param {object} events - events allowed, xhr.process \r\n     * @param {number} timeout - timeout in milliseconds       \r\n     * @param {object} headers - headers of request\r\n     * @param {object} parameters - parameters of request\r\n     * @param {string} serviceBaseURL - base of the uri petition\r\n     * @return {Promise} \r\n     */\r\n    post_multipart(url, formData, events, timeout, headers, parameters, serviceBaseURL) {\r\n        const _url = this._createUrl(url, parameters, serviceBaseURL)\r\n        console.info('POST_MULTIPART', _url)\r\n        let req = request.post(_url);\r\n\r\n        let sendFormData = true\r\n\r\n        // Esta parte es sólo para cuando viene de tests o node\r\n        const formDataKeys = Object.keys(formData)\r\n        formDataKeys.forEach(key => {\r\n            switch (key) {\r\n                case 'meta':\r\n                case 'json':\r\n                case 'file':\r\n                    req.field(key, formData[key]);    \r\n                    delete formData[key]\r\n                    break\r\n                case 'hardwareMedia': \r\n                case 'certificate': \r\n                case 'processorBulkFile':\r\n                    req.attach('file', formData[key]);\r\n                    sendFormData = false\r\n                    break\r\n                case 'files':\r\n                    formData[key].forEach((item, index) => {\r\n                        console.log(item.name)\r\n                        req.attach(key, item);\r\n                    })\r\n                   \r\n                    delete formData[key]\r\n                    sendFormData = false\r\n                    break\r\n                case 'modelFile':\r\n                    req.field(key, formData[key]);\r\n                    delete formData[key]\r\n                    sendFormData = false\r\n                    break\r\n                case 'bulkFile':\r\n                    req.set('Content-Type', formData.ext);\r\n                    formData = formData.bulkFile;\r\n                    break\r\n                default:\r\n                    break;\r\n            }\r\n        })\r\n        if(sendFormData)\r\n            req.send(formData);\r\n        return this._createPromiseRequest(req, events, timeout, headers);\r\n        \r\n    }\r\n\r\n    /**\r\n     * Invoke PUT action to url and data specified\r\n     * @param {!string} url - url to execute PUT\r\n     * @param {object} data - attach data to request PUT\r\n     * @param {number} timeout - timeout in milliseconds       \r\n     * @param {object} headers - headers of request\r\n     * @param {object} parameters - parameters of request\r\n     * @param {string} serviceBaseURL - base of the uri petition\r\n     * @return {Promise} \r\n     */\r\n    put(url, data, timeout, headers, parameters, serviceBaseURL) {\r\n        const _url = this._createUrl(url, parameters, serviceBaseURL)\r\n        console.info('PUT', _url)\r\n        var req = request.put(_url).send(data);\r\n\r\n        if (headers) {\r\n            headers['Content-Type'] = 'application/json';\r\n        } else {\r\n            headers = {\r\n                'Content-Type': 'application/json'\r\n            };\r\n        }\r\n\r\n        return this._createPromiseRequest(req, null, timeout, headers);\r\n    }\r\n\r\n    /**\r\n     * Invoke put multipart action to url and data specified\r\n     * @param {!string} url - url to execute POST\r\n     * @param {FormData} formData - attach data to request POST\r\n     * @param {object} events - events allowed, xhr.process \r\n     * @param {number} timeout - timeout in milliseconds       \r\n     * @param {object} headers - headers of request\r\n     * @param {object} parameters - parameters of request\r\n     * @param {string} serviceBaseURL - base of the uri petition\r\n     * @return {Promise} \r\n     */\r\n    put_multipart(url, formData, events, timeout, headers, parameters, serviceBaseURL) {\r\n        const _url = this._createUrl(url, parameters, serviceBaseURL)\r\n        console.info('PUT_MULTIPART', _url)\r\n        let req = request.put(_url);\r\n\r\n        let sendFormData = true\r\n\r\n        // Esta parte es sólo para cuando viene de tests o node\r\n        const formDataKeys = Object.keys(formData)\r\n        formDataKeys.forEach(key => {\r\n            switch (key) {\r\n                case 'meta':\r\n                case 'json':\r\n                case 'file':\r\n                    req.field(key, formData[key]);    \r\n                    delete formData[key]\r\n                    break\r\n                case 'hardwareMedia': \r\n                case 'certificate': \r\n                case 'processorBulkFile':\r\n                    req.attach('file', formData[key]);\r\n                    sendFormData = false\r\n                    break\r\n                case 'files':\r\n                    formData[key].forEach((item, index) => {\r\n                        console.log(item.name)\r\n                        req.attach(key, item);\r\n                    })\r\n                   \r\n                    delete formData[key]\r\n                    sendFormData = false\r\n                    break\r\n                case 'modelFile':\r\n                    req.field(key, formData[key]);\r\n                    delete formData[key]\r\n                    sendFormData = false\r\n                    break\r\n                case 'bulkFile':\r\n                    req.set('Content-Type', formData.ext);\r\n                    formData = formData.bulkFile;\r\n                    break\r\n                default:\r\n                    break;\r\n            }\r\n        })\r\n        if(sendFormData)\r\n            req.send(formData);\r\n        return this._createPromiseRequest(req, events, timeout, headers);\r\n    }\r\n    /**\r\n     * Invoke DELETE action to url specified\r\n     * @param {!string} url - url to execute DELETE\r\n     * @param {number} timeout - timeout in milliseconds    \r\n     * @param {object} headers - headers of request\r\n     * @param {object} parameters - parameters of request\r\n     * @param {object} body - body of request\r\n     * @param {string} serviceBaseURL - base of the uri petition\r\n     * @return {Promise} \r\n     */\r\n    delete(url, timeout, headers, parameters, body, serviceBaseURL) {\r\n        const _url = this._createUrl(url, parameters, serviceBaseURL)\r\n        console.info('DELETE', _url)\r\n        var req\r\n        if(body){\r\n            req = request.del(_url).send(body);\r\n            //req = request('DELETE', url)\r\n        }else{\r\n            req = request.del(_url);\r\n        }\r\n        return this._createPromiseRequest(req, null, timeout, headers);\r\n    }\r\n\r\n    _createUrl(relativeUrl, parameters, serviceBaseURL) {\r\n        var encode = [];\r\n        if (parameters) {\r\n            var keys = Object.keys(parameters);\r\n            for (var i = 0; i < keys.length; i++) {\r\n                var key = keys[i];\r\n                var queryParameter = key + '=' + parameters[key];\r\n                if (i === 0) {\r\n                    relativeUrl = relativeUrl + '?' + queryParameter;\r\n                } else {\r\n                    relativeUrl = relativeUrl + '&' + queryParameter;\r\n                }\r\n\r\n            }\r\n            // console.log(JSON.stringify(parameters));\r\n        }\r\n\r\n        // console.log(relativeUrl);\r\n\r\n        var relativeUrlSplit = relativeUrl.split(\"/\");\r\n        var length = relativeUrlSplit.length;\r\n\r\n        relativeUrlSplit.forEach(function(item, index) {\r\n            if (index === (length - 1) && item.indexOf(\"?\") > 0) {\r\n                var parameters = item.substring(item.indexOf(\"?\"), item.length);\r\n                var _item = item.substring(0, item.indexOf(\"?\"));\r\n                encode.push(urlencode(_item) + parameters);\r\n            } else {\r\n                encode.push(urlencode(item));\r\n            }\r\n        });\r\n\r\n        return this._url(this._options) +  \"/\" + this._getDefaultBaseURL(serviceBaseURL) + '/' + encode.join(\"/\");\r\n    }\r\n\r\n    _getDefaultBaseURL(serviceBaseURL) {\r\n        if (!serviceBaseURL) {\r\n            if (this._isSouth) {\r\n                return 'v80'\r\n            } else {\r\n                return 'north/v80'\r\n            }\r\n        } \r\n\r\n        return serviceBaseURL\r\n    }\r\n\r\n    _createPromiseRequest(req, events, timeout, headers, asBlob) {\r\n        let _timeout = timeout;\r\n        if (typeof _timeout === \"undefined\" || _timeout === null) {\r\n            _timeout = this._options.timeout;\r\n        }\r\n        let defered = q.defer();\r\n        let promise = defered.promise;\r\n        let apiKey = this._options.apiKey;\r\n        let _req = _timeout === -1 ? req : req.timeout(_timeout);\r\n\r\n        if (apiKey) {\r\n            _req = _req.set('X-ApiKey', this._options.apiKey);\r\n        }\r\n\r\n        if (headers) {\r\n            var keys = Object.keys(headers);\r\n            for (var i = 0; i < keys.length; i++) {\r\n                var key = keys[i];\r\n                if (headers[key] !== undefined)\r\n                    _req = _req.set(key, headers[key]);\r\n            }\r\n        }\r\n\r\n        if (events) {\r\n            for (let event in events) {\r\n                _req = _req.on(event, events[event]);\r\n            }\r\n        }\r\n        if(asBlob){\r\n            req.responseType('blob')\r\n        }\r\n        _req = _req.end(function(err, res) {\r\n            if (err !== null) {\r\n                console.error(\"OGAPI ERROR: \")\r\n                console.error(err)\r\n                let data;\r\n                let status = err.status ? err.status : undefined;\r\n                let errorMessage = {\r\n                    errors: [{\r\n                        code: status,\r\n                        message: 'OGAPI: Something is broken. Please contact with your administrator.'\r\n                    }]\r\n                };\r\n                \r\n                if (typeof err.response !== \"undefined\") {\r\n                    data = err.response.body ? err.response.body : errorMessage;\r\n                    status = err.status;\r\n                } else {\r\n                    if (!status) {\r\n                        data = errorMessage;\r\n                        status = 500;\r\n                    } else {\r\n                        data = err.message;\r\n                        status = 408;\r\n                    }\r\n                }\r\n                defered.reject({\r\n                    statusCode: status,\r\n                    'data': data\r\n                });\r\n            } else {\r\n                \r\n                defered.resolve(res);\r\n            }\r\n        });\r\n\r\n        return promise;\r\n    }\r\n}",
     "static": true,
     "longname": "src/util/NorthAmpliaREST.js",
     "access": null,
@@ -68743,7 +68783,7 @@
     "longname": "src/util/NorthAmpliaREST.js~NorthAmpliaREST#get",
     "access": null,
     "description": "Invoke GET action to url specified",
-    "lineNumber": 91,
+    "lineNumber": 92,
     "params": [
       {
         "nullable": false,
@@ -68794,6 +68834,16 @@
         "optional": false,
         "name": "asBlob",
         "description": "response body as Blob"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "serviceBaseURL",
+        "description": "base of the uri petition"
       }
     ],
     "return": {
@@ -68816,7 +68866,7 @@
     "longname": "src/util/NorthAmpliaREST.js~NorthAmpliaREST#patch",
     "access": null,
     "description": "Invoke PATCH action to url and data specified",
-    "lineNumber": 107,
+    "lineNumber": 109,
     "params": [
       {
         "nullable": false,
@@ -68867,6 +68917,16 @@
         "optional": false,
         "name": "parameters",
         "description": "parameters of request"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "serviceBaseURL",
+        "description": "base of the uri petition"
       }
     ],
     "return": {
@@ -68889,7 +68949,7 @@
     "longname": "src/util/NorthAmpliaREST.js~NorthAmpliaREST#post",
     "access": null,
     "description": "Invoke POST action to url and data specified",
-    "lineNumber": 125,
+    "lineNumber": 128,
     "params": [
       {
         "nullable": false,
@@ -68940,6 +69000,16 @@
         "optional": false,
         "name": "parameters",
         "description": "parameters of request"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "serviceBaseURL",
+        "description": "base of the uri petition"
       }
     ],
     "return": {
@@ -68962,7 +69032,7 @@
     "longname": "src/util/NorthAmpliaREST.js~NorthAmpliaREST#post_multipart",
     "access": null,
     "description": "Invoke POST multipart action to url and data specified",
-    "lineNumber": 145,
+    "lineNumber": 149,
     "params": [
       {
         "nullable": false,
@@ -69023,6 +69093,16 @@
         "optional": false,
         "name": "parameters",
         "description": "parameters of request"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "serviceBaseURL",
+        "description": "base of the uri petition"
       }
     ],
     "return": {
@@ -69045,7 +69125,7 @@
     "longname": "src/util/NorthAmpliaREST.js~NorthAmpliaREST#put",
     "access": null,
     "description": "Invoke PUT action to url and data specified",
-    "lineNumber": 205,
+    "lineNumber": 210,
     "params": [
       {
         "nullable": false,
@@ -69096,6 +69176,16 @@
         "optional": false,
         "name": "parameters",
         "description": "parameters of request"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "serviceBaseURL",
+        "description": "base of the uri petition"
       }
     ],
     "return": {
@@ -69118,7 +69208,7 @@
     "longname": "src/util/NorthAmpliaREST.js~NorthAmpliaREST#put_multipart",
     "access": null,
     "description": "Invoke put multipart action to url and data specified",
-    "lineNumber": 231,
+    "lineNumber": 237,
     "params": [
       {
         "nullable": false,
@@ -69179,6 +69269,16 @@
         "optional": false,
         "name": "parameters",
         "description": "parameters of request"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "serviceBaseURL",
+        "description": "base of the uri petition"
       }
     ],
     "return": {
@@ -69201,7 +69301,7 @@
     "longname": "src/util/NorthAmpliaREST.js~NorthAmpliaREST#delete",
     "access": null,
     "description": "Invoke DELETE action to url specified",
-    "lineNumber": 290,
+    "lineNumber": 296,
     "params": [
       {
         "nullable": false,
@@ -69284,7 +69384,7 @@
     "longname": "src/util/NorthAmpliaREST.js~NorthAmpliaREST#_createUrl",
     "access": null,
     "description": null,
-    "lineNumber": 303,
+    "lineNumber": 309,
     "undocument": true,
     "unknown": [
       {
@@ -69329,7 +69429,7 @@
     "longname": "src/util/NorthAmpliaREST.js~NorthAmpliaREST#_getDefaultBaseURL",
     "access": null,
     "description": null,
-    "lineNumber": 338,
+    "lineNumber": 344,
     "undocument": true,
     "unknown": [
       {
@@ -69362,7 +69462,7 @@
     "longname": "src/util/NorthAmpliaREST.js~NorthAmpliaREST#_createPromiseRequest",
     "access": null,
     "description": null,
-    "lineNumber": 350,
+    "lineNumber": 356,
     "undocument": true,
     "unknown": [
       {

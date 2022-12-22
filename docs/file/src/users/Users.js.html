@@ -542,9 +542,9 @@ export default class User extends BaseProvision {
      * @property {function (result:object, statusCode:number)} then - When request it is OK
      * @property {function (error:string)} catch - When request it is NOK
      * @example
-     *  ogapi.usersBuilder().withEmail(example@example.es).withPassword(oldPassword).updatePassword(newPassword);
+     *  ogapi.usersBuilder().withEmail(example@example.es).withPassword(oldPassword).changePassword(newPassword);
      */
-    updatePassword(newPassword) {
+    changePassword(newPassword) {
         this._newPassword = newPassword;
         if (_.isEmpty(this._email) || _.isEmpty(this._password) || _.isEmpty(this._newPassword)) {
             throw new Error(&apos;OGAPI_USER_UPDATE_PASSWORD_PARAMETER_MUST_BE_DEFINED&apos;);

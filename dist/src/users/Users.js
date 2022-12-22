@@ -297,7 +297,7 @@ var User = (function (_BaseProvision) {
          * @property {function (result:object, statusCode:number)} then - When request it is OK
          * @property {function (error:string)} catch - When request it is NOK
          * @example
-         *  ogapi.usersBuilder().withEmail(example@example.es).withPassword(oldPassword).updatePassword(newPassword);
+         *  ogapi.usersBuilder().withEmail(example@example.es).withPassword(oldPassword).changePassword(newPassword);
          */
     }, {
         key: 'changePassword',
