@@ -317,7 +317,7 @@ var User = (function (_BaseProvision) {
                 'X-ApiPass': this._password
             });
 
-            return this._doNorthPost(this._buildURL(), data);
+            return this._doNorthPut(this._buildURL(), data);
         }
 
         /**
