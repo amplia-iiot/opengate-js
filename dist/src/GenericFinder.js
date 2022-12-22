@@ -29,6 +29,7 @@ var GenericFinder = (function () {
      * @param {string} source - Relative url where is located the resource.
      * @param {string} reponseJsonData - Relative url where is located the resource. Can be null
      * @param {string} error_not_found - String error which will be thrown on not_found error.
+     * @param {string} serviceBaseURL - base of the uri petition
      */
 
     function GenericFinder(ogapi, source, entity, error_not_found, serviceBaseURL) {

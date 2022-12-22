@@ -300,8 +300,8 @@ var User = (function (_BaseProvision) {
          *  ogapi.usersBuilder().withEmail(example@example.es).withPassword(oldPassword).updatePassword(newPassword);
          */
     }, {
-        key: 'updatePassword',
-        value: function updatePassword(newPassword) {
+        key: 'changePassword',
+        value: function changePassword(newPassword) {
             this._newPassword = newPassword;
             if (_lodash2['default'].isEmpty(this._email) || _lodash2['default'].isEmpty(this._password) || _lodash2['default'].isEmpty(this._newPassword)) {
                 throw new Error('OGAPI_USER_UPDATE_PASSWORD_PARAMETER_MUST_BE_DEFINED');

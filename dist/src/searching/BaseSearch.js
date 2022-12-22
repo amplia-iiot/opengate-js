@@ -30,6 +30,7 @@ var BaseSearch = (function () {
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!string} resource - this is a base url resource
      * @param {!number} [timeout] - timeout on request
+     * @param {string} serviceBaseURL - base of the uri petition
      */
 
     function BaseSearch(ogapi, resource, timeout, serviceBaseURL) {

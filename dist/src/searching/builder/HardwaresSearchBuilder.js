@@ -14,9 +14,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _SearchBuilder2 = require('./SearchBuilder');
+var _SearchWithSummaryBuilder2 = require('./SearchWithSummaryBuilder');
 
-var _SearchBuilder3 = _interopRequireDefault(_SearchBuilder2);
+var _SearchWithSummaryBuilder3 = _interopRequireDefault(_SearchWithSummaryBuilder2);
 
 var _utilSearchingFieldsFieldFinder = require('../../util/searchingFields/FieldFinder');
 
@@ -28,8 +28,8 @@ var BASE_URL = '/catalog/hardwares';
  * @example ogapi.devicesSearchBuilder()
  */
 
-var HardwaresSearchBuilder = (function (_SearchBuilder) {
-    _inherits(HardwaresSearchBuilder, _SearchBuilder);
+var HardwaresSearchBuilder = (function (_SearchWithSummaryBuilder) {
+    _inherits(HardwaresSearchBuilder, _SearchWithSummaryBuilder);
 
     /**
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
@@ -99,7 +99,7 @@ var HardwaresSearchBuilder = (function (_SearchBuilder) {
     }]);
 
     return HardwaresSearchBuilder;
-})(_SearchBuilder3['default']);
+})(_SearchWithSummaryBuilder3['default']);
 
 exports['default'] = HardwaresSearchBuilder;
 module.exports = exports['default'];

@@ -24,6 +24,8 @@ var BaseProvision = (function () {
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!string} resource - this is a base url resource
      * @param {!number} [timeout] - timeout on request
+     * @param {array} requiredParameters
+     * @param {string} serviceBaseURL - base of the uri petition
      */
 
     function BaseProvision(ogapi, resource, timeout, requiredParameters, serviceBaseURL) {
