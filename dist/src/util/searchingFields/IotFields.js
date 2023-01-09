@@ -126,6 +126,9 @@ var IOT_FIELDS = {
     },
     "OPERATORS": {
         "OPERATORS": ["operator.name"]
+    },
+    "PLANS": {
+        "PLANS": ["plan.identifier", "plan.name", "plan.flowRate.value", "plan.flowRate.unit", "plan.maxDeviceAmount", "plan.maxStorageLifeTime.period", "plan.maxStorageLifeTime.total", "plan.defaultAssigned", "plan.defaultProvision"]
     }
 };
 exports.IOT_FIELDS = IOT_FIELDS;
