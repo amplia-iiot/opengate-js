@@ -53,7 +53,9 @@ const match_url = {
     '/tickets': 'SearchOnDatamodel',
     '/channels': 'SearchOnDatamodel',
     'datasets': 'SearchOnDataset',
-    'timeseries': 'SearchOnTimeseries'
+    'timeseries': 'SearchOnTimeseries',
+    '/catalog/plans/organization' : 'PLANS',
+    '/catalog/plans/device' : 'PLANS'
 };
 
 const match_context = {
