@@ -1,14 +1,14 @@
 'use strict';
 
-import SearchBuilder from './SearchBuilder';
+import SearchWithSummaryBuilder from './SearchWithSummaryBuilder';
 import FieldFinder from '../../util/searchingFields/FieldFinder';
 
-const BASE_URL = '/catalog/plans/device?';
+const BASE_URL = '/catalog/plans/device';
 /**
  * Defined a search over DevicePlansSearchBuilder	
  * @example ogapi.plansSearchBuilder()
  */
-export default class DevicesPlansSearchBuilder extends SearchBuilder {
+export default class DevicesPlansSearchBuilder extends SearchWithSummaryBuilder {
     /**
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */
@@ -37,7 +37,7 @@ export default class DevicesPlansSearchBuilder extends SearchBuilder {
 
     _buildUrl() {
         if (this._domainName) {
-            this._url = BASE_URL + this._domainName;
+            this._url = BASE_URL + '?domainName=' + this._domainName;
         } else {
             throw new Error('Parameter domainName must be defined');
         }
