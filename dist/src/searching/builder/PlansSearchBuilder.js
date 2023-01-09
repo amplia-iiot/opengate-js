@@ -14,22 +14,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _SearchBuilder2 = require('./SearchBuilder');
+var _SearchWithSummaryBuilder2 = require('./SearchWithSummaryBuilder');
 
-var _SearchBuilder3 = _interopRequireDefault(_SearchBuilder2);
+var _SearchWithSummaryBuilder3 = _interopRequireDefault(_SearchWithSummaryBuilder2);
 
 var _utilSearchingFieldsFieldFinder = require('../../util/searchingFields/FieldFinder');
 
 var _utilSearchingFieldsFieldFinder2 = _interopRequireDefault(_utilSearchingFieldsFieldFinder);
 
-var BASE_URL = '/catalog/plans/organization?';
+var BASE_URL = '/catalog/plans/organization';
 /**
  * Defined a search over PlansSearchBuilder	
  * @example ogapi.plansSearchBuilder()
  */
 
-var PlansSearchBuilder = (function (_SearchBuilder) {
-    _inherits(PlansSearchBuilder, _SearchBuilder);
+var PlansSearchBuilder = (function (_SearchWithSummaryBuilder) {
+    _inherits(PlansSearchBuilder, _SearchWithSummaryBuilder);
 
     /**
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
@@ -66,7 +66,7 @@ var PlansSearchBuilder = (function (_SearchBuilder) {
         key: '_buildUrl',
         value: function _buildUrl() {
             if (this._domainName) {
-                this._url = BASE_URL + this._domainName;
+                this._url = BASE_URL + '?domainName=' + this._domainName;
             } else {
                 throw new Error('Parameter domainName must be defined');
             }
@@ -75,7 +75,7 @@ var PlansSearchBuilder = (function (_SearchBuilder) {
     }]);
 
     return PlansSearchBuilder;
-})(_SearchBuilder3['default']);
+})(_SearchWithSummaryBuilder3['default']);
 
 exports['default'] = PlansSearchBuilder;
 module.exports = exports['default'];
