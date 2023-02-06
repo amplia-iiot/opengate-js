@@ -10410,6 +10410,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/users/users.js~user#loginuserjwt",
+    "class/src/users/Users.js~User.html#instance-method-loginUserJWT",
+    "src/users/Users.js~User#loginUserJWT",
+    "method"
+  ],
+  [
     "src/users/users.js~user#requestresetpassword",
     "class/src/users/Users.js~User.html#instance-method-requestResetPassword",
     "src/users/Users.js~User#requestResetPassword",

@@ -271,7 +271,8 @@ var User = (function (_BaseProvision) {
             this._ogapi.Napi.post(url, data, undefined, this._getExtraHeaders(), this._getUrlParameters()).then(function (res) {
                 if (res.statusCode === 200) {
                     defered.resolve({
-                        statusCode: res.statusCode
+                        statusCode: res.statusCode,
+                        data: res.body
                     });
                 } else if (res.status === 200) {
                     defered.resolve({
@@ -374,6 +375,30 @@ var User = (function (_BaseProvision) {
             var url = this._buildURL() + '/reset/' + tokenId;
 
             return this._doNorthPost(url, data);
+        }
+
+        /**
+         * This invoke a request to OpenGate North API and the callback is managed by promises
+         * This function get a JWT for user
+         * @param {String} user - required field
+         * @param {String} password - required field
+         * @return {Promise}
+         * @property {function (result:object, statusCode:number)} then - When request it is OK
+         * @property {function (error:string)} catch - When request it is NOK
+         * @example
+         *  ogapi.usersBuilder().userInformationJWT(user, password);
+         */
+    }, {
+        key: 'loginUserJWT',
+        value: function loginUserJWT(user, password) {
+            this._user = user;
+            this._password = password;
+            var data = {
+                email: this._user,
+                password: this._password
+            };
+            var url = 'provision/users/login';
+            return this._post(url, data);
         }
     }]);
 
