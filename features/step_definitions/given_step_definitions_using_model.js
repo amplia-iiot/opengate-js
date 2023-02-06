@@ -621,6 +621,22 @@ Given(/^an apikey user by "([^"]*)"$/, function (apikey, callback) {
     callback();
 });
 
+
+Given(/^an jwt user by "([^"]*)"$/, function (jwt, callback) {
+    var config = {
+        'jwt': this.jwt || jwt,
+        'url': this.test_url_north,
+        'timeout': 60000,
+        south: {
+            'url': this.test_url_south
+        }
+    };
+
+    this.ogapi = new OpengateAPI(config);
+
+    callback();
+});
+
 Given('an user remove her apikey', function (callback) {
     var config = {
         'url': this.test_url_north,
