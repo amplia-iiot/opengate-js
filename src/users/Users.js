@@ -236,7 +236,8 @@ export default class User extends BaseProvision {
             .then((res) => {
                 if (res.statusCode === 200) {
                     defered.resolve({
-                        statusCode: res.statusCode
+                        statusCode: res.statusCode,
+                        data: res.body,
                     });
                 } else if (res.status === 200) {
                     defered.resolve({
@@ -335,5 +336,25 @@ export default class User extends BaseProvision {
         
         return this._doNorthPost(url, data);
     }
-    
+    /**
+     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * This function get a JWT for user
+     * @param {String} user - required field
+     * @param {String} password - required field
+     * @return {Promise}
+     * @property {function (result:object, statusCode:number)} then - When request it is OK
+     * @property {function (error:string)} catch - When request it is NOK
+     * @example
+     *  ogapi.usersBuilder().userInformationJWT(user, password);
+     */
+    loginUserJWT(user, password) {
+        this._user = user;
+        this._password = password;
+        const data = {
+            email: this._user,
+            password: this._password
+        };
+        const url = 'provision/users/login';
+        return this._post(url, data);
+    }
 }
