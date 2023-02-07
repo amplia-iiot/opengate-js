@@ -346,6 +346,9 @@ module.exports = {
             },
             "manufacturer models builder": function(ogapi) {
                 return ogapi.manufacturerModelsBuilder();
+            }, 
+            "countries finder": function(ogapi){
+                return ogapi.newCountriesCatalog()
             }
         };
         return utilsMath[utilName](ogapi, param, param2);
