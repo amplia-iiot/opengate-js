@@ -89,6 +89,9 @@ module.exports = {
                 'organizationId': 'findByOrganization',
                 'organizationIdAndProvisionProcessorId':'findByOrganizationAndProvisionProcessorId',
             },
+            'countries': {
+                'countries': 'getCountries'
+            }
         } [setter];
         ///home/manuel/Escritorio/proyectos/opengateJs/opengate-js/features/support/find_model.js
     },
@@ -130,7 +133,11 @@ module.exports = {
             'dataset identifier': 'identifier',
             'timeset identifier': 'identifier',
             'dataset name': 'name',
-            'timeset name': 'name'
+            'timeset name': 'name',
+            'country': '$[0].name',
+            'region': '$[0].regions[0].name',
+            'province': '$[0].regions[0].provinces[0].name',
+            
         } [getter];
     }
 };
