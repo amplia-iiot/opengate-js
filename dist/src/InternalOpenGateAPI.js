@@ -554,6 +554,10 @@ var _manufacturersModelFinder = require('./manufacturers/ModelFinder');
 
 var _manufacturersModelFinder2 = _interopRequireDefault(_manufacturersModelFinder);
 
+var _provisionCountryCountriesCatalog = require('./provision/country/CountriesCatalog');
+
+var _provisionCountryCountriesCatalog2 = _interopRequireDefault(_provisionCountryCountriesCatalog);
+
 var RequestEndMonkeyPatching = (function () {
     var beforeStart = undefined;
     var end = _superagent3['default'].Request.prototype.end;
@@ -755,6 +759,16 @@ var InternalOpenGateAPI = (function () {
         key: 'newOperationTypeCatalog',
         value: function newOperationTypeCatalog() {
             return new _operationTypesOperationTypeCatalog2['default'](this);
+        }
+
+        /**
+         * This return a util to find countries catalog
+         * @return {CountriesCatalog}
+         */
+    }, {
+        key: 'newCountriesCatalog',
+        value: function newCountriesCatalog() {
+            return new _provisionCountryCountriesCatalog2['default'](this);
         }
 
         /**
