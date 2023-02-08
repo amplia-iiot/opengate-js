@@ -4,6 +4,7 @@
 @find_provision
 @find_countries
 @countries_finder
+@OUW-3924
 
 Feature: Find a countries
     As a user of JsApi
@@ -13,7 +14,7 @@ Feature: Find a countries
     Background:
         Given an apikey user by "require-real-apikey" and...
             | key                 | value                                                                                          |
-            | _internalCountriesFilter | {"resourceType": "entity.asset","specificType": "WIRE", "identifier": "DOMAIN_country_organization5"} |
+            | _internalCountriesFilter | {"organization": "country_organization", "identifier": "DOMAIN_country_organization5", "ds": "provision.onfieldDeployments.fa.location"} |
 
     Scenario: Precondition - Creating an organization to use in create asset
         Given an ogapi "organizations builder" util
