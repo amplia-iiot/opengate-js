@@ -5,8 +5,7 @@
 @find_countries
 @countries_finder
 @OUW-3924
-@wip
-#IMPORTANTE: ver tarea OUW-3924 para entender lo que se esta haciendo en este tests
+
 Feature: Find a countries
     As a user of JsApi
     I want to find a countries
