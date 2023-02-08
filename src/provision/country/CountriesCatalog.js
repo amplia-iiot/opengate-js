@@ -62,7 +62,6 @@ export default class CountriesCatalog extends ProvisionGenericFinder {
                 if (error.statusCode === 400) {
                     error.statusCode = HttpStatus.NOT_FOUND;
                 }
-
                 defered.reject(error);
             });
         return promise;
