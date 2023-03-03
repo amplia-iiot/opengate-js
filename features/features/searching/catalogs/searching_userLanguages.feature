@@ -17,5 +17,5 @@ Feature: Searching User Languages  provider in catalog
     Then response code should be: 200
     And the result contains:
 """
-{"userLanguages":[{"code":"es","language":"Español/Spanish"},{"code":"en","language":"Inglés/English"}]}
+{"userLanguages":[{"code":"es","language":"Español/Spanish"},{"code":"en","language":"Inglés/English"},{"code":"pt","language":"Portugués/Portuguese"}]}
 """
