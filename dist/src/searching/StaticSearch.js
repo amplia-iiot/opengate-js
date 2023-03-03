@@ -654,6 +654,9 @@ var StaticSearch = (function (_Search) {
                 }, {
                     'code': 'en',
                     'language': 'Inglés/English'
+                }, {
+                    'code': 'pt',
+                    'language': 'Portugués/Portuguese'
                 }],
                 'countryCodes': [{
                     'code': 'AD',
