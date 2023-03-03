@@ -633,7 +633,7 @@ Given(/^an apikey user by "([^"]*)" and...$/, function (apikey, table, callback)
     callback();
 });
 
-Given(/^an apikey user by "([^"]*)" $/, function (apikey, callback) {
+Given(/^an apikey user by "([^"]*)"$/, function (apikey, callback) {
     var config = {
         'apiKey': this.apikey || apikey,
         'url': this.test_url_north,
