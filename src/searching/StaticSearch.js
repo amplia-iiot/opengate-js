@@ -692,6 +692,10 @@ export default class StaticSearch extends Search {
                 {
                     'code': 'en',
                     'language': 'Inglés/English'
+                },
+                {
+                    'code': 'pt',
+                    'language': 'Portugués/Portuguese'
                 }
             ],
             'countryCodes': [{

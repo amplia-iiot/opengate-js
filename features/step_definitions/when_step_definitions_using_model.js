@@ -388,12 +388,23 @@ When(/^I try to define the (entity|ticket) with...$/, function (model, table, ca
         var data = table.hashes();
         if (data.length > 0) {
             for (var i = 0; i < data.length; i++) {
-                if (data[i].typeFunction === 'simple') {
-                    this.util.with(data[i].datastream, data[i].value);
-                } else if (data[i].typeFunction === 'complex') {
-                    this.util.withComplex(data[i].datastream, data[i].parent, data[i].value);
+                var d = data[i]
+                switch (d.typeFunction) {
+                    case 'simple':
+                        this.util.with(d.datastream, d.value);    
+                        break;
+                    case 'simple json':
+                        this.util.with(d.datastream, JSON.parse(d.value));    
+                        break;
+                    case 'complex json':
+                        this.util.withComplex(d.datastream, d.parent, JSON.parse(d.value));    
+                        break;
+                    case 'complex':
+                        this.util.withComplex(d.datastream, d.parent, d.value);    
+                        break;
+                    default:
+                        throw new Error('No suppport typeFunction: ' + d.typeFunction)
                 }
-
             }
         } else {
             this.error = "No params found";
