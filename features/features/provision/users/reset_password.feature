@@ -2,7 +2,6 @@
 @provision
 @users
 @resetpassword
-@wip
 
 Feature: Reset password when the user forgets it
   As a user of JsApi
@@ -11,7 +10,7 @@ Feature: Reset password when the user forgets it
 
   @guerrilla
   Scenario: Precondition - Prepare scenario
-    Given an apikey user by "1e0a6fa7-d770-4072-ab4e-f98581522a65"
+    Given an apikey user by "require-real-apikey"
     Then an ogapi "organizations builder" util
     And I want to create a "organization"
     And the "name" "resetPasswordOrganization"

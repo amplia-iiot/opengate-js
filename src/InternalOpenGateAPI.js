@@ -136,6 +136,7 @@ import ManufacturersBuilder from './manufacturers/Manufacturer'
 import ManufacturerModelsBuilder from './manufacturers/Model'
 import ManufacturerFinder from './manufacturers/ManufacturerFinder'
 import ModelFinder from './manufacturers/ModelFinder'
+import CountriesCatalog from './provision/country/CountriesCatalog';
 
 const RequestEndMonkeyPatching = (function(){
     let beforeStart
@@ -304,6 +305,15 @@ export default class InternalOpenGateAPI {
         return new OperationTypeCatalog(this);
     }
 
+    /**
+     * This return a util to find countries catalog
+     * @return {CountriesCatalog}
+     */
+    newCountriesCatalog() {
+        return new CountriesCatalog(this);
+    }
+
+    
     /**
      * This return a util to update an Operation Type
      * @return {OperationType}

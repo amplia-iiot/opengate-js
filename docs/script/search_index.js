@@ -360,6 +360,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/provision/country/countriescatalog.js~countriescatalog",
+    "class/src/provision/country/CountriesCatalog.js~CountriesCatalog.html",
+    "<span>CountriesCatalog</span> <span class=\"search-result-import-path\">opengate-js/src/provision/country/CountriesCatalog.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/searching/builder/countrycodessearchbuilder.js~countrycodessearchbuilder",
     "class/src/searching/builder/CountryCodesSearchBuilder.js~CountryCodesSearchBuilder.html",
     "<span>CountryCodesSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/CountryCodesSearchBuilder.js</span>",
@@ -3681,6 +3687,12 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#newconnectorfunctionshelper",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newConnectorFunctionsHelper",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newConnectorFunctionsHelper",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#newcountriescatalog",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newCountriesCatalog",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newCountriesCatalog",
     "method"
   ],
   [
@@ -7641,6 +7653,24 @@ window.esdocSearchIndex = [
     "src/provision/bulk/bulkexecutionbuilder.js~bulkexecutionbuilder#plan",
     "class/src/provision/bulk/BulkExecutionBuilder.js~BulkExecutionBuilder.html#instance-method-plan",
     "src/provision/bulk/BulkExecutionBuilder.js~BulkExecutionBuilder#plan",
+    "method"
+  ],
+  [
+    "src/provision/country/countriescatalog.js",
+    "file/src/provision/country/CountriesCatalog.js.html",
+    "src/provision/country/CountriesCatalog.js",
+    "file"
+  ],
+  [
+    "src/provision/country/countriescatalog.js~countriescatalog#constructor",
+    "class/src/provision/country/CountriesCatalog.js~CountriesCatalog.html#instance-constructor-constructor",
+    "src/provision/country/CountriesCatalog.js~CountriesCatalog#constructor",
+    "method"
+  ],
+  [
+    "src/provision/country/countriescatalog.js~countriescatalog#getcountries",
+    "class/src/provision/country/CountriesCatalog.js~CountriesCatalog.html#instance-method-getCountries",
+    "src/provision/country/CountriesCatalog.js~CountriesCatalog#getCountries",
     "method"
   ],
   [
