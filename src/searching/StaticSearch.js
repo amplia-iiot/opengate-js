@@ -611,7 +611,14 @@ export default class StaticSearch extends Search {
                 identifier: 'entity.asset'
             }, {
                 identifier: 'entity.device'
-            }, {
+            },
+            {
+                identifier: 'entity.subscriber',
+            },
+            {
+                identifier: 'entity.subscription',
+            },
+            {
                 identifier: 'ticket'
             }],
             'allowedResourceType': [{
