@@ -10440,9 +10440,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/users/users.js~user#loginuserjwt",
-    "class/src/users/Users.js~User.html#instance-method-loginUserJWT",
-    "src/users/Users.js~User#loginUserJWT",
+    "src/users/users.js~user#login",
+    "class/src/users/Users.js~User.html#instance-method-login",
+    "src/users/Users.js~User#login",
     "method"
   ],
   [

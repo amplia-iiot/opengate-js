@@ -219,29 +219,32 @@ var BaseProvision = (function () {
         }
     }, {
         key: '_doNorthPost',
-        value: function _doNorthPost(resource, element) {
+        value: function _doNorthPost(resource, element, returnBody) {
             var _this2 = this;
 
             var defered = _q2['default'].defer();
             var promise = defered.promise;
             this._ogapi.Napi.post(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL()).then(function (res) {
+                var response = {
+                    statusCode: res.statusCode
+                };
                 if (res.statusCode === 201) {
                     if (typeof _this2._onCreated === "function") {
                         _this2._onCreated(res.header.location);
                     }
-                    defered.resolve({
-                        location: res.header.location,
-                        statusCode: res.statusCode
-                    });
+                    response.location = res.header.location;
+                    if (returnBody) {
+                        response.data = res.body;
+                    }
+                    defered.resolve(response);
                 } else if (res.statusCode === 200) {
-                    defered.resolve({
-                        statusCode: res.statusCode
-                    });
+                    if (returnBody) {
+                        response.data = res.body;
+                    }
+                    defered.resolve(response);
                 } else {
-                    defered.reject({
-                        errors: res.errors,
-                        statusCode: res.statusCode
-                    });
+                    response.errors = res.errors;
+                    defered.reject(response);
                 }
             })['catch'](function (error) {
                 defered.reject(error);

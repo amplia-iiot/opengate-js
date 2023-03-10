@@ -646,7 +646,7 @@ export default class NorthAmpliaREST {
         let _req = _timeout === -1 ? req : req.timeout(_timeout);
         
         if(JWT) {
-            _req = _req.set(&apos;Authorization&apos;, &apos;Bearer &apos; + this._options.jwt);
+            _req = _req.set(&apos;Authorization&apos;, &apos;Bearer &apos; + JWT);
         }
         else if(apiKey) {
             _req = _req.set(&apos;X-ApiKey&apos;, this._options.apiKey);

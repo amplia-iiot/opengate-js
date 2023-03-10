@@ -417,7 +417,7 @@ var NorthAmpliaREST = (function () {
             var _req = _timeout === -1 ? req : req.timeout(_timeout);
 
             if (JWT) {
-                _req = _req.set('Authorization', 'Bearer ' + this._options.jwt);
+                _req = _req.set('Authorization', 'Bearer ' + JWT);
             } else if (apiKey) {
                 _req = _req.set('X-ApiKey', this._options.apiKey);
             }

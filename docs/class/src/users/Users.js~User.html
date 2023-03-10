@@ -401,7 +401,7 @@ This function updates a password of a user</p>
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/users/Users.js~User.html#instance-method-loginUserJWT">loginUserJWT</a></span></span><span data-ice="signature">(user: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, password: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span data-ice="name"><span><a href="class/src/users/Users.js~User.html#instance-method-login">login</a></span></span><span data-ice="signature">(email: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, password: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -962,7 +962,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber268">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber242">source</a></span></span>
     </span>
   </h3>
 
@@ -1056,18 +1056,18 @@ This function updates a password of a user</p>
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-loginUserJWT">
+  <h3 data-ice="anchor" id="instance-method-login">
     <span class="access" data-ice="access">public</span>
     
     
     
     
     
-    <span data-ice="name">loginUserJWT</span><span data-ice="signature">(user: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, password: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span data-ice="name">login</span><span data-ice="signature">(email: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, password: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber350">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber324">source</a></span></span>
     </span>
   </h3>
 
@@ -1089,7 +1089,7 @@ This function get a JWT for user</p>
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">user</td>
+      <td data-ice="name" data-depth="0">email</td>
       <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"><p>required field</p>
@@ -1158,7 +1158,7 @@ This function get a JWT for user</p>
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.usersBuilder().userInformationJWT(user, password);</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.usersBuilder().login(email, password);</code></pre>
     </div>
 </div>
 
@@ -1179,7 +1179,7 @@ This function get a JWT for user</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber297">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber271">source</a></span></span>
     </span>
   </h3>
 
@@ -1268,7 +1268,7 @@ Sends a password recovery email</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber316">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber290">source</a></span></span>
     </span>
   </h3>
 
