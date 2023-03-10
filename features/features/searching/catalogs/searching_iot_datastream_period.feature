@@ -9,7 +9,8 @@ Feature: Searching IoT datastream period provider in catalog
   I want to search into IoT datastream period provider catalog
   
   Background:
-    Given an apikey user by "require-real-apikey"
+    # Given an apikey user by "require-real-apikey"
+    Given an jwt user by "require-real-jwt"
     And an ogapi "IoT datastream period search" util
     Given I want to search a "IoT datastream period provider"
 

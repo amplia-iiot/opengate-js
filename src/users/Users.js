@@ -228,32 +228,7 @@ export default class User extends BaseProvision {
         return data;
     }
 
-    _post(url, data) {
-        var defered = q.defer();
-        var promise = defered.promise;
-        
-        this._ogapi.Napi.post(url, data, undefined, this._getExtraHeaders(), this._getUrlParameters())
-            .then((res) => {
-                if (res.statusCode === 200) {
-                    defered.resolve({
-                        statusCode: res.statusCode
-                    });
-                } else if (res.status === 200) {
-                    defered.resolve({
-                        statusCode: res.status
-                    });
-                } else {
-                    defered.reject({
-                        errors: res.errors,
-                        statusCode: res.statusCode
-                    });
-                }
-            })
-            .catch((error) => {
-                defered.reject(error);
-            });
-        return promise;
-    }
+   
     /**
      * This invoke a request to OpenGate North API and the callback is managed by promises
      * This function updates a password of a user
@@ -335,5 +310,30 @@ export default class User extends BaseProvision {
         
         return this._doNorthPost(url, data);
     }
-    
+    /**
+     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * This function get a JWT for user
+     * @param {String} email - required field
+     * @param {String} password - required field
+     * @return {Promise}
+     * @property {function (result:object, statusCode:number)} then - When request it is OK
+     * @property {function (error:string)} catch - When request it is NOK
+     * @example
+     *  ogapi.usersBuilder().login(email, password);
+     */
+    login(email, password) {
+        this._email = email;
+        this._password = password;
+        if (_.isEmpty(this._email) || _.isEmpty(this._password)) {
+            throw new Error('OGAPI_USER_LOGIN_EMAIL_AND_PASSWORD_PARAMETER_MUST_BE_DEFINED');
+        }
+        const data = {
+            email: this._email,
+            password: this._password
+        };
+        
+        const url = this._resource + '/login';
+
+        return this._doNorthPost(url, data, true)
+    }
 }

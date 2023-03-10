@@ -2,14 +2,13 @@
 @provision
 @users
 @resetpassword
-
 Feature: Reset password when the user forgets it
   As a user of JsApi
   I want to reset password
   So, I can change the password when dthe user forgets it.
 
   Scenario: Precondition - Prepare scenario
-    Given an apikey user by "require-real-apikey"
+    Given an email "YOUR_EMAIL" and password "YOUR_PASSWORD" the user logs in
     Then an ogapi "organizations builder" util
     And I want to create a "organization"
     And the "name" "resetPasswordOrganization"
@@ -41,7 +40,7 @@ Feature: Reset password when the user forgets it
   
   Scenario: Request new password
     Given with mock "resetPassword" for "requestResetPassword"
-    Given an user remove her apikey
+    Given an user remove her authorization options
     Then an ogapi "users builder" util
     Then I want to update a "user"
     And the "email" "ogapi@guerrillamailblock.com"
@@ -51,7 +50,7 @@ Feature: Reset password when the user forgets it
   Scenario: Read mail, save token and set new password
     And I read reset password mail and save token mock
     Given with mock "resetPassword" for "resetPassword"
-    Given an user remove her apikey
+    Given an user remove her authorization options
     Then an ogapi "users builder" util
     Then I want to update a "user"
     And the "email" "ogapi@guerrillamailblock.com"
@@ -59,7 +58,7 @@ Feature: Reset password when the user forgets it
     Then response code should be: 200
 
   Scenario: Delete an user that already exists
-    Given an apikey user by "require-real-apikey"
+    Given an email "monica.fernandez@amplia.es" and password "ampliaM2M@Opengate" the user logs in
     Then an ogapi "users builder" util
     And I want to delete a "user"
     And the "email" "ogapi@guerrillamailblock.com"
