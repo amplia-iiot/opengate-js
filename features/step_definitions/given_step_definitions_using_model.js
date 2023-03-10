@@ -648,6 +648,34 @@ Given(/^an apikey user by "([^"]*)"$/, function (apikey, callback) {
     callback();
 });
 
+Given (/^an email "([^"]*)" and password "([^"]*)" the user logs in$/, function(email, password) {
+    const _this = this
+    _this.error = undefined;
+    _this.responseData = undefined;
+    var config = {
+        'url': this.test_url_north,
+        'timeout': 60000,
+        south: {
+            'url': this.test_url_south
+        }
+    };
+
+    this.ogapi = new OpengateAPI(config);
+
+    return this.ogapi.usersBuilder().login(email, password).then(function(response){
+        _this.responseData = response;
+        _this.error = undefined;
+        const _user = response.data.user
+        _this.ogapi.Napi._options.jwt = _user.jwt
+    }).catch((err)=>{
+        console.error("digestErrorData", err);
+        _this.error = err;
+        _this.responseData = err;
+        throw err;
+    })
+
+    
+})
 
 Given(/^an jwt user by "([^"]*)"$/, function (jwt, callback) {
     var config = {
@@ -664,7 +692,7 @@ Given(/^an jwt user by "([^"]*)"$/, function (jwt, callback) {
     callback();
 });
 
-Given('an user remove her apikey', function (callback) {
+Given('an user remove her authorization options', function (callback) {
     var config = {
         'url': this.test_url_north,
         'timeout': 60000,
