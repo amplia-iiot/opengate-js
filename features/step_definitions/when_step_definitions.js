@@ -1048,7 +1048,7 @@ When(/^I update password with "([^"]*)"$/, function (field) {
     }
 
     try {
-        return _this.util.updatePassword(field).then(catchResponse).catch(catchErrorResponse);
+        return _this.util.changePassword(field).then(catchResponse).catch(catchErrorResponse);
     } catch (err) {
         console.error('ERROR: ', err);
         this.error = err;
