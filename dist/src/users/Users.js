@@ -262,32 +262,6 @@ var User = (function (_BaseProvision) {
             };
             return data;
         }
-    }, {
-        key: '_post',
-        value: function _post(url, data) {
-            var defered = _q2['default'].defer();
-            var promise = defered.promise;
-
-            this._ogapi.Napi.post(url, data, undefined, this._getExtraHeaders(), this._getUrlParameters()).then(function (res) {
-                if (res.statusCode === 200) {
-                    defered.resolve({
-                        statusCode: res.statusCode
-                    });
-                } else if (res.status === 200) {
-                    defered.resolve({
-                        statusCode: res.status
-                    });
-                } else {
-                    defered.reject({
-                        errors: res.errors,
-                        statusCode: res.statusCode
-                    });
-                }
-            })['catch'](function (error) {
-                defered.reject(error);
-            });
-            return promise;
-        }
 
         /**
          * This invoke a request to OpenGate North API and the callback is managed by promises
@@ -374,6 +348,35 @@ var User = (function (_BaseProvision) {
             var url = this._buildURL() + '/reset/' + tokenId;
 
             return this._doNorthPost(url, data);
+        }
+
+        /**
+         * This invoke a request to OpenGate North API and the callback is managed by promises
+         * This function get a JWT for user
+         * @param {String} email - required field
+         * @param {String} password - required field
+         * @return {Promise}
+         * @property {function (result:object, statusCode:number)} then - When request it is OK
+         * @property {function (error:string)} catch - When request it is NOK
+         * @example
+         *  ogapi.usersBuilder().login(email, password);
+         */
+    }, {
+        key: 'login',
+        value: function login(email, password) {
+            this._email = email;
+            this._password = password;
+            if (_lodash2['default'].isEmpty(this._email) || _lodash2['default'].isEmpty(this._password)) {
+                throw new Error('OGAPI_USER_LOGIN_EMAIL_AND_PASSWORD_PARAMETER_MUST_BE_DEFINED');
+            }
+            var data = {
+                email: this._email,
+                password: this._password
+            };
+
+            var url = this._resource + '/login';
+
+            return this._doNorthPost(url, data, true);
         }
     }]);
 

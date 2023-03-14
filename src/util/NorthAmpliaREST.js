@@ -15,7 +15,7 @@ const mock = _mock(request);
  */
 export default class NorthAmpliaREST {
     /**
-     * @param {{ url: string,port: string,version: string,apiKey: string}} _options - this is configuration about Opengate North API.
+     * @param {{ url: string,port: string,version: string,apiKey: string,JTW: string}} _options - this is configuration about Opengate North API.
      * @param {function} backend - this is a backend selected to manage a request to Opengate North API.
      */
     constructor(_options, headers) {
@@ -361,9 +361,13 @@ export default class NorthAmpliaREST {
         let defered = q.defer();
         let promise = defered.promise;
         let apiKey = this._options.apiKey;
+        let JWT = this._options.jwt;
         let _req = _timeout === -1 ? req : req.timeout(_timeout);
-
-        if (apiKey) {
+        
+        if(JWT) {
+            _req = _req.set('Authorization', 'Bearer ' + JWT);
+        }
+        else if(apiKey) {
             _req = _req.set('X-ApiKey', this._options.apiKey);
         }
 
