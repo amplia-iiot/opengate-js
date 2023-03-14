@@ -582,6 +582,10 @@ var StaticSearch = (function (_Search) {
                 }, {
                     identifier: 'entity.device'
                 }, {
+                    identifier: 'entity.subscriber'
+                }, {
+                    identifier: 'entity.subscription'
+                }, {
                     identifier: 'ticket'
                 }],
                 'allowedResourceType': [{
