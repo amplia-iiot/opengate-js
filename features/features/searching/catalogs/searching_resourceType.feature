@@ -3,6 +3,7 @@
 @catalogs
 @searching
 @searching_resourceType
+
 Feature: Searching Resource Type provider in catalog
   As a user of JsApi
   I want to search into Resource Type provider catalog
@@ -17,5 +18,5 @@ Feature: Searching Resource Type provider in catalog
     Then response code should be: 200
     And the result contains:
     """
-{"resourceType":["asset","device"]}
+{"resourceType":[{"identifier":"entity.asset"},{"identifier":"entity.device"},{"identifier":"entity.subscriber"},{"identifier":"entity.subscription"},{"identifier":"ticket"}]}
     """
