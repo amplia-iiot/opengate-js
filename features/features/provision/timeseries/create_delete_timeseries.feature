@@ -3,6 +3,7 @@
 @provision
 @timeseries
 @create_timeseries
+@prueba23
 
 Feature: Delete and Create a timeserie
     As a user of JsApi
