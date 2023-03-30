@@ -714,7 +714,7 @@ class WrapperBuilder {
         return defer.promise;
 
         function create(defered, defer, percentage) {
-            _this._obj[&apos;provision.administration.serviceGroup&apos;] = &quot;emptyServiceGroup&quot;
+             _this._obj[&apos;provision.administration.serviceGroup&apos;] = { &quot;_value&quot; : { &quot;_current&quot; : { &quot;value&quot; : &quot;emptyServiceGroup&quot; }}};
             _this._ogapi.Napi.post(_this._url, _this._obj, null, null, {
                     flattened: true
                 })
@@ -817,7 +817,8 @@ export default class DeviceBuilder extends ComplexBuilder {
         return this._entity[ID];
     }
 
-}</code></pre>
+}
+</code></pre>
 
 </div>
 
