@@ -433,7 +433,7 @@ class WrapperBuilder {
         return defer.promise;
 
         function create(defered, defer, percentage) {
-            _this._obj['provision.administration.serviceGroup'] = "emptyServiceGroup"
+             _this._obj['provision.administration.serviceGroup'] = { "_value" : { "_current" : { "value" : "emptyServiceGroup" }}};
             _this._ogapi.Napi.post(_this._url, _this._obj, null, null, {
                     flattened: true
                 })
