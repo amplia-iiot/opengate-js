@@ -44,10 +44,14 @@ Before running the tests you must configure the following values:
 - features/support/world.js
 -- this.test_url_north
 -- this.test_url_south
--- this.apikey
+-- this.apikey - API_KEY of the user used to create the different entities in the test
+-- this.YOUR_EMAIL - email of the user used to create the different entities in the test. If it is not configured here, it must be configured in each of the features to be executed if necessary
+-- this.YOUR_PASSWORD - password of the user used to create the different entities in the test. If it is not configured here, it must be configured in each of the features to be executed if necessary
 
 - features/feaures/**.feature
--- require-real-apikey
+-- require-real-apikey: API_KEY of the user used to create the different entities in the test
+-- YOUR_EMAIL: email of the user used to create the different entities in the test. If it is not configured here, it must be configured in features/suppport/world.js file
+-- YOUR_PASSWORD: password of the user used to create the different entities in the test. If it is not configured here, it must be configured in features/suppport/world.js file
 
 You can run the tests by running the following command:
 ```bash

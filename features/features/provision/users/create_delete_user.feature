@@ -4,6 +4,7 @@
 @users
 @create_delete_user
 @urlParameters
+
 Feature: Delete and Create an user
   As a user of JsApi
   I want to create an user
@@ -30,7 +31,7 @@ Feature: Delete and Create an user
     And an ogapi "users builder" util
     And I want to create a "user"
     And the "email" "ogux_ogapi@amplia.com"
-    And the "password" "nvoiqewvouoiu32j@#!!"
+    And the "password" "Nvoiqewvouoiu32j@#!!"
     And the "workgroup" "user_organization"
     And the "domain" "user_organization"
     And the "profile" "admin"
@@ -49,7 +50,7 @@ Feature: Delete and Create an user
     And an ogapi "users builder" util
     And I want to create a "user"
     And the "email" "ogux_ogapi@amplia.com"
-    And the "password" "nvoiqewvouoiu32j@#!!"
+    And the "password" "Nvoiqewvouoiu32j@#!!"
     And the "workgroup" "user_organization"
     And the "domain" "user_organization"
     And the "profile" "admin"

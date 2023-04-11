@@ -7,6 +7,7 @@ import _ from 'lodash';
 const _length_name = 100;
 const _length_surname = 100;
 const _length_email = 100;
+const _length_twoFaType = 100;
 const _length_password = 50;
 /**
  *   This class allow make get request to user resource into Opengate North API.
@@ -159,6 +160,18 @@ export default class User extends BaseProvision {
     }
 
     /**
+     * Set the 2FaType attribute
+     * @param {string} twoFaType - required field
+     * @return {User}
+     */
+    with2FaType(twoFaType) {
+        if (typeof twoFaType !== 'string' || twoFaType.length > _length_twoFaType)
+            throw new Error('Parameter twoFaType must be a string and has a maximum length of ' + _length_twoFaType);
+        this._twoFaType = twoFaType;
+        return this;
+    }
+
+    /**
      * Compose url to delete an user
      * @return {String} This returns a string with the URL of the request.
      * @private
@@ -191,7 +204,8 @@ export default class User extends BaseProvision {
                 profile: this._profile || undefined,
                 countryCode: this._countryCode || undefined,
                 langCode: this._langCode || undefined,
-                timezone: this._timezone || undefined
+                timezone: this._timezone || undefined,
+                "2FaType": this._twoFaType || undefined
             }
         };
 
@@ -222,7 +236,8 @@ export default class User extends BaseProvision {
                 profile: this._profile || undefined,
                 countryCode: this._countryCode || undefined,
                 langCode: this._langCode || undefined,
-                timezone: this._timezone || undefined
+                timezone: this._timezone || undefined,
+                "2FaType": this._twoFaType || undefined
             }
         };
         return data;
@@ -312,25 +327,29 @@ export default class User extends BaseProvision {
     }
     /**
      * This invoke a request to OpenGate North API and the callback is managed by promises
-     * This function get a JWT for user
+     * This function get a JWT for user with Two Factor Authorithation (optional)
      * @param {String} email - required field
      * @param {String} password - required field
+     * @param {String} twoFaType - optional field
      * @return {Promise}
      * @property {function (result:object, statusCode:number)} then - When request it is OK
      * @property {function (error:string)} catch - When request it is NOK
      * @example
      *  ogapi.usersBuilder().login(email, password);
+     *  ogapi.usersBuilder().login(email, password, twoFaType);
      */
-    login(email, password) {
+    login(email, password, twoFaType) {
         this._email = email;
         this._password = password;
+        this._twoFaType = twoFaType;
         if (_.isEmpty(this._email) || _.isEmpty(this._password)) {
             throw new Error('OGAPI_USER_LOGIN_EMAIL_AND_PASSWORD_PARAMETER_MUST_BE_DEFINED');
         }
         const data = {
             email: this._email,
-            password: this._password
-        };
+            password: this._password,
+            "2FaType": this._twoFaType || undefined
+        }
         
         const url = this._resource + '/login';
 
