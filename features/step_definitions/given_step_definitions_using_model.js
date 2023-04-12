@@ -662,13 +662,15 @@ Given (/^an email "([^"]*)" and password "([^"]*)" the user logs in$/, function(
 
     this.ogapi = new OpengateAPI(config);
 
-    return this.ogapi.usersBuilder().login(email, password).then(function(response){
+    const _email = this[email] || email
+    const _password = this[password] || password
+    return this.ogapi.usersBuilder().login(_email, _password).then(function(response){
         _this.responseData = response;
         _this.error = undefined;
         const _user = response.data.user
         _this.ogapi.Napi._options.jwt = _user.jwt
     }).catch((err)=>{
-        console.error("digestErrorData", err);
+        console.error("ERROR, NO LOGIN!!!", err);
         _this.error = err;
         _this.responseData = err;
         throw err;

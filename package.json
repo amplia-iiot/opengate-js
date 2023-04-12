@@ -29,7 +29,9 @@
         "underscore": "^1.9.0",
         "urlencode": "^1.1.0"
     },
-    "scripts": {},
+    "scripts": {
+        "test-wip": "export NODE_OPTIONS='--max-old-space-size=8192'; gulp cucumber --tags @wip"
+    },
     "devDependencies": {
         "babel-core": "^6.26.3",
         "babel-eslint": "^10.1.0",
