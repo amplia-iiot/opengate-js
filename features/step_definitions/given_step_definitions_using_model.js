@@ -669,7 +669,7 @@ Given (/^an email "([^"]*)" and password "([^"]*)" the user logs in$/, function(
         const _user = response.data.user
         _this.ogapi.Napi._options.jwt = _user.jwt
     }).catch((err)=>{
-        console.error("digestErrorData", err);
+        console.error("ERROR, NO LOGIN!!!", err);
         _this.error = err;
         _this.responseData = err;
         throw err;
