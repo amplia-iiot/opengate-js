@@ -10458,6 +10458,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/users/users.js~user#with2fatype",
+    "class/src/users/Users.js~User.html#instance-method-with2FaType",
+    "src/users/Users.js~User#with2FaType",
+    "method"
+  ],
+  [
     "src/users/users.js~user#withcountrycode",
     "class/src/users/Users.js~User.html#instance-method-withCountryCode",
     "src/users/Users.js~User#withCountryCode",

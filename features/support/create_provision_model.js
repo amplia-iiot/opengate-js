@@ -28,7 +28,8 @@ module.exports = {
                 'countryCode': 'withCountryCode',
                 'langCode': 'withLangCode',
                 'name': 'withName',
-                'surname': 'withSurname'
+                'surname': 'withSurname',
+                '2FaType': 'with2FaType'
             },
             'organization': {
                 'name': 'withName',

@@ -661,7 +661,6 @@ Given (/^an email "([^"]*)" and password "([^"]*)" the user logs in$/, function(
     };
 
     this.ogapi = new OpengateAPI(config);
-
     const _email = this[email] || email
     const _password = this[password] || password
     return this.ogapi.usersBuilder().login(_email, _password).then(function(response){
