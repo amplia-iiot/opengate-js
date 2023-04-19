@@ -319,10 +319,14 @@
 <li><p>features/support/world.js
 -- this.test_url_north
 -- this.test_url_south
--- this.apikey</p>
+-- this.apikey - API_KEY of the user used to create the different entities in the test
+-- this.YOUR_EMAIL - email of the user used to create the different entities in the test. If it is not configured here, it must be configured in each of the features to be executed if necessary
+-- this.YOUR_PASSWORD - password of the user used to create the different entities in the test. If it is not configured here, it must be configured in each of the features to be executed if necessary</p>
 </li>
 <li><p>features/feaures/**.feature
--- require-real-apikey</p>
+-- require-real-apikey: API_KEY of the user used to create the different entities in the test
+-- YOUR_EMAIL: email of the user used to create the different entities in the test. If it is not configured here, it must be configured in features/suppport/world.js file
+-- YOUR_PASSWORD: password of the user used to create the different entities in the test. If it is not configured here, it must be configured in features/suppport/world.js file</p>
 </li>
 </ul>
 <p>You can run the tests by running the following command:</p>

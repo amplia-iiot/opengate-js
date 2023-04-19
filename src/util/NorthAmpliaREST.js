@@ -393,6 +393,7 @@ export default class NorthAmpliaREST {
                 console.error("OGAPI ERROR: ")
                 console.error(err)
                 let data;
+                let headers;
                 let status = err.status ? err.status : undefined;
                 let errorMessage = {
                     errors: [{
@@ -403,6 +404,7 @@ export default class NorthAmpliaREST {
                 
                 if (typeof err.response !== "undefined") {
                     data = err.response.body ? err.response.body : errorMessage;
+                    headers = err.response.headers
                     status = err.status;
                 } else {
                     if (!status) {
@@ -415,7 +417,8 @@ export default class NorthAmpliaREST {
                 }
                 defered.reject({
                     statusCode: status,
-                    'data': data
+                    'data': data,
+                    headers: headers
                 });
             } else {
                 

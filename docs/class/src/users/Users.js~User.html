@@ -279,13 +279,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import User from &apos;<span><a href="file/src/users/Users.js.html#lineNumber14">opengate-js/src/users/Users.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import User from &apos;<span><a href="file/src/users/Users.js.html#lineNumber15">opengate-js/src/users/Users.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/users/Users.js.html#lineNumber14">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/users/Users.js.html#lineNumber15">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -401,14 +401,14 @@ This function updates a password of a user</p>
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/users/Users.js~User.html#instance-method-login">login</a></span></span><span data-ice="signature">(email: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, password: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span data-ice="name"><span><a href="class/src/users/Users.js~User.html#instance-method-login">login</a></span></span><span data-ice="signature">(email: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, password: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, twoFaType: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
         
         
         <div data-ice="description"><p>This invoke a request to OpenGate North API and the callback is managed by promises
-This function get a JWT for user</p>
+This function get a JWT for user with Two Factor Authorithation (optional)</p>
 </div>
       </div>
     </td>
@@ -467,6 +467,34 @@ This function request for new password when the user forgets it.</p>
         
         <div data-ice="description"><p>This invoke a request to OpenGate North API and the callback is managed by promises
 This function updates a password of a user with a tokenId</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="class/src/users/Users.js~User.html#instance-method-with2FaType">with2FaType</a></span></span><span data-ice="signature">(twoFaType: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/users/Users.js~User.html">User</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Set the 2FaType attribute</p>
 </div>
       </div>
     </td>
@@ -898,7 +926,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber20">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber21">source</a></span></span>
     </span>
   </h3>
 
@@ -962,7 +990,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber242">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber257">source</a></span></span>
     </span>
   </h3>
 
@@ -1063,11 +1091,11 @@ This function updates a password of a user</p>
     
     
     
-    <span data-ice="name">login</span><span data-ice="signature">(email: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, password: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span data-ice="name">login</span><span data-ice="signature">(email: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, password: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, twoFaType: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber324">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber341">source</a></span></span>
     </span>
   </h3>
 
@@ -1075,7 +1103,7 @@ This function updates a password of a user</p>
   
   
   <div data-ice="description"><p>This invoke a request to OpenGate North API and the callback is managed by promises
-This function get a JWT for user</p>
+This function get a JWT for user with Two Factor Authorithation (optional)</p>
 </div>
 
   
@@ -1100,6 +1128,13 @@ This function get a JWT for user</p>
       <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"><p>required field</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">twoFaType</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>optional field</p>
 </td>
     </tr>
 </tbody>
@@ -1158,7 +1193,8 @@ This function get a JWT for user</p>
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.usersBuilder().login(email, password);</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.usersBuilder().login(email, password);
+ ogapi.usersBuilder().login(email, password, twoFaType);</code></pre>
     </div>
 </div>
 
@@ -1179,7 +1215,7 @@ This function get a JWT for user</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber271">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber286">source</a></span></span>
     </span>
   </h3>
 
@@ -1268,7 +1304,7 @@ Sends a password recovery email</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber290">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber305">source</a></span></span>
     </span>
   </h3>
 
@@ -1369,6 +1405,79 @@ This function updates a password of a user with a tokenId</p>
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-with2FaType">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span data-ice="name">with2FaType</span><span data-ice="signature">(twoFaType: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/users/Users.js~User.html">User</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber167">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Set the 2FaType attribute</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">twoFaType</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>required field</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type" data-ice="returnType"><span><a href="class/src/users/Users.js~User.html">User</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-withCountryCode">
     <span class="access" data-ice="access">public</span>
     
@@ -1380,7 +1489,7 @@ This function updates a password of a user with a tokenId</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber115">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber116">source</a></span></span>
     </span>
   </h3>
 
@@ -1453,7 +1562,7 @@ This function updates a password of a user with a tokenId</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber140">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber141">source</a></span></span>
     </span>
   </h3>
 
@@ -1526,7 +1635,7 @@ This function updates a password of a user with a tokenId</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber91">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber92">source</a></span></span>
     </span>
   </h3>
 
@@ -1599,7 +1708,7 @@ This function updates a password of a user with a tokenId</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber55">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber56">source</a></span></span>
     </span>
   </h3>
 
@@ -1672,7 +1781,7 @@ This function updates a password of a user with a tokenId</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber127">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber128">source</a></span></span>
     </span>
   </h3>
 
@@ -1745,7 +1854,7 @@ This function updates a password of a user with a tokenId</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber31">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber32">source</a></span></span>
     </span>
   </h3>
 
@@ -1818,7 +1927,7 @@ This function updates a password of a user with a tokenId</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber67">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber68">source</a></span></span>
     </span>
   </h3>
 
@@ -1891,7 +2000,7 @@ This function updates a password of a user with a tokenId</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber103">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber104">source</a></span></span>
     </span>
   </h3>
 
@@ -1964,7 +2073,7 @@ This function updates a password of a user with a tokenId</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber43">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber44">source</a></span></span>
     </span>
   </h3>
 
@@ -2037,7 +2146,7 @@ This function updates a password of a user with a tokenId</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber153">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber154">source</a></span></span>
     </span>
   </h3>
 
@@ -2110,7 +2219,7 @@ This function updates a password of a user with a tokenId</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber79">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/users/Users.js.html#lineNumber80">source</a></span></span>
     </span>
   </h3>
 

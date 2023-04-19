@@ -29,6 +29,7 @@ var _lodash2 = _interopRequireDefault(_lodash);
 var _length_name = 100;
 var _length_surname = 100;
 var _length_email = 100;
+var _length_twoFaType = 100;
 var _length_password = 50;
 /**
  *   This class allow make get request to user resource into Opengate North API.
@@ -192,6 +193,19 @@ var User = (function (_BaseProvision) {
         }
 
         /**
+         * Set the 2FaType attribute
+         * @param {string} twoFaType - required field
+         * @return {User}
+         */
+    }, {
+        key: 'with2FaType',
+        value: function with2FaType(twoFaType) {
+            if (typeof twoFaType !== 'string' || twoFaType.length > _length_twoFaType) throw new Error('Parameter twoFaType must be a string and has a maximum length of ' + _length_twoFaType);
+            this._twoFaType = twoFaType;
+            return this;
+        }
+
+        /**
          * Compose url to delete an user
          * @return {String} This returns a string with the URL of the request.
          * @private
@@ -226,7 +240,8 @@ var User = (function (_BaseProvision) {
                     profile: this._profile || undefined,
                     countryCode: this._countryCode || undefined,
                     langCode: this._langCode || undefined,
-                    timezone: this._timezone || undefined
+                    timezone: this._timezone || undefined,
+                    "2FaType": this._twoFaType || undefined
                 }
             };
 
@@ -257,7 +272,8 @@ var User = (function (_BaseProvision) {
                     profile: this._profile || undefined,
                     countryCode: this._countryCode || undefined,
                     langCode: this._langCode || undefined,
-                    timezone: this._timezone || undefined
+                    timezone: this._timezone || undefined,
+                    "2FaType": this._twoFaType || undefined
                 }
             };
             return data;
@@ -352,26 +368,30 @@ var User = (function (_BaseProvision) {
 
         /**
          * This invoke a request to OpenGate North API and the callback is managed by promises
-         * This function get a JWT for user
+         * This function get a JWT for user with Two Factor Authorithation (optional)
          * @param {String} email - required field
          * @param {String} password - required field
+         * @param {String} twoFaType - optional field
          * @return {Promise}
          * @property {function (result:object, statusCode:number)} then - When request it is OK
          * @property {function (error:string)} catch - When request it is NOK
          * @example
          *  ogapi.usersBuilder().login(email, password);
+         *  ogapi.usersBuilder().login(email, password, twoFaType);
          */
     }, {
         key: 'login',
-        value: function login(email, password) {
+        value: function login(email, password, twoFaType) {
             this._email = email;
             this._password = password;
+            this._twoFaType = twoFaType;
             if (_lodash2['default'].isEmpty(this._email) || _lodash2['default'].isEmpty(this._password)) {
                 throw new Error('OGAPI_USER_LOGIN_EMAIL_AND_PASSWORD_PARAMETER_MUST_BE_DEFINED');
             }
             var data = {
                 email: this._email,
-                password: this._password
+                password: this._password,
+                "2FaType": this._twoFaType || undefined
             };
 
             var url = this._resource + '/login';

@@ -443,6 +443,7 @@ var NorthAmpliaREST = (function () {
                     console.error("OGAPI ERROR: ");
                     console.error(err);
                     var data = undefined;
+                    var _headers = undefined;
                     var _status = err.status ? err.status : undefined;
                     var errorMessage = {
                         errors: [{
@@ -453,6 +454,7 @@ var NorthAmpliaREST = (function () {
 
                     if (typeof err.response !== "undefined") {
                         data = err.response.body ? err.response.body : errorMessage;
+                        _headers = err.response.headers;
                         _status = err.status;
                     } else {
                         if (!_status) {
@@ -465,7 +467,8 @@ var NorthAmpliaREST = (function () {
                     }
                     defered.reject({
                         statusCode: _status,
-                        'data': data
+                        'data': data,
+                        headers: _headers
                     });
                 } else {
 
