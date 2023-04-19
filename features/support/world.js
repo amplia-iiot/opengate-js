@@ -14,8 +14,8 @@ searchingModel = require('./searching_model');
 mocksModel = require('./mocks/mockModel')
 
 function World() {
-    this.test_url_north = process.env.API_NORTH_INTERNAL || 'https://172.19.18.132:9082';
-    this.test_url_south = process.env.API_SOUTH_INTERNAL || 'https://172.19.18.132:9082/south';
+    this.test_url_north = process.env.API_NORTH_INTERNAL || 'API_NORTH_INTERNAL';
+    this.test_url_south = process.env.API_SOUTH_INTERNAL || 'API_SOUTH_INTERNAL';
     this.apikey = process.env.API_KEY || 'API_KEY';
     this.YOUR_EMAIL = process.env.YOUR_EMAIL || 'YOUR_EMAIL';
     this.YOUR_PASSWORD = process.env.YOUR_PASSWORD || 'YOUR_PASSWORD';
