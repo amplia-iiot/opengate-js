@@ -13620,7 +13620,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function get a JWT for user with Two Factor Authorithation (optional)\r\n     * @param {String} email - required field\r\n     * @param {String} password - required field\r\n     * @param {String} twoFaType - optional field\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.usersBuilder().login(email, password);\r\n     *  ogapi.usersBuilder().login(email, password, twoFaType);\r\n     ",
+                    "value": "*\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function get a JWT for user with Two Factor Authorithation (optional)\r\n     * @param {String} email - required field\r\n     * @param {String} password - required field\r\n     * @param {String} twoFaCode - optional field\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.usersBuilder().login(email, password);\r\n     *  ogapi.usersBuilder().login(email, password, twoFaCode);\r\n     ",
                     "start": 10678,
                     "end": 11343,
                     "loc": {
@@ -13723,9 +13723,9 @@
                         "line": 341,
                         "column": 36
                       },
-                      "identifierName": "twoFaType"
+                      "identifierName": "twoFaCode"
                     },
-                    "name": "twoFaType"
+                    "name": "twoFaCode"
                   }
                 ],
                 "body": {
@@ -14006,9 +14006,9 @@
                                 "line": 344,
                                 "column": 23
                               },
-                              "identifierName": "_twoFaType"
+                              "identifierName": "_twoFaCode"
                             },
-                            "name": "_twoFaType"
+                            "name": "_twoFaCode"
                           },
                           "computed": false
                         },
@@ -14025,9 +14025,9 @@
                               "line": 344,
                               "column": 35
                             },
-                            "identifierName": "twoFaType"
+                            "identifierName": "twoFaCode"
                           },
-                          "name": "twoFaType"
+                          "name": "twoFaCode"
                         }
                       }
                     },
@@ -14639,10 +14639,10 @@
                                     }
                                   },
                                   "extra": {
-                                    "rawValue": "2FaType",
-                                    "raw": "\"2FaType\""
+                                    "rawValue": "2FaCode",
+                                    "raw": "\"2FaCode\""
                                   },
-                                  "value": "2FaType"
+                                  "value": "2FaCode"
                                 },
                                 "value": {
                                   "type": "LogicalExpression",
@@ -14700,9 +14700,9 @@
                                           "line": 351,
                                           "column": 38
                                         },
-                                        "identifierName": "_twoFaType"
+                                        "identifierName": "_twoFaCode"
                                       },
-                                      "name": "_twoFaType"
+                                      "name": "_twoFaCode"
                                     },
                                     "computed": false
                                   },
@@ -15002,7 +15002,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function get a JWT for user with Two Factor Authorithation (optional)\r\n     * @param {String} email - required field\r\n     * @param {String} password - required field\r\n     * @param {String} twoFaType - optional field\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.usersBuilder().login(email, password);\r\n     *  ogapi.usersBuilder().login(email, password, twoFaType);\r\n     ",
+                    "value": "*\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function get a JWT for user with Two Factor Authorithation (optional)\r\n     * @param {String} email - required field\r\n     * @param {String} password - required field\r\n     * @param {String} twoFaCode - optional field\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.usersBuilder().login(email, password);\r\n     *  ogapi.usersBuilder().login(email, password, twoFaCode);\r\n     ",
                     "start": 10678,
                     "end": 11343,
                     "loc": {
@@ -15421,7 +15421,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function get a JWT for user with Two Factor Authorithation (optional)\r\n     * @param {String} email - required field\r\n     * @param {String} password - required field\r\n     * @param {String} twoFaType - optional field\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.usersBuilder().login(email, password);\r\n     *  ogapi.usersBuilder().login(email, password, twoFaType);\r\n     ",
+      "value": "*\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function get a JWT for user with Two Factor Authorithation (optional)\r\n     * @param {String} email - required field\r\n     * @param {String} password - required field\r\n     * @param {String} twoFaCode - optional field\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.usersBuilder().login(email, password);\r\n     *  ogapi.usersBuilder().login(email, password, twoFaCode);\r\n     ",
       "start": 10678,
       "end": 11343,
       "loc": {
@@ -41942,7 +41942,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function get a JWT for user with Two Factor Authorithation (optional)\r\n     * @param {String} email - required field\r\n     * @param {String} password - required field\r\n     * @param {String} twoFaType - optional field\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.usersBuilder().login(email, password);\r\n     *  ogapi.usersBuilder().login(email, password, twoFaType);\r\n     ",
+      "value": "*\r\n     * This invoke a request to OpenGate North API and the callback is managed by promises\r\n     * This function get a JWT for user with Two Factor Authorithation (optional)\r\n     * @param {String} email - required field\r\n     * @param {String} password - required field\r\n     * @param {String} twoFaCode - optional field\r\n     * @return {Promise}\r\n     * @property {function (result:object, statusCode:number)} then - When request it is OK\r\n     * @property {function (error:string)} catch - When request it is NOK\r\n     * @example\r\n     *  ogapi.usersBuilder().login(email, password);\r\n     *  ogapi.usersBuilder().login(email, password, twoFaCode);\r\n     ",
       "start": 10678,
       "end": 11343,
       "loc": {
@@ -42123,7 +42123,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "twoFaType",
+      "value": "twoFaCode",
       "start": 11372,
       "end": 11381,
       "loc": {
@@ -42571,7 +42571,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "_twoFaType",
+      "value": "_twoFaCode",
       "start": 11465,
       "end": 11475,
       "loc": {
@@ -42624,7 +42624,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "twoFaType",
+      "value": "twoFaCode",
       "start": 11478,
       "end": 11487,
       "loc": {
@@ -43855,7 +43855,7 @@
         "binop": null,
         "updateContext": null
       },
-      "value": "2FaType",
+      "value": "2FaCode",
       "start": 11772,
       "end": 11781,
       "loc": {
@@ -43961,7 +43961,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "_twoFaType",
+      "value": "_twoFaCode",
       "start": 11788,
       "end": 11798,
       "loc": {

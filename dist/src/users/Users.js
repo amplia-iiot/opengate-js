@@ -371,27 +371,27 @@ var User = (function (_BaseProvision) {
          * This function get a JWT for user with Two Factor Authorithation (optional)
          * @param {String} email - required field
          * @param {String} password - required field
-         * @param {String} twoFaType - optional field
+         * @param {String} twoFaCode - optional field
          * @return {Promise}
          * @property {function (result:object, statusCode:number)} then - When request it is OK
          * @property {function (error:string)} catch - When request it is NOK
          * @example
          *  ogapi.usersBuilder().login(email, password);
-         *  ogapi.usersBuilder().login(email, password, twoFaType);
+         *  ogapi.usersBuilder().login(email, password, twoFaCode);
          */
     }, {
         key: 'login',
-        value: function login(email, password, twoFaType) {
+        value: function login(email, password, twoFaCode) {
             this._email = email;
             this._password = password;
-            this._twoFaType = twoFaType;
+            this._twoFaCode = twoFaCode;
             if (_lodash2['default'].isEmpty(this._email) || _lodash2['default'].isEmpty(this._password)) {
                 throw new Error('OGAPI_USER_LOGIN_EMAIL_AND_PASSWORD_PARAMETER_MUST_BE_DEFINED');
             }
             var data = {
                 email: this._email,
                 password: this._password,
-                "2FaType": this._twoFaType || undefined
+                "2FaCode": this._twoFaCode || undefined
             };
 
             var url = this._resource + '/login';
