@@ -2,6 +2,7 @@
 @provision
 @users
 @resetpassword
+
 Feature: Reset password when the user forgets it
   As a user of JsApi
   I want to reset password
@@ -58,7 +59,7 @@ Feature: Reset password when the user forgets it
     Then response code should be: 200
 
   Scenario: Delete an user that already exists
-    Given an email "monica.fernandez@amplia.es" and password "ampliaM2M@Opengate" the user logs in
+    Given an email "YOUR_EMAIL" and password "YOUR_PASSWORD" the user logs in
     Then an ogapi "users builder" util
     And I want to delete a "user"
     And the "email" "ogapi@guerrillamailblock.com"

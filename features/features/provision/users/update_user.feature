@@ -33,13 +33,14 @@ Feature: Delete and Create an user
     And the "email" "ogux_ogapi@amplia.com"
     And the "workgroup" "user_organization"
     And the "domain" "user_organization"
-    And the "password" "nvoiqewvouoiu32j@#!!"
+    And the "password" "Nvoiqewvouoiu32j@#!!"
     And the "profile" "admin"
     And the "countryCode" "ES"
     And the "langCode" "en"
     And the "name" "test name"
     And the "surname" "test surname"
     And the "description" "user description"
+    And the "2FaType" "TOTP"
     Then I delete it
     And I create it
     Then response code should be: 201
@@ -55,6 +56,7 @@ Feature: Delete and Create an user
     And the "name" "test name updated"
     And the "surname" "surname updated"
     And the "description" "user description updated"
+    And the "2FaType" "NONE"
     Then I update it
     And response code should be: 200
 
@@ -63,8 +65,8 @@ Feature: Delete and Create an user
     Then I want to update a "user"
     And the "domain" "user_organization"
     And the "email" "ogux_ogapi@amplia.com"
-    And the "password" "nvoiqewvouoiu32j@#!!"
-    Then I update password with "nvoiqewvouoiu32j"
+    And the "password" "Nvoiqewvouoiu32j@#!!"
+    Then I update password with "Nvoiqewvouoiu32j@"
     And response code should be: 200
 
   Scenario: Delete an user that already exists
