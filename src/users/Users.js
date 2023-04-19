@@ -330,25 +330,25 @@ export default class User extends BaseProvision {
      * This function get a JWT for user with Two Factor Authorithation (optional)
      * @param {String} email - required field
      * @param {String} password - required field
-     * @param {String} twoFaType - optional field
+     * @param {String} twoFaCode - optional field
      * @return {Promise}
      * @property {function (result:object, statusCode:number)} then - When request it is OK
      * @property {function (error:string)} catch - When request it is NOK
      * @example
      *  ogapi.usersBuilder().login(email, password);
-     *  ogapi.usersBuilder().login(email, password, twoFaType);
+     *  ogapi.usersBuilder().login(email, password, twoFaCode);
      */
-    login(email, password, twoFaType) {
+    login(email, password, twoFaCode) {
         this._email = email;
         this._password = password;
-        this._twoFaType = twoFaType;
+        this._twoFaCode = twoFaCode;
         if (_.isEmpty(this._email) || _.isEmpty(this._password)) {
             throw new Error('OGAPI_USER_LOGIN_EMAIL_AND_PASSWORD_PARAMETER_MUST_BE_DEFINED');
         }
         const data = {
             email: this._email,
             password: this._password,
-            "2FaType": this._twoFaType || undefined
+            "2FaCode": this._twoFaCode || undefined
         }
         
         const url = this._resource + '/login';
