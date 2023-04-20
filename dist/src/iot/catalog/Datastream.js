@@ -201,6 +201,21 @@ var Datastream = (function () {
         }
 
         /**
+         * Set the encryption attribute. Use {Encryption} utility for create this object
+         * @param {Object} encryption
+         * @return {Datastream}
+         */
+    }, {
+        key: 'setEncryption',
+        value: function setEncryption(encryption) {
+            if (!encryption || typeof encryption !== 'object') {
+                throw new Error('Encryption must be an instance of object on Datastream');
+            }
+            this._encryption = encryption;
+            return this;
+        }
+
+        /**
          * Build a Datastream json object
          * 
          * @example
@@ -246,7 +261,8 @@ var Datastream = (function () {
                 qrating: this._qrating,
                 storage: this._storage,
                 hardwareIds: this._hardwares,
-                access: this._access
+                access: this._access,
+                encryption: this._encryption
             };
         }
     }, {
