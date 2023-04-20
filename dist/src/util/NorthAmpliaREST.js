@@ -237,7 +237,10 @@ var NorthAmpliaREST = (function () {
                         break;
                 }
             });
-            if (sendFormData) req.send(formData);
+            if (sendFormData) {
+                debugger;
+                req.send(formData);
+            }
             return this._createPromiseRequest(req, events, timeout, headers);
         }
 
@@ -327,7 +330,10 @@ var NorthAmpliaREST = (function () {
                         break;
                 }
             });
-            if (sendFormData) req.send(formData);
+            if (sendFormData) {
+                debugger;
+                req.send(formData);
+            }
             return this._createPromiseRequest(req, events, timeout, headers);
         }
 

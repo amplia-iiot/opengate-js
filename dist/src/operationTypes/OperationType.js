@@ -22,6 +22,10 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
+var _OperationTypeScript = require('./OperationTypeScript');
+
+var _OperationTypeScript2 = _interopRequireDefault(_OperationTypeScript);
+
 /**
  * This is a base object that contains all you can do about OperationType.
  */
@@ -85,8 +89,8 @@ var OperationType = (function (_BaseProvision) {
     }
 
     /**
-     * Set the name for update attribute
-     * @param {string} name - required field
+     * Set the identifier for update attribute
+     * @param {string} identifier - required field
      * @return {OperationType}
      */
 
@@ -211,6 +215,13 @@ var OperationType = (function (_BaseProvision) {
             this._applicableTo = _applicableTo || undefined;
 
             return this;
+        }
+    }, {
+        key: 'newScriptBuilder',
+        value: function newScriptBuilder() {
+            if (this._identifier === undefined || this._organization === undefined) throw new Error('Parameters organization and identifier must be defined');
+
+            return new _OperationTypeScript2['default'](this._organization, this._identifier);
         }
     }, {
         key: '_composeElement',

@@ -762,6 +762,26 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
+         * This return a util to find Operation Type Script
+         * @return {OperationTypeScript}
+         */
+    }, {
+        key: 'newOperationTypeScriptFinder',
+        value: (function (_newOperationTypeScriptFinder) {
+            function newOperationTypeScriptFinder() {
+                return _newOperationTypeScriptFinder.apply(this, arguments);
+            }
+
+            newOperationTypeScriptFinder.toString = function () {
+                return _newOperationTypeScriptFinder.toString();
+            };
+
+            return newOperationTypeScriptFinder;
+        })(function () {
+            return new newOperationTypeScriptFinder(this);
+        })
+
+        /**
          * This return a util to find countries catalog
          * @return {CountriesCatalog}
          */
