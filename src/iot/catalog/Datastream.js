@@ -165,6 +165,19 @@ export default class Datastream {
     }
 
     /**
+     * Set the encryption attribute. Use {Encryption} utility to create this object
+     * @param {Object} encryption
+     * @return {Datastream}
+     */
+    setEncryption(encryption) {
+        if (!encryption || typeof encryption !== 'object') {
+            throw new Error('Encryption must be an instance of object on Datastream');
+        }
+        this._encryption = encryption;
+        return this;
+    }
+
+    /**
      * Build a Datastream json object
      * 
      * @example
@@ -208,7 +221,8 @@ export default class Datastream {
             qrating: this._qrating,
             storage: this._storage,
             hardwareIds: this._hardwares,
-            access: this._access
+            access: this._access,
+            encryption: this._encryption
         };
     }
 
