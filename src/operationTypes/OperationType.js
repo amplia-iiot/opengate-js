@@ -2,6 +2,7 @@
 
 import BaseProvision from '../provision/BaseProvision';
 import q from 'q';
+import OperationTypeScript from './OperationTypeScript';
 
 /**
  * This is a base object that contains all you can do about OperationType.
@@ -61,8 +62,8 @@ export default class OperationType extends BaseProvision {
     }
 
     /**
-     * Set the name for update attribute
-     * @param {string} name - required field
+     * Set the identifier for update attribute
+     * @param {string} identifier - required field
      * @return {OperationType}
      */
     withIdentifier(name) {
@@ -172,6 +173,13 @@ export default class OperationType extends BaseProvision {
         return this;
     }
 
+    newScriptBuilder() {
+        if (this._identifier === undefined || this._organization === undefined)
+            throw new Error('Parameters organization and identifier must be defined');
+
+        return new OperationTypeScript(this._organization, this._identifier)
+    }
+
     _composeElement(isUpdate) {
         // this._checkRequiredParameters();
 
@@ -188,7 +196,6 @@ export default class OperationType extends BaseProvision {
 
         return updateData;
     }
-
 
     _checkRequiredParameters(isUpdate) {
         if (isUpdate) {
