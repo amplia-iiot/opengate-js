@@ -194,6 +194,58 @@ var Organizations = (function (_BaseProvision) {
 
             return this;
         }
+
+        /*
+        "security": {
+          "auth": {
+            "type": "LDAP",
+            "url": "ldap://localhost:389",
+            "securityPrincipal": "cn=admin,dc=amplia-iiot,dc=com",
+            "securityCredentials": "ldap_password",
+            "contextName": "dc=amplia-iiot,dc=com",
+            "filter": "mail={{{email}}}"
+          }
+        }
+        */
+
+        /**
+         * Sets the auth security configuration
+         * @param {object} auth 
+         * @return {Organizations} 
+         */
+    }, {
+        key: 'withAuth',
+        value: function withAuth(auth) {
+            if (!auth || !auth.type) throw new Error('Auth cannot be empty and must have type at least');
+
+            if (!this._security) {
+                this._security = {};
+            }
+
+            this._security.auth = auth;
+        }
+
+        /**
+         * Sets the password poliicy configuration
+         * @param {object} withPasswordPolicy
+         * @return {Organizations} 
+         */
+    }, {
+        key: 'withPasswordPolicy',
+        value: function withPasswordPolicy(passPolicy) {
+            if (!passPolicy) throw new Error('Password policy cannot be empty');
+
+            if (!this._security) {
+                this._security = {};
+            }
+
+            this._security.policies = {
+                password: {
+                    checkStrength: !!passPolicy.checkStrength,
+                    expirationPeriod: passPolicy.expirationPeriod || 0
+                }
+            };
+        }
     }, {
         key: '_composeElement',
         value: function _composeElement() {
@@ -226,6 +278,10 @@ var Organizations = (function (_BaseProvision) {
 
             if (_mapDefault.zoom || _mapDefault.location) {
                 updateData.organization.mapDefault = _mapDefault;
+            }
+
+            if (this._security) {
+                updateData.organization.security = this._security;
             }
 
             return updateData;
