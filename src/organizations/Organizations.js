@@ -160,6 +160,43 @@ export default class Organizations extends BaseProvision {
         return this;
     }
 
+    /**
+     * Sets the auth security configuration
+     * @param {object} auth 
+     * @return {Organizations} 
+     */
+    withAuth(auth) {
+        if (!auth || !auth.type)
+            throw new Error('Auth cannot be empty and must have type at least');
+
+        if (!this._security) {
+            this._security = {}
+        }
+
+        this._security.auth = auth
+    }
+
+    /**
+     * Sets the password poliicy configuration
+     * @param {object} withPasswordPolicy
+     * @return {Organizations} 
+     */
+    withPasswordPolicy(passPolicy) {
+        if (!passPolicy)
+            throw new Error('Password policy cannot be empty');
+
+
+        if (!this._security) {
+            this._security = {}
+        }
+    
+        this._security.policies = {
+            password: {
+                checkStrength: !!passPolicy.checkStrength, 
+                expirationPeriod: passPolicy.expirationPeriod || 0  
+            }
+        }
+    }
 
     _composeElement() {
         if (this._name === undefined || this._langCode === undefined || this._countryCode === undefined)
@@ -192,6 +229,10 @@ export default class Organizations extends BaseProvision {
 
         if (_mapDefault.zoom || _mapDefault.location) {
             updateData.organization.mapDefault = _mapDefault;
+        }
+
+        if (this._security) {
+            updateData.organization.security = this._security
         }
 
         return updateData;
