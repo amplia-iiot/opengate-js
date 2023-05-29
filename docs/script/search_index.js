@@ -7470,6 +7470,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/organizations/organizations.js~organizations#withauth",
+    "class/src/organizations/Organizations.js~Organizations.html#instance-method-withAuth",
+    "src/organizations/Organizations.js~Organizations#withAuth",
+    "method"
+  ],
+  [
     "src/organizations/organizations.js~organizations#withcountrycode",
     "class/src/organizations/Organizations.js~Organizations.html#instance-method-withCountryCode",
     "src/organizations/Organizations.js~Organizations#withCountryCode",
@@ -7509,6 +7515,12 @@ window.esdocSearchIndex = [
     "src/organizations/organizations.js~organizations#withonlyassigneddomaincertificates",
     "class/src/organizations/Organizations.js~Organizations.html#instance-method-withOnlyAssignedDomainCertificates",
     "src/organizations/Organizations.js~Organizations#withOnlyAssignedDomainCertificates",
+    "method"
+  ],
+  [
+    "src/organizations/organizations.js~organizations#withpasswordpolicy",
+    "class/src/organizations/Organizations.js~Organizations.html#instance-method-withPasswordPolicy",
+    "src/organizations/Organizations.js~Organizations#withPasswordPolicy",
     "method"
   ],
   [

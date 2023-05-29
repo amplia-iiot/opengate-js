@@ -40,6 +40,7 @@ var Organizations = (function (_BaseProvision) {
         this._timeZone = undefined;
         this._zoom = undefined;
         this._location = undefined;
+        this._security.auth = undefined;
     }
 
     /**
@@ -194,19 +195,6 @@ var Organizations = (function (_BaseProvision) {
 
             return this;
         }
-
-        /*
-        "security": {
-          "auth": {
-            "type": "LDAP",
-            "url": "ldap://localhost:389",
-            "securityPrincipal": "cn=admin,dc=amplia-iiot,dc=com",
-            "securityCredentials": "ldap_password",
-            "contextName": "dc=amplia-iiot,dc=com",
-            "filter": "mail={{{email}}}"
-          }
-        }
-        */
 
         /**
          * Sets the auth security configuration
