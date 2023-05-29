@@ -19,7 +19,6 @@ export default class Organizations extends BaseProvision {
         this._timeZone = undefined;
         this._zoom = undefined;
         this._location = undefined;
-        this._security.auth = undefined;
     }
 
     /**
