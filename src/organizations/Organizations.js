@@ -178,7 +178,7 @@ export default class Organizations extends BaseProvision {
 
     /**
      * Sets the password poliicy configuration
-     * @param {object} withPasswordPolicy
+     * @param {object} passPolicy
      * @return {Organizations} 
      */
     withPasswordPolicy(passPolicy) {

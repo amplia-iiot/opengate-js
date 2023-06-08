@@ -333,18 +333,8 @@ Access:
 ```
     		var builder = ogapi.operations.builderFactory.newSetClockEquipmentBuilder();
     		//Acceso a los parámetros de esta operación
-    		builder.paramBuilderFactory
+    		builder.withParameters({'name_of_parameter': 'value_of_parameter'})
 ```
-
-The paramBuilderFactory element will have an catalog and it will have inside a list about allowed parameters.     	
-This parameters can be as a simple type, array type, array of simple type, a complex type, etc. Every parameter will have their own builder.
-
-Examples:
-* Simple type with default value `builder.paramBuilderFactory.newAdministrativeStatusParamBuilder().buildAndAppend()`
-* This parameter have defined an enumeration with allowed values `builder.paramBuilderFactory.newChannelParamBuilder().withChannel('channelName')`. If channelName is not defined into enumeration, the builder throw an error
-* Array of complex object `builder.paramBuilderFactory.newVariableListParamBuilder().addVariableList({'variableName':'nombre','variableValue':'valor'}).addVariableList({'variableName':'nombre','variableValue':'valor'})`
-* String array `builder.paramBuilderFactory.newApnParamBuilder().addApn('apn1').addApn('apn2').buildAndAppend()`
-
 
 ## Execute actions on the executions
 

@@ -52,7 +52,8 @@ Given(/^an ogapi "([^"]*)" util with...$/, function (utilName, table, callback) 
                 try {
                     param = JSON.parse(param);
                 } catch (err) {
-                    console.error('ERROR: ', err)
+                    //console.error('ERROR: ', err)
+                    param = param
                 }
                 if (!isNaN(param))
                     param = param * 1;
@@ -663,6 +664,36 @@ Given (/^an email "([^"]*)" and password "([^"]*)" the user logs in$/, function(
     this.ogapi = new OpengateAPI(config);
     const _email = this[email] || email
     const _password = this[password] || password
+    return this.ogapi.usersBuilder().login(_email, _password).then(function(response){
+        _this.responseData = response;
+        _this.error = undefined;
+        const _user = response.data.user
+        _this.ogapi.Napi._options.jwt = _user.jwt
+    }).catch((err)=>{
+        console.error("ERROR, NO LOGIN!!!", err);
+        _this.error = err;
+        _this.responseData = err;
+        throw err;
+    })
+
+    
+})
+
+Given (/^an email and password the user logs in$/, function() {
+    const _this = this
+    _this.error = undefined;
+    _this.responseData = undefined;
+    var config = {
+        'url': this.test_url_north,
+        'timeout': 60000,
+        south: {
+            'url': this.test_url_south
+        }
+    };
+
+    this.ogapi = new OpengateAPI(config);
+    const _email = this.YOUR_EMAIL
+    const _password = this.YOUR_PASSWORD
     return this.ogapi.usersBuilder().login(_email, _password).then(function(response){
         _this.responseData = response;
         _this.error = undefined;

@@ -4,7 +4,6 @@ import merge from 'merge';
 
 import Operation from './Operation';
 
-import ParameterBuilderFactory from './parameters/ParameterBuilderFactory';
 import AppendEntitiesBy from './AppendEntitiesBy';
 import ExecuteEachBuilder from './period/ExecuteEachBuilder';
 import ExecuteEveryBuilder from './period/ExecuteEveryBuilder';
@@ -73,19 +72,8 @@ export default class BaseOperationBuilder {
             name: config.name,
             schedule: {}
         };
-        //if (typeof config.parameters !== "undefined" && config.parameters.length > 0) {
         if (typeof config.parameters !== "undefined") {
-            /**
-             * This class contains all operation parameters builders
-             */
-            // this.paramBuilderFactory = new ParameterBuilderFactory(ogapi, config.parameters, this);
             this._build.parameters = {};
-            // for (let i = 0; i < config.parameters.length; i++) {
-            //     let param = config.parameters[i];
-            //     if (param.required === true) {
-            //         this._requiredParameters.push(param.name);
-            //     }
-            // }
         }
     }
 

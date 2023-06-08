@@ -193,19 +193,14 @@ When(/^I build it with filter by operation's id$/, function (callback) {
     this.error = undefined;
 
     try {
-        var data;
-        if (this.responseData.statusCode)
-            data = this.responseData.statusCode;
-        else if (this.responseData[1])
-            data = this.responseData[1];
+        var data = this.responseData.data;
         var jobId = data.id;
-        this.build = this.util.onDevices().filter({
-            "and": [{
+        this.build = this.util.onDevices().filter(
+            {
                 "like": {
-                    "job.id": jobId
+                    "jobId": jobId
                 }
-            }]
-        }).build();
+            }).build();
     } catch (err) {
         this.error = err;
         throw err;
