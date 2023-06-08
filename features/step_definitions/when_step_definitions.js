@@ -189,13 +189,13 @@ When(/^I try to find by operation's id$/, function () {
     }
 });
 
-When(/^I build it with filter by operation's id$/, function (callback) {
+When(/^I build it with filter by operation$/, function (callback) {
     this.error = undefined;
 
     try {
         var data = this.responseData.data;
         var jobId = data.id;
-        this.build = this.util.onDevices().filter(
+        this.build = this.util.filter(
             {
                 "like": {
                     "jobId": jobId
@@ -207,6 +207,7 @@ When(/^I build it with filter by operation's id$/, function (callback) {
     }
     callback();
 });
+
 
 When(/^I build it$/, function (callback) {
     this.error = undefined;
