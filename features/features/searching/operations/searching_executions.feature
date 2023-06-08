@@ -3,13 +3,10 @@
 @operations
 @searching
 @searching_executions
-@wip
+#@wip
 Feature: Searching operation's executions
 As a user of JsApi
 I want to search operation's executions
-
-    Background:
-		
 
     Scenario: Creating an organization to use in create device
         Given an email and password the user logs in
@@ -91,6 +88,35 @@ I want to search operation's executions
         And I execute it
         Then response code should be: 200
 
+    Scenario: Execute operation with default values and download execution with format csv
+        Given an email "ogux_ogapi@amplia.com" and password "Nvoiqewvouoiu32j@#!!" the user logs in
+        Given the operation by "ADMINISTRATIVE_STATUS_CHANGE_TEST"
+        And the timeout by 120000
+        And the ackTimeout by 0
+        And the retries by 0
+        And the retriesDelay by 0
+        And parameter "admsts" by "ACTIVE"
+        And the job timeout by 5 minutes
+        And execute immediately
+        And append entities by:
+            | device_executions_tests |
+        When I build it
+        And I execute it
+        Then response code should be: 201
+        And response must have attached "device_executions_tests" as "ASSET" entity
+        And response must have attached an entity list with "ASSET" type defined by:
+            | device_executions_tests |
+        And an ogapi "executions search" util
+        When I build it with filter by operation's id
+        And I download csv it
+        Then response code should be: 200
+        Then does not throws an error
+        Then the content of file "search.csv" must be:
+            """
+            name
+            recolected_name
+
+            """
 
     Scenario: I want to delete the entity
         Given an email and password the user logs in
