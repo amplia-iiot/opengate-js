@@ -3,34 +3,6 @@ var moment = require("moment");
 var assert = require('chai').assert;
 var { Given } = require('cucumber');
 
-var builderNameSkeleton = "new$1ParamBuilder";
-var paramSingleNameSkeleton = "with$1";
-var paramMultipleNameSkeleton = "add$1";
-
-function getParameterName (paramName) {
-    return paramName[0].toUpperCase() + paramName.slice(1);
-}
-
-function getBuilderParam (paramName) {
-    return this.util.paramBuilderFactory[builderNameSkeleton.replace("$1", paramName)]();
-}
-
-function setSingleValueToParameter (_paramName, value) {
-    var paramName = getParameterName(_paramName);
-    var paramBuilder = getBuilderParam.call(this, paramName);
-    paramBuilder[paramSingleNameSkeleton.replace("$1", paramName)](value);
-    paramBuilder.buildAndAppend();
-}
-
-function setMultipleValueToParameter (_paramName, values) {
-    var paramName = getParameterName(_paramName);
-    var paramBuilder = getBuilderParam.call(this, paramName);
-    for (var i = 0; i < values.length; i++) {
-        paramBuilder[paramMultipleNameSkeleton.replace("$1", paramName)](values[i]);
-    }
-    paramBuilder.buildAndAppend();
-}
-
 Given(/^the start limit by "([^"]*)" and size limit by "([^"]*)"$/, function (start, size, callback) {
     start = eval(start);
     size = eval(size);
@@ -58,7 +30,9 @@ Given(/^parameter "([^"]*)" by "([^"]*)" not allowed$/, function (paramName, val
     var _this = this;
 
     function MyFun () {
-        setSingleValueToParameter.call(_this, paramName, value);
+        const parameter = {}
+        parameter[paramName] = value
+        _this.util.withParameters(parameter)
     }
     this.expect(MyFun).to.not.increase(this.util._build.parameters, 'length');
 
@@ -68,7 +42,13 @@ Given(/^parameter "([^"]*)" by "([^"]*)" not allowed$/, function (paramName, val
 
 Given(/^parameter "([^"]*)" as object by:$/, function (paramName, table, callback) {
     // Write code here that turns the phrase above into concrete actions
-    setMultipleValueToParameter.call(this, paramName, table.hashes());
+    const values = table.hashes()
+    const parameter = {}
+    parameter[paramName] = []
+    for (var i = 0; i < values.length; i++) {
+        parameter[_paramName].push(values[i]);
+    }
+    this.util.withParameters(parameter)
     callback();
 });
 
@@ -84,19 +64,27 @@ Given(/^parameter "([^"]*)" by:$/, function (paramName, table, callback) {
     } else {
         values = table.hashes();
     }
-    setMultipleValueToParameter.call(this, paramName, values);
+    const parameter = {}
+    parameter[paramName] = []
+    for (var i = 0; i < values.length; i++) {
+        parameter[_paramName].push(values[i]);
+    }
+    this.util.withParameters(parameter)
     callback();
 });
 
 Given(/^parameter "([^"]*)" by "([^"]*)"$/, function (paramName, value, callback) {
-    // Write code here that turns the phrase above into concrete actions
-    setSingleValueToParameter.call(this, paramName, value);
+    const parameter = {}
+    parameter[paramName] = value
+    this.util.withParameters(parameter)
     callback();
 });
 
 Given(/^parameter "([^"]*)" by "([^"]*)" as */, function (paramName, value, callback) {
     // Write code here that turns the phrase above into concrete actions
-    setSingleValueToParameter.call(this, paramName, eval(value));
+    const parameter = {}
+    parameter[paramName] = eval(value)
+    this.util.withParameters(parameter)
     callback();
 });
 
@@ -113,10 +101,10 @@ Given(/^the operation by "([^"]*)"$/, function (builderName) {
         return this.ogapi.operations.builderByOperationName(builderName).then(function (builder) {
             _this.util = builder;
         }).catch(function (err) {
-
+            throw err
         });
     } catch (err) {
-        return;
+        throw err;
     }
 });
 

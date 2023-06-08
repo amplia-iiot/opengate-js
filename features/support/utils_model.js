@@ -349,8 +349,11 @@ module.exports = {
             }, 
             "countries finder": function(ogapi){
                 return ogapi.newCountriesCatalog()
+            },
+            "operationType builder": function(ogapi){
+                return ogapi.operationTypeBuilder(param, param2, param3)
             }
         };
-        return utilsMath[utilName](ogapi, param, param2);
+        return utilsMath[utilName](ogapi, param, param2, param3);
     }
 }
