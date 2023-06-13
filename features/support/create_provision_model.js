@@ -449,6 +449,18 @@ module.exports = {
                 'identifier': 'withIdentifier',
                 'name': 'withName'
             },
+            'operationType': {
+                'identifier': 'withIdentifier',
+                'organization': 'withOrganization',
+                'title': 'withTitle',
+                'name': 'withName',
+                'description': 'withDescription',
+                'parameters': 'withParameters',
+                'catalog': 'fromCatalog',
+                'steps': 'withSteps',
+                'models': 'withModels',
+                'applicableTo': 'applicableTo'
+            }
         }[setter];
     },
     getter_response: function (getter) {

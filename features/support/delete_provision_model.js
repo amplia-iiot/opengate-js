@@ -32,6 +32,10 @@ module.exports = {
             },
             'provisionProcessors':{
                 'identifier': 'withIdentifier'
+            },
+            'operationType': {
+                'identifier': 'withIdentifier',
+                'organization': 'withOrganization'
             }
         }[setter];
     },
