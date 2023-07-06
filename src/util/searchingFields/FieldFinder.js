@@ -249,6 +249,23 @@ const _searchColumns = function(_this, finder, objSearcher, defered){
                       })
                 }
 
+                if (response.data.bucketInitColumn) {
+                    columnDatastreams.push({
+                        identifier: response.data.bucketInitColumn,
+                        name: response.data.bucketInitColumn,
+                        path: 'provision.administration.identifier._current.at',
+                        indexed: true,
+                        sort: true,
+                        notFilterable: false,
+                        filter: 'YES',
+                        type: "date-time",
+                        schema: {
+                            type: 'string',
+                            format: 'datetime'
+                        }
+                      })
+                }
+
                 var columns = _.concat(response.data.columns || [], response.data.context || [])
 
                 //search de la definición de schemas de opengate

@@ -43,6 +43,10 @@ var Datasets = (function (_BaseProvision) {
         key: '_buildURL',
         value: function _buildURL() {
             var url = 'datasets/provision/organizations/' + this._organization + '/' + this._identifier;
+
+            if (this._onlyPlan) {
+                url += '?onlyPlan=true';
+            }
             return url;
         }
 
@@ -136,16 +140,32 @@ var Datasets = (function (_BaseProvision) {
             };
             return dataset;
         }
+    }, {
+        key: '_composeUpdateElement',
+        value: function _composeUpdateElement() {
+            var dataset = {
+                name: this._name,
+                description: this._description,
+                type: this._type,
+                identifierColumn: this._identifierColumn,
+                columns: this._columns
+            };
+            return dataset;
+        }
+    }, {
+        key: 'onlyPlan',
+        value: function onlyPlan() {
+            this._onlyPlan = true;
+            return this;
+        }
 
         /**
          * This method invalidates the update option
          * @throws {Allways} Datasets cannot be updated.
          */
-    }, {
-        key: 'update',
-        value: function update() {
-            throw new Error("OGAPI_DAATASET_NOT_UPDATED");
-        }
+        //  update() {
+        //     throw new Error("OGAPI_DAATASET_NOT_UPDATED");
+        // }
     }]);
 
     return Datasets;
