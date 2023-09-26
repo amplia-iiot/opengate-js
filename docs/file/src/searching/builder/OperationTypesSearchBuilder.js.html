@@ -175,6 +175,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/EntitySearch.js~EntitySearch.html">EntitySearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/FilterBuilder.js~FilterBuilder.html">FilterBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/Search.js~Search.html">Search</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/SearchWithoutLimit.js~SearchWithoutLimit.html">SearchWithoutLimit</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/SelectBuilder.js~SelectBuilder.html">SelectBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/StaticSearch.js~StaticSearch.html">StaticSearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/WPSearch.js~WPSearch.html">WPSearch</a></span></span></li>
@@ -283,7 +284,7 @@
 
 import SearchBuilder from &apos;./SearchBuilder&apos;;
 import FieldFinder from &apos;../../util/searchingFields/FieldFinder&apos;;
-
+import SearchWithoutLimit from &apos;../SearchWithoutLimit&apos;;
 const BASE_URL = &apos;/operationTypes&apos;;
 /**
  * Defined a search over operationTypes	
@@ -296,6 +297,32 @@ export default class OperationTypesBuilder extends SearchBuilder {
     constructor(parent) {
         super(parent, {}, new FieldFinder(parent, BASE_URL));
         this._url = BASE_URL;
+    }
+
+
+    /**
+     * Build a instance of Search 
+     *
+     * @example
+     *  ogapi.devicesSearchBuilder().onProvisioned().build()
+     * @throws {SearchBuilderError} Throw error on url build
+     * @return {Search} 
+     */
+    build() {
+        try{
+            
+        return new SearchWithoutLimit(this._parent,
+            this._buildUrl(),
+            this._buildFilter(),
+            this._buildSort(),
+            this._buildGroup(),
+            this._buildSelect(),
+            this._builderParams.timeout,
+            this._urlParams);
+        }
+        catch(error){
+            console.error(&apos;!errrrror!!!!!!&apos;, error)
+        }
     }
 }</code></pre>
 

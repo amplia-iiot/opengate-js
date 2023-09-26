@@ -1092,6 +1092,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/searching/searchwithoutlimit.js~searchwithoutlimit",
+    "class/src/searching/SearchWithoutLimit.js~SearchWithoutLimit.html",
+    "<span>SearchWithoutLimit</span> <span class=\"search-result-import-path\">opengate-js/src/searching/SearchWithoutLimit.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/security/security.js~security",
     "class/src/security/Security.js~Security.html",
     "<span>Security</span> <span class=\"search-result-import-path\">opengate-js/src/security/Security.js</span>",
@@ -8394,6 +8400,18 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/searching/searchwithoutlimit.js",
+    "file/src/searching/SearchWithoutLimit.js.html",
+    "src/searching/SearchWithoutLimit.js",
+    "file"
+  ],
+  [
+    "src/searching/searchwithoutlimit.js~searchwithoutlimit#constructor",
+    "class/src/searching/SearchWithoutLimit.js~SearchWithoutLimit.html#instance-constructor-constructor",
+    "src/searching/SearchWithoutLimit.js~SearchWithoutLimit#constructor",
+    "method"
+  ],
+  [
     "src/searching/selectbuilder.js",
     "file/src/searching/SelectBuilder.js.html",
     "src/searching/SelectBuilder.js",
@@ -9268,6 +9286,12 @@ window.esdocSearchIndex = [
     "file/src/searching/builder/OperationTypesSearchBuilder.js.html",
     "src/searching/builder/OperationTypesSearchBuilder.js",
     "file"
+  ],
+  [
+    "src/searching/builder/operationtypessearchbuilder.js~operationtypesbuilder#build",
+    "class/src/searching/builder/OperationTypesSearchBuilder.js~OperationTypesBuilder.html#instance-method-build",
+    "src/searching/builder/OperationTypesSearchBuilder.js~OperationTypesBuilder#build",
+    "method"
   ],
   [
     "src/searching/builder/operationtypessearchbuilder.js~operationtypesbuilder#constructor",
