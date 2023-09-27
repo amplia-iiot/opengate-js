@@ -3246,9 +3246,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/aimodels/aimodelsfinder.js~aimodelsfinder#downloadbyorganizationandidentifierandfilename",
-    "class/src/AIModels/AIModelsFinder.js~AIModelsFinder.html#instance-method-downloadByOrganizationAndIdentifierAndFilename",
-    "src/AIModels/AIModelsFinder.js~AIModelsFinder#downloadByOrganizationAndIdentifierAndFilename",
+    "src/aimodels/aimodelsfinder.js~aimodelsfinder#downloadbyorganizationandidentifier",
+    "class/src/AIModels/AIModelsFinder.js~AIModelsFinder.html#instance-method-downloadByOrganizationAndIdentifier",
+    "src/AIModels/AIModelsFinder.js~AIModelsFinder#downloadByOrganizationAndIdentifier",
     "method"
   ],
   [

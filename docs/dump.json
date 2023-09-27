@@ -429,7 +429,7 @@
     "__docId__": 17,
     "kind": "file",
     "name": "src/AIModels/AIModelsFinder.js",
-    "content": "'use strict';\r\n\r\nimport GenericFinder from '../GenericFinder';\r\n\r\n/**\r\n *   This class allow make get request to aiModel resource into Opengate North API.\r\n */\r\nexport default class AIModelsFinder extends GenericFinder {\r\n\r\n    /**     \r\n     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.\r\n     */\r\n    constructor(ogapi) {\r\n        super(ogapi, 'ai', 'list', 'AIModel not found', 'north');\r\n    }\r\n\r\n     /**\r\n     * Download a complete list of aiModels by its organization. This execute a GET http method\r\n     * @test\r\n     *   ogapi.newAIModelFinder().findByOrganization('orgname').then().catch();\r\n     * @param {string} organization - aiModel organization .\r\n     * @return {Promise} \r\n     */\r\n    findByOrganization(organization) {\r\n        this._organization = organization;\r\n        return this._execute();\r\n    }\r\n\r\n    /**\r\n     * Gets a specific ai model by its organization and id. This execute a GET http method\r\n     * @test\r\n     *   ogapi.newAIModelFinder().findByOrganizationAndIdentifier('orgname', xxx-xx-xxx-xxx').then().catch();\r\n     * @param {string} organization - transformer organization .\r\n     * @param {string} identifier - transformer identifier.\r\n     * @return {Promise} \r\n     */\r\n     findByOrganizationAndIdentifier(organization, identifier) {\r\n        this._organization = organization;\r\n        this._identifier = identifier;\r\n        return this._execute();\r\n    }\r\n\r\n     /**\r\n     * Download a specific ai model by its organization and id. This execute a GET http method\r\n     * @test\r\n     *   ogapi.newAIModelFinder().downloadByOrganizationAndIdentifierAndFilename('orgname', xxx-xx-xxx-xxx', 'filename').then().catch();\r\n     * @param {string} organization - transformer organization .\r\n     * @param {string} identifier - transformer identifier.\r\n     * @param {string} filename - name of transformer file.\r\n     * @return {Promise} \r\n     */\r\n      downloadByOrganizationAndIdentifierAndFilename(organization, identifier, filename) {\r\n        this._organization = organization;\r\n        this._identifier = identifier;\r\n        this._filename = filename\r\n        return this._download();\r\n    }\r\n\r\n    /**\r\n     * @return {String} This returns a string with the URL of the request.\r\n     * @private\r\n     */\r\n    _composeUrl() {\r\n        return this._baseUrl + \"/\" + this._organization + \"/models\" +(this._identifier?'/'+ this._identifier + (this._filename?'/'+ this._filename:''):'');\r\n    }\r\n}",
+    "content": "'use strict';\r\n\r\nimport GenericFinder from '../GenericFinder';\r\n\r\n/**\r\n *   This class allow make get request to aiModel resource into Opengate North API.\r\n */\r\nexport default class AIModelsFinder extends GenericFinder {\r\n\r\n    /**     \r\n     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.\r\n     */\r\n    constructor(ogapi) {\r\n        super(ogapi, 'ai', 'list', 'AIModel not found', 'north');\r\n    }\r\n\r\n     /**\r\n     * Download a complete list of aiModels by its organization. This execute a GET http method\r\n     * @test\r\n     *   ogapi.newAIModelFinder().findByOrganization('orgname').then().catch();\r\n     * @param {string} organization - aiModel organization .\r\n     * @return {Promise} \r\n     */\r\n    findByOrganization(organization) {\r\n        this._organization = organization;\r\n        return this._execute();\r\n    }\r\n\r\n    /**\r\n     * Gets a specific ai model by its organization and id. This execute a GET http method\r\n     * @test\r\n     *   ogapi.newAIModelFinder().findByOrganizationAndIdentifier('orgname', xxx-xx-xxx-xxx').then().catch();\r\n     * @param {string} organization - transformer organization .\r\n     * @param {string} identifier - transformer identifier.\r\n     * @return {Promise} \r\n     */\r\n     findByOrganizationAndIdentifier(organization, identifier) {\r\n        this._organization = organization;\r\n        this._identifier = identifier;\r\n        return this._execute();\r\n    }\r\n\r\n    /**\r\n     * Download a specific ai model by its organization and id. This execute a GET http method\r\n     * @test\r\n     *   ogapi.newAIModelFinder().downloadByOrganizationAndIdentifier('orgname', xxx-xx-xxx-xxx').then().catch();\r\n     * @param {string} organization - transformer organization .\r\n     * @param {string} identifier - transformer identifier.\r\n     * @return {Promise} \r\n     */\r\n    downloadByOrganizationAndIdentifier(organization, identifier) {\r\n        this._organization = organization;\r\n        this._identifier = identifier;\r\n        this._filename = true\r\n        return this._download();\r\n    }\r\n\r\n    /**\r\n     * @return {String} This returns a string with the URL of the request.\r\n     * @private\r\n     */\r\n    _composeUrl() {\r\n        return this._baseUrl + \"/\" + this._organization + \"/models\" +(this._identifier?'/'+ this._identifier + (this._filename?'/file':''):'');\r\n    }\r\n}",
     "static": true,
     "longname": "src/AIModels/AIModelsFinder.js",
     "access": null,
@@ -639,19 +639,19 @@
   {
     "__docId__": 25,
     "kind": "method",
-    "name": "downloadByOrganizationAndIdentifierAndFilename",
+    "name": "downloadByOrganizationAndIdentifier",
     "memberof": "src/AIModels/AIModelsFinder.js~AIModelsFinder",
     "generator": false,
     "async": false,
     "static": false,
-    "longname": "src/AIModels/AIModelsFinder.js~AIModelsFinder#downloadByOrganizationAndIdentifierAndFilename",
+    "longname": "src/AIModels/AIModelsFinder.js~AIModelsFinder#downloadByOrganizationAndIdentifier",
     "access": null,
     "description": "Download a specific ai model by its organization and id. This execute a GET http method",
-    "lineNumber": 52,
+    "lineNumber": 51,
     "unknown": [
       {
         "tagName": "@test",
-        "tagValue": "  ogapi.newAIModelFinder().downloadByOrganizationAndIdentifierAndFilename('orgname', xxx-xx-xxx-xxx', 'filename').then().catch();"
+        "tagValue": "  ogapi.newAIModelFinder().downloadByOrganizationAndIdentifier('orgname', xxx-xx-xxx-xxx').then().catch();"
       }
     ],
     "params": [
@@ -674,16 +674,6 @@
         "optional": false,
         "name": "identifier",
         "description": "transformer identifier."
-      },
-      {
-        "nullable": null,
-        "types": [
-          "string"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "filename",
-        "description": "name of transformer file."
       }
     ],
     "return": {
@@ -704,7 +694,7 @@
     "longname": "src/AIModels/AIModelsFinder.js~AIModelsFinder#_organization",
     "access": null,
     "description": null,
-    "lineNumber": 53,
+    "lineNumber": 52,
     "undocument": true,
     "unknown": [
       {
@@ -727,7 +717,7 @@
     "longname": "src/AIModels/AIModelsFinder.js~AIModelsFinder#_identifier",
     "access": null,
     "description": null,
-    "lineNumber": 54,
+    "lineNumber": 53,
     "undocument": true,
     "unknown": [
       {
@@ -750,7 +740,7 @@
     "longname": "src/AIModels/AIModelsFinder.js~AIModelsFinder#_filename",
     "access": null,
     "description": null,
-    "lineNumber": 55,
+    "lineNumber": 54,
     "undocument": true,
     "unknown": [
       {
@@ -760,7 +750,7 @@
     ],
     "type": {
       "types": [
-        "*"
+        "boolean"
       ]
     }
   },
@@ -775,7 +765,7 @@
     "longname": "src/AIModels/AIModelsFinder.js~AIModelsFinder#_composeUrl",
     "access": "private",
     "description": "",
-    "lineNumber": 63,
+    "lineNumber": 62,
     "params": [],
     "return": {
       "nullable": null,
