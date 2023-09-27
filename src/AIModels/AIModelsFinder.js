@@ -43,16 +43,15 @@ export default class AIModelsFinder extends GenericFinder {
     /**
      * Download a specific ai model by its organization and id. This execute a GET http method
      * @test
-     *   ogapi.newAIModelFinder().downloadByOrganizationAndIdentifierAndFilename('orgname', xxx-xx-xxx-xxx', 'filename').then().catch();
+     *   ogapi.newAIModelFinder().downloadByOrganizationAndIdentifier('orgname', xxx-xx-xxx-xxx').then().catch();
      * @param {string} organization - transformer organization .
      * @param {string} identifier - transformer identifier.
-     * @param {string} filename - name of transformer file.
      * @return {Promise} 
      */
-    downloadByOrganizationAndIdentifierAndFilename(organization, identifier, filename) {
+    downloadByOrganizationAndIdentifier(organization, identifier) {
         this._organization = organization;
         this._identifier = identifier;
-        this._filename = filename
+        this._filename = true
         return this._download();
     }
 
