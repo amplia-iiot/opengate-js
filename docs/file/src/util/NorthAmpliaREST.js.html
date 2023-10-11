@@ -175,6 +175,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/EntitySearch.js~EntitySearch.html">EntitySearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/FilterBuilder.js~FilterBuilder.html">FilterBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/Search.js~Search.html">Search</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/SearchWithoutLimit.js~SearchWithoutLimit.html">SearchWithoutLimit</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/SelectBuilder.js~SelectBuilder.html">SelectBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/StaticSearch.js~StaticSearch.html">StaticSearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/WPSearch.js~WPSearch.html">WPSearch</a></span></span></li>
@@ -286,6 +287,8 @@ import urlencode from &apos;urlencode&apos;;
 import request, { mkcol } from &apos;superagent&apos;;
 import q from &apos;q&apos;;
 import _ from &apos;lodash&apos;
+import mime from &apos;mime-types&apos;
+
 //  MOCK user searching
 import _mock from &apos;superagent-mocker&apos;;
 const mock = _mock(request);
@@ -321,7 +324,6 @@ export default class NorthAmpliaREST {
             };
         });        
        */
-      
     }
 
     _applyMocks (mocks) {
@@ -452,10 +454,23 @@ export default class NorthAmpliaREST {
                     break
                 case &apos;files&apos;:
                     formData[key].forEach((item, index) =&gt; {
-                        console.log(item.name)
-                        req.attach(key, item);
+                        // Esto controla si viene de node (con path) o de web (sin path)
+                        if (item.path) {
+                            var fileName = item.path.replace(/^.*[\\\/]/, &apos;&apos;)
+
+                            var contentType = mime.lookup(fileName);
+                            if (contentType) {
+                                req.attach(key, item, {filename: fileName, contentType: contentType});    
+                            } else if (fileName.endsWith(&apos;.py&apos;)) {
+                                req.attach(key, item, {filename: fileName, contentType: &apos;text/x-python&apos;});    
+                            } else {
+                                req.attach(key, item, {filename: fileName});    
+                            }    
+                        } else {
+                            req.attach(key, item);
+                        }
                     })
-                   
+                    
                     delete formData[key]
                     sendFormData = false
                     break

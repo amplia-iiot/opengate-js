@@ -175,6 +175,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/EntitySearch.js~EntitySearch.html">EntitySearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/FilterBuilder.js~FilterBuilder.html">FilterBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/Search.js~Search.html">Search</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/SearchWithoutLimit.js~SearchWithoutLimit.html">SearchWithoutLimit</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/SelectBuilder.js~SelectBuilder.html">SelectBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/StaticSearch.js~StaticSearch.html">StaticSearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/WPSearch.js~WPSearch.html">WPSearch</a></span></span></li>
@@ -321,19 +322,18 @@ export default class AIModelsFinder extends GenericFinder {
         return this._execute();
     }
 
-     /**
+    /**
      * Download a specific ai model by its organization and id. This execute a GET http method
      * @test
-     *   ogapi.newAIModelFinder().downloadByOrganizationAndIdentifierAndFilename(&apos;orgname&apos;, xxx-xx-xxx-xxx&apos;, &apos;filename&apos;).then().catch();
+     *   ogapi.newAIModelFinder().downloadByOrganizationAndIdentifier(&apos;orgname&apos;, xxx-xx-xxx-xxx&apos;).then().catch();
      * @param {string} organization - transformer organization .
      * @param {string} identifier - transformer identifier.
-     * @param {string} filename - name of transformer file.
      * @return {Promise} 
      */
-      downloadByOrganizationAndIdentifierAndFilename(organization, identifier, filename) {
+    downloadByOrganizationAndIdentifier(organization, identifier) {
         this._organization = organization;
         this._identifier = identifier;
-        this._filename = filename
+        this._filename = true
         return this._download();
     }
 
@@ -342,7 +342,7 @@ export default class AIModelsFinder extends GenericFinder {
      * @private
      */
     _composeUrl() {
-        return this._baseUrl + &quot;/&quot; + this._organization + &quot;/models&quot; +(this._identifier?&apos;/&apos;+ this._identifier + (this._filename?&apos;/&apos;+ this._filename:&apos;&apos;):&apos;&apos;);
+        return this._baseUrl + &quot;/&quot; + this._organization + &quot;/models&quot; +(this._identifier?&apos;/&apos;+ this._identifier + (this._filename?&apos;/file&apos;:&apos;&apos;):&apos;&apos;);
     }
 }</code></pre>
 

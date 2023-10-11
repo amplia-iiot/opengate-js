@@ -30,6 +30,10 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
+var _mimeTypes = require('mime-types');
+
+var _mimeTypes2 = _interopRequireDefault(_mimeTypes);
+
 //  MOCK user searching
 
 var _superagentMocker = require('superagent-mocker');
@@ -217,8 +221,21 @@ var NorthAmpliaREST = (function () {
                         break;
                     case 'files':
                         formData[key].forEach(function (item, index) {
-                            console.log(item.name);
-                            req.attach(key, item);
+                            // Esto controla si viene de node (con path) o de web (sin path)
+                            if (item.path) {
+                                var fileName = item.path.replace(/^.*[\\\/]/, '');
+
+                                var contentType = _mimeTypes2['default'].lookup(fileName);
+                                if (contentType) {
+                                    req.attach(key, item, { filename: fileName, contentType: contentType });
+                                } else if (fileName.endsWith('.py')) {
+                                    req.attach(key, item, { filename: fileName, contentType: 'text/x-python' });
+                                } else {
+                                    req.attach(key, item, { filename: fileName });
+                                }
+                            } else {
+                                req.attach(key, item);
+                            }
                         });
 
                         delete formData[key];
