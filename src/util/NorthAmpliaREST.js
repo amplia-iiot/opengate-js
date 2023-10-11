@@ -5,6 +5,8 @@ import urlencode from 'urlencode';
 import request, { mkcol } from 'superagent';
 import q from 'q';
 import _ from 'lodash'
+import mime from 'mime-types'
+
 //  MOCK user searching
 import _mock from 'superagent-mocker';
 const mock = _mock(request);
@@ -40,7 +42,6 @@ export default class NorthAmpliaREST {
             };
         });        
        */
-      
     }
 
     _applyMocks (mocks) {
@@ -171,10 +172,23 @@ export default class NorthAmpliaREST {
                     break
                 case 'files':
                     formData[key].forEach((item, index) => {
-                        console.log(item.name)
-                        req.attach(key, item);
+                        // Esto controla si viene de node (con path) o de web (sin path)
+                        if (item.path) {
+                            var fileName = item.path.replace(/^.*[\\\/]/, '')
+
+                            var contentType = mime.lookup(fileName);
+                            if (contentType) {
+                                req.attach(key, item, {filename: fileName, contentType: contentType});    
+                            } else if (fileName.endsWith('.py')) {
+                                req.attach(key, item, {filename: fileName, contentType: 'text/x-python'});    
+                            } else {
+                                req.attach(key, item, {filename: fileName});    
+                            }    
+                        } else {
+                            req.attach(key, item);
+                        }
                     })
-                   
+                    
                     delete formData[key]
                     sendFormData = false
                     break
