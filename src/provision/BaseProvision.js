@@ -81,6 +81,7 @@ export default class BaseProvision {
                         this._onCreated(res.header.location);
                     }
                     defered.resolve({
+                        data: res.body,
                         location: res.header.location,
                         statusCode: res.statusCode
                     });
@@ -147,10 +148,12 @@ export default class BaseProvision {
             .then((res) => {
                 if (res.statusCode === 200) {
                     defered.resolve({
+                        data: res.body,
                         statusCode: res.statusCode
                     });
                 } else if (res.status === 200) {
                     defered.resolve({
+                        data: res.body,
                         statusCode: res.status
                     });
                 } else {

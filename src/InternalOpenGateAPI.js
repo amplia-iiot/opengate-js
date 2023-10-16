@@ -26,6 +26,7 @@ import RuleConfigurationsCatalog from './rulesConfiguration/RuleConfigurationsCa
 import RuleConfigurationsHelper from './rulesConfiguration/RuleConfigurationsHelper';
 import DatasetFinder from './datasets/DatasetFinder';
 import TimeserieFinder from './timeseries/TimeseriesFinder';
+import TimeseriesFunctionsFinder from './timeseriesFunctionsCatalog/TimeseriesFunctionFinder';
 import OperationType from './operationTypes/OperationType';
 import OperationTypeFinder from './operationTypes/OperationTypeFinder';
 import OperationTypeCatalog from './operationTypes/OperationTypeCatalog';
@@ -1025,8 +1026,16 @@ export default class InternalOpenGateAPI {
      * This return a TimeserieBuilder to build a specific timeserie
      * @return {Timeseries}
      */
-     timeseriesBuilder() {
+    timeseriesBuilder() {
         return new Timeseries(this);
+    }
+
+    /**
+     * This return a util to find a timeseries function
+     * @return {TimeseriesFunctionsFinder}
+     */
+    newTimeseriesFunctionFinder() {
+        return new TimeseriesFunctionsFinder(this);
     }
 
     /**
