@@ -258,6 +258,8 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">timeseries</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/timeseries/Timeseries.js~Timeseries.html">Timeseries</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/timeseries/TimeseriesFinder.js~TimeseriesFinder.html">TimeseriesFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-URL">URL</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">timeseriesFunctionsCatalog</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType.html">OperationType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/timeseriesFunctionsCatalog/TimeseriesFunctionFinder.js~TimeseriesFunctionFinder.html">TimeseriesFunctionFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">transformers</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/transformers/TransformerFinder.js~TransformerFinder.html">TransformerFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/transformers/Transformers.js~Transformers.html">Transformers</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">users</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/users/UserFinder.js~UserFinder.html">UserFinder</a></span></span></li>
@@ -518,6 +520,23 @@ const _searchColumns = function(_this, finder, objSearcher, defered){
                     columnDatastreams.push({
                         identifier: response.data.bucketColumn,
                         name: response.data.bucketColumn,
+                        path: &apos;provision.administration.identifier._current.at&apos;,
+                        indexed: true,
+                        sort: true,
+                        notFilterable: false,
+                        filter: &apos;YES&apos;,
+                        type: &quot;date-time&quot;,
+                        schema: {
+                            type: &apos;string&apos;,
+                            format: &apos;datetime&apos;
+                        }
+                      })
+                }
+
+                if (response.data.bucketInitColumn) {
+                    columnDatastreams.push({
+                        identifier: response.data.bucketInitColumn,
+                        name: response.data.bucketInitColumn,
                         path: &apos;provision.administration.identifier._current.at&apos;,
                         indexed: true,
                         sort: true,

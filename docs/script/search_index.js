@@ -846,6 +846,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/timeseriesfunctionscatalog/timeseriesfunction.js~operationtype",
+    "class/src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType.html",
+    "<span>OperationType</span> <span class=\"search-result-import-path\">opengate-js/src/timeseriesFunctionsCatalog/TimeseriesFunction.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/operationtypes/operationtypefinder.js~operationtypefinder",
     "class/src/operationTypes/OperationTypeFinder.js~OperationTypeFinder.html",
     "<span>OperationTypeFinder</span> <span class=\"search-result-import-path\">opengate-js/src/operationTypes/OperationTypeFinder.js</span>",
@@ -1347,6 +1353,12 @@ window.esdocSearchIndex = [
     "opengate-js/src/timeseries/timeseriesfinder.js~timeseriesfinder",
     "class/src/timeseries/TimeseriesFinder.js~TimeseriesFinder.html",
     "<span>TimeseriesFinder</span> <span class=\"search-result-import-path\">opengate-js/src/timeseries/TimeseriesFinder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/timeseriesfunctionscatalog/timeseriesfunctionfinder.js~timeseriesfunctionfinder",
+    "class/src/timeseriesFunctionsCatalog/TimeseriesFunctionFinder.js~TimeseriesFunctionFinder.html",
+    "<span>TimeseriesFunctionFinder</span> <span class=\"search-result-import-path\">opengate-js/src/timeseriesFunctionsCatalog/TimeseriesFunctionFinder.js</span>",
     "class"
   ],
   [
@@ -3852,6 +3864,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#newtimeseriesfunctionfinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newTimeseriesFunctionFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newTimeseriesFunctionFinder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#newtransformerfinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newTransformerFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newTransformerFinder",
@@ -5898,9 +5916,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/datasets/datasets.js~datasets#update",
-    "class/src/datasets/Datasets.js~Datasets.html#instance-method-update",
-    "src/datasets/Datasets.js~Datasets#update",
+    "src/datasets/datasets.js~datasets#onlyplan",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-method-onlyPlan",
+    "src/datasets/Datasets.js~Datasets#onlyPlan",
     "method"
   ],
   [
@@ -10254,15 +10272,21 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/timeseries/timeseries.js~timeseries#update",
-    "class/src/timeseries/Timeseries.js~Timeseries.html#instance-method-update",
-    "src/timeseries/Timeseries.js~Timeseries#update",
+    "src/timeseries/timeseries.js~timeseries#onlyplan",
+    "class/src/timeseries/Timeseries.js~Timeseries.html#instance-method-onlyPlan",
+    "src/timeseries/Timeseries.js~Timeseries#onlyPlan",
     "method"
   ],
   [
     "src/timeseries/timeseries.js~timeseries#withbucketcolumn",
     "class/src/timeseries/Timeseries.js~Timeseries.html#instance-method-withBucketColumn",
     "src/timeseries/Timeseries.js~Timeseries#withBucketColumn",
+    "method"
+  ],
+  [
+    "src/timeseries/timeseries.js~timeseries#withbucketinitcolumn",
+    "class/src/timeseries/Timeseries.js~Timeseries.html#instance-method-withBucketInitColumn",
+    "src/timeseries/Timeseries.js~Timeseries#withBucketInitColumn",
     "method"
   ],
   [
@@ -10347,6 +10371,120 @@ window.esdocSearchIndex = [
     "src/timeseries/timeseriesfinder.js~timeseriesfinder#findbyorganizationandtimeserieid",
     "class/src/timeseries/TimeseriesFinder.js~TimeseriesFinder.html#instance-method-findByOrganizationAndTimeserieId",
     "src/timeseries/TimeseriesFinder.js~TimeseriesFinder#findByOrganizationAndTimeserieId",
+    "method"
+  ],
+  [
+    "src/timeseriesfunctionscatalog/timeseriesfunction.js",
+    "file/src/timeseriesFunctionsCatalog/TimeseriesFunction.js.html",
+    "src/timeseriesFunctionsCatalog/TimeseriesFunction.js",
+    "file"
+  ],
+  [
+    "src/timeseriesfunctionscatalog/timeseriesfunction.js~operationtype#applicableto",
+    "class/src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType.html#instance-method-applicableTo",
+    "src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType#applicableTo",
+    "method"
+  ],
+  [
+    "src/timeseriesfunctionscatalog/timeseriesfunction.js~operationtype#constructor",
+    "class/src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType.html#instance-constructor-constructor",
+    "src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType#constructor",
+    "method"
+  ],
+  [
+    "src/timeseriesfunctionscatalog/timeseriesfunction.js~operationtype#create",
+    "class/src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType.html#instance-method-create",
+    "src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType#create",
+    "method"
+  ],
+  [
+    "src/timeseriesfunctionscatalog/timeseriesfunction.js~operationtype#delete",
+    "class/src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType.html#instance-method-delete",
+    "src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType#delete",
+    "method"
+  ],
+  [
+    "src/timeseriesfunctionscatalog/timeseriesfunction.js~operationtype#fromcatalog",
+    "class/src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType.html#instance-method-fromCatalog",
+    "src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType#fromCatalog",
+    "method"
+  ],
+  [
+    "src/timeseriesfunctionscatalog/timeseriesfunction.js~operationtype#update",
+    "class/src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType.html#instance-method-update",
+    "src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType#update",
+    "method"
+  ],
+  [
+    "src/timeseriesfunctionscatalog/timeseriesfunction.js~operationtype#withdescription",
+    "class/src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType.html#instance-method-withDescription",
+    "src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType#withDescription",
+    "method"
+  ],
+  [
+    "src/timeseriesfunctionscatalog/timeseriesfunction.js~operationtype#withidentifier",
+    "class/src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType.html#instance-method-withIdentifier",
+    "src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType#withIdentifier",
+    "method"
+  ],
+  [
+    "src/timeseriesfunctionscatalog/timeseriesfunction.js~operationtype#withmodels",
+    "class/src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType.html#instance-method-withModels",
+    "src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType#withModels",
+    "method"
+  ],
+  [
+    "src/timeseriesfunctionscatalog/timeseriesfunction.js~operationtype#withname",
+    "class/src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType.html#instance-method-withName",
+    "src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType#withName",
+    "method"
+  ],
+  [
+    "src/timeseriesfunctionscatalog/timeseriesfunction.js~operationtype#withorganization",
+    "class/src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType.html#instance-method-withOrganization",
+    "src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType#withOrganization",
+    "method"
+  ],
+  [
+    "src/timeseriesfunctionscatalog/timeseriesfunction.js~operationtype#withparameters",
+    "class/src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType.html#instance-method-withParameters",
+    "src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType#withParameters",
+    "method"
+  ],
+  [
+    "src/timeseriesfunctionscatalog/timeseriesfunction.js~operationtype#withsteps",
+    "class/src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType.html#instance-method-withSteps",
+    "src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType#withSteps",
+    "method"
+  ],
+  [
+    "src/timeseriesfunctionscatalog/timeseriesfunction.js~operationtype#withtitle",
+    "class/src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType.html#instance-method-withTitle",
+    "src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType#withTitle",
+    "method"
+  ],
+  [
+    "src/timeseriesfunctionscatalog/timeseriesfunctionfinder.js",
+    "file/src/timeseriesFunctionsCatalog/TimeseriesFunctionFinder.js.html",
+    "src/timeseriesFunctionsCatalog/TimeseriesFunctionFinder.js",
+    "file"
+  ],
+  [
+    "src/timeseriesfunctionscatalog/timeseriesfunctionfinder.js~timeseriesfunctionfinder#constructor",
+    "class/src/timeseriesFunctionsCatalog/TimeseriesFunctionFinder.js~TimeseriesFunctionFinder.html#instance-constructor-constructor",
+    "src/timeseriesFunctionsCatalog/TimeseriesFunctionFinder.js~TimeseriesFunctionFinder#constructor",
+    "method"
+  ],
+  [
+    "src/timeseriesfunctionscatalog/timeseriesfunctionfinder.js~timeseriesfunctionfinder#findbyorganization",
+    "class/src/timeseriesFunctionsCatalog/TimeseriesFunctionFinder.js~TimeseriesFunctionFinder.html#instance-method-findByOrganization",
+    "src/timeseriesFunctionsCatalog/TimeseriesFunctionFinder.js~TimeseriesFunctionFinder#findByOrganization",
+    "method"
+  ],
+  [
+    "src/timeseriesfunctionscatalog/timeseriesfunctionfinder.js~timeseriesfunctionfinder#findbyorganizationandname",
+    "class/src/timeseriesFunctionsCatalog/TimeseriesFunctionFinder.js~TimeseriesFunctionFinder.html#instance-method-findByOrganizationAndName",
+    "src/timeseriesFunctionsCatalog/TimeseriesFunctionFinder.js~TimeseriesFunctionFinder#findByOrganizationAndName",
     "method"
   ],
   [

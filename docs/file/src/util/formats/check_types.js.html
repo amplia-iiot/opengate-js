@@ -258,6 +258,8 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">timeseries</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/timeseries/Timeseries.js~Timeseries.html">Timeseries</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/timeseries/TimeseriesFinder.js~TimeseriesFinder.html">TimeseriesFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-URL">URL</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">timeseriesFunctionsCatalog</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType.html">OperationType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/timeseriesFunctionsCatalog/TimeseriesFunctionFinder.js~TimeseriesFunctionFinder.html">TimeseriesFunctionFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">transformers</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/transformers/TransformerFinder.js~TransformerFinder.html">TransformerFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/transformers/Transformers.js~Transformers.html">Transformers</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">users</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/users/UserFinder.js~UserFinder.html">UserFinder</a></span></span></li>
@@ -297,7 +299,7 @@
         return type;
     },
     _checkISODateTime: function(parameter, name){
-        if (typeof parameter !== &apos;string&apos; || new RegExp(&quot;\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d+(Z|[+-]\\d{2}:\\d{2})&quot;).test(parameter) ) {
+        if (typeof parameter !== &apos;string&apos; || new RegExp(&quot;(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))&quot;).test(parameter) ) {
             throw new Error([{ message: &apos;OGAPI_ISO_DATE_TIME_PARAMETER&apos;, parameter: name }, { message: &apos;OGAPI_STRING_PATTERN&apos;, parameter: name }]);
         }
         try {
