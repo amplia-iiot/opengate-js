@@ -114,6 +114,10 @@ var _timeseriesTimeseriesFinder = require('./timeseries/TimeseriesFinder');
 
 var _timeseriesTimeseriesFinder2 = _interopRequireDefault(_timeseriesTimeseriesFinder);
 
+var _timeseriesFunctionsCatalogTimeseriesFunctionFinder = require('./timeseriesFunctionsCatalog/TimeseriesFunctionFinder');
+
+var _timeseriesFunctionsCatalogTimeseriesFunctionFinder2 = _interopRequireDefault(_timeseriesFunctionsCatalogTimeseriesFunctionFinder);
+
 var _operationTypesOperationType = require('./operationTypes/OperationType');
 
 var _operationTypesOperationType2 = _interopRequireDefault(_operationTypesOperationType);
@@ -1656,6 +1660,16 @@ var InternalOpenGateAPI = (function () {
         key: 'timeseriesBuilder',
         value: function timeseriesBuilder() {
             return new _timeseriesTimeseries2['default'](this);
+        }
+
+        /**
+         * This return a util to find a timeseries function
+         * @return {TimeseriesFunctionsFinder}
+         */
+    }, {
+        key: 'newTimeseriesFunctionFinder',
+        value: function newTimeseriesFunctionFinder() {
+            return new _timeseriesFunctionsCatalogTimeseriesFunctionFinder2['default'](this);
         }
 
         /**

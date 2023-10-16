@@ -12,14 +12,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _q = require('q');
-
-var _q2 = _interopRequireDefault(_q);
-
-var _httpStatusCodes = require('http-status-codes');
-
-var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
-
 var _GenericFinder2 = require('./GenericFinder');
 
 var _GenericFinder3 = _interopRequireDefault(_GenericFinder2);

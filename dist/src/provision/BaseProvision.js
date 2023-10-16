@@ -103,6 +103,7 @@ var BaseProvision = (function () {
                         _this._onCreated(res.header.location);
                     }
                     defered.resolve({
+                        data: res.body,
                         location: res.header.location,
                         statusCode: res.statusCode
                     });
@@ -169,10 +170,12 @@ var BaseProvision = (function () {
             this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement(), this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL()).then(function (res) {
                 if (res.statusCode === 200) {
                     defered.resolve({
+                        data: res.body,
                         statusCode: res.statusCode
                     });
                 } else if (res.status === 200) {
                     defered.resolve({
+                        data: res.body,
                         statusCode: res.status
                     });
                 } else {

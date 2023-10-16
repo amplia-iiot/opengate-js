@@ -398,6 +398,7 @@ module.exports = {
                 'timeBucket': 'withTimeBucket',
                 'identifierColumn': "withIdentifierColumn",
                 'bucketColumn': 'withBucketColumn',
+                'bucketInitColumn': 'withBucketInitColumn',
                 'retention': 'withRetention',
                 'origin': 'withOrigin',
                 'context': 'withContext',
