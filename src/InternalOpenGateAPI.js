@@ -27,6 +27,8 @@ import RuleConfigurationsHelper from './rulesConfiguration/RuleConfigurationsHel
 import DatasetFinder from './datasets/DatasetFinder';
 import TimeserieFinder from './timeseries/TimeseriesFinder';
 import TimeseriesFunctionsFinder from './timeseriesFunctionsCatalog/TimeseriesFunctionFinder';
+import TimeseriesFunction from './timeseriesFunctionsCatalog/TimeseriesFunction';
+import TimeseriesFunctionsHelper from './timeseriesFunctionsCatalog/TimeseriesFunctionsHelper';
 import OperationType from './operationTypes/OperationType';
 import OperationTypeFinder from './operationTypes/OperationTypeFinder';
 import OperationTypeCatalog from './operationTypes/OperationTypeCatalog';
@@ -1038,6 +1040,22 @@ export default class InternalOpenGateAPI {
         return new TimeseriesFunctionsFinder(this);
     }
 
+    /**
+     * This return a TimeserieBuilder to build a specific timeserie
+     * @return {TimeseriesFunction}
+     */
+    timeseriesFunctionBuilder(organization, identifier) {
+        return new TimeseriesFunction(this, organization, identifier);
+    }
+
+    /**
+     * This return a TimeseriesFunctionsHelper
+     * @return {TimeseriesFunctionsHelper}
+     */
+    newTimeseriesFunctionsHelper() {
+        return new TimeseriesFunctionsHelper(this)
+    }
+    
     /**
      * This return a ChannelsSearchBuilder to build a specific ChannelsSearch
      * @return {ChannelsSearchBuilder}

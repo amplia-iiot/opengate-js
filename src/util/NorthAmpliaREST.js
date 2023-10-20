@@ -152,63 +152,9 @@ export default class NorthAmpliaREST {
         console.info('POST_MULTIPART', _url)
         let req = request.post(_url);
 
-        let sendFormData = true
+        this._prepareMultipartForm(formData, req);
 
-        // Esta parte es sólo para cuando viene de tests o node
-        const formDataKeys = Object.keys(formData)
-        formDataKeys.forEach(key => {
-            switch (key) {
-                case 'meta':
-                case 'json':
-                case 'file':
-                    req.field(key, formData[key]);    
-                    delete formData[key]
-                    break
-                case 'hardwareMedia': 
-                case 'certificate': 
-                case 'processorBulkFile':
-                    req.attach('file', formData[key]);
-                    sendFormData = false
-                    break
-                case 'files':
-                    formData[key].forEach((item, index) => {
-                        // Esto controla si viene de node (con path) o de web (sin path)
-                        if (item.path) {
-                            var fileName = item.path.replace(/^.*[\\\/]/, '')
-
-                            var contentType = mime.lookup(fileName);
-                            if (contentType) {
-                                req.attach(key, item, {filename: fileName, contentType: contentType});    
-                            } else if (fileName.endsWith('.py')) {
-                                req.attach(key, item, {filename: fileName, contentType: 'text/x-python'});    
-                            } else {
-                                req.attach(key, item, {filename: fileName});    
-                            }    
-                        } else {
-                            req.attach(key, item);
-                        }
-                    })
-                    
-                    delete formData[key]
-                    sendFormData = false
-                    break
-                case 'modelFile':
-                    req.field(key, formData[key]);
-                    delete formData[key]
-                    sendFormData = false
-                    break
-                case 'bulkFile':
-                    req.set('Content-Type', formData.ext);
-                    formData = formData.bulkFile;
-                    break
-                default:
-                    break;
-            }
-        })
-        if(sendFormData)
-            req.send(formData);
-        return this._createPromiseRequest(req, events, timeout, headers);
-        
+        return this._createPromiseRequest(req, events, timeout, headers);        
     }
 
     /**
@@ -253,9 +199,14 @@ export default class NorthAmpliaREST {
         console.info('PUT_MULTIPART', _url)
         let req = request.put(_url);
 
-        let sendFormData = true
+        this._prepareMultipartForm(formData, req);
 
-        // Esta parte es sólo para cuando viene de tests o node
+        return this._createPromiseRequest(req, events, timeout, headers);
+    }
+
+    _prepareMultipartForm(formData, req) {
+        let sendFormData = true
+        
         const formDataKeys = Object.keys(formData)
         formDataKeys.forEach(key => {
             switch (key) {
@@ -265,6 +216,10 @@ export default class NorthAmpliaREST {
                     req.field(key, formData[key]);    
                     delete formData[key]
                     break
+                case 'metadata': 
+                    req.attach(key, formData[key]);
+                    sendFormData = false
+                    break
                 case 'hardwareMedia': 
                 case 'certificate': 
                 case 'processorBulkFile':
@@ -273,13 +228,27 @@ export default class NorthAmpliaREST {
                     break
                 case 'files':
                     formData[key].forEach((item, index) => {
-                        console.log(item.name)
-                        req.attach(key, item);
+                        // Esto controla si viene de node (con path) o de web (sin path)
+                        if (item.path) {
+                            var fileName = item.path.replace(/^.*[\\\/]/, '')
+
+                            var contentType = mime.lookup(fileName);
+                            if (contentType) {
+                                req.attach(key, item, {filename: fileName, contentType: contentType});    
+                            } else if (fileName.endsWith('.py')) {
+                                req.attach(key, item, {filename: fileName, contentType: 'text/x-python'});    
+                            } else {
+                                req.attach(key, item, {filename: fileName});    
+                            }    
+                        } else {
+                            req.attach(key, item);
+                        }
                     })
-                   
+                    
                     delete formData[key]
                     sendFormData = false
                     break
+                case 'script':
                 case 'modelFile':
                     req.field(key, formData[key]);
                     delete formData[key]
@@ -293,10 +262,11 @@ export default class NorthAmpliaREST {
                     break;
             }
         })
-        if(sendFormData)
+
+        if(sendFormData && Object.keys(formData).length > 0)
             req.send(formData);
-        return this._createPromiseRequest(req, events, timeout, headers);
     }
+
     /**
      * Invoke DELETE action to url specified
      * @param {!string} url - url to execute DELETE

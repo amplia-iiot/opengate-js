@@ -404,6 +404,14 @@ module.exports = {
                 'context': 'withContext',
                 'columns': 'withColumns'
             },
+            'timeseries function': {
+                'identifier': 'withIdentifier',
+                'organization': 'withOrganization',
+                'name': 'withName',
+                'description': 'withDescription',
+                'value type': 'withValueType',
+                'script': 'withScript'
+            },
             'geocluster': {
                 'identifier': 'withIdentifier',
             },
