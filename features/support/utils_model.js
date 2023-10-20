@@ -56,6 +56,9 @@ module.exports = {
             "timeseries builder": function(ogapi) {
                 return ogapi.timeseriesBuilder();
             },
+            "timeseries functions builder": function(ogapi) {
+                return ogapi.timeseriesFunctionBuilder();
+            },
             "channels search": function(ogapi) {
                 return ogapi.channelsSearchBuilder();
             },

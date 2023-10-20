@@ -118,6 +118,14 @@ var _timeseriesFunctionsCatalogTimeseriesFunctionFinder = require('./timeseriesF
 
 var _timeseriesFunctionsCatalogTimeseriesFunctionFinder2 = _interopRequireDefault(_timeseriesFunctionsCatalogTimeseriesFunctionFinder);
 
+var _timeseriesFunctionsCatalogTimeseriesFunction = require('./timeseriesFunctionsCatalog/TimeseriesFunction');
+
+var _timeseriesFunctionsCatalogTimeseriesFunction2 = _interopRequireDefault(_timeseriesFunctionsCatalogTimeseriesFunction);
+
+var _timeseriesFunctionsCatalogTimeseriesFunctionsHelper = require('./timeseriesFunctionsCatalog/TimeseriesFunctionsHelper');
+
+var _timeseriesFunctionsCatalogTimeseriesFunctionsHelper2 = _interopRequireDefault(_timeseriesFunctionsCatalogTimeseriesFunctionsHelper);
+
 var _operationTypesOperationType = require('./operationTypes/OperationType');
 
 var _operationTypesOperationType2 = _interopRequireDefault(_operationTypesOperationType);
@@ -1670,6 +1678,26 @@ var InternalOpenGateAPI = (function () {
         key: 'newTimeseriesFunctionFinder',
         value: function newTimeseriesFunctionFinder() {
             return new _timeseriesFunctionsCatalogTimeseriesFunctionFinder2['default'](this);
+        }
+
+        /**
+         * This return a TimeserieBuilder to build a specific timeserie
+         * @return {TimeseriesFunction}
+         */
+    }, {
+        key: 'timeseriesFunctionBuilder',
+        value: function timeseriesFunctionBuilder(organization, identifier) {
+            return new _timeseriesFunctionsCatalogTimeseriesFunction2['default'](this, organization, identifier);
+        }
+
+        /**
+         * This return a TimeseriesFunctionsHelper
+         * @return {TimeseriesFunctionsHelper}
+         */
+    }, {
+        key: 'newTimeseriesFunctionsHelper',
+        value: function newTimeseriesFunctionsHelper() {
+            return new _timeseriesFunctionsCatalogTimeseriesFunctionsHelper2['default'](this);
         }
 
         /**

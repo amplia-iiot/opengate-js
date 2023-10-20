@@ -22,64 +22,36 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
-/**
- * This is a base object that contains all you can do about OperationType.
- */
+var _utilFormatsCheck_types = require('../util/formats/check_types');
 
-var OperationType = (function (_BaseProvision) {
-    _inherits(OperationType, _BaseProvision);
+var _utilFormatsCheck_types2 = _interopRequireDefault(_utilFormatsCheck_types);
+
+var _TYPES_ENUM = require('./TYPES_ENUM');
+
+/**
+ * This is a base object that contains all you can do about TimeseriesFunction.
+ */
+var URL = 'timeseries/provision/organizations';
+exports.URL = URL;
+
+var TimeseriesFunction = (function (_BaseProvision) {
+    _inherits(TimeseriesFunction, _BaseProvision);
 
     /**     
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 
-    function OperationType(ogapi, organization, nameForUpdate, operationTypeObj) {
-        _classCallCheck(this, OperationType);
+    function TimeseriesFunction(ogapi, organization, nameForUpdate) {
+        _classCallCheck(this, TimeseriesFunction);
 
-        _get(Object.getPrototypeOf(OperationType.prototype), 'constructor', this).call(this, ogapi, "/organizations");
+        _get(Object.getPrototypeOf(TimeseriesFunction.prototype), 'constructor', this).call(this, ogapi, "timeseries/provision/organizations");
 
-        // Required
-        this.withOrganization(organization);
+        if (organization) {
+            this.withOrganization(organization);
 
-        // only for updates
-        if (nameForUpdate) {
-            this.withIdentifier(nameForUpdate);
-        }
-
-        if (operationTypeObj) {
-            if (operationTypeObj.name) {
-                this.withName(operationTypeObj.name);
-            }
-
-            if (operationTypeObj.title) {
-                this.withTitle(operationTypeObj.title);
-            }
-
-            if (operationTypeObj.description) {
-                this.withDescription(operationTypeObj.description);
-            }
-
-            // Para crear sólo se puede fromCatalog, para actualizar se requiere todo
-            if (operationTypeObj.fromCatalog) {
-                this.fromCatalog(operationTypeObj.fromCatalog);
-            }
-
-            if (nameForUpdate || !operationTypeObj.fromCatalog) {
-                if (operationTypeObj.steps) {
-                    this.withSteps(operationTypeObj.steps);
-                }
-
-                if (operationTypeObj.parameters) {
-                    this.withParameters(operationTypeObj.parameters);
-                }
-
-                if (operationTypeObj.models) {
-                    this.withModels(operationTypeObj.models);
-                }
-
-                if (operationTypeObj.applicableTo) {
-                    this.applicableTo(operationTypeObj.applicableTo);
-                }
+            // only for updates
+            if (nameForUpdate) {
+                this.withIdentifier(nameForUpdate);
             }
         }
     }
@@ -87,13 +59,13 @@ var OperationType = (function (_BaseProvision) {
     /**
      * Set the name for update attribute
      * @param {string} name - required field
-     * @return {OperationType}
+     * @return {TimeseriesFunction}
      */
 
-    _createClass(OperationType, [{
+    _createClass(TimeseriesFunction, [{
         key: 'withIdentifier',
         value: function withIdentifier(name) {
-            if (typeof name !== 'string' || name.length === 0 || name.length > 50) throw new Error('Parameter name must be a string, cannot be empty and has a maximum length of 50');
+            _utilFormatsCheck_types2['default']._checkString(name, 'identifier');
             this._identifier = name;
             return this;
         }
@@ -101,38 +73,25 @@ var OperationType = (function (_BaseProvision) {
         /**
          * Set the organization attribute
          * @param {string} organization - required field
-         * @return {OperationType}
+         * @return {TimeseriesFunction}
          */
     }, {
         key: 'withOrganization',
         value: function withOrganization(organization) {
-            if (typeof organization !== 'string' || organization.length === 0 || organization.length > 50) throw new Error('Parameter organization must be a string, cannot be empty and has a maximum length of 50');
+            _utilFormatsCheck_types2['default']._checkStringAndLength(organization, 50, 'organization');
             this._organization = organization;
-            return this;
-        }
-
-        /**
-         * Set the title attribute
-         * @param {string} title - required field
-         * @return {OperationType}
-         */
-    }, {
-        key: 'withTitle',
-        value: function withTitle(title) {
-            if (typeof title !== 'string') throw new Error('Parameter title must be a string, cannot be empty and has a maximum length of 50');
-            this._title = title;
             return this;
         }
 
         /**
          * Set the name attribute
          * @param {string} name - required field
-         * @return {OperationType}
+         * @return {TimeseriesFunction}
          */
     }, {
         key: 'withName',
         value: function withName(name) {
-            if (typeof name !== 'string' || name.length === 0 || name.length > 50) throw new Error('Parameter name must be a string, cannot be empty and has a maximum length of 50');
+            _utilFormatsCheck_types2['default']._checkString(name, 'name');
             this._name = name;
             return this;
         }
@@ -140,93 +99,74 @@ var OperationType = (function (_BaseProvision) {
         /**
          * Set the description attribute
          * @param {string} description 
-         * @return {OperationType}
+         * @return {TimeseriesFunction}
          */
     }, {
         key: 'withDescription',
         value: function withDescription(description) {
-            this._description = description || undefined;
+            _utilFormatsCheck_types2['default']._checkString(description, 'description');
+            this._description = description;
             return this;
         }
 
         /**
-         * Allows the modification of the parameters
-         * @param {array} parameters 
-         * @return {OperationType}
+         * Set the script attribute
+         * @param {string} script 
+         * @return {TimeseriesFunction}
          */
     }, {
-        key: 'withParameters',
-        value: function withParameters(parameters) {
-            this._parameters = parameters || undefined;
-
+        key: 'withScript',
+        value: function withScript(script) {
+            _utilFormatsCheck_types2['default']._checkString(script, 'script');
+            this._script = script;
             return this;
         }
 
         /**
-         * Set the catalog
-         * @param {string} fromCatalog 
-         * @return {OperationType}
+         * Set the valueTypes attribute
+         * @param {Array} valueTypes 
+         * @return {TimeseriesFunction}
          */
     }, {
-        key: 'fromCatalog',
-        value: function fromCatalog(_fromCatalog) {
-            this._fromCatalog = _fromCatalog;
+        key: 'withValueTypes',
+        value: function withValueTypes(valueTypes) {
+            _utilFormatsCheck_types2['default']._checkArray(valueTypes, 'valueTypes');
+
+            valueTypes.forEach(function (typeTmp) {
+                _utilFormatsCheck_types2['default']._checkType(typeTmp, _TYPES_ENUM.VALUE_TYPES_ENUM);
+            });
+            this._valueTypes = valueTypes;
             return this;
         }
-
-        /**
-         * Allows the modification of the steps
-         * @param {array} steps 
-         * @return {OperationType}
-         */
     }, {
-        key: 'withSteps',
-        value: function withSteps(steps) {
-            this._steps = steps || undefined;
-
-            return this;
-        }
-
-        /**
-         * Allows the modification of the allowed models
-         * @param {array} models 
-         * @return {OperationType}
-         */
-    }, {
-        key: 'withModels',
-        value: function withModels(models) {
-            this._models = models || undefined;
-
-            return this;
-        }
-
-        /**
-         * Allows the modification of the applicableTo
-         * @param {array} applicableTo 
-         * @return {OperationType}
-         */
-    }, {
-        key: 'applicableTo',
-        value: function applicableTo(_applicableTo) {
-            this._applicableTo = _applicableTo || undefined;
-
-            return this;
+        key: 'withMetadataFile',
+        value: function withMetadataFile(file) {
+            // if (typeof file !== 'object')
+            //     throw new Error({ message: "Parameter action requires name and type", parameter: 'action' });
+            this._metadataFile = file;
         }
     }, {
         key: '_composeElement',
         value: function _composeElement(isUpdate) {
-            // this._checkRequiredParameters();
+            this._checkRequiredParameters(isUpdate);
 
             var updateData = {
-                "name": this._name,
-                "title": this._title,
-                "description": this._description ? this._description : undefined,
-                "parameters": this._parameters || undefined,
-                "fromCatalog": this._fromCatalog || undefined,
-                "steps": this._steps || undefined,
-                "models": this._models || undefined,
-                "applicableTo": this._applicableTo || undefined
+                'script': this._script
             };
+
+            if (this._metadataFile) {
+                updateData.metadata = this._metadataFile;
+            } else {
+                var blob = new Blob([JSON.stringify({
+                    "name": this._name,
+                    "description": this._description,
+                    "valueTypes": this._valueTypes || []
+                })], {
+                    type: "application/json"
+                });
+
+                updateData.metadata = blob;
+            }
 
             return updateData;
         }
@@ -234,28 +174,60 @@ var OperationType = (function (_BaseProvision) {
         key: '_checkRequiredParameters',
         value: function _checkRequiredParameters(isUpdate) {
             if (isUpdate) {
-                if (this._identifier === undefined || this._organization === undefined || this._name === undefined || this._title === undefined) throw new Error('Parameters organization, title and name must be defined');
+                // if (this._script === undefined || this._identifier === undefined || this._organization === undefined || this._name === undefined || this._description === undefined)
+                if (!(this._script && (this._metadataFile || this._identifier && this._organization && this._name && this._description))) throw new Error('Parameters organization, identifier, name, description and script must be defined');
             } else {
-                if (this._name === undefined || this._organization === undefined || this._title === undefined) throw new Error('Parameters organization, title and name must be defined');
+                //if (this._script === undefined || this._name === undefined || this._organization === undefined || this._description === undefined)
+                if (!(this._script && (this._metadataFile || this._organization && this._name && this._description))) throw new Error('Parameters organization, name, description and script must be defined');
             }
         }
     }, {
         key: '_buildURL',
         value: function _buildURL() {
-            return "operationTypes/" + this._resource + "/" + this._organization;
+            return URL + "/" + this._organization + "/catalog" + (this._identifier ? '/' + this._identifier : '');
         }
-
-        /** 
-         * Create a new Rule
-         * @return {Promise}
-         * @throws {Error} 
-         */
     }, {
         key: 'create',
         value: function create() {
-            this._checkRequiredParameters();
+            var defer = _q2['default'].defer();
 
-            return this._doNorthPost(this._buildURL(), this._composeElement());
+            this._ogapi.Napi.post_multipart(this._buildURL(), this._composeElement(), {}, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL()).then(function (response) {
+                var statusCode = response.statusCode;
+                switch (statusCode) {
+                    case 200:
+                        {
+                            var resultQuery = response.text != "" ? JSON.parse(response.text) : {};
+                            var _statusCode = response.status;
+                            defer.resolve({
+                                data: resultQuery,
+                                statusCode: _statusCode
+                            });
+                            break;
+                        }
+                    case 201:
+                        {
+                            var _statusCode = response.status;
+                            var _location = response.header && response.header.location;
+                            defer.resolve({
+                                location: _location,
+                                statusCode: _statusCode
+                            });
+                            break;
+                        }
+                    case 204:
+                        defer.resolve(response);
+                        break;
+                    default:
+                        defer.reject({
+                            errors: response.data.errors,
+                            statusCode: response.statusCode
+                        });
+                        break;
+                }
+            })['catch'](function (error) {
+                defer.reject(error);
+            });
+            return defer.promise;
         }
 
         /** 
@@ -266,9 +238,35 @@ var OperationType = (function (_BaseProvision) {
     }, {
         key: 'update',
         value: function update() {
-            this._checkRequiredParameters(true);
+            var defer = _q2['default'].defer();
 
-            return this._doNorthPut(this._buildURL() + "/" + this._identifier, this._composeElement(true));
+            this._ogapi.Napi.put_multipart(this._buildURL(), this._composeElement(true), {}, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL()).then(function (response) {
+                var statusCode = response.statusCode;
+                switch (statusCode) {
+                    case 200:
+                        {
+                            var resultQuery = response.text != "" ? JSON.parse(response.text) : {};
+                            var _statusCode = response.status;
+                            defer.resolve({
+                                data: resultQuery,
+                                statusCode: _statusCode
+                            });
+                            break;
+                        }
+                    case 204:
+                        defer.resolve(response);
+                        break;
+                    default:
+                        defer.reject({
+                            errors: response.data.errors,
+                            statusCode: response.statusCode
+                        });
+                        break;
+                }
+            })['catch'](function (error) {
+                defer.reject(error);
+            });
+            return defer.promise;
         }
 
         /** 
@@ -283,7 +281,7 @@ var OperationType = (function (_BaseProvision) {
 
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            this._ogapi.Napi['delete'](this._buildURL() + "/" + this._identifier).then(function (res) {
+            this._ogapi.Napi['delete'](this._buildURL()).then(function (res) {
                 if (res.statusCode === 200) {
                     defered.resolve({
                         statusCode: res.statusCode
@@ -301,9 +299,8 @@ var OperationType = (function (_BaseProvision) {
         }
     }]);
 
-    return OperationType;
+    return TimeseriesFunction;
 })(_provisionBaseProvision2['default']);
 
-exports['default'] = OperationType;
-module.exports = exports['default'];
+exports['default'] = TimeseriesFunction;
 //# sourceMappingURL=TimeseriesFunction.js.map

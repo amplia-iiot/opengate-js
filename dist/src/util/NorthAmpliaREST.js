@@ -201,60 +201,8 @@ var NorthAmpliaREST = (function () {
             console.info('POST_MULTIPART', _url);
             var req = _superagent2['default'].post(_url);
 
-            var sendFormData = true;
+            this._prepareMultipartForm(formData, req);
 
-            // Esta parte es sólo para cuando viene de tests o node
-            var formDataKeys = Object.keys(formData);
-            formDataKeys.forEach(function (key) {
-                switch (key) {
-                    case 'meta':
-                    case 'json':
-                    case 'file':
-                        req.field(key, formData[key]);
-                        delete formData[key];
-                        break;
-                    case 'hardwareMedia':
-                    case 'certificate':
-                    case 'processorBulkFile':
-                        req.attach('file', formData[key]);
-                        sendFormData = false;
-                        break;
-                    case 'files':
-                        formData[key].forEach(function (item, index) {
-                            // Esto controla si viene de node (con path) o de web (sin path)
-                            if (item.path) {
-                                var fileName = item.path.replace(/^.*[\\\/]/, '');
-
-                                var contentType = _mimeTypes2['default'].lookup(fileName);
-                                if (contentType) {
-                                    req.attach(key, item, { filename: fileName, contentType: contentType });
-                                } else if (fileName.endsWith('.py')) {
-                                    req.attach(key, item, { filename: fileName, contentType: 'text/x-python' });
-                                } else {
-                                    req.attach(key, item, { filename: fileName });
-                                }
-                            } else {
-                                req.attach(key, item);
-                            }
-                        });
-
-                        delete formData[key];
-                        sendFormData = false;
-                        break;
-                    case 'modelFile':
-                        req.field(key, formData[key]);
-                        delete formData[key];
-                        sendFormData = false;
-                        break;
-                    case 'bulkFile':
-                        req.set('Content-Type', formData.ext);
-                        formData = formData.bulkFile;
-                        break;
-                    default:
-                        break;
-                }
-            });
-            if (sendFormData) req.send(formData);
             return this._createPromiseRequest(req, events, timeout, headers);
         }
 
@@ -304,9 +252,15 @@ var NorthAmpliaREST = (function () {
             console.info('PUT_MULTIPART', _url);
             var req = _superagent2['default'].put(_url);
 
+            this._prepareMultipartForm(formData, req);
+
+            return this._createPromiseRequest(req, events, timeout, headers);
+        }
+    }, {
+        key: '_prepareMultipartForm',
+        value: function _prepareMultipartForm(formData, req) {
             var sendFormData = true;
 
-            // Esta parte es sólo para cuando viene de tests o node
             var formDataKeys = Object.keys(formData);
             formDataKeys.forEach(function (key) {
                 switch (key) {
@@ -316,6 +270,10 @@ var NorthAmpliaREST = (function () {
                         req.field(key, formData[key]);
                         delete formData[key];
                         break;
+                    case 'metadata':
+                        req.attach(key, formData[key]);
+                        sendFormData = false;
+                        break;
                     case 'hardwareMedia':
                     case 'certificate':
                     case 'processorBulkFile':
@@ -324,13 +282,40 @@ var NorthAmpliaREST = (function () {
                         break;
                     case 'files':
                         formData[key].forEach(function (item, index) {
-                            console.log(item.name);
-                            req.attach(key, item);
+                            // Esto controla si viene de node (con path) o de web (sin path)
+                            if (item.path) {
+                                var fileName = item.path.replace(/^.*[\\\/]/, '');
+
+                                var contentType = _mimeTypes2['default'].lookup(fileName);
+                                if (contentType) {
+                                    req.attach(key, item, { filename: fileName, contentType: contentType });
+                                } else if (fileName.endsWith('.py')) {
+                                    req.attach(key, item, { filename: fileName, contentType: 'text/x-python' });
+                                } else {
+                                    req.attach(key, item, { filename: fileName });
+                                }
+                            } else {
+                                req.attach(key, item);
+                            }
                         });
 
                         delete formData[key];
                         sendFormData = false;
                         break;
+                    // case 'metadata':
+                    //     const str = JSON.stringify(formData[key]);
+                    //     const bytes = new TextEncoder().encode(str);
+                    //     const blobTmp = new Blob([bytes], {type: "application/json;charset=utf-8"});
+                    //     try {
+                    //         req.attach(key, blobTmp, {contentType: 'application/json'});
+                    //     } catch(err) {
+                    //         req.append(key, blobTmp);
+                    //     }
+
+                    //     delete formData[key]
+                    //     sendFormData = false                   
+                    //     break
+                    case 'script':
                     case 'modelFile':
                         req.field(key, formData[key]);
                         delete formData[key];
@@ -344,8 +329,8 @@ var NorthAmpliaREST = (function () {
                         break;
                 }
             });
-            if (sendFormData) req.send(formData);
-            return this._createPromiseRequest(req, events, timeout, headers);
+
+            if (sendFormData && Object.keys(formData).length > 0) req.send(formData);
         }
 
         /**

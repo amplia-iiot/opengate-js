@@ -88,11 +88,19 @@ export default class GenericFinder {
                         statusCode: HttpStatus.NOT_FOUND
                     });
                 } else {
-                    var data = req.body[_entity] && req.body.provision ? req.body : req.body[_entity];
-                    defered.resolve({
-                        data: data ? data : req.body,
-                        statusCode: req.statusCode
-                    });
+                    if (req.body) {
+                        var data = req.body[_entity] && req.body.provision ? req.body : req.body[_entity];
+                        defered.resolve({
+                            data: data ? data : req.body,
+                            statusCode: req.statusCode
+                        });
+                    } else {
+                        defered.resolve({
+                            data: req.text,
+                            statusCode: req.statusCode
+                        });
+                    }
+                    
                     // }
                 }
             })
