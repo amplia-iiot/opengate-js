@@ -302,19 +302,6 @@ var NorthAmpliaREST = (function () {
                         delete formData[key];
                         sendFormData = false;
                         break;
-                    // case 'metadata':
-                    //     const str = JSON.stringify(formData[key]);
-                    //     const bytes = new TextEncoder().encode(str);
-                    //     const blobTmp = new Blob([bytes], {type: "application/json;charset=utf-8"});
-                    //     try {
-                    //         req.attach(key, blobTmp, {contentType: 'application/json'});
-                    //     } catch(err) {
-                    //         req.append(key, blobTmp);
-                    //     }
-
-                    //     delete formData[key]
-                    //     sendFormData = false                   
-                    //     break
                     case 'script':
                     case 'modelFile':
                         req.field(key, formData[key]);

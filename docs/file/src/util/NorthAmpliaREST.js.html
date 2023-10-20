@@ -258,8 +258,11 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">timeseries</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/timeseries/Timeseries.js~Timeseries.html">Timeseries</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/timeseries/TimeseriesFinder.js~TimeseriesFinder.html">TimeseriesFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-URL">URL</a></span></span></li>
-<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">timeseriesFunctionsCatalog</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType.html">OperationType</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">timeseriesFunctionsCatalog</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/timeseriesFunctionsCatalog/TimeseriesFunction.js~TimeseriesFunction.html">TimeseriesFunction</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/timeseriesFunctionsCatalog/TimeseriesFunctionFinder.js~TimeseriesFunctionFinder.html">TimeseriesFunctionFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/timeseriesFunctionsCatalog/TimeseriesFunctionsHelper.js~ConnectorFunctionsHelper.html">ConnectorFunctionsHelper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-VALUE_TYPES_ENUM">VALUE_TYPES_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-URL">URL</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">transformers</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/transformers/TransformerFinder.js~TransformerFinder.html">TransformerFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/transformers/Transformers.js~Transformers.html">Transformers</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">users</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/users/UserFinder.js~UserFinder.html">UserFinder</a></span></span></li>
@@ -436,63 +439,9 @@ export default class NorthAmpliaREST {
         console.info(&apos;POST_MULTIPART&apos;, _url)
         let req = request.post(_url);
 
-        let sendFormData = true
+        this._prepareMultipartForm(formData, req);
 
-        // Esta parte es s&#xF3;lo para cuando viene de tests o node
-        const formDataKeys = Object.keys(formData)
-        formDataKeys.forEach(key =&gt; {
-            switch (key) {
-                case &apos;meta&apos;:
-                case &apos;json&apos;:
-                case &apos;file&apos;:
-                    req.field(key, formData[key]);    
-                    delete formData[key]
-                    break
-                case &apos;hardwareMedia&apos;: 
-                case &apos;certificate&apos;: 
-                case &apos;processorBulkFile&apos;:
-                    req.attach(&apos;file&apos;, formData[key]);
-                    sendFormData = false
-                    break
-                case &apos;files&apos;:
-                    formData[key].forEach((item, index) =&gt; {
-                        // Esto controla si viene de node (con path) o de web (sin path)
-                        if (item.path) {
-                            var fileName = item.path.replace(/^.*[\\\/]/, &apos;&apos;)
-
-                            var contentType = mime.lookup(fileName);
-                            if (contentType) {
-                                req.attach(key, item, {filename: fileName, contentType: contentType});    
-                            } else if (fileName.endsWith(&apos;.py&apos;)) {
-                                req.attach(key, item, {filename: fileName, contentType: &apos;text/x-python&apos;});    
-                            } else {
-                                req.attach(key, item, {filename: fileName});    
-                            }    
-                        } else {
-                            req.attach(key, item);
-                        }
-                    })
-                    
-                    delete formData[key]
-                    sendFormData = false
-                    break
-                case &apos;modelFile&apos;:
-                    req.field(key, formData[key]);
-                    delete formData[key]
-                    sendFormData = false
-                    break
-                case &apos;bulkFile&apos;:
-                    req.set(&apos;Content-Type&apos;, formData.ext);
-                    formData = formData.bulkFile;
-                    break
-                default:
-                    break;
-            }
-        })
-        if(sendFormData)
-            req.send(formData);
-        return this._createPromiseRequest(req, events, timeout, headers);
-        
+        return this._createPromiseRequest(req, events, timeout, headers);        
     }
 
     /**
@@ -537,9 +486,14 @@ export default class NorthAmpliaREST {
         console.info(&apos;PUT_MULTIPART&apos;, _url)
         let req = request.put(_url);
 
-        let sendFormData = true
+        this._prepareMultipartForm(formData, req);
 
-        // Esta parte es s&#xF3;lo para cuando viene de tests o node
+        return this._createPromiseRequest(req, events, timeout, headers);
+    }
+
+    _prepareMultipartForm(formData, req) {
+        let sendFormData = true
+        
         const formDataKeys = Object.keys(formData)
         formDataKeys.forEach(key =&gt; {
             switch (key) {
@@ -549,6 +503,10 @@ export default class NorthAmpliaREST {
                     req.field(key, formData[key]);    
                     delete formData[key]
                     break
+                case &apos;metadata&apos;: 
+                    req.attach(key, formData[key]);
+                    sendFormData = false
+                    break
                 case &apos;hardwareMedia&apos;: 
                 case &apos;certificate&apos;: 
                 case &apos;processorBulkFile&apos;:
@@ -557,13 +515,27 @@ export default class NorthAmpliaREST {
                     break
                 case &apos;files&apos;:
                     formData[key].forEach((item, index) =&gt; {
-                        console.log(item.name)
-                        req.attach(key, item);
+                        // Esto controla si viene de node (con path) o de web (sin path)
+                        if (item.path) {
+                            var fileName = item.path.replace(/^.*[\\\/]/, &apos;&apos;)
+
+                            var contentType = mime.lookup(fileName);
+                            if (contentType) {
+                                req.attach(key, item, {filename: fileName, contentType: contentType});    
+                            } else if (fileName.endsWith(&apos;.py&apos;)) {
+                                req.attach(key, item, {filename: fileName, contentType: &apos;text/x-python&apos;});    
+                            } else {
+                                req.attach(key, item, {filename: fileName});    
+                            }    
+                        } else {
+                            req.attach(key, item);
+                        }
                     })
-                   
+                    
                     delete formData[key]
                     sendFormData = false
                     break
+                case &apos;script&apos;:
                 case &apos;modelFile&apos;:
                     req.field(key, formData[key]);
                     delete formData[key]
@@ -577,10 +549,11 @@ export default class NorthAmpliaREST {
                     break;
             }
         })
-        if(sendFormData)
+
+        if(sendFormData &amp;&amp; Object.keys(formData).length &gt; 0)
             req.send(formData);
-        return this._createPromiseRequest(req, events, timeout, headers);
     }
+
     /**
      * Invoke DELETE action to url specified
      * @param {!string} url - url to execute DELETE

@@ -258,8 +258,11 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">timeseries</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/timeseries/Timeseries.js~Timeseries.html">Timeseries</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/timeseries/TimeseriesFinder.js~TimeseriesFinder.html">TimeseriesFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-URL">URL</a></span></span></li>
-<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">timeseriesFunctionsCatalog</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/timeseriesFunctionsCatalog/TimeseriesFunction.js~OperationType.html">OperationType</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">timeseriesFunctionsCatalog</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/timeseriesFunctionsCatalog/TimeseriesFunction.js~TimeseriesFunction.html">TimeseriesFunction</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/timeseriesFunctionsCatalog/TimeseriesFunctionFinder.js~TimeseriesFunctionFinder.html">TimeseriesFunctionFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/timeseriesFunctionsCatalog/TimeseriesFunctionsHelper.js~ConnectorFunctionsHelper.html">ConnectorFunctionsHelper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-VALUE_TYPES_ENUM">VALUE_TYPES_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-URL">URL</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">transformers</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/transformers/TransformerFinder.js~TransformerFinder.html">TransformerFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/transformers/Transformers.js~Transformers.html">Transformers</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">users</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/users/UserFinder.js~UserFinder.html">UserFinder</a></span></span></li>
@@ -286,60 +289,27 @@
 
 import BaseProvision from &apos;../provision/BaseProvision&apos;;
 import q from &apos;q&apos;;
+export const URL = &apos;timeseries/provision/organizations&apos;;
+import checkType from &apos;../util/formats/check_types&apos;
+import {VALUE_TYPES_ENUM} from &apos;./TYPES_ENUM&apos;
 
 /**
- * This is a base object that contains all you can do about OperationType.
+ * This is a base object that contains all you can do about TimeseriesFunction.
  */
-export default class OperationType extends BaseProvision {
+export default class TimeseriesFunction extends BaseProvision {
 
     /**     
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
-    constructor(ogapi, organization, nameForUpdate, operationTypeObj) {
-        super(ogapi, &quot;/organizations&quot;);
+    constructor(ogapi, organization, nameForUpdate) {
+        super(ogapi, &quot;timeseries/provision/organizations&quot;);
 
-        // Required
-        this.withOrganization(organization);
-        
-        // only for updates
-        if (nameForUpdate) {
-            this.withIdentifier(nameForUpdate);
-        }
-        
-        if (operationTypeObj) {
-            if (operationTypeObj.name) {
-                this.withName(operationTypeObj.name);
-            }
+        if (organization) {
+            this.withOrganization(organization);
 
-            if (operationTypeObj.title) {
-                this.withTitle(operationTypeObj.title);
-            }
-
-            if (operationTypeObj.description) {
-                this.withDescription(operationTypeObj.description);
-            }
-
-            // Para crear s&#xF3;lo se puede fromCatalog, para actualizar se requiere todo
-            if (operationTypeObj.fromCatalog ) {
-                this.fromCatalog(operationTypeObj.fromCatalog);
-            } 
-            
-            if (nameForUpdate || !operationTypeObj.fromCatalog) {
-                if (operationTypeObj.steps) {
-                    this.withSteps(operationTypeObj.steps);
-                }
-    
-                if (operationTypeObj.parameters) {
-                    this.withParameters(operationTypeObj.parameters);
-                }
-    
-                if (operationTypeObj.models) {
-                    this.withModels(operationTypeObj.models);
-                }
-    
-                if (operationTypeObj.applicableTo) {
-                    this.applicableTo(operationTypeObj.applicableTo);
-                }    
+            // only for updates
+            if (nameForUpdate) {
+                this.withIdentifier(nameForUpdate);
             }
         }
     }
@@ -347,11 +317,10 @@ export default class OperationType extends BaseProvision {
     /**
      * Set the name for update attribute
      * @param {string} name - required field
-     * @return {OperationType}
+     * @return {TimeseriesFunction}
      */
     withIdentifier(name) {
-        if (typeof name !== &apos;string&apos; || name.length === 0 || name.length &gt; 50)
-            throw new Error(&apos;Parameter name must be a string, cannot be empty and has a maximum length of 50&apos;);
+        checkType._checkString(name, &apos;identifier&apos;);
         this._identifier = name;
         return this;
     }
@@ -359,35 +328,21 @@ export default class OperationType extends BaseProvision {
     /**
      * Set the organization attribute
      * @param {string} organization - required field
-     * @return {OperationType}
+     * @return {TimeseriesFunction}
      */
     withOrganization(organization) {
-        if (typeof organization !== &apos;string&apos; || organization.length === 0 || organization.length &gt; 50)
-            throw new Error(&apos;Parameter organization must be a string, cannot be empty and has a maximum length of 50&apos;);
+        checkType._checkStringAndLength(organization, 50, &apos;organization&apos;);
         this._organization = organization;
-        return this;
-    }
-
-    /**
-     * Set the title attribute
-     * @param {string} title - required field
-     * @return {OperationType}
-     */
-    withTitle(title) {
-        if (typeof title !== &apos;string&apos;)
-            throw new Error(&apos;Parameter title must be a string, cannot be empty and has a maximum length of 50&apos;);
-        this._title = title;
         return this;
     }
 
     /**
      * Set the name attribute
      * @param {string} name - required field
-     * @return {OperationType}
+     * @return {TimeseriesFunction}
      */
     withName(name) {
-        if (typeof name !== &apos;string&apos; || name.length === 0 || name.length &gt; 50)
-            throw new Error(&apos;Parameter name must be a string, cannot be empty and has a maximum length of 50&apos;);
+        checkType._checkString(name, &apos;name&apos;);
         this._name = name;
         return this;
     }
@@ -395,108 +350,127 @@ export default class OperationType extends BaseProvision {
     /**
      * Set the description attribute
      * @param {string} description 
-     * @return {OperationType}
+     * @return {TimeseriesFunction}
      */
     withDescription(description) {
-        this._description = description || undefined;
+        checkType._checkString(description, &apos;description&apos;);
+        this._description = description;
         return this;
     }
 
     /**
-     * Allows the modification of the parameters
-     * @param {array} parameters 
-     * @return {OperationType}
+     * Set the script attribute
+     * @param {string} script 
+     * @return {TimeseriesFunction}
      */
-    withParameters(parameters) {
-        this._parameters = parameters || undefined;
-
+    withScript(script) {
+        checkType._checkString(script, &apos;script&apos;);
+        this._script = script;
         return this;
     }
 
     /**
-     * Set the catalog
-     * @param {string} fromCatalog 
-     * @return {OperationType}
+     * Set the valueTypes attribute
+     * @param {Array} valueTypes 
+     * @return {TimeseriesFunction}
      */
-    fromCatalog(fromCatalog) {
-        this._fromCatalog = fromCatalog;
+    withValueTypes(valueTypes) {
+        checkType._checkArray(valueTypes, &apos;valueTypes&apos;);
+
+        valueTypes.forEach((typeTmp) =&gt; {
+            checkType._checkType(typeTmp, VALUE_TYPES_ENUM);
+        })
+        this._valueTypes = valueTypes;
         return this;
     }
     
-    /**
-     * Allows the modification of the steps
-     * @param {array} steps 
-     * @return {OperationType}
-     */
-    withSteps(steps) {
-        this._steps = steps || undefined;
-
-        return this;
-    }
-
-    /**
-     * Allows the modification of the allowed models
-     * @param {array} models 
-     * @return {OperationType}
-     */
-    withModels(models) {
-        this._models = models || undefined;
-
-        return this;
-    }
-
-    /**
-     * Allows the modification of the applicableTo
-     * @param {array} applicableTo 
-     * @return {OperationType}
-     */
-    applicableTo(applicableTo) {
-        this._applicableTo = applicableTo || undefined;
-
-        return this;
+    withMetadataFile(file) {
+        // if (typeof file !== &apos;object&apos;)
+        //     throw new Error({ message: &quot;Parameter action requires name and type&quot;, parameter: &apos;action&apos; });
+        this._metadataFile = file
     }
 
     _composeElement(isUpdate) {
-        // this._checkRequiredParameters();
+        this._checkRequiredParameters(isUpdate);
 
         let updateData = {
-            &quot;name&quot;: this._name,
-            &quot;title&quot;: this._title,
-            &quot;description&quot;: (this._description ? this._description : undefined),
-            &quot;parameters&quot;: this._parameters || undefined,
-            &quot;fromCatalog&quot;: this._fromCatalog || undefined,
-            &quot;steps&quot;:this._steps || undefined,
-            &quot;models&quot;: this._models || undefined,
-            &quot;applicableTo&quot;:  this._applicableTo || undefined
+            &apos;script&apos;: this._script
         };
 
+        
+        if (this._metadataFile) {
+            updateData.metadata = this._metadataFile
+        } else {
+            let blob = new Blob([JSON.stringify({
+                &quot;name&quot;: this._name,
+                &quot;description&quot;: this._description,
+                &quot;valueTypes&quot;: this._valueTypes || []
+            })], {
+                type: &quot;application/json&quot;
+            });
+
+            updateData.metadata = blob
+        }
+        
         return updateData;
     }
 
-
     _checkRequiredParameters(isUpdate) {
         if (isUpdate) {
-            if (this._identifier === undefined || this._organization === undefined || this._name === undefined || this._title === undefined)
-                throw new Error(&apos;Parameters organization, title and name must be defined&apos;);
+            // if (this._script === undefined || this._identifier === undefined || this._organization === undefined || this._name === undefined || this._description === undefined)
+            if (!(this._script &amp;&amp; (this._metadataFile || (this._identifier &amp;&amp; this._organization &amp;&amp; this._name &amp;&amp; this._description))))
+                throw new Error(&apos;Parameters organization, identifier, name, description and script must be defined&apos;);
         } else {
-            if (this._name === undefined || this._organization === undefined || this._title === undefined)
-                throw new Error(&apos;Parameters organization, title and name must be defined&apos;);
+            //if (this._script === undefined || this._name === undefined || this._organization === undefined || this._description === undefined)
+            if (!(this._script &amp;&amp; (this._metadataFile || (this._organization &amp;&amp; this._name &amp;&amp; this._description))))
+                throw new Error(&apos;Parameters organization, name, description and script must be defined&apos;);
         }
     }
 
     _buildURL() {
-        return &quot;operationTypes/&quot; + this._resource + &quot;/&quot; + this._organization;
+        return URL + &quot;/&quot; + this._organization  + &quot;/catalog&quot; + (this._identifier?&apos;/&apos;+ this._identifier:&apos;&apos;);
     }
 
-    /** 
-     * Create a new Rule
-     * @return {Promise}
-     * @throws {Error} 
-     */
     create() {
-        this._checkRequiredParameters();
+        const defer = q.defer();
 
-        return this._doNorthPost(this._buildURL(), this._composeElement());
+        this._ogapi.Napi.post_multipart(this._buildURL(), this._composeElement(), {}, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
+            .then((response) =&gt; {
+                let statusCode = response.statusCode;
+                switch (statusCode) {
+                    case 200:{
+                        const resultQuery = response.text != &quot;&quot; ? JSON.parse(response.text) : {};
+                        const _statusCode = response.status;
+                        defer.resolve({
+                            data: resultQuery,
+                            statusCode: _statusCode
+                        });
+                        break
+                    }
+                    case 201:{
+                        const _statusCode = response.status;
+                        const location =  response.header &amp;&amp; response.header.location
+                        defer.resolve({
+                            location: location,
+                            statusCode: _statusCode
+                        });
+                        break
+                    }
+                    case 204:
+                        defer.resolve(response);
+                        break
+                    default:
+                        defer.reject({
+                            errors: response.data.errors,
+                            statusCode: response.statusCode
+                        });
+                        break
+                }
+            })
+            .catch((error) =&gt; {
+                defer.reject(error);
+            });
+        return defer.promise;
     }
 
     /** 
@@ -505,9 +479,36 @@ export default class OperationType extends BaseProvision {
      * @throws {Error} 
      */
     update() {
-        this._checkRequiredParameters(true);
+        const defer = q.defer();
 
-        return this._doNorthPut(this._buildURL() + &quot;/&quot; + this._identifier, this._composeElement(true));
+        this._ogapi.Napi.put_multipart(this._buildURL(), this._composeElement(true), {}, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
+            .then((response) =&gt; {
+                let statusCode = response.statusCode;
+                switch (statusCode) {
+                    case 200:{
+                        const resultQuery = response.text != &quot;&quot; ? JSON.parse(response.text) : {};
+                        const _statusCode = response.status;
+                        defer.resolve({
+                            data: resultQuery,
+                            statusCode: _statusCode
+                        });
+                        break
+                    }
+                    case 204:
+                        defer.resolve(response);
+                        break
+                    default:
+                        defer.reject({
+                            errors: response.data.errors,
+                            statusCode: response.statusCode
+                        });
+                        break
+                }
+            })
+            .catch((error) =&gt; {
+                defer.reject(error);
+            });
+        return defer.promise;
     }
 
     /** 
@@ -521,7 +522,7 @@ export default class OperationType extends BaseProvision {
 
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Napi.delete(this._buildURL()+ &quot;/&quot; + this._identifier)
+        this._ogapi.Napi.delete(this._buildURL())
             .then((res) =&gt; {
                 if (res.statusCode === 200) {
                     defered.resolve({
