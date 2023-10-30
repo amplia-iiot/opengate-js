@@ -383,6 +383,19 @@ export default class TimeseriesFunction extends BaseProvision {
         this._valueTypes = valueTypes;
         return this;
     }
+
+    /**
+     * Set the returnType attribute
+     * @param {String} returnType
+     * @return {TimeseriesFunction}
+     */
+    withReturnType(returnType) {
+        checkType._checkString(returnType, &apos;returnType&apos;);
+        checkType._checkType(returnType, VALUE_TYPES_ENUM);
+
+        this._returnType = returnType;
+        return this;
+    }
     
     withMetadataFile(file) {
         // if (typeof file !== &apos;object&apos;)
@@ -397,14 +410,14 @@ export default class TimeseriesFunction extends BaseProvision {
             &apos;script&apos;: this._script
         };
 
-        
         if (this._metadataFile) {
             updateData.metadata = this._metadataFile
         } else {
             let blob = new Blob([JSON.stringify({
                 &quot;name&quot;: this._name,
                 &quot;description&quot;: this._description,
-                &quot;valueTypes&quot;: this._valueTypes || []
+                &quot;valueTypes&quot;: this._valueTypes || [],
+                &quot;returnType&quot;: this._returnType || undefined,
             })], {
                 type: &quot;application/json&quot;
             });

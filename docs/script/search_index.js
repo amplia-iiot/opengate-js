@@ -10470,6 +10470,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/timeseriesfunctionscatalog/timeseriesfunction.js~timeseriesfunction#withreturntype",
+    "class/src/timeseriesFunctionsCatalog/TimeseriesFunction.js~TimeseriesFunction.html#instance-method-withReturnType",
+    "src/timeseriesFunctionsCatalog/TimeseriesFunction.js~TimeseriesFunction#withReturnType",
+    "method"
+  ],
+  [
     "src/timeseriesfunctionscatalog/timeseriesfunction.js~timeseriesfunction#withscript",
     "class/src/timeseriesFunctionsCatalog/TimeseriesFunction.js~TimeseriesFunction.html#instance-method-withScript",
     "src/timeseriesFunctionsCatalog/TimeseriesFunction.js~TimeseriesFunction#withScript",
