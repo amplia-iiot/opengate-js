@@ -138,6 +138,21 @@ var TimeseriesFunction = (function (_BaseProvision) {
             this._valueTypes = valueTypes;
             return this;
         }
+
+        /**
+         * Set the returnType attribute
+         * @param {String} returnType
+         * @return {TimeseriesFunction}
+         */
+    }, {
+        key: 'withReturnType',
+        value: function withReturnType(returnType) {
+            _utilFormatsCheck_types2['default']._checkString(returnType, 'returnType');
+            _utilFormatsCheck_types2['default']._checkType(returnType, _TYPES_ENUM.VALUE_TYPES_ENUM);
+
+            this._returnType = returnType;
+            return this;
+        }
     }, {
         key: 'withMetadataFile',
         value: function withMetadataFile(file) {
@@ -160,7 +175,8 @@ var TimeseriesFunction = (function (_BaseProvision) {
                 var blob = new Blob([JSON.stringify({
                     "name": this._name,
                     "description": this._description,
-                    "valueTypes": this._valueTypes || []
+                    "valueTypes": this._valueTypes || [],
+                    "returnType": this._returnType || undefined
                 })], {
                     type: "application/json"
                 });
