@@ -263,7 +263,7 @@ export default class NorthAmpliaREST {
             }
         })
 
-        if(sendFormData && Object.keys(formData).length > 0)
+        if(sendFormData)
             req.send(formData);
     }
 
