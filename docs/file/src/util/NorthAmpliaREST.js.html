@@ -550,7 +550,7 @@ export default class NorthAmpliaREST {
             }
         })
 
-        if(sendFormData &amp;&amp; Object.keys(formData).length &gt; 0)
+        if(sendFormData)
             req.send(formData);
     }
 
