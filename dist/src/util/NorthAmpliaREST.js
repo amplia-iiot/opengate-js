@@ -317,7 +317,7 @@ var NorthAmpliaREST = (function () {
                 }
             });
 
-            if (sendFormData && Object.keys(formData).length > 0) req.send(formData);
+            if (sendFormData) req.send(formData);
         }
 
         /**
