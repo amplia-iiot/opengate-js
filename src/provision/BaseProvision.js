@@ -131,6 +131,28 @@ export default class BaseProvision {
         return promise;
     }
 
+    _doSouthDelete(body) {
+        var defered = q.defer();
+        var promise = defered.promise;
+        this._ogapi.Sapi.delete(this._buildURL(), this._timeout, this._getExtraHeaders(), this._getUrlParameters(), body, this._getServiceBaseURL())
+            .then((res) => {
+                if (res.statusCode === 200) {
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
+                } else {
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
+                }
+            })
+            .catch((error) => {
+                defered.reject(error);
+            });
+        return promise;
+    }
+
     /**
      * This invoke a request to OpenGate North API and the callback is managed by promises
      * This function updates a entity of provision
@@ -200,10 +222,70 @@ export default class BaseProvision {
         return promise;
     }
 
+    _doSouthPut(resource, element) {
+        var defered = q.defer();
+        var promise = defered.promise;
+
+        this._ogapi.Sapi.put(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
+            .then((res) => {
+                if (res.statusCode === 200) {
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
+                } else if (res.status === 200) {
+                    defered.resolve({
+                        statusCode: res.status
+                    });
+                } else {
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
+                }
+            })
+            .catch((error) => {
+                defered.reject(error);
+            });
+        return promise;
+    }
+
     _doNorthPost(resource, element, returnBody) {
         var defered = q.defer();
         var promise = defered.promise;
         this._ogapi.Napi.post(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
+            .then((res) => {
+                const response = {
+                    statusCode: res.statusCode
+                }
+                if (res.statusCode === 201) {
+                    if (typeof this._onCreated === "function") {
+                        this._onCreated(res.header.location);
+                    }
+                    response.location = res.header.location
+                    if(returnBody){
+                        response.data = res.body
+                    }
+                    defered.resolve(response);
+                } else if (res.statusCode === 200) {
+                    if(returnBody){
+                        response.data = res.body
+                    }
+                    defered.resolve(response);
+                } else {
+                    response.errors = res.errors
+                    defered.reject(response);
+                }
+            })
+            .catch((error) => {
+                defered.reject(error);
+            });
+        return promise;
+    }
+
+    _doSouthPost(resource, element, returnBody) {
+        var defered = q.defer();
+        var promise = defered.promise;
+        this._ogapi.Sapi.post(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
             .then((res) => {
                 const response = {
                     statusCode: res.statusCode

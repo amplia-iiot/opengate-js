@@ -14,11 +14,11 @@ searchingModel = require('./searching_model');
 mocksModel = require('./mocks/mockModel')
 
 function World() {
-    this.test_url_north = process.env.API_NORTH_INTERNAL || 'https://devweb.opengate.es';
-    this.test_url_south = process.env.API_SOUTH_INTERNAL || 'https://devweb.opengate.es/south';
-    this.apikey = process.env.API_KEY || 'b919a4ba-4a82-4fd1-95c5-2a87eb0c73c3';
-    this.YOUR_EMAIL = process.env.YOUR_EMAIL || 'josemaria.perez@amplia.es';
-    this.YOUR_PASSWORD = process.env.YOUR_PASSWORD || 'Ch3m44mpl14$';
+    this.test_url_north = process.env.API_NORTH_INTERNAL || 'https://API_URL';
+    this.test_url_south = process.env.API_SOUTH_INTERNAL || 'https://API_URL/south';
+    //this.apikey = process.env.API_KEY || 'YOUR_API_KEY';
+    this.YOUR_EMAIL = process.env.YOUR_EMAIL || 'YOUR_EMAIL';
+    this.YOUR_PASSWORD = process.env.YOUR_PASSWORD || 'YOUR_PASSWORD';
     this.guerrillaApi = 'https://api.guerrillamail.com/ajax.php'
     chai.use(chai_as_promised);
     this.expect = chai.expect;

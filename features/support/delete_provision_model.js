@@ -32,6 +32,9 @@ module.exports = {
             },
             'provisionProcessors':{
                 'identifier': 'withIdentifier'
+            },
+            'connector function catalog': {
+                'identifier': 'withIdentifier'
             }
         }[setter];
     },
@@ -44,7 +47,8 @@ module.exports = {
             'area': 'withIdentifier',
             'dataset': 'withIdentifier',
             'timeserie': 'withIdentifier',
-            'domain': 'withDomain'
+            'domain': 'withDomain',
+            'connector function catalog': 'withIdentifier'
         }[method];
     }
 };

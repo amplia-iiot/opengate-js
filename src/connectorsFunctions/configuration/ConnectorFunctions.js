@@ -1,11 +1,11 @@
 'use strict';
 
-import BaseProvision from '../provision/BaseProvision';
+import BaseProvision from '../../provision/BaseProvision';
 import {
     CONNECTOR_FUNCTION_TYPES,
     CONNECTOR_FUNCTION_OPERATIONAL_STATUS,
     CONNECTOR_FUNCTION_PAYLOAD_TYPES
-} from './enum/_CONNECTOR_FUNCTIONS_ENUMS';
+} from '../_CONNECTOR_FUNCTIONS_ENUMS';
 
 import q from 'q';
 

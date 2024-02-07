@@ -458,6 +458,21 @@ module.exports = {
                 'identifier': 'withIdentifier',
                 'name': 'withName'
             },
+            'connector function catalog': {
+                'identifier': "withIdentifier",
+                'name': 'withName',
+                'description':'withDescription',
+                'operationalStatus': 'withOperationalStatus',
+                'operationName': 'withOperationName',
+                'type': 'withType',
+                'cloneable': 'withCloneable',
+                'northCriterias': 'withNorthCriterias',
+                'northCriteria': 'addNorthCriteria',
+                'southCriterias': 'withSouthCriterias',
+                'southCriteria': 'addSouthCriteria',
+                'javascript': 'withJavascript',
+                'payloadType': 'withPayloadType',
+            }
         }[setter];
     },
     getter_response: function (getter) {

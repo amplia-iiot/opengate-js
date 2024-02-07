@@ -126,9 +126,12 @@ import ProvisionProcessorsFinder from './provisionProcessors/provisionProcessors
 import EntityFinder from './entities/EntityFinder';
 import AlarmActions from './alarms/AlarmActions';
 import _superagent from 'superagent';
-import ConnectorFunctionsHelper from './connectorsFunctionsConfiguration/ConnectorFunctionsHelper';
-import ConnectorFunctionsFinder from './connectorsFunctionsConfiguration/ConnectorFunctionsFinder';
-import ConnectorFunctions from './connectorsFunctionsConfiguration/ConnectorFunctions';
+import ConnectorFunctionsHelper from './connectorsFunctions/configuration/ConnectorFunctionsHelper';
+import ConnectorFunctionsFinder from './connectorsFunctions/configuration/ConnectorFunctionsFinder';
+import ConnectorFunctions from './connectorsFunctions/configuration/ConnectorFunctions';
+import ConnectorFunctionsCatalogBuilder from './connectorsFunctions/catalog/ConnectorFunctions';
+import ConnectorFunctionsCatalogFinder from './connectorsFunctions/catalog/ConnectorFunctionsCatalogFinder'
+import ConnectorFunctionsCatalog from './connectorsFunctions/catalog/ConnectorFunctionsCatalog'
 import PipelineFinder from './pipelines/PipelineFinder';
 import TransformerFinder from './transformers/TransformerFinder';
 import AIModelsFinder from './AIModels/AIModelsFinder';
@@ -1153,6 +1156,22 @@ export default class InternalOpenGateAPI {
     }
 
     /**
+     * This return a ConnectorFunctionsCatalogFinder 
+     * @return {ConnectorFunctionsCatalogFinder}
+     */
+    newConnectorFunctionsCatalogFinder() {
+        return new ConnectorFunctionsCatalogFinder(this)
+    }
+
+    /**
+     * This return a ConnectorFunctionsCatalog
+     * @return {ConnectorFunctionsCatalog}
+     */
+    newConnectorFunctionsCatalog() {
+        return new ConnectorFunctionsCatalog(this)
+    }
+
+    /**
      * This return a ConnectorFunctionsHelper
      * @return {ConnectorFunctionsHelper}
      */
@@ -1166,6 +1185,16 @@ export default class InternalOpenGateAPI {
      */
     connectorFunctionsBuilder(organization, channel, identifier, connectorFunctionData) {
         return new ConnectorFunctions(this, organization, channel, identifier, connectorFunctionData)
+    }
+
+    /**
+     * 
+     * @param {String} identifier - only update or delete
+     * @param {Object} connectorFunctionsCatalog 
+     * @returns {ConnectorFunctionsCatalog}
+     */
+    connectorFunctionsCatalogBuilder(identifier, connectorFunctionsCatalog){
+        return new ConnectorFunctionsCatalogBuilder(this, identifier, connectorFunctionsCatalog)
     }
 
     /**
