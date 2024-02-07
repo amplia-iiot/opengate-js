@@ -264,6 +264,19 @@ Given(/^the "([^"]*)" with null value$/, function (setterName, callback) {
     callback();
 });
 
+Given(/^the "([^"]*)" with (true|false) value$/, function (setterName, booleanValue, callback) {
+    this.error = undefined;
+    try {
+        var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
+        this.util[method](booleanValue === 'false' ? false : true);
+    } catch (err) {
+        this.error = err;
+        assert.ifError(this.error);
+    }
+
+    callback();
+});
+
 Given(/^the "([^"]*)" "([^"]*)"$/, function (setterName, setterValue, callback) {
     this.error = undefined;
     try {
@@ -668,7 +681,9 @@ Given (/^an email "([^"]*)" and password "([^"]*)" the user logs in$/, function(
         _this.error = undefined;
         const _user = response.data.user
         _this.ogapi.Napi._options.jwt = _user.jwt
+        console.log('JWT', _this.ogapi.Napi._options.jwt)
     }).catch((err)=>{
+        console.log(err)
         console.error("ERROR, NO LOGIN!!!", err);
         _this.error = err;
         _this.responseData = err;

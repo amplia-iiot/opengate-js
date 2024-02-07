@@ -1,6 +1,6 @@
 'use strict';
 
-import GenericFinder from '../GenericFinder';
+import GenericFinder from '../../GenericFinder';
 import q from 'q';
 import HttpStatus from 'http-status-codes';
 
@@ -8,7 +8,7 @@ import HttpStatus from 'http-status-codes';
 import {
     CONNECTOR_FUNCTION_SOUTH_PROTOCOLS,
     CONNECTOR_FUNCTION_PAYLOAD_TYPES
-} from './enum/_CONNECTOR_FUNCTIONS_ENUMS';
+} from '../_CONNECTOR_FUNCTIONS_ENUMS';
 
 /**
  *   This class allow make get request to RuleConfigurationsHelper resource into Opengate North API.

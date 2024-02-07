@@ -375,7 +375,11 @@ export default class NorthAmpliaREST {
         _req = _req.end(function(err, res) {
             if (err !== null) {
                 console.error("OGAPI ERROR: ")
-                console.error(err)
+                try{
+                    console.log(JSON.stringify(err))
+                }catch(err){
+                    console.log(err)
+                }
                 let data;
                 let headers;
                 let status = err.status ? err.status : undefined;

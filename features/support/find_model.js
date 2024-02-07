@@ -91,6 +91,10 @@ module.exports = {
             },
             'countries': {
                 'countries': 'getCountries'
+            },
+            'connectorFunctionsCalaog': {
+                'connectorFunctionsId': 'findByConnectorFunctionsId',
+                'catalog': 'getConnectorFunctionsCatalog'
             }
         } [setter];
         ///home/manuel/Escritorio/proyectos/opengateJs/opengate-js/features/support/find_model.js
@@ -137,6 +141,7 @@ module.exports = {
             'country': '$[0].name',
             'region': '$[0].regions[0].name',
             'province': '$[0].regions[0].provinces[0].name',
+            'connector function catalog name': '$[0].connectorFunctions.name'
             
         } [getter];
     }

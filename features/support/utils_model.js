@@ -352,6 +352,15 @@ module.exports = {
             }, 
             "countries finder": function(ogapi){
                 return ogapi.newCountriesCatalog()
+            },
+            "connector functions catalog builder": function(ogapi){
+                return ogapi.connectorFunctionsCatalogBuilder()
+            },
+            "connector functions catalog finder": function(ogapi){
+                return ogapi.newConnectorFunctionsCatalogFinder()
+            },
+            "connector functions catalog": function(ogapi){
+                return ogapi.newConnectorFunctionsCatalog()
             }
         };
         return utilsMath[utilName](ogapi, param, param2);

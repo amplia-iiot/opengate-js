@@ -21,18 +21,27 @@ When(/^I try to find by...$/, function (table) {
         _this.responseData = response;
 
     }
+
+    function getContent(content) {
+        if(content === 'from_location_previous_response'){
+            var location = _this.responseData.location;
+            return location.substring(location.lastIndexOf("/") + 1);
+        }
+        return content
+    }
     try {
 
         var data = table.hashes();
         var findMethod;
         if (data.length == 1) {
             findMethod = this.model_match(this.currentModel).setters(this.currentEntity)[data[0].field];
-            return this.util[findMethod](data[0].content).then(digestResponseData).catch(digestErrorData);
+            return this.util[findMethod](getContent(data[0].content)).then(digestResponseData).catch(digestErrorData);
         } else if (data.length > 1) {
             var find = "";
             var params = "";
             for (var i = 0; i < data.length; i++) {
                 var _data = data[i];
+                console.log('DATA', json.stringify(data))
                 var field = _data.field;
                 if (i > 0) {
                     if (field !== 'flattened')
@@ -41,17 +50,8 @@ When(/^I try to find by...$/, function (table) {
                 }
                 if (field !== 'flattened')
                     find += _data.field;
-                var content = _data.content;
-                switch (content) {
-                    case 'from_location_previous_response':
-                        var location = this.responseData.location;
-                        var id = location.substring(location.lastIndexOf("/") + 1);
-                        params += '"' + id + '"';
-                        break;
-                    default:
-                        params += '"' + content + '"';
-                        break;
-                }
+                var content = getContent(_data.content);
+                params += '"' + content + '"';
             }
             findMethod = this.model_match(this.currentModel).setters(this.currentEntity)[find];
             return eval('this.util["' + findMethod + '"](' + params + ').then(digestResponseData).catch(digestErrorData);');

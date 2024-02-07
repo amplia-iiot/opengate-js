@@ -927,7 +927,6 @@ When(/^I request reset password$/, function () {
     }
 
     try {
-        console.log('_this.util', _this.util)
         return _this.util.requestResetPassword().then(catchResponse).catch(catchErrorResponse);
     } catch (err) {
         console.error('ERROR: ', err);

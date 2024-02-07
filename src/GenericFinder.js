@@ -17,6 +17,7 @@ export default class GenericFinder {
      */
     constructor(ogapi, source, entity, error_not_found, serviceBaseURL) {
         this._api = ogapi.Napi;
+        this._apiSouth = ogapi.Sapi;
         this._baseUrl = source;
         this._entity = entity;
         this._error_not_found = error_not_found;
@@ -75,7 +76,11 @@ export default class GenericFinder {
      * @return {Promise}
      * @private
      */
-    _execute() {
+    _execute(south) {
+        let _api = this._api
+        if(south){
+            _api = this._apiSouth
+        }
         let defered = q.defer();
         let promise = defered.promise;
         let _entity = this._entity;
