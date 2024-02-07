@@ -82,13 +82,16 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-POWER_SUPPLY_SOURCE_ENUM">POWER_SUPPLY_SOURCE_ENUM</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOFTWARE_TYPE_ENUM">SOFTWARE_TYPE_ENUM</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEMPERATURE_STATUS_ENUM">TEMPERATURE_STATUS_ENUM</a></span></span></li>
-<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">connectorsFunctionsConfiguration</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions.html">ConnectorFunctions</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctionsConfiguration/ConnectorFunctionsFinder.js~ConnectorFunctionsFinder.html">ConnectorFunctionsFinder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctionsConfiguration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper.html">ConnectorFunctionsHelper</a></span></span></li>
-<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">connectorsFunctionsConfiguration/enum</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONNECTOR_FUNCTION_OPERATIONAL_STATUS">CONNECTOR_FUNCTION_OPERATIONAL_STATUS</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">connectorsFunctions</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONNECTOR_FUNCTION_OPERATIONAL_STATUS">CONNECTOR_FUNCTION_OPERATIONAL_STATUS</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONNECTOR_FUNCTION_PAYLOAD_TYPES">CONNECTOR_FUNCTION_PAYLOAD_TYPES</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONNECTOR_FUNCTION_SOUTH_PROTOCOLS">CONNECTOR_FUNCTION_SOUTH_PROTOCOLS</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONNECTOR_FUNCTION_TYPES">CONNECTOR_FUNCTION_TYPES</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">connectorsFunctions/catalog</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions.html">ConnectorFunctions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctions/catalog/ConnectorFunctionsCatalog.js~ConnectorFunctionsCatalog.html">ConnectorFunctionsCatalog</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctions/catalog/ConnectorFunctionsCatalogFinder.js~ConnectorFunctionsCatalogFinder.html">ConnectorFunctionsCatalogFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">connectorsFunctions/configuration</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions.html">ConnectorFunctions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctions/configuration/ConnectorFunctionsFinder.js~ConnectorFunctionsFinder.html">ConnectorFunctionsFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctions/configuration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper.html">ConnectorFunctionsHelper</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">datasets</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/datasets/DatasetFinder.js~DatasetFinder.html">DatasetFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/datasets/Datasets.js~Datasets.html">Datasets</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">domains</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/domains/Domains.js~Domains.html">Domains</a></span></span></li>
@@ -418,6 +421,28 @@ export default class BaseProvision {
         return promise;
     }
 
+    _doSouthDelete(body) {
+        var defered = q.defer();
+        var promise = defered.promise;
+        this._ogapi.Sapi.delete(this._buildURL(), this._timeout, this._getExtraHeaders(), this._getUrlParameters(), body, this._getServiceBaseURL())
+            .then((res) =&gt; {
+                if (res.statusCode === 200) {
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
+                } else {
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
+                }
+            })
+            .catch((error) =&gt; {
+                defered.reject(error);
+            });
+        return promise;
+    }
+
     /**
      * This invoke a request to OpenGate North API and the callback is managed by promises
      * This function updates a entity of provision
@@ -487,10 +512,70 @@ export default class BaseProvision {
         return promise;
     }
 
+    _doSouthPut(resource, element) {
+        var defered = q.defer();
+        var promise = defered.promise;
+
+        this._ogapi.Sapi.put(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
+            .then((res) =&gt; {
+                if (res.statusCode === 200) {
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
+                } else if (res.status === 200) {
+                    defered.resolve({
+                        statusCode: res.status
+                    });
+                } else {
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
+                }
+            })
+            .catch((error) =&gt; {
+                defered.reject(error);
+            });
+        return promise;
+    }
+
     _doNorthPost(resource, element, returnBody) {
         var defered = q.defer();
         var promise = defered.promise;
         this._ogapi.Napi.post(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
+            .then((res) =&gt; {
+                const response = {
+                    statusCode: res.statusCode
+                }
+                if (res.statusCode === 201) {
+                    if (typeof this._onCreated === &quot;function&quot;) {
+                        this._onCreated(res.header.location);
+                    }
+                    response.location = res.header.location
+                    if(returnBody){
+                        response.data = res.body
+                    }
+                    defered.resolve(response);
+                } else if (res.statusCode === 200) {
+                    if(returnBody){
+                        response.data = res.body
+                    }
+                    defered.resolve(response);
+                } else {
+                    response.errors = res.errors
+                    defered.reject(response);
+                }
+            })
+            .catch((error) =&gt; {
+                defered.reject(error);
+            });
+        return promise;
+    }
+
+    _doSouthPost(resource, element, returnBody) {
+        var defered = q.defer();
+        var promise = defered.promise;
+        this._ogapi.Sapi.post(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
             .then((res) =&gt; {
                 const response = {
                     statusCode: res.statusCode

@@ -514,17 +514,29 @@ var _superagent2 = require('superagent');
 
 var _superagent3 = _interopRequireDefault(_superagent2);
 
-var _connectorsFunctionsConfigurationConnectorFunctionsHelper = require('./connectorsFunctionsConfiguration/ConnectorFunctionsHelper');
+var _connectorsFunctionsConfigurationConnectorFunctionsHelper = require('./connectorsFunctions/configuration/ConnectorFunctionsHelper');
 
 var _connectorsFunctionsConfigurationConnectorFunctionsHelper2 = _interopRequireDefault(_connectorsFunctionsConfigurationConnectorFunctionsHelper);
 
-var _connectorsFunctionsConfigurationConnectorFunctionsFinder = require('./connectorsFunctionsConfiguration/ConnectorFunctionsFinder');
+var _connectorsFunctionsConfigurationConnectorFunctionsFinder = require('./connectorsFunctions/configuration/ConnectorFunctionsFinder');
 
 var _connectorsFunctionsConfigurationConnectorFunctionsFinder2 = _interopRequireDefault(_connectorsFunctionsConfigurationConnectorFunctionsFinder);
 
-var _connectorsFunctionsConfigurationConnectorFunctions = require('./connectorsFunctionsConfiguration/ConnectorFunctions');
+var _connectorsFunctionsConfigurationConnectorFunctions = require('./connectorsFunctions/configuration/ConnectorFunctions');
 
 var _connectorsFunctionsConfigurationConnectorFunctions2 = _interopRequireDefault(_connectorsFunctionsConfigurationConnectorFunctions);
+
+var _connectorsFunctionsCatalogConnectorFunctions = require('./connectorsFunctions/catalog/ConnectorFunctions');
+
+var _connectorsFunctionsCatalogConnectorFunctions2 = _interopRequireDefault(_connectorsFunctionsCatalogConnectorFunctions);
+
+var _connectorsFunctionsCatalogConnectorFunctionsCatalogFinder = require('./connectorsFunctions/catalog/ConnectorFunctionsCatalogFinder');
+
+var _connectorsFunctionsCatalogConnectorFunctionsCatalogFinder2 = _interopRequireDefault(_connectorsFunctionsCatalogConnectorFunctionsCatalogFinder);
+
+var _connectorsFunctionsCatalogConnectorFunctionsCatalog = require('./connectorsFunctions/catalog/ConnectorFunctionsCatalog');
+
+var _connectorsFunctionsCatalogConnectorFunctionsCatalog2 = _interopRequireDefault(_connectorsFunctionsCatalogConnectorFunctionsCatalog);
 
 var _pipelinesPipelineFinder = require('./pipelines/PipelineFinder');
 
@@ -1821,6 +1833,26 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
+         * This return a ConnectorFunctionsCatalogFinder 
+         * @return {ConnectorFunctionsCatalogFinder}
+         */
+    }, {
+        key: 'newConnectorFunctionsCatalogFinder',
+        value: function newConnectorFunctionsCatalogFinder() {
+            return new _connectorsFunctionsCatalogConnectorFunctionsCatalogFinder2['default'](this);
+        }
+
+        /**
+         * This return a ConnectorFunctionsCatalog
+         * @return {ConnectorFunctionsCatalog}
+         */
+    }, {
+        key: 'newConnectorFunctionsCatalog',
+        value: function newConnectorFunctionsCatalog() {
+            return new _connectorsFunctionsCatalogConnectorFunctionsCatalog2['default'](this);
+        }
+
+        /**
          * This return a ConnectorFunctionsHelper
          * @return {ConnectorFunctionsHelper}
          */
@@ -1838,6 +1870,18 @@ var InternalOpenGateAPI = (function () {
         key: 'connectorFunctionsBuilder',
         value: function connectorFunctionsBuilder(organization, channel, identifier, connectorFunctionData) {
             return new _connectorsFunctionsConfigurationConnectorFunctions2['default'](this, organization, channel, identifier, connectorFunctionData);
+        }
+
+        /**
+         * 
+         * @param {String} identifier - only update or delete
+         * @param {Object} connectorFunctionsCatalog 
+         * @returns {ConnectorFunctionsCatalog}
+         */
+    }, {
+        key: 'connectorFunctionsCatalogBuilder',
+        value: function connectorFunctionsCatalogBuilder(identifier, connectorFunctionsCatalog) {
+            return new _connectorsFunctionsCatalogConnectorFunctions2['default'](this, identifier, connectorFunctionsCatalog);
         }
 
         /**

@@ -430,7 +430,11 @@ var NorthAmpliaREST = (function () {
             _req = _req.end(function (err, res) {
                 if (err !== null) {
                     console.error("OGAPI ERROR: ");
-                    console.error(err);
+                    try {
+                        console.log(JSON.stringify(err));
+                    } catch (err) {
+                        console.log(err);
+                    }
                     var data = undefined;
                     var _headers = undefined;
                     var _status = err.status ? err.status : undefined;

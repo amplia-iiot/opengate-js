@@ -258,27 +258,27 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "opengate-js/src/connectorsfunctionsconfiguration/enum/_connector_functions_enums.js~connector_function_operational_status",
+    "opengate-js/src/connectorsfunctions/_connector_functions_enums.js~connector_function_operational_status",
     "variable/index.html#static-variable-CONNECTOR_FUNCTION_OPERATIONAL_STATUS",
-    "<span>CONNECTOR_FUNCTION_OPERATIONAL_STATUS</span> <span class=\"search-result-import-path\">opengate-js/src/connectorsFunctionsConfiguration/enum/_CONNECTOR_FUNCTIONS_ENUMS.js</span>",
+    "<span>CONNECTOR_FUNCTION_OPERATIONAL_STATUS</span> <span class=\"search-result-import-path\">opengate-js/src/connectorsFunctions/_CONNECTOR_FUNCTIONS_ENUMS.js</span>",
     "variable"
   ],
   [
-    "opengate-js/src/connectorsfunctionsconfiguration/enum/_connector_functions_enums.js~connector_function_payload_types",
+    "opengate-js/src/connectorsfunctions/_connector_functions_enums.js~connector_function_payload_types",
     "variable/index.html#static-variable-CONNECTOR_FUNCTION_PAYLOAD_TYPES",
-    "<span>CONNECTOR_FUNCTION_PAYLOAD_TYPES</span> <span class=\"search-result-import-path\">opengate-js/src/connectorsFunctionsConfiguration/enum/_CONNECTOR_FUNCTIONS_ENUMS.js</span>",
+    "<span>CONNECTOR_FUNCTION_PAYLOAD_TYPES</span> <span class=\"search-result-import-path\">opengate-js/src/connectorsFunctions/_CONNECTOR_FUNCTIONS_ENUMS.js</span>",
     "variable"
   ],
   [
-    "opengate-js/src/connectorsfunctionsconfiguration/enum/_connector_functions_enums.js~connector_function_south_protocols",
+    "opengate-js/src/connectorsfunctions/_connector_functions_enums.js~connector_function_south_protocols",
     "variable/index.html#static-variable-CONNECTOR_FUNCTION_SOUTH_PROTOCOLS",
-    "<span>CONNECTOR_FUNCTION_SOUTH_PROTOCOLS</span> <span class=\"search-result-import-path\">opengate-js/src/connectorsFunctionsConfiguration/enum/_CONNECTOR_FUNCTIONS_ENUMS.js</span>",
+    "<span>CONNECTOR_FUNCTION_SOUTH_PROTOCOLS</span> <span class=\"search-result-import-path\">opengate-js/src/connectorsFunctions/_CONNECTOR_FUNCTIONS_ENUMS.js</span>",
     "variable"
   ],
   [
-    "opengate-js/src/connectorsfunctionsconfiguration/enum/_connector_functions_enums.js~connector_function_types",
+    "opengate-js/src/connectorsfunctions/_connector_functions_enums.js~connector_function_types",
     "variable/index.html#static-variable-CONNECTOR_FUNCTION_TYPES",
-    "<span>CONNECTOR_FUNCTION_TYPES</span> <span class=\"search-result-import-path\">opengate-js/src/connectorsFunctionsConfiguration/enum/_CONNECTOR_FUNCTIONS_ENUMS.js</span>",
+    "<span>CONNECTOR_FUNCTION_TYPES</span> <span class=\"search-result-import-path\">opengate-js/src/connectorsFunctions/_CONNECTOR_FUNCTIONS_ENUMS.js</span>",
     "variable"
   ],
   [
@@ -342,21 +342,39 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "opengate-js/src/connectorsfunctionsconfiguration/connectorfunctions.js~connectorfunctions",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions.html",
-    "<span>ConnectorFunctions</span> <span class=\"search-result-import-path\">opengate-js/src/connectorsFunctionsConfiguration/ConnectorFunctions.js</span>",
+    "opengate-js/src/connectorsfunctions/catalog/connectorfunctions.js~connectorfunctions",
+    "class/src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions.html",
+    "<span>ConnectorFunctions</span> <span class=\"search-result-import-path\">opengate-js/src/connectorsFunctions/catalog/ConnectorFunctions.js</span>",
     "class"
   ],
   [
-    "opengate-js/src/connectorsfunctionsconfiguration/connectorfunctionsfinder.js~connectorfunctionsfinder",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctionsFinder.js~ConnectorFunctionsFinder.html",
-    "<span>ConnectorFunctionsFinder</span> <span class=\"search-result-import-path\">opengate-js/src/connectorsFunctionsConfiguration/ConnectorFunctionsFinder.js</span>",
+    "opengate-js/src/connectorsfunctions/configuration/connectorfunctions.js~connectorfunctions",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions.html",
+    "<span>ConnectorFunctions</span> <span class=\"search-result-import-path\">opengate-js/src/connectorsFunctions/configuration/ConnectorFunctions.js</span>",
     "class"
   ],
   [
-    "opengate-js/src/connectorsfunctionsconfiguration/connectorfunctionshelper.js~connectorfunctionshelper",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper.html",
-    "<span>ConnectorFunctionsHelper</span> <span class=\"search-result-import-path\">opengate-js/src/connectorsFunctionsConfiguration/ConnectorFunctionsHelper.js</span>",
+    "opengate-js/src/connectorsfunctions/catalog/connectorfunctionscatalog.js~connectorfunctionscatalog",
+    "class/src/connectorsFunctions/catalog/ConnectorFunctionsCatalog.js~ConnectorFunctionsCatalog.html",
+    "<span>ConnectorFunctionsCatalog</span> <span class=\"search-result-import-path\">opengate-js/src/connectorsFunctions/catalog/ConnectorFunctionsCatalog.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/connectorsfunctions/catalog/connectorfunctionscatalogfinder.js~connectorfunctionscatalogfinder",
+    "class/src/connectorsFunctions/catalog/ConnectorFunctionsCatalogFinder.js~ConnectorFunctionsCatalogFinder.html",
+    "<span>ConnectorFunctionsCatalogFinder</span> <span class=\"search-result-import-path\">opengate-js/src/connectorsFunctions/catalog/ConnectorFunctionsCatalogFinder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/connectorsfunctions/configuration/connectorfunctionsfinder.js~connectorfunctionsfinder",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctionsFinder.js~ConnectorFunctionsFinder.html",
+    "<span>ConnectorFunctionsFinder</span> <span class=\"search-result-import-path\">opengate-js/src/connectorsFunctions/configuration/ConnectorFunctionsFinder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/connectorsfunctions/configuration/connectorfunctionshelper.js~connectorfunctionshelper",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper.html",
+    "<span>ConnectorFunctionsHelper</span> <span class=\"search-result-import-path\">opengate-js/src/connectorsFunctions/configuration/ConnectorFunctionsHelper.js</span>",
     "class"
   ],
   [
@@ -3462,6 +3480,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#connectorfunctionscatalogbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-connectorFunctionsCatalogBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#connectorFunctionsCatalogBuilder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#constructor",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-constructor-constructor",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#constructor",
@@ -3711,6 +3735,18 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#newchannelfinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newChannelFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newChannelFinder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#newconnectorfunctionscatalog",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newConnectorFunctionsCatalog",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newConnectorFunctionsCatalog",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#newconnectorfunctionscatalogfinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newConnectorFunctionsCatalogFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newConnectorFunctionsCatalogFinder",
     "method"
   ],
   [
@@ -5730,184 +5766,328 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/connectorsfunctionsconfiguration/connectorfunctions.js",
-    "file/src/connectorsFunctionsConfiguration/ConnectorFunctions.js.html",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctions.js",
+    "src/connectorsfunctions/_connector_functions_enums.js",
+    "file/src/connectorsFunctions/_CONNECTOR_FUNCTIONS_ENUMS.js.html",
+    "src/connectorsFunctions/_CONNECTOR_FUNCTIONS_ENUMS.js",
     "file"
   ],
   [
-    "src/connectorsfunctionsconfiguration/connectorfunctions.js~connectorfunctions#addsouthcriteria",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-addSouthCriteria",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions#addSouthCriteria",
-    "method"
-  ],
-  [
-    "src/connectorsfunctionsconfiguration/connectorfunctions.js~connectorfunctions#constructor",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions.html#instance-constructor-constructor",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions#constructor",
-    "method"
-  ],
-  [
-    "src/connectorsfunctionsconfiguration/connectorfunctions.js~connectorfunctions#create",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-create",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions#create",
-    "method"
-  ],
-  [
-    "src/connectorsfunctionsconfiguration/connectorfunctions.js~connectorfunctions#delete",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-delete",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions#delete",
-    "method"
-  ],
-  [
-    "src/connectorsfunctionsconfiguration/connectorfunctions.js~connectorfunctions#update",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-update",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions#update",
-    "method"
-  ],
-  [
-    "src/connectorsfunctionsconfiguration/connectorfunctions.js~connectorfunctions#withchannel",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withChannel",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions#withChannel",
-    "method"
-  ],
-  [
-    "src/connectorsfunctionsconfiguration/connectorfunctions.js~connectorfunctions#withdescription",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withDescription",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions#withDescription",
-    "method"
-  ],
-  [
-    "src/connectorsfunctionsconfiguration/connectorfunctions.js~connectorfunctions#withidentifier",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withIdentifier",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions#withIdentifier",
-    "method"
-  ],
-  [
-    "src/connectorsfunctionsconfiguration/connectorfunctions.js~connectorfunctions#withjavascript",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withJavascript",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions#withJavascript",
-    "method"
-  ],
-  [
-    "src/connectorsfunctionsconfiguration/connectorfunctions.js~connectorfunctions#withname",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withName",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions#withName",
-    "method"
-  ],
-  [
-    "src/connectorsfunctionsconfiguration/connectorfunctions.js~connectorfunctions#withnorthcriterias",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withNorthCriterias",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions#withNorthCriterias",
-    "method"
-  ],
-  [
-    "src/connectorsfunctionsconfiguration/connectorfunctions.js~connectorfunctions#withoperationname",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withOperationName",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions#withOperationName",
-    "method"
-  ],
-  [
-    "src/connectorsfunctionsconfiguration/connectorfunctions.js~connectorfunctions#withoperationalstatus",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withOperationalStatus",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions#withOperationalStatus",
-    "method"
-  ],
-  [
-    "src/connectorsfunctionsconfiguration/connectorfunctions.js~connectorfunctions#withorganization",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withOrganization",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions#withOrganization",
-    "method"
-  ],
-  [
-    "src/connectorsfunctionsconfiguration/connectorfunctions.js~connectorfunctions#withpayloadtype",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withPayloadType",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions#withPayloadType",
-    "method"
-  ],
-  [
-    "src/connectorsfunctionsconfiguration/connectorfunctions.js~connectorfunctions#withsouthcriterias",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withSouthCriterias",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions#withSouthCriterias",
-    "method"
-  ],
-  [
-    "src/connectorsfunctionsconfiguration/connectorfunctions.js~connectorfunctions#withtype",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withType",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions#withType",
-    "method"
-  ],
-  [
-    "src/connectorsfunctionsconfiguration/connectorfunctionsfinder.js",
-    "file/src/connectorsFunctionsConfiguration/ConnectorFunctionsFinder.js.html",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctionsFinder.js",
+    "src/connectorsfunctions/catalog/connectorfunctions.js",
+    "file/src/connectorsFunctions/catalog/ConnectorFunctions.js.html",
+    "src/connectorsFunctions/catalog/ConnectorFunctions.js",
     "file"
   ],
   [
-    "src/connectorsfunctionsconfiguration/connectorfunctionsfinder.js~connectorfunctionsfinder#constructor",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctionsFinder.js~ConnectorFunctionsFinder.html#instance-constructor-constructor",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctionsFinder.js~ConnectorFunctionsFinder#constructor",
+    "src/connectorsfunctions/catalog/connectorfunctions.js~connectorfunctions#addnorthcriteria",
+    "class/src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-addNorthCriteria",
+    "src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions#addNorthCriteria",
     "method"
   ],
   [
-    "src/connectorsfunctionsconfiguration/connectorfunctionsfinder.js~connectorfunctionsfinder#findbyorganizationandchannel",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctionsFinder.js~ConnectorFunctionsFinder.html#instance-method-findByOrganizationAndChannel",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctionsFinder.js~ConnectorFunctionsFinder#findByOrganizationAndChannel",
+    "src/connectorsfunctions/catalog/connectorfunctions.js~connectorfunctions#addsouthcriteria",
+    "class/src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-addSouthCriteria",
+    "src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions#addSouthCriteria",
     "method"
   ],
   [
-    "src/connectorsfunctionsconfiguration/connectorfunctionsfinder.js~connectorfunctionsfinder#findbyorganizationandchannelandname",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctionsFinder.js~ConnectorFunctionsFinder.html#instance-method-findByOrganizationAndChannelAndName",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctionsFinder.js~ConnectorFunctionsFinder#findByOrganizationAndChannelAndName",
+    "src/connectorsfunctions/catalog/connectorfunctions.js~connectorfunctions#constructor",
+    "class/src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions.html#instance-constructor-constructor",
+    "src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions#constructor",
     "method"
   ],
   [
-    "src/connectorsfunctionsconfiguration/connectorfunctionshelper.js",
-    "file/src/connectorsFunctionsConfiguration/ConnectorFunctionsHelper.js.html",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctionsHelper.js",
+    "src/connectorsfunctions/catalog/connectorfunctions.js~connectorfunctions#create",
+    "class/src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-create",
+    "src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions#create",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/catalog/connectorfunctions.js~connectorfunctions#delete",
+    "class/src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-delete",
+    "src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions#delete",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/catalog/connectorfunctions.js~connectorfunctions#update",
+    "class/src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-update",
+    "src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions#update",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/catalog/connectorfunctions.js~connectorfunctions#withcloneable",
+    "class/src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withCloneable",
+    "src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions#withCloneable",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/catalog/connectorfunctions.js~connectorfunctions#withdescription",
+    "class/src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withDescription",
+    "src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions#withDescription",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/catalog/connectorfunctions.js~connectorfunctions#withidentifier",
+    "class/src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withIdentifier",
+    "src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions#withIdentifier",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/catalog/connectorfunctions.js~connectorfunctions#withjavascript",
+    "class/src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withJavascript",
+    "src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions#withJavascript",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/catalog/connectorfunctions.js~connectorfunctions#withname",
+    "class/src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withName",
+    "src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions#withName",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/catalog/connectorfunctions.js~connectorfunctions#withnorthcriterias",
+    "class/src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withNorthCriterias",
+    "src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions#withNorthCriterias",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/catalog/connectorfunctions.js~connectorfunctions#withoperationname",
+    "class/src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withOperationName",
+    "src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions#withOperationName",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/catalog/connectorfunctions.js~connectorfunctions#withoperationalstatus",
+    "class/src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withOperationalStatus",
+    "src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions#withOperationalStatus",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/catalog/connectorfunctions.js~connectorfunctions#withpayloadtype",
+    "class/src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withPayloadType",
+    "src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions#withPayloadType",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/catalog/connectorfunctions.js~connectorfunctions#withsouthcriterias",
+    "class/src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withSouthCriterias",
+    "src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions#withSouthCriterias",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/catalog/connectorfunctions.js~connectorfunctions#withtype",
+    "class/src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withType",
+    "src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions#withType",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/catalog/connectorfunctionscatalog.js",
+    "file/src/connectorsFunctions/catalog/ConnectorFunctionsCatalog.js.html",
+    "src/connectorsFunctions/catalog/ConnectorFunctionsCatalog.js",
     "file"
   ],
   [
-    "src/connectorsfunctionsconfiguration/connectorfunctionshelper.js~connectorfunctionshelper#constructor",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper.html#instance-constructor-constructor",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper#constructor",
+    "src/connectorsfunctions/catalog/connectorfunctionscatalog.js~connectorfunctionscatalog#constructor",
+    "class/src/connectorsFunctions/catalog/ConnectorFunctionsCatalog.js~ConnectorFunctionsCatalog.html#instance-constructor-constructor",
+    "src/connectorsFunctions/catalog/ConnectorFunctionsCatalog.js~ConnectorFunctionsCatalog#constructor",
     "method"
   ],
   [
-    "src/connectorsfunctionsconfiguration/connectorfunctionshelper.js~connectorfunctionshelper#getdocjavascriptfunctions",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper.html#instance-method-getDocJavascriptFunctions",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper#getDocJavascriptFunctions",
+    "src/connectorsfunctions/catalog/connectorfunctionscatalog.js~connectorfunctionscatalog#getconnectorfunctionscatalog",
+    "class/src/connectorsFunctions/catalog/ConnectorFunctionsCatalog.js~ConnectorFunctionsCatalog.html#instance-method-getConnectorFunctionsCatalog",
+    "src/connectorsFunctions/catalog/ConnectorFunctionsCatalog.js~ConnectorFunctionsCatalog#getConnectorFunctionsCatalog",
     "method"
   ],
   [
-    "src/connectorsfunctionsconfiguration/connectorfunctionshelper.js~connectorfunctionshelper#getdocprivatejavascriptfunctions",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper.html#instance-method-getDocPrivateJavascriptFunctions",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper#getDocPrivateJavascriptFunctions",
-    "method"
-  ],
-  [
-    "src/connectorsfunctionsconfiguration/connectorfunctionshelper.js~connectorfunctionshelper#getpayloadtypes",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper.html#instance-method-getPayloadTypes",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper#getPayloadTypes",
-    "method"
-  ],
-  [
-    "src/connectorsfunctionsconfiguration/connectorfunctionshelper.js~connectorfunctionshelper#getsouthcriteriasprotocols",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper.html#instance-method-getSouthCriteriasProtocols",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper#getSouthCriteriasProtocols",
-    "method"
-  ],
-  [
-    "src/connectorsfunctionsconfiguration/connectorfunctionshelper.js~connectorfunctionshelper#getddummyfunctions",
-    "class/src/connectorsFunctionsConfiguration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper.html#instance-method-getdDummyFunctions",
-    "src/connectorsFunctionsConfiguration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper#getdDummyFunctions",
-    "method"
-  ],
-  [
-    "src/connectorsfunctionsconfiguration/enum/_connector_functions_enums.js",
-    "file/src/connectorsFunctionsConfiguration/enum/_CONNECTOR_FUNCTIONS_ENUMS.js.html",
-    "src/connectorsFunctionsConfiguration/enum/_CONNECTOR_FUNCTIONS_ENUMS.js",
+    "src/connectorsfunctions/catalog/connectorfunctionscatalogfinder.js",
+    "file/src/connectorsFunctions/catalog/ConnectorFunctionsCatalogFinder.js.html",
+    "src/connectorsFunctions/catalog/ConnectorFunctionsCatalogFinder.js",
     "file"
+  ],
+  [
+    "src/connectorsfunctions/catalog/connectorfunctionscatalogfinder.js~connectorfunctionscatalogfinder#constructor",
+    "class/src/connectorsFunctions/catalog/ConnectorFunctionsCatalogFinder.js~ConnectorFunctionsCatalogFinder.html#instance-constructor-constructor",
+    "src/connectorsFunctions/catalog/ConnectorFunctionsCatalogFinder.js~ConnectorFunctionsCatalogFinder#constructor",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/catalog/connectorfunctionscatalogfinder.js~connectorfunctionscatalogfinder#findbyconnectorfunctionsid",
+    "class/src/connectorsFunctions/catalog/ConnectorFunctionsCatalogFinder.js~ConnectorFunctionsCatalogFinder.html#instance-method-findByConnectorFunctionsId",
+    "src/connectorsFunctions/catalog/ConnectorFunctionsCatalogFinder.js~ConnectorFunctionsCatalogFinder#findByConnectorFunctionsId",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctions.js",
+    "file/src/connectorsFunctions/configuration/ConnectorFunctions.js.html",
+    "src/connectorsFunctions/configuration/ConnectorFunctions.js",
+    "file"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctions.js~connectorfunctions#addsouthcriteria",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-addSouthCriteria",
+    "src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions#addSouthCriteria",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctions.js~connectorfunctions#constructor",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions.html#instance-constructor-constructor",
+    "src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions#constructor",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctions.js~connectorfunctions#create",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-create",
+    "src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions#create",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctions.js~connectorfunctions#delete",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-delete",
+    "src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions#delete",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctions.js~connectorfunctions#update",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-update",
+    "src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions#update",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctions.js~connectorfunctions#withchannel",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withChannel",
+    "src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions#withChannel",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctions.js~connectorfunctions#withdescription",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withDescription",
+    "src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions#withDescription",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctions.js~connectorfunctions#withidentifier",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withIdentifier",
+    "src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions#withIdentifier",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctions.js~connectorfunctions#withjavascript",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withJavascript",
+    "src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions#withJavascript",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctions.js~connectorfunctions#withname",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withName",
+    "src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions#withName",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctions.js~connectorfunctions#withnorthcriterias",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withNorthCriterias",
+    "src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions#withNorthCriterias",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctions.js~connectorfunctions#withoperationname",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withOperationName",
+    "src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions#withOperationName",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctions.js~connectorfunctions#withoperationalstatus",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withOperationalStatus",
+    "src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions#withOperationalStatus",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctions.js~connectorfunctions#withorganization",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withOrganization",
+    "src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions#withOrganization",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctions.js~connectorfunctions#withpayloadtype",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withPayloadType",
+    "src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions#withPayloadType",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctions.js~connectorfunctions#withsouthcriterias",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withSouthCriterias",
+    "src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions#withSouthCriterias",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctions.js~connectorfunctions#withtype",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withType",
+    "src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions#withType",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctionsfinder.js",
+    "file/src/connectorsFunctions/configuration/ConnectorFunctionsFinder.js.html",
+    "src/connectorsFunctions/configuration/ConnectorFunctionsFinder.js",
+    "file"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctionsfinder.js~connectorfunctionsfinder#constructor",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctionsFinder.js~ConnectorFunctionsFinder.html#instance-constructor-constructor",
+    "src/connectorsFunctions/configuration/ConnectorFunctionsFinder.js~ConnectorFunctionsFinder#constructor",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctionsfinder.js~connectorfunctionsfinder#findbyorganizationandchannel",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctionsFinder.js~ConnectorFunctionsFinder.html#instance-method-findByOrganizationAndChannel",
+    "src/connectorsFunctions/configuration/ConnectorFunctionsFinder.js~ConnectorFunctionsFinder#findByOrganizationAndChannel",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctionsfinder.js~connectorfunctionsfinder#findbyorganizationandchannelandname",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctionsFinder.js~ConnectorFunctionsFinder.html#instance-method-findByOrganizationAndChannelAndName",
+    "src/connectorsFunctions/configuration/ConnectorFunctionsFinder.js~ConnectorFunctionsFinder#findByOrganizationAndChannelAndName",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctionshelper.js",
+    "file/src/connectorsFunctions/configuration/ConnectorFunctionsHelper.js.html",
+    "src/connectorsFunctions/configuration/ConnectorFunctionsHelper.js",
+    "file"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctionshelper.js~connectorfunctionshelper#constructor",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper.html#instance-constructor-constructor",
+    "src/connectorsFunctions/configuration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper#constructor",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctionshelper.js~connectorfunctionshelper#getdocjavascriptfunctions",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper.html#instance-method-getDocJavascriptFunctions",
+    "src/connectorsFunctions/configuration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper#getDocJavascriptFunctions",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctionshelper.js~connectorfunctionshelper#getdocprivatejavascriptfunctions",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper.html#instance-method-getDocPrivateJavascriptFunctions",
+    "src/connectorsFunctions/configuration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper#getDocPrivateJavascriptFunctions",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctionshelper.js~connectorfunctionshelper#getpayloadtypes",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper.html#instance-method-getPayloadTypes",
+    "src/connectorsFunctions/configuration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper#getPayloadTypes",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctionshelper.js~connectorfunctionshelper#getsouthcriteriasprotocols",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper.html#instance-method-getSouthCriteriasProtocols",
+    "src/connectorsFunctions/configuration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper#getSouthCriteriasProtocols",
+    "method"
+  ],
+  [
+    "src/connectorsfunctions/configuration/connectorfunctionshelper.js~connectorfunctionshelper#getddummyfunctions",
+    "class/src/connectorsFunctions/configuration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper.html#instance-method-getdDummyFunctions",
+    "src/connectorsFunctions/configuration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper#getdDummyFunctions",
+    "method"
   ],
   [
     "src/datasets/datasetfinder.js",

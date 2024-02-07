@@ -82,13 +82,16 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-POWER_SUPPLY_SOURCE_ENUM">POWER_SUPPLY_SOURCE_ENUM</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOFTWARE_TYPE_ENUM">SOFTWARE_TYPE_ENUM</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEMPERATURE_STATUS_ENUM">TEMPERATURE_STATUS_ENUM</a></span></span></li>
-<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">connectorsFunctionsConfiguration</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctionsConfiguration/ConnectorFunctions.js~ConnectorFunctions.html">ConnectorFunctions</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctionsConfiguration/ConnectorFunctionsFinder.js~ConnectorFunctionsFinder.html">ConnectorFunctionsFinder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctionsConfiguration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper.html">ConnectorFunctionsHelper</a></span></span></li>
-<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">connectorsFunctionsConfiguration/enum</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONNECTOR_FUNCTION_OPERATIONAL_STATUS">CONNECTOR_FUNCTION_OPERATIONAL_STATUS</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">connectorsFunctions</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONNECTOR_FUNCTION_OPERATIONAL_STATUS">CONNECTOR_FUNCTION_OPERATIONAL_STATUS</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONNECTOR_FUNCTION_PAYLOAD_TYPES">CONNECTOR_FUNCTION_PAYLOAD_TYPES</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONNECTOR_FUNCTION_SOUTH_PROTOCOLS">CONNECTOR_FUNCTION_SOUTH_PROTOCOLS</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONNECTOR_FUNCTION_TYPES">CONNECTOR_FUNCTION_TYPES</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">connectorsFunctions/catalog</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions.html">ConnectorFunctions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctions/catalog/ConnectorFunctionsCatalog.js~ConnectorFunctionsCatalog.html">ConnectorFunctionsCatalog</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctions/catalog/ConnectorFunctionsCatalogFinder.js~ConnectorFunctionsCatalogFinder.html">ConnectorFunctionsCatalogFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">connectorsFunctions/configuration</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctions/configuration/ConnectorFunctions.js~ConnectorFunctions.html">ConnectorFunctions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctions/configuration/ConnectorFunctionsFinder.js~ConnectorFunctionsFinder.html">ConnectorFunctionsFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctions/configuration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper.html">ConnectorFunctionsHelper</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">datasets</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/datasets/DatasetFinder.js~DatasetFinder.html">DatasetFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/datasets/Datasets.js~Datasets.html">Datasets</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">domains</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/domains/Domains.js~Domains.html">Domains</a></span></span></li>
@@ -304,6 +307,7 @@ export default class GenericFinder {
      */
     constructor(ogapi, source, entity, error_not_found, serviceBaseURL) {
         this._api = ogapi.Napi;
+        this._apiSouth = ogapi.Sapi;
         this._baseUrl = source;
         this._entity = entity;
         this._error_not_found = error_not_found;
@@ -362,7 +366,11 @@ export default class GenericFinder {
      * @return {Promise}
      * @private
      */
-    _execute() {
+    _execute(south) {
+        let _api = this._api
+        if(south){
+            _api = this._apiSouth
+        }
         let defered = q.defer();
         let promise = defered.promise;
         let _entity = this._entity;

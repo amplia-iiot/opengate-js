@@ -36,6 +36,7 @@ var GenericFinder = (function () {
         _classCallCheck(this, GenericFinder);
 
         this._api = ogapi.Napi;
+        this._apiSouth = ogapi.Sapi;
         this._baseUrl = source;
         this._entity = entity;
         this._error_not_found = error_not_found;
@@ -104,7 +105,11 @@ var GenericFinder = (function () {
          */
     }, {
         key: '_execute',
-        value: function _execute() {
+        value: function _execute(south) {
+            var _api = this._api;
+            if (south) {
+                _api = this._apiSouth;
+            }
             var defered = _q2['default'].defer();
             var promise = defered.promise;
             var _entity = this._entity;

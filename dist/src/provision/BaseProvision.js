@@ -151,6 +151,27 @@ var BaseProvision = (function () {
             });
             return promise;
         }
+    }, {
+        key: '_doSouthDelete',
+        value: function _doSouthDelete(body) {
+            var defered = _q2['default'].defer();
+            var promise = defered.promise;
+            this._ogapi.Sapi['delete'](this._buildURL(), this._timeout, this._getExtraHeaders(), this._getUrlParameters(), body, this._getServiceBaseURL()).then(function (res) {
+                if (res.statusCode === 200) {
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
+                } else {
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
+                }
+            })['catch'](function (error) {
+                defered.reject(error);
+            });
+            return promise;
+        }
 
         /**
          * This invoke a request to OpenGate North API and the callback is managed by promises
@@ -221,6 +242,32 @@ var BaseProvision = (function () {
             return promise;
         }
     }, {
+        key: '_doSouthPut',
+        value: function _doSouthPut(resource, element) {
+            var defered = _q2['default'].defer();
+            var promise = defered.promise;
+
+            this._ogapi.Sapi.put(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL()).then(function (res) {
+                if (res.statusCode === 200) {
+                    defered.resolve({
+                        statusCode: res.statusCode
+                    });
+                } else if (res.status === 200) {
+                    defered.resolve({
+                        statusCode: res.status
+                    });
+                } else {
+                    defered.reject({
+                        errors: res.errors,
+                        statusCode: res.statusCode
+                    });
+                }
+            })['catch'](function (error) {
+                defered.reject(error);
+            });
+            return promise;
+        }
+    }, {
         key: '_doNorthPost',
         value: function _doNorthPost(resource, element, returnBody) {
             var _this2 = this;
@@ -234,6 +281,40 @@ var BaseProvision = (function () {
                 if (res.statusCode === 201) {
                     if (typeof _this2._onCreated === "function") {
                         _this2._onCreated(res.header.location);
+                    }
+                    response.location = res.header.location;
+                    if (returnBody) {
+                        response.data = res.body;
+                    }
+                    defered.resolve(response);
+                } else if (res.statusCode === 200) {
+                    if (returnBody) {
+                        response.data = res.body;
+                    }
+                    defered.resolve(response);
+                } else {
+                    response.errors = res.errors;
+                    defered.reject(response);
+                }
+            })['catch'](function (error) {
+                defered.reject(error);
+            });
+            return promise;
+        }
+    }, {
+        key: '_doSouthPost',
+        value: function _doSouthPost(resource, element, returnBody) {
+            var _this3 = this;
+
+            var defered = _q2['default'].defer();
+            var promise = defered.promise;
+            this._ogapi.Sapi.post(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL()).then(function (res) {
+                var response = {
+                    statusCode: res.statusCode
+                };
+                if (res.statusCode === 201) {
+                    if (typeof _this3._onCreated === "function") {
+                        _this3._onCreated(res.header.location);
                     }
                     response.location = res.header.location;
                     if (returnBody) {

@@ -214,7 +214,7 @@ var Organizations = (function (_BaseProvision) {
 
         /**
          * Sets the password poliicy configuration
-         * @param {object} withPasswordPolicy
+         * @param {object} passPolicy
          * @return {Organizations} 
          */
     }, {
