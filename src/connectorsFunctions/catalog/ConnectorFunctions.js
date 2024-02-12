@@ -284,6 +284,12 @@ export default class ConnectorFunctions extends BaseProvision {
     }
 
     _buildURL() {
+        if (this._identifier === undefined) {
+            throw new Error({
+                message: "Parameter identifier must be defined",
+                parameter: "identifier"
+            })
+        }
         return 'connectorFunctions/' + this._resource + '/' + this._identifier;
     }
 
@@ -295,32 +301,12 @@ export default class ConnectorFunctions extends BaseProvision {
     create() {
         this._checkRequiredParameters();
 
-        return this._doSouthPost('connectorFunctions/' + this._resource, this._composeElement());
+        return this._doNorthPost('connectorFunctions/' + this._resource, this._composeElement());
     }
 
-    /** 
-     * Updates a connector function catalog
-     * @return {Promise}
-     * @throws {Error} 
-     */
-    update() {
+    _composeUpdateElement(){
         this._checkRequiredParameters(true);
-
-        return this._doSouthPut(this._buildURL(), this._composeElement());
+        return this._composeElement();
     }
-
-    /**
-     * Delete a connector function catalog
-     * @returns {Promise}
-     * @returns {Error}
-     */
-    delete() {
-        if (this._identifier === undefined) {
-            throw new Error({
-                message: "Parameter identifier must be defined",
-                parameter: "identifier"
-            })
-        }
-        return this._doSouthDelete();
-    }
+    
 }
