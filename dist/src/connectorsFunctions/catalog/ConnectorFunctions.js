@@ -324,6 +324,12 @@ var ConnectorFunctions = (function (_BaseProvision) {
     }, {
         key: "_buildURL",
         value: function _buildURL() {
+            if (this._identifier === undefined) {
+                throw new Error({
+                    message: "Parameter identifier must be defined",
+                    parameter: "identifier"
+                });
+            }
             return 'connectorFunctions/' + this._resource + '/' + this._identifier;
         }
 
@@ -337,37 +343,13 @@ var ConnectorFunctions = (function (_BaseProvision) {
         value: function create() {
             this._checkRequiredParameters();
 
-            return this._doSouthPost('connectorFunctions/' + this._resource, this._composeElement());
+            return this._doNorthPost('connectorFunctions/' + this._resource, this._composeElement());
         }
-
-        /** 
-         * Updates a connector function catalog
-         * @return {Promise}
-         * @throws {Error} 
-         */
     }, {
-        key: "update",
-        value: function update() {
+        key: "_composeUpdateElement",
+        value: function _composeUpdateElement() {
             this._checkRequiredParameters(true);
-
-            return this._doSouthPut(this._buildURL(), this._composeElement());
-        }
-
-        /**
-         * Delete a connector function catalog
-         * @returns {Promise}
-         * @returns {Error}
-         */
-    }, {
-        key: "delete",
-        value: function _delete() {
-            if (this._identifier === undefined) {
-                throw new Error({
-                    message: "Parameter identifier must be defined",
-                    parameter: "identifier"
-                });
-            }
-            return this._doSouthDelete();
+            return this._composeElement();
         }
     }]);
 

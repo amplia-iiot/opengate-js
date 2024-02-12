@@ -5802,18 +5802,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/connectorsfunctions/catalog/connectorfunctions.js~connectorfunctions#delete",
-    "class/src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-delete",
-    "src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions#delete",
-    "method"
-  ],
-  [
-    "src/connectorsfunctions/catalog/connectorfunctions.js~connectorfunctions#update",
-    "class/src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-update",
-    "src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions#update",
-    "method"
-  ],
-  [
     "src/connectorsfunctions/catalog/connectorfunctions.js~connectorfunctions#withcloneable",
     "class/src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions.html#instance-method-withCloneable",
     "src/connectorsFunctions/catalog/ConnectorFunctions.js~ConnectorFunctions#withCloneable",
