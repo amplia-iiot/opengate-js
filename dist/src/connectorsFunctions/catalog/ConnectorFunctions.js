@@ -52,8 +52,10 @@ var ConnectorFunctions = (function (_BaseProvision) {
             for (var i = 0; i < _keys.length; i++) {
                 var _name = _keys[i];
                 var _value = connectorFunction[_name];
-                var _cname = _name.charAt(0).toUpperCase() + _name.slice(1);
-                this["with" + _cname](_value);
+                if (_value !== null && _value !== undefined) {
+                    var _cname = _name.charAt(0).toUpperCase() + _name.slice(1);
+                    this["with" + _cname](_value);
+                }
             }
         }
     }
