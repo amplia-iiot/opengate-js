@@ -31,8 +31,10 @@ export default class ConnectorFunctions extends BaseProvision {
             for(let i = 0; i < _keys.length; i++){
                 const _name = _keys[i]
                 const _value = connectorFunction[_name]
-                const _cname = _name.charAt(0).toUpperCase() + _name.slice(1)
-                this["with" + _cname](_value)
+                if(_value !== null && _value !== undefined){
+                    const _cname = _name.charAt(0).toUpperCase() + _name.slice(1)
+                    this["with" + _cname](_value)
+                }
             }
         }
     }
