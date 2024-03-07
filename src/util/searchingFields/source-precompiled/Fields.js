@@ -5,7 +5,7 @@ export const GENERATED_FIELDS = {
     "ENTITY_OPERATION_HISTORY":[
       "applicationEmail",
       "entityId",
-      "entityType",
+      "resourceType",
       "jobActivatedDate",
       "jobId",
       "jobUserNotes",
@@ -31,7 +31,7 @@ export const GENERATED_FIELDS = {
       "channelName",
       "domainKey",
       "entityId",
-      "entityType",
+      "resourceType",
       "entityUk",
       "jobActivatedDate",
       "jobEntityTotal",

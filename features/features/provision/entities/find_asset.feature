@@ -41,8 +41,8 @@ Feature: Find a asset
             | provision.administration.organization | simple       | ofind_asset_organization_10                |        |
             | provision.administration.serviceGroup | simple       | emptyServiceGroup                          |        |
             | provision.asset.identifier            | simple       | find_asset_asset_cucumber                  |        |
-            | provision.asset.name                  | simple       | OGUX asset GATEWAY tester                  |        |
-            | provision.asset.description           | simple       | OGUX asset tester full GATEWAY description |        |
+            | provision.asset.name                  | simple       | OGUX asset entity.device tester                  |        |
+            | provision.asset.description           | simple       | OGUX asset tester full entity.device description |        |
         Then I delete it
         And I create it
         And response code should be: 201

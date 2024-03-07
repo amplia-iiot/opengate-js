@@ -1,18 +1,17 @@
 var { Then } = require('cucumber');
 
 var typeMatch = {
-    "ASSET": "onDevices",
-    "GATEWAY": "onDevices",
-    "SUBSCRIPTION": "subscriptionsSearchBuilder",
-    "SUBSCRIBER": "subscribersSearchBuilder"
+    "entity.device": "onDevices",
+    "entity.subscription": "subscriptionsSearchBuilder",
+    "entity.subscriber": "subscribersSearchBuilder"
 };
 
 function _findEntityIntoOperationsResponse (operation) {
     return operation.entityId == this;
 }
 
-function findOperationsByJobId (jobId, entityType) {
-    var resourceFunction = typeMatch[entityType];
+function findOperationsByJobId (jobId, resourceType) {
+    var resourceFunction = typeMatch[resourceType];
     var ogapi = this.ogapi;
     var expect = this.expect;
     return ogapi.executionsSearchBuilder()[resourceFunction]().
@@ -84,13 +83,13 @@ Then(/^response error code sould be: (\d+)$/, function (statusCode, callback) {
     callback();
 });
 
-Then(/^response must have attached "([^"]*)" as "([^"]*)" entity$/, function (provCustomId, entityType) {
+Then(/^response must have attached "([^"]*)" as "([^"]*)" entity$/, function (provCustomId, resourceType) {
     // Write code here that turns the phrase above into concrete actions
     var expect = this.expect;
     var data;
     data = this.responseData.data;
     var jobId = data.id;
-    return findOperationsByJobId.call(this, jobId, entityType).
+    return findOperationsByJobId.call(this, jobId, resourceType).
         then(function (response) {
             var responseData = response.data;
             var operationFound = responseData.operations.find(_findEntityIntoOperationsResponse, provCustomId);
@@ -102,13 +101,13 @@ Then(/^response must have attached "([^"]*)" as "([^"]*)" entity$/, function (pr
         });
 });
 
-Then(/^response must have attached an entity list with "([^"]*)" type defined by:$/, function (entityType, table) {
+Then(/^response must have attached an entity list with "([^"]*)" type defined by:$/, function (resourceType, table) {
     // Write code here that turns the phrase above into concrete actions
     var expect = this.expect;
     var data;
     data = this.responseData.data;
     var jobId = data.id;
-    return findOperationsByJobId.call(this, jobId, entityType).
+    return findOperationsByJobId.call(this, jobId, resourceType).
         then(function (response) {
             var responseData = response.data;
             for (var i = 0; i < table.raw().length; i++) {

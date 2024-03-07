@@ -54,7 +54,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE periodic operation
         And parameter "admsts" by "inventado"
         And the job timeout by 5 minutes
         And execute every day at "2020-01-10T21:44:13Z"
-        And append entities by "{}" as filter with "ASSET" as entityType
+        And append entities by "{}" as filter with "entity.device" as resourceType
         When I build it
         And I execute it
         Then response code should be: 201
@@ -80,7 +80,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE periodic operation
             | MON |
             | WED |
             | FRI |
-        And append entities by "{}" as filter with "ASSET" as entityType
+        And append entities by "{}" as filter with "entity.device" as resourceType
         When I build it
         And I execute it
         Then response code should be: 201
@@ -120,7 +120,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE periodic operation
             | JAN |
             | MAR |
             | MAY |
-        And append entities by "{}" as filter with "ASSET" as entityType
+        And append entities by "{}" as filter with "entity.device" as resourceType
         When I build it
         And I execute it
         Then response code should be: 201
@@ -222,7 +222,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE periodic operation
         And parameter "admsts" by "inventado"
         And the job timeout by 5 minutes
         And execute every year at "2020-01-10T21:44:13Z" at day 4 on month "JAN"
-        And append entities by "{}" as filter with "ASSET" as entityType
+        And append entities by "{}" as filter with "entity.device" as resourceType
         When I build it
         And I execute it
         Then response code should be: 201

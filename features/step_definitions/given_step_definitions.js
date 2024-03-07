@@ -145,9 +145,9 @@ Given(/^execute immediately$/, function (callback) {
     callback();
 });
 
-Given(/^append entities by "([^"]*)" as filter with "([^"]*)" as entityType$/, function (filter, entityType, callback) {
+Given(/^append entities by "([^"]*)" as filter with "([^"]*)" as resourceType$/, function (filter, resourceType, callback) {
     // Write code here that turns the phrase above into concrete actions
-    this.util.appendEntitiesBy.filter(JSON.parse(filter), entityType);
+    this.util.appendEntitiesBy.filter(JSON.parse(filter), resourceType);
     callback();
 });
 

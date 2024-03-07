@@ -506,7 +506,7 @@ export default class BaseOperationBuilder {
         }
 
         if (typeof this._build.target !== "undefined" && typeof this._build.target.filter !== "undefined") {
-            resource = resource + '?entityType=' + this._entityTypeWhenFilter;
+            resource = resource + '?resourceType=' + this._resourceTypeWhenFilter;
         }
 
         let op = new Operation(this._ogapi, resource, postObj);
