@@ -41,8 +41,8 @@ Feature: Find a entity
             | provision.administration.organization | simple       | ofind_asset_organization_10                |        |
             | provision.administration.serviceGroup | simple       | emptyServiceGroup                          |        |
             | provision.asset.identifier            | simple       | find_asset_asset_cucumber                  |        |
-            | provision.asset.name                  | simple       | OGUX asset GATEWAY tester                  |        |
-            | provision.asset.description           | simple       | OGUX asset tester full GATEWAY description |        |
+            | provision.asset.name                  | simple       | OGUX asset entity.device tester                  |        |
+            | provision.asset.description           | simple       | OGUX asset tester full entity.device description |        |
         Then I delete it
         And I create it
         And response code should be: 201
@@ -96,8 +96,8 @@ Feature: Find a entity
             | provision.device.identifier           | simple       | find_device_device_cucumber                 |        |
             | provision.device.operationalStatus    | simple       | TEST                                        |        |
             | provision.device.administrativeState  | simple       | TESTING                                     |        |
-            | provision.device.name                 | simple       | OGUX Device GATEWAY tester                  |        |
-            | provision.device.description          | simple       | OGUX Device tester full GATEWAY description |        |
+            | provision.device.name                 | simple       | OGUX Device entity.device tester                  |        |
+            | provision.device.description          | simple       | OGUX Device tester full entity.device description |        |
             | provision.device.specificType         | simple       | CONCENTRATOR                                |        |
         Then I delete it
         And I create it

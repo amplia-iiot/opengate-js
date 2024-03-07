@@ -54,7 +54,7 @@ Feature: Update periodic operation
         And execute every day at "now"
         And append entities by:
             | update_periodic_device |
-        #And append entities by "{}" as filter with "ASSET" as entityType
+        #And append entities by "{}" as filter with "entity.device" as resourceType
         When I build it
         And I execute it
         Then response code should be: 201
@@ -86,7 +86,7 @@ Feature: Update periodic operation
         And parameter "admsts" by "inventado"
         And the job timeout by 5 minutes
         And execute every day at "now"
-        And append entities by "{}" as filter with "ASSET" as entityType
+        And append entities by "{}" as filter with "entity.device" as resourceType
         When I build it
         And I execute it
         Then response code should be: 201
@@ -137,7 +137,7 @@ Feature: Update periodic operation
         And parameter "admsts" by "inventado"
         And the job timeout by 5 minutes
         And execute every day at "now"
-        And append entities by "{}" as filter with "ASSET" as entityType
+        And append entities by "{}" as filter with "entity.device" as resourceType
         When I build it
         And I execute it
         Then response code should be: 201
@@ -257,7 +257,7 @@ Feature: Update periodic operation
         And parameter "admsts" by "inventado"
         And the job timeout by 5 minutes
         And execute every day at "now"
-        And append entities by "{}" as filter with "ASSET" as entityType
+        And append entities by "{}" as filter with "entity.device" as resourceType
         When I build it
         And I execute it
         Then response code should be: 201

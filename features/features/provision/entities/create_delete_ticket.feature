@@ -46,7 +46,7 @@ Feature: Delete and Create a ticket
             | provision.device.operationalStatus    | simple       | TEST                                 |        |
             | provision.device.serialNumber         | simple       | serialNumber_TEST                    |        |
             | provision.device.administrativeState  | simple       | TESTING                              |        |
-            | provision.device.name                 | simple       | OGUX Device GATEWAY tester           |        |
+            | provision.device.name                 | simple       | OGUX Device entity.device tester           |        |
             | provision.device.specificType         | simple       | CONCENTRATOR                         |        |
         Then I delete it
         And I create it

@@ -44,8 +44,8 @@ So, I can create a new user with the parametres that I have been defined
             | provision.device.operationalStatus    | simple       | TEST                                        |        |
             | provision.device.serialNumber         | simple       | serialNumber_TEST                           |        |
             | provision.device.administrativeState  | simple       | TESTING                                     |        |
-            | provision.device.name                 | simple       | OGUX Device GATEWAY tester                  |        |
-            | provision.device.description          | simple       | OGUX Device tester full GATEWAY description |        |
+            | provision.device.name                 | simple       | OGUX Device entity.device tester                  |        |
+            | provision.device.description          | simple       | OGUX Device tester full entity.device description |        |
             | provision.device.specificType         | simple       | CONCENTRATOR                                |        |
         Then I delete it
         And I create it
@@ -66,8 +66,8 @@ So, I can create a new user with the parametres that I have been defined
             | provision.device.identifier           | simple       | device_testing_cucumber_ogapi_bug           |        |
             | provision.device.operationalStatus    | simple       | TEST                                        |        |
             | provision.device.administrativeState  | simple       | TESTING                                     |        |
-            | provision.device.name                 | simple       | OGUX Device GATEWAY tester                  |        |
-            | provision.device.description          | simple       | OGUX Device tester full GATEWAY description |        |
+            | provision.device.name                 | simple       | OGUX Device entity.device tester                  |        |
+            | provision.device.description          | simple       | OGUX Device tester full entity.device description |        |
             | provision.device.specificType         | simple       | CONCENTRATOR                                |        |
         And I create it
         And response code should be: 201
