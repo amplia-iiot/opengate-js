@@ -20,13 +20,13 @@ export default class AppendEntitiesBy {
 	* @return {BaseOperationBuilder}
 	*/
 	filter(filter,resourceType){
-		let resourceTypeeFound = this._parent._config.applicableTo.find(function(type){return type==this;},resourceType);
-		if (typeof resourceTypeeFound === "undefined"){
+		let resourceTypeFound = this._parent._config.applicableTo.find(function(type){return type==this;},resourceType);
+		if (typeof resourceTypeFound === "undefined"){
 			throw new Error("Entity type <'"+resourceType+"'> not allowed to operation <'"+
 				this._parent._config.name+"'>. Entity types allowed <'"+
 				JSON.stringify(this._parent._config.applicableTo)+"'>");
 		}
-		this._parent._resourceTypeeWhenFilter = resourceType;
+		this._parent._resourceTypeWhenFilter = resourceType;
 		if (typeof this._parent._build.target !== "undefined") 
 			console.warn("An Operation only allow one kind of way to append entities. "+
 			"Filter | Tag | List of entities. Now Filter will remove the last way appended .");			
