@@ -50,7 +50,7 @@ Feature: Execute actions on a particular execution
         And the timeout by 30000
         And the job timeout by 5 minutes
         And execute in 10 minutes
-        #And append entities by "{}" as filter with "ASSET" as entityType
+        #And append entities by "{}" as filter with "entity.device" as resourceType
         And append entities by:
             | actions_execution_device |
         When I build it
@@ -79,7 +79,7 @@ Feature: Execute actions on a particular execution
         And the timeout by 30000
         And the job timeout by 5 minutes
         And execute in 10 minutes
-        #And append entities by "{}" as filter with "ASSET" as entityType
+        #And append entities by "{}" as filter with "entity.device" as resourceType
         And append entities by:
             | actions_execution_device |
         When I build it
@@ -103,7 +103,7 @@ Feature: Execute actions on a particular execution
         And the timeout by 30000
         And the job timeout by 5 minutes
         And execute in 10 minutes
-        #And append entities by "{}" as filter with "ASSET" as entityType
+        #And append entities by "{}" as filter with "entity.device" as resourceType
         And append entities by:
             | actions_execution_device |
         When I build it
@@ -127,7 +127,7 @@ Feature: Execute actions on a particular execution
         And the timeout by 30000
         And the job timeout by 5 minutes
         And execute in 10 minutes
-        And append entities by "{}" as filter with "ASSET" as entityType
+        And append entities by "{}" as filter with "entity.device" as resourceType
         #And append entities by:
         #    |   device_689_DEMO  |
         When I build it
@@ -153,7 +153,7 @@ Feature: Execute actions on a particular execution
         And the job timeout by 5 minutes
         And the callback by "http://change"
         And execute in 10 minutes
-        And append entities by "{}" as filter with "ASSET" as entityType
+        And append entities by "{}" as filter with "entity.device" as resourceType
         #And append entities by:
         #    |   device_689_DEMO  |
         When I build it
@@ -176,7 +176,7 @@ Feature: Execute actions on a particular execution
         And the timeout by 30000
         And the job timeout by 1 minutes
         And execute immediately
-        #And append entities by "{}" as filter with "ASSET" as entityType
+        #And append entities by "{}" as filter with "entity.device" as resourceType
         And append entities by:
             | actions_execution_device |
         When I build it
@@ -205,7 +205,7 @@ Feature: Execute actions on a particular execution
         And the timeout by 30000
         And the job timeout by 1 minutes
         And execute immediately
-        #And append entities by "{}" as filter with "ASSET" as entityType
+        #And append entities by "{}" as filter with "entity.device" as resourceType
         And append entities by:
             | actions_execution_device |
         When I build it
@@ -226,7 +226,7 @@ Feature: Execute actions on a particular execution
         And the timeout by 30000
         And the job timeout by 1 minutes
         And execute immediately
-        #And append entities by "{}" as filter with "ASSET" as entityType
+        #And append entities by "{}" as filter with "entity.device" as resourceType
         And append entities by:
             | actions_execution_device |
         When I build it
@@ -251,7 +251,7 @@ Feature: Execute actions on a particular execution
         And parameter "admsts" by "inventado"
         And the job timeout by 5 minutes
         And execute every day at "now"
-        #And append entities by "{}" as filter with "ASSET" as entityType
+        #And append entities by "{}" as filter with "entity.device" as resourceType
         And append entities by:
             | actions_execution_device |
         When I build it
@@ -274,7 +274,7 @@ Feature: Execute actions on a particular execution
         And parameter "admsts" by "inventado"
         And the job timeout by 5 minutes
         And execute every day at "now"
-        #And append entities by "{}" as filter with "ASSET" as entityType
+        #And append entities by "{}" as filter with "entity.device" as resourceType
         And append entities by:
             | actions_execution_device |
         When I build it
@@ -299,7 +299,7 @@ Feature: Execute actions on a particular execution
         And parameter "admsts" by "inventado"
         And the job timeout by 5 minutes
         And execute every day at "now"
-        #And append entities by "{}" as filter with "ASSET" as entityType
+        #And append entities by "{}" as filter with "entity.device" as resourceType
         And append entities by:
             | actions_execution_device |
         When I build it

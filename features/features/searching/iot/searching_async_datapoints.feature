@@ -36,8 +36,8 @@ I want to search the collection of data points using asynchronous pagination
             | provision.device.identifier           | simple       | async_testing                               |        |
             | provision.device.operationalStatus    | simple       | TEST                                        |        |
             | provision.device.administrativeState  | simple       | TESTING                                     |        |
-            | provision.device.name                 | simple       | OGUX Device GATEWAY tester                  |        |
-            | provision.device.description          | simple       | OGUX Device tester full GATEWAY description |        |
+            | provision.device.name                 | simple       | OGUX Device entity.device tester                  |        |
+            | provision.device.description          | simple       | OGUX Device tester full entity.device description |        |
             | provision.device.specificType         | simple       | CONCENTRATOR                                |        |
         Then I delete it
         And I create it

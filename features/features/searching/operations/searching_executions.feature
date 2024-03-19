@@ -36,8 +36,8 @@ I want to search operation's executions
             | provision.device.identifier           | simple       | device_executions_tests                     |        |
             | provision.device.operationalStatus    | simple       | TEST                                        |        |
             | provision.device.administrativeState  | simple       | TESTING                                     |        |
-            | provision.device.name                 | simple       | OGUX Device GATEWAY tester                  |        |
-            | provision.device.description          | simple       | OGUX Device tester full GATEWAY description |        |
+            | provision.device.name                 | simple       | OGUX Device entity.device tester                  |        |
+            | provision.device.description          | simple       | OGUX Device tester full entity.device description |        |
             | provision.device.specificType         | simple       | CONCENTRATOR                                |        |
         Then I delete it
         And I create it
@@ -56,14 +56,14 @@ I want to search operation's executions
         And the job timeout by 5 minutes
         And execute immediately
         #And append entities by "" as tag
-        #And append entities by "{}" as filter with "ASSET" as entityType
+        #And append entities by "{}" as filter with "enntity.device" as resourceType
         And append entities by:
             | device_executions_tests |
         When I build it
         And I execute it
         Then response code should be: 201
-        And response must have attached "device_executions_tests" as "ASSET" entity
-        And response must have attached an entity list with "ASSET" type defined by:
+        And response must have attached "device_executions_tests" as "entity.device" entity
+        And response must have attached an entity list with "entity.device" type defined by:
             | device_executions_tests |
         And an ogapi "executions search" util
         When I build it with filter by operation's id
