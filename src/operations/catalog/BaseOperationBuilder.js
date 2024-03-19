@@ -61,7 +61,7 @@ export default class BaseOperationBuilder {
             job: '/jobs',
             task: '/tasks'
         };
-        this._entityTypeWhenFilter = undefined;
+        this._resourceTypeWhenFilter = undefined;
         this._build = {
             operationParameters: {
                 ackTimeout: 0,
@@ -451,7 +451,7 @@ export default class BaseOperationBuilder {
             }
         }
         if (typeof this._build.target !== "undefined" && typeof this._build.target.filter !== "undefined") {
-            if (typeof this._entityTypeWhenFilter !== "string") {
+            if (typeof this._resourceTypeWhenFilter !== "string") {
                 errors.push("Must be selected the entity type allowed when filter is the way to append entities. Allowed entity types <'" +
                     JSON.stringify(this._config.applicableTo) + "'>");
             }
@@ -506,7 +506,7 @@ export default class BaseOperationBuilder {
         }
 
         if (typeof this._build.target !== "undefined" && typeof this._build.target.filter !== "undefined") {
-            resource = resource + '?entityType=' + this._entityTypeWhenFilter;
+            resource = resource + '?resourceType=' + this._resourceTypeWhenFilter;
         }
 
         let op = new Operation(this._ogapi, resource, postObj);

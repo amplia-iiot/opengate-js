@@ -55,14 +55,14 @@ So that I can change the administrative status to some devices/subscriptions/sub
         And the job timeout by 5 minutes
         And execute immediately
         And append entities by "" as tag
-        #And append entities by "{}" as filter with "ASSET" as entityType
+        #And append entities by "{}" as filter with "entity.device" as resourceType
         And append entities by:
             | execute_operations_device_cucumber |
         When I build it
         And I execute it
         Then response code should be: 201
-        And response must have attached "execute_operations_device_cucumber" as "ASSET" entity
-        And response must have attached an entity list with "ASSET" type defined by:
+        And response must have attached "execute_operations_device_cucumber" as "entity.device" entity
+        And response must have attached an entity list with "entity.device" type defined by:
             | execute_operations_device_cucumber |
 
 
@@ -136,7 +136,7 @@ So that I can change the administrative status to some devices/subscriptions/sub
         Given the operation by "SET_DEVICE_PARAMETERS"
         And execute immediately
         And append entities by "" as tag
-        And append entities by "{}" as filter with "ASSET" as entityType
+        And append entities by "{}" as filter with "entity.device" as resourceType
         And append entities by:
             | execute_operations_device_cucumber |
         And parameter "variableList" by:
@@ -154,7 +154,7 @@ So that I can change the administrative status to some devices/subscriptions/sub
         Given the operation by "GET_DEVICE_PARAMETERS"
         And execute immediately
         And append entities by "" as tag
-        And append entities by "{}" as filter with "ASSET" as entityType
+        And append entities by "{}" as filter with "entity.device" as resourceType
         And append entities by:
             | execute_operations_device_cucumber |
         And parameter "variableList" as object by:
