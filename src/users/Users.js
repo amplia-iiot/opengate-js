@@ -2,8 +2,9 @@
 
 import BaseProvision from '../provision/BaseProvision';
 import _ from 'lodash';
-import { version as uuidVersion} from 'uuid';
-import { validate as uuidValidate} from 'uuid';
+import { version as uuidVersion } from 'uuid';
+import { validate as uuidValidate } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 const _length_name = 100;
 const _length_surname = 100;
@@ -403,5 +404,9 @@ export default class User extends BaseProvision {
         const url = this._resource + '/login';
 
         return this._doNorthPost(url, data, true)
+    }
+
+    generateApiKey(){
+        return v4()
     }
 }
