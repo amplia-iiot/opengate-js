@@ -1056,6 +1056,35 @@ When(/^I update password with "([^"]*)"$/, function (field) {
     }
 });
 
+When(/^I update apiKey with "([^"]*)"$/, function (field) {
+    var _this = this;
+    _this.error = undefined;
+    _this.responseData = undefined;
+
+    function catchResponse(data) {
+        //console.log('catchResponse', data);
+        _this.responseData = data;
+        _this.error = undefined;
+
+    }
+
+    function catchErrorResponse(err) {
+        console.error('catchErrorResponse', err);
+        _this.responseData = err;
+        _this.error = err;
+
+    }
+
+    try {
+        return _this.util.changeApiKey(field).then(catchResponse).catch(catchErrorResponse);
+    } catch (err) {
+        console.error('ERROR: ', err);
+        this.error = err;
+
+        return;
+    }
+});
+
 When(/^I update password with "([^"]*)" and token$/, function (password) {
     var _this = this;
     _this.error = undefined;

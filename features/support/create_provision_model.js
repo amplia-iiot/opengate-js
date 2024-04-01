@@ -29,7 +29,9 @@ module.exports = {
                 'langCode': 'withLangCode',
                 'name': 'withName',
                 'surname': 'withSurname',
-                '2FaType': 'with2FaType'
+                '2FaType': 'with2FaType',
+                'apiKey': 'withApiKey',
+                'password': 'withPassword',
             },
             'organization': {
                 'name': 'withName',
