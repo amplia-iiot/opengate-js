@@ -407,6 +407,6 @@ export default class User extends BaseProvision {
     }
 
     generateApiKey(){
-        return v4()
+        return uuidv4()
     }
 }

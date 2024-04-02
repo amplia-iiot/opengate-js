@@ -453,7 +453,7 @@ var User = (function (_BaseProvision) {
     }, {
         key: 'generateApiKey',
         value: function generateApiKey() {
-            return v4();
+            return (0, _uuid.v4)();
         }
     }]);
 
