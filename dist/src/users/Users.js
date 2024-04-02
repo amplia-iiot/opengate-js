@@ -18,13 +18,11 @@ var _provisionBaseProvision = require('../provision/BaseProvision');
 
 var _provisionBaseProvision2 = _interopRequireDefault(_provisionBaseProvision);
 
-var _q = require('q');
-
-var _q2 = _interopRequireDefault(_q);
-
 var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
+
+var _uuid = require('uuid');
 
 var _length_name = 100;
 var _length_surname = 100;
@@ -98,6 +96,21 @@ var User = (function (_BaseProvision) {
         value: function withPassword(password) {
             if (typeof password !== 'string' || password.length > _length_password) throw new Error('Parameter password must be a string and has a maximum length of ' + _length_password);
             this._password = password;
+            return this;
+        }
+
+        /**
+         * Set the apiKey attribute. Only on update user
+         * @param {string} apiKey - required field
+         * @return {User}
+         */
+    }, {
+        key: 'withApiKey',
+        value: function withApiKey(apiKey) {
+            if (!this._validateUUID(apiKey)) {
+                throw new Error({ message: "OGAPI_USER_UPDATE_APIKEY_PARAMETER_INVALID", parameter: 'apiKey' });
+            }
+            this._apiKey = apiKey;
             return this;
         }
 
@@ -256,9 +269,6 @@ var User = (function (_BaseProvision) {
     }, {
         key: '_composeUpdateElement',
         value: function _composeUpdateElement() {
-            if (this._password) {
-                throw new Error('OGAPI_PASSWORD_NOT_ALLOWED');
-            }
             if (this._email === undefined) throw new Error('OGAPI_USER_UPDATE_PARAMETER_MUST_BE_DEFINED');
 
             var data = {
@@ -273,6 +283,8 @@ var User = (function (_BaseProvision) {
                     countryCode: this._countryCode || undefined,
                     langCode: this._langCode || undefined,
                     timezone: this._timezone || undefined,
+                    apiKey: this._apiKey || undefined,
+                    password: this._password || undefined,
                     "2FaType": this._twoFaType || undefined
                 }
             };
@@ -300,6 +312,46 @@ var User = (function (_BaseProvision) {
             var data = {
                 user: {
                     password: this._newPassword
+                }
+            };
+
+            this._setExtraHeaders({
+                'X-ApiPass': this._password
+            });
+
+            return this._doNorthPut(this._buildURL(), data);
+        }
+    }, {
+        key: '_validateUUID',
+        value: function _validateUUID(UUID) {
+            return (0, _uuid.validate)(UUID) && (0, _uuid.version)(UUID) === 4;
+        }
+
+        /**
+         * This invoke a request to OpenGate North API and the callback is managed by promises
+         * This function updates a apiKey of a user
+         * @return {Promise}
+         * @param {String} apiKey - required field
+         * @property {function (result:object, statusCode:number)} then - When request it is OK
+         * @property {function (error:string)} catch - When request it is NOK
+         * @example
+         *  ogapi.usersBuilder().withEmail(example@example.es).withPassword(oldPassword).changeApiKey(newPassword);
+         */
+    }, {
+        key: 'changeApiKey',
+        value: function changeApiKey(apiKey) {
+            this._apiKey = apiKey;
+            if (_lodash2['default'].isEmpty(this._email) || _lodash2['default'].isEmpty(this._password) || _lodash2['default'].isEmpty(this._apiKey)) {
+                throw new Error('OGAPI_USER_UPDATE_APIKEY_PARAMETER_MUST_BE_DEFINED');
+            }
+
+            if (!this._validateUUID(apiKey)) {
+                throw new Error({ message: "OGAPI_USER_UPDATE_APIKEY_PARAMETER_INVALID", parameter: 'apiKey' });
+            }
+
+            var data = {
+                user: {
+                    apiKey: this._apiKey
                 }
             };
 
@@ -397,6 +449,11 @@ var User = (function (_BaseProvision) {
             var url = this._resource + '/login';
 
             return this._doNorthPost(url, data, true);
+        }
+    }, {
+        key: 'generateApiKey',
+        value: function generateApiKey() {
+            return v4();
         }
     }]);
 
