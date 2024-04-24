@@ -286,7 +286,8 @@ export const IOT_FIELDS = {
             "alarmAttentionNote": "alarm.attentionNote",
             "alarmClosureDate": "alarm.closureDate",
             "alarmClosureUser": "alarm.closureUser",
-            "alarmClosureNote": "alarm.closureNote"
+            "alarmClosureNote": "alarm.closureNote",
+            "alarmExtraInfo": "alarm.extra_info"
         }
     },
     "GENERAL": {
