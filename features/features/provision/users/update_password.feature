@@ -2,6 +2,7 @@
 @provision
 @users
 @update_password
+@wip
 
 Feature: Update password with logged in user or because it is not secure
     As a user of JsApi
@@ -55,6 +56,16 @@ Feature: Update password with logged in user or because it is not secure
         And the "email" "ogux_ogapi@amplia.com"
         And the "password" "Nvoiqewvouoiu32j@"
         Then I update password with "Nvoiqewvouoiu32j@#!!"
+        And response code should be: 200
+
+    Scenario: Update apiKey
+        Given an user remove her authorization options
+        Given an ogapi "users builder" util
+        Then I want to update a "user"
+        And the "email" "ogux_ogapi@amplia.com"
+        And the "password" "Nvoiqewvouoiu32j@"
+        #npx uuid v4 for generate UUID
+        Then I update apiKey with "7d58d9e2-c372-4792-b87e-f9b368dc46b7"
         And response code should be: 200
 
     Scenario: Deleting an user and organization to use

@@ -1,8 +1,10 @@
 'use strict';
 
 import BaseProvision from '../provision/BaseProvision';
-import q from 'q';
 import _ from 'lodash';
+import { version as uuidVersion } from 'uuid';
+import { validate as uuidValidate } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 const _length_name = 100;
 const _length_surname = 100;
@@ -69,6 +71,19 @@ export default class User extends BaseProvision {
         if (typeof password !== 'string' || password.length > _length_password)
             throw new Error('Parameter password must be a string and has a maximum length of ' + _length_password);
         this._password = password;
+        return this;
+    }
+
+    /**
+     * Set the apiKey attribute. Only on update user
+     * @param {string} apiKey - required field
+     * @return {User}
+     */
+    withApiKey(apiKey) {
+        if(!this._validateUUID(apiKey)){
+            throw new Error({ message: "OGAPI_USER_UPDATE_APIKEY_PARAMETER_INVALID", parameter: 'apiKey' });
+        }
+        this._apiKey = apiKey;
         return this;
     }
 
@@ -219,9 +234,6 @@ export default class User extends BaseProvision {
      * @private
      */
     _composeUpdateElement() {
-        if (this._password) {
-            throw new Error('OGAPI_PASSWORD_NOT_ALLOWED');
-        }
         if (this._email === undefined)
             throw new Error('OGAPI_USER_UPDATE_PARAMETER_MUST_BE_DEFINED');
 
@@ -237,6 +249,8 @@ export default class User extends BaseProvision {
                 countryCode: this._countryCode || undefined,
                 langCode: this._langCode || undefined,
                 timezone: this._timezone || undefined,
+                apiKey: this._apiKey || undefined,
+                password: this._password || undefined,
                 "2FaType": this._twoFaType || undefined
             }
         };
@@ -263,6 +277,42 @@ export default class User extends BaseProvision {
         var data = {
             user: {
                 password: this._newPassword
+            }
+        };
+
+        this._setExtraHeaders({
+            'X-ApiPass': this._password
+        });
+
+        return this._doNorthPut(this._buildURL(), data);
+    }
+
+    _validateUUID(UUID){
+        return uuidValidate(UUID) && uuidVersion(UUID) === 4
+    }
+    /**
+     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * This function updates a apiKey of a user
+     * @return {Promise}
+     * @param {String} apiKey - required field
+     * @property {function (result:object, statusCode:number)} then - When request it is OK
+     * @property {function (error:string)} catch - When request it is NOK
+     * @example
+     *  ogapi.usersBuilder().withEmail(example@example.es).withPassword(oldPassword).changeApiKey(newPassword);
+     */
+    changeApiKey(apiKey) {
+        this._apiKey = apiKey;
+        if (_.isEmpty(this._email) || _.isEmpty(this._password) || _.isEmpty(this._apiKey)) {
+            throw new Error('OGAPI_USER_UPDATE_APIKEY_PARAMETER_MUST_BE_DEFINED');
+        }
+
+        if(!this._validateUUID(apiKey)){
+            throw new Error({ message: "OGAPI_USER_UPDATE_APIKEY_PARAMETER_INVALID", parameter: 'apiKey' });
+        }
+
+        var data = {
+            user: {
+                apiKey: this._apiKey
             }
         };
 
@@ -354,5 +404,9 @@ export default class User extends BaseProvision {
         const url = this._resource + '/login';
 
         return this._doNorthPost(url, data, true)
+    }
+
+    generateApiKey(){
+        return uuidv4()
     }
 }

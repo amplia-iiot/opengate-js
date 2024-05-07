@@ -1,5 +1,5 @@
 var gulp = require('gulp'),
-    uglify = require('gulp-uglify'),
+    terser = require('gulp-terser'),
     ver = require('gulp-ver'),
     esdoc = require("gulp-esdoc"),
     clean = require('gulp-clean'),
@@ -79,7 +79,7 @@ gulp.task('bower:min', function() {
             debug: false,
             transform: ['babelify']
         }))
-        .pipe(uglify())
+        .pipe(terser())
         .pipe(ver())
         .pipe(rename({
             suffix: ".min"

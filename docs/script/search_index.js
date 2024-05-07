@@ -10830,6 +10830,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/users/users.js~user#changeapikey",
+    "class/src/users/Users.js~User.html#instance-method-changeApiKey",
+    "src/users/Users.js~User#changeApiKey",
+    "method"
+  ],
+  [
     "src/users/users.js~user#changepassword",
     "class/src/users/Users.js~User.html#instance-method-changePassword",
     "src/users/Users.js~User#changePassword",
@@ -10839,6 +10845,12 @@ window.esdocSearchIndex = [
     "src/users/users.js~user#constructor",
     "class/src/users/Users.js~User.html#instance-constructor-constructor",
     "src/users/Users.js~User#constructor",
+    "method"
+  ],
+  [
+    "src/users/users.js~user#generateapikey",
+    "class/src/users/Users.js~User.html#instance-method-generateApiKey",
+    "src/users/Users.js~User#generateApiKey",
     "method"
   ],
   [
@@ -10863,6 +10875,12 @@ window.esdocSearchIndex = [
     "src/users/users.js~user#with2fatype",
     "class/src/users/Users.js~User.html#instance-method-with2FaType",
     "src/users/Users.js~User#with2FaType",
+    "method"
+  ],
+  [
+    "src/users/users.js~user#withapikey",
+    "class/src/users/Users.js~User.html#instance-method-withApiKey",
+    "src/users/Users.js~User#withApiKey",
     "method"
   ],
   [
