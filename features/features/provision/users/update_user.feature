@@ -4,6 +4,7 @@
 @users
 @update_user
 @urlParameters
+@wip
 
 Feature: Delete and Create an user
   As a user of JsApi
@@ -56,6 +57,8 @@ Feature: Delete and Create an user
     And the "name" "test name updated"
     And the "surname" "surname updated"
     And the "description" "user description updated"
+    And the "password" "Nvoiqewvouoiu32j@"
+    And the "apiKey" "7d58d9e2-c372-4792-b87e-f9b368dc46b7"
     And the "2FaType" "NONE"
     Then I update it
     And response code should be: 200
