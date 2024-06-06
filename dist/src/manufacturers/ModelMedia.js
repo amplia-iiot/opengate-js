@@ -22,6 +22,10 @@ var _provisionBaseProvision = require('../provision/BaseProvision');
 
 var _provisionBaseProvision2 = _interopRequireDefault(_provisionBaseProvision);
 
+var _Manufacturer = require('./Manufacturer');
+
+var _Model = require('./Model');
+
 /**
  * This is a base object that contains all you can do about ModelMedia.
  */
@@ -33,10 +37,10 @@ var ModelMedia = (function (_BaseProvision) {
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 
-    function ModelMedia(ogapi, modelId) {
+    function ModelMedia(ogapi, manufacturer, modelId) {
         _classCallCheck(this, ModelMedia);
 
-        _get(Object.getPrototypeOf(ModelMedia.prototype), 'constructor', this).call(this, ogapi, "/models/" + modelId + '/media', undefined, ['identifier']);
+        _get(Object.getPrototypeOf(ModelMedia.prototype), 'constructor', this).call(this, ogapi, _Manufacturer.MANUFACTURERS_RESOURCE + "/" + manufacturer + _Model.MODELS_RESOURCE + "/" + modelId + '/media', undefined, ['identifier']);
     }
 
     //http://cm.amplia.es/jira/browse/OGODM-3201

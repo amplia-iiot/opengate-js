@@ -578,6 +578,22 @@ var _manufacturersModelFinder = require('./manufacturers/ModelFinder');
 
 var _manufacturersModelFinder2 = _interopRequireDefault(_manufacturersModelFinder);
 
+var _organization_manufacturerManufacturer = require('./organization_manufacturer/Manufacturer');
+
+var _organization_manufacturerManufacturer2 = _interopRequireDefault(_organization_manufacturerManufacturer);
+
+var _organization_manufacturerModel = require('./organization_manufacturer/Model');
+
+var _organization_manufacturerModel2 = _interopRequireDefault(_organization_manufacturerModel);
+
+var _organization_manufacturerManufacturerFinder = require('./organization_manufacturer/ManufacturerFinder');
+
+var _organization_manufacturerManufacturerFinder2 = _interopRequireDefault(_organization_manufacturerManufacturerFinder);
+
+var _organization_manufacturerModelFinder = require('./organization_manufacturer/ModelFinder');
+
+var _organization_manufacturerModelFinder2 = _interopRequireDefault(_organization_manufacturerModelFinder);
+
 var _provisionCountryCountriesCatalog = require('./provision/country/CountriesCatalog');
 
 var _provisionCountryCountriesCatalog2 = _interopRequireDefault(_provisionCountryCountriesCatalog);
@@ -1979,8 +1995,8 @@ var InternalOpenGateAPI = (function () {
          */
     }, {
         key: 'manufacturerModelsBuilder',
-        value: function manufacturerModelsBuilder() {
-            return new _manufacturersModel2['default'](this);
+        value: function manufacturerModelsBuilder(manufacturerIdentifier) {
+            return new _manufacturersModel2['default'](this, manufacturerIdentifier);
         }
 
         /**
@@ -2001,6 +2017,45 @@ var InternalOpenGateAPI = (function () {
         key: 'newModelFinder',
         value: function newModelFinder() {
             return new _manufacturersModelFinder2['default'](this);
+        }
+
+        /** This return a OrganizationManufacturersBuilder to build a specific OrganizationManufacturersBuilder
+         * @return {OrganizationManufacturersBuilder}
+         */
+    }, {
+        key: 'organizationManufacturersBuilder',
+        value: function organizationManufacturersBuilder(organization) {
+            return new _organization_manufacturerManufacturer2['default'](this, organization);
+        }
+
+        /**
+         * This return a OrganizationManufacturerModelsBuilder to build a specific OrganizationManufacturerModelsBuilder
+         * @return {OrganizationManufacturerModelsBuilder}
+         */
+    }, {
+        key: 'organizationManufacturerModelsBuilder',
+        value: function organizationManufacturerModelsBuilder(organization, manufacturerIdentifier) {
+            return new _organization_manufacturerModel2['default'](this, organization, manufacturerIdentifier);
+        }
+
+        /**
+         * This return a util to find a hardware manufacturer
+         * @return {OrganizationManufacturerFinder}
+         */
+    }, {
+        key: 'newOrganizationManufacturersFinder',
+        value: function newOrganizationManufacturersFinder() {
+            return new _organization_manufacturerManufacturerFinder2['default'](this);
+        }
+
+        /**
+         * This return a util to find a hardware model
+         * @return {OrganizationModelFinder}
+         */
+    }, {
+        key: 'newOrganizationModelFinder',
+        value: function newOrganizationModelFinder() {
+            return new _organization_manufacturerModelFinder2['default'](this);
         }
     }]);
 

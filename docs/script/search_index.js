@@ -750,6 +750,18 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/manufacturers/manufacturer.js~manufacturers_resource",
+    "variable/index.html#static-variable-MANUFACTURERS_RESOURCE",
+    "<span>MANUFACTURERS_RESOURCE</span> <span class=\"search-result-import-path\">opengate-js/src/manufacturers/Manufacturer.js</span>",
+    "variable"
+  ],
+  [
+    "opengate-js/src/organization_manufacturer/manufacturer.js~manufacturers_resource",
+    "variable/index.html#static-variable-MANUFACTURERS_RESOURCE",
+    "<span>MANUFACTURERS_RESOURCE</span> <span class=\"search-result-import-path\">opengate-js/src/organization_manufacturer/Manufacturer.js</span>",
+    "variable"
+  ],
+  [
     "opengate-js/src/bulk/bulkexecutionfinder.js~mime_types_enum",
     "variable/index.html#static-variable-MIME_TYPES_ENUM",
     "<span>MIME_TYPES_ENUM</span> <span class=\"search-result-import-path\">opengate-js/src/bulk/BulkExecutionFinder.js</span>",
@@ -759,6 +771,18 @@ window.esdocSearchIndex = [
     "opengate-js/src/security/mime_types_enum.js~mime_types_enum",
     "variable/index.html#static-variable-MIME_TYPES_ENUM",
     "<span>MIME_TYPES_ENUM</span> <span class=\"search-result-import-path\">opengate-js/src/security/MIME_TYPES_ENUM.js</span>",
+    "variable"
+  ],
+  [
+    "opengate-js/src/manufacturers/model.js~models_resource",
+    "variable/index.html#static-variable-MODELS_RESOURCE",
+    "<span>MODELS_RESOURCE</span> <span class=\"search-result-import-path\">opengate-js/src/manufacturers/Model.js</span>",
+    "variable"
+  ],
+  [
+    "opengate-js/src/organization_manufacturer/model.js~models_resource",
+    "variable/index.html#static-variable-MODELS_RESOURCE",
+    "<span>MODELS_RESOURCE</span> <span class=\"search-result-import-path\">opengate-js/src/organization_manufacturer/Model.js</span>",
     "variable"
   ],
   [
@@ -780,6 +804,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/organization_manufacturer/manufacturerfinder.js~manufacturerfinder",
+    "class/src/organization_manufacturer/ManufacturerFinder.js~ManufacturerFinder.html",
+    "<span>ManufacturerFinder</span> <span class=\"search-result-import-path\">opengate-js/src/organization_manufacturer/ManufacturerFinder.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/manufacturers/manufacturermedia.js~manufacturermedia",
     "class/src/manufacturers/ManufacturerMedia.js~ManufacturerMedia.html",
     "<span>ManufacturerMedia</span> <span class=\"search-result-import-path\">opengate-js/src/manufacturers/ManufacturerMedia.js</span>",
@@ -789,6 +819,12 @@ window.esdocSearchIndex = [
     "opengate-js/src/manufacturers/manufacturer.js~manufacturers",
     "class/src/manufacturers/Manufacturer.js~Manufacturers.html",
     "<span>Manufacturers</span> <span class=\"search-result-import-path\">opengate-js/src/manufacturers/Manufacturer.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/organization_manufacturer/manufacturer.js~manufacturers",
+    "class/src/organization_manufacturer/Manufacturer.js~Manufacturers.html",
+    "<span>Manufacturers</span> <span class=\"search-result-import-path\">opengate-js/src/organization_manufacturer/Manufacturer.js</span>",
     "class"
   ],
   [
@@ -810,6 +846,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/organization_manufacturer/modelfinder.js~modelfinder",
+    "class/src/organization_manufacturer/ModelFinder.js~ModelFinder.html",
+    "<span>ModelFinder</span> <span class=\"search-result-import-path\">opengate-js/src/organization_manufacturer/ModelFinder.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/manufacturers/modelmedia.js~modelmedia",
     "class/src/manufacturers/ModelMedia.js~ModelMedia.html",
     "<span>ModelMedia</span> <span class=\"search-result-import-path\">opengate-js/src/manufacturers/ModelMedia.js</span>",
@@ -819,6 +861,12 @@ window.esdocSearchIndex = [
     "opengate-js/src/manufacturers/model.js~models",
     "class/src/manufacturers/Model.js~Models.html",
     "<span>Models</span> <span class=\"search-result-import-path\">opengate-js/src/manufacturers/Model.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/organization_manufacturer/model.js~models",
+    "class/src/organization_manufacturer/Model.js~Models.html",
+    "<span>Models</span> <span class=\"search-result-import-path\">opengate-js/src/organization_manufacturer/Model.js</span>",
     "class"
   ],
   [
@@ -945,6 +993,18 @@ window.esdocSearchIndex = [
     "opengate-js/src/iot/datamodels/datamodelshelper.js~pre_resource",
     "variable/index.html#static-variable-PRE_RESOURCE",
     "<span>PRE_RESOURCE</span> <span class=\"search-result-import-path\">opengate-js/src/iot/datamodels/DatamodelsHelper.js</span>",
+    "variable"
+  ],
+  [
+    "opengate-js/src/organization_manufacturer/manufacturer.js~pre_resource",
+    "variable/index.html#static-variable-PRE_RESOURCE",
+    "<span>PRE_RESOURCE</span> <span class=\"search-result-import-path\">opengate-js/src/organization_manufacturer/Manufacturer.js</span>",
+    "variable"
+  ],
+  [
+    "opengate-js/src/organization_manufacturer/model.js~pre_resource",
+    "variable/index.html#static-variable-PRE_RESOURCE",
+    "<span>PRE_RESOURCE</span> <span class=\"search-result-import-path\">opengate-js/src/organization_manufacturer/Model.js</span>",
     "variable"
   ],
   [
@@ -3852,6 +3912,18 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#neworganizationmanufacturersfinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newOrganizationManufacturersFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newOrganizationManufacturersFinder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#neworganizationmodelfinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newOrganizationModelFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newOrganizationModelFinder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#newperiodicityactions",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newPeriodicityActions",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newPeriodicityActions",
@@ -3981,6 +4053,18 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#operationssearchbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-operationsSearchBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#operationsSearchBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#organizationmanufacturermodelsbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-organizationManufacturerModelsBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#organizationManufacturerModelsBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#organizationmanufacturersbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-organizationManufacturersBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#organizationManufacturersBuilder",
     "method"
   ],
   [
@@ -6396,12 +6480,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/iot/catalog/datastream.js~datastream#withhardwaresids",
-    "class/src/iot/catalog/Datastream.js~Datastream.html#instance-method-withHardwaresIds",
-    "src/iot/catalog/Datastream.js~Datastream#withHardwaresIds",
-    "method"
-  ],
-  [
     "src/iot/catalog/datastream.js~datastream#withid",
     "class/src/iot/catalog/Datastream.js~Datastream.html#instance-method-withId",
     "src/iot/catalog/Datastream.js~Datastream#withId",
@@ -6768,6 +6846,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/manufacturers/manufacturerfinder.js~manufacturerfinder#findall",
+    "class/src/manufacturers/ManufacturerFinder.js~ManufacturerFinder.html#instance-method-findAll",
+    "src/manufacturers/ManufacturerFinder.js~ManufacturerFinder#findAll",
+    "method"
+  ],
+  [
     "src/manufacturers/manufacturerfinder.js~manufacturerfinder#findbyid",
     "class/src/manufacturers/ManufacturerFinder.js~ManufacturerFinder.html#instance-method-findById",
     "src/manufacturers/ManufacturerFinder.js~ManufacturerFinder#findById",
@@ -6777,6 +6861,12 @@ window.esdocSearchIndex = [
     "src/manufacturers/manufacturerfinder.js~manufacturerfinder#findmediabyid",
     "class/src/manufacturers/ManufacturerFinder.js~ManufacturerFinder.html#instance-method-findMediaById",
     "src/manufacturers/ManufacturerFinder.js~ManufacturerFinder#findMediaById",
+    "method"
+  ],
+  [
+    "src/manufacturers/manufacturerfinder.js~manufacturerfinder#findmedias",
+    "class/src/manufacturers/ManufacturerFinder.js~ManufacturerFinder.html#instance-method-findMedias",
+    "src/manufacturers/ManufacturerFinder.js~ManufacturerFinder#findMedias",
     "method"
   ],
   [
@@ -6852,18 +6942,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/manufacturers/model.js~models#withmanufactureridentifier",
-    "class/src/manufacturers/Model.js~Models.html#instance-method-withManufacturerIdentifier",
-    "src/manufacturers/Model.js~Models#withManufacturerIdentifier",
-    "method"
-  ],
-  [
-    "src/manufacturers/model.js~models#withmanufacturername",
-    "class/src/manufacturers/Model.js~Models.html#instance-method-withManufacturerName",
-    "src/manufacturers/Model.js~Models#withManufacturerName",
-    "method"
-  ],
-  [
     "src/manufacturers/model.js~models#withname",
     "class/src/manufacturers/Model.js~Models.html#instance-method-withName",
     "src/manufacturers/Model.js~Models#withName",
@@ -6900,15 +6978,27 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/manufacturers/modelfinder.js~modelfinder#findbyid",
-    "class/src/manufacturers/ModelFinder.js~ModelFinder.html#instance-method-findById",
-    "src/manufacturers/ModelFinder.js~ModelFinder#findById",
+    "src/manufacturers/modelfinder.js~modelfinder#findbymanufacturer",
+    "class/src/manufacturers/ModelFinder.js~ModelFinder.html#instance-method-findByManufacturer",
+    "src/manufacturers/ModelFinder.js~ModelFinder#findByManufacturer",
     "method"
   ],
   [
-    "src/manufacturers/modelfinder.js~modelfinder#findmediabyid",
-    "class/src/manufacturers/ModelFinder.js~ModelFinder.html#instance-method-findMediaById",
-    "src/manufacturers/ModelFinder.js~ModelFinder#findMediaById",
+    "src/manufacturers/modelfinder.js~modelfinder#findbymanufacturerandid",
+    "class/src/manufacturers/ModelFinder.js~ModelFinder.html#instance-method-findByManufacturerAndId",
+    "src/manufacturers/ModelFinder.js~ModelFinder#findByManufacturerAndId",
+    "method"
+  ],
+  [
+    "src/manufacturers/modelfinder.js~modelfinder#findmediabymanufacturerandmodelandid",
+    "class/src/manufacturers/ModelFinder.js~ModelFinder.html#instance-method-findMediaByManufacturerAndModelAndId",
+    "src/manufacturers/ModelFinder.js~ModelFinder#findMediaByManufacturerAndModelAndId",
+    "method"
+  ],
+  [
+    "src/manufacturers/modelfinder.js~modelfinder#findmediasbymanufacturerandmodel",
+    "class/src/manufacturers/ModelFinder.js~ModelFinder.html#instance-method-findMediasByManufacturerAndModel",
+    "src/manufacturers/ModelFinder.js~ModelFinder#findMediasByManufacturerAndModel",
     "method"
   ],
   [
@@ -7653,6 +7743,210 @@ window.esdocSearchIndex = [
     "src/operations/catalog/period/pattern/byyear.js~byyear#month",
     "class/src/operations/catalog/period/pattern/ByYear.js~ByYear.html#instance-method-month",
     "src/operations/catalog/period/pattern/ByYear.js~ByYear#month",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/manufacturer.js",
+    "file/src/organization_manufacturer/Manufacturer.js.html",
+    "src/organization_manufacturer/Manufacturer.js",
+    "file"
+  ],
+  [
+    "src/organization_manufacturer/manufacturer.js~manufacturers#constructor",
+    "class/src/organization_manufacturer/Manufacturer.js~Manufacturers.html#instance-constructor-constructor",
+    "src/organization_manufacturer/Manufacturer.js~Manufacturers#constructor",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/manufacturer.js~manufacturers#deleteincascade",
+    "class/src/organization_manufacturer/Manufacturer.js~Manufacturers.html#instance-method-deleteInCascade",
+    "src/organization_manufacturer/Manufacturer.js~Manufacturers#deleteInCascade",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/manufacturer.js~manufacturers#modelbuilder",
+    "class/src/organization_manufacturer/Manufacturer.js~Manufacturers.html#instance-method-modelBuilder",
+    "src/organization_manufacturer/Manufacturer.js~Manufacturers#modelBuilder",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/manufacturer.js~manufacturers#updateincascade",
+    "class/src/organization_manufacturer/Manufacturer.js~Manufacturers.html#instance-method-updateInCascade",
+    "src/organization_manufacturer/Manufacturer.js~Manufacturers#updateInCascade",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/manufacturer.js~manufacturers#withaddress",
+    "class/src/organization_manufacturer/Manufacturer.js~Manufacturers.html#instance-method-withAddress",
+    "src/organization_manufacturer/Manufacturer.js~Manufacturers#withAddress",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/manufacturer.js~manufacturers#withdescription",
+    "class/src/organization_manufacturer/Manufacturer.js~Manufacturers.html#instance-method-withDescription",
+    "src/organization_manufacturer/Manufacturer.js~Manufacturers#withDescription",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/manufacturer.js~manufacturers#withemail",
+    "class/src/organization_manufacturer/Manufacturer.js~Manufacturers.html#instance-method-withEmail",
+    "src/organization_manufacturer/Manufacturer.js~Manufacturers#withEmail",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/manufacturer.js~manufacturers#withfax",
+    "class/src/organization_manufacturer/Manufacturer.js~Manufacturers.html#instance-method-withFax",
+    "src/organization_manufacturer/Manufacturer.js~Manufacturers#withFax",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/manufacturer.js~manufacturers#withidentifier",
+    "class/src/organization_manufacturer/Manufacturer.js~Manufacturers.html#instance-method-withIdentifier",
+    "src/organization_manufacturer/Manufacturer.js~Manufacturers#withIdentifier",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/manufacturer.js~manufacturers#withname",
+    "class/src/organization_manufacturer/Manufacturer.js~Manufacturers.html#instance-method-withName",
+    "src/organization_manufacturer/Manufacturer.js~Manufacturers#withName",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/manufacturer.js~manufacturers#withnotes",
+    "class/src/organization_manufacturer/Manufacturer.js~Manufacturers.html#instance-method-withNotes",
+    "src/organization_manufacturer/Manufacturer.js~Manufacturers#withNotes",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/manufacturer.js~manufacturers#withtelephone",
+    "class/src/organization_manufacturer/Manufacturer.js~Manufacturers.html#instance-method-withTelephone",
+    "src/organization_manufacturer/Manufacturer.js~Manufacturers#withTelephone",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/manufacturer.js~manufacturers#withurl",
+    "class/src/organization_manufacturer/Manufacturer.js~Manufacturers.html#instance-method-withUrl",
+    "src/organization_manufacturer/Manufacturer.js~Manufacturers#withUrl",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/manufacturerfinder.js",
+    "file/src/organization_manufacturer/ManufacturerFinder.js.html",
+    "src/organization_manufacturer/ManufacturerFinder.js",
+    "file"
+  ],
+  [
+    "src/organization_manufacturer/manufacturerfinder.js~manufacturerfinder#administrable",
+    "class/src/organization_manufacturer/ManufacturerFinder.js~ManufacturerFinder.html#instance-method-administrable",
+    "src/organization_manufacturer/ManufacturerFinder.js~ManufacturerFinder#administrable",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/manufacturerfinder.js~manufacturerfinder#assignable",
+    "class/src/organization_manufacturer/ManufacturerFinder.js~ManufacturerFinder.html#instance-method-assignable",
+    "src/organization_manufacturer/ManufacturerFinder.js~ManufacturerFinder#assignable",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/manufacturerfinder.js~manufacturerfinder#constructor",
+    "class/src/organization_manufacturer/ManufacturerFinder.js~ManufacturerFinder.html#instance-constructor-constructor",
+    "src/organization_manufacturer/ManufacturerFinder.js~ManufacturerFinder#constructor",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/manufacturerfinder.js~manufacturerfinder#findbyorganization",
+    "class/src/organization_manufacturer/ManufacturerFinder.js~ManufacturerFinder.html#instance-method-findByOrganization",
+    "src/organization_manufacturer/ManufacturerFinder.js~ManufacturerFinder#findByOrganization",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/manufacturerfinder.js~manufacturerfinder#findbyorganizationandid",
+    "class/src/organization_manufacturer/ManufacturerFinder.js~ManufacturerFinder.html#instance-method-findByOrganizationAndId",
+    "src/organization_manufacturer/ManufacturerFinder.js~ManufacturerFinder#findByOrganizationAndId",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/model.js",
+    "file/src/organization_manufacturer/Model.js.html",
+    "src/organization_manufacturer/Model.js",
+    "file"
+  ],
+  [
+    "src/organization_manufacturer/model.js~models#constructor",
+    "class/src/organization_manufacturer/Model.js~Models.html#instance-constructor-constructor",
+    "src/organization_manufacturer/Model.js~Models#constructor",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/model.js~models#deleteincascade",
+    "class/src/organization_manufacturer/Model.js~Models.html#instance-method-deleteInCascade",
+    "src/organization_manufacturer/Model.js~Models#deleteInCascade",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/model.js~models#updateincascade",
+    "class/src/organization_manufacturer/Model.js~Models.html#instance-method-updateInCascade",
+    "src/organization_manufacturer/Model.js~Models#updateInCascade",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/model.js~models#withdescription",
+    "class/src/organization_manufacturer/Model.js~Models.html#instance-method-withDescription",
+    "src/organization_manufacturer/Model.js~Models#withDescription",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/model.js~models#withidentifier",
+    "class/src/organization_manufacturer/Model.js~Models.html#instance-method-withIdentifier",
+    "src/organization_manufacturer/Model.js~Models#withIdentifier",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/model.js~models#withname",
+    "class/src/organization_manufacturer/Model.js~Models.html#instance-method-withName",
+    "src/organization_manufacturer/Model.js~Models#withName",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/model.js~models#withnotes",
+    "class/src/organization_manufacturer/Model.js~Models.html#instance-method-withNotes",
+    "src/organization_manufacturer/Model.js~Models#withNotes",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/model.js~models#withurl",
+    "class/src/organization_manufacturer/Model.js~Models.html#instance-method-withUrl",
+    "src/organization_manufacturer/Model.js~Models#withUrl",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/model.js~models#withversion",
+    "class/src/organization_manufacturer/Model.js~Models.html#instance-method-withVersion",
+    "src/organization_manufacturer/Model.js~Models#withVersion",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/modelfinder.js",
+    "file/src/organization_manufacturer/ModelFinder.js.html",
+    "src/organization_manufacturer/ModelFinder.js",
+    "file"
+  ],
+  [
+    "src/organization_manufacturer/modelfinder.js~modelfinder#constructor",
+    "class/src/organization_manufacturer/ModelFinder.js~ModelFinder.html#instance-constructor-constructor",
+    "src/organization_manufacturer/ModelFinder.js~ModelFinder#constructor",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/modelfinder.js~modelfinder#findbyorganizationandmanufacturer",
+    "class/src/organization_manufacturer/ModelFinder.js~ModelFinder.html#instance-method-findByOrganizationAndManufacturer",
+    "src/organization_manufacturer/ModelFinder.js~ModelFinder#findByOrganizationAndManufacturer",
+    "method"
+  ],
+  [
+    "src/organization_manufacturer/modelfinder.js~modelfinder#findbyorganizationandmanufacturerandid",
+    "class/src/organization_manufacturer/ModelFinder.js~ModelFinder.html#instance-method-findByOrganizationAndManufacturerAndId",
+    "src/organization_manufacturer/ModelFinder.js~ModelFinder#findByOrganizationAndManufacturerAndId",
     "method"
   ],
   [
@@ -10395,12 +10689,6 @@ window.esdocSearchIndex = [
     "src/security/certificates.js~certificates#withdomains",
     "class/src/security/Certificates.js~Certificates.html#instance-method-withDomains",
     "src/security/Certificates.js~Certificates#withDomains",
-    "method"
-  ],
-  [
-    "src/security/certificates.js~certificates#withhardware",
-    "class/src/security/Certificates.js~Certificates.html#instance-method-withHardware",
-    "src/security/Certificates.js~Certificates#withHardware",
     "method"
   ],
   [

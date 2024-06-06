@@ -26,6 +26,10 @@ var _httpStatusCodes = require('http-status-codes');
 
 var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
 
+// import { MANUFACTURERS_RESOURCE } from './Manufacturer';
+
+var _Model = require('./Model');
+
 /**
  *   This class allow make get request to hardware models resource into Opengate North API.
  */
@@ -40,7 +44,7 @@ var ModelFinder = (function (_ProvisionGenericFinder) {
     function ModelFinder(ogapi) {
         _classCallCheck(this, ModelFinder);
 
-        _get(Object.getPrototypeOf(ModelFinder.prototype), 'constructor', this).call(this, ogapi, 'models', 'model', 'Model not found');
+        _get(Object.getPrototypeOf(ModelFinder.prototype), 'constructor', this).call(this, ogapi, 'manufacturers', undefined, 'Model not found');
     }
 
     /**
@@ -51,19 +55,35 @@ var ModelFinder = (function (_ProvisionGenericFinder) {
     _createClass(ModelFinder, [{
         key: '_composeUrl',
         value: function _composeUrl() {
-            return this._baseUrl + "/" + this._identifier + (this._mediaIdentifier ? "/media/" + this._mediaIdentifier + '?format=raw' : '');
+            return this._baseUrl + "/" + this._manufacturer + _Model.MODELS_RESOURCE + (this._identifier ? "/" + this._identifier + (this._media ? "/media" + (this._mediaIdentifier ? "/" + this._mediaIdentifier + '?format=raw' : '') : "") : "");
+        }
+
+        /**
+         * Download all models from a manufacturer. This execute a GET http method
+         * @test
+         *   ogapi.newModelFinder().findByManufacturer('manufacturer').then().catch();
+         * @param {string} manufacturer - manufacturer id .
+         * @return {Promise} 
+         */
+    }, {
+        key: 'findByManufacturer',
+        value: function findByManufacturer(manufacturer) {
+            this._manufacturer = manufacturer;
+            return this._execute();
         }
 
         /**
          * Download a specific model by its id. This execute a GET http method
          * @test
-         *   ogapi.newModelFinder().findById('modelname').then().catch();
+         *   ogapi.newModelFinder().findByManufacturerAndId('manufacturer', 'modelname').then().catch();
+         * @param {string} manufacturer - manufacturer id .
          * @param {string} identifier - model name .
          * @return {Promise} 
          */
     }, {
-        key: 'findById',
-        value: function findById(identifier) {
+        key: 'findByManufacturerAndId',
+        value: function findByManufacturerAndId(manufacturer, identifier) {
+            this._manufacturer = manufacturer;
             this._identifier = identifier;
             return this._execute();
         }
@@ -71,14 +91,34 @@ var ModelFinder = (function (_ProvisionGenericFinder) {
         /**
          * Download a specific model media by its ids. This execute a GET http method
          * @test
-         *   ogapi.newModelFinder().findMediaById('modelId', 'mediaIdentifier').then().catch();
+         *   ogapi.newModelFinder().findMediasByManufacturerAndModel('manufacturer', 'modelId').then().catch();
+         * @param {string} manufacturer - manufacturer id .
+         * @param {string} identifier - model identifier .
+         * @return {Promise} 
+         */
+    }, {
+        key: 'findMediasByManufacturerAndModel',
+        value: function findMediasByManufacturerAndModel(manufacturer, identifier) {
+            this._media = true;
+            this._manufacturer = manufacturer;
+            this._identifier = identifier;
+            return this._execute();
+        }
+
+        /**
+         * Download a specific model media by its ids. This execute a GET http method
+         * @test
+         *   ogapi.newModelFinder().findMediaByManufacturerAndModelAndId('modelId', 'mediaIdentifier').then().catch();
+         * @param {string} manufacturer - manufacturer id .
          * @param {string} modelId - model identifier .
          * @param {string} mediaIdentifier - media identifier.
          * @return {Promise} 
          */
     }, {
-        key: 'findMediaById',
-        value: function findMediaById(modelId, mediaIdentifier) {
+        key: 'findMediaByManufacturerAndModelAndId',
+        value: function findMediaByManufacturerAndModelAndId(manufacturer, modelId, mediaIdentifier) {
+            this._media = true;
+            this._manufacturer = manufacturer;
             this._identifier = modelId;
             this._mediaIdentifier = mediaIdentifier;
             return this._download();

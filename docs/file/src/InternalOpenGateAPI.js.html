@@ -120,6 +120,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/manufacturers/Model.js~Models.html">Models</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/manufacturers/ModelFinder.js~ModelFinder.html">ModelFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/manufacturers/ModelMedia.js~ModelMedia.html">ModelMedia</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MANUFACTURERS_RESOURCE">MANUFACTURERS_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MODELS_RESOURCE">MODELS_RESOURCE</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operationTypes</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operationTypes/OperationType.js~OperationType.html">OperationType</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operationTypes/OperationTypeCatalog.js~OperationTypesCatalog.html">OperationTypesCatalog</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operationTypes/OperationTypeFinder.js~OperationTypeFinder.html">OperationTypeFinder</a></span></span></li>
@@ -141,6 +143,14 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByMonth.js~ByMonth.html">ByMonth</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByWeek.js~ByWeek.html">ByWeek</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByYear.js~ByYear.html">ByYear</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">organization_manufacturer</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organization_manufacturer/Manufacturer.js~Manufacturers.html">Manufacturers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organization_manufacturer/ManufacturerFinder.js~ManufacturerFinder.html">ManufacturerFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organization_manufacturer/Model.js~Models.html">Models</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organization_manufacturer/ModelFinder.js~ModelFinder.html">ModelFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MANUFACTURERS_RESOURCE">MANUFACTURERS_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PRE_RESOURCE">PRE_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MODELS_RESOURCE">MODELS_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PRE_RESOURCE">PRE_RESOURCE</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">organizations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/OrganizationFinder.js~OrganizationFinder.html">OrganizationFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/Organizations.js~Organizations.html">Organizations</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">pipelines</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pipelines/PipelineFinder.js~PipelineFinder.html">PipelineFinder</a></span></span></li>
@@ -432,6 +442,11 @@ import ManufacturersBuilder from &apos;./manufacturers/Manufacturer&apos;
 import ManufacturerModelsBuilder from &apos;./manufacturers/Model&apos;
 import ManufacturerFinder from &apos;./manufacturers/ManufacturerFinder&apos;
 import ModelFinder from &apos;./manufacturers/ModelFinder&apos;
+import OrganizationManufacturersBuilder from &apos;./organization_manufacturer/Manufacturer&apos;
+import OrganizationManufacturerModelsBuilder from &apos;./organization_manufacturer/Model&apos;
+import OrganizationManufacturerFinder from &apos;./organization_manufacturer/ManufacturerFinder&apos;
+import OrganizationModelFinder from &apos;./organization_manufacturer/ModelFinder&apos;
+
 import CountriesCatalog from &apos;./provision/country/CountriesCatalog&apos;;
 
 const RequestEndMonkeyPatching = (function(){
@@ -1562,8 +1577,8 @@ export default class InternalOpenGateAPI {
      * This return a ManufacturerModelsBuilder to build a specific ManufacturerModelsBuilder
      * @return {ManufacturerModelsBuilder}
      */
-    manufacturerModelsBuilder() {
-        return new ManufacturerModelsBuilder(this);
+    manufacturerModelsBuilder(manufacturerIdentifier) {
+        return new ManufacturerModelsBuilder(this, manufacturerIdentifier);
     }
 
     /**
@@ -1580,6 +1595,37 @@ export default class InternalOpenGateAPI {
      */
     newModelFinder() {
         return new ModelFinder(this);
+    }
+
+    /** This return a OrganizationManufacturersBuilder to build a specific OrganizationManufacturersBuilder
+     * @return {OrganizationManufacturersBuilder}
+     */
+    organizationManufacturersBuilder(organization) {
+        return new OrganizationManufacturersBuilder(this, organization);
+    }
+    
+    /**
+     * This return a OrganizationManufacturerModelsBuilder to build a specific OrganizationManufacturerModelsBuilder
+     * @return {OrganizationManufacturerModelsBuilder}
+     */
+    organizationManufacturerModelsBuilder(organization, manufacturerIdentifier) {
+        return new OrganizationManufacturerModelsBuilder(this, organization, manufacturerIdentifier);
+    }
+
+    /**
+     * This return a util to find a hardware manufacturer
+     * @return {OrganizationManufacturerFinder}
+     */
+    newOrganizationManufacturersFinder() {
+        return new OrganizationManufacturerFinder(this);
+    }
+
+    /**
+     * This return a util to find a hardware model
+     * @return {OrganizationModelFinder}
+     */
+    newOrganizationModelFinder() {
+        return new OrganizationModelFinder(this);
     }
 }</code></pre>
 

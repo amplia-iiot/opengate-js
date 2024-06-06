@@ -3,6 +3,9 @@
 import q from 'q';
 import BaseProvision from '../provision/BaseProvision';
 
+import { MANUFACTURERS_RESOURCE } from './Manufacturer';
+import { MODELS_RESOURCE } from './Model';
+
 /**
  * This is a base object that contains all you can do about ModelMedia.
  */
@@ -11,8 +14,8 @@ export default class ModelMedia extends BaseProvision {
     /**     
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
-    constructor(ogapi, modelId) {
-        super(ogapi, "/models/" + modelId + '/media', undefined, ['identifier']);
+    constructor(ogapi, manufacturer, modelId) {
+        super(ogapi, MANUFACTURERS_RESOURCE  + "/" + manufacturer + MODELS_RESOURCE + "/" + modelId + '/media', undefined, ['identifier']);
     }
 
     //http://cm.amplia.es/jira/browse/OGODM-3201
