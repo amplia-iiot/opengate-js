@@ -8,7 +8,7 @@ import {VALUE_TYPES_ENUM} from './TYPES_ENUM'
 /**
  *   This class allow make get request to newTimeseriesFunctionsHelper resource into Opengate North API.
  */
-export default class ConnectorFunctionsHelper extends GenericFinder {
+export default class TimeseriesFunctionsHelper extends GenericFinder {
 
     /**     
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.

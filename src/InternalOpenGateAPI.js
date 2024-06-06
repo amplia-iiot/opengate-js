@@ -142,6 +142,11 @@ import ManufacturersBuilder from './manufacturers/Manufacturer'
 import ManufacturerModelsBuilder from './manufacturers/Model'
 import ManufacturerFinder from './manufacturers/ManufacturerFinder'
 import ModelFinder from './manufacturers/ModelFinder'
+import OrganizationManufacturersBuilder from './organization_manufacturer/Manufacturer'
+import OrganizationManufacturerModelsBuilder from './organization_manufacturer/Model'
+import OrganizationManufacturerFinder from './organization_manufacturer/ManufacturerFinder'
+import OrganizationModelFinder from './organization_manufacturer/ModelFinder'
+
 import CountriesCatalog from './provision/country/CountriesCatalog';
 
 const RequestEndMonkeyPatching = (function(){
@@ -1272,8 +1277,8 @@ export default class InternalOpenGateAPI {
      * This return a ManufacturerModelsBuilder to build a specific ManufacturerModelsBuilder
      * @return {ManufacturerModelsBuilder}
      */
-    manufacturerModelsBuilder() {
-        return new ManufacturerModelsBuilder(this);
+    manufacturerModelsBuilder(manufacturerIdentifier) {
+        return new ManufacturerModelsBuilder(this, manufacturerIdentifier);
     }
 
     /**
@@ -1290,5 +1295,36 @@ export default class InternalOpenGateAPI {
      */
     newModelFinder() {
         return new ModelFinder(this);
+    }
+
+    /** This return a OrganizationManufacturersBuilder to build a specific OrganizationManufacturersBuilder
+     * @return {OrganizationManufacturersBuilder}
+     */
+    organizationManufacturersBuilder(organization) {
+        return new OrganizationManufacturersBuilder(this, organization);
+    }
+    
+    /**
+     * This return a OrganizationManufacturerModelsBuilder to build a specific OrganizationManufacturerModelsBuilder
+     * @return {OrganizationManufacturerModelsBuilder}
+     */
+    organizationManufacturerModelsBuilder(organization, manufacturerIdentifier) {
+        return new OrganizationManufacturerModelsBuilder(this, organization, manufacturerIdentifier);
+    }
+
+    /**
+     * This return a util to find a hardware manufacturer
+     * @return {OrganizationManufacturerFinder}
+     */
+    newOrganizationManufacturersFinder() {
+        return new OrganizationManufacturerFinder(this);
+    }
+
+    /**
+     * This return a util to find a hardware model
+     * @return {OrganizationModelFinder}
+     */
+    newOrganizationModelFinder() {
+        return new OrganizationModelFinder(this);
     }
 }
