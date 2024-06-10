@@ -32,17 +32,17 @@ var _TYPES_ENUM = require('./TYPES_ENUM');
  *   This class allow make get request to newTimeseriesFunctionsHelper resource into Opengate North API.
  */
 
-var ConnectorFunctionsHelper = (function (_GenericFinder) {
-    _inherits(ConnectorFunctionsHelper, _GenericFinder);
+var TimeseriesFunctionsHelper = (function (_GenericFinder) {
+    _inherits(TimeseriesFunctionsHelper, _GenericFinder);
 
     /**     
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
-    function ConnectorFunctionsHelper(ogapi) {
-        _classCallCheck(this, ConnectorFunctionsHelper);
+    function TimeseriesFunctionsHelper(ogapi) {
+        _classCallCheck(this, TimeseriesFunctionsHelper);
 
-        _get(Object.getPrototypeOf(ConnectorFunctionsHelper.prototype), 'constructor', this).call(this, ogapi, 'timeseriesFunctions');
+        _get(Object.getPrototypeOf(TimeseriesFunctionsHelper.prototype), 'constructor', this).call(this, ogapi, 'timeseriesFunctions');
         this._jsHeaders = {
             'accept': 'application/javascript'
         };
@@ -51,7 +51,7 @@ var ConnectorFunctionsHelper = (function (_GenericFinder) {
         };
     }
 
-    _createClass(ConnectorFunctionsHelper, [{
+    _createClass(TimeseriesFunctionsHelper, [{
         key: 'getValueTypes',
         value: function getValueTypes() {
             return _TYPES_ENUM.VALUE_TYPES_ENUM;
@@ -67,21 +67,246 @@ var ConnectorFunctionsHelper = (function (_GenericFinder) {
         key: 'getDummyFunctions',
         value: function getDummyFunctions() {
             this._setExtraHeaders(this._jsHeaders);
-            this._id = 'doc/jsApi/javascript';
-            // return this._execute();
+            this._id = 'doc/dummy_functions.js';
+            return this._execute();
 
-            var data = 'const date = {\n            "fromString": function (stringDate) {\n                return new Date(stringDate);\n            },\n            \n            "toString": function (date) {\n                return date.toISOString();\n            },\n            "compare": function (date1, date2) {\n                if (typeof date1 === \'string\') date1 = this.fromString(date1);\n                if (typeof date2 === \'string\') date2 = this.fromString(date2);\n                return date1.getTime() - date2.getTime();\n            }\n        };\n        \n        const data = {\n            "exists": function (value) {\n                return value !== null && value !== undefined;\n            },\n            "undefinedToNull": function (obj) {\n                if(!this.exists(obj)) return null;\n                \n                if(obj.constructor === Array) {\n                  for(var element in obj){\n                    obj[element] = this.undefinedToNull(obj[element]);\n                  }\n                  return obj;\n                } else if(obj.constructor === Object) {\n                  Object.keys(obj).forEach((key) => {\n                    obj[key] = this.undefinedToNull(obj[key]);\n                  });\n                  return obj;\n                } else {\n                  return obj;\n                }\n              }\n        };\n        \n        const result = {\n            "OK_RESULT": "OK",\n            "columns": {},\n        \n            "ok": function (value, ...extraParams) {\n                var result = {\n                    "executionResult": this.OK_RESULT,\n                    "value": value,\n                    "extra": {}\n                };\n            \n                for (var extraArg in extraParams) {\n                    Object.assign(result.extra, extraParams[extraArg]);\n                }\n                log.trace("aggResult: ", result);\n                return result;\n            },\n        \n            "error": function (caughtError) {\n                if (caughtError instanceof Error) {\n                    log.error("Caught error: ", caughtError.message, " - ", caughtError.cause);\n                    var exceptionResult = {\n                        "executionResult": caughtError.message\n                    };\n                    log.trace("exceptionResult: ", exceptionResult);\n                    return exceptionResult;\n                } else {\n                    log.error("Caught error: ", caughtError);\n                    var exceptionResult = {\n                        "executionResult": caughtError\n                    };\n                    log.trace("exceptionResult: ", exceptionResult);\n                    return exceptionResult;\n                }\n            }\n        };\n        \n        const aggFunct = {\n            "AVG": function (receivedValues, currentValue, extra) {\n                var newCount = receivedValues.length;\n                var newSum = 0;\n                for (var recVal in receivedValues) {\n                    newSum = newSum + receivedValues[recVal].value;\n                }\n                if (extra) {\n                    if (data.exists(extra.COUNT)) newCount = newCount + extra.COUNT;\n                    if (data.exists(extra.SUM)) newSum = newSum + extra.SUM;\n                }\n                var newValue = newSum / newCount;\n                return result.ok(newValue, { "SUM": newSum }, { "COUNT": newCount });\n            },\n        \n            "MIN": function (receivedValues, currentValue, extra) {\n                var newValue = currentValue;\n                for (var recVal in receivedValues) {\n                    if (!data.exists(newValue) || receivedValues[recVal].value < newValue) {\n                        newValue = receivedValues[recVal].value;\n                    }\n                }\n                return result.ok(newValue);\n            },\n        \n            "LAST": function (receivedValues, currentValue, extra) {\n                var newAt;\n                var newValue = currentValue;\n                if (extra) {\n                    if (data.exists(extra.AT)) newAt = extra.AT;\n                }\n                for (var recVal in receivedValues) {\n                    if (!data.exists(newAt) || date.compare(receivedValues[recVal].at, newAt) > 0) {\n                        newAt = receivedValues[recVal].at;\n                        newValue = receivedValues[recVal].value;\n                    }\n                }\n                return result.ok(newValue, { "AT": newAt });\n            },\n        \n            "MAX": function (receivedValues, currentValue, extra) {\n                var newValue = currentValue;\n                for (var recVal in receivedValues) {\n                    if (!data.exists(newValue) || receivedValues[recVal].value > newValue) {\n                        newValue = receivedValues[recVal].value;\n                    }\n                }\n                return result.ok(newValue);\n            },\n        \n            "COUNT": function (receivedValues, currentValue, extra) {\n                var newValue = receivedValues.length;\n                if (data.exists(currentValue)) {\n                    newValue = newValue + currentValue;\n                }\n                return result.ok(newValue);\n            },\n        \n            "GEO_AVG": function (receivedValues, currentValue, extra) {\n                var newCount = receivedValues.length;\n                var newProduct = 1;\n                for (var recVal in receivedValues) {\n                    newProduct = newProduct * receivedValues[recVal].value;\n                }\n                if (extra) {\n                    if (data.exists(extra.COUNT)) newCount = newCount + extra.COUNT;\n                    if (data.exists(extra.PRODUCT)) newProduct = newProduct * extra.PRODUCT;\n                }\n                var newValue = Math.pow(newProduct, 1 / newCount);\n                return result.ok(newValue, { "PRODUCT": newProduct }, { "COUNT": newCount });\n            },\n        \n            "SUM": function (receivedValues, currentValue, extra) {\n                var newValue = 0;\n                for (var recVal in receivedValues) {\n                    newValue = newValue + receivedValues[recVal].value;\n                }\n                if (data.exists(currentValue)) {\n                    newValue = newValue + currentValue;\n                }\n                return result.ok(newValue);\n            },\n        \n            "MEDIAN": function (receivedValues, currentValue, extra) {\n                var receivedValuesFlattened = receivedValues.map(function (rv) { return rv.value });\n                var completeArray;\n                if (extra && extra.VAL_ARRAY) {\n                    completeArray = extra.VAL_ARRAY.concat(receivedValuesFlattened)\n                } else {\n                    completeArray = receivedValuesFlattened;\n                }\n                completeArray.sort(function (a, b) { return a - b });\n                var middle_index = Math.floor(completeArray.length / 2);\n                var newMedian;\n                if (completeArray.length % 2) {\n                    newMedian = completeArray[middle_index];\n                } else {\n                    newMedian = (completeArray[middle_index - 1] + completeArray[middle_index]) / 2.0;\n                }\n                return result.ok(newMedian, { "VAL_ARRAY": completeArray });\n            },\n        \n            "VARIANCE": function (receivedValues, currentValue, extra) {\n                var receivedValuesFlattened = receivedValues.map(function (rv) { return rv.value });\n                var completeArray;\n                if (extra && extra.VAL_ARRAY) {\n                    completeArray = extra.VAL_ARRAY.concat(receivedValuesFlattened)\n                } else {\n                    completeArray = receivedValuesFlattened;\n                }\n        \n                var sum = 0;\n                completeArray.map(e => sum += e);\n                var avg = sum / completeArray.length;\n                var newValue = 0;\n                for (var item in completeArray) {\n                    newValue = newValue + Math.pow(completeArray[item] - avg, 2);\n                }\n                newValue = newValue / completeArray.length;\n                return result.ok(newValue, { "VAL_ARRAY": completeArray });\n            },\n        \n            "FIRST": function (receivedValues, currentValue, extra) {\n                var newAt;\n                var newValue = currentValue;\n                if (extra) {\n                    if (data.exists(extra.AT)) newAt = extra.AT;\n                }\n                for (var recVal in receivedValues) {\n                    if (!data.exists(newAt) || date.compare(receivedValues[recVal].at, newAt) < 0) {\n                        newAt = receivedValues[recVal].at;\n                        newValue = receivedValues[recVal].value;\n                    }\n                }\n                return result.ok(newValue, { "AT": newAt });\n            },\n        \n            "STD_DEVIATION": function (receivedValues, currentValue, extra) {\n                var variance = this.VARIANCE(receivedValues, currentValue, extra);\n                var newValue = Math.sqrt(variance.value);\n                return result.ok(newValue, { "VAL_ARRAY": variance.extra.VAL_ARRAY });\n            }\n        };\n        \n        module.exports = {\n            date,\n            data,\n            result,\n            aggFunct\n        } \n        ';
+            // let data =  `const date = {
+            //     "fromString": function (stringDate) {
+            //         return new Date(stringDate);
+            //     },
 
-            var defered = _q2['default'].defer();
-            var promise = defered.promise;
-            defered.resolve({
-                data: {
-                    text: data
-                },
-                statusCode: 200
-            });
+            //     "toString": function (date) {
+            //         return date.toISOString();
+            //     },
+            //     "compare": function (date1, date2) {
+            //         if (typeof date1 === 'string') date1 = this.fromString(date1);
+            //         if (typeof date2 === 'string') date2 = this.fromString(date2);
+            //         return date1.getTime() - date2.getTime();
+            //     }
+            // };
 
-            return promise;
+            // const data = {
+            //     "exists": function (value) {
+            //         return value !== null && value !== undefined;
+            //     },
+            //     "undefinedToNull": function (obj) {
+            //         if(!this.exists(obj)) return null;
+
+            //         if(obj.constructor === Array) {
+            //           for(var element in obj){
+            //             obj[element] = this.undefinedToNull(obj[element]);
+            //           }
+            //           return obj;
+            //         } else if(obj.constructor === Object) {
+            //           Object.keys(obj).forEach((key) => {
+            //             obj[key] = this.undefinedToNull(obj[key]);
+            //           });
+            //           return obj;
+            //         } else {
+            //           return obj;
+            //         }
+            //       }
+            // };
+
+            // const result = {
+            //     "OK_RESULT": "OK",
+            //     "columns": {},
+
+            //     "ok": function (value, ...extraParams) {
+            //         var result = {
+            //             "executionResult": this.OK_RESULT,
+            //             "value": value,
+            //             "extra": {}
+            //         };
+
+            //         for (var extraArg in extraParams) {
+            //             Object.assign(result.extra, extraParams[extraArg]);
+            //         }
+            //         log.trace("aggResult: ", result);
+            //         return result;
+            //     },
+
+            //     "error": function (caughtError) {
+            //         if (caughtError instanceof Error) {
+            //             log.error("Caught error: ", caughtError.message, " - ", caughtError.cause);
+            //             var exceptionResult = {
+            //                 "executionResult": caughtError.message
+            //             };
+            //             log.trace("exceptionResult: ", exceptionResult);
+            //             return exceptionResult;
+            //         } else {
+            //             log.error("Caught error: ", caughtError);
+            //             var exceptionResult = {
+            //                 "executionResult": caughtError
+            //             };
+            //             log.trace("exceptionResult: ", exceptionResult);
+            //             return exceptionResult;
+            //         }
+            //     }
+            // };
+
+            // const aggFunct = {
+            //     "AVG": function (receivedValues, currentValue, extra) {
+            //         var newCount = receivedValues.length;
+            //         var newSum = 0;
+            //         for (var recVal in receivedValues) {
+            //             newSum = newSum + receivedValues[recVal].value;
+            //         }
+            //         if (extra) {
+            //             if (data.exists(extra.COUNT)) newCount = newCount + extra.COUNT;
+            //             if (data.exists(extra.SUM)) newSum = newSum + extra.SUM;
+            //         }
+            //         var newValue = newSum / newCount;
+            //         return result.ok(newValue, { "SUM": newSum }, { "COUNT": newCount });
+            //     },
+
+            //     "MIN": function (receivedValues, currentValue, extra) {
+            //         var newValue = currentValue;
+            //         for (var recVal in receivedValues) {
+            //             if (!data.exists(newValue) || receivedValues[recVal].value < newValue) {
+            //                 newValue = receivedValues[recVal].value;
+            //             }
+            //         }
+            //         return result.ok(newValue);
+            //     },
+
+            //     "LAST": function (receivedValues, currentValue, extra) {
+            //         var newAt;
+            //         var newValue = currentValue;
+            //         if (extra) {
+            //             if (data.exists(extra.AT)) newAt = extra.AT;
+            //         }
+            //         for (var recVal in receivedValues) {
+            //             if (!data.exists(newAt) || date.compare(receivedValues[recVal].at, newAt) > 0) {
+            //                 newAt = receivedValues[recVal].at;
+            //                 newValue = receivedValues[recVal].value;
+            //             }
+            //         }
+            //         return result.ok(newValue, { "AT": newAt });
+            //     },
+
+            //     "MAX": function (receivedValues, currentValue, extra) {
+            //         var newValue = currentValue;
+            //         for (var recVal in receivedValues) {
+            //             if (!data.exists(newValue) || receivedValues[recVal].value > newValue) {
+            //                 newValue = receivedValues[recVal].value;
+            //             }
+            //         }
+            //         return result.ok(newValue);
+            //     },
+
+            //     "COUNT": function (receivedValues, currentValue, extra) {
+            //         var newValue = receivedValues.length;
+            //         if (data.exists(currentValue)) {
+            //             newValue = newValue + currentValue;
+            //         }
+            //         return result.ok(newValue);
+            //     },
+
+            //     "GEO_AVG": function (receivedValues, currentValue, extra) {
+            //         var newCount = receivedValues.length;
+            //         var newProduct = 1;
+            //         for (var recVal in receivedValues) {
+            //             newProduct = newProduct * receivedValues[recVal].value;
+            //         }
+            //         if (extra) {
+            //             if (data.exists(extra.COUNT)) newCount = newCount + extra.COUNT;
+            //             if (data.exists(extra.PRODUCT)) newProduct = newProduct * extra.PRODUCT;
+            //         }
+            //         var newValue = Math.pow(newProduct, 1 / newCount);
+            //         return result.ok(newValue, { "PRODUCT": newProduct }, { "COUNT": newCount });
+            //     },
+
+            //     "SUM": function (receivedValues, currentValue, extra) {
+            //         var newValue = 0;
+            //         for (var recVal in receivedValues) {
+            //             newValue = newValue + receivedValues[recVal].value;
+            //         }
+            //         if (data.exists(currentValue)) {
+            //             newValue = newValue + currentValue;
+            //         }
+            //         return result.ok(newValue);
+            //     },
+
+            //     "MEDIAN": function (receivedValues, currentValue, extra) {
+            //         var receivedValuesFlattened = receivedValues.map(function (rv) { return rv.value });
+            //         var completeArray;
+            //         if (extra && extra.VAL_ARRAY) {
+            //             completeArray = extra.VAL_ARRAY.concat(receivedValuesFlattened)
+            //         } else {
+            //             completeArray = receivedValuesFlattened;
+            //         }
+            //         completeArray.sort(function (a, b) { return a - b });
+            //         var middle_index = Math.floor(completeArray.length / 2);
+            //         var newMedian;
+            //         if (completeArray.length % 2) {
+            //             newMedian = completeArray[middle_index];
+            //         } else {
+            //             newMedian = (completeArray[middle_index - 1] + completeArray[middle_index]) / 2.0;
+            //         }
+            //         return result.ok(newMedian, { "VAL_ARRAY": completeArray });
+            //     },
+
+            //     "VARIANCE": function (receivedValues, currentValue, extra) {
+            //         var receivedValuesFlattened = receivedValues.map(function (rv) { return rv.value });
+            //         var completeArray;
+            //         if (extra && extra.VAL_ARRAY) {
+            //             completeArray = extra.VAL_ARRAY.concat(receivedValuesFlattened)
+            //         } else {
+            //             completeArray = receivedValuesFlattened;
+            //         }
+
+            //         var sum = 0;
+            //         completeArray.map(e => sum += e);
+            //         var avg = sum / completeArray.length;
+            //         var newValue = 0;
+            //         for (var item in completeArray) {
+            //             newValue = newValue + Math.pow(completeArray[item] - avg, 2);
+            //         }
+            //         newValue = newValue / completeArray.length;
+            //         return result.ok(newValue, { "VAL_ARRAY": completeArray });
+            //     },
+
+            //     "FIRST": function (receivedValues, currentValue, extra) {
+            //         var newAt;
+            //         var newValue = currentValue;
+            //         if (extra) {
+            //             if (data.exists(extra.AT)) newAt = extra.AT;
+            //         }
+            //         for (var recVal in receivedValues) {
+            //             if (!data.exists(newAt) || date.compare(receivedValues[recVal].at, newAt) < 0) {
+            //                 newAt = receivedValues[recVal].at;
+            //                 newValue = receivedValues[recVal].value;
+            //             }
+            //         }
+            //         return result.ok(newValue, { "AT": newAt });
+            //     },
+
+            //     "STD_DEVIATION": function (receivedValues, currentValue, extra) {
+            //         var variance = this.VARIANCE(receivedValues, currentValue, extra);
+            //         var newValue = Math.sqrt(variance.value);
+            //         return result.ok(newValue, { "VAL_ARRAY": variance.extra.VAL_ARRAY });
+            //     }
+            // };
+
+            // module.exports = {
+            //     date,
+            //     data,
+            //     result,
+            //     aggFunct
+            // }
+            // `
+
+            // let defered = q.defer();
+            // let promise = defered.promise;
+            // defered.resolve({
+            //     data: {
+            //         text: data
+            //     },
+            //     statusCode: 200
+            // });
+
+            // return promise;
         }
 
         /**
@@ -167,9 +392,9 @@ var ConnectorFunctionsHelper = (function (_GenericFinder) {
         }
     }]);
 
-    return ConnectorFunctionsHelper;
+    return TimeseriesFunctionsHelper;
 })(_GenericFinder3['default']);
 
-exports['default'] = ConnectorFunctionsHelper;
+exports['default'] = TimeseriesFunctionsHelper;
 module.exports = exports['default'];
 //# sourceMappingURL=TimeseriesFunctionsHelper.js.map
