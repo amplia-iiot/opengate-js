@@ -378,12 +378,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "opengate-js/src/timeseriesfunctionscatalog/timeseriesfunctionshelper.js~connectorfunctionshelper",
-    "class/src/timeseriesFunctionsCatalog/TimeseriesFunctionsHelper.js~ConnectorFunctionsHelper.html",
-    "<span>ConnectorFunctionsHelper</span> <span class=\"search-result-import-path\">opengate-js/src/timeseriesFunctionsCatalog/TimeseriesFunctionsHelper.js</span>",
-    "class"
-  ],
-  [
     "opengate-js/src/provision/country/countriescatalog.js~countriescatalog",
     "class/src/provision/country/CountriesCatalog.js~CountriesCatalog.html",
     "<span>CountriesCatalog</span> <span class=\"search-result-import-path\">opengate-js/src/provision/country/CountriesCatalog.js</span>",
@@ -1443,6 +1437,12 @@ window.esdocSearchIndex = [
     "opengate-js/src/timeseriesfunctionscatalog/timeseriesfunctionfinder.js~timeseriesfunctionfinder",
     "class/src/timeseriesFunctionsCatalog/TimeseriesFunctionFinder.js~TimeseriesFunctionFinder.html",
     "<span>TimeseriesFunctionFinder</span> <span class=\"search-result-import-path\">opengate-js/src/timeseriesFunctionsCatalog/TimeseriesFunctionFinder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/timeseriesfunctionscatalog/timeseriesfunctionshelper.js~timeseriesfunctionshelper",
+    "class/src/timeseriesFunctionsCatalog/TimeseriesFunctionsHelper.js~TimeseriesFunctionsHelper.html",
+    "<span>TimeseriesFunctionsHelper</span> <span class=\"search-result-import-path\">opengate-js/src/timeseriesFunctionsCatalog/TimeseriesFunctionsHelper.js</span>",
     "class"
   ],
   [
@@ -10974,33 +10974,27 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/timeseriesfunctionscatalog/timeseriesfunctionshelper.js~connectorfunctionshelper#constructor",
-    "class/src/timeseriesFunctionsCatalog/TimeseriesFunctionsHelper.js~ConnectorFunctionsHelper.html#instance-constructor-constructor",
-    "src/timeseriesFunctionsCatalog/TimeseriesFunctionsHelper.js~ConnectorFunctionsHelper#constructor",
+    "src/timeseriesfunctionscatalog/timeseriesfunctionshelper.js~timeseriesfunctionshelper#constructor",
+    "class/src/timeseriesFunctionsCatalog/TimeseriesFunctionsHelper.js~TimeseriesFunctionsHelper.html#instance-constructor-constructor",
+    "src/timeseriesFunctionsCatalog/TimeseriesFunctionsHelper.js~TimeseriesFunctionsHelper#constructor",
     "method"
   ],
   [
-    "src/timeseriesfunctionscatalog/timeseriesfunctionshelper.js~connectorfunctionshelper#getdocjavascriptfunctions",
-    "class/src/timeseriesFunctionsCatalog/TimeseriesFunctionsHelper.js~ConnectorFunctionsHelper.html#instance-method-getDocJavascriptFunctions",
-    "src/timeseriesFunctionsCatalog/TimeseriesFunctionsHelper.js~ConnectorFunctionsHelper#getDocJavascriptFunctions",
+    "src/timeseriesfunctionscatalog/timeseriesfunctionshelper.js~timeseriesfunctionshelper#getdocjavascriptfunctions",
+    "class/src/timeseriesFunctionsCatalog/TimeseriesFunctionsHelper.js~TimeseriesFunctionsHelper.html#instance-method-getDocJavascriptFunctions",
+    "src/timeseriesFunctionsCatalog/TimeseriesFunctionsHelper.js~TimeseriesFunctionsHelper#getDocJavascriptFunctions",
     "method"
   ],
   [
-    "src/timeseriesfunctionscatalog/timeseriesfunctionshelper.js~connectorfunctionshelper#getdocprivatejavascriptfunctions",
-    "class/src/timeseriesFunctionsCatalog/TimeseriesFunctionsHelper.js~ConnectorFunctionsHelper.html#instance-method-getDocPrivateJavascriptFunctions",
-    "src/timeseriesFunctionsCatalog/TimeseriesFunctionsHelper.js~ConnectorFunctionsHelper#getDocPrivateJavascriptFunctions",
+    "src/timeseriesfunctionscatalog/timeseriesfunctionshelper.js~timeseriesfunctionshelper#getdocprivatejavascriptfunctions",
+    "class/src/timeseriesFunctionsCatalog/TimeseriesFunctionsHelper.js~TimeseriesFunctionsHelper.html#instance-method-getDocPrivateJavascriptFunctions",
+    "src/timeseriesFunctionsCatalog/TimeseriesFunctionsHelper.js~TimeseriesFunctionsHelper#getDocPrivateJavascriptFunctions",
     "method"
   ],
   [
-    "src/timeseriesfunctionscatalog/timeseriesfunctionshelper.js~connectorfunctionshelper#getdummyfunctions",
-    "class/src/timeseriesFunctionsCatalog/TimeseriesFunctionsHelper.js~ConnectorFunctionsHelper.html#instance-method-getDummyFunctions",
-    "src/timeseriesFunctionsCatalog/TimeseriesFunctionsHelper.js~ConnectorFunctionsHelper#getDummyFunctions",
-    "method"
-  ],
-  [
-    "src/timeseriesfunctionscatalog/timeseriesfunctionshelper.js~connectorfunctionshelper#getvaluetypes",
-    "class/src/timeseriesFunctionsCatalog/TimeseriesFunctionsHelper.js~ConnectorFunctionsHelper.html#instance-method-getValueTypes",
-    "src/timeseriesFunctionsCatalog/TimeseriesFunctionsHelper.js~ConnectorFunctionsHelper#getValueTypes",
+    "src/timeseriesfunctionscatalog/timeseriesfunctionshelper.js~timeseriesfunctionshelper#getvaluetypes",
+    "class/src/timeseriesFunctionsCatalog/TimeseriesFunctionsHelper.js~TimeseriesFunctionsHelper.html#instance-method-getValueTypes",
+    "src/timeseriesFunctionsCatalog/TimeseriesFunctionsHelper.js~TimeseriesFunctionsHelper#getValueTypes",
     "method"
   ],
   [
