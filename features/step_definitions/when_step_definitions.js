@@ -703,6 +703,7 @@ When(/^I "([^"]*)" it with bulk and response with format csv$/, function (action
         return;
     }
 });
+
 When(/^I delete it with identfier from location$/, function () {
 
     var _this = this;
@@ -809,6 +810,18 @@ When(/^I delete it with location as a identifier$/, function () {
         _this.error = err;
         return;
     }
+});
+
+When(/^I fill identifier using location$/, function () {
+    try {
+        var id = this.location.substring(this.location.lastIndexOf("/") + 1);
+        this.util.withIdentifier(id);
+    } catch (err) {
+        console.error('ERROR: ', err);
+        this.error = err;
+    }
+
+    return;
 });
 
 When(/^I delete it all$/, function () {

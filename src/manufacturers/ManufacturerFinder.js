@@ -21,18 +21,42 @@ export default class ManufacturerFinder extends ProvisionGenericFinder {
      * @private
      */
     _composeUrl() {
-        return this._baseUrl + "/" + this._identifier + (this._mediaIdentifier? "/media/" + this._mediaIdentifier + '?format=raw': '');
+        return this._baseUrl + (this._identifier ? "/" + this._identifier + (this._media? "/media" + (this._mediaIdentifier? "/" + this._mediaIdentifier + '?format=raw': '') : ''):'');
     }
 
     /**
      * Download a specific manufacturer by its id. This execute a GET http method
      * @test
-     *   ogapi.newManufacturerFinder().findById('manufacturername').then().catch();
-     * @param {string} identifier - manufacturer name .
+     *   ogapi.newManufacturerFinder().findAll().then().catch();
+     * @return {Promise} 
+     */
+    findAll() {
+        return this._execute();
+    }
+
+
+    /**
+     * Download a specific manufacturer by its id. This execute a GET http method
+     * @test
+     *   ogapi.newManufacturerFinder().findById('manufacturerIdentifier').then().catch();
+     * @param {string} identifier - manufacturer identifier .
      * @return {Promise} 
      */
     findById(identifier) {
         this._identifier = identifier;
+        return this._execute();
+    }
+
+    /**
+     * Download manufacturer medias. This execute a GET http method
+     * @test
+     *   ogapi.newManufacturerFinder().findMedias('manufacturerId', 'mediaIdentifier').then().catch();
+     * @param {string} manufacturerId - manufacturer identifier .
+     * @return {Promise} 
+     */
+    findMedias(manufacturerId) {
+        this._media = true
+        this._identifier = manufacturerId;
         return this._execute();
     }
 
@@ -45,6 +69,7 @@ export default class ManufacturerFinder extends ProvisionGenericFinder {
      * @return {Promise} 
      */
     findMediaById(manufacturerId, mediaIdentifier) {
+        this._media = true
         this._identifier = manufacturerId;
         this._mediaIdentifier = mediaIdentifier;
         return this._download();

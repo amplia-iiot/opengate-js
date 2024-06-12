@@ -1,10 +1,11 @@
 'use strict';
 
 import BaseProvision from '../provision/BaseProvision';
-import ManufacturerMedia from './ManufacturerMedia';
 import Model from './Model';
 
-export const MANUFACTURERS_RESOURCE = '/manufacturers'
+export const PRE_RESOURCE = '/organizations';
+export const MANUFACTURERS_RESOURCE = '/manufacturers';
+
 /**
  * This is a base object that contains all you can do about Manufacturers.
  */
@@ -13,8 +14,13 @@ export default class Manufacturers extends BaseProvision {
     /**     
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
-    constructor(ogapi) {
-        super(ogapi, MANUFACTURERS_RESOURCE, undefined, ['name']);
+    constructor(ogapi, organization) {
+        // super(ogapi, "/manufacturers", undefined, ['identifier', 'name']);
+        super(ogapi, PRE_RESOURCE, undefined, ['name']);
+        this._isValidString(organization, 'organization', 50);
+        this._organization = organization;
+
+        this._resource = this._resource + '/' + this._organization + MANUFACTURERS_RESOURCE;
     }
 
     /**
@@ -125,16 +131,10 @@ export default class Manufacturers extends BaseProvision {
         return this;
     }
 
-    mediaBuilder() {
-        if (!this._identifier)
-            throw new Error("Required manufacturer identifier");
-        return new ManufacturerMedia(this._ogapi, this._identifier)
-    }
-
     modelBuilder() {
         if (!this._identifier)
-            throw new Error("Required manufacturer identifier and name");
-        return new Model(this._ogapi, this._identifier)
+            throw new Error("Required manufacturer identifier");
+        return new Model(this._ogapi, this._organization, this._identifier)
     }
 
     _composeElement() {
@@ -159,7 +159,27 @@ export default class Manufacturers extends BaseProvision {
     }
 
     _buildURL() {
-        var url = this._resource + (this._identifier? "/" + this._identifier: "")
-        return url;
+        return this._resource + (this._identifier?"/" + this._identifier:"");
+    }
+
+    deleteInCascade() {
+        this._setUrlParameters({
+            updateDevices: true
+        });
+
+        return this.delete()
+    }
+
+    updateInCascade() {
+        this._setUrlParameters({
+            updateDevices: true
+        });
+
+        return this.update()
+    }
+
+    _isValidString(string, param_name, max_length) {
+        if (typeof string !== 'string' || string.length === 0 || string.length > max_length)
+            throw new Error('Parameter ' + param_name + ' must be a string, cannot be empty and has a maximum length of ' + max_length);
     }
 }
