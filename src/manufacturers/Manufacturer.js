@@ -4,6 +4,7 @@ import BaseProvision from '../provision/BaseProvision';
 import ManufacturerMedia from './ManufacturerMedia';
 import Model from './Model';
 
+export const MANUFACTURERS_RESOURCE = '/manufacturers'
 /**
  * This is a base object that contains all you can do about Manufacturers.
  */
@@ -13,7 +14,7 @@ export default class Manufacturers extends BaseProvision {
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, "/manufacturers", undefined, ['identifier', 'name']);
+        super(ogapi, MANUFACTURERS_RESOURCE, undefined, ['name']);
     }
 
     /**
@@ -133,39 +134,32 @@ export default class Manufacturers extends BaseProvision {
     modelBuilder() {
         if (!this._identifier)
             throw new Error("Required manufacturer identifier and name");
-        return new Model(this._ogapi, this)
+        return new Model(this._ogapi, this._identifier)
     }
 
     _composeElement() {
         this._checkRequiredParameters()
 
         var updateData = {
-            manufacturer: {
-                id: this._identifier || undefined,
-                name: this._name || undefined,
-                description: this._description || undefined,
-                telephone: this._telephone || undefined,
-                address: this._address || undefined,
-                fax: this._fax || undefined,
-                url: this._manufUrl || undefined,
-                notes: this._notes || undefined,
-                email: this._email || undefined
-            }
+            name: this._name || undefined,
+            description: this._description || undefined,
+            telephone: this._telephone || undefined,
+            address: this._address || undefined,
+            fax: this._fax || undefined,
+            url: this._manufUrl || undefined,
+            notes: this._notes || undefined,
+            email: this._email || undefined
         };
 
         return updateData;
     }
 
     _composeUpdateElement() {
-        var updateElement = this._composeElement()
-
-        delete updateElement.manufacturer.id
-
-        return updateElement
+        return this._composeElement();
     }
 
     _buildURL() {
-        var url = this._resource + "/" + this._identifier
+        var url = this._resource + (this._identifier? "/" + this._identifier: "")
         return url;
     }
 }

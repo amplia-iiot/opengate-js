@@ -120,6 +120,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/manufacturers/Model.js~Models.html">Models</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/manufacturers/ModelFinder.js~ModelFinder.html">ModelFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/manufacturers/ModelMedia.js~ModelMedia.html">ModelMedia</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MANUFACTURERS_RESOURCE">MANUFACTURERS_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MODELS_RESOURCE">MODELS_RESOURCE</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operationTypes</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operationTypes/OperationType.js~OperationType.html">OperationType</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operationTypes/OperationTypeCatalog.js~OperationTypesCatalog.html">OperationTypesCatalog</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operationTypes/OperationTypeFinder.js~OperationTypeFinder.html">OperationTypeFinder</a></span></span></li>
@@ -141,6 +143,14 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByMonth.js~ByMonth.html">ByMonth</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByWeek.js~ByWeek.html">ByWeek</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/operations/catalog/period/pattern/ByYear.js~ByYear.html">ByYear</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">organization_manufacturer</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organization_manufacturer/Manufacturer.js~Manufacturers.html">Manufacturers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organization_manufacturer/ManufacturerFinder.js~ManufacturerFinder.html">ManufacturerFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organization_manufacturer/Model.js~Models.html">Models</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organization_manufacturer/ModelFinder.js~ModelFinder.html">ModelFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MANUFACTURERS_RESOURCE">MANUFACTURERS_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PRE_RESOURCE">PRE_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MODELS_RESOURCE">MODELS_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PRE_RESOURCE">PRE_RESOURCE</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">organizations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/OrganizationFinder.js~OrganizationFinder.html">OrganizationFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/Organizations.js~Organizations.html">Organizations</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">pipelines</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pipelines/PipelineFinder.js~PipelineFinder.html">PipelineFinder</a></span></span></li>
@@ -311,18 +321,42 @@ export default class ManufacturerFinder extends ProvisionGenericFinder {
      * @private
      */
     _composeUrl() {
-        return this._baseUrl + &quot;/&quot; + this._identifier + (this._mediaIdentifier? &quot;/media/&quot; + this._mediaIdentifier + &apos;?format=raw&apos;: &apos;&apos;);
+        return this._baseUrl + (this._identifier ? &quot;/&quot; + this._identifier + (this._media? &quot;/media&quot; + (this._mediaIdentifier? &quot;/&quot; + this._mediaIdentifier + &apos;?format=raw&apos;: &apos;&apos;) : &apos;&apos;):&apos;&apos;);
     }
 
     /**
      * Download a specific manufacturer by its id. This execute a GET http method
      * @test
-     *   ogapi.newManufacturerFinder().findById(&apos;manufacturername&apos;).then().catch();
-     * @param {string} identifier - manufacturer name .
+     *   ogapi.newManufacturerFinder().findAll().then().catch();
+     * @return {Promise} 
+     */
+    findAll() {
+        return this._execute();
+    }
+
+
+    /**
+     * Download a specific manufacturer by its id. This execute a GET http method
+     * @test
+     *   ogapi.newManufacturerFinder().findById(&apos;manufacturerIdentifier&apos;).then().catch();
+     * @param {string} identifier - manufacturer identifier .
      * @return {Promise} 
      */
     findById(identifier) {
         this._identifier = identifier;
+        return this._execute();
+    }
+
+    /**
+     * Download manufacturer medias. This execute a GET http method
+     * @test
+     *   ogapi.newManufacturerFinder().findMedias(&apos;manufacturerId&apos;, &apos;mediaIdentifier&apos;).then().catch();
+     * @param {string} manufacturerId - manufacturer identifier .
+     * @return {Promise} 
+     */
+    findMedias(manufacturerId) {
+        this._media = true
+        this._identifier = manufacturerId;
         return this._execute();
     }
 
@@ -335,6 +369,7 @@ export default class ManufacturerFinder extends ProvisionGenericFinder {
      * @return {Promise} 
      */
     findMediaById(manufacturerId, mediaIdentifier) {
+        this._media = true
         this._identifier = manufacturerId;
         this._mediaIdentifier = mediaIdentifier;
         return this._download();

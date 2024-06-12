@@ -26,6 +26,8 @@ var _Model = require('./Model');
 
 var _Model2 = _interopRequireDefault(_Model);
 
+var MANUFACTURERS_RESOURCE = '/manufacturers';
+exports.MANUFACTURERS_RESOURCE = MANUFACTURERS_RESOURCE;
 /**
  * This is a base object that contains all you can do about Manufacturers.
  */
@@ -40,7 +42,7 @@ var Manufacturers = (function (_BaseProvision) {
     function Manufacturers(ogapi) {
         _classCallCheck(this, Manufacturers);
 
-        _get(Object.getPrototypeOf(Manufacturers.prototype), 'constructor', this).call(this, ogapi, "/manufacturers", undefined, ['identifier', 'name']);
+        _get(Object.getPrototypeOf(Manufacturers.prototype), 'constructor', this).call(this, ogapi, MANUFACTURERS_RESOURCE, undefined, ['name']);
     }
 
     /**
@@ -170,7 +172,7 @@ var Manufacturers = (function (_BaseProvision) {
         key: 'modelBuilder',
         value: function modelBuilder() {
             if (!this._identifier) throw new Error("Required manufacturer identifier and name");
-            return new _Model2['default'](this._ogapi, this);
+            return new _Model2['default'](this._ogapi, this._identifier);
         }
     }, {
         key: '_composeElement',
@@ -178,17 +180,14 @@ var Manufacturers = (function (_BaseProvision) {
             this._checkRequiredParameters();
 
             var updateData = {
-                manufacturer: {
-                    id: this._identifier || undefined,
-                    name: this._name || undefined,
-                    description: this._description || undefined,
-                    telephone: this._telephone || undefined,
-                    address: this._address || undefined,
-                    fax: this._fax || undefined,
-                    url: this._manufUrl || undefined,
-                    notes: this._notes || undefined,
-                    email: this._email || undefined
-                }
+                name: this._name || undefined,
+                description: this._description || undefined,
+                telephone: this._telephone || undefined,
+                address: this._address || undefined,
+                fax: this._fax || undefined,
+                url: this._manufUrl || undefined,
+                notes: this._notes || undefined,
+                email: this._email || undefined
             };
 
             return updateData;
@@ -196,16 +195,12 @@ var Manufacturers = (function (_BaseProvision) {
     }, {
         key: '_composeUpdateElement',
         value: function _composeUpdateElement() {
-            var updateElement = this._composeElement();
-
-            delete updateElement.manufacturer.id;
-
-            return updateElement;
+            return this._composeElement();
         }
     }, {
         key: '_buildURL',
         value: function _buildURL() {
-            var url = this._resource + "/" + this._identifier;
+            var url = this._resource + (this._identifier ? "/" + this._identifier : "");
             return url;
         }
     }]);
@@ -214,5 +209,4 @@ var Manufacturers = (function (_BaseProvision) {
 })(_provisionBaseProvision2['default']);
 
 exports['default'] = Manufacturers;
-module.exports = exports['default'];
 //# sourceMappingURL=Manufacturer.js.map

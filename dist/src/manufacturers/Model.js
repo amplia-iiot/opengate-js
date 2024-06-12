@@ -18,14 +18,15 @@ var _provisionBaseProvision = require('../provision/BaseProvision');
 
 var _provisionBaseProvision2 = _interopRequireDefault(_provisionBaseProvision);
 
-var _Manufacturer = require('./Manufacturer');
-
-var _Manufacturer2 = _interopRequireDefault(_Manufacturer);
-
 var _ModelMedia = require('./ModelMedia');
 
 var _ModelMedia2 = _interopRequireDefault(_ModelMedia);
 
+var _Manufacturer = require('./Manufacturer');
+
+var MODELS_RESOURCE = '/models';
+
+exports.MODELS_RESOURCE = MODELS_RESOURCE;
 /**
  * This is a base object that contains all you can do about Models.
  */
@@ -40,9 +41,10 @@ var Models = (function (_BaseProvision) {
     function Models(ogapi, manufacturer) {
         _classCallCheck(this, Models);
 
-        _get(Object.getPrototypeOf(Models.prototype), 'constructor', this).call(this, ogapi, "/models", undefined, ['identifier', 'name', 'manufacturer']);
+        _get(Object.getPrototypeOf(Models.prototype), 'constructor', this).call(this, ogapi, _Manufacturer.MANUFACTURERS_RESOURCE, undefined, ['name']);
+        this._isValidString(manufacturer, 'manufacturer', 50);
 
-        this._manufacturer = manufacturer;
+        this._resource = this._resource + "/" + manufacturer + MODELS_RESOURCE;
     }
 
     /**
@@ -123,47 +125,11 @@ var Models = (function (_BaseProvision) {
             this._version = version;
             return this;
         }
-
-        /**
-         * Set the manufacturer identifier attribute
-         * @param {string} id
-         * @return {Manufacturers}
-         */
-    }, {
-        key: 'withManufacturerIdentifier',
-        value: function withManufacturerIdentifier(id) {
-            if (typeof id !== 'string' || id.length > 50) throw new Error("OGAPI_STRING_PARAMETER_MAX_LENGTH_50");
-            if (!this._manufacturer) {
-                this._manufacturer = new _Manufacturer2['default'](this._ogapi);
-            }
-
-            this._manufacturer.withIdentifier(id);
-            return this;
-        }
-
-        /**
-         * Set the manufacturer name attribute
-         * @param {string} name
-         * @return {Models}
-         */
-    }, {
-        key: 'withManufacturerName',
-        value: function withManufacturerName(name) {
-            if (!name) throw new Error("OGAPI_STRING_PARAMETER");
-
-            if (!this._manufacturer) {
-                this._manufacturer = new _Manufacturer2['default'](this._ogapi);
-            }
-
-            this._manufacturer.withName(name);
-
-            return this;
-        }
     }, {
         key: 'mediaBuilder',
         value: function mediaBuilder() {
-            if (!this._identifier) throw new Error("Required model identifier");
-            return new _ModelMedia2['default'](this._ogapi, this._identifier);
+            if (!this._manufacturer || !this._identifier) throw new Error("Required manufacturer and model identifier");
+            return new _ModelMedia2['default'](this._ogapi, this._manufacturer, this._identifier);
         }
     }, {
         key: '_composeElement',
@@ -171,18 +137,11 @@ var Models = (function (_BaseProvision) {
             this._checkRequiredParameters();
 
             var updateData = {
-                model: {
-                    id: this._identifier || undefined,
-                    name: this._name || undefined,
-                    description: this._description || undefined,
-                    version: this._version || undefined,
-                    notes: this._notes || undefined,
-                    url: this._modelUrl || undefined,
-                    manufacturer: {
-                        id: this._manufacturer._identifier || undefined,
-                        name: this._manufacturer._name || undefined
-                    }
-                }
+                name: this._name || undefined,
+                description: this._description || undefined,
+                version: this._version || undefined,
+                notes: this._notes || undefined,
+                url: this._modelUrl || undefined
             };
 
             return updateData;
@@ -190,17 +149,18 @@ var Models = (function (_BaseProvision) {
     }, {
         key: '_composeUpdateElement',
         value: function _composeUpdateElement() {
-            var updateElement = this._composeElement();
-
-            delete updateElement.model.id;
-
-            return updateElement;
+            return this._composeElement();
         }
     }, {
         key: '_buildURL',
         value: function _buildURL() {
-            var url = this._resource + "/" + this._identifier;
+            var url = this._resource + (this._identifier ? "/" + this._identifier : "");
             return url;
+        }
+    }, {
+        key: '_isValidString',
+        value: function _isValidString(string, param_name, max_length) {
+            if (typeof string !== 'string' || string.length === 0 || string.length > max_length) throw new Error('Parameter ' + param_name + ' must be a string, cannot be empty and has a maximum length of ' + max_length);
         }
     }]);
 
@@ -208,5 +168,4 @@ var Models = (function (_BaseProvision) {
 })(_provisionBaseProvision2['default']);
 
 exports['default'] = Models;
-module.exports = exports['default'];
 //# sourceMappingURL=Model.js.map

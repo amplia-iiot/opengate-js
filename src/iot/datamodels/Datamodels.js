@@ -1,7 +1,6 @@
 'use strict';
 import BaseProvision from '../../provision/BaseProvision';
 import Category from '../catalog/Category';
-import Datastream from '../catalog/Datastream';
 
 export const PRE_RESOURCE = '/organizations';
 export const DATAMODELS_RESOURCE = '/datamodels';

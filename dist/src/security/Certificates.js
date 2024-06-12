@@ -142,37 +142,6 @@ var Certificates = (function (_Security) {
             this._usages = usages;
             return this;
         }
-
-        /**
-         * Set the hardwares attribute
-         * @param {Array} hardware 
-         * @return {Certificates}
-         */
-
-    }, {
-        key: 'withHardware',
-        value: function withHardware(hardware) {
-            var not_found = [];
-            if (typeof hardware === "undefined" || hardware.constructor !== Array || hardware.length === 0) {
-                throw new Error("Parameter hardwares must be typeof Array and cannot be empty");
-            }
-
-            for (var i = 0; i < hardware.length; i++) {
-                if (!this._checkHardware(hardware[i])) {
-                    not_found.push(i + 1);
-                } else {
-                    try {
-                        hardware[i] = JSON.parse(hardware[i]);
-                    } catch (igerr) {}
-                }
-            }
-            if (not_found.length !== 0) {
-
-                throw new Error("The hardware attribute is not well formed, the message " + JSON.stringify(not_found) + " not correct. Remember: hardwareId or [manufacturer, model and modelVersion] must be defined");
-            }
-            this._hardware = hardware;
-            return this;
-        }
     }, {
         key: '_checkHardware',
         value: function _checkHardware(hardware) {

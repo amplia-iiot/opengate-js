@@ -184,23 +184,6 @@ var Datastream = (function () {
         }
 
         /**
-         * Set the hardwaresIds object.
-         * @param {Array} hardwaresIds
-         * @return {Datastream}
-         */
-    }, {
-        key: 'withHardwaresIds',
-        value: function withHardwaresIds(hardwaresIds) {
-            if (hardwaresIds) {
-                if (!Array.isArray(hardwaresIds)) {
-                    throw new Error('hardware Ids must be an array on Datastream');
-                }
-            }
-            this._hardwares = hardwaresIds;
-            return this;
-        }
-
-        /**
          * Build a Datastream json object
          * 
          * @example
