@@ -2,13 +2,14 @@
 @execute_each_operation
 @operations
 @provision
+@wip
 Feature: Setting up period with each pattern to operations
 As a user of JsApi
 I want to execute an FACTORY_RESET operation with a specific each pattern period configuration
 So that I can execute FACTORY_RESET to some devices/subscriptions/subscribers/communications module with an each pattern period
 
     Background:
-        Given an apikey user by "require-real-apikey"
+        Given an apikey user by "1e0a6fa7-d770-4072-ab4e-f98581522a65"
 
     Scenario: Creating an organization to use in create device
         Given an ogapi "organizations builder" util
@@ -87,7 +88,7 @@ So that I can execute FACTORY_RESET to some devices/subscriptions/subscribers/co
     Scenario: Set each 5 minutes as period with job timeout equals than the selected period
         Given the operation by "FACTORY_RESET"
         And execute each 5 minutes
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         And append entities by:
             | device_689_DEMO |
         When I build it

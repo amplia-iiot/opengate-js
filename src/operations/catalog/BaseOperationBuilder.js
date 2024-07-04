@@ -301,20 +301,20 @@ export default class BaseOperationBuilder {
      * Set a timeout of job.
      * @example
      *  ogapi.operations.builderFactory.newXXXBuilder().withJobTimeout(3)
-     * @param {number} minutes - if null then parameter will be removed into builder
+     * @param {!number} milliseconds     - if null then parameter will be removed into builder
      * @throws {Error} throw error when minutes is not typeof number    
      * @return {BaseOperationBuilder}
      */
-    withJobTimeout(minutes) {
+    withJobTimeout(milliseconds, format = "milliseconds") {
         if (minutes === null) {
             delete this._build.schedule.stop;
             return this;
         }
-        if (typeof minutes !== "number") {
-            throw new Error("Parameter minutes must be a number");
+        if (typeof milliseconds !== "number") {
+            throw new Error("Parameter milliseconds must be a number");
         }
         this._build.schedule.stop = {
-            delayed: moment.duration(minutes, 'minutes').asMilliseconds()
+            delayed: moment.duration(milliseconds, format).asMilliseconds()
         };
         return this;
     }

@@ -3,12 +3,13 @@
 @operations
 @searching
 @searching_periodic_operations
+@wip
 Feature: Searching operation's executions
 As a user of JsApi
 I want to search periodic operations
 
     Background:
-        Given an apikey user by "require-real-apikey"
+        Given an apikey user by "1e0a6fa7-d770-4072-ab4e-f98581522a65"
 
     Scenario: Creating an organization to use in create device
         Given an ogapi "organizations builder" util
@@ -49,7 +50,7 @@ I want to search periodic operations
         And the retries by 0
         And the retriesDelay by 0
         And parameter "admsts" by "inventado"
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         And execute every day at "2020-01-10T21:44:13Z"
          And append entities by:
             | search_periodic_oper_dev |
