@@ -1,8 +1,11 @@
 'use strict';
 
 import BaseProvision from '../provision/BaseProvision';
-import Manufacturers from './Manufacturer';
 import ModelMedia from './ModelMedia';
+
+import {MANUFACTURERS_RESOURCE} from './Manufacturer'
+
+export const MODELS_RESOURCE = '/models';
 
 /**
  * This is a base object that contains all you can do about Models.
@@ -13,9 +16,10 @@ export default class Models extends BaseProvision {
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi, manufacturer) {
-        super(ogapi, "/models", undefined, ['identifier', 'name', 'manufacturer']);
-
-        this._manufacturer = manufacturer
+        super(ogapi, MANUFACTURERS_RESOURCE, undefined, ['name']);
+        this._isValidString(manufacturer, 'manufacturer', 50);
+        
+        this._resource = this._resource + "/" + manufacturer + MODELS_RESOURCE;
     }
 
     /**
@@ -90,78 +94,37 @@ export default class Models extends BaseProvision {
         return this;
     }
 
-    /**
-     * Set the manufacturer identifier attribute
-     * @param {string} id
-     * @return {Manufacturers}
-     */
-    withManufacturerIdentifier(id) {
-        if (typeof id !== 'string' || id.length > 50)
-            throw new Error("OGAPI_STRING_PARAMETER_MAX_LENGTH_50");
-        if (!this._manufacturer) {
-            this._manufacturer = new Manufacturers(this._ogapi)
-        }
-        
-        this._manufacturer.withIdentifier(id);
-        return this;
-    }
-
-    /**
-     * Set the manufacturer name attribute
-     * @param {string} name
-     * @return {Models}
-     */
-    withManufacturerName(name) {
-        if (!name)
-            throw new Error("OGAPI_STRING_PARAMETER");
-        
-        if (!this._manufacturer) {
-            this._manufacturer = new Manufacturers(this._ogapi)
-        }
-        
-        this._manufacturer.withName(name);
-
-        return this;
-    }
-    
-
     mediaBuilder() {
-        if (!this._identifier)
-            throw new Error("Required model identifier");
-        return new ModelMedia(this._ogapi, this._identifier)
+        if (!this._manufacturer || !this._identifier)
+            throw new Error("Required manufacturer and model identifier");
+        return new ModelMedia(this._ogapi, this._manufacturer, this._identifier)
     }
 
     _composeElement() {
         this._checkRequiredParameters()
 
         var updateData = {
-            model: {
-                id: this._identifier || undefined,
-                name: this._name || undefined,
-                description: this._description || undefined,
-                version: this._version || undefined,
-                notes: this._notes || undefined,
-                url: this._modelUrl || undefined,
-                manufacturer: {
-                    id: this._manufacturer._identifier || undefined,
-                    name: this._manufacturer._name || undefined    
-                }
-            }
+            name: this._name || undefined,
+            description: this._description || undefined,
+            version: this._version || undefined,
+            notes: this._notes || undefined,
+            url: this._modelUrl || undefined
         };
 
         return updateData;
     }
 
     _composeUpdateElement() {
-        var updateElement = this._composeElement()
-
-        delete updateElement.model.id
-
-        return updateElement
+        return this._composeElement()
     }
 
     _buildURL() {
-        var url = this._resource + "/" + this._identifier
+        var url = this._resource + (this._identifier?"/" + this._identifier: "")
         return url;
+    }
+
+    _isValidString(string, param_name, max_length) {
+        if (typeof string !== 'string' || string.length === 0 || string.length > max_length)
+            throw new Error('Parameter ' + param_name + ' must be a string, cannot be empty and has a maximum length of ' + max_length);
     }
 }

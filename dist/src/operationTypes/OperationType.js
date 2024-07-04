@@ -73,10 +73,6 @@ var OperationType = (function (_BaseProvision) {
                     this.withParameters(operationTypeObj.parameters);
                 }
 
-                if (operationTypeObj.models) {
-                    this.withModels(operationTypeObj.models);
-                }
-
                 if (operationTypeObj.applicableTo) {
                     this.applicableTo(operationTypeObj.applicableTo);
                 }

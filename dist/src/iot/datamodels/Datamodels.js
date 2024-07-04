@@ -21,10 +21,6 @@ var _catalogCategory = require('../catalog/Category');
 
 var _catalogCategory2 = _interopRequireDefault(_catalogCategory);
 
-var _catalogDatastream = require('../catalog/Datastream');
-
-var _catalogDatastream2 = _interopRequireDefault(_catalogDatastream);
-
 var PRE_RESOURCE = '/organizations';
 exports.PRE_RESOURCE = PRE_RESOURCE;
 var DATAMODELS_RESOURCE = '/datamodels';

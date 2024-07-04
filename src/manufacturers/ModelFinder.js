@@ -4,6 +4,10 @@ import ProvisionGenericFinder from '../ProvisionGenericFinder';
 import q from 'q';
 import HttpStatus from 'http-status-codes';
 
+// import { MANUFACTURERS_RESOURCE } from './Manufacturer'; 
+import { MODELS_RESOURCE } from './Model';
+
+
 /**
  *   This class allow make get request to hardware models resource into Opengate North API.
  */
@@ -13,7 +17,7 @@ export default class ModelFinder extends ProvisionGenericFinder {
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, 'models', 'model', 'Model not found');
+        super(ogapi, 'manufacturers', undefined, 'Model not found');
     }
 
     /**
@@ -21,17 +25,31 @@ export default class ModelFinder extends ProvisionGenericFinder {
      * @private
      */
     _composeUrl() {
-        return this._baseUrl + "/" + this._identifier + (this._mediaIdentifier? "/media/" + this._mediaIdentifier + '?format=raw': '');
+        return this._baseUrl + "/" + this._manufacturer + MODELS_RESOURCE + (this._identifier? "/" + this._identifier + (this._media? "/media" + (this._mediaIdentifier? "/" + this._mediaIdentifier + '?format=raw': '') : ""):"");
+    }
+
+    /**
+     * Download all models from a manufacturer. This execute a GET http method
+     * @test
+     *   ogapi.newModelFinder().findByManufacturer('manufacturer').then().catch();
+     * @param {string} manufacturer - manufacturer id .
+     * @return {Promise} 
+     */
+    findByManufacturer(manufacturer) {
+        this._manufacturer = manufacturer;
+        return this._execute();
     }
 
     /**
      * Download a specific model by its id. This execute a GET http method
      * @test
-     *   ogapi.newModelFinder().findById('modelname').then().catch();
+     *   ogapi.newModelFinder().findByManufacturerAndId('manufacturer', 'modelname').then().catch();
+     * @param {string} manufacturer - manufacturer id .
      * @param {string} identifier - model name .
      * @return {Promise} 
      */
-    findById(identifier) {
+    findByManufacturerAndId(manufacturer, identifier) {
+        this._manufacturer = manufacturer;
         this._identifier = identifier;
         return this._execute();
     }
@@ -39,12 +57,30 @@ export default class ModelFinder extends ProvisionGenericFinder {
     /**
      * Download a specific model media by its ids. This execute a GET http method
      * @test
-     *   ogapi.newModelFinder().findMediaById('modelId', 'mediaIdentifier').then().catch();
+     *   ogapi.newModelFinder().findMediasByManufacturerAndModel('manufacturer', 'modelId').then().catch();
+     * @param {string} manufacturer - manufacturer id .
+     * @param {string} identifier - model identifier .
+     * @return {Promise} 
+     */
+    findMediasByManufacturerAndModel(manufacturer, identifier) {
+        this._media = true
+        this._manufacturer = manufacturer;
+        this._identifier = identifier;
+        return this._execute();
+    }
+
+    /**
+     * Download a specific model media by its ids. This execute a GET http method
+     * @test
+     *   ogapi.newModelFinder().findMediaByManufacturerAndModelAndId('modelId', 'mediaIdentifier').then().catch();
+     * @param {string} manufacturer - manufacturer id .
      * @param {string} modelId - model identifier .
      * @param {string} mediaIdentifier - media identifier.
      * @return {Promise} 
      */
-    findMediaById(modelId, mediaIdentifier) {
+    findMediaByManufacturerAndModelAndId(manufacturer, modelId, mediaIdentifier) {
+        this._media = true
+        this._manufacturer = manufacturer;
         this._identifier = modelId;
         this._mediaIdentifier = mediaIdentifier;
         return this._download();
