@@ -1,10 +1,9 @@
 'use strict';
 
 import BaseProvision from '../provision/BaseProvision';
-import ModelMedia from './ModelMedia';
+import {MANUFACTURERS_RESOURCE} from './Manufacturer';
 
-import {MANUFACTURERS_RESOURCE} from './Manufacturer'
-
+export const PRE_RESOURCE = '/organizations';
 export const MODELS_RESOURCE = '/models';
 
 /**
@@ -15,11 +14,16 @@ export default class Models extends BaseProvision {
     /**     
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
-    constructor(ogapi, manufacturer) {
-        super(ogapi, MANUFACTURERS_RESOURCE, undefined, ['name']);
+    constructor(ogapi, organization, manufacturer) {
+        super(ogapi, PRE_RESOURCE, undefined, ['name']);
+        this._isValidString(organization, 'organization', 50);
         this._isValidString(manufacturer, 'manufacturer', 50);
-        
-        this._resource = this._resource + "/" + manufacturer + MODELS_RESOURCE;
+        this._organization = organization;
+        this._manufacturer = manufacturer;
+
+        // super(ogapi, "/models", undefined, ['identifier', 'name', 'manufacturer']);
+
+        this._resource = this._resource + '/' + this._organization + MANUFACTURERS_RESOURCE + "/" + manufacturer + MODELS_RESOURCE;
     }
 
     /**
@@ -93,13 +97,7 @@ export default class Models extends BaseProvision {
         this._version = version;
         return this;
     }
-
-    mediaBuilder() {
-        if (!this._manufacturer || !this._identifier)
-            throw new Error("Required manufacturer and model identifier");
-        return new ModelMedia(this._ogapi, this._manufacturer, this._identifier)
-    }
-
+    
     _composeElement() {
         this._checkRequiredParameters()
 
@@ -108,19 +106,34 @@ export default class Models extends BaseProvision {
             description: this._description || undefined,
             version: this._version || undefined,
             notes: this._notes || undefined,
-            url: this._modelUrl || undefined
+            url: this._modelUrl || undefined,
         };
 
         return updateData;
     }
 
     _composeUpdateElement() {
-        return this._composeElement()
+        return this._composeElement();
     }
 
     _buildURL() {
-        var url = this._resource + (this._identifier?"/" + this._identifier: "")
-        return url;
+        return this._resource + (this._identifier?"/" + this._identifier:"");
+    }
+
+    deleteInCascade() {
+        this._setUrlParameters({
+            updateDevices: true
+        });
+
+        return this.delete()
+    }
+
+    updateInCascade() {
+        this._setUrlParameters({
+            updateDevices: true
+        });
+
+        return this.update()
     }
 
     _isValidString(string, param_name, max_length) {
