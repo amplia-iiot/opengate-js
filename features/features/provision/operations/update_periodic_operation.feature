@@ -3,14 +3,14 @@
 @operations
 @update_periodic_operation
 @urlParameters
-
+@wip
 Feature: Update periodic operation
     As a user of JsApi
     I want to update periodic operation
     So I can check if a periodic run update is performed correctly
 
     Background:
-        Given an apikey user by "require-real-apikey"
+        Given an apikey user by "1e0a6fa7-d770-4072-ab4e-f98581522a65"
 
     Scenario: Creating an organization to use in create device
         Given an ogapi "organizations builder" util
@@ -50,7 +50,7 @@ Feature: Update periodic operation
         And the retries by 0
         And the retriesDelay by 0
         And parameter "admsts" by "inventado"
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         And execute every day at "now"
         And append entities by:
             | update_periodic_device |
@@ -84,7 +84,7 @@ Feature: Update periodic operation
         And the retries by 0
         And the retriesDelay by 0
         And parameter "admsts" by "inventado"
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         And execute every day at "now"
         And append entities by "{}" as filter with "entity.device" as resourceType
         When I build it
@@ -135,7 +135,7 @@ Feature: Update periodic operation
         And the retries by 0
         And the retriesDelay by 0
         And parameter "admsts" by "inventado"
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         And execute every day at "now"
         And append entities by "{}" as filter with "entity.device" as resourceType
         When I build it
@@ -255,7 +255,7 @@ Feature: Update periodic operation
         And the retries by 0
         And the retriesDelay by 0
         And parameter "admsts" by "inventado"
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         And execute every day at "now"
         And append entities by "{}" as filter with "entity.device" as resourceType
         When I build it

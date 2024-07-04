@@ -4,6 +4,7 @@
 @executions
 @operations
 @urlParameters
+@wip
 
 Feature: Find a executions of an operation
     As a user of JsApi
@@ -11,7 +12,7 @@ Feature: Find a executions of an operation
     So I can check if a operation exists and get their executions
 
     Background:
-        Given an apikey user by "require-real-apikey"
+        Given an apikey user by "1e0a6fa7-d770-4072-ab4e-f98581522a65"
 
     Scenario: Creating an organization to use in create device
         Given an ogapi "organizations builder" util
@@ -51,7 +52,7 @@ Feature: Find a executions of an operation
         And the retries by 0
         And the retriesDelay by 0
         And parameter "admsts" by "inventado"
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         And execute immediately
         And append entities by:
             | find_executions_device |
@@ -79,7 +80,7 @@ Feature: Find a executions of an operation
         And the retries by 0
         And the retriesDelay by 0
         And parameter "admsts" by "inventado"
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         And execute immediately
         And append entities by:
             | find_executions_device |

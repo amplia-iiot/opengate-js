@@ -3,14 +3,15 @@
 @device_builder
 @execute_operations
 @operations
-@fail
+@wip
+
 Feature: Execute ADMINISTRATIVE_STATUS_CHANGE operation
 As a user of JsApi
 I want to execute an ADMINISTRATIVE_STATUS_CHANGE operation
 So that I can change the administrative status to some devices/subscriptions/subscribers/communications module
 
     Background:
-        Given an apikey user by "require-real-apikey"
+        Given an apikey user by "1e0a6fa7-d770-4072-ab4e-f98581522a65"
 
     Scenario: Creating an organization to use in create device
         Given an ogapi "organizations builder" util
@@ -52,7 +53,7 @@ So that I can change the administrative status to some devices/subscriptions/sub
         And the retriesDelay by 0
         And the retryResultList by "ERROR_TIMEOUT"
         And parameter "admsts" by "inventado"
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         And execute immediately
         And append entities by "" as tag
         #And append entities by "{}" as filter with "entity.device" as resourceType

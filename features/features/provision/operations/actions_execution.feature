@@ -2,8 +2,8 @@
 @provision
 @operations
 @actions_execution
-@fail
 @urlParameters
+@wip
 
 Feature: Execute actions on a particular execution
     As a user of JsApi
@@ -11,7 +11,7 @@ Feature: Execute actions on a particular execution
     So I can check if the actions run correctly
 
     Background:
-        Given an apikey user by "require-real-apikey"
+        Given an apikey user by "1e0a6fa7-d770-4072-ab4e-f98581522a65"
 
     @execution
 
@@ -48,7 +48,7 @@ Feature: Execute actions on a particular execution
     Scenario: Execute operation with default values and pause and active operation
         Given the operation by "REFRESH_INFO"
         And the timeout by 30000
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         And execute in 10 minutes
         #And append entities by "{}" as filter with "entity.device" as resourceType
         And append entities by:
@@ -77,7 +77,7 @@ Feature: Execute actions on a particular execution
     Scenario: Execute operation with default values and cancel execution
         Given the operation by "REFRESH_INFO"
         And the timeout by 30000
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         And execute in 10 minutes
         #And append entities by "{}" as filter with "entity.device" as resourceType
         And append entities by:
@@ -101,7 +101,7 @@ Feature: Execute actions on a particular execution
     Scenario: Execute operation with default values and delayed and execute later
         Given the operation by "REFRESH_INFO"
         And the timeout by 30000
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         And execute in 10 minutes
         #And append entities by "{}" as filter with "entity.device" as resourceType
         And append entities by:
@@ -125,7 +125,7 @@ Feature: Execute actions on a particular execution
     Scenario: Execute operation with default values and delayed and execute now
         Given the operation by "REFRESH_INFO"
         And the timeout by 30000
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         And execute in 10 minutes
         And append entities by "{}" as filter with "entity.device" as resourceType
         #And append entities by:
@@ -150,7 +150,7 @@ Feature: Execute actions on a particular execution
     Scenario: Execute operation with default values and delayed and change callback
         Given the operation by "REFRESH_INFO"
         And the timeout by 30000
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         And the callback by "http://change"
         And execute in 10 minutes
         And append entities by "{}" as filter with "entity.device" as resourceType
@@ -249,7 +249,7 @@ Feature: Execute actions on a particular execution
         And the retries by 0
         And the retriesDelay by 0
         And parameter "admsts" by "inventado"
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         And execute every day at "now"
         #And append entities by "{}" as filter with "entity.device" as resourceType
         And append entities by:
@@ -272,7 +272,7 @@ Feature: Execute actions on a particular execution
         And the retries by 0
         And the retriesDelay by 0
         And parameter "admsts" by "inventado"
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         And execute every day at "now"
         #And append entities by "{}" as filter with "entity.device" as resourceType
         And append entities by:
@@ -297,7 +297,7 @@ Feature: Execute actions on a particular execution
         And the retries by 0
         And the retriesDelay by 0
         And parameter "admsts" by "inventado"
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         And execute every day at "now"
         #And append entities by "{}" as filter with "entity.device" as resourceType
         And append entities by:

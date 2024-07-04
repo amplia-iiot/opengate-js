@@ -169,9 +169,9 @@ Given(/^append entities by:$/, function (table, callback) {
     callback();
 });
 
-Given(/^the job timeout by (\d+) minutes$/, function (minutes, callback) {
-    minutes = eval(minutes);
-    this.util.withJobTimeout(minutes);
+Given(/^the job timeout by (\d+) seconds$/, function (seconds, callback) {
+    seconds = eval(seconds);
+    this.util.withJobTimeout(seconds, 'seconds');
     callback();
 });
 

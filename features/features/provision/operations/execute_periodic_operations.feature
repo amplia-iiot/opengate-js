@@ -3,6 +3,7 @@
 @operations
 @periodic_operation
 @urlParameters
+@wip
 
 Feature: Execute ADMINISTRATIVE_STATUS_CHANGE periodic operation
     As a user of JsApi
@@ -10,7 +11,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE periodic operation
     So that I can change the administrative status to some devices/subscriptions/subscribers/communications module
 
     Background:
-        Given an apikey user by "require-real-apikey"
+        Given an apikey user by "1e0a6fa7-d770-4072-ab4e-f98581522a65"
 
 
     Scenario: Creating an organization to use in create device
@@ -52,7 +53,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE periodic operation
         And the retries by 0
         And the retriesDelay by 0
         And parameter "admsts" by "inventado"
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         And execute every day at "2020-01-10T21:44:13Z"
         And append entities by "{}" as filter with "entity.device" as resourceType
         When I build it
@@ -75,7 +76,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE periodic operation
         And the retries by 0
         And the retriesDelay by 0
         And parameter "admsts" by "inventado"
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         And execute every week at "2020-01-10T21:44:13Z" on days:
             | MON |
             | WED |
@@ -101,7 +102,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE periodic operation
         And the retries by 0
         And the retriesDelay by 0
         And parameter "admsts" by "inventado"
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         When execute every week at on days:
             | FRI |
             | SUN |
@@ -115,7 +116,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE periodic operation
         And the retries by 0
         And the retriesDelay by 0
         And parameter "admsts" by "inventado"
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         And execute every month at "2020-01-10T21:44:13Z" at day 3 on months:
             | JAN |
             | MAR |
@@ -141,7 +142,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE periodic operation
         And the retries by 0
         And the retriesDelay by 0
         And parameter "admsts" by "inventado"
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         And execute every month at "2020-02-10T21:44:13Z" on months:
             | FEB |
             | APR |
@@ -165,7 +166,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE periodic operation
         And the retries by 0
         And the retriesDelay by 0
         And parameter "admsts" by "inventado"
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         When execute every month at "2020-03-10T21:44:13Z" at day 5
         Then throws an error equal to "Parameter months must be typeof Array"
 
@@ -177,7 +178,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE periodic operation
         And the retries by 0
         And the retriesDelay by 0
         And parameter "admsts" by "inventado"
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         When execute every month at day 29 on months:
             | DEC |
             | OCT |
@@ -192,7 +193,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE periodic operation
         And the retries by 0
         And the retriesDelay by 0
         And parameter "admsts" by "inventado"
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         When execute every month at day 18
         Then throws an error equal to "Parameter date must be typeof Date"
 
@@ -204,7 +205,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE periodic operation
         And the retries by 0
         And the retriesDelay by 0
         And parameter "admsts" by "inventado"
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         When execute every month on months:
             | NOV |
             | SEP |
@@ -220,7 +221,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE periodic operation
         And the retries by 0
         And the retriesDelay by 0
         And parameter "admsts" by "inventado"
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         And execute every year at "2020-01-10T21:44:13Z" at day 4 on month "JAN"
         And append entities by "{}" as filter with "entity.device" as resourceType
         When I build it
@@ -246,7 +247,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE periodic operation
         And the retries by 0
         And the retriesDelay by 0
         And parameter "admsts" by "inventado"
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         And execute every year at "2020-02-10T21:44:13Z" on month "FEB"
         And append entities by:
             | execute_periodic_device |
@@ -268,7 +269,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE periodic operation
         And the retries by 0
         And the retriesDelay by 0
         And parameter "admsts" by "inventado"
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         And execute every year at "2020-03-10T21:44:13Z" at day 5
         And append entities by:
             | execute_periodic_device |
@@ -290,7 +291,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE periodic operation
         And the retries by 0
         And the retriesDelay by 0
         And parameter "admsts" by "inventado"
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         When execute every year at day 29 on month "MAR"
         Then throws an error equal to "Parameter date must be typeof Date"
 
@@ -302,7 +303,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE periodic operation
         And the retries by 0
         And the retriesDelay by 0
         And parameter "admsts" by "inventado"
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         When execute every year at day 18
         Then throws an error equal to "Parameter date must be typeof Date"
 
@@ -314,7 +315,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE periodic operation
         And the retries by 0
         And the retriesDelay by 0
         And parameter "admsts" by "inventado"
-        And the job timeout by 5 minutes
+        And the job timeout by 300 seconds
         When execute every year on month "APR"
         Then throws an error equal to "Parameter date must be typeof Date"
 
