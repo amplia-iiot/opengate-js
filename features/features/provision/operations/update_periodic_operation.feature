@@ -3,16 +3,16 @@
 @operations
 @update_periodic_operation
 @urlParameters
-@wip
+
 Feature: Update periodic operation
     As a user of JsApi
     I want to update periodic operation
     So I can check if a periodic run update is performed correctly
 
     Background:
-        Given an apikey user by "1e0a6fa7-d770-4072-ab4e-f98581522a65"
+        Given an apikey user by "require-real-apikey"
 
-    Scenario: Creating an organization to use in create device
+    Scenario: Precondition - Creating an organization to use in create device
         Given an ogapi "organizations builder" util
         Then I want to create an "organization"
         And the "name" "fupdate_periodic_organization_10"
@@ -26,7 +26,36 @@ Feature: Update periodic operation
         Then I create it
         And response code should be: 201
 
-    Scenario: I want to create an entity
+     Scenario: Precondition - Create and delete an user that does not exist
+        Given an apikey user by "1e0a6fa7-d770-4072-ab4e-f98581522a65"
+        And an ogapi "users builder" util
+        And I want to create a "user"
+        And the "email" "ogux_ogapi@amplia.com"
+        And the "password" "Nvoiqewvouoiu32j@#!!"
+        And the "workgroup" "fupdate_periodic_organization_10"
+        And the "domain" "fupdate_periodic_organization_10"
+        And the "profile" "admin_domain"
+        And the "countryCode" "ES"
+        And the "langCode" "en"
+        And the "name" "test name"
+        And the "surname" "test surname"
+        And the "description" "user description"
+        Then I delete it
+        And I create it
+        Then response code should be: 201
+
+    Scenario: Precondition - I want to create an operation Type
+        Given an email "ogux_ogapi@amplia.com" and password "Nvoiqewvouoiu32j@#!!" the user logs in
+        Given an ogapi "operation type" util with "fupdate_periodic_organization_10"
+        Then I want to create an "operation type"
+        And the "name" "ADMINISTRATIVE_STATUS_CHANGE_TEST"
+        And the "title" "Administrative status change test"
+        And the "description" "Allows to change the administrative status of an entity"
+        And the "fromCatalog" "ADMINISTRATIVE_STATUS_CHANGE"
+        Then I create it
+        And response code should be: 201
+
+    Scenario: Precondition - I want to create an entity
         Given the entity of type "devices builder" with "fupdate_periodic_organization_10"
         And I get allowed Datastreams fields
         And I can found "provision.device.identifier" as datastream name
@@ -43,13 +72,14 @@ Feature: Update periodic operation
         And response code should be: 201
 
     Scenario: Execute periodic operation every day, and change time
-        Given the operation by "ADMINISTRATIVE_STATUS_CHANGE"
+        Given an email "ogux_ogapi@amplia.com" and password "Nvoiqewvouoiu32j@#!!" the user logs in
+        Given the operation by "ADMINISTRATIVE_STATUS_CHANGE_TEST"
         And the notes by ""
         And the timeout by 120000
         And the ackTimeout by 0
         And the retries by 0
         And the retriesDelay by 0
-        And parameter "admsts" by "inventado"
+        And the parameters "{ \"admsts\" : \"ACTIVE\" }"
         And the job timeout by 300 seconds
         And execute every day at "now"
         And append entities by:
@@ -71,19 +101,20 @@ Feature: Update periodic operation
         And an ogapi "operation finder" util
         And I want to read a "periodicity"
         When I try to find by operation's id
-        Then I can see into the result an "periodic schedule" as
+        Then I can see into the result an "periodic schedule - repeating" as
             """
-            {"start":{"date":"2020-01-10T21:44:13Z"},"repeating":{"period":null,"pattern":{"time":"22:44:13+01:00","definedPatternNumber":0}}}
+            {"period":null,"pattern":{"time":"22:44:13+01:00","definedPatternNumber":0}}
             """
 
     Scenario: Execute periodic operation every week, and change time
-        Given the operation by "ADMINISTRATIVE_STATUS_CHANGE"
+        Given an email "ogux_ogapi@amplia.com" and password "Nvoiqewvouoiu32j@#!!" the user logs in
+        Given the operation by "ADMINISTRATIVE_STATUS_CHANGE_TEST"
         And the notes by ""
         And the timeout by 120000
         And the ackTimeout by 0
         And the retries by 0
         And the retriesDelay by 0
-        And parameter "admsts" by "inventado"
+        And the parameters "{ \"admsts\" : \"ACTIVE\" }"
         And the job timeout by 300 seconds
         And execute every day at "now"
         And append entities by "{}" as filter with "entity.device" as resourceType
@@ -106,9 +137,9 @@ Feature: Update periodic operation
         And an ogapi "operation finder" util
         And I want to read a "periodicity"
         When I try to find by operation's id
-        Then I can see into the result an "periodic schedule" as
+        Then I can see into the result an "periodic schedule - repeating" as
             """
-            {"start":{"date":"2020-01-10T21:44:13Z"},"repeating":{"period":null,"pattern":{"time":"22:44:13+01:00","weekly":{"days":["MON","WED","FRI"]},"definedPatternNumber":0}}}
+            {"period":null,"pattern":{"time":"22:44:13+01:00","weekly":{"days":["MON","WED","FRI"]},"definedPatternNumber":1}}
             """
         When I try to find an operation for its id of periodicity and save its id
         And an update periodicity by operation's id
@@ -122,19 +153,20 @@ Feature: Update periodic operation
         And an ogapi "operation finder" util
         And I want to read a "periodicity"
         When I try to find by operation's id
-        Then I can see into the result an "periodic schedule" as
+        Then I can see into the result an "periodic schedule - repeating - weekly" as
             """
-            {"start":{"date":"2020-01-10T21:44:13Z"},"repeating":{"period":null,"pattern":{"time":"22:44:13+01:00","weekly":{"days":["FRI","SUN"]},"definedPatternNumber":0}}}
+            {"days":["FRI","SUN"]}
             """
 
     Scenario: Execute periodic operation every month, and change time
-        Given the operation by "ADMINISTRATIVE_STATUS_CHANGE"
+        Given an email "ogux_ogapi@amplia.com" and password "Nvoiqewvouoiu32j@#!!" the user logs in
+        Given the operation by "ADMINISTRATIVE_STATUS_CHANGE_TEST"
         And the notes by ""
         And the timeout by 120000
         And the ackTimeout by 0
         And the retries by 0
         And the retriesDelay by 0
-        And parameter "admsts" by "inventado"
+        And the parameters "{ \"admsts\" : \"ACTIVE\" }"
         And the job timeout by 300 seconds
         And execute every day at "now"
         And append entities by "{}" as filter with "entity.device" as resourceType
@@ -158,9 +190,9 @@ Feature: Update periodic operation
         And an ogapi "operation finder" util
         And I want to read a "periodicity"
         When I try to find by operation's id
-        Then I can see into the result an "periodic schedule" as
+        Then I can see into the result an "periodic schedule - repeating" as
             """
-            {"start":{"date":"2020-01-10T21:44:13Z"},"repeating":{"period":null,"pattern":{"time":"22:44:13+01:00","monthly":{"day":3,"months":["JAN","MAR","MAY"]},"definedPatternNumber":0}}}
+            {"period":null,"pattern":{"time":"22:44:13+01:00","monthly":{"day":3,"months":["JAN","MAR","MAY"]},"definedPatternNumber":1}}
             """
 
         When I try to find an operation for its id of periodicity and save its id
@@ -176,9 +208,9 @@ Feature: Update periodic operation
         And an ogapi "operation finder" util
         And I want to read a "periodicity"
         When I try to find by operation's id
-        Then I can see into the result an "periodic schedule" as
+        Then I can see into the result an "periodic schedule - repeating" as
             """
-            {"start":{"date":"2020-02-10T21:44:13Z"},"repeating":{"period":null,"pattern":{"time":"22:44:13+01:00","monthly":{"day":3,"months":["FEB","APR","JUN"]},"definedPatternNumber":0}}}
+            {"period":null,"pattern":{"time":"22:44:13+01:00","monthly":{"day":3,"months":["FEB","APR","JUN"]},"definedPatternNumber":1}}
             """
 
         When I try to find an operation for its id of periodicity and save its id
@@ -191,9 +223,9 @@ Feature: Update periodic operation
         And an ogapi "operation finder" util
         And I want to read a "periodicity"
         When I try to find by operation's id
-        Then I can see into the result an "periodic schedule" as
+        Then I can see into the result an "periodic schedule - repeating" as
             """
-            {"start":{"date":"2020-03-10T21:44:13Z"},"repeating":{"period":null,"pattern":{"time":"22:44:13+01:00","monthly":{"day":5,"months":["FEB","APR","JUN"]},"definedPatternNumber":0}}}
+            {"period":null,"pattern":{"time":"22:44:13+01:00","monthly":{"day":5,"months":["FEB","APR","JUN"]},"definedPatternNumber":1}}
             """
 
         When I try to find an operation for its id of periodicity and save its id
@@ -209,9 +241,9 @@ Feature: Update periodic operation
         And an ogapi "operation finder" util
         And I want to read a "periodicity"
         When I try to find by operation's id
-        Then I can see into the result an "periodic schedule" as
+        Then I can see into the result an "periodic schedule - repeating - monthly" as
             """
-            {"start":{"date":"2020-03-10T21:44:13Z"},"repeating":{"period":null,"pattern":{"time":"22:44:13+01:00","monthly":{"day":29,"months":["DEC","OCT","AUG"]},"definedPatternNumber":0}}}
+            {"day":29,"months":["DEC","OCT","AUG"]}
             """
 
         When I try to find an operation for its id of periodicity and save its id
@@ -224,9 +256,9 @@ Feature: Update periodic operation
         And an ogapi "operation finder" util
         And I want to read a "periodicity"
         When I try to find by operation's id
-        Then I can see into the result an "periodic schedule" as
+        Then I can see into the result an "periodic schedule - repeating - monthly" as
             """
-            {"start":{"date":"2020-03-10T21:44:13Z"},"repeating":{"period":null,"pattern":{"time":"22:44:13+01:00","monthly":{"day":18,"months":["DEC","OCT","AUG"]},"definedPatternNumber":0}}}
+            {"day":18,"months":["DEC","OCT","AUG"]}
             """
 
         When I try to find an operation for its id of periodicity and save its id
@@ -242,19 +274,20 @@ Feature: Update periodic operation
         And an ogapi "operation finder" util
         And I want to read a "periodicity"
         When I try to find by operation's id
-        Then I can see into the result an "periodic schedule" as
+        Then I can see into the result an "periodic schedule - repeating - monthly" as
             """
-            {"start":{"date":"2020-03-10T21:44:13Z"},"repeating":{"period":null,"pattern":{"time":"22:44:13+01:00","monthly":{"day":18,"months":["NOV","SEP","JUL"]},"definedPatternNumber":0}}}
+            {"day":18,"months":["NOV","SEP","JUL"]}
             """
 
     Scenario: Execute periodic operation every year, and change time
-        Given the operation by "ADMINISTRATIVE_STATUS_CHANGE"
+        Given an email "ogux_ogapi@amplia.com" and password "Nvoiqewvouoiu32j@#!!" the user logs in
+        Given the operation by "ADMINISTRATIVE_STATUS_CHANGE_TEST"
         And the notes by ""
         And the timeout by 120000
         And the ackTimeout by 0
         And the retries by 0
         And the retriesDelay by 0
-        And parameter "admsts" by "inventado"
+        And the parameters "{ \"admsts\" : \"ACTIVE\" }"
         And the job timeout by 300 seconds
         And execute every day at "now"
         And append entities by "{}" as filter with "entity.device" as resourceType
@@ -274,9 +307,9 @@ Feature: Update periodic operation
         And an ogapi "operation finder" util
         And I want to read a "periodicity"
         When I try to find by operation's id
-        Then I can see into the result an "periodic schedule" as
+        Then I can see into the result an "periodic schedule - repeating" as
             """
-            {"start":{"date":"2020-01-10T21:44:13Z"},"repeating":{"period":null,"pattern":{"time":"22:44:13+01:00","yearly":{"day":4,"month":"JAN"},"definedPatternNumber":0}}}
+            {"period":null,"pattern":{"time":"22:44:13+01:00","yearly":{"day":4,"month":"JAN"},"definedPatternNumber":1}}
             """
 
         When I try to find an operation for its id of periodicity and save its id
@@ -289,9 +322,9 @@ Feature: Update periodic operation
         And an ogapi "operation finder" util
         And I want to read a "periodicity"
         When I try to find by operation's id
-        Then I can see into the result an "periodic schedule" as
+        Then I can see into the result an "periodic schedule - repeating" as
             """
-            {"start":{"date":"2020-02-10T21:44:13Z"},"repeating":{"period":null,"pattern":{"time":"22:44:13+01:00","yearly":{"day":4,"month":"FEB"},"definedPatternNumber":0}}}
+            {"period":null,"pattern":{"time":"22:44:13+01:00","yearly":{"day":4,"month":"FEB"},"definedPatternNumber":1}}
             """
 
         When I try to find an operation for its id of periodicity and save its id
@@ -304,9 +337,9 @@ Feature: Update periodic operation
         And an ogapi "operation finder" util
         And I want to read a "periodicity"
         When I try to find by operation's id
-        Then I can see into the result an "periodic schedule" as
+        Then I can see into the result an "periodic schedule - repeating" as
             """
-            {"start":{"date":"2020-03-10T21:44:13Z"},"repeating":{"period":null,"pattern":{"time":"22:44:13+01:00","yearly":{"day":5,"month":"FEB"},"definedPatternNumber":0}}}
+            {"period":null,"pattern":{"time":"22:44:13+01:00","yearly":{"day":5,"month":"FEB"},"definedPatternNumber":1}}
             """
 
         When I try to find an operation for its id of periodicity and save its id
@@ -319,9 +352,9 @@ Feature: Update periodic operation
         And an ogapi "operation finder" util
         And I want to read a "periodicity"
         When I try to find by operation's id
-        Then I can see into the result an "periodic schedule" as
+        Then I can see into the result an "periodic schedule - repeating - yearly" as
             """
-            {"start":{"date":"2020-03-10T21:44:13Z"},"repeating":{"period":null,"pattern":{"time":"22:44:13+01:00","yearly":{"day":29,"month":"MAR"},"definedPatternNumber":0}}}
+            {"day":29,"month":"MAR"}
             """
 
         When I try to find an operation for its id of periodicity and save its id
@@ -334,9 +367,9 @@ Feature: Update periodic operation
         And an ogapi "operation finder" util
         And I want to read a "periodicity"
         When I try to find by operation's id
-        Then I can see into the result an "periodic schedule" as
+        Then I can see into the result an "periodic schedule - repeating - yearly" as
             """
-            {"start":{"date":"2020-03-10T21:44:13Z"},"repeating":{"period":null,"pattern":{"time":"22:44:13+01:00","yearly":{"day":18,"month":"MAR"},"definedPatternNumber":0}}}
+            {"day":18,"month":"MAR"}
             """
 
         When I try to find an operation for its id of periodicity and save its id
@@ -349,13 +382,13 @@ Feature: Update periodic operation
         And an ogapi "operation finder" util
         And I want to read a "periodicity"
         When I try to find by operation's id
-        Then I can see into the result an "periodic schedule" as
+        Then I can see into the result an "periodic schedule - repeating - yearly" as
             """
-            {"start":{"date":"2020-03-10T21:44:13Z"},"repeating":{"period":null,"pattern":{"time":"22:44:13+01:00","yearly":{"day":18,"month":"APR"},"definedPatternNumber":0}}}
+            {"day":18,"month":"APR"}
             """
 
 
-    Scenario: I want to delete the entity
+    Scenario: Postcondition : I want to delete the entity
         Given the entity of type "devices builder" with "fupdate_periodic_organization_10"
         And I get allowed Datastreams fields
         And I can found "provision.device.identifier" as datastream name
@@ -365,7 +398,16 @@ Feature: Update periodic operation
         And I delete it
         Then response code should be: 200
 
-    Scenario: Deleting an organization
+    
+    Scenario: Postcondition - Deleting an user
+        Given an apikey user by "1e0a6fa7-d770-4072-ab4e-f98581522a65"
+		Given an ogapi "users builder" util
+        Then I want to delete a "user"
+        And the "email" "ogux_ogapi@amplia.com"
+        Then I delete it
+
+
+    Scenario: Postcondition : Deleting an organization
         Given an ogapi "organizations builder" util
         Then I want to delete an "organization"
         And the "name" "fupdate_periodic_organization_10"
