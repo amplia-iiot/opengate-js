@@ -300,13 +300,14 @@ export default class BaseOperationBuilder {
     /**
      * Set a timeout of job.
      * @example
-     *  ogapi.operations.builderFactory.newXXXBuilder().withJobTimeout(3)
-     * @param {!number} milliseconds     - if null then parameter will be removed into builder
-     * @throws {Error} throw error when minutes is not typeof number    
+     *  ogapi.operations.builderFactory.newXXXBuilder().withJobTimeout(180)
+     * @param {!number} milliseconds - if null then parameter will be removed into builder
+     * @param {string} format - Can be 'milliseconds' || 'ms' ,'seconds' || 's', 'mintutes' || 'm', 'hours' || 'h', 'days' || 'd', 'weeks' || 'w', 'months' || 'M'
+     * @throws {Error} throw error when milliseconds is not typeof number    
      * @return {BaseOperationBuilder}
      */
     withJobTimeout(milliseconds, format = "milliseconds") {
-        if (minutes === null) {
+        if (milliseconds === null) {
             delete this._build.schedule.stop;
             return this;
         }
@@ -479,9 +480,9 @@ export default class BaseOperationBuilder {
                         errors.push("You can not execute an operation with a job timeout greater than the repetition period.");
                     }
                 } else {
-                    jobTimeout = moment.duration(maxJobTimeout, 'milliseconds').asMinutes() - 1;
-                    console.info("Not specified the job timeout. By default, timeout will be " + jobTimeout + " minutes");
-                    this.withJobTimeout(jobTimeout);
+                    jobTimeout = moment.duration(maxJobTimeout, 'milliseconds').asSeconds() - 1;
+                    console.info("Not specified the job timeout. By default, timeout will be " + jobTimeout + " seconds");
+                    this.withJobTimeout(jobTimeout, 'seconds');
                 }
 
             }

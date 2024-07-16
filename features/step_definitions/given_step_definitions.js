@@ -183,6 +183,13 @@ Given(/^the retriesDelay by (\d+)$/, function (milliseconds, callback) {
     callback();
 });
 
+Given('the parameters {string}', function (parameters, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    parameters = JSON.parse(parameters);
+    this.util.withParameters(parameters);
+    callback();
+});
+
 Given(/^the retries by (\d+)$/, function (retries, callback) {
     // Write code here that turns the phrase above into concrete actions
     retries = eval(retries);
@@ -197,9 +204,9 @@ Given(/^the ackTimeout by (\d+)$/, function (milliseconds, callback) {
     callback();
 });
 
-Given(/^the operationRetries by (\d+)$/, function (operationRetries, callback) {
+Given('the operationRetries by {string}', function (operationRetries, callback) {
     // Write code here that operationRetries
-    this.util.withOperationRetries(operationRetries);
+    this.util.withOperationRetries(JSON.parse(operationRetries));
     callback();
 });
 
