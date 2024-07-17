@@ -183,6 +183,7 @@ var OperationActions = (function () {
                     }
                 }
             };
+            this._key = "job";
             return this._readAndUpdate(config, true);
         }
 
@@ -212,6 +213,7 @@ var OperationActions = (function () {
                     }
                 }
             };
+            this._key = "job";
             return this._readAndUpdate(config);
         }
 

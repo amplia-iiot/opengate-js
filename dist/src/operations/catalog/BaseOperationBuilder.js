@@ -355,23 +355,26 @@ var BaseOperationBuilder = (function () {
         /**
          * Set a timeout of job.
          * @example
-         *  ogapi.operations.builderFactory.newXXXBuilder().withJobTimeout(3)
-         * @param {number} minutes - if null then parameter will be removed into builder
-         * @throws {Error} throw error when minutes is not typeof number    
+         *  ogapi.operations.builderFactory.newXXXBuilder().withJobTimeout(180)
+         * @param {!number} milliseconds - if null then parameter will be removed into builder
+         * @param {string} format - Can be 'milliseconds' || 'ms' ,'seconds' || 's', 'mintutes' || 'm', 'hours' || 'h', 'days' || 'd', 'weeks' || 'w', 'months' || 'M'
+         * @throws {Error} throw error when milliseconds is not typeof number    
          * @return {BaseOperationBuilder}
          */
     }, {
         key: 'withJobTimeout',
-        value: function withJobTimeout(minutes) {
-            if (minutes === null) {
+        value: function withJobTimeout(milliseconds) {
+            var format = arguments.length <= 1 || arguments[1] === undefined ? "milliseconds" : arguments[1];
+
+            if (milliseconds === null) {
                 delete this._build.schedule.stop;
                 return this;
             }
-            if (typeof minutes !== "number") {
-                throw new Error("Parameter minutes must be a number");
+            if (typeof milliseconds !== "number") {
+                throw new Error("Parameter milliseconds must be a number");
             }
             this._build.schedule.stop = {
-                delayed: _moment2['default'].duration(minutes, 'minutes').asMilliseconds()
+                delayed: _moment2['default'].duration(milliseconds, format).asMilliseconds()
             };
             return this;
         }
@@ -556,9 +559,9 @@ var BaseOperationBuilder = (function () {
                             errors.push("You can not execute an operation with a job timeout greater than the repetition period.");
                         }
                     } else {
-                        jobTimeout = _moment2['default'].duration(maxJobTimeout, 'milliseconds').asMinutes() - 1;
-                        console.info("Not specified the job timeout. By default, timeout will be " + jobTimeout + " minutes");
-                        this.withJobTimeout(jobTimeout);
+                        jobTimeout = _moment2['default'].duration(maxJobTimeout, 'milliseconds').asSeconds() - 1;
+                        console.info("Not specified the job timeout. By default, timeout will be " + jobTimeout + " seconds");
+                        this.withJobTimeout(jobTimeout, 'seconds');
                     }
                 }
             }

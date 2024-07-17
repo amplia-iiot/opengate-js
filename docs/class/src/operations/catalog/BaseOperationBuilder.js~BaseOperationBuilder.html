@@ -649,7 +649,7 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder.html#instance-method-withJobTimeout">withJobTimeout</a></span></span><span data-ice="signature">(minutes: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder.html">BaseOperationBuilder</a></span></span>
+          <span data-ice="name"><span><a href="class/src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder.html#instance-method-withJobTimeout">withJobTimeout</a></span></span><span data-ice="signature">(milliseconds: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, format: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder.html">BaseOperationBuilder</a></span></span>
         </p>
       </div>
       <div>
@@ -1054,7 +1054,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber429">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber430">source</a></span></span>
     </span>
   </h3>
 
@@ -1558,7 +1558,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber331">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber332">source</a></span></span>
     </span>
   </h3>
 
@@ -1744,11 +1744,11 @@
     
     
     
-    <span data-ice="name">withJobTimeout</span><span data-ice="signature">(minutes: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder.html">BaseOperationBuilder</a></span></span>
+    <span data-ice="name">withJobTimeout</span><span data-ice="signature">(milliseconds: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, format: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder.html">BaseOperationBuilder</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber308">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber309">source</a></span></span>
     </span>
   </h3>
 
@@ -1769,10 +1769,17 @@
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">minutes</td>
+      <td data-ice="name" data-depth="0">milliseconds</td>
       <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
-      <td data-ice="appendix"></td>
+      <td data-ice="appendix"><ul><li>nullable: false</li></ul></td>
       <td data-ice="description"><p>if null then parameter will be removed into builder</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">format</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Can be &apos;milliseconds&apos; || &apos;ms&apos; ,&apos;seconds&apos; || &apos;s&apos;, &apos;mintutes&apos; || &apos;m&apos;, &apos;hours&apos; || &apos;h&apos;, &apos;days&apos; || &apos;d&apos;, &apos;weeks&apos; || &apos;w&apos;, &apos;months&apos; || &apos;M&apos;</p>
 </td>
     </tr>
 </tbody>
@@ -1805,7 +1812,7 @@
       
       <tr class="throw" data-ice="throw">
         <td><p data-ice="throwName"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a></span></p></td>
-        <td data-ice="throwDesc"><p>throw error when minutes is not typeof number</p>
+        <td data-ice="throwDesc"><p>throw error when milliseconds is not typeof number</p>
 </td>
       </tr>
 </tbody>
@@ -1819,7 +1826,7 @@
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.operations.builderFactory.newXXXBuilder().withJobTimeout(3)</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode"> ogapi.operations.builderFactory.newXXXBuilder().withJobTimeout(180)</code></pre>
     </div>
 </div>
 
@@ -1932,7 +1939,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber372">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber373">source</a></span></span>
     </span>
   </h3>
 
@@ -2023,7 +2030,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber408">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber409">source</a></span></span>
     </span>
   </h3>
 
@@ -2100,7 +2107,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber398">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber399">source</a></span></span>
     </span>
   </h3>
 
@@ -2191,7 +2198,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber385">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber386">source</a></span></span>
     </span>
   </h3>
 
@@ -2282,7 +2289,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber359">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber360">source</a></span></span>
     </span>
   </h3>
 
@@ -2580,7 +2587,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber345">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber346">source</a></span></span>
     </span>
   </h3>
 

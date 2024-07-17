@@ -600,21 +600,22 @@ export default class BaseOperationBuilder {
     /**
      * Set a timeout of job.
      * @example
-     *  ogapi.operations.builderFactory.newXXXBuilder().withJobTimeout(3)
-     * @param {number} minutes - if null then parameter will be removed into builder
-     * @throws {Error} throw error when minutes is not typeof number    
+     *  ogapi.operations.builderFactory.newXXXBuilder().withJobTimeout(180)
+     * @param {!number} milliseconds - if null then parameter will be removed into builder
+     * @param {string} format - Can be &apos;milliseconds&apos; || &apos;ms&apos; ,&apos;seconds&apos; || &apos;s&apos;, &apos;mintutes&apos; || &apos;m&apos;, &apos;hours&apos; || &apos;h&apos;, &apos;days&apos; || &apos;d&apos;, &apos;weeks&apos; || &apos;w&apos;, &apos;months&apos; || &apos;M&apos;
+     * @throws {Error} throw error when milliseconds is not typeof number    
      * @return {BaseOperationBuilder}
      */
-    withJobTimeout(minutes) {
-        if (minutes === null) {
+    withJobTimeout(milliseconds, format = &quot;milliseconds&quot;) {
+        if (milliseconds === null) {
             delete this._build.schedule.stop;
             return this;
         }
-        if (typeof minutes !== &quot;number&quot;) {
-            throw new Error(&quot;Parameter minutes must be a number&quot;);
+        if (typeof milliseconds !== &quot;number&quot;) {
+            throw new Error(&quot;Parameter milliseconds must be a number&quot;);
         }
         this._build.schedule.stop = {
-            delayed: moment.duration(minutes, &apos;minutes&apos;).asMilliseconds()
+            delayed: moment.duration(milliseconds, format).asMilliseconds()
         };
         return this;
     }
@@ -779,9 +780,9 @@ export default class BaseOperationBuilder {
                         errors.push(&quot;You can not execute an operation with a job timeout greater than the repetition period.&quot;);
                     }
                 } else {
-                    jobTimeout = moment.duration(maxJobTimeout, &apos;milliseconds&apos;).asMinutes() - 1;
-                    console.info(&quot;Not specified the job timeout. By default, timeout will be &quot; + jobTimeout + &quot; minutes&quot;);
-                    this.withJobTimeout(jobTimeout);
+                    jobTimeout = moment.duration(maxJobTimeout, &apos;milliseconds&apos;).asSeconds() - 1;
+                    console.info(&quot;Not specified the job timeout. By default, timeout will be &quot; + jobTimeout + &quot; seconds&quot;);
+                    this.withJobTimeout(jobTimeout, &apos;seconds&apos;);
                 }
 
             }
