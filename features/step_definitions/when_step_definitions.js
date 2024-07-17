@@ -6,9 +6,7 @@ var {
     Given
 } = require('cucumber');
 
-When(/^I want "([^"]*)"( (\d*) minutes| for this url "([^"]*)" for)? (a|of a) operation$/, function (action, nothing, minutes, data, exclude) {
-    var _this = this;
-
+function executeActionOperation (action,  minutes, data, _this){
     function digestResponseData(response) {
         //console.log('digestResponseData', response)
         //Guardamos el identificador anterior por si hiciera falta para el siguiente paso
@@ -34,7 +32,7 @@ When(/^I want "([^"]*)"( (\d*) minutes| for this url "([^"]*)" for)? (a|of a) op
         if (location && !_this.responseData.location) {
             _this.responseData.location = location;
         }
-        this.error = undefined;
+        _this.error = undefined;
     }
 
     function digestErrorData(response) {
@@ -91,13 +89,21 @@ When(/^I want "([^"]*)"( (\d*) minutes| for this url "([^"]*)" for)? (a|of a) op
             default:
                 throw new Error("Not exists action " + action);
         }
-        var util = this.util[findMethod];
-        return util.call(this.util, (data || (minutes * 1))).then(digestResponseData).catch(digestErrorData);
+        var util = _this.util[findMethod];
+        return util.call(_this.util, (data || (minutes * 1))).then(digestResponseData).catch(digestErrorData);
     } catch (err) {
         console.error('ERROR: ', err)
-        this.error = err;
+        _this.error = err;
         throw new Error(JSON.stringify(err));
     }
+}
+
+When(/^I want "([^"]*)"( (\d*) minutes| for this url "([^"]*)" for) operation$/, function (action, minutes) {
+    return executeActionOperation(action, minutes, undefined, this)
+});
+
+When(/^I want "([^"]*)" (a|of a) operation$/, function (action, nothing) {
+    return executeActionOperation(action, undefined, undefined, this)
 });
 
 When(/^I try to find an operation for its id of periodicity and save its id$/, function () {
@@ -115,7 +121,7 @@ When(/^I try to find an operation for its id of periodicity and save its id$/, f
     }
 
     function digestErrorData(error) {
-        console.error('digestErrorData', err)
+        console.error('digestErrorData', error)
         _this.error = error;
         _this.responseData = error;
 
@@ -194,8 +200,8 @@ When(/^I build it with filter by operation's id$/, function (callback) {
 
     try {
         var data;
-        if (this.responseData.statusCode)
-            data = this.responseData.statusCode;
+        if (this.responseData.data)
+            data = this.responseData.data;
         else if (this.responseData[1])
             data = this.responseData[1];
         var jobId = data.id;
