@@ -151,6 +151,7 @@ export default class OperationActions {
                 }
             }
         };
+        this._key = "job";
         return this._readAndUpdate(config, true);
     }
 
@@ -178,6 +179,7 @@ export default class OperationActions {
                 }
             }
         };
+        this._key = "job";
         return this._readAndUpdate(config);
     }
 

@@ -4,7 +4,6 @@
 @users
 @update_user
 @urlParameters
-@wip
 
 Feature: Delete and Create an user
   As a user of JsApi

@@ -89,8 +89,11 @@ module.exports = {
             "devices search": function(ogapi) {
                 return ogapi.devicesSearchBuilder();
             },
-            "devices builder": function(ogapi, param1) {
-                return ogapi.entityBuilder.devicesBuilder(param1);
+            "operation type": function(ogapi, param){
+                return ogapi.operationTypeBuilder(param);
+            },
+            "devices builder": function(ogapi, param) {
+                return ogapi.entityBuilder.devicesBuilder(param);
             },
             "subscribers search": function(ogapi) {
                 return ogapi.subscribersSearchBuilder();
@@ -143,11 +146,11 @@ module.exports = {
             "softwares search": function(ogapi) {
                 return ogapi.softwaresSearchBuilder();
             },
-            "subscriptions builder": function(ogapi, param1) {
-                return ogapi.entityBuilder.subscriptionsBuilder(param1);
+            "subscriptions builder": function(ogapi, param) {
+                return ogapi.entityBuilder.subscriptionsBuilder(param);
             },
-            "subscribers builder": function(ogapi, param1) {
-                return ogapi.entityBuilder.subscribersBuilder(param1);
+            "subscribers builder": function(ogapi, param) {
+                return ogapi.entityBuilder.subscribersBuilder(param);
             },
             "user finder": function(ogapi) {
                 return ogapi.newUserFinder();
@@ -266,6 +269,9 @@ module.exports = {
             "executions search": function() {
                 return ogapi.executionsSearchBuilder();
             },
+            "executions history search": function() {
+                return ogapi.executionsHistorySearchBuilder();
+            },
             "periodic operations search": function() {
                 return ogapi.tasksSearchBuilder();
             },
@@ -296,20 +302,20 @@ module.exports = {
             "entities search": function() {
                 return ogapi.entitiesSearchBuilder();
             },
-            "csv bulk builder": function(ogapi, param1, param2) {
-                return ogapi.entityBuilder.newCsvBulkBuilder(param1, param2);
+            "csv bulk builder": function(ogapi, param, param2) {
+                return ogapi.entityBuilder.newCsvBulkBuilder(param, param2);
             },
-            "bulk execution builder": function(ogapi, param1, param2){
-                return ogapi.bulkExecutionBuilder(param1, param2);
+            "bulk execution builder": function(ogapi, param, param2){
+                return ogapi.bulkExecutionBuilder(param, param2);
             },
-            "json bulk builder": function(ogapi, param1, param2) {
-                return ogapi.entityBuilder.newJsonBulkBuilder(param1, param2);
+            "json bulk builder": function(ogapi, param, param2) {
+                return ogapi.entityBuilder.newJsonBulkBuilder(param, param2);
             },
-            "json flattened bulk builder": function(ogapi, param1, param2) {
-                return ogapi.entityBuilder.newJsonFlattenedBulkBuilder(param1, param2);
+            "json flattened bulk builder": function(ogapi, param, param2) {
+                return ogapi.entityBuilder.newJsonFlattenedBulkBuilder(param, param2);
             },
-            "csv bulk async builder": function(ogapi, param1, param2) {
-                return ogapi.entityBuilder.newCsvBulkBuilder(param1, param2, null, null, true);
+            "csv bulk async builder": function(ogapi, param, param2) {
+                return ogapi.entityBuilder.newCsvBulkBuilder(param, param2, null, null, true);
             },
             "bulks search": function(ogapi) {
                 return ogapi.bulkSearchBuilder();
@@ -317,14 +323,14 @@ module.exports = {
             "bulk executions search": function(ogapi) {
                 return ogapi.bulkExecutionSearchBuilder();
             },
-            "asset builder": function(ogapi, param1) {
-                return ogapi.entityBuilder.assetsBuilder(param1);
+            "asset builder": function(ogapi, param) {
+                return ogapi.entityBuilder.assetsBuilder(param);
             },
             "asset search": function(ogapi) {
                 return ogapi.assetsSearchBuilder();
             },
-            "tickets builder": function(ogapi, param1) {
-                return ogapi.entityBuilder.ticketsBuilder(param1);
+            "tickets builder": function(ogapi, param) {
+                return ogapi.entityBuilder.ticketsBuilder(param);
             },
             "ticket search": function(ogapi) {
                 return ogapi.ticketsSearchBuilder();

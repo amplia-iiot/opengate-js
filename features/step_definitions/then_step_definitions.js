@@ -75,7 +75,7 @@ Then(/^throws an error\. the error message explain that a parameter with name "(
 
 Then(/^response error code sould be: (\d+)$/, function (statusCode, callback) {
     // Write code here that turns the phrase above into concrete actions     
-    var response = this.responseData;
+    var response = this.responseData || this.error;
     if (typeof response.response !== "undefined") {
         response = response.response;
     }
@@ -123,15 +123,15 @@ Then(/^response must have attached an entity list with "([^"]*)" type defined by
 
 
 
-Then(/^response specific error code sould be: (\d+)$/, function (statusCode, callback) {
+Then('response specific error code sould be: {string}', function (statusCode, callback) {
     // Write code here that turns the phrase above into concrete actions     
-    var response = this.responseData;
+    var response = this.responseData || this.error;
     if (typeof response.response !== "undefined") {
         response = response.response;
     }
 
     for (var i = 0; i < response.data.errors.length; i++) {
-        this.expect(response.data.errors[i].code).to.equal(parseInt(statusCode));
+        this.expect(response.data.errors[i].code).to.equal(statusCode);
     }
     callback();
 });
@@ -145,24 +145,23 @@ Then(/^response contains a parameter "([^"]*)" as name and "([^"]*)" as value$/,
     if (this.responseData.data)
         data = this.responseData.data;
     var parameters = data.request.parameters;
-    var parameterNames = parameters.map(function (item) {
-        return item.name;
-    });
-    var isDuplicate = parameterNames.some(function (item, idx) {
-        return parameterNames.indexOf(item) != idx;
-    });
-    this.expect(isDuplicate).to.be.false;
+    
+    this.expect(parameters[paramName]).to.equal(paramValue);
 
+    callback();
+});
 
-    var parameter = parameters.find(function (param) {
-        return param.name == this;
-    }, paramName);
-    this.expect(parameter).to.be.an('object');
-
-
-    for (var key in parameter.value) {
-        this.expect(parameter.value[key] == paramValue).to.be.true;
+Then('response contains a parameter {string} as name and {string} as json value', function (paramName, paramValue, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    if (this.responseData.response) {
+        this.expect(this.responseData.response.statusCode).to.equal(201);
     }
+    var data;
+    if (this.responseData.data)
+        data = this.responseData.data;
+    var parameters = data.request.parameters;
+    this.expect(JSON.stringify(parameters[paramName])).to.equal(paramValue);
+
     callback();
 });
 
@@ -285,7 +284,7 @@ Then(/^I can see into the post data a every month pattern at day (\d+) and month
 });
 
 Then(/^I can see into the post data a job timeout by (\d+) minutes$/, function (minutes, callback) {
-    var milliseconds = eval(minutes) * 60 * 1000;
+    var milliseconds = (eval(minutes) * 60 * 1000) - 1000;
     var stop = this.build._postObj.task.job.request.schedule.stop;
     this.expect(stop).to.be.an('object');
     var jobTimeout = stop.delayed;
@@ -313,23 +312,33 @@ Then(/^I can see into the post data a start date as "([^"]*)"$/, function (when,
 Then(/^throws an error equal to "([^"]*)"$/, function (errorMessage, callback) {
     this.expect(this.error).to.exist;
     var errorText;
-    if (this.error.constructor == Array) {
-        this.expect(this.error).to.have.lengthOf(1);
-        errorText = this.error[0].description || this.error[0].message || this.error[0];
-    } else {
-        if (this.error.message) {
-            errorText = this.error.message;
-        } else if (this.error.data) {
-            errorText = this.error.data;
-            if (errorText.errors) {
-                errorText = errorText.errors[0].message;
+    var _errorText;
+    switch (this.error.constructor) {
+        case Array:
+            this.expect(this.error).to.have.lengthOf(1);
+            errorText = this.error[0].description || this.error[0].message || this.error[0];    
+            break;
+        case Error: 
+            errorText = this.error.message
+            break;
+        case String: 
+            errorText = JSON.parse(this.error)
+            //NO BREAK!!!!!
+        case Object:
+            _errorText = errorText || this.error
+            if (_errorText.message) {
+                errorText = _errorText.message;
+            } else if (_errorText.data) {
+                errorText = _errorText.data;
+                if (errorText.errors) {
+                    errorText = errorText.errors[0].message;
+                }
+            } else {
+                errorText = _errorText;
             }
-        } else {
-            errorText = this.error;
-        }
-
+            break;
     }
-
+    
     this.expect(errorText).to.equal(errorMessage);
 
     callback();

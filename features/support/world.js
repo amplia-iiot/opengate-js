@@ -17,8 +17,8 @@ function World() {
     this.test_url_north = process.env.API_NORTH_INTERNAL || 'https://odmux01.amplia.int';
     this.test_url_south = process.env.API_SOUTH_INTERNAL || 'https://odmux01.amplia.int/south';
     //this.apikey = process.env.API_KEY || 'YOUR_API_KEY';
-    this.YOUR_EMAIL = process.env.YOUR_EMAIL || 'root@amplia.es';
-    this.YOUR_PASSWORD = process.env.YOUR_PASSWORD || 'defaultRoot12.';
+    this.YOUR_EMAIL = process.env.YOUR_EMAIL || 'monica.fernandez@amplia.es';
+    this.YOUR_PASSWORD = process.env.YOUR_PASSWORD || 'ampliaM2M@Opengate';
     this.guerrillaApi = 'https://api.guerrillamail.com/ajax.php'
     chai.use(chai_as_promised);
     this.expect = chai.expect;

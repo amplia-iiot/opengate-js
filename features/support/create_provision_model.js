@@ -18,6 +18,12 @@ module.exports = {
     },
     setters: function (setter) {
         return {
+            'operation type': {
+                'name': "withName",
+                'title': "withTitle",
+                'description': "withDescription",
+                'fromCatalog': "fromCatalog"
+            },
             'user': {
                 'email': 'withEmail',
                 'password': 'withPassword',

@@ -169,9 +169,9 @@ Given(/^append entities by:$/, function (table, callback) {
     callback();
 });
 
-Given(/^the job timeout by (\d+) minutes$/, function (minutes, callback) {
-    minutes = eval(minutes);
-    this.util.withJobTimeout(minutes);
+Given(/^the job timeout by (\d+) seconds$/, function (seconds, callback) {
+    seconds = eval(seconds);
+    this.util.withJobTimeout(seconds, 'seconds');
     callback();
 });
 
@@ -180,6 +180,13 @@ Given(/^the retriesDelay by (\d+)$/, function (milliseconds, callback) {
     // Write code here that turns the phrase above into concrete actions
     milliseconds = eval(milliseconds);
     this.util.withRetriesDelay(milliseconds);
+    callback();
+});
+
+Given('the parameters {string}', function (parameters, callback) {
+    // Write code here that turns the phrase above into concrete actions
+    parameters = JSON.parse(parameters);
+    this.util.withParameters(parameters);
     callback();
 });
 
@@ -197,9 +204,9 @@ Given(/^the ackTimeout by (\d+)$/, function (milliseconds, callback) {
     callback();
 });
 
-Given(/^the operationRetries by (\d+)$/, function (operationRetries, callback) {
+Given('the operationRetries by {string}', function (operationRetries, callback) {
     // Write code here that operationRetries
-    this.util.withOperationRetries(operationRetries);
+    this.util.withOperationRetries(JSON.parse(operationRetries));
     callback();
 });
 

@@ -2,7 +2,6 @@
 @provision
 @users
 @update_password
-@wip
 
 Feature: Update password with logged in user or because it is not secure
     As a user of JsApi
