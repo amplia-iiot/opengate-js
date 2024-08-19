@@ -507,12 +507,12 @@ var StaticSearch = (function (_Search) {
                             'optional': ['IMEI', 'HARDWARE', 'SOFTWARE']
                         },
                         'SUBSCRIPTION': {
-                            'mandatory': ['generatedEntityKey'],
-                            'optional': ['administrativeState', 'subscriptionName', 'description', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'LOCATION']
+                            'mandatory': [],
+                            'optional': ['generatedEntityKey', 'administrativeState', 'subscriptionName', 'description', 'IMSI', 'ADDRESS', 'HOME_OPERATOR', 'REGISTER_OPERATOR', 'LOCATION']
                         },
                         'SUBSCRIBER': {
-                            'mandatory': ['generatedEntityKey'],
-                            'optional': ['administrativeState', 'subscriberName', 'description', 'ICC']
+                            'mandatory': [],
+                            'optional': ['generatedEntityKey', 'administrativeState', 'subscriberName', 'description', 'ICC']
                         }
                     },
                     'PLC': {
