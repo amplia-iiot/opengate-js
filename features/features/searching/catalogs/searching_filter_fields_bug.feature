@@ -103,15 +103,6 @@ Feature: Searching for all filter fields
     And I execute it
     Then response code should be: 204
 
-  @bug @ODMQA-1146
-  Scenario: Execute all fields on hardwares searching
-    Given an apikey user by "require-real-apikey"
-    And an ogapi "hardwares search" util
-    When I try to search with all allow fields
-    When I build it
-    And I execute it
-    Then response code should be: 204
-
   @searching_users
   Scenario: Execute all fields on users searching
     Given an apikey user by "require-real-apikey"

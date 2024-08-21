@@ -238,10 +238,6 @@ var _searchingBuilderCertificatesSearchBuilder = require('./searching/builder/Ce
 
 var _searchingBuilderCertificatesSearchBuilder2 = _interopRequireDefault(_searchingBuilderCertificatesSearchBuilder);
 
-var _searchingBuilderHardwaresSearchBuilder = require('./searching/builder/HardwaresSearchBuilder');
-
-var _searchingBuilderHardwaresSearchBuilder2 = _interopRequireDefault(_searchingBuilderHardwaresSearchBuilder);
-
 var _searchingBuilderSoftwaresSearchBuilder = require('./searching/builder/SoftwaresSearchBuilder');
 
 var _searchingBuilderSoftwaresSearchBuilder2 = _interopRequireDefault(_searchingBuilderSoftwaresSearchBuilder);
@@ -1423,16 +1419,6 @@ var InternalOpenGateAPI = (function () {
         key: 'certificatesBuilder',
         value: function certificatesBuilder() {
             return new _securityCertificates2['default'](this);
-        }
-
-        /**
-         * This return a HardwaresSearchBuilder to build a specific HardwaresSearchBuilder
-         * @return {HardwaresSearchBuilder}
-         */
-    }, {
-        key: 'hardwaresSearchBuilder',
-        value: function hardwaresSearchBuilder() {
-            return new _searchingBuilderHardwaresSearchBuilder2['default'](this);
         }
 
         /**
