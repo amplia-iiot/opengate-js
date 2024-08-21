@@ -12,9 +12,39 @@ var GENERATED_FIELDS = {
   "ENTITY_OPERATION": {
     "ENTITY_OPERATION": ["applicationEmail", "channelKey", "channelName", "domainKey", "entityId", "resourceType", "entityUk", "jobActivatedDate", "jobEntityTotal", "jobErrorCode", "jobErrorDescription", "jobFinishedCancelledByEngine", "jobFinishedCancelledByExternal", "jobFinishedCancelledByExternalTimeout", "jobFinishedCancelledByTimeout", "jobFinishedCancelledByUser", "jobFinishedCancelledTotal", "jobFinishedDate", "jobFinishedError", "jobFinishedOotError", "jobFinishedOotSuccessful", "jobFinishedOotTotal", "jobFinishedSuccessful", "jobFinishedTotal", "jobId", "jobInProgressPendingExecution", "jobInProgressScheduled", "jobInProgressStarted", "jobInProgressTotal", "jobInProgressWaitingForConnection", "jobJson", "jobStartedDate", "jobState", "jobStatus", "jobTotal", "jobUser", "jobUserNotes", "notDeletable", "operationAttemptCurrent", "operationAttemptMax", "operationDate", "operationDetails", "operationEndDate", "operationId", "operationInitDate", "operationJson", "operationName", "operationNotify", "operationResult", "operationScheduleTimestamp", "operationStatus", "operationStatusKey", "operationStepDescription", "operationStepName", "operationStepResponse", "operationStepResult", "operationStepTimestamp", "operationTimeoutTimestamp", "operationUserNotes", "organizationKey", "organizationName", "profileKey", "provAdministrativeState", "provAdministrativeStateKey", "provDefaultFeed", "serviceGroupName", "tag", "taskEmpty_null", "taskId", "taskKey", "taskName", "taskState", "taskStatus", "workgroupKey", "workgroupName"]
   },
-  "MANUFACTURER": {
-    "MANUFACTURER": ["manufacturerAddress", "manufacturerDescription", "manufacturerEmail", "manufacturerFax", "manufacturerIdentifier", "manufacturerMediaFileName", "manufacturerMediaHeight", "manufacturerMediaIdentifier", "manufacturerMediaName", "manufacturerMediaSize", "manufacturerMediaTypeName", "manufacturerMediaWidth", "manufacturerName", "manufacturerNotes", "manufacturerTelephone", "manufacturerUrl", "modelDescription", "modelIdentifier", "modelMediaFileName", "modelMediaHeight", "modelMediaIdentifier", "modelMediaName", "modelMediaSize", "modelMediaTypeName", "modelMediaWidth", "modelName", "modelNotes", "modelUrl", "modelVersion"]
-  },
+  // "MANUFACTURER": {
+  //   "MANUFACTURER": [
+  //     "manufacturerAddress",
+  //     "manufacturerDescription",
+  //     "manufacturerEmail",
+  //     "manufacturerFax",
+  //     "manufacturerIdentifier",
+  //     "manufacturerMediaFileName",
+  //     "manufacturerMediaHeight",
+  //     "manufacturerMediaIdentifier",
+  //     "manufacturerMediaName",
+  //     "manufacturerMediaSize",
+  //     "manufacturerMediaTypeName",
+  //     "manufacturerMediaWidth",
+  //     "manufacturerName",
+  //     "manufacturerNotes",
+  //     "manufacturerTelephone",
+  //     "manufacturerUrl",
+  //     "modelDescription",
+  //     "modelIdentifier",
+  //     "modelMediaFileName",
+  //     "modelMediaHeight",
+  //     "modelMediaIdentifier",
+  //     "modelMediaName",
+  //     "modelMediaSize",
+  //     "modelMediaTypeName",
+  //     "modelMediaWidth",
+  //     "modelName",
+  //     "modelNotes",
+  //     "modelUrl",
+  //     "modelVersion"
+  //   ]
+  // },
   "MODEL": {
     "MODEL": ["modelDescription", "modelIdentifier", "modelName", "modelNotes", "modelUrl", "modelVersion"]
   },

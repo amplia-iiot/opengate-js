@@ -51,22 +51,6 @@ var ModelFinder = (function (_ProvisionGenericFinder) {
         }
 
         /**
-         * Download all models from its manufacturer. This execute a GET http method
-         * @test
-         *   ogapi.newModelFinder().findByOrganizationAndManufacturer('organization', 'manufacturer').then().catch();
-         * @param {string} organization - model organization .
-         * @param {string} manufacturer - model manufacturer .
-         * @return {Promise} 
-         */
-    }, {
-        key: 'findByOrganizationAndManufacturer',
-        value: function findByOrganizationAndManufacturer(organization, manufacturer) {
-            this._organization = organization;
-            this._manufacturer = manufacturer;
-            return this._execute();
-        }
-
-        /**
          * Download a specific model by its id. This execute a GET http method
          * @test
          *   ogapi.newModelFinder().findByOrganizationAndManufacturerAndId('organization', 'manufacturer', 'modelname').then().catch();
