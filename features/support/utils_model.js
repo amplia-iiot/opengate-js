@@ -110,9 +110,6 @@ module.exports = {
             "domains finder": function(ogapi) {
                 return ogapi.newDomainFinder();
             },
-            "hardwares search": function(ogapi) {
-                return ogapi.hardwaresSearchBuilder();
-            },
             "geocluster builder": function(ogapi){ 
                 return ogapi.geoclusterBuilder(); 
             }, 

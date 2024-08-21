@@ -9,13 +9,6 @@ Feature: I want to check if the general summary are working
   Background:
     Given an apikey user by "require-real-apikey"
 
-  Scenario: I want to get the hardwares summary
-    And an ogapi "hardwares search" util
-  	When I build it with summary response
-  	And I execute it
-  	Then response code should be: 200
-    Then does not throws an error
-
   Scenario: I want to get the softwares summary
     And an ogapi "softwares search" util
   	When I build it with summary response
