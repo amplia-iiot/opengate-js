@@ -57,7 +57,6 @@ import DatastreamsSearchBuilder from './searching/builder/DatastreamsSearchBuild
 import DatapointsSearchBuilder from './searching/builder/DatapointsSearchBuilder';
 import BundlesSearchBuilder from './searching/builder/BundlesSearchBuilder';
 import CertificatesSearchBuilder from './searching/builder/CertificatesSearchBuilder';
-import HardwaresSearchBuilder from './searching/builder/HardwaresSearchBuilder';
 import SoftwaresSearchBuilder from './searching/builder/SoftwaresSearchBuilder';
 import OperationalStatusSearchBuilder from './searching/builder/OperationalStatusSearchBuilder';
 import ServiceGroupSearchBuilder from './searching/builder/ServiceGroupSearchBuilder';
@@ -820,14 +819,6 @@ export default class InternalOpenGateAPI {
      */
     certificatesBuilder() {
         return new Certificates(this);
-    }
-
-    /**
-     * This return a HardwaresSearchBuilder to build a specific HardwaresSearchBuilder
-     * @return {HardwaresSearchBuilder}
-     */
-    hardwaresSearchBuilder() {
-        return new HardwaresSearchBuilder(this);
     }
 
     /**
