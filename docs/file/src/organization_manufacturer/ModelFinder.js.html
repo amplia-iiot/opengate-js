@@ -220,7 +220,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/FeedsSearchBuilder.js~FeedsSearchBuilder.html">FeedsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/FieldsDefinitionSearchBuilder.js~FieldsDefinitionSearchBuilder.html">FieldsDefinitionSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/FlattenedSearchBuilder.js~FlattenedSearchBuilder.html">FlattenedSearchBuilder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html">HardwaresSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamAccessSearchBuilder.js~IoTDatastreamAccessSearchBuilder.html">IoTDatastreamAccessSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamPeriodSearchBuilder.js~IoTDatastreamPeriodSearchBuilder.html">IoTDatastreamPeriodSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/IoTDatastreamStoragePeriodSearchBuilder.js~IoTDatastreamStoragePeriodSearchBuilder.html">IoTDatastreamStoragePeriodSearchBuilder</a></span></span></li>
@@ -322,20 +321,6 @@ export default class ModelFinder extends ProvisionGenericFinder {
      */
     _composeUrl() {
         return this._baseUrl + &quot;/&quot; + this._organization + MANUFACTURERS_RESOURCE + &quot;/&quot; + this._manufacturer + MODELS_RESOURCE + (this._identifier?&quot;/&quot; + this._identifier: &quot;&quot;);
-    }
-
-    /**
-     * Download all models from its manufacturer. This execute a GET http method
-     * @test
-     *   ogapi.newModelFinder().findByOrganizationAndManufacturer(&apos;organization&apos;, &apos;manufacturer&apos;).then().catch();
-     * @param {string} organization - model organization .
-     * @param {string} manufacturer - model manufacturer .
-     * @return {Promise} 
-     */
-    findByOrganizationAndManufacturer(organization, manufacturer) {
-        this._organization = organization;
-        this._manufacturer = manufacturer;
-        return this._execute();
     }
 
     /**

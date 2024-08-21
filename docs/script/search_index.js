@@ -684,12 +684,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "opengate-js/src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder",
-    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html",
-    "<span>HardwaresSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/HardwaresSearchBuilder.js</span>",
-    "class"
-  ],
-  [
     "opengate-js/src/util/searchingfields/iotfields.js~iot_fields",
     "variable/index.html#static-variable-IOT_FIELDS",
     "<span>IOT_FIELDS</span> <span class=\"search-result-import-path\">opengate-js/src/util/searchingFields/IotFields.js</span>",
@@ -3705,12 +3699,6 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#hardwaremessagebuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-hardwareMessageBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#hardwareMessageBuilder",
-    "method"
-  ],
-  [
-    "src/internalopengateapi.js~internalopengateapi#hardwaressearchbuilder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-hardwaresSearchBuilder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#hardwaresSearchBuilder",
     "method"
   ],
   [
@@ -7938,12 +7926,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/organization_manufacturer/modelfinder.js~modelfinder#findbyorganizationandmanufacturer",
-    "class/src/organization_manufacturer/ModelFinder.js~ModelFinder.html#instance-method-findByOrganizationAndManufacturer",
-    "src/organization_manufacturer/ModelFinder.js~ModelFinder#findByOrganizationAndManufacturer",
-    "method"
-  ],
-  [
     "src/organization_manufacturer/modelfinder.js~modelfinder#findbyorganizationandmanufacturerandid",
     "class/src/organization_manufacturer/ModelFinder.js~ModelFinder.html#instance-method-findByOrganizationAndManufacturerAndId",
     "src/organization_manufacturer/ModelFinder.js~ModelFinder#findByOrganizationAndManufacturerAndId",
@@ -9669,42 +9651,6 @@ window.esdocSearchIndex = [
     "src/searching/builder/flattenedsearchbuilder.js~flattenedsearchbuilder#flattened",
     "class/src/searching/builder/FlattenedSearchBuilder.js~FlattenedSearchBuilder.html#instance-method-flattened",
     "src/searching/builder/FlattenedSearchBuilder.js~FlattenedSearchBuilder#flattened",
-    "method"
-  ],
-  [
-    "src/searching/builder/hardwaressearchbuilder.js",
-    "file/src/searching/builder/HardwaresSearchBuilder.js.html",
-    "src/searching/builder/HardwaresSearchBuilder.js",
-    "file"
-  ],
-  [
-    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#constructor",
-    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-constructor-constructor",
-    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#constructor",
-    "method"
-  ],
-  [
-    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#disabledefaultsorted",
-    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-disableDefaultSorted",
-    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#disableDefaultSorted",
-    "method"
-  ],
-  [
-    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#flattened",
-    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-flattened",
-    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#flattened",
-    "method"
-  ],
-  [
-    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#group",
-    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-group",
-    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#group",
-    "method"
-  ],
-  [
-    "src/searching/builder/hardwaressearchbuilder.js~hardwaressearchbuilder#select",
-    "class/src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder.html#instance-method-select",
-    "src/searching/builder/HardwaresSearchBuilder.js~HardwaresSearchBuilder#select",
     "method"
   ],
   [
