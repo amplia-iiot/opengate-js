@@ -9000,6 +9000,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/searching/builder/alarmssearchbuilder.js~alarmssearchbuilder#group",
+    "class/src/searching/builder/AlarmsSearchBuilder.js~AlarmsSearchBuilder.html#instance-method-group",
+    "src/searching/builder/AlarmsSearchBuilder.js~AlarmsSearchBuilder#group",
+    "method"
+  ],
+  [
     "src/searching/builder/allowedresourcetypesearchbuilder.js",
     "file/src/searching/builder/AllowedResourceTypeSearchBuilder.js.html",
     "src/searching/builder/AllowedResourceTypeSearchBuilder.js",
