@@ -17,5 +17,5 @@
  /**
  * CONNECTOR_FUNCTION_SOUTH_PROTOCOLS values allowed
  */
-  export const CONNECTOR_FUNCTION_SOUTH_PROTOCOLS = ["https://", "wss://", "mqtts://", "snmps://", "dlms://", "icmp://"];
+  export const CONNECTOR_FUNCTION_SOUTH_PROTOCOLS = ["https://", "wss://", "mqtts://", "snmps://", "dlms://", "icmp:///"];
 
