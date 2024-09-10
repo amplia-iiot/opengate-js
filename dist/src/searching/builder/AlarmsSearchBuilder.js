@@ -58,6 +58,19 @@ var AlarmsSearchBuilder = (function (_SearchWithSummaryBuilder) {
             this._url = this._url.replace(TOKEN_URL, '');
             return _get(Object.getPrototypeOf(AlarmsSearchBuilder.prototype), '_buildUrl', this).call(this);
         }
+
+        /**
+         * The search request will have this group by 
+         * @example
+         * @param {!(object)} group 
+         * @return {TimeserieSearchBuilder} 
+         */
+    }, {
+        key: 'group',
+        value: function group(_group) {
+            this._builderParams.group = _group || {};
+            return this;
+        }
     }]);
 
     return AlarmsSearchBuilder;

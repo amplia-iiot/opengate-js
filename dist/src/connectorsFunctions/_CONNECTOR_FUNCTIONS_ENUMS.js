@@ -24,6 +24,6 @@ exports.CONNECTOR_FUNCTION_PAYLOAD_TYPES = CONNECTOR_FUNCTION_PAYLOAD_TYPES;
 /**
 * CONNECTOR_FUNCTION_SOUTH_PROTOCOLS values allowed
 */
-var CONNECTOR_FUNCTION_SOUTH_PROTOCOLS = ["https://", "wss://", "mqtts://", "snmps://", "dlms://", "icmp://"];
+var CONNECTOR_FUNCTION_SOUTH_PROTOCOLS = ["https://", "wss://", "mqtts://", "snmps://", "dlms://", "icmp:///"];
 exports.CONNECTOR_FUNCTION_SOUTH_PROTOCOLS = CONNECTOR_FUNCTION_SOUTH_PROTOCOLS;
 //# sourceMappingURL=_CONNECTOR_FUNCTIONS_ENUMS.js.map

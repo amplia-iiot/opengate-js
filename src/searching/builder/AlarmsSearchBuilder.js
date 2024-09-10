@@ -27,4 +27,15 @@ export default class AlarmsSearchBuilder extends SearchWithSummaryBuilder {
         this._url = this._url.replace(TOKEN_URL, '');
         return super._buildUrl();
     }
+
+    /**
+     * The search request will have this group by 
+     * @example
+     * @param {!(object)} group 
+     * @return {TimeserieSearchBuilder} 
+     */
+    group(group) {
+        this._builderParams.group = (group || {});
+        return this;
+    }
 }
