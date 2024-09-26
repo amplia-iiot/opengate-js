@@ -2,7 +2,7 @@
 @provision
 @users
 @resetpassword
-
+@revisar
 Feature: Reset password when the user forgets it
   As a user of JsApi
   I want to reset password
@@ -34,6 +34,7 @@ Feature: Reset password when the user forgets it
     And the "name" "test name"
     And the "surname" "test surname"
     And the "description" "user description"
+    And the "forcePasswordChange" false
     Then I delete it
     And I create it
     Then response code should be: 201

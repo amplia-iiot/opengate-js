@@ -3,7 +3,7 @@
 @operations
 @update_periodic_operation
 @urlParameters
-
+@done
 Feature: Update periodic operation
     As a user of JsApi
     I want to update periodic operation
@@ -40,6 +40,7 @@ Feature: Update periodic operation
         And the "name" "test name"
         And the "surname" "test surname"
         And the "description" "user description"
+        And the "forcePasswordChange" false
         Then I delete it
         And I create it
         Then response code should be: 201

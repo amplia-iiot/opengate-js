@@ -4,7 +4,7 @@
 @executions
 @operations
 @urlParameters
-
+@done
 Feature: Find a executions of an operation
     As a user of JsApi
     I want to find a executions of an operation
@@ -40,6 +40,7 @@ Feature: Find a executions of an operation
         And the "name" "test name"
         And the "surname" "test surname"
         And the "description" "user description"
+        And the "forcePasswordChange" false
         Then I delete it
         And I create it
         Then response code should be: 201
