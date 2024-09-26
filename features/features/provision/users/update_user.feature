@@ -4,7 +4,7 @@
 @users
 @update_user
 @urlParameters
-
+@done
 Feature: Delete and Create an user
   As a user of JsApi
   I want to create an user
@@ -41,6 +41,7 @@ Feature: Delete and Create an user
     And the "surname" "test surname"
     And the "description" "user description"
     And the "2FaType" "TOTP"
+    And the "forcePasswordChange" false
     Then I delete it
     And I create it
     Then response code should be: 201
@@ -57,7 +58,7 @@ Feature: Delete and Create an user
     And the "surname" "surname updated"
     And the "description" "user description updated"
     And the "password" "Nvoiqewvouoiu32j@"
-    And the "apiKey" "7d58d9e2-c372-4792-b87e-f9b368dc46b7"
+    And the "apiKey" "d12aae79-f74b-4713-856d-72c7817ddd1b"
     And the "2FaType" "NONE"
     Then I update it
     And response code should be: 200
@@ -67,8 +68,8 @@ Feature: Delete and Create an user
     Then I want to update a "user"
     And the "domain" "user_organization"
     And the "email" "ogux_ogapi@amplia.com"
-    And the "password" "Nvoiqewvouoiu32j@#!!"
-    Then I update password with "Nvoiqewvouoiu32j@"
+    And the "password" "Nvoiqewvouoiu32j@"
+    Then I update password with "Nvoiqewvouoiu32j@#!!"
     And response code should be: 200
 
   Scenario: Delete an user that already exists

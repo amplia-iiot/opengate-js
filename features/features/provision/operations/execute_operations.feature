@@ -3,7 +3,7 @@
 @device_builder
 @execute_operations
 @operations
-
+@done
 Feature: Execute ADMINISTRATIVE_STATUS_CHANGE operation
 As a user of JsApi
 I want to execute an ADMINISTRATIVE_STATUS_CHANGE operation
@@ -38,6 +38,7 @@ So that I can change the administrative status to some devices/subscriptions/sub
         And the "name" "test name"
         And the "surname" "test surname"
         And the "description" "user description"
+        And the "forcePasswordChange" false
         Then I delete it
         And I create it
         Then response code should be: 201

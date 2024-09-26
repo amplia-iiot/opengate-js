@@ -2,11 +2,11 @@
 @provision
 @users
 @update_password
-
+@done
 Feature: Update password with logged in user or because it is not secure
     As a user of JsApi
     I want to reset password
-    So, I can change the password while logged in or because it is insecure
+    So, I can change the password while logged in or because it is insecure: forcePasswordChange === true
 
 
     Scenario: Precondition - Prepare scenario
@@ -62,9 +62,9 @@ Feature: Update password with logged in user or because it is not secure
         Given an ogapi "users builder" util
         Then I want to update a "user"
         And the "email" "ogux_ogapi@amplia.com"
-        And the "password" "Nvoiqewvouoiu32j@"
+        And the "password" "Nvoiqewvouoiu32j@#!!"
         #npx uuid v4 for generate UUID
-        Then I update apiKey with "7d58d9e2-c372-4792-b87e-f9b368dc46b7"
+        Then I update apiKey with "502c0b9b-5ee7-494e-84de-d25f8fea8698"
         And response code should be: 200
 
     Scenario: Deleting an user and organization to use

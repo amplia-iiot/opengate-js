@@ -4,7 +4,7 @@
 @find_provision
 @users
 @find_user
-
+@done
 Feature: Find an user
 	As a user of JsApi
 	I want to find an user
@@ -40,6 +40,7 @@ Feature: Find an user
 		And the "name" "test name"
 		And the "surname" "test surname"
 		And the "description" "user description"
+		And the "forcePasswordChange" false
 		Then I delete it
 		And I create it
 		Then response code should be: 201

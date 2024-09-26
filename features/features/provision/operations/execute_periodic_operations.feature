@@ -3,7 +3,7 @@
 @operations
 @periodic_operation
 @urlParameters
-
+@done
 Feature: Execute ADMINISTRATIVE_STATUS_CHANGE periodic operation
     As a user of JsApi
     I want to execute an ADMINISTRATIVE_STATUS_CHANGE periodic operation
@@ -39,6 +39,7 @@ Feature: Execute ADMINISTRATIVE_STATUS_CHANGE periodic operation
         And the "name" "test name"
         And the "surname" "test surname"
         And the "description" "user description"
+        And the "forcePasswordChange" false
         Then I delete it
         And I create it
         Then response code should be: 201
