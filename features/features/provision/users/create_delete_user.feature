@@ -4,7 +4,7 @@
 @users
 @create_delete_user
 @urlParameters
-
+@done
 Feature: Delete and Create an user
   As a user of JsApi
   I want to create an user
@@ -40,6 +40,7 @@ Feature: Delete and Create an user
     And the "name" "test name"
     And the "surname" "test surname"
     And the "description" "user description"
+    And the "forcePasswordChange" false
     Then I delete it
     And I create it
     Then response code should be: 201
@@ -59,6 +60,7 @@ Feature: Delete and Create an user
     And the "name" "test name"
     And the "surname" "test surname"
     And the "description" "user description"
+    And the "forcePasswordChange" false
     Then I delete it
     And I create it
     Then response code should be: 201

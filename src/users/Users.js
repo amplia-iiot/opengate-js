@@ -187,6 +187,18 @@ export default class User extends BaseProvision {
     }
 
     /**
+     * Set the forcePasswordChange: if true Forces you to reset your password on your next login attempt.
+     * @param {boolean} forcePasswordChange
+     * @return {User}
+     * 
+     */
+    withForcePasswordChange(forcePasswordChange) {
+        if (typeof forcePasswordChange !== 'boolean')
+            throw new Error('Parameter forcePasswordChange must be a boolean');
+        this._forcePasswordChange = forcePasswordChange;
+        return this;
+    }
+    /**
      * Compose url to delete an user
      * @return {String} This returns a string with the URL of the request.
      * @private
@@ -220,7 +232,8 @@ export default class User extends BaseProvision {
                 countryCode: this._countryCode || undefined,
                 langCode: this._langCode || undefined,
                 timezone: this._timezone || undefined,
-                "2FaType": this._twoFaType || undefined
+                "2FaType": this._twoFaType || undefined,
+                forcePasswordChange: typeof this._forcePasswordChange === 'boolean' ? this._forcePasswordChange : undefined
             }
         };
 
@@ -251,7 +264,8 @@ export default class User extends BaseProvision {
                 timezone: this._timezone || undefined,
                 apiKey: this._apiKey || undefined,
                 password: this._password || undefined,
-                "2FaType": this._twoFaType || undefined
+                "2FaType": this._twoFaType || undefined,
+                forcePasswordChange: typeof this._forcePasswordChange === 'boolean' ? this._forcePasswordChange : undefined
             }
         };
         return data;

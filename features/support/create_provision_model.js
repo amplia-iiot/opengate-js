@@ -36,6 +36,7 @@ module.exports = {
                 'name': 'withName',
                 'surname': 'withSurname',
                 '2FaType': 'with2FaType',
+                'forcePasswordChange': 'withForcePasswordChange',
                 'apiKey': 'withApiKey',
                 'password': 'withPassword',
             },
