@@ -4,7 +4,7 @@
 @finder
 @periodic_operation
 @urlParameters
-
+@done
 Feature: Find an operation
     As a user of JsApi
     I want to find an operation
@@ -41,6 +41,7 @@ Feature: Find an operation
         And the "name" "test name"
         And the "surname" "test surname"
         And the "description" "user description"
+        And the "forcePasswordChange" false
         Then I delete it
         And I create it
         Then response code should be: 201
@@ -65,7 +66,7 @@ Feature: Find an operation
             | provision.administration.channel      | simple       | default_channel               |        |
             | provision.administration.organization | simple       | find_periodic_organization_10 |        |
             | provision.administration.serviceGroup | simple       | emptyServiceGroup             |        |
-            | provision.device.identifier           | simple       | find_periodic_device          |        |
+            | provision.device.identifier           | simple       | find_periodic_device_1          |        |
             | provision.device.operationalStatus    | simple       | NORMAL                        |        |
             | provision.device.administrativeState  | simple       | ACTIVE                        |        |
 
@@ -105,7 +106,7 @@ Feature: Find an operation
         And the parameters "{ \"admsts\" : \"ACTIVE\" }"
         And the job timeout by 300 seconds
         And append entities by:
-            | find_periodic_device |
+            | find_periodic_device_1 |
         When I build it
         And I execute it
         Then response code should be: 201
@@ -122,7 +123,7 @@ Feature: Find an operation
         And I can found "provision.device.identifier" as datastream name
         When I try to define the entity with...
             | datastream                  | typeFunction | value                | parent |
-            | provision.device.identifier | simple       | find_periodic_device |        |
+            | provision.device.identifier | simple       | find_periodic_device_1 |        |
         And I delete it
         Then response code should be: 200
 

@@ -2,7 +2,7 @@
 @execute_each_operation
 @operations
 @provision
-
+@done
 Feature: Setting up period with each pattern to operations
 As a user of JsApi
 I want to execute an FACTORY_RESET_TEST operation with a specific each pattern period configuration
@@ -38,6 +38,7 @@ So that I can execute FACTORY_RESET_TEST to some devices/subscriptions/subscribe
         And the "name" "test name"
         And the "surname" "test surname"
         And the "description" "user description"
+        And the "forcePasswordChange" false
         Then I delete it
         And I create it
         Then response code should be: 201

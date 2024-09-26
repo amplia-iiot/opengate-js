@@ -3,7 +3,7 @@
 @operations
 @actions_execution
 @urlParameters
-
+@revisar
 Feature: Execute actions on a particular execution
     As a user of JsApi
     I want to execute actions on a particular operation
@@ -39,6 +39,7 @@ Feature: Execute actions on a particular execution
         And the "name" "test name"
         And the "surname" "test surname"
         And the "description" "user description"
+        And the "forcePasswordChange" false
         Then I delete it
         And I create it
         Then response code should be: 201
