@@ -219,6 +219,20 @@ var User = (function (_BaseProvision) {
         }
 
         /**
+         * Set the forcePasswordChange: if true Forces you to reset your password on your next login attempt.
+         * @param {boolean} forcePasswordChange
+         * @return {User}
+         * 
+         */
+    }, {
+        key: 'withForcePasswordChange',
+        value: function withForcePasswordChange(forcePasswordChange) {
+            if (typeof forcePasswordChange !== 'boolean') throw new Error('Parameter forcePasswordChange must be a boolean');
+            this._forcePasswordChange = forcePasswordChange;
+            return this;
+        }
+
+        /**
          * Compose url to delete an user
          * @return {String} This returns a string with the URL of the request.
          * @private
@@ -254,7 +268,8 @@ var User = (function (_BaseProvision) {
                     countryCode: this._countryCode || undefined,
                     langCode: this._langCode || undefined,
                     timezone: this._timezone || undefined,
-                    "2FaType": this._twoFaType || undefined
+                    "2FaType": this._twoFaType || undefined,
+                    forcePasswordChange: typeof this._forcePasswordChange === 'boolean' ? this._forcePasswordChange : undefined
                 }
             };
 
@@ -285,7 +300,8 @@ var User = (function (_BaseProvision) {
                     timezone: this._timezone || undefined,
                     apiKey: this._apiKey || undefined,
                     password: this._password || undefined,
-                    "2FaType": this._twoFaType || undefined
+                    "2FaType": this._twoFaType || undefined,
+                    forcePasswordChange: typeof this._forcePasswordChange === 'boolean' ? this._forcePasswordChange : undefined
                 }
             };
             return data;
