@@ -29,18 +29,6 @@ export default class ConnectorFunctionsHelper extends GenericFinder {
     }
 
     /**
-     * Performs a get that returns dummy functions from rules service
-     * @test
-     *   ogapi.newConnectorFunctionsHelper().getdDummyFunctions();
-     * @return {Promise} 
-     */
-    getdDummyFunctions() {
-        this._setExtraHeaders(this._jsHeaders)
-        this._id = 'doc/jsApi/javascript'
-        return this._execute();
-    }
-
-    /**
      * Performs a get that returns documentation private of javascript functions from rules service
      * @test
      *   ogapi.newConnectorFunctionsHelper().getDocPrivateJavascriptFunctions();
