@@ -15,11 +15,11 @@ So I can check if a user exists and get their information
 		And an ogapi "ruleConfigurationsHelper finder" util
 		Given I want to read a "ruleConfigurationsHelper"
 
-	Scenario: Find a functions
-		When I try to find by...
-			| field | content                |
-			| functions ||
-		Then response code should be: 200
+	# Scenario: Find a functions
+	# 	When I try to find by...
+	# 		| field | content                |
+	# 		| functions ||
+	# 	Then response code should be: 200
 
 	Scenario: Find a documentation
 		When I try to find by...

@@ -23,18 +23,6 @@ export default class RuleConfigurationsHelper extends GenericFinder {
     }
 
     /**
-     * Performs a get that returns dummy functions from rules service
-     * @test
-     *   ogapi.newRuleConfigurationsHelper().getdDummyFunctions();
-     * @return {Promise} 
-     */
-    getdDummyFunctions() {
-        this._setExtraHeaders(this._jsHeaders)
-        this._id = 'js/dummyFunctions'
-        return this._execute();
-    }
-
-    /**
      * Performs a get that returns documentation private of javascript functions from rules service
      * @test
      *   ogapi.newRuleConfigurationsHelper().getDocPrivateJavascriptFunctions();
