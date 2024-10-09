@@ -6144,12 +6144,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/connectorsfunctions/configuration/connectorfunctionshelper.js~connectorfunctionshelper#getddummyfunctions",
-    "class/src/connectorsFunctions/configuration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper.html#instance-method-getdDummyFunctions",
-    "src/connectorsFunctions/configuration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper#getdDummyFunctions",
-    "method"
-  ],
-  [
     "src/datasets/datasetfinder.js",
     "file/src/datasets/DatasetFinder.js.html",
     "src/datasets/DatasetFinder.js",
@@ -8739,12 +8733,6 @@ window.esdocSearchIndex = [
     "src/rulesconfiguration/ruleconfigurationshelper.js~ruleconfigurationshelper#getdocprivatejavascriptfunctions",
     "class/src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper.html#instance-method-getDocPrivateJavascriptFunctions",
     "src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper#getDocPrivateJavascriptFunctions",
-    "method"
-  ],
-  [
-    "src/rulesconfiguration/ruleconfigurationshelper.js~ruleconfigurationshelper#getddummyfunctions",
-    "class/src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper.html#instance-method-getdDummyFunctions",
-    "src/rulesConfiguration/RuleConfigurationsHelper.js~RuleConfigurationsHelper#getdDummyFunctions",
     "method"
   ],
   [
