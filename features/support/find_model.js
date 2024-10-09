@@ -61,7 +61,6 @@ module.exports = {
                 'email': 'findByEmail'
             },
             ruleConfigurationsHelper: {
-                'functions': 'getdDummyFunctions',
                 'documentaion': 'getDocJavascriptFunctions',
                 'privateDocumentation': 'getDocPrivateJavascriptFunctions'
             },

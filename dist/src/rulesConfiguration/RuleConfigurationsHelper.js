@@ -50,27 +50,13 @@ var RuleConfigurationsHelper = (function (_GenericFinder) {
     }
 
     /**
-     * Performs a get that returns dummy functions from rules service
+     * Performs a get that returns documentation private of javascript functions from rules service
      * @test
-     *   ogapi.newRuleConfigurationsHelper().getdDummyFunctions();
+     *   ogapi.newRuleConfigurationsHelper().getDocPrivateJavascriptFunctions();
      * @return {Promise} 
      */
 
     _createClass(RuleConfigurationsHelper, [{
-        key: 'getdDummyFunctions',
-        value: function getdDummyFunctions() {
-            this._setExtraHeaders(this._jsHeaders);
-            this._id = 'js/dummyFunctions';
-            return this._execute();
-        }
-
-        /**
-         * Performs a get that returns documentation private of javascript functions from rules service
-         * @test
-         *   ogapi.newRuleConfigurationsHelper().getDocPrivateJavascriptFunctions();
-         * @return {Promise} 
-         */
-    }, {
         key: 'getDocPrivateJavascriptFunctions',
         value: function getDocPrivateJavascriptFunctions() {
             this._setExtraHeaders(this._mdHeaders);
