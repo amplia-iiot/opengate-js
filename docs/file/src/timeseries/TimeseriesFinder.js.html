@@ -317,11 +317,36 @@ export default class TimeseriesFinder extends GenericFinder {
      * Performs a get that returns list of timeseries
      * @test
      *   ogapi.newTimeserieFinder().findByOrganization(organization);
+     *   ogapi.newTimeserieFinder().findByOrganization(organization, [&apos;columns&apos;, &apos;context&apos;]);
+     *   ogapi.newTimeserieFinder().findByOrganization(organization, [], [&apos;ds_id_1&apos;, &apos;ds_id-2&apos;]);
+     *   ogapi.newTimeserieFinder().findByOrganization(organization, [&apos;columns&apos;], []);
+     *   ogapi.newTimeserieFinder().findByOrganization(organization, [&apos;columns&apos;], undefined);
+     *   ogapi.newTimeserieFinder().findByOrganization(organization, undefined, [&apos;ds_id_2&apos;]);
      * @param {string} organization - organization
+     * @param {Array} expand - [&apos;columns&apos;, &apos;context&apos;]
+     * @param {Array} dataStreams - [&quot;ds_id_1&quot;,&quot;ds_id_2&quot;]
      * @return {Promise} 
      */
-    findByOrganization(organization) {
+    findByOrganization(organization, expand, dataStreams) {
         this._withId(organization);
+        const parameters = {}
+        if(expand){
+            if (!(expand instanceof Array)){
+                throw new Error({
+                    message: &quot;Parameter expand requires an array&quot;,
+                    parameter: &apos;expand&apos;
+                });
+            } else if(expand.length &gt; 0) parameters.expand = expand.join()
+        }
+        if(dataStreams){
+            if (!(dataStreams instanceof Array)){
+                throw new Error({
+                    message: &quot;Parameter dataStreams requires an array&quot;,
+                    parameter: &apos;dataStreams&apos;
+                });
+            } else if(dataStreams.length &gt; 0) parameters.dataStreams = dataStreams.join()
+        }
+        this._setUrlParameters(parameters)
         return this._execute();
     }
 

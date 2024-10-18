@@ -55769,7 +55769,7 @@
     "__docId__": 2074,
     "kind": "file",
     "name": "src/searching/builder/AlarmsSearchBuilder.js",
-    "content": "'use strict';\r\n\r\nimport SearchWithSummaryBuilder from './SearchWithSummaryBuilder';\r\nimport FieldFinder from '../../util/searchingFields/FieldFinder';\r\n\r\nexport const TOKEN_URL = '$_token';\r\n\r\n/**\r\n * Defined a search over Alarms\t\r\n * @example ogapi.alarmsSearchBuilder()\r\n */\r\nexport default class AlarmsSearchBuilder extends SearchWithSummaryBuilder {\r\n    /**\r\n     *\t@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI\r\n     */\r\n    constructor(parent, fieldFinder = new FieldFinder(parent, '/alarms')) {\r\n        super(parent, { onDevices: '/devices', onSubscriptions: '/subscriptions' }, fieldFinder);\r\n        this._url = '/entities' + TOKEN_URL + '/alarms';\r\n    }\r\n\r\n    _buildUrl() {\r\n        for (let route in this._routes) {\r\n            if (this._builderParams[route]) {\r\n                this._url = this._url.replace(TOKEN_URL, this._routes[route]);\r\n            }\r\n        }\r\n        this._url = this._url.replace(TOKEN_URL, '');\r\n        return super._buildUrl();\r\n    }\r\n\r\n    /**\r\n     * The search request will have this group by \r\n     * @example\r\n     * @param {!(object)} group \r\n     * @return {TimeserieSearchBuilder} \r\n     */\r\n    group(group) {\r\n        this._builderParams.group = (group || {});\r\n        return this;\r\n    }\r\n}",
+    "content": "'use strict';\r\n\r\nimport SearchWithSummaryBuilder from './SearchWithSummaryBuilder';\r\nimport FieldFinder from '../../util/searchingFields/FieldFinder';\r\n\r\nexport const TOKEN_URL = '$_token';\r\n\r\n/**\r\n * Defined a search over Alarms\t\r\n * @example ogapi.alarmsSearchBuilder()\r\n */\r\nexport default class AlarmsSearchBuilder extends SearchWithSummaryBuilder {\r\n    /**\r\n     *\t@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI\r\n     */\r\n    constructor(parent, fieldFinder = new FieldFinder(parent, '/alarms')) {\r\n        super(parent, { onDevices: '/devices', onSubscriptions: '/subscriptions' }, fieldFinder);\r\n        this._url = '/entities' + TOKEN_URL + '/alarms';\r\n    }\r\n\r\n    _buildUrl() {\r\n        for (let route in this._routes) {\r\n            if (this._builderParams[route]) {\r\n                this._url = this._url.replace(TOKEN_URL, this._routes[route]);\r\n            }\r\n        }\r\n        this._url = this._url.replace(TOKEN_URL, '');\r\n        return super._buildUrl();\r\n    }\r\n\r\n    /**\r\n     * The search request will have this group by \r\n     * @example\r\n     * @param {!(object)} group \r\n     * @return {AlarmsSearchBuilder} \r\n     */\r\n    group(group) {\r\n        this._builderParams.group = (group || {});\r\n        return this;\r\n    }\r\n}",
     "static": true,
     "longname": "src/searching/builder/AlarmsSearchBuilder.js",
     "access": null,
@@ -55973,7 +55973,7 @@
     "return": {
       "nullable": null,
       "types": [
-        "TimeserieSearchBuilder"
+        "AlarmsSearchBuilder"
       ],
       "spread": false,
       "description": ""
@@ -70167,7 +70167,7 @@
     "__docId__": 2652,
     "kind": "file",
     "name": "src/timeseries/TimeseriesFinder.js",
-    "content": "'use strict';\n\nimport GenericFinder from '../GenericFinder';\n/**\n *   This class allow make get request to TimeseriesFinder resource into Opengate North API.\n */\n\nexport default class TimeseriesFinder extends GenericFinder {\n\n    /**     \n     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.\n     */\n     constructor(ogapi) {\n        super(ogapi, 'timeseries/provision/organizations', 'timeseries');\n    }\n\n   /**\n     * Performs a get that returns list of timeseries\n     * @test\n     *   ogapi.newTimeserieFinder().findByOrganization(organization);\n     * @param {string} organization - organization\n     * @return {Promise} \n     */\n    findByOrganization(organization) {\n        this._withId(organization);\n        return this._execute();\n    }\n\n    /**\n     * Performs a get that returns a definition of timeserie\n     * @test\n     *   ogapi.newTimeserieFinder().findByOrganizationAndTimeserieId(organization, timeserieId);\n     * @param {string} organization - organization\n     * @param {string} timeserieId - timeserie identifier\n     * @return {Promise} \n     */\n     findByOrganizationAndTimeserieId(organization, timeserieId) {\n        this._withId(organization + '/' + timeserieId);\n        return this._execute();\n    }\n}",
+    "content": "'use strict';\n\nimport GenericFinder from '../GenericFinder';\n/**\n *   This class allow make get request to TimeseriesFinder resource into Opengate North API.\n */\n\nexport default class TimeseriesFinder extends GenericFinder {\n\n    /**     \n     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.\n     */\n     constructor(ogapi) {\n        super(ogapi, 'timeseries/provision/organizations', 'timeseries');\n    }\n\n   /**\n     * Performs a get that returns list of timeseries\n     * @test\n     *   ogapi.newTimeserieFinder().findByOrganization(organization);\n     *   ogapi.newTimeserieFinder().findByOrganization(organization, ['columns', 'context']);\n     *   ogapi.newTimeserieFinder().findByOrganization(organization, [], ['ds_id_1', 'ds_id-2']);\n     *   ogapi.newTimeserieFinder().findByOrganization(organization, ['columns'], []);\n     *   ogapi.newTimeserieFinder().findByOrganization(organization, ['columns'], undefined);\n     *   ogapi.newTimeserieFinder().findByOrganization(organization, undefined, ['ds_id_2']);\n     * @param {string} organization - organization\n     * @param {Array} expand - ['columns', 'context']\n     * @param {Array} dataStreams - [\"ds_id_1\",\"ds_id_2\"]\n     * @return {Promise} \n     */\n    findByOrganization(organization, expand, dataStreams) {\n        this._withId(organization);\n        const parameters = {}\n        if(expand){\n            if (!(expand instanceof Array)){\n                throw new Error({\n                    message: \"Parameter expand requires an array\",\n                    parameter: 'expand'\n                });\n            } else if(expand.length > 0) parameters.expand = expand.join()\n        }\n        if(dataStreams){\n            if (!(dataStreams instanceof Array)){\n                throw new Error({\n                    message: \"Parameter dataStreams requires an array\",\n                    parameter: 'dataStreams'\n                });\n            } else if(dataStreams.length > 0) parameters.dataStreams = dataStreams.join()\n        }\n        this._setUrlParameters(parameters)\n        return this._execute();\n    }\n\n    /**\n     * Performs a get that returns a definition of timeserie\n     * @test\n     *   ogapi.newTimeserieFinder().findByOrganizationAndTimeserieId(organization, timeserieId);\n     * @param {string} organization - organization\n     * @param {string} timeserieId - timeserie identifier\n     * @return {Promise} \n     */\n     findByOrganizationAndTimeserieId(organization, timeserieId) {\n        this._withId(organization + '/' + timeserieId);\n        return this._execute();\n    }\n}",
     "static": true,
     "longname": "src/timeseries/TimeseriesFinder.js",
     "access": null,
@@ -70228,11 +70228,11 @@
     "longname": "src/timeseries/TimeseriesFinder.js~TimeseriesFinder#findByOrganization",
     "access": null,
     "description": "Performs a get that returns list of timeseries",
-    "lineNumber": 24,
+    "lineNumber": 31,
     "unknown": [
       {
         "tagName": "@test",
-        "tagValue": "  ogapi.newTimeserieFinder().findByOrganization(organization);"
+        "tagValue": "  ogapi.newTimeserieFinder().findByOrganization(organization);\n  ogapi.newTimeserieFinder().findByOrganization(organization, ['columns', 'context']);\n  ogapi.newTimeserieFinder().findByOrganization(organization, [], ['ds_id_1', 'ds_id-2']);\n  ogapi.newTimeserieFinder().findByOrganization(organization, ['columns'], []);\n  ogapi.newTimeserieFinder().findByOrganization(organization, ['columns'], undefined);\n  ogapi.newTimeserieFinder().findByOrganization(organization, undefined, ['ds_id_2']);"
       }
     ],
     "params": [
@@ -70245,6 +70245,26 @@
         "optional": false,
         "name": "organization",
         "description": "organization"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "expand",
+        "description": "['columns', 'context']"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "dataStreams",
+        "description": "[\"ds_id_1\",\"ds_id_2\"]"
       }
     ],
     "return": {
@@ -70267,7 +70287,7 @@
     "longname": "src/timeseries/TimeseriesFinder.js~TimeseriesFinder#findByOrganizationAndTimeserieId",
     "access": null,
     "description": "Performs a get that returns a definition of timeserie",
-    "lineNumber": 37,
+    "lineNumber": 62,
     "unknown": [
       {
         "tagName": "@test",

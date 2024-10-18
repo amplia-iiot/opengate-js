@@ -63,7 +63,7 @@ var AlarmsSearchBuilder = (function (_SearchWithSummaryBuilder) {
          * The search request will have this group by 
          * @example
          * @param {!(object)} group 
-         * @return {TimeserieSearchBuilder} 
+         * @return {AlarmsSearchBuilder} 
          */
     }, {
         key: 'group',
