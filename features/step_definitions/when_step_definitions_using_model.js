@@ -23,11 +23,20 @@ When(/^I try to find by...$/, function (table) {
     }
 
     function getContent(content) {
-        if(content === 'from_location_previous_response'){
-            var location = _this.responseData.location;
-            return location.substring(location.lastIndexOf("/") + 1);
+        const responseData = _this.responseData
+        switch(content){
+            case 'from_location_previous_response':
+                return responseData.location.substring(location.lastIndexOf("/") + 1);
+            case 'from_data_identifier_previous_response':
+                return responseData.data[0].identifier
+            default:
+                try{
+                    return JSON.parse(content)
+                }catch(err){
+                    return content
+                }
+                
         }
-        return content
     }
     try {
 
@@ -41,7 +50,7 @@ When(/^I try to find by...$/, function (table) {
             var params = "";
             for (var i = 0; i < data.length; i++) {
                 var _data = data[i];
-                console.log('DATA', json.stringify(data))
+                console.log('DATA', JSON.stringify(data))
                 var field = _data.field;
                 if (i > 0) {
                     if (field !== 'flattened')
@@ -51,9 +60,10 @@ When(/^I try to find by...$/, function (table) {
                 if (field !== 'flattened')
                     find += _data.field;
                 var content = getContent(_data.content);
-                params += '"' + content + '"';
+                params += JSON.stringify(content);
             }
             findMethod = this.model_match(this.currentModel).setters(this.currentEntity)[find];
+            //console.log('findMethod!!!!!!',  find)
             return eval('this.util["' + findMethod + '"](' + params + ').then(digestResponseData).catch(digestErrorData);');
         }
         this.error = "No params found";
@@ -61,7 +71,7 @@ When(/^I try to find by...$/, function (table) {
     } catch (err) {
         console.error('ERROR: ', err)
         this.error = err;
-        return;
+        throw err;
     }
 });
 

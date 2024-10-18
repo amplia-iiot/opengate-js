@@ -70,7 +70,9 @@ module.exports = {
             },
             'timeserie':{
                 'organizationId': 'findByOrganization',
-                'organizationIdAndtimeserieId': 'findByOrganizationAndTimeserieId'
+                'organizationIdAndtimeserieId': 'findByOrganizationAndTimeserieId',
+                'organizationIdAndexpandAnddataStreams': 'findByOrganization',
+                'organizationIdAndexpand': 'findByOrganization',
             },
             'rule configuration': {
                 'organizationAndchannelAndenabled': 'findByOrganizationAndChannelAndEnabled',
@@ -144,7 +146,10 @@ module.exports = {
             'country': '$[0].name',
             'region': '$[0].regions[0].name',
             'province': '$[0].regions[0].provinces[0].name',
-            'connector function catalog name': '$[0].connectorFunctions.name'
+            'connector function catalog name': '$[0].connectorFunctions.name',
+            'timeserie - name': '$[0].name',
+            'timeserie - columns': '$[0].columns',
+            'timeserie - context': '$[0].context',
             
         } [getter];
     }
