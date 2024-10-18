@@ -9,9 +9,6 @@ Then(/^I can see into the result an "([^"]*)" as "([^"]*)"$/, function (getterNa
     if (value !== getterValue && this.error) {
         throw new Error(JSON.stringify(this.error));
     }
-    if (value !== getterValue && this.error) {
-        throw new Error(JSON.stringify(this.error));
-    }
     this.expect(value).to.be.equal(getterValue);
     callback();
 });
