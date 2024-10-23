@@ -73,6 +73,7 @@ module.exports = {
                 'organizationIdAndtimeserieId': 'findByOrganizationAndTimeserieId',
                 'organizationIdAndexpandAnddataStreams': 'findByOrganization',
                 'organizationIdAndexpand': 'findByOrganization',
+                'organizationAndname': 'findByOrganizationAndName'
             },
             'rule configuration': {
                 'organizationAndchannelAndenabled': 'findByOrganizationAndChannelAndEnabled',

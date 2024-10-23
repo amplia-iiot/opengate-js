@@ -3,6 +3,7 @@
 @timeseries
 @find_timeseries
 @wip
+
 Feature: Find a timeserie
     As a user of JsApi
     I want to find a timeserie
@@ -168,6 +169,15 @@ Feature: Find a timeserie
             | expand    | [] |
             | dataStreams    | ["notExists"] |
         Then response code should be: 200
+
+        And an ogapi "timeserie finder" util
+        Given I want to read a "timeserie"
+        When I try to find by...
+            | field          | content                         |
+            | organization | timeserie_organization          |
+            | name    | mockTimeserie |
+        Then response code should be: 200
+
 
         And an ogapi "timeseries builder" util
         And I want to delete a "timeserie"
