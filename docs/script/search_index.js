@@ -6168,6 +6168,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/datasets/datasetfinder.js~datasetfinder#findbyorganizationandname",
+    "class/src/datasets/DatasetFinder.js~DatasetFinder.html#instance-method-findByOrganizationAndName",
+    "src/datasets/DatasetFinder.js~DatasetFinder#findByOrganizationAndName",
+    "method"
+  ],
+  [
     "src/datasets/datasets.js",
     "file/src/datasets/Datasets.js.html",
     "src/datasets/Datasets.js",
@@ -10791,6 +10797,12 @@ window.esdocSearchIndex = [
     "src/timeseries/timeseriesfinder.js~timeseriesfinder#findbyorganization",
     "class/src/timeseries/TimeseriesFinder.js~TimeseriesFinder.html#instance-method-findByOrganization",
     "src/timeseries/TimeseriesFinder.js~TimeseriesFinder#findByOrganization",
+    "method"
+  ],
+  [
+    "src/timeseries/timeseriesfinder.js~timeseriesfinder#findbyorganizationandname",
+    "class/src/timeseries/TimeseriesFinder.js~TimeseriesFinder.html#instance-method-findByOrganizationAndName",
+    "src/timeseries/TimeseriesFinder.js~TimeseriesFinder#findByOrganizationAndName",
     "method"
   ],
   [

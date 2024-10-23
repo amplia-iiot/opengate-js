@@ -14,9 +14,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var _q = require('q');
+
+var _q2 = _interopRequireDefault(_q);
+
 var _GenericFinder2 = require('../GenericFinder');
 
 var _GenericFinder3 = _interopRequireDefault(_GenericFinder2);
+
+var _httpStatusCodes = require('http-status-codes');
+
+var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
 
 /**
  *   This class allow make get request to TimeseriesFinder resource into Opengate North API.
@@ -88,6 +96,83 @@ var TimeseriesFinder = (function (_GenericFinder) {
         value: function findByOrganizationAndTimeserieId(organization, timeserieId) {
             this._withId(organization + '/' + timeserieId);
             return this._execute();
+        }
+
+        /**
+         * Performs a get that returns a definition of timeserie
+         * @test
+         *   ogapi.newTimeserieFinder().findByOrganizationAndName(organization, name);
+         * @param {string} organization - organization
+         * @param {string} name - timeserie name
+         * @return {Promise} 
+         */
+    }, {
+        key: 'findByOrganizationAndName',
+        value: function findByOrganizationAndName(organization, name) {
+            var defered = _q2['default'].defer();
+            var promise = defered.promise;
+
+            this._withId(organization);
+            var _this = this;
+            var _error_not_found = this._error_not_found;
+            var _entity = this._entity;
+            this._execute().then(function (result) {
+                if (result.data.length > 0) {
+                    var timeserieId;
+                    result.data.forEach(function (tsData) {
+                        if (!timeserieId && tsData.name === name) {
+                            timeserieId = tsData.identifier;
+                        }
+                    });
+
+                    if (!timeserieId) {
+                        defered.reject({
+                            error: _error_not_found,
+                            statusCode: _httpStatusCodes2['default'].NOT_FOUND
+                        });
+                    } else {
+                        _this._withId(organization + '/' + timeserieId);
+
+                        _this._api.get(_this._composeUrl(), undefined, _this._getExtraHeaders(), _this._getUrlParameters(), false, _this._getServiceBaseURL()).then(function (req) {
+                            if (req.statusCode === 204) {
+                                defered.reject({
+                                    error: _error_not_found,
+                                    statusCode: _httpStatusCodes2['default'].NOT_FOUND
+                                });
+                            } else {
+                                if (req.body) {
+                                    var data = req.body[_entity] && req.body.provision ? req.body : req.body[_entity];
+                                    defered.resolve({
+                                        data: data ? data : req.body,
+                                        statusCode: req.statusCode
+                                    });
+                                } else {
+                                    defered.resolve({
+                                        data: req.text,
+                                        statusCode: req.statusCode
+                                    });
+                                }
+                            }
+                        })['catch'](function (error) {
+                            // BUG RELACIONADO (http://cm.amplia.es/jira/browse/OGODM-3250)
+                            if (error.statusCode === 400) {
+                                error.statusCode = _httpStatusCodes2['default'].NOT_FOUND;
+                            }
+
+                            defered.reject(error);
+                        });
+                    }
+                } else {
+                    defered.reject({
+                        error: _error_not_found,
+                        statusCode: _httpStatusCodes2['default'].NOT_FOUND
+                    });
+                }
+            })['catch'](function (error) {
+                defered.reject(error);
+            });
+
+            return promise;
         }
     }]);
 

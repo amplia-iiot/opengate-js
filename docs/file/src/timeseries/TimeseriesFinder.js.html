@@ -299,7 +299,10 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/timeseries/TimeseriesFinder.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
+import q from &apos;q&apos;;
 import GenericFinder from &apos;../GenericFinder&apos;;
+import HttpStatus from &apos;http-status-codes&apos;;
+
 /**
  *   This class allow make get request to TimeseriesFinder resource into Opengate North API.
  */
@@ -309,42 +312,42 @@ export default class TimeseriesFinder extends GenericFinder {
     /**     
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
-     constructor(ogapi) {
+    constructor(ogapi) {
         super(ogapi, &apos;timeseries/provision/organizations&apos;, &apos;timeseries&apos;);
     }
 
-   /**
-     * Performs a get that returns list of timeseries
-     * @test
-     *   ogapi.newTimeserieFinder().findByOrganization(organization);
-     *   ogapi.newTimeserieFinder().findByOrganization(organization, [&apos;columns&apos;, &apos;context&apos;]);
-     *   ogapi.newTimeserieFinder().findByOrganization(organization, [], [&apos;ds_id_1&apos;, &apos;ds_id-2&apos;]);
-     *   ogapi.newTimeserieFinder().findByOrganization(organization, [&apos;columns&apos;], []);
-     *   ogapi.newTimeserieFinder().findByOrganization(organization, [&apos;columns&apos;], undefined);
-     *   ogapi.newTimeserieFinder().findByOrganization(organization, undefined, [&apos;ds_id_2&apos;]);
-     * @param {string} organization - organization
-     * @param {Array} expand - [&apos;columns&apos;, &apos;context&apos;]
-     * @param {Array} dataStreams - [&quot;ds_id_1&quot;,&quot;ds_id_2&quot;]
-     * @return {Promise} 
-     */
+    /**
+      * Performs a get that returns list of timeseries
+      * @test
+      *   ogapi.newTimeserieFinder().findByOrganization(organization);
+      *   ogapi.newTimeserieFinder().findByOrganization(organization, [&apos;columns&apos;, &apos;context&apos;]);
+      *   ogapi.newTimeserieFinder().findByOrganization(organization, [], [&apos;ds_id_1&apos;, &apos;ds_id-2&apos;]);
+      *   ogapi.newTimeserieFinder().findByOrganization(organization, [&apos;columns&apos;], []);
+      *   ogapi.newTimeserieFinder().findByOrganization(organization, [&apos;columns&apos;], undefined);
+      *   ogapi.newTimeserieFinder().findByOrganization(organization, undefined, [&apos;ds_id_2&apos;]);
+      * @param {string} organization - organization
+      * @param {Array} expand - [&apos;columns&apos;, &apos;context&apos;]
+      * @param {Array} dataStreams - [&quot;ds_id_1&quot;,&quot;ds_id_2&quot;]
+      * @return {Promise} 
+      */
     findByOrganization(organization, expand, dataStreams) {
         this._withId(organization);
         const parameters = {}
-        if(expand){
-            if (!(expand instanceof Array)){
+        if (expand) {
+            if (!(expand instanceof Array)) {
                 throw new Error({
                     message: &quot;Parameter expand requires an array&quot;,
                     parameter: &apos;expand&apos;
                 });
-            } else if(expand.length &gt; 0) parameters.expand = expand.join()
+            } else if (expand.length &gt; 0) parameters.expand = expand.join()
         }
-        if(dataStreams){
-            if (!(dataStreams instanceof Array)){
+        if (dataStreams) {
+            if (!(dataStreams instanceof Array)) {
                 throw new Error({
                     message: &quot;Parameter dataStreams requires an array&quot;,
                     parameter: &apos;dataStreams&apos;
                 });
-            } else if(dataStreams.length &gt; 0) parameters.dataStreams = dataStreams.join()
+            } else if (dataStreams.length &gt; 0) parameters.dataStreams = dataStreams.join()
         }
         this._setUrlParameters(parameters)
         return this._execute();
@@ -358,9 +361,88 @@ export default class TimeseriesFinder extends GenericFinder {
      * @param {string} timeserieId - timeserie identifier
      * @return {Promise} 
      */
-     findByOrganizationAndTimeserieId(organization, timeserieId) {
+    findByOrganizationAndTimeserieId(organization, timeserieId) {
         this._withId(organization + &apos;/&apos; + timeserieId);
         return this._execute();
+    }
+
+    /**
+     * Performs a get that returns a definition of timeserie
+     * @test
+     *   ogapi.newTimeserieFinder().findByOrganizationAndName(organization, name);
+     * @param {string} organization - organization
+     * @param {string} name - timeserie name
+     * @return {Promise} 
+     */
+    findByOrganizationAndName(organization, name) {
+        let defered = q.defer();
+        let promise = defered.promise;
+
+        this._withId(organization);
+        var _this = this;
+        let _error_not_found = this._error_not_found;
+        let _entity = this._entity;
+        this._execute().then((result) =&gt; {
+            if (result.data.length &gt; 0) {
+                var timeserieId;
+                result.data.forEach((tsData) =&gt; {
+                    if (!timeserieId &amp;&amp; tsData.name === name) {
+                        timeserieId = tsData.identifier;
+                    }
+                });
+
+                if (!timeserieId) {
+                    defered.reject({
+                        error: _error_not_found,
+                        statusCode: HttpStatus.NOT_FOUND
+                    });
+                } else {
+                    _this._withId(organization + &apos;/&apos; + timeserieId);
+
+                    _this._api.get(_this._composeUrl(), undefined, _this._getExtraHeaders(), _this._getUrlParameters(), false, _this._getServiceBaseURL())
+                        .then((req) =&gt; {
+                            if (req.statusCode === 204) {
+                                defered.reject({
+                                    error: _error_not_found,
+                                    statusCode: HttpStatus.NOT_FOUND
+                                });
+                            } else {
+                                if (req.body) {
+                                    var data = req.body[_entity] &amp;&amp; req.body.provision ? req.body : req.body[_entity];
+                                    defered.resolve({
+                                        data: data ? data : req.body,
+                                        statusCode: req.statusCode
+                                    });
+                                } else {
+                                    defered.resolve({
+                                        data: req.text,
+                                        statusCode: req.statusCode
+                                    });
+                                }
+                            }
+                        })
+                        .catch((error) =&gt; {
+                            // BUG RELACIONADO (http://cm.amplia.es/jira/browse/OGODM-3250)
+                            if (error.statusCode === 400) {
+                                error.statusCode = HttpStatus.NOT_FOUND;
+                            }
+
+                            defered.reject(error);
+                        });
+                }
+            } else {
+                defered.reject({
+                    error: _error_not_found,
+                    statusCode: HttpStatus.NOT_FOUND
+                });
+            }
+        })
+            .catch((error) =&gt; {
+                defered.reject(error);
+            });
+
+
+        return promise;
     }
 }</code></pre>
 
