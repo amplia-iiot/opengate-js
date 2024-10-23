@@ -2,7 +2,6 @@
 @finder
 @timeseries
 @find_timeseries
-@wip
 
 Feature: Find a timeserie
     As a user of JsApi

@@ -9,7 +9,8 @@ Feature: Find a dataset
     So I can check if a user exists and get their information
 
     Background:
-        Given an apikey user by "require-real-apikey"
+        #Given an apikey user by "require-real-apikey"
+        Given an email "YOUR_EMAIL" and password "YOUR_PASSWORD" the user logs in
 
     Scenario: Creating an organization to use in datasets tests
         Given an ogapi "organizations builder" util
@@ -45,12 +46,20 @@ Feature: Find a dataset
             | organizationId | dataset_organization |
         Then response code should be: 200
 
+        # And an ogapi "dataset finder" util
+        # Given I want to read a "dataset"
+        # When I try to find by...
+        #     | field          | content                         |
+        #     | organizationId | dataset_organization            |
+        #     | datasetId      | from_location_previous_response |
+        # Then response code should be: 200
+
         And an ogapi "dataset finder" util
         Given I want to read a "dataset"
         When I try to find by...
             | field          | content                         |
-            | organizationId | dataset_organization            |
-            | datasetId      | from_location_previous_response |
+            | organization | dataset_organization          |
+            | name    | mockDataset |
         Then response code should be: 200
 
         And an ogapi "datasets builder" util

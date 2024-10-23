@@ -66,7 +66,8 @@ module.exports = {
             },
             'dataset':{
                 'organizationId': 'findByOrganization',
-                'organizationIdAnddatasetId': 'findByOrganizationAndDatasetId'
+                'organizationIdAnddatasetId': 'findByOrganizationAndDatasetId',
+                'organizationAndname': 'findByOrganizationAndName'
             },
             'timeserie':{
                 'organizationId': 'findByOrganization',
