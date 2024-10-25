@@ -59,20 +59,20 @@ export default class DatasetFinder extends GenericFinder {
         let _entity = this._entity;
         this._execute().then((result) => {
             if (result.data.length > 0) {
-                var timeserieId;
-                result.data.forEach((tsData) => {
-                    if (!timeserieId && tsData.name === name) {
-                        timeserieId = tsData.identifier;
+                var datasetId;
+                result.data.forEach((dsData) => {
+                    if (!datasetId && dsData.name === name) {
+                        datasetId = dsData.identifier;
                     }
                 });
 
-                if (!timeserieId) {
+                if (!datasetId) {
                     defered.reject({
                         error: _error_not_found,
                         statusCode: HttpStatus.NOT_FOUND
                     });
                 } else {
-                    _this._withId(organization + '/' + timeserieId);
+                    _this._withId(organization + '/' + datasetId);
 
                     _this._api.get(_this._composeUrl(), undefined, _this._getExtraHeaders(), _this._getUrlParameters(), false, _this._getServiceBaseURL())
                         .then((req) => {
@@ -84,6 +84,10 @@ export default class DatasetFinder extends GenericFinder {
                             } else {
                                 if (req.body) {
                                     var data = req.body[_entity] && req.body.provision ? req.body : req.body[_entity];
+
+                                    if (data) {
+                                        data.identifier = datasetId;
+                                    }
                                     defered.resolve({
                                         data: data ? data : req.body,
                                         statusCode: req.statusCode
