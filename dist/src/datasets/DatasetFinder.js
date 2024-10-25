@@ -93,20 +93,20 @@ var DatasetFinder = (function (_GenericFinder) {
             var _entity = this._entity;
             this._execute().then(function (result) {
                 if (result.data.length > 0) {
-                    var timeserieId;
-                    result.data.forEach(function (tsData) {
-                        if (!timeserieId && tsData.name === name) {
-                            timeserieId = tsData.identifier;
+                    var datasetId;
+                    result.data.forEach(function (dsData) {
+                        if (!datasetId && dsData.name === name) {
+                            datasetId = dsData.identifier;
                         }
                     });
 
-                    if (!timeserieId) {
+                    if (!datasetId) {
                         defered.reject({
                             error: _error_not_found,
                             statusCode: _httpStatusCodes2['default'].NOT_FOUND
                         });
                     } else {
-                        _this._withId(organization + '/' + timeserieId);
+                        _this._withId(organization + '/' + datasetId);
 
                         _this._api.get(_this._composeUrl(), undefined, _this._getExtraHeaders(), _this._getUrlParameters(), false, _this._getServiceBaseURL()).then(function (req) {
                             if (req.statusCode === 204) {
@@ -117,6 +117,10 @@ var DatasetFinder = (function (_GenericFinder) {
                             } else {
                                 if (req.body) {
                                     var data = req.body[_entity] && req.body.provision ? req.body : req.body[_entity];
+
+                                    if (data) {
+                                        data.identifier = datasetId;
+                                    }
                                     defered.resolve({
                                         data: data ? data : req.body,
                                         statusCode: req.statusCode
