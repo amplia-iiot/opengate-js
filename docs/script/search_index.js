@@ -462,12 +462,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "opengate-js/src/datasets/datasetfinder.js~datasetfinder",
-    "class/src/datasets/DatasetFinder.js~DatasetFinder.html",
-    "<span>DatasetFinder</span> <span class=\"search-result-import-path\">opengate-js/src/datasets/DatasetFinder.js</span>",
-    "class"
-  ],
-  [
     "opengate-js/src/searching/builder/datasetsearchbuilder.js~datasetsearchbuilder",
     "class/src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder.html",
     "<span>DatasetSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/DatasetSearchBuilder.js</span>",
@@ -6141,36 +6135,6 @@ window.esdocSearchIndex = [
     "src/connectorsfunctions/configuration/connectorfunctionshelper.js~connectorfunctionshelper#getsouthcriteriasprotocols",
     "class/src/connectorsFunctions/configuration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper.html#instance-method-getSouthCriteriasProtocols",
     "src/connectorsFunctions/configuration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper#getSouthCriteriasProtocols",
-    "method"
-  ],
-  [
-    "src/datasets/datasetfinder.js",
-    "file/src/datasets/DatasetFinder.js.html",
-    "src/datasets/DatasetFinder.js",
-    "file"
-  ],
-  [
-    "src/datasets/datasetfinder.js~datasetfinder#constructor",
-    "class/src/datasets/DatasetFinder.js~DatasetFinder.html#instance-constructor-constructor",
-    "src/datasets/DatasetFinder.js~DatasetFinder#constructor",
-    "method"
-  ],
-  [
-    "src/datasets/datasetfinder.js~datasetfinder#findbyorganization",
-    "class/src/datasets/DatasetFinder.js~DatasetFinder.html#instance-method-findByOrganization",
-    "src/datasets/DatasetFinder.js~DatasetFinder#findByOrganization",
-    "method"
-  ],
-  [
-    "src/datasets/datasetfinder.js~datasetfinder#findbyorganizationanddatasetid",
-    "class/src/datasets/DatasetFinder.js~DatasetFinder.html#instance-method-findByOrganizationAndDatasetId",
-    "src/datasets/DatasetFinder.js~DatasetFinder#findByOrganizationAndDatasetId",
-    "method"
-  ],
-  [
-    "src/datasets/datasetfinder.js~datasetfinder#findbyorganizationandname",
-    "class/src/datasets/DatasetFinder.js~DatasetFinder.html#instance-method-findByOrganizationAndName",
-    "src/datasets/DatasetFinder.js~DatasetFinder#findByOrganizationAndName",
     "method"
   ],
   [
