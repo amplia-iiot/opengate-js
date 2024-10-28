@@ -85,11 +85,8 @@ export default class DatasetFinder extends GenericFinder {
                                 if (req.body) {
                                     var data = req.body[_entity] && req.body.provision ? req.body : req.body[_entity];
 
-                                    if (data) {
-                                        data.identifier = datasetId;
-                                    }
                                     defered.resolve({
-                                        data: data ? data : req.body,
+                                        data: { ...data ? data : req.body, identifier: datasetId },
                                         statusCode: req.statusCode
                                     });
                                 } else {
