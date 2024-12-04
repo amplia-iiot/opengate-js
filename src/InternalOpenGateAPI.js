@@ -117,6 +117,8 @@ import EntitiesSearchBuilder from './searching/builder/EntitiesSearchBuilder';
 import DatasetEntitiesSearchBuilder from './searching/builder/DatasetEntitiesSearchBuilder';
 import DatasetSearchBuilder from './searching/builder/DatasetSearchBuilder';
 import TimeserieSearchBuilder from './searching/builder/TimeserieSearchBuilder';
+import TimeserieDownsamplerBuilder from './searching/builder/TimeserieDownsamplerBuilder';
+import TimeserieDatasetBuilder from './searching/builder/TimeserieDatasetBuilder';
 import CountryCodesSearchBuilder from './searching/builder/CountryCodesSearchBuilder';
 import TimezoneSearchBuilder from './searching/builder/TimezoneSearchBuilder';
 import UserLanguagesSearchBuilder from './searching/builder/UserLanguagesSearchBuilder';
@@ -748,6 +750,21 @@ export default class InternalOpenGateAPI {
         return new TimeserieSearchBuilder(this, organization, timeserie);
     }
     
+    /**
+     * This return a TimeserieDownsamplerBuilder to build a specific TimeserieDownsampler
+     * @return {TimeserieDownsamplerBuilder}
+     */
+    timeserieDownsamplerBuilder(organization, timeserie, entityId) {
+        return new TimeserieDownsamplerBuilder(this, organization, timeserie, entityId);
+    }
+
+    /**
+     * This return a TimeserieDatasetBuilder to build a specific TimeserieDataset
+     * @return {TimeserieDatasetBuilder}
+     */
+    timeserieDatasetBuilder(organization, timeserie) {
+        return new TimeserieDatasetBuilder(this, organization, timeserie);
+    }
 
     /**
      * This return a PlansSearchBuilder to build a specific PlansSearchBuilder

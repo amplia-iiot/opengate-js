@@ -158,7 +158,7 @@ class BoxBuilder {
                                     }
                                     defer.notify({
                                         entity: _this._key._value._current.value,
-                                        message: 'OGAPI_DEVICE_CREATED ',
+                                        message: 'OGAPI_DEVICE_CREATED',
                                         type: 'success',
                                         percentage: 75
                                     });
