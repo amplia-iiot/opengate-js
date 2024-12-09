@@ -108,6 +108,7 @@ Feature: Searching timeseriess data
   #   Then does not throws an error
 
   Scenario: Downsampling
+    And an ogapi "timeseries builder" util
     Given I want to create a "timeserie"
     And the "organization" "timeserie_organization"
     And the "name" "mockTimeserie1"
