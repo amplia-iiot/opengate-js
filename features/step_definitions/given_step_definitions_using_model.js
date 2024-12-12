@@ -56,6 +56,11 @@ Given(/^an ogapi "([^"]*)" util with...$/, function (utilName, table, callback) 
                 }
                 if (!isNaN(param))
                     param = param * 1;
+
+                if(param === 'from_location_previous_response'){
+                    param = this.location.substring(this.location.lastIndexOf("/") + 1);
+                }
+                
                 args.push(param);
             }
             this.util = this.utilsModel.util.apply(null, args);

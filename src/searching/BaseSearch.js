@@ -1,7 +1,6 @@
 'use strict';
 
 import q from 'q';
-import merge from 'merge';
 
 const LIMIT_SIZE_DEF_VALUE = 1000;
 

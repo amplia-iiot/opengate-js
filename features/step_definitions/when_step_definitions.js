@@ -254,6 +254,41 @@ When(/^I add a filter and with$/, function (table, callback) {
 });
 
 
+When(/^I build it with data...$/, function (table, callback) {
+    this.error = undefined;
+    try {
+        var data = table.hashes();
+        
+        if (data.length > 0) {
+            for (var i = 0; i < data.length; i++) {
+                var element = data[i];
+
+                if (this.util[element.method]) {
+                    var finalValue;
+                    switch(element.type) {
+                        case 'number':
+                            finalValue = element.value * 1;
+                            break;
+                        case 'object':
+                            finalValue = JSON.parse(element.value);
+                            break;
+                        default:
+                            finalValue = element.value;
+                    }
+
+                    this.util[element.method](finalValue)
+                }                
+            }
+        }
+        
+        this.build = this.util.build();
+    } catch (err) {
+        console.error('ERROR: ', err)
+        this.error = err;
+    }
+    callback();
+});
+
 When(/^I build it with select...$/, function (table, callback) {
     this.error = undefined;
     var _this = this;
@@ -776,9 +811,7 @@ When(/^I delete it$/, { timeout: 60 * 1000 }, function () {
     }
 
     try {
-        ;
         return _this.util.delete().then(catchResponse).catch(catchErrorResponse);
-
     } catch (err) {
         console.error('ERROR: ', err);
         _this.responseData = err;

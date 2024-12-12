@@ -35,6 +35,12 @@ module.exports = {
             "timeseries search": function(ogapi, param, param2) {
                 return ogapi.timeserieSearchBuilder(param, param2);
             },
+            "timeseries downsampler builder": function(ogapi, param, param2, param3) {
+                return ogapi.timeserieDownsamplerBuilder(param, param2, param3);
+            },
+            "timeseries dataset builder": function(ogapi, param, param2) {
+                return ogapi.timeserieDatasetBuilder(param, param2);
+            },
             "channel finder": function(ogapi) {
                 return ogapi.newChannelFinder();
             },
@@ -366,6 +372,6 @@ module.exports = {
                 return ogapi.newConnectorFunctionsCatalog()
             }
         };
-        return utilsMath[utilName](ogapi, param, param2);
+        return utilsMath[utilName](ogapi, param, param2, param3);
     }
 }
