@@ -132,6 +132,18 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "opengate-js/src/searching/builder/timeseriedatasetbuilder.js~base_url",
+    "variable/index.html#static-variable-BASE_URL",
+    "<span>BASE_URL</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/TimeserieDatasetBuilder.js</span>",
+    "variable"
+  ],
+  [
+    "opengate-js/src/searching/builder/timeseriedownsamplerbuilder.js~base_url",
+    "variable/index.html#static-variable-BASE_URL",
+    "<span>BASE_URL</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/TimeserieDownsamplerBuilder.js</span>",
+    "variable"
+  ],
+  [
     "opengate-js/src/searching/builder/timeseriesearchbuilder.js~base_url",
     "variable/index.html#static-variable-BASE_URL",
     "<span>BASE_URL</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/TimeserieSearchBuilder.js</span>",
@@ -1398,6 +1410,18 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/searching/builder/timeseriedatasetbuilder.js~timeseriedatasetbuilder",
+    "class/src/searching/builder/TimeserieDatasetBuilder.js~TimeserieDatasetBuilder.html",
+    "<span>TimeserieDatasetBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/TimeserieDatasetBuilder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/searching/builder/timeseriedownsamplerbuilder.js~timeseriedownsamplerbuilder",
+    "class/src/searching/builder/TimeserieDownsamplerBuilder.js~TimeserieDownsamplerBuilder.html",
+    "<span>TimeserieDownsamplerBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/TimeserieDownsamplerBuilder.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/searching/builder/timeseriesearchbuilder.js~timeseriesearchbuilder",
     "class/src/searching/builder/TimeserieSearchBuilder.js~TimeserieSearchBuilder.html",
     "<span>TimeserieSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/TimeserieSearchBuilder.js</span>",
@@ -1546,6 +1570,24 @@ window.esdocSearchIndex = [
     "class/src/searching/builder/WorkgroupsSearchBuilder.js~WorkgroupsSearchBuilder.html",
     "<span>WorkgroupsSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/WorkgroupsSearchBuilder.js</span>",
     "class"
+  ],
+  [
+    "opengate-js/src/searching/builder/timeseriedatasetbuilder.js~aggregationtypes",
+    "variable/index.html#static-variable-aggregationTypes",
+    "<span>aggregationTypes</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/TimeserieDatasetBuilder.js</span>",
+    "variable"
+  ],
+  [
+    "opengate-js/src/searching/builder/timeseriedownsamplerbuilder.js~aggregationtypes",
+    "variable/index.html#static-variable-aggregationTypes",
+    "<span>aggregationTypes</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/TimeserieDownsamplerBuilder.js</span>",
+    "variable"
+  ],
+  [
+    "opengate-js/src/searching/builder/timeseriedownsamplerbuilder.js~interpolationtypes",
+    "variable/index.html#static-variable-interpolationTypes",
+    "<span>interpolationTypes</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/TimeserieDownsamplerBuilder.js</span>",
+    "variable"
   ],
   [
     "opengate-js/src/provisionprocessors/provisionprocessorsfinder.js~provisionprocessorsfinder",
@@ -4185,6 +4227,18 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#ticketssearchbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-ticketsSearchBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#ticketsSearchBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#timeseriedatasetbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-timeserieDatasetBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#timeserieDatasetBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#timeseriedownsamplerbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-timeserieDownsamplerBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#timeserieDownsamplerBuilder",
     "method"
   ],
   [
@@ -10383,6 +10437,126 @@ window.esdocSearchIndex = [
     "src/searching/builder/ticketssearchbuilder.js~ticketssearchbuilder#summary",
     "class/src/searching/builder/TicketsSearchBuilder.js~TicketsSearchBuilder.html#instance-method-summary",
     "src/searching/builder/TicketsSearchBuilder.js~TicketsSearchBuilder#summary",
+    "method"
+  ],
+  [
+    "src/searching/builder/timeseriedatasetbuilder.js",
+    "file/src/searching/builder/TimeserieDatasetBuilder.js.html",
+    "src/searching/builder/TimeserieDatasetBuilder.js",
+    "file"
+  ],
+  [
+    "src/searching/builder/timeseriedatasetbuilder.js~timeseriedatasetbuilder#addcolumn",
+    "class/src/searching/builder/TimeserieDatasetBuilder.js~TimeserieDatasetBuilder.html#instance-method-addColumn",
+    "src/searching/builder/TimeserieDatasetBuilder.js~TimeserieDatasetBuilder#addColumn",
+    "method"
+  ],
+  [
+    "src/searching/builder/timeseriedatasetbuilder.js~timeseriedatasetbuilder#build",
+    "class/src/searching/builder/TimeserieDatasetBuilder.js~TimeserieDatasetBuilder.html#instance-method-build",
+    "src/searching/builder/TimeserieDatasetBuilder.js~TimeserieDatasetBuilder#build",
+    "method"
+  ],
+  [
+    "src/searching/builder/timeseriedatasetbuilder.js~timeseriedatasetbuilder#columns",
+    "class/src/searching/builder/TimeserieDatasetBuilder.js~TimeserieDatasetBuilder.html#instance-method-columns",
+    "src/searching/builder/TimeserieDatasetBuilder.js~TimeserieDatasetBuilder#columns",
+    "method"
+  ],
+  [
+    "src/searching/builder/timeseriedatasetbuilder.js~timeseriedatasetbuilder#constructor",
+    "class/src/searching/builder/TimeserieDatasetBuilder.js~TimeserieDatasetBuilder.html#instance-constructor-constructor",
+    "src/searching/builder/TimeserieDatasetBuilder.js~TimeserieDatasetBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/searching/builder/timeseriedatasetbuilder.js~timeseriedatasetbuilder#findallfields",
+    "class/src/searching/builder/TimeserieDatasetBuilder.js~TimeserieDatasetBuilder.html#instance-method-findAllFields",
+    "src/searching/builder/TimeserieDatasetBuilder.js~TimeserieDatasetBuilder#findAllFields",
+    "method"
+  ],
+  [
+    "src/searching/builder/timeseriedatasetbuilder.js~timeseriedatasetbuilder#group",
+    "class/src/searching/builder/TimeserieDatasetBuilder.js~TimeserieDatasetBuilder.html#instance-method-group",
+    "src/searching/builder/TimeserieDatasetBuilder.js~TimeserieDatasetBuilder#group",
+    "method"
+  ],
+  [
+    "src/searching/builder/timeseriedatasetbuilder.js~timeseriedatasetbuilder#select",
+    "class/src/searching/builder/TimeserieDatasetBuilder.js~TimeserieDatasetBuilder.html#instance-method-select",
+    "src/searching/builder/TimeserieDatasetBuilder.js~TimeserieDatasetBuilder#select",
+    "method"
+  ],
+  [
+    "src/searching/builder/timeseriedatasetbuilder.js~timeseriedatasetbuilder#sort",
+    "class/src/searching/builder/TimeserieDatasetBuilder.js~TimeserieDatasetBuilder.html#instance-method-sort",
+    "src/searching/builder/TimeserieDatasetBuilder.js~TimeserieDatasetBuilder#sort",
+    "method"
+  ],
+  [
+    "src/searching/builder/timeseriedownsamplerbuilder.js",
+    "file/src/searching/builder/TimeserieDownsamplerBuilder.js.html",
+    "src/searching/builder/TimeserieDownsamplerBuilder.js",
+    "file"
+  ],
+  [
+    "src/searching/builder/timeseriedownsamplerbuilder.js~timeseriedownsamplerbuilder#addcolumn",
+    "class/src/searching/builder/TimeserieDownsamplerBuilder.js~TimeserieDownsamplerBuilder.html#instance-method-addColumn",
+    "src/searching/builder/TimeserieDownsamplerBuilder.js~TimeserieDownsamplerBuilder#addColumn",
+    "method"
+  ],
+  [
+    "src/searching/builder/timeseriedownsamplerbuilder.js~timeseriedownsamplerbuilder#buckettime",
+    "class/src/searching/builder/TimeserieDownsamplerBuilder.js~TimeserieDownsamplerBuilder.html#instance-method-bucketTime",
+    "src/searching/builder/TimeserieDownsamplerBuilder.js~TimeserieDownsamplerBuilder#bucketTime",
+    "method"
+  ],
+  [
+    "src/searching/builder/timeseriedownsamplerbuilder.js~timeseriedownsamplerbuilder#build",
+    "class/src/searching/builder/TimeserieDownsamplerBuilder.js~TimeserieDownsamplerBuilder.html#instance-method-build",
+    "src/searching/builder/TimeserieDownsamplerBuilder.js~TimeserieDownsamplerBuilder#build",
+    "method"
+  ],
+  [
+    "src/searching/builder/timeseriedownsamplerbuilder.js~timeseriedownsamplerbuilder#columns",
+    "class/src/searching/builder/TimeserieDownsamplerBuilder.js~TimeserieDownsamplerBuilder.html#instance-method-columns",
+    "src/searching/builder/TimeserieDownsamplerBuilder.js~TimeserieDownsamplerBuilder#columns",
+    "method"
+  ],
+  [
+    "src/searching/builder/timeseriedownsamplerbuilder.js~timeseriedownsamplerbuilder#constructor",
+    "class/src/searching/builder/TimeserieDownsamplerBuilder.js~TimeserieDownsamplerBuilder.html#instance-constructor-constructor",
+    "src/searching/builder/TimeserieDownsamplerBuilder.js~TimeserieDownsamplerBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/searching/builder/timeseriedownsamplerbuilder.js~timeseriedownsamplerbuilder#filter",
+    "class/src/searching/builder/TimeserieDownsamplerBuilder.js~TimeserieDownsamplerBuilder.html#instance-method-filter",
+    "src/searching/builder/TimeserieDownsamplerBuilder.js~TimeserieDownsamplerBuilder#filter",
+    "method"
+  ],
+  [
+    "src/searching/builder/timeseriedownsamplerbuilder.js~timeseriedownsamplerbuilder#findfields",
+    "class/src/searching/builder/TimeserieDownsamplerBuilder.js~TimeserieDownsamplerBuilder.html#instance-method-findFields",
+    "src/searching/builder/TimeserieDownsamplerBuilder.js~TimeserieDownsamplerBuilder#findFields",
+    "method"
+  ],
+  [
+    "src/searching/builder/timeseriedownsamplerbuilder.js~timeseriedownsamplerbuilder#select",
+    "class/src/searching/builder/TimeserieDownsamplerBuilder.js~TimeserieDownsamplerBuilder.html#instance-method-select",
+    "src/searching/builder/TimeserieDownsamplerBuilder.js~TimeserieDownsamplerBuilder#select",
+    "method"
+  ],
+  [
+    "src/searching/builder/timeseriedownsamplerbuilder.js~timeseriedownsamplerbuilder#sort",
+    "class/src/searching/builder/TimeserieDownsamplerBuilder.js~TimeserieDownsamplerBuilder.html#instance-method-sort",
+    "src/searching/builder/TimeserieDownsamplerBuilder.js~TimeserieDownsamplerBuilder#sort",
+    "method"
+  ],
+  [
+    "src/searching/builder/timeseriedownsamplerbuilder.js~timeseriedownsamplerbuilder#start",
+    "class/src/searching/builder/TimeserieDownsamplerBuilder.js~TimeserieDownsamplerBuilder.html#instance-method-start",
+    "src/searching/builder/TimeserieDownsamplerBuilder.js~TimeserieDownsamplerBuilder#start",
     "method"
   ],
   [

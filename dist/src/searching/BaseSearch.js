@@ -14,10 +14,6 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
-var _merge = require('merge');
-
-var _merge2 = _interopRequireDefault(_merge);
-
 var LIMIT_SIZE_DEF_VALUE = 1000;
 
 /** 

@@ -478,6 +478,14 @@ var _searchingBuilderTimeserieSearchBuilder = require('./searching/builder/Times
 
 var _searchingBuilderTimeserieSearchBuilder2 = _interopRequireDefault(_searchingBuilderTimeserieSearchBuilder);
 
+var _searchingBuilderTimeserieDownsamplerBuilder = require('./searching/builder/TimeserieDownsamplerBuilder');
+
+var _searchingBuilderTimeserieDownsamplerBuilder2 = _interopRequireDefault(_searchingBuilderTimeserieDownsamplerBuilder);
+
+var _searchingBuilderTimeserieDatasetBuilder = require('./searching/builder/TimeserieDatasetBuilder');
+
+var _searchingBuilderTimeserieDatasetBuilder2 = _interopRequireDefault(_searchingBuilderTimeserieDatasetBuilder);
+
 var _searchingBuilderCountryCodesSearchBuilder = require('./searching/builder/CountryCodesSearchBuilder');
 
 var _searchingBuilderCountryCodesSearchBuilder2 = _interopRequireDefault(_searchingBuilderCountryCodesSearchBuilder);
@@ -1329,6 +1337,26 @@ var InternalOpenGateAPI = (function () {
         key: 'timeserieSearchBuilder',
         value: function timeserieSearchBuilder(organization, timeserie) {
             return new _searchingBuilderTimeserieSearchBuilder2['default'](this, organization, timeserie);
+        }
+
+        /**
+         * This return a TimeserieDownsamplerBuilder to build a specific TimeserieDownsampler
+         * @return {TimeserieDownsamplerBuilder}
+         */
+    }, {
+        key: 'timeserieDownsamplerBuilder',
+        value: function timeserieDownsamplerBuilder(organization, timeserie, entityId) {
+            return new _searchingBuilderTimeserieDownsamplerBuilder2['default'](this, organization, timeserie, entityId);
+        }
+
+        /**
+         * This return a TimeserieDatasetBuilder to build a specific TimeserieDataset
+         * @return {TimeserieDatasetBuilder}
+         */
+    }, {
+        key: 'timeserieDatasetBuilder',
+        value: function timeserieDatasetBuilder(organization, timeserie) {
+            return new _searchingBuilderTimeserieDatasetBuilder2['default'](this, organization, timeserie);
         }
 
         /**

@@ -246,6 +246,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketSeveritySearchBuilder.js~TicketSeveritySearchBuilder.html">TicketSeveritySearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketStatusSearchBuilder.js~TicketStatusSearchBuilder.html">TicketStatusSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TicketsSearchBuilder.js~TicketsSearchBuilder.html">TicketsSearchBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TimeserieDatasetBuilder.js~TimeserieDatasetBuilder.html">TimeserieDatasetBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TimeserieDownsamplerBuilder.js~TimeserieDownsamplerBuilder.html">TimeserieDownsamplerBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TimeserieSearchBuilder.js~TimeserieSearchBuilder.html">TimeserieSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/TimezoneSearchBuilder.js~TimezoneSearchBuilder.html">TimezoneSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/UserLanguagesSearchBuilder.js~UserLanguagesSearchBuilder.html">UserLanguagesSearchBuilder</a></span></span></li>
@@ -258,6 +260,11 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOKEN_URL">TOKEN_URL</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TOKEN_URL">TOKEN_URL</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOFTWARE_TYPES_ENUM">SOFTWARE_TYPES_ENUM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BASE_URL">BASE_URL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-aggregationTypes">aggregationTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BASE_URL">BASE_URL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-aggregationTypes">aggregationTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-interpolationTypes">interpolationTypes</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BASE_URL">BASE_URL</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">searching/error</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/error/SearchBuilderError.js~SearchBuilderError.html">SearchBuilderError</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">security</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/security/CertificateFinder.js~CertificateFinder.html">CertificateFinder</a></span></span></li>
@@ -415,6 +422,8 @@ import EntitiesSearchBuilder from &apos;./searching/builder/EntitiesSearchBuilde
 import DatasetEntitiesSearchBuilder from &apos;./searching/builder/DatasetEntitiesSearchBuilder&apos;;
 import DatasetSearchBuilder from &apos;./searching/builder/DatasetSearchBuilder&apos;;
 import TimeserieSearchBuilder from &apos;./searching/builder/TimeserieSearchBuilder&apos;;
+import TimeserieDownsamplerBuilder from &apos;./searching/builder/TimeserieDownsamplerBuilder&apos;;
+import TimeserieDatasetBuilder from &apos;./searching/builder/TimeserieDatasetBuilder&apos;;
 import CountryCodesSearchBuilder from &apos;./searching/builder/CountryCodesSearchBuilder&apos;;
 import TimezoneSearchBuilder from &apos;./searching/builder/TimezoneSearchBuilder&apos;;
 import UserLanguagesSearchBuilder from &apos;./searching/builder/UserLanguagesSearchBuilder&apos;;
@@ -1046,6 +1055,21 @@ export default class InternalOpenGateAPI {
         return new TimeserieSearchBuilder(this, organization, timeserie);
     }
     
+    /**
+     * This return a TimeserieDownsamplerBuilder to build a specific TimeserieDownsampler
+     * @return {TimeserieDownsamplerBuilder}
+     */
+    timeserieDownsamplerBuilder(organization, timeserie, entityId) {
+        return new TimeserieDownsamplerBuilder(this, organization, timeserie, entityId);
+    }
+
+    /**
+     * This return a TimeserieDatasetBuilder to build a specific TimeserieDataset
+     * @return {TimeserieDatasetBuilder}
+     */
+    timeserieDatasetBuilder(organization, timeserie) {
+        return new TimeserieDatasetBuilder(this, organization, timeserie);
+    }
 
     /**
      * This return a PlansSearchBuilder to build a specific PlansSearchBuilder
