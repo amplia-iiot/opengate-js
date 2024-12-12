@@ -254,9 +254,8 @@ When(/^I add a filter and with$/, function (table, callback) {
 });
 
 
-When(/^I build it with data...$/, function (field, table, callback) {
+When(/^I build it with data...$/, function (table, callback) {
     this.error = undefined;
-    var _this = this;
     try {
         var data = table.hashes();
         
@@ -265,7 +264,19 @@ When(/^I build it with data...$/, function (field, table, callback) {
                 var element = data[i];
 
                 if (this.util[element.method]) {
-                    this.util[element.method]((element.param1?JSON.parse(element.param1):undefined), (element.param2?JSON.parse(element.param2):undefined), (element.param3?JSON.parse(element.param3):undefined))
+                    var finalValue;
+                    switch(element.type) {
+                        case 'number':
+                            finalValue = element.value * 1;
+                            break;
+                        case 'object':
+                            finalValue = JSON.parse(element.value);
+                            break;
+                        default:
+                            finalValue = element.value;
+                    }
+
+                    this.util[element.method](finalValue)
                 }                
             }
         }
