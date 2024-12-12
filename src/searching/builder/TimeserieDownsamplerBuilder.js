@@ -22,7 +22,7 @@ export default class TimeserieDownsamplerBuilder extends SearchBuilder {
     }
 
     /**
-     * The search request will have this filter 
+     * The search request will have this select 
      * @param {object} select
      * @return {TimeserieDownsamplerBuilder} 
      */
@@ -31,7 +31,11 @@ export default class TimeserieDownsamplerBuilder extends SearchBuilder {
         return this;
     }
 
-
+    /**
+     * The start time for the downsampling
+     * @param {string} start
+     * @return {TimeserieDownsamplerBuilder} 
+     */
     start(start) {
         checkType._checkISODateTime(start, 'start');
 
@@ -43,6 +47,11 @@ export default class TimeserieDownsamplerBuilder extends SearchBuilder {
         return this;
     }
 
+    /**
+     * The bucket for the downsampling (must be higher than the time series bucket)
+     * @param {number} bucketTime
+     * @return {TimeserieDownsamplerBuilder} 
+     */
     bucketTime(bucketTime) {
         checkType._checkNumber(bucketTime, 'bucketTime');
         
@@ -55,12 +64,22 @@ export default class TimeserieDownsamplerBuilder extends SearchBuilder {
         return this;
     }
 
+    /**
+     * Add columns that will be requested
+     * @param {array} columns
+     * @return {TimeserieDownsamplerBuilder} 
+     */
     columns(columns) {
         checkType._checkArray(columns, 'columns');
 
-        columns.forEach((colTmp) => this.addColumn(colTmp.name, colTmp.interpolation, colTmp.aggregation))
+        columns.forEach((colTmp) => this.addColumn(colTmp.name, colTmp.interpolation, colTmp.aggregation, colTmp.alias))
     }
 
+    /**
+     * Add column that will be requested
+     * @param {object} column
+     * @return {TimeserieDownsamplerBuilder} 
+     */
     addColumn(name, interpolation, aggregation, alias) {
         checkType._checkStringAndPattern(name, "^[a-zA-Z0-9 _-]*$", 'name');
 

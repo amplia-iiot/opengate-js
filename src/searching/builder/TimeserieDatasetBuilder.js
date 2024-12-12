@@ -23,7 +23,7 @@ export default class TimeserieDatasetBuilder extends SearchBuilder {
     }
 
     /**
-     * The search request will have this filter 
+     * The search request will have 
      * @param {object} select
      * @return {TimeserieDatasetBuilder} 
      */
@@ -32,12 +32,22 @@ export default class TimeserieDatasetBuilder extends SearchBuilder {
         return this;
     }
 
+    /**
+     * Add columns that will be requested
+     * @param {array} columns
+     * @return {TimeserieDatasetBuilder} 
+     */
     columns(columns) {
         checkType._checkArray(columns, 'columns');
 
         columns.forEach((colTmp) => this.addColumn(colTmp.name, colTmp.aggregation, colTmp.alias))
     }
 
+    /**
+     * Add column that will be requested
+     * @param {object} columns
+     * @return {TimeserieDatasetBuilder} 
+     */
     addColumn(name, aggregation, alias) {
         checkType._checkStringAndPattern(name, "^[a-zA-Z0-9 _-]*$", 'name');
 
@@ -58,7 +68,7 @@ export default class TimeserieDatasetBuilder extends SearchBuilder {
         }
 
         this._builderParams.select.columns.push({
-            column: name,
+            name: name,
             alias: alias || undefined,
             aggregation: aggregation || undefined
         });
