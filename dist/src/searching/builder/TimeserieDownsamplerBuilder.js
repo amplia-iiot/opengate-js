@@ -61,7 +61,7 @@ var TimeserieDownsamplerBuilder = (function (_SearchBuilder) {
     _createClass(TimeserieDownsamplerBuilder, [{
         key: 'select',
         value: function select(_select) {
-            this._builderParams.select = _select || [];
+            this._builderParams.select = _select || {};
             return this;
         }
 
@@ -115,7 +115,7 @@ var TimeserieDownsamplerBuilder = (function (_SearchBuilder) {
             _utilFormatsCheck_types2['default']._checkArray(_columns, 'columns');
 
             _columns.forEach(function (colTmp) {
-                return _this.addColumn(colTmp.name, colTmp.interpolation, colTmp.aggregation, colTmp.alias);
+                return _this.addColumn(colTmp.name || colTmp.column, colTmp.interpolation, colTmp.aggregation, colTmp.alias);
             });
         }
 

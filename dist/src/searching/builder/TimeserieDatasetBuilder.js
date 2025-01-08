@@ -64,7 +64,7 @@ var TimeserieDatasetBuilder = (function (_SearchBuilder) {
     _createClass(TimeserieDatasetBuilder, [{
         key: 'select',
         value: function select(_select) {
-            this._builderParams.select = _select || [];
+            this._builderParams.select = _select || {};
             return this;
         }
 
@@ -81,7 +81,7 @@ var TimeserieDatasetBuilder = (function (_SearchBuilder) {
             _utilFormatsCheck_types2['default']._checkArray(_columns, 'columns');
 
             _columns.forEach(function (colTmp) {
-                return _this.addColumn(colTmp.name, colTmp.aggregation, colTmp.alias);
+                return _this.addColumn(colTmp.name || colTmp.column, colTmp.aggregation, colTmp.alias);
             });
         }
 
@@ -112,7 +112,7 @@ var TimeserieDatasetBuilder = (function (_SearchBuilder) {
             }
 
             this._builderParams.select.columns.push({
-                name: name,
+                column: name,
                 alias: alias || undefined,
                 aggregation: aggregation || undefined
             });
