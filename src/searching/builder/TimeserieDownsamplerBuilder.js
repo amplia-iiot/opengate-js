@@ -27,7 +27,7 @@ export default class TimeserieDownsamplerBuilder extends SearchBuilder {
      * @return {TimeserieDownsamplerBuilder} 
      */
     select(select) {
-        this._builderParams.select = (select || []);
+        this._builderParams.select = (select || {});
         return this;
     }
 
@@ -72,7 +72,7 @@ export default class TimeserieDownsamplerBuilder extends SearchBuilder {
     columns(columns) {
         checkType._checkArray(columns, 'columns');
 
-        columns.forEach((colTmp) => this.addColumn(colTmp.name, colTmp.interpolation, colTmp.aggregation, colTmp.alias))
+        columns.forEach((colTmp) => this.addColumn(colTmp.name || colTmp.column, colTmp.interpolation, colTmp.aggregation, colTmp.alias))
     }
 
     /**
