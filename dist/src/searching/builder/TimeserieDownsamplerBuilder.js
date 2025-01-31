@@ -121,7 +121,10 @@ var TimeserieDownsamplerBuilder = (function (_SearchBuilder) {
 
         /**
          * Add column that will be requested
-         * @param {object} column
+         * @param {string} name
+         * @param {string} interpolation
+         * @param {string} aggregation
+         * @param {string} alias
          * @return {TimeserieDownsamplerBuilder} 
          */
     }, {

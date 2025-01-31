@@ -87,7 +87,9 @@ var TimeserieDatasetBuilder = (function (_SearchBuilder) {
 
         /**
          * Add column that will be requested
-         * @param {object} columns
+         * @param {string} name
+         * @param {string} aggregation
+         * @param {string} alias
          * @return {TimeserieDatasetBuilder} 
          */
     }, {

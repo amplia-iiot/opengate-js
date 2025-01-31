@@ -382,7 +382,10 @@ export default class TimeserieDownsamplerBuilder extends SearchBuilder {
 
     /**
      * Add column that will be requested
-     * @param {object} column
+     * @param {string} name
+     * @param {string} interpolation
+     * @param {string} aggregation
+     * @param {string} alias
      * @return {TimeserieDownsamplerBuilder} 
      */
     addColumn(name, interpolation, aggregation, alias) {
