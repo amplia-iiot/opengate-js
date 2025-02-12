@@ -598,6 +598,14 @@ var _organization_manufacturerModelFinder = require('./organization_manufacturer
 
 var _organization_manufacturerModelFinder2 = _interopRequireDefault(_organization_manufacturerModelFinder);
 
+var _organization_softwareSoftware = require('./organization_software/Software');
+
+var _organization_softwareSoftware2 = _interopRequireDefault(_organization_softwareSoftware);
+
+var _organization_softwareSoftwareFinder = require('./organization_software/SoftwareFinder');
+
+var _organization_softwareSoftwareFinder2 = _interopRequireDefault(_organization_softwareSoftwareFinder);
+
 var _provisionCountryCountriesCatalog = require('./provision/country/CountriesCatalog');
 
 var _provisionCountryCountriesCatalog2 = _interopRequireDefault(_provisionCountryCountriesCatalog);
@@ -2070,6 +2078,25 @@ var InternalOpenGateAPI = (function () {
         key: 'newOrganizationModelFinder',
         value: function newOrganizationModelFinder() {
             return new _organization_manufacturerModelFinder2['default'](this);
+        }
+
+        /** This return a SoftwaresBuilder to build a specific SoftwaresBuilder
+         * @return {SoftwaresBuilder}
+         */
+    }, {
+        key: 'softwaresBuilder',
+        value: function softwaresBuilder(organization) {
+            return new _organization_softwareSoftware2['default'](this, organization);
+        }
+
+        /**
+         * This return a util to find an organization software
+         * @return {SoftwareFinder}
+         */
+    }, {
+        key: 'newSoftwareFinder',
+        value: function newSoftwareFinder() {
+            return new _organization_softwareSoftwareFinder2['default'](this);
         }
     }]);
 
