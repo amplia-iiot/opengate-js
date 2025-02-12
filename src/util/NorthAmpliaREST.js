@@ -61,7 +61,7 @@ export default class NorthAmpliaREST {
             };
         });
         
-        mock.del(_options.url + '/north/v80/provision/organizations/:organization/software/:id', function(req) {
+        mock.del(_options.url + '/north/v80/provision//organizations/:organization/software/:id', function(req) {
             return {
                 body: {
                     "software": []
@@ -70,7 +70,7 @@ export default class NorthAmpliaREST {
             };
         });
         
-        mock.get(_options.url + '/north/v80/provision/organizations/:organization/software?visibility=administrable', function(req) {
+        mock.get(_options.url + '/north/v80/provision//organizations/:organization/software?visibility=administrable', function(req) {
             return {
                 body: {
                     "software": [{
