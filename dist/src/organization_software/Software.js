@@ -25,7 +25,7 @@ var _utilFormatsCheck_types2 = _interopRequireDefault(_utilFormatsCheck_types);
 /**
  * This is a base object that contains all you can do about Softwares.
  */
-var PRE_RESOURCE = 'organizations';
+var PRE_RESOURCE = '/organizations';
 exports.PRE_RESOURCE = PRE_RESOURCE;
 var SOFTWARES_RESOURCE = '/software';
 exports.SOFTWARES_RESOURCE = SOFTWARES_RESOURCE;
@@ -99,8 +99,7 @@ var Softwares = (function (_BaseProvision) {
     }, {
         key: 'withType',
         value: function withType(type) {
-            _utilFormatsCheck_types2['default']._checkType(type, TYPE_ENUM);
-            _utilFormatsCheck_types2['default']._checkArray(type, 'type');
+            _utilFormatsCheck_types2['default']._checkType(type, SOFTWARE_TYPES_ENUM);
             this._type = type;
             return this;
         }

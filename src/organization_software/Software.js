@@ -1,6 +1,6 @@
 'use strict';
 
-export const PRE_RESOURCE = 'organizations';
+export const PRE_RESOURCE = '/organizations';
 export const SOFTWARES_RESOURCE = '/software';
 export const SOFTWARE_TYPES_ENUM = ['SOFTWARE', 'FIRMWARE'];
 
@@ -63,8 +63,7 @@ export default class Softwares extends BaseProvision {
      * @return {Softwares}
      */
     withType(type) {
-        checkType._checkType(type, TYPE_ENUM);
-        checkType._checkArray(type, 'type');
+        checkType._checkType(type, SOFTWARE_TYPES_ENUM);
         this._type = type;
         return this;
     }

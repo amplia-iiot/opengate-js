@@ -63,7 +63,7 @@ var NorthAmpliaREST = (function () {
         }
         // ---------------------------------- EXAMPLE
         /*
-        mock.post(_options.url + '/search/channels', function(req) {
+        mock.post(_options.url + '/north/v80/search/channels', function(req) {
             return {
                 body: {
                     "channels": [{
@@ -96,7 +96,7 @@ var NorthAmpliaREST = (function () {
             };
         });
 
-        mock.del(_options.url + '/north/v80/provision/organizations/:organization/software/:id', function (req) {
+        mock.del(_options.url + '/north/v80/provision//organizations/:organization/software/:id', function (req) {
             return {
                 body: {
                     "software": []
@@ -105,7 +105,7 @@ var NorthAmpliaREST = (function () {
             };
         });
 
-        mock.get(_options.url + '/north/v80/provision/organizations/:organization/software?visibility=administrable', function (req) {
+        mock.get(_options.url + '/north/v80/provision//organizations/:organization/software?visibility=administrable', function (req) {
             return {
                 body: {
                     "software": [{
