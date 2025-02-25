@@ -432,6 +432,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "opengate-js/src/plan/url_enum.js~device_plans",
+    "variable/index.html#static-variable-DEVICE_PLANS",
+    "<span>DEVICE_PLANS</span> <span class=\"search-result-import-path\">opengate-js/src/plan/URL_ENUM.js</span>",
+    "variable"
+  ],
+  [
     "opengate-js/src/iot/datamodels/datamodels.js~datamodels",
     "class/src/iot/datamodels/Datamodels.js~Datamodels.html",
     "<span>Datamodels</span> <span class=\"search-result-import-path\">opengate-js/src/iot/datamodels/Datamodels.js</span>",
@@ -534,15 +540,21 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "opengate-js/src/searching/devicesearch.js~devicesearch",
-    "class/src/searching/DeviceSearch.js~DeviceSearch.html",
-    "<span>DeviceSearch</span> <span class=\"search-result-import-path\">opengate-js/src/searching/DeviceSearch.js</span>",
+    "opengate-js/src/plan/deviceplans.js~deviceplans",
+    "class/src/plan/DevicePlans.js~DevicePlans.html",
+    "<span>DevicePlans</span> <span class=\"search-result-import-path\">opengate-js/src/plan/DevicePlans.js</span>",
     "class"
   ],
   [
-    "opengate-js/src/searching/builder/devicesplanssearchbuilder.js~devicesplanssearchbuilder",
-    "class/src/searching/builder/DevicesPlansSearchBuilder.js~DevicesPlansSearchBuilder.html",
-    "<span>DevicesPlansSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/DevicesPlansSearchBuilder.js</span>",
+    "opengate-js/src/plan/deviceplansfinder.js~deviceplansfinder",
+    "class/src/plan/DevicePlansFinder.js~DevicePlansFinder.html",
+    "<span>DevicePlansFinder</span> <span class=\"search-result-import-path\">opengate-js/src/plan/DevicePlansFinder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/searching/devicesearch.js~devicesearch",
+    "class/src/searching/DeviceSearch.js~DeviceSearch.html",
+    "<span>DeviceSearch</span> <span class=\"search-result-import-path\">opengate-js/src/searching/DeviceSearch.js</span>",
     "class"
   ],
   [
@@ -882,6 +894,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "opengate-js/src/plan/url_enum.js~organization_plans",
+    "variable/index.html#static-variable-ORGANIZATION_PLANS",
+    "<span>ORGANIZATION_PLANS</span> <span class=\"search-result-import-path\">opengate-js/src/plan/URL_ENUM.js</span>",
+    "variable"
+  ],
+  [
     "opengate-js/src/alarms/actions/alarm.js~operation",
     "class/src/alarms/actions/Alarm.js~Operation.html",
     "<span>Operation</span> <span class=\"search-result-import-path\">opengate-js/src/alarms/actions/Alarm.js</span>",
@@ -954,6 +972,18 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/plan/organizationplans.js~organizationplans",
+    "class/src/plan/OrganizationPlans.js~OrganizationPlans.html",
+    "<span>OrganizationPlans</span> <span class=\"search-result-import-path\">opengate-js/src/plan/OrganizationPlans.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/plan/organizationplansfinder.js~organizationplansfinder",
+    "class/src/plan/OrganizationPlansFinder.js~OrganizationPlansFinder.html",
+    "<span>OrganizationPlansFinder</span> <span class=\"search-result-import-path\">opengate-js/src/plan/OrganizationPlansFinder.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/organizations/organizations.js~organizations",
     "class/src/organizations/Organizations.js~Organizations.html",
     "<span>Organizations</span> <span class=\"search-result-import-path\">opengate-js/src/organizations/Organizations.js</span>",
@@ -964,6 +994,24 @@ window.esdocSearchIndex = [
     "class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html",
     "<span>OrganizationsSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/OrganizationsSearchBuilder.js</span>",
     "class"
+  ],
+  [
+    "opengate-js/src/plan/period_enum.js~period",
+    "variable/index.html#static-variable-PERIOD",
+    "<span>PERIOD</span> <span class=\"search-result-import-path\">opengate-js/src/plan/PERIOD_ENUM.js</span>",
+    "variable"
+  ],
+  [
+    "opengate-js/src/plan/url_enum.js~plan",
+    "variable/index.html#static-variable-PLAN",
+    "<span>PLAN</span> <span class=\"search-result-import-path\">opengate-js/src/plan/URL_ENUM.js</span>",
+    "variable"
+  ],
+  [
+    "opengate-js/src/plan/url_enum.js~plans",
+    "variable/index.html#static-variable-PLANS",
+    "<span>PLANS</span> <span class=\"search-result-import-path\">opengate-js/src/plan/URL_ENUM.js</span>",
+    "variable"
   ],
   [
     "opengate-js/src/iot/datamodels/datamodelshelper.js~post_resource",
@@ -1029,12 +1077,6 @@ window.esdocSearchIndex = [
     "opengate-js/src/pipelines/pipelines.js~pipelines",
     "class/src/pipelines/Pipelines.js~Pipelines.html",
     "<span>Pipelines</span> <span class=\"search-result-import-path\">opengate-js/src/pipelines/Pipelines.js</span>",
-    "class"
-  ],
-  [
-    "opengate-js/src/searching/builder/planssearchbuilder.js~planssearchbuilder",
-    "class/src/searching/builder/PlansSearchBuilder.js~PlansSearchBuilder.html",
-    "<span>PlansSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/PlansSearchBuilder.js</span>",
     "class"
   ],
   [
@@ -1476,6 +1518,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/plan/unit_enum.js~unit",
+    "variable/index.html#static-variable-UNIT",
+    "<span>UNIT</span> <span class=\"search-result-import-path\">opengate-js/src/plan/UNIT_ENUM.js</span>",
+    "variable"
+  ],
+  [
     "opengate-js/src/timeseries/timeseries.js~url",
     "variable/index.html#static-variable-URL",
     "<span>URL</span> <span class=\"search-result-import-path\">opengate-js/src/timeseries/Timeseries.js</span>",
@@ -1533,6 +1581,12 @@ window.esdocSearchIndex = [
     "opengate-js/src/timeseriesfunctionscatalog/types_enum.js~value_types_enum",
     "variable/index.html#static-variable-VALUE_TYPES_ENUM",
     "<span>VALUE_TYPES_ENUM</span> <span class=\"search-result-import-path\">opengate-js/src/timeseriesFunctionsCatalog/TYPES_ENUM.js</span>",
+    "variable"
+  ],
+  [
+    "opengate-js/src/plan/visibility_enum.js~visibility",
+    "variable/index.html#static-variable-VISIBILITY",
+    "<span>VISIBILITY</span> <span class=\"search-result-import-path\">opengate-js/src/plan/VISIBILITY_ENUM.js</span>",
     "variable"
   ],
   [
@@ -3666,9 +3720,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/internalopengateapi.js~internalopengateapi#devicesplanssearchbuilder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-devicesPlansSearchBuilder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#devicesPlansSearchBuilder",
+    "src/internalopengateapi.js~internalopengateapi#deviceplansbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-devicePlansBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#devicePlansBuilder",
     "method"
   ],
   [
@@ -3870,6 +3924,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#newdeviceplansfinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newDevicePlansFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newDevicePlansFinder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#newdomainfinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newDomainFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newDomainFinder",
@@ -3945,6 +4005,12 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#neworganizationmodelfinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newOrganizationModelFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newOrganizationModelFinder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#neworganizationplansfinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newOrganizationPlansFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newOrganizationPlansFinder",
     "method"
   ],
   [
@@ -4092,6 +4158,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#organizationplansbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-organizationPlansBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#organizationPlansBuilder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#organizationsbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-organizationsBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#organizationsBuilder",
@@ -4101,12 +4173,6 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#pipelinesbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-pipelinesBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#pipelinesBuilder",
-    "method"
-  ],
-  [
-    "src/internalopengateapi.js~internalopengateapi#planssearchbuilder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-plansSearchBuilder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#plansSearchBuilder",
     "method"
   ],
   [
@@ -8130,6 +8196,186 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/plan/deviceplans.js",
+    "file/src/plan/DevicePlans.js.html",
+    "src/plan/DevicePlans.js",
+    "file"
+  ],
+  [
+    "src/plan/deviceplans.js~deviceplans#constructor",
+    "class/src/plan/DevicePlans.js~DevicePlans.html#instance-constructor-constructor",
+    "src/plan/DevicePlans.js~DevicePlans#constructor",
+    "method"
+  ],
+  [
+    "src/plan/deviceplans.js~deviceplans#withflowrate",
+    "class/src/plan/DevicePlans.js~DevicePlans.html#instance-method-withFlowRate",
+    "src/plan/DevicePlans.js~DevicePlans#withFlowRate",
+    "method"
+  ],
+  [
+    "src/plan/deviceplans.js~deviceplans#withidentifier",
+    "class/src/plan/DevicePlans.js~DevicePlans.html#instance-method-withIdentifier",
+    "src/plan/DevicePlans.js~DevicePlans#withIdentifier",
+    "method"
+  ],
+  [
+    "src/plan/deviceplans.js~deviceplans#withname",
+    "class/src/plan/DevicePlans.js~DevicePlans.html#instance-method-withName",
+    "src/plan/DevicePlans.js~DevicePlans#withName",
+    "method"
+  ],
+  [
+    "src/plan/deviceplansfinder.js",
+    "file/src/plan/DevicePlansFinder.js.html",
+    "src/plan/DevicePlansFinder.js",
+    "file"
+  ],
+  [
+    "src/plan/deviceplansfinder.js~deviceplansfinder#administrable",
+    "class/src/plan/DevicePlansFinder.js~DevicePlansFinder.html#instance-method-administrable",
+    "src/plan/DevicePlansFinder.js~DevicePlansFinder#administrable",
+    "method"
+  ],
+  [
+    "src/plan/deviceplansfinder.js~deviceplansfinder#assignable",
+    "class/src/plan/DevicePlansFinder.js~DevicePlansFinder.html#instance-method-assignable",
+    "src/plan/DevicePlansFinder.js~DevicePlansFinder#assignable",
+    "method"
+  ],
+  [
+    "src/plan/deviceplansfinder.js~deviceplansfinder#constructor",
+    "class/src/plan/DevicePlansFinder.js~DevicePlansFinder.html#instance-constructor-constructor",
+    "src/plan/DevicePlansFinder.js~DevicePlansFinder#constructor",
+    "method"
+  ],
+  [
+    "src/plan/deviceplansfinder.js~deviceplansfinder#default",
+    "class/src/plan/DevicePlansFinder.js~DevicePlansFinder.html#instance-method-default",
+    "src/plan/DevicePlansFinder.js~DevicePlansFinder#default",
+    "method"
+  ],
+  [
+    "src/plan/deviceplansfinder.js~deviceplansfinder#findbyorganization",
+    "class/src/plan/DevicePlansFinder.js~DevicePlansFinder.html#instance-method-findByOrganization",
+    "src/plan/DevicePlansFinder.js~DevicePlansFinder#findByOrganization",
+    "method"
+  ],
+  [
+    "src/plan/deviceplansfinder.js~deviceplansfinder#findbyorganizationandid",
+    "class/src/plan/DevicePlansFinder.js~DevicePlansFinder.html#instance-method-findByOrganizationAndId",
+    "src/plan/DevicePlansFinder.js~DevicePlansFinder#findByOrganizationAndId",
+    "method"
+  ],
+  [
+    "src/plan/organizationplans.js",
+    "file/src/plan/OrganizationPlans.js.html",
+    "src/plan/OrganizationPlans.js",
+    "file"
+  ],
+  [
+    "src/plan/organizationplans.js~organizationplans#constructor",
+    "class/src/plan/OrganizationPlans.js~OrganizationPlans.html#instance-constructor-constructor",
+    "src/plan/OrganizationPlans.js~OrganizationPlans#constructor",
+    "method"
+  ],
+  [
+    "src/plan/organizationplans.js~organizationplans#withflowrate",
+    "class/src/plan/OrganizationPlans.js~OrganizationPlans.html#instance-method-withFlowRate",
+    "src/plan/OrganizationPlans.js~OrganizationPlans#withFlowRate",
+    "method"
+  ],
+  [
+    "src/plan/organizationplans.js~organizationplans#withidentifier",
+    "class/src/plan/OrganizationPlans.js~OrganizationPlans.html#instance-method-withIdentifier",
+    "src/plan/OrganizationPlans.js~OrganizationPlans#withIdentifier",
+    "method"
+  ],
+  [
+    "src/plan/organizationplans.js~organizationplans#withmaxdeviceamount",
+    "class/src/plan/OrganizationPlans.js~OrganizationPlans.html#instance-method-withMaxDeviceAmount",
+    "src/plan/OrganizationPlans.js~OrganizationPlans#withMaxDeviceAmount",
+    "method"
+  ],
+  [
+    "src/plan/organizationplans.js~organizationplans#withmaxstoragelifetime",
+    "class/src/plan/OrganizationPlans.js~OrganizationPlans.html#instance-method-withMaxStorageLifeTime",
+    "src/plan/OrganizationPlans.js~OrganizationPlans#withMaxStorageLifeTime",
+    "method"
+  ],
+  [
+    "src/plan/organizationplans.js~organizationplans#withname",
+    "class/src/plan/OrganizationPlans.js~OrganizationPlans.html#instance-method-withName",
+    "src/plan/OrganizationPlans.js~OrganizationPlans#withName",
+    "method"
+  ],
+  [
+    "src/plan/organizationplansfinder.js",
+    "file/src/plan/OrganizationPlansFinder.js.html",
+    "src/plan/OrganizationPlansFinder.js",
+    "file"
+  ],
+  [
+    "src/plan/organizationplansfinder.js~organizationplansfinder#administrable",
+    "class/src/plan/OrganizationPlansFinder.js~OrganizationPlansFinder.html#instance-method-administrable",
+    "src/plan/OrganizationPlansFinder.js~OrganizationPlansFinder#administrable",
+    "method"
+  ],
+  [
+    "src/plan/organizationplansfinder.js~organizationplansfinder#assignable",
+    "class/src/plan/OrganizationPlansFinder.js~OrganizationPlansFinder.html#instance-method-assignable",
+    "src/plan/OrganizationPlansFinder.js~OrganizationPlansFinder#assignable",
+    "method"
+  ],
+  [
+    "src/plan/organizationplansfinder.js~organizationplansfinder#constructor",
+    "class/src/plan/OrganizationPlansFinder.js~OrganizationPlansFinder.html#instance-constructor-constructor",
+    "src/plan/OrganizationPlansFinder.js~OrganizationPlansFinder#constructor",
+    "method"
+  ],
+  [
+    "src/plan/organizationplansfinder.js~organizationplansfinder#default",
+    "class/src/plan/OrganizationPlansFinder.js~OrganizationPlansFinder.html#instance-method-default",
+    "src/plan/OrganizationPlansFinder.js~OrganizationPlansFinder#default",
+    "method"
+  ],
+  [
+    "src/plan/organizationplansfinder.js~organizationplansfinder#findbyorganization",
+    "class/src/plan/OrganizationPlansFinder.js~OrganizationPlansFinder.html#instance-method-findByOrganization",
+    "src/plan/OrganizationPlansFinder.js~OrganizationPlansFinder#findByOrganization",
+    "method"
+  ],
+  [
+    "src/plan/organizationplansfinder.js~organizationplansfinder#findbyorganizationandid",
+    "class/src/plan/OrganizationPlansFinder.js~OrganizationPlansFinder.html#instance-method-findByOrganizationAndId",
+    "src/plan/OrganizationPlansFinder.js~OrganizationPlansFinder#findByOrganizationAndId",
+    "method"
+  ],
+  [
+    "src/plan/period_enum.js",
+    "file/src/plan/PERIOD_ENUM.js.html",
+    "src/plan/PERIOD_ENUM.js",
+    "file"
+  ],
+  [
+    "src/plan/unit_enum.js",
+    "file/src/plan/UNIT_ENUM.js.html",
+    "src/plan/UNIT_ENUM.js",
+    "file"
+  ],
+  [
+    "src/plan/url_enum.js",
+    "file/src/plan/URL_ENUM.js.html",
+    "src/plan/URL_ENUM.js",
+    "file"
+  ],
+  [
+    "src/plan/visibility_enum.js",
+    "file/src/plan/VISIBILITY_ENUM.js.html",
+    "src/plan/VISIBILITY_ENUM.js",
+    "file"
+  ],
+  [
     "src/provision/baseprovision.js",
     "file/src/provision/BaseProvision.js.html",
     "src/provision/BaseProvision.js",
@@ -9468,24 +9714,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/searching/builder/devicesplanssearchbuilder.js",
-    "file/src/searching/builder/DevicesPlansSearchBuilder.js.html",
-    "src/searching/builder/DevicesPlansSearchBuilder.js",
-    "file"
-  ],
-  [
-    "src/searching/builder/devicesplanssearchbuilder.js~devicesplanssearchbuilder#constructor",
-    "class/src/searching/builder/DevicesPlansSearchBuilder.js~DevicesPlansSearchBuilder.html#instance-constructor-constructor",
-    "src/searching/builder/DevicesPlansSearchBuilder.js~DevicesPlansSearchBuilder#constructor",
-    "method"
-  ],
-  [
-    "src/searching/builder/devicesplanssearchbuilder.js~devicesplanssearchbuilder#withdomain",
-    "class/src/searching/builder/DevicesPlansSearchBuilder.js~DevicesPlansSearchBuilder.html#instance-method-withDomain",
-    "src/searching/builder/DevicesPlansSearchBuilder.js~DevicesPlansSearchBuilder#withDomain",
-    "method"
-  ],
-  [
     "src/searching/builder/devicessearchbuilder.js",
     "file/src/searching/builder/DevicesSearchBuilder.js.html",
     "src/searching/builder/DevicesSearchBuilder.js",
@@ -9873,24 +10101,6 @@ window.esdocSearchIndex = [
     "src/searching/builder/organizationssearchbuilder.js~organizationssearchbuilder#withworkgroup",
     "class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html#instance-method-withWorkgroup",
     "src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder#withWorkgroup",
-    "method"
-  ],
-  [
-    "src/searching/builder/planssearchbuilder.js",
-    "file/src/searching/builder/PlansSearchBuilder.js.html",
-    "src/searching/builder/PlansSearchBuilder.js",
-    "file"
-  ],
-  [
-    "src/searching/builder/planssearchbuilder.js~planssearchbuilder#constructor",
-    "class/src/searching/builder/PlansSearchBuilder.js~PlansSearchBuilder.html#instance-constructor-constructor",
-    "src/searching/builder/PlansSearchBuilder.js~PlansSearchBuilder#constructor",
-    "method"
-  ],
-  [
-    "src/searching/builder/planssearchbuilder.js~planssearchbuilder#withdomain",
-    "class/src/searching/builder/PlansSearchBuilder.js~PlansSearchBuilder.html#instance-method-withDomain",
-    "src/searching/builder/PlansSearchBuilder.js~PlansSearchBuilder#withDomain",
     "method"
   ],
   [

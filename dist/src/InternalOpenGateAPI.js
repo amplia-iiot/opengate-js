@@ -318,14 +318,6 @@ var _searchingBuilderDomainsSearchBuilder = require('./searching/builder/Domains
 
 var _searchingBuilderDomainsSearchBuilder2 = _interopRequireDefault(_searchingBuilderDomainsSearchBuilder);
 
-var _searchingBuilderPlansSearchBuilder = require('./searching/builder/PlansSearchBuilder');
-
-var _searchingBuilderPlansSearchBuilder2 = _interopRequireDefault(_searchingBuilderPlansSearchBuilder);
-
-var _searchingBuilderDevicesPlansSearchBuilder = require('./searching/builder/DevicesPlansSearchBuilder');
-
-var _searchingBuilderDevicesPlansSearchBuilder2 = _interopRequireDefault(_searchingBuilderDevicesPlansSearchBuilder);
-
 var _bundlesBundles = require('./bundles/Bundles');
 
 var _bundlesBundles2 = _interopRequireDefault(_bundlesBundles);
@@ -601,6 +593,22 @@ var _organization_manufacturerModelFinder2 = _interopRequireDefault(_organizatio
 var _provisionCountryCountriesCatalog = require('./provision/country/CountriesCatalog');
 
 var _provisionCountryCountriesCatalog2 = _interopRequireDefault(_provisionCountryCountriesCatalog);
+
+var _planOrganizationPlans = require('./plan/OrganizationPlans');
+
+var _planOrganizationPlans2 = _interopRequireDefault(_planOrganizationPlans);
+
+var _planDevicePlans = require('./plan/DevicePlans');
+
+var _planDevicePlans2 = _interopRequireDefault(_planDevicePlans);
+
+var _planOrganizationPlansFinder = require('./plan/OrganizationPlansFinder');
+
+var _planOrganizationPlansFinder2 = _interopRequireDefault(_planOrganizationPlansFinder);
+
+var _planDevicePlansFinder = require('./plan/DevicePlansFinder');
+
+var _planDevicePlansFinder2 = _interopRequireDefault(_planDevicePlansFinder);
 
 var RequestEndMonkeyPatching = (function () {
     var beforeStart = undefined;
@@ -1360,26 +1368,6 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a PlansSearchBuilder to build a specific PlansSearchBuilder
-         * @return {PlansSearchBuilder}
-         */
-    }, {
-        key: 'plansSearchBuilder',
-        value: function plansSearchBuilder() {
-            return new _searchingBuilderPlansSearchBuilder2['default'](this);
-        }
-
-        /**
-         * This return a DevicePlansSearchBuilder to build a specific DevicePlansSearchBuilder
-         * @return {PlansSearchBuilder}
-         */
-    }, {
-        key: 'devicesPlansSearchBuilder',
-        value: function devicesPlansSearchBuilder() {
-            return new _searchingBuilderDevicesPlansSearchBuilder2['default'](this);
-        }
-
-        /**
          * This return a BundlesBuilder to build a specific BundlesBuilder
          * @return {Bundles}
          */
@@ -2070,6 +2058,48 @@ var InternalOpenGateAPI = (function () {
         key: 'newOrganizationModelFinder',
         value: function newOrganizationModelFinder() {
             return new _organization_manufacturerModelFinder2['default'](this);
+        }
+
+        /**
+         * This return a util to find organization plans
+         * @returns {OrganizationPlansFinder}
+         */
+    }, {
+        key: 'newOrganizationPlansFinder',
+        value: function newOrganizationPlansFinder() {
+            return new _planOrganizationPlansFinder2['default'](this);
+        }
+
+        /**
+         * This return a util to find device plans
+         * @returns {DevicePlansFinder}
+         */
+    }, {
+        key: 'newDevicePlansFinder',
+        value: function newDevicePlansFinder() {
+            return new _planDevicePlansFinder2['default'](this);
+        }
+
+        /**
+         * This return a OrganizationPlans to build a specific organization plan
+         * @param {*} organization 
+         * @returns {OrganizationPlans}
+         */
+    }, {
+        key: 'organizationPlansBuilder',
+        value: function organizationPlansBuilder(organization) {
+            return new _planOrganizationPlans2['default'](this, organization);
+        }
+
+        /**
+         * This return a DevicePlans to build a specific device plan
+         * @param {*} organization 
+         * @returns {OrganizationPlans}
+         */
+    }, {
+        key: 'devicePlansBuilder',
+        value: function devicePlansBuilder(organization) {
+            return new _planDevicePlans2['default'](this, organization);
         }
     }]);
 
