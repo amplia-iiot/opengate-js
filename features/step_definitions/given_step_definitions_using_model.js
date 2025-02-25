@@ -91,8 +91,13 @@ Given(/^the entity of type "([^"]*)" with "([^"]*)"$/, function (utilName, param
 });
 
 Given(/^an ogapi "([^"]*)" util with "([^"]*)"$/, function (utilName, param, callback) {
-    this.util = this.utilsModel.util(utilName, this.ogapi, param);
-    callback();
+    try{
+        this.util = this.utilsModel.util(utilName, this.ogapi, param);
+        callback();
+    }catch(err){
+        console.log(err)
+        throw err
+    }
 });
 
 Given(/^an ogapi "([^"]*)" util with "([^"]*)" and "([^"]*)"$/, function (utilName, param1, param2, callback) {
@@ -366,7 +371,7 @@ Given(/^the "([^"]*)" with...$/, function (setterName, table, callback) {
         }
     } catch (err) {
         this.error = err;
-        console.error('ERROR: ', err)
+        console.log(err)
     }
     callback();
 });
