@@ -379,11 +379,18 @@ module.exports = {
             }
             , 
             "organization plans finder": function(){
-                return ogapi.OrganizationPlansFinder()
+                switch (param) {
+                    case 'assignable':
+                        return ogapi.newOrganizationPlansFinder().assignable()    
+                    case 'administrable':
+                        return ogapi.newOrganizationPlansFinder().administrable()
+                    default:
+                        return ogapi.newOrganizationPlansFinder()
+                }
             }
             , 
             "device plans finder": function(){
-                return ogapi.DevicePlansFinder()
+                return ogapi.newDevicePlansFinder()
             }
         };
         return utilsMath[utilName](ogapi, param, param2, param3);
