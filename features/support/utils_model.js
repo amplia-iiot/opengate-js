@@ -370,6 +370,20 @@ module.exports = {
             },
             "connector functions catalog": function(ogapi){
                 return ogapi.newConnectorFunctionsCatalog()
+            }, 
+            "organization plans builder": function(){
+                return ogapi.organizationPlansBuilder(param)
+            }, 
+            "device plans builder": function(){
+                return ogapi.devicePlansBuilder(param)
+            }
+            , 
+            "organization plans finder": function(){
+                return ogapi.OrganizationPlansFinder()
+            }
+            , 
+            "device plans finder": function(){
+                return ogapi.DevicePlansFinder()
             }
         };
         return utilsMath[utilName](ogapi, param, param2, param3);

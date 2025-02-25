@@ -77,8 +77,6 @@ import RulesSearchBuilder from './searching/builder/RulesSearchBuilder';
 import OperationTypesSearchBuilder from './searching/builder/OperationTypesSearchBuilder';
 import UsersSearchBuilder from './searching/builder/UsersSearchBuilder';
 import DomainsSearchBuilder from './searching/builder/DomainsSearchBuilder';
-import PlansSearchBuilder from './searching/builder/PlansSearchBuilder';
-import DevicesPlansSearchBuilder from './searching/builder/DevicesPlansSearchBuilder';
 import Bundles from './bundles/Bundles';
 import BundleFinder from './bundles/BundleFinder';
 import Organizations from './organizations/Organizations';
@@ -147,8 +145,12 @@ import OrganizationManufacturersBuilder from './organization_manufacturer/Manufa
 import OrganizationManufacturerModelsBuilder from './organization_manufacturer/Model'
 import OrganizationManufacturerFinder from './organization_manufacturer/ManufacturerFinder'
 import OrganizationModelFinder from './organization_manufacturer/ModelFinder'
-
 import CountriesCatalog from './provision/country/CountriesCatalog';
+import OrganizationPlans from './plan/OrganizationPlans';
+import DevicePlans from './plan/DevicePlans';
+import OrganizationPlansFinder from './plan/OrganizationPlansFinder';
+import DevicePlansFinder from './plan/DevicePlansFinder';
+
 
 const RequestEndMonkeyPatching = (function(){
     let beforeStart
@@ -767,22 +769,6 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a PlansSearchBuilder to build a specific PlansSearchBuilder
-     * @return {PlansSearchBuilder}
-     */
-    plansSearchBuilder() {
-        return new PlansSearchBuilder(this);
-    }
-
-    /**
-     * This return a DevicePlansSearchBuilder to build a specific DevicePlansSearchBuilder
-     * @return {PlansSearchBuilder}
-     */
-    devicesPlansSearchBuilder() {
-        return new DevicesPlansSearchBuilder(this);
-    }
-
-    /**
      * This return a BundlesBuilder to build a specific BundlesBuilder
      * @return {Bundles}
      */
@@ -1334,5 +1320,38 @@ export default class InternalOpenGateAPI {
      */
     newOrganizationModelFinder() {
         return new OrganizationModelFinder(this);
+    }
+
+    /**
+     * This return a util to find organization plans
+     * @returns {OrganizationPlansFinder}
+     */
+    newOrganizationPlansFinder() {
+        return new OrganizationPlansFinder(this);
+    }
+
+    /**
+     * This return a util to find device plans
+     * @returns {DevicePlansFinder}
+     */
+    newDevicePlansFinder() {
+        return new DevicePlansFinder(this);
+    }
+    /**
+     * This return a OrganizationPlans to build a specific organization plan
+     * @param {*} organization 
+     * @returns {OrganizationPlans}
+     */
+    organizationPlansBuilder(organization){
+        return new OrganizationPlans(this, organization);
+    }
+
+    /**
+     * This return a DevicePlans to build a specific device plan
+     * @param {*} organization 
+     * @returns {OrganizationPlans}
+     */
+    devicePlansBuilder(organization){
+        return new DevicePlans(this, organization);
     }
 }

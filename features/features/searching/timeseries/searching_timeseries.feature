@@ -3,7 +3,6 @@
 @searching_timeseries_data
 @timeseries
 
-@wip
 
 Feature: Searching timeseriess data
   As a user of JsApi

@@ -35,6 +35,12 @@ module.exports = {
             },
             'connector function catalog': {
                 'identifier': 'withIdentifier'
+            },
+            'organizationPlan': {
+                'identifier': 'withIdentifier'
+            },
+            'devicePlan': {
+                'identifier': 'withIdentifier'
             }
         }[setter];
     },
@@ -48,7 +54,9 @@ module.exports = {
             'dataset': 'withIdentifier',
             'timeserie': 'withIdentifier',
             'domain': 'withDomain',
-            'connector function catalog': 'withIdentifier'
+            'connector function catalog': 'withIdentifier',
+            'organizationPlan': 'withIdentifier',
+            'devicePlan': 'withIdentifier'
         }[method];
     }
 };
