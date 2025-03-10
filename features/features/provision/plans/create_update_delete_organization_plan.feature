@@ -2,7 +2,7 @@
 @create_provision
 @create_organization_plan
 @organization_plan
-
+@wip
 
 Feature: Create a organization plan
   As a user of JsApi
@@ -10,8 +10,9 @@ Feature: Create a organization plan
   So I can create a organization plan
 
   Background:
-    Given an email "YOUR_EMAIL" and password "YOUR_PASSWORD" the user logs in
-    #TESTS WITH MOCK, ONLY organization plans URIS: Given with mock "organizationPlan" for "createDelete"
+    #Given an email "YOUR_EMAIL" and password "YOUR_PASSWORD" the user logs in
+    Given with mock "organizationPlan" for "createDelete"
+    #TESTS WITH MOCK, ONLY organization plans URIS: 
 
   Scenario: Creating an organization to use in create organization plan
     Given an ogapi "organizations builder" util

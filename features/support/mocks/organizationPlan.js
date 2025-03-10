@@ -282,7 +282,7 @@ module.exports = {
                     statusCode: 200,
                     status: 200,
                     body: {
-                        "plans": [postBody]
+                        "organizationPlans": [postBody]
                     }
                 }
             },
@@ -324,14 +324,14 @@ module.exports = {
                 return {
                     statusCode: 200,
                     status: 200,
-                    body: {plans: [postBody]}
+                    body: {organizationPlans: [postBody]}
                 }
             },
             '/north/v80/provision/organizations/:organization/organizationPlans?visibility=administrable': function (req) {
                 return {
                     statusCode: 200,
                     status: 200,
-                    body: {plans: [postBody]}
+                    body: {organizationPlans: [postBody]}
                 }
             }
         }

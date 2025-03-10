@@ -281,7 +281,7 @@ function deletePlan(req){
                     statusCode: 200,
                     status: 200,
                     body: {
-                        "plans": [postBody]
+                        "devicePlans": [postBody]
                     }
                 }
             },
@@ -323,14 +323,14 @@ function deletePlan(req){
                 return {
                     statusCode: 200,
                     status: 200,
-                    body: {plans: [postBody]}
+                    body: {devicePlans: [postBody]}
                 }
             },
             '/north/v80/provision/organizations/:organization/devicePlans?visibility=administrable': function (req) {
                 return {
                     statusCode: 200,
                     status: 200,
-                    body: {plans: [postBody]}
+                    body: {devicePlans: [postBody]}
                 }
             }
         }

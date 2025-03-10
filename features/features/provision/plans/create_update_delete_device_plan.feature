@@ -2,7 +2,7 @@
 @create_provision
 @create_device_plan
 @organization_plan
-
+@wip
 
 Feature: Create a device plan
   As a user of JsApi
@@ -10,8 +10,9 @@ Feature: Create a device plan
   So I can create a device plan
 
   Background:
-    Given an email "YOUR_EMAIL" and password "YOUR_PASSWORD" the user logs in
-    #TESTS WITH MOCK, ONLY device plans URIS:  Given with mock "devicePlan" for "createDelete"
+    #Given an email "YOUR_EMAIL" and password "YOUR_PASSWORD" the user logs in
+    Given with mock "devicePlan" for "createDelete"
+    #TESTS WITH MOCK, ONLY device plans URIS:  
 
   Scenario: Creating an organization to use in create user
     Given an ogapi "organizations builder" util

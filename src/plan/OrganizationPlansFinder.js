@@ -2,7 +2,7 @@
 
 import ProvisionGenericFinder from '../ProvisionGenericFinder';
 import _ from 'lodash';
-import {PLAN, PLANS, ORGANIZATION_PLANS} from './URL_ENUM'
+import {PLAN, ORGANIZATION_PLANS} from './URL_ENUM'
 import { VISIBILITY } from './VISIBILITY_ENUM';
 
 /**
@@ -69,7 +69,7 @@ export default class OrganizationPlansFinder extends ProvisionGenericFinder {
      */
     findByOrganization(organization) {
         this._organization = organization;
-        this._entity = PLANS
+        this._entity = ORGANIZATION_PLANS
         return this._execute();
     }
 
