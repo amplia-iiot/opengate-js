@@ -71,9 +71,7 @@ var match_url = {
     '/tickets': 'SearchOnDatamodel',
     '/channels': 'SearchOnDatamodel',
     'datasets': 'SearchOnDataset',
-    'timeseries': 'SearchOnTimeseries',
-    '/catalog/plans/organization': 'PLANS',
-    '/catalog/plans/device': 'PLANS'
+    'timeseries': 'SearchOnTimeseries'
 };
 
 var match_context = {

@@ -1008,12 +1008,6 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
-    "opengate-js/src/plan/url_enum.js~plans",
-    "variable/index.html#static-variable-PLANS",
-    "<span>PLANS</span> <span class=\"search-result-import-path\">opengate-js/src/plan/URL_ENUM.js</span>",
-    "variable"
-  ],
-  [
     "opengate-js/src/iot/datamodels/datamodelshelper.js~post_resource",
     "variable/index.html#static-variable-POST_RESOURCE",
     "<span>POST_RESOURCE</span> <span class=\"search-result-import-path\">opengate-js/src/iot/datamodels/DatamodelsHelper.js</span>",

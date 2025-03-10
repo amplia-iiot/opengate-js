@@ -4,7 +4,7 @@
 @find_provision
 @devicePlans
 @find_devicePlans
-
+@wip
 
 Feature: Find a device plan
 	As a user of JsApi
@@ -12,8 +12,9 @@ Feature: Find a device plan
 	So I can check if a device plan exists and get their information
 
 	Background:
-		Given an email "YOUR_EMAIL" and password "YOUR_PASSWORD" the user logs in
-    #TESTS WITH MOCK, ONLY device plans URIS:  Given with mock "devicePlan" for "find"
+		#Given an email "YOUR_EMAIL" and password "YOUR_PASSWORD" the user logs in
+    Given with mock "devicePlan" for "find"
+    #TESTS WITH MOCK, ONLY device plans URIS:  
 
 	Scenario: Creating an device and user to use in create user
 		Given an ogapi "organizations builder" util

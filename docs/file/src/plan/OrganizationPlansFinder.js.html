@@ -163,7 +163,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEVICE_PLANS">DEVICE_PLANS</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ORGANIZATION_PLANS">ORGANIZATION_PLANS</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PLAN">PLAN</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PLANS">PLANS</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-VISIBILITY">VISIBILITY</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/BaseProvision.js~BaseProvision.html">BaseProvision</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">provision/bulk</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/provision/bulk/BulkExecutionBuilder.js~BulkExecutionBuilder.html">BulkExecutionBuilder</a></span></span></li>
@@ -316,7 +315,7 @@
 
 import ProvisionGenericFinder from &apos;../ProvisionGenericFinder&apos;;
 import _ from &apos;lodash&apos;;
-import {PLAN, PLANS, ORGANIZATION_PLANS} from &apos;./URL_ENUM&apos;
+import {PLAN, ORGANIZATION_PLANS} from &apos;./URL_ENUM&apos;
 import { VISIBILITY } from &apos;./VISIBILITY_ENUM&apos;;
 
 /**
@@ -383,7 +382,7 @@ export default class OrganizationPlansFinder extends ProvisionGenericFinder {
      */
     findByOrganization(organization) {
         this._organization = organization;
-        this._entity = PLANS
+        this._entity = ORGANIZATION_PLANS
         return this._execute();
     }
 

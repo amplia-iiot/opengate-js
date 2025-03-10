@@ -106,7 +106,7 @@ var DevicePlansFinder = (function (_ProvisionGenericFinder) {
         key: 'findByOrganization',
         value: function findByOrganization(organization) {
             this._organization = organization;
-            this._entity = _URL_ENUM.PLANS;
+            this._entity = _URL_ENUM.DEVICE_PLANS;
             return this._execute();
         }
 
