@@ -870,6 +870,24 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/notebookscheduler/notebookfinder.js~notebookfinder",
+    "class/src/notebookScheduler/NotebookFinder.js~NotebookFinder.html",
+    "<span>NotebookFinder</span> <span class=\"search-result-import-path\">opengate-js/src/notebookScheduler/NotebookFinder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/notebookscheduler/notebooklauncher.js~notebooklauncher",
+    "class/src/notebookScheduler/NotebookLauncher.js~NotebookLauncher.html",
+    "<span>NotebookLauncher</span> <span class=\"search-result-import-path\">opengate-js/src/notebookScheduler/NotebookLauncher.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/notebookscheduler/notebookscheduler.js~notebookscheduler",
+    "class/src/notebookScheduler/NotebookScheduler.js~NotebookScheduler.html",
+    "<span>NotebookScheduler</span> <span class=\"search-result-import-path\">opengate-js/src/notebookScheduler/NotebookScheduler.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/bundles/deployment/operation_enum.js~operation_enum",
     "variable/index.html#static-variable-OPERATION_ENUM",
     "<span>OPERATION_ENUM</span> <span class=\"search-result-import-path\">opengate-js/src/bundles/deployment/OPERATION_ENUM.js</span>",
@@ -1144,6 +1162,12 @@ window.esdocSearchIndex = [
     "variable/index.html#static-variable-SOFTWARE_TYPE_ENUM",
     "<span>SOFTWARE_TYPE_ENUM</span> <span class=\"search-result-import-path\">opengate-js/src/collection/devices/collect/enum/SOFTWARE_TYPE_ENUM.js</span>",
     "variable"
+  ],
+  [
+    "opengate-js/src/notebookscheduler/schedulerfinder.js~schedulerfinder",
+    "class/src/notebookScheduler/SchedulerFinder.js~SchedulerFinder.html",
+    "<span>SchedulerFinder</span> <span class=\"search-result-import-path\">opengate-js/src/notebookScheduler/SchedulerFinder.js</span>",
+    "class"
   ],
   [
     "opengate-js/src/searching/search.js~search",
@@ -3906,6 +3930,18 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#newnotebookfinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newNotebookFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newNotebookFinder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#newnotebookschedulerfinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newNotebookSchedulerFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newNotebookSchedulerFinder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#newoperationactions",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newOperationActions",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newOperationActions",
@@ -4047,6 +4083,18 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#newworkgrouprelationsfinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newWorkgroupRelationsFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newWorkgroupRelationsFinder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#notebooklauncherbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-notebookLauncherBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#notebookLauncherBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#notebookschedulerbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-notebookSchedulerBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#notebookSchedulerBuilder",
     "method"
   ],
   [
@@ -7053,6 +7101,162 @@ window.esdocSearchIndex = [
     "src/manufacturers/modelmedia.js~modelmedia#withname",
     "class/src/manufacturers/ModelMedia.js~ModelMedia.html#instance-method-withName",
     "src/manufacturers/ModelMedia.js~ModelMedia#withName",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebookfinder.js",
+    "file/src/notebookScheduler/NotebookFinder.js.html",
+    "src/notebookScheduler/NotebookFinder.js",
+    "file"
+  ],
+  [
+    "src/notebookscheduler/notebookfinder.js~notebookfinder#constructor",
+    "class/src/notebookScheduler/NotebookFinder.js~NotebookFinder.html#instance-constructor-constructor",
+    "src/notebookScheduler/NotebookFinder.js~NotebookFinder#constructor",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebookfinder.js~notebookfinder#findall",
+    "class/src/notebookScheduler/NotebookFinder.js~NotebookFinder.html#instance-method-findAll",
+    "src/notebookScheduler/NotebookFinder.js~NotebookFinder#findAll",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebooklauncher.js",
+    "file/src/notebookScheduler/NotebookLauncher.js.html",
+    "src/notebookScheduler/NotebookLauncher.js",
+    "file"
+  ],
+  [
+    "src/notebookscheduler/notebooklauncher.js~notebooklauncher#constructor",
+    "class/src/notebookScheduler/NotebookLauncher.js~NotebookLauncher.html#instance-constructor-constructor",
+    "src/notebookScheduler/NotebookLauncher.js~NotebookLauncher#constructor",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebooklauncher.js~notebooklauncher#create",
+    "class/src/notebookScheduler/NotebookLauncher.js~NotebookLauncher.html#instance-method-create",
+    "src/notebookScheduler/NotebookLauncher.js~NotebookLauncher#create",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebooklauncher.js~notebooklauncher#delete",
+    "class/src/notebookScheduler/NotebookLauncher.js~NotebookLauncher.html#instance-method-delete",
+    "src/notebookScheduler/NotebookLauncher.js~NotebookLauncher#delete",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebooklauncher.js~notebooklauncher#execute",
+    "class/src/notebookScheduler/NotebookLauncher.js~NotebookLauncher.html#instance-method-execute",
+    "src/notebookScheduler/NotebookLauncher.js~NotebookLauncher#execute",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebooklauncher.js~notebooklauncher#generatereport",
+    "class/src/notebookScheduler/NotebookLauncher.js~NotebookLauncher.html#instance-method-generateReport",
+    "src/notebookScheduler/NotebookLauncher.js~NotebookLauncher#generateReport",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebooklauncher.js~notebooklauncher#update",
+    "class/src/notebookScheduler/NotebookLauncher.js~NotebookLauncher.html#instance-method-update",
+    "src/notebookScheduler/NotebookLauncher.js~NotebookLauncher#update",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebooklauncher.js~notebooklauncher#withidentifier",
+    "class/src/notebookScheduler/NotebookLauncher.js~NotebookLauncher.html#instance-method-withIdentifier",
+    "src/notebookScheduler/NotebookLauncher.js~NotebookLauncher#withIdentifier",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebooklauncher.js~notebooklauncher#withparams",
+    "class/src/notebookScheduler/NotebookLauncher.js~NotebookLauncher.html#instance-method-withParams",
+    "src/notebookScheduler/NotebookLauncher.js~NotebookLauncher#withParams",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebooklauncher.js~notebooklauncher#withreportretentiondays",
+    "class/src/notebookScheduler/NotebookLauncher.js~NotebookLauncher.html#instance-method-withReportRetentionDays",
+    "src/notebookScheduler/NotebookLauncher.js~NotebookLauncher#withReportRetentionDays",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebookscheduler.js",
+    "file/src/notebookScheduler/NotebookScheduler.js.html",
+    "src/notebookScheduler/NotebookScheduler.js",
+    "file"
+  ],
+  [
+    "src/notebookscheduler/notebookscheduler.js~notebookscheduler#constructor",
+    "class/src/notebookScheduler/NotebookScheduler.js~NotebookScheduler.html#instance-constructor-constructor",
+    "src/notebookScheduler/NotebookScheduler.js~NotebookScheduler#constructor",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebookscheduler.js~notebookscheduler#create",
+    "class/src/notebookScheduler/NotebookScheduler.js~NotebookScheduler.html#instance-method-create",
+    "src/notebookScheduler/NotebookScheduler.js~NotebookScheduler#create",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebookscheduler.js~notebookscheduler#generatereport",
+    "class/src/notebookScheduler/NotebookScheduler.js~NotebookScheduler.html#instance-method-generateReport",
+    "src/notebookScheduler/NotebookScheduler.js~NotebookScheduler#generateReport",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebookscheduler.js~notebookscheduler#update",
+    "class/src/notebookScheduler/NotebookScheduler.js~NotebookScheduler.html#instance-method-update",
+    "src/notebookScheduler/NotebookScheduler.js~NotebookScheduler#update",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebookscheduler.js~notebookscheduler#withcronpattern",
+    "class/src/notebookScheduler/NotebookScheduler.js~NotebookScheduler.html#instance-method-withCronPattern",
+    "src/notebookScheduler/NotebookScheduler.js~NotebookScheduler#withCronPattern",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebookscheduler.js~notebookscheduler#withidentifier",
+    "class/src/notebookScheduler/NotebookScheduler.js~NotebookScheduler.html#instance-method-withIdentifier",
+    "src/notebookScheduler/NotebookScheduler.js~NotebookScheduler#withIdentifier",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebookscheduler.js~notebookscheduler#withnotebookid",
+    "class/src/notebookScheduler/NotebookScheduler.js~NotebookScheduler.html#instance-method-withNotebookId",
+    "src/notebookScheduler/NotebookScheduler.js~NotebookScheduler#withNotebookId",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebookscheduler.js~notebookscheduler#withparams",
+    "class/src/notebookScheduler/NotebookScheduler.js~NotebookScheduler.html#instance-method-withParams",
+    "src/notebookScheduler/NotebookScheduler.js~NotebookScheduler#withParams",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebookscheduler.js~notebookscheduler#withreportretentiondays",
+    "class/src/notebookScheduler/NotebookScheduler.js~NotebookScheduler.html#instance-method-withReportRetentionDays",
+    "src/notebookScheduler/NotebookScheduler.js~NotebookScheduler#withReportRetentionDays",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/schedulerfinder.js",
+    "file/src/notebookScheduler/SchedulerFinder.js.html",
+    "src/notebookScheduler/SchedulerFinder.js",
+    "file"
+  ],
+  [
+    "src/notebookscheduler/schedulerfinder.js~schedulerfinder#constructor",
+    "class/src/notebookScheduler/SchedulerFinder.js~SchedulerFinder.html#instance-constructor-constructor",
+    "src/notebookScheduler/SchedulerFinder.js~SchedulerFinder#constructor",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/schedulerfinder.js~schedulerfinder#findall",
+    "class/src/notebookScheduler/SchedulerFinder.js~SchedulerFinder.html#instance-method-findAll",
+    "src/notebookScheduler/SchedulerFinder.js~SchedulerFinder#findAll",
     "method"
   ],
   [

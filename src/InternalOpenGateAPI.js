@@ -150,6 +150,10 @@ import OrganizationModelFinder from './organization_manufacturer/ModelFinder'
 
 import SoftwaresBuilder from './organization_software/Software'
 import SoftwareFinder from './organization_software/SoftwareFinder'
+import NotebookFinder from './notebookScheduler/NotebookFinder'
+import NotebookSchedulerFinder from './notebookScheduler/SchedulerFinder'
+import NotebookLauncherBuilder from './notebookScheduler/NotebookLauncher'
+import NotebookSchedulerBuilder from './notebookScheduler/NotebookScheduler'
 
 import CountriesCatalog from './provision/country/CountriesCatalog';
 
@@ -1352,5 +1356,37 @@ export default class InternalOpenGateAPI {
      */
     newSoftwareFinder() {
         return new SoftwareFinder(this);
+    }
+    
+    /** 
+     * This return a NotebookLauncherBuilder to build a specific NotebookLauncherBuilder
+     * @return {NotebookLauncherBuilder}
+     */
+    notebookLauncherBuilder() {
+        return new NotebookLauncherBuilder(this);
+    }
+
+    /** 
+     * This return a NotebookSchedulerBuilder to build a specific NotebookSchedulerBuilder
+     * @return {NotebookSchedulerBuilder}
+     */
+    notebookSchedulerBuilder() {
+        return new NotebookSchedulerBuilder(this);
+    }
+
+    /**
+     * This return a util to find notebooks
+     * @return {NotebookFinder}
+     */
+    newNotebookFinder() {
+        return new NotebookFinder(this);
+    }
+
+    /**
+     * This return a util to find notebooks schedulers
+     * @return {NotebookSchedulerFinder}
+     */
+    newNotebookSchedulerFinder() {
+        return new NotebookSchedulerFinder(this);
     }
 }

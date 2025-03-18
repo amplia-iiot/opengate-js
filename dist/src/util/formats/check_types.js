@@ -55,7 +55,11 @@ module.exports = {
         if (typeof parameter !== 'object') {
             throw new Error({ message: 'OGAPI_OBJECT_PARAMETER', parameter: name });
         }
+    },
+    _checkBoolean: function _checkBoolean(parameter, name) {
+        if (typeof parameter !== 'boolean') {
+            throw new Error({ message: 'OGAPI_BOOLEAN_PARAMETER', parameter: name });
+        }
     }
-
 };
 //# sourceMappingURL=check_types.js.map

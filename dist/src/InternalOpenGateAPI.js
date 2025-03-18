@@ -606,6 +606,22 @@ var _organization_softwareSoftwareFinder = require('./organization_software/Soft
 
 var _organization_softwareSoftwareFinder2 = _interopRequireDefault(_organization_softwareSoftwareFinder);
 
+var _notebookSchedulerNotebookFinder = require('./notebookScheduler/NotebookFinder');
+
+var _notebookSchedulerNotebookFinder2 = _interopRequireDefault(_notebookSchedulerNotebookFinder);
+
+var _notebookSchedulerSchedulerFinder = require('./notebookScheduler/SchedulerFinder');
+
+var _notebookSchedulerSchedulerFinder2 = _interopRequireDefault(_notebookSchedulerSchedulerFinder);
+
+var _notebookSchedulerNotebookLauncher = require('./notebookScheduler/NotebookLauncher');
+
+var _notebookSchedulerNotebookLauncher2 = _interopRequireDefault(_notebookSchedulerNotebookLauncher);
+
+var _notebookSchedulerNotebookScheduler = require('./notebookScheduler/NotebookScheduler');
+
+var _notebookSchedulerNotebookScheduler2 = _interopRequireDefault(_notebookSchedulerNotebookScheduler);
+
 var _provisionCountryCountriesCatalog = require('./provision/country/CountriesCatalog');
 
 var _provisionCountryCountriesCatalog2 = _interopRequireDefault(_provisionCountryCountriesCatalog);
@@ -2097,6 +2113,46 @@ var InternalOpenGateAPI = (function () {
         key: 'newSoftwareFinder',
         value: function newSoftwareFinder() {
             return new _organization_softwareSoftwareFinder2['default'](this);
+        }
+
+        /** 
+         * This return a NotebookLauncherBuilder to build a specific NotebookLauncherBuilder
+         * @return {NotebookLauncherBuilder}
+         */
+    }, {
+        key: 'notebookLauncherBuilder',
+        value: function notebookLauncherBuilder() {
+            return new _notebookSchedulerNotebookLauncher2['default'](this);
+        }
+
+        /** 
+         * This return a NotebookSchedulerBuilder to build a specific NotebookSchedulerBuilder
+         * @return {NotebookSchedulerBuilder}
+         */
+    }, {
+        key: 'notebookSchedulerBuilder',
+        value: function notebookSchedulerBuilder() {
+            return new _notebookSchedulerNotebookScheduler2['default'](this);
+        }
+
+        /**
+         * This return a util to find notebooks
+         * @return {NotebookFinder}
+         */
+    }, {
+        key: 'newNotebookFinder',
+        value: function newNotebookFinder() {
+            return new _notebookSchedulerNotebookFinder2['default'](this);
+        }
+
+        /**
+         * This return a util to find notebooks schedulers
+         * @return {NotebookSchedulerFinder}
+         */
+    }, {
+        key: 'newNotebookSchedulerFinder',
+        value: function newNotebookSchedulerFinder() {
+            return new _notebookSchedulerSchedulerFinder2['default'](this);
         }
     }]);
 

@@ -78,55 +78,56 @@ var NorthAmpliaREST = (function () {
         });        
         */
 
-        mock.post(_options.url + '/north/v80/provision/organizations/:organization/software', function (req) {
-            return {
-                body: {
-                    "software": []
-                },
-                statusCode: 201
-            };
-        });
+        // mock.post(_options.url + '/north/v80/provision/organizations/:organization/software', function(req) {
+        //     return {
+        //         body: {
+        //             "software": []
+        //         },
+        //         statusCode: 201
+        //     };
+        // });
 
-        mock.put(_options.url + '/north/v80/provision/organizations/:organization/software/:id', function (req) {
-            return {
-                body: {
-                    "software": []
-                },
-                statusCode: 200
-            };
-        });
+        // mock.put(_options.url + '/north/v80/provision/organizations/:organization/software/:id', function(req) {
+        //     return {
+        //         body: {
+        //             "software": []
+        //         },
+        //         statusCode: 200
+        //     };
+        // });
 
-        mock.del(_options.url + '/north/v80/provision//organizations/:organization/software/:id', function (req) {
-            return {
-                body: {
-                    "software": []
-                },
-                statusCode: 200
-            };
-        });
+        // mock.del(_options.url + '/north/v80/provision//organizations/:organization/software/:id', function(req) {
+        //     return {
+        //         body: {
+        //             "software": []
+        //         },
+        //         statusCode: 200
+        //     };
+        // });
 
-        mock.get(_options.url + '/north/v80/provision//organizations/:organization/software?visibility=administrable', function (req) {
-            return {
-                body: {
-                    "software": [{
-                        "id": "00000-11111-22222-33333",
-                        "name": "software name 1",
-                        "type": "SOFTWARE",
-                        "version": "0.000001",
-                        "organization": req.params.organization,
-                        "models": []
-                    }, {
-                        "id": "00000-11111-22222-44444",
-                        "name": "software name 2",
-                        "type": "FIRMWARE",
-                        "version": "0.000002",
-                        "organization": req.params.organization,
-                        "models": []
-                    }]
-                },
-                statusCode: 200
-            };
-        });
+        // mock.get(_options.url + '/north/v80/provision//organizations/:organization/software?visibility=administrable', function(req) {
+        //     return {
+        //         body: {
+        //             "software": [{
+        //                 "id": "00000-11111-22222-33333",
+        //                 "name": "software name 1",
+        //                 "type": "SOFTWARE",
+        //                 "version": "0.000001",
+        //                 "organization": req.params.organization,
+        //                 "models": []
+        //             },
+        //             {
+        //                 "id": "00000-11111-22222-44444",
+        //                 "name": "software name 2",
+        //                 "type": "FIRMWARE",
+        //                 "version": "0.000002",
+        //                 "organization": req.params.organization,
+        //                 "models": []
+        //             }]
+        //         },
+        //         statusCode: 200
+        //     };
+        // });    
     }
 
     _createClass(NorthAmpliaREST, [{
