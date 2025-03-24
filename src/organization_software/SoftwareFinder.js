@@ -24,7 +24,7 @@ export default class SoftwareFinder extends ProvisionGenericFinder {
             visibility: this._visibility || 'assignable'
         });
 
-        return this._baseUrl + "/" + this._organization + SOFTWARES_RESOURCE + (this._identifier?"/" + this._identifier: "/");
+        return this._baseUrl + "/" + this._organization + SOFTWARES_RESOURCE + (this._identifier?"/" + this._identifier: "");
     }
 
     /**
