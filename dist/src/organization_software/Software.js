@@ -144,7 +144,7 @@ var Softwares = (function (_BaseProvision) {
         key: 'deleteInCascade',
         value: function deleteInCascade() {
             this._setUrlParameters({
-                updateDevices: true
+                updateEntities: true
             });
 
             return this['delete']();
@@ -153,7 +153,7 @@ var Softwares = (function (_BaseProvision) {
         key: 'updateInCascade',
         value: function updateInCascade() {
             this._setUrlParameters({
-                updateDevices: true
+                updateEntities: true
             });
 
             return this.update();

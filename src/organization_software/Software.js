@@ -102,7 +102,7 @@ export default class Softwares extends BaseProvision {
 
     deleteInCascade() {
         this._setUrlParameters({
-            updateDevices: true
+            updateEntities: true
         });
 
         return this.delete()
@@ -110,7 +110,7 @@ export default class Softwares extends BaseProvision {
 
     updateInCascade() {
         this._setUrlParameters({
-            updateDevices: true
+            updateEntities: true
         });
 
         return this.update()

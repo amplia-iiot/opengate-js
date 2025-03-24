@@ -49,7 +49,7 @@ var SoftwareFinder = (function (_ProvisionGenericFinder) {
                 visibility: this._visibility || 'assignable'
             });
 
-            return this._baseUrl + "/" + this._organization + _Software.SOFTWARES_RESOURCE + (this._identifier ? "/" + this._identifier : "/");
+            return this._baseUrl + "/" + this._organization + _Software.SOFTWARES_RESOURCE + (this._identifier ? "/" + this._identifier : "");
         }
 
         /**
