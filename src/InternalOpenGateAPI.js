@@ -147,6 +147,7 @@ import OrganizationManufacturersBuilder from './organization_manufacturer/Manufa
 import OrganizationManufacturerModelsBuilder from './organization_manufacturer/Model'
 import OrganizationManufacturerFinder from './organization_manufacturer/ManufacturerFinder'
 import OrganizationModelFinder from './organization_manufacturer/ModelFinder'
+import OrganizaitonsSearchBuilder from './searching/builder/OrganizationsSearchBuilder';
 
 import NotebookFinder from './notebookScheduler/NotebookFinder'
 import NotebookSchedulerFinder from './notebookScheduler/SchedulerFinder'
@@ -1339,6 +1340,14 @@ export default class InternalOpenGateAPI {
      */
     newOrganizationModelFinder() {
         return new OrganizationModelFinder(this);
+    }
+
+    /**
+     * This return a util to search organizations
+     * @return {OrganizaitonsSearchBuilder}
+     */
+    organizationsSearchBuilder() {
+        return new OrganizaitonsSearchBuilder(this);
     }
 
     /** 

@@ -21,8 +21,7 @@ for (var field in IOT_FIELDS) {
 
 const REGEX_PATH_CURRENT = new RegExp("^(.+)._current\\.?(.+)?$")
 const REGEX_PATH_ARRAY = new RegExp("\\[[0-9]+\\]")
-const REGEX_DATASTREAM_VALUE = new RegExp('value\\.?')
-
+// const REGEX_DATASTREAM_VALUE = new RegExp('value\\.?')
 
 const match_url = {
     '/jobs': 'JOB',
@@ -52,6 +51,7 @@ const match_url = {
     'entity-asset': 'SearchOnDatamodel',
     '/tickets': 'SearchOnDatamodel',
     '/channels': 'SearchOnDatamodel',
+    '/organizations': 'SearchOnDatamodel',
     'datasets': 'SearchOnDataset',
     'timeseries': 'SearchOnTimeseries',
     '/catalog/plans/organization' : 'PLANS',
@@ -74,6 +74,8 @@ const match_url_resourceType = {
                 return ['ticket'];
             case '/channels':
                 return ['channel'];
+            case '/organizations':
+                return ['organization'];
             default:
                 return undefined;
         }
@@ -358,7 +360,6 @@ const _searchColumns = function(_this, finder, objSearcher, defered){
 
 
 const FIELD_SEARCHER = {
-    
     [SEARCH_FIELDS]: function(objSearcher, defered) {
         https://github.com/kriskowal/q#using-deferreds
         _getDatamodelFields(this, objSearcher).then(function(response){
