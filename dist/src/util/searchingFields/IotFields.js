@@ -35,6 +35,9 @@ var IOT_FIELDS = {
     "DOMAIN": {
         "DOMAIN": ["domain.name", "domain.description"]
     },
+    "ORGANIZATION": {
+        "ORGANIZATION": ["domain.name", "domain.description"]
+    },
     "AREAS": {
         "AREAS": {
             "identifier": "areas.identifier",

@@ -598,6 +598,10 @@ var _organization_manufacturerModelFinder = require('./organization_manufacturer
 
 var _organization_manufacturerModelFinder2 = _interopRequireDefault(_organization_manufacturerModelFinder);
 
+var _searchingBuilderOrganizationsSearchBuilder = require('./searching/builder/OrganizationsSearchBuilder');
+
+var _searchingBuilderOrganizationsSearchBuilder2 = _interopRequireDefault(_searchingBuilderOrganizationsSearchBuilder);
+
 var _notebookSchedulerNotebookFinder = require('./notebookScheduler/NotebookFinder');
 
 var _notebookSchedulerNotebookFinder2 = _interopRequireDefault(_notebookSchedulerNotebookFinder);
@@ -2086,6 +2090,16 @@ var InternalOpenGateAPI = (function () {
         key: 'newOrganizationModelFinder',
         value: function newOrganizationModelFinder() {
             return new _organization_manufacturerModelFinder2['default'](this);
+        }
+
+        /**
+         * This return a util to search organizations
+         * @return {OrganizaitonsSearchBuilder}
+         */
+    }, {
+        key: 'organizationsSearchBuilder',
+        value: function organizationsSearchBuilder() {
+            return new _searchingBuilderOrganizationsSearchBuilder2['default'](this);
         }
 
         /** 
