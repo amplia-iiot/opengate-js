@@ -40,7 +40,7 @@ for (var field in _IotFields.IOT_FIELDS) {
 
 var REGEX_PATH_CURRENT = new RegExp("^(.+)._current\\.?(.+)?$");
 var REGEX_PATH_ARRAY = new RegExp("\\[[0-9]+\\]");
-var REGEX_DATASTREAM_VALUE = new RegExp('value\\.?');
+// const REGEX_DATASTREAM_VALUE = new RegExp('value\\.?')
 
 var match_url = {
     '/jobs': 'JOB',
@@ -70,6 +70,7 @@ var match_url = {
     'entity-asset': 'SearchOnDatamodel',
     '/tickets': 'SearchOnDatamodel',
     '/channels': 'SearchOnDatamodel',
+    '/organizations': 'SearchOnDatamodel',
     'datasets': 'SearchOnDataset',
     'timeseries': 'SearchOnTimeseries',
     '/catalog/plans/organization': 'PLANS',
@@ -119,6 +120,7 @@ var complexFields = ['subscriber', 'subscription', 'communicationsModule', 'devi
 var SIMPLE_FIELDS = 'simple';
 var COMPLEX_FIELDS = 'complex';
 var SEARCH_FIELDS = 'search';
+var SEARCH_ORGANIZATIONS = 'organizations';
 var SEARCH_COLUMNS = 'dataset';
 var SEARCH_COLUMNS_CONTEXT = 'timeserie';
 
@@ -130,6 +132,8 @@ var TYPE_FIELD = {
         switch (match_url[url]) {
             case 'SearchOnDatamodel':
                 return SEARCH_FIELDS;
+            case 'SearchOnOrganizationsDatamodel':
+                return SEARCH_ORGANIZATIONS;
             case 'SearchOnDataset':
                 return SEARCH_COLUMNS;
             case 'SearchOnTimeseries':
@@ -385,7 +389,14 @@ var _searchColumns = function _searchColumns(_this, finder, objSearcher, defered
     });
 };
 
-var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEARCH_FIELDS, function (objSearcher, defered) {
+var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEARCH_ORGANIZATIONS, function (objSearcher, defered) {
+    https: //github.com/kriskowal/q#using-deferreds
+    _getDatamodelFields(this, objSearcher).then(function (response) {
+        defered.resolve(response);
+    })['catch'](function (err) {
+        defered.reject(err);
+    });
+}), _defineProperty(_FIELD_SEARCHER, SEARCH_FIELDS, function (objSearcher, defered) {
     https: //github.com/kriskowal/q#using-deferreds
     _getDatamodelFields(this, objSearcher).then(function (response) {
         defered.resolve(response);
