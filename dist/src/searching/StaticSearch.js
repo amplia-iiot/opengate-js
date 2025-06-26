@@ -453,6 +453,15 @@ var StaticSearch = (function (_Search) {
                             'optional': ['administrativeState', 'subscriptionName', 'description']
                         }
                     },
+                    'LORA': {
+                        'COMMUNICATIONS_MODULE': {
+                            'mandatory': ['generatedEntityKey']
+                        },
+                        'SUBSCRIPTION': {
+                            'mandatory': ['generatedEntityKey'],
+                            'optional': ['HOME_OPERATOR']
+                        }
+                    },
                     'LTE_M': {
                         'COMMUNICATIONS_MODULE': {
                             'mandatory': ['generatedEntityKey'],

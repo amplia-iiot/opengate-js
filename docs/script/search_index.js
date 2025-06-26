@@ -7338,6 +7338,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/operationtypes/operationtype.js~operationtype#withprofiles",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-withProfiles",
+    "src/operationTypes/OperationType.js~OperationType#withProfiles",
+    "method"
+  ],
+  [
     "src/operationtypes/operationtype.js~operationtype#withsteps",
     "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-withSteps",
     "src/operationTypes/OperationType.js~OperationType#withSteps",

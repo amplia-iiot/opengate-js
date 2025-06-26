@@ -772,6 +772,15 @@ export default class StaticSearch extends Search {
                         &apos;optional&apos;: [&apos;administrativeState&apos;, &apos;subscriptionName&apos;, &apos;description&apos;]
                     }
                 },
+                &apos;LORA&apos;: {
+                    &apos;COMMUNICATIONS_MODULE&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;]
+                    },
+                    &apos;SUBSCRIPTION&apos;: {
+                        &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
+                        &apos;optional&apos;: [&apos;HOME_OPERATOR&apos;]
+                    }
+                },
                 &apos;LTE_M&apos;: {
                     &apos;COMMUNICATIONS_MODULE&apos;: {
                         &apos;mandatory&apos;: [&apos;generatedEntityKey&apos;],
