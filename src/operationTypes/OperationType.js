@@ -40,6 +40,10 @@ export default class OperationType extends BaseProvision {
                 this.fromCatalog(operationTypeObj.fromCatalog);
             } 
             
+            if (operationTypeObj.profiles) {
+                this.withProfiles(operationTypeObj.profiles);
+            }
+
             if (nameForUpdate || !operationTypeObj.fromCatalog) {
                 if (operationTypeObj.steps) {
                     this.withSteps(operationTypeObj.steps);
@@ -158,6 +162,17 @@ export default class OperationType extends BaseProvision {
     }
 
     /**
+     * Allows the modification of the profiles allowed
+     * @param {array} profiles 
+     * @return {OperationType}
+     */
+    withProfiles(profiles) {
+        this._profiles = profiles || undefined;
+
+        return this;
+    }
+
+    /**
      * Allows the modification of the applicableTo
      * @param {array} applicableTo 
      * @return {OperationType}
@@ -179,6 +194,7 @@ export default class OperationType extends BaseProvision {
             "fromCatalog": this._fromCatalog || undefined,
             "steps":this._steps || undefined,
             "models": this._models || undefined,
+            "profiles": this._profiles || undefined,
             "applicableTo":  this._applicableTo || undefined
         };
 
