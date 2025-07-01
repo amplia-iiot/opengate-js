@@ -148,6 +148,8 @@ import OrganizationManufacturerModelsBuilder from './organization_manufacturer/M
 import OrganizationManufacturerFinder from './organization_manufacturer/ManufacturerFinder'
 import OrganizationModelFinder from './organization_manufacturer/ModelFinder'
 
+import SoftwaresBuilder from './organization_software/Software'
+import SoftwareFinder from './organization_software/SoftwareFinder'
 import NotebookFinder from './notebookScheduler/NotebookFinder'
 import NotebookSchedulerFinder from './notebookScheduler/SchedulerFinder'
 import NotebookLauncherBuilder from './notebookScheduler/NotebookLauncher'
@@ -1341,6 +1343,21 @@ export default class InternalOpenGateAPI {
         return new OrganizationModelFinder(this);
     }
 
+    /** This return a SoftwaresBuilder to build a specific SoftwaresBuilder
+     * @return {SoftwaresBuilder}
+     */
+    softwaresBuilder(organization) {
+        return new SoftwaresBuilder(this, organization);
+    }
+
+    /**
+     * This return a util to find an organization software
+     * @return {SoftwareFinder}
+     */
+    newSoftwareFinder() {
+        return new SoftwareFinder(this);
+    }
+    
     /** 
      * This return a NotebookLauncherBuilder to build a specific NotebookLauncherBuilder
      * @return {NotebookLauncherBuilder}
