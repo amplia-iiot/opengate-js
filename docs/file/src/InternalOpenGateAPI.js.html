@@ -154,6 +154,11 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PRE_RESOURCE">PRE_RESOURCE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MODELS_RESOURCE">MODELS_RESOURCE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PRE_RESOURCE">PRE_RESOURCE</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">organization_software</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organization_software/Software.js~Softwares.html">Softwares</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organization_software/SoftwareFinder.js~SoftwareFinder.html">SoftwareFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PRE_RESOURCE">PRE_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOFTWARES_RESOURCE">SOFTWARES_RESOURCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOFTWARE_TYPES_ENUM">SOFTWARE_TYPES_ENUM</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">organizations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/OrganizationFinder.js~OrganizationFinder.html">OrganizationFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/Organizations.js~Organizations.html">Organizations</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">pipelines</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pipelines/PipelineFinder.js~PipelineFinder.html">PipelineFinder</a></span></span></li>
@@ -457,6 +462,8 @@ import OrganizationManufacturerModelsBuilder from &apos;./organization_manufactu
 import OrganizationManufacturerFinder from &apos;./organization_manufacturer/ManufacturerFinder&apos;
 import OrganizationModelFinder from &apos;./organization_manufacturer/ModelFinder&apos;
 
+import SoftwaresBuilder from &apos;./organization_software/Software&apos;
+import SoftwareFinder from &apos;./organization_software/SoftwareFinder&apos;
 import NotebookFinder from &apos;./notebookScheduler/NotebookFinder&apos;
 import NotebookSchedulerFinder from &apos;./notebookScheduler/SchedulerFinder&apos;
 import NotebookLauncherBuilder from &apos;./notebookScheduler/NotebookLauncher&apos;
@@ -1650,6 +1657,21 @@ export default class InternalOpenGateAPI {
         return new OrganizationModelFinder(this);
     }
 
+    /** This return a SoftwaresBuilder to build a specific SoftwaresBuilder
+     * @return {SoftwaresBuilder}
+     */
+    softwaresBuilder(organization) {
+        return new SoftwaresBuilder(this, organization);
+    }
+
+    /**
+     * This return a util to find an organization software
+     * @return {SoftwareFinder}
+     */
+    newSoftwareFinder() {
+        return new SoftwareFinder(this);
+    }
+    
     /** 
      * This return a NotebookLauncherBuilder to build a specific NotebookLauncherBuilder
      * @return {NotebookLauncherBuilder}

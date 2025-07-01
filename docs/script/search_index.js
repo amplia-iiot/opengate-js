@@ -1020,6 +1020,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "opengate-js/src/organization_software/software.js~pre_resource",
+    "variable/index.html#static-variable-PRE_RESOURCE",
+    "<span>PRE_RESOURCE</span> <span class=\"search-result-import-path\">opengate-js/src/organization_software/Software.js</span>",
+    "variable"
+  ],
+  [
     "opengate-js/src/operations/catalog/parameters/parameterbuilderfactory.js~parameterbuilderfactory",
     "class/src/operations/catalog/parameters/ParameterBuilderFactory.js~ParameterBuilderFactory.html",
     "<span>ParameterBuilderFactory</span> <span class=\"search-result-import-path\">opengate-js/src/operations/catalog/parameters/ParameterBuilderFactory.js</span>",
@@ -1152,6 +1158,18 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/organization_software/software.js~softwares_resource",
+    "variable/index.html#static-variable-SOFTWARES_RESOURCE",
+    "<span>SOFTWARES_RESOURCE</span> <span class=\"search-result-import-path\">opengate-js/src/organization_software/Software.js</span>",
+    "variable"
+  ],
+  [
+    "opengate-js/src/organization_software/software.js~software_types_enum",
+    "variable/index.html#static-variable-SOFTWARE_TYPES_ENUM",
+    "<span>SOFTWARE_TYPES_ENUM</span> <span class=\"search-result-import-path\">opengate-js/src/organization_software/Software.js</span>",
+    "variable"
+  ],
+  [
     "opengate-js/src/searching/builder/softwaressearchbuilder.js~software_types_enum",
     "variable/index.html#static-variable-SOFTWARE_TYPES_ENUM",
     "<span>SOFTWARE_TYPES_ENUM</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/SoftwaresSearchBuilder.js</span>",
@@ -1233,6 +1251,18 @@ window.esdocSearchIndex = [
     "opengate-js/src/collection/devices/collect/software.js~software",
     "class/src/collection/devices/collect/Software.js~Software.html",
     "<span>Software</span> <span class=\"search-result-import-path\">opengate-js/src/collection/devices/collect/Software.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/organization_software/softwarefinder.js~softwarefinder",
+    "class/src/organization_software/SoftwareFinder.js~SoftwareFinder.html",
+    "<span>SoftwareFinder</span> <span class=\"search-result-import-path\">opengate-js/src/organization_software/SoftwareFinder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/organization_software/software.js~softwares",
+    "class/src/organization_software/Software.js~Softwares.html",
+    "<span>Softwares</span> <span class=\"search-result-import-path\">opengate-js/src/organization_software/Software.js</span>",
     "class"
   ],
   [
@@ -4026,6 +4056,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#newsoftwarefinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newSoftwareFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newSoftwareFinder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#newsubscribersfinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newSubscribersFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newSubscribersFinder",
@@ -4209,6 +4245,12 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#softwaremessagebuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-softwareMessageBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#softwareMessageBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#softwaresbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-softwaresBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#softwaresBuilder",
     "method"
   ],
   [
@@ -8157,6 +8199,96 @@ window.esdocSearchIndex = [
     "src/organization_manufacturer/modelfinder.js~modelfinder#findbyorganizationandmanufacturerandid",
     "class/src/organization_manufacturer/ModelFinder.js~ModelFinder.html#instance-method-findByOrganizationAndManufacturerAndId",
     "src/organization_manufacturer/ModelFinder.js~ModelFinder#findByOrganizationAndManufacturerAndId",
+    "method"
+  ],
+  [
+    "src/organization_software/software.js",
+    "file/src/organization_software/Software.js.html",
+    "src/organization_software/Software.js",
+    "file"
+  ],
+  [
+    "src/organization_software/software.js~softwares#constructor",
+    "class/src/organization_software/Software.js~Softwares.html#instance-constructor-constructor",
+    "src/organization_software/Software.js~Softwares#constructor",
+    "method"
+  ],
+  [
+    "src/organization_software/software.js~softwares#deleteincascade",
+    "class/src/organization_software/Software.js~Softwares.html#instance-method-deleteInCascade",
+    "src/organization_software/Software.js~Softwares#deleteInCascade",
+    "method"
+  ],
+  [
+    "src/organization_software/software.js~softwares#updateincascade",
+    "class/src/organization_software/Software.js~Softwares.html#instance-method-updateInCascade",
+    "src/organization_software/Software.js~Softwares#updateInCascade",
+    "method"
+  ],
+  [
+    "src/organization_software/software.js~softwares#withidentifier",
+    "class/src/organization_software/Software.js~Softwares.html#instance-method-withIdentifier",
+    "src/organization_software/Software.js~Softwares#withIdentifier",
+    "method"
+  ],
+  [
+    "src/organization_software/software.js~softwares#withmodels",
+    "class/src/organization_software/Software.js~Softwares.html#instance-method-withModels",
+    "src/organization_software/Software.js~Softwares#withModels",
+    "method"
+  ],
+  [
+    "src/organization_software/software.js~softwares#withname",
+    "class/src/organization_software/Software.js~Softwares.html#instance-method-withName",
+    "src/organization_software/Software.js~Softwares#withName",
+    "method"
+  ],
+  [
+    "src/organization_software/software.js~softwares#withtype",
+    "class/src/organization_software/Software.js~Softwares.html#instance-method-withType",
+    "src/organization_software/Software.js~Softwares#withType",
+    "method"
+  ],
+  [
+    "src/organization_software/software.js~softwares#withversion",
+    "class/src/organization_software/Software.js~Softwares.html#instance-method-withVersion",
+    "src/organization_software/Software.js~Softwares#withVersion",
+    "method"
+  ],
+  [
+    "src/organization_software/softwarefinder.js",
+    "file/src/organization_software/SoftwareFinder.js.html",
+    "src/organization_software/SoftwareFinder.js",
+    "file"
+  ],
+  [
+    "src/organization_software/softwarefinder.js~softwarefinder#administrable",
+    "class/src/organization_software/SoftwareFinder.js~SoftwareFinder.html#instance-method-administrable",
+    "src/organization_software/SoftwareFinder.js~SoftwareFinder#administrable",
+    "method"
+  ],
+  [
+    "src/organization_software/softwarefinder.js~softwarefinder#assignable",
+    "class/src/organization_software/SoftwareFinder.js~SoftwareFinder.html#instance-method-assignable",
+    "src/organization_software/SoftwareFinder.js~SoftwareFinder#assignable",
+    "method"
+  ],
+  [
+    "src/organization_software/softwarefinder.js~softwarefinder#constructor",
+    "class/src/organization_software/SoftwareFinder.js~SoftwareFinder.html#instance-constructor-constructor",
+    "src/organization_software/SoftwareFinder.js~SoftwareFinder#constructor",
+    "method"
+  ],
+  [
+    "src/organization_software/softwarefinder.js~softwarefinder#findbyorganization",
+    "class/src/organization_software/SoftwareFinder.js~SoftwareFinder.html#instance-method-findByOrganization",
+    "src/organization_software/SoftwareFinder.js~SoftwareFinder#findByOrganization",
+    "method"
+  ],
+  [
+    "src/organization_software/softwarefinder.js~softwarefinder#findbyorganizationandid",
+    "class/src/organization_software/SoftwareFinder.js~SoftwareFinder.html#instance-method-findByOrganizationAndId",
+    "src/organization_software/SoftwareFinder.js~SoftwareFinder#findByOrganizationAndId",
     "method"
   ],
   [
