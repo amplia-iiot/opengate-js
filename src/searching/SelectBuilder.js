@@ -40,6 +40,10 @@ export default class SelectBuilder {
                                     if (input_field.alias) {
                                         element.fields[z].alias = input_field.alias;
                                     }
+
+                                     if (input_field.aggregation) {
+                                        element.fields[z].aggregation = input_field.aggregation;
+                                    }
                                 }
                             }
 

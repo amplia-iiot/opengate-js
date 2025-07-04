@@ -129,11 +129,10 @@ var TimeserieDatasetBuilder = (function (_SearchBuilder) {
         value: function group() {
             throw new Error('group not supported');
         }
-    }, {
-        key: 'findAllFields',
-        value: function findAllFields() {
-            throw new Error('findAllFields not supported');
-        }
+
+        // findAllFields() {
+        //     throw new Error('findAllFields not supported');
+        // }
 
         /**
          * Build a instance of Search 
