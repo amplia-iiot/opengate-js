@@ -636,12 +636,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "opengate-js/src/util/searchingfields/fieldfinder.js~fieldfinder",
-    "class/src/util/searchingFields/FieldFinder.js~FieldFinder.html",
-    "<span>FieldFinder</span> <span class=\"search-result-import-path\">opengate-js/src/util/searchingFields/FieldFinder.js</span>",
-    "class"
-  ],
-  [
     "opengate-js/src/searching/builder/fieldsdefinitionsearchbuilder.js~fieldsdefinitionsearchbuilder",
     "class/src/searching/builder/FieldsDefinitionSearchBuilder.js~FieldsDefinitionSearchBuilder.html",
     "<span>FieldsDefinitionSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/FieldsDefinitionSearchBuilder.js</span>",
@@ -10812,12 +10806,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/searching/builder/timeseriedatasetbuilder.js~timeseriedatasetbuilder#findallfields",
-    "class/src/searching/builder/TimeserieDatasetBuilder.js~TimeserieDatasetBuilder.html#instance-method-findAllFields",
-    "src/searching/builder/TimeserieDatasetBuilder.js~TimeserieDatasetBuilder#findAllFields",
-    "method"
-  ],
-  [
     "src/searching/builder/timeseriedatasetbuilder.js~timeseriedatasetbuilder#group",
     "class/src/searching/builder/TimeserieDatasetBuilder.js~TimeserieDatasetBuilder.html#instance-method-group",
     "src/searching/builder/TimeserieDatasetBuilder.js~TimeserieDatasetBuilder#group",
@@ -11830,36 +11818,6 @@ window.esdocSearchIndex = [
     "file/src/util/formats/check_types.js.html",
     "src/util/formats/check_types.js",
     "file"
-  ],
-  [
-    "src/util/searchingfields/fieldfinder.js",
-    "file/src/util/searchingFields/FieldFinder.js.html",
-    "src/util/searchingFields/FieldFinder.js",
-    "file"
-  ],
-  [
-    "src/util/searchingfields/fieldfinder.js~fieldfinder#constructor",
-    "class/src/util/searchingFields/FieldFinder.js~FieldFinder.html#instance-constructor-constructor",
-    "src/util/searchingFields/FieldFinder.js~FieldFinder#constructor",
-    "method"
-  ],
-  [
-    "src/util/searchingfields/fieldfinder.js~fieldfinder#find",
-    "class/src/util/searchingFields/FieldFinder.js~FieldFinder.html#instance-method-find",
-    "src/util/searchingFields/FieldFinder.js~FieldFinder#find",
-    "method"
-  ],
-  [
-    "src/util/searchingfields/fieldfinder.js~fieldfinder#findall",
-    "class/src/util/searchingFields/FieldFinder.js~FieldFinder.html#instance-method-findAll",
-    "src/util/searchingFields/FieldFinder.js~FieldFinder#findAll",
-    "method"
-  ],
-  [
-    "src/util/searchingfields/fieldfinder.js~fieldfinder#findfieldpath",
-    "class/src/util/searchingFields/FieldFinder.js~FieldFinder.html#instance-method-findFieldPath",
-    "src/util/searchingFields/FieldFinder.js~FieldFinder#findFieldPath",
-    "method"
   ],
   [
     "src/util/searchingfields/iotfields.js",
