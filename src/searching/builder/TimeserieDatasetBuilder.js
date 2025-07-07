@@ -84,9 +84,9 @@ export default class TimeserieDatasetBuilder extends SearchBuilder {
         throw new Error('group not supported');
     }
 
-    findAllFields() {
-        throw new Error('findAllFields not supported');
-    }
+    // findAllFields() {
+    //     throw new Error('findAllFields not supported');
+    // }
 
     /**
      * Build a instance of Search 
