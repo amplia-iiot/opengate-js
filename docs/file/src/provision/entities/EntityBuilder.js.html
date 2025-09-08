@@ -498,7 +498,7 @@ export default class EntityBuilder {
      * @return {Promise}
      */
     subscribersBuilder(organization, timeout) {
-        return this._genericBuilder(organization, &apos;entity.subscriber&apos;, &apos;provision.device.communicationModules[].subscriber&apos;, function(allowedDatastreams, definedSchemas) {
+        return this._genericBuilder(organization, &apos;entity.subscriber&apos;, &apos;provision&apos;, function(allowedDatastreams, definedSchemas) {
             return new SubscriberBuilder(this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout);
         });
     }
