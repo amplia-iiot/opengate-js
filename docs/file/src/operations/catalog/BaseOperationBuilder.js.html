@@ -551,6 +551,28 @@ export default class BaseOperationBuilder {
     }
 
     /**
+     * The operation will be created with delayed start or if you not pass any argument then the method return a cron expression builder.
+     * @param {!Date} date
+     * @param {boolean} active - If active is false, an operation is created in paused
+     * @throws {Error} throw error when minutes is not typeof number
+     * @return {BaseOperationBuilder|CronExpressionBuilder} 
+     */
+    executeAtDate(date, active = true) {
+        if (typeof date === &quot;undefined&quot; || date.constructor !== Date) {
+            throw new Error(&quot;Parameter date must be typeof Date&quot;);
+        }
+        this._build.active = active;
+        if (typeof this._build.schedule === &quot;undefined&quot;) {
+            this._build.schedule = {};
+        }
+        this._build.schedule.start = {
+            date: moment(date).format(DATE_FORMAT)
+        };
+        delete this._build.task;
+        return this;
+    }
+
+    /**
      * The operation will execute with a period that you must define with ExecuteEveryBuilder 
      * @param {!Date} date - Date when operation will be executed
      * @param {string} name - Name associated to periodicity

@@ -466,6 +466,34 @@
         <p>
           
           
+          <span data-ice="name"><span><a href="class/src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder.html#instance-method-executeAtDate">executeAtDate</a></span></span><span data-ice="signature">(date: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date">Date</a></span>, active: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span><a href="class/src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder.html">BaseOperationBuilder</a></span> | <span>CronExpressionBuilder</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>The operation will be created with delayed start or if you not pass any argument then the method return a cron expression builder.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
           <span data-ice="name"><span><a href="class/src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder.html#instance-method-executeEach">executeEach</a></span></span><span data-ice="signature">(date: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date">Date</a></span>, name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, end: <span>number or Date</span>, active: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, description: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/operations/catalog/period/ExecuteEachBuilder.js~ExecuteEachBuilder.html">ExecuteEachBuilder</a></span></span>
         </p>
       </div>
@@ -1067,7 +1095,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber430">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber452">source</a></span></span>
     </span>
   </h3>
 
@@ -1131,6 +1159,97 @@
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-executeAtDate">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span data-ice="name">executeAtDate</span><span data-ice="signature">(date: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date">Date</a></span>, active: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span><a href="class/src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder.html">BaseOperationBuilder</a></span> | <span>CronExpressionBuilder</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber247">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>The operation will be created with delayed start or if you not pass any argument then the method return a cron expression builder.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">date</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date">Date</a></span></td>
+      <td data-ice="appendix"><ul><li>nullable: false</li></ul></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">active</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>If active is false, an operation is created in paused</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type" data-ice="returnType"><span><a href="class/src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder.html">BaseOperationBuilder</a></span> | <span>CronExpressionBuilder</span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  <div data-ice="throwWrap">
+    <h4>Throw:</h4>
+    <table>
+      <tbody>
+      
+      <tr class="throw" data-ice="throw">
+        <td><p data-ice="throwName"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a></span></p></td>
+        <td data-ice="throwDesc"><p>throw error when minutes is not typeof number</p>
+</td>
+      </tr>
+</tbody>
+    </table>
+  </div>
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-executeEach">
     <span class="access" data-ice="access">public</span>
     
@@ -1142,7 +1261,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber271">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber293">source</a></span></span>
     </span>
   </h3>
 
@@ -1255,7 +1374,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber250">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber272">source</a></span></span>
     </span>
   </h3>
 
@@ -1571,7 +1690,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber332">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber354">source</a></span></span>
     </span>
   </h3>
 
@@ -1761,7 +1880,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber309">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber331">source</a></span></span>
     </span>
   </h3>
 
@@ -1952,7 +2071,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber373">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber395">source</a></span></span>
     </span>
   </h3>
 
@@ -2043,7 +2162,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber409">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber431">source</a></span></span>
     </span>
   </h3>
 
@@ -2120,7 +2239,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber399">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber421">source</a></span></span>
     </span>
   </h3>
 
@@ -2211,7 +2330,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber386">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber408">source</a></span></span>
     </span>
   </h3>
 
@@ -2302,7 +2421,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber360">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber382">source</a></span></span>
     </span>
   </h3>
 
@@ -2600,7 +2719,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber346">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operations/catalog/BaseOperationBuilder.js.html#lineNumber368">source</a></span></span>
     </span>
   </h3>
 

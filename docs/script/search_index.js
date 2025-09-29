@@ -7644,6 +7644,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/operations/catalog/baseoperationbuilder.js~baseoperationbuilder#executeatdate",
+    "class/src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder.html#instance-method-executeAtDate",
+    "src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder#executeAtDate",
+    "method"
+  ],
+  [
     "src/operations/catalog/baseoperationbuilder.js~baseoperationbuilder#executeeach",
     "class/src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder.html#instance-method-executeEach",
     "src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder#executeEach",
