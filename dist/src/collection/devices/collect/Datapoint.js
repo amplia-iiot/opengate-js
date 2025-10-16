@@ -66,6 +66,32 @@ var Datapoint = (function () {
         }
 
         /**
+         * Set the source attribute
+         * @param {string} source - optional field
+         * @return {Datapoint}
+         */
+    }, {
+        key: 'withSource',
+        value: function withSource(value) {
+            if (value === undefined || value.length === 0) throw new Error('OGAPI_DEFINED_PARAMETER');
+            this._source = value;
+            return this;
+        }
+
+        /**
+         * Set the source attribute
+         * @param {string} sourceInfo - optional field
+         * @return {Datapoint}
+         */
+    }, {
+        key: 'withSourceInfo',
+        value: function withSourceInfo(value) {
+            if (value === undefined || value.length === 0) throw new Error('OGAPI_DEFINED_PARAMETER');
+            this._sourceInfo = value;
+            return this;
+        }
+
+        /**
          * Set the tags attribute
          * @param {string} tags 
          * @return {Datapoint}
@@ -89,8 +115,9 @@ var Datapoint = (function () {
                 'from': this._from || undefined,
                 'at': this._at || undefined,
                 'value': this._value,
-                'tags': this._tags || undefined
-
+                'tags': this._tags || undefined,
+                'source': this._source || undefined,
+                'sourceInfo': this._sourceInfo || undefined
             };
             return datapoint;
         }
