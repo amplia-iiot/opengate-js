@@ -55,6 +55,30 @@ export default class Datapoint {
     }
 
     /**
+     * Set the source attribute
+     * @param {string} source - optional field
+     * @return {Datapoint}
+     */
+    withSource(value) {
+        if (value === undefined || value.length === 0)
+            throw new Error('OGAPI_DEFINED_PARAMETER');
+        this._source = value;
+        return this;
+    }
+
+    /**
+     * Set the source attribute
+     * @param {string} sourceInfo - optional field
+     * @return {Datapoint}
+     */
+    withSourceInfo(value) {
+        if (value === undefined || value.length === 0)
+            throw new Error('OGAPI_DEFINED_PARAMETER');
+        this._sourceInfo = value;
+        return this;
+    }
+
+    /**
      * Set the tags attribute
      * @param {string} tags 
      * @return {Datapoint}
@@ -76,8 +100,9 @@ export default class Datapoint {
             'from': this._from || undefined,
             'at': this._at || undefined,
             'value': this._value,
-            'tags': this._tags || undefined
-
+            'tags': this._tags || undefined,
+            'source': this._source || undefined,
+            'sourceInfo': this._sourceInfo || undefined
         };
         return datapoint;
     }
