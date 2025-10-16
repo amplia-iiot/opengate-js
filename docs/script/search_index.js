@@ -5148,6 +5148,18 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/collection/devices/collect/datapoint.js~datapoint#withsource",
+    "class/src/collection/devices/collect/Datapoint.js~Datapoint.html#instance-method-withSource",
+    "src/collection/devices/collect/Datapoint.js~Datapoint#withSource",
+    "method"
+  ],
+  [
+    "src/collection/devices/collect/datapoint.js~datapoint#withsourceinfo",
+    "class/src/collection/devices/collect/Datapoint.js~Datapoint.html#instance-method-withSourceInfo",
+    "src/collection/devices/collect/Datapoint.js~Datapoint#withSourceInfo",
+    "method"
+  ],
+  [
     "src/collection/devices/collect/datapoint.js~datapoint#withtags",
     "class/src/collection/devices/collect/Datapoint.js~Datapoint.html#instance-method-withTags",
     "src/collection/devices/collect/Datapoint.js~Datapoint#withTags",
