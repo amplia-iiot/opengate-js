@@ -66,7 +66,8 @@ var schema_base = '/og_basic_types.json';
 
 var EntityBuilder = (function () {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 

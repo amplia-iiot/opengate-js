@@ -8,7 +8,8 @@ import checkType from '../util/formats/check_types'
 
 export default class ProvisionProcessors extends BaseProvision {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
@@ -37,7 +38,7 @@ export default class ProvisionProcessors extends BaseProvision {
      * @param {string} identifier - required field
      * @return {ProvisionPrecessors}
      */
-     withIdentifier(identifier) {
+    withIdentifier(identifier) {
         checkType._checkString(identifier, 'identifier');
         this._identifier = identifier;
         return this;
@@ -70,12 +71,12 @@ export default class ProvisionProcessors extends BaseProvision {
      * @param {object} scriptProcessor - required field
      * @return {ProvisionPrecessors}
      */
-     withScriptProcessor(scriptProcessor) {
+    withScriptProcessor(scriptProcessor) {
         checkType._checkObject(scriptProcessor, 'scriptProcessor');
         this._scriptProcessor = scriptProcessor;
         return this;
     }
-    
+
     //create y update
     _composeElement() {
         this._resource = "provisionProcessors/provision/organizations/" + this._organization;

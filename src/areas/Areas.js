@@ -9,7 +9,8 @@ import checkType from '../util/formats/check_types'
 
 export default class Areas extends BaseProvision {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {

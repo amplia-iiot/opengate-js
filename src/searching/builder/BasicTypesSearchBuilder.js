@@ -11,6 +11,7 @@ import jp from 'jsonpath';
  */
 export default class BasicTypesSearchBuilder {
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!number} [timeout] - timeout on request
      */

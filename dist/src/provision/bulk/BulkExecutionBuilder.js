@@ -36,6 +36,7 @@ var BulkExecutionBuilder = (function (_BaseProvision) {
     _inherits(BulkExecutionBuilder, _BaseProvision);
 
     /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - required field. This is ogapi instance
      * @param {string} organization - required field. This is the organization name
      * @param {string} processorId - required field. This is the provision processor use for bulk provision

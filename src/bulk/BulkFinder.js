@@ -10,7 +10,8 @@ import HttpStatus from 'http-status-codes';
  */
 export default class BulkFinder extends ProvisionGenericFinder {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {

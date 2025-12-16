@@ -24,6 +24,7 @@ var JsonFlattenedBulkBuilder = (function (_BulkBuilder) {
     _inherits(JsonFlattenedBulkBuilder, _BulkBuilder);
 
     /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - required field. This is ogapi instance
      * @param {string} organization - required field. This is the organization name where entities will be created, updated or deleted
      * @param {resource} resource - required field. This is the resource used for the bulk provision

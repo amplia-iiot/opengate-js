@@ -4,6 +4,7 @@ import { DAYS_ENUM } from './../DAYS_ENUM';
 
 export default class ByWeek extends ByGeneric {
     /**
+     * Constructor
      * @param {!BaseOperationBuilder} parent - this is a operationBaseBuilder.
      * @param {!Date} date - Date when operation will be executed
      * @param {string} periodicityName - Name associated to periodicity	
@@ -29,7 +30,7 @@ export default class ByWeek extends ByGeneric {
         }
         let not_found = [];
         for (var i = 0; i < days.length; i++) {
-            let found = DAYS_ENUM.find(function(day) { return day == this; }, days[i]);
+            let found = DAYS_ENUM.find(function (day) { return day == this; }, days[i]);
             if (typeof found === "undefined") {
                 not_found.push(found);
             }

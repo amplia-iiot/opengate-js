@@ -37,7 +37,8 @@ var _Model = require('./Model');
 var ModelFinder = (function (_ProvisionGenericFinder) {
     _inherits(ModelFinder, _ProvisionGenericFinder);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 

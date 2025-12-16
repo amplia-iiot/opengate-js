@@ -31,7 +31,8 @@ exports.URL = URL;
 var Timeseries = (function (_BaseProvision) {
     _inherits(Timeseries, _BaseProvision);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 

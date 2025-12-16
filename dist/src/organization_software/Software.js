@@ -36,7 +36,8 @@ exports.SOFTWARE_TYPES_ENUM = SOFTWARE_TYPES_ENUM;
 var Softwares = (function (_BaseProvision) {
     _inherits(Softwares, _BaseProvision);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 
@@ -106,7 +107,7 @@ var Softwares = (function (_BaseProvision) {
 
         /**
         * Set the model attribute
-        * @param {string} model 
+        * @param {Array} models 
         * @return {Softwares}
         */
     }, {

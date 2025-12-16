@@ -21,18 +21,18 @@ const ACK_TIMEOUT = "ackTimeout",
     RETRIES_DELAY = "retriesDelay";
 const RETRY_RESULT_LIST = "retryResultList";
 const VALIDATE = {
-    gte: function(value) {
+    gte: function (value) {
         if (value < this)
             throw new Error("Value expected must be greater than <" + this + ">. Value setted <" + value + ">");
     },
-    list: function(value) {
-        let valueFound = this.find(function(value) {
+    list: function (value) {
+        let valueFound = this.find(function (value) {
             return value == this;
         }, value);
         if (typeof valueFound === "undefined")
             throw new Error("Value must be one of these: " + JSON.stringify(this));
     },
-    editable: function(value) {
+    editable: function (value) {
         return true;
         // Desactivada comprobación, es incoherente el valor en el catalogo de operaciones.
         /*if (!this)
@@ -45,11 +45,12 @@ const VALIDATE = {
  */
 export default class BaseOperationBuilder {
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
      * @param {!object} config - this is configuration about operation. 
      */
     constructor(ogapi, config) {
-        this._ajv = new Ajv({useDefaults: "empty", coerceTypes: true})
+        this._ajv = new Ajv({ useDefaults: "empty", coerceTypes: true })
         // this._requiredParameters = [];
         /**
          * Util used into BaseOperationBuilder to append entities the three different ways. By filter, By tags, By entityList
@@ -68,7 +69,7 @@ export default class BaseOperationBuilder {
                 timeout: 90000,
                 retries: 0,
                 retriesDelay: 0,
-                retryResultList:[]
+                retryResultList: []
             },
             name: config.name,
             schedule: {}
@@ -99,23 +100,23 @@ export default class BaseOperationBuilder {
      * @return {BaseOperationBuilder}
      */
     withNotes(notes) {
-            if (notes === null) {
-                delete this._build.userNotes;
-                return this;
-            }
-            if (typeof notes !== "string")
-                throw new Error('Parameter notes must be a string');
-            this._build.userNotes = notes;
+        if (notes === null) {
+            delete this._build.userNotes;
             return this;
         }
-        /**
-         * Set a callback to operation. If it is set also will be set notify with true value
-         * @example
-         *  ogapi.operations.builderFactory.newXXXBuilder().withCallback("http://my.web")
-         * @param {string} url -  If null then parameter will be removed into builder
-         * @throws {Error} throw error when url is not typeof string
-         * @return {BaseOperationBuilder}
-         */
+        if (typeof notes !== "string")
+            throw new Error('Parameter notes must be a string');
+        this._build.userNotes = notes;
+        return this;
+    }
+    /**
+     * Set a callback to operation. If it is set also will be set notify with true value
+     * @example
+     *  ogapi.operations.builderFactory.newXXXBuilder().withCallback("http://my.web")
+     * @param {string} url -  If null then parameter will be removed into builder
+     * @throws {Error} throw error when url is not typeof string
+     * @return {BaseOperationBuilder}
+     */
     withCallback(url) {
         if (url === null) {
             delete this._build.callback;
@@ -429,11 +430,11 @@ export default class BaseOperationBuilder {
     }
 
     withParameter(parameter, value) {
-        if (this._config.parameters) { 
-            if ( !this._build.parameters) {
+        if (this._config.parameters) {
+            if (!this._build.parameters) {
                 this._build.parameters = {}
             }
-            
+
             this._build.parameters[parameter] = value;
             return this;
         } else {
@@ -613,7 +614,7 @@ export default class BaseOperationBuilder {
         if (this._config.parameters && this._config.parameters.schema) {
             const validate = this._ajv.compile(this._config.parameters.schema)
             const valid = validate(this._build.parameters)
-            if(!valid) {
+            if (!valid) {
                 throw new Error(validate.errors)
             }
         }

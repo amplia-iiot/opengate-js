@@ -74,6 +74,7 @@ var VALIDATE = {
 
 var BaseOperationBuilder = (function () {
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
      * @param {!object} config - this is configuration about operation. 
      */

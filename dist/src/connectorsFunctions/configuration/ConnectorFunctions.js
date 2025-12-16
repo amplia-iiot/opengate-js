@@ -31,7 +31,8 @@ var _q2 = _interopRequireDefault(_q);
 var ConnectorFunctions = (function (_BaseProvision) {
     _inherits(ConnectorFunctions, _BaseProvision);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 

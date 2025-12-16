@@ -527,6 +527,7 @@ var DeviceBuilder = (function (_ComplexBuilder) {
     _inherits(DeviceBuilder, _ComplexBuilder);
 
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!string} organization - this is the organization name where device will be created
      * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new device

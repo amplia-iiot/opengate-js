@@ -49,6 +49,7 @@ var mock = (0, _superagentMocker2['default'])(_superagent2['default']);
 
 var NorthAmpliaREST = (function () {
     /**
+     * This is a constructor of a Rest api javascript
      * @param {{ url: string,port: string,version: string,apiKey: string,JTW: string}} _options - this is configuration about Opengate North API.
      * @param {function} backend - this is a backend selected to manage a request to Opengate North API.
      */

@@ -9,6 +9,7 @@ export const SubscriberID = 'provision.device.communicationModules[].subscriber.
 export default class SubscriberBuilder extends SimpleBuilder {
 
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!string} organization - this is the organization name where subscriber will be created
      * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new subscriber

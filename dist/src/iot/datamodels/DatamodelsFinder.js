@@ -29,6 +29,7 @@ var DatamodelsFinder = (function (_ProvisionGenericFinder) {
     _inherits(DatamodelsFinder, _ProvisionGenericFinder);
 
     /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 

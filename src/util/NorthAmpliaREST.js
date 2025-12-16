@@ -2,7 +2,7 @@
 
 import merge from 'merge';
 import urlencode from 'urlencode';
-import request, { mkcol } from 'superagent';
+import request from 'superagent';
 import q from 'q';
 import _ from 'lodash'
 import mime from 'mime-types'
@@ -17,6 +17,7 @@ const mock = _mock(request);
  */
 export default class NorthAmpliaREST {
     /**
+     * This is a constructor of a Rest api javascript
      * @param {{ url: string,port: string,version: string,apiKey: string,JTW: string}} _options - this is configuration about Opengate North API.
      * @param {function} backend - this is a backend selected to manage a request to Opengate North API.
      */
@@ -60,7 +61,7 @@ export default class NorthAmpliaREST {
         //         statusCode: 200
         //     };
         // });
-        
+
         // mock.del(_options.url + '/north/v80/provision//organizations/:organization/software/:id', function(req) {
         //     return {
         //         body: {
@@ -69,7 +70,7 @@ export default class NorthAmpliaREST {
         //         statusCode: 200
         //     };
         // });
-        
+
         // mock.get(_options.url + '/north/v80/provision//organizations/:organization/software?visibility=administrable', function(req) {
         //     return {
         //         body: {
@@ -95,7 +96,7 @@ export default class NorthAmpliaREST {
         // });      
     }
 
-    _applyMocks (mocks) {
+    _applyMocks(mocks) {
         const methods = Object.keys(mocks).filter((method) => !_.isEmpty(mocks[method]))
         methods.forEach(method => {
             console.log(`Mocking ${method.toLocaleUpperCase()} requests`);
@@ -103,10 +104,10 @@ export default class NorthAmpliaREST {
                 console.log('Mocking url:', url);
                 const methodByUrl = mocks[method][url]
                 mock[method](this._options.url + url, (req) => {
-                    if(typeof methodByUrl  === 'function'){
+                    if (typeof methodByUrl === 'function') {
                         console.log('Function returned')
                         return methodByUrl(req)
-                    } else{
+                    } else {
                         const data = mocks[method][url]
                         console.log('Data returned:', data)
                         if (!data.headers) data.headers = {}
@@ -121,7 +122,7 @@ export default class NorthAmpliaREST {
      * This return a default configuration object
      * @return {object}
      */
-    default () {
+    default() {
         return {
             timeout: 5000
         };
@@ -205,7 +206,7 @@ export default class NorthAmpliaREST {
 
         this._prepareMultipartForm(formData, req);
 
-        return this._createPromiseRequest(req, events, timeout, headers);        
+        return this._createPromiseRequest(req, events, timeout, headers);
     }
 
     /**
@@ -257,22 +258,22 @@ export default class NorthAmpliaREST {
 
     _prepareMultipartForm(formData, req) {
         let sendFormData = true
-        
+
         const formDataKeys = Object.keys(formData)
         formDataKeys.forEach(key => {
             switch (key) {
                 case 'meta':
                 case 'json':
                 case 'file':
-                    req.field(key, formData[key]);    
+                    req.field(key, formData[key]);
                     delete formData[key]
                     break
-                case 'metadata': 
+                case 'metadata':
                     req.attach(key, formData[key]);
                     sendFormData = false
                     break
-                case 'hardwareMedia': 
-                case 'certificate': 
+                case 'hardwareMedia':
+                case 'certificate':
                 case 'processorBulkFile':
                     req.attach('file', formData[key]);
                     sendFormData = false
@@ -285,17 +286,17 @@ export default class NorthAmpliaREST {
 
                             var contentType = mime.lookup(fileName);
                             if (contentType) {
-                                req.attach(key, item, {filename: fileName, contentType: contentType});    
+                                req.attach(key, item, { filename: fileName, contentType: contentType });
                             } else if (fileName.endsWith('.py')) {
-                                req.attach(key, item, {filename: fileName, contentType: 'text/x-python'});    
+                                req.attach(key, item, { filename: fileName, contentType: 'text/x-python' });
                             } else {
-                                req.attach(key, item, {filename: fileName});    
-                            }    
+                                req.attach(key, item, { filename: fileName });
+                            }
                         } else {
                             req.attach(key, item);
                         }
                     })
-                    
+
                     delete formData[key]
                     sendFormData = false
                     break
@@ -314,7 +315,7 @@ export default class NorthAmpliaREST {
             }
         })
 
-        if(sendFormData)
+        if (sendFormData)
             req.send(formData);
     }
 
@@ -332,10 +333,10 @@ export default class NorthAmpliaREST {
         const _url = this._createUrl(url, parameters, serviceBaseURL)
         console.info('DELETE', _url)
         var req
-        if(body){
+        if (body) {
             req = request.del(_url).send(body);
             //req = request('DELETE', url)
-        }else{
+        } else {
             req = request.del(_url);
         }
         return this._createPromiseRequest(req, null, timeout, headers);
@@ -363,7 +364,7 @@ export default class NorthAmpliaREST {
         var relativeUrlSplit = relativeUrl.split("/");
         var length = relativeUrlSplit.length;
 
-        relativeUrlSplit.forEach(function(item, index) {
+        relativeUrlSplit.forEach(function (item, index) {
             if (index === (length - 1) && item.indexOf("?") > 0) {
                 var parameters = item.substring(item.indexOf("?"), item.length);
                 var _item = item.substring(0, item.indexOf("?"));
@@ -373,7 +374,7 @@ export default class NorthAmpliaREST {
             }
         });
 
-        return this._url(this._options) +  "/" + this._getDefaultBaseURL(serviceBaseURL) + '/' + encode.join("/");
+        return this._url(this._options) + "/" + this._getDefaultBaseURL(serviceBaseURL) + '/' + encode.join("/");
     }
 
     _getDefaultBaseURL(serviceBaseURL) {
@@ -383,7 +384,7 @@ export default class NorthAmpliaREST {
             } else {
                 return 'north/v80'
             }
-        } 
+        }
 
         return serviceBaseURL
     }
@@ -398,11 +399,11 @@ export default class NorthAmpliaREST {
         let apiKey = this._options.apiKey;
         let JWT = this._options.jwt;
         let _req = _timeout === -1 ? req : req.timeout(_timeout);
-        
-        if(JWT && !this._isSouth) {
+
+        if (JWT && !this._isSouth) {
             _req = _req.set('Authorization', 'Bearer ' + JWT);
         }
-        else if(apiKey) {
+        else if (apiKey) {
             _req = _req.set('X-ApiKey', this._options.apiKey);
         }
 
@@ -420,15 +421,15 @@ export default class NorthAmpliaREST {
                 _req = _req.on(event, events[event]);
             }
         }
-        if(asBlob){
+        if (asBlob) {
             req.responseType('blob')
         }
-        _req = _req.end(function(err, res) {
+        _req = _req.end(function (err, res) {
             if (err !== null) {
                 console.error("OGAPI ERROR: ")
-                try{
+                try {
                     console.log(JSON.stringify(err))
-                }catch(err){
+                } catch (err) {
                     console.log(err)
                 }
                 let data;
@@ -440,7 +441,7 @@ export default class NorthAmpliaREST {
                         message: 'OGAPI: Something is broken. Please contact with your administrator.'
                     }]
                 };
-                
+
                 if (typeof err.response !== "undefined") {
                     data = err.response.body ? err.response.body : errorMessage;
                     headers = err.response.headers
@@ -460,7 +461,7 @@ export default class NorthAmpliaREST {
                     headers: headers
                 });
             } else {
-                
+
                 defered.resolve(res);
             }
         });

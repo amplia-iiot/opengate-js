@@ -21,6 +21,7 @@ var _moment2 = _interopRequireDefault(_moment);
 var RuleConfigurationsActions = (function () {
 
     /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
      * @param {string} name - Identifier of the ryule configuration to operate
      */

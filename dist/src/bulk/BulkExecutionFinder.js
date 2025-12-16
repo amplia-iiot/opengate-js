@@ -36,7 +36,8 @@ exports.MIME_TYPES_ENUM = MIME_TYPES_ENUM;
 var BulkExecutionFinder = (function (_GenericFinder) {
     _inherits(BulkExecutionFinder, _GenericFinder);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 

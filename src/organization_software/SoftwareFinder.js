@@ -1,14 +1,15 @@
 'use strict';
 
 import ProvisionGenericFinder from '../ProvisionGenericFinder';
-import {SOFTWARES_RESOURCE, PRE_RESOURCE} from './Software'
+import { SOFTWARES_RESOURCE, PRE_RESOURCE } from './Software'
 
 /**
  *   This class allow make get request to hardware softwares resource into Opengate North API.
  */
 export default class SoftwareFinder extends ProvisionGenericFinder {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
@@ -24,7 +25,7 @@ export default class SoftwareFinder extends ProvisionGenericFinder {
             visibility: this._visibility || 'assignable'
         });
 
-        return this._baseUrl + "/" + this._organization + SOFTWARES_RESOURCE + (this._identifier?"/" + this._identifier: "");
+        return this._baseUrl + "/" + this._organization + SOFTWARES_RESOURCE + (this._identifier ? "/" + this._identifier : "");
     }
 
     /**

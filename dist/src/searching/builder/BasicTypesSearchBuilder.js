@@ -29,6 +29,7 @@ var _jsonpath2 = _interopRequireDefault(_jsonpath);
 
 var BasicTypesSearchBuilder = (function () {
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!number} [timeout] - timeout on request
      */

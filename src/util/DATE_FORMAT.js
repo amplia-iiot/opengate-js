@@ -4,6 +4,7 @@
  * Global date format.
  */
 export const DATE_FORMAT = "";
+
 /**
  * Global time format.
  */

@@ -33,7 +33,8 @@ var _devicesCollectDatastreams2 = _interopRequireDefault(_devicesCollectDatastre
 var DeviceMessage = (function (_Event) {
     _inherits(DeviceMessage, _Event);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 

@@ -35,7 +35,8 @@ var _TYPES_ENUM = require('./TYPES_ENUM');
 var TimeseriesFunctionsHelper = (function (_GenericFinder) {
     _inherits(TimeseriesFunctionsHelper, _GenericFinder);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 

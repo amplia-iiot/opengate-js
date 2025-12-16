@@ -24,6 +24,7 @@ var _actionsAlarmCloseBuilder2 = _interopRequireDefault(_actionsAlarmCloseBuilde
 
 var AlarmActions = (function () {
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
      */
 

@@ -10,6 +10,7 @@ import q from 'q';
 export default class BulkBuilder extends BaseProvision {
 
     /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - required field. This is ogapi instance
      * @param {resource} resource - required field. This is the resource used for the bulk provision
      * @param {extension} extension - required field. Type of file to send
