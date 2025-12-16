@@ -7,7 +7,8 @@ import ProvisionGenericFinder from '../ProvisionGenericFinder';
  */
 export default class GeoclusterFinder extends ProvisionGenericFinder {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
@@ -39,24 +40,24 @@ export default class GeoclusterFinder extends ProvisionGenericFinder {
         return this._execute();
     }
 
-        /**
-     * Find features inside the coordinates. This execute a GET http method
-     * @test
-     *   ogapi.newGeoclusterFinder().findFeatures('entities.default',{zoom:3,topRight:[1,2],bottomLeft:[2,3]}).then().catch();
-     * @param {string} id - Identifier of the geocluster.
-     * @param {Object} coordinates - square defined by the coordinates and the zoom used to find the inside features .
-     * @return {Promise} 
-     */
-    findFeatures(id,{zoom,topRight,bottomLeft}){
+    /**
+ * Find features inside the coordinates. This execute a GET http method
+ * @test
+ *   ogapi.newGeoclusterFinder().findFeatures('entities.default',{zoom:3,topRight:[1,2],bottomLeft:[2,3]}).then().catch();
+ * @param {string} id - Identifier of the geocluster.
+ * @param {Object} coordinates - square defined by the coordinates and the zoom used to find the inside features .
+ * @return {Promise} 
+ */
+    findFeatures(id, { zoom, topRight, bottomLeft }) {
         this._id = id;
-        this._setUrlParameters({zoom,topRight,bottomLeft})
+        this._setUrlParameters({ zoom, topRight, bottomLeft })
         return this._execute();
     }
 
-        /**
-     * @return {String} This returns a string with the URL of the request.
-     * @private
-     */
+    /**
+ * @return {String} This returns a string with the URL of the request.
+ * @private
+ */
     _composeUrl() {
         if (!this._id) return this._baseUrl
         if (!this._getUrlParameters()) return this._baseUrl + "/" + this._id;

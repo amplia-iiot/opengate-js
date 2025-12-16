@@ -10,6 +10,7 @@ export default class ComplexBuilder extends SimpleBuilder {
 
 
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!string} resource - this is the resource url where can be create/delete/update/read the entity
      * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new entity
@@ -23,12 +24,12 @@ export default class ComplexBuilder extends SimpleBuilder {
     initFromFlattened(_flattenedEntityData) {
         let _this = this;
         if (_flattenedEntityData && Object.keys(_flattenedEntityData).length > 0) {
-            Object.keys(_flattenedEntityData).forEach(function(_id) {
+            Object.keys(_flattenedEntityData).forEach(function (_id) {
                 if (_id.toLowerCase().startsWith("provision")) {
                     var _content = _flattenedEntityData[_id];
 
                     if (_content.forEach) {
-                        _content.forEach(function(_relation) {
+                        _content.forEach(function (_relation) {
                             if (_relation._index.value && _relation._value && _relation._value._current) {
                                 _this.withComplex(_id, _relation._index.value._current.value, _relation._value._current.value);
                             }
@@ -46,7 +47,7 @@ export default class ComplexBuilder extends SimpleBuilder {
         let _this = this;
         if (_jsonEntityData) {
             var keys = Object.keys(_jsonEntityData);
-            keys.forEach(function(key) {
+            keys.forEach(function (key) {
                 var obj = _jsonEntityData[key];
                 var _current = obj._current;
                 var path = _path ? (_path + '.' + key) : key;
@@ -59,7 +60,7 @@ export default class ComplexBuilder extends SimpleBuilder {
                     }
                 } else {
                     if (Array.isArray(obj)) {
-                        obj.forEach(function(cm) {
+                        obj.forEach(function (cm) {
                             _this._initFromJson(cm, path + '[]', cm.identifier._current.value);
                         });
                     } else
@@ -88,9 +89,9 @@ export default class ComplexBuilder extends SimpleBuilder {
             console.warn('Communication module identifier not defined. This value wil be ignored');
             return this;
         }
-        if (this.getAllowedDatastreams().filter(function(ds) {
-                return ds.identifier === _id;
-            }).length !== 1) {
+        if (this.getAllowedDatastreams().filter(function (ds) {
+            return ds.identifier === _id;
+        }).length !== 1) {
             console.warn('Datastream not found or operations can not be performed on it. This value will be ignored. Datastream Name: ' + _id);
             return this;
         }

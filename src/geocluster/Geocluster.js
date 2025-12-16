@@ -9,7 +9,8 @@ import checkType from '../util/formats/check_types'
 
 export default class Geocluster extends BaseProvision {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
@@ -65,6 +66,6 @@ export default class Geocluster extends BaseProvision {
             });
         return promise;
     }
-    
-    
+
+
 }

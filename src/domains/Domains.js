@@ -8,7 +8,8 @@ import BaseProvision from '../provision/BaseProvision';
  */
 export default class Domains extends BaseProvision {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {

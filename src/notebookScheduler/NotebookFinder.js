@@ -7,19 +7,20 @@ import GenericFinder from '../GenericFinder';
  */
 export default class NotebookFinder extends GenericFinder {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
         super(ogapi, 'notebooks', 'list', 'Notebook not found', 'planner');
     }
 
-     /**
-     * Download a complete list of notebooks for the user. This execute a GET http method
-     * @test
-     *   ogapi.newNotebooksFinder().findAll().then().catch();
-     * @return {Promise} 
-     */
+    /**
+    * Download a complete list of notebooks for the user. This execute a GET http method
+    * @test
+    *   ogapi.newNotebooksFinder().findAll().then().catch();
+    * @return {Promise} 
+    */
     findAll() {
         return this._execute();
     }

@@ -7,7 +7,8 @@ import BaseProvision from '../provision/BaseProvision';
  */
 export default class Organizations extends BaseProvision {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi, url) {
@@ -39,16 +40,16 @@ export default class Organizations extends BaseProvision {
      * @return {Organizations}
      */
     withDomain(domain) {
-            if (typeof domain !== 'string' || domain.length > 50)
-                throw new Error("OGAPI_STRING_PARAMETER_MAX_LENGTH_50");
-            this._domain = domain;
-            return this;
-        }
-        /**
-         * Set the description attribute
-         * @param {string} description 
-         * @return {Organizations}
-         */
+        if (typeof domain !== 'string' || domain.length > 50)
+            throw new Error("OGAPI_STRING_PARAMETER_MAX_LENGTH_50");
+        this._domain = domain;
+        return this;
+    }
+    /**
+     * Set the description attribute
+     * @param {string} description 
+     * @return {Organizations}
+     */
     withDescription(description) {
         if (typeof description !== 'string' || description.length > 250)
             throw new Error("OGAPI_STRING_PARAMETER_MAX_LENGTH_250");
@@ -189,11 +190,11 @@ export default class Organizations extends BaseProvision {
         if (!this._security) {
             this._security = {}
         }
-    
+
         this._security.policies = {
             password: {
-                checkStrength: !!passPolicy.checkStrength, 
-                expirationPeriod: passPolicy.expirationPeriod || 0  
+                checkStrength: !!passPolicy.checkStrength,
+                expirationPeriod: passPolicy.expirationPeriod || 0
             }
         }
     }

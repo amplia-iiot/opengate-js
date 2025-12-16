@@ -14,6 +14,7 @@ import {
 export default class ConnectorFunctions extends BaseProvision {
 
     /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi 
      * @param {String} identifier 
      * @param {Object} connectorFunction 
@@ -26,12 +27,12 @@ export default class ConnectorFunctions extends BaseProvision {
             this.withIdentifier(identifier);
         }
 
-        if(connectorFunction){
+        if (connectorFunction) {
             const _keys = Object.keys(connectorFunction)
-            for(let i = 0; i < _keys.length; i++){
+            for (let i = 0; i < _keys.length; i++) {
                 const _name = _keys[i]
                 const _value = connectorFunction[_name]
-                if(_value !== null && _value !== undefined){
+                if (_value !== null && _value !== undefined) {
                     const _cname = _name.charAt(0).toUpperCase() + _name.slice(1)
                     this["with" + _cname](_value)
                 }
@@ -181,7 +182,7 @@ export default class ConnectorFunctions extends BaseProvision {
                 parameter: 'southCriterias'
             });
 
-            southCriterias.forEach((crit) => {
+        southCriterias.forEach((crit) => {
             try {
                 this.addSouthCriteria(crit)
             } catch (critErr) {
@@ -306,9 +307,9 @@ export default class ConnectorFunctions extends BaseProvision {
         return this._doNorthPost('connectorFunctions/' + this._resource, this._composeElement());
     }
 
-    _composeUpdateElement(){
+    _composeUpdateElement() {
         this._checkRequiredParameters(true);
         return this._composeElement();
     }
-    
+
 }

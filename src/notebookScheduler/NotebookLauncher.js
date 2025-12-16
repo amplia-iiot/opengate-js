@@ -9,7 +9,8 @@ import checkType from '../util/formats/check_types'
  */
 export default class NotebookLauncher extends BaseProvision {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
@@ -54,7 +55,7 @@ export default class NotebookLauncher extends BaseProvision {
         this._reportRetentionDays = reportRetentionDays;
         return this;
     }
-    
+
     withParams(params) {
         checkType._checkArray(params, 'params');
         this._params = params;

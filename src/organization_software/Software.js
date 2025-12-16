@@ -12,7 +12,8 @@ import checkType from '../util/formats/check_types'
  */
 export default class Softwares extends BaseProvision {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi, organization) {
@@ -70,7 +71,7 @@ export default class Softwares extends BaseProvision {
 
     /**
     * Set the model attribute
-    * @param {string} model 
+    * @param {Array} models 
     * @return {Softwares}
     */
     withModels(models) {

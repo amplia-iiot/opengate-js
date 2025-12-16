@@ -9,15 +9,16 @@ import HttpStatus from 'http-status-codes';
  */
 export default class RuleConfigurationsHelper extends GenericFinder {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
         super(ogapi, 'rules');
-        this._jsHeaders ={
+        this._jsHeaders = {
             'accept': 'application/javascript'
         };
-        this._mdHeaders =  {
+        this._mdHeaders = {
             'accept': 'text/markdown'
         }
     }
@@ -28,7 +29,7 @@ export default class RuleConfigurationsHelper extends GenericFinder {
      *   ogapi.newRuleConfigurationsHelper().getDocPrivateJavascriptFunctions();
      * @return {Promise} 
      */
-     getDocPrivateJavascriptFunctions() {
+    getDocPrivateJavascriptFunctions() {
         this._setExtraHeaders(this._mdHeaders)
         this._id = 'doc/private/javascriptFunctions'
         return this._execute();
@@ -39,7 +40,7 @@ export default class RuleConfigurationsHelper extends GenericFinder {
      *   ogapi.newRuleConfigurationsHelper().getDocJavascriptFunctions();
      * @return {Promise} 
      */
-     getDocJavascriptFunctions() {
+    getDocJavascriptFunctions() {
         this._setExtraHeaders(this._mdHeaders)
         this._id = 'doc/javascriptFunctions'
         return this._execute();
@@ -49,7 +50,7 @@ export default class RuleConfigurationsHelper extends GenericFinder {
      * @return {Promise}
      * @private
      */
-     _execute() {
+    _execute() {
         let defered = q.defer();
         let promise = defered.promise;
         let _error_not_found = this._error_not_found;

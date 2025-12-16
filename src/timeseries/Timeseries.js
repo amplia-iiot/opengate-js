@@ -9,7 +9,8 @@ export const URL = 'timeseries/provision/organizations/';
 
 export default class Timeseries extends BaseProvision {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
@@ -64,7 +65,7 @@ export default class Timeseries extends BaseProvision {
      * @param {string} identifierColumn - required field
      * @return {Datasets}
      */
-     withIdentifierColumn(identifierColumn) {
+    withIdentifierColumn(identifierColumn) {
         checkType._checkString(identifierColumn, 'identifierColumn');
         this._identifierColumn = identifierColumn;
         return this;
@@ -90,7 +91,7 @@ export default class Timeseries extends BaseProvision {
         if (description) {
             checkType._checkString(description, 'description');
         }
-        
+
         this._description = description;
         return this;
     }
@@ -163,12 +164,12 @@ export default class Timeseries extends BaseProvision {
 
     _composeElement() {
         this._resource = URL + this._organization;
-        if(this._timeBucket > 0){
+        if (this._timeBucket > 0) {
             checkType._checkStringAndPattern(this._bucketColumn, "^[a-zA-Z0-9 _-]*$", 'bucketColumn');
 
             if (this._bucketInitColumn) {
-                checkType._checkStringAndPattern(this._bucketInitColumn, "^[a-zA-Z0-9 _-]*$", 'bucketInitColumn');  
-            } 
+                checkType._checkStringAndPattern(this._bucketInitColumn, "^[a-zA-Z0-9 _-]*$", 'bucketInitColumn');
+            }
         }
         const timeserie = {
             name: this._name,
@@ -186,18 +187,18 @@ export default class Timeseries extends BaseProvision {
     }
 
     _composeUpdateElement() {
-        if(this._timeBucket > 0){
+        if (this._timeBucket > 0) {
             checkType._checkStringAndPattern(this._bucketColumn, "^[a-zA-Z0-9 _-]*$", 'bucketColumn');
 
             if (this._bucketInitColumn) {
-                checkType._checkStringAndPattern(this._bucketInitColumn, "^[a-zA-Z0-9 _-]*$", 'bucketInitColumn');  
-            } 
+                checkType._checkStringAndPattern(this._bucketInitColumn, "^[a-zA-Z0-9 _-]*$", 'bucketInitColumn');
+            }
         }
         const timeserie = {
             name: this._name,
             description: this._description,
             timeBucket: this._timeBucket,
-            bucketColumn: this._bucketColumn ||  undefined,
+            bucketColumn: this._bucketColumn || undefined,
             bucketInitColumn: this._bucketInitColumn || undefined,
             retention: this._retention,
             origin: this._origin,
