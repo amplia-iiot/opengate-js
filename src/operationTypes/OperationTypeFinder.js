@@ -8,7 +8,8 @@ import GenericFinder from '../GenericFinder';
  */
 export default class OperationTypeFinder extends GenericFinder {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
@@ -36,7 +37,7 @@ export default class OperationTypeFinder extends GenericFinder {
     }
 
     _composeUrl() {
-        return this._baseUrl + "/" + this._organization  + "/" + this._name;
+        return this._baseUrl + "/" + this._organization + "/" + this._name;
     }
 
 }

@@ -7,7 +7,8 @@ import EntityFinder from './EntityFinder';
  */
 export default class TicketFinder extends EntityFinder {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {

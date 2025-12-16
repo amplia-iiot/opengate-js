@@ -133,12 +133,6 @@ import ConnectorFunctions from './connectorsFunctions/configuration/ConnectorFun
 import ConnectorFunctionsCatalogBuilder from './connectorsFunctions/catalog/ConnectorFunctions';
 import ConnectorFunctionsCatalogFinder from './connectorsFunctions/catalog/ConnectorFunctionsCatalogFinder'
 import ConnectorFunctionsCatalog from './connectorsFunctions/catalog/ConnectorFunctionsCatalog'
-import PipelineFinder from './pipelines/PipelineFinder';
-import TransformerFinder from './transformers/TransformerFinder';
-import AIModelsFinder from './AIModels/AIModelsFinder';
-import Transformers from './transformers/Transformers';
-import AIModels from './AIModels/AIModels';
-import Pipelines from './pipelines/Pipelines';
 import ManufacturersBuilder from './manufacturers/Manufacturer'
 import ManufacturerModelsBuilder from './manufacturers/Model'
 import ManufacturerFinder from './manufacturers/ManufacturerFinder'
@@ -154,6 +148,17 @@ import NotebookFinder from './notebookScheduler/NotebookFinder'
 import NotebookSchedulerFinder from './notebookScheduler/SchedulerFinder'
 import NotebookLauncherBuilder from './notebookScheduler/NotebookLauncher'
 import NotebookSchedulerBuilder from './notebookScheduler/NotebookScheduler'
+
+import ScheduleHistoryFinder from './schedule/HistoryFinder'
+import ScheduleRestRequestFinder from './schedule/RestRequestFinder'
+import ScheduleRestRequest from './schedule/RestRequest'
+
+import ScheduleImageExecutionFinder from './schedule/ImageExecutionFinder'
+import ScheduleImageExecution from './schedule/ImageExecution'
+
+import SchedulePipelineFinder from './schedule/PipelineFinder'
+import SchedulePipeline from './schedule/Pipeline'
+
 
 import CountriesCatalog from './provision/country/CountriesCatalog';
 
@@ -180,6 +185,7 @@ const RequestEndMonkeyPatching = (function () {
  */
 export default class InternalOpenGateAPI {
     /**
+     * Constructor
      * @param {{ url: string,port: string,version: string,apiKey: string}} _options - this is configuration about Opengate North API.
      * @param {AmpliaREST} ampliaREST - this is a backend selected to manage a request to Opengate North API.
      */
@@ -1234,54 +1240,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find a pipeline
-     * @return {PipelineFinder}
-     */
-    newPipelineFinder() {
-        return new PipelineFinder(this);
-    }
-
-    /**
-     * This return a util to find a transformer
-     * @return {TransformerFinder}
-     */
-    newTransformerFinder() {
-        return new TransformerFinder(this);
-    }
-
-    /**
-     * This return a util to find an ai model
-     * @return {AIModelFinder}
-     */
-    newAIModelFinder() {
-        return new AIModelsFinder(this);
-    }
-
-    /**
-     * This return a TransformersBuilder to build a specific transformersBuilder
-     * @return {Transformers}
-     */
-    transformersBuilder() {
-        return new Transformers(this);
-    }
-
-    /**
-     * This return a AIModelsBuilder to build a specific aiModelsBuilder
-     * @return {AIModels}
-     */
-    aiModelsBuilder() {
-        return new AIModels(this);
-    }
-
-    /**
-     * This return a PipelinesBuilder to build a specific pipelinesBuilder
-     * @return {Pipelines}
-     */
-    pipelinesBuilder() {
-        return new Pipelines(this);
-    }
-
-    /** This return a ManufacturersBuilder to build a specific ManufacturersBuilder
+     * This return a ManufacturersBuilder to build a specific ManufacturersBuilder
      * @return {ManufacturersBuilder}
      */
     manufacturersBuilder() {
@@ -1357,7 +1316,7 @@ export default class InternalOpenGateAPI {
     newSoftwareFinder() {
         return new SoftwareFinder(this);
     }
-    
+
     /** 
      * This return a NotebookLauncherBuilder to build a specific NotebookLauncherBuilder
      * @return {NotebookLauncherBuilder}
@@ -1388,5 +1347,61 @@ export default class InternalOpenGateAPI {
      */
     newNotebookSchedulerFinder() {
         return new NotebookSchedulerFinder(this);
+    }
+
+    /**
+     * This return a util to view schedule history
+     * @return {HistoryFinder}
+     */
+    newScheduleHistoryFinder() {
+        return new ScheduleHistoryFinder(this);
+    }
+
+    /**
+     * This return a util to view schedule rest requests
+     * @return {RestRequestFinder}
+     */
+    newScheduleRestRequestFinder() {
+        return new ScheduleRestRequestFinder(this);
+    }
+
+    /**
+     * This return a util to build schedule rest requests
+     * @return {RestRequest}
+     */
+    scheduleRestRequestBuilder() {
+        return new ScheduleRestRequest(this);
+    }
+
+    /**
+     * This return a util to view schedule image executions
+     * @return {ImageExecutionFinder}
+     */
+    newScheduleImageExecutionFinder() {
+        return new ScheduleImageExecutionFinder(this);
+    }
+
+    /**
+     * This return a util to build schedule image executions
+     * @return {ImageExecution}
+     */
+    scheduleImageExecutionBuilder() {
+        return new ScheduleImageExecution(this);
+    }
+
+    /**
+     * This return a util to view schedule pipelines
+     * @return {PipelineFinder}
+     */
+    newSchedulePipelineFinder() {
+        return new SchedulePipelineFinder(this);
+    }
+
+    /**
+     * This return a util to build a pipeline
+     * @return {SchedulePipeline}
+     */
+    schedulePipelineBuilder() {
+        return new SchedulePipeline(this);
     }
 }

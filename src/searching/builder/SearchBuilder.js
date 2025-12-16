@@ -10,6 +10,7 @@ const LIMIT_SIZE_DEF_VALUE = 1000;
  */
 export default class SearchBuilder {
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} parent - this is ogapi instance
      * @param {!object} routes - this defined the routes. One of those routes must be called on Builder before call build method.
      */
@@ -209,19 +210,19 @@ export default class SearchBuilder {
      * @return {Search} 
      */
     build() {
-        try{
-            
-        return new Search(this._parent,
-            this._buildUrl(),
-            this._buildFilter(),
-            this._buildLimit(),
-            this._buildSort(),
-            this._buildGroup(),
-            this._buildSelect(),
-            this._builderParams.timeout,
-            this._urlParams);
+        try {
+
+            return new Search(this._parent,
+                this._buildUrl(),
+                this._buildFilter(),
+                this._buildLimit(),
+                this._buildSort(),
+                this._buildGroup(),
+                this._buildSelect(),
+                this._builderParams.timeout,
+                this._urlParams);
         }
-        catch(error){
+        catch (error) {
             console.error('!errrrror!!!!!!', error)
         }
     }

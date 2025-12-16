@@ -7,7 +7,8 @@ import ProvisionGenericFinder from '../ProvisionGenericFinder';
  */
 export default class DomainFinder extends ProvisionGenericFinder {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
@@ -26,6 +27,7 @@ export default class DomainFinder extends ProvisionGenericFinder {
     }
 
     /**
+     * Constructor
      * @param {string} name - domain name .
      * @return {Promise} 
      */
@@ -36,6 +38,7 @@ export default class DomainFinder extends ProvisionGenericFinder {
     }
 
     /**
+     * Constructor
      * @param {string} name - domain name.
      * @return {Promise} 
      */

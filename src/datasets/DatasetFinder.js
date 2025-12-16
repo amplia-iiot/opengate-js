@@ -9,7 +9,8 @@ import HttpStatus from 'http-status-codes';
  */
 export default class DatasetFinder extends GenericFinder {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
@@ -23,7 +24,7 @@ export default class DatasetFinder extends GenericFinder {
      * @param {string} organization - organization
      * @return {Promise} 
      */
-     findByOrganization(organization) {
+    findByOrganization(organization) {
         this._withId(organization);
         return this._execute();
     }
@@ -36,7 +37,7 @@ export default class DatasetFinder extends GenericFinder {
      * @param {string} datasetId - dataset identifier
      * @return {Promise} 
      */
-     findByOrganizationAndDatasetId(organization, datasetId) {
+    findByOrganizationAndDatasetId(organization, datasetId) {
         this._withId(organization + '/' + datasetId);
         return this._execute();
     }

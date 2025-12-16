@@ -10,7 +10,8 @@ import HttpStatus from 'http-status-codes';
  */
 export default class CountriesCatalog extends ProvisionGenericFinder {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
@@ -49,7 +50,7 @@ export default class CountriesCatalog extends ProvisionGenericFinder {
                         statusCode: HttpStatus.NOT_FOUND
                     });
                 } else {
-                    var data = ( jp.query(req.body, '$.' + _this.__filter.ds + '._current.value') || [])[0]
+                    var data = (jp.query(req.body, '$.' + _this.__filter.ds + '._current.value') || [])[0]
                     defered.resolve({
                         data: data,
                         statusCode: req.statusCode
