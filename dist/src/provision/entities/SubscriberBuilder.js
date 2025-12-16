@@ -28,6 +28,7 @@ var SubscriberBuilder = (function (_SimpleBuilder) {
     _inherits(SubscriberBuilder, _SimpleBuilder);
 
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!string} organization - this is the organization name where subscriber will be created
      * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new subscriber

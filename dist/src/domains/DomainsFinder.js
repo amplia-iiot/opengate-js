@@ -25,7 +25,8 @@ var _ProvisionGenericFinder3 = _interopRequireDefault(_ProvisionGenericFinder2);
 var DomainFinder = (function (_ProvisionGenericFinder) {
     _inherits(DomainFinder, _ProvisionGenericFinder);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 
@@ -50,6 +51,7 @@ var DomainFinder = (function (_ProvisionGenericFinder) {
         }
 
         /**
+         * Constructor
          * @param {string} name - domain name .
          * @return {Promise} 
          */
@@ -62,6 +64,7 @@ var DomainFinder = (function (_ProvisionGenericFinder) {
         }
 
         /**
+         * Constructor
          * @param {string} name - domain name.
          * @return {Promise} 
          */

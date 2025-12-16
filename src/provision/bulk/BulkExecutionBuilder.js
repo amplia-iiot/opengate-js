@@ -13,6 +13,7 @@ export const TYPES = {
 export default class BulkExecutionBuilder extends BaseProvision {
 
     /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - required field. This is ogapi instance
      * @param {string} organization - required field. This is the organization name
      * @param {string} processorId - required field. This is the provision processor use for bulk provision
@@ -21,7 +22,7 @@ export default class BulkExecutionBuilder extends BaseProvision {
     constructor(ogapi, organization, processorId, timeout) {
         super(ogapi, undefined, timeout, ['organization', 'processorId']);
         this._timeout = timeout;
-        this._organization  = organization;
+        this._organization = organization;
         this._processorId = processorId;
         this._resource = 'provisionProcessors/provision/organizations/' + organization + '/' + processorId + '/'
 
@@ -45,7 +46,7 @@ export default class BulkExecutionBuilder extends BaseProvision {
      * @param {number} [numberOfEntriesToProcess] - Number of entries to be processed.
      */
     plan(rawFile, extension, numberOfEntriesToProcess) {
-        if(typeof extension !== 'string')
+        if (typeof extension !== 'string')
             throw new Error('Parameter extension must be a string (xls or xlsx) and cannot be empty')
         this._extension = TYPES[extension]
         this._setUrlParameters({
@@ -65,9 +66,9 @@ export default class BulkExecutionBuilder extends BaseProvision {
      * @param {string|File} rawFile - String with path of file or File (Blob)
      * @param {string} [extension] - File format
      */
-     bulk(rawFile, extension) {
+    bulk(rawFile, extension) {
         this._extension = TYPES[extension]
-        if(typeof this._extension !== 'string')
+        if (typeof this._extension !== 'string')
             throw new Error('Parameter extension must be a string (xls or xlsx) and cannot be empty')
         this._type = 'bulk'
         this._setExtraHeaders({
@@ -77,23 +78,23 @@ export default class BulkExecutionBuilder extends BaseProvision {
     }
     _executeOperation(rawFile) {
         let form;
-            if (typeof rawFile !== 'string') {
-                form = new FormData();
-                form.append('file', rawFile);
-            } else {
-                form = {};
-                form.processorBulkFile = rawFile;
-            }
+        if (typeof rawFile !== 'string') {
+            form = new FormData();
+            form.append('file', rawFile);
+        } else {
+            form = {};
+            form.processorBulkFile = rawFile;
+        }
 
         const defer = q.defer();
-        
+
         var petitionUrl = this._buildURL();
         //url, formData, events, timeout, headers, parameters
         this._ogapi.Napi.post_multipart(petitionUrl, form, {}, this._timeout, this._getExtraHeaders(), this._getUrlParameters())
             .then((response) => {
                 let statusCode = response.statusCode;
                 switch (statusCode) {
-                    case 200:{
+                    case 200: {
                         const resultQuery = response.text != "" ? JSON.parse(response.text) : {};
                         const _statusCode = response.status;
                         defer.resolve({
@@ -102,7 +103,7 @@ export default class BulkExecutionBuilder extends BaseProvision {
                         });
                         break
                     }
-                    case 201:{
+                    case 201: {
                         const _statusCode = response.status;
                         const location = response.location || response.headers.location || response.header.location
                         defer.resolve({

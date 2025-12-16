@@ -27,7 +27,8 @@ var _Software = require('./Software');
 var SoftwareFinder = (function (_ProvisionGenericFinder) {
     _inherits(SoftwareFinder, _ProvisionGenericFinder);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 

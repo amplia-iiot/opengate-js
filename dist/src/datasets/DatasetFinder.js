@@ -35,7 +35,8 @@ var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
 var DatasetFinder = (function (_GenericFinder) {
     _inherits(DatasetFinder, _GenericFinder);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 

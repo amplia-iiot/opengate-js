@@ -1,0 +1,49 @@
+{{#each model}}
+## {{name}}
+
+{{#if deprecated}}
+
+\{{% notice warning %}}
+**DEPRECATED:** {{deprecated}}
+\{{% /notice %}}
+
+{{/if}}
+
+{{#if description}}
+{{description}}
+{{/if}}
+
+{{#if params}}
+### Parámetros
+
+| Nombre | Tipo | Opcional | Descripción |
+| :--- | :--- | :---: | :--- |
+{{#each params}}
+| **{{name}}** | `{{type.names}}` | {{#if optional}}✅{{else}}❌{{/if}} | {{description}} |
+{{/each}}
+{{/if}}
+
+{{#if returns}}
+### Retorna
+
+{{#each returns}}
+\{{% notice tip %}}
+{{#if link}}**Tipo:** [{{type.names}}]({{link}}){{else}}**Tipo:** `{{type.names}}`{{/if}}
+<br>
+{{description}}
+\{{% /notice %}}
+{{/each}}
+{{/if}}
+
+{{#if examples}}
+### Ejemplos
+
+{{#each examples}}
+```javascript
+{{{.}}}
+```
+
+{{/each}}
+{{/if}}
+---
+{{/each}}

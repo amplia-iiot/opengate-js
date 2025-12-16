@@ -8,7 +8,8 @@ import q from 'q';
  */
 export default class OperationType extends BaseProvision {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi, organization, nameForUpdate, operationTypeObj) {
@@ -16,12 +17,12 @@ export default class OperationType extends BaseProvision {
 
         // Required
         this.withOrganization(organization);
-        
+
         // only for updates
         if (nameForUpdate) {
             this.withIdentifier(nameForUpdate);
         }
-        
+
         if (operationTypeObj) {
             if (operationTypeObj.name) {
                 this.withName(operationTypeObj.name);
@@ -36,10 +37,10 @@ export default class OperationType extends BaseProvision {
             }
 
             // Para crear sólo se puede fromCatalog, para actualizar se requiere todo
-            if (operationTypeObj.fromCatalog ) {
+            if (operationTypeObj.fromCatalog) {
                 this.fromCatalog(operationTypeObj.fromCatalog);
-            } 
-            
+            }
+
             if (operationTypeObj.profiles) {
                 this.withProfiles(operationTypeObj.profiles);
             }
@@ -48,14 +49,14 @@ export default class OperationType extends BaseProvision {
                 if (operationTypeObj.steps) {
                     this.withSteps(operationTypeObj.steps);
                 }
-    
+
                 if (operationTypeObj.parameters) {
                     this.withParameters(operationTypeObj.parameters);
                 }
-    
+
                 if (operationTypeObj.applicableTo) {
                     this.applicableTo(operationTypeObj.applicableTo);
-                }    
+                }
             }
         }
     }
@@ -138,7 +139,7 @@ export default class OperationType extends BaseProvision {
         this._fromCatalog = fromCatalog;
         return this;
     }
-    
+
     /**
      * Allows the modification of the steps
      * @param {array} steps 
@@ -192,10 +193,10 @@ export default class OperationType extends BaseProvision {
             "description": (this._description ? this._description : undefined),
             "parameters": this._parameters || undefined,
             "fromCatalog": this._fromCatalog || undefined,
-            "steps":this._steps || undefined,
+            "steps": this._steps || undefined,
             "models": this._models || undefined,
             "profiles": this._profiles || undefined,
-            "applicableTo":  this._applicableTo || undefined
+            "applicableTo": this._applicableTo || undefined
         };
 
         return updateData;
@@ -244,12 +245,12 @@ export default class OperationType extends BaseProvision {
      * @throws {Error} 
      */
     delete() {
-        if (this._identifier === undefined || this._organization === undefined )
+        if (this._identifier === undefined || this._organization === undefined)
             throw new Error('Parameters organization and name must be defined');
 
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Napi.delete(this._buildURL()+ "/" + this._identifier)
+        this._ogapi.Napi.delete(this._buildURL() + "/" + this._identifier)
             .then((res) => {
                 if (res.statusCode === 200) {
                     defered.resolve({

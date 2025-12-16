@@ -22,7 +22,7 @@ var Datapoint = (function () {
     }
 
     /**
-     * Set the from attribute
+     * Sets the from attribute
      * @param {number} from - optional field
      * @return {Datapoint}
      */
@@ -38,7 +38,7 @@ var Datapoint = (function () {
         }
 
         /**
-         * Set the at attribute
+         * Sets the at attribute
          * @param {number} at - optional field
          * @return {Datapoint}
          */
@@ -53,7 +53,7 @@ var Datapoint = (function () {
         }
 
         /**
-         * Set the value attribute
+         * Sets the value attribute
          * @param {string} value - required field 
          * @return {Datapoint}
          */
@@ -66,8 +66,8 @@ var Datapoint = (function () {
         }
 
         /**
-         * Set the source attribute
-         * @param {string} source - optional field
+         * Sets the source attribute
+         * @param {string} value - optional field
          * @return {Datapoint}
          */
     }, {
@@ -79,8 +79,8 @@ var Datapoint = (function () {
         }
 
         /**
-         * Set the source attribute
-         * @param {string} sourceInfo - optional field
+         * Sets the source attribute
+         * @param {string} value - optional field
          * @return {Datapoint}
          */
     }, {
@@ -92,8 +92,8 @@ var Datapoint = (function () {
         }
 
         /**
-         * Set the tags attribute
-         * @param {string} tags 
+         * Sets the tags attribute
+         * @param {Array} tags 
          * @return {Datapoint}
          */
     }, {

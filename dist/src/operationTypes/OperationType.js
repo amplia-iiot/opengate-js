@@ -29,7 +29,8 @@ var _q2 = _interopRequireDefault(_q);
 var OperationType = (function (_BaseProvision) {
     _inherits(OperationType, _BaseProvision);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 

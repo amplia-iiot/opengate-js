@@ -1,7 +1,7 @@
 'use strict';
 
 import BaseProvision from '../provision/BaseProvision';
-import {MANUFACTURERS_RESOURCE} from './Manufacturer';
+import { MANUFACTURERS_RESOURCE } from './Manufacturer';
 
 export const PRE_RESOURCE = '/organizations';
 export const MODELS_RESOURCE = '/models';
@@ -11,7 +11,8 @@ export const MODELS_RESOURCE = '/models';
  */
 export default class Models extends BaseProvision {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi, organization, manufacturer) {
@@ -37,7 +38,7 @@ export default class Models extends BaseProvision {
         this._identifier = id;
         return this;
     }
-    
+
     /**
      * Set the name attribute
      * @param {string} name - required field
@@ -69,7 +70,7 @@ export default class Models extends BaseProvision {
      */
     withNotes(notes) {
         if (typeof notes !== 'string')
-           throw new Error("OGAPI_STRING_PARAMETER");
+            throw new Error("OGAPI_STRING_PARAMETER");
         this._notes = notes;
         return this;
     }
@@ -81,7 +82,7 @@ export default class Models extends BaseProvision {
      */
     withUrl(url) {
         if (typeof url !== 'string')
-           throw new Error("OGAPI_STRING_PARAMETER");
+            throw new Error("OGAPI_STRING_PARAMETER");
         this._modelUrl = url;
         return this;
     }
@@ -93,11 +94,11 @@ export default class Models extends BaseProvision {
      */
     withVersion(version) {
         if (typeof version !== 'string')
-           throw new Error("OGAPI_STRING_PARAMETER");
+            throw new Error("OGAPI_STRING_PARAMETER");
         this._version = version;
         return this;
     }
-    
+
     _composeElement() {
         this._checkRequiredParameters()
 
@@ -117,7 +118,7 @@ export default class Models extends BaseProvision {
     }
 
     _buildURL() {
-        return this._resource + (this._identifier?"/" + this._identifier:"");
+        return this._resource + (this._identifier ? "/" + this._identifier : "");
     }
 
     deleteInCascade() {

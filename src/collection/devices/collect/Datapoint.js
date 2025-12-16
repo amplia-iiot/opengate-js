@@ -15,7 +15,7 @@ export default class Datapoint {
     }
 
     /**
-     * Set the from attribute
+     * Sets the from attribute
      * @param {number} from - optional field
      * @return {Datapoint}
      */
@@ -29,7 +29,7 @@ export default class Datapoint {
     }
 
     /**
-     * Set the at attribute
+     * Sets the at attribute
      * @param {number} at - optional field
      * @return {Datapoint}
      */
@@ -43,7 +43,7 @@ export default class Datapoint {
     }
 
     /**
-     * Set the value attribute
+     * Sets the value attribute
      * @param {string} value - required field 
      * @return {Datapoint}
      */
@@ -55,8 +55,8 @@ export default class Datapoint {
     }
 
     /**
-     * Set the source attribute
-     * @param {string} source - optional field
+     * Sets the source attribute
+     * @param {string} value - optional field
      * @return {Datapoint}
      */
     withSource(value) {
@@ -67,8 +67,8 @@ export default class Datapoint {
     }
 
     /**
-     * Set the source attribute
-     * @param {string} sourceInfo - optional field
+     * Sets the source attribute
+     * @param {string} value - optional field
      * @return {Datapoint}
      */
     withSourceInfo(value) {
@@ -79,8 +79,8 @@ export default class Datapoint {
     }
 
     /**
-     * Set the tags attribute
-     * @param {string} tags 
+     * Sets the tags attribute
+     * @param {Array} tags 
      * @return {Datapoint}
      */
     withTags(tags) {

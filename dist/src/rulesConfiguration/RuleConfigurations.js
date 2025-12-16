@@ -37,7 +37,8 @@ var _q2 = _interopRequireDefault(_q);
 var RuleConfigurations = (function (_BaseProvision) {
     _inherits(RuleConfigurations, _BaseProvision);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 

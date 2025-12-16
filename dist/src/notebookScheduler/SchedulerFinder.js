@@ -25,7 +25,8 @@ var _GenericFinder3 = _interopRequireDefault(_GenericFinder2);
 var SchedulerFinder = (function (_GenericFinder) {
     _inherits(SchedulerFinder, _GenericFinder);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 

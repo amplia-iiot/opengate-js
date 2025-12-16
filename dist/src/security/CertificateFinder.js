@@ -35,7 +35,8 @@ var _MIME_TYPES_ENUM = require('./MIME_TYPES_ENUM');
 var CertificateFinder = (function (_ProvisionGenericFinder) {
     _inherits(CertificateFinder, _ProvisionGenericFinder);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 

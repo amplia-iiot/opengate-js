@@ -27,7 +27,8 @@ var _Manufacturer = require('./Manufacturer');
 var ManufacturerFinder = (function (_ProvisionGenericFinder) {
     _inherits(ManufacturerFinder, _ProvisionGenericFinder);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 

@@ -30,6 +30,7 @@ var BulkBuilder = (function (_BaseProvision) {
     _inherits(BulkBuilder, _BaseProvision);
 
     /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - required field. This is ogapi instance
      * @param {resource} resource - required field. This is the resource used for the bulk provision
      * @param {extension} extension - required field. Type of file to send

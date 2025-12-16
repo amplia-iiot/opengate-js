@@ -4,14 +4,15 @@ import BaseProvision from '../provision/BaseProvision';
 import q from 'q';
 export const URL = 'timeseries/provision/organizations';
 import checkType from '../util/formats/check_types'
-import {VALUE_TYPES_ENUM} from './TYPES_ENUM'
+import { VALUE_TYPES_ENUM } from './TYPES_ENUM'
 
 /**
  * This is a base object that contains all you can do about TimeseriesFunction.
  */
 export default class TimeseriesFunction extends BaseProvision {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi, organization, nameForUpdate) {
@@ -109,7 +110,7 @@ export default class TimeseriesFunction extends BaseProvision {
         this._returnType = returnType;
         return this;
     }
-    
+
     withMetadataFile(file) {
         // if (typeof file !== 'object')
         //     throw new Error({ message: "Parameter action requires name and type", parameter: 'action' });
@@ -137,7 +138,7 @@ export default class TimeseriesFunction extends BaseProvision {
 
             updateData.metadata = blob
         }
-        
+
         return updateData;
     }
 
@@ -154,7 +155,7 @@ export default class TimeseriesFunction extends BaseProvision {
     }
 
     _buildURL() {
-        return URL + "/" + this._organization  + "/catalog" + (this._identifier?'/'+ this._identifier:'');
+        return URL + "/" + this._organization + "/catalog" + (this._identifier ? '/' + this._identifier : '');
     }
 
     create() {
@@ -164,7 +165,7 @@ export default class TimeseriesFunction extends BaseProvision {
             .then((response) => {
                 let statusCode = response.statusCode;
                 switch (statusCode) {
-                    case 200:{
+                    case 200: {
                         const resultQuery = response.text != "" ? JSON.parse(response.text) : {};
                         const _statusCode = response.status;
                         defer.resolve({
@@ -173,9 +174,9 @@ export default class TimeseriesFunction extends BaseProvision {
                         });
                         break
                     }
-                    case 201:{
+                    case 201: {
                         const _statusCode = response.status;
-                        const location =  response.header && response.header.location
+                        const location = response.header && response.header.location
                         defer.resolve({
                             location: location,
                             statusCode: _statusCode
@@ -211,7 +212,7 @@ export default class TimeseriesFunction extends BaseProvision {
             .then((response) => {
                 let statusCode = response.statusCode;
                 switch (statusCode) {
-                    case 200:{
+                    case 200: {
                         const resultQuery = response.text != "" ? JSON.parse(response.text) : {};
                         const _statusCode = response.status;
                         defer.resolve({
@@ -243,7 +244,7 @@ export default class TimeseriesFunction extends BaseProvision {
      * @throws {Error} 
      */
     delete() {
-        if (this._identifier === undefined || this._organization === undefined )
+        if (this._identifier === undefined || this._organization === undefined)
             throw new Error('Parameters organization and name must be defined');
 
         var defered = q.defer();

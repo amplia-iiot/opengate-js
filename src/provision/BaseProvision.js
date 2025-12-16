@@ -8,6 +8,7 @@ import q from 'q';
  */
 export default class BaseProvision {
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!string} resource - this is a base url resource
      * @param {!number} [timeout] - timeout on request
@@ -262,12 +263,12 @@ export default class BaseProvision {
                         this._onCreated(res.header.location);
                     }
                     response.location = res.header.location
-                    if(returnBody){
+                    if (returnBody) {
                         response.data = res.body
                     }
                     defered.resolve(response);
                 } else if (res.statusCode === 200) {
-                    if(returnBody){
+                    if (returnBody) {
                         response.data = res.body
                     }
                     defered.resolve(response);
@@ -295,12 +296,12 @@ export default class BaseProvision {
                         this._onCreated(res.header.location);
                     }
                     response.location = res.header.location
-                    if(returnBody){
+                    if (returnBody) {
                         response.data = res.body
                     }
                     defered.resolve(response);
                 } else if (res.statusCode === 200) {
-                    if(returnBody){
+                    if (returnBody) {
                         response.data = res.body
                     }
                     defered.resolve(response);
@@ -349,7 +350,7 @@ export default class BaseProvision {
 
     _checkValues(value, enumName) {
         let not_found = [];
-        let found = enumName.find(function(value) {
+        let found = enumName.find(function (value) {
             return value == this;
         }, value);
 

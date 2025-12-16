@@ -10,6 +10,7 @@ export const TicketID = 'provision.ticket.identifier';
 export default class TicketBuilder extends SimpleBuilder {
 
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!string} organization - this is the organization name where subscription will be created
      * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new subscription

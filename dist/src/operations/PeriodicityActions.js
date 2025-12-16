@@ -17,6 +17,7 @@ var _q2 = _interopRequireDefault(_q);
 var PeriodicityActions = (function () {
 
     /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
      * @param {string} taskId - Identifier of the periodicity on which the action will be carried out
      */

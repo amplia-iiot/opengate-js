@@ -33,7 +33,8 @@ var _Model = require('./Model');
 var ModelMedia = (function (_BaseProvision) {
     _inherits(ModelMedia, _BaseProvision);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 

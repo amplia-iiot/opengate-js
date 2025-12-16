@@ -26,7 +26,8 @@ var _GenericFinder3 = _interopRequireDefault(_GenericFinder2);
 var TimeseriesFunctionFinder = (function (_GenericFinder) {
     _inherits(TimeseriesFunctionFinder, _GenericFinder);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 

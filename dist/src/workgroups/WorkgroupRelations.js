@@ -33,7 +33,8 @@ var _channelsChannels2 = _interopRequireDefault(_channelsChannels);
 var WorkgroupRelations = (function (_BaseProvision) {
     _inherits(WorkgroupRelations, _BaseProvision);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 

@@ -542,30 +542,6 @@ var _connectorsFunctionsCatalogConnectorFunctionsCatalog = require('./connectors
 
 var _connectorsFunctionsCatalogConnectorFunctionsCatalog2 = _interopRequireDefault(_connectorsFunctionsCatalogConnectorFunctionsCatalog);
 
-var _pipelinesPipelineFinder = require('./pipelines/PipelineFinder');
-
-var _pipelinesPipelineFinder2 = _interopRequireDefault(_pipelinesPipelineFinder);
-
-var _transformersTransformerFinder = require('./transformers/TransformerFinder');
-
-var _transformersTransformerFinder2 = _interopRequireDefault(_transformersTransformerFinder);
-
-var _AIModelsAIModelsFinder = require('./AIModels/AIModelsFinder');
-
-var _AIModelsAIModelsFinder2 = _interopRequireDefault(_AIModelsAIModelsFinder);
-
-var _transformersTransformers = require('./transformers/Transformers');
-
-var _transformersTransformers2 = _interopRequireDefault(_transformersTransformers);
-
-var _AIModelsAIModels = require('./AIModels/AIModels');
-
-var _AIModelsAIModels2 = _interopRequireDefault(_AIModelsAIModels);
-
-var _pipelinesPipelines = require('./pipelines/Pipelines');
-
-var _pipelinesPipelines2 = _interopRequireDefault(_pipelinesPipelines);
-
 var _manufacturersManufacturer = require('./manufacturers/Manufacturer');
 
 var _manufacturersManufacturer2 = _interopRequireDefault(_manufacturersManufacturer);
@@ -622,6 +598,34 @@ var _notebookSchedulerNotebookScheduler = require('./notebookScheduler/NotebookS
 
 var _notebookSchedulerNotebookScheduler2 = _interopRequireDefault(_notebookSchedulerNotebookScheduler);
 
+var _scheduleHistoryFinder = require('./schedule/HistoryFinder');
+
+var _scheduleHistoryFinder2 = _interopRequireDefault(_scheduleHistoryFinder);
+
+var _scheduleRestRequestFinder = require('./schedule/RestRequestFinder');
+
+var _scheduleRestRequestFinder2 = _interopRequireDefault(_scheduleRestRequestFinder);
+
+var _scheduleRestRequest = require('./schedule/RestRequest');
+
+var _scheduleRestRequest2 = _interopRequireDefault(_scheduleRestRequest);
+
+var _scheduleImageExecutionFinder = require('./schedule/ImageExecutionFinder');
+
+var _scheduleImageExecutionFinder2 = _interopRequireDefault(_scheduleImageExecutionFinder);
+
+var _scheduleImageExecution = require('./schedule/ImageExecution');
+
+var _scheduleImageExecution2 = _interopRequireDefault(_scheduleImageExecution);
+
+var _schedulePipelineFinder = require('./schedule/PipelineFinder');
+
+var _schedulePipelineFinder2 = _interopRequireDefault(_schedulePipelineFinder);
+
+var _schedulePipeline = require('./schedule/Pipeline');
+
+var _schedulePipeline2 = _interopRequireDefault(_schedulePipeline);
+
 var _provisionCountryCountriesCatalog = require('./provision/country/CountriesCatalog');
 
 var _provisionCountryCountriesCatalog2 = _interopRequireDefault(_provisionCountryCountriesCatalog);
@@ -650,6 +654,7 @@ var RequestEndMonkeyPatching = (function () {
 
 var InternalOpenGateAPI = (function () {
     /**
+     * Constructor
      * @param {{ url: string,port: string,version: string,apiKey: string}} _options - this is configuration about Opengate North API.
      * @param {AmpliaREST} ampliaREST - this is a backend selected to manage a request to Opengate North API.
      */
@@ -1959,66 +1964,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find a pipeline
-         * @return {PipelineFinder}
-         */
-    }, {
-        key: 'newPipelineFinder',
-        value: function newPipelineFinder() {
-            return new _pipelinesPipelineFinder2['default'](this);
-        }
-
-        /**
-         * This return a util to find a transformer
-         * @return {TransformerFinder}
-         */
-    }, {
-        key: 'newTransformerFinder',
-        value: function newTransformerFinder() {
-            return new _transformersTransformerFinder2['default'](this);
-        }
-
-        /**
-         * This return a util to find an ai model
-         * @return {AIModelFinder}
-         */
-    }, {
-        key: 'newAIModelFinder',
-        value: function newAIModelFinder() {
-            return new _AIModelsAIModelsFinder2['default'](this);
-        }
-
-        /**
-         * This return a TransformersBuilder to build a specific transformersBuilder
-         * @return {Transformers}
-         */
-    }, {
-        key: 'transformersBuilder',
-        value: function transformersBuilder() {
-            return new _transformersTransformers2['default'](this);
-        }
-
-        /**
-         * This return a AIModelsBuilder to build a specific aiModelsBuilder
-         * @return {AIModels}
-         */
-    }, {
-        key: 'aiModelsBuilder',
-        value: function aiModelsBuilder() {
-            return new _AIModelsAIModels2['default'](this);
-        }
-
-        /**
-         * This return a PipelinesBuilder to build a specific pipelinesBuilder
-         * @return {Pipelines}
-         */
-    }, {
-        key: 'pipelinesBuilder',
-        value: function pipelinesBuilder() {
-            return new _pipelinesPipelines2['default'](this);
-        }
-
-        /** This return a ManufacturersBuilder to build a specific ManufacturersBuilder
+         * This return a ManufacturersBuilder to build a specific ManufacturersBuilder
          * @return {ManufacturersBuilder}
          */
     }, {
@@ -2153,6 +2099,76 @@ var InternalOpenGateAPI = (function () {
         key: 'newNotebookSchedulerFinder',
         value: function newNotebookSchedulerFinder() {
             return new _notebookSchedulerSchedulerFinder2['default'](this);
+        }
+
+        /**
+         * This return a util to view schedule history
+         * @return {HistoryFinder}
+         */
+    }, {
+        key: 'newScheduleHistoryFinder',
+        value: function newScheduleHistoryFinder() {
+            return new _scheduleHistoryFinder2['default'](this);
+        }
+
+        /**
+         * This return a util to view schedule rest requests
+         * @return {RestRequestFinder}
+         */
+    }, {
+        key: 'newScheduleRestRequestFinder',
+        value: function newScheduleRestRequestFinder() {
+            return new _scheduleRestRequestFinder2['default'](this);
+        }
+
+        /**
+         * This return a util to build schedule rest requests
+         * @return {RestRequest}
+         */
+    }, {
+        key: 'scheduleRestRequestBuilder',
+        value: function scheduleRestRequestBuilder() {
+            return new _scheduleRestRequest2['default'](this);
+        }
+
+        /**
+         * This return a util to view schedule image executions
+         * @return {ImageExecutionFinder}
+         */
+    }, {
+        key: 'newScheduleImageExecutionFinder',
+        value: function newScheduleImageExecutionFinder() {
+            return new _scheduleImageExecutionFinder2['default'](this);
+        }
+
+        /**
+         * This return a util to build schedule image executions
+         * @return {ImageExecution}
+         */
+    }, {
+        key: 'scheduleImageExecutionBuilder',
+        value: function scheduleImageExecutionBuilder() {
+            return new _scheduleImageExecution2['default'](this);
+        }
+
+        /**
+         * This return a util to view schedule pipelines
+         * @return {PipelineFinder}
+         */
+    }, {
+        key: 'newSchedulePipelineFinder',
+        value: function newSchedulePipelineFinder() {
+            return new _schedulePipelineFinder2['default'](this);
+        }
+
+        /**
+         * This return a util to build a pipeline
+         * @return {SchedulePipeline}
+         */
+    }, {
+        key: 'schedulePipelineBuilder',
+        value: function schedulePipelineBuilder() {
+            return new _schedulePipeline2['default'](this);
         }
     }]);
 

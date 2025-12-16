@@ -27,7 +27,8 @@ var _GenericFinder3 = _interopRequireDefault(_GenericFinder2);
 var OperationTypesCatalog = (function (_GenericFinder) {
     _inherits(OperationTypesCatalog, _GenericFinder);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 

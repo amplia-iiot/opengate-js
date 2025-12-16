@@ -32,7 +32,8 @@ exports.MODELS_RESOURCE = MODELS_RESOURCE;
 var Models = (function (_BaseProvision) {
     _inherits(Models, _BaseProvision);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 
