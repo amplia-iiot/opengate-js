@@ -1,0 +1,22 @@
++++
+title = "Subscribers Search Builder"
+weight = 10
++++
+
+**Class:** `SubscribersSearchBuilder`
+
+Defined a search over Subscribers	
+
+## constructor
+
+
+
+### Parámetros
+
+| Nombre | Tipo | Opcional | Descripción |
+| :--- | :--- | :---: | :--- |
+| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+
+
+---
+

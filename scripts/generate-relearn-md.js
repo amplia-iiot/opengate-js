@@ -50,7 +50,10 @@ ensureDir(outputDir);
 const classPathMap = new Map();
 classes.forEach(cls => {
     if (cls.memberof) {
-        const relativePath = cls.memberof.replace(/\.js$/, '.md');
+        let relativePath = cls.memberof.replace(/\.js$/, '.md');
+        if (relativePath.startsWith('src/')) {
+            relativePath = relativePath.replace(/^src\//, 'JS Reference/');
+        }
         classPathMap.set(cls.name, relativePath);
     }
 });
@@ -153,7 +156,10 @@ classes.forEach(classDoc => {
     }
 
     // Remove .js extension, add .md
-    const relativePath = filePath.replace(/\.js$/, '.md');
+    let relativePath = filePath.replace(/\.js$/, '.md');
+    if (relativePath.startsWith('src/')) {
+        relativePath = relativePath.replace(/^src\//, 'JS Reference/');
+    }
 
     // Sort children: constructor first, then others alphabetically
     publicChildren.sort((a, b) => {
@@ -176,15 +182,67 @@ classes.forEach(classDoc => {
         if (!fs.existsSync(indexFile)) {
             const dirName = path.basename(currentDir);
             const isRoot = currentDir === outputDir;
-            const title = isRoot ? "OpenGate JS Documentation" : dirName;
+            const title = isRoot ? "OpenGate JS" : dirName;
 
-            const indexContent = `+++
+            let indexContent = '';
+            if (isRoot) {
+                indexContent = `+++
+title = "${title}"
+weight = 10
++++
+
+# Installation and Usage
+
+## Node.js (NPM)
+
+To use the API in a Node.js environment, install the package and instantiate it as follows:
+
+\`\`\`javascript
+var OpengateAPI = require('opengate-js');
+
+var ogapi = new OpengateAPI({
+    url: 'your-api-url',
+    port: 'your-port',
+    version: 'your-version',
+    apiKey: 'your-api-key',
+    jwt: 'your-jwt',
+    south: {
+        url: 'your-south-api-url'
+    }
+});
+\`\`\`
+
+## Web (Bower)
+
+To use the API in a web environment, include the script and instantiate it as follows:
+
+\`\`\`javascript
+// Ensure opengate-api-bower.js is included in your HTML
+var ogapi = new window.OpenGateAPI({
+    url: 'your-api-url',
+    port: 'your-port',
+    version: 'your-version',
+    apiKey: 'your-api-key',
+    jwt: 'your-jwt',
+    south: {
+        url: 'your-south-api-url'
+    }
+});
+\`\`\`
+
+## API Reference
+
+{{% children sort="weight" depth="10" %}}
+`;
+            } else {
+                indexContent = `+++
 title = "${title}"
 weight = 10
 +++
 
 {{% children sort="weight" depth="10" %}}
 `;
+            }
             fs.writeFileSync(indexFile, indexContent);
         }
         if (currentDir === outputDir) break;
@@ -209,6 +267,8 @@ weight = 10
 title = "${humanTitle}"
 weight = 10
 +++
+
+**Class:** \`${classDoc.name}\`
 
 ${classDoc.description || ''}
 
