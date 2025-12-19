@@ -3,149 +3,169 @@ title = "Datapoint"
 weight = 10
 +++
 
-**Class:** `Datapoint`
+Datapoint
+
+### Datapoint Objects
+
+```javascript
+class Datapoint()
+```
 
 This is a base object that allows the user to create a Datapoint.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 
 
 
 ---
-## composeElement()
+
+##### composeElement
+
+
+```javascript
+function composeElement() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## withAt(at)
 
+##### withAt
+
+
+```javascript
+function withAt(at: number) -> 'Datapoint'
+```
 
 Sets the at attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **at** | `number` | ❌ | optional field |
+- `at` _number_  - optional field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datapoint`
-<br>
 
-{{% /notice %}}
+- _`Datapoint`_ 
+
 
 ---
-## withFrom(from)
 
+##### withFrom
+
+
+```javascript
+function withFrom(from: number) -> 'Datapoint'
+```
 
 Sets the from attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **from** | `number` | ❌ | optional field |
+- `from` _number_  - optional field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datapoint`
-<br>
 
-{{% /notice %}}
+- _`Datapoint`_ 
+
 
 ---
-## withSource(value)
 
+##### withSource
+
+
+```javascript
+function withSource(value: string) -> 'Datapoint'
+```
 
 Sets the source attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **value** | `string` | ❌ | optional field |
+- `value` _string_  - optional field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datapoint`
-<br>
 
-{{% /notice %}}
+- _`Datapoint`_ 
+
 
 ---
-## withSourceInfo(value)
 
+##### withSourceInfo
+
+
+```javascript
+function withSourceInfo(value: string) -> 'Datapoint'
+```
 
 Sets the source attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **value** | `string` | ❌ | optional field |
+- `value` _string_  - optional field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datapoint`
-<br>
 
-{{% /notice %}}
+- _`Datapoint`_ 
+
 
 ---
-## withTags(tags)
 
+##### withTags
+
+
+```javascript
+function withTags(tags: Array) -> 'Datapoint'
+```
 
 Sets the tags attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **tags** | `Array` | ❌ |  |
+- `tags` _Array_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datapoint`
-<br>
 
-{{% /notice %}}
+- _`Datapoint`_ 
+
 
 ---
-## withValue(value)
 
+##### withValue
+
+
+```javascript
+function withValue(value: string) -> 'Datapoint'
+```
 
 Sets the value attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **value** | `string` | ❌ | required field |
+- `value` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datapoint`
-<br>
 
-{{% /notice %}}
+- _`Datapoint`_ 
+
 
 ---
 

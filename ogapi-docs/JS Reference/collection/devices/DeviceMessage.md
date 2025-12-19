@@ -3,135 +3,152 @@ title = "Device Message"
 weight = 10
 +++
 
-**Class:** `DeviceMessage`
+DeviceMessage
+
+### DeviceMessage Objects
+
+```javascript
+class DeviceMessage()
+```
 
 This is a base object contains methods to send unstructured IoT information to be processed & collected by the platform.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## create()
+
+##### create
+
+
+```javascript
+function create() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## withDataStream(datastream)
 
+##### withDataStream
+
+
+```javascript
+function withDataStream(datastream: Datastream) -> 'deviceMessages'
+```
 
 Set the datastream attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **datastream** | `Datastream` | ❌ | required field |
+- `datastream` _Datastream_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `deviceMessages`
-<br>
 
-{{% /notice %}}
+- _`deviceMessages`_ 
+
 
 ---
-## withDataStreamVersion(version)
 
+##### withDataStreamVersion
+
+
+```javascript
+function withDataStreamVersion(version: string) -> 'deviceMessages'
+```
 
 Set the dataStream version attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **version** | `string` | ❌ | required field |
+- `version` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `deviceMessages`
-<br>
 
-{{% /notice %}}
+- _`deviceMessages`_ 
+
 
 ---
-## withDeviceId(deviceId)
 
+##### withDeviceId
+
+
+```javascript
+function withDeviceId(deviceId: string) -> 'deviceMessages'
+```
 
 Set the deviceId attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **deviceId** | `string` | ❌ | optional field |
+- `deviceId` _string_  - optional field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `deviceMessages`
-<br>
 
-{{% /notice %}}
+- _`deviceMessages`_ 
+
 
 ---
-## withDmmVersion(version)
 
+##### withDmmVersion
+
+
+```javascript
+function withDmmVersion(version: string) -> 'deviceMessages'
+```
 
 Set the version attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **version** | `string` | ❌ | required field |
+- `version` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `deviceMessages`
-<br>
 
-{{% /notice %}}
+- _`deviceMessages`_ 
+
 
 ---
-## withId(id)
 
+##### withId
+
+
+```javascript
+function withId(id: string) -> 'deviceMessages'
+```
 
 Set the id attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **id** | `string` | ❌ | required field |
+- `id` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `deviceMessages`
-<br>
 
-{{% /notice %}}
+- _`deviceMessages`_ 
+
 
 ---
 

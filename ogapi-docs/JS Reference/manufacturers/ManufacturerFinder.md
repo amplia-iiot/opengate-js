@@ -3,97 +3,112 @@ title = "Manufacturer Finder"
 weight = 10
 +++
 
-**Class:** `ManufacturerFinder`
+ManufacturerFinder
+
+### ManufacturerFinder Objects
+
+```javascript
+class ManufacturerFinder()
+```
 
   This class allow make get request to hardware manufacturers resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## findAll()
 
+##### findAll
+
+
+```javascript
+function findAll() -> 'Promise'
+```
 
 Download a specific manufacturer by its id. This execute a GET http method
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## findById(identifier)
 
+##### findById
+
+
+```javascript
+function findById(identifier: string) -> 'Promise'
+```
 
 Download a specific manufacturer by its id. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **identifier** | `string` | ❌ | manufacturer identifier . |
+- `identifier` _string_  - manufacturer identifier .
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## findMediaById(manufacturerId, mediaIdentifier)
 
+##### findMediaById
+
+
+```javascript
+function findMediaById(manufacturerId: string,mediaIdentifier: string) -> 'Promise'
+```
 
 Download a specific manufacturer media by its ids. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **manufacturerId** | `string` | ❌ | manufacturer identifier . |
-| **mediaIdentifier** | `string` | ❌ | media identifier. |
+- `manufacturerId` _string_  - manufacturer identifier .
+- `mediaIdentifier` _string_  - media identifier.
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## findMedias(manufacturerId)
 
+##### findMedias
+
+
+```javascript
+function findMedias(manufacturerId: string) -> 'Promise'
+```
 
 Download manufacturer medias. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **manufacturerId** | `string` | ❌ | manufacturer identifier . |
+- `manufacturerId` _string_  - manufacturer identifier .
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

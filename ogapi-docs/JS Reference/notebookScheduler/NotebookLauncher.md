@@ -3,135 +3,166 @@ title = "Notebook Launcher"
 weight = 10
 +++
 
-**Class:** `NotebookLauncher`
+NotebookLauncher
+
+### NotebookLauncher Objects
+
+```javascript
+class NotebookLauncher()
+```
 
 This is a base object that contains all you can do about Bundles.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## create()
+
+##### create
 
 
-
-
-
----
-## delete()
-
+```javascript
+function create()
+```
 
 
 
 
 ---
-## execute()
+
+##### delete
+
+
+```javascript
+function delete()
+```
 
 
 
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
-
-{{% /notice %}}
 
 ---
-## generateReport(generateReport)
 
+##### execute
+
+
+```javascript
+function execute() -> '*'
+```
+
+
+
+**Returns**:
+
+
+- _`*`_ 
+
+
+---
+
+##### generateReport
+
+
+```javascript
+function generateReport(generateReport: boolean) -> 'NotebookLauncher'
+```
 
 Sets the generateReport attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **generateReport** | `boolean` | ❌ |  |
+- `generateReport` _boolean_  
 
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `NotebookLauncher`
-<br>
-
-{{% /notice %}}
-
----
-## update()
+**Returns**:
 
 
-
+- _`NotebookLauncher`_ 
 
 
 ---
-## withIdentifier(identifier)
 
+##### update
+
+
+```javascript
+function update()
+```
+
+
+
+
+---
+
+##### withIdentifier
+
+
+```javascript
+function withIdentifier(identifier: string) -> 'NotebookLauncher'
+```
 
 Sets the identifier attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **identifier** | `string` | ❌ |  |
+- `identifier` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `NotebookLauncher`
-<br>
 
-{{% /notice %}}
+- _`NotebookLauncher`_ 
+
 
 ---
-## withParams(params)
+
+##### withParams
 
 
+```javascript
+function withParams(params: *) -> '*'
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **params** | `*` | ❌ |  |
+**Arguments**:
 
-### Retorna
+- `params` _*_  
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+**Returns**:
 
-{{% /notice %}}
+
+- _`*`_ 
+
 
 ---
-## withReportRetentionDays(reportRetentionDays)
 
+##### withReportRetentionDays
+
+
+```javascript
+function withReportRetentionDays(reportRetentionDays: number) -> 'NotebookLauncher'
+```
 
 Sets the reportRetentionDays attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **reportRetentionDays** | `number` | ❌ |  |
+- `reportRetentionDays` _number_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `NotebookLauncher`
-<br>
 
-{{% /notice %}}
+- _`NotebookLauncher`_ 
+
 
 ---
 

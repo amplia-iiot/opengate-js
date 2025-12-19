@@ -3,43 +3,53 @@ title = "Entity Finder"
 weight = 10
 +++
 
-**Class:** `EntityFinder`
+EntityFinder
+
+### EntityFinder Objects
+
+```javascript
+class EntityFinder()
+```
 
   *   This class allow make get request to entity provisioned resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## findByOrganizationAndId(organization, id, flattened)
 
+##### findByOrganizationAndId
+
+
+```javascript
+function findByOrganizationAndId(organization: string,id: string,flattened: string) -> 'Promise'
+```
 
 Download a specific entity by its organization and id. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | entity organization . |
-| **id** | `string` | ❌ | entity id. |
-| **flattened** | `string` | ❌ | flattened response flag. |
+- `organization` _string_  - entity organization .
+- `id` _string_  - entity id.
+- `flattened` _string_  - flattened response flag.
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

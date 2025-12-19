@@ -3,19 +3,28 @@ title = "Datastreams Search Builder"
 weight = 10
 +++
 
-**Class:** `DatastreamsSearchBuilder`
+DatastreamsSearchBuilder
+
+### DatastreamsSearchBuilder Objects
+
+```javascript
+class DatastreamsSearchBuilder()
+```
 
 Defined a search over Datastreams	
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---

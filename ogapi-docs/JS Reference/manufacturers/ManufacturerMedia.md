@@ -3,109 +3,127 @@ title = "Manufacturer Media"
 weight = 10
 +++
 
-**Class:** `ManufacturerMedia`
+ManufacturerMedia
+
+### ManufacturerMedia Objects
+
+```javascript
+class ManufacturerMedia()
+```
 
 This is a base object that contains all you can do about ManufacturerMedia.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## create(rawFile)
 
+##### create
+
+
+```javascript
+function create(rawFile: File) -> 'Promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This method create an element deploymentElement
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **rawFile** | `File` | ❌ | this File is the deployment element |
+- `rawFile` _File_  - this File is the deployment element
 
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
-
-{{% /notice %}}
-
----
-## update()
+**Returns**:
 
 
-
+- _`Promise`_ 
 
 
 ---
-## withFile(file)
 
+##### update
+
+
+```javascript
+function update()
+```
+
+
+
+
+---
+
+##### withFile
+
+
+```javascript
+function withFile(file: string) -> 'ManufacturerMedia'
+```
 
 Set the file attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **file** | `string` | ❌ | required field |
+- `file` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ManufacturerMedia`
-<br>
 
-{{% /notice %}}
+- _`ManufacturerMedia`_ 
+
 
 ---
-## withIdentifier(id)
 
+##### withIdentifier
+
+
+```javascript
+function withIdentifier(id: string) -> 'ManufacturerMedia'
+```
 
 Set the identifier attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **id** | `string` | ❌ | required field |
+- `id` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ManufacturerMedia`
-<br>
 
-{{% /notice %}}
+- _`ManufacturerMedia`_ 
+
 
 ---
-## withName(name)
 
+##### withName
+
+
+```javascript
+function withName(name: string) -> 'ManufacturerMedia'
+```
 
 Set the name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | required field |
+- `name` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ManufacturerMedia`
-<br>
 
-{{% /notice %}}
+- _`ManufacturerMedia`_ 
+
 
 ---
 

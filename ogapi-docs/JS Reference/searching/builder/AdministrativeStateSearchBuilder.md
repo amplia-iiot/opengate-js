@@ -3,100 +3,119 @@ title = "Administrative State Search Builder"
 weight = 10
 +++
 
-**Class:** `AdministrativeStateSearchBuilder`
+AdministrativeStateSearchBuilder
+
+### AdministrativeStateSearchBuilder Objects
+
+```javascript
+class AdministrativeStateSearchBuilder()
+```
 
 Defined a search over operational status catalogs    
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## build()
 
+##### build
+
+
+```javascript
+function build() -> 'StaticSearch'
+```
 
 Build a instance of StaticSearch 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `StaticSearch`
-<br>
 
-{{% /notice %}}
+- _`StaticSearch`_ 
 
-### Ejemplos
+
+**Example**:
+
+~~~javascript
+  ogapi.administrativeStateSearchBuilder().filter({and:[]}).build()
+~~~
+
+---
+
+##### customFilters
+
 
 ```javascript
-  ogapi.administrativeStateSearchBuilder().filter({and:[]}).build()
+function customFilters()
 ```
 
----
-## customFilters
-
-
 
 
 
 ---
-## withEntityType(entityType)
 
+##### withEntityType
+
+
+```javascript
+function withEntityType(entityType: string) -> 'AdministrativeStateSearchBuilder'
+```
 
 Set entityType to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **entityType** | `string` | ❌ | model name |
+- `entityType` _string_  - model name
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `AdministrativeStateSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`AdministrativeStateSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.administrativeStateSearchBuilder().withEntityType('myEntityType').build()
-```
+~~~
 
 ---
-## withId(administrativeStateId)
 
+##### withId
+
+
+```javascript
+function withId(administrativeStateId: string) -> 'AdministrativeStateSearchBuilder'
+```
 
 Sets id to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **administrativeStateId** | `string` | ❌ | specific type id |
+- `administrativeStateId` _string_  - specific type id
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `AdministrativeStateSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`AdministrativeStateSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.administrativeStateSearchBuilder().withId('myId').build()
-```
+~~~
 
 ---
 

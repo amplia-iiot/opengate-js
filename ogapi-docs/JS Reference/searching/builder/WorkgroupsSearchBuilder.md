@@ -3,19 +3,28 @@ title = "Workgroups Search Builder"
 weight = 10
 +++
 
-**Class:** `WorkgroupsSearchBuilder`
+WorkgroupsSearchBuilder
+
+### WorkgroupsSearchBuilder Objects
+
+```javascript
+class WorkgroupsSearchBuilder()
+```
 
 Defined a search over Workgroups	
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---

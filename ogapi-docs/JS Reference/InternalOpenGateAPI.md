@@ -3,2409 +3,2862 @@ title = "Internal Open Gate API"
 weight = 10
 +++
 
-**Class:** `InternalOpenGateAPI`
+InternalOpenGateAPI
+
+### InternalOpenGateAPI Objects
+
+```javascript
+class InternalOpenGateAPI()
+```
 
 This is a abstract class, it must be extended to another class that defined the backend, it will be used on request to Opengate North API by browser or nodejs server
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **_options** | `{ url: string,port: string,version: string,apiKey: string}` | ❌ | this is configuration about Opengate North API. |
-| **ampliaREST** | `AmpliaREST` | ❌ | this is a backend selected to manage a request to Opengate North API. |
+- `_options` _{ url: string,port: string,version: string,apiKey: string}_  - this is configuration about Opengate North API.
+- `ampliaREST` _AmpliaREST_  - this is a backend selected to manage a request to Opengate North API.
 
 
 ---
-## administrativeStateSearchBuilder()
 
+##### administrativeStateSearchBuilder
+
+
+```javascript
+function administrativeStateSearchBuilder() -> 'AdministrativeStateSearchBuilder'
+```
 
 This return a AdministrativeStateSearchBuilder to build a specific AdministrativeStateSearchBuilder
 
 
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** [AdministrativeStateSearchBuilder](./searching/builder/AdministrativeStateSearchBuilder)
-<br>
-
-{{% /notice %}}
-
----
-## alarms
+**Returns**:
 
 
-
+- `AdministrativeStateSearchBuilder`(./searching/builder/AdministrativeStateSearchBuilder) 
 
 
 ---
-## alarmsSearchBuilder()
 
+##### alarms
+
+
+```javascript
+function alarms()
+```
+
+
+
+
+---
+
+##### alarmsSearchBuilder
+
+
+```javascript
+function alarmsSearchBuilder() -> 'AlarmsSearchBuilder'
+```
 
 This return a AlarmsSearchBuilder to build a specific AlarmsSearch
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [AlarmsSearchBuilder](./searching/builder/AlarmsSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `AlarmsSearchBuilder`(./searching/builder/AlarmsSearchBuilder) 
+
 
 ---
-## allowedResourceTypeSearchBuilder()
 
+##### allowedResourceTypeSearchBuilder
+
+
+```javascript
+function allowedResourceTypeSearchBuilder() -> 'AllowedResourceTypeSearchBuilder'
+```
 
 This return a AllowedResourceTypeSearchBuilder to build a specific AllowedResourceTypeSearchBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [AllowedResourceTypeSearchBuilder](./searching/builder/AllowedResourceTypeSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `AllowedResourceTypeSearchBuilder`(./searching/builder/AllowedResourceTypeSearchBuilder) 
+
 
 ---
-## areasBuilder()
 
+##### areasBuilder
+
+
+```javascript
+function areasBuilder() -> 'Areas'
+```
 
 This return a AreasBuilder to build a specific area
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [Areas](./areas/Areas)
-<br>
 
-{{% /notice %}}
+- `Areas`(./areas/Areas) 
+
 
 ---
-## areasSearchBuilder()
 
+##### areasSearchBuilder
+
+
+```javascript
+function areasSearchBuilder() -> 'AreasSearchBuilder'
+```
 
 This return a AreasSearchBuilder to build a specific AreasSearch
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [AreasSearchBuilder](./searching/builder/AreasSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `AreasSearchBuilder`(./searching/builder/AreasSearchBuilder) 
+
 
 ---
-## assetsSearchBuilder()
 
+##### assetsSearchBuilder
+
+
+```javascript
+function assetsSearchBuilder() -> 'AssetsSearchBuilder'
+```
 
 This return a AssetsSearchBuilder to build a specific AssetSearch
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [AssetsSearchBuilder](./searching/builder/AssetsSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `AssetsSearchBuilder`(./searching/builder/AssetsSearchBuilder) 
+
 
 ---
-## basicTypesSearchBuilder()
+
+##### basicTypesSearchBuilder
+
+
+```javascript
+function basicTypesSearchBuilder() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## bulkExecutionBuilder(organization, processorId, timeout)
 
+##### bulkExecutionBuilder
+
+
+```javascript
+function bulkExecutionBuilder(organization: *,processorId: *,timeout: *) -> 'BulkExecutionBuilder'
+```
 
 This return a util to create a bulk execution
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `*` | ❌ |  |
-| **processorId** | `*` | ❌ |  |
-| **timeout** | `*` | ❌ |  |
+- `organization` _*_  
+- `processorId` _*_  
+- `timeout` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [BulkExecutionBuilder](./provision/bulk/BulkExecutionBuilder)
-<br>
 
-{{% /notice %}}
+- `BulkExecutionBuilder`(./provision/bulk/BulkExecutionBuilder) 
+
 
 ---
-## bulkExecutionSearchBuilder()
 
+##### bulkExecutionSearchBuilder
+
+
+```javascript
+function bulkExecutionSearchBuilder() -> 'BulkExecutionSearchBuilder'
+```
 
 This return a BulkExecutionSearchBuilder to build a specific bulk
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [BulkExecutionSearchBuilder](./searching/builder/BulkExecutionSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `BulkExecutionSearchBuilder`(./searching/builder/BulkExecutionSearchBuilder) 
+
 
 ---
-## bulkSearchBuilder()
 
+##### bulkSearchBuilder
+
+
+```javascript
+function bulkSearchBuilder() -> 'BulkSearchBuilder'
+```
 
 This return a BulkSearchBuilder to build a specific BulkSearchBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [BulkSearchBuilder](./searching/builder/BulkSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `BulkSearchBuilder`(./searching/builder/BulkSearchBuilder) 
+
 
 ---
-## bundlesBuilder()
 
+##### bundlesBuilder
+
+
+```javascript
+function bundlesBuilder() -> 'Bundles'
+```
 
 This return a BundlesBuilder to build a specific BundlesBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [Bundles](./bundles/Bundles)
-<br>
 
-{{% /notice %}}
+- `Bundles`(./bundles/Bundles) 
+
 
 ---
-## bundlesSearchBuilder()
 
+##### bundlesSearchBuilder
+
+
+```javascript
+function bundlesSearchBuilder() -> 'BundlesSearchBuilder'
+```
 
 This return a BundlesSearchBuilder to build a specific BundlesSearchBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [BundlesSearchBuilder](./searching/builder/BundlesSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `BundlesSearchBuilder`(./searching/builder/BundlesSearchBuilder) 
+
 
 ---
-## certificatesBuilder()
 
+##### certificatesBuilder
+
+
+```javascript
+function certificatesBuilder() -> 'Certificates'
+```
 
 This return a util to create a certificate
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [Certificates](./security/Certificates)
-<br>
 
-{{% /notice %}}
+- `Certificates`(./security/Certificates) 
+
 
 ---
-## certificatesSearchBuilder()
 
+##### certificatesSearchBuilder
+
+
+```javascript
+function certificatesSearchBuilder() -> 'CertificatesSearchBuilder'
+```
 
 This return a CertificatesSearchBuilder to build a specific CertificatesSearchBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [CertificatesSearchBuilder](./searching/builder/CertificatesSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `CertificatesSearchBuilder`(./searching/builder/CertificatesSearchBuilder) 
+
 
 ---
-## channelsBuilder()
 
+##### channelsBuilder
+
+
+```javascript
+function channelsBuilder() -> 'Channels'
+```
 
 This return a ChannelsBuilder to build a specific WorkgroupsSearch
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [Channels](./channels/Channels)
-<br>
 
-{{% /notice %}}
+- `Channels`(./channels/Channels) 
+
 
 ---
-## channelsSearchBuilder()
 
+##### channelsSearchBuilder
+
+
+```javascript
+function channelsSearchBuilder() -> 'ChannelsSearchBuilder'
+```
 
 This return a ChannelsSearchBuilder to build a specific ChannelsSearch
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [ChannelsSearchBuilder](./searching/builder/ChannelsSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `ChannelsSearchBuilder`(./searching/builder/ChannelsSearchBuilder) 
+
 
 ---
-## commsModuleMessageMessageBuilder()
+
+##### commsModuleMessageMessageBuilder
+
+
+```javascript
+function commsModuleMessageMessageBuilder() -> 'CommsModuleMessage'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** [CommsModuleMessage](./collection/devices/collect/CommsModuleMessage)
-<br>
+- `CommsModuleMessage`(./collection/devices/collect/CommsModuleMessage) 
 
-{{% /notice %}}
 
 ---
-## communicationsModuleTypeSearchBuilder()
 
+##### communicationsModuleTypeSearchBuilder
+
+
+```javascript
+function communicationsModuleTypeSearchBuilder() -> 'CommunicationsModuleTypeSearchBuilder'
+```
 
 This return a CommunicationsModuleTypeSearchBuilder to build a specific CommunicationsModuleTypeSearch
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [CommunicationsModuleTypeSearchBuilder](./searching/builder/CommunicationsModuleTypeSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `CommunicationsModuleTypeSearchBuilder`(./searching/builder/CommunicationsModuleTypeSearchBuilder) 
+
 
 ---
-## connectorFunctionsBuilder(organization, channel, identifier, connectorFunctionData)
 
+##### connectorFunctionsBuilder
+
+
+```javascript
+function connectorFunctionsBuilder(organization: *,channel: *,identifier: *,connectorFunctionData: *) -> 'ConnectorFunctions'
+```
 
 This return a ConnectorFunctions
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `*` | ❌ |  |
-| **channel** | `*` | ❌ |  |
-| **identifier** | `*` | ❌ |  |
-| **connectorFunctionData** | `*` | ❌ |  |
+- `organization` _*_  
+- `channel` _*_  
+- `identifier` _*_  
+- `connectorFunctionData` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [ConnectorFunctions](./connectorsFunctions/configuration/ConnectorFunctions)
-<br>
 
-{{% /notice %}}
+- `ConnectorFunctions`(./connectorsFunctions/configuration/ConnectorFunctions) 
+
 
 ---
-## connectorFunctionsCatalogBuilder(identifier, connectorFunctionsCatalog)
+
+##### connectorFunctionsCatalogBuilder
 
 
+```javascript
+function connectorFunctionsCatalogBuilder(identifier: String,connectorFunctionsCatalog: Object) -> 'ConnectorFunctionsCatalog'
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **identifier** | `String` | ❌ | only update or delete |
-| **connectorFunctionsCatalog** | `Object` | ❌ |  |
+**Arguments**:
 
-### Retorna
+- `identifier` _String_  - only update or delete
+- `connectorFunctionsCatalog` _Object_  
 
-{{% notice tip %}}
-**Tipo:** [ConnectorFunctionsCatalog](./connectorsFunctions/catalog/ConnectorFunctionsCatalog)
-<br>
+**Returns**:
 
-{{% /notice %}}
+
+- `ConnectorFunctionsCatalog`(./connectorsFunctions/catalog/ConnectorFunctionsCatalog) 
+
 
 ---
-## countryCodesSearchBuilder()
 
+##### countryCodesSearchBuilder
+
+
+```javascript
+function countryCodesSearchBuilder() -> 'CountryCodesSearchBuilder'
+```
 
 This return a CountryCodesSearchBuilder to build a specific CountryCodesSearchBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [CountryCodesSearchBuilder](./searching/builder/CountryCodesSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `CountryCodesSearchBuilder`(./searching/builder/CountryCodesSearchBuilder) 
+
 
 ---
-## datamodelsBuilder(organization)
 
+##### datamodelsBuilder
+
+
+```javascript
+function datamodelsBuilder(organization: *) -> 'Datamodels'
+```
 
 This return a Datamodels to build a specific Datamodels
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `*` | ❌ |  |
+- `organization` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [Datamodels](./iot/datamodels/Datamodels)
-<br>
 
-{{% /notice %}}
+- `Datamodels`(./iot/datamodels/Datamodels) 
+
 
 ---
-## datamodelsHelper(organization, datamodel)
 
+##### datamodelsHelper
+
+
+```javascript
+function datamodelsHelper(organization: *,datamodel: *) -> 'DatamodelsHelper'
+```
 
 This return a DatamodelsHelper to build a specific DatamodelsHelper
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `*` | ❌ |  |
-| **datamodel** | `*` | ❌ |  |
+- `organization` _*_  
+- `datamodel` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [DatamodelsHelper](./iot/datamodels/DatamodelsHelper)
-<br>
 
-{{% /notice %}}
+- `DatamodelsHelper`(./iot/datamodels/DatamodelsHelper) 
+
 
 ---
-## datamodelsSearchBuilder()
 
+##### datamodelsSearchBuilder
+
+
+```javascript
+function datamodelsSearchBuilder() -> 'DatamodelsSearchBuilder'
+```
 
 This return a DatamodelsSearchBuilder to build a specific DatamodelsSearchBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [DatamodelsSearchBuilder](./searching/builder/DatamodelsSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `DatamodelsSearchBuilder`(./searching/builder/DatamodelsSearchBuilder) 
+
 
 ---
-## datapointsBuilder()
 
+##### datapointsBuilder
+
+
+```javascript
+function datapointsBuilder() -> 'Datapoint'
+```
 
 This return a datapointsBuilder to build a specific Datapoint
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [Datapoint](./collection/devices/collect/Datapoint)
-<br>
 
-{{% /notice %}}
+- `Datapoint`(./collection/devices/collect/Datapoint) 
+
 
 ---
-## datapointsSearchBuilder()
 
+##### datapointsSearchBuilder
+
+
+```javascript
+function datapointsSearchBuilder() -> 'DatapointsSearchBuilder'
+```
 
 This return a DatapointsSearchBuilder to build a specific DatapointsSearchBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [DatapointsSearchBuilder](./searching/builder/DatapointsSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `DatapointsSearchBuilder`(./searching/builder/DatapointsSearchBuilder) 
+
 
 ---
-## datasetEntitiesSearchBuilder(organization, dataset)
 
+##### datasetEntitiesSearchBuilder
+
+
+```javascript
+function datasetEntitiesSearchBuilder(organization: *,dataset: *) -> 'DatasetEntitiesSearchBuilder'
+```
 
 This return a DatasetEntitiesSearchBuilder to build a specific DatasetEntitiesSearch
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `*` | ❌ |  |
-| **dataset** | `*` | ❌ |  |
+- `organization` _*_  
+- `dataset` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [DatasetEntitiesSearchBuilder](./searching/builder/DatasetEntitiesSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `DatasetEntitiesSearchBuilder`(./searching/builder/DatasetEntitiesSearchBuilder) 
+
 
 ---
-## datasetsBuilder()
 
+##### datasetsBuilder
+
+
+```javascript
+function datasetsBuilder() -> 'Datasets'
+```
 
 This return a DatasetBuilder to build a specific dataset
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [Datasets](./datasets/Datasets)
-<br>
 
-{{% /notice %}}
+- `Datasets`(./datasets/Datasets) 
+
 
 ---
-## datasetsCatalogSearchBuilder()
 
+##### datasetsCatalogSearchBuilder
+
+
+```javascript
+function datasetsCatalogSearchBuilder() -> 'DatasetsCatalogSearchBuilder'
+```
 
 This return a DatasetsCatalogSearchBuilder to build a specific DatasetsCatalogSearc
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [DatasetsCatalogSearchBuilder](./searching/builder/DatasetsCatalogSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `DatasetsCatalogSearchBuilder`(./searching/builder/DatasetsCatalogSearchBuilder) 
+
 
 ---
-## datasetSearchBuilder(organization, dataset)
 
+##### datasetSearchBuilder
+
+
+```javascript
+function datasetSearchBuilder(organization: *,dataset: *) -> 'DatasetSearchBuilder'
+```
 
 This return a DatasetSearchBuilder to build a specific DatasetSearch
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `*` | ❌ |  |
-| **dataset** | `*` | ❌ |  |
+- `organization` _*_  
+- `dataset` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [DatasetSearchBuilder](./searching/builder/DatasetSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `DatasetSearchBuilder`(./searching/builder/DatasetSearchBuilder) 
+
 
 ---
-## datastreamBuilder()
 
+##### datastreamBuilder
+
+
+```javascript
+function datastreamBuilder() -> 'Datastream'
+```
 
 This return a datastreamBuilder to build a specific Datastream
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [Datastream](./iot/catalog/Datastream)
-<br>
 
-{{% /notice %}}
+- `Datastream`(./iot/catalog/Datastream) 
+
 
 ---
-## datastreamsBuilder()
 
+##### datastreamsBuilder
+
+
+```javascript
+function datastreamsBuilder() -> 'DatastreamsBuilder'
+```
 
 This return a datastream to build a specific Datastream
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DatastreamsBuilder`
-<br>
 
-{{% /notice %}}
+- _`DatastreamsBuilder`_ 
+
 
 ---
-## datastreamsSearchBuilder()
 
+##### datastreamsSearchBuilder
+
+
+```javascript
+function datastreamsSearchBuilder() -> 'DatastreamsSearchBuilder'
+```
 
 This return a DatastreamsSearchBuilder to build a specific DatastreamsSearchBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [DatastreamsSearchBuilder](./searching/builder/DatastreamsSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `DatastreamsSearchBuilder`(./searching/builder/DatastreamsSearchBuilder) 
+
 
 ---
-## deviceMessageBuilder()
 
+##### deviceMessageBuilder
+
+
+```javascript
+function deviceMessageBuilder() -> 'DeviceMessage'
+```
 
 This return a DevicesSouth to build a specific DevicesSouth
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [DeviceMessage](./collection/devices/DeviceMessage)
-<br>
 
-{{% /notice %}}
+- `DeviceMessage`(./collection/devices/DeviceMessage) 
+
 
 ---
-## devicesPlansSearchBuilder()
 
+##### devicesPlansSearchBuilder
+
+
+```javascript
+function devicesPlansSearchBuilder() -> 'PlansSearchBuilder'
+```
 
 This return a DevicePlansSearchBuilder to build a specific DevicePlansSearchBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [PlansSearchBuilder](./searching/builder/PlansSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `PlansSearchBuilder`(./searching/builder/PlansSearchBuilder) 
+
 
 ---
-## devicesSearchBuilder()
 
+##### devicesSearchBuilder
+
+
+```javascript
+function devicesSearchBuilder() -> 'DevicesSearchBuilder'
+```
 
 This return a DevicesSearchBuilder to build a specific DeviceSearch
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [DevicesSearchBuilder](./searching/builder/DevicesSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `DevicesSearchBuilder`(./searching/builder/DevicesSearchBuilder) 
+
 
 ---
-## domainsBuilder()
 
+##### domainsBuilder
+
+
+```javascript
+function domainsBuilder() -> 'Domain'
+```
 
 This return a DomainsBuilder to build a specific DomainsBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Domain`
-<br>
 
-{{% /notice %}}
+- _`Domain`_ 
+
 
 ---
-## domainsSearchBuilder()
 
+##### domainsSearchBuilder
+
+
+```javascript
+function domainsSearchBuilder() -> 'DomainsSearchBuilder'
+```
 
 This return a DomainsSearchBuilder to build a specific DomainsSearch
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [DomainsSearchBuilder](./searching/builder/DomainsSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `DomainsSearchBuilder`(./searching/builder/DomainsSearchBuilder) 
+
 
 ---
-## entitiesSearchBuilder()
 
+##### entitiesSearchBuilder
+
+
+```javascript
+function entitiesSearchBuilder() -> 'EntitiesSearchBuilder'
+```
 
 This return a EntitiesSearchBuilder to build a specific EntitiesSearch
 
 
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** [EntitiesSearchBuilder](./searching/builder/EntitiesSearchBuilder)
-<br>
-
-{{% /notice %}}
-
----
-## entityBuilder
+**Returns**:
 
 
-
+- `EntitiesSearchBuilder`(./searching/builder/EntitiesSearchBuilder) 
 
 
 ---
-## EX
 
+##### entityBuilder
+
+
+```javascript
+function entityBuilder()
+```
 
 
 
 
 ---
-## executionsHistorySearchBuilder()
 
+##### EX
+
+
+```javascript
+function EX()
+```
+
+
+
+
+---
+
+##### executionsHistorySearchBuilder
+
+
+```javascript
+function executionsHistorySearchBuilder() -> 'ExecutionsHistorySearchBuilder'
+```
 
 This return a ExecutionsHistorySearchBuilder to build a specific ExecutionsSearch
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [ExecutionsHistorySearchBuilder](./searching/builder/ExecutionsHistorySearchBuilder)
-<br>
 
-{{% /notice %}}
+- `ExecutionsHistorySearchBuilder`(./searching/builder/ExecutionsHistorySearchBuilder) 
+
 
 ---
-## executionsSearchBuilder()
 
+##### executionsSearchBuilder
+
+
+```javascript
+function executionsSearchBuilder() -> 'ExecutionsSearchBuilder'
+```
 
 This return a ExecutionsSearchBuilder to build a specific ExecutionsSearch
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [ExecutionsSearchBuilder](./searching/builder/ExecutionsSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `ExecutionsSearchBuilder`(./searching/builder/ExecutionsSearchBuilder) 
+
 
 ---
-## feedsSearchBuilder()
 
+##### feedsSearchBuilder
+
+
+```javascript
+function feedsSearchBuilder() -> 'FeedsSearchBuilder'
+```
 
 This return a FeedsSearchBuilder to build a specific FeedsSearchBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [FeedsSearchBuilder](./searching/builder/FeedsSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `FeedsSearchBuilder`(./searching/builder/FeedsSearchBuilder) 
+
 
 ---
-## fieldsDefinitionSearchBuilder()
 
+##### fieldsDefinitionSearchBuilder
+
+
+```javascript
+function fieldsDefinitionSearchBuilder() -> 'FieldsDefinitionSearchBuilder'
+```
 
 This return a FieldsDefinitionSearchBuilder to build a specific FieldsDefinitionSearchBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [FieldsDefinitionSearchBuilder](./searching/builder/FieldsDefinitionSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `FieldsDefinitionSearchBuilder`(./searching/builder/FieldsDefinitionSearchBuilder) 
+
 
 ---
-## geoclusterBuilder()
 
+##### geoclusterBuilder
+
+
+```javascript
+function geoclusterBuilder() -> 'Geocluster'
+```
 
 This return a util to regenerate geloclouster
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [Geocluster](./geocluster/Geocluster)
-<br>
 
-{{% /notice %}}
+- `Geocluster`(./geocluster/Geocluster) 
+
 
 ---
-## hardwareMessageBuilder()
+
+##### hardwareMessageBuilder
+
+
+```javascript
+function hardwareMessageBuilder() -> 'Hardware'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** [Hardware](./collection/devices/collect/Hardware)
-<br>
+- `Hardware`(./collection/devices/collect/Hardware) 
 
-{{% /notice %}}
 
 ---
-## ioTDatastreamAccessSearchBuilder()
 
+##### ioTDatastreamAccessSearchBuilder
+
+
+```javascript
+function ioTDatastreamAccessSearchBuilder() -> 'IoTDatastreamAccessSearchBuilder'
+```
 
 This return a IoTDatastreamAccessSearchBuilder to build a specific IoTDatastreamAccessSearchBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [IoTDatastreamAccessSearchBuilder](./searching/builder/IoTDatastreamAccessSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `IoTDatastreamAccessSearchBuilder`(./searching/builder/IoTDatastreamAccessSearchBuilder) 
+
 
 ---
-## ioTDatastreamPeriodSearchBuilder()
 
+##### ioTDatastreamPeriodSearchBuilder
+
+
+```javascript
+function ioTDatastreamPeriodSearchBuilder() -> 'IoTDatastreamPeriodSearchBuilder'
+```
 
 This return a IoTDatastreamPeriodSearchBuilder to build a specific IoTDatastreamPeriodSearchBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [IoTDatastreamPeriodSearchBuilder](./searching/builder/IoTDatastreamPeriodSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `IoTDatastreamPeriodSearchBuilder`(./searching/builder/IoTDatastreamPeriodSearchBuilder) 
+
 
 ---
-## ioTDatastreamStoragePeriodSearchBuilder()
 
+##### ioTDatastreamStoragePeriodSearchBuilder
+
+
+```javascript
+function ioTDatastreamStoragePeriodSearchBuilder() -> 'IoTDatastreamStoragePeriodSearchBuilder'
+```
 
 This return a IoTDatastreamStoragePeriodSearchBuilder to build a specific IoTDatastreamStoragePeriodSearchBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [IoTDatastreamStoragePeriodSearchBuilder](./searching/builder/IoTDatastreamStoragePeriodSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `IoTDatastreamStoragePeriodSearchBuilder`(./searching/builder/IoTDatastreamStoragePeriodSearchBuilder) 
+
 
 ---
-## manufacturerModelsBuilder(manufacturerIdentifier)
 
+##### manufacturerModelsBuilder
+
+
+```javascript
+function manufacturerModelsBuilder(manufacturerIdentifier: *) -> 'ManufacturerModelsBuilder'
+```
 
 This return a ManufacturerModelsBuilder to build a specific ManufacturerModelsBuilder
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **manufacturerIdentifier** | `*` | ❌ |  |
+- `manufacturerIdentifier` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ManufacturerModelsBuilder`
-<br>
 
-{{% /notice %}}
+- _`ManufacturerModelsBuilder`_ 
+
 
 ---
-## manufacturersBuilder()
 
+##### manufacturersBuilder
+
+
+```javascript
+function manufacturersBuilder() -> 'ManufacturersBuilder'
+```
 
 This return a ManufacturersBuilder to build a specific ManufacturersBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ManufacturersBuilder`
-<br>
 
-{{% /notice %}}
+- _`ManufacturersBuilder`_ 
+
 
 ---
-## mobileMessageMessageBuilder()
+
+##### mobileMessageMessageBuilder
+
+
+```javascript
+function mobileMessageMessageBuilder() -> 'Mobile'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** [Mobile](./collection/devices/collect/Mobile)
-<br>
+- `Mobile`(./collection/devices/collect/Mobile) 
 
-{{% /notice %}}
 
 ---
-## mobilePhoneProviderSearchBuilder()
 
+##### mobilePhoneProviderSearchBuilder
+
+
+```javascript
+function mobilePhoneProviderSearchBuilder() -> 'MobilePhoneProviderSearchBuilder'
+```
 
 This return a MobilePhoneProviderSearchBuilder to build a specific MobilePhoneProviderTypeSearch
 
 
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** [MobilePhoneProviderSearchBuilder](./searching/builder/MobilePhoneProviderSearchBuilder)
-<br>
-
-{{% /notice %}}
-
----
-## Napi
+**Returns**:
 
 
-
+- `MobilePhoneProviderSearchBuilder`(./searching/builder/MobilePhoneProviderSearchBuilder) 
 
 
 ---
-## newAreaFinder()
 
+##### Napi
+
+
+```javascript
+function Napi()
+```
+
+
+
+
+---
+
+##### newAreaFinder
+
+
+```javascript
+function newAreaFinder() -> 'AreaFinder'
+```
 
 This return a util to find a area
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [AreaFinder](./areas/AreaFinder)
-<br>
 
-{{% /notice %}}
+- `AreaFinder`(./areas/AreaFinder) 
+
 
 ---
-## newBulkExecutionFinder()
 
+##### newBulkExecutionFinder
+
+
+```javascript
+function newBulkExecutionFinder() -> 'BulkFinder'
+```
 
 This return a util to find summary and download a bulk executions
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [BulkFinder](./bulk/BulkFinder)
-<br>
 
-{{% /notice %}}
+- `BulkFinder`(./bulk/BulkFinder) 
+
 
 ---
-## newBulkFinder()
 
+##### newBulkFinder
+
+
+```javascript
+function newBulkFinder() -> 'BulkFinder'
+```
 
 This return a util to find and download a bulk
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [BulkFinder](./bulk/BulkFinder)
-<br>
 
-{{% /notice %}}
+- `BulkFinder`(./bulk/BulkFinder) 
+
 
 ---
-## newBundleFinder()
 
+##### newBundleFinder
+
+
+```javascript
+function newBundleFinder() -> 'BundleFinder'
+```
 
 This return a util to find a bundle
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [BundleFinder](./bundles/BundleFinder)
-<br>
 
-{{% /notice %}}
+- `BundleFinder`(./bundles/BundleFinder) 
+
 
 ---
-## newCertificateFinder()
 
+##### newCertificateFinder
+
+
+```javascript
+function newCertificateFinder() -> 'CertificateFinder'
+```
 
 This return a util to find a certificate
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [CertificateFinder](./security/CertificateFinder)
-<br>
 
-{{% /notice %}}
+- `CertificateFinder`(./security/CertificateFinder) 
+
 
 ---
-## newChannelFinder()
 
+##### newChannelFinder
+
+
+```javascript
+function newChannelFinder() -> 'ChannelFinder'
+```
 
 This return a util to find a channel
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [ChannelFinder](./channels/ChannelFinder)
-<br>
 
-{{% /notice %}}
+- `ChannelFinder`(./channels/ChannelFinder) 
+
 
 ---
-## newConnectorFunctionsCatalog()
 
+##### newConnectorFunctionsCatalog
+
+
+```javascript
+function newConnectorFunctionsCatalog() -> 'ConnectorFunctionsCatalog'
+```
 
 This return a ConnectorFunctionsCatalog
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [ConnectorFunctionsCatalog](./connectorsFunctions/catalog/ConnectorFunctionsCatalog)
-<br>
 
-{{% /notice %}}
+- `ConnectorFunctionsCatalog`(./connectorsFunctions/catalog/ConnectorFunctionsCatalog) 
+
 
 ---
-## newConnectorFunctionsCatalogFinder()
 
+##### newConnectorFunctionsCatalogFinder
+
+
+```javascript
+function newConnectorFunctionsCatalogFinder() -> 'ConnectorFunctionsCatalogFinder'
+```
 
 This return a ConnectorFunctionsCatalogFinder 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [ConnectorFunctionsCatalogFinder](./connectorsFunctions/catalog/ConnectorFunctionsCatalogFinder)
-<br>
 
-{{% /notice %}}
+- `ConnectorFunctionsCatalogFinder`(./connectorsFunctions/catalog/ConnectorFunctionsCatalogFinder) 
+
 
 ---
-## newConnectorFunctionsFinder()
 
+##### newConnectorFunctionsFinder
+
+
+```javascript
+function newConnectorFunctionsFinder() -> 'ConnectorFunctionsFinder'
+```
 
 This return a ConnectorFunctionsFinder 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [ConnectorFunctionsFinder](./connectorsFunctions/configuration/ConnectorFunctionsFinder)
-<br>
 
-{{% /notice %}}
+- `ConnectorFunctionsFinder`(./connectorsFunctions/configuration/ConnectorFunctionsFinder) 
+
 
 ---
-## newConnectorFunctionsHelper()
 
+##### newConnectorFunctionsHelper
+
+
+```javascript
+function newConnectorFunctionsHelper() -> 'ConnectorFunctionsHelper'
+```
 
 This return a ConnectorFunctionsHelper
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [ConnectorFunctionsHelper](./connectorsFunctions/configuration/ConnectorFunctionsHelper)
-<br>
 
-{{% /notice %}}
+- `ConnectorFunctionsHelper`(./connectorsFunctions/configuration/ConnectorFunctionsHelper) 
+
 
 ---
-## newCountriesCatalog()
 
+##### newCountriesCatalog
+
+
+```javascript
+function newCountriesCatalog() -> 'CountriesCatalog'
+```
 
 This return a util to find countries catalog
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [CountriesCatalog](./provision/country/CountriesCatalog)
-<br>
 
-{{% /notice %}}
+- `CountriesCatalog`(./provision/country/CountriesCatalog) 
+
 
 ---
-## newDatamodelsFinder()
 
+##### newDatamodelsFinder
+
+
+```javascript
+function newDatamodelsFinder() -> 'DatamodelsFinder'
+```
 
 This return a util to find a datamodel
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [DatamodelsFinder](./iot/datamodels/DatamodelsFinder)
-<br>
 
-{{% /notice %}}
+- `DatamodelsFinder`(./iot/datamodels/DatamodelsFinder) 
+
 
 ---
-## newDatasetFinder()
 
+##### newDatasetFinder
+
+
+```javascript
+function newDatasetFinder() -> 'DatasetFinder'
+```
 
 This return a to find Dataset configuration
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DatasetFinder`
-<br>
 
-{{% /notice %}}
+- _`DatasetFinder`_ 
+
 
 ---
-## newDeviceFinder()
 
+##### newDeviceFinder
+
+
+```javascript
+function newDeviceFinder() -> 'DeviceFinder'
+```
 
 This return a util to find a device
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [DeviceFinder](./entities/DeviceFinder)
-<br>
 
-{{% /notice %}}
+- `DeviceFinder`(./entities/DeviceFinder) 
+
 
 ---
-## newDomainFinder()
 
+##### newDomainFinder
+
+
+```javascript
+function newDomainFinder() -> 'DomainFinder'
+```
 
 This return a util to find a domain
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [DomainFinder](./domains/DomainsFinder)
-<br>
 
-{{% /notice %}}
+- `DomainFinder`(./domains/DomainsFinder) 
+
 
 ---
-## newEntityFinder()
+
+##### newEntityFinder
+
+
+```javascript
+function newEntityFinder() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## newFilterBuilder()
 
+##### newFilterBuilder
+
+
+```javascript
+function newFilterBuilder() -> 'FilterBuilder'
+```
 
 This return a util to create your own filter to make searching
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [FilterBuilder](./searching/FilterBuilder)
-<br>
 
-{{% /notice %}}
+- `FilterBuilder`(./searching/FilterBuilder) 
+
 
 ---
-## newGeoclusterFinder()
 
+##### newGeoclusterFinder
+
+
+```javascript
+function newGeoclusterFinder() -> 'GeoclusterFinder'
+```
 
 This return a util to find a user
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [GeoclusterFinder](./geocluster/GeoclusterFinder)
-<br>
 
-{{% /notice %}}
+- `GeoclusterFinder`(./geocluster/GeoclusterFinder) 
+
 
 ---
-## newManufacturersFinder()
 
+##### newManufacturersFinder
+
+
+```javascript
+function newManufacturersFinder() -> 'ManufacturerFinder'
+```
 
 This return a util to find a hardware manufacturer
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [ManufacturerFinder](./organization_manufacturer/ManufacturerFinder)
-<br>
 
-{{% /notice %}}
+- `ManufacturerFinder`(./organization_manufacturer/ManufacturerFinder) 
+
 
 ---
-## newModelFinder()
 
+##### newModelFinder
+
+
+```javascript
+function newModelFinder() -> 'ModelFinder'
+```
 
 This return a util to find a hardware model
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [ModelFinder](./organization_manufacturer/ModelFinder)
-<br>
 
-{{% /notice %}}
+- `ModelFinder`(./organization_manufacturer/ModelFinder) 
+
 
 ---
-## newNotebookFinder()
 
+##### newNotebookFinder
+
+
+```javascript
+function newNotebookFinder() -> 'NotebookFinder'
+```
 
 This return a util to find notebooks
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [NotebookFinder](./notebookScheduler/NotebookFinder)
-<br>
 
-{{% /notice %}}
+- `NotebookFinder`(./notebookScheduler/NotebookFinder) 
+
 
 ---
-## newNotebookSchedulerFinder()
 
+##### newNotebookSchedulerFinder
+
+
+```javascript
+function newNotebookSchedulerFinder() -> 'NotebookSchedulerFinder'
+```
 
 This return a util to find notebooks schedulers
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `NotebookSchedulerFinder`
-<br>
 
-{{% /notice %}}
+- _`NotebookSchedulerFinder`_ 
+
 
 ---
-## newOperationActions(operationId)
 
+##### newOperationActions
+
+
+```javascript
+function newOperationActions(operationId: string) -> 'OperationActions'
+```
 
 This return a util to operation actions on an operation
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **operationId** | `string` | ❌ | identifier of operation |
+- `operationId` _string_  - identifier of operation
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [OperationActions](./operations/OperationActions)
-<br>
 
-{{% /notice %}}
+- `OperationActions`(./operations/OperationActions) 
+
 
 ---
-## newOperationFinder()
 
+##### newOperationFinder
+
+
+```javascript
+function newOperationFinder() -> 'OperationFinder'
+```
 
 This return a util to find a operation
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [OperationFinder](./operations/OperationFinder)
-<br>
 
-{{% /notice %}}
+- `OperationFinder`(./operations/OperationFinder) 
+
 
 ---
-## newOperationTypeCatalog()
 
+##### newOperationTypeCatalog
+
+
+```javascript
+function newOperationTypeCatalog() -> 'OperationTypeCatalog'
+```
 
 This return a util to find Operation Types Templates
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `OperationTypeCatalog`
-<br>
 
-{{% /notice %}}
+- _`OperationTypeCatalog`_ 
+
 
 ---
-## newOperationTypeFinder()
 
+##### newOperationTypeFinder
+
+
+```javascript
+function newOperationTypeFinder() -> 'OperationType'
+```
 
 This return a util to find Operation Types
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [OperationType](./operationTypes/OperationType)
-<br>
 
-{{% /notice %}}
+- `OperationType`(./operationTypes/OperationType) 
+
 
 ---
-## newOrganizationFinder()
 
+##### newOrganizationFinder
+
+
+```javascript
+function newOrganizationFinder() -> 'OrganizationFinder'
+```
 
 This return a util to find a organization
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [OrganizationFinder](./organizations/OrganizationFinder)
-<br>
 
-{{% /notice %}}
+- `OrganizationFinder`(./organizations/OrganizationFinder) 
+
 
 ---
-## newOrganizationManufacturersFinder()
 
+##### newOrganizationManufacturersFinder
+
+
+```javascript
+function newOrganizationManufacturersFinder() -> 'OrganizationManufacturerFinder'
+```
 
 This return a util to find a hardware manufacturer
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `OrganizationManufacturerFinder`
-<br>
 
-{{% /notice %}}
+- _`OrganizationManufacturerFinder`_ 
+
 
 ---
-## newOrganizationModelFinder()
 
+##### newOrganizationModelFinder
+
+
+```javascript
+function newOrganizationModelFinder() -> 'OrganizationModelFinder'
+```
 
 This return a util to find a hardware model
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `OrganizationModelFinder`
-<br>
 
-{{% /notice %}}
+- _`OrganizationModelFinder`_ 
+
 
 ---
-## newPeriodicityActions(taskId)
 
+##### newPeriodicityActions
+
+
+```javascript
+function newPeriodicityActions(taskId: string) -> 'PeriodicityActions'
+```
 
 This return a util to manage actions over periodicities
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **taskId** | `string` | ❌ | identifier of operation |
+- `taskId` _string_  - identifier of operation
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [PeriodicityActions](./operations/PeriodicityActions)
-<br>
 
-{{% /notice %}}
+- `PeriodicityActions`(./operations/PeriodicityActions) 
+
 
 ---
-## newProvisionProcessorsFinder()
 
+##### newProvisionProcessorsFinder
+
+
+```javascript
+function newProvisionProcessorsFinder() -> 'ProvisionProcessorsFinder'
+```
 
 This return a util to find a provision procesor
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ProvisionProcessorsFinder`
-<br>
 
-{{% /notice %}}
+- _`ProvisionProcessorsFinder`_ 
+
 
 ---
-## newRuleConfigurationsCatalog()
 
+##### newRuleConfigurationsCatalog
+
+
+```javascript
+function newRuleConfigurationsCatalog() -> 'RuleConfigurationsCatalog'
+```
 
 This return a util to find Rule Configurations Templates
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [RuleConfigurationsCatalog](./rulesConfiguration/RuleConfigurationsCatalog)
-<br>
 
-{{% /notice %}}
+- `RuleConfigurationsCatalog`(./rulesConfiguration/RuleConfigurationsCatalog) 
+
 
 ---
-## newRuleConfigurationsFinder()
 
+##### newRuleConfigurationsFinder
+
+
+```javascript
+function newRuleConfigurationsFinder() -> 'RuleConfigurationsFinder'
+```
 
 This return a util to find Rule Configurations
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [RuleConfigurationsFinder](./rulesConfiguration/RuleConfigurationsFinder)
-<br>
 
-{{% /notice %}}
+- `RuleConfigurationsFinder`(./rulesConfiguration/RuleConfigurationsFinder) 
+
 
 ---
-## newRuleConfigurationsHelper()
 
+##### newRuleConfigurationsHelper
+
+
+```javascript
+function newRuleConfigurationsHelper() -> '*'
+```
 
 This return a util  RuleConfigurationsHelper
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
-{RuleConfigurationsHelper
-{{% /notice %}}
+
+- _`*`_ - {RuleConfigurationsHelper
+
 
 ---
-## newScheduleHistoryFinder()
 
+##### newScheduleHistoryFinder
+
+
+```javascript
+function newScheduleHistoryFinder() -> 'HistoryFinder'
+```
 
 This return a util to view schedule history
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [HistoryFinder](./schedule/HistoryFinder)
-<br>
 
-{{% /notice %}}
+- `HistoryFinder`(./schedule/HistoryFinder) 
+
 
 ---
-## newScheduleImageExecutionFinder()
 
+##### newScheduleImageExecutionFinder
+
+
+```javascript
+function newScheduleImageExecutionFinder() -> 'ImageExecutionFinder'
+```
 
 This return a util to view schedule image executions
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [ImageExecutionFinder](./schedule/ImageExecutionFinder)
-<br>
 
-{{% /notice %}}
+- `ImageExecutionFinder`(./schedule/ImageExecutionFinder) 
+
 
 ---
-## newSchedulePipelineFinder()
 
+##### newSchedulePipelineFinder
+
+
+```javascript
+function newSchedulePipelineFinder() -> 'PipelineFinder'
+```
 
 This return a util to view schedule pipelines
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [PipelineFinder](./schedule/PipelineFinder)
-<br>
 
-{{% /notice %}}
+- `PipelineFinder`(./schedule/PipelineFinder) 
+
 
 ---
-## newScheduleRestRequestFinder()
 
+##### newScheduleRestRequestFinder
+
+
+```javascript
+function newScheduleRestRequestFinder() -> 'RestRequestFinder'
+```
 
 This return a util to view schedule rest requests
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [RestRequestFinder](./schedule/RestRequestFinder)
-<br>
 
-{{% /notice %}}
+- `RestRequestFinder`(./schedule/RestRequestFinder) 
+
 
 ---
-## newSelectBuilder()
 
+##### newSelectBuilder
+
+
+```javascript
+function newSelectBuilder() -> 'SelectBuilder'
+```
 
 This return a util to create your own select to make searching
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [SelectBuilder](./searching/SelectBuilder)
-<br>
 
-{{% /notice %}}
+- `SelectBuilder`(./searching/SelectBuilder) 
+
 
 ---
-## newSoftwareFinder()
 
+##### newSoftwareFinder
+
+
+```javascript
+function newSoftwareFinder() -> 'SoftwareFinder'
+```
 
 This return a util to find an organization software
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [SoftwareFinder](./organization_software/SoftwareFinder)
-<br>
 
-{{% /notice %}}
+- `SoftwareFinder`(./organization_software/SoftwareFinder) 
+
 
 ---
-## newSubscribersFinder()
 
+##### newSubscribersFinder
+
+
+```javascript
+function newSubscribersFinder() -> 'SubscribersFinder'
+```
 
 This return a util to find a Subscriber
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [SubscribersFinder](./entities/SubscribersFinder)
-<br>
 
-{{% /notice %}}
+- `SubscribersFinder`(./entities/SubscribersFinder) 
+
 
 ---
-## newSubscriptionsFinder()
 
+##### newSubscriptionsFinder
+
+
+```javascript
+function newSubscriptionsFinder() -> 'SubscriptionsFinder'
+```
 
 This return a util to find a Subscription
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [SubscriptionsFinder](./entities/SubscriptionsFinder)
-<br>
 
-{{% /notice %}}
+- `SubscriptionsFinder`(./entities/SubscriptionsFinder) 
+
 
 ---
-## newTicketFinder()
 
+##### newTicketFinder
+
+
+```javascript
+function newTicketFinder() -> 'TicketFinder'
+```
 
 This return a util to find a ticket
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [TicketFinder](./entities/TicketFinder)
-<br>
 
-{{% /notice %}}
+- `TicketFinder`(./entities/TicketFinder) 
+
 
 ---
-## newTimeserieFinder()
 
+##### newTimeserieFinder
+
+
+```javascript
+function newTimeserieFinder() -> 'TimeserieFinder'
+```
 
 This return a to find Timeserie configuration
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `TimeserieFinder`
-<br>
 
-{{% /notice %}}
+- _`TimeserieFinder`_ 
+
 
 ---
-## newTimeseriesFunctionFinder()
 
+##### newTimeseriesFunctionFinder
+
+
+```javascript
+function newTimeseriesFunctionFinder() -> 'TimeseriesFunctionsFinder'
+```
 
 This return a util to find a timeseries function
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `TimeseriesFunctionsFinder`
-<br>
 
-{{% /notice %}}
+- _`TimeseriesFunctionsFinder`_ 
+
 
 ---
-## newTimeseriesFunctionsHelper()
 
+##### newTimeseriesFunctionsHelper
+
+
+```javascript
+function newTimeseriesFunctionsHelper() -> 'TimeseriesFunctionsHelper'
+```
 
 This return a TimeseriesFunctionsHelper
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [TimeseriesFunctionsHelper](./timeseriesFunctionsCatalog/TimeseriesFunctionsHelper)
-<br>
 
-{{% /notice %}}
+- `TimeseriesFunctionsHelper`(./timeseriesFunctionsCatalog/TimeseriesFunctionsHelper) 
+
 
 ---
-## newUserFinder()
 
+##### newUserFinder
+
+
+```javascript
+function newUserFinder() -> 'UserFinder'
+```
 
 This return a util to find a user
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [UserFinder](./users/UserFinder)
-<br>
 
-{{% /notice %}}
+- `UserFinder`(./users/UserFinder) 
+
 
 ---
-## newWorkgroupFinder()
 
+##### newWorkgroupFinder
+
+
+```javascript
+function newWorkgroupFinder() -> 'WorkgroupFinder'
+```
 
 This return a util to find a workgroup
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [WorkgroupFinder](./workgroups/WorkgroupFinder)
-<br>
 
-{{% /notice %}}
+- `WorkgroupFinder`(./workgroups/WorkgroupFinder) 
+
 
 ---
-## newWorkgroupRelationsFinder()
 
+##### newWorkgroupRelationsFinder
+
+
+```javascript
+function newWorkgroupRelationsFinder() -> 'WorkgroupRelationsFinder'
+```
 
 This return a WorkgroupRelationsFinder 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [WorkgroupRelationsFinder](./workgroups/WorkgroupRelationsFinder)
-<br>
 
-{{% /notice %}}
+- `WorkgroupRelationsFinder`(./workgroups/WorkgroupRelationsFinder) 
+
 
 ---
-## notebookLauncherBuilder()
 
+##### notebookLauncherBuilder
+
+
+```javascript
+function notebookLauncherBuilder() -> 'NotebookLauncherBuilder'
+```
 
 This return a NotebookLauncherBuilder to build a specific NotebookLauncherBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `NotebookLauncherBuilder`
-<br>
 
-{{% /notice %}}
+- _`NotebookLauncherBuilder`_ 
+
 
 ---
-## notebookSchedulerBuilder()
 
+##### notebookSchedulerBuilder
+
+
+```javascript
+function notebookSchedulerBuilder() -> 'NotebookSchedulerBuilder'
+```
 
 This return a NotebookSchedulerBuilder to build a specific NotebookSchedulerBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `NotebookSchedulerBuilder`
-<br>
 
-{{% /notice %}}
+- _`NotebookSchedulerBuilder`_ 
+
 
 ---
-## operationalStatusSearchBuilder()
 
+##### operationalStatusSearchBuilder
+
+
+```javascript
+function operationalStatusSearchBuilder() -> 'OperationalStatusSearchBuilder'
+```
 
 This return a OperationalStatusSearchBuilder to build a specific OperationalStatusSearchBuilder
 
 
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** [OperationalStatusSearchBuilder](./searching/builder/OperationalStatusSearchBuilder)
-<br>
-
-{{% /notice %}}
-
----
-## operations
+**Returns**:
 
 
-
+- `OperationalStatusSearchBuilder`(./searching/builder/OperationalStatusSearchBuilder) 
 
 
 ---
-## operationsSearchBuilder()
 
+##### operations
+
+
+```javascript
+function operations()
+```
+
+
+
+
+---
+
+##### operationsSearchBuilder
+
+
+```javascript
+function operationsSearchBuilder() -> 'OperationsSearchBuilder'
+```
 
 This return a OperationsSearchBuilder to build a specific ExecutionssSearch
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [OperationsSearchBuilder](./searching/builder/OperationsSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `OperationsSearchBuilder`(./searching/builder/OperationsSearchBuilder) 
+
 
 ---
-## operationTypeBuilder(organization, name, operationTypeObj)
 
+##### operationTypeBuilder
+
+
+```javascript
+function operationTypeBuilder(organization: *,name: *,operationTypeObj: *) -> 'OperationType'
+```
 
 This return a util to update an Operation Type
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `*` | ❌ |  |
-| **name** | `*` | ❌ |  |
-| **operationTypeObj** | `*` | ❌ |  |
+- `organization` _*_  
+- `name` _*_  
+- `operationTypeObj` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [OperationType](./operationTypes/OperationType)
-<br>
 
-{{% /notice %}}
+- `OperationType`(./operationTypes/OperationType) 
+
 
 ---
-## operationTypesSearchBuilder()
 
+##### operationTypesSearchBuilder
+
+
+```javascript
+function operationTypesSearchBuilder() -> 'OperationTypesSearchBuilder'
+```
 
 This return a OperationTypesSearchBuilder to build a specific OperationTypesSearch
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `OperationTypesSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`OperationTypesSearchBuilder`_ 
+
 
 ---
-## organizationManufacturerModelsBuilder(organization, manufacturerIdentifier)
 
+##### organizationManufacturerModelsBuilder
+
+
+```javascript
+function organizationManufacturerModelsBuilder(organization: *,manufacturerIdentifier: *) -> 'OrganizationManufacturerModelsBuilder'
+```
 
 This return a OrganizationManufacturerModelsBuilder to build a specific OrganizationManufacturerModelsBuilder
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `*` | ❌ |  |
-| **manufacturerIdentifier** | `*` | ❌ |  |
+- `organization` _*_  
+- `manufacturerIdentifier` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `OrganizationManufacturerModelsBuilder`
-<br>
 
-{{% /notice %}}
+- _`OrganizationManufacturerModelsBuilder`_ 
+
 
 ---
-## organizationManufacturersBuilder(organization)
 
+##### organizationManufacturersBuilder
+
+
+```javascript
+function organizationManufacturersBuilder(organization: *) -> 'OrganizationManufacturersBuilder'
+```
 
 This return a OrganizationManufacturersBuilder to build a specific OrganizationManufacturersBuilder
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `*` | ❌ |  |
+- `organization` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `OrganizationManufacturersBuilder`
-<br>
 
-{{% /notice %}}
+- _`OrganizationManufacturersBuilder`_ 
+
 
 ---
-## organizationsBuilder()
 
+##### organizationsBuilder
+
+
+```javascript
+function organizationsBuilder() -> 'Organizations'
+```
 
 This return a OrganizationsBuilder to build a specific OrganizationsBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [Organizations](./organizations/Organizations)
-<br>
 
-{{% /notice %}}
+- `Organizations`(./organizations/Organizations) 
+
 
 ---
-## plansSearchBuilder()
 
+##### plansSearchBuilder
+
+
+```javascript
+function plansSearchBuilder() -> 'PlansSearchBuilder'
+```
 
 This return a PlansSearchBuilder to build a specific PlansSearchBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [PlansSearchBuilder](./searching/builder/PlansSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `PlansSearchBuilder`(./searching/builder/PlansSearchBuilder) 
+
 
 ---
-## powerSupplyMessageBuilder()
+
+##### powerSupplyMessageBuilder
+
+
+```javascript
+function powerSupplyMessageBuilder() -> 'PowerSupply'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** [PowerSupply](./collection/devices/collect/PowerSupply)
-<br>
+- `PowerSupply`(./collection/devices/collect/PowerSupply) 
 
-{{% /notice %}}
 
 ---
-## provisionProcessorsBuilder()
 
+##### provisionProcessorsBuilder
+
+
+```javascript
+function provisionProcessorsBuilder() -> 'provisionProcessorsBuilder'
+```
 
 This return a ProvisionsProcesorsBuilder to build a specific ProvisionsProcesorsBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `provisionProcessorsBuilder`
-<br>
 
-{{% /notice %}}
+- _`provisionProcessorsBuilder`_ 
+
 
 ---
-## qratingsBuilder()
 
+##### qratingsBuilder
+
+
+```javascript
+function qratingsBuilder() -> 'QratingsBuilder'
+```
 
 This return a Qrating to build a specific Qrating
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `QratingsBuilder`
-<br>
 
-{{% /notice %}}
+- _`QratingsBuilder`_ 
+
 
 ---
-## rawSearchBuilder()
 
+##### rawSearchBuilder
+
+
+```javascript
+function rawSearchBuilder() -> 'RawSearchBuilder'
+```
 
 Create custom search with custom url and raw filter
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [RawSearchBuilder](./searching/builder/RawSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `RawSearchBuilder`(./searching/builder/RawSearchBuilder) 
+
 
 ---
-## resourceTypeSearchBuilder()
 
+##### resourceTypeSearchBuilder
+
+
+```javascript
+function resourceTypeSearchBuilder() -> 'ResourceTypeSearchBuilder'
+```
 
 This return a ResourceTypeSearchBuilder to build a specific ResourceTypeSearchBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [ResourceTypeSearchBuilder](./searching/builder/ResourceTypeSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `ResourceTypeSearchBuilder`(./searching/builder/ResourceTypeSearchBuilder) 
+
 
 ---
-## ruleConfigurationBuilder(organization, channel, name, ruleConfigObj)
 
+##### ruleConfigurationBuilder
+
+
+```javascript
+function ruleConfigurationBuilder(organization: *,channel: *,name: *,ruleConfigObj: *) -> 'RuleConfigurations'
+```
 
 This return a util to update a Rule Configuration
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `*` | ❌ |  |
-| **channel** | `*` | ❌ |  |
-| **name** | `*` | ❌ |  |
-| **ruleConfigObj** | `*` | ❌ |  |
+- `organization` _*_  
+- `channel` _*_  
+- `name` _*_  
+- `ruleConfigObj` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [RuleConfigurations](./rulesConfiguration/RuleConfigurations)
-<br>
 
-{{% /notice %}}
+- `RuleConfigurations`(./rulesConfiguration/RuleConfigurations) 
+
 
 ---
-## rulesSearchBuilder()
 
+##### rulesSearchBuilder
+
+
+```javascript
+function rulesSearchBuilder() -> 'RulesSearchBuilder'
+```
 
 This return a RulesSearchBuilder to build a specific RulesSearch
 
 
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** [RulesSearchBuilder](./searching/builder/RulesSearchBuilder)
-<br>
-
-{{% /notice %}}
-
----
-## Sapi
+**Returns**:
 
 
-
+- `RulesSearchBuilder`(./searching/builder/RulesSearchBuilder) 
 
 
 ---
-## scheduleImageExecutionBuilder()
 
+##### Sapi
+
+
+```javascript
+function Sapi()
+```
+
+
+
+
+---
+
+##### scheduleImageExecutionBuilder
+
+
+```javascript
+function scheduleImageExecutionBuilder() -> 'ImageExecution'
+```
 
 This return a util to build schedule image executions
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [ImageExecution](./schedule/ImageExecution)
-<br>
 
-{{% /notice %}}
+- `ImageExecution`(./schedule/ImageExecution) 
+
 
 ---
-## schedulePipelineBuilder()
 
+##### schedulePipelineBuilder
+
+
+```javascript
+function schedulePipelineBuilder() -> 'SchedulePipeline'
+```
 
 This return a util to build a pipeline
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `SchedulePipeline`
-<br>
 
-{{% /notice %}}
+- _`SchedulePipeline`_ 
+
 
 ---
-## scheduleRestRequestBuilder()
 
+##### scheduleRestRequestBuilder
+
+
+```javascript
+function scheduleRestRequestBuilder() -> 'RestRequest'
+```
 
 This return a util to build schedule rest requests
 
 
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** [RestRequest](./schedule/RestRequest)
-<br>
-
-{{% /notice %}}
-
----
-## SE
+**Returns**:
 
 
-
+- `RestRequest`(./schedule/RestRequest) 
 
 
 ---
-## serviceGroupSearchBuilder()
 
+##### SE
+
+
+```javascript
+function SE()
+```
+
+
+
+
+---
+
+##### serviceGroupSearchBuilder
+
+
+```javascript
+function serviceGroupSearchBuilder() -> 'ServiceGroupSearchBuilder'
+```
 
 This return a ServiceGroupSearchBuilder to build a specific ServiceGroupSearchBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [ServiceGroupSearchBuilder](./searching/builder/ServiceGroupSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `ServiceGroupSearchBuilder`(./searching/builder/ServiceGroupSearchBuilder) 
+
 
 ---
-## softwareMessageBuilder()
+
+##### softwareMessageBuilder
+
+
+```javascript
+function softwareMessageBuilder() -> 'Software'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** [Software](./collection/devices/collect/Software)
-<br>
+- `Software`(./collection/devices/collect/Software) 
 
-{{% /notice %}}
 
 ---
-## softwaresBuilder(organization)
 
+##### softwaresBuilder
+
+
+```javascript
+function softwaresBuilder(organization: *) -> 'SoftwaresBuilder'
+```
 
 This return a SoftwaresBuilder to build a specific SoftwaresBuilder
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `*` | ❌ |  |
+- `organization` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `SoftwaresBuilder`
-<br>
 
-{{% /notice %}}
+- _`SoftwaresBuilder`_ 
+
 
 ---
-## softwaresSearchBuilder()
 
+##### softwaresSearchBuilder
+
+
+```javascript
+function softwaresSearchBuilder() -> 'SoftwaresSearchBuilder'
+```
 
 This return a SoftwaresSearchBuilder to build a specific SoftwaresSearchBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [SoftwaresSearchBuilder](./searching/builder/SoftwaresSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `SoftwaresSearchBuilder`(./searching/builder/SoftwaresSearchBuilder) 
+
 
 ---
-## storageMessageBuilder()
+
+##### storageMessageBuilder
+
+
+```javascript
+function storageMessageBuilder() -> 'Storage'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** [Storage](./collection/devices/collect/Storage)
-<br>
+- `Storage`(./collection/devices/collect/Storage) 
 
-{{% /notice %}}
 
 ---
-## subscriberMessageBuilder()
+
+##### subscriberMessageBuilder
+
+
+```javascript
+function subscriberMessageBuilder() -> 'SubscriberMessage'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `SubscriberMessage`
-<br>
+- _`SubscriberMessage`_ 
 
-{{% /notice %}}
 
 ---
-## subscribersSearchBuilder()
 
+##### subscribersSearchBuilder
+
+
+```javascript
+function subscribersSearchBuilder() -> 'SubscribersSearchBuilder'
+```
 
 This return a SubscribersSearchBuilder to build a specific DeviceSearch
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [SubscribersSearchBuilder](./searching/builder/SubscribersSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `SubscribersSearchBuilder`(./searching/builder/SubscribersSearchBuilder) 
+
 
 ---
-## subscriptionMessageBuilder()
+
+##### subscriptionMessageBuilder
+
+
+```javascript
+function subscriptionMessageBuilder() -> 'SubscriptionMessage'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `SubscriptionMessage`
-<br>
+- _`SubscriptionMessage`_ 
 
-{{% /notice %}}
 
 ---
-## subscriptionsSearchBuilder()
 
+##### subscriptionsSearchBuilder
+
+
+```javascript
+function subscriptionsSearchBuilder() -> 'SubscriptionsSearchBuilder'
+```
 
 This return a SubscriptionsSearchBuilder to build a specific DeviceSearch
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [SubscriptionsSearchBuilder](./searching/builder/SubscriptionsSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `SubscriptionsSearchBuilder`(./searching/builder/SubscriptionsSearchBuilder) 
+
 
 ---
-## tasksSearchBuilder()
 
+##### tasksSearchBuilder
+
+
+```javascript
+function tasksSearchBuilder() -> 'TasksSearchBuilder'
+```
 
 This return a TasksSearchBuilder to build a specific TasksSearch
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [TasksSearchBuilder](./searching/builder/TasksSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `TasksSearchBuilder`(./searching/builder/TasksSearchBuilder) 
+
 
 ---
-## ticketPrioritySearchBuilder()
 
+##### ticketPrioritySearchBuilder
+
+
+```javascript
+function ticketPrioritySearchBuilder() -> 'TicketPrioritySearchBuilder'
+```
 
 This return a TicketPrioritySearchBuilder to build a specific TicketPrioritySearchBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [TicketPrioritySearchBuilder](./searching/builder/TicketPrioritySearchBuilder)
-<br>
 
-{{% /notice %}}
+- `TicketPrioritySearchBuilder`(./searching/builder/TicketPrioritySearchBuilder) 
+
 
 ---
-## ticketSeveritySearchBuilder()
 
+##### ticketSeveritySearchBuilder
+
+
+```javascript
+function ticketSeveritySearchBuilder() -> 'TicketSeveritySearchBuilder'
+```
 
 This return a TicketSeveritySearchBuilder to build a specific TicketSeveritySearchBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [TicketSeveritySearchBuilder](./searching/builder/TicketSeveritySearchBuilder)
-<br>
 
-{{% /notice %}}
+- `TicketSeveritySearchBuilder`(./searching/builder/TicketSeveritySearchBuilder) 
+
 
 ---
-## ticketsSearchBuilder()
 
+##### ticketsSearchBuilder
+
+
+```javascript
+function ticketsSearchBuilder() -> '*'
+```
 
 This return a TicketsSearchBuilder to build a specific TicketSearch
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
 
-{{% /notice %}}
+- _`*`_ 
+
 
 ---
-## ticketStatusSearchBuilder()
 
+##### ticketStatusSearchBuilder
+
+
+```javascript
+function ticketStatusSearchBuilder() -> 'TicketStatusSearchBuilder'
+```
 
 This return a TicketStatusSearchBuilder to build a specific TicketStatusSearchBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [TicketStatusSearchBuilder](./searching/builder/TicketStatusSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `TicketStatusSearchBuilder`(./searching/builder/TicketStatusSearchBuilder) 
+
 
 ---
-## timeserieDatasetBuilder(organization, timeserie)
 
+##### timeserieDatasetBuilder
+
+
+```javascript
+function timeserieDatasetBuilder(organization: *,timeserie: *) -> 'TimeserieDatasetBuilder'
+```
 
 This return a TimeserieDatasetBuilder to build a specific TimeserieDataset
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `*` | ❌ |  |
-| **timeserie** | `*` | ❌ |  |
+- `organization` _*_  
+- `timeserie` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [TimeserieDatasetBuilder](./searching/builder/TimeserieDatasetBuilder)
-<br>
 
-{{% /notice %}}
+- `TimeserieDatasetBuilder`(./searching/builder/TimeserieDatasetBuilder) 
+
 
 ---
-## timeserieDownsamplerBuilder(organization, timeserie, entityId)
 
+##### timeserieDownsamplerBuilder
+
+
+```javascript
+function timeserieDownsamplerBuilder(organization: *,timeserie: *,entityId: *) -> 'TimeserieDownsamplerBuilder'
+```
 
 This return a TimeserieDownsamplerBuilder to build a specific TimeserieDownsampler
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `*` | ❌ |  |
-| **timeserie** | `*` | ❌ |  |
-| **entityId** | `*` | ❌ |  |
+- `organization` _*_  
+- `timeserie` _*_  
+- `entityId` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [TimeserieDownsamplerBuilder](./searching/builder/TimeserieDownsamplerBuilder)
-<br>
 
-{{% /notice %}}
+- `TimeserieDownsamplerBuilder`(./searching/builder/TimeserieDownsamplerBuilder) 
+
 
 ---
-## timeseriesBuilder()
 
+##### timeseriesBuilder
+
+
+```javascript
+function timeseriesBuilder() -> 'Timeseries'
+```
 
 This return a TimeserieBuilder to build a specific timeserie
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [Timeseries](./timeseries/Timeseries)
-<br>
 
-{{% /notice %}}
+- `Timeseries`(./timeseries/Timeseries) 
+
 
 ---
-## timeserieSearchBuilder(organization, timeserie)
 
+##### timeserieSearchBuilder
+
+
+```javascript
+function timeserieSearchBuilder(organization: *,timeserie: *) -> 'TimeserieSearchBuilder'
+```
 
 This return a TimeserieSearchBuilder to build a specific TimeserieSearch
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `*` | ❌ |  |
-| **timeserie** | `*` | ❌ |  |
+- `organization` _*_  
+- `timeserie` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [TimeserieSearchBuilder](./searching/builder/TimeserieSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `TimeserieSearchBuilder`(./searching/builder/TimeserieSearchBuilder) 
+
 
 ---
-## timeseriesFunctionBuilder(organization, identifier)
 
+##### timeseriesFunctionBuilder
+
+
+```javascript
+function timeseriesFunctionBuilder(organization: *,identifier: *) -> 'TimeseriesFunction'
+```
 
 This return a TimeserieBuilder to build a specific timeserie
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `*` | ❌ |  |
-| **identifier** | `*` | ❌ |  |
+- `organization` _*_  
+- `identifier` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [TimeseriesFunction](./timeseriesFunctionsCatalog/TimeseriesFunction)
-<br>
 
-{{% /notice %}}
+- `TimeseriesFunction`(./timeseriesFunctionsCatalog/TimeseriesFunction) 
+
 
 ---
-## timezoneSearchBuilder()
 
+##### timezoneSearchBuilder
+
+
+```javascript
+function timezoneSearchBuilder() -> 'TimezoneSearchBuilder'
+```
 
 This return a TimezoneSearchBuilder to build a specific TimezoneSearchBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [TimezoneSearchBuilder](./searching/builder/TimezoneSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `TimezoneSearchBuilder`(./searching/builder/TimezoneSearchBuilder) 
+
 
 ---
-## usageMessageBuilder()
+
+##### usageMessageBuilder
+
+
+```javascript
+function usageMessageBuilder() -> 'Usage'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** [Usage](./collection/devices/collect/Usage)
-<br>
+- `Usage`(./collection/devices/collect/Usage) 
 
-{{% /notice %}}
 
 ---
-## userLanguagesSearchBuilder()
 
+##### userLanguagesSearchBuilder
+
+
+```javascript
+function userLanguagesSearchBuilder() -> 'UserLanguagesSearchBuilder'
+```
 
 This return a UserLanguagesSearchBuilder to build a specific UserLanguagesSearchBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [UserLanguagesSearchBuilder](./searching/builder/UserLanguagesSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `UserLanguagesSearchBuilder`(./searching/builder/UserLanguagesSearchBuilder) 
+
 
 ---
-## userProfilesSearchBuilder()
 
+##### userProfilesSearchBuilder
+
+
+```javascript
+function userProfilesSearchBuilder() -> 'UserProfilesSearchBuilder'
+```
 
 This return a UserProfilesSearchBuilder to build a specific UserProfilesSearchBuilder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [UserProfilesSearchBuilder](./searching/builder/UserProfilesSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `UserProfilesSearchBuilder`(./searching/builder/UserProfilesSearchBuilder) 
+
 
 ---
-## usersBuilder()
 
+##### usersBuilder
+
+
+```javascript
+function usersBuilder() -> 'User'
+```
 
 This return a util to create a user
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [User](./users/Users)
-<br>
 
-{{% /notice %}}
+- `User`(./users/Users) 
+
 
 ---
-## usersSearchBuilder()
 
+##### usersSearchBuilder
+
+
+```javascript
+function usersSearchBuilder() -> 'UsersSearchBuilder'
+```
 
 This return a UsersSearchBuilder to build a specific UsersSearch
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [UsersSearchBuilder](./searching/builder/UsersSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `UsersSearchBuilder`(./searching/builder/UsersSearchBuilder) 
+
 
 ---
-## workgroupRelationsBuilder()
 
+##### workgroupRelationsBuilder
+
+
+```javascript
+function workgroupRelationsBuilder() -> 'WorkgroupRelations'
+```
 
 This return a WorkgroupRelationsBuilder to build a specific workgroup relation
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [WorkgroupRelations](./workgroups/WorkgroupRelations)
-<br>
 
-{{% /notice %}}
+- `WorkgroupRelations`(./workgroups/WorkgroupRelations) 
+
 
 ---
-## workgroupsBuilder()
 
+##### workgroupsBuilder
+
+
+```javascript
+function workgroupsBuilder() -> 'Workgroups'
+```
 
 This return a WorkgroupsBuilder to build a specific workgroup
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [Workgroups](./workgroups/Workgroups)
-<br>
 
-{{% /notice %}}
+- `Workgroups`(./workgroups/Workgroups) 
+
 
 ---
-## workgroupsSearchBuilder()
 
+##### workgroupsSearchBuilder
+
+
+```javascript
+function workgroupsSearchBuilder() -> 'WorkgroupsSearchBuilder'
+```
 
 This return a WorkgroupsSearchBuilder to build a specific WorkgroupsSearch
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** [WorkgroupsSearchBuilder](./searching/builder/WorkgroupsSearchBuilder)
-<br>
 
-{{% /notice %}}
+- `WorkgroupsSearchBuilder`(./searching/builder/WorkgroupsSearchBuilder) 
+
 
 ---
 

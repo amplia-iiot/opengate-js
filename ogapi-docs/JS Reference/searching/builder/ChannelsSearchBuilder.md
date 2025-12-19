@@ -3,62 +3,77 @@ title = "Channels Search Builder"
 weight = 10
 +++
 
-**Class:** `ChannelsSearchBuilder`
+ChannelsSearchBuilder
+
+### ChannelsSearchBuilder Objects
+
+```javascript
+class ChannelsSearchBuilder()
+```
 
 Defined a search over Channels	
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## disableDefaultSorted()
 
+##### disableDefaultSorted
+
+
+```javascript
+function disableDefaultSorted() -> 'ChannelsSearchBuilder'
+```
 
 The response will return a response without sorted
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ChannelsSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`ChannelsSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.channelsSearchBuilder().disableDefaultSorted() 
-```
+~~~
 
 ---
-## summary()
 
+##### summary
+
+
+```javascript
+function summary() -> 'SearchWithSummaryBuilder'
+```
 
 The response will only have a summary information 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `SearchWithSummaryBuilder`
-<br>
 
-{{% /notice %}}
+- _`SearchWithSummaryBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.channelsSearchBuilder().summary() 
-```
+~~~
 
 ---
 

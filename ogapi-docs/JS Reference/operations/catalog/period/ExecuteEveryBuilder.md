@@ -3,69 +3,92 @@ title = "Execute Every Builder"
 weight = 10
 +++
 
-**Class:** `ExecuteEveryBuilder`
+ExecuteEveryBuilder
+
+### ExecuteEveryBuilder Objects
+
+```javascript
+class ExecuteEveryBuilder()
+```
 
 Defines the builder to configure a period of operation. By this builder you can select period by day, week, month, year.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `BaseOperationBuilder` | ❌ | this is a operationBaseBuilder. |
-| **date** | `Date` | ❌ | Date when operation will be executed |
-| **periodicityName** | `string` | ❌ | Name associated to periodicity |
+- `parent` _BaseOperationBuilder_  - this is a operationBaseBuilder.
+- `date` _Date_  - Date when operation will be executed
+- `periodicityName` _string_  - Name associated to periodicity
 
 
 ---
-## day()
 
+##### day
+
+
+```javascript
+function day() -> 'BaseOperationBuilder'
+```
 
 Every day at time defined will be the pattern
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BaseOperationBuilder`
-<br>
 
-{{% /notice %}}
+- _`BaseOperationBuilder`_ 
+
 
 ---
-## month(months)
 
+##### month
+
+
+```javascript
+function month(months: array) -> 'ByMonth'
+```
 
 Each month at time and day defined will be the pattern
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **months** | `array` | ❌ | months on will be execute the operation |
+- `months` _array_  - months on will be execute the operation
 
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `ByMonth`
-<br>
-
-{{% /notice %}}
-
----
-## week
+**Returns**:
 
 
-
+- _`ByMonth`_ 
 
 
 ---
-## year
 
+##### week
+
+
+```javascript
+function week()
+```
+
+
+
+
+---
+
+##### year
+
+
+```javascript
+function year()
+```
 
 
 

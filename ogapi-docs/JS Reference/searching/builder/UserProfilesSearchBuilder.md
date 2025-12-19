@@ -3,74 +3,92 @@ title = "User Profiles Search Builder"
 weight = 10
 +++
 
-**Class:** `UserProfilesSearchBuilder`
+UserProfilesSearchBuilder
+
+### UserProfilesSearchBuilder Objects
+
+```javascript
+class UserProfilesSearchBuilder()
+```
 
 Defined a search over operational status catalogs    
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## build()
 
+##### build
+
+
+```javascript
+function build() -> 'StaticSearch'
+```
 
 Build a instance of StaticSearch 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `StaticSearch`
-<br>
 
-{{% /notice %}}
+- _`StaticSearch`_ 
 
-### Ejemplos
+
+**Example**:
+
+~~~javascript
+  ogapi.userProfileSearchBuilder().filter({and:[]}).build()
+~~~
+
+---
+
+##### customFilters
+
 
 ```javascript
-  ogapi.userProfileSearchBuilder().filter({and:[]}).build()
+function customFilters()
 ```
 
----
-## customFilters
-
-
 
 
 
 ---
-## withId(userProfileId)
 
+##### withId
+
+
+```javascript
+function withId(userProfileId: string) -> 'userProfileSearchBuilder'
+```
 
 Sets id to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **userProfileId** | `string` | ❌ | user profile id |
+- `userProfileId` _string_  - user profile id
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `userProfileSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`userProfileSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.userProfileSearchBuilder().withId('myId').build()
-```
+~~~
 
 ---
 

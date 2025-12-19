@@ -3,169 +3,190 @@ title = "Power Supply"
 weight = 10
 +++
 
-**Class:** `PowerSupply`
+PowerSupply
+
+### PowerSupply Objects
+
+```javascript
+class PowerSupply()
+```
 
 This is a base object that allows the user to create a Datapoint.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 
 
 
 ---
-## composeElement()
+
+##### composeElement
+
+
+```javascript
+function composeElement() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## withBatteryChargeLevelPercentage(percentage)
 
+##### withBatteryChargeLevelPercentage
+
+
+```javascript
+function withBatteryChargeLevelPercentage(percentage: string) -> 'PowerSupply'
+```
 
 Set the BatteryChargeLevel percentage attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **percentage** | `string` | ❌ | optionals field |
+- `percentage` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `PowerSupply`
-<br>
 
-{{% /notice %}}
+- _`PowerSupply`_ 
+
 
 ---
-## withBatteryChargeLevelStatus(status)
 
+##### withBatteryChargeLevelStatus
+
+
+```javascript
+function withBatteryChargeLevelStatus(status: string) -> 'PowerSupply'
+```
 
 Set the battery status attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **status** | `string` | ❌ | optionals field |
+- `status` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `PowerSupply`
-<br>
 
-{{% /notice %}}
+- _`PowerSupply`_ 
+
 
 ---
-## withBatteryChargeLevelTrend(trend)
 
+##### withBatteryChargeLevelTrend
+
+
+```javascript
+function withBatteryChargeLevelTrend(trend: string) -> 'PowerSupply'
+```
 
 Set the trend attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **trend** | `string` | ❌ | optionals field |
+- `trend` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `PowerSupply`
-<br>
 
-{{% /notice %}}
+- _`PowerSupply`_ 
+
 
 ---
-## withOutageDate(outageDate)
 
+##### withOutageDate
+
+
+```javascript
+function withOutageDate(outageDate: string) -> 'PowerSupply'
+```
 
 Set the OutageDate attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **outageDate** | `string` | ❌ | optionals field |
+- `outageDate` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `PowerSupply`
-<br>
 
-{{% /notice %}}
+- _`PowerSupply`_ 
+
 
 ---
-## withOutageDuration(duration)
 
+##### withOutageDuration
+
+
+```javascript
+function withOutageDuration(duration: number) -> 'PowerSupply'
+```
 
 Set the duration attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **duration** | `number` | ❌ | optionals field |
+- `duration` _number_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `PowerSupply`
-<br>
 
-{{% /notice %}}
+- _`PowerSupply`_ 
+
 
 ---
-## withSource(source)
 
+##### withSource
+
+
+```javascript
+function withSource(source: string) -> 'PowerSupply'
+```
 
 Set the source attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **source** | `string` | ❌ | optionals field |
+- `source` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `PowerSupply`
-<br>
 
-{{% /notice %}}
+- _`PowerSupply`_ 
+
 
 ---
-## withStatus(status)
 
+##### withStatus
+
+
+```javascript
+function withStatus(status: string) -> 'PowerSupply'
+```
 
 Set the status attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **status** | `string` | ❌ | optionals field |
+- `status` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `PowerSupply`
-<br>
 
-{{% /notice %}}
+- _`PowerSupply`_ 
+
 
 ---
 

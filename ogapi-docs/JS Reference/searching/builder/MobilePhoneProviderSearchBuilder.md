@@ -3,19 +3,28 @@ title = "Mobile Phone Provider Search Builder"
 weight = 10
 +++
 
-**Class:** `MobilePhoneProviderSearchBuilder`
+MobilePhoneProviderSearchBuilder
+
+### MobilePhoneProviderSearchBuilder Objects
+
+```javascript
+class MobilePhoneProviderSearchBuilder()
+```
 
 Defined a search over mobile phone provider catalog
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---

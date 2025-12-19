@@ -3,74 +3,92 @@ title = "Service Group Search Builder"
 weight = 10
 +++
 
-**Class:** `ServiceGroupSearchBuilder`
+ServiceGroupSearchBuilder
+
+### ServiceGroupSearchBuilder Objects
+
+```javascript
+class ServiceGroupSearchBuilder()
+```
 
 Defined a search over service group catalogs    
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## build()
 
+##### build
+
+
+```javascript
+function build() -> 'StaticSearch'
+```
 
 Build a instance of StaticSearch 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `StaticSearch`
-<br>
 
-{{% /notice %}}
+- _`StaticSearch`_ 
 
-### Ejemplos
+
+**Example**:
+
+~~~javascript
+  ogapi.serviceGroupSearchBuilder().filter({and:[]}).build()
+~~~
+
+---
+
+##### customFilters
+
 
 ```javascript
-  ogapi.serviceGroupSearchBuilder().filter({and:[]}).build()
+function customFilters()
 ```
 
----
-## customFilters
-
-
 
 
 
 ---
-## withEntityType(entityType)
 
+##### withEntityType
+
+
+```javascript
+function withEntityType(entityType: string) -> 'ServiceGroupSearchBuilder'
+```
 
 Set entityType to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **entityType** | `string` | ❌ | entity type |
+- `entityType` _string_  - entity type
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ServiceGroupSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`ServiceGroupSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.serviceGroupSearchBuilder().withEntityType('myEntityType').build()
-```
+~~~
 
 ---
 

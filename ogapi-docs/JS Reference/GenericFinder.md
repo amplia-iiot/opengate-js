@@ -3,24 +3,33 @@ title = "Generic Finder"
 weight = 10
 +++
 
-**Class:** `GenericFinder`
+GenericFinder
+
+### GenericFinder Objects
+
+```javascript
+class GenericFinder()
+```
 
   This class allow make get request to user resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | Reference to the API object. |
-| **source** | `string` | ❌ | Relative url where is located the resource. |
-| **reponseJsonData** | `string` | ❌ | Relative url where is located the resource. Can be null |
-| **error_not_found** | `string` | ❌ | String error which will be thrown on not_found error. |
-| **serviceBaseURL** | `string` | ❌ | base of the uri petition |
+- `ogapi` _InternalOpenGateAPI_  - Reference to the API object.
+- `source` _string_  - Relative url where is located the resource.
+- `reponseJsonData` _string_  - Relative url where is located the resource. Can be null
+- `error_not_found` _string_  - String error which will be thrown on not_found error.
+- `serviceBaseURL` _string_  - base of the uri petition
 
 
 ---

@@ -3,165 +3,197 @@ title = "Timeserie Downsampler Builder"
 weight = 10
 +++
 
-**Class:** `TimeserieDownsamplerBuilder`
+TimeserieDownsamplerBuilder
+
+### TimeserieDownsamplerBuilder Objects
+
+```javascript
+class TimeserieDownsamplerBuilder()
+```
 
 Defined a search over timeseries	
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## addColumn(name, interpolation, aggregation, alias)
 
+##### addColumn
+
+
+```javascript
+function addColumn(name: string,interpolation: string,aggregation: string,alias: string) -> 'TimeserieDownsamplerBuilder'
+```
 
 Add column that will be requested
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ |  |
-| **interpolation** | `string` | ❌ |  |
-| **aggregation** | `string` | ❌ |  |
-| **alias** | `string` | ❌ |  |
+- `name` _string_  
+- `interpolation` _string_  
+- `aggregation` _string_  
+- `alias` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `TimeserieDownsamplerBuilder`
-<br>
 
-{{% /notice %}}
+- _`TimeserieDownsamplerBuilder`_ 
+
 
 ---
-## bucketTime(bucketTime)
 
+##### bucketTime
+
+
+```javascript
+function bucketTime(bucketTime: number) -> 'TimeserieDownsamplerBuilder'
+```
 
 The bucket for the downsampling (must be higher than the time series bucket)
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **bucketTime** | `number` | ❌ |  |
+- `bucketTime` _number_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `TimeserieDownsamplerBuilder`
-<br>
 
-{{% /notice %}}
+- _`TimeserieDownsamplerBuilder`_ 
+
 
 ---
-## build()
 
+##### build
+
+
+```javascript
+function build() -> 'Search'
+```
 
 Build a instance of Search 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Search`
-<br>
 
-{{% /notice %}}
+- _`Search`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.timeserieDownsamplerBuilder(organization, timeserieId).build()
-```
+~~~
 
 ---
-## columns(columns)
 
+##### columns
+
+
+```javascript
+function columns(columns: array) -> 'TimeserieDownsamplerBuilder'
+```
 
 Add columns that will be requested
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **columns** | `array` | ❌ |  |
+- `columns` _array_  
 
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `TimeserieDownsamplerBuilder`
-<br>
-
-{{% /notice %}}
-
----
-## filter()
+**Returns**:
 
 
-
+- _`TimeserieDownsamplerBuilder`_ 
 
 
 ---
-## findFields()
 
+##### filter
+
+
+```javascript
+function filter()
+```
 
 
 
 
 ---
-## select(select)
 
+##### findFields
+
+
+```javascript
+function findFields()
+```
+
+
+
+
+---
+
+##### select
+
+
+```javascript
+function select(select: object) -> 'TimeserieDownsamplerBuilder'
+```
 
 The search request will have this select 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **select** | `object` | ❌ |  |
+- `select` _object_  
 
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `TimeserieDownsamplerBuilder`
-<br>
-
-{{% /notice %}}
-
----
-## sort()
+**Returns**:
 
 
-
+- _`TimeserieDownsamplerBuilder`_ 
 
 
 ---
-## start(start)
 
+##### sort
+
+
+```javascript
+function sort()
+```
+
+
+
+
+---
+
+##### start
+
+
+```javascript
+function start(start: string) -> 'TimeserieDownsamplerBuilder'
+```
 
 The start time for the downsampling
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **start** | `string` | ❌ |  |
+- `start` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `TimeserieDownsamplerBuilder`
-<br>
 
-{{% /notice %}}
+- _`TimeserieDownsamplerBuilder`_ 
+
 
 ---
 

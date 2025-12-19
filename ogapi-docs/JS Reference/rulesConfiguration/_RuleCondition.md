@@ -3,100 +3,115 @@ title = "_Rule Condition"
 weight = 10
 +++
 
-**Class:** `_RuleCondition`
+_RuleCondition
+
+### _RuleCondition Objects
+
+```javascript
+class _RuleCondition()
+```
 
 Defines the builder to configure a _RuleCondition
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function  -> '_RuleCondition'
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `RuleConfigurations` | ❌ | RuleConfiguration object |
-| **conditionData** | `Object` | ❌ | condition data to manage |
+- `parent` _RuleConfigurations_  - RuleConfiguration object
+- `conditionData` _Object_  - condition data to manage
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `_RuleCondition`
-<br>
 
-{{% /notice %}}
+- _`_RuleCondition`_ 
+
 
 ---
-## deactivateDelay()
 
+##### deactivateDelay
+
+
+```javascript
+function deactivateDelay() -> '_RuleCondition'
+```
 
 Deactivates the delay of the condition
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `_RuleCondition`
-<br>
 
-{{% /notice %}}
+- _`_RuleCondition`_ 
+
 
 ---
-## parent()
 
+##### parent
+
+
+```javascript
+function parent() -> 'RuleConfiguration'
+```
 
 Returns parent
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `RuleConfiguration`
-<br>
 
-{{% /notice %}}
+- _`RuleConfiguration`_ 
+
 
 ---
-## setDelay(delay)
 
+##### setDelay
+
+
+```javascript
+function setDelay(delay: number) -> '_RuleCondition'
+```
 
 Set the delay, in seconds, of the condition
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **delay** | `number` | ❌ |  |
+- `delay` _number_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `_RuleCondition`
-<br>
 
-{{% /notice %}}
+- _`_RuleCondition`_ 
+
 
 ---
-## setParameterValue(parameterName, parameterValue)
 
+##### setParameterValue
+
+
+```javascript
+function setParameterValue(parameterName: string,parameterValue: string) -> '_RuleCondition'
+```
 
 Sets a value to the selected parameter
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parameterName** | `string` | ❌ |  |
-| **parameterValue** | `string` | ❌ |  |
+- `parameterName` _string_  
+- `parameterValue` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `_RuleCondition`
-<br>
 
-{{% /notice %}}
+- _`_RuleCondition`_ 
+
 
 ---
 

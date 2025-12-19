@@ -3,115 +3,131 @@ title = "Workgroups"
 weight = 10
 +++
 
-**Class:** `Workgroups`
+Workgroups
+
+### Workgroups Objects
+
+```javascript
+class Workgroups()
+```
 
 This is a base object that contains all you can do about workgroups.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## update()
+
+##### update
+
+
+```javascript
+function update() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## withAdministrative(administrative)
 
+##### withAdministrative
+
+
+```javascript
+function withAdministrative(administrative: boolean) -> 'Workgroups'
+```
 
 Set the administrative attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **administrative** | `boolean` | ❌ |  |
+- `administrative` _boolean_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Workgroups`
-<br>
 
-{{% /notice %}}
+- _`Workgroups`_ 
+
 
 ---
-## withDescription(description)
 
+##### withDescription
+
+
+```javascript
+function withDescription(description: string) -> 'Workgroups'
+```
 
 Set the description attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **description** | `string` | ❌ | required field |
+- `description` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Workgroups`
-<br>
 
-{{% /notice %}}
+- _`Workgroups`_ 
+
 
 ---
-## withDomainName(domainName)
 
+##### withDomainName
+
+
+```javascript
+function withDomainName(domainName: string) -> 'Workgroups'
+```
 
 Set the domain attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **domainName** | `string` | ❌ | required field |
+- `domainName` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Workgroups`
-<br>
 
-{{% /notice %}}
+- _`Workgroups`_ 
+
 
 ---
-## withName(name)
 
+##### withName
+
+
+```javascript
+function withName(name: string) -> 'Workgroups'
+```
 
 Set the name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | required field |
+- `name` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Workgroups`
-<br>
 
-{{% /notice %}}
+- _`Workgroups`_ 
+
 
 ---
 

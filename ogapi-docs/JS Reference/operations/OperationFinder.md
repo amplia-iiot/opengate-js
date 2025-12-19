@@ -3,121 +3,134 @@ title = "Operation Finder"
 weight = 10
 +++
 
-**Class:** `OperationFinder`
+OperationFinder
+
+### OperationFinder Objects
+
+```javascript
+class OperationFinder()
+```
 
   This class allow make get request to operation resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | Reference to the API object. |
+- `ogapi` _InternalOpenGateAPI_  - Reference to the API object.
 
 
 ---
-## findById(id)
 
+##### findById
+
+
+```javascript
+function findById(id: string) -> 'Promise'
+```
 
 Download a specific operation by its id. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **id** | `string` | ❌ | Operation id. |
+- `id` _string_  - Operation id.
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
   ogapi.newOperationFinder().findById('xxx-xx-xxx-xxx').then().catch();
-```
+~~~
 
 ---
-## findExecutionsById(id, size, start)
 
+##### findExecutionsById
+
+
+```javascript
+function findExecutionsById(id: string,size: number,start: number) -> 'Promise'
+```
 
 Download a specific executions of an operation by its id. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **id** | `string` | ❌ | Operation id. |
-| **size** | `number` | ❌ | Defined the number of elements on response |
-| **start** | `number` | ✅ | Defined the offset on response |
+- `id` _string_  - Operation id.
+- `size` _number_  - Defined the number of elements on response
+- `start` _number_ (optional) - Defined the offset on response
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## findPeriodicityById(id)
 
+##### findPeriodicityById
+
+
+```javascript
+function findPeriodicityById(id: string) -> 'Promise'
+```
 
 Download information of peridodicitiy of a specific operation by its id. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **id** | `string` | ❌ | Operation id. |
+- `id` _string_  - Operation id.
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
   ogapi.newOperationFinder().findPeriodicityById('xxx-xx-xxx-xxx').then().catch();
-```
+~~~
 
 ---
-## findPeriodicityByPeriodicityId(periodicityId)
 
+##### findPeriodicityByPeriodicityId
+
+
+```javascript
+function findPeriodicityByPeriodicityId(periodicityId: string) -> 'Promise'
+```
 
 Download information of periodicitiy  by its id. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **periodicityId** | `string` | ❌ | Periodicity id. |
+- `periodicityId` _string_  - Periodicity id.
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
   ogapi.newOperationFinder().findPeriodicityByPeriodicityId('xxx-xx-xxx-xxx').then().catch();
-```
+~~~
 
 ---
 

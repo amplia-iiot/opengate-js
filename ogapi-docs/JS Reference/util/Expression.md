@@ -3,31 +3,38 @@ title = "Expression"
 weight = 10
 +++
 
-**Class:** `Expression`
+Expression
 
-
-
-## and(args)
-
-
-
-### Parámetros
-
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **args** | `...*` | ❌ |  |
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `object`
-<br>
-This returns a json with the query of the logical operator &quot;and&quot; built.
-{{% /notice %}}
-
-### Ejemplos
+### Expression Objects
 
 ```javascript
+class Expression()
+```
+
+
+
+
+##### and
+
+
+```javascript
+function and(args: ...*) -> 'object'
+```
+
+
+**Arguments**:
+
+- `args` _...*_  
+
+**Returns**:
+
+
+- _`object`_ - This returns a json with the query of the logical operator &quot;and&quot; built.
+
+
+**Example**:
+
+~~~javascript
 Ex.and(Ex.like("collected.serialNumber", "SN"), Ex.eq("entityId", "e64ccd08-e302-4b65-b19d-e38eeb7b2d25"))
 
 
@@ -47,31 +54,32 @@ returns:
     }
   ]
 }
-```
+~~~
 
 ---
-## eq(key, value)
 
+##### eq
 
-
-### Parámetros
-
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **key** | `String` | ❌ | This is the name of the field |
-| **value** | `String` | ❌ | This is the value of the field |
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `object`
-<br>
-This returns a json with the query of the operator &quot;eq&quot; built.
-{{% /notice %}}
-
-### Ejemplos
 
 ```javascript
+function eq(key: String,value: String) -> 'object'
+```
+
+
+**Arguments**:
+
+- `key` _String_  - This is the name of the field
+- `value` _String_  - This is the value of the field
+
+**Returns**:
+
+
+- _`object`_ - This returns a json with the query of the operator &quot;eq&quot; built.
+
+
+**Example**:
+
+~~~javascript
 Ex.eq("entityId", "e64ccd08-e302-4b65-b19d-e38eeb7b2d25")
 
 
@@ -82,31 +90,32 @@ returns:
     "entityId": "e64ccd08-e302-4b65-b19d-e38eeb7b2d25"
   }
 }
-```
+~~~
 
 ---
-## gt(key, value)
 
+##### gt
 
-
-### Parámetros
-
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **key** | `String` | ❌ | This is the name of the field |
-| **value** | `String` | ❌ | This is the value of the field |
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `object`
-<br>
-This returns a json with the query of the operator &quot;gt&quot; built.
-{{% /notice %}}
-
-### Ejemplos
 
 ```javascript
+function gt(key: String,value: String) -> 'object'
+```
+
+
+**Arguments**:
+
+- `key` _String_  - This is the name of the field
+- `value` _String_  - This is the value of the field
+
+**Returns**:
+
+
+- _`object`_ - This returns a json with the query of the operator &quot;gt&quot; built.
+
+
+**Example**:
+
+~~~javascript
 Ex.gt("collected.imei", "123456786543210")
 
 
@@ -117,31 +126,32 @@ returns:
     "collected.imei": "123456786543210"
   }
 }
-```
+~~~
 
 ---
-## gte(key, value)
 
+##### gte
 
-
-### Parámetros
-
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **key** | `String` | ❌ | This is the name of the field |
-| **value** | `String` | ❌ | This is the value of the field |
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `object`
-<br>
-This returns a json with the query of the operator &quot;gte&quot; built.
-{{% /notice %}}
-
-### Ejemplos
 
 ```javascript
+function gte(key: String,value: String) -> 'object'
+```
+
+
+**Arguments**:
+
+- `key` _String_  - This is the name of the field
+- `value` _String_  - This is the value of the field
+
+**Returns**:
+
+
+- _`object`_ - This returns a json with the query of the operator &quot;gte&quot; built.
+
+
+**Example**:
+
+~~~javascript
 Ex.gte("collected.imei", "123456786543210")
 
 
@@ -150,31 +160,32 @@ Ex.gte("collected.imei", "123456786543210")
     "collected.imei": "123456786543210"
   }
 }
-```
+~~~
 
 ---
-## in(key, value)
 
+##### in
 
-
-### Parámetros
-
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **key** | `String` | ❌ | This is the name of the field |
-| **value** | `String` | ❌ | This is the value of the field |
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `object`
-<br>
-This returns a json with the query of the operator &quot;in&quot; built.
-{{% /notice %}}
-
-### Ejemplos
 
 ```javascript
+function in(key: String,value: String) -> 'object'
+```
+
+
+**Arguments**:
+
+- `key` _String_  - This is the name of the field
+- `value` _String_  - This is the value of the field
+
+**Returns**:
+
+
+- _`object`_ - This returns a json with the query of the operator &quot;in&quot; built.
+
+
+**Example**:
+
+~~~javascript
 Ex.in("entityId", ["e64ccd08-e302-4b65-b19d-e38eeb7b2d24","e64ccd08-e302-4b65-b19d-e38eeb7b2d25"])
 
 
@@ -183,31 +194,32 @@ Ex.in("entityId", ["e64ccd08-e302-4b65-b19d-e38eeb7b2d24","e64ccd08-e302-4b65-b1
     "entityId": ["e64ccd08-e302-4b65-b19d-e38eeb7b2d24","e64ccd08-e302-4b65-b19d-e38eeb7b2d25"]
   }
 }
-```
+~~~
 
 ---
-## like(key, value)
 
+##### like
 
-
-### Parámetros
-
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **key** | `String` | ❌ | This is the name of the field |
-| **value** | `String` | ❌ | This is the value of the field |
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `object`
-<br>
-This returns a json with the query of the operator &quot;like&quot; built.
-{{% /notice %}}
-
-### Ejemplos
 
 ```javascript
+function like(key: String,value: String) -> 'object'
+```
+
+
+**Arguments**:
+
+- `key` _String_  - This is the name of the field
+- `value` _String_  - This is the value of the field
+
+**Returns**:
+
+
+- _`object`_ - This returns a json with the query of the operator &quot;like&quot; built.
+
+
+**Example**:
+
+~~~javascript
 Ex.like("collected.serialNumber", "SN")
 
 
@@ -218,31 +230,32 @@ returns:
     "collected.serialNumber": "SN"
   }
 }
-```
+~~~
 
 ---
-## lt(key, value)
 
+##### lt
 
-
-### Parámetros
-
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **key** | `String` | ❌ | This is the name of the field |
-| **value** | `String` | ❌ | This is the value of the field |
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `object`
-<br>
-This returns a json with the query of the operator &quot;lt&quot; built.
-{{% /notice %}}
-
-### Ejemplos
 
 ```javascript
+function lt(key: String,value: String) -> 'object'
+```
+
+
+**Arguments**:
+
+- `key` _String_  - This is the name of the field
+- `value` _String_  - This is the value of the field
+
+**Returns**:
+
+
+- _`object`_ - This returns a json with the query of the operator &quot;lt&quot; built.
+
+
+**Example**:
+
+~~~javascript
 Ex.lt("collected.imei", "123456786543210")
 
 
@@ -253,31 +266,32 @@ returns:
     "collected.imei": "123456786543210"
   }
 }
-```
+~~~
 
 ---
-## lte(key, value)
 
+##### lte
 
-
-### Parámetros
-
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **key** | `String` | ❌ | This is the name of the field |
-| **value** | `String` | ❌ | This is the value of the field |
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `object`
-<br>
-This returns a json with the query of the operator &quot;lte&quot; built.
-{{% /notice %}}
-
-### Ejemplos
 
 ```javascript
+function lte(key: String,value: String) -> 'object'
+```
+
+
+**Arguments**:
+
+- `key` _String_  - This is the name of the field
+- `value` _String_  - This is the value of the field
+
+**Returns**:
+
+
+- _`object`_ - This returns a json with the query of the operator &quot;lte&quot; built.
+
+
+**Example**:
+
+~~~javascript
 Ex.lte("collected.imei", "123456786543210")
 
 
@@ -286,31 +300,32 @@ Ex.lte("collected.imei", "123456786543210")
     "collected.imei": "123456786543210"
   }
 }
-```
+~~~
 
 ---
-## neq(key, value)
 
+##### neq
 
-
-### Parámetros
-
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **key** | `String` | ❌ | This is the name of the field |
-| **value** | `String` | ❌ | This is the value of the field |
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `object`
-<br>
-This returns a json with the query of the operator &quot;neq&quot; built.
-{{% /notice %}}
-
-### Ejemplos
 
 ```javascript
+function neq(key: String,value: String) -> 'object'
+```
+
+
+**Arguments**:
+
+- `key` _String_  - This is the name of the field
+- `value` _String_  - This is the value of the field
+
+**Returns**:
+
+
+- _`object`_ - This returns a json with the query of the operator &quot;neq&quot; built.
+
+
+**Example**:
+
+~~~javascript
 Ex.neq("entityId", "e64ccd08-e302-4b65-b19d-e38eeb7b2d25")
 
 
@@ -321,30 +336,31 @@ returns:
     "entityId": "e64ccd08-e302-4b65-b19d-e38eeb7b2d25"
   }
 }
-```
+~~~
 
 ---
-## or(args)
 
+##### or
 
-
-### Parámetros
-
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **args** | `...*` | ❌ |  |
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `object`
-<br>
-This returns a json with the query of the logical operator &quot;or&quot; built.
-{{% /notice %}}
-
-### Ejemplos
 
 ```javascript
+function or(args: ...*) -> 'object'
+```
+
+
+**Arguments**:
+
+- `args` _...*_  
+
+**Returns**:
+
+
+- _`object`_ - This returns a json with the query of the logical operator &quot;or&quot; built.
+
+
+**Example**:
+
+~~~javascript
 Ex.or(Ex.like("collected.serialNumber", "SN"), Ex.eq("entityId", "e64ccd08-e302-4b65-b19d-e38eeb7b2d25"))
 
 
@@ -364,7 +380,7 @@ returns:
     }
   ]
 }
-```
+~~~
 
 ---
 

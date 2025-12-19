@@ -3,164 +3,178 @@ title = "Bulk Builder"
 weight = 10
 +++
 
-**Class:** `BulkBuilder`
+BulkBuilder
+
+### BulkBuilder Objects
+
+```javascript
+class BulkBuilder()
+```
 
 This class allow set simple values.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | required field. This is ogapi instance |
-| **resource** | `resource` | ❌ | required field. This is the resource used for the bulk provision |
-| **extension** | `extension` | ❌ | required field. Type of file to send |
-| **timeout** | `number` | ✅ | timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception |
+- `ogapi` _InternalOpenGateAPI_  - required field. This is ogapi instance
+- `resource` _resource_  - required field. This is the resource used for the bulk provision
+- `extension` _extension_  - required field. Type of file to send
+- `timeout` _number_ (optional) - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
 
 
 ---
-## create(rawFile, csv_response)
 
+##### create
+
+
+```javascript
+function create(rawFile: string,Blob,csv_response: boolean) -> '*'
+```
 
  Execute the bulk creation operation
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **rawFile** | `string,Blob` | ❌ | File with format string or Blob |
-| **csv_response** | `boolean` | ✅ | true if you want a response on format csv. False or null if you want a response on format json |
+- `rawFile` _string,Blob_  - File with format string or Blob
+- `csv_response` _boolean_ (optional) - true if you want a response on format csv. False or null if you want a response on format json
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
 
-{{% /notice %}}
+- _`*`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).create(rawFile)
  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).create(new Blob(), true)
-```
+~~~
 
 ---
-## delete(rawFile, csv_response)
 
+##### delete
+
+
+```javascript
+function delete(rawFile: string,Blob,csv_response: boolean) -> '*'
+```
 
  Execute the bulk delete operation
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **rawFile** | `string,Blob` | ❌ | File with format string or Blob |
-| **csv_response** | `boolean` | ✅ | true if you want a response on format csv. False or null if you want a response on format json |
+- `rawFile` _string,Blob_  - File with format string or Blob
+- `csv_response` _boolean_ (optional) - true if you want a response on format csv. False or null if you want a response on format json
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
 
-{{% /notice %}}
+- _`*`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).delete(rawFile)
  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).delete(new Blob(), true)
-```
+~~~
 
 ---
-## deleteAll(rawFile, csv_response)
 
+##### deleteAll
+
+
+```javascript
+function deleteAll(rawFile: string,Blob,csv_response: boolean) -> '*'
+```
 
  Execute the bulk delete full operation
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **rawFile** | `string,Blob` | ❌ | File with format string or Blob |
-| **csv_response** | `boolean` | ✅ | true if you want a response on format csv. False or null if you want a response on format json |
+- `rawFile` _string,Blob_  - File with format string or Blob
+- `csv_response` _boolean_ (optional) - true if you want a response on format csv. False or null if you want a response on format json
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
 
-{{% /notice %}}
+- _`*`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).deleteAll(rawFile)
  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).deleteAll(new Blob(), true)
-```
+~~~
 
 ---
-## patch(rawFile, csv_response)
 
+##### patch
+
+
+```javascript
+function patch(rawFile: string,Blob,csv_response: boolean) -> '*'
+```
 
  Execute the bulk patch operation
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **rawFile** | `string,Blob` | ❌ | File with format string or Blob |
-| **csv_response** | `boolean` | ✅ | true if you want a response on format csv. False or null if you want a response on format json |
+- `rawFile` _string,Blob_  - File with format string or Blob
+- `csv_response` _boolean_ (optional) - true if you want a response on format csv. False or null if you want a response on format json
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
 
-{{% /notice %}}
+- _`*`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).update(rawFile)
  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).update(new Blob(), true)
-```
+~~~
 
 ---
-## update(rawFile, csv_response)
 
+##### update
+
+
+```javascript
+function update(rawFile: string,Blob,csv_response: boolean) -> '*'
+```
 
  Execute the bulk update operation
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **rawFile** | `string,Blob` | ❌ | File with format string or Blob |
-| **csv_response** | `boolean` | ✅ | true if you want a response on format csv. False or null if you want a response on format json |
+- `rawFile` _string,Blob_  - File with format string or Blob
+- `csv_response` _boolean_ (optional) - true if you want a response on format csv. False or null if you want a response on format json
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
 
-{{% /notice %}}
+- _`*`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).update(rawFile)
  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).update(new Blob(), true)
-```
+~~~
 
 ---
 

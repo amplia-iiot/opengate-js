@@ -3,81 +3,93 @@ title = "Domains"
 weight = 10
 +++
 
-**Class:** `Domains`
+Domains
+
+### Domains Objects
+
+```javascript
+class Domains()
+```
 
 This is a base object that contains all you can do about Bundles.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## withDescription(description)
 
+##### withDescription
+
+
+```javascript
+function withDescription(description: string) -> 'Domains'
+```
 
 Set the description attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **description** | `string` | ❌ | required field |
+- `description` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Domains`
-<br>
 
-{{% /notice %}}
+- _`Domains`_ 
+
 
 ---
-## withName(name)
 
+##### withName
+
+
+```javascript
+function withName(name: string) -> 'Domains'
+```
 
 Set the name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | required field |
+- `name` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Domains`
-<br>
 
-{{% /notice %}}
+- _`Domains`_ 
+
 
 ---
-## withParentDomain(parentDomain)
 
+##### withParentDomain
+
+
+```javascript
+function withParentDomain(parentDomain: string) -> 'Domains'
+```
 
 Set the parentDomain attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parentDomain** | `string` | ❌ |  |
+- `parentDomain` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Domains`
-<br>
 
-{{% /notice %}}
+- _`Domains`_ 
+
 
 ---
 

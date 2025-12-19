@@ -3,55 +3,68 @@ title = "Geocluster"
 weight = 10
 +++
 
-**Class:** `Geocluster`
+Geocluster
+
+### Geocluster Objects
+
+```javascript
+class Geocluster()
+```
 
 This is a base object that contains all you can do about geocluster.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## update()
+
+##### update
+
+
+```javascript
+function update() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## withIdentifier(identifier)
 
+##### withIdentifier
+
+
+```javascript
+function withIdentifier(identifier: string) -> 'Geocluster'
+```
 
 Set the identifier attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **identifier** | `string` | ❌ | required field |
+- `identifier` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Geocluster`
-<br>
 
-{{% /notice %}}
+- _`Geocluster`_ 
+
 
 ---
 

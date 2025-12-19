@@ -3,36 +3,48 @@ title = "Rule Configurations Catalog"
 weight = 10
 +++
 
-**Class:** `RuleConfigurationsCatalog`
+RuleConfigurationsCatalog
+
+### RuleConfigurationsCatalog Objects
+
+```javascript
+class RuleConfigurationsCatalog()
+```
 
   This class allow make get request to RuleConfigurations resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | Reference to the API object. |
+- `ogapi` _InternalOpenGateAPI_  - Reference to the API object.
 
 
 ---
-## getTemplates()
 
+##### getTemplates
+
+
+```javascript
+function getTemplates() -> 'Promise'
+```
 
 Performs a get that returns rule templates
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

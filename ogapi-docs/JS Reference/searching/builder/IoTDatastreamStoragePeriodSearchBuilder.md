@@ -3,45 +3,62 @@ title = "Io T Datastream Storage Period Search Builder"
 weight = 10
 +++
 
-**Class:** `IoTDatastreamStoragePeriodSearchBuilder`
+IoTDatastreamStoragePeriodSearchBuilder
+
+### IoTDatastreamStoragePeriodSearchBuilder Objects
+
+```javascript
+class IoTDatastreamStoragePeriodSearchBuilder()
+```
 
 Defined a search over mobile phone provider catalog
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## build()
 
+##### build
+
+
+```javascript
+function build() -> 'StaticSearch'
+```
 
 Build a instance of StaticSearch 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `StaticSearch`
-<br>
 
-{{% /notice %}}
+- _`StaticSearch`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
   ogapi.ioTDatastreamStoragePeriodSearchBuilder().build()
-```
+~~~
 
 ---
-## customFilters
 
+##### customFilters
+
+
+```javascript
+function customFilters()
+```
 
 
 

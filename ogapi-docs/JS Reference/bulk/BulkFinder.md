@@ -3,44 +3,54 @@ title = "Bulk Finder"
 weight = 10
 +++
 
-**Class:** `BulkFinder`
+BulkFinder
+
+### BulkFinder Objects
+
+```javascript
+class BulkFinder()
+```
 
   This class allow make get request to bulk resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## findByOrganizationAndId(organization, id, format, accept)
 
+##### findByOrganizationAndId
+
+
+```javascript
+function findByOrganizationAndId(organization: string,id: string,format: string,accept: string) -> 'Promise'
+```
 
 Download a specific entity by its organization and id. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | entity organization . |
-| **id** | `string` | ❌ | entity id. |
-| **format** | `string` | ❌ | format response flag. |
-| **accept** | `string` | ❌ | accept. |
+- `organization` _string_  - entity organization .
+- `id` _string_  - entity id.
+- `format` _string_  - format response flag.
+- `accept` _string_  - accept.
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

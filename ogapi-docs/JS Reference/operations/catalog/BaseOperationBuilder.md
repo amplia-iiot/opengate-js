@@ -3,482 +3,521 @@ title = "Base Operation Builder"
 weight = 10
 +++
 
-**Class:** `BaseOperationBuilder`
+BaseOperationBuilder
+
+### BaseOperationBuilder Objects
+
+```javascript
+class BaseOperationBuilder()
+```
 
 Defines the builder to execute an operation that is into catalog
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | this is configuration about Opengate North API. |
-| **config** | `object` | ❌ | this is configuration about operation. |
+- `ogapi` _InternalOpenGateAPI_  - this is configuration about Opengate North API.
+- `config` _object_  - this is configuration about operation.
 
 
 ---
-## appendEntitiesBy
 
+##### appendEntitiesBy
+
+
+```javascript
+function appendEntitiesBy()
+```
 
 Util used into BaseOperationBuilder to append entities the three different ways. By filter, By tags, By entityList
 
 
 
 ---
-## build()
 
+##### build
+
+
+```javascript
+function build() -> 'Operation'
+```
 
 Build a instance of Operation 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Operation`
-<br>
 
-{{% /notice %}}
+- _`Operation`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.operations.builderFactory.newXXXBuilder().build()
-```
+~~~
 
 ---
-## executeAtDate(date, active)
 
+##### executeAtDate
+
+
+```javascript
+function executeAtDate(date: Date,active: boolean) -> 'BaseOperationBuilder,CronExpressionBuilder'
+```
 
 The operation will be created with delayed start or if you not pass any argument then the method return a cron expression builder.
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **date** | `Date` | ❌ |  |
-| **active** | `boolean` | ❌ | If active is false, an operation is created in paused |
+- `date` _Date_  
+- `active` _boolean_  - If active is false, an operation is created in paused
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BaseOperationBuilder,CronExpressionBuilder`
-<br>
 
-{{% /notice %}}
+- _`BaseOperationBuilder,CronExpressionBuilder`_ 
+
 
 ---
-## executeEach(date, name, end, active, description)
 
+##### executeEach
+
+
+```javascript
+function executeEach(date: Date,name: string,end: number or Date,active: boolean,description: string) -> 'ExecuteEachBuilder'
+```
 
 The operation will execute with a period that you must define with ExecuteEachBuilder 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **date** | `Date` | ❌ | Date when operation will be executed |
-| **name** | `string` | ❌ | Name associated to periodicity |
-| **end** | `number or Date` | ❌ | When periodicity ends. By repetitions or by date |
-| **active** | `boolean` | ❌ | If active is false, an operation is created in paused |
-| **description** | `string` | ❌ | Description associated to periodicity |
+- `date` _Date_  - Date when operation will be executed
+- `name` _string_  - Name associated to periodicity
+- `end` _number or Date_  - When periodicity ends. By repetitions or by date
+- `active` _boolean_  - If active is false, an operation is created in paused
+- `description` _string_  - Description associated to periodicity
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ExecuteEachBuilder`
-<br>
 
-{{% /notice %}}
+- _`ExecuteEachBuilder`_ 
+
 
 ---
-## executeEvery(date, name, end, active, description)
 
+##### executeEvery
+
+
+```javascript
+function executeEvery(date: Date,name: string,end: number or Date,active: boolean,description: string) -> 'ExecuteEveryBuilder'
+```
 
 The operation will execute with a period that you must define with ExecuteEveryBuilder 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **date** | `Date` | ❌ | Date when operation will be executed |
-| **name** | `string` | ❌ | Name associated to periodicity |
-| **end** | `number or Date` | ❌ | When periodicity ends. By repetitions or by date |
-| **active** | `boolean` | ❌ | If active is false, an operation is created in paused |
-| **description** | `string` | ❌ | Description associated to periodicity |
+- `date` _Date_  - Date when operation will be executed
+- `name` _string_  - Name associated to periodicity
+- `end` _number or Date_  - When periodicity ends. By repetitions or by date
+- `active` _boolean_  - If active is false, an operation is created in paused
+- `description` _string_  - Description associated to periodicity
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ExecuteEveryBuilder`
-<br>
 
-{{% /notice %}}
+- _`ExecuteEveryBuilder`_ 
+
 
 ---
-## executeIDLE()
 
+##### executeIDLE
+
+
+```javascript
+function executeIDLE() -> 'BaseOperationBuilder'
+```
 
 The operation will be created in IDLE state
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BaseOperationBuilder`
-<br>
 
-{{% /notice %}}
+- _`BaseOperationBuilder`_ 
+
 
 ---
-## executeImmediately()
 
+##### executeImmediately
+
+
+```javascript
+function executeImmediately() -> 'BaseOperationBuilder'
+```
 
 The operation will be execute immediately.
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BaseOperationBuilder`
-<br>
 
-{{% /notice %}}
+- _`BaseOperationBuilder`_ 
+
 
 ---
-## executeLater(minutes, active)
 
+##### executeLater
+
+
+```javascript
+function executeLater(minutes: number,active: boolean) -> 'BaseOperationBuilder,CronExpressionBuilder'
+```
 
 The operation will be created with delayed start or if you not pass any argument then the method return a cron expression builder.
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **minutes** | `number` | ❌ |  |
-| **active** | `boolean` | ❌ | If active is false, an operation is created in paused |
+- `minutes` _number_  
+- `active` _boolean_  - If active is false, an operation is created in paused
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BaseOperationBuilder,CronExpressionBuilder`
-<br>
 
-{{% /notice %}}
+- _`BaseOperationBuilder,CronExpressionBuilder`_ 
+
 
 ---
-## withAckTimeout(milliseconds, format)
 
+##### withAckTimeout
+
+
+```javascript
+function withAckTimeout(milliseconds: number,format: string) -> 'BaseOperationBuilder'
+```
 
 Set ackTimeout to operation.
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **milliseconds** | `number` | ❌ |  |
-| **format** | `string` | ❌ | Can be &#x27;milliseconds&#x27; || &#x27;ms&#x27; ,&#x27;seconds&#x27; || &#x27;s&#x27;, &#x27;minutes&#x27; || &#x27;m&#x27;, &#x27;hours&#x27; || &#x27;h&#x27;, &#x27;days&#x27; || &#x27;d&#x27;, &#x27;weeks&#x27; || &#x27;w&#x27;, &#x27;months&#x27; || &#x27;M&#x27; |
+- `milliseconds` _number_  
+- `format` _string_  - Can be &#x27;milliseconds&#x27; || &#x27;ms&#x27; ,&#x27;seconds&#x27; || &#x27;s&#x27;, &#x27;minutes&#x27; || &#x27;m&#x27;, &#x27;hours&#x27; || &#x27;h&#x27;, &#x27;days&#x27; || &#x27;d&#x27;, &#x27;weeks&#x27; || &#x27;w&#x27;, &#x27;months&#x27; || &#x27;M&#x27;
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BaseOperationBuilder`
-<br>
 
-{{% /notice %}}
+- _`BaseOperationBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.operations.builderFactory.newXXXBuilder().withAckTimeout(11)
-```
+~~~
 
 ---
-## withCallback(url)
 
+##### withCallback
+
+
+```javascript
+function withCallback(url: string) -> 'BaseOperationBuilder'
+```
 
 Set a callback to operation. If it is set also will be set notify with true value
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **url** | `string` | ❌ | If null then parameter will be removed into builder |
+- `url` _string_  - If null then parameter will be removed into builder
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BaseOperationBuilder`
-<br>
 
-{{% /notice %}}
+- _`BaseOperationBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.operations.builderFactory.newXXXBuilder().withCallback("http://my.web")
-```
+~~~
 
 ---
-## withJobTimeout(milliseconds, format)
 
+##### withJobTimeout
+
+
+```javascript
+function withJobTimeout(milliseconds: number,format: string) -> 'BaseOperationBuilder'
+```
 
 Set a timeout of job.
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **milliseconds** | `number` | ❌ | if null then parameter will be removed into builder |
-| **format** | `string` | ❌ | Can be &#x27;milliseconds&#x27; || &#x27;ms&#x27; ,&#x27;seconds&#x27; || &#x27;s&#x27;, &#x27;mintutes&#x27; || &#x27;m&#x27;, &#x27;hours&#x27; || &#x27;h&#x27;, &#x27;days&#x27; || &#x27;d&#x27;, &#x27;weeks&#x27; || &#x27;w&#x27;, &#x27;months&#x27; || &#x27;M&#x27; |
+- `milliseconds` _number_  - if null then parameter will be removed into builder
+- `format` _string_  - Can be &#x27;milliseconds&#x27; || &#x27;ms&#x27; ,&#x27;seconds&#x27; || &#x27;s&#x27;, &#x27;mintutes&#x27; || &#x27;m&#x27;, &#x27;hours&#x27; || &#x27;h&#x27;, &#x27;days&#x27; || &#x27;d&#x27;, &#x27;weeks&#x27; || &#x27;w&#x27;, &#x27;months&#x27; || &#x27;M&#x27;
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BaseOperationBuilder`
-<br>
 
-{{% /notice %}}
+- _`BaseOperationBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.operations.builderFactory.newXXXBuilder().withJobTimeout(180)
-```
+~~~
 
 ---
-## withNotes(notes)
 
+##### withNotes
+
+
+```javascript
+function withNotes(notes: string) -> 'BaseOperationBuilder'
+```
 
 Set notes to operation
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **notes** | `string` | ❌ | If null then parameter will be removed into builder |
+- `notes` _string_  - If null then parameter will be removed into builder
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BaseOperationBuilder`
-<br>
 
-{{% /notice %}}
+- _`BaseOperationBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.operations.builderFactory.newXXXBuilder().withNotes("own notes")
-```
+~~~
 
 ---
-## withOperationRetries(operationRetries)
 
+##### withOperationRetries
+
+
+```javascript
+function withOperationRetries(operationRetries: Array) -> 'BaseOperationBuilder'
+```
 
 Set operation retries
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **operationRetries** | `Array` | ❌ |  |
+- `operationRetries` _Array_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BaseOperationBuilder`
-<br>
 
-{{% /notice %}}
+- _`BaseOperationBuilder`_ 
 
-### Ejemplos
+
+**Example**:
+
+~~~javascript
+ ogapi.operations.builderFactory.newXXXBuilder().withOperationRetries(11)
+~~~
+
+---
+
+##### withParameter
+
 
 ```javascript
- ogapi.operations.builderFactory.newXXXBuilder().withOperationRetries(11)
+function withParameter(parameter: *,value: *) -> '*'
 ```
 
----
-## withParameter(parameter, value)
+
+**Arguments**:
+
+- `parameter` _*_  
+- `value` _*_  
+
+**Returns**:
 
 
+- _`*`_ 
 
-### Parámetros
-
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parameter** | `*` | ❌ |  |
-| **value** | `*` | ❌ |  |
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
-
-{{% /notice %}}
 
 ---
-## withParameters(parameters)
 
+##### withParameters
+
+
+```javascript
+function withParameters(parameters: object) -> 'BaseOperationBuilder'
+```
 
 Set parameters of the operation
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parameters** | `object` | ❌ |  |
+- `parameters` _object_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BaseOperationBuilder`
-<br>
 
-{{% /notice %}}
+- _`BaseOperationBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.operations.builderFactory.newXXXBuilder().withParameters({ param1: 'value1', param2: 'value2'})
-```
+~~~
 
 ---
-## withRetries(retriesNumber)
 
+##### withRetries
+
+
+```javascript
+function withRetries(retriesNumber: number) -> 'BaseOperationBuilder'
+```
 
 Set number of retries that operation will have.
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **retriesNumber** | `number` | ❌ |  |
+- `retriesNumber` _number_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BaseOperationBuilder`
-<br>
 
-{{% /notice %}}
+- _`BaseOperationBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.operations.builderFactory.newXXXBuilder().withRetries(2)
-```
+~~~
 
 ---
-## withRetriesDelay(milliseconds, format)
 
+##### withRetriesDelay
+
+
+```javascript
+function withRetriesDelay(milliseconds: number,format: string) -> 'BaseOperationBuilder'
+```
 
 Set delay between operation retries.
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **milliseconds** | `number` | ❌ |  |
-| **format** | `string` | ❌ | Can be &#x27;milliseconds&#x27; || &#x27;ms&#x27; ,&#x27;seconds&#x27; || &#x27;s&#x27;, &#x27;minutes&#x27; || &#x27;m&#x27;, &#x27;hours&#x27; || &#x27;h&#x27;, &#x27;days&#x27; || &#x27;d&#x27;, &#x27;weeks&#x27; || &#x27;w&#x27;, &#x27;months&#x27; || &#x27;M&#x27; |
+- `milliseconds` _number_  
+- `format` _string_  - Can be &#x27;milliseconds&#x27; || &#x27;ms&#x27; ,&#x27;seconds&#x27; || &#x27;s&#x27;, &#x27;minutes&#x27; || &#x27;m&#x27;, &#x27;hours&#x27; || &#x27;h&#x27;, &#x27;days&#x27; || &#x27;d&#x27;, &#x27;weeks&#x27; || &#x27;w&#x27;, &#x27;months&#x27; || &#x27;M&#x27;
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BaseOperationBuilder`
-<br>
 
-{{% /notice %}}
+- _`BaseOperationBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.operations.builderFactory.newXXXBuilder().withRetriesDelay(11)
-```
+~~~
 
 ---
-## withScatteringMaxSpread(percentage)
 
+##### withScatteringMaxSpread
+
+
+```javascript
+function withScatteringMaxSpread(percentage: number) -> 'BaseOperationBuilder'
+```
 
 Set a scattering max spread to operation.
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **percentage** | `number` | ❌ | if null then parameter will be removed into builder |
+- `percentage` _number_  - if null then parameter will be removed into builder
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BaseOperationBuilder`
-<br>
 
-{{% /notice %}}
+- _`BaseOperationBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.operations.builderFactory.newXXXBuilder().withScatteringMaxSpread(20)
-```
+~~~
 
 ---
-## withScatteringStrategy(factor, warningMaxRate)
 
+##### withScatteringStrategy
+
+
+```javascript
+function withScatteringStrategy(factor: number,warningMaxRate: number) -> 'BaseOperationBuilder'
+```
 
 Set a scattering strategy to operation.
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **factor** | `number` | ❌ | if null then parameter will be removed into builder |
-| **warningMaxRate** | `number` | ❌ |  |
+- `factor` _number_  - if null then parameter will be removed into builder
+- `warningMaxRate` _number_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BaseOperationBuilder`
-<br>
 
-{{% /notice %}}
+- _`BaseOperationBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.operations.builderFactory.newXXXBuilder().withScatteringStrategy(20,4)
-```
+~~~
 
 ---
-## withTimeout(milliseconds, format)
 
+##### withTimeout
+
+
+```javascript
+function withTimeout(milliseconds: number,format: string) -> 'BaseOperationBuilder'
+```
 
 Set timeout to operation.
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **milliseconds** | `number` | ❌ |  |
-| **format** | `string` | ❌ | Can be &#x27;milliseconds&#x27; || &#x27;ms&#x27; ,&#x27;seconds&#x27; || &#x27;s&#x27;, &#x27;minutes&#x27; || &#x27;m&#x27;, &#x27;hours&#x27; || &#x27;h&#x27;, &#x27;days&#x27; || &#x27;d&#x27;, &#x27;weeks&#x27; || &#x27;w&#x27;, &#x27;months&#x27; || &#x27;M&#x27; |
+- `milliseconds` _number_  
+- `format` _string_  - Can be &#x27;milliseconds&#x27; || &#x27;ms&#x27; ,&#x27;seconds&#x27; || &#x27;s&#x27;, &#x27;minutes&#x27; || &#x27;m&#x27;, &#x27;hours&#x27; || &#x27;h&#x27;, &#x27;days&#x27; || &#x27;d&#x27;, &#x27;weeks&#x27; || &#x27;w&#x27;, &#x27;months&#x27; || &#x27;M&#x27;
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BaseOperationBuilder`
-<br>
 
-{{% /notice %}}
+- _`BaseOperationBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.operations.builderFactory.newXXXBuilder().withTimeout(11)
-```
+~~~
 
 ---
 

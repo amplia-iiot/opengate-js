@@ -3,46 +3,56 @@ title = "Alarms Search Builder"
 weight = 10
 +++
 
-**Class:** `AlarmsSearchBuilder`
+AlarmsSearchBuilder
+
+### AlarmsSearchBuilder Objects
+
+```javascript
+class AlarmsSearchBuilder()
+```
 
 Defined a search over Alarms	
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## group(group)
 
+##### group
+
+
+```javascript
+function group(group: object) -> 'AlarmsSearchBuilder'
+```
 
 The search request will have this group by 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **group** | `object` | ❌ |  |
+- `group` _object_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `AlarmsSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`AlarmsSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
 
-```
+~~~javascript
+
+~~~
 
 ---
 

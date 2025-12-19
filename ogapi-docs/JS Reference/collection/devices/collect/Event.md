@@ -3,534 +3,571 @@ title = "Event"
 weight = 10
 +++
 
-**Class:** `Event`
+Event
+
+### Event Objects
+
+```javascript
+class Event()
+```
 
 This is a base object that allows the user to create a Event.
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `*` | ❌ |  |
+**Arguments**:
+
+- `ogapi` _*_  
 
 
 ---
-## composeElement()
+
+##### composeElement
+
+
+```javascript
+function composeElement() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## withCommsModule(communicationsModules)
 
+##### withCommsModule
+
+
+```javascript
+function withCommsModule(communicationsModules: *) -> 'Event'
+```
 
 Set the powerSupply attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **communicationsModules** | `*` | ❌ |  |
+- `communicationsModules` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withCpuUsage(cpuUsage)
 
+##### withCpuUsage
+
+
+```javascript
+function withCpuUsage(cpuUsage: *) -> 'Event'
+```
 
 Set the cpuUsage attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **cpuUsage** | `*` | ❌ |  |
+- `cpuUsage` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withCurrentTemperature(currentTemperature)
 
+##### withCurrentTemperature
+
+
+```javascript
+function withCurrentTemperature(currentTemperature: string) -> 'Event'
+```
 
 Set the currentTemperature attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **currentTemperature** | `string` | ❌ | optionals field |
+- `currentTemperature` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withDateLocation(date)
 
+##### withDateLocation
+
+
+```javascript
+function withDateLocation(date: string) -> 'Event'
+```
 
 Set the date attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **date** | `string` | ❌ | optionals field |
+- `date` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withDeviceId(deviceId)
 
+##### withDeviceId
+
+
+```javascript
+function withDeviceId(deviceId: string) -> 'Event'
+```
 
 Set the deviceId attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **deviceId** | `string` | ❌ | optionals field |
+- `deviceId` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withEventDescription(description)
 
+##### withEventDescription
+
+
+```javascript
+function withEventDescription(description: string) -> 'Event'
+```
 
 Set the description attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **description** | `string` | ❌ | optionals field |
+- `description` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withEventId(id)
 
+##### withEventId
+
+
+```javascript
+function withEventId(id: string) -> 'Event'
+```
 
 Set the id attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **id** | `string` | ❌ | optionals field |
+- `id` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withEventName(name)
 
+##### withEventName
+
+
+```javascript
+function withEventName(name: string) -> 'Event'
+```
 
 Set the name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | optionals field |
+- `name` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withHardware(hardware)
 
+##### withHardware
+
+
+```javascript
+function withHardware(hardware: Hardware) -> 'Event'
+```
 
 Set the hardware attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **hardware** | `Hardware` | ❌ | optionals field |
+- `hardware` _Hardware_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withLatitude(latitude)
 
+##### withLatitude
+
+
+```javascript
+function withLatitude(latitude: number) -> 'Event'
+```
 
 Set the latitude attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **latitude** | `number` | ❌ | optionals field |
+- `latitude` _number_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withLongitude(longitude)
 
+##### withLongitude
+
+
+```javascript
+function withLongitude(longitude: number) -> 'Event'
+```
 
 Set the longitude attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **longitude** | `number` | ❌ | optionals field |
+- `longitude` _number_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withMaximumTemperature(maximumTemperature)
 
+##### withMaximumTemperature
+
+
+```javascript
+function withMaximumTemperature(maximumTemperature: string) -> 'Event'
+```
 
 Set the maximum attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **maximumTemperature** | `string` | ❌ | optionals field |
+- `maximumTemperature` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withMinimumTemperature(minimumTemperature)
 
+##### withMinimumTemperature
+
+
+```javascript
+function withMinimumTemperature(minimumTemperature: string) -> 'Event'
+```
 
 Set the minimum attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **minimumTemperature** | `string` | ❌ | optionals field |
+- `minimumTemperature` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withNonVolatilStorage(nonVolatilStorage)
 
+##### withNonVolatilStorage
+
+
+```javascript
+function withNonVolatilStorage(nonVolatilStorage: *) -> 'Event'
+```
 
 Set the nonVolatilStorage attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **nonVolatilStorage** | `*` | ❌ |  |
+- `nonVolatilStorage` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withOperationalStatus(operationalStatus)
 
+##### withOperationalStatus
+
+
+```javascript
+function withOperationalStatus(operationalStatus: string) -> 'Event'
+```
 
 Set the operationalStatus attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **operationalStatus** | `string` | ❌ |  |
+- `operationalStatus` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withPath(path)
 
+##### withPath
+
+
+```javascript
+function withPath(path: string) -> 'Event'
+```
 
 Set the path attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **path** | `string` | ❌ | optionals field |
+- `path` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withPowerSupply(powerSupply)
 
+##### withPowerSupply
+
+
+```javascript
+function withPowerSupply(powerSupply: *) -> 'Event'
+```
 
 Set the powerSupply attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **powerSupply** | `*` | ❌ |  |
+- `powerSupply` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withRam(ram)
 
+##### withRam
+
+
+```javascript
+function withRam(ram: *) -> 'Event'
+```
 
 Set the Ram attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ram** | `*` | ❌ |  |
+- `ram` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withSoftware(software)
 
+##### withSoftware
+
+
+```javascript
+function withSoftware(software: software) -> 'Event'
+```
 
 Set the software attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **software** | `software` | ❌ | optionals field |
+- `software` _software_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withStatusTemperature(unitTemperature)
 
+##### withStatusTemperature
+
+
+```javascript
+function withStatusTemperature(unitTemperature: string) -> 'Event'
+```
 
 Set the unitTemperature attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **unitTemperature** | `string` | ❌ | optionals field |
+- `unitTemperature` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withTemperatureAverage(averageTemperature)
 
+##### withTemperatureAverage
+
+
+```javascript
+function withTemperatureAverage(averageTemperature: string) -> 'Event'
+```
 
 Set the average attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **averageTemperature** | `string` | ❌ | optionals field |
+- `averageTemperature` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withTrendTemperature(unitTemperature)
 
+##### withTrendTemperature
+
+
+```javascript
+function withTrendTemperature(unitTemperature: string) -> 'Event'
+```
 
 Set the unitTemperature attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **unitTemperature** | `string` | ❌ | optionals field |
+- `unitTemperature` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withUnitTemperature(unitTemperature)
 
+##### withUnitTemperature
+
+
+```javascript
+function withUnitTemperature(unitTemperature: string) -> 'Event'
+```
 
 Set the unitTemperature attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **unitTemperature** | `string` | ❌ | optionals field |
+- `unitTemperature` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withUpTime(upTime)
 
+##### withUpTime
+
+
+```javascript
+function withUpTime(upTime: number) -> 'Event'
+```
 
 Set the upTime  attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **upTime** | `number` | ❌ |  |
+- `upTime` _number_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withVolatilStorage(volatilStorage)
 
+##### withVolatilStorage
+
+
+```javascript
+function withVolatilStorage(volatilStorage: *) -> 'Event'
+```
 
 Set the volatilStorage attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **volatilStorage** | `*` | ❌ |  |
+- `volatilStorage` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
 

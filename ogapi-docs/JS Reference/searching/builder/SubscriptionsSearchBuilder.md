@@ -3,19 +3,28 @@ title = "Subscriptions Search Builder"
 weight = 10
 +++
 
-**Class:** `SubscriptionsSearchBuilder`
+SubscriptionsSearchBuilder
+
+### SubscriptionsSearchBuilder Objects
+
+```javascript
+class SubscriptionsSearchBuilder()
+```
 
 Defined a search over Subscriptions	
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---

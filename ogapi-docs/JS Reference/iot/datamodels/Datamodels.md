@@ -3,180 +3,206 @@ title = "Datamodels"
 weight = 10
 +++
 
-**Class:** `Datamodels`
+Datamodels
+
+### Datamodels Objects
+
+```javascript
+class Datamodels()
+```
 
 This is a base object for create a IoT Datamodel
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | this is ogapi instance |
-| **organization** | `string` | ❌ | Organization where the IoT datamodel will be created |
+- `ogapi` _InternalOpenGateAPI_  - this is ogapi instance
+- `organization` _string_  - Organization where the IoT datamodel will be created
 
 
 ---
-## addAllowedResourceType(resourceType)
 
+##### addAllowedResourceType
+
+
+```javascript
+function addAllowedResourceType(resourceType: string) -> 'Datamodels'
+```
 
 Set the addAllowedResourceType attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **resourceType** | `string` | ❌ | required field |
+- `resourceType` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datamodels`
-<br>
 
-{{% /notice %}}
+- _`Datamodels`_ 
+
 
 ---
-## addCategory(category, datastreams)
 
+##### addCategory
+
+
+```javascript
+function addCategory(category: Object,datastreams: Array) -> 'Datamodels'
+```
 
 Add a flavor. If the field datastreams have value, they will add to this flavor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **category** | `Object` | ❌ |  |
-| **datastreams** | `Array` | ❌ |  |
+- `category` _Object_  
+- `datastreams` _Array_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datamodels`
-<br>
 
-{{% /notice %}}
+- _`Datamodels`_ 
+
 
 ---
-## addDatastream(category, datastream)
 
+##### addDatastream
+
+
+```javascript
+function addDatastream(category: string,datastream: object) -> 'Datamodels'
+```
 
 Add a datastream to the indicated category
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **category** | `string` | ❌ |  |
-| **datastream** | `object` | ❌ |  |
+- `category` _string_  
+- `datastream` _object_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datamodels`
-<br>
 
-{{% /notice %}}
+- _`Datamodels`_ 
+
 
 ---
-## delete()
 
+##### delete
+
+
+```javascript
+function delete()
+```
 
 Delete not supported on this builder. Use IoTDatamodelHelper instead.
 
 
 
 ---
-## update()
 
+##### update
+
+
+```javascript
+function update()
+```
 
 Update not supported on this builder. Use IoTDatamodelHelper instead.
 
 
 
 ---
-## withDescription(description)
 
+##### withDescription
+
+
+```javascript
+function withDescription(description: string) -> 'Datamodels'
+```
 
 Set the description attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **description** | `string` | ❌ |  |
+- `description` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datamodels`
-<br>
 
-{{% /notice %}}
+- _`Datamodels`_ 
+
 
 ---
-## withIdentifier(identifier)
 
+##### withIdentifier
+
+
+```javascript
+function withIdentifier(identifier: string) -> 'Datamodels'
+```
 
 Set the identifier attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **identifier** | `string` | ❌ | required field |
+- `identifier` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datamodels`
-<br>
 
-{{% /notice %}}
+- _`Datamodels`_ 
+
 
 ---
-## withName(name)
 
+##### withName
+
+
+```javascript
+function withName(name: string) -> 'Datamodels'
+```
 
 Set the name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | required field |
+- `name` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datamodels`
-<br>
 
-{{% /notice %}}
+- _`Datamodels`_ 
+
 
 ---
-## withVersion(version)
 
+##### withVersion
+
+
+```javascript
+function withVersion(version: string) -> 'Datamodels'
+```
 
 Set the version attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **version** | `string` | ❌ | required field |
+- `version` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datamodels`
-<br>
 
-{{% /notice %}}
+- _`Datamodels`_ 
+
 
 ---
 

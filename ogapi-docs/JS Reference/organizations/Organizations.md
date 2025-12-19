@@ -3,262 +3,283 @@ title = "Organizations"
 weight = 10
 +++
 
-**Class:** `Organizations`
+Organizations
+
+### Organizations Objects
+
+```javascript
+class Organizations()
+```
 
 This is a base object that contains all you can do about Organizations.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## withAuth(auth)
 
+##### withAuth
+
+
+```javascript
+function withAuth(auth: object) -> 'Organizations'
+```
 
 Sets the auth security configuration
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **auth** | `object` | ❌ |  |
+- `auth` _object_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Organizations`
-<br>
 
-{{% /notice %}}
+- _`Organizations`_ 
+
 
 ---
-## withCountryCode(countryCode)
 
+##### withCountryCode
+
+
+```javascript
+function withCountryCode(countryCode: string) -> 'Organizations'
+```
 
 Set the country code attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **countryCode** | `string` | ❌ |  |
+- `countryCode` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Organizations`
-<br>
 
-{{% /notice %}}
+- _`Organizations`_ 
+
 
 ---
-## withDescription(description)
 
+##### withDescription
+
+
+```javascript
+function withDescription(description: string) -> 'Organizations'
+```
 
 Set the description attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **description** | `string` | ❌ |  |
+- `description` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Organizations`
-<br>
 
-{{% /notice %}}
+- _`Organizations`_ 
+
 
 ---
-## withDomain(domain)
 
+##### withDomain
+
+
+```javascript
+function withDomain(domain: string) -> 'Organizations'
+```
 
 Set the parent domain
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **domain** | `string` | ❌ |  |
+- `domain` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Organizations`
-<br>
 
-{{% /notice %}}
+- _`Organizations`_ 
+
 
 ---
-## withLangCode(langCode)
 
+##### withLangCode
+
+
+```javascript
+function withLangCode(langCode: string) -> 'Organizations'
+```
 
 Set the lang code attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **langCode** | `string` | ❌ |  |
+- `langCode` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Organizations`
-<br>
 
-{{% /notice %}}
+- _`Organizations`_ 
+
 
 ---
-## withLocation(latitude, longitude)
 
+##### withLocation
+
+
+```javascript
+function withLocation(latitude: number,longitude: number) -> 'Organizations'
+```
 
 Sets the map location attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **latitude** | `number` | ❌ |  |
-| **longitude** | `number` | ❌ |  |
+- `latitude` _number_  
+- `longitude` _number_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Organizations`
-<br>
 
-{{% /notice %}}
+- _`Organizations`_ 
+
 
 ---
-## withName(name)
 
+##### withName
+
+
+```javascript
+function withName(name: string) -> 'Organizations'
+```
 
 Set the name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | required field |
+- `name` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Organizations`
-<br>
 
-{{% /notice %}}
+- _`Organizations`_ 
+
 
 ---
-## withOnlyAssignedDomainCertificates(onlyDomainCerts)
 
+##### withOnlyAssignedDomainCertificates
+
+
+```javascript
+function withOnlyAssignedDomainCertificates(onlyDomainCerts: boolean) -> 'Organizations'
+```
 
 Set the onlyAssignedDomainCertificates attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **onlyDomainCerts** | `boolean` | ❌ | required field |
+- `onlyDomainCerts` _boolean_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Organizations`
-<br>
 
-{{% /notice %}}
+- _`Organizations`_ 
+
 
 ---
-## withPasswordPolicy(passPolicy)
 
+##### withPasswordPolicy
+
+
+```javascript
+function withPasswordPolicy(passPolicy: object) -> 'Organizations'
+```
 
 Sets the password poliicy configuration
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **passPolicy** | `object` | ❌ |  |
+- `passPolicy` _object_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Organizations`
-<br>
 
-{{% /notice %}}
+- _`Organizations`_ 
+
 
 ---
-## withPlan(plan)
 
+##### withPlan
+
+
+```javascript
+function withPlan(plan: string) -> 'Organizations'
+```
 
 Set the plan attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **plan** | `string` | ❌ |  |
+- `plan` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Organizations`
-<br>
 
-{{% /notice %}}
+- _`Organizations`_ 
+
 
 ---
-## withTimeZone(timeZone)
 
+##### withTimeZone
+
+
+```javascript
+function withTimeZone(timeZone: string) -> 'Organizations'
+```
 
 Set the time zone attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **timeZone** | `string` | ❌ |  |
+- `timeZone` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Organizations`
-<br>
 
-{{% /notice %}}
+- _`Organizations`_ 
+
 
 ---
-## withZoom(zoom)
 
+##### withZoom
+
+
+```javascript
+function withZoom(zoom: number) -> 'Organizations'
+```
 
 Sets the map zoom attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **zoom** | `number` | ❌ |  |
+- `zoom` _number_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Organizations`
-<br>
 
-{{% /notice %}}
+- _`Organizations`_ 
+
 
 ---
 

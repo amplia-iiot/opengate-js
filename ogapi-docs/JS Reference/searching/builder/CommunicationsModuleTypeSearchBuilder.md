@@ -3,74 +3,92 @@ title = "Communications Module Type Search Builder"
 weight = 10
 +++
 
-**Class:** `CommunicationsModuleTypeSearchBuilder`
+CommunicationsModuleTypeSearchBuilder
+
+### CommunicationsModuleTypeSearchBuilder Objects
+
+```javascript
+class CommunicationsModuleTypeSearchBuilder()
+```
 
 Defined a search over operational status catalogs    
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## build()
 
+##### build
+
+
+```javascript
+function build() -> 'StaticSearch'
+```
 
 Build a instance of StaticSearch 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `StaticSearch`
-<br>
 
-{{% /notice %}}
+- _`StaticSearch`_ 
 
-### Ejemplos
+
+**Example**:
+
+~~~javascript
+  ogapi.administrativeStateSearchBuilder().filter({and:[]}).build()
+~~~
+
+---
+
+##### customFilters
+
 
 ```javascript
-  ogapi.administrativeStateSearchBuilder().filter({and:[]}).build()
+function customFilters()
 ```
 
----
-## customFilters
-
-
 
 
 
 ---
-## withType(communicationsModuleType)
 
+##### withType
+
+
+```javascript
+function withType(communicationsModuleType: string) -> 'CommunicationsModuleTypeSearchBuilder'
+```
 
 Sets id to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **communicationsModuleType** | `string` | ❌ | specific type |
+- `communicationsModuleType` _string_  - specific type
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `CommunicationsModuleTypeSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`CommunicationsModuleTypeSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.communicationsModuleTypeSearchBuilder().withType('GENERIC').build()
-```
+~~~
 
 ---
 

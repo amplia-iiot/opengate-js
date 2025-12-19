@@ -3,169 +3,190 @@ title = "Models"
 weight = 10
 +++
 
-**Class:** `Models`
+Models
+
+### Models Objects
+
+```javascript
+class Models()
+```
 
 This is a base object that contains all you can do about Models.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## deleteInCascade()
+
+##### deleteInCascade
+
+
+```javascript
+function deleteInCascade() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## updateInCascade()
+
+##### updateInCascade
+
+
+```javascript
+function updateInCascade() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## withDescription(description)
 
+##### withDescription
+
+
+```javascript
+function withDescription(description: string) -> 'Models'
+```
 
 Set the description attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **description** | `string` | ❌ | required field |
+- `description` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Models`
-<br>
 
-{{% /notice %}}
+- _`Models`_ 
+
 
 ---
-## withIdentifier(id)
 
+##### withIdentifier
+
+
+```javascript
+function withIdentifier(id: string) -> 'Models'
+```
 
 Set the identifier attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **id** | `string` | ❌ | required field |
+- `id` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Models`
-<br>
 
-{{% /notice %}}
+- _`Models`_ 
+
 
 ---
-## withName(name)
 
+##### withName
+
+
+```javascript
+function withName(name: string) -> 'Models'
+```
 
 Set the name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | required field |
+- `name` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Models`
-<br>
 
-{{% /notice %}}
+- _`Models`_ 
+
 
 ---
-## withNotes(notes)
 
+##### withNotes
+
+
+```javascript
+function withNotes(notes: string) -> 'Models'
+```
 
 Set the notes attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **notes** | `string` | ❌ |  |
+- `notes` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Models`
-<br>
 
-{{% /notice %}}
+- _`Models`_ 
+
 
 ---
-## withUrl(url)
 
+##### withUrl
+
+
+```javascript
+function withUrl(url: string) -> 'Models'
+```
 
 Set the url attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **url** | `string` | ❌ |  |
+- `url` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Models`
-<br>
 
-{{% /notice %}}
+- _`Models`_ 
+
 
 ---
-## withVersion(version)
 
+##### withVersion
+
+
+```javascript
+function withVersion(version: string) -> 'Models'
+```
 
 Set the version attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **version** | `string` | ❌ |  |
+- `version` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Models`
-<br>
 
-{{% /notice %}}
+- _`Models`_ 
+
 
 ---
 

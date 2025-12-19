@@ -3,83 +3,99 @@ title = "Certificates Search Builder"
 weight = 10
 +++
 
-**Class:** `CertificatesSearchBuilder`
+CertificatesSearchBuilder
+
+### CertificatesSearchBuilder Objects
+
+```javascript
+class CertificatesSearchBuilder()
+```
 
 Defined a search over Bundles    
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## administrable()
 
+##### administrable
+
+
+```javascript
+function administrable() -> 'CertificatesSearchBuilder'
+```
 
 The search result will have all certificates which can be administered by the user
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `CertificatesSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`CertificatesSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.certificatesSearchBuilder().administrable()
-```
+~~~
 
 ---
-## assignable()
 
+##### assignable
+
+
+```javascript
+function assignable() -> 'CertificatesSearchBuilder'
+```
 
  The search result will have all certificates which can be assignable to some device
  ogapi.certificatesSearchBuilder().assignable()
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `CertificatesSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`CertificatesSearchBuilder`_ 
+
 
 ---
-## withFetch(flag)
 
+##### withFetch
+
+
+```javascript
+function withFetch(flag: flag) -> 'CertificatesSearchBuilder'
+```
 
 Set fecth value
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **flag** | `flag` | ❌ |  |
+- `flag` _flag_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `CertificatesSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`CertificatesSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.certificatesSearchBuilder().withFetch(true)
-```
+~~~
 
 ---
 

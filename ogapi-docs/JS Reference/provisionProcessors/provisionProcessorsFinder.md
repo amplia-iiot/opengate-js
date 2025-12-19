@@ -3,62 +3,73 @@ title = "provision Processors Finder"
 weight = 10
 +++
 
-**Class:** `provisionProcessorsFinder`
+provisionProcessorsFinder
+
+### provisionProcessorsFinder Objects
+
+```javascript
+class provisionProcessorsFinder()
+```
 
   This class allow make get request to ProvisionProcessors Finder resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | Reference to the API object. |
+- `ogapi` _InternalOpenGateAPI_  - Reference to the API object.
 
 
 ---
-## findByOrganization(organization)
 
+##### findByOrganization
+
+
+```javascript
+function findByOrganization(organization: string) -> 'Promise'
+```
 
 Performs a get that returns list of provision processors
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | organization |
+- `organization` _string_  - organization
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## findByOrganizationAndProvisionProcessorId(organization, identifier)
 
+##### findByOrganizationAndProvisionProcessorId
+
+
+```javascript
+function findByOrganizationAndProvisionProcessorId(organization: string,identifier: string) -> 'Promise'
+```
 
 Performs a get that returns a definition of provision Processors
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | organization |
-| **identifier** | `string` | ❌ | Provision Processors identifier |
+- `organization` _string_  - organization
+- `identifier` _string_  - Provision Processors identifier
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

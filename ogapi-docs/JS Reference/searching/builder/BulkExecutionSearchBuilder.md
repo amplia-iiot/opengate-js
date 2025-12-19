@@ -3,41 +3,53 @@ title = "Bulk Execution Search Builder"
 weight = 10
 +++
 
-**Class:** `BulkExecutionSearchBuilder`
+BulkExecutionSearchBuilder
+
+### BulkExecutionSearchBuilder Objects
+
+```javascript
+class BulkExecutionSearchBuilder()
+```
 
 Searching over all the created bulk process, which are already done or still in progress.	
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## build()
 
+##### build
+
+
+```javascript
+function build() -> 'WPSearch'
+```
 
 Build a instance of WPSearch 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `WPSearch`
-<br>
 
-{{% /notice %}}
+- _`WPSearch`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.bulkExecutionSearchBuilder().build()
-```
+~~~
 
 ---
 

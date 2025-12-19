@@ -3,42 +3,52 @@ title = "Datamodels Finder"
 weight = 10
 +++
 
-**Class:** `DatamodelsFinder`
+DatamodelsFinder
+
+### DatamodelsFinder Objects
+
+```javascript
+class DatamodelsFinder()
+```
 
   This class allow make get request to organization resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## findByOrganizationAndId(organization, id)
 
+##### findByOrganizationAndId
+
+
+```javascript
+function findByOrganizationAndId(organization: string,id: string) -> 'Promise'
+```
 
 Download a specific IoT Datamodel by its organization and id. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | datamodel organization . |
-| **id** | `string` | ❌ | datamodel id. |
+- `organization` _string_  - datamodel organization .
+- `id` _string_  - datamodel id.
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

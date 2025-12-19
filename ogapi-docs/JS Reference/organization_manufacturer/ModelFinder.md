@@ -3,43 +3,53 @@ title = "Model Finder"
 weight = 10
 +++
 
-**Class:** `ModelFinder`
+ModelFinder
+
+### ModelFinder Objects
+
+```javascript
+class ModelFinder()
+```
 
   This class allow make get request to hardware models resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## findByOrganizationAndManufacturerAndId(organization, manufacturer, identifier)
 
+##### findByOrganizationAndManufacturerAndId
+
+
+```javascript
+function findByOrganizationAndManufacturerAndId(organization: string,manufacturer: string,identifier: string) -> 'Promise'
+```
 
 Download a specific model by its id. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | model organization . |
-| **manufacturer** | `string` | ❌ | model manufacturer . |
-| **identifier** | `string` | ❌ | model name . |
+- `organization` _string_  - model organization .
+- `manufacturer` _string_  - model manufacturer .
+- `identifier` _string_  - model name .
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

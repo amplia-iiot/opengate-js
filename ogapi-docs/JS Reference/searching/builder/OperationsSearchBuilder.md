@@ -3,19 +3,28 @@ title = "Operations Search Builder"
 weight = 10
 +++
 
-**Class:** `OperationsSearchBuilder`
+OperationsSearchBuilder
+
+### OperationsSearchBuilder Objects
+
+```javascript
+class OperationsSearchBuilder()
+```
 
 Defined a search over executions´s opreations
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---

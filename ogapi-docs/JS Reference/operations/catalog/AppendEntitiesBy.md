@@ -3,82 +3,94 @@ title = "Append Entities By"
 weight = 10
 +++
 
-**Class:** `AppendEntitiesBy`
+AppendEntitiesBy
+
+### AppendEntitiesBy Objects
+
+```javascript
+class AppendEntitiesBy()
+```
 
 Util used into BaseOperationBuilder to append entities the three different ways. By filter, By tags, By entityList
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | this is configuration about Opengate North API. |
-| **parent** | `BaseOperationBuilder` | ❌ | this is a instance of BaseOperationBuilder |
+**Arguments**:
+
+- `ogapi` _InternalOpenGateAPI_  - this is configuration about Opengate North API.
+- `parent` _BaseOperationBuilder_  - this is a instance of BaseOperationBuilder
 
 
 ---
-## filter(filter, resourceType)
 
+##### filter
+
+
+```javascript
+function filter(filter: FilterBuilder,resourceType: string) -> 'BaseOperationBuilder'
+```
 
 Append filter to operation target
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **filter** | `FilterBuilder` | ❌ |  |
-| **resourceType** | `string` | ❌ |  |
+- `filter` _FilterBuilder_  
+- `resourceType` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BaseOperationBuilder`
-<br>
 
-{{% /notice %}}
+- _`BaseOperationBuilder`_ 
+
 
 ---
-## list(entities)
 
+##### list
+
+
+```javascript
+function list(entities: EntityListBuilder) -> 'BaseOperationBuilder'
+```
 
 Append entity list to operation target
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **entities** | `EntityListBuilder` | ❌ |  |
+- `entities` _EntityListBuilder_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BaseOperationBuilder`
-<br>
 
-{{% /notice %}}
+- _`BaseOperationBuilder`_ 
+
 
 ---
-## tag(tag)
 
+##### tag
+
+
+```javascript
+function tag(tag: string) -> 'BaseOperationBuilder'
+```
 
 Set tag to operation target
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **tag** | `string` | ❌ |  |
+- `tag` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BaseOperationBuilder`
-<br>
 
-{{% /notice %}}
+- _`BaseOperationBuilder`_ 
+
 
 ---
 

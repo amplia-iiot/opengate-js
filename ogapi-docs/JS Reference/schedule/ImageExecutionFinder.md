@@ -3,41 +3,51 @@ title = "Image Execution Finder"
 weight = 10
 +++
 
-**Class:** `ImageExecutionFinder`
+ImageExecutionFinder
+
+### ImageExecutionFinder Objects
+
+```javascript
+class ImageExecutionFinder()
+```
 
   This class allow make get request to planner resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | Reference to the API object. |
+- `ogapi` _InternalOpenGateAPI_  - Reference to the API object.
 
 
 ---
-## findByOrganization(organization)
 
+##### findByOrganization
+
+
+```javascript
+function findByOrganization(organization: *) -> 'Promise'
+```
 
 Download a complete list of scheduler history for the organization. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `*` | ❌ |  |
+- `organization` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

@@ -3,329 +3,358 @@ title = "Mobile"
 weight = 10
 +++
 
-**Class:** `Mobile`
+Mobile
+
+### Mobile Objects
+
+```javascript
+class Mobile()
+```
 
 This is a base object that allows the user to create a Datapoint.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 
 
 
 ---
-## composeElement()
+
+##### composeElement
+
+
+```javascript
+function composeElement() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## withApn(apn)
 
+##### withApn
+
+
+```javascript
+function withApn(apn: string) -> 'Mobile'
+```
 
 Set the apn attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **apn** | `string` | ❌ | optionals field |
+- `apn` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Mobile`
-<br>
 
-{{% /notice %}}
+- _`Mobile`_ 
+
 
 ---
-## withBcch(bcch)
 
+##### withBcch
+
+
+```javascript
+function withBcch(bcch: string) -> 'Mobile'
+```
 
 Set the bcch attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **bcch** | `string` | ❌ | optionals field |
+- `bcch` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Mobile`
-<br>
 
-{{% /notice %}}
+- _`Mobile`_ 
+
 
 ---
-## withCellId(cellId)
 
+##### withCellId
+
+
+```javascript
+function withCellId(cellId: string) -> 'Mobile'
+```
 
 Set the cellId attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **cellId** | `string` | ❌ | optionals field |
+- `cellId` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Mobile`
-<br>
 
-{{% /notice %}}
+- _`Mobile`_ 
+
 
 ---
-## withCgi(cgi)
 
+##### withCgi
+
+
+```javascript
+function withCgi(cgi: string) -> 'Mobile'
+```
 
 Set the cgi attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **cgi** | `string` | ❌ | optionals field |
+- `cgi` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Mobile`
-<br>
 
-{{% /notice %}}
+- _`Mobile`_ 
+
 
 ---
-## withLac(lac)
 
+##### withLac
+
+
+```javascript
+function withLac(lac: string) -> 'Mobile'
+```
 
 Set the lac attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **lac** | `string` | ❌ | optionals field |
+- `lac` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Mobile`
-<br>
 
-{{% /notice %}}
+- _`Mobile`_ 
+
 
 ---
-## withMr(mr)
 
+##### withMr
+
+
+```javascript
+function withMr(mr: string) -> 'Mobile'
+```
 
 Set the mr attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **mr** | `string` | ❌ | optionals field |
+- `mr` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Mobile`
-<br>
 
-{{% /notice %}}
+- _`Mobile`_ 
+
 
 ---
-## withPlmn(plmn)
 
+##### withPlmn
+
+
+```javascript
+function withPlmn(plmn: string) -> 'Mobile'
+```
 
 Set the plmn attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **plmn** | `string` | ❌ | optionals field |
+- `plmn` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Mobile`
-<br>
 
-{{% /notice %}}
+- _`Mobile`_ 
+
 
 ---
-## withRatType(ratType)
 
+##### withRatType
+
+
+```javascript
+function withRatType(ratType: string) -> 'Mobile'
+```
 
 Set the ratType attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ratType** | `string` | ❌ | optionals field |
+- `ratType` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Mobile`
-<br>
 
-{{% /notice %}}
+- _`Mobile`_ 
+
 
 ---
-## withsignalQuality(signalQuality)
 
+##### withsignalQuality
+
+
+```javascript
+function withsignalQuality(signalQuality: string) -> 'Mobile'
+```
 
 Set the signalQuality attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **signalQuality** | `string` | ❌ | optionals field |
+- `signalQuality` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Mobile`
-<br>
 
-{{% /notice %}}
+- _`Mobile`_ 
+
 
 ---
-## withsignalQualityMax(signalQualityMax)
 
+##### withsignalQualityMax
+
+
+```javascript
+function withsignalQualityMax(signalQualityMax: string) -> 'Mobile'
+```
 
 Set the signalQualityMax attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **signalQualityMax** | `string` | ❌ | optionals field |
+- `signalQualityMax` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Mobile`
-<br>
 
-{{% /notice %}}
+- _`Mobile`_ 
+
 
 ---
-## withsignalQualityMin(signalQualityMin)
 
+##### withsignalQualityMin
+
+
+```javascript
+function withsignalQualityMin(signalQualityMin: string) -> 'Mobile'
+```
 
 Set the signalQualityMin attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **signalQualityMin** | `string` | ❌ | optionals field |
+- `signalQualityMin` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Mobile`
-<br>
 
-{{% /notice %}}
+- _`Mobile`_ 
+
 
 ---
-## withSignalStrength(signalStrength)
 
+##### withSignalStrength
+
+
+```javascript
+function withSignalStrength(signalStrength: string) -> 'Mobile'
+```
 
 Set the signalStrength attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **signalStrength** | `string` | ❌ | optionals field |
+- `signalStrength` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Mobile`
-<br>
 
-{{% /notice %}}
+- _`Mobile`_ 
+
 
 ---
-## withSignalStrengthMax(signalStrengthMax)
 
+##### withSignalStrengthMax
+
+
+```javascript
+function withSignalStrengthMax(signalStrengthMax: string) -> 'Mobile'
+```
 
 Set the signalStrengthMax attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **signalStrengthMax** | `string` | ❌ | optionals field |
+- `signalStrengthMax` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Mobile`
-<br>
 
-{{% /notice %}}
+- _`Mobile`_ 
+
 
 ---
-## withsignalStrengthMin(signalStrengthMin)
 
+##### withsignalStrengthMin
+
+
+```javascript
+function withsignalStrengthMin(signalStrengthMin: string) -> 'Mobile'
+```
 
 Set the signalStrengthMin attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **signalStrengthMin** | `string` | ❌ | optionals field |
+- `signalStrengthMin` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Mobile`
-<br>
 
-{{% /notice %}}
+- _`Mobile`_ 
+
 
 ---
-## withTimingAdvance(timingAdvance)
 
+##### withTimingAdvance
+
+
+```javascript
+function withTimingAdvance(timingAdvance: string) -> 'Mobile'
+```
 
 Set the timingAdvance attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **timingAdvance** | `string` | ❌ | optionals field |
+- `timingAdvance` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Mobile`
-<br>
 
-{{% /notice %}}
+- _`Mobile`_ 
+
 
 ---
 

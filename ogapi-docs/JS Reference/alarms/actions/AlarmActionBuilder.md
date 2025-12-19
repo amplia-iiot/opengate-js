@@ -3,94 +3,108 @@ title = "Alarm Action Builder"
 weight = 10
 +++
 
-**Class:** `AlarmActionBuilder`
+AlarmActionBuilder
+
+### AlarmActionBuilder Objects
+
+```javascript
+class AlarmActionBuilder()
+```
 
 Defines the builder to execute alarm actions
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | this is configuration about Opengate North API. |
-| **action** | `string` | ❌ | This action can be ATTEND or CLOSE |
+**Arguments**:
+
+- `ogapi` _InternalOpenGateAPI_  - this is configuration about Opengate North API.
+- `action` _string_  - This action can be ATTEND or CLOSE
 
 
 ---
-## addAlarmId(alarmId)
 
+##### addAlarmId
+
+
+```javascript
+function addAlarmId(alarmId: string) -> 'AlarmActionBuilder'
+```
 
 Add alarmId to operation
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **alarmId** | `string` | ❌ | AlarmId of Alarm |
+- `alarmId` _string_  - AlarmId of Alarm
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `AlarmActionBuilder`
-<br>
 
-{{% /notice %}}
+- _`AlarmActionBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.alarms.builderFactory.newAlarmCloseBuilder().addAlarmId("")
-```
+~~~
 
 ---
-## build()
 
+##### build
+
+
+```javascript
+function build() -> 'Operation'
+```
 
 Build a instance of Operation 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Operation`
-<br>
 
-{{% /notice %}}
+- _`Operation`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.operations.builderFactory.newAlarmCloseBuilder().build()
-```
+~~~
 
 ---
-## withNotes(notes)
 
+##### withNotes
+
+
+```javascript
+function withNotes(notes: string) -> 'AlarmActionBuilder'
+```
 
 Add notes to operation
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **notes** | `string` | ❌ | Notes about operation |
+- `notes` _string_  - Notes about operation
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `AlarmActionBuilder`
-<br>
 
-{{% /notice %}}
+- _`AlarmActionBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.operations.builderFactory.newAlarmCloseBuilder().withNotes("")
-```
+~~~
 
 ---
 

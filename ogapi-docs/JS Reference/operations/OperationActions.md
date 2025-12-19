@@ -3,230 +3,262 @@ title = "Operation Actions"
 weight = 10
 +++
 
-**Class:** `OperationActions`
+OperationActions
+
+### OperationActions Objects
+
+```javascript
+class OperationActions()
+```
 
 
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | this is configuration about Opengate North API. |
-| **operationId** | `string` | ❌ | Identifier of the operation on which the action will be carried out |
+- `ogapi` _InternalOpenGateAPI_  - this is configuration about Opengate North API.
+- `operationId` _string_  - Identifier of the operation on which the action will be carried out
 
 
 ---
-## active()
 
+##### active
+
+
+```javascript
+function active() -> 'Promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This function active an operation
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.newOperationActions("xxxxx-xxx-xxxx-xxxxx").active()
-```
+~~~
 
 ---
-## activePeriodicity()
 
+##### activePeriodicity
+
+
+```javascript
+function activePeriodicity() -> 'Promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This function active periodicity of an operation
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.newOperationActions("xxxxx-xxx-xxxx-xxxxx").activePeriodicity()
-```
+~~~
 
 ---
-## cancel()
 
+##### cancel
+
+
+```javascript
+function cancel() -> 'Promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This function cancela operation
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 Actions("xxxxx-xxx-xxxx-xxxxx").cancel();
-```
+~~~
 
 ---
-## cancelPeriodicity()
 
+##### cancelPeriodicity
+
+
+```javascript
+function cancelPeriodicity() -> 'Promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This function cancel the periodicity of an operation
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.OperationActions("xxxxx-xxx-xxxx-xxxxx").cancelPeriodicity();
-```
+~~~
 
 ---
-## changeCallback(url)
 
+##### changeCallback
+
+
+```javascript
+function changeCallback(url: string) -> 'promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This function pauses (if it was active), updates the callback and passes the operation to the initial state (if activated, activated again)
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **url** | `string` | ❌ |  |
+- `url` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `promise`
-<br>
 
-{{% /notice %}}
+- _`promise`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.OperationActions("xxxxx-xxx-xxxx-xxxxx").changeCallback("http://[your_application_address]/[your_URI]")
-```
+~~~
 
 ---
-## executeLater(minutes)
 
+##### executeLater
+
+
+```javascript
+function executeLater(minutes: number) -> 'promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This function pauses (if it was active), updates the delay and passes the operation to the initial state (if activated, activated again)
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **minutes** | `number` | ❌ |  |
+- `minutes` _number_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `promise`
-<br>
 
-{{% /notice %}}
+- _`promise`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.OperationActions("xxxxx-xxx-xxxx-xxxxx").executeLater(10)
-```
+~~~
 
 ---
-## executeNow()
 
+##### executeNow
+
+
+```javascript
+function executeNow() -> 'Promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This function pause, update its delay and active an operation for execute immediately
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.OperationActions("xxxxx-xxx-xxxx-xxxxx").executeNow()
-```
+~~~
 
 ---
-## pause()
 
+##### pause
+
+
+```javascript
+function pause() -> 'Promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This function pause an operation
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.OperationActions("xxxxx-xxx-xxxx-xxxxx").pause()
-```
+~~~
 
 ---
-## pausePeriodicity()
 
+##### pausePeriodicity
+
+
+```javascript
+function pausePeriodicity() -> 'Promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This function pause periodicity of an operation
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.OperationActions("xxxxx-xxx-xxxx-xxxxx").pausePeriodicity()
-```
+~~~
 
 ---
 

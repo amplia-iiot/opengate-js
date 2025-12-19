@@ -3,169 +3,190 @@ title = "Temperature"
 weight = 10
 +++
 
-**Class:** `Temperature`
+Temperature
+
+### Temperature Objects
+
+```javascript
+class Temperature()
+```
 
 This is a base object that allows the user to create a Datapoint.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 
 
 
 ---
-## composeElement()
+
+##### composeElement
+
+
+```javascript
+function composeElement() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## withCurrentTemperature(currentTemperature)
 
+##### withCurrentTemperature
+
+
+```javascript
+function withCurrentTemperature(currentTemperature: string) -> 'Event'
+```
 
 Set the currentTemperature attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **currentTemperature** | `string` | ❌ | optionals field |
+- `currentTemperature` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withMaximumTemperature(maximumTemperature)
 
+##### withMaximumTemperature
+
+
+```javascript
+function withMaximumTemperature(maximumTemperature: string) -> 'Event'
+```
 
 Set the maximum attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **maximumTemperature** | `string` | ❌ | optionals field |
+- `maximumTemperature` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withMinimumTemperature(minimumTemperature)
 
+##### withMinimumTemperature
+
+
+```javascript
+function withMinimumTemperature(minimumTemperature: string) -> 'Event'
+```
 
 Set the minimumTemperature attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **minimumTemperature** | `string` | ❌ | optionals field |
+- `minimumTemperature` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withStatusTemperature(statusTemperature)
 
+##### withStatusTemperature
+
+
+```javascript
+function withStatusTemperature(statusTemperature: string) -> 'Event'
+```
 
 Set the statusTemperature attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **statusTemperature** | `string` | ❌ | optionals field |
+- `statusTemperature` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withTemperatureAverage(averageTemperature)
 
+##### withTemperatureAverage
+
+
+```javascript
+function withTemperatureAverage(averageTemperature: string) -> 'Event'
+```
 
 Set the averageTemperature attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **averageTemperature** | `string` | ❌ | optionals field |
+- `averageTemperature` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withTrendTemperature(trendTemperature)
 
+##### withTrendTemperature
+
+
+```javascript
+function withTrendTemperature(trendTemperature: string) -> 'Event'
+```
 
 Set the trendTemperature attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **trendTemperature** | `string` | ❌ | optionals field |
+- `trendTemperature` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
-## withUnitTemperature(unitTemperature)
 
+##### withUnitTemperature
+
+
+```javascript
+function withUnitTemperature(unitTemperature: string) -> 'Event'
+```
 
 Set the unitTemperature attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **unitTemperature** | `string` | ❌ | optionals field |
+- `unitTemperature` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Event`
-<br>
 
-{{% /notice %}}
+- _`Event`_ 
+
 
 ---
 

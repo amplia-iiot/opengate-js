@@ -3,218 +3,239 @@ title = "Certificates"
 weight = 10
 +++
 
-**Class:** `Certificates`
+Certificates
+
+### Certificates Objects
+
+```javascript
+class Certificates()
+```
 
 This is a base object that contains all you can do about Certificates.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## create(rawFile)
 
+##### create
+
+
+```javascript
+function create(rawFile: File) -> 'Promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This method create an element certificate
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **rawFile** | `File` | ❌ | this File is the certificate |
+- `rawFile` _File_  - this File is the certificate
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## update()
 
+##### update
+
+
+```javascript
+function update() -> 'Promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This method update an element certificate
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## withAdministrativeState(administrativeState)
 
+##### withAdministrativeState
+
+
+```javascript
+function withAdministrativeState(administrativeState: string) -> 'Certificates'
+```
 
 Set the administrativeState attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **administrativeState** | `string` | ❌ |  |
+- `administrativeState` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Certificates`
-<br>
 
-{{% /notice %}}
+- _`Certificates`_ 
+
 
 ---
-## withDescription(description)
 
+##### withDescription
+
+
+```javascript
+function withDescription(description: string) -> 'Certificates'
+```
 
 Set the description attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **description** | `string` | ❌ | optional field |
+- `description` _string_  - optional field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Certificates`
-<br>
 
-{{% /notice %}}
+- _`Certificates`_ 
+
 
 ---
-## withDomains(domains)
 
+##### withDomains
+
+
+```javascript
+function withDomains(domains: Array) -> 'Certificates'
+```
 
 Set the domains attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **domains** | `Array` | ❌ |  |
+- `domains` _Array_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Certificates`
-<br>
 
-{{% /notice %}}
+- _`Certificates`_ 
+
 
 ---
-## withId(id)
 
+##### withId
+
+
+```javascript
+function withId(id: string) -> 'Certificates'
+```
 
 Set the id attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **id** | `string` | ❌ | required field on delete |
+- `id` _string_  - required field on delete
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Certificates`
-<br>
 
-{{% /notice %}}
+- _`Certificates`_ 
+
 
 ---
-## withName(name)
 
+##### withName
+
+
+```javascript
+function withName(name: string) -> 'Certificates'
+```
 
 Set the name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | required field |
+- `name` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Certificates`
-<br>
 
-{{% /notice %}}
+- _`Certificates`_ 
+
 
 ---
-## withParameters(parameters)
 
+##### withParameters
+
+
+```javascript
+function withParameters(parameters: string) -> 'Certificates'
+```
 
 Set the parameters attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parameters** | `string` | ❌ | optional field |
+- `parameters` _string_  - optional field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Certificates`
-<br>
 
-{{% /notice %}}
+- _`Certificates`_ 
+
 
 ---
-## withTags(tags)
 
+##### withTags
+
+
+```javascript
+function withTags(tags: Array) -> 'Certificates'
+```
 
 Set the tags attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **tags** | `Array` | ❌ |  |
+- `tags` _Array_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Certificates`
-<br>
 
-{{% /notice %}}
+- _`Certificates`_ 
+
 
 ---
-## withUsages(usages)
 
+##### withUsages
+
+
+```javascript
+function withUsages(usages: Array) -> 'Certificates'
+```
 
 Set the usages attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **usages** | `Array` | ❌ |  |
+- `usages` _Array_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Certificates`
-<br>
 
-{{% /notice %}}
+- _`Certificates`_ 
+
 
 ---
 

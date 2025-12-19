@@ -3,82 +3,101 @@ title = "Periodicity Update Builder"
 weight = 10
 +++
 
-**Class:** `PeriodicityUpdateBuilder`
+PeriodicityUpdateBuilder
+
+### PeriodicityUpdateBuilder Objects
+
+```javascript
+class PeriodicityUpdateBuilder()
+```
 
 
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `*` | ❌ |  |
-| **taskId** | `*` | ❌ |  |
-| **taskObj** | `*` | ❌ |  |
+**Arguments**:
+
+- `ogapi` _*_  
+- `taskId` _*_  
+- `taskObj` _*_  
 
 
 ---
-## build()
+
+##### build
+
+
+```javascript
+function build() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## executeEach(date, end)
 
+##### executeEach
+
+
+```javascript
+function executeEach(date: Date,end: number or Date) -> 'ExecuteEach'
+```
 
 The operation will execute with a period that you must define with ExecuteEachBuilder 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **date** | `Date` | ❌ | Date when operation will be executed |
-| **end** | `number or Date` | ❌ | When periodicity ends. By repetitions or by date |
+- `date` _Date_  - Date when operation will be executed
+- `end` _number or Date_  - When periodicity ends. By repetitions or by date
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ExecuteEach`
-<br>
 
-{{% /notice %}}
+- _`ExecuteEach`_ 
+
 
 ---
-## executeEvery(date, end)
 
+##### executeEvery
+
+
+```javascript
+function executeEvery(date: Date,end: number or Date) -> 'ExecuteEvery'
+```
 
 The operation will execute with a period that you must define with ExecuteEveryBuilder 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **date** | `Date` | ❌ | Date when operation will be executed |
-| **end** | `number or Date` | ❌ | When periodicity ends. By repetitions or by date |
+- `date` _Date_  - Date when operation will be executed
+- `end` _number or Date_  - When periodicity ends. By repetitions or by date
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ExecuteEvery`
-<br>
 
-{{% /notice %}}
+- _`ExecuteEvery`_ 
+
 
 ---
-## task_id
 
+##### task_id
+
+
+```javascript
+function task_id()
+```
 
 
 

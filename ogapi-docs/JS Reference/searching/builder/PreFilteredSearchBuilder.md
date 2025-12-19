@@ -3,156 +3,179 @@ title = "Pre Filtered Search Builder"
 weight = 10
 +++
 
-**Class:** `PreFilteredSearchBuilder`
+PreFilteredSearchBuilder
+
+### PreFilteredSearchBuilder Objects
+
+```javascript
+class PreFilteredSearchBuilder()
+```
 
 This is a abstract class. It is a class that extends from base to make all kind of summary search request to OpenGate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | this is ogapi instance |
-| **routes** | `object` | ❌ | this defined the routes. One of those routes must be called on Builder before call build method. |
+- `parent` _InternalOpenGateAPI_  - this is ogapi instance
+- `routes` _object_  - this defined the routes. One of those routes must be called on Builder before call build method.
 
 
 ---
-## collected()
 
+##### collected
+
+
+```javascript
+function collected() -> 'PreFilteredSearchBuilder'
+```
 
 This option forces search api to add a filter of collected content
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `PreFilteredSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`PreFilteredSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.subscribersSearchBuilder().collected() 
-```
+~~~
 
 ---
-## disableCaseSensitive(flag)
 
+##### disableCaseSensitive
+
+
+```javascript
+function disableCaseSensitive(flag: *) -> 'EntitiesSearchBuilder'
+```
 
 The response will return a response by applying the filter with likes case-no-sensitive
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **flag** | `*` | ❌ |  |
+- `flag` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `EntitiesSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`EntitiesSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.entitiesSearchBuilder().disableCaseSensitive() 
-```
+~~~
 
 ---
-## disableDefaultSorted()
 
+##### disableDefaultSorted
+
+
+```javascript
+function disableDefaultSorted() -> 'PreFilteredSearchBuilder'
+```
 
 The response will return a response without sorted
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `PreFilteredSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`PreFilteredSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.assetsSearchBuilder().disableDefaultSorted() 
-```
+~~~
 
 ---
-## provisioned()
 
+##### provisioned
+
+
+```javascript
+function provisioned() -> 'PreFilteredSearchBuilder'
+```
 
 This option forces search api to add a filter of provisioned content
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `PreFilteredSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`PreFilteredSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.subscribersSearchBuilder().provisioned() 
-```
+~~~
 
 ---
-## removeCaseSensitive()
 
+##### removeCaseSensitive
+
+
+```javascript
+function removeCaseSensitive() -> 'EntitiesSearchBuilder'
+```
 
 The response will return a response by applying the filter with likes case-no-sensitive
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `EntitiesSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`EntitiesSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.entitiesSearchBuilder().removeCaseSensitive() 
-```
+~~~
 
 ---
-## select(select)
 
+##### select
+
+
+```javascript
+function select(select: SelectBuilder,object) -> 'PreFilteredSearchBuilder'
+```
 
 The search request will have this filter 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **select** | `SelectBuilder,object` | ❌ |  |
+- `select` _SelectBuilder,object_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `PreFilteredSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`PreFilteredSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.devicesSearchBuilder().select(
      ogapi.newSelectBuilder().add(SE.element("provision.device.identifier", ["value"], "id"), SE.add("device.temperature.value", ["value"]))
  ) // Setting SelectBuilder
@@ -162,7 +185,7 @@ The search request will have this filter
          {"name": "device.temperature.value","fields": ["value"]}
      ]
  }) //Custom select
-```
+~~~
 
 ---
 

@@ -3,20 +3,29 @@ title = "Device Finder"
 weight = 10
 +++
 
-**Class:** `DeviceFinder`
+DeviceFinder
+
+### DeviceFinder Objects
+
+```javascript
+class DeviceFinder()
+```
 
   This class allow make get request to device provisioned resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---

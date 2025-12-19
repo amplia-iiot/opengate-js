@@ -3,64 +3,75 @@ title = "Connector Functions Finder"
 weight = 10
 +++
 
-**Class:** `ConnectorFunctionsFinder`
+ConnectorFunctionsFinder
+
+### ConnectorFunctionsFinder Objects
+
+```javascript
+class ConnectorFunctionsFinder()
+```
 
   This class allow make get request to ConnectorFunctions resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | Reference to the API object. |
+- `ogapi` _InternalOpenGateAPI_  - Reference to the API object.
 
 
 ---
-## findByOrganizationAndChannel(organization, channel)
 
+##### findByOrganizationAndChannel
+
+
+```javascript
+function findByOrganizationAndChannel(organization: string,channel: string) -> 'Promise'
+```
 
 Performs a get that returns connectors functions related
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | organization |
-| **channel** | `string` | ❌ | channel. |
+- `organization` _string_  - organization
+- `channel` _string_  - channel.
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## findByOrganizationAndChannelAndName(organization, channel, name)
 
+##### findByOrganizationAndChannelAndName
+
+
+```javascript
+function findByOrganizationAndChannelAndName(organization: string,channel: string,name: string) -> 'Promise'
+```
 
 Performs a get that returns connectors functions related
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | organization |
-| **channel** | `string` | ❌ | channel. |
-| **name** | `string` | ❌ | Connector function name |
+- `organization` _string_  - organization
+- `channel` _string_  - channel.
+- `name` _string_  - Connector function name
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

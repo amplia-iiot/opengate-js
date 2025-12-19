@@ -3,242 +3,269 @@ title = "Rest Request"
 weight = 10
 +++
 
-**Class:** `RestRequest`
+RestRequest
+
+### RestRequest Objects
+
+```javascript
+class RestRequest()
+```
 
 This is a base object that contains all you can do about Bundles.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## toJson()
+
+##### toJson
+
+
+```javascript
+function toJson() -> '*'
+```
 
 
 
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
-
-{{% /notice %}}
-
----
-## update()
+**Returns**:
 
 
-
+- _`*`_ 
 
 
 ---
-## withAsyncResponseMaxTimeToWaitCallback(asyncResponseMaxTimeToWaitCallback)
 
+##### update
+
+
+```javascript
+function update()
+```
+
+
+
+
+---
+
+##### withAsyncResponseMaxTimeToWaitCallback
+
+
+```javascript
+function withAsyncResponseMaxTimeToWaitCallback(asyncResponseMaxTimeToWaitCallback: string) -> 'RestRequest'
+```
 
 Sets the async response with selected timeout
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **asyncResponseMaxTimeToWaitCallback** | `string` | ❌ |  |
+- `asyncResponseMaxTimeToWaitCallback` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `RestRequest`
-<br>
 
-{{% /notice %}}
+- _`RestRequest`_ 
+
 
 ---
-## withBody(restRequestBody)
 
+##### withBody
+
+
+```javascript
+function withBody(restRequestBody: string) -> 'RestRequest'
+```
 
 Sets the body for restRequest
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **restRequestBody** | `string` | ❌ |  |
+- `restRequestBody` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `RestRequest`
-<br>
 
-{{% /notice %}}
+- _`RestRequest`_ 
+
 
 ---
-## withHeaders(restRequestHeaders)
 
+##### withHeaders
+
+
+```javascript
+function withHeaders(restRequestHeaders: string) -> 'RestRequest'
+```
 
 Sets the header for restRequest
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **restRequestHeaders** | `string` | ❌ |  |
+- `restRequestHeaders` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `RestRequest`
-<br>
 
-{{% /notice %}}
+- _`RestRequest`_ 
+
 
 ---
-## withIdentifier(identifier)
 
+##### withIdentifier
+
+
+```javascript
+function withIdentifier(identifier: string) -> 'RestRequest'
+```
 
 Sets the identifier attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **identifier** | `string` | ❌ |  |
+- `identifier` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `RestRequest`
-<br>
 
-{{% /notice %}}
+- _`RestRequest`_ 
+
 
 ---
-## withMethod(restRequestMethod)
 
+##### withMethod
+
+
+```javascript
+function withMethod(restRequestMethod: string) -> 'RestRequest'
+```
 
 Sets the method for restRequest
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **restRequestMethod** | `string` | ❌ |  |
+- `restRequestMethod` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `RestRequest`
-<br>
 
-{{% /notice %}}
+- _`RestRequest`_ 
+
 
 ---
-## withOrganization(organization)
 
+##### withOrganization
+
+
+```javascript
+function withOrganization(organization: string) -> 'Channels'
+```
 
 Set the organization attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ |  |
+- `organization` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Channels`
-<br>
 
-{{% /notice %}}
+- _`Channels`_ 
+
 
 ---
-## withScheduleCronExpression(cronExpression)
 
+##### withScheduleCronExpression
+
+
+```javascript
+function withScheduleCronExpression(cronExpression: string) -> 'RestRequest'
+```
 
 Sets the crontab expression for schedule
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **cronExpression** | `string` | ❌ |  |
+- `cronExpression` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `RestRequest`
-<br>
 
-{{% /notice %}}
+- _`RestRequest`_ 
+
 
 ---
-## withScheduleImmediateExecution(isImmediateExecution)
 
+##### withScheduleImmediateExecution
+
+
+```javascript
+function withScheduleImmediateExecution(isImmediateExecution: boolean) -> 'RestRequest'
+```
 
 Sets the isImmediateExecution attribute for schedule
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **isImmediateExecution** | `boolean` | ❌ |  |
+- `isImmediateExecution` _boolean_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `RestRequest`
-<br>
 
-{{% /notice %}}
+- _`RestRequest`_ 
+
 
 ---
-## withSyncResponseTimeout(syncResponseTimeout)
 
+##### withSyncResponseTimeout
+
+
+```javascript
+function withSyncResponseTimeout(syncResponseTimeout: string) -> 'RestRequest'
+```
 
 Sets the sync response with selected timeout
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **syncResponseTimeout** | `string` | ❌ |  |
+- `syncResponseTimeout` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `RestRequest`
-<br>
 
-{{% /notice %}}
+- _`RestRequest`_ 
+
 
 ---
-## withUrl(restRequestUrl)
 
+##### withUrl
+
+
+```javascript
+function withUrl(restRequestUrl: string) -> 'RestRequest'
+```
 
 Sets the url for restRequest
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **restRequestUrl** | `string` | ❌ |  |
+- `restRequestUrl` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `RestRequest`
-<br>
 
-{{% /notice %}}
+- _`RestRequest`_ 
+
 
 ---
 

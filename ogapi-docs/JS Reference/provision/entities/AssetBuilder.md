@@ -3,24 +3,33 @@ title = "Asset Builder"
 weight = 10
 +++
 
-**Class:** `AssetBuilder`
+AssetBuilder
+
+### AssetBuilder Objects
+
+```javascript
+class AssetBuilder()
+```
 
 Subscription builder. This builder give you the necessary tools to create a subscription using our OpenGate REST.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | this is ogapi instance |
-| **organization** | `string` | ❌ | this is the organization name where subscription will be created |
-| **allowedDatastreams** | `array` | ✅ | Allowed datastreams to add into the new subscription |
-| **definedSchemas** | `array` | ✅ | Jsonschema about all OpenGate specific types |
-| **jsonSchemaValidator** | `Validator` | ✅ | Json schema validator tool |
+- `ogapi` _InternalOpenGateAPI_  - this is ogapi instance
+- `organization` _string_  - this is the organization name where subscription will be created
+- `allowedDatastreams` _array_ (optional) - Allowed datastreams to add into the new subscription
+- `definedSchemas` _array_ (optional) - Jsonschema about all OpenGate specific types
+- `jsonSchemaValidator` _Validator_ (optional) - Json schema validator tool
 
 
 ---

@@ -3,82 +3,94 @@ title = "Category"
 weight = 10
 +++
 
-**Class:** `Category`
+Category
+
+### Category Objects
+
+```javascript
+class Category()
+```
 
 Defines the builder to configure a category of a datamodel. With this builder you can configure a category
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
    
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
-| **identifier** | `identifier` | ❌ | of category |
-| **datastreams** | `Array` | ❌ | of category |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
+- `identifier` _identifier_  - of category
+- `datastreams` _Array_  - of category
 
 
 ---
-## addDatastream(datastream)
 
+##### addDatastream
+
+
+```javascript
+function addDatastream(datastream: Object) -> 'Category'
+```
 
 Add a datastream to the category 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **datastream** | `Object` | ❌ | json object |
+- `datastream` _Object_  - json object
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Category`
-<br>
 
-{{% /notice %}}
+- _`Category`_ 
+
 
 ---
-## addDatastreams(datastreams)
 
+##### addDatastreams
+
+
+```javascript
+function addDatastreams(datastreams: Object) -> 'Category'
+```
 
 Add a datastreams to the category 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **datastreams** | `Object` | ❌ | of datastream json object |
+- `datastreams` _Object_  - of datastream json object
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Category`
-<br>
 
-{{% /notice %}}
+- _`Category`_ 
+
 
 ---
-## withName(name)
+
+##### withName
 
 
+```javascript
+function withName(name: *) -> '*'
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `*` | ❌ |  |
+**Arguments**:
 
-### Retorna
+- `name` _*_  
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+**Returns**:
 
-{{% /notice %}}
+
+- _`*`_ 
+
 
 ---
 

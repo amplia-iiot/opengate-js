@@ -3,64 +3,79 @@ title = "Flattened Search Builder"
 weight = 10
 +++
 
-**Class:** `FlattenedSearchBuilder`
+FlattenedSearchBuilder
+
+### FlattenedSearchBuilder Objects
+
+```javascript
+class FlattenedSearchBuilder()
+```
 
 This is a abstract class. It is a class that extends from base to make all kind of summary search request to OpenGate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | this is ogapi instance |
-| **routes** | `object` | ❌ | this defined the routes. One of those routes must be called on Builder before call build method. |
+- `parent` _InternalOpenGateAPI_  - this is ogapi instance
+- `routes` _object_  - this defined the routes. One of those routes must be called on Builder before call build method.
 
 
 ---
-## build()
 
+##### build
+
+
+```javascript
+function build() -> 'Search'
+```
 
 Build a instance of Search 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Search`
-<br>
 
-{{% /notice %}}
+- _`Search`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.devicesSearchBuilder().onProvisioned().build()
-```
+~~~
 
 ---
-## flattened()
 
+##### flattened
+
+
+```javascript
+function flattened() -> 'FlattenedSearchBuilder'
+```
 
 The response will return a flattened response
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `FlattenedSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`FlattenedSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.entitiesSearchBuilder().flattened() 
-```
+~~~
 
 ---
 

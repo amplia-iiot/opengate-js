@@ -3,303 +3,328 @@ title = "Connector Functions"
 weight = 10
 +++
 
-**Class:** `ConnectorFunctions`
+ConnectorFunctions
+
+### ConnectorFunctions Objects
+
+```javascript
+class ConnectorFunctions()
+```
 
 This is a base object than contains all you can about connector functions catalog
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ |  |
-| **identifier** | `String` | ❌ |  |
-| **connectorFunction** | `Object` | ❌ |  |
+- `ogapi` _InternalOpenGateAPI_  
+- `identifier` _String_  
+- `connectorFunction` _Object_  
 
 
 ---
-## addNorthCriteria(northCriteria)
 
+##### addNorthCriteria
+
+
+```javascript
+function addNorthCriteria(northCriteria: Object) -> 'ConnectorFunctionsCatalog'
+```
 
 Add northCriteria to parameter northCriterias. Each element is defined by path and value 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **northCriteria** | `Object` | ❌ |  |
+- `northCriteria` _Object_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ConnectorFunctionsCatalog`
-<br>
 
-{{% /notice %}}
+- _`ConnectorFunctionsCatalog`_ 
+
 
 ---
-## addSouthCriteria(southCriteria)
 
+##### addSouthCriteria
+
+
+```javascript
+function addSouthCriteria(southCriteria: String) -> '*'
+```
 
 Add southCriteria to parameter southCriterias. Each string can represent an URI, topic, OID...
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **southCriteria** | `String` | ❌ |  |
+- `southCriteria` _String_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
 
-{{% /notice %}}
+- _`*`_ 
+
 
 ---
-## create()
 
+##### create
+
+
+```javascript
+function create() -> 'Promise'
+```
 
 Create a new connector function catalog
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## withCloneable(cloneable)
 
+##### withCloneable
+
+
+```javascript
+function withCloneable(cloneable: Boolean) -> 'ConnectorFunctionsCatalog'
+```
 
 Indicates whether or not the Connector Function is cloneable.
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **cloneable** | `Boolean` | ❌ |  |
+- `cloneable` _Boolean_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ConnectorFunctionsCatalog`
-<br>
 
-{{% /notice %}}
+- _`ConnectorFunctionsCatalog`_ 
+
 
 ---
-## withDescription(description)
 
+##### withDescription
+
+
+```javascript
+function withDescription(description: String) -> 'ConnectorFunctionsCatalog'
+```
 
 Description of the connector function. This field is optional.
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **description** | `String` | ❌ |  |
+- `description` _String_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ConnectorFunctionsCatalog`
-<br>
 
-{{% /notice %}}
+- _`ConnectorFunctionsCatalog`_ 
+
 
 ---
-## withIdentifier(identifier)
 
+##### withIdentifier
+
+
+```javascript
+function withIdentifier(identifier: String) -> 'ConnectorFunctionsCatalog'
+```
 
 Set the identifier 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **identifier** | `String` | ❌ |  |
+- `identifier` _String_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ConnectorFunctionsCatalog`
-<br>
 
-{{% /notice %}}
+- _`ConnectorFunctionsCatalog`_ 
+
 
 ---
-## withJavascript(javascript)
 
+##### withJavascript
+
+
+```javascript
+function withJavascript(javascript: String) -> 'ConnectorFunctionsCatalog'
+```
 
 Connector function javascript code
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **javascript** | `String` | ❌ |  |
+- `javascript` _String_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ConnectorFunctionsCatalog`
-<br>
 
-{{% /notice %}}
+- _`ConnectorFunctionsCatalog`_ 
+
 
 ---
-## withName(name)
 
+##### withName
+
+
+```javascript
+function withName(name: String) -> 'ConnectorFunctionsCatalog'
+```
 
 Descriptive and unique name
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `String` | ❌ |  |
+- `name` _String_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ConnectorFunctionsCatalog`
-<br>
 
-{{% /notice %}}
+- _`ConnectorFunctionsCatalog`_ 
+
 
 ---
-## withNorthCriterias(northCriterias)
 
+##### withNorthCriterias
+
+
+```javascript
+function withNorthCriterias(northCriterias: Array) -> 'ConnectorFunctionsCatalog'
+```
 
 Connector Function selection criteria for operation requests. This field is mandatory if Connector Function type is REQUEST. ⮕ [ each element is defined by path and value ]
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **northCriterias** | `Array` | ❌ |  |
+- `northCriterias` _Array_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ConnectorFunctionsCatalog`
-<br>
 
-{{% /notice %}}
+- _`ConnectorFunctionsCatalog`_ 
+
 
 ---
-## withOperationalStatus(operationalStatus)
 
+##### withOperationalStatus
+
+
+```javascript
+function withOperationalStatus(operationalStatus: String) -> 'ConnectorFunctionsCatalog'
+```
 
 
 Connector Function status
 Allowed: DISABLED┃PRODUCTION┃TEST
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **operationalStatus** | `String` | ❌ |  |
+- `operationalStatus` _String_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ConnectorFunctionsCatalog`
-<br>
 
-{{% /notice %}}
+- _`ConnectorFunctionsCatalog`_ 
+
 
 ---
-## withOperationName(operationName)
 
+##### withOperationName
+
+
+```javascript
+function withOperationName(operationName: String) -> 'ConnectorFunctionsCatalog'
+```
 
 Used to filter connector functions by operation name. If Connector Function type is REQUEST, this field is mandatory and defined name must be an operation name available for specified Api Key. If the type is COLLECTION or RESPONSE, this field must be null.
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **operationName** | `String` | ❌ |  |
+- `operationName` _String_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ConnectorFunctionsCatalog`
-<br>
 
-{{% /notice %}}
+- _`ConnectorFunctionsCatalog`_ 
+
 
 ---
-## withPayloadType(payloadType)
 
+##### withPayloadType
+
+
+```javascript
+function withPayloadType(payloadType: String) -> 'ConnectorFunctionsCatalog'
+```
 
 Enum of allowed types for connector function&#x27;s payload data. Request Connector Functions only accept JSON. 
 Allowed: TEXT┃JSON┃BINARY
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **payloadType** | `String` | ❌ |  |
+- `payloadType` _String_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ConnectorFunctionsCatalog`
-<br>
 
-{{% /notice %}}
+- _`ConnectorFunctionsCatalog`_ 
+
 
 ---
-## withSouthCriterias(southCriterias)
 
+##### withSouthCriterias
+
+
+```javascript
+function withSouthCriterias(southCriterias: Array) -> 'ConnectorFunctionsCatalog'
+```
 
 Connector Function selection criteria for operation responses and data collection. This field is mandatory if Connector Function type is COLLECTION or RESPONSE. ⮕ [ each string can represent an URI, topic, OID... ]. Each string can represent an URI, topic, OID...
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **southCriterias** | `Array` | ❌ |  |
+- `southCriterias` _Array_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ConnectorFunctionsCatalog`
-<br>
 
-{{% /notice %}}
+- _`ConnectorFunctionsCatalog`_ 
+
 
 ---
-## withType(type)
 
+##### withType
+
+
+```javascript
+function withType(type: String) -> 'ConnectorFunctionsCatalog'
+```
 
 
 Type of connector function, this is mandatory. Keep in mind that you will be not allowed to modify it.
 Allowed: COLLECTION┃REQUEST┃RESPONSE
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **type** | `String` | ❌ |  |
+- `type` _String_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ConnectorFunctionsCatalog`
-<br>
 
-{{% /notice %}}
+- _`ConnectorFunctionsCatalog`_ 
+
 
 ---
 

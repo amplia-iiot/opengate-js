@@ -3,143 +3,158 @@ title = "History Finder"
 weight = 10
 +++
 
-**Class:** `HistoryFinder`
+HistoryFinder
+
+### HistoryFinder Objects
+
+```javascript
+class HistoryFinder()
+```
 
   This class allow make get request to planner resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | Reference to the API object. |
+- `ogapi` _InternalOpenGateAPI_  - Reference to the API object.
 
 
 ---
-## findByOrganization(organization)
 
+##### findByOrganization
+
+
+```javascript
+function findByOrganization(organization: *) -> 'Promise'
+```
 
 Download a complete list of scheduler history for the organization. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `*` | ❌ |  |
+- `organization` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## findByOrganizationAndSchedulerId(organization, schedulerId)
 
+##### findByOrganizationAndSchedulerId
+
+
+```javascript
+function findByOrganizationAndSchedulerId(organization: *,schedulerId: *) -> 'Promise'
+```
 
 Download a complete list of scheduler history for the organization and type selected. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `*` | ❌ |  |
-| **schedulerId** | `*` | ❌ |  |
+- `organization` _*_  
+- `schedulerId` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## findByOrganizationAndType(organization, type)
 
+##### findByOrganizationAndType
+
+
+```javascript
+function findByOrganizationAndType(organization: *,type: *) -> 'Promise'
+```
 
 Download a complete list of scheduler history for the organization and type selected. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `*` | ❌ |  |
-| **type** | `*` | ❌ |  |
+- `organization` _*_  
+- `type` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## withLimit(limit)
 
+##### withLimit
+
+
+```javascript
+function withLimit(limit: *) -> 'this'
+```
 
 Marks results limit
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **limit** | `*` | ❌ |  |
+- `limit` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `this`
-<br>
 
-{{% /notice %}}
+- _`this`_ 
+
 
 ---
-## withSchedulerId(schedulerId)
 
+##### withSchedulerId
+
+
+```javascript
+function withSchedulerId(schedulerId: *) -> 'this'
+```
 
 Set parameter schedulerIds
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **schedulerId** | `*` | ❌ |  |
+- `schedulerId` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `this`
-<br>
 
-{{% /notice %}}
+- _`this`_ 
+
 
 ---
-## withSchedulerType(schedulerType)
 
+##### withSchedulerType
+
+
+```javascript
+function withSchedulerType(schedulerType: *) -> 'this'
+```
 
 Set parameter schedulerIds
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **schedulerType** | `*` | ❌ |  |
+- `schedulerType` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `this`
-<br>
 
-{{% /notice %}}
+- _`this`_ 
+
 
 ---
 

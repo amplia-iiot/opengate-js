@@ -3,74 +3,92 @@ title = "Allowed Resource Type Search Builder"
 weight = 10
 +++
 
-**Class:** `AllowedResourceTypeSearchBuilder`
+AllowedResourceTypeSearchBuilder
+
+### AllowedResourceTypeSearchBuilder Objects
+
+```javascript
+class AllowedResourceTypeSearchBuilder()
+```
 
 Defined a search over mobile phone provider catalog
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## build()
 
+##### build
+
+
+```javascript
+function build() -> 'StaticSearch'
+```
 
 Build a instance of StaticSearch 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `StaticSearch`
-<br>
 
-{{% /notice %}}
+- _`StaticSearch`_ 
 
-### Ejemplos
+
+**Example**:
+
+~~~javascript
+  ogapi.AllowedResourceTypeSearchBuilder().build()
+~~~
+
+---
+
+##### customFilters
+
 
 ```javascript
-  ogapi.AllowedResourceTypeSearchBuilder().build()
+function customFilters()
 ```
 
----
-## customFilters
-
-
 
 
 
 ---
-## withType(type)
 
+##### withType
+
+
+```javascript
+function withType(type: string) -> 'AllowedResourceTypeSearchBuilder'
+```
 
 Sets type to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **type** | `string` | ❌ | type to searcg |
+- `type` _string_  - type to searcg
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `AllowedResourceTypeSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`AllowedResourceTypeSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.AllowedResourceTypeSearchBuilder().withType('device').build()
-```
+~~~
 
 ---
 

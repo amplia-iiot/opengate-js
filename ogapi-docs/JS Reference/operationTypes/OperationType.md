@@ -3,286 +3,315 @@ title = "Operation Type"
 weight = 10
 +++
 
-**Class:** `OperationType`
+OperationType
+
+### OperationType Objects
+
+```javascript
+class OperationType()
+```
 
 This is a base object that contains all you can do about OperationType.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## applicableTo(applicableTo)
 
+##### applicableTo
+
+
+```javascript
+function applicableTo(applicableTo: array) -> 'OperationType'
+```
 
 Allows the modification of the applicableTo
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **applicableTo** | `array` | ❌ |  |
+- `applicableTo` _array_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `OperationType`
-<br>
 
-{{% /notice %}}
+- _`OperationType`_ 
+
 
 ---
-## create()
 
+##### create
+
+
+```javascript
+function create() -> 'Promise'
+```
 
 Create a new Rule
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## delete()
 
+##### delete
+
+
+```javascript
+function delete() -> 'Promise'
+```
 
 Deletes the selected RuleConfiguration
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## fromCatalog(fromCatalog)
 
+##### fromCatalog
+
+
+```javascript
+function fromCatalog(fromCatalog: string) -> 'OperationType'
+```
 
 Set the catalog
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **fromCatalog** | `string` | ❌ |  |
+- `fromCatalog` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `OperationType`
-<br>
 
-{{% /notice %}}
+- _`OperationType`_ 
+
 
 ---
-## update()
 
+##### update
+
+
+```javascript
+function update() -> 'Promise'
+```
 
 Udpate a Rule
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## withDescription(description)
 
+##### withDescription
+
+
+```javascript
+function withDescription(description: string) -> 'OperationType'
+```
 
 Set the description attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **description** | `string` | ❌ |  |
+- `description` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `OperationType`
-<br>
 
-{{% /notice %}}
+- _`OperationType`_ 
+
 
 ---
-## withIdentifier(name)
 
+##### withIdentifier
+
+
+```javascript
+function withIdentifier(name: string) -> 'OperationType'
+```
 
 Set the name for update attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | required field |
+- `name` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `OperationType`
-<br>
 
-{{% /notice %}}
+- _`OperationType`_ 
+
 
 ---
-## withModels(models)
 
+##### withModels
+
+
+```javascript
+function withModels(models: array) -> 'OperationType'
+```
 
 Allows the modification of the allowed models
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **models** | `array` | ❌ |  |
+- `models` _array_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `OperationType`
-<br>
 
-{{% /notice %}}
+- _`OperationType`_ 
+
 
 ---
-## withName(name)
 
+##### withName
+
+
+```javascript
+function withName(name: string) -> 'OperationType'
+```
 
 Set the name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | required field |
+- `name` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `OperationType`
-<br>
 
-{{% /notice %}}
+- _`OperationType`_ 
+
 
 ---
-## withOrganization(organization)
 
+##### withOrganization
+
+
+```javascript
+function withOrganization(organization: string) -> 'OperationType'
+```
 
 Set the organization attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | required field |
+- `organization` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `OperationType`
-<br>
 
-{{% /notice %}}
+- _`OperationType`_ 
+
 
 ---
-## withParameters(parameters)
 
+##### withParameters
+
+
+```javascript
+function withParameters(parameters: array) -> 'OperationType'
+```
 
 Allows the modification of the parameters
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parameters** | `array` | ❌ |  |
+- `parameters` _array_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `OperationType`
-<br>
 
-{{% /notice %}}
+- _`OperationType`_ 
+
 
 ---
-## withProfiles(profiles)
 
+##### withProfiles
+
+
+```javascript
+function withProfiles(profiles: array) -> 'OperationType'
+```
 
 Allows the modification of the profiles allowed
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **profiles** | `array` | ❌ |  |
+- `profiles` _array_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `OperationType`
-<br>
 
-{{% /notice %}}
+- _`OperationType`_ 
+
 
 ---
-## withSteps(steps)
 
+##### withSteps
+
+
+```javascript
+function withSteps(steps: array) -> 'OperationType'
+```
 
 Allows the modification of the steps
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **steps** | `array` | ❌ |  |
+- `steps` _array_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `OperationType`
-<br>
 
-{{% /notice %}}
+- _`OperationType`_ 
+
 
 ---
-## withTitle(title)
 
+##### withTitle
+
+
+```javascript
+function withTitle(title: string) -> 'OperationType'
+```
 
 Set the title attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **title** | `string` | ❌ | required field |
+- `title` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `OperationType`
-<br>
 
-{{% /notice %}}
+- _`OperationType`_ 
+
 
 ---
 

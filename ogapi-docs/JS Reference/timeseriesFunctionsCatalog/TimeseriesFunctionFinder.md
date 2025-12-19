@@ -3,63 +3,74 @@ title = "Timeseries Function Finder"
 weight = 10
 +++
 
-**Class:** `TimeseriesFunctionFinder`
+TimeseriesFunctionFinder
+
+### TimeseriesFunctionFinder Objects
+
+```javascript
+class TimeseriesFunctionFinder()
+```
 
   This class allow make get request to TimeseriesFunction resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | Reference to the API object. |
+- `ogapi` _InternalOpenGateAPI_  - Reference to the API object.
 
 
 ---
-## findByOrganization(organization)
 
+##### findByOrganization
+
+
+```javascript
+function findByOrganization(organization: string) -> 'Promise'
+```
 
 Performs a get that returns a list of timeseries function
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | organization |
+- `organization` _string_  - organization
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## findByOrganizationAndName(organization, name, script)
 
+##### findByOrganizationAndName
+
+
+```javascript
+function findByOrganizationAndName(organization: string,name: string,script: boolean) -> 'Promise'
+```
 
 Performs a get that returns a timeseries function metadata
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | organization |
-| **name** | `string` | ❌ | Timeseries function Configuration name |
-| **script** | `boolean` | ❌ | If true script content will be downloaded |
+- `organization` _string_  - organization
+- `name` _string_  - Timeseries function Configuration name
+- `script` _boolean_  - If true script content will be downloaded
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

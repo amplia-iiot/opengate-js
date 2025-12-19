@@ -3,42 +3,52 @@ title = "Area Finder"
 weight = 10
 +++
 
-**Class:** `AreaFinder`
+AreaFinder
+
+### AreaFinder Objects
+
+```javascript
+class AreaFinder()
+```
 
   This class allow make get request to area resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | Reference to the API object. |
+- `ogapi` _InternalOpenGateAPI_  - Reference to the API object.
 
 
 ---
-## findByOrganizationAndIdentifier(organization, identifier)
 
+##### findByOrganizationAndIdentifier
+
+
+```javascript
+function findByOrganizationAndIdentifier(organization: string,identifier: string) -> 'Promise'
+```
 
 Download a specific area by its organization and identifier. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | area organization . |
-| **identifier** | `string` | ❌ | area name. |
+- `organization` _string_  - area organization .
+- `identifier` _string_  - area name.
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

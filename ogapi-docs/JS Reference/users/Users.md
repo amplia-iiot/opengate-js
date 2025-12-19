@@ -3,450 +3,483 @@ title = "User"
 weight = 10
 +++
 
-**Class:** `User`
+User
+
+### User Objects
+
+```javascript
+class User()
+```
 
   This class allow make get request to user resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## changeApiKey(apiKey)
 
+##### changeApiKey
+
+
+```javascript
+function changeApiKey(apiKey: String) -> 'Promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This function updates a apiKey of a user
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **apiKey** | `String` | ❌ | required field |
+- `apiKey` _String_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.usersBuilder().withEmail(example@example.es).withPassword(oldPassword).changeApiKey(newPassword);
-```
+~~~
 
 ---
-## changePassword(newPassword)
 
+##### changePassword
+
+
+```javascript
+function changePassword(newPassword: String) -> 'Promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This function updates a password of a user
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **newPassword** | `String` | ❌ | required field |
+- `newPassword` _String_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
 
-### Ejemplos
+
+**Example**:
+
+~~~javascript
+ ogapi.usersBuilder().withEmail(example@example.es).withPassword(oldPassword).changePassword(newPassword);
+~~~
+
+---
+
+##### generateApiKey
+
 
 ```javascript
- ogapi.usersBuilder().withEmail(example@example.es).withPassword(oldPassword).changePassword(newPassword);
+function generateApiKey() -> '*'
 ```
 
----
-## generateApiKey()
 
 
+**Returns**:
 
 
-### Retorna
+- _`*`_ 
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
-
-{{% /notice %}}
 
 ---
-## login(email, password, twoFaCode)
 
+##### login
+
+
+```javascript
+function login(email: String,password: String,twoFaCode: String) -> 'Promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This function get a JWT for user with Two Factor Authorithation (optional)
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **email** | `String` | ❌ | required field |
-| **password** | `String` | ❌ | required field |
-| **twoFaCode** | `String` | ❌ | optional field |
+- `email` _String_  - required field
+- `password` _String_  - required field
+- `twoFaCode` _String_  - optional field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.usersBuilder().login(email, password);
  ogapi.usersBuilder().login(email, password, twoFaCode);
-```
+~~~
 
 ---
-## requestResetPassword()
 
+##### requestResetPassword
+
+
+```javascript
+function requestResetPassword() -> 'Promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This function request for new password when the user forgets it. 
 Sends a password recovery email
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.usersBuilder().withEmail(example@example.es).requestResetPassword()
-```
+~~~
 
 ---
-## updatePassword(newPassword, tokenId)
 
+##### updatePassword
+
+
+```javascript
+function updatePassword(newPassword: String,tokenId: String) -> 'Promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This function updates a password of a user with a tokenId
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **newPassword** | `String` | ❌ | required field |
-| **tokenId** | `String` | ❌ | required field |
+- `newPassword` _String_  - required field
+- `tokenId` _String_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.usersBuilder().withEmail(example@example.es).updatePassword(newPassword, tokenid);
-```
+~~~
 
 ---
-## with2FaType(twoFaType)
 
+##### with2FaType
+
+
+```javascript
+function with2FaType(twoFaType: string) -> 'User'
+```
 
 Set the 2FaType attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **twoFaType** | `string` | ❌ | required field |
+- `twoFaType` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `User`
-<br>
 
-{{% /notice %}}
+- _`User`_ 
+
 
 ---
-## withApiKey(apiKey)
 
+##### withApiKey
+
+
+```javascript
+function withApiKey(apiKey: string) -> 'User'
+```
 
 Set the apiKey attribute. Only on update user
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **apiKey** | `string` | ❌ | required field |
+- `apiKey` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `User`
-<br>
 
-{{% /notice %}}
+- _`User`_ 
+
 
 ---
-## withCountryCode(countryCode)
 
+##### withCountryCode
+
+
+```javascript
+function withCountryCode(countryCode: string) -> 'User'
+```
 
 Set the countryCode attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **countryCode** | `string` | ❌ | required field |
+- `countryCode` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `User`
-<br>
 
-{{% /notice %}}
+- _`User`_ 
+
 
 ---
-## withDescription(description)
 
+##### withDescription
+
+
+```javascript
+function withDescription(description: string) -> 'User'
+```
 
 Set the description attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **description** | `string` | ❌ | required field |
+- `description` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `User`
-<br>
 
-{{% /notice %}}
+- _`User`_ 
+
 
 ---
-## withDomain(domain)
 
+##### withDomain
+
+
+```javascript
+function withDomain(domain: string) -> 'User'
+```
 
 Set the domain attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **domain** | `string` | ❌ | required field |
+- `domain` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `User`
-<br>
 
-{{% /notice %}}
+- _`User`_ 
+
 
 ---
-## withEmail(email)
 
+##### withEmail
+
+
+```javascript
+function withEmail(email: string) -> 'User'
+```
 
 Set the email attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **email** | `string` | ❌ | required field |
+- `email` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `User`
-<br>
 
-{{% /notice %}}
+- _`User`_ 
+
 
 ---
-## withForcePasswordChange(forcePasswordChange)
 
+##### withForcePasswordChange
+
+
+```javascript
+function withForcePasswordChange(forcePasswordChange: boolean) -> 'User'
+```
 
 Set the forcePasswordChange: if true Forces you to reset your password on your next login attempt.
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **forcePasswordChange** | `boolean` | ❌ |  |
+- `forcePasswordChange` _boolean_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `User`
-<br>
 
-{{% /notice %}}
+- _`User`_ 
+
 
 ---
-## withLangCode(langCode)
 
+##### withLangCode
+
+
+```javascript
+function withLangCode(langCode: string) -> 'User'
+```
 
 Set the langCode attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **langCode** | `string` | ❌ | required field |
+- `langCode` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `User`
-<br>
 
-{{% /notice %}}
+- _`User`_ 
+
 
 ---
-## withName(name)
 
+##### withName
+
+
+```javascript
+function withName(name: string) -> 'User'
+```
 
 Set the name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | required field |
+- `name` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `User`
-<br>
 
-{{% /notice %}}
+- _`User`_ 
+
 
 ---
-## withPassword(password)
 
+##### withPassword
+
+
+```javascript
+function withPassword(password: string) -> 'User'
+```
 
 Set the password attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **password** | `string` | ❌ | required field |
+- `password` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `User`
-<br>
 
-{{% /notice %}}
+- _`User`_ 
+
 
 ---
-## withProfile(profile)
 
+##### withProfile
+
+
+```javascript
+function withProfile(profile: string) -> 'User'
+```
 
 Set the profile attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **profile** | `string` | ❌ | required field |
+- `profile` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `User`
-<br>
 
-{{% /notice %}}
+- _`User`_ 
+
 
 ---
-## withSurname(surname)
 
+##### withSurname
+
+
+```javascript
+function withSurname(surname: string) -> 'User'
+```
 
 Set the surname attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **surname** | `string` | ❌ | required field |
+- `surname` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `User`
-<br>
 
-{{% /notice %}}
+- _`User`_ 
+
 
 ---
-## withTimezone(timezone)
 
+##### withTimezone
+
+
+```javascript
+function withTimezone(timezone: string) -> 'User'
+```
 
 Set the timezone attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **timezone** | `string` | ❌ | required field |
+- `timezone` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `User`
-<br>
 
-{{% /notice %}}
+- _`User`_ 
+
 
 ---
-## withWorkgroup(workgroup)
 
+##### withWorkgroup
+
+
+```javascript
+function withWorkgroup(workgroup: string) -> 'User'
+```
 
 Set the workgroup attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **workgroup** | `string` | ❌ | required field |
+- `workgroup` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `User`
-<br>
 
-{{% /notice %}}
+- _`User`_ 
+
 
 ---
 

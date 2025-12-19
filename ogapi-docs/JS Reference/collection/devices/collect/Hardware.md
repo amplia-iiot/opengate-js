@@ -3,149 +3,169 @@ title = "Hardware"
 weight = 10
 +++
 
-**Class:** `Hardware`
+Hardware
+
+### Hardware Objects
+
+```javascript
+class Hardware()
+```
 
 This is a base object that allows the user to create a Datapoint.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 
 
 
 ---
-## composeElement()
+
+##### composeElement
+
+
+```javascript
+function composeElement() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## withClockDate(clockDate)
 
+##### withClockDate
+
+
+```javascript
+function withClockDate(clockDate: string) -> 'Hardware'
+```
 
 Set the clockDate  attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **clockDate** | `string` | ❌ |  |
+- `clockDate` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Hardware`
-<br>
 
-{{% /notice %}}
+- _`Hardware`_ 
+
 
 ---
-## withManufacturerName(manufacturerName)
 
+##### withManufacturerName
+
+
+```javascript
+function withManufacturerName(manufacturerName: string) -> 'Hardware'
+```
 
 Set the manufacturerName attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **manufacturerName** | `string` | ❌ |  |
+- `manufacturerName` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Hardware`
-<br>
 
-{{% /notice %}}
+- _`Hardware`_ 
+
 
 ---
-## withManufacturerOui(manufacturerOui)
 
+##### withManufacturerOui
+
+
+```javascript
+function withManufacturerOui(manufacturerOui: string) -> 'Hardware'
+```
 
 Set the manufacturerOui attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **manufacturerOui** | `string` | ❌ |  |
+- `manufacturerOui` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Hardware`
-<br>
 
-{{% /notice %}}
+- _`Hardware`_ 
+
 
 ---
-## withModelName(modelName)
 
+##### withModelName
+
+
+```javascript
+function withModelName(modelName: string) -> 'Hardware'
+```
 
 Set the modelName  attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **modelName** | `string` | ❌ |  |
+- `modelName` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Hardware`
-<br>
 
-{{% /notice %}}
+- _`Hardware`_ 
+
 
 ---
-## withModelVersion(modelVersion)
 
+##### withModelVersion
+
+
+```javascript
+function withModelVersion(modelVersion: string) -> 'Hardware'
+```
 
 Set the modelVersion  attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **modelVersion** | `string` | ❌ |  |
+- `modelVersion` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Hardware`
-<br>
 
-{{% /notice %}}
+- _`Hardware`_ 
+
 
 ---
-## withSerialnumber(serialnumber)
 
+##### withSerialnumber
+
+
+```javascript
+function withSerialnumber(serialnumber: string) -> 'Hardware'
+```
 
 Set the serialnumber attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **serialnumber** | `string` | ❌ |  |
+- `serialnumber` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Hardware`
-<br>
 
-{{% /notice %}}
+- _`Hardware`_ 
+
 
 ---
 

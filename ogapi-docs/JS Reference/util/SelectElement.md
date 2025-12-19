@@ -3,32 +3,39 @@ title = "Select Element"
 weight = 10
 +++
 
-**Class:** `SelectElement`
+SelectElement
 
-
-
-## element(name, fields)
-
-
-
-### Parámetros
-
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `String` | ❌ | Indicates the datastream to show |
-| **fields** | `[{field: field, alias:alias}]` | ❌ | The fields that you want to show from that datastream |
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `Object`
-<br>
-This returns a json with the object element built.
-{{% /notice %}}
-
-### Ejemplos
+### SelectElement Objects
 
 ```javascript
+class SelectElement()
+```
+
+
+
+
+##### element
+
+
+```javascript
+function element(name: String,fields: [{field: field, alias:alias}]) -> 'Object'
+```
+
+
+**Arguments**:
+
+- `name` _String_  - Indicates the datastream to show
+- `fields` _[{field: field, alias:alias}]_  - The fields that you want to show from that datastream
+
+**Returns**:
+
+
+- _`Object`_ - This returns a json with the object element built.
+
+
+**Example**:
+
+~~~javascript
  SE.element('provision.device.identifier', ['value'], 'identifier')
  returns:
  {
@@ -43,7 +50,7 @@ This returns a json with the object element built.
      name : 'provision.device.identifier',
      fields: ['value']
  }
-```
+~~~
 
 ---
 

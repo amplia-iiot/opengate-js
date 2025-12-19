@@ -3,325 +3,356 @@ title = "Connector Functions"
 weight = 10
 +++
 
-**Class:** `ConnectorFunctions`
+ConnectorFunctions
+
+### ConnectorFunctions Objects
+
+```javascript
+class ConnectorFunctions()
+```
 
 This is a base object that contains all you can do about ConnectorFunctions.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## addSouthCriteria(criteria)
+
+##### addSouthCriteria
 
 
+```javascript
+function addSouthCriteria(criteria: *) -> '*'
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **criteria** | `*` | ❌ |  |
+**Arguments**:
 
-### Retorna
+- `criteria` _*_  
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+**Returns**:
 
-{{% /notice %}}
+
+- _`*`_ 
+
 
 ---
-## create()
 
+##### create
+
+
+```javascript
+function create() -> 'Promise'
+```
 
 Create a new Connector Function
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## delete()
 
+##### delete
+
+
+```javascript
+function delete() -> 'Promise'
+```
 
 Deletes the selected connector function
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## update()
 
+##### update
+
+
+```javascript
+function update() -> 'Promise'
+```
 
 Updates a connector function
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## withChannel(channel)
 
+##### withChannel
+
+
+```javascript
+function withChannel(channel: string) -> 'ConnectorFunctions'
+```
 
 Set the channel attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **channel** | `string` | ❌ | required field |
+- `channel` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ConnectorFunctions`
-<br>
 
-{{% /notice %}}
+- _`ConnectorFunctions`_ 
+
 
 ---
-## withDescription(description)
 
+##### withDescription
+
+
+```javascript
+function withDescription(description: string) -> 'ConnectorFunctions'
+```
 
 Set the description attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **description** | `string` | ❌ |  |
+- `description` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ConnectorFunctions`
-<br>
 
-{{% /notice %}}
+- _`ConnectorFunctions`_ 
+
 
 ---
-## withIdentifier(identifier)
 
+##### withIdentifier
+
+
+```javascript
+function withIdentifier(identifier: string) -> 'ConnectorFunctions'
+```
 
 Set the identifier attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **identifier** | `string` | ❌ | required field |
+- `identifier` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ConnectorFunctions`
-<br>
 
-{{% /notice %}}
+- _`ConnectorFunctions`_ 
+
 
 ---
-## withJavascript(javascript)
 
+##### withJavascript
+
+
+```javascript
+function withJavascript(javascript: string) -> 'ConnectorFunctions'
+```
 
 Set the javascript attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **javascript** | `string` | ❌ |  |
+- `javascript` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ConnectorFunctions`
-<br>
 
-{{% /notice %}}
+- _`ConnectorFunctions`_ 
+
 
 ---
-## withName(name)
 
+##### withName
+
+
+```javascript
+function withName(name: string) -> 'ConnectorFunctions'
+```
 
 Set the name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | required field |
+- `name` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ConnectorFunctions`
-<br>
 
-{{% /notice %}}
+- _`ConnectorFunctions`_ 
+
 
 ---
-## withNorthCriterias(criterias)
 
+##### withNorthCriterias
+
+
+```javascript
+function withNorthCriterias(criterias: array) -> 'ConnectorFunctions'
+```
 
 Set the north criterias attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **criterias** | `array` | ❌ |  |
+- `criterias` _array_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ConnectorFunctions`
-<br>
 
-{{% /notice %}}
+- _`ConnectorFunctions`_ 
+
 
 ---
-## withOperationalStatus(operationalStatus)
 
+##### withOperationalStatus
+
+
+```javascript
+function withOperationalStatus(operationalStatus: boolean) -> 'ConnectorFunctions'
+```
 
 Set the operational status attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **operationalStatus** | `boolean` | ❌ |  |
+- `operationalStatus` _boolean_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ConnectorFunctions`
-<br>
 
-{{% /notice %}}
+- _`ConnectorFunctions`_ 
+
 
 ---
-## withOperationName(operationName)
 
+##### withOperationName
+
+
+```javascript
+function withOperationName(operationName: string) -> 'ConnectorFunctions'
+```
 
 Set the operation name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **operationName** | `string` | ❌ | required field |
+- `operationName` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ConnectorFunctions`
-<br>
 
-{{% /notice %}}
+- _`ConnectorFunctions`_ 
+
 
 ---
-## withOrganization(organization)
 
+##### withOrganization
+
+
+```javascript
+function withOrganization(organization: string) -> 'ConnectorFunctions'
+```
 
 Set the organization attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | required field |
+- `organization` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ConnectorFunctions`
-<br>
 
-{{% /notice %}}
+- _`ConnectorFunctions`_ 
+
 
 ---
-## withPayloadType(payloadType)
 
+##### withPayloadType
+
+
+```javascript
+function withPayloadType(payloadType: string) -> 'ConnectorFunctions'
+```
 
 Set the payload type attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **payloadType** | `string` | ❌ |  |
+- `payloadType` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ConnectorFunctions`
-<br>
 
-{{% /notice %}}
+- _`ConnectorFunctions`_ 
+
 
 ---
-## withSouthCriterias(criterias)
 
+##### withSouthCriterias
+
+
+```javascript
+function withSouthCriterias(criterias: array) -> 'ConnectorFunctions'
+```
 
 Set the south criterias attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **criterias** | `array` | ❌ |  |
+- `criterias` _array_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ConnectorFunctions`
-<br>
 
-{{% /notice %}}
+- _`ConnectorFunctions`_ 
+
 
 ---
-## withType(type)
 
+##### withType
+
+
+```javascript
+function withType(type: string) -> 'ConnectorFunctions'
+```
 
 Set the type attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **type** | `string` | ❌ |  |
+- `type` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ConnectorFunctions`
-<br>
 
-{{% /notice %}}
+- _`ConnectorFunctions`_ 
+
 
 ---
 

@@ -3,91 +3,105 @@ title = "Timeserie Search Builder"
 weight = 10
 +++
 
-**Class:** `TimeserieSearchBuilder`
+TimeserieSearchBuilder
+
+### TimeserieSearchBuilder Objects
+
+```javascript
+class TimeserieSearchBuilder()
+```
 
 Defined a search over timeseries	
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## build()
 
+##### build
+
+
+```javascript
+function build() -> 'Search'
+```
 
 Build a instance of Search 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Search`
-<br>
 
-{{% /notice %}}
+- _`Search`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.timeserieSearchBuilder(organization, timeserieId).build()
-```
+~~~
 
 ---
-## group(group)
 
+##### group
+
+
+```javascript
+function group(group: object) -> 'TimeserieSearchBuilder'
+```
 
 The search request will have this group by 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **group** | `object` | ❌ |  |
+- `group` _object_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `TimeserieSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`TimeserieSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
 
-```
+~~~javascript
+
+~~~
 
 ---
-## select(select)
 
+##### select
+
+
+```javascript
+function select(select: SelectBuilder,object) -> 'TimeserieSearchBuilder'
+```
 
 The search request will have this filter 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **select** | `SelectBuilder,object` | ❌ |  |
+- `select` _SelectBuilder,object_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `TimeserieSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`TimeserieSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.timeserieSearchBuilder(organization, timeserieId).select(
      ogapi.newSelectBuilder().add(SE.element("Identifier", ["value"], "id"), SE.add("Temperature", ["value"]))
  ) // Setting SelectBuilder
@@ -95,7 +109,7 @@ The search request will have this filter
 	"fields": [{"field": "value","alias": "identifier"}]},
      {"name": "Temperature","fields": [{"field": "value","alias": "identifier"}]}]
   }) //Custom select
-```
+~~~
 
 ---
 

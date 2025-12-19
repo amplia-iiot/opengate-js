@@ -3,180 +3,204 @@ title = "Entities Search Builder"
 weight = 10
 +++
 
-**Class:** `EntitiesSearchBuilder`
+EntitiesSearchBuilder
+
+### EntitiesSearchBuilder Objects
+
+```javascript
+class EntitiesSearchBuilder()
+```
 
 Defined a search over Executions	
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## build()
 
+##### build
+
+
+```javascript
+function build() -> 'Search'
+```
 
 Build a instance of Search 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Search`
-<br>
 
-{{% /notice %}}
+- _`Search`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.entitiesSearchBuilder()
-```
+~~~
 
 ---
-## disableCaseSensitive(flag)
 
+##### disableCaseSensitive
+
+
+```javascript
+function disableCaseSensitive(flag: *) -> 'EntitiesSearchBuilder'
+```
 
 The response will return a response by applying the filter with likes case-no-sensitive
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **flag** | `*` | ❌ |  |
+- `flag` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `EntitiesSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`EntitiesSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.entitiesSearchBuilder().disableCaseSensitive() 
-```
+~~~
 
 ---
-## disableDefaultSorted()
 
+##### disableDefaultSorted
+
+
+```javascript
+function disableDefaultSorted() -> 'EntitiesSearchBuilder'
+```
 
 The response will return a response without sorted
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `EntitiesSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`EntitiesSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.entitiesSearchBuilder().disableDefaultSorted() 
-```
+~~~
 
 ---
-## flattened()
 
+##### flattened
+
+
+```javascript
+function flattened() -> 'EntitiesSearchBuilder'
+```
 
 The response will return a flattened response
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `EntitiesSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`EntitiesSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.entitiesSearchBuilder().flattened() 
-```
+~~~
 
 ---
-## group(group)
 
+##### group
+
+
+```javascript
+function group(group: object) -> 'EntitiesSearchBuilder'
+```
 
 The search request will have this group by 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **group** | `object` | ❌ |  |
+- `group` _object_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `EntitiesSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`EntitiesSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
 
-```
+~~~javascript
+
+~~~
 
 ---
-## removeCaseSensitive()
 
+##### removeCaseSensitive
+
+
+```javascript
+function removeCaseSensitive() -> 'EntitiesSearchBuilder'
+```
 
 The response will return a response by deleteing the parameters with likes case-no-sensitive
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `EntitiesSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`EntitiesSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.entitiesSearchBuilder().disableCaseSensitive() 
-```
+~~~
 
 ---
-## select(select)
 
+##### select
+
+
+```javascript
+function select(select: SelectBuilder,object) -> 'EntitiesSearchBuilder'
+```
 
 The search request will have this filter 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **select** | `SelectBuilder,object` | ❌ |  |
+- `select` _SelectBuilder,object_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `EntitiesSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`EntitiesSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.entitiesSearchBuilder().select(
      ogapi.newSelectBuilder().add(SE.element("provision.device.identifier", ["value"], "id"), SE.add("device.temperature.value", ["value"]))
  ) // Setting SelectBuilder
@@ -184,7 +208,7 @@ The search request will have this filter
 	"fields": [{"field": "value","alias": "identifier"}]},
      {"name": "device.temperature.value","fields": [{"field": "value","alias": "identifier"}]}]
   }) //Custom select
-```
+~~~
 
 ---
 

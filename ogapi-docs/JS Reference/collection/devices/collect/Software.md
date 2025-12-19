@@ -3,109 +3,127 @@ title = "Software"
 weight = 10
 +++
 
-**Class:** `Software`
+Software
+
+### Software Objects
+
+```javascript
+class Software()
+```
 
 This is a base object that allows the user to create a Datapoint.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 
 
 
 ---
-## composeElement()
+
+##### composeElement
+
+
+```javascript
+function composeElement() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## withDate(date)
 
+##### withDate
+
+
+```javascript
+function withDate(date: string) -> 'Software'
+```
 
 Set the date  attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **date** | `string` | ❌ |  |
+- `date` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Software`
-<br>
 
-{{% /notice %}}
+- _`Software`_ 
+
 
 ---
-## withName(name)
 
+##### withName
+
+
+```javascript
+function withName(name: string) -> 'Software'
+```
 
 Set the name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ |  |
+- `name` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Software`
-<br>
 
-{{% /notice %}}
+- _`Software`_ 
+
 
 ---
-## withType(type)
 
+##### withType
+
+
+```javascript
+function withType(type: string) -> 'Software'
+```
 
 Set the type attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **type** | `string` | ❌ |  |
+- `type` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Software`
-<br>
 
-{{% /notice %}}
+- _`Software`_ 
+
 
 ---
-## withVersion(version)
 
+##### withVersion
+
+
+```javascript
+function withVersion(version: string) -> 'Software'
+```
 
 Set the version attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **version** | `string` | ❌ |  |
+- `version` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Software`
-<br>
 
-{{% /notice %}}
+- _`Software`_ 
+
 
 ---
 

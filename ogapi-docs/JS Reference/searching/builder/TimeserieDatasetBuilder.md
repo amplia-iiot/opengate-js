@@ -3,114 +3,139 @@ title = "Timeserie Dataset Builder"
 weight = 10
 +++
 
-**Class:** `TimeserieDatasetBuilder`
+TimeserieDatasetBuilder
+
+### TimeserieDatasetBuilder Objects
+
+```javascript
+class TimeserieDatasetBuilder()
+```
 
 Defined a search over timeseries	
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## addColumn(name, aggregation, alias)
 
+##### addColumn
+
+
+```javascript
+function addColumn(name: string,aggregation: string,alias: string) -> 'TimeserieDatasetBuilder'
+```
 
 Add column that will be requested
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ |  |
-| **aggregation** | `string` | ❌ |  |
-| **alias** | `string` | ❌ |  |
+- `name` _string_  
+- `aggregation` _string_  
+- `alias` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `TimeserieDatasetBuilder`
-<br>
 
-{{% /notice %}}
+- _`TimeserieDatasetBuilder`_ 
+
 
 ---
-## build()
 
+##### build
+
+
+```javascript
+function build() -> 'Search'
+```
 
 Build a instance of Search 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Search`
-<br>
 
-{{% /notice %}}
+- _`Search`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.timeserieDatasetBuilder(organization, timeserieId).build()
-```
+~~~
 
 ---
-## columns(columns)
 
+##### columns
+
+
+```javascript
+function columns(columns: array) -> 'TimeserieDatasetBuilder'
+```
 
 Add columns that will be requested
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **columns** | `array` | ❌ |  |
+- `columns` _array_  
 
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `TimeserieDatasetBuilder`
-<br>
-
-{{% /notice %}}
-
----
-## group()
+**Returns**:
 
 
-
+- _`TimeserieDatasetBuilder`_ 
 
 
 ---
-## select(select)
 
+##### group
+
+
+```javascript
+function group()
+```
+
+
+
+
+---
+
+##### select
+
+
+```javascript
+function select(select: object) -> 'TimeserieDatasetBuilder'
+```
 
 The search request will have 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **select** | `object` | ❌ |  |
+- `select` _object_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `TimeserieDatasetBuilder`
-<br>
 
-{{% /notice %}}
+- _`TimeserieDatasetBuilder`_ 
+
 
 ---
-## sort()
 
+##### sort
+
+
+```javascript
+function sort()
+```
 
 
 

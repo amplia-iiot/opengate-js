@@ -3,101 +3,114 @@ title = "Channels"
 weight = 10
 +++
 
-**Class:** `Channels`
+Channels
+
+### Channels Objects
+
+```javascript
+class Channels()
+```
 
 This is a base object that contains all you can do about Bundles.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## withCertificate(certificate)
 
+##### withCertificate
+
+
+```javascript
+function withCertificate(certificate: string) -> 'Channels'
+```
 
 Set the certificate attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **certificate** | `string` | ❌ |  |
+- `certificate` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Channels`
-<br>
 
-{{% /notice %}}
+- _`Channels`_ 
+
 
 ---
-## withDescription(description)
 
+##### withDescription
+
+
+```javascript
+function withDescription(description: string) -> 'Channels'
+```
 
 Set the description attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **description** | `string` | ❌ | required field |
+- `description` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Channels`
-<br>
 
-{{% /notice %}}
+- _`Channels`_ 
+
 
 ---
-## withName(name)
 
+##### withName
+
+
+```javascript
+function withName(name: string) -> 'Channels'
+```
 
 Set the name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | required field |
+- `name` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Channels`
-<br>
 
-{{% /notice %}}
+- _`Channels`_ 
+
 
 ---
-## withOrganization(organization)
 
+##### withOrganization
+
+
+```javascript
+function withOrganization(organization: string) -> 'Channels'
+```
 
 Set the organization attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ |  |
+- `organization` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Channels`
-<br>
 
-{{% /notice %}}
+- _`Channels`_ 
+
 
 ---
 

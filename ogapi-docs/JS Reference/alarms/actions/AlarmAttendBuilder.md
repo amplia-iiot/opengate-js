@@ -3,19 +3,28 @@ title = "Alarm Attend Builder"
 weight = 10
 +++
 
-**Class:** `AlarmAttendBuilder`
+AlarmAttendBuilder
+
+### AlarmAttendBuilder Objects
+
+```javascript
+class AlarmAttendBuilder()
+```
 
 Defines the builder to execute alarm attend operation
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | this is configuration about Opengate North API. |
+**Arguments**:
+
+- `ogapi` _InternalOpenGateAPI_  - this is configuration about Opengate North API.
 
 
 ---

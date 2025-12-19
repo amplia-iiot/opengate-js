@@ -3,221 +3,244 @@ title = "Qrating"
 weight = 10
 +++
 
-**Class:** `Qrating`
+Qrating
+
+### Qrating Objects
+
+```javascript
+class Qrating()
+```
 
 Defines the builder to configure a qurating of datastream of IoT datamodel. With this builder you can configure a qrating
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 
 
 
 ---
-## build()
 
+##### build
+
+
+```javascript
+function build() -> 'Object'
+```
 
 Build a Qrating json object
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Object`
-<br>
-Datastream json object
-{{% /notice %}}
 
-### Ejemplos
+- _`Object`_ - Datastream json object
 
-```javascript
+
+**Example**:
+
+~~~javascript
 ogapi.QratingsBuilder().build()
-```
+~~~
 
 ---
-## withConversionMatrix(conversionMatrix)
 
+##### withConversionMatrix
+
+
+```javascript
+function withConversionMatrix(conversionMatrix: Object) -> 'Qrating'
+```
 
 Set the conversionMatrix attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **conversionMatrix** | `Object` | ❌ |  |
+- `conversionMatrix` _Object_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Qrating`
-<br>
 
-{{% /notice %}}
+- _`Qrating`_ 
+
 
 ---
-## withCumulativePeriodDivisor(cumulativePeriodDivisor)
 
+##### withCumulativePeriodDivisor
+
+
+```javascript
+function withCumulativePeriodDivisor(cumulativePeriodDivisor: string) -> 'Qrating'
+```
 
 Set the cumulativePeriodDivisor attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **cumulativePeriodDivisor** | `string` | ❌ |  |
+- `cumulativePeriodDivisor` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Qrating`
-<br>
 
-{{% /notice %}}
+- _`Qrating`_ 
+
 
 ---
-## withIdeal(label, value)
 
+##### withIdeal
+
+
+```javascript
+function withIdeal(label: string,value: number) -> 'Qrating'
+```
 
 Set the ideal attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **label** | `string` | ❌ | required field |
-| **value** | `number` | ❌ | required field |
+- `label` _string_  - required field
+- `value` _number_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Qrating`
-<br>
 
-{{% /notice %}}
+- _`Qrating`_ 
+
 
 ---
-## withMaxAllowed(label, value)
 
+##### withMaxAllowed
+
+
+```javascript
+function withMaxAllowed(label: string,value: number) -> 'Qrating'
+```
 
 Set the maxAllowed attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **label** | `string` | ❌ | required field |
-| **value** | `number` | ❌ | required field |
+- `label` _string_  - required field
+- `value` _number_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Qrating`
-<br>
 
-{{% /notice %}}
+- _`Qrating`_ 
+
 
 ---
-## withMaxDesired(label, value)
 
+##### withMaxDesired
+
+
+```javascript
+function withMaxDesired(label: string,value: number) -> 'Qrating'
+```
 
 Set the maxDesired attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **label** | `string` | ❌ | required field |
-| **value** | `number` | ❌ | required field |
+- `label` _string_  - required field
+- `value` _number_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Qrating`
-<br>
 
-{{% /notice %}}
+- _`Qrating`_ 
+
 
 ---
-## withMaxScore(maxScore)
 
+##### withMaxScore
+
+
+```javascript
+function withMaxScore(maxScore: number) -> 'Qrating'
+```
 
 Set the maxScore attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **maxScore** | `number` | ❌ | required field |
+- `maxScore` _number_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Qrating`
-<br>
 
-{{% /notice %}}
+- _`Qrating`_ 
+
 
 ---
-## withMinDesired(label, value)
 
+##### withMinDesired
+
+
+```javascript
+function withMinDesired(label: string,value: number) -> 'Qrating'
+```
 
 Set the minDesired attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **label** | `string` | ❌ | required field |
-| **value** | `number` | ❌ | required field |
+- `label` _string_  - required field
+- `value` _number_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Qrating`
-<br>
 
-{{% /notice %}}
+- _`Qrating`_ 
+
 
 ---
-## withMinRequired(label, value)
 
+##### withMinRequired
+
+
+```javascript
+function withMinRequired(label: string,value: number) -> 'Qrating'
+```
 
 Set the minRequired attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **label** | `string` | ❌ | required field |
-| **value** | `number` | ❌ | required field |
+- `label` _string_  - required field
+- `value` _number_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Qrating`
-<br>
 
-{{% /notice %}}
+- _`Qrating`_ 
+
 
 ---
-## withVersion(version)
 
+##### withVersion
+
+
+```javascript
+function withVersion(version: string) -> 'Qrating'
+```
 
 Set the version attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **version** | `string` | ❌ | required field |
+- `version` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Qrating`
-<br>
 
-{{% /notice %}}
+- _`Qrating`_ 
+
 
 ---
 

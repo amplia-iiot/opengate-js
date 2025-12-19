@@ -3,43 +3,53 @@ title = "Rule Configurations Finder"
 weight = 10
 +++
 
-**Class:** `RuleConfigurationsFinder`
+RuleConfigurationsFinder
+
+### RuleConfigurationsFinder Objects
+
+```javascript
+class RuleConfigurationsFinder()
+```
 
   This class allow make get request to RuleConfigurations resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | Reference to the API object. |
+- `ogapi` _InternalOpenGateAPI_  - Reference to the API object.
 
 
 ---
-## findByOrganizationAndChannelAndName(organization, channel, name)
 
+##### findByOrganizationAndChannelAndName
+
+
+```javascript
+function findByOrganizationAndChannelAndName(organization: string,channel: string,name: string) -> 'Promise'
+```
 
 Performs a get that returns organizations related
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | organization |
-| **channel** | `string` | ❌ | channel. |
-| **name** | `string` | ❌ | Rule Configuration name |
+- `organization` _string_  - organization
+- `channel` _string_  - channel.
+- `name` _string_  - Rule Configuration name
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

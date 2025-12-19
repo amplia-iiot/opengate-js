@@ -3,45 +3,55 @@ title = "By Month"
 weight = 10
 +++
 
-**Class:** `ByMonth`
+ByMonth
+
+### ByMonth Objects
+
+```javascript
+class ByMonth()
+```
 
 
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `BaseOperationBuilder` | ❌ | this is a operationBaseBuilder. |
-| **date** | `Date` | ❌ | Date when operation will be executed |
-| **periodicityName** | `string` | ❌ | Name associated to periodicity |
-| **months** | `array` | ❌ | Months on will be execute the operation |
-| **end** | `number or Date` | ❌ | When periodicity ends. By repetitions or by date |
+- `parent` _BaseOperationBuilder_  - this is a operationBaseBuilder.
+- `date` _Date_  - Date when operation will be executed
+- `periodicityName` _string_  - Name associated to periodicity
+- `months` _array_  - Months on will be execute the operation
+- `end` _number or Date_  - When periodicity ends. By repetitions or by date
 
 
 ---
-## day(day)
 
+##### day
+
+
+```javascript
+function day(day: number) -> 'BaseOperationBuilder'
+```
 
 At this day will be executed the operation
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **day** | `number` | ❌ |  |
+- `day` _number_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BaseOperationBuilder`
-<br>
 
-{{% /notice %}}
+- _`BaseOperationBuilder`_ 
+
 
 ---
 

@@ -3,36 +3,48 @@ title = "Operation Types Catalog"
 weight = 10
 +++
 
-**Class:** `OperationTypesCatalog`
+OperationTypesCatalog
+
+### OperationTypesCatalog Objects
+
+```javascript
+class OperationTypesCatalog()
+```
 
   This class allow make get request to OperationType resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | Reference to the API object. |
+- `ogapi` _InternalOpenGateAPI_  - Reference to the API object.
 
 
 ---
-## getOperationTypes()
 
+##### getOperationTypes
+
+
+```javascript
+function getOperationTypes() -> 'Promise'
+```
 
 Performs a get that returns operation types templates
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

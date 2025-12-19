@@ -3,302 +3,329 @@ title = "Search Builder"
 weight = 10
 +++
 
-**Class:** `SearchBuilder`
+SearchBuilder
+
+### SearchBuilder Objects
+
+```javascript
+class SearchBuilder()
+```
 
 This is a abstract class. It is a base to make all kind of search request to OpenGate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | this is ogapi instance |
-| **routes** | `object` | ❌ | this defined the routes. One of those routes must be called on Builder before call build method. |
+- `parent` _InternalOpenGateAPI_  - this is ogapi instance
+- `routes` _object_  - this defined the routes. One of those routes must be called on Builder before call build method.
 
 
 ---
-## [route]
 
+##### [route]
+
+
+```javascript
+function [route]()
+```
 
 
 
 
 ---
-## addSortAscendingBy(filterField)
 
+##### addSortAscendingBy
+
+
+```javascript
+function addSortAscendingBy(filterField: string) -> 'SearchBuilder'
+```
 
 Add ascending param into the sort search object
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **filterField** | `string` | ❌ | This field must be allowed into the specific resource |
+- `filterField` _string_  - This field must be allowed into the specific resource
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `SearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`SearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.subscriptionsSearchBuilder().addSortAscendingBy('prov.customid') // Order by prov.customid Ascending  
-```
+~~~
 
 ---
-## addSortBy(filterField, typeSort)
 
+##### addSortBy
+
+
+```javascript
+function addSortBy(filterField: string,typeSort: string) -> 'SearchBuilder'
+```
 
 Add ascending/descending param into the sort search object 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **filterField** | `string` | ❌ | This field must be allowed into the specific resource |
-| **typeSort** | `string` | ❌ |  |
+- `filterField` _string_  - This field must be allowed into the specific resource
+- `typeSort` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `SearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`SearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.subscriptionsSearchBuilder().addSortBy('prov.customid','ASCENDING') // Order by prov.customid Ascending
  ogapi.devicesSearchBuilder().addSortBy('prov.customid','DESCENDING') // Order by prov.customid Descending 
-```
+~~~
 
 ---
-## addSortDescendingBy(filterField)
 
+##### addSortDescendingBy
+
+
+```javascript
+function addSortDescendingBy(filterField: string) -> 'SearchBuilder'
+```
 
 Add descending param into the sort search object 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **filterField** | `string` | ❌ | This field must be allowed into the specific resource |
+- `filterField` _string_  - This field must be allowed into the specific resource
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `SearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`SearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.devicesSearchBuilder().addSortDescendingBy('prov.customid') // Order by prov.customid Descending
-```
+~~~
 
 ---
-## build()
 
+##### build
+
+
+```javascript
+function build() -> 'Search'
+```
 
 Build a instance of Search 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Search`
-<br>
 
-{{% /notice %}}
+- _`Search`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.devicesSearchBuilder().onProvisioned().build()
-```
+~~~
 
 ---
-## filter(filter)
 
+##### filter
+
+
+```javascript
+function filter(filter: FilterBuilder,object) -> 'SearchBuilder'
+```
 
 The search request will have this filter 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **filter** | `FilterBuilder,object` | ❌ |  |
+- `filter` _FilterBuilder,object_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `SearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`SearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.subscriptionsSearchBuilder().filter(
      ogapi.newFilterBuilder().and(Ex.like('prov.customid', 'SN32'), Ex.neq('entityId', '1124'))
  ) // Setting FilterBuilder
  ogapi.subscriptionsSearchBuilder().filter(
       {"and": [{"like": {"entityId": "0000000000000001"}}]}
  ) // Custom filter
-```
+~~~
 
 ---
-## findAllFields(input)
 
+##### findAllFields
+
+
+```javascript
+function findAllFields(input: *) -> 'Promise'
+```
 
 Return a promise which it will contains an array with fields recommended with complete structure
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **input** | `*` | ❌ |  |
+- `input` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## findFieldPath(field)
 
+##### findFieldPath
+
+
+```javascript
+function findFieldPath(field: *) -> 'Promise'
+```
 
 Return a promise which it will contains an string with the path of a field
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **field** | `*` | ❌ |  |
+- `field` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## findFields(input)
 
+##### findFields
+
+
+```javascript
+function findFields(input: *) -> 'Promise'
+```
 
 Return a promise which it will contains an array with fields recommended with only identifier
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **input** | `*` | ❌ |  |
+- `input` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## limit(size, start)
 
+##### limit
+
+
+```javascript
+function limit(size: number,start: number) -> 'SearchBuilder'
+```
 
 Set reponse pagination.
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **size** | `number` | ❌ | Defined the number of elements on response |
-| **start** | `number` | ✅ | Defined the offset on response |
+- `size` _number_  - Defined the number of elements on response
+- `start` _number_ (optional) - Defined the offset on response
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `SearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`SearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.subscribersSearchBuilder().limit(10) // Without offset
  ogapi.subscribersSearchBuilder().limit(25,50) //With offset value 50
-```
+~~~
 
 ---
-## removeSortBy(filterField)
 
+##### removeSortBy
+
+
+```javascript
+function removeSortBy(filterField: string) -> 'SearchBuilder'
+```
 
 Remove sort param from the search object 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **filterField** | `string` | ❌ | This field must be allowed into the specific resource |
+- `filterField` _string_  - This field must be allowed into the specific resource
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `SearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`SearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.subscriptionsSearchBuilder().removeSortBy('prov.customid') // Remove order by prov.customid
  ogapi.subscriptionsSearchBuilder().removeSortBy() // Remove all order by parameters
-```
+~~~
 
 ---
-## withTimeout(ms)
 
+##### withTimeout
+
+
+```javascript
+function withTimeout(ms: number) -> 'SearchBuilder'
+```
 
 The request will have a specific time out if it will be exceeded then the promise throw an exception
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ms** | `number` | ❌ | timeout in milliseconds |
+- `ms` _number_  - timeout in milliseconds
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `SearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`SearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.subscriptionsSearchBuilder().withTimeout(2000) 
-```
+~~~
 
 ---
 

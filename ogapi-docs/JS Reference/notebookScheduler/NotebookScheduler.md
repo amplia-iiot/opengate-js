@@ -3,161 +3,184 @@ title = "Notebook Scheduler"
 weight = 10
 +++
 
-**Class:** `NotebookScheduler`
+NotebookScheduler
+
+### NotebookScheduler Objects
+
+```javascript
+class NotebookScheduler()
+```
 
 This is a base object that contains all you can do about Bundles.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## create()
+
+##### create
+
+
+```javascript
+function create() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## generateReport(generateReport)
 
+##### generateReport
+
+
+```javascript
+function generateReport(generateReport: boolean) -> 'NotebookScheduler'
+```
 
 Sets the generateReport attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **generateReport** | `boolean` | ❌ |  |
+- `generateReport` _boolean_  
 
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `NotebookScheduler`
-<br>
-
-{{% /notice %}}
-
----
-## update()
+**Returns**:
 
 
-
+- _`NotebookScheduler`_ 
 
 
 ---
-## withCronPattern(cronPattern)
 
+##### update
+
+
+```javascript
+function update()
+```
+
+
+
+
+---
+
+##### withCronPattern
+
+
+```javascript
+function withCronPattern(cronPattern: string) -> 'NotebookScheduler'
+```
 
 Sets the crontab pattern
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **cronPattern** | `string` | ❌ |  |
+- `cronPattern` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `NotebookScheduler`
-<br>
 
-{{% /notice %}}
+- _`NotebookScheduler`_ 
+
 
 ---
-## withIdentifier(identifier)
 
+##### withIdentifier
+
+
+```javascript
+function withIdentifier(identifier: string) -> 'NotebookScheduler'
+```
 
 Sets the identifier attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **identifier** | `string` | ❌ |  |
+- `identifier` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `NotebookScheduler`
-<br>
 
-{{% /notice %}}
+- _`NotebookScheduler`_ 
+
 
 ---
-## withNotebookId(notebookId)
 
+##### withNotebookId
+
+
+```javascript
+function withNotebookId(notebookId: string) -> 'NotebookScheduler'
+```
 
 Sets the notebookId attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **notebookId** | `string` | ❌ |  |
+- `notebookId` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `NotebookScheduler`
-<br>
 
-{{% /notice %}}
+- _`NotebookScheduler`_ 
+
 
 ---
-## withParams(params)
+
+##### withParams
 
 
+```javascript
+function withParams(params: *) -> '*'
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **params** | `*` | ❌ |  |
+**Arguments**:
 
-### Retorna
+- `params` _*_  
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+**Returns**:
 
-{{% /notice %}}
+
+- _`*`_ 
+
 
 ---
-## withReportRetentionDays(reportRetentionDays)
 
+##### withReportRetentionDays
+
+
+```javascript
+function withReportRetentionDays(reportRetentionDays: number) -> 'NotebookScheduler'
+```
 
 Sets the reportRetentionDays attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **reportRetentionDays** | `number` | ❌ |  |
+- `reportRetentionDays` _number_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `NotebookScheduler`
-<br>
 
-{{% /notice %}}
+- _`NotebookScheduler`_ 
+
 
 ---
 
