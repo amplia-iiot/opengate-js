@@ -3,100 +3,119 @@ title = "Operational Status Search Builder"
 weight = 10
 +++
 
-**Class:** `OperationalStatusSearchBuilder`
+OperationalStatusSearchBuilder
+
+### OperationalStatusSearchBuilder Objects
+
+```javascript
+class OperationalStatusSearchBuilder()
+```
 
 Defined a search over operational status catalogs    
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## build()
 
+##### build
+
+
+```javascript
+function build() -> 'StaticSearch'
+```
 
 Build a instance of StaticSearch 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `StaticSearch`
-<br>
 
-{{% /notice %}}
+- _`StaticSearch`_ 
 
-### Ejemplos
+
+**Example**:
+
+~~~javascript
+  ogapi.operationalStatusSearchBuilder().filter({and:[]}).build()
+~~~
+
+---
+
+##### customFilters
+
 
 ```javascript
-  ogapi.operationalStatusSearchBuilder().filter({and:[]}).build()
+function customFilters()
 ```
 
----
-## customFilters
-
-
 
 
 
 ---
-## withEntityType(entityType)
 
+##### withEntityType
+
+
+```javascript
+function withEntityType(entityType: string) -> 'OperationalStatusSearchBuilder'
+```
 
 Set entityType to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **entityType** | `string` | ❌ | model name |
+- `entityType` _string_  - model name
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `OperationalStatusSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`OperationalStatusSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.operationalStatusSearchBuilder().withEntityType('myEntityType').build()
-```
+~~~
 
 ---
-## withId(operationalStatusId)
 
+##### withId
+
+
+```javascript
+function withId(operationalStatusId: string) -> 'OperationalStatusSearchBuilder'
+```
 
 Sets id to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **operationalStatusId** | `string` | ❌ | operational status id |
+- `operationalStatusId` _string_  - operational status id
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `OperationalStatusSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`OperationalStatusSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.operationalStatusSearchBuilder().withId('myId').build()
-```
+~~~
 
 ---
 

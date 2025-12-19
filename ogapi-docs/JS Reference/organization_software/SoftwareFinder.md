@@ -3,92 +3,109 @@ title = "Software Finder"
 weight = 10
 +++
 
-**Class:** `SoftwareFinder`
+SoftwareFinder
+
+### SoftwareFinder Objects
+
+```javascript
+class SoftwareFinder()
+```
 
   This class allow make get request to hardware softwares resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## administrable()
 
+##### administrable
+
+
+```javascript
+function administrable() -> 'this'
+```
 
 Marks visibility administrable for software list retrieval
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `this`
-<br>
 
-{{% /notice %}}
+- _`this`_ 
+
 
 ---
-## assignable()
 
+##### assignable
+
+
+```javascript
+function assignable() -> 'this'
+```
 
 Marks visibility assignable for software list retrieval
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `this`
-<br>
 
-{{% /notice %}}
+- _`this`_ 
+
 
 ---
-## findByOrganization(organization)
 
+##### findByOrganization
+
+
+```javascript
+function findByOrganization(organization: string) -> 'Promise'
+```
 
 Retrieves all software from a organization
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | organization name . |
+- `organization` _string_  - organization name .
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## findByOrganizationAndId(organization, identifier)
 
+##### findByOrganizationAndId
+
+
+```javascript
+function findByOrganizationAndId(organization: string,identifier: string) -> 'Promise'
+```
 
 Retrieves a specific software
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | organization name . |
-| **identifier** | `string` | ❌ | software name . |
+- `organization` _string_  - organization name .
+- `identifier` _string_  - software name .
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

@@ -3,42 +3,52 @@ title = "Operation Type Finder"
 weight = 10
 +++
 
-**Class:** `OperationTypeFinder`
+OperationTypeFinder
+
+### OperationTypeFinder Objects
+
+```javascript
+class OperationTypeFinder()
+```
 
   This class allow make get request to OperationType resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | Reference to the API object. |
+- `ogapi` _InternalOpenGateAPI_  - Reference to the API object.
 
 
 ---
-## findByOrganizationAndName(organization, name)
 
+##### findByOrganizationAndName
+
+
+```javascript
+function findByOrganizationAndName(organization: string,name: string) -> 'Promise'
+```
 
 Performs a get that returns operation type
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | organization |
-| **name** | `string` | ❌ | Rule Configuration name |
+- `organization` _string_  - organization
+- `name` _string_  - Rule Configuration name
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

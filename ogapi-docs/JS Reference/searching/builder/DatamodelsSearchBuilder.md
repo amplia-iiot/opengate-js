@@ -3,19 +3,28 @@ title = "Datamodels Search Builder"
 weight = 10
 +++
 
-**Class:** `DatamodelsSearchBuilder`
+DatamodelsSearchBuilder
+
+### DatamodelsSearchBuilder Objects
+
+```javascript
+class DatamodelsSearchBuilder()
+```
 
 Defined a search over Datamodels	
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---

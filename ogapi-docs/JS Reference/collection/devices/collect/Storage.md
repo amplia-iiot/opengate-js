@@ -3,69 +3,85 @@ title = "Storage"
 weight = 10
 +++
 
-**Class:** `Storage`
+Storage
+
+### Storage Objects
+
+```javascript
+class Storage()
+```
 
 This is a base object that allows the user to create a Datapoint.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 
 
 
 ---
-## composeElement()
+
+##### composeElement
+
+
+```javascript
+function composeElement() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## withTotal(total)
 
+##### withTotal
+
+
+```javascript
+function withTotal(total: string) -> 'Usage'
+```
 
 Set the total attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **total** | `string` | ❌ | optionals field |
+- `total` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Usage`
-<br>
 
-{{% /notice %}}
+- _`Usage`_ 
+
 
 ---
-## withUnit(unit)
 
+##### withUnit
+
+
+```javascript
+function withUnit(unit: string) -> 'Storage'
+```
 
 Set the unit attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **unit** | `string` | ❌ | optionals field |
+- `unit` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Storage`
-<br>
 
-{{% /notice %}}
+- _`Storage`_ 
+
 
 ---
 

@@ -3,91 +3,105 @@ title = "Assets Search Builder"
 weight = 10
 +++
 
-**Class:** `AssetsSearchBuilder`
+AssetsSearchBuilder
+
+### AssetsSearchBuilder Objects
+
+```javascript
+class AssetsSearchBuilder()
+```
 
 Defined a search over Assets	
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## build()
 
+##### build
+
+
+```javascript
+function build() -> 'Search'
+```
 
 Build a instance of Search 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Search`
-<br>
 
-{{% /notice %}}
+- _`Search`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.assetsSearchBuilder().onProvisioned().build()
-```
+~~~
 
 ---
-## group(group)
 
+##### group
+
+
+```javascript
+function group(group: object) -> 'AssetsSearchBuilder'
+```
 
 The search request will have this group by 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **group** | `object` | ❌ |  |
+- `group` _object_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `AssetsSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`AssetsSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
 
-```
+~~~javascript
+
+~~~
 
 ---
-## select(select)
 
+##### select
+
+
+```javascript
+function select(select: SelectBuilder,object) -> 'AssetsSearchBuilder'
+```
 
 The search request will have this filter 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **select** | `SelectBuilder,object` | ❌ |  |
+- `select` _SelectBuilder,object_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `AssetsSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`AssetsSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.assetsSearchBuilder().select(
      ogapi.newSelectBuilder().add(SE.element("provision.device.identifier", ["value"], "id"), SE.add("device.temperature.value", ["value"]))
  ) // Setting SelectBuilder
@@ -95,28 +109,31 @@ The search request will have this filter
 	"fields": [{"field": "value","alias": "identifier"}]},
      {"name": "device.temperature.value","fields": [{"field": "value","alias": "identifier"}]}]
   }) //Custom select
-```
+~~~
 
 ---
-## summary()
 
+##### summary
+
+
+```javascript
+function summary() -> 'AssetsSearchBuilder'
+```
 
 The response will only have a summary information 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `AssetsSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`AssetsSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.assetsSearchBuilder().summary() 
-```
+~~~
 
 ---
 

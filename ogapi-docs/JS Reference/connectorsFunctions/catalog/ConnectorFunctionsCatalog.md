@@ -3,35 +3,47 @@ title = "Connector Functions Catalog"
 weight = 10
 +++
 
-**Class:** `ConnectorFunctionsCatalog`
+ConnectorFunctionsCatalog
+
+### ConnectorFunctionsCatalog Objects
+
+```javascript
+class ConnectorFunctionsCatalog()
+```
 
   This class allow make get request to connector functions catalog resource into Opengate North API.
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `*` | ❌ |  |
+**Arguments**:
+
+- `ogapi` _*_  
 
 
 ---
-## getConnectorFunctionsCatalog()
 
+##### getConnectorFunctionsCatalog
+
+
+```javascript
+function getConnectorFunctionsCatalog() -> 'Promise'
+```
 
 Get connector functions catalog
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

@@ -3,121 +3,135 @@ title = "Provision Processors"
 weight = 10
 +++
 
-**Class:** `ProvisionProcessors`
+ProvisionProcessors
+
+### ProvisionProcessors Objects
+
+```javascript
+class ProvisionProcessors()
+```
 
 This is a base object that contains all you can do about Provision Processors.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## withConfigurationParams(configurationParams)
 
+##### withConfigurationParams
+
+
+```javascript
+function withConfigurationParams(configurationParams: object) -> 'ProvisionPrecessors'
+```
 
 Set the ConfigurationParams attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **configurationParams** | `object` | ❌ | required field |
+- `configurationParams` _object_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ProvisionPrecessors`
-<br>
 
-{{% /notice %}}
+- _`ProvisionPrecessors`_ 
+
 
 ---
-## withIdentifier(identifier)
 
+##### withIdentifier
+
+
+```javascript
+function withIdentifier(identifier: string) -> 'ProvisionPrecessors'
+```
 
 Set the identifier attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **identifier** | `string` | ❌ | required field |
+- `identifier` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ProvisionPrecessors`
-<br>
 
-{{% /notice %}}
+- _`ProvisionPrecessors`_ 
+
 
 ---
-## withName(name)
 
+##### withName
+
+
+```javascript
+function withName(name: string) -> 'ProvisionPrecessors'
+```
 
 Set the name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | required field |
+- `name` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ProvisionPrecessors`
-<br>
 
-{{% /notice %}}
+- _`ProvisionPrecessors`_ 
+
 
 ---
-## withOrganization(organization)
 
+##### withOrganization
+
+
+```javascript
+function withOrganization(organization: string) -> 'ProvisionPrecessors'
+```
 
 Set the organization attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | required field |
+- `organization` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ProvisionPrecessors`
-<br>
 
-{{% /notice %}}
+- _`ProvisionPrecessors`_ 
+
 
 ---
-## withScriptProcessor(scriptProcessor)
 
+##### withScriptProcessor
+
+
+```javascript
+function withScriptProcessor(scriptProcessor: object) -> 'ProvisionPrecessors'
+```
 
 Set the ScriptProcessor attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **scriptProcessor** | `object` | ❌ | required field |
+- `scriptProcessor` _object_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ProvisionPrecessors`
-<br>
 
-{{% /notice %}}
+- _`ProvisionPrecessors`_ 
+
 
 ---
 

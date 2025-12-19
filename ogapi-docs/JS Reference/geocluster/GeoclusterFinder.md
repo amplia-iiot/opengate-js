@@ -3,77 +3,91 @@ title = "Geocluster Finder"
 weight = 10
 +++
 
-**Class:** `GeoclusterFinder`
+GeoclusterFinder
+
+### GeoclusterFinder Objects
+
+```javascript
+class GeoclusterFinder()
+```
 
   This class allow make get request to user resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## findAll()
 
+##### findAll
+
+
+```javascript
+function findAll() -> 'Promise'
+```
 
 Find all available geocluster. This execute a GET http method
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## findById(id)
 
+##### findById
+
+
+```javascript
+function findById(id: string) -> 'Promise'
+```
 
 Find a specify geocluster by an identifier. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **id** | `string` | ❌ | Identifier of the geocluster. |
+- `id` _string_  - Identifier of the geocluster.
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## findFeatures(id, coordinates)
 
+##### findFeatures
+
+
+```javascript
+function findFeatures(id: string,coordinates: Object) -> 'Promise'
+```
 
 Find features inside the coordinates. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **id** | `string` | ❌ | Identifier of the geocluster. |
-| **coordinates** | `Object` | ❌ | square defined by the coordinates and the zoom used to find the inside features . |
+- `id` _string_  - Identifier of the geocluster.
+- `coordinates` _Object_  - square defined by the coordinates and the zoom used to find the inside features .
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

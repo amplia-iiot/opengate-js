@@ -3,42 +3,52 @@ title = "Bundle Finder"
 weight = 10
 +++
 
-**Class:** `BundleFinder`
+BundleFinder
+
+### BundleFinder Objects
+
+```javascript
+class BundleFinder()
+```
 
   This class allow make get request to certificate resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## findByNameAndVersion(name, version)
 
+##### findByNameAndVersion
+
+
+```javascript
+function findByNameAndVersion(name: string,version: string) -> 'Promise'
+```
 
 Download a specific bundle by its name and version. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | bundle name . |
-| **version** | `string` | ❌ | bundle version. |
+- `name` _string_  - bundle name .
+- `version` _string_  - bundle version.
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

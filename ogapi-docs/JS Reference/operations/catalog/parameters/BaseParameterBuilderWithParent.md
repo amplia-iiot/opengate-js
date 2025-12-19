@@ -3,59 +3,79 @@ title = "Base Parameter Builder With Parent"
 weight = 10
 +++
 
-**Class:** `BaseParameterBuilderWithParent`
+BaseParameterBuilderWithParent
+
+### BaseParameterBuilderWithParent Objects
+
+```javascript
+class BaseParameterBuilderWithParent()
+```
 
 This class generate a builder by a dynamic content about specific parameter to an operation.
 
-## constructor
+
+##### constructor
 
 
-
-### Parámetros
-
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | this is configuration about Opengate North API. |
-| **config** | `object` | ❌ | this is configuration about parameter operation. |
-| **parent** | `BaseOperationBuilder` | ❌ | this is a instance of BaseOperationBuilder |
+```javascript
+function constructor()
+```
 
 
----
-## [createSetterNameMethod(config)]
+**Arguments**:
 
-
-
+- `ogapi` _InternalOpenGateAPI_  - this is configuration about Opengate North API.
+- `config` _object_  - this is configuration about parameter operation.
+- `parent` _BaseOperationBuilder_  - this is a instance of BaseOperationBuilder
 
 
 ---
-## build()
 
+##### [createSetterNameMethod(config)]
+
+
+```javascript
+function [createSetterNameMethod(config)]()
+```
+
+
+
+
+---
+
+##### build
+
+
+```javascript
+function build() -> 'object'
+```
 
 This has all knowledge to make a object.
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `object`
-<br>
 
-{{% /notice %}}
+- _`object`_ 
+
 
 ---
-## buildAndAppend()
 
+##### buildAndAppend
+
+
+```javascript
+function buildAndAppend() -> 'BaseOperationBuilder'
+```
 
 This method will invoke build and then it will append the parameter to operationBuilder with the correct way
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BaseOperationBuilder`
-<br>
 
-{{% /notice %}}
+- _`BaseOperationBuilder`_ 
+
 
 ---
 

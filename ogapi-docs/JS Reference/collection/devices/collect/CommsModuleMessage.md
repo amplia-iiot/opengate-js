@@ -3,234 +3,256 @@ title = "Comms Module Message"
 weight = 10
 +++
 
-**Class:** `CommsModuleMessage`
+CommsModuleMessage
+
+### CommsModuleMessage Objects
+
+```javascript
+class CommsModuleMessage()
+```
 
 This is a base object that allows the user to create a CommsModule.
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `*` | ❌ |  |
+**Arguments**:
+
+- `ogapi` _*_  
 
 
 ---
-## composeElement()
+
+##### composeElement
+
+
+```javascript
+function composeElement() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## withAntennaStatus(antennaStatus)
 
+##### withAntennaStatus
+
+
+```javascript
+function withAntennaStatus(antennaStatus: string) -> 'CommsModule'
+```
 
 Set the antennaStatus attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **antennaStatus** | `string` | ❌ | optional field |
+- `antennaStatus` _string_  - optional field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `CommsModule`
-<br>
 
-{{% /notice %}}
+- _`CommsModule`_ 
+
 
 ---
-## withHardware(hardware)
 
+##### withHardware
+
+
+```javascript
+function withHardware(hardware: Hardware) -> 'CommsModule'
+```
 
 Set the hardware attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **hardware** | `Hardware` | ❌ | optionals field |
+- `hardware` _Hardware_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `CommsModule`
-<br>
 
-{{% /notice %}}
+- _`CommsModule`_ 
+
 
 ---
-## withId(id)
 
+##### withId
+
+
+```javascript
+function withId(id: string) -> 'CommsModule'
+```
 
 Set the id attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **id** | `string` | ❌ | optional field |
+- `id` _string_  - optional field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `CommsModule`
-<br>
 
-{{% /notice %}}
+- _`CommsModule`_ 
+
 
 ---
-## withMobile(mobile)
 
+##### withMobile
+
+
+```javascript
+function withMobile(mobile: *) -> 'CommsModule'
+```
 
 Set the mobile attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **mobile** | `*` | ❌ |  |
+- `mobile` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `CommsModule`
-<br>
 
-{{% /notice %}}
+- _`CommsModule`_ 
+
 
 ---
-## withName(name)
 
+##### withName
+
+
+```javascript
+function withName(name: string) -> 'CommsModule'
+```
 
 Set the name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | optional field |
+- `name` _string_  - optional field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `CommsModule`
-<br>
 
-{{% /notice %}}
+- _`CommsModule`_ 
+
 
 ---
-## withOperationalStatus(operationalStatus)
 
+##### withOperationalStatus
+
+
+```javascript
+function withOperationalStatus(operationalStatus: string) -> 'CommsModule'
+```
 
 Set the operationalStatus attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **operationalStatus** | `string` | ❌ |  |
+- `operationalStatus` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `CommsModule`
-<br>
 
-{{% /notice %}}
+- _`CommsModule`_ 
+
 
 ---
-## withSoftware(software)
 
+##### withSoftware
+
+
+```javascript
+function withSoftware(software: *) -> 'CommsModule'
+```
 
 Set the software attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **software** | `*` | ❌ |  |
+- `software` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `CommsModule`
-<br>
 
-{{% /notice %}}
+- _`CommsModule`_ 
+
 
 ---
-## withSubscriber(subscriber)
 
+##### withSubscriber
+
+
+```javascript
+function withSubscriber(subscriber: *) -> 'CommsModule'
+```
 
 Set the subscriber attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **subscriber** | `*` | ❌ |  |
+- `subscriber` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `CommsModule`
-<br>
 
-{{% /notice %}}
+- _`CommsModule`_ 
+
 
 ---
-## withSubscription(subscription)
 
+##### withSubscription
+
+
+```javascript
+function withSubscription(subscription: *) -> 'CommsModule'
+```
 
 Set the subscription attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **subscription** | `*` | ❌ |  |
+- `subscription` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `CommsModule`
-<br>
 
-{{% /notice %}}
+- _`CommsModule`_ 
+
 
 ---
-## withType(type)
 
+##### withType
+
+
+```javascript
+function withType(type: string) -> 'CommsModule'
+```
 
 Set the type attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **type** | `string` | ❌ | optional field |
+- `type` _string_  - optional field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `CommsModule`
-<br>
 
-{{% /notice %}}
+- _`CommsModule`_ 
+
 
 ---
 

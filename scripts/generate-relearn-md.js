@@ -122,8 +122,8 @@ function normalizeItem(item, currentFilePath) {
 
     // Append parameters to name
     if (item.kind === 'function' || item.kind === 'method') {
-        const paramNames = item.params ? item.params.map(p => p.name).join(', ') : '';
-        item.name = `${item.name}(${paramNames})`;
+        const paramNames = item.params ? item.params.map(p => p.name + ': ' + p.type.names) : '';
+        item.nameWithParams = `${item.name}(${paramNames})`;
     }
 
     return item;
@@ -268,7 +268,13 @@ title = "${humanTitle}"
 weight = 10
 +++
 
-**Class:** \`${classDoc.name}\`
+${classDoc.name}
+
+### ${classDoc.name} Objects
+
+\`\`\`javascript
+class ${classDoc.name}()
+\`\`\`
 
 ${classDoc.description || ''}
 

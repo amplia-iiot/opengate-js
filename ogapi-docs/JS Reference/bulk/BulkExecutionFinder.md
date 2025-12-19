@@ -3,43 +3,53 @@ title = "Bulk Execution Finder"
 weight = 10
 +++
 
-**Class:** `BulkExecutionFinder`
+BulkExecutionFinder
+
+### BulkExecutionFinder Objects
+
+```javascript
+class BulkExecutionFinder()
+```
 
   This class allow make get request to bulk executions resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## findByOrganizationAndId(organization, id, mimetype)
 
+##### findByOrganizationAndId
+
+
+```javascript
+function findByOrganizationAndId(organization: string,id: string,mimetype: string) -> 'Promise'
+```
 
 Download a specific entity by its organization and id. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | organization. |
-| **id** | `string` | ❌ | bulk id. |
-| **mimetype** | `string` | ❌ | Format of file when get the result details of previously created bulk process. |
+- `organization` _string_  - organization.
+- `id` _string_  - bulk id.
+- `mimetype` _string_  - Format of file when get the result details of previously created bulk process.
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

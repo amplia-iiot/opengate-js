@@ -3,84 +3,96 @@ title = "Execute Each Builder"
 weight = 10
 +++
 
-**Class:** `ExecuteEachBuilder`
+ExecuteEachBuilder
+
+### ExecuteEachBuilder Objects
+
+```javascript
+class ExecuteEachBuilder()
+```
 
 Defines the builder to configure a period of operation. With this builder you can select how repeat the operation. By days, hours or minutes.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `BaseOperationBuilder` | ❌ | this is a operationBaseBuilder. |
-| **date** | `Date` | ❌ | Date when operation will be executed |
-| **periodicityName** | `string` | ❌ | Name associated to periodicity |
-| **end** | `number or Date` | ❌ | When periodicity ends. By repetitions or by date |
+- `parent` _BaseOperationBuilder_  - this is a operationBaseBuilder.
+- `date` _Date_  - Date when operation will be executed
+- `periodicityName` _string_  - Name associated to periodicity
+- `end` _number or Date_  - When periodicity ends. By repetitions or by date
 
 
 ---
-## days(days)
 
+##### days
+
+
+```javascript
+function days(days: number) -> 'BaseOperationBuilder'
+```
 
 Set a difference of days in each repetition
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **days** | `number` | ❌ |  |
+- `days` _number_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BaseOperationBuilder`
-<br>
 
-{{% /notice %}}
+- _`BaseOperationBuilder`_ 
+
 
 ---
-## hours(hours)
 
+##### hours
+
+
+```javascript
+function hours(hours: number) -> 'BaseOperationBuilder'
+```
 
 Set a difference of hours in each repetition
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **hours** | `number` | ❌ |  |
+- `hours` _number_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BaseOperationBuilder`
-<br>
 
-{{% /notice %}}
+- _`BaseOperationBuilder`_ 
+
 
 ---
-## minutes(minutes)
 
+##### minutes
+
+
+```javascript
+function minutes(minutes: number) -> 'BaseOperationBuilder'
+```
 
 Set a difference of minutes in each repetition
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **minutes** | `number` | ❌ |  |
+- `minutes` _number_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BaseOperationBuilder`
-<br>
 
-{{% /notice %}}
+- _`BaseOperationBuilder`_ 
+
 
 ---
 

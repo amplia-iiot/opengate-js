@@ -3,95 +3,110 @@ title = "Raw Search Builder"
 weight = 10
 +++
 
-**Class:** `RawSearchBuilder`
+RawSearchBuilder
+
+### RawSearchBuilder Objects
+
+```javascript
+class RawSearchBuilder()
+```
 
 Defined a search over custom resource and custom filter	
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `*` | ❌ |  |
+**Arguments**:
+
+- `ogapi` _*_  
 
 
 ---
-## build()
 
+##### build
+
+
+```javascript
+function build() -> '*'
+```
 
 Create Search instance
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
-Search
-{{% /notice %}}
+
+- _`*`_ - Search
+
 
 ---
-## filter(rawFilter)
 
+##### filter
+
+
+```javascript
+function filter(rawFilter: object) -> '*'
+```
 
 Set raw filter
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **rawFilter** | `object` | ❌ | raw filter |
+- `rawFilter` _object_  - raw filter
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
-RawSearchBuilder
-{{% /notice %}}
+
+- _`*`_ - RawSearchBuilder
+
 
 ---
-## from(url)
 
+##### from
+
+
+```javascript
+function from(url: string) -> '*'
+```
 
 Set custom url
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **url** | `string` | ❌ | custom Opengate North API url |
+- `url` _string_  - custom Opengate North API url
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
-RawSearchBuilder
-{{% /notice %}}
+
+- _`*`_ - RawSearchBuilder
+
 
 ---
-## limit(rawLimit)
 
+##### limit
+
+
+```javascript
+function limit(rawLimit: object) -> '*'
+```
 
 Set raw limit
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **rawLimit** | `object` | ❌ | raw limit |
+- `rawLimit` _object_  - raw limit
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
-RawSearchBuilder
-{{% /notice %}}
+
+- _`*`_ - RawSearchBuilder
+
 
 ---
 

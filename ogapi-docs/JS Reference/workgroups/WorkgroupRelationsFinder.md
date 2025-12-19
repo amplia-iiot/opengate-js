@@ -3,42 +3,52 @@ title = "Workgroup Relations Finder"
 weight = 10
 +++
 
-**Class:** `WorkgroupRelationsFinder`
+WorkgroupRelationsFinder
+
+### WorkgroupRelationsFinder Objects
+
+```javascript
+class WorkgroupRelationsFinder()
+```
 
   This class allow make get request to workgroup relation resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## findByDomainAndName(domain, name)
 
+##### findByDomainAndName
+
+
+```javascript
+function findByDomainAndName(domain: string,name: string) -> 'Promise'
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **domain** | `string` | ❌ | domain name |
-| **name** | `string` | ❌ | workgroup name |
+- `domain` _string_  - domain name
+- `name` _string_  - workgroup name
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

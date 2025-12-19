@@ -3,97 +3,119 @@ title = "Workgroup Relations"
 weight = 10
 +++
 
-**Class:** `WorkgroupRelations`
+WorkgroupRelations
+
+### WorkgroupRelations Objects
+
+```javascript
+class WorkgroupRelations()
+```
 
 This is a base object that contains all you can do about workgroups.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## create()
+
+##### create
+
+
+```javascript
+function create() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## delete()
+
+##### delete
+
+
+```javascript
+function delete() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## update()
 
+##### update
+
+
+```javascript
+function update()
+```
 
 Update not allowed
 
 
 
 ---
-## withChannel(channel)
 
+##### withChannel
+
+
+```javascript
+function withChannel(channel: string) -> 'WorkgroupRelations'
+```
 
 Set the channel attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **channel** | `string` | ❌ | required field for creation or update |
+- `channel` _string_  - required field for creation or update
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `WorkgroupRelations`
-<br>
 
-{{% /notice %}}
+- _`WorkgroupRelations`_ 
+
 
 ---
-## withWorkgroup(workgroup)
 
+##### withWorkgroup
+
+
+```javascript
+function withWorkgroup(workgroup: string) -> 'WorkgroupRelations'
+```
 
 Set the workgroup attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **workgroup** | `string` | ❌ | required field |
+- `workgroup` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `WorkgroupRelations`
-<br>
 
-{{% /notice %}}
+- _`WorkgroupRelations`_ 
+
 
 ---
 

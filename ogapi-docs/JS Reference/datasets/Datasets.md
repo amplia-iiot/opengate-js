@@ -3,155 +3,173 @@ title = "Datasets"
 weight = 10
 +++
 
-**Class:** `Datasets`
+Datasets
+
+### Datasets Objects
+
+```javascript
+class Datasets()
+```
 
 This is a base object that contains all you can do about Datasets.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## onlyPlan()
+
+##### onlyPlan
+
+
+```javascript
+function onlyPlan() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## withColumns(columns)
 
+##### withColumns
+
+
+```javascript
+function withColumns(columns: array) -> 'Datasets'
+```
 
 Set the columns attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **columns** | `array` | ❌ | required field |
+- `columns` _array_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datasets`
-<br>
 
-{{% /notice %}}
+- _`Datasets`_ 
+
 
 ---
-## withDescription(description)
 
+##### withDescription
+
+
+```javascript
+function withDescription(description: string) -> 'Datasets'
+```
 
 Set the description attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **description** | `string` | ❌ |  |
+- `description` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datasets`
-<br>
 
-{{% /notice %}}
+- _`Datasets`_ 
+
 
 ---
-## withIdentifier(identifier)
 
+##### withIdentifier
+
+
+```javascript
+function withIdentifier(identifier: string) -> 'Datasets'
+```
 
 Set the identifier attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **identifier** | `string` | ❌ | required field |
+- `identifier` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datasets`
-<br>
 
-{{% /notice %}}
+- _`Datasets`_ 
+
 
 ---
-## withIdentifierColumn(identifierColumn)
 
+##### withIdentifierColumn
+
+
+```javascript
+function withIdentifierColumn(identifierColumn: string) -> 'Datasets'
+```
 
 Set the identifierColumn attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **identifierColumn** | `string` | ❌ | required field |
+- `identifierColumn` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datasets`
-<br>
 
-{{% /notice %}}
+- _`Datasets`_ 
+
 
 ---
-## withName(name)
 
+##### withName
+
+
+```javascript
+function withName(name: string) -> 'Datasets'
+```
 
 Set the name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | required field |
+- `name` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datasets`
-<br>
 
-{{% /notice %}}
+- _`Datasets`_ 
+
 
 ---
-## withOrganization(organization)
 
+##### withOrganization
+
+
+```javascript
+function withOrganization(organization: string) -> 'Datasets'
+```
 
 Set the organization attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | required field |
+- `organization` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datasets`
-<br>
 
-{{% /notice %}}
+- _`Datasets`_ 
+
 
 ---
 

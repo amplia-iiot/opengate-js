@@ -3,63 +3,78 @@ title = "Alarm Actions"
 weight = 10
 +++
 
-**Class:** `AlarmActions`
+AlarmActions
+
+### AlarmActions Objects
+
+```javascript
+class AlarmActions()
+```
 
 This class contains all alarms actions builders
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | this is configuration about Opengate North API. |
+- `ogapi` _InternalOpenGateAPI_  - this is configuration about Opengate North API.
 
 
 ---
-## newAttendBuilder()
 
+##### newAttendBuilder
+
+
+```javascript
+function newAttendBuilder() -> 'AlarmAttendBuilder'
+```
 
 Create alarm attend action builder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `AlarmAttendBuilder`
-<br>
 
-{{% /notice %}}
+- _`AlarmAttendBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.alarms.newAttendBuilder()
-```
+~~~
 
 ---
-## newCloseBuilder()
 
+##### newCloseBuilder
+
+
+```javascript
+function newCloseBuilder() -> 'AlarmCloseBuilder'
+```
 
 Create alarm close action builder
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `AlarmCloseBuilder`
-<br>
 
-{{% /notice %}}
+- _`AlarmCloseBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.alarms.newCloseBuilder()
-```
+~~~
 
 ---
 

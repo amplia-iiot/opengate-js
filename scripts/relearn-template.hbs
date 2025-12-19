@@ -1,5 +1,6 @@
 {{#each model}}
-## {{name}}
+
+##### {{name}}
 
 {{#if deprecated}}
 
@@ -9,39 +10,45 @@
 
 {{/if}}
 
+{{#if returns}}
+```javascript
+function {{nameWithParams}} -> {{#each returns}}'{{type.names}}'{{/each}}
+```
+{{else}}
+```javascript
+function {{name}}()
+```
+{{/if}}
+
 {{#if description}}
 {{description}}
 {{/if}}
 
 {{#if params}}
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
 {{#each params}}
-| **{{name}}** | `{{type.names}}` | {{#if optional}}✅{{else}}❌{{/if}} | {{description}} |
+- `{{name}}` _{{type.names}}_ {{#if optional}}(optional){{/if}} {{#if description}}- {{description}}{{/if}}
 {{/each}}
 {{/if}}
 
 {{#if returns}}
-### Retorna
+**Returns**:
 
 {{#each returns}}
-\{{% notice tip %}}
-{{#if link}}**Tipo:** [{{type.names}}]({{link}}){{else}}**Tipo:** `{{type.names}}`{{/if}}
-<br>
-{{description}}
-\{{% /notice %}}
+
+- {{#if link}}`{{type.names}}`({{link}}){{else}}_`{{type.names}}`_{{/if}} {{#if description}}- {{description}}{{/if}}
+
 {{/each}}
 {{/if}}
 
 {{#if examples}}
-### Ejemplos
+**Example**:
 
 {{#each examples}}
-```javascript
+~~~javascript
 {{{.}}}
-```
+~~~
 
 {{/each}}
 {{/if}}

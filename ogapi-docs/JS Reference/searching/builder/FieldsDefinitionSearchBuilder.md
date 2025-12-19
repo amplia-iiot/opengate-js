@@ -3,74 +3,92 @@ title = "Fields Definition Search Builder"
 weight = 10
 +++
 
-**Class:** `FieldsDefinitionSearchBuilder`
+FieldsDefinitionSearchBuilder
+
+### FieldsDefinitionSearchBuilder Objects
+
+```javascript
+class FieldsDefinitionSearchBuilder()
+```
 
 Defined a search over operational status catalogs    
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## build()
 
+##### build
+
+
+```javascript
+function build() -> 'StaticSearch'
+```
 
 Build a instance of StaticSearch 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `StaticSearch`
-<br>
 
-{{% /notice %}}
+- _`StaticSearch`_ 
 
-### Ejemplos
+
+**Example**:
+
+~~~javascript
+  ogapi.FieldsDefinitionSearchBuilder().build()
+~~~
+
+---
+
+##### customFilters
+
 
 ```javascript
-  ogapi.FieldsDefinitionSearchBuilder().build()
+function customFilters()
 ```
 
----
-## customFilters
-
-
 
 
 
 ---
-## withType(fieldDefinitionType)
 
+##### withType
+
+
+```javascript
+function withType(fieldDefinitionType: string) -> 'fieldsDefinitionSearchBuilder'
+```
 
 Sets id to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **fieldDefinitionType** | `string` | ❌ | specific type |
+- `fieldDefinitionType` _string_  - specific type
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `fieldsDefinitionSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`fieldsDefinitionSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.fieldsDefinitionSearchBuilder().withType('string').build()
-```
+~~~
 
 ---
 

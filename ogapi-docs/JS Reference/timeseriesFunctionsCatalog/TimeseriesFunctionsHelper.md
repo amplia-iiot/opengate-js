@@ -3,65 +3,83 @@ title = "Timeseries Functions Helper"
 weight = 10
 +++
 
-**Class:** `TimeseriesFunctionsHelper`
+TimeseriesFunctionsHelper
+
+### TimeseriesFunctionsHelper Objects
+
+```javascript
+class TimeseriesFunctionsHelper()
+```
 
   This class allow make get request to newTimeseriesFunctionsHelper resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | Reference to the API object. |
+- `ogapi` _InternalOpenGateAPI_  - Reference to the API object.
 
 
 ---
-## getDocJavascriptFunctions()
 
+##### getDocJavascriptFunctions
+
+
+```javascript
+function getDocJavascriptFunctions() -> 'Promise'
+```
 
 Performs a get that returns documentation of javascript functions from rules service
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## getDocPrivateJavascriptFunctions()
 
+##### getDocPrivateJavascriptFunctions
+
+
+```javascript
+function getDocPrivateJavascriptFunctions() -> 'Promise'
+```
 
 Performs a get that returns documentation private of javascript functions from rules service
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## getValueTypes()
+
+##### getValueTypes
+
+
+```javascript
+function getValueTypes() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
 

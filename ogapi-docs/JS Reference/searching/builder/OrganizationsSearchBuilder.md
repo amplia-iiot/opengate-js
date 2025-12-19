@@ -3,152 +3,178 @@ title = "Organizations Search Builder"
 weight = 10
 +++
 
-**Class:** `OrganizationsSearchBuilder`
+OrganizationsSearchBuilder
+
+### OrganizationsSearchBuilder Objects
+
+```javascript
+class OrganizationsSearchBuilder()
+```
 
 Defined a search over organizations
 
-## constructor
+
+##### constructor
 
 
-
-### Parámetros
-
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+```javascript
+function constructor()
+```
 
 
----
-## build()
+**Arguments**:
 
-
-
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
-
-{{% /notice %}}
-
----
-## fluentFilter
-
-
-
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## tagsFilter
 
+##### build
+
+
+```javascript
+function build() -> '*'
+```
+
+
+
+**Returns**:
+
+
+- _`*`_ 
+
+
+---
+
+##### fluentFilter
+
+
+```javascript
+function fluentFilter()
+```
 
 
 
 
 ---
-## withChannelName(channelName)
 
+##### tagsFilter
+
+
+```javascript
+function tagsFilter()
+```
+
+
+
+
+---
+
+##### withChannelName
+
+
+```javascript
+function withChannelName(channelName: string) -> 'OrganizationsSearchBuilder'
+```
 
 Sets de organization name to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **channelName** | `string` | ❌ | hardware id |
+- `channelName` _string_  - hardware id
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `OrganizationsSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`OrganizationsSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.organizationsSearchBuilder().withChannelName('myOrganization').build()
-```
+~~~
 
 ---
-## withDomain(domainName)
 
+##### withDomain
+
+
+```javascript
+function withDomain(domainName: string) -> 'OrganizationsSearchBuilder'
+```
 
 Sets de domain name to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **domainName** | `string` | ❌ | domain name |
+- `domainName` _string_  - domain name
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `OrganizationsSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`OrganizationsSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.organizationsSearchBuilder().withDomain('myDomain').build()
-```
+~~~
 
 ---
-## withName(organizationName)
 
+##### withName
+
+
+```javascript
+function withName(organizationName: string) -> 'OrganizationsSearchBuilder'
+```
 
 Sets de organization name to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organizationName** | `string` | ❌ | hardware id |
+- `organizationName` _string_  - hardware id
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `OrganizationsSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`OrganizationsSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.organizationsSearchBuilder().withName('myOrganization').build()
-```
+~~~
 
 ---
-## withWorkgroup(workgroupName)
 
+##### withWorkgroup
+
+
+```javascript
+function withWorkgroup(workgroupName: string) -> 'OrganizationsSearchBuilder'
+```
 
 Sets de workgroup name to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **workgroupName** | `string` | ❌ | workgroup name |
+- `workgroupName` _string_  - workgroup name
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `OrganizationsSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`OrganizationsSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.organizationsSearchBuilder().withWorkgroup('myWorkgroup').build()
-```
+~~~
 
 ---
 

@@ -3,37 +3,49 @@ title = "Countries Catalog"
 weight = 10
 +++
 
-**Class:** `CountriesCatalog`
+CountriesCatalog
+
+### CountriesCatalog Objects
+
+```javascript
+class CountriesCatalog()
+```
 
   This class allow make get request to countries catalog resource into Opengate North API.
   //IMPORTANTE: ver tarea OUW-3924 para entender la realización de esta clase
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | Reference to the API object. |
+- `ogapi` _InternalOpenGateAPI_  - Reference to the API object.
 
 
 ---
-## getCountries()
 
+##### getCountries
+
+
+```javascript
+function getCountries() -> 'Promise'
+```
 
 Performs a get that returns countries
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

@@ -3,239 +3,263 @@ title = "Datastream"
 weight = 10
 +++
 
-**Class:** `Datastream`
+Datastream
+
+### Datastream Objects
+
+```javascript
+class Datastream()
+```
 
 Defines the builder to configure a datastream of IoT datamodel. With this builder you can configure a datastream
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 
 
 
 ---
-## addQrating(qrating)
 
+##### addQrating
+
+
+```javascript
+function addQrating(qrating: Object) -> 'Datastream'
+```
 
 Set the qrating attribute. Use {Qrating} utility for create this object
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **qrating** | `Object` | ❌ |  |
+- `qrating` _Object_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datastream`
-<br>
 
-{{% /notice %}}
+- _`Datastream`_ 
+
 
 ---
-## build()
 
+##### build
+
+
+```javascript
+function build() -> 'Object'
+```
 
 Build a Datastream json object
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Object`
-<br>
-Datastream json object
-{{% /notice %}}
 
-### Ejemplos
+- _`Object`_ - Datastream json object
 
-```javascript
+
+**Example**:
+
+~~~javascript
 ogapi.DatastreamsBuilder().build()
-```
+~~~
 
 ---
-## withAccess(access)
 
+##### withAccess
+
+
+```javascript
+function withAccess(access: Array) -> 'Datastream'
+```
 
 Set the access object. Possible values: [READ, WRITE], [READ], [WRITE], []
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **access** | `Array` | ❌ |  |
+- `access` _Array_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datastream`
-<br>
 
-{{% /notice %}}
+- _`Datastream`_ 
+
 
 ---
-## withDescription(description)
 
+##### withDescription
+
+
+```javascript
+function withDescription(description: string) -> 'Datastream'
+```
 
 Set the description attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **description** | `string` | ❌ |  |
+- `description` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datastream`
-<br>
 
-{{% /notice %}}
+- _`Datastream`_ 
+
 
 ---
-## withId(id)
 
+##### withId
+
+
+```javascript
+function withId(id: string) -> 'Datastream'
+```
 
 Set the id attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **id** | `string` | ❌ | required field |
+- `id` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datastream`
-<br>
 
-{{% /notice %}}
+- _`Datastream`_ 
+
 
 ---
-## withName(name)
 
+##### withName
+
+
+```javascript
+function withName(name: string) -> 'Datastream'
+```
 
 Set the name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | required field |
+- `name` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datastream`
-<br>
 
-{{% /notice %}}
+- _`Datastream`_ 
+
 
 ---
-## withPeriod(period)
 
+##### withPeriod
+
+
+```javascript
+function withPeriod(period: string) -> 'Datastream'
+```
 
 Set the period attribute. Possible values: PULSE, CUMULATIVE, INSTANT
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **period** | `string` | ❌ | required field |
+- `period` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datastream`
-<br>
 
-{{% /notice %}}
+- _`Datastream`_ 
+
 
 ---
-## withSchema(schema)
 
+##### withSchema
+
+
+```javascript
+function withSchema(schema: Object) -> 'Datastream'
+```
 
 Set the schema object attribute.
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **schema** | `Object` | ❌ |  |
+- `schema` _Object_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datastream`
-<br>
 
-{{% /notice %}}
+- _`Datastream`_ 
+
 
 ---
-## withStorage(period, total)
 
+##### withStorage
+
+
+```javascript
+function withStorage(period: string,total: number) -> 'Datastream'
+```
 
 Set the storage object.
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **period** | `string` | ❌ |  |
-| **total** | `number` | ❌ |  |
+- `period` _string_  
+- `total` _number_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datastream`
-<br>
 
-{{% /notice %}}
+- _`Datastream`_ 
+
 
 ---
-## withTags(tags)
 
+##### withTags
+
+
+```javascript
+function withTags(tags: Array) -> 'Datastream'
+```
 
 Set the tags attribute.
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **tags** | `Array` | ❌ |  |
+- `tags` _Array_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datastream`
-<br>
 
-{{% /notice %}}
+- _`Datastream`_ 
+
 
 ---
-## withUnit(type, label, symbol)
 
+##### withUnit
+
+
+```javascript
+function withUnit(type: string,label: string,symbol: string) -> 'Datastream'
+```
 
 Set the unit object attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **type** | `string` | ❌ | required field |
-| **label** | `string` | ❌ | required field |
-| **symbol** | `string` | ❌ | required field |
+- `type` _string_  - required field
+- `label` _string_  - required field
+- `symbol` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datastream`
-<br>
 
-{{% /notice %}}
+- _`Datastream`_ 
+
 
 ---
 

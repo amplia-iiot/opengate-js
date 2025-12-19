@@ -3,109 +3,127 @@ title = "Subscriber"
 weight = 10
 +++
 
-**Class:** `Subscriber`
+Subscriber
+
+### Subscriber Objects
+
+```javascript
+class Subscriber()
+```
 
 This is a base object that allows the user to create a Subscription.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 
 
 
 ---
-## composeElement()
+
+##### composeElement
+
+
+```javascript
+function composeElement() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## withHardware(hardware)
 
+##### withHardware
+
+
+```javascript
+function withHardware(hardware: Hardware) -> 'Subscriber'
+```
 
 Set the hardware attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **hardware** | `Hardware` | ❌ | optionals field |
+- `hardware` _Hardware_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Subscriber`
-<br>
 
-{{% /notice %}}
+- _`Subscriber`_ 
+
 
 ---
-## withId(id)
 
+##### withId
+
+
+```javascript
+function withId(id: string) -> 'Subscriber'
+```
 
 Set the id attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **id** | `string` | ❌ | optional field |
+- `id` _string_  - optional field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Subscriber`
-<br>
 
-{{% /notice %}}
+- _`Subscriber`_ 
+
 
 ---
-## withName(name)
 
+##### withName
+
+
+```javascript
+function withName(name: string) -> 'Subscriber'
+```
 
 Set the name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | optional field |
+- `name` _string_  - optional field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Subscriber`
-<br>
 
-{{% /notice %}}
+- _`Subscriber`_ 
+
 
 ---
-## withType(type)
 
+##### withType
+
+
+```javascript
+function withType(type: string) -> 'Subscriber'
+```
 
 Set the type attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **type** | `string` | ❌ | optional field |
+- `type` _string_  - optional field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Subscriber`
-<br>
 
-{{% /notice %}}
+- _`Subscriber`_ 
+
 
 ---
 

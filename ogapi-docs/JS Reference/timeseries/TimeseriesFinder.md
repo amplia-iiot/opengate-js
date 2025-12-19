@@ -3,85 +3,97 @@ title = "Timeseries Finder"
 weight = 10
 +++
 
-**Class:** `TimeseriesFinder`
+TimeseriesFinder
+
+### TimeseriesFinder Objects
+
+```javascript
+class TimeseriesFinder()
+```
 
   This class allow make get request to TimeseriesFinder resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | Reference to the API object. |
+- `ogapi` _InternalOpenGateAPI_  - Reference to the API object.
 
 
 ---
-## findByOrganization(organization, expand, dataStreams)
 
+##### findByOrganization
+
+
+```javascript
+function findByOrganization(organization: string,expand: Array,dataStreams: Array) -> 'Promise'
+```
 
 Performs a get that returns list of timeseries
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | organization |
-| **expand** | `Array` | ❌ | [&#x27;columns&#x27;, &#x27;context&#x27;] |
-| **dataStreams** | `Array` | ❌ | [&quot;ds_id_1&quot;,&quot;ds_id_2&quot;] |
+- `organization` _string_  - organization
+- `expand` _Array_  - [&#x27;columns&#x27;, &#x27;context&#x27;]
+- `dataStreams` _Array_  - [&quot;ds_id_1&quot;,&quot;ds_id_2&quot;]
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## findByOrganizationAndName(organization, name)
 
+##### findByOrganizationAndName
+
+
+```javascript
+function findByOrganizationAndName(organization: string,name: string) -> 'Promise'
+```
 
 Performs a get that returns a definition of timeserie
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | organization |
-| **name** | `string` | ❌ | timeserie name |
+- `organization` _string_  - organization
+- `name` _string_  - timeserie name
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## findByOrganizationAndTimeserieId(organization, timeserieId)
 
+##### findByOrganizationAndTimeserieId
+
+
+```javascript
+function findByOrganizationAndTimeserieId(organization: string,timeserieId: string) -> 'Promise'
+```
 
 Performs a get that returns a definition of timeserie
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | organization |
-| **timeserieId** | `string` | ❌ | timeserie identifier |
+- `organization` _string_  - organization
+- `timeserieId` _string_  - timeserie identifier
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

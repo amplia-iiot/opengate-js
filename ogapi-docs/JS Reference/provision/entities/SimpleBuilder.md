@@ -3,158 +3,189 @@ title = "Simple Builder"
 weight = 10
 +++
 
-**Class:** `SimpleBuilder`
+SimpleBuilder
+
+### SimpleBuilder Objects
+
+```javascript
+class SimpleBuilder()
+```
 
 This class allow set simple values.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | this is ogapi instance |
-| **resource** | `string` | ❌ | this is the resource url where can be create/delete/update/read the entity |
-| **allowedDatastreams** | `array` | ✅ | Allowed datastreams to add into the new entity |
-| **definedSchemas** | `array` | ✅ | Jsonschema about all OpenGate specific types |
-| **jsonSchemaValidator** | `Validator` | ✅ | Json schema validator tool |
+- `ogapi` _InternalOpenGateAPI_  - this is ogapi instance
+- `resource` _string_  - this is the resource url where can be create/delete/update/read the entity
+- `allowedDatastreams` _array_ (optional) - Allowed datastreams to add into the new entity
+- `definedSchemas` _array_ (optional) - Jsonschema about all OpenGate specific types
+- `jsonSchemaValidator` _Validator_ (optional) - Json schema validator tool
 
 
 ---
-## deleteAll()
 
+##### deleteAll
+
+
+```javascript
+function deleteAll() -> 'Promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This function deletes a entity of provision
 
 
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
-
-{{% /notice %}}
-
----
-## getAllowedDatastreams()
+**Returns**:
 
 
-
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `array`
-<br>
-Allowed Datastream definition array
-{{% /notice %}}
-
----
-## getEntityKey()
-
-
-
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `string`
-<br>
-Entity identifier
-{{% /notice %}}
-
----
-## initFromFlattened(_flattenedEntityData)
-
-
-
-### Parámetros
-
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **_flattenedEntityData** | `*` | ❌ |  |
+- _`Promise`_ 
 
 
 ---
-## initFromJson(_jsonEntityData)
+
+##### getAllowedDatastreams
+
+
+```javascript
+function getAllowedDatastreams() -> 'array'
+```
 
 
 
-### Parámetros
+**Returns**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **_jsonEntityData** | `*` | ❌ |  |
+
+- _`array`_ - Allowed Datastream definition array
 
 
 ---
-## patch()
 
+##### getEntityKey
+
+
+```javascript
+function getEntityKey() -> 'string'
+```
+
+
+
+**Returns**:
+
+
+- _`string`_ - Entity identifier
+
+
+---
+
+##### initFromFlattened
+
+
+```javascript
+function initFromFlattened()
+```
+
+
+**Arguments**:
+
+- `_flattenedEntityData` _*_  
+
+
+---
+
+##### initFromJson
+
+
+```javascript
+function initFromJson()
+```
+
+
+**Arguments**:
+
+- `_jsonEntityData` _*_  
+
+
+---
+
+##### patch
+
+
+```javascript
+function patch() -> 'Promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This function patch a entity of provision
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.organizationsBuilder().update()
-```
+~~~
 
 ---
-## update()
 
+##### update
+
+
+```javascript
+function update() -> 'Promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This function updates a entity of provision
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.organizationsBuilder().update()
-```
+~~~
 
 ---
-## with(_id, val)
 
+##### with
+
+
+```javascript
+function with(_id: string,val: objecr) -> '*'
+```
 
 Set new datastream value
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **_id** | `string` | ❌ | Datastream identifier |
-| **val** | `objecr` | ❌ | Datastream value. If this value is null then datastream value will be removed. |
+- `_id` _string_  - Datastream identifier
+- `val` _objecr_  - Datastream value. If this value is null then datastream value will be removed.
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
 
-{{% /notice %}}
+- _`*`_ 
+
 
 ---
 

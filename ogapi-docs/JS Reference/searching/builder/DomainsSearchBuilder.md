@@ -3,41 +3,53 @@ title = "Domains Search Builder"
 weight = 10
 +++
 
-**Class:** `DomainsSearchBuilder`
+DomainsSearchBuilder
+
+### DomainsSearchBuilder Objects
+
+```javascript
+class DomainsSearchBuilder()
+```
 
 Defined a search over Domains	
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## summary()
 
+##### summary
+
+
+```javascript
+function summary() -> 'SearchWithSummaryBuilder'
+```
 
 The response will only have a summary information 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `SearchWithSummaryBuilder`
-<br>
 
-{{% /notice %}}
+- _`SearchWithSummaryBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.domainsSearchBuilder().summary() 
-```
+~~~
 
 ---
 

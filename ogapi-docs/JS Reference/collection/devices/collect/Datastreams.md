@@ -3,89 +3,106 @@ title = "Datastream"
 weight = 10
 +++
 
-**Class:** `Datastream`
+Datastream
+
+### Datastream Objects
+
+```javascript
+class Datastream()
+```
 
 This is a base object that allows the user to create a Datastream.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 
 
 
 ---
-## composeElement()
+
+##### composeElement
+
+
+```javascript
+function composeElement() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## withDatapoint(datapoint)
 
+##### withDatapoint
+
+
+```javascript
+function withDatapoint(datapoint: Datapoint) -> 'Datastream'
+```
 
 Add a datapoint in datapoints
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **datapoint** | `Datapoint` | ❌ | required field |
+- `datapoint` _Datapoint_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datastream`
-<br>
 
-{{% /notice %}}
+- _`Datastream`_ 
+
 
 ---
-## withFeed(feed)
 
+##### withFeed
+
+
+```javascript
+function withFeed(feed: string) -> 'Datastream'
+```
 
 Set the feed attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **feed** | `string` | ❌ | optionals field |
+- `feed` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datastream`
-<br>
 
-{{% /notice %}}
+- _`Datastream`_ 
+
 
 ---
-## withId(id)
 
+##### withId
+
+
+```javascript
+function withId(id: string) -> 'Datastream'
+```
 
 Set the id attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **id** | `string` | ❌ | required field |
+- `id` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datastream`
-<br>
 
-{{% /notice %}}
+- _`Datastream`_ 
+
 
 ---
 

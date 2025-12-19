@@ -3,229 +3,253 @@ title = "Subscription"
 weight = 10
 +++
 
-**Class:** `Subscription`
+Subscription
+
+### Subscription Objects
+
+```javascript
+class Subscription()
+```
 
 This is a base object that allows the user to create a Subscription.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 
 
 
 ---
-## composeElement()
+
+##### composeElement
+
+
+```javascript
+function composeElement() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## withAddressApn(addressApn)
 
+##### withAddressApn
+
+
+```javascript
+function withAddressApn(addressApn: string) -> 'Subscription'
+```
 
 Set the addressApn attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **addressApn** | `string` | ❌ | optional field |
+- `addressApn` _string_  - optional field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Subscription`
-<br>
 
-{{% /notice %}}
+- _`Subscription`_ 
+
 
 ---
-## withAddressType(addressType)
 
+##### withAddressType
+
+
+```javascript
+function withAddressType(addressType: string) -> 'Subscription'
+```
 
 Set the addressType attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **addressType** | `string` | ❌ | optional field |
+- `addressType` _string_  - optional field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Subscription`
-<br>
 
-{{% /notice %}}
+- _`Subscription`_ 
+
 
 ---
-## withAddressValue(addressValue)
 
+##### withAddressValue
+
+
+```javascript
+function withAddressValue(addressValue: string) -> 'Subscription'
+```
 
 Set the addressValue attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **addressValue** | `string` | ❌ | optional field |
+- `addressValue` _string_  - optional field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Subscription`
-<br>
 
-{{% /notice %}}
+- _`Subscription`_ 
+
 
 ---
-## withDescription(description)
 
+##### withDescription
+
+
+```javascript
+function withDescription(description: string) -> 'Subscription'
+```
 
 Set the description attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **description** | `string` | ❌ | optional field |
+- `description` _string_  - optional field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Subscription`
-<br>
 
-{{% /notice %}}
+- _`Subscription`_ 
+
 
 ---
-## withId(id)
 
+##### withId
+
+
+```javascript
+function withId(id: string) -> 'Subscription'
+```
 
 Set the id attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **id** | `string` | ❌ | optional field |
+- `id` _string_  - optional field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Subscription`
-<br>
 
-{{% /notice %}}
+- _`Subscription`_ 
+
 
 ---
-## withImsi(imsi)
 
+##### withImsi
+
+
+```javascript
+function withImsi(imsi: string) -> 'Subscription'
+```
 
 Set the imsi attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **imsi** | `string` | ❌ | optional field |
+- `imsi` _string_  - optional field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Subscription`
-<br>
 
-{{% /notice %}}
+- _`Subscription`_ 
+
 
 ---
-## withMsisdn(msisdn)
 
+##### withMsisdn
+
+
+```javascript
+function withMsisdn(msisdn: string) -> 'Subscription'
+```
 
 Set the msisdn attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **msisdn** | `string` | ❌ | optional field |
+- `msisdn` _string_  - optional field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Subscription`
-<br>
 
-{{% /notice %}}
+- _`Subscription`_ 
+
 
 ---
-## withName(name)
 
+##### withName
+
+
+```javascript
+function withName(name: string) -> 'Subscription'
+```
 
 Set the name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | optional field |
+- `name` _string_  - optional field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Subscription`
-<br>
 
-{{% /notice %}}
+- _`Subscription`_ 
+
 
 ---
-## withOperator(operator)
 
+##### withOperator
+
+
+```javascript
+function withOperator(operator: string) -> 'Subscription'
+```
 
 Set the operator attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **operator** | `string` | ❌ | optional field |
+- `operator` _string_  - optional field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Subscription`
-<br>
 
-{{% /notice %}}
+- _`Subscription`_ 
+
 
 ---
-## withType(type)
 
+##### withType
+
+
+```javascript
+function withType(type: string) -> 'Subscription'
+```
 
 Set the type attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **type** | `string` | ❌ | optional field |
+- `type` _string_  - optional field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Subscription`
-<br>
 
-{{% /notice %}}
+- _`Subscription`_ 
+
 
 ---
 

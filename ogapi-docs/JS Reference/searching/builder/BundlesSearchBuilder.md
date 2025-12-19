@@ -3,19 +3,28 @@ title = "Bundles Search Builder"
 weight = 10
 +++
 
-**Class:** `BundlesSearchBuilder`
+BundlesSearchBuilder
+
+### BundlesSearchBuilder Objects
+
+```javascript
+class BundlesSearchBuilder()
+```
 
 Defined a search over Bundles	
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---

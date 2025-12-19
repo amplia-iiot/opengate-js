@@ -3,85 +3,97 @@ title = "Channel Finder"
 weight = 10
 +++
 
-**Class:** `ChannelFinder`
+ChannelFinder
+
+### ChannelFinder Objects
+
+```javascript
+class ChannelFinder()
+```
 
   This class allow make get request to channel resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | Reference to the API object. |
+- `ogapi` _InternalOpenGateAPI_  - Reference to the API object.
 
 
 ---
-## findByDomainAndWorkgroup(domain, workgroup)
 
+##### findByDomainAndWorkgroup
+
+
+```javascript
+function findByDomainAndWorkgroup(domain: string,workgroup: string) -> 'Promise'
+```
 
 Performs a get that returns channels related
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **domain** | `string` | ❌ | domain |
-| **workgroup** | `string` | ❌ | workgroup. |
+- `domain` _string_  - domain
+- `workgroup` _string_  - workgroup.
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## findByDomainAndWorkgroupAndOrganization(domain, workgroup, organization)
 
+##### findByDomainAndWorkgroupAndOrganization
+
+
+```javascript
+function findByDomainAndWorkgroupAndOrganization(domain: string,workgroup: string,organization: string) -> 'Promise'
+```
 
 Performs a get that returns channels related
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **domain** | `string` | ❌ | domain |
-| **workgroup** | `string` | ❌ | workgroup. |
-| **organization** | `string` | ❌ | organization. |
+- `domain` _string_  - domain
+- `workgroup` _string_  - workgroup.
+- `organization` _string_  - organization.
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## findByOrganizationAndName(organization, name)
 
+##### findByOrganizationAndName
+
+
+```javascript
+function findByOrganizationAndName(organization: string,name: string) -> 'Promise'
+```
 
 Download a specific channel by its organization and id. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | channel organization . |
-| **name** | `string` | ❌ | channel name. |
+- `organization` _string_  - channel organization .
+- `name` _string_  - channel name.
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

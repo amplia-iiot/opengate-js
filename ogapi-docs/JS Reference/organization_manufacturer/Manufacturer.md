@@ -3,243 +3,270 @@ title = "Manufacturers"
 weight = 10
 +++
 
-**Class:** `Manufacturers`
+Manufacturers
+
+### Manufacturers Objects
+
+```javascript
+class Manufacturers()
+```
 
 This is a base object that contains all you can do about Manufacturers.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## deleteInCascade()
+
+##### deleteInCascade
+
+
+```javascript
+function deleteInCascade() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## modelBuilder()
+
+##### modelBuilder
+
+
+```javascript
+function modelBuilder() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## updateInCascade()
+
+##### updateInCascade
+
+
+```javascript
+function updateInCascade() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## withAddress(address)
 
+##### withAddress
+
+
+```javascript
+function withAddress(address: string) -> 'Manufacturers'
+```
 
 Set the address attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **address** | `string` | ❌ |  |
+- `address` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Manufacturers`
-<br>
 
-{{% /notice %}}
+- _`Manufacturers`_ 
+
 
 ---
-## withDescription(description)
 
+##### withDescription
+
+
+```javascript
+function withDescription(description: string) -> 'Manufacturers'
+```
 
 Set the description attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **description** | `string` | ❌ | required field |
+- `description` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Manufacturers`
-<br>
 
-{{% /notice %}}
+- _`Manufacturers`_ 
+
 
 ---
-## withEmail(email)
 
+##### withEmail
+
+
+```javascript
+function withEmail(email: string) -> 'Manufacturers'
+```
 
 Set the email attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **email** | `string` | ❌ |  |
+- `email` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Manufacturers`
-<br>
 
-{{% /notice %}}
+- _`Manufacturers`_ 
+
 
 ---
-## withFax(fax)
 
+##### withFax
+
+
+```javascript
+function withFax(fax: string) -> 'Manufacturers'
+```
 
 Set the fax attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **fax** | `string` | ❌ |  |
+- `fax` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Manufacturers`
-<br>
 
-{{% /notice %}}
+- _`Manufacturers`_ 
+
 
 ---
-## withIdentifier(id)
 
+##### withIdentifier
+
+
+```javascript
+function withIdentifier(id: string) -> 'Manufacturers'
+```
 
 Set the identifier attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **id** | `string` | ❌ | required field |
+- `id` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Manufacturers`
-<br>
 
-{{% /notice %}}
+- _`Manufacturers`_ 
+
 
 ---
-## withName(name)
 
+##### withName
+
+
+```javascript
+function withName(name: string) -> 'Manufacturers'
+```
 
 Set the name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | required field |
+- `name` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Manufacturers`
-<br>
 
-{{% /notice %}}
+- _`Manufacturers`_ 
+
 
 ---
-## withNotes(notes)
 
+##### withNotes
+
+
+```javascript
+function withNotes(notes: string) -> 'Manufacturers'
+```
 
 Set the notes attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **notes** | `string` | ❌ |  |
+- `notes` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Manufacturers`
-<br>
 
-{{% /notice %}}
+- _`Manufacturers`_ 
+
 
 ---
-## withTelephone(telephone)
 
+##### withTelephone
+
+
+```javascript
+function withTelephone(telephone: string) -> 'Manufacturers'
+```
 
 Set the telephone attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **telephone** | `string` | ❌ |  |
+- `telephone` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Manufacturers`
-<br>
 
-{{% /notice %}}
+- _`Manufacturers`_ 
+
 
 ---
-## withUrl(url)
 
+##### withUrl
+
+
+```javascript
+function withUrl(url: string) -> 'Manufacturers'
+```
 
 Set the url attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **url** | `string` | ❌ |  |
+- `url` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Manufacturers`
-<br>
 
-{{% /notice %}}
+- _`Manufacturers`_ 
+
 
 ---
 

@@ -3,46 +3,56 @@ title = "Devices Plans Search Builder"
 weight = 10
 +++
 
-**Class:** `DevicesPlansSearchBuilder`
+DevicesPlansSearchBuilder
+
+### DevicesPlansSearchBuilder Objects
+
+```javascript
+class DevicesPlansSearchBuilder()
+```
 
 Defined a search over DevicePlansSearchBuilder	
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## withDomain(domainName)
 
+##### withDomain
+
+
+```javascript
+function withDomain(domainName: string) -> 'DevicePlansSearchBuilder'
+```
 
 Sets de domain name to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **domainName** | `string` | ❌ | domain name |
+- `domainName` _string_  - domain name
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DevicePlansSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`DevicePlansSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.plansSearchBuilder().withDomain('myDomain').build()
-```
+~~~
 
 ---
 

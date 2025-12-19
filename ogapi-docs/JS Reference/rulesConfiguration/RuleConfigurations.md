@@ -3,346 +3,378 @@ title = "Rule Configurations"
 weight = 10
 +++
 
-**Class:** `RuleConfigurations`
+RuleConfigurations
+
+### RuleConfigurations Objects
+
+```javascript
+class RuleConfigurations()
+```
 
 This is a base object that contains all you can do about RulesConfigurations.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## create()
 
+##### create
+
+
+```javascript
+function create() -> 'Promise'
+```
 
 Create a new Rule
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## delete()
 
+##### delete
+
+
+```javascript
+function delete() -> 'Promise'
+```
 
 Deletes the selected RuleConfiguration
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## update()
 
+##### update
+
+
+```javascript
+function update() -> 'Promise'
+```
 
 Udpate a Rule
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## updateParameters(newParameters)
 
+##### updateParameters
+
+
+```javascript
+function updateParameters(newParameters: *) -> 'Promise'
+```
 
 Udpate a Rule
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **newParameters** | `*` | ❌ |  |
+- `newParameters` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## withActions(actions)
 
+##### withActions
+
+
+```javascript
+function withActions(actions: object) -> '_RuleCondition'
+```
 
 Allows the modification of the actions
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **actions** | `object` | ❌ |  |
+- `actions` _object_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `_RuleCondition`
-<br>
 
-{{% /notice %}}
+- _`_RuleCondition`_ 
+
 
 ---
-## withActionsDelay(actionsDelay)
 
+##### withActionsDelay
+
+
+```javascript
+function withActionsDelay(actionsDelay: number) -> 'RulesConfigurations'
+```
 
 Set the actions delay attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **actionsDelay** | `number` | ❌ |  |
+- `actionsDelay` _number_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `RulesConfigurations`
-<br>
 
-{{% /notice %}}
+- _`RulesConfigurations`_ 
+
 
 ---
-## withActive(active)
 
+##### withActive
+
+
+```javascript
+function withActive(active: boolean) -> 'RulesConfigurations'
+```
 
 Set the active attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **active** | `boolean` | ❌ |  |
+- `active` _boolean_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `RulesConfigurations`
-<br>
 
-{{% /notice %}}
+- _`RulesConfigurations`_ 
+
 
 ---
-## withChannel(channel)
 
+##### withChannel
+
+
+```javascript
+function withChannel(channel: string) -> 'RulesConfigurations'
+```
 
 Set the channel attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **channel** | `string` | ❌ | required field |
+- `channel` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `RulesConfigurations`
-<br>
 
-{{% /notice %}}
+- _`RulesConfigurations`_ 
+
 
 ---
-## withCondition(conditionFilter)
 
+##### withCondition
+
+
+```javascript
+function withCondition(conditionFilter: string) -> '_RuleCondition'
+```
 
 Allows the modification of a condition
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **conditionFilter** | `string` | ❌ |  |
+- `conditionFilter` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `_RuleCondition`
-<br>
 
-{{% /notice %}}
+- _`_RuleCondition`_ 
+
 
 ---
-## withDescription(description)
 
+##### withDescription
+
+
+```javascript
+function withDescription(description: string) -> 'RulesConfigurations'
+```
 
 Set the description attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **description** | `string` | ❌ |  |
+- `description` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `RulesConfigurations`
-<br>
 
-{{% /notice %}}
+- _`RulesConfigurations`_ 
+
 
 ---
-## withIdentifier(identifier)
 
+##### withIdentifier
+
+
+```javascript
+function withIdentifier(identifier: string) -> 'RulesConfigurations'
+```
 
 Set the identifier attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **identifier** | `string` | ❌ | required field |
+- `identifier` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `RulesConfigurations`
-<br>
 
-{{% /notice %}}
+- _`RulesConfigurations`_ 
+
 
 ---
-## withJavascript(javascript)
 
+##### withJavascript
+
+
+```javascript
+function withJavascript(javascript: string) -> 'RulesConfigurations'
+```
 
 Set the javascript attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **javascript** | `string` | ❌ |  |
+- `javascript` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `RulesConfigurations`
-<br>
 
-{{% /notice %}}
+- _`RulesConfigurations`_ 
+
 
 ---
-## withMode(mode)
 
+##### withMode
+
+
+```javascript
+function withMode(mode: string) -> 'RulesConfigurations'
+```
 
 Set the mode attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **mode** | `string` | ❌ |  |
+- `mode` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `RulesConfigurations`
-<br>
 
-{{% /notice %}}
+- _`RulesConfigurations`_ 
+
 
 ---
-## withName(name)
 
+##### withName
+
+
+```javascript
+function withName(name: string) -> 'RulesConfigurations'
+```
 
 Set the name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | required field |
+- `name` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `RulesConfigurations`
-<br>
 
-{{% /notice %}}
+- _`RulesConfigurations`_ 
+
 
 ---
-## withOrganization(organization)
 
+##### withOrganization
+
+
+```javascript
+function withOrganization(organization: string) -> 'RulesConfigurations'
+```
 
 Set the organization attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | required field |
+- `organization` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `RulesConfigurations`
-<br>
 
-{{% /notice %}}
+- _`RulesConfigurations`_ 
+
 
 ---
-## withParameters(parameters)
 
+##### withParameters
+
+
+```javascript
+function withParameters(parameters: array) -> '_RuleCondition'
+```
 
 Allows the modification of the actions
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parameters** | `array` | ❌ |  |
+- `parameters` _array_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `_RuleCondition`
-<br>
 
-{{% /notice %}}
+- _`_RuleCondition`_ 
+
 
 ---
-## withType(type)
 
+##### withType
+
+
+```javascript
+function withType(type: string) -> 'RulesConfigurations'
+```
 
 Set the type attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **type** | `string` | ❌ |  |
+- `type` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `RulesConfigurations`
-<br>
 
-{{% /notice %}}
+- _`RulesConfigurations`_ 
+
 
 ---
 

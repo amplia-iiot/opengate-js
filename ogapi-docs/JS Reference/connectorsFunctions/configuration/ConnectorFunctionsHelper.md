@@ -3,79 +3,100 @@ title = "Connector Functions Helper"
 weight = 10
 +++
 
-**Class:** `ConnectorFunctionsHelper`
+ConnectorFunctionsHelper
+
+### ConnectorFunctionsHelper Objects
+
+```javascript
+class ConnectorFunctionsHelper()
+```
 
   This class allow make get request to RuleConfigurationsHelper resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | Reference to the API object. |
+- `ogapi` _InternalOpenGateAPI_  - Reference to the API object.
 
 
 ---
-## getDocJavascriptFunctions()
 
+##### getDocJavascriptFunctions
+
+
+```javascript
+function getDocJavascriptFunctions() -> 'Promise'
+```
 
 Performs a get that returns documentation of javascript functions from rules service
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## getDocPrivateJavascriptFunctions()
 
+##### getDocPrivateJavascriptFunctions
+
+
+```javascript
+function getDocPrivateJavascriptFunctions() -> 'Promise'
+```
 
 Performs a get that returns documentation private of javascript functions from rules service
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## getPayloadTypes()
+
+##### getPayloadTypes
+
+
+```javascript
+function getPayloadTypes() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## getSouthCriteriasProtocols()
+
+##### getSouthCriteriasProtocols
+
+
+```javascript
+function getSouthCriteriasProtocols() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
 

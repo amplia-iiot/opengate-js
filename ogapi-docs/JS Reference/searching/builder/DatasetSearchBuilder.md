@@ -3,91 +3,105 @@ title = "Dataset Search Builder"
 weight = 10
 +++
 
-**Class:** `DatasetSearchBuilder`
+DatasetSearchBuilder
+
+### DatasetSearchBuilder Objects
+
+```javascript
+class DatasetSearchBuilder()
+```
 
 Defined a search over Executions	
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## build()
 
+##### build
+
+
+```javascript
+function build() -> 'Search'
+```
 
 Build a instance of Search 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Search`
-<br>
 
-{{% /notice %}}
+- _`Search`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.datasetSearchBuilder(organization, datasetId).build()
-```
+~~~
 
 ---
-## group(group)
 
+##### group
+
+
+```javascript
+function group(group: object) -> 'DatasetSearchBuilder'
+```
 
 The search request will have this group by 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **group** | `object` | ❌ |  |
+- `group` _object_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DatasetSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`DatasetSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
 
-```
+~~~javascript
+
+~~~
 
 ---
-## select(select)
 
+##### select
+
+
+```javascript
+function select(select: SelectBuilder,object) -> 'DatasetSearchBuilder'
+```
 
 The search request will have this filter 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **select** | `SelectBuilder,object` | ❌ |  |
+- `select` _SelectBuilder,object_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DatasetSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`DatasetSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.datasetSearchBuilder(organization, datasetId).select(
      ogapi.newSelectBuilder().add(SE.element("provision.device.identifier", ["value"], "id"), SE.add("device.temperature.value", ["value"]))
  ) // Setting SelectBuilder
@@ -95,7 +109,7 @@ The search request will have this filter
 	"fields": [{"field": "value","alias": "identifier"}]},
      {"name": "device.temperature.value","fields": [{"field": "value","alias": "identifier"}]}]
   }) //Custom select
-```
+~~~
 
 ---
 

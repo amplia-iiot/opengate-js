@@ -3,354 +3,389 @@ title = "Bundles"
 weight = 10
 +++
 
-**Class:** `Bundles`
+Bundles
+
+### Bundles Objects
+
+```javascript
+class Bundles()
+```
 
 This is a base object that contains all you can do about Bundles.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## activate()
 
+##### activate
+
+
+```javascript
+function activate() -> 'Promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This function activates a bundle
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.bundlesBuilder().activate()
-```
+~~~
 
 ---
-## addDeploymentElement(progressEvent)
 
+##### addDeploymentElement
+
+
+```javascript
+function addDeploymentElement(progressEvent: *) -> 'DeploymentElement'
+```
 
 Create deployment element that is asociated to the Bundle
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **progressEvent** | `*` | ❌ |  |
+- `progressEvent` _*_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DeploymentElement`
-<br>
 
-{{% /notice %}}
+- _`DeploymentElement`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.bundlesBuilder().newDeploymentElement()
-```
+~~~
 
 ---
-## create()
 
+##### create
+
+
+```javascript
+function create() -> 'Promise'
+```
 
 Creates a new bundle
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.bundlesBuilder().create()
-```
+~~~
 
 ---
-## deactivate()
 
+##### deactivate
+
+
+```javascript
+function deactivate() -> 'Promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This function deactivates a bundle
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.bundlesBuilder().deactivate()
-```
+~~~
 
 ---
-## deployAndActivate()
 
+##### deployAndActivate
+
+
+```javascript
+function deployAndActivate() -> 'DeploymentElement'
+```
 
 Deploy all elements of a bundle in only one method
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DeploymentElement`
-<br>
 
-{{% /notice %}}
+- _`DeploymentElement`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.bundlesBuilder().deployAndActivate()
-```
+~~~
 
 ---
-## update()
 
+##### update
+
+
+```javascript
+function update() -> 'Promise'
+```
 
 Updates a bundle
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.bundlesBuilder().update()
-```
+~~~
 
 ---
-## withActive(active)
 
+##### withActive
+
+
+```javascript
+function withActive(active: string) -> 'Bundles'
+```
 
 Set the active attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **active** | `string` | ❌ |  |
+- `active` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Bundles`
-<br>
 
-{{% /notice %}}
+- _`Bundles`_ 
+
 
 ---
-## withDescription(description)
 
+##### withDescription
+
+
+```javascript
+function withDescription(description: string) -> 'Bundles'
+```
 
 Set the description attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **description** | `string` | ❌ |  |
+- `description` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Bundles`
-<br>
 
-{{% /notice %}}
+- _`Bundles`_ 
+
 
 ---
-## withHardware(hardware)
 
+##### withHardware
+
+
+```javascript
+function withHardware(hardware: string) -> 'Bundles'
+```
 
 Set the hardware attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **hardware** | `string` | ❌ |  |
+- `hardware` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Bundles`
-<br>
 
-{{% /notice %}}
+- _`Bundles`_ 
+
 
 ---
-## withName(name)
 
+##### withName
+
+
+```javascript
+function withName(name: string) -> 'Bundles'
+```
 
 Set the name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | required field |
+- `name` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Bundles`
-<br>
 
-{{% /notice %}}
+- _`Bundles`_ 
+
 
 ---
-## withPostaction(postactions)
 
+##### withPostaction
+
+
+```javascript
+function withPostaction(postactions: string) -> 'Bundles'
+```
 
 Set the postactions attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **postactions** | `string` | ❌ |  |
+- `postactions` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Bundles`
-<br>
 
-{{% /notice %}}
+- _`Bundles`_ 
+
 
 ---
-## withPreaction(preaction)
 
+##### withPreaction
+
+
+```javascript
+function withPreaction(preaction: string) -> 'Bundles'
+```
 
 Set the preaction attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **preaction** | `string` | ❌ |  |
+- `preaction` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Bundles`
-<br>
 
-{{% /notice %}}
+- _`Bundles`_ 
+
 
 ---
-## withTimeout(ms)
 
+##### withTimeout
+
+
+```javascript
+function withTimeout(ms: number) -> 'Bundles'
+```
 
 The request will have a specific time out if it will be exceeded then the promise throw an exception
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ms** | `number` | ❌ | timeout in milliseconds |
+- `ms` _number_  - timeout in milliseconds
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Bundles`
-<br>
 
-{{% /notice %}}
+- _`Bundles`_ 
+
 
 ---
-## withUserNotes(userNotes)
 
+##### withUserNotes
+
+
+```javascript
+function withUserNotes(userNotes: string) -> 'Bundles'
+```
 
 Set the userNotes attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **userNotes** | `string` | ❌ |  |
+- `userNotes` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Bundles`
-<br>
 
-{{% /notice %}}
+- _`Bundles`_ 
+
 
 ---
-## withVersion(version)
 
+##### withVersion
+
+
+```javascript
+function withVersion(version: string) -> 'Bundles'
+```
 
 Set the version attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **version** | `string` | ❌ |  |
+- `version` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Bundles`
-<br>
 
-{{% /notice %}}
+- _`Bundles`_ 
+
 
 ---
-## withWorkgroup(workgroup)
 
+##### withWorkgroup
+
+
+```javascript
+function withWorkgroup(workgroup: string) -> 'Bundles'
+```
 
 Set the workgroup attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **workgroup** | `string` | ❌ |  |
+- `workgroup` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Bundles`
-<br>
 
-{{% /notice %}}
+- _`Bundles`_ 
+
 
 ---
 

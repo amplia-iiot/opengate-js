@@ -3,46 +3,56 @@ title = "Plans Search Builder"
 weight = 10
 +++
 
-**Class:** `PlansSearchBuilder`
+PlansSearchBuilder
+
+### PlansSearchBuilder Objects
+
+```javascript
+class PlansSearchBuilder()
+```
 
 Defined a search over PlansSearchBuilder	
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## withDomain(domainName)
 
+##### withDomain
+
+
+```javascript
+function withDomain(domainName: string) -> 'PlansSearchBuilder'
+```
 
 Sets de domain name to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **domainName** | `string` | ❌ | domain name |
+- `domainName` _string_  - domain name
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `PlansSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`PlansSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.plansSearchBuilder().withDomain('myDomain').build()
-```
+~~~
 
 ---
 

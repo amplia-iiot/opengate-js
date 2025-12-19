@@ -3,72 +3,88 @@ title = "Complex Builder"
 weight = 10
 +++
 
-**Class:** `ComplexBuilder`
+ComplexBuilder
+
+### ComplexBuilder Objects
+
+```javascript
+class ComplexBuilder()
+```
 
 This class extends SimpleBuilder to allow set complex values. What is a complex value? It is simple, It is a value 
 that need a communications module identifier to allow set into the box.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | this is ogapi instance |
-| **resource** | `string` | ❌ | this is the resource url where can be create/delete/update/read the entity |
-| **allowedDatastreams** | `array` | ✅ | Allowed datastreams to add into the new entity |
-| **definedSchemas** | `array` | ✅ | Jsonschema about all OpenGate specific types |
-| **jsonSchemaValidator** | `Validator` | ✅ | Json schema validator tool |
+- `ogapi` _InternalOpenGateAPI_  - this is ogapi instance
+- `resource` _string_  - this is the resource url where can be create/delete/update/read the entity
+- `allowedDatastreams` _array_ (optional) - Allowed datastreams to add into the new entity
+- `definedSchemas` _array_ (optional) - Jsonschema about all OpenGate specific types
+- `jsonSchemaValidator` _Validator_ (optional) - Json schema validator tool
 
 
 ---
-## initFromFlattened(_flattenedEntityData)
+
+##### initFromFlattened
 
 
-
-### Parámetros
-
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **_flattenedEntityData** | `*` | ❌ |  |
+```javascript
+function initFromFlattened()
+```
 
 
----
-## initFromJson(_jsonEntityData)
+**Arguments**:
 
-
-
-### Parámetros
-
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **_jsonEntityData** | `*` | ❌ |  |
+- `_flattenedEntityData` _*_  
 
 
 ---
-## withComplex(_id, idCommunicationModules, val)
 
+##### initFromJson
+
+
+```javascript
+function initFromJson()
+```
+
+
+**Arguments**:
+
+- `_jsonEntityData` _*_  
+
+
+---
+
+##### withComplex
+
+
+```javascript
+function withComplex(_id: string,idCommunicationModules: string,val: object) -> '*'
+```
 
 Set a complex value to entity
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **_id** | `string` | ❌ | Datastream identifier |
-| **idCommunicationModules** | `string` | ❌ | Communications module identifier |
-| **val** | `object` | ❌ | Value to set. |
+- `_id` _string_  - Datastream identifier
+- `idCommunicationModules` _string_  - Communications module identifier
+- `val` _object_  - Value to set.
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
 
-{{% /notice %}}
+- _`*`_ 
+
 
 ---
 

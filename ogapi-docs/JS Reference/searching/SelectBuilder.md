@@ -3,46 +3,58 @@ title = "Select Builder"
 weight = 10
 +++
 
-**Class:** `SelectBuilder`
+SelectBuilder
 
-
-
-## constructor
-
-
-
-
-
-### Ejemplos
+### SelectBuilder Objects
 
 ```javascript
-var sb = ogapi.newSelectBuilder()
+class SelectBuilder()
 ```
+
+
+
+
+##### constructor
+
+
+```javascript
+function constructor()
+```
+
+
+
+
+**Example**:
+
+~~~javascript
+var sb = ogapi.newSelectBuilder()
+~~~
 
 ---
-## add(args)
 
+##### add
 
-
-### Parámetros
-
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **args** | `SelectElement` | ❌ | The parameters will be operators of the class SelectElement |
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
-
-{{% /notice %}}
-
-### Ejemplos
 
 ```javascript
-sb.add(Se.element('provision.device.identifier', ['value'], 'identifier'), sb.add(Se.element('device.temperature.value', ['value'])))
+function add(args: SelectElement) -> '*'
 ```
+
+
+**Arguments**:
+
+- `args` _SelectElement_  - The parameters will be operators of the class SelectElement
+
+**Returns**:
+
+
+- _`*`_ 
+
+
+**Example**:
+
+~~~javascript
+sb.add(Se.element('provision.device.identifier', ['value'], 'identifier'), sb.add(Se.element('device.temperature.value', ['value'])))
+~~~
 
 ---
 

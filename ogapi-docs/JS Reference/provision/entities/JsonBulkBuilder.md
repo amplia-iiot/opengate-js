@@ -3,24 +3,33 @@ title = "Json Bulk Builder"
 weight = 10
 +++
 
-**Class:** `JsonBulkBuilder`
+JsonBulkBuilder
+
+### JsonBulkBuilder Objects
+
+```javascript
+class JsonBulkBuilder()
+```
 
 Json builder. This builder give you the necessary tools to create a json bulk using our OpenGate REST.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | required field. This is ogapi instance |
-| **organization** | `string` | ❌ | required field. This is the organization name where entities will be created, updated or deleted |
-| **resource** | `resource` | ❌ | required field. This is the resource used for the bulk provision |
-| **timeout** | `number` | ✅ | timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception |
-| **async** | `boolean` | ✅ | forces async execution for the bulk operation |
+- `ogapi` _InternalOpenGateAPI_  - required field. This is ogapi instance
+- `organization` _string_  - required field. This is the organization name where entities will be created, updated or deleted
+- `resource` _resource_  - required field. This is the resource used for the bulk provision
+- `timeout` _number_ (optional) - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
+- `async` _boolean_ (optional) - forces async execution for the bulk operation
 
 
 ---

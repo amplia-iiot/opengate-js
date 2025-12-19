@@ -3,67 +3,80 @@ title = "Devices Search Builder"
 weight = 10
 +++
 
-**Class:** `DevicesSearchBuilder`
+DevicesSearchBuilder
+
+### DevicesSearchBuilder Objects
+
+```javascript
+class DevicesSearchBuilder()
+```
 
 Defined a search over Devices	
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## group(group)
 
+##### group
+
+
+```javascript
+function group(group: object) -> 'DevicesSearchBuilder'
+```
 
 The search request will have this group by 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **group** | `object` | ❌ |  |
+- `group` _object_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DevicesSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`DevicesSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
 
-```
+~~~javascript
+
+~~~
 
 ---
-## summary()
 
+##### summary
+
+
+```javascript
+function summary() -> 'DevicesSearchBuilder'
+```
 
 The response will only have a summary information 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DevicesSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`DevicesSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.devicesSearchBuilder().summary() 
-```
+~~~
 
 ---
 

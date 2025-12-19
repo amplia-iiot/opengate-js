@@ -3,80 +3,91 @@ title = "Bulk Execution Builder"
 weight = 10
 +++
 
-**Class:** `BulkExecutionBuilder`
+BulkExecutionBuilder
+
+### BulkExecutionBuilder Objects
+
+```javascript
+class BulkExecutionBuilder()
+```
 
 This builder give you the necessary tools to create a bulk executions using our OpenGate REST
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | required field. This is ogapi instance |
-| **organization** | `string` | ❌ | required field. This is the organization name |
-| **processorId** | `string` | ❌ | required field. This is the provision processor use for bulk provision |
-| **timeout** | `number` | ✅ | timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception |
+- `ogapi` _InternalOpenGateAPI_  - required field. This is ogapi instance
+- `organization` _string_  - required field. This is the organization name
+- `processorId` _string_  - required field. This is the provision processor use for bulk provision
+- `timeout` _number_ (optional) - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
 
 
 ---
-## bulk(rawFile, extension)
 
+##### bulk
+
+
+```javascript
+function bulk(rawFile: string,File,extension: string) -> '*'
+```
 
 Do a bulk using specific Provision Processor.
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **rawFile** | `string,File` | ❌ | String with path of file or File (Blob) |
-| **extension** | `string` | ✅ | File format |
+- `rawFile` _string,File_  - String with path of file or File (Blob)
+- `extension` _string_ (optional) - File format
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
 
-{{% /notice %}}
+- _`*`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.bulkExecutionBuilder('orgname', 'processorId', 10000).bulk(rawFile, extension)
-```
+~~~
 
 ---
-## plan(rawFile, extension, numberOfEntriesToProcess)
 
+##### plan
+
+
+```javascript
+function plan(rawFile: string,File,extension: string,numberOfEntriesToProcess: number) -> '*'
+```
 
 Instead of creating a bulk process, return the provision process planning for specified entries. This is is synch process that does not cause changes in the database
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **rawFile** | `string,File` | ❌ | String with path of file or File (Blob) |
-| **extension** | `string` | ✅ | File format |
-| **numberOfEntriesToProcess** | `number` | ✅ | Number of entries to be processed. |
+- `rawFile` _string,File_  - String with path of file or File (Blob)
+- `extension` _string_ (optional) - File format
+- `numberOfEntriesToProcess` _number_ (optional) - Number of entries to be processed.
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
 
-{{% /notice %}}
+- _`*`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.bulkExecutionBuilder('orgname', 'processorId', 10000).plan(rawFile, extension)
  ogapi.bulkExecutionBuilder('orgname', 'processorId', 10000).plan(rawFile, extension, numberOfEntriesToProcess)
-```
+~~~
 
 ---
 

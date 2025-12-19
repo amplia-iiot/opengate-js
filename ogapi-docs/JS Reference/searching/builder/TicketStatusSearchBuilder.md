@@ -3,45 +3,62 @@ title = "Ticket Status Search Builder"
 weight = 10
 +++
 
-**Class:** `TicketStatusSearchBuilder`
+TicketStatusSearchBuilder
+
+### TicketStatusSearchBuilder Objects
+
+```javascript
+class TicketStatusSearchBuilder()
+```
 
 Defined a search over ticket status catalog
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## build()
 
+##### build
+
+
+```javascript
+function build() -> 'StaticSearch'
+```
 
 Build a instance of StaticSearch 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `StaticSearch`
-<br>
 
-{{% /notice %}}
+- _`StaticSearch`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
   ogapi.ticketStatusSearchBuilder().build()
-```
+~~~
 
 ---
-## customFilters
 
+##### customFilters
+
+
+```javascript
+function customFilters()
+```
 
 
 

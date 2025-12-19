@@ -3,78 +3,94 @@ title = "Datapoints Search Builder"
 weight = 10
 +++
 
-**Class:** `DatapointsSearchBuilder`
+DatapointsSearchBuilder
+
+### DatapointsSearchBuilder Objects
+
+```javascript
+class DatapointsSearchBuilder()
+```
 
 Defined a search over Datastreams	
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## betweenDates(fromDate, toDate)
 
+##### betweenDates
+
+
+```javascript
+function betweenDates(fromDate: date,toDate: date) -> 'DatapointsSearchBuilder'
+```
 
 Set time window to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **fromDate** | `date` | ❌ | Add from date |
-| **toDate** | `date` | ❌ | Add to date |
+- `fromDate` _date_  - Add from date
+- `toDate` _date_  - Add to date
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DatapointsSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`DatapointsSearchBuilder`_ 
 
-### Ejemplos
+
+**Example**:
+
+~~~javascript
+ogapi.datapointsSearchBuilder().withDeviceId('myDevice').build()
+~~~
+
+---
+
+##### fluentFilter
+
 
 ```javascript
-ogapi.datapointsSearchBuilder().withDeviceId('myDevice').build()
+function fluentFilter()
 ```
 
----
-## fluentFilter
-
-
 
 
 
 ---
-## select(select)
 
+##### select
+
+
+```javascript
+function select(select: SelectBuilder,object) -> 'SearchBuilder'
+```
 
 The search request will have this filter 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **select** | `SelectBuilder,object` | ❌ |  |
+- `select` _SelectBuilder,object_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `SearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`SearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.entitiesSearchBuilder().select(
      ogapi.newSelectBuilder().add(SE.element("provision.device.identifier", ["value"], "id"), SE.add("device.temperature.value", ["value"]))
  ) // Setting SelectBuilder
@@ -82,92 +98,100 @@ The search request will have this filter
 	"fields": [{"field": "value","alias": "identifier"}]},
      {"name": "device.temperature.value","fields": [{"field": "value","alias": "identifier"}]}]
   }) //Custom select
+~~~
+
+---
+
+##### tagsFilter
+
+
+```javascript
+function tagsFilter()
 ```
 
----
-## tagsFilter
-
-
 
 
 
 ---
-## withDatastream(datastreamId)
 
+##### withDatastream
+
+
+```javascript
+function withDatastream(datastreamId: string) -> 'DatapointsSearchBuilder'
+```
 
 Set datastreamId to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **datastreamId** | `string` | ❌ | Datastream.id of Datapoint |
+- `datastreamId` _string_  - Datastream.id of Datapoint
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DatapointsSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`DatapointsSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.datapointsSearchBuilder().withDeviceId('myDevice').build()
-```
+~~~
 
 ---
-## withDeviceId(deviceId)
 
+##### withDeviceId
+
+
+```javascript
+function withDeviceId(deviceId: string) -> 'DatapointsSearchBuilder'
+```
 
 Set deviceId to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **deviceId** | `string` | ❌ | Prov.customId of Device |
+- `deviceId` _string_  - Prov.customId of Device
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DatapointsSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`DatapointsSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.datapointsSearchBuilder().withDeviceId('myDevice').build()
-```
+~~~
 
 ---
-## withFeed(feedId)
 
+##### withFeed
+
+
+```javascript
+function withFeed(feedId: string) -> 'DatapointsSearchBuilder'
+```
 
 Set feedName to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **feedId** | `string` | ❌ | Datastream.id of Datapoint |
+- `feedId` _string_  - Datastream.id of Datapoint
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DatapointsSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`DatapointsSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.datapointsSearchBuilder().withDeviceId('myDevice').build()
-```
+~~~
 
 ---
 

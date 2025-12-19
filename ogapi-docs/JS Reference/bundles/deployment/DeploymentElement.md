@@ -3,402 +3,446 @@ title = "Deployment Element"
 weight = 10
 +++
 
-**Class:** `DeploymentElement`
+DeploymentElement
+
+### DeploymentElement Objects
+
+```javascript
+class DeploymentElement()
+```
 
 This is a base object that contains all you can do about Deployment Element.
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **context** | `*` | ❌ |  |
-| **ogapi** | `*` | ❌ |  |
-| **url** | `*` | ❌ |  |
-| **progressEvent** | `*` | ❌ |  |
+**Arguments**:
+
+- `context` _*_  
+- `ogapi` _*_  
+- `url` _*_  
+- `progressEvent` _*_  
 
 
 ---
-## createWithFile(rawFile)
 
+##### createWithFile
+
+
+```javascript
+function createWithFile(rawFile: File) -> 'Promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This method create an element deploymentElement
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **rawFile** | `File` | ❌ | this File is the deployment element |
+- `rawFile` _File_  - this File is the deployment element
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## deploy()
 
+##### deploy
+
+
+```javascript
+function deploy() -> 'Promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This method create an element deploymentElement with previously assignated file
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## update()
 
+##### update
+
+
+```javascript
+function update()
+```
 
 This method invalidates the update option
 
 
 
 ---
-## validation
 
+##### validation
+
+
+```javascript
+function validation()
+```
 
 
 
 
 ---
-## validation
 
+##### validation
+
+
+```javascript
+function validation()
+```
 
 
 
 
 ---
-## withDownloadUrl(downloadUrl)
 
+##### withDownloadUrl
+
+
+```javascript
+function withDownloadUrl(downloadUrl: string) -> 'DeploymentElement'
+```
 
 Set the downloadUrl attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **downloadUrl** | `string` | ❌ |  |
+- `downloadUrl` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DeploymentElement`
-<br>
 
-{{% /notice %}}
+- _`DeploymentElement`_ 
+
 
 ---
-## withFile(rawFile)
 
+##### withFile
+
+
+```javascript
+function withFile(rawFile: object) -> 'DeploymentElement'
+```
 
 Sets the file to upload
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **rawFile** | `object` | ❌ |  |
+- `rawFile` _object_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DeploymentElement`
-<br>
 
-{{% /notice %}}
+- _`DeploymentElement`_ 
+
 
 ---
-## withFileName(fileName)
 
+##### withFileName
+
+
+```javascript
+function withFileName(fileName: string) -> 'DeploymentElement'
+```
 
 Set the fileName attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **fileName** | `string` | ❌ |  |
+- `fileName` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DeploymentElement`
-<br>
 
-{{% /notice %}}
+- _`DeploymentElement`_ 
+
 
 ---
-## withName(name)
 
+##### withName
+
+
+```javascript
+function withName(name: string) -> 'DeploymentElement'
+```
 
 Set the name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | required field |
+- `name` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DeploymentElement`
-<br>
 
-{{% /notice %}}
+- _`DeploymentElement`_ 
+
 
 ---
-## withOldName(name)
 
+##### withOldName
+
+
+```javascript
+function withOldName(name: string) -> 'DeploymentElement'
+```
 
 Sets the old name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ |  |
+- `name` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DeploymentElement`
-<br>
 
-{{% /notice %}}
+- _`DeploymentElement`_ 
+
 
 ---
-## withOldPath(path)
 
+##### withOldPath
+
+
+```javascript
+function withOldPath(path: string) -> 'DeploymentElement'
+```
 
 Sets the old path attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **path** | `string` | ❌ |  |
+- `path` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DeploymentElement`
-<br>
 
-{{% /notice %}}
+- _`DeploymentElement`_ 
+
 
 ---
-## withOldVersion(version)
 
+##### withOldVersion
+
+
+```javascript
+function withOldVersion(version: string) -> 'DeploymentElement'
+```
 
 Sets the old version attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **version** | `string` | ❌ |  |
+- `version` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DeploymentElement`
-<br>
 
-{{% /notice %}}
+- _`DeploymentElement`_ 
+
 
 ---
-## withOperation(operation)
 
+##### withOperation
+
+
+```javascript
+function withOperation(operation: string) -> 'DeploymentElement'
+```
 
 Set the operation attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **operation** | `string` | ❌ | required field |
+- `operation` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DeploymentElement`
-<br>
 
-{{% /notice %}}
+- _`DeploymentElement`_ 
+
 
 ---
-## withOption(option)
 
+##### withOption
+
+
+```javascript
+function withOption(option: string) -> 'DeploymentElement'
+```
 
 Set the option attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **option** | `string` | ❌ |  |
+- `option` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DeploymentElement`
-<br>
 
-{{% /notice %}}
+- _`DeploymentElement`_ 
+
 
 ---
-## withOrder(order)
 
+##### withOrder
+
+
+```javascript
+function withOrder(order: string) -> 'DeploymentElement'
+```
 
 Set the order attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **order** | `string` | ❌ | required field |
+- `order` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DeploymentElement`
-<br>
 
-{{% /notice %}}
+- _`DeploymentElement`_ 
+
 
 ---
-## withPath(path)
 
+##### withPath
+
+
+```javascript
+function withPath(path: string) -> 'DeploymentElement'
+```
 
 Set the path attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **path** | `string` | ❌ | required field |
+- `path` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DeploymentElement`
-<br>
 
-{{% /notice %}}
+- _`DeploymentElement`_ 
+
 
 ---
-## withTimeout(ms)
 
+##### withTimeout
+
+
+```javascript
+function withTimeout(ms: number) -> 'Bundles'
+```
 
 The request will have a specific time out if it will be exceeded then the promise throw an exception
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ms** | `number` | ❌ | timeout in milliseconds |
+- `ms` _number_  - timeout in milliseconds
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Bundles`
-<br>
 
-{{% /notice %}}
+- _`Bundles`_ 
+
 
 ---
-## withType(type)
 
+##### withType
+
+
+```javascript
+function withType(type: string) -> 'DeploymentElement'
+```
 
 Set the type attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **type** | `string` | ❌ | required field |
+- `type` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DeploymentElement`
-<br>
 
-{{% /notice %}}
+- _`DeploymentElement`_ 
+
 
 ---
-## withValidation(validation)
 
+##### withValidation
+
+
+```javascript
+function withValidation(validation: string) -> 'DeploymentElement'
+```
 
 Set the validation attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **validation** | `string` | ❌ |  |
+- `validation` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DeploymentElement`
-<br>
 
-{{% /notice %}}
+- _`DeploymentElement`_ 
+
 
 ---
-## withValidators(validators)
 
+##### withValidators
+
+
+```javascript
+function withValidators(validators: Array) -> 'DeploymentElement'
+```
 
 Set the validators attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **validators** | `Array` | ❌ |  |
+- `validators` _Array_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DeploymentElement`
-<br>
 
-{{% /notice %}}
+- _`DeploymentElement`_ 
+
 
 ---
-## withVersion(version)
 
+##### withVersion
+
+
+```javascript
+function withVersion(version: string) -> 'DeploymentElement'
+```
 
 Set the version attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **version** | `string` | ❌ | required field |
+- `version` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DeploymentElement`
-<br>
 
-{{% /notice %}}
+- _`DeploymentElement`_ 
+
 
 ---
 

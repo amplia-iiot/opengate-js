@@ -3,105 +3,118 @@ title = "Model Finder"
 weight = 10
 +++
 
-**Class:** `ModelFinder`
+ModelFinder
+
+### ModelFinder Objects
+
+```javascript
+class ModelFinder()
+```
 
   This class allow make get request to hardware models resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## findByManufacturer(manufacturer)
 
+##### findByManufacturer
+
+
+```javascript
+function findByManufacturer(manufacturer: string) -> 'Promise'
+```
 
 Download all models from a manufacturer. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **manufacturer** | `string` | ❌ | manufacturer id . |
+- `manufacturer` _string_  - manufacturer id .
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## findByManufacturerAndId(manufacturer, identifier)
 
+##### findByManufacturerAndId
+
+
+```javascript
+function findByManufacturerAndId(manufacturer: string,identifier: string) -> 'Promise'
+```
 
 Download a specific model by its id. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **manufacturer** | `string` | ❌ | manufacturer id . |
-| **identifier** | `string` | ❌ | model name . |
+- `manufacturer` _string_  - manufacturer id .
+- `identifier` _string_  - model name .
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## findMediaByManufacturerAndModelAndId(manufacturer, modelId, mediaIdentifier)
 
+##### findMediaByManufacturerAndModelAndId
+
+
+```javascript
+function findMediaByManufacturerAndModelAndId(manufacturer: string,modelId: string,mediaIdentifier: string) -> 'Promise'
+```
 
 Download a specific model media by its ids. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **manufacturer** | `string` | ❌ | manufacturer id . |
-| **modelId** | `string` | ❌ | model identifier . |
-| **mediaIdentifier** | `string` | ❌ | media identifier. |
+- `manufacturer` _string_  - manufacturer id .
+- `modelId` _string_  - model identifier .
+- `mediaIdentifier` _string_  - media identifier.
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## findMediasByManufacturerAndModel(manufacturer, identifier)
 
+##### findMediasByManufacturerAndModel
+
+
+```javascript
+function findMediasByManufacturerAndModel(manufacturer: string,identifier: string) -> 'Promise'
+```
 
 Download a specific model media by its ids. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **manufacturer** | `string` | ❌ | manufacturer id . |
-| **identifier** | `string` | ❌ | model identifier . |
+- `manufacturer` _string_  - manufacturer id .
+- `identifier` _string_  - model identifier .
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

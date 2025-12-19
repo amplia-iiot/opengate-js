@@ -3,182 +3,199 @@ title = "Areas"
 weight = 10
 +++
 
-**Class:** `Areas`
+Areas
+
+### Areas Objects
+
+```javascript
+class Areas()
+```
 
 This is a base object that contains all you can do about Areas.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## withColor(color)
 
+##### withColor
+
+
+```javascript
+function withColor(color: string) -> 'Areas'
+```
 
 Set the color attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **color** | `string` | ❌ | required field |
+- `color` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Areas`
-<br>
 
-{{% /notice %}}
+- _`Areas`_ 
+
 
 ---
-## withDescription(description)
 
+##### withDescription
+
+
+```javascript
+function withDescription(description: string) -> 'Areas'
+```
 
 Set the description attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **description** | `string` | ❌ | required field |
+- `description` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Areas`
-<br>
 
-{{% /notice %}}
+- _`Areas`_ 
+
 
 ---
-## withEntities(entities)
 
+##### withEntities
+
+
+```javascript
+function withEntities(entities: array) -> 'Areas'
+```
 
 Set the entities attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **entities** | `array` | ❌ | required field |
+- `entities` _array_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Areas`
-<br>
 
-{{% /notice %}}
+- _`Areas`_ 
+
 
 ---
-## withGeometry(type, coordinates)
 
+##### withGeometry
+
+
+```javascript
+function withGeometry(type: string,coordinates: array) -> 'Areas'
+```
 
 Set the geometry attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **type** | `string` | ❌ | required field |
-| **coordinates** | `array` | ❌ | required field |
+- `type` _string_  - required field
+- `coordinates` _array_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Areas`
-<br>
 
-{{% /notice %}}
+- _`Areas`_ 
+
 
 ---
-## withIdentifier(identifier)
 
+##### withIdentifier
+
+
+```javascript
+function withIdentifier(identifier: string) -> 'Areas'
+```
 
 Set the identifier attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **identifier** | `string` | ❌ | required field |
+- `identifier` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Areas`
-<br>
 
-{{% /notice %}}
+- _`Areas`_ 
+
 
 ---
-## withName(name)
 
+##### withName
+
+
+```javascript
+function withName(name: string) -> 'Areas'
+```
 
 Set the name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | required field |
+- `name` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Areas`
-<br>
 
-{{% /notice %}}
+- _`Areas`_ 
+
 
 ---
-## withOrder(order)
 
+##### withOrder
+
+
+```javascript
+function withOrder(order: number) -> 'Areas'
+```
 
 Set the order attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **order** | `number` | ❌ | required field |
+- `order` _number_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Areas`
-<br>
 
-{{% /notice %}}
+- _`Areas`_ 
+
 
 ---
-## withOrganization(organization)
 
+##### withOrganization
+
+
+```javascript
+function withOrganization(organization: string) -> 'Areas'
+```
 
 Set the organization attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | required field |
+- `organization` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Areas`
-<br>
 
-{{% /notice %}}
+- _`Areas`_ 
+
 
 ---
 

@@ -3,89 +3,106 @@ title = "Location"
 weight = 10
 +++
 
-**Class:** `Location`
+Location
+
+### Location Objects
+
+```javascript
+class Location()
+```
 
 This is a base object that allows the user to create a Datapoint.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 
 
 
 ---
-## composeElement()
+
+##### composeElement
+
+
+```javascript
+function composeElement() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## withDateLocation(date)
 
+##### withDateLocation
+
+
+```javascript
+function withDateLocation(date: string) -> 'Location'
+```
 
 Set the date attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **date** | `string` | ❌ | optionals field |
+- `date` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Location`
-<br>
 
-{{% /notice %}}
+- _`Location`_ 
+
 
 ---
-## withLatitude(latitude)
 
+##### withLatitude
+
+
+```javascript
+function withLatitude(latitude: number) -> 'Location'
+```
 
 Set the latitude attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **latitude** | `number` | ❌ | optionals field |
+- `latitude` _number_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Location`
-<br>
 
-{{% /notice %}}
+- _`Location`_ 
+
 
 ---
-## withLongitude(longitude)
 
+##### withLongitude
+
+
+```javascript
+function withLongitude(longitude: number) -> 'Location'
+```
 
 Set the longitude attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **longitude** | `number` | ❌ | optionals field |
+- `longitude` _number_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Location`
-<br>
 
-{{% /notice %}}
+- _`Location`_ 
+
 
 ---
 

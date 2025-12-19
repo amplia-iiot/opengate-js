@@ -3,242 +3,269 @@ title = "Image Execution"
 weight = 10
 +++
 
-**Class:** `ImageExecution`
+ImageExecution
+
+### ImageExecution Objects
+
+```javascript
+class ImageExecution()
+```
 
 This is a base object that contains all you can do about Bundles.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## toJson()
+
+##### toJson
+
+
+```javascript
+function toJson() -> '*'
+```
 
 
 
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
-
-{{% /notice %}}
-
----
-## update()
+**Returns**:
 
 
-
+- _`*`_ 
 
 
 ---
-## withEnvFrom(imageExecutionEnvFrom)
 
+##### update
+
+
+```javascript
+function update()
+```
+
+
+
+
+---
+
+##### withEnvFrom
+
+
+```javascript
+function withEnvFrom(imageExecutionEnvFrom: array) -> 'ImageExecution'
+```
 
 Sets the env from for imageExecution
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **imageExecutionEnvFrom** | `array` | ❌ |  |
+- `imageExecutionEnvFrom` _array_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ImageExecution`
-<br>
 
-{{% /notice %}}
+- _`ImageExecution`_ 
+
 
 ---
-## withEnvVars(imageExecutionEnvVars)
 
+##### withEnvVars
+
+
+```javascript
+function withEnvVars(imageExecutionEnvVars: object) -> 'ImageExecution'
+```
 
 Sets the env vars for imageExecution
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **imageExecutionEnvVars** | `object` | ❌ |  |
+- `imageExecutionEnvVars` _object_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ImageExecution`
-<br>
 
-{{% /notice %}}
+- _`ImageExecution`_ 
+
 
 ---
-## withIdentifier(identifier)
 
+##### withIdentifier
+
+
+```javascript
+function withIdentifier(identifier: string) -> 'ImageExecution'
+```
 
 Sets the identifier attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **identifier** | `string` | ❌ |  |
+- `identifier` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ImageExecution`
-<br>
 
-{{% /notice %}}
+- _`ImageExecution`_ 
+
 
 ---
-## withMaxTimeToWaitCallback(asyncResponseMaxTimeToWaitCallback)
 
+##### withMaxTimeToWaitCallback
+
+
+```javascript
+function withMaxTimeToWaitCallback(asyncResponseMaxTimeToWaitCallback: string) -> 'ImageExecution'
+```
 
 Sets the async response with selected timeout
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **asyncResponseMaxTimeToWaitCallback** | `string` | ❌ |  |
+- `asyncResponseMaxTimeToWaitCallback` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ImageExecution`
-<br>
 
-{{% /notice %}}
+- _`ImageExecution`_ 
+
 
 ---
-## withName(imageExecutionName)
 
+##### withName
+
+
+```javascript
+function withName(imageExecutionName: string) -> 'ImageExecution'
+```
 
 Sets the name for imageExecution
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **imageExecutionName** | `string` | ❌ |  |
+- `imageExecutionName` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ImageExecution`
-<br>
 
-{{% /notice %}}
+- _`ImageExecution`_ 
+
 
 ---
-## withOrganization(organization)
 
+##### withOrganization
+
+
+```javascript
+function withOrganization(organization: string) -> 'Channels'
+```
 
 Set the organization attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ |  |
+- `organization` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Channels`
-<br>
 
-{{% /notice %}}
+- _`Channels`_ 
+
 
 ---
-## withScheduleCronExpression(cronExpression)
 
+##### withScheduleCronExpression
+
+
+```javascript
+function withScheduleCronExpression(cronExpression: string) -> 'ImageExecution'
+```
 
 Sets the crontab expression for schedule
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **cronExpression** | `string` | ❌ |  |
+- `cronExpression` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ImageExecution`
-<br>
 
-{{% /notice %}}
+- _`ImageExecution`_ 
+
 
 ---
-## withScheduleImmediateExecution(isImmediateExecution)
 
+##### withScheduleImmediateExecution
+
+
+```javascript
+function withScheduleImmediateExecution(isImmediateExecution: boolean) -> 'ImageExecution'
+```
 
 Sets the isImmediateExecution attribute for schedule
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **isImmediateExecution** | `boolean` | ❌ |  |
+- `isImmediateExecution` _boolean_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ImageExecution`
-<br>
 
-{{% /notice %}}
+- _`ImageExecution`_ 
+
 
 ---
-## withTag(imageExecutionTag)
 
+##### withTag
+
+
+```javascript
+function withTag(imageExecutionTag: string) -> 'ImageExecution'
+```
 
 Sets the tag for imageExecution
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **imageExecutionTag** | `string` | ❌ |  |
+- `imageExecutionTag` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ImageExecution`
-<br>
 
-{{% /notice %}}
+- _`ImageExecution`_ 
+
 
 ---
-## withTimeout(timeout)
 
+##### withTimeout
+
+
+```javascript
+function withTimeout(timeout: string) -> 'ImageExecution'
+```
 
 Sets the execution timeout for imageExecution
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **timeout** | `string` | ❌ |  |
+- `timeout` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `ImageExecution`
-<br>
 
-{{% /notice %}}
+- _`ImageExecution`_ 
+
 
 ---
 

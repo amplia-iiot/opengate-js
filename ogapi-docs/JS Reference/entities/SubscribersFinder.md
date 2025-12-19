@@ -3,20 +3,29 @@ title = "Subscribers Finder"
 weight = 10
 +++
 
-**Class:** `SubscribersFinder`
+SubscribersFinder
+
+### SubscribersFinder Objects
+
+```javascript
+class SubscribersFinder()
+```
 
   This class allow make get request to subscribers provisioned resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---

@@ -3,41 +3,53 @@ title = "Operation Types Builder"
 weight = 10
 +++
 
-**Class:** `OperationTypesBuilder`
+OperationTypesBuilder
+
+### OperationTypesBuilder Objects
+
+```javascript
+class OperationTypesBuilder()
+```
 
 Defined a search over operationTypes	
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## build()
 
+##### build
+
+
+```javascript
+function build() -> 'Search'
+```
 
 Build a instance of Search 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Search`
-<br>
 
-{{% /notice %}}
+- _`Search`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.devicesSearchBuilder().onProvisioned().build()
-```
+~~~
 
 ---
 

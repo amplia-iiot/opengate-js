@@ -3,62 +3,73 @@ title = "Certificate Finder"
 weight = 10
 +++
 
-**Class:** `CertificateFinder`
+CertificateFinder
+
+### CertificateFinder Objects
+
+```javascript
+class CertificateFinder()
+```
 
   This class allow make get request to certificate resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## findById(id)
 
+##### findById
+
+
+```javascript
+function findById(id: string) -> 'Promise'
+```
 
 Download a specific certificate by id. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **id** | `string` | ❌ | Id of the certificate. |
+- `id` _string_  - Id of the certificate.
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## findByIdAndFormat(id, mimetype)
 
+##### findByIdAndFormat
+
+
+```javascript
+function findByIdAndFormat(id: string,mimetype: string) -> 'Promise'
+```
 
 Download a certificate using id and in a specific format. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **id** | `string` | ❌ | Id of the certificate. |
-| **mimetype** | `string` | ❌ | Certificate format mimetype. |
+- `id` _string_  - Id of the certificate.
+- `mimetype` _string_  - Certificate format mimetype.
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

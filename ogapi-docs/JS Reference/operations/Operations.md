@@ -3,75 +3,89 @@ title = "Operations"
 weight = 10
 +++
 
-**Class:** `Operations`
+Operations
+
+### Operations Objects
+
+```javascript
+class Operations()
+```
 
 This class generates all operations builders by a response to search into catalog/operations
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | this is configuration about Opengate North API. |
+- `ogapi` _InternalOpenGateAPI_  - this is configuration about Opengate North API.
 
 
 ---
-## builderByOperationName(name)
 
+##### builderByOperationName
+
+
+```javascript
+function builderByOperationName(name: String) -> 'Promise'
+```
 
 Create a builder to create an operation 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `String` | ❌ | name of the operation to be created |
+- `name` _String_  - name of the operation to be created
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## getOperationList()
+
+##### getOperationList
+
+
+```javascript
+function getOperationList() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## updatePeriodicityBuilder(operationId)
 
+##### updatePeriodicityBuilder
+
+
+```javascript
+function updatePeriodicityBuilder(operationId: String) -> 'Promise'
+```
 
 Create a builder to update the periodicity of an operation 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **operationId** | `String` | ❌ | identifier of the operation to be updated~ |
+- `operationId` _String_  - identifier of the operation to be updated~
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

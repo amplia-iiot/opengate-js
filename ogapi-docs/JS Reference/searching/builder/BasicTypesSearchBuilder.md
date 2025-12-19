@@ -3,125 +3,157 @@ title = "Basic Types Search Builder"
 weight = 10
 +++
 
-**Class:** `BasicTypesSearchBuilder`
+BasicTypesSearchBuilder
+
+### BasicTypesSearchBuilder Objects
+
+```javascript
+class BasicTypesSearchBuilder()
+```
 
 This is a abstract class, it must be extended to another class that defined the specific search.
 This class is responsible to manage execute request to OpenGate North API
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | this is ogapi instance |
-| **timeout** | `number` | ✅ | timeout on request |
+- `ogapi` _InternalOpenGateAPI_  - this is ogapi instance
+- `timeout` _number_ (optional) - timeout on request
 
 
 ---
-## build()
+
+##### build
+
+
+```javascript
+function build() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## execute()
 
+##### execute
+
+
+```javascript
+function execute() -> 'Promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 
 
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
-
-{{% /notice %}}
-
----
-## path
+**Returns**:
 
 
-
+- _`Promise`_ 
 
 
 ---
-## publicParameters
 
+##### path
+
+
+```javascript
+function path()
+```
 
 
 
 
 ---
-## publicParameters
 
+##### publicParameters
+
+
+```javascript
+function publicParameters()
+```
 
 
 
 
 ---
-## withPath(path)
 
+##### publicParameters
+
+
+```javascript
+function publicParameters()
+```
+
+
+
+
+---
+
+##### withPath
+
+
+```javascript
+function withPath(path: string) -> 'BasicTypesSearchBuilder'
+```
 
 Sets path to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **path** | `string` | ❌ | jsonSchemaPath |
+- `path` _string_  - jsonSchemaPath
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BasicTypesSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`BasicTypesSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.basicTypesSearchBuilder().withPath('string').build()
-```
+~~~
 
 ---
-## withPublicParameters(publicParameters)
 
+##### withPublicParameters
+
+
+```javascript
+function withPublicParameters(publicParameters: boolean) -> 'BasicTypesSearchBuilder'
+```
 
 Sets publicParameters to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **publicParameters** | `boolean` | ❌ | boolean |
+- `publicParameters` _boolean_  - boolean
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BasicTypesSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`BasicTypesSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.basicTypesSearchBuilder().withPublicParameters(true).build()
-```
+~~~
 
 ---
 

@@ -3,44 +3,54 @@ title = "By Week"
 weight = 10
 +++
 
-**Class:** `ByWeek`
+ByWeek
+
+### ByWeek Objects
+
+```javascript
+class ByWeek()
+```
 
 
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `BaseOperationBuilder` | ❌ | this is a operationBaseBuilder. |
-| **date** | `Date` | ❌ | Date when operation will be executed |
-| **periodicityName** | `string` | ❌ | Name associated to periodicity |
-| **end** | `number or Date` | ❌ | When periodicity ends. By repetitions or by date |
+- `parent` _BaseOperationBuilder_  - this is a operationBaseBuilder.
+- `date` _Date_  - Date when operation will be executed
+- `periodicityName` _string_  - Name associated to periodicity
+- `end` _number or Date_  - When periodicity ends. By repetitions or by date
 
 
 ---
-## days(days)
 
+##### days
+
+
+```javascript
+function days(days: array) -> 'BaseOperationBuilder'
+```
 
 At this days will be executed the operation
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **days** | `array` | ❌ |  |
+- `days` _array_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `BaseOperationBuilder`
-<br>
 
-{{% /notice %}}
+- _`BaseOperationBuilder`_ 
+
 
 ---
 

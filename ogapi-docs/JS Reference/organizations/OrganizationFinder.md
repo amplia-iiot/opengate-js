@@ -3,62 +3,73 @@ title = "Organization Finder"
 weight = 10
 +++
 
-**Class:** `OrganizationFinder`
+OrganizationFinder
+
+### OrganizationFinder Objects
+
+```javascript
+class OrganizationFinder()
+```
 
   This class allow make get request to organization resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | Reference to the API object. |
+- `ogapi` _InternalOpenGateAPI_  - Reference to the API object.
 
 
 ---
-## findByDomainAndWorkgroup(domain, workgroup)
 
+##### findByDomainAndWorkgroup
+
+
+```javascript
+function findByDomainAndWorkgroup(domain: string,workgroup: string) -> 'Promise'
+```
 
 Performs a get that returns organizations related
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **domain** | `string` | ❌ | domain |
-| **workgroup** | `string` | ❌ | workgroup. |
+- `domain` _string_  - domain
+- `workgroup` _string_  - workgroup.
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## findByName(name)
 
+##### findByName
+
+
+```javascript
+function findByName(name: string) -> 'Promise'
+```
 
 Find a specify organization by a name. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | Organization name |
+- `name` _string_  - Organization name
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

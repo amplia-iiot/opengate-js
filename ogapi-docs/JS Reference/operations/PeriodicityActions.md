@@ -3,88 +3,106 @@ title = "Periodicity Actions"
 weight = 10
 +++
 
-**Class:** `PeriodicityActions`
+PeriodicityActions
+
+### PeriodicityActions Objects
+
+```javascript
+class PeriodicityActions()
+```
 
 
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | this is configuration about Opengate North API. |
-| **taskId** | `string` | ❌ | Identifier of the periodicity on which the action will be carried out |
+- `ogapi` _InternalOpenGateAPI_  - this is configuration about Opengate North API.
+- `taskId` _string_  - Identifier of the periodicity on which the action will be carried out
 
 
 ---
-## activate()
 
+##### activate
+
+
+```javascript
+function activate() -> 'Promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This function active periodicity of an operation
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.newPeriodicityActions("xxxxx-xxx-xxxx-xxxxx").activate()
-```
+~~~
 
 ---
-## cancel()
 
+##### cancel
+
+
+```javascript
+function cancel() -> 'Promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This function cancel a periodicity
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.periodicityActions("xxxxx-xxx-xxxx-xxxxx").cancelPeriodicity();
-```
+~~~
 
 ---
-## pause()
 
+##### pause
+
+
+```javascript
+function pause() -> 'Promise'
+```
 
 This invoke a request to OpenGate North API and the callback is managed by promises
 This function pauses a periodicity
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
 ogapi.periodicityActions("xxxxx-xxx-xxxx-xxxxx").pausePeriodicity()
-```
+~~~
 
 ---
 

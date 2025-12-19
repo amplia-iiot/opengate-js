@@ -3,19 +3,28 @@ title = "Rules Search Builder"
 weight = 10
 +++
 
-**Class:** `RulesSearchBuilder`
+RulesSearchBuilder
+
+### RulesSearchBuilder Objects
+
+```javascript
+class RulesSearchBuilder()
+```
 
 Defined a search over Rulse	
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---

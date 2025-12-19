@@ -3,242 +3,269 @@ title = "Softwares Search Builder"
 weight = 10
 +++
 
-**Class:** `SoftwaresSearchBuilder`
+SoftwaresSearchBuilder
+
+### SoftwaresSearchBuilder Objects
+
+```javascript
+class SoftwaresSearchBuilder()
+```
 
 Defined a search over Datastreams    
 
-## constructor
+
+##### constructor
 
 
-
-### Parámetros
-
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+```javascript
+function constructor()
+```
 
 
----
-## fluentFilter
+**Arguments**:
 
-
-
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## tagsFilter
 
+##### fluentFilter
+
+
+```javascript
+function fluentFilter()
+```
 
 
 
 
 ---
-## withHardwareId(hardwareId)
 
+##### tagsFilter
+
+
+```javascript
+function tagsFilter()
+```
+
+
+
+
+---
+
+##### withHardwareId
+
+
+```javascript
+function withHardwareId(hardwareId: string) -> 'SoftwaresSearchBuilder'
+```
 
 Sets hardware id to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **hardwareId** | `string` | ❌ | hardware id |
+- `hardwareId` _string_  - hardware id
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `SoftwaresSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`SoftwaresSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.hardwareSearchBuilder().withHardwareId('myHardware').build()
-```
+~~~
 
 ---
-## withId(softwareId)
 
+##### withId
+
+
+```javascript
+function withId(softwareId: string) -> 'SoftwaresSearchBuilder'
+```
 
 Sets softwareId to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **softwareId** | `string` | ❌ | software id |
+- `softwareId` _string_  - software id
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `SoftwaresSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`SoftwaresSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.softwareSearchBuilder().withId('mySoftwareId').build()
-```
+~~~
 
 ---
-## withManufacturer(manufacturerName)
 
+##### withManufacturer
+
+
+```javascript
+function withManufacturer(manufacturerName: string) -> 'SoftwaresSearchBuilder'
+```
 
 Set feedName to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **manufacturerName** | `string` | ❌ | manufacturer name |
+- `manufacturerName` _string_  - manufacturer name
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `SoftwaresSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`SoftwaresSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.softwareSearchBuilder().withManufacturer('myManufacturer').build()
-```
+~~~
 
 ---
-## withModel(modelName)
 
+##### withModel
+
+
+```javascript
+function withModel(modelName: string) -> 'SoftwaresSearchBuilder'
+```
 
 Set modelName to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **modelName** | `string` | ❌ | model name |
+- `modelName` _string_  - model name
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `SoftwaresSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`SoftwaresSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.softwareSearchBuilder().withModel('myModel').build()
-```
+~~~
 
 ---
-## withModelVersion(modelVersion)
 
+##### withModelVersion
+
+
+```javascript
+function withModelVersion(modelVersion: string) -> 'SoftwaresSearchBuilder'
+```
 
 Set modelVersion to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **modelVersion** | `string` | ❌ | model version |
+- `modelVersion` _string_  - model version
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `SoftwaresSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`SoftwaresSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.softwareSearchBuilder().withModelVersion('myModelVersion).build()
-```
+~~~
 
 ---
-## withName(softwareName)
 
+##### withName
+
+
+```javascript
+function withName(softwareName: string) -> 'SoftwaresSearchBuilder'
+```
 
 Set softwareName to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **softwareName** | `string` | ❌ | software name |
+- `softwareName` _string_  - software name
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `SoftwaresSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`SoftwaresSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.softwareSearchBuilder().withName('mySoftware').build()
-```
+~~~
 
 ---
-## withType(softwareType)
 
+##### withType
+
+
+```javascript
+function withType(softwareType: string) -> 'SoftwaresSearchBuilder'
+```
 
 Set softwareType to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **softwareType** | `string` | ❌ | software version |
+- `softwareType` _string_  - software version
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `SoftwaresSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`SoftwaresSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.softwareSearchBuilder().withType('mySoftwareType).build()
-```
+~~~
 
 ---
-## withVersion(softwareVersion)
 
+##### withVersion
+
+
+```javascript
+function withVersion(softwareVersion: string) -> 'SoftwaresSearchBuilder'
+```
 
 Set softwareVersion to search
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **softwareVersion** | `string` | ❌ | software version |
+- `softwareVersion` _string_  - software version
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `SoftwaresSearchBuilder`
-<br>
 
-{{% /notice %}}
+- _`SoftwaresSearchBuilder`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
  ogapi.softwareSearchBuilder().withVersion('mySoftwareVersion).build()
-```
+~~~
 
 ---
 

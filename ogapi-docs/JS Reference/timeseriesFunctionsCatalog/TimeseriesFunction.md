@@ -3,217 +3,245 @@ title = "Timeseries Function"
 weight = 10
 +++
 
-**Class:** `TimeseriesFunction`
+TimeseriesFunction
+
+### TimeseriesFunction Objects
+
+```javascript
+class TimeseriesFunction()
+```
 
 This is a base object that contains all you can do about TimeseriesFunction.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## create()
+
+##### create
+
+
+```javascript
+function create() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## delete()
 
+##### delete
+
+
+```javascript
+function delete() -> 'Promise'
+```
 
 Deletes the selected RuleConfiguration
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## update()
 
+##### update
+
+
+```javascript
+function update() -> 'Promise'
+```
 
 Udpate a Rule
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## withDescription(description)
 
+##### withDescription
+
+
+```javascript
+function withDescription(description: string) -> 'TimeseriesFunction'
+```
 
 Set the description attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **description** | `string` | ❌ |  |
+- `description` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `TimeseriesFunction`
-<br>
 
-{{% /notice %}}
+- _`TimeseriesFunction`_ 
+
 
 ---
-## withIdentifier(name)
 
+##### withIdentifier
+
+
+```javascript
+function withIdentifier(name: string) -> 'TimeseriesFunction'
+```
 
 Set the name for update attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | required field |
+- `name` _string_  - required field
 
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `TimeseriesFunction`
-<br>
-
-{{% /notice %}}
-
----
-## withMetadataFile(file)
+**Returns**:
 
 
-
-### Parámetros
-
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **file** | `*` | ❌ |  |
+- _`TimeseriesFunction`_ 
 
 
 ---
-## withName(name)
 
+##### withMetadataFile
+
+
+```javascript
+function withMetadataFile()
+```
+
+
+**Arguments**:
+
+- `file` _*_  
+
+
+---
+
+##### withName
+
+
+```javascript
+function withName(name: string) -> 'TimeseriesFunction'
+```
 
 Set the name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | required field |
+- `name` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `TimeseriesFunction`
-<br>
 
-{{% /notice %}}
+- _`TimeseriesFunction`_ 
+
 
 ---
-## withOrganization(organization)
 
+##### withOrganization
+
+
+```javascript
+function withOrganization(organization: string) -> 'TimeseriesFunction'
+```
 
 Set the organization attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | required field |
+- `organization` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `TimeseriesFunction`
-<br>
 
-{{% /notice %}}
+- _`TimeseriesFunction`_ 
+
 
 ---
-## withReturnType(returnType)
 
+##### withReturnType
+
+
+```javascript
+function withReturnType(returnType: String) -> 'TimeseriesFunction'
+```
 
 Set the returnType attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **returnType** | `String` | ❌ |  |
+- `returnType` _String_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `TimeseriesFunction`
-<br>
 
-{{% /notice %}}
+- _`TimeseriesFunction`_ 
+
 
 ---
-## withScript(script)
 
+##### withScript
+
+
+```javascript
+function withScript(script: string) -> 'TimeseriesFunction'
+```
 
 Set the script attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **script** | `string` | ❌ |  |
+- `script` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `TimeseriesFunction`
-<br>
 
-{{% /notice %}}
+- _`TimeseriesFunction`_ 
+
 
 ---
-## withValueTypes(valueTypes)
 
+##### withValueTypes
+
+
+```javascript
+function withValueTypes(valueTypes: Array) -> 'TimeseriesFunction'
+```
 
 Set the valueTypes attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **valueTypes** | `Array` | ❌ |  |
+- `valueTypes` _Array_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `TimeseriesFunction`
-<br>
 
-{{% /notice %}}
+- _`TimeseriesFunction`_ 
+
 
 ---
 

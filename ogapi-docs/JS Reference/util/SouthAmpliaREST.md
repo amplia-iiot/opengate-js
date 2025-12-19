@@ -3,20 +3,29 @@ title = "South Amplia REST"
 weight = 10
 +++
 
-**Class:** `SouthAmpliaREST`
+SouthAmpliaREST
+
+### SouthAmpliaREST Objects
+
+```javascript
+class SouthAmpliaREST()
+```
 
 
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **_options** | `*` | ❌ |  |
-| **headers** | `*` | ❌ |  |
+**Arguments**:
+
+- `_options` _*_  
+- `headers` _*_  
 
 
 ---

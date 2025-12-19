@@ -3,62 +3,73 @@ title = "User Finder"
 weight = 10
 +++
 
-**Class:** `UserFinder`
+UserFinder
+
+### UserFinder Objects
+
+```javascript
+class UserFinder()
+```
 
   This class allow make get request to user resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## findByEmail(email)
 
+##### findByEmail
+
+
+```javascript
+function findByEmail(email: string) -> 'Promise'
+```
 
 Find a specify user by a email. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **email** | `string` | ❌ | Email of the user. |
+- `email` _string_  - Email of the user.
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## findByEmailAndPassword(email, password)
 
+##### findByEmailAndPassword
+
+
+```javascript
+function findByEmailAndPassword(email: string,password: string) -> 'Promise'
+```
 
 Find a specific user with apiKey by a email and password. This execute a GET http method
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **email** | `string` | ❌ | Email of the user. |
-| **password** | `string` | ❌ | password of the user. |
+- `email` _string_  - Email of the user.
+- `password` _string_  - password of the user.
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

@@ -3,126 +3,140 @@ title = "_Rule Notification"
 weight = 10
 +++
 
-**Class:** `_RuleNotification`
+_RuleNotification
+
+### _RuleNotification Objects
+
+```javascript
+class _RuleNotification()
+```
 
 Defines the builder to configure a _RuleNotification
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function  -> '_RuleNotification'
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `RuleConfigurations` | ❌ | RuleConfiguration object |
-| **notificationData** | `Object` | ❌ | notification data to manage |
+- `parent` _RuleConfigurations_  - RuleConfiguration object
+- `notificationData` _Object_  - notification data to manage
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `_RuleNotification`
-<br>
 
-{{% /notice %}}
+- _`_RuleNotification`_ 
+
 
 ---
-## disableBearer(bearerName)
 
+##### disableBearer
+
+
+```javascript
+function disableBearer(bearerName: string) -> '_RuleNotification'
+```
 
 Disables selected bearer
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **bearerName** | `string` | ❌ |  |
+- `bearerName` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `_RuleNotification`
-<br>
 
-{{% /notice %}}
+- _`_RuleNotification`_ 
+
 
 ---
-## enableBearer(bearerName, bearerEnabled)
 
+##### enableBearer
+
+
+```javascript
+function enableBearer(bearerName: string,bearerEnabled: boolean) -> '_RuleNotification'
+```
 
 Enables selected bearer
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **bearerName** | `string` | ❌ |  |
-| **bearerEnabled** | `boolean` | ❌ |  |
+- `bearerName` _string_  
+- `bearerEnabled` _boolean_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `_RuleNotification`
-<br>
 
-{{% /notice %}}
+- _`_RuleNotification`_ 
+
 
 ---
-## parent()
 
+##### parent
+
+
+```javascript
+function parent() -> 'RuleConfiguration'
+```
 
 Returns parent
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `RuleConfiguration`
-<br>
 
-{{% /notice %}}
+- _`RuleConfiguration`_ 
+
 
 ---
-## setBearerRecipients(bearerName, bearerRecipients)
 
+##### setBearerRecipients
+
+
+```javascript
+function setBearerRecipients(bearerName: string,bearerRecipients: Array) -> '_RuleNotification'
+```
 
 Sets recipients to the selected bearer
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **bearerName** | `string` | ❌ |  |
-| **bearerRecipients** | `Array` | ❌ |  |
+- `bearerName` _string_  
+- `bearerRecipients` _Array_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `_RuleNotification`
-<br>
 
-{{% /notice %}}
+- _`_RuleNotification`_ 
+
 
 ---
-## setEnabled(enabled)
 
+##### setEnabled
+
+
+```javascript
+function setEnabled(enabled: boolean) -> '_RuleNotification'
+```
 
 Set the delay of the notification
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **enabled** | `boolean` | ❌ |  |
+- `enabled` _boolean_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `_RuleNotification`
-<br>
 
-{{% /notice %}}
+- _`_RuleNotification`_ 
+
 
 ---
 

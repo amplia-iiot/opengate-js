@@ -3,275 +3,299 @@ title = "Timeseries"
 weight = 10
 +++
 
-**Class:** `Timeseries`
+Timeseries
+
+### Timeseries Objects
+
+```javascript
+class Timeseries()
+```
 
 This is a base object that contains all you can do about Timeseries.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## onlyPlan()
+
+##### onlyPlan
+
+
+```javascript
+function onlyPlan() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## withBucketColumn(bucketColumn)
 
+##### withBucketColumn
+
+
+```javascript
+function withBucketColumn(bucketColumn: string) -> 'Timeseries'
+```
 
 Name of generated column with bucket date.Required if timeBucket &gt; 0.
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **bucketColumn** | `string` | ❌ | pattern: ^[a-zA-Z0-9 _-]*$ |
+- `bucketColumn` _string_  - pattern: ^[a-zA-Z0-9 _-]*$
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Timeseries`
-<br>
 
-{{% /notice %}}
+- _`Timeseries`_ 
+
 
 ---
-## withBucketInitColumn(bucketInitColumn)
 
+##### withBucketInitColumn
+
+
+```javascript
+function withBucketInitColumn(bucketInitColumn: string) -> 'Timeseries'
+```
 
 Name of generated column with bucket init date.
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **bucketInitColumn** | `string` | ❌ | pattern: ^[a-zA-Z0-9 _-]*$ |
+- `bucketInitColumn` _string_  - pattern: ^[a-zA-Z0-9 _-]*$
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Timeseries`
-<br>
 
-{{% /notice %}}
+- _`Timeseries`_ 
+
 
 ---
-## withColumns(columns)
 
+##### withColumns
+
+
+```javascript
+function withColumns(columns: array) -> 'Timeseries'
+```
 
 List of data that is needed for each entity.
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **columns** | `array` | ❌ | required field |
+- `columns` _array_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Timeseries`
-<br>
 
-{{% /notice %}}
+- _`Timeseries`_ 
+
 
 ---
-## withContext(context)
 
+##### withContext
+
+
+```javascript
+function withContext(context: array) -> 'Timeseries'
+```
 
 List of data that is needed for each entity.
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **context** | `array` | ❌ |  |
+- `context` _array_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Timeseries`
-<br>
 
-{{% /notice %}}
+- _`Timeseries`_ 
+
 
 ---
-## withDescription(description)
 
+##### withDescription
+
+
+```javascript
+function withDescription(description: string) -> 'Timeseries'
+```
 
 Long text to explain timeserie definition
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **description** | `string` | ❌ |  |
+- `description` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Timeseries`
-<br>
 
-{{% /notice %}}
+- _`Timeseries`_ 
+
 
 ---
-## withIdentifier(identifier)
 
+##### withIdentifier
+
+
+```javascript
+function withIdentifier(identifier: string) -> 'Timeseries'
+```
 
 Set the identifier attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **identifier** | `string` | ❌ | required field |
+- `identifier` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Timeseries`
-<br>
 
-{{% /notice %}}
+- _`Timeseries`_ 
+
 
 ---
-## withIdentifierColumn(identifierColumn)
 
+##### withIdentifierColumn
+
+
+```javascript
+function withIdentifierColumn(identifierColumn: string) -> 'Datasets'
+```
 
 Set the identifierColumn attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **identifierColumn** | `string` | ❌ | required field |
+- `identifierColumn` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datasets`
-<br>
 
-{{% /notice %}}
+- _`Datasets`_ 
+
 
 ---
-## withName(name)
 
+##### withName
+
+
+```javascript
+function withName(name: string) -> 'Timeseries'
+```
 
 Name which will be unique in each organization
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | required field |
+- `name` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Timeseries`
-<br>
 
-{{% /notice %}}
+- _`Timeseries`_ 
+
 
 ---
-## withOrganization(organization)
 
+##### withOrganization
+
+
+```javascript
+function withOrganization(organization: string) -> 'Timeseries'
+```
 
 Set the organization attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ | required field |
+- `organization` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Timeseries`
-<br>
 
-{{% /notice %}}
+- _`Timeseries`_ 
+
 
 ---
-## withOrigin(origin)
 
+##### withOrigin
+
+
+```javascript
+function withOrigin(origin: string) -> 'Timeseries'
+```
 
 Initial date to first bucket with ISO date time format. Next bucket will be calcullated from this date. Default value is created date with time equals 00:00:00.000Z
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **origin** | `string` | ❌ |  |
+- `origin` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Timeseries`
-<br>
 
-{{% /notice %}}
+- _`Timeseries`_ 
+
 
 ---
-## withRetention(retention)
 
+##### withRetention
+
+
+```javascript
+function withRetention(retention: number) -> 'Timeseries'
+```
 
 Time that a row is stored to be got in searching.  Default value is 1 month
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **retention** | `number` | ❌ |  |
+- `retention` _number_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Timeseries`
-<br>
 
-{{% /notice %}}
+- _`Timeseries`_ 
+
 
 ---
-## withTimeBucket(timeBucket)
 
+##### withTimeBucket
+
+
+```javascript
+function withTimeBucket(timeBucket: integer) -> 'Timeseries'
+```
 
 Duration of buckets in seconds.
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **timeBucket** | `integer` | ❌ | required field |
+- `timeBucket` _integer_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Timeseries`
-<br>
 
-{{% /notice %}}
+- _`Timeseries`_ 
+
 
 ---
 

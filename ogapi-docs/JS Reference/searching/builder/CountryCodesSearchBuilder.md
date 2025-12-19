@@ -3,45 +3,62 @@ title = "Country Codes Search Builder"
 weight = 10
 +++
 
-**Class:** `CountryCodesSearchBuilder`
+CountryCodesSearchBuilder
+
+### CountryCodesSearchBuilder Objects
+
+```javascript
+class CountryCodesSearchBuilder()
+```
 
 Defined a search over operational status catalogs    
 
-## constructor
+
+##### constructor
 
 
+```javascript
+function constructor()
+```
 
-### Parámetros
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `InternalOpenGateAPI` | ❌ | Instance of our InternalOpenGateAPI |
+**Arguments**:
+
+- `parent` _InternalOpenGateAPI_  - Instance of our InternalOpenGateAPI
 
 
 ---
-## build()
 
+##### build
+
+
+```javascript
+function build() -> 'StaticSearch'
+```
 
 Build a instance of StaticSearch 
 
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `StaticSearch`
-<br>
 
-{{% /notice %}}
+- _`StaticSearch`_ 
 
-### Ejemplos
 
-```javascript
+**Example**:
+
+~~~javascript
   ogapi.countryCodesSearchBuilder().filter({and:[]}).build()
-```
+~~~
 
 ---
-## customFilters
 
+##### customFilters
+
+
+```javascript
+function customFilters()
+```
 
 
 

@@ -3,237 +3,261 @@ title = "Datamodels Helper"
 weight = 10
 +++
 
-**Class:** `DatamodelsHelper`
+DatamodelsHelper
+
+### DatamodelsHelper Objects
+
+```javascript
+class DatamodelsHelper()
+```
 
 This is a base object for update and delete a IoT Datamodel
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | this is ogapi instance |
-| **organization** | `string` | ❌ | Organization where the IoT datamodel was create |
-| **datamodel** | `object` | ❌ | Json object of IoT datamodel to modify or delete. |
+- `ogapi` _InternalOpenGateAPI_  - this is ogapi instance
+- `organization` _string_  - Organization where the IoT datamodel was create
+- `datamodel` _object_  - Json object of IoT datamodel to modify or delete.
 
 
 ---
-## addCategory(category, datastreams)
 
+##### addCategory
+
+
+```javascript
+function addCategory(category: Object,datastreams: Array) -> 'DatamodelsHelper'
+```
 
 Add a category. If the field datastreams have value, they will add to this category
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **category** | `Object` | ❌ |  |
-| **datastreams** | `Array` | ❌ |  |
+- `category` _Object_  
+- `datastreams` _Array_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DatamodelsHelper`
-<br>
 
-{{% /notice %}}
+- _`DatamodelsHelper`_ 
+
 
 ---
-## addDatastream(category, datastream)
 
+##### addDatastream
+
+
+```javascript
+function addDatastream(category: string,datastream: object) -> 'DatamodelsHelper'
+```
 
 Add a datastream to the indicated category 
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **category** | `string` | ❌ |  |
-| **datastream** | `object` | ❌ |  |
+- `category` _string_  
+- `datastream` _object_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DatamodelsHelper`
-<br>
 
-{{% /notice %}}
+- _`DatamodelsHelper`_ 
+
 
 ---
-## create()
 
+##### create
+
+
+```javascript
+function create()
+```
 
 Create not supported on this builder. Use IoTDatamodelHelper instead.
 
 
 
 ---
-## removeCategory(category)
 
+##### removeCategory
+
+
+```javascript
+function removeCategory(category: string) -> 'DatamodelsHelper'
+```
 
 Remove category
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **category** | `string` | ❌ |  |
+- `category` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DatamodelsHelper`
-<br>
 
-{{% /notice %}}
+- _`DatamodelsHelper`_ 
+
 
 ---
-## removeDatastream(category, id_datastream)
 
+##### removeDatastream
+
+
+```javascript
+function removeDatastream(category: string,id_datastream: string) -> 'DatamodelsHelper'
+```
 
 Remove datastream to the indicated category
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **category** | `string` | ❌ |  |
-| **id_datastream** | `string` | ❌ | of datastream |
+- `category` _string_  
+- `id_datastream` _string_  - of datastream
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DatamodelsHelper`
-<br>
 
-{{% /notice %}}
+- _`DatamodelsHelper`_ 
+
 
 ---
-## updateCategory(old_category, new_category)
 
+##### updateCategory
+
+
+```javascript
+function updateCategory(old_category: string,new_category: string) -> 'DatamodelsHelper'
+```
 
 Update category name
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **old_category** | `string` | ❌ | name |
-| **new_category** | `string` | ❌ | name |
+- `old_category` _string_  - name
+- `new_category` _string_  - name
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DatamodelsHelper`
-<br>
 
-{{% /notice %}}
+- _`DatamodelsHelper`_ 
+
 
 ---
-## updateDatastream(category, id_datastream, datastream)
 
+##### updateDatastream
+
+
+```javascript
+function updateDatastream(category: string,id_datastream: string,datastream: Object) -> 'DatamodelsHelper'
+```
 
 Update datastream to the indicated category
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **category** | `string` | ❌ |  |
-| **id_datastream** | `string` | ❌ | of datastream |
-| **datastream** | `Object` | ❌ | json object |
+- `category` _string_  
+- `id_datastream` _string_  - of datastream
+- `datastream` _Object_  - json object
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DatamodelsHelper`
-<br>
 
-{{% /notice %}}
+- _`DatamodelsHelper`_ 
+
 
 ---
-## withDescription(description)
 
+##### withDescription
+
+
+```javascript
+function withDescription(description: string) -> 'DatamodelsHelper'
+```
 
 Set the description attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **description** | `string` | ❌ |  |
+- `description` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DatamodelsHelper`
-<br>
 
-{{% /notice %}}
+- _`DatamodelsHelper`_ 
+
 
 ---
-## withIdentifier(identifier)
 
+##### withIdentifier
+
+
+```javascript
+function withIdentifier(identifier: string) -> 'Datamodels'
+```
 
 Set the identifier attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **identifier** | `string` | ❌ | required field |
+- `identifier` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Datamodels`
-<br>
 
-{{% /notice %}}
+- _`Datamodels`_ 
+
 
 ---
-## withName(name)
 
+##### withName
+
+
+```javascript
+function withName(name: string) -> 'DatamodelsHelper'
+```
 
 Set the name attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | required field |
+- `name` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DatamodelsHelper`
-<br>
 
-{{% /notice %}}
+- _`DatamodelsHelper`_ 
+
 
 ---
-## withVersion(version)
 
+##### withVersion
+
+
+```javascript
+function withVersion(version: string) -> 'DatamodelsHelper'
+```
 
 Set the version attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **version** | `string` | ❌ | required field |
+- `version` _string_  - required field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `DatamodelsHelper`
-<br>
 
-{{% /notice %}}
+- _`DatamodelsHelper`_ 
+
 
 ---
 

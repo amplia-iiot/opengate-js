@@ -3,162 +3,185 @@ title = "Pipeline"
 weight = 10
 +++
 
-**Class:** `Pipeline`
+Pipeline
+
+### Pipeline Objects
+
+```javascript
+class Pipeline()
+```
 
 This is a base object that contains all you can do about Bundles.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## addImageExecution(imageExecution)
 
+##### addImageExecution
+
+
+```javascript
+function addImageExecution(imageExecution: ImageExecution) -> 'Pipeline'
+```
 
 Adds an Image Execution to the pipeline
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **imageExecution** | `ImageExecution` | ❌ |  |
+- `imageExecution` _ImageExecution_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Pipeline`
-<br>
 
-{{% /notice %}}
+- _`Pipeline`_ 
+
 
 ---
-## addRestResquest(restRequest)
 
+##### addRestResquest
+
+
+```javascript
+function addRestResquest(restRequest: RestRequest) -> 'Pipeline'
+```
 
 Adds a rest request to the pipeline
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **restRequest** | `RestRequest` | ❌ |  |
+- `restRequest` _RestRequest_  
 
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `Pipeline`
-<br>
-
-{{% /notice %}}
-
----
-## toJson()
+**Returns**:
 
 
-
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
-
-{{% /notice %}}
-
----
-## update()
-
-
-
+- _`Pipeline`_ 
 
 
 ---
-## withIdentifier(identifier)
 
+##### toJson
+
+
+```javascript
+function toJson() -> '*'
+```
+
+
+
+**Returns**:
+
+
+- _`*`_ 
+
+
+---
+
+##### update
+
+
+```javascript
+function update()
+```
+
+
+
+
+---
+
+##### withIdentifier
+
+
+```javascript
+function withIdentifier(identifier: string) -> 'Pipeline'
+```
 
 Sets the identifier attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **identifier** | `string` | ❌ |  |
+- `identifier` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Pipeline`
-<br>
 
-{{% /notice %}}
+- _`Pipeline`_ 
+
 
 ---
-## withOrganization(organization)
 
+##### withOrganization
+
+
+```javascript
+function withOrganization(organization: string) -> 'Channels'
+```
 
 Set the organization attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **organization** | `string` | ❌ |  |
+- `organization` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Channels`
-<br>
 
-{{% /notice %}}
+- _`Channels`_ 
+
 
 ---
-## withScheduleCronExpression(cronExpression)
 
+##### withScheduleCronExpression
+
+
+```javascript
+function withScheduleCronExpression(cronExpression: string) -> 'Pipeline'
+```
 
 Sets the crontab expression for schedule
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **cronExpression** | `string` | ❌ |  |
+- `cronExpression` _string_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Pipeline`
-<br>
 
-{{% /notice %}}
+- _`Pipeline`_ 
+
 
 ---
-## withScheduleImmediateExecution(isImmediateExecution)
 
+##### withScheduleImmediateExecution
+
+
+```javascript
+function withScheduleImmediateExecution(isImmediateExecution: boolean) -> 'Pipeline'
+```
 
 Sets the isImmediateExecution attribute for schedule
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **isImmediateExecution** | `boolean` | ❌ |  |
+- `isImmediateExecution` _boolean_  
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Pipeline`
-<br>
 
-{{% /notice %}}
+- _`Pipeline`_ 
+
 
 ---
 

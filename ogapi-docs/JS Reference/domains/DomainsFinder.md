@@ -3,61 +3,72 @@ title = "Domain Finder"
 weight = 10
 +++
 
-**Class:** `DomainFinder`
+DomainFinder
+
+### DomainFinder Objects
+
+```javascript
+class DomainFinder()
+```
 
   This class allow make get request to certificate resource into Opengate North API.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **Reference** | `InternalOpenGateAPI` | ❌ | to the API object. |
+- `Reference` _InternalOpenGateAPI_  - to the API object.
 
 
 ---
-## findByName(name)
 
+##### findByName
+
+
+```javascript
+function findByName(name: string) -> 'Promise'
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | domain name . |
+- `name` _string_  - domain name .
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
-## findByNameWithHierarchy(name)
 
+##### findByNameWithHierarchy
+
+
+```javascript
+function findByNameWithHierarchy(name: string) -> 'Promise'
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **name** | `string` | ❌ | domain name. |
+- `name` _string_  - domain name.
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Promise`
-<br>
 
-{{% /notice %}}
+- _`Promise`_ 
+
 
 ---
 

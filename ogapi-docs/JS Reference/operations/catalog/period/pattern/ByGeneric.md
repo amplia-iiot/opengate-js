@@ -3,23 +3,32 @@ title = "By Generic"
 weight = 10
 +++
 
-**Class:** `ByGeneric`
+ByGeneric
+
+### ByGeneric Objects
+
+```javascript
+class ByGeneric()
+```
 
 
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parent** | `BaseOperationBuilder` | ❌ | this is a operationBaseBuilder. |
-| **date** | `Date` | ❌ | Date when operation will be executed |
-| **periodicityName** | `string` | ❌ | Name associated to periodicity |
-| **end** | `number or Date` | ❌ | When periodicity ends. By repetitions or by date |
+- `parent` _BaseOperationBuilder_  - this is a operationBaseBuilder.
+- `date` _Date_  - Date when operation will be executed
+- `periodicityName` _string_  - Name associated to periodicity
+- `end` _number or Date_  - When periodicity ends. By repetitions or by date
 
 
 ---

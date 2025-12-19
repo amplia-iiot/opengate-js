@@ -3,129 +3,148 @@ title = "Usage"
 weight = 10
 +++
 
-**Class:** `Usage`
+Usage
+
+### Usage Objects
+
+```javascript
+class Usage()
+```
 
 This is a base object that allows the user to create a Datapoint.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 
 
 
 ---
-## composeElement()
+
+##### composeElement
+
+
+```javascript
+function composeElement() -> '*'
+```
 
 
 
+**Returns**:
 
-### Retorna
 
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
+- _`*`_ 
 
-{{% /notice %}}
 
 ---
-## withAverage(average)
 
+##### withAverage
+
+
+```javascript
+function withAverage(average: string) -> 'Usage'
+```
 
 Set the average attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **average** | `string` | ❌ | optionals field |
+- `average` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Usage`
-<br>
 
-{{% /notice %}}
+- _`Usage`_ 
+
 
 ---
-## withCurrent(current)
 
+##### withCurrent
+
+
+```javascript
+function withCurrent(current: string) -> 'Usage'
+```
 
 Set the current attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **current** | `string` | ❌ | optionals field |
+- `current` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Usage`
-<br>
 
-{{% /notice %}}
+- _`Usage`_ 
+
 
 ---
-## withMaximum(maximum)
 
+##### withMaximum
+
+
+```javascript
+function withMaximum(maximum: string) -> 'Usage'
+```
 
 Set the maximum  attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **maximum** | `string` | ❌ | optionals field |
+- `maximum` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Usage`
-<br>
 
-{{% /notice %}}
+- _`Usage`_ 
+
 
 ---
-## withMinimum(minimum)
 
+##### withMinimum
+
+
+```javascript
+function withMinimum(minimum: string) -> 'Usage'
+```
 
 Set the minimum  attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **minimum** | `string` | ❌ | optionals field |
+- `minimum` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Usage`
-<br>
 
-{{% /notice %}}
+- _`Usage`_ 
+
 
 ---
-## withUsageUnit(unit)
 
+##### withUsageUnit
+
+
+```javascript
+function withUsageUnit(unit: string) -> 'Usage'
+```
 
 Set the unit attribute
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **unit** | `string` | ❌ | optionals field |
+- `unit` _string_  - optionals field
 
-### Retorna
+**Returns**:
 
-{{% notice tip %}}
-**Tipo:** `Usage`
-<br>
 
-{{% /notice %}}
+- _`Usage`_ 
+
 
 ---
 

@@ -3,21 +3,30 @@ title = "Security"
 weight = 10
 +++
 
-**Class:** `Security`
+Security
+
+### Security Objects
+
+```javascript
+class Security()
+```
 
 This extends BaseProvision and contains all you can do about Security.
 
-## constructor
 
+##### constructor
+
+
+```javascript
+function constructor()
+```
 
 Constructor
 
-### Parámetros
+**Arguments**:
 
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **ogapi** | `InternalOpenGateAPI` | ❌ | this is configuration about Opengate North API. |
-| **url** | `string` | ❌ | this define a specific resource to make the provision |
+- `ogapi` _InternalOpenGateAPI_  - this is configuration about Opengate North API.
+- `url` _string_  - this define a specific resource to make the provision
 
 
 ---
