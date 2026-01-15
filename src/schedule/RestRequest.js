@@ -52,33 +52,93 @@ export default class RestRequest extends BaseProvision {
      * @param {string} cronExpression
      * @return {RestRequest}
      */
-    withScheduleCronExpression(cronExpression) {
+    withScheduleCronExpression(cronExpression, timezone) {
         checkType._checkString(cronExpression, 'cronExpression');
+        checkType._checkString(timezone, 'timezone');
 
         if (!this._schedule) {
             this._schedule = {}
         }
 
-        this._schedule.expression = cronExpression;
+        this._schedule = {
+            cron: {
+                expression: cronExpression,
+                timeZone: timezone
+            }
+        };
         return this;
     }
 
     /**
-     * Sets the isImmediateExecution attribute for schedule
-     * @param {boolean} isImmediateExecution
+     * Sets the interval for schedule in minutes
+     * @param {number} interval in minutes
      * @return {RestRequest}
      */
-    withScheduleImmediateExecution(isImmediateExecution) {
-        checkType._checkBoolean(isImmediateExecution, 'isImmediateExecution');
+    withScheduleMinutesInterval(interval) {
+        checkType._checkNumber(interval, 'interval');
 
         if (!this._schedule) {
             this._schedule = {}
         }
 
-        this._schedule.isImmediateExecution = isImmediateExecution;
+        this._schedule.interval = {
+            minutes: interval
+        };
 
         return this;
     }
+
+    /**
+     * Sets the executeNow attribute
+     * @param {boolean} executeNow
+     * @return {RestRequest}
+     */
+    withScheduleExecuteNow(executeNow) {
+        checkType._checkBoolean(executeNow, 'executeNow');
+
+        if (!this._schedule) {
+            this._schedule = {}
+        }
+
+        this._schedule.executeNow = executeNow;
+
+        return this;
+    }
+
+    /**
+     * Sets the from attribute
+     * @param {string} from 
+     * @returns {RestRequest}
+     */
+    withScheduleFrom(from) {
+        checkType._checkISODateTime(from, 'from');
+
+        if (!this._schedule) {
+            this._schedule = {}
+        }
+
+        this._schedule.from = from;
+
+        return this;
+    }
+
+    /**
+     * Sets the to attribute
+     * @param {string} to 
+     * @returns {RestRequest}
+     */
+    withScheduleTo(to) {
+        checkType._checkISODateTime(to, 'to');
+
+        if (!this._schedule) {
+            this._schedule = {}
+        }
+
+        this._schedule.to = to;
+
+        return this;
+    }
+
 
     /**
      * Sets the url for restRequest
@@ -202,7 +262,12 @@ export default class RestRequest extends BaseProvision {
     }
 
     toJson() {
-        return this._composeElement()
+        return {
+            identifier: this._identifier,
+            schedule: this._schedule,
+            restRequest: this._restRequest,
+            response: this._response
+        };
     }
 
     update() {
