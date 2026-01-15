@@ -40,7 +40,7 @@ export default class Pipeline extends BaseProvision {
     /**
      * Set the organization attribute
      * @param {string} organization 
-     * @return {Channels}
+     * @return {Pipeline}
      */
     withOrganization(organization) {
         if (typeof organization !== 'string' || organization.length > 50)
@@ -54,33 +54,93 @@ export default class Pipeline extends BaseProvision {
      * @param {string} cronExpression
      * @return {Pipeline}
      */
-    withScheduleCronExpression(cronExpression) {
+    withScheduleCronExpression(cronExpression, timezone) {
         checkType._checkString(cronExpression, 'cronExpression');
+        checkType._checkString(timezone, 'timezone');
 
         if (!this._schedule) {
             this._schedule = {}
         }
 
-        this._schedule.expression = cronExpression;
+        this._schedule = {
+            cron: {
+                expression: cronExpression,
+                timeZone: timezone
+            }
+        };
         return this;
     }
 
     /**
-     * Sets the isImmediateExecution attribute for schedule
-     * @param {boolean} isImmediateExecution
+     * Sets the interval for schedule in minutes
+     * @param {number} interval in minutes
      * @return {Pipeline}
      */
-    withScheduleImmediateExecution(isImmediateExecution) {
-        checkType._checkBoolean(isImmediateExecution, 'isImmediateExecution');
+    withScheduleMinutesInterval(interval) {
+        checkType._checkNumber(interval, 'interval');
 
         if (!this._schedule) {
             this._schedule = {}
         }
 
-        this._schedule.isImmediateExecution = isImmediateExecution;
+        this._schedule.interval = {
+            minutes: interval
+        };
 
         return this;
     }
+
+    /**
+     * Sets the executeNow attribute
+     * @param {boolean} executeNow
+     * @return {Pipeline}
+     */
+    withScheduleExecuteNow(executeNow) {
+        checkType._checkBoolean(executeNow, 'executeNow');
+
+        if (!this._schedule) {
+            this._schedule = {}
+        }
+
+        this._schedule.executeNow = executeNow;
+
+        return this;
+    }
+
+    /**
+     * Sets the from attribute
+     * @param {string} from 
+     * @returns {Pipeline}
+     */
+    withScheduleFrom(from) {
+        checkType._checkISODateTime(from, 'from');
+
+        if (!this._schedule) {
+            this._schedule = {}
+        }
+
+        this._schedule.from = from;
+
+        return this;
+    }
+
+    /**
+     * Sets the to attribute
+     * @param {string} to 
+     * @returns {Pipeline}
+     */
+    withScheduleTo(to) {
+        checkType._checkISODateTime(to, 'to');
+
+        if (!this._schedule) {
+            this._schedule = {}
+        }
+
+        this._schedule.to = to;
+
+        return this;
+    }
+
 
     /**
      * Adds a rest request to the pipeline
@@ -123,7 +183,11 @@ export default class Pipeline extends BaseProvision {
     }
 
     toJson() {
-        return this._composeElement()
+        return {
+            identifier: this._identifier,
+            schedule: this._schedule,
+            pipeline: this._pipeline
+        };
     }
 
     update() {

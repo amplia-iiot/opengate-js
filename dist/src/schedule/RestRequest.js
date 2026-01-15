@@ -83,32 +83,97 @@ var RestRequest = (function (_BaseProvision) {
          */
     }, {
         key: 'withScheduleCronExpression',
-        value: function withScheduleCronExpression(cronExpression) {
+        value: function withScheduleCronExpression(cronExpression, timezone) {
             _utilFormatsCheck_types2['default']._checkString(cronExpression, 'cronExpression');
+            _utilFormatsCheck_types2['default']._checkString(timezone, 'timezone');
 
             if (!this._schedule) {
                 this._schedule = {};
             }
 
-            this._schedule.expression = cronExpression;
+            this._schedule = {
+                cron: {
+                    expression: cronExpression,
+                    timeZone: timezone
+                }
+            };
             return this;
         }
 
         /**
-         * Sets the isImmediateExecution attribute for schedule
-         * @param {boolean} isImmediateExecution
+         * Sets the interval for schedule in minutes
+         * @param {number} interval in minutes
          * @return {RestRequest}
          */
     }, {
-        key: 'withScheduleImmediateExecution',
-        value: function withScheduleImmediateExecution(isImmediateExecution) {
-            _utilFormatsCheck_types2['default']._checkBoolean(isImmediateExecution, 'isImmediateExecution');
+        key: 'withScheduleMinutesInterval',
+        value: function withScheduleMinutesInterval(interval) {
+            _utilFormatsCheck_types2['default']._checkNumber(interval, 'interval');
 
             if (!this._schedule) {
                 this._schedule = {};
             }
 
-            this._schedule.isImmediateExecution = isImmediateExecution;
+            this._schedule.interval = {
+                minutes: interval
+            };
+
+            return this;
+        }
+
+        /**
+         * Sets the executeNow attribute
+         * @param {boolean} executeNow
+         * @return {RestRequest}
+         */
+    }, {
+        key: 'withScheduleExecuteNow',
+        value: function withScheduleExecuteNow(executeNow) {
+            _utilFormatsCheck_types2['default']._checkBoolean(executeNow, 'executeNow');
+
+            if (!this._schedule) {
+                this._schedule = {};
+            }
+
+            this._schedule.executeNow = executeNow;
+
+            return this;
+        }
+
+        /**
+         * Sets the from attribute
+         * @param {string} from 
+         * @returns {RestRequest}
+         */
+    }, {
+        key: 'withScheduleFrom',
+        value: function withScheduleFrom(from) {
+            _utilFormatsCheck_types2['default']._checkISODateTime(from, 'from');
+
+            if (!this._schedule) {
+                this._schedule = {};
+            }
+
+            this._schedule.from = from;
+
+            return this;
+        }
+
+        /**
+         * Sets the to attribute
+         * @param {string} to 
+         * @returns {RestRequest}
+         */
+    }, {
+        key: 'withScheduleTo',
+        value: function withScheduleTo(to) {
+            _utilFormatsCheck_types2['default']._checkISODateTime(to, 'to');
+
+            if (!this._schedule) {
+                this._schedule = {};
+            }
+
+            this._schedule.to = to;
 
             return this;
         }
@@ -249,7 +314,12 @@ var RestRequest = (function (_BaseProvision) {
     }, {
         key: 'toJson',
         value: function toJson() {
-            return this._composeElement();
+            return {
+                identifier: this._identifier,
+                schedule: this._schedule,
+                restRequest: this._restRequest,
+                response: this._response
+            };
         }
     }, {
         key: 'update',
