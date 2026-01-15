@@ -9108,9 +9108,27 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/schedule/imageexecution.js~imageexecution#withscheduleimmediateexecution",
-    "class/src/schedule/ImageExecution.js~ImageExecution.html#instance-method-withScheduleImmediateExecution",
-    "src/schedule/ImageExecution.js~ImageExecution#withScheduleImmediateExecution",
+    "src/schedule/imageexecution.js~imageexecution#withscheduleexecutenow",
+    "class/src/schedule/ImageExecution.js~ImageExecution.html#instance-method-withScheduleExecuteNow",
+    "src/schedule/ImageExecution.js~ImageExecution#withScheduleExecuteNow",
+    "method"
+  ],
+  [
+    "src/schedule/imageexecution.js~imageexecution#withschedulefrom",
+    "class/src/schedule/ImageExecution.js~ImageExecution.html#instance-method-withScheduleFrom",
+    "src/schedule/ImageExecution.js~ImageExecution#withScheduleFrom",
+    "method"
+  ],
+  [
+    "src/schedule/imageexecution.js~imageexecution#withscheduleminutesinterval",
+    "class/src/schedule/ImageExecution.js~ImageExecution.html#instance-method-withScheduleMinutesInterval",
+    "src/schedule/ImageExecution.js~ImageExecution#withScheduleMinutesInterval",
+    "method"
+  ],
+  [
+    "src/schedule/imageexecution.js~imageexecution#withscheduleto",
+    "class/src/schedule/ImageExecution.js~ImageExecution.html#instance-method-withScheduleTo",
+    "src/schedule/ImageExecution.js~ImageExecution#withScheduleTo",
     "method"
   ],
   [
@@ -9198,9 +9216,27 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/schedule/pipeline.js~pipeline#withscheduleimmediateexecution",
-    "class/src/schedule/Pipeline.js~Pipeline.html#instance-method-withScheduleImmediateExecution",
-    "src/schedule/Pipeline.js~Pipeline#withScheduleImmediateExecution",
+    "src/schedule/pipeline.js~pipeline#withscheduleexecutenow",
+    "class/src/schedule/Pipeline.js~Pipeline.html#instance-method-withScheduleExecuteNow",
+    "src/schedule/Pipeline.js~Pipeline#withScheduleExecuteNow",
+    "method"
+  ],
+  [
+    "src/schedule/pipeline.js~pipeline#withschedulefrom",
+    "class/src/schedule/Pipeline.js~Pipeline.html#instance-method-withScheduleFrom",
+    "src/schedule/Pipeline.js~Pipeline#withScheduleFrom",
+    "method"
+  ],
+  [
+    "src/schedule/pipeline.js~pipeline#withscheduleminutesinterval",
+    "class/src/schedule/Pipeline.js~Pipeline.html#instance-method-withScheduleMinutesInterval",
+    "src/schedule/Pipeline.js~Pipeline#withScheduleMinutesInterval",
+    "method"
+  ],
+  [
+    "src/schedule/pipeline.js~pipeline#withscheduleto",
+    "class/src/schedule/Pipeline.js~Pipeline.html#instance-method-withScheduleTo",
+    "src/schedule/Pipeline.js~Pipeline#withScheduleTo",
     "method"
   ],
   [
@@ -9288,9 +9324,27 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/schedule/restrequest.js~restrequest#withscheduleimmediateexecution",
-    "class/src/schedule/RestRequest.js~RestRequest.html#instance-method-withScheduleImmediateExecution",
-    "src/schedule/RestRequest.js~RestRequest#withScheduleImmediateExecution",
+    "src/schedule/restrequest.js~restrequest#withscheduleexecutenow",
+    "class/src/schedule/RestRequest.js~RestRequest.html#instance-method-withScheduleExecuteNow",
+    "src/schedule/RestRequest.js~RestRequest#withScheduleExecuteNow",
+    "method"
+  ],
+  [
+    "src/schedule/restrequest.js~restrequest#withschedulefrom",
+    "class/src/schedule/RestRequest.js~RestRequest.html#instance-method-withScheduleFrom",
+    "src/schedule/RestRequest.js~RestRequest#withScheduleFrom",
+    "method"
+  ],
+  [
+    "src/schedule/restrequest.js~restrequest#withscheduleminutesinterval",
+    "class/src/schedule/RestRequest.js~RestRequest.html#instance-method-withScheduleMinutesInterval",
+    "src/schedule/RestRequest.js~RestRequest#withScheduleMinutesInterval",
+    "method"
+  ],
+  [
+    "src/schedule/restrequest.js~restrequest#withscheduleto",
+    "class/src/schedule/RestRequest.js~RestRequest.html#instance-method-withScheduleTo",
+    "src/schedule/RestRequest.js~RestRequest#withScheduleTo",
     "method"
   ],
   [

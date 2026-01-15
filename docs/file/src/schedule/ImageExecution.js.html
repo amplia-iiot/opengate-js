@@ -367,30 +367,89 @@ export default class ImageExecution extends BaseProvision {
      * @param {string} cronExpression
      * @return {ImageExecution}
      */
-    withScheduleCronExpression(cronExpression) {
+    withScheduleCronExpression(cronExpression, timezone) {
         checkType._checkString(cronExpression, &apos;cronExpression&apos;);
+        checkType._checkString(timezone, &apos;timezone&apos;);
 
         if (!this._schedule) {
             this._schedule = {}
         }
 
-        this._schedule.expression = cronExpression;
+        this._schedule = {
+            cron: {
+                expression: cronExpression,
+                timeZone: timezone
+            }
+        };
         return this;
     }
 
     /**
-     * Sets the isImmediateExecution attribute for schedule
-     * @param {boolean} isImmediateExecution
+     * Sets the interval for schedule in minutes
+     * @param {number} interval in minutes
      * @return {ImageExecution}
      */
-    withScheduleImmediateExecution(isImmediateExecution) {
-        checkType._checkBoolean(isImmediateExecution, &apos;isImmediateExecution&apos;);
+    withScheduleMinutesInterval(interval) {
+        checkType._checkNumber(interval, &apos;interval&apos;);
 
         if (!this._schedule) {
             this._schedule = {}
         }
 
-        this._schedule.isImmediateExecution = isImmediateExecution;
+        this._schedule.interval = {
+            minutes: interval
+        };
+
+        return this;
+    }
+
+    /**
+     * Sets the executeNow attribute
+     * @param {boolean} executeNow
+     * @return {ImageExecution}
+     */
+    withScheduleExecuteNow(executeNow) {
+        checkType._checkBoolean(executeNow, &apos;executeNow&apos;);
+
+        if (!this._schedule) {
+            this._schedule = {}
+        }
+
+        this._schedule.executeNow = executeNow;
+
+        return this;
+    }
+
+    /**
+     * Sets the from attribute
+     * @param {string} from 
+     * @returns {ImageExecution}
+     */
+    withScheduleFrom(from) {
+        checkType._checkISODateTime(from, &apos;from&apos;);
+
+        if (!this._schedule) {
+            this._schedule = {}
+        }
+
+        this._schedule.from = from;
+
+        return this;
+    }
+
+    /**
+     * Sets the to attribute
+     * @param {string} to 
+     * @returns {ImageExecution}
+     */
+    withScheduleTo(to) {
+        checkType._checkISODateTime(to, &apos;to&apos;);
+
+        if (!this._schedule) {
+            this._schedule = {}
+        }
+
+        this._schedule.to = to;
 
         return this;
     }

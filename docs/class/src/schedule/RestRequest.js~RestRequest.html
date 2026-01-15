@@ -407,7 +407,7 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/schedule/RestRequest.js~RestRequest.html#instance-method-toJson">toJson</a></span></span><span data-ice="signature">(): <span>*</span></span>
+          <span data-ice="name"><span><a href="class/src/schedule/RestRequest.js~RestRequest.html#instance-method-toJson">toJson</a></span></span><span data-ice="signature">(): {&quot;identifier&quot;: <span>*</span>, &quot;schedule&quot;: <span>*</span>, &quot;restRequest&quot;: <span>*</span>, &quot;response&quot;: <span>*</span>}</span>
         </p>
       </div>
       <div>
@@ -657,13 +657,97 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/schedule/RestRequest.js~RestRequest.html#instance-method-withScheduleImmediateExecution">withScheduleImmediateExecution</a></span></span><span data-ice="signature">(isImmediateExecution: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span><a href="class/src/schedule/RestRequest.js~RestRequest.html">RestRequest</a></span></span>
+          <span data-ice="name"><span><a href="class/src/schedule/RestRequest.js~RestRequest.html#instance-method-withScheduleExecuteNow">withScheduleExecuteNow</a></span></span><span data-ice="signature">(executeNow: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span><a href="class/src/schedule/RestRequest.js~RestRequest.html">RestRequest</a></span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Sets the isImmediateExecution attribute for schedule</p>
+        <div data-ice="description"><p>Sets the executeNow attribute</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="class/src/schedule/RestRequest.js~RestRequest.html#instance-method-withScheduleFrom">withScheduleFrom</a></span></span><span data-ice="signature">(from: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/schedule/RestRequest.js~RestRequest.html">RestRequest</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Sets the from attribute</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="class/src/schedule/RestRequest.js~RestRequest.html#instance-method-withScheduleMinutesInterval">withScheduleMinutesInterval</a></span></span><span data-ice="signature">(interval: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/src/schedule/RestRequest.js~RestRequest.html">RestRequest</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Sets the interval for schedule in minutes</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="class/src/schedule/RestRequest.js~RestRequest.html#instance-method-withScheduleTo">withScheduleTo</a></span></span><span data-ice="signature">(to: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/schedule/RestRequest.js~RestRequest.html">RestRequest</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Sets the to attribute</p>
 </div>
       </div>
     </td>
@@ -904,11 +988,11 @@ This function updates a entity of provision</p>
     
     
     
-    <span data-ice="name">toJson</span><span data-ice="signature">(): <span>*</span></span>
+    <span data-ice="name">toJson</span><span data-ice="signature">(): {&quot;identifier&quot;: <span>*</span>, &quot;schedule&quot;: <span>*</span>, &quot;restRequest&quot;: <span>*</span>, &quot;response&quot;: <span>*</span>}</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/schedule/RestRequest.js.html#lineNumber204">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/schedule/RestRequest.js.html#lineNumber264">source</a></span></span>
     </span>
   </h3>
 
@@ -927,7 +1011,7 @@ This function updates a entity of provision</p>
     <table>
       <tbody>
         <tr>
-          <td class="return-type" data-ice="returnType"><span>*</span></td>
+          <td class="return-type" data-ice="returnType">{&quot;identifier&quot;: <span>*</span>, &quot;schedule&quot;: <span>*</span>, &quot;restRequest&quot;: <span>*</span>, &quot;response&quot;: <span>*</span>}</td>
           
         </tr>
       </tbody>
@@ -963,7 +1047,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/schedule/RestRequest.js.html#lineNumber208">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/schedule/RestRequest.js.html#lineNumber273">source</a></span></span>
     </span>
   </h3>
 
@@ -1008,7 +1092,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/schedule/RestRequest.js.html#lineNumber174">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/schedule/RestRequest.js.html#lineNumber234">source</a></span></span>
     </span>
   </h3>
 
@@ -1080,7 +1164,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/schedule/RestRequest.js.html#lineNumber136">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/schedule/RestRequest.js.html#lineNumber196">source</a></span></span>
     </span>
   </h3>
 
@@ -1152,7 +1236,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/schedule/RestRequest.js.html#lineNumber120">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/schedule/RestRequest.js.html#lineNumber180">source</a></span></span>
     </span>
   </h3>
 
@@ -1296,7 +1380,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/schedule/RestRequest.js.html#lineNumber104">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/schedule/RestRequest.js.html#lineNumber164">source</a></span></span>
     </span>
   </h3>
 
@@ -1501,25 +1585,25 @@ This function updates a entity of provision</p>
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-withScheduleImmediateExecution">
+  <h3 data-ice="anchor" id="instance-method-withScheduleExecuteNow">
     <span class="access" data-ice="access">public</span>
     
     
     
     
     
-    <span data-ice="name">withScheduleImmediateExecution</span><span data-ice="signature">(isImmediateExecution: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span><a href="class/src/schedule/RestRequest.js~RestRequest.html">RestRequest</a></span></span>
+    <span data-ice="name">withScheduleExecuteNow</span><span data-ice="signature">(executeNow: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span><a href="class/src/schedule/RestRequest.js~RestRequest.html">RestRequest</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/schedule/RestRequest.js.html#lineNumber71">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/schedule/RestRequest.js.html#lineNumber96">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Sets the isImmediateExecution attribute for schedule</p>
+  <div data-ice="description"><p>Sets the executeNow attribute</p>
 </div>
 
   
@@ -1533,8 +1617,225 @@ This function updates a entity of provision</p>
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">isImmediateExecution</td>
+      <td data-ice="name" data-depth="0">executeNow</td>
       <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type" data-ice="returnType"><span><a href="class/src/schedule/RestRequest.js~RestRequest.html">RestRequest</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-withScheduleFrom">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span data-ice="name">withScheduleFrom</span><span data-ice="signature">(from: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/schedule/RestRequest.js~RestRequest.html">RestRequest</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/schedule/RestRequest.js.html#lineNumber113">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Sets the from attribute</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">from</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type" data-ice="returnType"><span><a href="class/src/schedule/RestRequest.js~RestRequest.html">RestRequest</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-withScheduleMinutesInterval">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span data-ice="name">withScheduleMinutesInterval</span><span data-ice="signature">(interval: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/src/schedule/RestRequest.js~RestRequest.html">RestRequest</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/schedule/RestRequest.js.html#lineNumber77">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Sets the interval for schedule in minutes</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">interval</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>in minutes</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type" data-ice="returnType"><span><a href="class/src/schedule/RestRequest.js~RestRequest.html">RestRequest</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-withScheduleTo">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span data-ice="name">withScheduleTo</span><span data-ice="signature">(to: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/schedule/RestRequest.js~RestRequest.html">RestRequest</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/schedule/RestRequest.js.html#lineNumber130">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Sets the to attribute</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">to</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1584,7 +1885,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/schedule/RestRequest.js.html#lineNumber152">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/schedule/RestRequest.js.html#lineNumber212">source</a></span></span>
     </span>
   </h3>
 
@@ -1656,7 +1957,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/schedule/RestRequest.js.html#lineNumber88">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/schedule/RestRequest.js.html#lineNumber148">source</a></span></span>
     </span>
   </h3>
 
