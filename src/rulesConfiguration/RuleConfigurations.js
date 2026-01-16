@@ -256,7 +256,7 @@ export default class RuleConfigurations extends BaseProvision {
     }
 
     _buildURL() {
-        return "rules/" + this._resource + "/" + this._organization + "/channels/" + this._channel + "/";
+        return "rules/" + this._resource + "/" + this._organization + "/channels/" + this._channel;
     }
 
     /** 
@@ -278,7 +278,7 @@ export default class RuleConfigurations extends BaseProvision {
     update() {
         this._checkRequiredParameters(true);
 
-        return this._doNorthPut(this._buildURL() + this._identifier, this._composeElement());
+        return this._doNorthPut(this._buildURL() + '/' + this._identifier, this._composeElement());
     }
 
     /** 
