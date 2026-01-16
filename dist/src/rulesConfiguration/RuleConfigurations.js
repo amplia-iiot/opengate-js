@@ -303,7 +303,7 @@ var RuleConfigurations = (function (_BaseProvision) {
     }, {
         key: '_buildURL',
         value: function _buildURL() {
-            return "rules/" + this._resource + "/" + this._organization + "/channels/" + this._channel + "/";
+            return "rules/" + this._resource + "/" + this._organization + "/channels/" + this._channel;
         }
 
         /** 
@@ -329,7 +329,7 @@ var RuleConfigurations = (function (_BaseProvision) {
         value: function update() {
             this._checkRequiredParameters(true);
 
-            return this._doNorthPut(this._buildURL() + this._identifier, this._composeElement());
+            return this._doNorthPut(this._buildURL() + '/' + this._identifier, this._composeElement());
         }
 
         /** 
