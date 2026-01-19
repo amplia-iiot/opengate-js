@@ -275,7 +275,7 @@ export default class ConnectorFunctions extends BaseProvision {
     }
 
     _buildURL() {
-        return "connectorFunctions/" + this._resource + "/" + this._organization + "/channels/" + this._channel + "/";
+        return "connectorFunctions/" + this._resource + "/" + this._organization + "/channels/" + this._channel;
     }
 
     /** 
@@ -297,7 +297,7 @@ export default class ConnectorFunctions extends BaseProvision {
     update() {
         this._checkRequiredParameters(true);
 
-        return this._doNorthPut(this._buildURL() + this._identifier, this._composeElement());
+        return this._doNorthPut(this._buildURL() + '/' + this._identifier, this._composeElement());
     }
 
     /** 
@@ -311,7 +311,7 @@ export default class ConnectorFunctions extends BaseProvision {
 
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Napi.delete(this._buildURL() + this._identifier)
+        this._ogapi.Napi.delete(this._buildURL() + '/' + this._identifier)
             .then((res) => {
                 if (res.statusCode === 200) {
                     defered.resolve({
