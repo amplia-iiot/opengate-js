@@ -310,7 +310,7 @@ var ConnectorFunctions = (function (_BaseProvision) {
     }, {
         key: '_buildURL',
         value: function _buildURL() {
-            return "connectorFunctions/" + this._resource + "/" + this._organization + "/channels/" + this._channel + "/";
+            return "connectorFunctions/" + this._resource + "/" + this._organization + "/channels/" + this._channel;
         }
 
         /** 
@@ -336,7 +336,7 @@ var ConnectorFunctions = (function (_BaseProvision) {
         value: function update() {
             this._checkRequiredParameters(true);
 
-            return this._doNorthPut(this._buildURL() + this._identifier, this._composeElement());
+            return this._doNorthPut(this._buildURL() + '/' + this._identifier, this._composeElement());
         }
 
         /** 
@@ -351,7 +351,7 @@ var ConnectorFunctions = (function (_BaseProvision) {
 
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            this._ogapi.Napi['delete'](this._buildURL() + this._identifier).then(function (res) {
+            this._ogapi.Napi['delete'](this._buildURL() + '/' + this._identifier).then(function (res) {
                 if (res.statusCode === 200) {
                     defered.resolve({
                         statusCode: res.statusCode
