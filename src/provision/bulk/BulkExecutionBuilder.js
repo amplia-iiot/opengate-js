@@ -24,8 +24,7 @@ export default class BulkExecutionBuilder extends BaseProvision {
         this._timeout = timeout;
         this._organization = organization;
         this._processorId = processorId;
-        this._resource = 'provisionProcessors/provision/organizations/' + organization + '/' + processorId + '/'
-
+        this._resource = 'provisionProcessors/provision/organizations/' + organization + '/' + processorId
     }
 
     _composeElement() {
@@ -33,7 +32,7 @@ export default class BulkExecutionBuilder extends BaseProvision {
     }
 
     _buildURL() {
-        return this._resource + this._type;
+        return this._resource + '/' + this._type;
     }
 
     /**
