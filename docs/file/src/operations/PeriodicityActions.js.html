@@ -328,7 +328,7 @@ export default class PeriodicityActions {
         if (typeof taskId !== &apos;string&apos;)
             throw new Error(&apos;Parameter taskId must be a string&apos;);
         this._ogapi = ogapi;
-        this._resource = &apos;operation/tasks/&apos;;
+        this._resource = &apos;operation/tasks&apos;;
         this._taskId = taskId;
         this._key = &apos;task&apos;;
     }
@@ -409,7 +409,7 @@ export default class PeriodicityActions {
                     defered.reject(&quot;Periodicity with id &quot; + _this._taskId + &quot; not exists&quot;);
                 } else {
                     let periodicityId = data.id;
-                    _this._resource = _this._resource + periodicityId;
+                    _this._resource = _this._resource + &quot;/&quot; + periodicityId;
                     switch (action) {
                         case &quot;PAUSE&quot;:
                         case &quot;ACTIVE&quot;:

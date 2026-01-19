@@ -158,7 +158,7 @@ var Areas = (function (_BaseProvision) {
     }, {
         key: '_composeElement',
         value: function _composeElement() {
-            this._resource = 'provision/organizations/' + this._organization + '/areas/';
+            this._resource = 'provision/organizations/' + this._organization + '/areas';
             var area = {
                 identifier: this._identifier,
                 name: this._name,
