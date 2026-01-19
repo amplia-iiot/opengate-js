@@ -571,7 +571,7 @@ export default class RuleConfigurations extends BaseProvision {
     }
 
     _buildURL() {
-        return &quot;rules/&quot; + this._resource + &quot;/&quot; + this._organization + &quot;/channels/&quot; + this._channel + &quot;/&quot;;
+        return &quot;rules/&quot; + this._resource + &quot;/&quot; + this._organization + &quot;/channels/&quot; + this._channel;
     }
 
     /** 
@@ -593,7 +593,7 @@ export default class RuleConfigurations extends BaseProvision {
     update() {
         this._checkRequiredParameters(true);
 
-        return this._doNorthPut(this._buildURL() + this._identifier, this._composeElement());
+        return this._doNorthPut(this._buildURL() + &apos;/&apos; + this._identifier, this._composeElement());
     }
 
     /** 
