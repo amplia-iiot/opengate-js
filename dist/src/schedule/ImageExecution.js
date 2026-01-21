@@ -300,7 +300,12 @@ var ImageExecution = (function (_BaseProvision) {
     }, {
         key: 'toJson',
         value: function toJson() {
-            return this._composeElement();
+            return {
+                identifier: this._identifier,
+                schedule: this._schedule,
+                imageExecution: this._imageExecution,
+                maxTimeToWaitCallback: this._maxTimeToWaitCallback
+            };
         }
     }, {
         key: 'update',
