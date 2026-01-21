@@ -248,7 +248,12 @@ export default class ImageExecution extends BaseProvision {
     }
 
     toJson() {
-        return this._composeElement()
+        return {
+            identifier: this._identifier,
+            schedule: this._schedule,
+            imageExecution: this._imageExecution,
+            maxTimeToWaitCallback: this._maxTimeToWaitCallback
+        };
     }
 
     update() {
