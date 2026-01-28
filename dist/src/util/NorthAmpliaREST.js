@@ -49,6 +49,7 @@ var mock = (0, _superagentMocker2['default'])(_superagent2['default']);
 
 var NorthAmpliaREST = (function () {
     /**
+     * This is a constructor of a Rest api javascript
      * @param {{ url: string,port: string,version: string,apiKey: string,JTW: string}} _options - this is configuration about Opengate North API.
      * @param {function} backend - this is a backend selected to manage a request to Opengate North API.
      */
@@ -63,7 +64,7 @@ var NorthAmpliaREST = (function () {
         }
         // ---------------------------------- EXAMPLE
         /*
-        mock.post(_options.url + '/search/channels', function(req) {
+        mock.post(_options.url + '/north/v80/search/channels', function(req) {
             return {
                 body: {
                     "channels": [{
@@ -77,6 +78,57 @@ var NorthAmpliaREST = (function () {
             };
         });        
         */
+
+        // mock.post(_options.url + '/north/v80/provision/organizations/:organization/software', function(req) {
+        //     return {
+        //         body: {
+        //             "software": []
+        //         },
+        //         statusCode: 201
+        //     };
+        // });
+
+        // mock.put(_options.url + '/north/v80/provision/organizations/:organization/software/:id', function(req) {
+        //     return {
+        //         body: {
+        //             "software": []
+        //         },
+        //         statusCode: 200
+        //     };
+        // });
+
+        // mock.del(_options.url + '/north/v80/provision//organizations/:organization/software/:id', function(req) {
+        //     return {
+        //         body: {
+        //             "software": []
+        //         },
+        //         statusCode: 200
+        //     };
+        // });
+
+        // mock.get(_options.url + '/north/v80/provision//organizations/:organization/software?visibility=administrable', function(req) {
+        //     return {
+        //         body: {
+        //             "software": [{
+        //                 "id": "00000-11111-22222-33333",
+        //                 "name": "software name 1",
+        //                 "type": "SOFTWARE",
+        //                 "version": "0.000001",
+        //                 "organization": req.params.organization,
+        //                 "models": []
+        //             },
+        //             {
+        //                 "id": "00000-11111-22222-44444",
+        //                 "name": "software name 2",
+        //                 "type": "FIRMWARE",
+        //                 "version": "0.000002",
+        //                 "organization": req.params.organization,
+        //                 "models": []
+        //             }]
+        //         },
+        //         statusCode: 200
+        //     };
+        // });    
     }
 
     _createClass(NorthAmpliaREST, [{

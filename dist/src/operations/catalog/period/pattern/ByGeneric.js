@@ -24,6 +24,7 @@ var _utilDATE_FORMAT = require('./../../../../util/DATE_FORMAT');
 
 var ByGeneric = (function () {
     /**
+     * Constructor
      * @param {!BaseOperationBuilder} parent - this is a operationBaseBuilder.
      * @param {!Date} date - Date when operation will be executed
      * @param {string} periodicityName - Name associated to periodicity	

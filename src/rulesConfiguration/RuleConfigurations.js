@@ -10,7 +10,8 @@ import q from 'q';
  */
 export default class RuleConfigurations extends BaseProvision {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi, organization, channel, identifier, ruleConfigurationObj) {
@@ -19,12 +20,12 @@ export default class RuleConfigurations extends BaseProvision {
         // Required
         this.withOrganization(organization);
         this.withChannel(channel);
-        
+
         // only for updates
         if (identifier) {
             this.withIdentifier(identifier);
         }
-        
+
         if (ruleConfigurationObj) {
             if (ruleConfigurationObj.name) {
                 this.withName(ruleConfigurationObj.name);
@@ -44,8 +45,8 @@ export default class RuleConfigurations extends BaseProvision {
 
             if (ruleConfigurationObj.active !== null && typeof ruleConfigurationObj.active !== 'undefined') {
                 this.withActive(ruleConfigurationObj.active);
-            // } else {
-            //     this.withActive(false);
+                // } else {
+                //     this.withActive(false);
             }
 
             if (ruleConfigurationObj.condition !== null && typeof ruleConfigurationObj.condition !== 'undefined')
@@ -234,10 +235,10 @@ export default class RuleConfigurations extends BaseProvision {
             "severity": this._severity,
             "description": (this._description ? this._description : undefined),
             "parameters": this._parameters,
-            "condition": this._mode ==='EASY'?this._condition: undefined,
+            "condition": this._mode === 'EASY' ? this._condition : undefined,
             "actionsDelay": this._actionsDelay,
-            "actions": this._mode ==='EASY'?this._actions: undefined,
-            "javascript": this._mode ==='ADVANCED'?this._javascript:undefined
+            "actions": this._mode === 'EASY' ? this._actions : undefined,
+            "javascript": this._mode === 'ADVANCED' ? this._javascript : undefined
         };
 
         return updateData;
@@ -255,7 +256,7 @@ export default class RuleConfigurations extends BaseProvision {
     }
 
     _buildURL() {
-        return "rules/" + this._resource + "/" + this._organization + "/channels/" + this._channel + "/";
+        return "rules/" + this._resource + "/" + this._organization + "/channels/" + this._channel;
     }
 
     /** 
@@ -277,7 +278,7 @@ export default class RuleConfigurations extends BaseProvision {
     update() {
         this._checkRequiredParameters(true);
 
-        return this._doNorthPut(this._buildURL() + this._identifier, this._composeElement());
+        return this._doNorthPut(this._buildURL() + '/' + this._identifier, this._composeElement());
     }
 
     /** 

@@ -18,18 +18,6 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
-    "opengate-js/src/aimodels/aimodels.js~aimodels",
-    "class/src/AIModels/AIModels.js~AIModels.html",
-    "<span>AIModels</span> <span class=\"search-result-import-path\">opengate-js/src/AIModels/AIModels.js</span>",
-    "class"
-  ],
-  [
-    "opengate-js/src/aimodels/aimodelsfinder.js~aimodelsfinder",
-    "class/src/AIModels/AIModelsFinder.js~AIModelsFinder.html",
-    "<span>AIModelsFinder</span> <span class=\"search-result-import-path\">opengate-js/src/AIModels/AIModelsFinder.js</span>",
-    "class"
-  ],
-  [
     "opengate-js/src/collection/devices/collect/enum/antenna_status_enum.js~antenna_status_enum",
     "variable/index.html#static-variable-ANTENNA_STATUS_ENUM",
     "<span>ANTENNA_STATUS_ENUM</span> <span class=\"search-result-import-path\">opengate-js/src/collection/devices/collect/enum/ANTENNA_STATUS_ENUM.js</span>",
@@ -648,12 +636,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "opengate-js/src/util/searchingfields/fieldfinder.js~fieldfinder",
-    "class/src/util/searchingFields/FieldFinder.js~FieldFinder.html",
-    "<span>FieldFinder</span> <span class=\"search-result-import-path\">opengate-js/src/util/searchingFields/FieldFinder.js</span>",
-    "class"
-  ],
-  [
     "opengate-js/src/searching/builder/fieldsdefinitionsearchbuilder.js~fieldsdefinitionsearchbuilder",
     "class/src/searching/builder/FieldsDefinitionSearchBuilder.js~FieldsDefinitionSearchBuilder.html",
     "<span>FieldsDefinitionSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/FieldsDefinitionSearchBuilder.js</span>",
@@ -702,10 +684,28 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/schedule/historyfinder.js~historyfinder",
+    "class/src/schedule/HistoryFinder.js~HistoryFinder.html",
+    "<span>HistoryFinder</span> <span class=\"search-result-import-path\">opengate-js/src/schedule/HistoryFinder.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/util/searchingfields/iotfields.js~iot_fields",
     "variable/index.html#static-variable-IOT_FIELDS",
     "<span>IOT_FIELDS</span> <span class=\"search-result-import-path\">opengate-js/src/util/searchingFields/IotFields.js</span>",
     "variable"
+  ],
+  [
+    "opengate-js/src/schedule/imageexecution.js~imageexecution",
+    "class/src/schedule/ImageExecution.js~ImageExecution.html",
+    "<span>ImageExecution</span> <span class=\"search-result-import-path\">opengate-js/src/schedule/ImageExecution.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/schedule/imageexecutionfinder.js~imageexecutionfinder",
+    "class/src/schedule/ImageExecutionFinder.js~ImageExecutionFinder.html",
+    "<span>ImageExecutionFinder</span> <span class=\"search-result-import-path\">opengate-js/src/schedule/ImageExecutionFinder.js</span>",
+    "class"
   ],
   [
     "opengate-js/src/internalopengateapi.js~internalopengateapi",
@@ -882,6 +882,24 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/notebookscheduler/notebookfinder.js~notebookfinder",
+    "class/src/notebookScheduler/NotebookFinder.js~NotebookFinder.html",
+    "<span>NotebookFinder</span> <span class=\"search-result-import-path\">opengate-js/src/notebookScheduler/NotebookFinder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/notebookscheduler/notebooklauncher.js~notebooklauncher",
+    "class/src/notebookScheduler/NotebookLauncher.js~NotebookLauncher.html",
+    "<span>NotebookLauncher</span> <span class=\"search-result-import-path\">opengate-js/src/notebookScheduler/NotebookLauncher.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/notebookscheduler/notebookscheduler.js~notebookscheduler",
+    "class/src/notebookScheduler/NotebookScheduler.js~NotebookScheduler.html",
+    "<span>NotebookScheduler</span> <span class=\"search-result-import-path\">opengate-js/src/notebookScheduler/NotebookScheduler.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/bundles/deployment/operation_enum.js~operation_enum",
     "variable/index.html#static-variable-OPERATION_ENUM",
     "<span>OPERATION_ENUM</span> <span class=\"search-result-import-path\">opengate-js/src/bundles/deployment/OPERATION_ENUM.js</span>",
@@ -1044,6 +1062,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "opengate-js/src/organization_software/software.js~pre_resource",
+    "variable/index.html#static-variable-PRE_RESOURCE",
+    "<span>PRE_RESOURCE</span> <span class=\"search-result-import-path\">opengate-js/src/organization_software/Software.js</span>",
+    "variable"
+  ],
+  [
     "opengate-js/src/operations/catalog/parameters/parameterbuilderfactory.js~parameterbuilderfactory",
     "class/src/operations/catalog/parameters/ParameterBuilderFactory.js~ParameterBuilderFactory.html",
     "<span>ParameterBuilderFactory</span> <span class=\"search-result-import-path\">opengate-js/src/operations/catalog/parameters/ParameterBuilderFactory.js</span>",
@@ -1062,15 +1086,15 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "opengate-js/src/pipelines/pipelinefinder.js~pipelinefinder",
-    "class/src/pipelines/PipelineFinder.js~PipelineFinder.html",
-    "<span>PipelineFinder</span> <span class=\"search-result-import-path\">opengate-js/src/pipelines/PipelineFinder.js</span>",
+    "opengate-js/src/schedule/pipeline.js~pipeline",
+    "class/src/schedule/Pipeline.js~Pipeline.html",
+    "<span>Pipeline</span> <span class=\"search-result-import-path\">opengate-js/src/schedule/Pipeline.js</span>",
     "class"
   ],
   [
-    "opengate-js/src/pipelines/pipelines.js~pipelines",
-    "class/src/pipelines/Pipelines.js~Pipelines.html",
-    "<span>Pipelines</span> <span class=\"search-result-import-path\">opengate-js/src/pipelines/Pipelines.js</span>",
+    "opengate-js/src/schedule/pipelinefinder.js~pipelinefinder",
+    "class/src/schedule/PipelineFinder.js~PipelineFinder.html",
+    "<span>PipelineFinder</span> <span class=\"search-result-import-path\">opengate-js/src/schedule/PipelineFinder.js</span>",
     "class"
   ],
   [
@@ -1113,6 +1137,18 @@ window.esdocSearchIndex = [
     "opengate-js/src/searching/builder/resourcetypesearchbuilder.js~resourcetypesearchbuilder",
     "class/src/searching/builder/ResourceTypeSearchBuilder.js~ResourceTypeSearchBuilder.html",
     "<span>ResourceTypeSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/ResourceTypeSearchBuilder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/schedule/restrequest.js~restrequest",
+    "class/src/schedule/RestRequest.js~RestRequest.html",
+    "<span>RestRequest</span> <span class=\"search-result-import-path\">opengate-js/src/schedule/RestRequest.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/schedule/restrequestfinder.js~restrequestfinder",
+    "class/src/schedule/RestRequestFinder.js~RestRequestFinder.html",
+    "<span>RestRequestFinder</span> <span class=\"search-result-import-path\">opengate-js/src/schedule/RestRequestFinder.js</span>",
     "class"
   ],
   [
@@ -1170,6 +1206,18 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/organization_software/software.js~softwares_resource",
+    "variable/index.html#static-variable-SOFTWARES_RESOURCE",
+    "<span>SOFTWARES_RESOURCE</span> <span class=\"search-result-import-path\">opengate-js/src/organization_software/Software.js</span>",
+    "variable"
+  ],
+  [
+    "opengate-js/src/organization_software/software.js~software_types_enum",
+    "variable/index.html#static-variable-SOFTWARE_TYPES_ENUM",
+    "<span>SOFTWARE_TYPES_ENUM</span> <span class=\"search-result-import-path\">opengate-js/src/organization_software/Software.js</span>",
+    "variable"
+  ],
+  [
     "opengate-js/src/searching/builder/softwaressearchbuilder.js~software_types_enum",
     "variable/index.html#static-variable-SOFTWARE_TYPES_ENUM",
     "<span>SOFTWARE_TYPES_ENUM</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/SoftwaresSearchBuilder.js</span>",
@@ -1180,6 +1228,18 @@ window.esdocSearchIndex = [
     "variable/index.html#static-variable-SOFTWARE_TYPE_ENUM",
     "<span>SOFTWARE_TYPE_ENUM</span> <span class=\"search-result-import-path\">opengate-js/src/collection/devices/collect/enum/SOFTWARE_TYPE_ENUM.js</span>",
     "variable"
+  ],
+  [
+    "opengate-js/src/schedule/schedulepipelinefinder.js~schedulehistoryfinder",
+    "class/src/schedule/SchedulePipelineFinder.js~ScheduleHistoryFinder.html",
+    "<span>ScheduleHistoryFinder</span> <span class=\"search-result-import-path\">opengate-js/src/schedule/SchedulePipelineFinder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/notebookscheduler/schedulerfinder.js~schedulerfinder",
+    "class/src/notebookScheduler/SchedulerFinder.js~SchedulerFinder.html",
+    "<span>SchedulerFinder</span> <span class=\"search-result-import-path\">opengate-js/src/notebookScheduler/SchedulerFinder.js</span>",
+    "class"
   ],
   [
     "opengate-js/src/searching/search.js~search",
@@ -1245,6 +1305,18 @@ window.esdocSearchIndex = [
     "opengate-js/src/collection/devices/collect/software.js~software",
     "class/src/collection/devices/collect/Software.js~Software.html",
     "<span>Software</span> <span class=\"search-result-import-path\">opengate-js/src/collection/devices/collect/Software.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/organization_software/softwarefinder.js~softwarefinder",
+    "class/src/organization_software/SoftwareFinder.js~SoftwareFinder.html",
+    "<span>SoftwareFinder</span> <span class=\"search-result-import-path\">opengate-js/src/organization_software/SoftwareFinder.js</span>",
+    "class"
+  ],
+  [
+    "opengate-js/src/organization_software/software.js~softwares",
+    "class/src/organization_software/Software.js~Softwares.html",
+    "<span>Softwares</span> <span class=\"search-result-import-path\">opengate-js/src/organization_software/Software.js</span>",
     "class"
   ],
   [
@@ -1497,18 +1569,6 @@ window.esdocSearchIndex = [
     "opengate-js/src/searching/builder/timezonesearchbuilder.js~timezonesearchbuilder",
     "class/src/searching/builder/TimezoneSearchBuilder.js~TimezoneSearchBuilder.html",
     "<span>TimezoneSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/TimezoneSearchBuilder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-js/src/transformers/transformerfinder.js~transformerfinder",
-    "class/src/transformers/TransformerFinder.js~TransformerFinder.html",
-    "<span>TransformerFinder</span> <span class=\"search-result-import-path\">opengate-js/src/transformers/TransformerFinder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-js/src/transformers/transformers.js~transformers",
-    "class/src/transformers/Transformers.js~Transformers.html",
-    "<span>Transformers</span> <span class=\"search-result-import-path\">opengate-js/src/transformers/Transformers.js</span>",
     "class"
   ],
   [
@@ -3372,84 +3432,6 @@ window.esdocSearchIndex = [
     "testFile"
   ],
   [
-    "src/aimodels/aimodels.js",
-    "file/src/AIModels/AIModels.js.html",
-    "src/AIModels/AIModels.js",
-    "file"
-  ],
-  [
-    "src/aimodels/aimodels.js~aimodels#constructor",
-    "class/src/AIModels/AIModels.js~AIModels.html#instance-constructor-constructor",
-    "src/AIModels/AIModels.js~AIModels#constructor",
-    "method"
-  ],
-  [
-    "src/aimodels/aimodels.js~aimodels#create",
-    "class/src/AIModels/AIModels.js~AIModels.html#instance-method-create",
-    "src/AIModels/AIModels.js~AIModels#create",
-    "method"
-  ],
-  [
-    "src/aimodels/aimodels.js~aimodels#prediction",
-    "class/src/AIModels/AIModels.js~AIModels.html#instance-method-prediction",
-    "src/AIModels/AIModels.js~AIModels#prediction",
-    "method"
-  ],
-  [
-    "src/aimodels/aimodels.js~aimodels#update",
-    "class/src/AIModels/AIModels.js~AIModels.html#instance-method-update",
-    "src/AIModels/AIModels.js~AIModels#update",
-    "method"
-  ],
-  [
-    "src/aimodels/aimodels.js~aimodels#withfile",
-    "class/src/AIModels/AIModels.js~AIModels.html#instance-method-withFile",
-    "src/AIModels/AIModels.js~AIModels#withFile",
-    "method"
-  ],
-  [
-    "src/aimodels/aimodels.js~aimodels#withidentifier",
-    "class/src/AIModels/AIModels.js~AIModels.html#instance-method-withIdentifier",
-    "src/AIModels/AIModels.js~AIModels#withIdentifier",
-    "method"
-  ],
-  [
-    "src/aimodels/aimodels.js~aimodels#withorganization",
-    "class/src/AIModels/AIModels.js~AIModels.html#instance-method-withOrganization",
-    "src/AIModels/AIModels.js~AIModels#withOrganization",
-    "method"
-  ],
-  [
-    "src/aimodels/aimodelsfinder.js",
-    "file/src/AIModels/AIModelsFinder.js.html",
-    "src/AIModels/AIModelsFinder.js",
-    "file"
-  ],
-  [
-    "src/aimodels/aimodelsfinder.js~aimodelsfinder#constructor",
-    "class/src/AIModels/AIModelsFinder.js~AIModelsFinder.html#instance-constructor-constructor",
-    "src/AIModels/AIModelsFinder.js~AIModelsFinder#constructor",
-    "method"
-  ],
-  [
-    "src/aimodels/aimodelsfinder.js~aimodelsfinder#downloadbyorganizationandidentifier",
-    "class/src/AIModels/AIModelsFinder.js~AIModelsFinder.html#instance-method-downloadByOrganizationAndIdentifier",
-    "src/AIModels/AIModelsFinder.js~AIModelsFinder#downloadByOrganizationAndIdentifier",
-    "method"
-  ],
-  [
-    "src/aimodels/aimodelsfinder.js~aimodelsfinder#findbyorganization",
-    "class/src/AIModels/AIModelsFinder.js~AIModelsFinder.html#instance-method-findByOrganization",
-    "src/AIModels/AIModelsFinder.js~AIModelsFinder#findByOrganization",
-    "method"
-  ],
-  [
-    "src/aimodels/aimodelsfinder.js~aimodelsfinder#findbyorganizationandidentifier",
-    "class/src/AIModels/AIModelsFinder.js~AIModelsFinder.html#instance-method-findByOrganizationAndIdentifier",
-    "src/AIModels/AIModelsFinder.js~AIModelsFinder#findByOrganizationAndIdentifier",
-    "method"
-  ],
-  [
     "src/genericfinder.js",
     "file/src/GenericFinder.js.html",
     "src/GenericFinder.js",
@@ -3495,12 +3477,6 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#administrativestatesearchbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-administrativeStateSearchBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#administrativeStateSearchBuilder",
-    "method"
-  ],
-  [
-    "src/internalopengateapi.js~internalopengateapi#aimodelsbuilder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-aiModelsBuilder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#aiModelsBuilder",
     "method"
   ],
   [
@@ -3828,12 +3804,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/internalopengateapi.js~internalopengateapi#newaimodelfinder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newAIModelFinder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newAIModelFinder",
-    "method"
-  ],
-  [
     "src/internalopengateapi.js~internalopengateapi#newareafinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newAreaFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newAreaFinder",
@@ -3960,6 +3930,18 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#newnotebookfinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newNotebookFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newNotebookFinder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#newnotebookschedulerfinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newNotebookSchedulerFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newNotebookSchedulerFinder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#newoperationactions",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newOperationActions",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newOperationActions",
@@ -4014,12 +3996,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/internalopengateapi.js~internalopengateapi#newpipelinefinder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newPipelineFinder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newPipelineFinder",
-    "method"
-  ],
-  [
     "src/internalopengateapi.js~internalopengateapi#newprovisionprocessorsfinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newProvisionProcessorsFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newProvisionProcessorsFinder",
@@ -4044,9 +4020,39 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#newschedulehistoryfinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newScheduleHistoryFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newScheduleHistoryFinder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#newscheduleimageexecutionfinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newScheduleImageExecutionFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newScheduleImageExecutionFinder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#newschedulepipelinefinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newSchedulePipelineFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newSchedulePipelineFinder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#newschedulerestrequestfinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newScheduleRestRequestFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newScheduleRestRequestFinder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#newselectbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newSelectBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newSelectBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#newsoftwarefinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newSoftwareFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newSoftwareFinder",
     "method"
   ],
   [
@@ -4086,12 +4092,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/internalopengateapi.js~internalopengateapi#newtransformerfinder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newTransformerFinder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newTransformerFinder",
-    "method"
-  ],
-  [
     "src/internalopengateapi.js~internalopengateapi#newuserfinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newUserFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newUserFinder",
@@ -4107,6 +4107,18 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#newworkgrouprelationsfinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newWorkgroupRelationsFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newWorkgroupRelationsFinder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#notebooklauncherbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-notebookLauncherBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#notebookLauncherBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#notebookschedulerbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-notebookSchedulerBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#notebookSchedulerBuilder",
     "method"
   ],
   [
@@ -4164,12 +4176,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/internalopengateapi.js~internalopengateapi#pipelinesbuilder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-pipelinesBuilder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#pipelinesBuilder",
-    "method"
-  ],
-  [
     "src/internalopengateapi.js~internalopengateapi#powersupplymessagebuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-powerSupplyMessageBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#powerSupplyMessageBuilder",
@@ -4212,6 +4218,24 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/internalopengateapi.js~internalopengateapi#scheduleimageexecutionbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-scheduleImageExecutionBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#scheduleImageExecutionBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#schedulepipelinebuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-schedulePipelineBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#schedulePipelineBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#schedulerestrequestbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-scheduleRestRequestBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#scheduleRestRequestBuilder",
+    "method"
+  ],
+  [
     "src/internalopengateapi.js~internalopengateapi#servicegroupsearchbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-serviceGroupSearchBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#serviceGroupSearchBuilder",
@@ -4221,6 +4245,12 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#softwaremessagebuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-softwareMessageBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#softwareMessageBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#softwaresbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-softwaresBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#softwaresBuilder",
     "method"
   ],
   [
@@ -4323,12 +4353,6 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#timezonesearchbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-timezoneSearchBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#timezoneSearchBuilder",
-    "method"
-  ],
-  [
-    "src/internalopengateapi.js~internalopengateapi#transformersbuilder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-transformersBuilder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#transformersBuilder",
     "method"
   ],
   [
@@ -5121,6 +5145,18 @@ window.esdocSearchIndex = [
     "src/collection/devices/collect/datapoint.js~datapoint#withfrom",
     "class/src/collection/devices/collect/Datapoint.js~Datapoint.html#instance-method-withFrom",
     "src/collection/devices/collect/Datapoint.js~Datapoint#withFrom",
+    "method"
+  ],
+  [
+    "src/collection/devices/collect/datapoint.js~datapoint#withsource",
+    "class/src/collection/devices/collect/Datapoint.js~Datapoint.html#instance-method-withSource",
+    "src/collection/devices/collect/Datapoint.js~Datapoint#withSource",
+    "method"
+  ],
+  [
+    "src/collection/devices/collect/datapoint.js~datapoint#withsourceinfo",
+    "class/src/collection/devices/collect/Datapoint.js~Datapoint.html#instance-method-withSourceInfo",
+    "src/collection/devices/collect/Datapoint.js~Datapoint#withSourceInfo",
     "method"
   ],
   [
@@ -7116,6 +7152,162 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/notebookscheduler/notebookfinder.js",
+    "file/src/notebookScheduler/NotebookFinder.js.html",
+    "src/notebookScheduler/NotebookFinder.js",
+    "file"
+  ],
+  [
+    "src/notebookscheduler/notebookfinder.js~notebookfinder#constructor",
+    "class/src/notebookScheduler/NotebookFinder.js~NotebookFinder.html#instance-constructor-constructor",
+    "src/notebookScheduler/NotebookFinder.js~NotebookFinder#constructor",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebookfinder.js~notebookfinder#findall",
+    "class/src/notebookScheduler/NotebookFinder.js~NotebookFinder.html#instance-method-findAll",
+    "src/notebookScheduler/NotebookFinder.js~NotebookFinder#findAll",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebooklauncher.js",
+    "file/src/notebookScheduler/NotebookLauncher.js.html",
+    "src/notebookScheduler/NotebookLauncher.js",
+    "file"
+  ],
+  [
+    "src/notebookscheduler/notebooklauncher.js~notebooklauncher#constructor",
+    "class/src/notebookScheduler/NotebookLauncher.js~NotebookLauncher.html#instance-constructor-constructor",
+    "src/notebookScheduler/NotebookLauncher.js~NotebookLauncher#constructor",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebooklauncher.js~notebooklauncher#create",
+    "class/src/notebookScheduler/NotebookLauncher.js~NotebookLauncher.html#instance-method-create",
+    "src/notebookScheduler/NotebookLauncher.js~NotebookLauncher#create",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebooklauncher.js~notebooklauncher#delete",
+    "class/src/notebookScheduler/NotebookLauncher.js~NotebookLauncher.html#instance-method-delete",
+    "src/notebookScheduler/NotebookLauncher.js~NotebookLauncher#delete",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebooklauncher.js~notebooklauncher#execute",
+    "class/src/notebookScheduler/NotebookLauncher.js~NotebookLauncher.html#instance-method-execute",
+    "src/notebookScheduler/NotebookLauncher.js~NotebookLauncher#execute",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebooklauncher.js~notebooklauncher#generatereport",
+    "class/src/notebookScheduler/NotebookLauncher.js~NotebookLauncher.html#instance-method-generateReport",
+    "src/notebookScheduler/NotebookLauncher.js~NotebookLauncher#generateReport",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebooklauncher.js~notebooklauncher#update",
+    "class/src/notebookScheduler/NotebookLauncher.js~NotebookLauncher.html#instance-method-update",
+    "src/notebookScheduler/NotebookLauncher.js~NotebookLauncher#update",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebooklauncher.js~notebooklauncher#withidentifier",
+    "class/src/notebookScheduler/NotebookLauncher.js~NotebookLauncher.html#instance-method-withIdentifier",
+    "src/notebookScheduler/NotebookLauncher.js~NotebookLauncher#withIdentifier",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebooklauncher.js~notebooklauncher#withparams",
+    "class/src/notebookScheduler/NotebookLauncher.js~NotebookLauncher.html#instance-method-withParams",
+    "src/notebookScheduler/NotebookLauncher.js~NotebookLauncher#withParams",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebooklauncher.js~notebooklauncher#withreportretentiondays",
+    "class/src/notebookScheduler/NotebookLauncher.js~NotebookLauncher.html#instance-method-withReportRetentionDays",
+    "src/notebookScheduler/NotebookLauncher.js~NotebookLauncher#withReportRetentionDays",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebookscheduler.js",
+    "file/src/notebookScheduler/NotebookScheduler.js.html",
+    "src/notebookScheduler/NotebookScheduler.js",
+    "file"
+  ],
+  [
+    "src/notebookscheduler/notebookscheduler.js~notebookscheduler#constructor",
+    "class/src/notebookScheduler/NotebookScheduler.js~NotebookScheduler.html#instance-constructor-constructor",
+    "src/notebookScheduler/NotebookScheduler.js~NotebookScheduler#constructor",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebookscheduler.js~notebookscheduler#create",
+    "class/src/notebookScheduler/NotebookScheduler.js~NotebookScheduler.html#instance-method-create",
+    "src/notebookScheduler/NotebookScheduler.js~NotebookScheduler#create",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebookscheduler.js~notebookscheduler#generatereport",
+    "class/src/notebookScheduler/NotebookScheduler.js~NotebookScheduler.html#instance-method-generateReport",
+    "src/notebookScheduler/NotebookScheduler.js~NotebookScheduler#generateReport",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebookscheduler.js~notebookscheduler#update",
+    "class/src/notebookScheduler/NotebookScheduler.js~NotebookScheduler.html#instance-method-update",
+    "src/notebookScheduler/NotebookScheduler.js~NotebookScheduler#update",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebookscheduler.js~notebookscheduler#withcronpattern",
+    "class/src/notebookScheduler/NotebookScheduler.js~NotebookScheduler.html#instance-method-withCronPattern",
+    "src/notebookScheduler/NotebookScheduler.js~NotebookScheduler#withCronPattern",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebookscheduler.js~notebookscheduler#withidentifier",
+    "class/src/notebookScheduler/NotebookScheduler.js~NotebookScheduler.html#instance-method-withIdentifier",
+    "src/notebookScheduler/NotebookScheduler.js~NotebookScheduler#withIdentifier",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebookscheduler.js~notebookscheduler#withnotebookid",
+    "class/src/notebookScheduler/NotebookScheduler.js~NotebookScheduler.html#instance-method-withNotebookId",
+    "src/notebookScheduler/NotebookScheduler.js~NotebookScheduler#withNotebookId",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebookscheduler.js~notebookscheduler#withparams",
+    "class/src/notebookScheduler/NotebookScheduler.js~NotebookScheduler.html#instance-method-withParams",
+    "src/notebookScheduler/NotebookScheduler.js~NotebookScheduler#withParams",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/notebookscheduler.js~notebookscheduler#withreportretentiondays",
+    "class/src/notebookScheduler/NotebookScheduler.js~NotebookScheduler.html#instance-method-withReportRetentionDays",
+    "src/notebookScheduler/NotebookScheduler.js~NotebookScheduler#withReportRetentionDays",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/schedulerfinder.js",
+    "file/src/notebookScheduler/SchedulerFinder.js.html",
+    "src/notebookScheduler/SchedulerFinder.js",
+    "file"
+  ],
+  [
+    "src/notebookscheduler/schedulerfinder.js~schedulerfinder#constructor",
+    "class/src/notebookScheduler/SchedulerFinder.js~SchedulerFinder.html#instance-constructor-constructor",
+    "src/notebookScheduler/SchedulerFinder.js~SchedulerFinder#constructor",
+    "method"
+  ],
+  [
+    "src/notebookscheduler/schedulerfinder.js~schedulerfinder#findall",
+    "class/src/notebookScheduler/SchedulerFinder.js~SchedulerFinder.html#instance-method-findAll",
+    "src/notebookScheduler/SchedulerFinder.js~SchedulerFinder#findAll",
+    "method"
+  ],
+  [
     "src/operationtypes/operationtype.js",
     "file/src/operationTypes/OperationType.js.html",
     "src/operationTypes/OperationType.js",
@@ -7191,6 +7383,12 @@ window.esdocSearchIndex = [
     "src/operationtypes/operationtype.js~operationtype#withparameters",
     "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-withParameters",
     "src/operationTypes/OperationType.js~OperationType#withParameters",
+    "method"
+  ],
+  [
+    "src/operationtypes/operationtype.js~operationtype#withprofiles",
+    "class/src/operationTypes/OperationType.js~OperationType.html#instance-method-withProfiles",
+    "src/operationTypes/OperationType.js~OperationType#withProfiles",
     "method"
   ],
   [
@@ -7455,6 +7653,12 @@ window.esdocSearchIndex = [
     "src/operations/catalog/baseoperationbuilder.js~baseoperationbuilder#constructor",
     "class/src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder.html#instance-constructor-constructor",
     "src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder#constructor",
+    "method"
+  ],
+  [
+    "src/operations/catalog/baseoperationbuilder.js~baseoperationbuilder#executeatdate",
+    "class/src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder.html#instance-method-executeAtDate",
+    "src/operations/catalog/BaseOperationBuilder.js~BaseOperationBuilder#executeAtDate",
     "method"
   ],
   [
@@ -8010,6 +8214,96 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/organization_software/software.js",
+    "file/src/organization_software/Software.js.html",
+    "src/organization_software/Software.js",
+    "file"
+  ],
+  [
+    "src/organization_software/software.js~softwares#constructor",
+    "class/src/organization_software/Software.js~Softwares.html#instance-constructor-constructor",
+    "src/organization_software/Software.js~Softwares#constructor",
+    "method"
+  ],
+  [
+    "src/organization_software/software.js~softwares#deleteincascade",
+    "class/src/organization_software/Software.js~Softwares.html#instance-method-deleteInCascade",
+    "src/organization_software/Software.js~Softwares#deleteInCascade",
+    "method"
+  ],
+  [
+    "src/organization_software/software.js~softwares#updateincascade",
+    "class/src/organization_software/Software.js~Softwares.html#instance-method-updateInCascade",
+    "src/organization_software/Software.js~Softwares#updateInCascade",
+    "method"
+  ],
+  [
+    "src/organization_software/software.js~softwares#withidentifier",
+    "class/src/organization_software/Software.js~Softwares.html#instance-method-withIdentifier",
+    "src/organization_software/Software.js~Softwares#withIdentifier",
+    "method"
+  ],
+  [
+    "src/organization_software/software.js~softwares#withmodels",
+    "class/src/organization_software/Software.js~Softwares.html#instance-method-withModels",
+    "src/organization_software/Software.js~Softwares#withModels",
+    "method"
+  ],
+  [
+    "src/organization_software/software.js~softwares#withname",
+    "class/src/organization_software/Software.js~Softwares.html#instance-method-withName",
+    "src/organization_software/Software.js~Softwares#withName",
+    "method"
+  ],
+  [
+    "src/organization_software/software.js~softwares#withtype",
+    "class/src/organization_software/Software.js~Softwares.html#instance-method-withType",
+    "src/organization_software/Software.js~Softwares#withType",
+    "method"
+  ],
+  [
+    "src/organization_software/software.js~softwares#withversion",
+    "class/src/organization_software/Software.js~Softwares.html#instance-method-withVersion",
+    "src/organization_software/Software.js~Softwares#withVersion",
+    "method"
+  ],
+  [
+    "src/organization_software/softwarefinder.js",
+    "file/src/organization_software/SoftwareFinder.js.html",
+    "src/organization_software/SoftwareFinder.js",
+    "file"
+  ],
+  [
+    "src/organization_software/softwarefinder.js~softwarefinder#administrable",
+    "class/src/organization_software/SoftwareFinder.js~SoftwareFinder.html#instance-method-administrable",
+    "src/organization_software/SoftwareFinder.js~SoftwareFinder#administrable",
+    "method"
+  ],
+  [
+    "src/organization_software/softwarefinder.js~softwarefinder#assignable",
+    "class/src/organization_software/SoftwareFinder.js~SoftwareFinder.html#instance-method-assignable",
+    "src/organization_software/SoftwareFinder.js~SoftwareFinder#assignable",
+    "method"
+  ],
+  [
+    "src/organization_software/softwarefinder.js~softwarefinder#constructor",
+    "class/src/organization_software/SoftwareFinder.js~SoftwareFinder.html#instance-constructor-constructor",
+    "src/organization_software/SoftwareFinder.js~SoftwareFinder#constructor",
+    "method"
+  ],
+  [
+    "src/organization_software/softwarefinder.js~softwarefinder#findbyorganization",
+    "class/src/organization_software/SoftwareFinder.js~SoftwareFinder.html#instance-method-findByOrganization",
+    "src/organization_software/SoftwareFinder.js~SoftwareFinder#findByOrganization",
+    "method"
+  ],
+  [
+    "src/organization_software/softwarefinder.js~softwarefinder#findbyorganizationandid",
+    "class/src/organization_software/SoftwareFinder.js~SoftwareFinder.html#instance-method-findByOrganizationAndId",
+    "src/organization_software/SoftwareFinder.js~SoftwareFinder#findByOrganizationAndId",
+    "method"
+  ],
+  [
     "src/organizations/organizationfinder.js",
     "file/src/organizations/OrganizationFinder.js.html",
     "src/organizations/OrganizationFinder.js",
@@ -8115,78 +8409,6 @@ window.esdocSearchIndex = [
     "src/organizations/organizations.js~organizations#withzoom",
     "class/src/organizations/Organizations.js~Organizations.html#instance-method-withZoom",
     "src/organizations/Organizations.js~Organizations#withZoom",
-    "method"
-  ],
-  [
-    "src/pipelines/pipelinefinder.js",
-    "file/src/pipelines/PipelineFinder.js.html",
-    "src/pipelines/PipelineFinder.js",
-    "file"
-  ],
-  [
-    "src/pipelines/pipelinefinder.js~pipelinefinder#constructor",
-    "class/src/pipelines/PipelineFinder.js~PipelineFinder.html#instance-constructor-constructor",
-    "src/pipelines/PipelineFinder.js~PipelineFinder#constructor",
-    "method"
-  ],
-  [
-    "src/pipelines/pipelinefinder.js~pipelinefinder#findbyorganization",
-    "class/src/pipelines/PipelineFinder.js~PipelineFinder.html#instance-method-findByOrganization",
-    "src/pipelines/PipelineFinder.js~PipelineFinder#findByOrganization",
-    "method"
-  ],
-  [
-    "src/pipelines/pipelinefinder.js~pipelinefinder#findbyorganizationandidentifier",
-    "class/src/pipelines/PipelineFinder.js~PipelineFinder.html#instance-method-findByOrganizationAndIdentifier",
-    "src/pipelines/PipelineFinder.js~PipelineFinder#findByOrganizationAndIdentifier",
-    "method"
-  ],
-  [
-    "src/pipelines/pipelines.js",
-    "file/src/pipelines/Pipelines.js.html",
-    "src/pipelines/Pipelines.js",
-    "file"
-  ],
-  [
-    "src/pipelines/pipelines.js~pipelines#addaction",
-    "class/src/pipelines/Pipelines.js~Pipelines.html#instance-method-addAction",
-    "src/pipelines/Pipelines.js~Pipelines#addAction",
-    "method"
-  ],
-  [
-    "src/pipelines/pipelines.js~pipelines#constructor",
-    "class/src/pipelines/Pipelines.js~Pipelines.html#instance-constructor-constructor",
-    "src/pipelines/Pipelines.js~Pipelines#constructor",
-    "method"
-  ],
-  [
-    "src/pipelines/pipelines.js~pipelines#prediction",
-    "class/src/pipelines/Pipelines.js~Pipelines.html#instance-method-prediction",
-    "src/pipelines/Pipelines.js~Pipelines#prediction",
-    "method"
-  ],
-  [
-    "src/pipelines/pipelines.js~pipelines#withactions",
-    "class/src/pipelines/Pipelines.js~Pipelines.html#instance-method-withActions",
-    "src/pipelines/Pipelines.js~Pipelines#withActions",
-    "method"
-  ],
-  [
-    "src/pipelines/pipelines.js~pipelines#withidentifier",
-    "class/src/pipelines/Pipelines.js~Pipelines.html#instance-method-withIdentifier",
-    "src/pipelines/Pipelines.js~Pipelines#withIdentifier",
-    "method"
-  ],
-  [
-    "src/pipelines/pipelines.js~pipelines#withname",
-    "class/src/pipelines/Pipelines.js~Pipelines.html#instance-method-withName",
-    "src/pipelines/Pipelines.js~Pipelines#withName",
-    "method"
-  ],
-  [
-    "src/pipelines/pipelines.js~pipelines#withorganization",
-    "class/src/pipelines/Pipelines.js~Pipelines.html#instance-method-withOrganization",
-    "src/pipelines/Pipelines.js~Pipelines#withOrganization",
     "method"
   ],
   [
@@ -9010,6 +9232,414 @@ window.esdocSearchIndex = [
     "file/src/rulesConfiguration/_RuleNotification.js.html",
     "src/rulesConfiguration/_RuleNotification.js",
     "file"
+  ],
+  [
+    "src/schedule/historyfinder.js",
+    "file/src/schedule/HistoryFinder.js.html",
+    "src/schedule/HistoryFinder.js",
+    "file"
+  ],
+  [
+    "src/schedule/historyfinder.js~historyfinder#constructor",
+    "class/src/schedule/HistoryFinder.js~HistoryFinder.html#instance-constructor-constructor",
+    "src/schedule/HistoryFinder.js~HistoryFinder#constructor",
+    "method"
+  ],
+  [
+    "src/schedule/historyfinder.js~historyfinder#findbyorganization",
+    "class/src/schedule/HistoryFinder.js~HistoryFinder.html#instance-method-findByOrganization",
+    "src/schedule/HistoryFinder.js~HistoryFinder#findByOrganization",
+    "method"
+  ],
+  [
+    "src/schedule/historyfinder.js~historyfinder#findbyorganizationandschedulerid",
+    "class/src/schedule/HistoryFinder.js~HistoryFinder.html#instance-method-findByOrganizationAndSchedulerId",
+    "src/schedule/HistoryFinder.js~HistoryFinder#findByOrganizationAndSchedulerId",
+    "method"
+  ],
+  [
+    "src/schedule/historyfinder.js~historyfinder#findbyorganizationandtype",
+    "class/src/schedule/HistoryFinder.js~HistoryFinder.html#instance-method-findByOrganizationAndType",
+    "src/schedule/HistoryFinder.js~HistoryFinder#findByOrganizationAndType",
+    "method"
+  ],
+  [
+    "src/schedule/historyfinder.js~historyfinder#withlimit",
+    "class/src/schedule/HistoryFinder.js~HistoryFinder.html#instance-method-withLimit",
+    "src/schedule/HistoryFinder.js~HistoryFinder#withLimit",
+    "method"
+  ],
+  [
+    "src/schedule/historyfinder.js~historyfinder#withschedulerid",
+    "class/src/schedule/HistoryFinder.js~HistoryFinder.html#instance-method-withSchedulerId",
+    "src/schedule/HistoryFinder.js~HistoryFinder#withSchedulerId",
+    "method"
+  ],
+  [
+    "src/schedule/historyfinder.js~historyfinder#withschedulertype",
+    "class/src/schedule/HistoryFinder.js~HistoryFinder.html#instance-method-withSchedulerType",
+    "src/schedule/HistoryFinder.js~HistoryFinder#withSchedulerType",
+    "method"
+  ],
+  [
+    "src/schedule/imageexecution.js",
+    "file/src/schedule/ImageExecution.js.html",
+    "src/schedule/ImageExecution.js",
+    "file"
+  ],
+  [
+    "src/schedule/imageexecution.js~imageexecution#constructor",
+    "class/src/schedule/ImageExecution.js~ImageExecution.html#instance-constructor-constructor",
+    "src/schedule/ImageExecution.js~ImageExecution#constructor",
+    "method"
+  ],
+  [
+    "src/schedule/imageexecution.js~imageexecution#tojson",
+    "class/src/schedule/ImageExecution.js~ImageExecution.html#instance-method-toJson",
+    "src/schedule/ImageExecution.js~ImageExecution#toJson",
+    "method"
+  ],
+  [
+    "src/schedule/imageexecution.js~imageexecution#update",
+    "class/src/schedule/ImageExecution.js~ImageExecution.html#instance-method-update",
+    "src/schedule/ImageExecution.js~ImageExecution#update",
+    "method"
+  ],
+  [
+    "src/schedule/imageexecution.js~imageexecution#withenvfrom",
+    "class/src/schedule/ImageExecution.js~ImageExecution.html#instance-method-withEnvFrom",
+    "src/schedule/ImageExecution.js~ImageExecution#withEnvFrom",
+    "method"
+  ],
+  [
+    "src/schedule/imageexecution.js~imageexecution#withenvvars",
+    "class/src/schedule/ImageExecution.js~ImageExecution.html#instance-method-withEnvVars",
+    "src/schedule/ImageExecution.js~ImageExecution#withEnvVars",
+    "method"
+  ],
+  [
+    "src/schedule/imageexecution.js~imageexecution#withidentifier",
+    "class/src/schedule/ImageExecution.js~ImageExecution.html#instance-method-withIdentifier",
+    "src/schedule/ImageExecution.js~ImageExecution#withIdentifier",
+    "method"
+  ],
+  [
+    "src/schedule/imageexecution.js~imageexecution#withmaxtimetowaitcallback",
+    "class/src/schedule/ImageExecution.js~ImageExecution.html#instance-method-withMaxTimeToWaitCallback",
+    "src/schedule/ImageExecution.js~ImageExecution#withMaxTimeToWaitCallback",
+    "method"
+  ],
+  [
+    "src/schedule/imageexecution.js~imageexecution#withname",
+    "class/src/schedule/ImageExecution.js~ImageExecution.html#instance-method-withName",
+    "src/schedule/ImageExecution.js~ImageExecution#withName",
+    "method"
+  ],
+  [
+    "src/schedule/imageexecution.js~imageexecution#withorganization",
+    "class/src/schedule/ImageExecution.js~ImageExecution.html#instance-method-withOrganization",
+    "src/schedule/ImageExecution.js~ImageExecution#withOrganization",
+    "method"
+  ],
+  [
+    "src/schedule/imageexecution.js~imageexecution#withschedulecronexpression",
+    "class/src/schedule/ImageExecution.js~ImageExecution.html#instance-method-withScheduleCronExpression",
+    "src/schedule/ImageExecution.js~ImageExecution#withScheduleCronExpression",
+    "method"
+  ],
+  [
+    "src/schedule/imageexecution.js~imageexecution#withscheduleexecutenow",
+    "class/src/schedule/ImageExecution.js~ImageExecution.html#instance-method-withScheduleExecuteNow",
+    "src/schedule/ImageExecution.js~ImageExecution#withScheduleExecuteNow",
+    "method"
+  ],
+  [
+    "src/schedule/imageexecution.js~imageexecution#withschedulefrom",
+    "class/src/schedule/ImageExecution.js~ImageExecution.html#instance-method-withScheduleFrom",
+    "src/schedule/ImageExecution.js~ImageExecution#withScheduleFrom",
+    "method"
+  ],
+  [
+    "src/schedule/imageexecution.js~imageexecution#withscheduleminutesinterval",
+    "class/src/schedule/ImageExecution.js~ImageExecution.html#instance-method-withScheduleMinutesInterval",
+    "src/schedule/ImageExecution.js~ImageExecution#withScheduleMinutesInterval",
+    "method"
+  ],
+  [
+    "src/schedule/imageexecution.js~imageexecution#withscheduleto",
+    "class/src/schedule/ImageExecution.js~ImageExecution.html#instance-method-withScheduleTo",
+    "src/schedule/ImageExecution.js~ImageExecution#withScheduleTo",
+    "method"
+  ],
+  [
+    "src/schedule/imageexecution.js~imageexecution#withtag",
+    "class/src/schedule/ImageExecution.js~ImageExecution.html#instance-method-withTag",
+    "src/schedule/ImageExecution.js~ImageExecution#withTag",
+    "method"
+  ],
+  [
+    "src/schedule/imageexecution.js~imageexecution#withtimeout",
+    "class/src/schedule/ImageExecution.js~ImageExecution.html#instance-method-withTimeout",
+    "src/schedule/ImageExecution.js~ImageExecution#withTimeout",
+    "method"
+  ],
+  [
+    "src/schedule/imageexecutionfinder.js",
+    "file/src/schedule/ImageExecutionFinder.js.html",
+    "src/schedule/ImageExecutionFinder.js",
+    "file"
+  ],
+  [
+    "src/schedule/imageexecutionfinder.js~imageexecutionfinder#constructor",
+    "class/src/schedule/ImageExecutionFinder.js~ImageExecutionFinder.html#instance-constructor-constructor",
+    "src/schedule/ImageExecutionFinder.js~ImageExecutionFinder#constructor",
+    "method"
+  ],
+  [
+    "src/schedule/imageexecutionfinder.js~imageexecutionfinder#findbyorganization",
+    "class/src/schedule/ImageExecutionFinder.js~ImageExecutionFinder.html#instance-method-findByOrganization",
+    "src/schedule/ImageExecutionFinder.js~ImageExecutionFinder#findByOrganization",
+    "method"
+  ],
+  [
+    "src/schedule/pipeline.js",
+    "file/src/schedule/Pipeline.js.html",
+    "src/schedule/Pipeline.js",
+    "file"
+  ],
+  [
+    "src/schedule/pipeline.js~pipeline#addimageexecution",
+    "class/src/schedule/Pipeline.js~Pipeline.html#instance-method-addImageExecution",
+    "src/schedule/Pipeline.js~Pipeline#addImageExecution",
+    "method"
+  ],
+  [
+    "src/schedule/pipeline.js~pipeline#addrestresquest",
+    "class/src/schedule/Pipeline.js~Pipeline.html#instance-method-addRestResquest",
+    "src/schedule/Pipeline.js~Pipeline#addRestResquest",
+    "method"
+  ],
+  [
+    "src/schedule/pipeline.js~pipeline#constructor",
+    "class/src/schedule/Pipeline.js~Pipeline.html#instance-constructor-constructor",
+    "src/schedule/Pipeline.js~Pipeline#constructor",
+    "method"
+  ],
+  [
+    "src/schedule/pipeline.js~pipeline#tojson",
+    "class/src/schedule/Pipeline.js~Pipeline.html#instance-method-toJson",
+    "src/schedule/Pipeline.js~Pipeline#toJson",
+    "method"
+  ],
+  [
+    "src/schedule/pipeline.js~pipeline#update",
+    "class/src/schedule/Pipeline.js~Pipeline.html#instance-method-update",
+    "src/schedule/Pipeline.js~Pipeline#update",
+    "method"
+  ],
+  [
+    "src/schedule/pipeline.js~pipeline#withidentifier",
+    "class/src/schedule/Pipeline.js~Pipeline.html#instance-method-withIdentifier",
+    "src/schedule/Pipeline.js~Pipeline#withIdentifier",
+    "method"
+  ],
+  [
+    "src/schedule/pipeline.js~pipeline#withorganization",
+    "class/src/schedule/Pipeline.js~Pipeline.html#instance-method-withOrganization",
+    "src/schedule/Pipeline.js~Pipeline#withOrganization",
+    "method"
+  ],
+  [
+    "src/schedule/pipeline.js~pipeline#withschedulecronexpression",
+    "class/src/schedule/Pipeline.js~Pipeline.html#instance-method-withScheduleCronExpression",
+    "src/schedule/Pipeline.js~Pipeline#withScheduleCronExpression",
+    "method"
+  ],
+  [
+    "src/schedule/pipeline.js~pipeline#withscheduleexecutenow",
+    "class/src/schedule/Pipeline.js~Pipeline.html#instance-method-withScheduleExecuteNow",
+    "src/schedule/Pipeline.js~Pipeline#withScheduleExecuteNow",
+    "method"
+  ],
+  [
+    "src/schedule/pipeline.js~pipeline#withschedulefrom",
+    "class/src/schedule/Pipeline.js~Pipeline.html#instance-method-withScheduleFrom",
+    "src/schedule/Pipeline.js~Pipeline#withScheduleFrom",
+    "method"
+  ],
+  [
+    "src/schedule/pipeline.js~pipeline#withscheduleminutesinterval",
+    "class/src/schedule/Pipeline.js~Pipeline.html#instance-method-withScheduleMinutesInterval",
+    "src/schedule/Pipeline.js~Pipeline#withScheduleMinutesInterval",
+    "method"
+  ],
+  [
+    "src/schedule/pipeline.js~pipeline#withscheduleto",
+    "class/src/schedule/Pipeline.js~Pipeline.html#instance-method-withScheduleTo",
+    "src/schedule/Pipeline.js~Pipeline#withScheduleTo",
+    "method"
+  ],
+  [
+    "src/schedule/pipelinefinder.js",
+    "file/src/schedule/PipelineFinder.js.html",
+    "src/schedule/PipelineFinder.js",
+    "file"
+  ],
+  [
+    "src/schedule/pipelinefinder.js~pipelinefinder#constructor",
+    "class/src/schedule/PipelineFinder.js~PipelineFinder.html#instance-constructor-constructor",
+    "src/schedule/PipelineFinder.js~PipelineFinder#constructor",
+    "method"
+  ],
+  [
+    "src/schedule/pipelinefinder.js~pipelinefinder#findbyorganization",
+    "class/src/schedule/PipelineFinder.js~PipelineFinder.html#instance-method-findByOrganization",
+    "src/schedule/PipelineFinder.js~PipelineFinder#findByOrganization",
+    "method"
+  ],
+  [
+    "src/schedule/restrequest.js",
+    "file/src/schedule/RestRequest.js.html",
+    "src/schedule/RestRequest.js",
+    "file"
+  ],
+  [
+    "src/schedule/restrequest.js~restrequest#constructor",
+    "class/src/schedule/RestRequest.js~RestRequest.html#instance-constructor-constructor",
+    "src/schedule/RestRequest.js~RestRequest#constructor",
+    "method"
+  ],
+  [
+    "src/schedule/restrequest.js~restrequest#tojson",
+    "class/src/schedule/RestRequest.js~RestRequest.html#instance-method-toJson",
+    "src/schedule/RestRequest.js~RestRequest#toJson",
+    "method"
+  ],
+  [
+    "src/schedule/restrequest.js~restrequest#update",
+    "class/src/schedule/RestRequest.js~RestRequest.html#instance-method-update",
+    "src/schedule/RestRequest.js~RestRequest#update",
+    "method"
+  ],
+  [
+    "src/schedule/restrequest.js~restrequest#withasyncresponsemaxtimetowaitcallback",
+    "class/src/schedule/RestRequest.js~RestRequest.html#instance-method-withAsyncResponseMaxTimeToWaitCallback",
+    "src/schedule/RestRequest.js~RestRequest#withAsyncResponseMaxTimeToWaitCallback",
+    "method"
+  ],
+  [
+    "src/schedule/restrequest.js~restrequest#withbody",
+    "class/src/schedule/RestRequest.js~RestRequest.html#instance-method-withBody",
+    "src/schedule/RestRequest.js~RestRequest#withBody",
+    "method"
+  ],
+  [
+    "src/schedule/restrequest.js~restrequest#withheaders",
+    "class/src/schedule/RestRequest.js~RestRequest.html#instance-method-withHeaders",
+    "src/schedule/RestRequest.js~RestRequest#withHeaders",
+    "method"
+  ],
+  [
+    "src/schedule/restrequest.js~restrequest#withidentifier",
+    "class/src/schedule/RestRequest.js~RestRequest.html#instance-method-withIdentifier",
+    "src/schedule/RestRequest.js~RestRequest#withIdentifier",
+    "method"
+  ],
+  [
+    "src/schedule/restrequest.js~restrequest#withmethod",
+    "class/src/schedule/RestRequest.js~RestRequest.html#instance-method-withMethod",
+    "src/schedule/RestRequest.js~RestRequest#withMethod",
+    "method"
+  ],
+  [
+    "src/schedule/restrequest.js~restrequest#withorganization",
+    "class/src/schedule/RestRequest.js~RestRequest.html#instance-method-withOrganization",
+    "src/schedule/RestRequest.js~RestRequest#withOrganization",
+    "method"
+  ],
+  [
+    "src/schedule/restrequest.js~restrequest#withschedulecronexpression",
+    "class/src/schedule/RestRequest.js~RestRequest.html#instance-method-withScheduleCronExpression",
+    "src/schedule/RestRequest.js~RestRequest#withScheduleCronExpression",
+    "method"
+  ],
+  [
+    "src/schedule/restrequest.js~restrequest#withscheduleexecutenow",
+    "class/src/schedule/RestRequest.js~RestRequest.html#instance-method-withScheduleExecuteNow",
+    "src/schedule/RestRequest.js~RestRequest#withScheduleExecuteNow",
+    "method"
+  ],
+  [
+    "src/schedule/restrequest.js~restrequest#withschedulefrom",
+    "class/src/schedule/RestRequest.js~RestRequest.html#instance-method-withScheduleFrom",
+    "src/schedule/RestRequest.js~RestRequest#withScheduleFrom",
+    "method"
+  ],
+  [
+    "src/schedule/restrequest.js~restrequest#withscheduleminutesinterval",
+    "class/src/schedule/RestRequest.js~RestRequest.html#instance-method-withScheduleMinutesInterval",
+    "src/schedule/RestRequest.js~RestRequest#withScheduleMinutesInterval",
+    "method"
+  ],
+  [
+    "src/schedule/restrequest.js~restrequest#withscheduleto",
+    "class/src/schedule/RestRequest.js~RestRequest.html#instance-method-withScheduleTo",
+    "src/schedule/RestRequest.js~RestRequest#withScheduleTo",
+    "method"
+  ],
+  [
+    "src/schedule/restrequest.js~restrequest#withsyncresponsetimeout",
+    "class/src/schedule/RestRequest.js~RestRequest.html#instance-method-withSyncResponseTimeout",
+    "src/schedule/RestRequest.js~RestRequest#withSyncResponseTimeout",
+    "method"
+  ],
+  [
+    "src/schedule/restrequest.js~restrequest#withurl",
+    "class/src/schedule/RestRequest.js~RestRequest.html#instance-method-withUrl",
+    "src/schedule/RestRequest.js~RestRequest#withUrl",
+    "method"
+  ],
+  [
+    "src/schedule/restrequestfinder.js",
+    "file/src/schedule/RestRequestFinder.js.html",
+    "src/schedule/RestRequestFinder.js",
+    "file"
+  ],
+  [
+    "src/schedule/restrequestfinder.js~restrequestfinder#constructor",
+    "class/src/schedule/RestRequestFinder.js~RestRequestFinder.html#instance-constructor-constructor",
+    "src/schedule/RestRequestFinder.js~RestRequestFinder#constructor",
+    "method"
+  ],
+  [
+    "src/schedule/restrequestfinder.js~restrequestfinder#findbyorganization",
+    "class/src/schedule/RestRequestFinder.js~RestRequestFinder.html#instance-method-findByOrganization",
+    "src/schedule/RestRequestFinder.js~RestRequestFinder#findByOrganization",
+    "method"
+  ],
+  [
+    "src/schedule/schedulepipelinefinder.js",
+    "file/src/schedule/SchedulePipelineFinder.js.html",
+    "src/schedule/SchedulePipelineFinder.js",
+    "file"
+  ],
+  [
+    "src/schedule/schedulepipelinefinder.js~schedulehistoryfinder#constructor",
+    "class/src/schedule/SchedulePipelineFinder.js~ScheduleHistoryFinder.html#instance-constructor-constructor",
+    "src/schedule/SchedulePipelineFinder.js~ScheduleHistoryFinder#constructor",
+    "method"
+  ],
+  [
+    "src/schedule/schedulepipelinefinder.js~schedulehistoryfinder#findbyorganization",
+    "class/src/schedule/SchedulePipelineFinder.js~ScheduleHistoryFinder.html#instance-method-findByOrganization",
+    "src/schedule/SchedulePipelineFinder.js~ScheduleHistoryFinder#findByOrganization",
+    "method"
+  ],
+  [
+    "src/schedule/schedulepipelinefinder.js~schedulehistoryfinder#findbyorganizationandtype",
+    "class/src/schedule/SchedulePipelineFinder.js~ScheduleHistoryFinder.html#instance-method-findByOrganizationAndType",
+    "src/schedule/SchedulePipelineFinder.js~ScheduleHistoryFinder#findByOrganizationAndType",
+    "method"
   ],
   [
     "src/searching/assetsearch.js",
@@ -10674,12 +11304,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/searching/builder/timeseriedatasetbuilder.js~timeseriedatasetbuilder#findallfields",
-    "class/src/searching/builder/TimeserieDatasetBuilder.js~TimeserieDatasetBuilder.html#instance-method-findAllFields",
-    "src/searching/builder/TimeserieDatasetBuilder.js~TimeserieDatasetBuilder#findAllFields",
-    "method"
-  ],
-  [
     "src/searching/builder/timeseriedatasetbuilder.js~timeseriedatasetbuilder#group",
     "class/src/searching/builder/TimeserieDatasetBuilder.js~TimeserieDatasetBuilder.html#instance-method-group",
     "src/searching/builder/TimeserieDatasetBuilder.js~TimeserieDatasetBuilder#group",
@@ -11292,90 +11916,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/transformers/transformerfinder.js",
-    "file/src/transformers/TransformerFinder.js.html",
-    "src/transformers/TransformerFinder.js",
-    "file"
-  ],
-  [
-    "src/transformers/transformerfinder.js~transformerfinder#constructor",
-    "class/src/transformers/TransformerFinder.js~TransformerFinder.html#instance-constructor-constructor",
-    "src/transformers/TransformerFinder.js~TransformerFinder#constructor",
-    "method"
-  ],
-  [
-    "src/transformers/transformerfinder.js~transformerfinder#downloadbyorganizationandidentifierandfilename",
-    "class/src/transformers/TransformerFinder.js~TransformerFinder.html#instance-method-downloadByOrganizationAndIdentifierAndFilename",
-    "src/transformers/TransformerFinder.js~TransformerFinder#downloadByOrganizationAndIdentifierAndFilename",
-    "method"
-  ],
-  [
-    "src/transformers/transformerfinder.js~transformerfinder#findbyorganization",
-    "class/src/transformers/TransformerFinder.js~TransformerFinder.html#instance-method-findByOrganization",
-    "src/transformers/TransformerFinder.js~TransformerFinder#findByOrganization",
-    "method"
-  ],
-  [
-    "src/transformers/transformerfinder.js~transformerfinder#findbyorganizationandidentifier",
-    "class/src/transformers/TransformerFinder.js~TransformerFinder.html#instance-method-findByOrganizationAndIdentifier",
-    "src/transformers/TransformerFinder.js~TransformerFinder#findByOrganizationAndIdentifier",
-    "method"
-  ],
-  [
-    "src/transformers/transformers.js",
-    "file/src/transformers/Transformers.js.html",
-    "src/transformers/Transformers.js",
-    "file"
-  ],
-  [
-    "src/transformers/transformers.js~transformers#addfile",
-    "class/src/transformers/Transformers.js~Transformers.html#instance-method-addFile",
-    "src/transformers/Transformers.js~Transformers#addFile",
-    "method"
-  ],
-  [
-    "src/transformers/transformers.js~transformers#constructor",
-    "class/src/transformers/Transformers.js~Transformers.html#instance-constructor-constructor",
-    "src/transformers/Transformers.js~Transformers#constructor",
-    "method"
-  ],
-  [
-    "src/transformers/transformers.js~transformers#create",
-    "class/src/transformers/Transformers.js~Transformers.html#instance-method-create",
-    "src/transformers/Transformers.js~Transformers#create",
-    "method"
-  ],
-  [
-    "src/transformers/transformers.js~transformers#performtest",
-    "class/src/transformers/Transformers.js~Transformers.html#instance-method-performTest",
-    "src/transformers/Transformers.js~Transformers#performTest",
-    "method"
-  ],
-  [
-    "src/transformers/transformers.js~transformers#update",
-    "class/src/transformers/Transformers.js~Transformers.html#instance-method-update",
-    "src/transformers/Transformers.js~Transformers#update",
-    "method"
-  ],
-  [
-    "src/transformers/transformers.js~transformers#withfiles",
-    "class/src/transformers/Transformers.js~Transformers.html#instance-method-withFiles",
-    "src/transformers/Transformers.js~Transformers#withFiles",
-    "method"
-  ],
-  [
-    "src/transformers/transformers.js~transformers#withidentifier",
-    "class/src/transformers/Transformers.js~Transformers.html#instance-method-withIdentifier",
-    "src/transformers/Transformers.js~Transformers#withIdentifier",
-    "method"
-  ],
-  [
-    "src/transformers/transformers.js~transformers#withorganization",
-    "class/src/transformers/Transformers.js~Transformers.html#instance-method-withOrganization",
-    "src/transformers/Transformers.js~Transformers#withOrganization",
-    "method"
-  ],
-  [
     "src/users/userfinder.js",
     "file/src/users/UserFinder.js.html",
     "src/users/UserFinder.js",
@@ -11692,36 +12232,6 @@ window.esdocSearchIndex = [
     "file/src/util/formats/check_types.js.html",
     "src/util/formats/check_types.js",
     "file"
-  ],
-  [
-    "src/util/searchingfields/fieldfinder.js",
-    "file/src/util/searchingFields/FieldFinder.js.html",
-    "src/util/searchingFields/FieldFinder.js",
-    "file"
-  ],
-  [
-    "src/util/searchingfields/fieldfinder.js~fieldfinder#constructor",
-    "class/src/util/searchingFields/FieldFinder.js~FieldFinder.html#instance-constructor-constructor",
-    "src/util/searchingFields/FieldFinder.js~FieldFinder#constructor",
-    "method"
-  ],
-  [
-    "src/util/searchingfields/fieldfinder.js~fieldfinder#find",
-    "class/src/util/searchingFields/FieldFinder.js~FieldFinder.html#instance-method-find",
-    "src/util/searchingFields/FieldFinder.js~FieldFinder#find",
-    "method"
-  ],
-  [
-    "src/util/searchingfields/fieldfinder.js~fieldfinder#findall",
-    "class/src/util/searchingFields/FieldFinder.js~FieldFinder.html#instance-method-findAll",
-    "src/util/searchingFields/FieldFinder.js~FieldFinder#findAll",
-    "method"
-  ],
-  [
-    "src/util/searchingfields/fieldfinder.js~fieldfinder#findfieldpath",
-    "class/src/util/searchingFields/FieldFinder.js~FieldFinder.html#instance-method-findFieldPath",
-    "src/util/searchingFields/FieldFinder.js~FieldFinder#findFieldPath",
-    "method"
   ],
   [
     "src/util/searchingfields/iotfields.js",

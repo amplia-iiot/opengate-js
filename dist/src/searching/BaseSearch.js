@@ -23,6 +23,7 @@ var LIMIT_SIZE_DEF_VALUE = 1000;
 
 var BaseSearch = (function () {
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!string} resource - this is a base url resource
      * @param {!number} [timeout] - timeout on request

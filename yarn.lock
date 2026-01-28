@@ -61,10 +61,20 @@
   dependencies:
     "@babel/types" "^7.11.0"
 
+"@babel/helper-string-parser@^7.27.1":
+  version "7.27.1"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/@babel/helper-string-parser/-/helper-string-parser-7.27.1.tgz#54da796097ab19ce67ed9f88b47bb2ec49367687"
+  integrity sha512-qMlSxKbpRlAridDExk92nSobyDdpPijUq2DW6oDnUqd0iOGxmQjyqhMIihI9+zv4LPyZdRje2cavWPbCbWm3eA==
+
 "@babel/helper-validator-identifier@^7.10.4", "@babel/helper-validator-identifier@^7.22.20":
   version "7.22.20"
   resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/@babel/helper-validator-identifier/-/helper-validator-identifier-7.22.20.tgz#c4ae002c61d2879e724581d96665583dbc1dc0e0"
   integrity sha512-Y4OZ+ytlatR8AI+8KZfKuL5urKp7qey08ha31L8b3BwewJAoJamTzyvxPR/5D+KkdJCGPq/+8TukHBlY10FX9A==
+
+"@babel/helper-validator-identifier@^7.28.5":
+  version "7.28.5"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/@babel/helper-validator-identifier/-/helper-validator-identifier-7.28.5.tgz#010b6938fab7cb7df74aa2bbc06aa503b8fe5fb4"
+  integrity sha512-qSs4ifwzKJSV39ucNjsvc6WVHs6b7S03sOh2OcHF9UHfVPqWWALUsNUVzhSBiItjRZoLHx7nIarVjqKVusUZ1Q==
 
 "@babel/highlight@^7.10.4", "@babel/highlight@^7.22.13":
   version "7.22.20"
@@ -79,6 +89,13 @@
   version "7.11.5"
   resolved "https://registry.npmjs.org/@babel/parser/-/parser-7.11.5.tgz"
   integrity sha512-X9rD8qqm695vgmeaQ4fvz/o3+Wk4ZzQvSHkDBgpYKxpD4qTAUm88ZKtHkVqIOsYFFbIQ6wQYhC6q7pjqVK0E0Q==
+
+"@babel/parser@^7.20.15":
+  version "7.28.5"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/@babel/parser/-/parser-7.28.5.tgz#0b0225ee90362f030efd644e8034c99468893b08"
+  integrity sha512-KKBU1VGYR7ORr3At5HAtUQ+TV3SzRCXmA/8OdDZiLDBIZxVyzXuztPjfLd3BV1PRAQGCMWWSHYhL0F8d5uHBDQ==
+  dependencies:
+    "@babel/types" "^7.28.5"
 
 "@babel/template@^7.10.4":
   version "7.10.4"
@@ -112,6 +129,14 @@
     "@babel/helper-validator-identifier" "^7.10.4"
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
+
+"@babel/types@^7.28.5":
+  version "7.28.5"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/@babel/types/-/types-7.28.5.tgz#10fc405f60897c35f07e85493c932c7b5ca0592b"
+  integrity sha512-qQ5m48eI/MFLQ5PxQj4PFaprjyCTLI37ElWMmNs0K8Lk3dVeOdNpB3ks8jc7yM5CDmVC73eMVk/trk3fgmrUpA==
+  dependencies:
+    "@babel/helper-string-parser" "^7.27.1"
+    "@babel/helper-validator-identifier" "^7.28.5"
 
 "@eslint/eslintrc@^0.4.3":
   version "0.4.3"
@@ -190,6 +215,34 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@jsdoc/salty@^0.2.1":
+  version "0.2.9"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/@jsdoc/salty/-/salty-0.2.9.tgz#4d8c147f7ca011532681ce86352a77a0178f1dec"
+  integrity sha512-yYxMVH7Dqw6nO0d5NIV8OQWnitU8k6vXH8NtgqAfIa/IUqRMxRv/NUJJ08VEKbAakwxlgBl5PJdrU0dMPStsnw==
+  dependencies:
+    lodash "^4.17.21"
+
+"@nodelib/fs.scandir@2.1.5":
+  version "2.1.5"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
+  integrity sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==
+  dependencies:
+    "@nodelib/fs.stat" "2.0.5"
+    run-parallel "^1.1.9"
+
+"@nodelib/fs.stat@2.0.5", "@nodelib/fs.stat@^2.0.2":
+  version "2.0.5"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/@nodelib/fs.stat/-/fs.stat-2.0.5.tgz#5bd262af94e9d25bd1e71b05deed44876a222e8b"
+  integrity sha512-RkhPPp2zrqDAQA/2jNhnztcPAlv64XdhIp7a7454A5ovI7Bukxgt7MX7udwAu3zg1DcpPU0rz3VV1SeaqvY4+A==
+
+"@nodelib/fs.walk@^1.2.3":
+  version "1.2.8"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/@nodelib/fs.walk/-/fs.walk-1.2.8.tgz#e95737e8bb6746ddedf69c556953494f196fe69a"
+  integrity sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==
+  dependencies:
+    "@nodelib/fs.scandir" "2.1.5"
+    fastq "^1.6.0"
+
 "@tootallnate/once@1":
   version "1.1.2"
   resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/@tootallnate/once/-/once-1.1.2.tgz#ccb91445360179a04e7fe6aff78c00ffc1eeaf82"
@@ -199,6 +252,24 @@
   version "1.1.2"
   resolved "https://registry.npmjs.org/@types/color-name/-/color-name-1.1.2.tgz#bdeeb6fdcb78969033767951ab0cb26c7514a658"
   integrity sha512-JWO/ZyxTKk0bLuOhAavGjnwLR73rUE7qzACnU7gMeyA/gdrSHm2xJwqNPipw2MtaZUaqQ2UG/q7pP6AQiZ8mqw==
+
+"@types/linkify-it@^5":
+  version "5.0.0"
+  resolved "https://registry.npmjs.org/@types/linkify-it/-/linkify-it-5.0.0.tgz#21413001973106cda1c3a9b91eedd4ccd5469d76"
+  integrity sha512-sVDA58zAw4eWAffKOaQH5/5j3XeayukzDk+ewSsnv3p4yJEZHCCzMDiZM8e0OUrRvmpGZ85jf4yDHkHsgBNr9Q==
+
+"@types/markdown-it@^14.1.1":
+  version "14.1.2"
+  resolved "https://registry.npmjs.org/@types/markdown-it/-/markdown-it-14.1.2.tgz#57f2532a0800067d9b934f3521429a2e8bfb4c61"
+  integrity sha512-promo4eFwuiW+TfGxhi+0x3czqTYJkG8qB17ZUJiVF10Xm7NLVRSLUsfRTU/6h1e24VvRnXCx+hG7li58lkzog==
+  dependencies:
+    "@types/linkify-it" "^5"
+    "@types/mdurl" "^2"
+
+"@types/mdurl@^2":
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/@types/mdurl/-/mdurl-2.0.0.tgz#d43878b5b20222682163ae6f897b20447233bdfd"
+  integrity sha512-RGdgjQUZba5p6QEFAVx2OGb8rQDL/cPRG7GiedRzMcJ1tYnUANBncjbSB1NRGwbvjcPeikRABz2nshyPk1bhWg==
 
 Base64@~0.2.0:
   version "0.2.1"
@@ -468,6 +539,11 @@ argparse@^1.0.7:
   dependencies:
     sprintf-js "~1.0.2"
 
+argparse@^2.0.1:
+  version "2.0.1"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/argparse/-/argparse-2.0.1.tgz#246f50f3ca78a3240f6c997e8a9bd1eac49e4b38"
+  integrity sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==
+
 arr-diff@^1.0.1:
   version "1.1.0"
   resolved "https://registry.npmjs.org/arr-diff/-/arr-diff-1.1.0.tgz"
@@ -509,6 +585,11 @@ arr-union@^3.1.0:
   version "3.1.0"
   resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/arr-union/-/arr-union-3.1.0.tgz#e39b09aea9def866a8f206e288af63919bae39c4"
   integrity sha512-sKpyeERZ02v1FeCZT8lrfJq5u6goHCtpTAzPwJYe7c8SPFOboNjNg1vz2L4VTn9T4PQxEx13TbXLmYUcS6Ug7Q==
+
+array-back@^6.2.2:
+  version "6.2.2"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/array-back/-/array-back-6.2.2.tgz#f567d99e9af88a6d3d2f9dfcc21db6f9ba9fd157"
+  integrity sha512-gUAZ7HPyb4SJczXAMUXMGAvI976JoK3qEx9v1FTmeYuJj0IBiaKttG1ydtGKdkfqWkIkouke7nG8ufGy77+Cvw==
 
 array-differ@^1.0.0:
   version "1.0.0"
@@ -1066,7 +1147,7 @@ bluebird@^2.9.33:
   resolved "https://registry.npmjs.org/bluebird/-/bluebird-2.11.0.tgz"
   integrity sha1-U0uQM8AiyVecVro7Plpcqvu2UOE=
 
-bluebird@^3.4.1:
+bluebird@^3.4.1, bluebird@^3.7.2:
   version "3.7.2"
   resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/bluebird/-/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
   integrity sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==
@@ -1099,6 +1180,13 @@ braces@^2.3.1, braces@^2.3.2:
     snapdragon-node "^2.0.1"
     split-string "^3.0.2"
     to-regex "^3.0.1"
+
+braces@^3.0.3:
+  version "3.0.3"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/braces/-/braces-3.0.3.tgz#490332f40919452272d55a8480adc0c441358789"
+  integrity sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==
+  dependencies:
+    fill-range "^7.1.1"
 
 breakable@~1.0.0:
   version "1.0.0"
@@ -1244,6 +1332,13 @@ cache-base@^1.0.1:
     union-value "^1.0.0"
     unset-value "^1.0.0"
 
+cache-point@^3.0.0, cache-point@^3.0.1:
+  version "3.0.1"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/cache-point/-/cache-point-3.0.1.tgz#4a1997794695be780e1d080235aa7a289161f181"
+  integrity sha512-itTIMLEKbh6Dw5DruXbxAgcyLnh/oPGVLBfTPqBOftASxHe8bAeXy7JkO4F0LvHqht7XqP5O/09h5UcHS2w0FA==
+  dependencies:
+    array-back "^6.2.2"
+
 callsite@~1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/callsite/-/callsite-1.0.0.tgz"
@@ -1287,6 +1382,13 @@ caseless@~0.12.0:
   resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
   integrity sha512-4tYFyifaFfGacoiObjJegolkwSU4xQNGbVgUiNYVUxbQ2x2lUsFvY4hVgVzGiIe6WLOPqycWXA40l+PWsxthUw==
 
+catharsis@^0.9.0:
+  version "0.9.0"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/catharsis/-/catharsis-0.9.0.tgz#40382a168be0e6da308c277d3a2b3eb40c7d2121"
+  integrity sha512-prMTQVpcns/tzFgFVkVp6ak6RykZyWb3gu8ckUpd6YkTlacOd3DXGJjIpD4Q6zJirizvaiAjSSHlOsA+6sNh2A==
+  dependencies:
+    lodash "^4.17.15"
+
 center-align@^0.1.1:
   version "0.1.3"
   resolved "https://registry.npmjs.org/center-align/-/center-align-0.1.3.tgz"
@@ -1308,6 +1410,13 @@ chai@^3.5.0:
     assertion-error "^1.0.1"
     deep-eql "^0.1.3"
     type-detect "^1.0.0"
+
+chalk-template@^0.4.0:
+  version "0.4.0"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/chalk-template/-/chalk-template-0.4.0.tgz#692c034d0ed62436b9062c1707fadcd0f753204b"
+  integrity sha512-/ghrgmhfY8RaSdeo43hNXxpoHAtxdbskUHjPpfqUWGttFgycUhYPGx3YZBCnUCvOa7Doivn1IZec3DEGFoMgLg==
+  dependencies:
+    chalk "^4.1.2"
 
 chalk@^0.5.0:
   version "0.5.1"
@@ -1348,7 +1457,7 @@ chalk@^3.0.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-chalk@^4.0.0:
+chalk@^4.0.0, chalk@^4.1.2:
   version "4.1.2"
   resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/chalk/-/chalk-4.1.2.tgz#aac4e2b7734a740867aeb16bf02aad556a1e7a01"
   integrity sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==
@@ -1580,6 +1689,26 @@ combined-stream@^1.0.6, combined-stream@^1.0.8, combined-stream@~1.0.6:
   dependencies:
     delayed-stream "~1.0.0"
 
+command-line-args@^6.0.1:
+  version "6.0.1"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/command-line-args/-/command-line-args-6.0.1.tgz#cbd1efb4f72b285dbd54bde9a8585c2d9694b070"
+  integrity sha512-Jr3eByUjqyK0qd8W0SGFW1nZwqCaNCtbXjRo2cRJC1OYxWl3MZ5t1US3jq+cO4sPavqgw4l9BMGX0CBe+trepg==
+  dependencies:
+    array-back "^6.2.2"
+    find-replace "^5.0.2"
+    lodash.camelcase "^4.3.0"
+    typical "^7.2.0"
+
+command-line-usage@^7.0.3:
+  version "7.0.3"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/command-line-usage/-/command-line-usage-7.0.3.tgz#6bce992354f6af10ecea2b631bfdf0c8b3bfaea3"
+  integrity sha512-PqMLy5+YGwhMh1wS04mVG44oqDsgyLRSKJBdOo1bnYhMKBW65gZF1dRp2OZRhiTjgUHljy99qkO7bsctLaw35Q==
+  dependencies:
+    array-back "^6.2.2"
+    chalk-template "^0.4.0"
+    table-layout "^4.1.0"
+    typical "^7.1.1"
+
 commander@^2.20.0, commander@^2.9.0:
   version "2.20.3"
   resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
@@ -1589,6 +1718,11 @@ commander@^2.5.0:
   version "2.15.1"
   resolved "https://registry.npmjs.org/commander/-/commander-2.15.1.tgz"
   integrity sha1-30boZ9D8Kuxmo0ZitAapzK//Ww8=
+
+common-sequence@^3.0.0:
+  version "3.0.0"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/common-sequence/-/common-sequence-3.0.0.tgz#d631cf0306fb2dea97e1d6669a1627950803fca1"
+  integrity sha512-g/CgSYk93y+a1IKm50tKl7kaT/OjjTYVQlEbUlt/49ZLV1mcKpUU7iyDiqTAeLdb4QDtQfq3ako8y8v//fzrWQ==
 
 commondir@0.0.1:
   version "0.0.1"
@@ -1638,6 +1772,13 @@ concat-stream@~1.4.1, concat-stream@~1.4.5:
     inherits "~2.0.1"
     readable-stream "~1.1.9"
     typedarray "~0.0.5"
+
+config-master@^3.1.0:
+  version "3.1.0"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/config-master/-/config-master-3.1.0.tgz#667663590505a283bf26a484d68489d74c5485da"
+  integrity sha512-n7LBL1zBzYdTpF1mx5DNcZnZn05CWIdsdvtPL4MosvqbBUK3Rq6VWEtGUuF3Y0s9/CIhMejezqlSkP6TnCJ/9g==
+  dependencies:
+    walk-back "^2.0.1"
 
 console-browserify@~1.0.1:
   version "1.0.3"
@@ -1808,6 +1949,11 @@ cucumber@^3.0.0:
     title-case "^2.1.1"
     util-arity "^1.0.2"
     verror "^1.9.0"
+
+current-module-paths@^1.1.2:
+  version "1.1.3"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/current-module-paths/-/current-module-paths-1.1.3.tgz#b106039be7d7e0c59b79e2a2d45c9773850de0ac"
+  integrity sha512-7AH+ZTRKikdK4s1RmY0l6067UD/NZc7p3zZVZxvmnH80G31kr0y0W0E6ibYM4IS01MEm8DiC5FnTcgcgkbFHoA==
 
 currently-unhandled@^0.4.1:
   version "0.4.1"
@@ -2059,6 +2205,19 @@ diff@^3.0.0:
   resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/diff/-/diff-3.5.0.tgz#800c0dd1e0a8bfbc95835c202ad220fe317e5a12"
   integrity sha512-A46qtFgd+g7pDZinpnwiRJtxbC1hpgf0uzP3iG89scHk0AUC7A1TGxf5OiiOUv/JMZR8GOt8hL900hV0bOy5xA==
 
+dmd@^7.1.1:
+  version "7.1.1"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/dmd/-/dmd-7.1.1.tgz#acf791a47aec88c0a80873695bb2c1cc67a04ffe"
+  integrity sha512-Ap2HP6iuOek7eShReDLr9jluNJm9RMZESlt29H/Xs1qrVMkcS9X6m5h1mBC56WMxNiSo0wvjGICmZlYUSFjwZQ==
+  dependencies:
+    array-back "^6.2.2"
+    cache-point "^3.0.0"
+    common-sequence "^3.0.0"
+    file-set "^5.2.2"
+    handlebars "^4.7.8"
+    marked "^4.3.0"
+    walk-back "^5.1.1"
+
 doctrine@^3.0.0:
   version "3.0.0"
   resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/doctrine/-/doctrine-3.0.0.tgz#addebead72a6574db783639dc87a121773973961"
@@ -2194,6 +2353,11 @@ entities@^1.1.1, entities@~1.1.1:
   resolved "https://registry.npmjs.org/entities/-/entities-1.1.2.tgz"
   integrity sha512-f2LZMYl1Fzu7YSBKg+RoROelpOaNrcGmE9AZubeDfrCEia483oW4MI4VyFd5VNHIgQ/7qm1I0wUHK1eJnn2y2w==
 
+entities@^4.4.0:
+  version "4.5.0"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/entities/-/entities-4.5.0.tgz#5d268ea5e7113ec74c4d033b79ea5a35a488fb48"
+  integrity sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==
+
 error-ex@^1.2.0:
   version "1.3.1"
   resolved "https://registry.npmjs.org/error-ex/-/error-ex-1.3.1.tgz"
@@ -2262,6 +2426,11 @@ escape-string-regexp@^1.0.0, escape-string-regexp@^1.0.2, escape-string-regexp@^
   version "1.0.5"
   resolved "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
+
+escape-string-regexp@^2.0.0:
+  version "2.0.0"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/escape-string-regexp/-/escape-string-regexp-2.0.0.tgz#a30304e99daa32e23b2fd20f51babd07cffca344"
+  integrity sha512-UpzcLCXolUWcNu5HtVMHYdXJjArjsF9C0aNnquZYY4uW/Vu0miy5YoWvbV345HauVvcAUnpRuhMMcqTcGOY2+w==
 
 escape-string-regexp@^4.0.0:
   version "4.0.0"
@@ -2616,6 +2785,17 @@ fast-deep-equal@^3.1.1, fast-deep-equal@^3.1.3:
   resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz#3a7d56b559d6cbc3eb512325244e619a65c6c525"
   integrity sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==
 
+fast-glob@^3.3.2:
+  version "3.3.3"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/fast-glob/-/fast-glob-3.3.3.tgz#d06d585ce8dba90a16b0505c543c3ccfb3aeb818"
+  integrity sha512-7MptL8U0cqcFdzIzwOTHoilX9x5BrNqye7Z/LuC7kCMRio1EMSyqRK3BEAUD7sXRq4iT4AzTVuZdhgQ2TCvYLg==
+  dependencies:
+    "@nodelib/fs.stat" "^2.0.2"
+    "@nodelib/fs.walk" "^1.2.3"
+    glob-parent "^5.1.2"
+    merge2 "^1.3.0"
+    micromatch "^4.0.8"
+
 fast-json-stable-stringify@^2.0.0:
   version "2.1.0"
   resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz#874bf69c6f404c2b5d99c481341399fd55892633"
@@ -2631,6 +2811,13 @@ fast-levenshtein@^2.0.6, fast-levenshtein@~2.0.6:
   resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==
 
+fastq@^1.6.0:
+  version "1.19.1"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/fastq/-/fastq-1.19.1.tgz#d50eaba803c8846a883c16492821ebcd2cda55f5"
+  integrity sha512-GwLTyxkCXjXbxqIhTsMI2Nui8huMPtnxg7krajPJAjnEG/iiOS7i+zCtWGZR9G0NBKbXKh6X9m9UIsYX/N6vvQ==
+  dependencies:
+    reusify "^1.0.4"
+
 figures@2.0.0:
   version "2.0.0"
   resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/figures/-/figures-2.0.0.tgz#3ab1a2d2a62c8bfb431a0c94cb797a2fce27c962"
@@ -2644,6 +2831,14 @@ file-entry-cache@^6.0.1:
   integrity sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==
   dependencies:
     flat-cache "^3.0.4"
+
+file-set@^5.2.2, file-set@^5.3.0:
+  version "5.3.0"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/file-set/-/file-set-5.3.0.tgz#f8ab3a930bd0912cc6fe372581c3aac71682ebfb"
+  integrity sha512-FKCxdjLX0J6zqTWdT0RXIxNF/n7MyXXnsSUp0syLEOCKdexvPZ02lNNv2a+gpK9E3hzUYF3+eFZe32ci7goNUg==
+  dependencies:
+    array-back "^6.2.2"
+    fast-glob "^3.3.2"
 
 file-uri-to-path@1.0.0:
   version "1.0.0"
@@ -2659,6 +2854,18 @@ fill-range@^4.0.0:
     is-number "^3.0.0"
     repeat-string "^1.6.1"
     to-regex-range "^2.1.0"
+
+fill-range@^7.1.1:
+  version "7.1.1"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/fill-range/-/fill-range-7.1.1.tgz#44265d3cac07e3ea7dc247516380643754a05292"
+  integrity sha512-YsGpe3WHLK8ZYi4tWDg2Jy3ebRz2rXowDxnld4bkQB00cc/1Zw9AWnC0i9ztDJitivtQvaI9KaLyKrc+hBW0yg==
+  dependencies:
+    to-regex-range "^5.0.1"
+
+find-replace@^5.0.1, find-replace@^5.0.2:
+  version "5.0.2"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/find-replace/-/find-replace-5.0.2.tgz#fe27ff0be05975aef6fc679c1139bbabea564e26"
+  integrity sha512-Y45BAiE3mz2QsrN2fb5QEtO4qb44NcS7en/0y9PEVsg351HsLeVclP8QPMH79Le9sH3rs5RSwJu99W0WPZO43Q==
 
 find-up@^1.0.0:
   version "1.1.2"
@@ -3285,6 +3492,18 @@ gulplog@^1.0.0:
   dependencies:
     glogg "^1.0.0"
 
+handlebars@^4.7.8:
+  version "4.7.8"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/handlebars/-/handlebars-4.7.8.tgz#41c42c18b1be2365439188c77c6afae71c0cd9e9"
+  integrity sha512-vafaFqs8MZkRrSX7sFVUdo3ap/eNiLnb4IakshzvP56X5Nr1iGKAIqdX6tMlm6HcNRIkr6AxO5jFEoJzzpT8aQ==
+  dependencies:
+    minimist "^1.2.5"
+    neo-async "^2.6.2"
+    source-map "^0.6.1"
+    wordwrap "^1.0.0"
+  optionalDependencies:
+    uglify-js "^3.1.4"
+
 har-schema@^2.0.0:
   version "2.0.0"
   resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/har-schema/-/har-schema-2.0.0.tgz#a94c2224ebcac04782a0d9035521f24735b7ec92"
@@ -3769,6 +3988,11 @@ is-number@^4.0.0:
   resolved "https://registry.npmjs.org/is-number/-/is-number-4.0.0.tgz"
   integrity sha512-rSklcAIlf1OmFdyAqbnWTLVelsQ58uvZ66S/ZyawjWqIviTWCjg2PzVGw8WUA+nNuPTqb4wgA+NszrJ+08LlgQ==
 
+is-number@^7.0.0:
+  version "7.0.0"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/is-number/-/is-number-7.0.0.tgz#7535345b896734d5f80c4d06c50955527a14f12b"
+  integrity sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==
+
 is-plain-object@^2.0.1, is-plain-object@^2.0.3, is-plain-object@^2.0.4:
   version "2.0.4"
   resolved "https://registry.npmjs.org/is-plain-object/-/is-plain-object-2.0.4.tgz"
@@ -3904,10 +4128,74 @@ js-yaml@^3.13.1:
     argparse "^1.0.7"
     esprima "^4.0.0"
 
+js2xmlparser@^4.0.2:
+  version "4.0.2"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/js2xmlparser/-/js2xmlparser-4.0.2.tgz#2a1fdf01e90585ef2ae872a01bc169c6a8d5e60a"
+  integrity sha512-6n4D8gLlLf1n5mNLQPRfViYzu9RATblzPEtm1SthMX1Pjao0r9YI9nw7ZIfRxQMERS87mcswrg+r/OYrPRX6jA==
+  dependencies:
+    xmlcreate "^2.0.4"
+
 jsbn@~0.1.0:
   version "0.1.1"
   resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
   integrity sha512-UVU9dibq2JcFWxQPA6KCqj5O42VOmAY3zQUfEKxU0KpTGXwNoCjkX1e13eHNvw/xPynt6pU0rZ1htjWTNTSXsg==
+
+jsdoc-api@^9.3.5:
+  version "9.3.5"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/jsdoc-api/-/jsdoc-api-9.3.5.tgz#1f5683b8db9cdc5d8afb606ec0041f3c1b7bbd0f"
+  integrity sha512-TQwh1jA8xtCkIbVwm/XA3vDRAa5JjydyKx1cC413Sh3WohDFxcMdwKSvn4LOsq2xWyAmOU/VnSChTQf6EF0R8g==
+  dependencies:
+    array-back "^6.2.2"
+    cache-point "^3.0.1"
+    current-module-paths "^1.1.2"
+    file-set "^5.3.0"
+    jsdoc "^4.0.4"
+    object-to-spawn-args "^2.0.1"
+    walk-back "^5.1.1"
+
+jsdoc-parse@^6.2.5:
+  version "6.2.5"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/jsdoc-parse/-/jsdoc-parse-6.2.5.tgz#d719dc7416886392449f31189802ce2e92f5a49e"
+  integrity sha512-8JaSNjPLr2IuEY4Das1KM6Z4oLHZYUnjRrr27hKSa78Cj0i5Lur3DzNnCkz+DfrKBDoljGMoWOiBVQbtUZJBPw==
+  dependencies:
+    array-back "^6.2.2"
+    find-replace "^5.0.1"
+    sort-array "^5.0.0"
+
+jsdoc-to-markdown@^9.1.3:
+  version "9.1.3"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/jsdoc-to-markdown/-/jsdoc-to-markdown-9.1.3.tgz#99e5eb08b7990f043d0398aaeea8382b8651bb86"
+  integrity sha512-i9wi+6WHX0WKziv0ar88T8h7OmxA0LWdQaV23nY6uQyKvdUPzVt0o6YAaOceFuKRF5Rvlju5w/KnZBfdpDAlnw==
+  dependencies:
+    array-back "^6.2.2"
+    command-line-args "^6.0.1"
+    command-line-usage "^7.0.3"
+    config-master "^3.1.0"
+    dmd "^7.1.1"
+    jsdoc-api "^9.3.5"
+    jsdoc-parse "^6.2.5"
+    walk-back "^5.1.1"
+
+jsdoc@^4.0.4:
+  version "4.0.5"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/jsdoc/-/jsdoc-4.0.5.tgz#fbed70e04a3abcf2143dad6b184947682bbc7315"
+  integrity sha512-P4C6MWP9yIlMiK8nwoZvxN84vb6MsnXcHuy7XzVOvQoCizWX5JFCBsWIIWKXBltpoRZXddUOVQmCTOZt9yDj9g==
+  dependencies:
+    "@babel/parser" "^7.20.15"
+    "@jsdoc/salty" "^0.2.1"
+    "@types/markdown-it" "^14.1.1"
+    bluebird "^3.7.2"
+    catharsis "^0.9.0"
+    escape-string-regexp "^2.0.0"
+    js2xmlparser "^4.0.2"
+    klaw "^3.0.0"
+    markdown-it "^14.1.0"
+    markdown-it-anchor "^8.6.7"
+    marked "^4.0.10"
+    mkdirp "^1.0.4"
+    requizzle "^0.2.3"
+    strip-json-comments "^3.1.0"
+    underscore "~1.13.2"
 
 jsdom@^16.4.0:
   version "16.7.0"
@@ -4119,6 +4407,13 @@ klaw@^1.0.0:
   optionalDependencies:
     graceful-fs "^4.1.9"
 
+klaw@^3.0.0:
+  version "3.0.0"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/klaw/-/klaw-3.0.0.tgz#b11bec9cf2492f06756d6e809ab73a2910259146"
+  integrity sha512-0Fo5oir+O9jnXu5EefYbVK+mHMBeEVEy2cmctR1O1NECcCkPRreJKrS6Qt/j3KC2C148Dfo9i3pCmCMsdqGr0g==
+  dependencies:
+    graceful-fs "^4.1.9"
+
 last-run@^1.1.0:
   version "1.1.1"
   resolved "https://registry.npmjs.org/last-run/-/last-run-1.1.1.tgz"
@@ -4204,6 +4499,13 @@ liftoff@^3.1.0:
     object.map "^1.0.0"
     rechoir "^0.6.2"
     resolve "^1.1.7"
+
+linkify-it@^5.0.0:
+  version "5.0.0"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/linkify-it/-/linkify-it-5.0.0.tgz#9ef238bfa6dc70bd8e7f9572b52d369af569b421"
+  integrity sha512-5aHCbzQRADcdP+ATqnDuhhJ/MRIqDkZX5pyjFHRRysS8vZ5AbqGEoFIb6pYHPZ+L/OC2Lc+xT8uHVVR5CAK/wQ==
+  dependencies:
+    uc.micro "^2.0.0"
 
 load-json-file@^1.0.0:
   version "1.1.0"
@@ -4324,6 +4626,11 @@ lodash.bind@^4.1.4:
   version "4.2.1"
   resolved "https://registry.npmjs.org/lodash.bind/-/lodash.bind-4.2.1.tgz"
   integrity sha1-euMBfpOWIqwxt9fX3LGzTbFpDTU=
+
+lodash.camelcase@^4.3.0:
+  version "4.3.0"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
+  integrity sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==
 
 lodash.defaults@^4.0.1:
   version "4.2.0"
@@ -4520,7 +4827,7 @@ lodash@^3.10.0, lodash@^3.9.3:
   resolved "https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz"
   integrity sha1-W/Rejkm6QYnhfUgnid/RW9FAt7Y=
 
-lodash@^4.0.0, lodash@^4.17.19, lodash@^4.17.21, lodash@^4.7.0:
+lodash@^4.0.0, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.21, lodash@^4.7.0:
   version "4.17.21"
   resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -4596,10 +4903,32 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
+markdown-it-anchor@^8.6.7:
+  version "8.6.7"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/markdown-it-anchor/-/markdown-it-anchor-8.6.7.tgz#ee6926daf3ad1ed5e4e3968b1740eef1c6399634"
+  integrity sha512-FlCHFwNnutLgVTflOYHPW2pPcl2AACqVzExlkGQNsi4CJgqOHN7YTgDd4LuhgN1BFO3TS0vLAruV1Td6dwWPJA==
+
+markdown-it@^14.1.0:
+  version "14.1.0"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/markdown-it/-/markdown-it-14.1.0.tgz#3c3c5992883c633db4714ccb4d7b5935d98b7d45"
+  integrity sha512-a54IwgWPaeBCAAsv13YgmALOF1elABB08FxO9i+r4VFk5Vl4pKokRPeX8u5TCgSsPi6ec1otfLjdOpVcgbpshg==
+  dependencies:
+    argparse "^2.0.1"
+    entities "^4.4.0"
+    linkify-it "^5.0.0"
+    mdurl "^2.0.0"
+    punycode.js "^2.3.1"
+    uc.micro "^2.1.0"
+
 marked@0.3.6:
   version "0.3.6"
   resolved "https://registry.npmjs.org/marked/-/marked-0.3.6.tgz"
   integrity sha1-ssbGGPzOzk74bE/Gy4p8v1rtqNc=
+
+marked@^4.0.10, marked@^4.3.0:
+  version "4.3.0"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/marked/-/marked-4.3.0.tgz#796362821b019f734054582038b116481b456cf3"
+  integrity sha512-PRsaiG84bK+AMvxziE/lCFss8juXjNaWzVbN5tXAm4XjeaS9NAHhop+PjQxz2A9h8Q4M/xGmzP8vqNwy6JeK0A==
 
 matchdep@^2.0.0:
   version "2.0.0"
@@ -4610,6 +4939,11 @@ matchdep@^2.0.0:
     micromatch "^3.0.4"
     resolve "^1.4.0"
     stack-trace "0.0.10"
+
+mdurl@^2.0.0:
+  version "2.0.0"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/mdurl/-/mdurl-2.0.0.tgz#80676ec0433025dd3e17ee983d0fe8de5a2237e0"
+  integrity sha512-Lf+9+2r+Tdp5wXDXC4PcIBjTDtq4UKjCPMQhKIuzpJNW0b96kVqSwW0bT7FhRSfmAiFYgP+SCRvdrDozfh0U5w==
 
 meow@^3.3.0:
   version "3.7.0"
@@ -4626,6 +4960,11 @@ meow@^3.3.0:
     read-pkg-up "^1.0.1"
     redent "^1.0.0"
     trim-newlines "^1.0.0"
+
+merge2@^1.3.0:
+  version "1.4.1"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/merge2/-/merge2-1.4.1.tgz#4368892f885e907455a6fd7dc55c0c9d404990ae"
+  integrity sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==
 
 merge@^1.2.1:
   version "1.2.1"
@@ -4655,6 +4994,14 @@ micromatch@^3.0.4, micromatch@^3.1.10, micromatch@^3.1.4:
     regex-not "^1.0.0"
     snapdragon "^0.8.1"
     to-regex "^3.0.2"
+
+micromatch@^4.0.8:
+  version "4.0.8"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/micromatch/-/micromatch-4.0.8.tgz#d66fa18f3a47076789320b9b1af32bd86d9fa202"
+  integrity sha512-PXwfBhYu0hBCPw8Dn0E+WDYb7af3dSLVWKi3HGv84IdF4TyFoC0ysxFd0Goxw7nSv4T/PzEJQxsYsEiFCKo2BA==
+  dependencies:
+    braces "^3.0.3"
+    picomatch "^2.3.1"
 
 mime-db@1.52.0:
   version "1.52.0"
@@ -4847,6 +5194,11 @@ natural-compare@^1.4.0:
   resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
 
+neo-async@^2.6.2:
+  version "2.6.2"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
+  integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
+
 next-tick@^1.1.0:
   version "1.1.0"
   resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/next-tick/-/next-tick-1.1.0.tgz#1836ee30ad56d67ef281b22bd199f709449b35eb"
@@ -4966,6 +5318,11 @@ object-keys@~0.4.0:
   version "0.4.0"
   resolved "https://registry.npmjs.org/object-keys/-/object-keys-0.4.0.tgz"
   integrity sha1-KKaq50KN0sOpLz2V8hM13SBOAzY=
+
+object-to-spawn-args@^2.0.1:
+  version "2.0.1"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/object-to-spawn-args/-/object-to-spawn-args-2.0.1.tgz#cf8b8e3c9b3589137a469cac90391f44870144a5"
+  integrity sha512-6FuKFQ39cOID+BMZ3QaphcC8Y4cw6LXBLyIgPU+OhIYwviJamPAn+4mITapnSBQrejB+NNp+FMskhD8Cq+Ys3w==
 
 object-visit@^1.0.0:
   version "1.0.1"
@@ -5277,6 +5634,11 @@ performance-now@^2.1.0:
   resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow==
 
+picomatch@^2.3.1:
+  version "2.3.1"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/picomatch/-/picomatch-2.3.1.tgz#3ba3833733646d9d3e4995946c1365a67fb07a42"
+  integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
+
 pify@^2.0.0:
   version "2.3.0"
   resolved "https://registry.npmjs.org/pify/-/pify-2.3.0.tgz"
@@ -5395,6 +5757,11 @@ pumpify@^1.3.5:
     inherits "^2.0.3"
     pump "^2.0.0"
 
+punycode.js@^2.3.1:
+  version "2.3.1"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/punycode.js/-/punycode.js-2.3.1.tgz#6b53e56ad75588234e79f4affa90972c7dd8cdb7"
+  integrity sha512-uxFIHU0YlHYhDQtV4R9J6a52SLx28BCjT+4ieh7IGbgwVJWO+km431c4yRlREUAsAmt/uMjQUyQHNEPf0M39CA==
+
 punycode@1.3.2:
   version "1.3.2"
   resolved "https://registry.npmjs.org/punycode/-/punycode-1.3.2.tgz"
@@ -5439,6 +5806,11 @@ querystringify@^2.1.1:
   version "2.2.0"
   resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/querystringify/-/querystringify-2.2.0.tgz#3345941b4153cb9d082d8eee4cda2016a9aef7f6"
   integrity sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==
+
+queue-microtask@^1.2.2:
+  version "1.2.3"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
+  integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
 read-pkg-up@^1.0.1:
   version "1.0.1"
@@ -5744,6 +6116,13 @@ requires-port@^1.0.0:
   resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==
 
+requizzle@^0.2.3:
+  version "0.2.4"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/requizzle/-/requizzle-0.2.4.tgz#319eb658b28c370f0c20f968fa8ceab98c13d27c"
+  integrity sha512-JRrFk1D4OQ4SqovXOgdav+K8EAhSB/LJZqCz8tbX0KObcdeM15Ss59ozWMBWmmINMagCwmqn4ZNryUGpBsl6Jw==
+  dependencies:
+    lodash "^4.17.21"
+
 resolve-dir@^1.0.0, resolve-dir@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/resolve-dir/-/resolve-dir-1.0.1.tgz"
@@ -5807,6 +6186,11 @@ ret@~0.1.10:
   resolved "https://registry.npmjs.org/ret/-/ret-0.1.15.tgz"
   integrity sha512-TTlYpa+OL+vMMNG24xSlQGEJ3B/RzEfUlLct7b5G/ytav+wPrplCpVMFuwzXbkecJrb6IYo1iFb0S9v37754mg==
 
+reusify@^1.0.4:
+  version "1.1.0"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/reusify/-/reusify-1.1.0.tgz#0fe13b9522e1473f51b558ee796e08f11f9b489f"
+  integrity sha512-g6QUff04oZpHs0eG5p83rFLhHeV00ug/Yf9nZM6fLeUrPguBTkTQOdpAWWspMh55TZfVQDPaN3NQJfbVRAxdIw==
+
 rfile@~1.0, rfile@~1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/rfile/-/rfile-1.0.0.tgz"
@@ -5843,6 +6227,13 @@ ruglify@~1.0.0:
   dependencies:
     rfile "~1.0"
     uglify-js "~2.2"
+
+run-parallel@^1.1.9:
+  version "1.2.0"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/run-parallel/-/run-parallel-1.2.0.tgz#66d1368da7bdf921eb9d95bd1a9229e7f21a43ee"
+  integrity sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==
+  dependencies:
+    queue-microtask "^1.2.2"
 
 run-sequence@^2.2.1:
   version "2.2.1"
@@ -6049,6 +6440,14 @@ snapdragon@^0.8.1:
     source-map "^0.5.6"
     source-map-resolve "^0.5.0"
     use "^3.1.0"
+
+sort-array@^5.0.0:
+  version "5.1.1"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/sort-array/-/sort-array-5.1.1.tgz#92f5ee092fb2cca1dc3b46eee102a0d3a3dfc944"
+  integrity sha512-EltS7AIsNlAFIM9cayrgKrM6XP94ATWwXP4LCL4IQbvbYhELSt2hZTrixg+AaQwnWFs/JGJgqU3rxMcNNWxGAA==
+  dependencies:
+    array-back "^6.2.2"
+    typical "^7.1.1"
 
 source-map-resolve@^0.5.0, source-map-resolve@^0.5.2:
   version "0.5.2"
@@ -6484,6 +6883,14 @@ syntax-error@~1.1.0:
   dependencies:
     acorn "^2.7.0"
 
+table-layout@^4.1.0:
+  version "4.1.1"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/table-layout/-/table-layout-4.1.1.tgz#0f72965de1a5c0c1419c9ba21cae4e73a2f73a42"
+  integrity sha512-iK5/YhZxq5GO5z8wb0bY1317uDF3Zjpha0QFFLA8/trAoiLbQD0HUbMesEaxyzUgDxi2QlcbM8IvqOlEjgoXBA==
+  dependencies:
+    array-back "^6.2.2"
+    wordwrapjs "^5.1.0"
+
 table@^6.0.9:
   version "6.8.1"
   resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/table/-/table-6.8.1.tgz#ea2b71359fe03b017a5fbc296204471158080bdf"
@@ -6647,6 +7054,13 @@ to-regex-range@^2.1.0:
     is-number "^3.0.0"
     repeat-string "^1.6.1"
 
+to-regex-range@^5.0.1:
+  version "5.0.1"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/to-regex-range/-/to-regex-range-5.0.1.tgz#1648c44aae7c8d988a326018ed72f5b4dd0392e4"
+  integrity sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==
+  dependencies:
+    is-number "^7.0.0"
+
 to-regex@^3.0.1, to-regex@^3.0.2:
   version "3.0.2"
   resolved "https://registry.npmjs.org/to-regex/-/to-regex-3.0.2.tgz"
@@ -6780,6 +7194,21 @@ typedarray@^0.0.6, typedarray@~0.0.5:
   resolved "https://registry.npmjs.org/typedarray/-/typedarray-0.0.6.tgz"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
+typical@^7.1.1, typical@^7.2.0:
+  version "7.3.0"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/typical/-/typical-7.3.0.tgz#930376be344228709f134613911fa22aa09617a4"
+  integrity sha512-ya4mg/30vm+DOWfBg4YK3j2WD6TWtRkCbasOJr40CseYENzCUby/7rIvXA99JGsQHeNxLbnXdyLLxKSv3tauFw==
+
+uc.micro@^2.0.0, uc.micro@^2.1.0:
+  version "2.1.0"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/uc.micro/-/uc.micro-2.1.0.tgz#f8d3f7d0ec4c3dea35a7e3c8efa4cb8b45c9e7ee"
+  integrity sha512-ARDJmphmdvUk6Glw7y9DQ2bFkKBHwQHLi2lsaH6PPmz/Ka9sFOBsBluozhDltWmnv9u/cF6Rt87znRTPV+yp/A==
+
+uglify-js@^3.1.4:
+  version "3.19.3"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/uglify-js/-/uglify-js-3.19.3.tgz#82315e9bbc6f2b25888858acd1fff8441035b77f"
+  integrity sha512-v3Xu+yuwBXisp6QYTcH4UbH+xYJXqnq2m/LtQVWKWzYc1iehYnLixoQDN9FH6/j9/oybfd6W9Ghwkl8+UMKTKQ==
+
 uglify-js@~2.2:
   version "2.2.5"
   resolved "https://registry.npmjs.org/uglify-js/-/uglify-js-2.2.5.tgz"
@@ -6822,6 +7251,11 @@ underscore@1.1.x, underscore@1.7.0, underscore@^1.9.0:
   version "1.13.6"
   resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/underscore/-/underscore-1.13.6.tgz#04786a1f589dc6c09f761fc5f45b89e935136441"
   integrity sha512-+A5Sja4HP1M08MaXya7p5LvjuM7K6q/2EaC0+iovj/wOcMsTzMvDFbasi/oSapiwOlt252IqsKqPjCl7huKS0A==
+
+underscore@~1.13.2:
+  version "1.13.7"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/underscore/-/underscore-1.13.7.tgz#970e33963af9a7dda228f17ebe8399e5fbe63a10"
+  integrity sha512-GMXzWtsc57XAtguZgaQViUOzs0KTkk8ojr3/xAxXLITqf/3EMwxC0inyETfDFjH/Krbhuep0HNbbjI9i/q3F3g==
 
 undertaker-registry@^1.0.0:
   version "1.0.1"
@@ -7125,6 +7559,16 @@ w3c-xmlserializer@^2.0.0:
   dependencies:
     xml-name-validator "^3.0.0"
 
+walk-back@^2.0.1:
+  version "2.0.1"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/walk-back/-/walk-back-2.0.1.tgz#554e2a9d874fac47a8cb006bf44c2f0c4998a0a4"
+  integrity sha512-Nb6GvBR8UWX1D+Le+xUq0+Q1kFmRBIWVrfLnQAOmcpEzA9oAxwJ9gIr36t9TWYfzvWRvuMtjHiVsJYEkXWaTAQ==
+
+walk-back@^5.1.1:
+  version "5.1.1"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/walk-back/-/walk-back-5.1.1.tgz#80045191b3b3a05a8e3cc6fca066a2e495230d93"
+  integrity sha512-e/FRLDVdZQWFrAzU6Hdvpm7D7m2ina833gIKLptQykRK49mmCYHLHq7UqjPDbxbKLZkTkW1rFqbengdE3sLfdw==
+
 webidl-conversions@^2.0.0:
   version "2.0.1"
   resolved "https://registry.npmjs.org/webidl-conversions/-/webidl-conversions-2.0.1.tgz"
@@ -7212,10 +7656,20 @@ wordwrap@0.0.2:
   resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/wordwrap/-/wordwrap-0.0.2.tgz"
   integrity sha1-t5Zpu0LstAn4PVg8rVLKF+qhZD8=
 
+wordwrap@^1.0.0:
+  version "1.0.0"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/wordwrap/-/wordwrap-1.0.0.tgz#27584810891456a4171c8d0226441ade90cbcaeb"
+  integrity sha512-gvVzJFlPycKc5dZN4yPkP8w7Dc37BtP1yczEneOb4uq34pXZcvrtRTmWV8W+Ume+XCxKgbjM+nevkyFPMybd4Q==
+
 wordwrap@~0.0.2:
   version "0.0.3"
   resolved "https://registry.npmjs.org/wordwrap/-/wordwrap-0.0.3.tgz"
   integrity sha512-1tMA907+V4QmxV7dbRvb4/8MaRALK6q9Abid3ndMYnbyo8piisCmeONVqVSXqQA3KaP4SLt5b7ud6E2sqP8TFw==
+
+wordwrapjs@^5.1.0:
+  version "5.1.1"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/wordwrapjs/-/wordwrapjs-5.1.1.tgz#bfd1eb426f0f7eec73b7df32cf7df1f618bfb3a9"
+  integrity sha512-0yweIbkINJodk27gX9LBGMzyQdBDan3s/dEAiwBOj+Mf0PPyWL6/rikalkv8EeD0E8jm4o5RXEOrFTP3NXbhJg==
 
 wrap-ansi@^2.0.0:
   version "2.1.0"
@@ -7258,6 +7712,11 @@ xmlchars@^2.2.0:
   version "2.2.0"
   resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/xmlchars/-/xmlchars-2.2.0.tgz#060fe1bcb7f9c76fe2a17db86a9bc3ab894210cb"
   integrity sha512-JZnDKK8B0RCDw84FNdDAIpZK+JuJw+s7Lz8nksI7SIuU3UXJJslUthsi+uWBUYOwPFwW7W7PRLRfUKpxjtjFCw==
+
+xmlcreate@^2.0.4:
+  version "2.0.4"
+  resolved "http://repository.amplia.es:9081/nexus/repository/npm-global/xmlcreate/-/xmlcreate-2.0.4.tgz#0c5ab0f99cdd02a81065fa9cd8f8ae87624889be"
+  integrity sha512-nquOebG4sngPmGPICTS5EnxqhKbCmz5Ox5hsszI2T6U5qdrJizBc+0ilYSEjTSzU0yZcmvppztXe/5Al5fUwdg==
 
 "xtend@>=4.0.0 <4.1.0-0", xtend@^4.0.1, xtend@~4.0.0:
   version "4.0.1"

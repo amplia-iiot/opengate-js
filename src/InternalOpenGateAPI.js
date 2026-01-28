@@ -131,12 +131,6 @@ import ConnectorFunctions from './connectorsFunctions/configuration/ConnectorFun
 import ConnectorFunctionsCatalogBuilder from './connectorsFunctions/catalog/ConnectorFunctions';
 import ConnectorFunctionsCatalogFinder from './connectorsFunctions/catalog/ConnectorFunctionsCatalogFinder'
 import ConnectorFunctionsCatalog from './connectorsFunctions/catalog/ConnectorFunctionsCatalog'
-import PipelineFinder from './pipelines/PipelineFinder';
-import TransformerFinder from './transformers/TransformerFinder';
-import AIModelsFinder from './AIModels/AIModelsFinder';
-import Transformers from './transformers/Transformers';
-import AIModels from './AIModels/AIModels';
-import Pipelines from './pipelines/Pipelines';
 import ManufacturersBuilder from './manufacturers/Manufacturer'
 import ManufacturerModelsBuilder from './manufacturers/Model'
 import ManufacturerFinder from './manufacturers/ManufacturerFinder'
@@ -145,6 +139,25 @@ import OrganizationManufacturersBuilder from './organization_manufacturer/Manufa
 import OrganizationManufacturerModelsBuilder from './organization_manufacturer/Model'
 import OrganizationManufacturerFinder from './organization_manufacturer/ManufacturerFinder'
 import OrganizationModelFinder from './organization_manufacturer/ModelFinder'
+
+import SoftwaresBuilder from './organization_software/Software'
+import SoftwareFinder from './organization_software/SoftwareFinder'
+import NotebookFinder from './notebookScheduler/NotebookFinder'
+import NotebookSchedulerFinder from './notebookScheduler/SchedulerFinder'
+import NotebookLauncherBuilder from './notebookScheduler/NotebookLauncher'
+import NotebookSchedulerBuilder from './notebookScheduler/NotebookScheduler'
+
+import ScheduleHistoryFinder from './schedule/HistoryFinder'
+import ScheduleRestRequestFinder from './schedule/RestRequestFinder'
+import ScheduleRestRequest from './schedule/RestRequest'
+
+import ScheduleImageExecutionFinder from './schedule/ImageExecutionFinder'
+import ScheduleImageExecution from './schedule/ImageExecution'
+
+import SchedulePipelineFinder from './schedule/PipelineFinder'
+import SchedulePipeline from './schedule/Pipeline'
+
+
 import CountriesCatalog from './provision/country/CountriesCatalog';
 import OrganizationPlans from './plan/OrganizationPlans';
 import DevicePlans from './plan/DevicePlans';
@@ -152,7 +165,7 @@ import OrganizationPlansFinder from './plan/OrganizationPlansFinder';
 import DevicePlansFinder from './plan/DevicePlansFinder';
 
 
-const RequestEndMonkeyPatching = (function(){
+const RequestEndMonkeyPatching = (function () {
     let beforeStart
     const end = _superagent.Request.prototype.end;
 
@@ -166,7 +179,7 @@ const RequestEndMonkeyPatching = (function(){
         });
     };
 
-    return function setCallback(cb){
+    return function setCallback(cb) {
         beforeStart = cb
     }
 })()
@@ -175,6 +188,7 @@ const RequestEndMonkeyPatching = (function(){
  */
 export default class InternalOpenGateAPI {
     /**
+     * Constructor
      * @param {{ url: string,port: string,version: string,apiKey: string}} _options - this is configuration about Opengate North API.
      * @param {AmpliaREST} ampliaREST - this is a backend selected to manage a request to Opengate North API.
      */
@@ -188,7 +202,7 @@ export default class InternalOpenGateAPI {
         if (typeof southAmpliaREST !== "object") {
             throw new Error("Must instance mandatory parameter: southAmpliaREST");
         }
-        if (_options.hooks && _options.hooks.beforeStart && typeof _options.hooks.beforeStart === 'function'){
+        if (_options.hooks && _options.hooks.beforeStart && typeof _options.hooks.beforeStart === 'function') {
             RequestEndMonkeyPatching(_options.hooks.beforeStart)
         }
         this.Napi = northAmpliaREST;
@@ -222,7 +236,7 @@ export default class InternalOpenGateAPI {
     geoclusterBuilder() {
         return new Geocluster(this);
     }
-    
+
     /**
      * This return a util to find a organization
      * @return {OrganizationFinder}
@@ -283,7 +297,7 @@ export default class InternalOpenGateAPI {
      * This return a util to find summary and download a bulk executions
      * @return {BulkFinder}
      */
-    newBulkExecutionFinder(){
+    newBulkExecutionFinder() {
         return new BulkExecutionFinder(this)
     }
 
@@ -327,7 +341,7 @@ export default class InternalOpenGateAPI {
         return new CountriesCatalog(this);
     }
 
-    
+
     /**
      * This return a util to update an Operation Type
      * @return {OperationType}
@@ -348,15 +362,15 @@ export default class InternalOpenGateAPI {
      * This return a util  RuleConfigurationsHelper
      * @return {RuleConfigurationsHelper
      */
-     newRuleConfigurationsHelper() {
+    newRuleConfigurationsHelper() {
         return new RuleConfigurationsHelper(this);
     }
-    
+
     /**
      * This return a to find Dataset configuration
      * @return {DatasetFinder}
      */
-     newDatasetFinder() {
+    newDatasetFinder() {
         return new DatasetFinder(this);
     }
 
@@ -364,10 +378,10 @@ export default class InternalOpenGateAPI {
      * This return a to find Timeserie configuration
      * @return {TimeserieFinder}
      */
-     newTimeserieFinder() {
+    newTimeserieFinder() {
         return new TimeserieFinder(this);
     }
-    
+
     /**
      * This return a util to find Rule Configurations Templates
      * @return {RuleConfigurationsCatalog}
@@ -517,12 +531,12 @@ export default class InternalOpenGateAPI {
      * This return a TicketsSearchBuilder to build a specific TicketSearch
      */
     ticketsSearchBuilder() {
-            return new TicketsSearchBuilder(this);
-        }
-        /**
-         * This return a CommunicationsModuleTypeSearchBuilder to build a specific CommunicationsModuleTypeSearch
-         * @return {CommunicationsModuleTypeSearchBuilder}
-         */
+        return new TicketsSearchBuilder(this);
+    }
+    /**
+     * This return a CommunicationsModuleTypeSearchBuilder to build a specific CommunicationsModuleTypeSearch
+     * @return {CommunicationsModuleTypeSearchBuilder}
+     */
     communicationsModuleTypeSearchBuilder() {
         return new CommunicationsModuleTypeSearchBuilder(this);
     }
@@ -652,9 +666,9 @@ export default class InternalOpenGateAPI {
      * This return a ExecutionsHistorySearchBuilder to build a specific ExecutionsSearch
      * @return {ExecutionsHistorySearchBuilder}
      */
-     executionsHistorySearchBuilder() {
-            return new ExecutionsHistorySearchBuilder(this);
-        }
+    executionsHistorySearchBuilder() {
+        return new ExecutionsHistorySearchBuilder(this);
+    }
 
     /**
      * This return a AlarmsSearchBuilder to build a specific AlarmsSearch
@@ -740,7 +754,7 @@ export default class InternalOpenGateAPI {
      * This return a DatasetSearchBuilder to build a specific DatasetSearch
      * @return {DatasetSearchBuilder}
      */
-     datasetSearchBuilder(organization, dataset) {
+    datasetSearchBuilder(organization, dataset) {
         return new DatasetSearchBuilder(this, organization, dataset);
     }
 
@@ -748,10 +762,10 @@ export default class InternalOpenGateAPI {
      * This return a TimeserieSearchBuilder to build a specific TimeserieSearch
      * @return {TimeserieSearchBuilder}
      */
-     timeserieSearchBuilder(organization, timeserie) {
+    timeserieSearchBuilder(organization, timeserie) {
         return new TimeserieSearchBuilder(this, organization, timeserie);
     }
-    
+
     /**
      * This return a TimeserieDownsamplerBuilder to build a specific TimeserieDownsampler
      * @return {TimeserieDownsamplerBuilder}
@@ -1022,7 +1036,7 @@ export default class InternalOpenGateAPI {
      * This return a DatasetBuilder to build a specific dataset
      * @return {Datasets}
      */
-     datasetsBuilder() {
+    datasetsBuilder() {
         return new Datasets(this);
     }
 
@@ -1057,7 +1071,7 @@ export default class InternalOpenGateAPI {
     newTimeseriesFunctionsHelper() {
         return new TimeseriesFunctionsHelper(this)
     }
-    
+
     /**
      * This return a ChannelsSearchBuilder to build a specific ChannelsSearch
      * @return {ChannelsSearchBuilder}
@@ -1192,7 +1206,7 @@ export default class InternalOpenGateAPI {
      * @param {Object} connectorFunctionsCatalog 
      * @returns {ConnectorFunctionsCatalog}
      */
-    connectorFunctionsCatalogBuilder(identifier, connectorFunctionsCatalog){
+    connectorFunctionsCatalogBuilder(identifier, connectorFunctionsCatalog) {
         return new ConnectorFunctionsCatalogBuilder(this, identifier, connectorFunctionsCatalog)
     }
 
@@ -1209,64 +1223,17 @@ export default class InternalOpenGateAPI {
      * @return {ProvisionProcessorsFinder}
      */
     newProvisionProcessorsFinder() {
-         return new ProvisionProcessorsFinder(this);
+        return new ProvisionProcessorsFinder(this);
     }
 
     /**
-     * This return a util to find a pipeline
-     * @return {PipelineFinder}
-     */
-     newPipelineFinder() {
-        return new PipelineFinder(this);
-    }
-
-    /**
-     * This return a util to find a transformer
-     * @return {TransformerFinder}
-     */
-    newTransformerFinder() {
-        return new TransformerFinder(this);
-    }
-
-    /**
-     * This return a util to find an ai model
-     * @return {AIModelFinder}
-     */
-    newAIModelFinder() {
-        return new AIModelsFinder(this);
-    }
-
-    /**
-     * This return a TransformersBuilder to build a specific transformersBuilder
-     * @return {Transformers}
-     */
-    transformersBuilder() {
-        return new Transformers(this);
-    }
-    
-    /**
-     * This return a AIModelsBuilder to build a specific aiModelsBuilder
-     * @return {AIModels}
-     */
-    aiModelsBuilder() {
-        return new AIModels(this);
-    }
-
-    /**
-     * This return a PipelinesBuilder to build a specific pipelinesBuilder
-     * @return {Pipelines}
-     */
-    pipelinesBuilder() {
-        return new Pipelines(this);
-    }
-    
-    /** This return a ManufacturersBuilder to build a specific ManufacturersBuilder
+     * This return a ManufacturersBuilder to build a specific ManufacturersBuilder
      * @return {ManufacturersBuilder}
      */
     manufacturersBuilder() {
         return new ManufacturersBuilder(this);
     }
-    
+
     /**
      * This return a ManufacturerModelsBuilder to build a specific ManufacturerModelsBuilder
      * @return {ManufacturerModelsBuilder}
@@ -1297,7 +1264,7 @@ export default class InternalOpenGateAPI {
     organizationManufacturersBuilder(organization) {
         return new OrganizationManufacturersBuilder(this, organization);
     }
-    
+
     /**
      * This return a OrganizationManufacturerModelsBuilder to build a specific OrganizationManufacturerModelsBuilder
      * @return {OrganizationManufacturerModelsBuilder}
@@ -1320,6 +1287,109 @@ export default class InternalOpenGateAPI {
      */
     newOrganizationModelFinder() {
         return new OrganizationModelFinder(this);
+    }
+
+    /** This return a SoftwaresBuilder to build a specific SoftwaresBuilder
+     * @return {SoftwaresBuilder}
+     */
+    softwaresBuilder(organization) {
+        return new SoftwaresBuilder(this, organization);
+    }
+
+    /**
+     * This return a util to find an organization software
+     * @return {SoftwareFinder}
+     */
+    newSoftwareFinder() {
+        return new SoftwareFinder(this);
+    }
+
+    /** 
+     * This return a NotebookLauncherBuilder to build a specific NotebookLauncherBuilder
+     * @return {NotebookLauncherBuilder}
+     */
+    notebookLauncherBuilder() {
+        return new NotebookLauncherBuilder(this);
+    }
+
+    /** 
+     * This return a NotebookSchedulerBuilder to build a specific NotebookSchedulerBuilder
+     * @return {NotebookSchedulerBuilder}
+     */
+    notebookSchedulerBuilder() {
+        return new NotebookSchedulerBuilder(this);
+    }
+
+    /**
+     * This return a util to find notebooks
+     * @return {NotebookFinder}
+     */
+    newNotebookFinder() {
+        return new NotebookFinder(this);
+    }
+
+    /**
+     * This return a util to find notebooks schedulers
+     * @return {NotebookSchedulerFinder}
+     */
+    newNotebookSchedulerFinder() {
+        return new NotebookSchedulerFinder(this);
+    }
+
+    /**
+     * This return a util to view schedule history
+     * @return {HistoryFinder}
+     */
+    newScheduleHistoryFinder() {
+        return new ScheduleHistoryFinder(this);
+    }
+
+    /**
+     * This return a util to view schedule rest requests
+     * @return {RestRequestFinder}
+     */
+    newScheduleRestRequestFinder() {
+        return new ScheduleRestRequestFinder(this);
+    }
+
+    /**
+     * This return a util to build schedule rest requests
+     * @return {RestRequest}
+     */
+    scheduleRestRequestBuilder() {
+        return new ScheduleRestRequest(this);
+    }
+
+    /**
+     * This return a util to view schedule image executions
+     * @return {ImageExecutionFinder}
+     */
+    newScheduleImageExecutionFinder() {
+        return new ScheduleImageExecutionFinder(this);
+    }
+
+    /**
+     * This return a util to build schedule image executions
+     * @return {ImageExecution}
+     */
+    scheduleImageExecutionBuilder() {
+        return new ScheduleImageExecution(this);
+    }
+
+    /**
+     * This return a util to view schedule pipelines
+     * @return {PipelineFinder}
+     */
+    newSchedulePipelineFinder() {
+        return new SchedulePipelineFinder(this);
+    }
+
+    /**
+     * This return a util to build a pipeline
+     * @return {SchedulePipeline}
+     */
+    schedulePipelineBuilder() {
+        return new SchedulePipeline(this);
     }
 
     /**

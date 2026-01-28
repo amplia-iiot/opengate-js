@@ -7,7 +7,8 @@ import GenericFinder from '../GenericFinder';
  */
 export default class provisionProcessorsFinder extends GenericFinder {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
@@ -21,7 +22,7 @@ export default class provisionProcessorsFinder extends GenericFinder {
      * @param {string} organization - organization
      * @return {Promise} 
      */
-     findByOrganization(organization) {
+    findByOrganization(organization) {
         this._withId(organization);
         return this._execute();
     }
@@ -34,7 +35,7 @@ export default class provisionProcessorsFinder extends GenericFinder {
      * @param {string} identifier - Provision Processors identifier
      * @return {Promise} 
      */
-     findByOrganizationAndProvisionProcessorId(organization, identifier) {
+    findByOrganizationAndProvisionProcessorId(organization, identifier) {
         this._withId(organization + '/' + identifier);
         return this._execute();
     }

@@ -66,7 +66,8 @@ var schema_base = '/og_basic_types.json';
 
 var EntityBuilder = (function () {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 
@@ -238,7 +239,7 @@ var EntityBuilder = (function () {
     }, {
         key: 'subscribersBuilder',
         value: function subscribersBuilder(organization, timeout) {
-            return this._genericBuilder(organization, 'entity.subscriber', 'provision.device.communicationModules[].subscriber', function (allowedDatastreams, definedSchemas) {
+            return this._genericBuilder(organization, 'entity.subscriber', 'provision', function (allowedDatastreams, definedSchemas) {
                 return new _SubscriberBuilder2['default'](this._ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout);
             });
         }

@@ -8,7 +8,8 @@ import checkType from '../util/formats/check_types'
 
 export default class Datasets extends BaseProvision {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
@@ -40,7 +41,7 @@ export default class Datasets extends BaseProvision {
      * @param {string} identifier - required field
      * @return {Datasets}
      */
-     withIdentifier(identifier) {
+    withIdentifier(identifier) {
         checkType._checkString(identifier, 'identifier');
         this._identifier = identifier;
         return this;
@@ -62,7 +63,7 @@ export default class Datasets extends BaseProvision {
      * @param {string} identifierColumn - required field
      * @return {Datasets}
      */
-     withIdentifierColumn(identifierColumn) {
+    withIdentifierColumn(identifierColumn) {
         checkType._checkString(identifierColumn, 'identifierColumn');
         this._identifierColumn = identifierColumn;
         return this;
@@ -74,7 +75,7 @@ export default class Datasets extends BaseProvision {
      * @return {Datasets}
      */
     withDescription(description) {
-        if(description)
+        if (description)
             checkType._checkString(description, 'description');
         this._description = description;
         return this;
@@ -90,7 +91,7 @@ export default class Datasets extends BaseProvision {
         this._columns = columns;
         return this;
     }
-    
+
 
     _composeElement() {
         this._resource = 'datasets/provision/organizations/' + this._organization;

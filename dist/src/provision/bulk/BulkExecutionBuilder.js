@@ -36,6 +36,7 @@ var BulkExecutionBuilder = (function (_BaseProvision) {
     _inherits(BulkExecutionBuilder, _BaseProvision);
 
     /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - required field. This is ogapi instance
      * @param {string} organization - required field. This is the organization name
      * @param {string} processorId - required field. This is the provision processor use for bulk provision
@@ -49,7 +50,7 @@ var BulkExecutionBuilder = (function (_BaseProvision) {
         this._timeout = timeout;
         this._organization = organization;
         this._processorId = processorId;
-        this._resource = 'provisionProcessors/provision/organizations/' + organization + '/' + processorId + '/';
+        this._resource = 'provisionProcessors/provision/organizations/' + organization + '/' + processorId;
     }
 
     _createClass(BulkExecutionBuilder, [{
@@ -60,7 +61,7 @@ var BulkExecutionBuilder = (function (_BaseProvision) {
     }, {
         key: '_buildURL',
         value: function _buildURL() {
-            return this._resource + this._type;
+            return this._resource + '/' + this._type;
         }
 
         /**

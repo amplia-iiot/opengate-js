@@ -15,7 +15,7 @@ export default class Datapoint {
     }
 
     /**
-     * Set the from attribute
+     * Sets the from attribute
      * @param {number} from - optional field
      * @return {Datapoint}
      */
@@ -29,7 +29,7 @@ export default class Datapoint {
     }
 
     /**
-     * Set the at attribute
+     * Sets the at attribute
      * @param {number} at - optional field
      * @return {Datapoint}
      */
@@ -43,7 +43,7 @@ export default class Datapoint {
     }
 
     /**
-     * Set the value attribute
+     * Sets the value attribute
      * @param {string} value - required field 
      * @return {Datapoint}
      */
@@ -55,8 +55,32 @@ export default class Datapoint {
     }
 
     /**
-     * Set the tags attribute
-     * @param {string} tags 
+     * Sets the source attribute
+     * @param {string} value - optional field
+     * @return {Datapoint}
+     */
+    withSource(value) {
+        if (value === undefined || value.length === 0)
+            throw new Error('OGAPI_DEFINED_PARAMETER');
+        this._source = value;
+        return this;
+    }
+
+    /**
+     * Sets the source attribute
+     * @param {string} value - optional field
+     * @return {Datapoint}
+     */
+    withSourceInfo(value) {
+        if (value === undefined || value.length === 0)
+            throw new Error('OGAPI_DEFINED_PARAMETER');
+        this._sourceInfo = value;
+        return this;
+    }
+
+    /**
+     * Sets the tags attribute
+     * @param {Array} tags 
      * @return {Datapoint}
      */
     withTags(tags) {
@@ -76,8 +100,9 @@ export default class Datapoint {
             'from': this._from || undefined,
             'at': this._at || undefined,
             'value': this._value,
-            'tags': this._tags || undefined
-
+            'tags': this._tags || undefined,
+            'source': this._source || undefined,
+            'sourceInfo': this._sourceInfo || undefined
         };
         return datapoint;
     }

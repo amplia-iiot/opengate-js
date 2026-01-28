@@ -37,7 +37,8 @@ var max_length_description = 200;
 var Certificates = (function (_Security) {
     _inherits(Certificates, _Security);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 

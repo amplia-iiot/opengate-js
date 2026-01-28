@@ -9,6 +9,7 @@ export const DATAMODEL_RESOURCE = '/datamodels/';
  */
 export default class DatamodelsFinder extends ProvisionGenericFinder {
     /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {

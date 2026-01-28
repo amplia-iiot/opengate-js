@@ -9,7 +9,8 @@ import Channels from '../channels/Channels';
  */
 export default class WorkgroupRelations extends BaseProvision {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {

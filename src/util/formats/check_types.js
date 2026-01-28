@@ -53,6 +53,25 @@ module.exports = {
         if (typeof parameter !== 'object') {
             throw new Error({ message: 'OGAPI_OBJECT_PARAMETER', parameter: name });
         }
-    }
+    },
+    _checkBoolean: function(parameter, name) {
+        if (typeof parameter !== 'boolean') {
+            throw new Error({ message: 'OGAPI_BOOLEAN_PARAMETER', parameter: name });
+        }
+    },
+    _checkURL: function(parameter, name) {
+        if (typeof parameter !== 'string') {
+            throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: name });
+        }
 
+        try {
+            let url = new URL(parameter)
+
+            if (!['http:','https:'].includes(url.protocol)) {
+                throw new Error({ message: 'OGAPI_URL_PARAMETER', parameter: name });
+            }
+        } catch (urlerr) {
+            throw new Error({ message: 'OGAPI_URL_PARAMETER', parameter: name });
+        }
+    }
 }

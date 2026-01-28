@@ -8,7 +8,8 @@ import HttpStatus from 'http-status-codes';
  */
 export default class GenericFinder {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      * @param {string} source - Relative url where is located the resource.
      * @param {string} reponseJsonData - Relative url where is located the resource. Can be null
@@ -78,7 +79,7 @@ export default class GenericFinder {
      */
     _execute(south) {
         let _api = this._api
-        if(south){
+        if (south) {
             _api = this._apiSouth
         }
         let defered = q.defer();
@@ -105,7 +106,7 @@ export default class GenericFinder {
                             statusCode: req.statusCode
                         });
                     }
-                    
+
                     // }
                 }
             })
@@ -127,11 +128,11 @@ export default class GenericFinder {
     /**
      * @return {Promise}* @private
      */
-     _download(noBlob) {
+    _download(noBlob) {
         let defered = q.defer();
         let promise = defered.promise;
         let _error_not_found = this._error_not_found;
-        this._api.get(this._downloadUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), (noBlob?false:true), this._getServiceBaseURL())
+        this._api.get(this._downloadUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), (noBlob ? false : true), this._getServiceBaseURL())
             .then((req) => {
                 if (req.statusCode === 204) {
                     defered.reject({

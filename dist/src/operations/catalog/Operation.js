@@ -21,6 +21,7 @@ var _q2 = _interopRequireDefault(_q);
 
 var Operation = (function () {
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!string} resource - this is a base url resource
      * @param {!object} postObj - it will be sent as a data on post action 

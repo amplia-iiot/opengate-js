@@ -25,7 +25,8 @@ var _GenericFinder3 = _interopRequireDefault(_GenericFinder2);
 var provisionProcessorsFinder = (function (_GenericFinder) {
   _inherits(provisionProcessorsFinder, _GenericFinder);
 
-  /**     
+  /**
+   * Constructor
    * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
    */
 

@@ -13,7 +13,8 @@ import q from 'q';
  * This is a base object that contains all you can do about ConnectorFunctions.
  */
 export default class ConnectorFunctions extends BaseProvision {
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi, organization, channel, identifier, connectorFunctionsObj) {
@@ -22,12 +23,12 @@ export default class ConnectorFunctions extends BaseProvision {
         // Required
         this.withOrganization(organization);
         this.withChannel(channel);
-        
+
         // only for updates
         if (identifier) {
             this.withIdentifier(identifier);
         }
-        
+
         if (connectorFunctionsObj) {
             if (connectorFunctionsObj.name) {
                 this.withName(connectorFunctionsObj.name);
@@ -136,7 +137,7 @@ export default class ConnectorFunctions extends BaseProvision {
      * @param {string} operationName - required field
      * @return {ConnectorFunctions}
      */
-     withOperationName(operationName) {
+    withOperationName(operationName) {
         if (typeof operationName !== 'string' || operationName.length === 0 || operationName.length > 50)
             throw new Error('Parameter operation name must be a string, cannot be empty and has a maximum length of 50');
         this._operationName = operationName;
@@ -148,7 +149,7 @@ export default class ConnectorFunctions extends BaseProvision {
      * @param {string} javascript 
      * @return {ConnectorFunctions}
      */
-     withJavascript(javascript) {
+    withJavascript(javascript) {
         if (typeof javascript !== 'string')
             throw new Error('Parameter javascript must be a string');
         this._javascript = javascript;
@@ -175,23 +176,23 @@ export default class ConnectorFunctions extends BaseProvision {
     withSouthCriterias(criterias) {
         if (!(criterias instanceof Array) || criterias.length === 0)
             throw new Error('Parameter south criteria must be an array and cannot be empty');
-        
+
         criterias.forEach((crit) => {
             try {
                 this.addSouthCriteria(crit)
-            } catch(critErr) {
+            } catch (critErr) {
                 this._southCriterias = null
                 throw critErr
             }
         });
-        
+
         return this;
     }
 
     addSouthCriteria(criteria) {
         if (typeof criteria !== 'string')
             throw new Error('South criteria must be a string');
-        
+
         if (!this._southCriterias) {
             this._southCriterias = []
         }
@@ -208,7 +209,7 @@ export default class ConnectorFunctions extends BaseProvision {
     withType(type) {
         if (typeof type !== 'string' || !this._checkValues(type, CONNECTOR_FUNCTION_TYPES))
             throw new Error('Parameter type must be a string and must be one of these values: ' + CONNECTOR_FUNCTION_TYPES);
-        
+
         this._type = type;
         return this;
     }
@@ -218,10 +219,10 @@ export default class ConnectorFunctions extends BaseProvision {
      * @param {string} payloadType 
      * @return {ConnectorFunctions}
      */
-     withPayloadType(payloadType) {
+    withPayloadType(payloadType) {
         if (typeof payloadType !== 'string' || !this._checkValues(payloadType, CONNECTOR_FUNCTION_PAYLOAD_TYPES))
             throw new Error('Parameter payload type must be a string and must be one of these values: ' + CONNECTOR_FUNCTION_PAYLOAD_TYPES);
-        
+
         this._payloadType = payloadType;
         return this;
     }
@@ -234,7 +235,7 @@ export default class ConnectorFunctions extends BaseProvision {
     withOperationalStatus(operationalStatus) {
         if (typeof operationalStatus !== 'string' || !this._checkValues(operationalStatus, CONNECTOR_FUNCTION_OPERATIONAL_STATUS))
             throw new Error('Parameter operational status must be a string and must be one of these values: ' + CONNECTOR_FUNCTION_OPERATIONAL_STATUS);
-        
+
         this._operationalStatus = operationalStatus;
         return this;
     }
@@ -246,13 +247,13 @@ export default class ConnectorFunctions extends BaseProvision {
             "identifier": this._identifier,
             "name": this._name,
             "operationalStatus": this._operationalStatus,
-            "operationName": this._type !== 'COLLECTION'?this._operationName:undefined,
+            "operationName": this._type !== 'COLLECTION' ? this._operationName : undefined,
             "type": this._type,
             "payloadType": this._payloadType,
             "javascript": this._javascript,
             "description": (this._description ? this._description : undefined),
-            "northCriterias": this._type === 'REQUEST'?this._northCriterias : undefined,
-            "southCriterias": this._type !== 'REQUEST'?this._southCriterias : undefined
+            "northCriterias": this._type === 'REQUEST' ? this._northCriterias : undefined,
+            "southCriterias": this._type !== 'REQUEST' ? this._southCriterias : undefined
         };
 
         return updateData;
@@ -268,13 +269,13 @@ export default class ConnectorFunctions extends BaseProvision {
                 throw new Error('Parameters organization, channel, operational status, type, payloadType, javascript and name must be defined');
         }
 
-        if (this._type === 'REQUEST' &&  this._payloadType !== 'JSON') {
+        if (this._type === 'REQUEST' && this._payloadType !== 'JSON') {
             throw new Error('Parameter payload type must be JSON when type REQUEST');
         }
     }
 
     _buildURL() {
-        return "connectorFunctions/" + this._resource + "/" + this._organization + "/channels/" + this._channel + "/";
+        return "connectorFunctions/" + this._resource + "/" + this._organization + "/channels/" + this._channel;
     }
 
     /** 
@@ -296,7 +297,7 @@ export default class ConnectorFunctions extends BaseProvision {
     update() {
         this._checkRequiredParameters(true);
 
-        return this._doNorthPut(this._buildURL() + this._identifier, this._composeElement());
+        return this._doNorthPut(this._buildURL() + '/' + this._identifier, this._composeElement());
     }
 
     /** 
@@ -310,7 +311,7 @@ export default class ConnectorFunctions extends BaseProvision {
 
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Napi.delete(this._buildURL() + this._identifier)
+        this._ogapi.Napi.delete(this._buildURL() + '/' + this._identifier)
             .then((res) => {
                 if (res.statusCode === 200) {
                     defered.resolve({

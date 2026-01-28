@@ -14,10 +14,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _q = require('q');
-
-var _q2 = _interopRequireDefault(_q);
-
 var _provisionBaseProvision = require('../provision/BaseProvision');
 
 var _provisionBaseProvision2 = _interopRequireDefault(_provisionBaseProvision);
@@ -29,7 +25,8 @@ var _provisionBaseProvision2 = _interopRequireDefault(_provisionBaseProvision);
 var Channels = (function (_BaseProvision) {
     _inherits(Channels, _BaseProvision);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 

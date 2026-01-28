@@ -30,6 +30,7 @@ var DeviceSearch = (function (_Search) {
     _inherits(DeviceSearch, _Search);
 
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
      * @param {!string} url - this define a specific resource to make the search
      * @param {object} filter - this is the filter

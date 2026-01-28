@@ -21,6 +21,7 @@ var _q2 = _interopRequireDefault(_q);
 
 var BaseProvision = (function () {
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!string} resource - this is a base url resource
      * @param {!number} [timeout] - timeout on request

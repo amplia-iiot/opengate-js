@@ -15,15 +15,16 @@ import {
  */
 export default class ConnectorFunctionsHelper extends GenericFinder {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
         super(ogapi, 'connectorFunctions');
-        this._jsHeaders ={
+        this._jsHeaders = {
             'accept': 'application/javascript'
         };
-        this._mdHeaders =  {
+        this._mdHeaders = {
             'accept': 'text/markdown'
         }
     }
@@ -34,7 +35,7 @@ export default class ConnectorFunctionsHelper extends GenericFinder {
      *   ogapi.newConnectorFunctionsHelper().getDocPrivateJavascriptFunctions();
      * @return {Promise} 
      */
-     getDocPrivateJavascriptFunctions() {
+    getDocPrivateJavascriptFunctions() {
         this._setExtraHeaders(this._mdHeaders)
         this._id = 'doc/jsApi/internal'
         return this._execute();
@@ -49,7 +50,7 @@ export default class ConnectorFunctionsHelper extends GenericFinder {
         //     },
         //     statusCode: 200
         // });
-    
+
         // return promise;
     }
     /**
@@ -58,7 +59,7 @@ export default class ConnectorFunctionsHelper extends GenericFinder {
      *   ogapi.newConnectorFunctionsHelper().getDocJavascriptFunctions();
      * @return {Promise} 
      */
-     getDocJavascriptFunctions() {
+    getDocJavascriptFunctions() {
         this._setExtraHeaders(this._mdHeaders)
         this._id = 'doc/jsApi/client'
         return this._execute();
@@ -73,7 +74,7 @@ export default class ConnectorFunctionsHelper extends GenericFinder {
         //     },
         //     statusCode: 200
         // });
-    
+
         // return promise;
     }
 
@@ -81,7 +82,7 @@ export default class ConnectorFunctionsHelper extends GenericFinder {
      * @return {Promise}
      * @private
      */
-     _execute() {
+    _execute() {
         let defered = q.defer();
         let promise = defered.promise;
         let _error_not_found = this._error_not_found;

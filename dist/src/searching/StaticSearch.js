@@ -30,6 +30,7 @@ var StaticSearch = (function (_Search) {
     _inherits(StaticSearch, _Search);
 
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
      * @param {!string} url - this define a specific resource to make the search
      * @param {object} filter - this is the filter
@@ -451,6 +452,15 @@ var StaticSearch = (function (_Search) {
                         'SUBSCRIPTION': {
                             'mandatory': ['generatedEntityKey'],
                             'optional': ['administrativeState', 'subscriptionName', 'description']
+                        }
+                    },
+                    'LORA': {
+                        'COMMUNICATIONS_MODULE': {
+                            'mandatory': ['generatedEntityKey']
+                        },
+                        'SUBSCRIPTION': {
+                            'mandatory': ['generatedEntityKey'],
+                            'optional': ['HOME_OPERATOR']
                         }
                     },
                     'LTE_M': {

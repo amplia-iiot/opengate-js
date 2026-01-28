@@ -34,7 +34,8 @@ exports.MANUFACTURERS_RESOURCE = MANUFACTURERS_RESOURCE;
 var Manufacturers = (function (_BaseProvision) {
     _inherits(Manufacturers, _BaseProvision);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 
