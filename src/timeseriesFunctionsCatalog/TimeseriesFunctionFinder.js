@@ -8,7 +8,8 @@ import GenericFinder from '../GenericFinder';
  */
 export default class TimeseriesFunctionFinder extends GenericFinder {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
@@ -55,7 +56,7 @@ export default class TimeseriesFunctionFinder extends GenericFinder {
     }
 
     _composeUrl() {
-        return this._baseUrl + "/" + this._organization  + "/catalog" + (this._name?'/'+ this._name:'') + (this._script?'/script':'');
+        return this._baseUrl + "/" + this._organization + "/catalog" + (this._name ? '/' + this._name : '') + (this._script ? '/script' : '');
     }
 
 }

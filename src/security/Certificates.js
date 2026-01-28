@@ -17,7 +17,8 @@ const max_length_description = 200;
  */
 export default class Certificates extends Security {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
@@ -267,8 +268,8 @@ export default class Certificates extends Security {
         let defered = q.defer();
         let promise = defered.promise;
         this._ogapi.Napi.post_multipart(this._resource, form, {
-                // onprogress: this._progressEvent
-            }, this._timeout, this._getExtraHeaders(), this._getUrlParameters())
+            // onprogress: this._progressEvent
+        }, this._timeout, this._getExtraHeaders(), this._getUrlParameters())
             .then((response) => {
                 let statusCode = response.statusCode;
                 if (statusCode === 201) {

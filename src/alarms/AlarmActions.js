@@ -8,6 +8,7 @@ import AlarmCloseBuilder from './actions/AlarmCloseBuilder';
  */
 export default class AlarmActions {
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
      */
     constructor(ogapi) {

@@ -10,6 +10,7 @@ const LIMIT_SIZE_DEF_VALUE = 1000;
  */
 export default class BaseSearch {
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!string} resource - this is a base url resource
      * @param {!number} [timeout] - timeout on request
@@ -119,7 +120,7 @@ export default class BaseSearch {
             });
         return promise;
     }*/
-    
+
     /**
      * This invoke a request to OpenGate North API and the callback is managed by promises
      * @return {Promise} - Promise with data with format csv

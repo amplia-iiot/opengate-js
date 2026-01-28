@@ -4,6 +4,7 @@ import { MONTHS_ENUM } from './../MONTHS_ENUM';
 
 export default class ByYear extends ByGeneric {
     /**
+     * Constructor
      * @param {!BaseOperationBuilder} parent - this is a operationBaseBuilder.
      * @param {!Date} date - Date when operation will be executed
      * @param {string} periodicityName - Name associated to periodicity	
@@ -33,32 +34,32 @@ export default class ByYear extends ByGeneric {
      * @return {BaseOperationBuilder}
      */
     day(day) {
-            if (typeof day !== "number") {
-                if (this._day) {
-                    month = this._day;
-                } else
-                    throw new Error("Parameter day must be typeof number");
-            }
-            if (day > 31 || day < 1) {
-                throw new Error("Parameter day must be greater than 1 and less than 31");
-            }
-            this._day = day;
-            if (typeof this._month === "undefined") {
-                return this;
-            }
-            if (this._parent._task) {
-                this._build();
-                return this;
-            }
-            return this._build();
+        if (typeof day !== "number") {
+            if (this._day) {
+                month = this._day;
+            } else
+                throw new Error("Parameter day must be typeof number");
         }
-        /**
-         * At this month will be executed the operation
-         * @param {!string} month 
-         * @throws {Error} throw error when month is not typeof string
-         * @throws {Error} throw error when month is not found into MONTHS_ENUM		
-         * @return {BaseOperationBuilder|ByYear}
-         */
+        if (day > 31 || day < 1) {
+            throw new Error("Parameter day must be greater than 1 and less than 31");
+        }
+        this._day = day;
+        if (typeof this._month === "undefined") {
+            return this;
+        }
+        if (this._parent._task) {
+            this._build();
+            return this;
+        }
+        return this._build();
+    }
+    /**
+     * At this month will be executed the operation
+     * @param {!string} month 
+     * @throws {Error} throw error when month is not typeof string
+     * @throws {Error} throw error when month is not found into MONTHS_ENUM		
+     * @return {BaseOperationBuilder|ByYear}
+     */
     month(month) {
         if (typeof month !== "string") {
             if (this._month) {
@@ -66,7 +67,7 @@ export default class ByYear extends ByGeneric {
             } else
                 throw new Error("OGAPI_PARAMETER_MONTH_MUST_BE_STRING");
         }
-        let found = MONTHS_ENUM.find(function(month) { return month == this; }, month);
+        let found = MONTHS_ENUM.find(function (month) { return month == this; }, month);
         if (typeof found === "undefined") {
             throw new Error("Any month into parameter months is not allowed. Parameter value <'" + month + "'>, Months allowed <'" + JSON.stringify(MONTHS_ENUM) + "'>");
         }

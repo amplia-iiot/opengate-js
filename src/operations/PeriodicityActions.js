@@ -5,6 +5,7 @@ import q from 'q';
 export default class PeriodicityActions {
 
     /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
      * @param {string} taskId - Identifier of the periodicity on which the action will be carried out
      */
@@ -12,7 +13,7 @@ export default class PeriodicityActions {
         if (typeof taskId !== 'string')
             throw new Error('Parameter taskId must be a string');
         this._ogapi = ogapi;
-        this._resource = 'operation/tasks/';
+        this._resource = 'operation/tasks';
         this._taskId = taskId;
         this._key = 'task';
     }
@@ -87,29 +88,29 @@ export default class PeriodicityActions {
         var defered = q.defer();
         var promise = defered.promise;
         _this._ogapi.newOperationFinder().findPeriodicityByPeriodicityId(_this._taskId)
-            .then(function(response) {
+            .then(function (response) {
                 var data = response.data;
                 if (!data || Object.keys(data).length == 0) {
                     defered.reject("Periodicity with id " + _this._taskId + " not exists");
                 } else {
                     let periodicityId = data.id;
-                    _this._resource = _this._resource + periodicityId;
+                    _this._resource = _this._resource + "/" + periodicityId;
                     switch (action) {
                         case "PAUSE":
                         case "ACTIVE":
                             _this._update(config)
-                                .then(function(response) {
+                                .then(function (response) {
                                     defered.resolve(response);
-                                }).catch(function(error) {
+                                }).catch(function (error) {
                                     defered.reject(error);
                                 });
                             break;
                         case "CANCEL":
                             _this._id = periodicityId;
                             _this._cancel()
-                                .then(function(response) {
+                                .then(function (response) {
                                     defered.resolve(response);
-                                }).catch(function(error) {
+                                }).catch(function (error) {
                                     defered.reject(error);
                                 });
                             break;
@@ -118,7 +119,7 @@ export default class PeriodicityActions {
                     }
                 }
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 defered.reject(error);
             });
         return promise;
@@ -141,7 +142,7 @@ export default class PeriodicityActions {
         let promise = defered.promise;
         var _this = this;
         _this._ogapi.newOperationFinder().findPeriodicityByPeriodicityId(_this._taskId).then(
-            function(response) {
+            function (response) {
                 var data = response.data;
                 if (!data) {
                     defered.reject("Periodicity with id " + _this._taskId + " not exists");
@@ -149,30 +150,30 @@ export default class PeriodicityActions {
                     let active = data.task ? data.task.state === 'ACTIVE' : false;
                     if (active) {
                         _this.pause().then(
-                            function(response) {
+                            function (response) {
                                 _this._update(config, forceToActivate || active).then(
-                                    function(response) {
+                                    function (response) {
                                         defered.resolve(response);
                                     }
                                 ).catch(
-                                    function(error) {
+                                    function (error) {
                                         defered.reject(_this._formatError(error));
                                     }
                                 );
                             }
                         ).catch(
-                            function(error) {
+                            function (error) {
                                 defered.reject(_this._formatError(error));
                             }
                         );
 
                     } else {
                         _this._update(config, forceToActivate || active).then(
-                            function(response) {
+                            function (response) {
                                 defered.resolve(response);
                             }
                         ).catch(
-                            function(error) {
+                            function (error) {
                                 defered.reject(_this._formatError(error));
                             }
                         );
@@ -180,7 +181,7 @@ export default class PeriodicityActions {
                 }
             }
         ).catch(
-            function(error) {
+            function (error) {
                 defered.reject(_this._formatError(error));
             }
         );
@@ -210,11 +211,11 @@ export default class PeriodicityActions {
             .then((response) => {
                 if (forceToActivate) {
                     _this.active().then(
-                        function(response) {
+                        function (response) {
                             defered.resolve(response);
                         }
                     ).catch(
-                        function(error) {
+                        function (error) {
                             defered.reject(this._formatError(error));
                         }
                     );
@@ -237,7 +238,7 @@ export default class PeriodicityActions {
             error.data = {};
         }
         if (!error.data.errors) {
-            error.data.errors = [(typeof(error) === "string") ? { message: error } : error];
+            error.data.errors = [(typeof (error) === "string") ? { message: error } : error];
         }
         return error;
     }
