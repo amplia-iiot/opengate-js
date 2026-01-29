@@ -291,7 +291,7 @@ export default class RuleConfigurations extends BaseProvision {
             throw new Error('Parameters organization, channel and identifier must be defined');
         }
 
-        return this._doNorthPut(this._buildURL() + this._identifier + '/parameters', newParameters || this._parameters || []);
+        return this._doNorthPut(this._buildURL() + '/' + this._identifier + '/parameters', newParameters || this._parameters || []);
     }
 
     /** 
@@ -305,7 +305,7 @@ export default class RuleConfigurations extends BaseProvision {
 
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Napi.delete(this._buildURL() + this._identifier)
+        this._ogapi.Napi.delete(this._buildURL() + '/' + this._identifier)
             .then((res) => {
                 if (res.statusCode === 200) {
                     defered.resolve({
