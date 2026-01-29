@@ -41,6 +41,7 @@ var Organizations = (function (_BaseProvision) {
         this._timeZone = undefined;
         this._zoom = undefined;
         this._location = undefined;
+        this._plan = undefined;
     }
 
     /**
@@ -237,7 +238,7 @@ var Organizations = (function (_BaseProvision) {
     }, {
         key: '_composeElement',
         value: function _composeElement() {
-            if (this._name === undefined || this._langCode === undefined || this._countryCode === undefined) throw new Error('Parameters name, country code and lang code must be defined');
+            if (this._name === undefined || this._langCode === undefined || this._countryCode === undefined || this._plan === undefined) throw new Error('Parameters name, country code, lang code and plan must be defined');
 
             var _mapDefault = {};
             if (this._zoom != undefined) {

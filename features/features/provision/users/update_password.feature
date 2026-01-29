@@ -2,7 +2,7 @@
 @provision
 @users
 @update_password
-@done
+
 Feature: Update password with logged in user or because it is not secure
     As a user of JsApi
     I want to reset password
@@ -20,6 +20,7 @@ Feature: Update password with logged in user or because it is not secure
         And the "time zone" "Europe/Andorra"
         And the "zoom" 10
         And the "location" with 1 and 1
+        And the "plan" "TRIAL"
         Then I delete it
         Then I create it
         Then response code should be: 201

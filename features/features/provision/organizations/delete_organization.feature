@@ -2,12 +2,13 @@
 @provision
 @delete_provision
 @organizations
+
 Feature: Delete an organization
 As a user of JsApi
 I want to delete an organization
 
   Background:
-    Given an apikey user by "require-real-apikey"
+    Given an email "YOUR_EMAIL" and password "YOUR_PASSWORD" the user logs in
     Given an ogapi "organizations builder" util
 
   Scenario: Try to deleting an organization
@@ -24,6 +25,7 @@ I want to delete an organization
     And the "time zone" "Europe/Andorra"
     And the "zoom" 10
     And the "location" with 1 and 1
+    And the "plan" "TRIAL"
     Then I create it
     And response code should be: 201
     And I want to delete a "organization"
@@ -41,6 +43,7 @@ I want to delete an organization
     And the "name" "JsApiPartialOrganization"
     And the "country code" "ES"
     And the "lang code" "es"
+    And the "plan" "TRIAL"
     Then I create it
     And response code should be: 201
     And I want to delete a "organization"

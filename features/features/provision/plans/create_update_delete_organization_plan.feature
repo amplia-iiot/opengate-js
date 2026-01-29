@@ -2,7 +2,6 @@
 @create_provision
 @create_organization_plan
 @organization_plan
-@wip
 
 Feature: Create a organization plan
   As a user of JsApi
@@ -10,9 +9,8 @@ Feature: Create a organization plan
   So I can create a organization plan
 
   Background:
-    #Given an email "YOUR_EMAIL" and password "YOUR_PASSWORD" the user logs in
-    Given with mock "organizationPlan" for "createDelete"
-    #TESTS WITH MOCK, ONLY organization plans URIS: 
+    Given an email "YOUR_EMAIL" and password "YOUR_PASSWORD" the user logs in
+    #TESTS WITH MOCK, ONLY organization plans URIS: Given with mock "organizationPlan" for "createDelete"
 
   Scenario: Creating an organization to use in create organization plan
     Given an ogapi "organizations builder" util
@@ -24,6 +22,7 @@ Feature: Create a organization plan
     And the "time zone" "Europe/Andorra"
     And the "zoom" 10
     And the "location" with 1 and 1
+    And the "plan" "BASIC"
     Then I delete it
     And I create it
     And response code should be: 201

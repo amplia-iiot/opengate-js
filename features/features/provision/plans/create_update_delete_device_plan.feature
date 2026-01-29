@@ -2,7 +2,6 @@
 @create_provision
 @create_device_plan
 @organization_plan
-@wip
 
 Feature: Create a device plan
   As a user of JsApi
@@ -10,9 +9,8 @@ Feature: Create a device plan
   So I can create a device plan
 
   Background:
-    #Given an email "YOUR_EMAIL" and password "YOUR_PASSWORD" the user logs in
-    Given with mock "devicePlan" for "createDelete"
-    #TESTS WITH MOCK, ONLY device plans URIS:  
+    Given an email "YOUR_EMAIL" and password "YOUR_PASSWORD" the user logs in
+    #TESTS WITH MOCK, ONLY device plans URIS:  Given with mock "devicePlan" for "createDelete"
 
   Scenario: Creating an organization to use in create user
     Given an ogapi "organizations builder" util
@@ -24,6 +22,7 @@ Feature: Create a device plan
     And the "time zone" "Europe/Andorra"
     And the "zoom" 10
     And the "location" with 1 and 1
+    And the "plan" "BASIC"
     Then I delete it
     And I create it
     And response code should be: 201
