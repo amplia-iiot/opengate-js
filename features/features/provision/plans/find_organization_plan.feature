@@ -4,7 +4,6 @@
 @find_provision
 @organizationPlans
 @find_organizatinPlans
-@wip
 
 Feature: Find a organization plan
 	As a user of JsApi
@@ -12,8 +11,7 @@ Feature: Find a organization plan
 	So I can check if a organization plan exists and get their information
 
 	Background:
-		#Given an email "YOUR_EMAIL" and password "YOUR_PASSWORD" the user logs in
-    Given with mock "organizationPlan" for "find"
+		Given an email "YOUR_EMAIL" and password "YOUR_PASSWORD" the user logs in
     #TESTS WITH MOCK, ONLY organization plans URIS:  Given with mock "organizationPlan" for "find"
 
 	Scenario: Creating an organization and user to use in create user
@@ -26,6 +24,7 @@ Feature: Find a organization plan
 		And the "time zone" "Europe/Andorra"
 		And the "zoom" 10
 		And the "location" with 1 and 1
+    And the "plan" "BASIC"
 		Then I delete it
 		And I create it
 		And response code should be: 201
