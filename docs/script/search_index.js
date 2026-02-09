@@ -540,24 +540,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "opengate-js/src/domains/domainsfinder.js~domainfinder",
-    "class/src/domains/DomainsFinder.js~DomainFinder.html",
-    "<span>DomainFinder</span> <span class=\"search-result-import-path\">opengate-js/src/domains/DomainsFinder.js</span>",
-    "class"
-  ],
-  [
-    "opengate-js/src/domains/domains.js~domains",
-    "class/src/domains/Domains.js~Domains.html",
-    "<span>Domains</span> <span class=\"search-result-import-path\">opengate-js/src/domains/Domains.js</span>",
-    "class"
-  ],
-  [
-    "opengate-js/src/searching/builder/domainssearchbuilder.js~domainssearchbuilder",
-    "class/src/searching/builder/DomainsSearchBuilder.js~DomainsSearchBuilder.html",
-    "<span>DomainsSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/DomainsSearchBuilder.js</span>",
-    "class"
-  ],
-  [
     "opengate-js/src/searching/builder/entitiessearchbuilder.js~entitiessearchbuilder",
     "class/src/searching/builder/EntitiesSearchBuilder.js~EntitiesSearchBuilder.html",
     "<span>EntitiesSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/EntitiesSearchBuilder.js</span>",
@@ -3654,18 +3636,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/internalopengateapi.js~internalopengateapi#domainsbuilder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-domainsBuilder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#domainsBuilder",
-    "method"
-  ],
-  [
-    "src/internalopengateapi.js~internalopengateapi#domainssearchbuilder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-domainsSearchBuilder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#domainsSearchBuilder",
-    "method"
-  ],
-  [
     "src/internalopengateapi.js~internalopengateapi#entitiessearchbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-entitiesSearchBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#entitiesSearchBuilder",
@@ -3837,12 +3807,6 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#newdevicefinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newDeviceFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newDeviceFinder",
-    "method"
-  ],
-  [
-    "src/internalopengateapi.js~internalopengateapi#newdomainfinder",
-    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newDomainFinder",
-    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newDomainFinder",
     "method"
   ],
   [
@@ -4107,6 +4071,12 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#organizationsbuilder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-organizationsBuilder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#organizationsBuilder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#organizationssearchbuilder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-organizationsSearchBuilder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#organizationsSearchBuilder",
     "method"
   ],
   [
@@ -6279,60 +6249,6 @@ window.esdocSearchIndex = [
     "src/datasets/datasets.js~datasets#withorganization",
     "class/src/datasets/Datasets.js~Datasets.html#instance-method-withOrganization",
     "src/datasets/Datasets.js~Datasets#withOrganization",
-    "method"
-  ],
-  [
-    "src/domains/domains.js",
-    "file/src/domains/Domains.js.html",
-    "src/domains/Domains.js",
-    "file"
-  ],
-  [
-    "src/domains/domains.js~domains#constructor",
-    "class/src/domains/Domains.js~Domains.html#instance-constructor-constructor",
-    "src/domains/Domains.js~Domains#constructor",
-    "method"
-  ],
-  [
-    "src/domains/domains.js~domains#withdescription",
-    "class/src/domains/Domains.js~Domains.html#instance-method-withDescription",
-    "src/domains/Domains.js~Domains#withDescription",
-    "method"
-  ],
-  [
-    "src/domains/domains.js~domains#withname",
-    "class/src/domains/Domains.js~Domains.html#instance-method-withName",
-    "src/domains/Domains.js~Domains#withName",
-    "method"
-  ],
-  [
-    "src/domains/domains.js~domains#withparentdomain",
-    "class/src/domains/Domains.js~Domains.html#instance-method-withParentDomain",
-    "src/domains/Domains.js~Domains#withParentDomain",
-    "method"
-  ],
-  [
-    "src/domains/domainsfinder.js",
-    "file/src/domains/DomainsFinder.js.html",
-    "src/domains/DomainsFinder.js",
-    "file"
-  ],
-  [
-    "src/domains/domainsfinder.js~domainfinder#constructor",
-    "class/src/domains/DomainsFinder.js~DomainFinder.html#instance-constructor-constructor",
-    "src/domains/DomainsFinder.js~DomainFinder#constructor",
-    "method"
-  ],
-  [
-    "src/domains/domainsfinder.js~domainfinder#findbyname",
-    "class/src/domains/DomainsFinder.js~DomainFinder.html#instance-method-findByName",
-    "src/domains/DomainsFinder.js~DomainFinder#findByName",
-    "method"
-  ],
-  [
-    "src/domains/domainsfinder.js~domainfinder#findbynamewithhierarchy",
-    "class/src/domains/DomainsFinder.js~DomainFinder.html#instance-method-findByNameWithHierarchy",
-    "src/domains/DomainsFinder.js~DomainFinder#findByNameWithHierarchy",
     "method"
   ],
   [
@@ -10140,24 +10056,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/searching/builder/domainssearchbuilder.js",
-    "file/src/searching/builder/DomainsSearchBuilder.js.html",
-    "src/searching/builder/DomainsSearchBuilder.js",
-    "file"
-  ],
-  [
-    "src/searching/builder/domainssearchbuilder.js~domainssearchbuilder#constructor",
-    "class/src/searching/builder/DomainsSearchBuilder.js~DomainsSearchBuilder.html#instance-constructor-constructor",
-    "src/searching/builder/DomainsSearchBuilder.js~DomainsSearchBuilder#constructor",
-    "method"
-  ],
-  [
-    "src/searching/builder/domainssearchbuilder.js~domainssearchbuilder#summary",
-    "class/src/searching/builder/DomainsSearchBuilder.js~DomainsSearchBuilder.html#instance-method-summary",
-    "src/searching/builder/DomainsSearchBuilder.js~DomainsSearchBuilder#summary",
-    "method"
-  ],
-  [
     "src/searching/builder/entitiessearchbuilder.js",
     "file/src/searching/builder/EntitiesSearchBuilder.js.html",
     "src/searching/builder/EntitiesSearchBuilder.js",
@@ -10458,51 +10356,39 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/searching/builder/organizationssearchbuilder.js~organizationssearchbuilder#build",
-    "class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html#instance-method-build",
-    "src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder#build",
-    "method"
-  ],
-  [
     "src/searching/builder/organizationssearchbuilder.js~organizationssearchbuilder#constructor",
     "class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html#instance-constructor-constructor",
     "src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder#constructor",
     "method"
   ],
   [
-    "src/searching/builder/organizationssearchbuilder.js~organizationssearchbuilder#fluentfilter",
-    "class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html#instance-member-fluentFilter",
-    "src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder#fluentFilter",
-    "member"
-  ],
-  [
-    "src/searching/builder/organizationssearchbuilder.js~organizationssearchbuilder#tagsfilter",
-    "class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html#instance-member-tagsFilter",
-    "src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder#tagsFilter",
-    "member"
-  ],
-  [
-    "src/searching/builder/organizationssearchbuilder.js~organizationssearchbuilder#withchannelname",
-    "class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html#instance-method-withChannelName",
-    "src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder#withChannelName",
+    "src/searching/builder/organizationssearchbuilder.js~organizationssearchbuilder#disabledefaultsorted",
+    "class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html#instance-method-disableDefaultSorted",
+    "src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder#disableDefaultSorted",
     "method"
   ],
   [
-    "src/searching/builder/organizationssearchbuilder.js~organizationssearchbuilder#withdomain",
-    "class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html#instance-method-withDomain",
-    "src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder#withDomain",
+    "src/searching/builder/organizationssearchbuilder.js~organizationssearchbuilder#flattened",
+    "class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html#instance-method-flattened",
+    "src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder#flattened",
     "method"
   ],
   [
-    "src/searching/builder/organizationssearchbuilder.js~organizationssearchbuilder#withname",
-    "class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html#instance-method-withName",
-    "src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder#withName",
+    "src/searching/builder/organizationssearchbuilder.js~organizationssearchbuilder#group",
+    "class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html#instance-method-group",
+    "src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder#group",
     "method"
   ],
   [
-    "src/searching/builder/organizationssearchbuilder.js~organizationssearchbuilder#withworkgroup",
-    "class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html#instance-method-withWorkgroup",
-    "src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder#withWorkgroup",
+    "src/searching/builder/organizationssearchbuilder.js~organizationssearchbuilder#select",
+    "class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html#instance-method-select",
+    "src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder#select",
+    "method"
+  ],
+  [
+    "src/searching/builder/organizationssearchbuilder.js~organizationssearchbuilder#summary",
+    "class/src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder.html#instance-method-summary",
+    "src/searching/builder/OrganizationsSearchBuilder.js~OrganizationsSearchBuilder#summary",
     "method"
   ],
   [
