@@ -3,7 +3,7 @@ title = "Organizations Search Builder"
 weight = 10
 +++
 
-Defined a search over organizations
+Defined a search over Devices	
 
 ## constructor
 
@@ -17,44 +17,11 @@ Defined a search over organizations
 
 
 ---
-## build()
+## disableDefaultSorted()
 
 
+The response will return a response without sorted
 
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `*`
-<br>
-
-{{% /notice %}}
-
----
-## fluentFilter
-
-
-
-
-
----
-## tagsFilter
-
-
-
-
-
----
-## withChannelName(channelName)
-
-
-Sets de organization name to search
-
-### Parámetros
-
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **channelName** | `string` | ❌ | hardware id |
 
 ### Retorna
 
@@ -67,20 +34,15 @@ Sets de organization name to search
 ### Ejemplos
 
 ```javascript
- ogapi.organizationsSearchBuilder().withChannelName('myOrganization').build()
+ogapi.ticketsSearchBuilder().disableDefaultSorted() 
 ```
 
 ---
-## withDomain(domainName)
+## flattened()
 
 
-Sets de domain name to search
+The response will return a flattened response
 
-### Parámetros
-
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **domainName** | `string` | ❌ | domain name |
 
 ### Retorna
 
@@ -93,25 +55,25 @@ Sets de domain name to search
 ### Ejemplos
 
 ```javascript
- ogapi.organizationsSearchBuilder().withDomain('myDomain').build()
+ogapi.ticketsSearchBuilder().flattened() 
 ```
 
 ---
-## withName(organizationName)
+## group(group)
 
 
-Sets de organization name to search
+The search request will have this group by 
 
 ### Parámetros
 
 | Nombre | Tipo | Opcional | Descripción |
 | :--- | :--- | :---: | :--- |
-| **organizationName** | `string` | ❌ | hardware id |
+| **group** | `object` | ❌ |  |
 
 ### Retorna
 
 {{% notice tip %}}
-**Tipo:** `OrganizationsSearchBuilder`
+**Tipo:** `SearchBuilder`
 <br>
 
 {{% /notice %}}
@@ -119,20 +81,47 @@ Sets de organization name to search
 ### Ejemplos
 
 ```javascript
- ogapi.organizationsSearchBuilder().withName('myOrganization').build()
+
 ```
 
 ---
-## withWorkgroup(workgroupName)
+## select(select)
 
 
-Sets de workgroup name to search
+The search request will have this filter 
 
 ### Parámetros
 
 | Nombre | Tipo | Opcional | Descripción |
 | :--- | :--- | :---: | :--- |
-| **workgroupName** | `string` | ❌ | workgroup name |
+| **select** | `SelectBuilder,object` | ❌ |  |
+
+### Retorna
+
+{{% notice tip %}}
+**Tipo:** `SearchBuilder`
+<br>
+
+{{% /notice %}}
+
+### Ejemplos
+
+```javascript
+ ogapi.ticketsSearchBuilder().select(
+     ogapi.newSelectBuilder().add(SE.element("provision.ticket.identifier", [[{"field": "value","alias": "identifier"}], ), SE.add("device.temperature.value", [[{"field": "value"}]))
+ ) // Setting SelectBuilder
+ ogapi.ticketsSearchBuilder().select({ "elements": [{"name": "provision.device.identifier",
+	"fields": [{"field": "value","alias": "identifier"}]},
+     {"name": "provision.ticket.name","fields": [{"field": "value","alias": "identifier"}]}]
+  }) //Custom select
+```
+
+---
+## summary()
+
+
+The response will only have a summary information 
+
 
 ### Retorna
 
@@ -145,7 +134,7 @@ Sets de workgroup name to search
 ### Ejemplos
 
 ```javascript
- ogapi.organizationsSearchBuilder().withWorkgroup('myWorkgroup').build()
+ogapi.ticketsSearchBuilder().summary() 
 ```
 
 ---

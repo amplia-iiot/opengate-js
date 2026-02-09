@@ -50,6 +50,7 @@ export default class RestRequest extends BaseProvision {
     /**
      * Sets the crontab expression for schedule
      * @param {string} cronExpression
+     * @param {string} timezone
      * @return {RestRequest}
      */
     withScheduleCronExpression(cronExpression, timezone) {
