@@ -33,7 +33,8 @@ var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
 var BulkFinder = (function (_ProvisionGenericFinder) {
     _inherits(BulkFinder, _ProvisionGenericFinder);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 

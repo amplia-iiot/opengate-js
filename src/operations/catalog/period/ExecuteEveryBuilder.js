@@ -10,6 +10,7 @@ import ByGeneric from './pattern/ByGeneric';
  */
 export default class ExecuteEveryBuilder {
     /**
+     * Constructor
      * @param {!BaseOperationBuilder} parent - this is a operationBaseBuilder.
      * @param {!Date} date - Date when operation will be executed
      * @param {string} periodicityName - Name associated to periodicity	
@@ -62,7 +63,7 @@ export default class ExecuteEveryBuilder {
         }
         let not_found = [];
         for (var i = 0; i < months.length; i++) {
-            let found = MONTHS_ENUM.find(function(month) { return month == this; }, months[i]);
+            let found = MONTHS_ENUM.find(function (month) { return month == this; }, months[i]);
             if (typeof found === "undefined") {
                 not_found.push(found);
             }

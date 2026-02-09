@@ -25,7 +25,8 @@ var _ProvisionGenericFinder3 = _interopRequireDefault(_ProvisionGenericFinder2);
 var WorkgroupRelationsFinder = (function (_ProvisionGenericFinder) {
     _inherits(WorkgroupRelationsFinder, _ProvisionGenericFinder);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 
@@ -47,6 +48,7 @@ var WorkgroupRelationsFinder = (function (_ProvisionGenericFinder) {
         }
 
         /**
+         * Constructor
          * @param {string} domain - domain name 
          * @param {string} name - workgroup name
          * @return {Promise} 

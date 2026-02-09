@@ -6,6 +6,7 @@ import moment from 'moment';
 export default class RuleConfigurationsActions {
 
     /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
      * @param {string} name - Identifier of the ryule configuration to operate
      */

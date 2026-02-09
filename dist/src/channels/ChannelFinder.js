@@ -33,7 +33,8 @@ var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
 var ChannelFinder = (function (_ProvisionGenericFinder) {
     _inherits(ChannelFinder, _ProvisionGenericFinder);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 

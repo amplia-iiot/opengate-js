@@ -37,7 +37,8 @@ var _q2 = _interopRequireDefault(_q);
 var RuleConfigurations = (function (_BaseProvision) {
     _inherits(RuleConfigurations, _BaseProvision);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 
@@ -302,7 +303,7 @@ var RuleConfigurations = (function (_BaseProvision) {
     }, {
         key: '_buildURL',
         value: function _buildURL() {
-            return "rules/" + this._resource + "/" + this._organization + "/channels/" + this._channel + "/";
+            return "rules/" + this._resource + "/" + this._organization + "/channels/" + this._channel;
         }
 
         /** 
@@ -328,7 +329,7 @@ var RuleConfigurations = (function (_BaseProvision) {
         value: function update() {
             this._checkRequiredParameters(true);
 
-            return this._doNorthPut(this._buildURL() + this._identifier, this._composeElement());
+            return this._doNorthPut(this._buildURL() + '/' + this._identifier, this._composeElement());
         }
 
         /** 
@@ -343,7 +344,7 @@ var RuleConfigurations = (function (_BaseProvision) {
                 throw new Error('Parameters organization, channel and identifier must be defined');
             }
 
-            return this._doNorthPut(this._buildURL() + this._identifier + '/parameters', newParameters || this._parameters || []);
+            return this._doNorthPut(this._buildURL() + '/' + this._identifier + '/parameters', newParameters || this._parameters || []);
         }
 
         /** 
@@ -358,7 +359,7 @@ var RuleConfigurations = (function (_BaseProvision) {
 
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            this._ogapi.Napi['delete'](this._buildURL() + this._identifier).then(function (res) {
+            this._ogapi.Napi['delete'](this._buildURL() + '/' + this._identifier).then(function (res) {
                 if (res.statusCode === 200) {
                     defered.resolve({
                         statusCode: res.statusCode

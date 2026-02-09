@@ -7,7 +7,8 @@ import ProvisionGenericFinder from '../ProvisionGenericFinder';
  */
 export default class BundleFinder extends ProvisionGenericFinder {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {

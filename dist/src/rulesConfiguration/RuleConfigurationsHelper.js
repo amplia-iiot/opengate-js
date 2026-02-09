@@ -33,7 +33,8 @@ var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
 var RuleConfigurationsHelper = (function (_GenericFinder) {
     _inherits(RuleConfigurationsHelper, _GenericFinder);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 

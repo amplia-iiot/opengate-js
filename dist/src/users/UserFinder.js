@@ -25,7 +25,8 @@ var _ProvisionGenericFinder3 = _interopRequireDefault(_ProvisionGenericFinder2);
 var UserFinder = (function (_ProvisionGenericFinder) {
     _inherits(UserFinder, _ProvisionGenericFinder);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 

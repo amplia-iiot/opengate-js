@@ -9,7 +9,8 @@ import { PRE_RESOURCE, MODELS_RESOURCE } from './Model';
  */
 export default class ModelFinder extends ProvisionGenericFinder {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
@@ -21,7 +22,7 @@ export default class ModelFinder extends ProvisionGenericFinder {
      * @private
      */
     _composeUrl() {
-        return this._baseUrl + "/" + this._organization + MANUFACTURERS_RESOURCE + "/" + this._manufacturer + MODELS_RESOURCE + (this._identifier?"/" + this._identifier: "");
+        return this._baseUrl + "/" + this._organization + MANUFACTURERS_RESOURCE + "/" + this._manufacturer + MODELS_RESOURCE + (this._identifier ? "/" + this._identifier : "");
     }
 
     /**

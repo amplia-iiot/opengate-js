@@ -29,7 +29,8 @@ var _provisionBaseProvision2 = _interopRequireDefault(_provisionBaseProvision);
 var Workgroups = (function (_BaseProvision) {
     _inherits(Workgroups, _BaseProvision);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 

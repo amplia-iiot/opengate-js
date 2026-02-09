@@ -35,7 +35,8 @@ var _provisionBaseProvision2 = _interopRequireDefault(_provisionBaseProvision);
 var Bundles = (function (_BaseProvision) {
     _inherits(Bundles, _BaseProvision);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 

@@ -24,6 +24,7 @@ var _moment2 = _interopRequireDefault(_moment);
 
 var ExecuteEachBuilder = (function () {
     /**
+     * Constructor
      * @param {!BaseOperationBuilder} parent - this is a operationBaseBuilder.
      * @param {!Date} date - Date when operation will be executed
      * @param {string} periodicityName - Name associated to periodicity	

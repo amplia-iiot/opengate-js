@@ -10,7 +10,8 @@ export const MANUFACTURERS_RESOURCE = '/manufacturers'
  */
 export default class Manufacturers extends BaseProvision {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
@@ -28,7 +29,7 @@ export default class Manufacturers extends BaseProvision {
         this._identifier = id;
         return this;
     }
-    
+
     /**
      * Set the name attribute
      * @param {string} name - required field
@@ -60,7 +61,7 @@ export default class Manufacturers extends BaseProvision {
      */
     withNotes(notes) {
         if (typeof notes !== 'string')
-           throw new Error("OGAPI_STRING_PARAMETER");
+            throw new Error("OGAPI_STRING_PARAMETER");
         this._notes = notes;
         return this;
     }
@@ -72,7 +73,7 @@ export default class Manufacturers extends BaseProvision {
      */
     withUrl(url) {
         if (typeof url !== 'string')
-           throw new Error("OGAPI_STRING_PARAMETER");
+            throw new Error("OGAPI_STRING_PARAMETER");
         this._manufUrl = url;
         return this;
     }
@@ -84,7 +85,7 @@ export default class Manufacturers extends BaseProvision {
      */
     withFax(fax) {
         if (typeof fax !== 'string')
-           throw new Error("OGAPI_STRING_PARAMETER");
+            throw new Error("OGAPI_STRING_PARAMETER");
         this._fax = fax;
         return this;
     }
@@ -96,7 +97,7 @@ export default class Manufacturers extends BaseProvision {
      */
     withTelephone(telephone) {
         if (typeof telephone !== 'string')
-           throw new Error("OGAPI_STRING_PARAMETER");
+            throw new Error("OGAPI_STRING_PARAMETER");
         this._telephone = telephone;
         return this;
     }
@@ -108,7 +109,7 @@ export default class Manufacturers extends BaseProvision {
      */
     withAddress(address) {
         if (typeof address !== 'string')
-           throw new Error("OGAPI_STRING_PARAMETER");
+            throw new Error("OGAPI_STRING_PARAMETER");
         this._address = address;
         return this;
     }
@@ -120,7 +121,7 @@ export default class Manufacturers extends BaseProvision {
      */
     withEmail(email) {
         if (typeof email !== 'string')
-           throw new Error("OGAPI_STRING_PARAMETER");
+            throw new Error("OGAPI_STRING_PARAMETER");
         this._email = email;
         return this;
     }
@@ -159,7 +160,7 @@ export default class Manufacturers extends BaseProvision {
     }
 
     _buildURL() {
-        var url = this._resource + (this._identifier? "/" + this._identifier: "")
+        var url = this._resource + (this._identifier ? "/" + this._identifier : "")
         return url;
     }
 }

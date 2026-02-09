@@ -32,6 +32,7 @@ var _merge2 = _interopRequireDefault(_merge);
 
 var Operations = (function () {
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
      */
 

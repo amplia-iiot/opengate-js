@@ -36,7 +36,8 @@ var _length_password = 50;
 var User = (function (_BaseProvision) {
     _inherits(User, _BaseProvision);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 

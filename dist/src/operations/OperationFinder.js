@@ -32,7 +32,8 @@ var LIMIT_SIZE_DEF_VALUE = 10;
 var OperationFinder = (function (_GenericFinder) {
     _inherits(OperationFinder, _GenericFinder);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 

@@ -38,6 +38,7 @@ var DatamodelsHelper = (function (_BaseProvision) {
     _inherits(DatamodelsHelper, _BaseProvision);
 
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!string} organization - Organization where the IoT datamodel was create
      * @param {!object} datamodel - Json object of IoT datamodel to modify or delete. 

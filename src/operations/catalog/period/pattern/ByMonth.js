@@ -2,6 +2,7 @@ import ByGeneric from './ByGeneric';
 
 export default class ByMonth extends ByGeneric {
     /**
+     * Constructor
      * @param {!BaseOperationBuilder} parent - this is a operationBaseBuilder.
      * @param {!Date} date - Date when operation will be executed
      * @param {string} periodicityName - Name associated to periodicity	

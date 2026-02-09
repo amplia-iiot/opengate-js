@@ -29,7 +29,8 @@ var _utilFormatsCheck_types2 = _interopRequireDefault(_utilFormatsCheck_types);
 var ProvisionProcessors = (function (_BaseProvision) {
     _inherits(ProvisionProcessors, _BaseProvision);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 

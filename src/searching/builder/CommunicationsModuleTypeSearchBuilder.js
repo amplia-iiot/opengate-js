@@ -39,7 +39,7 @@ export default class CommunicationsModuleTypeSearchBuilder extends SearchBuilder
      *
      * @description
      * The list of types of communication modules is as follows:
-     * "GENERIC", "WIFI", "EHTERNET", "BLUETOOTH", "MESH", "LOWPAN", "LTE_M", PLC", "ZIGBEE", "ADSL", "MOBILE", "MULTIMOBILE", "NARROWBAND", "GSM", "UMTS", "CAN", "I2C", "RS232", "RS422", "RS485"
+     * "GENERIC", "WIFI", "EHTERNET", "BLUETOOTH", "MESH", "LOWPAN", "LORA", "LTE_M", PLC", "ZIGBEE", "ADSL", "MOBILE", "MULTIMOBILE", "NARROWBAND", "GSM", "UMTS", "CAN", "I2C", "RS232", "RS422", "RS485"
      * @example
      *  ogapi.communicationsModuleTypeSearchBuilder().withType('GENERIC').build()
      * @param {!string} communicationsModuleType - specific type

@@ -33,6 +33,7 @@ var Datamodels = (function (_BaseProvision) {
     _inherits(Datamodels, _BaseProvision);
 
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!string} organization - Organization where the IoT datamodel will be created
      */

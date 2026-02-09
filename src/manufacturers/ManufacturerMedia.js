@@ -8,7 +8,8 @@ import BaseProvision from '../provision/BaseProvision';
  */
 export default class ManufacturerMedia extends BaseProvision {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi, manufacturerId) {
@@ -16,7 +17,7 @@ export default class ManufacturerMedia extends BaseProvision {
     }
 
     //http://cm.amplia.es/jira/browse/OGODM-3201
-    
+
     /**
      * Set the identifier attribute
      * @param {string} id - required field
@@ -28,7 +29,7 @@ export default class ManufacturerMedia extends BaseProvision {
         this._identifier = id;
         return this;
     }
-    
+
     /**
      * Set the name attribute
      * @param {string} name - required field
@@ -93,31 +94,31 @@ export default class ManufacturerMedia extends BaseProvision {
                 let blob = new Blob([this._composeElement()], {
                     type: "application/json"
                 });
-    
+
                 form.append('json', blob);
-    
+
                 if (rawFile) {
                     form.append('file', rawFile);
                 }
             } else {
                 form = {};
                 form.json = JSON.stringify(this._composeElement());
-    
+
                 if (rawFile) {
                     form.hardwareMedia = rawFile;
                 }
-            }    
+            }
         } else {
             form = new FormData();
             let blob = new Blob([JSON.stringify(this._composeElement())], {
                 type: "application/octet-stream"
             });
-            
+
             form.append('json', blob);
 
             form.append('file', this._file);
         }
-        
+
         var petitionOpts = {};
 
         if (this._progressEvent != undefined) {

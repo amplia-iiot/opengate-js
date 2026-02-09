@@ -24,7 +24,8 @@ var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
 
 var GenericFinder = (function () {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      * @param {string} source - Relative url where is located the resource.
      * @param {string} reponseJsonData - Relative url where is located the resource. Can be null

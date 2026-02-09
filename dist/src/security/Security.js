@@ -25,6 +25,7 @@ var Security = (function (_BaseProvision) {
   _inherits(Security, _BaseProvision);
 
   /**
+   * Constructor
    * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
    * @param {!string} url - this define a specific resource to make the provision
    */

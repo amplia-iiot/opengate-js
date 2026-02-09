@@ -17,7 +17,8 @@ const _length_password = 50;
 export default class User extends BaseProvision {
 
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
@@ -80,7 +81,7 @@ export default class User extends BaseProvision {
      * @return {User}
      */
     withApiKey(apiKey) {
-        if(!this._validateUUID(apiKey)){
+        if (!this._validateUUID(apiKey)) {
             throw new Error({ message: "OGAPI_USER_UPDATE_APIKEY_PARAMETER_INVALID", parameter: 'apiKey' });
         }
         this._apiKey = apiKey;
@@ -271,7 +272,7 @@ export default class User extends BaseProvision {
         return data;
     }
 
-   
+
     /**
      * This invoke a request to OpenGate North API and the callback is managed by promises
      * This function updates a password of a user
@@ -301,7 +302,7 @@ export default class User extends BaseProvision {
         return this._doNorthPut(this._buildURL(), data);
     }
 
-    _validateUUID(UUID){
+    _validateUUID(UUID) {
         return uuidValidate(UUID) && uuidVersion(UUID) === 4
     }
     /**
@@ -320,7 +321,7 @@ export default class User extends BaseProvision {
             throw new Error('OGAPI_USER_UPDATE_APIKEY_PARAMETER_MUST_BE_DEFINED');
         }
 
-        if(!this._validateUUID(apiKey)){
+        if (!this._validateUUID(apiKey)) {
             throw new Error({ message: "OGAPI_USER_UPDATE_APIKEY_PARAMETER_INVALID", parameter: 'apiKey' });
         }
 
@@ -366,17 +367,17 @@ export default class User extends BaseProvision {
      * @example
      *  ogapi.usersBuilder().withEmail(example@example.es).updatePassword(newPassword, tokenid);
      */
-     updatePassword(newPassword, tokenId) {
+    updatePassword(newPassword, tokenId) {
         this._newPassword = newPassword;
         this._tokenId = tokenId;
-        if (_.isEmpty(this._email)){
+        if (_.isEmpty(this._email)) {
             throw new Error('OGAPI_USER_MAIL_RESET_PASSWORD_PARAMETER_MUST_BE_DEFINED');
         }
-        if(_.isEmpty(this._newPassword)){
+        if (_.isEmpty(this._newPassword)) {
             throw new Error('OGAPI_USER_PASSWORD_RESET_PASSWORD_PARAMETER_MUST_BE_DEFINED');
         }
 
-        if(_.isEmpty(tokenId)){
+        if (_.isEmpty(tokenId)) {
             throw new Error('OGAPI_USER_TOKENID_RESET_PASSWORD_PARAMETER_MUST_BE_DEFINED');
         }
 
@@ -386,7 +387,7 @@ export default class User extends BaseProvision {
 
 
         var url = this._buildURL() + '/reset/' + tokenId
-        
+
         return this._doNorthPost(url, data);
     }
     /**
@@ -414,13 +415,13 @@ export default class User extends BaseProvision {
             password: this._password,
             "2FaCode": this._twoFaCode || undefined
         }
-        
+
         const url = this._resource + '/login';
 
         return this._doNorthPost(url, data, true)
     }
 
-    generateApiKey(){
+    generateApiKey() {
         return uuidv4()
     }
 }

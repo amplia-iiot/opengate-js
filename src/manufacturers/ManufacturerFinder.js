@@ -9,7 +9,8 @@ import HttpStatus from 'http-status-codes';
  */
 export default class ManufacturerFinder extends ProvisionGenericFinder {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
@@ -21,7 +22,7 @@ export default class ManufacturerFinder extends ProvisionGenericFinder {
      * @private
      */
     _composeUrl() {
-        return this._baseUrl + (this._identifier ? "/" + this._identifier + (this._media? "/media" + (this._mediaIdentifier? "/" + this._mediaIdentifier + '?format=raw': '') : ''):'');
+        return this._baseUrl + (this._identifier ? "/" + this._identifier + (this._media ? "/media" + (this._mediaIdentifier ? "/" + this._mediaIdentifier + '?format=raw' : '') : '') : '');
     }
 
     /**

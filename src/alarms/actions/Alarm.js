@@ -8,6 +8,7 @@ import q from 'q';
  */
 export default class Operation {
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!string} resource - this is a base url resource
      * @param {!object} postObj - it will be sent as a data on post action 

@@ -5,6 +5,7 @@ import RuleConfigurations from './RuleConfigurations'
  */
 export default class _RuleNotification {
     /**
+     * Constructor
      * @param {!RuleConfigurations} parent - RuleConfiguration object
      * @param {Object} notificationData - notification data to manage
      * @returns {_RuleNotification}

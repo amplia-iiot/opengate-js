@@ -11,15 +11,16 @@ import { MODELS_RESOURCE } from './Model';
  */
 export default class ModelMedia extends BaseProvision {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi, manufacturer, modelId) {
-        super(ogapi, MANUFACTURERS_RESOURCE  + "/" + manufacturer + MODELS_RESOURCE + "/" + modelId + '/media', undefined, ['identifier']);
+        super(ogapi, MANUFACTURERS_RESOURCE + "/" + manufacturer + MODELS_RESOURCE + "/" + modelId + '/media', undefined, ['identifier']);
     }
 
     //http://cm.amplia.es/jira/browse/OGODM-3201
-    
+
     /**
      * Set the identifier attribute
      * @param {string} id - required field
@@ -31,7 +32,7 @@ export default class ModelMedia extends BaseProvision {
         this._identifier = id;
         return this;
     }
-    
+
     /**
      * Set the name attribute
      * @param {string} name - required field
@@ -101,7 +102,7 @@ export default class ModelMedia extends BaseProvision {
      */
     create(rawFile) {
         let form;
-        
+
         if (rawFile) {
             if (typeof rawFile !== 'string') {
                 form = new FormData();
@@ -127,12 +128,12 @@ export default class ModelMedia extends BaseProvision {
             let blob = new Blob([JSON.stringify(this._composeElement())], {
                 type: "application/octet-stream"
             });
-            
+
             form.append('json', blob);
 
             form.append('file', this._file);
         }
-        
+
         var petitionOpts = {};
 
         if (this._progressEvent != undefined) {

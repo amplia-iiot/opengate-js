@@ -10,7 +10,8 @@ import HttpStatus from 'http-status-codes';
 
 export default class TimeseriesFinder extends GenericFinder {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {

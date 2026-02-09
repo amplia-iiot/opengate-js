@@ -7,7 +7,8 @@ import GenericFinder from './GenericFinder';
  */
 export default class ProvisionGenericFinder extends GenericFinder {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      * @param {string} source - Relative url where is located the resource.
      * @param {string} reponseJsonData - Relative url where is located the resource.

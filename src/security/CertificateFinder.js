@@ -14,7 +14,8 @@ import {
  */
 export default class CertificateFinder extends ProvisionGenericFinder {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {

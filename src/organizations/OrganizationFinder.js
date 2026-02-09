@@ -10,7 +10,8 @@ import HttpStatus from 'http-status-codes';
  */
 export default class OrganizationFinder extends ProvisionGenericFinder {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {

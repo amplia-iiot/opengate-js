@@ -9,7 +9,8 @@ import checkType from '../util/formats/check_types'
 
 export default class Areas extends BaseProvision {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
@@ -115,7 +116,7 @@ export default class Areas extends BaseProvision {
 
 
     _composeElement() {
-        this._resource = 'provision/organizations/' + this._organization + '/areas/';
+        this._resource = 'provision/organizations/' + this._organization + '/areas';
         let area = {
             identifier: this._identifier,
             name: this._name,

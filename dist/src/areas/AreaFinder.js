@@ -25,7 +25,8 @@ var _ProvisionGenericFinder3 = _interopRequireDefault(_ProvisionGenericFinder2);
 var AreaFinder = (function (_ProvisionGenericFinder) {
     _inherits(AreaFinder, _ProvisionGenericFinder);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 

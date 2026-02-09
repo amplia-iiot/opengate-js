@@ -42,6 +42,7 @@ var SimpleBuilder = (function (_BaseProvision) {
     _inherits(SimpleBuilder, _BaseProvision);
 
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!string} resource - this is the resource url where can be create/delete/update/read the entity
      * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new entity

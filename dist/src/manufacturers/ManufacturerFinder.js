@@ -33,7 +33,8 @@ var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
 var ManufacturerFinder = (function (_ProvisionGenericFinder) {
     _inherits(ManufacturerFinder, _ProvisionGenericFinder);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 

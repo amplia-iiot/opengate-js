@@ -8,7 +8,8 @@ import GenericFinder from '../GenericFinder';
  */
 export default class RuleConfigurationsFinder extends GenericFinder {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {

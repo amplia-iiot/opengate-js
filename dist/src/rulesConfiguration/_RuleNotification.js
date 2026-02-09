@@ -20,6 +20,7 @@ var _RuleConfigurations2 = _interopRequireDefault(_RuleConfigurations);
 
 var _RuleNotification = (function () {
     /**
+     * Constructor
      * @param {!RuleConfigurations} parent - RuleConfiguration object
      * @param {Object} notificationData - notification data to manage
      * @returns {_RuleNotification}

@@ -20,6 +20,7 @@ var _RuleConfigurations2 = _interopRequireDefault(_RuleConfigurations);
 
 var _RuleCondition = (function () {
     /**
+     * Constructor
      * @param {!RuleConfigurations} parent - RuleConfiguration object
      * @param {Object} conditionData - condition data to manage
      * @returns {_RuleCondition}

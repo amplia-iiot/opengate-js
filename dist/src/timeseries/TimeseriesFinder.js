@@ -33,7 +33,8 @@ var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
 var TimeseriesFinder = (function (_GenericFinder) {
     _inherits(TimeseriesFinder, _GenericFinder);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 

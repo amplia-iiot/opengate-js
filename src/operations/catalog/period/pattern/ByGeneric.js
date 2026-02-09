@@ -5,6 +5,7 @@ import { TIME_FORMAT } from './../../../../util/DATE_FORMAT';
 /* Generic class that will be extends on ByYear, ByWeek, ByMonth*/
 export default class ByGeneric {
     /**
+     * Constructor
      * @param {!BaseOperationBuilder} parent - this is a operationBaseBuilder.
      * @param {!Date} date - Date when operation will be executed
      * @param {string} periodicityName - Name associated to periodicity	

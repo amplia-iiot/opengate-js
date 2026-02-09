@@ -9,6 +9,8 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 var _FIELD_SEARCHER;
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
@@ -93,6 +95,8 @@ var match_url_resourceType = {
                 return ['ticket'];
             case '/channels':
                 return ['channel'];
+            case '/organizations':
+                return ['organization'];
             default:
                 return undefined;
         }
@@ -120,7 +124,6 @@ var complexFields = ['subscriber', 'subscription', 'communicationsModule', 'devi
 var SIMPLE_FIELDS = 'simple';
 var COMPLEX_FIELDS = 'complex';
 var SEARCH_FIELDS = 'search';
-var SEARCH_ORGANIZATIONS = 'organizations';
 var SEARCH_COLUMNS = 'dataset';
 var SEARCH_COLUMNS_CONTEXT = 'timeserie';
 
@@ -132,8 +135,6 @@ var TYPE_FIELD = {
         switch (match_url[url]) {
             case 'SearchOnDatamodel':
                 return SEARCH_FIELDS;
-            case 'SearchOnOrganizationsDatamodel':
-                return SEARCH_ORGANIZATIONS;
             case 'SearchOnDataset':
                 return SEARCH_COLUMNS;
             case 'SearchOnTimeseries':
@@ -240,7 +241,7 @@ var _getDatamodelFields = function _getDatamodelFields(parent, objSearcher) {
 };
 
 var _searchColumns = function _searchColumns(_this, finder, objSearcher, defered) {
-    https: //github.com/kriskowal/q#using-deferreds
+    //https://github.com/kriskowal/q#using-deferreds
     var selectedField = objSearcher.selectedField;
     //GET dataset by organization and datasetId
     var columnDatastreams = [];
@@ -258,7 +259,8 @@ var _searchColumns = function _searchColumns(_this, finder, objSearcher, defered
                     notFilterable: false,
                     filter: 'YES',
                     type: "string",
-                    schema: { type: 'string' }
+                    schema: { type: 'string' },
+                    _isContext: true
                 });
             }
 
@@ -275,7 +277,8 @@ var _searchColumns = function _searchColumns(_this, finder, objSearcher, defered
                     schema: {
                         type: 'string',
                         format: 'datetime'
-                    }
+                    },
+                    _isContext: true
                 });
             }
 
@@ -292,11 +295,20 @@ var _searchColumns = function _searchColumns(_this, finder, objSearcher, defered
                     schema: {
                         type: 'string',
                         format: 'datetime'
-                    }
+                    },
+                    _isContext: true
                 });
             }
 
-            var columns = _lodash2['default'].concat(response.data.columns || [], response.data.context || []);
+            var contextColumns = response.data.context || [];
+            if (contextColumns.length > 0) {
+                contextColumns = contextColumns.map(function (ctxCol) {
+                    var finalCtx = _extends({}, ctxCol);
+                    finalCtx._isContext = true;
+                    return finalCtx;
+                });
+            }
+            var columns = _lodash2['default'].concat(response.data.columns || [], contextColumns);
 
             //search de la definición de schemas de opengate
             _this._ogapi.basicTypesSearchBuilder().withPath('$').build().execute().then(function (basicTypes) {
@@ -389,14 +401,7 @@ var _searchColumns = function _searchColumns(_this, finder, objSearcher, defered
     });
 };
 
-var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEARCH_ORGANIZATIONS, function (objSearcher, defered) {
-    https: //github.com/kriskowal/q#using-deferreds
-    _getDatamodelFields(this, objSearcher).then(function (response) {
-        defered.resolve(response);
-    })['catch'](function (err) {
-        defered.reject(err);
-    });
-}), _defineProperty(_FIELD_SEARCHER, SEARCH_FIELDS, function (objSearcher, defered) {
+var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEARCH_FIELDS, function (objSearcher, defered) {
     https: //github.com/kriskowal/q#using-deferreds
     _getDatamodelFields(this, objSearcher).then(function (response) {
         defered.resolve(response);

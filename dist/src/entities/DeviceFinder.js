@@ -23,7 +23,8 @@ var _EntityFinder3 = _interopRequireDefault(_EntityFinder2);
 var DeviceFinder = (function (_EntityFinder) {
   _inherits(DeviceFinder, _EntityFinder);
 
-  /**     
+  /**
+   * Constructor
    * @param {InternalOpenGateAPI} Reference to the API object.
    */
 

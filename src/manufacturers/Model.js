@@ -3,7 +3,7 @@
 import BaseProvision from '../provision/BaseProvision';
 import ModelMedia from './ModelMedia';
 
-import {MANUFACTURERS_RESOURCE} from './Manufacturer'
+import { MANUFACTURERS_RESOURCE } from './Manufacturer'
 
 export const MODELS_RESOURCE = '/models';
 
@@ -12,13 +12,14 @@ export const MODELS_RESOURCE = '/models';
  */
 export default class Models extends BaseProvision {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi, manufacturer) {
         super(ogapi, MANUFACTURERS_RESOURCE, undefined, ['name']);
         this._isValidString(manufacturer, 'manufacturer', 50);
-        
+
         this._resource = this._resource + "/" + manufacturer + MODELS_RESOURCE;
     }
 
@@ -33,7 +34,7 @@ export default class Models extends BaseProvision {
         this._identifier = id;
         return this;
     }
-    
+
     /**
      * Set the name attribute
      * @param {string} name - required field
@@ -65,7 +66,7 @@ export default class Models extends BaseProvision {
      */
     withNotes(notes) {
         if (typeof notes !== 'string')
-           throw new Error("OGAPI_STRING_PARAMETER");
+            throw new Error("OGAPI_STRING_PARAMETER");
         this._notes = notes;
         return this;
     }
@@ -77,7 +78,7 @@ export default class Models extends BaseProvision {
      */
     withUrl(url) {
         if (typeof url !== 'string')
-           throw new Error("OGAPI_STRING_PARAMETER");
+            throw new Error("OGAPI_STRING_PARAMETER");
         this._modelUrl = url;
         return this;
     }
@@ -89,7 +90,7 @@ export default class Models extends BaseProvision {
      */
     withVersion(version) {
         if (typeof version !== 'string')
-           throw new Error("OGAPI_STRING_PARAMETER");
+            throw new Error("OGAPI_STRING_PARAMETER");
         this._version = version;
         return this;
     }
@@ -119,7 +120,7 @@ export default class Models extends BaseProvision {
     }
 
     _buildURL() {
-        var url = this._resource + (this._identifier?"/" + this._identifier: "")
+        var url = this._resource + (this._identifier ? "/" + this._identifier : "")
         return url;
     }
 

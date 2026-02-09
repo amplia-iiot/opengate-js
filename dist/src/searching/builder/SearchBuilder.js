@@ -23,6 +23,7 @@ var LIMIT_SIZE_DEF_VALUE = 1000;
 
 var SearchBuilder = (function () {
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} parent - this is ogapi instance
      * @param {!object} routes - this defined the routes. One of those routes must be called on Builder before call build method.
      */

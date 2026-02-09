@@ -9,6 +9,7 @@ export const DATAMODELS_RESOURCE = '/datamodels';
  */
 export default class Datamodels extends BaseProvision {
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!string} organization - Organization where the IoT datamodel will be created
      */

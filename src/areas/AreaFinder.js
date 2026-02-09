@@ -9,7 +9,8 @@ import ProvisionGenericFinder from '../ProvisionGenericFinder';
 export default class AreaFinder extends ProvisionGenericFinder {
 
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {

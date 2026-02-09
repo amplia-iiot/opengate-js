@@ -5,6 +5,7 @@ import RuleConfigurations from './RuleConfigurations'
  */
 export default class _RuleCondition {
     /**
+     * Constructor
      * @param {!RuleConfigurations} parent - RuleConfiguration object
      * @param {Object} conditionData - condition data to manage
      * @returns {_RuleCondition}

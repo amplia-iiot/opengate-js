@@ -12,7 +12,8 @@ import BaseProvision from '../provision/BaseProvision';
  */
 export default class Bundles extends BaseProvision {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
@@ -66,16 +67,16 @@ export default class Bundles extends BaseProvision {
      * @return {Bundles}
      */
     withWorkgroup(workgroup) {
-            if (typeof workgroup !== 'string')
-                throw new Error('Parameter workgroup must be a string');
-            this._workgroup = workgroup;
-            return this;
-        }
-        /**
-         * Set the description attribute
-         * @param {string} description 
-         * @return {Bundles}
-         */
+        if (typeof workgroup !== 'string')
+            throw new Error('Parameter workgroup must be a string');
+        this._workgroup = workgroup;
+        return this;
+    }
+    /**
+     * Set the description attribute
+     * @param {string} description 
+     * @return {Bundles}
+     */
     withDescription(description) {
         if (typeof description !== 'string' || description.length > 250)
             throw new Error({
@@ -103,7 +104,7 @@ export default class Bundles extends BaseProvision {
         }
         let not_found = [];
         for (var i = 0; i < actions.length; i++) {
-            let found = ACTION_ENUM.find(function(action) {
+            let found = ACTION_ENUM.find(function (action) {
                 return action == this;
             }, actions[i]);
             if (typeof found === "undefined") {
@@ -205,10 +206,10 @@ export default class Bundles extends BaseProvision {
         var defered = q.defer();
         var promise = defered.promise;
         this._ogapi.Napi.put(this._buildURL(), {
-                bundle: {
-                    active: true
-                }
-            }, undefined, this._getExtraHeaders(), this._getUrlParameters())
+            bundle: {
+                active: true
+            }
+        }, undefined, this._getExtraHeaders(), this._getUrlParameters())
             .then((res) => {
                 if (res.statusCode === 200) {
                     defered.resolve({
@@ -243,10 +244,10 @@ export default class Bundles extends BaseProvision {
         var defered = q.defer();
         var promise = defered.promise;
         this._ogapi.Napi.put(this._buildURL(), {
-                bundle: {
-                    active: false
-                }
-            }, undefined, this._getExtraHeaders(), this._getUrlParameters())
+            bundle: {
+                active: false
+            }
+        }, undefined, this._getExtraHeaders(), this._getUrlParameters())
             .then((res) => {
                 if (res.statusCode === 200) {
                     defered.resolve({
@@ -328,27 +329,27 @@ export default class Bundles extends BaseProvision {
         }
 
         _this._allPromisesOk = true;
-        let onCreateBundle = function(res) {
+        let onCreateBundle = function (res) {
             if (res.statusCode === 201) {
                 let bundleLocation = res;
                 if (_this._deploymentElements && _this._deploymentElements.length > 0) {
                     let dePromises = [];
-                    _this._deploymentElements.forEach(function(deTmp) {
+                    _this._deploymentElements.forEach(function (deTmp) {
                         dePromises.push(deTmp.deploy());
                     });
 
                     // update de bundle
-                    Promise.all(dePromises).then(function() {
+                    Promise.all(dePromises).then(function () {
                         if (_this._allPromisesOk) {
 
-                            _this.activate().then(function(status, data) {
+                            _this.activate().then(function (status, data) {
                                 defered.resolve(bundleLocation);
-                            }).catch(function(err) {
+                            }).catch(function (err) {
                                 defered.reject(err);
                             });
 
                         }
-                    }).catch(function(err) {
+                    }).catch(function (err) {
                         _this._allPromisesOk = false;
                         onCreateBundleError(err);
                     });
@@ -362,7 +363,7 @@ export default class Bundles extends BaseProvision {
             }
         };
 
-        let onCreateBundleError = function(err) {
+        let onCreateBundleError = function (err) {
             _this.delete();
             defered.reject(err);
         };
@@ -388,7 +389,7 @@ export default class Bundles extends BaseProvision {
         let defered = q.defer();
         let promise = defered.promise;
 
-        let onCreateBundle = function(res) {
+        let onCreateBundle = function (res) {
             if (res.statusCode === 201) {
                 defered.resolve(res);
             } else {
@@ -398,7 +399,7 @@ export default class Bundles extends BaseProvision {
             }
         };
 
-        let onCreateBundleError = function(err) {
+        let onCreateBundleError = function (err) {
             defered.reject(err);
         };
 

@@ -24,6 +24,7 @@ var ByWeek = (function (_ByGeneric) {
     _inherits(ByWeek, _ByGeneric);
 
     /**
+     * Constructor
      * @param {!BaseOperationBuilder} parent - this is a operationBaseBuilder.
      * @param {!Date} date - Date when operation will be executed
      * @param {string} periodicityName - Name associated to periodicity	

@@ -35,7 +35,8 @@ var _CONNECTOR_FUNCTIONS_ENUMS = require('../_CONNECTOR_FUNCTIONS_ENUMS');
 var ConnectorFunctionsHelper = (function (_GenericFinder) {
     _inherits(ConnectorFunctionsHelper, _GenericFinder);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 

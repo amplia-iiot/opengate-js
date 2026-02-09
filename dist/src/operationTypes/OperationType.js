@@ -29,7 +29,8 @@ var _q2 = _interopRequireDefault(_q);
 var OperationType = (function (_BaseProvision) {
     _inherits(OperationType, _BaseProvision);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 
@@ -62,6 +63,10 @@ var OperationType = (function (_BaseProvision) {
             // Para crear sólo se puede fromCatalog, para actualizar se requiere todo
             if (operationTypeObj.fromCatalog) {
                 this.fromCatalog(operationTypeObj.fromCatalog);
+            }
+
+            if (operationTypeObj.profiles) {
+                this.withProfiles(operationTypeObj.profiles);
             }
 
             if (nameForUpdate || !operationTypeObj.fromCatalog) {
@@ -197,6 +202,19 @@ var OperationType = (function (_BaseProvision) {
         }
 
         /**
+         * Allows the modification of the profiles allowed
+         * @param {array} profiles 
+         * @return {OperationType}
+         */
+    }, {
+        key: 'withProfiles',
+        value: function withProfiles(profiles) {
+            this._profiles = profiles || undefined;
+
+            return this;
+        }
+
+        /**
          * Allows the modification of the applicableTo
          * @param {array} applicableTo 
          * @return {OperationType}
@@ -221,6 +239,7 @@ var OperationType = (function (_BaseProvision) {
                 "fromCatalog": this._fromCatalog || undefined,
                 "steps": this._steps || undefined,
                 "models": this._models || undefined,
+                "profiles": this._profiles || undefined,
                 "applicableTo": this._applicableTo || undefined
             };
 

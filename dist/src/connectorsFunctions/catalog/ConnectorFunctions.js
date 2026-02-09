@@ -32,6 +32,7 @@ var ConnectorFunctions = (function (_BaseProvision) {
     _inherits(ConnectorFunctions, _BaseProvision);
 
     /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi 
      * @param {String} identifier 
      * @param {Object} connectorFunction 

@@ -26,6 +26,7 @@ var SearchWithSummaryBuilder = (function (_SearchBuilder) {
     _inherits(SearchWithSummaryBuilder, _SearchBuilder);
 
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} parent - this is ogapi instance
      * @param {!object} routes - this defined the routes. One of those routes must be called on Builder before call build method.
      */

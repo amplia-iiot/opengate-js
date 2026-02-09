@@ -54,8 +54,8 @@ const match_url = {
     '/organizations': 'SearchOnDatamodel',
     'datasets': 'SearchOnDataset',
     'timeseries': 'SearchOnTimeseries',
-    '/catalog/plans/organization' : 'PLANS',
-    '/catalog/plans/device' : 'PLANS'
+    '/catalog/plans/organization': 'PLANS',
+    '/catalog/plans/device': 'PLANS'
 };
 
 const match_context = {
@@ -66,7 +66,7 @@ const match_context = {
 };
 
 const match_url_resourceType = {
-    get: function(url) {
+    get: function (url) {
         switch (url) {
             case 'entity-asset':
                 return ['entity.asset'];
@@ -107,12 +107,12 @@ const SEARCH_COLUMNS = 'dataset';
 const SEARCH_COLUMNS_CONTEXT = 'timeserie';
 
 const TYPE_FIELD = {
-    get: function(url) {
+    get: function (url) {
         if (complexPrimaryType.indexOf(match_url[url]) >= 0) {
             return COMPLEX_FIELDS;
         }
         switch (match_url[url]) {
-            case 'SearchOnDatamodel':       
+            case 'SearchOnDatamodel':
                 return SEARCH_FIELDS;
             case 'SearchOnDataset':
                 return SEARCH_COLUMNS;
@@ -123,18 +123,18 @@ const TYPE_FIELD = {
         }
     }
 };
-const _getCustomSchema = function(_ds, schema) {
+const _getCustomSchema = function (_ds, schema) {
     let result
     const ds = _ds[0]
-    if(!ds || !schema.properties || !schema.properties[ds]){
-        result =  schema
-    } else{
+    if (!ds || !schema.properties || !schema.properties[ds]) {
+        result = schema
+    } else {
         result = _getCustomSchema(_ds.slice(1), schema.properties[ds])
     }
     return result
 }
 
-const _getDatamodelFields = function(parent, objSearcher){
+const _getDatamodelFields = function (parent, objSearcher) {
     let defered = q.defer();
     const selectedField = objSearcher.selectedField
     const selectAll = objSearcher.selectAll
@@ -152,7 +152,7 @@ const _getDatamodelFields = function(parent, objSearcher){
             }
         });
     }
-    if(organization){
+    if (organization) {
         rtFilter.and.push({
             'eq': {
                 'datamodels.organizationName': organization
@@ -170,37 +170,37 @@ const _getDatamodelFields = function(parent, objSearcher){
         datamodelSearchBuilder.filter(rtFilter);
     }
 
-    datamodelSearchBuilder.build().execute().then(function(response) {
+    datamodelSearchBuilder.build().execute().then(function (response) {
         var datastreams = [];
         if (response.statusCode === 200) {
-            datastreams = response.data.datamodels.map(function(datamodel) {
+            datastreams = response.data.datamodels.map(function (datamodel) {
                 var categories = datamodel.categories || [];
-                return categories.map(function(category) {
+                return categories.map(function (category) {
                     var datastreams = category.datastreams || [];
-                    return datastreams.map(function(ds) {
+                    return datastreams.map(function (ds) {
                         if (selectedField || selectAll) {
                             return ds;
                         }
                         return ds.identifier;
-                    }); 
+                    });
                 });
             });
             datastreams = reduce(datastreams);
         }
         if (selectedField) {
-            defered.resolve(datastreams.find(function(dsIdTmp) {
+            defered.resolve(datastreams.find(function (dsIdTmp) {
                 return selectedField === dsIdTmp.identifier;
             }));
         } else {
             defered.resolve(datastreams);
         }
-    }).catch(function(error) {
+    }).catch(function (error) {
         defered.reject(error);
     });
 
     function reduce(array) {
         if (array.length > 0 && array[0].constructor === Array) {
-            array = array.reduce(function(preVal, elem) {
+            array = array.reduce(function (preVal, elem) {
                 return preVal.concat(elem);
             });
             return reduce(array);
@@ -210,16 +210,16 @@ const _getDatamodelFields = function(parent, objSearcher){
     return defered.promise
 }
 
-const _searchColumns = function(_this, finder, objSearcher, defered){
-    https://github.com/kriskowal/q#using-deferreds
-        const selectedField = objSearcher.selectedField
-        //GET dataset by organization and datasetId
-        var columnDatastreams = []
-        var organization = objSearcher.extraData.organization
-        var id = objSearcher.extraData[finder.entity]
-        _this._ogapi[finder.api]()[finder.method](organization, id)
+const _searchColumns = function (_this, finder, objSearcher, defered) {
+    //https://github.com/kriskowal/q#using-deferreds
+    const selectedField = objSearcher.selectedField
+    //GET dataset by organization and datasetId
+    var columnDatastreams = []
+    var organization = objSearcher.extraData.organization
+    var id = objSearcher.extraData[finder.entity]
+    _this._ogapi[finder.api]()[finder.method](organization, id)
         .then(function (response) {
-            if (response.statusCode === 200) {                
+            if (response.statusCode === 200) {
                 if (response.data.identifierColumn) {
                     columnDatastreams.push({
                         identifier: response.data.identifierColumn,
@@ -230,8 +230,9 @@ const _searchColumns = function(_this, finder, objSearcher, defered){
                         notFilterable: false,
                         filter: 'YES',
                         type: "string",
-                        schema: {type: 'string'}
-                      })
+                        schema: { type: 'string' },
+                        _isContext: true
+                    })
                 }
 
                 if (response.data.bucketColumn) {
@@ -247,8 +248,9 @@ const _searchColumns = function(_this, finder, objSearcher, defered){
                         schema: {
                             type: 'string',
                             format: 'datetime'
-                        }
-                      })
+                        },
+                        _isContext: true
+                    })
                 }
 
                 if (response.data.bucketInitColumn) {
@@ -264,11 +266,20 @@ const _searchColumns = function(_this, finder, objSearcher, defered){
                         schema: {
                             type: 'string',
                             format: 'datetime'
-                        }
-                      })
+                        },
+                        _isContext: true
+                    })
                 }
 
-                var columns = _.concat(response.data.columns || [], response.data.context || [])
+                var contextColumns = response.data.context || []
+                if (contextColumns.length > 0) {
+                    contextColumns = contextColumns.map((ctxCol) => {
+                        var finalCtx = { ...ctxCol }
+                        finalCtx._isContext = true
+                        return finalCtx
+                    })
+                }
+                var columns = _.concat(response.data.columns || [], contextColumns)
 
                 //search de la definición de schemas de opengate
                 _this._ogapi.basicTypesSearchBuilder().withPath('$').build().execute().then(function (basicTypes) {
@@ -360,15 +371,16 @@ const _searchColumns = function(_this, finder, objSearcher, defered){
 
 
 const FIELD_SEARCHER = {
-    [SEARCH_FIELDS]: function(objSearcher, defered) {
+
+    [SEARCH_FIELDS]: function (objSearcher, defered) {
         https://github.com/kriskowal/q#using-deferreds
-        _getDatamodelFields(this, objSearcher).then(function(response){
+        _getDatamodelFields(this, objSearcher).then(function (response) {
             defered.resolve(response)
-        }).catch(function(err){
+        }).catch(function (err) {
             defered.reject(err)
         })
     },
-    [SIMPLE_FIELDS]: function(objSearcher, defered) {
+    [SIMPLE_FIELDS]: function (objSearcher, defered) {
         const context = objSearcher.context
         const primaryType = objSearcher.primaryType
         const field = objSearcher.selectedField
@@ -384,7 +396,7 @@ const FIELD_SEARCHER = {
                         fieldMatch = fieldTmp;
                     } else if (match_context[primaryType]) {
                         if (match_context[primaryType] instanceof Array) {
-                            match_context[primaryType].forEach(function(ctxMatch) {
+                            match_context[primaryType].forEach(function (ctxMatch) {
                                 if (fieldTmp.toLowerCase() === (ctxMatch + field.toLowerCase()) ||
                                     fieldTmp.toLowerCase() === (ctxMatch + '.' + field.toLowerCase()) ||
                                     fieldTmp.toLowerCase() === (ctxMatch + field.toLowerCase() + 'name') ||
@@ -432,13 +444,13 @@ const FIELD_SEARCHER = {
 
         defered.resolve(paths.slice());
     },
-    [COMPLEX_FIELDS]: function(objSearcher, defered) {
+    [COMPLEX_FIELDS]: function (objSearcher, defered) {
         const states = objSearcher.states
         const context = objSearcher.context
         const primaryType = objSearcher.primaryType
 
         const finiteStateMachine = {
-            1: function(states, context) {
+            1: function (states, context) {
                 // Fields del primaryType + los fields de los relacionados = complexFields
                 return context[primaryType].concat(
                     complexFields.filter(
@@ -447,7 +459,7 @@ const FIELD_SEARCHER = {
                     )
                 );
             },
-            2: function(states, context) {
+            2: function (states, context) {
                 try {
                     // Fields del relacionado + fields_related
                     return appendPreviousStates(
@@ -458,7 +470,7 @@ const FIELD_SEARCHER = {
                     return [];
                 }
             },
-            3: function(states, context) {
+            3: function (states, context) {
                 let secondState = states[1];
                 if (fields_related.indexOf(secondState) === -1) return [];
                 try {
@@ -491,7 +503,7 @@ const FIELD_SEARCHER = {
 
         function appendPreviousStates(states, fields) {
             let out = [];
-            fields.forEach(function(field) {
+            fields.forEach(function (field) {
                 let arrayField = states.slice(0, -1);
                 arrayField.push(field);
                 out.push(arrayField.join("."));
@@ -499,11 +511,11 @@ const FIELD_SEARCHER = {
             return out;
         }
     },
-    [SEARCH_COLUMNS]: function(objSearcher, defered) {
-        _searchColumns(this, {api: 'newDatasetFinder', method: 'findByOrganizationAndDatasetId', entity: 'dataset'}, objSearcher, defered)
+    [SEARCH_COLUMNS]: function (objSearcher, defered) {
+        _searchColumns(this, { api: 'newDatasetFinder', method: 'findByOrganizationAndDatasetId', entity: 'dataset' }, objSearcher, defered)
     },
-    [SEARCH_COLUMNS_CONTEXT]: function(objSearcher, defered){
-        _searchColumns(this, {api: 'newTimeserieFinder', method: 'findByOrganizationAndTimeserieId', entity: 'timeserie'}, objSearcher, defered)
+    [SEARCH_COLUMNS_CONTEXT]: function (objSearcher, defered) {
+        _searchColumns(this, { api: 'newTimeserieFinder', method: 'findByOrganizationAndTimeserieId', entity: 'timeserie' }, objSearcher, defered)
     }
 }
 
@@ -521,8 +533,8 @@ export default class FieldFinder {
     find(input = "") {
         let defered = q.defer();
         let objSearcher = {
-            states : input.split('.'),
-            context:FIELDS[match_url[this._url]],
+            states: input.split('.'),
+            context: FIELDS[match_url[this._url]],
             primaryType: match_url[this._url],
             extraData: this._extraData
         }
@@ -532,9 +544,9 @@ export default class FieldFinder {
     findAll(input = "") {
         let defered = q.defer();
         let objSearcher = {
-            states : input.split('.'),
-            context:FIELDS[match_url[this._url]],
-            primaryType: match_url[this._url], 
+            states: input.split('.'),
+            context: FIELDS[match_url[this._url]],
+            primaryType: match_url[this._url],
             selectAll: true,
             extraData: this._extraData
         }
@@ -545,8 +557,8 @@ export default class FieldFinder {
     findFieldPath(field = "") {
         let defered = q.defer();
         let objSearcher = {
-            states : field,
-            context:FIELDS[match_url[this._url]],
+            states: field,
+            context: FIELDS[match_url[this._url]],
             primaryType: match_url[this._url],
             selectedField: field,
             extraData: this._extraData

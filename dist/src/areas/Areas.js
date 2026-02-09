@@ -31,7 +31,8 @@ var _utilFormatsCheck_types2 = _interopRequireDefault(_utilFormatsCheck_types);
 var Areas = (function (_BaseProvision) {
     _inherits(Areas, _BaseProvision);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 
@@ -157,7 +158,7 @@ var Areas = (function (_BaseProvision) {
     }, {
         key: '_composeElement',
         value: function _composeElement() {
-            this._resource = 'provision/organizations/' + this._organization + '/areas/';
+            this._resource = 'provision/organizations/' + this._organization + '/areas';
             var area = {
                 identifier: this._identifier,
                 name: this._name,

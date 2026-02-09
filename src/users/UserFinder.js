@@ -7,7 +7,8 @@ import ProvisionGenericFinder from '../ProvisionGenericFinder';
  */
 export default class UserFinder extends ProvisionGenericFinder {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {

@@ -23,7 +23,8 @@ var _GenericFinder3 = _interopRequireDefault(_GenericFinder2);
 var ProvisionGenericFinder = (function (_GenericFinder) {
   _inherits(ProvisionGenericFinder, _GenericFinder);
 
-  /**     
+  /**
+   * Constructor
    * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
    * @param {string} source - Relative url where is located the resource.
    * @param {string} reponseJsonData - Relative url where is located the resource.

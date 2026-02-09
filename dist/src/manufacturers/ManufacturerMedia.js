@@ -29,7 +29,8 @@ var _provisionBaseProvision2 = _interopRequireDefault(_provisionBaseProvision);
 var ManufacturerMedia = (function (_BaseProvision) {
     _inherits(ManufacturerMedia, _BaseProvision);
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
 

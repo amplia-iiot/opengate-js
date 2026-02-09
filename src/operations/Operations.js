@@ -10,6 +10,7 @@ import merge from 'merge';
  */
 export default class Operations {
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
      */
     constructor(ogapi) {
@@ -31,10 +32,10 @@ export default class Operations {
         let promise = defered.promise;
         let _this = this;
         this._ogapi.newOperationFinder().findPeriodicityById(operationId)
-            .then(function(response) {
+            .then(function (response) {
                 defered.resolve(_this._createPeriodicBuilder(response.data));
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 defered.reject(error);
             });
         return promise;
@@ -55,7 +56,7 @@ export default class Operations {
         let op = this._findOperation(opN);
         let _this = this;
         if (typeof op === "undefined") {
-            this._loadOperationCatalog().then(function() {
+            this._loadOperationCatalog().then(function () {
                 let op = _this._findOperation(opN);
                 if (typeof op === "undefined") {
                     defered.reject("Operation <'" + opN + "'> unavailable.");
@@ -72,7 +73,7 @@ export default class Operations {
     getOperationList() {
         return merge(true, this._operationNames);
     }
-    
+
     _createBuilder(config) {
         return new BaseOperationBuilder(this._ogapi, config);
     }
@@ -86,24 +87,24 @@ export default class Operations {
         let defered = q.defer();
         let promise = defered.promise;
         this._ogapi.operationTypesSearchBuilder().build().execute().
-        then(function(data) {
-            if (data.statusCode === 200) {
-                const operations = data.data;
-                for (let i in operations) {
-                    let name = operations[i].name.toUpperCase();
-                    _this._operationNames.push(name);
-                    _this._operations.push({ name: name, config: operations[i] });
+            then(function (data) {
+                if (data.statusCode === 200) {
+                    const operations = data.data;
+                    for (let i in operations) {
+                        let name = operations[i].name.toUpperCase();
+                        _this._operationNames.push(name);
+                        _this._operations.push({ name: name, config: operations[i] });
+                    }
                 }
-            }
-            defered.resolve(_this);
-        }).catch(function(err) {
-            defered.resolve(_this);
-        });
+                defered.resolve(_this);
+            }).catch(function (err) {
+                defered.resolve(_this);
+            });
         return promise;
     }
 
     _findOperation(name) {
-        return this._operations.find(function(config) {
+        return this._operations.find(function (config) {
             return config.name == this;
         }, name);
     }
