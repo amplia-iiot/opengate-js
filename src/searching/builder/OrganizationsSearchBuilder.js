@@ -1,131 +1,84 @@
 'use strict';
 
-import SearchBuilder from './SearchBuilder'
-import merge from 'merge';
+import SearchBuilder from './SearchBuilder';
+import FieldFinder from '../../util/searchingFields/FieldFinder'
+
+const BASE_URL = '/organizations';
 
 /**
- * Defined a search over organizations
- * @example ogapi.organizationsSearchBuilder()
+ * Defined a search over Devices	
+ * @example ogapi.organizationsSearchBuilder()()
  */
 export default class OrganizationsSearchBuilder extends SearchBuilder {
     /**
-     *  @param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
+     *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */
     constructor(parent) {
-        super(parent, {});
-        this._url = '/provision/domains/{domain_id}/workgroups/{workgroup_id}/relations';
-        this.fluentFilter = parent.newFilterBuilder();
-        this.tagsFilter = [];
+        super(parent, {}, new FieldFinder(parent, BASE_URL));
+        this._url = BASE_URL;
     }
 
     /**
-     * Sets de organization name to search
-     *
+     * The response will only have a summary information 
      * @example
-     *  ogapi.organizationsSearchBuilder().withName('myOrganization').build()
-     * @param {!string} organizationName - hardware id
-     * @throws {Error} throw error when organizationName is not typeof string
+     *	ogapi.ticketsSearchBuilder().summary() 
      * @return {OrganizationsSearchBuilder} 
      */
-    withName(organizationName) {
-        if (typeof organizationName !== 'string') {
-            throw new Error('Parameter organizationName must be a string');
-        }
-        //this.fluentFilter.and(this._parent.EX.eq('organizationName', organizationName));
-        this._organizationName = organizationName;
+    summary() {
+        this._url = this._url + '/summary';
 
         return this;
     }
 
     /**
-     * Sets de organization name to search
-     *
+     * The search request will have this group by 
      * @example
-     *  ogapi.organizationsSearchBuilder().withChannelName('myOrganization').build()
-     * @param {!string} channelName - hardware id
-     * @throws {Error} throw error when channelName is not typeof string
-     * @return {OrganizationsSearchBuilder} 
+     * @param {!(object)} group 
+     * @return {SearchBuilder} 
      */
-    withChannelName(channelName) {
-        if (typeof channelName !== 'string') {
-            throw new Error('Parameter channelName must be a string');
-        }
-        //this.fluentFilter.and(this._parent.EX.eq('channelName', channelName));
-        this._channelName = channelName;
-
-        return this;
-    }
-
-
-    /**
-     * Sets de domain name to search
-     *
-     * @example
-     *  ogapi.organizationsSearchBuilder().withDomain('myDomain').build()
-     * @param {!string} domainName - domain name
-     * @throws {Error} throw error when domainName is not typeof string
-     * @return {OrganizationsSearchBuilder} 
-     */
-    withDomain(domainName) {
-        if (typeof domainName !== 'string') {
-            throw new Error('Parameter domainName must be a string');
-        }
-        //this.fluentFilter.and(this._parent.EX.eq('domainName', domainName));
-        this._domainName = domainName;
-
+    group(group) {
+        this._builderParams.group = (group || {});
         return this;
     }
 
     /**
-     * Sets de workgroup name to search
-     *
+     * The search request will have this filter 
      * @example
-     *  ogapi.organizationsSearchBuilder().withWorkgroup('myWorkgroup').build()
-     * @param {!string} workgroupName - workgroup name
-     * @throws {Error} throw error when workgroupName is not typeof string
+     *  ogapi.ticketsSearchBuilder().select(
+     *      ogapi.newSelectBuilder().add(SE.element("provision.ticket.identifier", [[{"field": "value","alias": "identifier"}], ), SE.add("device.temperature.value", [[{"field": "value"}]))
+     *  ) // Setting SelectBuilder
+     *  ogapi.ticketsSearchBuilder().select({ "elements": [{"name": "provision.device.identifier",
+     *		"fields": [{"field": "value","alias": "identifier"}]},
+     *      {"name": "provision.ticket.name","fields": [{"field": "value","alias": "identifier"}]}]
+     *   }) //Custom select
+     * @param {!(SelectBuilder|object)} select
+     * @return {SearchBuilder} 
+     */
+    select(select) {
+        this._builderParams.select = (select);
+        return this;
+    }
+
+    /**
+     * The response will return a flattened response
+     * @example
+     *	ogapi.ticketsSearchBuilder().flattened() 
      * @return {OrganizationsSearchBuilder} 
      */
-    withWorkgroup(workgroupName) {
-        if (typeof workgroupName !== 'string') {
-            throw new Error('Parameter workgroupName must be a string');
-        }
-        //this.fluentFilter.and(this._parent.EX.eq('workgroupName', workgroupName));
-        this._workgroupName = workgroupName;
+    flattened() {
+        this._urlParams.flattened = true;
 
         return this;
     }
 
-    build() {
-
-
-        return super.build();
-    }
-
-    _buildFilter() {
-        let filter = { filter: {} };
-
-        let _fluentFilter = merge(true, this.fluentFilter);
-        let _customFilter = this._builderParams.filter;
-
-        //if (this.tagsFilter.length > 0){
-        //  _fluentFilter.and(this._parent.EX.in('datapoint.tag',this.tagsFilter));             
-        //}
-
-        _fluentFilter = _fluentFilter._filterTemplate.filter;
-
-        if (typeof _customFilter._filterTemplate === "object") {
-            _customFilter = _customFilter._filterTemplate.filter;
-        }
-
-        if ((typeof _customFilter !== "undefined" && Object.keys(_customFilter).length > 0) && (typeof _fluentFilter !== "undefined" && Object.keys(_fluentFilter).length > 0)) {
-            throw new Error('Incompatible filters. You only can create a filter using fluent mode [withName, withChannelName, withDomain, withWorkgroup] methods or custom filter [filter] method');
-        }
-
-        if (typeof _customFilter !== "undefined" && Object.keys(_customFilter).length > 0) {
-            filter.filter = _customFilter;
-        } else if (typeof _fluentFilter !== "undefined" && Object.keys(_fluentFilter).length > 0) {
-            filter.filter = _fluentFilter;
-        }
-        return filter;
+    /**
+     * The response will return a response without sorted
+     * @example
+     *	ogapi.ticketsSearchBuilder().disableDefaultSorted() 
+     * @return {OrganizationsSearchBuilder} 
+     */
+    disableDefaultSorted() {
+        this._urlParams.defaultSorted = false;
+        return this;
     }
 }
