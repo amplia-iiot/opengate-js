@@ -7,7 +7,8 @@ import ProvisionGenericFinder from '../ProvisionGenericFinder';
  */
 export default class WorkgroupFinder extends ProvisionGenericFinder {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {
@@ -23,6 +24,7 @@ export default class WorkgroupFinder extends ProvisionGenericFinder {
     }
 
     /**
+     * Constructor
      * @param {string} domain - domain name 
      * @param {string} name - workgroup name 
      * @return {Promise} 

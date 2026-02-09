@@ -12,7 +12,8 @@ const LIMIT_SIZE_DEF_VALUE = 10;
  */
 export default class OperationFinder extends GenericFinder {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {

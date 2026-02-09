@@ -7,6 +7,7 @@ import SearchBuilder from './SearchBuilder';
  */
 export default class SearchWithSummaryBuilder extends SearchBuilder {
     /**
+     * Constructor
      * @param {!InternalOpenGateAPI} parent - this is ogapi instance
      * @param {!object} routes - this defined the routes. One of those routes must be called on Builder before call build method.
      */

@@ -1,6 +1,5 @@
 'use strict';
 
-import q from 'q';
 import BaseProvision from '../provision/BaseProvision';
 
 /**
@@ -8,7 +7,8 @@ import BaseProvision from '../provision/BaseProvision';
  */
 export default class Channels extends BaseProvision {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} Reference to the API object.
      */
     constructor(ogapi) {

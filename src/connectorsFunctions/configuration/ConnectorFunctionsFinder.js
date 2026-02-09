@@ -7,7 +7,8 @@ import GenericFinder from '../../GenericFinder';
  */
 export default class ConnectorFunctionsFinder extends GenericFinder {
 
-    /**     
+    /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
@@ -29,7 +30,7 @@ export default class ConnectorFunctionsFinder extends GenericFinder {
 
         return this._execute();
     }
-    
+
     /**
      * Performs a get that returns connectors functions related
      * @test
@@ -49,7 +50,7 @@ export default class ConnectorFunctionsFinder extends GenericFinder {
     }
 
     _composeUrl() {
-        return this._baseUrl + "/" + this._organization + "/channels/" + this._channel + (this._name?"/" + this._name:'');
+        return this._baseUrl + "/" + this._organization + "/channels/" + this._channel + (this._name ? "/" + this._name : '');
     }
 
 }

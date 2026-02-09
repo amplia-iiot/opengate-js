@@ -10,6 +10,7 @@ const LIMIT_SIZE_DEF_VALUE = 10;
 export default class OperationActions {
 
     /**
+     * Constructor
      * @param {InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
      * @param {string} operationId - Identifier of the operation on which the action will be carried out
      */
