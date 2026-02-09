@@ -607,36 +607,6 @@ This return a DevicesSearchBuilder to build a specific DeviceSearch
 {{% /notice %}}
 
 ---
-## domainsBuilder()
-
-
-This return a DomainsBuilder to build a specific DomainsBuilder
-
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `Domain`
-<br>
-
-{{% /notice %}}
-
----
-## domainsSearchBuilder()
-
-
-This return a DomainsSearchBuilder to build a specific DomainsSearch
-
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** [DomainsSearchBuilder](./searching/builder/DomainsSearchBuilder)
-<br>
-
-{{% /notice %}}
-
----
 ## entitiesSearchBuilder()
 
 
@@ -1076,21 +1046,6 @@ This return a util to find a device
 
 {{% notice tip %}}
 **Tipo:** [DeviceFinder](./entities/DeviceFinder)
-<br>
-
-{{% /notice %}}
-
----
-## newDomainFinder()
-
-
-This return a util to find a domain
-
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** [DomainFinder](./domains/DomainsFinder)
 <br>
 
 {{% /notice %}}
@@ -1770,6 +1725,21 @@ This return a OrganizationsBuilder to build a specific OrganizationsBuilder
 
 {{% notice tip %}}
 **Tipo:** [Organizations](./organizations/Organizations)
+<br>
+
+{{% /notice %}}
+
+---
+## organizationsSearchBuilder()
+
+
+This return a util to search organizations
+
+
+### Retorna
+
+{{% notice tip %}}
+**Tipo:** [OrganizationsSearchBuilder](./searching/builder/OrganizationsSearchBuilder)
 <br>
 
 {{% /notice %}}

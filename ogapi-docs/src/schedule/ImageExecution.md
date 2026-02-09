@@ -159,7 +159,7 @@ Set the organization attribute
 {{% /notice %}}
 
 ---
-## withScheduleCronExpression(cronExpression)
+## withScheduleCronExpression(cronExpression, timezone)
 
 
 Sets the crontab expression for schedule
@@ -169,6 +169,7 @@ Sets the crontab expression for schedule
 | Nombre | Tipo | Opcional | Descripción |
 | :--- | :--- | :---: | :--- |
 | **cronExpression** | `string` | ❌ |  |
+| **timezone** | `string` | ❌ |  |
 
 ### Retorna
 

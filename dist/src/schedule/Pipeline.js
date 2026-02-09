@@ -87,6 +87,7 @@ var Pipeline = (function (_BaseProvision) {
         /**
          * Sets the crontab expression for schedule
          * @param {string} cronExpression
+         * @param {string} timezone
          * @return {Pipeline}
          */
     }, {

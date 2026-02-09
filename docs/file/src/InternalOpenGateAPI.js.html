@@ -91,8 +91,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctions/configuration/ConnectorFunctionsFinder.js~ConnectorFunctionsFinder.html">ConnectorFunctionsFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/connectorsFunctions/configuration/ConnectorFunctionsHelper.js~ConnectorFunctionsHelper.html">ConnectorFunctionsHelper</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">datasets</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/datasets/Datasets.js~Datasets.html">Datasets</a></span></span></li>
-<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">domains</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/domains/Domains.js~Domains.html">Domains</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/domains/DomainsFinder.js~DomainFinder.html">DomainFinder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">entities</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/DeviceFinder.js~DeviceFinder.html">DeviceFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/EntityFinder.js~EntityFinder.html">EntityFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/entities/SubscribersFinder.js~SubscribersFinder.html">SubscribersFinder</a></span></span></li>
@@ -225,7 +223,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DatastreamsSearchBuilder.js~DatastreamsSearchBuilder.html">DatastreamsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DevicesPlansSearchBuilder.js~DevicesPlansSearchBuilder.html">DevicesPlansSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DevicesSearchBuilder.js~DevicesSearchBuilder.html">DevicesSearchBuilder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/DomainsSearchBuilder.js~DomainsSearchBuilder.html">DomainsSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/EntitiesSearchBuilder.js~EntitiesSearchBuilder.html">EntitiesSearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ExecutionsHistorySearchBuilder.js~ExecutionsHistorySearchBuilder.html">ExecutionsHistorySearchBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/searching/builder/ExecutionsSearchBuilder.js~ExecutionsSearchBuilder.html">ExecutionsSearchBuilder</a></span></span></li>
@@ -391,14 +388,11 @@ import TicketStatusSearchBuilder from &apos;./searching/builder/TicketStatusSear
 import RulesSearchBuilder from &apos;./searching/builder/RulesSearchBuilder&apos;;
 import OperationTypesSearchBuilder from &apos;./searching/builder/OperationTypesSearchBuilder&apos;;
 import UsersSearchBuilder from &apos;./searching/builder/UsersSearchBuilder&apos;;
-import DomainsSearchBuilder from &apos;./searching/builder/DomainsSearchBuilder&apos;;
 import PlansSearchBuilder from &apos;./searching/builder/PlansSearchBuilder&apos;;
 import DevicesPlansSearchBuilder from &apos;./searching/builder/DevicesPlansSearchBuilder&apos;;
 import Bundles from &apos;./bundles/Bundles&apos;;
 import BundleFinder from &apos;./bundles/BundleFinder&apos;;
 import Organizations from &apos;./organizations/Organizations&apos;;
-import Domain from &apos;./domains/Domains&apos;;
-import DomainFinder from &apos;./domains/DomainsFinder&apos;;
 import DeviceFinder from &apos;./entities/DeviceFinder&apos;;
 import TicketFinder from &apos;./entities/TicketFinder&apos;;
 import SubscriptionsFinder from &apos;./entities/SubscriptionsFinder&apos;;
@@ -456,6 +450,7 @@ import OrganizationManufacturersBuilder from &apos;./organization_manufacturer/M
 import OrganizationManufacturerModelsBuilder from &apos;./organization_manufacturer/Model&apos;
 import OrganizationManufacturerFinder from &apos;./organization_manufacturer/ManufacturerFinder&apos;
 import OrganizationModelFinder from &apos;./organization_manufacturer/ModelFinder&apos;
+import OrganizationsSearchBuilder from &apos;./searching/builder/OrganizationsSearchBuilder&apos;;
 
 import SoftwaresBuilder from &apos;./organization_software/Software&apos;
 import SoftwareFinder from &apos;./organization_software/SoftwareFinder&apos;
@@ -800,14 +795,6 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a DomainsSearchBuilder to build a specific DomainsSearch
-     * @return {DomainsSearchBuilder}
-     */
-    domainsSearchBuilder() {
-        return new DomainsSearchBuilder(this);
-    }
-
-    /**
      * This return a DevicesSearchBuilder to build a specific DeviceSearch
      * @return {DevicesSearchBuilder}
      */
@@ -1132,22 +1119,6 @@ export default class InternalOpenGateAPI {
      */
     organizationsBuilder() {
         return new Organizations(this);
-    }
-
-    /**
-     * This return a DomainsBuilder to build a specific DomainsBuilder
-     * @return {Domain}
-     */
-    domainsBuilder() {
-        return new Domain(this);
-    }
-
-    /**
-     * This return a util to find a domain
-     * @return {DomainFinder}
-     */
-    newDomainFinder() {
-        return new DomainFinder(this);
     }
 
     /**
@@ -1615,6 +1586,14 @@ export default class InternalOpenGateAPI {
      */
     newOrganizationModelFinder() {
         return new OrganizationModelFinder(this);
+    }
+
+    /**
+     * This return a util to search organizations
+     * @return {OrganizationsSearchBuilder}
+     */
+    organizationsSearchBuilder() {
+        return new OrganizationsSearchBuilder(this);
     }
 
     /** This return a SoftwaresBuilder to build a specific SoftwaresBuilder

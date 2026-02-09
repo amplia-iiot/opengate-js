@@ -76,14 +76,11 @@ import TicketStatusSearchBuilder from './searching/builder/TicketStatusSearchBui
 import RulesSearchBuilder from './searching/builder/RulesSearchBuilder';
 import OperationTypesSearchBuilder from './searching/builder/OperationTypesSearchBuilder';
 import UsersSearchBuilder from './searching/builder/UsersSearchBuilder';
-import DomainsSearchBuilder from './searching/builder/DomainsSearchBuilder';
 import PlansSearchBuilder from './searching/builder/PlansSearchBuilder';
 import DevicesPlansSearchBuilder from './searching/builder/DevicesPlansSearchBuilder';
 import Bundles from './bundles/Bundles';
 import BundleFinder from './bundles/BundleFinder';
 import Organizations from './organizations/Organizations';
-import Domain from './domains/Domains';
-import DomainFinder from './domains/DomainsFinder';
 import DeviceFinder from './entities/DeviceFinder';
 import TicketFinder from './entities/TicketFinder';
 import SubscriptionsFinder from './entities/SubscriptionsFinder';
@@ -141,6 +138,7 @@ import OrganizationManufacturersBuilder from './organization_manufacturer/Manufa
 import OrganizationManufacturerModelsBuilder from './organization_manufacturer/Model'
 import OrganizationManufacturerFinder from './organization_manufacturer/ManufacturerFinder'
 import OrganizationModelFinder from './organization_manufacturer/ModelFinder'
+import OrganizationsSearchBuilder from './searching/builder/OrganizationsSearchBuilder';
 
 import SoftwaresBuilder from './organization_software/Software'
 import SoftwareFinder from './organization_software/SoftwareFinder'
@@ -485,14 +483,6 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a DomainsSearchBuilder to build a specific DomainsSearch
-     * @return {DomainsSearchBuilder}
-     */
-    domainsSearchBuilder() {
-        return new DomainsSearchBuilder(this);
-    }
-
-    /**
      * This return a DevicesSearchBuilder to build a specific DeviceSearch
      * @return {DevicesSearchBuilder}
      */
@@ -817,22 +807,6 @@ export default class InternalOpenGateAPI {
      */
     organizationsBuilder() {
         return new Organizations(this);
-    }
-
-    /**
-     * This return a DomainsBuilder to build a specific DomainsBuilder
-     * @return {Domain}
-     */
-    domainsBuilder() {
-        return new Domain(this);
-    }
-
-    /**
-     * This return a util to find a domain
-     * @return {DomainFinder}
-     */
-    newDomainFinder() {
-        return new DomainFinder(this);
     }
 
     /**
@@ -1300,6 +1274,14 @@ export default class InternalOpenGateAPI {
      */
     newOrganizationModelFinder() {
         return new OrganizationModelFinder(this);
+    }
+
+    /**
+     * This return a util to search organizations
+     * @return {OrganizationsSearchBuilder}
+     */
+    organizationsSearchBuilder() {
+        return new OrganizationsSearchBuilder(this);
     }
 
     /** This return a SoftwaresBuilder to build a specific SoftwaresBuilder

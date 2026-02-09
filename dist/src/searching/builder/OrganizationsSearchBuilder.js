@@ -18,149 +18,104 @@ var _SearchBuilder2 = require('./SearchBuilder');
 
 var _SearchBuilder3 = _interopRequireDefault(_SearchBuilder2);
 
-var _merge = require('merge');
+var _utilSearchingFieldsFieldFinder = require('../../util/searchingFields/FieldFinder');
 
-var _merge2 = _interopRequireDefault(_merge);
+var _utilSearchingFieldsFieldFinder2 = _interopRequireDefault(_utilSearchingFieldsFieldFinder);
+
+var BASE_URL = '/organizations';
 
 /**
- * Defined a search over organizations
- * @example ogapi.organizationsSearchBuilder()
+ * Defined a search over Devices	
+ * @example ogapi.organizationsSearchBuilder()()
  */
 
 var OrganizationsSearchBuilder = (function (_SearchBuilder) {
     _inherits(OrganizationsSearchBuilder, _SearchBuilder);
 
     /**
-     *  @param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
+     *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */
 
     function OrganizationsSearchBuilder(parent) {
         _classCallCheck(this, OrganizationsSearchBuilder);
 
-        _get(Object.getPrototypeOf(OrganizationsSearchBuilder.prototype), 'constructor', this).call(this, parent, {});
-        this._url = '/provision/domains/{domain_id}/workgroups/{workgroup_id}/relations';
-        this.fluentFilter = parent.newFilterBuilder();
-        this.tagsFilter = [];
+        _get(Object.getPrototypeOf(OrganizationsSearchBuilder.prototype), 'constructor', this).call(this, parent, {}, new _utilSearchingFieldsFieldFinder2['default'](parent, BASE_URL));
+        this._url = BASE_URL;
     }
 
     /**
-     * Sets de organization name to search
-     *
+     * The response will only have a summary information 
      * @example
-     *  ogapi.organizationsSearchBuilder().withName('myOrganization').build()
-     * @param {!string} organizationName - hardware id
-     * @throws {Error} throw error when organizationName is not typeof string
+     *	ogapi.ticketsSearchBuilder().summary() 
      * @return {OrganizationsSearchBuilder} 
      */
 
     _createClass(OrganizationsSearchBuilder, [{
-        key: 'withName',
-        value: function withName(organizationName) {
-            if (typeof organizationName !== 'string') {
-                throw new Error('Parameter organizationName must be a string');
-            }
-            //this.fluentFilter.and(this._parent.EX.eq('organizationName', organizationName));
-            this._organizationName = organizationName;
+        key: 'summary',
+        value: function summary() {
+            this._url = this._url + '/summary';
 
             return this;
         }
 
         /**
-         * Sets de organization name to search
-         *
+         * The search request will have this group by 
          * @example
-         *  ogapi.organizationsSearchBuilder().withChannelName('myOrganization').build()
-         * @param {!string} channelName - hardware id
-         * @throws {Error} throw error when channelName is not typeof string
+         * @param {!(object)} group 
+         * @return {SearchBuilder} 
+         */
+    }, {
+        key: 'group',
+        value: function group(_group) {
+            this._builderParams.group = _group || {};
+            return this;
+        }
+
+        /**
+         * The search request will have this filter 
+         * @example
+         *  ogapi.ticketsSearchBuilder().select(
+         *      ogapi.newSelectBuilder().add(SE.element("provision.ticket.identifier", [[{"field": "value","alias": "identifier"}], ), SE.add("device.temperature.value", [[{"field": "value"}]))
+         *  ) // Setting SelectBuilder
+         *  ogapi.ticketsSearchBuilder().select({ "elements": [{"name": "provision.device.identifier",
+         *		"fields": [{"field": "value","alias": "identifier"}]},
+         *      {"name": "provision.ticket.name","fields": [{"field": "value","alias": "identifier"}]}]
+         *   }) //Custom select
+         * @param {!(SelectBuilder|object)} select
+         * @return {SearchBuilder} 
+         */
+    }, {
+        key: 'select',
+        value: function select(_select) {
+            this._builderParams.select = _select;
+            return this;
+        }
+
+        /**
+         * The response will return a flattened response
+         * @example
+         *	ogapi.ticketsSearchBuilder().flattened() 
          * @return {OrganizationsSearchBuilder} 
          */
     }, {
-        key: 'withChannelName',
-        value: function withChannelName(channelName) {
-            if (typeof channelName !== 'string') {
-                throw new Error('Parameter channelName must be a string');
-            }
-            //this.fluentFilter.and(this._parent.EX.eq('channelName', channelName));
-            this._channelName = channelName;
+        key: 'flattened',
+        value: function flattened() {
+            this._urlParams.flattened = true;
 
             return this;
         }
 
         /**
-         * Sets de domain name to search
-         *
+         * The response will return a response without sorted
          * @example
-         *  ogapi.organizationsSearchBuilder().withDomain('myDomain').build()
-         * @param {!string} domainName - domain name
-         * @throws {Error} throw error when domainName is not typeof string
+         *	ogapi.ticketsSearchBuilder().disableDefaultSorted() 
          * @return {OrganizationsSearchBuilder} 
          */
     }, {
-        key: 'withDomain',
-        value: function withDomain(domainName) {
-            if (typeof domainName !== 'string') {
-                throw new Error('Parameter domainName must be a string');
-            }
-            //this.fluentFilter.and(this._parent.EX.eq('domainName', domainName));
-            this._domainName = domainName;
-
+        key: 'disableDefaultSorted',
+        value: function disableDefaultSorted() {
+            this._urlParams.defaultSorted = false;
             return this;
-        }
-
-        /**
-         * Sets de workgroup name to search
-         *
-         * @example
-         *  ogapi.organizationsSearchBuilder().withWorkgroup('myWorkgroup').build()
-         * @param {!string} workgroupName - workgroup name
-         * @throws {Error} throw error when workgroupName is not typeof string
-         * @return {OrganizationsSearchBuilder} 
-         */
-    }, {
-        key: 'withWorkgroup',
-        value: function withWorkgroup(workgroupName) {
-            if (typeof workgroupName !== 'string') {
-                throw new Error('Parameter workgroupName must be a string');
-            }
-            //this.fluentFilter.and(this._parent.EX.eq('workgroupName', workgroupName));
-            this._workgroupName = workgroupName;
-
-            return this;
-        }
-    }, {
-        key: 'build',
-        value: function build() {
-
-            return _get(Object.getPrototypeOf(OrganizationsSearchBuilder.prototype), 'build', this).call(this);
-        }
-    }, {
-        key: '_buildFilter',
-        value: function _buildFilter() {
-            var filter = { filter: {} };
-
-            var _fluentFilter = (0, _merge2['default'])(true, this.fluentFilter);
-            var _customFilter = this._builderParams.filter;
-
-            //if (this.tagsFilter.length > 0){
-            //  _fluentFilter.and(this._parent.EX.in('datapoint.tag',this.tagsFilter));            
-            //}
-
-            _fluentFilter = _fluentFilter._filterTemplate.filter;
-
-            if (typeof _customFilter._filterTemplate === "object") {
-                _customFilter = _customFilter._filterTemplate.filter;
-            }
-
-            if (typeof _customFilter !== "undefined" && Object.keys(_customFilter).length > 0 && typeof _fluentFilter !== "undefined" && Object.keys(_fluentFilter).length > 0) {
-                throw new Error('Incompatible filters. You only can create a filter using fluent mode [withName, withChannelName, withDomain, withWorkgroup] methods or custom filter [filter] method');
-            }
-
-            if (typeof _customFilter !== "undefined" && Object.keys(_customFilter).length > 0) {
-                filter.filter = _customFilter;
-            } else if (typeof _fluentFilter !== "undefined" && Object.keys(_fluentFilter).length > 0) {
-                filter.filter = _fluentFilter;
-            }
-            return filter;
         }
     }]);
 
