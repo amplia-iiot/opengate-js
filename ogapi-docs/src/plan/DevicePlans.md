@@ -1,14 +1,14 @@
 +++
-title = "Domains"
+title = "Device Plans"
 weight = 10
 +++
 
-This is a base object that contains all you can do about Bundles.
+This is a base object that contains all you can do about Device plans.
 
 ## constructor
 
 
-Constructor
+    
 
 ### Parámetros
 
@@ -18,21 +18,41 @@ Constructor
 
 
 ---
-## withDescription(description)
+## withFlowRate(flowRate)
 
 
-Set the description attribute
+Set the flowRate attribute
 
 ### Parámetros
 
 | Nombre | Tipo | Opcional | Descripción |
 | :--- | :--- | :---: | :--- |
-| **description** | `string` | ❌ | required field |
+| **flowRate** | `object` | ❌ | {value: number, unit: [SECONDS, MINUTES, HOURS, DAYS, MONTHS, YEARS]} |
 
 ### Retorna
 
 {{% notice tip %}}
-**Tipo:** `Domains`
+**Tipo:** `OrganizationPlans`
+<br>
+
+{{% /notice %}}
+
+---
+## withIdentifier(identifier)
+
+
+Set the identifier attribute
+
+### Parámetros
+
+| Nombre | Tipo | Opcional | Descripción |
+| :--- | :--- | :---: | :--- |
+| **identifier** | `string` | ❌ | required field |
+
+### Retorna
+
+{{% notice tip %}}
+**Tipo:** `DevicePlans`
 <br>
 
 {{% /notice %}}
@@ -52,27 +72,7 @@ Set the name attribute
 ### Retorna
 
 {{% notice tip %}}
-**Tipo:** `Domains`
-<br>
-
-{{% /notice %}}
-
----
-## withParentDomain(parentDomain)
-
-
-Set the parentDomain attribute
-
-### Parámetros
-
-| Nombre | Tipo | Opcional | Descripción |
-| :--- | :--- | :---: | :--- |
-| **parentDomain** | `string` | ❌ |  |
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `Domains`
+**Tipo:** `DevicePlans`
 <br>
 
 {{% /notice %}}

@@ -1,5 +1,5 @@
 +++
-title = "domains"
+title = "plan"
 weight = 10
 +++
 
