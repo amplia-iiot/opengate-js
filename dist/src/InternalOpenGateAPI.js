@@ -314,10 +314,6 @@ var _searchingBuilderUsersSearchBuilder = require('./searching/builder/UsersSear
 
 var _searchingBuilderUsersSearchBuilder2 = _interopRequireDefault(_searchingBuilderUsersSearchBuilder);
 
-var _searchingBuilderDomainsSearchBuilder = require('./searching/builder/DomainsSearchBuilder');
-
-var _searchingBuilderDomainsSearchBuilder2 = _interopRequireDefault(_searchingBuilderDomainsSearchBuilder);
-
 var _bundlesBundles = require('./bundles/Bundles');
 
 var _bundlesBundles2 = _interopRequireDefault(_bundlesBundles);
@@ -329,14 +325,6 @@ var _bundlesBundleFinder2 = _interopRequireDefault(_bundlesBundleFinder);
 var _organizationsOrganizations = require('./organizations/Organizations');
 
 var _organizationsOrganizations2 = _interopRequireDefault(_organizationsOrganizations);
-
-var _domainsDomains = require('./domains/Domains');
-
-var _domainsDomains2 = _interopRequireDefault(_domainsDomains);
-
-var _domainsDomainsFinder = require('./domains/DomainsFinder');
-
-var _domainsDomainsFinder2 = _interopRequireDefault(_domainsDomainsFinder);
 
 var _entitiesDeviceFinder = require('./entities/DeviceFinder');
 
@@ -565,6 +553,10 @@ var _organization_manufacturerManufacturerFinder2 = _interopRequireDefault(_orga
 var _organization_manufacturerModelFinder = require('./organization_manufacturer/ModelFinder');
 
 var _organization_manufacturerModelFinder2 = _interopRequireDefault(_organization_manufacturerModelFinder);
+
+var _searchingBuilderOrganizationsSearchBuilder = require('./searching/builder/OrganizationsSearchBuilder');
+
+var _searchingBuilderOrganizationsSearchBuilder2 = _interopRequireDefault(_searchingBuilderOrganizationsSearchBuilder);
 
 var _organization_softwareSoftware = require('./organization_software/Software');
 
@@ -1029,16 +1021,6 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a DomainsSearchBuilder to build a specific DomainsSearch
-         * @return {DomainsSearchBuilder}
-         */
-    }, {
-        key: 'domainsSearchBuilder',
-        value: function domainsSearchBuilder() {
-            return new _searchingBuilderDomainsSearchBuilder2['default'](this);
-        }
-
-        /**
          * This return a DevicesSearchBuilder to build a specific DeviceSearch
          * @return {DevicesSearchBuilder}
          */
@@ -1424,26 +1406,6 @@ var InternalOpenGateAPI = (function () {
         key: 'organizationsBuilder',
         value: function organizationsBuilder() {
             return new _organizationsOrganizations2['default'](this);
-        }
-
-        /**
-         * This return a DomainsBuilder to build a specific DomainsBuilder
-         * @return {Domain}
-         */
-    }, {
-        key: 'domainsBuilder',
-        value: function domainsBuilder() {
-            return new _domainsDomains2['default'](this);
-        }
-
-        /**
-         * This return a util to find a domain
-         * @return {DomainFinder}
-         */
-    }, {
-        key: 'newDomainFinder',
-        value: function newDomainFinder() {
-            return new _domainsDomainsFinder2['default'](this);
         }
 
         /**
@@ -2028,6 +1990,16 @@ var InternalOpenGateAPI = (function () {
         key: 'newOrganizationModelFinder',
         value: function newOrganizationModelFinder() {
             return new _organization_manufacturerModelFinder2['default'](this);
+        }
+
+        /**
+         * This return a util to search organizations
+         * @return {OrganizationsSearchBuilder}
+         */
+    }, {
+        key: 'organizationsSearchBuilder',
+        value: function organizationsSearchBuilder() {
+            return new _searchingBuilderOrganizationsSearchBuilder2['default'](this);
         }
 
         /** This return a SoftwaresBuilder to build a specific SoftwaresBuilder

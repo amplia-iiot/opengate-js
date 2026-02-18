@@ -577,16 +577,21 @@ This return a DevicesSouth to build a specific DevicesSouth
 {{% /notice %}}
 
 ---
-## devicesPlansSearchBuilder()
+## devicePlansBuilder(organization)
 
 
-This return a DevicePlansSearchBuilder to build a specific DevicePlansSearchBuilder
+This return a DevicePlans to build a specific device plan
 
+### Parámetros
+
+| Nombre | Tipo | Opcional | Descripción |
+| :--- | :--- | :---: | :--- |
+| **organization** | `*` | ❌ |  |
 
 ### Retorna
 
 {{% notice tip %}}
-**Tipo:** [PlansSearchBuilder](./searching/builder/PlansSearchBuilder)
+**Tipo:** [OrganizationPlans](./plan/OrganizationPlans)
 <br>
 
 {{% /notice %}}
@@ -602,36 +607,6 @@ This return a DevicesSearchBuilder to build a specific DeviceSearch
 
 {{% notice tip %}}
 **Tipo:** [DevicesSearchBuilder](./searching/builder/DevicesSearchBuilder)
-<br>
-
-{{% /notice %}}
-
----
-## domainsBuilder()
-
-
-This return a DomainsBuilder to build a specific DomainsBuilder
-
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** `Domain`
-<br>
-
-{{% /notice %}}
-
----
-## domainsSearchBuilder()
-
-
-This return a DomainsSearchBuilder to build a specific DomainsSearch
-
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** [DomainsSearchBuilder](./searching/builder/DomainsSearchBuilder)
 <br>
 
 {{% /notice %}}
@@ -1081,16 +1056,16 @@ This return a util to find a device
 {{% /notice %}}
 
 ---
-## newDomainFinder()
+## newDevicePlansFinder()
 
 
-This return a util to find a domain
+This return a util to find device plans
 
 
 ### Retorna
 
 {{% notice tip %}}
-**Tipo:** [DomainFinder](./domains/DomainsFinder)
+**Tipo:** [DevicePlansFinder](./plan/DevicePlansFinder)
 <br>
 
 {{% /notice %}}
@@ -1305,6 +1280,21 @@ This return a util to find a hardware model
 
 {{% notice tip %}}
 **Tipo:** `OrganizationModelFinder`
+<br>
+
+{{% /notice %}}
+
+---
+## newOrganizationPlansFinder()
+
+
+This return a util to find organization plans
+
+
+### Retorna
+
+{{% notice tip %}}
+**Tipo:** [OrganizationPlansFinder](./plan/OrganizationPlansFinder)
 <br>
 
 {{% /notice %}}
@@ -1760,6 +1750,26 @@ This return a OrganizationManufacturersBuilder to build a specific OrganizationM
 {{% /notice %}}
 
 ---
+## organizationPlansBuilder(organization)
+
+
+This return a OrganizationPlans to build a specific organization plan
+
+### Parámetros
+
+| Nombre | Tipo | Opcional | Descripción |
+| :--- | :--- | :---: | :--- |
+| **organization** | `*` | ❌ |  |
+
+### Retorna
+
+{{% notice tip %}}
+**Tipo:** [OrganizationPlans](./plan/OrganizationPlans)
+<br>
+
+{{% /notice %}}
+
+---
 ## organizationsBuilder()
 
 
@@ -1775,16 +1785,16 @@ This return a OrganizationsBuilder to build a specific OrganizationsBuilder
 {{% /notice %}}
 
 ---
-## plansSearchBuilder()
+## organizationsSearchBuilder()
 
 
-This return a PlansSearchBuilder to build a specific PlansSearchBuilder
+This return a util to search organizations
 
 
 ### Retorna
 
 {{% notice tip %}}
-**Tipo:** [PlansSearchBuilder](./searching/builder/PlansSearchBuilder)
+**Tipo:** [OrganizationsSearchBuilder](./searching/builder/OrganizationsSearchBuilder)
 <br>
 
 {{% /notice %}}

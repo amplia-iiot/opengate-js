@@ -66,7 +66,7 @@ Adds a rest request to the pipeline
 ### Retorna
 
 {{% notice tip %}}
-**Tipo:** `*`
+**Tipo:** `{&quot;identifier&quot;: *, &quot;schedule&quot;: *, &quot;pipeline&quot;: *}`
 <br>
 
 {{% /notice %}}
@@ -113,13 +113,13 @@ Set the organization attribute
 ### Retorna
 
 {{% notice tip %}}
-**Tipo:** `Channels`
+**Tipo:** `Pipeline`
 <br>
 
 {{% /notice %}}
 
 ---
-## withScheduleCronExpression(cronExpression)
+## withScheduleCronExpression(cronExpression, timezone)
 
 
 Sets the crontab expression for schedule
@@ -129,6 +129,7 @@ Sets the crontab expression for schedule
 | Nombre | Tipo | Opcional | Descripción |
 | :--- | :--- | :---: | :--- |
 | **cronExpression** | `string` | ❌ |  |
+| **timezone** | `string` | ❌ |  |
 
 ### Retorna
 
@@ -139,16 +140,76 @@ Sets the crontab expression for schedule
 {{% /notice %}}
 
 ---
-## withScheduleImmediateExecution(isImmediateExecution)
+## withScheduleExecuteNow(executeNow)
 
 
-Sets the isImmediateExecution attribute for schedule
+Sets the executeNow attribute
 
 ### Parámetros
 
 | Nombre | Tipo | Opcional | Descripción |
 | :--- | :--- | :---: | :--- |
-| **isImmediateExecution** | `boolean` | ❌ |  |
+| **executeNow** | `boolean` | ❌ |  |
+
+### Retorna
+
+{{% notice tip %}}
+**Tipo:** `Pipeline`
+<br>
+
+{{% /notice %}}
+
+---
+## withScheduleFrom(from)
+
+
+Sets the from attribute
+
+### Parámetros
+
+| Nombre | Tipo | Opcional | Descripción |
+| :--- | :--- | :---: | :--- |
+| **from** | `string` | ❌ |  |
+
+### Retorna
+
+{{% notice tip %}}
+**Tipo:** `Pipeline`
+<br>
+
+{{% /notice %}}
+
+---
+## withScheduleMinutesInterval(interval)
+
+
+Sets the interval for schedule in minutes
+
+### Parámetros
+
+| Nombre | Tipo | Opcional | Descripción |
+| :--- | :--- | :---: | :--- |
+| **interval** | `number` | ❌ | in minutes |
+
+### Retorna
+
+{{% notice tip %}}
+**Tipo:** `Pipeline`
+<br>
+
+{{% /notice %}}
+
+---
+## withScheduleTo(to)
+
+
+Sets the to attribute
+
+### Parámetros
+
+| Nombre | Tipo | Opcional | Descripción |
+| :--- | :--- | :---: | :--- |
+| **to** | `string` | ❌ |  |
 
 ### Retorna
 

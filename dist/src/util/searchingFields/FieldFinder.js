@@ -42,7 +42,7 @@ for (var field in _IotFields.IOT_FIELDS) {
 
 var REGEX_PATH_CURRENT = new RegExp("^(.+)._current\\.?(.+)?$");
 var REGEX_PATH_ARRAY = new RegExp("\\[[0-9]+\\]");
-var REGEX_DATASTREAM_VALUE = new RegExp('value\\.?');
+// const REGEX_DATASTREAM_VALUE = new RegExp('value\\.?')
 
 var match_url = {
     '/jobs': 'JOB',
@@ -72,6 +72,7 @@ var match_url = {
     'entity-asset': 'SearchOnDatamodel',
     '/tickets': 'SearchOnDatamodel',
     '/channels': 'SearchOnDatamodel',
+    '/organizations': 'SearchOnDatamodel',
     'datasets': 'SearchOnDataset',
     'timeseries': 'SearchOnTimeseries'
 };
@@ -92,6 +93,8 @@ var match_url_resourceType = {
                 return ['ticket'];
             case '/channels':
                 return ['channel'];
+            case '/organizations':
+                return ['organization'];
             default:
                 return undefined;
         }
@@ -236,7 +239,7 @@ var _getDatamodelFields = function _getDatamodelFields(parent, objSearcher) {
 };
 
 var _searchColumns = function _searchColumns(_this, finder, objSearcher, defered) {
-    https: //github.com/kriskowal/q#using-deferreds
+    //https://github.com/kriskowal/q#using-deferreds
     var selectedField = objSearcher.selectedField;
     //GET dataset by organization and datasetId
     var columnDatastreams = [];
