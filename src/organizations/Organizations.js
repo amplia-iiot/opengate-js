@@ -20,6 +20,7 @@ export default class Organizations extends BaseProvision {
         this._timeZone = undefined;
         this._zoom = undefined;
         this._location = undefined;
+        this._plan = undefined;
     }
 
     /**
@@ -200,8 +201,8 @@ export default class Organizations extends BaseProvision {
     }
 
     _composeElement() {
-        if (this._name === undefined || this._langCode === undefined || this._countryCode === undefined)
-            throw new Error('Parameters name, country code and lang code must be defined');
+        if (this._name === undefined || this._langCode === undefined || this._countryCode === undefined || this._plan === undefined)
+            throw new Error('Parameters name, country code, lang code and plan must be defined');
 
         let _mapDefault = {};
         if (this._zoom != undefined) {

@@ -26,6 +26,7 @@ Feature: Searching entities
     And the "time zone" "Europe/Andorra"
     And the "zoom" 10
     And the "location" with 1 and 1
+    And the "plan" "TRIAL"
     Then I delete it
     Then I create it
     And response code should be: 201

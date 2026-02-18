@@ -54,8 +54,6 @@ const match_url = {
     '/organizations': 'SearchOnDatamodel',
     'datasets': 'SearchOnDataset',
     'timeseries': 'SearchOnTimeseries',
-    '/catalog/plans/organization': 'PLANS',
-    '/catalog/plans/device': 'PLANS'
 };
 
 const match_context = {

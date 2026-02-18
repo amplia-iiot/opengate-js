@@ -11,7 +11,7 @@ Feature: Create a manufacturer
   So I can create a manufacturer
 
   Background:
-    Given an apikey user by "2829be88-a7d7-4f51-aefc-3cc2385b6506"
+    Given an apikey user by "require-real-apikey"
 
   Scenario: Checking parameter identifier
     Given an ogapi "manufacturers builder" util
