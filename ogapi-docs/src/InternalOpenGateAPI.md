@@ -577,16 +577,21 @@ This return a DevicesSouth to build a specific DevicesSouth
 {{% /notice %}}
 
 ---
-## devicesPlansSearchBuilder()
+## devicePlansBuilder(organization)
 
 
-This return a DevicePlansSearchBuilder to build a specific DevicePlansSearchBuilder
+This return a DevicePlans to build a specific device plan
 
+### Parámetros
+
+| Nombre | Tipo | Opcional | Descripción |
+| :--- | :--- | :---: | :--- |
+| **organization** | `*` | ❌ |  |
 
 ### Retorna
 
 {{% notice tip %}}
-**Tipo:** [PlansSearchBuilder](./searching/builder/PlansSearchBuilder)
+**Tipo:** [OrganizationPlans](./plan/OrganizationPlans)
 <br>
 
 {{% /notice %}}
@@ -1051,6 +1056,21 @@ This return a util to find a device
 {{% /notice %}}
 
 ---
+## newDevicePlansFinder()
+
+
+This return a util to find device plans
+
+
+### Retorna
+
+{{% notice tip %}}
+**Tipo:** [DevicePlansFinder](./plan/DevicePlansFinder)
+<br>
+
+{{% /notice %}}
+
+---
 ## newEntityFinder()
 
 
@@ -1260,6 +1280,21 @@ This return a util to find a hardware model
 
 {{% notice tip %}}
 **Tipo:** `OrganizationModelFinder`
+<br>
+
+{{% /notice %}}
+
+---
+## newOrganizationPlansFinder()
+
+
+This return a util to find organization plans
+
+
+### Retorna
+
+{{% notice tip %}}
+**Tipo:** [OrganizationPlansFinder](./plan/OrganizationPlansFinder)
 <br>
 
 {{% /notice %}}
@@ -1715,6 +1750,26 @@ This return a OrganizationManufacturersBuilder to build a specific OrganizationM
 {{% /notice %}}
 
 ---
+## organizationPlansBuilder(organization)
+
+
+This return a OrganizationPlans to build a specific organization plan
+
+### Parámetros
+
+| Nombre | Tipo | Opcional | Descripción |
+| :--- | :--- | :---: | :--- |
+| **organization** | `*` | ❌ |  |
+
+### Retorna
+
+{{% notice tip %}}
+**Tipo:** [OrganizationPlans](./plan/OrganizationPlans)
+<br>
+
+{{% /notice %}}
+
+---
 ## organizationsBuilder()
 
 
@@ -1740,21 +1795,6 @@ This return a util to search organizations
 
 {{% notice tip %}}
 **Tipo:** [OrganizationsSearchBuilder](./searching/builder/OrganizationsSearchBuilder)
-<br>
-
-{{% /notice %}}
-
----
-## plansSearchBuilder()
-
-
-This return a PlansSearchBuilder to build a specific PlansSearchBuilder
-
-
-### Retorna
-
-{{% notice tip %}}
-**Tipo:** [PlansSearchBuilder](./searching/builder/PlansSearchBuilder)
 <br>
 
 {{% /notice %}}

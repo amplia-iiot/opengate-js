@@ -370,6 +370,27 @@ module.exports = {
             },
             "connector functions catalog": function(ogapi){
                 return ogapi.newConnectorFunctionsCatalog()
+            }, 
+            "organization plans builder": function(){
+                return ogapi.organizationPlansBuilder(param)
+            }, 
+            "device plans builder": function(){
+                return ogapi.devicePlansBuilder(param)
+            }
+            , 
+            "organization plans finder": function(){
+                switch (param) {
+                    case 'assignable':
+                        return ogapi.newOrganizationPlansFinder().assignable()    
+                    case 'administrable':
+                        return ogapi.newOrganizationPlansFinder().administrable()
+                    default:
+                        return ogapi.newOrganizationPlansFinder()
+                }
+            }
+            , 
+            "device plans finder": function(){
+                return ogapi.newDevicePlansFinder()
             }
         };
         return utilsMath[utilName](ogapi, param, param2, param3);

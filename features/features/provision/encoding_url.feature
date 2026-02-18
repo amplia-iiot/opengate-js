@@ -1,12 +1,13 @@
 # features/encoding_url.feature
 @provision
 @encoding
+
 Feature: Create an organization with a name that contains special characters
   As a user of JsApi
   I want to create and delete an organization with name that contains special characters
 
   Background:
-    Given an apikey user by "require-real-apikey"
+    Given an email "YOUR_EMAIL" and password "YOUR_PASSWORD" the user logs in
     Given an ogapi "organizations builder" util
     Given I want to create a "organization"
 
@@ -18,6 +19,7 @@ Feature: Create an organization with a name that contains special characters
     And the "time zone" "Europe/Andorra"
 	And the "zoom" 10
     And the "location" with 1 and 1  	
+ And the "plan" "TRIAL"
     Then I create it
  	And response code should be: 201
     And I delete it

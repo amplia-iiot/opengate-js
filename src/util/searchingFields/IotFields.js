@@ -300,18 +300,5 @@ export const IOT_FIELDS = {
         "OPERATORS": [
             "operator.name"
         ]
-    },
-    "PLANS": {
-        "PLANS": [
-            "plan.identifier",
-            "plan.name",
-            "plan.flowRate.value",
-            "plan.flowRate.unit",
-            "plan.maxDeviceAmount",
-            "plan.maxStorageLifeTime.period",
-            "plan.maxStorageLifeTime.total",
-            "plan.defaultAssigned",
-            "plan.defaultProvision"
-        ]
     }
 };

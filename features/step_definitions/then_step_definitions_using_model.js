@@ -13,6 +13,18 @@ Then(/^I can see into the result an "([^"]*)" as "([^"]*)"$/, function (getterNa
     callback();
 });
 
+Then(/^I can see into the result an "([^"]*)" as (\d+)$/, function (getterName, getterValue, callback) {
+    var data = this.responseData.data;
+    var json_attr = this.findModel.getter_response(getterName);
+    
+    var value = jp.value(data, json_attr);
+    if (value !== getterValue && this.error) {
+        throw new Error(JSON.stringify(this.error));
+    }
+    this.expect(value).to.be.equal(getterValue);
+    callback();
+});
+
 Then(/^the content of json response must be:$/, function (contentTmp, callback) {
     var data = this.responseData.data;
     this.expect(contentTmp).to.be.equal(JSON.stringify(data));

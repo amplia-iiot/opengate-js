@@ -4,7 +4,7 @@
 @find_provision
 @users
 @find_user
-@done
+
 Feature: Find an user
 	As a user of JsApi
 	I want to find an user
@@ -23,6 +23,7 @@ Feature: Find an user
 		And the "time zone" "Europe/Andorra"
 		And the "zoom" 10
 		And the "location" with 1 and 1
+		And the "plan" "TRIAL"
 		Then I delete it
 		And I create it
 		And response code should be: 201

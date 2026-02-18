@@ -3,7 +3,6 @@
 @searching_timeseries_data
 @timeseries
 
-@wip
 
 Feature: Searching timeseriess data
   As a user of JsApi
@@ -24,7 +23,8 @@ Feature: Searching timeseriess data
     And the "time zone" "Europe/Andorra"
     And the "zoom" 10
     And the "location" with 1 and 1
-    # Then I delete it
+    And the "plan" "TRIAL"
+    Then I delete it
     Then I create it
     And response code should be: 201
 

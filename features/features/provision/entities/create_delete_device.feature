@@ -26,6 +26,7 @@ So, I can create a new user with the parametres that I have been defined
         And the "time zone" "Europe/Andorra"
         And the "zoom" 10
         And the "location" with 1 and 1
+        And the "plan" "TRIAL"
         Then I delete it
         And I create it
         And response code should be: 201

@@ -481,6 +481,18 @@ module.exports = {
                 'southCriteria': 'addSouthCriteria',
                 'javascript': 'withJavascript',
                 'payloadType': 'withPayloadType',
+            },
+            'organizationPlan':{
+                'identifier': "withIdentifier",
+                'name': 'withName',
+                'flowRate': 'withFlowRate',
+                'maxDeviceAmount': 'withMaxDeviceAmount',
+                'maxStorageLifeTime': 'withMaxStorageLifeTime'
+            },
+            'devicePlan':{
+                'identifier': "withIdentifier",
+                'name': 'withName',
+                'flowRate': 'withFlowRate'
             }
         }[setter];
     },

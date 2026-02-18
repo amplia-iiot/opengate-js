@@ -8,8 +8,7 @@ Feature: Delete and Create an analytics pipeline
     So i can create a new aimodel, transformer and a pipeline
 
     Background:
-        # Given an apikey user by "require-real-apikey"
-        Given an apikey user by "2829be88-a7d7-4f51-aefc-3cc2385b6506"
+        Given an apikey user by "require-real-apikey"
     #TESTS WITH MOCK, ONLY TIMESERIES URIS: Given with mock "timeseries" for "createDelete"
 
      Scenario: Creating an organization to use in timeseries tests
@@ -22,6 +21,7 @@ Feature: Delete and Create an analytics pipeline
         And the "time zone" "Europe/Andorra"
         And the "zoom" 10
         And the "location" with 1 and 1
+        And the "plan" "TRIAL"
         Then I delete it
         Then I create it
         And response code should be: 201

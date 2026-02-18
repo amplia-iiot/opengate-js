@@ -98,6 +98,15 @@ module.exports = {
             'connectorFunctionsCalaog': {
                 'connectorFunctionsId': 'findByConnectorFunctionsId',
                 'catalog': 'getConnectorFunctionsCatalog'
+            },
+            'organizationPlans': {
+                'organizationId': 'findByOrganization',
+                'organizationIdAndIdentifier': 'findByOrganizationAndId'
+            }
+            ,
+            'devicePlans': {
+                'organizationId': 'findByOrganization',
+                'organizationIdAndIdentifier': 'findByOrganizationAndId'
             }
         } [setter];
         ///home/manuel/Escritorio/proyectos/opengateJs/opengate-js/features/support/find_model.js
@@ -152,6 +161,19 @@ module.exports = {
             'timeserie - name': '$[0].name',
             'timeserie - columns': '$[0].columns',
             'timeserie - context': '$[0].context',
+            'organization plan list name': '$[0].name',
+            'organization plan list flowRate': '$[0].flowRate',
+            'organization plan list maxDeviceAmount': '$[0].maxDeviceAmount',
+            'organization plan list maxStorageLifeTime': '$[0].maxStorageLifeTime',
+            'organization plan name': 'name',
+            'organization plan flowRate': 'flowRate',
+            'organization plan maxDeviceAmount': 'maxDeviceAmount',
+            'organization plan maxStorageLifeTime': 'maxStorageLifeTime',
+            'device plan list name': '$[0].name',
+            'device plan list flowRate': '$[0].flowRate',
+            'device plan name': 'name',
+            'device plan flowRate': 'flowRate',
+            
             
         } [getter];
     }
