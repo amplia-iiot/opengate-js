@@ -155,7 +155,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PRE_RESOURCE">PRE_RESOURCE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOFTWARES_RESOURCE">SOFTWARES_RESOURCE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOFTWARE_TYPES_ENUM">SOFTWARE_TYPES_ENUM</a></span></span></li>
-<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">organizations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/OrganizationFinder.js~OrganizationFinder.html">OrganizationFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">organizations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/DomainsFinder.js~DomainFinder.html">DomainFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/OrganizationFinder.js~OrganizationFinder.html">OrganizationFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/Organizations.js~Organizations.html">Organizations</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">plan</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/plan/DevicePlans.js~DevicePlans.html">DevicePlans</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/plan/DevicePlansFinder.js~DevicePlansFinder.html">DevicePlansFinder</a></span></span></li>
@@ -482,6 +483,17 @@ export default class Timeseries extends BaseProvision {
         return this;
     }
 
+    /**
+     * List of sorting fields
+     * @param {array} sorts - required field
+     * @return {Timeseries}
+     */
+    withSorts(sorts) {
+        checkType._checkArray(sorts, &apos;sorts&apos;);
+        this._sorts = sorts;
+        return this;
+    }
+
     _composeElement() {
         this._resource = URL + this._organization;
         if (this._timeBucket &gt; 0) {
@@ -501,7 +513,8 @@ export default class Timeseries extends BaseProvision {
             origin: this._origin,
             context: this._context || [],
             identifierColumn: this._identifierColumn,
-            columns: this._columns || []
+            columns: this._columns || [],
+            sorts: this._sorts || undefined
         };
         return timeserie;
     }
@@ -524,7 +537,8 @@ export default class Timeseries extends BaseProvision {
             origin: this._origin,
             context: this._context || [],
             identifierColumn: this._identifierColumn,
-            columns: this._columns || []
+            columns: this._columns || [],
+            sorts: this._sorts || undefined
         };
         return timeserie;
     }

@@ -552,6 +552,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "opengate-js/src/organizations/domainsfinder.js~domainfinder",
+    "class/src/organizations/DomainsFinder.js~DomainFinder.html",
+    "<span>DomainFinder</span> <span class=\"search-result-import-path\">opengate-js/src/organizations/DomainsFinder.js</span>",
+    "class"
+  ],
+  [
     "opengate-js/src/searching/builder/entitiessearchbuilder.js~entitiessearchbuilder",
     "class/src/searching/builder/EntitiesSearchBuilder.js~EntitiesSearchBuilder.html",
     "<span>EntitiesSearchBuilder</span> <span class=\"search-result-import-path\">opengate-js/src/searching/builder/EntitiesSearchBuilder.js</span>",
@@ -3861,6 +3867,12 @@ window.esdocSearchIndex = [
     "src/internalopengateapi.js~internalopengateapi#newdeviceplansfinder",
     "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newDevicePlansFinder",
     "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newDevicePlansFinder",
+    "method"
+  ],
+  [
+    "src/internalopengateapi.js~internalopengateapi#newdomainsfinder",
+    "class/src/InternalOpenGateAPI.js~InternalOpenGateAPI.html#instance-method-newDomainsFinder",
+    "src/InternalOpenGateAPI.js~InternalOpenGateAPI#newDomainsFinder",
     "method"
   ],
   [
@@ -8220,6 +8232,24 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/organizations/domainsfinder.js",
+    "file/src/organizations/DomainsFinder.js.html",
+    "src/organizations/DomainsFinder.js",
+    "file"
+  ],
+  [
+    "src/organizations/domainsfinder.js~domainfinder#constructor",
+    "class/src/organizations/DomainsFinder.js~DomainFinder.html#instance-constructor-constructor",
+    "src/organizations/DomainsFinder.js~DomainFinder#constructor",
+    "method"
+  ],
+  [
+    "src/organizations/domainsfinder.js~domainfinder#findbynamewithhierarchy",
+    "class/src/organizations/DomainsFinder.js~DomainFinder.html#instance-method-findByNameWithHierarchy",
+    "src/organizations/DomainsFinder.js~DomainFinder#findByNameWithHierarchy",
+    "method"
+  ],
+  [
     "src/organizations/organizationfinder.js",
     "file/src/organizations/OrganizationFinder.js.html",
     "src/organizations/OrganizationFinder.js",
@@ -11304,6 +11334,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/searching/builder/timeseriesearchbuilder.js~timeseriesearchbuilder#sort",
+    "class/src/searching/builder/TimeserieSearchBuilder.js~TimeserieSearchBuilder.html#instance-method-sort",
+    "src/searching/builder/TimeserieSearchBuilder.js~TimeserieSearchBuilder#sort",
+    "method"
+  ],
+  [
     "src/searching/builder/timezonesearchbuilder.js",
     "file/src/searching/builder/TimezoneSearchBuilder.js.html",
     "src/searching/builder/TimezoneSearchBuilder.js",
@@ -11625,6 +11661,12 @@ window.esdocSearchIndex = [
     "src/timeseries/timeseries.js~timeseries#withretention",
     "class/src/timeseries/Timeseries.js~Timeseries.html#instance-method-withRetention",
     "src/timeseries/Timeseries.js~Timeseries#withRetention",
+    "method"
+  ],
+  [
+    "src/timeseries/timeseries.js~timeseries#withsorts",
+    "class/src/timeseries/Timeseries.js~Timeseries.html#instance-method-withSorts",
+    "src/timeseries/Timeseries.js~Timeseries#withSorts",
     "method"
   ],
   [

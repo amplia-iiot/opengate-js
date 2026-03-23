@@ -155,7 +155,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PRE_RESOURCE">PRE_RESOURCE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOFTWARES_RESOURCE">SOFTWARES_RESOURCE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOFTWARE_TYPES_ENUM">SOFTWARE_TYPES_ENUM</a></span></span></li>
-<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">organizations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/OrganizationFinder.js~OrganizationFinder.html">OrganizationFinder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">organizations</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/DomainsFinder.js~DomainFinder.html">DomainFinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/OrganizationFinder.js~OrganizationFinder.html">OrganizationFinder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/organizations/Organizations.js~Organizations.html">Organizations</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">plan</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/plan/DevicePlans.js~DevicePlans.html">DevicePlans</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/plan/DevicePlansFinder.js~DevicePlansFinder.html">DevicePlansFinder</a></span></span></li>
@@ -333,11 +334,11 @@ export default class TimeserieSearchBuilder extends SearchBuilder {
     /**
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */
-    constructor(parent, organization, timeserie){
-        super(parent, {}, new FieldFinder(parent, BASE_URL, {organization: organization, timeserie: timeserie}))
+    constructor(parent, organization, timeserie) {
+        super(parent, {}, new FieldFinder(parent, BASE_URL, { organization: organization, timeserie: timeserie }))
         this._url = BASE_URL + &apos;/provision/organizations/&apos; + organization + &apos;/&apos; + timeserie + &apos;/data&apos;
     }
-    
+
     /**
      * The search request will have this group by 
      * @example
@@ -349,6 +350,16 @@ export default class TimeserieSearchBuilder extends SearchBuilder {
         return this;
     }
 
+    /**
+     * The search request will use this sort
+     * @example
+     * @param {!(string)} sort 
+     * @return {TimeserieSearchBuilder} 
+     */
+    sort(sort) {
+        this._builderParams.sort = sort || undefined;
+        return this;
+    }
 
     /**
      * The search request will have this filter 
@@ -376,7 +387,7 @@ export default class TimeserieSearchBuilder extends SearchBuilder {
      * @throws {SearchBuilderError} Throw error on url build
      * @return {Search} 
      */
-     build() {
+    build() {
         return new WPSearch(this._parent,
             this._buildUrl(),
             this._buildFilter(),
