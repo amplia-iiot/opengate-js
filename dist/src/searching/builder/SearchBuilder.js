@@ -313,11 +313,18 @@ var SearchBuilder = (function () {
         key: '_buildSort',
         value: function _buildSort() {
             if (this._builderParams.sort.length === 0) return undefined;
-            return {
-                sort: {
-                    parameters: this._builderParams.sort
-                }
-            };
+
+            if (this._builderParams.sort instanceof Array) {
+                return {
+                    sort: {
+                        parameters: this._builderParams.sort
+                    }
+                };
+            } else {
+                return {
+                    sort: this._builderParams.sort
+                };
+            }
         }
     }, {
         key: '_buildUrl',

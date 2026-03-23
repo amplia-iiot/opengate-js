@@ -212,6 +212,19 @@ var Timeseries = (function (_BaseProvision) {
             this._context = context;
             return this;
         }
+
+        /**
+         * List of sorting fields
+         * @param {array} sorts - required field
+         * @return {Timeseries}
+         */
+    }, {
+        key: 'withSorts',
+        value: function withSorts(sorts) {
+            _utilFormatsCheck_types2['default']._checkArray(sorts, 'sorts');
+            this._sorts = sorts;
+            return this;
+        }
     }, {
         key: '_composeElement',
         value: function _composeElement() {
@@ -233,7 +246,8 @@ var Timeseries = (function (_BaseProvision) {
                 origin: this._origin,
                 context: this._context || [],
                 identifierColumn: this._identifierColumn,
-                columns: this._columns || []
+                columns: this._columns || [],
+                sorts: this._sorts || undefined
             };
             return timeserie;
         }
@@ -257,7 +271,8 @@ var Timeseries = (function (_BaseProvision) {
                 origin: this._origin,
                 context: this._context || [],
                 identifierColumn: this._identifierColumn,
-                columns: this._columns || []
+                columns: this._columns || [],
+                sorts: this._sorts || undefined
             };
             return timeserie;
         }

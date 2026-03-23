@@ -162,6 +162,17 @@ export default class Timeseries extends BaseProvision {
         return this;
     }
 
+    /**
+     * List of sorting fields
+     * @param {array} sorts - required field
+     * @return {Timeseries}
+     */
+    withSorts(sorts) {
+        checkType._checkArray(sorts, 'sorts');
+        this._sorts = sorts;
+        return this;
+    }
+
     _composeElement() {
         this._resource = URL + this._organization;
         if (this._timeBucket > 0) {
@@ -181,7 +192,8 @@ export default class Timeseries extends BaseProvision {
             origin: this._origin,
             context: this._context || [],
             identifierColumn: this._identifierColumn,
-            columns: this._columns || []
+            columns: this._columns || [],
+            sorts: this._sorts || undefined
         };
         return timeserie;
     }
@@ -204,7 +216,8 @@ export default class Timeseries extends BaseProvision {
             origin: this._origin,
             context: this._context || [],
             identifierColumn: this._identifierColumn,
-            columns: this._columns || []
+            columns: this._columns || [],
+            sorts: this._sorts || undefined
         };
         return timeserie;
     }

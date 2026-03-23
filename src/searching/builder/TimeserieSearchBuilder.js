@@ -13,11 +13,11 @@ export default class TimeserieSearchBuilder extends SearchBuilder {
     /**
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */
-    constructor(parent, organization, timeserie){
-        super(parent, {}, new FieldFinder(parent, BASE_URL, {organization: organization, timeserie: timeserie}))
+    constructor(parent, organization, timeserie) {
+        super(parent, {}, new FieldFinder(parent, BASE_URL, { organization: organization, timeserie: timeserie }))
         this._url = BASE_URL + '/provision/organizations/' + organization + '/' + timeserie + '/data'
     }
-    
+
     /**
      * The search request will have this group by 
      * @example
@@ -29,6 +29,16 @@ export default class TimeserieSearchBuilder extends SearchBuilder {
         return this;
     }
 
+    /**
+     * The search request will use this sort
+     * @example
+     * @param {!(string)} sort 
+     * @return {TimeserieSearchBuilder} 
+     */
+    sort(sort) {
+        this._builderParams.sort = sort || undefined;
+        return this;
+    }
 
     /**
      * The search request will have this filter 
@@ -56,7 +66,7 @@ export default class TimeserieSearchBuilder extends SearchBuilder {
      * @throws {SearchBuilderError} Throw error on url build
      * @return {Search} 
      */
-     build() {
+    build() {
         return new WPSearch(this._parent,
             this._buildUrl(),
             this._buildFilter(),
