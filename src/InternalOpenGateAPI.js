@@ -7,6 +7,7 @@ import Geocluster from './geocluster/Geocluster';
 import Certificates from './security/Certificates';
 import Users from './users/Users';
 import OrganizationFinder from './organizations/OrganizationFinder';
+import DomainsFinder from './organizations/DomainsFinder';
 import ChannelFinder from './channels/ChannelFinder';
 import AreasSearchBuilder from './searching/builder/AreasSearchBuilder';
 import DatasetsCatalogSearchBuilder from './searching/builder/DatasetsCatalogSearchBuilder';
@@ -233,6 +234,14 @@ export default class InternalOpenGateAPI {
      */
     geoclusterBuilder() {
         return new Geocluster(this);
+    }
+
+    /**
+     * This return a util to find a domains hierarchy
+     * @return {DomainsFinder}
+     */
+    newDomainsFinder() {
+        return new DomainsFinder(this);
     }
 
     /**
@@ -1394,7 +1403,7 @@ export default class InternalOpenGateAPI {
      * @param {*} organization 
      * @returns {OrganizationPlans}
      */
-    organizationPlansBuilder(organization){
+    organizationPlansBuilder(organization) {
         return new OrganizationPlans(this, organization);
     }
 
@@ -1403,7 +1412,7 @@ export default class InternalOpenGateAPI {
      * @param {*} organization 
      * @returns {OrganizationPlans}
      */
-    devicePlansBuilder(organization){
+    devicePlansBuilder(organization) {
         return new DevicePlans(this, organization);
     }
 }

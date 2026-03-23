@@ -63,6 +63,19 @@ var TimeserieSearchBuilder = (function (_SearchBuilder) {
     }
 
     /**
+     * The search request will use this sort
+     * @example
+     * @param {!(string)} sort 
+     * @return {TimeserieSearchBuilder} 
+     */
+  }, {
+    key: 'sort',
+    value: function sort(_sort) {
+      this._builderParams.sort = _sort || undefined;
+      return this;
+    }
+
+    /**
      * The search request will have this filter 
      * @example
      *  ogapi.timeserieSearchBuilder(organization, timeserieId).select(

@@ -38,6 +38,10 @@ var _organizationsOrganizationFinder = require('./organizations/OrganizationFind
 
 var _organizationsOrganizationFinder2 = _interopRequireDefault(_organizationsOrganizationFinder);
 
+var _organizationsDomainsFinder = require('./organizations/DomainsFinder');
+
+var _organizationsDomainsFinder2 = _interopRequireDefault(_organizationsDomainsFinder);
+
 var _channelsChannelFinder = require('./channels/ChannelFinder');
 
 var _channelsChannelFinder2 = _interopRequireDefault(_channelsChannelFinder);
@@ -712,6 +716,16 @@ var InternalOpenGateAPI = (function () {
         key: 'geoclusterBuilder',
         value: function geoclusterBuilder() {
             return new _geoclusterGeocluster2['default'](this);
+        }
+
+        /**
+         * This return a util to find a domains hierarchy
+         * @return {DomainsFinder}
+         */
+    }, {
+        key: 'newDomainsFinder',
+        value: function newDomainsFinder() {
+            return new _organizationsDomainsFinder2['default'](this);
         }
 
         /**
