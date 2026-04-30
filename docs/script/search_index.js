@@ -11598,6 +11598,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/timeseries/timeseries.js~timeseries#optimizationplan",
+    "class/src/timeseries/Timeseries.js~Timeseries.html#instance-method-optimizationPlan",
+    "src/timeseries/Timeseries.js~Timeseries#optimizationPlan",
+    "method"
+  ],
+  [
     "src/timeseries/timeseries.js~timeseries#withbucketcolumn",
     "class/src/timeseries/Timeseries.js~Timeseries.html#instance-method-withBucketColumn",
     "src/timeseries/Timeseries.js~Timeseries#withBucketColumn",
