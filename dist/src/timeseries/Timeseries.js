@@ -276,11 +276,25 @@ var Timeseries = (function (_BaseProvision) {
             };
             return timeserie;
         }
+
+        /**
+         * Mark timeseries as plan only
+         * @returns {Timeseries}
+         */
     }, {
         key: 'onlyPlan',
         value: function onlyPlan() {
             this._onlyPlan = true;
             return this;
+        }
+    }, {
+        key: 'optimizationPlan',
+        value: function optimizationPlan() {
+            var planElement = this._composeUpdateElement();
+
+            var petitionUrl = this._buildURL();
+
+            return this._doNorthPost(petitionUrl, planElement, true);
         }
 
         /**
