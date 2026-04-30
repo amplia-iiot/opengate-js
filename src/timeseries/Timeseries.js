@@ -222,9 +222,21 @@ export default class Timeseries extends BaseProvision {
         return timeserie;
     }
 
+    /**
+     * Mark timeseries as plan only
+     * @returns {Timeseries}
+     */
     onlyPlan() {
         this._onlyPlan = true;
         return this;
+    }
+
+    optimizationPlan() {
+        var planElement = this._composeUpdateElement();
+
+        var petitionUrl = this._buildURL();
+
+        return this._doNorthPost(petitionUrl, planElement, true);
     }
 
     /**
