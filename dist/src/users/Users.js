@@ -234,6 +234,19 @@ var User = (function (_BaseProvision) {
         }
 
         /**
+         * Enable or disable login with password
+         * @param {boolean} loginWithPassword 
+         * @returns {User}
+         */
+    }, {
+        key: 'withLoginWithPassword',
+        value: function withLoginWithPassword(loginWithPassword) {
+            if (typeof loginWithPassword !== 'boolean') throw new Error('Parameter loginWithPassword must be a boolean');
+            this._loginWithPassword = loginWithPassword;
+            return this;
+        }
+
+        /**
          * Compose url to delete an user
          * @return {String} This returns a string with the URL of the request.
          * @private
@@ -270,7 +283,8 @@ var User = (function (_BaseProvision) {
                     langCode: this._langCode || undefined,
                     timezone: this._timezone || undefined,
                     "2FaType": this._twoFaType || undefined,
-                    forcePasswordChange: typeof this._forcePasswordChange === 'boolean' ? this._forcePasswordChange : undefined
+                    forcePasswordChange: typeof this._forcePasswordChange === 'boolean' ? this._forcePasswordChange : undefined,
+                    loginWithPassword: typeof this._loginWithPassword === 'boolean' ? this._loginWithPassword : undefined
                 }
             };
 
@@ -302,7 +316,8 @@ var User = (function (_BaseProvision) {
                     apiKey: this._apiKey || undefined,
                     password: this._password || undefined,
                     "2FaType": this._twoFaType || undefined,
-                    forcePasswordChange: typeof this._forcePasswordChange === 'boolean' ? this._forcePasswordChange : undefined
+                    forcePasswordChange: typeof this._forcePasswordChange === 'boolean' ? this._forcePasswordChange : undefined,
+                    loginWithPassword: typeof this._loginWithPassword === 'boolean' ? this._loginWithPassword : undefined
                 }
             };
             return data;
