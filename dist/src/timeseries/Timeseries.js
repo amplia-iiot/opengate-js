@@ -287,6 +287,11 @@ var Timeseries = (function (_BaseProvision) {
             this._onlyPlan = true;
             return this;
         }
+
+        /**
+         * Request optimization plan
+         * @returns {Promise}
+         */
     }, {
         key: 'optimizationPlan',
         value: function optimizationPlan() {

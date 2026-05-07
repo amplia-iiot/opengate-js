@@ -29,7 +29,8 @@ var IOT_FIELDS = {
             "surname": "user.surname",
             "countryCode": "country.code",
             "langCode": "language.code",
-            "timezone": "user.timezone"
+            "timezone": "user.timezone",
+            "loginWithPassword": "loginWithPassword"
         }
     },
     "DOMAIN": {
