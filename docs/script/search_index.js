@@ -11970,6 +11970,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/users/users.js~user#withloginwithpassword",
+    "class/src/users/Users.js~User.html#instance-method-withLoginWithPassword",
+    "src/users/Users.js~User#withLoginWithPassword",
+    "method"
+  ],
+  [
     "src/users/users.js~user#withname",
     "class/src/users/Users.js~User.html#instance-method-withName",
     "src/users/Users.js~User#withName",
