@@ -231,6 +231,10 @@ export default class Timeseries extends BaseProvision {
         return this;
     }
 
+    /**
+     * Request optimization plan
+     * @returns {Promise}
+     */
     optimizationPlan() {
         var planElement = this._composeUpdateElement();
 
