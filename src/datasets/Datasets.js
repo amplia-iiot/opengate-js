@@ -92,6 +92,16 @@ export default class Datasets extends BaseProvision {
         return this;
     }
 
+    /**
+     * List of sorting fields
+     * @param {array} sorts - required field
+     * @return {Datasets}
+     */
+    withSorts(sorts) {
+        checkType._checkArray(sorts, 'sorts');
+        this._sorts = sorts;
+        return this;
+    }
 
     _composeElement() {
         this._resource = 'datasets/provision/organizations/' + this._organization;
@@ -100,7 +110,8 @@ export default class Datasets extends BaseProvision {
             description: this._description,
             type: this._type,
             identifierColumn: this._identifierColumn,
-            columns: this._columns
+            columns: this._columns,
+            sorts: this._sorts
         };
         return dataset;
     }
@@ -111,7 +122,8 @@ export default class Datasets extends BaseProvision {
             description: this._description,
             type: this._type,
             identifierColumn: this._identifierColumn,
-            columns: this._columns
+            columns: this._columns,
+            sorts: this._sorts
         };
         return dataset;
     }
@@ -119,6 +131,17 @@ export default class Datasets extends BaseProvision {
     onlyPlan() {
         this._onlyPlan = true;
         return this;
+    }
+
+    /**
+     * Request optimization plan
+     * @returns {Promise}
+     */
+    optimizationPlan() {
+        const planElement = this._composeUpdateElement();
+        const petitionUrl = this._buildURL();
+
+        return this._doNorthPost(petitionUrl, planElement, true);
     }
 
     /**

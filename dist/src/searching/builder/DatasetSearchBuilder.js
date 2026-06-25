@@ -83,6 +83,19 @@ var DatasetSearchBuilder = (function (_SearchBuilder) {
     }
 
     /**
+     * The search request will use this sort
+     * @example
+     * @param {!(string)} sort 
+     * @return {DatasetSearchBuilder} 
+     */
+  }, {
+    key: 'sort',
+    value: function sort(_sort) {
+      this._builderParams.sort = _sort || undefined;
+      return this;
+    }
+
+    /**
      * Build a instance of Search 
      *
      * @example
