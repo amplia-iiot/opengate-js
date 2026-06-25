@@ -6288,6 +6288,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/datasets/datasets.js~datasets#optimizationplan",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-method-optimizationPlan",
+    "src/datasets/Datasets.js~Datasets#optimizationPlan",
+    "method"
+  ],
+  [
     "src/datasets/datasets.js~datasets#withcolumns",
     "class/src/datasets/Datasets.js~Datasets.html#instance-method-withColumns",
     "src/datasets/Datasets.js~Datasets#withColumns",
@@ -6321,6 +6327,12 @@ window.esdocSearchIndex = [
     "src/datasets/datasets.js~datasets#withorganization",
     "class/src/datasets/Datasets.js~Datasets.html#instance-method-withOrganization",
     "src/datasets/Datasets.js~Datasets#withOrganization",
+    "method"
+  ],
+  [
+    "src/datasets/datasets.js~datasets#withsorts",
+    "class/src/datasets/Datasets.js~Datasets.html#instance-method-withSorts",
+    "src/datasets/Datasets.js~Datasets#withSorts",
     "method"
   ],
   [
@@ -10257,6 +10269,12 @@ window.esdocSearchIndex = [
     "src/searching/builder/datasetsearchbuilder.js~datasetsearchbuilder#select",
     "class/src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder.html#instance-method-select",
     "src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder#select",
+    "method"
+  ],
+  [
+    "src/searching/builder/datasetsearchbuilder.js~datasetsearchbuilder#sort",
+    "class/src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder.html#instance-method-sort",
+    "src/searching/builder/DatasetSearchBuilder.js~DatasetSearchBuilder#sort",
     "method"
   ],
   [

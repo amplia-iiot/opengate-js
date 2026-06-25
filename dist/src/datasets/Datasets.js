@@ -128,6 +128,19 @@ var Datasets = (function (_BaseProvision) {
             this._columns = columns;
             return this;
         }
+
+        /**
+         * List of sorting fields
+         * @param {array} sorts - required field
+         * @return {Datasets}
+         */
+    }, {
+        key: 'withSorts',
+        value: function withSorts(sorts) {
+            _utilFormatsCheck_types2['default']._checkArray(sorts, 'sorts');
+            this._sorts = sorts;
+            return this;
+        }
     }, {
         key: '_composeElement',
         value: function _composeElement() {
@@ -137,7 +150,8 @@ var Datasets = (function (_BaseProvision) {
                 description: this._description,
                 type: this._type,
                 identifierColumn: this._identifierColumn,
-                columns: this._columns
+                columns: this._columns,
+                sorts: this._sorts
             };
             return dataset;
         }
@@ -149,7 +163,8 @@ var Datasets = (function (_BaseProvision) {
                 description: this._description,
                 type: this._type,
                 identifierColumn: this._identifierColumn,
-                columns: this._columns
+                columns: this._columns,
+                sorts: this._sorts
             };
             return dataset;
         }
@@ -158,6 +173,19 @@ var Datasets = (function (_BaseProvision) {
         value: function onlyPlan() {
             this._onlyPlan = true;
             return this;
+        }
+
+        /**
+         * Request optimization plan
+         * @returns {Promise}
+         */
+    }, {
+        key: 'optimizationPlan',
+        value: function optimizationPlan() {
+            var planElement = this._composeUpdateElement();
+            var petitionUrl = this._buildURL();
+
+            return this._doNorthPost(petitionUrl, planElement, true);
         }
 
         /**

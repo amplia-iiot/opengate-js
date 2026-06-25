@@ -13,11 +13,11 @@ export default class DatasetSearchBuilder extends SearchBuilder {
     /**
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */
-    constructor(parent, organization, dataset){
-        super(parent, {}, new FieldFinder(parent, BASE_URL, {organization: organization, dataset: dataset}))
+    constructor(parent, organization, dataset) {
+        super(parent, {}, new FieldFinder(parent, BASE_URL, { organization: organization, dataset: dataset }))
         this._url = BASE_URL + '/provision/organizations/' + organization + '/' + dataset + '/data'
     }
-    
+
     /**
      * The search request will have this group by 
      * @example
@@ -49,6 +49,17 @@ export default class DatasetSearchBuilder extends SearchBuilder {
     }
 
     /**
+     * The search request will use this sort
+     * @example
+     * @param {!(string)} sort 
+     * @return {DatasetSearchBuilder} 
+     */
+    sort(sort) {
+        this._builderParams.sort = sort || undefined;
+        return this;
+    }
+
+    /**
      * Build a instance of Search 
      *
      * @example
@@ -56,7 +67,7 @@ export default class DatasetSearchBuilder extends SearchBuilder {
      * @throws {SearchBuilderError} Throw error on url build
      * @return {Search} 
      */
-     build() {
+    build() {
         return new WPSearch(this._parent,
             this._buildUrl(),
             this._buildFilter(),
