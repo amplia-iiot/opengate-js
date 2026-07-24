@@ -5,6 +5,7 @@ const handlebars = require('handlebars');
 const dumpPath = path.resolve(__dirname, '../docs/dump.json');
 const outputDir = path.resolve(__dirname, '../ogapi-docs');
 const templatePath = path.resolve(__dirname, 'relearn-template.hbs');
+const rootIndexTemplatePath = path.resolve(__dirname, 'relearn-root-index.md');
 
 if (!fs.existsSync(dumpPath)) {
     console.error(`Error: ${dumpPath} not found. Run existing docs generation first.`);
@@ -14,6 +15,9 @@ if (!fs.existsSync(dumpPath)) {
 const dump = JSON.parse(fs.readFileSync(dumpPath, 'utf8'));
 const templateSource = fs.readFileSync(templatePath, 'utf8');
 const template = handlebars.compile(templateSource);
+const rootIndexContent = fs.existsSync(rootIndexTemplatePath) 
+    ? fs.readFileSync(rootIndexTemplatePath, 'utf8') 
+    : '';
 
 // Helper to ensure directory exists
 function ensureDir(dirPath) {
@@ -27,7 +31,7 @@ const classes = [];
 const memberMap = new Map(); // longname -> [children]
 
 dump.forEach(item => {
-    if (item.kind === 'class') {
+    if (item.kind === 'class' && item.name && !item.name.startsWith('_')) {
         classes.push(item);
     } else if (item.memberof) {
         if (!memberMap.has(item.memberof)) {
@@ -50,7 +54,10 @@ ensureDir(outputDir);
 const classPathMap = new Map();
 classes.forEach(cls => {
     if (cls.memberof) {
-        const relativePath = cls.memberof.replace(/\.js$/, '.md');
+        let relativePath = cls.memberof.replace(/\.js$/, '.md');
+        if (relativePath.startsWith('src/')) {
+            relativePath = relativePath.replace(/^src\//, 'JS Reference/');
+        }
         classPathMap.set(cls.name, relativePath);
     }
 });
@@ -131,8 +138,8 @@ classes.forEach(classDoc => {
     const classLongName = classDoc.longname;
     const children = memberMap.get(classLongName) || [];
 
-    // Filter out private members (starting with _)
-    const publicChildren = children.filter(child => !child.name.startsWith('_'));
+    // Filter out private members (starting with _, marked private or undocument)
+    const publicChildren = children.filter(child => child.name && !child.name.startsWith('_') && child.access !== 'private' && !child.undocument);
 
     // Determine output path from file path
     // classDoc.name (e.g. "src/AIModels/AIModels.js") or classDoc.longname ("src/AIModels/AIModels.js~AIModels")?
@@ -153,7 +160,10 @@ classes.forEach(classDoc => {
     }
 
     // Remove .js extension, add .md
-    const relativePath = filePath.replace(/\.js$/, '.md');
+    let relativePath = filePath.replace(/\.js$/, '.md');
+    if (relativePath.startsWith('src/')) {
+        relativePath = relativePath.replace(/^src\//, 'JS Reference/');
+    }
 
     // Sort children: constructor first, then others alphabetically
     publicChildren.sort((a, b) => {
@@ -176,15 +186,25 @@ classes.forEach(classDoc => {
         if (!fs.existsSync(indexFile)) {
             const dirName = path.basename(currentDir);
             const isRoot = currentDir === outputDir;
-            const title = isRoot ? "OpenGate JS Documentation" : dirName;
 
-            const indexContent = `+++
+            let indexContent = '';
+            if (isRoot) {
+                indexContent = rootIndexContent;
+            } else {
+                const title = dirName;
+                const isJsReference = dirName === 'JS Reference';
+                const descriptionLine = isJsReference 
+                    ? 'description = "Reference for the OpenGate JavaScript API: base classes and the per-resource finder and builder classes (areas, alarms, bulk, channels, provisioning, and more)."\n'
+                    : '';
+
+                indexContent = `+++
 title = "${title}"
-weight = 10
+${descriptionLine}weight = 10
 +++
 
 {{% children sort="weight" depth="10" %}}
 `;
+            }
             fs.writeFileSync(indexFile, indexContent);
         }
         if (currentDir === outputDir) break;
