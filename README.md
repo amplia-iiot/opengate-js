@@ -16,6 +16,12 @@
 
 To generate the API documentation you can execute `gulp build` and open the generated HTML on: **documentation/index.html**
 
+In order to generate the documentation in relearn format:
+```bash
+yarn docs:relearn
+```
+You must copy the content from *JS Reference/*.md to the odm-documentation-hugo *content/libs/ogapi-docs/JS Reference/* folder.
+
 ## Generate version
 
 Can generate version of the project with the jenkins job http://constructor.amplia.es:8080/jenkins/job/og-ux_generate_release_from_github/

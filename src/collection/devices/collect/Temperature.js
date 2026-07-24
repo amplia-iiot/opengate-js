@@ -28,7 +28,7 @@ export default class Temperature {
     /**
      * Set the currentTemperature attribute
      * @param {string} currentTemperature - optionals field
-     * @return {Event}
+     * @return {Temperature}
      */
     withCurrentTemperature(currentTemperature) {
         if (typeof currentTemperature !== 'string' || currentTemperature.length === 0)
@@ -43,7 +43,7 @@ export default class Temperature {
     /**
      * Set the unitTemperature attribute
      * @param {string} unitTemperature - optionals field
-     * @return {Event}
+     * @return {Temperature}
      */
     withUnitTemperature(unitTemperature) {
         if (typeof unitTemperature !== 'string' || unitTemperature.length === 0)
@@ -58,7 +58,7 @@ export default class Temperature {
     /**
      * Set the statusTemperature attribute
      * @param {string} statusTemperature - optionals field
-     * @return {Event}
+     * @return {Temperature}
      */
     withStatusTemperature(statusTemperature) {
         if (typeof statusTemperature !== 'string' || statusTemperature.length === 0)
@@ -73,7 +73,7 @@ export default class Temperature {
     /**
      * Set the trendTemperature attribute
      * @param {string} trendTemperature - optionals field
-     * @return {Event}
+     * @return {Temperature}
      */
     withTrendTemperature(trendTemperature) {
         if (typeof trendTemperature !== 'string' || trendTemperature.length === 0)
@@ -88,7 +88,7 @@ export default class Temperature {
     /**
      * Set the averageTemperature attribute
      * @param {string} averageTemperature - optionals field
-     * @return {Event}
+     * @return {Temperature}
      */
     withTemperatureAverage(averageTemperature) {
         if (typeof averageTemperature !== 'string' || averageTemperature.length === 0)
@@ -103,7 +103,7 @@ export default class Temperature {
     /**
      * Set the minimumTemperature attribute
      * @param {string} minimumTemperature - optionals field
-     * @return {Event}
+     * @return {Temperature}
      */
     withMinimumTemperature(minimumTemperature) {
         if (typeof minimumTemperature !== 'string' || minimumTemperature.length === 0)
@@ -118,7 +118,7 @@ export default class Temperature {
     /**
      * Set the maximum attribute
      * @param {string} maximumTemperature - optionals field
-     * @return {Event}
+     * @return {Temperature}
      */
     withMaximumTemperature(maximumTemperature) {
         if (typeof maximumTemperature !== 'string' || maximumTemperature.length === 0)
