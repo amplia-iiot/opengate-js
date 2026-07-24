@@ -16,11 +16,13 @@
 
 To generate the API documentation you can execute `gulp build` and open the generated HTML on: **documentation/index.html**
 
-In order to generate the documentation in relearn format:
+In order to generate the documentation in relearn format (always after last step):
+
 ```bash
 yarn docs:relearn
 ```
-You must copy the content from *JS Reference/*.md to the odm-documentation-hugo *content/libs/ogapi-docs/JS Reference/* folder.
+
+You must copy the content from *ogapi-docs/*.md to the odm-documentation-hugo project in *content/libs/ogapi-docs folder.
 
 ## Generate version
 
