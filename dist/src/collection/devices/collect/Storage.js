@@ -50,7 +50,7 @@ var Storage = (function (_Usage) {
         /**
          * Set the total attribute
          * @param {string} total - optionals field
-         * @return {Usage}
+         * @return {Storage}
          */
     }, {
         key: 'withTotal',

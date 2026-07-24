@@ -32,7 +32,7 @@ var Temperature = (function () {
     /**
      * Set the currentTemperature attribute
      * @param {string} currentTemperature - optionals field
-     * @return {Event}
+     * @return {Temperature}
      */
 
     _createClass(Temperature, [{
@@ -49,7 +49,7 @@ var Temperature = (function () {
         /**
          * Set the unitTemperature attribute
          * @param {string} unitTemperature - optionals field
-         * @return {Event}
+         * @return {Temperature}
          */
     }, {
         key: 'withUnitTemperature',
@@ -65,7 +65,7 @@ var Temperature = (function () {
         /**
          * Set the statusTemperature attribute
          * @param {string} statusTemperature - optionals field
-         * @return {Event}
+         * @return {Temperature}
          */
     }, {
         key: 'withStatusTemperature',
@@ -81,7 +81,7 @@ var Temperature = (function () {
         /**
          * Set the trendTemperature attribute
          * @param {string} trendTemperature - optionals field
-         * @return {Event}
+         * @return {Temperature}
          */
     }, {
         key: 'withTrendTemperature',
@@ -97,7 +97,7 @@ var Temperature = (function () {
         /**
          * Set the averageTemperature attribute
          * @param {string} averageTemperature - optionals field
-         * @return {Event}
+         * @return {Temperature}
          */
     }, {
         key: 'withTemperatureAverage',
@@ -113,7 +113,7 @@ var Temperature = (function () {
         /**
          * Set the minimumTemperature attribute
          * @param {string} minimumTemperature - optionals field
-         * @return {Event}
+         * @return {Temperature}
          */
     }, {
         key: 'withMinimumTemperature',
@@ -129,7 +129,7 @@ var Temperature = (function () {
         /**
          * Set the maximum attribute
          * @param {string} maximumTemperature - optionals field
-         * @return {Event}
+         * @return {Temperature}
          */
     }, {
         key: 'withMaximumTemperature',
