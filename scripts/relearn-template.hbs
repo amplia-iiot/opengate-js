@@ -1,5 +1,5 @@
 {{#each model}}
-## {{name}}
+### {{name}}
 
 {{#if deprecated}}
 
@@ -14,7 +14,7 @@
 {{/if}}
 
 {{#if params}}
-### Parámetros
+#### Parámetros
 
 | Nombre | Tipo | Opcional | Descripción |
 | :--- | :--- | :---: | :--- |
@@ -24,7 +24,7 @@
 {{/if}}
 
 {{#if returns}}
-### Retorna
+#### Retorna
 
 {{#each returns}}
 \{{% notice tip %}}
@@ -36,7 +36,7 @@
 {{/if}}
 
 {{#if examples}}
-### Ejemplos
+#### Ejemplos
 
 {{#each examples}}
 ```javascript
