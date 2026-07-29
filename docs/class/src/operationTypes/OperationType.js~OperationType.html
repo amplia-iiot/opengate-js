@@ -581,6 +581,34 @@
         <p>
           
           
+          <span data-ice="name"><span><a href="class/src/operationTypes/OperationType.js~OperationType.html#instance-method-withHistoryTtl">withHistoryTtl</a></span></span><span data-ice="signature">(historyTtl: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="class/src/operationTypes/OperationType.js~OperationType.html">OperationType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Allows the modification of the operation history retention (TTL).</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
           <span data-ice="name"><span><a href="class/src/operationTypes/OperationType.js~OperationType.html#instance-method-withIdentifier">withIdentifier</a></span></span><span data-ice="signature">(name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/operationTypes/OperationType.js~OperationType.html">OperationType</a></span></span>
         </p>
       </div>
@@ -972,7 +1000,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber181">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber200">source</a></span></span>
     </span>
   </h3>
 
@@ -1044,7 +1072,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber225">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber245">source</a></span></span>
     </span>
   </h3>
 
@@ -1111,7 +1139,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber247">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber267">source</a></span></span>
     </span>
   </h3>
 
@@ -1178,7 +1206,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber138">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber143">source</a></span></span>
     </span>
   </h3>
 
@@ -1250,7 +1278,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber236">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber256">source</a></span></span>
     </span>
   </h3>
 
@@ -1317,7 +1345,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber117">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber122">source</a></span></span>
     </span>
   </h3>
 
@@ -1378,6 +1406,94 @@ This function updates a entity of provision</p>
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-withHistoryTtl">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span data-ice="name">withHistoryTtl</span><span data-ice="signature">(historyTtl: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="class/src/operationTypes/OperationType.js~OperationType.html">OperationType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber189">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Allows the modification of the operation history retention (TTL).
+If it is not set, the platform default is applied.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">historyTtl</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>object with the amount of retention time and its unit, e.g. { value: 30, unit: &apos;days&apos; }</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" data-depth="1">historyTtl.value</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>amount of retention time, minimum 1</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" data-depth="1">historyTtl.unit</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>time unit: days, hours, months or years</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type" data-ice="returnType"><span><a href="class/src/operationTypes/OperationType.js~OperationType.html">OperationType</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-withIdentifier">
     <span class="access" data-ice="access">public</span>
     
@@ -1389,7 +1505,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber69">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber74">source</a></span></span>
     </span>
   </h3>
 
@@ -1462,7 +1578,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber159">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber164">source</a></span></span>
     </span>
   </h3>
 
@@ -1534,7 +1650,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber105">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber110">source</a></span></span>
     </span>
   </h3>
 
@@ -1607,7 +1723,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber81">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber86">source</a></span></span>
     </span>
   </h3>
 
@@ -1680,7 +1796,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber127">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber132">source</a></span></span>
     </span>
   </h3>
 
@@ -1752,7 +1868,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber170">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber175">source</a></span></span>
     </span>
   </h3>
 
@@ -1824,7 +1940,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber148">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber153">source</a></span></span>
     </span>
   </h3>
 
@@ -1896,7 +2012,7 @@ This function updates a entity of provision</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber93">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/operationTypes/OperationType.js.html#lineNumber98">source</a></span></span>
     </span>
   </h3>
 
