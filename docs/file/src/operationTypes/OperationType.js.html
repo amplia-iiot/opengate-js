@@ -366,6 +366,11 @@ export default class OperationType extends BaseProvision {
                 this.withProfiles(operationTypeObj.profiles);
             }
 
+            // El TTL del hist&#xF3;rico es configuraci&#xF3;n de la organizaci&#xF3;n, no del cat&#xE1;logo
+            if (operationTypeObj.historyTtl) {
+                this.withHistoryTtl(operationTypeObj.historyTtl);
+            }
+
             if (nameForUpdate || !operationTypeObj.fromCatalog) {
                 if (operationTypeObj.steps) {
                     this.withSteps(operationTypeObj.steps);
@@ -495,6 +500,20 @@ export default class OperationType extends BaseProvision {
     }
 
     /**
+     * Allows the modification of the operation history retention (TTL).
+     * If it is not set, the platform default is applied.
+     * @param {object} historyTtl - object with the amount of retention time and its unit, e.g. { value: 30, unit: &apos;days&apos; }
+     * @param {number} historyTtl.value - amount of retention time, minimum 1
+     * @param {string} historyTtl.unit - time unit: days, hours, months or years
+     * @return {OperationType}
+     */
+    withHistoryTtl(historyTtl) {
+        this._historyTtl = historyTtl || undefined;
+
+        return this;
+    }
+
+    /**
      * Allows the modification of the applicableTo
      * @param {array} applicableTo 
      * @return {OperationType}
@@ -517,7 +536,8 @@ export default class OperationType extends BaseProvision {
             &quot;steps&quot;: this._steps || undefined,
             &quot;models&quot;: this._models || undefined,
             &quot;profiles&quot;: this._profiles || undefined,
-            &quot;applicableTo&quot;: this._applicableTo || undefined
+            &quot;applicableTo&quot;: this._applicableTo || undefined,
+            &quot;historyTtl&quot;: this._historyTtl || undefined
         };
 
         return updateData;
