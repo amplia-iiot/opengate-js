@@ -38,7 +38,7 @@ export default class RestRequest extends BaseProvision {
     /**
      * Set the organization attribute
      * @param {string} organization 
-     * @return {Channels}
+     * @return {RestRequest}
      */
     withOrganization(organization) {
         if (typeof organization !== 'string' || organization.length > 50)

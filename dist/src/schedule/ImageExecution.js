@@ -66,7 +66,7 @@ var ImageExecution = (function (_BaseProvision) {
         /**
          * Set the organization attribute
          * @param {string} organization 
-         * @return {Channels}
+         * @return {ImageExecution}
          */
     }, {
         key: 'withOrganization',
