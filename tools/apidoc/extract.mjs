@@ -43,20 +43,34 @@ function collectSources(dir) {
     return files.sort();
 }
 
-/** The JSDoc description of a node, with the leading `*` and indentation gone. */
+/**
+ * The JSDoc description of a node, with the leading `*` and indentation gone.
+ * Line breaks inside the description are kept: a renderer may rely on them.
+ */
 function describe(node) {
     const docs = node.jsDoc;
     if (!docs || docs.length === 0) return '';
     const text = docs
         .map((d) => (typeof d.comment === 'string' ? d.comment : ts.getTextOfJSDocComment(d.comment) || ''))
         .join('\n');
-    return text.replace(/\s+/g, ' ').trim();
+    return text
+        .split('\n')
+        .map((line) => line.replace(/[ \t]+/g, ' ').trim())
+        .join('\n')
+        .trim();
 }
 
+/**
+ * The declared type of a tag. `!` and `?` are JSDoc nullability markers rather than part
+ * of the type name, so they are reported separately.
+ */
 function typeOfTag(tag, sourceFile) {
-    if (!tag || !tag.typeExpression) return null;
-    // `{string}` -> string, `{Promise}` -> Promise, `{A|B}` -> A|B
-    return tag.typeExpression.getText(sourceFile).replace(/^\{|\}$/g, '').trim() || null;
+    if (!tag || !tag.typeExpression) return { type: null, nullable: null };
+    const raw = tag.typeExpression.getText(sourceFile).replace(/^\{|\}$/g, '').trim();
+    if (!raw) return { type: null, nullable: null };
+    if (raw.startsWith('!')) return { type: raw.slice(1).trim(), nullable: false };
+    if (raw.startsWith('?')) return { type: raw.slice(1).trim(), nullable: true };
+    return { type: raw, nullable: null };
 }
 
 function paramsOf(node, sourceFile) {
@@ -66,9 +80,11 @@ function paramsOf(node, sourceFile) {
         if (!ts.isJSDocParameterTag(tag)) continue;
         const name = tag.name ? tag.name.getText(sourceFile) : null;
         if (!name) continue;
+        const { type, nullable } = typeOfTag(tag, sourceFile);
         out.push({
             name,
-            type: typeOfTag(tag, sourceFile),
+            type,
+            nullable,
             // ESDoc/JSDoc mark an optional parameter as [name] or with a default
             optional: Boolean(tag.isBracketed),
             description: (ts.getTextOfJSDocComment(tag.comment) || '')
@@ -84,8 +100,10 @@ function returnOf(node, sourceFile) {
     const all = (node.jsDoc || []).flatMap((d) => d.tags || []);
     for (const tag of all) {
         if (!ts.isJSDocReturnTag(tag)) continue;
+        const { type, nullable } = typeOfTag(tag, sourceFile);
         return {
-            type: typeOfTag(tag, sourceFile),
+            type,
+            nullable,
             description: (ts.getTextOfJSDocComment(tag.comment) || '').replace(/\s+/g, ' ').trim(),
         };
     }
@@ -168,6 +186,10 @@ function main() {
                     kind,
                     name: memberName,
                     line: lineOf(sourceFile, member),
+                    // The names the code actually declares. A @param naming something else
+                    // means the comment is wrong, which is worth reporting rather than
+                    // silently publishing.
+                    signatureParams: (member.parameters || []).map((prm) => prm.name.getText(sourceFile)),
                     description: describe(member),
                     params: paramsOf(member, sourceFile),
                     returns: returnOf(member, sourceFile),
