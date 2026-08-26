@@ -3,6 +3,16 @@
     "version": "15.5.0",
     "description": "",
     "main": "dist/opengate-api-npm.js",
+    "types": "types/opengate-api-npm.d.ts",
+    "files": [
+        "dist",
+        "types",
+        "src",
+        "opengate-api-npm.js",
+        "opengate-api-bower.js",
+        "README.md",
+        "LICENSE"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/amplia-iiot/opengate-js.git"
@@ -33,7 +43,11 @@
     },
     "scripts": {
         "test-wip": "export NODE_OPTIONS='--max-old-space-size=8192'; gulp cucumber --tags @wip",
-        "docs:relearn": "node scripts/generate-relearn-md.js"
+        "docs:relearn": "node scripts/generate-relearn-md.js",
+        "apidoc": "npm run apidoc:model && npm run apidoc:types",
+        "apidoc:model": "node tools/apidoc/extract.mjs --out build/api-model.json",
+        "apidoc:types": "tsc -p tools/apidoc/tsconfig.declarations.json",
+        "prepack": "npm run apidoc:types"
     },
     "devDependencies": {
         "babel-core": "^6.26.3",
@@ -50,6 +64,7 @@
         "gulp-clean": "^0.4.0",
         "gulp-cucumber": "0.0.24",
         "gulp-esdoc": "0.4.1",
+        "handlebars": "^4.7.8",
         "gulp-ext-replace": "^0.3.0",
         "gulp-flatten": "^0.4.0",
         "gulp-git": "^2.7.0",
@@ -65,6 +80,7 @@
         "multiple-cucumber-html-reporter": "^1.18.0",
         "run-sequence": "^2.2.1",
         "should": "^9.0.2",
+        "typescript": "^5.9.3",
         "yargs": "^15.4.1"
     },
     "resolutions": {
