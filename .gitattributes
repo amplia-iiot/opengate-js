@@ -1,0 +1,22 @@
+# 198 of the 247 sources under src/ were stored with CRLF and 49 with LF, and nothing in the
+# repository declared an intent. That is a trap: whoever next opens one of those files with a
+# different core.autocrlf rewrites every line of it, and the real one-line change disappears into
+# a whole-file diff. Everything text is stored as LF from here on.
+* text=auto eol=lf
+
+# Generated bundles and generated documentation. Not normalised, and not worth diffing: dist/ is
+# gulp output and docs/ is an ESDoc dump.
+dist/** -text -diff
+docs/** -text -diff
+
+# Lockfiles are generated too, and reviewing them line by line helps nobody.
+yarn.lock -diff
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
