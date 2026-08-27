@@ -79,8 +79,27 @@ export default [
         languageOptions: {
             ecmaVersion: 2022,
             sourceType: 'module',
-            globals: globals.node
+            globals: {
+                ...globals.node,
+                // Bodies passed to page.evaluate() run in the browser, not here.
+                ...globals.browser
+            }
         }
+    },
+
+    {
+        // The smoke checks run unchanged under Node and inside a real browser, so the file is
+        // deliberately dual-environment: CommonJS when required, a classic script when served.
+        files: ['test/smoke/**/*.js'],
+        languageOptions: {
+            ecmaVersion: 2022,
+            sourceType: 'commonjs',
+            globals: {
+                ...globals.node,
+                ...globals.browser
+            }
+        },
+        rules: ACCUMULATED_DEBT
     },
 
     {
