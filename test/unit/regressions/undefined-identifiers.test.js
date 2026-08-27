@@ -58,9 +58,20 @@ describe('ByYear.day falls back to the day already set', () => {
 describe('SchedulePipelineFinder.findByOrganizationAndType', () => {
     // The file used q and HttpStatus without importing either, so this method threw
     // "q is not defined" on its first line, every single time.
+    // The double records what it was called with: the original defect was invisible precisely
+    // because a double that ignores its arguments cannot see it.
+    let lastGet;
     const finderWith = response => {
-        const finder = new SchedulePipelineFinder({ Napi: { get: () => Promise.resolve(response) }, Sapi: {} });
-        return finder;
+        lastGet = undefined;
+        return new SchedulePipelineFinder({
+            Napi: {
+                get: (...args) => {
+                    lastGet = args;
+                    return Promise.resolve(response);
+                }
+            },
+            Sapi: {}
+        });
     };
 
     it('resolves with only the entries matching the requested type', async () => {
@@ -88,5 +99,21 @@ describe('SchedulePipelineFinder.findByOrganizationAndType', () => {
             statusCode: 404,
             data: 'Schedule not found'
         });
+    });
+
+    // Two further defects in the same call, both copy-paste drift from GenericFinder: it asked for
+    // the response as a blob, which in Node makes res.body a Buffer whose .filter() returns nothing,
+    // so the method could only ever reject with 404; and it dropped serviceBaseURL, losing the
+    // 'scheduler' base its own constructor sets.
+    it('does not ask for the body as a blob, which would make filtering it impossible', async () => {
+        const finder = finderWith({ statusCode: 200, body: [{ type: 'A' }] });
+        await finder.findByOrganizationAndType('org', 'A');
+        expect(lastGet[4]).toBe(false);
+    });
+
+    it('passes the scheduler service base URL, as its base class does', async () => {
+        const finder = finderWith({ statusCode: 200, body: [{ type: 'A' }] });
+        await finder.findByOrganizationAndType('org', 'A');
+        expect(lastGet[5]).toBe('scheduler');
     });
 });

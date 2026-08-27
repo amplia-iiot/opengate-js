@@ -48,7 +48,7 @@ export default class ScheduleHistoryFinder extends GenericFinder {
         let promise = defered.promise;
         let _error_not_found = this._error_not_found;
         this._api
-            .get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), true)
+            .get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), false, this._getServiceBaseURL())
             .then(req => {
                 if (req.statusCode === 204) {
                     defered.reject({
