@@ -79,19 +79,26 @@
             return res.statusCode + ', ' + devices.length + ' device(s) returned';
         });
 
-        // The failure contract, against the real platform rather than a stub: a rejection is
-        // `{ statusCode, data, headers }`. If the fetch migration changes this, everything that
-        // catches an OpenGate error downstream breaks, so it is asserted here explicitly.
-        await check(results, 'a missing organization rejects with the documented shape', async function () {
+        // The failure contract, against the real platform rather than a stub.
+        //
+        // There is more than one. The HTTP layer rejects with { statusCode, data, headers }, but a
+        // finder that receives 204 rejects on its own with { error, statusCode } -- and
+        // SchedulePipelineFinder, for the same case, uses { data, statusCode }. Three shapes, so a
+        // consumer catching an OpenGate failure has to handle all three. OpenGate answers 204 for a
+        // name that does not exist, so this path is the GenericFinder one.
+        //
+        // Pinned as it actually behaves, not as it ought to: unifying these is a deliberate,
+        // breaking change that belongs with OpenGateError.
+        await check(results, 'a missing organization rejects the way GenericFinder does', async function () {
             try {
                 await ogapi.newOrganizationFinder().findByName('no-such-organization-smoke-check');
                 throw new Error('expected a rejection, got a resolution');
             } catch (error) {
                 if (error instanceof Error) throw error;
                 const keys = Object.keys(error).sort().join(',');
-                if (keys !== 'data,headers,statusCode') throw new Error('unexpected rejection keys: ' + keys);
+                if (keys !== 'error,statusCode') throw new Error('unexpected rejection keys: ' + keys);
                 if (error.statusCode !== 404) throw new Error('expected 404, got ' + error.statusCode);
-                return 'rejected with 404 and the three documented keys';
+                return 'rejected with 404 and keys ' + keys;
             }
         });
 
