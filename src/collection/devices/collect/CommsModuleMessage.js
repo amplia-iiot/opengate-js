@@ -8,6 +8,7 @@ import Software from './Software';
 import Mobile from './Mobile';
 import Subscriber from './Subscriber';
 import Subscription from './Subscription';
+import parameterError from '../../../util/parameterError';
 
 /**
  * This is a base object that allows the user to create a CommsModule.
@@ -36,7 +37,7 @@ export default class CommsModuleMessage {
      */
     withId(id) {
         if (typeof id !== 'string')
-            throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'id' });
+            throw parameterError('OGAPI_STRING_PARAMETER', { parameter: 'id' });
         this._id = id;
         return this;
     }
@@ -49,7 +50,7 @@ export default class CommsModuleMessage {
      */
     withName(name) {
         if (typeof name !== 'string')
-            throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'name' });
+            throw parameterError('OGAPI_STRING_PARAMETER', { parameter: 'name' });
         this._name = name;
         return this;
     }
@@ -61,7 +62,7 @@ export default class CommsModuleMessage {
      */
     withType(type) {
         if (typeof type !== 'string')
-            throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'type' });
+            throw parameterError('OGAPI_STRING_PARAMETER', { parameter: 'type' });
         this._type = type;
         return this;
     }

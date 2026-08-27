@@ -2,6 +2,7 @@
 
 import BaseProvision from '../provision/BaseProvision';
 import checkType from '../util/formats/check_types'
+import parameterError from '../util/parameterError';
 
 /**
  * This is a base object that represents a REST request to run on a schedule.
@@ -42,7 +43,7 @@ export default class RestRequest extends BaseProvision {
      */
     withOrganization(organization) {
         if (typeof organization !== 'string' || organization.length > 50)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'organization' });
+            throw parameterError("OGAPI_STRING_PARAMETER_MAX_LENGTH_50", { parameter: 'organization' });
         this._organization = organization;
         return this;
     }
@@ -217,7 +218,7 @@ export default class RestRequest extends BaseProvision {
             this._response = {}
         } else {
             if (this._response.async) {
-                throw new Error({ message: 'sync cannot be setted with async', parameter: 'sync' });
+                throw parameterError('sync cannot be setted with async', { parameter: 'sync' });
             }
         }
 
@@ -239,7 +240,7 @@ export default class RestRequest extends BaseProvision {
             this._response = {}
         } else {
             if (this._response.sync) {
-                throw new Error({ message: 'async cannot be setted with sync', parameter: 'async' });
+                throw parameterError('async cannot be setted with sync', { parameter: 'async' });
             }
         }
 

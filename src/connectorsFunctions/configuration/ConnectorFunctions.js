@@ -8,6 +8,7 @@ import {
 } from '../_CONNECTOR_FUNCTIONS_ENUMS';
 
 import q from 'q';
+import parameterError from '../../util/parameterError';
 
 /**
  * This is a base object that contains everything you can do with ConnectorFunctions.
@@ -124,10 +125,7 @@ export default class ConnectorFunctions extends BaseProvision {
      */
     withDescription(description) {
         if (typeof description !== 'string' || description.length > 250)
-            throw new Error({
-                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250",
-                parameter: 'description'
-            });
+            throw parameterError("OGAPI_STRING_PARAMETER_MAX_LENGTH_250", { parameter: 'description' });
         this._description = description;
         return this;
     }

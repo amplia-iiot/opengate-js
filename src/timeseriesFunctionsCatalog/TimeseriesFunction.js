@@ -5,6 +5,7 @@ import q from 'q';
 export const URL = 'timeseries/provision/organizations';
 import checkType from '../util/formats/check_types'
 import { VALUE_TYPES_ENUM } from './TYPES_ENUM'
+import parameterError from '../util/parameterError';
 
 /**
  * This is a base object that contains everything you can do with TimeseriesFunction.
@@ -113,7 +114,7 @@ export default class TimeseriesFunction extends BaseProvision {
 
     withMetadataFile(file) {
         // if (typeof file !== 'object')
-        //     throw new Error({ message: "Parameter action requires name and type", parameter: 'action' });
+        //     throw parameterError("Parameter action requires name and type", { parameter: 'action' });
         this._metadataFile = file
     }
 

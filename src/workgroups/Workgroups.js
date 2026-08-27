@@ -2,6 +2,7 @@
 
 import q from 'q';
 import BaseProvision from '../provision/BaseProvision';
+import parameterError from '../util/parameterError';
 
 /**
  * This is a base object that contains all you can do about workgroups.
@@ -24,10 +25,7 @@ export default class Workgroups extends BaseProvision {
      */
     withName(name) {
         if (typeof name !== 'string' || name.length > 50)
-            throw new Error({
-                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50",
-                parameter: 'name'
-            });
+            throw parameterError("OGAPI_STRING_PARAMETER_MAX_LENGTH_50", { parameter: 'name' });
         this._name = name;
         return this;
     }
@@ -39,10 +37,7 @@ export default class Workgroups extends BaseProvision {
      */
     withDescription(description) {
         if (typeof description !== 'string' || description.length > 250)
-            throw new Error({
-                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250",
-                parameter: 'description'
-            });
+            throw parameterError("OGAPI_STRING_PARAMETER_MAX_LENGTH_250", { parameter: 'description' });
         this._description = description;
         return this;
     }
@@ -66,10 +61,7 @@ export default class Workgroups extends BaseProvision {
      */
     withDomainName(domainName) {
         if (typeof domainName !== 'string' || domainName.length > 50)
-            throw new Error({
-                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50",
-                parameter: 'domainName'
-            });
+            throw parameterError("OGAPI_STRING_PARAMETER_MAX_LENGTH_50", { parameter: 'domainName' });
         this._domainName = domainName;
         return this;
     }

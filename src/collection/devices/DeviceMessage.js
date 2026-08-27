@@ -3,6 +3,7 @@
 import q from 'q';
 import Event from './collect/Event';
 import Datastream from '../devices/collect/Datastreams';
+import parameterError from '../../util/parameterError';
 /**
  * This is a base object that contains methods to send unstructured IoT information to be processed and collected
  * by the platform.
@@ -34,7 +35,7 @@ export default class DeviceMessage extends Event {
      */
     withId(id) {
         if (typeof id !== 'string' || id.length > 50)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'id' });
+            throw parameterError("OGAPI_STRING_PARAMETER_MAX_LENGTH_50", { parameter: 'id' });
         this._id = id;
         return this;
     }
@@ -46,7 +47,7 @@ export default class DeviceMessage extends Event {
      */
     withDataStreamVersion(version) {
         if (typeof version !== 'string' || version.length > 50)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'version' });
+            throw parameterError("OGAPI_STRING_PARAMETER_MAX_LENGTH_50", { parameter: 'version' });
         this._dataStreamVersion = version;
         return this;
     }
@@ -58,7 +59,7 @@ export default class DeviceMessage extends Event {
      */
     withDmmVersion(version) {
         if (typeof version !== 'string' || version.length > 50)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'version' });
+            throw parameterError("OGAPI_STRING_PARAMETER_MAX_LENGTH_50", { parameter: 'version' });
         this._version = version;
         return this;
     }
@@ -70,7 +71,7 @@ export default class DeviceMessage extends Event {
      */
     withDeviceId(deviceId) {
         if (typeof deviceId !== 'string' || deviceId.length > 50)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'device' });
+            throw parameterError("OGAPI_STRING_PARAMETER_MAX_LENGTH_50", { parameter: 'device' });
         this._deviceId = deviceId;
         return this;
     }

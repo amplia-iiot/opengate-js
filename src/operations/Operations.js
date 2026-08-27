@@ -4,6 +4,7 @@ import BaseOperationBuilder from './catalog/BaseOperationBuilder';
 import PeriodicityUpdateBuilder from './catalog/period/PeriodicityUpdateBuilder';
 import q from 'q';
 import merge from 'merge';
+import parameterError from '../util/parameterError';
 
 /**
  * This class generates all operation builders from a response obtained by searching the catalog/operations
@@ -27,7 +28,7 @@ export default class Operations {
      */
     updatePeriodicityBuilder(operationId) {
         if (typeof operationId !== "string") {
-            throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: "operationId" });
+            throw parameterError("OGAPI_STRING_PARAMETER", { parameter: "operationId" });
         }
         let defered = q.defer();
         let promise = defered.promise;
@@ -49,7 +50,7 @@ export default class Operations {
      */
     builderByOperationName(name) {
         if (typeof name !== "string") {
-            throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: "name" });
+            throw parameterError("OGAPI_STRING_PARAMETER", { parameter: "name" });
         }
         let defered = q.defer();
         let promise = defered.promise;

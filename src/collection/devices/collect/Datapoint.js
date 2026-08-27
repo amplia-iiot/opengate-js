@@ -1,5 +1,7 @@
 'use strict';
 
+import parameterError from '../../../util/parameterError';
+
 
 
 /**
@@ -86,7 +88,7 @@ export default class Datapoint {
     withTags(tags) {
         if (tags !== null) {
             if (tags.constructor !== Array || tags.length === 0)
-                throw new Error({ message: 'OGAPI_ARRAY_PARAMETER', parameter: 'tags' });
+                throw parameterError('OGAPI_ARRAY_PARAMETER', { parameter: 'tags' });
             this._tags = tags;
         }
         return this;
@@ -94,7 +96,7 @@ export default class Datapoint {
 
     composeElement() {
         if (this._value === undefined || this._value.length === 0) {
-            throw new Error({ message: 'OGAPI_DEFINED_PARAMETER', parameter: 'value' });
+            throw parameterError('OGAPI_DEFINED_PARAMETER', { parameter: 'value' });
         }
         var datapoint = {
             'from': this._from || undefined,

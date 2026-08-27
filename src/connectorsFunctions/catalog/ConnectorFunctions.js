@@ -7,6 +7,7 @@ import {
     CONNECTOR_FUNCTION_OPERATIONAL_STATUS,
     CONNECTOR_FUNCTION_PAYLOAD_TYPES
 } from '../_CONNECTOR_FUNCTIONS_ENUMS';
+import parameterError from '../../util/parameterError';
 
 /**
  * This is a base object that contains everything you can do with a connector function catalog entry.
@@ -71,10 +72,7 @@ export default class ConnectorFunctions extends BaseProvision {
      */
     withDescription(description) {
         if (typeof description !== 'string' || description.length > 250)
-            throw new Error({
-                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250",
-                parameter: 'description'
-            });
+            throw parameterError("OGAPI_STRING_PARAMETER_MAX_LENGTH_250", { parameter: 'description' });
         this._description = description;
         return this;
     }
@@ -140,10 +138,7 @@ export default class ConnectorFunctions extends BaseProvision {
      */
     withNorthCriterias(northCriterias) {
         if (!(northCriterias instanceof Array))
-            throw new Error({
-                message: "Parameter northCriterias requires an array",
-                parameter: 'northCriterias'
-            });
+            throw parameterError("Parameter northCriterias requires an array", { parameter: 'northCriterias' });
         this._northCriterias = northCriterias;
         return this;
     }
@@ -157,10 +152,7 @@ export default class ConnectorFunctions extends BaseProvision {
         if (typeof northCriteria !== 'object' ||
             !northCriteria.path || typeof northCriteria.path !== 'string' ||
             !northCriteria.value || typeof northCriteria.value !== 'object')
-            throw new Error({
-                message: "Parameter northCriteria requires path and value",
-                parameter: 'northCriteria'
-            });
+            throw parameterError("Parameter northCriteria requires path and value", { parameter: 'northCriteria' });
 
         if (!this._northCriterias) {
             this._northCriterias = []
@@ -177,10 +169,7 @@ export default class ConnectorFunctions extends BaseProvision {
      */
     withSouthCriterias(southCriterias) {
         if (!(southCriterias instanceof Array))
-            throw new Error({
-                message: "Parameter southCriterias requires an array",
-                parameter: 'southCriterias'
-            });
+            throw parameterError("Parameter southCriterias requires an array", { parameter: 'southCriterias' });
 
         southCriterias.forEach((crit) => {
             try {
@@ -256,10 +245,7 @@ export default class ConnectorFunctions extends BaseProvision {
 
     _checkRequiredParameters(isUpdate) {
         if (isUpdate && this._identifier === undefined) {
-            throw new Error({
-                message: "Parameter identifier must be defined",
-                parameter: "identifier"
-            })
+            throw parameterError("Parameter identifier must be defined", { parameter: "identifier" })
         }
         super._checkRequiredParameters()
         switch (this._type) {
@@ -284,10 +270,7 @@ export default class ConnectorFunctions extends BaseProvision {
 
     _buildURL() {
         if (this._identifier === undefined) {
-            throw new Error({
-                message: "Parameter identifier must be defined",
-                parameter: "identifier"
-            })
+            throw parameterError("Parameter identifier must be defined", { parameter: "identifier" })
         }
         return 'connectorFunctions/' + this._resource + '/' + this._identifier;
     }

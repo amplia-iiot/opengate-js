@@ -13,6 +13,7 @@ import {
 import {
     LEVEL_TREND_ENUM
 } from './enum/LEVEL_TREND_ENUM';
+import parameterError from '../../../util/parameterError';
 
 /**
  * This is a base object that allows the user to create an Event.
@@ -50,10 +51,7 @@ export default class Event {
      */
     withEventId(id) {
         if (typeof id !== 'string')
-            throw new Error({
-                message: "OGAPI_STRING_PARAMETER",
-                parameter: 'EventId'
-            });
+            throw parameterError("OGAPI_STRING_PARAMETER", { parameter: 'EventId' });
         this._event_id = id;
         return this;
     }

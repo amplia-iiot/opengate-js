@@ -1,6 +1,7 @@
 'use strict';
 
 import BaseProvision from '../provision/BaseProvision';
+import parameterError from '../util/parameterError';
 
 /**
  * This is a base object that contains everything you can do with a channel.
@@ -28,7 +29,7 @@ export default class Channels extends BaseProvision {
      */
     withName(name) {
         if (typeof name !== 'string' || name.length > 50)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'name' });
+            throw parameterError("OGAPI_STRING_PARAMETER_MAX_LENGTH_50", { parameter: 'name' });
         this._name = name;
         return this;
     }
@@ -40,7 +41,7 @@ export default class Channels extends BaseProvision {
      */
     withDescription(description) {
         if (typeof description !== 'string' || description.length > 250)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250", parameter: 'description' });
+            throw parameterError("OGAPI_STRING_PARAMETER_MAX_LENGTH_250", { parameter: 'description' });
         this._description = description;
         return this;
     }
@@ -53,7 +54,7 @@ export default class Channels extends BaseProvision {
      */
     withOrganization(organization) {
         if (typeof organization !== 'string' || organization.length > 50)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'organization' });
+            throw parameterError("OGAPI_STRING_PARAMETER_MAX_LENGTH_50", { parameter: 'organization' });
         this._organization = organization;
         return this;
     }
@@ -65,7 +66,7 @@ export default class Channels extends BaseProvision {
      */
     withCertificate(certificate) {
         if (typeof certificate !== 'string')
-            throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'certificate' });
+            throw parameterError('OGAPI_STRING_PARAMETER', { parameter: 'certificate' });
 
         if (!this._certificates)
             this._certificates = [];

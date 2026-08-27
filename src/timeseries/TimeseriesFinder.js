@@ -3,6 +3,7 @@
 import q from 'q';
 import GenericFinder from '../GenericFinder';
 import HttpStatus from 'http-status-codes';
+import parameterError from '../util/parameterError';
 
 /**
  * This class performs GET requests against the timeseries resource in the OpenGate North API.
@@ -37,18 +38,12 @@ export default class TimeseriesFinder extends GenericFinder {
         const parameters = {}
         if (expand) {
             if (!(expand instanceof Array)) {
-                throw new Error({
-                    message: "Parameter expand requires an array",
-                    parameter: 'expand'
-                });
+                throw parameterError("Parameter expand requires an array", { parameter: 'expand' });
             } else if (expand.length > 0) parameters.expand = expand.join()
         }
         if (dataStreams) {
             if (!(dataStreams instanceof Array)) {
-                throw new Error({
-                    message: "Parameter dataStreams requires an array",
-                    parameter: 'dataStreams'
-                });
+                throw parameterError("Parameter dataStreams requires an array", { parameter: 'dataStreams' });
             } else if (dataStreams.length > 0) parameters.dataStreams = dataStreams.join()
         }
         this._setUrlParameters(parameters)

@@ -18,6 +18,7 @@ import {
 
 import q from 'q';
 import BaseProvision from '../../provision/BaseProvision';
+import parameterError from '../../util/parameterError';
 
 /**
  * This is the base object for everything you can do with a deployment element.
@@ -51,10 +52,7 @@ export default class DeploymentElement extends BaseProvision {
      */
     withName(name) {
         if (typeof name !== 'string' || name.length > 50)
-            throw new Error({
-                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50",
-                parameter: 'name'
-            });
+            throw parameterError("OGAPI_STRING_PARAMETER_MAX_LENGTH_50", { parameter: 'name' });
         this._name = name;
         return this;
     }
@@ -66,10 +64,7 @@ export default class DeploymentElement extends BaseProvision {
      */
     withVersion(version) {
         if (typeof version !== 'string' || version.length > 50)
-            throw new Error({
-                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50",
-                parameter: 'version'
-            });
+            throw parameterError("OGAPI_STRING_PARAMETER_MAX_LENGTH_50", { parameter: 'version' });
         this._version = version;
         return this;
     }
@@ -81,10 +76,7 @@ export default class DeploymentElement extends BaseProvision {
      */
     withType(type) {
         if (typeof type === "undefined" || typeof type !== 'string') {
-            throw new Error({
-                message: 'OGAPI_STRING_PARAMETER',
-                parameter: 'type'
-            });
+            throw parameterError('OGAPI_STRING_PARAMETER', { parameter: 'type' });
         }
         let not_found = '';
         let found = TYPE_ENUM.find(function(action) {
@@ -95,11 +87,7 @@ export default class DeploymentElement extends BaseProvision {
         }
 
         if (not_found !== '') {
-            throw new Error({
-                message: "OGAPI_NOT_ALLOWED_PARAMETER",
-                parameter: JSON.stringify(not_found),
-                allowed: JSON.stringify(TYPE_ENUM)
-            });
+            throw parameterError("OGAPI_NOT_ALLOWED_PARAMETER", { parameter: JSON.stringify(not_found), allowed: JSON.stringify(TYPE_ENUM) });
 
         }
         this._type = type;
@@ -113,10 +101,7 @@ export default class DeploymentElement extends BaseProvision {
      */
     withPath(path) {
         if (typeof path !== 'string')
-            throw new Error({
-                message: 'OGAPI_STRING_PARAMETER',
-                parameter: 'path'
-            });
+            throw parameterError('OGAPI_STRING_PARAMETER', { parameter: 'path' });
         this._path = path;
         return this;
     }
@@ -140,10 +125,7 @@ export default class DeploymentElement extends BaseProvision {
      */
     withOperation(operation) {
         if (typeof operation === "undefined" || typeof operation !== 'string') {
-            throw new Error({
-                message: "OGAPI_STRING_PARAMETER",
-                parameter: "operation"
-            });
+            throw parameterError("OGAPI_STRING_PARAMETER", { parameter: "operation" });
         }
 
         let not_found = '';
@@ -170,10 +152,7 @@ export default class DeploymentElement extends BaseProvision {
      */
     withOption(option) {
         if (typeof option === "undefined" || typeof option !== 'string') {
-            throw new Error({
-                message: "OGAPI_STRING_PARAMETER",
-                parameter: "option"
-            });
+            throw parameterError("OGAPI_STRING_PARAMETER", { parameter: "option" });
         }
 
         let not_found = '';
@@ -235,10 +214,7 @@ export default class DeploymentElement extends BaseProvision {
             let mode = validator.mode;
 
             if (typeof mode === "undefined" || typeof mode !== 'string') {
-                throw new Error({
-                    message: "OGAPI_STRING_PARAMETER",
-                    parameter: "type"
-                });
+                throw parameterError("OGAPI_STRING_PARAMETER", { parameter: "type" });
             }
 
             let foundMode = MODE_VALIDATORS_ENUM.find(function(action) {
@@ -271,10 +247,7 @@ export default class DeploymentElement extends BaseProvision {
             let not_found = '';
             let type = validator.type;
             if (typeof type === "undefined" || typeof type !== 'string') {
-                throw new Error({
-                    message: "OGAPI_STRING_PARAMETER",
-                    parameter: "type"
-                });
+                throw parameterError("OGAPI_STRING_PARAMETER", { parameter: "type" });
             }
 
             let found = TYPE_VALIDATORS_ENUM.find(function(action) {

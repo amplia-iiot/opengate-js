@@ -5,6 +5,7 @@ import _ from 'lodash';
 import { version as uuidVersion } from 'uuid';
 import { validate as uuidValidate } from 'uuid';
 import { v4 as uuidv4 } from 'uuid';
+import parameterError from '../util/parameterError';
 
 const _length_name = 100;
 const _length_surname = 100;
@@ -83,7 +84,7 @@ export default class User extends BaseProvision {
      */
     withApiKey(apiKey) {
         if (!this._validateUUID(apiKey)) {
-            throw new Error({ message: "OGAPI_USER_UPDATE_APIKEY_PARAMETER_INVALID", parameter: 'apiKey' });
+            throw parameterError("OGAPI_USER_UPDATE_APIKEY_PARAMETER_INVALID", { parameter: 'apiKey' });
         }
         this._apiKey = apiKey;
         return this;
@@ -338,7 +339,7 @@ export default class User extends BaseProvision {
         }
 
         if (!this._validateUUID(apiKey)) {
-            throw new Error({ message: "OGAPI_USER_UPDATE_APIKEY_PARAMETER_INVALID", parameter: 'apiKey' });
+            throw parameterError("OGAPI_USER_UPDATE_APIKEY_PARAMETER_INVALID", { parameter: 'apiKey' });
         }
 
         var data = {

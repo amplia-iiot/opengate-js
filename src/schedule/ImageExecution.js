@@ -2,6 +2,7 @@
 
 import BaseProvision from '../provision/BaseProvision';
 import checkType from '../util/formats/check_types'
+import parameterError from '../util/parameterError';
 
 /**
  * This is a base object that represents an image execution step within a scheduled pipeline.
@@ -42,7 +43,7 @@ export default class ImageExecution extends BaseProvision {
      */
     withOrganization(organization) {
         if (typeof organization !== 'string' || organization.length > 50)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'organization' });
+            throw parameterError("OGAPI_STRING_PARAMETER_MAX_LENGTH_50", { parameter: 'organization' });
         this._organization = organization;
         return this;
     }

@@ -4,6 +4,7 @@ import BaseProvision from '../provision/BaseProvision';
 import _RuleCondition from './_RuleCondition';
 import _RuleNotification from './_RuleNotification';
 import q from 'q';
+import parameterError from '../util/parameterError';
 
 /**
  * This is a base object that contains everything you can do with RulesConfigurations.
@@ -126,10 +127,7 @@ export default class RuleConfigurations extends BaseProvision {
      */
     withDescription(description) {
         if (typeof description !== 'string' || description.length > 250)
-            throw new Error({
-                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250",
-                parameter: 'description'
-            });
+            throw parameterError("OGAPI_STRING_PARAMETER_MAX_LENGTH_250", { parameter: 'description' });
         this._description = description;
         return this;
     }

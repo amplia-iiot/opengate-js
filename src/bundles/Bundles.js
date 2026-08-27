@@ -6,6 +6,7 @@ import {
 import DeploymentElement from './deployment/DeploymentElement';
 import q from 'q';
 import BaseProvision from '../provision/BaseProvision';
+import parameterError from '../util/parameterError';
 
 /**
  * This is the base object for everything you can do with bundles.
@@ -40,10 +41,7 @@ export default class Bundles extends BaseProvision {
      */
     withVersion(version) {
         if (typeof version !== 'string' || version.length > 50)
-            throw new Error({
-                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50",
-                parameter: 'version'
-            });
+            throw parameterError("OGAPI_STRING_PARAMETER_MAX_LENGTH_50", { parameter: 'version' });
         this._version = version;
         return this;
     }
@@ -79,10 +77,7 @@ export default class Bundles extends BaseProvision {
      */
     withDescription(description) {
         if (typeof description !== 'string' || description.length > 250)
-            throw new Error({
-                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250",
-                parameter: 'description'
-            });
+            throw parameterError("OGAPI_STRING_PARAMETER_MAX_LENGTH_250", { parameter: 'description' });
         this._description = description;
         return this;
     }
@@ -144,10 +139,7 @@ export default class Bundles extends BaseProvision {
      */
     withUserNotes(userNotes) {
         if (typeof userNotes !== 'string' || userNotes.length > 250)
-            throw new Error({
-                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250",
-                parameter: 'notes'
-            });
+            throw parameterError("OGAPI_STRING_PARAMETER_MAX_LENGTH_250", { parameter: 'notes' });
         this._userNotes = userNotes;
         return this;
     }
