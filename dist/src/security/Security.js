@@ -17,7 +17,7 @@ var _provisionBaseProvision = require('../provision/BaseProvision');
 var _provisionBaseProvision2 = _interopRequireDefault(_provisionBaseProvision);
 
 /**
- * This extends BaseProvision and contains all you can do about Security.
+ * This extends BaseProvision and contains everything you can do with Security.
  * @extends {BaseProvision}
  */
 
@@ -33,7 +33,7 @@ var Security = (function (_BaseProvision) {
   function Security(ogapi, url, timeout) {
     _classCallCheck(this, Security);
 
-    _get(Object.getPrototypeOf(Security.prototype), 'constructor', this).call(this, ogapi, "/security" + (typeof url === "undefined" ? "" : url), timeout);
+    _get(Object.getPrototypeOf(Security.prototype), 'constructor', this).call(this, ogapi, '/security' + (typeof url === 'undefined' ? '' : url), timeout);
   }
 
   return Security;

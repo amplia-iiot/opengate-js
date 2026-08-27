@@ -31,7 +31,7 @@ var POST_RESOURCE = '/datamodels';
 
 exports.POST_RESOURCE = POST_RESOURCE;
 /**
- * This is a base object for update and delete a IoT Datamodel
+ * This is a base object for updating and deleting an IoT Datamodel.
  */
 
 var DatamodelsHelper = (function (_BaseProvision) {
@@ -41,7 +41,7 @@ var DatamodelsHelper = (function (_BaseProvision) {
      * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!string} organization - Organization where the IoT datamodel was create
-     * @param {!object} datamodel - Json object of IoT datamodel to modify or delete. 
+     * @param {!object} datamodel - Json object of IoT datamodel to modify or delete.
      */
 
     function DatamodelsHelper(ogapi, organization, datamodel) {
@@ -145,7 +145,7 @@ var DatamodelsHelper = (function (_BaseProvision) {
         }
 
         /**
-         * Add a datastream to the indicated category 
+         * Add a datastream to the indicated category
          * @param {!string} category
          * @param {!object} datastream
          * @return {DatamodelsHelper}
@@ -304,11 +304,11 @@ var DatamodelsHelper = (function (_BaseProvision) {
         key: '_composeElement',
         value: function _composeElement() {
             return {
-                'identifier': this._identifier,
-                'name': this._name,
-                'version': this._version,
-                'description': this._description,
-                'categories': this._categories
+                identifier: this._identifier,
+                name: this._name,
+                version: this._version,
+                description: this._description,
+                categories: this._categories
             };
         }
     }, {

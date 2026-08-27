@@ -19,7 +19,7 @@ var _ProvisionGenericFinder2 = require('../ProvisionGenericFinder');
 var _ProvisionGenericFinder3 = _interopRequireDefault(_ProvisionGenericFinder2);
 
 /**
- *   This class allow make get request to area resource into Opengate North API.
+ * This class allows making GET requests to the area resource in the OpenGate North API.
  */
 
 var AreaFinder = (function (_ProvisionGenericFinder) {
@@ -37,12 +37,12 @@ var AreaFinder = (function (_ProvisionGenericFinder) {
     }
 
     /**
-     * Download a specific area by its organization and identifier. This execute a GET http method
+     * Downloads a specific area by its organization and identifier. This executes a GET HTTP method.
      * @test
      *   ogapi.newAreaFinder().findByOrganizationAndIdentifier('orgname', xxx-xx-xxx-xxx').then().catch();
      * @param {string} organization - area organization .
      * @param {string} identifier - area name.
-     * @return {Promise} 
+     * @return {Promise}
      */
 
     _createClass(AreaFinder, [{

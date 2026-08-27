@@ -27,8 +27,8 @@ var ByWeek = (function (_ByGeneric) {
      * Constructor
      * @param {!BaseOperationBuilder} parent - this is a operationBaseBuilder.
      * @param {!Date} date - Date when operation will be executed
-     * @param {string} periodicityName - Name associated to periodicity	
-     * @param {!number or Date} end - When periodicity ends. By repetitions or by date		
+     * @param {string} periodicityName - Name associated to periodicity
+     * @param {!number or Date} end - When periodicity ends. By repetitions or by date
      */
 
     function ByWeek(parent, date, name, end, description) {
@@ -39,27 +39,27 @@ var ByWeek = (function (_ByGeneric) {
 
     /**
      * At this days will be executed the operation
-     * @param {!array} days 
+     * @param {!array} days
      * @throws {Error} throw error when days is not typeof Array
-     * @throws {Error} throw error when any day is not found into DAYS_ENUM	
+     * @throws {Error} throw error when any day is not found into DAYS_ENUM
      * @return {BaseOperationBuilder}
      */
 
     _createClass(ByWeek, [{
         key: 'days',
         value: function days(_days) {
-            if (typeof _days === "undefined" || _days.constructor !== Array) {
-                throw new Error("Parameter days must be typeof Array");
+            if (typeof _days === 'undefined' || _days.constructor !== Array) {
+                throw new Error('Parameter days must be typeof Array');
             }
             if (_days.length === 0) {
-                throw new Error("Parameter days must have at least one day");
+                throw new Error('Parameter days must have at least one day');
             }
             var not_found = [];
             for (var i = 0; i < _days.length; i++) {
                 var found = _DAYS_ENUM.DAYS_ENUM.find(function (day) {
                     return day == this;
                 }, _days[i]);
-                if (typeof found === "undefined") {
+                if (typeof found === 'undefined') {
                     not_found.push(found);
                 }
             }

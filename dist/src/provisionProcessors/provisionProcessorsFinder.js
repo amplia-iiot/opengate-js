@@ -19,7 +19,7 @@ var _GenericFinder2 = require('../GenericFinder');
 var _GenericFinder3 = _interopRequireDefault(_GenericFinder2);
 
 /**
- *   This class allow make get request to ProvisionProcessors Finder resource into Opengate North API.
+ * This class performs GET requests against the provision processors resource in the OpenGate North API.
  */
 
 var provisionProcessorsFinder = (function (_GenericFinder) {
@@ -41,7 +41,7 @@ var provisionProcessorsFinder = (function (_GenericFinder) {
    * @test
    *   ogapi.newProvisionProcessorsFinder().findByOrganization(organization);
    * @param {string} organization - organization
-   * @return {Promise} 
+   * @return {Promise}
    */
 
   _createClass(provisionProcessorsFinder, [{
@@ -57,7 +57,7 @@ var provisionProcessorsFinder = (function (_GenericFinder) {
      *   ogapi.newProvisionProcessorsFinder().findByOrganizationAndProvisionProcessorId(organization, identifier);
      * @param {string} organization - organization
      * @param {string} identifier - Provision Processors identifier
-     * @return {Promise} 
+     * @return {Promise}
      */
   }, {
     key: 'findByOrganizationAndProvisionProcessorId',

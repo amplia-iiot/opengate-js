@@ -33,23 +33,23 @@ var _lodash = require('lodash');
 var _lodash2 = _interopRequireDefault(_lodash);
 
 /**
- * This is a base object that contains all you can do about Organizations plan.
+ * This is a base object that contains everything you can do with organization plans.
  */
 
 var OrganizationPlans = (function (_BaseProvision) {
     _inherits(OrganizationPlans, _BaseProvision);
 
-    /**     
-     * @param {InternalOpenGateAPI} Reference to the API object.
+    /**
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function OrganizationPlans(ogapi, organization) {
         _classCallCheck(this, OrganizationPlans);
 
-        _get(Object.getPrototypeOf(OrganizationPlans.prototype), 'constructor', this).call(this, ogapi, "/organizations", undefined, ['name', 'maxStorageLifeTime', 'maxDeviceAmount']);
+        _get(Object.getPrototypeOf(OrganizationPlans.prototype), 'constructor', this).call(this, ogapi, '/organizations', undefined, ['name', 'maxStorageLifeTime', 'maxDeviceAmount']);
         _utilFormatsCheck_types2['default']._checkStringAndLength(organization, 50, 'organization');
         this._organization = organization;
-        this._resource = this._resource + '/' + this._organization + "/" + _URL_ENUM.ORGANIZATION_PLANS;
+        this._resource = this._resource + '/' + this._organization + '/' + _URL_ENUM.ORGANIZATION_PLANS;
     }
 
     /**
@@ -81,7 +81,7 @@ var OrganizationPlans = (function (_BaseProvision) {
 
         /**
          * Set the flowRate attribute
-         * @param {object} flowRate - {value: number, unit: [SECONDS, MINUTES, HOURS, DAYS, MONTHS, YEARS]} 
+         * @param {object} flowRate - {value: number, unit: [SECONDS, MINUTES, HOURS, DAYS, MONTHS, YEARS]}
          * @return {OrganizationPlans}
          */
     }, {
@@ -136,7 +136,7 @@ var OrganizationPlans = (function (_BaseProvision) {
         value: function _checkMaxDeviceAmount(maxDeviceAmount) {
             _utilFormatsCheck_types2['default']._checkNumber(maxDeviceAmount, 'maxDeviceAmount');
             if (maxDeviceAmount < 0) {
-                throw new Error("Parameter maxDeviceAmount must be greater or equal than 0");
+                throw new Error('Parameter maxDeviceAmount must be greater or equal than 0');
             }
         }
     }, {
@@ -145,7 +145,7 @@ var OrganizationPlans = (function (_BaseProvision) {
             _utilFormatsCheck_types2['default']._checkObject(maxStorageLifeTime, 'maxStorageLifeTime');
             _utilFormatsCheck_types2['default']._checkNumber(maxStorageLifeTime.total, 'maxStorageLifeTime.total');
             if (maxStorageLifeTime.total < 0) {
-                throw new Error("Parameter maxStorageLifeTime.total must be greater or equal than 0");
+                throw new Error('Parameter maxStorageLifeTime.total must be greater or equal than 0');
             }
             _utilFormatsCheck_types2['default']._checkType(maxStorageLifeTime.period, _PERIOD_ENUM.PERIOD);
         }
@@ -174,7 +174,7 @@ var OrganizationPlans = (function (_BaseProvision) {
     }, {
         key: '_buildURL',
         value: function _buildURL() {
-            return this._resource + "/" + this._identifier;
+            return this._resource + '/' + this._identifier;
         }
     }]);
 

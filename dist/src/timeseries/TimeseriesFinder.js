@@ -26,8 +26,12 @@ var _httpStatusCodes = require('http-status-codes');
 
 var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
 
+var _utilParameterError = require('../util/parameterError');
+
+var _utilParameterError2 = _interopRequireDefault(_utilParameterError);
+
 /**
- *   This class allow make get request to TimeseriesFinder resource into Opengate North API.
+ * This class performs GET requests against the timeseries resource in the OpenGate North API.
  */
 
 var TimeseriesFinder = (function (_GenericFinder) {
@@ -45,19 +49,19 @@ var TimeseriesFinder = (function (_GenericFinder) {
     }
 
     /**
-      * Performs a get that returns list of timeseries
-      * @test
-      *   ogapi.newTimeserieFinder().findByOrganization(organization);
-      *   ogapi.newTimeserieFinder().findByOrganization(organization, ['columns', 'context']);
-      *   ogapi.newTimeserieFinder().findByOrganization(organization, [], ['ds_id_1', 'ds_id-2']);
-      *   ogapi.newTimeserieFinder().findByOrganization(organization, ['columns'], []);
-      *   ogapi.newTimeserieFinder().findByOrganization(organization, ['columns'], undefined);
-      *   ogapi.newTimeserieFinder().findByOrganization(organization, undefined, ['ds_id_2']);
-      * @param {string} organization - organization
-      * @param {Array} expand - ['columns', 'context']
-      * @param {Array} dataStreams - ["ds_id_1","ds_id_2"]
-      * @return {Promise} 
-      */
+     * Performs a get that returns list of timeseries
+     * @test
+     *   ogapi.newTimeserieFinder().findByOrganization(organization);
+     *   ogapi.newTimeserieFinder().findByOrganization(organization, ['columns', 'context']);
+     *   ogapi.newTimeserieFinder().findByOrganization(organization, [], ['ds_id_1', 'ds_id-2']);
+     *   ogapi.newTimeserieFinder().findByOrganization(organization, ['columns'], []);
+     *   ogapi.newTimeserieFinder().findByOrganization(organization, ['columns'], undefined);
+     *   ogapi.newTimeserieFinder().findByOrganization(organization, undefined, ['ds_id_2']);
+     * @param {string} organization - organization
+     * @param {Array} expand - ['columns', 'context']
+     * @param {Array} dataStreams - ["ds_id_1","ds_id_2"]
+     * @return {Promise}
+     */
 
     _createClass(TimeseriesFinder, [{
         key: 'findByOrganization',
@@ -66,18 +70,12 @@ var TimeseriesFinder = (function (_GenericFinder) {
             var parameters = {};
             if (expand) {
                 if (!(expand instanceof Array)) {
-                    throw new Error({
-                        message: "Parameter expand requires an array",
-                        parameter: 'expand'
-                    });
+                    throw (0, _utilParameterError2['default'])('Parameter expand requires an array', { parameter: 'expand' });
                 } else if (expand.length > 0) parameters.expand = expand.join();
             }
             if (dataStreams) {
                 if (!(dataStreams instanceof Array)) {
-                    throw new Error({
-                        message: "Parameter dataStreams requires an array",
-                        parameter: 'dataStreams'
-                    });
+                    throw (0, _utilParameterError2['default'])('Parameter dataStreams requires an array', { parameter: 'dataStreams' });
                 } else if (dataStreams.length > 0) parameters.dataStreams = dataStreams.join();
             }
             this._setUrlParameters(parameters);
@@ -90,7 +88,7 @@ var TimeseriesFinder = (function (_GenericFinder) {
          *   ogapi.newTimeserieFinder().findByOrganizationAndTimeserieId(organization, timeserieId);
          * @param {string} organization - organization
          * @param {string} timeserieId - timeserie identifier
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findByOrganizationAndTimeserieId',
@@ -105,7 +103,7 @@ var TimeseriesFinder = (function (_GenericFinder) {
          *   ogapi.newTimeserieFinder().findByOrganizationAndName(organization, name);
          * @param {string} organization - organization
          * @param {string} name - timeserie name
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findByOrganizationAndName',

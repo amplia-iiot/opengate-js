@@ -23,7 +23,8 @@ var _q = require('q');
 var _q2 = _interopRequireDefault(_q);
 
 /**
- * This class allow set simple values.
+ * This class provides the bulk create, update, patch, and delete operations shared by the CSV and JSON bulk
+ * builders.
  */
 
 var BulkBuilder = (function (_BaseProvision) {
@@ -59,10 +60,10 @@ var BulkBuilder = (function (_BaseProvision) {
 
         /**
          *  Execute the bulk creation operation
-         * @example 
+         * @example
          *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).create(rawFile)
          *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).create(new Blob(), true)
-         * @param {string|Blob} rawFile - File with format string or Blob 
+         * @param {string|Blob} rawFile - File with format string or Blob
          * @param {boolean} [csv_response] - true if you want a response on format csv. False or null if you want a response on format json
          */
     }, {
@@ -73,10 +74,10 @@ var BulkBuilder = (function (_BaseProvision) {
 
         /**
          *  Execute the bulk delete operation
-         * @example 
+         * @example
          *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).delete(rawFile)
          *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).delete(new Blob(), true)
-         * @param {string|Blob} rawFile - File with format string or Blob 
+         * @param {string|Blob} rawFile - File with format string or Blob
          * @param {boolean} [csv_response] - true if you want a response on format csv. False or null if you want a response on format json
          */
     }, {
@@ -86,11 +87,11 @@ var BulkBuilder = (function (_BaseProvision) {
         }
 
         /**
-         *  Execute the bulk delete full operation
-         * @example 
+         * Execute the bulk delete-all operation
+         * @example
          *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).deleteAll(rawFile)
          *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).deleteAll(new Blob(), true)
-         * @param {string|Blob} rawFile - File with format string or Blob 
+         * @param {string|Blob} rawFile - File with format string or Blob
          * @param {boolean} [csv_response] - true if you want a response on format csv. False or null if you want a response on format json
          */
     }, {
@@ -101,10 +102,10 @@ var BulkBuilder = (function (_BaseProvision) {
 
         /**
          *  Execute the bulk update operation
-         * @example 
+         * @example
          *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).update(rawFile)
          *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).update(new Blob(), true)
-         * @param {string|Blob} rawFile - File with format string or Blob 
+         * @param {string|Blob} rawFile - File with format string or Blob
          * @param {boolean} [csv_response] - true if you want a response on format csv. False or null if you want a response on format json
          */
     }, {
@@ -115,10 +116,10 @@ var BulkBuilder = (function (_BaseProvision) {
 
         /**
          *  Execute the bulk patch operation
-         * @example 
+         * @example
          *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).update(rawFile)
          *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).update(new Blob(), true)
-         * @param {string|Blob} rawFile - File with format string or Blob 
+         * @param {string|Blob} rawFile - File with format string or Blob
          * @param {boolean} [csv_response] - true if you want a response on format csv. False or null if you want a response on format json
          */
     }, {
@@ -149,7 +150,7 @@ var BulkBuilder = (function (_BaseProvision) {
             var petitionUrl = this._buildURL();
             //url, formData, events, timeout, headers, parameters
             if (csv_response) this._setExtraHeaders({
-                'accept': 'text/plain'
+                accept: 'text/plain'
             });
             this._setUrlParameters({
                 action: action

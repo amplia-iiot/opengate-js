@@ -22,6 +22,10 @@ var _provisionBaseProvision = require('../provision/BaseProvision');
 
 var _provisionBaseProvision2 = _interopRequireDefault(_provisionBaseProvision);
 
+var _utilParameterError = require('../util/parameterError');
+
+var _utilParameterError2 = _interopRequireDefault(_utilParameterError);
+
 /**
  * This is a base object that contains all you can do about workgroups.
  */
@@ -31,13 +35,13 @@ var Workgroups = (function (_BaseProvision) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function Workgroups(ogapi) {
         _classCallCheck(this, Workgroups);
 
-        _get(Object.getPrototypeOf(Workgroups.prototype), 'constructor', this).call(this, ogapi, "/domains", undefined, ["name", "domainName"]);
+        _get(Object.getPrototypeOf(Workgroups.prototype), 'constructor', this).call(this, ogapi, '/domains', undefined, ['name', 'domainName']);
         this._ogapi = ogapi;
     }
 
@@ -50,10 +54,7 @@ var Workgroups = (function (_BaseProvision) {
     _createClass(Workgroups, [{
         key: 'withName',
         value: function withName(name) {
-            if (typeof name !== 'string' || name.length > 50) throw new Error({
-                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50",
-                parameter: 'name'
-            });
+            if (typeof name !== 'string' || name.length > 50) throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER_MAX_LENGTH_50', { parameter: 'name' });
             this._name = name;
             return this;
         }
@@ -66,17 +67,14 @@ var Workgroups = (function (_BaseProvision) {
     }, {
         key: 'withDescription',
         value: function withDescription(description) {
-            if (typeof description !== 'string' || description.length > 250) throw new Error({
-                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250",
-                parameter: 'description'
-            });
+            if (typeof description !== 'string' || description.length > 250) throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER_MAX_LENGTH_250', { parameter: 'description' });
             this._description = description;
             return this;
         }
 
         /**
          * Set the administrative attribute
-         * @param {boolean} administrative 
+         * @param {boolean} administrative
          * @return {Workgroups}
          */
     }, {
@@ -96,10 +94,7 @@ var Workgroups = (function (_BaseProvision) {
     }, {
         key: 'withDomainName',
         value: function withDomainName(domainName) {
-            if (typeof domainName !== 'string' || domainName.length > 50) throw new Error({
-                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50",
-                parameter: 'domainName'
-            });
+            if (typeof domainName !== 'string' || domainName.length > 50) throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER_MAX_LENGTH_50', { parameter: 'domainName' });
             this._domainName = domainName;
             return this;
         }
@@ -110,7 +105,7 @@ var Workgroups = (function (_BaseProvision) {
             this._resource = 'provision/domains/' + this._domainName + '/workgroups';
 
             var workgroup = {
-                "workgroup": {
+                workgroup: {
                     name: this._name || undefined,
                     description: this._description || undefined,
                     administrative: this._administrative || false
@@ -126,7 +121,7 @@ var Workgroups = (function (_BaseProvision) {
             this._resource = 'provision/domains/' + this._domainName + '/workgroups';
 
             var workgroup = {
-                "workgroup": {
+                workgroup: {
                     description: this._description || undefined
                 }
             };

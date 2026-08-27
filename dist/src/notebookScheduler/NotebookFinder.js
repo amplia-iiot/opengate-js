@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-    value: true
+  value: true
 });
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -19,48 +19,48 @@ var _GenericFinder2 = require('../GenericFinder');
 var _GenericFinder3 = _interopRequireDefault(_GenericFinder2);
 
 /**
- *   This class allow make get request to planner resource into Opengate North API.
+ * This class allows making GET requests to the planner resource in the OpenGate North API.
  */
 
 var NotebookFinder = (function (_GenericFinder) {
-    _inherits(NotebookFinder, _GenericFinder);
+  _inherits(NotebookFinder, _GenericFinder);
 
-    /**
-     * Constructor
-     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
-     */
+  /**
+   * Constructor
+   * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
+   */
 
-    function NotebookFinder(ogapi) {
-        _classCallCheck(this, NotebookFinder);
+  function NotebookFinder(ogapi) {
+    _classCallCheck(this, NotebookFinder);
 
-        _get(Object.getPrototypeOf(NotebookFinder.prototype), 'constructor', this).call(this, ogapi, 'notebooks', 'list', 'Notebook not found', 'planner');
+    _get(Object.getPrototypeOf(NotebookFinder.prototype), 'constructor', this).call(this, ogapi, 'notebooks', 'list', 'Notebook not found', 'planner');
+  }
+
+  /**
+   * Download a complete list of notebooks for the user. This execute a GET http method
+   * @test
+   *   ogapi.newNotebooksFinder().findAll().then().catch();
+   * @return {Promise}
+   */
+
+  _createClass(NotebookFinder, [{
+    key: 'findAll',
+    value: function findAll() {
+      return this._execute();
     }
 
     /**
-    * Download a complete list of notebooks for the user. This execute a GET http method
-    * @test
-    *   ogapi.newNotebooksFinder().findAll().then().catch();
-    * @return {Promise} 
-    */
+     * @return {String} This returns a string with the URL of the request.
+     * @private
+     */
+  }, {
+    key: '_composeUrl',
+    value: function _composeUrl() {
+      return this._baseUrl;
+    }
+  }]);
 
-    _createClass(NotebookFinder, [{
-        key: 'findAll',
-        value: function findAll() {
-            return this._execute();
-        }
-
-        /**
-         * @return {String} This returns a string with the URL of the request.
-         * @private
-         */
-    }, {
-        key: '_composeUrl',
-        value: function _composeUrl() {
-            return this._baseUrl;
-        }
-    }]);
-
-    return NotebookFinder;
+  return NotebookFinder;
 })(_GenericFinder3['default']);
 
 exports['default'] = NotebookFinder;

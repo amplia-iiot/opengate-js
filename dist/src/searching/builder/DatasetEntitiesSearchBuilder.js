@@ -30,7 +30,7 @@ var TOKEN_URL = '$_token';
 
 exports.TOKEN_URL = TOKEN_URL;
 /**
- * Defined a search over Executions	
+ * Defines a search over Executions.
  * @example ogapi.datasetEntitiesSearchBuilder()
  */
 
@@ -56,8 +56,8 @@ var DatasetEntitiesSearchBuilder = (function (_SearchWithSummaryBuilder) {
     /**
      * The response will return a flattened response
      * @example
-     *	ogapi.datasetEntitiesSearchBuilder().flattened() 
-     * @return {DatasetEntitiesSearchBuilder} 
+     *	ogapi.datasetEntitiesSearchBuilder().flattened()
+     * @return {DatasetEntitiesSearchBuilder}
      */
 
     _createClass(DatasetEntitiesSearchBuilder, [{
@@ -70,8 +70,8 @@ var DatasetEntitiesSearchBuilder = (function (_SearchWithSummaryBuilder) {
         /**
          * The response will return a response without sorted
          * @example
-         *	ogapi.datasetEntitiesSearchBuilder().disableDefaultSorted() 
-         * @return {DatasetEntitiesSearchBuilder} 
+         *	ogapi.datasetEntitiesSearchBuilder().disableDefaultSorted()
+         * @return {DatasetEntitiesSearchBuilder}
          */
     }, {
         key: 'disableDefaultSorted',
@@ -83,8 +83,8 @@ var DatasetEntitiesSearchBuilder = (function (_SearchWithSummaryBuilder) {
         /**
          * The response will return a response by applying the filter with likes case-no-sensitive
          * @example
-         *	ogapi.datasetEntitiesSearchBuilder().disableCaseSensitive() 
-         * @return {DatasetEntitiesSearchBuilder} 
+         *	ogapi.datasetEntitiesSearchBuilder().disableCaseSensitive()
+         * @return {DatasetEntitiesSearchBuilder}
          */
     }, {
         key: 'disableCaseSensitive',
@@ -96,8 +96,8 @@ var DatasetEntitiesSearchBuilder = (function (_SearchWithSummaryBuilder) {
         /**
          * The response will return a response by deleteing the parameters with likes case-no-sensitive
          * @example
-         *	ogapi.datasetEntitiesSearchBuilder().disableCaseSensitive() 
-         * @return {DatasetEntitiesSearchBuilder} 
+         *	ogapi.datasetEntitiesSearchBuilder().disableCaseSensitive()
+         * @return {DatasetEntitiesSearchBuilder}
          */
     }, {
         key: 'removeCaseSensitive',
@@ -118,10 +118,10 @@ var DatasetEntitiesSearchBuilder = (function (_SearchWithSummaryBuilder) {
         }
 
         /**
-         * The search request will have this group by 
+         * The search request will have this group by
          * @example
-         * @param {!(object)} group 
-         * @return {DatasetEntitiesSearchBuilder} 
+         * @param {!(object)} group
+         * @return {DatasetEntitiesSearchBuilder}
          */
     }, {
         key: 'group',
@@ -131,7 +131,7 @@ var DatasetEntitiesSearchBuilder = (function (_SearchWithSummaryBuilder) {
         }
 
         /**
-         * The search request will have this filter 
+         * The search request will have this filter
          * @example
          *  ogapi.datasetEntitiesSearchBuilder().select(
          *      ogapi.newSelectBuilder().add(SE.element("provision.device.identifier", ["value"], "id"), SE.add("device.temperature.value", ["value"]))
@@ -141,7 +141,7 @@ var DatasetEntitiesSearchBuilder = (function (_SearchWithSummaryBuilder) {
          *      {"name": "device.temperature.value","fields": [{"field": "value","alias": "identifier"}]}]
          *   }) //Custom select
          * @param {!(SelectBuilder|object)} select
-         * @return {DatasetEntitiesSearchBuilder} 
+         * @return {DatasetEntitiesSearchBuilder}
          */
     }, {
         key: 'select',
@@ -151,12 +151,12 @@ var DatasetEntitiesSearchBuilder = (function (_SearchWithSummaryBuilder) {
         }
 
         /**
-         * Build a instance of Search 
+         * Build a instance of Search
          *
          * @example
          *  ogapi.datasetEntitiesSearchBuilder()
          * @throws {SearchBuilderError} Throw error on url build
-         * @return {Search} 
+         * @return {Search}
          */
     }, {
         key: 'build',

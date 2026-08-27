@@ -35,7 +35,7 @@ var ERROR_DATASTREAM_NOT_ALLOWED = 'Datastream is not allowed';
 var schema_base = '/og_basic_types.json';
 
 /**
- * This class allow set simple values.
+ * This class allows setting simple values.
  */
 
 var SimpleBuilder = (function (_BaseProvision) {
@@ -53,9 +53,9 @@ var SimpleBuilder = (function (_BaseProvision) {
     function SimpleBuilder(ogapi, resource, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout) {
         _classCallCheck(this, SimpleBuilder);
 
-        _get(Object.getPrototypeOf(SimpleBuilder.prototype), 'constructor', this).call(this, ogapi, "/organizations/" + resource, timeout);
-        if (typeof this._getEntityKey !== "function") {
-            throw new Error("Must override method:  _getEntityKey");
+        _get(Object.getPrototypeOf(SimpleBuilder.prototype), 'constructor', this).call(this, ogapi, '/organizations/' + resource, timeout);
+        if (typeof this._getEntityKey !== 'function') {
+            throw new Error('Must override method:  _getEntityKey');
         }
         this._setUrlParameters({
             flattened: true
@@ -69,7 +69,7 @@ var SimpleBuilder = (function (_BaseProvision) {
     _createClass(SimpleBuilder, [{
         key: '_buildURL',
         value: function _buildURL() {
-            return this._resource + "/" + this.getEntityKey();
+            return this._resource + '/' + this.getEntityKey();
         }
     }, {
         key: '_validate',
@@ -101,7 +101,7 @@ var SimpleBuilder = (function (_BaseProvision) {
             });
 
             if (errors.length > 0) {
-                throw new Error(JSON.stringify(errors).replace(new RegExp("\"", 'g'), ""));
+                throw new Error(JSON.stringify(errors).replace(new RegExp('"', 'g'), ''));
             }
         }
     }, {
@@ -122,7 +122,7 @@ var SimpleBuilder = (function (_BaseProvision) {
 
         /**
          * Set new datastream value
-         * 
+         *
          * @param {!string} _id - Datastream identifier
          * @param {!objecr} val - Datastream value. If this value is null then datastream value will be removed.
          */
@@ -144,9 +144,9 @@ var SimpleBuilder = (function (_BaseProvision) {
                 return this;
             }
             this._entity[_id] = {
-                '_value': {
-                    '_current': {
-                        'value': val
+                _value: {
+                    _current: {
+                        value: val
                     }
                 }
             };
@@ -167,7 +167,7 @@ var SimpleBuilder = (function (_BaseProvision) {
             var _this = this;
             if (_flattenedEntityData && Object.keys(_flattenedEntityData).length > 0) {
                 Object.keys(_flattenedEntityData).forEach(function (_id) {
-                    if (_id.toLowerCase().startsWith("provision")) {
+                    if (_id.toLowerCase().startsWith('provision')) {
                         var _content = _flattenedEntityData[_id];
                         if (Array.isArray(_content)) {
                             _content = _content[0];
@@ -210,8 +210,8 @@ var SimpleBuilder = (function (_BaseProvision) {
         }
 
         /**
-         * This invoke a request to OpenGate North API and the callback is managed by promises
-         * This function deletes a entity of provision
+         * This invoke a request to OpenGate North API and the callback is managed by promises This function deletes a
+         * provisioned entity
          * @return {Promise}
          * @property {function (result:object, statusCode:number)} then - When request it is OK
          * @property {function (error:string)} catch - When request it is NOK
@@ -242,8 +242,8 @@ var SimpleBuilder = (function (_BaseProvision) {
         }
 
         /**
-         * This invoke a request to OpenGate North API and the callback is managed by promises
-         * This function updates a entity of provision
+         * This invoke a request to OpenGate North API and the callback is managed by promises This function updates a
+         * provisioned entity
          * @return {Promise}
          * @property {function (result:object, statusCode:number)} then - When request it is OK
          * @property {function (error:string)} catch - When request it is NOK
@@ -278,8 +278,8 @@ var SimpleBuilder = (function (_BaseProvision) {
         }
 
         /**
-         * This invoke a request to OpenGate North API and the callback is managed by promises
-         * This function patch a entity of provision
+         * This invoke a request to OpenGate North API and the callback is managed by promises This function patches a
+         * provisioned entity
          * @return {Promise}
          * @property {function (result:object, statusCode:number)} then - When request it is OK
          * @property {function (error:string)} catch - When request it is NOK

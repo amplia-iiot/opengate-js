@@ -17,7 +17,7 @@ var _EntityFinder2 = require('./EntityFinder');
 var _EntityFinder3 = _interopRequireDefault(_EntityFinder2);
 
 /**
- *   This class allow make get request to device provisioned resource into Opengate North API.
+ * This class allows you to make GET requests to the provisioned device resource in the OpenGate North API.
  */
 
 var DeviceFinder = (function (_EntityFinder) {
@@ -25,7 +25,7 @@ var DeviceFinder = (function (_EntityFinder) {
 
   /**
    * Constructor
-   * @param {InternalOpenGateAPI} Reference to the API object.
+   * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
    */
 
   function DeviceFinder(ogapi) {

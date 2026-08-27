@@ -28,7 +28,7 @@ var MODELS_RESOURCE = '/models';
 
 exports.MODELS_RESOURCE = MODELS_RESOURCE;
 /**
- * This is a base object that contains all you can do about Models.
+ * This is a base object that contains everything you can do with Models.
  */
 
 var Models = (function (_BaseProvision) {
@@ -36,7 +36,7 @@ var Models = (function (_BaseProvision) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function Models(ogapi, manufacturer) {
@@ -45,7 +45,7 @@ var Models = (function (_BaseProvision) {
         _get(Object.getPrototypeOf(Models.prototype), 'constructor', this).call(this, ogapi, _Manufacturer.MANUFACTURERS_RESOURCE, undefined, ['name']);
         this._isValidString(manufacturer, 'manufacturer', 50);
 
-        this._resource = this._resource + "/" + manufacturer + MODELS_RESOURCE;
+        this._resource = this._resource + '/' + manufacturer + MODELS_RESOURCE;
     }
 
     /**
@@ -57,7 +57,7 @@ var Models = (function (_BaseProvision) {
     _createClass(Models, [{
         key: 'withIdentifier',
         value: function withIdentifier(id) {
-            if (typeof id !== 'string' || id.length > 50) throw new Error("OGAPI_STRING_PARAMETER_MAX_LENGTH_50");
+            if (typeof id !== 'string' || id.length > 50) throw new Error('OGAPI_STRING_PARAMETER_MAX_LENGTH_50');
             this._identifier = id;
             return this;
         }
@@ -70,7 +70,7 @@ var Models = (function (_BaseProvision) {
     }, {
         key: 'withName',
         value: function withName(name) {
-            if (typeof name !== 'string') throw new Error("OGAPI_STRING_PARAMETER");
+            if (typeof name !== 'string') throw new Error('OGAPI_STRING_PARAMETER');
             this._name = name;
             return this;
         }
@@ -83,53 +83,53 @@ var Models = (function (_BaseProvision) {
     }, {
         key: 'withDescription',
         value: function withDescription(description) {
-            if (typeof description !== 'string') throw new Error("OGAPI_STRING_PARAMETER");
+            if (typeof description !== 'string') throw new Error('OGAPI_STRING_PARAMETER');
             this._description = description;
             return this;
         }
 
         /**
          * Set the notes attribute
-         * @param {string} notes 
+         * @param {string} notes
          * @return {Models}
          */
     }, {
         key: 'withNotes',
         value: function withNotes(notes) {
-            if (typeof notes !== 'string') throw new Error("OGAPI_STRING_PARAMETER");
+            if (typeof notes !== 'string') throw new Error('OGAPI_STRING_PARAMETER');
             this._notes = notes;
             return this;
         }
 
         /**
          * Set the url attribute
-         * @param {string} url 
+         * @param {string} url
          * @return {Models}
          */
     }, {
         key: 'withUrl',
         value: function withUrl(url) {
-            if (typeof url !== 'string') throw new Error("OGAPI_STRING_PARAMETER");
+            if (typeof url !== 'string') throw new Error('OGAPI_STRING_PARAMETER');
             this._modelUrl = url;
             return this;
         }
 
         /**
          * Set the version attribute
-         * @param {string} version 
+         * @param {string} version
          * @return {Models}
          */
     }, {
         key: 'withVersion',
         value: function withVersion(version) {
-            if (typeof version !== 'string') throw new Error("OGAPI_STRING_PARAMETER");
+            if (typeof version !== 'string') throw new Error('OGAPI_STRING_PARAMETER');
             this._version = version;
             return this;
         }
     }, {
         key: 'mediaBuilder',
         value: function mediaBuilder() {
-            if (!this._manufacturer || !this._identifier) throw new Error("Required manufacturer and model identifier");
+            if (!this._manufacturer || !this._identifier) throw new Error('Required manufacturer and model identifier');
             return new _ModelMedia2['default'](this._ogapi, this._manufacturer, this._identifier);
         }
     }, {
@@ -155,7 +155,7 @@ var Models = (function (_BaseProvision) {
     }, {
         key: '_buildURL',
         value: function _buildURL() {
-            var url = this._resource + (this._identifier ? "/" + this._identifier : "");
+            var url = this._resource + (this._identifier ? '/' + this._identifier : '');
             return url;
         }
     }, {

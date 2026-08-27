@@ -1,6 +1,6 @@
 'use strict';
 Object.defineProperty(exports, '__esModule', {
-    value: true
+  value: true
 });
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -18,49 +18,49 @@ var _GenericFinder2 = require('../GenericFinder');
 var _GenericFinder3 = _interopRequireDefault(_GenericFinder2);
 
 /**
- *   This class allow make get request to planner resource into Opengate North API.
+ * This class allows making GET requests to the planner resource of the OpenGate North API.
  */
 
 var RestRequestFinder = (function (_GenericFinder) {
-    _inherits(RestRequestFinder, _GenericFinder);
+  _inherits(RestRequestFinder, _GenericFinder);
 
-    /**
-     * Constructor
-     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
-     */
+  /**
+   * Constructor
+   * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
+   */
 
-    function RestRequestFinder(ogapi) {
-        _classCallCheck(this, RestRequestFinder);
+  function RestRequestFinder(ogapi) {
+    _classCallCheck(this, RestRequestFinder);
 
-        _get(Object.getPrototypeOf(RestRequestFinder.prototype), 'constructor', this).call(this, ogapi, 'organization', 'list', 'Rest request not found', 'scheduler');
+    _get(Object.getPrototypeOf(RestRequestFinder.prototype), 'constructor', this).call(this, ogapi, 'organization', 'list', 'Rest request not found', 'scheduler');
+  }
+
+  /**
+   * @return {String} This returns a string with the URL of the request.
+   * @private
+   */
+
+  _createClass(RestRequestFinder, [{
+    key: '_composeUrl',
+    value: function _composeUrl() {
+      return this._baseUrl + '/' + this._organization + '/restRequest';
     }
 
     /**
-     * @return {String} This returns a string with the URL of the request.
-     * @private
+     * Download a complete list of REST requests for the organization. This executes a GET HTTP method.
+     * @test
+     *   ogapi.newScheduleRestRequestFinder().findByOrganization(organization).then().catch();
+     * @return {Promise}
      */
+  }, {
+    key: 'findByOrganization',
+    value: function findByOrganization(organization) {
+      this._organization = organization;
+      return this._execute();
+    }
+  }]);
 
-    _createClass(RestRequestFinder, [{
-        key: '_composeUrl',
-        value: function _composeUrl() {
-            return this._baseUrl + "/" + this._organization + "/restRequest";
-        }
-
-        /**
-        * Download a complete list of scheduler history for the organization. This execute a GET http method
-        * @test
-        *   ogapi.newScheduleRestRequestFinder().findByOrganization(organization).then().catch();
-        * @return {Promise} 
-        */
-    }, {
-        key: 'findByOrganization',
-        value: function findByOrganization(organization) {
-            this._organization = organization;
-            return this._execute();
-        }
-    }]);
-
-    return RestRequestFinder;
+  return RestRequestFinder;
 })(_GenericFinder3['default']);
 
 exports['default'] = RestRequestFinder;

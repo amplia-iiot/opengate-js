@@ -22,7 +22,7 @@ var _utilSearchingFieldsFieldFinder2 = _interopRequireDefault(_utilSearchingFiel
 
 var BASE_URL = '/rules';
 /**
- * Defined a search over Rulse	
+ * Defines a search over Rules.
  * @example ogapi.rulesSearchBuilder()
  */
 

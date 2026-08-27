@@ -34,7 +34,7 @@ var _utilDATE_FORMAT = require('../../util/DATE_FORMAT');
 
 var BASE_URL = '/datapoints';
 /**
- * Defined a search over Datastreams	
+ * Defines a search over Datapoints.
  * @example ogapi.datapointsSearchBuilder()
  */
 
@@ -61,7 +61,7 @@ var DatapointsSearchBuilder = (function (_SearchBuilder) {
      *	ogapi.datapointsSearchBuilder().withDeviceId('myDevice').build()
      * @param {!string} deviceId - Prov.customId of Device
      * @throws {Error} throw error when deviceId is not typeof string
-     * @return {DatapointsSearchBuilder} 
+     * @return {DatapointsSearchBuilder}
      */
 
     _createClass(DatapointsSearchBuilder, [{
@@ -81,7 +81,7 @@ var DatapointsSearchBuilder = (function (_SearchBuilder) {
          *	ogapi.datapointsSearchBuilder().withDeviceId('myDevice').build()
          * @param {!string} datastreamId - Datastream.id of Datapoint
          * @throws {Error} throw error when datastreamId is not typeof string
-         * @return {DatapointsSearchBuilder} 
+         * @return {DatapointsSearchBuilder}
          */
     }, {
         key: 'withDatastream',
@@ -100,7 +100,7 @@ var DatapointsSearchBuilder = (function (_SearchBuilder) {
          *	ogapi.datapointsSearchBuilder().withDeviceId('myDevice').build()
          * @param {!string} feedId - Datastream.id of Datapoint
          * @throws {Error} throw error when datastreamId is not typeof string
-         * @return {DatapointsSearchBuilder} 
+         * @return {DatapointsSearchBuilder}
          */
     }, {
         key: 'withFeed',
@@ -116,7 +116,7 @@ var DatapointsSearchBuilder = (function (_SearchBuilder) {
         //	* Add tag to search
         //	*
         //	* @example
-        //	*	ogapi.datapointsSearchBuilder().addTag('tag').build()	
+        //	*	ogapi.datapointsSearchBuilder().addTag('tag').build()
         //	* @param {!string} tagName - Add a tag into tags array
         //	* @throws {Error} throw error when tagName is not typeof string
         //	* @return {datapointsSearchBuilder}
@@ -126,7 +126,7 @@ var DatapointsSearchBuilder = (function (_SearchBuilder) {
         //			throw new Error('Parameter tagName must be a string');
         //		}
         //		this.tagsFilter.push(tagName)
-        //		return this;		
+        //		return this;
         //	}
 
         /**
@@ -137,16 +137,16 @@ var DatapointsSearchBuilder = (function (_SearchBuilder) {
          * @param {!date} fromDate - Add from date
          * @param {!date} toDate - Add to date
          * @throws {Error} throw error when fromDate or toDate is not typeof date
-         * @return {DatapointsSearchBuilder} 
+         * @return {DatapointsSearchBuilder}
          */
     }, {
         key: 'betweenDates',
         value: function betweenDates(fromDate, toDate) {
-            if (typeof fromDate !== "object" || fromDate.constructor !== Date) {
+            if (typeof fromDate !== 'object' || fromDate.constructor !== Date) {
                 throw new Error('Parameter fromDate must be a Date');
             }
             this.fluentFilter.and(this._parent.EX.gt('datapoint.at', (0, _moment2['default'])(fromDate).format(_utilDATE_FORMAT.DATE_FORMAT)));
-            if (typeof toDate !== "undefined") {
+            if (typeof toDate !== 'undefined') {
                 if (toDate.constructor !== Date) {
                     throw new Error('Parameter toDate must be a Date');
                 }
@@ -163,29 +163,29 @@ var DatapointsSearchBuilder = (function (_SearchBuilder) {
             var _customFilter = this._builderParams.filter;
 
             //if (this.tagsFilter.length > 0){
-            //	_fluentFilter.and(this._parent.EX.in('datapoint.tag',this.tagsFilter));				
+            //	_fluentFilter.and(this._parent.EX.in('datapoint.tag',this.tagsFilter));
             //}
 
             _fluentFilter = _fluentFilter._filterTemplate.filter;
 
-            if (typeof _customFilter._filterTemplate === "object") {
+            if (typeof _customFilter._filterTemplate === 'object') {
                 _customFilter = _customFilter._filterTemplate.filter;
             }
 
-            if (typeof _customFilter !== "undefined" && Object.keys(_customFilter).length > 0 && typeof _fluentFilter !== "undefined" && Object.keys(_fluentFilter).length > 0) {
+            if (typeof _customFilter !== 'undefined' && Object.keys(_customFilter).length > 0 && typeof _fluentFilter !== 'undefined' && Object.keys(_fluentFilter).length > 0) {
                 throw new Error('Incompatible filters. You only can create a filter using fluent mode [betweenDates, addTag, withDatastreamId, withDeviceId] methods or custom filter [filter] method');
             }
 
-            if (typeof _customFilter !== "undefined" && Object.keys(_customFilter).length > 0) {
+            if (typeof _customFilter !== 'undefined' && Object.keys(_customFilter).length > 0) {
                 filter.filter = _customFilter;
-            } else if (typeof _fluentFilter !== "undefined" && Object.keys(_fluentFilter).length > 0) {
+            } else if (typeof _fluentFilter !== 'undefined' && Object.keys(_fluentFilter).length > 0) {
                 filter.filter = _fluentFilter;
             }
             return filter;
         }
 
         /**
-         * The search request will have this filter 
+         * The search request will have this filter
          * @example
          *  ogapi.entitiesSearchBuilder().select(
          *      ogapi.newSelectBuilder().add(SE.element("provision.device.identifier", ["value"], "id"), SE.add("device.temperature.value", ["value"]))
@@ -195,7 +195,7 @@ var DatapointsSearchBuilder = (function (_SearchBuilder) {
          *      {"name": "device.temperature.value","fields": [{"field": "value","alias": "identifier"}]}]
          *   }) //Custom select
          * @param {!(SelectBuilder|object)} select
-         * @return {SearchBuilder} 
+         * @return {SearchBuilder}
          */
     }, {
         key: 'select',

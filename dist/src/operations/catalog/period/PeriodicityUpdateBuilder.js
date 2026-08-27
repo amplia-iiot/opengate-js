@@ -43,12 +43,12 @@ var PeriodicityUpdateBuilder = (function () {
         this._ogapi = ogapi;
         this._task = taskObj;
         this.task_id = taskId;
-        this._resource = "/tasks/" + this.task_id;
+        this._resource = '/tasks/' + this.task_id;
         this._build = (0, _merge2['default'])(true, this._task.job.request);
     }
 
     /**
-     * The operation will execute with a period that you must define with ExecuteEveryBuilder 
+     * The operation will execute with a period that you must define with ExecuteEveryBuilder
      * @param {!Date} date - Date when operation will be executed
      * @param {number or Date} end - When periodicity ends. By repetitions or by date
      * @throws {Error} throw error when date is not typeof Date
@@ -66,9 +66,9 @@ var PeriodicityUpdateBuilder = (function () {
         }
 
         /**
-         * The operation will execute with a period that you must define with ExecuteEachBuilder 
+         * The operation will execute with a period that you must define with ExecuteEachBuilder
          * @param {!Date} date - Date when operation will be executed
-         * @param {number or Date} end - When periodicity ends. By repetitions or by date 
+         * @param {number or Date} end - When periodicity ends. By repetitions or by date
          * @throws {Error} throw error when date is not typeof Date
          * @return {ExecuteEach}
          */
@@ -98,7 +98,7 @@ var PeriodicityUpdateBuilder = (function () {
         key: '_getEnd',
         value: function _getEnd(args) {
             for (var i = 0; i < args.length; i++) {
-                if (typeof args[i] === "number" || args[i].constructor === Date) {
+                if (typeof args[i] === 'number' || args[i].constructor === Date) {
                     return args[i];
                 }
             }
@@ -114,26 +114,26 @@ var PeriodicityUpdateBuilder = (function () {
             var _build = (0, _merge2['default'])(true, this._build);
             var postObj = undefined;
             var errors = [];
-            if (typeof this._build.task !== "undefined") {
+            if (typeof this._build.task !== 'undefined') {
                 var task = this._build.task;
                 // CHECK period and job timeout
                 var jobTimeout = this._build.schedule.stop;
-                if (typeof task.repeating.period !== "undefined") {
+                if (typeof task.repeating.period !== 'undefined') {
                     var maxJobTimeout = undefined;
                     switch (task.repeating.period.unit) {
-                        case "DAYS":
+                        case 'DAYS':
                             maxJobTimeout = _moment2['default'].duration(task.repeating.period.each, 'days').asMilliseconds();
                             break;
-                        case "HOURS":
+                        case 'HOURS':
                             maxJobTimeout = _moment2['default'].duration(task.repeating.period.each, 'hours').asMilliseconds();
                             break;
-                        case "MINUTES":
+                        case 'MINUTES':
                             maxJobTimeout = _moment2['default'].duration(task.repeating.period.each, 'minutes').asMilliseconds();
                             break;
                     }
-                    if (typeof jobTimeout !== "undefined" && typeof jobTimeout.delayed === "number") {
+                    if (typeof jobTimeout !== 'undefined' && typeof jobTimeout.delayed === 'number') {
                         if (jobTimeout.delayed >= maxJobTimeout) {
-                            errors.push("You can not execute an operation with a job timeout greater than the repetition period.");
+                            errors.push('You can not execute an operation with a job timeout greater than the repetition period.');
                         }
                     }
                 }
@@ -143,7 +143,7 @@ var PeriodicityUpdateBuilder = (function () {
                 this._build = _build;
                 throw errors;
             }
-            if (typeof this._build.task !== "undefined") {
+            if (typeof this._build.task !== 'undefined') {
                 postObj = this._updateTask(this._build);
             }
             var op = new _Operation2['default'](this._ogapi, this._resource, postObj);
@@ -165,11 +165,11 @@ var PeriodicityUpdateBuilder = (function () {
             };
             try {
                 if (task.start) {
-                    taskObj.task.schedule.start = { "date": start.format(_utilDATE_FORMAT.DATE_FORMAT) };
+                    taskObj.task.schedule.start = { date: start.format(_utilDATE_FORMAT.DATE_FORMAT) };
                 }
 
                 if (task.stop) {
-                    taskObj.task.schedule.stop = { "date": (0, _moment2['default'])(task.stop).format(_utilDATE_FORMAT.DATE_FORMAT) };
+                    taskObj.task.schedule.stop = { date: (0, _moment2['default'])(task.stop).format(_utilDATE_FORMAT.DATE_FORMAT) };
                 }
 
                 if (task.repeating) {
@@ -177,8 +177,8 @@ var PeriodicityUpdateBuilder = (function () {
                 }
             } catch (err) {}
             delete taskObj.task.schedule.name;
-            if (typeof task.stop !== "undefined") {
-                if (typeof task.stop.date !== "undefined") {
+            if (typeof task.stop !== 'undefined') {
+                if (typeof task.stop.date !== 'undefined') {
                     taskObj.task.schedule.stop = {
                         date: (0, _moment2['default'])(task.stop.date).format(_utilDATE_FORMAT.DATE_FORMAT)
                     };
@@ -187,10 +187,10 @@ var PeriodicityUpdateBuilder = (function () {
                 }
             }
             if (_moment2['default'].max(now, start) == now) {
-                if (typeof task.stop !== "undefined" && typeof task.stop.date !== "undefined") {
+                if (typeof task.stop !== 'undefined' && typeof task.stop.date !== 'undefined') {
                     var stopDate = (0, _moment2['default'])(task.stop.date);
                     if (_moment2['default'].max(now, stopDate) == now) {
-                        throw new Error("Can not create operation object because stop operation period is earlier than current date. " + "It happened because you passed a lot of time between configuration of an operation and create the operation.");
+                        throw new Error('Can not create operation object because stop operation period is earlier than current date. ' + 'It happened because you passed a lot of time between configuration of an operation and create the operation.');
                     }
                 }
                 delete taskObj.task.schedule.start;

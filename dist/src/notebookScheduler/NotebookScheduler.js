@@ -23,7 +23,7 @@ var _utilFormatsCheck_types = require('../util/formats/check_types');
 var _utilFormatsCheck_types2 = _interopRequireDefault(_utilFormatsCheck_types);
 
 /**
- * This is a base object that contains all you can do about Bundles.
+ * This is the base object for everything you can do with a notebook scheduler.
  */
 
 var NotebookScheduler = (function (_BaseProvision) {
@@ -31,13 +31,13 @@ var NotebookScheduler = (function (_BaseProvision) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function NotebookScheduler(ogapi) {
         _classCallCheck(this, NotebookScheduler);
 
-        _get(Object.getPrototypeOf(NotebookScheduler.prototype), 'constructor', this).call(this, ogapi, "/schedulers", undefined, ["notebookId"], 'planner');
+        _get(Object.getPrototypeOf(NotebookScheduler.prototype), 'constructor', this).call(this, ogapi, '/schedulers', undefined, ['notebookId'], 'planner');
         this._ogapi = ogapi;
     }
 
@@ -45,7 +45,7 @@ var NotebookScheduler = (function (_BaseProvision) {
         key: '_buildURL',
         value: function _buildURL() {
             _utilFormatsCheck_types2['default']._checkString(this._identifier, 'identifier');
-            return "schedulers/" + this._identifier;
+            return 'schedulers/' + this._identifier;
         }
 
         /**

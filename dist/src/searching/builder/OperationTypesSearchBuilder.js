@@ -28,7 +28,7 @@ var _SearchWithoutLimit2 = _interopRequireDefault(_SearchWithoutLimit);
 
 var BASE_URL = '/operationTypes';
 /**
- * Defined a search over operationTypes	
+ * Defines a search over operation types.
  * @example ogapi.rulesSearchBuilder()
  */
 
@@ -47,19 +47,18 @@ var OperationTypesBuilder = (function (_SearchBuilder) {
     }
 
     /**
-     * Build a instance of Search 
+     * Build a instance of Search
      *
      * @example
      *  ogapi.devicesSearchBuilder().onProvisioned().build()
      * @throws {SearchBuilderError} Throw error on url build
-     * @return {Search} 
+     * @return {Search}
      */
 
     _createClass(OperationTypesBuilder, [{
         key: 'build',
         value: function build() {
             try {
-
                 return new _SearchWithoutLimit2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildSort(), this._buildGroup(), this._buildSelect(), this._builderParams.timeout, this._urlParams);
             } catch (error) {
                 console.error('!errrrror!!!!!!', error);

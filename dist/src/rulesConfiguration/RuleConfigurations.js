@@ -30,8 +30,12 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
+var _utilParameterError = require('../util/parameterError');
+
+var _utilParameterError2 = _interopRequireDefault(_utilParameterError);
+
 /**
- * This is a base object that contains all you can do about RulesConfigurations.
+ * This is a base object that contains everything you can do with RulesConfigurations.
  */
 
 var RuleConfigurations = (function (_BaseProvision) {
@@ -39,13 +43,13 @@ var RuleConfigurations = (function (_BaseProvision) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function RuleConfigurations(ogapi, organization, channel, identifier, ruleConfigurationObj) {
         _classCallCheck(this, RuleConfigurations);
 
-        _get(Object.getPrototypeOf(RuleConfigurations.prototype), 'constructor', this).call(this, ogapi, "/organizations");
+        _get(Object.getPrototypeOf(RuleConfigurations.prototype), 'constructor', this).call(this, ogapi, '/organizations');
 
         // Required
         this.withOrganization(organization);
@@ -154,23 +158,20 @@ var RuleConfigurations = (function (_BaseProvision) {
 
         /**
          * Set the description attribute
-         * @param {string} description 
+         * @param {string} description
          * @return {RulesConfigurations}
          */
     }, {
         key: 'withDescription',
         value: function withDescription(description) {
-            if (typeof description !== 'string' || description.length > 250) throw new Error({
-                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250",
-                parameter: 'description'
-            });
+            if (typeof description !== 'string' || description.length > 250) throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER_MAX_LENGTH_250', { parameter: 'description' });
             this._description = description;
             return this;
         }
 
         /**
          * Set the javascript attribute
-         * @param {string} javascript 
+         * @param {string} javascript
          * @return {RulesConfigurations}
          */
     }, {
@@ -183,7 +184,7 @@ var RuleConfigurations = (function (_BaseProvision) {
 
         /**
          * Set the mode attribute
-         * @param {string} mode 
+         * @param {string} mode
          * @return {RulesConfigurations}
          */
     }, {
@@ -195,7 +196,7 @@ var RuleConfigurations = (function (_BaseProvision) {
 
         /**
          * Set the type attribute
-         * @param {string} type 
+         * @param {string} type
          * @return {RulesConfigurations}
          */
     }, {
@@ -207,7 +208,7 @@ var RuleConfigurations = (function (_BaseProvision) {
 
         /**
          * Set the active attribute
-         * @param {boolean} active 
+         * @param {boolean} active
          * @return {RulesConfigurations}
          */
     }, {
@@ -220,7 +221,7 @@ var RuleConfigurations = (function (_BaseProvision) {
 
         /**
          * Set the actions delay attribute
-         * @param {number} actionsDelay 
+         * @param {number} actionsDelay
          * @return {RulesConfigurations}
          */
     }, {
@@ -233,7 +234,7 @@ var RuleConfigurations = (function (_BaseProvision) {
 
         /**
          * Allows the modification of a condition
-         * @param {string} conditionFilter 
+         * @param {string} conditionFilter
          * @return {_RuleCondition}
          */
     }, {
@@ -246,7 +247,7 @@ var RuleConfigurations = (function (_BaseProvision) {
 
         /**
          * Allows the modification of the actions
-         * @param {object} actions 
+         * @param {object} actions
          * @return {_RuleCondition}
          */
     }, {
@@ -259,7 +260,7 @@ var RuleConfigurations = (function (_BaseProvision) {
 
         /**
          * Allows the modification of the actions
-         * @param {array} parameters 
+         * @param {array} parameters
          * @return {_RuleCondition}
          */
     }, {
@@ -275,18 +276,18 @@ var RuleConfigurations = (function (_BaseProvision) {
             // this._checkRequiredParameters();
 
             var updateData = {
-                "identifier": this._identifier,
-                "name": this._name,
-                "active": this._active,
-                "mode": this._mode,
-                "type": this._type,
-                "severity": this._severity,
-                "description": this._description ? this._description : undefined,
-                "parameters": this._parameters,
-                "condition": this._mode === 'EASY' ? this._condition : undefined,
-                "actionsDelay": this._actionsDelay,
-                "actions": this._mode === 'EASY' ? this._actions : undefined,
-                "javascript": this._mode === 'ADVANCED' ? this._javascript : undefined
+                identifier: this._identifier,
+                name: this._name,
+                active: this._active,
+                mode: this._mode,
+                type: this._type,
+                severity: this._severity,
+                description: this._description ? this._description : undefined,
+                parameters: this._parameters,
+                condition: this._mode === 'EASY' ? this._condition : undefined,
+                actionsDelay: this._actionsDelay,
+                actions: this._mode === 'EASY' ? this._actions : undefined,
+                javascript: this._mode === 'ADVANCED' ? this._javascript : undefined
             };
 
             return updateData;
@@ -303,13 +304,13 @@ var RuleConfigurations = (function (_BaseProvision) {
     }, {
         key: '_buildURL',
         value: function _buildURL() {
-            return "rules/" + this._resource + "/" + this._organization + "/channels/" + this._channel;
+            return 'rules/' + this._resource + '/' + this._organization + '/channels/' + this._channel;
         }
 
-        /** 
+        /**
          * Create a new Rule
          * @return {Promise}
-         * @throws {Error} 
+         * @throws {Error}
          */
     }, {
         key: 'create',
@@ -319,10 +320,10 @@ var RuleConfigurations = (function (_BaseProvision) {
             return this._doNorthPost(this._buildURL(), this._composeElement());
         }
 
-        /** 
-         * Udpate a Rule
+        /**
+         * Update a Rule
          * @return {Promise}
-         * @throws {Error} 
+         * @throws {Error}
          */
     }, {
         key: 'update',
@@ -332,10 +333,10 @@ var RuleConfigurations = (function (_BaseProvision) {
             return this._doNorthPut(this._buildURL() + '/' + this._identifier, this._composeElement());
         }
 
-        /** 
-         * Udpate a Rule
+        /**
+         * Update a Rule's parameters
          * @return {Promise}
-         * @throws {Error} 
+         * @throws {Error}
          */
     }, {
         key: 'updateParameters',
@@ -347,10 +348,10 @@ var RuleConfigurations = (function (_BaseProvision) {
             return this._doNorthPut(this._buildURL() + '/' + this._identifier + '/parameters', newParameters || this._parameters || []);
         }
 
-        /** 
+        /**
          * Deletes the selected RuleConfiguration
          * @return {Promise}
-         * @throws {Error} 
+         * @throws {Error}
          */
     }, {
         key: 'delete',

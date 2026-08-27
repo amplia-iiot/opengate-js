@@ -18,8 +18,12 @@ var _provisionBaseProvision = require('../provision/BaseProvision');
 
 var _provisionBaseProvision2 = _interopRequireDefault(_provisionBaseProvision);
 
+var _utilParameterError = require('../util/parameterError');
+
+var _utilParameterError2 = _interopRequireDefault(_utilParameterError);
+
 /**
- * This is a base object that contains all you can do about Bundles.
+ * This is a base object that contains everything you can do with a channel.
  */
 
 var Channels = (function (_BaseProvision) {
@@ -27,13 +31,13 @@ var Channels = (function (_BaseProvision) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function Channels(ogapi) {
         _classCallCheck(this, Channels);
 
-        _get(Object.getPrototypeOf(Channels.prototype), 'constructor', this).call(this, ogapi, "/organizations", undefined, ["name", "organization"]);
+        _get(Object.getPrototypeOf(Channels.prototype), 'constructor', this).call(this, ogapi, '/organizations', undefined, ['name', 'organization']);
         this._ogapi = ogapi;
     }
 
@@ -52,7 +56,7 @@ var Channels = (function (_BaseProvision) {
     }, {
         key: 'withName',
         value: function withName(name) {
-            if (typeof name !== 'string' || name.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'name' });
+            if (typeof name !== 'string' || name.length > 50) throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER_MAX_LENGTH_50', { parameter: 'name' });
             this._name = name;
             return this;
         }
@@ -65,33 +69,33 @@ var Channels = (function (_BaseProvision) {
     }, {
         key: 'withDescription',
         value: function withDescription(description) {
-            if (typeof description !== 'string' || description.length > 250) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250", parameter: 'description' });
+            if (typeof description !== 'string' || description.length > 250) throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER_MAX_LENGTH_250', { parameter: 'description' });
             this._description = description;
             return this;
         }
 
         /**
          * Set the organization attribute
-         * @param {string} organization 
+         * @param {string} organization
          * @return {Channels}
          */
     }, {
         key: 'withOrganization',
         value: function withOrganization(organization) {
-            if (typeof organization !== 'string' || organization.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'organization' });
+            if (typeof organization !== 'string' || organization.length > 50) throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER_MAX_LENGTH_50', { parameter: 'organization' });
             this._organization = organization;
             return this;
         }
 
         /**
          * Set the certificate attribute
-         * @param {string} certificate 
+         * @param {string} certificate
          * @return {Channels}
          */
     }, {
         key: 'withCertificate',
         value: function withCertificate(certificate) {
-            if (typeof certificate !== 'string') throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'certificate' });
+            if (typeof certificate !== 'string') throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER', { parameter: 'certificate' });
 
             if (!this._certificates) this._certificates = [];
 
@@ -104,7 +108,7 @@ var Channels = (function (_BaseProvision) {
             this._checkRequiredParameters();
             this._resource = 'provision/organizations/' + this._organization + '/channels';
             var channel = {
-                "channel": {
+                channel: {
                     name: this._name || undefined,
                     description: this._description || undefined,
                     certificates: this._certificates || undefined

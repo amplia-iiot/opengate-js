@@ -28,13 +28,13 @@ var _utilFormatsCheck_types2 = _interopRequireDefault(_utilFormatsCheck_types);
 
 var BASE_URL = 'timeseries';
 exports.BASE_URL = BASE_URL;
-var aggregationTypes = ["FIRST", "LAST", "AVG", "MAX", "MIN", "SUM", "COUNT", "MEDIAN", "GEO_AVG", "VARIANCE", "STD_DEVIATION"];
+var aggregationTypes = ['FIRST', 'LAST', 'AVG', 'MAX', 'MIN', 'SUM', 'COUNT', 'MEDIAN', 'GEO_AVG', 'VARIANCE', 'STD_DEVIATION'];
 exports.aggregationTypes = aggregationTypes;
-var interpolationTypes = ["ZERO", "LAST", "LINEAR", "NONE"];
+var interpolationTypes = ['ZERO', 'LAST', 'LINEAR', 'NONE'];
 
 exports.interpolationTypes = interpolationTypes;
 /**
- * Defined a search over timeseries	
+ * Defines a downsampled search over time series data.
  * @example ogapi.timeserieDownsamplerBuilder(organization, timeserieId)
  */
 
@@ -53,9 +53,9 @@ var TimeserieDownsamplerBuilder = (function (_SearchBuilder) {
     }
 
     /**
-     * The search request will have this select 
+     * The search request will have this select
      * @param {object} select
-     * @return {TimeserieDownsamplerBuilder} 
+     * @return {TimeserieDownsamplerBuilder}
      */
 
     _createClass(TimeserieDownsamplerBuilder, [{
@@ -68,7 +68,7 @@ var TimeserieDownsamplerBuilder = (function (_SearchBuilder) {
         /**
          * The start time for the downsampling
          * @param {string} start
-         * @return {TimeserieDownsamplerBuilder} 
+         * @return {TimeserieDownsamplerBuilder}
          */
     }, {
         key: 'start',
@@ -86,7 +86,7 @@ var TimeserieDownsamplerBuilder = (function (_SearchBuilder) {
         /**
          * The bucket for the downsampling (must be higher than the time series bucket)
          * @param {number} bucketTime
-         * @return {TimeserieDownsamplerBuilder} 
+         * @return {TimeserieDownsamplerBuilder}
          */
     }, {
         key: 'bucketTime',
@@ -105,7 +105,7 @@ var TimeserieDownsamplerBuilder = (function (_SearchBuilder) {
         /**
          * Add columns that will be requested
          * @param {array} columns
-         * @return {TimeserieDownsamplerBuilder} 
+         * @return {TimeserieDownsamplerBuilder}
          */
     }, {
         key: 'columns',
@@ -125,12 +125,12 @@ var TimeserieDownsamplerBuilder = (function (_SearchBuilder) {
          * @param {string} interpolation
          * @param {string} aggregation
          * @param {string} alias
-         * @return {TimeserieDownsamplerBuilder} 
+         * @return {TimeserieDownsamplerBuilder}
          */
     }, {
         key: 'addColumn',
         value: function addColumn(name, interpolation, aggregation, alias) {
-            _utilFormatsCheck_types2['default']._checkStringAndPattern(name, "^[a-zA-Z0-9 _-]*$", 'name');
+            _utilFormatsCheck_types2['default']._checkStringAndPattern(name, '^[a-zA-Z0-9 _-]*$', 'name');
 
             if (interpolation) {
                 _utilFormatsCheck_types2['default']._checkType(interpolation, interpolationTypes, 'interpolation');
@@ -141,7 +141,7 @@ var TimeserieDownsamplerBuilder = (function (_SearchBuilder) {
             }
 
             if (alias) {
-                _utilFormatsCheck_types2['default']._checkStringAndPattern(alias, "^[a-zA-Z0-9 _-]*$", 'alias');
+                _utilFormatsCheck_types2['default']._checkStringAndPattern(alias, '^[a-zA-Z0-9 _-]*$', 'alias');
             }
 
             if (!this._builderParams.select) {
@@ -176,12 +176,12 @@ var TimeserieDownsamplerBuilder = (function (_SearchBuilder) {
         }
 
         /**
-         * Build a instance of Search 
+         * Build a instance of Search
          *
          * @example
          *  ogapi.timeserieDownsamplerBuilder(organization, timeserieId).build()
          * @throws {SearchBuilderError} Throw error on url build
-         * @return {Search} 
+         * @return {Search}
          */
     }, {
         key: 'build',

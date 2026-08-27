@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * This is a base object that allows the user to create a Datapoint.
+ * This is a base object that allows the user to create a Hardware object.
  */
 Object.defineProperty(exports, '__esModule', {
     value: true
@@ -25,7 +25,7 @@ var Hardware = (function () {
 
     /**
      * Set the serialnumber attribute
-     * @param {string} serialnumber 
+     * @param {string} serialnumber
      * @return {Hardware}
      */
 
@@ -39,7 +39,7 @@ var Hardware = (function () {
 
         /**
          * Set the manufacturerName attribute
-         * @param {string} manufacturerName 
+         * @param {string} manufacturerName
          * @return {Hardware}
          */
     }, {
@@ -52,7 +52,7 @@ var Hardware = (function () {
 
         /**
          * Set the manufacturerOui attribute
-         * @param {string} manufacturerOui 
+         * @param {string} manufacturerOui
          * @return {Hardware}
          */
     }, {
@@ -108,11 +108,11 @@ var Hardware = (function () {
         key: '_isValidDate',
         value: function _isValidDate(str) {
             //YYYY-MM-DDThh:mm:ssTZD
-            if (str === "" || str === null) {
+            if (str === '' || str === null) {
                 return false;
             }
 
-            // m[1] is year 'YYYY' * m[2] is month 'MM' * m[3] is day 'DD'                 
+            // m[1] is year 'YYYY' * m[2] is month 'MM' * m[3] is day 'DD'
 
             var m = str.match(/(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})\+(\d{2}):(\d{2})/);
 
@@ -126,7 +126,7 @@ var Hardware = (function () {
                 return false;
             }
 
-            var ret = true; //RETURN VALUE                     
+            var ret = true; //RETURN VALUE
             var thisYear = new Date().getFullYear(); //YEAR NOW
             var minYear = 1999; //MIN YEAR
 
@@ -134,7 +134,7 @@ var Hardware = (function () {
             if (m[1].length < 4 || m[1] < minYear || m[1] > thisYear) {
                 ret = false;
             }
-            // MONTH CHECK         
+            // MONTH CHECK
             if (m[2].length < 2 || m[2] < 1 || m[2] > 12) {
                 ret = false;
             }
@@ -148,18 +148,17 @@ var Hardware = (function () {
     }, {
         key: 'composeElement',
         value: function composeElement() {
-
             var hardware = {
-                'serialnumber': this._serialnumber,
-                'manufacturer': {
-                    'name': this._manufacturerName,
-                    'oui': this._manufacturerOui || ""
+                serialnumber: this._serialnumber,
+                manufacturer: {
+                    name: this._manufacturerName,
+                    oui: this._manufacturerOui || ''
                 },
-                'model': {
-                    'name': this._modelName || "",
-                    'version': this._modelVersion || ""
+                model: {
+                    name: this._modelName || '',
+                    version: this._modelVersion || ''
                 },
-                'clockDate': this._clockDate
+                clockDate: this._clockDate
             };
             return hardware;
         }

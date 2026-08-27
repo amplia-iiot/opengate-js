@@ -34,7 +34,7 @@ var SOFTWARE_TYPES_ENUM = ['SOFTWARE', 'FIRMWARE'];
 exports.SOFTWARE_TYPES_ENUM = SOFTWARE_TYPES_ENUM;
 var BASE_URL = '/catalog/softwares';
 /**
- * Defined a search over Datastreams    
+ * Defines a search over software entries.
  * @example ogapi.softwareSearchBuilder()
  */
 
@@ -61,7 +61,7 @@ var SoftwaresSearchBuilder = (function (_SearchWithSummaryBuilder) {
      *  ogapi.softwareSearchBuilder().withId('mySoftwareId').build()
      * @param {!string} softwareId - software id
      * @throws {Error} throw error when softwareId is not typeof string
-     * @return {SoftwaresSearchBuilder} 
+     * @return {SoftwaresSearchBuilder}
      */
 
     _createClass(SoftwaresSearchBuilder, [{
@@ -81,7 +81,7 @@ var SoftwaresSearchBuilder = (function (_SearchWithSummaryBuilder) {
          *  ogapi.softwareSearchBuilder().withName('mySoftware').build()
          * @param {!string} softwareName - software name
          * @throws {Error} throw error when softwareName is not typeof string
-         * @return {SoftwaresSearchBuilder} 
+         * @return {SoftwaresSearchBuilder}
          */
     }, {
         key: 'withName',
@@ -100,7 +100,7 @@ var SoftwaresSearchBuilder = (function (_SearchWithSummaryBuilder) {
          *  ogapi.softwareSearchBuilder().withType('mySoftwareType).build()
          * @param {!string} softwareType - software version
          * @throws {Error} throw error when softwareType is not typeof string
-         * @return {SoftwaresSearchBuilder} 
+         * @return {SoftwaresSearchBuilder}
          */
     }, {
         key: 'withType',
@@ -113,7 +113,7 @@ var SoftwaresSearchBuilder = (function (_SearchWithSummaryBuilder) {
             var found = SOFTWARE_TYPES_ENUM.find(function (softwareType) {
                 return softwareType == this;
             }, softwareType);
-            if (typeof found === "undefined") {
+            if (typeof found === 'undefined') {
                 not_found = softwareType;
             }
 
@@ -132,7 +132,7 @@ var SoftwaresSearchBuilder = (function (_SearchWithSummaryBuilder) {
          *  ogapi.softwareSearchBuilder().withVersion('mySoftwareVersion).build()
          * @param {!string} softwareVersion - software version
          * @throws {Error} throw error when softwareVersion is not typeof string
-         * @return {SoftwaresSearchBuilder} 
+         * @return {SoftwaresSearchBuilder}
          */
     }, {
         key: 'withVersion',
@@ -151,7 +151,7 @@ var SoftwaresSearchBuilder = (function (_SearchWithSummaryBuilder) {
          *  ogapi.hardwareSearchBuilder().withHardwareId('myHardware').build()
          * @param {!string} hardwareId - hardware id
          * @throws {Error} throw error when hardwareId is not typeof string
-         * @return {SoftwaresSearchBuilder} 
+         * @return {SoftwaresSearchBuilder}
          */
     }, {
         key: 'withHardwareId',
@@ -170,7 +170,7 @@ var SoftwaresSearchBuilder = (function (_SearchWithSummaryBuilder) {
          *  ogapi.softwareSearchBuilder().withModel('myModel').build()
          * @param {!string} modelName - model name
          * @throws {Error} throw error when modelName is not typeof string
-         * @return {SoftwaresSearchBuilder} 
+         * @return {SoftwaresSearchBuilder}
          */
     }, {
         key: 'withModel',
@@ -189,7 +189,7 @@ var SoftwaresSearchBuilder = (function (_SearchWithSummaryBuilder) {
          *  ogapi.softwareSearchBuilder().withModelVersion('myModelVersion).build()
          * @param {!string} modelVersion - model version
          * @throws {Error} throw error when modelVersion is not typeof string
-         * @return {SoftwaresSearchBuilder} 
+         * @return {SoftwaresSearchBuilder}
          */
     }, {
         key: 'withModelVersion',
@@ -208,7 +208,7 @@ var SoftwaresSearchBuilder = (function (_SearchWithSummaryBuilder) {
          *  ogapi.softwareSearchBuilder().withManufacturer('myManufacturer').build()
          * @param {!string} manufacturerName - manufacturer name
          * @throws {Error} throw error when modelName is not typeof string
-         * @return {SoftwaresSearchBuilder} 
+         * @return {SoftwaresSearchBuilder}
          */
     }, {
         key: 'withManufacturer',
@@ -228,22 +228,22 @@ var SoftwaresSearchBuilder = (function (_SearchWithSummaryBuilder) {
             var _customFilter = this._builderParams.filter;
 
             //if (this.tagsFilter.length > 0){
-            //  _fluentFilter.and(this._parent.EX.in('datapoint.tag',this.tagsFilter));            
+            //  _fluentFilter.and(this._parent.EX.in('datapoint.tag',this.tagsFilter));
             //}
 
             _fluentFilter = _fluentFilter._filterTemplate.filter;
 
-            if (typeof _customFilter._filterTemplate === "object") {
+            if (typeof _customFilter._filterTemplate === 'object') {
                 _customFilter = _customFilter._filterTemplate.filter;
             }
 
-            if (typeof _customFilter !== "undefined" && Object.keys(_customFilter).length > 0 && typeof _fluentFilter !== "undefined" && Object.keys(_fluentFilter).length > 0) {
+            if (typeof _customFilter !== 'undefined' && Object.keys(_customFilter).length > 0 && typeof _fluentFilter !== 'undefined' && Object.keys(_fluentFilter).length > 0) {
                 throw new Error('Incompatible filters. You only can create a filter using fluent mode [withId, withName, withVersion, withType, withHardwareId, withModel, withModelVersion, withManufacturer] methods or custom filter [filter] method');
             }
 
-            if (typeof _customFilter !== "undefined" && Object.keys(_customFilter).length > 0) {
+            if (typeof _customFilter !== 'undefined' && Object.keys(_customFilter).length > 0) {
                 filter.filter = _customFilter;
-            } else if (typeof _fluentFilter !== "undefined" && Object.keys(_fluentFilter).length > 0) {
+            } else if (typeof _fluentFilter !== 'undefined' && Object.keys(_fluentFilter).length > 0) {
                 filter.filter = _fluentFilter;
             }
             return filter;

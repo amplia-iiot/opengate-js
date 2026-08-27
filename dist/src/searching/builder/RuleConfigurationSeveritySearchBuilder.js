@@ -23,7 +23,7 @@ var _StaticSearch = require('../StaticSearch');
 var _StaticSearch2 = _interopRequireDefault(_StaticSearch);
 
 /**
- * Defined a search over ruleConfigurationSeverity catalog
+ * Defines a search over the rule configuration severity catalog.
  * @example ogapi.ruleConfigurationSeveritySearchBuilder()
  */
 
@@ -43,7 +43,7 @@ var RuleConfigurationSeveritySearchBuilder = (function (_SearchBuilder) {
     }
 
     /**
-     * Build a instance of StaticSearch 
+     * Build a instance of StaticSearch
      *
      * @example
      *   ogapi.ruleConfigurationSeveritySearchBuilder().build()

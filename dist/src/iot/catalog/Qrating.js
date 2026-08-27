@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Defines the builder to configure a qurating of datastream of IoT datamodel. With this builder you can configure a qrating
+ * Defines the builder used to configure the quality rating (Qrating) of a datastream in an IoT datamodel.
  */
 Object.defineProperty(exports, '__esModule', {
     value: true
@@ -168,7 +168,7 @@ var Qrating = (function () {
 
         /**
          * Build a Qrating json object
-         * 
+         *
          * @example
          * ogapi.QratingsBuilder().build()
          * @throws {Error} Throw error if there is not version, minRequired, minDesired, ideal, maxDesired, maxAllowed and maxScore

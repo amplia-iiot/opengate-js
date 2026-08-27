@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * This is a base object that allows the user to create a Datapoint.
+ * This is a base object that allows the user to create a Usage object.
  */
 Object.defineProperty(exports, '__esModule', {
     value: true
@@ -23,10 +23,10 @@ var Usage = (function () {
     }
 
     /**
-    * Set the unit attribute
-    * @param {string} unit - optionals field
-    * @return {Usage}
-    */
+     * Set the unit attribute
+     * @param {string} unit - optionals field
+     * @return {Usage}
+     */
 
     _createClass(Usage, [{
         key: 'withUsageUnit',
@@ -90,13 +90,12 @@ var Usage = (function () {
     }, {
         key: 'composeElement',
         value: function composeElement() {
-
             var usage = {
-                "unit": this._usageUnit,
-                "current": this._current,
-                "average": this._average,
-                "maximum": this._maximum,
-                "minimum": this._minimum
+                unit: this._usageUnit,
+                current: this._current,
+                average: this._average,
+                maximum: this._maximum,
+                minimum: this._minimum
             };
             return usage;
         }

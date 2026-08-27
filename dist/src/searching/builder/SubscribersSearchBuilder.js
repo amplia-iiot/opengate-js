@@ -24,7 +24,7 @@ var _utilSearchingFieldsFieldFinder2 = _interopRequireDefault(_utilSearchingFiel
 
 var BASE_URL = '/entities';
 /**
- * Defined a search over Subscribers	
+ * Defines a search over Subscribers.
  * @example ogapi.subscribersSearchBuilder()
  */
 
@@ -46,30 +46,30 @@ var SubscribersSearchBuilder = (function (_PreFilteredSearchBuilder) {
         key: '_buildFilter',
         value: function _buildFilter() {
             var finalFilter = {
-                "and": [{
-                    "or": []
+                and: [{
+                    or: []
                 }]
             };
 
             if (this._provisioned || !this._collected) {
                 finalFilter.and[0].or.push({
-                    "exists": {
-                        "provision.device.communicationModules[].subscriber.identifier": true
+                    exists: {
+                        'provision.device.communicationModules[].subscriber.identifier': true
                     }
                 });
             }
 
             if (this._collected || !this._provisioned) {
                 finalFilter.and[0].or.push({
-                    "exists": {
-                        "device.communicationModules[].subscriber.identifier": true
+                    exists: {
+                        'device.communicationModules[].subscriber.identifier': true
                     }
                 });
             }
 
             if (this._builderParams.filter && Object.keys(this._builderParams.filter).length > 0) {
                 var filter = this._builderParams.filter;
-                if (typeof filter._filterTemplate !== "undefined") {
+                if (typeof filter._filterTemplate !== 'undefined') {
                     //return filter._filterTemplate;
                     finalFilter.and.push(filter._filterTemplate.filter);
                 } else {

@@ -22,7 +22,7 @@ var _utilSearchingFieldsFieldFinder2 = _interopRequireDefault(_utilSearchingFiel
 
 var BASE_URL = '/tasks';
 /**
- * Defined a search over periodic executions´s operations
+ * Defines a search over periodic executions' operations.
  * @example ogapi.tasksSearchBuilder()
  */
 

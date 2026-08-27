@@ -23,7 +23,7 @@ var _StaticSearch = require('../StaticSearch');
 var _StaticSearch2 = _interopRequireDefault(_StaticSearch);
 
 /**
- * Defined a search over operational status catalogs    
+ * Defines a search over operational status catalogs.
  * @example ogapi.operationalStatusSearchBuilder()
  */
 
@@ -43,12 +43,12 @@ var OperationalStatusSearchBuilder = (function (_SearchBuilder) {
     }
 
     /**
-     * Build a instance of StaticSearch 
+     * Build a instance of StaticSearch
      *
      * @example
      *   ogapi.operationalStatusSearchBuilder().filter({and:[]}).build()
      * @throws {SearchBuilderError} Throw error on url build
-     * @return {StaticSearch} 
+     * @return {StaticSearch}
      */
 
     _createClass(OperationalStatusSearchBuilder, [{
@@ -64,7 +64,7 @@ var OperationalStatusSearchBuilder = (function (_SearchBuilder) {
          *  ogapi.operationalStatusSearchBuilder().withId('myId').build()
          * @param {!string} operationalStatusId - operational status id
          * @throws {Error} throw error when hardwareId is not typeof string
-         * @return {OperationalStatusSearchBuilder} 
+         * @return {OperationalStatusSearchBuilder}
          */
     }, {
         key: 'withId',
@@ -86,7 +86,7 @@ var OperationalStatusSearchBuilder = (function (_SearchBuilder) {
          *  ogapi.operationalStatusSearchBuilder().withEntityType('myEntityType').build()
          * @param {!string} entityType - model name
          * @throws {Error} throw error when entityType is not typeof string
-         * @return {OperationalStatusSearchBuilder} 
+         * @return {OperationalStatusSearchBuilder}
          */
     }, {
         key: 'withEntityType',

@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-    value: true
+  value: true
 });
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -23,46 +23,46 @@ var _actionsAlarmCloseBuilder2 = _interopRequireDefault(_actionsAlarmCloseBuilde
  */
 
 var AlarmActions = (function () {
-    /**
-     * Constructor
-     * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
-     */
+  /**
+   * Constructor
+   * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
+   */
 
-    function AlarmActions(ogapi) {
-        _classCallCheck(this, AlarmActions);
+  function AlarmActions(ogapi) {
+    _classCallCheck(this, AlarmActions);
 
-        this._ogapi = ogapi;
+    this._ogapi = ogapi;
+  }
+
+  /**
+   * Create alarm close action builder
+   *
+   * @example
+   *	ogapi.alarms.newCloseBuilder()
+   * @return {AlarmCloseBuilder}
+   */
+
+  _createClass(AlarmActions, [{
+    key: 'newCloseBuilder',
+    value: function newCloseBuilder() {
+      return new _actionsAlarmCloseBuilder2['default'](this._ogapi);
     }
 
     /**
-     * Create alarm close action builder
+     * Create alarm attend action builder
      *
      * @example
-     *	ogapi.alarms.newCloseBuilder()
-     * @return {AlarmCloseBuilder} 
+     *	ogapi.alarms.newAttendBuilder()
+     * @return {AlarmAttendBuilder}
      */
+  }, {
+    key: 'newAttendBuilder',
+    value: function newAttendBuilder() {
+      return new _actionsAlarmAttendBuilder2['default'](this._ogapi);
+    }
+  }]);
 
-    _createClass(AlarmActions, [{
-        key: 'newCloseBuilder',
-        value: function newCloseBuilder() {
-            return new _actionsAlarmCloseBuilder2['default'](this._ogapi);
-        }
-
-        /**
-         * Create alarm attend action builder
-         *
-         * @example
-         *	ogapi.alarms.newAttendBuilder()
-         * @return {AlarmAttendBuilder} 
-         */
-    }, {
-        key: 'newAttendBuilder',
-        value: function newAttendBuilder() {
-            return new _actionsAlarmAttendBuilder2['default'](this._ogapi);
-        }
-    }]);
-
-    return AlarmActions;
+  return AlarmActions;
 })();
 
 exports['default'] = AlarmActions;

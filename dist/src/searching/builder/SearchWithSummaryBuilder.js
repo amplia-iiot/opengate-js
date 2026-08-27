@@ -19,7 +19,8 @@ var _SearchBuilder2 = require('./SearchBuilder');
 var _SearchBuilder3 = _interopRequireDefault(_SearchBuilder2);
 
 /**
- * This is a abstract class. It is a class that extends from base to make all kind of summary search request to OpenGate North API.
+ * This is an abstract class. It extends the base builder to make all kinds of summary search requests to the
+ * OpenGate North API.
  */
 
 var SearchWithSummaryBuilder = (function (_SearchBuilder) {
@@ -36,15 +37,15 @@ var SearchWithSummaryBuilder = (function (_SearchBuilder) {
 
         _get(Object.getPrototypeOf(SearchWithSummaryBuilder.prototype), 'constructor', this).call(this, parent, routes, fieldFinder);
         if (this.constructor === SearchWithSummaryBuilder) {
-            throw new Error("Cannot construct Abstract instances directly");
+            throw new Error('Cannot construct Abstract instances directly');
         }
     }
 
     /**
-     * The response will only have a summary information 
+     * The response will only have a summary information
      * @example
-     *	ogapi.subscriptionsSearchBuilder().summary() 
-     * @return {SearchWithSummaryBuilder} 
+     *	ogapi.subscriptionsSearchBuilder().summary()
+     * @return {SearchWithSummaryBuilder}
      */
 
     _createClass(SearchWithSummaryBuilder, [{

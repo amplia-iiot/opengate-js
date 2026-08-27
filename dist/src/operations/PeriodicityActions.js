@@ -15,7 +15,6 @@ var _q = require('q');
 var _q2 = _interopRequireDefault(_q);
 
 var PeriodicityActions = (function () {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
@@ -35,9 +34,9 @@ var PeriodicityActions = (function () {
     /**
      * This invoke a request to OpenGate North API and the callback is managed by promises
      * This function active periodicity of an operation
-     * @example 
+     * @example
      * ogapi.newPeriodicityActions("xxxxx-xxx-xxxx-xxxxx").activate()
-     * @return {Promise} 
+     * @return {Promise}
      * @property {function (statusCode:number)} then - When request it is OK
      * @property {function (errors:array, statusCode:number)} then - When request it is NOK
      * @property {function (errors:array)} catch - When request it is NOK
@@ -49,15 +48,15 @@ var PeriodicityActions = (function () {
             var config = {
                 active: true
             };
-            return this._periodicityActions("ACTIVE", config);
+            return this._periodicityActions('ACTIVE', config);
         }
 
         /**
          * This invoke a request to OpenGate North API and the callback is managed by promises
          * This function pauses a periodicity
-         * @example 
+         * @example
          * ogapi.periodicityActions("xxxxx-xxx-xxxx-xxxxx").pausePeriodicity()
-         * @return {Promise} 
+         * @return {Promise}
          * @property {function (statusCode:number)} then - When request it is OK
          * @property {function (errors:array, statusCode:number)} then - When request it is NOK
          * @property {function (errors:array)} catch - When request it is NOK
@@ -68,7 +67,7 @@ var PeriodicityActions = (function () {
             var config = {
                 active: false
             };
-            return this._periodicityActions("PAUSE", config);
+            return this._periodicityActions('PAUSE', config);
         }
 
         /**
@@ -84,7 +83,7 @@ var PeriodicityActions = (function () {
     }, {
         key: 'cancel',
         value: function cancel() {
-            return this._periodicityActions("CANCEL");
+            return this._periodicityActions('CANCEL');
         }
     }, {
         key: '_cancel',
@@ -113,20 +112,20 @@ var PeriodicityActions = (function () {
             _this._ogapi.newOperationFinder().findPeriodicityByPeriodicityId(_this._taskId).then(function (response) {
                 var data = response.data;
                 if (!data || Object.keys(data).length == 0) {
-                    defered.reject("Periodicity with id " + _this._taskId + " not exists");
+                    defered.reject('Periodicity with id ' + _this._taskId + ' not exists');
                 } else {
                     var periodicityId = data.id;
-                    _this._resource = _this._resource + "/" + periodicityId;
+                    _this._resource = _this._resource + '/' + periodicityId;
                     switch (action) {
-                        case "PAUSE":
-                        case "ACTIVE":
+                        case 'PAUSE':
+                        case 'ACTIVE':
                             _this._update(config).then(function (response) {
                                 defered.resolve(response);
                             })['catch'](function (error) {
                                 defered.reject(error);
                             });
                             break;
-                        case "CANCEL":
+                        case 'CANCEL':
                             _this._id = periodicityId;
                             _this._cancel().then(function (response) {
                                 defered.resolve(response);
@@ -135,7 +134,7 @@ var PeriodicityActions = (function () {
                             });
                             break;
                         default:
-                            defered.reject({ errors: "Not implemented action: " + action });
+                            defered.reject({ errors: 'Not implemented action: ' + action });
                     }
                 }
             })['catch'](function (error) {
@@ -147,11 +146,11 @@ var PeriodicityActions = (function () {
         /**
          * This invoke a request to OpenGate North API and the callback is managed by promises
          * This function read and update a task
-         * @example 
+         * @example
          * ogapi.periodicityActions("xxxxx-xxx-xxxx-xxxxx")._readAndUpdate({})
-         * @param {object} - config 
+         * @param {object} - config
          * @param {boolean} - forceToActivate
-         * @return {Promise} 
+         * @return {Promise}
          * @property {function (statusCode:number)} then - When request it is OK
          * @property {function (errors:array, statusCode:number)} then - When request it is NOK
          * @property {function (error:string)} catch - When request it is NOK
@@ -165,7 +164,7 @@ var PeriodicityActions = (function () {
             _this._ogapi.newOperationFinder().findPeriodicityByPeriodicityId(_this._taskId).then(function (response) {
                 var data = response.data;
                 if (!data) {
-                    defered.reject("Periodicity with id " + _this._taskId + " not exists");
+                    defered.reject('Periodicity with id ' + _this._taskId + ' not exists');
                 } else {
                     (function () {
                         var active = data.task ? data.task.state === 'ACTIVE' : false;
@@ -198,10 +197,10 @@ var PeriodicityActions = (function () {
         /**
          * This invoke a request to OpenGate North API and the callback is managed by promises
          * This function update an operation
-         * @example 
+         * @example
          * ogapi.periodicityActions("xxxxx-xxx-xxxx-xxxxx")._update({})
          * ogapi.periodicityActions("xxxxx-xxx-xxxx-xxxxx")._update({}, _defered, _promise)
-         * @return {Promise} 
+         * @return {Promise}
          * @property {function (statusCode:number)} then - When request it is OK
          * @property {function (errors:array, statusCode:number)} then - When request it is NOK
          * @property {function (error:string)} catch - When request it is NOK
@@ -242,7 +241,7 @@ var PeriodicityActions = (function () {
                 error.data = {};
             }
             if (!error.data.errors) {
-                error.data.errors = [typeof error === "string" ? { message: error } : error];
+                error.data.errors = [typeof error === 'string' ? { message: error } : error];
             }
             return error;
         }

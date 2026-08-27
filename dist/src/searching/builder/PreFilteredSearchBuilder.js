@@ -19,7 +19,8 @@ var _FlattenedSearchBuilder2 = require('./FlattenedSearchBuilder');
 var _FlattenedSearchBuilder3 = _interopRequireDefault(_FlattenedSearchBuilder2);
 
 /**
- * This is a abstract class. It is a class that extends from base to make all kind of summary search request to OpenGate North API.
+ * This is an abstract class. It extends the base builder to make all kinds of summary search requests to the
+ * OpenGate North API.
  */
 
 var PreFilteredSearchBuilder = (function (_FlattenedSearchBuilder) {
@@ -36,15 +37,15 @@ var PreFilteredSearchBuilder = (function (_FlattenedSearchBuilder) {
 
         _get(Object.getPrototypeOf(PreFilteredSearchBuilder.prototype), 'constructor', this).call(this, parent, routes, fieldFinder);
         if (this.constructor === PreFilteredSearchBuilder) {
-            throw new Error("Cannot construct Abstract instances directly");
+            throw new Error('Cannot construct Abstract instances directly');
         }
     }
 
     /**
      * This option forces search api to add a filter of provisioned content
      * @example
-     *	ogapi.subscribersSearchBuilder().provisioned() 
-     * @return {PreFilteredSearchBuilder} 
+     *	ogapi.subscribersSearchBuilder().provisioned()
+     * @return {PreFilteredSearchBuilder}
      */
 
     _createClass(PreFilteredSearchBuilder, [{
@@ -58,8 +59,8 @@ var PreFilteredSearchBuilder = (function (_FlattenedSearchBuilder) {
         /**
          * This option forces search api to add a filter of collected content
          * @example
-         *	ogapi.subscribersSearchBuilder().collected() 
-         * @return {PreFilteredSearchBuilder} 
+         *	ogapi.subscribersSearchBuilder().collected()
+         * @return {PreFilteredSearchBuilder}
          */
     }, {
         key: 'collected',
@@ -70,7 +71,7 @@ var PreFilteredSearchBuilder = (function (_FlattenedSearchBuilder) {
         }
 
         /**
-         * The search request will have this filter 
+         * The search request will have this filter
          * @example
          *  ogapi.devicesSearchBuilder().select(
          *      ogapi.newSelectBuilder().add(SE.element("provision.device.identifier", ["value"], "id"), SE.add("device.temperature.value", ["value"]))
@@ -82,7 +83,7 @@ var PreFilteredSearchBuilder = (function (_FlattenedSearchBuilder) {
          *      ]
          *  }) //Custom select
          * @param {!(SelectBuilder|object)} select
-         * @return {PreFilteredSearchBuilder} 
+         * @return {PreFilteredSearchBuilder}
          */
     }, {
         key: 'select',
@@ -94,8 +95,8 @@ var PreFilteredSearchBuilder = (function (_FlattenedSearchBuilder) {
         /**
          * The response will return a response without sorted
          * @example
-         *	ogapi.assetsSearchBuilder().disableDefaultSorted() 
-         * @return {PreFilteredSearchBuilder} 
+         *	ogapi.assetsSearchBuilder().disableDefaultSorted()
+         * @return {PreFilteredSearchBuilder}
          */
     }, {
         key: 'disableDefaultSorted',
@@ -107,8 +108,8 @@ var PreFilteredSearchBuilder = (function (_FlattenedSearchBuilder) {
         /**
          * The response will return a response by applying the filter with likes case-no-sensitive
          * @example
-         *	ogapi.entitiesSearchBuilder().disableCaseSensitive() 
-         * @return {EntitiesSearchBuilder} 
+         *	ogapi.entitiesSearchBuilder().disableCaseSensitive()
+         * @return {EntitiesSearchBuilder}
          */
     }, {
         key: 'disableCaseSensitive',
@@ -120,8 +121,8 @@ var PreFilteredSearchBuilder = (function (_FlattenedSearchBuilder) {
         /**
          * The response will return a response by applying the filter with likes case-no-sensitive
          * @example
-         *	ogapi.entitiesSearchBuilder().removeCaseSensitive() 
-         * @return {EntitiesSearchBuilder} 
+         *	ogapi.entitiesSearchBuilder().removeCaseSensitive()
+         * @return {EntitiesSearchBuilder}
          */
     }, {
         key: 'removeCaseSensitive',

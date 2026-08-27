@@ -24,13 +24,18 @@ var _lodash2 = _interopRequireDefault(_lodash);
 
 var _uuid = require('uuid');
 
+var _utilParameterError = require('../util/parameterError');
+
+var _utilParameterError2 = _interopRequireDefault(_utilParameterError);
+
 var _length_name = 100;
 var _length_surname = 100;
 var _length_email = 100;
 var _length_twoFaType = 100;
 var _length_password = 50;
 /**
- *   This class allow make get request to user resource into Opengate North API.
+ * This class represents a user in the OpenGate North API and provides methods to manage authentication,
+ * credentials, and account attributes.
  */
 
 var User = (function (_BaseProvision) {
@@ -38,13 +43,13 @@ var User = (function (_BaseProvision) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function User(ogapi) {
         _classCallCheck(this, User);
 
-        _get(Object.getPrototypeOf(User.prototype), 'constructor', this).call(this, ogapi, "/users", undefined, ["email", "workgroup", "domain", "profile", "countryCode", "langCode"]);
+        _get(Object.getPrototypeOf(User.prototype), 'constructor', this).call(this, ogapi, '/users', undefined, ['email', 'workgroup', 'domain', 'profile', 'countryCode', 'langCode']);
     }
 
     /**
@@ -109,7 +114,7 @@ var User = (function (_BaseProvision) {
         key: 'withApiKey',
         value: function withApiKey(apiKey) {
             if (!this._validateUUID(apiKey)) {
-                throw new Error({ message: "OGAPI_USER_UPDATE_APIKEY_PARAMETER_INVALID", parameter: 'apiKey' });
+                throw (0, _utilParameterError2['default'])('OGAPI_USER_UPDATE_APIKEY_PARAMETER_INVALID', { parameter: 'apiKey' });
             }
             this._apiKey = apiKey;
             return this;
@@ -223,7 +228,7 @@ var User = (function (_BaseProvision) {
          * Set the forcePasswordChange: if true Forces you to reset your password on your next login attempt.
          * @param {boolean} forcePasswordChange
          * @return {User}
-         * 
+         *
          */
     }, {
         key: 'withForcePasswordChange',
@@ -235,7 +240,7 @@ var User = (function (_BaseProvision) {
 
         /**
          * Enable or disable login with password
-         * @param {boolean} loginWithPassword 
+         * @param {boolean} loginWithPassword
          * @returns {User}
          */
     }, {
@@ -255,7 +260,7 @@ var User = (function (_BaseProvision) {
         key: '_buildURL',
         value: function _buildURL() {
             if (this._email === undefined) throw new Error('OGAPI_EMAIL_MUST_BE_DEFINED');
-            var url = this._resource + "/" + this._email;
+            var url = this._resource + '/' + this._email;
 
             return url;
         }
@@ -268,7 +273,6 @@ var User = (function (_BaseProvision) {
     }, {
         key: '_composeElement',
         value: function _composeElement() {
-
             var data = {
                 user: {
                     name: this._name || undefined,
@@ -282,7 +286,7 @@ var User = (function (_BaseProvision) {
                     countryCode: this._countryCode || undefined,
                     langCode: this._langCode || undefined,
                     timezone: this._timezone || undefined,
-                    "2FaType": this._twoFaType || undefined,
+                    '2FaType': this._twoFaType || undefined,
                     forcePasswordChange: typeof this._forcePasswordChange === 'boolean' ? this._forcePasswordChange : undefined,
                     loginWithPassword: typeof this._loginWithPassword === 'boolean' ? this._loginWithPassword : undefined
                 }
@@ -315,7 +319,7 @@ var User = (function (_BaseProvision) {
                     timezone: this._timezone || undefined,
                     apiKey: this._apiKey || undefined,
                     password: this._password || undefined,
-                    "2FaType": this._twoFaType || undefined,
+                    '2FaType': this._twoFaType || undefined,
                     forcePasswordChange: typeof this._forcePasswordChange === 'boolean' ? this._forcePasswordChange : undefined,
                     loginWithPassword: typeof this._loginWithPassword === 'boolean' ? this._loginWithPassword : undefined
                 }
@@ -378,7 +382,7 @@ var User = (function (_BaseProvision) {
             }
 
             if (!this._validateUUID(apiKey)) {
-                throw new Error({ message: "OGAPI_USER_UPDATE_APIKEY_PARAMETER_INVALID", parameter: 'apiKey' });
+                throw (0, _utilParameterError2['default'])('OGAPI_USER_UPDATE_APIKEY_PARAMETER_INVALID', { parameter: 'apiKey' });
             }
 
             var data = {
@@ -396,7 +400,7 @@ var User = (function (_BaseProvision) {
 
         /**
          * This invoke a request to OpenGate North API and the callback is managed by promises
-         * This function request for new password when the user forgets it. 
+         * This function request for new password when the user forgets it.
          * Sends a password recovery email
          * @return {Promise}
          * @property {function (result:object, statusCode:number)} then - When request it is OK
@@ -475,7 +479,7 @@ var User = (function (_BaseProvision) {
             var data = {
                 email: this._email,
                 password: this._password,
-                "2FaCode": this._twoFaCode || undefined
+                '2FaCode': this._twoFaCode || undefined
             };
 
             var url = this._resource + '/login';

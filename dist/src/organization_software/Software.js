@@ -23,7 +23,7 @@ var _utilFormatsCheck_types = require('../util/formats/check_types');
 var _utilFormatsCheck_types2 = _interopRequireDefault(_utilFormatsCheck_types);
 
 /**
- * This is a base object that contains all you can do about Softwares.
+ * This is a base object that contains everything you can do with Softwares.
  */
 var PRE_RESOURCE = '/organizations';
 exports.PRE_RESOURCE = PRE_RESOURCE;
@@ -38,7 +38,7 @@ var Softwares = (function (_BaseProvision) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function Softwares(ogapi, organization) {
@@ -94,7 +94,7 @@ var Softwares = (function (_BaseProvision) {
 
         /**
          * Set the type attribute
-         * @param {string} type 
+         * @param {string} type
          * @return {Softwares}
          */
     }, {
@@ -106,10 +106,10 @@ var Softwares = (function (_BaseProvision) {
         }
 
         /**
-        * Set the model attribute
-        * @param {Array} models 
-        * @return {Softwares}
-        */
+         * Set the model attribute
+         * @param {Array} models
+         * @return {Softwares}
+         */
     }, {
         key: 'withModels',
         value: function withModels(models) {
@@ -139,7 +139,7 @@ var Softwares = (function (_BaseProvision) {
     }, {
         key: '_buildURL',
         value: function _buildURL() {
-            return this._resource + (this._identifier ? "/" + this._identifier : "");
+            return this._resource + (this._identifier ? '/' + this._identifier : '');
         }
     }, {
         key: 'deleteInCascade',

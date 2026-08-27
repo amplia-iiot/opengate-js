@@ -22,7 +22,7 @@ var _utilSearchingFieldsFieldFinder2 = _interopRequireDefault(_utilSearchingFiel
 
 var BASE_URL = '/users';
 /**
- * Defined a search over Users	
+ * Defines a search over Users.
  * @example ogapi.usersSearchBuilder()
  */
 

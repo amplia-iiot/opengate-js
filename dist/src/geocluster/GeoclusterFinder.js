@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-    value: true
+  value: true
 });
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -19,87 +19,87 @@ var _ProvisionGenericFinder2 = require('../ProvisionGenericFinder');
 var _ProvisionGenericFinder3 = _interopRequireDefault(_ProvisionGenericFinder2);
 
 /**
- *   This class allow make get request to user resource into Opengate North API.
+ * This class allows making GET requests to the geocluster resource in the OpenGate North API.
  */
 
 var GeoclusterFinder = (function (_ProvisionGenericFinder) {
-    _inherits(GeoclusterFinder, _ProvisionGenericFinder);
+  _inherits(GeoclusterFinder, _ProvisionGenericFinder);
 
-    /**
-     * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
-     */
+  /**
+   * Constructor
+   * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
+   */
 
-    function GeoclusterFinder(ogapi) {
-        _classCallCheck(this, GeoclusterFinder);
+  function GeoclusterFinder(ogapi) {
+    _classCallCheck(this, GeoclusterFinder);
 
-        _get(Object.getPrototypeOf(GeoclusterFinder.prototype), 'constructor', this).call(this, ogapi, 'geocluster', 'geocluster', 'Geocluster not found');
+    _get(Object.getPrototypeOf(GeoclusterFinder.prototype), 'constructor', this).call(this, ogapi, 'geocluster', 'geocluster', 'Geocluster not found');
+  }
+
+  /**
+   * Find a specify geocluster by an identifier. This execute a GET http method
+   * @test
+   *   ogapi.newGeoclusterFinder().findById('entities.default').then().catch();
+   * @param {string} id - Identifier of the geocluster.
+   * @return {Promise}
+   */
+
+  _createClass(GeoclusterFinder, [{
+    key: 'findById',
+    value: function findById(id) {
+      this._id = id;
+      this._setUrlParameters();
+      return this._execute();
     }
 
     /**
-     * Find a specify geocluster by an identifier. This execute a GET http method
+     * Find all available geocluster. This execute a GET http method
      * @test
-     *   ogapi.newGeoclusterFinder().findById('entities.default').then().catch();
-     * @param {string} id - Identifier of the geocluster.
-     * @return {Promise} 
+     *   ogapi.newGeoclusterFinder().findAll().then().catch();
+     * @return {Promise}
      */
+  }, {
+    key: 'findAll',
+    value: function findAll() {
+      this._id = undefined;
+      this._setUrlParameters();
+      return this._execute();
+    }
 
-    _createClass(GeoclusterFinder, [{
-        key: 'findById',
-        value: function findById(id) {
-            this._id = id;
-            this._setUrlParameters();
-            return this._execute();
-        }
+    /**
+     * Find features inside the coordinates. This execute a GET http method
+     * @test
+     *   ogapi.newGeoclusterFinder().findFeatures('entities.default',{zoom:3,topRight:[1,2],bottomLeft:[2,3]}).then().catch();
+     * @param {string} id - Identifier of the geocluster.
+     * @param {Object} coordinates - square defined by the coordinates and the zoom used to find the inside features .
+     * @return {Promise}
+     */
+  }, {
+    key: 'findFeatures',
+    value: function findFeatures(id, _ref) {
+      var zoom = _ref.zoom;
+      var topRight = _ref.topRight;
+      var bottomLeft = _ref.bottomLeft;
 
-        /**
-         * Find all available geocluster. This execute a GET http method
-         * @test
-         *   ogapi.newGeoclusterFinder().findAll().then().catch();
-         * @return {Promise} 
-         */
-    }, {
-        key: 'findAll',
-        value: function findAll() {
-            this._id = undefined;
-            this._setUrlParameters();
-            return this._execute();
-        }
+      this._id = id;
+      this._setUrlParameters({ zoom: zoom, topRight: topRight, bottomLeft: bottomLeft });
+      return this._execute();
+    }
 
-        /**
-        * Find features inside the coordinates. This execute a GET http method
-        * @test
-        *   ogapi.newGeoclusterFinder().findFeatures('entities.default',{zoom:3,topRight:[1,2],bottomLeft:[2,3]}).then().catch();
-        * @param {string} id - Identifier of the geocluster.
-        * @param {Object} coordinates - square defined by the coordinates and the zoom used to find the inside features .
-        * @return {Promise} 
-        */
-    }, {
-        key: 'findFeatures',
-        value: function findFeatures(id, _ref) {
-            var zoom = _ref.zoom;
-            var topRight = _ref.topRight;
-            var bottomLeft = _ref.bottomLeft;
+    /**
+     * @return {String} This returns a string with the URL of the request.
+     * @private
+     */
+  }, {
+    key: '_composeUrl',
+    value: function _composeUrl() {
+      if (!this._id) return this._baseUrl;
+      if (!this._getUrlParameters()) return this._baseUrl + '/' + this._id;
+      return this._baseUrl + '/' + this._id + '/view';
+    }
+  }]);
 
-            this._id = id;
-            this._setUrlParameters({ zoom: zoom, topRight: topRight, bottomLeft: bottomLeft });
-            return this._execute();
-        }
-
-        /**
-        * @return {String} This returns a string with the URL of the request.
-        * @private
-        */
-    }, {
-        key: '_composeUrl',
-        value: function _composeUrl() {
-            if (!this._id) return this._baseUrl;
-            if (!this._getUrlParameters()) return this._baseUrl + "/" + this._id;
-            return this._baseUrl + "/" + this._id + "/view";
-        }
-    }]);
-
-    return GeoclusterFinder;
+  return GeoclusterFinder;
 })(_ProvisionGenericFinder3['default']);
 
 exports['default'] = GeoclusterFinder;

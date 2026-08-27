@@ -27,7 +27,7 @@ var _httpStatusCodes = require('http-status-codes');
 var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
 
 /**
- *   This class allow make get request to RuleConfigurationsHelper resource into Opengate North API.
+ * This class allows you to make GET requests to the RuleConfigurationsHelper resource in the OpenGate North API.
  */
 
 var RuleConfigurationsHelper = (function (_GenericFinder) {
@@ -43,10 +43,10 @@ var RuleConfigurationsHelper = (function (_GenericFinder) {
 
         _get(Object.getPrototypeOf(RuleConfigurationsHelper.prototype), 'constructor', this).call(this, ogapi, 'rules');
         this._jsHeaders = {
-            'accept': 'application/javascript'
+            accept: 'application/javascript'
         };
         this._mdHeaders = {
-            'accept': 'text/markdown'
+            accept: 'text/markdown'
         };
     }
 
@@ -54,7 +54,7 @@ var RuleConfigurationsHelper = (function (_GenericFinder) {
      * Performs a get that returns documentation private of javascript functions from rules service
      * @test
      *   ogapi.newRuleConfigurationsHelper().getDocPrivateJavascriptFunctions();
-     * @return {Promise} 
+     * @return {Promise}
      */
 
     _createClass(RuleConfigurationsHelper, [{
@@ -69,7 +69,7 @@ var RuleConfigurationsHelper = (function (_GenericFinder) {
          * Performs a get that returns documentation of javascript functions from rules service
          * @test
          *   ogapi.newRuleConfigurationsHelper().getDocJavascriptFunctions();
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'getDocJavascriptFunctions',

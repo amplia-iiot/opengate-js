@@ -29,7 +29,7 @@ var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
 var _MIME_TYPES_ENUM = require('./MIME_TYPES_ENUM');
 
 /**
- *   This class allow make get request to certificate resource into Opengate North API.
+ * This class allows making GET requests to the certificate resource in the OpenGate North API.
  */
 
 var CertificateFinder = (function (_ProvisionGenericFinder) {
@@ -37,7 +37,7 @@ var CertificateFinder = (function (_ProvisionGenericFinder) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function CertificateFinder(ogapi) {
@@ -51,7 +51,7 @@ var CertificateFinder = (function (_ProvisionGenericFinder) {
      * @test
      *   ogapi.newCertificateFinder().findById('xxx-xx-xxx-xxx').then().catch();
      * @param {string} id - Id of the certificate.
-     * @return {Promise} 
+     * @return {Promise}
      */
 
     _createClass(CertificateFinder, [{
@@ -80,7 +80,7 @@ var CertificateFinder = (function (_ProvisionGenericFinder) {
          *   ogapi.newCertificateFinder().findByIdAndType('xxx-xx-xxx-xxx', 'mimetype').then().catch();
          * @param {string} id - Id of the certificate.
          * @param {string} mimetype - Certificate format mimetype.
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findByIdAndFormat',
@@ -89,7 +89,7 @@ var CertificateFinder = (function (_ProvisionGenericFinder) {
             var found = _MIME_TYPES_ENUM.MIME_TYPES_ENUM.find(function (mime_type) {
                 return mime_type == this;
             }, mimetype);
-            if (typeof found === "undefined") {
+            if (typeof found === 'undefined') {
                 not_found = mimetype;
             }
 

@@ -176,11 +176,11 @@ var BoxBuilder = (function () {
                             percentage: 55
                         });
                         _this2._setUrlParameters({
-                            'flattened': true
+                            flattened: true
                         });
                         return _this._ogapi.Napi.put(_this._urlWithKey(), putObj, _this2._timeout, null, _this2._getUrlParameters()).then(function (res) {
                             if (res.statusCode === _httpStatusCodes2['default'].OK) {
-                                if (typeof _this._onCreated === "function") {
+                                if (typeof _this._onCreated === 'function') {
                                     _this._onCreated(res.header.location);
                                 }
                                 defer.notify({
@@ -202,7 +202,7 @@ var BoxBuilder = (function () {
                         });
                     } else {
                         if (res.statusCode === _httpStatusCodes2['default'].CREATED) {
-                            if (typeof _this._onCreated === "function") {
+                            if (typeof _this._onCreated === 'function') {
                                 _this._onCreated(res.header.location);
                             }
                             defer.notify({
@@ -223,7 +223,6 @@ var BoxBuilder = (function () {
                         }
                     }
                 })['catch'](function (errores) {
-
                     if (errores.statusCode === _httpStatusCodes2['default'].BAD_REQUEST) {
                         var ms = _jsonpath2['default'].query(errores, '$..message')[0];
 
@@ -248,7 +247,7 @@ var BoxBuilder = (function () {
             })['catch'](function (err) {
                 err.data.errors.forEach(function (err) {
                     var error = err.description;
-                    if (err.label) error += ":" + err.label;
+                    if (err.label) error += ':' + err.label;
                     defer.notify({
                         message: 'Error: ' + error,
                         type: 'error',
@@ -300,12 +299,12 @@ var BoxBuilder = (function () {
                     percentage: 45
                 });
                 _this3._setUrlParameters({
-                    'flattened': true
+                    flattened: true
                 });
 
                 return _this._ogapi.Napi.put(_this._url, putObj, _this3._timeout, null, _this3._getUrlParameters()).then(function (res) {
                     if (res.statusCode === _httpStatusCodes2['default'].OK) {
-                        if (typeof _this._onCreated === "function") {
+                        if (typeof _this._onCreated === 'function') {
                             _this._onCreated(res.header.location);
                         }
                         defer.notify({
@@ -364,12 +363,12 @@ var BoxBuilder = (function () {
                     percentage: 45
                 });
                 _this4._setUrlParameters({
-                    'flattened': true
+                    flattened: true
                 });
 
                 return _this._ogapi.Napi.patch(_this._url, putObj, _this4._timeout, null, _this4._getUrlParameters()).then(function (res) {
                     if (res.statusCode === _httpStatusCodes2['default'].OK) {
-                        if (typeof _this._onCreated === "function") {
+                        if (typeof _this._onCreated === 'function') {
                             _this._onCreated(res.header.location);
                         }
                         defer.notify({
@@ -425,7 +424,7 @@ var WrapperBuilder = (function () {
     }
 
     /**
-     * Device builder. This builder give you the necessary tools to create a device using our OpenGate REST.
+     * Device builder. This builder gives you the necessary tools to create a device using the OpenGate REST API.
      */
 
     _createClass(WrapperBuilder, [{
@@ -470,7 +469,7 @@ var WrapperBuilder = (function () {
             return defer.promise;
 
             function create(defered, defer, percentage) {
-                _this._obj['provision.administration.serviceGroup'] = { "_value": { "_current": { "value": "emptyServiceGroup" } } };
+                _this._obj['provision.administration.serviceGroup'] = { _value: { _current: { value: 'emptyServiceGroup' } } };
                 _this._ogapi.Napi.post(_this._url, _this._obj, null, null, {
                     flattened: true
                 }).then(function (res) {
@@ -514,7 +513,7 @@ var WrapperBuilder = (function () {
                     });
                 });
             }
-            return Q.fcall(function () {
+            return _q2['default'].fcall(function () {
                 return;
             });
         }
@@ -533,7 +532,7 @@ var DeviceBuilder = (function (_ComplexBuilder) {
      * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new device
      * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types
      * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool
-     * @param {number} ms - timeout in milliseconds    
+     * @param {number} ms - timeout in milliseconds  
      */
 
     function DeviceBuilder(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout) {
@@ -544,8 +543,8 @@ var DeviceBuilder = (function (_ComplexBuilder) {
     }
 
     /**
-     * This invoke a request to OpenGate North API and the callback is managed by promises
-     * This function create a entity of provision
+     * This invoke a request to OpenGate North API and the callback is managed by promises This function creates a
+     * provisioned entity
      * @return {Promise}
      * @property {function (result:object, statusCode:number)} then - When request it is OK
      * @property {function (error:string)} catch - When request it is NOK
@@ -561,9 +560,9 @@ var DeviceBuilder = (function (_ComplexBuilder) {
         }
 
         /**
-         * This invoke a request to OpenGate North API and the callback is managed by promises
-         * This function updates a entity of provision and check if any subscriber/subscription exits or no. 
-         * If a subscriber/subscription not exists then this entities will be created and after that will be added to entity box.
+         * This invoke a request to OpenGate North API and the callback is managed by promises This function updates a
+         * provisioned entity and checks whether any subscriber/subscription already exists. If a subscriber/subscription
+         * does not exist, it will be created and then added to the entity box.
          * @return {Promise}
          * @property {function (result:object, statusCode:number)} then - When request it is OK
          * @property {function (error:string)} catch - When request it is NOK

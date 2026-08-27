@@ -18,7 +18,8 @@ var LIMIT_START_DEF_VALUE = 1;
 var LIMIT_SIZE_DEF_VALUE = 1000;
 
 /**
- * This is a abstract class. It is a base to make all kind of search request to OpenGate North API.
+ * This is an abstract class. It is the base class for making all kinds of search requests to the OpenGate North
+ * API.
  */
 
 var SearchBuilder = (function () {
@@ -34,7 +35,7 @@ var SearchBuilder = (function () {
         _classCallCheck(this, SearchBuilder);
 
         if (this.constructor === SearchBuilder) {
-            throw new Error("Cannot construct Abstract instances directly");
+            throw new Error('Cannot construct Abstract instances directly');
         }
         this._url = '';
         this._fieldFinder = fieldFinder;
@@ -101,22 +102,22 @@ var SearchBuilder = (function () {
         /**
          * The request will have a specific time out if it will be exceeded then the promise throw an exception
          * @example
-         *  ogapi.subscriptionsSearchBuilder().withTimeout(2000) 
+         *  ogapi.subscriptionsSearchBuilder().withTimeout(2000)
          * @param {number} ms - timeout in milliseconds
-         * @return {SearchBuilder} 
+         * @return {SearchBuilder}
          */
     }, {
         key: 'withTimeout',
         value: function withTimeout() {
             var ms = arguments.length <= 0 || arguments[0] === undefined ? 2000 : arguments[0];
 
-            if (typeof ms !== "number") throw new Error('Parameter ms must be a number');
+            if (typeof ms !== 'number') throw new Error('Parameter ms must be a number');
             this._builderParams.timeout = ms;
             return this;
         }
 
         /**
-         * The search request will have this filter 
+         * The search request will have this filter
          * @example
          *  ogapi.subscriptionsSearchBuilder().filter(
          *      ogapi.newFilterBuilder().and(Ex.like('prov.customid', 'SN32'), Ex.neq('entityId', '1124'))
@@ -124,8 +125,8 @@ var SearchBuilder = (function () {
          *  ogapi.subscriptionsSearchBuilder().filter(
          *       {"and": [{"like": {"entityId": "0000000000000001"}}]}
          *  ) // Custom filter
-         * @param {!(FilterBuilder|object)} filter 
-         * @return {SearchBuilder} 
+         * @param {!(FilterBuilder|object)} filter
+         * @return {SearchBuilder}
          */
     }, {
         key: 'filter',
@@ -139,7 +140,7 @@ var SearchBuilder = (function () {
          * @example
          *  ogapi.subscriptionsSearchBuilder().addSortAscendingBy('prov.customid') // Order by prov.customid Ascending  
          * @param {!string} filterField - This field must be allowed into the specific resource
-         * @return {SearchBuilder} 
+         * @return {SearchBuilder}
          */
     }, {
         key: 'addSortAscendingBy',
@@ -149,11 +150,11 @@ var SearchBuilder = (function () {
         }
 
         /**
-         * Add descending param into the sort search object 
+         * Add descending param into the sort search object
          * @example
          *  ogapi.devicesSearchBuilder().addSortDescendingBy('prov.customid') // Order by prov.customid Descending
          * @param {!string} filterField - This field must be allowed into the specific resource
-         * @return {SearchBuilder} 
+         * @return {SearchBuilder}
          */
     }, {
         key: 'addSortDescendingBy',
@@ -163,13 +164,13 @@ var SearchBuilder = (function () {
         }
 
         /**
-         * Add ascending/descending param into the sort search object 
+         * Add ascending/descending param into the sort search object
          * @example
          *  ogapi.subscriptionsSearchBuilder().addSortBy('prov.customid','ASCENDING') // Order by prov.customid Ascending
-         *  ogapi.devicesSearchBuilder().addSortBy('prov.customid','DESCENDING') // Order by prov.customid Descending 
+         *  ogapi.devicesSearchBuilder().addSortBy('prov.customid','DESCENDING') // Order by prov.customid Descending
          * @param {!string} filterField - This field must be allowed into the specific resource
          * @param {!string} typeSort
-         * @return {SearchBuilder} 
+         * @return {SearchBuilder}
          */
     }, {
         key: 'addSortBy',
@@ -200,12 +201,12 @@ var SearchBuilder = (function () {
         }
 
         /**
-         * Remove sort param from the search object 
+         * Remove sort param from the search object
          * @example
          *  ogapi.subscriptionsSearchBuilder().removeSortBy('prov.customid') // Remove order by prov.customid
          *  ogapi.subscriptionsSearchBuilder().removeSortBy() // Remove all order by parameters
          * @param {string} filterField - This field must be allowed into the specific resource
-         * @return {SearchBuilder} 
+         * @return {SearchBuilder}
          */
     }, {
         key: 'removeSortBy',
@@ -234,15 +235,15 @@ var SearchBuilder = (function () {
          *  ogapi.subscribersSearchBuilder().limit(25,50) //With offset value 50
          * @param {!number} size - Defined the number of elements on response
          * @param {number} [start=0] - Defined the offset on response
-         * @return {SearchBuilder} 
+         * @return {SearchBuilder}
          */
     }, {
         key: 'limit',
         value: function limit(size) {
             var start = arguments.length <= 1 || arguments[1] === undefined ? LIMIT_START_DEF_VALUE : arguments[1];
 
-            if (typeof size !== "number") throw new Error('size parameter must be a number');
-            if (typeof start !== "number" || start < 1) start = LIMIT_START_DEF_VALUE;
+            if (typeof size !== 'number') throw new Error('size parameter must be a number');
+            if (typeof start !== 'number' || start < 1) start = LIMIT_START_DEF_VALUE;
             this._builderParams.limit = {
                 size: size,
                 start: start
@@ -251,18 +252,17 @@ var SearchBuilder = (function () {
         }
 
         /**
-         * Build a instance of Search 
+         * Build a instance of Search
          *
          * @example
          *  ogapi.devicesSearchBuilder().onProvisioned().build()
          * @throws {SearchBuilderError} Throw error on url build
-         * @return {Search} 
+         * @return {Search}
          */
     }, {
         key: 'build',
         value: function build() {
             try {
-
                 return new _Search2['default'](this._parent, this._buildUrl(), this._buildFilter(), this._buildLimit(), this._buildSort(), this._buildGroup(), this._buildSelect(), this._builderParams.timeout, this._urlParams);
             } catch (error) {
                 console.error('!errrrror!!!!!!', error);
@@ -272,7 +272,7 @@ var SearchBuilder = (function () {
         key: '_buildFilter',
         value: function _buildFilter() {
             var filter = this._builderParams.filter;
-            if (typeof filter._filterTemplate !== "undefined") return filter._filterTemplate;
+            if (typeof filter._filterTemplate !== 'undefined') return filter._filterTemplate;
             return {
                 filter: filter
             };
@@ -281,7 +281,7 @@ var SearchBuilder = (function () {
         key: '_buildSelect',
         value: function _buildSelect() {
             var select = this._builderParams.select;
-            if (typeof select !== "undefined" && typeof select._selectTemplate !== "undefined") return select._selectTemplate;
+            if (typeof select !== 'undefined' && typeof select._selectTemplate !== 'undefined') return select._selectTemplate;
             return {
                 select: select
             };
@@ -290,7 +290,7 @@ var SearchBuilder = (function () {
         key: '_buildGroup',
         value: function _buildGroup() {
             var group = this._builderParams.group;
-            if (typeof group !== "undefined" && typeof group._groupTemplate !== "undefined") return group._groupTemplate;
+            if (typeof group !== 'undefined' && typeof group._groupTemplate !== 'undefined') return group._groupTemplate;
             return {
                 group: group
             };
@@ -298,7 +298,7 @@ var SearchBuilder = (function () {
     }, {
         key: '_buildLimit',
         value: function _buildLimit() {
-            if (typeof this._builderParams.limit === "undefined") return {
+            if (typeof this._builderParams.limit === 'undefined') return {
                 limit: {
                     size: LIMIT_SIZE_DEF_VALUE,
                     start: LIMIT_START_DEF_VALUE
@@ -329,7 +329,7 @@ var SearchBuilder = (function () {
     }, {
         key: '_buildUrl',
         value: function _buildUrl() {
-            if (typeof this._url !== "string" || this._url.trim().length === 0) throw new Error('Error on extends SearchBuilder, this._url is not defined.');
+            if (typeof this._url !== 'string' || this._url.trim().length === 0) throw new Error('Error on extends SearchBuilder, this._url is not defined.');
             return this._url;
         }
     }, {
@@ -340,7 +340,7 @@ var SearchBuilder = (function () {
             var atLeastOneTrue = false;
             for (var route in this._routes) {
                 if (atLeastOneTrue && this._builderParams[route] && !isMultipleRouteEnabled) {
-                    throw new Error("Must select only one of this:" + JSON.stringify(this._routesName));
+                    throw new Error('Must select only one of this:' + JSON.stringify(this._routesName));
                 }
                 atLeastOneTrue = atLeastOneTrue || this._builderParams[route];
             }

@@ -22,7 +22,7 @@ var _utilSearchingFieldsFieldFinder2 = _interopRequireDefault(_utilSearchingFiel
 
 var BASE_URL = '/workgroups';
 /**
- * Defined a search over Workgroups	
+ * Defines a search over Workgroups.
  * @example ogapi.workgroupsSearchBuilder()
  */
 

@@ -24,7 +24,7 @@ var _utilSearchingFieldsFieldFinder2 = _interopRequireDefault(_utilSearchingFiel
 
 var BASE_URL = '/entities';
 /**
- * Defined a search over Devices	
+ * Defines a search over Devices.
  * @example ogapi.devicesSearchBuilder()
  */
 
@@ -43,10 +43,10 @@ var DevicesSearchBuilder = (function (_PreFilteredSearchBuilder) {
     }
 
     /**
-     * The response will only have a summary information 
+     * The response will only have a summary information
      * @example
-     *	ogapi.devicesSearchBuilder().summary() 
-     * @return {DevicesSearchBuilder} 
+     *	ogapi.devicesSearchBuilder().summary()
+     * @return {DevicesSearchBuilder}
      */
 
     _createClass(DevicesSearchBuilder, [{
@@ -60,16 +60,16 @@ var DevicesSearchBuilder = (function (_PreFilteredSearchBuilder) {
         key: '_buildFilter',
         value: function _buildFilter() {
             var finalFilter = {
-                "and": [{
-                    "exists": {
-                        "provision.device.identifier": true
+                and: [{
+                    exists: {
+                        'provision.device.identifier': true
                     }
                 }]
             };
 
             if (this._builderParams.filter && Object.keys(this._builderParams.filter).length > 0) {
                 var filter = this._builderParams.filter;
-                if (typeof filter._filterTemplate !== "undefined") {
+                if (typeof filter._filterTemplate !== 'undefined') {
                     //return filter._filterTemplate;
                     finalFilter.and.push(filter._filterTemplate.filter);
                 } else {
@@ -83,10 +83,10 @@ var DevicesSearchBuilder = (function (_PreFilteredSearchBuilder) {
         }
 
         /**
-         * The search request will have this group by 
+         * The search request will have this group by
          * @example
-         * @param {!(object)} group 
-         * @return {DevicesSearchBuilder} 
+         * @param {!(object)} group
+         * @return {DevicesSearchBuilder}
          */
     }, {
         key: 'group',

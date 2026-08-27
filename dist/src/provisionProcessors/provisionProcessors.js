@@ -23,7 +23,7 @@ var _utilFormatsCheck_types = require('../util/formats/check_types');
 var _utilFormatsCheck_types2 = _interopRequireDefault(_utilFormatsCheck_types);
 
 /**
- * This is a base object that contains all you can do about Provision Processors.
+ * This object represents a provision processor and exposes all the attributes you can configure for it.
  */
 
 var ProvisionProcessors = (function (_BaseProvision) {
@@ -31,13 +31,13 @@ var ProvisionProcessors = (function (_BaseProvision) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function ProvisionProcessors(ogapi) {
         _classCallCheck(this, ProvisionProcessors);
 
-        _get(Object.getPrototypeOf(ProvisionProcessors.prototype), 'constructor', this).call(this, ogapi, "organizations/", undefined, ['name', 'organization', 'configurationParams', 'scriptProcessor']);
+        _get(Object.getPrototypeOf(ProvisionProcessors.prototype), 'constructor', this).call(this, ogapi, 'organizations/', undefined, ['name', 'organization', 'configurationParams', 'scriptProcessor']);
     }
 
     //solo put o delete se llama
@@ -45,7 +45,7 @@ var ProvisionProcessors = (function (_BaseProvision) {
     _createClass(ProvisionProcessors, [{
         key: '_buildURL',
         value: function _buildURL() {
-            var url = "provisionProcessors/provision/organizations/" + this._organization + '/' + this._identifier;
+            var url = 'provisionProcessors/provision/organizations/' + this._organization + '/' + this._identifier;
             return url;
         }
 
@@ -118,7 +118,7 @@ var ProvisionProcessors = (function (_BaseProvision) {
     }, {
         key: '_composeElement',
         value: function _composeElement() {
-            this._resource = "provisionProcessors/provision/organizations/" + this._organization;
+            this._resource = 'provisionProcessors/provision/organizations/' + this._organization;
             var provisionProcessor = {
                 name: this._name,
                 configurationParams: this._configurationParams,

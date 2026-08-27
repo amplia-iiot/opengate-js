@@ -19,8 +19,8 @@ var _SimpleBuilder2 = require('./SimpleBuilder');
 var _SimpleBuilder3 = _interopRequireDefault(_SimpleBuilder2);
 
 /**
- * This class extends SimpleBuilder to allow set complex values. What is a complex value? It is simple, It is a value 
- * that need a communications module identifier to allow set into the box.
+ * This class extends SimpleBuilder to allow setting complex values. What is a complex value? It is simply a value
+ * that needs a communications module identifier to be set into the box.
  */
 
 var ComplexBuilder = (function (_SimpleBuilder) {
@@ -47,7 +47,7 @@ var ComplexBuilder = (function (_SimpleBuilder) {
             var _this = this;
             if (_flattenedEntityData && Object.keys(_flattenedEntityData).length > 0) {
                 Object.keys(_flattenedEntityData).forEach(function (_id) {
-                    if (_id.toLowerCase().startsWith("provision")) {
+                    if (_id.toLowerCase().startsWith('provision')) {
                         var _content = _flattenedEntityData[_id];
 
                         if (_content.forEach) {
@@ -127,12 +127,12 @@ var ComplexBuilder = (function (_SimpleBuilder) {
                 var _rel = this._entity[_id][_idx];
                 if (_rel._index && _rel._index.value && _rel._index.value === idCommunicationModules) {
                     this._entity[_id][_idx] = {
-                        '_index': {
-                            'value': idCommunicationModules
+                        _index: {
+                            value: idCommunicationModules
                         },
-                        '_value': {
-                            '_current': {
-                                'value': val
+                        _value: {
+                            _current: {
+                                value: val
                             }
                         }
                     };
@@ -143,12 +143,12 @@ var ComplexBuilder = (function (_SimpleBuilder) {
 
             if (!_found) {
                 this._entity[_id].push({
-                    '_index': {
-                        'value': idCommunicationModules
+                    _index: {
+                        value: idCommunicationModules
                     },
-                    '_value': {
-                        '_current': {
-                            'value': val
+                    _value: {
+                        _current: {
+                            value: val
                         }
                     }
                 });

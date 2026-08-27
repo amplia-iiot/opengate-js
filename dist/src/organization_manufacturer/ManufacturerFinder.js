@@ -21,7 +21,7 @@ var _ProvisionGenericFinder3 = _interopRequireDefault(_ProvisionGenericFinder2);
 var _Manufacturer = require('./Manufacturer');
 
 /**
- *   This class allow make get request to hardware manufacturers resource into Opengate North API.
+ * This class allows making GET requests to the hardware manufacturers resource in the OpenGate North API.
  */
 
 var ManufacturerFinder = (function (_ProvisionGenericFinder) {
@@ -29,7 +29,7 @@ var ManufacturerFinder = (function (_ProvisionGenericFinder) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function ManufacturerFinder(ogapi) {
@@ -50,14 +50,14 @@ var ManufacturerFinder = (function (_ProvisionGenericFinder) {
                 visibility: this._visibility || 'assignable'
             });
 
-            return this._baseUrl + "/" + this._organization + _Manufacturer.MANUFACTURERS_RESOURCE + (this._identifier ? "/" + this._identifier : "");
+            return this._baseUrl + '/' + this._organization + _Manufacturer.MANUFACTURERS_RESOURCE + (this._identifier ? '/' + this._identifier : '');
         }
 
         /**
          * Marks visibility assignable for manufacturer list retrieval
          * @test
          *   ogapi.newOrganizationManufacturerFinder().assignable().findByOrganization('organization').then().catch();
-         * @return {this} 
+         * @return {this}
          */
     }, {
         key: 'assignable',
@@ -70,7 +70,7 @@ var ManufacturerFinder = (function (_ProvisionGenericFinder) {
          * Marks visibility administrable for manufacturer list retrieval
          * @test
          *   ogapi.newOrganizationManufacturerFinder().assignable().findByOrganization('organization').then().catch();
-         * @return {this} 
+         * @return {this}
          */
     }, {
         key: 'administrable',
@@ -84,7 +84,7 @@ var ManufacturerFinder = (function (_ProvisionGenericFinder) {
          * @test
          *   ogapi.newOrganizationManufacturerFinder().findByOrganization('organization').then().catch();
          * @param {string} organization - organization name .
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findByOrganization',
@@ -99,7 +99,7 @@ var ManufacturerFinder = (function (_ProvisionGenericFinder) {
          *   ogapi.newOrganizationManufacturerFinder().findByOrganizationAndId('organization', 'identifier').then().catch();
          * @param {string} organization - organization name .
          * @param {string} identifier - manufacturer name .
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findByOrganizationAndId',

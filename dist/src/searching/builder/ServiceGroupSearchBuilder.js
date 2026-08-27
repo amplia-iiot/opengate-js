@@ -24,7 +24,7 @@ var _StaticSearch2 = _interopRequireDefault(_StaticSearch);
 
 var staticSearchType = 'serviceGroups';
 /**
- * Defined a search over service group catalogs    
+ * Defines a search over service group catalogs.
  * @example ogapi.serviceGroupSearchBuilder()
  */
 
@@ -44,12 +44,12 @@ var ServiceGroupSearchBuilder = (function (_SearchBuilder) {
     }
 
     /**
-     * Build a instance of StaticSearch 
+     * Build a instance of StaticSearch
      *
      * @example
      *   ogapi.serviceGroupSearchBuilder().filter({and:[]}).build()
      * @throws {SearchBuilderError} Throw error on url build
-     * @return {StaticSearch} 
+     * @return {StaticSearch}
      */
 
     _createClass(ServiceGroupSearchBuilder, [{
@@ -65,7 +65,7 @@ var ServiceGroupSearchBuilder = (function (_SearchBuilder) {
          *  ogapi.serviceGroupSearchBuilder().withEntityType('myEntityType').build()
          * @param {!string} entityType - entity type
          * @throws {Error} throw error when entityType is not typeof string
-         * @return {ServiceGroupSearchBuilder} 
+         * @return {ServiceGroupSearchBuilder}
          */
     }, {
         key: 'withEntityType',

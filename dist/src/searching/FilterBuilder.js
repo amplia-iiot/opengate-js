@@ -15,7 +15,6 @@ var _utilExpression = require('./../util/Expression');
 var _utilExpression2 = _interopRequireDefault(_utilExpression);
 
 var FilterBuilder = (function () {
-
     /**
      * @example
      * var fb = ogapi.newFilterBuilder()
@@ -36,9 +35,9 @@ var FilterBuilder = (function () {
     _createClass(FilterBuilder, [{
         key: 'or',
         value: function or() {
-            if (typeof this._filterTemplate.filter.or === "undefined") this._filterTemplate.filter.or = [];
+            if (typeof this._filterTemplate.filter.or === 'undefined') this._filterTemplate.filter.or = [];
 
-            if (typeof this._filterTemplate.filter.and !== "undefined") {
+            if (typeof this._filterTemplate.filter.and !== 'undefined') {
                 console.warn('The filter not allow both elements [and,or], the item "and" are going to be removed.');
                 delete this._filterTemplate.filter.and;
             }
@@ -60,9 +59,9 @@ var FilterBuilder = (function () {
     }, {
         key: 'and',
         value: function and() {
-            if (typeof this._filterTemplate.filter.and === "undefined") this._filterTemplate.filter.and = [];
+            if (typeof this._filterTemplate.filter.and === 'undefined') this._filterTemplate.filter.and = [];
 
-            if (typeof this._filterTemplate.filter.or !== "undefined") {
+            if (typeof this._filterTemplate.filter.or !== 'undefined') {
                 console.warn('The filter not allow both elements [and,or], the item "or" are going to be removed.');
                 delete this._filterTemplate.filter.or;
             }

@@ -27,7 +27,7 @@ var _httpStatusCodes = require('http-status-codes');
 var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
 
 /**
- *   This class allow make get request to hardware manufacturers resource into Opengate North API.
+ * This class allows you to make GET requests to the hardware manufacturers resource in the OpenGate North API.
  */
 
 var ManufacturerFinder = (function (_ProvisionGenericFinder) {
@@ -35,7 +35,7 @@ var ManufacturerFinder = (function (_ProvisionGenericFinder) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function ManufacturerFinder(ogapi) {
@@ -52,14 +52,14 @@ var ManufacturerFinder = (function (_ProvisionGenericFinder) {
     _createClass(ManufacturerFinder, [{
         key: '_composeUrl',
         value: function _composeUrl() {
-            return this._baseUrl + (this._identifier ? "/" + this._identifier + (this._media ? "/media" + (this._mediaIdentifier ? "/" + this._mediaIdentifier + '?format=raw' : '') : '') : '');
+            return this._baseUrl + (this._identifier ? '/' + this._identifier + (this._media ? '/media' + (this._mediaIdentifier ? '/' + this._mediaIdentifier + '?format=raw' : '') : '') : '');
         }
 
         /**
-         * Download a specific manufacturer by its id. This execute a GET http method
+         * Download all manufacturers. This executes a GET HTTP method
          * @test
          *   ogapi.newManufacturerFinder().findAll().then().catch();
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findAll',
@@ -68,11 +68,11 @@ var ManufacturerFinder = (function (_ProvisionGenericFinder) {
         }
 
         /**
-         * Download a specific manufacturer by its id. This execute a GET http method
+         * Download a specific manufacturer by its id. This executes a GET HTTP method
          * @test
          *   ogapi.newManufacturerFinder().findById('manufacturerIdentifier').then().catch();
          * @param {string} identifier - manufacturer identifier .
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findById',
@@ -82,11 +82,11 @@ var ManufacturerFinder = (function (_ProvisionGenericFinder) {
         }
 
         /**
-         * Download manufacturer medias. This execute a GET http method
+         * Download manufacturer medias. This executes a GET HTTP method
          * @test
          *   ogapi.newManufacturerFinder().findMedias('manufacturerId', 'mediaIdentifier').then().catch();
          * @param {string} manufacturerId - manufacturer identifier .
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findMedias',
@@ -97,12 +97,12 @@ var ManufacturerFinder = (function (_ProvisionGenericFinder) {
         }
 
         /**
-         * Download a specific manufacturer media by its ids. This execute a GET http method
+         * Download a specific manufacturer media by its ids. This executes a GET HTTP method
          * @test
          *   ogapi.newManufacturerFinder().findMediaById('manufacturerId', 'mediaIdentifier').then().catch();
          * @param {string} manufacturerId - manufacturer identifier .
          * @param {string} mediaIdentifier - media identifier.
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findMediaById',

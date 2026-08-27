@@ -26,8 +26,13 @@ var _devicesCollectDatastreams = require('../devices/collect/Datastreams');
 
 var _devicesCollectDatastreams2 = _interopRequireDefault(_devicesCollectDatastreams);
 
+var _utilParameterError = require('../../util/parameterError');
+
+var _utilParameterError2 = _interopRequireDefault(_utilParameterError);
+
 /**
- * This is a base object contains methods to send unstructured IoT information to be processed & collected by the platform.
+ * This is a base object that contains methods to send unstructured IoT information to be processed and collected
+ * by the platform.
  */
 
 var DeviceMessage = (function (_Event) {
@@ -35,7 +40,7 @@ var DeviceMessage = (function (_Event) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function DeviceMessage(ogapi, resource, timeout) {
@@ -62,7 +67,7 @@ var DeviceMessage = (function (_Event) {
     _createClass(DeviceMessage, [{
         key: 'withId',
         value: function withId(id) {
-            if (typeof id !== 'string' || id.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'id' });
+            if (typeof id !== 'string' || id.length > 50) throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER_MAX_LENGTH_50', { parameter: 'id' });
             this._id = id;
             return this;
         }
@@ -75,7 +80,7 @@ var DeviceMessage = (function (_Event) {
     }, {
         key: 'withDataStreamVersion',
         value: function withDataStreamVersion(version) {
-            if (typeof version !== 'string' || version.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'version' });
+            if (typeof version !== 'string' || version.length > 50) throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER_MAX_LENGTH_50', { parameter: 'version' });
             this._dataStreamVersion = version;
             return this;
         }
@@ -88,7 +93,7 @@ var DeviceMessage = (function (_Event) {
     }, {
         key: 'withDmmVersion',
         value: function withDmmVersion(version) {
-            if (typeof version !== 'string' || version.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'version' });
+            if (typeof version !== 'string' || version.length > 50) throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER_MAX_LENGTH_50', { parameter: 'version' });
             this._version = version;
             return this;
         }
@@ -101,7 +106,7 @@ var DeviceMessage = (function (_Event) {
     }, {
         key: 'withDeviceId',
         value: function withDeviceId(deviceId) {
-            if (typeof deviceId !== 'string' || deviceId.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'device' });
+            if (typeof deviceId !== 'string' || deviceId.length > 50) throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER_MAX_LENGTH_50', { parameter: 'device' });
             this._deviceId = deviceId;
             return this;
         }
@@ -123,14 +128,14 @@ var DeviceMessage = (function (_Event) {
         key: '_buildIotURL',
         value: function _buildIotURL() {
             if (this._id === undefined) throw new Error('Parameters id must be defined');
-            var url = this._resource + "/" + this._id + "/collect/iot";
+            var url = this._resource + '/' + this._id + '/collect/iot';
             return url;
         }
     }, {
         key: '_buildDmmURL',
         value: function _buildDmmURL() {
             if (this._id === undefined) throw new Error('Parameters id must be defined');
-            var url = this._resource + "/" + this._id + "/collect/dmm";
+            var url = this._resource + '/' + this._id + '/collect/dmm';
             return url;
         }
     }, {
@@ -140,9 +145,9 @@ var DeviceMessage = (function (_Event) {
                 throw new Error('Parameters datastreams and version must be defined');
             }
             var iotMessage = {
-                'version': this._dataStreamVersion,
-                'device': this._deviceId,
-                'datastreams': this._datastreams
+                version: this._dataStreamVersion,
+                device: this._deviceId,
+                datastreams: this._datastreams
             };
             return iotMessage;
         }
@@ -154,8 +159,8 @@ var DeviceMessage = (function (_Event) {
             }
             var event = _get(Object.getPrototypeOf(DeviceMessage.prototype), 'composeElement', this).call(this);
             var dmmMessage = {
-                'version': this._version,
-                'event': event
+                version: this._version,
+                event: event
             };
             return dmmMessage;
         }
@@ -169,15 +174,14 @@ var DeviceMessage = (function (_Event) {
             if (this._datastreams.length > 0) {
                 boxPromises.push(this._ogapi.Sapi.post(this._buildIotURL(), this._composeIotMessage()).then(function (res) {
                     if (res.statusCode !== 201) {
-                        throw new Error("IOT NOT CREATED");
+                        throw new Error('IOT NOT CREATED');
                     }
                 }));
             }
             if (this._version !== undefined) {
-
                 boxPromises.push(this._ogapi.Sapi.post(this._buildDmmURL(), this._composeDmmMessage()).then(function (res) {
                     if (res.statusCode !== 201) {
-                        throw new Error("DMM NOT CREATED");
+                        throw new Error('DMM NOT CREATED');
                     }
                 }));
             }

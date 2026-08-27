@@ -20,7 +20,7 @@ var _GenericFinder2 = require('../GenericFinder');
 var _GenericFinder3 = _interopRequireDefault(_GenericFinder2);
 
 /**
- *   This class allow make get request to RuleConfigurations resource into Opengate North API.
+ * This class allows you to make GET requests to the RuleConfigurations resource in the OpenGate North API.
  */
 
 var RuleConfigurationsFinder = (function (_GenericFinder) {
@@ -34,17 +34,17 @@ var RuleConfigurationsFinder = (function (_GenericFinder) {
     function RuleConfigurationsFinder(ogapi) {
         _classCallCheck(this, RuleConfigurationsFinder);
 
-        _get(Object.getPrototypeOf(RuleConfigurationsFinder.prototype), 'constructor', this).call(this, ogapi, 'rules/provision/organizations', "rules", 'Rule configurations not found');
+        _get(Object.getPrototypeOf(RuleConfigurationsFinder.prototype), 'constructor', this).call(this, ogapi, 'rules/provision/organizations', 'rules', 'Rule configurations not found');
     }
 
     /**
      * Performs a get that returns organizations related
      * @test
      *   ogapi.newRuleConfigurationsFinder().findByOrganizationAndChannel('xxx-xx-xxx-xxx', 'xxxxx-xxxx-xxxx').then().catch();
-     * @param {string} organization - organization 
+     * @param {string} organization - organization
      * @param {string} channel - channel.
      * @param {string} name - Rule Configuration name
-     * @return {Promise} 
+     * @return {Promise}
      */
 
     _createClass(RuleConfigurationsFinder, [{
@@ -92,7 +92,7 @@ var RuleConfigurationsFinder = (function (_GenericFinder) {
     }, {
         key: '_composeUrl',
         value: function _composeUrl() {
-            return this._baseUrl + "/" + this._organization + "/channels/" + this._channel + "/" + this._name;
+            return this._baseUrl + '/' + this._organization + '/channels/' + this._channel + '/' + this._name;
         }
     }]);
 

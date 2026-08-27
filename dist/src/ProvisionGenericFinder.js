@@ -17,7 +17,7 @@ var _GenericFinder2 = require('./GenericFinder');
 var _GenericFinder3 = _interopRequireDefault(_GenericFinder2);
 
 /**
- *   This class allow make get request to user resource into Opengate North API.
+ * This class allows making GET requests to a resource in the OpenGate North API.
  */
 
 var ProvisionGenericFinder = (function (_GenericFinder) {
@@ -34,7 +34,7 @@ var ProvisionGenericFinder = (function (_GenericFinder) {
   function ProvisionGenericFinder(ogapi, source, entity, error_not_found) {
     _classCallCheck(this, ProvisionGenericFinder);
 
-    _get(Object.getPrototypeOf(ProvisionGenericFinder.prototype), 'constructor', this).call(this, ogapi, "provision/" + source, entity, error_not_found);
+    _get(Object.getPrototypeOf(ProvisionGenericFinder.prototype), 'constructor', this).call(this, ogapi, 'provision/' + source, entity, error_not_found);
   }
 
   return ProvisionGenericFinder;

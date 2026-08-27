@@ -22,8 +22,8 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
-/** 
- * This extends Search and allow make request to any available resource into Opengate North API.
+/**
+ * This class extends Search and allows requests to be made to any available resource in the OpenGate North API.
  */
 
 var DeviceSearch = (function (_Search) {
@@ -46,7 +46,7 @@ var DeviceSearch = (function (_Search) {
     }
 
     /**
-     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * This invokes a request to the OpenGate North API; the response is handled via promises.
      * @return {Promise}
      * @property {function (result:object, statusCode:number)} then - When request it is OK
      * @property {function (error:string)} catch - When request it is NOK
@@ -67,7 +67,6 @@ var DeviceSearch = (function (_Search) {
 
                     // OUW-944
                     if (resultQuery.devices.length > 0) {
-
                         var ele = false;
                         var flattened = parameters && parameters.flattened || false;
 

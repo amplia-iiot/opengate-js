@@ -34,7 +34,7 @@ var Models = (function (_BaseProvision) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function Models(ogapi, organization, manufacturer) {
@@ -48,7 +48,7 @@ var Models = (function (_BaseProvision) {
 
         // super(ogapi, "/models", undefined, ['identifier', 'name', 'manufacturer']);
 
-        this._resource = this._resource + '/' + this._organization + _Manufacturer.MANUFACTURERS_RESOURCE + "/" + manufacturer + MODELS_RESOURCE;
+        this._resource = this._resource + '/' + this._organization + _Manufacturer.MANUFACTURERS_RESOURCE + '/' + manufacturer + MODELS_RESOURCE;
     }
 
     /**
@@ -60,7 +60,7 @@ var Models = (function (_BaseProvision) {
     _createClass(Models, [{
         key: 'withIdentifier',
         value: function withIdentifier(id) {
-            if (typeof id !== 'string' || id.length > 50) throw new Error("OGAPI_STRING_PARAMETER_MAX_LENGTH_50");
+            if (typeof id !== 'string' || id.length > 50) throw new Error('OGAPI_STRING_PARAMETER_MAX_LENGTH_50');
             this._identifier = id;
             return this;
         }
@@ -73,7 +73,7 @@ var Models = (function (_BaseProvision) {
     }, {
         key: 'withName',
         value: function withName(name) {
-            if (typeof name !== 'string') throw new Error("OGAPI_STRING_PARAMETER");
+            if (typeof name !== 'string') throw new Error('OGAPI_STRING_PARAMETER');
             this._name = name;
             return this;
         }
@@ -86,46 +86,46 @@ var Models = (function (_BaseProvision) {
     }, {
         key: 'withDescription',
         value: function withDescription(description) {
-            if (typeof description !== 'string') throw new Error("OGAPI_STRING_PARAMETER");
+            if (typeof description !== 'string') throw new Error('OGAPI_STRING_PARAMETER');
             this._description = description;
             return this;
         }
 
         /**
          * Set the notes attribute
-         * @param {string} notes 
+         * @param {string} notes
          * @return {Models}
          */
     }, {
         key: 'withNotes',
         value: function withNotes(notes) {
-            if (typeof notes !== 'string') throw new Error("OGAPI_STRING_PARAMETER");
+            if (typeof notes !== 'string') throw new Error('OGAPI_STRING_PARAMETER');
             this._notes = notes;
             return this;
         }
 
         /**
          * Set the url attribute
-         * @param {string} url 
+         * @param {string} url
          * @return {Models}
          */
     }, {
         key: 'withUrl',
         value: function withUrl(url) {
-            if (typeof url !== 'string') throw new Error("OGAPI_STRING_PARAMETER");
+            if (typeof url !== 'string') throw new Error('OGAPI_STRING_PARAMETER');
             this._modelUrl = url;
             return this;
         }
 
         /**
          * Set the version attribute
-         * @param {string} version 
+         * @param {string} version
          * @return {Models}
          */
     }, {
         key: 'withVersion',
         value: function withVersion(version) {
-            if (typeof version !== 'string') throw new Error("OGAPI_STRING_PARAMETER");
+            if (typeof version !== 'string') throw new Error('OGAPI_STRING_PARAMETER');
             this._version = version;
             return this;
         }
@@ -152,7 +152,7 @@ var Models = (function (_BaseProvision) {
     }, {
         key: '_buildURL',
         value: function _buildURL() {
-            return this._resource + (this._identifier ? "/" + this._identifier : "");
+            return this._resource + (this._identifier ? '/' + this._identifier : '');
         }
     }, {
         key: 'deleteInCascade',

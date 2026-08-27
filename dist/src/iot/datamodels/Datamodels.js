@@ -26,7 +26,7 @@ exports.PRE_RESOURCE = PRE_RESOURCE;
 var DATAMODELS_RESOURCE = '/datamodels';
 exports.DATAMODELS_RESOURCE = DATAMODELS_RESOURCE;
 /**
- * This is a base object for create a IoT Datamodel
+ * This is a base object for creating an IoT Datamodel.
  */
 
 var Datamodels = (function (_BaseProvision) {
@@ -185,12 +185,12 @@ var Datamodels = (function (_BaseProvision) {
             }
 
             return {
-                'identifier': this._identifier,
-                'name': this._name,
-                'version': this._version,
-                'description': this._description,
-                'allowedResourceTypes': this._resourceType,
-                'categories': this._categories.length > 0 ? this._categories : undefined
+                identifier: this._identifier,
+                name: this._name,
+                version: this._version,
+                description: this._description,
+                allowedResourceTypes: this._resourceType,
+                categories: this._categories.length > 0 ? this._categories : undefined
             };
         }
     }, {

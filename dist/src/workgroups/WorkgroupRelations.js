@@ -35,15 +35,15 @@ var WorkgroupRelations = (function (_BaseProvision) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function WorkgroupRelations(ogapi) {
         _classCallCheck(this, WorkgroupRelations);
 
-        _get(Object.getPrototypeOf(WorkgroupRelations.prototype), 'constructor', this).call(this, ogapi, "/domains", undefined, ["workgroup", "channels"]);
+        _get(Object.getPrototypeOf(WorkgroupRelations.prototype), 'constructor', this).call(this, ogapi, '/domains', undefined, ['workgroup', 'channels']);
         this._ogapi = ogapi;
-        this._action = "CREATE";
+        this._action = 'CREATE';
     }
 
     /**
@@ -74,8 +74,8 @@ var WorkgroupRelations = (function (_BaseProvision) {
             if (!this._channels) this._channels = [];
 
             this._channels.push({
-                'organization': channel._organization,
-                'channel': channel._name
+                organization: channel._organization,
+                channel: channel._name
             });
 
             return this;
@@ -88,8 +88,8 @@ var WorkgroupRelations = (function (_BaseProvision) {
             this._resource = 'provision/domains/' + this._workgroup._domainName + '/workgroups/' + this._workgroup._name + '/relations';
 
             var workgroup = {
-                "workgroupRelation": {
-                    "channels": this._channels ? this._channels : undefined
+                workgroupRelation: {
+                    channels: this._channels ? this._channels : undefined
                 }
             };
 
@@ -125,21 +125,21 @@ var WorkgroupRelations = (function (_BaseProvision) {
                 return this._doNorthPost(petitionUrl, relations);
             } else {
                 return this._doNorthPost(petitionUrl, {
-                    "workgroupRelation": {
-                        "channels": []
+                    workgroupRelation: {
+                        channels: []
                     }
                 });
             }
         }
 
-        /** 
+        /**
          * Update not allowed
-         * @throws {Error} 
+         * @throws {Error}
          */
     }, {
         key: 'update',
         value: function update() {
-            throw new Error("Workgroup relation update not allowed");
+            throw new Error('Workgroup relation update not allowed');
         }
     }]);
 

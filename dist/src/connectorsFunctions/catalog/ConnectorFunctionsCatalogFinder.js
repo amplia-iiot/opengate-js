@@ -14,12 +14,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _GenericFinder2 = require("../../GenericFinder");
+var _GenericFinder2 = require('../../GenericFinder');
 
 var _GenericFinder3 = _interopRequireDefault(_GenericFinder2);
 
 /**
- *   This class allow make get request to a connector functions catalog resource into Opengate North API.
+ * This class allows you to make GET requests to a connector functions catalog resource in the OpenGate North API.
  */
 
 var ConnectorFunctionsCatalogFinder = (function (_GenericFinder) {
@@ -33,8 +33,8 @@ var ConnectorFunctionsCatalogFinder = (function (_GenericFinder) {
 
     /**
      * Reading a Connector Function from catalog
-     * 
-     * @param {String} connectorFunctionId 
+     *
+     * @param {String} connectorFunctionId
      * @returns {Promise}
      */
 

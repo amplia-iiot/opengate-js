@@ -26,7 +26,7 @@ var TOKEN_URL = '$_token';
 
 exports.TOKEN_URL = TOKEN_URL;
 /**
- * Defined a search over Alarms	
+ * Defines a search over Alarms.
  * @example ogapi.alarmsSearchBuilder()
  */
 
@@ -60,10 +60,10 @@ var AlarmsSearchBuilder = (function (_SearchWithSummaryBuilder) {
         }
 
         /**
-         * The search request will have this group by 
+         * The search request will have this group by
          * @example
-         * @param {!(object)} group 
-         * @return {AlarmsSearchBuilder} 
+         * @param {!(object)} group
+         * @return {AlarmsSearchBuilder}
          */
     }, {
         key: 'group',

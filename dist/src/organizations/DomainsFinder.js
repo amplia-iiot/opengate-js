@@ -19,7 +19,7 @@ var _ProvisionGenericFinder2 = require('../ProvisionGenericFinder');
 var _ProvisionGenericFinder3 = _interopRequireDefault(_ProvisionGenericFinder2);
 
 /**
- *   This class allow make get request to certificate resource into Opengate North API.
+ * This class allows making GET requests to the domains resource in the OpenGate North API.
  */
 
 var DomainFinder = (function (_ProvisionGenericFinder) {
@@ -27,7 +27,7 @@ var DomainFinder = (function (_ProvisionGenericFinder) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function DomainFinder(ogapi) {
@@ -47,13 +47,13 @@ var DomainFinder = (function (_ProvisionGenericFinder) {
             this._setUrlParameters({
                 hierarchy: this._hierarchy
             });
-            return this._baseUrl + "/" + this._name;
+            return this._baseUrl + '/' + this._name;
         }
 
         /**
          * Constructor
          * @param {string} name - domain name.
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findByNameWithHierarchy',

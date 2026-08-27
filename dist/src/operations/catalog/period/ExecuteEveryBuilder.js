@@ -29,7 +29,8 @@ var _patternByGeneric = require('./pattern/ByGeneric');
 var _patternByGeneric2 = _interopRequireDefault(_patternByGeneric);
 
 /**
- * Defines the builder to configure a period of operation. By this builder you can select period by day, week, month, year.
+ * Defines the builder used to configure the periodicity of an operation. With this builder you can select the
+ * period by day, week, month, or year.
  */
 
 var ExecuteEveryBuilder = (function () {
@@ -37,7 +38,7 @@ var ExecuteEveryBuilder = (function () {
      * Constructor
      * @param {!BaseOperationBuilder} parent - this is a operationBaseBuilder.
      * @param {!Date} date - Date when operation will be executed
-     * @param {string} periodicityName - Name associated to periodicity	
+     * @param {string} periodicityName - Name associated to periodicity
      */
 
     function ExecuteEveryBuilder(parent, date, periodicityName, end, description) {
@@ -75,7 +76,7 @@ var ExecuteEveryBuilder = (function () {
         key: 'month',
         value: function month(months) {
             var _task = this._parent._task;
-            if (typeof months === "undefined" || months.constructor !== Array) {
+            if (typeof months === 'undefined' || months.constructor !== Array) {
                 var error = true;
                 if (_task) {
                     var pattern = _task.schedule.repeating.pattern;
@@ -87,17 +88,17 @@ var ExecuteEveryBuilder = (function () {
                         }
                     }
                 }
-                if (error) throw new Error("Parameter months must be typeof Array");
+                if (error) throw new Error('Parameter months must be typeof Array');
             }
             if (months.length === 0) {
-                throw new Error("Parameter months must have at least one month");
+                throw new Error('Parameter months must have at least one month');
             }
             var not_found = [];
             for (var i = 0; i < months.length; i++) {
                 var found = _MONTHS_ENUM.MONTHS_ENUM.find(function (month) {
                     return month == this;
                 }, months[i]);
-                if (typeof found === "undefined") {
+                if (typeof found === 'undefined') {
                     not_found.push(found);
                 }
             }

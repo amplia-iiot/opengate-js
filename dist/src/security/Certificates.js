@@ -31,7 +31,7 @@ var max_length_id = 50;
 var max_length_description = 200;
 
 /**
- * This is a base object that contains all you can do about Certificates.
+ * This is a base object that contains everything you can do with Certificates.
  */
 
 var Certificates = (function (_Security) {
@@ -39,13 +39,13 @@ var Certificates = (function (_Security) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function Certificates(ogapi) {
         _classCallCheck(this, Certificates);
 
-        _get(Object.getPrototypeOf(Certificates.prototype), 'constructor', this).call(this, ogapi, "/certificates");
+        _get(Object.getPrototypeOf(Certificates.prototype), 'constructor', this).call(this, ogapi, '/certificates');
     }
 
     /**
@@ -90,22 +90,21 @@ var Certificates = (function (_Security) {
 
         /**
          * Set the administrativeState attribute
-         * @param {string} administrativeState 
+         * @param {string} administrativeState
          * @return {Certificates}
          */
     }, {
         key: 'withAdministrativeState',
         value: function withAdministrativeState(administrativeState) {
-
             if (typeof administrativeState !== 'string' || administrativeState.length <= 0) {
-                throw new Error("Parameter administrativeState must be typeof string and cannot be empty");
+                throw new Error('Parameter administrativeState must be typeof string and cannot be empty');
             }
 
             var not_found = '';
             var found = _ADMINISTRATIVE_STATE_ENUM.ADMINISTRATIVE_STATE_ENUM.find(function (administrativeState) {
                 return administrativeState == this;
             }, administrativeState);
-            if (typeof found === "undefined") {
+            if (typeof found === 'undefined') {
                 not_found = administrativeState;
             }
 
@@ -118,22 +117,22 @@ var Certificates = (function (_Security) {
 
         /**
          * Set the usages attribute
-         * @param {Array} usages 
+         * @param {Array} usages
          * @return {Certificates}
          */
 
     }, {
         key: 'withUsages',
         value: function withUsages(usages) {
-            if (typeof usages === "undefined" || usages.constructor !== Array || usages.length === 0) {
-                throw new Error("Parameter usages must be typeof Array and cannot be empty");
+            if (typeof usages === 'undefined' || usages.constructor !== Array || usages.length === 0) {
+                throw new Error('Parameter usages must be typeof Array and cannot be empty');
             }
             var not_found = [];
             for (var i = 0; i < usages.length; i++) {
                 var found = _USAGES_ENUM.USAGES_ENUM.find(function (usages) {
                     return usages == this;
                 }, usages[i]);
-                if (typeof found === "undefined") {
+                if (typeof found === 'undefined') {
                     not_found.push(usages[i]);
                 }
             }
@@ -164,24 +163,24 @@ var Certificates = (function (_Security) {
 
         /**
          * Set the tags attribute
-         * @param {Array} tags 
+         * @param {Array} tags
          * @return {Certificates}
          */
 
     }, {
         key: 'withTags',
         value: function withTags(tags) {
-            if (typeof tags === "undefined" || tags.constructor !== Array || tags.length <= 0) {
-                throw new Error("Parameter tags must be typeof Array and cannot be empty");
+            if (typeof tags === 'undefined' || tags.constructor !== Array || tags.length <= 0) {
+                throw new Error('Parameter tags must be typeof Array and cannot be empty');
             }
             var not_correct = [];
             for (var i = 0; i < tags.length; i++) {
-                if (typeof tags[i] === "undefined" || typeof tags[i] !== 'string' || typeof tags[i].length <= 0) {
+                if (typeof tags[i] === 'undefined' || typeof tags[i] !== 'string' || typeof tags[i].length <= 0) {
                     not_correct.push(tags[i]);
                 }
             }
             if (not_correct.length !== 0) {
-                throw new Error("The following tags values are not allowed:" + JSON.stringify(not_correct));
+                throw new Error('The following tags values are not allowed:' + JSON.stringify(not_correct));
             }
 
             this._tags = tags;
@@ -203,24 +202,24 @@ var Certificates = (function (_Security) {
 
         /**
          * Set the domains attribute
-         * @param {Array} domains 
+         * @param {Array} domains
          * @return {Certificates}
          */
 
     }, {
         key: 'withDomains',
         value: function withDomains(domains) {
-            if (typeof domains === "undefined" || domains.constructor !== Array || domains.length <= 0) {
-                throw new Error("Parameter domains must be typeof Array and cannot be empty");
+            if (typeof domains === 'undefined' || domains.constructor !== Array || domains.length <= 0) {
+                throw new Error('Parameter domains must be typeof Array and cannot be empty');
             }
             var not_correct = [];
             for (var i = 0; i < domains.length; i++) {
-                if (typeof domains[i] === "undefined" || typeof domains[i] !== 'string' || typeof domains[i].length <= 0) {
+                if (typeof domains[i] === 'undefined' || typeof domains[i] !== 'string' || typeof domains[i].length <= 0) {
                     not_correct.push(domains[i]);
                 }
             }
             if (not_correct.length !== 0) {
-                throw new Error("The following domains values are not allowed:" + JSON.stringify(not_correct));
+                throw new Error('The following domains values are not allowed:' + JSON.stringify(not_correct));
             }
 
             this._domains = domains;
@@ -235,7 +234,6 @@ var Certificates = (function (_Security) {
     }, {
         key: '_composeElement',
         value: function _composeElement() {
-
             if (this._name === undefined || this._administrativeState === undefined || this._usages === undefined) throw new Error('Parameters name, usages, administrativeState  must be defined');
 
             var data = {
@@ -255,12 +253,12 @@ var Certificates = (function (_Security) {
         }
 
         /**
-         * This invoke a request to OpenGate North API and the callback is managed by promises
-         * This method create an element certificate
+         * This invokes a request to the OpenGate North API, and the callback is managed via promises. This method creates
+         * a certificate element.
          * @param {File} rawFile - this File is the certificate
          * @property {function (result:object, statusCode:number)} then - When request it is OK
          * @property {function (error:string)} catch - When request it is NOK
-         * @return {Promise}     
+         * @return {Promise}  
          */
     }, {
         key: 'create',
@@ -271,12 +269,12 @@ var Certificates = (function (_Security) {
             if (typeof rawFile !== 'string') {
                 form = new FormData();
                 var blob = new Blob([JSON.stringify(this._composeElement())], {
-                    type: "application/json"
+                    type: 'application/json'
                 });
                 form.append('json', blob);
 
                 var certificate = new Blob([rawFile], {
-                    type: "application/x-pem-file"
+                    type: 'application/x-pem-file'
                 });
 
                 if (rawFile) {
@@ -297,7 +295,7 @@ var Certificates = (function (_Security) {
             }, this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (response) {
                 var statusCode = response.statusCode;
                 if (statusCode === 201) {
-                    if (typeof _this._onCreated === "function") {
+                    if (typeof _this._onCreated === 'function') {
                         _this._onCreated(response.header.location);
                     }
                     defered.resolve({
@@ -323,17 +321,16 @@ var Certificates = (function (_Security) {
         }
 
         /**
-         * This invoke a request to OpenGate North API and the callback is managed by promises
-         * This method update an element certificate
+         * This invokes a request to the OpenGate North API, and the callback is managed via promises. This method updates
+         * a certificate element.
          * @property {function (result:object, statusCode:number)} then - When request it is OK
          * @property {function (error:string)} catch - When request it is NOK
-         * @return {Promise}     
+         * @return {Promise}  
          */
 
     }, {
         key: 'update',
         value: function update() {
-
             var form = this._composeElement();
             delete form.certificate.id;
 
@@ -341,7 +338,7 @@ var Certificates = (function (_Security) {
             var promise = defered.promise;
             this._ogapi.Napi.put(this._buildURL(), form, undefined, this._getExtraHeaders(), this._getUrlParameters()).then(function (response) {
                 var data = response.body;
-                if (typeof data === "undefined") defered.reject("Cannot update the certificate");else defered.resolve(data, response.statusCode);
+                if (typeof data === 'undefined') defered.reject('Cannot update the certificate');else defered.resolve(data, response.statusCode);
             })['catch'](function (error) {
                 defered.reject(error);
             });
@@ -351,7 +348,7 @@ var Certificates = (function (_Security) {
         key: '_buildURL',
         value: function _buildURL() {
             if (this._id === undefined) throw new Error('Parameters id must be defined');
-            var url = this._resource + "/" + this._id;
+            var url = this._resource + '/' + this._id;
 
             return url;
         }

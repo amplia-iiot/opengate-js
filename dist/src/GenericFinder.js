@@ -19,11 +19,10 @@ var _httpStatusCodes = require('http-status-codes');
 var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
 
 /**
- *   This class allow make get request to user resource into Opengate North API.
+ * This class allows making GET requests to a resource in the OpenGate North API.
  */
 
 var GenericFinder = (function () {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
@@ -55,7 +54,7 @@ var GenericFinder = (function () {
     _createClass(GenericFinder, [{
         key: '_composeUrl',
         value: function _composeUrl() {
-            return this._baseUrl + "/" + this._id;
+            return this._baseUrl + '/' + this._id;
         }
     }, {
         key: '_withId',

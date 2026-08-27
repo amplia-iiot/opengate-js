@@ -32,8 +32,12 @@ var _provisionBaseProvision = require('../../provision/BaseProvision');
 
 var _provisionBaseProvision2 = _interopRequireDefault(_provisionBaseProvision);
 
+var _utilParameterError = require('../../util/parameterError');
+
+var _utilParameterError2 = _interopRequireDefault(_utilParameterError);
+
 /**
- * This is a base object that contains all you can do about Deployment Element.
+ * This is the base object for everything you can do with a deployment element.
  */
 
 var DeploymentElement = (function (_BaseProvision) {
@@ -42,10 +46,10 @@ var DeploymentElement = (function (_BaseProvision) {
     function DeploymentElement(context, ogapi, url, progressEvent) {
         _classCallCheck(this, DeploymentElement);
 
-        _get(Object.getPrototypeOf(DeploymentElement.prototype), 'constructor', this).call(this, ogapi, url + "/deploymentElements");
+        _get(Object.getPrototypeOf(DeploymentElement.prototype), 'constructor', this).call(this, ogapi, url + '/deploymentElements');
         this._progressEvent = progressEvent;
 
-        this._resource = url + "/deploymentElements";
+        this._resource = url + '/deploymentElements';
         this.validation = false;
         this._name = undefined;
         this._version = undefined;
@@ -71,10 +75,7 @@ var DeploymentElement = (function (_BaseProvision) {
     _createClass(DeploymentElement, [{
         key: 'withName',
         value: function withName(name) {
-            if (typeof name !== 'string' || name.length > 50) throw new Error({
-                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50",
-                parameter: 'name'
-            });
+            if (typeof name !== 'string' || name.length > 50) throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER_MAX_LENGTH_50', { parameter: 'name' });
             this._name = name;
             return this;
         }
@@ -87,10 +88,7 @@ var DeploymentElement = (function (_BaseProvision) {
     }, {
         key: 'withVersion',
         value: function withVersion(version) {
-            if (typeof version !== 'string' || version.length > 50) throw new Error({
-                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50",
-                parameter: 'version'
-            });
+            if (typeof version !== 'string' || version.length > 50) throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER_MAX_LENGTH_50', { parameter: 'version' });
             this._version = version;
             return this;
         }
@@ -103,23 +101,19 @@ var DeploymentElement = (function (_BaseProvision) {
     }, {
         key: 'withType',
         value: function withType(type) {
-            if (typeof type === "undefined" || typeof type !== 'string') {
-                throw new Error({
-                    message: 'OGAPI_STRING_PARAMETER',
-                    parameter: 'type'
-                });
+            if (typeof type === 'undefined' || typeof type !== 'string') {
+                throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER', { parameter: 'type' });
             }
             var not_found = '';
             var found = _TYPE_ENUM.TYPE_ENUM.find(function (action) {
                 return action == this;
             }, type);
-            if (typeof found === "undefined") {
+            if (typeof found === 'undefined') {
                 not_found = type;
             }
 
             if (not_found !== '') {
-                throw new Error({
-                    message: "OGAPI_NOT_ALLOWED_PARAMETER",
+                throw (0, _utilParameterError2['default'])('OGAPI_NOT_ALLOWED_PARAMETER', {
                     parameter: JSON.stringify(not_found),
                     allowed: JSON.stringify(_TYPE_ENUM.TYPE_ENUM)
                 });
@@ -136,10 +130,7 @@ var DeploymentElement = (function (_BaseProvision) {
     }, {
         key: 'withPath',
         value: function withPath(path) {
-            if (typeof path !== 'string') throw new Error({
-                message: 'OGAPI_STRING_PARAMETER',
-                parameter: 'path'
-            });
+            if (typeof path !== 'string') throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER', { parameter: 'path' });
             this._path = path;
             return this;
         }
@@ -166,11 +157,8 @@ var DeploymentElement = (function (_BaseProvision) {
     }, {
         key: 'withOperation',
         value: function withOperation(operation) {
-            if (typeof operation === "undefined" || typeof operation !== 'string') {
-                throw new Error({
-                    message: "OGAPI_STRING_PARAMETER",
-                    parameter: "operation"
-                });
+            if (typeof operation === 'undefined' || typeof operation !== 'string') {
+                throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER', { parameter: 'operation' });
             }
 
             var not_found = '';
@@ -178,7 +166,7 @@ var DeploymentElement = (function (_BaseProvision) {
                 return operation == this;
             }, operation);
 
-            if (typeof found === "undefined") {
+            if (typeof found === 'undefined') {
                 not_found = operation;
             }
 
@@ -191,24 +179,21 @@ var DeploymentElement = (function (_BaseProvision) {
 
         /**
          * Set the option attribute
-         * @param {string} option 
+         * @param {string} option
          * @return {DeploymentElement}
          */
     }, {
         key: 'withOption',
         value: function withOption(option) {
-            if (typeof option === "undefined" || typeof option !== 'string') {
-                throw new Error({
-                    message: "OGAPI_STRING_PARAMETER",
-                    parameter: "option"
-                });
+            if (typeof option === 'undefined' || typeof option !== 'string') {
+                throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER', { parameter: 'option' });
             }
 
             var not_found = '';
             var found = _OPTION_ENUM.OPTION_ENUM.find(function (option) {
                 return option == this;
             }, option);
-            if (typeof found === "undefined") {
+            if (typeof found === 'undefined') {
                 not_found = option;
             }
 
@@ -221,7 +206,7 @@ var DeploymentElement = (function (_BaseProvision) {
 
         /**
          * Set the validators attribute
-         * @param {Array} validators 
+         * @param {Array} validators
          * @return {DeploymentElement}
          */
     }, {
@@ -230,8 +215,8 @@ var DeploymentElement = (function (_BaseProvision) {
             var validator = {};
             var validatorsArray = [];
 
-            if (typeof validators === "undefined" || validators.constructor !== Array) {
-                throw new Error("Parameter validators must be typeof Array");
+            if (typeof validators === 'undefined' || validators.constructor !== Array) {
+                throw new Error('Parameter validators must be typeof Array');
             }
 
             // Validar si los validators son correctos, solo se permite un firmware
@@ -244,7 +229,7 @@ var DeploymentElement = (function (_BaseProvision) {
                     if (!trustedBootExists) {
                         trustedBootExists = true;
                     } else {
-                        throw new Error("OGAPI_422_ONE_TRUSTED_BOOT_ALLOWED_DEPLOY_ELEMENT");
+                        throw new Error('OGAPI_422_ONE_TRUSTED_BOOT_ALLOWED_DEPLOY_ELEMENT');
                     }
                 }
                 validatorsArray.push(validator);
@@ -256,25 +241,21 @@ var DeploymentElement = (function (_BaseProvision) {
     }, {
         key: '_checkValidator',
         value: function _checkValidator(validator) {
-
             var validatorElement = {};
 
             if (validator.mode) {
                 var not_found = '';
                 var mode = validator.mode;
 
-                if (typeof mode === "undefined" || typeof mode !== 'string') {
-                    throw new Error({
-                        message: "OGAPI_STRING_PARAMETER",
-                        parameter: "type"
-                    });
+                if (typeof mode === 'undefined' || typeof mode !== 'string') {
+                    throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER', { parameter: 'type' });
                 }
 
                 var foundMode = _MODE_VALIDATORS_ENUM.MODE_VALIDATORS_ENUM.find(function (action) {
                     return action == this;
                 }, mode);
 
-                if (typeof foundMode === "undefined") {
+                if (typeof foundMode === 'undefined') {
                     not_found = mode;
                 }
 
@@ -286,7 +267,7 @@ var DeploymentElement = (function (_BaseProvision) {
                 if (mode !== 'TRUSTED_BOOT' || mode === 'TRUSTED_BOOT' && this._type === 'FIRMWARE') {
                     validatorElement.mode = mode;
                 } else {
-                    throw new Error("TRUSTED_BOOT validator only allowed for FIRMWARE deployment element");
+                    throw new Error('TRUSTED_BOOT validator only allowed for FIRMWARE deployment element');
                 }
             } else {
                 // por defecto se pone el primero de la lista
@@ -297,18 +278,15 @@ var DeploymentElement = (function (_BaseProvision) {
             if (validator.type) {
                 var not_found = '';
                 var type = validator.type;
-                if (typeof type === "undefined" || typeof type !== 'string') {
-                    throw new Error({
-                        message: "OGAPI_STRING_PARAMETER",
-                        parameter: "type"
-                    });
+                if (typeof type === 'undefined' || typeof type !== 'string') {
+                    throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER', { parameter: 'type' });
                 }
 
                 var found = _TYPE_VALIDATORS_ENUM.TYPE_VALIDATORS_ENUM.find(function (action) {
                     return action == this;
                 }, type);
 
-                if (typeof found === "undefined") {
+                if (typeof found === 'undefined') {
                     not_found = type;
                 }
 
@@ -318,7 +296,7 @@ var DeploymentElement = (function (_BaseProvision) {
 
                 validatorElement.type = type;
             } else {
-                throw new Error("Parameter type is required");
+                throw new Error('Parameter type is required');
             }
 
             // si el validador es el primero de la lista (PLATFORM)
@@ -329,7 +307,7 @@ var DeploymentElement = (function (_BaseProvision) {
 
                     validatorElement.value = value;
                 } else {
-                    throw new Error("Parameter value is required when mode is " + _MODE_VALIDATORS_ENUM.MODE_VALIDATORS_ENUM[0]);
+                    throw new Error('Parameter value is required when mode is ' + _MODE_VALIDATORS_ENUM.MODE_VALIDATORS_ENUM[0]);
                 }
             }
 
@@ -338,7 +316,7 @@ var DeploymentElement = (function (_BaseProvision) {
 
         /**
          * Set the downloadUrl attribute
-         * @param {string} downloadUrl 
+         * @param {string} downloadUrl
          * @return {DeploymentElement}
          */
     }, {
@@ -351,7 +329,7 @@ var DeploymentElement = (function (_BaseProvision) {
 
         /**
          * Set the fileName attribute
-         * @param {string} fileName 
+         * @param {string} fileName
          * @return {DeploymentElement}
          */
     }, {
@@ -364,7 +342,7 @@ var DeploymentElement = (function (_BaseProvision) {
 
         /**
          * Set the validation attribute
-         * @param {string} validation 
+         * @param {string} validation
          * @return {DeploymentElement}
          */
     }, {
@@ -377,7 +355,7 @@ var DeploymentElement = (function (_BaseProvision) {
 
         /**
          * Sets the old name attribute
-         * @param {string} name 
+         * @param {string} name
          * @return {DeploymentElement}
          */
     }, {
@@ -390,7 +368,7 @@ var DeploymentElement = (function (_BaseProvision) {
 
         /**
          * Sets the old version attribute
-         * @param {string} version 
+         * @param {string} version
          * @return {DeploymentElement}
          */
     }, {
@@ -403,7 +381,7 @@ var DeploymentElement = (function (_BaseProvision) {
 
         /**
          * Sets the old path attribute
-         * @param {string} path 
+         * @param {string} path
          * @return {DeploymentElement}
          */
     }, {
@@ -416,7 +394,7 @@ var DeploymentElement = (function (_BaseProvision) {
 
         /**
          * Sets the file to upload
-         * @param {object} rawFile 
+         * @param {object} rawFile
          * @return {DeploymentElement}
          */
     }, {
@@ -467,13 +445,13 @@ var DeploymentElement = (function (_BaseProvision) {
 
         /**
          * The request will have a specific time out if it will be exceeded then the promise throw an exception
-         * @param {number} ms - timeout in milliseconds    
-         * @return {Bundles} 
+         * @param {number} ms - timeout in milliseconds  
+         * @return {Bundles}
          */
     }, {
         key: 'withTimeout',
         value: function withTimeout(ms) {
-            if (typeof ms !== "number") throw new Error('Parameter ms must be a number');
+            if (typeof ms !== 'number') throw new Error('Parameter ms must be a number');
             this._timeout = ms;
             return this;
         }
@@ -481,16 +459,16 @@ var DeploymentElement = (function (_BaseProvision) {
         key: '_buildURL',
         value: function _buildURL() {
             if (this._name === undefined || this._version === undefined) throw new Error('Parameters name, version must be defined');
-            return this._resource + "/" + this._name + "/version/" + this._version;
+            return this._resource + '/' + this._name + '/version/' + this._version;
         }
 
         /**
-         * This invoke a request to OpenGate North API and the callback is managed by promises
-         * This method create an element deploymentElement
+         * This invokes a request to the OpenGate North API and the callback is managed by promises. This method creates a
+         * deployment element.
          * @param {File} rawFile - this File is the deployment element
          * @property {function (result:object, statusCode:number)} then - When request it is OK
          * @property {function (error:string)} catch - When request it is NOK
-         * @return {Promise}     
+         * @return {Promise}  
          */
     }, {
         key: 'createWithFile',
@@ -499,7 +477,7 @@ var DeploymentElement = (function (_BaseProvision) {
             if (typeof rawFile !== 'string') {
                 form = new FormData();
                 var blob = new Blob([JSON.stringify(this._composeElement())], {
-                    type: "application/octet-stream"
+                    type: 'application/octet-stream'
                 });
 
                 form.append('meta', blob);
@@ -520,7 +498,7 @@ var DeploymentElement = (function (_BaseProvision) {
 
             if (this._progressEvent != undefined) {
                 petitionOpts = {
-                    'progress': this._progressEvent
+                    progress: this._progressEvent
                 };
             }
 
@@ -535,11 +513,11 @@ var DeploymentElement = (function (_BaseProvision) {
                     });
                 } else {
                     defered.reject({
-                        "errors": [{
+                        errors: [{
                             code: res.statusCode,
-                            message: "OGAPI_FILE_NOT_CREATE"
+                            message: 'OGAPI_FILE_NOT_CREATE'
                         }],
-                        "statusCode": res.statusCode
+                        statusCode: res.statusCode
                     });
                 }
             })['catch'](function (error) {
@@ -550,11 +528,11 @@ var DeploymentElement = (function (_BaseProvision) {
         }
 
         /**
-         * This invoke a request to OpenGate North API and the callback is managed by promises
-         * This method create an element deploymentElement with previously assignated file
+         * This invokes a request to the OpenGate North API and the callback is managed by promises. This method creates a
+         * deployment element with the previously assigned file.
          * @property {function (result:object, statusCode:number)} then - When request it is OK
          * @property {function (error:string)} catch - When request it is NOK
-         * @return {Promise}     
+         * @return {Promise}  
          */
     }, {
         key: 'deploy',
@@ -569,7 +547,7 @@ var DeploymentElement = (function (_BaseProvision) {
     }, {
         key: 'update',
         value: function update() {
-            throw new Error("OGAPI_DEPLOYMENT_ELEMENT_NOT_UPDATED");
+            throw new Error('OGAPI_DEPLOYMENT_ELEMENT_NOT_UPDATED');
         }
     }]);
 

@@ -15,7 +15,7 @@ var _Hardware = require('./Hardware');
 var _Hardware2 = _interopRequireDefault(_Hardware);
 
 /**
- * This is a base object that allows the user to create a Subscription.
+ * This is a base object that allows the user to create a Subscriber object.
  */
 
 var Subscriber = (function () {
@@ -69,10 +69,10 @@ var Subscriber = (function () {
         }
 
         /**
-        * Set the hardware attribute
-        * @param {Hardware} hardware - optionals field
-        * @return {Subscriber}
-        */
+         * Set the hardware attribute
+         * @param {Hardware} hardware - optionals field
+         * @return {Subscriber}
+         */
     }, {
         key: 'withHardware',
         value: function withHardware(hardware) {
@@ -86,9 +86,9 @@ var Subscriber = (function () {
         key: 'composeElement',
         value: function composeElement() {
             var subscriber = {
-                "id": this._id,
-                "name": this._name,
-                "type": this._type
+                id: this._id,
+                name: this._name,
+                type: this._type
             };
             if (this._hardware !== undefined) {
                 subscriber.hardware = this._hardware.composeElement();

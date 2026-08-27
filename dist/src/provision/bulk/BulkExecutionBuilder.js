@@ -23,13 +23,13 @@ var _q = require('q');
 var _q2 = _interopRequireDefault(_q);
 
 var TYPES = {
-    'xls': 'application/vnd.ms-excel',
-    'xlsx': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    xls: 'application/vnd.ms-excel',
+    xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
 };
 
 exports.TYPES = TYPES;
 /**
- * This builder give you the necessary tools to create a bulk executions using our OpenGate REST
+ * This builder gives you the tools necessary to create bulk executions using the OpenGate REST API.
  */
 
 var BulkExecutionBuilder = (function (_BaseProvision) {
@@ -65,8 +65,9 @@ var BulkExecutionBuilder = (function (_BaseProvision) {
         }
 
         /**
-         * Instead of creating a bulk process, return the provision process planning for specified entries. This is is synch process that does not cause changes in the database
-         * @example 
+         * Instead of creating a bulk process, returns the provision process planning for the specified entries. This is a
+         * synchronous process that does not cause changes in the database.
+         * @example
          *  ogapi.bulkExecutionBuilder('orgname', 'processorId', 10000).plan(rawFile, extension)
          *  ogapi.bulkExecutionBuilder('orgname', 'processorId', 10000).plan(rawFile, extension, numberOfEntriesToProcess)
          * @param {string|File} rawFile - String with path of file or File (Blob)
@@ -83,14 +84,14 @@ var BulkExecutionBuilder = (function (_BaseProvision) {
             });
             this._type = 'plan';
             this._setExtraHeaders({
-                'accept': 'application/json'
+                accept: 'application/json'
             });
             return this._executeOperation(rawFile);
         }
 
         /**
          * Do a bulk using specific Provision Processor.
-         * @example 
+         * @example
          *  ogapi.bulkExecutionBuilder('orgname', 'processorId', 10000).bulk(rawFile, extension)
          * @param {string|File} rawFile - String with path of file or File (Blob)
          * @param {string} [extension] - File format
@@ -102,7 +103,7 @@ var BulkExecutionBuilder = (function (_BaseProvision) {
             if (typeof this._extension !== 'string') throw new Error('Parameter extension must be a string (xls or xlsx) and cannot be empty');
             this._type = 'bulk';
             this._setExtraHeaders({
-                'accept': this._extension
+                accept: this._extension
             });
             return this._executeOperation(rawFile);
         }
@@ -127,7 +128,7 @@ var BulkExecutionBuilder = (function (_BaseProvision) {
                 switch (statusCode) {
                     case 200:
                         {
-                            var resultQuery = response.text != "" ? JSON.parse(response.text) : {};
+                            var resultQuery = response.text != '' ? JSON.parse(response.text) : {};
                             var _statusCode = response.status;
                             defer.resolve({
                                 data: resultQuery,

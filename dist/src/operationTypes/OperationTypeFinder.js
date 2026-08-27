@@ -20,7 +20,7 @@ var _GenericFinder2 = require('../GenericFinder');
 var _GenericFinder3 = _interopRequireDefault(_GenericFinder2);
 
 /**
- *   This class allow make get request to OperationType resource into Opengate North API.
+ * This class allows making GET requests to the OperationType resource in the OpenGate North API.
  */
 
 var OperationTypeFinder = (function (_GenericFinder) {
@@ -34,16 +34,16 @@ var OperationTypeFinder = (function (_GenericFinder) {
     function OperationTypeFinder(ogapi) {
         _classCallCheck(this, OperationTypeFinder);
 
-        _get(Object.getPrototypeOf(OperationTypeFinder.prototype), 'constructor', this).call(this, ogapi, 'operationTypes/provision/organizations', "operationTypes", 'Operation type not found');
+        _get(Object.getPrototypeOf(OperationTypeFinder.prototype), 'constructor', this).call(this, ogapi, 'operationTypes/provision/organizations', 'operationTypes', 'Operation type not found');
     }
 
     /**
      * Performs a get that returns operation type
      * @test
      *   ogapi.newOperationTypeFinder().findByOrganizationAndName('xxx-xx-xxx-xxx', 'xxxxx-xxxx-xxxx').then().catch();
-     * @param {string} organization - organization 
+     * @param {string} organization - organization
      * @param {string} name - Rule Configuration name
-     * @return {Promise} 
+     * @return {Promise}
      */
 
     _createClass(OperationTypeFinder, [{
@@ -62,7 +62,7 @@ var OperationTypeFinder = (function (_GenericFinder) {
     }, {
         key: '_composeUrl',
         value: function _composeUrl() {
-            return this._baseUrl + "/" + this._organization + "/" + this._name;
+            return this._baseUrl + '/' + this._organization + '/' + this._name;
         }
     }]);
 

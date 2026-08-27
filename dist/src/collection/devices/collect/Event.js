@@ -42,8 +42,12 @@ var _enumTEMPERATURE_STATUS_ENUM = require('./enum/TEMPERATURE_STATUS_ENUM');
 
 var _enumLEVEL_TREND_ENUM = require('./enum/LEVEL_TREND_ENUM');
 
+var _utilParameterError = require('../../../util/parameterError');
+
+var _utilParameterError2 = _interopRequireDefault(_utilParameterError);
+
 /**
- * This is a base object that allows the user to create a Event.
+ * This is a base object that allows the user to create an Event.
  */
 
 var Event = (function () {
@@ -79,10 +83,7 @@ var Event = (function () {
     _createClass(Event, [{
         key: 'withEventId',
         value: function withEventId(id) {
-            if (typeof id !== 'string') throw new Error({
-                message: "OGAPI_STRING_PARAMETER",
-                parameter: 'EventId'
-            });
+            if (typeof id !== 'string') throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER', { parameter: 'EventId' });
             this._event_id = id;
             return this;
         }
@@ -156,18 +157,17 @@ var Event = (function () {
 
         /**
          * Set the operationalStatus attribute
-         * @param {string} operationalStatus 
+         * @param {string} operationalStatus
          * @return {Event}
          */
     }, {
         key: 'withOperationalStatus',
         value: function withOperationalStatus(operationalStatus) {
-
-            var operationalStatusBuilder = this._ogapi.operationalStatusSearchBuilder().withEntityType("ASSET").withId(operationalStatus).build();
+            var operationalStatusBuilder = this._ogapi.operationalStatusSearchBuilder().withEntityType('ASSET').withId(operationalStatus).build();
 
             operationalStatusBuilder.execute().then(function (res) {
                 if (res.statusCode === 204) {
-                    throw new Error("Operational Status not found");
+                    throw new Error('Operational Status not found');
                 }
             });
 
@@ -210,7 +210,7 @@ var Event = (function () {
             if (typeof date !== 'string' || date.length === 0) throw new Error('Parameter date must be String type and cannot be empty');
             if (this._location === undefined) {
                 this._location = {
-                    "coordinates": {}
+                    coordinates: {}
                 };
             }
             this._location.timestamp = date;
@@ -228,7 +228,7 @@ var Event = (function () {
             if (typeof latitude !== 'number' || latitude.length === 0) throw new Error('Parameter latitude must be number type and cannot be empty');
             if (this._location === undefined) {
                 this._location = {
-                    "coordinates": {}
+                    coordinates: {}
                 };
             }
             this._location.coordinates.latitude = latitude;
@@ -246,7 +246,7 @@ var Event = (function () {
             if (typeof longitude !== 'number' || longitude.length === 0) throw new Error('Parameter longitude must be number type and cannot be empty');
             if (this._location === undefined) {
                 this._location = {
-                    "coordinates": {}
+                    coordinates: {}
                 };
             }
             this._location.coordinates.longitude = longitude;
@@ -469,7 +469,7 @@ var Event = (function () {
                 return value == this;
             }, value);
 
-            if (typeof found === "undefined") {
+            if (typeof found === 'undefined') {
                 not_found.push(value);
             }
             if (not_found.length !== 0) {
@@ -480,15 +480,14 @@ var Event = (function () {
     }, {
         key: 'composeElement',
         value: function composeElement() {
-
             var event = {
-                'id': this._event_id,
-                'device': {
-                    'id': this._deviceId,
-                    'path': this._path,
-                    'name': this._name,
-                    'description': this._description,
-                    'operationalStatus': this._operationalStatus
+                id: this._event_id,
+                device: {
+                    id: this._deviceId,
+                    path: this._path,
+                    name: this._name,
+                    description: this._description,
+                    operationalStatus: this._operationalStatus
                 }
             };
             if (this._hardware !== undefined) {

@@ -22,7 +22,7 @@ var AssetID = 'provision.asset.identifier';
 
 exports.AssetID = AssetID;
 /**
- * Subscription builder. This builder give you the necessary tools to create a subscription using our OpenGate REST.
+ * Asset builder. This builder gives you the necessary tools to create an asset using the OpenGate REST API.
  */
 
 var AssetBuilder = (function (_SimpleBuilder) {
@@ -42,9 +42,9 @@ var AssetBuilder = (function (_SimpleBuilder) {
 
         _get(Object.getPrototypeOf(AssetBuilder.prototype), 'constructor', this).call(this, ogapi, organization + '/entities', allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout);
         this._entity['resourceType'] = {
-            "_value": {
-                "_current": {
-                    "value": "entity.asset"
+            _value: {
+                _current: {
+                    value: 'entity.asset'
                 }
             }
         };

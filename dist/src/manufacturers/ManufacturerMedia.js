@@ -23,7 +23,7 @@ var _provisionBaseProvision = require('../provision/BaseProvision');
 var _provisionBaseProvision2 = _interopRequireDefault(_provisionBaseProvision);
 
 /**
- * This is a base object that contains all you can do about ManufacturerMedia.
+ * This is a base object that contains everything you can do with ManufacturerMedia.
  */
 
 var ManufacturerMedia = (function (_BaseProvision) {
@@ -31,13 +31,13 @@ var ManufacturerMedia = (function (_BaseProvision) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function ManufacturerMedia(ogapi, manufacturerId) {
         _classCallCheck(this, ManufacturerMedia);
 
-        _get(Object.getPrototypeOf(ManufacturerMedia.prototype), 'constructor', this).call(this, ogapi, "/manufacturers/" + manufacturerId + '/media', undefined, ['identifier', 'name']);
+        _get(Object.getPrototypeOf(ManufacturerMedia.prototype), 'constructor', this).call(this, ogapi, '/manufacturers/' + manufacturerId + '/media', undefined, ['identifier', 'name']);
     }
 
     //http://cm.amplia.es/jira/browse/OGODM-3201
@@ -51,7 +51,7 @@ var ManufacturerMedia = (function (_BaseProvision) {
     _createClass(ManufacturerMedia, [{
         key: 'withIdentifier',
         value: function withIdentifier(id) {
-            if (typeof id !== 'string' || id.length > 50) throw new Error("OGAPI_STRING_PARAMETER_MAX_LENGTH_50");
+            if (typeof id !== 'string' || id.length > 50) throw new Error('OGAPI_STRING_PARAMETER_MAX_LENGTH_50');
             this._identifier = id;
             return this;
         }
@@ -64,7 +64,7 @@ var ManufacturerMedia = (function (_BaseProvision) {
     }, {
         key: 'withName',
         value: function withName(name) {
-            if (typeof name !== 'string') throw new Error("OGAPI_STRING_PARAMETER");
+            if (typeof name !== 'string') throw new Error('OGAPI_STRING_PARAMETER');
             this._name = name;
             return this;
         }
@@ -77,7 +77,7 @@ var ManufacturerMedia = (function (_BaseProvision) {
     }, {
         key: 'withFile',
         value: function withFile(file) {
-            if (!file) throw new Error("OGAPI_NOT_EMPTY_PARAMETER");
+            if (!file) throw new Error('OGAPI_NOT_EMPTY_PARAMETER');
             this._file = file;
             return this;
         }
@@ -98,23 +98,23 @@ var ManufacturerMedia = (function (_BaseProvision) {
     }, {
         key: '_buildURL',
         value: function _buildURL() {
-            var url = this._resource + "/" + this._identifier;
+            var url = this._resource + '/' + this._identifier;
             return url;
         }
     }, {
         key: 'update',
         value: function update() {
             // Prevent update operations
-            throw new Exception('OGAPI_METHOD_NOT_SUPPORTED');
+            throw new Error('OGAPI_METHOD_NOT_SUPPORTED');
         }
 
         /**
-         * This invoke a request to OpenGate North API and the callback is managed by promises
-         * This method create an element deploymentElement
+         * This invokes a request to the OpenGate North API and the callback is managed by promises. This method creates a
+         * deployment element
          * @param {File} rawFile - this File is the deployment element
          * @property {function (result:object, statusCode:number)} then - When request it is OK
          * @property {function (error:string)} catch - When request it is NOK
-         * @return {Promise}     
+         * @return {Promise}  
          */
     }, {
         key: 'create',
@@ -125,7 +125,7 @@ var ManufacturerMedia = (function (_BaseProvision) {
                 if (typeof rawFile !== 'string') {
                     form = new FormData();
                     var blob = new Blob([this._composeElement()], {
-                        type: "application/json"
+                        type: 'application/json'
                     });
 
                     form.append('json', blob);
@@ -144,7 +144,7 @@ var ManufacturerMedia = (function (_BaseProvision) {
             } else {
                 form = new FormData();
                 var blob = new Blob([JSON.stringify(this._composeElement())], {
-                    type: "application/octet-stream"
+                    type: 'application/octet-stream'
                 });
 
                 form.append('json', blob);
@@ -156,7 +156,7 @@ var ManufacturerMedia = (function (_BaseProvision) {
 
             if (this._progressEvent != undefined) {
                 petitionOpts = {
-                    'progress': this._progressEvent
+                    progress: this._progressEvent
                 };
             }
 
@@ -171,11 +171,11 @@ var ManufacturerMedia = (function (_BaseProvision) {
                     });
                 } else {
                     defered.reject({
-                        "errors": [{
+                        errors: [{
                             code: res.statusCode,
-                            message: "OGAPI_FILE_NOT_CREATE"
+                            message: 'OGAPI_FILE_NOT_CREATE'
                         }],
-                        "statusCode": res.statusCode
+                        statusCode: res.statusCode
                     });
                 }
             })['catch'](function (error) {

@@ -22,7 +22,7 @@ var _utilSearchingFieldsFieldFinder2 = _interopRequireDefault(_utilSearchingFiel
 
 var BASE_URL = '/areas';
 /**
- * Defined a search over Areas	
+ * Defines a search over Areas.
  * @example ogapi.areasSearchBuilder()
  */
 

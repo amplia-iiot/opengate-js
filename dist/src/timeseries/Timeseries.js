@@ -25,7 +25,7 @@ var _utilFormatsCheck_types2 = _interopRequireDefault(_utilFormatsCheck_types);
 var URL = 'timeseries/provision/organizations/';
 exports.URL = URL;
 /**
- * This is a base object that contains all you can do about Timeseries.
+ * This object represents a timeseries and exposes all the attributes you can configure for it.
  */
 
 var Timeseries = (function (_BaseProvision) {
@@ -33,13 +33,13 @@ var Timeseries = (function (_BaseProvision) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function Timeseries(ogapi) {
         _classCallCheck(this, Timeseries);
 
-        _get(Object.getPrototypeOf(Timeseries.prototype), 'constructor', this).call(this, ogapi, '/organizations/', undefined, ['name', 'organization', "timeBucket", 'identifierColumn']);
+        _get(Object.getPrototypeOf(Timeseries.prototype), 'constructor', this).call(this, ogapi, '/organizations/', undefined, ['name', 'organization', 'timeBucket', 'identifierColumn']);
     }
 
     _createClass(Timeseries, [{
@@ -88,7 +88,7 @@ var Timeseries = (function (_BaseProvision) {
     }, {
         key: 'withName',
         value: function withName(name) {
-            _utilFormatsCheck_types2['default']._checkStringAndPattern(name, "^[a-zA-Z0-9_@.-]*$", 'name');
+            _utilFormatsCheck_types2['default']._checkStringAndPattern(name, '^[a-zA-Z0-9_@.-]*$', 'name');
             this._name = name;
             return this;
         }
@@ -149,14 +149,14 @@ var Timeseries = (function (_BaseProvision) {
         }
 
         /**
-         * Name of generated column with bucket date.Required if timeBucket > 0.
+         * Name of generated column with bucket date.Required if timeBucket &gt; 0.
          * @param {string} bucketColumn - pattern: ^[a-zA-Z0-9 _-]*$
          * @return {Timeseries}
          */
     }, {
         key: 'withBucketColumn',
         value: function withBucketColumn(bucketColumn) {
-            _utilFormatsCheck_types2['default']._checkStringAndPattern(bucketColumn, "^[a-zA-Z0-9 _-]*$", 'bucketColumn');
+            _utilFormatsCheck_types2['default']._checkStringAndPattern(bucketColumn, '^[a-zA-Z0-9 _-]*$', 'bucketColumn');
             this._bucketColumn = bucketColumn;
             return this;
         }
@@ -169,7 +169,7 @@ var Timeseries = (function (_BaseProvision) {
     }, {
         key: 'withBucketInitColumn',
         value: function withBucketInitColumn(bucketInitColumn) {
-            _utilFormatsCheck_types2['default']._checkStringAndPattern(bucketInitColumn, "^[a-zA-Z0-9 _-]*$", 'bucketInitColumn');
+            _utilFormatsCheck_types2['default']._checkStringAndPattern(bucketInitColumn, '^[a-zA-Z0-9 _-]*$', 'bucketInitColumn');
             this._bucketInitColumn = bucketInitColumn;
             return this;
         }
@@ -187,7 +187,7 @@ var Timeseries = (function (_BaseProvision) {
             return this;
         }
 
-        /** 
+        /**
          * Initial date to first bucket with ISO date time format. Next bucket will be calcullated from this date. Default value is created date with time equals 00:00:00.000Z
          * @param {string}  origin
          * @return {Timeseries}
@@ -230,10 +230,10 @@ var Timeseries = (function (_BaseProvision) {
         value: function _composeElement() {
             this._resource = URL + this._organization;
             if (this._timeBucket > 0) {
-                _utilFormatsCheck_types2['default']._checkStringAndPattern(this._bucketColumn, "^[a-zA-Z0-9 _-]*$", 'bucketColumn');
+                _utilFormatsCheck_types2['default']._checkStringAndPattern(this._bucketColumn, '^[a-zA-Z0-9 _-]*$', 'bucketColumn');
 
                 if (this._bucketInitColumn) {
-                    _utilFormatsCheck_types2['default']._checkStringAndPattern(this._bucketInitColumn, "^[a-zA-Z0-9 _-]*$", 'bucketInitColumn');
+                    _utilFormatsCheck_types2['default']._checkStringAndPattern(this._bucketInitColumn, '^[a-zA-Z0-9 _-]*$', 'bucketInitColumn');
                 }
             }
             var timeserie = {
@@ -255,10 +255,10 @@ var Timeseries = (function (_BaseProvision) {
         key: '_composeUpdateElement',
         value: function _composeUpdateElement() {
             if (this._timeBucket > 0) {
-                _utilFormatsCheck_types2['default']._checkStringAndPattern(this._bucketColumn, "^[a-zA-Z0-9 _-]*$", 'bucketColumn');
+                _utilFormatsCheck_types2['default']._checkStringAndPattern(this._bucketColumn, '^[a-zA-Z0-9 _-]*$', 'bucketColumn');
 
                 if (this._bucketInitColumn) {
-                    _utilFormatsCheck_types2['default']._checkStringAndPattern(this._bucketInitColumn, "^[a-zA-Z0-9 _-]*$", 'bucketInitColumn');
+                    _utilFormatsCheck_types2['default']._checkStringAndPattern(this._bucketInitColumn, '^[a-zA-Z0-9 _-]*$', 'bucketInitColumn');
                 }
             }
             var timeserie = {

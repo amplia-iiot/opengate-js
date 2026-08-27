@@ -22,7 +22,7 @@ var _utilSearchingFieldsFieldFinder2 = _interopRequireDefault(_utilSearchingFiel
 
 var BASE_URL = '/operations/history';
 /**
- * Defined a search over Executions	
+ * Defines a search over Executions.
  * @example ogapi.executionsHistorySearchBuilder()
  */
 
@@ -44,10 +44,10 @@ var ExecutionsHistorySearchBuilder = (function (_SearchWithSummaryBuilder) {
   }
 
   /**
-   * The response will only have a summary information 
+   * The response will only have a summary information
    * @example
-   *	ogapi.executionsHistorySearchBuilder().summary() 
-   * @return {ExecutionsHistorySearchBuilder} 
+   *	ogapi.executionsHistorySearchBuilder().summary()
+   * @return {ExecutionsHistorySearchBuilder}
    */
   return ExecutionsHistorySearchBuilder;
 })(_SearchWithSummaryBuilder3['default']);

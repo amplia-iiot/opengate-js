@@ -23,7 +23,7 @@ var _utilSearchingFieldsFieldFinder2 = _interopRequireDefault(_utilSearchingFiel
 var BASE_URL = '/bundles';
 
 /**
- * Defined a search over Bundles	
+ * Defines a search over Bundles.
  * @example ogapi.bundlesSearchBuilder()
  */
 

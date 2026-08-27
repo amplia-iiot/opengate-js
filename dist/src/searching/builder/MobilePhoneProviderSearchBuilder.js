@@ -23,7 +23,7 @@ var _utilSearchingFieldsFieldFinder2 = _interopRequireDefault(_utilSearchingFiel
 var BASE_URL = '/catalog/operators';
 
 /**
- * Defined a search over mobile phone provider catalog
+ * Defines a search over the mobile phone provider catalog.
  * @example ogapi.mobilePhoneProviderSearchBuilder()
  */
 

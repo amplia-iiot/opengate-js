@@ -19,7 +19,6 @@ var _moment = require('moment');
 var _moment2 = _interopRequireDefault(_moment);
 
 var RuleConfigurationsActions = (function () {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
@@ -52,7 +51,7 @@ var RuleConfigurationsActions = (function () {
      * @param {string} newRuleCloseAction
      * @param {boolean} newRuleNotifications
      * @return {Promise}
-     * @throws {Error} 
+     * @throws {Error}
      */
 
     _createClass(RuleConfigurationsActions, [{
@@ -75,11 +74,11 @@ var RuleConfigurationsActions = (function () {
             if (newRuleNotifications && typeof newRuleNotifications !== 'boolean') throw new Error('Parameter newRuleNotifications must be true or false');
 
             var cloneInfo = {
-                "name": newRuleName,
-                "actions": {
-                    "open": newRuleOpenAction,
-                    "close": newRuleCloseAction,
-                    "notification": newRuleNotifications
+                name: newRuleName,
+                actions: {
+                    open: newRuleOpenAction,
+                    close: newRuleCloseAction,
+                    notification: newRuleNotifications
                 }
             };
 
@@ -87,7 +86,7 @@ var RuleConfigurationsActions = (function () {
             var promise = defered.promise;
             _this._ogapi.Napi.post(this._resource + '/clone', cloneInfo).then(function (res) {
                 if (res.statusCode === 201) {
-                    if (typeof _this2._onCreated === "function") {
+                    if (typeof _this2._onCreated === 'function') {
                         _this2._onCreated(res.header.location);
                     }
                     defered.resolve({ location: res.header.location, statusCode: res.statusCode });
@@ -97,7 +96,7 @@ var RuleConfigurationsActions = (function () {
                     defered.reject({ errors: res.errors, statusCode: res.statusCode });
                 }
             })['catch'](function (error) {
-                console.log("ERROR2 " + JSON.stringify(_this2._name) + JSON.stringify(error));
+                console.log('ERROR2 ' + JSON.stringify(_this2._name) + JSON.stringify(error));
                 defered.reject(error);
             });
             return promise;

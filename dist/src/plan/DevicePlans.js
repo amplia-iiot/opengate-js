@@ -31,23 +31,23 @@ var _lodash = require('lodash');
 var _lodash2 = _interopRequireDefault(_lodash);
 
 /**
- * This is a base object that contains all you can do about Device plans.
+ * This is a base object that contains everything you can do with device plans.
  */
 
 var DevicePlans = (function (_BaseProvision) {
     _inherits(DevicePlans, _BaseProvision);
 
-    /**     
-     * @param {InternalOpenGateAPI} Reference to the API object.
+    /**
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function DevicePlans(ogapi, organization) {
         _classCallCheck(this, DevicePlans);
 
-        _get(Object.getPrototypeOf(DevicePlans.prototype), 'constructor', this).call(this, ogapi, "/organizations", undefined, ['name', 'flowRate']);
+        _get(Object.getPrototypeOf(DevicePlans.prototype), 'constructor', this).call(this, ogapi, '/organizations', undefined, ['name', 'flowRate']);
         _utilFormatsCheck_types2['default']._checkStringAndLength(organization, 50, 'organization');
         this._organization = organization;
-        this._resource = this._resource + '/' + this._organization + "/" + _URL_ENUM.DEVICE_PLANS;
+        this._resource = this._resource + '/' + this._organization + '/' + _URL_ENUM.DEVICE_PLANS;
     }
 
     /**
@@ -79,7 +79,7 @@ var DevicePlans = (function (_BaseProvision) {
 
         /**
          * Set the flowRate attribute
-         * @param {object} flowRate - {value: number, unit: [SECONDS, MINUTES, HOURS, DAYS, MONTHS, YEARS]} 
+         * @param {object} flowRate - {value: number, unit: [SECONDS, MINUTES, HOURS, DAYS, MONTHS, YEARS]}
          * @return {OrganizationPlans}
          */
     }, {
@@ -121,7 +121,7 @@ var DevicePlans = (function (_BaseProvision) {
     }, {
         key: '_buildURL',
         value: function _buildURL() {
-            return this._resource + "/" + this._identifier;
+            return this._resource + '/' + this._identifier;
         }
     }]);
 

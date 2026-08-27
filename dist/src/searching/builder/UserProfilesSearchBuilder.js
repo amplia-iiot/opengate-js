@@ -23,7 +23,7 @@ var _StaticSearch = require('../StaticSearch');
 var _StaticSearch2 = _interopRequireDefault(_StaticSearch);
 
 /**
- * Defined a search over operational status catalogs    
+ * Defines a search over the user profiles catalog.
  * @example ogapi.userProfileSearchBuilder()
  */
 
@@ -45,12 +45,12 @@ var UserProfilesSearchBuilder = (function (_SearchBuilder) {
     }
 
     /**
-     * Build a instance of StaticSearch 
+     * Build a instance of StaticSearch
      *
      * @example
      *   ogapi.userProfileSearchBuilder().filter({and:[]}).build()
      * @throws {SearchBuilderError} Throw error on url build
-     * @return {StaticSearch} 
+     * @return {StaticSearch}
      */
 
     _createClass(UserProfilesSearchBuilder, [{
@@ -66,7 +66,7 @@ var UserProfilesSearchBuilder = (function (_SearchBuilder) {
          *  ogapi.userProfileSearchBuilder().withId('myId').build()
          * @param {!string} userProfileId - user profile id
          * @throws {Error} throw error when user profile id is not typeof string
-         * @return {userProfileSearchBuilder} 
+         * @return {userProfileSearchBuilder}
          */
     }, {
         key: 'withId',

@@ -44,12 +44,30 @@ var mock = (0, _superagentMocker2['default'])(_superagent2['default']);
 //
 
 /**
- * This is a wrapper of a Rest api javascript
+ * Encodes one query parameter value.
+ *
+ * Values used to be interpolated raw. A value carrying a space made Node reject the request
+ * outright with ERR_UNESCAPED_CHARACTERS, so the request never left the process. Sequences that
+ * are already valid percent-escapes are left alone, because pre-encoding was the only way callers
+ * could work around that, and double-encoding them would break the callers who did.
+ *
+ * @param {*} value - the value to place on the right-hand side of the parameter.
+ * @return {string} the value, safe to interpolate into a query string.
+ */
+function _encodeQueryValue(value) {
+    return String(value).split(/(%[0-9A-Fa-f]{2})/).map(function (part) {
+        return (/^%[0-9A-Fa-f]{2}$/.test(part) ? part : encodeURIComponent(part)
+        );
+    }).join('');
+}
+
+/**
+ * This is a JavaScript wrapper around a REST API client.
  */
 
 var NorthAmpliaREST = (function () {
     /**
-     * This is a constructor of a Rest api javascript
+     * Constructor of the REST API client.
      * @param {{ url: string,port: string,version: string,apiKey: string,JTW: string}} _options - this is configuration about Opengate North API.
      * @param {function} backend - this is a backend selected to manage a request to Opengate North API.
      */
@@ -128,7 +146,7 @@ var NorthAmpliaREST = (function () {
         //         },
         //         statusCode: 200
         //     };
-        // });    
+        // });
     }
 
     _createClass(NorthAmpliaREST, [{
@@ -179,12 +197,12 @@ var NorthAmpliaREST = (function () {
         /**
          * Invoke GET action to url specified
          * @param {!string} url - url to execute GET
-         * @param {number} timeout - timeout in milliseconds    
+         * @param {number} timeout - timeout in milliseconds  
          * @param {object} headers - headers of request
          * @param {object} parameters - parameters of request
          * @param {boolean} asBlob - response body as Blob
          * @param {string} serviceBaseURL - base of the uri petition
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'get',
@@ -203,7 +221,7 @@ var NorthAmpliaREST = (function () {
          * @param {object} headers - headers of request
          * @param {object} parameters - parameters of request
          * @param {string} serviceBaseURL - base of the uri petition
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'patch',
@@ -223,7 +241,7 @@ var NorthAmpliaREST = (function () {
          * @param {object} headers - headers of request
          * @param {object} parameters - parameters of request
          * @param {string} serviceBaseURL - base of the uri petition
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'post',
@@ -239,12 +257,12 @@ var NorthAmpliaREST = (function () {
          * Invoke POST multipart action to url and data specified
          * @param {!string} url - url to execute POST
          * @param {FormData} formData - attach data to request POST
-         * @param {object} events - events allowed, xhr.process 
-         * @param {number} timeout - timeout in milliseconds       
+         * @param {object} events - events allowed, xhr.process
+         * @param {number} timeout - timeout in milliseconds  
          * @param {object} headers - headers of request
          * @param {object} parameters - parameters of request
          * @param {string} serviceBaseURL - base of the uri petition
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'post_multipart',
@@ -262,11 +280,11 @@ var NorthAmpliaREST = (function () {
          * Invoke PUT action to url and data specified
          * @param {!string} url - url to execute PUT
          * @param {object} data - attach data to request PUT
-         * @param {number} timeout - timeout in milliseconds       
+         * @param {number} timeout - timeout in milliseconds  
          * @param {object} headers - headers of request
          * @param {object} parameters - parameters of request
          * @param {string} serviceBaseURL - base of the uri petition
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'put',
@@ -290,12 +308,12 @@ var NorthAmpliaREST = (function () {
          * Invoke put multipart action to url and data specified
          * @param {!string} url - url to execute POST
          * @param {FormData} formData - attach data to request POST
-         * @param {object} events - events allowed, xhr.process 
-         * @param {number} timeout - timeout in milliseconds       
+         * @param {object} events - events allowed, xhr.process
+         * @param {number} timeout - timeout in milliseconds  
          * @param {object} headers - headers of request
          * @param {object} parameters - parameters of request
          * @param {string} serviceBaseURL - base of the uri petition
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'put_multipart',
@@ -375,12 +393,12 @@ var NorthAmpliaREST = (function () {
         /**
          * Invoke DELETE action to url specified
          * @param {!string} url - url to execute DELETE
-         * @param {number} timeout - timeout in milliseconds    
+         * @param {number} timeout - timeout in milliseconds  
          * @param {object} headers - headers of request
          * @param {object} parameters - parameters of request
          * @param {object} body - body of request
          * @param {string} serviceBaseURL - base of the uri petition
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'delete',
@@ -404,7 +422,7 @@ var NorthAmpliaREST = (function () {
                 var keys = Object.keys(parameters);
                 for (var i = 0; i < keys.length; i++) {
                     var key = keys[i];
-                    var queryParameter = key + '=' + parameters[key];
+                    var queryParameter = encodeURIComponent(key) + '=' + _encodeQueryValue(parameters[key]);
                     if (i === 0) {
                         relativeUrl = relativeUrl + '?' + queryParameter;
                     } else {
@@ -416,20 +434,20 @@ var NorthAmpliaREST = (function () {
 
             // console.log(relativeUrl);
 
-            var relativeUrlSplit = relativeUrl.split("/");
+            var relativeUrlSplit = relativeUrl.split('/');
             var length = relativeUrlSplit.length;
 
             relativeUrlSplit.forEach(function (item, index) {
-                if (index === length - 1 && item.indexOf("?") > 0) {
-                    var parameters = item.substring(item.indexOf("?"), item.length);
-                    var _item = item.substring(0, item.indexOf("?"));
+                if (index === length - 1 && item.indexOf('?') > 0) {
+                    var parameters = item.substring(item.indexOf('?'), item.length);
+                    var _item = item.substring(0, item.indexOf('?'));
                     encode.push((0, _urlencode2['default'])(_item) + parameters);
                 } else {
                     encode.push((0, _urlencode2['default'])(item));
                 }
             });
 
-            return this._url(this._options) + "/" + this._getDefaultBaseURL(serviceBaseURL) + '/' + encode.join("/");
+            return this._url(this._options) + '/' + this._getDefaultBaseURL(serviceBaseURL) + '/' + encode.join('/');
         }
     }, {
         key: '_getDefaultBaseURL',
@@ -448,7 +466,7 @@ var NorthAmpliaREST = (function () {
         key: '_createPromiseRequest',
         value: function _createPromiseRequest(req, events, timeout, headers, asBlob) {
             var _timeout = timeout;
-            if (typeof _timeout === "undefined" || _timeout === null) {
+            if (typeof _timeout === 'undefined' || _timeout === null) {
                 _timeout = this._options.timeout;
             }
             var defered = _q2['default'].defer();
@@ -481,7 +499,7 @@ var NorthAmpliaREST = (function () {
             }
             _req = _req.end(function (err, res) {
                 if (err !== null) {
-                    console.error("OGAPI ERROR: ");
+                    console.error('OGAPI ERROR: ');
                     try {
                         console.log(JSON.stringify(err));
                     } catch (err) {
@@ -497,7 +515,7 @@ var NorthAmpliaREST = (function () {
                         }]
                     };
 
-                    if (typeof err.response !== "undefined") {
+                    if (typeof err.response !== 'undefined') {
                         data = err.response.body ? err.response.body : errorMessage;
                         _headers = err.response.headers;
                         _status = err.status;
@@ -512,11 +530,10 @@ var NorthAmpliaREST = (function () {
                     }
                     defered.reject({
                         statusCode: _status,
-                        'data': data,
+                        data: data,
                         headers: _headers
                     });
                 } else {
-
                     defered.resolve(res);
                 }
             });

@@ -653,7 +653,8 @@ var RequestEndMonkeyPatching = (function () {
     };
 })();
 /**
- * This is a abstract class, it must be extended to another class that defined the backend, it will be used on request to Opengate North API by browser or nodejs server
+ * This is an abstract class. It must be extended by another class that defines the backend, and it is used to make
+ * requests to the OpenGate North API from a browser or a Node.js server.
  */
 
 var InternalOpenGateAPI = (function () {
@@ -667,13 +668,13 @@ var InternalOpenGateAPI = (function () {
         _classCallCheck(this, InternalOpenGateAPI);
 
         if (this.constructor === InternalOpenGateAPI) {
-            throw new Error("Cannot construct Abstract instances directly");
+            throw new Error('Cannot construct Abstract instances directly');
         }
-        if (typeof northAmpliaREST !== "object") {
-            throw new Error("Must instance mandatory parameter: northAmpliaREST");
+        if (typeof northAmpliaREST !== 'object') {
+            throw new Error('Must instance mandatory parameter: northAmpliaREST');
         }
-        if (typeof southAmpliaREST !== "object") {
-            throw new Error("Must instance mandatory parameter: southAmpliaREST");
+        if (typeof southAmpliaREST !== 'object') {
+            throw new Error('Must instance mandatory parameter: southAmpliaREST');
         }
         if (_options.hooks && _options.hooks.beforeStart && typeof _options.hooks.beforeStart === 'function') {
             RequestEndMonkeyPatching(_options.hooks.beforeStart);
@@ -688,7 +689,7 @@ var InternalOpenGateAPI = (function () {
     }
 
     /**
-     * This return a util to find a user
+     * This returns a util to find a user
      * @return {UserFinder}
      */
 
@@ -699,7 +700,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find a user
+         * This returns a util to find a user
          * @return {GeoclusterFinder}
          */
     }, {
@@ -709,7 +710,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to regenerate geloclouster
+         * This returns a util to regenerate geloclouster
          * @return {Geocluster}
          */
     }, {
@@ -719,7 +720,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find a domains hierarchy
+         * This returns a util to find a domains hierarchy
          * @return {DomainsFinder}
          */
     }, {
@@ -729,7 +730,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find a organization
+         * This returns a util to find a organization
          * @return {OrganizationFinder}
          */
     }, {
@@ -739,7 +740,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find a channel
+         * This returns a util to find a channel
          * @return {ChannelFinder}
          */
     }, {
@@ -749,7 +750,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a AreasSearchBuilder to build a specific AreasSearch
+         * This returns a AreasSearchBuilder to build a specific AreasSearch
          * @return {AreasSearchBuilder}
          */
     }, {
@@ -759,7 +760,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a DatasetsCatalogSearchBuilder to build a specific DatasetsCatalogSearc
+         * This returns a DatasetsCatalogSearchBuilder to build a specific DatasetsCatalogSearc
          * @return {DatasetsCatalogSearchBuilder}
          */
     }, {
@@ -769,7 +770,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a BulkSearchBuilder to build a specific BulkSearchBuilder
+         * This returns a BulkSearchBuilder to build a specific BulkSearchBuilder
          * @return {BulkSearchBuilder}
          */
     }, {
@@ -779,7 +780,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a BulkExecutionSearchBuilder to build a specific bulk
+         * This returns a BulkExecutionSearchBuilder to build a specific bulk
          * @return {BulkExecutionSearchBuilder}
          */
     }, {
@@ -789,7 +790,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find and download a bulk
+         * This returns a util to find and download a bulk
          * @return {BulkFinder}
          */
     }, {
@@ -799,7 +800,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find summary and download a bulk executions
+         * This returns a util to find summary and download a bulk executions
          * @return {BulkFinder}
          */
     }, {
@@ -809,7 +810,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find a area
+         * This returns a util to find a area
          * @return {AreaFinder}
          */
     }, {
@@ -819,7 +820,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find a operation
+         * This returns a util to find a operation
          * @return {OperationFinder}
          */
     }, {
@@ -829,7 +830,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find Operation Types
+         * This returns a util to find Operation Types
          * @return {OperationType}
          */
     }, {
@@ -839,7 +840,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find Operation Types Templates
+         * This returns a util to find Operation Types Templates
          * @return {OperationTypeCatalog}
          */
     }, {
@@ -849,7 +850,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find countries catalog
+         * This returns a util to find countries catalog
          * @return {CountriesCatalog}
          */
     }, {
@@ -859,7 +860,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to update an Operation Type
+         * This returns a util to update an Operation Type
          * @return {OperationType}
          */
     }, {
@@ -869,7 +870,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find Rule Configurations
+         * This returns a util to find Rule Configurations
          * @return {RuleConfigurationsFinder}
          */
     }, {
@@ -879,7 +880,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util  RuleConfigurationsHelper
+         * This returns a util RuleConfigurationsHelper
          * @return {RuleConfigurationsHelper
          */
     }, {
@@ -889,7 +890,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a to find Dataset configuration
+         * This returns a to find Dataset configuration
          * @return {DatasetFinder}
          */
     }, {
@@ -899,7 +900,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a to find Timeserie configuration
+         * This returns a to find Timeserie configuration
          * @return {TimeserieFinder}
          */
     }, {
@@ -909,7 +910,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find Rule Configurations Templates
+         * This returns a util to find Rule Configurations Templates
          * @return {RuleConfigurationsCatalog}
          */
     }, {
@@ -919,7 +920,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to update a Rule Configuration
+         * This returns a util to update a Rule Configuration
          * @return {RuleConfigurations}
          */
     }, {
@@ -950,7 +951,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find a device
+         * This returns a util to find a device
          * @return {DeviceFinder}
          */
     }, {
@@ -960,7 +961,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find a ticket
+         * This returns a util to find a ticket
          * @return {TicketFinder}
          */
     }, {
@@ -970,7 +971,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find a Subscription
+         * This returns a util to find a Subscription
          * @return {SubscriptionsFinder}
          */
     }, {
@@ -980,7 +981,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find a Subscriber
+         * This returns a util to find a Subscriber
          * @return {SubscribersFinder}
          */
     }, {
@@ -995,7 +996,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to create your own filter to make searching
+         * This returns a util to create your own filter to make searching
          * @return {FilterBuilder}
          */
     }, {
@@ -1005,7 +1006,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to create your own select to make searching
+         * This returns a util to create your own select to make searching
          * @return {SelectBuilder}
          */
     }, {
@@ -1025,7 +1026,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a UsersSearchBuilder to build a specific UsersSearch
+         * This returns a UsersSearchBuilder to build a specific UsersSearch
          * @return {UsersSearchBuilder}
          */
     }, {
@@ -1035,7 +1036,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a DevicesSearchBuilder to build a specific DeviceSearch
+         * This returns a DevicesSearchBuilder to build a specific DeviceSearch
          * @return {DevicesSearchBuilder}
          */
     }, {
@@ -1045,7 +1046,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a AssetsSearchBuilder to build a specific AssetSearch
+         * This returns a AssetsSearchBuilder to build a specific AssetSearch
          * @return {AssetsSearchBuilder}
          */
     }, {
@@ -1055,7 +1056,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a SubscribersSearchBuilder to build a specific DeviceSearch
+         * This returns a SubscribersSearchBuilder to build a specific DeviceSearch
          * @return {SubscribersSearchBuilder}
          */
     }, {
@@ -1065,7 +1066,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a SubscriptionsSearchBuilder to build a specific DeviceSearch
+         * This returns a SubscriptionsSearchBuilder to build a specific DeviceSearch
          * @return {SubscriptionsSearchBuilder}
          */
     }, {
@@ -1075,7 +1076,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a TicketsSearchBuilder to build a specific TicketSearch
+         * This returns a TicketsSearchBuilder to build a specific TicketSearch
          */
     }, {
         key: 'ticketsSearchBuilder',
@@ -1084,7 +1085,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a CommunicationsModuleTypeSearchBuilder to build a specific CommunicationsModuleTypeSearch
+         * This returns a CommunicationsModuleTypeSearchBuilder to build a specific CommunicationsModuleTypeSearch
          * @return {CommunicationsModuleTypeSearchBuilder}
          */
     }, {
@@ -1094,7 +1095,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a FieldsDefinitionSearchBuilder to build a specific FieldsDefinitionSearchBuilder
+         * This returns a FieldsDefinitionSearchBuilder to build a specific FieldsDefinitionSearchBuilder
          * @return {FieldsDefinitionSearchBuilder}
          */
     }, {
@@ -1104,7 +1105,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a MobilePhoneProviderSearchBuilder to build a specific MobilePhoneProviderTypeSearch
+         * This returns a MobilePhoneProviderSearchBuilder to build a specific MobilePhoneProviderTypeSearch
          * @return {MobilePhoneProviderSearchBuilder}
          */
     }, {
@@ -1114,7 +1115,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a IoTDatastreamPeriodSearchBuilder to build a specific IoTDatastreamPeriodSearchBuilder
+         * This returns a IoTDatastreamPeriodSearchBuilder to build a specific IoTDatastreamPeriodSearchBuilder
          * @return {IoTDatastreamPeriodSearchBuilder}
          */
     }, {
@@ -1124,7 +1125,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a ResourceTypeSearchBuilder to build a specific ResourceTypeSearchBuilder
+         * This returns a ResourceTypeSearchBuilder to build a specific ResourceTypeSearchBuilder
          * @return {ResourceTypeSearchBuilder}
          */
     }, {
@@ -1134,7 +1135,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a AllowedResourceTypeSearchBuilder to build a specific AllowedResourceTypeSearchBuilder
+         * This returns a AllowedResourceTypeSearchBuilder to build a specific AllowedResourceTypeSearchBuilder
          * @return {AllowedResourceTypeSearchBuilder}
          */
     }, {
@@ -1144,7 +1145,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a IoTDatastreamAccessSearchBuilder to build a specific IoTDatastreamAccessSearchBuilder
+         * This returns a IoTDatastreamAccessSearchBuilder to build a specific IoTDatastreamAccessSearchBuilder
          * @return {IoTDatastreamAccessSearchBuilder}
          */
     }, {
@@ -1154,7 +1155,8 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a IoTDatastreamStoragePeriodSearchBuilder to build a specific IoTDatastreamStoragePeriodSearchBuilder
+         * This returns a IoTDatastreamStoragePeriodSearchBuilder to build a specific
+         * IoTDatastreamStoragePeriodSearchBuilder
          * @return {IoTDatastreamStoragePeriodSearchBuilder}
          */
     }, {
@@ -1164,7 +1166,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a TicketSeveritySearchBuilder to build a specific TicketSeveritySearchBuilder
+         * This returns a TicketSeveritySearchBuilder to build a specific TicketSeveritySearchBuilder
          * @return {TicketSeveritySearchBuilder}
          */
     }, {
@@ -1174,7 +1176,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a TicketPrioritySearchBuilder to build a specific TicketPrioritySearchBuilder
+         * This returns a TicketPrioritySearchBuilder to build a specific TicketPrioritySearchBuilder
          * @return {TicketPrioritySearchBuilder}
          */
     }, {
@@ -1184,7 +1186,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a TicketStatusSearchBuilder to build a specific TicketStatusSearchBuilder
+         * This returns a TicketStatusSearchBuilder to build a specific TicketStatusSearchBuilder
          * @return {TicketStatusSearchBuilder}
          */
     }, {
@@ -1194,7 +1196,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a RulesSearchBuilder to build a specific RulesSearch
+         * This returns a RulesSearchBuilder to build a specific RulesSearch
          * @return {RulesSearchBuilder}
          */
     }, {
@@ -1204,7 +1206,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a OperationTypesSearchBuilder to build a specific OperationTypesSearch
+         * This returns a OperationTypesSearchBuilder to build a specific OperationTypesSearch
          * @return {OperationTypesSearchBuilder}
          */
     }, {
@@ -1214,7 +1216,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a TasksSearchBuilder to build a specific TasksSearch
+         * This returns a TasksSearchBuilder to build a specific TasksSearch
          * @return {TasksSearchBuilder}
          */
     }, {
@@ -1224,7 +1226,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a OperationsSearchBuilder to build a specific ExecutionssSearch
+         * This returns a OperationsSearchBuilder to build a specific ExecutionssSearch
          * @return {OperationsSearchBuilder}
          */
     }, {
@@ -1234,7 +1236,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a ExecutionsSearchBuilder to build a specific ExecutionsSearch
+         * This returns a ExecutionsSearchBuilder to build a specific ExecutionsSearch
          * @return {ExecutionsSearchBuilder}
          */
     }, {
@@ -1244,7 +1246,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a ExecutionsHistorySearchBuilder to build a specific ExecutionsSearch
+         * This returns a ExecutionsHistorySearchBuilder to build a specific ExecutionsSearch
          * @return {ExecutionsHistorySearchBuilder}
          */
     }, {
@@ -1254,7 +1256,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a AlarmsSearchBuilder to build a specific AlarmsSearch
+         * This returns a AlarmsSearchBuilder to build a specific AlarmsSearch
          * @return {AlarmsSearchBuilder}
          */
     }, {
@@ -1264,7 +1266,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a DatastreamsSearchBuilder to build a specific DatastreamsSearchBuilder
+         * This returns a DatastreamsSearchBuilder to build a specific DatastreamsSearchBuilder
          * @return {DatastreamsSearchBuilder}
          */
     }, {
@@ -1274,7 +1276,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a DatamodelsSearchBuilder to build a specific DatamodelsSearchBuilder
+         * This returns a DatamodelsSearchBuilder to build a specific DatamodelsSearchBuilder
          * @return {DatamodelsSearchBuilder}
          */
     }, {
@@ -1284,7 +1286,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a FeedsSearchBuilder to build a specific FeedsSearchBuilder
+         * This returns a FeedsSearchBuilder to build a specific FeedsSearchBuilder
          * @return {FeedsSearchBuilder}
          */
     }, {
@@ -1294,7 +1296,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a DatapointsSearchBuilder to build a specific DatapointsSearchBuilder
+         * This returns a DatapointsSearchBuilder to build a specific DatapointsSearchBuilder
          * @return {DatapointsSearchBuilder}
          */
     }, {
@@ -1304,7 +1306,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a BundlesSearchBuilder to build a specific BundlesSearchBuilder
+         * This returns a BundlesSearchBuilder to build a specific BundlesSearchBuilder
          * @return {BundlesSearchBuilder}
          */
     }, {
@@ -1314,7 +1316,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a CertificatesSearchBuilder to build a specific CertificatesSearchBuilder
+         * This returns a CertificatesSearchBuilder to build a specific CertificatesSearchBuilder
          * @return {CertificatesSearchBuilder}
          */
     }, {
@@ -1324,7 +1326,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * 
+         *
          */
     }, {
         key: 'basicTypesSearchBuilder',
@@ -1333,7 +1335,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a EntitiesSearchBuilder to build a specific EntitiesSearch
+         * This returns a EntitiesSearchBuilder to build a specific EntitiesSearch
          * @return {EntitiesSearchBuilder}
          */
     }, {
@@ -1343,7 +1345,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a DatasetEntitiesSearchBuilder to build a specific DatasetEntitiesSearch
+         * This returns a DatasetEntitiesSearchBuilder to build a specific DatasetEntitiesSearch
          * @return {DatasetEntitiesSearchBuilder}
          */
     }, {
@@ -1353,7 +1355,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a DatasetSearchBuilder to build a specific DatasetSearch
+         * This returns a DatasetSearchBuilder to build a specific DatasetSearch
          * @return {DatasetSearchBuilder}
          */
     }, {
@@ -1363,7 +1365,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a TimeserieSearchBuilder to build a specific TimeserieSearch
+         * This returns a TimeserieSearchBuilder to build a specific TimeserieSearch
          * @return {TimeserieSearchBuilder}
          */
     }, {
@@ -1373,7 +1375,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a TimeserieDownsamplerBuilder to build a specific TimeserieDownsampler
+         * This returns a TimeserieDownsamplerBuilder to build a specific TimeserieDownsampler
          * @return {TimeserieDownsamplerBuilder}
          */
     }, {
@@ -1383,7 +1385,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a TimeserieDatasetBuilder to build a specific TimeserieDataset
+         * This returns a TimeserieDatasetBuilder to build a specific TimeserieDataset
          * @return {TimeserieDatasetBuilder}
          */
     }, {
@@ -1393,7 +1395,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a BundlesBuilder to build a specific BundlesBuilder
+         * This returns a BundlesBuilder to build a specific BundlesBuilder
          * @return {Bundles}
          */
     }, {
@@ -1403,7 +1405,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find a bundle
+         * This returns a util to find a bundle
          * @return {BundleFinder}
          */
     }, {
@@ -1413,7 +1415,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a OrganizationsBuilder to build a specific OrganizationsBuilder
+         * This returns a OrganizationsBuilder to build a specific OrganizationsBuilder
          * @return {Organizations}
          */
     }, {
@@ -1423,7 +1425,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to create a user
+         * This returns a util to create a user
          * @return {User}
          */
     }, {
@@ -1433,7 +1435,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to create a certificate
+         * This returns a util to create a certificate
          * @return {Certificates}
          */
     }, {
@@ -1443,7 +1445,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a SoftwaresSearchBuilder to build a specific SoftwaresSearchBuilder
+         * This returns a SoftwaresSearchBuilder to build a specific SoftwaresSearchBuilder
          * @return {SoftwaresSearchBuilder}
          */
     }, {
@@ -1453,7 +1455,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a OperationalStatusSearchBuilder to build a specific OperationalStatusSearchBuilder
+         * This returns a OperationalStatusSearchBuilder to build a specific OperationalStatusSearchBuilder
          * @return {OperationalStatusSearchBuilder}
          */
     }, {
@@ -1463,7 +1465,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a ServiceGroupSearchBuilder to build a specific ServiceGroupSearchBuilder
+         * This returns a ServiceGroupSearchBuilder to build a specific ServiceGroupSearchBuilder
          * @return {ServiceGroupSearchBuilder}
          */
     }, {
@@ -1473,7 +1475,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a AdministrativeStateSearchBuilder to build a specific AdministrativeStateSearchBuilder
+         * This returns a AdministrativeStateSearchBuilder to build a specific AdministrativeStateSearchBuilder
          * @return {AdministrativeStateSearchBuilder}
          */
     }, {
@@ -1483,7 +1485,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a DevicesSouth to build a specific DevicesSouth
+         * This returns a DevicesSouth to build a specific DevicesSouth
          * @return {DeviceMessage}
          */
     }, {
@@ -1493,7 +1495,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a datastreamBuilder to build a specific Datastream
+         * This returns a datastreamBuilder to build a specific Datastream
          * @return {Datastream}
          */
     }, {
@@ -1503,7 +1505,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a datapointsBuilder to build a specific Datapoint
+         * This returns a datapointsBuilder to build a specific Datapoint
          * @return {Datapoint}
          */
     }, {
@@ -1594,7 +1596,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to operation actions on an operation
+         * This returns a util to operation actions on an operation
          * @param {!string} operationId - identifier of operation
          * @return {OperationActions}
          */
@@ -1605,7 +1607,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to manage actions over periodicities
+         * This returns a util to manage actions over periodicities
          * @param {!string} taskId - identifier of operation
          * @return {PeriodicityActions}
          */
@@ -1616,7 +1618,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a WorkgroupRelationsBuilder to build a specific workgroup relation
+         * This returns a WorkgroupRelationsBuilder to build a specific workgroup relation
          * @return {WorkgroupRelations}
          */
     }, {
@@ -1626,7 +1628,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a WorkgroupRelationsFinder 
+         * This returns a WorkgroupRelationsFinder
          * @return {WorkgroupRelationsFinder}
          */
     }, {
@@ -1636,7 +1638,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a WorkgroupsBuilder to build a specific workgroup
+         * This returns a WorkgroupsBuilder to build a specific workgroup
          * @return {Workgroups}
          */
     }, {
@@ -1646,7 +1648,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find a workgroup
+         * This returns a util to find a workgroup
          * @return {WorkgroupFinder}
          */
     }, {
@@ -1656,7 +1658,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a WorkgroupsSearchBuilder to build a specific WorkgroupsSearch
+         * This returns a WorkgroupsSearchBuilder to build a specific WorkgroupsSearch
          * @return {WorkgroupsSearchBuilder}
          */
     }, {
@@ -1666,7 +1668,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a ChannelsBuilder to build a specific WorkgroupsSearch
+         * This returns a ChannelsBuilder to build a specific WorkgroupsSearch
          * @return {Channels}
          */
     }, {
@@ -1676,7 +1678,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a AreasBuilder to build a specific area
+         * This returns a AreasBuilder to build a specific area
          * @return {Areas}
          */
     }, {
@@ -1686,7 +1688,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a DatasetBuilder to build a specific dataset
+         * This returns a DatasetBuilder to build a specific dataset
          * @return {Datasets}
          */
     }, {
@@ -1696,7 +1698,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a TimeserieBuilder to build a specific timeserie
+         * This returns a TimeserieBuilder to build a specific timeserie
          * @return {Timeseries}
          */
     }, {
@@ -1706,7 +1708,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find a timeseries function
+         * This returns a util to find a timeseries function
          * @return {TimeseriesFunctionsFinder}
          */
     }, {
@@ -1716,7 +1718,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a TimeserieBuilder to build a specific timeserie
+         * This returns a TimeserieBuilder to build a specific timeserie
          * @return {TimeseriesFunction}
          */
     }, {
@@ -1726,7 +1728,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a TimeseriesFunctionsHelper
+         * This returns a TimeseriesFunctionsHelper
          * @return {TimeseriesFunctionsHelper}
          */
     }, {
@@ -1736,7 +1738,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a ChannelsSearchBuilder to build a specific ChannelsSearch
+         * This returns a ChannelsSearchBuilder to build a specific ChannelsSearch
          * @return {ChannelsSearchBuilder}
          */
     }, {
@@ -1746,7 +1748,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a UserProfilesSearchBuilder to build a specific UserProfilesSearchBuilder
+         * This returns a UserProfilesSearchBuilder to build a specific UserProfilesSearchBuilder
          * @return {UserProfilesSearchBuilder}
          */
     }, {
@@ -1756,7 +1758,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a Datamodels to build a specific Datamodels
+         * This returns a Datamodels to build a specific Datamodels
          * @return {Datamodels}
          */
     }, {
@@ -1766,7 +1768,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a DatamodelsHelper to build a specific DatamodelsHelper
+         * This returns a DatamodelsHelper to build a specific DatamodelsHelper
          * @return {DatamodelsHelper}
          */
     }, {
@@ -1776,7 +1778,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find a datamodel
+         * This returns a util to find a datamodel
          * @return {DatamodelsFinder}
          */
     }, {
@@ -1786,7 +1788,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a datastream to build a specific Datastream
+         * This returns a datastream to build a specific Datastream
          * @return {DatastreamsBuilder}
          */
     }, {
@@ -1796,7 +1798,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to create a bulk execution
+         * This returns a util to create a bulk execution
          * @return {BulkExecutionBuilder}
          */
     }, {
@@ -1806,7 +1808,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a Qrating to build a specific Qrating
+         * This returns a Qrating to build a specific Qrating
          * @return {QratingsBuilder}
          */
     }, {
@@ -1816,7 +1818,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a CountryCodesSearchBuilder to build a specific CountryCodesSearchBuilder
+         * This returns a CountryCodesSearchBuilder to build a specific CountryCodesSearchBuilder
          * @return {CountryCodesSearchBuilder}
          */
     }, {
@@ -1826,7 +1828,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a TimezoneSearchBuilder to build a specific TimezoneSearchBuilder
+         * This returns a TimezoneSearchBuilder to build a specific TimezoneSearchBuilder
          * @return {TimezoneSearchBuilder}
          */
     }, {
@@ -1836,7 +1838,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a UserLanguagesSearchBuilder to build a specific UserLanguagesSearchBuilder
+         * This returns a UserLanguagesSearchBuilder to build a specific UserLanguagesSearchBuilder
          * @return {UserLanguagesSearchBuilder}
          */
     }, {
@@ -1846,7 +1848,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a ConnectorFunctionsFinder 
+         * This returns a ConnectorFunctionsFinder
          * @return {ConnectorFunctionsFinder}
          */
     }, {
@@ -1856,7 +1858,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a ConnectorFunctionsCatalogFinder 
+         * This returns a ConnectorFunctionsCatalogFinder
          * @return {ConnectorFunctionsCatalogFinder}
          */
     }, {
@@ -1866,7 +1868,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a ConnectorFunctionsCatalog
+         * This returns a ConnectorFunctionsCatalog
          * @return {ConnectorFunctionsCatalog}
          */
     }, {
@@ -1876,7 +1878,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a ConnectorFunctionsHelper
+         * This returns a ConnectorFunctionsHelper
          * @return {ConnectorFunctionsHelper}
          */
     }, {
@@ -1886,7 +1888,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a ConnectorFunctions
+         * This returns a ConnectorFunctions
          * @return {ConnectorFunctions}
          */
     }, {
@@ -1896,9 +1898,9 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * 
+         *
          * @param {String} identifier - only update or delete
-         * @param {Object} connectorFunctionsCatalog 
+         * @param {Object} connectorFunctionsCatalog
          * @returns {ConnectorFunctionsCatalog}
          */
     }, {
@@ -1908,7 +1910,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a ProvisionsProcesorsBuilder to build a specific ProvisionsProcesorsBuilder
+         * This returns a ProvisionsProcesorsBuilder to build a specific ProvisionsProcesorsBuilder
          * @return {provisionProcessorsBuilder}
          */
     }, {
@@ -1918,7 +1920,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find a provision procesor
+         * This returns a util to find a provision procesor
          * @return {ProvisionProcessorsFinder}
          */
     }, {
@@ -1928,7 +1930,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a ManufacturersBuilder to build a specific ManufacturersBuilder
+         * This returns a ManufacturersBuilder to build a specific ManufacturersBuilder
          * @return {ManufacturersBuilder}
          */
     }, {
@@ -1938,7 +1940,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a ManufacturerModelsBuilder to build a specific ManufacturerModelsBuilder
+         * This returns a ManufacturerModelsBuilder to build a specific ManufacturerModelsBuilder
          * @return {ManufacturerModelsBuilder}
          */
     }, {
@@ -1948,7 +1950,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find a hardware manufacturer
+         * This returns a util to find a hardware manufacturer
          * @return {ManufacturerFinder}
          */
     }, {
@@ -1958,7 +1960,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find a hardware model
+         * This returns a util to find a hardware model
          * @return {ModelFinder}
          */
     }, {
@@ -1967,7 +1969,8 @@ var InternalOpenGateAPI = (function () {
             return new _manufacturersModelFinder2['default'](this);
         }
 
-        /** This return a OrganizationManufacturersBuilder to build a specific OrganizationManufacturersBuilder
+        /**
+         * This returns a OrganizationManufacturersBuilder to build a specific OrganizationManufacturersBuilder
          * @return {OrganizationManufacturersBuilder}
          */
     }, {
@@ -1977,7 +1980,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a OrganizationManufacturerModelsBuilder to build a specific OrganizationManufacturerModelsBuilder
+         * This returns a OrganizationManufacturerModelsBuilder to build a specific OrganizationManufacturerModelsBuilder
          * @return {OrganizationManufacturerModelsBuilder}
          */
     }, {
@@ -1987,7 +1990,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find a hardware manufacturer
+         * This returns a util to find a hardware manufacturer
          * @return {OrganizationManufacturerFinder}
          */
     }, {
@@ -1997,7 +2000,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find a hardware model
+         * This returns a util to find a hardware model
          * @return {OrganizationModelFinder}
          */
     }, {
@@ -2007,7 +2010,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to search organizations
+         * This returns a util to search organizations
          * @return {OrganizationsSearchBuilder}
          */
     }, {
@@ -2016,7 +2019,8 @@ var InternalOpenGateAPI = (function () {
             return new _searchingBuilderOrganizationsSearchBuilder2['default'](this);
         }
 
-        /** This return a SoftwaresBuilder to build a specific SoftwaresBuilder
+        /**
+         * This returns a SoftwaresBuilder to build a specific SoftwaresBuilder
          * @return {SoftwaresBuilder}
          */
     }, {
@@ -2026,7 +2030,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find an organization software
+         * This returns a util to find an organization software
          * @return {SoftwareFinder}
          */
     }, {
@@ -2035,8 +2039,8 @@ var InternalOpenGateAPI = (function () {
             return new _organization_softwareSoftwareFinder2['default'](this);
         }
 
-        /** 
-         * This return a NotebookLauncherBuilder to build a specific NotebookLauncherBuilder
+        /**
+         * This returns a NotebookLauncherBuilder to build a specific NotebookLauncherBuilder
          * @return {NotebookLauncherBuilder}
          */
     }, {
@@ -2045,8 +2049,8 @@ var InternalOpenGateAPI = (function () {
             return new _notebookSchedulerNotebookLauncher2['default'](this);
         }
 
-        /** 
-         * This return a NotebookSchedulerBuilder to build a specific NotebookSchedulerBuilder
+        /**
+         * This returns a NotebookSchedulerBuilder to build a specific NotebookSchedulerBuilder
          * @return {NotebookSchedulerBuilder}
          */
     }, {
@@ -2056,7 +2060,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find notebooks
+         * This returns a util to find notebooks
          * @return {NotebookFinder}
          */
     }, {
@@ -2066,7 +2070,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find notebooks schedulers
+         * This returns a util to find notebooks schedulers
          * @return {NotebookSchedulerFinder}
          */
     }, {
@@ -2076,7 +2080,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to view schedule history
+         * This returns a util to view schedule history
          * @return {HistoryFinder}
          */
     }, {
@@ -2086,7 +2090,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to view schedule rest requests
+         * This returns a util to view schedule rest requests
          * @return {RestRequestFinder}
          */
     }, {
@@ -2096,7 +2100,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to build schedule rest requests
+         * This returns a util to build schedule rest requests
          * @return {RestRequest}
          */
     }, {
@@ -2106,7 +2110,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to view schedule image executions
+         * This returns a util to view schedule image executions
          * @return {ImageExecutionFinder}
          */
     }, {
@@ -2116,7 +2120,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to build schedule image executions
+         * This returns a util to build schedule image executions
          * @return {ImageExecution}
          */
     }, {
@@ -2126,7 +2130,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to view schedule pipelines
+         * This returns a util to view schedule pipelines
          * @return {PipelineFinder}
          */
     }, {
@@ -2136,7 +2140,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to build a pipeline
+         * This returns a util to build a pipeline
          * @return {SchedulePipeline}
          */
     }, {
@@ -2146,7 +2150,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find organization plans
+         * This returns a util to find organization plans
          * @returns {OrganizationPlansFinder}
          */
     }, {
@@ -2156,7 +2160,7 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a util to find device plans
+         * This returns a util to find device plans
          * @returns {DevicePlansFinder}
          */
     }, {
@@ -2166,8 +2170,8 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a OrganizationPlans to build a specific organization plan
-         * @param {*} organization 
+         * This returns a OrganizationPlans to build a specific organization plan
+         * @param {*} organization
          * @returns {OrganizationPlans}
          */
     }, {
@@ -2177,8 +2181,8 @@ var InternalOpenGateAPI = (function () {
         }
 
         /**
-         * This return a DevicePlans to build a specific device plan
-         * @param {*} organization 
+         * This returns a DevicePlans to build a specific device plan
+         * @param {*} organization
          * @returns {OrganizationPlans}
          */
     }, {

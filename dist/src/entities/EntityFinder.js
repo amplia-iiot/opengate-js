@@ -19,7 +19,7 @@ var _ProvisionGenericFinder2 = require('../ProvisionGenericFinder');
 var _ProvisionGenericFinder3 = _interopRequireDefault(_ProvisionGenericFinder2);
 
 /**
- *   *   This class allow make get request to entity provisioned resource into Opengate North API.
+ * This class allows you to make GET requests to the provisioned entity resource in the OpenGate North API.
  */
 
 var EntityFinder = (function (_ProvisionGenericFinder) {
@@ -27,7 +27,7 @@ var EntityFinder = (function (_ProvisionGenericFinder) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function EntityFinder(ogapi, entity, error_not_found, entitySource) {
@@ -46,11 +46,11 @@ var EntityFinder = (function (_ProvisionGenericFinder) {
     _createClass(EntityFinder, [{
         key: '_composeUrl',
         value: function _composeUrl() {
-            return this._baseUrl + "/" + this._organization + "/" + this._entitySource + "/" + this._id;
+            return this._baseUrl + '/' + this._organization + '/' + this._entitySource + '/' + this._id;
         }
 
         /**
-         * Download a specific entity by its organization and id. This execute a GET http method
+         * Download a specific entity by its organization and id. This executes a GET HTTP method
          * @test
          *   ogapi.newEntityFinder().findByOrganizationAndId('orgname', xxx-xx-xxx-xxx').then().catch();
          *   ogapi.newDeviceFinder().findByOrganizationAndId('orgname', xxx-xx-xxx-xxx').then().catch();
@@ -59,7 +59,7 @@ var EntityFinder = (function (_ProvisionGenericFinder) {
          * @param {string} organization - entity organization .
          * @param {string} id - entity id.
          * @param {string} flattened - flattened response flag.
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findByOrganizationAndId',

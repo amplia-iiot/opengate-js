@@ -20,7 +20,7 @@ var _GenericFinder2 = require('../GenericFinder');
 var _GenericFinder3 = _interopRequireDefault(_GenericFinder2);
 
 /**
- *   This class allow make get request to TimeseriesFunction resource into Opengate North API.
+ * This class allows making GET requests to the TimeseriesFunction resource in the OpenGate North API.
  */
 
 var TimeseriesFunctionFinder = (function (_GenericFinder) {
@@ -34,15 +34,15 @@ var TimeseriesFunctionFinder = (function (_GenericFinder) {
     function TimeseriesFunctionFinder(ogapi) {
         _classCallCheck(this, TimeseriesFunctionFinder);
 
-        _get(Object.getPrototypeOf(TimeseriesFunctionFinder.prototype), 'constructor', this).call(this, ogapi, 'timeseries/provision/organizations', "TimeseriesFunctions", 'Timeseries function not found');
+        _get(Object.getPrototypeOf(TimeseriesFunctionFinder.prototype), 'constructor', this).call(this, ogapi, 'timeseries/provision/organizations', 'TimeseriesFunctions', 'Timeseries function not found');
     }
 
     /**
      * Performs a get that returns a list of timeseries function
      * @test
      *   ogapi.newTimeseriesFunctionFinder().findByOrganization('xxx-xx-xxx-xxx').then().catch();
-     * @param {string} organization - organization 
-     * @return {Promise} 
+     * @param {string} organization - organization
+     * @return {Promise}
      */
 
     _createClass(TimeseriesFunctionFinder, [{
@@ -62,10 +62,10 @@ var TimeseriesFunctionFinder = (function (_GenericFinder) {
          * Performs a get that returns a timeseries function metadata
          * @test
          *   ogapi.newTimeseriesFunctionFinder().findByOrganizationAndName('xxx-xx-xxx-xxx', 'xxxxx-xxxx-xxxx').then().catch();
-         * @param {string} organization - organization 
+         * @param {string} organization - organization
          * @param {string} name - Timeseries function Configuration name
          * @param {boolean} script - If true script content will be downloaded
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findByOrganizationAndName',
@@ -83,7 +83,7 @@ var TimeseriesFunctionFinder = (function (_GenericFinder) {
     }, {
         key: '_composeUrl',
         value: function _composeUrl() {
-            return this._baseUrl + "/" + this._organization + "/catalog" + (this._name ? '/' + this._name : '') + (this._script ? '/script' : '');
+            return this._baseUrl + '/' + this._organization + '/catalog' + (this._name ? '/' + this._name : '') + (this._script ? '/script' : '');
         }
     }]);
 

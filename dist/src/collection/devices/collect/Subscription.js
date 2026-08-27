@@ -70,10 +70,10 @@ var Subscription = (function () {
         }
 
         /**
-        * Set the description attribute
-        * @param {string} description - optional field
-        * @return {Subscription}
-        */
+         * Set the description attribute
+         * @param {string} description - optional field
+         * @return {Subscription}
+         */
     }, {
         key: 'withDescription',
         value: function withDescription(description) {
@@ -83,10 +83,10 @@ var Subscription = (function () {
         }
 
         /**
-        * Set the operator attribute
-        * @param {string} operator - optional field
-        * @return {Subscription}
-        */
+         * Set the operator attribute
+         * @param {string} operator - optional field
+         * @return {Subscription}
+         */
     }, {
         key: 'withOperator',
         value: function withOperator(operator) {
@@ -122,10 +122,10 @@ var Subscription = (function () {
         }
 
         /**
-        * Set the addressType attribute
-        * @param {string} addressType - optional field
-        * @return {Subscription}
-        */
+         * Set the addressType attribute
+         * @param {string} addressType - optional field
+         * @return {Subscription}
+         */
     }, {
         key: 'withAddressType',
         value: function withAddressType(addressType) {
@@ -148,10 +148,10 @@ var Subscription = (function () {
         }
 
         /**
-        * Set the addressApn attribute
-        * @param {string} addressApn - optional field
-        * @return {Subscription}
-        */
+         * Set the addressApn attribute
+         * @param {string} addressApn - optional field
+         * @return {Subscription}
+         */
     }, {
         key: 'withAddressApn',
         value: function withAddressApn(addressApn) {
@@ -167,7 +167,7 @@ var Subscription = (function () {
                 return value == this;
             }, value);
 
-            if (typeof found === "undefined") {
+            if (typeof found === 'undefined') {
                 not_found.push(value);
             }
             if (not_found.length !== 0) {
@@ -179,17 +179,17 @@ var Subscription = (function () {
         key: 'composeElement',
         value: function composeElement() {
             var subscription = {
-                "id": this._id,
-                "name": this._name,
-                "type": this._type,
-                "description": this._description,
-                "operator": this._operator,
-                "imsi": this._imsi,
-                "msisdn": this._msisdn,
-                "address": {
-                    "type": this._addressType,
-                    "value": this._addressValue,
-                    "apn": this._addressApn
+                id: this._id,
+                name: this._name,
+                type: this._type,
+                description: this._description,
+                operator: this._operator,
+                imsi: this._imsi,
+                msisdn: this._msisdn,
+                address: {
+                    type: this._addressType,
+                    value: this._addressValue,
+                    apn: this._addressApn
                 }
             };
             return subscription;

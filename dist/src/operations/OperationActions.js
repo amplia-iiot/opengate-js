@@ -18,12 +18,11 @@ var _moment = require('moment');
 
 var _moment2 = _interopRequireDefault(_moment);
 
-var JOB_RESOURCE = "/jobs/";
-var TASK_RESOURCE = "/tasks/";
+var JOB_RESOURCE = '/jobs/';
+var TASK_RESOURCE = '/tasks/';
 var LIMIT_SIZE_DEF_VALUE = 10;
 
 var OperationActions = (function () {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
@@ -42,9 +41,9 @@ var OperationActions = (function () {
     /**
      * This invoke a request to OpenGate North API and the callback is managed by promises
      * This function active an operation
-     * @example 
+     * @example
      * ogapi.newOperationActions("xxxxx-xxx-xxxx-xxxxx").active()
-     * @return {Promise} 
+     * @return {Promise}
      * @property {function (statusCode:number)} then - When request it is OK
      * @property {function (errors:array, statusCode:number)} then - When request it is NOK
      * @property {function (errors:array)} catch - When request it is NOK
@@ -58,17 +57,17 @@ var OperationActions = (function () {
                     active: true
                 }
             };
-            this._key = "job";
+            this._key = 'job';
             this._resource = this._resource + JOB_RESOURCE + this._operationId;
             return this._update(config);
         }
 
         /**
-         * This invoke a request to OpenGate North API and the callback is managed by promises
-         * This function pause an operation
-         * @example 
+         * This invoke a request to OpenGate North API and the callback is managed by promises This function pauses an
+         * operation
+         * @example
          * ogapi.OperationActions("xxxxx-xxx-xxxx-xxxxx").pause()
-         * @return {Promise} 
+         * @return {Promise}
          * @property {function (statusCode:number)} then - When request it is OK
          * @property {function (errors:array, statusCode:number)} then - When request it is NOK
          * @property {function (errors:array)} catch - When request it is NOK
@@ -81,14 +80,14 @@ var OperationActions = (function () {
                     active: false
                 }
             };
-            this._key = "job";
+            this._key = 'job';
             this._resource = this._resource + JOB_RESOURCE + this._operationId;
             return this._update(config);
         }
 
         /**
-         * This invoke a request to OpenGate North API and the callback is managed by promises
-         * This function cancela operation
+         * This invoke a request to OpenGate North API and the callback is managed by promises This function cancels an
+         * operation
          * @return {Promise}
          * @property {function (result:object, statusCode:number)} then - When request it is OK
          * @property {function (errors:array, statusCode:number)} then - When request it is NOK
@@ -107,9 +106,9 @@ var OperationActions = (function () {
         /**
          * This invoke a request to OpenGate North API and the callback is managed by promises
          * This function active periodicity of an operation
-         * @example 
+         * @example
          * ogapi.newOperationActions("xxxxx-xxx-xxxx-xxxxx").activePeriodicity()
-         * @return {Promise} 
+         * @return {Promise}
          * @property {function (statusCode:number)} then - When request it is OK
          * @property {function (errors:array, statusCode:number)} then - When request it is NOK
          * @property {function (errors:array)} catch - When request it is NOK
@@ -121,17 +120,17 @@ var OperationActions = (function () {
                 active: true
             };
 
-            this._key = "task";
+            this._key = 'task';
             this._resource = this._resource + TASK_RESOURCE;
-            return this._periodicityActions("ACTIVE", config);
+            return this._periodicityActions('ACTIVE', config);
         }
 
         /**
-         * This invoke a request to OpenGate North API and the callback is managed by promises
-         * This function pause periodicity of an operation
-         * @example 
+         * This invoke a request to OpenGate North API and the callback is managed by promises This function pauses the
+         * periodicity of an operation
+         * @example
          * ogapi.OperationActions("xxxxx-xxx-xxxx-xxxxx").pausePeriodicity()
-         * @return {Promise} 
+         * @return {Promise}
          * @property {function (statusCode:number)} then - When request it is OK
          * @property {function (errors:array, statusCode:number)} then - When request it is NOK
          * @property {function (errors:array)} catch - When request it is NOK
@@ -142,9 +141,9 @@ var OperationActions = (function () {
             var config = {
                 active: false
             };
-            this._key = "task";
+            this._key = 'task';
             this._resource = this._resource + TASK_RESOURCE;
-            return this._periodicityActions("PAUSE", config);
+            return this._periodicityActions('PAUSE', config);
         }
 
         /**
@@ -161,15 +160,15 @@ var OperationActions = (function () {
         key: 'cancelPeriodicity',
         value: function cancelPeriodicity() {
             this._resource = this._resource + TASK_RESOURCE;
-            return this._periodicityActions("CANCEL");
+            return this._periodicityActions('CANCEL');
         }
 
         /**
-         * This invoke a request to OpenGate North API and the callback is managed by promises
-         * This function pause, update its delay and active an operation for execute immediately
-         * @example 
+         * This invoke a request to OpenGate North API and the callback is managed by promises This function pauses the
+         * operation, updates its delay to zero, and activates it so it executes immediately
+         * @example
          * ogapi.OperationActions("xxxxx-xxx-xxxx-xxxxx").executeNow()
-         * @return {Promise} 
+         * @return {Promise}
          * @property {function (statusCode:number)} then - When request it is OK
          * @property {function (errors:array, statusCode:number)} then - When request it is NOK
          * @property {function (errors:array)} catch - When request it is NOK
@@ -184,17 +183,17 @@ var OperationActions = (function () {
                     }
                 }
             };
-            this._key = "job";
+            this._key = 'job';
             return this._readAndUpdate(config, true);
         }
 
         /**
          * This invoke a request to OpenGate North API and the callback is managed by promises
          * This function pauses (if it was active), updates the delay and passes the operation to the initial state (if activated, activated again)
-         * @example 
+         * @example
          * ogapi.OperationActions("xxxxx-xxx-xxxx-xxxxx").executeLater(10)
-         * @param {!number} minutes 
-         * @return {promise} 
+         * @param {!number} minutes
+         * @return {promise}
          * @property {function (statusCode:number)} then - When request it is OK
          * @property {function (errors:array, statusCode:number)} then - When request it is NOK
          * @property {function (errors:array)} catch - When request it is NOK
@@ -202,8 +201,8 @@ var OperationActions = (function () {
     }, {
         key: 'executeLater',
         value: function executeLater(minutes) {
-            if (typeof minutes !== "number") {
-                throw new Error("Parameter minutes must be typeof number");
+            if (typeof minutes !== 'number') {
+                throw new Error('Parameter minutes must be typeof number');
             }
             var config = {
                 request: {
@@ -214,17 +213,17 @@ var OperationActions = (function () {
                     }
                 }
             };
-            this._key = "job";
+            this._key = 'job';
             return this._readAndUpdate(config);
         }
 
         /**
          * This invoke a request to OpenGate North API and the callback is managed by promises
          * This function pauses (if it was active), updates the callback and passes the operation to the initial state (if activated, activated again)
-         * @example 
+         * @example
          * ogapi.OperationActions("xxxxx-xxx-xxxx-xxxxx").changeCallback("http://[your_application_address]/[your_URI]")
-         * @param {!string} url 
-         * @return {promise} 
+         * @param {!string} url
+         * @return {promise}
          * @property {function (statusCode:number)} then - When request it is OK
          * @property {function (errors:array, statusCode:number)} then - When request it is NOK
          * @property {function (errors:array)} catch - When request it is NOK
@@ -232,7 +231,7 @@ var OperationActions = (function () {
     }, {
         key: 'changeCallback',
         value: function changeCallback(url) {
-            if (typeof url !== "string") throw new Error('Parameter url must be a string');
+            if (typeof url !== 'string') throw new Error('Parameter url must be a string');
             var config = {
                 request: {
                     callback: url
@@ -277,26 +276,26 @@ var OperationActions = (function () {
                 if (!data || Object.keys(data).length == 0) {
                     //BUG http://cm.amplia.es/jira/browse/ODMQA-1057
                     defered.reject({
-                        errors: "Operation with id " + _this._operationId + " not exists"
+                        errors: 'Operation with id ' + _this._operationId + ' not exists'
                     });
                 } else {
                     var periodicityId = data.taskId;
                     if (!periodicityId) {
                         defered.reject({
-                            errors: "Operation is not periodic!"
+                            errors: 'Operation is not periodic!'
                         });
                     } else {
                         _this._resource = _this._resource + periodicityId;
                         switch (action) {
-                            case "PAUSE":
-                            case "ACTIVE":
+                            case 'PAUSE':
+                            case 'ACTIVE':
                                 _this._update(config).then(function (response) {
                                     defered.resolve(response);
                                 })['catch'](function (error) {
                                     defered.reject(error);
                                 });
                                 break;
-                            case "CANCEL":
+                            case 'CANCEL':
                                 _this._id = periodicityId;
                                 _this._cancel().then(function (response) {
                                     defered.resolve(response);
@@ -306,7 +305,7 @@ var OperationActions = (function () {
                                 break;
                             default:
                                 defered.reject({
-                                    errors: "Not implemented action: " + action
+                                    errors: 'Not implemented action: ' + action
                                 });
                         }
                     }
@@ -320,11 +319,11 @@ var OperationActions = (function () {
         /**
          * This invoke a request to OpenGate North API and the callback is managed by promises
          * This function read and update an operation
-         * @example 
+         * @example
          * ogapi.OperationActions("xxxxx-xxx-xxxx-xxxxx")._readAndUpdate({})
-         * @param {object} - config 
+         * @param {object} - config
          * @param {boolean} - forceToActivate
-         * @return {Promise} 
+         * @return {Promise}
          * @property {function (statusCode:number)} then - When request it is OK
          * @property {function (errors:array, statusCode:number)} then - When request it is NOK
          * @property {function (error:string)} catch - When request it is NOK
@@ -339,7 +338,7 @@ var OperationActions = (function () {
                 var data = response.data;
                 if (!data) {
                     //BUG http://cm.amplia.es/jira/browse/ODMQA-1057
-                    defered.reject("Operation with id " + _this._operationId + " not exists");
+                    defered.reject('Operation with id ' + _this._operationId + ' not exists');
                 } else {
                     (function () {
                         var active = data.operation ? data.operation.active : false;
@@ -372,10 +371,10 @@ var OperationActions = (function () {
         /**
          * This invoke a request to OpenGate North API and the callback is managed by promises
          * This function update an operation
-         * @example 
+         * @example
          * ogapi.OperationActions("xxxxx-xxx-xxxx-xxxxx")._update({})
          * ogapi.OperationActions("xxxxx-xxx-xxxx-xxxxx")._update({}, _defered, _promise)
-         * @return {Promise} 
+         * @return {Promise}
          * @property {function (statusCode:number)} then - When request it is OK
          * @property {function (errors:array, statusCode:number)} then - When request it is NOK
          * @property {function (error:string)} catch - When request it is NOK
@@ -399,7 +398,7 @@ var OperationActions = (function () {
                     });
                 } else {
                     if (response.status === 200) {
-                        var data = response.text != "" ? JSON.parse(response.text) : {};
+                        var data = response.text != '' ? JSON.parse(response.text) : {};
                         var _response = {
                             statusCode: response.status,
                             data: data
@@ -424,7 +423,7 @@ var OperationActions = (function () {
                 error.data = {};
             }
             if (!error.data.errors) {
-                error.data.errors = [typeof error === "string" ? {
+                error.data.errors = [typeof error === 'string' ? {
                     message: error
                 } : error];
             }

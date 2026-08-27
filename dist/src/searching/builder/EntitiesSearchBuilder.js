@@ -30,7 +30,7 @@ var TOKEN_URL = '$_token';
 
 exports.TOKEN_URL = TOKEN_URL;
 /**
- * Defined a search over Executions	
+ * Defines a search over Entities.
  * @example ogapi.entitiesSearchBuilder()
  */
 
@@ -56,8 +56,8 @@ var EntitiesSearchBuilder = (function (_SearchWithSummaryBuilder) {
     /**
      * The response will return a flattened response
      * @example
-     *	ogapi.entitiesSearchBuilder().flattened() 
-     * @return {EntitiesSearchBuilder} 
+     *	ogapi.entitiesSearchBuilder().flattened()
+     * @return {EntitiesSearchBuilder}
      */
 
     _createClass(EntitiesSearchBuilder, [{
@@ -70,8 +70,8 @@ var EntitiesSearchBuilder = (function (_SearchWithSummaryBuilder) {
         /**
          * The response will return a response without sorted
          * @example
-         *	ogapi.entitiesSearchBuilder().disableDefaultSorted() 
-         * @return {EntitiesSearchBuilder} 
+         *	ogapi.entitiesSearchBuilder().disableDefaultSorted()
+         * @return {EntitiesSearchBuilder}
          */
     }, {
         key: 'disableDefaultSorted',
@@ -83,8 +83,8 @@ var EntitiesSearchBuilder = (function (_SearchWithSummaryBuilder) {
         /**
          * The response will return a response by applying the filter with likes case-no-sensitive
          * @example
-         *	ogapi.entitiesSearchBuilder().disableCaseSensitive() 
-         * @return {EntitiesSearchBuilder} 
+         *	ogapi.entitiesSearchBuilder().disableCaseSensitive()
+         * @return {EntitiesSearchBuilder}
          */
     }, {
         key: 'disableCaseSensitive',
@@ -96,8 +96,8 @@ var EntitiesSearchBuilder = (function (_SearchWithSummaryBuilder) {
         /**
          * The response will return a response by deleteing the parameters with likes case-no-sensitive
          * @example
-         *	ogapi.entitiesSearchBuilder().disableCaseSensitive() 
-         * @return {EntitiesSearchBuilder} 
+         *	ogapi.entitiesSearchBuilder().disableCaseSensitive()
+         * @return {EntitiesSearchBuilder}
          */
     }, {
         key: 'removeCaseSensitive',
@@ -118,10 +118,10 @@ var EntitiesSearchBuilder = (function (_SearchWithSummaryBuilder) {
         }
 
         /**
-         * The search request will have this group by 
+         * The search request will have this group by
          * @example
-         * @param {!(object)} group 
-         * @return {EntitiesSearchBuilder} 
+         * @param {!(object)} group
+         * @return {EntitiesSearchBuilder}
          */
     }, {
         key: 'group',
@@ -131,7 +131,7 @@ var EntitiesSearchBuilder = (function (_SearchWithSummaryBuilder) {
         }
 
         /**
-         * The search request will have this filter 
+         * The search request will have this filter
          * @example
          *  ogapi.entitiesSearchBuilder().select(
          *      ogapi.newSelectBuilder().add(SE.element("provision.device.identifier", ["value"], "id"), SE.add("device.temperature.value", ["value"]))
@@ -141,7 +141,7 @@ var EntitiesSearchBuilder = (function (_SearchWithSummaryBuilder) {
          *      {"name": "device.temperature.value","fields": [{"field": "value","alias": "identifier"}]}]
          *   }) //Custom select
          * @param {!(SelectBuilder|object)} select
-         * @return {EntitiesSearchBuilder} 
+         * @return {EntitiesSearchBuilder}
          */
     }, {
         key: 'select',
@@ -151,12 +151,12 @@ var EntitiesSearchBuilder = (function (_SearchWithSummaryBuilder) {
         }
 
         /**
-         * Build a instance of Search 
+         * Build a instance of Search
          *
          * @example
          *  ogapi.entitiesSearchBuilder()
          * @throws {SearchBuilderError} Throw error on url build
-         * @return {Search} 
+         * @return {Search}
          */
     }, {
         key: 'build',

@@ -23,7 +23,7 @@ var _StaticSearch = require('../StaticSearch');
 var _StaticSearch2 = _interopRequireDefault(_StaticSearch);
 
 /**
- * Defined a search over mobile phone provider catalog
+ * Defines a search over mobile phone provider catalog.
  * @example ogapi.AllowedResourceTypeSearchBuilder()
  */
 
@@ -43,7 +43,7 @@ var AllowedResourceTypeSearchBuilder = (function (_SearchBuilder) {
     }
 
     /**
-     * Build a instance of StaticSearch 
+     * Build a instance of StaticSearch
      *
      * @example
      *   ogapi.AllowedResourceTypeSearchBuilder().build()
@@ -64,7 +64,7 @@ var AllowedResourceTypeSearchBuilder = (function (_SearchBuilder) {
          *  ogapi.AllowedResourceTypeSearchBuilder().withType('device').build()
          * @param {!string} type - type to searcg
          * @throws {Error} throw error when type is not typeof string
-         * @return {AllowedResourceTypeSearchBuilder} 
+         * @return {AllowedResourceTypeSearchBuilder}
          */
     }, {
         key: 'withType',

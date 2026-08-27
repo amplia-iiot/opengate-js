@@ -31,8 +31,7 @@ var _httpStatusCodes = require('http-status-codes');
 var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
 
 /**
- *   This class allow make get request to countries catalog resource into Opengate North API.
- *   //IMPORTANTE: ver tarea OUW-3924 para entender la realización de esta clase
+ * This class allows making GET requests to the countries catalog resource in OpenGate North API.
  */
 
 var CountriesCatalog = (function (_ProvisionGenericFinder) {
@@ -46,7 +45,7 @@ var CountriesCatalog = (function (_ProvisionGenericFinder) {
     function CountriesCatalog(ogapi) {
         _classCallCheck(this, CountriesCatalog);
 
-        _get(Object.getPrototypeOf(CountriesCatalog.prototype), 'constructor', this).call(this, ogapi, 'organizations', "entity", 'Countries not found');
+        _get(Object.getPrototypeOf(CountriesCatalog.prototype), 'constructor', this).call(this, ogapi, 'organizations', 'entity', 'Countries not found');
         this.__filter = this._api._options._internalCountriesFilter;
     }
 
@@ -54,7 +53,7 @@ var CountriesCatalog = (function (_ProvisionGenericFinder) {
      * Performs a get that returns countries
      * @test
      *   ogapi.newCountriesCatalog().getCountries();
-     * @return {Promise} 
+     * @return {Promise}
      */
 
     _createClass(CountriesCatalog, [{
@@ -65,7 +64,7 @@ var CountriesCatalog = (function (_ProvisionGenericFinder) {
     }, {
         key: '_composeUrl',
         value: function _composeUrl() {
-            return this._baseUrl + "/" + this.__filter.organization + "/entities/" + this.__filter.identifier;
+            return this._baseUrl + '/' + this.__filter.organization + '/entities/' + this.__filter.identifier;
         }
 
         /**

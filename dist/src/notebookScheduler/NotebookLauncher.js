@@ -27,7 +27,7 @@ var _utilFormatsCheck_types = require('../util/formats/check_types');
 var _utilFormatsCheck_types2 = _interopRequireDefault(_utilFormatsCheck_types);
 
 /**
- * This is a base object that contains all you can do about Bundles.
+ * This is the base object for everything you can do with a notebook launcher.
  */
 
 var NotebookLauncher = (function (_BaseProvision) {
@@ -35,20 +35,20 @@ var NotebookLauncher = (function (_BaseProvision) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function NotebookLauncher(ogapi) {
         _classCallCheck(this, NotebookLauncher);
 
-        _get(Object.getPrototypeOf(NotebookLauncher.prototype), 'constructor', this).call(this, ogapi, "/notebooks", undefined, ["identifier"], 'planner');
+        _get(Object.getPrototypeOf(NotebookLauncher.prototype), 'constructor', this).call(this, ogapi, '/notebooks', undefined, ['identifier'], 'planner');
         this._ogapi = ogapi;
     }
 
     _createClass(NotebookLauncher, [{
         key: '_buildURL',
         value: function _buildURL() {
-            var url = "notebooks/" + this._identifier + '/execute';
+            var url = 'notebooks/' + this._identifier + '/execute';
             return url;
         }
 

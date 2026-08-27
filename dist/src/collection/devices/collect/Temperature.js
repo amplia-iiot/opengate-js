@@ -13,7 +13,7 @@ var _enumTEMPERATURE_STATUS_ENUM = require('./enum/TEMPERATURE_STATUS_ENUM');
 var _enumLEVEL_TREND_ENUM = require('./enum/LEVEL_TREND_ENUM');
 
 /**
- * This is a base object that allows the user to create a Datapoint.
+ * This is a base object that allows the user to create a Temperature object.
  */
 
 var Temperature = (function () {
@@ -144,15 +144,14 @@ var Temperature = (function () {
     }, {
         key: 'composeElement',
         value: function composeElement() {
-
             var temperature = {
-                "unit": this._unit,
-                "current": this._current,
-                "status": this._status,
-                "trend": this._trend,
-                "average": this._average,
-                "maximum": this._maximum,
-                "minimum": this._minimum
+                unit: this._unit,
+                current: this._current,
+                status: this._status,
+                trend: this._trend,
+                average: this._average,
+                maximum: this._maximum,
+                minimum: this._minimum
             };
             return temperature;
         }

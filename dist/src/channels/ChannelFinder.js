@@ -27,7 +27,7 @@ var _httpStatusCodes = require('http-status-codes');
 var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
 
 /**
- *   This class allow make get request to channel resource into Opengate North API.
+ * This class allows making GET requests to the channel resource in the OpenGate North API.
  */
 
 var ChannelFinder = (function (_ProvisionGenericFinder) {
@@ -45,12 +45,12 @@ var ChannelFinder = (function (_ProvisionGenericFinder) {
     }
 
     /**
-     * Download a specific channel by its organization and id. This execute a GET http method
+     * Downloads a specific channel by its organization and name. This executes a GET HTTP method.
      * @test
      *   ogapi.newChannelFinder().findByOrganizationAndName('orgname', xxx-xx-xxx-xxx').then().catch();
      * @param {string} organization - channel organization .
      * @param {string} name - channel name.
-     * @return {Promise} 
+     * @return {Promise}
      */
 
     _createClass(ChannelFinder, [{
@@ -68,16 +68,16 @@ var ChannelFinder = (function (_ProvisionGenericFinder) {
     }, {
         key: '_composeUrl',
         value: function _composeUrl() {
-            return this._baseUrl + "/" + this._organization + "/channels/" + this._name;
+            return this._baseUrl + '/' + this._organization + '/channels/' + this._name;
         }
 
         /**
-         * Performs a get that returns channels related
+         * Performs a GET request that returns the channels related to the given domain and workgroup.
          * @test
          *   ogapi.newChannelFinder().findByDomainAndWorkgroup('xxx-xx-xxx-xxx', 'xxxxx-xxxx-xxxx').then().catch();
-         * @param {string} domain - domain 
+         * @param {string} domain - domain
          * @param {string} workgroup - workgroup.
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findByDomainAndWorkgroup',
@@ -102,8 +102,8 @@ var ChannelFinder = (function (_ProvisionGenericFinder) {
 
                     for (var idx in globalData.channels) {
                         finalData.push({
-                            "organization": globalData.channels[idx].organization,
-                            "name": globalData.channels[idx].channel
+                            organization: globalData.channels[idx].organization,
+                            name: globalData.channels[idx].channel
                         });
                     }
 
@@ -120,13 +120,13 @@ var ChannelFinder = (function (_ProvisionGenericFinder) {
         }
 
         /**
-         * Performs a get that returns channels related
+         * Performs a GET request that returns the channels related to the given domain, workgroup, and organization.
          * @test
          *   ogapi.newChannelFinder().findByDomainAndWorkgroupAndOrganization('xxx-xx-xxx-xxx', 'xxxxx-xxxx-xxxx', 'asdfasdfasdf').then().catch();
-         * @param {string} domain - domain 
+         * @param {string} domain - domain
          * @param {string} workgroup - workgroup.
          * @param {string} organization - organization.
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findByDomainAndWorkgroupAndOrganization',
@@ -142,7 +142,6 @@ var ChannelFinder = (function (_ProvisionGenericFinder) {
             var promise = defered.promise;
 
             _this._executeWorkgroupRelation().then(function (request) {
-
                 if (request.statusCode === 204) {
                     defered.reject({
                         data: _error_not_found,
@@ -155,8 +154,8 @@ var ChannelFinder = (function (_ProvisionGenericFinder) {
                     for (var idx in globalData.channels) {
                         if (_this._organization === globalData.channels[idx].organization) {
                             finalData.push({
-                                "organization": globalData.channels[idx].organization,
-                                "name": globalData.channels[idx].channel
+                                organization: globalData.channels[idx].organization,
+                                name: globalData.channels[idx].channel
                             });
                         }
                     }
@@ -187,8 +186,7 @@ var ChannelFinder = (function (_ProvisionGenericFinder) {
     }, {
         key: '_executeWorkgroupRelation',
         value: function _executeWorkgroupRelation() {
-
-            var workgroupsRelationsUrl = "provision/domains/" + this._domain + "/workgroups/" + this._workgroup + "/relations";
+            var workgroupsRelationsUrl = 'provision/domains/' + this._domain + '/workgroups/' + this._workgroup + '/relations';
 
             var defered = _q2['default'].defer();
             var promise = defered.promise;

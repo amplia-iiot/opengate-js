@@ -26,24 +26,24 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
-/** 
- * This extends BaseSearch and allow make request to any available resource into Opengate North API.
- * The resource does not have the 'search' prefix. For this, use class Search
+/**
+ * This class extends BaseSearch and allows requests to be made to any available resource in the OpenGate North
+ * API. Use this class when the resource does not have the 'search' prefix; otherwise, use the Search class.
  */
 
 var WPSearch = (function (_BaseSearch) {
     _inherits(WPSearch, _BaseSearch);
 
     /**
-       * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
-       * @param {!string} url - this define a specific resource to make the search
-       * @param {object} filter - this is the filter
-       * @param {object} limit - this is the pagination about the search
-       * @param {object} sort - this defined parameters to order the result of search
-    * @param {object} group
-    * @param {object} select
-      	* @param {nubmer} timeout
-       */
+     * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
+     * @param {!string} url - this define a specific resource to make the search
+     * @param {object} filter - this is the filter
+     * @param {object} limit - this is the pagination about the search
+     * @param {object} sort - this defined parameters to order the result of search
+     * @param {object} group
+     * @param {object} select
+     * @param {nubmer} timeout
+     */
 
     function WPSearch(ogapi, url, filter, limit, sort, group, select, timeout, urlParams) {
         if (limit === undefined) limit = { limit: {} };
@@ -90,7 +90,7 @@ var WPSearch = (function (_BaseSearch) {
                                     body = parsedResult;
                                 }
                             } catch (ignoreError) {
-                                console.warn("Impossible to parse text from response: " + response.text);
+                                console.warn('Impossible to parse text from response: ' + response.text);
                             }
                         }
 

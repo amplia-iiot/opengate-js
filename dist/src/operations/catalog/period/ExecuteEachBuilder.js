@@ -19,7 +19,8 @@ var _moment = require('moment');
 var _moment2 = _interopRequireDefault(_moment);
 
 /**
- * Defines the builder to configure a period of operation. With this builder you can select how repeat the operation. By days, hours or minutes.
+ * Defines the builder used to configure the periodicity of an operation. With this builder you can select how the
+ * operation repeats: by days, hours, or minutes.
  */
 
 var ExecuteEachBuilder = (function () {
@@ -27,8 +28,8 @@ var ExecuteEachBuilder = (function () {
      * Constructor
      * @param {!BaseOperationBuilder} parent - this is a operationBaseBuilder.
      * @param {!Date} date - Date when operation will be executed
-     * @param {string} periodicityName - Name associated to periodicity	
-     * @param {!number or Date} end - When periodicity ends. By repetitions or by date	
+     * @param {string} periodicityName - Name associated to periodicity
+     * @param {!number or Date} end - When periodicity ends. By repetitions or by date
      */
 
     function ExecuteEachBuilder(parent, date, periodicityName, end, description) {
@@ -47,23 +48,23 @@ var ExecuteEachBuilder = (function () {
                 }
             }
         };
-        if (typeof end !== "undefined") {
+        if (typeof end !== 'undefined') {
             var _stop = undefined;
-            if (typeof end === "number") {
+            if (typeof end === 'number') {
                 if (end <= 0) {
-                    throw new Error("Invalid stop value. Number of repetitions must be greater than 0.");
+                    throw new Error('Invalid stop value. Number of repetitions must be greater than 0.');
                 }
                 _stop = {
-                    "executions": end
+                    executions: end
                 };
             } else if (end.constructor === Date) {
                 var startDate = (0, _moment2['default'])(date);
                 var stopDate = (0, _moment2['default'])(end);
                 if (_moment2['default'].max(startDate, stopDate) == startDate) {
-                    throw new Error("Invalid stop date on executeEach method. Start date must be earlier than stop date.");
+                    throw new Error('Invalid stop date on executeEach method. Start date must be earlier than stop date.');
                 }
                 _stop = {
-                    "date": end
+                    date: end
                 };
             }
             this._skeleton.stop = _stop;
@@ -79,9 +80,9 @@ var ExecuteEachBuilder = (function () {
     _createClass(ExecuteEachBuilder, [{
         key: 'minutes',
         value: function minutes(_minutes) {
-            var type = "MINUTES";
-            if (typeof _minutes !== "number") {
-                throw new Error("Parameter minutes must be typeof number");
+            var type = 'MINUTES';
+            if (typeof _minutes !== 'number') {
+                throw new Error('Parameter minutes must be typeof number');
             }
             return this._addPeriod(_minutes, type);
         }
@@ -94,9 +95,9 @@ var ExecuteEachBuilder = (function () {
     }, {
         key: 'hours',
         value: function hours(_hours) {
-            var type = "HOURS";
-            if (typeof _hours !== "number") {
-                throw new Error("Parameter hours must be typeof number");
+            var type = 'HOURS';
+            if (typeof _hours !== 'number') {
+                throw new Error('Parameter hours must be typeof number');
             }
             return this._addPeriod(_hours, type);
         }
@@ -109,9 +110,9 @@ var ExecuteEachBuilder = (function () {
     }, {
         key: 'days',
         value: function days(_days) {
-            var type = "DAYS";
-            if (typeof _days !== "number") {
-                throw new Error("Parameter days must be typeof number");
+            var type = 'DAYS';
+            if (typeof _days !== 'number') {
+                throw new Error('Parameter days must be typeof number');
             }
             return this._addPeriod(_days, type);
         }

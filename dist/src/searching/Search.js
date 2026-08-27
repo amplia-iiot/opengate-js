@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-	value: true
+    value: true
 });
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -22,45 +22,46 @@ var _merge = require('merge');
 
 var _merge2 = _interopRequireDefault(_merge);
 
-/** 
- * This extends BaseSearch and allow make request to any available resource into Opengate North API.
+/**
+ * This class extends BaseSearch and allows requests to be made to any available resource in the OpenGate North
+ * API.
  */
 
 var Search = (function (_BaseSearch) {
-	_inherits(Search, _BaseSearch);
+    _inherits(Search, _BaseSearch);
 
-	/**
-    * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
-    * @param {!string} url - this define a specific resource to make the search
-    * @param {object} filter - this is the filter
-    * @param {object} limit - this is the pagination about the search
-    * @param {object} sort - this defined parameters to order the result of search
- * @param {object} group
- * @param {object} select
-   	* @param {nubmer} timeout
-    */
+    /**
+     * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
+     * @param {!string} url - this define a specific resource to make the search
+     * @param {object} filter - this is the filter
+     * @param {object} limit - this is the pagination about the search
+     * @param {object} sort - this defined parameters to order the result of search
+     * @param {object} group
+     * @param {object} select
+     * @param {nubmer} timeout
+     */
 
-	function Search(ogapi, url, filter, limit, sort, group, select, timeout, urlParams) {
-		if (limit === undefined) limit = { limit: {} };
+    function Search(ogapi, url, filter, limit, sort, group, select, timeout, urlParams) {
+        if (limit === undefined) limit = { limit: {} };
 
-		_classCallCheck(this, Search);
+        _classCallCheck(this, Search);
 
-		_get(Object.getPrototypeOf(Search.prototype), 'constructor', this).call(this, ogapi, 'search' + url, timeout);
-		this._setUrlParameters(urlParams);
-		this._postObj = (0, _merge2['default'])(filter, limit, group, select);
-		if (typeof sort === 'object') {
-			this._postObj = (0, _merge2['default'])(this._postObj, sort);
-		}
-	}
+        _get(Object.getPrototypeOf(Search.prototype), 'constructor', this).call(this, ogapi, 'search' + url, timeout);
+        this._setUrlParameters(urlParams);
+        this._postObj = (0, _merge2['default'])(filter, limit, group, select);
+        if (typeof sort === 'object') {
+            this._postObj = (0, _merge2['default'])(this._postObj, sort);
+        }
+    }
 
-	_createClass(Search, [{
-		key: '_filter',
-		value: function _filter() {
-			return this._postObj;
-		}
-	}]);
+    _createClass(Search, [{
+        key: '_filter',
+        value: function _filter() {
+            return this._postObj;
+        }
+    }]);
 
-	return Search;
+    return Search;
 })(_BaseSearch3['default']);
 
 exports['default'] = Search;

@@ -27,7 +27,7 @@ var _httpStatusCodes = require('http-status-codes');
 var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
 
 /**
- *   This class allow make get request to organization resource into Opengate North API.
+ * This class allows making GET requests to the organization resource in the OpenGate North API.
  */
 
 var OrganizationFinder = (function (_ProvisionGenericFinder) {
@@ -49,7 +49,7 @@ var OrganizationFinder = (function (_ProvisionGenericFinder) {
      * @test
      *   ogapi.newOrganizationFinder().findByName('my_org').then().catch();
      * @param {string} name - Organization name
-     * @return {Promise} 
+     * @return {Promise}
      */
 
     _createClass(OrganizationFinder, [{
@@ -63,9 +63,9 @@ var OrganizationFinder = (function (_ProvisionGenericFinder) {
          * Performs a get that returns organizations related
          * @test
          *   ogapi.newOrganizationFinder().findByDomainAndWorkgroup('xxx-xx-xxx-xxx', 'xxxxx-xxxx-xxxx').then().catch();
-         * @param {string} domain - domain 
+         * @param {string} domain - domain
          * @param {string} workgroup - workgroup.
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findByDomainAndWorkgroup',
@@ -93,7 +93,7 @@ var OrganizationFinder = (function (_ProvisionGenericFinder) {
                         if (!organizations[globalData.channels[idx].organization]) {
                             organizations[globalData.channels[idx].organization] = globalData.channels[idx].organization;
                             finalData.push({
-                                "name": globalData.channels[idx].organization
+                                name: globalData.channels[idx].organization
                             });
                         }
                     }
@@ -124,8 +124,7 @@ var OrganizationFinder = (function (_ProvisionGenericFinder) {
     }, {
         key: '_executeWorkgroupRelation',
         value: function _executeWorkgroupRelation() {
-
-            var workgroupsRelationsUrl = "provision/domains/" + this._domain + "/workgroups/" + this._workgroup + "/relations";
+            var workgroupsRelationsUrl = 'provision/domains/' + this._domain + '/workgroups/' + this._workgroup + '/relations';
 
             var defered = _q2['default'].defer();
             var promise = defered.promise;

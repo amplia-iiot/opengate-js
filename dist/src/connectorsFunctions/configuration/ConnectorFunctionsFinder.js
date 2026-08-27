@@ -19,7 +19,7 @@ var _GenericFinder2 = require('../../GenericFinder');
 var _GenericFinder3 = _interopRequireDefault(_GenericFinder2);
 
 /**
- *   This class allow make get request to ConnectorFunctions resource into Opengate North API.
+ * This class allows you to make GET requests to the ConnectorFunctions resource in the OpenGate North API.
  */
 
 var ConnectorFunctionsFinder = (function (_GenericFinder) {
@@ -33,16 +33,16 @@ var ConnectorFunctionsFinder = (function (_GenericFinder) {
     function ConnectorFunctionsFinder(ogapi) {
         _classCallCheck(this, ConnectorFunctionsFinder);
 
-        _get(Object.getPrototypeOf(ConnectorFunctionsFinder.prototype), 'constructor', this).call(this, ogapi, 'connectorFunctions/provision/organizations', "connectorFunctions", 'Connector functions not found');
+        _get(Object.getPrototypeOf(ConnectorFunctionsFinder.prototype), 'constructor', this).call(this, ogapi, 'connectorFunctions/provision/organizations', 'connectorFunctions', 'Connector functions not found');
     }
 
     /**
      * Performs a get that returns connectors functions related
      * @test
      *   ogapi.newConnectorFunctionsFinder().findByOrganizationAndChannel('xxx-xx-xxx-xxx', 'xxxxx-xxxx-xxxx').then().catch();
-     * @param {string} organization - organization 
+     * @param {string} organization - organization
      * @param {string} channel - channel.
-     * @return {Promise} 
+     * @return {Promise}
      */
 
     _createClass(ConnectorFunctionsFinder, [{
@@ -59,10 +59,10 @@ var ConnectorFunctionsFinder = (function (_GenericFinder) {
          * Performs a get that returns connectors functions related
          * @test
          *   ogapi.newConnectorFunctionsFinder().findByOrganizationAndChannel('xxx-xx-xxx-xxx', 'xxxxx-xxxx-xxxx').then().catch();
-         * @param {string} organization - organization 
+         * @param {string} organization - organization
          * @param {string} channel - channel.
          * @param {string} name - Connector function name
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findByOrganizationAndChannelAndName',
@@ -77,7 +77,7 @@ var ConnectorFunctionsFinder = (function (_GenericFinder) {
     }, {
         key: '_composeUrl',
         value: function _composeUrl() {
-            return this._baseUrl + "/" + this._organization + "/channels/" + this._channel + (this._name ? "/" + this._name : '');
+            return this._baseUrl + '/' + this._organization + '/channels/' + this._channel + (this._name ? '/' + this._name : '');
         }
     }]);
 

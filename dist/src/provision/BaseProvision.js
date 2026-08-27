@@ -15,8 +15,8 @@ var _q = require('q');
 var _q2 = _interopRequireDefault(_q);
 
 /**
- * This is an abstract class, it must be extended to another class that defines the different actions of a specific provision.
- * This class is responsible for managing the request to execute Norte OpenGate API
+ * This is an abstract class; it must be extended by another class that defines the specific actions of a given
+ * provision. This class is responsible for managing requests to OpenGate North API.
  */
 
 var BaseProvision = (function () {
@@ -35,13 +35,13 @@ var BaseProvision = (function () {
         _classCallCheck(this, BaseProvision);
 
         if (this.constructor === BaseProvision) {
-            throw new Error("Cannot construct Abstract instances directly");
+            throw new Error('Cannot construct Abstract instances directly');
         }
-        if (typeof this._composeElement !== "function") {
-            throw new Error("Must override method:  composeElement");
+        if (typeof this._composeElement !== 'function') {
+            throw new Error('Must override method:  composeElement');
         }
-        if (typeof this._buildURL !== "function") {
-            throw new Error("Must override method:  _buildURL");
+        if (typeof this._buildURL !== 'function') {
+            throw new Error('Must override method:  _buildURL');
         }
         if (timeout) {
             if (typeof timeout !== 'number') {
@@ -65,20 +65,20 @@ var BaseProvision = (function () {
             var parametersNotFound = [];
             if (this._requiredParameters && this._requiredParameters.length > 0) {
                 for (var i = 0; i < this._requiredParameters.length; i++) {
-                    if (this[this._requiredParameters[i]] === undefined && this["_" + this._requiredParameters[i]] === undefined) {
+                    if (this[this._requiredParameters[i]] === undefined && this['_' + this._requiredParameters[i]] === undefined) {
                         parametersNotFound.push(this._requiredParameters[i]);
                     }
                 }
 
                 if (parametersNotFound.length > 0) {
-                    throw new Error("There are required parameters that have not been set. Missing parameters: " + JSON.stringify(parametersNotFound).replace(new RegExp("\"", 'g'), ""));
+                    throw new Error('There are required parameters that have not been set. Missing parameters: ' + JSON.stringify(parametersNotFound).replace(new RegExp('"', 'g'), ''));
                 }
             }
         }
 
         /**
-         * This invoke a request to OpenGate North API and the callback is managed by promises
-         * This function create a entity of provision
+         * This invoke a request to OpenGate North API and the callback is managed by promises This function creates a
+         * provisioned entity
          * @return {Promise}
          * @property {function (result:object, statusCode:number)} then - When request it is OK
          * @property {function (error:string)} catch - When request it is NOK
@@ -100,7 +100,7 @@ var BaseProvision = (function () {
             var _postElement = this._composeElement();
             this._ogapi.Napi.post(this._resource, _postElement, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL()).then(function (res) {
                 if (res.statusCode === 201) {
-                    if (typeof _this._onCreated === "function") {
+                    if (typeof _this._onCreated === 'function') {
                         _this._onCreated(res.header.location);
                     }
                     defered.resolve({
@@ -121,8 +121,8 @@ var BaseProvision = (function () {
         }
 
         /**
-         * This invoke a request to OpenGate North API and the callback is managed by promises
-         * This function deletes a entity of provision
+         * This invoke a request to OpenGate North API and the callback is managed by promises This function deletes a
+         * provisioned entity
          * @return {Promise}
          * @property {function (result:object, statusCode:number)} then - When request it is OK
          * @property {function (error:string)} catch - When request it is NOK
@@ -175,8 +175,8 @@ var BaseProvision = (function () {
         }
 
         /**
-         * This invoke a request to OpenGate North API and the callback is managed by promises
-         * This function updates a entity of provision
+         * This invoke a request to OpenGate North API and the callback is managed by promises This function updates a
+         * provisioned entity
          * @return {Promise}
          * @property {function (result:object, statusCode:number)} then - When request it is OK
          * @property {function (error:string)} catch - When request it is NOK
@@ -280,7 +280,7 @@ var BaseProvision = (function () {
                     statusCode: res.statusCode
                 };
                 if (res.statusCode === 201) {
-                    if (typeof _this2._onCreated === "function") {
+                    if (typeof _this2._onCreated === 'function') {
                         _this2._onCreated(res.header.location);
                     }
                     response.location = res.header.location;
@@ -314,7 +314,7 @@ var BaseProvision = (function () {
                     statusCode: res.statusCode
                 };
                 if (res.statusCode === 201) {
-                    if (typeof _this3._onCreated === "function") {
+                    if (typeof _this3._onCreated === 'function') {
                         _this3._onCreated(res.header.location);
                     }
                     response.location = res.header.location;
@@ -380,7 +380,7 @@ var BaseProvision = (function () {
                 return value == this;
             }, value);
 
-            if (typeof found === "undefined") {
+            if (typeof found === 'undefined') {
                 not_found.push(value);
             }
             if (not_found.length !== 0) {

@@ -31,13 +31,13 @@ var OperationType = (function (_BaseProvision) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function OperationType(ogapi, organization, nameForUpdate, operationTypeObj) {
         _classCallCheck(this, OperationType);
 
-        _get(Object.getPrototypeOf(OperationType.prototype), 'constructor', this).call(this, ogapi, "/organizations");
+        _get(Object.getPrototypeOf(OperationType.prototype), 'constructor', this).call(this, ogapi, '/organizations');
 
         // Required
         this.withOrganization(organization);
@@ -145,7 +145,7 @@ var OperationType = (function (_BaseProvision) {
 
         /**
          * Set the description attribute
-         * @param {string} description 
+         * @param {string} description
          * @return {OperationType}
          */
     }, {
@@ -157,7 +157,7 @@ var OperationType = (function (_BaseProvision) {
 
         /**
          * Allows the modification of the parameters
-         * @param {array} parameters 
+         * @param {array} parameters
          * @return {OperationType}
          */
     }, {
@@ -170,7 +170,7 @@ var OperationType = (function (_BaseProvision) {
 
         /**
          * Set the catalog
-         * @param {string} fromCatalog 
+         * @param {string} fromCatalog
          * @return {OperationType}
          */
     }, {
@@ -182,7 +182,7 @@ var OperationType = (function (_BaseProvision) {
 
         /**
          * Allows the modification of the steps
-         * @param {array} steps 
+         * @param {array} steps
          * @return {OperationType}
          */
     }, {
@@ -195,7 +195,7 @@ var OperationType = (function (_BaseProvision) {
 
         /**
          * Allows the modification of the allowed models
-         * @param {array} models 
+         * @param {array} models
          * @return {OperationType}
          */
     }, {
@@ -208,7 +208,7 @@ var OperationType = (function (_BaseProvision) {
 
         /**
          * Allows the modification of the profiles allowed
-         * @param {array} profiles 
+         * @param {array} profiles
          * @return {OperationType}
          */
     }, {
@@ -237,7 +237,7 @@ var OperationType = (function (_BaseProvision) {
 
         /**
          * Allows the modification of the applicableTo
-         * @param {array} applicableTo 
+         * @param {array} applicableTo
          * @return {OperationType}
          */
     }, {
@@ -253,16 +253,16 @@ var OperationType = (function (_BaseProvision) {
             // this._checkRequiredParameters();
 
             var updateData = {
-                "name": this._name,
-                "title": this._title,
-                "description": this._description ? this._description : undefined,
-                "parameters": this._parameters || undefined,
-                "fromCatalog": this._fromCatalog || undefined,
-                "steps": this._steps || undefined,
-                "models": this._models || undefined,
-                "profiles": this._profiles || undefined,
-                "applicableTo": this._applicableTo || undefined,
-                "historyTtl": this._historyTtl || undefined
+                name: this._name,
+                title: this._title,
+                description: this._description ? this._description : undefined,
+                parameters: this._parameters || undefined,
+                fromCatalog: this._fromCatalog || undefined,
+                steps: this._steps || undefined,
+                models: this._models || undefined,
+                profiles: this._profiles || undefined,
+                applicableTo: this._applicableTo || undefined,
+                historyTtl: this._historyTtl || undefined
             };
 
             return updateData;
@@ -279,13 +279,13 @@ var OperationType = (function (_BaseProvision) {
     }, {
         key: '_buildURL',
         value: function _buildURL() {
-            return "operationTypes/" + this._resource + "/" + this._organization;
+            return 'operationTypes/' + this._resource + '/' + this._organization;
         }
 
-        /** 
+        /**
          * Create a new Rule
          * @return {Promise}
-         * @throws {Error} 
+         * @throws {Error}
          */
     }, {
         key: 'create',
@@ -295,23 +295,23 @@ var OperationType = (function (_BaseProvision) {
             return this._doNorthPost(this._buildURL(), this._composeElement());
         }
 
-        /** 
+        /**
          * Udpate a Rule
          * @return {Promise}
-         * @throws {Error} 
+         * @throws {Error}
          */
     }, {
         key: 'update',
         value: function update() {
             this._checkRequiredParameters(true);
 
-            return this._doNorthPut(this._buildURL() + "/" + this._identifier, this._composeElement(true));
+            return this._doNorthPut(this._buildURL() + '/' + this._identifier, this._composeElement(true));
         }
 
-        /** 
+        /**
          * Deletes the selected RuleConfiguration
          * @return {Promise}
-         * @throws {Error} 
+         * @throws {Error}
          */
     }, {
         key: 'delete',
@@ -320,7 +320,7 @@ var OperationType = (function (_BaseProvision) {
 
             var defered = _q2['default'].defer();
             var promise = defered.promise;
-            this._ogapi.Napi['delete'](this._buildURL() + "/" + this._identifier).then(function (res) {
+            this._ogapi.Napi['delete'](this._buildURL() + '/' + this._identifier).then(function (res) {
                 if (res.statusCode === 200) {
                     defered.resolve({
                         statusCode: res.statusCode

@@ -16,9 +16,9 @@ var _q2 = _interopRequireDefault(_q);
 
 var LIMIT_SIZE_DEF_VALUE = 1000;
 
-/** 
- * This is a abstract class, it must be extended to another class that defined the specific search.
- * This class is responsible to manage execute request to OpenGate North API
+/**
+ * This is an abstract class that must be extended by another class defining the specific search. This class is
+ * responsible for managing and executing requests to the OpenGate North API.
  */
 
 var BaseSearch = (function () {
@@ -34,10 +34,10 @@ var BaseSearch = (function () {
         _classCallCheck(this, BaseSearch);
 
         if (this.constructor === BaseSearch) {
-            throw new Error("Cannot construct Abstract instances directly");
+            throw new Error('Cannot construct Abstract instances directly');
         }
-        if (typeof this._filter !== "function") {
-            throw new Error("Must override method: filter");
+        if (typeof this._filter !== 'function') {
+            throw new Error('Must override method: filter');
         }
         if (typeof timeout !== 'number') {
             this._timeout = ogapi.Napi._options.timeout;
@@ -89,7 +89,7 @@ var BaseSearch = (function () {
         }
 
         /**
-         * This invoke a request to OpenGate North API and the callback is managed by promises
+         * This invokes a request to the OpenGate North API; the response is handled via promises.
          * @return {Promise}
          * @property {function (result:object, statusCode:number)} then - When request it is OK
          * @property {function (error:string)} catch - When request it is NOK
@@ -158,7 +158,7 @@ var BaseSearch = (function () {
                 delete filter.limit;
             }
             this._setExtraHeaders({
-                'Accept': 'text/plain'
+                Accept: 'text/plain'
             });
 
             this._ogapi.Napi.post(this._resource, filter, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL()).then(function (response) {
@@ -226,7 +226,7 @@ var BaseSearch = (function () {
                                     body = parsedResult;
                                 }
                             } catch (ignoreError) {
-                                console.error("Impossible to parse text from response");
+                                console.error('Impossible to parse text from response');
                             }
                         }
 
@@ -265,9 +265,10 @@ var BaseSearch = (function () {
         }
 
         /**
-         * This invokes a request for asynchronous paging to the OpenGate North API and the return of the pages is managed by promises and its notify object
-         * To cancel the process in the notify method return false or string with custom message for response
-         * In case of canceling the process, the response will be 403: Forbidden -> {data: 'Cancel process'|| custom_message, statusCode: 403}
+         * This invokes a request for asynchronous paging to the OpenGate North API; each page is returned via promises and
+         * a notify callback. To cancel the process, return `false` or a string with a custom message from the notify
+         * callback. When the process is canceled, the response will be 403: Forbidden -&gt; {data: &#x27;Cancel
+         * process&#x27;|| custom_message, statusCode: 403}
          * @param {string} resource - resource to find.
          * @return {Promise}
          * @property {function (), null, function ()} then - When request it is OK

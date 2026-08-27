@@ -19,7 +19,7 @@ var _Usage2 = require('./Usage');
 var _Usage3 = _interopRequireDefault(_Usage2);
 
 /**
- * This is a base object that allows the user to create a Datapoint.
+ * This is a base object that allows the user to create a Storage object.
  */
 
 var Storage = (function (_Usage) {
@@ -34,10 +34,10 @@ var Storage = (function (_Usage) {
     }
 
     /**
-    * Set the unit attribute
-    * @param {string} unit - optionals field
-    * @return {Storage}
-    */
+     * Set the unit attribute
+     * @param {string} unit - optionals field
+     * @return {Storage}
+     */
 
     _createClass(Storage, [{
         key: 'withUnit',
@@ -65,10 +65,9 @@ var Storage = (function (_Usage) {
             var usage = _get(Object.getPrototypeOf(Storage.prototype), 'composeElement', this).call(this);
 
             var storage = {
-                "unit": this._unit,
-                "total": this._total,
-                "usage": usage
-
+                unit: this._unit,
+                total: this._total,
+                usage: usage
             };
 
             return storage;

@@ -22,8 +22,12 @@ var _utilFormatsCheck_types = require('../util/formats/check_types');
 
 var _utilFormatsCheck_types2 = _interopRequireDefault(_utilFormatsCheck_types);
 
+var _utilParameterError = require('../util/parameterError');
+
+var _utilParameterError2 = _interopRequireDefault(_utilParameterError);
+
 /**
- * This is a base object that contains all you can do about Bundles.
+ * This is a base object that represents a REST request to run on a schedule.
  */
 
 var RestRequest = (function (_BaseProvision) {
@@ -31,13 +35,13 @@ var RestRequest = (function (_BaseProvision) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function RestRequest(ogapi) {
         _classCallCheck(this, RestRequest);
 
-        _get(Object.getPrototypeOf(RestRequest.prototype), 'constructor', this).call(this, ogapi, "/organization", undefined, ["identifier", "organization", "schedule", "restRequest", "response"], 'scheduler');
+        _get(Object.getPrototypeOf(RestRequest.prototype), 'constructor', this).call(this, ogapi, '/organization', undefined, ['identifier', 'organization', 'schedule', 'restRequest', 'response'], 'scheduler');
         this._ogapi = ogapi;
     }
 
@@ -65,13 +69,13 @@ var RestRequest = (function (_BaseProvision) {
 
         /**
          * Set the organization attribute
-         * @param {string} organization 
+         * @param {string} organization
          * @return {RestRequest}
          */
     }, {
         key: 'withOrganization',
         value: function withOrganization(organization) {
-            if (typeof organization !== 'string' || organization.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'organization' });
+            if (typeof organization !== 'string' || organization.length > 50) throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER_MAX_LENGTH_50', { parameter: 'organization' });
             this._organization = organization;
             return this;
         }
@@ -143,7 +147,7 @@ var RestRequest = (function (_BaseProvision) {
 
         /**
          * Sets the from attribute
-         * @param {string} from 
+         * @param {string} from
          * @returns {RestRequest}
          */
     }, {
@@ -162,7 +166,7 @@ var RestRequest = (function (_BaseProvision) {
 
         /**
          * Sets the to attribute
-         * @param {string} to 
+         * @param {string} to
          * @returns {RestRequest}
          */
     }, {
@@ -265,7 +269,7 @@ var RestRequest = (function (_BaseProvision) {
                 this._response = {};
             } else {
                 if (this._response.async) {
-                    throw new Error({ message: 'sync cannot be setted with async', parameter: 'sync' });
+                    throw (0, _utilParameterError2['default'])('sync cannot be setted with async', { parameter: 'sync' });
                 }
             }
 
@@ -289,7 +293,7 @@ var RestRequest = (function (_BaseProvision) {
                 this._response = {};
             } else {
                 if (this._response.sync) {
-                    throw new Error({ message: 'async cannot be setted with sync', parameter: 'async' });
+                    throw (0, _utilParameterError2['default'])('async cannot be setted with sync', { parameter: 'async' });
                 }
             }
 

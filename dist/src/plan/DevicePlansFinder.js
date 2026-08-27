@@ -27,14 +27,14 @@ var _URL_ENUM = require('./URL_ENUM');
 var _VISIBILITY_ENUM = require('./VISIBILITY_ENUM');
 
 /**
- *   This class allow make get request to organization device plans resource into Opengate North API.
+ * This class allows making GET requests to the organization device plans resource in the OpenGate North API.
  */
 
 var DevicePlansFinder = (function (_ProvisionGenericFinder) {
     _inherits(DevicePlansFinder, _ProvisionGenericFinder);
 
-    /**     
-     * @param {InternalOpenGateAPI} Reference to the API object.
+    /**
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function DevicePlansFinder(ogapi) {
@@ -51,7 +51,7 @@ var DevicePlansFinder = (function (_ProvisionGenericFinder) {
     _createClass(DevicePlansFinder, [{
         key: '_composeUrl',
         value: function _composeUrl() {
-            var _url = this._baseUrl + "/" + this._organization + "/" + _URL_ENUM.DEVICE_PLANS;
+            var _url = this._baseUrl + '/' + this._organization + '/' + _URL_ENUM.DEVICE_PLANS;
             if (!_lodash2['default'].isNil(this._id)) {
                 this._setUrlParameters({ visibility: undefined });
                 return _url + this._id;
@@ -62,8 +62,8 @@ var DevicePlansFinder = (function (_ProvisionGenericFinder) {
 
         /**
          * Marks visibility assignable for organization device plans list retrieval
-         *   ogapi.newDevicePlansFinder().assignable().findByOrganization('organization').then().catch();
-         * @return {this} 
+         * ogapi.newDevicePlansFinder().assignable().findByOrganization(&#x27;organization&#x27;).then().catch();
+         * @return {this}
          */
     }, {
         key: 'assignable',
@@ -73,10 +73,10 @@ var DevicePlansFinder = (function (_ProvisionGenericFinder) {
         }
 
         /**
-          * Marks visibility administrable for organization device plans list retrieval.
-          *   ogapi.newDevicePlansFinder().administrable().findByOrganization('organization').then().catch();
-          * @return {this} 
-          */
+         * Marks visibility administrable for organization device plans list retrieval.
+         * ogapi.newDevicePlansFinder().administrable().findByOrganization(&#x27;organization&#x27;).then().catch();
+         * @return {this}
+         */
     }, {
         key: 'administrable',
         value: function administrable() {
@@ -86,8 +86,8 @@ var DevicePlansFinder = (function (_ProvisionGenericFinder) {
 
         /**
          * Marks visibility default for organization device plans list list retrieval.
-         *   ogapi.newDevicePlansFinder().default().findByOrganization('organization').then().catch();
-         * @return {this} 
+         * ogapi.newDevicePlansFinder().default().findByOrganization(&#x27;organization&#x27;).then().catch();
+         * @return {this}
          */
     }, {
         key: 'default',
@@ -98,9 +98,9 @@ var DevicePlansFinder = (function (_ProvisionGenericFinder) {
 
         /**
          * Retrieves all device plans from a organization
-         *   ogapi.newDevicePlansFinder().findByOrganization('organization').then().catch();
+         * ogapi.newDevicePlansFinder().findByOrganization(&#x27;organization&#x27;).then().catch();
          * @param {string} organization - organization name .
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findByOrganization',
@@ -112,16 +112,17 @@ var DevicePlansFinder = (function (_ProvisionGenericFinder) {
 
         /**
          * Retrieves a specific device plan from a organization
-         *   ogapi.newDevicePlansFinder().findByOrganizationAndId('organization', 'identifier').then().catch();
+         * ogapi.newDevicePlansFinder().findByOrganizationAndId(&#x27;organization&#x27;,
+         * &#x27;identifier&#x27;).then().catch();
          * @param {string} organization - organization name .
          * @param {string} identifier - plan name.
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findByOrganizationAndId',
         value: function findByOrganizationAndId(organization, identifier) {
             this._organization = organization;
-            this._withId("/" + identifier);
+            this._withId('/' + identifier);
             this._entity = _URL_ENUM.PLAN;
             return this._execute();
         }

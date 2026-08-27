@@ -24,7 +24,7 @@ var _utilSearchingFieldsFieldFinder2 = _interopRequireDefault(_utilSearchingFiel
 
 var BASE_URL = '/certificates';
 /**
- * Defined a search over Bundles    
+ * Defines a search over Certificates.
  * @example ogapi.bundlesSearchBuilder()
  */
 
@@ -44,10 +44,10 @@ var CertificatesSearchBuilder = (function (_SearchBuilder) {
         this._assignable = false;
     }
 
-    /** 
+    /**
      *  The search result will have all certificates which can be assignable to some device
      *  ogapi.certificatesSearchBuilder().assignable()
-     * @return {CertificatesSearchBuilder} 
+     * @return {CertificatesSearchBuilder}
      */
 
     _createClass(CertificatesSearchBuilder, [{
@@ -61,7 +61,7 @@ var CertificatesSearchBuilder = (function (_SearchBuilder) {
          * The search result will have all certificates which can be administered by the user
          * @example
          *  ogapi.certificatesSearchBuilder().administrable()
-         * @return {CertificatesSearchBuilder} 
+         * @return {CertificatesSearchBuilder}
          **/
     }, {
         key: 'administrable',
@@ -76,7 +76,7 @@ var CertificatesSearchBuilder = (function (_SearchBuilder) {
          *  ogapi.certificatesSearchBuilder().withFetch(true)
          * @param {!flag} flag
          * @throws {Error} throw error when flag is not a number
-         * @return {CertificatesSearchBuilder} 
+         * @return {CertificatesSearchBuilder}
          */
     }, {
         key: 'withFetch',

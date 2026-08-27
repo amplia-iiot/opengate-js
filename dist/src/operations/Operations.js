@@ -26,8 +26,13 @@ var _merge = require('merge');
 
 var _merge2 = _interopRequireDefault(_merge);
 
+var _utilParameterError = require('../util/parameterError');
+
+var _utilParameterError2 = _interopRequireDefault(_utilParameterError);
+
 /**
- * This class generates all operations builders by a response to search into catalog/operations
+ * This class generates all operation builders from a response obtained by searching the catalog/operations
+ * resource.
  */
 
 var Operations = (function () {
@@ -44,8 +49,8 @@ var Operations = (function () {
         this._operationNames = [];
     }
 
-    /**	
-     * Create a builder to update the periodicity of an operation 
+    /**
+     * Create a builder to update the periodicity of an operation
      * @param {!String} operationId - identifier of the operation to be updated~
      * @return {Promise}
      */
@@ -53,8 +58,8 @@ var Operations = (function () {
     _createClass(Operations, [{
         key: 'updatePeriodicityBuilder',
         value: function updatePeriodicityBuilder(operationId) {
-            if (typeof operationId !== "string") {
-                throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: "operationId" });
+            if (typeof operationId !== 'string') {
+                throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER', { parameter: 'operationId' });
             }
             var defered = _q2['default'].defer();
             var promise = defered.promise;
@@ -67,26 +72,26 @@ var Operations = (function () {
             return promise;
         }
 
-        /**	
-         * Create a builder to create an operation 
+        /**
+         * Create a builder to create an operation
          * @param {!String} name - name of the operation to be created
          * @return {Promise}
          */
     }, {
         key: 'builderByOperationName',
         value: function builderByOperationName(name) {
-            if (typeof name !== "string") {
-                throw new Error({ message: "OGAPI_STRING_PARAMETER", parameter: "name" });
+            if (typeof name !== 'string') {
+                throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER', { parameter: 'name' });
             }
             var defered = _q2['default'].defer();
             var promise = defered.promise;
             var opN = name.toUpperCase();
             var op = this._findOperation(opN);
             var _this = this;
-            if (typeof op === "undefined") {
+            if (typeof op === 'undefined') {
                 this._loadOperationCatalog().then(function () {
                     var op = _this._findOperation(opN);
-                    if (typeof op === "undefined") {
+                    if (typeof op === 'undefined') {
                         defered.reject("Operation <'" + opN + "'> unavailable.");
                     } else {
                         defered.resolve(_this._createBuilder(op.config));

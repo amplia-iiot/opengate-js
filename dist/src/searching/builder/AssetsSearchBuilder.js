@@ -28,7 +28,7 @@ var _AssetSearch2 = _interopRequireDefault(_AssetSearch);
 
 var BASE_URL = '/entities';
 /**
- * Defined a search over Assets	
+ * Defines a search over Assets.
  * @example ogapi.assetsSearchBuilder()
  */
 
@@ -47,10 +47,10 @@ var AssetsSearchBuilder = (function (_PreFilteredSearchBuilder) {
     }
 
     /**
-     * The response will only have a summary information 
+     * The response will only have a summary information
      * @example
-     *	ogapi.assetsSearchBuilder().summary() 
-     * @return {AssetsSearchBuilder} 
+     *	ogapi.assetsSearchBuilder().summary()
+     * @return {AssetsSearchBuilder}
      */
 
     _createClass(AssetsSearchBuilder, [{
@@ -64,16 +64,16 @@ var AssetsSearchBuilder = (function (_PreFilteredSearchBuilder) {
         key: '_buildFilter',
         value: function _buildFilter() {
             var finalFilter = {
-                "and": [{
-                    "exists": {
-                        "provision.asset.identifier": true
+                and: [{
+                    exists: {
+                        'provision.asset.identifier': true
                     }
                 }]
             };
 
             if (this._builderParams.filter && Object.keys(this._builderParams.filter).length > 0) {
                 var filter = this._builderParams.filter;
-                if (typeof filter._filterTemplate !== "undefined") {
+                if (typeof filter._filterTemplate !== 'undefined') {
                     //return filter._filterTemplate;
                     finalFilter.and.push(filter._filterTemplate.filter);
                 } else {
@@ -87,10 +87,10 @@ var AssetsSearchBuilder = (function (_PreFilteredSearchBuilder) {
         }
 
         /**
-         * The search request will have this group by 
+         * The search request will have this group by
          * @example
-         * @param {!(object)} group 
-         * @return {AssetsSearchBuilder} 
+         * @param {!(object)} group
+         * @return {AssetsSearchBuilder}
          */
     }, {
         key: 'group',
@@ -100,12 +100,12 @@ var AssetsSearchBuilder = (function (_PreFilteredSearchBuilder) {
         }
 
         /**
-         * Build a instance of Search 
+         * Build a instance of Search
          *
          * @example
          *  ogapi.assetsSearchBuilder().onProvisioned().build()
          * @throws {SearchBuilderError} Throw error on url build
-         * @return {Search} 
+         * @return {Search}
          */
     }, {
         key: 'build',
@@ -114,7 +114,7 @@ var AssetsSearchBuilder = (function (_PreFilteredSearchBuilder) {
         }
 
         /**
-         * The search request will have this filter 
+         * The search request will have this filter
          * @example
          *  ogapi.assetsSearchBuilder().select(
          *      ogapi.newSelectBuilder().add(SE.element("provision.device.identifier", ["value"], "id"), SE.add("device.temperature.value", ["value"]))
@@ -124,7 +124,7 @@ var AssetsSearchBuilder = (function (_PreFilteredSearchBuilder) {
          *      {"name": "device.temperature.value","fields": [{"field": "value","alias": "identifier"}]}]
          *   }) //Custom select
          * @param {!(SelectBuilder|object)} select
-         * @return {AssetsSearchBuilder} 
+         * @return {AssetsSearchBuilder}
          */
     }, {
         key: 'select',

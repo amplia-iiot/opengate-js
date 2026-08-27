@@ -28,8 +28,12 @@ var _utilFormatsCheck_types2 = _interopRequireDefault(_utilFormatsCheck_types);
 
 var _TYPES_ENUM = require('./TYPES_ENUM');
 
+var _utilParameterError = require('../util/parameterError');
+
+var _utilParameterError2 = _interopRequireDefault(_utilParameterError);
+
 /**
- * This is a base object that contains all you can do about TimeseriesFunction.
+ * This is a base object that contains everything you can do with TimeseriesFunction.
  */
 var URL = 'timeseries/provision/organizations';
 exports.URL = URL;
@@ -39,13 +43,13 @@ var TimeseriesFunction = (function (_BaseProvision) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function TimeseriesFunction(ogapi, organization, nameForUpdate) {
         _classCallCheck(this, TimeseriesFunction);
 
-        _get(Object.getPrototypeOf(TimeseriesFunction.prototype), 'constructor', this).call(this, ogapi, "timeseries/provision/organizations");
+        _get(Object.getPrototypeOf(TimeseriesFunction.prototype), 'constructor', this).call(this, ogapi, 'timeseries/provision/organizations');
 
         if (organization) {
             this.withOrganization(organization);
@@ -99,7 +103,7 @@ var TimeseriesFunction = (function (_BaseProvision) {
 
         /**
          * Set the description attribute
-         * @param {string} description 
+         * @param {string} description
          * @return {TimeseriesFunction}
          */
     }, {
@@ -112,7 +116,7 @@ var TimeseriesFunction = (function (_BaseProvision) {
 
         /**
          * Set the script attribute
-         * @param {string} script 
+         * @param {string} script
          * @return {TimeseriesFunction}
          */
     }, {
@@ -125,7 +129,7 @@ var TimeseriesFunction = (function (_BaseProvision) {
 
         /**
          * Set the valueTypes attribute
-         * @param {Array} valueTypes 
+         * @param {Array} valueTypes
          * @return {TimeseriesFunction}
          */
     }, {
@@ -158,7 +162,7 @@ var TimeseriesFunction = (function (_BaseProvision) {
         key: 'withMetadataFile',
         value: function withMetadataFile(file) {
             // if (typeof file !== 'object')
-            //     throw new Error({ message: "Parameter action requires name and type", parameter: 'action' });
+            //     throw parameterError("Parameter action requires name and type", { parameter: 'action' });
             this._metadataFile = file;
         }
     }, {
@@ -167,19 +171,19 @@ var TimeseriesFunction = (function (_BaseProvision) {
             this._checkRequiredParameters(isUpdate);
 
             var updateData = {
-                'script': this._script
+                script: this._script
             };
 
             if (this._metadataFile) {
                 updateData.metadata = this._metadataFile;
             } else {
                 var blob = new Blob([JSON.stringify({
-                    "name": this._name,
-                    "description": this._description,
-                    "valueTypes": this._valueTypes || [],
-                    "returnType": this._returnType || undefined
+                    name: this._name,
+                    description: this._description,
+                    valueTypes: this._valueTypes || [],
+                    returnType: this._returnType || undefined
                 })], {
-                    type: "application/json"
+                    type: 'application/json'
                 });
 
                 updateData.metadata = blob;
@@ -201,7 +205,7 @@ var TimeseriesFunction = (function (_BaseProvision) {
     }, {
         key: '_buildURL',
         value: function _buildURL() {
-            return URL + "/" + this._organization + "/catalog" + (this._identifier ? '/' + this._identifier : '');
+            return URL + '/' + this._organization + '/catalog' + (this._identifier ? '/' + this._identifier : '');
         }
     }, {
         key: 'create',
@@ -213,7 +217,7 @@ var TimeseriesFunction = (function (_BaseProvision) {
                 switch (statusCode) {
                     case 200:
                         {
-                            var resultQuery = response.text != "" ? JSON.parse(response.text) : {};
+                            var resultQuery = response.text != '' ? JSON.parse(response.text) : {};
                             var _statusCode = response.status;
                             defer.resolve({
                                 data: resultQuery,
@@ -247,10 +251,10 @@ var TimeseriesFunction = (function (_BaseProvision) {
             return defer.promise;
         }
 
-        /** 
-         * Udpate a Rule
+        /**
+         * Updates a rule.
          * @return {Promise}
-         * @throws {Error} 
+         * @throws {Error}
          */
     }, {
         key: 'update',
@@ -262,7 +266,7 @@ var TimeseriesFunction = (function (_BaseProvision) {
                 switch (statusCode) {
                     case 200:
                         {
-                            var resultQuery = response.text != "" ? JSON.parse(response.text) : {};
+                            var resultQuery = response.text != '' ? JSON.parse(response.text) : {};
                             var _statusCode = response.status;
                             defer.resolve({
                                 data: resultQuery,
@@ -286,10 +290,10 @@ var TimeseriesFunction = (function (_BaseProvision) {
             return defer.promise;
         }
 
-        /** 
+        /**
          * Deletes the selected RuleConfiguration
          * @return {Promise}
-         * @throws {Error} 
+         * @throws {Error}
          */
     }, {
         key: 'delete',

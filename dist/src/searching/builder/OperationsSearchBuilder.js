@@ -22,7 +22,7 @@ var _utilSearchingFieldsFieldFinder2 = _interopRequireDefault(_utilSearchingFiel
 
 var BASE_URL = '/jobs';
 /**
- * Defined a search over executions´s opreations
+ * Defines a search over executions' operations.
  * @example ogapi.operationsSearchBuilder()
  */
 

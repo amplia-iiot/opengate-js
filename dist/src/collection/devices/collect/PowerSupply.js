@@ -17,7 +17,7 @@ var _enumBATTERY_CHARGE_LEVEL_STATUS_ENUM = require('./enum/BATTERY_CHARGE_LEVEL
 var _enumLEVEL_TREND_ENUM = require('./enum/LEVEL_TREND_ENUM');
 
 /**
- * This is a base object that allows the user to create a Datapoint.
+ * This is a base object that allows the user to create a PowerSupply object.
  */
 
 var PowerSupply = (function () {
@@ -132,7 +132,7 @@ var PowerSupply = (function () {
                 return value == this;
             }, value);
 
-            if (typeof found === "undefined") {
+            if (typeof found === 'undefined') {
                 not_found.push(value);
             }
             if (not_found.length !== 0) {
@@ -145,11 +145,11 @@ var PowerSupply = (function () {
         value: function _isValidDate(str) {
             //2015-07-16T19:20:30+01:00
             //YYYY-MM-DDThh:mm:ss+
-            if (str === "" || str === null) {
+            if (str === '' || str === null) {
                 return false;
             }
 
-            // m[1] is year 'YYYY' * m[2] is month 'MM' * m[3] is day 'DD'                 
+            // m[1] is year 'YYYY' * m[2] is month 'MM' * m[3] is day 'DD'
 
             var m = str.match(/(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})\+(\d{2}):(\d{2})/);
 
@@ -163,7 +163,7 @@ var PowerSupply = (function () {
                 return false;
             }
 
-            var ret = true; //RETURN VALUE                     
+            var ret = true; //RETURN VALUE
             var thisYear = new Date().getFullYear(); //YEAR NOW
             var minYear = 1999; //MIN YEAR
 
@@ -171,7 +171,7 @@ var PowerSupply = (function () {
             if (m[1].length < 4 || m[1] < minYear || m[1] > thisYear) {
                 ret = false;
             }
-            // MONTH CHECK         
+            // MONTH CHECK
             if (m[2].length < 2 || m[2] < 1 || m[2] > 12) {
                 ret = false;
             }
@@ -185,20 +185,19 @@ var PowerSupply = (function () {
     }, {
         key: 'composeElement',
         value: function composeElement() {
-
             var powerSupply = {
-                "source": this._source,
-                "status": this._status,
-                "batteryChargeLevel": {
-                    "trend": this._trend,
-                    "status": this._batteryStatus,
-                    "percentage": this._percentage
+                source: this._source,
+                status: this._status,
+                batteryChargeLevel: {
+                    trend: this._trend,
+                    status: this._batteryStatus,
+                    percentage: this._percentage
                 }
             };
             if (this._outageDate !== undefined || this._outageDuration !== undefined) {
                 powerSupply.outage = {
-                    "timestamp": this._outageDate,
-                    "duration": this._outageDuration
+                    timestamp: this._outageDate,
+                    duration: this._outageDuration
                 };
             }
             return powerSupply;

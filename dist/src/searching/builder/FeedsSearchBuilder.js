@@ -22,7 +22,7 @@ var _utilSearchingFieldsFieldFinder2 = _interopRequireDefault(_utilSearchingFiel
 
 var BASE_URL = '/feeds';
 /**
- * Defined a search over Feeds	
+ * Defines a search over Feeds.
  * @example ogapi.feedsSearchBuilder()
  */
 

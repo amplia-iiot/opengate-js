@@ -22,9 +22,9 @@ var _jsonpath = require('jsonpath');
 
 var _jsonpath2 = _interopRequireDefault(_jsonpath);
 
-/** 
- * This is a abstract class, it must be extended to another class that defined the specific search.
- * This class is responsible to manage execute request to OpenGate North API
+/**
+ * This is an abstract class; it must be extended by another class that defines the specific search. This class is
+ * responsible for managing and executing requests to the OpenGate North API.
  */
 
 var BasicTypesSearchBuilder = (function () {
@@ -96,7 +96,7 @@ var BasicTypesSearchBuilder = (function () {
             var defered = _q2['default'].defer();
             var promise = defered.promise;
             this._setExtraHeaders({
-                'Accept': 'application/json'
+                Accept: 'application/json'
             });
             this._ogapi.Napi.get(this._resource, this._timeout, this._getExtraHeaders(), this._getUrlParameters()).then(function (response) {
                 var resultQuery = response.body;
@@ -174,7 +174,6 @@ var BasicTypesSearchBuilder = (function () {
     }, {
         key: 'build',
         value: function build() {
-
             return this;
         }
     }]);

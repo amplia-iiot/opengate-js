@@ -23,7 +23,7 @@ var _utilSearchingFieldsFieldFinder2 = _interopRequireDefault(_utilSearchingFiel
 var BASE_URL = '/bulk/async';
 
 /**
- * Defined a search over bulk entities operations	
+ * Defines a search over bulk entity operations.
  * @example ogapi.bulkSearchBuilder()
  */
 

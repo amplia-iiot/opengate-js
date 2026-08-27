@@ -14,12 +14,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var _q = require('q');
+
+var _q2 = _interopRequireDefault(_q);
+
+var _httpStatusCodes = require('http-status-codes');
+
+var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
+
 var _GenericFinder2 = require('../GenericFinder');
 
 var _GenericFinder3 = _interopRequireDefault(_GenericFinder2);
 
 /**
- *   This class allow make get request to planner resource into Opengate North API.
+ * This class allows making GET requests to the planner resource of the OpenGate North API.
  */
 
 var ScheduleHistoryFinder = (function (_GenericFinder) {
@@ -44,15 +52,15 @@ var ScheduleHistoryFinder = (function (_GenericFinder) {
     _createClass(ScheduleHistoryFinder, [{
         key: '_composeUrl',
         value: function _composeUrl() {
-            return this._baseUrl + "/" + this._organization + "/history";
+            return this._baseUrl + '/' + this._organization + '/history';
         }
 
         /**
-        * Download a complete list of scheduler history for the organization. This execute a GET http method
-        * @test
-        *   ogapi.newScheduleHistoryFinder().findByOrganization(organization).then().catch();
-        * @return {Promise} 
-        */
+         * Download a complete list of scheduler history for the organization. This execute a GET http method
+         * @test
+         *   ogapi.newScheduleHistoryFinder().findByOrganization(organization).then().catch();
+         * @return {Promise}
+         */
     }, {
         key: 'findByOrganization',
         value: function findByOrganization(organization) {
@@ -64,21 +72,21 @@ var ScheduleHistoryFinder = (function (_GenericFinder) {
          * Download a complete list of scheduler history for the organization. This execute a GET http method
          * @test
          *   ogapi.newScheduleHistoryFinder().findByOrganization(organization).then().catch();
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findByOrganizationAndType',
         value: function findByOrganizationAndType(organization, type) {
             this._organization = organization;
 
-            var defered = q.defer();
+            var defered = _q2['default'].defer();
             var promise = defered.promise;
             var _error_not_found = this._error_not_found;
             this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), true).then(function (req) {
                 if (req.statusCode === 204) {
                     defered.reject({
                         data: _error_not_found,
-                        statusCode: HttpStatus.NOT_FOUND
+                        statusCode: _httpStatusCodes2['default'].NOT_FOUND
                     });
                 } else {
                     var finalData = req.body.filter(function (historyTmp) {
@@ -93,7 +101,7 @@ var ScheduleHistoryFinder = (function (_GenericFinder) {
                     } else {
                         defered.reject({
                             data: _error_not_found,
-                            statusCode: HttpStatus.NOT_FOUND
+                            statusCode: _httpStatusCodes2['default'].NOT_FOUND
                         });
                     }
                 }

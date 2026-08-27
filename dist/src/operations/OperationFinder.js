@@ -26,7 +26,7 @@ var LIMIT_START_DEF_VALUE = 1;
 var LIMIT_SIZE_DEF_VALUE = 10;
 
 /**
- *   This class allow make get request to operation resource into Opengate North API.
+ * This class allows making GET requests to the operation resource in OpenGate North API.
  */
 
 var OperationFinder = (function (_GenericFinder) {
@@ -49,7 +49,7 @@ var OperationFinder = (function (_GenericFinder) {
      * @example
      *   ogapi.newOperationFinder().findById('xxx-xx-xxx-xxx').then().catch();
      * @param {string} id - Operation id.
-     * @return {Promise} 
+     * @return {Promise}
      */
 
     _createClass(OperationFinder, [{
@@ -67,7 +67,7 @@ var OperationFinder = (function (_GenericFinder) {
          * @example
          *   ogapi.newOperationFinder().findPeriodicityById('xxx-xx-xxx-xxx').then().catch();
          * @param {string} id - Operation id.
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findPeriodicityById',
@@ -86,8 +86,8 @@ var OperationFinder = (function (_GenericFinder) {
                 } else {
                     _this._id = response.data.taskId;
                     _this._baseUrl = 'operation/tasks';
-                    _this._entity = "task";
-                    _this._error_not_found = "Operation is not periodic!";
+                    _this._entity = 'task';
+                    _this._error_not_found = 'Operation is not periodic!';
                     _this._execute().then(function (response) {
                         response.data.id = _this._id;
                         defered.resolve(response);
@@ -106,7 +106,7 @@ var OperationFinder = (function (_GenericFinder) {
          * @example
          *   ogapi.newOperationFinder().findPeriodicityByPeriodicityId('xxx-xx-xxx-xxx').then().catch();
          * @param {string} periodicityId - Periodicity id.
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findPeriodicityByPeriodicityId',
@@ -116,7 +116,7 @@ var OperationFinder = (function (_GenericFinder) {
             var promise = defered.promise;
             _this._id = periodicityId;
             _this._baseUrl = 'operation/tasks';
-            _this._entity = "task";
+            _this._entity = 'task';
             _this._execute().then(function (response) {
                 response.data.id = _this._id;
                 defered.resolve(response);
@@ -135,7 +135,7 @@ var OperationFinder = (function (_GenericFinder) {
          * @param {string} id - Operation id.
          * @param {number} size - Defined the number of elements on response
          * @param {number} [start=0] - Defined the offset on response
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findExecutionsById',
@@ -147,8 +147,8 @@ var OperationFinder = (function (_GenericFinder) {
             this._baseUrl = 'operation/jobs';
             this._entity = 'operations';
             this._error_not_found = 'Executions not found';
-            if (typeof size !== "number") throw new Error('size parameter must be a number');
-            if (typeof start !== "number" || start < 1) start = LIMIT_START_DEF_VALUE;
+            if (typeof size !== 'number') throw new Error('size parameter must be a number');
+            if (typeof start !== 'number' || start < 1) start = LIMIT_START_DEF_VALUE;
             this._limit = {
                 size: size,
                 start: start
@@ -170,10 +170,10 @@ var OperationFinder = (function (_GenericFinder) {
                         size: this._limit.size
                     });
                 }
-                var base_url = this._baseUrl + "/" + this._id + "/operations";
+                var base_url = this._baseUrl + '/' + this._id + '/operations';
                 return base_url;
             }
-            return this._baseUrl + "/" + this._id;
+            return this._baseUrl + '/' + this._id;
         }
     }]);
 

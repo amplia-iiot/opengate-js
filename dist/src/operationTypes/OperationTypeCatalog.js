@@ -21,7 +21,7 @@ var _GenericFinder3 = _interopRequireDefault(_GenericFinder2);
 // import ProvisionGenericFinder from '../ProvisionGenericFinder';
 
 /**
- *   This class allow make get request to OperationType resource into Opengate North API.
+ * This class allows making GET requests to the OperationType resource in the OpenGate North API.
  */
 
 var OperationTypesCatalog = (function (_GenericFinder) {
@@ -35,14 +35,14 @@ var OperationTypesCatalog = (function (_GenericFinder) {
     function OperationTypesCatalog(ogapi) {
         _classCallCheck(this, OperationTypesCatalog);
 
-        _get(Object.getPrototypeOf(OperationTypesCatalog.prototype), 'constructor', this).call(this, ogapi, 'operationTypes/catalog', "operationType", 'Operation types not found');
+        _get(Object.getPrototypeOf(OperationTypesCatalog.prototype), 'constructor', this).call(this, ogapi, 'operationTypes/catalog', 'operationType', 'Operation types not found');
     }
 
     /**
      * Performs a get that returns operation types templates
      * @test
      *   ogapi.newOperationTypeCatalog().getOperationTypes();
-     * @return {Promise} 
+     * @return {Promise}
      */
 
     _createClass(OperationTypesCatalog, [{

@@ -23,7 +23,7 @@ var _StaticSearch = require('../StaticSearch');
 var _StaticSearch2 = _interopRequireDefault(_StaticSearch);
 
 /**
- * Defined a search over ruleType catalog
+ * Defines a search over the rule type catalog.
  * @example ogapi.ruleTypeSearchBuilder()
  */
 
@@ -43,7 +43,7 @@ var RuleTypeSearchBuilder = (function (_SearchBuilder) {
   }
 
   /**
-   * Build a instance of StaticSearch 
+   * Build a instance of StaticSearch
    *
    * @example
    *   ogapi.ruleTypeSearchBuilder().build()

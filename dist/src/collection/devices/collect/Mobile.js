@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * This is a base object that allows the user to create a Datapoint.
+ * This is a base object that allows the user to create a Mobile object.
  */
 Object.defineProperty(exports, '__esModule', {
     value: true
@@ -33,10 +33,10 @@ var Mobile = (function () {
     }
 
     /**
-    * Set the mr attribute
-    * @param {string} mr - optionals field
-    * @return {Mobile}
-    */
+     * Set the mr attribute
+     * @param {string} mr - optionals field
+     * @return {Mobile}
+     */
 
     _createClass(Mobile, [{
         key: 'withMr',
@@ -125,10 +125,10 @@ var Mobile = (function () {
         }
 
         /**
-        * Set the plmn attribute
-        * @param {string} plmn - optionals field
-        * @return {Mobile}
-        */
+         * Set the plmn attribute
+         * @param {string} plmn - optionals field
+         * @return {Mobile}
+         */
     }, {
         key: 'withPlmn',
         value: function withPlmn(plmn) {
@@ -138,10 +138,10 @@ var Mobile = (function () {
         }
 
         /**
-        * Set the timingAdvance attribute
-        * @param {string} timingAdvance - optionals field
-        * @return {Mobile}
-        */
+         * Set the timingAdvance attribute
+         * @param {string} timingAdvance - optionals field
+         * @return {Mobile}
+         */
     }, {
         key: 'withTimingAdvance',
         value: function withTimingAdvance(timingAdvance) {
@@ -177,10 +177,10 @@ var Mobile = (function () {
         }
 
         /**
-        * Set the signalStrengthMin attribute
-        * @param {string} signalStrengthMin - optionals field
-        * @return {Mobile}
-        */
+         * Set the signalStrengthMin attribute
+         * @param {string} signalStrengthMin - optionals field
+         * @return {Mobile}
+         */
     }, {
         key: 'withsignalStrengthMin',
         value: function withsignalStrengthMin(signalStrengthMin) {
@@ -190,10 +190,10 @@ var Mobile = (function () {
         }
 
         /**
-        * Set the signalQuality attribute
-        * @param {string} signalQuality - optionals field
-        * @return {Mobile}
-        */
+         * Set the signalQuality attribute
+         * @param {string} signalQuality - optionals field
+         * @return {Mobile}
+         */
     }, {
         key: 'withsignalQuality',
         value: function withsignalQuality(signalQuality) {
@@ -203,10 +203,10 @@ var Mobile = (function () {
         }
 
         /**
-        * Set the signalQualityMax attribute
-        * @param {string} signalQualityMax - optionals field
-        * @return {Mobile}
-        */
+         * Set the signalQualityMax attribute
+         * @param {string} signalQualityMax - optionals field
+         * @return {Mobile}
+         */
     }, {
         key: 'withsignalQualityMax',
         value: function withsignalQualityMax(signalQualityMax) {
@@ -216,10 +216,10 @@ var Mobile = (function () {
         }
 
         /**
-        * Set the signalQualityMin attribute
-        * @param {string} signalQualityMin - optionals field
-        * @return {Mobile}
-        */
+         * Set the signalQualityMin attribute
+         * @param {string} signalQualityMin - optionals field
+         * @return {Mobile}
+         */
     }, {
         key: 'withsignalQualityMin',
         value: function withsignalQualityMin(signalQualityMin) {
@@ -230,23 +230,22 @@ var Mobile = (function () {
     }, {
         key: 'composeElement',
         value: function composeElement() {
-
             var mobile = {
-                "mr": this._mr,
-                "apn": this._apn,
-                "bcch": this._bcch,
-                "cgi": this._cgi,
-                "cellId": this._cellId,
-                "lac": this._lac,
-                "ratType": this._ratType,
-                "plmn": this._plmn,
-                "timingAdvance": this._timingAdvance,
-                "signalStrength": this._signalStrength,
-                "signalStrengthMax": this._signalStrengthMax,
-                "signalStrengthMin": this._signalStrengthMin,
-                "signalQuality": this._signalQuality,
-                "signalQualityMax": this._signalQualityMax,
-                "signalQualityMin": this._signalQualityMin
+                mr: this._mr,
+                apn: this._apn,
+                bcch: this._bcch,
+                cgi: this._cgi,
+                cellId: this._cellId,
+                lac: this._lac,
+                ratType: this._ratType,
+                plmn: this._plmn,
+                timingAdvance: this._timingAdvance,
+                signalStrength: this._signalStrength,
+                signalStrengthMax: this._signalStrengthMax,
+                signalStrengthMin: this._signalStrengthMin,
+                signalQuality: this._signalQuality,
+                signalQualityMax: this._signalQualityMax,
+                signalQualityMin: this._signalQualityMin
             };
             return mobile;
         }

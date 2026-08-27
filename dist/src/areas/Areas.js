@@ -25,7 +25,7 @@ var _utilFormatsCheck_types = require('../util/formats/check_types');
 var _utilFormatsCheck_types2 = _interopRequireDefault(_utilFormatsCheck_types);
 
 /**
- * This is a base object that contains all you can do about Areas.
+ * This is a base object that contains everything you can do with an area.
  */
 
 var Areas = (function (_BaseProvision) {
@@ -33,13 +33,13 @@ var Areas = (function (_BaseProvision) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function Areas(ogapi) {
         _classCallCheck(this, Areas);
 
-        _get(Object.getPrototypeOf(Areas.prototype), 'constructor', this).call(this, ogapi, '/organizations/', undefined, ['identifier', 'organization', "type", 'coordinates']);
+        _get(Object.getPrototypeOf(Areas.prototype), 'constructor', this).call(this, ogapi, '/organizations/', undefined, ['identifier', 'organization', 'type', 'coordinates']);
     }
 
     _createClass(Areas, [{
@@ -89,10 +89,10 @@ var Areas = (function (_BaseProvision) {
         }
 
         /**
-        * Set the color attribute
-        * @param {string} color - required field
-        * @return {Areas}
-        */
+         * Set the color attribute
+         * @param {string} color - required field
+         * @return {Areas}
+         */
     }, {
         key: 'withColor',
         value: function withColor(color) {

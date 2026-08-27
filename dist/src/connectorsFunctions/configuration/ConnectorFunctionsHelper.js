@@ -29,7 +29,7 @@ var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
 var _CONNECTOR_FUNCTIONS_ENUMS = require('../_CONNECTOR_FUNCTIONS_ENUMS');
 
 /**
- *   This class allow make get request to RuleConfigurationsHelper resource into Opengate North API.
+ * This class allows you to make GET requests to the ConnectorFunctionsHelper resource in the OpenGate North API.
  */
 
 var ConnectorFunctionsHelper = (function (_GenericFinder) {
@@ -45,10 +45,10 @@ var ConnectorFunctionsHelper = (function (_GenericFinder) {
 
         _get(Object.getPrototypeOf(ConnectorFunctionsHelper.prototype), 'constructor', this).call(this, ogapi, 'connectorFunctions');
         this._jsHeaders = {
-            'accept': 'application/javascript'
+            accept: 'application/javascript'
         };
         this._mdHeaders = {
-            'accept': 'text/markdown'
+            accept: 'text/markdown'
         };
     }
 
@@ -56,7 +56,7 @@ var ConnectorFunctionsHelper = (function (_GenericFinder) {
      * Performs a get that returns documentation private of javascript functions from rules service
      * @test
      *   ogapi.newConnectorFunctionsHelper().getDocPrivateJavascriptFunctions();
-     * @return {Promise} 
+     * @return {Promise}
      */
 
     _createClass(ConnectorFunctionsHelper, [{
@@ -84,7 +84,7 @@ var ConnectorFunctionsHelper = (function (_GenericFinder) {
          * Performs a get that returns documentation of javascript functions from rules service
          * @test
          *   ogapi.newConnectorFunctionsHelper().getDocJavascriptFunctions();
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'getDocJavascriptFunctions',

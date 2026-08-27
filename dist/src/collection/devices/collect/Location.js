@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * This is a base object that allows the user to create a Datapoint.
+ * This is a base object that allows the user to create a Location object.
  */
 Object.defineProperty(exports, '__esModule', {
     value: true
@@ -21,10 +21,10 @@ var Location = (function () {
     }
 
     /**
-    * Set the date attribute
-    * @param {string} date - optionals field
-    * @return {Location}
-    */
+     * Set the date attribute
+     * @param {string} date - optionals field
+     * @return {Location}
+     */
 
     _createClass(Location, [{
         key: 'withDateLocation',
@@ -75,10 +75,10 @@ var Location = (function () {
                 throw new Error('The parameters latitude and longitude are required in location element');
             }
             var location = {
-                "timestamp": this._date,
-                "coordinates": {
-                    "latitude": this._latitude,
-                    "longitude": this._longitude
+                timestamp: this._date,
+                coordinates: {
+                    latitude: this._latitude,
+                    longitude: this._longitude
                 }
             };
             return location;

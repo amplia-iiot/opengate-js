@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-	value: true
+    value: true
 });
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -18,26 +18,27 @@ var _BaseParameterBuilderWithParent2 = _interopRequireDefault(_BaseParameterBuil
 // jsf.option('alwaysFakeOptionals', true);
 
 /**
-* This class generates all operation parameters builders by "parameters" attribute that there is into config operation json
-*/
+ * This class generates all the operation parameter builders from the "parameters" attribute in the operation's
+ * configuration JSON.
+ */
 
 var ParameterBuilderFactory =
 /**
-* @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
-* @param {!object} parameters - this is configuration about parameter operation.
-* @param {!BaseOperationBuilder} parent - this is a instance of BaseOperationBuilder
-*/
+ * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
+ * @param {!object} parameters - this is configuration about parameter operation.
+ * @param {!BaseOperationBuilder} parent - this is a instance of BaseOperationBuilder
+ */
 function ParameterBuilderFactory(ogapi, parameters, parent) {
-	_classCallCheck(this, ParameterBuilderFactory);
+    _classCallCheck(this, ParameterBuilderFactory);
 
-	var _ogapi = ogapi;
-	var _parent = parent;
+    var _ogapi = ogapi;
+    var _parent = parent;
 
-	// Ejemplo, name = "profile" => return "newProfileParamBuilder"
-	function createBuilderName(name) {
-		var firstChar = name[0].toUpperCase();
-		return "new" + firstChar + name.slice(1) + "ParamBuilder";
-	}
+    // Ejemplo, name = "profile" => return "newProfileParamBuilder"
+    function createBuilderName(name) {
+        var firstChar = name[0].toUpperCase();
+        return 'new' + firstChar + name.slice(1) + 'ParamBuilder';
+    }
 };
 
 exports['default'] = ParameterBuilderFactory;

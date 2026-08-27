@@ -51,7 +51,7 @@ var DatasetFinder = (function (_GenericFinder) {
      * @test
      *   ogapi.newDatasetFinder().findByOrganization(organization);
      * @param {string} organization - organization
-     * @return {Promise} 
+     * @return {Promise}
      */
 
     _createClass(DatasetFinder, [{
@@ -67,7 +67,7 @@ var DatasetFinder = (function (_GenericFinder) {
          *   ogapi.newDatasetFinder().findByOrganizationAndDatasetId(organization, datasetId);
          * @param {string} organization - organization
          * @param {string} datasetId - dataset identifier
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findByOrganizationAndDatasetId',
@@ -82,7 +82,7 @@ var DatasetFinder = (function (_GenericFinder) {
          *   ogapi.newDatasetFinder().findByOrganizationAndName(organization, name);
          * @param {string} organization - organization
          * @param {string} name - timeserie name
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findByOrganizationAndName',

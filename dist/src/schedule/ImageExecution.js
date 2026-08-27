@@ -22,8 +22,12 @@ var _utilFormatsCheck_types = require('../util/formats/check_types');
 
 var _utilFormatsCheck_types2 = _interopRequireDefault(_utilFormatsCheck_types);
 
+var _utilParameterError = require('../util/parameterError');
+
+var _utilParameterError2 = _interopRequireDefault(_utilParameterError);
+
 /**
- * This is a base object that contains all you can do about Bundles.
+ * This is a base object that represents an image execution step within a scheduled pipeline.
  */
 
 var ImageExecution = (function (_BaseProvision) {
@@ -31,13 +35,13 @@ var ImageExecution = (function (_BaseProvision) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function ImageExecution(ogapi) {
         _classCallCheck(this, ImageExecution);
 
-        _get(Object.getPrototypeOf(ImageExecution.prototype), 'constructor', this).call(this, ogapi, "/organization", undefined, ["identifier", "organization", "schedule", "imageExecution", "maxTimeToWaitCallback"], 'scheduler');
+        _get(Object.getPrototypeOf(ImageExecution.prototype), 'constructor', this).call(this, ogapi, '/organization', undefined, ['identifier', 'organization', 'schedule', 'imageExecution', 'maxTimeToWaitCallback'], 'scheduler');
         this._ogapi = ogapi;
     }
 
@@ -65,13 +69,13 @@ var ImageExecution = (function (_BaseProvision) {
 
         /**
          * Set the organization attribute
-         * @param {string} organization 
+         * @param {string} organization
          * @return {ImageExecution}
          */
     }, {
         key: 'withOrganization',
         value: function withOrganization(organization) {
-            if (typeof organization !== 'string' || organization.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'organization' });
+            if (typeof organization !== 'string' || organization.length > 50) throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER_MAX_LENGTH_50', { parameter: 'organization' });
             this._organization = organization;
             return this;
         }
@@ -143,7 +147,7 @@ var ImageExecution = (function (_BaseProvision) {
 
         /**
          * Sets the from attribute
-         * @param {string} from 
+         * @param {string} from
          * @returns {ImageExecution}
          */
     }, {
@@ -162,7 +166,7 @@ var ImageExecution = (function (_BaseProvision) {
 
         /**
          * Sets the to attribute
-         * @param {string} to 
+         * @param {string} to
          * @returns {ImageExecution}
          */
     }, {

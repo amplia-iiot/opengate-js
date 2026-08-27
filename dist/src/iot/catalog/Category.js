@@ -15,12 +15,12 @@ var _Datastream = require('./Datastream');
 var _Datastream2 = _interopRequireDefault(_Datastream);
 
 /**
- * Defines the builder to configure a category of a datamodel. With this builder you can configure a category
+ * Defines the builder used to configure a category of a datamodel, including the datastreams it groups.
  */
 
 var Category = (function () {
-    /**    
-     * @param {!InternalOpenGateAPI} Reference to the API object.
+    /**
+     * @param {!InternalOpenGateAPI} ogapi - Reference to the API object.
      * @param {!identifier} identifier of category
      * @param {Array} datastreams of category
      */
@@ -43,7 +43,7 @@ var Category = (function () {
         }
 
         /**
-         * Add a datastream to the category 
+         * Add a datastream to the category
          * @param {!Object} datastream json object
          * @return {Category}
          */
@@ -58,7 +58,7 @@ var Category = (function () {
         }
 
         /**
-         * Add a datastreams to the category 
+         * Add a datastreams to the category
          * @param {!Object} datastreams of datastream json object
          * @return {Category}
          */
@@ -95,9 +95,9 @@ var Category = (function () {
             }
 
             return {
-                'identifier': this._identifier,
-                'name': this._name ? this._name : undefined,
-                'datastreams': this._datastreams
+                identifier: this._identifier,
+                name: this._name ? this._name : undefined,
+                datastreams: this._datastreams
             };
         }
     }]);

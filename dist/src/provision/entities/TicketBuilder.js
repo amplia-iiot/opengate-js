@@ -22,7 +22,7 @@ var TicketID = 'provision.ticket.identifier';
 
 exports.TicketID = TicketID;
 /**
- * Subscription builder. This builder give you the necessary tools to create a subscription using our OpenGate REST.
+ * Ticket builder. This builder gives you the necessary tools to create a ticket using the OpenGate REST API.
  */
 
 var TicketBuilder = (function (_SimpleBuilder) {

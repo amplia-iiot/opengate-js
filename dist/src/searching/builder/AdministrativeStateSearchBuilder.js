@@ -23,7 +23,7 @@ var _StaticSearch = require('../StaticSearch');
 var _StaticSearch2 = _interopRequireDefault(_StaticSearch);
 
 /**
- * Defined a search over operational status catalogs    
+ * Defines a search over the administrative state catalog.
  * @example ogapi.administrativeStateSearchBuilder()
  */
 
@@ -43,7 +43,7 @@ var AdministrativeStateSearchBuilder = (function (_SearchBuilder) {
     }
 
     /**
-     * Build a instance of StaticSearch 
+     * Build a instance of StaticSearch
      *
      * @example
      *   ogapi.administrativeStateSearchBuilder().filter({and:[]}).build()
@@ -64,7 +64,7 @@ var AdministrativeStateSearchBuilder = (function (_SearchBuilder) {
          *  ogapi.administrativeStateSearchBuilder().withId('myId').build()
          * @param {!string} administrativeStateId - specific type id
          * @throws {Error} throw error when hardwareId is not typeof string
-         * @return {AdministrativeStateSearchBuilder} 
+         * @return {AdministrativeStateSearchBuilder}
          */
     }, {
         key: 'withId',
@@ -86,7 +86,7 @@ var AdministrativeStateSearchBuilder = (function (_SearchBuilder) {
          *  ogapi.administrativeStateSearchBuilder().withEntityType('myEntityType').build()
          * @param {!string} entityType - model name
          * @throws {Error} throw error when entityType is not typeof string
-         * @return {AdministrativeStateSearchBuilder} 
+         * @return {AdministrativeStateSearchBuilder}
          */
     }, {
         key: 'withEntityType',

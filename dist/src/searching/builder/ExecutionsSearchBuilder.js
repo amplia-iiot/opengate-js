@@ -26,7 +26,7 @@ var TOKEN_URL = '$_token';
 
 exports.TOKEN_URL = TOKEN_URL;
 /**
- * Defined a search over Executions	
+ * Defines a search over Executions.
  * @example ogapi.executionsSearchBuilder()
  */
 

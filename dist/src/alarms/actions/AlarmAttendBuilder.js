@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-	value: true
+  value: true
 });
 
 var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
@@ -17,23 +17,23 @@ var _AlarmActionBuilder2 = require('./AlarmActionBuilder');
 var _AlarmActionBuilder3 = _interopRequireDefault(_AlarmActionBuilder2);
 
 /**
-* Defines the builder to execute alarm attend operation
-*/
-
-var AlarmAttendBuilder = (function (_AlarmActionBuilder) {
-	_inherits(AlarmAttendBuilder, _AlarmActionBuilder);
-
-	/**
- * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
+ * Defines the builder to execute alarm attend operation
  */
 
-	function AlarmAttendBuilder(ogapi) {
-		_classCallCheck(this, AlarmAttendBuilder);
+var AlarmAttendBuilder = (function (_AlarmActionBuilder) {
+  _inherits(AlarmAttendBuilder, _AlarmActionBuilder);
 
-		_get(Object.getPrototypeOf(AlarmAttendBuilder.prototype), 'constructor', this).call(this, ogapi, "ATTEND");
-	}
+  /**
+   * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
+   */
 
-	return AlarmAttendBuilder;
+  function AlarmAttendBuilder(ogapi) {
+    _classCallCheck(this, AlarmAttendBuilder);
+
+    _get(Object.getPrototypeOf(AlarmAttendBuilder.prototype), 'constructor', this).call(this, ogapi, 'ATTEND');
+  }
+
+  return AlarmAttendBuilder;
 })(_AlarmActionBuilder3['default']);
 
 exports['default'] = AlarmAttendBuilder;

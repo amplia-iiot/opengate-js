@@ -23,7 +23,7 @@ var _Manufacturer = require('./Manufacturer');
 var _Model = require('./Model');
 
 /**
- *   This class allow make get request to hardware models resource into Opengate North API.
+ * This class allows making GET requests to the hardware models resource in the OpenGate North API.
  */
 
 var ModelFinder = (function (_ProvisionGenericFinder) {
@@ -31,7 +31,7 @@ var ModelFinder = (function (_ProvisionGenericFinder) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function ModelFinder(ogapi) {
@@ -48,7 +48,7 @@ var ModelFinder = (function (_ProvisionGenericFinder) {
     _createClass(ModelFinder, [{
         key: '_composeUrl',
         value: function _composeUrl() {
-            return this._baseUrl + "/" + this._organization + _Manufacturer.MANUFACTURERS_RESOURCE + "/" + this._manufacturer + _Model.MODELS_RESOURCE + (this._identifier ? "/" + this._identifier : "");
+            return this._baseUrl + '/' + this._organization + _Manufacturer.MANUFACTURERS_RESOURCE + '/' + this._manufacturer + _Model.MODELS_RESOURCE + (this._identifier ? '/' + this._identifier : '');
         }
 
         /**
@@ -58,7 +58,7 @@ var ModelFinder = (function (_ProvisionGenericFinder) {
          * @param {string} organization - model organization .
          * @param {string} manufacturer - model manufacturer .
          * @param {string} identifier - model name .
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findByOrganizationAndManufacturerAndId',

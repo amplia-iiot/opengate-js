@@ -27,8 +27,8 @@ var ByGeneric = (function () {
      * Constructor
      * @param {!BaseOperationBuilder} parent - this is a operationBaseBuilder.
      * @param {!Date} date - Date when operation will be executed
-     * @param {string} periodicityName - Name associated to periodicity	
-     * @param {!number or Date} end - When periodicity ends. By repetitions or by date	
+     * @param {string} periodicityName - Name associated to periodicity
+     * @param {!number or Date} end - When periodicity ends. By repetitions or by date
      */
 
     function ByGeneric(parent, date, periodicityName, end, description) {
@@ -46,20 +46,20 @@ var ByGeneric = (function () {
                 }
             }
         };
-        if (typeof end !== "undefined") {
+        if (typeof end !== 'undefined') {
             var _stop = undefined;
-            if (typeof end === "number") {
+            if (typeof end === 'number') {
                 _stop = {
-                    "executions": end
+                    executions: end
                 };
             } else if (end.constructor === Date) {
                 var startDate = (0, _moment2['default'])(date);
                 var stopDate = (0, _moment2['default'])(end);
                 if (_moment2['default'].max(startDate, stopDate) == startDate) {
-                    throw new Error("Invalid stop date on executeEvery method. Start date must be earlier than stop date.");
+                    throw new Error('Invalid stop date on executeEvery method. Start date must be earlier than stop date.');
                 }
                 _stop = {
-                    "date": end
+                    date: end
                 };
             }
             this._skeleton.stop = _stop;

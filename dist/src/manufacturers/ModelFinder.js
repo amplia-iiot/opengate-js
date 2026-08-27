@@ -31,7 +31,7 @@ var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
 var _Model = require('./Model');
 
 /**
- *   This class allow make get request to hardware models resource into Opengate North API.
+ * This class allows you to make GET requests to the hardware models resource in the OpenGate North API.
  */
 
 var ModelFinder = (function (_ProvisionGenericFinder) {
@@ -39,7 +39,7 @@ var ModelFinder = (function (_ProvisionGenericFinder) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function ModelFinder(ogapi) {
@@ -56,15 +56,15 @@ var ModelFinder = (function (_ProvisionGenericFinder) {
     _createClass(ModelFinder, [{
         key: '_composeUrl',
         value: function _composeUrl() {
-            return this._baseUrl + "/" + this._manufacturer + _Model.MODELS_RESOURCE + (this._identifier ? "/" + this._identifier + (this._media ? "/media" + (this._mediaIdentifier ? "/" + this._mediaIdentifier + '?format=raw' : '') : "") : "");
+            return this._baseUrl + '/' + this._manufacturer + _Model.MODELS_RESOURCE + (this._identifier ? '/' + this._identifier + (this._media ? '/media' + (this._mediaIdentifier ? '/' + this._mediaIdentifier + '?format=raw' : '') : '') : '');
         }
 
         /**
-         * Download all models from a manufacturer. This execute a GET http method
+         * Download all models from a manufacturer. This executes a GET HTTP method
          * @test
          *   ogapi.newModelFinder().findByManufacturer('manufacturer').then().catch();
          * @param {string} manufacturer - manufacturer id .
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findByManufacturer',
@@ -74,12 +74,12 @@ var ModelFinder = (function (_ProvisionGenericFinder) {
         }
 
         /**
-         * Download a specific model by its id. This execute a GET http method
+         * Download a specific model by its id. This executes a GET HTTP method
          * @test
          *   ogapi.newModelFinder().findByManufacturerAndId('manufacturer', 'modelname').then().catch();
          * @param {string} manufacturer - manufacturer id .
          * @param {string} identifier - model name .
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findByManufacturerAndId',
@@ -90,12 +90,12 @@ var ModelFinder = (function (_ProvisionGenericFinder) {
         }
 
         /**
-         * Download a specific model media by its ids. This execute a GET http method
+         * Download a specific model media by its ids. This executes a GET HTTP method
          * @test
          *   ogapi.newModelFinder().findMediasByManufacturerAndModel('manufacturer', 'modelId').then().catch();
          * @param {string} manufacturer - manufacturer id .
          * @param {string} identifier - model identifier .
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findMediasByManufacturerAndModel',
@@ -107,13 +107,13 @@ var ModelFinder = (function (_ProvisionGenericFinder) {
         }
 
         /**
-         * Download a specific model media by its ids. This execute a GET http method
+         * Download a specific model media by its ids. This executes a GET HTTP method
          * @test
          *   ogapi.newModelFinder().findMediaByManufacturerAndModelAndId('modelId', 'mediaIdentifier').then().catch();
          * @param {string} manufacturer - manufacturer id .
          * @param {string} modelId - model identifier .
          * @param {string} mediaIdentifier - media identifier.
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findMediaByManufacturerAndModelAndId',

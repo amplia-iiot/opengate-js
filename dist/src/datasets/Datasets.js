@@ -23,7 +23,7 @@ var _utilFormatsCheck_types = require('../util/formats/check_types');
 var _utilFormatsCheck_types2 = _interopRequireDefault(_utilFormatsCheck_types);
 
 /**
- * This is a base object that contains all you can do about Datasets.
+ * This is the base object for working with Datasets.
  */
 
 var Datasets = (function (_BaseProvision) {
@@ -31,7 +31,7 @@ var Datasets = (function (_BaseProvision) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function Datasets(ogapi) {

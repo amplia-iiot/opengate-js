@@ -29,7 +29,7 @@ var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
 var _TYPES_ENUM = require('./TYPES_ENUM');
 
 /**
- *   This class allow make get request to newTimeseriesFunctionsHelper resource into Opengate North API.
+ * This class allows making GET requests to the TimeseriesFunctionsHelper resource in the OpenGate North API.
  */
 
 var TimeseriesFunctionsHelper = (function (_GenericFinder) {
@@ -45,10 +45,10 @@ var TimeseriesFunctionsHelper = (function (_GenericFinder) {
 
         _get(Object.getPrototypeOf(TimeseriesFunctionsHelper.prototype), 'constructor', this).call(this, ogapi, 'timeseriesFunctions');
         this._jsHeaders = {
-            'accept': 'application/javascript'
+            accept: 'application/javascript'
         };
         this._mdHeaders = {
-            'accept': 'text/markdown'
+            accept: 'text/markdown'
         };
     }
 
@@ -59,10 +59,10 @@ var TimeseriesFunctionsHelper = (function (_GenericFinder) {
         }
 
         /**
-         * Performs a get that returns documentation private of javascript functions from rules service
+         * Performs a GET that returns documentation of private JavaScript functions from the rules service.
          * @test
          *   ogapi.newTimeseriesFunctionsHelper().getDocPrivateJavascriptFunctions();
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'getDocPrivateJavascriptFunctions',
@@ -73,10 +73,10 @@ var TimeseriesFunctionsHelper = (function (_GenericFinder) {
         }
 
         /**
-         * Performs a get that returns documentation of javascript functions from rules service
+         * Performs a GET that returns documentation of JavaScript functions from the rules service.
          * @test
          *   ogapi.newTimeseriesFunctionsHelper().getDocJavascriptFunctions();
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'getDocJavascriptFunctions',

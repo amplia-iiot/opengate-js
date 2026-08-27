@@ -31,6 +31,10 @@ var _Subscription = require('./Subscription');
 
 var _Subscription2 = _interopRequireDefault(_Subscription);
 
+var _utilParameterError = require('../../../util/parameterError');
+
+var _utilParameterError2 = _interopRequireDefault(_utilParameterError);
+
 /**
  * This is a base object that allows the user to create a CommsModule.
  */
@@ -61,7 +65,7 @@ var CommsModuleMessage = (function () {
     _createClass(CommsModuleMessage, [{
         key: 'withId',
         value: function withId(id) {
-            if (typeof id !== 'string') throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'id' });
+            if (typeof id !== 'string') throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER', { parameter: 'id' });
             this._id = id;
             return this;
         }
@@ -74,7 +78,7 @@ var CommsModuleMessage = (function () {
     }, {
         key: 'withName',
         value: function withName(name) {
-            if (typeof name !== 'string') throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'name' });
+            if (typeof name !== 'string') throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER', { parameter: 'name' });
             this._name = name;
             return this;
         }
@@ -87,7 +91,7 @@ var CommsModuleMessage = (function () {
     }, {
         key: 'withType',
         value: function withType(type) {
-            if (typeof type !== 'string') throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'type' });
+            if (typeof type !== 'string') throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER', { parameter: 'type' });
             this._type = type;
             return this;
         }
@@ -109,18 +113,17 @@ var CommsModuleMessage = (function () {
 
         /**
          * Set the operationalStatus attribute
-         * @param {string} operationalStatus 
+         * @param {string} operationalStatus
          * @return {CommsModule}
          */
     }, {
         key: 'withOperationalStatus',
         value: function withOperationalStatus(operationalStatus) {
-
-            var operationalStatusBuilder = this._ogapi.operationalStatusSearchBuilder().withEntityType("COMMUNICATIONS_MODULE").withId(operationalStatus).build();
+            var operationalStatusBuilder = this._ogapi.operationalStatusSearchBuilder().withEntityType('COMMUNICATIONS_MODULE').withId(operationalStatus).build();
 
             operationalStatusBuilder.execute().then(function (res) {
                 if (res.statusCode === 204) {
-                    throw new Error("Operational Status not found");
+                    throw new Error('Operational Status not found');
                 }
             });
 
@@ -171,7 +174,6 @@ var CommsModuleMessage = (function () {
     }, {
         key: 'withMobile',
         value: function withMobile(mobile) {
-
             if (!(mobile instanceof _Mobile2['default'])) {
                 throw new Error('Parameter mobile must be Mobile type');
             }
@@ -186,7 +188,6 @@ var CommsModuleMessage = (function () {
     }, {
         key: 'withSubscriber',
         value: function withSubscriber(subscriber) {
-
             if (!(subscriber instanceof _Subscriber2['default'])) {
                 throw new Error('Parameter subscriber must be Subscriber type');
             }
@@ -201,7 +202,6 @@ var CommsModuleMessage = (function () {
     }, {
         key: 'withSubscription',
         value: function withSubscription(subscription) {
-
             if (!(subscription instanceof _Subscription2['default'])) {
                 throw new Error('Parameter subscription must be Subscription type');
             }
@@ -216,7 +216,7 @@ var CommsModuleMessage = (function () {
                 return value == this;
             }, value);
 
-            if (typeof found === "undefined") {
+            if (typeof found === 'undefined') {
                 not_found.push(value);
             }
             if (not_found.length !== 0) {
@@ -228,12 +228,12 @@ var CommsModuleMessage = (function () {
         key: 'composeElement',
         value: function composeElement() {
             var commsModule = {
-                "id": this._id,
-                "name": this._name,
-                "type": this._type,
-                "hardware": this._hardware.composeElement(),
-                "operationalStatus": this._operationalStatus,
-                "antennaStatus": this._antennaStatus
+                id: this._id,
+                name: this._name,
+                type: this._type,
+                hardware: this._hardware.composeElement(),
+                operationalStatus: this._operationalStatus,
+                antennaStatus: this._antennaStatus
             };
             if (this._softwareList.length > 0) {
                 commsModule.softwareList = this._softwareList;

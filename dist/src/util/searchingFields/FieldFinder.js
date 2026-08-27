@@ -40,8 +40,8 @@ for (var field in _IotFields.IOT_FIELDS) {
     }
 }
 
-var REGEX_PATH_CURRENT = new RegExp("^(.+)._current\\.?(.+)?$");
-var REGEX_PATH_ARRAY = new RegExp("\\[[0-9]+\\]");
+var REGEX_PATH_CURRENT = new RegExp('^(.+)._current\\.?(.+)?$');
+var REGEX_PATH_ARRAY = new RegExp('\\[[0-9]+\\]');
 // const REGEX_DATASTREAM_VALUE = new RegExp('value\\.?')
 
 var match_url = {
@@ -73,15 +73,15 @@ var match_url = {
     '/tickets': 'SearchOnDatamodel',
     '/channels': 'SearchOnDatamodel',
     '/organizations': 'SearchOnDatamodel',
-    'datasets': 'SearchOnDataset',
-    'timeseries': 'SearchOnTimeseries'
+    datasets: 'SearchOnDataset',
+    timeseries: 'SearchOnTimeseries'
 };
 
 var match_context = {
-    'ENTITY_ALARM': 'alarm',
-    'UPDATE_BUNDLE_VERSION': 'bundle',
-    'DATAPOINTS': 'datapoints',
-    'ENTITY_OPERATION': ['operation', 'job']
+    ENTITY_ALARM: 'alarm',
+    UPDATE_BUNDLE_VERSION: 'bundle',
+    DATAPOINTS: 'datapoints',
+    ENTITY_OPERATION: ['operation', 'job']
 };
 
 var match_url_resourceType = {
@@ -102,17 +102,17 @@ var match_url_resourceType = {
 };
 
 var match_type = {
-    'subscriber': 'DEVICE_PART_SUBSCRIBER',
-    'subscription': 'DEVICE_PART_SUBSCRIPTION',
-    'communicationsModule': 'DEVICE_PART_COMMSMODULE',
-    'device': 'DEVICE_PART_DEVICE'
+    subscriber: 'DEVICE_PART_SUBSCRIBER',
+    subscription: 'DEVICE_PART_SUBSCRIPTION',
+    communicationsModule: 'DEVICE_PART_COMMSMODULE',
+    device: 'DEVICE_PART_DEVICE'
 };
 
 var match_type_inverse = {
-    'DEVICE_PART_SUBSCRIBER': 'subscriber',
-    'DEVICE_PART_SUBSCRIPTION': 'subscription',
-    'DEVICE_PART_COMMSMODULE': 'communicationsModule',
-    'DEVICE_PART_DEVICE': 'device'
+    DEVICE_PART_SUBSCRIBER: 'subscriber',
+    DEVICE_PART_SUBSCRIPTION: 'subscription',
+    DEVICE_PART_COMMSMODULE: 'communicationsModule',
+    DEVICE_PART_DEVICE: 'device'
 };
 
 var fields_related = ['relColl', 'relProv'];
@@ -161,7 +161,7 @@ var _getDatamodelFields = function _getDatamodelFields(parent, objSearcher) {
     var datamodelSearchBuilder = parent._ogapi.datamodelsSearchBuilder();
 
     var rtFilter = {
-        'and': []
+        and: []
     };
 
     if (parent._resourceTypes) {
@@ -173,14 +173,14 @@ var _getDatamodelFields = function _getDatamodelFields(parent, objSearcher) {
     }
     if (organization) {
         rtFilter.and.push({
-            'eq': {
+            eq: {
                 'datamodels.organizationName': organization
             }
         });
     }
     if (selectedField) {
         rtFilter.and.push({
-            'eq': {
+            eq: {
                 'datamodels.categories.datastreams.identifier': selectedField
             }
         });
@@ -256,7 +256,7 @@ var _searchColumns = function _searchColumns(_this, finder, objSearcher, defered
                     // sort: true,
                     notFilterable: false,
                     filter: 'YES',
-                    type: "string",
+                    type: 'string',
                     schema: { type: 'string' },
                     _isContext: true
                 });
@@ -271,7 +271,7 @@ var _searchColumns = function _searchColumns(_this, finder, objSearcher, defered
                     // sort: true,
                     notFilterable: false,
                     filter: 'YES',
-                    type: "date-time",
+                    type: 'date-time',
                     schema: {
                         type: 'string',
                         format: 'datetime'
@@ -289,7 +289,7 @@ var _searchColumns = function _searchColumns(_this, finder, objSearcher, defered
                     // sort: true,
                     notFilterable: false,
                     filter: 'YES',
-                    type: "date-time",
+                    type: 'date-time',
                     schema: {
                         type: 'string',
                         format: 'datetime'
@@ -318,7 +318,7 @@ var _searchColumns = function _searchColumns(_this, finder, objSearcher, defered
                     });
                     var column = columns[0];
                     var datastreamMatch = column.path.match(REGEX_PATH_CURRENT);
-                    var datastream = datastreamMatch[1].replace(REGEX_PATH_ARRAY, "[]");
+                    var datastream = datastreamMatch[1].replace(REGEX_PATH_ARRAY, '[]');
                     objSearcher.selectedField = datastream;
                 }
                 //recuperamos la defnición de todas las columnas y todos los datastreams
@@ -400,7 +400,7 @@ var _searchColumns = function _searchColumns(_this, finder, objSearcher, defered
 };
 
 var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEARCH_FIELDS, function (objSearcher, defered) {
-    https: //github.com/kriskowal/q#using-deferreds
+    // https://github.com/kriskowal/q#using-deferreds
     _getDatamodelFields(this, objSearcher).then(function (response) {
         defered.resolve(response);
     })['catch'](function (err) {
@@ -500,12 +500,13 @@ var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEA
 
     var statesSize = states.length;
     var currentState = finiteStateMachine[statesSize];
-    if (typeof currentState === "undefined") return defered.resolve([]);
+    if (typeof currentState === 'undefined') return defered.resolve([]);
     return defered.resolve(currentState(states, context));
 
     function fieldsNestedState(state, context) {
         var fieldsRelated = undefined;
-        if (!(fieldsNestedState = match_type[state]) || !(fieldsRelated = context[fieldsNestedState])) throw new Error('Invalid primaryType: ' + state);
+        var nestedType = undefined;
+        if (!(nestedType = match_type[state]) || !(fieldsRelated = context[nestedType])) throw new Error('Invalid primaryType: ' + state);
         return fieldsRelated.slice();
     }
 
@@ -518,7 +519,7 @@ var FIELD_SEARCHER = (_FIELD_SEARCHER = {}, _defineProperty(_FIELD_SEARCHER, SEA
         fields.forEach(function (field) {
             var arrayField = states.slice(0, -1);
             arrayField.push(field);
-            out.push(arrayField.join("."));
+            out.push(arrayField.join('.'));
         });
         return out;
     }
@@ -545,7 +546,7 @@ var FieldFinder = (function () {
     _createClass(FieldFinder, [{
         key: 'find',
         value: function find() {
-            var input = arguments.length <= 0 || arguments[0] === undefined ? "" : arguments[0];
+            var input = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
 
             var defered = _q2['default'].defer();
             var objSearcher = {
@@ -560,7 +561,7 @@ var FieldFinder = (function () {
     }, {
         key: 'findAll',
         value: function findAll() {
-            var input = arguments.length <= 0 || arguments[0] === undefined ? "" : arguments[0];
+            var input = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
 
             var defered = _q2['default'].defer();
             var objSearcher = {
@@ -576,7 +577,7 @@ var FieldFinder = (function () {
     }, {
         key: 'findFieldPath',
         value: function findFieldPath() {
-            var field = arguments.length <= 0 || arguments[0] === undefined ? "" : arguments[0];
+            var field = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
 
             var defered = _q2['default'].defer();
             var objSearcher = {

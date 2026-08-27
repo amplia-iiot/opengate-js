@@ -61,14 +61,13 @@ var BULK_RESOURCES = ['entities', 'tickets'];
 var schema_base = '/og_basic_types.json';
 
 /**
- * This is a base object that contains all you can do about Devices.
+ * This is a base object that gives you access to everything you can do to provision entities.
  */
 
 var EntityBuilder = (function () {
-
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function EntityBuilder(ogapi) {
@@ -86,16 +85,16 @@ var EntityBuilder = (function () {
             var promise = defered.promise;
             var f = _this._ogapi.newFilterBuilder();
             f.and({
-                "like": {
+                like: {
                     'datamodels.categories.datastreams.identifier': 'provision'
                 }
             }).and({
-                "eq": {
-                    "datamodels.organizationName": organization
+                eq: {
+                    'datamodels.organizationName': organization
                 }
             }).and({
-                "eq": {
-                    "datamodels.allowedResourceTypes": resourceType
+                eq: {
+                    'datamodels.allowedResourceTypes': resourceType
                 }
             });
 
@@ -147,7 +146,7 @@ var EntityBuilder = (function () {
         value: function _setDevicesProperties(data, filter) {
             var _this = this;
             //http://jekyll.amplia.es/OpenGateDoc/LATEST/opengate-doc-api/api-north/opengate-api-north.html#iotDatastreamTemplate - field calculated (OUW-1679)
-            var allowedDatastreams = _jsonpath2['default'].query(data, "$.datamodels[*].categories[*].datastreams[?(@.calculated === false)]");
+            var allowedDatastreams = _jsonpath2['default'].query(data, '$.datamodels[*].categories[*].datastreams[?(@.calculated === false)]');
             var response = {
                 allowedDatastreams: [],
                 schemas: {}
@@ -181,7 +180,7 @@ var EntityBuilder = (function () {
         }
 
         /**
-         * Get a DeviceBuilder for operate with entities of type device
+         * Get a DeviceBuilder to operate with entities of type device
          * @example
          * ogapi.devicesBuilder('orgname').then(function(deviceBuilder){//...}).catch()
          * @param {string} organization - required field
@@ -197,7 +196,7 @@ var EntityBuilder = (function () {
         }
 
         /**
-         * Get a AssetBuilder for operate with entities of type asset
+         * Get an AssetBuilder to operate with entities of type asset
          * @example
          * ogapi.assetsBuilder('orgname').then(function(assetBuilder){//...}).catch()
          * @param {string} organization - required field
@@ -213,7 +212,7 @@ var EntityBuilder = (function () {
         }
 
         /**
-         * Get a TicketBuilder for operate with entities of type ticket
+         * Get a TicketBuilder to operate with entities of type ticket
          * @example
          * ogapi.ticketsBuilder('orgname').then(function(ticketBuilder){//...}).catch()
          * @param {string} organization - required field
@@ -229,7 +228,7 @@ var EntityBuilder = (function () {
         }
 
         /**
-         * Get a SubscriberBuilder for operate with entities of type subscriber
+         * Get a SubscriberBuilder to operate with entities of type subscriber
          * @example
          * ogapi.subscribersBuilder('orgname').then(function(subscriberBuilder){//...}).catch()
          * @param {string} organization - required field
@@ -245,7 +244,7 @@ var EntityBuilder = (function () {
         }
 
         /**
-         * Get a SubscriptionBuilder for operate with entities of type subscription
+         * Get a SubscriptionBuilder to operate with entities of type subscription
          * @example
          * ogapi.subscriptionsBuilder('orgname').then(function(subscriptionBuilder){//...}).catch()
          * @param {string} organization - required field
@@ -261,11 +260,11 @@ var EntityBuilder = (function () {
         }
 
         /**
-         * Get a new CsvBulkBuilder 
-         * @example 
+         * Get a new CsvBulkBuilder
+         * @example
          *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000, false)
          *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000, true)
-         * @param {string} organization - required field. 
+         * @param {string} organization - required field.
          * @param {string} resource - required field. Type of resource: entities or tickets
          * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
          * @param {boolean} [async] - forces async execution for the bulk operation
@@ -279,10 +278,10 @@ var EntityBuilder = (function () {
         }
 
         /**
-         * Get a new JsonBulkBuilder 
-         * @example 
+         * Get a new JsonBulkBuilder
+         * @example
          *  ogapi.newJsonBulkBuilder('orgname', 'entities', 10000)
-         * @param {string} organization - required field. 
+         * @param {string} organization - required field.
          * @param {string} resource - required field. Type of resource: entities or tickets
          * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
          * @param {boolean} [async] - forces async execution for the bulk operation
@@ -296,10 +295,10 @@ var EntityBuilder = (function () {
         }
 
         /**
-         * Get a new JsonFlattenedBulkBuilder 
-         * @example 
+         * Get a new JsonFlattenedBulkBuilder
+         * @example
          *  ogapi.newJsonFlattenedBulkBuilder('orgname', 'entities', 10000)
-         * @param {string} organization - required field. 
+         * @param {string} organization - required field.
          * @param {string} resource - required field. Type of resource: entities or tickets
          * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
          * @param {boolean} [async] - forces async execution for the bulk operation

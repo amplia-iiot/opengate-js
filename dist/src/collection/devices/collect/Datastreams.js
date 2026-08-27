@@ -73,10 +73,9 @@ var Datastream = (function () {
                 throw new Error('Parameter id must be defined and dapoint list must have at least one element');
             }
             var datastream = {
-                'id': this._id,
-                'feed': this._feed,
-                'datapoints': this._datapoints
-
+                id: this._id,
+                feed: this._feed,
+                datapoints: this._datapoints
             };
             return datastream;
         }

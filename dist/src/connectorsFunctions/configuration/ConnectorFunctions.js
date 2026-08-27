@@ -24,8 +24,12 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
+var _utilParameterError = require('../../util/parameterError');
+
+var _utilParameterError2 = _interopRequireDefault(_utilParameterError);
+
 /**
- * This is a base object that contains all you can do about ConnectorFunctions.
+ * This is a base object that contains everything you can do with ConnectorFunctions.
  */
 
 var ConnectorFunctions = (function (_BaseProvision) {
@@ -33,13 +37,13 @@ var ConnectorFunctions = (function (_BaseProvision) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function ConnectorFunctions(ogapi, organization, channel, identifier, connectorFunctionsObj) {
         _classCallCheck(this, ConnectorFunctions);
 
-        _get(Object.getPrototypeOf(ConnectorFunctions.prototype), 'constructor', this).call(this, ogapi, "/organizations");
+        _get(Object.getPrototypeOf(ConnectorFunctions.prototype), 'constructor', this).call(this, ogapi, '/organizations');
 
         // Required
         this.withOrganization(organization);
@@ -144,16 +148,13 @@ var ConnectorFunctions = (function (_BaseProvision) {
 
         /**
          * Set the description attribute
-         * @param {string} description 
+         * @param {string} description
          * @return {ConnectorFunctions}
          */
     }, {
         key: 'withDescription',
         value: function withDescription(description) {
-            if (typeof description !== 'string' || description.length > 250) throw new Error({
-                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250",
-                parameter: 'description'
-            });
+            if (typeof description !== 'string' || description.length > 250) throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER_MAX_LENGTH_250', { parameter: 'description' });
             this._description = description;
             return this;
         }
@@ -173,7 +174,7 @@ var ConnectorFunctions = (function (_BaseProvision) {
 
         /**
          * Set the javascript attribute
-         * @param {string} javascript 
+         * @param {string} javascript
          * @return {ConnectorFunctions}
          */
     }, {
@@ -186,7 +187,7 @@ var ConnectorFunctions = (function (_BaseProvision) {
 
         /**
          * Set the north criterias attribute
-         * @param {array} criterias 
+         * @param {array} criterias
          * @return {ConnectorFunctions}
          */
     }, {
@@ -199,7 +200,7 @@ var ConnectorFunctions = (function (_BaseProvision) {
 
         /**
          * Set the south criterias attribute
-         * @param {array} criterias 
+         * @param {array} criterias
          * @return {ConnectorFunctions}
          */
     }, {
@@ -235,7 +236,7 @@ var ConnectorFunctions = (function (_BaseProvision) {
 
         /**
          * Set the type attribute
-         * @param {string} type 
+         * @param {string} type
          * @return {ConnectorFunctions}
          */
     }, {
@@ -249,7 +250,7 @@ var ConnectorFunctions = (function (_BaseProvision) {
 
         /**
          * Set the payload type attribute
-         * @param {string} payloadType 
+         * @param {string} payloadType
          * @return {ConnectorFunctions}
          */
     }, {
@@ -263,7 +264,7 @@ var ConnectorFunctions = (function (_BaseProvision) {
 
         /**
          * Set the operational status attribute
-         * @param {boolean} operationalStatus 
+         * @param {boolean} operationalStatus
          * @return {ConnectorFunctions}
          */
     }, {
@@ -280,16 +281,16 @@ var ConnectorFunctions = (function (_BaseProvision) {
             // this._checkRequiredParameters();
 
             var updateData = {
-                "identifier": this._identifier,
-                "name": this._name,
-                "operationalStatus": this._operationalStatus,
-                "operationName": this._type !== 'COLLECTION' ? this._operationName : undefined,
-                "type": this._type,
-                "payloadType": this._payloadType,
-                "javascript": this._javascript,
-                "description": this._description ? this._description : undefined,
-                "northCriterias": this._type === 'REQUEST' ? this._northCriterias : undefined,
-                "southCriterias": this._type !== 'REQUEST' ? this._southCriterias : undefined
+                identifier: this._identifier,
+                name: this._name,
+                operationalStatus: this._operationalStatus,
+                operationName: this._type !== 'COLLECTION' ? this._operationName : undefined,
+                type: this._type,
+                payloadType: this._payloadType,
+                javascript: this._javascript,
+                description: this._description ? this._description : undefined,
+                northCriterias: this._type === 'REQUEST' ? this._northCriterias : undefined,
+                southCriterias: this._type !== 'REQUEST' ? this._southCriterias : undefined
             };
 
             return updateData;
@@ -310,13 +311,13 @@ var ConnectorFunctions = (function (_BaseProvision) {
     }, {
         key: '_buildURL',
         value: function _buildURL() {
-            return "connectorFunctions/" + this._resource + "/" + this._organization + "/channels/" + this._channel;
+            return 'connectorFunctions/' + this._resource + '/' + this._organization + '/channels/' + this._channel;
         }
 
-        /** 
+        /**
          * Create a new Connector Function
          * @return {Promise}
-         * @throws {Error} 
+         * @throws {Error}
          */
     }, {
         key: 'create',
@@ -326,10 +327,10 @@ var ConnectorFunctions = (function (_BaseProvision) {
             return this._doNorthPost(this._buildURL(), this._composeElement());
         }
 
-        /** 
+        /**
          * Updates a connector function
          * @return {Promise}
-         * @throws {Error} 
+         * @throws {Error}
          */
     }, {
         key: 'update',
@@ -339,10 +340,10 @@ var ConnectorFunctions = (function (_BaseProvision) {
             return this._doNorthPut(this._buildURL() + '/' + this._identifier, this._composeElement());
         }
 
-        /** 
+        /**
          * Deletes the selected connector function
          * @return {Promise}
-         * @throws {Error} 
+         * @throws {Error}
          */
     }, {
         key: 'delete',

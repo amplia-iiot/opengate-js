@@ -15,7 +15,6 @@ var _utilSelectElement = require('./../util/SelectElement');
 var _utilSelectElement2 = _interopRequireDefault(_utilSelectElement);
 
 var SelectBuilder = (function () {
-
     /**
      * @example
      * var sb = ogapi.newSelectBuilder()

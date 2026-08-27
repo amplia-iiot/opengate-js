@@ -33,11 +33,11 @@ var _utilFormatsCheck_types2 = _interopRequireDefault(_utilFormatsCheck_types);
 var BASE_URL = 'timeseries';
 
 exports.BASE_URL = BASE_URL;
-var aggregationTypes = ["FIRST", "LAST", "AVG", "MAX", "MIN", "SUM", "COUNT", "GEO_AVG", "VARIANCE", "STD_DEVIATION", "DATE_FOR_MAX", "DATE_FOR_MIN", "DATE_FOR_FIRST", "DATE_FOR_LAST"];
+var aggregationTypes = ['FIRST', 'LAST', 'AVG', 'MAX', 'MIN', 'SUM', 'COUNT', 'GEO_AVG', 'VARIANCE', 'STD_DEVIATION', 'DATE_FOR_MAX', 'DATE_FOR_MIN', 'DATE_FOR_FIRST', 'DATE_FOR_LAST'];
 
 exports.aggregationTypes = aggregationTypes;
 /**
- * Defined a search over timeseries	
+ * Defines a search over time series datasets.
  * @example ogapi.timeserieDatasetBuilder(organization, timeserieId)
  */
 
@@ -56,9 +56,9 @@ var TimeserieDatasetBuilder = (function (_SearchBuilder) {
     }
 
     /**
-     * The search request will have 
+     * The search request will have
      * @param {object} select
-     * @return {TimeserieDatasetBuilder} 
+     * @return {TimeserieDatasetBuilder}
      */
 
     _createClass(TimeserieDatasetBuilder, [{
@@ -71,7 +71,7 @@ var TimeserieDatasetBuilder = (function (_SearchBuilder) {
         /**
          * Add columns that will be requested
          * @param {array} columns
-         * @return {TimeserieDatasetBuilder} 
+         * @return {TimeserieDatasetBuilder}
          */
     }, {
         key: 'columns',
@@ -90,15 +90,15 @@ var TimeserieDatasetBuilder = (function (_SearchBuilder) {
          * @param {string} name
          * @param {string} aggregation
          * @param {string} alias
-         * @return {TimeserieDatasetBuilder} 
+         * @return {TimeserieDatasetBuilder}
          */
     }, {
         key: 'addColumn',
         value: function addColumn(name, aggregation, alias) {
-            _utilFormatsCheck_types2['default']._checkStringAndPattern(name, "^[a-zA-Z0-9 _-]*$", 'name');
+            _utilFormatsCheck_types2['default']._checkStringAndPattern(name, '^[a-zA-Z0-9 _-]*$', 'name');
 
             if (alias) {
-                _utilFormatsCheck_types2['default']._checkStringAndPattern(alias, "^[a-zA-Z0-9 _-]*$", 'alias');
+                _utilFormatsCheck_types2['default']._checkStringAndPattern(alias, '^[a-zA-Z0-9 _-]*$', 'alias');
             }
 
             if (aggregation) {
@@ -135,12 +135,12 @@ var TimeserieDatasetBuilder = (function (_SearchBuilder) {
         // }
 
         /**
-         * Build a instance of Search 
+         * Build a instance of Search
          *
          * @example
          *  ogapi.timeserieDatasetBuilder(organization, timeserieId).build()
          * @throws {SearchBuilderError} Throw error on url build
-         * @return {Search} 
+         * @return {Search}
          */
     }, {
         key: 'build',

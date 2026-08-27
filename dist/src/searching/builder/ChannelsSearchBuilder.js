@@ -24,7 +24,7 @@ var _utilSearchingFieldsFieldFinder2 = _interopRequireDefault(_utilSearchingFiel
 
 var BASE_URL = '/channels';
 /**
- * Defined a search over Channels	
+ * Defines a search over Channels.
  * @example ogapi.channelsSearchBuilder()
  */
 
@@ -46,8 +46,8 @@ var ChannelsSearchBuilder = (function (_SearchWithSummaryBuilder) {
     /**
      * The response will return a response without sorted
      * @example
-     *	ogapi.channelsSearchBuilder().disableDefaultSorted() 
-     * @return {ChannelsSearchBuilder} 
+     *	ogapi.channelsSearchBuilder().disableDefaultSorted()
+     * @return {ChannelsSearchBuilder}
      */
 
     _createClass(ChannelsSearchBuilder, [{
@@ -58,10 +58,10 @@ var ChannelsSearchBuilder = (function (_SearchWithSummaryBuilder) {
         }
 
         /**
-         * The response will only have a summary information 
+         * The response will only have a summary information
          * @example
-         *	ogapi.channelsSearchBuilder().summary() 
-         * @return {SearchWithSummaryBuilder} 
+         *	ogapi.channelsSearchBuilder().summary()
+         * @return {SearchWithSummaryBuilder}
          */
     }, {
         key: 'summary',

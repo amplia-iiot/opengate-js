@@ -23,7 +23,7 @@ var _StaticSearch = require('../StaticSearch');
 var _StaticSearch2 = _interopRequireDefault(_StaticSearch);
 
 /**
- * Defined a search over operational status catalogs    
+ * Defines a search over the communications module type catalog.
  * @example ogapi.communicationsModuleTypeSearchBuilder()
  */
 
@@ -43,7 +43,7 @@ var CommunicationsModuleTypeSearchBuilder = (function (_SearchBuilder) {
     }
 
     /**
-     * Build a instance of StaticSearch 
+     * Build a instance of StaticSearch
      *
      * @example
      *   ogapi.administrativeStateSearchBuilder().filter({and:[]}).build()

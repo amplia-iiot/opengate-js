@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-    value: true
+  value: true
 });
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -19,52 +19,52 @@ var _ProvisionGenericFinder2 = require('../ProvisionGenericFinder');
 var _ProvisionGenericFinder3 = _interopRequireDefault(_ProvisionGenericFinder2);
 
 /**
- *   This class allow make get request to certificate resource into Opengate North API.
+ * This class allows making GET requests to the bundle resource in the OpenGate North API.
  */
 
 var BundleFinder = (function (_ProvisionGenericFinder) {
-    _inherits(BundleFinder, _ProvisionGenericFinder);
+  _inherits(BundleFinder, _ProvisionGenericFinder);
 
-    /**
-     * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
-     */
+  /**
+   * Constructor
+   * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
+   */
 
-    function BundleFinder(ogapi) {
-        _classCallCheck(this, BundleFinder);
+  function BundleFinder(ogapi) {
+    _classCallCheck(this, BundleFinder);
 
-        _get(Object.getPrototypeOf(BundleFinder.prototype), 'constructor', this).call(this, ogapi, 'bundles', 'bundle', 'Bundle not found');
+    _get(Object.getPrototypeOf(BundleFinder.prototype), 'constructor', this).call(this, ogapi, 'bundles', 'bundle', 'Bundle not found');
+  }
+
+  /**
+   * @return {String} This returns a string with the URL of the request.
+   * @private
+   */
+
+  _createClass(BundleFinder, [{
+    key: '_composeUrl',
+    value: function _composeUrl() {
+      return this._baseUrl + '/' + this._name + '/versions/' + this._version;
     }
 
     /**
-     * @return {String} This returns a string with the URL of the request.
-     * @private
+     * Download a specific bundle by its name and version. This execute a GET http method
+     * @test
+     *   ogapi.newBundleFinder().findByNameAndVersion('bundlename', 'xxx-xx-xxx-xxx').then().catch();
+     * @param {string} name - bundle name .
+     * @param {string} version - bundle version.
+     * @return {Promise}
      */
+  }, {
+    key: 'findByNameAndVersion',
+    value: function findByNameAndVersion(name, version) {
+      this._name = name;
+      this._version = version;
+      return this._execute();
+    }
+  }]);
 
-    _createClass(BundleFinder, [{
-        key: '_composeUrl',
-        value: function _composeUrl() {
-            return this._baseUrl + "/" + this._name + "/versions/" + this._version;
-        }
-
-        /**
-         * Download a specific bundle by its name and version. This execute a GET http method
-         * @test
-         *   ogapi.newBundleFinder().findByNameAndVersion('bundlename', 'xxx-xx-xxx-xxx').then().catch();
-         * @param {string} name - bundle name .
-         * @param {string} version - bundle version.
-         * @return {Promise} 
-         */
-    }, {
-        key: 'findByNameAndVersion',
-        value: function findByNameAndVersion(name, version) {
-            this._name = name;
-            this._version = version;
-            return this._execute();
-        }
-    }]);
-
-    return BundleFinder;
+  return BundleFinder;
 })(_ProvisionGenericFinder3['default']);
 
 exports['default'] = BundleFinder;

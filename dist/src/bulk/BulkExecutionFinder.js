@@ -30,7 +30,7 @@ var MIME_TYPES_ENUM = ['application/vnd.ms-excel', 'application/vnd.openxmlforma
 
 exports.MIME_TYPES_ENUM = MIME_TYPES_ENUM;
 /**
- *   This class allow make get request to bulk executions resource into Opengate North API.
+ * This class allows making GET requests to the bulk executions resource in the OpenGate North API.
  */
 
 var BulkExecutionFinder = (function (_GenericFinder) {
@@ -38,7 +38,7 @@ var BulkExecutionFinder = (function (_GenericFinder) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function BulkExecutionFinder(ogapi) {
@@ -55,18 +55,18 @@ var BulkExecutionFinder = (function (_GenericFinder) {
     _createClass(BulkExecutionFinder, [{
         key: '_composeUrl',
         value: function _composeUrl() {
-            return this._baseUrl + '/' + this._organization + '/bulk/' + this._id + (this._details ? "/details" : '');
+            return this._baseUrl + '/' + this._organization + '/bulk/' + this._id + (this._details ? '/details' : '');
         }
 
         /**
-         * Download a specific entity by its organization and id. This execute a GET http method
+         * Downloads a specific entity by its organization and id. This executes a GET HTTP method.
          * @test
          *   ogapi.newBulkExecutionFinder().findByOrganizationAndId('orgname', xxx-xx-xxx-xxx').then().catch();
          *   ogapi.newBulkExecutionFinder().findByOrganizationAndId('orgname', xxx-xx-xxx-xxx', true).then().catch();
          * @param {string} organization - organization.
          * @param {string} id - bulk id.
          * @param {string} mimetype - Format of file when get the result details of previously created bulk process.
-         * @return {Promise} 
+         * @return {Promise}
          */
     }, {
         key: 'findByOrganizationAndId',
@@ -80,7 +80,7 @@ var BulkExecutionFinder = (function (_GenericFinder) {
                 var found = MIME_TYPES_ENUM.find(function (mime_type) {
                     return mime_type == this;
                 }, mimetype);
-                if (typeof found === "undefined") {
+                if (typeof found === 'undefined') {
                     not_found = mimetype;
                 }
                 if (not_found !== '') {
@@ -88,13 +88,13 @@ var BulkExecutionFinder = (function (_GenericFinder) {
                 }
                 this._details = true;
                 this._setExtraHeaders({
-                    'accept': mimetype
+                    accept: mimetype
                 });
                 return this._download();
             }
             this._details = false;
             this._setExtraHeaders({
-                'accept': undefined
+                accept: undefined
             });
             return this._execute();
         }

@@ -28,8 +28,12 @@ var _provisionBaseProvision = require('../provision/BaseProvision');
 
 var _provisionBaseProvision2 = _interopRequireDefault(_provisionBaseProvision);
 
+var _utilParameterError = require('../util/parameterError');
+
+var _utilParameterError2 = _interopRequireDefault(_utilParameterError);
+
 /**
- * This is a base object that contains all you can do about Bundles.
+ * This is the base object for everything you can do with bundles.
  */
 
 var Bundles = (function (_BaseProvision) {
@@ -37,13 +41,13 @@ var Bundles = (function (_BaseProvision) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function Bundles(ogapi) {
         _classCallCheck(this, Bundles);
 
-        _get(Object.getPrototypeOf(Bundles.prototype), 'constructor', this).call(this, ogapi, "/bundles");
+        _get(Object.getPrototypeOf(Bundles.prototype), 'constructor', this).call(this, ogapi, '/bundles');
     }
 
     /**
@@ -55,30 +59,27 @@ var Bundles = (function (_BaseProvision) {
     _createClass(Bundles, [{
         key: 'withName',
         value: function withName(name) {
-            if (typeof name !== 'string' || name.length > 255) throw new Error("OGAPI_NAME_PARAMETER_MAX_LENGTH_255");
+            if (typeof name !== 'string' || name.length > 255) throw new Error('OGAPI_NAME_PARAMETER_MAX_LENGTH_255');
             this._name = name;
             return this;
         }
 
         /**
          * Set the version attribute
-         * @param {string} version 
+         * @param {string} version
          * @return {Bundles}
          */
     }, {
         key: 'withVersion',
         value: function withVersion(version) {
-            if (typeof version !== 'string' || version.length > 50) throw new Error({
-                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50",
-                parameter: 'version'
-            });
+            if (typeof version !== 'string' || version.length > 50) throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER_MAX_LENGTH_50', { parameter: 'version' });
             this._version = version;
             return this;
         }
 
         /**
          * Set the hardware attribute
-         * @param {string} hardware 
+         * @param {string} hardware
          * @return {Bundles}
          */
     }, {
@@ -91,7 +92,7 @@ var Bundles = (function (_BaseProvision) {
 
         /**
          * Set the workgroup attribute
-         * @param {string} workgroup 
+         * @param {string} workgroup
          * @return {Bundles}
          */
     }, {
@@ -104,56 +105,53 @@ var Bundles = (function (_BaseProvision) {
 
         /**
          * Set the description attribute
-         * @param {string} description 
+         * @param {string} description
          * @return {Bundles}
          */
     }, {
         key: 'withDescription',
         value: function withDescription(description) {
-            if (typeof description !== 'string' || description.length > 250) throw new Error({
-                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250",
-                parameter: 'description'
-            });
+            if (typeof description !== 'string' || description.length > 250) throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER_MAX_LENGTH_250', { parameter: 'description' });
             this._description = description;
             return this;
         }
 
         /**
          * The request will have a specific time out if it will be exceeded then the promise throw an exception
-         * @param {number} ms - timeout in milliseconds    
-         * @return {Bundles} 
+         * @param {number} ms - timeout in milliseconds  
+         * @return {Bundles}
          */
     }, {
         key: 'withTimeout',
         value: function withTimeout(ms) {
-            if (typeof ms !== "number") throw new Error('Parameter ms must be a number');
+            if (typeof ms !== 'number') throw new Error('Parameter ms must be a number');
             this._timeout = ms;
             return this;
         }
     }, {
         key: '_checkActions',
         value: function _checkActions(actions, name) {
-            if (typeof actions === "undefined" || actions.constructor !== Array) {
-                throw new Error("Parameter " + name + " must be typeof Array");
+            if (typeof actions === 'undefined' || actions.constructor !== Array) {
+                throw new Error('Parameter ' + name + ' must be typeof Array');
             }
             var not_found = [];
             for (var i = 0; i < actions.length; i++) {
                 var found = _ACTION_ENUM.ACTION_ENUM.find(function (action) {
                     return action == this;
                 }, actions[i]);
-                if (typeof found === "undefined") {
+                if (typeof found === 'undefined') {
                     not_found.push(actions[i]);
                 }
             }
             if (not_found.length !== 0) {
-                throw new Error("Any action into parameter " + name + " is not allowed. Parameter value <'" + JSON.stringify(not_found) + "'>, " + name + " allowed <'" + JSON.stringify(_ACTION_ENUM.ACTION_ENUM) + "'>");
+                throw new Error('Any action into parameter ' + name + " is not allowed. Parameter value <'" + JSON.stringify(not_found) + "'>, " + name + " allowed <'" + JSON.stringify(_ACTION_ENUM.ACTION_ENUM) + "'>");
             }
             return actions;
         }
 
         /**
          * Set the preaction attribute
-         * @param {string} preaction 
+         * @param {string} preaction
          * @return {Bundles}
          */
     }, {
@@ -165,7 +163,7 @@ var Bundles = (function (_BaseProvision) {
 
         /**
          * Set the postactions attribute
-         * @param {string} postactions 
+         * @param {string} postactions
          * @return {Bundles}
          */
     }, {
@@ -177,23 +175,20 @@ var Bundles = (function (_BaseProvision) {
 
         /**
          * Set the userNotes attribute
-         * @param {string} userNotes 
+         * @param {string} userNotes
          * @return {Bundles}
          */
     }, {
         key: 'withUserNotes',
         value: function withUserNotes(userNotes) {
-            if (typeof userNotes !== 'string' || userNotes.length > 250) throw new Error({
-                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250",
-                parameter: 'notes'
-            });
+            if (typeof userNotes !== 'string' || userNotes.length > 250) throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER_MAX_LENGTH_250', { parameter: 'notes' });
             this._userNotes = userNotes;
             return this;
         }
 
         /**
          * Set the active attribute
-         * @param {string} active 
+         * @param {string} active
          * @return {Bundles}
          */
     }, {
@@ -230,13 +225,13 @@ var Bundles = (function (_BaseProvision) {
         key: '_buildURL',
         value: function _buildURL() {
             if (this._name === undefined || this._version === undefined) throw new Error('Parameters name, version must be defined');
-            var url = this._resource + "/" + this._name + "/versions/" + this._version;
+            var url = this._resource + '/' + this._name + '/versions/' + this._version;
             return url;
         }
 
         /**
-         * This invoke a request to OpenGate North API and the callback is managed by promises
-         * This function activates a bundle
+         * This invokes a request to the OpenGate North API and the callback is managed by promises. This function
+         * activates a bundle.
          * @return {Promise}
          * @property {function (result:object, statusCode:number)} then - When request it is OK
          * @property {function (error:string)} catch - When request it is NOK
@@ -259,11 +254,11 @@ var Bundles = (function (_BaseProvision) {
                     });
                 } else {
                     defered.reject({
-                        "errors": [{
+                        errors: [{
                             code: res.statusCode,
-                            message: "OGAPI_BUNDLE_NOT_ACTIVE"
+                            message: 'OGAPI_BUNDLE_NOT_ACTIVE'
                         }],
-                        "statusCode": res.statusCode
+                        statusCode: res.statusCode
                     });
                 }
             })['catch'](function (error) {
@@ -273,8 +268,8 @@ var Bundles = (function (_BaseProvision) {
         }
 
         /**
-         * This invoke a request to OpenGate North API and the callback is managed by promises
-         * This function deactivates a bundle
+         * This invokes a request to the OpenGate North API and the callback is managed by promises. This function
+         * deactivates a bundle.
          * @return {Promise}
          * @property {function (result:object, statusCode:number)} then - When request it is OK
          * @property {function (error:string)} catch - When request it is NOK
@@ -297,11 +292,11 @@ var Bundles = (function (_BaseProvision) {
                     });
                 } else {
                     defered.reject({
-                        "errors": [{
+                        errors: [{
                             code: res.statusCode,
-                            message: "OGAPI_BUNDLE_NOT_DEACTIVE"
+                            message: 'OGAPI_BUNDLE_NOT_DEACTIVE'
                         }],
-                        "statusCode": res.statusCode
+                        statusCode: res.statusCode
                     });
                 }
             })['catch'](function (error) {
@@ -315,7 +310,7 @@ var Bundles = (function (_BaseProvision) {
          *
          * @example
          *  ogapi.bundlesBuilder().newDeploymentElement()
-         * @return {DeploymentElement} 
+         * @return {DeploymentElement}
          */
     }, {
         key: 'addDeploymentElement',
@@ -340,7 +335,7 @@ var Bundles = (function (_BaseProvision) {
          *
          * @example
          *  ogapi.bundlesBuilder().deployAndActivate()
-         * @return {DeploymentElement} 
+         * @return {DeploymentElement}
          */
     }, {
         key: 'deployAndActivate',
@@ -368,7 +363,7 @@ var Bundles = (function (_BaseProvision) {
                 }
 
                 if (totalTB > 1) {
-                    throw new Error("OGAPI_422_ONE_TRUSTED_BOOT_ALLOWED");
+                    throw new Error('OGAPI_422_ONE_TRUSTED_BOOT_ALLOWED');
                 }
             }
 
@@ -387,7 +382,6 @@ var Bundles = (function (_BaseProvision) {
                                 // update de bundle
                                 Promise.all(dePromises).then(function () {
                                     if (_this._allPromisesOk) {
-
                                         _this.activate().then(function (status, data) {
                                             defered.resolve(bundleLocation);
                                         })['catch'](function (err) {
@@ -405,7 +399,7 @@ var Bundles = (function (_BaseProvision) {
                     })();
                 } else {
                     onCreateBundleError({
-                        "statusCode": res.statusCode
+                        statusCode: res.statusCode
                     });
                 }
             };
@@ -442,7 +436,7 @@ var Bundles = (function (_BaseProvision) {
                     defered.resolve(res);
                 } else {
                     onCreateBundleError({
-                        "statusCode": res.statusCode
+                        statusCode: res.statusCode
                     });
                 }
             };
@@ -457,11 +451,11 @@ var Bundles = (function (_BaseProvision) {
                     _get(Object.getPrototypeOf(Bundles.prototype), 'create', _this2).call(_this2).then(onCreateBundle)['catch'](onCreateBundleError);
                 } else {
                     defered.reject({
-                        "errors": [{
+                        errors: [{
                             code: 204,
-                            message: "OGAPI_400_BUNDLE_EXIST"
+                            message: 'OGAPI_400_BUNDLE_EXIST'
                         }],
-                        "statusCode": 400
+                        statusCode: 400
                     });
                 }
             })['catch'](function (err) {
@@ -469,11 +463,11 @@ var Bundles = (function (_BaseProvision) {
                     _get(Object.getPrototypeOf(Bundles.prototype), 'create', _this2).call(_this2).then(onCreateBundle)['catch'](onCreateBundleError);
                 } else {
                     defered.reject({
-                        "errors": [{
+                        errors: [{
                             code: 204,
-                            message: "OGAPI_400_BUNDLE_EXIST"
+                            message: 'OGAPI_400_BUNDLE_EXIST'
                         }],
-                        "statusCode": 400
+                        statusCode: 400
                     });
                 }
             });
@@ -507,11 +501,11 @@ var Bundles = (function (_BaseProvision) {
                     });
                 } else {
                     defered.reject({
-                        "errors": [{
+                        errors: [{
                             code: res.statusCode,
-                            message: "OGAPI_400_BUNDLE_NOT_UPDATED"
+                            message: 'OGAPI_400_BUNDLE_NOT_UPDATED'
                         }],
-                        "statusCode": res.statusCode
+                        statusCode: res.statusCode
                     });
                 }
             })['catch'](function (error) {

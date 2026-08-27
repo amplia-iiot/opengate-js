@@ -23,7 +23,8 @@ var _DeviceSearch = require('../DeviceSearch');
 var _DeviceSearch2 = _interopRequireDefault(_DeviceSearch);
 
 /**
- * This is a abstract class. It is a class that extends from base to make all kind of summary search request to OpenGate North API.
+ * This is an abstract class that extends the base builder to make flattened and summary search requests to the
+ * OpenGate North API.
  */
 
 var FlattenedSearchBuilder = (function (_SearchBuilder) {
@@ -40,15 +41,15 @@ var FlattenedSearchBuilder = (function (_SearchBuilder) {
 
         _get(Object.getPrototypeOf(FlattenedSearchBuilder.prototype), 'constructor', this).call(this, parent, routes, fieldFinder);
         if (this.constructor === FlattenedSearchBuilder) {
-            throw new Error("Cannot construct Abstract instances directly");
+            throw new Error('Cannot construct Abstract instances directly');
         }
     }
 
     /**
      * The response will return a flattened response
      * @example
-     *	ogapi.entitiesSearchBuilder().flattened() 
-     * @return {FlattenedSearchBuilder} 
+     *	ogapi.entitiesSearchBuilder().flattened()
+     * @return {FlattenedSearchBuilder}
      */
 
     _createClass(FlattenedSearchBuilder, [{
@@ -64,12 +65,12 @@ var FlattenedSearchBuilder = (function (_SearchBuilder) {
         }
 
         /**
-         * Build a instance of Search 
+         * Build a instance of Search
          *
          * @example
          *  ogapi.devicesSearchBuilder().onProvisioned().build()
          * @throws {SearchBuilderError} Throw error on url build
-         * @return {Search} 
+         * @return {Search}
          */
     }, {
         key: 'build',

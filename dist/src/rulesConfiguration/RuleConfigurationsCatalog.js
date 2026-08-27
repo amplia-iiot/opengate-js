@@ -21,7 +21,7 @@ var _GenericFinder3 = _interopRequireDefault(_GenericFinder2);
 // import ProvisionGenericFinder from '../ProvisionGenericFinder';
 
 /**
- *   This class allow make get request to RuleConfigurations resource into Opengate North API.
+ * This class allows you to make GET requests to the RuleConfigurations resource in the OpenGate North API.
  */
 
 var RuleConfigurationsCatalog = (function (_GenericFinder) {
@@ -35,14 +35,14 @@ var RuleConfigurationsCatalog = (function (_GenericFinder) {
     function RuleConfigurationsCatalog(ogapi) {
         _classCallCheck(this, RuleConfigurationsCatalog);
 
-        _get(Object.getPrototypeOf(RuleConfigurationsCatalog.prototype), 'constructor', this).call(this, ogapi, 'rules/catalog', "rulesTemplate", 'Rule templates not found');
+        _get(Object.getPrototypeOf(RuleConfigurationsCatalog.prototype), 'constructor', this).call(this, ogapi, 'rules/catalog', 'rulesTemplate', 'Rule templates not found');
     }
 
     /**
      * Performs a get that returns rule templates
      * @test
      *   ogapi.newRuleConfigurationsCatalog().getTemplates();
-     * @return {Promise} 
+     * @return {Promise}
      */
 
     _createClass(RuleConfigurationsCatalog, [{

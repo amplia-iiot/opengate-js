@@ -23,7 +23,7 @@ var _StaticSearch = require('../StaticSearch');
 var _StaticSearch2 = _interopRequireDefault(_StaticSearch);
 
 /**
- * Defined a search over operational status catalogs    
+ * Defines a search over the timezone catalog.
  * @example ogapi.timezoneSearchBuilder()
  */
 
@@ -45,12 +45,12 @@ var TimezoneSearchBuilder = (function (_SearchBuilder) {
     }
 
     /**
-     * Build a instance of StaticSearch 
+     * Build a instance of StaticSearch
      *
      * @example
      *   ogapi.timezonesSearchBuilder().filter({and:[]}).build()
      * @throws {SearchBuilderError} Throw error on url build
-     * @return {StaticSearch} 
+     * @return {StaticSearch}
      */
 
     _createClass(TimezoneSearchBuilder, [{

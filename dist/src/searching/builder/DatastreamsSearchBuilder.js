@@ -26,7 +26,7 @@ var _utilSearchingFieldsFieldFinder2 = _interopRequireDefault(_utilSearchingFiel
 
 var BASE_URL = '/datastreams';
 /**
- * Defined a search over Datastreams	
+ * Defines a search over Datastreams.
  * @example ogapi.datastreamsSearchBuilder()
  */
 

@@ -17,7 +17,7 @@ var _ajv2 = _interopRequireDefault(_ajv);
 // import Qrating from './Qrating';
 
 /**
- * Defines the builder to configure a datastream of IoT datamodel. With this builder you can configure a datastream
+ * Defines the builder used to configure a datastream of an IoT datamodel.
  */
 
 var Datastream = (function () {
@@ -185,7 +185,7 @@ var Datastream = (function () {
 
         /**
          * Build a Datastream json object
-         * 
+         *
          * @example
          * ogapi.DatastreamsBuilder().build()
          * @throws {Error} Throw error if there is not id, name, unit and period

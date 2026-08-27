@@ -30,8 +30,12 @@ var _RestRequest = require('./RestRequest');
 
 var _RestRequest2 = _interopRequireDefault(_RestRequest);
 
+var _utilParameterError = require('../util/parameterError');
+
+var _utilParameterError2 = _interopRequireDefault(_utilParameterError);
+
 /**
- * This is a base object that contains all you can do about Bundles.
+ * This is a base object that represents a pipeline of image executions and REST requests to run on a schedule.
  */
 
 var Pipeline = (function (_BaseProvision) {
@@ -39,13 +43,13 @@ var Pipeline = (function (_BaseProvision) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function Pipeline(ogapi) {
         _classCallCheck(this, Pipeline);
 
-        _get(Object.getPrototypeOf(Pipeline.prototype), 'constructor', this).call(this, ogapi, "/organization", undefined, ["identifier", "organization", "schedule", "pipeline"], 'scheduler');
+        _get(Object.getPrototypeOf(Pipeline.prototype), 'constructor', this).call(this, ogapi, '/organization', undefined, ['identifier', 'organization', 'schedule', 'pipeline'], 'scheduler');
         this._ogapi = ogapi;
     }
 
@@ -73,13 +77,13 @@ var Pipeline = (function (_BaseProvision) {
 
         /**
          * Set the organization attribute
-         * @param {string} organization 
+         * @param {string} organization
          * @return {Pipeline}
          */
     }, {
         key: 'withOrganization',
         value: function withOrganization(organization) {
-            if (typeof organization !== 'string' || organization.length > 50) throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'organization' });
+            if (typeof organization !== 'string' || organization.length > 50) throw (0, _utilParameterError2['default'])('OGAPI_STRING_PARAMETER_MAX_LENGTH_50', { parameter: 'organization' });
             this._organization = organization;
             return this;
         }
@@ -151,7 +155,7 @@ var Pipeline = (function (_BaseProvision) {
 
         /**
          * Sets the from attribute
-         * @param {string} from 
+         * @param {string} from
          * @returns {Pipeline}
          */
     }, {
@@ -170,7 +174,7 @@ var Pipeline = (function (_BaseProvision) {
 
         /**
          * Sets the to attribute
-         * @param {string} to 
+         * @param {string} to
          * @returns {Pipeline}
          */
     }, {

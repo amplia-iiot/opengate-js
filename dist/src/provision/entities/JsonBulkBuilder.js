@@ -17,7 +17,8 @@ var _BulkBuilder2 = require('./BulkBuilder');
 var _BulkBuilder3 = _interopRequireDefault(_BulkBuilder2);
 
 /**
- * Json builder. This builder give you the necessary tools to create a json bulk using our OpenGate REST.
+ * JSON builder. This builder gives you the necessary tools to run a JSON bulk provisioning operation using the
+ * OpenGate REST API.
  */
 
 var JsonBulkBuilder = (function (_BulkBuilder) {

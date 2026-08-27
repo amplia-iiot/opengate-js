@@ -22,7 +22,7 @@ var _utilSearchingFieldsFieldFinder2 = _interopRequireDefault(_utilSearchingFiel
 
 var BASE_URL = '/datamodels';
 /**
- * Defined a search over Datamodels	
+ * Defines a search over Datamodels.
  * @example ogapi.datamodelsSearchBuilder()
  */
 

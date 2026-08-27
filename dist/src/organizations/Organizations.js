@@ -19,7 +19,7 @@ var _provisionBaseProvision = require('../provision/BaseProvision');
 var _provisionBaseProvision2 = _interopRequireDefault(_provisionBaseProvision);
 
 /**
- * This is a base object that contains all you can do about Organizations.
+ * This is a base object that contains everything you can do with Organizations.
  */
 
 var Organizations = (function (_BaseProvision) {
@@ -27,13 +27,13 @@ var Organizations = (function (_BaseProvision) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function Organizations(ogapi, url) {
         _classCallCheck(this, Organizations);
 
-        _get(Object.getPrototypeOf(Organizations.prototype), 'constructor', this).call(this, ogapi, "/organizations" + (typeof url === "undefined" ? "" : url));
+        _get(Object.getPrototypeOf(Organizations.prototype), 'constructor', this).call(this, ogapi, '/organizations' + (typeof url === 'undefined' ? '' : url));
         this._name = undefined;
         this._description = undefined;
         this._countryCode = undefined;
@@ -53,7 +53,7 @@ var Organizations = (function (_BaseProvision) {
     _createClass(Organizations, [{
         key: 'withName',
         value: function withName(name) {
-            if (typeof name !== 'string' || name.length === 0 || name.length > 50) throw new Error("OGAPI_STRING_PARAMETER_MAX_LENGTH_50");
+            if (typeof name !== 'string' || name.length === 0 || name.length > 50) throw new Error('OGAPI_STRING_PARAMETER_MAX_LENGTH_50');
             this._name = name;
             return this;
         }
@@ -66,20 +66,20 @@ var Organizations = (function (_BaseProvision) {
     }, {
         key: 'withDomain',
         value: function withDomain(domain) {
-            if (typeof domain !== 'string' || domain.length > 50) throw new Error("OGAPI_STRING_PARAMETER_MAX_LENGTH_50");
+            if (typeof domain !== 'string' || domain.length > 50) throw new Error('OGAPI_STRING_PARAMETER_MAX_LENGTH_50');
             this._domain = domain;
             return this;
         }
 
         /**
          * Set the description attribute
-         * @param {string} description 
+         * @param {string} description
          * @return {Organizations}
          */
     }, {
         key: 'withDescription',
         value: function withDescription(description) {
-            if (typeof description !== 'string' || description.length > 250) throw new Error("OGAPI_STRING_PARAMETER_MAX_LENGTH_250");
+            if (typeof description !== 'string' || description.length > 250) throw new Error('OGAPI_STRING_PARAMETER_MAX_LENGTH_250');
             this._description = description;
             return this;
         }
@@ -92,7 +92,7 @@ var Organizations = (function (_BaseProvision) {
     }, {
         key: 'withCountryCode',
         value: function withCountryCode(countryCode) {
-            if (typeof countryCode !== 'string' || countryCode.length === 0) throw new Error("OGAPI_STRING_PARAMETER");
+            if (typeof countryCode !== 'string' || countryCode.length === 0) throw new Error('OGAPI_STRING_PARAMETER');
             this._countryCode = countryCode.toUpperCase();
             return this;
         }
@@ -105,7 +105,7 @@ var Organizations = (function (_BaseProvision) {
     }, {
         key: 'withLangCode',
         value: function withLangCode(langCode) {
-            if (typeof langCode !== 'string' || langCode.length === 0) throw new Error("OGAPI_STRING_PARAMETER");
+            if (typeof langCode !== 'string' || langCode.length === 0) throw new Error('OGAPI_STRING_PARAMETER');
             this._langCode = langCode.toLowerCase();
             return this;
         }
@@ -118,7 +118,7 @@ var Organizations = (function (_BaseProvision) {
     }, {
         key: 'withTimeZone',
         value: function withTimeZone(timeZone) {
-            if (typeof timeZone !== 'string' || timeZone.length === 0) throw new Error("OGAPI_STRING_PARAMETER");
+            if (typeof timeZone !== 'string' || timeZone.length === 0) throw new Error('OGAPI_STRING_PARAMETER');
             this._timeZone = timeZone;
             return this;
         }
@@ -131,7 +131,7 @@ var Organizations = (function (_BaseProvision) {
     }, {
         key: 'withPlan',
         value: function withPlan(plan) {
-            if (typeof plan !== 'string' || plan.length === 0) throw new Error("OGAPI_STRING_PARAMETER");
+            if (typeof plan !== 'string' || plan.length === 0) throw new Error('OGAPI_STRING_PARAMETER');
             this._plan = plan;
             return this;
         }
@@ -152,13 +152,13 @@ var Organizations = (function (_BaseProvision) {
         /**
          * Sets the map zoom attribute
          * @param {number} zoom
-         * @return {Organizations} 
+         * @return {Organizations}
          */
     }, {
         key: 'withZoom',
         value: function withZoom(zoom) {
             zoom = zoom * 1;
-            if (typeof zoom !== "number" || zoom < 0 || zoom > 19) {
+            if (typeof zoom !== 'number' || zoom < 0 || zoom > 19) {
                 throw new Error('Parameter zoom must be a number between 0 and 19');
             }
             this._zoom = zoom;
@@ -169,7 +169,7 @@ var Organizations = (function (_BaseProvision) {
          * Sets the map location attribute
          * @param {number} latitude
          * @param {number} longitude
-         * @return {Organizations} 
+         * @return {Organizations}
          */
     }, {
         key: 'withLocation',
@@ -177,7 +177,7 @@ var Organizations = (function (_BaseProvision) {
             latitude = latitude * 1;
             longitude = longitude * 1;
 
-            if (typeof latitude !== "number" || typeof longitude !== "number") {
+            if (typeof latitude !== 'number' || typeof longitude !== 'number') {
                 throw new Error('Latitude and longitude parameters must be numbers');
             }
 
@@ -190,8 +190,8 @@ var Organizations = (function (_BaseProvision) {
             }
 
             this._location = {
-                'latitude': latitude,
-                'longitude': longitude
+                latitude: latitude,
+                longitude: longitude
             };
 
             return this;
@@ -199,8 +199,8 @@ var Organizations = (function (_BaseProvision) {
 
         /**
          * Sets the auth security configuration
-         * @param {object} auth 
-         * @return {Organizations} 
+         * @param {object} auth
+         * @return {Organizations}
          */
     }, {
         key: 'withAuth',
@@ -217,7 +217,7 @@ var Organizations = (function (_BaseProvision) {
         /**
          * Sets the password poliicy configuration
          * @param {object} passPolicy
-         * @return {Organizations} 
+         * @return {Organizations}
          */
     }, {
         key: 'withPasswordPolicy',
@@ -250,14 +250,14 @@ var Organizations = (function (_BaseProvision) {
             }
 
             var updateData = {
-                'organization': {
-                    'name': this._name || undefined,
-                    'description': this._description || undefined,
-                    'plan': this._plan || undefined,
-                    'countryCode': this._countryCode || undefined,
-                    'langCode': this._langCode || undefined,
-                    'timezone': this._timeZone || undefined,
-                    'onlyAssignedDomainCertificates': typeof this._onlyDomainCerts !== 'boolean' ? this._onlyDomainCerts : undefined
+                organization: {
+                    name: this._name || undefined,
+                    description: this._description || undefined,
+                    plan: this._plan || undefined,
+                    countryCode: this._countryCode || undefined,
+                    langCode: this._langCode || undefined,
+                    timezone: this._timeZone || undefined,
+                    onlyAssignedDomainCertificates: typeof this._onlyDomainCerts !== 'boolean' ? this._onlyDomainCerts : undefined
                 }
             };
 
@@ -289,7 +289,7 @@ var Organizations = (function (_BaseProvision) {
         key: '_buildURL',
         value: function _buildURL() {
             if (this._name === undefined) throw new Error('Parameter name must be defined');
-            var url = this._resource + "/" + this._name;
+            var url = this._resource + '/' + this._name;
 
             return url;
         }

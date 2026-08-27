@@ -17,7 +17,7 @@ var _q2 = _interopRequireDefault(_q);
 var _enumSOFTWARE_TYPE_ENUM = require('./enum/SOFTWARE_TYPE_ENUM');
 
 /**
- * This is a base object that allows the user to create a Datapoint.
+ * This is a base object that allows the user to create a Software object.
  */
 
 var Software = (function () {
@@ -32,7 +32,7 @@ var Software = (function () {
 
     /**
      * Set the name attribute
-     * @param {string} name 
+     * @param {string} name
      * @return {Software}
      */
 
@@ -46,7 +46,7 @@ var Software = (function () {
 
         /**
          * Set the type attribute
-         * @param {string} type 
+         * @param {string} type
          * @return {Software}
          */
     }, {
@@ -59,7 +59,7 @@ var Software = (function () {
 
         /**
          * Set the version attribute
-         * @param {string} version 
+         * @param {string} version
          * @return {Software}
          */
     }, {
@@ -71,10 +71,10 @@ var Software = (function () {
         }
 
         /**
-        * Set the date  attribute
-        * @param {string} date  
-        * @return {Software}
-        */
+         * Set the date  attribute
+         * @param {string} date  
+         * @return {Software}
+         */
     }, {
         key: 'withDate',
         value: function withDate(date) {
@@ -90,7 +90,7 @@ var Software = (function () {
                 return value == this;
             }, value);
 
-            if (typeof found === "undefined") {
+            if (typeof found === 'undefined') {
                 not_found.push(value);
             }
             if (not_found.length !== 0) {
@@ -101,12 +101,11 @@ var Software = (function () {
     }, {
         key: 'composeElement',
         value: function composeElement() {
-
             var software = {
-                'name': this._name,
-                'type': this._type,
-                'version': this._version,
-                'date': this._date
+                name: this._name,
+                type: this._type,
+                version: this._version,
+                date: this._date
             };
             return software;
         }

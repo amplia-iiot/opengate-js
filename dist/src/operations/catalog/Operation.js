@@ -14,9 +14,9 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
-/** 
- * This is a abstract class, it must be extended to another class that defined the specific search.
- * This class is responsible to manage execute operations request to OpenGate North API
+/**
+ * This is an abstract class; it must be extended by another class that defines the specific request. This class is
+ * responsible for managing execute-operation requests to OpenGate North API.
  */
 
 var Operation = (function () {
@@ -24,7 +24,7 @@ var Operation = (function () {
      * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!string} resource - this is a base url resource
-     * @param {!object} postObj - it will be sent as a data on post action 
+     * @param {!object} postObj - it will be sent as a data on post action
      */
 
     function Operation(ogapi, resource, postObj) {
@@ -48,13 +48,13 @@ var Operation = (function () {
             var _this = this;
 
             var defered = _q2['default'].defer();
-            var id = this._resource.substring(this._resource.lastIndexOf("/") + 1);
+            var id = this._resource.substring(this._resource.lastIndexOf('/') + 1);
             this._ogapi.Napi.put(this._resource, this._postObj).then(function (response) {
                 var data = undefined;
                 try {
                     data = JSON.parse(response.text);
                 } catch (err) {
-                    console.warn("Error parsing response data when execute post action to " + _this._resource);
+                    console.warn('Error parsing response data when execute post action to ' + _this._resource);
                 }
                 defered.resolve({
                     data: data ? data : {},
@@ -66,7 +66,7 @@ var Operation = (function () {
                     error.data = {};
                 }
                 if (!error.data.errors) {
-                    error.data.errors = [typeof error === "string" ? {
+                    error.data.errors = [typeof error === 'string' ? {
                         message: error
                     } : error];
                 }
@@ -92,7 +92,7 @@ var Operation = (function () {
                 try {
                     data = JSON.parse(response.text);
                 } catch (err) {
-                    console.warn("Error parsing response data when execute post action to " + _this2._resource);
+                    console.warn('Error parsing response data when execute post action to ' + _this2._resource);
                 }
                 defered.resolve({
                     data: data ? data : {},
@@ -104,7 +104,7 @@ var Operation = (function () {
                     error.data = {};
                 }
                 if (!error.data.errors) {
-                    error.data.errors = [typeof error === "string" ? {
+                    error.data.errors = [typeof error === 'string' ? {
                         message: error
                     } : error];
                 }

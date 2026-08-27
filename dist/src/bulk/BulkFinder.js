@@ -27,7 +27,7 @@ var _httpStatusCodes = require('http-status-codes');
 var _httpStatusCodes2 = _interopRequireDefault(_httpStatusCodes);
 
 /**
- *   This class allow make get request to bulk resource into Opengate North API.
+ * This class allows making GET requests to the bulk resource in the OpenGate North API.
  */
 
 var BulkFinder = (function (_ProvisionGenericFinder) {
@@ -35,7 +35,7 @@ var BulkFinder = (function (_ProvisionGenericFinder) {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
 
     function BulkFinder(ogapi) {
@@ -46,7 +46,7 @@ var BulkFinder = (function (_ProvisionGenericFinder) {
     }
 
     /**
-     * Download a specific entity by its organization and id. This execute a GET http method
+     * Downloads a specific entity by its organization and id. This executes a GET HTTP method.
      * @test
      *   ogapi.newBulkFinder().findByOrganizationAndId('orgname', xxx-xx-xxx-xxx').then().catch();
      *   ogapi.newBulkFinder().findByOrganizationAndId('orgname', xxx-xx-xxx-xxx', true).then().catch();
@@ -54,7 +54,7 @@ var BulkFinder = (function (_ProvisionGenericFinder) {
      * @param {string} id - entity id.
      * @param {string} format - format response flag.
      * @param {string} accept - accept.
-     * @return {Promise} 
+     * @return {Promise}
      */
 
     _createClass(BulkFinder, [{
@@ -68,7 +68,7 @@ var BulkFinder = (function (_ProvisionGenericFinder) {
 
             if (accept) {
                 this._setExtraHeaders({
-                    'accept': accept
+                    accept: accept
                 });
             }
             return this._download(true);
@@ -104,7 +104,7 @@ var BulkFinder = (function (_ProvisionGenericFinder) {
     }, {
         key: '_composeUrl',
         value: function _composeUrl() {
-            return this._baseUrl + "/" + this._organization + "/" + this._entity + "/" + this._id;
+            return this._baseUrl + '/' + this._organization + '/' + this._entity + '/' + this._id;
         }
     }]);
 
