@@ -37,6 +37,21 @@
 - Rules that only describe accumulated untidiness (`no-unused-vars`, `no-useless-escape`, …) are **warnings**. That count is a backlog: it should fall, never rise.
 - `features/**` keeps `no-undef` at warning level because some mock handlers reference response bodies declared nowhere. Those are real defects awaiting someone who knows what each mock should answer.
 
+## Documentation
+
+- **README.md is kept current. This is not optional.** It had drifted for years: it pointed at a Jenkins
+  job for releases that no longer describes how anything is published, told readers to run `gulp`
+  against Node 4, and never once showed how to construct the client. A reader's first impression of
+  this library is that file.
+- Any change to the public surface updates it in the **same** pull request: a new option, a renamed
+  factory, a different error shape, a changed command, a moved output path. "I will document it later"
+  is how it got into that state.
+- Every code sample in it must have been run. They are what people copy first, and a sample that does
+  not work costs more trust than no sample at all.
+- The published reference at https://documentation.opengate.es/libs/ogapi-docs/index.html is generated
+  from the JSDoc in `src/`, so prose about a specific class or method belongs there and not in README.
+  README covers what the library is, how to install it, how to configure it and how to work on it.
+
 ## Commit & Pull Request Guidelines
 
 - Follow history conventions: `OUW-1234 short summary` for work tied to tickets; `release minor version:x.y.z` for release bumps.
