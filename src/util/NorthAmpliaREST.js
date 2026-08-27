@@ -13,6 +13,24 @@ const mock = _mock(request);
 //
 
 /**
+ * Encodes one query parameter value.
+ *
+ * Values used to be interpolated raw. A value carrying a space made Node reject the request
+ * outright with ERR_UNESCAPED_CHARACTERS, so the request never left the process. Sequences that
+ * are already valid percent-escapes are left alone, because pre-encoding was the only way callers
+ * could work around that, and double-encoding them would break the callers who did.
+ *
+ * @param {*} value - the value to place on the right-hand side of the parameter.
+ * @return {string} the value, safe to interpolate into a query string.
+ */
+function _encodeQueryValue(value) {
+    return String(value)
+        .split(/(%[0-9A-Fa-f]{2})/)
+        .map(part => (/^%[0-9A-Fa-f]{2}$/.test(part) ? part : encodeURIComponent(part)))
+        .join('');
+}
+
+/**
  * This is a JavaScript wrapper around a REST API client.
  */
 export default class NorthAmpliaREST {
@@ -348,7 +366,7 @@ export default class NorthAmpliaREST {
             var keys = Object.keys(parameters);
             for (var i = 0; i < keys.length; i++) {
                 var key = keys[i];
-                var queryParameter = key + '=' + parameters[key];
+                var queryParameter = encodeURIComponent(key) + '=' + _encodeQueryValue(parameters[key]);
                 if (i === 0) {
                     relativeUrl = relativeUrl + '?' + queryParameter;
                 } else {
