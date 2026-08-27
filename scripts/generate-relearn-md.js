@@ -6,6 +6,7 @@ const dumpPath = path.resolve(__dirname, '../docs/dump.json');
 const outputDir = path.resolve(__dirname, '../ogapi-docs');
 const templatePath = path.resolve(__dirname, 'relearn-template.hbs');
 const rootIndexTemplatePath = path.resolve(__dirname, 'relearn-root-index.md');
+const descriptionsPath = path.resolve(__dirname, 'relearn-descriptions.json');
 
 if (!fs.existsSync(dumpPath)) {
     console.error(`Error: ${dumpPath} not found. Run existing docs generation first.`);
@@ -18,6 +19,20 @@ const template = handlebars.compile(templateSource);
 const rootIndexContent = fs.existsSync(rootIndexTemplatePath) 
     ? fs.readFileSync(rootIndexTemplatePath, 'utf8') 
     : '';
+
+// Page descriptions belong to the documentation site, not to the JSDoc: they are one-line
+// summaries written for readers and for the meta description, and nothing in the source can
+// produce them. Without this they are lost on every run, which is what happened in July 2026
+// when a regeneration dropped 262 of them. Keyed by page path under "JS Reference/".
+const pageDescriptions = fs.existsSync(descriptionsPath)
+    ? JSON.parse(fs.readFileSync(descriptionsPath, 'utf8'))
+    : {};
+
+function descriptionLineFor(relativePath) {
+    const key = relativePath.replace(/^JS Reference\//, '');
+    const text = pageDescriptions[key] || pageDescriptions[relativePath];
+    return text ? `description = "${text.replace(/"/g, '\\"')}"\n` : '';
+}
 
 // Helper to ensure directory exists
 function ensureDir(dirPath) {
@@ -192,10 +207,8 @@ classes.forEach(classDoc => {
                 indexContent = rootIndexContent;
             } else {
                 const title = dirName;
-                const isJsReference = dirName === 'JS Reference';
-                const descriptionLine = isJsReference 
-                    ? 'description = "Reference for the OpenGate JavaScript API: base classes and the per-resource finder and builder classes (areas, alarms, bulk, channels, provisioning, and more)."\n'
-                    : '';
+                const indexRelative = path.relative(outputDir, indexFile).split(path.sep).join('/');
+                const descriptionLine = descriptionLineFor(indexRelative);
 
                 indexContent = `+++
 title = "${title}"
@@ -227,7 +240,7 @@ ${descriptionLine}weight = 10
     // Construct final file content
     const fileContent = `+++
 title = "${humanTitle}"
-weight = 10
+${descriptionLineFor(relativePath)}weight = 10
 +++
 
 ${classDoc.description || ''}
