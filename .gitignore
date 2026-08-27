@@ -10,3 +10,16 @@ features/step_definitions/result.xls
 # prepack so the published package always ships declarations that match its own source.
 build
 types
+
+# Logs: never committed. test.log and yarn-error.log used to be, and weighed 2.9 MB.
+*.log
+
+# Registry credentials belong in the developer's own ~/.npmrc, never in the repository.
+.npmrc
+
+# Test coverage, produced by vitest.
+coverage
+
+# Editors and OS.
+.idea
+.DS_Store
