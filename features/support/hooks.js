@@ -3,7 +3,7 @@ const request = require('superagent');
 
 Before({tags: "@guerrilla"}, async function (){
     const _this = this
-    await new Promise(async (callback, error) => {
+    await new Promise((callback, error) => {
         request.get(_this.guerrillaApi).query({
                 f: 'set_email_address',
                 email_user: 'ogapi',

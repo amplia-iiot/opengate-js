@@ -423,7 +423,7 @@ Given(/^the "([^"]*)" (\d+)\.(\d+)$/, function (setterName, setterValue1, setter
     this.error = undefined;
     try {
         /*jshint -W061 */
-        setterValue = eval(setterValue1 + "." + setterValue2);
+        var setterValue = eval(setterValue1 + "." + setterValue2);
         var method = this.model_match(this.currentModel).setters(this.currentEntity)[setterName];
         this.util[method](setterValue);
     } catch (err) {

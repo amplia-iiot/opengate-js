@@ -38,7 +38,6 @@ module.exports = {
                 '2FaType': 'with2FaType',
                 'forcePasswordChange': 'withForcePasswordChange',
                 'apiKey': 'withApiKey',
-                'password': 'withPassword',
             },
             'organization': {
                 'name': 'withName',

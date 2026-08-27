@@ -999,7 +999,7 @@ When(/^I read reset password mail and save token mock$/, function () {
 When(/^I read reset password mail and save token$/, { timeout: 30000 }, async function () {
     var _this = this;
     
-    await new Promise(async (callback, error) => {
+    await new Promise((callback, error) => {
         _this.error = undefined;
         _this.responseData = undefined;
         _this.values = {

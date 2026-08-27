@@ -1,5 +1,5 @@
 // features/support/world.js
-var chai, OpengateAPI, utilsModel, findModel, findCreateModel, findDeleteModel, searchingModel;
+var chai, chai_as_promised, OpengateAPI, utilsModel, findModel, findCreateModel, findDeleteModel, searchingModel, mocksModel;
 
 //var formData = require('form-data');
 var {setWorldConstructor} = require('cucumber');

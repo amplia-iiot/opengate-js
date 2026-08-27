@@ -323,7 +323,7 @@ Then(/^throws an error equal to "([^"]*)"$/, function (errorMessage, callback) {
             break;
         case String: 
             errorText = JSON.parse(this.error)
-            //NO BREAK!!!!!
+            // falls through -- NO BREAK: a String error is parsed here and then handled by the Object case
         case Object:
             _errorText = errorText || this.error
             if (_errorText.message) {
