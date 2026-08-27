@@ -9,7 +9,6 @@ import FieldFinder from '../../util/searchingFields/FieldFinder';
  */
 export const SOFTWARE_TYPES_ENUM = ['SOFTWARE', 'FIRMWARE'];
 
-
 const BASE_URL = '/catalog/softwares';
 /**
  * Defines a search over software entries.
@@ -33,7 +32,7 @@ export default class SoftwaresSearchBuilder extends SearchWithSummaryBuilder {
      *  ogapi.softwareSearchBuilder().withId('mySoftwareId').build()
      * @param {!string} softwareId - software id
      * @throws {Error} throw error when softwareId is not typeof string
-     * @return {SoftwaresSearchBuilder} 
+     * @return {SoftwaresSearchBuilder}
      */
     withId(softwareId) {
         if (typeof softwareId !== 'string') {
@@ -50,7 +49,7 @@ export default class SoftwaresSearchBuilder extends SearchWithSummaryBuilder {
      *  ogapi.softwareSearchBuilder().withName('mySoftware').build()
      * @param {!string} softwareName - software name
      * @throws {Error} throw error when softwareName is not typeof string
-     * @return {SoftwaresSearchBuilder} 
+     * @return {SoftwaresSearchBuilder}
      */
     withName(softwareName) {
         if (typeof softwareName !== 'string') {
@@ -60,7 +59,6 @@ export default class SoftwaresSearchBuilder extends SearchWithSummaryBuilder {
         return this;
     }
 
-
     /**
      * Set softwareType to search
      *
@@ -68,7 +66,7 @@ export default class SoftwaresSearchBuilder extends SearchWithSummaryBuilder {
      *  ogapi.softwareSearchBuilder().withType('mySoftwareType).build()
      * @param {!string} softwareType - software version
      * @throws {Error} throw error when softwareType is not typeof string
-     * @return {SoftwaresSearchBuilder} 
+     * @return {SoftwaresSearchBuilder}
      */
     withType(softwareType) {
         if (typeof softwareType !== 'string') {
@@ -76,22 +74,26 @@ export default class SoftwaresSearchBuilder extends SearchWithSummaryBuilder {
         }
 
         let not_found = '';
-        let found = SOFTWARE_TYPES_ENUM.find(function(softwareType) {
+        let found = SOFTWARE_TYPES_ENUM.find(function (softwareType) {
             return softwareType == this;
         }, softwareType);
-        if (typeof found === "undefined") {
+        if (typeof found === 'undefined') {
             not_found = softwareType;
         }
 
         if (not_found !== '') {
-            throw new Error("Parameter in TYPE is not allowed. Parameter value '" +
-                JSON.stringify(not_found) + "', parameters allowed in administrativeState are: '" + JSON.stringify(SOFTWARE_TYPES_ENUM) + "'");
+            throw new Error(
+                "Parameter in TYPE is not allowed. Parameter value '" +
+                    JSON.stringify(not_found) +
+                    "', parameters allowed in administrativeState are: '" +
+                    JSON.stringify(SOFTWARE_TYPES_ENUM) +
+                    "'"
+            );
         }
 
         this.fluentFilter.and(this._parent.EX.eq('softwareType', softwareType));
         return this;
     }
-
 
     /**
      * Set softwareVersion to search
@@ -100,7 +102,7 @@ export default class SoftwaresSearchBuilder extends SearchWithSummaryBuilder {
      *  ogapi.softwareSearchBuilder().withVersion('mySoftwareVersion).build()
      * @param {!string} softwareVersion - software version
      * @throws {Error} throw error when softwareVersion is not typeof string
-     * @return {SoftwaresSearchBuilder} 
+     * @return {SoftwaresSearchBuilder}
      */
     withVersion(softwareVersion) {
         if (typeof softwareVersion !== 'string') {
@@ -117,7 +119,7 @@ export default class SoftwaresSearchBuilder extends SearchWithSummaryBuilder {
      *  ogapi.hardwareSearchBuilder().withHardwareId('myHardware').build()
      * @param {!string} hardwareId - hardware id
      * @throws {Error} throw error when hardwareId is not typeof string
-     * @return {SoftwaresSearchBuilder} 
+     * @return {SoftwaresSearchBuilder}
      */
     withHardwareId(hardwareId) {
         if (typeof hardwareId !== 'string') {
@@ -134,7 +136,7 @@ export default class SoftwaresSearchBuilder extends SearchWithSummaryBuilder {
      *  ogapi.softwareSearchBuilder().withModel('myModel').build()
      * @param {!string} modelName - model name
      * @throws {Error} throw error when modelName is not typeof string
-     * @return {SoftwaresSearchBuilder} 
+     * @return {SoftwaresSearchBuilder}
      */
     withModel(modelName) {
         if (typeof modelName !== 'string') {
@@ -151,7 +153,7 @@ export default class SoftwaresSearchBuilder extends SearchWithSummaryBuilder {
      *  ogapi.softwareSearchBuilder().withModelVersion('myModelVersion).build()
      * @param {!string} modelVersion - model version
      * @throws {Error} throw error when modelVersion is not typeof string
-     * @return {SoftwaresSearchBuilder} 
+     * @return {SoftwaresSearchBuilder}
      */
     withModelVersion(modelVersion) {
         if (typeof modelVersion !== 'string') {
@@ -168,7 +170,7 @@ export default class SoftwaresSearchBuilder extends SearchWithSummaryBuilder {
      *  ogapi.softwareSearchBuilder().withManufacturer('myManufacturer').build()
      * @param {!string} manufacturerName - manufacturer name
      * @throws {Error} throw error when modelName is not typeof string
-     * @return {SoftwaresSearchBuilder} 
+     * @return {SoftwaresSearchBuilder}
      */
     withManufacturer(manufacturerName) {
         if (typeof manufacturerName !== 'string') {
@@ -185,22 +187,29 @@ export default class SoftwaresSearchBuilder extends SearchWithSummaryBuilder {
         let _customFilter = this._builderParams.filter;
 
         //if (this.tagsFilter.length > 0){
-        //  _fluentFilter.and(this._parent.EX.in('datapoint.tag',this.tagsFilter));             
+        //  _fluentFilter.and(this._parent.EX.in('datapoint.tag',this.tagsFilter));
         //}
 
         _fluentFilter = _fluentFilter._filterTemplate.filter;
 
-        if (typeof _customFilter._filterTemplate === "object") {
+        if (typeof _customFilter._filterTemplate === 'object') {
             _customFilter = _customFilter._filterTemplate.filter;
         }
 
-        if ((typeof _customFilter !== "undefined" && Object.keys(_customFilter).length > 0) && (typeof _fluentFilter !== "undefined" && Object.keys(_fluentFilter).length > 0)) {
-            throw new Error('Incompatible filters. You only can create a filter using fluent mode [withId, withName, withVersion, withType, withHardwareId, withModel, withModelVersion, withManufacturer] methods or custom filter [filter] method');
+        if (
+            typeof _customFilter !== 'undefined' &&
+            Object.keys(_customFilter).length > 0 &&
+            typeof _fluentFilter !== 'undefined' &&
+            Object.keys(_fluentFilter).length > 0
+        ) {
+            throw new Error(
+                'Incompatible filters. You only can create a filter using fluent mode [withId, withName, withVersion, withType, withHardwareId, withModel, withModelVersion, withManufacturer] methods or custom filter [filter] method'
+            );
         }
 
-        if (typeof _customFilter !== "undefined" && Object.keys(_customFilter).length > 0) {
+        if (typeof _customFilter !== 'undefined' && Object.keys(_customFilter).length > 0) {
             filter.filter = _customFilter;
-        } else if (typeof _fluentFilter !== "undefined" && Object.keys(_fluentFilter).length > 0) {
+        } else if (typeof _fluentFilter !== 'undefined' && Object.keys(_fluentFilter).length > 0) {
             filter.filter = _fluentFilter;
         }
         return filter;

@@ -29,13 +29,13 @@ export default class AlarmsSearchBuilder extends SearchWithSummaryBuilder {
     }
 
     /**
-     * The search request will have this group by 
+     * The search request will have this group by
      * @example
-     * @param {!(object)} group 
-     * @return {AlarmsSearchBuilder} 
+     * @param {!(object)} group
+     * @return {AlarmsSearchBuilder}
      */
     group(group) {
-        this._builderParams.group = (group || {});
+        this._builderParams.group = group || {};
         return this;
     }
 }

@@ -18,7 +18,7 @@ export default class RuleTypeSearchBuilder extends SearchBuilder {
     }
 
     /**
-     * Build a instance of StaticSearch 
+     * Build a instance of StaticSearch
      *
      * @example
      *   ogapi.ruleTypeSearchBuilder().build()
@@ -26,12 +26,6 @@ export default class RuleTypeSearchBuilder extends SearchBuilder {
      * @return {StaticSearch}  
      */
     build() {
-        return new StaticSearch(this._parent,
-            this._buildUrl(),
-            null,
-            this._builderParams.timeout,
-            'ruleType', this.customFilters);
+        return new StaticSearch(this._parent, this._buildUrl(), null, this._builderParams.timeout, 'ruleType', this.customFilters);
     }
-
-
 }

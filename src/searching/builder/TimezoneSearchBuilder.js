@@ -20,18 +20,21 @@ export default class TimezoneSearchBuilder extends SearchBuilder {
     }
 
     /**
-     * Build a instance of StaticSearch 
+     * Build a instance of StaticSearch
      *
      * @example
      *   ogapi.timezonesSearchBuilder().filter({and:[]}).build()
      * @throws {SearchBuilderError} Throw error on url build
-     * @return {StaticSearch} 
+     * @return {StaticSearch}
      */
     build() {
-        return new StaticSearch(this._parent,
+        return new StaticSearch(
+            this._parent,
             this._buildUrl(),
             this._buildFilter(),
             this._builderParams.timeout,
-            'timezones', this.customFilters);
+            'timezones',
+            this.customFilters
+        );
     }
 }

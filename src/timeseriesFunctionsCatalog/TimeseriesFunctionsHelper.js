@@ -3,13 +3,12 @@
 import GenericFinder from '../GenericFinder';
 import q from 'q';
 import HttpStatus from 'http-status-codes';
-import { VALUE_TYPES_ENUM } from './TYPES_ENUM'
+import { VALUE_TYPES_ENUM } from './TYPES_ENUM';
 
 /**
  * This class allows making GET requests to the TimeseriesFunctionsHelper resource in the OpenGate North API.
  */
 export default class TimeseriesFunctionsHelper extends GenericFinder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
@@ -17,37 +16,37 @@ export default class TimeseriesFunctionsHelper extends GenericFinder {
     constructor(ogapi) {
         super(ogapi, 'timeseriesFunctions');
         this._jsHeaders = {
-            'accept': 'application/javascript'
+            accept: 'application/javascript'
         };
         this._mdHeaders = {
-            'accept': 'text/markdown'
-        }
+            accept: 'text/markdown'
+        };
     }
 
     getValueTypes() {
-        return VALUE_TYPES_ENUM
+        return VALUE_TYPES_ENUM;
     }
 
     /**
      * Performs a GET that returns documentation of private JavaScript functions from the rules service.
      * @test
      *   ogapi.newTimeseriesFunctionsHelper().getDocPrivateJavascriptFunctions();
-     * @return {Promise} 
+     * @return {Promise}
      */
     getDocPrivateJavascriptFunctions() {
-        this._setExtraHeaders(this._mdHeaders)
-        this._id = 'doc/jsApi/internal'
+        this._setExtraHeaders(this._mdHeaders);
+        this._id = 'doc/jsApi/internal';
         return this._execute();
     }
     /**
      * Performs a GET that returns documentation of JavaScript functions from the rules service.
      * @test
      *   ogapi.newTimeseriesFunctionsHelper().getDocJavascriptFunctions();
-     * @return {Promise} 
+     * @return {Promise}
      */
     getDocJavascriptFunctions() {
-        this._setExtraHeaders(this._mdHeaders)
-        this._id = 'doc/jsApi/client'
+        this._setExtraHeaders(this._mdHeaders);
+        this._id = 'doc/jsApi/client';
         return this._execute();
     }
 
@@ -59,8 +58,9 @@ export default class TimeseriesFunctionsHelper extends GenericFinder {
         let defered = q.defer();
         let promise = defered.promise;
         let _error_not_found = this._error_not_found;
-        this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters())
-            .then((req) => {
+        this._api
+            .get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters())
+            .then(req => {
                 if (req.statusCode === 204) {
                     defered.reject({
                         error: _error_not_found,
@@ -73,7 +73,7 @@ export default class TimeseriesFunctionsHelper extends GenericFinder {
                     });
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;

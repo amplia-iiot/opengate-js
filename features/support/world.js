@@ -2,16 +2,16 @@
 var chai, chai_as_promised, OpengateAPI, utilsModel, findModel, findCreateModel, findDeleteModel, searchingModel, mocksModel;
 
 //var formData = require('form-data');
-var {setWorldConstructor} = require('cucumber');
+var { setWorldConstructor } = require('cucumber');
 chai = require('chai');
 chai_as_promised = require('chai-as-promised');
 OpengateAPI = require(process.cwd() + '/dist/opengate-api-npm');
 utilsModel = require('./utils_model');
 findModel = require('./find_model');
 findCreateModel = require('./create_provision_model');
-findDeleteModel = require('./delete_provision_model'); 
+findDeleteModel = require('./delete_provision_model');
 searchingModel = require('./searching_model');
-mocksModel = require('./mocks/mockModel')
+mocksModel = require('./mocks/mockModel');
 
 function World() {
     this.test_url_north = process.env.API_NORTH_INTERNAL || 'https://API_NORTH_INTERAL';
@@ -19,7 +19,7 @@ function World() {
     //this.apikey = process.env.API_KEY || 'YOUR_API_KEY';
     this.YOUR_EMAIL = process.env.YOUR_EMAIL || 'YOUR_EMAIL@amplia.es';
     this.YOUR_PASSWORD = process.env.YOUR_PASSWORD || 'YOUR_PASSWORD';
-    this.guerrillaApi = 'https://api.guerrillamail.com/ajax.php'
+    this.guerrillaApi = 'https://api.guerrillamail.com/ajax.php';
     chai.use(chai_as_promised);
     this.expect = chai.expect;
     // Own dependencies with the model
@@ -32,14 +32,14 @@ function World() {
 
     this.model_match = function (model) {
         return {
-            'create': this.findCreateModel,
-            'update': this.findCreateModel,
-            'delete': this.findDeleteModel,
-            'deleteAll': this.findDeleteModel,
-            'read': this.findModel,
-            'find': this.findModel,
-            'search': this.searchingModel
-        } [model];
+            create: this.findCreateModel,
+            update: this.findCreateModel,
+            delete: this.findDeleteModel,
+            deleteAll: this.findDeleteModel,
+            read: this.findModel,
+            find: this.findModel,
+            search: this.searchingModel
+        }[model];
     };
 
     var _this = this;

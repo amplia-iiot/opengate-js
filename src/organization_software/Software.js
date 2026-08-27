@@ -5,13 +5,12 @@ export const SOFTWARES_RESOURCE = '/software';
 export const SOFTWARE_TYPES_ENUM = ['SOFTWARE', 'FIRMWARE'];
 
 import BaseProvision from '../provision/BaseProvision';
-import checkType from '../util/formats/check_types'
+import checkType from '../util/formats/check_types';
 
 /**
  * This is a base object that contains everything you can do with Softwares.
  */
 export default class Softwares extends BaseProvision {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
@@ -60,7 +59,7 @@ export default class Softwares extends BaseProvision {
 
     /**
      * Set the type attribute
-     * @param {string} type 
+     * @param {string} type
      * @return {Softwares}
      */
     withType(type) {
@@ -70,10 +69,10 @@ export default class Softwares extends BaseProvision {
     }
 
     /**
-    * Set the model attribute
-    * @param {Array} models 
-    * @return {Softwares}
-    */
+     * Set the model attribute
+     * @param {Array} models
+     * @return {Softwares}
+     */
     withModels(models) {
         checkType._checkArray(models, 'model');
         this._models = models;
@@ -81,7 +80,7 @@ export default class Softwares extends BaseProvision {
     }
 
     _composeElement() {
-        this._checkRequiredParameters()
+        this._checkRequiredParameters();
 
         var updateData = {
             name: this._name,
@@ -98,7 +97,7 @@ export default class Softwares extends BaseProvision {
     }
 
     _buildURL() {
-        return this._resource + (this._identifier ? "/" + this._identifier : "");
+        return this._resource + (this._identifier ? '/' + this._identifier : '');
     }
 
     deleteInCascade() {
@@ -106,7 +105,7 @@ export default class Softwares extends BaseProvision {
             updateEntities: true
         });
 
-        return this.delete()
+        return this.delete();
     }
 
     updateInCascade() {
@@ -114,7 +113,6 @@ export default class Softwares extends BaseProvision {
             updateEntities: true
         });
 
-        return this.update()
+        return this.update();
     }
-
 }

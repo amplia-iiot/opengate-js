@@ -1,7 +1,7 @@
 import Search from './Search';
 import q from 'q';
 
-/** 
+/**
  * This class extends Search and allows requests to be made to any available resource in the OpenGate North API.
  */
 export default class DeviceSearch extends Search {
@@ -28,9 +28,8 @@ export default class DeviceSearch extends Search {
         var defered = q.defer();
         var promise = defered.promise;
         var parameters = this._getUrlParameters();
-        this._ogapi.Napi
-            .post(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), parameters)
-            .then((response) => {
+        this._ogapi.Napi.post(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), parameters)
+            .then(response => {
                 let resultQuery = response.body;
                 let statusCode = response.statusCode;
 
@@ -39,7 +38,6 @@ export default class DeviceSearch extends Search {
 
                     // OUW-944
                     if (resultQuery.devices.length > 0) {
-
                         var ele = false;
                         var flattened = (parameters && parameters.flattened) || false;
 
@@ -51,15 +49,17 @@ export default class DeviceSearch extends Search {
                                         delete resultQuery.devices[ele]['device.identifier'];
                                     }
                                 }
-
                             } else {
-                                if (resultQuery.devices[ele].device && resultQuery.devices[ele].device.identifier && !resultQuery.devices[ele].device.identifier._current) {
+                                if (
+                                    resultQuery.devices[ele].device &&
+                                    resultQuery.devices[ele].device.identifier &&
+                                    !resultQuery.devices[ele].device.identifier._current
+                                ) {
                                     delete resultQuery.devices[ele].device.identifier;
                                 }
                             }
                         }
                     }
-
 
                     delete resultQuery.entities;
                 }
@@ -68,11 +68,9 @@ export default class DeviceSearch extends Search {
                     statusCode: statusCode
                 });
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;
     }
-
-
 }

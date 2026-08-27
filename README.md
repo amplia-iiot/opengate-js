@@ -4,13 +4,13 @@
 
 ## Features
 
-* The library is [isomorphic](http://isomorphic.net/), therefore you can use it in both client and server sides.
-* [OpenGate North API](https://www.amplia-iiot.com/documentation/latest/api-north/opengate-api-north.html) (NAPI) supported.
-  * Provision
-  * Searches
-  * Operations
-* [OpenGate South API](https://www.amplia-iiot.com/documentation/latest/api-south/opengate-api-south.html) (SAPI) supported.
-* Fluent API design.
+- The library is [isomorphic](http://isomorphic.net/), therefore you can use it in both client and server sides.
+- [OpenGate North API](https://www.amplia-iiot.com/documentation/latest/api-north/opengate-api-north.html) (NAPI) supported.
+    - Provision
+    - Searches
+    - Operations
+- [OpenGate South API](https://www.amplia-iiot.com/documentation/latest/api-south/opengate-api-south.html) (SAPI) supported.
+- Fluent API design.
 
 ## Development
 
@@ -23,17 +23,17 @@ yarn install --frozen-lockfile
 
 Dependencies come from the public npm registry. The repository no longer carries a `.npmrc` or `.yarnrc`: if you want to go through an internal mirror, configure it in your own `~/.npmrc` rather than committing it here.
 
-| Command | What it does |
-| --- | --- |
-| `yarn test` | Unit tests (vitest). No network, no OpenGate instance needed. |
-| `yarn test:watch` | The same suite, in watch mode. |
-| `yarn test:coverage` | Unit tests with a coverage report in `coverage/`. |
-| `yarn lint` | ESLint. Errors break the build; warnings are pre-existing debt. |
-| `yarn lint:fix` | ESLint with autofix. |
-| `yarn format` | Prettier over the whole tree. |
-| `yarn format:check` | Fails if anything is unformatted. |
-| `yarn apidoc` | Regenerates `build/api-model.json` and the `types/` declarations from the JSDoc. |
-| `yarn test:e2e` | Cucumber acceptance suite; needs a real OpenGate (see below). |
+| Command              | What it does                                                                     |
+| -------------------- | -------------------------------------------------------------------------------- |
+| `yarn test`          | Unit tests (vitest). No network, no OpenGate instance needed.                    |
+| `yarn test:watch`    | The same suite, in watch mode.                                                   |
+| `yarn test:coverage` | Unit tests with a coverage report in `coverage/`.                                |
+| `yarn lint`          | ESLint. Errors break the build; warnings are pre-existing debt.                  |
+| `yarn lint:fix`      | ESLint with autofix.                                                             |
+| `yarn format`        | Prettier over the whole tree.                                                    |
+| `yarn format:check`  | Fails if anything is unformatted.                                                |
+| `yarn apidoc`        | Regenerates `build/api-model.json` and the `types/` declarations from the JSDoc. |
+| `yarn test:e2e`      | Cucumber acceptance suite; needs a real OpenGate (see below).                    |
 
 Every push and pull request runs lint, the unit tests and the API model generation on Node 20, 22 and 24.
 
@@ -47,7 +47,7 @@ In order to generate the documentation in relearn format (always after last step
 yarn docs:relearn
 ```
 
-You must copy the content from *ogapi-docs/*.md to the odm-documentation-hugo project in *content/libs/ogapi-docs folder.
+You must copy the content from _ogapi-docs/_.md to the odm-documentation-hugo project in *content/libs/ogapi-docs folder.
 
 ## Releasing
 
@@ -82,20 +82,21 @@ They run in isolation, in milliseconds, and are what CI gates on. New code shoul
 The Cucumber suite talks to a real OpenGate instance. Before running it you must configure:
 
 - features/support/world.js
--- this.test_url_north
--- this.test_url_south
--- this.apikey - API_KEY of the user used to create the different entities in the test
--- this.YOUR_EMAIL - email of the user used to create the different entities in the test. If it is not configured here, it must be configured in each of the features to be executed if necessary
--- this.YOUR_PASSWORD - password of the user used to create the different entities in the test. If it is not configured here, it must be configured in each of the features to be executed if necessary
+  -- this.test_url_north
+  -- this.test_url_south
+  -- this.apikey - API_KEY of the user used to create the different entities in the test
+  -- this.YOUR_EMAIL - email of the user used to create the different entities in the test. If it is not configured here, it must be configured in each of the features to be executed if necessary
+  -- this.YOUR_PASSWORD - password of the user used to create the different entities in the test. If it is not configured here, it must be configured in each of the features to be executed if necessary
 
 - features/feaures/**.feature
--- require-real-apikey: API_KEY of the user used to create the different entities in the test
--- YOUR_EMAIL: email of the user used to create the different entities in the test. If it is not configured here, it must be configured in features/suppport/world.js file
--- YOUR_PASSWORD: password of the user used to create the different entities in the test. If it is not configured here, it must be configured in features/suppport/world.js file
+  -- require-real-apikey: API_KEY of the user used to create the different entities in the test
+  -- YOUR_EMAIL: email of the user used to create the different entities in the test. If it is not configured here, it must be configured in features/suppport/world.js file
+  -- YOUR_PASSWORD: password of the user used to create the different entities in the test. If it is not configured here, it must be configured in features/suppport/world.js file
 
 Never commit those credentials. Supply them through the environment variables that `world.js` already reads.
 
 You can run the tests by running the following command:
+
 ```bash
 $ gulp cucumber [--tags @[tags]]
 ```

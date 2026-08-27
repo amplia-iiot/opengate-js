@@ -6,7 +6,6 @@ import ProvisionGenericFinder from '../ProvisionGenericFinder';
  * This class allows making GET requests to the domains resource in the OpenGate North API.
  */
 export default class DomainFinder extends ProvisionGenericFinder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
@@ -23,18 +22,17 @@ export default class DomainFinder extends ProvisionGenericFinder {
         this._setUrlParameters({
             hierarchy: this._hierarchy
         });
-        return this._baseUrl + "/" + this._name;
+        return this._baseUrl + '/' + this._name;
     }
 
     /**
      * Constructor
      * @param {string} name - domain name.
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByNameWithHierarchy(name) {
         this._name = name;
         this._hierarchy = 'true';
         return this._execute();
     }
-
 }

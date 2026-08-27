@@ -30,12 +30,11 @@ export default class DatamodelsFinder extends ProvisionGenericFinder {
      *   ogapi.newDatamodelsFinder().findByOrganizationAndId('orgname', 'xxx-xx-xxx-xxx').then().catch();
      * @param {string} organization - datamodel organization .
      * @param {string} id - datamodel id.
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByOrganizationAndId(organization, id) {
         this._organization = organization;
         this._id = id;
         return this._execute();
     }
-
 }

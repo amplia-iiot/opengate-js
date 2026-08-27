@@ -14,24 +14,23 @@ export default class DatasetSearchBuilder extends SearchBuilder {
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */
     constructor(parent, organization, dataset) {
-        super(parent, {}, new FieldFinder(parent, BASE_URL, { organization: organization, dataset: dataset }))
-        this._url = BASE_URL + '/provision/organizations/' + organization + '/' + dataset + '/data'
+        super(parent, {}, new FieldFinder(parent, BASE_URL, { organization: organization, dataset: dataset }));
+        this._url = BASE_URL + '/provision/organizations/' + organization + '/' + dataset + '/data';
     }
 
     /**
-     * The search request will have this group by 
+     * The search request will have this group by
      * @example
-     * @param {!(object)} group 
-     * @return {DatasetSearchBuilder} 
+     * @param {!(object)} group
+     * @return {DatasetSearchBuilder}
      */
     group(group) {
-        this._builderParams.group = (group || {});
+        this._builderParams.group = group || {};
         return this;
     }
 
-
     /**
-     * The search request will have this filter 
+     * The search request will have this filter
      * @example
      *  ogapi.datasetSearchBuilder(organization, datasetId).select(
      *      ogapi.newSelectBuilder().add(SE.element("provision.device.identifier", ["value"], "id"), SE.add("device.temperature.value", ["value"]))
@@ -41,18 +40,18 @@ export default class DatasetSearchBuilder extends SearchBuilder {
      *      {"name": "device.temperature.value","fields": [{"field": "value","alias": "identifier"}]}]
      *   }) //Custom select
      * @param {!(SelectBuilder|object)} select
-     * @return {DatasetSearchBuilder} 
+     * @return {DatasetSearchBuilder}
      */
     select(select) {
-        this._builderParams.select = (select || []);
+        this._builderParams.select = select || [];
         return this;
     }
 
     /**
      * The search request will use this sort
      * @example
-     * @param {!(string)} sort 
-     * @return {DatasetSearchBuilder} 
+     * @param {!(string)} sort
+     * @return {DatasetSearchBuilder}
      */
     sort(sort) {
         this._builderParams.sort = sort || undefined;
@@ -60,15 +59,16 @@ export default class DatasetSearchBuilder extends SearchBuilder {
     }
 
     /**
-     * Build a instance of Search 
+     * Build a instance of Search
      *
      * @example
      *  ogapi.datasetSearchBuilder(organization, datasetId).build()
      * @throws {SearchBuilderError} Throw error on url build
-     * @return {Search} 
+     * @return {Search}
      */
     build() {
-        return new WPSearch(this._parent,
+        return new WPSearch(
+            this._parent,
             this._buildUrl(),
             this._buildFilter(),
             this._buildLimit(),
@@ -76,6 +76,7 @@ export default class DatasetSearchBuilder extends SearchBuilder {
             this._buildGroup(),
             this._buildSelect(),
             this._builderParams.timeout,
-            this._urlParams);
+            this._urlParams
+        );
     }
 }

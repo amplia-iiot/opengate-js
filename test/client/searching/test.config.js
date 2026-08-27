@@ -2,13 +2,14 @@ require.config({
     // ...paths and stuff
     baseUrl: '../../../bower_components',
     paths: {
-        'chai': 'chai/chai',
+        chai: 'chai/chai',
         'chai-as-promised': 'chai-as-promised/lib/chai-as-promised'
     }
 });
 
 require([
-    'chai', 'chai-as-promised',
+    'chai',
+    'chai-as-promised',
     '../../../bower_components/es6-promise/es6-promise.js',
     '../../../dist/opengate-api-bower-1.15.0.js',
     'FilterBuilder.spec.js',
@@ -22,7 +23,7 @@ require([
     chai.use(chaiAsPromised);
     window.assert = chai.assert;
     window.ogapi = new window.OpenGateAPI({
-        apiKey: "require-real-apikey",
+        apiKey: 'require-real-apikey',
         url: 'REQUIRE-URL_NORT'
     });
     if (window.mochaPhantomJS) {

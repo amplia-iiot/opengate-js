@@ -4,17 +4,12 @@ import GenericFinder from '../../GenericFinder';
 import q from 'q';
 import HttpStatus from 'http-status-codes';
 
-
-import {
-    CONNECTOR_FUNCTION_SOUTH_PROTOCOLS,
-    CONNECTOR_FUNCTION_PAYLOAD_TYPES
-} from '../_CONNECTOR_FUNCTIONS_ENUMS';
+import { CONNECTOR_FUNCTION_SOUTH_PROTOCOLS, CONNECTOR_FUNCTION_PAYLOAD_TYPES } from '../_CONNECTOR_FUNCTIONS_ENUMS';
 
 /**
  * This class allows you to make GET requests to the ConnectorFunctionsHelper resource in the OpenGate North API.
  */
 export default class ConnectorFunctionsHelper extends GenericFinder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
@@ -22,22 +17,22 @@ export default class ConnectorFunctionsHelper extends GenericFinder {
     constructor(ogapi) {
         super(ogapi, 'connectorFunctions');
         this._jsHeaders = {
-            'accept': 'application/javascript'
+            accept: 'application/javascript'
         };
         this._mdHeaders = {
-            'accept': 'text/markdown'
-        }
+            accept: 'text/markdown'
+        };
     }
 
     /**
      * Performs a get that returns documentation private of javascript functions from rules service
      * @test
      *   ogapi.newConnectorFunctionsHelper().getDocPrivateJavascriptFunctions();
-     * @return {Promise} 
+     * @return {Promise}
      */
     getDocPrivateJavascriptFunctions() {
-        this._setExtraHeaders(this._mdHeaders)
-        this._id = 'doc/jsApi/internal'
+        this._setExtraHeaders(this._mdHeaders);
+        this._id = 'doc/jsApi/internal';
         return this._execute();
 
         // let data = "### ejemplo de docu de connector functions"
@@ -57,11 +52,11 @@ export default class ConnectorFunctionsHelper extends GenericFinder {
      * Performs a get that returns documentation of javascript functions from rules service
      * @test
      *   ogapi.newConnectorFunctionsHelper().getDocJavascriptFunctions();
-     * @return {Promise} 
+     * @return {Promise}
      */
     getDocJavascriptFunctions() {
-        this._setExtraHeaders(this._mdHeaders)
-        this._id = 'doc/jsApi/client'
+        this._setExtraHeaders(this._mdHeaders);
+        this._id = 'doc/jsApi/client';
         return this._execute();
 
         // let data = "### ejemplo de docu de connector functions 2"
@@ -86,8 +81,9 @@ export default class ConnectorFunctionsHelper extends GenericFinder {
         let defered = q.defer();
         let promise = defered.promise;
         let _error_not_found = this._error_not_found;
-        this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters())
-            .then((req) => {
+        this._api
+            .get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters())
+            .then(req => {
                 if (req.statusCode === 204) {
                     defered.reject({
                         error: _error_not_found,
@@ -100,7 +96,7 @@ export default class ConnectorFunctionsHelper extends GenericFinder {
                     });
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;

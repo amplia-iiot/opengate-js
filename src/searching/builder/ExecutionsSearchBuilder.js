@@ -14,12 +14,16 @@ export default class ExecutionsSearchBuilder extends SearchWithSummaryBuilder {
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */
     constructor(parent, fieldFinder = new FieldFinder(parent, '/operations')) {
-        super(parent, {
-            onDevices: '/devices',
-            onSubscribers: '/subscribers',
-            onSubscriptions: '/subscriptions',
-            onCommunicationsModules: '/communicationsModules'
-        }, fieldFinder);
+        super(
+            parent,
+            {
+                onDevices: '/devices',
+                onSubscribers: '/subscribers',
+                onSubscriptions: '/subscriptions',
+                onCommunicationsModules: '/communicationsModules'
+            },
+            fieldFinder
+        );
         this._url = '/entities' + TOKEN_URL + '/operations';
     }
 

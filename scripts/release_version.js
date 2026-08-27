@@ -20,13 +20,13 @@ var gulp = require('gulp'),
  * introduced a feature or made a backwards-incompatible release.
  */
 
-//STEP 1 
-gulp.task('create:release:branch', function(cb) {
-    git.checkout(temporalBranchRelease(), { args: '-b' }, function(err) {
+//STEP 1
+gulp.task('create:release:branch', function (cb) {
+    git.checkout(temporalBranchRelease(), { args: '-b' }, function (err) {
         cb(err);
     });
 });
-gulp.task('increase:version', function() {
+gulp.task('increase:version', function () {
     return increase(versionType());
 });
 
@@ -34,56 +34,57 @@ gulp.task('build:all', gulp.series('create:release:branch', 'increase:version', 
 
 // STEP 2
 
-
 // STEP 2
 
-// STEP 3 
-gulp.task('commit:increase:version', function() {
-    return gulp.src(['dist', './bower.json', './package.json', './docs', './src/util/searchingFields/source-precompiled/Fields.js'])
-        .pipe(git.add({maxBuffer: Infinity}))
-        .pipe(git.commit('release ' + versionType() + ' version:' + versionNumber(), {maxBuffer: Infinity}));
+// STEP 3
+gulp.task('commit:increase:version', function () {
+    return gulp
+        .src(['dist', './bower.json', './package.json', './docs', './src/util/searchingFields/source-precompiled/Fields.js'])
+        .pipe(git.add({ maxBuffer: Infinity }))
+        .pipe(git.commit('release ' + versionType() + ' version:' + versionNumber(), { maxBuffer: Infinity }));
 });
-// STEP 3 
+// STEP 3
 
 // STEP 4
-gulp.task('checkout:master:increase', function(cb) {
-    git.checkout(masterBranch(), {maxBuffer: Infinity}, function(err) {
+gulp.task('checkout:master:increase', function (cb) {
+    git.checkout(masterBranch(), { maxBuffer: Infinity }, function (err) {
         cb(err);
     });
 });
 
-gulp.task('merge:master:increase', function(cb) {
-    git.merge(temporalBranchRelease(), {maxBuffer: Infinity}, function(err) {
+gulp.task('merge:master:increase', function (cb) {
+    git.merge(temporalBranchRelease(), { maxBuffer: Infinity }, function (err) {
         cb(err);
     });
 });
 
-gulp.task('change:tab_version:increase', function() {
-    return gulp.src(['./package.json'])
-        .pipe(tag_version());
+gulp.task('change:tab_version:increase', function () {
+    return gulp.src(['./package.json']).pipe(tag_version());
 });
 
-gulp.task('prepare_tag:increase', gulp.series('commit:increase:version', 'checkout:master:increase', 'merge:master:increase', 'change:tab_version:increase'));
+gulp.task(
+    'prepare_tag:increase',
+    gulp.series('commit:increase:version', 'checkout:master:increase', 'merge:master:increase', 'change:tab_version:increase')
+);
 
-gulp.task('checkout:develop', function(cb) {
-    git.checkout(developBranch(), {maxBuffer: Infinity}, function(err) {
+gulp.task('checkout:develop', function (cb) {
+    git.checkout(developBranch(), { maxBuffer: Infinity }, function (err) {
         if (!err) {
-            git.merge(masterBranch(), {maxBuffer: Infinity}, function(err) {
+            git.merge(masterBranch(), { maxBuffer: Infinity }, function (err) {
                 cb(err);
             });
         } else {
             cb(err);
-
         }
     });
 });
 
 gulp.task('prepare:develop:increase', gulp.series('build:all', 'prepare_tag:increase', 'checkout:develop'));
 // STEP 4
-gulp.task('push:increase:build', function(cb) {
-    git.push('origin', [masterBranch(), developBranch()], { args: " --follow-tags", maxBuffer: Infinity }, function(err) {
+gulp.task('push:increase:build', function (cb) {
+    git.push('origin', [masterBranch(), developBranch()], { args: ' --follow-tags', maxBuffer: Infinity }, function (err) {
         if (!err) {
-            git.branch(temporalBranchRelease(), { args: "-D", maxBuffer: Infinity }, function(err) {
+            git.branch(temporalBranchRelease(), { args: '-D', maxBuffer: Infinity }, function (err) {
                 cb(err);
             });
         } else {
@@ -94,30 +95,33 @@ gulp.task('push:increase:build', function(cb) {
 gulp.task('push:increase', gulp.series('prepare:develop:increase', 'push:increase:build'));
 
 function increase(importance) {
-    // get all the files to bump version in 
-    return gulp.src(['./package.json', './bower.json'])
-        // bump the version number in those files 
-        .pipe(bump({ type: importance }))
-        // save it back to filesystem 
-        .pipe(gulp.dest('./'));
+    // get all the files to bump version in
+    return (
+        gulp
+            .src(['./package.json', './bower.json'])
+            // bump the version number in those files
+            .pipe(bump({ type: importance }))
+            // save it back to filesystem
+            .pipe(gulp.dest('./'))
+    );
 }
 
 function temporalBranchRelease() {
-    return (argv['temporal-branch'] === undefined) ? 'release_branch' : argv['temporal-branch'];
+    return argv['temporal-branch'] === undefined ? 'release_branch' : argv['temporal-branch'];
 }
 
 function masterBranch() {
-    return (argv['master-branch'] === undefined) ? 'master' : argv['master-branch'];
+    return argv['master-branch'] === undefined ? 'master' : argv['master-branch'];
 }
 
 function developBranch() {
-    return (argv['develop-branch'] === undefined) ? 'develop' : argv['develop-branch'];
+    return argv['develop-branch'] === undefined ? 'develop' : argv['develop-branch'];
 }
 
 function versionType() {
-    if (isPatch()) return "patch";
-    if (isMajor()) return "major";
-    if (isMinor()) return "minor";
+    if (isPatch()) return 'patch';
+    if (isMajor()) return 'major';
+    if (isMinor()) return 'minor';
     throw new Error('Version increase type unknown. Only valid [minor,major,patch].');
 }
 
@@ -128,13 +132,13 @@ function versionNumber() {
 }
 
 function isMinor() {
-    return (argv.minor === undefined) ? false : true;
+    return argv.minor === undefined ? false : true;
 }
 
 function isMajor() {
-    return (argv.major === undefined) ? false : true;
+    return argv.major === undefined ? false : true;
 }
 
 function isPatch() {
-    return (argv.patch === undefined) ? false : true;
+    return argv.patch === undefined ? false : true;
 }

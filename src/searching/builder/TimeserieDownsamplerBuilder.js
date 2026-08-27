@@ -3,10 +3,10 @@
 import SearchBuilder from './SearchBuilder';
 import WPSearch from '../WPSearch';
 export const BASE_URL = 'timeseries';
-import checkType from '../../util/formats/check_types'
+import checkType from '../../util/formats/check_types';
 
-export const aggregationTypes = ["FIRST", "LAST", "AVG", "MAX", "MIN", "SUM", "COUNT", "MEDIAN", "GEO_AVG", "VARIANCE", "STD_DEVIATION"];
-export const interpolationTypes = ["ZERO","LAST","LINEAR","NONE"];
+export const aggregationTypes = ['FIRST', 'LAST', 'AVG', 'MAX', 'MIN', 'SUM', 'COUNT', 'MEDIAN', 'GEO_AVG', 'VARIANCE', 'STD_DEVIATION'];
+export const interpolationTypes = ['ZERO', 'LAST', 'LINEAR', 'NONE'];
 
 /**
  * Defines a downsampled search over time series data.
@@ -17,24 +17,24 @@ export default class TimeserieDownsamplerBuilder extends SearchBuilder {
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */
     constructor(parent, organization, timeserie, entityId) {
-        super(parent, {}, null)
-        this._url = BASE_URL + '/provision/organizations/' + organization + '/' + timeserie + '/downsampling/' + entityId
+        super(parent, {}, null);
+        this._url = BASE_URL + '/provision/organizations/' + organization + '/' + timeserie + '/downsampling/' + entityId;
     }
 
     /**
-     * The search request will have this select 
+     * The search request will have this select
      * @param {object} select
-     * @return {TimeserieDownsamplerBuilder} 
+     * @return {TimeserieDownsamplerBuilder}
      */
     select(select) {
-        this._builderParams.select = (select || {});
+        this._builderParams.select = select || {};
         return this;
     }
 
     /**
      * The start time for the downsampling
      * @param {string} start
-     * @return {TimeserieDownsamplerBuilder} 
+     * @return {TimeserieDownsamplerBuilder}
      */
     start(start) {
         checkType._checkISODateTime(start, 'start');
@@ -50,11 +50,11 @@ export default class TimeserieDownsamplerBuilder extends SearchBuilder {
     /**
      * The bucket for the downsampling (must be higher than the time series bucket)
      * @param {number} bucketTime
-     * @return {TimeserieDownsamplerBuilder} 
+     * @return {TimeserieDownsamplerBuilder}
      */
     bucketTime(bucketTime) {
         checkType._checkNumber(bucketTime, 'bucketTime');
-        
+
         if (!this._builderParams.select) {
             this._builderParams.select = {};
         }
@@ -67,12 +67,12 @@ export default class TimeserieDownsamplerBuilder extends SearchBuilder {
     /**
      * Add columns that will be requested
      * @param {array} columns
-     * @return {TimeserieDownsamplerBuilder} 
+     * @return {TimeserieDownsamplerBuilder}
      */
     columns(columns) {
         checkType._checkArray(columns, 'columns');
 
-        columns.forEach((colTmp) => this.addColumn(colTmp.name || colTmp.column, colTmp.interpolation, colTmp.aggregation, colTmp.alias))
+        columns.forEach(colTmp => this.addColumn(colTmp.name || colTmp.column, colTmp.interpolation, colTmp.aggregation, colTmp.alias));
     }
 
     /**
@@ -81,10 +81,10 @@ export default class TimeserieDownsamplerBuilder extends SearchBuilder {
      * @param {string} interpolation
      * @param {string} aggregation
      * @param {string} alias
-     * @return {TimeserieDownsamplerBuilder} 
+     * @return {TimeserieDownsamplerBuilder}
      */
     addColumn(name, interpolation, aggregation, alias) {
-        checkType._checkStringAndPattern(name, "^[a-zA-Z0-9 _-]*$", 'name');
+        checkType._checkStringAndPattern(name, '^[a-zA-Z0-9 _-]*$', 'name');
 
         if (interpolation) {
             checkType._checkType(interpolation, interpolationTypes, 'interpolation');
@@ -95,7 +95,7 @@ export default class TimeserieDownsamplerBuilder extends SearchBuilder {
         }
 
         if (alias) {
-            checkType._checkStringAndPattern(alias, "^[a-zA-Z0-9 _-]*$", 'alias');
+            checkType._checkStringAndPattern(alias, '^[a-zA-Z0-9 _-]*$', 'alias');
         }
 
         if (!this._builderParams.select) {
@@ -127,15 +127,16 @@ export default class TimeserieDownsamplerBuilder extends SearchBuilder {
     }
 
     /**
-     * Build a instance of Search 
+     * Build a instance of Search
      *
      * @example
      *  ogapi.timeserieDownsamplerBuilder(organization, timeserieId).build()
      * @throws {SearchBuilderError} Throw error on url build
-     * @return {Search} 
+     * @return {Search}
      */
     build() {
-        return new WPSearch(this._parent,
+        return new WPSearch(
+            this._parent,
             this._buildUrl(),
             this._buildFilter(),
             this._buildLimit(),
@@ -143,6 +144,7 @@ export default class TimeserieDownsamplerBuilder extends SearchBuilder {
             this._buildGroup(),
             this._buildSelect(),
             this._builderParams.timeout,
-            this._urlParams);
+            this._urlParams
+        );
     }
 }

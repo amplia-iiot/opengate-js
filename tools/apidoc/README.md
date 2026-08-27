@@ -23,17 +23,27 @@ the library version, so a consumer knows exactly what it is looking at.
 
 ```json
 {
-  "library": "opengate-js", "version": "14.15.0", "classCount": 217, "memberCount": 1471,
-  "classes": [{
-    "name": "AreaFinder", "file": "src/areas/AreaFinder.js", "extends": "ProvisionGenericFinder",
-    "description": "This class allows making GET requests to the area resource in the OpenGate North API.",
-    "members": [{
-      "kind": "method", "name": "findByOrganizationAndIdentifier",
-      "description": "Downloads a specific area by its organization and identifier…",
-      "params": [{"name": "organization", "type": "string", "optional": false, "description": "area organization ."}],
-      "returns": {"type": "Promise", "description": ""}
-    }]
-  }]
+    "library": "opengate-js",
+    "version": "14.15.0",
+    "classCount": 217,
+    "memberCount": 1471,
+    "classes": [
+        {
+            "name": "AreaFinder",
+            "file": "src/areas/AreaFinder.js",
+            "extends": "ProvisionGenericFinder",
+            "description": "This class allows making GET requests to the area resource in the OpenGate North API.",
+            "members": [
+                {
+                    "kind": "method",
+                    "name": "findByOrganizationAndIdentifier",
+                    "description": "Downloads a specific area by its organization and identifier…",
+                    "params": [{ "name": "organization", "type": "string", "optional": false, "description": "area organization ." }],
+                    "returns": { "type": "Promise", "description": "" }
+                }
+            ]
+        }
+    ]
 }
 ```
 

@@ -5,9 +5,9 @@ export default class ByMonth extends ByGeneric {
      * Constructor
      * @param {!BaseOperationBuilder} parent - this is a operationBaseBuilder.
      * @param {!Date} date - Date when operation will be executed
-     * @param {string} periodicityName - Name associated to periodicity	
-     * @param {!array} months - Months on will be execute the operation	
-     * @param {!number or Date} end - When periodicity ends. By repetitions or by date		
+     * @param {string} periodicityName - Name associated to periodicity
+     * @param {!array} months - Months on will be execute the operation
+     * @param {!number or Date} end - When periodicity ends. By repetitions or by date
      */
     constructor(parent, date, periodicityName, months, end, description) {
         super(parent, date, periodicityName, end, description);
@@ -27,17 +27,17 @@ export default class ByMonth extends ByGeneric {
 
     /**
      * At this day will be executed the operation
-     * @param {!number} day 
+     * @param {!number} day
      * @throws {Error} throw error when day is not typeof number
      * @throws {Error} throw error when day is > 31 and < 1
      * @return {BaseOperationBuilder}
      */
     day(day) {
-        if (typeof day !== "number") {
-            throw new Error("Parameter day must be typeof number");
+        if (typeof day !== 'number') {
+            throw new Error('Parameter day must be typeof number');
         }
         if (day > 31 || day < 1) {
-            throw new Error("Parameter day must be greater than 1 and less than 31");
+            throw new Error('Parameter day must be greater than 1 and less than 31');
         }
         this._day = day;
         return this._build();

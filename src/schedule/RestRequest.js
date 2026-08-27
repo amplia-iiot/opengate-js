@@ -1,20 +1,19 @@
 'use strict';
 
 import BaseProvision from '../provision/BaseProvision';
-import checkType from '../util/formats/check_types'
+import checkType from '../util/formats/check_types';
 import parameterError from '../util/parameterError';
 
 /**
  * This is a base object that represents a REST request to run on a schedule.
  */
 export default class RestRequest extends BaseProvision {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, "/organization", undefined, ["identifier", "organization", "schedule", "restRequest", "response"], 'scheduler');
+        super(ogapi, '/organization', undefined, ['identifier', 'organization', 'schedule', 'restRequest', 'response'], 'scheduler');
         this._ogapi = ogapi;
     }
 
@@ -38,12 +37,12 @@ export default class RestRequest extends BaseProvision {
 
     /**
      * Set the organization attribute
-     * @param {string} organization 
+     * @param {string} organization
      * @return {RestRequest}
      */
     withOrganization(organization) {
         if (typeof organization !== 'string' || organization.length > 50)
-            throw parameterError("OGAPI_STRING_PARAMETER_MAX_LENGTH_50", { parameter: 'organization' });
+            throw parameterError('OGAPI_STRING_PARAMETER_MAX_LENGTH_50', { parameter: 'organization' });
         this._organization = organization;
         return this;
     }
@@ -59,7 +58,7 @@ export default class RestRequest extends BaseProvision {
         checkType._checkString(timezone, 'timezone');
 
         if (!this._schedule) {
-            this._schedule = {}
+            this._schedule = {};
         }
 
         this._schedule = {
@@ -80,7 +79,7 @@ export default class RestRequest extends BaseProvision {
         checkType._checkNumber(interval, 'interval');
 
         if (!this._schedule) {
-            this._schedule = {}
+            this._schedule = {};
         }
 
         this._schedule.interval = {
@@ -99,7 +98,7 @@ export default class RestRequest extends BaseProvision {
         checkType._checkBoolean(executeNow, 'executeNow');
 
         if (!this._schedule) {
-            this._schedule = {}
+            this._schedule = {};
         }
 
         this._schedule.executeNow = executeNow;
@@ -109,14 +108,14 @@ export default class RestRequest extends BaseProvision {
 
     /**
      * Sets the from attribute
-     * @param {string} from 
+     * @param {string} from
      * @returns {RestRequest}
      */
     withScheduleFrom(from) {
         checkType._checkISODateTime(from, 'from');
 
         if (!this._schedule) {
-            this._schedule = {}
+            this._schedule = {};
         }
 
         this._schedule.from = from;
@@ -126,21 +125,20 @@ export default class RestRequest extends BaseProvision {
 
     /**
      * Sets the to attribute
-     * @param {string} to 
+     * @param {string} to
      * @returns {RestRequest}
      */
     withScheduleTo(to) {
         checkType._checkISODateTime(to, 'to');
 
         if (!this._schedule) {
-            this._schedule = {}
+            this._schedule = {};
         }
 
         this._schedule.to = to;
 
         return this;
     }
-
 
     /**
      * Sets the url for restRequest
@@ -151,7 +149,7 @@ export default class RestRequest extends BaseProvision {
         checkType._checkURL(restRequestUrl, 'restRequestUrl');
 
         if (!this._restRequest) {
-            this._restRequest = {}
+            this._restRequest = {};
         }
 
         this._restRequest.url = restRequestUrl;
@@ -167,7 +165,7 @@ export default class RestRequest extends BaseProvision {
         checkType._checkString(restRequestMethod, 'restRequestMethod');
 
         if (!this._restRequest) {
-            this._restRequest = {}
+            this._restRequest = {};
         }
 
         this._restRequest.method = restRequestMethod;
@@ -183,7 +181,7 @@ export default class RestRequest extends BaseProvision {
         checkType._checkObject(restRequestHeaders, 'restRequestHeaders');
 
         if (!this._restRequest) {
-            this._restRequest = {}
+            this._restRequest = {};
         }
 
         this._restRequest.header = restRequestHeaders;
@@ -199,7 +197,7 @@ export default class RestRequest extends BaseProvision {
         checkType._checkObject(restRequestBody, 'restRequestBody');
 
         if (!this._restRequest) {
-            this._restRequest = {}
+            this._restRequest = {};
         }
 
         this._restRequest.body = restRequestBody;
@@ -215,7 +213,7 @@ export default class RestRequest extends BaseProvision {
         checkType._checkNumber(syncResponseTimeout, 'syncResponseTimeout');
 
         if (!this._response) {
-            this._response = {}
+            this._response = {};
         } else {
             if (this._response.async) {
                 throw parameterError('sync cannot be setted with async', { parameter: 'sync' });
@@ -237,7 +235,7 @@ export default class RestRequest extends BaseProvision {
         checkType._checkNumber(asyncResponseMaxTimeToWaitCallback, 'asyncResponseMaxTimeToWaitCallback');
 
         if (!this._response) {
-            this._response = {}
+            this._response = {};
         } else {
             if (this._response.sync) {
                 throw parameterError('async cannot be setted with sync', { parameter: 'async' });
@@ -273,6 +271,6 @@ export default class RestRequest extends BaseProvision {
     }
 
     update() {
-        throw new Error('Update is not allowed!!!')
+        throw new Error('Update is not allowed!!!');
     }
 }

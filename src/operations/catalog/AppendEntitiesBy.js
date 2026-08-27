@@ -1,100 +1,113 @@
 'use strict';
 
 /**
-* Utility used by BaseOperationBuilder to append target entities in three different ways: by filter, by tags, or
-* by entity list.
-*/
+ * Utility used by BaseOperationBuilder to append target entities in three different ways: by filter, by tags, or
+ * by entity list.
+ */
 export default class AppendEntitiesBy {
-	/**
-	* @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
-	* @param {!BaseOperationBuilder} parent - this is a instance of BaseOperationBuilder
-	*/	
-	constructor(ogapi,parent){
-		this._ogapi = ogapi;
-		this._parent = parent;
-	}
+    /**
+     * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
+     * @param {!BaseOperationBuilder} parent - this is a instance of BaseOperationBuilder
+     */
+    constructor(ogapi, parent) {
+        this._ogapi = ogapi;
+        this._parent = parent;
+    }
 
-	/**
-	* Append filter to operation target
-	* @param {!FilterBuilder} filter 
-	* @param {!string} resourceType 
-	* @return {BaseOperationBuilder}
-	*/
-	filter(filter,resourceType){
-		let resourceTypeFound = this._parent._config.applicableTo.find(function(type){return type==this;},resourceType);
-		if (typeof resourceTypeFound === "undefined"){
-			throw new Error("Entity type <'"+resourceType+"'> not allowed to operation <'"+
-				this._parent._config.name+"'>. Entity types allowed <'"+
-				JSON.stringify(this._parent._config.applicableTo)+"'>");
-		}
-		this._parent._resourceTypeWhenFilter = resourceType;
-		if (typeof this._parent._build.target !== "undefined") 
-			console.warn("An Operation only allow one kind of way to append entities. "+
-			"Filter | Tag | List of entities. Now Filter will remove the last way appended .");			
-		if (typeof filter._filterTemplate !== "undefined"){
-			this._parent._build.target = {
-				filter:filter._filterTemplate.filter
-			};
-		}else{
-			this._parent._build.target = {
-				filter:filter
-			};
-		}
-		return this._parent;
-	}
-	
-	/**
-	* Append entity list to operation target
-	* @param {!EntityListBuilder} entities 
-	* @return {BaseOperationBuilder}
-	*/
-	list(entities){
-		if (typeof entities === "undefined" || entities.constructor !== Array){
-			throw new Error("Parameter entities must be typeof Array");
-		}
-		if (typeof this._parent._build.target !== "undefined") 
-			console.warn("An Operation only allow one kind of way to append entities. "+
-			"Filter | Tag | List of entities. Now  List of entities will remove the last way appended .");
-		
+    /**
+     * Append filter to operation target
+     * @param {!FilterBuilder} filter
+     * @param {!string} resourceType
+     * @return {BaseOperationBuilder}
+     */
+    filter(filter, resourceType) {
+        let resourceTypeFound = this._parent._config.applicableTo.find(function (type) {
+            return type == this;
+        }, resourceType);
+        if (typeof resourceTypeFound === 'undefined') {
+            throw new Error(
+                "Entity type <'" +
+                    resourceType +
+                    "'> not allowed to operation <'" +
+                    this._parent._config.name +
+                    "'>. Entity types allowed <'" +
+                    JSON.stringify(this._parent._config.applicableTo) +
+                    "'>"
+            );
+        }
+        this._parent._resourceTypeWhenFilter = resourceType;
+        if (typeof this._parent._build.target !== 'undefined')
+            console.warn(
+                'An Operation only allow one kind of way to append entities. ' +
+                    'Filter | Tag | List of entities. Now Filter will remove the last way appended .'
+            );
+        if (typeof filter._filterTemplate !== 'undefined') {
+            this._parent._build.target = {
+                filter: filter._filterTemplate.filter
+            };
+        } else {
+            this._parent._build.target = {
+                filter: filter
+            };
+        }
+        return this._parent;
+    }
 
-		this._parent._build.target = {
-			append:{}
-		};
+    /**
+     * Append entity list to operation target
+     * @param {!EntityListBuilder} entities
+     * @return {BaseOperationBuilder}
+     */
+    list(entities) {
+        if (typeof entities === 'undefined' || entities.constructor !== Array) {
+            throw new Error('Parameter entities must be typeof Array');
+        }
+        if (typeof this._parent._build.target !== 'undefined')
+            console.warn(
+                'An Operation only allow one kind of way to append entities. ' +
+                    'Filter | Tag | List of entities. Now  List of entities will remove the last way appended .'
+            );
 
-		entities.forEach((entity) => {
-			if (entity.constructor === String) {
-				if (!this._parent._build.target.append.entities) {
-					this._parent._build.target.append.entities = [];
-				}
-				this._parent._build.target.append.entities.push(entity);
-			} else {
-				if (entity.id && entity.parameters) {
-					if (!this._parent._build.target.append.entitiesWithParameters) {
-						this._parent._build.target.append.entitiesWithParameters = [];
-					}
-					this._parent._build.target.append.entitiesWithParameters.push(entity);
-				} else {
-					throw new Error("Entity parameters must include id and parameters: " + JSON.stringify(entity));
-				}
-			}
-		})
-		return this._parent;
-	}
-	
-	/**
-	* Set tag to operation target
-	* @param {!string} tag 
-	* @return {BaseOperationBuilder}
-	*/
-	tag(tag){
-		if (typeof this._parent._build.target !== "undefined") 
-			console.warn("An Operation only allow one kind of way to append entities. "+
-			"Filter | Tag | List of entities. Now Tag will remove the last way appended .");
-		this._parent._build.target = {
-			append:{
-				tags:[tag]
-			}
-		};
-		return this._parent;
-	}
+        this._parent._build.target = {
+            append: {}
+        };
+
+        entities.forEach(entity => {
+            if (entity.constructor === String) {
+                if (!this._parent._build.target.append.entities) {
+                    this._parent._build.target.append.entities = [];
+                }
+                this._parent._build.target.append.entities.push(entity);
+            } else {
+                if (entity.id && entity.parameters) {
+                    if (!this._parent._build.target.append.entitiesWithParameters) {
+                        this._parent._build.target.append.entitiesWithParameters = [];
+                    }
+                    this._parent._build.target.append.entitiesWithParameters.push(entity);
+                } else {
+                    throw new Error('Entity parameters must include id and parameters: ' + JSON.stringify(entity));
+                }
+            }
+        });
+        return this._parent;
+    }
+
+    /**
+     * Set tag to operation target
+     * @param {!string} tag
+     * @return {BaseOperationBuilder}
+     */
+    tag(tag) {
+        if (typeof this._parent._build.target !== 'undefined')
+            console.warn(
+                'An Operation only allow one kind of way to append entities. ' +
+                    'Filter | Tag | List of entities. Now Tag will remove the last way appended .'
+            );
+        this._parent._build.target = {
+            append: {
+                tags: [tag]
+            }
+        };
+        return this._parent;
+    }
 }

@@ -7,7 +7,6 @@ import BulkBuilder from './BulkBuilder';
  * OpenGate REST API.
  */
 export default class JsonBulkBuilder extends BulkBuilder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - required field. This is ogapi instance
@@ -17,7 +16,12 @@ export default class JsonBulkBuilder extends BulkBuilder {
      * @param {boolean} [async] - forces async execution for the bulk operation
      */
     constructor(ogapi, organization, resource, timeout, async) {
-        super(ogapi, 'provision/organizations/' + organization + '/bulk/' + (async ? 'async' : resource.toLowerCase()), 'application/json', timeout);
+        super(
+            ogapi,
+            'provision/organizations/' + organization + '/bulk/' + (async ? 'async' : resource.toLowerCase()),
+            'application/json',
+            timeout
+        );
 
         if (async) {
             this._setUrlParameters({
@@ -25,5 +29,4 @@ export default class JsonBulkBuilder extends BulkBuilder {
             });
         }
     }
-
 }

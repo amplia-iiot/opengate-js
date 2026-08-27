@@ -18,7 +18,7 @@ export default class AdministrativeStateSearchBuilder extends SearchBuilder {
     }
 
     /**
-     * Build a instance of StaticSearch 
+     * Build a instance of StaticSearch
      *
      * @example
      *   ogapi.administrativeStateSearchBuilder().filter({and:[]}).build()
@@ -26,13 +26,15 @@ export default class AdministrativeStateSearchBuilder extends SearchBuilder {
      * @return {StaticSearch}  
      */
     build() {
-        return new StaticSearch(this._parent,
+        return new StaticSearch(
+            this._parent,
             this._buildUrl(),
             this._buildFilter(),
             this._builderParams.timeout,
-            'administrativeState', this.customFilters);
+            'administrativeState',
+            this.customFilters
+        );
     }
-
 
     /**
      * Sets id to search
@@ -41,7 +43,7 @@ export default class AdministrativeStateSearchBuilder extends SearchBuilder {
      *  ogapi.administrativeStateSearchBuilder().withId('myId').build()
      * @param {!string} administrativeStateId - specific type id
      * @throws {Error} throw error when hardwareId is not typeof string
-     * @return {AdministrativeStateSearchBuilder} 
+     * @return {AdministrativeStateSearchBuilder}
      */
     withId(administrativeStateId) {
         if (typeof administrativeStateId !== 'string') {
@@ -61,7 +63,7 @@ export default class AdministrativeStateSearchBuilder extends SearchBuilder {
      *  ogapi.administrativeStateSearchBuilder().withEntityType('myEntityType').build()
      * @param {!string} entityType - model name
      * @throws {Error} throw error when entityType is not typeof string
-     * @return {AdministrativeStateSearchBuilder} 
+     * @return {AdministrativeStateSearchBuilder}
      */
     withEntityType(entityType) {
         if (typeof entityType !== 'string') {
@@ -78,5 +80,4 @@ export default class AdministrativeStateSearchBuilder extends SearchBuilder {
 
         return this;
     }
-
 }

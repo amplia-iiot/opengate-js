@@ -1,12 +1,9 @@
 'use strict';
 
-
-
 /**
  * This is a base object that allows the user to create a Hardware object.
  */
 export default class Hardware {
-
     constructor() {
         this._serialnumber = undefined;
         this._manufacturerName = undefined;
@@ -18,7 +15,7 @@ export default class Hardware {
 
     /**
      * Set the serialnumber attribute
-     * @param {string} serialnumber 
+     * @param {string} serialnumber
      * @return {Hardware}
      */
     withSerialnumber(serialnumber) {
@@ -30,7 +27,7 @@ export default class Hardware {
 
     /**
      * Set the manufacturerName attribute
-     * @param {string} manufacturerName 
+     * @param {string} manufacturerName
      * @return {Hardware}
      */
     withManufacturerName(manufacturerName) {
@@ -42,7 +39,7 @@ export default class Hardware {
 
     /**
      * Set the manufacturerOui attribute
-     * @param {string} manufacturerOui 
+     * @param {string} manufacturerOui
      * @return {Hardware}
      */
     withManufacturerOui(manufacturerOui) {
@@ -93,11 +90,11 @@ export default class Hardware {
 
     _isValidDate(str) {
         //YYYY-MM-DDThh:mm:ssTZD
-        if (str === "" || str === null) {
+        if (str === '' || str === null) {
             return false;
         }
 
-        // m[1] is year 'YYYY' * m[2] is month 'MM' * m[3] is day 'DD'                  
+        // m[1] is year 'YYYY' * m[2] is month 'MM' * m[3] is day 'DD'
 
         var m = str.match(/(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})\+(\d{2}):(\d{2})/);
 
@@ -111,44 +108,39 @@ export default class Hardware {
             return false;
         }
 
-        var ret = true; //RETURN VALUE                      
+        var ret = true; //RETURN VALUE
         var thisYear = new Date().getFullYear(); //YEAR NOW
         var minYear = 1999; //MIN YEAR
 
         // YEAR CHECK
-        if ((m[1].length < 4) || m[1] < minYear || m[1] > thisYear) {
+        if (m[1].length < 4 || m[1] < minYear || m[1] > thisYear) {
             ret = false;
         }
-        // MONTH CHECK          
-        if ((m[2].length < 2) || m[2] < 1 || m[2] > 12) {
+        // MONTH CHECK
+        if (m[2].length < 2 || m[2] < 1 || m[2] > 12) {
             ret = false;
         }
         // DAY CHECK
-        if ((m[3].length < 2) || m[3] < 1 || m[3] > 31) {
+        if (m[3].length < 2 || m[3] < 1 || m[3] > 31) {
             ret = false;
         }
 
         return ret;
     }
 
-
     composeElement() {
-
         var hardware = {
-            'serialnumber': this._serialnumber,
-            'manufacturer': {
-                'name': this._manufacturerName,
-                'oui': this._manufacturerOui || ""
+            serialnumber: this._serialnumber,
+            manufacturer: {
+                name: this._manufacturerName,
+                oui: this._manufacturerOui || ''
             },
-            'model': {
-                'name': this._modelName || "",
-                'version': this._modelVersion || ""
+            model: {
+                name: this._modelName || '',
+                version: this._modelVersion || ''
             },
-            'clockDate': this._clockDate
+            clockDate: this._clockDate
         };
         return hardware;
     }
-
-
-
 }

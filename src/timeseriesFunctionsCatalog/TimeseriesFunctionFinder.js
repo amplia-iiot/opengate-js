@@ -7,21 +7,20 @@ import GenericFinder from '../GenericFinder';
  * This class allows making GET requests to the TimeseriesFunction resource in the OpenGate North API.
  */
 export default class TimeseriesFunctionFinder extends GenericFinder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, 'timeseries/provision/organizations', "TimeseriesFunctions", 'Timeseries function not found');
+        super(ogapi, 'timeseries/provision/organizations', 'TimeseriesFunctions', 'Timeseries function not found');
     }
 
     /**
      * Performs a get that returns a list of timeseries function
      * @test
      *   ogapi.newTimeseriesFunctionFinder().findByOrganization('xxx-xx-xxx-xxx').then().catch();
-     * @param {string} organization - organization 
-     * @return {Promise} 
+     * @param {string} organization - organization
+     * @return {Promise}
      */
     findByOrganization(organization) {
         let _this = this;
@@ -38,10 +37,10 @@ export default class TimeseriesFunctionFinder extends GenericFinder {
      * Performs a get that returns a timeseries function metadata
      * @test
      *   ogapi.newTimeseriesFunctionFinder().findByOrganizationAndName('xxx-xx-xxx-xxx', 'xxxxx-xxxx-xxxx').then().catch();
-     * @param {string} organization - organization 
+     * @param {string} organization - organization
      * @param {string} name - Timeseries function Configuration name
      * @param {boolean} script - If true script content will be downloaded
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByOrganizationAndName(organization, name, script) {
         let _this = this;
@@ -56,7 +55,8 @@ export default class TimeseriesFunctionFinder extends GenericFinder {
     }
 
     _composeUrl() {
-        return this._baseUrl + "/" + this._organization + "/catalog" + (this._name ? '/' + this._name : '') + (this._script ? '/script' : '');
+        return (
+            this._baseUrl + '/' + this._organization + '/catalog' + (this._name ? '/' + this._name : '') + (this._script ? '/script' : '')
+        );
     }
-
 }

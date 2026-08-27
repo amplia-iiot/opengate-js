@@ -9,7 +9,6 @@ import HttpStatus from 'http-status-codes';
  * This class allows making GET requests to the channel resource in the OpenGate North API.
  */
 export default class ChannelFinder extends ProvisionGenericFinder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
@@ -24,7 +23,7 @@ export default class ChannelFinder extends ProvisionGenericFinder {
      *   ogapi.newChannelFinder().findByOrganizationAndName('orgname', xxx-xx-xxx-xxx').then().catch();
      * @param {string} organization - channel organization .
      * @param {string} name - channel name.
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByOrganizationAndName(organization, name) {
         this._organization = organization;
@@ -37,16 +36,16 @@ export default class ChannelFinder extends ProvisionGenericFinder {
      * @private
      */
     _composeUrl() {
-        return this._baseUrl + "/" + this._organization + "/channels/" + this._name;
+        return this._baseUrl + '/' + this._organization + '/channels/' + this._name;
     }
 
     /**
      * Performs a GET request that returns the channels related to the given domain and workgroup.
      * @test
      *   ogapi.newChannelFinder().findByDomainAndWorkgroup('xxx-xx-xxx-xxx', 'xxxxx-xxxx-xxxx').then().catch();
-     * @param {string} domain - domain 
+     * @param {string} domain - domain
      * @param {string} workgroup - workgroup.
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByDomainAndWorkgroup(domain, workgroup) {
         this._domain = domain;
@@ -57,31 +56,33 @@ export default class ChannelFinder extends ProvisionGenericFinder {
         let defered = q.defer();
         let promise = defered.promise;
 
-        this._executeWorkgroupRelation().then(function (request) {
-            if (request.statusCode === 204) {
-                defered.reject({
-                    data: _error_not_found,
-                    statusCode: HttpStatus.NO_CONTENT
-                });
-            } else {
-                let globalData = request.data;
-                let finalData = [];
+        this._executeWorkgroupRelation()
+            .then(function (request) {
+                if (request.statusCode === 204) {
+                    defered.reject({
+                        data: _error_not_found,
+                        statusCode: HttpStatus.NO_CONTENT
+                    });
+                } else {
+                    let globalData = request.data;
+                    let finalData = [];
 
-                for (let idx in globalData.channels) {
-                    finalData.push({
-                        "organization": globalData.channels[idx].organization,
-                        "name": globalData.channels[idx].channel
+                    for (let idx in globalData.channels) {
+                        finalData.push({
+                            organization: globalData.channels[idx].organization,
+                            name: globalData.channels[idx].channel
+                        });
+                    }
+
+                    defered.resolve({
+                        data: finalData,
+                        statusCode: request.statusCode
                     });
                 }
-
-                defered.resolve({
-                    data: finalData,
-                    statusCode: request.statusCode
-                });
-            }
-        }).catch(function (error) {
-            defered.reject(error);
-        });
+            })
+            .catch(function (error) {
+                defered.reject(error);
+            });
 
         return promise;
     }
@@ -90,10 +91,10 @@ export default class ChannelFinder extends ProvisionGenericFinder {
      * Performs a GET request that returns the channels related to the given domain, workgroup, and organization.
      * @test
      *   ogapi.newChannelFinder().findByDomainAndWorkgroupAndOrganization('xxx-xx-xxx-xxx', 'xxxxx-xxxx-xxxx', 'asdfasdfasdf').then().catch();
-     * @param {string} domain - domain 
+     * @param {string} domain - domain
      * @param {string} workgroup - workgroup.
      * @param {string} organization - organization.
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByDomainAndWorkgroupAndOrganization(domain, workgroup, organization) {
         var _this = this;
@@ -106,41 +107,43 @@ export default class ChannelFinder extends ProvisionGenericFinder {
         let defered = q.defer();
         let promise = defered.promise;
 
-        _this._executeWorkgroupRelation().then(function (request) {
-
-            if (request.statusCode === 204) {
-                defered.reject({
-                    data: _error_not_found,
-                    statusCode: HttpStatus.NOT_FOUND
-                });
-            } else {
-                let globalData = request.data;
-                let finalData = [];
-
-                for (let idx in globalData.channels) {
-                    if (_this._organization === globalData.channels[idx].organization) {
-                        finalData.push({
-                            "organization": globalData.channels[idx].organization,
-                            "name": globalData.channels[idx].channel
-                        });
-                    }
-                }
-
-                if (finalData.length > 0) {
-                    defered.resolve({
-                        data: finalData,
-                        statusCode: request.statusCode
-                    });
-                } else {
+        _this
+            ._executeWorkgroupRelation()
+            .then(function (request) {
+                if (request.statusCode === 204) {
                     defered.reject({
                         data: _error_not_found,
                         statusCode: HttpStatus.NOT_FOUND
                     });
+                } else {
+                    let globalData = request.data;
+                    let finalData = [];
+
+                    for (let idx in globalData.channels) {
+                        if (_this._organization === globalData.channels[idx].organization) {
+                            finalData.push({
+                                organization: globalData.channels[idx].organization,
+                                name: globalData.channels[idx].channel
+                            });
+                        }
+                    }
+
+                    if (finalData.length > 0) {
+                        defered.resolve({
+                            data: finalData,
+                            statusCode: request.statusCode
+                        });
+                    } else {
+                        defered.reject({
+                            data: _error_not_found,
+                            statusCode: HttpStatus.NOT_FOUND
+                        });
+                    }
                 }
-            }
-        }).catch(function (error) {
-            defered.reject(error);
-        });
+            })
+            .catch(function (error) {
+                defered.reject(error);
+            });
 
         return promise;
     }
@@ -150,15 +153,15 @@ export default class ChannelFinder extends ProvisionGenericFinder {
      * @private
      */
     _executeWorkgroupRelation() {
-
-        let workgroupsRelationsUrl = "provision/domains/" + this._domain + "/workgroups/" + this._workgroup + "/relations";
+        let workgroupsRelationsUrl = 'provision/domains/' + this._domain + '/workgroups/' + this._workgroup + '/relations';
 
         let defered = q.defer();
         let promise = defered.promise;
 
         let _error_not_found = this._error_not_found;
-        this._api.get(workgroupsRelationsUrl, undefined, this._getExtraHeaders(), this._getUrlParameters())
-            .then((req) => {
+        this._api
+            .get(workgroupsRelationsUrl, undefined, this._getExtraHeaders(), this._getUrlParameters())
+            .then(req => {
                 if (req.statusCode === 204) {
                     defered.reject({
                         data: _error_not_found,
@@ -171,10 +174,9 @@ export default class ChannelFinder extends ProvisionGenericFinder {
                     });
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;
     }
-
 }

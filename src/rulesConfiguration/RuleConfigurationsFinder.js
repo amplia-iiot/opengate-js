@@ -7,23 +7,22 @@ import GenericFinder from '../GenericFinder';
  * This class allows you to make GET requests to the RuleConfigurations resource in the OpenGate North API.
  */
 export default class RuleConfigurationsFinder extends GenericFinder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, 'rules/provision/organizations', "rules", 'Rule configurations not found');
+        super(ogapi, 'rules/provision/organizations', 'rules', 'Rule configurations not found');
     }
 
     /**
      * Performs a get that returns organizations related
      * @test
      *   ogapi.newRuleConfigurationsFinder().findByOrganizationAndChannel('xxx-xx-xxx-xxx', 'xxxxx-xxxx-xxxx').then().catch();
-     * @param {string} organization - organization 
+     * @param {string} organization - organization
      * @param {string} channel - channel.
      * @param {string} name - Rule Configuration name
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByOrganizationAndChannelAndName(organization, channel, name) {
         let _this = this;
@@ -67,7 +66,6 @@ export default class RuleConfigurationsFinder extends GenericFinder {
     }
 
     _composeUrl() {
-        return this._baseUrl + "/" + this._organization + "/channels/" + this._channel + "/" + this._name;
+        return this._baseUrl + '/' + this._organization + '/channels/' + this._channel + '/' + this._name;
     }
-
 }

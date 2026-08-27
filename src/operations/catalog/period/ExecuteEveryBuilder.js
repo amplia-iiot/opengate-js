@@ -14,7 +14,7 @@ export default class ExecuteEveryBuilder {
      * Constructor
      * @param {!BaseOperationBuilder} parent - this is a operationBaseBuilder.
      * @param {!Date} date - Date when operation will be executed
-     * @param {string} periodicityName - Name associated to periodicity	
+     * @param {string} periodicityName - Name associated to periodicity
      */
     constructor(parent, date, periodicityName, end, description) {
         this.year = new ByYear(parent, date, periodicityName, end, description);
@@ -44,7 +44,7 @@ export default class ExecuteEveryBuilder {
      */
     month(months) {
         var _task = this._parent._task;
-        if (typeof months === "undefined" || months.constructor !== Array) {
+        if (typeof months === 'undefined' || months.constructor !== Array) {
             var error = true;
             if (_task) {
                 var pattern = _task.schedule.repeating.pattern;
@@ -56,21 +56,28 @@ export default class ExecuteEveryBuilder {
                     }
                 }
             }
-            if (error)
-                throw new Error("Parameter months must be typeof Array");
+            if (error) throw new Error('Parameter months must be typeof Array');
         }
         if (months.length === 0) {
-            throw new Error("Parameter months must have at least one month");
+            throw new Error('Parameter months must have at least one month');
         }
         let not_found = [];
         for (var i = 0; i < months.length; i++) {
-            let found = MONTHS_ENUM.find(function (month) { return month == this; }, months[i]);
-            if (typeof found === "undefined") {
+            let found = MONTHS_ENUM.find(function (month) {
+                return month == this;
+            }, months[i]);
+            if (typeof found === 'undefined') {
                 not_found.push(found);
             }
         }
         if (not_found.length !== 0) {
-            throw new Error("Any month into parameter months is not allowed. Parameter value <'" + JSON.stringify(not_found) + "'>, Months allowed <'" + JSON.stringify(MONTHS_ENUM) + "'>");
+            throw new Error(
+                "Any month into parameter months is not allowed. Parameter value <'" +
+                    JSON.stringify(not_found) +
+                    "'>, Months allowed <'" +
+                    JSON.stringify(MONTHS_ENUM) +
+                    "'>"
+            );
         }
         return new ByMonth(this._parent, this._date, this._periodicityName, months, this._end, this._description);
     }

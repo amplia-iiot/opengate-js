@@ -8,15 +8,14 @@ import Channels from '../channels/Channels';
  * This is a base object that contains all you can do about workgroups.
  */
 export default class WorkgroupRelations extends BaseProvision {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, "/domains", undefined, ["workgroup", "channels"]);
+        super(ogapi, '/domains', undefined, ['workgroup', 'channels']);
         this._ogapi = ogapi;
-        this._action = "CREATE";
+        this._action = 'CREATE';
     }
 
     /**
@@ -25,8 +24,7 @@ export default class WorkgroupRelations extends BaseProvision {
      * @return {WorkgroupRelations}
      */
     withWorkgroup(workgroup) {
-        if (workgroup.constructor.prototype != Workgroups.prototype)
-            throw new Error('Parameter workgroup must be a workgroup');
+        if (workgroup.constructor.prototype != Workgroups.prototype) throw new Error('Parameter workgroup must be a workgroup');
 
         this._workgroup = workgroup;
         return this;
@@ -38,15 +36,13 @@ export default class WorkgroupRelations extends BaseProvision {
      * @return {WorkgroupRelations}
      */
     withChannel(channel) {
-        if (channel.constructor.prototype != Channels.prototype)
-            throw new Error('Parameter channel must be a channel');
+        if (channel.constructor.prototype != Channels.prototype) throw new Error('Parameter channel must be a channel');
 
-        if (!this._channels)
-            this._channels = [];
+        if (!this._channels) this._channels = [];
 
         this._channels.push({
-            'organization': channel._organization,
-            'channel': channel._name
+            organization: channel._organization,
+            channel: channel._name
         });
 
         return this;
@@ -58,8 +54,8 @@ export default class WorkgroupRelations extends BaseProvision {
         this._resource = 'provision/domains/' + this._workgroup._domainName + '/workgroups/' + this._workgroup._name + '/relations';
 
         var workgroup = {
-            "workgroupRelation": {
-                "channels": this._channels ? this._channels : undefined
+            workgroupRelation: {
+                channels: this._channels ? this._channels : undefined
             }
         };
 
@@ -92,19 +88,18 @@ export default class WorkgroupRelations extends BaseProvision {
             return this._doNorthPost(petitionUrl, relations);
         } else {
             return this._doNorthPost(petitionUrl, {
-                "workgroupRelation": {
-                    "channels": []
+                workgroupRelation: {
+                    channels: []
                 }
             });
         }
     }
 
-    /** 
+    /**
      * Update not allowed
-     * @throws {Error} 
+     * @throws {Error}
      */
     update() {
-        throw new Error("Workgroup relation update not allowed");
+        throw new Error('Workgroup relation update not allowed');
     }
-
 }

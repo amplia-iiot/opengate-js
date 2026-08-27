@@ -18,7 +18,7 @@ export default class RuleConfigurationSeveritySearchBuilder extends SearchBuilde
     }
 
     /**
-     * Build a instance of StaticSearch 
+     * Build a instance of StaticSearch
      *
      * @example
      *   ogapi.ruleConfigurationSeveritySearchBuilder().build()
@@ -26,12 +26,13 @@ export default class RuleConfigurationSeveritySearchBuilder extends SearchBuilde
      * @return {StaticSearch}  
      */
     build() {
-        return new StaticSearch(this._parent,
+        return new StaticSearch(
+            this._parent,
             this._buildUrl(),
             null,
             this._builderParams.timeout,
-            'ruleConfigurationSeverity', this.customFilters);
+            'ruleConfigurationSeverity',
+            this.customFilters
+        );
     }
-
-
 }

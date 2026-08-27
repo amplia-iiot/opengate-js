@@ -1,56 +1,65 @@
 'use strict';
 var { When } = require('cucumber');
 
-When(/^I want to (manage|delete) the next rule configuration from organization "([^"]*)" and channel "([^"]*)":$/, function (action, organization, channel, ruleConfigurationData) {
-    var _this = this;
-    _this.error = undefined;
-    _this.responseData = undefined;
-
-    function digestResponseData (response) {
-        //console.log('digestResponseData', response);
-        _this.responseData = response;
+When(
+    /^I want to (manage|delete) the next rule configuration from organization "([^"]*)" and channel "([^"]*)":$/,
+    function (action, organization, channel, ruleConfigurationData) {
+        var _this = this;
         _this.error = undefined;
-    }
+        _this.responseData = undefined;
 
-    function digestErrorData (response) {
-        console.error("digestErrorData", response);
-        _this.error = response;
-        _this.responseData = response;
-
-    }
-
-    try {
-        var ruleConfiguration = this.ogapi.ruleConfigurationBuilder(organization, channel, JSON.parse(ruleConfigurationData));
-
-
-        if (action === 'manage') {
-            return ruleConfiguration
-                .withEnabled(false)
-                .withOpen(false)
-                .condition("datastreamCurrentValueThreshold")
-                .setParameterValue("threshold", "-100").parent()
-
-                .condition("datastreamCurrentValueThreshold")
-                .setParameterValue("datastream_name", null).parent()
-
-                .condition("datastreamCurrentValueThreshold")
-                .setParameterValue("curvalue_operator", undefined).parent()
-
-                .condition("datastreamCurrentValueThreshold")
-                .setParameterValue("prevalue_operator").parent()
-
-                .condition("datastreamCurrentValueThreshold")
-                .setDelay(99999).parent()
-                .notification("datastreamCurrentValueThreshold")
-                .setEnabled(false).setBearerRecipients("snmp", ["172.19.17.240;162"]).parent()
-                .update().then(digestResponseData).catch(digestErrorData);
-        } else if (action === 'delete') {
-            return ruleConfiguration.delete().then(digestResponseData).catch(digestErrorData);
+        function digestResponseData(response) {
+            //console.log('digestResponseData', response);
+            _this.responseData = response;
+            _this.error = undefined;
         }
-    } catch (err) {
-        console.error('ERROR: ', err)
-        _this.error = err;
-        return;
-    }
 
-});
+        function digestErrorData(response) {
+            console.error('digestErrorData', response);
+            _this.error = response;
+            _this.responseData = response;
+        }
+
+        try {
+            var ruleConfiguration = this.ogapi.ruleConfigurationBuilder(organization, channel, JSON.parse(ruleConfigurationData));
+
+            if (action === 'manage') {
+                return ruleConfiguration
+                    .withEnabled(false)
+                    .withOpen(false)
+                    .condition('datastreamCurrentValueThreshold')
+                    .setParameterValue('threshold', '-100')
+                    .parent()
+
+                    .condition('datastreamCurrentValueThreshold')
+                    .setParameterValue('datastream_name', null)
+                    .parent()
+
+                    .condition('datastreamCurrentValueThreshold')
+                    .setParameterValue('curvalue_operator', undefined)
+                    .parent()
+
+                    .condition('datastreamCurrentValueThreshold')
+                    .setParameterValue('prevalue_operator')
+                    .parent()
+
+                    .condition('datastreamCurrentValueThreshold')
+                    .setDelay(99999)
+                    .parent()
+                    .notification('datastreamCurrentValueThreshold')
+                    .setEnabled(false)
+                    .setBearerRecipients('snmp', ['172.19.17.240;162'])
+                    .parent()
+                    .update()
+                    .then(digestResponseData)
+                    .catch(digestErrorData);
+            } else if (action === 'delete') {
+                return ruleConfiguration.delete().then(digestResponseData).catch(digestErrorData);
+            }
+        } catch (err) {
+            console.error('ERROR: ', err);
+            _this.error = err;
+            return;
+        }
+    }
+);

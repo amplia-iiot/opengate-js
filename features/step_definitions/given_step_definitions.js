@@ -1,32 +1,32 @@
 // features/step_definitions/given_step_definitions.js
-var moment = require("moment");
+var moment = require('moment');
 var assert = require('chai').assert;
 var { Given } = require('cucumber');
 
-var builderNameSkeleton = "new$1ParamBuilder";
-var paramSingleNameSkeleton = "with$1";
-var paramMultipleNameSkeleton = "add$1";
+var builderNameSkeleton = 'new$1ParamBuilder';
+var paramSingleNameSkeleton = 'with$1';
+var paramMultipleNameSkeleton = 'add$1';
 
-function getParameterName (paramName) {
+function getParameterName(paramName) {
     return paramName[0].toUpperCase() + paramName.slice(1);
 }
 
-function getBuilderParam (paramName) {
-    return this.util.paramBuilderFactory[builderNameSkeleton.replace("$1", paramName)]();
+function getBuilderParam(paramName) {
+    return this.util.paramBuilderFactory[builderNameSkeleton.replace('$1', paramName)]();
 }
 
-function setSingleValueToParameter (_paramName, value) {
+function setSingleValueToParameter(_paramName, value) {
     var paramName = getParameterName(_paramName);
     var paramBuilder = getBuilderParam.call(this, paramName);
-    paramBuilder[paramSingleNameSkeleton.replace("$1", paramName)](value);
+    paramBuilder[paramSingleNameSkeleton.replace('$1', paramName)](value);
     paramBuilder.buildAndAppend();
 }
 
-function setMultipleValueToParameter (_paramName, values) {
+function setMultipleValueToParameter(_paramName, values) {
     var paramName = getParameterName(_paramName);
     var paramBuilder = getBuilderParam.call(this, paramName);
     for (var i = 0; i < values.length; i++) {
-        paramBuilder[paramMultipleNameSkeleton.replace("$1", paramName)](values[i]);
+        paramBuilder[paramMultipleNameSkeleton.replace('$1', paramName)](values[i]);
     }
     paramBuilder.buildAndAppend();
 }
@@ -51,13 +51,12 @@ Given(/^the resource by "([^"]*)"$/, function (resource, callback) {
     callback();
 });
 
-
 Given(/^parameter "([^"]*)" by "([^"]*)" not allowed$/, function (paramName, value, callback) {
     // Write code here that turns the phrase above into concrete actions
 
     var _this = this;
 
-    function MyFun () {
+    function MyFun() {
         setSingleValueToParameter.call(_this, paramName, value);
     }
     this.expect(MyFun).to.not.increase(this.util._build.parameters, 'length');
@@ -65,13 +64,11 @@ Given(/^parameter "([^"]*)" by "([^"]*)" not allowed$/, function (paramName, val
     callback();
 });
 
-
 Given(/^parameter "([^"]*)" as object by:$/, function (paramName, table, callback) {
     // Write code here that turns the phrase above into concrete actions
     setMultipleValueToParameter.call(this, paramName, table.hashes());
     callback();
 });
-
 
 Given(/^parameter "([^"]*)" by:$/, function (paramName, table, callback) {
     // Write code here that turns the phrase above into concrete actions
@@ -107,34 +104,38 @@ Given(/^the path "([^"]*)"$/, function (pathName, callback) {
 });
 
 Given(/^the operation by "([^"]*)"$/, function (builderName) {
-    // Write code here that turns the phrase above into concrete actions        
+    // Write code here that turns the phrase above into concrete actions
     var _this = this;
     try {
-        return this.ogapi.operations.builderByOperationName(builderName).then(function (builder) {
-            _this.util = builder;
-        }).catch(function (err) {
-
-        });
+        return this.ogapi.operations
+            .builderByOperationName(builderName)
+            .then(function (builder) {
+                _this.util = builder;
+            })
+            .catch(function (err) {});
     } catch (err) {
         return;
     }
 });
 
 Given(/^an update periodicity by operation's id$/, function () {
-    // Write code here that turns the phrase above into concrete actions        
+    // Write code here that turns the phrase above into concrete actions
     var _this = this;
 
     var data;
     data = _this.responseData.data;
     var jobId = data.job ? data.job.id : data.id;
     try {
-        return this.ogapi.operations.updatePeriodicityBuilder(jobId).then(function (builder) {
-            _this.util = builder;
-        }).catch(function (err) {
-            console.error('ERROR: ', err)
-        });
+        return this.ogapi.operations
+            .updatePeriodicityBuilder(jobId)
+            .then(function (builder) {
+                _this.util = builder;
+            })
+            .catch(function (err) {
+                console.error('ERROR: ', err);
+            });
     } catch (err) {
-        console.error('ERROR: ', err)
+        console.error('ERROR: ', err);
         return;
     }
 });
@@ -150,7 +151,6 @@ Given(/^append entities by "([^"]*)" as filter with "([^"]*)" as resourceType$/,
     this.util.appendEntitiesBy.filter(JSON.parse(filter), resourceType);
     callback();
 });
-
 
 Given(/^append entities by "([^"]*)" as tag$/, function (tag, callback) {
     // Write code here that turns the phrase above into concrete actions
@@ -174,7 +174,6 @@ Given(/^the job timeout by (\d+) seconds$/, function (seconds, callback) {
     this.util.withJobTimeout(seconds, 'seconds');
     callback();
 });
-
 
 Given(/^the retriesDelay by (\d+)$/, function (milliseconds, callback) {
     // Write code here that turns the phrase above into concrete actions
@@ -213,8 +212,7 @@ Given('the operationRetries by {string}', function (operationRetries, callback) 
 Given(/^the timeout by (\d+)$/, function (milliseconds, callback) {
     // Write code here that turns the phrase above into concrete actions
     milliseconds = eval(milliseconds);
-    this.util
-        .withTimeout(milliseconds);
+    this.util.withTimeout(milliseconds);
     callback();
 });
 
@@ -223,13 +221,13 @@ Given(/^the notes by "([^"]*)"$/, function (notes, callback) {
     if (eval(notes) === null) {
         notes = eval(notes);
     }
-    this.util.withNotes(notes)
+    this.util.withNotes(notes);
     callback();
 });
 
 Given(/^the callback by "([^"]*)"$/, function (url, callback) {
     // Write code here that turns the phrase above into concrete actions
-    this.util.withCallback(url)
+    this.util.withCallback(url);
     callback();
 });
 
@@ -260,38 +258,38 @@ Given(/^execute in (\d+) minutes$/, function (minutes, callback) {
 Given(/^execute each (\d+) minutes$/, function (minutes, callback) {
     // Write code here that turns the phrase above into concrete actions
     minutes = eval(minutes);
-    this.util.executeEach(new Date, "task_name").minutes(minutes);
+    this.util.executeEach(new Date(), 'task_name').minutes(minutes);
     callback();
 });
 Given(/^execute each (\d+) days/, function (days, callback) {
     // Write code here that turns the phrase above into concrete actions
     days = eval(days);
-    this.util.executeEach(new Date, "task_name").days(days);
+    this.util.executeEach(new Date(), 'task_name').days(days);
     callback();
 });
 Given(/^execute each (\d+) hours/, function (hours, callback) {
     // Write code here that turns the phrase above into concrete actions
     hours = eval(hours);
-    this.util.executeEach(new Date, "task_name").hours(hours);
+    this.util.executeEach(new Date(), 'task_name').hours(hours);
     callback();
 });
 
 Given(/^execute every day at "([^"]*)"$/, function (when, callback) {
     // Write code here that turns the phrase above into concrete actions
     var date;
-    if (when === "now") {
+    if (when === 'now') {
         date = new Date();
     } else {
         date = new Date(Date.parse(when));
     }
-    this.util.executeEvery(date, "task_name").day();
+    this.util.executeEvery(date, 'task_name').day();
     callback();
 });
 
 Given(/^update execute every day at "([^"]*)"$/, function (when, callback) {
     // Write code here that turns the phrase above into concrete actions
     var date;
-    if (when === "now") {
+    if (when === 'now') {
         date = new Date();
     } else {
         date = new Date(Date.parse(when));
@@ -304,7 +302,7 @@ Given(/^update execute every day at "([^"]*)"$/, function (when, callback) {
 Given(/^execute every week at "([^"]*)" on days:$/, function (when, table, callback) {
     // Write code here that turns the phrase above into concrete actions
     var date;
-    if (when === "now") {
+    if (when === 'now') {
         date = new Date();
     } else {
         date = new Date(Date.parse(when));
@@ -313,7 +311,7 @@ Given(/^execute every week at "([^"]*)" on days:$/, function (when, table, callb
     for (var i = 0; i < table.raw().length; i++) {
         days.push(table.raw()[i][0]);
     }
-    this.util.executeEvery(date, "task_name").week.days(days);
+    this.util.executeEvery(date, 'task_name').week.days(days);
     callback();
 });
 
@@ -334,7 +332,7 @@ Given(/^execute every week at on days:$/, function (table, callback) {
         days.push(table.raw()[i][0]);
     }
     try {
-        this.util.executeEvery("task_name").week.days(days);
+        this.util.executeEvery('task_name').week.days(days);
     } catch (error) {
         this.error = error;
     }
@@ -344,7 +342,7 @@ Given(/^execute every week at on days:$/, function (table, callback) {
 Given(/^update execute every week at "([^"]*)" on days:$/, function (when, table, callback) {
     // Write code here that turns the phrase above into concrete actions
     var date;
-    if (when === "now") {
+    if (when === 'now') {
         date = new Date();
     } else {
         date = new Date(Date.parse(when));
@@ -360,7 +358,7 @@ Given(/^update execute every week at "([^"]*)" on days:$/, function (when, table
 Given(/^execute every month at "([^"]*)" at day (\d+) on months:$/, function (when, day, table, callback) {
     // Write code here that turns the phrase above into concrete actions
     var date;
-    if (when === "now") {
+    if (when === 'now') {
         date = new Date();
     } else {
         date = new Date(Date.parse(when));
@@ -369,14 +367,14 @@ Given(/^execute every month at "([^"]*)" at day (\d+) on months:$/, function (wh
     for (var i = 0; i < table.raw().length; i++) {
         months.push(table.raw()[i][0]);
     }
-    this.util.executeEvery(date, "task_name").month(months).day(eval(day));
+    this.util.executeEvery(date, 'task_name').month(months).day(eval(day));
     callback();
 });
 
 Given(/^update execute every month at "([^"]*)" at day (\d+) on months:$/, function (when, day, table, callback) {
     // Write code here that turns the phrase above into concrete actions
     var date;
-    if (when === "now") {
+    if (when === 'now') {
         date = new Date();
     } else {
         date = new Date(Date.parse(when));
@@ -392,7 +390,7 @@ Given(/^update execute every month at "([^"]*)" at day (\d+) on months:$/, funct
 Given(/^update execute every month at "([^"]*)" on months:$/, function (when, table, callback) {
     // Write code here that turns the phrase above into concrete actions
     var date;
-    if (when === "now") {
+    if (when === 'now') {
         date = new Date();
     } else {
         date = new Date(Date.parse(when));
@@ -408,7 +406,7 @@ Given(/^update execute every month at "([^"]*)" on months:$/, function (when, ta
 Given(/^execute every month at "([^"]*)" on months:$/, function (when, table, callback) {
     // Write code here that turns the phrase above into concrete actions
     var date;
-    if (when === "now") {
+    if (when === 'now') {
         date = new Date();
     } else {
         date = new Date(Date.parse(when));
@@ -417,14 +415,14 @@ Given(/^execute every month at "([^"]*)" on months:$/, function (when, table, ca
     for (var i = 0; i < table.raw().length; i++) {
         months.push(table.raw()[i][0]);
     }
-    this.util.executeEvery(date, "task_name").month(months);
+    this.util.executeEvery(date, 'task_name').month(months);
     callback();
 });
 
 Given(/^update execute every month at "([^"]*)" at day (\d+)$/, function (when, day, callback) {
     // Write code here that turns the phrase above into concrete actions
     var date;
-    if (when === "now") {
+    if (when === 'now') {
         date = new Date();
     } else {
         date = new Date(Date.parse(when));
@@ -437,13 +435,13 @@ Given(/^update execute every month at "([^"]*)" at day (\d+)$/, function (when, 
 Given(/^execute every month at "([^"]*)" at day (\d+)$/, function (when, day, callback) {
     // Write code here that turns the phrase above into concrete actions
     var date;
-    if (when === "now") {
+    if (when === 'now') {
         date = new Date();
     } else {
         date = new Date(Date.parse(when));
     }
     try {
-        this.util.executeEvery(date, "task_name").month().day(eval(day));
+        this.util.executeEvery(date, 'task_name').month().day(eval(day));
     } catch (error) {
         this.error = error;
     }
@@ -467,7 +465,7 @@ Given(/^execute every month at day (\d+) on months:$/, function (day, table, cal
         months.push(table.raw()[i][0]);
     }
     try {
-        this.util.executeEvery("task_name").month(months).day(eval(day));
+        this.util.executeEvery('task_name').month(months).day(eval(day));
     } catch (error) {
         this.error = error;
     }
@@ -491,7 +489,7 @@ Given(/^execute every month on months:$/, function (table, callback) {
         months.push(table.raw()[i][0]);
     }
     try {
-        this.util.executeEvery("task_name").month(months);
+        this.util.executeEvery('task_name').month(months);
     } catch (error) {
         this.error = error;
     }
@@ -507,7 +505,7 @@ Given(/^update execute every month at day (\d+)$/, function (day, callback) {
 Given(/^execute every month at day (\d+)$/, function (day, callback) {
     // Write code here that turns the phrase above into concrete actions
     try {
-        this.util.executeEvery("task_name").month().day(eval(day));
+        this.util.executeEvery('task_name').month().day(eval(day));
     } catch (error) {
         this.error = error;
     }
@@ -517,20 +515,20 @@ Given(/^execute every month at day (\d+)$/, function (day, callback) {
 Given(/^execute every year at "([^"]*)" at day (\d+) on month "([^"]*)"$/, function (when, day, month, callback) {
     // Write code here that turns the phrase above into concrete actions
     var date;
-    if (when === "now") {
+    if (when === 'now') {
         date = new Date();
     } else {
         date = new Date(Date.parse(when));
     }
 
-    this.util.executeEvery(date, "task_name").year.month(month).day(eval(day));
+    this.util.executeEvery(date, 'task_name').year.month(month).day(eval(day));
     callback();
 });
 
 Given(/^update execute every year at "([^"]*)" at day (\d+) on month "([^"]*)"$/, function (when, day, month, callback) {
     // Write code here that turns the phrase above into concrete actions
     var date;
-    if (when === "now") {
+    if (when === 'now') {
         date = new Date();
     } else {
         date = new Date(Date.parse(when));
@@ -543,7 +541,7 @@ Given(/^update execute every year at "([^"]*)" at day (\d+) on month "([^"]*)"$/
 Given(/^update execute every year at "([^"]*)" on month "([^"]*)"$/, function (when, month, callback) {
     // Write code here that turns the phrase above into concrete actions
     var date;
-    if (when === "now") {
+    if (when === 'now') {
         date = new Date();
     } else {
         date = new Date(Date.parse(when));
@@ -556,20 +554,20 @@ Given(/^update execute every year at "([^"]*)" on month "([^"]*)"$/, function (w
 Given(/^execute every year at "([^"]*)" on month "([^"]*)"$/, function (when, month, callback) {
     // Write code here that turns the phrase above into concrete actions
     var date;
-    if (when === "now") {
+    if (when === 'now') {
         date = new Date();
     } else {
         date = new Date(Date.parse(when));
     }
 
-    this.util.executeEvery(date, "task_name").year.month(month);
+    this.util.executeEvery(date, 'task_name').year.month(month);
     callback();
 });
 
 Given(/^update execute every year at "([^"]*)" at day (\d+)$/, function (when, day, callback) {
     // Write code here that turns the phrase above into concrete actions
     var date;
-    if (when === "now") {
+    if (when === 'now') {
         date = new Date();
     } else {
         date = new Date(Date.parse(when));
@@ -582,13 +580,13 @@ Given(/^update execute every year at "([^"]*)" at day (\d+)$/, function (when, d
 Given(/^execute every year at "([^"]*)" at day (\d+)$/, function (when, day, callback) {
     // Write code here that turns the phrase above into concrete actions
     var date;
-    if (when === "now") {
+    if (when === 'now') {
         date = new Date();
     } else {
         date = new Date(Date.parse(when));
     }
 
-    this.util.executeEvery(date, "task_name").year.day(eval(day));
+    this.util.executeEvery(date, 'task_name').year.day(eval(day));
     callback();
 });
 
@@ -601,7 +599,7 @@ Given(/^update execute every year at day (\d+) on month "([^"]*)"$/, function (d
 Given(/^execute every year at day (\d+) on month "([^"]*)"$/, function (day, month, callback) {
     // Write code here that turns the phrase above into concrete actions
     try {
-        this.util.executeEvery("task_name").year.month(month).day(eval(day));
+        this.util.executeEvery('task_name').year.month(month).day(eval(day));
     } catch (error) {
         this.error = error;
     }
@@ -618,7 +616,7 @@ Given(/^update execute every year on month "([^"]*)"$/, function (month, callbac
 Given(/^execute every year on month "([^"]*)"$/, function (month, callback) {
     // Write code here that turns the phrase above into concrete actions
     try {
-        this.util.executeEvery("task_name").year.month(month);
+        this.util.executeEvery('task_name').year.month(month);
     } catch (error) {
         this.error = error;
     }
@@ -635,13 +633,12 @@ Given(/^update execute every year at day (\d+)$/, function (day, callback) {
 Given(/^execute every year at day (\d+)$/, function (day, callback) {
     // Write code here that turns the phrase above into concrete actions
     try {
-        this.util.executeEvery("task_name").year.day(eval(day));
+        this.util.executeEvery('task_name').year.day(eval(day));
     } catch (error) {
         this.error = error;
     }
     callback();
 });
-
 
 Given(/^execute each with stop date (\d+) "([^"]*)" earlier than current date$/, function (stopDelay, delayType, callback) {
     try {
@@ -651,7 +648,6 @@ Given(/^execute each with stop date (\d+) "([^"]*)" earlier than current date$/,
     }
     callback();
 });
-
 
 Given(/^execute each with (\d+) as a number of repetitions$/, function (repetitions, callback) {
     var start = moment(new Date());
@@ -673,47 +669,46 @@ Given(/^execute each with stop date (\d+) "([^"]*)" later than the start date as
     callback();
 });
 
-Given(/^execute each (\d+) "([^"]*)" with stop date (\d+) "([^"]*)" later than the start date as now$/, function (eachValue, eachType, stopDelay, delayType, callback) {
-    executeEachNowLaterThan.call(this, stopDelay, delayType)[eachType](eval(eachValue));
-    callback();
-});
+Given(
+    /^execute each (\d+) "([^"]*)" with stop date (\d+) "([^"]*)" later than the start date as now$/,
+    function (eachValue, eachType, stopDelay, delayType, callback) {
+        executeEachNowLaterThan.call(this, stopDelay, delayType)[eachType](eval(eachValue));
+        callback();
+    }
+);
 
-Given(/^I wait (\d+) seconds$/, {timeout: 60*1000}, function (seconds, callback) {
+Given(/^I wait (\d+) seconds$/, { timeout: 60 * 1000 }, function (seconds, callback) {
     setTimeout(callback, seconds * 1000);
 });
 
-Given(/^I wait for DONE every (\d+) seconds, maximum (\d+) seconds$/, {timeout: 60*1000}, function (every_seconds, seconds, callback) {
+Given(/^I wait for DONE every (\d+) seconds, maximum (\d+) seconds$/, { timeout: 60 * 1000 }, function (every_seconds, seconds, callback) {
     var _this = this;
     assert.isAbove(seconds * 1000, every_seconds * 1000, 'Maximum seconds must be strictly greater than every second');
     var everyTimeout;
-    var globalTimeout = setTimeout(
-        function () {
-            clearTimeout(everyTimeout);
-            callback();
-        }, seconds * 1000);
+    var globalTimeout = setTimeout(function () {
+        clearTimeout(everyTimeout);
+        callback();
+    }, seconds * 1000);
 
-    function isDone () {
-        if (this.responseData !== 'DONE')
-            everyTimeout = setTimeout(isDone, every_seconds * seconds);
-        else
-            clearTimeout(globalTimeout);
+    function isDone() {
+        if (this.responseData !== 'DONE') everyTimeout = setTimeout(isDone, every_seconds * seconds);
+        else clearTimeout(globalTimeout);
     }
     isDone();
 });
 
-
-function executeEachNowLaterThan (stopDelay, delayType) {
+function executeEachNowLaterThan(stopDelay, delayType) {
     var start = moment(new Date());
     var stop = moment(new Date()).add(stopDelay, delayType);
     return executeEach.call(this, start, stop);
 }
 
-function executeEachNowEarlierThan (stopDelay, delayType) {
+function executeEachNowEarlierThan(stopDelay, delayType) {
     var start = moment(new Date());
     var stop = moment(new Date()).subtract(stopDelay, delayType);
     return executeEach.call(this, start, stop);
 }
 
-function executeEach (start, stop) {
+function executeEach(start, stop) {
     return this.util.executeEach(start.toDate(), stop.toDate());
 }

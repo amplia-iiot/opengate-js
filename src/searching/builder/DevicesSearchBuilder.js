@@ -1,7 +1,7 @@
 'use strict';
 
-import PreFilteredSearchBuilder from './PreFilteredSearchBuilder'
-import FieldFinder from '../../util/searchingFields/FieldFinder'
+import PreFilteredSearchBuilder from './PreFilteredSearchBuilder';
+import FieldFinder from '../../util/searchingFields/FieldFinder';
 
 const BASE_URL = '/entities';
 /**
@@ -18,10 +18,10 @@ export default class DevicesSearchBuilder extends PreFilteredSearchBuilder {
     }
 
     /**
-     * The response will only have a summary information 
+     * The response will only have a summary information
      * @example
-     *	ogapi.devicesSearchBuilder().summary() 
-     * @return {DevicesSearchBuilder} 
+     *	ogapi.devicesSearchBuilder().summary()
+     * @return {DevicesSearchBuilder}
      */
     summary() {
         this._url = this._url + '/summary';
@@ -31,16 +31,18 @@ export default class DevicesSearchBuilder extends PreFilteredSearchBuilder {
 
     _buildFilter() {
         let finalFilter = {
-            "and": [{
-                "exists": {
-                    "provision.device.identifier": true
+            and: [
+                {
+                    exists: {
+                        'provision.device.identifier': true
+                    }
                 }
-            }]
+            ]
         };
 
         if (this._builderParams.filter && Object.keys(this._builderParams.filter).length > 0) {
             let filter = this._builderParams.filter;
-            if (typeof filter._filterTemplate !== "undefined") {
+            if (typeof filter._filterTemplate !== 'undefined') {
                 //return filter._filterTemplate;
                 finalFilter.and.push(filter._filterTemplate.filter);
             } else {
@@ -54,13 +56,13 @@ export default class DevicesSearchBuilder extends PreFilteredSearchBuilder {
     }
 
     /**
-     * The search request will have this group by 
+     * The search request will have this group by
      * @example
-     * @param {!(object)} group 
-     * @return {DevicesSearchBuilder} 
+     * @param {!(object)} group
+     * @return {DevicesSearchBuilder}
      */
     group(group) {
-        this._builderParams.group = (group || {});
+        this._builderParams.group = group || {};
         return this;
     }
 }

@@ -2,12 +2,10 @@
 
 import Usage from './Usage';
 
-
 /**
  * This is a base object that allows the user to create a Storage object.
  */
 export default class Storage extends Usage {
-
     constructor() {
         super();
         this._unit = undefined;
@@ -15,13 +13,12 @@ export default class Storage extends Usage {
     }
 
     /**
-    * Set the unit attribute
-    * @param {string} unit - optionals field
-    * @return {Storage}
-    */
+     * Set the unit attribute
+     * @param {string} unit - optionals field
+     * @return {Storage}
+     */
     withUnit(unit) {
-        if (typeof unit !== 'string' || unit.length === 0)
-            throw new Error('Parameter unit must be String type and cannot be empty');
+        if (typeof unit !== 'string' || unit.length === 0) throw new Error('Parameter unit must be String type and cannot be empty');
         this._unit = unit;
         return this;
     }
@@ -32,26 +29,20 @@ export default class Storage extends Usage {
      * @return {Storage}
      */
     withTotal(total) {
-        if (typeof total !== 'string' || total.length === 0)
-            throw new Error('Parameter total must be string type and cannot be empty');
+        if (typeof total !== 'string' || total.length === 0) throw new Error('Parameter total must be string type and cannot be empty');
         this._total = total;
         return this;
     }
-
 
     composeElement() {
         var usage = super.composeElement();
 
         var storage = {
-            "unit": this._unit,
-            "total": this._total,
-            "usage": usage
-
+            unit: this._unit,
+            total: this._total,
+            usage: usage
         };
 
         return storage;
     }
-
-
-
 }

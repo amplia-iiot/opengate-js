@@ -3,7 +3,7 @@
 import Search from './Search';
 import q from 'q';
 
-/** 
+/**
  * This class extends Search and allows requests to be made to any available resource in the OpenGate North API.
  */
 export default class AssetSearch extends Search {
@@ -31,9 +31,8 @@ export default class AssetSearch extends Search {
         var promise = defered.promise;
         var parameters = this._getUrlParameters();
 
-        this._ogapi.Napi
-            .post(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), parameters)
-            .then((response) => {
+        this._ogapi.Napi.post(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), parameters)
+            .then(response => {
                 let resultQuery = response.body;
                 let statusCode = response.statusCode;
 
@@ -46,11 +45,9 @@ export default class AssetSearch extends Search {
                     statusCode: statusCode
                 });
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;
     }
-
-
 }

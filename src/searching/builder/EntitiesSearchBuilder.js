@@ -14,17 +14,21 @@ export default class EntitiesSearchBuilder extends SearchWithSummaryBuilder {
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */
     constructor(parent, fieldFinder = new FieldFinder(parent, '/entities')) {
-        super(parent, {
-            onDevices: '/devices',
-        }, fieldFinder);
+        super(
+            parent,
+            {
+                onDevices: '/devices'
+            },
+            fieldFinder
+        );
         this._url = '/entities' + TOKEN_URL;
     }
 
     /**
      * The response will return a flattened response
      * @example
-     *	ogapi.entitiesSearchBuilder().flattened() 
-     * @return {EntitiesSearchBuilder} 
+     *	ogapi.entitiesSearchBuilder().flattened()
+     * @return {EntitiesSearchBuilder}
      */
     flattened() {
         this._urlParams.flattened = true;
@@ -34,8 +38,8 @@ export default class EntitiesSearchBuilder extends SearchWithSummaryBuilder {
     /**
      * The response will return a response without sorted
      * @example
-     *	ogapi.entitiesSearchBuilder().disableDefaultSorted() 
-     * @return {EntitiesSearchBuilder} 
+     *	ogapi.entitiesSearchBuilder().disableDefaultSorted()
+     * @return {EntitiesSearchBuilder}
      */
     disableDefaultSorted() {
         this._urlParams.defaultSorted = false;
@@ -45,8 +49,8 @@ export default class EntitiesSearchBuilder extends SearchWithSummaryBuilder {
     /**
      * The response will return a response by applying the filter with likes case-no-sensitive
      * @example
-     *	ogapi.entitiesSearchBuilder().disableCaseSensitive() 
-     * @return {EntitiesSearchBuilder} 
+     *	ogapi.entitiesSearchBuilder().disableCaseSensitive()
+     * @return {EntitiesSearchBuilder}
      */
     disableCaseSensitive(flag) {
         this._urlParams.caseSensitive = flag ? flag : false;
@@ -56,12 +60,11 @@ export default class EntitiesSearchBuilder extends SearchWithSummaryBuilder {
     /**
      * The response will return a response by deleteing the parameters with likes case-no-sensitive
      * @example
-     *	ogapi.entitiesSearchBuilder().disableCaseSensitive() 
-     * @return {EntitiesSearchBuilder} 
+     *	ogapi.entitiesSearchBuilder().disableCaseSensitive()
+     * @return {EntitiesSearchBuilder}
      */
     removeCaseSensitive() {
-        if (this._urlParams)
-            delete this._urlParams.caseSensitive;
+        if (this._urlParams) delete this._urlParams.caseSensitive;
         return this;
     }
 
@@ -76,19 +79,18 @@ export default class EntitiesSearchBuilder extends SearchWithSummaryBuilder {
     }
 
     /**
-     * The search request will have this group by 
+     * The search request will have this group by
      * @example
-     * @param {!(object)} group 
-     * @return {EntitiesSearchBuilder} 
+     * @param {!(object)} group
+     * @return {EntitiesSearchBuilder}
      */
     group(group) {
-        this._builderParams.group = (group || {});
+        this._builderParams.group = group || {};
         return this;
     }
 
-
     /**
-     * The search request will have this filter 
+     * The search request will have this filter
      * @example
      *  ogapi.entitiesSearchBuilder().select(
      *      ogapi.newSelectBuilder().add(SE.element("provision.device.identifier", ["value"], "id"), SE.add("device.temperature.value", ["value"]))
@@ -98,31 +100,33 @@ export default class EntitiesSearchBuilder extends SearchWithSummaryBuilder {
      *      {"name": "device.temperature.value","fields": [{"field": "value","alias": "identifier"}]}]
      *   }) //Custom select
      * @param {!(SelectBuilder|object)} select
-     * @return {EntitiesSearchBuilder} 
+     * @return {EntitiesSearchBuilder}
      */
     select(select) {
-        this._builderParams.select = (select || []);
+        this._builderParams.select = select || [];
         return this;
     }
 
     /**
-     * Build a instance of Search 
+     * Build a instance of Search
      *
      * @example
      *  ogapi.entitiesSearchBuilder()
      * @throws {SearchBuilderError} Throw error on url build
-     * @return {Search} 
+     * @return {Search}
      */
     build() {
         // OUW-944
-        return new EntitySearch(this._parent,
+        return new EntitySearch(
+            this._parent,
             this._buildUrl(),
             this._buildFilter(),
             this._buildLimit(),
             this._buildSort(),
             this._buildGroup(),
             this._buildSelect(),
-            this._builderParams.timeout, this._urlParams);
+            this._builderParams.timeout,
+            this._urlParams
+        );
     }
-
 }

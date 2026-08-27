@@ -161,7 +161,7 @@ function processDir(currentDir, targetDir) {
 
     // Check if it is the root directory
     if (path.resolve(targetDir) === path.resolve(destDir)) {
-        indexTitle = "OGAPI.js Documentation";
+        indexTitle = 'OGAPI.js Documentation';
     }
 
     let indexContent = `+++

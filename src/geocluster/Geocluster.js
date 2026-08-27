@@ -2,19 +2,18 @@
 
 import q from 'q';
 import BaseProvision from '../provision/BaseProvision';
-import checkType from '../util/formats/check_types'
+import checkType from '../util/formats/check_types';
 /**
  * This is a base object that contains everything you can do with geoclusters.
  */
 
 export default class Geocluster extends BaseProvision {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, "/geocluster", undefined, 'identifier');
+        super(ogapi, '/geocluster', undefined, 'identifier');
     }
 
     _buildURL() {
@@ -45,7 +44,7 @@ export default class Geocluster extends BaseProvision {
         var defered = q.defer();
         var promise = defered.promise;
         this._ogapi.Napi.put(this._buildURL(), this._composeElementUpdate(), undefined, this._getExtraHeaders(), this._getUrlParameters())
-            .then((res) => {
+            .then(res => {
                 if (res.statusCode === 200) {
                     defered.resolve({
                         statusCode: res.statusCode
@@ -61,11 +60,9 @@ export default class Geocluster extends BaseProvision {
                     });
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;
     }
-
-
 }

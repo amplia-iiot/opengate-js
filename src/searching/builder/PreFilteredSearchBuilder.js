@@ -15,15 +15,15 @@ export default class PreFilteredSearchBuilder extends FlattenedSearchBuilder {
     constructor(parent, routes, fieldFinder) {
         super(parent, routes, fieldFinder);
         if (this.constructor === PreFilteredSearchBuilder) {
-            throw new Error("Cannot construct Abstract instances directly");
+            throw new Error('Cannot construct Abstract instances directly');
         }
     }
 
     /**
      * This option forces search api to add a filter of provisioned content
      * @example
-     *	ogapi.subscribersSearchBuilder().provisioned() 
-     * @return {PreFilteredSearchBuilder} 
+     *	ogapi.subscribersSearchBuilder().provisioned()
+     * @return {PreFilteredSearchBuilder}
      */
     provisioned() {
         this._provisioned = true;
@@ -34,8 +34,8 @@ export default class PreFilteredSearchBuilder extends FlattenedSearchBuilder {
     /**
      * This option forces search api to add a filter of collected content
      * @example
-     *	ogapi.subscribersSearchBuilder().collected() 
-     * @return {PreFilteredSearchBuilder} 
+     *	ogapi.subscribersSearchBuilder().collected()
+     * @return {PreFilteredSearchBuilder}
      */
     collected() {
         this._collected = true;
@@ -44,7 +44,7 @@ export default class PreFilteredSearchBuilder extends FlattenedSearchBuilder {
     }
 
     /**
-     * The search request will have this filter 
+     * The search request will have this filter
      * @example
      *  ogapi.devicesSearchBuilder().select(
      *      ogapi.newSelectBuilder().add(SE.element("provision.device.identifier", ["value"], "id"), SE.add("device.temperature.value", ["value"]))
@@ -56,18 +56,18 @@ export default class PreFilteredSearchBuilder extends FlattenedSearchBuilder {
      *      ]
      *  }) //Custom select
      * @param {!(SelectBuilder|object)} select
-     * @return {PreFilteredSearchBuilder} 
+     * @return {PreFilteredSearchBuilder}
      */
     select(select) {
-        this._builderParams.select = (select || []);
+        this._builderParams.select = select || [];
         return this;
     }
 
     /**
      * The response will return a response without sorted
      * @example
-     *	ogapi.assetsSearchBuilder().disableDefaultSorted() 
-     * @return {PreFilteredSearchBuilder} 
+     *	ogapi.assetsSearchBuilder().disableDefaultSorted()
+     * @return {PreFilteredSearchBuilder}
      */
     disableDefaultSorted() {
         this._urlParams.defaultSorted = false;
@@ -77,25 +77,22 @@ export default class PreFilteredSearchBuilder extends FlattenedSearchBuilder {
     /**
      * The response will return a response by applying the filter with likes case-no-sensitive
      * @example
-     *	ogapi.entitiesSearchBuilder().disableCaseSensitive() 
-     * @return {EntitiesSearchBuilder} 
+     *	ogapi.entitiesSearchBuilder().disableCaseSensitive()
+     * @return {EntitiesSearchBuilder}
      */
     disableCaseSensitive(flag) {
         this._urlParams.caseSensitive = flag ? flag : false;
         return this;
     }
 
-
     /**
      * The response will return a response by applying the filter with likes case-no-sensitive
      * @example
-     *	ogapi.entitiesSearchBuilder().removeCaseSensitive() 
-     * @return {EntitiesSearchBuilder} 
+     *	ogapi.entitiesSearchBuilder().removeCaseSensitive()
+     * @return {EntitiesSearchBuilder}
      */
     removeCaseSensitive() {
-        if (this._urlParams)
-            delete this._urlParams.caseSensitive;
+        if (this._urlParams) delete this._urlParams.caseSensitive;
         return this;
     }
-
 }

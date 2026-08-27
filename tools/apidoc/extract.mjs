@@ -50,12 +50,10 @@ function collectSources(dir) {
 function describe(node) {
     const docs = node.jsDoc;
     if (!docs || docs.length === 0) return '';
-    const text = docs
-        .map((d) => (typeof d.comment === 'string' ? d.comment : ts.getTextOfJSDocComment(d.comment) || ''))
-        .join('\n');
+    const text = docs.map(d => (typeof d.comment === 'string' ? d.comment : ts.getTextOfJSDocComment(d.comment) || '')).join('\n');
     return text
         .split('\n')
-        .map((line) => line.replace(/[ \t]+/g, ' ').trim())
+        .map(line => line.replace(/[ \t]+/g, ' ').trim())
         .join('\n')
         .trim();
 }
@@ -66,7 +64,10 @@ function describe(node) {
  */
 function typeOfTag(tag, sourceFile) {
     if (!tag || !tag.typeExpression) return { type: null, nullable: null };
-    const raw = tag.typeExpression.getText(sourceFile).replace(/^\{|\}$/g, '').trim();
+    const raw = tag.typeExpression
+        .getText(sourceFile)
+        .replace(/^\{|\}$/g, '')
+        .trim();
     if (!raw) return { type: null, nullable: null };
     if (raw.startsWith('!')) return { type: raw.slice(1).trim(), nullable: false };
     if (raw.startsWith('?')) return { type: raw.slice(1).trim(), nullable: true };
@@ -74,7 +75,7 @@ function typeOfTag(tag, sourceFile) {
 }
 
 function paramsOf(node, sourceFile) {
-    const all = (node.jsDoc || []).flatMap((d) => d.tags || []);
+    const all = (node.jsDoc || []).flatMap(d => d.tags || []);
     const out = [];
     for (const tag of all) {
         if (!ts.isJSDocParameterTag(tag)) continue;
@@ -90,21 +91,21 @@ function paramsOf(node, sourceFile) {
             description: (ts.getTextOfJSDocComment(tag.comment) || '')
                 .replace(/^\s*-\s*/, '')
                 .replace(/\s+/g, ' ')
-                .trim(),
+                .trim()
         });
     }
     return out;
 }
 
 function returnOf(node, sourceFile) {
-    const all = (node.jsDoc || []).flatMap((d) => d.tags || []);
+    const all = (node.jsDoc || []).flatMap(d => d.tags || []);
     for (const tag of all) {
         if (!ts.isJSDocReturnTag(tag)) continue;
         const { type, nullable } = typeOfTag(tag, sourceFile);
         return {
             type,
             nullable,
-            description: (ts.getTextOfJSDocComment(tag.comment) || '').replace(/\s+/g, ' ').trim(),
+            description: (ts.getTextOfJSDocComment(tag.comment) || '').replace(/\s+/g, ' ').trim()
         };
     }
     return null;
@@ -112,7 +113,7 @@ function returnOf(node, sourceFile) {
 
 /** Other JSDoc tags worth keeping, e.g. ESDoc's @test example blocks. */
 function extraTags(node, sourceFile) {
-    const all = (node.jsDoc || []).flatMap((d) => d.tags || []);
+    const all = (node.jsDoc || []).flatMap(d => d.tags || []);
     const out = [];
     for (const tag of all) {
         if (ts.isJSDocParameterTag(tag) || ts.isJSDocReturnTag(tag)) continue;
@@ -156,7 +157,7 @@ function main() {
         checkJs: false,
         noEmit: true,
         target: ts.ScriptTarget.ES2020,
-        module: ts.ModuleKind.ESNext,
+        module: ts.ModuleKind.ESNext
     });
 
     const pkg = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8'));
@@ -167,7 +168,7 @@ function main() {
         if (!sourceFile) continue;
         const relative = path.relative(ROOT, file).split(path.sep).join('/');
 
-        ts.forEachChild(sourceFile, (node) => {
+        ts.forEachChild(sourceFile, node => {
             let classNode = null;
             if (ts.isClassDeclaration(node)) classNode = node;
             else if (ts.isExportAssignment(node) && ts.isClassExpression(node.expression)) classNode = node.expression;
@@ -178,9 +179,7 @@ function main() {
             for (const member of classNode.members || []) {
                 const kind = memberKind(member);
                 if (!kind) continue;
-                const memberName = kind === 'constructor'
-                    ? 'constructor'
-                    : (member.name ? member.name.getText(sourceFile) : null);
+                const memberName = kind === 'constructor' ? 'constructor' : member.name ? member.name.getText(sourceFile) : null;
                 if (!memberName) continue;
                 members.push({
                     kind,
@@ -189,15 +188,12 @@ function main() {
                     // The names the code actually declares. A @param naming something else
                     // means the comment is wrong, which is worth reporting rather than
                     // silently publishing.
-                    signatureParams: (member.parameters || []).map((prm) => prm.name.getText(sourceFile)),
+                    signatureParams: (member.parameters || []).map(prm => prm.name.getText(sourceFile)),
                     description: describe(member),
                     params: paramsOf(member, sourceFile),
                     returns: returnOf(member, sourceFile),
                     tags: extraTags(member, sourceFile),
-                    static: Boolean(
-                        member.modifiers &&
-                        member.modifiers.some((m) => m.kind === ts.SyntaxKind.StaticKeyword)
-                    ),
+                    static: Boolean(member.modifiers && member.modifiers.some(m => m.kind === ts.SyntaxKind.StaticKeyword))
                 });
             }
 
@@ -207,7 +203,7 @@ function main() {
                 line: lineOf(sourceFile, classNode),
                 extends: extendsOf(classNode, sourceFile),
                 description: describe(classNode),
-                members,
+                members
             });
         });
     }
@@ -221,7 +217,7 @@ function main() {
         version: opts.version || pkg.version,
         classCount: classes.length,
         memberCount: classes.reduce((n, c) => n + c.members.length, 0),
-        classes,
+        classes
     };
 
     const json = JSON.stringify(model, null, 2) + '\n';

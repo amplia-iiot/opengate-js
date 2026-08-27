@@ -4,7 +4,6 @@
  * Defines the builder used to configure the quality rating (Qrating) of a datastream in an IoT datamodel.
  */
 export default class Qrating {
-
     constructor() {}
 
     /**
@@ -140,7 +139,7 @@ export default class Qrating {
 
     /**
      * Build a Qrating json object
-     * 
+     *
      * @example
      * ogapi.QratingsBuilder().build()
      * @throws {Error} Throw error if there is not version, minRequired, minDesired, ideal, maxDesired, maxAllowed and maxScore
@@ -184,11 +183,12 @@ export default class Qrating {
 
     _isValidString(string, param_name, max_length) {
         if (typeof string !== 'string' || string.length === 0 || string.length > max_length)
-            throw new Error('Parameter ' + param_name + ' must be a string, cannot be empty and has a maximum length of ' + max_length + ' on Qrating');
+            throw new Error(
+                'Parameter ' + param_name + ' must be a string, cannot be empty and has a maximum length of ' + max_length + ' on Qrating'
+            );
     }
 
     _isValidNumber(number, param_name) {
-        if (typeof number !== 'number')
-            throw new Error('Parameter ' + param_name + ' must be a number, cannot be empty on Qrating');
+        if (typeof number !== 'number') throw new Error('Parameter ' + param_name + ' must be a number, cannot be empty on Qrating');
     }
 }

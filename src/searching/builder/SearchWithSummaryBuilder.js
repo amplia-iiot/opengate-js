@@ -15,20 +15,19 @@ export default class SearchWithSummaryBuilder extends SearchBuilder {
     constructor(parent, routes, fieldFinder) {
         super(parent, routes, fieldFinder);
         if (this.constructor === SearchWithSummaryBuilder) {
-            throw new Error("Cannot construct Abstract instances directly");
+            throw new Error('Cannot construct Abstract instances directly');
         }
     }
 
     /**
-     * The response will only have a summary information 
+     * The response will only have a summary information
      * @example
-     *	ogapi.subscriptionsSearchBuilder().summary() 
-     * @return {SearchWithSummaryBuilder} 
+     *	ogapi.subscriptionsSearchBuilder().summary()
+     * @return {SearchWithSummaryBuilder}
      */
     summary() {
         this._url = this._url + '/summary';
 
         return this;
     }
-
 }

@@ -2,19 +2,18 @@
 
 import { TYPE_ENUM } from './TYPE_ENUM';
 import BaseProvision from '../provision/BaseProvision';
-import checkType from '../util/formats/check_types'
+import checkType from '../util/formats/check_types';
 /**
  * This is a base object that contains everything you can do with an area.
  */
 
 export default class Areas extends BaseProvision {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, '/organizations/', undefined, ['identifier', 'organization', "type", 'coordinates']);
+        super(ogapi, '/organizations/', undefined, ['identifier', 'organization', 'type', 'coordinates']);
     }
 
     _buildURL() {
@@ -55,10 +54,10 @@ export default class Areas extends BaseProvision {
         return this;
     }
     /**
- * Set the color attribute
- * @param {string} color - required field
- * @return {Areas}
- */
+     * Set the color attribute
+     * @param {string} color - required field
+     * @return {Areas}
+     */
     withColor(color) {
         checkType._checkStringAndLength(color, 50, 'color');
         this._color = color;
@@ -76,7 +75,6 @@ export default class Areas extends BaseProvision {
         return this;
     }
 
-
     /**
      * Set the order attribute
      * @param {number} order - required field
@@ -87,7 +85,6 @@ export default class Areas extends BaseProvision {
         this._order = order;
         return this;
     }
-
 
     /**
      * Set the geometry attribute
@@ -113,7 +110,6 @@ export default class Areas extends BaseProvision {
         this._entities = entities;
         return this;
     }
-
 
     _composeElement() {
         this._resource = 'provision/organizations/' + this._organization + '/areas';

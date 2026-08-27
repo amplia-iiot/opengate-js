@@ -1,7 +1,5 @@
 'use strict';
-import {
-    ANTENNA_STATUS_ENUM
-} from './enum/ANTENNA_STATUS_ENUM';
+import { ANTENNA_STATUS_ENUM } from './enum/ANTENNA_STATUS_ENUM';
 
 import Hardware from './Hardware';
 import Software from './Software';
@@ -14,7 +12,6 @@ import parameterError from '../../../util/parameterError';
  * This is a base object that allows the user to create a CommsModule.
  */
 export default class CommsModuleMessage {
-
     constructor(ogapi) {
         this._ogapi = ogapi;
         this._id = undefined;
@@ -27,7 +24,6 @@ export default class CommsModuleMessage {
         this._mobile = undefined;
         this._subscriber = undefined;
         this._subscription = undefined;
-
     }
 
     /**
@@ -36,12 +32,10 @@ export default class CommsModuleMessage {
      * @return {CommsModule}
      */
     withId(id) {
-        if (typeof id !== 'string')
-            throw parameterError('OGAPI_STRING_PARAMETER', { parameter: 'id' });
+        if (typeof id !== 'string') throw parameterError('OGAPI_STRING_PARAMETER', { parameter: 'id' });
         this._id = id;
         return this;
     }
-
 
     /**
      * Set the name attribute
@@ -49,8 +43,7 @@ export default class CommsModuleMessage {
      * @return {CommsModule}
      */
     withName(name) {
-        if (typeof name !== 'string')
-            throw parameterError('OGAPI_STRING_PARAMETER', { parameter: 'name' });
+        if (typeof name !== 'string') throw parameterError('OGAPI_STRING_PARAMETER', { parameter: 'name' });
         this._name = name;
         return this;
     }
@@ -61,8 +54,7 @@ export default class CommsModuleMessage {
      * @return {CommsModule}
      */
     withType(type) {
-        if (typeof type !== 'string')
-            throw parameterError('OGAPI_STRING_PARAMETER', { parameter: 'type' });
+        if (typeof type !== 'string') throw parameterError('OGAPI_STRING_PARAMETER', { parameter: 'type' });
         this._type = type;
         return this;
     }
@@ -82,20 +74,21 @@ export default class CommsModuleMessage {
 
     /**
      * Set the operationalStatus attribute
-     * @param {string} operationalStatus 
+     * @param {string} operationalStatus
      * @return {CommsModule}
      */
     withOperationalStatus(operationalStatus) {
+        let operationalStatusBuilder = this._ogapi
+            .operationalStatusSearchBuilder()
+            .withEntityType('COMMUNICATIONS_MODULE')
+            .withId(operationalStatus)
+            .build();
 
-        let operationalStatusBuilder = this._ogapi.operationalStatusSearchBuilder()
-            .withEntityType("COMMUNICATIONS_MODULE").withId(operationalStatus).build();
-
-        operationalStatusBuilder.execute().then(
-            function(res) {
-                if (res.statusCode === 204) {
-                    throw new Error("Operational Status not found");
-                }
-            });
+        operationalStatusBuilder.execute().then(function (res) {
+            if (res.statusCode === 204) {
+                throw new Error('Operational Status not found');
+            }
+        });
 
         this._operationalStatus = operationalStatus;
 
@@ -108,8 +101,7 @@ export default class CommsModuleMessage {
      * @return {CommsModule}
      */
     withAntennaStatus(antennaStatus) {
-        if (typeof antennaStatus !== 'string')
-            throw new Error('Parameter antennaStatus must be a string');
+        if (typeof antennaStatus !== 'string') throw new Error('Parameter antennaStatus must be a string');
         this._antennaStatus = this._checkValues(antennaStatus, ANTENNA_STATUS_ENUM);
         return this;
     }
@@ -139,7 +131,6 @@ export default class CommsModuleMessage {
      * @return {CommsModule}
      */
     withMobile(mobile) {
-
         if (!(mobile instanceof Mobile)) {
             throw new Error('Parameter mobile must be Mobile type');
         }
@@ -147,13 +138,11 @@ export default class CommsModuleMessage {
         return this;
     }
 
-
     /**
      * Set the subscriber attribute
      * @return {CommsModule}
      */
     withSubscriber(subscriber) {
-
         if (!(subscriber instanceof Subscriber)) {
             throw new Error('Parameter subscriber must be Subscriber type');
         }
@@ -166,7 +155,6 @@ export default class CommsModuleMessage {
      * @return {CommsModule}
      */
     withSubscription(subscription) {
-
         if (!(subscription instanceof Subscription)) {
             throw new Error('Parameter subscription must be Subscription type');
         }
@@ -176,11 +164,11 @@ export default class CommsModuleMessage {
 
     _checkValues(value, enumName) {
         let not_found = [];
-        let found = enumName.find(function(value) {
+        let found = enumName.find(function (value) {
             return value == this;
         }, value);
 
-        if (typeof found === "undefined") {
+        if (typeof found === 'undefined') {
             not_found.push(value);
         }
         if (not_found.length !== 0) {
@@ -189,16 +177,14 @@ export default class CommsModuleMessage {
         return value;
     }
 
-
-
     composeElement() {
         var commsModule = {
-            "id": this._id,
-            "name": this._name,
-            "type": this._type,
-            "hardware": this._hardware.composeElement(),
-            "operationalStatus": this._operationalStatus,
-            "antennaStatus": this._antennaStatus
+            id: this._id,
+            name: this._name,
+            type: this._type,
+            hardware: this._hardware.composeElement(),
+            operationalStatus: this._operationalStatus,
+            antennaStatus: this._antennaStatus
         };
         if (this._softwareList.length > 0) {
             commsModule.softwareList = this._softwareList;
@@ -214,7 +200,4 @@ export default class CommsModuleMessage {
         }
         return commsModule;
     }
-
-
-
 }

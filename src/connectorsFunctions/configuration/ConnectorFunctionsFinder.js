@@ -6,22 +6,21 @@ import GenericFinder from '../../GenericFinder';
  * This class allows you to make GET requests to the ConnectorFunctions resource in the OpenGate North API.
  */
 export default class ConnectorFunctionsFinder extends GenericFinder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, 'connectorFunctions/provision/organizations', "connectorFunctions", 'Connector functions not found');
+        super(ogapi, 'connectorFunctions/provision/organizations', 'connectorFunctions', 'Connector functions not found');
     }
 
     /**
      * Performs a get that returns connectors functions related
      * @test
      *   ogapi.newConnectorFunctionsFinder().findByOrganizationAndChannel('xxx-xx-xxx-xxx', 'xxxxx-xxxx-xxxx').then().catch();
-     * @param {string} organization - organization 
+     * @param {string} organization - organization
      * @param {string} channel - channel.
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByOrganizationAndChannel(organization, channel) {
         let _this = this;
@@ -35,10 +34,10 @@ export default class ConnectorFunctionsFinder extends GenericFinder {
      * Performs a get that returns connectors functions related
      * @test
      *   ogapi.newConnectorFunctionsFinder().findByOrganizationAndChannel('xxx-xx-xxx-xxx', 'xxxxx-xxxx-xxxx').then().catch();
-     * @param {string} organization - organization 
+     * @param {string} organization - organization
      * @param {string} channel - channel.
      * @param {string} name - Connector function name
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByOrganizationAndChannelAndName(organization, channel, name) {
         let _this = this;
@@ -50,7 +49,6 @@ export default class ConnectorFunctionsFinder extends GenericFinder {
     }
 
     _composeUrl() {
-        return this._baseUrl + "/" + this._organization + "/channels/" + this._channel + (this._name ? "/" + this._name : '');
+        return this._baseUrl + '/' + this._organization + '/channels/' + this._channel + (this._name ? '/' + this._name : '');
     }
-
 }

@@ -1,13 +1,12 @@
 'use strict';
 
 import ProvisionGenericFinder from '../ProvisionGenericFinder';
-import { MANUFACTURERS_RESOURCE, PRE_RESOURCE } from './Manufacturer'
+import { MANUFACTURERS_RESOURCE, PRE_RESOURCE } from './Manufacturer';
 
 /**
  * This class allows making GET requests to the hardware manufacturers resource in the OpenGate North API.
  */
 export default class ManufacturerFinder extends ProvisionGenericFinder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
@@ -25,29 +24,29 @@ export default class ManufacturerFinder extends ProvisionGenericFinder {
             visibility: this._visibility || 'assignable'
         });
 
-        return this._baseUrl + "/" + this._organization + MANUFACTURERS_RESOURCE + (this._identifier ? "/" + this._identifier : "");
+        return this._baseUrl + '/' + this._organization + MANUFACTURERS_RESOURCE + (this._identifier ? '/' + this._identifier : '');
     }
 
     /**
      * Marks visibility assignable for manufacturer list retrieval
      * @test
      *   ogapi.newOrganizationManufacturerFinder().assignable().findByOrganization('organization').then().catch();
-     * @return {this} 
+     * @return {this}
      */
     assignable() {
-        this._visibility = 'assignable'
-        return this
+        this._visibility = 'assignable';
+        return this;
     }
 
     /**
      * Marks visibility administrable for manufacturer list retrieval
      * @test
      *   ogapi.newOrganizationManufacturerFinder().assignable().findByOrganization('organization').then().catch();
-     * @return {this} 
+     * @return {this}
      */
     administrable() {
-        this._visibility = 'administrable'
-        return this
+        this._visibility = 'administrable';
+        return this;
     }
 
     /**
@@ -55,7 +54,7 @@ export default class ManufacturerFinder extends ProvisionGenericFinder {
      * @test
      *   ogapi.newOrganizationManufacturerFinder().findByOrganization('organization').then().catch();
      * @param {string} organization - organization name .
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByOrganization(organization) {
         this._organization = organization;
@@ -68,7 +67,7 @@ export default class ManufacturerFinder extends ProvisionGenericFinder {
      *   ogapi.newOrganizationManufacturerFinder().findByOrganizationAndId('organization', 'identifier').then().catch();
      * @param {string} organization - organization name .
      * @param {string} identifier - manufacturer name .
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByOrganizationAndId(organization, identifier) {
         this._organization = organization;

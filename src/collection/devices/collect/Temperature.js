@@ -1,19 +1,13 @@
 'use strict';
 
-import {
-    TEMPERATURE_STATUS_ENUM
-} from './enum/TEMPERATURE_STATUS_ENUM';
+import { TEMPERATURE_STATUS_ENUM } from './enum/TEMPERATURE_STATUS_ENUM';
 
-import {
-    LEVEL_TREND_ENUM
-} from './enum/LEVEL_TREND_ENUM';
-
+import { LEVEL_TREND_ENUM } from './enum/LEVEL_TREND_ENUM';
 
 /**
  * This is a base object that allows the user to create a Temperature object.
  */
 export default class Temperature {
-
     constructor() {
         this._unit = undefined;
         this._current = undefined;
@@ -22,7 +16,6 @@ export default class Temperature {
         this._average = undefined;
         this._maximum = undefined;
         this._minimum = undefined;
-
     }
 
     /**
@@ -130,21 +123,16 @@ export default class Temperature {
         return this;
     }
 
-
     composeElement() {
-
         var temperature = {
-            "unit": this._unit,
-            "current": this._current,
-            "status": this._status,
-            "trend": this._trend,
-            "average": this._average,
-            "maximum": this._maximum,
-            "minimum": this._minimum
+            unit: this._unit,
+            current: this._current,
+            status: this._status,
+            trend: this._trend,
+            average: this._average,
+            maximum: this._maximum,
+            minimum: this._minimum
         };
         return temperature;
     }
-
-
-
 }

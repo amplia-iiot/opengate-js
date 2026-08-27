@@ -5,7 +5,6 @@ import GenericFinder from '../GenericFinder';
  * This class allows making GET requests to the planner resource of the OpenGate North API.
  */
 export default class HistoryFinder extends GenericFinder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
@@ -19,15 +18,15 @@ export default class HistoryFinder extends GenericFinder {
      * @private
      */
     _composeUrl() {
-        return this._baseUrl + "/" + this._organization + "/history";
+        return this._baseUrl + '/' + this._organization + '/history';
     }
 
     /**
-    * Download a complete list of scheduler history for the organization. This execute a GET http method
-    * @test
-    *   ogapi.newScheduleHistoryFinder().findByOrganization(organization).then().catch();
-    * @return {Promise} 
-    */
+     * Download a complete list of scheduler history for the organization. This execute a GET http method
+     * @test
+     *   ogapi.newScheduleHistoryFinder().findByOrganization(organization).then().catch();
+     * @return {Promise}
+     */
     findByOrganization(organization) {
         this._setUrlParameters(this._options);
         this._organization = organization;
@@ -38,7 +37,7 @@ export default class HistoryFinder extends GenericFinder {
      * Download a complete list of scheduler history for the organization and type selected. This execute a GET http method
      * @test
      *   ogapi.newScheduleHistoryFinder().findByOrganizationAndType(organization, type).then().catch();
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByOrganizationAndType(organization, type) {
         if (!this._options) {
@@ -57,7 +56,7 @@ export default class HistoryFinder extends GenericFinder {
      * Download a complete list of scheduler history for the organization and type selected. This execute a GET http method
      * @test
      *   ogapi.newScheduleHistoryFinder().findByOrganizationAndType(organization, type).then().catch();
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByOrganizationAndSchedulerId(organization, schedulerId) {
         if (!this._options) {
@@ -76,41 +75,41 @@ export default class HistoryFinder extends GenericFinder {
      * Marks results limit
      * @test
      *   ogapi.newScheduleHistoryFinder().withLimit(10).findByOrganization('organization').then().catch();
-     * @return {this} 
+     * @return {this}
      */
     withLimit(limit) {
         if (!this._options) {
-            this._options = {}
+            this._options = {};
         }
-        this._options.limit = limit
-        return this
+        this._options.limit = limit;
+        return this;
     }
 
     /**
      * Set parameter schedulerIds
      * @test
      *   ogapi.newScheduleHistoryFinder().withSchedulerId('AABBCC').findByOrganization('organization').then().catch();
-     * @return {this} 
+     * @return {this}
      */
     withSchedulerId(schedulerId) {
         if (!this._options) {
-            this._options = {}
+            this._options = {};
         }
-        this._options.schedulerId = schedulerId
-        return this
+        this._options.schedulerId = schedulerId;
+        return this;
     }
 
     /**
      * Set parameter schedulerIds
      * @test
      *   ogapi.newOrganizationManufacturerFinder().withSchedulerType('REST_REQUEST').findByOrganization('organization').then().catch();
-     * @return {this} 
+     * @return {this}
      */
     withSchedulerType(schedulerType) {
         if (!this._options) {
-            this._options = {}
+            this._options = {};
         }
-        this._options.schedulerType = schedulerType
-        return this
+        this._options.schedulerType = schedulerType;
+        return this;
     }
 }

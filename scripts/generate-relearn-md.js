@@ -15,9 +15,7 @@ if (!fs.existsSync(dumpPath)) {
 const dump = JSON.parse(fs.readFileSync(dumpPath, 'utf8'));
 const templateSource = fs.readFileSync(templatePath, 'utf8');
 const template = handlebars.compile(templateSource);
-const rootIndexContent = fs.existsSync(rootIndexTemplatePath) 
-    ? fs.readFileSync(rootIndexTemplatePath, 'utf8') 
-    : '';
+const rootIndexContent = fs.existsSync(rootIndexTemplatePath) ? fs.readFileSync(rootIndexTemplatePath, 'utf8') : '';
 
 // Helper to ensure directory exists
 function ensureDir(dirPath) {
@@ -73,7 +71,7 @@ function normalizeItem(item, currentFilePath) {
     }
 
     // Helper to fix type structure
-    const fixType = (obj) => {
+    const fixType = obj => {
         if (!obj) return;
         // If obj has 'types' (ESDoc style) but not 'type.names' (JSDoc template style)
         if (obj.types && !obj.type) {
@@ -86,7 +84,7 @@ function normalizeItem(item, currentFilePath) {
         // Ensure we are linking return types
         // Check if we are in InternalOpenGateAPI context (passed down or checked via item memberof?)
         // item.memberof is like "src/InternalOpenGateAPI.js~InternalOpenGateAPI"
-        if (item.memberof && item.memberof.includes("InternalOpenGateAPI")) {
+        if (item.memberof && item.memberof.includes('InternalOpenGateAPI')) {
             if (obj.type && obj.type.names && obj.type.names.length > 0) {
                 const typeName = obj.type.names[0]; // Assume first type
                 if (classPathMap.has(typeName)) {
@@ -139,11 +137,13 @@ classes.forEach(classDoc => {
     const children = memberMap.get(classLongName) || [];
 
     // Filter out private members (starting with _, marked private or undocument)
-    const publicChildren = children.filter(child => child.name && !child.name.startsWith('_') && child.access !== 'private' && !child.undocument);
+    const publicChildren = children.filter(
+        child => child.name && !child.name.startsWith('_') && child.access !== 'private' && !child.undocument
+    );
 
     // Determine output path from file path
     // classDoc.name (e.g. "src/AIModels/AIModels.js") or classDoc.longname ("src/AIModels/AIModels.js~AIModels")?
-    // dump.json has "name": "AIModels" inside "kind": "class" entry usually... 
+    // dump.json has "name": "AIModels" inside "kind": "class" entry usually...
     // Wait, let's check dump.json again.
     // Entry 1: kind: file, name: src/AIModels/AIModels.js
     // Entry 2: kind: class, name: AIModels, memberof: src/AIModels/AIModels.js, longname: src/AIModels/AIModels.js~AIModels
@@ -193,7 +193,7 @@ classes.forEach(classDoc => {
             } else {
                 const title = dirName;
                 const isJsReference = dirName === 'JS Reference';
-                const descriptionLine = isJsReference 
+                const descriptionLine = isJsReference
                     ? 'description = "Reference for the OpenGate JavaScript API: base classes and the per-resource finder and builder classes (areas, alarms, bulk, channels, provisioning, and more)."\n'
                     : '';
 
@@ -216,10 +216,8 @@ ${descriptionLine}weight = 10
     const renderedContent = template({ model: normalizedChildren });
 
     // Humanize title helper
-    const humanize = (str) => {
-        return str
-            .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')
-            .replace(/([a-z])([A-Z])/g, '$1 $2');
+    const humanize = str => {
+        return str.replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2').replace(/([a-z])([A-Z])/g, '$1 $2');
     };
 
     const humanTitle = humanize(classDoc.name);

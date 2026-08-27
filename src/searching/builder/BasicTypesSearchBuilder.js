@@ -4,8 +4,7 @@ import q from 'q';
 import merge from 'merge';
 import jp from 'jsonpath';
 
-
-/** 
+/**
  * This is an abstract class; it must be extended by another class that defines the specific search. This class is
  * responsible for managing and executing requests to the OpenGate North API.
  */
@@ -65,21 +64,19 @@ export default class BasicTypesSearchBuilder {
         var defered = q.defer();
         var promise = defered.promise;
         this._setExtraHeaders({
-            'Accept': 'application/json'
+            Accept: 'application/json'
         });
-        this._ogapi.Napi
-            .get(this._resource, this._timeout, this._getExtraHeaders(), this._getUrlParameters())
-            .then((response) => {
+        this._ogapi.Napi.get(this._resource, this._timeout, this._getExtraHeaders(), this._getUrlParameters())
+            .then(response => {
                 var resultQuery = response.body;
                 let statusCode = response.statusCode;
                 this._og_basic_types = resultQuery;
 
-                var nodes = jp.apply(this._og_basic_types, "$..['$ref']",
-                    function (value, path) {
-                        let newPath = '$..' + value.replace('#/definitions/', '');
-                        var newValue = jp.query(resultQuery, newPath);
-                        return newValue[0];
-                    });
+                var nodes = jp.apply(this._og_basic_types, "$..['$ref']", function (value, path) {
+                    let newPath = '$..' + value.replace('#/definitions/', '');
+                    var newValue = jp.query(resultQuery, newPath);
+                    return newValue[0];
+                });
                 nodes.forEach(element => {
                     var pathExpression = jp.stringify(element.path);
                     jp.value(resultQuery, pathExpression, element.value);
@@ -107,7 +104,7 @@ export default class BasicTypesSearchBuilder {
                     });
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;
@@ -142,10 +139,6 @@ export default class BasicTypesSearchBuilder {
     }
 
     build() {
-
         return this;
     }
-
-
-
 }

@@ -18,21 +18,23 @@ export default class OperationalStatusSearchBuilder extends SearchBuilder {
     }
 
     /**
-     * Build a instance of StaticSearch 
+     * Build a instance of StaticSearch
      *
      * @example
      *   ogapi.operationalStatusSearchBuilder().filter({and:[]}).build()
      * @throws {SearchBuilderError} Throw error on url build
-     * @return {StaticSearch} 
+     * @return {StaticSearch}
      */
     build() {
-        return new StaticSearch(this._parent,
+        return new StaticSearch(
+            this._parent,
             this._buildUrl(),
             this._buildFilter(),
             this._builderParams.timeout,
-            'operationalStatus', this.customFilters);
+            'operationalStatus',
+            this.customFilters
+        );
     }
-
 
     /**
      * Sets id to search
@@ -41,7 +43,7 @@ export default class OperationalStatusSearchBuilder extends SearchBuilder {
      *  ogapi.operationalStatusSearchBuilder().withId('myId').build()
      * @param {!string} operationalStatusId - operational status id
      * @throws {Error} throw error when hardwareId is not typeof string
-     * @return {OperationalStatusSearchBuilder} 
+     * @return {OperationalStatusSearchBuilder}
      */
     withId(operationalStatusId) {
         if (typeof operationalStatusId !== 'string') {
@@ -61,7 +63,7 @@ export default class OperationalStatusSearchBuilder extends SearchBuilder {
      *  ogapi.operationalStatusSearchBuilder().withEntityType('myEntityType').build()
      * @param {!string} entityType - model name
      * @throws {Error} throw error when entityType is not typeof string
-     * @return {OperationalStatusSearchBuilder} 
+     * @return {OperationalStatusSearchBuilder}
      */
     withEntityType(entityType) {
         if (typeof entityType !== 'string') {
@@ -78,5 +80,4 @@ export default class OperationalStatusSearchBuilder extends SearchBuilder {
 
         return this;
     }
-
 }

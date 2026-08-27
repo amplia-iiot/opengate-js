@@ -10,7 +10,6 @@ export const MIME_TYPES_ENUM = ['application/vnd.ms-excel', 'application/vnd.ope
  * This class allows making GET requests to the bulk executions resource in the OpenGate North API.
  */
 export default class BulkExecutionFinder extends GenericFinder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
@@ -24,7 +23,7 @@ export default class BulkExecutionFinder extends GenericFinder {
      * @private
      */
     _composeUrl() {
-        return this._baseUrl + '/' + this._organization + '/bulk/' + this._id + (this._details ? "/details" : '');
+        return this._baseUrl + '/' + this._organization + '/bulk/' + this._id + (this._details ? '/details' : '');
     }
     /**
      * Downloads a specific entity by its organization and id. This executes a GET HTTP method.
@@ -34,34 +33,39 @@ export default class BulkExecutionFinder extends GenericFinder {
      * @param {string} organization - organization.
      * @param {string} id - bulk id.
      * @param {string} mimetype - Format of file when get the result details of previously created bulk process.
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByOrganizationAndId(organization, id, mimetype) {
         this._organization = organization;
         this._id = id;
-        this._details = false
+        this._details = false;
 
         if (mimetype) {
             let not_found = '';
             let found = MIME_TYPES_ENUM.find(function (mime_type) {
                 return mime_type == this;
-            }, mimetype)
-            if (typeof found === "undefined") {
+            }, mimetype);
+            if (typeof found === 'undefined') {
                 not_found = mimetype;
             }
             if (not_found !== '') {
-                throw new Error("Parameter mimetype is not allowed. Parameter value <'" +
-                    JSON.stringify(not_found) + "'>, mimetype allowed <'" + JSON.stringify(MIME_TYPES_ENUM) + "'>");
+                throw new Error(
+                    "Parameter mimetype is not allowed. Parameter value <'" +
+                        JSON.stringify(not_found) +
+                        "'>, mimetype allowed <'" +
+                        JSON.stringify(MIME_TYPES_ENUM) +
+                        "'>"
+                );
             }
-            this._details = true
+            this._details = true;
             this._setExtraHeaders({
-                'accept': mimetype
+                accept: mimetype
             });
             return this._download();
         }
-        this._details = false
+        this._details = false;
         this._setExtraHeaders({
-            'accept': undefined
+            accept: undefined
         });
         return this._execute();
     }

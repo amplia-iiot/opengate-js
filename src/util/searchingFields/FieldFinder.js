@@ -1,12 +1,8 @@
 //https://github.com/kriskowal/q
 import q from 'q';
-import _ from 'lodash'
-import {
-    GENERATED_FIELDS
-} from './source-precompiled/Fields';
-import {
-    IOT_FIELDS
-} from './IotFields';
+import _ from 'lodash';
+import { GENERATED_FIELDS } from './source-precompiled/Fields';
+import { IOT_FIELDS } from './IotFields';
 
 var FIELDS = GENERATED_FIELDS;
 for (var field in IOT_FIELDS) {
@@ -19,8 +15,8 @@ for (var field in IOT_FIELDS) {
     }
 }
 
-const REGEX_PATH_CURRENT = new RegExp("^(.+)._current\\.?(.+)?$")
-const REGEX_PATH_ARRAY = new RegExp("\\[[0-9]+\\]")
+const REGEX_PATH_CURRENT = new RegExp('^(.+)._current\\.?(.+)?$');
+const REGEX_PATH_ARRAY = new RegExp('\\[[0-9]+\\]');
 // const REGEX_DATASTREAM_VALUE = new RegExp('value\\.?')
 
 const match_url = {
@@ -52,15 +48,15 @@ const match_url = {
     '/tickets': 'SearchOnDatamodel',
     '/channels': 'SearchOnDatamodel',
     '/organizations': 'SearchOnDatamodel',
-    'datasets': 'SearchOnDataset',
-    'timeseries': 'SearchOnTimeseries',
+    datasets: 'SearchOnDataset',
+    timeseries: 'SearchOnTimeseries'
 };
 
 const match_context = {
-    'ENTITY_ALARM': 'alarm',
-    'UPDATE_BUNDLE_VERSION': 'bundle',
-    'DATAPOINTS': 'datapoints',
-    'ENTITY_OPERATION': ['operation', 'job']
+    ENTITY_ALARM: 'alarm',
+    UPDATE_BUNDLE_VERSION: 'bundle',
+    DATAPOINTS: 'datapoints',
+    ENTITY_OPERATION: ['operation', 'job']
 };
 
 const match_url_resourceType = {
@@ -81,17 +77,17 @@ const match_url_resourceType = {
 };
 
 const match_type = {
-    'subscriber': 'DEVICE_PART_SUBSCRIBER',
-    'subscription': 'DEVICE_PART_SUBSCRIPTION',
-    'communicationsModule': 'DEVICE_PART_COMMSMODULE',
-    'device': 'DEVICE_PART_DEVICE'
+    subscriber: 'DEVICE_PART_SUBSCRIBER',
+    subscription: 'DEVICE_PART_SUBSCRIPTION',
+    communicationsModule: 'DEVICE_PART_COMMSMODULE',
+    device: 'DEVICE_PART_DEVICE'
 };
 
 const match_type_inverse = {
-    'DEVICE_PART_SUBSCRIBER': 'subscriber',
-    'DEVICE_PART_SUBSCRIPTION': 'subscription',
-    'DEVICE_PART_COMMSMODULE': 'communicationsModule',
-    'DEVICE_PART_DEVICE': 'device'
+    DEVICE_PART_SUBSCRIBER: 'subscriber',
+    DEVICE_PART_SUBSCRIPTION: 'subscription',
+    DEVICE_PART_COMMSMODULE: 'communicationsModule',
+    DEVICE_PART_DEVICE: 'device'
 };
 
 const fields_related = ['relColl', 'relProv'];
@@ -122,44 +118,44 @@ const TYPE_FIELD = {
     }
 };
 const _getCustomSchema = function (_ds, schema) {
-    let result
-    const ds = _ds[0]
+    let result;
+    const ds = _ds[0];
     if (!ds || !schema.properties || !schema.properties[ds]) {
-        result = schema
+        result = schema;
     } else {
-        result = _getCustomSchema(_ds.slice(1), schema.properties[ds])
+        result = _getCustomSchema(_ds.slice(1), schema.properties[ds]);
     }
-    return result
-}
+    return result;
+};
 
 const _getDatamodelFields = function (parent, objSearcher) {
     let defered = q.defer();
-    const selectedField = objSearcher.selectedField
-    const selectAll = objSearcher.selectAll
-    const organization = objSearcher.extraData && objSearcher.extraData.organization
+    const selectedField = objSearcher.selectedField;
+    const selectAll = objSearcher.selectAll;
+    const organization = objSearcher.extraData && objSearcher.extraData.organization;
     let datamodelSearchBuilder = parent._ogapi.datamodelsSearchBuilder();
 
     let rtFilter = {
-        'and': []
+        and: []
     };
 
     if (parent._resourceTypes) {
         rtFilter.and.push({
-            'in': {
+            in: {
                 'datamodels.allowedResourceTypes': parent._resourceTypes
             }
         });
     }
     if (organization) {
         rtFilter.and.push({
-            'eq': {
+            eq: {
                 'datamodels.organizationName': organization
             }
         });
     }
     if (selectedField) {
         rtFilter.and.push({
-            'eq': {
+            eq: {
                 'datamodels.categories.datastreams.identifier': selectedField
             }
         });
@@ -168,33 +164,39 @@ const _getDatamodelFields = function (parent, objSearcher) {
         datamodelSearchBuilder.filter(rtFilter);
     }
 
-    datamodelSearchBuilder.build().execute().then(function (response) {
-        var datastreams = [];
-        if (response.statusCode === 200) {
-            datastreams = response.data.datamodels.map(function (datamodel) {
-                var categories = datamodel.categories || [];
-                return categories.map(function (category) {
-                    var datastreams = category.datastreams || [];
-                    return datastreams.map(function (ds) {
-                        if (selectedField || selectAll) {
-                            return ds;
-                        }
-                        return ds.identifier;
+    datamodelSearchBuilder
+        .build()
+        .execute()
+        .then(function (response) {
+            var datastreams = [];
+            if (response.statusCode === 200) {
+                datastreams = response.data.datamodels.map(function (datamodel) {
+                    var categories = datamodel.categories || [];
+                    return categories.map(function (category) {
+                        var datastreams = category.datastreams || [];
+                        return datastreams.map(function (ds) {
+                            if (selectedField || selectAll) {
+                                return ds;
+                            }
+                            return ds.identifier;
+                        });
                     });
                 });
-            });
-            datastreams = reduce(datastreams);
-        }
-        if (selectedField) {
-            defered.resolve(datastreams.find(function (dsIdTmp) {
-                return selectedField === dsIdTmp.identifier;
-            }));
-        } else {
-            defered.resolve(datastreams);
-        }
-    }).catch(function (error) {
-        defered.reject(error);
-    });
+                datastreams = reduce(datastreams);
+            }
+            if (selectedField) {
+                defered.resolve(
+                    datastreams.find(function (dsIdTmp) {
+                        return selectedField === dsIdTmp.identifier;
+                    })
+                );
+            } else {
+                defered.resolve(datastreams);
+            }
+        })
+        .catch(function (error) {
+            defered.reject(error);
+        });
 
     function reduce(array) {
         if (array.length > 0 && array[0].constructor === Array) {
@@ -205,17 +207,18 @@ const _getDatamodelFields = function (parent, objSearcher) {
         }
         return array;
     }
-    return defered.promise
-}
+    return defered.promise;
+};
 
 const _searchColumns = function (_this, finder, objSearcher, defered) {
     //https://github.com/kriskowal/q#using-deferreds
-    const selectedField = objSearcher.selectedField
+    const selectedField = objSearcher.selectedField;
     //GET dataset by organization and datasetId
-    var columnDatastreams = []
-    var organization = objSearcher.extraData.organization
-    var id = objSearcher.extraData[finder.entity]
-    _this._ogapi[finder.api]()[finder.method](organization, id)
+    var columnDatastreams = [];
+    var organization = objSearcher.extraData.organization;
+    var id = objSearcher.extraData[finder.entity];
+    _this._ogapi[finder.api]()
+        [finder.method](organization, id)
         .then(function (response) {
             if (response.statusCode === 200) {
                 if (response.data.identifierColumn) {
@@ -227,10 +230,10 @@ const _searchColumns = function (_this, finder, objSearcher, defered) {
                         // sort: true,
                         notFilterable: false,
                         filter: 'YES',
-                        type: "string",
+                        type: 'string',
                         schema: { type: 'string' },
                         _isContext: true
-                    })
+                    });
                 }
 
                 if (response.data.bucketColumn) {
@@ -242,13 +245,13 @@ const _searchColumns = function (_this, finder, objSearcher, defered) {
                         // sort: true,
                         notFilterable: false,
                         filter: 'YES',
-                        type: "date-time",
+                        type: 'date-time',
                         schema: {
                             type: 'string',
                             format: 'datetime'
                         },
                         _isContext: true
-                    })
+                    });
                 }
 
                 if (response.data.bucketInitColumn) {
@@ -260,128 +263,140 @@ const _searchColumns = function (_this, finder, objSearcher, defered) {
                         // sort: true,
                         notFilterable: false,
                         filter: 'YES',
-                        type: "date-time",
+                        type: 'date-time',
                         schema: {
                             type: 'string',
                             format: 'datetime'
                         },
                         _isContext: true
-                    })
+                    });
                 }
 
-                var contextColumns = response.data.context || []
+                var contextColumns = response.data.context || [];
                 if (contextColumns.length > 0) {
-                    contextColumns = contextColumns.map((ctxCol) => {
-                        var finalCtx = { ...ctxCol }
-                        finalCtx._isContext = true
-                        return finalCtx
-                    })
+                    contextColumns = contextColumns.map(ctxCol => {
+                        var finalCtx = { ...ctxCol };
+                        finalCtx._isContext = true;
+                        return finalCtx;
+                    });
                 }
-                var columns = _.concat(response.data.columns || [], contextColumns)
+                var columns = _.concat(response.data.columns || [], contextColumns);
 
                 //search de la definición de schemas de opengate
-                _this._ogapi.basicTypesSearchBuilder().withPath('$').build().execute().then(function (basicTypes) {
-                    const definitions = basicTypes.data.definitions
-                    objSearcher.selectAll = true
-                    if (selectedField) {
-                        columns = columns.filter(function (column) { return selectedField === (column.name || column.alias) })
-                        const column = columns[0]
-                        const datastreamMatch = column.path.match(REGEX_PATH_CURRENT);
-                        const datastream = datastreamMatch[1].replace(REGEX_PATH_ARRAY, "[]")
-                        objSearcher.selectedField = datastream
-                    }
-                    //recuperamos la defnición de todas las columnas y todos los datastreams
-                    _getDatamodelFields(_this, objSearcher).then(function (datamodelFields) {
-                        columns.forEach(function (column) {
-                            // console.log('--------------------------------' + column)
+                _this._ogapi
+                    .basicTypesSearchBuilder()
+                    .withPath('$')
+                    .build()
+                    .execute()
+                    .then(function (basicTypes) {
+                        const definitions = basicTypes.data.definitions;
+                        objSearcher.selectAll = true;
+                        if (selectedField) {
+                            columns = columns.filter(function (column) {
+                                return selectedField === (column.name || column.alias);
+                            });
+                            const column = columns[0];
+                            const datastreamMatch = column.path.match(REGEX_PATH_CURRENT);
+                            const datastream = datastreamMatch[1].replace(REGEX_PATH_ARRAY, '[]');
+                            objSearcher.selectedField = datastream;
+                        }
+                        //recuperamos la defnición de todas las columnas y todos los datastreams
+                        _getDatamodelFields(_this, objSearcher)
+                            .then(function (datamodelFields) {
+                                columns.forEach(function (column) {
+                                    // console.log('--------------------------------' + column)
 
-                            // Se calcula el schema dependiendo del tipo de dato
-                            if (column.type !== 'date-time') {
-                                column.schema = {
-                                    type: column.type
-                                }
-                            } else {
-                                column.schema = {
-                                    type: 'string',
-                                    format: 'datetime'
-                                }
-                            }
+                                    // Se calcula el schema dependiendo del tipo de dato
+                                    if (column.type !== 'date-time') {
+                                        column.schema = {
+                                            type: column.type
+                                        };
+                                    } else {
+                                        column.schema = {
+                                            type: 'string',
+                                            format: 'datetime'
+                                        };
+                                    }
 
-                            if (column.path.endsWith('._current.value')) {
-                                //console.log('---------------------------------------------')
-                                const datastreamMatch = column.path.substring(0, column.path.indexOf('._current.value'));
+                                    if (column.path.endsWith('._current.value')) {
+                                        //console.log('---------------------------------------------')
+                                        const datastreamMatch = column.path.substring(0, column.path.indexOf('._current.value'));
 
-                                //Buscamos la definición del datastream en el datamodel
-                                const datamodelField = Array.isArray(datamodelFields) ? datamodelFields.find(function (df) {
-                                    return datastreamMatch === df.identifier
-                                }) : datamodelFields
-                            }
+                                        //Buscamos la definición del datastream en el datamodel
+                                        const datamodelField = Array.isArray(datamodelFields)
+                                            ? datamodelFields.find(function (df) {
+                                                  return datastreamMatch === df.identifier;
+                                              })
+                                            : datamodelFields;
+                                    }
 
-                            // //Expresión regular para recuperar el path del datastream (1) y, si se tratase de un datastream complejo, también el path hasta el dato simple (2).
-                            // //Datastream simple: provision.device.identifier._current.value, device.communicationModules[0].subscriber.mobile.icc._current.at
-                            // //Datastream complejo: device.model._current.value.manufacturer, device.location._current.value.position.type
-                            // const datastreamMatch = column.path.match(REGEX_PATH_CURRENT);
-                            // //Eliminamos el indice para los modulos de comunicaciones y los arrays para el resto de datastreams
-                            // const datastream = datastreamMatch[1].replace(REGEX_PATH_ARRAY, "[]")
-                            // const subdatastream = datastreamMatch[2].replace(REGEX_DATASTREAM_VALUE, '').replace(REGEX_PATH_ARRAY, '');
-                            // //Buscamos la definición del datastream en el datamodel
-                            // const datamodelField = Array.isArray(datamodelFields) ? datamodelFields.find(function (df) {
-                            //     return datastream === df.identifier
-                            // }) : datamodelFields
-                            // const schema = datamodelField.schema
-                            // // si es un datastream simple, la asignación es directa
-                            // if (!subdatastream) {
-                            //     column.schema = schema
-                            // } else {
-                            //     //si es un datastream complejo hay que navegar por el schema hasta encontrar su tipo
-                            //     const sds = subdatastream.split('.')
-                            //     let _schema = (schema.$ref && definitions[schema.$ref.replace(new RegExp('.*#/definitions/'), '')]) || schema
-                            //     sds.forEach(function (sd) {
-                            //         // caso: device.model._current.at - no hay schema
-                            //         _schema = _schema && _schema.properties && _schema.properties[sd]
-                            //     })
-                            //     column.schema = _schema
-                            // }
-                            //simular los campos de un datastream
-                            column.identifier = (column.name || column.alias)
-                            column.indexed = column.filter !== 'NO' // column.filter === 'YES' || column.filter === 'ALWAYS'
-                            column.notFilterable = column.filter === 'NO'
+                                    // //Expresión regular para recuperar el path del datastream (1) y, si se tratase de un datastream complejo, también el path hasta el dato simple (2).
+                                    // //Datastream simple: provision.device.identifier._current.value, device.communicationModules[0].subscriber.mobile.icc._current.at
+                                    // //Datastream complejo: device.model._current.value.manufacturer, device.location._current.value.position.type
+                                    // const datastreamMatch = column.path.match(REGEX_PATH_CURRENT);
+                                    // //Eliminamos el indice para los modulos de comunicaciones y los arrays para el resto de datastreams
+                                    // const datastream = datastreamMatch[1].replace(REGEX_PATH_ARRAY, "[]")
+                                    // const subdatastream = datastreamMatch[2].replace(REGEX_DATASTREAM_VALUE, '').replace(REGEX_PATH_ARRAY, '');
+                                    // //Buscamos la definición del datastream en el datamodel
+                                    // const datamodelField = Array.isArray(datamodelFields) ? datamodelFields.find(function (df) {
+                                    //     return datastream === df.identifier
+                                    // }) : datamodelFields
+                                    // const schema = datamodelField.schema
+                                    // // si es un datastream simple, la asignación es directa
+                                    // if (!subdatastream) {
+                                    //     column.schema = schema
+                                    // } else {
+                                    //     //si es un datastream complejo hay que navegar por el schema hasta encontrar su tipo
+                                    //     const sds = subdatastream.split('.')
+                                    //     let _schema = (schema.$ref && definitions[schema.$ref.replace(new RegExp('.*#/definitions/'), '')]) || schema
+                                    //     sds.forEach(function (sd) {
+                                    //         // caso: device.model._current.at - no hay schema
+                                    //         _schema = _schema && _schema.properties && _schema.properties[sd]
+                                    //     })
+                                    //     column.schema = _schema
+                                    // }
+                                    //simular los campos de un datastream
+                                    column.identifier = column.name || column.alias;
+                                    column.indexed = column.filter !== 'NO'; // column.filter === 'YES' || column.filter === 'ALWAYS'
+                                    column.notFilterable = column.filter === 'NO';
 
-                            // console.log('=============================' + column)
-                            columnDatastreams.push(column)
-                        })
-                        defered.resolve(columnDatastreams);
-                    }).catch(function (error) {
-                        console.error(error)
+                                    // console.log('=============================' + column)
+                                    columnDatastreams.push(column);
+                                });
+                                defered.resolve(columnDatastreams);
+                            })
+                            .catch(function (error) {
+                                console.error(error);
+                                defered.reject(error);
+                            });
+                    })
+                    .catch(function (error) {
+                        console.error(error);
                         defered.reject(error);
                     });
-
-                }).catch(function (error) {
-                    console.error(error)
-                    defered.reject(error);
-                });
             }
-        }).catch(function (error) {
-            console.error(error)
+        })
+        .catch(function (error) {
+            console.error(error);
             defered.reject(error);
         });
-}
-
+};
 
 const FIELD_SEARCHER = {
-
     [SEARCH_FIELDS]: function (objSearcher, defered) {
         // https://github.com/kriskowal/q#using-deferreds
-        _getDatamodelFields(this, objSearcher).then(function (response) {
-            defered.resolve(response)
-        }).catch(function (err) {
-            defered.reject(err)
-        })
+        _getDatamodelFields(this, objSearcher)
+            .then(function (response) {
+                defered.resolve(response);
+            })
+            .catch(function (err) {
+                defered.reject(err);
+            });
     },
     [SIMPLE_FIELDS]: function (objSearcher, defered) {
-        const context = objSearcher.context
-        const primaryType = objSearcher.primaryType
-        const field = objSearcher.selectedField
+        const context = objSearcher.context;
+        const primaryType = objSearcher.primaryType;
+        const field = objSearcher.selectedField;
         var paths = [];
         if (context[primaryType] instanceof Array) {
             if (field) {
@@ -389,32 +404,34 @@ const FIELD_SEARCHER = {
                 let fieldMatch = null;
                 for (fieldIdx = 0; fieldMatch === null && fieldIdx < context[primaryType].length; fieldIdx++) {
                     let fieldTmp = context[primaryType][fieldIdx];
-                    if (fieldTmp.toLowerCase() === field.toLowerCase() ||
-                        fieldTmp.toLowerCase() === (field.toLowerCase() + 'name')) {
+                    if (fieldTmp.toLowerCase() === field.toLowerCase() || fieldTmp.toLowerCase() === field.toLowerCase() + 'name') {
                         fieldMatch = fieldTmp;
                     } else if (match_context[primaryType]) {
                         if (match_context[primaryType] instanceof Array) {
                             match_context[primaryType].forEach(function (ctxMatch) {
-                                if (fieldTmp.toLowerCase() === (ctxMatch + field.toLowerCase()) ||
-                                    fieldTmp.toLowerCase() === (ctxMatch + '.' + field.toLowerCase()) ||
-                                    fieldTmp.toLowerCase() === (ctxMatch + field.toLowerCase() + 'name') ||
-                                    fieldTmp.toLowerCase() === (ctxMatch + '.' + field.toLowerCase() + 'name')) {
+                                if (
+                                    fieldTmp.toLowerCase() === ctxMatch + field.toLowerCase() ||
+                                    fieldTmp.toLowerCase() === ctxMatch + '.' + field.toLowerCase() ||
+                                    fieldTmp.toLowerCase() === ctxMatch + field.toLowerCase() + 'name' ||
+                                    fieldTmp.toLowerCase() === ctxMatch + '.' + field.toLowerCase() + 'name'
+                                ) {
                                     if (!fieldMatch) fieldMatch = fieldTmp;
                                 }
                             });
                         } else {
-                            if (fieldTmp.toLowerCase() === (match_context[primaryType] + field.toLowerCase()) ||
-                                fieldTmp.toLowerCase() === (match_context[primaryType] + '.' + field.toLowerCase()) ||
-                                fieldTmp.toLowerCase() === (match_context[primaryType] + field.toLowerCase() + 'name') ||
-                                fieldTmp.toLowerCase() === (match_context[primaryType] + '.' + field.toLowerCase() + 'name')) {
+                            if (
+                                fieldTmp.toLowerCase() === match_context[primaryType] + field.toLowerCase() ||
+                                fieldTmp.toLowerCase() === match_context[primaryType] + '.' + field.toLowerCase() ||
+                                fieldTmp.toLowerCase() === match_context[primaryType] + field.toLowerCase() + 'name' ||
+                                fieldTmp.toLowerCase() === match_context[primaryType] + '.' + field.toLowerCase() + 'name'
+                            ) {
                                 fieldMatch = fieldTmp;
                             }
                         }
                     }
                 }
 
-                if (fieldMatch)
-                    paths.push(fieldMatch);
+                if (fieldMatch) paths.push(fieldMatch);
             } else {
                 paths = context[primaryType].slice();
             }
@@ -443,27 +460,19 @@ const FIELD_SEARCHER = {
         defered.resolve(paths.slice());
     },
     [COMPLEX_FIELDS]: function (objSearcher, defered) {
-        const states = objSearcher.states
-        const context = objSearcher.context
-        const primaryType = objSearcher.primaryType
+        const states = objSearcher.states;
+        const context = objSearcher.context;
+        const primaryType = objSearcher.primaryType;
 
         const finiteStateMachine = {
             1: function (states, context) {
                 // Fields del primaryType + los fields de los relacionados = complexFields
-                return context[primaryType].concat(
-                    complexFields.filter(
-                        filterRelatedEntities,
-                        match_type_inverse[primaryType]
-                    )
-                );
+                return context[primaryType].concat(complexFields.filter(filterRelatedEntities, match_type_inverse[primaryType]));
             },
             2: function (states, context) {
                 try {
                     // Fields del relacionado + fields_related
-                    return appendPreviousStates(
-                        states,
-                        fieldsNestedState(states[0], context).concat(fields_related)
-                    );
+                    return appendPreviousStates(states, fieldsNestedState(states[0], context).concat(fields_related));
                 } catch (err) {
                     return [];
                 }
@@ -472,11 +481,8 @@ const FIELD_SEARCHER = {
                 let secondState = states[1];
                 if (fields_related.indexOf(secondState) === -1) return [];
                 try {
-                    // Fields del relacionado 
-                    return appendPreviousStates(
-                        states,
-                        fieldsNestedState(states[0], context)
-                    );
+                    // Fields del relacionado
+                    return appendPreviousStates(states, fieldsNestedState(states[0], context));
                 } catch (err) {
                     return [];
                 }
@@ -485,7 +491,7 @@ const FIELD_SEARCHER = {
 
         let statesSize = states.length;
         let currentState = finiteStateMachine[statesSize];
-        if (typeof currentState === "undefined") return defered.resolve([]);
+        if (typeof currentState === 'undefined') return defered.resolve([]);
         return defered.resolve(currentState(states, context));
 
         function fieldsNestedState(state, context) {
@@ -505,42 +511,52 @@ const FIELD_SEARCHER = {
             fields.forEach(function (field) {
                 let arrayField = states.slice(0, -1);
                 arrayField.push(field);
-                out.push(arrayField.join("."));
+                out.push(arrayField.join('.'));
             });
             return out;
         }
     },
     [SEARCH_COLUMNS]: function (objSearcher, defered) {
-        _searchColumns(this, { api: 'newDatasetFinder', method: 'findByOrganizationAndDatasetId', entity: 'dataset' }, objSearcher, defered)
+        _searchColumns(
+            this,
+            { api: 'newDatasetFinder', method: 'findByOrganizationAndDatasetId', entity: 'dataset' },
+            objSearcher,
+            defered
+        );
     },
     [SEARCH_COLUMNS_CONTEXT]: function (objSearcher, defered) {
-        _searchColumns(this, { api: 'newTimeserieFinder', method: 'findByOrganizationAndTimeserieId', entity: 'timeserie' }, objSearcher, defered)
+        _searchColumns(
+            this,
+            { api: 'newTimeserieFinder', method: 'findByOrganizationAndTimeserieId', entity: 'timeserie' },
+            objSearcher,
+            defered
+        );
     }
-}
+};
 
 export default class FieldFinder {
     constructor(ogapi, url, extraData) {
         this._ogapi = ogapi;
         this._url = url;
         this._type = TYPE_FIELD.get(url);
-        this._extraData = extraData
+        this._extraData = extraData;
 
         if (this._type === SEARCH_FIELDS) {
             this._resourceTypes = match_url_resourceType.get(url);
         }
     }
-    find(input = "") {
+    find(input = '') {
         let defered = q.defer();
         let objSearcher = {
             states: input.split('.'),
             context: FIELDS[match_url[this._url]],
             primaryType: match_url[this._url],
             extraData: this._extraData
-        }
+        };
         FIELD_SEARCHER[this._type].call(this, objSearcher, defered);
         return defered.promise;
     }
-    findAll(input = "") {
+    findAll(input = '') {
         let defered = q.defer();
         let objSearcher = {
             states: input.split('.'),
@@ -548,12 +564,12 @@ export default class FieldFinder {
             primaryType: match_url[this._url],
             selectAll: true,
             extraData: this._extraData
-        }
+        };
         FIELD_SEARCHER[this._type].call(this, objSearcher, defered);
         return defered.promise;
     }
 
-    findFieldPath(field = "") {
+    findFieldPath(field = '') {
         let defered = q.defer();
         let objSearcher = {
             states: field,
@@ -561,7 +577,7 @@ export default class FieldFinder {
             primaryType: match_url[this._url],
             selectedField: field,
             extraData: this._extraData
-        }
+        };
         FIELD_SEARCHER[this._type].call(this, objSearcher, defered);
         return defered.promise;
     }

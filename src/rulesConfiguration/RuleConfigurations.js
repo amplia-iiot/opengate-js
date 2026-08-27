@@ -10,13 +10,12 @@ import parameterError from '../util/parameterError';
  * This is a base object that contains everything you can do with RulesConfigurations.
  */
 export default class RuleConfigurations extends BaseProvision {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi, organization, channel, identifier, ruleConfigurationObj) {
-        super(ogapi, "/organizations");
+        super(ogapi, '/organizations');
 
         // Required
         this.withOrganization(organization);
@@ -71,7 +70,6 @@ export default class RuleConfigurations extends BaseProvision {
         }
     }
 
-
     /**
      * Set the organization attribute
      * @param {string} organization - required field
@@ -122,31 +120,30 @@ export default class RuleConfigurations extends BaseProvision {
 
     /**
      * Set the description attribute
-     * @param {string} description 
+     * @param {string} description
      * @return {RulesConfigurations}
      */
     withDescription(description) {
         if (typeof description !== 'string' || description.length > 250)
-            throw parameterError("OGAPI_STRING_PARAMETER_MAX_LENGTH_250", { parameter: 'description' });
+            throw parameterError('OGAPI_STRING_PARAMETER_MAX_LENGTH_250', { parameter: 'description' });
         this._description = description;
         return this;
     }
 
     /**
      * Set the javascript attribute
-     * @param {string} javascript 
+     * @param {string} javascript
      * @return {RulesConfigurations}
      */
     withJavascript(javascript) {
-        if (typeof javascript !== 'string')
-            throw new Error('Parameter name must be a string and cannot be empty');
+        if (typeof javascript !== 'string') throw new Error('Parameter name must be a string and cannot be empty');
         this._javascript = javascript;
         return this;
     }
 
     /**
      * Set the mode attribute
-     * @param {string} mode 
+     * @param {string} mode
      * @return {RulesConfigurations}
      */
     withMode(mode) {
@@ -156,7 +153,7 @@ export default class RuleConfigurations extends BaseProvision {
 
     /**
      * Set the type attribute
-     * @param {string} type 
+     * @param {string} type
      * @return {RulesConfigurations}
      */
     withType(type) {
@@ -166,31 +163,29 @@ export default class RuleConfigurations extends BaseProvision {
 
     /**
      * Set the active attribute
-     * @param {boolean} active 
+     * @param {boolean} active
      * @return {RulesConfigurations}
      */
     withActive(active) {
-        if (typeof active !== 'boolean')
-            throw new Error('Parameter active must be true or false');
+        if (typeof active !== 'boolean') throw new Error('Parameter active must be true or false');
         this._active = active;
         return this;
     }
 
     /**
      * Set the actions delay attribute
-     * @param {number} actionsDelay 
+     * @param {number} actionsDelay
      * @return {RulesConfigurations}
      */
     withActionsDelay(actionsDelay) {
-        if (typeof actionsDelay !== 'number')
-            throw new Error('Parameter actionsDelay must be a number');
+        if (typeof actionsDelay !== 'number') throw new Error('Parameter actionsDelay must be a number');
         this._actionsDelay = actionsDelay;
         return this;
     }
 
     /**
      * Allows the modification of a condition
-     * @param {string} conditionFilter 
+     * @param {string} conditionFilter
      * @return {_RuleCondition}
      */
     withCondition(conditionFilter) {
@@ -201,7 +196,7 @@ export default class RuleConfigurations extends BaseProvision {
 
     /**
      * Allows the modification of the actions
-     * @param {object} actions 
+     * @param {object} actions
      * @return {_RuleCondition}
      */
     withActions(actions) {
@@ -212,7 +207,7 @@ export default class RuleConfigurations extends BaseProvision {
 
     /**
      * Allows the modification of the actions
-     * @param {array} parameters 
+     * @param {array} parameters
      * @return {_RuleCondition}
      */
     withParameters(parameters) {
@@ -225,42 +220,53 @@ export default class RuleConfigurations extends BaseProvision {
         // this._checkRequiredParameters();
 
         let updateData = {
-            "identifier": this._identifier,
-            "name": this._name,
-            "active": this._active,
-            "mode": this._mode,
-            "type": this._type,
-            "severity": this._severity,
-            "description": (this._description ? this._description : undefined),
-            "parameters": this._parameters,
-            "condition": this._mode === 'EASY' ? this._condition : undefined,
-            "actionsDelay": this._actionsDelay,
-            "actions": this._mode === 'EASY' ? this._actions : undefined,
-            "javascript": this._mode === 'ADVANCED' ? this._javascript : undefined
+            identifier: this._identifier,
+            name: this._name,
+            active: this._active,
+            mode: this._mode,
+            type: this._type,
+            severity: this._severity,
+            description: this._description ? this._description : undefined,
+            parameters: this._parameters,
+            condition: this._mode === 'EASY' ? this._condition : undefined,
+            actionsDelay: this._actionsDelay,
+            actions: this._mode === 'EASY' ? this._actions : undefined,
+            javascript: this._mode === 'ADVANCED' ? this._javascript : undefined
         };
 
         return updateData;
     }
 
-
     _checkRequiredParameters(isUpdate) {
         if (isUpdate) {
-            if (this._identifier === undefined || this._organization === undefined || this._channel === undefined || this._active === undefined || this._mode === undefined)
+            if (
+                this._identifier === undefined ||
+                this._organization === undefined ||
+                this._channel === undefined ||
+                this._active === undefined ||
+                this._mode === undefined
+            )
                 throw new Error('Parameters organization, channel, active, mode and identifier must be defined');
         } else {
-            if (this._name === undefined || this._organization === undefined || this._channel === undefined || this._active === undefined || this._mode === undefined)
+            if (
+                this._name === undefined ||
+                this._organization === undefined ||
+                this._channel === undefined ||
+                this._active === undefined ||
+                this._mode === undefined
+            )
                 throw new Error('Parameters organization, channel, active, mode and name must be defined');
         }
     }
 
     _buildURL() {
-        return "rules/" + this._resource + "/" + this._organization + "/channels/" + this._channel;
+        return 'rules/' + this._resource + '/' + this._organization + '/channels/' + this._channel;
     }
 
-    /** 
+    /**
      * Create a new Rule
      * @return {Promise}
-     * @throws {Error} 
+     * @throws {Error}
      */
     create() {
         this._checkRequiredParameters();
@@ -268,10 +274,10 @@ export default class RuleConfigurations extends BaseProvision {
         return this._doNorthPost(this._buildURL(), this._composeElement());
     }
 
-    /** 
+    /**
      * Update a Rule
      * @return {Promise}
-     * @throws {Error} 
+     * @throws {Error}
      */
     update() {
         this._checkRequiredParameters(true);
@@ -279,10 +285,10 @@ export default class RuleConfigurations extends BaseProvision {
         return this._doNorthPut(this._buildURL() + '/' + this._identifier, this._composeElement());
     }
 
-    /** 
+    /**
      * Update a Rule's parameters
      * @return {Promise}
-     * @throws {Error} 
+     * @throws {Error}
      */
     updateParameters(newParameters) {
         if (this._identifier === undefined || this._organization === undefined || this._channel === undefined) {
@@ -292,10 +298,10 @@ export default class RuleConfigurations extends BaseProvision {
         return this._doNorthPut(this._buildURL() + '/' + this._identifier + '/parameters', newParameters || this._parameters || []);
     }
 
-    /** 
+    /**
      * Deletes the selected RuleConfiguration
      * @return {Promise}
-     * @throws {Error} 
+     * @throws {Error}
      */
     delete() {
         if (this._identifier === undefined || this._organization === undefined || this._channel === undefined)
@@ -304,7 +310,7 @@ export default class RuleConfigurations extends BaseProvision {
         var defered = q.defer();
         var promise = defered.promise;
         this._ogapi.Napi.delete(this._buildURL() + '/' + this._identifier)
-            .then((res) => {
+            .then(res => {
                 if (res.statusCode === 200) {
                     defered.resolve({
                         statusCode: res.statusCode
@@ -316,7 +322,7 @@ export default class RuleConfigurations extends BaseProvision {
                     });
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;

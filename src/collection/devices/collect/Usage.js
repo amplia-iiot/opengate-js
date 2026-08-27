@@ -1,11 +1,9 @@
 'use strict';
 
-
 /**
  * This is a base object that allows the user to create a Usage object.
  */
 export default class Usage {
-
     constructor() {
         this._usageUnit = undefined;
         this._current = undefined;
@@ -14,14 +12,13 @@ export default class Usage {
         this._minimum = undefined;
     }
 
-     /**
+    /**
      * Set the unit attribute
      * @param {string} unit - optionals field
      * @return {Usage}
      */
     withUsageUnit(unit) {
-        if ( typeof unit !== 'string' || unit.length === 0 )
-             throw new Error('Parameter unit usage must be String type and cannot be empty');
+        if (typeof unit !== 'string' || unit.length === 0) throw new Error('Parameter unit usage must be String type and cannot be empty');
         this._usageUnit = unit;
         return this;
     }
@@ -32,8 +29,8 @@ export default class Usage {
      * @return {Usage}
      */
     withCurrent(current) {
-        if ( typeof current !== 'string' || current.length === 0 )
-             throw new Error('Parameter current must be string type and cannot be empty');
+        if (typeof current !== 'string' || current.length === 0)
+            throw new Error('Parameter current must be string type and cannot be empty');
         this._current = current;
         return this;
     }
@@ -44,8 +41,8 @@ export default class Usage {
      * @return {Usage}
      */
     withAverage(average) {
-         if ( typeof average !== 'string' || average.length === 0 )
-             throw new Error('Parameter average must be string type and cannot be empty');
+        if (typeof average !== 'string' || average.length === 0)
+            throw new Error('Parameter average must be string type and cannot be empty');
         this._average = average;
         return this;
     }
@@ -55,10 +52,10 @@ export default class Usage {
      * @param {string} maximum  - optionals field
      * @return {Usage}
      */
-    withMaximum (maximum ) {
-         if ( typeof maximum  !== 'string' || maximum.length === 0 )
-             throw new Error('Parameter maximum  must be string type and cannot be empty');
-        this._maximum  = maximum ;
+    withMaximum(maximum) {
+        if (typeof maximum !== 'string' || maximum.length === 0)
+            throw new Error('Parameter maximum  must be string type and cannot be empty');
+        this._maximum = maximum;
         return this;
     }
 
@@ -67,25 +64,21 @@ export default class Usage {
      * @param {string} minimum  - optionals field
      * @return {Usage}
      */
-    withMinimum (minimum ) {
-         if ( typeof minimum  !== 'string' || minimum.length === 0 )
-             throw new Error('Parameter minimum  must be string type and cannot be empty');
-        this._minimum  = minimum ;
+    withMinimum(minimum) {
+        if (typeof minimum !== 'string' || minimum.length === 0)
+            throw new Error('Parameter minimum  must be string type and cannot be empty');
+        this._minimum = minimum;
         return this;
     }
 
-    composeElement(){
-
+    composeElement() {
         var usage = {
-            "unit": this._usageUnit,
-            "current": this._current,
-            "average": this._average,
-            "maximum": this._maximum,
-            "minimum": this._minimum
+            unit: this._usageUnit,
+            current: this._current,
+            average: this._average,
+            maximum: this._maximum,
+            minimum: this._minimum
         };
         return usage;
     }
-
- 
-    
 }

@@ -7,8 +7,6 @@ import SimpleBuilder from './SimpleBuilder';
  * that needs a communications module identifier to be set into the box.
  */
 export default class ComplexBuilder extends SimpleBuilder {
-
-
     /**
      * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
@@ -25,7 +23,7 @@ export default class ComplexBuilder extends SimpleBuilder {
         let _this = this;
         if (_flattenedEntityData && Object.keys(_flattenedEntityData).length > 0) {
             Object.keys(_flattenedEntityData).forEach(function (_id) {
-                if (_id.toLowerCase().startsWith("provision")) {
+                if (_id.toLowerCase().startsWith('provision')) {
                     var _content = _flattenedEntityData[_id];
 
                     if (_content.forEach) {
@@ -42,7 +40,6 @@ export default class ComplexBuilder extends SimpleBuilder {
         }
     }
 
-
     _initFormJson(_jsonEntityData, _path, complex) {
         let _this = this;
         if (_jsonEntityData) {
@@ -50,7 +47,7 @@ export default class ComplexBuilder extends SimpleBuilder {
             keys.forEach(function (key) {
                 var obj = _jsonEntityData[key];
                 var _current = obj._current;
-                var path = _path ? (_path + '.' + key) : key;
+                var path = _path ? _path + '.' + key : key;
                 if (_current) {
                     var value = _current.value;
                     if (complex) {
@@ -63,8 +60,7 @@ export default class ComplexBuilder extends SimpleBuilder {
                         obj.forEach(function (cm) {
                             _this._initFromJson(cm, path + '[]', cm.identifier._current.value);
                         });
-                    } else
-                        _this._initFromJson(obj, path, complex);
+                    } else _this._initFromJson(obj, path, complex);
                 }
             });
         }
@@ -89,14 +85,17 @@ export default class ComplexBuilder extends SimpleBuilder {
             console.warn('Communication module identifier not defined. This value wil be ignored');
             return this;
         }
-        if (this.getAllowedDatastreams().filter(function (ds) {
-            return ds.identifier === _id;
-        }).length !== 1) {
-            console.warn('Datastream not found or operations can not be performed on it. This value will be ignored. Datastream Name: ' + _id);
+        if (
+            this.getAllowedDatastreams().filter(function (ds) {
+                return ds.identifier === _id;
+            }).length !== 1
+        ) {
+            console.warn(
+                'Datastream not found or operations can not be performed on it. This value will be ignored. Datastream Name: ' + _id
+            );
             return this;
         }
-        if (!this._entity[_id])
-            this._entity[_id] = [];
+        if (!this._entity[_id]) this._entity[_id] = [];
 
         let _found = false;
 
@@ -104,12 +103,12 @@ export default class ComplexBuilder extends SimpleBuilder {
             let _rel = this._entity[_id][_idx];
             if (_rel._index && _rel._index.value && _rel._index.value === idCommunicationModules) {
                 this._entity[_id][_idx] = {
-                    '_index': {
-                        'value': idCommunicationModules
+                    _index: {
+                        value: idCommunicationModules
                     },
-                    '_value': {
-                        '_current': {
-                            'value': val
+                    _value: {
+                        _current: {
+                            value: val
                         }
                     }
                 };
@@ -120,12 +119,12 @@ export default class ComplexBuilder extends SimpleBuilder {
 
         if (!_found) {
             this._entity[_id].push({
-                '_index': {
-                    'value': idCommunicationModules
+                _index: {
+                    value: idCommunicationModules
                 },
-                '_value': {
-                    '_current': {
-                        'value': val
+                _value: {
+                    _current: {
+                        value: val
                     }
                 }
             });

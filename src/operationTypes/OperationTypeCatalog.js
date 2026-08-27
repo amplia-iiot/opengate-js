@@ -7,20 +7,19 @@ import GenericFinder from '../GenericFinder';
  * This class allows making GET requests to the OperationType resource in the OpenGate North API.
  */
 export default class OperationTypesCatalog extends GenericFinder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, 'operationTypes/catalog', "operationType", 'Operation types not found');
+        super(ogapi, 'operationTypes/catalog', 'operationType', 'Operation types not found');
     }
 
     /**
      * Performs a get that returns operation types templates
      * @test
      *   ogapi.newOperationTypeCatalog().getOperationTypes();
-     * @return {Promise} 
+     * @return {Promise}
      */
     getOperationTypes() {
         return this._execute();

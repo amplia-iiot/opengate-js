@@ -1,15 +1,12 @@
 'use strict';
 
 import q from 'q';
-import {   SOFTWARE_TYPE_ENUM
-} from './enum/SOFTWARE_TYPE_ENUM';
-
+import { SOFTWARE_TYPE_ENUM } from './enum/SOFTWARE_TYPE_ENUM';
 
 /**
  * This is a base object that allows the user to create a Software object.
  */
 export default class Software {
-
     constructor() {
         this._name = undefined;
         this._type = undefined;
@@ -19,60 +16,55 @@ export default class Software {
 
     /**
      * Set the name attribute
-     * @param {string} name 
+     * @param {string} name
      * @return {Software}
      */
     withName(name) {
-        if (typeof name !== 'string' || name.length === 0)
-            throw new Error('Parameter name must be a string and cannot be empty');
+        if (typeof name !== 'string' || name.length === 0) throw new Error('Parameter name must be a string and cannot be empty');
         this._name = name;
         return this;
     }
 
     /**
      * Set the type attribute
-     * @param {string} type 
+     * @param {string} type
      * @return {Software}
      */
     withType(type) {
-        if (typeof type !== 'string' || type.length === 0)
-            throw new Error('Parameter type must be a string and cannot be empty');
+        if (typeof type !== 'string' || type.length === 0) throw new Error('Parameter type must be a string and cannot be empty');
         this._type = this._checkValues(type, SOFTWARE_TYPE_ENUM);
         return this;
     }
 
     /**
      * Set the version attribute
-     * @param {string} version 
+     * @param {string} version
      * @return {Software}
      */
     withVersion(version) {
-        if (typeof version !== 'string' || version.length === 0)
-            throw new Error('Parameter version must be a string and cannot be empty');
+        if (typeof version !== 'string' || version.length === 0) throw new Error('Parameter version must be a string and cannot be empty');
         this._version = version;
         return this;
     }
 
-
-     /**
+    /**
      * Set the date  attribute
      * @param {string} date  
      * @return {Software}
      */
     withDate(date) {
-        if (typeof date  !== 'string'  || date .length === 0  )
-            throw new Error('Parameter date must be a string and cannot be empty');
-        this._date = date ;
+        if (typeof date !== 'string' || date.length === 0) throw new Error('Parameter date must be a string and cannot be empty');
+        this._date = date;
         return this;
     }
 
     _checkValues(value, enumName) {
         let not_found = [];
-        let found = enumName.find(function(value) {
+        let found = enumName.find(function (value) {
             return value == this;
         }, value);
 
-        if (typeof found === "undefined") {
+        if (typeof found === 'undefined') {
             not_found.push(value);
         }
         if (not_found.length !== 0) {
@@ -81,18 +73,13 @@ export default class Software {
         return value;
     }
 
-
-    composeElement(){
-
+    composeElement() {
         var software = {
-            'name': this._name,
-            'type': this._type,
-            'version': this._version,
-            'date': this._date
+            name: this._name,
+            type: this._type,
+            version: this._version,
+            date: this._date
         };
         return software;
     }
-
- 
-    
 }

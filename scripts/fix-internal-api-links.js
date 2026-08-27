@@ -33,7 +33,6 @@ console.log('Scanning for documentation files...');
 scanDir(rootDir);
 console.log(`Found ${Object.keys(fileMap).length} documentation files.`);
 
-
 // 2. Process Target File
 let content = fs.readFileSync(targetFile, 'utf8');
 
@@ -73,10 +72,10 @@ content = content.replace(regex, (match, prefix, oldLink, returnTypeGroup) => {
 
     // Manual Overrides
     const manualOverrides = {
-        'DeviceFinder': 'entities/EntityFinder',
-        'TicketFinder': 'entities/EntityFinder',
-        'SubscriptionsFinder': 'entities/EntityFinder',
-        'SubscribersFinder': 'entities/EntityFinder'
+        DeviceFinder: 'entities/EntityFinder',
+        TicketFinder: 'entities/EntityFinder',
+        SubscriptionsFinder: 'entities/EntityFinder',
+        SubscribersFinder: 'entities/EntityFinder'
     };
 
     // Map lookup

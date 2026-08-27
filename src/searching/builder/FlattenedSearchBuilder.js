@@ -16,15 +16,15 @@ export default class FlattenedSearchBuilder extends SearchBuilder {
     constructor(parent, routes, fieldFinder) {
         super(parent, routes, fieldFinder);
         if (this.constructor === FlattenedSearchBuilder) {
-            throw new Error("Cannot construct Abstract instances directly");
+            throw new Error('Cannot construct Abstract instances directly');
         }
     }
 
     /**
      * The response will return a flattened response
      * @example
-     *	ogapi.entitiesSearchBuilder().flattened() 
-     * @return {FlattenedSearchBuilder} 
+     *	ogapi.entitiesSearchBuilder().flattened()
+     * @return {FlattenedSearchBuilder}
      */
     flattened() {
         this._urlParams.flattened = true;
@@ -35,24 +35,25 @@ export default class FlattenedSearchBuilder extends SearchBuilder {
         return super._buildUrl();
     }
 
-
     /**
-     * Build a instance of Search 
+     * Build a instance of Search
      *
      * @example
      *  ogapi.devicesSearchBuilder().onProvisioned().build()
      * @throws {SearchBuilderError} Throw error on url build
-     * @return {Search} 
+     * @return {Search}
      */
     build() {
-        return new DeviceSearch(this._parent,
+        return new DeviceSearch(
+            this._parent,
             this._buildUrl(),
             this._buildFilter(),
             this._buildLimit(),
             this._buildSort(),
             this._buildGroup(),
             this._buildSelect(),
-            this._builderParams.timeout, this._urlParams);
+            this._builderParams.timeout,
+            this._urlParams
+        );
     }
-
 }

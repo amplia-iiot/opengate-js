@@ -1,24 +1,24 @@
-define(function() {
+define(function () {
     mocha.setup('bdd');
     /** @test {InternalOpenGateAPI#datapointsSearchBuilder} */
-    describe('Check funcionality devicesBuilder module:', function() {
-        it('Create new devicesBuilder object', function() {
+    describe('Check funcionality devicesBuilder module:', function () {
+        it('Create new devicesBuilder object', function () {
             var entity = null;
-            ogapi.entityBuilder.devicesBuilder("base_organization")
-                .then(function(res) {
+            ogapi.entityBuilder
+                .devicesBuilder('base_organization')
+                .then(function (res) {
                     console.log(res);
                     entity = res;
-                    entity.with("provision.administration.channel", "default_channel");
-                    entity.with("provision.administration.organization", "base_organization");
-                    entity.with("provision.administration.serviceGroup", "emptyServiceGroup");
-                    entity.with("provision.device.identifier", "device_oux");
+                    entity.with('provision.administration.channel', 'default_channel');
+                    entity.with('provision.administration.organization', 'base_organization');
+                    entity.with('provision.administration.serviceGroup', 'emptyServiceGroup');
+                    entity.with('provision.device.identifier', 'device_oux');
                 })
-                .catch(function(err) {
+                .catch(function (err) {
                     console.log(err);
                 });
 
             //assert.isDefined(ogapi.entityBuilder.devicesBuilder("organization_Dani"));
-
         });
     });
 

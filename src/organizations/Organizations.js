@@ -6,13 +6,12 @@ import BaseProvision from '../provision/BaseProvision';
  * This is a base object that contains everything you can do with Organizations.
  */
 export default class Organizations extends BaseProvision {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi, url) {
-        super(ogapi, "/organizations" + (typeof url === "undefined" ? "" : url));
+        super(ogapi, '/organizations' + (typeof url === 'undefined' ? '' : url));
         this._name = undefined;
         this._description = undefined;
         this._countryCode = undefined;
@@ -29,8 +28,7 @@ export default class Organizations extends BaseProvision {
      * @return {Organizations}
      */
     withName(name) {
-        if (typeof name !== 'string' || name.length === 0 || name.length > 50)
-            throw new Error("OGAPI_STRING_PARAMETER_MAX_LENGTH_50");
+        if (typeof name !== 'string' || name.length === 0 || name.length > 50) throw new Error('OGAPI_STRING_PARAMETER_MAX_LENGTH_50');
         this._name = name;
         return this;
     }
@@ -41,19 +39,17 @@ export default class Organizations extends BaseProvision {
      * @return {Organizations}
      */
     withDomain(domain) {
-        if (typeof domain !== 'string' || domain.length > 50)
-            throw new Error("OGAPI_STRING_PARAMETER_MAX_LENGTH_50");
+        if (typeof domain !== 'string' || domain.length > 50) throw new Error('OGAPI_STRING_PARAMETER_MAX_LENGTH_50');
         this._domain = domain;
         return this;
     }
     /**
      * Set the description attribute
-     * @param {string} description 
+     * @param {string} description
      * @return {Organizations}
      */
     withDescription(description) {
-        if (typeof description !== 'string' || description.length > 250)
-            throw new Error("OGAPI_STRING_PARAMETER_MAX_LENGTH_250");
+        if (typeof description !== 'string' || description.length > 250) throw new Error('OGAPI_STRING_PARAMETER_MAX_LENGTH_250');
         this._description = description;
         return this;
     }
@@ -64,8 +60,7 @@ export default class Organizations extends BaseProvision {
      * @return {Organizations}
      */
     withCountryCode(countryCode) {
-        if (typeof countryCode !== 'string' || countryCode.length === 0)
-            throw new Error("OGAPI_STRING_PARAMETER");
+        if (typeof countryCode !== 'string' || countryCode.length === 0) throw new Error('OGAPI_STRING_PARAMETER');
         this._countryCode = countryCode.toUpperCase();
         return this;
     }
@@ -76,8 +71,7 @@ export default class Organizations extends BaseProvision {
      * @return {Organizations}
      */
     withLangCode(langCode) {
-        if (typeof langCode !== 'string' || langCode.length === 0)
-            throw new Error("OGAPI_STRING_PARAMETER");
+        if (typeof langCode !== 'string' || langCode.length === 0) throw new Error('OGAPI_STRING_PARAMETER');
         this._langCode = langCode.toLowerCase();
         return this;
     }
@@ -88,8 +82,7 @@ export default class Organizations extends BaseProvision {
      * @return {Organizations}
      */
     withTimeZone(timeZone) {
-        if (typeof timeZone !== 'string' || timeZone.length === 0)
-            throw new Error("OGAPI_STRING_PARAMETER");
+        if (typeof timeZone !== 'string' || timeZone.length === 0) throw new Error('OGAPI_STRING_PARAMETER');
         this._timeZone = timeZone;
         return this;
     }
@@ -100,8 +93,7 @@ export default class Organizations extends BaseProvision {
      * @return {Organizations}
      */
     withPlan(plan) {
-        if (typeof plan !== 'string' || plan.length === 0)
-            throw new Error("OGAPI_STRING_PARAMETER");
+        if (typeof plan !== 'string' || plan.length === 0) throw new Error('OGAPI_STRING_PARAMETER');
         this._plan = plan;
         return this;
     }
@@ -121,11 +113,11 @@ export default class Organizations extends BaseProvision {
     /**
      * Sets the map zoom attribute
      * @param {number} zoom
-     * @return {Organizations} 
+     * @return {Organizations}
      */
     withZoom(zoom) {
         zoom = zoom * 1;
-        if (typeof zoom !== "number" || zoom < 0 || zoom > 19) {
+        if (typeof zoom !== 'number' || zoom < 0 || zoom > 19) {
             throw new Error('Parameter zoom must be a number between 0 and 19');
         }
         this._zoom = zoom;
@@ -136,13 +128,13 @@ export default class Organizations extends BaseProvision {
      * Sets the map location attribute
      * @param {number} latitude
      * @param {number} longitude
-     * @return {Organizations} 
+     * @return {Organizations}
      */
     withLocation(latitude, longitude) {
         latitude = latitude * 1;
         longitude = longitude * 1;
 
-        if (typeof latitude !== "number" || typeof longitude !== "number") {
+        if (typeof latitude !== 'number' || typeof longitude !== 'number') {
             throw new Error('Latitude and longitude parameters must be numbers');
         }
 
@@ -155,8 +147,8 @@ export default class Organizations extends BaseProvision {
         }
 
         this._location = {
-            'latitude': latitude,
-            'longitude': longitude
+            latitude: latitude,
+            longitude: longitude
         };
 
         return this;
@@ -164,32 +156,29 @@ export default class Organizations extends BaseProvision {
 
     /**
      * Sets the auth security configuration
-     * @param {object} auth 
-     * @return {Organizations} 
+     * @param {object} auth
+     * @return {Organizations}
      */
     withAuth(auth) {
-        if (!auth || !auth.type)
-            throw new Error('Auth cannot be empty and must have type at least');
+        if (!auth || !auth.type) throw new Error('Auth cannot be empty and must have type at least');
 
         if (!this._security) {
-            this._security = {}
+            this._security = {};
         }
 
-        this._security.auth = auth
+        this._security.auth = auth;
     }
 
     /**
      * Sets the password poliicy configuration
      * @param {object} passPolicy
-     * @return {Organizations} 
+     * @return {Organizations}
      */
     withPasswordPolicy(passPolicy) {
-        if (!passPolicy)
-            throw new Error('Password policy cannot be empty');
-
+        if (!passPolicy) throw new Error('Password policy cannot be empty');
 
         if (!this._security) {
-            this._security = {}
+            this._security = {};
         }
 
         this._security.policies = {
@@ -197,7 +186,7 @@ export default class Organizations extends BaseProvision {
                 checkStrength: !!passPolicy.checkStrength,
                 expirationPeriod: passPolicy.expirationPeriod || 0
             }
-        }
+        };
     }
 
     _composeElement() {
@@ -214,14 +203,14 @@ export default class Organizations extends BaseProvision {
         }
 
         let updateData = {
-            'organization': {
-                'name': this._name || undefined,
-                'description': this._description || undefined,
-                'plan': this._plan || undefined,
-                'countryCode': this._countryCode || undefined,
-                'langCode': this._langCode || undefined,
-                'timezone': this._timeZone || undefined,
-                'onlyAssignedDomainCertificates': (typeof this._onlyDomainCerts !== 'boolean' ? this._onlyDomainCerts : undefined)
+            organization: {
+                name: this._name || undefined,
+                description: this._description || undefined,
+                plan: this._plan || undefined,
+                countryCode: this._countryCode || undefined,
+                langCode: this._langCode || undefined,
+                timezone: this._timeZone || undefined,
+                onlyAssignedDomainCertificates: typeof this._onlyDomainCerts !== 'boolean' ? this._onlyDomainCerts : undefined
             }
         };
 
@@ -234,7 +223,7 @@ export default class Organizations extends BaseProvision {
         }
 
         if (this._security) {
-            updateData.organization.security = this._security
+            updateData.organization.security = this._security;
         }
 
         return updateData;
@@ -250,12 +239,9 @@ export default class Organizations extends BaseProvision {
     }
 
     _buildURL() {
-        if (this._name === undefined)
-            throw new Error('Parameter name must be defined');
-        let url = this._resource + "/" + this._name;
+        if (this._name === undefined) throw new Error('Parameter name must be defined');
+        let url = this._resource + '/' + this._name;
 
         return url;
-
     }
-
 }

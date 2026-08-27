@@ -10,13 +10,12 @@ import { MODELS_RESOURCE } from './Model';
  * This is a base object that contains everything you can do with ModelMedia.
  */
 export default class ModelMedia extends BaseProvision {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi, manufacturer, modelId) {
-        super(ogapi, MANUFACTURERS_RESOURCE + "/" + manufacturer + MODELS_RESOURCE + "/" + modelId + '/media', undefined, ['identifier']);
+        super(ogapi, MANUFACTURERS_RESOURCE + '/' + manufacturer + MODELS_RESOURCE + '/' + modelId + '/media', undefined, ['identifier']);
     }
 
     //http://cm.amplia.es/jira/browse/OGODM-3201
@@ -27,8 +26,7 @@ export default class ModelMedia extends BaseProvision {
      * @return {ModelMedia}
      */
     withIdentifier(id) {
-        if (typeof id !== 'string' || id.length > 50)
-            throw new Error("OGAPI_STRING_PARAMETER_MAX_LENGTH_50");
+        if (typeof id !== 'string' || id.length > 50) throw new Error('OGAPI_STRING_PARAMETER_MAX_LENGTH_50');
         this._identifier = id;
         return this;
     }
@@ -39,8 +37,7 @@ export default class ModelMedia extends BaseProvision {
      * @return {ModelMedia}
      */
     withName(name) {
-        if (typeof name !== 'string')
-            throw new Error("OGAPI_STRING_PARAMETER");
+        if (typeof name !== 'string') throw new Error('OGAPI_STRING_PARAMETER');
         this._name = name;
         return this;
     }
@@ -51,8 +48,7 @@ export default class ModelMedia extends BaseProvision {
      * @return {ModelMedia}
      */
     withFileName(fileName) {
-        if (typeof fileName !== 'string')
-            throw new Error("OGAPI_STRING_PARAMETER");
+        if (typeof fileName !== 'string') throw new Error('OGAPI_STRING_PARAMETER');
         this._fileName = fileName;
         return this;
     }
@@ -63,14 +59,13 @@ export default class ModelMedia extends BaseProvision {
      * @return {ModelMedia}
      */
     withFile(file) {
-        if (!file)
-            throw new Error("OGAPI_NOT_EMPTY_PARAMETER");
+        if (!file) throw new Error('OGAPI_NOT_EMPTY_PARAMETER');
         this._file = file;
         return this;
     }
 
     _composeElement() {
-        this._checkRequiredParameters()
+        this._checkRequiredParameters();
 
         var updateData = {
             media: {
@@ -83,13 +78,13 @@ export default class ModelMedia extends BaseProvision {
     }
 
     _buildURL() {
-        var url = this._resource + "/" + this._identifier
+        var url = this._resource + '/' + this._identifier;
         return url;
     }
 
     update() {
         // Prevent update operations
-        throw new Error('OGAPI_METHOD_NOT_SUPPORTED')
+        throw new Error('OGAPI_METHOD_NOT_SUPPORTED');
     }
 
     /**
@@ -98,7 +93,7 @@ export default class ModelMedia extends BaseProvision {
      * @param {File} rawFile - this File is the deployment element
      * @property {function (result:object, statusCode:number)} then - When request it is OK
      * @property {function (error:string)} catch - When request it is NOK
-     * @return {Promise}     
+     * @return {Promise}  
      */
     create(rawFile) {
         let form;
@@ -107,7 +102,7 @@ export default class ModelMedia extends BaseProvision {
             if (typeof rawFile !== 'string') {
                 form = new FormData();
                 let blob = new Blob([this._composeElement()], {
-                    type: "application/json"
+                    type: 'application/json'
                 });
 
                 form.append('json', blob);
@@ -126,7 +121,7 @@ export default class ModelMedia extends BaseProvision {
         } else {
             form = new FormData();
             let blob = new Blob([JSON.stringify(this._composeElement())], {
-                type: "application/octet-stream"
+                type: 'application/octet-stream'
             });
 
             form.append('json', blob);
@@ -138,15 +133,22 @@ export default class ModelMedia extends BaseProvision {
 
         if (this._progressEvent != undefined) {
             petitionOpts = {
-                'progress': this._progressEvent
+                progress: this._progressEvent
             };
         }
 
         var defered = q.defer();
         var promise = defered.promise;
 
-        this._ogapi.Napi.post_multipart(this._resource, form, petitionOpts, this._timeout, this._getExtraHeaders(), this._getUrlParameters())
-            .then((res) => {
+        this._ogapi.Napi.post_multipart(
+            this._resource,
+            form,
+            petitionOpts,
+            this._timeout,
+            this._getExtraHeaders(),
+            this._getUrlParameters()
+        )
+            .then(res => {
                 if (res.statusCode === 201) {
                     defered.resolve({
                         location: res.header.location,
@@ -154,15 +156,17 @@ export default class ModelMedia extends BaseProvision {
                     });
                 } else {
                     defered.reject({
-                        "errors": [{
-                            code: res.statusCode,
-                            message: "OGAPI_FILE_NOT_CREATE"
-                        }],
-                        "statusCode": res.statusCode
+                        errors: [
+                            {
+                                code: res.statusCode,
+                                message: 'OGAPI_FILE_NOT_CREATE'
+                            }
+                        ],
+                        statusCode: res.statusCode
                     });
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
 

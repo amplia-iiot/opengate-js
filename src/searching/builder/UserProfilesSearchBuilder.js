@@ -20,21 +20,23 @@ export default class UserProfilesSearchBuilder extends SearchBuilder {
     }
 
     /**
-     * Build a instance of StaticSearch 
+     * Build a instance of StaticSearch
      *
      * @example
      *   ogapi.userProfileSearchBuilder().filter({and:[]}).build()
      * @throws {SearchBuilderError} Throw error on url build
-     * @return {StaticSearch} 
+     * @return {StaticSearch}
      */
     build() {
-        return new StaticSearch(this._parent,
+        return new StaticSearch(
+            this._parent,
             this._buildUrl(),
             this._buildFilter(),
             this._builderParams.timeout,
-            'userProfile', this.customFilters);
+            'userProfile',
+            this.customFilters
+        );
     }
-
 
     /**
      * Sets id to search
@@ -43,7 +45,7 @@ export default class UserProfilesSearchBuilder extends SearchBuilder {
      *  ogapi.userProfileSearchBuilder().withId('myId').build()
      * @param {!string} userProfileId - user profile id
      * @throws {Error} throw error when user profile id is not typeof string
-     * @return {userProfileSearchBuilder} 
+     * @return {userProfileSearchBuilder}
      */
     withId(userProfileId) {
         if (typeof userProfileId !== 'string') {

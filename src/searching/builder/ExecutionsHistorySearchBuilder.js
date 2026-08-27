@@ -16,9 +16,9 @@ export default class ExecutionsHistorySearchBuilder extends SearchWithSummaryBui
         this._url = '/entities' + BASE_URL;
     }
     /**
-     * The response will only have a summary information 
+     * The response will only have a summary information
      * @example
-     *	ogapi.executionsHistorySearchBuilder().summary() 
-     * @return {ExecutionsHistorySearchBuilder} 
+     *	ogapi.executionsHistorySearchBuilder().summary()
+     * @return {ExecutionsHistorySearchBuilder}
      */
 }

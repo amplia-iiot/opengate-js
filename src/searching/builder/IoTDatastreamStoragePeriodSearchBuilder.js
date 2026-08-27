@@ -18,7 +18,7 @@ export default class IoTDatastreamStoragePeriodSearchBuilder extends SearchBuild
     }
 
     /**
-     * Build a instance of StaticSearch 
+     * Build a instance of StaticSearch
      *
      * @example
      *   ogapi.ioTDatastreamStoragePeriodSearchBuilder().build()
@@ -26,12 +26,13 @@ export default class IoTDatastreamStoragePeriodSearchBuilder extends SearchBuild
      * @return {StaticSearch}  
      */
     build() {
-        return new StaticSearch(this._parent,
+        return new StaticSearch(
+            this._parent,
             this._buildUrl(),
             null,
             this._builderParams.timeout,
-            'ioTDatastreamStoragePeriod', this.customFilters);
+            'ioTDatastreamStoragePeriod',
+            this.customFilters
+        );
     }
-
-
 }

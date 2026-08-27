@@ -14,26 +14,26 @@ export default class TimeserieSearchBuilder extends SearchBuilder {
      *	@param {!InternalOpenGateAPI} parent - Instance of our InternalOpenGateAPI
      */
     constructor(parent, organization, timeserie) {
-        super(parent, {}, new FieldFinder(parent, BASE_URL, { organization: organization, timeserie: timeserie }))
-        this._url = BASE_URL + '/provision/organizations/' + organization + '/' + timeserie + '/data'
+        super(parent, {}, new FieldFinder(parent, BASE_URL, { organization: organization, timeserie: timeserie }));
+        this._url = BASE_URL + '/provision/organizations/' + organization + '/' + timeserie + '/data';
     }
 
     /**
-     * The search request will have this group by 
+     * The search request will have this group by
      * @example
-     * @param {!(object)} group 
-     * @return {TimeserieSearchBuilder} 
+     * @param {!(object)} group
+     * @return {TimeserieSearchBuilder}
      */
     group(group) {
-        this._builderParams.group = (group || {});
+        this._builderParams.group = group || {};
         return this;
     }
 
     /**
      * The search request will use this sort
      * @example
-     * @param {!(string)} sort 
-     * @return {TimeserieSearchBuilder} 
+     * @param {!(string)} sort
+     * @return {TimeserieSearchBuilder}
      */
     sort(sort) {
         this._builderParams.sort = sort || undefined;
@@ -41,7 +41,7 @@ export default class TimeserieSearchBuilder extends SearchBuilder {
     }
 
     /**
-     * The search request will have this filter 
+     * The search request will have this filter
      * @example
      *  ogapi.timeserieSearchBuilder(organization, timeserieId).select(
      *      ogapi.newSelectBuilder().add(SE.element("Identifier", ["value"], "id"), SE.add("Temperature", ["value"]))
@@ -51,23 +51,24 @@ export default class TimeserieSearchBuilder extends SearchBuilder {
      *      {"name": "Temperature","fields": [{"field": "value","alias": "identifier"}]}]
      *   }) //Custom select
      * @param {!(SelectBuilder|object)} select
-     * @return {TimeserieSearchBuilder} 
+     * @return {TimeserieSearchBuilder}
      */
     select(select) {
-        this._builderParams.select = (select || []);
+        this._builderParams.select = select || [];
         return this;
     }
 
     /**
-     * Build a instance of Search 
+     * Build a instance of Search
      *
      * @example
      *  ogapi.timeserieSearchBuilder(organization, timeserieId).build()
      * @throws {SearchBuilderError} Throw error on url build
-     * @return {Search} 
+     * @return {Search}
      */
     build() {
-        return new WPSearch(this._parent,
+        return new WPSearch(
+            this._parent,
             this._buildUrl(),
             this._buildFilter(),
             this._buildLimit(),
@@ -75,6 +76,7 @@ export default class TimeserieSearchBuilder extends SearchBuilder {
             this._buildGroup(),
             this._buildSelect(),
             this._builderParams.timeout,
-            this._urlParams);
+            this._urlParams
+        );
     }
 }

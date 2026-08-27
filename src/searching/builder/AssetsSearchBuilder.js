@@ -19,10 +19,10 @@ export default class AssetsSearchBuilder extends PreFilteredSearchBuilder {
     }
 
     /**
-     * The response will only have a summary information 
+     * The response will only have a summary information
      * @example
-     *	ogapi.assetsSearchBuilder().summary() 
-     * @return {AssetsSearchBuilder} 
+     *	ogapi.assetsSearchBuilder().summary()
+     * @return {AssetsSearchBuilder}
      */
     summary() {
         this._url = this._url + '/summary';
@@ -32,16 +32,18 @@ export default class AssetsSearchBuilder extends PreFilteredSearchBuilder {
 
     _buildFilter() {
         let finalFilter = {
-            "and": [{
-                "exists": {
-                    "provision.asset.identifier": true
+            and: [
+                {
+                    exists: {
+                        'provision.asset.identifier': true
+                    }
                 }
-            }]
+            ]
         };
 
         if (this._builderParams.filter && Object.keys(this._builderParams.filter).length > 0) {
             let filter = this._builderParams.filter;
-            if (typeof filter._filterTemplate !== "undefined") {
+            if (typeof filter._filterTemplate !== 'undefined') {
                 //return filter._filterTemplate;
                 finalFilter.and.push(filter._filterTemplate.filter);
             } else {
@@ -55,37 +57,40 @@ export default class AssetsSearchBuilder extends PreFilteredSearchBuilder {
     }
 
     /**
-     * The search request will have this group by 
+     * The search request will have this group by
      * @example
-     * @param {!(object)} group 
-     * @return {AssetsSearchBuilder} 
+     * @param {!(object)} group
+     * @return {AssetsSearchBuilder}
      */
     group(group) {
-        this._builderParams.group = (group || {});
+        this._builderParams.group = group || {};
         return this;
     }
 
     /**
-     * Build a instance of Search 
+     * Build a instance of Search
      *
      * @example
      *  ogapi.assetsSearchBuilder().onProvisioned().build()
      * @throws {SearchBuilderError} Throw error on url build
-     * @return {Search} 
+     * @return {Search}
      */
     build() {
-        return new AssetSearch(this._parent,
+        return new AssetSearch(
+            this._parent,
             this._buildUrl(),
             this._buildFilter(),
             this._buildLimit(),
             this._buildSort(),
             this._buildGroup(),
             this._buildSelect(),
-            this._builderParams.timeout, this._urlParams);
+            this._builderParams.timeout,
+            this._urlParams
+        );
     }
 
     /**
-     * The search request will have this filter 
+     * The search request will have this filter
      * @example
      *  ogapi.assetsSearchBuilder().select(
      *      ogapi.newSelectBuilder().add(SE.element("provision.device.identifier", ["value"], "id"), SE.add("device.temperature.value", ["value"]))
@@ -95,10 +100,10 @@ export default class AssetsSearchBuilder extends PreFilteredSearchBuilder {
      *      {"name": "device.temperature.value","fields": [{"field": "value","alias": "identifier"}]}]
      *   }) //Custom select
      * @param {!(SelectBuilder|object)} select
-     * @return {AssetsSearchBuilder} 
+     * @return {AssetsSearchBuilder}
      */
     select(select) {
-        this._builderParams.select = (select || undefined);
+        this._builderParams.select = select || undefined;
         return this;
     }
 }

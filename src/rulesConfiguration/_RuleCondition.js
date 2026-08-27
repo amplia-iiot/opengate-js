@@ -1,4 +1,4 @@
-import RuleConfigurations from './RuleConfigurations'
+import RuleConfigurations from './RuleConfigurations';
 
 /**
  * Defines the builder to configure a _RuleCondition
@@ -12,7 +12,7 @@ export default class _RuleCondition {
      */
     constructor(parent, conditionData) {
         if (parent.constructor !== RuleConfigurations) {
-            throw new Error("Parent must be a RuleConfigurations");
+            throw new Error('Parent must be a RuleConfigurations');
         }
 
         this._ruleConfiguration = parent;
@@ -26,12 +26,12 @@ export default class _RuleCondition {
      * @throws {Error}
      */
     setDelay(delay) {
-        if (typeof delay !== "number" || typeof delay < 1) {
-            throw new Error("Parameter delay must be typeof number and higher than -1");
+        if (typeof delay !== 'number' || typeof delay < 1) {
+            throw new Error('Parameter delay must be typeof number and higher than -1');
         }
 
         if (typeof this._condition.delay === 'undefined') {
-            console.warn("Parameter delay cannot be setted for this condition");
+            console.warn('Parameter delay cannot be setted for this condition');
         } else {
             this._condition.delay = delay * 1000;
         }
@@ -46,7 +46,7 @@ export default class _RuleCondition {
      */
     deactivateDelay() {
         if (typeof this._condition.delay === 'undefined') {
-            console.warn("Parameter delay cannot be setted for this condition");
+            console.warn('Parameter delay cannot be setted for this condition');
         } else {
             this._condition.delay = -1;
         }
@@ -67,14 +67,14 @@ export default class _RuleCondition {
             for (let idx in this._condition.parameters) {
                 let paramTmp = this._condition.parameters[idx];
                 if (paramTmp.name === parameterName) {
-                    if (typeof paramTmp.value === "undefined") {
-                        throw new Error("Value not allowed for parameter " + parameterName + " in condition " + this._condition.name);
+                    if (typeof paramTmp.value === 'undefined') {
+                        throw new Error('Value not allowed for parameter ' + parameterName + ' in condition ' + this._condition.name);
                     }
-                    paramTmp.value = !parameterValue ? "" : parameterValue;
+                    paramTmp.value = !parameterValue ? '' : parameterValue;
                     return _this;
                 }
             }
-            throw new Error("Parameter " + parameterName + " not exists for condition " + this._condition.name);
+            throw new Error('Parameter ' + parameterName + ' not exists for condition ' + this._condition.name);
         }
     }
 

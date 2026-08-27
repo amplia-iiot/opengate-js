@@ -18,7 +18,7 @@ export default class AllowedResourceTypeSearchBuilder extends SearchBuilder {
     }
 
     /**
-     * Build a instance of StaticSearch 
+     * Build a instance of StaticSearch
      *
      * @example
      *   ogapi.AllowedResourceTypeSearchBuilder().build()
@@ -26,13 +26,15 @@ export default class AllowedResourceTypeSearchBuilder extends SearchBuilder {
      * @return {StaticSearch}  
      */
     build() {
-        return new StaticSearch(this._parent,
+        return new StaticSearch(
+            this._parent,
             this._buildUrl(),
             null,
             this._builderParams.timeout,
-            'allowedResourceType', this.customFilters);
+            'allowedResourceType',
+            this.customFilters
+        );
     }
-
 
     /**
      * Sets type to search
@@ -41,7 +43,7 @@ export default class AllowedResourceTypeSearchBuilder extends SearchBuilder {
      *  ogapi.AllowedResourceTypeSearchBuilder().withType('device').build()
      * @param {!string} type - type to searcg
      * @throws {Error} throw error when type is not typeof string
-     * @return {AllowedResourceTypeSearchBuilder} 
+     * @return {AllowedResourceTypeSearchBuilder}
      */
     withType(type) {
         if (typeof type !== 'string') {

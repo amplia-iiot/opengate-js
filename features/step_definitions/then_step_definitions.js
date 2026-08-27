@@ -1,23 +1,25 @@
 var { Then } = require('cucumber');
 
 var typeMatch = {
-    "entity.device": "onDevices",
-    "entity.subscription": "subscriptionsSearchBuilder",
-    "entity.subscriber": "subscribersSearchBuilder"
+    'entity.device': 'onDevices',
+    'entity.subscription': 'subscriptionsSearchBuilder',
+    'entity.subscriber': 'subscribersSearchBuilder'
 };
 
-function _findEntityIntoOperationsResponse (operation) {
+function _findEntityIntoOperationsResponse(operation) {
     return operation.entityId == this;
 }
 
-function findOperationsByJobId (jobId, resourceType) {
+function findOperationsByJobId(jobId, resourceType) {
     var resourceFunction = typeMatch[resourceType];
     var ogapi = this.ogapi;
     var expect = this.expect;
-    return ogapi.executionsSearchBuilder()[resourceFunction]().
-        filter(
-            ogapi.newFilterBuilder().and(ogapi.EX.eq("jobId", jobId))
-        ).build().execute();
+    return ogapi
+        .executionsSearchBuilder()
+        [resourceFunction]()
+        .filter(ogapi.newFilterBuilder().and(ogapi.EX.eq('jobId', jobId)))
+        .build()
+        .execute();
 }
 
 Then(/^response code should be: (\d+)$/, function (statusCode, callback) {
@@ -62,8 +64,6 @@ Then(/^response data should has elements$/, function (callback) {
     callback();
 });
 
-
-
 Then(/^throws an error\. the error message explain that a parameter with name "([^"]*)" is mandatory$/, function (parameterName, callback) {
     // Write code here that turns the phrase above into concrete actions
     this.expect(this.error).to.exist;
@@ -74,9 +74,9 @@ Then(/^throws an error\. the error message explain that a parameter with name "(
 });
 
 Then(/^response error code sould be: (\d+)$/, function (statusCode, callback) {
-    // Write code here that turns the phrase above into concrete actions     
+    // Write code here that turns the phrase above into concrete actions
     var response = this.responseData || this.error;
-    if (typeof response.response !== "undefined") {
+    if (typeof response.response !== 'undefined') {
         response = response.response;
     }
     this.expect(response.statusCode).to.equal(parseInt(statusCode));
@@ -89,14 +89,14 @@ Then(/^response must have attached "([^"]*)" as "([^"]*)" entity$/, function (pr
     var data;
     data = this.responseData.data;
     var jobId = data.id;
-    return findOperationsByJobId.call(this, jobId, resourceType).
-        then(function (response) {
+    return findOperationsByJobId
+        .call(this, jobId, resourceType)
+        .then(function (response) {
             var responseData = response.data;
             var operationFound = responseData.operations.find(_findEntityIntoOperationsResponse, provCustomId);
             expect(operationFound).to.exist;
-
-        }).
-        catch(function (err) {
+        })
+        .catch(function (err) {
             expect(err).to.be.undefined;
         });
 });
@@ -107,26 +107,25 @@ Then(/^response must have attached an entity list with "([^"]*)" type defined by
     var data;
     data = this.responseData.data;
     var jobId = data.id;
-    return findOperationsByJobId.call(this, jobId, resourceType).
-        then(function (response) {
+    return findOperationsByJobId
+        .call(this, jobId, resourceType)
+        .then(function (response) {
             var responseData = response.data;
             for (var i = 0; i < table.raw().length; i++) {
                 var provCustomId = table.raw()[i];
                 var operationFound = responseData.operations.find(_findEntityIntoOperationsResponse, provCustomId);
                 expect(operationFound).to.exist;
             }
-        }).
-        catch(function (err) {
+        })
+        .catch(function (err) {
             expect(err).to.be.undefined;
         });
 });
 
-
-
 Then('response specific error code sould be: {string}', function (statusCode, callback) {
-    // Write code here that turns the phrase above into concrete actions     
+    // Write code here that turns the phrase above into concrete actions
     var response = this.responseData || this.error;
-    if (typeof response.response !== "undefined") {
+    if (typeof response.response !== 'undefined') {
         response = response.response;
     }
 
@@ -142,10 +141,9 @@ Then(/^response contains a parameter "([^"]*)" as name and "([^"]*)" as value$/,
         this.expect(this.responseData.response.statusCode).to.equal(201);
     }
     var data;
-    if (this.responseData.data)
-        data = this.responseData.data;
+    if (this.responseData.data) data = this.responseData.data;
     var parameters = data.request.parameters;
-    
+
     this.expect(parameters[paramName]).to.equal(paramValue);
 
     callback();
@@ -157,8 +155,7 @@ Then('response contains a parameter {string} as name and {string} as json value'
         this.expect(this.responseData.response.statusCode).to.equal(201);
     }
     var data;
-    if (this.responseData.data)
-        data = this.responseData.data;
+    if (this.responseData.data) data = this.responseData.data;
     var parameters = data.request.parameters;
     this.expect(JSON.stringify(parameters[paramName])).to.equal(paramValue);
 
@@ -170,9 +167,9 @@ Then(/^I can see into the post data a period by (\d+) minutes$/, function (minut
     var period = this.build._postObj.task.schedule.repeating.period;
     this.expect(period).to.be.an('object');
     this.expect(period).to.deep.equal({
-        unit: "MINUTES",
+        unit: 'MINUTES',
         each: eval(minutes)
-    })
+    });
     callback();
 });
 Then(/^I can see into the post data a period by (\d+) hours/, function (hours, callback) {
@@ -180,9 +177,9 @@ Then(/^I can see into the post data a period by (\d+) hours/, function (hours, c
     var period = this.build._postObj.task.schedule.repeating.period;
     this.expect(period).to.be.an('object');
     this.expect(period).to.deep.equal({
-        unit: "HOURS",
+        unit: 'HOURS',
         each: eval(hours)
-    })
+    });
     callback();
 });
 Then(/^I can see into the post data a period by (\d+) days/, function (days, callback) {
@@ -190,9 +187,9 @@ Then(/^I can see into the post data a period by (\d+) days/, function (days, cal
     var period = this.build._postObj.task.schedule.repeating.period;
     this.expect(period).to.be.an('object');
     this.expect(period).to.deep.equal({
-        unit: "DAYS",
+        unit: 'DAYS',
         each: eval(days)
-    })
+    });
     callback();
 });
 
@@ -201,9 +198,9 @@ Then(/^I can not see into the post data a period by (\d+) hours$/, function (hou
     var period = this.build._postObj.task.schedule.repeating.period;
     this.expect(period).to.be.an('object');
     this.expect(period).to.deep.not.equal({
-        unit: "HOURS",
+        unit: 'HOURS',
         each: eval(hours)
-    })
+    });
     callback();
 });
 Then(/^I can not see into the post data a period by (\d+) days/, function (days, callback) {
@@ -211,9 +208,9 @@ Then(/^I can not see into the post data a period by (\d+) days/, function (days,
     var period = this.build._postObj.task.schedule.repeating.period;
     this.expect(period).to.be.an('object');
     this.expect(period).to.deep.not.equal({
-        unit: "DAYS",
+        unit: 'DAYS',
         each: eval(days)
-    })
+    });
     callback();
 });
 Then(/^I can not see into the post data a period by (\d+) minutes$/, function (minutes$, callback) {
@@ -221,9 +218,9 @@ Then(/^I can not see into the post data a period by (\d+) minutes$/, function (m
     var period = this.build._postObj.task.schedule.repeating.period;
     this.expect(period).to.be.an('object');
     this.expect(period).to.deep.not.equal({
-        unit: "MINUTES",
+        unit: 'MINUTES',
         each: eval(minutes$)
-    })
+    });
     callback();
 });
 Then(/^I can not see into the post data a period$/, function (callback) {
@@ -250,7 +247,7 @@ Then(/^I can see into the post data a every week pattern with days:$/, function 
     this.expect(pattern).to.be.an('object');
     this.expect(pattern.weekly).to.be.an('object');
     this.expect(pattern.weekly).to.deep.equal({
-        "days": days
+        days: days
     });
     callback();
 });
@@ -265,8 +262,8 @@ Then(/^I can see into the post data a every month pattern at day (\d+) and month
     this.expect(pattern).to.be.an('object');
     this.expect(pattern.monthly).to.be.an('object');
     this.expect(pattern.monthly).to.deep.equal({
-        "months": months,
-        "day": eval(day)
+        months: months,
+        day: eval(day)
     });
     callback();
 });
@@ -277,14 +274,14 @@ Then(/^I can see into the post data a every month pattern at day (\d+) and month
     this.expect(pattern).to.be.an('object');
     this.expect(pattern.yearly).to.be.an('object');
     this.expect(pattern.yearly).to.deep.equal({
-        "month": month,
-        "day": eval(day)
+        month: month,
+        day: eval(day)
     });
     callback();
 });
 
 Then(/^I can see into the post data a job timeout by (\d+) minutes$/, function (minutes, callback) {
-    var milliseconds = (eval(minutes) * 60 * 1000) - 1000;
+    var milliseconds = eval(minutes) * 60 * 1000 - 1000;
     var stop = this.build._postObj.task.job.request.schedule.stop;
     this.expect(stop).to.be.an('object');
     var jobTimeout = stop.delayed;
@@ -298,9 +295,9 @@ Then(/^this builder configuration throw a error equal to "([^"]*)"$/, function (
 });
 
 Then(/^I can see into the post data a start date as "([^"]*)"$/, function (when, callback) {
-    // Write code here that turns the phrase above into concrete actions     
+    // Write code here that turns the phrase above into concrete actions
     var schedule = (this.build._postObj.task || this.build._postObj.job.request).schedule;
-    if (when === "now") {
+    if (when === 'now') {
         this.expect(schedule.start).to.be.undefined;
     } else {
         var date = new Date(Date.parse(when));
@@ -316,16 +313,16 @@ Then(/^throws an error equal to "([^"]*)"$/, function (errorMessage, callback) {
     switch (this.error.constructor) {
         case Array:
             this.expect(this.error).to.have.lengthOf(1);
-            errorText = this.error[0].description || this.error[0].message || this.error[0];    
+            errorText = this.error[0].description || this.error[0].message || this.error[0];
             break;
-        case Error: 
-            errorText = this.error.message
+        case Error:
+            errorText = this.error.message;
             break;
-        case String: 
-            errorText = JSON.parse(this.error)
-            // falls through -- NO BREAK: a String error is parsed here and then handled by the Object case
+        case String:
+            errorText = JSON.parse(this.error);
+        // falls through -- NO BREAK: a String error is parsed here and then handled by the Object case
         case Object:
-            _errorText = errorText || this.error
+            _errorText = errorText || this.error;
             if (_errorText.message) {
                 errorText = _errorText.message;
             } else if (_errorText.data) {
@@ -338,7 +335,7 @@ Then(/^throws an error equal to "([^"]*)"$/, function (errorMessage, callback) {
             }
             break;
     }
-    
+
     this.expect(errorText).to.equal(errorMessage);
 
     callback();

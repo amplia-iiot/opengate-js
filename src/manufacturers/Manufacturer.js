@@ -4,12 +4,11 @@ import BaseProvision from '../provision/BaseProvision';
 import ManufacturerMedia from './ManufacturerMedia';
 import Model from './Model';
 
-export const MANUFACTURERS_RESOURCE = '/manufacturers'
+export const MANUFACTURERS_RESOURCE = '/manufacturers';
 /**
  * This is a base object that contains everything you can do with Manufacturers.
  */
 export default class Manufacturers extends BaseProvision {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
@@ -24,8 +23,7 @@ export default class Manufacturers extends BaseProvision {
      * @return {Manufacturers}
      */
     withIdentifier(id) {
-        if (typeof id !== 'string' || id.length > 50)
-            throw new Error("OGAPI_STRING_PARAMETER_MAX_LENGTH_50");
+        if (typeof id !== 'string' || id.length > 50) throw new Error('OGAPI_STRING_PARAMETER_MAX_LENGTH_50');
         this._identifier = id;
         return this;
     }
@@ -36,8 +34,7 @@ export default class Manufacturers extends BaseProvision {
      * @return {Manufacturers}
      */
     withName(name) {
-        if (typeof name !== 'string')
-            throw new Error("OGAPI_STRING_PARAMETER");
+        if (typeof name !== 'string') throw new Error('OGAPI_STRING_PARAMETER');
         this._name = name;
         return this;
     }
@@ -48,98 +45,89 @@ export default class Manufacturers extends BaseProvision {
      * @return {Manufacturers}
      */
     withDescription(description) {
-        if (typeof description !== 'string')
-            throw new Error("OGAPI_STRING_PARAMETER");
+        if (typeof description !== 'string') throw new Error('OGAPI_STRING_PARAMETER');
         this._description = description;
         return this;
     }
 
     /**
      * Set the notes attribute
-     * @param {string} notes 
+     * @param {string} notes
      * @return {Manufacturers}
      */
     withNotes(notes) {
-        if (typeof notes !== 'string')
-            throw new Error("OGAPI_STRING_PARAMETER");
+        if (typeof notes !== 'string') throw new Error('OGAPI_STRING_PARAMETER');
         this._notes = notes;
         return this;
     }
 
     /**
      * Set the url attribute
-     * @param {string} url 
+     * @param {string} url
      * @return {Manufacturers}
      */
     withUrl(url) {
-        if (typeof url !== 'string')
-            throw new Error("OGAPI_STRING_PARAMETER");
+        if (typeof url !== 'string') throw new Error('OGAPI_STRING_PARAMETER');
         this._manufUrl = url;
         return this;
     }
 
     /**
      * Set the fax attribute
-     * @param {string} fax 
+     * @param {string} fax
      * @return {Manufacturers}
      */
     withFax(fax) {
-        if (typeof fax !== 'string')
-            throw new Error("OGAPI_STRING_PARAMETER");
+        if (typeof fax !== 'string') throw new Error('OGAPI_STRING_PARAMETER');
         this._fax = fax;
         return this;
     }
 
     /**
      * Set the telephone attribute
-     * @param {string} telephone 
+     * @param {string} telephone
      * @return {Manufacturers}
      */
     withTelephone(telephone) {
-        if (typeof telephone !== 'string')
-            throw new Error("OGAPI_STRING_PARAMETER");
+        if (typeof telephone !== 'string') throw new Error('OGAPI_STRING_PARAMETER');
         this._telephone = telephone;
         return this;
     }
 
     /**
      * Set the address attribute
-     * @param {string} address 
+     * @param {string} address
      * @return {Manufacturers}
      */
     withAddress(address) {
-        if (typeof address !== 'string')
-            throw new Error("OGAPI_STRING_PARAMETER");
+        if (typeof address !== 'string') throw new Error('OGAPI_STRING_PARAMETER');
         this._address = address;
         return this;
     }
 
     /**
      * Set the email attribute
-     * @param {string} email 
+     * @param {string} email
      * @return {Manufacturers}
      */
     withEmail(email) {
-        if (typeof email !== 'string')
-            throw new Error("OGAPI_STRING_PARAMETER");
+        if (typeof email !== 'string') throw new Error('OGAPI_STRING_PARAMETER');
         this._email = email;
         return this;
     }
 
     mediaBuilder() {
-        if (!this._identifier)
-            throw new Error("Required manufacturer identifier");
-        return new ManufacturerMedia(this._ogapi, this._identifier)
+        if (!this._identifier) throw new Error('Required manufacturer identifier');
+        return new ManufacturerMedia(this._ogapi, this._identifier);
     }
 
     modelBuilder() {
-        if (!this._identifier)
-            throw new Error("Required manufacturer identifier and name");
-        return new Model(this._ogapi, this._identifier)
+        if (!this._identifier) throw new Error('Required manufacturer identifier and name');
+        return new Model(this._ogapi, this._identifier);
     }
 
     _composeElement() {
-        this._checkRequiredParameters()
+        this._checkRequiredParameters();
 
         var updateData = {
             name: this._name || undefined,
@@ -160,7 +148,7 @@ export default class Manufacturers extends BaseProvision {
     }
 
     _buildURL() {
-        var url = this._resource + (this._identifier ? "/" + this._identifier : "")
+        var url = this._resource + (this._identifier ? '/' + this._identifier : '');
         return url;
     }
 }
