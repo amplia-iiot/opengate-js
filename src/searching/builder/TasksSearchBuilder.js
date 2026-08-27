@@ -5,7 +5,7 @@ import FieldFinder from '../../util/searchingFields/FieldFinder';
 
 const BASE_URL = '/tasks';
 /**
- * Defined a search over periodic executions´s operations
+ * Defines a search over periodic executions' operations.
  * @example ogapi.tasksSearchBuilder()
  */
 export default class TasksSearchBuilder extends SearchWithSummaryBuilder {

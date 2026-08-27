@@ -3,7 +3,7 @@ import Search from '../Search';
 
 
 /**
-* Defined a search over custom resource and custom filter	
+* Defines a search over a custom resource with a custom filter.
 * @example ogapi.rawSearchBuilder().from('myresource').filter({and:[]})
 */
 export default class RawSearchBuilder{

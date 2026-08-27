@@ -5,13 +5,13 @@ import q from 'q';
 import HttpStatus from 'http-status-codes';
 
 /**
- *   This class allow make get request to hardware manufacturers resource into Opengate North API.
+ * This class allows you to make GET requests to the hardware manufacturers resource in the OpenGate North API.
  */
 export default class ManufacturerFinder extends ProvisionGenericFinder {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
         super(ogapi, 'manufacturers', 'manufacturer', 'Manufacturer not found');
@@ -26,7 +26,7 @@ export default class ManufacturerFinder extends ProvisionGenericFinder {
     }
 
     /**
-     * Download a specific manufacturer by its id. This execute a GET http method
+     * Download all manufacturers. This executes a GET HTTP method
      * @test
      *   ogapi.newManufacturerFinder().findAll().then().catch();
      * @return {Promise} 
@@ -37,7 +37,7 @@ export default class ManufacturerFinder extends ProvisionGenericFinder {
 
 
     /**
-     * Download a specific manufacturer by its id. This execute a GET http method
+     * Download a specific manufacturer by its id. This executes a GET HTTP method
      * @test
      *   ogapi.newManufacturerFinder().findById('manufacturerIdentifier').then().catch();
      * @param {string} identifier - manufacturer identifier .
@@ -49,7 +49,7 @@ export default class ManufacturerFinder extends ProvisionGenericFinder {
     }
 
     /**
-     * Download manufacturer medias. This execute a GET http method
+     * Download manufacturer medias. This executes a GET HTTP method
      * @test
      *   ogapi.newManufacturerFinder().findMedias('manufacturerId', 'mediaIdentifier').then().catch();
      * @param {string} manufacturerId - manufacturer identifier .
@@ -62,7 +62,7 @@ export default class ManufacturerFinder extends ProvisionGenericFinder {
     }
 
     /**
-     * Download a specific manufacturer media by its ids. This execute a GET http method
+     * Download a specific manufacturer media by its ids. This executes a GET HTTP method
      * @test
      *   ogapi.newManufacturerFinder().findMediaById('manufacturerId', 'mediaIdentifier').then().catch();
      * @param {string} manufacturerId - manufacturer identifier .

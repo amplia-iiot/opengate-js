@@ -2,7 +2,7 @@
 import GenericFinder from '../GenericFinder';
 
 /**
- *   This class allow make get request to planner resource into Opengate North API.
+ * This class allows making GET requests to the planner resource of the OpenGate North API.
  */
 export default class RestRequestFinder extends GenericFinder {
 
@@ -23,7 +23,7 @@ export default class RestRequestFinder extends GenericFinder {
     }
 
     /**
-    * Download a complete list of scheduler history for the organization. This execute a GET http method
+    * Download a complete list of REST requests for the organization. This executes a GET HTTP method.
     * @test
     *   ogapi.newScheduleRestRequestFinder().findByOrganization(organization).then().catch();
     * @return {Promise} 

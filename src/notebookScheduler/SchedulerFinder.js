@@ -3,7 +3,7 @@
 import GenericFinder from '../GenericFinder';
 
 /**
- *   This class allow make get request to planner resource into Opengate North API.
+ * This class allows making GET requests to the planner resource in the OpenGate North API.
  */
 export default class SchedulerFinder extends GenericFinder {
 

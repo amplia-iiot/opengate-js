@@ -5,7 +5,7 @@ import FieldFinder from '../../util/searchingFields/FieldFinder';
 
 const BASE_URL = '/areas';
 /**
- * Defined a search over Areas	
+ * Defines a search over Areas.
  * @example ogapi.areasSearchBuilder()
  */
 export default class AreasSearchBuilder extends SearchBuilder {

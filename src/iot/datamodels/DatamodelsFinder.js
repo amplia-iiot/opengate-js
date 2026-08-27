@@ -5,12 +5,12 @@ import ProvisionGenericFinder from '../../ProvisionGenericFinder';
 export const DATAMODEL_RESOURCE = '/datamodels/';
 
 /**
- *   This class allow make get request to organization resource into Opengate North API.
+ * This class allows making GET requests to the IoT datamodel resource of the OpenGate North API.
  */
 export default class DatamodelsFinder extends ProvisionGenericFinder {
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
         super(ogapi, 'organizations/', 'datamodels', 'Datamodel not found');

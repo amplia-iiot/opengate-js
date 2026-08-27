@@ -12,7 +12,7 @@ export const SOFTWARE_TYPES_ENUM = ['SOFTWARE', 'FIRMWARE'];
 
 const BASE_URL = '/catalog/softwares';
 /**
- * Defined a search over Datastreams    
+ * Defines a search over software entries.
  * @example ogapi.softwareSearchBuilder()
  */
 export default class SoftwaresSearchBuilder extends SearchWithSummaryBuilder {

@@ -5,7 +5,7 @@ import FieldFinder from '../../util/searchingFields/FieldFinder';
 
 const BASE_URL = '/channels';
 /**
- * Defined a search over Channels	
+ * Defines a search over Channels.
  * @example ogapi.channelsSearchBuilder()
  */
 export default class ChannelsSearchBuilder extends SearchWithSummaryBuilder {

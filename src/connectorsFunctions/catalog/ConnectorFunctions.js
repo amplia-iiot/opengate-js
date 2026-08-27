@@ -9,7 +9,7 @@ import {
 } from '../_CONNECTOR_FUNCTIONS_ENUMS';
 
 /**
- * This is a base object than contains all you can about connector functions catalog
+ * This is a base object that contains everything you can do with a connector function catalog entry.
  */
 export default class ConnectorFunctions extends BaseProvision {
 
@@ -224,7 +224,7 @@ export default class ConnectorFunctions extends BaseProvision {
     }
 
     /**
-     * Enum of allowed types for connector function's payload data. Request Connector Functions only accept JSON. 
+     * Enum of allowed types for connector function&#x27;s payload data. Request Connector Functions only accept JSON.
      * Allowed: TEXT┃JSON┃BINARY
      * @param {String} payloadType 
      * @returns {ConnectorFunctionsCatalog}

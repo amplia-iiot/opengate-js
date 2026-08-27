@@ -4,7 +4,7 @@ import SearchBuilder from './SearchBuilder';
 import StaticSearch from '../StaticSearch';
 
 /**
- * Defined a search over operational status catalogs    
+ * Defines a search over the country codes catalog.
  * @example ogapi.countryCodesSearchBuilder()
  */
 export default class CountryCodesSearchBuilder extends SearchBuilder {

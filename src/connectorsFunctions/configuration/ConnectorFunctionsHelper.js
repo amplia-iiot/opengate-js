@@ -11,7 +11,7 @@ import {
 } from '../_CONNECTOR_FUNCTIONS_ENUMS';
 
 /**
- *   This class allow make get request to RuleConfigurationsHelper resource into Opengate North API.
+ * This class allows you to make GET requests to the ConnectorFunctionsHelper resource in the OpenGate North API.
  */
 export default class ConnectorFunctionsHelper extends GenericFinder {
 

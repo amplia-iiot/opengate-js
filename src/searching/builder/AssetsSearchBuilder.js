@@ -6,7 +6,7 @@ import AssetSearch from '../AssetSearch';
 
 const BASE_URL = '/entities';
 /**
- * Defined a search over Assets	
+ * Defines a search over Assets.
  * @example ogapi.assetsSearchBuilder()
  */
 export default class AssetsSearchBuilder extends PreFilteredSearchBuilder {

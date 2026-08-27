@@ -3,8 +3,8 @@
 import q from 'q';
 
 /** 
- * This is a abstract class, it must be extended to another class that defined the specific search.
- * This class is responsible to manage execute operations request to OpenGate North API
+ * This is an abstract class; it must be extended by another class that defines the specific request. This class is
+ * responsible for executing operation requests to the OpenGate North API.
  */
 export default class Operation {
     /**
@@ -20,7 +20,7 @@ export default class Operation {
     }
 
     /**
-     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * This invokes a request to the OpenGate North API and the callback is managed by promises.
      * @return {Promise}
      * @property {function (result:object, statusCode:number)} then - When request it is OK
      * @property {function (error:string)} catch - When request it is NOK

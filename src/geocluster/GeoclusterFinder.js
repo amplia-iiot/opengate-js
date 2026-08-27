@@ -3,13 +3,13 @@
 import ProvisionGenericFinder from '../ProvisionGenericFinder';
 
 /**
- *   This class allow make get request to user resource into Opengate North API.
+ * This class allows making GET requests to the geocluster resource in the OpenGate North API.
  */
 export default class GeoclusterFinder extends ProvisionGenericFinder {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
         super(ogapi, 'geocluster', 'geocluster', 'Geocluster not found');

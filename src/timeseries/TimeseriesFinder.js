@@ -5,7 +5,7 @@ import GenericFinder from '../GenericFinder';
 import HttpStatus from 'http-status-codes';
 
 /**
- *   This class allow make get request to TimeseriesFinder resource into Opengate North API.
+ * This class performs GET requests against the timeseries resource in the OpenGate North API.
  */
 
 export default class TimeseriesFinder extends GenericFinder {

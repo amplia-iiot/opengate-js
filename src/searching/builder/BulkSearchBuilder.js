@@ -6,7 +6,7 @@ import FieldFinder from '../../util/searchingFields/FieldFinder';
 const BASE_URL = '/bulk/async';
 
 /**
- * Defined a search over bulk entities operations	
+ * Defines a search over bulk entity operations.
  * @example ogapi.bulkSearchBuilder()
  */
 export default class BulkSearchBuilder extends SearchBuilder {

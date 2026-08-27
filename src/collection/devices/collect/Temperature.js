@@ -10,7 +10,7 @@ import {
 
 
 /**
- * This is a base object that allows the user to create a Datapoint.
+ * This is a base object that allows the user to create a Temperature object.
  */
 export default class Temperature {
 

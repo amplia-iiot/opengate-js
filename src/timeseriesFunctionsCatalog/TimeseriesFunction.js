@@ -7,13 +7,13 @@ import checkType from '../util/formats/check_types'
 import { VALUE_TYPES_ENUM } from './TYPES_ENUM'
 
 /**
- * This is a base object that contains all you can do about TimeseriesFunction.
+ * This is a base object that contains everything you can do with TimeseriesFunction.
  */
 export default class TimeseriesFunction extends BaseProvision {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi, organization, nameForUpdate) {
         super(ogapi, "timeseries/provision/organizations");
@@ -201,7 +201,7 @@ export default class TimeseriesFunction extends BaseProvision {
     }
 
     /** 
-     * Udpate a Rule
+     * Updates a rule.
      * @return {Promise}
      * @throws {Error} 
      */

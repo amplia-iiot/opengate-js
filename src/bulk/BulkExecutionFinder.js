@@ -7,13 +7,13 @@ import HttpStatus from 'http-status-codes';
 export const MIME_TYPES_ENUM = ['application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
 
 /**
- *   This class allow make get request to bulk executions resource into Opengate North API.
+ * This class allows making GET requests to the bulk executions resource in the OpenGate North API.
  */
 export default class BulkExecutionFinder extends GenericFinder {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
         super(ogapi, 'provisionProcessors/provision/organizations', 'value', 'Bulk not found');
@@ -27,7 +27,7 @@ export default class BulkExecutionFinder extends GenericFinder {
         return this._baseUrl + '/' + this._organization + '/bulk/' + this._id + (this._details ? "/details" : '');
     }
     /**
-     * Download a specific entity by its organization and id. This execute a GET http method
+     * Downloads a specific entity by its organization and id. This executes a GET HTTP method.
      * @test
      *   ogapi.newBulkExecutionFinder().findByOrganizationAndId('orgname', xxx-xx-xxx-xxx').then().catch();
      *   ogapi.newBulkExecutionFinder().findByOrganizationAndId('orgname', xxx-xx-xxx-xxx', true).then().catch();

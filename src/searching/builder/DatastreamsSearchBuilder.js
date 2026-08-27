@@ -6,7 +6,7 @@ import FieldFinder from '../../util/searchingFields/FieldFinder';
 
 const BASE_URL = '/datastreams';
 /**
- * Defined a search over Datastreams	
+ * Defines a search over Datastreams.
  * @example ogapi.datastreamsSearchBuilder()
  */
 export default class DatastreamsSearchBuilder extends SearchBuilder {

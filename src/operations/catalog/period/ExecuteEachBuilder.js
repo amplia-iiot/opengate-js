@@ -1,7 +1,8 @@
 import merge from 'merge';
 import moment from 'moment';
 /**
- * Defines the builder to configure a period of operation. With this builder you can select how repeat the operation. By days, hours or minutes.
+ * Defines the builder used to configure the periodicity of an operation. With this builder you can select how the
+ * operation repeats: by days, hours, or minutes.
  */
 export default class ExecuteEachBuilder {
     /**

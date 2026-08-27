@@ -13,13 +13,13 @@ const max_length_id = 50;
 const max_length_description = 200;
 
 /**
- * This is a base object that contains all you can do about Certificates.
+ * This is a base object that contains everything you can do with Certificates.
  */
 export default class Certificates extends Security {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
         super(ogapi, "/certificates");
@@ -234,8 +234,8 @@ export default class Certificates extends Security {
     }
 
     /**
-     * This invoke a request to OpenGate North API and the callback is managed by promises
-     * This method create an element certificate
+     * This invokes a request to the OpenGate North API, and the callback is managed via promises. This method creates
+     * a certificate element.
      * @param {File} rawFile - this File is the certificate
      * @property {function (result:object, statusCode:number)} then - When request it is OK
      * @property {function (error:string)} catch - When request it is NOK
@@ -299,8 +299,8 @@ export default class Certificates extends Security {
     }
 
     /**
-     * This invoke a request to OpenGate North API and the callback is managed by promises
-     * This method update an element certificate
+     * This invokes a request to the OpenGate North API, and the callback is managed via promises. This method updates
+     * a certificate element.
      * @property {function (result:object, statusCode:number)} then - When request it is OK
      * @property {function (error:string)} catch - When request it is NOK
      * @return {Promise}     

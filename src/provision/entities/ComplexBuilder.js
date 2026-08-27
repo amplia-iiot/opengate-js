@@ -3,8 +3,8 @@
 import SimpleBuilder from './SimpleBuilder';
 
 /**
- * This class extends SimpleBuilder to allow set complex values. What is a complex value? It is simple, It is a value 
- * that need a communications module identifier to allow set into the box.
+ * This class extends SimpleBuilder to allow setting complex values. What is a complex value? It is simply a value
+ * that needs a communications module identifier to be set into the box.
  */
 export default class ComplexBuilder extends SimpleBuilder {
 

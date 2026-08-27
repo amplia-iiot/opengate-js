@@ -5,7 +5,7 @@ import FieldFinder from '../../util/searchingFields/FieldFinder';
 
 const BASE_URL = '/entities';
 /**
- * Defined a search over Subscriptions	
+ * Defines a search over Subscriptions.
  * @example ogapi.subscriptionsSearchBuilder()
  */
 export default class SubscriptionsSearchBuilder extends PreFilteredSearchBuilder {

@@ -6,7 +6,7 @@ import FieldFinder from '../../util/searchingFields/FieldFinder';
 export const TOKEN_URL = '$_token';
 
 /**
- * Defined a search over Executions	
+ * Defines a search over Executions.
  * @example ogapi.executionsSearchBuilder()
  */
 export default class ExecutionsSearchBuilder extends SearchWithSummaryBuilder {

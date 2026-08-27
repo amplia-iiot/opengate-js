@@ -3,7 +3,7 @@
 import GenericFinder from '../GenericFinder';
 
 /**
- *   This class allow make get request to ProvisionProcessors Finder resource into Opengate North API.
+ * This class performs GET requests against the provision processors resource in the OpenGate North API.
  */
 export default class provisionProcessorsFinder extends GenericFinder {
 

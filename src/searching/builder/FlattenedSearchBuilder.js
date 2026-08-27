@@ -4,7 +4,8 @@ import SearchBuilder from './SearchBuilder';
 import DeviceSearch from '../DeviceSearch';
 
 /**
- * This is a abstract class. It is a class that extends from base to make all kind of summary search request to OpenGate North API.
+ * This is an abstract class that extends the base builder to make flattened and summary search requests to the
+ * OpenGate North API.
  */
 export default class FlattenedSearchBuilder extends SearchBuilder {
     /**

@@ -12,14 +12,15 @@ const _length_email = 100;
 const _length_twoFaType = 100;
 const _length_password = 50;
 /**
- *   This class allow make get request to user resource into Opengate North API.
+ * This class represents a user in the OpenGate North API and provides methods to manage authentication,
+ * credentials, and account attributes.
  */
 export default class User extends BaseProvision {
 
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
         super(ogapi, "/users", undefined, ["email", "workgroup", "domain", "profile", "countryCode", "langCode"]);
