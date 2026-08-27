@@ -1,37 +1,39 @@
-let isCreate = false
-let postBody
+let isCreate = false;
+let postBody;
 
 function postDevicePlan(req, saveBody) {
-    const requiredFields = ['name', 'flowRate']
-    const errors = [{
-        "code": 0,
-        "message": "Error on post",
-        "context": []
-    }]
-    const organization = req.params.organization
+    const requiredFields = ['name', 'flowRate'];
+    const errors = [
+        {
+            code: 0,
+            message: 'Error on post',
+            context: []
+        }
+    ];
+    const organization = req.params.organization;
     if (!organization) {
         errors[0].context.push({
-            value: "undefined",
-            name: "organization"
-        })
+            value: 'undefined',
+            name: 'organization'
+        });
     }
-    const body = req.body
+    const body = req.body;
     requiredFields.forEach(requiredField => {
         if (!body[requiredField]) {
             errors[0].context.push({
-                value: "undefined",
+                value: 'undefined',
                 name: requiredField
-            })
+            });
         }
     });
     if (isCreate) {
         errors.push({
             code: 0,
-            "message": "Entity exists"
-        })
-        isCreate = false
+            message: 'Entity exists'
+        });
+        isCreate = false;
     } else if (req.body.name === 'existsDevicePlan') {
-        isCreate = true
+        isCreate = true;
     }
 
     if (errors[0].context.length > 0 || errors.length > 1) {
@@ -39,10 +41,10 @@ function postDevicePlan(req, saveBody) {
             statusCode: 400,
             status: 400,
             body: errors
-        }
+        };
     }
     if (saveBody) {
-        postBody = req.body
+        postBody = req.body;
     }
     return {
         statusCode: 201,
@@ -50,87 +52,91 @@ function postDevicePlan(req, saveBody) {
         header: {
             location: 'https://mock/north/v80/provision/organizations/' + organization + '/0bb30c4b-2953-4a8d-b084-3e2e0bb25a76'
         }
-    }
+    };
 }
 
-function deletePlan(req){
-    const organization = req.params.organization
-    const errors = [{
-        "code": 0,
-        "message": "Error on post",
-        "context": []
-    }]
+function deletePlan(req) {
+    const organization = req.params.organization;
+    const errors = [
+        {
+            code: 0,
+            message: 'Error on post',
+            context: []
+        }
+    ];
     if (!organization) {
         errors[0].context.push({
-            value: "undefined",
-            name: "organization"
-        })
+            value: 'undefined',
+            name: 'organization'
+        });
     }
-    const id = req.params.id
+    const id = req.params.id;
     if (!id) {
         errors[0].context.push({
-            value: "undefined",
-            name: "devicesPlansId"
-        })
+            value: 'undefined',
+            name: 'devicesPlansId'
+        });
     }
     if (errors[0].context.length > 0) {
         return {
             statusCode: 400,
             status: 400,
             body: errors
-        }
+        };
     }
     return {
         statusCode: 200,
         status: 200
-    }
+    };
 }
-  module.exports = {
+module.exports = {
     createDelete: {
         post: {
             '/north/v80/provision/organizations': function (req) {
-                const organization = req.body.name
+                const organization = req.body.name;
                 return {
                     statusCode: 201,
                     status: 201,
                     header: {
                         location: 'https://mock/north/v80/provision/organizations/' + organization
                     }
-                }
+                };
             },
             '/north/v80/provision/organizations/:organization/devicePlans': function (req) {
-                return postDevicePlan(req)
+                return postDevicePlan(req);
             }
         },
         put: {
             '/north/v80/provision/organizations/:organization/devicePlans/:id': function (req) {
-                const requiredFields = ['name', 'flowRate']
-                const errors = [{
-                    "code": 0,
-                    "message": "Error on post",
-                    "context": []
-                }]
-                const organization = req.params.organization
+                const requiredFields = ['name', 'flowRate'];
+                const errors = [
+                    {
+                        code: 0,
+                        message: 'Error on post',
+                        context: []
+                    }
+                ];
+                const organization = req.params.organization;
                 if (!organization) {
                     errors[0].context.push({
-                        value: "undefined",
-                        name: "organization"
-                    })
+                        value: 'undefined',
+                        name: 'organization'
+                    });
                 }
-                const id = req.params.id
+                const id = req.params.id;
                 if (!id) {
                     errors[0].context.push({
-                        value: "undefined",
-                        name: "devicesPlansId"
-                    })
+                        value: 'undefined',
+                        name: 'devicesPlansId'
+                    });
                 }
-                const body = req.body
+                const body = req.body;
                 requiredFields.forEach(requiredField => {
                     if (!body[requiredField]) {
                         errors[0].context.push({
-                            value: "undefined",
+                            value: 'undefined',
                             name: requiredField
-                        })
+                        });
                     }
                 });
                 if (errors[0].context.length > 0 || errors.length > 1) {
@@ -138,12 +144,12 @@ function deletePlan(req){
                         statusCode: 400,
                         status: 400,
                         body: errors
-                    }
+                    };
                 }
                 return {
                     statusCode: 200,
                     status: 200
-                }
+                };
             }
         },
         del: {
@@ -152,95 +158,99 @@ function deletePlan(req){
                 status: 200
             },
             '/north/v80/provision/organizations/:organization/devicePlans/:id': function (req) {
-                return deletePlan(req)
+                return deletePlan(req);
             }
         },
         get: {
             '/north/v80/provision/organizations/:organization/devicePlans': function (req) {
-                const organization = req.params.organization
-                const errors = [{
-                    "code": 0,
-                    "message": "Error on post",
-                    "context": []
-                }]
+                const organization = req.params.organization;
+                const errors = [
+                    {
+                        code: 0,
+                        message: 'Error on post',
+                        context: []
+                    }
+                ];
                 if (!organization) {
                     errors[0].context.push({
-                        value: "undefined",
-                        name: "organization"
-                    })
+                        value: 'undefined',
+                        name: 'organization'
+                    });
                 }
                 if (errors[0].context.length > 0) {
                     return {
                         statusCode: 400,
                         status: 400,
                         body: errors
-                    }
+                    };
                 }
                 return {
                     statusCode: 200,
                     status: 200,
-                    body: bodyGETDevicePlans
-                }
+                    body: { devicePlans: [postBody] }
+                };
             },
             '/north/v80/provision/organizations/:organization/devicePlans/:id': function (req) {
-                const organization = req.params.organization
-                const errors = [{
-                    "code": 0,
-                    "message": "Error on post",
-                    "context": []
-                }]
+                const organization = req.params.organization;
+                const errors = [
+                    {
+                        code: 0,
+                        message: 'Error on post',
+                        context: []
+                    }
+                ];
                 if (!organization) {
                     errors[0].context.push({
-                        value: "undefined",
-                        name: "organization"
-                    })
+                        value: 'undefined',
+                        name: 'organization'
+                    });
                 }
-                const id = req.params.id
+                const id = req.params.id;
                 if (!id) {
                     errors[0].context.push({
-                        value: "undefined",
-                        name: "devicesPlansId"
-                    })
+                        value: 'undefined',
+                        name: 'devicesPlansId'
+                    });
                 }
                 if (errors[0].context.length > 0) {
                     return {
                         statusCode: 400,
                         status: 400,
                         body: errors
-                    }
+                    };
                 }
                 return {
                     statusCode: 200,
                     status: 200,
-                    body: bodyGETDevicePlan
-                }
+                    body: postBody
+                };
             }
         }
     },
     find: {
         post: {
             '/north/v80/provision/organizations': function (req) {
-                const organization = req.body.name
+                const organization = req.body.name;
                 return {
                     statusCode: 201,
                     status: 201,
                     header: {
                         location: 'https://mock/north/v80/provision/organizations/' + organization
                     }
-                }
+                };
             },
             '/north/v80/provision/users': function (req) {
-                const organization = req.body.name
+                const organization = req.body.name;
                 return {
                     statusCode: 201,
                     status: 201,
                     header: {
                         location: 'https://mock/north/v80/provision/users/' + organization
                     }
-                }
+                };
             },
             '/north/v80/provision/organizations/:organization/devicePlans': function (req) {
-                return postDevicePlan(req, true)
+                return postDevicePlan(req, true);
             }
         },
         del: {
@@ -253,86 +263,90 @@ function deletePlan(req){
                 status: 200
             },
             '/north/v80/provision/organizations/:organization/devicePlans/:id': function (req) {
-                return deletePlan(req)
+                return deletePlan(req);
             }
         },
         get: {
             '/north/v80/provision/organizations/:organization/devicePlans': function (req) {
-                const organization = req.params.organization
-                const errors = [{
-                    "code": 0,
-                    "message": "Error on post",
-                    "context": []
-                }]
+                const organization = req.params.organization;
+                const errors = [
+                    {
+                        code: 0,
+                        message: 'Error on post',
+                        context: []
+                    }
+                ];
                 if (!organization) {
                     errors[0].context.push({
-                        value: "undefined",
-                        name: "organization"
-                    })
+                        value: 'undefined',
+                        name: 'organization'
+                    });
                 }
                 if (errors[0].context.length > 0) {
                     return {
                         statusCode: 400,
                         status: 400,
                         body: errors
-                    }
+                    };
                 }
                 return {
                     statusCode: 200,
                     status: 200,
                     body: {
-                        "devicePlans": [postBody]
+                        devicePlans: [postBody]
                     }
-                }
+                };
             },
             '/north/v80/provision/organizations/:organization/devicePlans/:identifier': function (req) {
-                const organization = req.params.organization
-                const identifier = req.params.identifier
+                const organization = req.params.organization;
+                const identifier = req.params.identifier;
 
-                const errors = [{
-                    "code": 0,
-                    "message": "Error on post",
-                    "context": []
-                }]
+                const errors = [
+                    {
+                        code: 0,
+                        message: 'Error on post',
+                        context: []
+                    }
+                ];
                 if (!organization) {
                     errors[0].context.push({
-                        value: "undefined",
-                        name: "organization"
-                    })
+                        value: 'undefined',
+                        name: 'organization'
+                    });
                 }
                 if (!identifier) {
                     errors[0].context.push({
-                        value: "undefined",
-                        name: "identifier"
-                    })
+                        value: 'undefined',
+                        name: 'identifier'
+                    });
                 }
                 if (errors[0].context.length > 0) {
                     return {
                         statusCode: 400,
                         status: 400,
                         body: errors
-                    }
+                    };
                 }
                 return {
                     statusCode: 200,
                     status: 200,
                     body: postBody
-                }
+                };
             },
             '/north/v80/provision/organizations/:organization/devicePlans?visibility=assignable': function (req) {
                 return {
                     statusCode: 200,
                     status: 200,
-                    body: {devicePlans: [postBody]}
-                }
+                    body: { devicePlans: [postBody] }
+                };
             },
             '/north/v80/provision/organizations/:organization/devicePlans?visibility=administrable': function (req) {
                 return {
                     statusCode: 200,
                     status: 200,
-                    body: {devicePlans: [postBody]}
-                }
+                    body: { devicePlans: [postBody] }
+                };
             }
         }
     }
-}
+};

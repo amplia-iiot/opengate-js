@@ -18,7 +18,7 @@ export default class IoTDatastreamAccessSearchBuilder extends SearchBuilder {
     }
 
     /**
-     * Build a instance of StaticSearch 
+     * Build a instance of StaticSearch
      *
      * @example
      *   ogapi.ioTDatastreamAccessSearchBuilder().build()
@@ -26,12 +26,13 @@ export default class IoTDatastreamAccessSearchBuilder extends SearchBuilder {
      * @return {StaticSearch}  
      */
     build() {
-        return new StaticSearch(this._parent,
+        return new StaticSearch(
+            this._parent,
             this._buildUrl(),
             null,
             this._builderParams.timeout,
-            'ioTDatastreamAccess', this.customFilters);
+            'ioTDatastreamAccess',
+            this.customFilters
+        );
     }
-
-
 }

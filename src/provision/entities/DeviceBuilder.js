@@ -1,12 +1,8 @@
 'use strict';
 
 import ComplexBuilder from './ComplexBuilder';
-import {
-    SubscriberID
-} from './SubscriberBuilder';
-import {
-    SubscriptionID
-} from './SubscriptionBuilder';
+import { SubscriberID } from './SubscriberBuilder';
+import { SubscriptionID } from './SubscriptionBuilder';
 import HttpStatus from 'http-status-codes';
 import q from 'q';
 import jp from 'jsonpath';
@@ -41,9 +37,8 @@ class BoxBuilder {
         this._wrappers = [];
         this._urlParameters = urlParameters;
 
-
-        this._subscriberKeys.forEach((key) => {
-            _this._obj[key].forEach((value) => {
+        this._subscriberKeys.forEach(key => {
+            _this._obj[key].forEach(value => {
                 if (!subscribers[value._index.value]) {
                     subscribers[value._index.value] = {};
                 }
@@ -53,8 +48,8 @@ class BoxBuilder {
             });
         });
 
-        this._subscriptionKeys.forEach((key) => {
-            _this._obj[key].forEach((value) => {
+        this._subscriptionKeys.forEach(key => {
+            _this._obj[key].forEach(value => {
                 if (!subscriptions[value._index.value]) {
                     subscriptions[value._index.value] = {};
                 }
@@ -64,19 +59,33 @@ class BoxBuilder {
             });
         });
 
-        Object.keys(subscriptions).forEach((commsId) => {
+        Object.keys(subscriptions).forEach(commsId => {
             let obj = subscriptions[commsId];
-            _this._administrationKeys.forEach((key) => {
+            _this._administrationKeys.forEach(key => {
                 obj[key] = _this._obj[key];
             });
-            _this._wrappers.push(new WrapperBuilder(_this._ogapi, obj, _this._url.replace('devices', 'subscriptions').replace('/' + _this._key._value._current.value, ''), obj[SubscriptionID]._value._current.value));
+            _this._wrappers.push(
+                new WrapperBuilder(
+                    _this._ogapi,
+                    obj,
+                    _this._url.replace('devices', 'subscriptions').replace('/' + _this._key._value._current.value, ''),
+                    obj[SubscriptionID]._value._current.value
+                )
+            );
         });
-        Object.keys(subscribers).forEach((commsId) => {
+        Object.keys(subscribers).forEach(commsId => {
             let obj = subscribers[commsId];
-            _this._administrationKeys.forEach((key) => {
+            _this._administrationKeys.forEach(key => {
                 obj[key] = _this._obj[key];
             });
-            _this._wrappers.push(new WrapperBuilder(_this._ogapi, obj, _this._url.replace('devices', 'subscribers').replace('/' + _this._key._value._current.value, ''), obj[SubscriberID]._value._current.value));
+            _this._wrappers.push(
+                new WrapperBuilder(
+                    _this._ogapi,
+                    obj,
+                    _this._url.replace('devices', 'subscribers').replace('/' + _this._key._value._current.value, ''),
+                    obj[SubscriberID]._value._current.value
+                )
+            );
         });
     }
 
@@ -100,7 +109,6 @@ class BoxBuilder {
         }
     }
 
-
     create() {
         let defer = q.defer();
         let postObj = {};
@@ -108,13 +116,15 @@ class BoxBuilder {
         let childEntityPromises = [];
         let _this = this;
 
-        Object.keys(putObj).filter((key) => {
-            return key.indexOf('subscriber') === -1 && key.indexOf('subscription') === -1;
-        }).forEach((deviceKey) => {
-            postObj[deviceKey] = putObj[deviceKey];
-        });
+        Object.keys(putObj)
+            .filter(key => {
+                return key.indexOf('subscriber') === -1 && key.indexOf('subscription') === -1;
+            })
+            .forEach(deviceKey => {
+                postObj[deviceKey] = putObj[deviceKey];
+            });
 
-        this._wrappers.forEach((wrapper) => {
+        this._wrappers.forEach(wrapper => {
             childEntityPromises.push({
                 wrapper: wrapper,
                 promise: wrapper.execute(defer, 10)
@@ -125,7 +135,9 @@ class BoxBuilder {
             childEntityPromises.reduce(function (previousValue, current) {
                 previousValue.push(current.promise);
                 return previousValue;
-            }, [])).then(() => {
+            }, [])
+        )
+            .then(() => {
                 defer.notify({
                     message: 'OGAPI_201_ENTITIES_CREATED',
                     type: 'success',
@@ -140,7 +152,7 @@ class BoxBuilder {
                 return _this._ogapi.Napi.post(_this._url, postObj, null, null, {
                     flattened: true
                 })
-                    .then((res) => {
+                    .then(res => {
                         if (_this._wrappers.length > 0) {
                             defer.notify({
                                 message: 'OGAPI_ADDING_RELATED_ENTITIES',
@@ -148,12 +160,12 @@ class BoxBuilder {
                                 percentage: 55
                             });
                             this._setUrlParameters({
-                                'flattened': true
+                                flattened: true
                             });
-                            return _this._ogapi.Napi.put(_this._urlWithKey(), putObj, this._timeout, null, this._getUrlParameters())
-                                .then((res) => {
+                            return _this._ogapi.Napi.put(_this._urlWithKey(), putObj, this._timeout, null, this._getUrlParameters()).then(
+                                res => {
                                     if (res.statusCode === HttpStatus.OK) {
-                                        if (typeof _this._onCreated === "function") {
+                                        if (typeof _this._onCreated === 'function') {
                                             _this._onCreated(res.header.location);
                                         }
                                         defer.notify({
@@ -172,10 +184,11 @@ class BoxBuilder {
                                             statusCode: res.statusCode
                                         });
                                     }
-                                });
+                                }
+                            );
                         } else {
                             if (res.statusCode === HttpStatus.CREATED) {
-                                if (typeof _this._onCreated === "function") {
+                                if (typeof _this._onCreated === 'function') {
                                     _this._onCreated(res.header.location);
                                 }
                                 defer.notify({
@@ -195,10 +208,8 @@ class BoxBuilder {
                                 });
                             }
                         }
-
                     })
-                    .catch((errores) => {
-
+                    .catch(errores => {
                         if (errores.statusCode === HttpStatus.BAD_REQUEST) {
                             let ms = jp.query(errores, '$..message')[0];
 
@@ -213,7 +224,6 @@ class BoxBuilder {
                                     statusCode: errores.statusCode
                                 });
                             }
-
                         } else {
                             defer.reject({
                                 errors: errores.data,
@@ -221,11 +231,11 @@ class BoxBuilder {
                             });
                         }
                     });
-            }).catch((err) => {
-                err.data.errors.forEach((err) => {
+            })
+            .catch(err => {
+                err.data.errors.forEach(err => {
                     var error = err.description;
-                    if (err.label)
-                        error += ":" + err.label;
+                    if (err.label) error += ':' + err.label;
                     defer.notify({
                         message: 'Error: ' + error,
                         type: 'error',
@@ -233,14 +243,16 @@ class BoxBuilder {
                     });
                 });
                 let deletePromises = [_this.delete(defer, 90)];
-                childEntityPromises.forEach((item) => {
+                childEntityPromises.forEach(item => {
                     deletePromises.push(item.wrapper.delete(defer, 90));
                 });
-                q.allSettled(deletePromises).then(() => {
-                    defer.reject(err);
-                }).catch(() => {
-                    defer.reject(err);
-                });
+                q.allSettled(deletePromises)
+                    .then(() => {
+                        defer.reject(err);
+                    })
+                    .catch(() => {
+                        defer.reject(err);
+                    });
             });
         return defer.promise;
     }
@@ -251,7 +263,7 @@ class BoxBuilder {
         let childEntityPromises = [];
         let _this = this;
 
-        this._wrappers.forEach((wrapper) => {
+        this._wrappers.forEach(wrapper => {
             childEntityPromises.push({
                 wrapper: wrapper,
                 promise: wrapper.execute(defer, 20)
@@ -262,7 +274,9 @@ class BoxBuilder {
             childEntityPromises.reduce(function (previousValue, current) {
                 previousValue.push(current.promise);
                 return previousValue;
-            }, [])).then(() => {
+            }, [])
+        )
+            .then(() => {
                 defer.notify({
                     message: 'OGAPI_201_ENTITIES_CREATED',
                     type: 'success',
@@ -275,33 +289,33 @@ class BoxBuilder {
                     percentage: 45
                 });
                 this._setUrlParameters({
-                    'flattened': true
+                    flattened: true
                 });
 
-                return _this._ogapi.Napi.put(_this._url, putObj, this._timeout, null, this._getUrlParameters())
-                    .then((res) => {
-                        if (res.statusCode === HttpStatus.OK) {
-                            if (typeof _this._onCreated === "function") {
-                                _this._onCreated(res.header.location);
-                            }
-                            defer.notify({
-                                entity: _this._key._value._current.value,
-                                message: 'OGAPI_DEVICE_UPDATED',
-                                type: 'success',
-                                percentage: 90
-                            });
-                            defer.resolve({
-                                location: res.header.location,
-                                statusCode: res.statusCode
-                            });
-                        } else {
-                            defer.reject({
-                                errors: res.errors,
-                                statusCode: res.statusCode
-                            });
+                return _this._ogapi.Napi.put(_this._url, putObj, this._timeout, null, this._getUrlParameters()).then(res => {
+                    if (res.statusCode === HttpStatus.OK) {
+                        if (typeof _this._onCreated === 'function') {
+                            _this._onCreated(res.header.location);
                         }
-                    });
-            }).catch((err) => {
+                        defer.notify({
+                            entity: _this._key._value._current.value,
+                            message: 'OGAPI_DEVICE_UPDATED',
+                            type: 'success',
+                            percentage: 90
+                        });
+                        defer.resolve({
+                            location: res.header.location,
+                            statusCode: res.statusCode
+                        });
+                    } else {
+                        defer.reject({
+                            errors: res.errors,
+                            statusCode: res.statusCode
+                        });
+                    }
+                });
+            })
+            .catch(err => {
                 defer.notify('OGAPI_SOMETHING_WRONG_UPDATING_DEVICE');
                 defer.reject(err);
             });
@@ -314,7 +328,7 @@ class BoxBuilder {
         let childEntityPromises = [];
         let _this = this;
 
-        this._wrappers.forEach((wrapper) => {
+        this._wrappers.forEach(wrapper => {
             childEntityPromises.push({
                 wrapper: wrapper,
                 promise: wrapper.execute(defer, 20)
@@ -325,7 +339,9 @@ class BoxBuilder {
             childEntityPromises.reduce(function (previousValue, current) {
                 previousValue.push(current.promise);
                 return previousValue;
-            }, [])).then(() => {
+            }, [])
+        )
+            .then(() => {
                 defer.notify({
                     message: 'OGAPI_201_ENTITIES_CREATED',
                     type: 'success',
@@ -338,33 +354,33 @@ class BoxBuilder {
                     percentage: 45
                 });
                 this._setUrlParameters({
-                    'flattened': true
+                    flattened: true
                 });
 
-                return _this._ogapi.Napi.patch(_this._url, putObj, this._timeout, null, this._getUrlParameters())
-                    .then((res) => {
-                        if (res.statusCode === HttpStatus.OK) {
-                            if (typeof _this._onCreated === "function") {
-                                _this._onCreated(res.header.location);
-                            }
-                            defer.notify({
-                                entity: _this._key._value._current.value,
-                                message: 'OGAPI_DEVICE_UPDATED',
-                                type: 'success',
-                                percentage: 90
-                            });
-                            defer.resolve({
-                                location: res.header.location,
-                                statusCode: res.statusCode
-                            });
-                        } else {
-                            defer.reject({
-                                errors: res.errors,
-                                statusCode: res.statusCode
-                            });
+                return _this._ogapi.Napi.patch(_this._url, putObj, this._timeout, null, this._getUrlParameters()).then(res => {
+                    if (res.statusCode === HttpStatus.OK) {
+                        if (typeof _this._onCreated === 'function') {
+                            _this._onCreated(res.header.location);
                         }
-                    });
-            }).catch((err) => {
+                        defer.notify({
+                            entity: _this._key._value._current.value,
+                            message: 'OGAPI_DEVICE_UPDATED',
+                            type: 'success',
+                            percentage: 90
+                        });
+                        defer.resolve({
+                            location: res.header.location,
+                            statusCode: res.statusCode
+                        });
+                    } else {
+                        defer.reject({
+                            errors: res.errors,
+                            statusCode: res.statusCode
+                        });
+                    }
+                });
+            })
+            .catch(err => {
                 defer.notify('OGAPI_SOMETHING_WRONG_UPDATING_DEVICE');
                 defer.reject(err);
             });
@@ -373,15 +389,14 @@ class BoxBuilder {
 
     delete(defered, percentage) {
         let _this = this;
-        return this._ogapi.Napi.delete(this._urlWithKey())
-            .then((res) => {
-                defered.notify({
-                    entity: _this._key,
-                    message: 'OGAPI_ENTITY_DELETED',
-                    type: 'warning',
-                    percentage: percentage
-                });
+        return this._ogapi.Napi.delete(this._urlWithKey()).then(res => {
+            defered.notify({
+                entity: _this._key,
+                message: 'OGAPI_ENTITY_DELETED',
+                type: 'warning',
+                percentage: percentage
             });
+        });
     }
 }
 
@@ -399,45 +414,48 @@ class WrapperBuilder {
     }
 
     _checkExists() {
-        return this._ogapi.Napi.get(this._urlWithKey()).then(function (response) {
-            return response.statusCode === HttpStatus.OK;
-        }).catch((err) => {
-            console.warn(err);
-            return false;
-        });
+        return this._ogapi.Napi.get(this._urlWithKey())
+            .then(function (response) {
+                return response.statusCode === HttpStatus.OK;
+            })
+            .catch(err => {
+                console.warn(err);
+                return false;
+            });
     }
-
 
     execute(defered, percentage) {
         let defer = q.defer();
         let _this = this;
-        this._checkExists().then((exists) => {
-            if (!exists) {
-                create(defered, defer, percentage);
-            } else {
-                defer.resolve({
-                    message: 'OGAPI_ENTITY_ALREADY_CREATED',
-                    entity: _this._key
-                });
-            }
-        }).catch((exists) => {
-            if (!exists) {
-                create(defered, defer, percentage);
-            } else {
-                defer.resolve({
-                    message: 'OGAPI_ENTITY_ALREADY_CREATED',
-                    entity: _this._key
-                });
-            }
-        });
+        this._checkExists()
+            .then(exists => {
+                if (!exists) {
+                    create(defered, defer, percentage);
+                } else {
+                    defer.resolve({
+                        message: 'OGAPI_ENTITY_ALREADY_CREATED',
+                        entity: _this._key
+                    });
+                }
+            })
+            .catch(exists => {
+                if (!exists) {
+                    create(defered, defer, percentage);
+                } else {
+                    defer.resolve({
+                        message: 'OGAPI_ENTITY_ALREADY_CREATED',
+                        entity: _this._key
+                    });
+                }
+            });
         return defer.promise;
 
         function create(defered, defer, percentage) {
-            _this._obj['provision.administration.serviceGroup'] = { "_value": { "_current": { "value": "emptyServiceGroup" } } };
+            _this._obj['provision.administration.serviceGroup'] = { _value: { _current: { value: 'emptyServiceGroup' } } };
             _this._ogapi.Napi.post(_this._url, _this._obj, null, null, {
                 flattened: true
             })
-                .then((res) => {
+                .then(res => {
                     _this._created = true;
                     defered.notify({
                         entity: _this._key,
@@ -449,7 +467,8 @@ class WrapperBuilder {
                         message: 'OGAPI_ENTITY_CREATED',
                         entity: _this._key
                     });
-                }).catch((err) => {
+                })
+                .catch(err => {
                     console.error(err);
                     defered.notify({
                         entity: _this._key,
@@ -459,7 +478,7 @@ class WrapperBuilder {
                     });
                     defer.reject({
                         entity: _this._key,
-                        message: 'OGAPI_SOMETHING_WRONG_CREATING',
+                        message: 'OGAPI_SOMETHING_WRONG_CREATING'
                     });
                 });
         }
@@ -468,28 +487,25 @@ class WrapperBuilder {
     delete(defered, percentage) {
         let _this = this;
         if (this._created) {
-            return this._ogapi.Napi.delete(this._urlWithKey())
-                .then((res) => {
-                    defered.notify({
-                        entity: _this._key,
-                        message: 'OGAPI_ENTITY_DELETED',
-                        type: 'warning',
-                        percentage: percentage
-                    });
+            return this._ogapi.Napi.delete(this._urlWithKey()).then(res => {
+                defered.notify({
+                    entity: _this._key,
+                    message: 'OGAPI_ENTITY_DELETED',
+                    type: 'warning',
+                    percentage: percentage
                 });
+            });
         }
-        return Q.fcall(() => {
+        return q.fcall(() => {
             return;
         });
     }
-
 }
 
 /**
  * Device builder. This builder gives you the necessary tools to create a device using the OpenGate REST API.
  */
 export default class DeviceBuilder extends ComplexBuilder {
-
     /**
      * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
@@ -497,7 +513,7 @@ export default class DeviceBuilder extends ComplexBuilder {
      * @param {!array} [allowedDatastreams] - Allowed datastreams to add into the new device
      * @param {!array} [definedSchemas] - Jsonschema about all OpenGate specific types
      * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool
-     * @param {number} ms - timeout in milliseconds    
+     * @param {number} ms - timeout in milliseconds  
      */
 
     constructor(ogapi, organization, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout) {
@@ -516,7 +532,14 @@ export default class DeviceBuilder extends ComplexBuilder {
      */
     create() {
         this._checkRequiredParameters();
-        return (new BoxBuilder(this._ogapi, this._composeElement(), this._resource, this._getEntityKey(), this._getUrlParameters(), this._timeout)).create();
+        return new BoxBuilder(
+            this._ogapi,
+            this._composeElement(),
+            this._resource,
+            this._getEntityKey(),
+            this._getUrlParameters(),
+            this._timeout
+        ).create();
     }
 
     /**
@@ -530,11 +553,17 @@ export default class DeviceBuilder extends ComplexBuilder {
      *  ogapi.entityBuilder.devicesBuilder().update()
      */
     update() {
-        return (new BoxBuilder(this._ogapi, this._composeElement(), this._buildURL(), this._getEntityKey(), this._getUrlParameters(), this._timeout)).update();
+        return new BoxBuilder(
+            this._ogapi,
+            this._composeElement(),
+            this._buildURL(),
+            this._getEntityKey(),
+            this._getUrlParameters(),
+            this._timeout
+        ).update();
     }
 
     _getEntityKey() {
         return this._entity[ID];
     }
-
 }

@@ -19,10 +19,10 @@ export default class CertificatesSearchBuilder extends SearchBuilder {
         this._assignable = false;
     }
 
-    /** 
+    /**
      *  The search result will have all certificates which can be assignable to some device
      *  ogapi.certificatesSearchBuilder().assignable()
-     * @return {CertificatesSearchBuilder} 
+     * @return {CertificatesSearchBuilder}
      */
     assignable() {
         this._assignable = true;
@@ -33,7 +33,7 @@ export default class CertificatesSearchBuilder extends SearchBuilder {
      * The search result will have all certificates which can be administered by the user
      * @example
      *  ogapi.certificatesSearchBuilder().administrable()
-     * @return {CertificatesSearchBuilder} 
+     * @return {CertificatesSearchBuilder}
      **/
     administrable() {
         this._assignable = false;
@@ -46,7 +46,7 @@ export default class CertificatesSearchBuilder extends SearchBuilder {
      *  ogapi.certificatesSearchBuilder().withFetch(true)
      * @param {!flag} flag
      * @throws {Error} throw error when flag is not a number
-     * @return {CertificatesSearchBuilder} 
+     * @return {CertificatesSearchBuilder}
      */
     withFetch(flag) {
         if (flag === true || flag === false) {
@@ -56,7 +56,6 @@ export default class CertificatesSearchBuilder extends SearchBuilder {
         }
         return this;
     }
-
 
     _buildUrl() {
         let url = this._url;
@@ -68,5 +67,4 @@ export default class CertificatesSearchBuilder extends SearchBuilder {
         }
         return url;
     }
-
 }

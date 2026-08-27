@@ -18,7 +18,7 @@ export default class FieldsDefinitionSearchBuilder extends SearchBuilder {
     }
 
     /**
-     * Build a instance of StaticSearch 
+     * Build a instance of StaticSearch
      *
      * @example
      *   ogapi.FieldsDefinitionSearchBuilder().build()
@@ -26,13 +26,15 @@ export default class FieldsDefinitionSearchBuilder extends SearchBuilder {
      * @return {StaticSearch}  
      */
     build() {
-        return new StaticSearch(this._parent,
+        return new StaticSearch(
+            this._parent,
             this._buildUrl(),
             this._buildFilter(),
             this._builderParams.timeout,
-            'fieldsDefinition', this.customFilters);
+            'fieldsDefinition',
+            this.customFilters
+        );
     }
-
 
     /**
      * Sets id to search
@@ -54,6 +56,4 @@ export default class FieldsDefinitionSearchBuilder extends SearchBuilder {
         this.customFilters.type = fieldDefinitionType;
         return this;
     }
-
-
 }

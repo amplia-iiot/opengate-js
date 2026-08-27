@@ -1,25 +1,24 @@
 'use strict';
 
 import BaseProvision from '../provision/BaseProvision';
-import {ORGANIZATION_PLANS} from './URL_ENUM'
+import { ORGANIZATION_PLANS } from './URL_ENUM';
 import { PERIOD } from './PERIOD_ENUM';
 import { UNIT } from './UNIT_ENUM';
-import checkType from '../util/formats/check_types'
+import checkType from '../util/formats/check_types';
 import _ from 'lodash';
 
 /**
  * This is a base object that contains everything you can do with organization plans.
  */
 export default class OrganizationPlans extends BaseProvision {
-
-    /**     
+    /**
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi, organization) {
-        super(ogapi, "/organizations", undefined, ['name', 'maxStorageLifeTime', 'maxDeviceAmount']);
+        super(ogapi, '/organizations', undefined, ['name', 'maxStorageLifeTime', 'maxDeviceAmount']);
         checkType._checkStringAndLength(organization, 50, 'organization');
         this._organization = organization;
-        this._resource = this._resource + '/' + this._organization + "/" + ORGANIZATION_PLANS;
+        this._resource = this._resource + '/' + this._organization + '/' + ORGANIZATION_PLANS;
     }
 
     /**
@@ -28,11 +27,11 @@ export default class OrganizationPlans extends BaseProvision {
      * @return {OrganizationPlans}
      */
     withIdentifier(identifier) {
-        checkType._checkStringAndLength(identifier, 50, 'identifier')
+        checkType._checkStringAndLength(identifier, 50, 'identifier');
         this._identifier = identifier;
         return this;
     }
-    
+
     /**
      * Set the name attribute
      * @param {string} name - required field
@@ -46,7 +45,7 @@ export default class OrganizationPlans extends BaseProvision {
 
     /**
      * Set the flowRate attribute
-     * @param {object} flowRate - {value: number, unit: [SECONDS, MINUTES, HOURS, DAYS, MONTHS, YEARS]} 
+     * @param {object} flowRate - {value: number, unit: [SECONDS, MINUTES, HOURS, DAYS, MONTHS, YEARS]}
      * @return {OrganizationPlans}
      */
     withFlowRate(flowRate) {
@@ -77,36 +76,36 @@ export default class OrganizationPlans extends BaseProvision {
         return this;
     }
 
-    _checkName(name){
+    _checkName(name) {
         checkType._checkStringAndLength(name, 50, 'name');
     }
 
-    _checkFlowRate(flowRate){
-        if(!_.isNil(flowRate)){
+    _checkFlowRate(flowRate) {
+        if (!_.isNil(flowRate)) {
             checkType._checkObject(flowRate, 'flowRate');
             checkType._checkNumber(flowRate.value, 'flowRate.value');
             checkType._checkType(flowRate.unit, UNIT);
         }
     }
 
-    _checkMaxDeviceAmount(maxDeviceAmount){
+    _checkMaxDeviceAmount(maxDeviceAmount) {
         checkType._checkNumber(maxDeviceAmount, 'maxDeviceAmount');
-        if(maxDeviceAmount < 0){
-            throw new Error("Parameter maxDeviceAmount must be greater or equal than 0");
+        if (maxDeviceAmount < 0) {
+            throw new Error('Parameter maxDeviceAmount must be greater or equal than 0');
         }
     }
 
-    _checkMaxStorageLifeTime(maxStorageLifeTime){
+    _checkMaxStorageLifeTime(maxStorageLifeTime) {
         checkType._checkObject(maxStorageLifeTime, 'maxStorageLifeTime');
         checkType._checkNumber(maxStorageLifeTime.total, 'maxStorageLifeTime.total');
-        if(maxStorageLifeTime.total < 0){
-            throw new Error("Parameter maxStorageLifeTime.total must be greater or equal than 0");
+        if (maxStorageLifeTime.total < 0) {
+            throw new Error('Parameter maxStorageLifeTime.total must be greater or equal than 0');
         }
         checkType._checkType(maxStorageLifeTime.period, PERIOD);
     }
-    
+
     _composeElement() {
-        this._checkRequiredParameters()
+        this._checkRequiredParameters();
         this._checkName(this._name);
         this._checkFlowRate(this._flowRate);
         this._checkMaxDeviceAmount(this._maxDeviceAmount);
@@ -126,6 +125,6 @@ export default class OrganizationPlans extends BaseProvision {
     }
 
     _buildURL() {
-        return this._resource + "/" + this._identifier;
+        return this._resource + '/' + this._identifier;
     }
 }

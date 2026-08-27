@@ -2,7 +2,6 @@
 
 import Se from './../util/SelectElement';
 export default class SelectBuilder {
-
     /**
      * @example
      * var sb = ogapi.newSelectBuilder()
@@ -41,7 +40,7 @@ export default class SelectBuilder {
                                         element.fields[z].alias = input_field.alias;
                                     }
 
-                                     if (input_field.aggregation) {
+                                    if (input_field.aggregation) {
                                         element.fields[z].aggregation = input_field.aggregation;
                                     }
                                 }
@@ -60,5 +59,4 @@ export default class SelectBuilder {
         }
         return this;
     }
-
 }

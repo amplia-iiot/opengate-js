@@ -1,0 +1,30 @@
+version: 2
+
+# Thirteen Dependabot pull requests sat open for between three and five years, every one of them
+# patching package-lock.json. That file is gone, so none of them could ever have merged. Grouping
+# the updates keeps the queue reviewable instead of producing one pull request per transitive bump.
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    groups:
+      # What ships to consumers. Worth reading one by one.
+      production:
+        dependency-type: production
+      # The build and test toolchain. Only reaches a developer's machine and CI.
+      development:
+        dependency-type: development
+    labels:
+      - dependencies
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      actions:
+        patterns: ["*"]
+    labels:
+      - dependencies

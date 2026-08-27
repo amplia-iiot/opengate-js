@@ -1,13 +1,12 @@
 'use strict';
 
 import BaseProvision from '../provision/BaseProvision';
-import checkType from '../util/formats/check_types'
+import checkType from '../util/formats/check_types';
 /**
  * This is the base object for working with Datasets.
  */
 
 export default class Datasets extends BaseProvision {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
@@ -20,7 +19,7 @@ export default class Datasets extends BaseProvision {
         let url = 'datasets/provision/organizations/' + this._organization + '/' + this._identifier;
 
         if (this._onlyPlan) {
-            url += '?onlyPlan=true'
+            url += '?onlyPlan=true';
         }
         return url;
     }
@@ -75,8 +74,7 @@ export default class Datasets extends BaseProvision {
      * @return {Datasets}
      */
     withDescription(description) {
-        if (description)
-            checkType._checkString(description, 'description');
+        if (description) checkType._checkString(description, 'description');
         this._description = description;
         return this;
     }

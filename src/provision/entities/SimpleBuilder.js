@@ -3,7 +3,7 @@
 import HttpStatus from 'http-status-codes';
 import BaseProvision from '../BaseProvision';
 import q from 'q';
-import _ from 'lodash'
+import _ from 'lodash';
 
 const ERROR_VALUE_NOT_ALLOWED = 'value is not allowed. The value should be formatted as follows: ';
 const ERROR_DATASTREAM_NOT_ALLOWED = 'Datastream is not allowed';
@@ -13,7 +13,6 @@ const schema_base = '/og_basic_types.json';
  * This class allows setting simple values.
  */
 export default class SimpleBuilder extends BaseProvision {
-
     /**
      * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
@@ -23,9 +22,9 @@ export default class SimpleBuilder extends BaseProvision {
      * @param {!Validator} [jsonSchemaValidator] - Json schema validator tool
      */
     constructor(ogapi, resource, allowedDatastreams, definedSchemas, jsonSchemaValidator, timeout) {
-        super(ogapi, "/organizations/" + resource, timeout);
-        if (typeof this._getEntityKey !== "function") {
-            throw new Error("Must override method:  _getEntityKey");
+        super(ogapi, '/organizations/' + resource, timeout);
+        if (typeof this._getEntityKey !== 'function') {
+            throw new Error('Must override method:  _getEntityKey');
         }
         this._setUrlParameters({
             flattened: true
@@ -37,7 +36,7 @@ export default class SimpleBuilder extends BaseProvision {
     }
 
     _buildURL() {
-        return this._resource + "/" + this.getEntityKey();
+        return this._resource + '/' + this.getEntityKey();
     }
 
     _validate() {
@@ -66,7 +65,7 @@ export default class SimpleBuilder extends BaseProvision {
         });
 
         if (errors.length > 0) {
-            throw new Error(JSON.stringify(errors).replace(new RegExp("\"", 'g'), ""));
+            throw new Error(JSON.stringify(errors).replace(new RegExp('"', 'g'), ''));
         }
     }
 
@@ -79,12 +78,12 @@ export default class SimpleBuilder extends BaseProvision {
      * @return {string} - Entity identifier
      */
     getEntityKey() {
-        return (this._getEntityKey() !== null) ? this._getEntityKey()._value._current.value : null;
+        return this._getEntityKey() !== null ? this._getEntityKey()._value._current.value : null;
     }
 
     /**
      * Set new datastream value
-     * 
+     *
      * @param {!string} _id - Datastream identifier
      * @param {!objecr} val - Datastream value. If this value is null then datastream value will be removed.
      */
@@ -97,16 +96,20 @@ export default class SimpleBuilder extends BaseProvision {
             }
         }
 
-        if (this.getAllowedDatastreams().filter(function (ds) {
-            return ds.identifier === _id;
-        }).length !== 1) {
-            console.warn('Datastream not found or operations can not be performed on it. This value will be ignored. Datastream Name: ' + _id);
+        if (
+            this.getAllowedDatastreams().filter(function (ds) {
+                return ds.identifier === _id;
+            }).length !== 1
+        ) {
+            console.warn(
+                'Datastream not found or operations can not be performed on it. This value will be ignored. Datastream Name: ' + _id
+            );
             return this;
         }
         this._entity[_id] = {
-            '_value': {
-                '_current': {
-                    'value': val
+            _value: {
+                _current: {
+                    value: val
                 }
             }
         };
@@ -124,7 +127,7 @@ export default class SimpleBuilder extends BaseProvision {
         let _this = this;
         if (_flattenedEntityData && Object.keys(_flattenedEntityData).length > 0) {
             Object.keys(_flattenedEntityData).forEach(function (_id) {
-                if (_id.toLowerCase().startsWith("provision")) {
+                if (_id.toLowerCase().startsWith('provision')) {
                     var _content = _flattenedEntityData[_id];
                     if (Array.isArray(_content)) {
                         _content = _content[0];
@@ -142,7 +145,7 @@ export default class SimpleBuilder extends BaseProvision {
             keys.forEach(function (key) {
                 var obj = _jsonEntityData[key];
                 var _current = obj._current;
-                var path = _path ? (_path + '.' + key) : key;
+                var path = _path ? _path + '.' + key : key;
                 if (_current) {
                     _this.with(path, _current.value);
                 } else {
@@ -178,7 +181,7 @@ export default class SimpleBuilder extends BaseProvision {
             full: true
         });
         this._ogapi.Napi.delete(this._buildURL(), this._timeout, this._getExtraHeaders(), this._getUrlParameters())
-            .then((res) => {
+            .then(res => {
                 if (res.statusCode === HttpStatus.OK) {
                     defered.resolve({
                         statusCode: res.statusCode
@@ -190,7 +193,7 @@ export default class SimpleBuilder extends BaseProvision {
                     });
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;
@@ -209,8 +212,14 @@ export default class SimpleBuilder extends BaseProvision {
         var defered = q.defer();
         var promise = defered.promise;
 
-        this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement(), this._timeout, this._getExtraHeaders(), this._getUrlParameters())
-            .then((res) => {
+        this._ogapi.Napi.put(
+            this._buildURL(),
+            this._composeUpdateElement(),
+            this._timeout,
+            this._getExtraHeaders(),
+            this._getUrlParameters()
+        )
+            .then(res => {
                 if (res.statusCode === 200) {
                     defered.resolve({
                         statusCode: res.statusCode
@@ -226,7 +235,7 @@ export default class SimpleBuilder extends BaseProvision {
                     });
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;
@@ -245,8 +254,14 @@ export default class SimpleBuilder extends BaseProvision {
         var defered = q.defer();
         var promise = defered.promise;
 
-        this._ogapi.Napi.patch(this._buildURL(), this._composeUpdateElement(), this._timeout, this._getExtraHeaders(), this._getUrlParameters())
-            .then((res) => {
+        this._ogapi.Napi.patch(
+            this._buildURL(),
+            this._composeUpdateElement(),
+            this._timeout,
+            this._getExtraHeaders(),
+            this._getUrlParameters()
+        )
+            .then(res => {
                 if (res.statusCode === 200) {
                     defered.resolve({
                         statusCode: res.statusCode
@@ -262,7 +277,7 @@ export default class SimpleBuilder extends BaseProvision {
                     });
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;

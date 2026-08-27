@@ -3,7 +3,6 @@
 import SearchBuilder from './SearchBuilder';
 import FieldFinder from '../../util/searchingFields/FieldFinder';
 
-
 const BASE_URL = '/bundles';
 
 /**
@@ -18,6 +17,4 @@ export default class BundlesSearchBuilder extends SearchBuilder {
         super(parent, {}, new FieldFinder(parent, BASE_URL));
         this._url = BASE_URL;
     }
-
-
 }

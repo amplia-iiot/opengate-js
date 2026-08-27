@@ -19,30 +19,32 @@ export default class SubscribersSearchBuilder extends PreFilteredSearchBuilder {
 
     _buildFilter() {
         let finalFilter = {
-            "and": [{
-                "or": []
-            }]
+            and: [
+                {
+                    or: []
+                }
+            ]
         };
 
         if (this._provisioned || !this._collected) {
             finalFilter.and[0].or.push({
-                "exists": {
-                    "provision.device.communicationModules[].subscriber.identifier": true
+                exists: {
+                    'provision.device.communicationModules[].subscriber.identifier': true
                 }
             });
         }
 
         if (this._collected || !this._provisioned) {
             finalFilter.and[0].or.push({
-                "exists": {
-                    "device.communicationModules[].subscriber.identifier": true
+                exists: {
+                    'device.communicationModules[].subscriber.identifier': true
                 }
             });
         }
 
         if (this._builderParams.filter && Object.keys(this._builderParams.filter).length > 0) {
             let filter = this._builderParams.filter;
-            if (typeof filter._filterTemplate !== "undefined") {
+            if (typeof filter._filterTemplate !== 'undefined') {
                 //return filter._filterTemplate;
                 finalFilter.and.push(filter._filterTemplate.filter);
             } else {

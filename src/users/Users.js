@@ -5,6 +5,7 @@ import _ from 'lodash';
 import { version as uuidVersion } from 'uuid';
 import { validate as uuidValidate } from 'uuid';
 import { v4 as uuidv4 } from 'uuid';
+import parameterError from '../util/parameterError';
 
 const _length_name = 100;
 const _length_surname = 100;
@@ -16,17 +17,13 @@ const _length_password = 50;
  * credentials, and account attributes.
  */
 export default class User extends BaseProvision {
-
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, "/users", undefined, ["email", "workgroup", "domain", "profile", "countryCode", "langCode"]);
+        super(ogapi, '/users', undefined, ['email', 'workgroup', 'domain', 'profile', 'countryCode', 'langCode']);
     }
-
-
 
     /**
      * Set the name attribute
@@ -83,7 +80,7 @@ export default class User extends BaseProvision {
      */
     withApiKey(apiKey) {
         if (!this._validateUUID(apiKey)) {
-            throw new Error({ message: "OGAPI_USER_UPDATE_APIKEY_PARAMETER_INVALID", parameter: 'apiKey' });
+            throw parameterError('OGAPI_USER_UPDATE_APIKEY_PARAMETER_INVALID', { parameter: 'apiKey' });
         }
         this._apiKey = apiKey;
         return this;
@@ -95,8 +92,7 @@ export default class User extends BaseProvision {
      * @return {User}
      */
     withWorkgroup(workgroup) {
-        if (typeof workgroup !== 'string')
-            throw new Error('OGAPI_STRING_PARAMETER_WORKGROUP');
+        if (typeof workgroup !== 'string') throw new Error('OGAPI_STRING_PARAMETER_WORKGROUP');
         this._workgroup = workgroup;
         return this;
     }
@@ -107,8 +103,7 @@ export default class User extends BaseProvision {
      * @return {User}
      */
     withDomain(domain) {
-        if (typeof domain !== 'string')
-            throw new Error('OGAPI_STRING_PARAMETER_DOMAIN');
+        if (typeof domain !== 'string') throw new Error('OGAPI_STRING_PARAMETER_DOMAIN');
         this._domain = domain;
         return this;
     }
@@ -119,8 +114,7 @@ export default class User extends BaseProvision {
      * @return {User}
      */
     withProfile(profile) {
-        if (typeof profile !== 'string')
-            throw new Error('OGAPI_STRING_PARAMETER_PROFILE');
+        if (typeof profile !== 'string') throw new Error('OGAPI_STRING_PARAMETER_PROFILE');
         this._profile = profile;
         return this;
     }
@@ -131,8 +125,7 @@ export default class User extends BaseProvision {
      * @return {User}
      */
     withCountryCode(countryCode) {
-        if (typeof countryCode !== 'string')
-            throw new Error('OGAPI_STRING_PARAMETER_COUNTRY_CODE');
+        if (typeof countryCode !== 'string') throw new Error('OGAPI_STRING_PARAMETER_COUNTRY_CODE');
         this._countryCode = countryCode;
         return this;
     }
@@ -143,12 +136,10 @@ export default class User extends BaseProvision {
      * @return {User}
      */
     withLangCode(langCode) {
-        if (typeof langCode !== 'string')
-            throw new Error('OGAPI_STRING_PARAMETER_LANGUAGE');
+        if (typeof langCode !== 'string') throw new Error('OGAPI_STRING_PARAMETER_LANGUAGE');
         this._langCode = langCode;
         return this;
     }
-
 
     /**
      * Set the description attribute
@@ -156,11 +147,9 @@ export default class User extends BaseProvision {
      * @return {User}
      */
     withDescription(description) {
-        if (typeof description !== 'string')
-            throw new Error('OGAPI_STRING_PARAMETER_DESCRIPTION');
+        if (typeof description !== 'string') throw new Error('OGAPI_STRING_PARAMETER_DESCRIPTION');
         this._description = description;
         return this;
-
     }
 
     /**
@@ -169,11 +158,9 @@ export default class User extends BaseProvision {
      * @return {User}
      */
     withTimezone(timezone) {
-        if (typeof timezone !== 'string')
-            throw new Error('OGAPI_STRING_PARAMETER_TIMEZONE');
+        if (typeof timezone !== 'string') throw new Error('OGAPI_STRING_PARAMETER_TIMEZONE');
         this._timezone = timezone;
         return this;
-
     }
 
     /**
@@ -192,23 +179,21 @@ export default class User extends BaseProvision {
      * Set the forcePasswordChange: if true Forces you to reset your password on your next login attempt.
      * @param {boolean} forcePasswordChange
      * @return {User}
-     * 
+     *
      */
     withForcePasswordChange(forcePasswordChange) {
-        if (typeof forcePasswordChange !== 'boolean')
-            throw new Error('Parameter forcePasswordChange must be a boolean');
+        if (typeof forcePasswordChange !== 'boolean') throw new Error('Parameter forcePasswordChange must be a boolean');
         this._forcePasswordChange = forcePasswordChange;
         return this;
     }
 
     /**
      * Enable or disable login with password
-     * @param {boolean} loginWithPassword 
+     * @param {boolean} loginWithPassword
      * @returns {User}
      */
     withLoginWithPassword(loginWithPassword) {
-        if (typeof loginWithPassword !== 'boolean')
-            throw new Error('Parameter loginWithPassword must be a boolean');
+        if (typeof loginWithPassword !== 'boolean') throw new Error('Parameter loginWithPassword must be a boolean');
         this._loginWithPassword = loginWithPassword;
         return this;
     }
@@ -219,12 +204,10 @@ export default class User extends BaseProvision {
      * @private
      */
     _buildURL() {
-        if (this._email === undefined)
-            throw new Error('OGAPI_EMAIL_MUST_BE_DEFINED');
-        var url = this._resource + "/" + this._email;
+        if (this._email === undefined) throw new Error('OGAPI_EMAIL_MUST_BE_DEFINED');
+        var url = this._resource + '/' + this._email;
 
         return url;
-
     }
 
     /**
@@ -233,7 +216,6 @@ export default class User extends BaseProvision {
      * @private
      */
     _composeElement() {
-
         var data = {
             user: {
                 name: this._name || undefined,
@@ -247,14 +229,13 @@ export default class User extends BaseProvision {
                 countryCode: this._countryCode || undefined,
                 langCode: this._langCode || undefined,
                 timezone: this._timezone || undefined,
-                "2FaType": this._twoFaType || undefined,
+                '2FaType': this._twoFaType || undefined,
                 forcePasswordChange: typeof this._forcePasswordChange === 'boolean' ? this._forcePasswordChange : undefined,
                 loginWithPassword: typeof this._loginWithPassword === 'boolean' ? this._loginWithPassword : undefined
             }
         };
 
         return data;
-
     }
 
     /**
@@ -263,8 +244,7 @@ export default class User extends BaseProvision {
      * @private
      */
     _composeUpdateElement() {
-        if (this._email === undefined)
-            throw new Error('OGAPI_USER_UPDATE_PARAMETER_MUST_BE_DEFINED');
+        if (this._email === undefined) throw new Error('OGAPI_USER_UPDATE_PARAMETER_MUST_BE_DEFINED');
 
         var data = {
             user: {
@@ -280,14 +260,13 @@ export default class User extends BaseProvision {
                 timezone: this._timezone || undefined,
                 apiKey: this._apiKey || undefined,
                 password: this._password || undefined,
-                "2FaType": this._twoFaType || undefined,
+                '2FaType': this._twoFaType || undefined,
                 forcePasswordChange: typeof this._forcePasswordChange === 'boolean' ? this._forcePasswordChange : undefined,
                 loginWithPassword: typeof this._loginWithPassword === 'boolean' ? this._loginWithPassword : undefined
             }
         };
         return data;
     }
-
 
     /**
      * This invoke a request to OpenGate North API and the callback is managed by promises
@@ -319,7 +298,7 @@ export default class User extends BaseProvision {
     }
 
     _validateUUID(UUID) {
-        return uuidValidate(UUID) && uuidVersion(UUID) === 4
+        return uuidValidate(UUID) && uuidVersion(UUID) === 4;
     }
     /**
      * This invoke a request to OpenGate North API and the callback is managed by promises
@@ -338,7 +317,7 @@ export default class User extends BaseProvision {
         }
 
         if (!this._validateUUID(apiKey)) {
-            throw new Error({ message: "OGAPI_USER_UPDATE_APIKEY_PARAMETER_INVALID", parameter: 'apiKey' });
+            throw parameterError('OGAPI_USER_UPDATE_APIKEY_PARAMETER_INVALID', { parameter: 'apiKey' });
         }
 
         var data = {
@@ -356,7 +335,7 @@ export default class User extends BaseProvision {
 
     /**
      * This invoke a request to OpenGate North API and the callback is managed by promises
-     * This function request for new password when the user forgets it. 
+     * This function request for new password when the user forgets it.
      * Sends a password recovery email
      * @return {Promise}
      * @property {function (result:object, statusCode:number)} then - When request it is OK
@@ -368,7 +347,7 @@ export default class User extends BaseProvision {
         if (_.isEmpty(this._email)) {
             throw new Error('OGAPI_USER_MAIL_RESET_PASSWORD_PARAMETER_MUST_BE_DEFINED');
         }
-        var url = this._buildURL() + '/reset'
+        var url = this._buildURL() + '/reset';
         return this._doNorthPost(url);
     }
 
@@ -401,8 +380,7 @@ export default class User extends BaseProvision {
             password: this._newPassword
         };
 
-
-        var url = this._buildURL() + '/reset/' + tokenId
+        var url = this._buildURL() + '/reset/' + tokenId;
 
         return this._doNorthPost(url, data);
     }
@@ -429,15 +407,15 @@ export default class User extends BaseProvision {
         const data = {
             email: this._email,
             password: this._password,
-            "2FaCode": this._twoFaCode || undefined
-        }
+            '2FaCode': this._twoFaCode || undefined
+        };
 
         const url = this._resource + '/login';
 
-        return this._doNorthPost(url, data, true)
+        return this._doNorthPost(url, data, true);
     }
 
     generateApiKey() {
-        return uuidv4()
+        return uuidv4();
     }
 }

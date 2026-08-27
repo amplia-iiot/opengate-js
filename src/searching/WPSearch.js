@@ -4,36 +4,35 @@ import BaseSearch from './BaseSearch';
 import merge from 'merge';
 import q from 'q';
 
-
-/** 
+/**
  * This class extends BaseSearch and allows requests to be made to any available resource in the OpenGate North
  * API. Use this class when the resource does not have the 'search' prefix; otherwise, use the Search class.
  */
 export default class WPSearch extends BaseSearch {
-	/**
-    * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
-    * @param {!string} url - this define a specific resource to make the search
-    * @param {object} filter - this is the filter
-    * @param {object} limit - this is the pagination about the search
-    * @param {object} sort - this defined parameters to order the result of search
-	* @param {object} group
-	* @param {object} select
-   	* @param {nubmer} timeout
-    */
-	constructor(ogapi, url, filter, limit = { limit: {} }, sort, group, select, timeout, urlParams) {
-		super(ogapi, url, timeout);
-		this._setUrlParameters(urlParams);
-		this._postObj = merge(filter, limit, group, select);
-		if (typeof sort === 'object') {
-			this._postObj = merge(this._postObj, sort);
-		}
-	}
+    /**
+     * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
+     * @param {!string} url - this define a specific resource to make the search
+     * @param {object} filter - this is the filter
+     * @param {object} limit - this is the pagination about the search
+     * @param {object} sort - this defined parameters to order the result of search
+     * @param {object} group
+     * @param {object} select
+     * @param {nubmer} timeout
+     */
+    constructor(ogapi, url, filter, limit = { limit: {} }, sort, group, select, timeout, urlParams) {
+        super(ogapi, url, timeout);
+        this._setUrlParameters(urlParams);
+        this._postObj = merge(filter, limit, group, select);
+        if (typeof sort === 'object') {
+            this._postObj = merge(this._postObj, sort);
+        }
+    }
 
-	_filter() {
-		return this._postObj;
-	}
+    _filter() {
+        return this._postObj;
+    }
 
-	_loadData(resource) {
+    _loadData(resource) {
         let _this = this;
         let defered = q.defer();
         let filter = _this._asyncPagingFilter();
@@ -47,9 +46,8 @@ export default class WPSearch extends BaseSearch {
                     statusCode: 403
                 });
             } else {
-                _this._ogapi.Napi
-                    .post(_this._resource, filter, _this._timeout, _this._getExtraHeaders(), _this._getUrlParameters())
-                    .then((response) => {
+                _this._ogapi.Napi.post(_this._resource, filter, _this._timeout, _this._getExtraHeaders(), _this._getUrlParameters())
+                    .then(response => {
                         let statusCode = response.statusCode;
                         let body = response.body;
                         if (!body && response.text) {
@@ -60,7 +58,7 @@ export default class WPSearch extends BaseSearch {
                                     body = parsedResult;
                                 }
                             } catch (ignoreError) {
-                                console.warn("Impossible to parse text from response: " + response.text);
+                                console.warn('Impossible to parse text from response: ' + response.text);
                             }
                         }
 
@@ -90,7 +88,7 @@ export default class WPSearch extends BaseSearch {
                                 });
                         }
                     })
-                    .catch((error) => {
+                    .catch(error => {
                         defered.reject(error);
                     });
             }
@@ -98,5 +96,4 @@ export default class WPSearch extends BaseSearch {
         loadAll();
         return defered.promise;
     }
-
 }

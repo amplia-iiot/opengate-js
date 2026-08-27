@@ -6,7 +6,6 @@ import ProvisionGenericFinder from '../ProvisionGenericFinder';
  * This class allows making get requests to the workgroup relation resource in the OpenGate North API.
  */
 export default class WorkgroupRelationsFinder extends ProvisionGenericFinder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
@@ -20,14 +19,14 @@ export default class WorkgroupRelationsFinder extends ProvisionGenericFinder {
      * @private
      */
     _composeUrl() {
-        return this._baseUrl + "/" + this._domain + "/workgroups/" + this._name + "/relations";
+        return this._baseUrl + '/' + this._domain + '/workgroups/' + this._name + '/relations';
     }
 
     /**
      * Constructor
-     * @param {string} domain - domain name 
+     * @param {string} domain - domain name
      * @param {string} name - workgroup name
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByDomainAndName(domain, name) {
         this._domain = domain;

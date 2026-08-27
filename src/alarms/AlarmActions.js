@@ -20,7 +20,7 @@ export default class AlarmActions {
      *
      * @example
      *	ogapi.alarms.newCloseBuilder()
-     * @return {AlarmCloseBuilder} 
+     * @return {AlarmCloseBuilder}
      */
     newCloseBuilder() {
         return new AlarmCloseBuilder(this._ogapi);
@@ -31,10 +31,9 @@ export default class AlarmActions {
      *
      * @example
      *	ogapi.alarms.newAttendBuilder()
-     * @return {AlarmAttendBuilder} 
+     * @return {AlarmAttendBuilder}
      */
     newAttendBuilder() {
         return new AlarmAttendBuilder(this._ogapi);
     }
-
 }

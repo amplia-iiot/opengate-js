@@ -1,8 +1,6 @@
 'use strict';
 
-import q, {
-    timeout
-} from 'q';
+import q from 'q';
 import jp from 'jsonpath';
 
 import Ajv from 'ajv';
@@ -25,7 +23,6 @@ const schema_base = '/og_basic_types.json';
  * This is a base object that gives you access to everything you can do to provision entities.
  */
 export default class EntityBuilder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
@@ -41,40 +38,49 @@ export default class EntityBuilder {
         let promise = defered.promise;
         let f = _this._ogapi.newFilterBuilder();
         f.and({
-            "like": {
+            like: {
                 'datamodels.categories.datastreams.identifier': 'provision'
             }
-        }).and({
-            "eq": {
-                "datamodels.organizationName": organization
-            }
-        }).and({
-            "eq": {
-                "datamodels.allowedResourceTypes": resourceType
-            }
-        });
+        })
+            .and({
+                eq: {
+                    'datamodels.organizationName': organization
+                }
+            })
+            .and({
+                eq: {
+                    'datamodels.allowedResourceTypes': resourceType
+                }
+            });
 
         let allowedDatastreamsBuilder = this._ogapi.datamodelsSearchBuilder().filter(f).build();
 
-        allowedDatastreamsBuilder.execute().then(function (okh) {
-            _this.schema = {};
-            return okh;
-        }).then(function (data) {
-            if (data.statusCode !== 200) {
-                defered.reject({
-                    data: 'OGAPI_DATASTREAM_NOT_FOUND',
-                    statusCode: 204
-                });
-            }
-            _this._getJsonPathElements().then(function () {
-                data.data = _this._setDevicesProperties(data.data, filterElement);
-                defered.resolve(data);
-            }).catch(function (err) {
+        allowedDatastreamsBuilder
+            .execute()
+            .then(function (okh) {
+                _this.schema = {};
+                return okh;
+            })
+            .then(function (data) {
+                if (data.statusCode !== 200) {
+                    defered.reject({
+                        data: 'OGAPI_DATASTREAM_NOT_FOUND',
+                        statusCode: 204
+                    });
+                }
+                _this
+                    ._getJsonPathElements()
+                    .then(function () {
+                        data.data = _this._setDevicesProperties(data.data, filterElement);
+                        defered.resolve(data);
+                    })
+                    .catch(function (err) {
+                        defered.reject(err);
+                    });
+            })
+            .catch(function (err) {
                 defered.reject(err);
             });
-        }).catch(function (err) {
-            defered.reject(err);
-        });
         return promise;
     }
 
@@ -84,23 +90,28 @@ export default class EntityBuilder {
 
         let basicTypesSearchBuilder = this._ogapi.basicTypesSearchBuilder();
 
-        basicTypesSearchBuilder.withPath('$').build().execute().then(function (res) {
-            if (jsonSchemaValidator.getSchema(schema_base)) {
-                jsonSchemaValidator.removeSchema(schema_base);
-            }
+        basicTypesSearchBuilder
+            .withPath('$')
+            .build()
+            .execute()
+            .then(function (res) {
+                if (jsonSchemaValidator.getSchema(schema_base)) {
+                    jsonSchemaValidator.removeSchema(schema_base);
+                }
 
-            jsonSchemaValidator.addSchema(res.data, schema_base);
-            defered.resolve();
-        }).catch(function (err) {
-            defered.reject(err);
-        });
+                jsonSchemaValidator.addSchema(res.data, schema_base);
+                defered.resolve();
+            })
+            .catch(function (err) {
+                defered.reject(err);
+            });
         return promise;
     }
 
     _setDevicesProperties(data, filter) {
         let _this = this;
         //http://jekyll.amplia.es/OpenGateDoc/LATEST/opengate-doc-api/api-north/opengate-api-north.html#iotDatastreamTemplate - field calculated (OUW-1679)
-        let allowedDatastreams = jp.query(data, "$.datamodels[*].categories[*].datastreams[?(@.calculated === false)]");
+        let allowedDatastreams = jp.query(data, '$.datamodels[*].categories[*].datastreams[?(@.calculated === false)]');
         let response = {
             allowedDatastreams: [],
             schemas: {}
@@ -125,14 +136,12 @@ export default class EntityBuilder {
                         complex: false,
                         function: 'with'
                     };
-
                 }
             }
         });
         response.schemas = _this.schema;
 
         return response;
-
     }
 
     /**
@@ -206,11 +215,11 @@ export default class EntityBuilder {
     }
 
     /**
-     * Get a new CsvBulkBuilder 
-     * @example 
+     * Get a new CsvBulkBuilder
+     * @example
      *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000, false)
      *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000, true)
-     * @param {string} organization - required field. 
+     * @param {string} organization - required field.
      * @param {string} resource - required field. Type of resource: entities or tickets
      * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
      * @param {boolean} [async] - forces async execution for the bulk operation
@@ -222,10 +231,10 @@ export default class EntityBuilder {
     }
 
     /**
-     * Get a new JsonBulkBuilder 
-     * @example 
+     * Get a new JsonBulkBuilder
+     * @example
      *  ogapi.newJsonBulkBuilder('orgname', 'entities', 10000)
-     * @param {string} organization - required field. 
+     * @param {string} organization - required field.
      * @param {string} resource - required field. Type of resource: entities or tickets
      * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
      * @param {boolean} [async] - forces async execution for the bulk operation
@@ -237,10 +246,10 @@ export default class EntityBuilder {
     }
 
     /**
-     * Get a new JsonFlattenedBulkBuilder 
-     * @example 
+     * Get a new JsonFlattenedBulkBuilder
+     * @example
      *  ogapi.newJsonFlattenedBulkBuilder('orgname', 'entities', 10000)
-     * @param {string} organization - required field. 
+     * @param {string} organization - required field.
      * @param {string} resource - required field. Type of resource: entities or tickets
      * @param {number} [timeout] - timeout in millisecons. The request will have a specific time out if it will be exceeded then the promise throw an exception
      * @param {boolean} [async] - forces async execution for the bulk operation
@@ -273,7 +282,8 @@ export default class EntityBuilder {
                 } else {
                     defered.reject('OGAPI_DATASTREAM_NOT_FOUND');
                 }
-            }).catch(function (err) {
+            })
+            .catch(function (err) {
                 defered.reject(err);
             });
         return defered.promise;

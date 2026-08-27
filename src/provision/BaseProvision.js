@@ -17,13 +17,13 @@ export default class BaseProvision {
      */
     constructor(ogapi, resource, timeout, requiredParameters = [], serviceBaseURL) {
         if (this.constructor === BaseProvision) {
-            throw new Error("Cannot construct Abstract instances directly");
+            throw new Error('Cannot construct Abstract instances directly');
         }
-        if (typeof this._composeElement !== "function") {
-            throw new Error("Must override method:  composeElement");
+        if (typeof this._composeElement !== 'function') {
+            throw new Error('Must override method:  composeElement');
         }
-        if (typeof this._buildURL !== "function") {
-            throw new Error("Must override method:  _buildURL");
+        if (typeof this._buildURL !== 'function') {
+            throw new Error('Must override method:  _buildURL');
         }
         if (timeout) {
             if (typeof timeout !== 'number') {
@@ -38,21 +38,23 @@ export default class BaseProvision {
         this._requiredParameters = requiredParameters;
         this._headers = undefined;
         this._urlParameters = undefined;
-        this._serviceBaseURL = serviceBaseURL
+        this._serviceBaseURL = serviceBaseURL;
     }
 
     _checkRequiredParameters() {
         let parametersNotFound = [];
         if (this._requiredParameters && this._requiredParameters.length > 0) {
             for (let i = 0; i < this._requiredParameters.length; i++) {
-                if (this[this._requiredParameters[i]] === undefined && this["_" + this._requiredParameters[i]] === undefined) {
+                if (this[this._requiredParameters[i]] === undefined && this['_' + this._requiredParameters[i]] === undefined) {
                     parametersNotFound.push(this._requiredParameters[i]);
                 }
             }
 
             if (parametersNotFound.length > 0) {
-                throw new Error("There are required parameters that have not been set. Missing parameters: " +
-                    JSON.stringify(parametersNotFound).replace(new RegExp("\"", 'g'), ""));
+                throw new Error(
+                    'There are required parameters that have not been set. Missing parameters: ' +
+                        JSON.stringify(parametersNotFound).replace(new RegExp('"', 'g'), '')
+                );
             }
         }
     }
@@ -75,10 +77,17 @@ export default class BaseProvision {
         //En muchas clases se genera this._resource en la llamada a la funcion this._composeElement()
 
         let _postElement = this._composeElement();
-        this._ogapi.Napi.post(this._resource, _postElement, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
-            .then((res) => {
+        this._ogapi.Napi.post(
+            this._resource,
+            _postElement,
+            this._timeout,
+            this._getExtraHeaders(),
+            this._getUrlParameters(),
+            this._getServiceBaseURL()
+        )
+            .then(res => {
                 if (res.statusCode === 201) {
-                    if (typeof this._onCreated === "function") {
+                    if (typeof this._onCreated === 'function') {
                         this._onCreated(res.header.location);
                     }
                     defered.resolve({
@@ -93,7 +102,7 @@ export default class BaseProvision {
                     });
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;
@@ -113,8 +122,15 @@ export default class BaseProvision {
     delete(body) {
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Napi.delete(this._buildURL(), this._timeout, this._getExtraHeaders(), this._getUrlParameters(), body, this._getServiceBaseURL())
-            .then((res) => {
+        this._ogapi.Napi.delete(
+            this._buildURL(),
+            this._timeout,
+            this._getExtraHeaders(),
+            this._getUrlParameters(),
+            body,
+            this._getServiceBaseURL()
+        )
+            .then(res => {
                 if (res.statusCode === 200) {
                     defered.resolve({
                         statusCode: res.statusCode
@@ -126,7 +142,7 @@ export default class BaseProvision {
                     });
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;
@@ -135,8 +151,15 @@ export default class BaseProvision {
     _doSouthDelete(body) {
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Sapi.delete(this._buildURL(), this._timeout, this._getExtraHeaders(), this._getUrlParameters(), body, this._getServiceBaseURL())
-            .then((res) => {
+        this._ogapi.Sapi.delete(
+            this._buildURL(),
+            this._timeout,
+            this._getExtraHeaders(),
+            this._getUrlParameters(),
+            body,
+            this._getServiceBaseURL()
+        )
+            .then(res => {
                 if (res.statusCode === 200) {
                     defered.resolve({
                         statusCode: res.statusCode
@@ -148,7 +171,7 @@ export default class BaseProvision {
                     });
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;
@@ -167,8 +190,15 @@ export default class BaseProvision {
         var defered = q.defer();
         var promise = defered.promise;
 
-        this._ogapi.Napi.put(this._buildURL(), this._composeUpdateElement(), this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
-            .then((res) => {
+        this._ogapi.Napi.put(
+            this._buildURL(),
+            this._composeUpdateElement(),
+            this._timeout,
+            this._getExtraHeaders(),
+            this._getUrlParameters(),
+            this._getServiceBaseURL()
+        )
+            .then(res => {
                 if (res.statusCode === 200) {
                     defered.resolve({
                         data: res.body,
@@ -186,7 +216,7 @@ export default class BaseProvision {
                     });
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;
@@ -201,7 +231,7 @@ export default class BaseProvision {
         var promise = defered.promise;
 
         this._ogapi.Napi.put(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
-            .then((res) => {
+            .then(res => {
                 if (res.statusCode === 200) {
                     defered.resolve({
                         statusCode: res.statusCode
@@ -217,7 +247,7 @@ export default class BaseProvision {
                     });
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;
@@ -228,7 +258,7 @@ export default class BaseProvision {
         var promise = defered.promise;
 
         this._ogapi.Sapi.put(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
-            .then((res) => {
+            .then(res => {
                 if (res.statusCode === 200) {
                     defered.resolve({
                         statusCode: res.statusCode
@@ -244,7 +274,7 @@ export default class BaseProvision {
                     });
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;
@@ -253,31 +283,38 @@ export default class BaseProvision {
     _doNorthPost(resource, element, returnBody) {
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Napi.post(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
-            .then((res) => {
+        this._ogapi.Napi.post(
+            resource,
+            element,
+            this._timeout,
+            this._getExtraHeaders(),
+            this._getUrlParameters(),
+            this._getServiceBaseURL()
+        )
+            .then(res => {
                 const response = {
                     statusCode: res.statusCode
-                }
+                };
                 if (res.statusCode === 201) {
-                    if (typeof this._onCreated === "function") {
+                    if (typeof this._onCreated === 'function') {
                         this._onCreated(res.header.location);
                     }
-                    response.location = res.header.location
+                    response.location = res.header.location;
                     if (returnBody) {
-                        response.data = res.body
+                        response.data = res.body;
                     }
                     defered.resolve(response);
                 } else if (res.statusCode === 200) {
                     if (returnBody) {
-                        response.data = res.body
+                        response.data = res.body;
                     }
                     defered.resolve(response);
                 } else {
-                    response.errors = res.errors
+                    response.errors = res.errors;
                     defered.reject(response);
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;
@@ -286,31 +323,38 @@ export default class BaseProvision {
     _doSouthPost(resource, element, returnBody) {
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Sapi.post(resource, element, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
-            .then((res) => {
+        this._ogapi.Sapi.post(
+            resource,
+            element,
+            this._timeout,
+            this._getExtraHeaders(),
+            this._getUrlParameters(),
+            this._getServiceBaseURL()
+        )
+            .then(res => {
                 const response = {
                     statusCode: res.statusCode
-                }
+                };
                 if (res.statusCode === 201) {
-                    if (typeof this._onCreated === "function") {
+                    if (typeof this._onCreated === 'function') {
                         this._onCreated(res.header.location);
                     }
-                    response.location = res.header.location
+                    response.location = res.header.location;
                     if (returnBody) {
-                        response.data = res.body
+                        response.data = res.body;
                     }
                     defered.resolve(response);
                 } else if (res.statusCode === 200) {
                     if (returnBody) {
-                        response.data = res.body
+                        response.data = res.body;
                     }
                     defered.resolve(response);
                 } else {
-                    response.errors = res.errors
+                    response.errors = res.errors;
                     defered.reject(response);
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;
@@ -354,7 +398,7 @@ export default class BaseProvision {
             return value == this;
         }, value);
 
-        if (typeof found === "undefined") {
+        if (typeof found === 'undefined') {
             not_found.push(value);
         }
         if (not_found.length !== 0) {
@@ -364,6 +408,6 @@ export default class BaseProvision {
     }
 
     _getServiceBaseURL() {
-        return this._serviceBaseURL
+        return this._serviceBaseURL;
     }
 }

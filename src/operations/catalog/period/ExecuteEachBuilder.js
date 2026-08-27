@@ -9,8 +9,8 @@ export default class ExecuteEachBuilder {
      * Constructor
      * @param {!BaseOperationBuilder} parent - this is a operationBaseBuilder.
      * @param {!Date} date - Date when operation will be executed
-     * @param {string} periodicityName - Name associated to periodicity	
-     * @param {!number or Date} end - When periodicity ends. By repetitions or by date	
+     * @param {string} periodicityName - Name associated to periodicity
+     * @param {!number or Date} end - When periodicity ends. By repetitions or by date
      */
     constructor(parent, date, periodicityName, end, description) {
         this._parent = parent;
@@ -26,23 +26,23 @@ export default class ExecuteEachBuilder {
                 }
             }
         };
-        if (typeof end !== "undefined") {
+        if (typeof end !== 'undefined') {
             let stop;
-            if (typeof end === "number") {
+            if (typeof end === 'number') {
                 if (end <= 0) {
-                    throw new Error("Invalid stop value. Number of repetitions must be greater than 0.");
+                    throw new Error('Invalid stop value. Number of repetitions must be greater than 0.');
                 }
                 stop = {
-                    "executions": end
+                    executions: end
                 };
             } else if (end.constructor === Date) {
                 let startDate = moment(date);
                 let stopDate = moment(end);
                 if (moment.max(startDate, stopDate) == startDate) {
-                    throw new Error("Invalid stop date on executeEach method. Start date must be earlier than stop date.");
+                    throw new Error('Invalid stop date on executeEach method. Start date must be earlier than stop date.');
                 }
                 stop = {
-                    "date": end
+                    date: end
                 };
             }
             this._skeleton.stop = stop;
@@ -55,9 +55,9 @@ export default class ExecuteEachBuilder {
      * @return {BaseOperationBuilder}
      */
     minutes(minutes) {
-        const type = "MINUTES";
-        if (typeof minutes !== "number") {
-            throw new Error("Parameter minutes must be typeof number");
+        const type = 'MINUTES';
+        if (typeof minutes !== 'number') {
+            throw new Error('Parameter minutes must be typeof number');
         }
         return this._addPeriod(minutes, type);
     }
@@ -68,9 +68,9 @@ export default class ExecuteEachBuilder {
      * @return {BaseOperationBuilder}
      */
     hours(hours) {
-        const type = "HOURS";
-        if (typeof hours !== "number") {
-            throw new Error("Parameter hours must be typeof number");
+        const type = 'HOURS';
+        if (typeof hours !== 'number') {
+            throw new Error('Parameter hours must be typeof number');
         }
         return this._addPeriod(hours, type);
     }
@@ -81,9 +81,9 @@ export default class ExecuteEachBuilder {
      * @return {BaseOperationBuilder}
      */
     days(days) {
-        const type = "DAYS";
-        if (typeof days !== "number") {
-            throw new Error("Parameter days must be typeof number");
+        const type = 'DAYS';
+        if (typeof days !== 'number') {
+            throw new Error('Parameter days must be typeof number');
         }
         return this._addPeriod(days, type);
     }

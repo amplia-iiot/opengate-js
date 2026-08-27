@@ -1,4 +1,4 @@
 export const VISIBILITY = {
-    assignable : 'assignable',
-    administrable : 'administrable'
-}
+    assignable: 'assignable',
+    administrable: 'administrable'
+};

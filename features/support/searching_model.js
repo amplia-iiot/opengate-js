@@ -1,13 +1,13 @@
 module.exports = {
-    setters: function(setter) {
+    setters: function (setter) {
         return {
-            'hardware': {
+            hardware: {
                 'hardware id': 'withId',
                 'model name': 'withModel',
                 'model version': 'withModelVersion',
                 'manufacturer name': 'withManufacturer'
             },
-            'software': {
+            software: {
                 'software id': 'withId',
                 'software name': 'withName',
                 'software version': 'withVersion',
@@ -18,29 +18,29 @@ module.exports = {
                 'manufacturer name': 'withManufacturer'
             },
             'operational status': {
-                'id': 'withId',
+                id: 'withId',
                 'entity type': 'withEntityType'
             },
             'specific type': {
-                'id': 'withId',
+                id: 'withId',
                 'entity type': 'withEntityType'
             },
             'administrative state': {
-                'id': 'withId',
+                id: 'withId',
                 'entity type': 'withEntityType'
             },
             'communications module type': {
-                'type': 'withType'
+                type: 'withType'
             },
             'fields definition': {
-                'type': 'withType'
+                type: 'withType'
             },
-            "certificates": {
-                "assignable": "assignable",
-                "administrable": "administrable",
-                "findFields": "findFields"
+            certificates: {
+                assignable: 'assignable',
+                administrable: 'administrable',
+                findFields: 'findFields'
             },
-            'entity': {
+            entity: {
                 'provisioned data': 'onProvisioned',
                 'collected data': 'onCollected'
             },
@@ -50,26 +50,26 @@ module.exports = {
                 'on subscriptions': 'onSubscriptions',
                 'on communications Modules': 'onCommunicationsModules'
             },
-            'entities': {
-                'findAllFields': 'findAllFields',
-                'findFields': 'findFields',
-                'findFieldPath': 'findFieldPath'
+            entities: {
+                findAllFields: 'findAllFields',
+                findFields: 'findFields',
+                findFieldPath: 'findFieldPath'
             },
-            'datasets': {
-                'findAllFields': 'findAllFields',
-                'findFields': 'findFields',
-                'findFieldPath': 'findFieldPath'
+            datasets: {
+                findAllFields: 'findAllFields',
+                findFields: 'findFields',
+                findFieldPath: 'findFieldPath'
             },
-            'timeseries': {
-                'findAllFields': 'findAllFields',
-                'findFields': 'findFields',
-                'findFieldPath': 'findFieldPath'
+            timeseries: {
+                findAllFields: 'findAllFields',
+                findFields: 'findFields',
+                findFieldPath: 'findFieldPath'
             },
-            "basicTypes search": {
-                "withPublicParameters": "withPublicParameters"
+            'basicTypes search': {
+                withPublicParameters: 'withPublicParameters'
             },
-            "Allowed Resource Type": {
-                "type": "withType"
+            'Allowed Resource Type': {
+                type: 'withType'
             }
         }[setter];
     }

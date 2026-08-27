@@ -1,13 +1,12 @@
 'use strict';
 
 import ProvisionGenericFinder from '../ProvisionGenericFinder';
-import { SOFTWARES_RESOURCE, PRE_RESOURCE } from './Software'
+import { SOFTWARES_RESOURCE, PRE_RESOURCE } from './Software';
 
 /**
  * This class allows making GET requests to the hardware software resource in the OpenGate North API.
  */
 export default class SoftwareFinder extends ProvisionGenericFinder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
@@ -25,29 +24,29 @@ export default class SoftwareFinder extends ProvisionGenericFinder {
             visibility: this._visibility || 'assignable'
         });
 
-        return this._baseUrl + "/" + this._organization + SOFTWARES_RESOURCE + (this._identifier ? "/" + this._identifier : "");
+        return this._baseUrl + '/' + this._organization + SOFTWARES_RESOURCE + (this._identifier ? '/' + this._identifier : '');
     }
 
     /**
      * Marks visibility assignable for software list retrieval
      * @test
      *   ogapi.newOrganizationSoftwareFinder().assignable().findByOrganization('organization').then().catch();
-     * @return {this} 
+     * @return {this}
      */
     assignable() {
-        this._visibility = 'assignable'
-        return this
+        this._visibility = 'assignable';
+        return this;
     }
 
     /**
      * Marks visibility administrable for software list retrieval
      * @test
      *   ogapi.newOrganizationSoftwareFinder().assignable().findByOrganization('organization').then().catch();
-     * @return {this} 
+     * @return {this}
      */
     administrable() {
-        this._visibility = 'administrable'
-        return this
+        this._visibility = 'administrable';
+        return this;
     }
 
     /**
@@ -55,7 +54,7 @@ export default class SoftwareFinder extends ProvisionGenericFinder {
      * @test
      *   ogapi.newOrganizationSoftwareFinder().findByOrganization('organization').then().catch();
      * @param {string} organization - organization name .
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByOrganization(organization) {
         this._organization = organization;
@@ -68,7 +67,7 @@ export default class SoftwareFinder extends ProvisionGenericFinder {
      *   ogapi.newOrganizationSoftwareFinder().findByOrganizationAndId('organization', 'identifier').then().catch();
      * @param {string} organization - organization name .
      * @param {string} identifier - software name .
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByOrganizationAndId(organization, identifier) {
         this._organization = organization;

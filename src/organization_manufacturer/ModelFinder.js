@@ -8,7 +8,6 @@ import { PRE_RESOURCE, MODELS_RESOURCE } from './Model';
  * This class allows making GET requests to the hardware models resource in the OpenGate North API.
  */
 export default class ModelFinder extends ProvisionGenericFinder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
@@ -22,7 +21,16 @@ export default class ModelFinder extends ProvisionGenericFinder {
      * @private
      */
     _composeUrl() {
-        return this._baseUrl + "/" + this._organization + MANUFACTURERS_RESOURCE + "/" + this._manufacturer + MODELS_RESOURCE + (this._identifier ? "/" + this._identifier : "");
+        return (
+            this._baseUrl +
+            '/' +
+            this._organization +
+            MANUFACTURERS_RESOURCE +
+            '/' +
+            this._manufacturer +
+            MODELS_RESOURCE +
+            (this._identifier ? '/' + this._identifier : '')
+        );
     }
 
     /**
@@ -32,7 +40,7 @@ export default class ModelFinder extends ProvisionGenericFinder {
      * @param {string} organization - model organization .
      * @param {string} manufacturer - model manufacturer .
      * @param {string} identifier - model name .
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByOrganizationAndManufacturerAndId(organization, manufacturer, identifier) {
         this._organization = organization;

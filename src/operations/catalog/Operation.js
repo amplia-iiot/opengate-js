@@ -2,7 +2,7 @@
 
 import q from 'q';
 
-/** 
+/**
  * This is an abstract class; it must be extended by another class that defines the specific request. This class is
  * responsible for managing execute-operation requests to OpenGate North API.
  */
@@ -11,7 +11,7 @@ export default class Operation {
      * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!string} resource - this is a base url resource
-     * @param {!object} postObj - it will be sent as a data on post action 
+     * @param {!object} postObj - it will be sent as a data on post action
      */
     constructor(ogapi, resource, postObj) {
         this._ogapi = ogapi;
@@ -27,15 +27,14 @@ export default class Operation {
      */
     updatePeriodicity() {
         let defered = q.defer();
-        let id = this._resource.substring(this._resource.lastIndexOf("/") + 1);
-        this._ogapi.Napi
-            .put(this._resource, this._postObj)
-            .then((response) => {
+        let id = this._resource.substring(this._resource.lastIndexOf('/') + 1);
+        this._ogapi.Napi.put(this._resource, this._postObj)
+            .then(response => {
                 let data;
                 try {
                     data = JSON.parse(response.text);
                 } catch (err) {
-                    console.warn("Error parsing response data when execute post action to " + this._resource);
+                    console.warn('Error parsing response data when execute post action to ' + this._resource);
                 }
                 defered.resolve({
                     data: data ? data : {},
@@ -43,14 +42,18 @@ export default class Operation {
                     id: id
                 });
             })
-            .catch((error) => {
+            .catch(error => {
                 if (!error.data) {
                     error.data = {};
                 }
                 if (!error.data.errors) {
-                    error.data.errors = [(typeof (error) === "string") ? {
-                        message: error
-                    } : error];
+                    error.data.errors = [
+                        typeof error === 'string'
+                            ? {
+                                  message: error
+                              }
+                            : error
+                    ];
                 }
                 defered.reject(error);
             });
@@ -65,14 +68,13 @@ export default class Operation {
      */
     execute() {
         let defered = q.defer();
-        this._ogapi.Napi
-            .post(this._resource, this._postObj)
-            .then((response) => {
+        this._ogapi.Napi.post(this._resource, this._postObj)
+            .then(response => {
                 let data;
                 try {
                     data = JSON.parse(response.text);
                 } catch (err) {
-                    console.warn("Error parsing response data when execute post action to " + this._resource);
+                    console.warn('Error parsing response data when execute post action to ' + this._resource);
                 }
                 defered.resolve({
                     data: data ? data : {},
@@ -80,14 +82,18 @@ export default class Operation {
                     location: response.header.location
                 });
             })
-            .catch((error) => {
+            .catch(error => {
                 if (!error.data) {
                     error.data = {};
                 }
                 if (!error.data.errors) {
-                    error.data.errors = [(typeof (error) === "string") ? {
-                        message: error
-                    } : error];
+                    error.data.errors = [
+                        typeof error === 'string'
+                            ? {
+                                  message: error
+                              }
+                            : error
+                    ];
                 }
                 defered.reject(error);
             });

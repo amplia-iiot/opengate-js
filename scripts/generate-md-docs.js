@@ -37,7 +37,8 @@ glob(srcDir + '/**/*.js', {}, (err, files) => {
             // Render
             // We use a slightly different template or default. Default is usually fine.
             // configure: default.
-            jsdoc2md.render({ source: processedContent })
+            jsdoc2md
+                .render({ source: processedContent })
                 .then(output => {
                     if (output) {
                         fs.writeFileSync(outputFilePath, output);

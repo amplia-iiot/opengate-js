@@ -1,24 +1,23 @@
 'use strict';
 
 import BaseProvision from '../provision/BaseProvision';
-import checkType from '../util/formats/check_types'
+import checkType from '../util/formats/check_types';
 /**
  * This object represents a provision processor and exposes all the attributes you can configure for it.
  */
 
 export default class ProvisionProcessors extends BaseProvision {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, "organizations/", undefined, ['name', 'organization', 'configurationParams', 'scriptProcessor']);
+        super(ogapi, 'organizations/', undefined, ['name', 'organization', 'configurationParams', 'scriptProcessor']);
     }
 
     //solo put o delete se llama
     _buildURL() {
-        let url = "provisionProcessors/provision/organizations/" + this._organization + '/' + this._identifier;
+        let url = 'provisionProcessors/provision/organizations/' + this._organization + '/' + this._identifier;
         return url;
     }
 
@@ -79,7 +78,7 @@ export default class ProvisionProcessors extends BaseProvision {
 
     //create y update
     _composeElement() {
-        this._resource = "provisionProcessors/provision/organizations/" + this._organization;
+        this._resource = 'provisionProcessors/provision/organizations/' + this._organization;
         let provisionProcessor = {
             name: this._name,
             configurationParams: this._configurationParams,

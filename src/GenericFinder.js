@@ -7,7 +7,6 @@ import HttpStatus from 'http-status-codes';
  * This class allows making GET requests to a resource in the OpenGate North API.
  */
 export default class GenericFinder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
@@ -33,7 +32,7 @@ export default class GenericFinder {
      * @private
      */
     _composeUrl() {
-        return this._baseUrl + "/" + this._id;
+        return this._baseUrl + '/' + this._id;
     }
 
     _withId(_id) {
@@ -78,16 +77,17 @@ export default class GenericFinder {
      * @private
      */
     _execute(south) {
-        let _api = this._api
+        let _api = this._api;
         if (south) {
-            _api = this._apiSouth
+            _api = this._apiSouth;
         }
         let defered = q.defer();
         let promise = defered.promise;
         let _entity = this._entity;
         let _error_not_found = this._error_not_found;
-        this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), false, this._getServiceBaseURL())
-            .then((req) => {
+        this._api
+            .get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), false, this._getServiceBaseURL())
+            .then(req => {
                 if (req.statusCode === 204) {
                     defered.reject({
                         error: _error_not_found,
@@ -110,7 +110,7 @@ export default class GenericFinder {
                     // }
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 // BUG RELACIONADO (http://cm.amplia.es/jira/browse/OGODM-3250)
                 if (error.statusCode === 400) {
                     error.statusCode = HttpStatus.NOT_FOUND;
@@ -132,8 +132,16 @@ export default class GenericFinder {
         let defered = q.defer();
         let promise = defered.promise;
         let _error_not_found = this._error_not_found;
-        this._api.get(this._downloadUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), (noBlob ? false : true), this._getServiceBaseURL())
-            .then((req) => {
+        this._api
+            .get(
+                this._downloadUrl(),
+                undefined,
+                this._getExtraHeaders(),
+                this._getUrlParameters(),
+                noBlob ? false : true,
+                this._getServiceBaseURL()
+            )
+            .then(req => {
                 if (req.statusCode === 204) {
                     defered.reject({
                         data: _error_not_found,
@@ -146,7 +154,7 @@ export default class GenericFinder {
                     });
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;
@@ -155,5 +163,4 @@ export default class GenericFinder {
     _getServiceBaseURL() {
         return this._serviceBaseURL;
     }
-
 }

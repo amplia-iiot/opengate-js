@@ -14,7 +14,7 @@ export default class DatamodelsHelper extends BaseProvision {
      * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance
      * @param {!string} organization - Organization where the IoT datamodel was create
-     * @param {!object} datamodel - Json object of IoT datamodel to modify or delete. 
+     * @param {!object} datamodel - Json object of IoT datamodel to modify or delete.
      */
     constructor(ogapi, organization, datamodel) {
         super(ogapi, PRE_RESOURCE);
@@ -71,8 +71,7 @@ export default class DatamodelsHelper extends BaseProvision {
      * @return {DatamodelsHelper}
      */
     withDescription(description) {
-        if (description)
-            this._isValidString(description, 'description', 100);
+        if (description) this._isValidString(description, 'description', 100);
         this._description = description;
         return this;
     }
@@ -99,14 +98,13 @@ export default class DatamodelsHelper extends BaseProvision {
             _category.withName(category.name);
         }
 
-        if (datastreams && datastreams.length > 0)
-            _category.addDatastreams(datastreams);
+        if (datastreams && datastreams.length > 0) _category.addDatastreams(datastreams);
         this._categories.push(_category._composeElement());
         return this;
     }
 
     /**
-     * Add a datastream to the indicated category 
+     * Add a datastream to the indicated category
      * @param {!string} category
      * @param {!object} datastream
      * @return {DatamodelsHelper}
@@ -140,8 +138,7 @@ export default class DatamodelsHelper extends BaseProvision {
         this._isValidString(category, 'category', 100);
         var remove_index = -1;
         this._categories.forEach(function (_category, index) {
-            if (_category.identifier === category)
-                remove_index = index;
+            if (_category.identifier === category) remove_index = index;
         });
         if (remove_index === -1) {
             throw new Error('Category ' + category + ' not exists for this datamodel');
@@ -247,7 +244,13 @@ export default class DatamodelsHelper extends BaseProvision {
             throw new Error('Category ' + category + ' not exists for this datamodel. Create it, use method addCategory instead');
         }
         if (update_datastream_index === -1) {
-            throw new Error('Datastream ' + id_datastream + ' not exists for this datamodel and category ' + category + '. Create it, use method addDatastream instead.');
+            throw new Error(
+                'Datastream ' +
+                    id_datastream +
+                    ' not exists for this datamodel and category ' +
+                    category +
+                    '. Create it, use method addDatastream instead.'
+            );
         }
         this._categories[update_category_index].datastreams[update_datastream_index] = datastream;
         return this;
@@ -255,11 +258,11 @@ export default class DatamodelsHelper extends BaseProvision {
 
     _composeElement() {
         return {
-            'identifier': this._identifier,
-            'name': this._name,
-            'version': this._version,
-            'description': this._description,
-            'categories': this._categories
+            identifier: this._identifier,
+            name: this._name,
+            version: this._version,
+            description: this._description,
+            categories: this._categories
         };
     }
 
@@ -276,6 +279,12 @@ export default class DatamodelsHelper extends BaseProvision {
 
     _isValidString(string, param_name, max_length) {
         if (typeof string !== 'string' || string.length === 0 || string.length > max_length)
-            throw new Error('Parameter ' + param_name + ' must be a string, cannot be empty and has a maximum length of ' + max_length + ' on DatamodelsHelper');
+            throw new Error(
+                'Parameter ' +
+                    param_name +
+                    ' must be a string, cannot be empty and has a maximum length of ' +
+                    max_length +
+                    ' on DatamodelsHelper'
+            );
     }
 }

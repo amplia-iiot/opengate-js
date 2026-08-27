@@ -1,7 +1,6 @@
 'use strict';
 
 export default class SelectElement {
-
     /**
      * @example
      *  SE.element('provision.device.identifier', ['value'], 'identifier')
@@ -25,5 +24,4 @@ export default class SelectElement {
     static element(name, fields) {
         return { name: name, fields: fields };
     }
-
 }

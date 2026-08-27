@@ -18,7 +18,7 @@ export default class TicketPrioritySearchBuilder extends SearchBuilder {
     }
 
     /**
-     * Build a instance of StaticSearch 
+     * Build a instance of StaticSearch
      *
      * @example
      *   ogapi.ticketPrioritySearchBuilder().build()
@@ -26,12 +26,6 @@ export default class TicketPrioritySearchBuilder extends SearchBuilder {
      * @return {StaticSearch}  
      */
     build() {
-        return new StaticSearch(this._parent,
-            this._buildUrl(),
-            null,
-            this._builderParams.timeout,
-            'ticketPriority', this.customFilters);
+        return new StaticSearch(this._parent, this._buildUrl(), null, this._builderParams.timeout, 'ticketPriority', this.customFilters);
     }
-
-
 }

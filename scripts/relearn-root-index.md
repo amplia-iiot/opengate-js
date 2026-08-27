@@ -11,7 +11,7 @@ weight = 10
 First of all you must install the library in your project. You can use npm or yarn to install the package.
 
 If you use npm, you can install the package as follows:
- 
+
 ```bash
 npm install opengate-js
 ```
@@ -46,7 +46,7 @@ var ogapi = new OpengateAPI({
 To use the API in a web environment, include the script and instantiate it as follows:
 
 ```javascript
-import { } from 'opengate-js/dist/opengate-api-bower-15.4.0'
+import {} from 'opengate-js/dist/opengate-api-bower-15.4.0';
 
 var ogapi = new window.OpenGateAPI({
     url: 'your-api-url',

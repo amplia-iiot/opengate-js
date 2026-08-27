@@ -19,19 +19,22 @@ export default class ServiceGroupSearchBuilder extends SearchBuilder {
     }
 
     /**
-     * Build a instance of StaticSearch 
+     * Build a instance of StaticSearch
      *
      * @example
      *   ogapi.serviceGroupSearchBuilder().filter({and:[]}).build()
      * @throws {SearchBuilderError} Throw error on url build
-     * @return {StaticSearch} 
+     * @return {StaticSearch}
      */
     build() {
-        return new StaticSearch(this._parent,
+        return new StaticSearch(
+            this._parent,
             this._buildUrl(),
             this._buildFilter(),
             this._builderParams.timeout,
-            staticSearchType, this.customFilters);
+            staticSearchType,
+            this.customFilters
+        );
     }
 
     /**
@@ -41,7 +44,7 @@ export default class ServiceGroupSearchBuilder extends SearchBuilder {
      *  ogapi.serviceGroupSearchBuilder().withEntityType('myEntityType').build()
      * @param {!string} entityType - entity type
      * @throws {Error} throw error when entityType is not typeof string
-     * @return {ServiceGroupSearchBuilder} 
+     * @return {ServiceGroupSearchBuilder}
      */
     withEntityType(entityType) {
         if (typeof entityType !== 'string') {

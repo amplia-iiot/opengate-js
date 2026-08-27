@@ -8,7 +8,6 @@ import HttpStatus from 'http-status-codes';
  * This class allows you to make GET requests to the hardware manufacturers resource in the OpenGate North API.
  */
 export default class ManufacturerFinder extends ProvisionGenericFinder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
@@ -22,26 +21,32 @@ export default class ManufacturerFinder extends ProvisionGenericFinder {
      * @private
      */
     _composeUrl() {
-        return this._baseUrl + (this._identifier ? "/" + this._identifier + (this._media ? "/media" + (this._mediaIdentifier ? "/" + this._mediaIdentifier + '?format=raw' : '') : '') : '');
+        return (
+            this._baseUrl +
+            (this._identifier
+                ? '/' +
+                  this._identifier +
+                  (this._media ? '/media' + (this._mediaIdentifier ? '/' + this._mediaIdentifier + '?format=raw' : '') : '')
+                : '')
+        );
     }
 
     /**
      * Download all manufacturers. This executes a GET HTTP method
      * @test
      *   ogapi.newManufacturerFinder().findAll().then().catch();
-     * @return {Promise} 
+     * @return {Promise}
      */
     findAll() {
         return this._execute();
     }
-
 
     /**
      * Download a specific manufacturer by its id. This executes a GET HTTP method
      * @test
      *   ogapi.newManufacturerFinder().findById('manufacturerIdentifier').then().catch();
      * @param {string} identifier - manufacturer identifier .
-     * @return {Promise} 
+     * @return {Promise}
      */
     findById(identifier) {
         this._identifier = identifier;
@@ -53,10 +58,10 @@ export default class ManufacturerFinder extends ProvisionGenericFinder {
      * @test
      *   ogapi.newManufacturerFinder().findMedias('manufacturerId', 'mediaIdentifier').then().catch();
      * @param {string} manufacturerId - manufacturer identifier .
-     * @return {Promise} 
+     * @return {Promise}
      */
     findMedias(manufacturerId) {
-        this._media = true
+        this._media = true;
         this._identifier = manufacturerId;
         return this._execute();
     }
@@ -67,10 +72,10 @@ export default class ManufacturerFinder extends ProvisionGenericFinder {
      *   ogapi.newManufacturerFinder().findMediaById('manufacturerId', 'mediaIdentifier').then().catch();
      * @param {string} manufacturerId - manufacturer identifier .
      * @param {string} mediaIdentifier - media identifier.
-     * @return {Promise} 
+     * @return {Promise}
      */
     findMediaById(manufacturerId, mediaIdentifier) {
-        this._media = true
+        this._media = true;
         this._identifier = manufacturerId;
         this._mediaIdentifier = mediaIdentifier;
         return this._download();
@@ -83,8 +88,9 @@ export default class ManufacturerFinder extends ProvisionGenericFinder {
         let defered = q.defer();
         let promise = defered.promise;
         let _error_not_found = this._error_not_found;
-        this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), true)
-            .then((req) => {
+        this._api
+            .get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), true)
+            .then(req => {
                 if (req.statusCode === 204) {
                     defered.reject({
                         data: _error_not_found,
@@ -97,7 +103,7 @@ export default class ManufacturerFinder extends ProvisionGenericFinder {
                     });
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;

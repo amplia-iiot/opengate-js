@@ -5,15 +5,12 @@ import ProvisionGenericFinder from '../ProvisionGenericFinder';
 import q from 'q';
 import HttpStatus from 'http-status-codes';
 
-import {
-    MIME_TYPES_ENUM
-} from './MIME_TYPES_ENUM';
+import { MIME_TYPES_ENUM } from './MIME_TYPES_ENUM';
 
 /**
  * This class allows making GET requests to the certificate resource in the OpenGate North API.
  */
 export default class CertificateFinder extends ProvisionGenericFinder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
@@ -27,7 +24,7 @@ export default class CertificateFinder extends ProvisionGenericFinder {
      * @test
      *   ogapi.newCertificateFinder().findById('xxx-xx-xxx-xxx').then().catch();
      * @param {string} id - Id of the certificate.
-     * @return {Promise} 
+     * @return {Promise}
      */
     findById(id) {
         this._id = id;
@@ -51,20 +48,25 @@ export default class CertificateFinder extends ProvisionGenericFinder {
      *   ogapi.newCertificateFinder().findByIdAndType('xxx-xx-xxx-xxx', 'mimetype').then().catch();
      * @param {string} id - Id of the certificate.
      * @param {string} mimetype - Certificate format mimetype.
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByIdAndFormat(id, mimetype) {
         let not_found = '';
         let found = MIME_TYPES_ENUM.find(function (mime_type) {
             return mime_type == this;
         }, mimetype);
-        if (typeof found === "undefined") {
+        if (typeof found === 'undefined') {
             not_found = mimetype;
         }
 
         if (not_found !== '') {
-            throw new Error("Parameter mimetype is not allowed. Parameter value <'" +
-                JSON.stringify(not_found) + "'>, mimetype allowed <'" + JSON.stringify(MIME_TYPES_ENUM) + "'>");
+            throw new Error(
+                "Parameter mimetype is not allowed. Parameter value <'" +
+                    JSON.stringify(not_found) +
+                    "'>, mimetype allowed <'" +
+                    JSON.stringify(MIME_TYPES_ENUM) +
+                    "'>"
+            );
         }
 
         this._id = id;
@@ -74,7 +76,6 @@ export default class CertificateFinder extends ProvisionGenericFinder {
         return this._download();
     }
 
-
     /**
      * @return {Promise}* @private
      */
@@ -82,8 +83,9 @@ export default class CertificateFinder extends ProvisionGenericFinder {
         let defered = q.defer();
         let promise = defered.promise;
         let _error_not_found = this._error_not_found;
-        this._api.get(this._downloadUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters())
-            .then((req) => {
+        this._api
+            .get(this._downloadUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters())
+            .then(req => {
                 if (req.statusCode === 204) {
                     defered.reject({
                         data: _error_not_found,
@@ -96,10 +98,9 @@ export default class CertificateFinder extends ProvisionGenericFinder {
                     });
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;
     }
-
 }

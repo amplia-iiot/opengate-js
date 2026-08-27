@@ -3,7 +3,7 @@
 import Search from './Search';
 import q from 'q';
 
-/** 
+/**
  * This class extends Search and allows requests to be made to any resource under the /entities endpoint of the
  * OpenGate North API.
  */
@@ -32,9 +32,8 @@ export default class EntitySearch extends Search {
         var defered = q.defer();
         var promise = defered.promise;
         var parameters = this._getUrlParameters();
-        this._ogapi.Napi
-            .post(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), parameters)
-            .then((response) => {
+        this._ogapi.Napi.post(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), parameters)
+            .then(response => {
                 let resultQuery = response.body;
                 let statusCode = response.statusCode;
 
@@ -51,21 +50,23 @@ export default class EntitySearch extends Search {
                                     delete resultQuery.entities[ele]['device.identifier'];
                                 }
                             }
-
                         } else {
-                            if (resultQuery.entities[ele].device && resultQuery.entities[ele].device.identifier && !resultQuery.entities[ele].device.identifier._current) {
+                            if (
+                                resultQuery.entities[ele].device &&
+                                resultQuery.entities[ele].device.identifier &&
+                                !resultQuery.entities[ele].device.identifier._current
+                            ) {
                                 delete resultQuery.entities[ele].device.identifier;
                             }
                         }
                     }
-
                 }
                 defered.resolve({
                     data: resultQuery,
                     statusCode: statusCode
                 });
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;

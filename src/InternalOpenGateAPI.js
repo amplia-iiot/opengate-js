@@ -15,7 +15,7 @@ import AreaFinder from './areas/AreaFinder';
 import BulkSearchBuilder from './searching/builder/BulkSearchBuilder';
 import BulkExecutionSearchBuilder from './searching/builder/BulkExecutionSearchBuilder';
 import BulkFinder from './bulk/BulkFinder';
-import BulkExecutionFinder from './bulk/BulkExecutionFinder'
+import BulkExecutionFinder from './bulk/BulkExecutionFinder';
 import Channels from './channels/Channels';
 import Areas from './areas/Areas';
 import Datasets from './datasets/Datasets';
@@ -108,7 +108,7 @@ import DatamodelsFinder from './iot/datamodels/DatamodelsFinder';
 import DatastreamsBuilder from './iot/catalog/Datastream';
 import QratingsBuilder from './iot/catalog/Qrating';
 import EntityBuilder from './provision/entities/EntityBuilder';
-import BulkExecutionBuilder from './provision/bulk/BulkExecutionBuilder'
+import BulkExecutionBuilder from './provision/bulk/BulkExecutionBuilder';
 import EntitiesSearchBuilder from './searching/builder/EntitiesSearchBuilder';
 import DatasetEntitiesSearchBuilder from './searching/builder/DatasetEntitiesSearchBuilder';
 import DatasetSearchBuilder from './searching/builder/DatasetSearchBuilder';
@@ -127,35 +127,34 @@ import ConnectorFunctionsHelper from './connectorsFunctions/configuration/Connec
 import ConnectorFunctionsFinder from './connectorsFunctions/configuration/ConnectorFunctionsFinder';
 import ConnectorFunctions from './connectorsFunctions/configuration/ConnectorFunctions';
 import ConnectorFunctionsCatalogBuilder from './connectorsFunctions/catalog/ConnectorFunctions';
-import ConnectorFunctionsCatalogFinder from './connectorsFunctions/catalog/ConnectorFunctionsCatalogFinder'
-import ConnectorFunctionsCatalog from './connectorsFunctions/catalog/ConnectorFunctionsCatalog'
-import ManufacturersBuilder from './manufacturers/Manufacturer'
-import ManufacturerModelsBuilder from './manufacturers/Model'
-import ManufacturerFinder from './manufacturers/ManufacturerFinder'
-import ModelFinder from './manufacturers/ModelFinder'
-import OrganizationManufacturersBuilder from './organization_manufacturer/Manufacturer'
-import OrganizationManufacturerModelsBuilder from './organization_manufacturer/Model'
-import OrganizationManufacturerFinder from './organization_manufacturer/ManufacturerFinder'
-import OrganizationModelFinder from './organization_manufacturer/ModelFinder'
+import ConnectorFunctionsCatalogFinder from './connectorsFunctions/catalog/ConnectorFunctionsCatalogFinder';
+import ConnectorFunctionsCatalog from './connectorsFunctions/catalog/ConnectorFunctionsCatalog';
+import ManufacturersBuilder from './manufacturers/Manufacturer';
+import ManufacturerModelsBuilder from './manufacturers/Model';
+import ManufacturerFinder from './manufacturers/ManufacturerFinder';
+import ModelFinder from './manufacturers/ModelFinder';
+import OrganizationManufacturersBuilder from './organization_manufacturer/Manufacturer';
+import OrganizationManufacturerModelsBuilder from './organization_manufacturer/Model';
+import OrganizationManufacturerFinder from './organization_manufacturer/ManufacturerFinder';
+import OrganizationModelFinder from './organization_manufacturer/ModelFinder';
 import OrganizationsSearchBuilder from './searching/builder/OrganizationsSearchBuilder';
 
-import SoftwaresBuilder from './organization_software/Software'
-import SoftwareFinder from './organization_software/SoftwareFinder'
-import NotebookFinder from './notebookScheduler/NotebookFinder'
-import NotebookSchedulerFinder from './notebookScheduler/SchedulerFinder'
-import NotebookLauncherBuilder from './notebookScheduler/NotebookLauncher'
-import NotebookSchedulerBuilder from './notebookScheduler/NotebookScheduler'
+import SoftwaresBuilder from './organization_software/Software';
+import SoftwareFinder from './organization_software/SoftwareFinder';
+import NotebookFinder from './notebookScheduler/NotebookFinder';
+import NotebookSchedulerFinder from './notebookScheduler/SchedulerFinder';
+import NotebookLauncherBuilder from './notebookScheduler/NotebookLauncher';
+import NotebookSchedulerBuilder from './notebookScheduler/NotebookScheduler';
 
-import ScheduleHistoryFinder from './schedule/HistoryFinder'
-import ScheduleRestRequestFinder from './schedule/RestRequestFinder'
-import ScheduleRestRequest from './schedule/RestRequest'
+import ScheduleHistoryFinder from './schedule/HistoryFinder';
+import ScheduleRestRequestFinder from './schedule/RestRequestFinder';
+import ScheduleRestRequest from './schedule/RestRequest';
 
-import ScheduleImageExecutionFinder from './schedule/ImageExecutionFinder'
-import ScheduleImageExecution from './schedule/ImageExecution'
+import ScheduleImageExecutionFinder from './schedule/ImageExecutionFinder';
+import ScheduleImageExecution from './schedule/ImageExecution';
 
-import SchedulePipelineFinder from './schedule/PipelineFinder'
-import SchedulePipeline from './schedule/Pipeline'
-
+import SchedulePipelineFinder from './schedule/PipelineFinder';
+import SchedulePipeline from './schedule/Pipeline';
 
 import CountriesCatalog from './provision/country/CountriesCatalog';
 import OrganizationPlans from './plan/OrganizationPlans';
@@ -163,13 +162,12 @@ import DevicePlans from './plan/DevicePlans';
 import OrganizationPlansFinder from './plan/OrganizationPlansFinder';
 import DevicePlansFinder from './plan/DevicePlansFinder';
 
-
 const RequestEndMonkeyPatching = (function () {
-    let beforeStart
+    let beforeStart;
     const end = _superagent.Request.prototype.end;
 
     _superagent.Request.prototype.end = function (cb) {
-        if (beforeStart && beforeStart.call) beforeStart(this)
+        if (beforeStart && beforeStart.call) beforeStart(this);
         return end.call(this, function (err, res) {
             if (typeof cb !== 'function') {
                 return;
@@ -179,9 +177,9 @@ const RequestEndMonkeyPatching = (function () {
     };
 
     return function setCallback(cb) {
-        beforeStart = cb
-    }
-})()
+        beforeStart = cb;
+    };
+})();
 /**
  * This is an abstract class. It must be extended by another class that defines the backend, and it is used to make
  * requests to the OpenGate North API from a browser or a Node.js server.
@@ -194,23 +192,23 @@ export default class InternalOpenGateAPI {
      */
     constructor(northAmpliaREST, southAmpliaREST, _options) {
         if (this.constructor === InternalOpenGateAPI) {
-            throw new Error("Cannot construct Abstract instances directly");
+            throw new Error('Cannot construct Abstract instances directly');
         }
-        if (typeof northAmpliaREST !== "object") {
-            throw new Error("Must instance mandatory parameter: northAmpliaREST");
+        if (typeof northAmpliaREST !== 'object') {
+            throw new Error('Must instance mandatory parameter: northAmpliaREST');
         }
-        if (typeof southAmpliaREST !== "object") {
-            throw new Error("Must instance mandatory parameter: southAmpliaREST");
+        if (typeof southAmpliaREST !== 'object') {
+            throw new Error('Must instance mandatory parameter: southAmpliaREST');
         }
         if (_options.hooks && _options.hooks.beforeStart && typeof _options.hooks.beforeStart === 'function') {
-            RequestEndMonkeyPatching(_options.hooks.beforeStart)
+            RequestEndMonkeyPatching(_options.hooks.beforeStart);
         }
         this.Napi = northAmpliaREST;
         this.Sapi = southAmpliaREST;
         this.EX = Expression;
         this.SE = SelectElement;
         this.operations = new Operations(this);
-        this.alarms = new AlarmActions(this)
+        this.alarms = new AlarmActions(this);
         this.entityBuilder = new EntityBuilder(this);
     }
 
@@ -306,7 +304,7 @@ export default class InternalOpenGateAPI {
      * @return {BulkFinder}
      */
     newBulkExecutionFinder() {
-        return new BulkExecutionFinder(this)
+        return new BulkExecutionFinder(this);
     }
 
     /**
@@ -348,7 +346,6 @@ export default class InternalOpenGateAPI {
     newCountriesCatalog() {
         return new CountriesCatalog(this);
     }
-
 
     /**
      * This returns a util to update an Operation Type
@@ -441,7 +438,6 @@ export default class InternalOpenGateAPI {
         return new TicketFinder(this);
     }
 
-
     /**
      * This returns a util to find a Subscription
      * @return {SubscriptionsFinder}
@@ -457,7 +453,6 @@ export default class InternalOpenGateAPI {
     newSubscribersFinder() {
         return new SubscribersFinder(this);
     }
-
 
     newEntityFinder() {
         return new EntityFinder(this);
@@ -581,8 +576,6 @@ export default class InternalOpenGateAPI {
         return new AllowedResourceTypeSearchBuilder(this);
     }
 
-
-
     /**
      * This returns a IoTDatastreamAccessSearchBuilder to build a specific IoTDatastreamAccessSearchBuilder
      * @return {IoTDatastreamAccessSearchBuilder}
@@ -703,7 +696,6 @@ export default class InternalOpenGateAPI {
         return new FeedsSearchBuilder(this);
     }
 
-
     /**
      * This returns a DatapointsSearchBuilder to build a specific DatapointsSearchBuilder
      * @return {DatapointsSearchBuilder}
@@ -729,7 +721,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * 
+     *
      */
     basicTypesSearchBuilder() {
         return new BasicTypesSearchBuilder(this);
@@ -976,7 +968,6 @@ export default class InternalOpenGateAPI {
         return new WorkgroupRelationsFinder(this);
     }
 
-
     /**
      * This returns a WorkgroupsBuilder to build a specific workgroup
      * @return {Workgroups}
@@ -1054,7 +1045,7 @@ export default class InternalOpenGateAPI {
      * @return {TimeseriesFunctionsHelper}
      */
     newTimeseriesFunctionsHelper() {
-        return new TimeseriesFunctionsHelper(this)
+        return new TimeseriesFunctionsHelper(this);
     }
 
     /**
@@ -1110,7 +1101,7 @@ export default class InternalOpenGateAPI {
      * @return {BulkExecutionBuilder}
      */
     bulkExecutionBuilder(organization, processorId, timeout) {
-        return new BulkExecutionBuilder(this, organization, processorId, timeout)
+        return new BulkExecutionBuilder(this, organization, processorId, timeout);
     }
 
     /**
@@ -1150,7 +1141,7 @@ export default class InternalOpenGateAPI {
      * @return {ConnectorFunctionsFinder}
      */
     newConnectorFunctionsFinder() {
-        return new ConnectorFunctionsFinder(this)
+        return new ConnectorFunctionsFinder(this);
     }
 
     /**
@@ -1158,7 +1149,7 @@ export default class InternalOpenGateAPI {
      * @return {ConnectorFunctionsCatalogFinder}
      */
     newConnectorFunctionsCatalogFinder() {
-        return new ConnectorFunctionsCatalogFinder(this)
+        return new ConnectorFunctionsCatalogFinder(this);
     }
 
     /**
@@ -1166,7 +1157,7 @@ export default class InternalOpenGateAPI {
      * @return {ConnectorFunctionsCatalog}
      */
     newConnectorFunctionsCatalog() {
-        return new ConnectorFunctionsCatalog(this)
+        return new ConnectorFunctionsCatalog(this);
     }
 
     /**
@@ -1174,7 +1165,7 @@ export default class InternalOpenGateAPI {
      * @return {ConnectorFunctionsHelper}
      */
     newConnectorFunctionsHelper() {
-        return new ConnectorFunctionsHelper(this)
+        return new ConnectorFunctionsHelper(this);
     }
 
     /**
@@ -1182,17 +1173,17 @@ export default class InternalOpenGateAPI {
      * @return {ConnectorFunctions}
      */
     connectorFunctionsBuilder(organization, channel, identifier, connectorFunctionData) {
-        return new ConnectorFunctions(this, organization, channel, identifier, connectorFunctionData)
+        return new ConnectorFunctions(this, organization, channel, identifier, connectorFunctionData);
     }
 
     /**
-     * 
+     *
      * @param {String} identifier - only update or delete
-     * @param {Object} connectorFunctionsCatalog 
+     * @param {Object} connectorFunctionsCatalog
      * @returns {ConnectorFunctionsCatalog}
      */
     connectorFunctionsCatalogBuilder(identifier, connectorFunctionsCatalog) {
-        return new ConnectorFunctionsCatalogBuilder(this, identifier, connectorFunctionsCatalog)
+        return new ConnectorFunctionsCatalogBuilder(this, identifier, connectorFunctionsCatalog);
     }
 
     /**
@@ -1299,7 +1290,7 @@ export default class InternalOpenGateAPI {
         return new SoftwareFinder(this);
     }
 
-    /** 
+    /**
      * This returns a NotebookLauncherBuilder to build a specific NotebookLauncherBuilder
      * @return {NotebookLauncherBuilder}
      */
@@ -1307,7 +1298,7 @@ export default class InternalOpenGateAPI {
         return new NotebookLauncherBuilder(this);
     }
 
-    /** 
+    /**
      * This returns a NotebookSchedulerBuilder to build a specific NotebookSchedulerBuilder
      * @return {NotebookSchedulerBuilder}
      */
@@ -1404,7 +1395,7 @@ export default class InternalOpenGateAPI {
     }
     /**
      * This returns a OrganizationPlans to build a specific organization plan
-     * @param {*} organization 
+     * @param {*} organization
      * @returns {OrganizationPlans}
      */
     organizationPlansBuilder(organization) {
@@ -1413,7 +1404,7 @@ export default class InternalOpenGateAPI {
 
     /**
      * This returns a DevicePlans to build a specific device plan
-     * @param {*} organization 
+     * @param {*} organization
      * @returns {OrganizationPlans}
      */
     devicePlansBuilder(organization) {

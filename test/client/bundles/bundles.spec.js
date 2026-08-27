@@ -1,9 +1,9 @@
-define(function() {
+define(function () {
     mocha.setup('bdd');
     /** @test {InternalOpenGateAPI#bundlesBuilder()} */
-    describe('Check funcionality bundles module:', function() {
+    describe('Check funcionality bundles module:', function () {
         var bundle;
-        before(function() {
+        before(function () {
             bundle = ogapi.bundlesBuilder();
         });
         /** @test {InternalOpenGateAPI#bundlesBuilder} */

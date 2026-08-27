@@ -1,89 +1,101 @@
 {
-    "name": "opengate-js",
-    "version": "15.5.0",
-    "description": "",
-    "main": "dist/opengate-api-npm.js",
-    "types": "types/opengate-api-npm.d.ts",
-    "files": [
-        "dist",
-        "types",
-        "src",
-        "opengate-api-npm.js",
-        "opengate-api-bower.js",
-        "README.md",
-        "LICENSE"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/amplia-iiot/opengate-js.git"
+  "name": "opengate-js",
+  "version": "15.5.0",
+  "description": "JavaScript client for the OpenGate North and South APIs, with a fluent builder API. Runs in Node.js and in the browser.",
+  "main": "dist/opengate-api-npm.js",
+  "module": "dist/opengate-api-npm.mjs",
+  "types": "types/opengate-api-npm.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/opengate-api-npm.d.ts",
+      "import": "./dist/opengate-api-npm.mjs",
+      "require": "./dist/opengate-api-npm.js",
+      "default": "./dist/opengate-api-npm.js"
     },
-    "author": "",
-    "license": "ISC",
-    "engines": {
-        "node": ">=10.15.0",
-        "npm": ">=3.10.2"
-    },
-    "engineStrict": true,
-    "dependencies": {
-        "ajv": "^6.12.0",
-        "http-status-codes": "^1.0.6",
-        "jsonpath": "1.0.1",
-        "jsonschema": "^1.2.0",
-        "lodash": "^4.17.21",
-        "merge": "^1.2.1",
-        "mime-types": "^2.1.35",
-        "moment": "^2.14.1",
-        "q": "^1.4.1",
-        "string": "^3.3.1",
-        "superagent": "^3.8.3",
-        "superagent-mocker": "^0.5.2",
-        "underscore": "^1.9.0",
-        "urlencode": "^1.1.0",
-        "uuid": "9.0.1"
-    },
-    "scripts": {
-        "test-wip": "export NODE_OPTIONS='--max-old-space-size=8192'; gulp cucumber --tags @wip",
-        "docs:relearn": "node scripts/generate-relearn-md.js",
-        "apidoc": "npm run apidoc:model && npm run apidoc:types",
-        "apidoc:model": "node tools/apidoc/extract.mjs --out build/api-model.json",
-        "apidoc:types": "tsc -p tools/apidoc/tsconfig.declarations.json",
-        "prepack": "npm run apidoc:types"
-    },
-    "devDependencies": {
-        "babel-core": "^6.26.3",
-        "babel-eslint": "^10.1.0",
-        "babelify": "^6.1.0",
-        "chai": "^3.5.0",
-        "chai-as-promised": "^5.3.0",
-        "cucumber": "^3.0.0",
-        "eslint": "^7.8.1",
-        "gulp": "^4.0.2",
-        "gulp-babel": "^5.1.0",
-        "gulp-browserify": "^0.5.1",
-        "gulp-bump": "^2.5.1",
-        "gulp-clean": "^0.4.0",
-        "gulp-cucumber": "0.0.24",
-        "gulp-esdoc": "0.4.1",
-        "handlebars": "^4.7.8",
-        "gulp-ext-replace": "^0.3.0",
-        "gulp-flatten": "^0.4.0",
-        "gulp-git": "^2.7.0",
-        "gulp-rename": "^1.2.2",
-        "gulp-sourcemaps": "^1.5.2",
-        "gulp-tag-version": "^1.3.0",
-        "gulp-terser": "^2.1.0",
-        "gulp-ver": "^0.1.0",
-        "jsdoc-to-markdown": "^9.1.3",
-        "jsdom": "^16.4.0",
-        "minimist": "^1.2.5",
-        "mkdirp": "^1.0.4",
-        "multiple-cucumber-html-reporter": "^1.18.0",
-        "run-sequence": "^2.2.1",
-        "should": "^9.0.2",
-        "typescript": "^5.9.3",
-        "yargs": "^15.4.1"
-    },
-    "resolutions": {
-        "jsonpath/**/underscore": "^1.9.0"
-    }
+    "./package.json": "./package.json",
+    "./dist/*.js": "./dist/*.js",
+    "./dist/*.mjs": "./dist/*.mjs",
+    "./dist/*.map": "./dist/*.map",
+    "./dist/*": "./dist/*.js"
+  },
+  "files": [
+    "dist",
+    "types",
+    "src",
+    "opengate-api-npm.js",
+    "opengate-api-bower.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amplia-iiot/opengate-js.git"
+  },
+  "homepage": "https://documentation.opengate.es/libs/ogapi-docs/index.html",
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "packageManager": "yarn@1.22.22",
+  "dependencies": {
+    "ajv": "^6.12.0",
+    "http-status-codes": "^1.0.6",
+    "jsonpath": "1.0.1",
+    "jsonschema": "^1.2.0",
+    "lodash": "^4.17.21",
+    "merge": "^1.2.1",
+    "mime-types": "^2.1.35",
+    "moment": "^2.14.1",
+    "q": "^1.4.1",
+    "superagent": "^3.8.3",
+    "superagent-mocker": "^0.5.2",
+    "urlencode": "^1.1.0",
+    "uuid": "9.0.1"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "build:fast": "node scripts/build.mjs --no-minify",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "node scripts/e2e.mjs",
+    "test-wip": "node scripts/e2e.mjs --tags @wip",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "docs:relearn": "node scripts/generate-relearn-md.js",
+    "apidoc": "npm run apidoc:model && npm run apidoc:types",
+    "apidoc:model": "node tools/apidoc/extract.mjs --out build/api-model.json",
+    "apidoc:types": "tsc -p tools/apidoc/tsconfig.declarations.json",
+    "prepack": "npm run build && npm run apidoc:types"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@vitest/coverage-v8": "^4.1.11",
+    "assert": "^2.1.0",
+    "buffer": "^6.0.3",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
+    "cucumber": "^3.0.0",
+    "esbuild": "^0.28.2",
+    "eslint": "^10.9.1",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.11.0",
+    "handlebars": "^4.7.8",
+    "jsdoc-to-markdown": "^9.1.3",
+    "jsdom": "^16.4.0",
+    "multiple-cucumber-html-reporter": "^1.18.0",
+    "path-browserify": "^1.0.1",
+    "prettier": "^3.6.2",
+    "process": "^0.11.10",
+    "typescript": "^5.9.3",
+    "util": "^0.12.5",
+    "vite": "^8.2.2",
+    "vitest": "^4.1.11"
+  },
+  "resolutions": {
+    "jsonpath/**/underscore": "^1.9.0"
+  }
 }

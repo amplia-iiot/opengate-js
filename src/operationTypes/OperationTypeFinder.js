@@ -7,22 +7,21 @@ import GenericFinder from '../GenericFinder';
  * This class allows making GET requests to the OperationType resource in the OpenGate North API.
  */
 export default class OperationTypeFinder extends GenericFinder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, 'operationTypes/provision/organizations', "operationTypes", 'Operation type not found');
+        super(ogapi, 'operationTypes/provision/organizations', 'operationTypes', 'Operation type not found');
     }
 
     /**
      * Performs a get that returns operation type
      * @test
      *   ogapi.newOperationTypeFinder().findByOrganizationAndName('xxx-xx-xxx-xxx', 'xxxxx-xxxx-xxxx').then().catch();
-     * @param {string} organization - organization 
+     * @param {string} organization - organization
      * @param {string} name - Rule Configuration name
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByOrganizationAndName(organization, name) {
         let _this = this;
@@ -37,7 +36,6 @@ export default class OperationTypeFinder extends GenericFinder {
     }
 
     _composeUrl() {
-        return this._baseUrl + "/" + this._organization + "/" + this._name;
+        return this._baseUrl + '/' + this._organization + '/' + this._name;
     }
-
 }

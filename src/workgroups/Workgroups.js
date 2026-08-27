@@ -2,18 +2,18 @@
 
 import q from 'q';
 import BaseProvision from '../provision/BaseProvision';
+import parameterError from '../util/parameterError';
 
 /**
  * This is a base object that contains all you can do about workgroups.
  */
 export default class Workgroups extends BaseProvision {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, "/domains", undefined, ["name", "domainName"]);
+        super(ogapi, '/domains', undefined, ['name', 'domainName']);
         this._ogapi = ogapi;
     }
 
@@ -24,10 +24,7 @@ export default class Workgroups extends BaseProvision {
      */
     withName(name) {
         if (typeof name !== 'string' || name.length > 50)
-            throw new Error({
-                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50",
-                parameter: 'name'
-            });
+            throw parameterError('OGAPI_STRING_PARAMETER_MAX_LENGTH_50', { parameter: 'name' });
         this._name = name;
         return this;
     }
@@ -39,17 +36,14 @@ export default class Workgroups extends BaseProvision {
      */
     withDescription(description) {
         if (typeof description !== 'string' || description.length > 250)
-            throw new Error({
-                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250",
-                parameter: 'description'
-            });
+            throw parameterError('OGAPI_STRING_PARAMETER_MAX_LENGTH_250', { parameter: 'description' });
         this._description = description;
         return this;
     }
 
     /**
      * Set the administrative attribute
-     * @param {boolean} administrative 
+     * @param {boolean} administrative
      * @return {Workgroups}
      */
     withAdministrative(administrative) {
@@ -66,10 +60,7 @@ export default class Workgroups extends BaseProvision {
      */
     withDomainName(domainName) {
         if (typeof domainName !== 'string' || domainName.length > 50)
-            throw new Error({
-                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50",
-                parameter: 'domainName'
-            });
+            throw parameterError('OGAPI_STRING_PARAMETER_MAX_LENGTH_50', { parameter: 'domainName' });
         this._domainName = domainName;
         return this;
     }
@@ -79,7 +70,7 @@ export default class Workgroups extends BaseProvision {
         this._resource = 'provision/domains/' + this._domainName + '/workgroups';
 
         var workgroup = {
-            "workgroup": {
+            workgroup: {
                 name: this._name || undefined,
                 description: this._description || undefined,
                 administrative: this._administrative || false
@@ -94,7 +85,7 @@ export default class Workgroups extends BaseProvision {
         this._resource = 'provision/domains/' + this._domainName + '/workgroups';
 
         var workgroup = {
-            "workgroup": {
+            workgroup: {
                 description: this._description || undefined
             }
         };
@@ -111,7 +102,7 @@ export default class Workgroups extends BaseProvision {
         var defered = q.defer();
         var promise = defered.promise;
         this._ogapi.Napi.put(this._buildURL(), this._composeElementUpdate(), undefined, this._getExtraHeaders(), this._getUrlParameters())
-            .then((res) => {
+            .then(res => {
                 if (res.statusCode === 200) {
                     defered.resolve({
                         statusCode: res.statusCode
@@ -127,10 +118,9 @@ export default class Workgroups extends BaseProvision {
                     });
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;
     }
-
 }

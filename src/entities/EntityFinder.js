@@ -6,7 +6,6 @@ import ProvisionGenericFinder from '../ProvisionGenericFinder';
  * This class allows you to make GET requests to the provisioned entity resource in the OpenGate North API.
  */
 export default class EntityFinder extends ProvisionGenericFinder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
@@ -22,7 +21,7 @@ export default class EntityFinder extends ProvisionGenericFinder {
      * @private
      */
     _composeUrl() {
-        return this._baseUrl + "/" + this._organization + "/" + this._entitySource + "/" + this._id;
+        return this._baseUrl + '/' + this._organization + '/' + this._entitySource + '/' + this._id;
     }
 
     /**
@@ -35,7 +34,7 @@ export default class EntityFinder extends ProvisionGenericFinder {
      * @param {string} organization - entity organization .
      * @param {string} id - entity id.
      * @param {string} flattened - flattened response flag.
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByOrganizationAndId(organization, id, flattened) {
         this._organization = organization;

@@ -7,7 +7,6 @@ export const SubscriberID = 'provision.device.communicationModules[].subscriber.
  * Subscriber builder. This builder give you the necessary tools to create a subscriber using our OpenGate REST.
  */
 export default class SubscriberBuilder extends SimpleBuilder {
-
     /**
      * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is ogapi instance

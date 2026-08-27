@@ -1,18 +1,18 @@
 'use strict';
 
 import BaseProvision from '../provision/BaseProvision';
+import parameterError from '../util/parameterError';
 
 /**
  * This is a base object that contains everything you can do with a channel.
  */
 export default class Channels extends BaseProvision {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, "/organizations", undefined, ["name", "organization"]);
+        super(ogapi, '/organizations', undefined, ['name', 'organization']);
         this._ogapi = ogapi;
     }
 
@@ -28,7 +28,7 @@ export default class Channels extends BaseProvision {
      */
     withName(name) {
         if (typeof name !== 'string' || name.length > 50)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'name' });
+            throw parameterError('OGAPI_STRING_PARAMETER_MAX_LENGTH_50', { parameter: 'name' });
         this._name = name;
         return this;
     }
@@ -40,35 +40,32 @@ export default class Channels extends BaseProvision {
      */
     withDescription(description) {
         if (typeof description !== 'string' || description.length > 250)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250", parameter: 'description' });
+            throw parameterError('OGAPI_STRING_PARAMETER_MAX_LENGTH_250', { parameter: 'description' });
         this._description = description;
         return this;
     }
 
-
     /**
      * Set the organization attribute
-     * @param {string} organization 
+     * @param {string} organization
      * @return {Channels}
      */
     withOrganization(organization) {
         if (typeof organization !== 'string' || organization.length > 50)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'organization' });
+            throw parameterError('OGAPI_STRING_PARAMETER_MAX_LENGTH_50', { parameter: 'organization' });
         this._organization = organization;
         return this;
     }
 
     /**
      * Set the certificate attribute
-     * @param {string} certificate 
+     * @param {string} certificate
      * @return {Channels}
      */
     withCertificate(certificate) {
-        if (typeof certificate !== 'string')
-            throw new Error({ message: 'OGAPI_STRING_PARAMETER', parameter: 'certificate' });
+        if (typeof certificate !== 'string') throw parameterError('OGAPI_STRING_PARAMETER', { parameter: 'certificate' });
 
-        if (!this._certificates)
-            this._certificates = [];
+        if (!this._certificates) this._certificates = [];
 
         this._certificates.push(certificate);
         return this;
@@ -78,7 +75,7 @@ export default class Channels extends BaseProvision {
         this._checkRequiredParameters();
         this._resource = 'provision/organizations/' + this._organization + '/channels';
         var channel = {
-            "channel": {
+            channel: {
                 name: this._name || undefined,
                 description: this._description || undefined,
                 certificates: this._certificates || undefined
@@ -92,5 +89,4 @@ export default class Channels extends BaseProvision {
         delete channel.channel.name;
         return channel;
     }
-
 }

@@ -1,7 +1,7 @@
 'use strict';
 
 import SearchBuilder from './SearchBuilder';
-import FieldFinder from '../../util/searchingFields/FieldFinder'
+import FieldFinder from '../../util/searchingFields/FieldFinder';
 
 const BASE_URL = '/tickets';
 /**
@@ -18,10 +18,10 @@ export default class TicketsSearchBuilder extends SearchBuilder {
     }
 
     /**
-     * The response will only have a summary information 
+     * The response will only have a summary information
      * @example
-     *	ogapi.ticketsSearchBuilder().summary() 
-     * @return {TicketsSearchBuilder} 
+     *	ogapi.ticketsSearchBuilder().summary()
+     * @return {TicketsSearchBuilder}
      */
     summary() {
         this._url = this._url + '/summary';
@@ -30,18 +30,18 @@ export default class TicketsSearchBuilder extends SearchBuilder {
     }
 
     /**
-     * The search request will have this group by 
+     * The search request will have this group by
      * @example
-     * @param {!(object)} group 
-     * @return {SearchBuilder} 
+     * @param {!(object)} group
+     * @return {SearchBuilder}
      */
     group(group) {
-        this._builderParams.group = (group || {});
+        this._builderParams.group = group || {};
         return this;
     }
 
     /**
-     * The search request will have this filter 
+     * The search request will have this filter
      * @example
      *  ogapi.ticketsSearchBuilder().select(
      *      ogapi.newSelectBuilder().add(SE.element("provision.ticket.identifier", [[{"field": "value","alias": "identifier"}], ), SE.add("device.temperature.value", [[{"field": "value"}]))
@@ -51,18 +51,18 @@ export default class TicketsSearchBuilder extends SearchBuilder {
      *      {"name": "provision.ticket.name","fields": [{"field": "value","alias": "identifier"}]}]
      *   }) //Custom select
      * @param {!(SelectBuilder|object)} select
-     * @return {SearchBuilder} 
+     * @return {SearchBuilder}
      */
     select(select) {
-        this._builderParams.select = (select);
+        this._builderParams.select = select;
         return this;
     }
 
     /**
      * The response will return a flattened response
      * @example
-     *	ogapi.ticketsSearchBuilder().flattened() 
-     * @return {TicketsSearchBuilder} 
+     *	ogapi.ticketsSearchBuilder().flattened()
+     * @return {TicketsSearchBuilder}
      */
     flattened() {
         this._urlParams.flattened = true;
@@ -73,8 +73,8 @@ export default class TicketsSearchBuilder extends SearchBuilder {
     /**
      * The response will return a response without sorted
      * @example
-     *	ogapi.ticketsSearchBuilder().disableDefaultSorted() 
-     * @return {TicketsSearchBuilder} 
+     *	ogapi.ticketsSearchBuilder().disableDefaultSorted()
+     * @return {TicketsSearchBuilder}
      */
     disableDefaultSorted() {
         this._urlParams.defaultSorted = false;

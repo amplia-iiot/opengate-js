@@ -1,62 +1,62 @@
 module.exports = {
     setters: function (setter) {
         return {
-            'certificate': {
-                'id': 'withId'
+            certificate: {
+                id: 'withId'
             },
-            'user': {
-                'email': 'withEmail'
+            user: {
+                email: 'withEmail'
             },
-            'organization': {
-                'name': 'withName',
-                'domain': 'withDomain'
+            organization: {
+                name: 'withName',
+                domain: 'withDomain'
             },
-            'bundle': {
-                'name': 'withName',
-                'version': 'withVersion'
+            bundle: {
+                name: 'withName',
+                version: 'withVersion'
             },
-            'area': {
-                'identifier': 'withIdentifier',
-                'organization': 'withOrganization'
+            area: {
+                identifier: 'withIdentifier',
+                organization: 'withOrganization'
             },
-            'dataset': {
-                'identifier': 'withIdentifier',
-                'organization': 'withOrganization'
+            dataset: {
+                identifier: 'withIdentifier',
+                organization: 'withOrganization'
             },
-            'timeserie': {
-                'identifier': 'withIdentifier',
-                'organization': 'withOrganization'
+            timeserie: {
+                identifier: 'withIdentifier',
+                organization: 'withOrganization'
             },
-            'domain': {
-                'name': 'withName'
+            domain: {
+                name: 'withName'
             },
-            'provisionProcessors':{
-                'identifier': 'withIdentifier'
+            provisionProcessors: {
+                identifier: 'withIdentifier'
             },
             'connector function catalog': {
-                'identifier': 'withIdentifier'
+                identifier: 'withIdentifier'
             },
-            'organizationPlan': {
-                'identifier': 'withIdentifier'
+            organizationPlan: {
+                identifier: 'withIdentifier'
             },
-            'devicePlan': {
-                'identifier': 'withIdentifier'
+            devicePlan: {
+                identifier: 'withIdentifier'
             }
         }[setter];
     },
     methods: function (method) {
         return {
-            'certificate': 'withId',
-            'user': 'withEmail',
-            'organization': 'withName',
-            'bundle': 'withVersion',
-            'area': 'withIdentifier',
-            'dataset': 'withIdentifier',
-            'timeserie': 'withIdentifier',
-            'domain': 'withDomain',
+            certificate: 'withId',
+            user: 'withEmail',
+            organization: 'withName',
+            bundle: 'withVersion',
+            area: 'withIdentifier',
+            dataset: 'withIdentifier',
+            timeserie: 'withIdentifier',
+            domain: 'withDomain',
             'connector function catalog': 'withIdentifier',
-            'organizationPlan': 'withIdentifier',
-            'devicePlan': 'withIdentifier'
+            organizationPlan: 'withIdentifier',
+            devicePlan: 'withIdentifier'
         }[method];
     }
 };

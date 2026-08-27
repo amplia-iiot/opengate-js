@@ -1,19 +1,25 @@
 'use strict';
 
 import BaseProvision from '../provision/BaseProvision';
-import checkType from '../util/formats/check_types'
+import checkType from '../util/formats/check_types';
+import parameterError from '../util/parameterError';
 
 /**
  * This is a base object that represents an image execution step within a scheduled pipeline.
  */
 export default class ImageExecution extends BaseProvision {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, "/organization", undefined, ["identifier", "organization", "schedule", "imageExecution", "maxTimeToWaitCallback"], 'scheduler');
+        super(
+            ogapi,
+            '/organization',
+            undefined,
+            ['identifier', 'organization', 'schedule', 'imageExecution', 'maxTimeToWaitCallback'],
+            'scheduler'
+        );
         this._ogapi = ogapi;
     }
 
@@ -37,12 +43,12 @@ export default class ImageExecution extends BaseProvision {
 
     /**
      * Set the organization attribute
-     * @param {string} organization 
+     * @param {string} organization
      * @return {ImageExecution}
      */
     withOrganization(organization) {
         if (typeof organization !== 'string' || organization.length > 50)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'organization' });
+            throw parameterError('OGAPI_STRING_PARAMETER_MAX_LENGTH_50', { parameter: 'organization' });
         this._organization = organization;
         return this;
     }
@@ -58,7 +64,7 @@ export default class ImageExecution extends BaseProvision {
         checkType._checkString(timezone, 'timezone');
 
         if (!this._schedule) {
-            this._schedule = {}
+            this._schedule = {};
         }
 
         this._schedule = {
@@ -79,7 +85,7 @@ export default class ImageExecution extends BaseProvision {
         checkType._checkNumber(interval, 'interval');
 
         if (!this._schedule) {
-            this._schedule = {}
+            this._schedule = {};
         }
 
         this._schedule.interval = {
@@ -98,7 +104,7 @@ export default class ImageExecution extends BaseProvision {
         checkType._checkBoolean(executeNow, 'executeNow');
 
         if (!this._schedule) {
-            this._schedule = {}
+            this._schedule = {};
         }
 
         this._schedule.executeNow = executeNow;
@@ -108,14 +114,14 @@ export default class ImageExecution extends BaseProvision {
 
     /**
      * Sets the from attribute
-     * @param {string} from 
+     * @param {string} from
      * @returns {ImageExecution}
      */
     withScheduleFrom(from) {
         checkType._checkISODateTime(from, 'from');
 
         if (!this._schedule) {
-            this._schedule = {}
+            this._schedule = {};
         }
 
         this._schedule.from = from;
@@ -125,14 +131,14 @@ export default class ImageExecution extends BaseProvision {
 
     /**
      * Sets the to attribute
-     * @param {string} to 
+     * @param {string} to
      * @returns {ImageExecution}
      */
     withScheduleTo(to) {
         checkType._checkISODateTime(to, 'to');
 
         if (!this._schedule) {
-            this._schedule = {}
+            this._schedule = {};
         }
 
         this._schedule.to = to;
@@ -165,7 +171,7 @@ export default class ImageExecution extends BaseProvision {
         checkType._checkString(imageExecutionTag, 'imageExecutionTag');
 
         if (!this._imageExecution) {
-            this._imageExecution = {}
+            this._imageExecution = {};
         }
 
         this._imageExecution.tag = imageExecutionTag;
@@ -181,7 +187,7 @@ export default class ImageExecution extends BaseProvision {
         checkType._checkObject(imageExecutionEnvVars, 'imageExecutionEnvVars');
 
         if (!this._imageExecution) {
-            this._imageExecution = {}
+            this._imageExecution = {};
         }
 
         this._imageExecution.env = imageExecutionEnvVars;
@@ -197,7 +203,7 @@ export default class ImageExecution extends BaseProvision {
         checkType._checkArray(imageExecutionEnvFrom, 'imageExecutionEnvFrom');
 
         if (!this._imageExecution) {
-            this._imageExecution = {}
+            this._imageExecution = {};
         }
 
         this._imageExecution.envFrom = imageExecutionEnvFrom;
@@ -213,11 +219,10 @@ export default class ImageExecution extends BaseProvision {
         checkType._checkNumber(timeout, 'timeout');
 
         if (!this._imageExecution) {
-            this._imageExecution = {}
+            this._imageExecution = {};
         }
 
-
-        this._imageExecution.timeout = timeout
+        this._imageExecution.timeout = timeout;
 
         return this;
     }
@@ -230,7 +235,7 @@ export default class ImageExecution extends BaseProvision {
     withMaxTimeToWaitCallback(asyncResponseMaxTimeToWaitCallback) {
         checkType._checkNumber(asyncResponseMaxTimeToWaitCallback, 'asyncResponseMaxTimeToWaitCallback');
 
-        this._maxTimeToWaitCallback = asyncResponseMaxTimeToWaitCallback
+        this._maxTimeToWaitCallback = asyncResponseMaxTimeToWaitCallback;
 
         return this;
     }
@@ -258,6 +263,6 @@ export default class ImageExecution extends BaseProvision {
     }
 
     update() {
-        throw new Error('Update is not allowed!!!')
+        throw new Error('Update is not allowed!!!');
     }
 }

@@ -61,8 +61,7 @@ export default class Datamodels extends BaseProvision {
      * @return {Datamodels}
      */
     withDescription(description) {
-        if (description)
-            this._isValidString(description, 'description', 100);
+        if (description) this._isValidString(description, 'description', 100);
         this._description = description;
         return this;
     }
@@ -73,8 +72,7 @@ export default class Datamodels extends BaseProvision {
      * @return {Datamodels}
      */
     addAllowedResourceType(resourceType) {
-        if (resourceType)
-            this._isValidString(resourceType, 'resourceType', 100);
+        if (resourceType) this._isValidString(resourceType, 'resourceType', 100);
         this._resourceType.push(resourceType);
         return this;
     }
@@ -98,8 +96,7 @@ export default class Datamodels extends BaseProvision {
         if (category.name) {
             _category.withName(category.name);
         }
-        if (datastreams && datastreams.length > 0)
-            _category.addDatastreams(datastreams);
+        if (datastreams && datastreams.length > 0) _category.addDatastreams(datastreams);
         this._categories.push(_category._composeElement());
         return this;
     }
@@ -123,7 +120,7 @@ export default class Datamodels extends BaseProvision {
             throw new Error('Category ' + category + ' not exists for this datamodel. Use addCategory instead.');
         }
         if (this._categories[exists_category].datastreams) {
-            this._categories[exists_category].datastreams.push(datastream)
+            this._categories[exists_category].datastreams.push(datastream);
         } else {
             this._categories[exists_category].datastreams = [datastream];
         }
@@ -144,12 +141,12 @@ export default class Datamodels extends BaseProvision {
         }
 
         return {
-            'identifier': this._identifier,
-            'name': this._name,
-            'version': this._version,
-            'description': this._description,
-            'allowedResourceTypes': this._resourceType,
-            'categories': this._categories.length > 0 ? this._categories : undefined
+            identifier: this._identifier,
+            name: this._name,
+            version: this._version,
+            description: this._description,
+            allowedResourceTypes: this._resourceType,
+            categories: this._categories.length > 0 ? this._categories : undefined
         };
     }
 
@@ -173,6 +170,12 @@ export default class Datamodels extends BaseProvision {
 
     _isValidString(string, param_name, max_length) {
         if (typeof string !== 'string' || string.length === 0 || string.length > max_length)
-            throw new Error('Parameter ' + param_name + ' must be a string, cannot be empty and has a maximum length of ' + max_length + 'on IoTDatamodel');
+            throw new Error(
+                'Parameter ' +
+                    param_name +
+                    ' must be a string, cannot be empty and has a maximum length of ' +
+                    max_length +
+                    'on IoTDatamodel'
+            );
     }
 }

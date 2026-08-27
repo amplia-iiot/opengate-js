@@ -1,21 +1,21 @@
 'use strict';
 
 import BaseProvision from '../provision/BaseProvision';
-import checkType from '../util/formats/check_types'
+import checkType from '../util/formats/check_types';
 import ImageExecution from './ImageExecution';
 import RestRequest from './RestRequest';
+import parameterError from '../util/parameterError';
 
 /**
  * This is a base object that represents a pipeline of image executions and REST requests to run on a schedule.
  */
 export default class Pipeline extends BaseProvision {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, "/organization", undefined, ["identifier", "organization", "schedule", "pipeline"], 'scheduler');
+        super(ogapi, '/organization', undefined, ['identifier', 'organization', 'schedule', 'pipeline'], 'scheduler');
         this._ogapi = ogapi;
     }
 
@@ -39,12 +39,12 @@ export default class Pipeline extends BaseProvision {
 
     /**
      * Set the organization attribute
-     * @param {string} organization 
+     * @param {string} organization
      * @return {Pipeline}
      */
     withOrganization(organization) {
         if (typeof organization !== 'string' || organization.length > 50)
-            throw new Error({ message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_50", parameter: 'organization' });
+            throw parameterError('OGAPI_STRING_PARAMETER_MAX_LENGTH_50', { parameter: 'organization' });
         this._organization = organization;
         return this;
     }
@@ -60,7 +60,7 @@ export default class Pipeline extends BaseProvision {
         checkType._checkString(timezone, 'timezone');
 
         if (!this._schedule) {
-            this._schedule = {}
+            this._schedule = {};
         }
 
         this._schedule = {
@@ -81,7 +81,7 @@ export default class Pipeline extends BaseProvision {
         checkType._checkNumber(interval, 'interval');
 
         if (!this._schedule) {
-            this._schedule = {}
+            this._schedule = {};
         }
 
         this._schedule.interval = {
@@ -100,7 +100,7 @@ export default class Pipeline extends BaseProvision {
         checkType._checkBoolean(executeNow, 'executeNow');
 
         if (!this._schedule) {
-            this._schedule = {}
+            this._schedule = {};
         }
 
         this._schedule.executeNow = executeNow;
@@ -110,14 +110,14 @@ export default class Pipeline extends BaseProvision {
 
     /**
      * Sets the from attribute
-     * @param {string} from 
+     * @param {string} from
      * @returns {Pipeline}
      */
     withScheduleFrom(from) {
         checkType._checkISODateTime(from, 'from');
 
         if (!this._schedule) {
-            this._schedule = {}
+            this._schedule = {};
         }
 
         this._schedule.from = from;
@@ -127,21 +127,20 @@ export default class Pipeline extends BaseProvision {
 
     /**
      * Sets the to attribute
-     * @param {string} to 
+     * @param {string} to
      * @returns {Pipeline}
      */
     withScheduleTo(to) {
         checkType._checkISODateTime(to, 'to');
 
         if (!this._schedule) {
-            this._schedule = {}
+            this._schedule = {};
         }
 
         this._schedule.to = to;
 
         return this;
     }
-
 
     /**
      * Adds a rest request to the pipeline
@@ -150,10 +149,10 @@ export default class Pipeline extends BaseProvision {
      */
     addRestResquest(restRequest) {
         if (!this._pipeline) {
-            this._pipeline = []
+            this._pipeline = [];
         }
 
-        this._pipeline.push(restRequest)
+        this._pipeline.push(restRequest);
         return this;
     }
 
@@ -164,10 +163,10 @@ export default class Pipeline extends BaseProvision {
      */
     addImageExecution(imageExecution) {
         if (!this._pipeline) {
-            this._pipeline = []
+            this._pipeline = [];
         }
 
-        this._pipeline.push(imageExecution)
+        this._pipeline.push(imageExecution);
         return this;
     }
 
@@ -192,6 +191,6 @@ export default class Pipeline extends BaseProvision {
     }
 
     update() {
-        throw new Error('Update is not allowed!!!')
+        throw new Error('Update is not allowed!!!');
     }
 }

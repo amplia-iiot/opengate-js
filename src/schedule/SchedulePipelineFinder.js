@@ -1,12 +1,13 @@
 'use strict';
 
+import q from 'q';
+import HttpStatus from 'http-status-codes';
 import GenericFinder from '../GenericFinder';
 
 /**
  * This class allows making GET requests to the planner resource of the OpenGate North API.
  */
 export default class ScheduleHistoryFinder extends GenericFinder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
@@ -20,15 +21,15 @@ export default class ScheduleHistoryFinder extends GenericFinder {
      * @private
      */
     _composeUrl() {
-        return this._baseUrl + "/" + this._organization + "/history";
+        return this._baseUrl + '/' + this._organization + '/history';
     }
 
     /**
-    * Download a complete list of scheduler history for the organization. This execute a GET http method
-    * @test
-    *   ogapi.newScheduleHistoryFinder().findByOrganization(organization).then().catch();
-    * @return {Promise} 
-    */
+     * Download a complete list of scheduler history for the organization. This execute a GET http method
+     * @test
+     *   ogapi.newScheduleHistoryFinder().findByOrganization(organization).then().catch();
+     * @return {Promise}
+     */
     findByOrganization(organization) {
         this._organization = organization;
         return this._execute();
@@ -38,7 +39,7 @@ export default class ScheduleHistoryFinder extends GenericFinder {
      * Download a complete list of scheduler history for the organization. This execute a GET http method
      * @test
      *   ogapi.newScheduleHistoryFinder().findByOrganization(organization).then().catch();
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByOrganizationAndType(organization, type) {
         this._organization = organization;
@@ -46,15 +47,16 @@ export default class ScheduleHistoryFinder extends GenericFinder {
         let defered = q.defer();
         let promise = defered.promise;
         let _error_not_found = this._error_not_found;
-        this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), true)
-            .then((req) => {
+        this._api
+            .get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), false, this._getServiceBaseURL())
+            .then(req => {
                 if (req.statusCode === 204) {
                     defered.reject({
                         data: _error_not_found,
                         statusCode: HttpStatus.NOT_FOUND
                     });
                 } else {
-                    let finalData = req.body.filter((historyTmp) => historyTmp.type === type)
+                    let finalData = req.body.filter(historyTmp => historyTmp.type === type);
 
                     if (finalData.length) {
                         defered.resolve({
@@ -69,7 +71,7 @@ export default class ScheduleHistoryFinder extends GenericFinder {
                     }
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;

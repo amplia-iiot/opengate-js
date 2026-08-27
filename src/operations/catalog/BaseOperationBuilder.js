@@ -12,25 +12,23 @@ import ExecuteEveryBuilder from './period/ExecuteEveryBuilder';
 import moment from 'moment';
 import { TIME_FORMAT, DATE_FORMAT } from './../../util/DATE_FORMAT';
 
-import Ajv from 'ajv'
+import Ajv from 'ajv';
 
 const DEFAULT_DELAYED_STOP = 43200; //Valor por defecto, 43200 minutos, equivale a un mes de retraso. Conclusión a la que se ha llegado mediante inspiración divina.
-const ACK_TIMEOUT = "ackTimeout",
-    TIMEOUT = "timeout",
-    RETRIES = "retries",
-    RETRIES_DELAY = "retriesDelay";
-const RETRY_RESULT_LIST = "retryResultList";
+const ACK_TIMEOUT = 'ackTimeout',
+    TIMEOUT = 'timeout',
+    RETRIES = 'retries',
+    RETRIES_DELAY = 'retriesDelay';
+const RETRY_RESULT_LIST = 'retryResultList';
 const VALIDATE = {
     gte: function (value) {
-        if (value < this)
-            throw new Error("Value expected must be greater than <" + this + ">. Value setted <" + value + ">");
+        if (value < this) throw new Error('Value expected must be greater than <' + this + '>. Value setted <' + value + '>');
     },
     list: function (value) {
         let valueFound = this.find(function (value) {
             return value == this;
         }, value);
-        if (typeof valueFound === "undefined")
-            throw new Error("Value must be one of these: " + JSON.stringify(this));
+        if (typeof valueFound === 'undefined') throw new Error('Value must be one of these: ' + JSON.stringify(this));
     },
     editable: function (value) {
         return true;
@@ -47,10 +45,10 @@ export default class BaseOperationBuilder {
     /**
      * Constructor
      * @param {!InternalOpenGateAPI} ogapi - this is configuration about Opengate North API.
-     * @param {!object} config - this is configuration about operation. 
+     * @param {!object} config - this is configuration about operation.
      */
     constructor(ogapi, config) {
-        this._ajv = new Ajv({ useDefaults: "empty", coerceTypes: true })
+        this._ajv = new Ajv({ useDefaults: 'empty', coerceTypes: true });
         // this._requiredParameters = [];
         /**
          * Util used into BaseOperationBuilder to append entities the three different ways. By filter, By tags, By entityList
@@ -75,7 +73,7 @@ export default class BaseOperationBuilder {
             schedule: {}
         };
         //if (typeof config.parameters !== "undefined" && config.parameters.length > 0) {
-        if (typeof config.parameters !== "undefined") {
+        if (typeof config.parameters !== 'undefined') {
             /**
              * This class contains all operation parameters builders
              */
@@ -90,7 +88,6 @@ export default class BaseOperationBuilder {
         }
     }
 
-
     /**
      * Set notes to operation
      * @example
@@ -104,8 +101,7 @@ export default class BaseOperationBuilder {
             delete this._build.userNotes;
             return this;
         }
-        if (typeof notes !== "string")
-            throw new Error('Parameter notes must be a string');
+        if (typeof notes !== 'string') throw new Error('Parameter notes must be a string');
         this._build.userNotes = notes;
         return this;
     }
@@ -124,8 +120,7 @@ export default class BaseOperationBuilder {
             return this;
         }
 
-        if (typeof url !== "string")
-            throw new Error('Parameter url must be a string');
+        if (typeof url !== 'string') throw new Error('Parameter url must be a string');
         this._build.callback = url;
         this._build.notify = true;
         return this;
@@ -135,24 +130,23 @@ export default class BaseOperationBuilder {
      * Set a scattering max spread to operation.
      * @example
      *  ogapi.operations.builderFactory.newXXXBuilder().withScatteringMaxSpread(20)
-     * @param {number} percentage - if null then parameter will be removed into builder         
+     * @param {number} percentage - if null then parameter will be removed into builder  
      * @throws {Error} throw error when percentage is not typeof number
      * @throws {Error} throw error when percentage is greater than 100 and less than 0  
      * @return {BaseOperationBuilder}
      */
     withScatteringMaxSpread(percentage) {
-        if (percentage === null && typeof this._build.schedule.scattering !== "undefined") {
+        if (percentage === null && typeof this._build.schedule.scattering !== 'undefined') {
             delete this._build.schedule.scattering.maxSpread;
             return this;
         }
-        if (typeof percentage !== "number") {
-            throw new Error("Parameter percentage must be a number");
+        if (typeof percentage !== 'number') {
+            throw new Error('Parameter percentage must be a number');
         }
         if (percentage < 0 || percentage > 100) {
-            throw new Error("The value of percentage parameter must be between 0-100");
+            throw new Error('The value of percentage parameter must be between 0-100');
         }
-        if (typeof this._build.schedule.scattering === "undefined")
-            this._build.schedule.scattering = {};
+        if (typeof this._build.schedule.scattering === 'undefined') this._build.schedule.scattering = {};
         this._build.schedule.scattering.maxSpread = percentage;
         return this;
     }
@@ -161,34 +155,33 @@ export default class BaseOperationBuilder {
      * Set a scattering strategy to operation.
      * @example
      *  ogapi.operations.builderFactory.newXXXBuilder().withScatteringStrategy(20,4)
-     * @param {number} factor - if null then parameter will be removed into builder         
-     * @param {number} warningMaxRate           
+     * @param {number} factor - if null then parameter will be removed into builder  
+     * @param {number} warningMaxRate  
      * @throws {Error} throw error when factor is not typeof number
      * @throws {Error} throw error when factor is greater than 100 and less than 0  
      * @return {BaseOperationBuilder}
      */
     withScatteringStrategy(factor, warningMaxRate) {
-        if (factor === null && typeof this._build.schedule.scattering !== "undefined") {
+        if (factor === null && typeof this._build.schedule.scattering !== 'undefined') {
             delete this._build.schedule.scattering.strategy;
             return this;
         }
 
-        if (typeof factor !== "number") {
-            throw new Error("Parameter factor must be a number");
+        if (typeof factor !== 'number') {
+            throw new Error('Parameter factor must be a number');
         }
         if (factor < 0 || factor > 100) {
-            throw new Error("The value of factor parameter must be between 0-100");
+            throw new Error('The value of factor parameter must be between 0-100');
         }
 
-        if (typeof this._build.schedule.scattering === "undefined")
-            this._build.schedule.scattering = {};
+        if (typeof this._build.schedule.scattering === 'undefined') this._build.schedule.scattering = {};
 
         this._build.schedule.scattering.strategy = {
-            field: "subscription.collected.cellInfo",
+            field: 'subscription.collected.cellInfo',
             factor: factor
         };
 
-        if (typeof warningMaxRate === "number") {
+        if (typeof warningMaxRate === 'number') {
             this._build.schedule.scattering.strategy.warningMaxRate = warningMaxRate;
         }
 
@@ -201,7 +194,7 @@ export default class BaseOperationBuilder {
      */
     executeImmediately() {
         this._build.active = true;
-        if (typeof this._build.schedule !== "undefined") {
+        if (typeof this._build.schedule !== 'undefined') {
             delete this._build.schedule.start;
         }
         delete this._build.task;
@@ -213,7 +206,7 @@ export default class BaseOperationBuilder {
      * @return {BaseOperationBuilder}
      */
     executeIDLE() {
-        throw new Error("Not implemented yet");
+        throw new Error('Not implemented yet');
     }
 
     /**
@@ -221,14 +214,14 @@ export default class BaseOperationBuilder {
      * @param {!number} minutes
      * @param {boolean} active - If active is false, an operation is created in paused
      * @throws {Error} throw error when minutes is not typeof number
-     * @return {BaseOperationBuilder|CronExpressionBuilder} 
+     * @return {BaseOperationBuilder|CronExpressionBuilder}
      */
     executeLater(minutes, active = true) {
-        if (typeof minutes !== "number") {
-            throw new Error("Parameter minutes must be typeof number");
+        if (typeof minutes !== 'number') {
+            throw new Error('Parameter minutes must be typeof number');
         }
         this._build.active = active;
-        if (typeof this._build.schedule === "undefined") {
+        if (typeof this._build.schedule === 'undefined') {
             this._build.schedule = {};
         }
         this._build.schedule.start = {
@@ -243,14 +236,14 @@ export default class BaseOperationBuilder {
      * @param {!Date} date
      * @param {boolean} active - If active is false, an operation is created in paused
      * @throws {Error} throw error when minutes is not typeof number
-     * @return {BaseOperationBuilder|CronExpressionBuilder} 
+     * @return {BaseOperationBuilder|CronExpressionBuilder}
      */
     executeAtDate(date, active = true) {
-        if (typeof date === "undefined" || date.constructor !== Date) {
-            throw new Error("Parameter date must be typeof Date");
+        if (typeof date === 'undefined' || date.constructor !== Date) {
+            throw new Error('Parameter date must be typeof Date');
         }
         this._build.active = active;
-        if (typeof this._build.schedule === "undefined") {
+        if (typeof this._build.schedule === 'undefined') {
             this._build.schedule = {};
         }
         this._build.schedule.start = {
@@ -261,7 +254,7 @@ export default class BaseOperationBuilder {
     }
 
     /**
-     * The operation will execute with a period that you must define with ExecuteEveryBuilder 
+     * The operation will execute with a period that you must define with ExecuteEveryBuilder
      * @param {!Date} date - Date when operation will be executed
      * @param {string} name - Name associated to periodicity
      * @param {number or Date} end - When periodicity ends. By repetitions or by date
@@ -271,8 +264,8 @@ export default class BaseOperationBuilder {
      * @return {ExecuteEveryBuilder}
      */
     executeEvery(date, name, end, active = true, description) {
-        if (typeof date === "undefined" || date.constructor !== Date) {
-            throw new Error("Parameter date must be typeof Date");
+        if (typeof date === 'undefined' || date.constructor !== Date) {
+            throw new Error('Parameter date must be typeof Date');
         }
         let args = Array.prototype.slice.call(arguments);
         let _name = this._getName(args.slice(1, 3));
@@ -282,18 +275,18 @@ export default class BaseOperationBuilder {
     }
 
     /**
-     * The operation will execute with a period that you must define with ExecuteEachBuilder 
+     * The operation will execute with a period that you must define with ExecuteEachBuilder
      * @param {!Date} date - Date when operation will be executed
      * @param {string} name - Name associated to periodicity
-     * @param {number or Date} end - When periodicity ends. By repetitions or by date   
+     * @param {number or Date} end - When periodicity ends. By repetitions or by date  
      * @param {boolean} active - If active is false, an operation is created in paused
      * @param {string} description - Description associated to periodicity
      * @throws {Error} throw error when date is not typeof Date
      * @return {ExecuteEachBuilder}
      */
     executeEach(date, name, end, active = true, description) {
-        if (typeof date === "undefined" || date.constructor !== Date) {
-            throw new Error("Parameter date must be typeof Date");
+        if (typeof date === 'undefined' || date.constructor !== Date) {
+            throw new Error('Parameter date must be typeof Date');
         }
         let args = Array.prototype.slice.call(arguments);
         let _name = this._getName(args.slice(1, 3));
@@ -304,16 +297,16 @@ export default class BaseOperationBuilder {
 
     _getName(args) {
         for (let i = 0; i < args.length; i++) {
-            if (typeof args[i] === "string") {
+            if (typeof args[i] === 'string') {
                 return args[i];
             }
         }
-        return this._build.name + " " + this._ogapi.Napi._options.apiKey;
+        return this._build.name + ' ' + this._ogapi.Napi._options.apiKey;
     }
 
     _getEnd(args) {
         for (let i = 0; i < args.length; i++) {
-            if (typeof args[i] === "number" || (args[i] && args[i].constructor === Date)) {
+            if (typeof args[i] === 'number' || (args[i] && args[i].constructor === Date)) {
                 return args[i];
             }
         }
@@ -326,16 +319,16 @@ export default class BaseOperationBuilder {
      *  ogapi.operations.builderFactory.newXXXBuilder().withJobTimeout(180)
      * @param {!number} milliseconds - if null then parameter will be removed into builder
      * @param {string} format - Can be 'milliseconds' || 'ms' ,'seconds' || 's', 'mintutes' || 'm', 'hours' || 'h', 'days' || 'd', 'weeks' || 'w', 'months' || 'M'
-     * @throws {Error} throw error when milliseconds is not typeof number    
+     * @throws {Error} throw error when milliseconds is not typeof number  
      * @return {BaseOperationBuilder}
      */
-    withJobTimeout(milliseconds, format = "milliseconds") {
+    withJobTimeout(milliseconds, format = 'milliseconds') {
         if (milliseconds === null) {
             delete this._build.schedule.stop;
             return this;
         }
-        if (typeof milliseconds !== "number") {
-            throw new Error("Parameter milliseconds must be a number");
+        if (typeof milliseconds !== 'number') {
+            throw new Error('Parameter milliseconds must be a number');
         }
         this._build.schedule.stop = {
             delayed: moment.duration(milliseconds, format).asMilliseconds()
@@ -347,12 +340,12 @@ export default class BaseOperationBuilder {
      * Set ackTimeout to operation.
      * @example
      *  ogapi.operations.builderFactory.newXXXBuilder().withAckTimeout(11)
-     * @param {!number} milliseconds    
+     * @param {!number} milliseconds  
      * @param {string} format - Can be 'milliseconds' || 'ms' ,'seconds' || 's', 'minutes' || 'm', 'hours' || 'h', 'days' || 'd', 'weeks' || 'w', 'months' || 'M'
-     * @throws {Error} throw error when milliseconds is not typeof number   
+     * @throws {Error} throw error when milliseconds is not typeof number  
      * @return {BaseOperationBuilder}
      */
-    withAckTimeout(milliseconds, format = "milliseconds") {
+    withAckTimeout(milliseconds, format = 'milliseconds') {
         this._addSpecificParameter(moment.duration(milliseconds, format).asMilliseconds(), ACK_TIMEOUT);
         return this;
     }
@@ -361,12 +354,12 @@ export default class BaseOperationBuilder {
      * Set timeout to operation.
      * @example
      *  ogapi.operations.builderFactory.newXXXBuilder().withTimeout(11)
-     * @param {!number} milliseconds    
+     * @param {!number} milliseconds  
      * @param {string} format - Can be 'milliseconds' || 'ms' ,'seconds' || 's', 'minutes' || 'm', 'hours' || 'h', 'days' || 'd', 'weeks' || 'w', 'months' || 'M'
-     * @throws {Error} throw error when milliseconds is not typeof number   
+     * @throws {Error} throw error when milliseconds is not typeof number  
      * @return {BaseOperationBuilder}
      */
-    withTimeout(milliseconds, format = "milliseconds") {
+    withTimeout(milliseconds, format = 'milliseconds') {
         this._addSpecificParameter(moment.duration(milliseconds, format).asMilliseconds(), TIMEOUT);
         return this;
     }
@@ -375,12 +368,12 @@ export default class BaseOperationBuilder {
      * Set delay between operation retries.
      * @example
      *  ogapi.operations.builderFactory.newXXXBuilder().withRetriesDelay(11)
-     * @param {!number} milliseconds    
+     * @param {!number} milliseconds  
      * @param {string} format - Can be 'milliseconds' || 'ms' ,'seconds' || 's', 'minutes' || 'm', 'hours' || 'h', 'days' || 'd', 'weeks' || 'w', 'months' || 'M'
-     * @throws {Error} throw error when milliseconds is not typeof number   
+     * @throws {Error} throw error when milliseconds is not typeof number  
      * @return {BaseOperationBuilder}
      */
-    withRetriesDelay(milliseconds, format = "milliseconds") {
+    withRetriesDelay(milliseconds, format = 'milliseconds') {
         this._addSpecificParameter(moment.duration(milliseconds, format).asMilliseconds(), RETRIES_DELAY);
         return this;
     }
@@ -389,8 +382,8 @@ export default class BaseOperationBuilder {
      * Set operation retries
      * @example
      *  ogapi.operations.builderFactory.newXXXBuilder().withOperationRetries(11)
-     * @param {Array} operationRetries    
-     * @throws {Error} throw error when operationRetries is not typeof string   
+     * @param {Array} operationRetries  
+     * @throws {Error} throw error when operationRetries is not typeof string  
      * @return {BaseOperationBuilder}
      */
     withOperationRetries(operationRetries) {
@@ -402,7 +395,7 @@ export default class BaseOperationBuilder {
      * Set number of retries that operation will have.
      * @example
      *  ogapi.operations.builderFactory.newXXXBuilder().withRetries(2)
-     * @param {!number} retriesNumber   
+     * @param {!number} retriesNumber  
      * @throws {Error} throw error when retriesNumber is not typeof number  
      * @return {BaseOperationBuilder}
      */
@@ -415,7 +408,7 @@ export default class BaseOperationBuilder {
      * Set parameters of the operation
      * @example
      *  ogapi.operations.builderFactory.newXXXBuilder().withParameters({ param1: 'value1', param2: 'value2'})
-     * @param {!object} parameters   
+     * @param {!object} parameters  
      * @throws {Error} throw error when parameters is not typeof object  
      * @return {BaseOperationBuilder}
      */
@@ -425,20 +418,20 @@ export default class BaseOperationBuilder {
             this._checkMandatoryParameters();
             return this;
         } else {
-            throw new Error('This operation does not support parameters')
+            throw new Error('This operation does not support parameters');
         }
     }
 
     withParameter(parameter, value) {
         if (this._config.parameters) {
             if (!this._build.parameters) {
-                this._build.parameters = {}
+                this._build.parameters = {};
             }
 
             this._build.parameters[parameter] = value;
             return this;
         } else {
-            throw new Error('This operation does not support parameters')
+            throw new Error('This operation does not support parameters');
         }
     }
 
@@ -447,7 +440,7 @@ export default class BaseOperationBuilder {
      * @example
      *  ogapi.operations.builderFactory.newXXXBuilder().build()
      * @throws {Error} Throw error if there are required parameters who have not been set
-     * @return {Operation} 
+     * @return {Operation}
      */
     build() {
         let resource;
@@ -459,54 +452,60 @@ export default class BaseOperationBuilder {
         } catch (err) {
             errors.push(err.message);
         }
-        if (typeof this._build.task === "undefined") {
-            if (typeof this._build.schedule.start === "undefined" && typeof this._build.active === "undefined") {
-                console.info("Not specified the way to execute [executeImmediately, executeIDLE, executeLater]. By default executeImmediately will be the way");
+        if (typeof this._build.task === 'undefined') {
+            if (typeof this._build.schedule.start === 'undefined' && typeof this._build.active === 'undefined') {
+                console.info(
+                    'Not specified the way to execute [executeImmediately, executeIDLE, executeLater]. By default executeImmediately will be the way'
+                );
                 this.executeImmediately();
             }
             /*if (!this._build.active) {
                 errors.push("INERR: OgAPI will not allowed to execute IDLE because there is not implemented the way to update once created ");
             }*/
         }
-        if (typeof this._build.target === "undefined") {
+        if (typeof this._build.target === 'undefined') {
             if (this._build.active) {
-                errors.push("Must be entities appended  if you want execute immediately. You must invoke appendEntitiesBy.list or appendEntitiesBy.tags or appendEntitiesBy.filter");
+                errors.push(
+                    'Must be entities appended  if you want execute immediately. You must invoke appendEntitiesBy.list or appendEntitiesBy.tags or appendEntitiesBy.filter'
+                );
             }
         }
-        if (typeof this._build.target !== "undefined" && typeof this._build.target.filter !== "undefined") {
-            if (typeof this._resourceTypeWhenFilter !== "string") {
-                errors.push("Must be selected the entity type allowed when filter is the way to append entities. Allowed entity types <'" +
-                    JSON.stringify(this._config.applicableTo) + "'>");
+        if (typeof this._build.target !== 'undefined' && typeof this._build.target.filter !== 'undefined') {
+            if (typeof this._resourceTypeWhenFilter !== 'string') {
+                errors.push(
+                    "Must be selected the entity type allowed when filter is the way to append entities. Allowed entity types <'" +
+                        JSON.stringify(this._config.applicableTo) +
+                        "'>"
+                );
             }
         }
 
-        if (typeof this._build.task !== "undefined") {
+        if (typeof this._build.task !== 'undefined') {
             let task = this._build.task;
             // CHECK period and job timeout
             let jobTimeout = this._build.schedule.stop;
-            if (typeof task.repeating.period !== "undefined") {
+            if (typeof task.repeating.period !== 'undefined') {
                 let maxJobTimeout;
                 switch (task.repeating.period.unit) {
-                    case "DAYS":
+                    case 'DAYS':
                         maxJobTimeout = moment.duration(task.repeating.period.each, 'days').asMilliseconds();
                         break;
-                    case "HOURS":
+                    case 'HOURS':
                         maxJobTimeout = moment.duration(task.repeating.period.each, 'hours').asMilliseconds();
                         break;
-                    case "MINUTES":
+                    case 'MINUTES':
                         maxJobTimeout = moment.duration(task.repeating.period.each, 'minutes').asMilliseconds();
                         break;
                 }
-                if (typeof jobTimeout !== "undefined" && typeof jobTimeout.delayed === "number") {
+                if (typeof jobTimeout !== 'undefined' && typeof jobTimeout.delayed === 'number') {
                     if (jobTimeout.delayed >= maxJobTimeout) {
-                        errors.push("You can not execute an operation with a job timeout greater than the repetition period.");
+                        errors.push('You can not execute an operation with a job timeout greater than the repetition period.');
                     }
                 } else {
                     jobTimeout = moment.duration(maxJobTimeout, 'milliseconds').asSeconds() - 1;
-                    console.info("Not specified the job timeout. By default, timeout will be " + jobTimeout + " seconds");
+                    console.info('Not specified the job timeout. By default, timeout will be ' + jobTimeout + ' seconds');
                     this.withJobTimeout(jobTimeout, 'seconds');
                 }
-
             }
         }
 
@@ -515,12 +514,12 @@ export default class BaseOperationBuilder {
             throw errors;
         }
 
-        if (typeof this._build.schedule.stop === "undefined") {
-            console.info("Not specified the job timeout. By default, timeout will be 30 days");
+        if (typeof this._build.schedule.stop === 'undefined') {
+            console.info('Not specified the job timeout. By default, timeout will be 30 days');
             this.withJobTimeout(DEFAULT_DELAYED_STOP);
         }
 
-        if (typeof this._build.task !== "undefined") {
+        if (typeof this._build.task !== 'undefined') {
             resource = this._resourcesAvailables.task;
             postObj = this._convertToTask(this._build);
         } else {
@@ -528,15 +527,14 @@ export default class BaseOperationBuilder {
             postObj = this._convertToJob(this._build);
         }
 
-        if (typeof this._build.target !== "undefined" && typeof this._build.target.filter !== "undefined") {
+        if (typeof this._build.target !== 'undefined' && typeof this._build.target.filter !== 'undefined') {
             resource = resource + '?resourceType=' + this._resourceTypeWhenFilter;
         }
 
         let op = new Operation(this._ogapi, resource, postObj);
-        // Se deshacen todos los por defectos aplicados al objeto builder, para no condicionar el siguiente .build 
+        // Se deshacen todos los por defectos aplicados al objeto builder, para no condicionar el siguiente .build
         this._build = _build;
         return op;
-
     }
 
     _convertToTask(_build) {
@@ -559,8 +557,8 @@ export default class BaseOperationBuilder {
                 }
             }
         };
-        if (typeof task.stop !== "undefined") {
-            if (typeof task.stop.date !== "undefined") {
+        if (typeof task.stop !== 'undefined') {
+            if (typeof task.stop.date !== 'undefined') {
                 taskObj.task.schedule.stop = {
                     date: moment(task.stop.date).format(DATE_FORMAT)
                 };
@@ -569,11 +567,13 @@ export default class BaseOperationBuilder {
             }
         }
         if (moment.max(now, start) == now) {
-            if (typeof task.stop !== "undefined" && typeof task.stop.date !== "undefined") {
+            if (typeof task.stop !== 'undefined' && typeof task.stop.date !== 'undefined') {
                 let stopDate = moment(task.stop.date);
                 if (moment.max(now, stopDate) == now) {
-                    throw new Error("Can not create operation object because stop operation period is earlier than current date. " +
-                        "It happened because you passed a lot of time between configuration of an operation and create the operation.");
+                    throw new Error(
+                        'Can not create operation object because stop operation period is earlier than current date. ' +
+                            'It happened because you passed a lot of time between configuration of an operation and create the operation.'
+                    );
                 }
             }
             delete taskObj.task.schedule.start;
@@ -597,13 +597,12 @@ export default class BaseOperationBuilder {
     }
 
     _checkParam(value, configParam) {
-        if (configParam.type === "number") {
-            if (typeof value !== "number")
-                throw new Error(configParam.name + ": Expected number but found " + typeof value);
+        if (configParam.type === 'number') {
+            if (typeof value !== 'number') throw new Error(configParam.name + ': Expected number but found ' + typeof value);
         }
 
         for (let attr in configParam.attributes) {
-            if (typeof VALIDATE[attr] === "function") {
+            if (typeof VALIDATE[attr] === 'function') {
                 VALIDATE[attr].call(configParam.attributes[attr], value);
             }
         }
@@ -611,10 +610,10 @@ export default class BaseOperationBuilder {
 
     _checkMandatoryParameters() {
         if (this._config.parameters && this._config.parameters.schema) {
-            const validate = this._ajv.compile(this._config.parameters.schema)
-            const valid = validate(this._build.parameters)
+            const validate = this._ajv.compile(this._config.parameters.schema);
+            const valid = validate(this._build.parameters);
             if (!valid) {
-                throw new Error(validate.errors)
+                throw new Error(validate.errors);
             }
         }
     }

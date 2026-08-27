@@ -1,4 +1,4 @@
-import RuleConfigurations from './RuleConfigurations'
+import RuleConfigurations from './RuleConfigurations';
 
 /**
  * Defines the builder to configure a _RuleNotification
@@ -12,7 +12,7 @@ export default class _RuleNotification {
      */
     constructor(parent, notificationData) {
         if (parent.constructor !== RuleConfigurations) {
-            throw new Error("Parent must be a RuleConfigurations");
+            throw new Error('Parent must be a RuleConfigurations');
         }
 
         this._ruleConfiguration = parent;
@@ -26,8 +26,8 @@ export default class _RuleNotification {
      * @throws {Error}
      */
     setEnabled(enabled) {
-        if (typeof enabled !== "boolean") {
-            throw new Error("Bearer enabled must be true or false");
+        if (typeof enabled !== 'boolean') {
+            throw new Error('Bearer enabled must be true or false');
         }
 
         this._notification.enabled = enabled;
@@ -53,9 +53,9 @@ export default class _RuleNotification {
                 }
             }
 
-            console.warn("Bearer " + bearerName + " not exists for notification " + this._notification.name);
+            console.warn('Bearer ' + bearerName + ' not exists for notification ' + this._notification.name);
         } else {
-            console.warn("There is no bearers for notification " + this._notification.name);
+            console.warn('There is no bearers for notification ' + this._notification.name);
         }
 
         return _this;
@@ -79,9 +79,9 @@ export default class _RuleNotification {
                 }
             }
 
-            console.warn("Bearer " + bearerName + " not exists for notification " + this._notification.name);
+            console.warn('Bearer ' + bearerName + ' not exists for notification ' + this._notification.name);
         } else {
-            console.warn("There is no bearers for notification " + this._notification.name);
+            console.warn('There is no bearers for notification ' + this._notification.name);
         }
 
         return _this;
@@ -104,9 +104,9 @@ export default class _RuleNotification {
                 }
             }
 
-            console.warn("Bearer " + bearerName + " not exists for notification " + this._notification.name);
+            console.warn('Bearer ' + bearerName + ' not exists for notification ' + this._notification.name);
         } else {
-            console.warn("There is no bearers for notification " + this._notification.name);
+            console.warn('There is no bearers for notification ' + this._notification.name);
         }
 
         return _this;

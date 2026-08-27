@@ -1,0 +1,74 @@
+name: CI
+
+on:
+  push:
+    branches: [master, develop]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Node ${{ matrix.node }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ["20", "22", "24"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: yarn
+
+      # Honours the packageManager field, so CI resolves the same yarn as a developer's machine.
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Install
+        run: yarn install --frozen-lockfile
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Unit tests
+        run: yarn test
+
+      # dist/ is no longer committed, so nothing else would notice a build that stopped working.
+      - name: Build
+        run: yarn build
+
+      # The API model and the .d.ts files are generated from the JSDoc in src/. If a source change
+      # breaks that generation, the failure belongs here and not in the release job.
+      - name: Build the API model and the type declarations
+        run: yarn apidoc
+
+  coverage:
+    name: Coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: yarn
+
+      - run: corepack enable
+      - run: yarn install --frozen-lockfile
+      - run: yarn test:coverage
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage/
+          retention-days: 14

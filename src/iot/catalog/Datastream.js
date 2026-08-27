@@ -8,7 +8,6 @@ import Ajv from 'ajv';
  * Defines the builder used to configure a datastream of an IoT datamodel.
  */
 export default class Datastream {
-
     constructor() {}
 
     /**
@@ -39,8 +38,7 @@ export default class Datastream {
      * @return {Datastream}
      */
     withDescription(description) {
-        if (description)
-            this._isValidString(description, 'description', 500);
+        if (description) this._isValidString(description, 'description', 500);
         this._description = description;
         return this;
     }
@@ -81,7 +79,7 @@ export default class Datastream {
      * @return {Datastream}
      */
     withSchema(schema) {
-        if (!schema || (typeof schema !== 'object')) {
+        if (!schema || typeof schema !== 'object') {
             throw new Error('Schema must be an object or a string on Datastream');
         }
 
@@ -141,7 +139,7 @@ export default class Datastream {
      * @return {Datastream}
      */
     withAccess(access) {
-        this._isValidString(access, 'access', 50)
+        this._isValidString(access, 'access', 50);
         if (!access) {
             throw new Error('Access must be a valid string');
         }
@@ -151,7 +149,7 @@ export default class Datastream {
 
     /**
      * Build a Datastream json object
-     * 
+     *
      * @example
      * ogapi.DatastreamsBuilder().build()
      * @throws {Error} Throw error if there is not id, name, unit and period
@@ -176,7 +174,7 @@ export default class Datastream {
         }
 
         try {
-            var ajv = new Ajv()
+            var ajv = new Ajv();
             ajv.compile(this._schema);
         } catch (errValidation) {
             throw new Error('Schema not valid: ' + errValidation);
@@ -199,6 +197,12 @@ export default class Datastream {
 
     _isValidString(string, param_name, max_length) {
         if (typeof string !== 'string' || string.length === 0 || string.length > max_length)
-            throw new Error('Parameter ' + param_name + ' must be a string, cannot be empty and has a maximum length of ' + max_length + ' on Datastream');
+            throw new Error(
+                'Parameter ' +
+                    param_name +
+                    ' must be a string, cannot be empty and has a maximum length of ' +
+                    max_length +
+                    ' on Datastream'
+            );
     }
 }

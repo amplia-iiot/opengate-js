@@ -1,25 +1,24 @@
 'use strict';
 
 import BaseProvision from '../provision/BaseProvision';
-import checkType from '../util/formats/check_types'
+import checkType from '../util/formats/check_types';
 
 /**
  * This is the base object for everything you can do with a notebook scheduler.
  */
 export default class NotebookScheduler extends BaseProvision {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, "/schedulers", undefined, ["notebookId"], 'planner');
+        super(ogapi, '/schedulers', undefined, ['notebookId'], 'planner');
         this._ogapi = ogapi;
     }
 
     _buildURL() {
         checkType._checkString(this._identifier, 'identifier');
-        return "schedulers/" + this._identifier;
+        return 'schedulers/' + this._identifier;
     }
 
     /**
@@ -101,6 +100,6 @@ export default class NotebookScheduler extends BaseProvision {
     }
 
     update() {
-        throw new Error('Update is not allowed!!!')
+        throw new Error('Update is not allowed!!!');
     }
 }

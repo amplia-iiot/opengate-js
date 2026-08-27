@@ -7,18 +7,14 @@ import Usage from './Usage';
 import Storage from './Storage';
 import PowerSupply from './PowerSupply';
 import CommsModuleMessage from './CommsModuleMessage';
-import {
-    TEMPERATURE_STATUS_ENUM
-} from './enum/TEMPERATURE_STATUS_ENUM';
-import {
-    LEVEL_TREND_ENUM
-} from './enum/LEVEL_TREND_ENUM';
+import { TEMPERATURE_STATUS_ENUM } from './enum/TEMPERATURE_STATUS_ENUM';
+import { LEVEL_TREND_ENUM } from './enum/LEVEL_TREND_ENUM';
+import parameterError from '../../../util/parameterError';
 
 /**
  * This is a base object that allows the user to create an Event.
  */
 export default class Event {
-
     constructor(ogapi) {
         this._ogapi = ogapi;
         this._event_id = undefined;
@@ -40,20 +36,13 @@ export default class Event {
         this._communicationsModulesList = [];
     }
 
-
-
-
     /**
      * Set the id attribute
      * @param {string} id - optionals field
      * @return {Event}
      */
     withEventId(id) {
-        if (typeof id !== 'string')
-            throw new Error({
-                message: "OGAPI_STRING_PARAMETER",
-                parameter: 'EventId'
-            });
+        if (typeof id !== 'string') throw parameterError('OGAPI_STRING_PARAMETER', { parameter: 'EventId' });
         this._event_id = id;
         return this;
     }
@@ -64,8 +53,7 @@ export default class Event {
      * @return {Event}
      */
     withDeviceId(deviceId) {
-        if (typeof deviceId !== 'string')
-            throw new Error('deviceId cannot be empty');
+        if (typeof deviceId !== 'string') throw new Error('deviceId cannot be empty');
         this._deviceId = deviceId;
         return this;
     }
@@ -76,8 +64,7 @@ export default class Event {
      * @return {Event}
      */
     withPath(path) {
-        if (path.constructor !== Array || path.length === 0)
-            throw new Error('Parameter path must be an Array and cannot be empty');
+        if (path.constructor !== Array || path.length === 0) throw new Error('Parameter path must be an Array and cannot be empty');
         this._path = path;
         return this;
     }
@@ -88,8 +75,7 @@ export default class Event {
      * @return {Event}
      */
     withEventName(name) {
-        if (typeof name !== 'string' || name.length === 0)
-            throw new Error('Parameter name must be String type and cannot be empty');
+        if (typeof name !== 'string' || name.length === 0) throw new Error('Parameter name must be String type and cannot be empty');
         this._name = name;
         return this;
     }
@@ -121,26 +107,26 @@ export default class Event {
 
     /**
      * Set the operationalStatus attribute
-     * @param {string} operationalStatus 
+     * @param {string} operationalStatus
      * @return {Event}
      */
     withOperationalStatus(operationalStatus) {
+        let operationalStatusBuilder = this._ogapi
+            .operationalStatusSearchBuilder()
+            .withEntityType('ASSET')
+            .withId(operationalStatus)
+            .build();
 
-        let operationalStatusBuilder = this._ogapi.operationalStatusSearchBuilder()
-            .withEntityType("ASSET").withId(operationalStatus).build();
-
-        operationalStatusBuilder.execute().then(
-            function (res) {
-                if (res.statusCode === 204) {
-                    throw new Error("Operational Status not found");
-                }
-            });
+        operationalStatusBuilder.execute().then(function (res) {
+            if (res.statusCode === 204) {
+                throw new Error('Operational Status not found');
+            }
+        });
 
         this._operationalStatus = operationalStatus;
 
         return this;
     }
-
 
     /**
      * Set the software attribute
@@ -163,18 +149,16 @@ export default class Event {
         return this;
     }
 
-
     /**
      * Set the date attribute
      * @param {string} date - optionals field
      * @return {Event}
      */
     withDateLocation(date) {
-        if (typeof date !== 'string' || date.length === 0)
-            throw new Error('Parameter date must be String type and cannot be empty');
+        if (typeof date !== 'string' || date.length === 0) throw new Error('Parameter date must be String type and cannot be empty');
         if (this._location === undefined) {
             this._location = {
-                "coordinates": {}
+                coordinates: {}
             };
         }
         this._location.timestamp = date;
@@ -191,7 +175,7 @@ export default class Event {
             throw new Error('Parameter latitude must be number type and cannot be empty');
         if (this._location === undefined) {
             this._location = {
-                "coordinates": {}
+                coordinates: {}
             };
         }
         this._location.coordinates.latitude = latitude;
@@ -208,13 +192,12 @@ export default class Event {
             throw new Error('Parameter longitude must be number type and cannot be empty');
         if (this._location === undefined) {
             this._location = {
-                "coordinates": {}
+                coordinates: {}
             };
         }
         this._location.coordinates.longitude = longitude;
         return this;
     }
-
 
     /**
      * Set the currentTemperature attribute
@@ -333,7 +316,6 @@ export default class Event {
         return this;
     }
 
-
     /**
      * Set the Ram attribute
      * @return {Event}
@@ -345,8 +327,6 @@ export default class Event {
         this._ram = ram;
         return this;
     }
-
-
 
     /**
      * Set the volatilStorage attribute
@@ -394,7 +374,6 @@ export default class Event {
         }
         this._communicationsModulesList.push(communicationsModules.composeElement());
         return this;
-
     }
 
     /**
@@ -403,8 +382,7 @@ export default class Event {
      * @return {Event}
      */
     withUpTime(upTime) {
-        if (typeof upTime !== 'number' || upTime.length === 0)
-            throw new Error('Parameter upTime must be number type and cannot be empty');
+        if (typeof upTime !== 'number' || upTime.length === 0) throw new Error('Parameter upTime must be number type and cannot be empty');
         this._upTime = upTime;
         return this;
     }
@@ -415,7 +393,7 @@ export default class Event {
             return value == this;
         }, value);
 
-        if (typeof found === "undefined") {
+        if (typeof found === 'undefined') {
             not_found.push(value);
         }
         if (not_found.length !== 0) {
@@ -424,18 +402,15 @@ export default class Event {
         return value;
     }
 
-
-
     composeElement() {
-
         var event = {
-            'id': this._event_id,
-            'device': {
-                'id': this._deviceId,
-                'path': this._path,
-                'name': this._name,
-                'description': this._description,
-                'operationalStatus': this._operationalStatus
+            id: this._event_id,
+            device: {
+                id: this._deviceId,
+                path: this._path,
+                name: this._name,
+                description: this._description,
+                operationalStatus: this._operationalStatus
             }
         };
         if (this._hardware !== undefined) {
@@ -474,8 +449,4 @@ export default class Event {
 
         return event;
     }
-
-
-
-
 }

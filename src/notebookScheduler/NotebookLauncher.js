@@ -2,24 +2,23 @@
 
 import q from 'q';
 import BaseProvision from '../provision/BaseProvision';
-import checkType from '../util/formats/check_types'
+import checkType from '../util/formats/check_types';
 
 /**
  * This is the base object for everything you can do with a notebook launcher.
  */
 export default class NotebookLauncher extends BaseProvision {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, "/notebooks", undefined, ["identifier"], 'planner');
+        super(ogapi, '/notebooks', undefined, ['identifier'], 'planner');
         this._ogapi = ogapi;
     }
 
     _buildURL() {
-        var url = "notebooks/" + this._identifier + '/execute';
+        var url = 'notebooks/' + this._identifier + '/execute';
         return url;
     }
 
@@ -77,28 +76,35 @@ export default class NotebookLauncher extends BaseProvision {
         var defered = q.defer();
         var promise = defered.promise;
 
-        this._ogapi.Napi.post(this._buildURL(), this._composeElement(), this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
-            .then((res) => {
+        this._ogapi.Napi.post(
+            this._buildURL(),
+            this._composeElement(),
+            this._timeout,
+            this._getExtraHeaders(),
+            this._getUrlParameters(),
+            this._getServiceBaseURL()
+        )
+            .then(res => {
                 defered.resolve({
                     statusCode: res.statusCode,
                     body: res.body
                 });
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;
     }
 
     create() {
-        throw new Error('Update is not allowed!!!')
+        throw new Error('Update is not allowed!!!');
     }
 
     update() {
-        throw new Error('Update is not allowed!!!')
+        throw new Error('Update is not allowed!!!');
     }
 
     delete() {
-        throw new Error('Delete is not allowed!!!')
+        throw new Error('Delete is not allowed!!!');
     }
 }

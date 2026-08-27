@@ -5,7 +5,7 @@ Then(/^I create a "([^"]*)" from current "([^"]*)" with next params:$/, function
     var _this = this;
     _this.error = undefined;
 
-    var model = "create";
+    var model = 'create';
     var dependantObject;
 
     try {

@@ -7,13 +7,12 @@ import q from 'q';
  * This is a base object that contains all you can do about OperationType.
  */
 export default class OperationType extends BaseProvision {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi, organization, nameForUpdate, operationTypeObj) {
-        super(ogapi, "/organizations");
+        super(ogapi, '/organizations');
 
         // Required
         this.withOrganization(organization);
@@ -96,8 +95,7 @@ export default class OperationType extends BaseProvision {
      * @return {OperationType}
      */
     withTitle(title) {
-        if (typeof title !== 'string')
-            throw new Error('Parameter title must be a string, cannot be empty and has a maximum length of 50');
+        if (typeof title !== 'string') throw new Error('Parameter title must be a string, cannot be empty and has a maximum length of 50');
         this._title = title;
         return this;
     }
@@ -116,7 +114,7 @@ export default class OperationType extends BaseProvision {
 
     /**
      * Set the description attribute
-     * @param {string} description 
+     * @param {string} description
      * @return {OperationType}
      */
     withDescription(description) {
@@ -126,7 +124,7 @@ export default class OperationType extends BaseProvision {
 
     /**
      * Allows the modification of the parameters
-     * @param {array} parameters 
+     * @param {array} parameters
      * @return {OperationType}
      */
     withParameters(parameters) {
@@ -137,7 +135,7 @@ export default class OperationType extends BaseProvision {
 
     /**
      * Set the catalog
-     * @param {string} fromCatalog 
+     * @param {string} fromCatalog
      * @return {OperationType}
      */
     fromCatalog(fromCatalog) {
@@ -147,7 +145,7 @@ export default class OperationType extends BaseProvision {
 
     /**
      * Allows the modification of the steps
-     * @param {array} steps 
+     * @param {array} steps
      * @return {OperationType}
      */
     withSteps(steps) {
@@ -158,7 +156,7 @@ export default class OperationType extends BaseProvision {
 
     /**
      * Allows the modification of the allowed models
-     * @param {array} models 
+     * @param {array} models
      * @return {OperationType}
      */
     withModels(models) {
@@ -169,7 +167,7 @@ export default class OperationType extends BaseProvision {
 
     /**
      * Allows the modification of the profiles allowed
-     * @param {array} profiles 
+     * @param {array} profiles
      * @return {OperationType}
      */
     withProfiles(profiles) {
@@ -194,7 +192,7 @@ export default class OperationType extends BaseProvision {
 
     /**
      * Allows the modification of the applicableTo
-     * @param {array} applicableTo 
+     * @param {array} applicableTo
      * @return {OperationType}
      */
     applicableTo(applicableTo) {
@@ -207,21 +205,20 @@ export default class OperationType extends BaseProvision {
         // this._checkRequiredParameters();
 
         let updateData = {
-            "name": this._name,
-            "title": this._title,
-            "description": (this._description ? this._description : undefined),
-            "parameters": this._parameters || undefined,
-            "fromCatalog": this._fromCatalog || undefined,
-            "steps": this._steps || undefined,
-            "models": this._models || undefined,
-            "profiles": this._profiles || undefined,
-            "applicableTo": this._applicableTo || undefined,
-            "historyTtl": this._historyTtl || undefined
+            name: this._name,
+            title: this._title,
+            description: this._description ? this._description : undefined,
+            parameters: this._parameters || undefined,
+            fromCatalog: this._fromCatalog || undefined,
+            steps: this._steps || undefined,
+            models: this._models || undefined,
+            profiles: this._profiles || undefined,
+            applicableTo: this._applicableTo || undefined,
+            historyTtl: this._historyTtl || undefined
         };
 
         return updateData;
     }
-
 
     _checkRequiredParameters(isUpdate) {
         if (isUpdate) {
@@ -234,13 +231,13 @@ export default class OperationType extends BaseProvision {
     }
 
     _buildURL() {
-        return "operationTypes/" + this._resource + "/" + this._organization;
+        return 'operationTypes/' + this._resource + '/' + this._organization;
     }
 
-    /** 
+    /**
      * Create a new Rule
      * @return {Promise}
-     * @throws {Error} 
+     * @throws {Error}
      */
     create() {
         this._checkRequiredParameters();
@@ -248,21 +245,21 @@ export default class OperationType extends BaseProvision {
         return this._doNorthPost(this._buildURL(), this._composeElement());
     }
 
-    /** 
+    /**
      * Udpate a Rule
      * @return {Promise}
-     * @throws {Error} 
+     * @throws {Error}
      */
     update() {
         this._checkRequiredParameters(true);
 
-        return this._doNorthPut(this._buildURL() + "/" + this._identifier, this._composeElement(true));
+        return this._doNorthPut(this._buildURL() + '/' + this._identifier, this._composeElement(true));
     }
 
-    /** 
+    /**
      * Deletes the selected RuleConfiguration
      * @return {Promise}
-     * @throws {Error} 
+     * @throws {Error}
      */
     delete() {
         if (this._identifier === undefined || this._organization === undefined)
@@ -270,8 +267,8 @@ export default class OperationType extends BaseProvision {
 
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Napi.delete(this._buildURL() + "/" + this._identifier)
-            .then((res) => {
+        this._ogapi.Napi.delete(this._buildURL() + '/' + this._identifier)
+            .then(res => {
                 if (res.statusCode === 200) {
                     defered.resolve({
                         statusCode: res.statusCode
@@ -283,7 +280,7 @@ export default class OperationType extends BaseProvision {
                     });
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;

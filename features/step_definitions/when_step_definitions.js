@@ -1,12 +1,9 @@
 // features/step_definitions/when_step_definitions.js
-var request = require('superagent')
+var request = require('superagent');
 var GenericFinder = require(process.cwd() + '/dist/src/GenericFinder');
-var {
-    When,
-    Given
-} = require('cucumber');
+var { When, Given } = require('cucumber');
 
-function executeActionOperation (action,  minutes, data, _this){
+function executeActionOperation(action, minutes, data, _this) {
     function digestResponseData(response) {
         //console.log('digestResponseData', response)
         //Guardamos el identificador anterior por si hiciera falta para el siguiente paso
@@ -21,8 +18,7 @@ function executeActionOperation (action,  minutes, data, _this){
         }
         if (data.id) {
             if (_this.responseData.data) {
-                if (!_this.responseData.data.id)
-                    _this.responseData.data.id = data.id;
+                if (!_this.responseData.data.id) _this.responseData.data.id = data.id;
             } else {
                 _this.responseData.data = {
                     id: data.id
@@ -36,7 +32,7 @@ function executeActionOperation (action,  minutes, data, _this){
     }
 
     function digestErrorData(response) {
-        console.error('digestErrorData', response)
+        console.error('digestErrorData', response);
         var cache = [];
         var error = JSON.stringify(response, function (key, value) {
             if (typeof value === 'object' && value !== null) {
@@ -53,57 +49,59 @@ function executeActionOperation (action,  minutes, data, _this){
 
         _this.error = error;
         _this.responseData = response;
-
     }
 
     try {
         var findMethod;
         switch (action) {
-            case "active":
-                findMethod = "active";
+            case 'active':
+                findMethod = 'active';
                 break;
-            case "pause":
-                findMethod = "pause";
+            case 'pause':
+                findMethod = 'pause';
                 break;
-            case "execute now":
-                findMethod = "executeNow";
+            case 'execute now':
+                findMethod = 'executeNow';
                 break;
-            case "cancel":
-                findMethod = "cancel";
+            case 'cancel':
+                findMethod = 'cancel';
                 break;
-            case "execute later":
-                findMethod = "executeLater";
+            case 'execute later':
+                findMethod = 'executeLater';
                 break;
-            case "change callback":
-                findMethod = "changeCallback";
+            case 'change callback':
+                findMethod = 'changeCallback';
                 break;
-            case "active periodicity":
-                findMethod = "activePeriodicity";
+            case 'active periodicity':
+                findMethod = 'activePeriodicity';
                 break;
-            case "pause periodicity":
-                findMethod = "pausePeriodicity";
+            case 'pause periodicity':
+                findMethod = 'pausePeriodicity';
                 break;
-            case "cancel periodicity":
-                findMethod = "cancelPeriodicity";
+            case 'cancel periodicity':
+                findMethod = 'cancelPeriodicity';
                 break;
             default:
-                throw new Error("Not exists action " + action);
+                throw new Error('Not exists action ' + action);
         }
         var util = _this.util[findMethod];
-        return util.call(_this.util, (data || (minutes * 1))).then(digestResponseData).catch(digestErrorData);
+        return util
+            .call(_this.util, data || minutes * 1)
+            .then(digestResponseData)
+            .catch(digestErrorData);
     } catch (err) {
-        console.error('ERROR: ', err)
+        console.error('ERROR: ', err);
         _this.error = err;
         throw new Error(JSON.stringify(err));
     }
 }
 
 When(/^I want "([^"]*)"( (\d*) minutes| for this url "([^"]*)" for) operation$/, function (action, minutes) {
-    return executeActionOperation(action, minutes, undefined, this)
+    return executeActionOperation(action, minutes, undefined, this);
 });
 
 When(/^I want "([^"]*)" (a|of a) operation$/, function (action, nothing) {
-    return executeActionOperation(action, undefined, undefined, this)
+    return executeActionOperation(action, undefined, undefined, this);
 });
 
 When(/^I try to find an operation for its id of periodicity and save its id$/, function () {
@@ -121,27 +119,29 @@ When(/^I try to find an operation for its id of periodicity and save its id$/, f
     }
 
     function digestErrorData(error) {
-        console.error('digestErrorData', error)
+        console.error('digestErrorData', error);
         _this.error = error;
         _this.responseData = error;
-
     }
 
     var id;
     if (_this.responseData.data && _this.responseData.data.id) {
         id = _this.responseData.data.id;
     } else if (_this.responseData.location) {
-        id = _this.responseData.location.substring(_this.responseData.location.lastIndexOf("/") + 1);
+        id = _this.responseData.location.substring(_this.responseData.location.lastIndexOf('/') + 1);
     } else if (_this.responseData.id) {
         id = _this.responseData.id;
     }
     try {
-        return new GenericFinder(this.ogapi, "operation/tasks", "job", "Jobs not found")._withId(id + "/jobs")._execute().then(digestResponseData).catch(digestErrorData);
+        return new GenericFinder(this.ogapi, 'operation/tasks', 'job', 'Jobs not found')
+            ._withId(id + '/jobs')
+            ._execute()
+            .then(digestResponseData)
+            .catch(digestErrorData);
     } catch (err) {
-        console.error('ERROR: ', err)
+        console.error('ERROR: ', err);
         return;
     }
-
 });
 
 When(/^I try to find by operation's id$/, function () {
@@ -166,10 +166,9 @@ When(/^I try to find by operation's id$/, function () {
     }
 
     function digestErrorData(response) {
-        console.error('digestErrorData', response)
+        console.error('digestErrorData', response);
         _this.error = response;
         _this.responseData = response;
-
     }
 
     try {
@@ -177,7 +176,7 @@ When(/^I try to find by operation's id$/, function () {
         var location = responseData.location;
         var id;
         if (location) {
-            id = location.substring(location.lastIndexOf("/") + 1);
+            id = location.substring(location.lastIndexOf('/') + 1);
         } else if (responseData.id) {
             id = responseData.id;
         } else {
@@ -185,11 +184,13 @@ When(/^I try to find by operation's id$/, function () {
         }
         var findMethod = _this.model_match(_this.currentModel).setters(_this.currentEntity).id;
         if (this.limit) {
-            return this.util[findMethod](id, this.limit.size * 1, this.limit.start * 1).then(digestResponseData).catch(digestErrorData);
+            return this.util[findMethod](id, this.limit.size * 1, this.limit.start * 1)
+                .then(digestResponseData)
+                .catch(digestErrorData);
         }
         return this.util[findMethod](id).then(digestResponseData).catch(digestErrorData);
     } catch (err) {
-        console.error('ERROR: ', err)
+        console.error('ERROR: ', err);
         this.error = err;
         return;
     }
@@ -200,18 +201,21 @@ When(/^I build it with filter by operation's id$/, function (callback) {
 
     try {
         var data;
-        if (this.responseData.data)
-            data = this.responseData.data;
-        else if (this.responseData[1])
-            data = this.responseData[1];
+        if (this.responseData.data) data = this.responseData.data;
+        else if (this.responseData[1]) data = this.responseData[1];
         var jobId = data.id;
-        this.build = this.util.onDevices().filter({
-            "and": [{
-                "like": {
-                    "job.id": jobId
-                }
-            }]
-        }).build();
+        this.build = this.util
+            .onDevices()
+            .filter({
+                and: [
+                    {
+                        like: {
+                            'job.id': jobId
+                        }
+                    }
+                ]
+            })
+            .build();
     } catch (err) {
         this.error = err;
         throw err;
@@ -225,7 +229,7 @@ When(/^I build it$/, function (callback) {
     try {
         this.build = this.util.build();
     } catch (err) {
-        console.error('ERROR: ', err)
+        console.error('ERROR: ', err);
         this.error = err;
     }
     callback();
@@ -247,25 +251,24 @@ When(/^I add a filter and with$/, function (table, callback) {
             this.util.filter(filterBuilder);
         }
     } catch (err) {
-        console.error('ERROR: ', err)
+        console.error('ERROR: ', err);
         this.error = err;
     }
     callback();
 });
 
-
 When(/^I build it with data...$/, function (table, callback) {
     this.error = undefined;
     try {
         var data = table.hashes();
-        
+
         if (data.length > 0) {
             for (var i = 0; i < data.length; i++) {
                 var element = data[i];
 
                 if (this.util[element.method]) {
                     var finalValue;
-                    switch(element.type) {
+                    switch (element.type) {
                         case 'number':
                             finalValue = element.value * 1;
                             break;
@@ -276,14 +279,14 @@ When(/^I build it with data...$/, function (table, callback) {
                             finalValue = element.value;
                     }
 
-                    this.util[element.method](finalValue)
-                }                
+                    this.util[element.method](finalValue);
+                }
             }
         }
-        
+
         this.build = this.util.build();
     } catch (err) {
-        console.error('ERROR: ', err)
+        console.error('ERROR: ', err);
         this.error = err;
     }
     callback();
@@ -305,7 +308,7 @@ When(/^I build it with select...$/, function (table, callback) {
         this.util.select(selectBuilder);
         this.build = this.util.build();
     } catch (err) {
-        console.error('ERROR: ', err)
+        console.error('ERROR: ', err);
         this.error = err;
     }
     callback();
@@ -317,7 +320,7 @@ When(/^I build it with flattened response$/, function (callback) {
     try {
         this.build = this.util.flattened().build();
     } catch (err) {
-        console.error('ERROR: ', err)
+        console.error('ERROR: ', err);
         this.error = err;
     }
     callback();
@@ -329,7 +332,7 @@ When(/^I build it with flattened and disable order response$/, function (callbac
     try {
         this.build = this.util.flattened().disableDefaultSorted().build();
     } catch (err) {
-        console.error('ERROR: ', err)
+        console.error('ERROR: ', err);
         this.error = err;
     }
     callback();
@@ -341,7 +344,7 @@ When(/^I build it with flattened, disable order and disable case sensitivie resp
     try {
         this.build = this.util.flattened().disableDefaultSorted().disableCaseSensitive().build();
     } catch (err) {
-        console.error('ERROR: ', err)
+        console.error('ERROR: ', err);
         this.error = err;
     }
     callback();
@@ -353,7 +356,7 @@ When(/^I build it with summary response$/, function (callback) {
     try {
         this.build = this.util.summary().build();
     } catch (err) {
-        console.error('ERROR: ', err)
+        console.error('ERROR: ', err);
         this.error = err;
     }
     callback();
@@ -382,10 +385,9 @@ When(/^I execute it$/, function () {
     }
 
     function catchErrorResponse(err) {
-        console.error("catchErrorResponse", err);
+        console.error('catchErrorResponse', err);
         _this.responseData = undefined;
         _this.error = err;
-
     }
 
     try {
@@ -409,10 +411,9 @@ When(/^I delete data$/, function () {
     }
 
     function catchErrorResponse(err) {
-        console.error("catchErrorResponse", err);
+        console.error('catchErrorResponse', err);
         _this.responseData = undefined;
         _this.error = err;
-
     }
 
     try {
@@ -436,10 +437,9 @@ When(/^I download csv it$/, function () {
     }
 
     function catchErrorResponse(err) {
-        console.error('catchErrorResponse', err)
+        console.error('catchErrorResponse', err);
         _this.responseData = err;
         _this.error = err;
-
     }
 
     try {
@@ -450,8 +450,6 @@ When(/^I download csv it$/, function () {
         return;
     }
 });
-
-
 
 When(/^I execute with async paging it$/, function () {
     var _this = this;
@@ -466,10 +464,9 @@ When(/^I execute with async paging it$/, function () {
     }
 
     function catchErrorResponse(err) {
-        console.error('catchErrorResponse', err)
+        console.error('catchErrorResponse', err);
         _this.responseData = err;
         _this.error = err;
-
     }
 
     function catchNotification(notification) {
@@ -480,7 +477,10 @@ When(/^I execute with async paging it$/, function () {
     }
 
     try {
-        return this.build.executeWithAsyncPaging(_this.util.resource).then(catchResponse, null, catchNotification).catch(catchErrorResponse);
+        return this.build
+            .executeWithAsyncPaging(_this.util.resource)
+            .then(catchResponse, null, catchNotification)
+            .catch(catchErrorResponse);
     } catch (err) {
         console.error('ERROR: ', err);
         this.error = err;
@@ -501,10 +501,9 @@ When(/^I execute with async paging it and cancel it$/, function () {
     }
 
     function catchErrorResponse(err) {
-        console.error('catchErrorResponse', err)
+        console.error('catchErrorResponse', err);
         _this.responseData = err;
         _this.error = err;
-
     }
 
     function catchNotification(notification) {
@@ -516,7 +515,10 @@ When(/^I execute with async paging it and cancel it$/, function () {
     }
 
     try {
-        return this.build.executeWithAsyncPaging(_this.util.resource).then(catchResponse, null, catchNotification).catch(catchErrorResponse);
+        return this.build
+            .executeWithAsyncPaging(_this.util.resource)
+            .then(catchResponse, null, catchNotification)
+            .catch(catchErrorResponse);
     } catch (err) {
         console.error('ERROR: ', err);
         this.error = err;
@@ -537,10 +539,9 @@ When(/^I execute with async paging it and cancel it with custom message$/, funct
     }
 
     function catchErrorResponse(err) {
-        console.error('catchErrorResponse', err)
+        console.error('catchErrorResponse', err);
         _this.responseData = err;
         _this.error = err;
-
     }
 
     function catchNotification(notification) {
@@ -552,7 +553,10 @@ When(/^I execute with async paging it and cancel it with custom message$/, funct
     }
 
     try {
-        return this.build.executeWithAsyncPaging(_this.util.resource).then(catchResponse, null, catchNotification).catch(catchErrorResponse);
+        return this.build
+            .executeWithAsyncPaging(_this.util.resource)
+            .then(catchResponse, null, catchNotification)
+            .catch(catchErrorResponse);
     } catch (err) {
         console.error('ERROR: ', err);
         this.error = err;
@@ -572,7 +576,7 @@ When(/^I update periodicity$/, function () {
     }
 
     function catchErrorResponse(err) {
-        console.error('catchErrorResponse', err)
+        console.error('catchErrorResponse', err);
         var cache = [];
         var error = JSON.stringify(err.data.errors, function (key, value) {
             if (typeof value === 'object' && value !== null) {
@@ -588,7 +592,6 @@ When(/^I update periodicity$/, function () {
         cache = null; // Enable garbage collection
         _this.responseData = err;
         _this.error = error;
-
     }
 
     try {
@@ -600,8 +603,7 @@ When(/^I update periodicity$/, function () {
     }
 });
 
-When(/^I create it$/, {timeout: 60 * 1000}, function () {
-
+When(/^I create it$/, { timeout: 60 * 1000 }, function () {
     var _this = this;
     _this.error = undefined;
     _this.responseData = undefined;
@@ -611,11 +613,10 @@ When(/^I create it$/, {timeout: 60 * 1000}, function () {
         _this.responseData = data;
         _this.location = _this.responseData.location;
         _this.error = undefined;
-
     }
 
     function catchErrorResponse(err) {
-        console.error("catchErrorResponse", err)
+        console.error('catchErrorResponse', err);
         _this.responseData = err;
 
         if (err.errors) {
@@ -625,7 +626,6 @@ When(/^I create it$/, {timeout: 60 * 1000}, function () {
         } else {
             _this.error = err;
         }
-
     }
 
     try {
@@ -642,7 +642,6 @@ When(/^I create it$/, {timeout: 60 * 1000}, function () {
     }
 });
 
-
 When(/^I "([^"]*)" it with bulk$/, function (action) {
     var _this = this;
     _this.error = undefined;
@@ -656,7 +655,7 @@ When(/^I "([^"]*)" it with bulk$/, function (action) {
     }
 
     function catchErrorResponse(err) {
-        console.error('catchErrorResponse', err)
+        console.error('catchErrorResponse', err);
         _this.responseData = err;
         if (err.errors) {
             _this.error = err.errors;
@@ -665,7 +664,6 @@ When(/^I "([^"]*)" it with bulk$/, function (action) {
         } else {
             _this.error = err;
         }
-
     }
 
     try {
@@ -679,43 +677,46 @@ When(/^I "([^"]*)" it with bulk$/, function (action) {
     }
 });
 
-When(/^I "([^"]*)" it with bulk execution$/, {
-    timeout: 60 * 1000
-}, function (action) {
-    var _this = this;
-    _this.error = undefined;
-    _this.responseData = undefined;
+When(
+    /^I "([^"]*)" it with bulk execution$/,
+    {
+        timeout: 60 * 1000
+    },
+    function (action) {
+        var _this = this;
+        _this.error = undefined;
+        _this.responseData = undefined;
 
-    function catchResponse(data) {
-        //console.log('catchResponse', data)
-        _this.responseData = data;
-        _this.location = _this.responseData.location;
-        _this.error = this.error = undefined;
-    }
-
-    function catchErrorResponse(err) {
-        console.error('catchErrorResponse', err)
-        _this.responseData = err;
-        if (err.errors) {
-            _this.error = err.errors;
-        } else if (err.data.errors) {
-            _this.error = err.data.errors;
-        } else {
-            _this.error = err;
+        function catchResponse(data) {
+            //console.log('catchResponse', data)
+            _this.responseData = data;
+            _this.location = _this.responseData.location;
+            _this.error = this.error = undefined;
         }
 
-    }
-
-    try {
-        if (_this.fileData) {
-            return _this.util[action](_this.filePath, 'xls').then(catchResponse).catch(catchErrorResponse);
+        function catchErrorResponse(err) {
+            console.error('catchErrorResponse', err);
+            _this.responseData = err;
+            if (err.errors) {
+                _this.error = err.errors;
+            } else if (err.data.errors) {
+                _this.error = err.data.errors;
+            } else {
+                _this.error = err;
+            }
         }
-    } catch (err) {
-        console.error('ERROR: ', err);
-        this.error = err;
-        return;
+
+        try {
+            if (_this.fileData) {
+                return _this.util[action](_this.filePath, 'xls').then(catchResponse).catch(catchErrorResponse);
+            }
+        } catch (err) {
+            console.error('ERROR: ', err);
+            this.error = err;
+            return;
+        }
     }
-});
+);
 
 When(/^I "([^"]*)" it with bulk and response with format csv$/, function (action) {
     var _this = this;
@@ -729,7 +730,7 @@ When(/^I "([^"]*)" it with bulk and response with format csv$/, function (action
     }
 
     function catchErrorResponse(err) {
-        console.error('catchErrorResponse', err)
+        console.error('catchErrorResponse', err);
         _this.responseData = err;
         _this.error = err;
     }
@@ -746,7 +747,6 @@ When(/^I "([^"]*)" it with bulk and response with format csv$/, function (action
 });
 
 When(/^I delete it with identfier from location$/, function () {
-
     var _this = this;
     _this.error = undefined;
     _this.responseData = undefined;
@@ -764,24 +764,19 @@ When(/^I delete it with identfier from location$/, function () {
         //console.log(JSON.stringify(err));
         _this.responseData = err;
         _this.error = err;
-
     }
     var id;
     try {
         if (this.responseData) {
-            if (this.responseData.location)
-                id = this.responseData.location.substring(this.responseData.location.lastIndexOf("/") + 1);
-            else if (this.responseData.data)
-                id = this.responseData.data.id;
-            else if (this.responseData[0])
-                id = this.responseData[0].id;
+            if (this.responseData.location) id = this.responseData.location.substring(this.responseData.location.lastIndexOf('/') + 1);
+            else if (this.responseData.data) id = this.responseData.data.id;
+            else if (this.responseData[0]) id = this.responseData[0].id;
         } else if (this.location) {
-            id = this.location.substring(this.location.lastIndexOf("/") + 1);
+            id = this.location.substring(this.location.lastIndexOf('/') + 1);
         }
 
-        _this.util.withIdentifier(id)
+        _this.util.withIdentifier(id);
         return _this.util.delete().then(catchResponse).catch(catchErrorResponse);
-
     } catch (err) {
         //console.error(err);
         _this.responseData = err;
@@ -792,7 +787,6 @@ When(/^I delete it with identfier from location$/, function () {
 });
 
 When(/^I delete it$/, { timeout: 60 * 1000 }, function () {
-
     var _this = this;
     _this.error = undefined;
     _this.responseData = undefined;
@@ -807,7 +801,6 @@ When(/^I delete it$/, { timeout: 60 * 1000 }, function () {
         console.error('catchErrorResponse', err);
         _this.responseData = err;
         _this.error = err;
-
     }
 
     try {
@@ -821,7 +814,6 @@ When(/^I delete it$/, { timeout: 60 * 1000 }, function () {
 });
 
 When(/^I delete it with location as a identifier$/, function () {
-
     var _this = this;
     _this.error = undefined;
     _this.responseData = undefined;
@@ -836,13 +828,11 @@ When(/^I delete it with location as a identifier$/, function () {
         console.error('catchErrorResponse', err);
         _this.responseData = err;
         _this.error = err;
-
     }
 
     try {
-        var id = this.location.substring(this.location.lastIndexOf("/") + 1);
+        var id = this.location.substring(this.location.lastIndexOf('/') + 1);
         return _this.util.withIdentifier(id).delete().then(catchResponse).catch(catchErrorResponse);
-
     } catch (err) {
         console.error('ERROR: ', err);
         _this.responseData = err;
@@ -853,7 +843,7 @@ When(/^I delete it with location as a identifier$/, function () {
 
 When(/^I fill identifier using location$/, function () {
     try {
-        var id = this.location.substring(this.location.lastIndexOf("/") + 1);
+        var id = this.location.substring(this.location.lastIndexOf('/') + 1);
         this.util.withIdentifier(id);
     } catch (err) {
         console.error('ERROR: ', err);
@@ -864,7 +854,6 @@ When(/^I fill identifier using location$/, function () {
 });
 
 When(/^I delete it all$/, function () {
-
     var _this = this;
     _this.error = undefined;
     _this.responseData = undefined;
@@ -876,15 +865,13 @@ When(/^I delete it all$/, function () {
     }
 
     function catchErrorResponse(err) {
-        console.error('catchErrorResponse', err)
+        console.error('catchErrorResponse', err);
         _this.responseData = err;
         _this.error = err;
-
     }
 
     try {
         return _this.util.deleteAll().then(catchResponse).catch(catchErrorResponse);
-
     } catch (err) {
         console.error('ERROR: ', err);
         _this.responseData = err;
@@ -907,22 +894,18 @@ When(/^I update it with identfier from location$/, function () {
     function catchErrorResponse(err) {
         _this.responseData = err;
         _this.error = err;
-
     }
-    var id
+    var id;
     try {
         if (this.responseData) {
-            if (this.responseData.location)
-                id = this.responseData.location.substring(this.responseData.location.lastIndexOf("/") + 1);
-            else if (this.responseData.data)
-                id = this.responseData.data.id;
-            else if (this.responseData[0])
-                id = this.responseData[0].id;
+            if (this.responseData.location) id = this.responseData.location.substring(this.responseData.location.lastIndexOf('/') + 1);
+            else if (this.responseData.data) id = this.responseData.data.id;
+            else if (this.responseData[0]) id = this.responseData[0].id;
         } else if (this.location) {
-            id = this.location.substring(this.location.lastIndexOf("/") + 1);
+            id = this.location.substring(this.location.lastIndexOf('/') + 1);
         }
 
-        _this.util.withIdentifier(id)
+        _this.util.withIdentifier(id);
         return _this.util.update().then(catchResponse).catch(catchErrorResponse);
     } catch (err) {
         this.error = err;
@@ -946,7 +929,6 @@ When(/^I update it$/, function () {
         console.error('catchErrorResponse', err);
         _this.responseData = err;
         _this.error = err;
-
     }
 
     try {
@@ -968,14 +950,12 @@ When(/^I request reset password$/, function () {
         //console.log('catchResponse', data);
         _this.responseData = data;
         _this.error = undefined;
-
     }
 
     function catchErrorResponse(err) {
         console.error('catchErrorResponse', err);
         _this.responseData = err;
         _this.error = err;
-
     }
 
     try {
@@ -994,12 +974,12 @@ When(/^I read reset password mail and save token mock$/, function () {
     _this.values = {
         token: 'akdjfkasdjfklsadjflkjasld'
     };
-})
+});
 
 When(/^I read reset password mail and save token$/, { timeout: 30000 }, async function () {
     var _this = this;
-    
-    await new Promise(async (callback, error) => {
+
+    await new Promise((callback, error) => {
         _this.error = undefined;
         _this.responseData = undefined;
         _this.values = {
@@ -1016,68 +996,73 @@ When(/^I read reset password mail and save token$/, { timeout: 30000 }, async fu
             sid_token: undefined,
             email_addr: undefined,
             email_id: undefined
-        }
+        };
 
         try {
-            request.get(_this.guerrillaApi).query({
-                f: setEmailUserUrl,
-                email_user: configUserEmail.email_user,
-                lang: 'en'
-            }).end((err, response) => {
-                if(err){
-                    console.log(err);
-                    _this.error = err;
-                    error(JSON.stringify(err));
-                }else{
-                    configUserEmail.sid_token = response.body.sid_token
-                    request.get(_this.guerrillaApi).query(
-                        {
-                            f: getEmailListUrl,
-                            offset: 0,
-                            sid_token: configUserEmail.sid_token
-                        }
-                    )
-                    .end((err, response) => {
-                        if(err){
-                            console.log(err);
-                            _this.error = err;
-                            error(JSON.stringify(err));
-                        }else{
-                            const list = response.body && response.body.list || []
-                            const email = list[0]
-                            configUserEmail.email_id = email && email.mail_id
-                            request.get(_this.guerrillaApi).query({
-                                f: fetchEmailUrl,
-                                email_id: configUserEmail.email_id,
+            request
+                .get(_this.guerrillaApi)
+                .query({
+                    f: setEmailUserUrl,
+                    email_user: configUserEmail.email_user,
+                    lang: 'en'
+                })
+                .end((err, response) => {
+                    if (err) {
+                        console.log(err);
+                        _this.error = err;
+                        error(JSON.stringify(err));
+                    } else {
+                        configUserEmail.sid_token = response.body.sid_token;
+                        request
+                            .get(_this.guerrillaApi)
+                            .query({
+                                f: getEmailListUrl,
+                                offset: 0,
                                 sid_token: configUserEmail.sid_token
                             })
                             .end((err, response) => {
-                                if(err){
+                                if (err) {
                                     console.log(err);
                                     _this.error = err;
-                                    error(JSON.stringify(err))
-                                }else{
-                                    const getEmail = response.body.mail_body || ''
-                                    const getToken = getEmail.match(/tokenId=([^&>;]*)"/) && getEmail.match(/tokenId=([^&>;]*)"/)[1];
-                                    if (!getToken) {
-                                        error('Token or email not exists!!!');
-                                    }
-                                    _this.values.token = getToken;
-                                    callback();
+                                    error(JSON.stringify(err));
+                                } else {
+                                    const list = (response.body && response.body.list) || [];
+                                    const email = list[0];
+                                    configUserEmail.email_id = email && email.mail_id;
+                                    request
+                                        .get(_this.guerrillaApi)
+                                        .query({
+                                            f: fetchEmailUrl,
+                                            email_id: configUserEmail.email_id,
+                                            sid_token: configUserEmail.sid_token
+                                        })
+                                        .end((err, response) => {
+                                            if (err) {
+                                                console.log(err);
+                                                _this.error = err;
+                                                error(JSON.stringify(err));
+                                            } else {
+                                                const getEmail = response.body.mail_body || '';
+                                                const getToken =
+                                                    getEmail.match(/tokenId=([^&>;]*)"/) && getEmail.match(/tokenId=([^&>;]*)"/)[1];
+                                                if (!getToken) {
+                                                    error('Token or email not exists!!!');
+                                                }
+                                                _this.values.token = getToken;
+                                                callback();
+                                            }
+                                        });
                                 }
-                            })
-                        }
-                    })
-                }
-            })
+                            });
+                    }
+                });
         } catch (err) {
             console.log(err);
             _this.error = err;
             error(JSON.stringify(err));
         }
-    })
+    });
 });
-
 
 When(/^I update password with "([^"]*)"$/, function (field) {
     var _this = this;
@@ -1088,14 +1073,12 @@ When(/^I update password with "([^"]*)"$/, function (field) {
         //console.log('catchResponse', data);
         _this.responseData = data;
         _this.error = undefined;
-
     }
 
     function catchErrorResponse(err) {
         console.error('catchErrorResponse', err);
         _this.responseData = err;
         _this.error = err;
-
     }
 
     try {
@@ -1117,14 +1100,12 @@ When(/^I update apiKey with "([^"]*)"$/, function (field) {
         //console.log('catchResponse', data);
         _this.responseData = data;
         _this.error = undefined;
-
     }
 
     function catchErrorResponse(err) {
         console.error('catchErrorResponse', err);
         _this.responseData = err;
         _this.error = err;
-
     }
 
     try {
@@ -1141,23 +1122,20 @@ When(/^I update password with "([^"]*)" and token$/, function (password) {
     var _this = this;
     _this.error = undefined;
     _this.responseData = undefined;
-    var token = _this.values && _this.values.token
+    var token = _this.values && _this.values.token;
     function catchResponse(data) {
         //console.log('catchResponse', data);
         _this.responseData = data;
         _this.error = undefined;
-
     }
 
     function catchErrorResponse(err) {
         console.error('catchErrorResponse', err);
         _this.responseData = err;
         _this.error = err;
-
     }
 
     try {
-
         return _this.util.updatePassword(password, token).then(catchResponse).catch(catchErrorResponse);
     } catch (err) {
         console.error('ERROR: ', err);
@@ -1176,14 +1154,14 @@ When(/^I get filter fields...$/, function (table, callback) {
         //console.log('catchResponse', data);
         _this.responseData = data;
         _this.error = undefined;
-        callback()
+        callback();
     }
 
     function catchErrorResponse(err) {
-        console.error("catchErrorResponse", err);
+        console.error('catchErrorResponse', err);
         _this.responseData = undefined;
         _this.error = err;
-        callback()
+        callback();
     }
 
     try {
@@ -1194,13 +1172,13 @@ When(/^I get filter fields...$/, function (table, callback) {
                 this.util[withMethod](data[i].content).then(catchResponse).catch(catchErrorResponse);
             }
         } else {
-            this.error = "No params found";
-            callback()
+            this.error = 'No params found';
+            callback();
         }
     } catch (err) {
         console.error('ERROR: ', err);
         this.error = err;
-        callback()
+        callback();
     }
 });
 
@@ -1217,7 +1195,6 @@ When(/^I clone it with...$/, function (table) {
     function catchErrorResponse(err) {
         _this.responseData = err;
         _this.error = err;
-
     }
 
     try {
@@ -1227,28 +1204,22 @@ When(/^I clone it with...$/, function (table) {
 
         if (data.length > 0) {
             for (var i = 0; i < data.length; i++) {
-                if (data[i].param.toLowerCase() === "true" || data[i].param.toLowerCase() === "false")
-                    args.push(JSON.parse(data[i].param));
-                else
-                    args.push(data[i].param);
+                if (data[i].param.toLowerCase() === 'true' || data[i].param.toLowerCase() === 'false') args.push(JSON.parse(data[i].param));
+                else args.push(data[i].param);
             }
 
             return _this.util.cloneTo.apply(_this.util, args).then(catchResponse).catch(catchErrorResponse);
         } else {
-            this.error = "No params found";
+            this.error = 'No params found';
             return;
         }
-
     } catch (err) {
         console.error('ERROR: ', err);
         this.error = err;
 
         return;
     }
-
 });
-
-
 
 When(/^I get allowed Datastreams fields$/, function (callback) {
     var _this = this;
@@ -1258,9 +1229,11 @@ When(/^I get allowed Datastreams fields$/, function (callback) {
 
 Given(/^I can found "([^"]*)" as datastream name$/, function (dsName, callback) {
     // Write code here that turns the phrase above into concrete actions
-    if (this.responseData.filter(function (item) {
-        return item.identifier === dsName;
-    }).length === 0) {
+    if (
+        this.responseData.filter(function (item) {
+            return item.identifier === dsName;
+        }).length === 0
+    ) {
         throw new Error('Datastream not found. DSName:' + dsName);
     }
     callback();
@@ -1268,17 +1241,17 @@ Given(/^I can found "([^"]*)" as datastream name$/, function (dsName, callback) 
 
 Given(/^I can not found "([^"]*)" as datastream name$/, function (dsName, callback) {
     // Write code here that turns the phrase above into concrete actions
-    if (this.responseData.filter(function (item) {
-        return item.identifier === dsName;
-    }).length === 0) {
+    if (
+        this.responseData.filter(function (item) {
+            return item.identifier === dsName;
+        }).length === 0
+    ) {
         callback();
     }
     throw new Error('Datastream found. DSName:' + dsName);
 });
 
-
 When(/^I delete all$/, function () {
-
     var _this = this;
     _this.error = undefined;
     _this.responseData = undefined;
@@ -1293,7 +1266,6 @@ When(/^I delete all$/, function () {
         console.error('catchErrorResponse', err);
         _this.responseData = err;
         _this.error = err;
-
     }
 
     try {

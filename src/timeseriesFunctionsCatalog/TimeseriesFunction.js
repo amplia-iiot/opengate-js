@@ -3,20 +3,20 @@
 import BaseProvision from '../provision/BaseProvision';
 import q from 'q';
 export const URL = 'timeseries/provision/organizations';
-import checkType from '../util/formats/check_types'
-import { VALUE_TYPES_ENUM } from './TYPES_ENUM'
+import checkType from '../util/formats/check_types';
+import { VALUE_TYPES_ENUM } from './TYPES_ENUM';
+import parameterError from '../util/parameterError';
 
 /**
  * This is a base object that contains everything you can do with TimeseriesFunction.
  */
 export default class TimeseriesFunction extends BaseProvision {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi, organization, nameForUpdate) {
-        super(ogapi, "timeseries/provision/organizations");
+        super(ogapi, 'timeseries/provision/organizations');
 
         if (organization) {
             this.withOrganization(organization);
@@ -63,7 +63,7 @@ export default class TimeseriesFunction extends BaseProvision {
 
     /**
      * Set the description attribute
-     * @param {string} description 
+     * @param {string} description
      * @return {TimeseriesFunction}
      */
     withDescription(description) {
@@ -74,7 +74,7 @@ export default class TimeseriesFunction extends BaseProvision {
 
     /**
      * Set the script attribute
-     * @param {string} script 
+     * @param {string} script
      * @return {TimeseriesFunction}
      */
     withScript(script) {
@@ -85,15 +85,15 @@ export default class TimeseriesFunction extends BaseProvision {
 
     /**
      * Set the valueTypes attribute
-     * @param {Array} valueTypes 
+     * @param {Array} valueTypes
      * @return {TimeseriesFunction}
      */
     withValueTypes(valueTypes) {
         checkType._checkArray(valueTypes, 'valueTypes');
 
-        valueTypes.forEach((typeTmp) => {
+        valueTypes.forEach(typeTmp => {
             checkType._checkType(typeTmp, VALUE_TYPES_ENUM);
-        })
+        });
         this._valueTypes = valueTypes;
         return this;
     }
@@ -113,30 +113,35 @@ export default class TimeseriesFunction extends BaseProvision {
 
     withMetadataFile(file) {
         // if (typeof file !== 'object')
-        //     throw new Error({ message: "Parameter action requires name and type", parameter: 'action' });
-        this._metadataFile = file
+        //     throw parameterError("Parameter action requires name and type", { parameter: 'action' });
+        this._metadataFile = file;
     }
 
     _composeElement(isUpdate) {
         this._checkRequiredParameters(isUpdate);
 
         let updateData = {
-            'script': this._script
+            script: this._script
         };
 
         if (this._metadataFile) {
-            updateData.metadata = this._metadataFile
+            updateData.metadata = this._metadataFile;
         } else {
-            let blob = new Blob([JSON.stringify({
-                "name": this._name,
-                "description": this._description,
-                "valueTypes": this._valueTypes || [],
-                "returnType": this._returnType || undefined,
-            })], {
-                type: "application/json"
-            });
+            let blob = new Blob(
+                [
+                    JSON.stringify({
+                        name: this._name,
+                        description: this._description,
+                        valueTypes: this._valueTypes || [],
+                        returnType: this._returnType || undefined
+                    })
+                ],
+                {
+                    type: 'application/json'
+                }
+            );
 
-            updateData.metadata = blob
+            updateData.metadata = blob;
         }
 
         return updateData;
@@ -155,93 +160,109 @@ export default class TimeseriesFunction extends BaseProvision {
     }
 
     _buildURL() {
-        return URL + "/" + this._organization + "/catalog" + (this._identifier ? '/' + this._identifier : '');
+        return URL + '/' + this._organization + '/catalog' + (this._identifier ? '/' + this._identifier : '');
     }
 
     create() {
         const defer = q.defer();
 
-        this._ogapi.Napi.post_multipart(this._buildURL(), this._composeElement(), {}, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
-            .then((response) => {
+        this._ogapi.Napi.post_multipart(
+            this._buildURL(),
+            this._composeElement(),
+            {},
+            this._timeout,
+            this._getExtraHeaders(),
+            this._getUrlParameters(),
+            this._getServiceBaseURL()
+        )
+            .then(response => {
                 let statusCode = response.statusCode;
                 switch (statusCode) {
                     case 200: {
-                        const resultQuery = response.text != "" ? JSON.parse(response.text) : {};
+                        const resultQuery = response.text != '' ? JSON.parse(response.text) : {};
                         const _statusCode = response.status;
                         defer.resolve({
                             data: resultQuery,
                             statusCode: _statusCode
                         });
-                        break
+                        break;
                     }
                     case 201: {
                         const _statusCode = response.status;
-                        const location = response.header && response.header.location
+                        const location = response.header && response.header.location;
                         defer.resolve({
                             location: location,
                             statusCode: _statusCode
                         });
-                        break
+                        break;
                     }
                     case 204:
                         defer.resolve(response);
-                        break
+                        break;
                     default:
                         defer.reject({
                             errors: response.data.errors,
                             statusCode: response.statusCode
                         });
-                        break
+                        break;
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defer.reject(error);
             });
         return defer.promise;
     }
 
-    /** 
+    /**
      * Updates a rule.
      * @return {Promise}
-     * @throws {Error} 
+     * @throws {Error}
      */
     update() {
         const defer = q.defer();
 
-        this._ogapi.Napi.put_multipart(this._buildURL(), this._composeElement(true), {}, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
-            .then((response) => {
+        this._ogapi.Napi.put_multipart(
+            this._buildURL(),
+            this._composeElement(true),
+            {},
+            this._timeout,
+            this._getExtraHeaders(),
+            this._getUrlParameters(),
+            this._getServiceBaseURL()
+        )
+            .then(response => {
                 let statusCode = response.statusCode;
                 switch (statusCode) {
                     case 200: {
-                        const resultQuery = response.text != "" ? JSON.parse(response.text) : {};
+                        const resultQuery = response.text != '' ? JSON.parse(response.text) : {};
                         const _statusCode = response.status;
                         defer.resolve({
                             data: resultQuery,
                             statusCode: _statusCode
                         });
-                        break
+                        break;
                     }
                     case 204:
                         defer.resolve(response);
-                        break
+                        break;
                     default:
                         defer.reject({
                             errors: response.data.errors,
                             statusCode: response.statusCode
                         });
-                        break
+                        break;
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defer.reject(error);
             });
         return defer.promise;
     }
 
-    /** 
+    /**
      * Deletes the selected RuleConfiguration
      * @return {Promise}
-     * @throws {Error} 
+     * @throws {Error}
      */
     delete() {
         if (this._identifier === undefined || this._organization === undefined)
@@ -250,7 +271,7 @@ export default class TimeseriesFunction extends BaseProvision {
         var defered = q.defer();
         var promise = defered.promise;
         this._ogapi.Napi.delete(this._buildURL())
-            .then((res) => {
+            .then(res => {
                 if (res.statusCode === 200) {
                     defered.resolve({
                         statusCode: res.statusCode
@@ -262,7 +283,7 @@ export default class TimeseriesFunction extends BaseProvision {
                     });
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;

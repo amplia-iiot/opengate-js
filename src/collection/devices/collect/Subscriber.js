@@ -5,13 +5,11 @@ import Hardware from './Hardware';
  * This is a base object that allows the user to create a Subscriber object.
  */
 export default class Subscriber {
-
     constructor() {
         this._id = undefined;
         this._name = undefined;
         this._type = undefined;
         this._hardware = undefined;
-
     }
 
     /**
@@ -20,8 +18,7 @@ export default class Subscriber {
      * @return {Subscriber}
      */
     withId(id) {
-        if (typeof id !== 'string' || id.length === 0)
-            throw new Error('Parameter id must be a string and cannot be empty');
+        if (typeof id !== 'string' || id.length === 0) throw new Error('Parameter id must be a string and cannot be empty');
         this._id = id;
         return this;
     }
@@ -32,8 +29,7 @@ export default class Subscriber {
      * @return {Subscriber}
      */
     withName(name) {
-        if (typeof name !== 'string' || name.length === 0)
-            throw new Error('Parameter name must be a string and cannot be empty');
+        if (typeof name !== 'string' || name.length === 0) throw new Error('Parameter name must be a string and cannot be empty');
         this._name = name;
         return this;
     }
@@ -44,17 +40,16 @@ export default class Subscriber {
      * @return {Subscriber}
      */
     withType(type) {
-        if (typeof type !== 'string' || type.length === 0)
-            throw new Error('Parameter type must be a string and cannot be empty');
+        if (typeof type !== 'string' || type.length === 0) throw new Error('Parameter type must be a string and cannot be empty');
         this._type = type;
         return this;
     }
 
     /**
-* Set the hardware attribute
-* @param {Hardware} hardware - optionals field
-* @return {Subscriber}
-*/
+     * Set the hardware attribute
+     * @param {Hardware} hardware - optionals field
+     * @return {Subscriber}
+     */
     withHardware(hardware) {
         if (!(hardware instanceof Hardware)) {
             throw new Error('Parameter hardware must be hardware type');
@@ -63,19 +58,15 @@ export default class Subscriber {
         return this;
     }
 
-
     composeElement() {
         var subscriber = {
-            "id": this._id,
-            "name": this._name,
-            "type": this._type
+            id: this._id,
+            name: this._name,
+            type: this._type
         };
         if (this._hardware !== undefined) {
             subscriber.hardware = this._hardware.composeElement();
         }
         return subscriber;
     }
-
-
-
 }

@@ -3,15 +3,14 @@
 import BaseProvision from '../BaseProvision';
 import q from 'q';
 export const TYPES = {
-    'xls': 'application/vnd.ms-excel',
-    'xlsx': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-}
+    xls: 'application/vnd.ms-excel',
+    xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+};
 
 /**
  * This builder gives you the tools necessary to create bulk executions using the OpenGate REST API.
  */
 export default class BulkExecutionBuilder extends BaseProvision {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - required field. This is ogapi instance
@@ -24,7 +23,7 @@ export default class BulkExecutionBuilder extends BaseProvision {
         this._timeout = timeout;
         this._organization = organization;
         this._processorId = processorId;
-        this._resource = 'provisionProcessors/provision/organizations/' + organization + '/' + processorId
+        this._resource = 'provisionProcessors/provision/organizations/' + organization + '/' + processorId;
     }
 
     _composeElement() {
@@ -38,7 +37,7 @@ export default class BulkExecutionBuilder extends BaseProvision {
     /**
      * Instead of creating a bulk process, returns the provision process planning for the specified entries. This is a
      * synchronous process that does not cause changes in the database.
-     * @example 
+     * @example
      *  ogapi.bulkExecutionBuilder('orgname', 'processorId', 10000).plan(rawFile, extension)
      *  ogapi.bulkExecutionBuilder('orgname', 'processorId', 10000).plan(rawFile, extension, numberOfEntriesToProcess)
      * @param {string|File} rawFile - String with path of file or File (Blob)
@@ -46,33 +45,31 @@ export default class BulkExecutionBuilder extends BaseProvision {
      * @param {number} [numberOfEntriesToProcess] - Number of entries to be processed.
      */
     plan(rawFile, extension, numberOfEntriesToProcess) {
-        if (typeof extension !== 'string')
-            throw new Error('Parameter extension must be a string (xls or xlsx) and cannot be empty')
-        this._extension = TYPES[extension]
+        if (typeof extension !== 'string') throw new Error('Parameter extension must be a string (xls or xlsx) and cannot be empty');
+        this._extension = TYPES[extension];
         this._setUrlParameters({
             numberOfEntriesToProcess: numberOfEntriesToProcess || 1
         });
-        this._type = 'plan'
+        this._type = 'plan';
         this._setExtraHeaders({
-            'accept': 'application/json'
+            accept: 'application/json'
         });
         return this._executeOperation(rawFile);
     }
 
     /**
      * Do a bulk using specific Provision Processor.
-     * @example 
+     * @example
      *  ogapi.bulkExecutionBuilder('orgname', 'processorId', 10000).bulk(rawFile, extension)
      * @param {string|File} rawFile - String with path of file or File (Blob)
      * @param {string} [extension] - File format
      */
     bulk(rawFile, extension) {
-        this._extension = TYPES[extension]
-        if (typeof this._extension !== 'string')
-            throw new Error('Parameter extension must be a string (xls or xlsx) and cannot be empty')
-        this._type = 'bulk'
+        this._extension = TYPES[extension];
+        if (typeof this._extension !== 'string') throw new Error('Parameter extension must be a string (xls or xlsx) and cannot be empty');
+        this._type = 'bulk';
         this._setExtraHeaders({
-            'accept': this._extension
+            accept: this._extension
         });
         return this._executeOperation(rawFile);
     }
@@ -91,39 +88,39 @@ export default class BulkExecutionBuilder extends BaseProvision {
         var petitionUrl = this._buildURL();
         //url, formData, events, timeout, headers, parameters
         this._ogapi.Napi.post_multipart(petitionUrl, form, {}, this._timeout, this._getExtraHeaders(), this._getUrlParameters())
-            .then((response) => {
+            .then(response => {
                 let statusCode = response.statusCode;
                 switch (statusCode) {
                     case 200: {
-                        const resultQuery = response.text != "" ? JSON.parse(response.text) : {};
+                        const resultQuery = response.text != '' ? JSON.parse(response.text) : {};
                         const _statusCode = response.status;
                         defer.resolve({
                             data: resultQuery,
                             statusCode: _statusCode
                         });
-                        break
+                        break;
                     }
                     case 201: {
                         const _statusCode = response.status;
-                        const location = response.location || response.headers.location || response.header.location
+                        const location = response.location || response.headers.location || response.header.location;
                         defer.resolve({
                             location: location,
                             statusCode: _statusCode
                         });
-                        break
+                        break;
                     }
                     case 204:
                         defer.resolve(response);
-                        break
+                        break;
                     default:
                         defer.reject({
                             errors: response.data.errors,
                             statusCode: response.statusCode
                         });
-                        break
+                        break;
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defer.reject(error);
             });
         return defer.promise;

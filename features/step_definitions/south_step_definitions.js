@@ -4,7 +4,7 @@ var { Given } = require('cucumber');
 Given(/^I want to create (a|an) "([^"]*)" with this element:$/, function (dummyWildcard, entityName, table, callback) {
     var _this = this;
     _this.error = undefined;
-    var model = "create";
+    var model = 'create';
     var element;
 
     try {
@@ -13,19 +13,15 @@ Given(/^I want to create (a|an) "([^"]*)" with this element:$/, function (dummyW
         var data = table.hashes();
 
         for (var i = 0; i < data.length; i++) {
-
             var submethod = _this.model_match(model).setters(entityName)[data[i].field];
             var value = _this.model_match(model).transform(data[i].type, data[i].content);
             element = element[submethod](value);
             this[entityName] = element;
-
-
         }
-
 
         callback();
     } catch (err) {
-        console.error('ERROR: ', err)
+        console.error('ERROR: ', err);
         _this.error = err;
 
         callback();
@@ -35,7 +31,7 @@ Given(/^I want to create (a|an) "([^"]*)" with this element:$/, function (dummyW
 Given(/^I want to define "([^"]*)" in "([^"]*)"$/, function (entityName, entityParent, callback) {
     var _this = this;
     _this.error = undefined;
-    var model = "create";
+    var model = 'create';
     var element;
     try {
         element = this[entityParent];
@@ -46,9 +42,8 @@ Given(/^I want to define "([^"]*)" in "([^"]*)"$/, function (entityName, entityP
         element = element[submethod](this[entityName]);
 
         callback();
-
     } catch (err) {
-        console.error('ERROR: ', err)
+        console.error('ERROR: ', err);
         _this.error = err;
         callback();
     }

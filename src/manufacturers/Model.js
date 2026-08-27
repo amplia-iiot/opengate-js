@@ -3,7 +3,7 @@
 import BaseProvision from '../provision/BaseProvision';
 import ModelMedia from './ModelMedia';
 
-import { MANUFACTURERS_RESOURCE } from './Manufacturer'
+import { MANUFACTURERS_RESOURCE } from './Manufacturer';
 
 export const MODELS_RESOURCE = '/models';
 
@@ -11,7 +11,6 @@ export const MODELS_RESOURCE = '/models';
  * This is a base object that contains everything you can do with Models.
  */
 export default class Models extends BaseProvision {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
@@ -20,7 +19,7 @@ export default class Models extends BaseProvision {
         super(ogapi, MANUFACTURERS_RESOURCE, undefined, ['name']);
         this._isValidString(manufacturer, 'manufacturer', 50);
 
-        this._resource = this._resource + "/" + manufacturer + MODELS_RESOURCE;
+        this._resource = this._resource + '/' + manufacturer + MODELS_RESOURCE;
     }
 
     /**
@@ -29,8 +28,7 @@ export default class Models extends BaseProvision {
      * @return {Models}
      */
     withIdentifier(id) {
-        if (typeof id !== 'string' || id.length > 50)
-            throw new Error("OGAPI_STRING_PARAMETER_MAX_LENGTH_50");
+        if (typeof id !== 'string' || id.length > 50) throw new Error('OGAPI_STRING_PARAMETER_MAX_LENGTH_50');
         this._identifier = id;
         return this;
     }
@@ -41,8 +39,7 @@ export default class Models extends BaseProvision {
      * @return {Models}
      */
     withName(name) {
-        if (typeof name !== 'string')
-            throw new Error("OGAPI_STRING_PARAMETER");
+        if (typeof name !== 'string') throw new Error('OGAPI_STRING_PARAMETER');
         this._name = name;
         return this;
     }
@@ -53,56 +50,51 @@ export default class Models extends BaseProvision {
      * @return {Models}
      */
     withDescription(description) {
-        if (typeof description !== 'string')
-            throw new Error("OGAPI_STRING_PARAMETER");
+        if (typeof description !== 'string') throw new Error('OGAPI_STRING_PARAMETER');
         this._description = description;
         return this;
     }
 
     /**
      * Set the notes attribute
-     * @param {string} notes 
+     * @param {string} notes
      * @return {Models}
      */
     withNotes(notes) {
-        if (typeof notes !== 'string')
-            throw new Error("OGAPI_STRING_PARAMETER");
+        if (typeof notes !== 'string') throw new Error('OGAPI_STRING_PARAMETER');
         this._notes = notes;
         return this;
     }
 
     /**
      * Set the url attribute
-     * @param {string} url 
+     * @param {string} url
      * @return {Models}
      */
     withUrl(url) {
-        if (typeof url !== 'string')
-            throw new Error("OGAPI_STRING_PARAMETER");
+        if (typeof url !== 'string') throw new Error('OGAPI_STRING_PARAMETER');
         this._modelUrl = url;
         return this;
     }
 
     /**
      * Set the version attribute
-     * @param {string} version 
+     * @param {string} version
      * @return {Models}
      */
     withVersion(version) {
-        if (typeof version !== 'string')
-            throw new Error("OGAPI_STRING_PARAMETER");
+        if (typeof version !== 'string') throw new Error('OGAPI_STRING_PARAMETER');
         this._version = version;
         return this;
     }
 
     mediaBuilder() {
-        if (!this._manufacturer || !this._identifier)
-            throw new Error("Required manufacturer and model identifier");
-        return new ModelMedia(this._ogapi, this._manufacturer, this._identifier)
+        if (!this._manufacturer || !this._identifier) throw new Error('Required manufacturer and model identifier');
+        return new ModelMedia(this._ogapi, this._manufacturer, this._identifier);
     }
 
     _composeElement() {
-        this._checkRequiredParameters()
+        this._checkRequiredParameters();
 
         var updateData = {
             name: this._name || undefined,
@@ -116,11 +108,11 @@ export default class Models extends BaseProvision {
     }
 
     _composeUpdateElement() {
-        return this._composeElement()
+        return this._composeElement();
     }
 
     _buildURL() {
-        var url = this._resource + (this._identifier ? "/" + this._identifier : "")
+        var url = this._resource + (this._identifier ? '/' + this._identifier : '');
         return url;
     }
 

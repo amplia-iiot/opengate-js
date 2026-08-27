@@ -1,0 +1,66 @@
+name: Release
+
+# Publishing is driven entirely by the tag. Pushing vX.Y.Z publishes X.Y.Z to npm; nothing else
+# does. The 214 tags this repository already carries all use that vX.Y.Z shape.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write # to create the GitHub release
+  id-token: write # to sign the package with npm provenance
+
+jobs:
+  publish:
+    name: Publish to npm
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: yarn
+          registry-url: https://registry.npmjs.org
+
+      - run: corepack enable
+
+      # A tag that disagrees with package.json would publish a version nobody asked for. Refuse
+      # early and loudly rather than discover it on npm, where a version can never be reused.
+      - name: Check that the tag matches package.json
+        run: |
+          TAG_VERSION="${GITHUB_REF_NAME#v}"
+          PKG_VERSION="$(node -p "require('./package.json').version")"
+          echo "tag=$TAG_VERSION package.json=$PKG_VERSION"
+          if [ "$TAG_VERSION" != "$PKG_VERSION" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match package.json version $PKG_VERSION"
+            exit 1
+          fi
+
+      - name: Install
+        run: yarn install --frozen-lockfile
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Unit tests
+        run: yarn test
+
+      - name: Build the API model
+        run: yarn apidoc:model
+
+      # prepack builds dist/ and regenerates types/ from src/, so the tarball can only ever contain
+      # a bundle compiled from the very commit being tagged. dist/ is not in the repository at all
+      # any more, which is what makes that guarantee hold. --provenance records, verifiably, that
+      # this build produced this tarball.
+      - name: Publish
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create the GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: build/api-model.json

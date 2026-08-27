@@ -6,7 +6,6 @@ import GenericFinder from '../GenericFinder';
  * This class performs GET requests against the provision processors resource in the OpenGate North API.
  */
 export default class provisionProcessorsFinder extends GenericFinder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
@@ -20,7 +19,7 @@ export default class provisionProcessorsFinder extends GenericFinder {
      * @test
      *   ogapi.newProvisionProcessorsFinder().findByOrganization(organization);
      * @param {string} organization - organization
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByOrganization(organization) {
         this._withId(organization);
@@ -33,7 +32,7 @@ export default class provisionProcessorsFinder extends GenericFinder {
      *   ogapi.newProvisionProcessorsFinder().findByOrganizationAndProvisionProcessorId(organization, identifier);
      * @param {string} organization - organization
      * @param {string} identifier - Provision Processors identifier
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByOrganizationAndProvisionProcessorId(organization, identifier) {
         this._withId(organization + '/' + identifier);

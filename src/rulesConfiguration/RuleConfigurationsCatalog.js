@@ -7,20 +7,19 @@ import GenericFinder from '../GenericFinder';
  * This class allows you to make GET requests to the RuleConfigurations resource in the OpenGate North API.
  */
 export default class RuleConfigurationsCatalog extends GenericFinder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, 'rules/catalog', "rulesTemplate", 'Rule templates not found');
+        super(ogapi, 'rules/catalog', 'rulesTemplate', 'Rule templates not found');
     }
 
     /**
      * Performs a get that returns rule templates
      * @test
      *   ogapi.newRuleConfigurationsCatalog().getTemplates();
-     * @return {Promise} 
+     * @return {Promise}
      */
     getTemplates() {
         return this._execute();

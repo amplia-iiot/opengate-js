@@ -8,28 +8,27 @@ import HttpStatus from 'http-status-codes';
  * This class allows making GET requests to the countries catalog resource in OpenGate North API.
  */
 export default class CountriesCatalog extends ProvisionGenericFinder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, 'organizations', "entity", 'Countries not found');
-        this.__filter = this._api._options._internalCountriesFilter
+        super(ogapi, 'organizations', 'entity', 'Countries not found');
+        this.__filter = this._api._options._internalCountriesFilter;
     }
 
     /**
      * Performs a get that returns countries
      * @test
      *   ogapi.newCountriesCatalog().getCountries();
-     * @return {Promise} 
+     * @return {Promise}
      */
     getCountries() {
         return this._execute();
     }
 
     _composeUrl() {
-        return this._baseUrl + "/" + this.__filter.organization + "/entities/" + this.__filter.identifier;
+        return this._baseUrl + '/' + this.__filter.organization + '/entities/' + this.__filter.identifier;
     }
 
     /**
@@ -41,15 +40,16 @@ export default class CountriesCatalog extends ProvisionGenericFinder {
         let promise = defered.promise;
         let _this = this;
         let _error_not_found = this._error_not_found;
-        this._api.get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), false, this._getServiceBaseURL())
-            .then((req) => {
+        this._api
+            .get(this._composeUrl(), undefined, this._getExtraHeaders(), this._getUrlParameters(), false, this._getServiceBaseURL())
+            .then(req => {
                 if (req.statusCode === 204) {
                     defered.reject({
                         error: _error_not_found,
                         statusCode: HttpStatus.NOT_FOUND
                     });
                 } else {
-                    var data = (jp.query(req.body, '$.' + _this.__filter.ds + '._current.value') || [])[0]
+                    var data = (jp.query(req.body, '$.' + _this.__filter.ds + '._current.value') || [])[0];
                     defered.resolve({
                         data: data,
                         statusCode: req.statusCode
@@ -57,7 +57,7 @@ export default class CountriesCatalog extends ProvisionGenericFinder {
                     // }
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 // BUG RELACIONADO (http://cm.amplia.es/jira/browse/OGODM-3250)
                 if (error.statusCode === 400) {
                     error.statusCode = HttpStatus.NOT_FOUND;
@@ -66,5 +66,4 @@ export default class CountriesCatalog extends ProvisionGenericFinder {
             });
         return promise;
     }
-
 }

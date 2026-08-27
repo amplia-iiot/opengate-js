@@ -2,12 +2,10 @@
 
 import Datapoint from './Datapoint';
 
-
 /**
  * This is a base object that allows the user to create a Datastream.
  */
 export default class Datastream {
-
     constructor() {
         this._id = undefined;
         this._feed = undefined;
@@ -20,8 +18,7 @@ export default class Datastream {
      * @return {Datastream}
      */
     withId(id) {
-        if (typeof id !== 'string' || id.length === 0)
-            throw new Error('OGAPI_STRING_PARAMETER_ID');
+        if (typeof id !== 'string' || id.length === 0) throw new Error('OGAPI_STRING_PARAMETER_ID');
         this._id = id;
         return this;
     }
@@ -32,8 +29,7 @@ export default class Datastream {
      * @return {Datastream}
      */
     withFeed(feed) {
-        if (typeof feed !== 'string' || feed.length === 0)
-            throw new Error('OGAPI_STRING_PARAMETER_FEED');
+        if (typeof feed !== 'string' || feed.length === 0) throw new Error('OGAPI_STRING_PARAMETER_FEED');
         this._feed = feed;
         return this;
     }
@@ -44,8 +40,7 @@ export default class Datastream {
      * @return {Datastream}
      */
     withDatapoint(datapoint) {
-        if (!(datapoint instanceof Datapoint))
-            throw new Error('OGAPI_PARAMETER_DATAPOINT');
+        if (!(datapoint instanceof Datapoint)) throw new Error('OGAPI_PARAMETER_DATAPOINT');
         this._datapoints.push(datapoint.composeElement());
         return this;
     }
@@ -55,18 +50,10 @@ export default class Datastream {
             throw new Error('Parameter id must be defined and dapoint list must have at least one element');
         }
         var datastream = {
-            'id': this._id,
-            'feed': this._feed,
-            'datapoints': this._datapoints
-
+            id: this._id,
+            feed: this._feed,
+            datapoints: this._datapoints
         };
         return datastream;
     }
-
-
-
-
-
-
-
 }

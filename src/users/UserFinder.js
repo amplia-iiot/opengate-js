@@ -6,7 +6,6 @@ import ProvisionGenericFinder from '../ProvisionGenericFinder';
  * This class performs GET requests against the user resource in the OpenGate North API.
  */
 export default class UserFinder extends ProvisionGenericFinder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
@@ -20,7 +19,7 @@ export default class UserFinder extends ProvisionGenericFinder {
      * @test
      *   ogapi.newUserFinder().findByEmail('myuser@amplia.es').then().catch();
      * @param {string} email - Email of the user.
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByEmail(email) {
         this._id = email;
@@ -40,5 +39,4 @@ export default class UserFinder extends ProvisionGenericFinder {
         this._setExtraHeaders({ 'X-ApiPass': password });
         return this._execute();
     }
-
 }

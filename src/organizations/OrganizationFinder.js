@@ -9,7 +9,6 @@ import HttpStatus from 'http-status-codes';
  * This class allows making GET requests to the organization resource in the OpenGate North API.
  */
 export default class OrganizationFinder extends ProvisionGenericFinder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
@@ -23,7 +22,7 @@ export default class OrganizationFinder extends ProvisionGenericFinder {
      * @test
      *   ogapi.newOrganizationFinder().findByName('my_org').then().catch();
      * @param {string} name - Organization name
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByName(name) {
         this._id = name;
@@ -34,9 +33,9 @@ export default class OrganizationFinder extends ProvisionGenericFinder {
      * Performs a get that returns organizations related
      * @test
      *   ogapi.newOrganizationFinder().findByDomainAndWorkgroup('xxx-xx-xxx-xxx', 'xxxxx-xxxx-xxxx').then().catch();
-     * @param {string} domain - domain 
+     * @param {string} domain - domain
      * @param {string} workgroup - workgroup.
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByDomainAndWorkgroup(domain, workgroup) {
         this._domain = domain;
@@ -47,42 +46,43 @@ export default class OrganizationFinder extends ProvisionGenericFinder {
         let promise = defered.promise;
         let _error_not_found = this._error_not_found;
 
-        this._executeWorkgroupRelation().then(function (request) {
-            if (request.statusCode === 204) {
-                defered.reject({
-                    data: _error_not_found,
-                    statusCode: HttpStatus.NOT_FOUND
-                });
-            } else {
-                let globalData = request.data;
-                let organizations = {};
-                let finalData = [];
-
-                for (let idx in globalData.channels) {
-                    if (!organizations[globalData.channels[idx].organization]) {
-                        organizations[globalData.channels[idx].organization] = globalData.channels[idx].organization;
-                        finalData.push({
-                            "name": globalData.channels[idx].organization
-                        });
-                    }
-
-                }
-
-                if (finalData.length > 0) {
-                    defered.resolve({
-                        data: finalData,
-                        statusCode: request.statusCode
-                    });
-                } else {
+        this._executeWorkgroupRelation()
+            .then(function (request) {
+                if (request.statusCode === 204) {
                     defered.reject({
                         data: _error_not_found,
                         statusCode: HttpStatus.NOT_FOUND
                     });
+                } else {
+                    let globalData = request.data;
+                    let organizations = {};
+                    let finalData = [];
+
+                    for (let idx in globalData.channels) {
+                        if (!organizations[globalData.channels[idx].organization]) {
+                            organizations[globalData.channels[idx].organization] = globalData.channels[idx].organization;
+                            finalData.push({
+                                name: globalData.channels[idx].organization
+                            });
+                        }
+                    }
+
+                    if (finalData.length > 0) {
+                        defered.resolve({
+                            data: finalData,
+                            statusCode: request.statusCode
+                        });
+                    } else {
+                        defered.reject({
+                            data: _error_not_found,
+                            statusCode: HttpStatus.NOT_FOUND
+                        });
+                    }
                 }
-            }
-        }).catch(function (error) {
-            defered.reject(error);
-        });
+            })
+            .catch(function (error) {
+                defered.reject(error);
+            });
 
         return promise;
     }
@@ -92,15 +92,15 @@ export default class OrganizationFinder extends ProvisionGenericFinder {
      * @private
      */
     _executeWorkgroupRelation() {
-
-        let workgroupsRelationsUrl = "provision/domains/" + this._domain + "/workgroups/" + this._workgroup + "/relations";
+        let workgroupsRelationsUrl = 'provision/domains/' + this._domain + '/workgroups/' + this._workgroup + '/relations';
 
         let defered = q.defer();
         let promise = defered.promise;
 
         let _error_not_found = this._error_not_found;
-        this._api.get(workgroupsRelationsUrl, undefined, this._getExtraHeaders(), this._getUrlParameters())
-            .then((req) => {
+        this._api
+            .get(workgroupsRelationsUrl, undefined, this._getExtraHeaders(), this._getUrlParameters())
+            .then(req => {
                 if (req.statusCode === 204) {
                     defered.reject({
                         data: _error_not_found,
@@ -113,10 +113,9 @@ export default class OrganizationFinder extends ProvisionGenericFinder {
                     });
                 }
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;
     }
-
 }

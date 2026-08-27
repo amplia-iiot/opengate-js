@@ -9,7 +9,6 @@ import HttpStatus from 'http-status-codes';
  * This class allows making GET requests to the bulk resource in the OpenGate North API.
  */
 export default class BulkFinder extends ProvisionGenericFinder {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
@@ -28,7 +27,7 @@ export default class BulkFinder extends ProvisionGenericFinder {
      * @param {string} id - entity id.
      * @param {string} format - format response flag.
      * @param {string} accept - accept.
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByOrganizationAndId(organization, id, format, accept) {
         this._organization = organization;
@@ -39,7 +38,7 @@ export default class BulkFinder extends ProvisionGenericFinder {
 
         if (accept) {
             this._setExtraHeaders({
-                'accept': accept
+                accept: accept
             });
         }
         return this._download(true);
@@ -73,6 +72,6 @@ export default class BulkFinder extends ProvisionGenericFinder {
     // }
 
     _composeUrl() {
-        return this._baseUrl + "/" + this._organization + "/" + this._entity + "/" + this._id;
+        return this._baseUrl + '/' + this._organization + '/' + this._entity + '/' + this._id;
     }
 }

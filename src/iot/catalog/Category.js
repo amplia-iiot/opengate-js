@@ -1,12 +1,12 @@
 'use strict';
 
-import Datastream from './Datastream'
+import Datastream from './Datastream';
 
 /**
  * Defines the builder used to configure a category of a datamodel, including the datastreams it groups.
  */
 export default class Category {
-    /**    
+    /**
      * @param {!InternalOpenGateAPI} ogapi - Reference to the API object.
      * @param {!identifier} identifier of category
      * @param {Array} datastreams of category
@@ -25,7 +25,7 @@ export default class Category {
     }
 
     /**
-     * Add a datastream to the category 
+     * Add a datastream to the category
      * @param {!Object} datastream json object
      * @return {Category}
      */
@@ -37,9 +37,8 @@ export default class Category {
         return this;
     }
 
-
     /**
-     * Add a datastreams to the category 
+     * Add a datastreams to the category
      * @param {!Object} datastreams of datastream json object
      * @return {Category}
      */
@@ -49,7 +48,7 @@ export default class Category {
             throw new Error('Datastreams must be an array');
         }
         let _errors = [];
-        datastreams.forEach(function(datastream, index) {
+        datastreams.forEach(function (datastream, index) {
             try {
                 _this.addDatastream(datastream);
             } catch (error) {
@@ -64,7 +63,9 @@ export default class Category {
 
     _isValidString(string, param_name, max_length) {
         if (typeof string !== 'string' || string.length === 0 || string.length > max_length)
-            throw new Error('Parameter ' + param_name + ' must be a string, cannot be empty and has a maximum length of ' + max_length + ' on Category');
+            throw new Error(
+                'Parameter ' + param_name + ' must be a string, cannot be empty and has a maximum length of ' + max_length + ' on Category'
+            );
     }
 
     _composeElement() {
@@ -73,9 +74,9 @@ export default class Category {
         }
 
         return {
-            'identifier': this._identifier,
-            'name': this._name ? this._name : undefined,
-            'datastreams': this._datastreams
+            identifier: this._identifier,
+            name: this._name ? this._name : undefined,
+            datastreams: this._datastreams
         };
     }
 }

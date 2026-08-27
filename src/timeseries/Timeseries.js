@@ -1,27 +1,26 @@
 'use strict';
 
 import BaseProvision from '../provision/BaseProvision';
-import checkType from '../util/formats/check_types'
+import checkType from '../util/formats/check_types';
 export const URL = 'timeseries/provision/organizations/';
 /**
  * This object represents a timeseries and exposes all the attributes you can configure for it.
  */
 
 export default class Timeseries extends BaseProvision {
-
     /**
      * Constructor
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
-        super(ogapi, '/organizations/', undefined, ['name', 'organization', "timeBucket", 'identifierColumn']);
+        super(ogapi, '/organizations/', undefined, ['name', 'organization', 'timeBucket', 'identifierColumn']);
     }
 
     _buildURL() {
         let url = URL + this._organization + '/' + this._identifier;
 
         if (this._onlyPlan) {
-            url += '?onlyPlan=true'
+            url += '?onlyPlan=true';
         }
 
         return url;
@@ -55,7 +54,7 @@ export default class Timeseries extends BaseProvision {
      * @return {Timeseries}
      */
     withName(name) {
-        checkType._checkStringAndPattern(name, "^[a-zA-Z0-9_@.-]*$", 'name');
+        checkType._checkStringAndPattern(name, '^[a-zA-Z0-9_@.-]*$', 'name');
         this._name = name;
         return this;
     }
@@ -112,11 +111,10 @@ export default class Timeseries extends BaseProvision {
      * @return {Timeseries}
      */
     withBucketColumn(bucketColumn) {
-        checkType._checkStringAndPattern(bucketColumn, "^[a-zA-Z0-9 _-]*$", 'bucketColumn');
+        checkType._checkStringAndPattern(bucketColumn, '^[a-zA-Z0-9 _-]*$', 'bucketColumn');
         this._bucketColumn = bucketColumn;
         return this;
     }
-
 
     /**
      * Name of generated column with bucket init date.
@@ -124,7 +122,7 @@ export default class Timeseries extends BaseProvision {
      * @return {Timeseries}
      */
     withBucketInitColumn(bucketInitColumn) {
-        checkType._checkStringAndPattern(bucketInitColumn, "^[a-zA-Z0-9 _-]*$", 'bucketInitColumn');
+        checkType._checkStringAndPattern(bucketInitColumn, '^[a-zA-Z0-9 _-]*$', 'bucketInitColumn');
         this._bucketInitColumn = bucketInitColumn;
         return this;
     }
@@ -140,7 +138,7 @@ export default class Timeseries extends BaseProvision {
         return this;
     }
 
-    /** 
+    /**
      * Initial date to first bucket with ISO date time format. Next bucket will be calcullated from this date. Default value is created date with time equals 00:00:00.000Z
      * @param {string}  origin
      * @return {Timeseries}
@@ -176,10 +174,10 @@ export default class Timeseries extends BaseProvision {
     _composeElement() {
         this._resource = URL + this._organization;
         if (this._timeBucket > 0) {
-            checkType._checkStringAndPattern(this._bucketColumn, "^[a-zA-Z0-9 _-]*$", 'bucketColumn');
+            checkType._checkStringAndPattern(this._bucketColumn, '^[a-zA-Z0-9 _-]*$', 'bucketColumn');
 
             if (this._bucketInitColumn) {
-                checkType._checkStringAndPattern(this._bucketInitColumn, "^[a-zA-Z0-9 _-]*$", 'bucketInitColumn');
+                checkType._checkStringAndPattern(this._bucketInitColumn, '^[a-zA-Z0-9 _-]*$', 'bucketInitColumn');
             }
         }
         const timeserie = {
@@ -200,10 +198,10 @@ export default class Timeseries extends BaseProvision {
 
     _composeUpdateElement() {
         if (this._timeBucket > 0) {
-            checkType._checkStringAndPattern(this._bucketColumn, "^[a-zA-Z0-9 _-]*$", 'bucketColumn');
+            checkType._checkStringAndPattern(this._bucketColumn, '^[a-zA-Z0-9 _-]*$', 'bucketColumn');
 
             if (this._bucketInitColumn) {
-                checkType._checkStringAndPattern(this._bucketInitColumn, "^[a-zA-Z0-9 _-]*$", 'bucketInitColumn');
+                checkType._checkStringAndPattern(this._bucketInitColumn, '^[a-zA-Z0-9 _-]*$', 'bucketInitColumn');
             }
         }
         const timeserie = {

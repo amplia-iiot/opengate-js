@@ -1,12 +1,11 @@
 'use strict';
 
-
+import parameterError from '../../../util/parameterError';
 
 /**
  * This is a base object that allows the user to create a Datapoint.
  */
 export default class Datapoint {
-
     constructor() {
         this._from = undefined;
         this._at = undefined;
@@ -21,8 +20,7 @@ export default class Datapoint {
      */
     withFrom(from) {
         if (from !== null) {
-            if (typeof from !== 'number')
-                throw new Error('OGAPI_MUST_BE_NUMBER_PARAMETER');
+            if (typeof from !== 'number') throw new Error('OGAPI_MUST_BE_NUMBER_PARAMETER');
             this._from = from;
         }
         return this;
@@ -35,8 +33,7 @@ export default class Datapoint {
      */
     withAt(at) {
         if (at !== null) {
-            if (typeof at !== 'number')
-                throw new Error('OGAPI_MUST_BE_NUMBER_PARAMETER');
+            if (typeof at !== 'number') throw new Error('OGAPI_MUST_BE_NUMBER_PARAMETER');
             this._at = at;
         }
         return this;
@@ -44,12 +41,11 @@ export default class Datapoint {
 
     /**
      * Sets the value attribute
-     * @param {string} value - required field 
+     * @param {string} value - required field
      * @return {Datapoint}
      */
     withValue(value) {
-        if (value === undefined || value.length === 0)
-            throw new Error('OGAPI_DEFINED_PARAMETER');
+        if (value === undefined || value.length === 0) throw new Error('OGAPI_DEFINED_PARAMETER');
         this._value = value;
         return this;
     }
@@ -60,8 +56,7 @@ export default class Datapoint {
      * @return {Datapoint}
      */
     withSource(value) {
-        if (value === undefined || value.length === 0)
-            throw new Error('OGAPI_DEFINED_PARAMETER');
+        if (value === undefined || value.length === 0) throw new Error('OGAPI_DEFINED_PARAMETER');
         this._source = value;
         return this;
     }
@@ -72,21 +67,19 @@ export default class Datapoint {
      * @return {Datapoint}
      */
     withSourceInfo(value) {
-        if (value === undefined || value.length === 0)
-            throw new Error('OGAPI_DEFINED_PARAMETER');
+        if (value === undefined || value.length === 0) throw new Error('OGAPI_DEFINED_PARAMETER');
         this._sourceInfo = value;
         return this;
     }
 
     /**
      * Sets the tags attribute
-     * @param {Array} tags 
+     * @param {Array} tags
      * @return {Datapoint}
      */
     withTags(tags) {
         if (tags !== null) {
-            if (tags.constructor !== Array || tags.length === 0)
-                throw new Error({ message: 'OGAPI_ARRAY_PARAMETER', parameter: 'tags' });
+            if (tags.constructor !== Array || tags.length === 0) throw parameterError('OGAPI_ARRAY_PARAMETER', { parameter: 'tags' });
             this._tags = tags;
         }
         return this;
@@ -94,19 +87,16 @@ export default class Datapoint {
 
     composeElement() {
         if (this._value === undefined || this._value.length === 0) {
-            throw new Error({ message: 'OGAPI_DEFINED_PARAMETER', parameter: 'value' });
+            throw parameterError('OGAPI_DEFINED_PARAMETER', { parameter: 'value' });
         }
         var datapoint = {
-            'from': this._from || undefined,
-            'at': this._at || undefined,
-            'value': this._value,
-            'tags': this._tags || undefined,
-            'source': this._source || undefined,
-            'sourceInfo': this._sourceInfo || undefined
+            from: this._from || undefined,
+            at: this._at || undefined,
+            value: this._value,
+            tags: this._tags || undefined,
+            source: this._source || undefined,
+            sourceInfo: this._sourceInfo || undefined
         };
         return datapoint;
     }
-
-
-
 }

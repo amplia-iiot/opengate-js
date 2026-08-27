@@ -2,15 +2,14 @@
 
 import ProvisionGenericFinder from '../ProvisionGenericFinder';
 import _ from 'lodash';
-import {PLAN, ORGANIZATION_PLANS} from './URL_ENUM'
+import { PLAN, ORGANIZATION_PLANS } from './URL_ENUM';
 import { VISIBILITY } from './VISIBILITY_ENUM';
 
 /**
  * This class allows making GET requests to the organization plans resource in the OpenGate North API.
  */
 export default class OrganizationPlansFinder extends ProvisionGenericFinder {
-
-    /**     
+    /**
      * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
@@ -22,54 +21,53 @@ export default class OrganizationPlansFinder extends ProvisionGenericFinder {
      * @private
      */
     _composeUrl() {
-        const _url = this._baseUrl + "/" + this._organization + "/" + ORGANIZATION_PLANS
-        if(!_.isNil(this._id)){
+        const _url = this._baseUrl + '/' + this._organization + '/' + ORGANIZATION_PLANS;
+        if (!_.isNil(this._id)) {
             this.default();
-            return _url + this._id
+            return _url + this._id;
         }
-        return _url 
+        return _url;
     }
 
     /**
      * Marks visibility assignable for organization plans list retrieval
      * ogapi.newOrganizationPlansFinder().assignable().findByOrganization(&#x27;organization&#x27;).then().catch();
-     * @return {this} 
+     * @return {this}
      */
     assignable() {
-        this._setUrlParameters({visibility: VISIBILITY.assignable});
-        return this
+        this._setUrlParameters({ visibility: VISIBILITY.assignable });
+        return this;
     }
 
-
-   /**
+    /**
      * Marks visibility administrable for organization plans list retrieval.
      * ogapi.newOrganizationPlansFinder().administrable().findByOrganization(&#x27;organization&#x27;).then().catch();
-     * @return {this} 
+     * @return {this}
      */
     administrable() {
-        this._setUrlParameters({visibility: VISIBILITY.administrable});
-        return this
+        this._setUrlParameters({ visibility: VISIBILITY.administrable });
+        return this;
     }
 
     /**
      * Marks visibility default for plans list list retrieval.
      * ogapi.newOrganizationPlansFinder().default().findByOrganization(&#x27;organization&#x27;).then().catch();
-     * @return {this} 
+     * @return {this}
      */
     default() {
-        this._setUrlParameters({visibility: undefined});
-        return this
+        this._setUrlParameters({ visibility: undefined });
+        return this;
     }
 
     /**
      * Retrieves all plans from a organization
      * ogapi.newOrganizationPlansFinder().findByOrganization(&#x27;organization&#x27;).then().catch();
      * @param {string} organization - organization name .
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByOrganization(organization) {
         this._organization = organization;
-        this._entity = ORGANIZATION_PLANS
+        this._entity = ORGANIZATION_PLANS;
         return this._execute();
     }
 
@@ -79,12 +77,12 @@ export default class OrganizationPlansFinder extends ProvisionGenericFinder {
      * &#x27;identifier&#x27;).then().catch();
      * @param {string} organization - organization name .
      * @param {string} identifier - plan name.
-     * @return {Promise} 
+     * @return {Promise}
      */
     findByOrganizationAndId(organization, identifier) {
         this._organization = organization;
-        this._withId("/" + identifier)
-        this._entity = PLAN
+        this._withId('/' + identifier);
+        this._entity = PLAN;
         return this._execute();
-    }   
+    }
 }

@@ -19,15 +19,16 @@ export default class BulkExecutionSearchBuilder extends SearchBuilder {
     }
 
     /**
-     * Build a instance of WPSearch 
+     * Build a instance of WPSearch
      *
      * @example
      *  ogapi.bulkExecutionSearchBuilder().build()
      * @throws {SearchBuilderError} Throw error on url build
-     * @return {WPSearch} 
+     * @return {WPSearch}
      */
-     build() {
-        return new WPSearch(this._parent,
+    build() {
+        return new WPSearch(
+            this._parent,
             this._buildUrl(),
             this._buildFilter(),
             this._buildLimit(),
@@ -35,6 +36,7 @@ export default class BulkExecutionSearchBuilder extends SearchBuilder {
             this._buildGroup(),
             this._buildSelect(),
             this._builderParams.timeout,
-            this._urlParams);
+            this._urlParams
+        );
     }
 }

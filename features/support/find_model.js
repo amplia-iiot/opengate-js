@@ -1,114 +1,112 @@
 module.exports = {
     setters: function (setter) {
         return {
-
-            'bundle': {
-                'nameAndversion': 'findByNameAndVersion'
+            bundle: {
+                nameAndversion: 'findByNameAndVersion'
             },
             'bulk execution': {
-                'organizationAndid': 'findByOrganizationAndId',
-                'organizationAndidAndaccept': 'findByOrganizationAndId'
+                organizationAndid: 'findByOrganizationAndId',
+                organizationAndidAndaccept: 'findByOrganizationAndId'
             },
             'communications module': {
-                'organizationAndid': 'findByOrganizationAndId'
+                organizationAndid: 'findByOrganizationAndId'
             },
-            'datamodel': {
-                'organizationAndid': 'findByOrganizationAndId'
+            datamodel: {
+                organizationAndid: 'findByOrganizationAndId'
             },
-            'channel': {
-                'organizationAndname': 'findByOrganizationAndName',
-                'domainAndworkgroup': 'findByDomainAndWorkgroup',
-                'domainAndworkgroupAndorganization': 'findByDomainAndWorkgroupAndOrganization'
+            channel: {
+                organizationAndname: 'findByOrganizationAndName',
+                domainAndworkgroup: 'findByDomainAndWorkgroup',
+                domainAndworkgroupAndorganization: 'findByDomainAndWorkgroupAndOrganization'
             },
-            'certificate': {
-                'id': 'findById',
-                'idAndformat': 'findByIdAndFormat'
+            certificate: {
+                id: 'findById',
+                idAndformat: 'findByIdAndFormat'
             },
-            'device': {
-                'organizationAndid': 'findByOrganizationAndId'
+            device: {
+                organizationAndid: 'findByOrganizationAndId'
             },
-            'ticket': {
-                'organizationAndid': 'findByOrganizationAndId'
+            ticket: {
+                organizationAndid: 'findByOrganizationAndId'
             },
-            'subscription': {
-                'organizationAndid': 'findByOrganizationAndId'
+            subscription: {
+                organizationAndid: 'findByOrganizationAndId'
             },
-            'subscriber': {
-                'organizationAndid': 'findByOrganizationAndId'
+            subscriber: {
+                organizationAndid: 'findByOrganizationAndId'
             },
-            'asset': {
-                'organizationAndid': 'findByOrganizationAndId'
+            asset: {
+                organizationAndid: 'findByOrganizationAndId'
             },
-            'domain': {
-                'name': 'findByName',
-                'nameWithHierarchy': 'findByNameWithHierarchy'
+            domain: {
+                name: 'findByName',
+                nameWithHierarchy: 'findByNameWithHierarchy'
             },
-            'executions': {
-                'id': 'findExecutionsById'
+            executions: {
+                id: 'findExecutionsById'
             },
 
-            'operation': {
-                'id': 'findById'
+            operation: {
+                id: 'findById'
             },
-            'organization': {
-                'name': 'findByName',
-                'domainAndworkgroup': 'findByDomainAndWorkgroup'
+            organization: {
+                name: 'findByName',
+                domainAndworkgroup: 'findByDomainAndWorkgroup'
             },
-            'periodicity': {
-                'id': 'findPeriodicityById'
+            periodicity: {
+                id: 'findPeriodicityById'
             },
-            'user': {
-                'email': 'findByEmail'
+            user: {
+                email: 'findByEmail'
             },
             ruleConfigurationsHelper: {
-                'documentaion': 'getDocJavascriptFunctions',
-                'privateDocumentation': 'getDocPrivateJavascriptFunctions'
+                documentaion: 'getDocJavascriptFunctions',
+                privateDocumentation: 'getDocPrivateJavascriptFunctions'
             },
-            'dataset':{
-                'organizationId': 'findByOrganization',
-                'organizationIdAnddatasetId': 'findByOrganizationAndDatasetId',
-                'organizationAndname': 'findByOrganizationAndName'
+            dataset: {
+                organizationId: 'findByOrganization',
+                organizationIdAnddatasetId: 'findByOrganizationAndDatasetId',
+                organizationAndname: 'findByOrganizationAndName'
             },
-            'timeserie':{
-                'organizationId': 'findByOrganization',
-                'organizationIdAndtimeserieId': 'findByOrganizationAndTimeserieId',
-                'organizationIdAndexpandAnddataStreams': 'findByOrganization',
-                'organizationIdAndexpand': 'findByOrganization',
-                'organizationAndname': 'findByOrganizationAndName'
+            timeserie: {
+                organizationId: 'findByOrganization',
+                organizationIdAndtimeserieId: 'findByOrganizationAndTimeserieId',
+                organizationIdAndexpandAnddataStreams: 'findByOrganization',
+                organizationIdAndexpand: 'findByOrganization',
+                organizationAndname: 'findByOrganizationAndName'
             },
             'rule configuration': {
-                'organizationAndchannelAndenabled': 'findByOrganizationAndChannelAndEnabled',
-                'organizationAndchannelAndname': 'findByOrganizationAndChannelAndName',
-                'organizationAndchannel': 'findByOrganizationAndChannel'
+                organizationAndchannelAndenabled: 'findByOrganizationAndChannelAndEnabled',
+                organizationAndchannelAndname: 'findByOrganizationAndChannelAndName',
+                organizationAndchannel: 'findByOrganizationAndChannel'
             },
-            'workgroup': {
-                'domainAndname': 'findByDomainAndName'
+            workgroup: {
+                domainAndname: 'findByDomainAndName'
             },
-            'area': {
-                'organizationAndidentifier': 'findByOrganizationAndIdentifier',
-                'organization': 'findByOrganization'
+            area: {
+                organizationAndidentifier: 'findByOrganizationAndIdentifier',
+                organization: 'findByOrganization'
             },
-            'provisionProcessors':{
-                'organizationId': 'findByOrganization',
-                'organizationIdAndProvisionProcessorId':'findByOrganizationAndProvisionProcessorId',
+            provisionProcessors: {
+                organizationId: 'findByOrganization',
+                organizationIdAndProvisionProcessorId: 'findByOrganizationAndProvisionProcessorId'
             },
-            'countries': {
-                'countries': 'getCountries'
+            countries: {
+                countries: 'getCountries'
             },
-            'connectorFunctionsCalaog': {
-                'connectorFunctionsId': 'findByConnectorFunctionsId',
-                'catalog': 'getConnectorFunctionsCatalog'
+            connectorFunctionsCalaog: {
+                connectorFunctionsId: 'findByConnectorFunctionsId',
+                catalog: 'getConnectorFunctionsCatalog'
             },
-            'organizationPlans': {
-                'organizationId': 'findByOrganization',
-                'organizationIdAndIdentifier': 'findByOrganizationAndId'
+            organizationPlans: {
+                organizationId: 'findByOrganization',
+                organizationIdAndIdentifier: 'findByOrganizationAndId'
+            },
+            devicePlans: {
+                organizationId: 'findByOrganization',
+                organizationIdAndIdentifier: 'findByOrganizationAndId'
             }
-            ,
-            'devicePlans': {
-                'organizationId': 'findByOrganization',
-                'organizationIdAndIdentifier': 'findByOrganizationAndId'
-            }
-        } [setter];
+        }[setter];
         ///home/manuel/Escritorio/proyectos/opengateJs/opengate-js/features/support/find_model.js
     },
     getter_response: function (getter) {
@@ -154,9 +152,9 @@ module.exports = {
             'timeset identifier': 'identifier',
             'dataset name': 'name',
             'timeset name': 'name',
-            'country': '$[0].name',
-            'region': '$[0].regions[0].name',
-            'province': '$[0].regions[0].provinces[0].name',
+            country: '$[0].name',
+            region: '$[0].regions[0].name',
+            province: '$[0].regions[0].provinces[0].name',
             'connector function catalog name': '$[0].connectorFunctions.name',
             'timeserie - name': '$[0].name',
             'timeserie - columns': '$[0].columns',
@@ -172,9 +170,7 @@ module.exports = {
             'device plan list name': '$[0].name',
             'device plan list flowRate': '$[0].flowRate',
             'device plan name': 'name',
-            'device plan flowRate': 'flowRate',
-            
-            
-        } [getter];
+            'device plan flowRate': 'flowRate'
+        }[getter];
     }
 };

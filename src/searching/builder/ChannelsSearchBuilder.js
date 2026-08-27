@@ -18,12 +18,11 @@ export default class ChannelsSearchBuilder extends SearchWithSummaryBuilder {
         this._summary = false;
     }
 
-
     /**
      * The response will return a response without sorted
      * @example
-     *	ogapi.channelsSearchBuilder().disableDefaultSorted() 
-     * @return {ChannelsSearchBuilder} 
+     *	ogapi.channelsSearchBuilder().disableDefaultSorted()
+     * @return {ChannelsSearchBuilder}
      */
     disableDefaultSorted() {
         this._urlParams.defaultSorted = false;
@@ -31,10 +30,10 @@ export default class ChannelsSearchBuilder extends SearchWithSummaryBuilder {
     }
 
     /**
-     * The response will only have a summary information 
+     * The response will only have a summary information
      * @example
-     *	ogapi.channelsSearchBuilder().summary() 
-     * @return {SearchWithSummaryBuilder} 
+     *	ogapi.channelsSearchBuilder().summary()
+     * @return {SearchWithSummaryBuilder}
      */
     summary() {
         this._summary = true;
@@ -47,5 +46,4 @@ export default class ChannelsSearchBuilder extends SearchWithSummaryBuilder {
         }
         return super._buildUrl();
     }
-
 }

@@ -4,7 +4,7 @@ import q from 'q';
 
 const LIMIT_SIZE_DEF_VALUE = 1000;
 
-/** 
+/**
  * This is an abstract class that must be extended by another class defining the specific search. This class is
  * responsible for managing and executing requests to the OpenGate North API.
  */
@@ -18,10 +18,10 @@ export default class BaseSearch {
      */
     constructor(ogapi, resource, timeout, serviceBaseURL) {
         if (this.constructor === BaseSearch) {
-            throw new Error("Cannot construct Abstract instances directly");
+            throw new Error('Cannot construct Abstract instances directly');
         }
-        if (typeof this._filter !== "function") {
-            throw new Error("Must override method: filter");
+        if (typeof this._filter !== 'function') {
+            throw new Error('Must override method: filter');
         }
         if (typeof timeout !== 'number') {
             this._timeout = ogapi.Napi._options.timeout;
@@ -32,7 +32,7 @@ export default class BaseSearch {
         this._resource = resource;
         this._headers = undefined;
         this._urlParameters = undefined;
-        this._serviceBaseURL = serviceBaseURL
+        this._serviceBaseURL = serviceBaseURL;
     }
 
     _getExtraHeaders() {
@@ -76,9 +76,15 @@ export default class BaseSearch {
     execute() {
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Napi
-            .post(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
-            .then((response) => {
+        this._ogapi.Napi.post(
+            this._resource,
+            this._filter(),
+            this._timeout,
+            this._getExtraHeaders(),
+            this._getUrlParameters(),
+            this._getServiceBaseURL()
+        )
+            .then(response => {
                 let resultQuery = response.body;
                 let statusCode = response.statusCode;
                 defered.resolve({
@@ -86,7 +92,7 @@ export default class BaseSearch {
                     statusCode: statusCode
                 });
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;
@@ -136,11 +142,18 @@ export default class BaseSearch {
             delete filter.limit;
         }
         this._setExtraHeaders({
-            'Accept': 'text/plain'
+            Accept: 'text/plain'
         });
 
-        this._ogapi.Napi.post(this._resource, filter, this._timeout, this._getExtraHeaders(), this._getUrlParameters(), this._getServiceBaseURL())
-            .then((response) => {
+        this._ogapi.Napi.post(
+            this._resource,
+            filter,
+            this._timeout,
+            this._getExtraHeaders(),
+            this._getUrlParameters(),
+            this._getServiceBaseURL()
+        )
+            .then(response => {
                 let resultQuery = response;
                 let statusCode = response.statusCode;
                 defered.resolve({
@@ -148,7 +161,7 @@ export default class BaseSearch {
                     statusCode: statusCode
                 });
             })
-            .catch((error) => {
+            .catch(error => {
                 defered.reject(error);
             });
         return promise;
@@ -174,8 +187,7 @@ export default class BaseSearch {
     cancelAsyncPaging(message) {
         if (typeof message === 'string' && message.length > 0) {
             this.cancel = message;
-        } else
-            this.cancel = true;
+        } else this.cancel = true;
     }
 
     _loadData(resource) {
@@ -192,9 +204,15 @@ export default class BaseSearch {
                     statusCode: 403
                 });
             } else {
-                _this._ogapi.Napi
-                    .post(_this._resource, filter, _this._timeout, _this._getExtraHeaders(), _this._getUrlParameters(), _this._getServiceBaseURL())
-                    .then((response) => {
+                _this._ogapi.Napi.post(
+                    _this._resource,
+                    filter,
+                    _this._timeout,
+                    _this._getExtraHeaders(),
+                    _this._getUrlParameters(),
+                    _this._getServiceBaseURL()
+                )
+                    .then(response => {
                         let statusCode = response.statusCode;
                         let body = response.body;
                         if (!body && response.text) {
@@ -205,7 +223,7 @@ export default class BaseSearch {
                                     body = parsedResult;
                                 }
                             } catch (ignoreError) {
-                                console.error("Impossible to parse text from response");
+                                console.error('Impossible to parse text from response');
                             }
                         }
 
@@ -236,7 +254,7 @@ export default class BaseSearch {
                                 });
                         }
                     })
-                    .catch((error) => {
+                    .catch(error => {
                         defered.reject(error);
                     });
             }
@@ -261,21 +279,22 @@ export default class BaseSearch {
         //Comenzamos con la carga asincrona
         this._loadData(resource)
             .then(
-                (response) => {
+                response => {
                     defered.resolve(response);
-                }, null,
-                (notify) => {
+                },
+                null,
+                notify => {
                     defered.notify(notify);
-                })
-            .catch((error) => {
+                }
+            )
+            .catch(error => {
                 defered.reject(error);
             });
-
 
         return promise;
     }
 
     _getServiceBaseURL() {
-        return this._serviceBaseURL
+        return this._serviceBaseURL;
     }
 }

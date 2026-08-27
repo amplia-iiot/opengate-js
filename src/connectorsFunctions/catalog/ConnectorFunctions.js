@@ -1,26 +1,26 @@
 'use strict';
 
-import InternalOpenGateAPI from "../../InternalOpenGateAPI";
-import BaseProvision from "../../provision/BaseProvision";
+import InternalOpenGateAPI from '../../InternalOpenGateAPI';
+import BaseProvision from '../../provision/BaseProvision';
 import {
     CONNECTOR_FUNCTION_TYPES,
     CONNECTOR_FUNCTION_OPERATIONAL_STATUS,
     CONNECTOR_FUNCTION_PAYLOAD_TYPES
 } from '../_CONNECTOR_FUNCTIONS_ENUMS';
+import parameterError from '../../util/parameterError';
 
 /**
  * This is a base object that contains everything you can do with a connector function catalog entry.
  */
 export default class ConnectorFunctions extends BaseProvision {
-
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} ogapi 
-     * @param {String} identifier 
-     * @param {Object} connectorFunction 
+     * @param {InternalOpenGateAPI} ogapi
+     * @param {String} identifier
+     * @param {Object} connectorFunction
      */
     constructor(ogapi, identifier, connectorFunction) {
-        super(ogapi, "/catalog", undefined, ["name", "operationalStatus", "type", "cloneable", "javascript", "payloadType"])
+        super(ogapi, '/catalog', undefined, ['name', 'operationalStatus', 'type', 'cloneable', 'javascript', 'payloadType']);
 
         // only for updates and delete
         if (identifier) {
@@ -28,21 +28,21 @@ export default class ConnectorFunctions extends BaseProvision {
         }
 
         if (connectorFunction) {
-            const _keys = Object.keys(connectorFunction)
+            const _keys = Object.keys(connectorFunction);
             for (let i = 0; i < _keys.length; i++) {
-                const _name = _keys[i]
-                const _value = connectorFunction[_name]
+                const _name = _keys[i];
+                const _value = connectorFunction[_name];
                 if (_value !== null && _value !== undefined) {
-                    const _cname = _name.charAt(0).toUpperCase() + _name.slice(1)
-                    this["with" + _cname](_value)
+                    const _cname = _name.charAt(0).toUpperCase() + _name.slice(1);
+                    this['with' + _cname](_value);
                 }
             }
         }
     }
 
     /**
-     * Set the identifier 
-     * @param {String} identifier 
+     * Set the identifier
+     * @param {String} identifier
      * @returns {ConnectorFunctionsCatalog}
      */
     withIdentifier(identifier) {
@@ -54,7 +54,7 @@ export default class ConnectorFunctions extends BaseProvision {
 
     /**
      * Descriptive and unique name
-     * @param {String} name 
+     * @param {String} name
      * @returns {ConnectorFunctionsCatalog}
      */
     withName(name) {
@@ -66,29 +66,28 @@ export default class ConnectorFunctions extends BaseProvision {
 
     /**
      * Description of the connector function. This field is optional.
-     * @param {String} description 
+     * @param {String} description
      * @returns {ConnectorFunctionsCatalog}
      */
     withDescription(description) {
         if (typeof description !== 'string' || description.length > 250)
-            throw new Error({
-                message: "OGAPI_STRING_PARAMETER_MAX_LENGTH_250",
-                parameter: 'description'
-            });
+            throw parameterError('OGAPI_STRING_PARAMETER_MAX_LENGTH_250', { parameter: 'description' });
         this._description = description;
         return this;
     }
 
     /**
-     * 
+     *
      * Connector Function status
      * Allowed: DISABLED┃PRODUCTION┃TEST
-     * @param {String} operationalStatus 
+     * @param {String} operationalStatus
      * @returns {ConnectorFunctionsCatalog}
      */
     withOperationalStatus(operationalStatus) {
         if (typeof operationalStatus !== 'string' || !this._checkValues(operationalStatus, CONNECTOR_FUNCTION_OPERATIONAL_STATUS))
-            throw new Error('Parameter operational status must be a string and must be one of these values: ' + CONNECTOR_FUNCTION_OPERATIONAL_STATUS);
+            throw new Error(
+                'Parameter operational status must be a string and must be one of these values: ' + CONNECTOR_FUNCTION_OPERATIONAL_STATUS
+            );
 
         this._operationalStatus = operationalStatus;
         return this;
@@ -96,7 +95,7 @@ export default class ConnectorFunctions extends BaseProvision {
 
     /**
      * Used to filter connector functions by operation name. If Connector Function type is REQUEST, this field is mandatory and defined name must be an operation name available for specified Api Key. If the type is COLLECTION or RESPONSE, this field must be null.
-     * @param {String} operationName 
+     * @param {String} operationName
      * @returns {ConnectorFunctionsCatalog}
      */
     withOperationName(operationName) {
@@ -107,10 +106,10 @@ export default class ConnectorFunctions extends BaseProvision {
     }
 
     /**
-     * 
+     *
      * Type of connector function, this is mandatory. Keep in mind that you will be not allowed to modify it.
      * Allowed: COLLECTION┃REQUEST┃RESPONSE
-     * @param {String} type 
+     * @param {String} type
      * @returns {ConnectorFunctionsCatalog}
      */
     withType(type) {
@@ -123,71 +122,65 @@ export default class ConnectorFunctions extends BaseProvision {
 
     /**
      * Indicates whether or not the Connector Function is cloneable.
-     * @param {Boolean} cloneable 
+     * @param {Boolean} cloneable
      * @returns {ConnectorFunctionsCatalog}
      */
     withCloneable(cloneable) {
-        if (typeof cloneable !== 'boolean')
-            throw new Error('Parameter cloneable must be a boolean');
+        if (typeof cloneable !== 'boolean') throw new Error('Parameter cloneable must be a boolean');
         this._cloneable = cloneable;
         return this;
     }
 
     /**
      * Connector Function selection criteria for operation requests. This field is mandatory if Connector Function type is REQUEST. ⮕ [ each element is defined by path and value ]
-     * @param {Array} northCriterias 
+     * @param {Array} northCriterias
      * @returns {ConnectorFunctionsCatalog}
      */
     withNorthCriterias(northCriterias) {
         if (!(northCriterias instanceof Array))
-            throw new Error({
-                message: "Parameter northCriterias requires an array",
-                parameter: 'northCriterias'
-            });
+            throw parameterError('Parameter northCriterias requires an array', { parameter: 'northCriterias' });
         this._northCriterias = northCriterias;
         return this;
     }
 
     /**
-     * Add northCriteria to parameter northCriterias. Each element is defined by path and value 
-     * @param {Object} northCriteria 
+     * Add northCriteria to parameter northCriterias. Each element is defined by path and value
+     * @param {Object} northCriteria
      * @returns {ConnectorFunctionsCatalog}
      */
     addNorthCriteria(northCriteria) {
-        if (typeof northCriteria !== 'object' ||
-            !northCriteria.path || typeof northCriteria.path !== 'string' ||
-            !northCriteria.value || typeof northCriteria.value !== 'object')
-            throw new Error({
-                message: "Parameter northCriteria requires path and value",
-                parameter: 'northCriteria'
-            });
+        if (
+            typeof northCriteria !== 'object' ||
+            !northCriteria.path ||
+            typeof northCriteria.path !== 'string' ||
+            !northCriteria.value ||
+            typeof northCriteria.value !== 'object'
+        )
+            throw parameterError('Parameter northCriteria requires path and value', { parameter: 'northCriteria' });
 
         if (!this._northCriterias) {
-            this._northCriterias = []
+            this._northCriterias = [];
         }
 
-        this._northCriterias.push(northCriteria)
+        this._northCriterias.push(northCriteria);
         return this;
     }
 
     /**
      * Connector Function selection criteria for operation responses and data collection. This field is mandatory if Connector Function type is COLLECTION or RESPONSE. ⮕ [ each string can represent an URI, topic, OID... ]. Each string can represent an URI, topic, OID...
-     * @param {Array} southCriterias 
+     * @param {Array} southCriterias
      * @returns {ConnectorFunctionsCatalog}
      */
     withSouthCriterias(southCriterias) {
         if (!(southCriterias instanceof Array))
-            throw new Error({
-                message: "Parameter southCriterias requires an array",
-                parameter: 'southCriterias'
-            });
+            throw parameterError('Parameter southCriterias requires an array', { parameter: 'southCriterias' });
 
-        southCriterias.forEach((crit) => {
+        southCriterias.forEach(crit => {
             try {
-                this.addSouthCriteria(crit)
+                this.addSouthCriteria(crit);
             } catch (critErr) {
-                this._southCriterias = null
-                throw critErr
+                this._southCriterias = null;
+                throw critErr;
             }
         });
 
@@ -196,29 +189,27 @@ export default class ConnectorFunctions extends BaseProvision {
 
     /**
      * Add southCriteria to parameter southCriterias. Each string can represent an URI, topic, OID...
-     * @param {String} southCriteria 
-     * @returns 
+     * @param {String} southCriteria
+     * @returns
      */
     addSouthCriteria(southCriteria) {
-        if (typeof southCriteria !== 'string')
-            throw new Error('southCriteria must be a string');
+        if (typeof southCriteria !== 'string') throw new Error('southCriteria must be a string');
 
         if (!this._southCriterias) {
-            this._southCriterias = []
+            this._southCriterias = [];
         }
 
-        this._southCriterias.push(southCriteria)
+        this._southCriterias.push(southCriteria);
         return this;
     }
 
     /**
      * Connector function javascript code
-     * @param {String} javascript 
+     * @param {String} javascript
      * @returns {ConnectorFunctionsCatalog}
      */
     withJavascript(javascript) {
-        if (typeof javascript !== 'string')
-            throw new Error('Parameter javascript must be a string');
+        if (typeof javascript !== 'string') throw new Error('Parameter javascript must be a string');
         this._javascript = javascript;
         return this;
     }
@@ -226,7 +217,7 @@ export default class ConnectorFunctions extends BaseProvision {
     /**
      * Enum of allowed types for connector function&#x27;s payload data. Request Connector Functions only accept JSON.
      * Allowed: TEXT┃JSON┃BINARY
-     * @param {String} payloadType 
+     * @param {String} payloadType
      * @returns {ConnectorFunctionsCatalog}
      */
     withPayloadType(payloadType) {
@@ -239,16 +230,16 @@ export default class ConnectorFunctions extends BaseProvision {
 
     _composeElement() {
         let updateData = {
-            "name": this._name,
-            "description": (this._description ? this._description : undefined),
-            "operationalStatus": this._operationalStatus,
-            "operationName": this._type === 'REQUEST' ? this._operationName : undefined,
-            "type": this._type,
-            "cloneable": this._cloneable,
-            "northCriterias": this._northCriterias,
-            "southCriterias": this._southCriterias,
-            "javascript": this._javascript,
-            "payloadType": this._payloadType
+            name: this._name,
+            description: this._description ? this._description : undefined,
+            operationalStatus: this._operationalStatus,
+            operationName: this._type === 'REQUEST' ? this._operationName : undefined,
+            type: this._type,
+            cloneable: this._cloneable,
+            northCriterias: this._northCriterias,
+            southCriterias: this._southCriterias,
+            javascript: this._javascript,
+            payloadType: this._payloadType
         };
 
         return updateData;
@@ -256,16 +247,9 @@ export default class ConnectorFunctions extends BaseProvision {
 
     _checkRequiredParameters(isUpdate) {
         if (isUpdate && this._identifier === undefined) {
-            throw new Error({
-                message: "Parameter identifier must be defined",
-                parameter: "identifier"
-            })
+            throw parameterError('Parameter identifier must be defined', { parameter: 'identifier' });
         }
-        try {
-            super._checkRequiredParameters()
-        } catch (err) {
-            throw err
-        }
+        super._checkRequiredParameters();
         switch (this._type) {
             case 'REQUEST': {
                 if (this._operationName === undefined || this._northCriterias === undefined || this._northCriterias.length === 0) {
@@ -281,25 +265,22 @@ export default class ConnectorFunctions extends BaseProvision {
                 if (this._southCriterias === undefined || this._southCriterias.length === 0) {
                     throw new Error('Parameters southCriteria must be defined when type COLLECTION or RESPONSE');
                 }
-                break
+                break;
             }
         }
     }
 
     _buildURL() {
         if (this._identifier === undefined) {
-            throw new Error({
-                message: "Parameter identifier must be defined",
-                parameter: "identifier"
-            })
+            throw parameterError('Parameter identifier must be defined', { parameter: 'identifier' });
         }
         return 'connectorFunctions/' + this._resource + '/' + this._identifier;
     }
 
-    /** 
+    /**
      * Create a new connector function catalog
      * @return {Promise}
-     * @throws {Error} 
+     * @throws {Error}
      */
     create() {
         this._checkRequiredParameters();
@@ -311,5 +292,4 @@ export default class ConnectorFunctions extends BaseProvision {
         this._checkRequiredParameters(true);
         return this._composeElement();
     }
-
 }

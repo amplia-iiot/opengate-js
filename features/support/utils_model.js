@@ -1,398 +1,395 @@
 module.exports = {
-
-    util: function(utilName, ogapi, param, param2, param3) {
+    util: function (utilName, ogapi, param, param2, param3) {
         var utilsMath = {
-            "alarms search": function(ogapi) {
+            'alarms search': function (ogapi) {
                 return ogapi.alarmsSearchBuilder();
             },
-            "basicTypes search": function(ogapi) {
+            'basicTypes search': function (ogapi) {
                 return ogapi.basicTypesSearchBuilder();
             },
-            "bundles search": function() {
+            'bundles search': function () {
                 return ogapi.bundlesSearchBuilder();
             },
-            "bundles builder": function(ogapi) {
+            'bundles builder': function (ogapi) {
                 return ogapi.bundlesBuilder();
             },
-            "bundle finder": function(ogapi) {
+            'bundle finder': function (ogapi) {
                 return ogapi.newBundleFinder();
             },
-            "bulk execution finder": function(ogapi) {
+            'bulk execution finder': function (ogapi) {
                 return ogapi.newBulkExecutionFinder();
             },
-            "certificates builder": function(ogapi) {
+            'certificates builder': function (ogapi) {
                 return ogapi.certificatesBuilder();
             },
-            "certificate finder": function(ogapi) {
+            'certificate finder': function (ogapi) {
                 return ogapi.newCertificateFinder();
             },
-            "certificates search": function(ogapi) {
+            'certificates search': function (ogapi) {
                 return ogapi.certificatesSearchBuilder();
             },
-            "datasets search": function(ogapi, param, param2) {
+            'datasets search': function (ogapi, param, param2) {
                 return ogapi.datasetSearchBuilder(param, param2);
             },
-            "timeseries search": function(ogapi, param, param2) {
+            'timeseries search': function (ogapi, param, param2) {
                 return ogapi.timeserieSearchBuilder(param, param2);
             },
-            "timeseries downsampler builder": function(ogapi, param, param2, param3) {
+            'timeseries downsampler builder': function (ogapi, param, param2, param3) {
                 return ogapi.timeserieDownsamplerBuilder(param, param2, param3);
             },
-            "timeseries dataset builder": function(ogapi, param, param2) {
+            'timeseries dataset builder': function (ogapi, param, param2) {
                 return ogapi.timeserieDatasetBuilder(param, param2);
             },
-            "channel finder": function(ogapi) {
+            'channel finder': function (ogapi) {
                 return ogapi.newChannelFinder();
             },
-            "areas search": function(ogapi) {
+            'areas search': function (ogapi) {
                 return ogapi.areasSearchBuilder();
             },
-            "area finder": function(ogapi) {
+            'area finder': function (ogapi) {
                 return ogapi.newAreaFinder();
             },
-            "channels builder": function(ogapi) {
+            'channels builder': function (ogapi) {
                 return ogapi.channelsBuilder();
             },
-            "areas builder": function(ogapi) {
+            'areas builder': function (ogapi) {
                 return ogapi.areasBuilder();
             },
-            "datasets builder": function(ogapi) {
+            'datasets builder': function (ogapi) {
                 return ogapi.datasetsBuilder();
             },
-            "timeseries builder": function(ogapi) {
+            'timeseries builder': function (ogapi) {
                 return ogapi.timeseriesBuilder();
             },
-            "timeseries functions builder": function(ogapi) {
+            'timeseries functions builder': function (ogapi) {
                 return ogapi.timeseriesFunctionBuilder();
             },
-            "channels search": function(ogapi) {
+            'channels search': function (ogapi) {
                 return ogapi.channelsSearchBuilder();
             },
-            "communications module finder": function(ogapi) {
+            'communications module finder': function (ogapi) {
                 return ogapi.newCommunicationsModuleFinder();
             },
-            "datapoints search": function(ogapi) {
+            'datapoints search': function (ogapi) {
                 return ogapi.datapointsSearchBuilder();
             },
-            "datastreams search": function() {
+            'datastreams search': function () {
                 return ogapi.datastreamsSearchBuilder();
             },
-            "entity finder": function(ogapi) {
+            'entity finder': function (ogapi) {
                 return ogapi.newEntityFinder();
             },
-            "device finder": function(ogapi) {
+            'device finder': function (ogapi) {
                 return ogapi.newDeviceFinder();
             },
-            "subscription finder": function(ogapi) {
+            'subscription finder': function (ogapi) {
                 return ogapi.newSubscriptionsFinder();
             },
-            "subscriber finder": function(ogapi) {
+            'subscriber finder': function (ogapi) {
                 return ogapi.newSubscribersFinder();
             },
-            "ticket finder": function(ogapi) {
+            'ticket finder': function (ogapi) {
                 return ogapi.newTicketFinder();
             },
-            "devices search": function(ogapi) {
+            'devices search': function (ogapi) {
                 return ogapi.devicesSearchBuilder();
             },
-            "operation type": function(ogapi, param){
+            'operation type': function (ogapi, param) {
                 return ogapi.operationTypeBuilder(param);
             },
-            "devices builder": function(ogapi, param) {
+            'devices builder': function (ogapi, param) {
                 return ogapi.entityBuilder.devicesBuilder(param);
             },
-            "subscribers search": function(ogapi) {
+            'subscribers search': function (ogapi) {
                 return ogapi.subscribersSearchBuilder();
             },
-            "subscriptions search": function(ogapi) {
+            'subscriptions search': function (ogapi) {
                 return ogapi.subscriptionsSearchBuilder();
             },
-            "domains search": function(ogapi) {
+            'domains search': function (ogapi) {
                 return ogapi.domainsSearchBuilder();
             },
-            "domains builder": function(ogapi) {
+            'domains builder': function (ogapi) {
                 return ogapi.domainsBuilder();
             },
-            "domains finder": function(ogapi) {
+            'domains finder': function (ogapi) {
                 return ogapi.newDomainFinder();
             },
-            "geocluster builder": function(ogapi){ 
-                return ogapi.geoclusterBuilder(); 
-            }, 
-            "operation finder": function(ogapi) {
+            'geocluster builder': function (ogapi) {
+                return ogapi.geoclusterBuilder();
+            },
+            'operation finder': function (ogapi) {
                 return ogapi.newOperationFinder();
             },
-            "ruleConfigurationsHelper finder": function(ogapi) {
+            'ruleConfigurationsHelper finder': function (ogapi) {
                 return ogapi.newRuleConfigurationsHelper();
             },
-            "dataset finder": function(ogapi) {
+            'dataset finder': function (ogapi) {
                 return ogapi.newDatasetFinder();
             },
-            "timeserie finder": function(ogapi) {
+            'timeserie finder': function (ogapi) {
                 return ogapi.newTimeserieFinder();
             },
-            "organization finder": function(ogapi) {
+            'organization finder': function (ogapi) {
                 return ogapi.newOrganizationFinder();
             },
-            "organizations builder": function(ogapi) {
+            'organizations builder': function (ogapi) {
                 return ogapi.organizationsBuilder();
             },
-            "provision processors builder": function(ogapi) {
+            'provision processors builder': function (ogapi) {
                 return ogapi.provisionProcessorsBuilder();
             },
-            "provision processors finder": function(ogapi) {
+            'provision processors finder': function (ogapi) {
                 return ogapi.newProvisionProcessorsFinder();
             },
-            "executions history builder": function(ogapi) {
+            'executions history builder': function (ogapi) {
                 return ogapi.executionsHistorySearchBuilder();
             },
-            "softwares search": function(ogapi) {
+            'softwares search': function (ogapi) {
                 return ogapi.softwaresSearchBuilder();
             },
-            "subscriptions builder": function(ogapi, param) {
+            'subscriptions builder': function (ogapi, param) {
                 return ogapi.entityBuilder.subscriptionsBuilder(param);
             },
-            "subscribers builder": function(ogapi, param) {
+            'subscribers builder': function (ogapi, param) {
                 return ogapi.entityBuilder.subscribersBuilder(param);
             },
-            "user finder": function(ogapi) {
+            'user finder': function (ogapi) {
                 return ogapi.newUserFinder();
             },
-            "users builder": function(ogapi) {
+            'users builder': function (ogapi) {
                 return ogapi.usersBuilder();
             },
-            "users search": function(ogapi) {
+            'users search': function (ogapi) {
                 return ogapi.usersSearchBuilder();
             },
-            "operational status search": function(ogapi) {
+            'operational status search': function (ogapi) {
                 return ogapi.operationalStatusSearchBuilder();
             },
-            "administrative state search": function(ogapi) {
+            'administrative state search': function (ogapi) {
                 return ogapi.administrativeStateSearchBuilder();
             },
-            "communications module type search": function(ogapi) {
+            'communications module type search': function (ogapi) {
                 return ogapi.communicationsModuleTypeSearchBuilder();
             },
-            "fields definition search": function(ogapi) {
+            'fields definition search': function (ogapi) {
                 return ogapi.fieldsDefinitionSearchBuilder();
             },
-            "mobile phone provider search": function(ogapi) {
+            'mobile phone provider search': function (ogapi) {
                 return ogapi.mobilePhoneProviderSearchBuilder();
             },
-            "IoT datastream period search": function(ogapi) {
+            'IoT datastream period search': function (ogapi) {
                 return ogapi.ioTDatastreamPeriodSearchBuilder();
             },
-            "IoT datastream access search": function(ogapi) {
+            'IoT datastream access search': function (ogapi) {
                 return ogapi.ioTDatastreamAccessSearchBuilder();
             },
-            "IoT datastream storage period search": function(ogapi) {
+            'IoT datastream storage period search': function (ogapi) {
                 return ogapi.ioTDatastreamStoragePeriodSearchBuilder();
             },
-            "Ticket status search": function(ogapi) {
+            'Ticket status search': function (ogapi) {
                 return ogapi.ticketStatusSearchBuilder();
             },
-            "Ticket priority search": function(ogapi) {
+            'Ticket priority search': function (ogapi) {
                 return ogapi.ticketPrioritySearchBuilder();
             },
-            "Ticket severity search": function(ogapi) {
+            'Ticket severity search': function (ogapi) {
                 return ogapi.ticketSeveritySearchBuilder();
             },
-            "Resource Type search": function(ogapi) {
+            'Resource Type search': function (ogapi) {
                 return ogapi.resourceTypeSearchBuilder();
             },
-            "Allowed Resource Type search": function(ogapi) {
+            'Allowed Resource Type search': function (ogapi) {
                 return ogapi.allowedResourceTypeSearchBuilder();
             },
-            "datamodels builder": function(ogapi, param) {
+            'datamodels builder': function (ogapi, param) {
                 return ogapi.datamodelsBuilder(param);
             },
-            "datamodels helper": function(ogapi, param, param2) {
+            'datamodels helper': function (ogapi, param, param2) {
                 return ogapi.datamodelsHelper(param, param2);
             },
-            "datamodels finder": function(ogapi) {
+            'datamodels finder': function (ogapi) {
                 return ogapi.newDatamodelsFinder();
             },
-            "datastreams builder": function() {
+            'datastreams builder': function () {
                 return ogapi.datastreamsBuilder();
             },
-            "qratings builder": function() {
+            'qratings builder': function () {
                 return ogapi.qratingsBuilder();
             },
-            "deviceMessage builder": function(ogapi) {
+            'deviceMessage builder': function (ogapi) {
                 return ogapi.deviceMessageBuilder();
             },
-            "datastream": function() {
+            datastream: function () {
                 return ogapi.datastreamBuilder();
             },
-            "datapoints message": function() {
+            'datapoints message': function () {
                 return ogapi.datapointsBuilder();
             },
-            "hardware": function() {
+            hardware: function () {
                 return ogapi.hardwareMessageBuilder();
             },
-            "software": function() {
+            software: function () {
                 return ogapi.softwareMessageBuilder();
             },
-            "cpuUsage": function() {
+            cpuUsage: function () {
                 return ogapi.usageMessageBuilder();
             },
-            "ram": function() {
+            ram: function () {
                 return ogapi.storageMessageBuilder();
             },
-            "volatilStorage": function() {
+            volatilStorage: function () {
                 return ogapi.storageMessageBuilder();
             },
-            "nonVolatilStorage": function() {
+            nonVolatilStorage: function () {
                 return ogapi.storageMessageBuilder();
             },
-            "powerSupply": function() {
+            powerSupply: function () {
                 return ogapi.powerSupplyMessageBuilder();
             },
-            "commsModuleMessage": function() {
+            commsModuleMessage: function () {
                 return ogapi.commsModuleMessageMessageBuilder();
             },
-            "mobile": function() {
+            mobile: function () {
                 return ogapi.mobileMessageMessageBuilder();
             },
-            "subscriber": function() {
+            subscriber: function () {
                 return ogapi.subscriberMessageBuilder();
             },
-            "subscription": function() {
+            subscription: function () {
                 return ogapi.subscriptionMessageBuilder();
             },
-            "rule configurations finder": function(ogapi) {
+            'rule configurations finder': function (ogapi) {
                 return ogapi.newRuleConfigurationsFinder();
             },
-            "rule configuration builder": function(ogapi) {
+            'rule configuration builder': function (ogapi) {
                 return ogapi.ruleConfigurationBuilder();
             },
-            "rule configuration actions": function(ogapi, organization, channel, name) {
+            'rule configuration actions': function (ogapi, organization, channel, name) {
                 return ogapi.newRuleConfigurationsActions(organization, channel, param3);
             },
-            "executions search": function() {
+            'executions search': function () {
                 return ogapi.executionsSearchBuilder();
             },
-            "executions history search": function() {
+            'executions history search': function () {
                 return ogapi.executionsHistorySearchBuilder();
             },
-            "periodic operations search": function() {
+            'periodic operations search': function () {
                 return ogapi.tasksSearchBuilder();
             },
-            "operation actions": function(ogapi, param) {
+            'operation actions': function (ogapi, param) {
                 return ogapi.newOperationActions(param);
             },
-            "operations search": function() {
+            'operations search': function () {
                 return ogapi.operationsSearchBuilder();
             },
-            "datamodels search": function() {
+            'datamodels search': function () {
                 return ogapi.datamodelsSearchBuilder();
             },
-            "workgroups builder": function() {
+            'workgroups builder': function () {
                 return ogapi.workgroupsBuilder();
             },
-            "workgroups finder": function() {
+            'workgroups finder': function () {
                 return ogapi.newWorkgroupFinder();
             },
-            "workgroups search": function() {
+            'workgroups search': function () {
                 return ogapi.workgroupsSearchBuilder();
             },
-            "workgroup relations builder": function() {
+            'workgroup relations builder': function () {
                 return ogapi.workgroupRelationsBuilder();
             },
-            "entities relations builder": function() {
+            'entities relations builder': function () {
                 return ogapi.relationsBuilder();
             },
-            "entities search": function() {
+            'entities search': function () {
                 return ogapi.entitiesSearchBuilder();
             },
-            "csv bulk builder": function(ogapi, param, param2) {
+            'csv bulk builder': function (ogapi, param, param2) {
                 return ogapi.entityBuilder.newCsvBulkBuilder(param, param2);
             },
-            "bulk execution builder": function(ogapi, param, param2){
+            'bulk execution builder': function (ogapi, param, param2) {
                 return ogapi.bulkExecutionBuilder(param, param2);
             },
-            "json bulk builder": function(ogapi, param, param2) {
+            'json bulk builder': function (ogapi, param, param2) {
                 return ogapi.entityBuilder.newJsonBulkBuilder(param, param2);
             },
-            "json flattened bulk builder": function(ogapi, param, param2) {
+            'json flattened bulk builder': function (ogapi, param, param2) {
                 return ogapi.entityBuilder.newJsonFlattenedBulkBuilder(param, param2);
             },
-            "csv bulk async builder": function(ogapi, param, param2) {
+            'csv bulk async builder': function (ogapi, param, param2) {
                 return ogapi.entityBuilder.newCsvBulkBuilder(param, param2, null, null, true);
             },
-            "bulks search": function(ogapi) {
+            'bulks search': function (ogapi) {
                 return ogapi.bulkSearchBuilder();
             },
-            "bulk executions search": function(ogapi) {
+            'bulk executions search': function (ogapi) {
                 return ogapi.bulkExecutionSearchBuilder();
             },
-            "asset builder": function(ogapi, param) {
+            'asset builder': function (ogapi, param) {
                 return ogapi.entityBuilder.assetsBuilder(param);
             },
-            "asset search": function(ogapi) {
+            'asset search': function (ogapi) {
                 return ogapi.assetsSearchBuilder();
             },
-            "tickets builder": function(ogapi, param) {
+            'tickets builder': function (ogapi, param) {
                 return ogapi.entityBuilder.ticketsBuilder(param);
             },
-            "ticket search": function(ogapi) {
+            'ticket search': function (ogapi) {
                 return ogapi.ticketsSearchBuilder();
             },
-            "Country Codes search": function(ogapi) {
+            'Country Codes search': function (ogapi) {
                 return ogapi.countryCodesSearchBuilder();
             },
-            "User Languages search": function(ogapi) {
+            'User Languages search': function (ogapi) {
                 return ogapi.userLanguagesSearchBuilder();
             },
-            "datasets catalog search": function(ogapi) {
+            'datasets catalog search': function (ogapi) {
                 return ogapi.datasetsCatalogSearchBuilder();
             },
-            "transformer builder": function(ogapi) {
+            'transformer builder': function (ogapi) {
                 return ogapi.transformersBuilder();
             },
-            "aimodel builder": function(ogapi) {
+            'aimodel builder': function (ogapi) {
                 return ogapi.aiModelsBuilder();
             },
-            "manufacturers builder": function(ogapi) {
+            'manufacturers builder': function (ogapi) {
                 return ogapi.manufacturersBuilder();
             },
-            "manufacturer models builder": function(ogapi) {
+            'manufacturer models builder': function (ogapi) {
                 return ogapi.manufacturerModelsBuilder();
-            }, 
-            "countries finder": function(ogapi){
-                return ogapi.newCountriesCatalog()
             },
-            "connector functions catalog builder": function(ogapi){
-                return ogapi.connectorFunctionsCatalogBuilder()
+            'countries finder': function (ogapi) {
+                return ogapi.newCountriesCatalog();
             },
-            "connector functions catalog finder": function(ogapi){
-                return ogapi.newConnectorFunctionsCatalogFinder()
+            'connector functions catalog builder': function (ogapi) {
+                return ogapi.connectorFunctionsCatalogBuilder();
             },
-            "connector functions catalog": function(ogapi){
-                return ogapi.newConnectorFunctionsCatalog()
-            }, 
-            "organization plans builder": function(){
-                return ogapi.organizationPlansBuilder(param)
-            }, 
-            "device plans builder": function(){
-                return ogapi.devicePlansBuilder(param)
-            }
-            , 
-            "organization plans finder": function(){
+            'connector functions catalog finder': function (ogapi) {
+                return ogapi.newConnectorFunctionsCatalogFinder();
+            },
+            'connector functions catalog': function (ogapi) {
+                return ogapi.newConnectorFunctionsCatalog();
+            },
+            'organization plans builder': function () {
+                return ogapi.organizationPlansBuilder(param);
+            },
+            'device plans builder': function () {
+                return ogapi.devicePlansBuilder(param);
+            },
+            'organization plans finder': function () {
                 switch (param) {
                     case 'assignable':
-                        return ogapi.newOrganizationPlansFinder().assignable()    
+                        return ogapi.newOrganizationPlansFinder().assignable();
                     case 'administrable':
-                        return ogapi.newOrganizationPlansFinder().administrable()
+                        return ogapi.newOrganizationPlansFinder().administrable();
                     default:
-                        return ogapi.newOrganizationPlansFinder()
+                        return ogapi.newOrganizationPlansFinder();
                 }
-            }
-            , 
-            "device plans finder": function(){
-                return ogapi.newDevicePlansFinder()
+            },
+            'device plans finder': function () {
+                return ogapi.newDevicePlansFinder();
             }
         };
         return utilsMath[utilName](ogapi, param, param2, param3);
     }
-}
+};
