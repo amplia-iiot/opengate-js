@@ -5,13 +5,15 @@ Everything needed to describe this library's API lives here, so that a given ver
 script, no artifact committed into the repository.
 
 ```bash
-npm run apidoc          # both outputs, into build/
+npm run apidoc          # both outputs
 npm run apidoc:model    # build/api-model.json
-npm run apidoc:types    # build/types/**/*.d.ts
+npm run apidoc:types    # types/**/*.d.ts
 ```
 
-`build/` is gitignored on purpose: it is derived from `src/` and goes stale the moment the source
-moves. Generate it in CI on release and publish it as a release asset — never commit it.
+Both `build/` and `types/` are gitignored on purpose: they are derived from `src/` and go stale the
+moment the source moves. `types/` is regenerated on `prepack`, so the published package always ships
+declarations matching its own source, and `build/api-model.json` is attached to the GitHub release
+by the release workflow — never commit either.
 
 ## The two outputs
 
@@ -39,7 +41,7 @@ Nothing in the model knows about Hugo, front matter or any particular site: rend
 consumer's business. The documentation site turns this into its pages; anything else can read it
 too.
 
-**`build/types/**/*.d.ts`** — TypeScript declarations emitted from the same JSDoc. Editors consume
+**`types/**/*.d.ts`** — TypeScript declarations emitted from the same JSDoc. Editors consume
 these natively, which is what gives completion and inline documentation for code written against
 `$api` — no custom parser on the consumer's side.
 
