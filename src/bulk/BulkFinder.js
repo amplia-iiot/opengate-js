@@ -6,13 +6,13 @@ import q from 'q';
 import HttpStatus from 'http-status-codes';
 
 /**
- *   This class allow make get request to bulk resource into Opengate North API.
+ * This class allows making GET requests to the bulk resource in the OpenGate North API.
  */
 export default class BulkFinder extends ProvisionGenericFinder {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
         super(ogapi, 'organizations', 'bulk/async', 'Bulk not found');
@@ -20,7 +20,7 @@ export default class BulkFinder extends ProvisionGenericFinder {
     }
 
     /**
-     * Download a specific entity by its organization and id. This execute a GET http method
+     * Downloads a specific entity by its organization and id. This executes a GET HTTP method.
      * @test
      *   ogapi.newBulkFinder().findByOrganizationAndId('orgname', xxx-xx-xxx-xxx').then().catch();
      *   ogapi.newBulkFinder().findByOrganizationAndId('orgname', xxx-xx-xxx-xxx', true).then().catch();

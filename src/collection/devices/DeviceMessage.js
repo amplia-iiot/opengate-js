@@ -4,13 +4,14 @@ import q from 'q';
 import Event from './collect/Event';
 import Datastream from '../devices/collect/Datastreams';
 /**
- * This is a base object contains methods to send unstructured IoT information to be processed & collected by the platform.
+ * This is a base object that contains methods to send unstructured IoT information to be processed and collected
+ * by the platform.
  */
 export default class DeviceMessage extends Event {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi, resource, timeout) {
         super();

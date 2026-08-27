@@ -3,13 +3,13 @@
 import ProvisionGenericFinder from '../ProvisionGenericFinder';
 
 /**
- *   *   This class allow make get request to entity provisioned resource into Opengate North API.
+ * This class allows you to make GET requests to the provisioned entity resource in the OpenGate North API.
  */
 export default class EntityFinder extends ProvisionGenericFinder {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi, entity, error_not_found, entitySource) {
         super(ogapi, 'organizations', entity || 'entity', error_not_found || 'Entity not found');
@@ -26,7 +26,7 @@ export default class EntityFinder extends ProvisionGenericFinder {
     }
 
     /**
-     * Download a specific entity by its organization and id. This execute a GET http method
+     * Download a specific entity by its organization and id. This executes a GET HTTP method
      * @test
      *   ogapi.newEntityFinder().findByOrganizationAndId('orgname', xxx-xx-xxx-xxx').then().catch();
      *   ogapi.newDeviceFinder().findByOrganizationAndId('orgname', xxx-xx-xxx-xxx').then().catch();

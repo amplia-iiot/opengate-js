@@ -41,7 +41,7 @@ const VALIDATE = {
 };
 
 /**
- * Defines the builder to execute an operation that is into catalog
+ * Defines the builder used to configure and execute an operation defined in the catalog.
  */
 export default class BaseOperationBuilder {
     /**
@@ -196,7 +196,7 @@ export default class BaseOperationBuilder {
     }
 
     /**
-     * The operation will be execute immediately.
+     * The operation will be executed immediately.
      * @return {BaseOperationBuilder}
      */
     executeImmediately() {
@@ -443,8 +443,7 @@ export default class BaseOperationBuilder {
     }
 
     /**
-     * Build a instance of Operation 
-     *
+     * Build an instance of Operation
      * @example
      *  ogapi.operations.builderFactory.newXXXBuilder().build()
      * @throws {Error} Throw error if there are required parameters who have not been set

@@ -3,7 +3,7 @@
 import GenericFinder from './GenericFinder';
 
 /**
- *   This class allow make get request to user resource into Opengate North API.
+ * This class allows making GET requests to a resource in the OpenGate North API.
  */
 export default class ProvisionGenericFinder extends GenericFinder {
 

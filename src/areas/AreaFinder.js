@@ -4,7 +4,7 @@ import ProvisionGenericFinder from '../ProvisionGenericFinder';
 
 
 /**
- *   This class allow make get request to area resource into Opengate North API.
+ * This class allows making GET requests to the area resource in the OpenGate North API.
  */
 export default class AreaFinder extends ProvisionGenericFinder {
 
@@ -18,7 +18,7 @@ export default class AreaFinder extends ProvisionGenericFinder {
     }
 
     /**
-     * Download a specific area by its organization and identifier. This execute a GET http method
+     * Downloads a specific area by its organization and identifier. This executes a GET HTTP method.
      * @test
      *   ogapi.newAreaFinder().findByOrganizationAndIdentifier('orgname', xxx-xx-xxx-xxx').then().catch();
      * @param {string} organization - area organization .

@@ -6,7 +6,7 @@ import WPSearch from '../WPSearch';
 export const BASE_URL = 'datasets';
 
 /**
- * Defined a search over Executions	
+ * Defines a search over Executions.
  * @example ogapi.datasetSearchBuilder(organization, datasetId)
  */
 export default class DatasetSearchBuilder extends SearchBuilder {

@@ -9,7 +9,7 @@ export const aggregationTypes = ["FIRST", "LAST", "AVG", "MAX", "MIN", "SUM", "C
 export const interpolationTypes = ["ZERO","LAST","LINEAR","NONE"];
 
 /**
- * Defined a search over timeseries	
+ * Defines a downsampled search over time series data.
  * @example ogapi.timeserieDownsamplerBuilder(organization, timeserieId)
  */
 export default class TimeserieDownsamplerBuilder extends SearchBuilder {

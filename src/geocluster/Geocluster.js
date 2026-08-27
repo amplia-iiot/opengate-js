@@ -4,14 +4,14 @@ import q from 'q';
 import BaseProvision from '../provision/BaseProvision';
 import checkType from '../util/formats/check_types'
 /**
- * This is a base object that contains all you can do about geocluster.
+ * This is a base object that contains everything you can do with geoclusters.
  */
 
 export default class Geocluster extends BaseProvision {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
         super(ogapi, "/geocluster", undefined, 'identifier');

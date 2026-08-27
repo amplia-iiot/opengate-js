@@ -4,7 +4,7 @@
 import GenericFinder from '../GenericFinder';
 
 /**
- *   This class allow make get request to OperationType resource into Opengate North API.
+ * This class allows making GET requests to the OperationType resource in the OpenGate North API.
  */
 export default class OperationTypeFinder extends GenericFinder {
 

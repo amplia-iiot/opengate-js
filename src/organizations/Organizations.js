@@ -3,13 +3,13 @@
 import BaseProvision from '../provision/BaseProvision';
 
 /**
- * This is a base object that contains all you can do about Organizations.
+ * This is a base object that contains everything you can do with Organizations.
  */
 export default class Organizations extends BaseProvision {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi, url) {
         super(ogapi, "/organizations" + (typeof url === "undefined" ? "" : url));

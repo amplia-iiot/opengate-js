@@ -4,7 +4,7 @@ import SearchBuilder from './SearchBuilder';
 import StaticSearch from '../StaticSearch';
 
 /**
- * Defined a search over operational status catalogs    
+ * Defines a search over the administrative state catalog.
  * @example ogapi.administrativeStateSearchBuilder()
  */
 export default class AdministrativeStateSearchBuilder extends SearchBuilder {

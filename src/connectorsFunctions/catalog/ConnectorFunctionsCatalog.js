@@ -3,7 +3,8 @@
 import GenericFinder from "../../GenericFinder";
 
 /**
- *   This class allow make get request to connector functions catalog resource into Opengate North API.
+ * This class allows you to make GET requests to the connector functions catalog resource in the OpenGate North
+ * API.
  */
 export default class ConnectorFunctionsCatalog extends GenericFinder {
 

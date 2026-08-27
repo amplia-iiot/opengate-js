@@ -4,7 +4,7 @@ import SearchBuilder from './SearchBuilder';
 import StaticSearch from '../StaticSearch';
 
 /**
- * Defined a search over ticket priority catalog
+ * Defines a search over the ticket priority catalog.
  * @example ogapi.ticketPrioritySearchBuilder()
  */
 export default class TicketPrioritySearchBuilder extends SearchBuilder {

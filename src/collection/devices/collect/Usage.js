@@ -2,7 +2,7 @@
 
 
 /**
- * This is a base object that allows the user to create a Datapoint.
+ * This is a base object that allows the user to create a Usage object.
  */
 export default class Usage {
 

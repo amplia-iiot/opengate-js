@@ -22,13 +22,13 @@ const BULK_RESOURCES = ['entities', 'tickets'];
 const schema_base = '/og_basic_types.json';
 
 /**
- * This is a base object that contains all you can do about Devices.
+ * This is a base object that gives you access to everything you can do to provision entities.
  */
 export default class EntityBuilder {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
         const _this = this;
@@ -136,7 +136,7 @@ export default class EntityBuilder {
     }
 
     /**
-     * Get a DeviceBuilder for operate with entities of type device
+     * Get a DeviceBuilder to operate with entities of type device
      * @example
      * ogapi.devicesBuilder('orgname').then(function(deviceBuilder){//...}).catch()
      * @param {string} organization - required field
@@ -150,7 +150,7 @@ export default class EntityBuilder {
     }
 
     /**
-     * Get a AssetBuilder for operate with entities of type asset
+     * Get an AssetBuilder to operate with entities of type asset
      * @example
      * ogapi.assetsBuilder('orgname').then(function(assetBuilder){//...}).catch()
      * @param {string} organization - required field
@@ -164,7 +164,7 @@ export default class EntityBuilder {
     }
 
     /**
-     * Get a TicketBuilder for operate with entities of type ticket
+     * Get a TicketBuilder to operate with entities of type ticket
      * @example
      * ogapi.ticketsBuilder('orgname').then(function(ticketBuilder){//...}).catch()
      * @param {string} organization - required field
@@ -178,7 +178,7 @@ export default class EntityBuilder {
     }
 
     /**
-     * Get a SubscriberBuilder for operate with entities of type subscriber
+     * Get a SubscriberBuilder to operate with entities of type subscriber
      * @example
      * ogapi.subscribersBuilder('orgname').then(function(subscriberBuilder){//...}).catch()
      * @param {string} organization - required field
@@ -192,7 +192,7 @@ export default class EntityBuilder {
     }
 
     /**
-     * Get a SubscriptionBuilder for operate with entities of type subscription
+     * Get a SubscriptionBuilder to operate with entities of type subscription
      * @example
      * ogapi.subscriptionsBuilder('orgname').then(function(subscriptionBuilder){//...}).catch()
      * @param {string} organization - required field

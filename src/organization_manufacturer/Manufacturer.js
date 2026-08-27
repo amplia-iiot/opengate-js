@@ -13,7 +13,7 @@ export default class Manufacturers extends BaseProvision {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi, organization) {
         // super(ogapi, "/manufacturers", undefined, ['identifier', 'name']);

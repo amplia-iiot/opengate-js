@@ -7,7 +7,7 @@ export const PRE_RESOURCE = '/organizations';
 export const POST_RESOURCE = '/datamodels';
 
 /**
- * This is a base object for update and delete a IoT Datamodel
+ * This is a base object for updating and deleting an IoT Datamodel.
  */
 export default class DatamodelsHelper extends BaseProvision {
     /**

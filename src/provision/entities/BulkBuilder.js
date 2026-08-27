@@ -5,7 +5,8 @@ import q from 'q';
 
 
 /**
- * This class allow set simple values.
+ * This class provides the bulk create, update, patch, and delete operations shared by the CSV and JSON bulk
+ * builders.
  */
 export default class BulkBuilder extends BaseProvision {
 
@@ -58,7 +59,7 @@ export default class BulkBuilder extends BaseProvision {
     }
 
     /**
-     *  Execute the bulk delete full operation
+     * Execute the bulk delete-all operation
      * @example 
      *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).deleteAll(rawFile)
      *  ogapi.newCsvBulkBuilder('orgname', 'entities', 10000).deleteAll(new Blob(), true)

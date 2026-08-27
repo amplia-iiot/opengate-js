@@ -6,7 +6,8 @@ import q from 'q';
 import merge from 'merge';
 
 /**
- * This class generates all operations builders by a response to search into catalog/operations
+ * This class generates all operation builders from a response obtained by searching the catalog/operations
+ * resource.
  */
 export default class Operations {
     /**

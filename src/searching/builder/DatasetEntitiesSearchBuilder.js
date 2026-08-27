@@ -6,7 +6,7 @@ import EntitySearch from '../EntitySearch';
 export const TOKEN_URL = '$_token';
 
 /**
- * Defined a search over Executions	
+ * Defines a search over Executions.
  * @example ogapi.datasetEntitiesSearchBuilder()
  */
 export default class DatasetEntitiesSearchBuilder extends SearchWithSummaryBuilder {

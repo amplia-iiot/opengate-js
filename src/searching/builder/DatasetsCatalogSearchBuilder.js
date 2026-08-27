@@ -5,7 +5,7 @@ import FieldFinder from '../../util/searchingFields/FieldFinder';
 
 const BASE_URL = '/catalog/datasets';
 /**
- * Defined a search over Areas	
+ * Defines a search over Areas.
  * @example ogapi.datasetsCatalogSearchBuilder()
  */
 export default class DatasetsCatalogSearchBuilder extends SearchBuilder {

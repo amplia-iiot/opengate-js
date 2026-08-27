@@ -55,8 +55,7 @@ export default class AlarmActionBuilder{
 	}
 
 	/**
-	* Build a instance of Operation 
-	*
+	* Build an instance of Operation
 	* @example
 	*	ogapi.operations.builderFactory.newAlarmCloseBuilder().build()
 	* @throws {Error} Throw error if there is not alarmId

@@ -4,7 +4,7 @@ import SearchBuilder from './SearchBuilder';
 import StaticSearch from '../StaticSearch';
 
 /**
- * Defined a search over operational status catalogs    
+ * Defines a search over the user profiles catalog.
  * @example ogapi.userProfileSearchBuilder()
  */
 export default class UserProfilesSearchBuilder extends SearchBuilder {

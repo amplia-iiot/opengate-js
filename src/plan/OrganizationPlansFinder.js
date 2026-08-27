@@ -6,12 +6,12 @@ import {PLAN, ORGANIZATION_PLANS} from './URL_ENUM'
 import { VISIBILITY } from './VISIBILITY_ENUM';
 
 /**
- *   This class allow make get request to organization plans resource into Opengate North API.
+ * This class allows making GET requests to the organization plans resource in the OpenGate North API.
  */
 export default class OrganizationPlansFinder extends ProvisionGenericFinder {
 
     /**     
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
         super(ogapi, 'organizations', undefined, 'Organization plan not found');
@@ -32,7 +32,7 @@ export default class OrganizationPlansFinder extends ProvisionGenericFinder {
 
     /**
      * Marks visibility assignable for organization plans list retrieval
-     *   ogapi.newOrganizationPlansFinder().assignable().findByOrganization('organization').then().catch();
+     * ogapi.newOrganizationPlansFinder().assignable().findByOrganization(&#x27;organization&#x27;).then().catch();
      * @return {this} 
      */
     assignable() {
@@ -43,7 +43,7 @@ export default class OrganizationPlansFinder extends ProvisionGenericFinder {
 
    /**
      * Marks visibility administrable for organization plans list retrieval.
-     *   ogapi.newOrganizationPlansFinder().administrable().findByOrganization('organization').then().catch();
+     * ogapi.newOrganizationPlansFinder().administrable().findByOrganization(&#x27;organization&#x27;).then().catch();
      * @return {this} 
      */
     administrable() {
@@ -53,7 +53,7 @@ export default class OrganizationPlansFinder extends ProvisionGenericFinder {
 
     /**
      * Marks visibility default for plans list list retrieval.
-     *   ogapi.newOrganizationPlansFinder().default().findByOrganization('organization').then().catch();
+     * ogapi.newOrganizationPlansFinder().default().findByOrganization(&#x27;organization&#x27;).then().catch();
      * @return {this} 
      */
     default() {
@@ -63,7 +63,7 @@ export default class OrganizationPlansFinder extends ProvisionGenericFinder {
 
     /**
      * Retrieves all plans from a organization
-     *   ogapi.newOrganizationPlansFinder().findByOrganization('organization').then().catch();
+     * ogapi.newOrganizationPlansFinder().findByOrganization(&#x27;organization&#x27;).then().catch();
      * @param {string} organization - organization name .
      * @return {Promise} 
      */
@@ -75,7 +75,8 @@ export default class OrganizationPlansFinder extends ProvisionGenericFinder {
 
     /**
      * Retrieves a specific plan from a organization
-     *   ogapi.newOrganizationPlansFinder().findByOrganizationAndId('organization', 'identifier').then().catch();
+     * ogapi.newOrganizationPlansFinder().findByOrganizationAndId(&#x27;organization&#x27;,
+     * &#x27;identifier&#x27;).then().catch();
      * @param {string} organization - organization name .
      * @param {string} identifier - plan name.
      * @return {Promise} 

@@ -4,7 +4,7 @@ import SearchWithSummaryBuilder from './SearchWithSummaryBuilder';
 import FieldFinder from '../../util/searchingFields/FieldFinder';
 const BASE_URL = '/operations/history';
 /**
- * Defined a search over Executions	
+ * Defines a search over Executions.
  * @example ogapi.executionsHistorySearchBuilder()
  */
 export default class ExecutionsHistorySearchBuilder extends SearchWithSummaryBuilder {

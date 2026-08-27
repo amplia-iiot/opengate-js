@@ -8,7 +8,7 @@ import { DATE_FORMAT } from '../../util/DATE_FORMAT';
 
 const BASE_URL = '/datapoints';
 /**
- * Defined a search over Datastreams	
+ * Defines a search over Datapoints.
  * @example ogapi.datapointsSearchBuilder()
  */
 export default class DatapointsSearchBuilder extends SearchBuilder {

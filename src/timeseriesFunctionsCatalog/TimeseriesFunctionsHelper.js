@@ -6,7 +6,7 @@ import HttpStatus from 'http-status-codes';
 import { VALUE_TYPES_ENUM } from './TYPES_ENUM'
 
 /**
- *   This class allow make get request to newTimeseriesFunctionsHelper resource into Opengate North API.
+ * This class allows making GET requests to the TimeseriesFunctionsHelper resource in the OpenGate North API.
  */
 export default class TimeseriesFunctionsHelper extends GenericFinder {
 
@@ -29,7 +29,7 @@ export default class TimeseriesFunctionsHelper extends GenericFinder {
     }
 
     /**
-     * Performs a get that returns documentation private of javascript functions from rules service
+     * Performs a GET that returns documentation of private JavaScript functions from the rules service.
      * @test
      *   ogapi.newTimeseriesFunctionsHelper().getDocPrivateJavascriptFunctions();
      * @return {Promise} 
@@ -40,7 +40,7 @@ export default class TimeseriesFunctionsHelper extends GenericFinder {
         return this._execute();
     }
     /**
-     * Performs a get that returns documentation of javascript functions from rules service
+     * Performs a GET that returns documentation of JavaScript functions from the rules service.
      * @test
      *   ogapi.newTimeseriesFunctionsHelper().getDocJavascriptFunctions();
      * @return {Promise} 

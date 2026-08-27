@@ -2,7 +2,7 @@
 
 import Hardware from './Hardware';
 /**
- * This is a base object that allows the user to create a Subscription.
+ * This is a base object that allows the user to create a Subscriber object.
  */
 export default class Subscriber {
 

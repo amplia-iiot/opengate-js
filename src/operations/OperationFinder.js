@@ -8,7 +8,7 @@ const LIMIT_START_DEF_VALUE = 1;
 const LIMIT_SIZE_DEF_VALUE = 10;
 
 /**
- *   This class allow make get request to operation resource into Opengate North API.
+ * This class allows making GET requests to the operation resource in OpenGate North API.
  */
 export default class OperationFinder extends GenericFinder {
 

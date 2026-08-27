@@ -5,7 +5,7 @@ import SimpleBuilder from './SimpleBuilder';
 export const AssetID = 'provision.asset.identifier';
 
 /**
- * Subscription builder. This builder give you the necessary tools to create a subscription using our OpenGate REST.
+ * Asset builder. This builder gives you the necessary tools to create an asset using the OpenGate REST API.
  */
 export default class AssetBuilder extends SimpleBuilder {
 

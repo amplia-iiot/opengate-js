@@ -14,7 +14,7 @@ import {
 } from './enum/LEVEL_TREND_ENUM';
 
 /**
- * This is a base object that allows the user to create a Datapoint.
+ * This is a base object that allows the user to create a PowerSupply object.
  */
 export default class PowerSupply {
 
