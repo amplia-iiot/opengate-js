@@ -179,7 +179,7 @@ function deletePlan(req){
                 return {
                     statusCode: 200,
                     status: 200,
-                    body: bodyGETDevicePlans
+                    body: { devicePlans: [postBody] }
                 }
             },
             '/north/v80/provision/organizations/:organization/devicePlans/:id': function (req) {
@@ -212,7 +212,7 @@ function deletePlan(req){
                 return {
                     statusCode: 200,
                     status: 200,
-                    body: bodyGETDevicePlan
+                    body: postBody
                 }
             }
         }

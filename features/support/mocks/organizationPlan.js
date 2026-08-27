@@ -180,7 +180,7 @@ module.exports = {
                 return {
                     statusCode: 200,
                     status: 200,
-                    body: bodyGETOrganizationPlans
+                    body: { organizationPlans: [postBody] }
                 }
             },
             '/north/v80/provision/organizations/:organization/organizationPlans/:id': function (req) {
@@ -213,7 +213,7 @@ module.exports = {
                 return {
                     statusCode: 200,
                     status: 200,
-                    body: bodyGETOrganizationPlan
+                    body: postBody
                 }
             }
         }
