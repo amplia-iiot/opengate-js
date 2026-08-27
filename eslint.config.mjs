@@ -75,7 +75,7 @@ export default [
 
     {
         // Tooling: ES modules running on Node.
-        files: ['tools/**/*.mjs', '*.config.mjs'],
+        files: ['tools/**/*.mjs', 'scripts/**/*.mjs', '*.config.mjs'],
         languageOptions: {
             ecmaVersion: 2022,
             sourceType: 'module',

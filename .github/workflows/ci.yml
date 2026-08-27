@@ -43,6 +43,10 @@ jobs:
       - name: Unit tests
         run: yarn test
 
+      # dist/ is no longer committed, so nothing else would notice a build that stopped working.
+      - name: Build
+        run: yarn build
+
       # The API model and the .d.ts files are generated from the JSDoc in src/. If a source change
       # breaks that generation, the failure belongs here and not in the release job.
       - name: Build the API model and the type declarations

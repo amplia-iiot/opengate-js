@@ -122,18 +122,18 @@ yarn test
 
 Dependencies come from the public npm registry. The repository deliberately ships no `.npmrc` or `.yarnrc`: if you want an internal mirror, configure it in your own `~/.npmrc` rather than committing it here.
 
-| Command              | What it does                                                    |
-| -------------------- | --------------------------------------------------------------- |
-| `yarn test`          | Unit tests (vitest). No network, no OpenGate instance needed.   |
-| `yarn test:watch`    | The same suite, in watch mode.                                  |
-| `yarn test:coverage` | Unit tests with a coverage report in `coverage/`.               |
-| `yarn lint`          | ESLint. Errors break the build; warnings are pre-existing debt. |
-| `yarn lint:fix`      | ESLint with autofix.                                            |
-| `yarn format`        | Prettier over the whole tree.                                   |
-| `yarn format:check`  | Fails if anything is unformatted.                               |
-| `yarn apidoc`        | Regenerates the API model and the type declarations.            |
-| `yarn test:e2e`      | Cucumber acceptance suite; needs a real OpenGate.               |
-| `gulp compile`       | Builds `dist/`.                                                 |
+| Command              | What it does                                                               |
+| -------------------- | -------------------------------------------------------------------------- |
+| `yarn test`          | Unit tests (vitest). No network, no OpenGate instance needed.              |
+| `yarn test:watch`    | The same suite, in watch mode.                                             |
+| `yarn test:coverage` | Unit tests with a coverage report in `coverage/`.                          |
+| `yarn lint`          | ESLint. Errors break the build; warnings are pre-existing debt.            |
+| `yarn lint:fix`      | ESLint with autofix.                                                       |
+| `yarn format`        | Prettier over the whole tree.                                              |
+| `yarn format:check`  | Fails if anything is unformatted.                                          |
+| `yarn apidoc`        | Regenerates the API model and the type declarations.                       |
+| `yarn test:e2e`      | Cucumber acceptance suite; needs a real OpenGate.                          |
+| `yarn build`         | Builds `dist/`: the CommonJS tree, the ESM entry and both browser bundles. |
 
 Every push and pull request runs lint, the unit tests and the API model generation on Node 20, 22 and 24.
 
@@ -143,7 +143,7 @@ Every push and pull request runs lint, the unit tests and the API model generati
 - `test/unit/` — unit tests, including `regressions/`, which pins defects that already shipped.
 - `features/` — Cucumber acceptance suite, run against a live OpenGate.
 - `tools/apidoc/` — generates the API model and the declarations from the JSDoc.
-- `dist/` — built artefacts. Generated; never edit by hand.
+- `dist/` — build output. **Not in the repository**: run `yarn build`, and `prepack` produces it on publish.
 
 ## Testing
 
@@ -156,8 +156,11 @@ Unit tests run in milliseconds and are what CI gates on. New behaviour should ar
 The Cucumber suite talks to a real OpenGate instance and reads `API_NORTH_INTERNAL`, `API_SOUTH_INTERNAL`, `API_KEY`, `YOUR_EMAIL` and `YOUR_PASSWORD` from the environment. Never commit those values.
 
 ```bash
-gulp cucumber [--tags @tag]
+yarn build && yarn test:e2e [--tags @tag]
 ```
+
+Certificate verification is disabled for that run, because test instances tend to carry self-signed
+certificates. Set `OGAPI_E2E_STRICT_TLS=1` to keep it on.
 
 ## Releasing
 

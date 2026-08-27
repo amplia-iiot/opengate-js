@@ -1,4 +1,3 @@
-import { LIMIT_START_DEF_VALUE, LIMIT_SIZE_DEF_VALUE } from './SearchBuilder';
 import Search from '../Search';
 
 /**

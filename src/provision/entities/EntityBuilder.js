@@ -1,6 +1,6 @@
 'use strict';
 
-import q, { timeout } from 'q';
+import q from 'q';
 import jp from 'jsonpath';
 
 import Ajv from 'ajv';
