@@ -3,13 +3,13 @@
 import ProvisionGenericFinder from '../ProvisionGenericFinder';
 
 /**
- *   This class allow make get request to user resource into Opengate North API.
+ * This class performs GET requests against the user resource in the OpenGate North API.
  */
 export default class UserFinder extends ProvisionGenericFinder {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
         super(ogapi, 'users', 'user', 'User not found');

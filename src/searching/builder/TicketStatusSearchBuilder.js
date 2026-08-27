@@ -4,7 +4,7 @@ import SearchBuilder from './SearchBuilder';
 import StaticSearch from '../StaticSearch';
 
 /**
- * Defined a search over ticket status catalog
+ * Defines a search over the ticket status catalog.
  * @example ogapi.ticketStatusSearchBuilder()
  */
 export default class TicketStatusSearchBuilder extends SearchBuilder {

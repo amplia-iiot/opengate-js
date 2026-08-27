@@ -5,7 +5,7 @@ import FieldFinder from '../../util/searchingFields/FieldFinder';
 
 const BASE_URL = '/users';
 /**
- * Defined a search over Users	
+ * Defines a search over Users.
  * @example ogapi.usersSearchBuilder()
  */
 export default class UsersSearchBuilder extends SearchWithSummaryBuilder {

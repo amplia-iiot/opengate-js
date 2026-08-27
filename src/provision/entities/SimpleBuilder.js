@@ -10,7 +10,7 @@ const ERROR_DATASTREAM_NOT_ALLOWED = 'Datastream is not allowed';
 const schema_base = '/og_basic_types.json';
 
 /**
- * This class allow set simple values.
+ * This class allows setting simple values.
  */
 export default class SimpleBuilder extends BaseProvision {
 
@@ -165,8 +165,8 @@ export default class SimpleBuilder extends BaseProvision {
     }
 
     /**
-     * This invoke a request to OpenGate North API and the callback is managed by promises
-     * This function deletes a entity of provision
+     * This invoke a request to OpenGate North API and the callback is managed by promises This function deletes a
+     * provisioned entity
      * @return {Promise}
      * @property {function (result:object, statusCode:number)} then - When request it is OK
      * @property {function (error:string)} catch - When request it is NOK
@@ -197,8 +197,8 @@ export default class SimpleBuilder extends BaseProvision {
     }
 
     /**
-     * This invoke a request to OpenGate North API and the callback is managed by promises
-     * This function updates a entity of provision
+     * This invoke a request to OpenGate North API and the callback is managed by promises This function updates a
+     * provisioned entity
      * @return {Promise}
      * @property {function (result:object, statusCode:number)} then - When request it is OK
      * @property {function (error:string)} catch - When request it is NOK
@@ -233,8 +233,8 @@ export default class SimpleBuilder extends BaseProvision {
     }
 
     /**
-     * This invoke a request to OpenGate North API and the callback is managed by promises
-     * This function patch a entity of provision
+     * This invoke a request to OpenGate North API and the callback is managed by promises This function patches a
+     * provisioned entity
      * @return {Promise}
      * @property {function (result:object, statusCode:number)} then - When request it is OK
      * @property {function (error:string)} catch - When request it is NOK

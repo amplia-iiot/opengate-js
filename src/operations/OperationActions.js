@@ -44,8 +44,8 @@ export default class OperationActions {
     }
 
     /**
-     * This invoke a request to OpenGate North API and the callback is managed by promises
-     * This function pause an operation
+     * This invoke a request to OpenGate North API and the callback is managed by promises This function pauses an
+     * operation
      * @example 
      * ogapi.OperationActions("xxxxx-xxx-xxxx-xxxxx").pause()
      * @return {Promise} 
@@ -65,8 +65,8 @@ export default class OperationActions {
     }
 
     /**
-     * This invoke a request to OpenGate North API and the callback is managed by promises
-     * This function cancela operation
+     * This invoke a request to OpenGate North API and the callback is managed by promises This function cancels an
+     * operation
      * @return {Promise}
      * @property {function (result:object, statusCode:number)} then - When request it is OK
      * @property {function (errors:array, statusCode:number)} then - When request it is NOK
@@ -101,8 +101,8 @@ export default class OperationActions {
     }
 
     /**
-     * This invoke a request to OpenGate North API and the callback is managed by promises
-     * This function pause periodicity of an operation
+     * This invoke a request to OpenGate North API and the callback is managed by promises This function pauses the
+     * periodicity of an operation
      * @example 
      * ogapi.OperationActions("xxxxx-xxx-xxxx-xxxxx").pausePeriodicity()
      * @return {Promise} 
@@ -135,8 +135,8 @@ export default class OperationActions {
     }
 
     /**
-     * This invoke a request to OpenGate North API and the callback is managed by promises
-     * This function pause, update its delay and active an operation for execute immediately
+     * This invoke a request to OpenGate North API and the callback is managed by promises This function pauses the
+     * operation, updates its delay to zero, and activates it so it executes immediately
      * @example 
      * ogapi.OperationActions("xxxxx-xxx-xxxx-xxxxx").executeNow()
      * @return {Promise} 

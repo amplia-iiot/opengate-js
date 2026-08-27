@@ -4,7 +4,7 @@ import GenericFinder from '../GenericFinder';
 // import ProvisionGenericFinder from '../ProvisionGenericFinder';
 
 /**
- *   This class allow make get request to RuleConfigurations resource into Opengate North API.
+ * This class allows you to make GET requests to the RuleConfigurations resource in the OpenGate North API.
  */
 export default class RuleConfigurationsCatalog extends GenericFinder {
 

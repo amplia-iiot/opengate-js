@@ -4,7 +4,7 @@ import SearchBuilder from './SearchBuilder';
 import StaticSearch from '../StaticSearch';
 
 /**
- * Defined a search over ruleMode catalog
+ * Defines a search over the rule mode catalog.
  * @example ogapi.ruleModeSearchBuilder()
  */
 export default class RuleModeSearchBuilder extends SearchBuilder {

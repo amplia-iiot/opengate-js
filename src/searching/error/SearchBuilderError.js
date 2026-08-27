@@ -1,6 +1,6 @@
 
 /**
-* This defined a specific Error that it will be thrown on build method at SearchBuilders
+* This defines a specific error that is thrown by the build method of the search builders.
 */
 export default class SearchBuilderError extends Error{
 	/**

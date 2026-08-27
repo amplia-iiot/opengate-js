@@ -3,8 +3,8 @@
 import q from 'q';
 
 /**
- * This is an abstract class, it must be extended to another class that defines the different actions of a specific provision.
- * This class is responsible for managing the request to execute Norte OpenGate API
+ * This is an abstract class; it must be extended by another class that defines the specific actions of a given
+ * provision. This class is responsible for managing requests to OpenGate North API.
  */
 export default class BaseProvision {
     /**
@@ -58,8 +58,8 @@ export default class BaseProvision {
     }
 
     /**
-     * This invoke a request to OpenGate North API and the callback is managed by promises
-     * This function create a entity of provision
+     * This invoke a request to OpenGate North API and the callback is managed by promises This function creates a
+     * provisioned entity
      * @return {Promise}
      * @property {function (result:object, statusCode:number)} then - When request it is OK
      * @property {function (error:string)} catch - When request it is NOK
@@ -100,8 +100,8 @@ export default class BaseProvision {
     }
 
     /**
-     * This invoke a request to OpenGate North API and the callback is managed by promises
-     * This function deletes a entity of provision
+     * This invoke a request to OpenGate North API and the callback is managed by promises This function deletes a
+     * provisioned entity
      * @return {Promise}
      * @property {function (result:object, statusCode:number)} then - When request it is OK
      * @property {function (error:string)} catch - When request it is NOK
@@ -155,8 +155,8 @@ export default class BaseProvision {
     }
 
     /**
-     * This invoke a request to OpenGate North API and the callback is managed by promises
-     * This function updates a entity of provision
+     * This invoke a request to OpenGate North API and the callback is managed by promises This function updates a
+     * provisioned entity
      * @return {Promise}
      * @property {function (result:object, statusCode:number)} then - When request it is OK
      * @property {function (error:string)} catch - When request it is NOK

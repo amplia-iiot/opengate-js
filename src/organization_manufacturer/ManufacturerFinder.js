@@ -4,13 +4,13 @@ import ProvisionGenericFinder from '../ProvisionGenericFinder';
 import { MANUFACTURERS_RESOURCE, PRE_RESOURCE } from './Manufacturer'
 
 /**
- *   This class allow make get request to hardware manufacturers resource into Opengate North API.
+ * This class allows making GET requests to the hardware manufacturers resource in the OpenGate North API.
  */
 export default class ManufacturerFinder extends ProvisionGenericFinder {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
         super(ogapi, PRE_RESOURCE, 'manufacturer', 'Manufacturer not found');

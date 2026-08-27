@@ -3,7 +3,7 @@
 
 
 /**
- * This is a base object that allows the user to create a Datapoint.
+ * This is a base object that allows the user to create a Hardware object.
  */
 export default class Hardware {
 

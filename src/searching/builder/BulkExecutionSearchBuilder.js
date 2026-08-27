@@ -6,7 +6,7 @@ import WPSearch from '../WPSearch';
 const BASE_URL = 'provisionProcessors/bulk/search';
 
 /**
- * Searching over all the created bulk process, which are already done or still in progress.	
+ * Searches over all created bulk processes, whether already completed or still in progress.
  * @example ogapi.bulkExecutionSearchBuilder()
  */
 export default class BulkExecutionSearchBuilder extends SearchBuilder {

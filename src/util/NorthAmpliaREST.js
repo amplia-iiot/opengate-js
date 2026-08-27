@@ -13,11 +13,11 @@ const mock = _mock(request);
 //
 
 /**
- * This is a wrapper of a Rest api javascript
+ * This is a JavaScript wrapper around a REST API client.
  */
 export default class NorthAmpliaREST {
     /**
-     * This is a constructor of a Rest api javascript
+     * Constructor of the REST API client.
      * @param {{ url: string,port: string,version: string,apiKey: string,JTW: string}} _options - this is configuration about Opengate North API.
      * @param {function} backend - this is a backend selected to manage a request to Opengate North API.
      */

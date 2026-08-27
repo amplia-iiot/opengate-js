@@ -5,7 +5,7 @@ import FieldFinder from '../../util/searchingFields/FieldFinder';
 import SearchWithoutLimit from '../SearchWithoutLimit';
 const BASE_URL = '/operationTypes';
 /**
- * Defined a search over operationTypes	
+ * Defines a search over operation types.
  * @example ogapi.rulesSearchBuilder()
  */
 export default class OperationTypesBuilder extends SearchBuilder {

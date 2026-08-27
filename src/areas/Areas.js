@@ -4,14 +4,14 @@ import { TYPE_ENUM } from './TYPE_ENUM';
 import BaseProvision from '../provision/BaseProvision';
 import checkType from '../util/formats/check_types'
 /**
- * This is a base object that contains all you can do about Areas.
+ * This is a base object that contains everything you can do with an area.
  */
 
 export default class Areas extends BaseProvision {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
         super(ogapi, '/organizations/', undefined, ['identifier', 'organization', "type", 'coordinates']);

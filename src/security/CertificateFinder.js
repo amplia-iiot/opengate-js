@@ -10,13 +10,13 @@ import {
 } from './MIME_TYPES_ENUM';
 
 /**
- *   This class allow make get request to certificate resource into Opengate North API.
+ * This class allows making GET requests to the certificate resource in the OpenGate North API.
  */
 export default class CertificateFinder extends ProvisionGenericFinder {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
         super(ogapi, 'security/certificates', 'certificate', 'Certificate not found');

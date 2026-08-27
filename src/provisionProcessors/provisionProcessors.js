@@ -3,14 +3,14 @@
 import BaseProvision from '../provision/BaseProvision';
 import checkType from '../util/formats/check_types'
 /**
- * This is a base object that contains all you can do about Provision Processors.
+ * This object represents a provision processor and exposes all the attributes you can configure for it.
  */
 
 export default class ProvisionProcessors extends BaseProvision {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
         super(ogapi, "organizations/", undefined, ['name', 'organization', 'configurationParams', 'scriptProcessor']);

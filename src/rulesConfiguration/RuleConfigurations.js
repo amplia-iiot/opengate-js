@@ -6,13 +6,13 @@ import _RuleNotification from './_RuleNotification';
 import q from 'q';
 
 /**
- * This is a base object that contains all you can do about RulesConfigurations.
+ * This is a base object that contains everything you can do with RulesConfigurations.
  */
 export default class RuleConfigurations extends BaseProvision {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi, organization, channel, identifier, ruleConfigurationObj) {
         super(ogapi, "/organizations");
@@ -271,7 +271,7 @@ export default class RuleConfigurations extends BaseProvision {
     }
 
     /** 
-     * Udpate a Rule
+     * Update a Rule
      * @return {Promise}
      * @throws {Error} 
      */
@@ -282,7 +282,7 @@ export default class RuleConfigurations extends BaseProvision {
     }
 
     /** 
-     * Udpate a Rule
+     * Update a Rule's parameters
      * @return {Promise}
      * @throws {Error} 
      */

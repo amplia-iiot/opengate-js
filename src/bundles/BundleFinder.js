@@ -3,13 +3,13 @@
 import ProvisionGenericFinder from '../ProvisionGenericFinder';
 
 /**
- *   This class allow make get request to certificate resource into Opengate North API.
+ * This class allows making GET requests to the bundle resource in the OpenGate North API.
  */
 export default class BundleFinder extends ProvisionGenericFinder {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
         super(ogapi, 'bundles', 'bundle', 'Bundle not found');

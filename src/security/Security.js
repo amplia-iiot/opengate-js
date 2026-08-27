@@ -3,7 +3,7 @@
 import BaseProvision from '../provision/BaseProvision';
 
 /**
- * This extends BaseProvision and contains all you can do about Security.
+ * This extends BaseProvision and contains everything you can do with Security.
  * @extends {BaseProvision}
  */
 export default class Security extends BaseProvision {

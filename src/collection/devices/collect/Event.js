@@ -15,7 +15,7 @@ import {
 } from './enum/LEVEL_TREND_ENUM';
 
 /**
- * This is a base object that allows the user to create a Event.
+ * This is a base object that allows the user to create an Event.
  */
 export default class Event {
 

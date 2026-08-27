@@ -4,7 +4,7 @@ import SearchBuilder from './SearchBuilder';
 import StaticSearch from '../StaticSearch';
 
 /**
- * Defined a search over ticket severity catalog
+ * Defines a search over the ticket severity catalog.
  * @example ogapi.ticketSeveritySearchBuilder()
  */
 export default class TicketSeveritySearchBuilder extends SearchBuilder {

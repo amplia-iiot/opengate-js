@@ -3,7 +3,8 @@
 import BulkBuilder from './BulkBuilder';
 
 /**
- * Json builder. This builder give you the necessary tools to create a json bulk using our OpenGate REST.
+ * JSON flattened builder. This builder gives you the necessary tools to run a flattened-JSON bulk provisioning
+ * operation using the OpenGate REST API.
  */
 export default class JsonFlattenedBulkBuilder extends BulkBuilder {
 

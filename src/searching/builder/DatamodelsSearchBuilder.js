@@ -5,7 +5,7 @@ import FieldFinder from '../../util/searchingFields/FieldFinder';
 
 const BASE_URL = '/datamodels';
 /**
- * Defined a search over Datamodels	
+ * Defines a search over Datamodels.
  * @example ogapi.datamodelsSearchBuilder()
  */
 export default class DatamodelsSearchBuilder extends SearchBuilder {

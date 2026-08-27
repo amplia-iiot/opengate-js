@@ -4,7 +4,7 @@ import SearchBuilder from './SearchBuilder';
 import StaticSearch from '../StaticSearch';
 
 /**
- * Defined a search over mobile phone provider catalog
+ * Defines a search over mobile phone provider catalog.
  * @example ogapi.AllowedResourceTypeSearchBuilder()
  */
 export default class AllowedResourceTypeSearchBuilder extends SearchBuilder {

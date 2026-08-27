@@ -1,0 +1,17 @@
+{
+  "//": "Emits TypeScript declarations from the JSDoc in src/. Types only, no code:",
+  "//2": "the transpiled bundles are gulp's job (see gulpfile.js).",
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "skipLibCheck": true,
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "outDir": "../../types",
+    "rootDir": "../.."
+  },
+  "include": ["../../opengate-api-npm.js"]
+}

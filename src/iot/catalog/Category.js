@@ -3,11 +3,11 @@
 import Datastream from './Datastream'
 
 /**
- * Defines the builder to configure a category of a datamodel. With this builder you can configure a category
+ * Defines the builder used to configure a category of a datamodel, including the datastreams it groups.
  */
 export default class Category {
     /**    
-     * @param {!InternalOpenGateAPI} Reference to the API object.
+     * @param {!InternalOpenGateAPI} ogapi - Reference to the API object.
      * @param {!identifier} identifier of category
      * @param {Array} datastreams of category
      */

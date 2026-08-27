@@ -1,7 +1,8 @@
 'use strict';
 
 /**
-* Util used into BaseOperationBuilder to append entities the three different ways. By filter, By tags, By entityList
+* Utility used by BaseOperationBuilder to append target entities in three different ways: by filter, by tags, or
+* by entity list.
 */
 export default class AppendEntitiesBy {
 	/**

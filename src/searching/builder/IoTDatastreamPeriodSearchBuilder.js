@@ -4,7 +4,7 @@ import SearchBuilder from './SearchBuilder';
 import StaticSearch from '../StaticSearch';
 
 /**
- * Defined a search over mobile phone provider catalog
+ * Defines a search over the IoT datastream period catalog.
  * @example ogapi.ioTDatastreamPeriodSearchBuilder()
  */
 export default class IoTDatastreamPeriodSearchBuilder extends SearchBuilder {

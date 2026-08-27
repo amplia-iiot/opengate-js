@@ -5,7 +5,7 @@ import StaticSearch from '../StaticSearch';
 
 const staticSearchType = 'serviceGroups';
 /**
- * Defined a search over service group catalogs    
+ * Defines a search over service group catalogs.
  * @example ogapi.serviceGroupSearchBuilder()
  */
 export default class ServiceGroupSearchBuilder extends SearchBuilder {

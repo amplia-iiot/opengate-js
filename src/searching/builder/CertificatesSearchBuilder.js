@@ -5,7 +5,7 @@ import FieldFinder from '../../util/searchingFields/FieldFinder';
 
 const BASE_URL = '/certificates';
 /**
- * Defined a search over Bundles    
+ * Defines a search over Certificates.
  * @example ogapi.bundlesSearchBuilder()
  */
 export default class CertificatesSearchBuilder extends SearchBuilder {

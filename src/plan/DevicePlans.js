@@ -7,12 +7,12 @@ import checkType from '../util/formats/check_types'
 import _ from 'lodash';
 
 /**
- * This is a base object that contains all you can do about Device plans.
+ * This is a base object that contains everything you can do with device plans.
  */
 export default class DevicePlans extends BaseProvision {
 
     /**     
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi, organization) {
         super(ogapi, "/organizations", undefined, ['name', 'flowRate']);

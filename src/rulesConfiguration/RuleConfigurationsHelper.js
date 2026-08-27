@@ -5,7 +5,7 @@ import q from 'q';
 import HttpStatus from 'http-status-codes';
 
 /**
- *   This class allow make get request to RuleConfigurationsHelper resource into Opengate North API.
+ * This class allows you to make GET requests to the RuleConfigurationsHelper resource in the OpenGate North API.
  */
 export default class RuleConfigurationsHelper extends GenericFinder {
 

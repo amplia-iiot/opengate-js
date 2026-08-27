@@ -6,7 +6,7 @@ import q from 'q';
 import HttpStatus from 'http-status-codes';
 
 /**
- *   This class allow make get request to channel resource into Opengate North API.
+ * This class allows making GET requests to the channel resource in the OpenGate North API.
  */
 export default class ChannelFinder extends ProvisionGenericFinder {
 
@@ -19,7 +19,7 @@ export default class ChannelFinder extends ProvisionGenericFinder {
     }
 
     /**
-     * Download a specific channel by its organization and id. This execute a GET http method
+     * Downloads a specific channel by its organization and name. This executes a GET HTTP method.
      * @test
      *   ogapi.newChannelFinder().findByOrganizationAndName('orgname', xxx-xx-xxx-xxx').then().catch();
      * @param {string} organization - channel organization .
@@ -41,7 +41,7 @@ export default class ChannelFinder extends ProvisionGenericFinder {
     }
 
     /**
-     * Performs a get that returns channels related
+     * Performs a GET request that returns the channels related to the given domain and workgroup.
      * @test
      *   ogapi.newChannelFinder().findByDomainAndWorkgroup('xxx-xx-xxx-xxx', 'xxxxx-xxxx-xxxx').then().catch();
      * @param {string} domain - domain 
@@ -87,7 +87,7 @@ export default class ChannelFinder extends ProvisionGenericFinder {
     }
 
     /**
-     * Performs a get that returns channels related
+     * Performs a GET request that returns the channels related to the given domain, workgroup, and organization.
      * @test
      *   ogapi.newChannelFinder().findByDomainAndWorkgroupAndOrganization('xxx-xx-xxx-xxx', 'xxxxx-xxxx-xxxx', 'asdfasdfasdf').then().catch();
      * @param {string} domain - domain 

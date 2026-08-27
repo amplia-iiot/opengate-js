@@ -11,7 +11,7 @@ export default class WorkgroupRelations extends BaseProvision {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
         super(ogapi, "/domains", undefined, ["workgroup", "channels"]);

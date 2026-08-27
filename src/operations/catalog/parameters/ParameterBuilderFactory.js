@@ -7,7 +7,8 @@ import BaseParameterBuilderWithParent from './BaseParameterBuilderWithParent';
 // jsf.option('alwaysFakeOptionals', true);
 
 /**
-* This class generates all operation parameters builders by "parameters" attribute that there is into config operation json
+* This class generates all the operation parameter builders from the "parameters" attribute in the operation's
+* configuration JSON.
 */
 export default class ParameterBuilderFactory{
 	/**

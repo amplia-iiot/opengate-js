@@ -4,7 +4,7 @@ import SearchBuilder from './SearchBuilder';
 import StaticSearch from '../StaticSearch';
 
 /**
- * Defined a search over operational status catalogs    
+ * Defines a search over the communications module type catalog.
  * @example ogapi.communicationsModuleTypeSearchBuilder()
  */
 export default class CommunicationsModuleTypeSearchBuilder extends SearchBuilder {
