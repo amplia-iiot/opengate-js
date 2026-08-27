@@ -261,11 +261,7 @@ export default class ConnectorFunctions extends BaseProvision {
                 parameter: "identifier"
             })
         }
-        try {
-            super._checkRequiredParameters()
-        } catch (err) {
-            throw err
-        }
+        super._checkRequiredParameters()
         switch (this._type) {
             case 'REQUEST': {
                 if (this._operationName === undefined || this._northCriterias === undefined || this._northCriterias.length === 0) {

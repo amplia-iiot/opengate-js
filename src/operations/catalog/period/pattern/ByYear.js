@@ -36,7 +36,7 @@ export default class ByYear extends ByGeneric {
     day(day) {
         if (typeof day !== "number") {
             if (this._day) {
-                month = this._day;
+                day = this._day;
             } else
                 throw new Error("Parameter day must be typeof number");
         }

@@ -478,7 +478,7 @@ class WrapperBuilder {
                     });
                 });
         }
-        return Q.fcall(() => {
+        return q.fcall(() => {
             return;
         });
     }

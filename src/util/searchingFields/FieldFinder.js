@@ -371,7 +371,7 @@ const _searchColumns = function (_this, finder, objSearcher, defered) {
 const FIELD_SEARCHER = {
 
     [SEARCH_FIELDS]: function (objSearcher, defered) {
-        https://github.com/kriskowal/q#using-deferreds
+        // https://github.com/kriskowal/q#using-deferreds
         _getDatamodelFields(this, objSearcher).then(function (response) {
             defered.resolve(response)
         }).catch(function (err) {
@@ -423,18 +423,18 @@ const FIELD_SEARCHER = {
                 if (context[primaryType][field]) {
                     paths.push(context[primaryType][field]);
                 } else {
-                    var fieldsCfg = Object.keys(context[primaryType]);
+                    const fieldsCfg = Object.keys(context[primaryType]);
 
-                    for (var f = 0; f < fieldsCfg.length; f++) {
+                    for (let f = 0; f < fieldsCfg.length; f++) {
                         if (context[primaryType][fieldsCfg[f]].toLowerCase().indexOf(field.toLowerCase()) > -1) {
                             paths.push(context[primaryType][fieldsCfg[f]]);
                         }
                     }
                 }
             } else {
-                var fieldsCfg = Object.keys(context[primaryType]);
+                const fieldsCfg = Object.keys(context[primaryType]);
 
-                for (var f = 0; f < fieldsCfg.length; f++) {
+                for (let f = 0; f < fieldsCfg.length; f++) {
                     paths.push(context[primaryType][fieldsCfg[f]]);
                 }
             }
@@ -490,7 +490,8 @@ const FIELD_SEARCHER = {
 
         function fieldsNestedState(state, context) {
             let fieldsRelated;
-            if (!(fieldsNestedState = match_type[state]) || !(fieldsRelated = context[fieldsNestedState]))
+            let nestedType;
+            if (!(nestedType = match_type[state]) || !(fieldsRelated = context[nestedType]))
                 throw new Error('Invalid primaryType: ' + state);
             return fieldsRelated.slice();
         }

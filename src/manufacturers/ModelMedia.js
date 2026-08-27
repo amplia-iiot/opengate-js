@@ -89,7 +89,7 @@ export default class ModelMedia extends BaseProvision {
 
     update() {
         // Prevent update operations
-        throw new Exception('OGAPI_METHOD_NOT_SUPPORTED')
+        throw new Error('OGAPI_METHOD_NOT_SUPPORTED')
     }
 
     /**
