@@ -12,11 +12,10 @@
  *
  *   node scripts/build.mjs [--no-minify]
  */
-import { readFile, rm, mkdir, writeFile } from 'node:fs/promises';
+import { readFile, rm, mkdir, writeFile, readdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { glob } from 'node:fs/promises';
 import * as esbuild from 'esbuild';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -46,12 +45,11 @@ const shared = {
     target: ['es2015']
 };
 
+// readdir with recursive lands in Node 20.1; fs/promises.glob only exists from Node 22, and
+// package.json supports Node 20. CI caught that on its first run, which is what the matrix is for.
 async function collectSources() {
-    const files = [ENTRY_NPM];
-    for await (const entry of glob('src/**/*.js', { cwd: root })) {
-        files.push(entry);
-    }
-    return files.sort();
+    const entries = await readdir(path.join(root, 'src'), { recursive: true });
+    return [ENTRY_NPM, ...entries.filter(name => name.endsWith('.js')).map(name => path.join('src', name))].sort();
 }
 
 /**
