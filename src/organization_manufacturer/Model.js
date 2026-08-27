@@ -13,7 +13,7 @@ export default class Models extends BaseProvision {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi, organization, manufacturer) {
         super(ogapi, PRE_RESOURCE, undefined, ['name']);

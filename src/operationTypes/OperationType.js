@@ -10,7 +10,7 @@ export default class OperationType extends BaseProvision {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi, organization, nameForUpdate, operationTypeObj) {
         super(ogapi, "/organizations");

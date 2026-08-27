@@ -6,7 +6,7 @@ import FieldFinder from '../../util/searchingFields/FieldFinder';
 export const TOKEN_URL = '$_token';
 
 /**
- * Defined a search over Alarms	
+ * Defines a search over Alarms.
  * @example ogapi.alarmsSearchBuilder()
  */
 export default class AlarmsSearchBuilder extends SearchWithSummaryBuilder {

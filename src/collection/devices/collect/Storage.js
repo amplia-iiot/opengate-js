@@ -4,7 +4,7 @@ import Usage from './Usage';
 
 
 /**
- * This is a base object that allows the user to create a Datapoint.
+ * This is a base object that allows the user to create a Storage object.
  */
 export default class Storage extends Usage {
 

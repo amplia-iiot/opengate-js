@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Defines the builder to configure a qurating of datastream of IoT datamodel. With this builder you can configure a qrating
+ * Defines the builder used to configure the quality rating (Qrating) of a datastream in an IoT datamodel.
  */
 export default class Qrating {
 

@@ -10,7 +10,7 @@ import checkType from '../../util/formats/check_types'
 export const aggregationTypes = ["FIRST", "LAST", "AVG", "MAX", "MIN", "SUM", "COUNT", "GEO_AVG", "VARIANCE", "STD_DEVIATION", "DATE_FOR_MAX", "DATE_FOR_MIN", "DATE_FOR_FIRST", "DATE_FOR_LAST"];
 
 /**
- * Defined a search over timeseries	
+ * Defines a search over time series datasets.
  * @example ogapi.timeserieDatasetBuilder(organization, timeserieId)
  */
 export default class TimeserieDatasetBuilder extends SearchBuilder {

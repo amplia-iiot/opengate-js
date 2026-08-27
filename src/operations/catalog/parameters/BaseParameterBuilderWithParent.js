@@ -2,7 +2,7 @@
 
 import moment from 'moment';
 /**
-* This class generate a builder by a dynamic content about specific parameter to an operation.
+* This class generates a builder from dynamic content describing a specific parameter of an operation.
 */
 export default class BaseParameterBuilderWithParent{
 	/**

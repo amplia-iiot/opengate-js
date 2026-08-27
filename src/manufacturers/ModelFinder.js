@@ -9,13 +9,13 @@ import { MODELS_RESOURCE } from './Model';
 
 
 /**
- *   This class allow make get request to hardware models resource into Opengate North API.
+ * This class allows you to make GET requests to the hardware models resource in the OpenGate North API.
  */
 export default class ModelFinder extends ProvisionGenericFinder {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
         super(ogapi, 'manufacturers', undefined, 'Model not found');
@@ -30,7 +30,7 @@ export default class ModelFinder extends ProvisionGenericFinder {
     }
 
     /**
-     * Download all models from a manufacturer. This execute a GET http method
+     * Download all models from a manufacturer. This executes a GET HTTP method
      * @test
      *   ogapi.newModelFinder().findByManufacturer('manufacturer').then().catch();
      * @param {string} manufacturer - manufacturer id .
@@ -42,7 +42,7 @@ export default class ModelFinder extends ProvisionGenericFinder {
     }
 
     /**
-     * Download a specific model by its id. This execute a GET http method
+     * Download a specific model by its id. This executes a GET HTTP method
      * @test
      *   ogapi.newModelFinder().findByManufacturerAndId('manufacturer', 'modelname').then().catch();
      * @param {string} manufacturer - manufacturer id .
@@ -56,7 +56,7 @@ export default class ModelFinder extends ProvisionGenericFinder {
     }
 
     /**
-     * Download a specific model media by its ids. This execute a GET http method
+     * Download a specific model media by its ids. This executes a GET HTTP method
      * @test
      *   ogapi.newModelFinder().findMediasByManufacturerAndModel('manufacturer', 'modelId').then().catch();
      * @param {string} manufacturer - manufacturer id .
@@ -71,7 +71,7 @@ export default class ModelFinder extends ProvisionGenericFinder {
     }
 
     /**
-     * Download a specific model media by its ids. This execute a GET http method
+     * Download a specific model media by its ids. This executes a GET HTTP method
      * @test
      *   ogapi.newModelFinder().findMediaByManufacturerAndModelAndId('modelId', 'mediaIdentifier').then().catch();
      * @param {string} manufacturer - manufacturer id .

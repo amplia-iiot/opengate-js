@@ -5,7 +5,7 @@ import FieldFinder from '../../util/searchingFields/FieldFinder'
 
 const BASE_URL = '/tickets';
 /**
- * Defined a search over Devices	
+ * Defines a search over Tickets.
  * @example ogapi.devicesSearchBuilder()
  */
 export default class TicketsSearchBuilder extends SearchBuilder {

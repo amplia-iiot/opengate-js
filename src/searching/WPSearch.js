@@ -6,8 +6,8 @@ import q from 'q';
 
 
 /** 
- * This extends BaseSearch and allow make request to any available resource into Opengate North API.
- * The resource does not have the 'search' prefix. For this, use class Search
+ * This class extends BaseSearch and allows requests to be made to any available resource in the OpenGate North
+ * API. Use this class when the resource does not have the 'search' prefix; otherwise, use the Search class.
  */
 export default class WPSearch extends BaseSearch {
 	/**

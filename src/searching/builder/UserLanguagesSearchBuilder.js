@@ -4,7 +4,7 @@ import SearchBuilder from './SearchBuilder';
 import StaticSearch from '../StaticSearch';
 
 /**
- * Defined a search over operational status catalogs    
+ * Defines a search over the user languages catalog.
  * @example ogapi.userLanguagesSearchBuilder()
  */
 export default class UserLanguagesSearchBuilder extends SearchBuilder {

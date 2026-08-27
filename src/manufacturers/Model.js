@@ -8,13 +8,13 @@ import { MANUFACTURERS_RESOURCE } from './Manufacturer'
 export const MODELS_RESOURCE = '/models';
 
 /**
- * This is a base object that contains all you can do about Models.
+ * This is a base object that contains everything you can do with Models.
  */
 export default class Models extends BaseProvision {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi, manufacturer) {
         super(ogapi, MANUFACTURERS_RESOURCE, undefined, ['name']);

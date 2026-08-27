@@ -20,7 +20,7 @@ import q from 'q';
 import BaseProvision from '../../provision/BaseProvision';
 
 /**
- * This is a base object that contains all you can do about Deployment Element.
+ * This is the base object for everything you can do with a deployment element.
  */
 export default class DeploymentElement extends BaseProvision {
     constructor(context, ogapi, url, progressEvent) {
@@ -459,8 +459,8 @@ export default class DeploymentElement extends BaseProvision {
 
 
     /**
-     * This invoke a request to OpenGate North API and the callback is managed by promises
-     * This method create an element deploymentElement
+     * This invokes a request to the OpenGate North API and the callback is managed by promises. This method creates a
+     * deployment element.
      * @param {File} rawFile - this File is the deployment element
      * @property {function (result:object, statusCode:number)} then - When request it is OK
      * @property {function (error:string)} catch - When request it is NOK
@@ -524,8 +524,8 @@ export default class DeploymentElement extends BaseProvision {
     }
 
     /**
-     * This invoke a request to OpenGate North API and the callback is managed by promises
-     * This method create an element deploymentElement with previously assignated file
+     * This invokes a request to the OpenGate North API and the callback is managed by promises. This method creates a
+     * deployment element with the previously assigned file.
      * @property {function (result:object, statusCode:number)} then - When request it is OK
      * @property {function (error:string)} catch - When request it is NOK
      * @return {Promise}     

@@ -4,7 +4,8 @@ import Search from './Search';
 import q from 'q';
 
 /** 
- * This extends Search and it allow make request to any available resource into /entities resource at Opengate North API
+ * This class extends Search and allows requests to be made to any resource under the /entities endpoint of the
+ * OpenGate North API.
  */
 export default class EntitySearch extends Search {
     /**
@@ -22,7 +23,7 @@ export default class EntitySearch extends Search {
     }
 
     /**
-     * This invoke a request to OpenGate North API and the callback is managed by promises
+     * This invokes a request to the OpenGate North API; the response is handled via promises.
      * @return {Promise}
      * @property {function (result:object, statusCode:number)} then - When request it is OK
      * @property {function (error:string)} catch - When request it is NOK

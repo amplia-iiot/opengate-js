@@ -6,8 +6,8 @@ import jp from 'jsonpath';
 
 
 /** 
- * This is a abstract class, it must be extended to another class that defined the specific search.
- * This class is responsible to manage execute request to OpenGate North API
+ * This is an abstract class; it must be extended by another class that defines the specific search. This class is
+ * responsible for managing and executing requests to the OpenGate North API.
  */
 export default class BasicTypesSearchBuilder {
     /**

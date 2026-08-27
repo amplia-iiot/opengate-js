@@ -6,7 +6,7 @@ import WPSearch from '../WPSearch';
 export const BASE_URL = 'timeseries';
 
 /**
- * Defined a search over timeseries	
+ * Defines a search over time series data.
  * @example ogapi.timeserieSearchBuilder(organization, timeserieId)
  */
 export default class TimeserieSearchBuilder extends SearchBuilder {

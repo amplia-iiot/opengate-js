@@ -4,7 +4,7 @@ import SearchBuilder from './SearchBuilder';
 import StaticSearch from '../StaticSearch';
 
 /**
- * Defined a search over ruleConfigurationSeverity catalog
+ * Defines a search over the rule configuration severity catalog.
  * @example ogapi.ruleConfigurationSeveritySearchBuilder()
  */
 export default class RuleConfigurationSeveritySearchBuilder extends SearchBuilder {

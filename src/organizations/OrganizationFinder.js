@@ -6,7 +6,7 @@ import q from 'q';
 import HttpStatus from 'http-status-codes';
 
 /**
- *   This class allow make get request to organization resource into Opengate North API.
+ * This class allows making GET requests to the organization resource in the OpenGate North API.
  */
 export default class OrganizationFinder extends ProvisionGenericFinder {
 

@@ -486,7 +486,7 @@ class WrapperBuilder {
 }
 
 /**
- * Device builder. This builder give you the necessary tools to create a device using our OpenGate REST.
+ * Device builder. This builder gives you the necessary tools to create a device using the OpenGate REST API.
  */
 export default class DeviceBuilder extends ComplexBuilder {
 
@@ -506,8 +506,8 @@ export default class DeviceBuilder extends ComplexBuilder {
     }
 
     /**
-     * This invoke a request to OpenGate North API and the callback is managed by promises
-     * This function create a entity of provision
+     * This invoke a request to OpenGate North API and the callback is managed by promises This function creates a
+     * provisioned entity
      * @return {Promise}
      * @property {function (result:object, statusCode:number)} then - When request it is OK
      * @property {function (error:string)} catch - When request it is NOK
@@ -520,9 +520,9 @@ export default class DeviceBuilder extends ComplexBuilder {
     }
 
     /**
-     * This invoke a request to OpenGate North API and the callback is managed by promises
-     * This function updates a entity of provision and check if any subscriber/subscription exits or no. 
-     * If a subscriber/subscription not exists then this entities will be created and after that will be added to entity box.
+     * This invoke a request to OpenGate North API and the callback is managed by promises This function updates a
+     * provisioned entity and checks whether any subscriber/subscription already exists. If a subscriber/subscription
+     * does not exist, it will be created and then added to the entity box.
      * @return {Promise}
      * @property {function (result:object, statusCode:number)} then - When request it is OK
      * @property {function (error:string)} catch - When request it is NOK

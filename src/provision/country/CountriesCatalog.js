@@ -5,8 +5,7 @@ import jp from 'jsonpath';
 import q from 'q';
 import HttpStatus from 'http-status-codes';
 /**
- *   This class allow make get request to countries catalog resource into Opengate North API.
- *   //IMPORTANTE: ver tarea OUW-3924 para entender la realización de esta clase
+ * This class allows making GET requests to the countries catalog resource in OpenGate North API.
  */
 export default class CountriesCatalog extends ProvisionGenericFinder {
 

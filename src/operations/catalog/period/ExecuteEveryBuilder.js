@@ -6,7 +6,8 @@ import ByMonth from './pattern/ByMonth';
 import ByGeneric from './pattern/ByGeneric';
 
 /**
- * Defines the builder to configure a period of operation. By this builder you can select period by day, week, month, year.
+ * Defines the builder used to configure the periodicity of an operation. With this builder you can select the
+ * period by day, week, month, or year.
  */
 export default class ExecuteEveryBuilder {
     /**

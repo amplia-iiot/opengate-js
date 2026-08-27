@@ -4,14 +4,14 @@ import BaseProvision from '../provision/BaseProvision';
 import checkType from '../util/formats/check_types'
 export const URL = 'timeseries/provision/organizations/';
 /**
- * This is a base object that contains all you can do about Timeseries.
+ * This object represents a timeseries and exposes all the attributes you can configure for it.
  */
 
 export default class Timeseries extends BaseProvision {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
         super(ogapi, '/organizations/', undefined, ['name', 'organization', "timeBucket", 'identifierColumn']);
@@ -107,7 +107,7 @@ export default class Timeseries extends BaseProvision {
     }
 
     /**
-     * Name of generated column with bucket date.Required if timeBucket > 0.
+     * Name of generated column with bucket date.Required if timeBucket &gt; 0.
      * @param {string} bucketColumn - pattern: ^[a-zA-Z0-9 _-]*$
      * @return {Timeseries}
      */

@@ -6,7 +6,8 @@ const LIMIT_START_DEF_VALUE = 1;
 const LIMIT_SIZE_DEF_VALUE = 1000;
 
 /**
- * This is a abstract class. It is a base to make all kind of search request to OpenGate North API.
+ * This is an abstract class. It is the base class for making all kinds of search requests to the OpenGate North
+ * API.
  */
 export default class SearchBuilder {
     /**

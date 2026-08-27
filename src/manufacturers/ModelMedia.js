@@ -7,13 +7,13 @@ import { MANUFACTURERS_RESOURCE } from './Manufacturer';
 import { MODELS_RESOURCE } from './Model';
 
 /**
- * This is a base object that contains all you can do about ModelMedia.
+ * This is a base object that contains everything you can do with ModelMedia.
  */
 export default class ModelMedia extends BaseProvision {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi, manufacturer, modelId) {
         super(ogapi, MANUFACTURERS_RESOURCE + "/" + manufacturer + MODELS_RESOURCE + "/" + modelId + '/media', undefined, ['identifier']);
@@ -93,8 +93,8 @@ export default class ModelMedia extends BaseProvision {
     }
 
     /**
-     * This invoke a request to OpenGate North API and the callback is managed by promises
-     * This method create an element deploymentElement
+     * This invokes a request to the OpenGate North API and the callback is managed by promises. This method creates a
+     * deployment element
      * @param {File} rawFile - this File is the deployment element
      * @property {function (result:object, statusCode:number)} then - When request it is OK
      * @property {function (error:string)} catch - When request it is NOK

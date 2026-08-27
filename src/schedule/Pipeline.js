@@ -6,13 +6,13 @@ import ImageExecution from './ImageExecution';
 import RestRequest from './RestRequest';
 
 /**
- * This is a base object that contains all you can do about Bundles.
+ * This is a base object that represents a pipeline of image executions and REST requests to run on a schedule.
  */
 export default class Pipeline extends BaseProvision {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
         super(ogapi, "/organization", undefined, ["identifier", "organization", "schedule", "pipeline"], 'scheduler');

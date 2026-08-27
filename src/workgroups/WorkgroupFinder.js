@@ -3,13 +3,13 @@
 import ProvisionGenericFinder from '../ProvisionGenericFinder';
 
 /**
- *   This class allow make get request to workgroup resource into Opengate North API.
+ * This class allows making get requests to the workgroup resource in the OpenGate North API.
  */
 export default class WorkgroupFinder extends ProvisionGenericFinder {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
         super(ogapi, 'domains', 'workgroup', 'Workgroup not found');

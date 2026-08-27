@@ -4,13 +4,13 @@ import ProvisionGenericFinder from '../ProvisionGenericFinder';
 import { SOFTWARES_RESOURCE, PRE_RESOURCE } from './Software'
 
 /**
- *   This class allow make get request to hardware softwares resource into Opengate North API.
+ * This class allows making GET requests to the hardware software resource in the OpenGate North API.
  */
 export default class SoftwareFinder extends ProvisionGenericFinder {
 
     /**
      * Constructor
-     * @param {InternalOpenGateAPI} Reference to the API object.
+     * @param {InternalOpenGateAPI} ogapi - Reference to the API object.
      */
     constructor(ogapi) {
         super(ogapi, PRE_RESOURCE, 'software', 'Software not found');

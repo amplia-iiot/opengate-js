@@ -6,7 +6,7 @@ import FieldFinder from '../../util/searchingFields/FieldFinder'
 const BASE_URL = '/organizations';
 
 /**
- * Defined a search over Devices	
+ * Defines a search over organizations.
  * @example ogapi.organizationsSearchBuilder()()
  */
 export default class OrganizationsSearchBuilder extends SearchBuilder {

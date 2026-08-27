@@ -5,7 +5,7 @@ import Category from '../catalog/Category';
 export const PRE_RESOURCE = '/organizations';
 export const DATAMODELS_RESOURCE = '/datamodels';
 /**
- * This is a base object for create a IoT Datamodel
+ * This is a base object for creating an IoT Datamodel.
  */
 export default class Datamodels extends BaseProvision {
     /**

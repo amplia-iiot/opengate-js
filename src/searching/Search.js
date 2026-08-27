@@ -4,7 +4,8 @@ import BaseSearch from './BaseSearch';
 import merge from 'merge';
 
 /** 
- * This extends BaseSearch and allow make request to any available resource into Opengate North API.
+ * This class extends BaseSearch and allows requests to be made to any available resource in the OpenGate North
+ * API.
  */
 export default class Search extends BaseSearch {
 	/**

@@ -5,7 +5,7 @@ import FieldFinder from '../../util/searchingFields/FieldFinder'
 
 const BASE_URL = '/entities';
 /**
- * Defined a search over Devices	
+ * Defines a search over Devices.
  * @example ogapi.devicesSearchBuilder()
  */
 export default class DevicesSearchBuilder extends PreFilteredSearchBuilder {

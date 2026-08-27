@@ -6,7 +6,7 @@ import {   SOFTWARE_TYPE_ENUM
 
 
 /**
- * This is a base object that allows the user to create a Datapoint.
+ * This is a base object that allows the user to create a Software object.
  */
 export default class Software {
 

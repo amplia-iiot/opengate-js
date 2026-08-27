@@ -8,7 +8,7 @@ export const TYPES = {
 }
 
 /**
- * This builder give you the necessary tools to create a bulk executions using our OpenGate REST
+ * This builder gives you the tools necessary to create bulk executions using the OpenGate REST API.
  */
 export default class BulkExecutionBuilder extends BaseProvision {
 
@@ -36,7 +36,8 @@ export default class BulkExecutionBuilder extends BaseProvision {
     }
 
     /**
-     * Instead of creating a bulk process, return the provision process planning for specified entries. This is is synch process that does not cause changes in the database
+     * Instead of creating a bulk process, returns the provision process planning for the specified entries. This is a
+     * synchronous process that does not cause changes in the database.
      * @example 
      *  ogapi.bulkExecutionBuilder('orgname', 'processorId', 10000).plan(rawFile, extension)
      *  ogapi.bulkExecutionBuilder('orgname', 'processorId', 10000).plan(rawFile, extension, numberOfEntriesToProcess)

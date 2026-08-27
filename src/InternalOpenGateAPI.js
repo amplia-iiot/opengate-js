@@ -183,7 +183,8 @@ const RequestEndMonkeyPatching = (function () {
     }
 })()
 /**
- * This is a abstract class, it must be extended to another class that defined the backend, it will be used on request to Opengate North API by browser or nodejs server
+ * This is an abstract class. It must be extended by another class that defines the backend, and it is used to make
+ * requests to the OpenGate North API from a browser or a Node.js server.
  */
 export default class InternalOpenGateAPI {
     /**
@@ -214,14 +215,14 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find a user
+     * This returns a util to find a user
      * @return {UserFinder}
      */
     newUserFinder() {
         return new UserFinder(this);
     }
     /**
-     * This return a util to find a user
+     * This returns a util to find a user
      * @return {GeoclusterFinder}
      */
     newGeoclusterFinder() {
@@ -229,7 +230,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to regenerate geloclouster
+     * This returns a util to regenerate geloclouster
      * @return {Geocluster}
      */
     geoclusterBuilder() {
@@ -237,7 +238,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find a domains hierarchy
+     * This returns a util to find a domains hierarchy
      * @return {DomainsFinder}
      */
     newDomainsFinder() {
@@ -245,7 +246,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find a organization
+     * This returns a util to find a organization
      * @return {OrganizationFinder}
      */
     newOrganizationFinder() {
@@ -253,7 +254,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find a channel
+     * This returns a util to find a channel
      * @return {ChannelFinder}
      */
     newChannelFinder() {
@@ -261,7 +262,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a AreasSearchBuilder to build a specific AreasSearch
+     * This returns a AreasSearchBuilder to build a specific AreasSearch
      * @return {AreasSearchBuilder}
      */
     areasSearchBuilder() {
@@ -269,7 +270,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a DatasetsCatalogSearchBuilder to build a specific DatasetsCatalogSearc
+     * This returns a DatasetsCatalogSearchBuilder to build a specific DatasetsCatalogSearc
      * @return {DatasetsCatalogSearchBuilder}
      */
     datasetsCatalogSearchBuilder() {
@@ -277,7 +278,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a BulkSearchBuilder to build a specific BulkSearchBuilder
+     * This returns a BulkSearchBuilder to build a specific BulkSearchBuilder
      * @return {BulkSearchBuilder}
      */
     bulkSearchBuilder() {
@@ -285,7 +286,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a BulkExecutionSearchBuilder to build a specific bulk
+     * This returns a BulkExecutionSearchBuilder to build a specific bulk
      * @return {BulkExecutionSearchBuilder}
      */
     bulkExecutionSearchBuilder() {
@@ -293,7 +294,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find and download a bulk
+     * This returns a util to find and download a bulk
      * @return {BulkFinder}
      */
     newBulkFinder() {
@@ -301,7 +302,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find summary and download a bulk executions
+     * This returns a util to find summary and download a bulk executions
      * @return {BulkFinder}
      */
     newBulkExecutionFinder() {
@@ -309,7 +310,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find a area
+     * This returns a util to find a area
      * @return {AreaFinder}
      */
     newAreaFinder() {
@@ -317,7 +318,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find a operation
+     * This returns a util to find a operation
      * @return {OperationFinder}
      */
     newOperationFinder() {
@@ -325,7 +326,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find Operation Types
+     * This returns a util to find Operation Types
      * @return {OperationType}
      */
     newOperationTypeFinder() {
@@ -333,7 +334,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find Operation Types Templates
+     * This returns a util to find Operation Types Templates
      * @return {OperationTypeCatalog}
      */
     newOperationTypeCatalog() {
@@ -341,7 +342,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find countries catalog
+     * This returns a util to find countries catalog
      * @return {CountriesCatalog}
      */
     newCountriesCatalog() {
@@ -350,7 +351,7 @@ export default class InternalOpenGateAPI {
 
 
     /**
-     * This return a util to update an Operation Type
+     * This returns a util to update an Operation Type
      * @return {OperationType}
      */
     operationTypeBuilder(organization, name, operationTypeObj) {
@@ -358,7 +359,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find Rule Configurations
+     * This returns a util to find Rule Configurations
      * @return {RuleConfigurationsFinder}
      */
     newRuleConfigurationsFinder() {
@@ -366,7 +367,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util  RuleConfigurationsHelper
+     * This returns a util RuleConfigurationsHelper
      * @return {RuleConfigurationsHelper
      */
     newRuleConfigurationsHelper() {
@@ -374,7 +375,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a to find Dataset configuration
+     * This returns a to find Dataset configuration
      * @return {DatasetFinder}
      */
     newDatasetFinder() {
@@ -382,7 +383,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a to find Timeserie configuration
+     * This returns a to find Timeserie configuration
      * @return {TimeserieFinder}
      */
     newTimeserieFinder() {
@@ -390,7 +391,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find Rule Configurations Templates
+     * This returns a util to find Rule Configurations Templates
      * @return {RuleConfigurationsCatalog}
      */
     newRuleConfigurationsCatalog() {
@@ -398,7 +399,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to update a Rule Configuration
+     * This returns a util to update a Rule Configuration
      * @return {RuleConfigurations}
      */
     ruleConfigurationBuilder(organization, channel, name, ruleConfigObj) {
@@ -425,7 +426,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find a device
+     * This returns a util to find a device
      * @return {DeviceFinder}
      */
     newDeviceFinder() {
@@ -433,7 +434,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find a ticket
+     * This returns a util to find a ticket
      * @return {TicketFinder}
      */
     newTicketFinder() {
@@ -442,7 +443,7 @@ export default class InternalOpenGateAPI {
 
 
     /**
-     * This return a util to find a Subscription
+     * This returns a util to find a Subscription
      * @return {SubscriptionsFinder}
      */
     newSubscriptionsFinder() {
@@ -450,7 +451,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find a Subscriber
+     * This returns a util to find a Subscriber
      * @return {SubscribersFinder}
      */
     newSubscribersFinder() {
@@ -463,7 +464,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to create your own filter to make searching
+     * This returns a util to create your own filter to make searching
      * @return {FilterBuilder}
      */
     newFilterBuilder() {
@@ -471,7 +472,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to create your own select to make searching
+     * This returns a util to create your own select to make searching
      * @return {SelectBuilder}
      */
     newSelectBuilder() {
@@ -487,7 +488,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a UsersSearchBuilder to build a specific UsersSearch
+     * This returns a UsersSearchBuilder to build a specific UsersSearch
      * @return {UsersSearchBuilder}
      */
     usersSearchBuilder() {
@@ -495,7 +496,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a DevicesSearchBuilder to build a specific DeviceSearch
+     * This returns a DevicesSearchBuilder to build a specific DeviceSearch
      * @return {DevicesSearchBuilder}
      */
     devicesSearchBuilder() {
@@ -503,7 +504,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a AssetsSearchBuilder to build a specific AssetSearch
+     * This returns a AssetsSearchBuilder to build a specific AssetSearch
      * @return {AssetsSearchBuilder}
      */
     assetsSearchBuilder() {
@@ -511,7 +512,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a SubscribersSearchBuilder to build a specific DeviceSearch
+     * This returns a SubscribersSearchBuilder to build a specific DeviceSearch
      * @return {SubscribersSearchBuilder}
      */
     subscribersSearchBuilder() {
@@ -519,7 +520,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a SubscriptionsSearchBuilder to build a specific DeviceSearch
+     * This returns a SubscriptionsSearchBuilder to build a specific DeviceSearch
      * @return {SubscriptionsSearchBuilder}
      */
     subscriptionsSearchBuilder() {
@@ -527,13 +528,13 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a TicketsSearchBuilder to build a specific TicketSearch
+     * This returns a TicketsSearchBuilder to build a specific TicketSearch
      */
     ticketsSearchBuilder() {
         return new TicketsSearchBuilder(this);
     }
     /**
-     * This return a CommunicationsModuleTypeSearchBuilder to build a specific CommunicationsModuleTypeSearch
+     * This returns a CommunicationsModuleTypeSearchBuilder to build a specific CommunicationsModuleTypeSearch
      * @return {CommunicationsModuleTypeSearchBuilder}
      */
     communicationsModuleTypeSearchBuilder() {
@@ -541,7 +542,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a FieldsDefinitionSearchBuilder to build a specific FieldsDefinitionSearchBuilder
+     * This returns a FieldsDefinitionSearchBuilder to build a specific FieldsDefinitionSearchBuilder
      * @return {FieldsDefinitionSearchBuilder}
      */
     fieldsDefinitionSearchBuilder() {
@@ -549,7 +550,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a MobilePhoneProviderSearchBuilder to build a specific MobilePhoneProviderTypeSearch
+     * This returns a MobilePhoneProviderSearchBuilder to build a specific MobilePhoneProviderTypeSearch
      * @return {MobilePhoneProviderSearchBuilder}
      */
     mobilePhoneProviderSearchBuilder() {
@@ -557,7 +558,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a IoTDatastreamPeriodSearchBuilder to build a specific IoTDatastreamPeriodSearchBuilder
+     * This returns a IoTDatastreamPeriodSearchBuilder to build a specific IoTDatastreamPeriodSearchBuilder
      * @return {IoTDatastreamPeriodSearchBuilder}
      */
     ioTDatastreamPeriodSearchBuilder() {
@@ -565,7 +566,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a ResourceTypeSearchBuilder to build a specific ResourceTypeSearchBuilder
+     * This returns a ResourceTypeSearchBuilder to build a specific ResourceTypeSearchBuilder
      * @return {ResourceTypeSearchBuilder}
      */
     resourceTypeSearchBuilder() {
@@ -573,7 +574,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a AllowedResourceTypeSearchBuilder to build a specific AllowedResourceTypeSearchBuilder
+     * This returns a AllowedResourceTypeSearchBuilder to build a specific AllowedResourceTypeSearchBuilder
      * @return {AllowedResourceTypeSearchBuilder}
      */
     allowedResourceTypeSearchBuilder() {
@@ -583,7 +584,7 @@ export default class InternalOpenGateAPI {
 
 
     /**
-     * This return a IoTDatastreamAccessSearchBuilder to build a specific IoTDatastreamAccessSearchBuilder
+     * This returns a IoTDatastreamAccessSearchBuilder to build a specific IoTDatastreamAccessSearchBuilder
      * @return {IoTDatastreamAccessSearchBuilder}
      */
     ioTDatastreamAccessSearchBuilder() {
@@ -591,7 +592,8 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a IoTDatastreamStoragePeriodSearchBuilder to build a specific IoTDatastreamStoragePeriodSearchBuilder
+     * This returns a IoTDatastreamStoragePeriodSearchBuilder to build a specific
+     * IoTDatastreamStoragePeriodSearchBuilder
      * @return {IoTDatastreamStoragePeriodSearchBuilder}
      */
     ioTDatastreamStoragePeriodSearchBuilder() {
@@ -599,7 +601,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a TicketSeveritySearchBuilder to build a specific TicketSeveritySearchBuilder
+     * This returns a TicketSeveritySearchBuilder to build a specific TicketSeveritySearchBuilder
      * @return {TicketSeveritySearchBuilder}
      */
     ticketSeveritySearchBuilder() {
@@ -607,7 +609,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a TicketPrioritySearchBuilder to build a specific TicketPrioritySearchBuilder
+     * This returns a TicketPrioritySearchBuilder to build a specific TicketPrioritySearchBuilder
      * @return {TicketPrioritySearchBuilder}
      */
     ticketPrioritySearchBuilder() {
@@ -615,7 +617,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a TicketStatusSearchBuilder to build a specific TicketStatusSearchBuilder
+     * This returns a TicketStatusSearchBuilder to build a specific TicketStatusSearchBuilder
      * @return {TicketStatusSearchBuilder}
      */
     ticketStatusSearchBuilder() {
@@ -623,7 +625,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a RulesSearchBuilder to build a specific RulesSearch
+     * This returns a RulesSearchBuilder to build a specific RulesSearch
      * @return {RulesSearchBuilder}
      */
     rulesSearchBuilder() {
@@ -631,7 +633,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a OperationTypesSearchBuilder to build a specific OperationTypesSearch
+     * This returns a OperationTypesSearchBuilder to build a specific OperationTypesSearch
      * @return {OperationTypesSearchBuilder}
      */
     operationTypesSearchBuilder() {
@@ -639,7 +641,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a TasksSearchBuilder to build a specific TasksSearch
+     * This returns a TasksSearchBuilder to build a specific TasksSearch
      * @return {TasksSearchBuilder}
      */
     tasksSearchBuilder() {
@@ -647,7 +649,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a OperationsSearchBuilder to build a specific ExecutionssSearch
+     * This returns a OperationsSearchBuilder to build a specific ExecutionssSearch
      * @return {OperationsSearchBuilder}
      */
     operationsSearchBuilder() {
@@ -655,14 +657,14 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a ExecutionsSearchBuilder to build a specific ExecutionsSearch
+     * This returns a ExecutionsSearchBuilder to build a specific ExecutionsSearch
      * @return {ExecutionsSearchBuilder}
      */
     executionsSearchBuilder() {
         return new ExecutionsSearchBuilder(this);
     }
     /**
-     * This return a ExecutionsHistorySearchBuilder to build a specific ExecutionsSearch
+     * This returns a ExecutionsHistorySearchBuilder to build a specific ExecutionsSearch
      * @return {ExecutionsHistorySearchBuilder}
      */
     executionsHistorySearchBuilder() {
@@ -670,7 +672,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a AlarmsSearchBuilder to build a specific AlarmsSearch
+     * This returns a AlarmsSearchBuilder to build a specific AlarmsSearch
      * @return {AlarmsSearchBuilder}
      */
     alarmsSearchBuilder() {
@@ -678,7 +680,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a DatastreamsSearchBuilder to build a specific DatastreamsSearchBuilder
+     * This returns a DatastreamsSearchBuilder to build a specific DatastreamsSearchBuilder
      * @return {DatastreamsSearchBuilder}
      */
     datastreamsSearchBuilder() {
@@ -686,7 +688,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a DatamodelsSearchBuilder to build a specific DatamodelsSearchBuilder
+     * This returns a DatamodelsSearchBuilder to build a specific DatamodelsSearchBuilder
      * @return {DatamodelsSearchBuilder}
      */
     datamodelsSearchBuilder() {
@@ -694,7 +696,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a FeedsSearchBuilder to build a specific FeedsSearchBuilder
+     * This returns a FeedsSearchBuilder to build a specific FeedsSearchBuilder
      * @return {FeedsSearchBuilder}
      */
     feedsSearchBuilder() {
@@ -703,7 +705,7 @@ export default class InternalOpenGateAPI {
 
 
     /**
-     * This return a DatapointsSearchBuilder to build a specific DatapointsSearchBuilder
+     * This returns a DatapointsSearchBuilder to build a specific DatapointsSearchBuilder
      * @return {DatapointsSearchBuilder}
      */
     datapointsSearchBuilder() {
@@ -711,7 +713,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a BundlesSearchBuilder to build a specific BundlesSearchBuilder
+     * This returns a BundlesSearchBuilder to build a specific BundlesSearchBuilder
      * @return {BundlesSearchBuilder}
      */
     bundlesSearchBuilder() {
@@ -719,7 +721,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a CertificatesSearchBuilder to build a specific CertificatesSearchBuilder
+     * This returns a CertificatesSearchBuilder to build a specific CertificatesSearchBuilder
      * @return {CertificatesSearchBuilder}
      */
     certificatesSearchBuilder() {
@@ -734,7 +736,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a EntitiesSearchBuilder to build a specific EntitiesSearch
+     * This returns a EntitiesSearchBuilder to build a specific EntitiesSearch
      * @return {EntitiesSearchBuilder}
      */
     entitiesSearchBuilder() {
@@ -742,7 +744,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a DatasetEntitiesSearchBuilder to build a specific DatasetEntitiesSearch
+     * This returns a DatasetEntitiesSearchBuilder to build a specific DatasetEntitiesSearch
      * @return {DatasetEntitiesSearchBuilder}
      */
     datasetEntitiesSearchBuilder(organization, dataset) {
@@ -750,7 +752,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a DatasetSearchBuilder to build a specific DatasetSearch
+     * This returns a DatasetSearchBuilder to build a specific DatasetSearch
      * @return {DatasetSearchBuilder}
      */
     datasetSearchBuilder(organization, dataset) {
@@ -758,7 +760,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a TimeserieSearchBuilder to build a specific TimeserieSearch
+     * This returns a TimeserieSearchBuilder to build a specific TimeserieSearch
      * @return {TimeserieSearchBuilder}
      */
     timeserieSearchBuilder(organization, timeserie) {
@@ -766,7 +768,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a TimeserieDownsamplerBuilder to build a specific TimeserieDownsampler
+     * This returns a TimeserieDownsamplerBuilder to build a specific TimeserieDownsampler
      * @return {TimeserieDownsamplerBuilder}
      */
     timeserieDownsamplerBuilder(organization, timeserie, entityId) {
@@ -774,7 +776,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a TimeserieDatasetBuilder to build a specific TimeserieDataset
+     * This returns a TimeserieDatasetBuilder to build a specific TimeserieDataset
      * @return {TimeserieDatasetBuilder}
      */
     timeserieDatasetBuilder(organization, timeserie) {
@@ -782,7 +784,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a BundlesBuilder to build a specific BundlesBuilder
+     * This returns a BundlesBuilder to build a specific BundlesBuilder
      * @return {Bundles}
      */
     bundlesBuilder() {
@@ -790,7 +792,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find a bundle
+     * This returns a util to find a bundle
      * @return {BundleFinder}
      */
     newBundleFinder() {
@@ -798,7 +800,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a OrganizationsBuilder to build a specific OrganizationsBuilder
+     * This returns a OrganizationsBuilder to build a specific OrganizationsBuilder
      * @return {Organizations}
      */
     organizationsBuilder() {
@@ -806,7 +808,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to create a user
+     * This returns a util to create a user
      * @return {User}
      */
     usersBuilder() {
@@ -814,7 +816,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to create a certificate
+     * This returns a util to create a certificate
      * @return {Certificates}
      */
     certificatesBuilder() {
@@ -822,7 +824,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a SoftwaresSearchBuilder to build a specific SoftwaresSearchBuilder
+     * This returns a SoftwaresSearchBuilder to build a specific SoftwaresSearchBuilder
      * @return {SoftwaresSearchBuilder}
      */
     softwaresSearchBuilder() {
@@ -830,7 +832,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a OperationalStatusSearchBuilder to build a specific OperationalStatusSearchBuilder
+     * This returns a OperationalStatusSearchBuilder to build a specific OperationalStatusSearchBuilder
      * @return {OperationalStatusSearchBuilder}
      */
     operationalStatusSearchBuilder() {
@@ -838,7 +840,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a ServiceGroupSearchBuilder to build a specific ServiceGroupSearchBuilder
+     * This returns a ServiceGroupSearchBuilder to build a specific ServiceGroupSearchBuilder
      * @return {ServiceGroupSearchBuilder}
      */
     serviceGroupSearchBuilder() {
@@ -846,7 +848,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a AdministrativeStateSearchBuilder to build a specific AdministrativeStateSearchBuilder
+     * This returns a AdministrativeStateSearchBuilder to build a specific AdministrativeStateSearchBuilder
      * @return {AdministrativeStateSearchBuilder}
      */
     administrativeStateSearchBuilder() {
@@ -854,7 +856,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a DevicesSouth to build a specific DevicesSouth
+     * This returns a DevicesSouth to build a specific DevicesSouth
      * @return {DeviceMessage}
      */
     deviceMessageBuilder() {
@@ -862,7 +864,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a datastreamBuilder to build a specific Datastream
+     * This returns a datastreamBuilder to build a specific Datastream
      * @return {Datastream}
      */
     datastreamBuilder() {
@@ -870,7 +872,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a datapointsBuilder to build a specific Datapoint
+     * This returns a datapointsBuilder to build a specific Datapoint
      * @return {Datapoint}
      */
     datapointsBuilder() {
@@ -941,7 +943,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to operation actions on an operation
+     * This returns a util to operation actions on an operation
      * @param {!string} operationId - identifier of operation
      * @return {OperationActions}
      */
@@ -950,7 +952,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to manage actions over periodicities
+     * This returns a util to manage actions over periodicities
      * @param {!string} taskId - identifier of operation
      * @return {PeriodicityActions}
      */
@@ -959,7 +961,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a WorkgroupRelationsBuilder to build a specific workgroup relation
+     * This returns a WorkgroupRelationsBuilder to build a specific workgroup relation
      * @return {WorkgroupRelations}
      */
     workgroupRelationsBuilder() {
@@ -967,7 +969,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a WorkgroupRelationsFinder 
+     * This returns a WorkgroupRelationsFinder
      * @return {WorkgroupRelationsFinder}
      */
     newWorkgroupRelationsFinder() {
@@ -976,7 +978,7 @@ export default class InternalOpenGateAPI {
 
 
     /**
-     * This return a WorkgroupsBuilder to build a specific workgroup
+     * This returns a WorkgroupsBuilder to build a specific workgroup
      * @return {Workgroups}
      */
     workgroupsBuilder() {
@@ -984,7 +986,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find a workgroup
+     * This returns a util to find a workgroup
      * @return {WorkgroupFinder}
      */
     newWorkgroupFinder() {
@@ -992,7 +994,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a WorkgroupsSearchBuilder to build a specific WorkgroupsSearch
+     * This returns a WorkgroupsSearchBuilder to build a specific WorkgroupsSearch
      * @return {WorkgroupsSearchBuilder}
      */
     workgroupsSearchBuilder() {
@@ -1000,7 +1002,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a ChannelsBuilder to build a specific WorkgroupsSearch
+     * This returns a ChannelsBuilder to build a specific WorkgroupsSearch
      * @return {Channels}
      */
     channelsBuilder() {
@@ -1008,7 +1010,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a AreasBuilder to build a specific area
+     * This returns a AreasBuilder to build a specific area
      * @return {Areas}
      */
     areasBuilder() {
@@ -1016,7 +1018,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a DatasetBuilder to build a specific dataset
+     * This returns a DatasetBuilder to build a specific dataset
      * @return {Datasets}
      */
     datasetsBuilder() {
@@ -1024,7 +1026,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a TimeserieBuilder to build a specific timeserie
+     * This returns a TimeserieBuilder to build a specific timeserie
      * @return {Timeseries}
      */
     timeseriesBuilder() {
@@ -1032,7 +1034,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find a timeseries function
+     * This returns a util to find a timeseries function
      * @return {TimeseriesFunctionsFinder}
      */
     newTimeseriesFunctionFinder() {
@@ -1040,7 +1042,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a TimeserieBuilder to build a specific timeserie
+     * This returns a TimeserieBuilder to build a specific timeserie
      * @return {TimeseriesFunction}
      */
     timeseriesFunctionBuilder(organization, identifier) {
@@ -1048,7 +1050,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a TimeseriesFunctionsHelper
+     * This returns a TimeseriesFunctionsHelper
      * @return {TimeseriesFunctionsHelper}
      */
     newTimeseriesFunctionsHelper() {
@@ -1056,7 +1058,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a ChannelsSearchBuilder to build a specific ChannelsSearch
+     * This returns a ChannelsSearchBuilder to build a specific ChannelsSearch
      * @return {ChannelsSearchBuilder}
      */
     channelsSearchBuilder() {
@@ -1064,7 +1066,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a UserProfilesSearchBuilder to build a specific UserProfilesSearchBuilder
+     * This returns a UserProfilesSearchBuilder to build a specific UserProfilesSearchBuilder
      * @return {UserProfilesSearchBuilder}
      */
     userProfilesSearchBuilder() {
@@ -1072,7 +1074,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a Datamodels to build a specific Datamodels
+     * This returns a Datamodels to build a specific Datamodels
      * @return {Datamodels}
      */
     datamodelsBuilder(organization) {
@@ -1080,7 +1082,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a DatamodelsHelper to build a specific DatamodelsHelper
+     * This returns a DatamodelsHelper to build a specific DatamodelsHelper
      * @return {DatamodelsHelper}
      */
     datamodelsHelper(organization, datamodel) {
@@ -1088,7 +1090,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find a datamodel
+     * This returns a util to find a datamodel
      * @return {DatamodelsFinder}
      */
     newDatamodelsFinder() {
@@ -1096,7 +1098,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a datastream to build a specific Datastream
+     * This returns a datastream to build a specific Datastream
      * @return {DatastreamsBuilder}
      */
     datastreamsBuilder() {
@@ -1104,7 +1106,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to create a bulk execution
+     * This returns a util to create a bulk execution
      * @return {BulkExecutionBuilder}
      */
     bulkExecutionBuilder(organization, processorId, timeout) {
@@ -1112,7 +1114,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a Qrating to build a specific Qrating
+     * This returns a Qrating to build a specific Qrating
      * @return {QratingsBuilder}
      */
     qratingsBuilder() {
@@ -1120,7 +1122,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a CountryCodesSearchBuilder to build a specific CountryCodesSearchBuilder
+     * This returns a CountryCodesSearchBuilder to build a specific CountryCodesSearchBuilder
      * @return {CountryCodesSearchBuilder}
      */
     countryCodesSearchBuilder() {
@@ -1128,7 +1130,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a TimezoneSearchBuilder to build a specific TimezoneSearchBuilder
+     * This returns a TimezoneSearchBuilder to build a specific TimezoneSearchBuilder
      * @return {TimezoneSearchBuilder}
      */
     timezoneSearchBuilder() {
@@ -1136,7 +1138,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a UserLanguagesSearchBuilder to build a specific UserLanguagesSearchBuilder
+     * This returns a UserLanguagesSearchBuilder to build a specific UserLanguagesSearchBuilder
      * @return {UserLanguagesSearchBuilder}
      */
     userLanguagesSearchBuilder() {
@@ -1144,7 +1146,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a ConnectorFunctionsFinder 
+     * This returns a ConnectorFunctionsFinder
      * @return {ConnectorFunctionsFinder}
      */
     newConnectorFunctionsFinder() {
@@ -1152,7 +1154,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a ConnectorFunctionsCatalogFinder 
+     * This returns a ConnectorFunctionsCatalogFinder
      * @return {ConnectorFunctionsCatalogFinder}
      */
     newConnectorFunctionsCatalogFinder() {
@@ -1160,7 +1162,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a ConnectorFunctionsCatalog
+     * This returns a ConnectorFunctionsCatalog
      * @return {ConnectorFunctionsCatalog}
      */
     newConnectorFunctionsCatalog() {
@@ -1168,7 +1170,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a ConnectorFunctionsHelper
+     * This returns a ConnectorFunctionsHelper
      * @return {ConnectorFunctionsHelper}
      */
     newConnectorFunctionsHelper() {
@@ -1176,7 +1178,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a ConnectorFunctions
+     * This returns a ConnectorFunctions
      * @return {ConnectorFunctions}
      */
     connectorFunctionsBuilder(organization, channel, identifier, connectorFunctionData) {
@@ -1194,7 +1196,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a ProvisionsProcesorsBuilder to build a specific ProvisionsProcesorsBuilder
+     * This returns a ProvisionsProcesorsBuilder to build a specific ProvisionsProcesorsBuilder
      * @return {provisionProcessorsBuilder}
      */
     provisionProcessorsBuilder() {
@@ -1202,7 +1204,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find a provision procesor
+     * This returns a util to find a provision procesor
      * @return {ProvisionProcessorsFinder}
      */
     newProvisionProcessorsFinder() {
@@ -1210,7 +1212,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a ManufacturersBuilder to build a specific ManufacturersBuilder
+     * This returns a ManufacturersBuilder to build a specific ManufacturersBuilder
      * @return {ManufacturersBuilder}
      */
     manufacturersBuilder() {
@@ -1218,7 +1220,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a ManufacturerModelsBuilder to build a specific ManufacturerModelsBuilder
+     * This returns a ManufacturerModelsBuilder to build a specific ManufacturerModelsBuilder
      * @return {ManufacturerModelsBuilder}
      */
     manufacturerModelsBuilder(manufacturerIdentifier) {
@@ -1226,7 +1228,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find a hardware manufacturer
+     * This returns a util to find a hardware manufacturer
      * @return {ManufacturerFinder}
      */
     newManufacturersFinder() {
@@ -1234,14 +1236,15 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find a hardware model
+     * This returns a util to find a hardware model
      * @return {ModelFinder}
      */
     newModelFinder() {
         return new ModelFinder(this);
     }
 
-    /** This return a OrganizationManufacturersBuilder to build a specific OrganizationManufacturersBuilder
+    /**
+     * This returns a OrganizationManufacturersBuilder to build a specific OrganizationManufacturersBuilder
      * @return {OrganizationManufacturersBuilder}
      */
     organizationManufacturersBuilder(organization) {
@@ -1249,7 +1252,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a OrganizationManufacturerModelsBuilder to build a specific OrganizationManufacturerModelsBuilder
+     * This returns a OrganizationManufacturerModelsBuilder to build a specific OrganizationManufacturerModelsBuilder
      * @return {OrganizationManufacturerModelsBuilder}
      */
     organizationManufacturerModelsBuilder(organization, manufacturerIdentifier) {
@@ -1257,7 +1260,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find a hardware manufacturer
+     * This returns a util to find a hardware manufacturer
      * @return {OrganizationManufacturerFinder}
      */
     newOrganizationManufacturersFinder() {
@@ -1265,7 +1268,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find a hardware model
+     * This returns a util to find a hardware model
      * @return {OrganizationModelFinder}
      */
     newOrganizationModelFinder() {
@@ -1273,14 +1276,15 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to search organizations
+     * This returns a util to search organizations
      * @return {OrganizationsSearchBuilder}
      */
     organizationsSearchBuilder() {
         return new OrganizationsSearchBuilder(this);
     }
 
-    /** This return a SoftwaresBuilder to build a specific SoftwaresBuilder
+    /**
+     * This returns a SoftwaresBuilder to build a specific SoftwaresBuilder
      * @return {SoftwaresBuilder}
      */
     softwaresBuilder(organization) {
@@ -1288,7 +1292,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find an organization software
+     * This returns a util to find an organization software
      * @return {SoftwareFinder}
      */
     newSoftwareFinder() {
@@ -1296,7 +1300,7 @@ export default class InternalOpenGateAPI {
     }
 
     /** 
-     * This return a NotebookLauncherBuilder to build a specific NotebookLauncherBuilder
+     * This returns a NotebookLauncherBuilder to build a specific NotebookLauncherBuilder
      * @return {NotebookLauncherBuilder}
      */
     notebookLauncherBuilder() {
@@ -1304,7 +1308,7 @@ export default class InternalOpenGateAPI {
     }
 
     /** 
-     * This return a NotebookSchedulerBuilder to build a specific NotebookSchedulerBuilder
+     * This returns a NotebookSchedulerBuilder to build a specific NotebookSchedulerBuilder
      * @return {NotebookSchedulerBuilder}
      */
     notebookSchedulerBuilder() {
@@ -1312,7 +1316,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find notebooks
+     * This returns a util to find notebooks
      * @return {NotebookFinder}
      */
     newNotebookFinder() {
@@ -1320,7 +1324,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find notebooks schedulers
+     * This returns a util to find notebooks schedulers
      * @return {NotebookSchedulerFinder}
      */
     newNotebookSchedulerFinder() {
@@ -1328,7 +1332,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to view schedule history
+     * This returns a util to view schedule history
      * @return {HistoryFinder}
      */
     newScheduleHistoryFinder() {
@@ -1336,7 +1340,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to view schedule rest requests
+     * This returns a util to view schedule rest requests
      * @return {RestRequestFinder}
      */
     newScheduleRestRequestFinder() {
@@ -1344,7 +1348,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to build schedule rest requests
+     * This returns a util to build schedule rest requests
      * @return {RestRequest}
      */
     scheduleRestRequestBuilder() {
@@ -1352,7 +1356,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to view schedule image executions
+     * This returns a util to view schedule image executions
      * @return {ImageExecutionFinder}
      */
     newScheduleImageExecutionFinder() {
@@ -1360,7 +1364,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to build schedule image executions
+     * This returns a util to build schedule image executions
      * @return {ImageExecution}
      */
     scheduleImageExecutionBuilder() {
@@ -1368,7 +1372,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to view schedule pipelines
+     * This returns a util to view schedule pipelines
      * @return {PipelineFinder}
      */
     newSchedulePipelineFinder() {
@@ -1376,7 +1380,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to build a pipeline
+     * This returns a util to build a pipeline
      * @return {SchedulePipeline}
      */
     schedulePipelineBuilder() {
@@ -1384,7 +1388,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find organization plans
+     * This returns a util to find organization plans
      * @returns {OrganizationPlansFinder}
      */
     newOrganizationPlansFinder() {
@@ -1392,14 +1396,14 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a util to find device plans
+     * This returns a util to find device plans
      * @returns {DevicePlansFinder}
      */
     newDevicePlansFinder() {
         return new DevicePlansFinder(this);
     }
     /**
-     * This return a OrganizationPlans to build a specific organization plan
+     * This returns a OrganizationPlans to build a specific organization plan
      * @param {*} organization 
      * @returns {OrganizationPlans}
      */
@@ -1408,7 +1412,7 @@ export default class InternalOpenGateAPI {
     }
 
     /**
-     * This return a DevicePlans to build a specific device plan
+     * This returns a DevicePlans to build a specific device plan
      * @param {*} organization 
      * @returns {OrganizationPlans}
      */
