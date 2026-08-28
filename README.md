@@ -136,6 +136,27 @@ new OpenGateAPI({
 The hook is process-wide — one callback for every client, last registration wins — which is what it
 has always been.
 
+### Provisioning a device
+
+A device needs six fields before the platform will accept it, and it reports an omission one at a
+time. The full set, and why it is not validated client-side, is documented on
+`entityBuilder.devicesBuilder()`; the short version:
+
+```js
+const builder = await ogapi.entityBuilder.devicesBuilder('myorg');
+await builder
+    .with('provision.device.identifier', 'my-device')
+    .with('provision.administration.identifier', 'my-device')
+    .with('provision.administration.organization', 'myorg')
+    .with('provision.administration.channel', 'default_channel')
+    .with('provision.administration.plan', 'dev__100_per_day')
+    .with('provision.administration.serviceGroup', 'emptyServiceGroup')
+    .create();
+```
+
+`with()` warns and ignores a datastream the organization does not allow, so check the name if a value
+does not arrive. `ogapi.newDevicePlansFinder().findByOrganization(org)` lists the valid plans.
+
 ## Logging
 
 The library keeps quiet. Nothing reaches your console except a warning when a call has been misused —
