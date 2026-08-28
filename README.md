@@ -13,6 +13,10 @@ It wraps both platform APIs behind a fluent, promise-based interface, and it is 
 npm install opengate-js
 ```
 
+Installing straight from the repository (a git dependency, or `yarn link` against a clone) works
+too: `dist/` and `types/` are not committed, so the `prepare` script builds them at install time.
+That needs the dev dependencies, so `--ignore-scripts` leaves the package without an entry point.
+
 ## Quick start
 
 ```js
@@ -91,16 +95,39 @@ const ogapi = new OpenGateAPI({
 
 ## In the browser
 
-The package ships a browserified bundle that defines `window.OpenGateAPI`:
+With a bundler (Vite, webpack, Rollup, Nuxt), import the package by name. Nothing else is needed —
+the same entry point serves the browser and the server:
+
+```js
+import OpenGateAPI from 'opengate-js';
+
+const ogapi = new OpenGateAPI({ url: 'https://opengate.example.com', apiKey: '…' });
+```
+
+An application that expects the library on the global object needs one more line, and every other
+file can keep using `window.OpenGateAPI` unchanged:
+
+```js
+import OpenGateAPI from 'opengate-js';
+window.OpenGateAPI = OpenGateAPI;
+```
+
+Prefer this over importing the browser bundle by path: it tree-shakes, and the path does not change
+with every release.
+
+Without a bundler, the package ships a self-contained bundle that defines `window.OpenGateAPI`:
 
 ```html
 <script src="node_modules/opengate-js/dist/opengate-api-bower-16.0.0.min.js"></script>
 <script>
     var ogapi = new OpenGateAPI({ url: 'https://opengate.example.com', apiKey: '…' });
 </script>
-
-The bundle carries the version in its filename, so this path changes with every release.
 ```
+
+The bundle carries the version in its filename, so this path changes with every release. It is built
+for `<script src>` only: it is an IIFE, so it exports nothing, and importing it from a module
+(`import 'opengate-js/dist/opengate-api-bower-16.0.0.js'`) does not currently run it. Use the bare
+`import OpenGateAPI from 'opengate-js'` above instead.
 
 ## Transport
 
@@ -337,7 +364,7 @@ Node, where there is no preflight, and reports only the checks where the two run
 - `test/unit/` — unit tests, including `regressions/`, which pins defects that already shipped.
 - `features/` — Cucumber acceptance suite, run against a live OpenGate.
 - `tools/apidoc/` — generates the API model and the declarations from the JSDoc.
-- `dist/` — build output. **Not in the repository**: run `yarn build`, and `prepack` produces it on publish.
+- `dist/` — build output. **Not in the repository**: run `yarn build`, and `prepare` produces it on install and on publish.
 
 ## Testing
 
@@ -367,7 +394,7 @@ Publication to [npm](https://www.npmjs.com/package/opengate-js) is driven by the
 Releases are tagged on `develop`. `master` is frozen at `14.15.0` and is not the release branch. There
 is no `bower.json` any more, despite the name of the browser bundle.
 
-`.github/workflows/release.yml` refuses to continue if the tag and `package.json` disagree, then lints, tests, regenerates the declarations through `prepack`, publishes with [provenance](https://docs.npmjs.com/generating-provenance-statements), and opens a GitHub release carrying `api-model.json`.
+`.github/workflows/release.yml` refuses to continue if the tag and `package.json` disagree, then lints, tests, regenerates the declarations through `prepare`, publishes with [provenance](https://docs.npmjs.com/generating-provenance-statements), and opens a GitHub release carrying `api-model.json`.
 
 It needs one repository secret, `NPM_TOKEN`: an npm automation token with publish rights.
 
