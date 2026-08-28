@@ -103,6 +103,20 @@ export default [
     },
 
     {
+        // The browser transport checks are a classic script, served into a real browser engine and
+        // never required by Node.
+        files: ['test/browser/**/*.js'],
+        languageOptions: {
+            ecmaVersion: 2022,
+            sourceType: 'script',
+            globals: {
+                ...globals.browser
+            }
+        },
+        rules: ACCUMULATED_DEBT
+    },
+
+    {
         // Unit tests: vitest exposes describe/it/expect as globals.
         files: ['test/unit/**/*.test.js'],
         languageOptions: {
