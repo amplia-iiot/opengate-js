@@ -22,4 +22,9 @@ export default class SubscriberBuilder extends SimpleBuilder {
     _getEntityKey() {
         return this._entity[SubscriberID];
     }
+
+    /** @return {string} the datastream that carries this entity's key, for error messages. */
+    _getEntityKeyId() {
+        return SubscriberID;
+    }
 }

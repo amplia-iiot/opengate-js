@@ -30,4 +30,9 @@ export default class AssetBuilder extends SimpleBuilder {
     _getEntityKey() {
         return this._entity[AssetID];
     }
+
+    /** @return {string} the datastream that carries this entity's key, for error messages. */
+    _getEntityKeyId() {
+        return AssetID;
+    }
 }

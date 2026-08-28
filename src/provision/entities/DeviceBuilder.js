@@ -569,4 +569,9 @@ export default class DeviceBuilder extends ComplexBuilder {
     _getEntityKey() {
         return this._entity[ID];
     }
+
+    /** @return {string} the datastream that carries this entity's key, for error messages. */
+    _getEntityKeyId() {
+        return ID;
+    }
 }

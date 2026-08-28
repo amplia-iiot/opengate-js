@@ -23,4 +23,9 @@ export default class TicketBuilder extends SimpleBuilder {
     _getEntityKey() {
         return this._entity[TicketID];
     }
+
+    /** @return {string} the datastream that carries this entity's key, for error messages. */
+    _getEntityKeyId() {
+        return TicketID;
+    }
 }
