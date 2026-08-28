@@ -884,14 +884,24 @@
         }
 
         async function runWriteLane() {
-            var identifier = 'e2e-verify-' + Date.now();
+            // Both the identifier and the name are held to ^[a-zA-Z0-9]+$ by the platform, so no
+            // dashes and no spaces. The timestamp goes in so a failed run leaves something
+            // identifiable rather than colliding with the next one. The description is capped at 50
+            // characters by the builder, which checks before sending anything.
+            var stamp = String(Date.now());
+            var identifier = 'e2everify' + stamp;
+            var name = 'e2everify' + stamp;
+            // A Point at the organization's own default map location. GeoJSON order is [lon, lat].
+            var geometry = ['Point', [-3.6655712, 40.4779822]];
+
             var created = await check('write', 'areasBuilder', 'create() ' + identifier, function () {
                 return api
                     .areasBuilder()
                     .withOrganization(ctx.org)
                     .withIdentifier(identifier)
-                    .withName(identifier)
-                    .withDescription('Temporary area created by the opengate-js e2e run. Safe to delete.')
+                    .withName(name)
+                    .withDescription('opengate-js e2e run, safe to delete')
+                    .withGeometry(geometry[0], geometry[1])
                     .create();
             });
             if (created.outcome !== 'pass') {
@@ -906,7 +916,9 @@
                     .areasBuilder()
                     .withOrganization(ctx.org)
                     .withIdentifier(identifier)
-                    .withDescription('Updated by the e2e run.')
+                    .withName(name)
+                    .withDescription('opengate-js e2e run, updated')
+                    .withGeometry(geometry[0], geometry[1])
                     .update();
             });
             await check('write', 'newAreaFinder', 'findByOrganizationAndIdentifier() after update', function () {
