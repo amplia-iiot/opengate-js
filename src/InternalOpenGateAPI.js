@@ -123,6 +123,7 @@ import ProvisionProcessorsFinder from './provisionProcessors/provisionProcessors
 import EntityFinder from './entities/EntityFinder';
 import AlarmActions from './alarms/AlarmActions';
 import { setBeforeStart } from './util/http/RequestSpec';
+import { configureLogger } from './util/logger';
 import ConnectorFunctionsHelper from './connectorsFunctions/configuration/ConnectorFunctionsHelper';
 import ConnectorFunctionsFinder from './connectorsFunctions/configuration/ConnectorFunctionsFinder';
 import ConnectorFunctions from './connectorsFunctions/configuration/ConnectorFunctions';
@@ -194,6 +195,9 @@ export default class InternalOpenGateAPI {
         }
         if (typeof southAmpliaREST !== 'object') {
             throw new Error('Must instance mandatory parameter: southAmpliaREST');
+        }
+        if ('logger' in _options) {
+            configureLogger(_options.logger);
         }
         if (_options.hooks && _options.hooks.beforeStart && typeof _options.hooks.beforeStart === 'function') {
             registerBeforeStartHook(_options.hooks.beforeStart);

@@ -4,6 +4,7 @@ import HttpStatus from 'http-status-codes';
 import BaseProvision from '../BaseProvision';
 import q from 'q';
 import _ from 'lodash';
+import logger from '../../util/logger';
 
 const ERROR_VALUE_NOT_ALLOWED = 'value is not allowed. The value should be formatted as follows: ';
 const ERROR_DATASTREAM_NOT_ALLOWED = 'Datastream is not allowed';
@@ -101,7 +102,7 @@ export default class SimpleBuilder extends BaseProvision {
                 return ds.identifier === _id;
             }).length !== 1
         ) {
-            console.warn(
+            logger.warn(
                 'Datastream not found or operations can not be performed on it. This value will be ignored. Datastream Name: ' + _id
             );
             return this;

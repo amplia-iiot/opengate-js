@@ -13,6 +13,7 @@ import moment from 'moment';
 import { TIME_FORMAT, DATE_FORMAT } from './../../util/DATE_FORMAT';
 
 import Ajv from 'ajv';
+import logger from '../../util/logger';
 
 const DEFAULT_DELAYED_STOP = 43200; //Valor por defecto, 43200 minutos, equivale a un mes de retraso. Conclusión a la que se ha llegado mediante inspiración divina.
 const ACK_TIMEOUT = 'ackTimeout',
@@ -454,7 +455,7 @@ export default class BaseOperationBuilder {
         }
         if (typeof this._build.task === 'undefined') {
             if (typeof this._build.schedule.start === 'undefined' && typeof this._build.active === 'undefined') {
-                console.info(
+                logger.info(
                     'Not specified the way to execute [executeImmediately, executeIDLE, executeLater]. By default executeImmediately will be the way'
                 );
                 this.executeImmediately();
@@ -503,7 +504,7 @@ export default class BaseOperationBuilder {
                     }
                 } else {
                     jobTimeout = moment.duration(maxJobTimeout, 'milliseconds').asSeconds() - 1;
-                    console.info('Not specified the job timeout. By default, timeout will be ' + jobTimeout + ' seconds');
+                    logger.info('Not specified the job timeout. By default, timeout will be ' + jobTimeout + ' seconds');
                     this.withJobTimeout(jobTimeout, 'seconds');
                 }
             }
@@ -515,7 +516,7 @@ export default class BaseOperationBuilder {
         }
 
         if (typeof this._build.schedule.stop === 'undefined') {
-            console.info('Not specified the job timeout. By default, timeout will be 30 days');
+            logger.info('Not specified the job timeout. By default, timeout will be 30 days');
             this.withJobTimeout(DEFAULT_DELAYED_STOP);
         }
 

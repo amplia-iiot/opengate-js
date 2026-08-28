@@ -6,6 +6,7 @@ import { SubscriptionID } from './SubscriptionBuilder';
 import HttpStatus from 'http-status-codes';
 import q from 'q';
 import jp from 'jsonpath';
+import logger from '../../util/logger';
 
 const ID = 'provision.device.identifier';
 
@@ -419,7 +420,9 @@ class WrapperBuilder {
                 return response.statusCode === HttpStatus.OK;
             })
             .catch(err => {
-                console.warn(err);
+                // Swallowed on purpose: a failure here means the entity could not be read, which is
+                // reported as "does not exist". The reason is only of interest when debugging.
+                logger.debug('_checkExists failed', err);
                 return false;
             });
     }
@@ -469,7 +472,7 @@ class WrapperBuilder {
                     });
                 })
                 .catch(err => {
-                    console.error(err);
+                    logger.debug('entity creation reported a failure', err);
                     defered.notify({
                         entity: _this._key,
                         message: 'OGAPI_ENTITY_CREATED',

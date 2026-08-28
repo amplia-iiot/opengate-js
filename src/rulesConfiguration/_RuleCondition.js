@@ -1,4 +1,5 @@
 import RuleConfigurations from './RuleConfigurations';
+import logger from '../util/logger';
 
 /**
  * Defines the builder to configure a _RuleCondition
@@ -31,7 +32,7 @@ export default class _RuleCondition {
         }
 
         if (typeof this._condition.delay === 'undefined') {
-            console.warn('Parameter delay cannot be setted for this condition');
+            logger.warn('Parameter delay cannot be setted for this condition');
         } else {
             this._condition.delay = delay * 1000;
         }
@@ -46,7 +47,7 @@ export default class _RuleCondition {
      */
     deactivateDelay() {
         if (typeof this._condition.delay === 'undefined') {
-            console.warn('Parameter delay cannot be setted for this condition');
+            logger.warn('Parameter delay cannot be setted for this condition');
         } else {
             this._condition.delay = -1;
         }

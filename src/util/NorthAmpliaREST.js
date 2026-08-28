@@ -8,6 +8,7 @@ import mime from 'mime-types';
 
 import RequestSpec from './http/RequestSpec';
 import { register as registerMock } from './http/mockRouter';
+import logger from './logger';
 
 /**
  * Encodes one query parameter value.
@@ -114,17 +115,17 @@ export default class NorthAmpliaREST {
     _applyMocks(mocks) {
         const methods = Object.keys(mocks).filter(method => !_.isEmpty(mocks[method]));
         methods.forEach(method => {
-            console.log(`Mocking ${method.toLocaleUpperCase()} requests`);
+            logger.debug(`Mocking ${method.toLocaleUpperCase()} requests`);
             Object.keys(mocks[method]).forEach(url => {
-                console.log('Mocking url:', url);
+                logger.debug('Mocking url:', url);
                 const methodByUrl = mocks[method][url];
                 registerMock(method, this._options.url + url, req => {
                     if (typeof methodByUrl === 'function') {
-                        console.log('Function returned');
+                        logger.debug('Mock handler returned a value');
                         return methodByUrl(req);
                     } else {
                         const data = mocks[method][url];
-                        console.log('Data returned:', data);
+                        logger.debug('Mock returned data:', data);
                         if (!data.headers) data.headers = {};
                         return data;
                     }
@@ -159,7 +160,7 @@ export default class NorthAmpliaREST {
      */
     get(url, timeout, headers, parameters, asBlob, serviceBaseURL) {
         const _url = this._createUrl(url, parameters, serviceBaseURL);
-        console.info('GET', _url);
+        logger.info('GET', _url);
         var req = new RequestSpec('GET', _url);
         return this._createPromiseRequest(req, null, timeout, headers, asBlob);
     }
@@ -176,7 +177,7 @@ export default class NorthAmpliaREST {
      */
     patch(url, data, timeout, headers, parameters, serviceBaseURL) {
         const _url = this._createUrl(url, parameters, serviceBaseURL);
-        console.info('PATCH', _url);
+        logger.info('PATCH', _url);
         var req = new RequestSpec('PATCH', _url).send(data);
 
         return this._createPromiseRequest(req, null, timeout, headers);
@@ -194,7 +195,7 @@ export default class NorthAmpliaREST {
      */
     post(url, data, timeout, headers, parameters, serviceBaseURL) {
         const _url = this._createUrl(url, parameters, serviceBaseURL);
-        console.info('POST', _url);
+        logger.info('POST', _url);
         var req = new RequestSpec('POST', _url).send(data);
 
         return this._createPromiseRequest(req, null, timeout, headers);
@@ -213,7 +214,7 @@ export default class NorthAmpliaREST {
      */
     post_multipart(url, formData, events, timeout, headers, parameters, serviceBaseURL) {
         const _url = this._createUrl(url, parameters, serviceBaseURL);
-        console.info('POST_MULTIPART', _url);
+        logger.info('POST_MULTIPART', _url);
         let req = new RequestSpec('POST', _url);
 
         this._prepareMultipartForm(formData, req);
@@ -233,7 +234,7 @@ export default class NorthAmpliaREST {
      */
     put(url, data, timeout, headers, parameters, serviceBaseURL) {
         const _url = this._createUrl(url, parameters, serviceBaseURL);
-        console.info('PUT', _url);
+        logger.info('PUT', _url);
         var req = new RequestSpec('PUT', _url).send(data);
 
         if (headers) {
@@ -260,7 +261,7 @@ export default class NorthAmpliaREST {
      */
     put_multipart(url, formData, events, timeout, headers, parameters, serviceBaseURL) {
         const _url = this._createUrl(url, parameters, serviceBaseURL);
-        console.info('PUT_MULTIPART', _url);
+        logger.info('PUT_MULTIPART', _url);
         let req = new RequestSpec('PUT', _url);
 
         this._prepareMultipartForm(formData, req);
@@ -342,7 +343,7 @@ export default class NorthAmpliaREST {
      */
     delete(url, timeout, headers, parameters, body, serviceBaseURL) {
         const _url = this._createUrl(url, parameters, serviceBaseURL);
-        console.info('DELETE', _url);
+        logger.info('DELETE', _url);
         var req;
         if (body) {
             req = new RequestSpec('DELETE', _url).send(body);
@@ -433,12 +434,7 @@ export default class NorthAmpliaREST {
         }
         _req = _req.end(function (err, res) {
             if (err !== null) {
-                console.error('OGAPI ERROR: ');
-                try {
-                    console.log(JSON.stringify(err));
-                } catch (err) {
-                    console.log(err);
-                }
+                logger.debug('OGAPI request failed', err);
                 let data;
                 let headers;
                 let status = err.status ? err.status : undefined;

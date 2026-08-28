@@ -366,18 +366,15 @@ const _searchColumns = function (_this, finder, objSearcher, defered) {
                                 defered.resolve(columnDatastreams);
                             })
                             .catch(function (error) {
-                                console.error(error);
                                 defered.reject(error);
                             });
                     })
                     .catch(function (error) {
-                        console.error(error);
                         defered.reject(error);
                     });
             }
         })
         .catch(function (error) {
-            console.error(error);
             defered.reject(error);
         });
 };

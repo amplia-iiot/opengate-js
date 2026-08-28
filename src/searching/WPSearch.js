@@ -3,6 +3,7 @@
 import BaseSearch from './BaseSearch';
 import merge from 'merge';
 import q from 'q';
+import logger from '../util/logger';
 
 /**
  * This class extends BaseSearch and allows requests to be made to any available resource in the OpenGate North
@@ -58,7 +59,7 @@ export default class WPSearch extends BaseSearch {
                                     body = parsedResult;
                                 }
                             } catch (ignoreError) {
-                                console.warn('Impossible to parse text from response: ' + response.text);
+                                logger.warn('Impossible to parse text from response: ' + response.text);
                             }
                         }
 

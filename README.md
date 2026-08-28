@@ -52,6 +52,7 @@ Note that a rejection is a plain object today, not an `Error`. That is a known w
 | `south.url`         | Base URL of the South API. Only needed if you call it — omitting it and then calling south throws `OGAPI_SOUTH_URL_NOT_CONFIGURED`. |
 | `hooks.beforeStart` | Called with each request just before it leaves — see [Transport](#transport).                                                       |
 | `mocks`             | Answers matching requests locally instead of calling OpenGate — see [Transport](#transport).                                        |
+| `logger`            | Where the library's own messages go. `false` silences it, `true` reports everything — see [Logging](#logging).                      |
 
 ## What it covers
 
@@ -134,6 +135,22 @@ new OpenGateAPI({
 
 The hook is process-wide — one callback for every client, last registration wins — which is what it
 has always been.
+
+## Logging
+
+The library keeps quiet. Nothing reaches your console except a warning when a call has been misused —
+a value outside an enum, a filter carrying both `and` and `or`, a response that would not parse.
+Per-request logging exists but sits at `debug`/`info`, which are silent by default.
+
+```js
+new OpenGateAPI({ url, apiKey }); // warnings and errors only
+new OpenGateAPI({ url, apiKey, logger: false }); // nothing at all
+new OpenGateAPI({ url, apiKey, logger: true }); // everything, for debugging
+new OpenGateAPI({ url, apiKey, logger: myLogger }); // { debug, info, warn, error }
+```
+
+A logger you supply is authoritative: levels it leaves out are silent rather than falling back to the
+console. Like `hooks.beforeStart`, the setting is process-wide and the last one wins.
 
 ### mocks
 

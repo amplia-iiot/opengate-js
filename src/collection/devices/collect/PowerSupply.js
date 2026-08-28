@@ -4,6 +4,7 @@ import { POWER_SUPPLY_SOURCE_ENUM } from './enum/POWER_SUPPLY_SOURCE_ENUM';
 import { BATTERY_CHARGE_STATUS_ENUM } from './enum/BATTERY_CHARGE_STATUS_ENUM';
 import { BATTERY_CHARGE_LEVEL_STATUS_ENUM } from './enum/BATTERY_CHARGE_LEVEL_STATUS_ENUM';
 import { LEVEL_TREND_ENUM } from './enum/LEVEL_TREND_ENUM';
+import logger from '../../../util/logger';
 
 /**
  * This is a base object that allows the user to create a PowerSupply object.
@@ -110,7 +111,7 @@ export default class PowerSupply {
             not_found.push(value);
         }
         if (not_found.length !== 0) {
-            console.warn("Parameter value not allowed <'" + JSON.stringify(not_found) + "'>, allowed <'" + JSON.stringify(enumName) + "'>");
+            logger.warn("Parameter value not allowed <'" + JSON.stringify(not_found) + "'>, allowed <'" + JSON.stringify(enumName) + "'>");
         }
         return value;
     }

@@ -1,6 +1,7 @@
 'use strict';
 
 import q from 'q';
+import logger from '../util/logger';
 
 /**
  * This is an abstract class; it must be extended by another class that defines the specific actions of a given
@@ -402,7 +403,7 @@ export default class BaseProvision {
             not_found.push(value);
         }
         if (not_found.length !== 0) {
-            console.warn("Parameter value not allowed <'" + JSON.stringify(not_found) + "'>, allowed <'" + JSON.stringify(enumName) + "'>");
+            logger.warn("Parameter value not allowed <'" + JSON.stringify(not_found) + "'>, allowed <'" + JSON.stringify(enumName) + "'>");
         }
         return value;
     }

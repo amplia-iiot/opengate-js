@@ -1,4 +1,5 @@
 import RuleConfigurations from './RuleConfigurations';
+import logger from '../util/logger';
 
 /**
  * Defines the builder to configure a _RuleNotification
@@ -53,9 +54,9 @@ export default class _RuleNotification {
                 }
             }
 
-            console.warn('Bearer ' + bearerName + ' not exists for notification ' + this._notification.name);
+            logger.warn('Bearer ' + bearerName + ' not exists for notification ' + this._notification.name);
         } else {
-            console.warn('There is no bearers for notification ' + this._notification.name);
+            logger.warn('There is no bearers for notification ' + this._notification.name);
         }
 
         return _this;
@@ -79,9 +80,9 @@ export default class _RuleNotification {
                 }
             }
 
-            console.warn('Bearer ' + bearerName + ' not exists for notification ' + this._notification.name);
+            logger.warn('Bearer ' + bearerName + ' not exists for notification ' + this._notification.name);
         } else {
-            console.warn('There is no bearers for notification ' + this._notification.name);
+            logger.warn('There is no bearers for notification ' + this._notification.name);
         }
 
         return _this;
@@ -104,9 +105,9 @@ export default class _RuleNotification {
                 }
             }
 
-            console.warn('Bearer ' + bearerName + ' not exists for notification ' + this._notification.name);
+            logger.warn('Bearer ' + bearerName + ' not exists for notification ' + this._notification.name);
         } else {
-            console.warn('There is no bearers for notification ' + this._notification.name);
+            logger.warn('There is no bearers for notification ' + this._notification.name);
         }
 
         return _this;
