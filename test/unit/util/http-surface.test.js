@@ -18,15 +18,31 @@ import { buildResponse } from '../../../src/util/http/response';
 
 const require = createRequire(import.meta.url);
 
-/** The names superagent's browser build put on Request.prototype. */
+/**
+ * The names superagent's browser build puts on its request.
+ *
+ * Reading the source text of client.js and request-base.js is **not enough**, and the first version
+ * of this test made exactly that mistake: the browser request is also passed through
+ * component-emitter, which mixes its methods in at runtime rather than assigning them to the
+ * prototype where a regexp would see them. `addEventListener`, `removeEventListener` and
+ * `hasListeners` were missing from this list, and therefore missing from RequestSpec, until Chema
+ * spotted it reading the diff. Enumerate the mixin too.
+ */
 function superagentRequestSurface() {
     const client = readFileSync(require.resolve('superagent/lib/client.js'), 'utf8');
     const base = readFileSync(require.resolve('superagent/lib/request-base.js'), 'utf8');
-    const names = [
+    const assigned = [
         ...[...client.matchAll(/Request\.prototype\.([A-Za-z_][A-Za-z0-9_]*)\s*=/g)].map(m => m[1]),
         ...[...base.matchAll(/RequestBase\.prototype\.([A-Za-z_][A-Za-z0-9_]*)\s*=/g)].map(m => m[1])
     ];
-    return [...new Set(names)].filter(name => !name.startsWith('_'));
+
+    // What component-emitter installs, asked of component-emitter itself.
+    const Emitter = require('component-emitter');
+    const mixedIn = {};
+    Emitter(mixedIn);
+    const emitted = Object.keys(mixedIn).filter(name => typeof mixedIn[name] === 'function');
+
+    return [...new Set([...assigned, ...emitted])].filter(name => !name.startsWith('_'));
 }
 
 /** The names superagent's Node build put on its request, EventEmitter surface included. */
@@ -71,6 +87,24 @@ describe('the request surface', () => {
     it('does not pretend to offer the ones that cannot work', () => {
         const request = new RequestSpec('GET', 'http://example.invalid/x');
         NOT_REPRODUCED.forEach(name => expect(request[name]).toBeUndefined());
+    });
+
+    // The three that were missing. Named individually so a regression is unmistakable.
+    it("carries component-emitter's aliases, which the browser request has", () => {
+        const request = new RequestSpec('GET', 'http://example.invalid/x');
+        ['addEventListener', 'removeEventListener', 'hasListeners'].forEach(name => {
+            expect(typeof request[name], name).toBe('function');
+        });
+
+        const seen = [];
+        const listener = () => seen.push('fired');
+        request.addEventListener('thing', listener);
+        expect(request.hasListeners('thing')).toBe(true);
+        request.emit('thing');
+        expect(seen).toEqual(['fired']);
+
+        request.removeEventListener('thing', listener);
+        expect(request.hasListeners('thing')).toBe(false);
     });
 
     it('exposes method, url and both views of the headers', () => {

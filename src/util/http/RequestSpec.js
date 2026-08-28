@@ -411,13 +411,45 @@ export default class RequestSpec {
     }
 
     /**
-     * superagent's alias for `on`.
+     * superagent's alias for `on` in Node, where the request is an EventEmitter.
      * @param {!string} event
      * @param {!function} callback
      * @return {RequestSpec}
      */
     addListener(event, callback) {
         return this.on(event, callback);
+    }
+
+    /**
+     * component-emitter's alias for `on`, which is what superagent's **browser** request carries.
+     * Missed on the first pass because the surface was enumerated from client.js source text, and
+     * component-emitter mixes its methods in at runtime rather than assigning them there. Caught in
+     * review by Chema.
+     * @param {!string} event
+     * @param {!function} callback
+     * @return {RequestSpec}
+     */
+    addEventListener(event, callback) {
+        return this.on(event, callback);
+    }
+
+    /**
+     * component-emitter's alias for `off`.
+     * @param {!string} event
+     * @param {function=} callback
+     * @return {RequestSpec}
+     */
+    removeEventListener(event, callback) {
+        return this.off(event, callback);
+    }
+
+    /**
+     * component-emitter's own predicate.
+     * @param {!string} event
+     * @return {boolean} whether anything is listening.
+     */
+    hasListeners(event) {
+        return this.listenerCount(event) > 0;
     }
 
     /**
