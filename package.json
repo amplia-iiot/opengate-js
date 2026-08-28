@@ -73,7 +73,7 @@
     "apidoc": "npm run apidoc:model && npm run apidoc:types",
     "apidoc:model": "node tools/apidoc/extract.mjs --out build/api-model.json",
     "apidoc:types": "tsc -p tools/apidoc/tsconfig.declarations.json",
-    "prepack": "npm run build && npm run apidoc:types"
+    "prepare": "npm run build && npm run apidoc:types"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

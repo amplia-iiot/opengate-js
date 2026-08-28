@@ -50,7 +50,7 @@ jobs:
       - name: Build the API model
         run: yarn apidoc:model
 
-      # prepack builds dist/ and regenerates types/ from src/, so the tarball can only ever contain
+      # prepare builds dist/ and regenerates types/ from src/, so the tarball can only ever contain
       # a bundle compiled from the very commit being tagged. dist/ is not in the repository at all
       # any more, which is what makes that guarantee hold. --provenance records, verifiably, that
       # this build produced this tarball.

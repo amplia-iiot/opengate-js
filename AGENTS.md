@@ -14,7 +14,7 @@
 - `yarn test` runs the vitest unit suite; `yarn test:watch` and `yarn test:coverage` are the usual variants.
 - `yarn lint` runs ESLint, `yarn format` runs Prettier. Both are gated in CI.
 - `yarn apidoc` regenerates `build/api-model.json` and the `types/` declarations.
-- `yarn build` produces `dist/` with esbuild. `dist/` is **not committed**; `prepack` builds it on publish.
+- `yarn build` produces `dist/` with esbuild. `dist/` is **not committed**; `prepare` builds it on install and on publish.
 - Acceptance suite: `yarn test:e2e --tags '@tag1 and not @ignore'` after a `yarn build`; quick WIP pass: `yarn test-wip`; add `--report` for the HTML report.
 
 ## Coding Style & Naming Conventions
