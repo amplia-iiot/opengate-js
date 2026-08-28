@@ -1,6 +1,7 @@
 'use strict';
 
 import q from 'q';
+import logger from '../../util/logger';
 
 /**
  * This is an abstract class; it must be extended by another class that defines the specific request. This class is
@@ -33,7 +34,7 @@ export default class Operation {
                 try {
                     data = JSON.parse(response.text);
                 } catch (err) {
-                    console.warn('Error parsing response data when execute post action to ' + this._resource);
+                    logger.warn('Error parsing response data when execute post action to ' + this._resource);
                 }
                 defered.resolve({
                     data: data ? data : {},

@@ -4,8 +4,28 @@ import ProvisionGenericFinder from '../../ProvisionGenericFinder';
 import jp from 'jsonpath';
 import q from 'q';
 import HttpStatus from 'http-status-codes';
+import parameterError from '../../util/parameterError';
 /**
  * This class allows making GET requests to the countries catalog resource in OpenGate North API.
+ *
+ * **It needs the `_internalCountriesFilter` client option**, and there is no default. OUW-3924 built
+ * it that way on purpose: the catalogue is not an endpoint but an *asset* entity with
+ * `entityType WIRE` and an identifier of the form `DOMAIN_<domain>`, so the caller has to say which
+ * entity to read, the same way it says which api key to use. The ticket notes the intention to
+ * replace this with a real catalogue endpoint and drop the option again.
+ *
+ *     new OpenGateAPI({
+ *         url, apiKey,
+ *         _internalCountriesFilter: {
+ *             organization: 'myorg',
+ *             identifier: 'DOMAIN_myorg',
+ *             ds: 'provision.administration.countries'
+ *         }
+ *     });
+ *
+ * Without it, `getCountries()` used to die with
+ * `Cannot read properties of undefined (reading 'organization')`, which said nothing about the
+ * option that was missing.
  */
 export default class CountriesCatalog extends ProvisionGenericFinder {
     /**
@@ -24,6 +44,9 @@ export default class CountriesCatalog extends ProvisionGenericFinder {
      * @return {Promise}
      */
     getCountries() {
+        if (!this.__filter) {
+            throw parameterError('OGAPI_COUNTRIES_FILTER_NOT_CONFIGURED', { parameter: '_internalCountriesFilter' });
+        }
         return this._execute();
     }
 

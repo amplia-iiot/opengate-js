@@ -1,6 +1,7 @@
 'use strict';
 
 import q from 'q';
+import logger from '../util/logger';
 
 const LIMIT_SIZE_DEF_VALUE = 1000;
 
@@ -223,7 +224,7 @@ export default class BaseSearch {
                                     body = parsedResult;
                                 }
                             } catch (ignoreError) {
-                                console.error('Impossible to parse text from response');
+                                logger.error('Impossible to parse text from response');
                             }
                         }
 

@@ -43,14 +43,17 @@ Note that a rejection is a plain object today, not an `Error`. That is a known w
 
 ## Configuration
 
-| Option              | Meaning                                                                                                                             |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `url`               | Base URL of the North API. Required.                                                                                                |
-| `apiKey`            | Sent as `X-ApiKey`.                                                                                                                 |
-| `jwt`               | Sent as `Authorization: Bearer …`. **Takes precedence over `apiKey`** on North API calls.                                           |
-| `timeout`           | Milliseconds. Defaults to `5000`; `-1` disables the timeout entirely.                                                               |
-| `south.url`         | Base URL of the South API. Only needed if you call it — omitting it and then calling south throws `OGAPI_SOUTH_URL_NOT_CONFIGURED`. |
-| `hooks.beforeStart` | Called before every request leaves.                                                                                                 |
+| Option                     | Meaning                                                                                                                             |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `url`                      | Base URL of the North API. Required.                                                                                                |
+| `apiKey`                   | Sent as `X-ApiKey`.                                                                                                                 |
+| `jwt`                      | Sent as `Authorization: Bearer …`. **Takes precedence over `apiKey`** on North API calls.                                           |
+| `timeout`                  | Milliseconds. Defaults to `5000`; `-1` disables the timeout entirely.                                                               |
+| `south.url`                | Base URL of the South API. Only needed if you call it — omitting it and then calling south throws `OGAPI_SOUTH_URL_NOT_CONFIGURED`. |
+| `hooks.beforeStart`        | Called with each request just before it leaves — see [Transport](#transport).                                                       |
+| `mocks`                    | Answers matching requests locally instead of calling OpenGate — see [Transport](#transport).                                        |
+| `_internalCountriesFilter` | Required by `newCountriesCatalog()`; see its JSDoc. `{ organization, identifier, ds }`.                                             |
+| `logger`                   | Where the library's own messages go. `false` silences it, `true` reports everything — see [Logging](#logging).                      |
 
 ## What it covers
 
@@ -91,11 +94,112 @@ const ogapi = new OpenGateAPI({
 The package ships a browserified bundle that defines `window.OpenGateAPI`:
 
 ```html
-<script src="node_modules/opengate-js/dist/opengate-api-bower-15.5.0.min.js"></script>
+<script src="node_modules/opengate-js/dist/opengate-api-bower-16.0.0.min.js"></script>
 <script>
     var ogapi = new OpenGateAPI({ url: 'https://opengate.example.com', apiKey: '…' });
 </script>
+
+The bundle carries the version in its filename, so this path changes with every release.
 ```
+
+## Transport
+
+Requests go over **`fetch`**, which every supported runtime provides natively: Node.js 20.19+, and
+any browser the bundle targets. There is no HTTP client dependency to install, and none to keep
+patched.
+
+One exception, deliberately kept: **upload progress**. `fetch` reports none, in any browser, and
+progress is public API on `ManufacturerMedia`, `ModelMedia` and `DeploymentElement`. So when a
+progress callback is supplied, a multipart upload goes over `XMLHttpRequest` in the browser, and
+over a counted stream in Node. Either way the callback receives `{ direction, loaded, total,
+percent }`.
+
+```js
+ogapi.newManufacturerMediaBuilder().withProgressEvent(event => console.log(`${event.percent.toFixed(0)}%`));
+```
+
+### hooks.beforeStart
+
+The callback is handed the request that is about to leave, and may still change it:
+
+```js
+new OpenGateAPI({
+    url: '…',
+    apiKey: '…',
+    hooks: {
+        beforeStart: request => {
+            request.method; // 'GET'
+            request.url; // the whole URL, query string included
+            request.set('X-Correlation-Id', correlationId()); // takes effect
+        }
+    }
+});
+```
+
+The hook is process-wide — one callback for every client, last registration wins — which is what it
+has always been.
+
+### Provisioning a device
+
+A device needs six fields before the platform will accept it, and it reports an omission one at a
+time. The full set, and why it is not validated client-side, is documented on
+`entityBuilder.devicesBuilder()`; the short version:
+
+```js
+const builder = await ogapi.entityBuilder.devicesBuilder('myorg');
+await builder
+    .with('provision.device.identifier', 'my-device')
+    .with('provision.administration.identifier', 'my-device')
+    .with('provision.administration.organization', 'myorg')
+    .with('provision.administration.channel', 'default_channel')
+    .with('provision.administration.plan', 'dev__100_per_day')
+    .with('provision.administration.serviceGroup', 'emptyServiceGroup')
+    .create();
+```
+
+`with()` warns and ignores a datastream the organization does not allow, so check the name if a value
+does not arrive. `ogapi.newDevicePlansFinder().findByOrganization(org)` lists the valid plans.
+
+## Logging
+
+The library keeps quiet. Nothing reaches your console except a warning when a call has been misused —
+a value outside an enum, a filter carrying both `and` and `or`, a response that would not parse.
+Per-request logging exists but sits at `debug`/`info`, which are silent by default.
+
+```js
+new OpenGateAPI({ url, apiKey }); // warnings and errors only
+new OpenGateAPI({ url, apiKey, logger: false }); // nothing at all
+new OpenGateAPI({ url, apiKey, logger: true }); // everything, for debugging
+new OpenGateAPI({ url, apiKey, logger: myLogger }); // { debug, info, warn, error }
+```
+
+A logger you supply is authoritative: levels it leaves out are silent rather than falling back to the
+console. Like `hooks.beforeStart`, the setting is process-wide and the last one wins.
+
+### mocks
+
+`mocks` answers matching requests locally, which is how the acceptance suite covers paths a live
+platform will not produce on demand. Handlers are keyed by verb and then by URL pattern, where
+`:name` matches one path segment:
+
+```js
+new OpenGateAPI({
+    url: 'https://opengate.example.com',
+    mocks: {
+        get: {
+            '/north/v80/provision/organizations/:organization': request => ({
+                statusCode: 200,
+                body: { name: request.params.organization }
+            })
+        }
+    }
+});
+```
+
+**The pattern must spell out the whole path after the base URL**, `north/v80` included; it is
+matched against the full URL, so a pattern that starts at `/provision/...` matches nothing and the
+request reaches the platform. Like the hook, the registry is process-wide and routes accumulate for
+the life of the process.
 
 ## TypeScript
 
@@ -122,20 +226,110 @@ yarn test
 
 Dependencies come from the public npm registry. The repository deliberately ships no `.npmrc` or `.yarnrc`: if you want an internal mirror, configure it in your own `~/.npmrc` rather than committing it here.
 
-| Command              | What it does                                                               |
-| -------------------- | -------------------------------------------------------------------------- |
-| `yarn test`          | Unit tests (vitest). No network, no OpenGate instance needed.              |
-| `yarn test:watch`    | The same suite, in watch mode.                                             |
-| `yarn test:coverage` | Unit tests with a coverage report in `coverage/`.                          |
-| `yarn lint`          | ESLint. Errors break the build; warnings are pre-existing debt.            |
-| `yarn lint:fix`      | ESLint with autofix.                                                       |
-| `yarn format`        | Prettier over the whole tree.                                              |
-| `yarn format:check`  | Fails if anything is unformatted.                                          |
-| `yarn apidoc`        | Regenerates the API model and the type declarations.                       |
-| `yarn test:e2e`      | Cucumber acceptance suite; needs a real OpenGate.                          |
-| `yarn build`         | Builds `dist/`: the CommonJS tree, the ESM entry and both browser bundles. |
+| Command                   | What it does                                                               |
+| ------------------------- | -------------------------------------------------------------------------- |
+| `yarn test`               | Unit tests (vitest). No network, no OpenGate instance needed.              |
+| `yarn test:watch`         | The same suite, in watch mode.                                             |
+| `yarn test:coverage`      | Unit tests with a coverage report in `coverage/`.                          |
+| `yarn lint`               | ESLint. Errors break the build; warnings are pre-existing debt.            |
+| `yarn lint:fix`           | ESLint with autofix.                                                       |
+| `yarn format`             | Prettier over the whole tree.                                              |
+| `yarn format:check`       | Fails if anything is unformatted.                                          |
+| `yarn apidoc`             | Regenerates the API model and the type declarations.                       |
+| `yarn test:e2e`           | Cucumber acceptance suite; needs a real OpenGate. **Writes and deletes.**  |
+| `yarn smoke`              | Read-only checks against a live OpenGate, under Node. Needs `yarn build`.  |
+| `yarn smoke:browser`      | The same checks inside a real browser, via Lightpanda over CDP.            |
+| `yarn verify:browser`     | Transport checks in a real browser: progress, Blob, cancellation, hooks.   |
+| `yarn e2e:coverage`       | Walks the client API against a live platform from a real browser.          |
+| `yarn e2e:coverage:serve` | Serves the same page so you can drive it yourself.                         |
+| `yarn build`              | Builds `dist/`: the CommonJS tree, the ESM entry and both browser bundles. |
 
 Every push and pull request runs lint, the unit tests and the API model generation on Node 20, 22 and 24.
+
+### Proving it against a live platform
+
+`yarn test:e2e` creates and deletes real entities, so it belongs on a test instance and must never be
+pointed at production. The smoke suite exists for the case where the real thing is the only
+convincing proof: every check in `test/smoke/checks.js` is a read, and nothing may be added there
+that is not.
+
+```bash
+yarn build
+OGAPI_URL=https://opengate.example.com OGAPI_USER=… OGAPI_PASSWORD=… OGAPI_ORG=… yarn smoke
+OGAPI_URL=… OGAPI_USER=… OGAPI_PASSWORD=… OGAPI_ORG=… yarn smoke:browser
+```
+
+Both runs execute the same checks, one under Node and one inside a browser engine, because a
+transport change is only proven when the two runtimes agree.
+
+### Verifying the transport in a browser
+
+This library is the core of the OpenGate web GUI, so anything the transport does differently in a
+browser is a production problem. `yarn verify:browser` runs `test/browser/transport-checks.js` inside
+a real engine and covers what only a browser can answer: upload progress over `XMLHttpRequest`,
+`asBlob` returning a real `Blob`, cancellation, timeouts, and the object `hooks.beforeStart` hands to
+application code. The local fixtures it serves make all of that testable without writing to a
+platform; the four checks that do talk to OpenGate are reads, and run only when the `OGAPI_*`
+variables are set.
+
+```bash
+yarn build
+yarn verify:browser                                  # real Chrome
+OGAPI_BROWSER=obscura     yarn verify:browser
+OGAPI_BROWSER=lightpanda  yarn verify:browser
+OGAPI_BUNDLE=/tmp/previous-bundle.js yarn verify:browser   # compare against another build
+```
+
+`OGAPI_BUNDLE` is what makes it more than a pass or a fail: point it at a bundle built from the
+previous revision and run both in the same engine. A check that fails on both is a limitation of the
+engine, not a regression. Measured that way, real Chrome passes every check, while Obscura 0.2.1 and
+Lightpanda emit no XHR upload-progress events and fail that one check on **either** build.
+
+### Walking the API surface from a browser
+
+`yarn verify:browser` proves the transport. It says nothing about the 51 search builders, 40 finders
+and 4 catalogues hanging off the client, which is what actually needs checking before a release.
+`yarn e2e:coverage` walks all of it — 120 checks — against a live platform from a real browser.
+
+```bash
+yarn build
+OGAPI_URL=… OGAPI_USER=… OGAPI_PASSWORD=… OGAPI_ORG=… yarn e2e:coverage
+OGAPI_E2E_SERVE=1 yarn e2e:coverage      # serve the page and drive it yourself
+```
+
+It authenticates the way an application does: `usersBuilder().login(email, password)` POSTs to
+`provision/users/login`, and the run then carries the `jwt` from the response as
+`Authorization: Bearer …`. `OGAPI_AUTH=apikey` switches to the `apiKey` that the same login returns,
+because on this platform the two are **not** interchangeable — `/planner` only accepts the JWT,
+`/scheduler` only the api key — and being able to measure that is the point.
+
+Factories are discovered from the client rather than listed, so a new one is covered the day it is
+added. Reads are chained: identifiers harvested from the search lane feed the finders that need one,
+so the second tier runs against real devices, channels and datamodels rather than invented ids.
+
+**Everything it runs by default is a read**, and each search is capped at one row. Two write lanes
+exist and are **off** unless `OGAPI_ALLOW_WRITES=1`:
+
+- an **Area** — create, read, update, read, delete, confirm gone. Metadata only: no device, no
+  datastream, no collection.
+- a **device**, which is the round trip the platform exists to do: provision it, find it by id, find
+  it through a filtered search, **feed it a datapoint over the south API**, poll the searches, then
+  remove it and confirm it is gone. Removal has a fallback that does not go through the builder,
+  because a stray device in a production organization is not acceptable.
+
+The south lane is why the client is built with both credentials: the transport sends the JWT north and
+never south, so the api key from the same login is what makes `collect/iot` reachable.
+
+Outcomes are finer than pass/fail on purpose, because "the platform has nothing there" and "the
+library is broken" are different facts: `pass`, `empty` (204, or a 404 saying so), `denied` (401/403),
+`absent` (endpoint not served here), `blocked`, `fail` and `skip`. Only `fail` is a defect.
+
+`blocked` means the request never left the browser, which in practice is the CORS preflight. Several
+OpenGate service paths — `north/v80/timeseries`, `north/v80/datasets`, `/scheduler`, `/planner` —
+answer `OPTIONS` with 401 or 403, and a preflight carries no credentials by design, so **no browser
+can reach them cross-origin**. Same-origin callers, which is how the web GUI is served, are
+unaffected. To keep that separate from a real defect the runner then runs the identical suite under
+Node, where there is no preflight, and reports only the checks where the two runtimes disagree.
 
 ### Layout
 
@@ -166,9 +360,12 @@ certificates. Set `OGAPI_E2E_STRICT_TLS=1` to keep it on.
 
 Publication to [npm](https://www.npmjs.com/package/opengate-js) is driven by the tag and by nothing else:
 
-1. Bump `version` in `package.json` and `bower.json` on `master`, and commit.
+1. Bump `version` in `package.json` on `develop`, and commit.
 2. Tag that commit `vX.Y.Z`, matching the version exactly.
 3. Push the tag.
+
+Releases are tagged on `develop`. `master` is frozen at `14.15.0` and is not the release branch. There
+is no `bower.json` any more, despite the name of the browser bundle.
 
 `.github/workflows/release.yml` refuses to continue if the tag and `package.json` disagree, then lints, tests, regenerates the declarations through `prepack`, publishes with [provenance](https://docs.npmjs.com/generating-provenance-statements), and opens a GitHub release carrying `api-model.json`.
 

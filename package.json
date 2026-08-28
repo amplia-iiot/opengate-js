@@ -1,6 +1,6 @@
 {
   "name": "opengate-js",
-  "version": "15.5.0",
+  "version": "16.0.0",
   "description": "JavaScript client for the OpenGate North and South APIs, with a fluent builder API. Runs in Node.js and in the browser.",
   "main": "dist/opengate-api-npm.js",
   "module": "dist/opengate-api-npm.mjs",
@@ -16,7 +16,8 @@
     "./dist/*.js": "./dist/*.js",
     "./dist/*.mjs": "./dist/*.mjs",
     "./dist/*.map": "./dist/*.map",
-    "./dist/*": "./dist/*.js"
+    "./dist/*": "./dist/*.js",
+    "./*": "./*"
   },
   "files": [
     "dist",
@@ -48,8 +49,6 @@
     "mime-types": "^2.1.35",
     "moment": "^2.14.1",
     "q": "^1.4.1",
-    "superagent": "^3.8.3",
-    "superagent-mocker": "^0.5.2",
     "urlencode": "^1.1.0",
     "uuid": "9.0.1"
   },
@@ -60,6 +59,11 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:e2e": "node scripts/e2e.mjs",
+    "smoke": "node scripts/smoke.mjs",
+    "smoke:browser": "node scripts/smoke-browser.mjs",
+    "verify:browser": "node scripts/verify-browser.mjs",
+    "e2e:coverage": "node scripts/e2e-coverage.mjs",
+    "e2e:coverage:serve": "OGAPI_E2E_SERVE=1 node scripts/e2e-coverage.mjs",
     "test-wip": "node scripts/e2e.mjs --tags @wip",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -89,6 +93,7 @@
     "multiple-cucumber-html-reporter": "^1.18.0",
     "path-browserify": "^1.0.1",
     "prettier": "^3.6.2",
+    "superagent": "^3.8.3",
     "process": "^0.11.10",
     "typescript": "^5.9.3",
     "util": "^0.12.5",

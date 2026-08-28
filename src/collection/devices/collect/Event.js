@@ -10,6 +10,7 @@ import CommsModuleMessage from './CommsModuleMessage';
 import { TEMPERATURE_STATUS_ENUM } from './enum/TEMPERATURE_STATUS_ENUM';
 import { LEVEL_TREND_ENUM } from './enum/LEVEL_TREND_ENUM';
 import parameterError from '../../../util/parameterError';
+import logger from '../../../util/logger';
 
 /**
  * This is a base object that allows the user to create an Event.
@@ -397,7 +398,7 @@ export default class Event {
             not_found.push(value);
         }
         if (not_found.length !== 0) {
-            console.warn("Parameter value not allowed <'" + JSON.stringify(not_found) + "'>, allowed <'" + JSON.stringify(enumName) + "'>");
+            logger.warn("Parameter value not allowed <'" + JSON.stringify(not_found) + "'>, allowed <'" + JSON.stringify(enumName) + "'>");
         }
         return value;
     }

@@ -1,6 +1,7 @@
 'use strict';
 
 import moment from 'moment';
+import logger from '../../../util/logger';
 /**
  * This class generates a builder from dynamic content describing a specific parameter of an operation.
  */
@@ -37,7 +38,7 @@ export default class BaseParameterBuilderWithParent {
 
     _appendParameterValue(value) {
         if (!this._isTypeValueAllow(value)) {
-            console.warn(
+            logger.warn(
                 "Parameter <'" +
                     this._config.name +
                     "'> not allow type of value setted <'" +
@@ -48,7 +49,7 @@ export default class BaseParameterBuilderWithParent {
             return this;
         }
         if (!this._isAllowValue(value)) {
-            console.warn(
+            logger.warn(
                 "Parameter <'" +
                     this._config.name +
                     "'> not allow value setted <'" +

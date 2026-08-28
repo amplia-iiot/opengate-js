@@ -97,7 +97,11 @@ const BROWSER_SHIMS = {
     buffer: path.join(root, 'node_modules', 'buffer'),
     assert: path.join(root, 'node_modules', 'assert'),
     util: path.join(root, 'node_modules', 'util'),
-    fs: path.join(root, 'scripts', 'browser-shims', 'empty.js')
+    fs: path.join(root, 'scripts', 'browser-shims', 'empty.js'),
+    // The multipart helper reaches for node:fs to turn a file path into a Blob, behind a runtime
+    // check for Node. The check keeps it from ever running in a browser, but esbuild still has to
+    // resolve the specifier to bundle the file at all.
+    'node:fs': path.join(root, 'scripts', 'browser-shims', 'empty.js')
 };
 
 /** The browser bundle, under the same versioned name the documentation already points at. */

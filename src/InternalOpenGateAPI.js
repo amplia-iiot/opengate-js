@@ -122,7 +122,8 @@ import ProvisionProcessors from './provisionProcessors/provisionProcessors';
 import ProvisionProcessorsFinder from './provisionProcessors/provisionProcessorsFinder';
 import EntityFinder from './entities/EntityFinder';
 import AlarmActions from './alarms/AlarmActions';
-import _superagent from 'superagent';
+import { setBeforeStart } from './util/http/RequestSpec';
+import { configureLogger } from './util/logger';
 import ConnectorFunctionsHelper from './connectorsFunctions/configuration/ConnectorFunctionsHelper';
 import ConnectorFunctionsFinder from './connectorsFunctions/configuration/ConnectorFunctionsFinder';
 import ConnectorFunctions from './connectorsFunctions/configuration/ConnectorFunctions';
@@ -162,24 +163,19 @@ import DevicePlans from './plan/DevicePlans';
 import OrganizationPlansFinder from './plan/OrganizationPlansFinder';
 import DevicePlansFinder from './plan/DevicePlansFinder';
 
-const RequestEndMonkeyPatching = (function () {
-    let beforeStart;
-    const end = _superagent.Request.prototype.end;
-
-    _superagent.Request.prototype.end = function (cb) {
-        if (beforeStart && beforeStart.call) beforeStart(this);
-        return end.call(this, function (err, res) {
-            if (typeof cb !== 'function') {
-                return;
-            }
-            cb(err, res);
-        });
-    };
-
-    return function setCallback(cb) {
-        beforeStart = cb;
-    };
-})();
+/**
+ * Registers the `hooks.beforeStart` callback, which is called with the request just before it
+ * leaves. It used to be a monkey-patch over `superagent.Request.prototype.end`; now the transport
+ * offers the hook itself, so there is nothing to patch.
+ *
+ * **The object the callback receives has changed.** It was a superagent `Request`; it is now the
+ * library's own request, which offers `method`, `url`, `headers` and a chainable `set(name, value)`
+ * that still takes effect. A hook that reads or adds headers keeps working. A hook reaching into
+ * superagent internals does not, and cannot: superagent is gone.
+ *
+ * It stays process-wide, as the patch was: one callback for every client, last registration wins.
+ */
+const registerBeforeStartHook = setBeforeStart;
 /**
  * This is an abstract class. It must be extended by another class that defines the backend, and it is used to make
  * requests to the OpenGate North API from a browser or a Node.js server.
@@ -200,8 +196,11 @@ export default class InternalOpenGateAPI {
         if (typeof southAmpliaREST !== 'object') {
             throw new Error('Must instance mandatory parameter: southAmpliaREST');
         }
+        if ('logger' in _options) {
+            configureLogger(_options.logger);
+        }
         if (_options.hooks && _options.hooks.beforeStart && typeof _options.hooks.beforeStart === 'function') {
-            RequestEndMonkeyPatching(_options.hooks.beforeStart);
+            registerBeforeStartHook(_options.hooks.beforeStart);
         }
         this.Napi = northAmpliaREST;
         this.Sapi = southAmpliaREST;

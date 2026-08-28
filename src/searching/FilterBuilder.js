@@ -1,6 +1,7 @@
 'use strict';
 
 import Ex from './../util/Expression';
+import logger from '../util/logger';
 
 export default class FilterBuilder {
     /**
@@ -20,7 +21,7 @@ export default class FilterBuilder {
         if (typeof this._filterTemplate.filter.or === 'undefined') this._filterTemplate.filter.or = [];
 
         if (typeof this._filterTemplate.filter.and !== 'undefined') {
-            console.warn('The filter not allow both elements [and,or], the item "and" are going to be removed.');
+            logger.warn('The filter not allow both elements [and,or], the item "and" are going to be removed.');
             delete this._filterTemplate.filter.and;
         }
 
@@ -38,7 +39,7 @@ export default class FilterBuilder {
         if (typeof this._filterTemplate.filter.and === 'undefined') this._filterTemplate.filter.and = [];
 
         if (typeof this._filterTemplate.filter.or !== 'undefined') {
-            console.warn('The filter not allow both elements [and,or], the item "or" are going to be removed.');
+            logger.warn('The filter not allow both elements [and,or], the item "or" are going to be removed.');
             delete this._filterTemplate.filter.or;
         }
 

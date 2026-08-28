@@ -26,19 +26,16 @@ export default class OperationTypesBuilder extends SearchBuilder {
      * @return {Search}
      */
     build() {
-        try {
-            return new SearchWithoutLimit(
-                this._parent,
-                this._buildUrl(),
-                this._buildFilter(),
-                this._buildSort(),
-                this._buildGroup(),
-                this._buildSelect(),
-                this._builderParams.timeout,
-                this._urlParams
-            );
-        } catch (error) {
-            console.error('!errrrror!!!!!!', error);
-        }
+        // As in SearchBuilder: the caller gets the real error rather than undefined.
+        return new SearchWithoutLimit(
+            this._parent,
+            this._buildUrl(),
+            this._buildFilter(),
+            this._buildSort(),
+            this._buildGroup(),
+            this._buildSelect(),
+            this._builderParams.timeout,
+            this._urlParams
+        );
     }
 }

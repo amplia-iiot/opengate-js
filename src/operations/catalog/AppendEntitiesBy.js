@@ -1,5 +1,7 @@
 'use strict';
 
+import logger from '../../util/logger';
+
 /**
  * Utility used by BaseOperationBuilder to append target entities in three different ways: by filter, by tags, or
  * by entity list.
@@ -37,7 +39,7 @@ export default class AppendEntitiesBy {
         }
         this._parent._resourceTypeWhenFilter = resourceType;
         if (typeof this._parent._build.target !== 'undefined')
-            console.warn(
+            logger.warn(
                 'An Operation only allow one kind of way to append entities. ' +
                     'Filter | Tag | List of entities. Now Filter will remove the last way appended .'
             );
@@ -63,7 +65,7 @@ export default class AppendEntitiesBy {
             throw new Error('Parameter entities must be typeof Array');
         }
         if (typeof this._parent._build.target !== 'undefined')
-            console.warn(
+            logger.warn(
                 'An Operation only allow one kind of way to append entities. ' +
                     'Filter | Tag | List of entities. Now  List of entities will remove the last way appended .'
             );
@@ -99,7 +101,7 @@ export default class AppendEntitiesBy {
      */
     tag(tag) {
         if (typeof this._parent._build.target !== 'undefined')
-            console.warn(
+            logger.warn(
                 'An Operation only allow one kind of way to append entities. ' +
                     'Filter | Tag | List of entities. Now Tag will remove the last way appended .'
             );

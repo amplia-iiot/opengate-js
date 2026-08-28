@@ -96,7 +96,6 @@ export default class RuleConfigurationsActions {
                 }
             })
             .catch(error => {
-                console.log('ERROR2 ' + JSON.stringify(this._name) + JSON.stringify(error));
                 defered.reject(error);
             });
         return promise;

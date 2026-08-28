@@ -4,6 +4,8 @@ import HttpStatus from 'http-status-codes';
 import BaseProvision from '../BaseProvision';
 import q from 'q';
 import _ from 'lodash';
+import logger from '../../util/logger';
+import parameterError from '../../util/parameterError';
 
 const ERROR_VALUE_NOT_ALLOWED = 'value is not allowed. The value should be formatted as follows: ';
 const ERROR_DATASTREAM_NOT_ALLOWED = 'Datastream is not allowed';
@@ -36,7 +38,28 @@ export default class SimpleBuilder extends BaseProvision {
     }
 
     _buildURL() {
-        return this._resource + '/' + this.getEntityKey();
+        return this._resource + '/' + this._requireEntityKey();
+    }
+
+    /**
+     * The entity key, or a refusal naming the datastream that would have provided it.
+     *
+     * Without this, an absent key reached the URL as the string 'null' and the request went out
+     * against the wrong resource -- or, before `getEntityKey` stopped dereferencing undefined, died
+     * as `Cannot read properties of undefined (reading '_value')`. That happened on a delete, where
+     * the caller was told nothing had gone wrong and a device was left provisioned. Jira OUW-4885.
+     *
+     * @return {string} the entity key.
+     * @throws {Error} OGAPI_ENTITY_KEY_REQUIRED, carrying the datastream in `parameter`.
+     */
+    _requireEntityKey() {
+        const key = this.getEntityKey();
+        if (key === null || key === undefined || key === '') {
+            throw parameterError('OGAPI_ENTITY_KEY_REQUIRED', {
+                parameter: typeof this._getEntityKeyId === 'function' ? this._getEntityKeyId() : 'the entity key datastream'
+            });
+        }
+        return key;
     }
 
     _validate() {
@@ -78,7 +101,12 @@ export default class SimpleBuilder extends BaseProvision {
      * @return {string} - Entity identifier
      */
     getEntityKey() {
-        return this._getEntityKey() !== null ? this._getEntityKey()._value._current.value : null;
+        // `_getEntityKey()` reads a datastream out of the entity, so it is *undefined* when that
+        // datastream was never set -- not null. Comparing against null alone let undefined through
+        // and the next dereference threw.
+        const key = this._getEntityKey();
+        if (key === null || key === undefined) return null;
+        return key._value._current.value;
     }
 
     /**
@@ -101,7 +129,7 @@ export default class SimpleBuilder extends BaseProvision {
                 return ds.identifier === _id;
             }).length !== 1
         ) {
-            console.warn(
+            logger.warn(
                 'Datastream not found or operations can not be performed on it. This value will be ignored. Datastream Name: ' + _id
             );
             return this;

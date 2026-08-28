@@ -145,9 +145,44 @@ export default class EntityBuilder {
     }
 
     /**
-     * Get a DeviceBuilder to operate with entities of type device
+     * Get a DeviceBuilder to operate with entities of type device.
+     *
+     * It resolves a builder rather than returning one, because the allowed datastreams and their
+     * schemas are read from the platform first. Note that `with()` **ignores** a datastream the
+     * organization does not allow, warning rather than throwing, so a typo in a datastream name
+     * produces an entity missing that value rather than an error.
+     *
+     * A device that the platform will accept needs more than an identifier. This is a create that
+     * works, and every line of it was needed:
+     *
+     * ```js
+     * const builder = await ogapi.entityBuilder.devicesBuilder('sensehat');
+     * await builder
+     *     .with('provision.device.identifier', 'my-device')            // the entity key
+     *     .with('provision.administration.identifier', 'my-device')
+     *     .with('provision.administration.organization', 'sensehat')
+     *     .with('provision.administration.channel', 'default_channel')
+     *     .with('provision.administration.plan', 'dev__100_per_day')
+     *     .with('provision.administration.serviceGroup', 'emptyServiceGroup_onSession')
+     *     .create();
+     * ```
+     *
+     * The platform rejects an omission one field at a time, so finding this set means a round trip
+     * per missing field:
+     *
+     * - without `plan`: 400 `0x010E10`, "Device plan is mandatory…"
+     * - without `serviceGroup`: 400 `0x010000`, "Required field."
+     *
+     * These are **not** validated here on purpose. The plan message ties the requirement to the
+     * state of the organization, so a client-side rule would refuse calls that other organizations
+     * accept. `provision.device.identifier` is different: it is the entity key, and its absence is
+     * refused locally with `OGAPI_ENTITY_KEY_REQUIRED`.
+     *
+     * List the plans an organization actually has with
+     * `ogapi.newDevicePlansFinder().findByOrganization(organization)`.
+     *
      * @example
-     * ogapi.devicesBuilder('orgname').then(function(deviceBuilder){//...}).catch()
+     * ogapi.entityBuilder.devicesBuilder('orgname').then(function(deviceBuilder){//...}).catch()
      * @param {string} organization - required field
      * @param {!number} [timeout] - timeout on request
      * @return {Promise}

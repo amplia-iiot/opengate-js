@@ -211,21 +211,21 @@ export default class SearchBuilder {
      * @return {Search}
      */
     build() {
-        try {
-            return new Search(
-                this._parent,
-                this._buildUrl(),
-                this._buildFilter(),
-                this._buildLimit(),
-                this._buildSort(),
-                this._buildGroup(),
-                this._buildSelect(),
-                this._builderParams.timeout,
-                this._urlParams
-            );
-        } catch (error) {
-            console.error('!errrrror!!!!!!', error);
-        }
+        // Errors are left to reach the caller. Swallowing them here returned undefined, so the
+        // failure surfaced as `Cannot read properties of undefined (reading 'execute')` one line
+        // later, with the actual reason -- usually a route this builder needs and did not get --
+        // discarded on the way.
+        return new Search(
+            this._parent,
+            this._buildUrl(),
+            this._buildFilter(),
+            this._buildLimit(),
+            this._buildSort(),
+            this._buildGroup(),
+            this._buildSelect(),
+            this._builderParams.timeout,
+            this._urlParams
+        );
     }
 
     _buildFilter() {

@@ -1,6 +1,7 @@
 'use strict';
 
 import SimpleBuilder from './SimpleBuilder';
+import logger from '../../util/logger';
 
 /**
  * This class extends SimpleBuilder to allow setting complex values. What is a complex value? It is simply a value
@@ -82,7 +83,7 @@ export default class ComplexBuilder extends SimpleBuilder {
      */
     withComplex(_id, idCommunicationModules, val) {
         if (!idCommunicationModules) {
-            console.warn('Communication module identifier not defined. This value wil be ignored');
+            logger.warn('Communication module identifier not defined. This value wil be ignored');
             return this;
         }
         if (
@@ -90,7 +91,7 @@ export default class ComplexBuilder extends SimpleBuilder {
                 return ds.identifier === _id;
             }).length !== 1
         ) {
-            console.warn(
+            logger.warn(
                 'Datastream not found or operations can not be performed on it. This value will be ignored. Datastream Name: ' + _id
             );
             return this;
