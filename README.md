@@ -124,10 +124,15 @@ Without a bundler, the package ships a self-contained bundle that defines `windo
 </script>
 ```
 
-The bundle carries the version in its filename, so this path changes with every release. It is built
-for `<script src>` only: it is an IIFE, so it exports nothing, and importing it from a module
-(`import 'opengate-js/dist/opengate-api-bower-16.0.0.js'`) does not currently run it. Use the bare
-`import OpenGateAPI from 'opengate-js'` above instead.
+The bundle carries the version in its filename, so this path changes with every release.
+
+It is built for `<script src>` only. Being an IIFE it exports nothing, and importing it from a module
+— `import 'opengate-js/dist/opengate-api-bower-16.0.0.js'` — throws `RangeError: Maximum call stack
+size exceeded` as it evaluates: the bundle contains a `require.resolve` call that reaches esbuild's
+`__require` helper, a self-referencing Proxy whose getter re-enters itself. Because `import` is
+hoisted, this happens before any line of the importing file runs, so it looks as though nothing
+executed at all. Use the bare `import OpenGateAPI from 'opengate-js'` above instead, which is the
+supported way to reach the library from a bundler.
 
 ## Transport
 
