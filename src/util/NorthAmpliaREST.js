@@ -2,15 +2,12 @@
 
 import merge from 'merge';
 import urlencode from 'urlencode';
-import request from 'superagent';
 import q from 'q';
 import _ from 'lodash';
 import mime from 'mime-types';
 
-//  MOCK user searching
-import _mock from 'superagent-mocker';
-const mock = _mock(request);
-//
+import RequestSpec from './http/RequestSpec';
+import { register as registerMock } from './http/mockRouter';
 
 /**
  * Encodes one query parameter value.
@@ -121,7 +118,7 @@ export default class NorthAmpliaREST {
             Object.keys(mocks[method]).forEach(url => {
                 console.log('Mocking url:', url);
                 const methodByUrl = mocks[method][url];
-                mock[method](this._options.url + url, req => {
+                registerMock(method, this._options.url + url, req => {
                     if (typeof methodByUrl === 'function') {
                         console.log('Function returned');
                         return methodByUrl(req);
@@ -163,7 +160,7 @@ export default class NorthAmpliaREST {
     get(url, timeout, headers, parameters, asBlob, serviceBaseURL) {
         const _url = this._createUrl(url, parameters, serviceBaseURL);
         console.info('GET', _url);
-        var req = request.get(_url);
+        var req = new RequestSpec('GET', _url);
         return this._createPromiseRequest(req, null, timeout, headers, asBlob);
     }
 
@@ -180,7 +177,7 @@ export default class NorthAmpliaREST {
     patch(url, data, timeout, headers, parameters, serviceBaseURL) {
         const _url = this._createUrl(url, parameters, serviceBaseURL);
         console.info('PATCH', _url);
-        var req = request.patch(_url).send(data);
+        var req = new RequestSpec('PATCH', _url).send(data);
 
         return this._createPromiseRequest(req, null, timeout, headers);
     }
@@ -198,7 +195,7 @@ export default class NorthAmpliaREST {
     post(url, data, timeout, headers, parameters, serviceBaseURL) {
         const _url = this._createUrl(url, parameters, serviceBaseURL);
         console.info('POST', _url);
-        var req = request.post(_url).send(data);
+        var req = new RequestSpec('POST', _url).send(data);
 
         return this._createPromiseRequest(req, null, timeout, headers);
     }
@@ -217,7 +214,7 @@ export default class NorthAmpliaREST {
     post_multipart(url, formData, events, timeout, headers, parameters, serviceBaseURL) {
         const _url = this._createUrl(url, parameters, serviceBaseURL);
         console.info('POST_MULTIPART', _url);
-        let req = request.post(_url);
+        let req = new RequestSpec('POST', _url);
 
         this._prepareMultipartForm(formData, req);
 
@@ -237,7 +234,7 @@ export default class NorthAmpliaREST {
     put(url, data, timeout, headers, parameters, serviceBaseURL) {
         const _url = this._createUrl(url, parameters, serviceBaseURL);
         console.info('PUT', _url);
-        var req = request.put(_url).send(data);
+        var req = new RequestSpec('PUT', _url).send(data);
 
         if (headers) {
             headers['Content-Type'] = 'application/json';
@@ -264,7 +261,7 @@ export default class NorthAmpliaREST {
     put_multipart(url, formData, events, timeout, headers, parameters, serviceBaseURL) {
         const _url = this._createUrl(url, parameters, serviceBaseURL);
         console.info('PUT_MULTIPART', _url);
-        let req = request.put(_url);
+        let req = new RequestSpec('PUT', _url);
 
         this._prepareMultipartForm(formData, req);
 
@@ -348,10 +345,9 @@ export default class NorthAmpliaREST {
         console.info('DELETE', _url);
         var req;
         if (body) {
-            req = request.del(_url).send(body);
-            //req = request('DELETE', url)
+            req = new RequestSpec('DELETE', _url).send(body);
         } else {
-            req = request.del(_url);
+            req = new RequestSpec('DELETE', _url);
         }
         return this._createPromiseRequest(req, null, timeout, headers);
     }
