@@ -7,6 +7,26 @@ import FieldFinder from '../../util/searchingFields/FieldFinder';
 import { DATE_FORMAT } from '../../util/DATE_FORMAT';
 
 const BASE_URL = '/datapoints';
+
+/**
+ * The filter field paths the platform accepts, which are not the ones this builder used to send.
+ *
+ * Every helper here composed a `datapoint.*` path -- `datapoint.device`, `datapoint.datastream`,
+ * `datapoint.feed`, `datapoint.at` -- and the platform rejects all four with
+ * `Field in filter unknown`, so any search built through them answered 400. The prefix is plural and
+ * three of the four leaves are named differently.
+ *
+ * These are not guesses. `ogapi.datapointsSearchBuilder().findAllFields()` asks the platform for the
+ * paths it will accept, and each of these was then confirmed against api.opengate.es. When in doubt
+ * about a field path, ask that method rather than this file.
+ */
+const FIELD = {
+    device: 'datapoints.entityIdentifier',
+    datastream: 'datapoints.datastreamId',
+    feed: 'datapoints._current.feedId',
+    at: 'datapoints._current.at'
+};
+
 /**
  * Defines a search over Datapoints.
  * @example ogapi.datapointsSearchBuilder()
@@ -35,7 +55,7 @@ export default class DatapointsSearchBuilder extends SearchBuilder {
         if (typeof deviceId !== 'string') {
             throw new Error('Parameter deviceId must be a string');
         }
-        this.fluentFilter.and(this._parent.EX.eq('datapoint.device', deviceId));
+        this.fluentFilter.and(this._parent.EX.eq(FIELD.device, deviceId));
         return this;
     }
 
@@ -52,7 +72,7 @@ export default class DatapointsSearchBuilder extends SearchBuilder {
         if (typeof datastreamId !== 'string') {
             throw new Error('Parameter datastreamId must be a string');
         }
-        this.fluentFilter.and(this._parent.EX.eq('datapoint.datastream', datastreamId));
+        this.fluentFilter.and(this._parent.EX.eq(FIELD.datastream, datastreamId));
         return this;
     }
 
@@ -69,7 +89,7 @@ export default class DatapointsSearchBuilder extends SearchBuilder {
         if (typeof feedId !== 'string') {
             throw new Error('Parameter feedId must be a string');
         }
-        this.fluentFilter.and(this._parent.EX.eq('datapoint.feed', feedId));
+        this.fluentFilter.and(this._parent.EX.eq(FIELD.feed, feedId));
         return this;
     }
 
@@ -104,12 +124,12 @@ export default class DatapointsSearchBuilder extends SearchBuilder {
         if (typeof fromDate !== 'object' || fromDate.constructor !== Date) {
             throw new Error('Parameter fromDate must be a Date');
         }
-        this.fluentFilter.and(this._parent.EX.gt('datapoint.at', moment(fromDate).format(DATE_FORMAT)));
+        this.fluentFilter.and(this._parent.EX.gt(FIELD.at, moment(fromDate).format(DATE_FORMAT)));
         if (typeof toDate !== 'undefined') {
             if (toDate.constructor !== Date) {
                 throw new Error('Parameter toDate must be a Date');
             }
-            this.fluentFilter.and(this._parent.EX.lt('datapoint.at', moment(toDate).format(DATE_FORMAT)));
+            this.fluentFilter.and(this._parent.EX.lt(FIELD.at, moment(toDate).format(DATE_FORMAT)));
         }
         return this;
     }
