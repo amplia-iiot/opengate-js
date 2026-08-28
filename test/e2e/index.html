@@ -398,6 +398,7 @@
                         if (cfg.organization) el('org').value = cfg.organization;
                         if (cfg.user) el('user').value = cfg.user;
                         if (cfg.password) el('password').value = cfg.password;
+                        if (cfg.authMode) el('auth').value = cfg.authMode;
                     })
                     .catch(function () {});
 
@@ -408,6 +409,7 @@
                         user: el('user').value.trim(),
                         password: el('password').value,
                         delayMs: Number(el('delay').value) || 0,
+                        authMode: el('auth').value,
                         allowWrites: el('writes').checked
                     };
                 }

@@ -273,6 +273,12 @@ OGAPI_URL=… OGAPI_USER=… OGAPI_PASSWORD=… OGAPI_ORG=… yarn e2e:coverage
 OGAPI_E2E_SERVE=1 yarn e2e:coverage      # serve the page and drive it yourself
 ```
 
+It authenticates the way an application does: `usersBuilder().login(email, password)` POSTs to
+`provision/users/login`, and the run then carries the `jwt` from the response as
+`Authorization: Bearer …`. `OGAPI_AUTH=apikey` switches to the `apiKey` that the same login returns,
+because on this platform the two are **not** interchangeable — `/planner` only accepts the JWT,
+`/scheduler` only the api key — and being able to measure that is the point.
+
 Factories are discovered from the client rather than listed, so a new one is covered the day it is
 added. Reads are chained: identifiers harvested from the search lane feed the finders that need one,
 so the second tier runs against real devices, channels and datamodels rather than invented ids.

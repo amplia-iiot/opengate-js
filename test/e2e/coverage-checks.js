@@ -11,6 +11,12 @@
  * harvested from the search lane feed the finders that need one, so the second tier is exercised
  * with real identifiers rather than invented ones.
  *
+ * Authentication is a **login**, not an api key handed over out of band: `usersBuilder().login()`
+ * POSTs to `provision/users/login` and the response carries both a `jwt` and an `apiKey`. The suite
+ * then runs everything with `Authorization: Bearer <jwt>`, which is what a browser application does.
+ * `authMode: 'apikey'` switches to `X-ApiKey`, because the two are **not** interchangeable here and
+ * the difference is worth measuring: `/planner` only accepts the JWT, `/scheduler` only the api key.
+ *
  * **Every check in the default lanes is a read.** Searches are POSTs, but a search selects and never
  * writes, and each is capped at one row. A write lane exists and is off unless `allowWrites` is set;
  * see WRITE_LANE below for what it does and why it was scoped that way.
@@ -654,28 +660,46 @@
             return { runtime: runtime, requests: requests, results: results, context: {} };
         }
 
+        var mode = config.authMode === 'apikey' ? 'apikey' : 'jwt';
+        var jwt = null;
         var apiKey = null;
         var bootstrap = new OpenGateAPI({ url: config.url, timeout: 30000, logger: false, hooks: { beforeStart: countRequests } });
-        await check('auth', 'newUserFinder', 'findByEmailAndPassword(user, password)', async function () {
-            var response = await bootstrap.newUserFinder().findByEmailAndPassword(config.user, config.password);
+
+        // The login endpoint, which is how a browser application authenticates. It returns both
+        // credentials, and on this platform they are not interchangeable, so which one is in use gets
+        // recorded next to the results.
+        await check('auth', 'usersBuilder', 'login(user, password)', async function () {
+            var response = await bootstrap.usersBuilder().login(config.user, config.password);
             var user = body(response);
             user = (user && (user.user || user)) || {};
+            jwt = user.jwt || null;
             apiKey = user.apiKey || (user.apikey && user.apikey.value) || null;
-            if (!apiKey) throw new Error('authenticated but no api key in the response');
+            if (!jwt && !apiKey) throw new Error('logged in but the response carried neither a jwt nor an api key');
             return response;
         });
-        if (!apiKey) {
-            skip('auth', 'the rest of the run', 'no api key', 'nothing further can be attempted without a key');
+
+        if (mode === 'jwt' && !jwt) {
+            skip('auth', 'the rest of the run', 'no jwt in the login response', 'set authMode to apikey to run with X-ApiKey instead');
+            return { runtime: runtime, requests: requests, results: results, context: {} };
+        }
+        if (mode === 'apikey' && !apiKey) {
+            skip('auth', 'the rest of the run', 'no api key in the login response', 'nothing further can be attempted');
             return { runtime: runtime, requests: requests, results: results, context: {} };
         }
 
-        var api = new OpenGateAPI({
-            url: config.url,
-            apiKey: apiKey,
-            timeout: 30000,
-            logger: false,
-            hooks: { beforeStart: countRequests }
-        });
+        var options = { url: config.url, timeout: 30000, logger: false, hooks: { beforeStart: countRequests } };
+        if (mode === 'jwt') options.jwt = jwt;
+        else options.apiKey = apiKey;
+        var api = new OpenGateAPI(options);
+
+        record(
+            'auth',
+            'credential in use',
+            mode === 'jwt' ? 'Authorization: Bearer <jwt>' : 'X-ApiKey',
+            'pass',
+            0,
+            'the login returned ' + (jwt ? 'a jwt' : 'no jwt') + ' and ' + (apiKey ? 'an api key' : 'no api key')
+        );
 
         var ctx = { org: config.organization, userEmail: config.user, domain: null };
 
@@ -944,7 +968,7 @@
         results.forEach(function (row) {
             delete row.__response;
         });
-        return { runtime: runtime, requests: requests, results: results, context: ctx };
+        return { runtime: runtime, requests: requests, results: results, context: ctx, authMode: mode };
     }
 
     return { run: run };

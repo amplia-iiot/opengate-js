@@ -2,7 +2,8 @@
 /**
  * Serves test/e2e/index.html and drives it through a real browser engine.
  *
- *   yarn e2e:coverage                                  # real Chrome, headless
+ *   yarn e2e:coverage                                  # real Chrome, headless, logs in for a JWT
+ *   OGAPI_AUTH=apikey yarn e2e:coverage                # the same run with X-ApiKey instead
  *   OGAPI_BROWSER=obscura yarn e2e:coverage
  *   OGAPI_E2E_SERVE=1 yarn e2e:coverage                # just serve it; open the URL yourself
  *
@@ -48,7 +49,10 @@ const config = {
     password: process.env.OGAPI_PASSWORD || '',
     organization: process.env.OGAPI_ORG || '',
     delayMs: Number(process.env.OGAPI_E2E_DELAY || 30),
-    allowWrites: process.env.OGAPI_ALLOW_WRITES === '1'
+    allowWrites: process.env.OGAPI_ALLOW_WRITES === '1',
+    // 'jwt' logs in and sends Authorization: Bearer, which is what a browser application does.
+    // 'apikey' sends X-ApiKey instead; the two are not interchangeable on this platform.
+    authMode: process.env.OGAPI_AUTH === 'apikey' ? 'apikey' : 'jwt'
 };
 
 const pkg = JSON.parse(await readFile(path.join(root, 'package.json'), 'utf8'));
@@ -248,7 +252,10 @@ function report(outcome, log) {
         return;
     }
     const counts = tally(outcome);
-    console.log(`\nopengate-js API coverage — ${BROWSER} — ${outcome.runtime} — ${config.url}\n`);
+    console.log(`\nopengate-js API coverage — ${BROWSER} — ${outcome.runtime} — ${config.url}`);
+    console.log(
+        `  credential: ${outcome.authMode === 'apikey' ? 'X-ApiKey' : 'Authorization: Bearer <jwt>, from usersBuilder().login()'}\n`
+    );
 
     const byLane = {};
     for (const r of outcome.results) (byLane[r.lane] = byLane[r.lane] || []).push(r);
