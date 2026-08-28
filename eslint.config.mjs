@@ -105,12 +105,13 @@ export default [
     {
         // The browser transport checks are a classic script, served into a real browser engine and
         // never required by Node.
-        files: ['test/browser/**/*.js'],
+        files: ['test/browser/**/*.js', 'test/e2e/**/*.js'],
         languageOptions: {
             ecmaVersion: 2022,
             sourceType: 'script',
             globals: {
-                ...globals.browser
+                ...globals.browser,
+                ...globals.node
             }
         },
         rules: ACCUMULATED_DEBT

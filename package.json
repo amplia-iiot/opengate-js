@@ -61,6 +61,8 @@
     "smoke": "node scripts/smoke.mjs",
     "smoke:browser": "node scripts/smoke-browser.mjs",
     "verify:browser": "node scripts/verify-browser.mjs",
+    "e2e:coverage": "node scripts/e2e-coverage.mjs",
+    "e2e:coverage:serve": "OGAPI_E2E_SERVE=1 node scripts/e2e-coverage.mjs",
     "test-wip": "node scripts/e2e.mjs --tags @wip",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

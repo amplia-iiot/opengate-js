@@ -202,21 +202,23 @@ yarn test
 
 Dependencies come from the public npm registry. The repository deliberately ships no `.npmrc` or `.yarnrc`: if you want an internal mirror, configure it in your own `~/.npmrc` rather than committing it here.
 
-| Command               | What it does                                                               |
-| --------------------- | -------------------------------------------------------------------------- |
-| `yarn test`           | Unit tests (vitest). No network, no OpenGate instance needed.              |
-| `yarn test:watch`     | The same suite, in watch mode.                                             |
-| `yarn test:coverage`  | Unit tests with a coverage report in `coverage/`.                          |
-| `yarn lint`           | ESLint. Errors break the build; warnings are pre-existing debt.            |
-| `yarn lint:fix`       | ESLint with autofix.                                                       |
-| `yarn format`         | Prettier over the whole tree.                                              |
-| `yarn format:check`   | Fails if anything is unformatted.                                          |
-| `yarn apidoc`         | Regenerates the API model and the type declarations.                       |
-| `yarn test:e2e`       | Cucumber acceptance suite; needs a real OpenGate. **Writes and deletes.**  |
-| `yarn smoke`          | Read-only checks against a live OpenGate, under Node. Needs `yarn build`.  |
-| `yarn smoke:browser`  | The same checks inside a real browser, via Lightpanda over CDP.            |
-| `yarn verify:browser` | Transport checks in a real browser: progress, Blob, cancellation, hooks.   |
-| `yarn build`          | Builds `dist/`: the CommonJS tree, the ESM entry and both browser bundles. |
+| Command                   | What it does                                                               |
+| ------------------------- | -------------------------------------------------------------------------- |
+| `yarn test`               | Unit tests (vitest). No network, no OpenGate instance needed.              |
+| `yarn test:watch`         | The same suite, in watch mode.                                             |
+| `yarn test:coverage`      | Unit tests with a coverage report in `coverage/`.                          |
+| `yarn lint`               | ESLint. Errors break the build; warnings are pre-existing debt.            |
+| `yarn lint:fix`           | ESLint with autofix.                                                       |
+| `yarn format`             | Prettier over the whole tree.                                              |
+| `yarn format:check`       | Fails if anything is unformatted.                                          |
+| `yarn apidoc`             | Regenerates the API model and the type declarations.                       |
+| `yarn test:e2e`           | Cucumber acceptance suite; needs a real OpenGate. **Writes and deletes.**  |
+| `yarn smoke`              | Read-only checks against a live OpenGate, under Node. Needs `yarn build`.  |
+| `yarn smoke:browser`      | The same checks inside a real browser, via Lightpanda over CDP.            |
+| `yarn verify:browser`     | Transport checks in a real browser: progress, Blob, cancellation, hooks.   |
+| `yarn e2e:coverage`       | Walks the client API against a live platform from a real browser.          |
+| `yarn e2e:coverage:serve` | Serves the same page so you can drive it yourself.                         |
+| `yarn build`              | Builds `dist/`: the CommonJS tree, the ESM entry and both browser bundles. |
 
 Every push and pull request runs lint, the unit tests and the API model generation on Node 20, 22 and 24.
 
@@ -258,6 +260,37 @@ OGAPI_BUNDLE=/tmp/previous-bundle.js yarn verify:browser   # compare against ano
 previous revision and run both in the same engine. A check that fails on both is a limitation of the
 engine, not a regression. Measured that way, real Chrome passes every check, while Obscura 0.2.1 and
 Lightpanda emit no XHR upload-progress events and fail that one check on **either** build.
+
+### Walking the API surface from a browser
+
+`yarn verify:browser` proves the transport. It says nothing about the 51 search builders, 40 finders
+and 4 catalogues hanging off the client, which is what actually needs checking before a release.
+`yarn e2e:coverage` walks all of it — 120 checks — against a live platform from a real browser.
+
+```bash
+yarn build
+OGAPI_URL=… OGAPI_USER=… OGAPI_PASSWORD=… OGAPI_ORG=… yarn e2e:coverage
+OGAPI_E2E_SERVE=1 yarn e2e:coverage      # serve the page and drive it yourself
+```
+
+Factories are discovered from the client rather than listed, so a new one is covered the day it is
+added. Reads are chained: identifiers harvested from the search lane feed the finders that need one,
+so the second tier runs against real devices, channels and datamodels rather than invented ids.
+
+**Everything it runs by default is a read**, and each search is capped at one row. A write lane
+exists — create, read, update, read, delete and confirm-gone on a single Area, which is metadata and
+touches no device or datastream — and it is **off** unless `OGAPI_ALLOW_WRITES=1`.
+
+Outcomes are finer than pass/fail on purpose, because "the platform has nothing there" and "the
+library is broken" are different facts: `pass`, `empty` (204, or a 404 saying so), `denied` (401/403),
+`absent` (endpoint not served here), `blocked`, `fail` and `skip`. Only `fail` is a defect.
+
+`blocked` means the request never left the browser, which in practice is the CORS preflight. Several
+OpenGate service paths — `north/v80/timeseries`, `north/v80/datasets`, `/scheduler`, `/planner` —
+answer `OPTIONS` with 401 or 403, and a preflight carries no credentials by design, so **no browser
+can reach them cross-origin**. Same-origin callers, which is how the web GUI is served, are
+unaffected. To keep that separate from a real defect the runner then runs the identical suite under
+Node, where there is no preflight, and reports only the checks where the two runtimes disagree.
 
 ### Layout
 

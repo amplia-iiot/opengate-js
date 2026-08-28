@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>opengate-js — API coverage in a browser</title>
+        <style>
+            :root {
+                --bg: #ffffff;
+                --fg: #1a1d21;
+                --muted: #626a73;
+                --line: #e3e6e9;
+                --panel: #f6f7f9;
+                --pass: #157f3d;
+                --empty: #7a6a1f;
+                --denied: #8a5a12;
+                --absent: #5b6570;
+                --blocked: #7a4fd8;
+                --fail: #b3261e;
+                --skip: #8a9099;
+                --accent: #1b4fd8;
+            }
+            @media (prefers-color-scheme: dark) {
+                :root:not([data-theme='light']) {
+                    --bg: #14171a;
+                    --fg: #e8eaed;
+                    --muted: #9aa3ad;
+                    --line: #2b3035;
+                    --panel: #1c2024;
+                    --pass: #5fd98a;
+                    --empty: #ddc86a;
+                    --denied: #e8a35c;
+                    --absent: #9aa3ad;
+                    --blocked: #c0a0ff;
+                    --fail: #ff8a80;
+                    --skip: #7d858f;
+                    --accent: #7fa4ff;
+                }
+            }
+            * {
+                box-sizing: border-box;
+            }
+            body {
+                margin: 0;
+                background: var(--bg);
+                color: var(--fg);
+                font:
+                    14px/1.5 ui-sans-serif,
+                    system-ui,
+                    -apple-system,
+                    Segoe UI,
+                    Roboto,
+                    Helvetica,
+                    Arial,
+                    sans-serif;
+            }
+            header {
+                padding: 20px 24px 12px;
+                border-bottom: 1px solid var(--line);
+            }
+            h1 {
+                margin: 0 0 4px;
+                font-size: 17px;
+                letter-spacing: -0.01em;
+            }
+            .sub {
+                color: var(--muted);
+                font-size: 13px;
+            }
+            main {
+                padding: 20px 24px 60px;
+            }
+            fieldset {
+                border: 1px solid var(--line);
+                border-radius: 8px;
+                padding: 14px 16px;
+                margin: 0 0 18px;
+                background: var(--panel);
+            }
+            legend {
+                padding: 0 6px;
+                color: var(--muted);
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+            }
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+                gap: 10px 14px;
+            }
+            label {
+                display: block;
+                font-size: 12px;
+                color: var(--muted);
+                margin-bottom: 3px;
+            }
+            input[type='text'],
+            input[type='password'],
+            input[type='number'] {
+                width: 100%;
+                padding: 7px 9px;
+                border: 1px solid var(--line);
+                border-radius: 6px;
+                background: var(--bg);
+                color: var(--fg);
+                font: inherit;
+                font-size: 13px;
+            }
+            .row {
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+                margin-top: 14px;
+            }
+            button {
+                padding: 8px 18px;
+                border: 0;
+                border-radius: 6px;
+                background: var(--accent);
+                color: #fff;
+                font: inherit;
+                font-weight: 600;
+                cursor: pointer;
+            }
+            button:disabled {
+                opacity: 0.5;
+                cursor: default;
+            }
+            .warn {
+                color: var(--denied);
+                font-size: 12px;
+            }
+            .tallies {
+                display: flex;
+                gap: 8px;
+                flex-wrap: wrap;
+                margin: 0 0 14px;
+            }
+            .tally {
+                border: 1px solid var(--line);
+                border-radius: 999px;
+                padding: 3px 12px;
+                font-size: 12px;
+                font-variant-numeric: tabular-nums;
+            }
+            .tally b {
+                font-weight: 700;
+            }
+            .t-pass b {
+                color: var(--pass);
+            }
+            .t-empty b {
+                color: var(--empty);
+            }
+            .t-denied b {
+                color: var(--denied);
+            }
+            .t-absent b {
+                color: var(--absent);
+            }
+            .t-fail b {
+                color: var(--fail);
+            }
+            .t-skip b {
+                color: var(--skip);
+            }
+            .scroller {
+                overflow-x: auto;
+                border: 1px solid var(--line);
+                border-radius: 8px;
+            }
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                min-width: 720px;
+                font-size: 13px;
+            }
+            th {
+                text-align: left;
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                color: var(--muted);
+                padding: 8px 10px;
+                border-bottom: 1px solid var(--line);
+                position: sticky;
+                top: 0;
+                background: var(--bg);
+            }
+            td {
+                padding: 6px 10px;
+                border-bottom: 1px solid var(--line);
+                vertical-align: top;
+            }
+            tr:last-child td {
+                border-bottom: 0;
+            }
+            td.o {
+                font-weight: 700;
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 0.04em;
+                white-space: nowrap;
+            }
+            .o-pass {
+                color: var(--pass);
+            }
+            .o-empty {
+                color: var(--empty);
+            }
+            .o-denied {
+                color: var(--denied);
+            }
+            .o-absent {
+                color: var(--absent);
+            }
+            .o-fail {
+                color: var(--fail);
+            }
+            .o-skip {
+                color: var(--skip);
+            }
+            td.lane {
+                color: var(--muted);
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 0.04em;
+                white-space: nowrap;
+            }
+            td.ms {
+                text-align: right;
+                color: var(--muted);
+                font-variant-numeric: tabular-nums;
+                white-space: nowrap;
+            }
+            code,
+            td.note,
+            td.detail {
+                font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+                font-size: 12px;
+            }
+            td.note {
+                color: var(--muted);
+                word-break: break-word;
+            }
+            .legend {
+                margin-top: 16px;
+                color: var(--muted);
+                font-size: 12px;
+            }
+            .legend dt {
+                display: inline;
+                font-weight: 700;
+            }
+            .legend dd {
+                display: inline;
+                margin: 0 14px 0 4px;
+            }
+            .status {
+                color: var(--muted);
+                font-size: 13px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>opengate-js — API coverage in a browser</h1>
+            <div class="sub">
+                Walks the client surface against a live OpenGate from a real browser engine. Every check in the default lanes is a read, and
+                each search is capped at one row.
+            </div>
+        </header>
+        <main>
+            <fieldset>
+                <legend>Target</legend>
+                <div class="grid">
+                    <div><label for="url">Platform URL</label><input type="text" id="url" placeholder="https://api.opengate.es" /></div>
+                    <div><label for="org">Organization</label><input type="text" id="org" placeholder="sensehat" /></div>
+                    <div><label for="user">User</label><input type="text" id="user" autocomplete="username" /></div>
+                    <div><label for="password">Password</label><input type="password" id="password" autocomplete="current-password" /></div>
+                    <div>
+                        <label for="delay">Delay between calls (ms)</label><input type="number" id="delay" value="30" min="0" max="2000" />
+                    </div>
+                </div>
+                <div class="row">
+                    <button id="run">Run the coverage</button>
+                    <label style="display: flex; align-items: center; gap: 6px; margin: 0">
+                        <input type="checkbox" id="writes" style="width: auto" />
+                        <span class="warn">Also run the write lane (creates, updates and deletes one Area)</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <span class="status" id="status">Credentials are never stored. They are used for this run only.</span>
+                </div>
+            </fieldset>
+
+            <div class="tallies" id="tallies"></div>
+            <div class="scroller">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Outcome</th>
+                            <th>Lane</th>
+                            <th>Factory</th>
+                            <th>Call</th>
+                            <th>Result</th>
+                            <th>ms</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rows"></tbody>
+                </table>
+            </div>
+
+            <dl class="legend">
+                <dt>pass</dt>
+                <dd>2xx.</dd>
+                <dt>empty</dt>
+                <dd>204, or a 404 saying the resource is not there. The call worked.</dd>
+                <dt>denied</dt>
+                <dd>401 or 403. The call worked; this credential may not do that.</dd>
+                <dt>absent</dt>
+                <dd>the endpoint is not served by this platform.</dd>
+                <dt>fail</dt>
+                <dd>anything else. This is the column that matters.</dd>
+                <dt>skip</dt>
+                <dd>not attempted; the reason is in the result column.</dd>
+            </dl>
+        </main>
+
+        <script src="./bundle.js"></script>
+        <script src="./coverage-checks.js"></script>
+        <script>
+            (function () {
+                var ORDER = ['pass', 'empty', 'denied', 'absent', 'blocked', 'fail', 'skip'];
+                var el = function (id) {
+                    return document.getElementById(id);
+                };
+                var counts = {};
+                var rowsEl = el('rows');
+
+                function drawTallies() {
+                    var html = '';
+                    ORDER.forEach(function (k) {
+                        if (!counts[k]) return;
+                        html += '<span class="tally t-' + k + '">' + k + ' <b>' + counts[k] + '</b></span>';
+                    });
+                    el('tallies').innerHTML = html;
+                }
+
+                function addRow(row, index) {
+                    counts[row.outcome] = (counts[row.outcome] || 0) + 1;
+                    var tr = document.createElement('tr');
+                    tr.innerHTML =
+                        '<td class="ms">' +
+                        index +
+                        '</td>' +
+                        '<td class="o o-' +
+                        row.outcome +
+                        '">' +
+                        row.outcome +
+                        '</td>' +
+                        '<td class="lane">' +
+                        row.lane +
+                        '</td>' +
+                        '<td class="detail">' +
+                        escapeHtml(row.name) +
+                        '</td>' +
+                        '<td class="detail">' +
+                        escapeHtml(row.detail) +
+                        '</td>' +
+                        '<td class="note">' +
+                        escapeHtml(row.note) +
+                        '</td>' +
+                        '<td class="ms">' +
+                        (row.ms || '') +
+                        '</td>';
+                    rowsEl.appendChild(tr);
+                    drawTallies();
+                }
+
+                function escapeHtml(s) {
+                    return String(s === undefined ? '' : s).replace(/[&<>"']/g, function (c) {
+                        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+                    });
+                }
+
+                // The runner serves the target from the environment so a headless run needs no typing.
+                // Opened by hand, the fields are simply filled in.
+                fetch('./config')
+                    .then(function (r) {
+                        return r.ok ? r.json() : {};
+                    })
+                    .then(function (cfg) {
+                        if (cfg.url) el('url').value = cfg.url;
+                        if (cfg.organization) el('org').value = cfg.organization;
+                        if (cfg.user) el('user').value = cfg.user;
+                        if (cfg.password) el('password').value = cfg.password;
+                    })
+                    .catch(function () {});
+
+                function config() {
+                    return {
+                        url: el('url').value.trim(),
+                        organization: el('org').value.trim(),
+                        user: el('user').value.trim(),
+                        password: el('password').value,
+                        delayMs: Number(el('delay').value) || 0,
+                        allowWrites: el('writes').checked
+                    };
+                }
+
+                async function run(cfg) {
+                    counts = {};
+                    rowsEl.innerHTML = '';
+                    el('run').disabled = true;
+                    el('status').textContent = 'Running…';
+                    var outcome;
+                    try {
+                        outcome = await window.__ogapiCoverage.run(window.OpenGateAPI, cfg, addRow);
+                        el('status').textContent =
+                            outcome.results.length + ' checks, ' + outcome.requests + ' HTTP requests, runtime ' + outcome.runtime + '.';
+                    } catch (error) {
+                        el('status').textContent = 'The run itself failed: ' + (error && error.message);
+                        outcome = { error: String(error && error.message), results: [] };
+                    }
+                    el('run').disabled = false;
+                    // Left where a CDP driver can read it.
+                    window.__ogapiCoverageResult = outcome;
+                    return outcome;
+                }
+
+                el('run').addEventListener('click', function () {
+                    run(config());
+                });
+                // The driver calls this so the whole run happens inside one evaluate.
+                window.__ogapiRun = function (cfg) {
+                    return run(cfg || config());
+                };
+            })();
+        </script>
+    </body>
+</html>
