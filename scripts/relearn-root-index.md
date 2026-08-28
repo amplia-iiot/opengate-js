@@ -46,7 +46,7 @@ var ogapi = new OpengateAPI({
 To use the API in a web environment, include the script and instantiate it as follows:
 
 ```javascript
-import {} from 'opengate-js/dist/opengate-api-bower-15.4.0';
+import {} from 'opengate-js/dist/opengate-api-bower-16.0.0';
 
 var ogapi = new window.OpenGateAPI({
     url: 'your-api-url',

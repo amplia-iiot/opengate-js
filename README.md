@@ -94,10 +94,12 @@ const ogapi = new OpenGateAPI({
 The package ships a browserified bundle that defines `window.OpenGateAPI`:
 
 ```html
-<script src="node_modules/opengate-js/dist/opengate-api-bower-15.5.0.min.js"></script>
+<script src="node_modules/opengate-js/dist/opengate-api-bower-16.0.0.min.js"></script>
 <script>
     var ogapi = new OpenGateAPI({ url: 'https://opengate.example.com', apiKey: '…' });
 </script>
+
+The bundle carries the version in its filename, so this path changes with every release.
 ```
 
 ## Transport
@@ -358,9 +360,12 @@ certificates. Set `OGAPI_E2E_STRICT_TLS=1` to keep it on.
 
 Publication to [npm](https://www.npmjs.com/package/opengate-js) is driven by the tag and by nothing else:
 
-1. Bump `version` in `package.json` and `bower.json` on `master`, and commit.
+1. Bump `version` in `package.json` on `develop`, and commit.
 2. Tag that commit `vX.Y.Z`, matching the version exactly.
 3. Push the tag.
+
+Releases are tagged on `develop`. `master` is frozen at `14.15.0` and is not the release branch. There
+is no `bower.json` any more, despite the name of the browser bundle.
 
 `.github/workflows/release.yml` refuses to continue if the tag and `package.json` disagree, then lints, tests, regenerates the declarations through `prepack`, publishes with [provenance](https://docs.npmjs.com/generating-provenance-statements), and opens a GitHub release carrying `api-model.json`.
 
