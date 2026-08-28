@@ -50,7 +50,8 @@ Note that a rejection is a plain object today, not an `Error`. That is a known w
 | `jwt`               | Sent as `Authorization: Bearer …`. **Takes precedence over `apiKey`** on North API calls.                                           |
 | `timeout`           | Milliseconds. Defaults to `5000`; `-1` disables the timeout entirely.                                                               |
 | `south.url`         | Base URL of the South API. Only needed if you call it — omitting it and then calling south throws `OGAPI_SOUTH_URL_NOT_CONFIGURED`. |
-| `hooks.beforeStart` | Called before every request leaves.                                                                                                 |
+| `hooks.beforeStart` | Called with each request just before it leaves — see [Transport](#transport).                                                       |
+| `mocks`             | Answers matching requests locally instead of calling OpenGate — see [Transport](#transport).                                        |
 
 ## What it covers
 
@@ -97,6 +98,68 @@ The package ships a browserified bundle that defines `window.OpenGateAPI`:
 </script>
 ```
 
+## Transport
+
+Requests go over **`fetch`**, which every supported runtime provides natively: Node.js 20.19+, and
+any browser the bundle targets. There is no HTTP client dependency to install, and none to keep
+patched.
+
+One exception, deliberately kept: **upload progress**. `fetch` reports none, in any browser, and
+progress is public API on `ManufacturerMedia`, `ModelMedia` and `DeploymentElement`. So when a
+progress callback is supplied, a multipart upload goes over `XMLHttpRequest` in the browser, and
+over a counted stream in Node. Either way the callback receives `{ direction, loaded, total,
+percent }`.
+
+```js
+ogapi.newManufacturerMediaBuilder().withProgressEvent(event => console.log(`${event.percent.toFixed(0)}%`));
+```
+
+### hooks.beforeStart
+
+The callback is handed the request that is about to leave, and may still change it:
+
+```js
+new OpenGateAPI({
+    url: '…',
+    apiKey: '…',
+    hooks: {
+        beforeStart: request => {
+            request.method; // 'GET'
+            request.url; // the whole URL, query string included
+            request.set('X-Correlation-Id', correlationId()); // takes effect
+        }
+    }
+});
+```
+
+The hook is process-wide — one callback for every client, last registration wins — which is what it
+has always been.
+
+### mocks
+
+`mocks` answers matching requests locally, which is how the acceptance suite covers paths a live
+platform will not produce on demand. Handlers are keyed by verb and then by URL pattern, where
+`:name` matches one path segment:
+
+```js
+new OpenGateAPI({
+    url: 'https://opengate.example.com',
+    mocks: {
+        get: {
+            '/north/v80/provision/organizations/:organization': request => ({
+                statusCode: 200,
+                body: { name: request.params.organization }
+            })
+        }
+    }
+});
+```
+
+**The pattern must spell out the whole path after the base URL**, `north/v80` included; it is
+matched against the full URL, so a pattern that starts at `/provision/...` matches nothing and the
+request reaches the platform. Like the hook, the registry is process-wide and routes accumulate for
+the life of the process.
+
 ## TypeScript
 
 Type declarations ship with the package and are generated from the JSDoc in `src/`, so they always describe the version you installed. No `@types/` package needed.
@@ -122,20 +185,62 @@ yarn test
 
 Dependencies come from the public npm registry. The repository deliberately ships no `.npmrc` or `.yarnrc`: if you want an internal mirror, configure it in your own `~/.npmrc` rather than committing it here.
 
-| Command              | What it does                                                               |
-| -------------------- | -------------------------------------------------------------------------- |
-| `yarn test`          | Unit tests (vitest). No network, no OpenGate instance needed.              |
-| `yarn test:watch`    | The same suite, in watch mode.                                             |
-| `yarn test:coverage` | Unit tests with a coverage report in `coverage/`.                          |
-| `yarn lint`          | ESLint. Errors break the build; warnings are pre-existing debt.            |
-| `yarn lint:fix`      | ESLint with autofix.                                                       |
-| `yarn format`        | Prettier over the whole tree.                                              |
-| `yarn format:check`  | Fails if anything is unformatted.                                          |
-| `yarn apidoc`        | Regenerates the API model and the type declarations.                       |
-| `yarn test:e2e`      | Cucumber acceptance suite; needs a real OpenGate.                          |
-| `yarn build`         | Builds `dist/`: the CommonJS tree, the ESM entry and both browser bundles. |
+| Command               | What it does                                                               |
+| --------------------- | -------------------------------------------------------------------------- |
+| `yarn test`           | Unit tests (vitest). No network, no OpenGate instance needed.              |
+| `yarn test:watch`     | The same suite, in watch mode.                                             |
+| `yarn test:coverage`  | Unit tests with a coverage report in `coverage/`.                          |
+| `yarn lint`           | ESLint. Errors break the build; warnings are pre-existing debt.            |
+| `yarn lint:fix`       | ESLint with autofix.                                                       |
+| `yarn format`         | Prettier over the whole tree.                                              |
+| `yarn format:check`   | Fails if anything is unformatted.                                          |
+| `yarn apidoc`         | Regenerates the API model and the type declarations.                       |
+| `yarn test:e2e`       | Cucumber acceptance suite; needs a real OpenGate. **Writes and deletes.**  |
+| `yarn smoke`          | Read-only checks against a live OpenGate, under Node. Needs `yarn build`.  |
+| `yarn smoke:browser`  | The same checks inside a real browser, via Lightpanda over CDP.            |
+| `yarn verify:browser` | Transport checks in a real browser: progress, Blob, cancellation, hooks.   |
+| `yarn build`          | Builds `dist/`: the CommonJS tree, the ESM entry and both browser bundles. |
 
 Every push and pull request runs lint, the unit tests and the API model generation on Node 20, 22 and 24.
+
+### Proving it against a live platform
+
+`yarn test:e2e` creates and deletes real entities, so it belongs on a test instance and must never be
+pointed at production. The smoke suite exists for the case where the real thing is the only
+convincing proof: every check in `test/smoke/checks.js` is a read, and nothing may be added there
+that is not.
+
+```bash
+yarn build
+OGAPI_URL=https://opengate.example.com OGAPI_USER=… OGAPI_PASSWORD=… OGAPI_ORG=… yarn smoke
+OGAPI_URL=… OGAPI_USER=… OGAPI_PASSWORD=… OGAPI_ORG=… yarn smoke:browser
+```
+
+Both runs execute the same checks, one under Node and one inside a browser engine, because a
+transport change is only proven when the two runtimes agree.
+
+### Verifying the transport in a browser
+
+This library is the core of the OpenGate web GUI, so anything the transport does differently in a
+browser is a production problem. `yarn verify:browser` runs `test/browser/transport-checks.js` inside
+a real engine and covers what only a browser can answer: upload progress over `XMLHttpRequest`,
+`asBlob` returning a real `Blob`, cancellation, timeouts, and the object `hooks.beforeStart` hands to
+application code. The local fixtures it serves make all of that testable without writing to a
+platform; the four checks that do talk to OpenGate are reads, and run only when the `OGAPI_*`
+variables are set.
+
+```bash
+yarn build
+yarn verify:browser                                  # real Chrome
+OGAPI_BROWSER=obscura     yarn verify:browser
+OGAPI_BROWSER=lightpanda  yarn verify:browser
+OGAPI_BUNDLE=/tmp/previous-bundle.js yarn verify:browser   # compare against another build
+```
+
+`OGAPI_BUNDLE` is what makes it more than a pass or a fail: point it at a bundle built from the
+previous revision and run both in the same engine. A check that fails on both is a limitation of the
+engine, not a regression. Measured that way, real Chrome passes every check, while Obscura 0.2.1 and
+Lightpanda emit no XHR upload-progress events and fail that one check on **either** build.
 
 ### Layout
 
