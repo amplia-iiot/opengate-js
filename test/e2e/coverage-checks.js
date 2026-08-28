@@ -781,6 +781,13 @@
                 skip('catalogue', cname, 'factory', 'needs an argument: ' + (error.message || '').slice(0, 90));
                 continue;
             }
+            // newCountriesCatalog needs the _internalCountriesFilter option, by design: the catalogue
+            // is an asset entity and the caller has to say which one (OUW-3924). Calling it without
+            // that is a misuse of the API, not a defect, so it is skipped rather than failed.
+            if (cname === 'newCountriesCatalog' && !config.countriesFilter) {
+                skip('catalogue', cname, 'getCountries()', 'needs the _internalCountriesFilter option; see OUW-3924');
+                continue;
+            }
             var getters = methodsOf(instance).filter(function (m) {
                 return /^get/.test(m) && instance[m].length === 0;
             });

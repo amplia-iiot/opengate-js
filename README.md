@@ -43,16 +43,17 @@ Note that a rejection is a plain object today, not an `Error`. That is a known w
 
 ## Configuration
 
-| Option              | Meaning                                                                                                                             |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `url`               | Base URL of the North API. Required.                                                                                                |
-| `apiKey`            | Sent as `X-ApiKey`.                                                                                                                 |
-| `jwt`               | Sent as `Authorization: Bearer …`. **Takes precedence over `apiKey`** on North API calls.                                           |
-| `timeout`           | Milliseconds. Defaults to `5000`; `-1` disables the timeout entirely.                                                               |
-| `south.url`         | Base URL of the South API. Only needed if you call it — omitting it and then calling south throws `OGAPI_SOUTH_URL_NOT_CONFIGURED`. |
-| `hooks.beforeStart` | Called with each request just before it leaves — see [Transport](#transport).                                                       |
-| `mocks`             | Answers matching requests locally instead of calling OpenGate — see [Transport](#transport).                                        |
-| `logger`            | Where the library's own messages go. `false` silences it, `true` reports everything — see [Logging](#logging).                      |
+| Option                     | Meaning                                                                                                                             |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `url`                      | Base URL of the North API. Required.                                                                                                |
+| `apiKey`                   | Sent as `X-ApiKey`.                                                                                                                 |
+| `jwt`                      | Sent as `Authorization: Bearer …`. **Takes precedence over `apiKey`** on North API calls.                                           |
+| `timeout`                  | Milliseconds. Defaults to `5000`; `-1` disables the timeout entirely.                                                               |
+| `south.url`                | Base URL of the South API. Only needed if you call it — omitting it and then calling south throws `OGAPI_SOUTH_URL_NOT_CONFIGURED`. |
+| `hooks.beforeStart`        | Called with each request just before it leaves — see [Transport](#transport).                                                       |
+| `mocks`                    | Answers matching requests locally instead of calling OpenGate — see [Transport](#transport).                                        |
+| `_internalCountriesFilter` | Required by `newCountriesCatalog()`; see its JSDoc. `{ organization, identifier, ds }`.                                             |
+| `logger`                   | Where the library's own messages go. `false` silences it, `true` reports everything — see [Logging](#logging).                      |
 
 ## What it covers
 
