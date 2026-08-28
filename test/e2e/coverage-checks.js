@@ -688,8 +688,11 @@
         }
 
         var options = { url: config.url, timeout: 30000, logger: false, hooks: { beforeStart: countRequests } };
+        // Both credentials are set, as a real application does. The transport picks: the JWT goes to
+        // north and is never sent south, so the api key is what makes the south lane possible at all.
         if (mode === 'jwt') options.jwt = jwt;
-        else options.apiKey = apiKey;
+        if (apiKey) options.apiKey = apiKey;
+        options.south = { url: config.southUrl || config.url + '/south' };
         var api = new OpenGateAPI(options);
 
         record(
@@ -903,8 +906,10 @@
                 'create, update and delete an Area',
                 'off unless allowWrites is set; the default run writes nothing'
             );
+            skip('device', 'the device lane', 'provision a device and feed it over the south API', 'off unless allowWrites is set');
         } else {
             await runWriteLane();
+            await runDeviceLane();
         }
 
         async function runWriteLane() {
@@ -962,6 +967,129 @@
                 gone.outcome === 'pass' ? 'fail' : 'pass',
                 0,
                 gone.outcome === 'pass' ? 'the area still exists after delete()' : 'confirmed removed (' + gone.outcome + ')'
+            );
+        }
+
+        /**
+         * Provisions one device, feeds it a datapoint over the **south** API, and looks for it again
+         * through the searches -- the round trip the platform exists to do, and the only lane that
+         * touches the collection path at all.
+         *
+         * The device is removed at the end, and removed again by a fallback that does not depend on
+         * the builder: a stray device in a production organization is not acceptable.
+         *
+         * The mandatory fields were established by running it -- identifier, organization, channel,
+         * plan and serviceGroup -- and the platform names the missing one when one is left out.
+         */
+        async function runDeviceLane() {
+            var dev = 'e2edev' + Date.now();
+            var datastream = config.datastream || 'device.temperature.value';
+            var plan = config.devicePlan || 'dev__100_per_day';
+            var serviceGroup = config.serviceGroup || 'emptyServiceGroup_onSession';
+
+            var builder = null;
+            var prepared = await check('device', 'entityBuilder', 'devicesBuilder(org) resolves', async function () {
+                builder = await api.entityBuilder.devicesBuilder(ctx.org);
+                // It resolves a builder, not a response, so there is no statusCode to summarise.
+                return { statusCode: 200, data: { allowedDatastreams: (builder.getAllowedDatastreams() || []).length } };
+            });
+            if (prepared.outcome !== 'pass' || !builder) {
+                skip('device', 'the rest of the device lane', 'no builder', 'devicesBuilder(org) did not resolve');
+                return;
+            }
+
+            var createRow = await check('device', 'devicesBuilder', 'create() ' + dev, function () {
+                return builder
+                    .with('provision.device.identifier', dev)
+                    .with('provision.administration.identifier', dev)
+                    .with('provision.administration.organization', ctx.org)
+                    .with('provision.administration.channel', ctx.channelName || 'default_channel')
+                    .with('provision.administration.plan', plan)
+                    .with('provision.administration.serviceGroup', serviceGroup)
+                    .create();
+            });
+            if (createRow.outcome !== 'pass') {
+                skip('device', 'the rest of the device lane', 'nothing was provisioned', 'skipped so nothing is left behind');
+                return;
+            }
+
+            await check('device', 'newDeviceFinder', 'findByOrganizationAndId(org, device)', function () {
+                return api.newDeviceFinder().findByOrganizationAndId(ctx.org, dev);
+            });
+
+            await check('device', 'devicesSearchBuilder', 'filtered by the new identifier', async function () {
+                var response = await api
+                    .devicesSearchBuilder()
+                    .filter(api.EX.eq('provision.device.identifier', dev))
+                    .limit(1, 1)
+                    .build()
+                    .execute();
+                if (!firstList(response).length) throw new Error('the search did not return the device just provisioned');
+                return response;
+            });
+
+            // ---- the south API: one datapoint over the collection path
+            await check('device', 'deviceMessageBuilder', 'south collect/iot, one datapoint', function () {
+                var datapoint = api.datapointsBuilder().withValue(21.5).withAt(Date.now());
+                var stream = api.datastreamBuilder().withId(datastream).withDatapoint(datapoint);
+                return api
+                    .deviceMessageBuilder()
+                    .withId(dev)
+                    .withDeviceId(dev)
+                    .withDataStreamVersion('1.0.0')
+                    .withDataStream(stream)
+                    .create();
+            });
+
+            // Collection is asynchronous, so this is polled rather than asked once.
+            var answered = null;
+            for (var attempt = 1; attempt <= 8 && !answered; attempt++) {
+                await sleep(2000);
+                try {
+                    var polled = await api.datastreamsSearchBuilder().limit(1, 1).build().execute();
+                    if (polled.statusCode === 200) answered = attempt;
+                } catch (e) {
+                    /* still landing */
+                }
+            }
+            record(
+                'device',
+                'datastreamsSearchBuilder',
+                'answers after the injection',
+                answered ? 'pass' : 'fail',
+                0,
+                answered ? 'answered on poll ' + answered : 'no answer after 16s'
+            );
+
+            // Recorded rather than hidden: withDeviceId composes the filter field `datapoint.device`,
+            // which this platform rejects as unknown, so this fails for every device -- including ones
+            // that have been reporting for months. It is the library's field name, not the data.
+            await check('device', 'datapointsSearchBuilder', 'withDeviceId(device).withDatastream(...)', function () {
+                return api.datapointsSearchBuilder().withDeviceId(dev).withDatastream(datastream).limit(5, 1).build().execute();
+            });
+
+            // ---- removal. The builder recognises the device identifier as the key, nothing else.
+            var deleted = await check('device', 'devicesBuilder', 'delete() ' + dev, async function () {
+                var remover = await api.entityBuilder.devicesBuilder(ctx.org);
+                return remover.with('provision.device.identifier', dev).delete();
+            });
+
+            if (deleted.outcome !== 'pass') {
+                await check('device', 'cleanup', 'fallback removal over the REST path', function () {
+                    return api.Napi.delete('provision/organizations/' + ctx.org + '/devices/' + dev);
+                });
+            }
+
+            var gone = await check('device', 'newDeviceFinder', 'findByOrganizationAndId() after delete', function () {
+                return api.newDeviceFinder().findByOrganizationAndId(ctx.org, dev);
+            });
+            record(
+                'device',
+                'cleanup',
+                'the device is gone',
+                gone.outcome === 'pass' ? 'fail' : 'pass',
+                0,
+                gone.outcome === 'pass' ? 'THE DEVICE STILL EXISTS: ' + dev : 'confirmed removed (' + gone.outcome + ')'
             );
         }
 

@@ -283,9 +283,18 @@ Factories are discovered from the client rather than listed, so a new one is cov
 added. Reads are chained: identifiers harvested from the search lane feed the finders that need one,
 so the second tier runs against real devices, channels and datamodels rather than invented ids.
 
-**Everything it runs by default is a read**, and each search is capped at one row. A write lane
-exists — create, read, update, read, delete and confirm-gone on a single Area, which is metadata and
-touches no device or datastream — and it is **off** unless `OGAPI_ALLOW_WRITES=1`.
+**Everything it runs by default is a read**, and each search is capped at one row. Two write lanes
+exist and are **off** unless `OGAPI_ALLOW_WRITES=1`:
+
+- an **Area** — create, read, update, read, delete, confirm gone. Metadata only: no device, no
+  datastream, no collection.
+- a **device**, which is the round trip the platform exists to do: provision it, find it by id, find
+  it through a filtered search, **feed it a datapoint over the south API**, poll the searches, then
+  remove it and confirm it is gone. Removal has a fallback that does not go through the builder,
+  because a stray device in a production organization is not acceptable.
+
+The south lane is why the client is built with both credentials: the transport sends the JWT north and
+never south, so the api key from the same login is what makes `collect/iot` reachable.
 
 Outcomes are finer than pass/fail on purpose, because "the platform has nothing there" and "the
 library is broken" are different facts: `pass`, `empty` (204, or a 404 saying so), `denied` (401/403),
