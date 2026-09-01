@@ -388,18 +388,41 @@ yarn build && yarn test:e2e [--tags @tag]
 Certificate verification is disabled for that run, because test instances tend to carry self-signed
 certificates. Set `OGAPI_E2E_STRICT_TLS=1` to keep it on.
 
-## Releasing
+## Branching and releasing
 
-Publication to [npm](https://www.npmjs.com/package/opengate-js) is driven by the tag and by nothing else:
+Work happens on a branch off `develop`, named after its ticket (`OUW-4887`) or its intent
+(`docs/release-flow`), and reaches `develop` through a pull request. CI lints and runs the unit suite
+on Node 20, 22 and 24 — on the pull request, and again on the merge. `develop` is where a change is
+proven; nothing is released from a red `develop`.
 
-1. Bump `version` in `package.json` on `develop`, and commit.
-2. Tag that commit `vX.Y.Z`, matching the version exactly.
-3. Push the tag.
+A release is cut from `master`, which is only ever fast-forwarded to a green `develop`:
 
-Releases are tagged on `develop`. `master` is frozen at `14.15.0` and is not the release branch. There
-is no `bower.json` any more, despite the name of the browser bundle.
+1. Bump `version` in `package.json` on `develop`, commit, push, and wait for CI.
+2. Fast-forward `master` onto `develop`.
+3. Tag that commit `vX.Y.Z`, matching the version exactly, and push the tag.
 
-`.github/workflows/release.yml` refuses to continue if the tag and `package.json` disagree, then lints, tests, regenerates the declarations through `prepare`, publishes with [provenance](https://docs.npmjs.com/generating-provenance-statements), and opens a GitHub release carrying `api-model.json`.
+```bash
+git checkout develop && git pull
+# bump "version" in package.json
+git commit -am "release minor version:16.1.0"
+git push origin develop
+
+# once develop is green
+git checkout master && git merge --ff-only develop
+git tag v16.1.0
+git push origin master --follow-tags
+```
+
+**Pushing the tag is what publishes, and nothing else is.** Nobody runs `npm publish` by hand.
+
+Keep the `--ff-only`, and never commit to `master` directly. The moment `master` carries a commit
+`develop` does not, the two diverge and every later release needs a merge by hand. Tags up to
+`v16.0.0` predate this rule and point at `develop` commits, from a period when `master` had been left
+behind at `14.15.0`.
+
+There is no `bower.json` any more, despite the name of the browser bundle.
+
+`.github/workflows/release.yml` refuses to continue if the tag and `package.json` disagree, then lints, tests, regenerates the declarations through `prepare`, publishes with [provenance](https://docs.npmjs.com/generating-provenance-statements), and opens a GitHub release carrying `api-model.json`. It fires on any `v*` tag, whatever branch it sits on — the discipline above is what keeps that meaningful.
 
 It needs one repository secret, `NPM_TOKEN`: an npm automation token with publish rights.
 
