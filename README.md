@@ -397,7 +397,8 @@ proven; nothing is released from a red `develop`.
 
 A release is cut from `master`, which is only ever fast-forwarded to a green `develop`:
 
-1. Bump `version` in `package.json` on `develop`, commit, push, and wait for CI.
+1. Bump `version` in `package.json` on `develop`, commit, push, and wait for CI. This bump is the
+   one commit that goes straight onto `develop` rather than through a pull request.
 2. Fast-forward `master` onto `develop`.
 3. Tag that commit `vX.Y.Z`, matching the version exactly, and push the tag.
 
