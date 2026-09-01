@@ -1,24 +1,23 @@
 version: 2
 
-# Thirteen Dependabot pull requests sat open for between three and five years, every one of them
-# patching package-lock.json. That file is gone, so none of them could ever have merged. Grouping
-# the updates keeps the queue reviewable instead of producing one pull request per transitive bump.
+# This file configures *version updates* only — the routine "bump X to Y" pull requests.
+#
+# Dependabot **security updates** are a separate feature, enabled in the repository settings, and
+# they do not read this file. Removing the npm block below therefore costs no CVE coverage: security
+# patches keep arriving as their own pull requests. That distinction is the whole point of this
+# configuration, so check the settings before assuming a missing ecosystem means missing alerts.
+#
+# Why npm version updates are off: on 2026-09-01 the default branch moved from a frozen `master` to
+# `develop` and Dependabot, which had been aimed at the frozen branch for years, opened eight pull
+# requests in one minute. The backlog was real — 29 open alerts, six of them reaching consumers at
+# runtime — but the weekly routine bumps on top of it are noise nobody reads, and unread pull
+# requests are how the previous thirteen sat open for five years. Dependencies here move slowly and
+# the library is small: a human bump when a release needs it beats a queue that trains everyone to
+# ignore the label.
+#
+# GitHub Actions stays on, monthly and grouped into a single pull request: pinned action versions
+# rot silently and go unnoticed until a workflow breaks, and one PR a month is not noise.
 updates:
-  - package-ecosystem: npm
-    directory: /
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 10
-    groups:
-      # What ships to consumers. Worth reading one by one.
-      production:
-        dependency-type: production
-      # The build and test toolchain. Only reaches a developer's machine and CI.
-      development:
-        dependency-type: development
-    labels:
-      - dependencies
-
   - package-ecosystem: github-actions
     directory: /
     schedule:
