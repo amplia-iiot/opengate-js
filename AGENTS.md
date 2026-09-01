@@ -54,7 +54,7 @@
 
 ## Commit & Pull Request Guidelines
 
-- Branch off `develop`, named after the ticket (`OUW-4887`) or the intent (`docs/release-flow`), and merge back through a pull request. Never commit to `develop` or `master` directly.
+- Branch off `develop`, named after the ticket (`OUW-4887`) or the intent (`docs/release-flow`), and merge back through a pull request. Never commit to `develop` or `master` directly, with one named exception: the release version bump, which goes straight onto `develop` (see Releasing). A pull request to change one number earns nothing.
 - Follow history conventions: `OUW-1234 short summary` for work tied to tickets; `release minor version:x.y.z` for release bumps.
 - PRs should include a concise description, tests executed, and documentation updates when public behavior changes; link related issues/tickets.
 - Add screenshots or sample payloads when modifying responses or fluent builders that affect consumers.
