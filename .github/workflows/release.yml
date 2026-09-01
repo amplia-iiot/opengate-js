@@ -15,6 +15,13 @@ jobs:
     name: Publish to npm
     runs-on: ubuntu-latest
 
+    # setup-node@v7 writes the .npmrc for `registry-url` *before* it restores the yarn cache, and
+    # the yarn invocation behind that cache reads the file. With the token scoped to the publish
+    # step alone, yarn found `${NODE_AUTH_TOKEN}` unexpanded and the job died with "Failed to
+    # replace env in config" — 11 seconds in, long before the publish. Job-level scope fixes it.
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
     steps:
       - uses: actions/checkout@v7
 
@@ -56,8 +63,6 @@ jobs:
       # this build produced this tarball.
       - name: Publish
         run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create the GitHub release
         uses: softprops/action-gh-release@v3
