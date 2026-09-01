@@ -1,7 +1,6 @@
 'use strict';
 import Ajv from 'ajv';
 
-// import jsonSchema from 'jsonschema';
 // import Qrating from './Qrating';
 
 /**
