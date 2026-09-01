@@ -1,6 +1,6 @@
 'use strict';
 
-import merge from 'merge';
+import _ from 'lodash';
 import moment from 'moment';
 
 import Operation from '../Operation';
@@ -16,7 +16,7 @@ export default class PeriodicityUpdateBuilder {
         this._task = taskObj;
         this.task_id = taskId;
         this._resource = '/tasks/' + this.task_id;
-        this._build = merge(true, this._task.job.request);
+        this._build = _.cloneDeep(this._task.job.request);
     }
 
     /**
@@ -75,7 +75,7 @@ export default class PeriodicityUpdateBuilder {
     }
 
     build() {
-        let _build = merge(true, this._build);
+        let _build = _.cloneDeep(this._build);
         let postObj;
         let errors = [];
         if (typeof this._build.task !== 'undefined') {

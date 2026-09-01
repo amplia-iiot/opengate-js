@@ -1,4 +1,4 @@
-import merge from 'merge';
+import _ from 'lodash';
 import moment from 'moment';
 /**
  * Defines the builder used to configure the periodicity of an operation. With this builder you can select how the
@@ -89,7 +89,7 @@ export default class ExecuteEachBuilder {
     }
 
     _addPeriod(num, type) {
-        let skeleton = merge(true, this._skeleton);
+        let skeleton = _.cloneDeep(this._skeleton);
         skeleton.repeating.period.each = num;
         skeleton.repeating.period.unit = type;
         this._parent._build.task = skeleton;

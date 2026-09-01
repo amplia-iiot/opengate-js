@@ -1,5 +1,5 @@
 import moment from 'moment';
-import merge from 'merge';
+import _ from 'lodash';
 import { TIME_FORMAT } from './../../../../util/DATE_FORMAT';
 
 /* Generic class that will be extends on ByYear, ByWeek, ByMonth*/
@@ -45,7 +45,7 @@ export default class ByGeneric {
     }
 
     _create() {
-        return merge(true, this._skeleton);
+        return _.cloneDeep(this._skeleton);
     }
 
     _build() {

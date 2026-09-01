@@ -1,7 +1,7 @@
 'use strict';
 
 import SearchBuilder from './SearchBuilder';
-import merge from 'merge';
+import _ from 'lodash';
 import moment from 'moment';
 import FieldFinder from '../../util/searchingFields/FieldFinder';
 import { DATE_FORMAT } from '../../util/DATE_FORMAT';
@@ -137,7 +137,7 @@ export default class DatapointsSearchBuilder extends SearchBuilder {
     _buildFilter() {
         let filter = { filter: {} };
 
-        let _fluentFilter = merge(true, this.fluentFilter);
+        let _fluentFilter = _.cloneDeep(this.fluentFilter);
         let _customFilter = this._builderParams.filter;
 
         //if (this.tagsFilter.length > 0){

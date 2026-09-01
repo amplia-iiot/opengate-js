@@ -1,6 +1,6 @@
 'use strict';
 
-import merge from 'merge';
+import _ from 'lodash';
 
 import Operation from './Operation';
 
@@ -445,7 +445,7 @@ export default class BaseOperationBuilder {
      */
     build() {
         let resource;
-        let _build = merge(true, this._build);
+        let _build = _.cloneDeep(this._build);
         let postObj;
         let errors = [];
         try {

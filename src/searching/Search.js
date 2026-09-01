@@ -1,7 +1,6 @@
 'use strict';
 
 import BaseSearch from './BaseSearch';
-import merge from 'merge';
 
 /**
  * This class extends BaseSearch and allows requests to be made to any available resource in the OpenGate North
@@ -21,9 +20,9 @@ export default class Search extends BaseSearch {
     constructor(ogapi, url, filter, limit = { limit: {} }, sort, group, select, timeout, urlParams) {
         super(ogapi, 'search' + url, timeout);
         this._setUrlParameters(urlParams);
-        this._postObj = merge(filter, limit, group, select);
+        this._postObj = Object.assign({}, filter, limit, group, select);
         if (typeof sort === 'object') {
-            this._postObj = merge(this._postObj, sort);
+            this._postObj = Object.assign({}, this._postObj, sort);
         }
     }
 

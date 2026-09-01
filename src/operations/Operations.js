@@ -3,7 +3,7 @@
 import BaseOperationBuilder from './catalog/BaseOperationBuilder';
 import PeriodicityUpdateBuilder from './catalog/period/PeriodicityUpdateBuilder';
 import q from 'q';
-import merge from 'merge';
+import _ from 'lodash';
 import parameterError from '../util/parameterError';
 
 /**
@@ -75,7 +75,7 @@ export default class Operations {
     }
 
     getOperationList() {
-        return merge(true, this._operationNames);
+        return _.cloneDeep(this._operationNames);
     }
 
     _createBuilder(config) {
