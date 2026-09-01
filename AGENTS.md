@@ -70,4 +70,4 @@
 
 - Do not hardcode API keys or endpoints; supply them via environment variables.
 - Registry credentials belong in your own `~/.npmrc`. The repository deliberately ships no `.npmrc` or `.yarnrc`; it once carried Nexus tokens in a committed `.npmrc`, and `.gitignore` now blocks that file.
-- Keep browser bundles clean of Node-only dependencies. `scripts/build.mjs` declares the shims browserify used to inject silently (path, buffer, assert, util, process, and an empty fs); after changing `opengate-api-bower.js`, run `yarn build` and load the bundle to verify it.
+- Keep browser bundles clean of Node-only dependencies. `scripts/build.mjs` declares the shims browserify used to inject silently (path, buffer, assert, util, process, string_decoder, and an empty fs); after changing `opengate-api-bower.js`, run `yarn build` and load the bundle to verify it. A shim needs the package it points at to be a declared dependency — `string_decoder` was resolving only because superagent happened to hoist it, and the browser bundle broke the moment superagent left.

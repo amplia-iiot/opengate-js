@@ -101,7 +101,13 @@ const BROWSER_SHIMS = {
     // The multipart helper reaches for node:fs to turn a file path into a Blob, behind a runtime
     // check for Node. The check keeps it from ever running in a browser, but esbuild still has to
     // resolve the specifier to bundle the file at all.
-    'node:fs': path.join(root, 'scripts', 'browser-shims', 'empty.js')
+    'node:fs': path.join(root, 'scripts', 'browser-shims', 'empty.js'),
+    // iconv-lite, reached through urlencode, requires string_decoder unconditionally. This shim was
+    // missing and the build still worked, because the npm package of that name happened to sit in
+    // node_modules as a transitive of superagent; removing superagent broke the browser bundle and
+    // nothing else. Declared here, and depended on explicitly, so the bundle no longer relies on
+    // another package's tree for a module it needs itself.
+    string_decoder: path.join(root, 'node_modules', 'string_decoder')
 };
 
 /** The browser bundle, under the same versioned name the documentation already points at. */

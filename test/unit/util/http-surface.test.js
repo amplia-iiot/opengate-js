@@ -4,60 +4,36 @@
  * `hooks.beforeStart` hands the request object to application code, and the OpenGate web GUI is
  * built on this library and ships to production regularly. A method that quietly stops existing
  * would be a TypeError inside someone's hook, on every request, in production. So the surface is
- * enumerated from superagent's own browser sources and compared, rather than trusted.
+ * compared against an enumeration of superagent's own, rather than trusted.
  *
- * If this test fails after a superagent upgrade, that is the point: it means the reference moved.
- * superagent stays a devDependency partly for this: the comparison needs something to compare to.
+ * **That enumeration is now frozen in `superagent-surface.json`.** It used to be computed at test
+ * time by reading superagent's sources, which meant keeping superagent as a devDependency purely to
+ * have something to compare to — and dragging in four form-data advisories, two of them CRITICAL,
+ * for a package this library no longer uses for anything.
+ *
+ * Freezing loses nothing. superagent stopped being the transport in 16.0.0, so the reference was
+ * never going to move again in a direction we cared about: what matters is that the surface *our
+ * callers already write hooks against* stays intact. A fixture states that contract outright
+ * instead of inferring it from a third party's source text every run.
+ *
+ * The fixture was captured from superagent 3.8.3 and component-emitter 1.2.1 — the exact versions
+ * this test read until 2026-09-01 — by enumerating `Request.prototype` and `RequestBase.prototype`
+ * from the browser sources, the component-emitter mixin (installed at runtime, so invisible to a
+ * regexp over the source: `addEventListener`, `removeEventListener` and `hasListeners` were missing
+ * from this test's first version until Chema spotted it reading the diff), and the whole prototype
+ * chain of a real Node request.
  */
 import { describe, it, expect } from 'vitest';
-import { readFileSync } from 'node:fs';
-import { createRequire } from 'node:module';
 
 import RequestSpec from '../../../src/util/http/RequestSpec';
 import { buildResponse } from '../../../src/util/http/response';
+import surface from './superagent-surface.json';
 
-const require = createRequire(import.meta.url);
-
-/**
- * The names superagent's browser build puts on its request.
- *
- * Reading the source text of client.js and request-base.js is **not enough**, and the first version
- * of this test made exactly that mistake: the browser request is also passed through
- * component-emitter, which mixes its methods in at runtime rather than assigning them to the
- * prototype where a regexp would see them. `addEventListener`, `removeEventListener` and
- * `hasListeners` were missing from this list, and therefore missing from RequestSpec, until Chema
- * spotted it reading the diff. Enumerate the mixin too.
- */
-function superagentRequestSurface() {
-    const client = readFileSync(require.resolve('superagent/lib/client.js'), 'utf8');
-    const base = readFileSync(require.resolve('superagent/lib/request-base.js'), 'utf8');
-    const assigned = [
-        ...[...client.matchAll(/Request\.prototype\.([A-Za-z_][A-Za-z0-9_]*)\s*=/g)].map(m => m[1]),
-        ...[...base.matchAll(/RequestBase\.prototype\.([A-Za-z_][A-Za-z0-9_]*)\s*=/g)].map(m => m[1])
-    ];
-
-    // What component-emitter installs, asked of component-emitter itself.
-    const Emitter = require('component-emitter');
-    const mixedIn = {};
-    Emitter(mixedIn);
-    const emitted = Object.keys(mixedIn).filter(name => typeof mixedIn[name] === 'function');
-
-    return [...new Set([...assigned, ...emitted])].filter(name => !name.startsWith('_'));
-}
+/** The names superagent's browser build put on its request. */
+const superagentRequestSurface = () => surface.browser;
 
 /** The names superagent's Node build put on its request, EventEmitter surface included. */
-function superagentNodeSurface() {
-    const superagent = require('superagent');
-    const request = superagent.get('http://example.invalid/x');
-    const names = new Set();
-    let proto = Object.getPrototypeOf(request);
-    while (proto && proto !== Object.prototype) {
-        Object.getOwnPropertyNames(proto).forEach(name => names.add(name));
-        proto = Object.getPrototypeOf(proto);
-    }
-    request.abort();
-    return [...names].filter(name => !name.startsWith('_') && typeof request[name] === 'function');
-}
+const superagentNodeSurface = () => surface.node;
 
 // Deliberately not reproduced: each streams, resolves or reaches inside a request, and a chainable
 // no-op would be worse than a loud failure. Nothing in the library calls them, and they are

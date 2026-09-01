@@ -1,5 +1,5 @@
 // features/step_definitions/when_step_definitions.js
-var request = require('superagent');
+var request = require('../support/httpGet');
 var GenericFinder = require(process.cwd() + '/dist/src/GenericFinder');
 var { When, Given } = require('cucumber');
 
