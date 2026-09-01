@@ -1,5 +1,5 @@
 var { Before } = require('cucumber');
-const request = require('superagent');
+const request = require('./httpGet');
 
 Before({ tags: '@guerrilla' }, async function () {
     const _this = this;
