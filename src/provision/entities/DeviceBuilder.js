@@ -5,7 +5,7 @@ import { SubscriberID } from './SubscriberBuilder';
 import { SubscriptionID } from './SubscriptionBuilder';
 import HttpStatus from 'http-status-codes';
 import q from 'q';
-import jp from 'jsonpath';
+import { JSONPath } from 'jsonpath-plus';
 import logger from '../../util/logger';
 
 const ID = 'provision.device.identifier';
@@ -212,7 +212,7 @@ class BoxBuilder {
                     })
                     .catch(errores => {
                         if (errores.statusCode === HttpStatus.BAD_REQUEST) {
-                            let ms = jp.query(errores, '$..message')[0];
+                            let ms = JSONPath({ path: '$..message', json: errores })[0];
 
                             if (ms.includes('Entity duplicated')) {
                                 defer.reject({

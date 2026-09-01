@@ -1,6 +1,6 @@
 'use strict';
 var q = require('q');
-var jp = require('jsonpath');
+var { JSONPath } = require('jsonpath-plus');
 var { When } = require('cucumber');
 
 When(/^I try to find by...$/, function (table) {
@@ -462,7 +462,7 @@ When(
         try {
             var data = this.responseData.data;
             var json_attr = path.includes('$.') ? path : '$..' + path;
-            var value = jp.value(data, json_attr);
+            var value = JSONPath({ path: json_attr, json: data })[0];
             this.util.with(datastream, value);
         } catch (err) {
             console.error('ERROR: ', err);

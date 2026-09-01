@@ -1,8 +1,7 @@
 'use strict';
 
 import q from 'q';
-import merge from 'merge';
-import jp from 'jsonpath';
+import { JSONPath } from 'jsonpath-plus';
 
 /**
  * This is an abstract class; it must be extended by another class that defines the specific search. This class is
@@ -72,18 +71,30 @@ export default class BasicTypesSearchBuilder {
                 let statusCode = response.statusCode;
                 this._og_basic_types = resultQuery;
 
-                var nodes = jp.apply(this._og_basic_types, "$..['$ref']", function (value, path) {
-                    let newPath = '$..' + value.replace('#/definitions/', '');
-                    var newValue = jp.query(resultQuery, newPath);
-                    return newValue[0];
+                let maxDepth = 10;
+                var nodes = JSONPath({
+                    path: "$..['$ref']",
+                    json: this._og_basic_types,
+                    resultType: 'all'
                 });
-                nodes.forEach(element => {
-                    var pathExpression = jp.stringify(element.path);
-                    jp.value(resultQuery, pathExpression, element.value);
-                });
+                while (nodes.length > 0 && maxDepth-- > 0) {
+                    nodes.forEach(element => {
+                        let newPath = '$..' + element.value.replace('#/definitions/', '');
+                        var newValue = JSONPath({ path: newPath, json: resultQuery });
+                        if (element.parent && element.parentProperty && newValue && newValue[0]) {
+                            delete element.parent[element.parentProperty];
+                            Object.assign(element.parent, JSON.parse(JSON.stringify(newValue[0])));
+                        }
+                    });
+                    nodes = JSONPath({
+                        path: "$..['$ref']",
+                        json: this._og_basic_types,
+                        resultType: 'all'
+                    });
+                }
                 if (this.path) {
                     let path = this.path.includes('$') ? this.path : '$..' + this.path;
-                    let jsonSchemaValue = jp.query(resultQuery, path)[0] || {
+                    let jsonSchemaValue = JSONPath({ path: path, json: resultQuery })[0] || {
                         msg: 'not Found'
                     };
                     defered.resolve({

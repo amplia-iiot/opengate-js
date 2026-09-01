@@ -1,11 +1,11 @@
-var jp = require('jsonpath');
+var { JSONPath } = require('jsonpath-plus');
 var { Then } = require('cucumber');
 
 Then(/^I can see into the result an "([^"]*)" as "([^"]*)"$/, function (getterName, getterValue, callback) {
     var data = this.responseData.data;
     var json_attr = this.findModel.getter_response(getterName);
 
-    var value = jp.value(data, json_attr);
+    var value = JSONPath({ path: json_attr, json: data })[0];
     if (value !== getterValue && this.error) {
         throw new Error(JSON.stringify(this.error));
     }
@@ -17,7 +17,7 @@ Then(/^I can see into the result an "([^"]*)" as (\d+)$/, function (getterName, 
     var data = this.responseData.data;
     var json_attr = this.findModel.getter_response(getterName);
 
-    var value = jp.value(data, json_attr);
+    var value = JSONPath({ path: json_attr, json: data })[0];
     if (value !== getterValue && this.error) {
         throw new Error(JSON.stringify(this.error));
     }
@@ -59,7 +59,7 @@ Then(/^I can see into the result an "([^"]*)" as$/, function (getterName, getter
     var data;
     data = this.responseData.data;
     var json_attr = this.findModel.getter_response(getterName);
-    var value = jp.value(data, json_attr);
+    var value = JSONPath({ path: json_attr, json: data })[0];
     this.expect(JSON.stringify(value)).to.be.equal(getterValue);
     callback();
 });
