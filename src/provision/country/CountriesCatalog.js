@@ -1,7 +1,7 @@
 'use strict';
 
 import ProvisionGenericFinder from '../../ProvisionGenericFinder';
-import jp from 'jsonpath';
+import { JSONPath } from 'jsonpath-plus';
 import q from 'q';
 import HttpStatus from 'http-status-codes';
 import parameterError from '../../util/parameterError';
@@ -72,7 +72,7 @@ export default class CountriesCatalog extends ProvisionGenericFinder {
                         statusCode: HttpStatus.NOT_FOUND
                     });
                 } else {
-                    var data = (jp.query(req.body, '$.' + _this.__filter.ds + '._current.value') || [])[0];
+                    var data = (JSONPath({ path: '$.' + _this.__filter.ds + '._current.value', json: req.body }) || [])[0];
                     defered.resolve({
                         data: data,
                         statusCode: req.statusCode

@@ -1,7 +1,7 @@
 'use strict';
 
 import q from 'q';
-import jp from 'jsonpath';
+import { JSONPath } from 'jsonpath-plus';
 
 import Ajv from 'ajv';
 import AssetBuilder from './AssetBuilder';
@@ -111,7 +111,7 @@ export default class EntityBuilder {
     _setDevicesProperties(data, filter) {
         let _this = this;
         //http://jekyll.amplia.es/OpenGateDoc/LATEST/opengate-doc-api/api-north/opengate-api-north.html#iotDatastreamTemplate - field calculated (OUW-1679)
-        let allowedDatastreams = jp.query(data, '$.datamodels[*].categories[*].datastreams[?(@.calculated === false)]');
+        let allowedDatastreams = JSONPath({ path: '$.datamodels[*].categories[*].datastreams[?(@.calculated === false)]', json: data });
         let response = {
             allowedDatastreams: [],
             schemas: {}

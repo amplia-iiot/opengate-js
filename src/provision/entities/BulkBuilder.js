@@ -63,7 +63,7 @@ export default class BulkBuilder extends BaseProvision {
      * @param {boolean} [csv_response] - true if you want a response on format csv. False or null if you want a response on format json
      */
     deleteAll(rawFile, csv_response) {
-        return this._executeOperation(rawFile, 'DELETE&full=true', csv_response);
+        return this._executeOperation(rawFile, 'DELETE', csv_response, { full: true });
     }
 
     /**
@@ -90,7 +90,7 @@ export default class BulkBuilder extends BaseProvision {
         return this._executeOperation(rawFile, 'PATCH', csv_response);
     }
 
-    _executeOperation(rawFile, action, csv_response) {
+    _executeOperation(rawFile, action, csv_response, extraParams) {
         let form;
         if (typeof rawFile !== 'string') {
             form = {};
@@ -115,7 +115,8 @@ export default class BulkBuilder extends BaseProvision {
                 accept: 'text/plain'
             });
         this._setUrlParameters({
-            action: action
+            action: action,
+            ...(extraParams || {})
         });
         this._ogapi.Napi.post_multipart(petitionUrl, form, {}, this._timeout, this._getExtraHeaders(), this._getUrlParameters())
             .then(response => {
