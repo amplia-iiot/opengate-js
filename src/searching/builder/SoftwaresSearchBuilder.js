@@ -1,7 +1,7 @@
 'use strict';
 
 import SearchWithSummaryBuilder from './SearchWithSummaryBuilder';
-import merge from 'merge';
+import _ from 'lodash';
 import FieldFinder from '../../util/searchingFields/FieldFinder';
 
 /**
@@ -183,7 +183,7 @@ export default class SoftwaresSearchBuilder extends SearchWithSummaryBuilder {
     _buildFilter() {
         let filter = { filter: {} };
 
-        let _fluentFilter = merge(true, this.fluentFilter);
+        let _fluentFilter = _.cloneDeep(this.fluentFilter);
         let _customFilter = this._builderParams.filter;
 
         //if (this.tagsFilter.length > 0){

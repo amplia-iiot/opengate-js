@@ -1,7 +1,6 @@
 'use strict';
 
 import BaseSearch from './BaseSearch';
-import merge from 'merge';
 import q from 'q';
 import logger from '../util/logger';
 
@@ -23,9 +22,9 @@ export default class WPSearch extends BaseSearch {
     constructor(ogapi, url, filter, limit = { limit: {} }, sort, group, select, timeout, urlParams) {
         super(ogapi, url, timeout);
         this._setUrlParameters(urlParams);
-        this._postObj = merge(filter, limit, group, select);
+        this._postObj = Object.assign({}, filter, limit, group, select);
         if (typeof sort === 'object') {
-            this._postObj = merge(this._postObj, sort);
+            this._postObj = Object.assign({}, this._postObj, sort);
         }
     }
 

@@ -1,6 +1,5 @@
 'use strict';
 
-import merge from 'merge';
 import urlencode from 'urlencode';
 import q from 'q';
 import _ from 'lodash';
@@ -38,7 +37,7 @@ export default class NorthAmpliaREST {
      * @param {function} backend - this is a backend selected to manage a request to Opengate North API.
      */
     constructor(_options, headers) {
-        this._options = merge.recursive(true, this.default(), _options);
+        this._options = _.merge({}, this.default(), _options);
         this._headers = headers;
         if (!_.isEmpty(_options.mocks)) {
             this._applyMocks(_options.mocks);
