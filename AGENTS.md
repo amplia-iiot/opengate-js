@@ -54,13 +54,16 @@
 
 ## Commit & Pull Request Guidelines
 
+- Branch off `develop`, named after the ticket (`OUW-4887`) or the intent (`docs/release-flow`), and merge back through a pull request. Never commit to `develop` or `master` directly.
 - Follow history conventions: `OUW-1234 short summary` for work tied to tickets; `release minor version:x.y.z` for release bumps.
 - PRs should include a concise description, tests executed, and documentation updates when public behavior changes; link related issues/tickets.
 - Add screenshots or sample payloads when modifying responses or fluent builders that affect consumers.
 
 ## Releasing
 
-- Publishing to npm is triggered solely by pushing a `vX.Y.Z` tag, which must match `package.json`. See `.github/workflows/release.yml`.
+- The flow is feature branch -> pull request -> green `develop` -> fast-forward `master` -> tag on `master`. Releases are cut from `master`; `develop` is where a change is proven.
+- `master` is only ever fast-forwarded (`git merge --ff-only develop`). A commit landing on `master` alone makes the branches diverge and every later release a manual merge.
+- Publishing to npm is triggered solely by pushing a `vX.Y.Z` tag, which must match `package.json`. See `.github/workflows/release.yml`; it fires on any `v*` tag regardless of branch, so the discipline above is a convention the tooling does not enforce.
 - The workflow needs the `NPM_TOKEN` repository secret.
 
 ## Security & Configuration Tips
