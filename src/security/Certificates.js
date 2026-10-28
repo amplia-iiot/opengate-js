@@ -94,7 +94,6 @@ export default class Certificates extends Security {
      * @param {Array} usages
      * @return {Certificates}
      */
-
     withUsages(usages) {
         if (typeof usages === 'undefined' || usages.constructor !== Array || usages.length === 0) {
             throw new Error('Parameter usages must be typeof Array and cannot be empty');
@@ -121,39 +120,11 @@ export default class Certificates extends Security {
         return this;
     }
 
-    _checkHardware(hardware) {
-        if (typeof hardware === 'string') {
-            hardware = eval('(' + hardware + ')');
-        }
-
-        let length = Object.keys(hardware).length;
-
-        let valid = false;
-
-        if (length === 1 && hardware.hardwareId && typeof hardware.hardwareId === 'string' && hardware.hardwareId.length > 0) {
-            valid = true;
-        } else if (
-            length === 3 &&
-            hardware.manufacturer &&
-            hardware.model &&
-            hardware.modelVersion &&
-            typeof hardware.manufacturer === 'string' &&
-            typeof hardware.model === 'string' &&
-            typeof hardware.modelVersion === 'string' &&
-            hardware.manufacturer.length > 0 &&
-            hardware.model.length > 0 &&
-            hardware.modelVersion.length > 0
-        ) {
-            valid = true;
-        }
-        return valid;
-    }
     /**
      * Set the tags attribute
      * @param {Array} tags
      * @return {Certificates}
      */
-
     withTags(tags) {
         if (typeof tags === 'undefined' || tags.constructor !== Array || tags.length <= 0) {
             throw new Error('Parameter tags must be typeof Array and cannot be empty');
@@ -189,7 +160,6 @@ export default class Certificates extends Security {
      * @param {Array} domains
      * @return {Certificates}
      */
-
     withDomains(domains) {
         if (typeof domains === 'undefined' || domains.constructor !== Array || domains.length <= 0) {
             throw new Error('Parameter domains must be typeof Array and cannot be empty');
@@ -224,7 +194,6 @@ export default class Certificates extends Security {
                 description: this._description || undefined,
                 administrativeState: this._administrativeState || undefined,
                 usages: this._usages || undefined,
-                hardware: this._hardware || undefined,
                 tags: this._tags || undefined,
                 parameters: this._parameters || undefined,
                 domains: this._domains || undefined
@@ -312,7 +281,6 @@ export default class Certificates extends Security {
      * @property {function (error:string)} catch - When request it is NOK
      * @return {Promise}  
      */
-
     update() {
         var form = this._composeElement();
         delete form.certificate.id;

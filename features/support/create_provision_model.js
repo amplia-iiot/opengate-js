@@ -57,7 +57,6 @@ module.exports = {
                 description: 'withDescription',
                 administrativeState: 'withAdministrativeState',
                 usages: 'withUsages',
-                hardwares: 'withHardware',
                 tags: 'withTags',
                 parameters: 'withParameters',
                 domains: 'withDomains'

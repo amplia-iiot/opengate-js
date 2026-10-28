@@ -75,40 +75,6 @@ Feature: Create a certificate
     Then throws an error equal to "Parameter parameters must be a string, cannot be empty"
 
 
-  Scenario: Checking hardwares parameter type
-    And the "hardwares" 1
-    Then throws an error equal to "Parameter hardwares must be typeof Array and cannot be empty"
-
-  Scenario: Checking hardwares parameter type
-    And the "hardwares"
-      |  |
-    Then throws an error equal to "Parameter hardwares must be typeof Array and cannot be empty"
-
-  Scenario: Checking hardwares parameter type
-    And the "hardwares"
-      | {'sdfs':'dd', 'entity': 'dd'} |
-    Then throws an error equal to "The hardware attribute is not well formed, the message [1] not correct. Remember: hardwareId or [manufacturer, model and modelVersion] must be defined"
-
-  Scenario: Checking hardwares parameter type
-    And the "hardwares"
-      | {'hardwareId':'dd', 'entity': 'dd'} |
-    Then throws an error equal to "The hardware attribute is not well formed, the message [1] not correct. Remember: hardwareId or [manufacturer, model and modelVersion] must be defined"
-
-  Scenario: Checking hardwares parameter type
-    And the "hardwares"
-      | {'hardware':'dd', 'manufacturer': 'dd', 'model':'model'} | {'hardware':'dd', 'manufacturer': 'dd', 'model':'model'} |
-    Then throws an error equal to "The hardware attribute is not well formed, the message [1,2] not correct. Remember: hardwareId or [manufacturer, model and modelVersion] must be defined"
-
-  Scenario: Checking hardwares parameter type
-    And the "hardwares"
-      | {'hardwareId':'dd'} | {'hardware':'dd', 'manufacturer': 'dd', 'model':'model'} |
-    Then throws an error equal to "The hardware attribute is not well formed, the message [2] not correct. Remember: hardwareId or [manufacturer, model and modelVersion] must be defined"
-
-  Scenario: Checking hardwares parameter type
-    And the "hardwares"
-      | {"hardwareId" : "OpenGateSecure"} | {"hardwareId" : "OpenGateSecure"} |
-    Then does not throws an error
-
   Scenario: Create a certificate
     #And the "id" "certificado_cucumber_id"
     And the "name" "certificado_cucumber_name"
@@ -118,8 +84,6 @@ Feature: Create a certificate
       | CERT_SIGN |
     And the "tags"
       | tag1 | tag2 |
-    And the "hardwares"
-      | { "hardwareId" : "OpenGateSecure"} |
     And I read the file from "/file_test/root.cer"
     And I create it
     Then does not throws an error

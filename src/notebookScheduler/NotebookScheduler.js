@@ -76,6 +76,17 @@ export default class NotebookScheduler extends BaseProvision {
         return this;
     }
 
+    /**
+     * Sets the timezone attribute
+     * @param {string} timezone
+     * @return {NotebookScheduler}
+     */
+    withTimezone(timezone) {
+        checkType._checkString(timezone, 'timezone');
+        this._timezone = timezone;
+        return this;
+    }
+
     withParams(params) {
         checkType._checkArray(params, 'params');
         this._params = params;
@@ -92,6 +103,9 @@ export default class NotebookScheduler extends BaseProvision {
             generateReport: this._generateReport || false,
             params: this._params || []
         };
+        if (this._timezone) {
+            notebookData.timeZone = this._timezone;
+        }
         return notebookData;
     }
 
