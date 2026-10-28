@@ -23,8 +23,6 @@ Feature: Find a certificate
 			| CERT_SIGN |
 		And the "tags"
 			| tag1 | tag2 |
-		And the "hardwares"
-			| { "hardwareId" : "OpenGateSecure"} |
 		And I read the file from "/file_test/root.cer"
 		And I create it
 		Then does not throws an error

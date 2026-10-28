@@ -24,8 +24,6 @@ Feature: Create a certificate
       | CERT_SIGN |
     And the "tags"
       | tag1 | tag2 |
-    And the "hardwares"
-      | { "hardwareId" : "OpenGateSecure"} |
     And I update it
     Then does not throws an error
 
