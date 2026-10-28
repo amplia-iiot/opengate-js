@@ -400,21 +400,27 @@ A release is cut from `master`, which is only ever fast-forwarded to a green `de
 1. Bump `version` in `package.json` on `develop`, commit, push, and wait for CI. This bump is the
    one commit that goes straight onto `develop` rather than through a pull request.
 2. Fast-forward `master` onto `develop`.
-3. Tag that commit `vX.Y.Z`, matching the version exactly, and push the tag.
+3. Tag that commit `vX.Y.Z`, matching the version exactly, and push the tag by name.
 
 ```bash
 git checkout develop && git pull
-# bump "version" in package.json
-git commit -am "release minor version:16.1.0"
+npm version minor --no-git-tag-version
+git commit -am "release minor version:16.2.0"
 git push origin develop
 
 # once develop is green
-git checkout master && git merge --ff-only develop
-git tag v16.1.0
-git push origin master --follow-tags
+git checkout master && git pull && git merge --ff-only develop
+git push origin master
+git tag -a v16.2.0 -m "release 16.2.0"
+git push origin v16.2.0
 ```
 
-**Pushing the tag is what publishes, and nothing else is.** Nobody runs `npm publish` by hand.
+**Pushing the tag is what publishes, and nothing else is.** Nobody runs `npm publish` by hand. Push it
+by name: `--follow-tags` skips lightweight tags without a word, which leaves the tag on your machine
+and nothing published.
+
+[docs/RELEASING.md](docs/RELEASING.md) walks through each step, how to check that the release shipped,
+and what to do when the Release workflow fails.
 
 Keep the `--ff-only`, and never commit to `master` directly. The moment `master` carries a commit
 `develop` does not, the two diverge and every later release needs a merge by hand. Tags up to
