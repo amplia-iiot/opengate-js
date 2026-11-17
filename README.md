@@ -45,6 +45,25 @@ try {
 
 Note that a rejection is a plain object today, not an `Error`. That is a known wart, on the list for the next major version.
 
+When no answer arrives at all, `statusCode` is `500` and `data` holds a generic message, as it always has. Two more fields say
+what actually happened:
+
+```js
+try {
+    await ogapi.Napi.get('provision/organizations');
+} catch (error) {
+    error.statusCode; // 500
+    error.reason; // 'timeout', 'aborted', 'network' or 'unknown'
+    error.cause; // the original Error
+}
+```
+
+`network` covers a refused connection, a DNS failure and, in a browser, a CORS or CSP block: the browser reports all of them
+the same way, so the library cannot tell them apart. `reason` and `cause` are absent whenever the platform did answer.
+
+A path given to `ogapi.Napi` is relative to `north/v80/`. One that repeats it, such as `/north/v80/provision/...`, is
+rejected before it is sent, with `statusCode` `400` and `reason: 'invalid-path'`.
+
 ## Configuration
 
 | Option                     | Meaning                                                                                                                             |

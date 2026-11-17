@@ -158,6 +158,8 @@ export default class NorthAmpliaREST {
      * @return {Promise}
      */
     get(url, timeout, headers, parameters, asBlob, serviceBaseURL) {
+        const rejected = this._rejectDuplicatedBase(url, serviceBaseURL);
+        if (rejected) return rejected;
         const _url = this._createUrl(url, parameters, serviceBaseURL);
         logger.info('GET', _url);
         var req = new RequestSpec('GET', _url);
@@ -175,6 +177,8 @@ export default class NorthAmpliaREST {
      * @return {Promise}
      */
     patch(url, data, timeout, headers, parameters, serviceBaseURL) {
+        const rejected = this._rejectDuplicatedBase(url, serviceBaseURL);
+        if (rejected) return rejected;
         const _url = this._createUrl(url, parameters, serviceBaseURL);
         logger.info('PATCH', _url);
         var req = new RequestSpec('PATCH', _url).send(data);
@@ -193,6 +197,8 @@ export default class NorthAmpliaREST {
      * @return {Promise}
      */
     post(url, data, timeout, headers, parameters, serviceBaseURL) {
+        const rejected = this._rejectDuplicatedBase(url, serviceBaseURL);
+        if (rejected) return rejected;
         const _url = this._createUrl(url, parameters, serviceBaseURL);
         logger.info('POST', _url);
         var req = new RequestSpec('POST', _url).send(data);
@@ -212,6 +218,8 @@ export default class NorthAmpliaREST {
      * @return {Promise}
      */
     post_multipart(url, formData, events, timeout, headers, parameters, serviceBaseURL) {
+        const rejected = this._rejectDuplicatedBase(url, serviceBaseURL);
+        if (rejected) return rejected;
         const _url = this._createUrl(url, parameters, serviceBaseURL);
         logger.info('POST_MULTIPART', _url);
         let req = new RequestSpec('POST', _url);
@@ -232,6 +240,8 @@ export default class NorthAmpliaREST {
      * @return {Promise}
      */
     put(url, data, timeout, headers, parameters, serviceBaseURL) {
+        const rejected = this._rejectDuplicatedBase(url, serviceBaseURL);
+        if (rejected) return rejected;
         const _url = this._createUrl(url, parameters, serviceBaseURL);
         logger.info('PUT', _url);
         var req = new RequestSpec('PUT', _url).send(data);
@@ -259,6 +269,8 @@ export default class NorthAmpliaREST {
      * @return {Promise}
      */
     put_multipart(url, formData, events, timeout, headers, parameters, serviceBaseURL) {
+        const rejected = this._rejectDuplicatedBase(url, serviceBaseURL);
+        if (rejected) return rejected;
         const _url = this._createUrl(url, parameters, serviceBaseURL);
         logger.info('PUT_MULTIPART', _url);
         let req = new RequestSpec('PUT', _url);
@@ -341,6 +353,8 @@ export default class NorthAmpliaREST {
      * @return {Promise}
      */
     delete(url, timeout, headers, parameters, body, serviceBaseURL) {
+        const rejected = this._rejectDuplicatedBase(url, serviceBaseURL);
+        if (rejected) return rejected;
         const _url = this._createUrl(url, parameters, serviceBaseURL);
         logger.info('DELETE', _url);
         var req;
@@ -384,6 +398,30 @@ export default class NorthAmpliaREST {
         });
 
         return this._url(this._options) + '/' + this._getDefaultBaseURL(serviceBaseURL) + '/' + encode.join('/');
+    }
+
+    /**
+     * The default base (`north/v80`, or `v80` on South) is prepended to every path, so a path that
+     * repeats it, such as `/north/v80/provision/...`, used to reach `north/v80//north/v80/...` and
+     * fail with a misleading error. Such a call never worked, so refusing it breaks nothing. A
+     * caller-given `serviceBaseURL` is left alone: its paths are its own business.
+     * @return {Promise|null} a rejection to return, or null when the path is fine.
+     */
+    _rejectDuplicatedBase(url, serviceBaseURL) {
+        if (serviceBaseURL || typeof url !== 'string') return null;
+        const base = this._getDefaultBaseURL();
+        const firstSegment = base.split('/')[0];
+        if (url.replace(/^\/+/, '').split('/')[0] !== firstSegment) return null;
+
+        const message =
+            'OGAPI: the path "' + url + '" already starts with "' + firstSegment + '/", but "' + base +
+            '/" is prepended to every path. Pass the path relative to it, or give a serviceBaseURL.';
+        return q.reject({
+            statusCode: 400,
+            data: { errors: [{ code: 400, message: message }] },
+            reason: 'invalid-path',
+            cause: new Error(message)
+        });
     }
 
     _getDefaultBaseURL(serviceBaseURL) {
@@ -459,11 +497,18 @@ export default class NorthAmpliaREST {
                         status = 408;
                     }
                 }
-                defered.reject({
+                const rejection = {
                     statusCode: status,
                     data: data,
                     headers: headers
-                });
+                };
+                // No response arrived. statusCode stays 500, which the web GUI handles as a generic
+                // failure; reason and cause say what actually happened.
+                if (typeof err.response === 'undefined') {
+                    rejection.reason = err.reason || 'unknown';
+                    rejection.cause = err;
+                }
+                defered.reject(rejection);
             } else {
                 defered.resolve(res);
             }
