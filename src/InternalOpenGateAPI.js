@@ -178,6 +178,14 @@ import DevicePlansFinder from './plan/DevicePlansFinder';
 const registerBeforeStartHook = setBeforeStart;
 
 /**
+ * The options each client was built with, for clone() and setCredentials(). Kept out of the instance
+ * so that code holding a read-only client can neither read them nor swap them to widen its clones.
+ */
+const optionsOf = new WeakMap();
+
+const CREDENTIALS = ['apiKey', 'jwt'];
+
+/**
  * What `new OpenGateAPI(options)` accepts. The README's Configuration section explains each one.
  * @typedef {object} OpenGateOptions
  * @property {string} url - Base URL of the North API.
@@ -223,8 +231,7 @@ export default class InternalOpenGateAPI {
         if (_options.hooks && _options.hooks.beforeStart && typeof _options.hooks.beforeStart === 'function') {
             registerBeforeStartHook(_options.hooks.beforeStart);
         }
-        // Kept as given, for clone(). Frozen so flipping readOnly here cannot widen a clone.
-        Object.defineProperty(this, '_options', { value: Object.freeze({ ..._options }) });
+        optionsOf.set(this, Object.freeze({ ..._options }));
         this.Napi = northAmpliaREST;
         this.Sapi = southAmpliaREST;
         this.EX = Expression;
@@ -247,12 +254,46 @@ export default class InternalOpenGateAPI {
      * @return {this}
      */
     clone(overrides = {}) {
-        if (this._options.readOnly && 'readOnly' in overrides && !overrides.readOnly) {
+        const own = optionsOf.get(this);
+        if (own.readOnly && 'readOnly' in overrides && !overrides.readOnly) {
             throw new Error('OGAPI: a clone of a read-only client is read-only too');
         }
-        const options = { ...this._options, ...overrides };
-        if (this._options.readOnly) options.readOnly = true;
+        const options = { ...own, ...overrides };
+        if (own.readOnly) options.readOnly = true;
         return new this.constructor(options);
+    }
+
+    /**
+     * Replaces the credential of this client, for a token that is renewed while the client lives.
+     * Only `apiKey` and `jwt` are accepted, so it can never lift `readOnly` or move the client to
+     * another platform. A key passed as `undefined` removes that credential; keys left out keep
+     * theirs. `jwt` takes precedence over `apiKey` on North calls, as at construction. Clones made
+     * earlier keep the credential they were given; later ones inherit the new one.
+     * @example
+     *  ogapi.setCredentials({ apiKey: renewedViewToken });
+     * @param {{apiKey?: string, jwt?: string}} credentials
+     * @return {this}
+     */
+    setCredentials(credentials) {
+        if (!credentials || typeof credentials !== 'object') {
+            throw new Error('OGAPI: setCredentials takes an object such as { apiKey } or { jwt }');
+        }
+        const keys = Object.keys(credentials);
+        const unknown = keys.filter(key => !CREDENTIALS.includes(key));
+        if (keys.length === 0 || unknown.length) {
+            throw new Error('OGAPI: setCredentials only takes apiKey and jwt' + (unknown.length ? ', not ' + unknown.join(', ') : ''));
+        }
+        keys.forEach(key => {
+            if (credentials[key] !== undefined && typeof credentials[key] !== 'string') {
+                throw new Error('OGAPI: ' + key + ' must be a string, or undefined to remove it');
+            }
+        });
+
+        const picked = {};
+        keys.forEach(key => (picked[key] = credentials[key]));
+        [this.Napi, this.Sapi].forEach(client => Object.assign(client._options, picked));
+        optionsOf.set(this, Object.freeze({ ...optionsOf.get(this), ...picked }));
+        return this;
     }
 
     /**

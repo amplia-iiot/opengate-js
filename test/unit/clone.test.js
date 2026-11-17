@@ -81,11 +81,11 @@ describe('a read-only client cannot be widened', () => {
         expect(() => client({ readOnly: true }).clone({ readOnly: false })).toThrow(/read-only/);
     });
 
-    it('does not let the stored options be flipped to widen the next clone', () => {
+    it('keeps the options it clones from out of reach, so tampering cannot widen the next clone', () => {
         const widget = client({ readOnly: true });
-        expect(() => {
-            widget._options.readOnly = false;
-        }).toThrow(TypeError);
+        expect(widget._options).toBeUndefined();
+
+        widget.Napi._options.readOnly = false;
         expect(widget.clone().Napi._options.readOnly).toBe(true);
     });
 });

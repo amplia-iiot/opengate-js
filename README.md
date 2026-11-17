@@ -112,6 +112,18 @@ A clone of a read-only client is read-only too, and `clone({ readOnly: false })`
 override of `south` replaces the whole object. `logger` and `hooks` are process-wide: overriding them in a clone changes them
 for every client.
 
+### Renewing a credential
+
+When a token is renewed while the client lives, hand it the new one rather than building another client:
+
+```js
+ogapi.setCredentials({ apiKey: renewedToken }); // or { jwt: renewedJwt }
+```
+
+Only `apiKey` and `jwt` are accepted, so it cannot lift `readOnly` or point the client elsewhere. A key passed as `undefined`
+removes that credential, and `jwt` keeps its precedence over `apiKey`. Clones made earlier keep the credential they were
+given; later ones inherit the new one.
+
 ## What it covers
 
 The entry point exposes 51 factories, plus `ogapi.operations`, `ogapi.alarms` and `ogapi.entityBuilder`. Broadly:
