@@ -99,6 +99,19 @@ try {
 It prevents mistakes, not misuse. Code that holds the client can still reach the network some other way, so the permissions
 that actually protect the data belong to the key or token you hand it, and to the server or proxy in front of it.
 
+### Cloning a client
+
+`ogapi.clone(overrides)` returns a new client with the same options and the given ones on top. The usual case is handing a
+widget a read-only copy of the client you already have, without repeating its configuration:
+
+```js
+const widgetApi = ogapi.clone({ readOnly: true });
+```
+
+A clone of a read-only client is read-only too, and `clone({ readOnly: false })` on it throws. The merge is shallow, so an
+override of `south` replaces the whole object. `logger` and `hooks` are process-wide: overriding them in a clone changes them
+for every client.
+
 ## What it covers
 
 The entry point exposes 51 factories, plus `ogapi.operations`, `ogapi.alarms` and `ogapi.entityBuilder`. Broadly:

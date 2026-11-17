@@ -223,6 +223,8 @@ export default class InternalOpenGateAPI {
         if (_options.hooks && _options.hooks.beforeStart && typeof _options.hooks.beforeStart === 'function') {
             registerBeforeStartHook(_options.hooks.beforeStart);
         }
+        // Kept as given, for clone(). Frozen so flipping readOnly here cannot widen a clone.
+        Object.defineProperty(this, '_options', { value: Object.freeze({ ..._options }) });
         this.Napi = northAmpliaREST;
         this.Sapi = southAmpliaREST;
         this.EX = Expression;
@@ -230,6 +232,27 @@ export default class InternalOpenGateAPI {
         this.operations = new Operations(this);
         this.alarms = new AlarmActions(this);
         this.entityBuilder = new EntityBuilder(this);
+    }
+
+    /**
+     * A new client with this one's options, and the given ones on top. The merge is shallow: an
+     * override of `south` replaces the whole object.
+     *
+     * A clone of a read-only client is read-only too, and asking for `readOnly: false` throws: code
+     * handed a read-only client cannot widen it this way. `logger` and `hooks` are process-wide, so
+     * overriding them in a clone changes them for every client.
+     * @example
+     *  const widgetApi = ogapi.clone({ readOnly: true });
+     * @param {Partial<OpenGateOptions> & Record<string, unknown>} [overrides] - the options to change.
+     * @return {this}
+     */
+    clone(overrides = {}) {
+        if (this._options.readOnly && 'readOnly' in overrides && !overrides.readOnly) {
+            throw new Error('OGAPI: a clone of a read-only client is read-only too');
+        }
+        const options = { ...this._options, ...overrides };
+        if (this._options.readOnly) options.readOnly = true;
+        return new this.constructor(options);
     }
 
     /**
