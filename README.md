@@ -395,6 +395,12 @@ Work happens on a branch off `develop`, named after its ticket (`OUW-4887`) or i
 on Node 20, 22 and 24 — on the pull request, and again on the merge. `develop` is where a change is
 proven; nothing is released from a red `develop`.
 
+Every pull request also gets a **Package diff** comment: the package is built from the base branch and
+from the pull request, and `dist/`, `types/` and the API model are compared. That is the question a
+dependency bump raises. "No change" means it cannot reach consumers, and a green CI is enough to merge
+it. Otherwise the comment names the files, and the packages inlined in the browser bundle, that moved.
+`node scripts/package-diff.mjs <base-dir> <head-dir>` runs the same comparison locally.
+
 A release is cut from `master`, which is only ever fast-forwarded to a green `develop`:
 
 1. Bump `version` in `package.json` on `develop`, commit, push, and wait for CI. This bump is the

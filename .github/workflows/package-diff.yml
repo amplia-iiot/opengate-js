@@ -1,0 +1,75 @@
+name: Package diff
+
+# Builds what the package publishes twice, from the base branch and from the pull request, and says
+# whether consumers would see any difference. The question it answers is the one a dependency bump
+# raises: a dev-only bump reports "no change" and can be merged on a green CI; one that reaches
+# `dist/` or `types/` names the files, and the inlined packages inside the browser bundle.
+#
+# Informational: it never fails the pull request. The report goes to the job summary and to one
+# comment on the pull request, edited on every push.
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: package-diff-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  diff:
+    name: Published package
+    runs-on: ubuntu-latest
+    env:
+      BASE_SHA: ${{ github.event.pull_request.base.sha }}
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          cache: yarn
+
+      - run: corepack enable
+
+      - name: Build the pull request
+        run: |
+          yarn install --frozen-lockfile
+          yarn build
+          yarn apidoc
+          mkdir -p "$RUNNER_TEMP/head/build"
+          cp -r dist types "$RUNNER_TEMP/head/"
+          cp build/api-model.json "$RUNNER_TEMP/head/build/"
+          # The base branch may not have the script yet, so keep this copy of it.
+          cp scripts/package-diff.mjs "$RUNNER_TEMP/package-diff.mjs"
+
+      - name: Build the base branch
+        run: |
+          git checkout --force "$BASE_SHA"
+          git clean -fdx -e node_modules
+          yarn install --frozen-lockfile
+          yarn build
+          yarn apidoc
+          mkdir -p "$RUNNER_TEMP/base/build"
+          cp -r dist types "$RUNNER_TEMP/base/"
+          cp build/api-model.json "$RUNNER_TEMP/base/build/"
+
+      - name: Compare
+        run: |
+          node "$RUNNER_TEMP/package-diff.mjs" "$RUNNER_TEMP/base" "$RUNNER_TEMP/head" > "$RUNNER_TEMP/report.md"
+          cat "$RUNNER_TEMP/report.md" >> "$GITHUB_STEP_SUMMARY"
+          cat "$RUNNER_TEMP/report.md"
+
+      # A pull request from a fork gets a read-only token; the job summary still has the report.
+      - name: Comment on the pull request
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh pr comment "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/report.md" --edit-last --create-if-none
