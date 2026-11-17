@@ -503,4 +503,4 @@ It needs one repository secret, `NPM_TOKEN`: an npm automation token with publis
 
 ## License
 
-ISC. See [LICENSE](LICENSE).
+Apache License 2.0. See [LICENSE](LICENSE).
