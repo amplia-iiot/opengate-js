@@ -9,6 +9,37 @@ import RequestSpec from './http/RequestSpec';
 import { register as registerMock } from './http/mockRouter';
 import logger from './logger';
 
+/** What a rejection says when nothing better is known; never repeated in its `message`. */
+const BROKEN = 'OGAPI: Something is broken. Please contact with your administrator.';
+
+/**
+ * Gives a rejection a readable `message` and `toString()`. Both are non-enumerable, so the object
+ * serialises, spreads and compares exactly as before; but code written the usual way,
+ * `.catch(e => show(e.message || e))`, no longer shows "[object Object]".
+ *
+ * It is still a plain object, not an Error: that change waits for a major version.
+ * @param {object} rejection
+ * @return {object} the same object.
+ */
+function readable(rejection) {
+    const errors = rejection.data && Array.isArray(rejection.data.errors) ? rejection.data.errors : [];
+    const first = errors[0] || {};
+    let message;
+    if (rejection.reason === 'invalid-path' || rejection.reason === 'read-only') {
+        message = first.message;
+    } else if (rejection.reason) {
+        const why = rejection.cause && rejection.cause.message ? ': ' + rejection.cause.message : '';
+        message = 'OGAPI: no response (' + rejection.reason + ')' + why;
+    } else {
+        const known = first.message === BROKEN ? '' : first.message;
+        const detail = known || first.description || (typeof rejection.data === 'string' ? rejection.data : '');
+        message = 'HTTP ' + rejection.statusCode + (detail ? ': ' + detail : '');
+    }
+    Object.defineProperty(rejection, 'message', { value: message, writable: true, configurable: true });
+    Object.defineProperty(rejection, 'toString', { value: () => message, writable: true, configurable: true });
+    return rejection;
+}
+
 /**
  * Encodes one query parameter value.
  *
@@ -432,12 +463,14 @@ export default class NorthAmpliaREST {
         if (method === 'POST' && isSearch) return null;
 
         const message = 'OGAPI: read-only client refused ' + method + ' ' + url;
-        return q.reject({
-            statusCode: 403,
-            data: { errors: [{ code: 403, message: message }] },
-            reason: 'read-only',
-            cause: new Error(message)
-        });
+        return q.reject(
+            readable({
+                statusCode: 403,
+                data: { errors: [{ code: 403, message: message }] },
+                reason: 'read-only',
+                cause: new Error(message)
+            })
+        );
     }
 
     /**
@@ -456,12 +489,14 @@ export default class NorthAmpliaREST {
         const message =
             'OGAPI: the path "' + url + '" already starts with "' + firstSegment + '/", but "' + base +
             '/" is prepended to every path. Pass the path relative to it, or give a serviceBaseURL.';
-        return q.reject({
-            statusCode: 400,
-            data: { errors: [{ code: 400, message: message }] },
-            reason: 'invalid-path',
-            cause: new Error(message)
-        });
+        return q.reject(
+            readable({
+                statusCode: 400,
+                data: { errors: [{ code: 400, message: message }] },
+                reason: 'invalid-path',
+                cause: new Error(message)
+            })
+        );
     }
 
     _getDefaultBaseURL(serviceBaseURL) {
@@ -519,7 +554,7 @@ export default class NorthAmpliaREST {
                     errors: [
                         {
                             code: status,
-                            message: 'OGAPI: Something is broken. Please contact with your administrator.'
+                            message: BROKEN
                         }
                     ]
                 };
@@ -548,7 +583,7 @@ export default class NorthAmpliaREST {
                     rejection.reason = err.reason || 'unknown';
                     rejection.cause = err;
                 }
-                defered.reject(rejection);
+                defered.reject(readable(rejection));
             } else {
                 defered.resolve(res);
             }
