@@ -277,6 +277,17 @@ the life of the process.
 
 Type declarations ship with the package and are generated from the JSDoc in `src/`, so they always describe the version you installed. No `@types/` package needed.
 
+The constructor's options are typed as `OpenGateOptions`, the [Configuration](#configuration) table above:
+
+```ts
+import OpenGateAPI, { type OpenGateOptions } from 'opengate-js';
+
+const options: OpenGateOptions = { url: 'https://opengate.example.com', apiKey: process.env.OPENGATE_API_KEY, timeout: 30000 };
+const ogapi = new OpenGateAPI(options);
+```
+
+Keys the type does not list are still accepted, so code that passed extra options keeps compiling.
+
 ## Documentation
 
 The published reference lives at **[documentation.opengate.es/libs/ogapi-docs](https://documentation.opengate.es/libs/ogapi-docs/index.html)**, and it is generated from this repository: the reference documentation **is** the JSDoc in `src/`. `tools/apidoc` turns it into a neutral API model and into the `.d.ts` files, so a wording fix belongs in `src/` and never downstream — see [tools/apidoc/README.md](tools/apidoc/README.md).
