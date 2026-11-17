@@ -5,6 +5,21 @@ import { buildFormData, packFormData } from './multipart';
 import { match as matchMock, respond as respondMock } from './mockRouter';
 
 /**
+ * A failure that happened before any HTTP response arrived, tagged with why: `timeout`, `aborted`
+ * or `network`. A browser reports a CORS refusal, a CSP block, a DNS failure and a dropped
+ * connection identically, so `network` cannot be split any further.
+ */
+function transportError(message, reason) {
+    const error = new Error(message);
+    error.reason = reason;
+    if (reason === 'timeout') {
+        error.timeout = true;
+        error.code = 'ECONNABORTED';
+    }
+    return error;
+}
+
+/**
  * A request builder with superagent's shape, running on fetch.
  *
  * It exists so the migration off superagent does not become a rewrite of everything that used it.
@@ -374,7 +389,7 @@ export default class RequestSpec {
         this.aborted = true;
         this.clearTimeout();
         if (this._xhr) this._xhr.abort();
-        else if (this._controller) this._controller.abort(new Error('Request aborted'));
+        else if (this._controller) this._controller.abort(transportError('Request aborted', 'aborted'));
         this.emit('abort');
         return this;
     }
@@ -709,7 +724,7 @@ export default class RequestSpec {
     async _execute() {
         // Checked here rather than relying on the transport to honour the signal: `abort()` may have
         // been called from a `beforeStart` hook, before anything was sent.
-        if (this.aborted) throw new Error('Request aborted');
+        if (this.aborted) throw transportError('Request aborted', 'aborted');
 
         const mocked = matchMock(this.method, this.url);
         if (mocked) {
@@ -820,9 +835,7 @@ export default class RequestSpec {
         let expire;
         const promise = new Promise((resolve, reject) => {
             expire = message => {
-                const error = new Error(message);
-                error.timeout = true;
-                error.code = 'ECONNABORTED';
+                const error = transportError(message, 'timeout');
                 this.timedout = true;
                 // Best effort, and only after the rejection is already on its way.
                 if (this._xhr) this._xhr.abort();
@@ -848,7 +861,13 @@ export default class RequestSpec {
             if (controller) init.signal = controller.signal;
             if (this._withCredentials) init.credentials = 'include';
 
-            const raw = await Promise.race([fetch(this.url, init), expiry.promise]);
+            const sent = fetch(this.url, init).catch(error => {
+                // An abort rejects with the reason we gave it, already tagged; anything else fetch
+                // throws before a response is a network failure.
+                if (error && typeof error === 'object' && !error.reason) error.reason = 'network';
+                throw error;
+            });
+            const raw = await Promise.race([sent, expiry.promise]);
 
             // The headers are in, so the response timer has done its job; the deadline keeps running
             // while the body is read.
@@ -895,7 +914,7 @@ export default class RequestSpec {
             const xhr = new XMLHttpRequest();
             this._xhr = xhr;
             if (this.aborted) {
-                reject(new Error('Request aborted'));
+                reject(transportError('Request aborted', 'aborted'));
                 return;
             }
             const expiry = this._expiry();
@@ -943,9 +962,9 @@ export default class RequestSpec {
                 if (!this._isResponseOK(response)) reject(toError(response));
                 else resolve(response);
             };
-            xhr.onerror = () => reject(new Error('Network error'));
-            xhr.ontimeout = () => reject(new Error('Timeout of ' + this._timeout + 'ms exceeded'));
-            xhr.onabort = () => reject(new Error('Request aborted'));
+            xhr.onerror = () => reject(transportError('Network error', 'network'));
+            xhr.ontimeout = () => reject(transportError('Timeout of ' + this._timeout + 'ms exceeded', 'timeout'));
+            xhr.onabort = () => reject(transportError('Request aborted', 'aborted'));
 
             xhr.send(body === undefined ? null : body);
         });
