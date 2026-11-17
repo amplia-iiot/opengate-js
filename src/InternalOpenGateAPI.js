@@ -176,6 +176,26 @@ import DevicePlansFinder from './plan/DevicePlansFinder';
  * It stays process-wide, as the patch was: one callback for every client, last registration wins.
  */
 const registerBeforeStartHook = setBeforeStart;
+
+/**
+ * What `new OpenGateAPI(options)` accepts. The README's Configuration section explains each one.
+ * @typedef {object} OpenGateOptions
+ * @property {string} url - Base URL of the North API.
+ * @property {string} [apiKey] - Sent as `X-ApiKey`.
+ * @property {string} [jwt] - Sent as `Authorization: Bearer ...`; takes precedence over `apiKey` on North calls.
+ * @property {number} [timeout] - Milliseconds. Defaults to 5000; -1 disables the timeout.
+ * @property {{url: string}} [south] - Only needed to call the South API.
+ * @property {{beforeStart?: function(object): void}} [hooks] - `beforeStart` receives each request just before it leaves.
+ * @property {object} [mocks] - Routes answered locally instead of calling OpenGate, keyed by verb and path.
+ * @property {boolean|{debug?: Function, info?: Function, warn?: Function, error?: Function}} [logger] - Where the
+ * library's own messages go: `false` silences it, `true` reports everything, or your own logger.
+ * @property {boolean} [readOnly] - Refuse every request but GET and searches before it is sent.
+ * @property {{organization: string, identifier: string, ds: string}} [_internalCountriesFilter] - Required by
+ * `newCountriesCatalog()`.
+ * @property {string} [port] - Ignored. Kept so code that passes it still type-checks.
+ * @property {string} [version] - Ignored. Kept so code that passes it still type-checks.
+ */
+
 /**
  * This is an abstract class. It must be extended by another class that defines the backend, and it is used to make
  * requests to the OpenGate North API from a browser or a Node.js server.
@@ -183,9 +203,9 @@ const registerBeforeStartHook = setBeforeStart;
 export default class InternalOpenGateAPI {
     /**
      * Constructor
-     * @param {{ url: string,port: string,version: string,apiKey: string,readOnly?: boolean}} _options - this is configuration about Opengate North API.
-     * `readOnly: true` refuses every request but GET and searches before it is sent; see the README.
-     * @param {AmpliaREST} ampliaREST - this is a backend selected to manage a request to Opengate North API.
+     * @param {object} northAmpliaREST - the client that sends requests to the North API.
+     * @param {object} southAmpliaREST - the client that sends requests to the South API.
+     * @param {OpenGateOptions & Record<string, unknown>} _options - the client's configuration.
      */
     constructor(northAmpliaREST, southAmpliaREST, _options) {
         if (this.constructor === InternalOpenGateAPI) {
