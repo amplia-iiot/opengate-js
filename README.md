@@ -44,6 +44,9 @@ try {
 ```
 
 Note that a rejection is a plain object today, not an `Error`. That is a known wart, on the list for the next major version.
+It does carry a readable `message` and `toString()`, such as `HTTP 400: <the platform's first error>`, so
+`.catch(e => show(e.message || e))` shows text rather than `[object Object]`. Both are non-enumerable: the object serialises
+and spreads as before.
 
 When no answer arrives at all, `statusCode` is `500` and `data` holds a generic message, as it always has. Two more fields say
 what actually happened:
